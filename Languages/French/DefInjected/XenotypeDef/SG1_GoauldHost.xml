@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_GoauldHost.label>hôte Goa'uld</SG1_GoauldHost.label>
+    <SG1_GoauldHost.description>Un hôte Goa'uld est un corps humanoïde contrôlé par un symbiote parasite adulte. Le symbiote lui confère une résistance accrue, une récupération rapide, une meilleure résistance aux maladies et une espérance de vie considérablement prolongée. Ce xenotype est un prototype uniquement fondé sur des définitions XML : de futurs jalons représenteront le Goa'uld comme un organisme distinct capable de s'implanter, d'être extrait et de changer d'hôte.</SG1_GoauldHost.description>
+    <SG1_GoauldHost.descriptionShort>Hôte humanoïde possédé et renforcé par un symbiote Goa'uld adulte.</SG1_GoauldHost.descriptionShort>
+</LanguageData>

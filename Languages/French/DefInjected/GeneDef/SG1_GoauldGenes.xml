@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_NaquadahBlood.label>naquadah dans le sang</SG1_NaquadahBlood.label>
+    <SG1_NaquadahBlood.description>Le sang du porteur contient des traces de naquadah laissées par un symbiote Goa'uld. Dans ce prototype, le gène sert de marqueur visible. Les futurs systèmes l'utiliseront pour l'accès aux technologies Goa'uld et la détection des symbiotes proches.</SG1_NaquadahBlood.description>
+    <SG1_GoauldLongevity.label>longévité de l'hôte Goa'uld</SG1_GoauldLongevity.label>
+    <SG1_GoauldLongevity.description>Le symbiote Goa'uld ralentit considérablement le vieillissement de son hôte. Ce prototype uniquement fondé sur des définitions XML fixe l'espérance de vie à 500 %. L'utilisation du sarcophage et les Grands Maîtres nommés seront traités séparément lors de prochains jalons.</SG1_GoauldLongevity.description>
+</LanguageData>

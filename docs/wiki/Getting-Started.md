@@ -23,6 +23,12 @@ Le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
 4. Vérifie la présence des gènes `physiologie jaffa` et `longévité jaffa`.
 5. Vérifie que l'espérance de vie indiquée est de `150 %`.
 
+## Vérifier le prototype d'hôte Goa'uld
+
+1. Sélectionne le xenotype `hôte Goa'uld`.
+2. Vérifie la présence des gènes `naquadah dans le sang` et `longévité de l'hôte Goa'uld`.
+3. Vérifie que l'espérance de vie indiquée est de `500 %`.
+
 ## Important
 
-Le système complet de symbiote, la faction Goa'uld, les armes et les armures Jaffa sont encore en cours de développement. Consulte [État du contenu](Content-Status) pour distinguer ce qui est jouable de ce qui est seulement prévu.
+Le Goa'uld autonome, son attaque sauvage, son implantation rituelle et son transfert entre plusieurs hôtes ne sont pas encore actifs. Consulte [État du contenu](Content-Status) pour distinguer ce qui est jouable de ce qui est seulement prévu.

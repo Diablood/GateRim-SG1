@@ -5,7 +5,7 @@
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-## Implémenté
+## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
@@ -13,17 +13,19 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
 | Traductions françaises du lot Jaffa | Implémenté | 0.1.4-dev |
-| Première passe de correction en jeu | Implémenté | 0.1.5-dev |
 | Fondation du wiki joueur | Implémenté | 0.1.6-dev |
+| Xenotype `hôte Goa'uld` | Prototype à tester | 0.1.7-dev |
+| Naquadah dans le sang | Marqueur prototype | 0.1.7-dev |
+| Longévité de l'hôte Goa'uld à 500 % | Prototype à tester | 0.1.7-dev |
 
-## Prototype ou prévu
+## Prévu
 
 | Élément | État |
 |---|---|
-| Hôtes Goa'uld | Prévu |
 | Symbiotes Goa'uld libres | Prévu |
 | Implantation rituelle | Prévu |
 | Attaque sauvage d'un symbiote | Prévu |
+| Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
 | Dépendance des Jaffa au symbiote ou à la trétonine | Prévu |
 | Faction des Grands Maîtres Goa'uld | Prévu |

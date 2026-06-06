@@ -20,26 +20,32 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.6-dev — Player wiki drafts
+### 0.1.7-dev — Goa'uld host foundation
 
-The main repository now stores versioned player-wiki drafts under:
+The mod now includes an XML-only prototype for humanoids already possessed by an adult Goa'uld symbiote:
 
-```text
-docs/wiki/
-```
+- `SG1_GoauldHost`
+- `SG1_NaquadahBlood`
+- `SG1_GoauldLongevity`
+- French `DefInjected` translations
+- Temporary local gene icons
+- Updated player-wiki drafts
 
-The GitHub wiki repository remains separate and can receive stabilized pages from these drafts.
+The dedicated symbiote system remains a later C# milestone.
 
 ## First playable milestone
 
 - [x] Jaffa xenotype foundation
-- [x] Jaffa physiology gene without forced Hulk body shape
-- [x] Jaffa longevity at 150% lifespan expectancy
 - [x] French translations for stabilized Jaffa content
-- [x] First in-game log correction pass
 - [x] Player wiki foundation
-- [ ] Goa'uld host foundation
-- [ ] Basic Jaffa warrior and guard pawn kinds
+- [x] Goa'uld host xenotype prototype
+- [x] French translations for stabilized Goa'uld host content
+- [ ] Free Goa'uld symbiote entity
+- [ ] Forced implantation
+- [ ] Ritual implantation
+- [ ] Host transfer
+- [ ] Goa'uld faction
+- [ ] Jaffa pawn kinds
 - [ ] Ma'Tok staff weapon
 - [ ] Zat'nik'tel
 - [ ] Generic Jaffa armor

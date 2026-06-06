@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.7-dev
+- Add the XML-only `SG1_GoauldHost` xenotype prototype.
+- Add the `SG1_NaquadahBlood` marker gene.
+- Add the provisional `SG1_GoauldLongevity` gene with `LifespanFactor ×5`.
+- Add temporary local icons for the new Goa'uld genes.
+- Add French `DefInjected` translations for the Goa'uld host prototype.
+- Update player-wiki drafts for the Goa'uld host foundation.
+
 ## 0.1.6-dev
 - Add versioned player-wiki drafts under `docs/wiki/`.
 - Add initial player pages for setup, content status, Jaffa, Goa'uld and symbiotes.

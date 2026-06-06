@@ -12,12 +12,13 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 ## Contenu actuellement jouable
 
 - [Jaffa](Jaffa) : xenotype prototype disponible.
+- [Goa'uld](Goauld) : prototype d'hôte déjà implanté disponible dans l'éditeur de xenotype.
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [État du contenu](Content-Status) : liste des fonctionnalités implémentées, en prototype ou prévues.
 
 ## Prochain développement majeur
 
-Le prochain lot fonctionnel portera sur les [Goa'uld](Goauld) et le système de [symbiotes](Symbiotes).
+Les prochains lots porteront sur les [symbiotes](Symbiotes) Goa'uld libres, leur implantation et leur transfert entre plusieurs hôtes.
 
 ## Liens utiles
 

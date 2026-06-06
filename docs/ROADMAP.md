@@ -1,61 +1,46 @@
 # GateRim SG-1 — Initial roadmap
 
-## 0.1.0-dev — Foundation
+## Completed milestones
+
+### 0.1.0-dev — Foundation
 - [x] Create RimWorld 1.6 directory structure
-- [x] Add `About/About.xml`
-- [x] Preserve the custom `About/ModIcon.png`
-- [x] Add project conventions
+- [x] Add project conventions and preserve the custom icon
 
-## 0.1.1-dev — Jaffa xenotype foundation
-- [x] Create the prototype `SG1_Jaffa` xenotype
-- [x] Declare the Biotech dependency
-- [x] Defer symbiote dependency to a dedicated system
-
-## 0.1.2-dev — Jaffa physiology refinement
-- [x] Remove the forced `Body_Hulk` appearance
-- [x] Add the custom `SG1_JaffaPhysiology` gene
-- [x] Preserve visual body-type variation
-- [x] Add a temporary `+15` carrying-capacity effect
-
-## 0.1.3-dev — Jaffa longevity
+### 0.1.1-dev to 0.1.5-dev — Jaffa foundation
+- [x] Add `SG1_Jaffa`
+- [x] Add `SG1_JaffaPhysiology`
 - [x] Add `SG1_JaffaLongevity`
-- [x] Set `LifespanFactor` to `1.5`
-- [x] Add the gene to `SG1_Jaffa`
+- [x] Add French translations
+- [x] Correct first in-game log issues
+- [x] Validate visual tests
 
-## 0.1.4-dev — French Jaffa translations
-- [x] Add French `DefInjected` translations for the stabilized Jaffa content
-- [x] Document the localization workflow
+### 0.1.6-dev — Player wiki foundation
+- [x] Add versioned wiki drafts
+- [x] Publish the initial GitHub wiki
 
-## 0.1.5-dev — First in-game log fixes
-- [x] Normalize descriptions and translated values
-- [x] Add a local placeholder icon for `SG1_JaffaPhysiology`
-- [x] Validate the visual result in RimWorld
+## 0.1.7-dev — Goa'uld host foundation
+- [x] Add the `SG1_GoauldHost` XML-only xenotype prototype
+- [x] Add `SG1_NaquadahBlood`
+- [x] Add `SG1_GoauldLongevity`
+- [x] Set provisional Goa'uld host lifespan expectancy to `500%`
+- [x] Add French `DefInjected` translations
+- [x] Add temporary local gene icons
+- [x] Update player-wiki drafts
+- [ ] Validate the prototype in RimWorld 1.6
+- [ ] Publish the updated player-wiki pages
 
-## 0.1.6-dev — Player wiki foundation
-- [x] Create versioned wiki drafts under `docs/wiki/`
-- [x] Add player-facing Jaffa documentation
-- [x] Add planned Goa'uld and symbiote pages
-- [x] Add wiki sidebar and footer
-- [x] Add publication instructions for the separate wiki repository
-- [ ] Publish the stabilized drafts to `GateRim-SG1.wiki`
-
-## Next functional milestone
-- [ ] Add the Goa'uld host foundation
-- [ ] Add French translations for the stabilized Goa'uld host prototype
-- [ ] Document the implemented host prototype in the wiki
-
-## Later milestones
-
-### Symbiotes
+## Next symbiote milestones
 - [ ] Add a free Goa'uld symbiote entity
+- [ ] Add the recent-implantation state
 - [ ] Add forced implantation
 - [ ] Add ritual implantation
 - [ ] Add transfer between hosts
-- [ ] Add Tok'ra extraction
+- [ ] Add extraction
+- [ ] Add Tok'ra behavior
 - [ ] Implement Jaffa symbiote dependency
 - [ ] Add tretonin
 
-### Factions and equipment
+## Factions and equipment
 - [ ] Create the Goa'uld System Lords faction
 - [ ] Add Jaffa pawn kinds
 - [ ] Add Ma'Tok staff weapon

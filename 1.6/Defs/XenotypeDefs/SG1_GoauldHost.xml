@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        XML-only prototype:
+        This xenotype represents a humanoid already possessed by an adult
+        Goa'uld symbiote. It does not yet simulate the symbiote as a separate
+        creature, forced implantation, ritual implantation, extraction or
+        transfer between hosts.
+    -->
+    <XenotypeDef>
+        <defName>SG1_GoauldHost</defName>
+        <label>Goa'uld host</label>
+        <description>A Goa'uld host is a humanoid body controlled by an adult parasitic symbiote. The symbiote grants increased resilience, rapid recovery, disease resistance and a dramatically extended lifespan. This xenotype is an XML-only prototype: future milestones will represent the Goa'uld as a distinct organism capable of implantation, extraction and transfer between hosts.</description>
+        <descriptionShort>A humanoid host possessed and enhanced by an adult Goa'uld symbiote.</descriptionShort>
+        <!-- Temporary GateRim placeholder until dedicated Goa'uld host artwork is added. -->
+        <iconPath>UI/Xenotypes/SG1_GoauldHost</iconPath>
+        <inheritable>false</inheritable>
+        <combatPowerFactor>1.75</combatPowerFactor>
+        <genes>
+            <li>SG1_NaquadahBlood</li>
+            <li>SG1_GoauldLongevity</li>
+            <li>Immunity_Strong</li>
+            <li>WoundHealing_Fast</li>
+            <li>Pain_Reduced</li>
+            <li>Robust</li>
+            <li>MeleeDamage_Strong</li>
+            <li>StrongStomach</li>
+        </genes>
+    </XenotypeDef>
+</Defs>

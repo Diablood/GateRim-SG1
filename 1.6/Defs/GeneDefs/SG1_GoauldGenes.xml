@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Marker gene for the naquadah traces present in a Goa'uld host's blood.
+        The XML-only prototype exposes the identity of the host. Future C#
+        systems can use this gene to restrict technologies and detect symbiotes.
+    -->
+    <GeneDef>
+        <defName>SG1_NaquadahBlood</defName>
+        <label>naquadah in the blood</label>
+        <description>The carrier's bloodstream contains traces of naquadah left by a Goa'uld symbiote. In this prototype, the gene acts as a visible marker. Future systems will use it for Goa'uld technology access and nearby-symbiote detection.</description>
+        <!-- Temporary GateRim placeholder until dedicated gene artwork is added. -->
+        <iconPath>UI/Genes/SG1_NaquadahBlood</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>710</displayOrderInCategory>
+        <biostatMet>0</biostatMet>
+        <biostatCpx>1</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    </GeneDef>
+
+    <!--
+        Provisional balance value for an implanted Goa'uld host.
+        The dedicated symbiote system may move this effect to a Hediff later.
+    -->
+    <GeneDef>
+        <defName>SG1_GoauldLongevity</defName>
+        <label>Goa'uld host longevity</label>
+        <description>The Goa'uld symbiote dramatically slows the aging of its host. This XML-only prototype sets lifespan expectancy to 500%. Sarcophagus use and named System Lords will be handled separately in later milestones.</description>
+        <!-- Temporary GateRim placeholder until dedicated gene artwork is added. -->
+        <iconPath>UI/Genes/SG1_GoauldLongevity</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>711</displayOrderInCategory>
+        <biostatMet>0</biostatMet>
+        <biostatCpx>2</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+        <statFactors>
+            <LifespanFactor>5</LifespanFactor>
+        </statFactors>
+    </GeneDef>
+</Defs>
