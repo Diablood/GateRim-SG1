@@ -19,21 +19,29 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.3-dev — Jaffa longevity
+### 0.1.4-dev — French Jaffa translations
 
-The Jaffa prototype now includes slowed aging:
+The stabilized Jaffa foundation now includes French `DefInjected` translations:
 
-- `SG1_JaffaLongevity` custom gene added
-- Lifespan expectancy factor: `150%`
-- Age-related health conditions delayed through `LifespanFactor`
-- Symbiote dependency still deferred to a dedicated system
-- Previous Jaffa physique refinement preserved: no forced Hulk body shape
+- `SG1_Jaffa`
+- `SG1_JaffaPhysiology`
+- `SG1_JaffaLongevity`
+
+English remains embedded directly in the functional `Defs`.
+French translations are maintained in parallel under:
+
+```text
+Languages/French/DefInjected/
+```
+
+Future UI messages and C# strings will use bilingual `Keyed` files.
 
 ## First playable milestone
 
 - [x] Jaffa xenotype foundation
 - [x] Jaffa physiology gene without forced Hulk body shape
 - [x] Jaffa longevity at 150% lifespan expectancy
+- [x] French translations for stabilized Jaffa content
 - [ ] Goa'uld faction
 - [ ] Basic Jaffa warrior and guard pawn kinds
 - [ ] Ma'Tok staff weapon
@@ -45,5 +53,8 @@ The Jaffa prototype now includes slowed aging:
 - Keep indentation at 4 spaces.
 - Preserve `About/ModIcon.png`.
 - Develop incrementally and test after each small content batch.
+- Keep English in `Defs`.
+- Add French `DefInjected` translations as soon as a content batch is stabilized.
+- Use bilingual `Keyed` files for future UI messages and C# strings.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.

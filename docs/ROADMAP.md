@@ -21,8 +21,14 @@
 - [x] Add `SG1_JaffaLongevity`
 - [x] Set `LifespanFactor` to `1.5`
 - [x] Add the gene to `SG1_Jaffa`
-- [ ] Verify the `Jaffa longevity` gene in RimWorld 1.6
-- [ ] Confirm the displayed lifespan factor is `150%`
+
+## 0.1.4-dev — French Jaffa translations
+- [x] Add French `DefInjected` translations for `SG1_Jaffa`
+- [x] Add French `DefInjected` translations for `SG1_JaffaPhysiology`
+- [x] Add French `DefInjected` translations for `SG1_JaffaLongevity`
+- [x] Document the localization workflow
+- [ ] Verify the Jaffa xenotype display in French
+- [ ] Verify the Jaffa xenotype display in English
 
 ## First playable content
 - [ ] Create the Goa'uld faction

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_Jaffa.label>Jaffa</SG1_Jaffa.label>
+    <SG1_Jaffa.description>
+Les Jaffa sont des guerriers humains modifiés pour porter un symbiote Goa'uld immature. Leur force, leur résistance, leur réponse immunitaire améliorée et leur vieillissement ralenti en font de redoutables soldats. Leurs avantages physiques n'imposent pas une morphologie visible unique. Cette première version sert de fondation au gameplay ; la dépendance au symbiote sera implémentée séparément.
+    </SG1_Jaffa.description>
+    <SG1_Jaffa.descriptionShort>Guerriers humains renforcés par un symbiote Goa'uld immature.</SG1_Jaffa.descriptionShort>
+</LanguageData>

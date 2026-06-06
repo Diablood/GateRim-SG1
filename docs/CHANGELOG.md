@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4-dev
+- Add French `DefInjected` translations for `SG1_Jaffa`.
+- Add French `DefInjected` translations for `SG1_JaffaPhysiology`.
+- Add French `DefInjected` translations for `SG1_JaffaLongevity`.
+- Document the localization workflow.
+
 ## 0.1.3-dev
 - Add the `SG1_JaffaLongevity` gene.
 - Set Jaffa lifespan expectancy to `150%` with `LifespanFactor ×1.5`.

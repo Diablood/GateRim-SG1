@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.3-dev</modVersion>
+    <modVersion>0.1.4-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -21,6 +21,7 @@ Current development scope:
 - Jaffa xenotype foundation
 - Custom Jaffa physiology gene without forced body shape
 - Jaffa longevity set to 150% lifespan expectancy
+- French translations for the stabilized Jaffa content
 - Goa'uld faction
 - Jaffa pawn kinds
 - Ma'Tok staff weapon
