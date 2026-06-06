@@ -32,6 +32,13 @@
 - [ ] Validate the prototype in RimWorld 1.6
 - [ ] Publish the updated player-wiki pages
 
+## 0.1.9-dev — Fix free Goa'uld symbiote XML
+- [x] Remove the invalid `<wildness>` field from `RaceProperties`
+- [x] Preserve developer-mode spawning for isolated tests
+- [x] Keep the wiki unchanged because player-facing behavior is not modified
+- [ ] Re-run the minimal RimWorld test
+- [ ] Confirm that `Player.log` no longer reports the `wildness` XML error
+
 ## Next symbiote milestones
 - [ ] Add a recent-implantation Hediff
 - [ ] Add forced implantation

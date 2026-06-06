@@ -58,3 +58,16 @@ Dedicated artwork can replace it without changing the XML path.
 7. Confirm that it does not appear naturally in a normal biome.
 8. Switch to French and verify the translated label and description.
 9. Inspect `Player.log` for errors mentioning `SG1_GoauldSymbiote`.
+
+
+## 0.1.9-dev maintenance note
+
+The initial XML prototype incorrectly declared:
+
+```xml
+<wildness>1</wildness>
+```
+
+inside the `RaceProperties` block. RimWorld 1.6 does not expose that field on `RaceProperties`, so the line has been removed.
+
+The pawn remains excluded from natural biome spawning because no biome table references it. Developer-mode spawning remains the intended test method.

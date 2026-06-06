@@ -53,3 +53,16 @@ Checklist:
 3. Confirm that no natural biome spawn occurs.
 4. Switch to French and verify the translated label and description.
 5. Check `Player.log` for `SG1_GoauldSymbiote` errors.
+
+
+## 0.1.9-dev XML regression check
+
+After applying the free-symbiote XML correction:
+
+1. Launch with `Core`, `Biotech`, and `GateRim SG-1`.
+2. Confirm that `Player.log` no longer reports:
+   ```text
+   XML error: <wildness>1</wildness> doesn't correspond to any field in type RaceProperties.
+   ```
+3. Spawn `SG1_GoauldSymbiote` through developer mode.
+4. Confirm that movement, the weak bite, and the temporary sprite still work.

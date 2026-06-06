@@ -20,18 +20,16 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.8-dev — Free Goa'uld symbiote prototype
+### 0.1.9-dev — Fix free Goa'uld symbiote XML
 
-The mod now includes an XML-only animal-style pawn prototype representing an adult Goa'uld symbiote outside a host:
+The free Goa'uld symbiote prototype has received its first XML correction after source review:
 
-- `SG1_GoauldSymbiote`
-- Weak bite attack
-- Temporary local sprite
-- French `DefInjected` translations
-- Developer-mode spawning for isolated tests
-- No natural biome spawning
-- Updated wiki drafts
-- Safe wiki synchronization helper: `tools/sync-wiki.sh`
+- Remove the invalid `<wildness>` field from `RaceProperties`
+- Preserve `SG1_GoauldSymbiote` as a developer-mode test pawn
+- Preserve the weak bite attack and temporary local sprite
+- Preserve French `DefInjected` translations
+- Keep natural biome spawning disabled by the absence of biome entries
+- No player-wiki publication required for this maintenance-only correction
 
 Forced implantation, ritual implantation and host transfer remain later C# milestones.
 

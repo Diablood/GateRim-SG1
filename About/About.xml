@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.8-dev</modVersion>
+    <modVersion>0.1.9-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -21,8 +21,7 @@ Current development scope:
 - Jaffa xenotype foundation
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
-- Naquadah-blood marker gene
-- Provisional Goa'uld host longevity
+- XML correction for the free symbiote race definition
 - French translations for stabilized content
 - Player wiki maintained in parallel
 - Forced implantation, ritual implantation and host transfer planned next

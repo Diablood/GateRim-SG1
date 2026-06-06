@@ -39,7 +39,6 @@
             <foodType>CarnivoreAnimal</foodType>
             <leatherDef>Leather_Plain</leatherDef>
             <lifeExpectancy>40</lifeExpectancy>
-            <wildness>1</wildness>
             <hasGenders>false</hasGenders>
             <lifeStageAges>
                 <li>

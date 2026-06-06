@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.9-dev
+- Remove the invalid `<wildness>` field from the free Goa'uld symbiote `RaceProperties`.
+- Keep developer-mode spawning as the isolated test method.
+- Preserve the current player wiki because this correction does not change player-facing behavior.
+
 ## 0.1.8-dev
 - Add the XML-only `SG1_GoauldSymbiote` animal-style pawn prototype.
 - Add a weak bite attack and disable natural biome spawning.
