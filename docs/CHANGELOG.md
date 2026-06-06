@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3-dev
+- Add the `SG1_JaffaLongevity` gene.
+- Set Jaffa lifespan expectancy to `150%` with `LifespanFactor ×1.5`.
+- Add the longevity gene to the `SG1_Jaffa` xenotype.
+- Document the future migration of longevity to the symbiote system if appropriate.
+
 ## 0.1.2-dev
 - Remove the forced `Body_Hulk` gene from `SG1_Jaffa`.
 - Add the custom `SG1_JaffaPhysiology` gene.

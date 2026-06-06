@@ -1,8 +1,6 @@
 # GateRim SG-1 — Initial roadmap
 
 ## 0.1.0-dev — Foundation
-
-### Repository skeleton
 - [x] Create RimWorld 1.6 directory structure
 - [x] Add `About/About.xml`
 - [x] Preserve the custom `About/ModIcon.png`
@@ -17,9 +15,14 @@
 - [x] Remove the forced `Body_Hulk` appearance
 - [x] Add the custom `SG1_JaffaPhysiology` gene
 - [x] Preserve visual body-type variation
-- [x] Add a temporary `+15` carrying capacity effect
-- [ ] Test Jaffa body-shape variation in RimWorld 1.6
-- [ ] Confirm that `SG1_JaffaPhysiology` appears without XML errors
+- [x] Add a temporary `+15` carrying-capacity effect
+
+## 0.1.3-dev — Jaffa longevity
+- [x] Add `SG1_JaffaLongevity`
+- [x] Set `LifespanFactor` to `1.5`
+- [x] Add the gene to `SG1_Jaffa`
+- [ ] Verify the `Jaffa longevity` gene in RimWorld 1.6
+- [ ] Confirm the displayed lifespan factor is `150%`
 
 ## First playable content
 - [ ] Create the Goa'uld faction
@@ -36,7 +39,7 @@
 - [ ] Prototype Goa'uld host xenotype
 - [ ] Prototype Tok'ra host xenotype
 - [ ] Implement Jaffa symbiote dependency
-- [ ] Replace prototypes with a dedicated symbiote system when needed
+- [ ] Move Jaffa longevity to the dedicated symbiote system if appropriate
 
 ### Appearance tuning
 - [ ] Observe generated Jaffa body-type distribution in game

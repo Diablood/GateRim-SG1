@@ -19,42 +19,26 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.2-dev — Jaffa physiology refinement
+### 0.1.3-dev — Jaffa longevity
 
-The Jaffa prototype no longer forces every pawn to use RimWorld's visible Hulk body type.
+The Jaffa prototype now includes slowed aging:
 
-- `Body_Hulk` removed from `SG1_Jaffa`
-- `SG1_JaffaPhysiology` custom gene added
-- Physical enhancement represented without a cosmetic body lock
-- Temporary balance effect: `+15` carrying capacity
-- Existing melee, resilience and immunity genes preserved
-- Symbiote dependency intentionally deferred to a dedicated system
+- `SG1_JaffaLongevity` custom gene added
+- Lifespan expectancy factor: `150%`
+- Age-related health conditions delayed through `LifespanFactor`
+- Symbiote dependency still deferred to a dedicated system
+- Previous Jaffa physique refinement preserved: no forced Hulk body shape
 
 ## First playable milestone
 
-The first playable milestone focuses on a small, testable Goa'uld and Jaffa foundation:
-
 - [x] Jaffa xenotype foundation
 - [x] Jaffa physiology gene without forced Hulk body shape
+- [x] Jaffa longevity at 150% lifespan expectancy
 - [ ] Goa'uld faction
 - [ ] Basic Jaffa warrior and guard pawn kinds
 - [ ] Ma'Tok staff weapon
 - [ ] Zat'nik'tel
 - [ ] Generic Jaffa armor
-
-## Directory layout
-
-```text
-GateRim-SG1/
-├── About/
-├── 1.6/
-│   ├── Defs/
-│   └── Patches/
-├── Languages/
-├── Textures/
-├── Source/
-└── docs/
-```
 
 ## Development notes
 

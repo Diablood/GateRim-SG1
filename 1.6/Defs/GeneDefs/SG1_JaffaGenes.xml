@@ -22,4 +22,27 @@ Carriers possess the enhanced physical baseline associated with Jaffa warriors. 
             <CarryingCapacity>15</CarryingCapacity>
         </statOffsets>
     </GeneDef>
+
+    <!--
+        Prototype representation of the slowed aging granted by a Jaffa
+        symbiote. This gene can later be replaced or driven by the dedicated
+        symbiote Hediff system.
+    -->
+    <GeneDef>
+        <defName>SG1_JaffaLongevity</defName>
+        <label>Jaffa longevity</label>
+        <description>
+Carriers age more slowly and develop age-related health conditions later in life. For Jaffa, this effect represents the long-term biological support provided by an immature Goa'uld symbiote.
+        </description>
+        <!-- Temporary vanilla icon until dedicated GateRim gene artwork is added. -->
+        <iconPath>UI/Icons/Genes/Gene_Ageless</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>701</displayOrderInCategory>
+        <biostatMet>0</biostatMet>
+        <biostatCpx>1</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+        <statFactors>
+            <LifespanFactor>1.5</LifespanFactor>
+        </statFactors>
+    </GeneDef>
 </Defs>

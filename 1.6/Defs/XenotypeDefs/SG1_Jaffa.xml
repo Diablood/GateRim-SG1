@@ -13,7 +13,7 @@
         <defName>SG1_Jaffa</defName>
         <label>Jaffa</label>
         <description>
-Jaffa are human warriors altered to carry an immature Goa'uld symbiote. Their enhanced strength, resilience and immune response make them formidable soldiers. Their physical advantages do not impose a single visible body shape. This initial xenotype is a gameplay foundation; symbiote dependency will be implemented separately.
+Jaffa are human warriors altered to carry an immature Goa'uld symbiote. Their enhanced strength, resilience, immune response and slower aging make them formidable soldiers. Their physical advantages do not impose a single visible body shape. This initial xenotype is a gameplay foundation; symbiote dependency will be implemented separately.
         </description>
         <descriptionShort>Human warriors enhanced by an immature Goa'uld symbiote.</descriptionShort>
         <!-- Temporary vanilla icon until dedicated Jaffa artwork is added. -->
@@ -22,6 +22,7 @@ Jaffa are human warriors altered to carry an immature Goa'uld symbiote. Their en
         <combatPowerFactor>1.4</combatPowerFactor>
         <genes>
             <li>SG1_JaffaPhysiology</li>
+            <li>SG1_JaffaLongevity</li>
             <li>AptitudeStrong_Melee</li>
             <li>Immunity_Strong</li>
             <li>MeleeDamage_Strong</li>
