@@ -9,6 +9,7 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Package ID: `diablood.gaterimsg1`
 - C# namespace: `GateRimSG1`
 - Repository: `https://github.com/Diablood/GateRim-SG1`
+- Player wiki: `https://github.com/Diablood/GateRim-SG1/wiki`
 - Required DLC for the current development branch: `Biotech`
 
 ## Initial development branch
@@ -19,15 +20,15 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.5-dev — First in-game log fixes
+### 0.1.6-dev — Player wiki drafts
 
-The first `Player.log` review identified and corrected several GateRim issues:
+The main repository now stores versioned player-wiki drafts under:
 
-- Remove leading and trailing whitespace from the Jaffa xenotype description.
-- Normalize French `DefInjected` values to avoid leading and trailing whitespace.
-- Replace the missing vanilla physiology icon path with a local GateRim placeholder.
-- Keep the original `About/ModIcon.png` untouched.
-- Document an isolated test procedure for third-party gene-category conflicts.
+```text
+docs/wiki/
+```
+
+The GitHub wiki repository remains separate and can receive stabilized pages from these drafts.
 
 ## First playable milestone
 
@@ -36,7 +37,8 @@ The first `Player.log` review identified and corrected several GateRim issues:
 - [x] Jaffa longevity at 150% lifespan expectancy
 - [x] French translations for stabilized Jaffa content
 - [x] First in-game log correction pass
-- [ ] Goa'uld faction
+- [x] Player wiki foundation
+- [ ] Goa'uld host foundation
 - [ ] Basic Jaffa warrior and guard pawn kinds
 - [ ] Ma'Tok staff weapon
 - [ ] Zat'nik'tel
@@ -50,5 +52,7 @@ The first `Player.log` review identified and corrected several GateRim issues:
 - Keep English in `Defs`.
 - Add French `DefInjected` translations as soon as a content batch is stabilized.
 - Use bilingual `Keyed` files for future UI messages and C# strings.
+- Keep versioned player-wiki drafts under `docs/wiki/`.
+- Publish stabilized wiki pages to the separate `GateRim-SG1.wiki` repository.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.

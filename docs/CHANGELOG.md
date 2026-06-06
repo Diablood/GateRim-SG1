@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.6-dev
+- Add versioned player-wiki drafts under `docs/wiki/`.
+- Add initial player pages for setup, content status, Jaffa, Goa'uld and symbiotes.
+- Add `_Sidebar.md` and `_Footer.md` for the GitHub wiki.
+- Document the publication workflow for the separate `GateRim-SG1.wiki` repository.
+- Add the GitHub wiki link to the main README.
+
 ## 0.1.5-dev
 - Remove leading and trailing whitespace from the `SG1_Jaffa` description.
 - Normalize French `DefInjected` values to prevent unintended whitespace.

@@ -23,45 +23,46 @@
 - [x] Add the gene to `SG1_Jaffa`
 
 ## 0.1.4-dev — French Jaffa translations
-- [x] Add French `DefInjected` translations for `SG1_Jaffa`
-- [x] Add French `DefInjected` translations for `SG1_JaffaPhysiology`
-- [x] Add French `DefInjected` translations for `SG1_JaffaLongevity`
+- [x] Add French `DefInjected` translations for the stabilized Jaffa content
 - [x] Document the localization workflow
 
 ## 0.1.5-dev — First in-game log fixes
-- [x] Remove leading and trailing whitespace from the Jaffa xenotype description
-- [x] Normalize French `DefInjected` text values
-- [x] Replace the missing `Gene_Robust` texture path
+- [x] Normalize descriptions and translated values
 - [x] Add a local placeholder icon for `SG1_JaffaPhysiology`
-- [x] Document isolated testing with `Core`, `Biotech`, and `GateRim SG-1`
-- [ ] Confirm the corrected log no longer reports GateRim whitespace errors
-- [ ] Generate the French translation report if translation errors remain
-- [ ] Confirm the physiology icon loads correctly
+- [x] Validate the visual result in RimWorld
 
-## First playable content
-- [ ] Create the Goa'uld faction
-- [ ] Add a basic Jaffa warrior
-- [ ] Add an elite Jaffa guard
-- [ ] Add the Ma'Tok staff weapon
-- [ ] Add the Zat'nik'tel
-- [ ] Add generic Jaffa armor
-- [ ] Test faction generation and raids
+## 0.1.6-dev — Player wiki foundation
+- [x] Create versioned wiki drafts under `docs/wiki/`
+- [x] Add player-facing Jaffa documentation
+- [x] Add planned Goa'uld and symbiote pages
+- [x] Add wiki sidebar and footer
+- [x] Add publication instructions for the separate wiki repository
+- [ ] Publish the stabilized drafts to `GateRim-SG1.wiki`
+
+## Next functional milestone
+- [ ] Add the Goa'uld host foundation
+- [ ] Add French translations for the stabilized Goa'uld host prototype
+- [ ] Document the implemented host prototype in the wiki
 
 ## Later milestones
 
 ### Symbiotes
-- [ ] Prototype Goa'uld host xenotype
-- [ ] Prototype Tok'ra host xenotype
+- [ ] Add a free Goa'uld symbiote entity
+- [ ] Add forced implantation
+- [ ] Add ritual implantation
+- [ ] Add transfer between hosts
+- [ ] Add Tok'ra extraction
 - [ ] Implement Jaffa symbiote dependency
-- [ ] Move Jaffa longevity to the dedicated symbiote system if appropriate
+- [ ] Add tretonin
 
-### Appearance tuning
-- [ ] Observe generated Jaffa body-type distribution in game
-- [ ] Decide whether weighted body-type generation requires C# logic
-
-### Additional factions
-- [ ] Free Jaffa Nation
-- [ ] Tok'ra resistance
-- [ ] Unas tribes
-- [ ] Asgard quest faction
-- [ ] Replicator swarm
+### Factions and equipment
+- [ ] Create the Goa'uld System Lords faction
+- [ ] Add Jaffa pawn kinds
+- [ ] Add Ma'Tok staff weapon
+- [ ] Add Zat'nik'tel
+- [ ] Add generic Jaffa armor
+- [ ] Add Free Jaffa Nation
+- [ ] Add Tok'ra resistance
+- [ ] Add Unas tribes
+- [ ] Add Asgard quest faction
+- [ ] Add Replicator swarm
