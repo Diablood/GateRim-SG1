@@ -39,6 +39,13 @@
 - [ ] Re-run the minimal RimWorld test
 - [ ] Confirm that `Player.log` no longer reports the `wildness` XML error
 
+## 0.1.10-dev — Add Windows wiki synchronization helper
+- [x] Add `tools/sync-wiki.ps1`
+- [x] Add `tools/sync-wiki.cmd`
+- [x] Preserve the Bash helper
+- [x] Document Windows PowerShell and Bash usage
+- [ ] Validate `.\tools\sync-wiki.cmd` from the Windows Cursor terminal
+
 ## Next symbiote milestones
 - [ ] Add a recent-implantation Hediff
 - [ ] Add forced implantation

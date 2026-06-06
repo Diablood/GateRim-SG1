@@ -20,16 +20,15 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.9-dev — Fix free Goa'uld symbiote XML
+### 0.1.10-dev — Add Windows wiki synchronization helper
 
-The free Goa'uld symbiote prototype has received its first XML correction after source review:
+The wiki synchronization workflow now includes Windows-friendly commands:
 
-- Remove the invalid `<wildness>` field from `RaceProperties`
-- Preserve `SG1_GoauldSymbiote` as a developer-mode test pawn
-- Preserve the weak bite attack and temporary local sprite
-- Preserve French `DefInjected` translations
-- Keep natural biome spawning disabled by the absence of biome entries
-- No player-wiki publication required for this maintenance-only correction
+- Add `tools/sync-wiki.ps1` for PowerShell
+- Add `tools/sync-wiki.cmd` as the recommended Windows wrapper
+- Preserve `tools/sync-wiki.sh` for Bash environments
+- Keep wiki pages copied directly to the root of `GateRim-SG1.wiki`
+- No player-wiki content publication required for this maintenance-only correction
 
 Forced implantation, ritual implantation and host transfer remain later C# milestones.
 
@@ -58,6 +57,6 @@ Forced implantation, ritual implantation and host transfer remain later C# miles
 - Use bilingual `Keyed` files for future UI messages and C# strings.
 - Keep versioned player-wiki drafts under `docs/wiki/`.
 - Publish wiki pages directly at the root of the separate `GateRim-SG1.wiki` repository.
-- Use `./tools/sync-wiki.sh` to synchronize wiki drafts safely.
+- Use `./tools/sync-wiki.sh` from Bash or `.\tools\sync-wiki.cmd` from Windows PowerShell to synchronize wiki drafts safely.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.

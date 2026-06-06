@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.10-dev
+- Add `tools/sync-wiki.ps1` for Windows PowerShell.
+- Add `tools/sync-wiki.cmd` as the recommended Windows wrapper.
+- Preserve `tools/sync-wiki.sh` for Bash environments.
+- Document cross-platform wiki synchronization commands.
+- Keep published wiki pages at the root of `GateRim-SG1.wiki`.
+
 ## 0.1.9-dev
 - Remove the invalid `<wildness>` field from the free Goa'uld symbiote `RaceProperties`.
 - Keep developer-mode spawning as the isolated test method.

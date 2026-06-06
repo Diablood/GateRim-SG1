@@ -42,19 +42,37 @@ Every player-facing page should contain one of these statuses:
 
 Add the introduction version when relevant.
 
-## Recommended synchronization command
+## Recommended synchronization command on Windows
 
-From the main repository:
+From the main repository in a PowerShell terminal:
+
+```powershell
+.\tools\sync-wiki.cmd
+```
+
+The `.cmd` wrapper launches the PowerShell script with a local execution-policy bypass.
+
+You can also run the PowerShell script directly when scripts are allowed:
+
+```powershell
+.\tools\sync-wiki.ps1
+```
+
+## Recommended synchronization command on Git Bash, Linux or macOS
 
 ```bash
 ./tools/sync-wiki.sh
 ```
 
-The script copies `docs/wiki/.` directly into the root of the sibling `GateRim-SG1.wiki` repository.
-
-## Manual equivalent
+## Manual equivalent on Windows PowerShell
 
 Run from the parent directory containing both repositories:
+
+```powershell
+Copy-Item -Path ".\GateRim-SG1\docs\wiki\*" -Destination ".\GateRim-SG1.wiki\" -Recurse -Force
+```
+
+## Manual equivalent on Bash
 
 ```bash
 cp -R GateRim-SG1/docs/wiki/. GateRim-SG1.wiki/
