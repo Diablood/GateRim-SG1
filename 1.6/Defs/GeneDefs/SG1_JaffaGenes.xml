@@ -8,11 +8,9 @@
     <GeneDef>
         <defName>SG1_JaffaPhysiology</defName>
         <label>Jaffa physiology</label>
-        <description>
-Carriers possess the enhanced physical baseline associated with Jaffa warriors. Their strength is not tied to a single visible body shape: a Jaffa can be broad, average-built or lean while still benefiting from the biological support of an immature Goa'uld symbiote.
-        </description>
-        <!-- Temporary vanilla icon until dedicated GateRim gene artwork is added. -->
-        <iconPath>UI/Icons/Genes/Gene_Robust</iconPath>
+        <description>Carriers possess the enhanced physical baseline associated with Jaffa warriors. Their strength is not tied to a single visible body shape: a Jaffa can be broad, average-built or lean while still benefiting from the biological support of an immature Goa'uld symbiote.</description>
+        <!-- Temporary GateRim placeholder until dedicated gene artwork is added. -->
+        <iconPath>UI/Genes/SG1_JaffaPhysiology</iconPath>
         <displayCategory>Miscellaneous</displayCategory>
         <displayOrderInCategory>700</displayOrderInCategory>
         <biostatMet>-1</biostatMet>
@@ -31,9 +29,7 @@ Carriers possess the enhanced physical baseline associated with Jaffa warriors. 
     <GeneDef>
         <defName>SG1_JaffaLongevity</defName>
         <label>Jaffa longevity</label>
-        <description>
-Carriers age more slowly and develop age-related health conditions later in life. For Jaffa, this effect represents the long-term biological support provided by an immature Goa'uld symbiote.
-        </description>
+        <description>Carriers age more slowly and develop age-related health conditions later in life. For Jaffa, this effect represents the long-term biological support provided by an immature Goa'uld symbiote.</description>
         <!-- Temporary vanilla icon until dedicated GateRim gene artwork is added. -->
         <iconPath>UI/Icons/Genes/Gene_Ageless</iconPath>
         <displayCategory>Miscellaneous</displayCategory>

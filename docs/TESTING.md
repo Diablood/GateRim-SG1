@@ -1,0 +1,38 @@
+# Testing workflow
+
+## Minimal isolated test
+
+Use this active mod list first:
+
+```text
+Core
+Biotech
+GateRim SG-1
+```
+
+This isolates GateRim definitions from unrelated third-party gene categories and patches.
+
+## Jaffa foundation checklist
+
+1. Start RimWorld with the minimal isolated mod list.
+2. Open the xenotype editor.
+3. Confirm that the editor opens without exceptions.
+4. Load the premade `Jaffa` xenotype.
+5. Confirm that `Jaffa physiology` displays a texture.
+6. Confirm that `Jaffa longevity` displays a `150%` lifespan factor.
+7. Switch to French and verify the translated labels and descriptions.
+8. Close the game and inspect `Player.log`.
+
+## Interpreting the first external test log
+
+The first external log contained two categories of issues:
+
+### GateRim issues corrected in 0.1.5-dev
+- Leading and trailing whitespace in the Jaffa xenotype description.
+- French translation values formatted across multiple lines.
+- Missing `UI/Icons/Genes/Gene_Robust` texture.
+
+### Third-party compatibility issue to isolate separately
+- `KeyNotFoundException` for a gene category named `Ability`.
+
+The `Ability` category is not declared by the current GateRim definitions. Re-run the minimal isolated test before investigating loaded third-party mods.

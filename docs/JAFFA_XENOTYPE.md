@@ -23,20 +23,15 @@ The vanilla `Body_Hulk` gene remains excluded because it restricts the visible b
 | `SG1_JaffaPhysiology` | `CarryingCapacity +15` | Physical baseline without forced Hulk appearance |
 | `SG1_JaffaLongevity` | `LifespanFactor ×1.5` | Slower aging and later onset of age-related conditions |
 
-## Current xenotype gene set
+## Temporary artwork
 
-| Gene | Purpose |
-|---|---|
-| `SG1_JaffaPhysiology` | Strength baseline without forced Hulk appearance |
-| `SG1_JaffaLongevity` | 150% lifespan expectancy |
-| `AptitudeStrong_Melee` | Military melee training approximation |
-| `Immunity_Strong` | Improved immune response |
-| `MeleeDamage_Strong` | Increased close-combat lethality |
-| `Pain_Reduced` | Better combat endurance |
-| `Robust` | Reduced incoming damage |
-| `WoundHealing_Fast` | Accelerated recovery |
-| `Superclotting` | Reduced bleeding risk |
-| `StrongStomach` | Increased digestive resilience |
+`SG1_JaffaPhysiology` currently uses:
+
+```text
+Textures/UI/Genes/SG1_JaffaPhysiology.png
+```
+
+This is a local placeholder copied from the project icon to guarantee a valid texture path during development. Dedicated gene artwork will replace it later.
 
 ## Intentional limitations
 
@@ -59,5 +54,6 @@ The longevity gene is a temporary XML representation. It may later be attached t
 4. Confirm that `Jaffa` appears in the xenotype list.
 5. Confirm that `Jaffa physiology` and `Jaffa longevity` appear among its genes.
 6. Confirm that lifespan expectancy is displayed as `150%`.
-7. Generate several Jaffa pawns and verify that they are not all visually Hulk-bodied.
-8. Check the `Player.log` for XML errors mentioning `SG1_Jaffa`, `SG1_JaffaPhysiology` or `SG1_JaffaLongevity`.
+7. Confirm that `Jaffa physiology` displays its temporary icon.
+8. Generate several Jaffa pawns and verify that they are not all visually Hulk-bodied.
+9. Check the `Player.log` for XML errors mentioning `SG1_Jaffa`, `SG1_JaffaPhysiology` or `SG1_JaffaLongevity`.

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_JaffaPhysiology.label>physiologie jaffa</SG1_JaffaPhysiology.label>
-    <SG1_JaffaPhysiology.description>
-Les porteurs disposent des capacités physiques améliorées caractéristiques des guerriers jaffa. Leur force n'est pas liée à une morphologie visible unique : un Jaffa peut être massif, de corpulence moyenne ou plus mince tout en bénéficiant du soutien biologique d'un symbiote Goa'uld immature.
-    </SG1_JaffaPhysiology.description>
-
+    <SG1_JaffaPhysiology.description>Les porteurs disposent des capacités physiques améliorées caractéristiques des guerriers jaffa. Leur force n'est pas liée à une morphologie visible unique : un Jaffa peut être massif, de corpulence moyenne ou plus mince tout en bénéficiant du soutien biologique d'un symbiote Goa'uld immature.</SG1_JaffaPhysiology.description>
     <SG1_JaffaLongevity.label>longévité jaffa</SG1_JaffaLongevity.label>
-    <SG1_JaffaLongevity.description>
-Les porteurs vieillissent plus lentement et développent plus tardivement les problèmes de santé liés à l'âge. Chez les Jaffa, cet effet représente le soutien biologique à long terme fourni par un symbiote Goa'uld immature.
-    </SG1_JaffaLongevity.description>
+    <SG1_JaffaLongevity.description>Les porteurs vieillissent plus lentement et développent plus tardivement les problèmes de santé liés à l'âge. Chez les Jaffa, cet effet représente le soutien biologique à long terme fourni par un symbiote Goa'uld immature.</SG1_JaffaLongevity.description>
 </LanguageData>

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5-dev
+- Remove leading and trailing whitespace from the `SG1_Jaffa` description.
+- Normalize French `DefInjected` values to prevent unintended whitespace.
+- Replace the unresolved `UI/Icons/Genes/Gene_Robust` path.
+- Add a local temporary icon for `SG1_JaffaPhysiology`.
+- Document minimal isolated testing and the third-party `Ability` category conflict.
+
 ## 0.1.4-dev
 - Add French `DefInjected` translations for `SG1_Jaffa`.
 - Add French `DefInjected` translations for `SG1_JaffaPhysiology`.

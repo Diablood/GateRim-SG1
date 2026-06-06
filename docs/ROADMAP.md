@@ -27,8 +27,16 @@
 - [x] Add French `DefInjected` translations for `SG1_JaffaPhysiology`
 - [x] Add French `DefInjected` translations for `SG1_JaffaLongevity`
 - [x] Document the localization workflow
-- [ ] Verify the Jaffa xenotype display in French
-- [ ] Verify the Jaffa xenotype display in English
+
+## 0.1.5-dev — First in-game log fixes
+- [x] Remove leading and trailing whitespace from the Jaffa xenotype description
+- [x] Normalize French `DefInjected` text values
+- [x] Replace the missing `Gene_Robust` texture path
+- [x] Add a local placeholder icon for `SG1_JaffaPhysiology`
+- [x] Document isolated testing with `Core`, `Biotech`, and `GateRim SG-1`
+- [ ] Confirm the corrected log no longer reports GateRim whitespace errors
+- [ ] Generate the French translation report if translation errors remain
+- [ ] Confirm the physiology icon loads correctly
 
 ## First playable content
 - [ ] Create the Goa'uld faction

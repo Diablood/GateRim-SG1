@@ -19,22 +19,15 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.4-dev — French Jaffa translations
+### 0.1.5-dev — First in-game log fixes
 
-The stabilized Jaffa foundation now includes French `DefInjected` translations:
+The first `Player.log` review identified and corrected several GateRim issues:
 
-- `SG1_Jaffa`
-- `SG1_JaffaPhysiology`
-- `SG1_JaffaLongevity`
-
-English remains embedded directly in the functional `Defs`.
-French translations are maintained in parallel under:
-
-```text
-Languages/French/DefInjected/
-```
-
-Future UI messages and C# strings will use bilingual `Keyed` files.
+- Remove leading and trailing whitespace from the Jaffa xenotype description.
+- Normalize French `DefInjected` values to avoid leading and trailing whitespace.
+- Replace the missing vanilla physiology icon path with a local GateRim placeholder.
+- Keep the original `About/ModIcon.png` untouched.
+- Document an isolated test procedure for third-party gene-category conflicts.
 
 ## First playable milestone
 
@@ -42,6 +35,7 @@ Future UI messages and C# strings will use bilingual `Keyed` files.
 - [x] Jaffa physiology gene without forced Hulk body shape
 - [x] Jaffa longevity at 150% lifespan expectancy
 - [x] French translations for stabilized Jaffa content
+- [x] First in-game log correction pass
 - [ ] Goa'uld faction
 - [ ] Basic Jaffa warrior and guard pawn kinds
 - [ ] Ma'Tok staff weapon

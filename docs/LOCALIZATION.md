@@ -5,6 +5,7 @@
 - Keep English labels and descriptions directly in functional `Defs`.
 - Add French translations in parallel once a functional content batch is stable.
 - Use `Languages/French/DefInjected/<DefType>/...` for translated `Def` fields.
+- Keep translated XML values inline when possible to prevent unintended leading or trailing whitespace.
 - Use `Languages/English/Keyed/...` and `Languages/French/Keyed/...` for future UI messages, C# strings and non-Def text.
 - Perform a global language pass before Steam Workshop publication.
 
@@ -36,3 +37,4 @@ Languages/
 4. Confirm that the xenotype label, description and short description are translated.
 5. Confirm that `physiologie jaffa` and `longévité jaffa` are translated.
 6. Check `Player.log` for translation-key or XML errors.
+7. Generate the translation report if the game still reports French translation errors.
