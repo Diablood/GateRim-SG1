@@ -1,0 +1,25 @@
+# Build output
+bin/
+obj/
+[Bb]uild/
+[Dd]ist/
+*.dll
+*.pdb
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Cursor
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# RimWorld local and workshop artifacts
+About/PublishedFileId.txt
+*.zip
