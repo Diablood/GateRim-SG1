@@ -19,14 +19,15 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.1-dev — Jaffa xenotype foundation
+### 0.1.2-dev — Jaffa physiology refinement
 
-The first xenotype prototype is now defined:
+The Jaffa prototype no longer forces every pawn to use RimWorld's visible Hulk body type.
 
-- `SG1_Jaffa`
-- Non-inheritable Biotech xenotype
-- Vanilla-gene-based initial balance
-- Temporary vanilla xenotype icon pending dedicated Jaffa artwork
+- `Body_Hulk` removed from `SG1_Jaffa`
+- `SG1_JaffaPhysiology` custom gene added
+- Physical enhancement represented without a cosmetic body lock
+- Temporary balance effect: `+15` carrying capacity
+- Existing melee, resilience and immunity genes preserved
 - Symbiote dependency intentionally deferred to a dedicated system
 
 ## First playable milestone
@@ -34,6 +35,7 @@ The first xenotype prototype is now defined:
 The first playable milestone focuses on a small, testable Goa'uld and Jaffa foundation:
 
 - [x] Jaffa xenotype foundation
+- [x] Jaffa physiology gene without forced Hulk body shape
 - [ ] Goa'uld faction
 - [ ] Basic Jaffa warrior and guard pawn kinds
 - [ ] Ma'Tok staff weapon

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Jaffa physiology is intentionally independent from RimWorld body types.
+        It represents increased physical capability without forcing the Hulk
+        visual body shape on every Jaffa pawn.
+    -->
+    <GeneDef>
+        <defName>SG1_JaffaPhysiology</defName>
+        <label>Jaffa physiology</label>
+        <description>
+Carriers possess the enhanced physical baseline associated with Jaffa warriors. Their strength is not tied to a single visible body shape: a Jaffa can be broad, average-built or lean while still benefiting from the biological support of an immature Goa'uld symbiote.
+        </description>
+        <!-- Temporary vanilla icon until dedicated GateRim gene artwork is added. -->
+        <iconPath>UI/Icons/Genes/Gene_Robust</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>700</displayOrderInCategory>
+        <biostatMet>-1</biostatMet>
+        <biostatCpx>1</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+        <statOffsets>
+            <CarryingCapacity>15</CarryingCapacity>
+        </statOffsets>
+    </GeneDef>
+</Defs>

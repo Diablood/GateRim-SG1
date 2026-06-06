@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2-dev
+- Remove the forced `Body_Hulk` gene from `SG1_Jaffa`.
+- Add the custom `SG1_JaffaPhysiology` gene.
+- Add a temporary `+15` carrying-capacity effect without imposing a visible body shape.
+- Document future weighted body-type generation tuning.
+
 ## 0.1.1-dev
 - Add the `SG1_Jaffa` prototype xenotype.
 - Declare the Biotech dependency.
