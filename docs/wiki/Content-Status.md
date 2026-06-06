@@ -14,15 +14,16 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
 | Traductions françaises du lot Jaffa | Implémenté | 0.1.4-dev |
 | Fondation du wiki joueur | Implémenté | 0.1.6-dev |
-| Xenotype `hôte Goa'uld` | Prototype à tester | 0.1.7-dev |
+| Xenotype `hôte Goa'uld` | Prototype testable | 0.1.7-dev |
 | Naquadah dans le sang | Marqueur prototype | 0.1.7-dev |
-| Longévité de l'hôte Goa'uld à 500 % | Prototype à tester | 0.1.7-dev |
+| Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
+| Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
 
 ## Prévu
 
 | Élément | État |
 |---|---|
-| Symbiotes Goa'uld libres | Prévu |
+| État d'implantation récent | Prévu |
 | Implantation rituelle | Prévu |
 | Attaque sauvage d'un symbiote | Prévu |
 | Transfert entre hôtes | Prévu |

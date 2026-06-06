@@ -1,13 +1,14 @@
 # Symbiotes
 
-> Statut : Prévu  
-> Première fondation XML : 0.1.7-dev
+> Statut : Prototype  
+> Première fondation XML : 0.1.7-dev  
+> Symbiote libre : 0.1.8-dev
 
 ## Vue d'ensemble
 
-Les symbiotes sont une mécanique centrale de GateRim SG-1. Le prototype actuel représente uniquement un humanoïde déjà possédé par un Goa'uld adulte.
+Les symbiotes sont une mécanique centrale de GateRim SG-1.
 
-Plusieurs variantes partageront ensuite une base commune, mais leurs relations avec leurs hôtes resteront différentes.
+Plusieurs variantes partageront une base commune, mais leurs relations avec leurs hôtes resteront différentes.
 
 | Type | Hôte | Relation prévue |
 |---|---|---|
@@ -29,7 +30,9 @@ Symbiote libre ou nouvel hôte
 
 ## État actuel
 
-Depuis `0.1.7-dev`, le xenotype `hôte Goa'uld` permet de tester un pawn déjà possédé. La créature libre et les transitions du cycle ne sont pas encore implémentées.
+Depuis `0.1.7-dev`, le xenotype `hôte Goa'uld` permet de tester un pawn déjà possédé.
+
+Depuis `0.1.8-dev`, le pawn `symbiote Goa'uld` permet de tester l'organisme libre en mode développeur. Il dispose d'une apparence temporaire, de déplacements et d'une faible morsure. Il n'apparaît pas naturellement dans les biomes.
 
 ## Éléments de gameplay prévus
 

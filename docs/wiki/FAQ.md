@@ -17,7 +17,16 @@ Non. Elle est prévue pour un lot ultérieur avec la trétonine et les conséque
 
 ## Les Goa'uld sont-ils déjà disponibles ?
 
-Un prototype d'hôte déjà implanté est disponible dans l'éditeur de xenotype depuis `0.1.7-dev`. Le symbiote libre, l'attaque sauvage et l'implantation rituelle restent prévus pour de futurs lots.
+Deux prototypes existent :
+
+- un xenotype représentant un hôte déjà implanté ;
+- un symbiote libre générable en mode développeur.
+
+L'implantation sauvage, le rituel et le transfert restent prévus pour de futurs lots.
+
+## Le symbiote libre apparaît-il naturellement ?
+
+Non. Dans `0.1.8-dev`, il est volontairement exclu des biomes et doit être généré en mode développeur pour les tests.
 
 ## Pourquoi la longévité d'un hôte Goa'uld est-elle fixée à 500 % ?
 

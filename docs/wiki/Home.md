@@ -9,16 +9,16 @@ Bienvenue dans le wiki joueur de **GateRim SG-1**, un mod Stargate SG-1 pour Rim
 
 Ce wiki présente les races, factions, objets, événements et mécaniques particulières ajoutés par le mod. Il distingue clairement le contenu déjà disponible du contenu encore en développement.
 
-## Contenu actuellement jouable
+## Contenu actuellement testable
 
 - [Jaffa](Jaffa) : xenotype prototype disponible.
-- [Goa'uld](Goauld) : prototype d'hôte déjà implanté disponible dans l'éditeur de xenotype.
+- [Goa'uld](Goauld) : prototype d'hôte déjà implanté et symbiote libre testable en mode développeur.
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
-- [État du contenu](Content-Status) : liste des fonctionnalités implémentées, en prototype ou prévues.
+- [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur les [symbiotes](Symbiotes) Goa'uld libres, leur implantation et leur transfert entre plusieurs hôtes.
+Les prochains lots porteront sur l'état d'implantation récent, l'attaque forcée et le transfert du symbiote entre plusieurs hôtes.
 
 ## Liens utiles
 

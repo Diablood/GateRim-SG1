@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.8-dev
+- Add the XML-only `SG1_GoauldSymbiote` animal-style pawn prototype.
+- Add a weak bite attack and disable natural biome spawning.
+- Add a temporary local sprite for the free symbiote.
+- Add French `DefInjected` translations.
+- Update player-wiki drafts for the free-symbiote prototype.
+- Add `tools/sync-wiki.sh` to publish drafts directly at the wiki-repository root.
+
 ## 0.1.7-dev
 - Add the XML-only `SG1_GoauldHost` xenotype prototype.
 - Add the `SG1_NaquadahBlood` marker gene.

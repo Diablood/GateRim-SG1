@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_GoauldSymbiote.label>symbiote Goa'uld</SG1_GoauldSymbiote.label>
+    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Dans ce prototype, il s'agit d'une petite créature vulnérable pouvant être générée pour les tests. De futurs jalons lui permettront d'attaquer une cible humanoïde, de commencer un processus d'implantation et de prendre le contrôle d'un hôte compatible.</SG1_GoauldSymbiote.description>
+    <SG1_GoauldSymbiote.tools.0.label>morsure</SG1_GoauldSymbiote.tools.0.label>
+</LanguageData>

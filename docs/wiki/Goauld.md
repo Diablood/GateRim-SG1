@@ -1,21 +1,21 @@
 # Goa'uld
 
 > Statut : Prototype  
-> Version d'introduction : 0.1.7-dev
+> Première fondation : 0.1.7-dev
 
 ## Présentation
 
 Les Goa'uld sont des symbiotes parasites capables de prendre le contrôle d'un hôte humanoïde. Contrairement à un simple xenotype, le système final devra traiter le Goa'uld comme un organisme distinct pouvant entrer dans un hôte, le quitter et éventuellement être transféré.
 
-## Prototype actuel
+## Prototypes actuels
 
-La première version ajoute un xenotype représentant un humanoïde **déjà implanté** :
+### Hôte déjà implanté
+
+Le xenotype suivant permet de tester les effets biologiques d'un hôte déjà possédé :
 
 ```text
 hôte Goa'uld
 ```
-
-Ce prototype permet de tester les principaux effets biologiques avant de développer la possession dynamique.
 
 | Particularité | Effet actuel |
 |---|---|
@@ -26,15 +26,21 @@ Ce prototype permet de tester les principaux effets biologiques avant de dévelo
 | Résistance physique | Meilleure tolérance au combat |
 | Force | Dégâts de mêlée améliorés |
 
-## Pourquoi 500 % ?
+### Symbiote libre
 
-Cette valeur est provisoire. Elle représente la longévité fortement accrue d'un hôte standard sans considérer chaque Goa'uld comme immortel. Les sarcophages et les Grands Maîtres nommés seront équilibrés séparément.
+Depuis `0.1.8-dev`, un symbiote adulte sans hôte peut être généré en mode développeur :
+
+```text
+symbiote Goa'uld
+```
+
+Il s'agit actuellement d'une petite créature vulnérable disposant uniquement d'une faible morsure. Sa véritable menace viendra ultérieurement de sa capacité à s'implanter dans une cible humanoïde.
 
 ## Ce qui n'est pas encore implémenté
 
-- symbiote autonome sur la carte ;
-- attaque sauvage ;
+- attaque sauvage d'implantation ;
 - implantation rituelle ;
+- période critique après infestation ;
 - prise de contrôle dynamique ;
 - extraction ;
 - transfert entre plusieurs hôtes ;

@@ -19,11 +19,16 @@ Versioned wiki drafts live in:
 GateRim-SG1/docs/wiki/
 ```
 
-Player-facing pages published on GitHub live in the separate repository:
+Published player-facing pages live directly at the root of the separate repository:
 
 ```text
 GateRim-SG1.wiki/
+├── Home.md
+├── _Sidebar.md
+└── ...
 ```
+
+Do not create a `wiki/` subdirectory inside `GateRim-SG1.wiki/`.
 
 ## Status labels
 
@@ -37,20 +42,22 @@ Every player-facing page should contain one of these statuses:
 
 Add the introduction version when relevant.
 
-## Publish all stabilized drafts
+## Recommended synchronization command
+
+From the main repository:
+
+```bash
+./tools/sync-wiki.sh
+```
+
+The script copies `docs/wiki/.` directly into the root of the sibling `GateRim-SG1.wiki` repository.
+
+## Manual equivalent
 
 Run from the parent directory containing both repositories:
 
 ```bash
 cp -R GateRim-SG1/docs/wiki/. GateRim-SG1.wiki/
-```
-
-Then commit inside `GateRim-SG1.wiki`.
-
-## Publish a single page
-
-```bash
-cp GateRim-SG1/docs/wiki/Jaffa.md GateRim-SG1.wiki/Jaffa.md
 ```
 
 ## Versioning policy

@@ -29,6 +29,14 @@ Le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
 2. Vérifie la présence des gènes `naquadah dans le sang` et `longévité de l'hôte Goa'uld`.
 3. Vérifie que l'espérance de vie indiquée est de `500 %`.
 
+## Vérifier le symbiote libre
+
+1. Active le mode développeur.
+2. Ouvre les actions de débogage.
+3. Utilise l'action de génération d'un pawn.
+4. Sélectionne `symbiote Goa'uld`.
+5. Vérifie son apparence, ses déplacements et sa faible attaque de morsure.
+
 ## Important
 
-Le Goa'uld autonome, son attaque sauvage, son implantation rituelle et son transfert entre plusieurs hôtes ne sont pas encore actifs. Consulte [État du contenu](Content-Status) pour distinguer ce qui est jouable de ce qui est seulement prévu.
+Le symbiote libre est uniquement un prototype testable. Son attaque sauvage d'implantation, le rituel et le transfert entre hôtes ne sont pas encore actifs.

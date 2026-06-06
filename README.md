@@ -20,27 +20,27 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.7-dev — Goa'uld host foundation
+### 0.1.8-dev — Free Goa'uld symbiote prototype
 
-The mod now includes an XML-only prototype for humanoids already possessed by an adult Goa'uld symbiote:
+The mod now includes an XML-only animal-style pawn prototype representing an adult Goa'uld symbiote outside a host:
 
-- `SG1_GoauldHost`
-- `SG1_NaquadahBlood`
-- `SG1_GoauldLongevity`
+- `SG1_GoauldSymbiote`
+- Weak bite attack
+- Temporary local sprite
 - French `DefInjected` translations
-- Temporary local gene icons
-- Updated player-wiki drafts
+- Developer-mode spawning for isolated tests
+- No natural biome spawning
+- Updated wiki drafts
+- Safe wiki synchronization helper: `tools/sync-wiki.sh`
 
-The dedicated symbiote system remains a later C# milestone.
+Forced implantation, ritual implantation and host transfer remain later C# milestones.
 
 ## First playable milestone
 
 - [x] Jaffa xenotype foundation
-- [x] French translations for stabilized Jaffa content
-- [x] Player wiki foundation
 - [x] Goa'uld host xenotype prototype
-- [x] French translations for stabilized Goa'uld host content
-- [ ] Free Goa'uld symbiote entity
+- [x] Free Goa'uld symbiote pawn prototype
+- [ ] Recent-implantation state
 - [ ] Forced implantation
 - [ ] Ritual implantation
 - [ ] Host transfer
@@ -59,6 +59,7 @@ The dedicated symbiote system remains a later C# milestone.
 - Add French `DefInjected` translations as soon as a content batch is stabilized.
 - Use bilingual `Keyed` files for future UI messages and C# strings.
 - Keep versioned player-wiki drafts under `docs/wiki/`.
-- Publish stabilized wiki pages to the separate `GateRim-SG1.wiki` repository.
+- Publish wiki pages directly at the root of the separate `GateRim-SG1.wiki` repository.
+- Use `./tools/sync-wiki.sh` to synchronize wiki drafts safely.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.

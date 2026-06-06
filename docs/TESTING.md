@@ -36,3 +36,20 @@ The first external log contained two categories of issues:
 - `KeyNotFoundException` for a gene category named `Ability`.
 
 The `Ability` category is not declared by the current GateRim definitions. Re-run the minimal isolated test before investigating loaded third-party mods.
+
+
+## Free Goa'uld symbiote prototype
+
+Use developer mode to spawn:
+
+```text
+SG1_GoauldSymbiote
+```
+
+Checklist:
+
+1. Confirm the pawn appears with its temporary sprite.
+2. Confirm movement and a weak bite attack.
+3. Confirm that no natural biome spawn occurs.
+4. Switch to French and verify the translated label and description.
+5. Check `Player.log` for `SG1_GoauldSymbiote` errors.
