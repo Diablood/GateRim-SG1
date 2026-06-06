@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Prototype implementation:
+        Jaffa are represented as a non-inheritable Biotech xenotype while the
+        dedicated symbiote system is designed. The final implementation may
+        replace part of this definition with a Hediff and C# logic.
+    -->
+    <XenotypeDef>
+        <defName>SG1_Jaffa</defName>
+        <label>Jaffa</label>
+        <description>
+Jaffa are human warriors altered to carry an immature Goa'uld symbiote. Their enhanced strength, resilience and immune response make them formidable soldiers. This initial xenotype is a gameplay foundation; symbiote dependency will be implemented separately.
+        </description>
+        <descriptionShort>Human warriors enhanced by an immature Goa'uld symbiote.</descriptionShort>
+        <!-- Temporary vanilla icon until dedicated Jaffa artwork is added. -->
+        <iconPath>UI/Icons/Xenotypes/Hussar</iconPath>
+        <inheritable>false</inheritable>
+        <combatPowerFactor>1.4</combatPowerFactor>
+        <genes>
+            <li>Body_Hulk</li>
+            <li>AptitudeStrong_Melee</li>
+            <li>Immunity_Strong</li>
+            <li>MeleeDamage_Strong</li>
+            <li>Pain_Reduced</li>
+            <li>Robust</li>
+            <li>WoundHealing_Fast</li>
+            <li>Superclotting</li>
+            <li>StrongStomach</li>
+        </genes>
+    </XenotypeDef>
+</Defs>

@@ -9,6 +9,7 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Package ID: `diablood.gaterimsg1`
 - C# namespace: `GateRimSG1`
 - Repository: `https://github.com/Diablood/GateRim-SG1`
+- Required DLC for the current development branch: `Biotech`
 
 ## Initial development branch
 
@@ -16,16 +17,28 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 feature/jaffa-goauld-foundation
 ```
 
+## Current milestone
+
+### 0.1.1-dev — Jaffa xenotype foundation
+
+The first xenotype prototype is now defined:
+
+- `SG1_Jaffa`
+- Non-inheritable Biotech xenotype
+- Vanilla-gene-based initial balance
+- Temporary vanilla xenotype icon pending dedicated Jaffa artwork
+- Symbiote dependency intentionally deferred to a dedicated system
+
 ## First playable milestone
 
-The first milestone focuses on a small, testable Goa'uld and Jaffa foundation:
+The first playable milestone focuses on a small, testable Goa'uld and Jaffa foundation:
 
-- Jaffa xenotype
-- Goa'uld faction
-- Basic Jaffa warrior and guard pawn kinds
-- Ma'Tok staff weapon
-- Zat'nik'tel
-- Generic Jaffa armor
+- [x] Jaffa xenotype foundation
+- [ ] Goa'uld faction
+- [ ] Basic Jaffa warrior and guard pawn kinds
+- [ ] Ma'Tok staff weapon
+- [ ] Zat'nik'tel
+- [ ] Generic Jaffa armor
 
 ## Directory layout
 
@@ -47,3 +60,4 @@ GateRim-SG1/
 - Preserve `About/ModIcon.png`.
 - Develop incrementally and test after each small content batch.
 - Use dedicated branches for functional changes and important fixes.
+- Create annotated Git tags for versioned milestones.

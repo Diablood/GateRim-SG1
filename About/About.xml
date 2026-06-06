@@ -3,22 +3,29 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.0-dev</modVersion>
+    <modVersion>0.1.1-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
+    <modDependencies>
+        <li>
+            <packageId>Ludeon.RimWorld.Biotech</packageId>
+            <displayName>Biotech</displayName>
+        </li>
+    </modDependencies>
     <url>https://github.com/Diablood/GateRim-SG1</url>
     <description>
 GateRim SG-1 brings the Stargate SG-1 universe to RimWorld.
 
-Initial development scope:
-- Jaffa xenotype
+Current development scope:
+- Jaffa xenotype foundation
 - Goa'uld faction
 - Jaffa pawn kinds
 - Ma'Tok staff weapon
 - Zat'nik'tel
 - Generic Jaffa armor
 
+Biotech is required for xenotype support.
 This is an early development version.
     </description>
 </ModMetaData>
