@@ -9,7 +9,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | État | Version |
 |---|---|---|
-| Xenotype Jaffa | Prototype jouable | 0.1.1-dev |
+| Xenotype Jaffa | Prototype jouable, fondation germinale héréditaire | 0.1.1-dev / correction 0.1.11-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
 | Traductions françaises du lot Jaffa | Implémenté | 0.1.4-dev |

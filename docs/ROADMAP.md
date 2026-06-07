@@ -33,9 +33,17 @@
 - [x] Add a visible one-day countdown
 - [x] Add a temporary pain offset during the critical phase
 - [x] Add French `DefInjected` translations
-- [x] Add technical documentation
+- [x] Update technical documentation
 - [x] Update player-wiki drafts
-- [ ] Validate the Hediff in RimWorld 1.6
+- [ ] Validate the implantation Hediff in RimWorld 1.6
+
+## 0.1.12-dev — Jaffa germline correction
+- [x] Set `SG1_Jaffa` to `<inheritable>true</inheritable>`
+- [x] Document the germline/endogene versus xenogene distinction
+- [x] Keep `SG1_GoauldHost` non-heritable
+- [x] Add French text updates for the Jaffa xenotype
+- [x] Update player-wiki drafts
+- [ ] Validate Jaffa germline display and offspring behavior
 - [ ] Publish the updated player-wiki pages
 
 ## Next symbiote milestones

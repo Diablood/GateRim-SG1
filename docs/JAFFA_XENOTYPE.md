@@ -8,7 +8,19 @@ SG1_JaffaPhysiology
 SG1_JaffaLongevity
 ```
 
-The current Jaffa implementation is a Biotech xenotype assembled from vanilla genes plus GateRim-specific genes.
+## Germline policy
+
+Jaffa are a modified human lineage that reproduces as Jaffa.
+
+The xenotype therefore uses:
+
+```xml
+<inheritable>true</inheritable>
+```
+
+This makes the current xenotype gene set a germline/endogene foundation instead of a set of acquired xenogenes.
+
+Two Jaffa parents should produce Jaffa children rather than baseliner children. A mixed pairing can still produce a hybrid according to RimWorld's normal germline inheritance logic.
 
 ## Appearance policy
 
@@ -16,12 +28,28 @@ Jaffa must not all look like visibly muscular RimWorld hulks.
 
 The vanilla `Body_Hulk` gene remains excluded because it restricts the visible body shape. No `Body_*` gene is imposed by the Jaffa xenotype.
 
-## Custom genes
+## Current custom genes
 
-| Gene | Effect | Purpose |
+| Gene | Effect | Current purpose |
 |---|---:|---|
-| `SG1_JaffaPhysiology` | `CarryingCapacity +15` | Physical baseline without forced Hulk appearance |
-| `SG1_JaffaLongevity` | `LifespanFactor ×1.5` | Slower aging and later onset of age-related conditions |
+| `SG1_JaffaPhysiology` | `CarryingCapacity +15` | Inherited physical baseline without forced Hulk appearance |
+| `SG1_JaffaLongevity` | `LifespanFactor ×1.5` | Provisional 150% lifespan expectancy |
+
+## Important prototype limitation
+
+Not every current Jaffa bonus should necessarily remain germline-based forever.
+
+Several effects are likely to depend on the immature symbiote and should later move into a removable Jaffa symbiote Hediff:
+
+- part of the immunity bonus;
+- accelerated recovery;
+- reduced pain;
+- longevity;
+- symbiote dependency;
+- tretonin substitution;
+- nearby Goa'uld sensitivity.
+
+The current inheritable xenotype is a gameplay foundation until that split is implemented.
 
 ## Temporary artwork
 
@@ -31,29 +59,13 @@ The vanilla `Body_Hulk` gene remains excluded because it restricts the visible b
 Textures/UI/Genes/SG1_JaffaPhysiology.png
 ```
 
-This is a local placeholder copied from the project icon to guarantee a valid texture path during development. Dedicated gene artwork will replace it later.
-
-## Intentional limitations
-
-The current prototype does not yet model:
-
-- the abdominal symbiote pouch;
-- the immature Goa'uld symbiote as a removable entity;
-- dependence on a symbiote or tretonin;
-- Goa'uld detection at close range;
-- weighted Jaffa body-type generation;
-- dedicated Jaffa xenotype and gene artwork.
-
-The longevity gene is a temporary XML representation. It may later be attached to the symbiote system.
-
 ## Manual test checklist
 
 1. Enable `Core`, `Biotech`, then `GateRim SG-1`.
-2. Start a temporary development game.
-3. Open the xenotype editor during pawn creation.
-4. Confirm that `Jaffa` appears in the xenotype list.
-5. Confirm that `Jaffa physiology` and `Jaffa longevity` appear among its genes.
-6. Confirm that lifespan expectancy is displayed as `150%`.
-7. Confirm that `Jaffa physiology` displays its temporary icon.
-8. Generate several Jaffa pawns and verify that they are not all visually Hulk-bodied.
-9. Check the `Player.log` for XML errors mentioning `SG1_Jaffa`, `SG1_JaffaPhysiology` or `SG1_JaffaLongevity`.
+2. Open the xenotype editor.
+3. Confirm that `Jaffa` is marked as inheritable.
+4. Confirm that Jaffa genes display as germline genes.
+5. Generate or breed two Jaffa parents when practical.
+6. Confirm that their child inherits the Jaffa lineage rather than becoming a baseliner.
+7. Confirm that mixed-lineage offspring behave as RimWorld hybrids.
+8. Check `Player.log` for `SG1_Jaffa` errors.

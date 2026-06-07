@@ -10,6 +10,7 @@
 - [Jaffa](Jaffa)
 - [Goa'uld](Goauld)
 - [Symbiotes](Symbiotes)
+- [Génétique](Genetics)
 - [Implantation récente](Recent-Implantation)
 
 ## Assistance

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.12-dev
+- Set `SG1_Jaffa` to `<inheritable>true</inheritable>` so Jaffa use a germline/endogene foundation.
+- Keep `SG1_GoauldHost` non-heritable because adult Goa'uld possession is acquired during life.
+- Document the future split between inherited Jaffa lineage traits and removable symbiote-dependent effects.
+- Add French Jaffa text updates.
+- Add the genetics-model documentation and update player-wiki drafts.
+
 ## 0.1.11-dev
 - Add the XML-only `SG1_GoauldRecentImplantation` Hediff prototype.
 - Add a visible one-day countdown through `HediffCompProperties_Disappears`.

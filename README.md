@@ -20,18 +20,22 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.11-dev — Recent Goa'uld implantation state
+### 0.1.12-dev — Jaffa germline correction
 
-The mod now includes an XML-only medical-state prototype representing the critical period after a Goa'uld symbiote enters a humanoid host:
+The Jaffa xenotype foundation is corrected after clarifying the Biotech inheritance model:
+
+- `SG1_Jaffa` is now inheritable
+- Jaffa genes are treated as a germline/endogene foundation
+- Two Jaffa parents can produce Jaffa children instead of baseliner children
+- Goa'uld host traits remain non-heritable because possession is acquired during life
+- Symbiote-dependent Jaffa bonuses will be separated into a dedicated Hediff later
+- Player documentation now explains the difference between germline genes and acquired xenogenes
+
+The previously published `0.1.11-dev` implantation prototype remains unchanged:
 
 - `SG1_GoauldRecentImplantation`
-- Visible remaining-time countdown
-- Temporary duration of one in-game day
-- Pain offset during the critical phase
-- French `DefInjected` translations
-- Updated technical documentation and player-wiki drafts
-
-The Hediff can currently be added through developer mode. Automatic application, interruption and conversion into an active Goa'uld host remain later C# milestones.
+- Visible one-day countdown
+- Temporary pain offset
 
 ## First playable milestone
 
