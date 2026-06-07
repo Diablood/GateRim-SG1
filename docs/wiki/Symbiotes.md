@@ -7,7 +7,8 @@
 > Implantation forcée interactive : 0.1.17-dev  
 > Hôte actif : 0.1.18-dev  
 > Extraction d'urgence : 0.1.19-dev  
-> Chirurgie d'extraction : 0.1.20-dev
+> Chirurgie d'extraction : 0.1.20-dev  
+> Chasse autonome : 0.1.21-dev
 
 ## Vue d'ensemble
 
@@ -48,6 +49,8 @@ Depuis `0.1.18-dev`, le compte à rebours convertit automatiquement la victime e
 Depuis `0.1.19-dev`, une [extraction d'urgence](Emergency-Extraction) manuelle peut interrompre la phase critique et faire réapparaître le même symbiote libre.
 
 Depuis `0.1.20-dev`, une [chirurgie d'extraction](Extraction-Surgery) planifiable fournit un parcours médical avec médecin, médicament, temps de travail et risque d'échec.
+
+Depuis `0.1.21-dev`, un symbiote libre peut [chasser automatiquement](Autonomous-Hunt) un humanoïde compatible accessible et l'implanter au contact.
 
 ## Éléments de gameplay prévus
 

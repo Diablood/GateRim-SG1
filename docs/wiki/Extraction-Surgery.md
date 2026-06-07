@@ -52,3 +52,10 @@ continue donc vers la conversion en [hôte Goa'uld actif](Active-Goauld-Host).
 La commande immédiate [Extraction d'urgence](Emergency-Extraction) reste
 temporairement disponible pour faciliter les tests de développement. La
 chirurgie constitue désormais le parcours joueur prévu.
+
+
+## Délai après extraction
+
+Depuis `0.1.21-dev`, le symbiote extrait ne reprend pas immédiatement sa chasse
+autonome. Un court délai de sécurité évite qu'il ne réimplante instantanément le
+patient.

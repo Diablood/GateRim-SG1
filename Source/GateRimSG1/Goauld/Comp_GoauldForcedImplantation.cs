@@ -1,23 +1,26 @@
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// First interactive forced-implantation prototype.
+    /// Persistent free-symbiote state, manual implantation tool and first
+    /// autonomous pursuit prototype.
     ///
-    /// A selected free Goa'uld symbiote can implant one compatible adjacent
-    /// humanoid pawn through a gizmo. The same persistent symbiote identity is
-    /// moved into SG1_GoauldRecentImplantation, then the free pawn is consumed.
-    ///
-    /// Autonomous melee AI and target-selection jobs remain future work.
+    /// A free symbiote periodically searches for the nearest reachable
+    /// compatible humanoid, starts a dedicated pursuit job, then implants on
+    /// contact. Manual implantation remains available for regression tests.
     /// </summary>
     public class Comp_GoauldForcedImplantation : ThingComp
     {
         private GoauldSymbioteData symbioteData;
         private bool consumedByImplantation;
+        private bool autonomousHuntingEnabled = true;
+        private int nextAutonomousScanTick;
 
         private CompProperties_GoauldForcedImplantation Props
             => (CompProperties_GoauldForcedImplantation)props;
@@ -45,6 +48,9 @@ namespace GateRimSG1.Goauld
 
             if (!respawningAfterLoad)
             {
+                autonomousHuntingEnabled = Props.autonomousHuntingEnabled;
+                nextAutonomousScanTick = CurrentGameTick() + Props.autonomousScanIntervalTicks;
+
                 GR_Log.Message(
                     $"Created free Goa'uld symbiote {symbioteData.SymbioteId} "
                     + $"as pawn {PawnDebugLabel(SymbiotePawn)}.");
@@ -57,6 +63,8 @@ namespace GateRimSG1.Goauld
 
             Scribe_Deep.Look(ref symbioteData, "freeGoauldSymbioteData");
             Scribe_Values.Look(ref consumedByImplantation, "consumedByImplantation", false);
+            Scribe_Values.Look(ref autonomousHuntingEnabled, "autonomousHuntingEnabled", true);
+            Scribe_Values.Look(ref nextAutonomousScanTick, "nextAutonomousScanTick", 0);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -66,6 +74,34 @@ namespace GateRimSG1.Goauld
                     $"Loaded free Goa'uld symbiote {symbioteData.SymbioteId} "
                     + $"as pawn {PawnDebugLabel(SymbiotePawn)}.");
             }
+        }
+
+        public override void CompTick()
+        {
+            base.CompTick();
+
+            if (!autonomousHuntingEnabled)
+            {
+                return;
+            }
+
+            Pawn symbiote = SymbiotePawn;
+            int currentTick = CurrentGameTick();
+
+            if (symbiote == null
+                || symbiote.Destroyed
+                || !symbiote.Spawned
+                || symbiote.Dead
+                || symbiote.Downed
+                || currentTick < nextAutonomousScanTick)
+            {
+                return;
+            }
+
+            nextAutonomousScanTick = currentTick
+                + Math.Max(30, Props.autonomousScanIntervalTicks);
+
+            TryRunAutonomousBehavior(symbiote, currentTick);
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
@@ -86,7 +122,16 @@ namespace GateRimSG1.Goauld
                 defaultLabel = "GR_ForcedImplantation_CommandLabel".Translate(),
                 defaultDesc = "GR_ForcedImplantation_CommandDescription".Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_ForcedImplantation"),
-                action = TryImplantAdjacentHost
+                action = TryImplantAdjacentHostManually
+            };
+
+            yield return new Command_Toggle
+            {
+                defaultLabel = "GR_AutonomousHunt_CommandLabel".Translate(),
+                defaultDesc = "GR_AutonomousHunt_CommandDescription".Translate(),
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_AutonomousHunt"),
+                isActive = () => autonomousHuntingEnabled,
+                toggleAction = ToggleAutonomousHunting
             };
         }
 
@@ -94,9 +139,18 @@ namespace GateRimSG1.Goauld
         {
             EnsureDataInitialized();
 
+            int cooldownTicks = GetAutonomousCooldownTicksRemaining(
+                CurrentGameTick());
+
+            string autonomousLabel = autonomousHuntingEnabled
+                ? "GR_AutonomousHunt_Enabled".Translate().ToString()
+                : "GR_AutonomousHunt_Disabled".Translate().ToString();
+
             return "GR_FreeGoauldSymbioteDataSummary".Translate(
                 symbioteData.SymbioteId,
-                symbioteData.GetOriginLabel()).ToString();
+                symbioteData.GetOriginLabel(),
+                autonomousLabel,
+                cooldownTicks).ToString();
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
@@ -112,7 +166,7 @@ namespace GateRimSG1.Goauld
             {
                 GR_Log.Message(
                     $"Consumed free Goa'uld symbiote {symbioteData.SymbioteId} "
-                    + "during forced implantation.");
+                    + "during implantation.");
             }
             else
             {
@@ -122,24 +176,22 @@ namespace GateRimSG1.Goauld
             }
         }
 
-        private void TryImplantAdjacentHost()
+        public bool TryImplantHost(Pawn target, bool autonomous)
         {
             Pawn symbiote = SymbiotePawn;
+
             if (symbiote == null || !symbiote.Spawned || symbiote.Destroyed)
             {
-                GR_Log.Warning("Forced implantation requested from an unavailable free symbiote pawn.");
-                return;
+                GR_Log.Warning(
+                    "Goa'uld implantation requested from an unavailable "
+                    + "free symbiote pawn.");
+
+                return false;
             }
 
-            Pawn target = FindFirstCompatibleAdjacentHost(symbiote);
-            if (target == null)
+            if (!IsCompatibleHost(target) || !IsAdjacentOrSameCell(symbiote, target))
             {
-                Messages.Message(
-                    "GR_ForcedImplantation_NoAdjacentTarget".Translate(),
-                    symbiote,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
+                return false;
             }
 
             EnsureDataInitialized();
@@ -154,7 +206,7 @@ namespace GateRimSG1.Goauld
             if (implantationComp == null)
             {
                 GR_Log.Error(
-                    "Unable to start forced implantation: "
+                    "Unable to start Goa'uld implantation: "
                     + "SG1_GoauldRecentImplantation is missing "
                     + "HediffComp_GoauldSymbiote.");
 
@@ -163,7 +215,8 @@ namespace GateRimSG1.Goauld
                     symbiote,
                     MessageTypeDefOf.RejectInput,
                     historical: false);
-                return;
+
+                return false;
             }
 
             string transferredId = symbioteData.SymbioteId;
@@ -174,23 +227,184 @@ namespace GateRimSG1.Goauld
             consumedByImplantation = true;
 
             GR_Log.Message(
-                $"Forced implantation transferred Goa'uld symbiote {transferredId} "
+                $"{(autonomous ? "Autonomous" : "Manual")} implantation "
+                + $"transferred Goa'uld symbiote {transferredId} "
                 + $"from free pawn {PawnDebugLabel(symbiote)} "
                 + $"into host {PawnDebugLabel(target)}.");
 
             Messages.Message(
-                "GR_ForcedImplantation_Success".Translate(
-                    target.LabelShortCap,
-                    transferredId),
+                (autonomous
+                    ? "GR_AutonomousImplantation_Success"
+                    : "GR_ForcedImplantation_Success").Translate(
+                        target.LabelShortCap,
+                        transferredId),
                 target,
                 MessageTypeDefOf.NegativeEvent,
                 historical: true);
 
             symbiote.Destroy(DestroyMode.Vanish);
+            return true;
+        }
+
+        public bool IsCompatibleHost(Pawn candidate)
+        {
+            if (candidate == null
+                || candidate == SymbiotePawn
+                || candidate.Destroyed
+                || !candidate.Spawned
+                || candidate.Dead
+                || candidate.health == null
+                || !candidate.RaceProps.Humanlike)
+            {
+                return false;
+            }
+
+            if (candidate.ageTracker != null
+                && candidate.ageTracker.AgeBiologicalYearsFloat
+                    < Props.minimumTargetAgeYears)
+            {
+                return false;
+            }
+
+            if (HasHediff(candidate, GR_DefOf.SG1_GoauldRecentImplantation)
+                || HasHediff(candidate, GR_DefOf.SG1_GoauldHostSymbiote))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void TryImplantAdjacentHostManually()
+        {
+            Pawn symbiote = SymbiotePawn;
+            Pawn target = FindFirstCompatibleAdjacentHost(symbiote);
+
+            if (target == null)
+            {
+                Messages.Message(
+                    "GR_ForcedImplantation_NoAdjacentTarget".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            TryImplantHost(target, autonomous: false);
+        }
+
+        private void ToggleAutonomousHunting()
+        {
+            autonomousHuntingEnabled = !autonomousHuntingEnabled;
+
+            Pawn symbiote = SymbiotePawn;
+            if (!autonomousHuntingEnabled
+                && symbiote?.jobs?.curJob?.def
+                    == GR_DefOf.SG1_GoauldAutonomousImplant)
+            {
+                symbiote.jobs.EndCurrentJob(JobCondition.InterruptForced);
+            }
+
+            GR_Log.Message(
+                $"Autonomous hunting for Goa'uld symbiote "
+                + $"{symbioteData?.SymbioteId ?? "<uninitialized>"} "
+                + $"set to {autonomousHuntingEnabled}.");
+        }
+
+        private void TryRunAutonomousBehavior(Pawn symbiote, int currentTick)
+        {
+            if (GetAutonomousCooldownTicksRemaining(currentTick) > 0)
+            {
+                return;
+            }
+
+            Pawn adjacentTarget = FindFirstCompatibleAdjacentHost(symbiote);
+            if (adjacentTarget != null)
+            {
+                TryImplantHost(adjacentTarget, autonomous: true);
+                return;
+            }
+
+            if (symbiote.jobs?.curJob?.def
+                == GR_DefOf.SG1_GoauldAutonomousImplant)
+            {
+                return;
+            }
+
+            Pawn target = FindClosestCompatibleHost(symbiote);
+            if (target == null)
+            {
+                return;
+            }
+
+            Job job = new Job(
+                GR_DefOf.SG1_GoauldAutonomousImplant,
+                target)
+            {
+                locomotionUrgency = LocomotionUrgency.Jog
+            };
+
+            GR_Log.Message(
+                $"Free Goa'uld symbiote {symbioteData.SymbioteId} "
+                + $"started autonomous pursuit of {PawnDebugLabel(target)}.");
+
+            symbiote.jobs.StartJob(
+                job,
+                JobCondition.InterruptForced);
+        }
+
+        private Pawn FindClosestCompatibleHost(Pawn symbiote)
+        {
+            Map map = symbiote.Map;
+            if (map?.mapPawns?.AllPawnsSpawned == null)
+            {
+                return null;
+            }
+
+            float radiusSquared = Props.autonomousSearchRadius
+                * Props.autonomousSearchRadius;
+
+            Pawn bestTarget = null;
+            float bestDistanceSquared = float.MaxValue;
+
+            IReadOnlyList<Pawn> candidates = map.mapPawns.AllPawnsSpawned;
+
+            for (int index = 0; index < candidates.Count; index++)
+            {
+                Pawn candidate = candidates[index];
+
+                if (!IsCompatibleHost(candidate)
+                    || !symbiote.CanReach(
+                        candidate,
+                        PathEndMode.Touch,
+                        Danger.Deadly))
+                {
+                    continue;
+                }
+
+                int deltaX = candidate.Position.x - symbiote.Position.x;
+                int deltaZ = candidate.Position.z - symbiote.Position.z;
+                float distanceSquared = deltaX * deltaX + deltaZ * deltaZ;
+
+                if (distanceSquared <= radiusSquared
+                    && distanceSquared < bestDistanceSquared)
+                {
+                    bestTarget = candidate;
+                    bestDistanceSquared = distanceSquared;
+                }
+            }
+
+            return bestTarget;
         }
 
         private Pawn FindFirstCompatibleAdjacentHost(Pawn symbiote)
         {
+            if (symbiote?.Map == null)
+            {
+                return null;
+            }
+
             Map map = symbiote.Map;
             IntVec3 origin = symbiote.Position;
 
@@ -224,31 +438,25 @@ namespace GateRimSG1.Goauld
             return null;
         }
 
-        private bool IsCompatibleHost(Pawn candidate)
+        private int GetAutonomousCooldownTicksRemaining(int currentTick)
         {
-            if (candidate == null
-                || candidate == SymbiotePawn
-                || candidate.Destroyed
-                || candidate.Dead
-                || candidate.health == null
-                || !candidate.RaceProps.Humanlike)
+            if (symbioteData == null || symbioteData.LastDetachTick < 0)
             {
-                return false;
+                return 0;
             }
 
-            if (candidate.ageTracker != null
-                && candidate.ageTracker.AgeBiologicalYearsFloat < Props.minimumTargetAgeYears)
-            {
-                return false;
-            }
+            int elapsed = currentTick - symbioteData.LastDetachTick;
+            return Math.Max(
+                0,
+                Props.autonomousCooldownAfterExtractionTicks - elapsed);
+        }
 
-            if (HasHediff(candidate, GR_DefOf.SG1_GoauldRecentImplantation)
-                || HasHediff(candidate, GR_DefOf.SG1_GoauldHostSymbiote))
-            {
-                return false;
-            }
+        private static bool IsAdjacentOrSameCell(Pawn first, Pawn second)
+        {
+            int deltaX = Math.Abs(first.Position.x - second.Position.x);
+            int deltaZ = Math.Abs(first.Position.z - second.Position.z);
 
-            return true;
+            return deltaX <= 1 && deltaZ <= 1;
         }
 
         private static bool HasHediff(Pawn pawn, HediffDef def)
@@ -270,23 +478,7 @@ namespace GateRimSG1.Goauld
             Hediff hediff)
         {
             HediffWithComps withComps = hediff as HediffWithComps;
-            if (withComps?.comps == null)
-            {
-                return null;
-            }
-
-            for (int index = 0; index < withComps.comps.Count; index++)
-            {
-                HediffComp_GoauldSymbiote comp
-                    = withComps.comps[index] as HediffComp_GoauldSymbiote;
-
-                if (comp != null)
-                {
-                    return comp;
-                }
-            }
-
-            return null;
+            return withComps?.GetComp<HediffComp_GoauldSymbiote>();
         }
 
         private void EnsureDataInitialized()

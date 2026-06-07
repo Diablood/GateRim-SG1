@@ -86,6 +86,16 @@ laisse l'implantation récente active.
 
 Consulte [Chirurgie d'extraction Goa'uld](Extraction-Surgery).
 
+### Chasse autonome
+
+Depuis `0.1.21-dev`, le symbiote libre recherche un humanoïde compatible proche,
+le poursuit et déclenche automatiquement son implantation au contact.
+
+Après une extraction, un bref délai de sécurité évite une réimplantation
+immédiate.
+
+Consulte [Chasse autonome des symbiotes libres](Autonomous-Hunt).
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;

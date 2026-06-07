@@ -124,3 +124,17 @@ Emergency extraction surgery returned Goa'uld symbiote <id> from patient <pawn> 
 ```
 
 A successful operation must preserve the same persistent parasite ID.
+
+
+## Autonomous-hunt diagnostics
+
+`0.1.21-dev` adds pursuit logs:
+
+```text
+Free Goa'uld symbiote <id> started autonomous pursuit of <pawn>.
+Autonomous implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
+Autonomous hunting for Goa'uld symbiote <id> set to <true|false>.
+```
+
+After extraction, the free pawn inspection panel displays the remaining
+autonomous cooldown ticks.

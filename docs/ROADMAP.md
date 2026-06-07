@@ -133,6 +133,22 @@
 - [ ] Validate failed surgery behavior
 - [ ] Publish the updated player wiki
 
+## 0.1.21-dev — Add autonomous free-symbiote hunt
+- [x] Add `SG1_GoauldAutonomousImplant`
+- [x] Add `JobDriver_GoauldAutonomousImplant`
+- [x] Scan periodically for the nearest compatible reachable humanoid
+- [x] Pursue the selected target through a dedicated job
+- [x] Implant automatically on contact
+- [x] Preserve the existing identity-transfer flow
+- [x] Add an autonomous-hunt toggle for development tests
+- [x] Add a cooldown after manual or surgical extraction
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Validate pursuit and contact implantation
+- [ ] Validate extraction cooldown
+- [ ] Validate toggle behavior
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -144,7 +160,8 @@
 ## Next symbiote milestones
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
-- [ ] Add autonomous hostile attack AI for free symbiotes
+- [x] Add autonomous free-symbiote pursuit and contact implantation
+- [ ] Add richer tactical priorities for autonomous symbiotes
 - [ ] Add ritual Goa'uld implantation
 - [x] Add manual emergency extraction prototype
 - [x] Complement manual extraction with a medical surgery bill

@@ -42,3 +42,10 @@ L'identité persistante du parasite est conservée.
 - le symbiote ne dispose pas encore d'une IA hostile autonome ;
 - la conversion finale en hôte Goa'uld actif n'est pas encore automatique ;
 - les futurs Unas ne sont pas encore gérés.
+
+
+## Chasse autonome disponible
+
+Depuis `0.1.21-dev`, la [chasse autonome](Autonomous-Hunt) constitue le
+comportement normal du symbiote libre. La commande manuelle reste disponible
+comme outil de test.

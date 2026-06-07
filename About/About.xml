@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.20-dev</modVersion>
+    <modVersion>0.1.21-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -32,6 +32,7 @@ Current development scope:
 - Automatic conversion into an active Goa'uld host state
 - Manual emergency extraction during recent implantation
 - Medical emergency Goa'uld extraction surgery
+- Autonomous free-symbiote pursuit and contact implantation
 - Ritual implantation and host transfer planned next
 
 Biotech is required for xenotype support.

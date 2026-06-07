@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>SG1_GoauldAutonomousImplant</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_GoauldAutonomousImplant</driverClass>
+        <reportString>pursuing TargetA for Goa'uld implantation.</reportString>
+        <playerInterruptible>true</playerInterruptible>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+</Defs>

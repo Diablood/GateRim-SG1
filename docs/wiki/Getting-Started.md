@@ -114,3 +114,14 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 6. En cas de réussite, vérifie que le même parasite réapparaît à proximité.
 7. Vérifie que son identifiant persistant est inchangé.
 8. En cas d'échec, vérifie que l'implantation récente reste active.
+
+
+## Vérifier la chasse autonome
+
+1. Génère un `symbiote Goa'uld` à plusieurs cases d'un humanoïde adulte.
+2. Vérifie que `Chasse autonome` est active dans son panneau d'inspection.
+3. Attends que le symbiote choisisse une cible.
+4. Vérifie qu'il se déplace vers l'humanoïde.
+5. Vérifie l'implantation automatique au contact.
+6. Extrais le parasite chirurgicalement.
+7. Vérifie qu'un délai de sécurité empêche une réimplantation immédiate.

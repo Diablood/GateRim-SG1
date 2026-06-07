@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.21-dev
+- Add `SG1_GoauldAutonomousImplant`.
+- Add `JobDriver_GoauldAutonomousImplant`.
+- Add periodic nearest-target scans for free Goa'uld symbiotes.
+- Pursue reachable compatible humanoids and implant automatically on contact.
+- Preserve the existing persistent identity-transfer flow.
+- Add an autonomous-hunt toggle for development tests.
+- Add a short autonomous cooldown after manual or surgical extraction.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.20-dev
 - Add the `SG1_EmergencyExtractGoauldSymbiote` medical operation.
 - Add `Recipe_EmergencyExtractGoauldSymbiote`, derived from vanilla `Recipe_Surgery`.

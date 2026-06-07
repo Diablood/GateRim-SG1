@@ -13,6 +13,7 @@
 - [Génétique](Genetics)
 - [Prim'ta](Primta)
 - [Implantation récente](Recent-Implantation)
+- [Chasse autonome](Autonomous-Hunt)
 - [Implantation forcée](Forced-Implantation)
 - [Extraction d'urgence](Emergency-Extraction)
 - [Chirurgie d'extraction](Extraction-Surgery)

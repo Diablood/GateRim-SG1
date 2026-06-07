@@ -9,8 +9,7 @@ Hôte précédent : {4}</GR_GoauldSymbioteDataSummary>
     <GR_GoauldSymbioteOrigin_Goauld>Goa'uld</GR_GoauldSymbioteOrigin_Goauld>
     <GR_GoauldSymbioteOrigin_Tokra>Tok'ra</GR_GoauldSymbioteOrigin_Tokra>
     <GR_GoauldSymbioteHost_None>aucun</GR_GoauldSymbioteHost_None>
-    <GR_FreeGoauldSymbioteDataSummary>Identifiant du symbiote libre : {0}
-Origine : {1}</GR_FreeGoauldSymbioteDataSummary>
+    <GR_FreeGoauldSymbioteDataSummary>Identifiant du symbiote libre : {0}&amp;#10;Origine : {1}&amp;#10;Chasse autonome : {2}&amp;#10;Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_CommandLabel>Implantation forcée</GR_ForcedImplantation_CommandLabel>
     <GR_ForcedImplantation_CommandDescription>Implante ce symbiote Goa'uld libre dans le premier humanoïde compatible adjacent. Le symbiote libre est consommé et son identité persistante est transférée vers l'état d'implantation récente. Il s'agit d'un prototype manuel ; le comportement d'attaque autonome n'est pas encore implémenté.</GR_ForcedImplantation_CommandDescription>
     <GR_ForcedImplantation_NoAdjacentTarget>Aucun humanoïde compatible adjacent n'est disponible pour une implantation forcée.</GR_ForcedImplantation_NoAdjacentTarget>
@@ -25,4 +24,9 @@ Origine : {1}</GR_FreeGoauldSymbioteDataSummary>
     <GR_EmergencyExtractionSurgery_InternalError>La chirurgie d'extraction d'urgence a échoué, car le système persistant de transfert du symbiote est incomplet.</GR_EmergencyExtractionSurgery_InternalError>
     <GR_EmergencyExtractionSurgery_NoSpawnCell>La chirurgie d'extraction d'urgence a échoué, car aucune case proche ne peut accueillir le symbiote extrait.</GR_EmergencyExtractionSurgery_NoSpawnCell>
     <GR_EmergencyExtractionSurgery_Success>{0} a subi une chirurgie d'urgence. Le symbiote Goa'uld {1} est à nouveau libre.</GR_EmergencyExtractionSurgery_Success>
+    <GR_AutonomousHunt_CommandLabel>Chasse autonome</GR_AutonomousHunt_CommandLabel>
+    <GR_AutonomousHunt_CommandDescription>Active ou désactive la poursuite autonome. Lorsqu'elle est active, ce symbiote Goa'uld libre recherche périodiquement l'humanoïde compatible accessible le plus proche et s'implante automatiquement au contact.</GR_AutonomousHunt_CommandDescription>
+    <GR_AutonomousHunt_Enabled>active</GR_AutonomousHunt_Enabled>
+    <GR_AutonomousHunt_Disabled>désactivée</GR_AutonomousHunt_Disabled>
+    <GR_AutonomousImplantation_Success>{0} a subi l'implantation autonome du symbiote Goa'uld {1}.</GR_AutonomousImplantation_Success>
 </LanguageData>

@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.20.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.21.0 loaded.
    ```
 
 
@@ -229,3 +229,21 @@ Negative checks:
 11. Test a lower-quality medical setup.
 12. Confirm that a failed surgery leaves recent implantation in place.
 13. Inspect `Player.log`.
+
+
+## Autonomous free-symbiote hunt
+
+1. Build with `build.cmd`.
+2. Spawn a free Goa'uld symbiote several cells away from an adult humanoid.
+3. Confirm `Autonomous hunt` is enabled.
+4. Wait for the pursuit job to start.
+5. Confirm movement toward the target.
+6. Confirm automatic implantation on contact.
+7. Confirm the persistent ID transfer.
+8. Extract the parasite through surgery.
+9. Confirm the free pawn returns with a non-zero cooldown.
+10. Confirm it does not immediately re-implant the patient.
+11. Wait for cooldown expiry and confirm pursuit resumes.
+12. Toggle autonomous hunt off and on.
+13. Confirm the toggle interrupts and restores the autonomous behavior.
+14. Inspect `Player.log`.

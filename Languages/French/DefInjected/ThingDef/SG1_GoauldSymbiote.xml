@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <SG1_GoauldSymbiote.label>symbiote Goa'uld</SG1_GoauldSymbiote.label>
-    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Sélectionnez-le lorsqu'il se trouve à côté d'un humanoïde compatible, puis utilisez la commande d'implantation forcée pour commencer la phase critique de fixation du parasite. Le prototype actuel nécessite une activation manuelle ; un comportement d'attaque autonome sera ajouté ultérieurement.</SG1_GoauldSymbiote.description>
+    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Il recherche désormais les humanoïdes compatibles proches, les poursuit et commence automatiquement son implantation au contact. La commande d'implantation forcée manuelle reste disponible pour les tests. Après une extraction, la chasse autonome est brièvement suspendue afin d'éviter une réimplantation immédiate du patient.</SG1_GoauldSymbiote.description>
     <SG1_GoauldSymbiote.tools.0.label>morsure</SG1_GoauldSymbiote.tools.0.label>
 </LanguageData>

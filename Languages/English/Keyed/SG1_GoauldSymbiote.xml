@@ -9,8 +9,7 @@ Previous host: {4}</GR_GoauldSymbioteDataSummary>
     <GR_GoauldSymbioteOrigin_Goauld>Goa'uld</GR_GoauldSymbioteOrigin_Goauld>
     <GR_GoauldSymbioteOrigin_Tokra>Tok'ra</GR_GoauldSymbioteOrigin_Tokra>
     <GR_GoauldSymbioteHost_None>none</GR_GoauldSymbioteHost_None>
-    <GR_FreeGoauldSymbioteDataSummary>Free symbiote ID: {0}
-Origin: {1}</GR_FreeGoauldSymbioteDataSummary>
+    <GR_FreeGoauldSymbioteDataSummary>Free symbiote ID: {0}&amp;#10;Origin: {1}&amp;#10;Autonomous hunt: {2}&amp;#10;Autonomous cooldown ticks: {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_CommandLabel>Forced implantation</GR_ForcedImplantation_CommandLabel>
     <GR_ForcedImplantation_CommandDescription>Implant this free Goa'uld symbiote into the first compatible adjacent humanoid. The free symbiote is consumed and its persistent identity moves into the recent-implantation state. This is a manual prototype; autonomous attack behavior is not yet implemented.</GR_ForcedImplantation_CommandDescription>
     <GR_ForcedImplantation_NoAdjacentTarget>No compatible adjacent humanoid is available for forced implantation.</GR_ForcedImplantation_NoAdjacentTarget>
@@ -25,4 +24,9 @@ Origin: {1}</GR_FreeGoauldSymbioteDataSummary>
     <GR_EmergencyExtractionSurgery_InternalError>Emergency extraction surgery failed because the persistent symbiote transfer system is incomplete.</GR_EmergencyExtractionSurgery_InternalError>
     <GR_EmergencyExtractionSurgery_NoSpawnCell>Emergency extraction surgery failed because no nearby cell can receive the extracted symbiote.</GR_EmergencyExtractionSurgery_NoSpawnCell>
     <GR_EmergencyExtractionSurgery_Success>{0} has undergone emergency surgery. Goa'uld symbiote {1} is free again.</GR_EmergencyExtractionSurgery_Success>
+    <GR_AutonomousHunt_CommandLabel>Autonomous hunt</GR_AutonomousHunt_CommandLabel>
+    <GR_AutonomousHunt_CommandDescription>Toggle autonomous pursuit. When enabled, this free Goa'uld symbiote periodically searches for the nearest reachable compatible humanoid and implants automatically on contact.</GR_AutonomousHunt_CommandDescription>
+    <GR_AutonomousHunt_Enabled>enabled</GR_AutonomousHunt_Enabled>
+    <GR_AutonomousHunt_Disabled>disabled</GR_AutonomousHunt_Disabled>
+    <GR_AutonomousImplantation_Success>{0} has been autonomously implanted by Goa'uld symbiote {1}.</GR_AutonomousImplantation_Success>
 </LanguageData>

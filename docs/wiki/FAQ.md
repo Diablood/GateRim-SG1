@@ -85,3 +85,12 @@ de santé de la victime récemment implantée.
 L'opération demande un médecin compétent, du temps et un médicament. Elle peut
 échouer. La commande instantanée reste temporairement présente comme outil de
 test.
+
+
+## Le symbiote libre attaque-t-il désormais automatiquement ?
+
+Oui. Depuis `0.1.21-dev`, il recherche un humanoïde adulte compatible accessible,
+le poursuit puis commence son implantation au contact.
+
+Après une extraction, un bref délai de sécurité empêche une réimplantation
+immédiate.

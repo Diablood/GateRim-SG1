@@ -1,17 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-        The free adult symbiote now carries persistent identity data and exposes
-        an interactive forced-implantation prototype.
-
-        Select the symbiote while it is adjacent to a compatible humanoid host,
-        then use the forced-implantation command. Autonomous AI remains future
-        work.
-    -->
     <ThingDef ParentName="AnimalThingBase">
         <defName>SG1_GoauldSymbiote</defName>
         <label>Goa'uld symbiote</label>
-        <description>An adult Goa'uld symbiote outside a host. Select it while adjacent to a compatible humanoid and use the forced-implantation command to begin the parasite's critical attachment phase. The current prototype requires manual activation; autonomous attack behavior will be added later.</description>
+        <description>An adult Goa'uld symbiote outside a host. It now searches for nearby compatible humanoids, pursues them and begins implantation automatically on contact. Manual forced implantation remains available for testing. After extraction, autonomous hunting pauses briefly to prevent immediate re-implantation of the patient.</description>
         <statBases>
             <MoveSpeed>4.8</MoveSpeed>
             <MarketValue>250</MarketValue>
@@ -35,6 +27,10 @@
         <comps>
             <li Class="GateRimSG1.Goauld.CompProperties_GoauldForcedImplantation">
                 <minimumTargetAgeYears>13</minimumTargetAgeYears>
+                <autonomousHuntingEnabled>true</autonomousHuntingEnabled>
+                <autonomousScanIntervalTicks>60</autonomousScanIntervalTicks>
+                <autonomousSearchRadius>35</autonomousSearchRadius>
+                <autonomousCooldownAfterExtractionTicks>2500</autonomousCooldownAfterExtractionTicks>
             </li>
         </comps>
         <race>

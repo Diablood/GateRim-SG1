@@ -28,7 +28,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | État |
 |---|---|
-| IA hostile autonome du symbiote libre | Prévu |
 | Implantation rituelle | Prévu |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |

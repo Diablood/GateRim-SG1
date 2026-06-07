@@ -101,6 +101,7 @@ namespace GateRimSG1.Goauld
             GoauldSymbioteData transferredData = sourceComp.TakeDataForTransfer();
             string transferredId = transferredData.SymbioteId;
 
+            transferredData.DetachFromHost(host, CurrentGameTick());
             freeComp.InitializeWithTransferredData(transferredData);
 
             if (!GenPlace.TryPlaceThing(
@@ -137,6 +138,11 @@ namespace GateRimSG1.Goauld
                 host,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+        }
+
+        private static int CurrentGameTick()
+        {
+            return Find.TickManager?.TicksGame ?? 0;
         }
 
         private static string PawnDebugLabel(Pawn pawn)
