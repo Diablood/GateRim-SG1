@@ -12,13 +12,13 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 ## Contenu actuellement testable
 
 - [Jaffa](Jaffa) : lignée germinale et prototype du [Prim'ta](Primta) disponibles.
-- [Goa'uld](Goauld) : hôte déjà implanté, symbiote libre et [implantation récente](Recent-Implantation) testables.
+- [Goa'uld](Goauld) : hôte déjà implanté, symbiote libre, [implantation récente](Recent-Implantation) et [implantation forcée](Forced-Implantation) testables.
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur l'automatisation du Prim'ta, puis sur l'application automatique de l'implantation Goa'uld lors d'une attaque forcée.
+Les prochains lots porteront sur la conversion automatique après implantation, l'attaque autonome des symbiotes libres et l'automatisation du Prim'ta.
 
 ## Liens utiles
 

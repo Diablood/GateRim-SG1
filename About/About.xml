@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.16-dev</modVersion>
+    <modVersion>0.1.17-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -28,7 +28,8 @@ Current development scope:
 - Centralized colored C# logging scaffold
 - Windows build wrapper
 - Persistent Goa'uld symbiote identity data
-- Forced implantation, ritual implantation and host transfer planned next
+- Interactive forced Goa'uld implantation prototype
+- Ritual implantation, active-host conversion and host transfer planned next
 
 Biotech is required for xenotype support.
 This is an early development version.

@@ -58,3 +58,10 @@ Non. Depuis `0.1.13-dev`, la lignée jaffa et le [Prim'ta](Primta) sont séparé
 ## Le Prim'ta est-il déjà automatique ?
 
 Non. Dans `0.1.13-dev`, l'état `symbiote du Prim'ta` doit encore être ajouté ou retiré manuellement en mode développeur.
+
+
+## L'implantation forcée est-elle déjà disponible ?
+
+Oui, sous forme de prototype manuel depuis `0.1.17-dev`. Place un symbiote libre à côté d'un humanoïde adulte compatible, sélectionne le symbiote puis clique sur `Implantation forcée`.
+
+Le comportement hostile autonome sera ajouté ultérieurement.

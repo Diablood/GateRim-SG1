@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.16.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.17.0 loaded.
    ```
 
 
@@ -154,3 +154,26 @@ Optional regression check:
 1. Add `recent Goa'uld implantation`.
 2. Confirm that it also receives a persistent symbiote ID.
 3. Confirm that the temporary state still disappears after one in-game day.
+
+
+## Forced Goa'uld implantation prototype
+
+1. Build with `build.cmd`.
+2. Spawn a free `Goa'uld symbiote`.
+3. Place one adult humanoid pawn in an adjacent cell.
+4. Select the symbiote and record its free-symbiote ID.
+5. Click `Forced implantation`.
+6. Confirm that the free symbiote disappears.
+7. Confirm that the target receives `recent Goa'uld implantation`.
+8. Confirm that the ID displayed on the Hediff matches the former free-symbiote ID.
+9. Save and reload.
+10. Confirm that the transferred ID remains unchanged.
+11. Inspect `Player.log` for the transfer lifecycle.
+
+Negative checks:
+
+- no adjacent compatible humanoid;
+- child under 13;
+- animal target;
+- pawn already implanted;
+- pawn already carrying an adult Goa'uld symbiote state.

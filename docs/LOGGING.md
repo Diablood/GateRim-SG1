@@ -74,3 +74,15 @@ Detached Goa'uld symbiote <id> from host <pawn>.
 ```
 
 The ID should remain identical after saving and reloading.
+
+
+## Forced-implantation diagnostics
+
+`0.1.17-dev` adds free-symbiote and transfer logs:
+
+```text
+Created free Goa'uld symbiote <id> as pawn <pawn>.
+Loaded free Goa'uld symbiote <id> as pawn <pawn>.
+Forced implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
+Consumed free Goa'uld symbiote <id> during forced implantation.
+```

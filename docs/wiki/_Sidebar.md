@@ -13,6 +13,7 @@
 - [Génétique](Genetics)
 - [Prim'ta](Primta)
 - [Implantation récente](Recent-Implantation)
+- [Implantation forcée](Forced-Implantation)
 
 ## Assistance
 

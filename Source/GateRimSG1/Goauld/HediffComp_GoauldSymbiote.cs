@@ -15,6 +15,18 @@ namespace GateRimSG1.Goauld
 
         public GoauldSymbioteData SymbioteData => symbioteData;
 
+        public void InitializeWithTransferredData(GoauldSymbioteData transferredData)
+        {
+            if (transferredData == null)
+            {
+                GR_Log.Error("Tried to transfer null Goa'uld symbiote data into a host state.");
+                return;
+            }
+
+            symbioteData = transferredData;
+            symbioteData.EnsureIdentity(CurrentGameTick());
+        }
+
         public override string CompDescriptionExtra
         {
             get

@@ -62,3 +62,10 @@ Later milestones should:
 10. Let one in-game day pass and confirm that the state disappears.
 11. Switch to French and verify the translated label, description and stage.
 12. Inspect `Player.log` for `SG1_GoauldRecentImplantation` errors.
+
+
+## 0.1.17-dev interactive entry point
+
+The recent-implantation state can now originate from a free symbiote through the manual adjacent-target `Forced implantation` command.
+
+The same persistent identity is transferred before the free symbiote pawn is consumed.

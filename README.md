@@ -14,38 +14,35 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.16-dev — Add persistent Goa'uld symbiote data
+### 0.1.17-dev — Add forced Goa'uld implantation prototype
 
-The first persistent adult Goa'uld symbiote identity is now implemented in C#:
-
-```text
-GoauldSymbioteData
-HediffComp_GoauldSymbiote
-HediffCompProperties_GoauldSymbiote
-```
-
-The data object is deep-saved inside a host health state and stores:
+The first interactive forced-implantation loop is now implemented:
 
 ```text
-unique symbiote ID
-optional future name
-origin
-biological age placeholder
-creation tick
-implantation tick
-current host
-previous host
-last detachment tick
+free Goa'uld symbiote
+    ↓ manual command while adjacent to a compatible humanoid
+recent Goa'uld implantation
 ```
 
-Two manual-test health states currently carry the component:
+The same persistent symbiote identity is transferred into the host health state before the free pawn disappears.
+
+Current command:
 
 ```text
-SG1_GoauldRecentImplantation
-SG1_GoauldHostSymbiote
+Forced implantation
 ```
 
-Save/load persistence can now be validated before implementing attack-driven implantation and host transfer.
+Current compatibility rules:
+
+```text
+adult humanlike pawn: allowed
+child under 13: rejected
+animal: rejected
+mechanoid: rejected
+already implanted or possessed pawn: rejected
+```
+
+This milestone intentionally validates identity transfer first. Autonomous attack AI, target-selection jobs and ritual implantation remain separate follow-up tasks.
 
 ## First playable milestone
 

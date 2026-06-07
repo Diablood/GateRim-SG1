@@ -35,9 +35,21 @@ implantation Goa'uld récente
 
 Cet état représente la phase critique pendant laquelle le parasite s'attache au système nerveux de sa victime. Il dure provisoirement une journée de jeu, affiche un compte à rebours et augmente la douleur.
 
+### Implantation forcée interactive
+
+Depuis `0.1.17-dev`, un symbiote libre adjacent à un humanoïde adulte compatible peut déclencher manuellement :
+
+```text
+Implantation forcée
+```
+
+Le symbiote disparaît et son identité persistante est transférée dans l'état `implantation Goa'uld récente`.
+
+Consulte [Implantation forcée Goa'uld](Forced-Implantation) pour le mode d'emploi.
+
 ## Ce qui n'est pas encore implémenté
 
-- application automatique après une attaque du symbiote libre ;
+- IA hostile autonome du symbiote libre ;
 - implantation rituelle ;
 - interruption médicale ;
 - prise de contrôle dynamique ;

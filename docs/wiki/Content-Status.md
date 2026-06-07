@@ -19,13 +19,14 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
+| Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
 | Symbiote du Prim'ta | État de santé persistant testable manuellement | 0.1.13-dev |
 
 ## Prévu
 
 | Élément | État |
 |---|---|
-| Application automatique après attaque sauvage | Prévu |
+| IA hostile autonome du symbiote libre | Prévu |
 | Implantation rituelle | Prévu |
 | Interruption médicale | Prévu |
 | Conversion automatique en hôte Goa'uld | Prévu |

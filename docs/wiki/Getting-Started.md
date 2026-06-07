@@ -64,3 +64,16 @@ L'état d'implantation récente est encore appliqué manuellement. L'attaque sau
 ## Remarque pour les anciennes sauvegardes de développement
 
 Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pawns de test peuvent conserver des gènes hérités des prototypes précédents.
+
+
+## Tester l'implantation forcée
+
+1. Active le mode développeur.
+2. Génère un `symbiote Goa'uld`.
+3. Place-le dans une case adjacente à un humanoïde adulte.
+4. Sélectionne le symbiote libre.
+5. Note l'identifiant affiché dans le panneau d'inspection.
+6. Clique sur `Implantation forcée`.
+7. Vérifie que le symbiote disparaît.
+8. Vérifie que la victime reçoit `implantation Goa'uld récente`.
+9. Vérifie que l'identifiant du parasite est conservé.

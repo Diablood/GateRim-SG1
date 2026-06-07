@@ -74,6 +74,20 @@
 - [ ] Validate ID persistence after save and reload
 - [ ] Confirm matching `Attached`, `Loaded` and `Detached` logs
 
+## 0.1.17-dev — Add forced Goa'uld implantation prototype
+- [x] Add persistent identity data to the free symbiote pawn
+- [x] Add the manual adjacent-target `Forced implantation` command
+- [x] Transfer the same `GoauldSymbioteData` into `SG1_GoauldRecentImplantation`
+- [x] Consume the free symbiote pawn after successful transfer
+- [x] Reject children under 13, animals, mechanoids and duplicate implantation states
+- [x] Add bilingual `Keyed` UI strings
+- [x] Add transfer lifecycle logs through `GR_Log`
+- [x] Update technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Validate identity transfer in game
+- [ ] Validate persistence after save and reload
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -84,7 +98,8 @@
 
 ## Next symbiote milestones
 - [ ] Add automatic Prim'ta age checks and ceremony flow
-- [ ] Apply recent Goa'uld implantation after a successful forced attack
+- [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
+- [ ] Add autonomous hostile attack AI for free symbiotes
 - [ ] Add ritual Goa'uld implantation
 - [ ] Add medical interruption
 - [ ] Convert a victim into an active Goa'uld host when the timer ends

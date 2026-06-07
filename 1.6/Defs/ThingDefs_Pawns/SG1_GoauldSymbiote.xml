@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        XML-only prototype:
-        This pawn represents an adult Goa'uld symbiote outside any host.
-        It can currently be spawned for visual and balance tests through
-        developer mode. Forced implantation, ritual implantation, transfer,
-        extraction and host-control logic require later C# milestones.
+        The free adult symbiote now carries persistent identity data and exposes
+        an interactive forced-implantation prototype.
+
+        Select the symbiote while it is adjacent to a compatible humanoid host,
+        then use the forced-implantation command. Autonomous AI remains future
+        work.
     -->
     <ThingDef ParentName="AnimalThingBase">
         <defName>SG1_GoauldSymbiote</defName>
         <label>Goa'uld symbiote</label>
-        <description>An adult Goa'uld symbiote outside a host. In this prototype, it is a small and vulnerable creature that can be spawned for testing. Future milestones will allow it to attack a humanoid target, begin an implantation process and take control of a suitable host.</description>
+        <description>An adult Goa'uld symbiote outside a host. Select it while adjacent to a compatible humanoid and use the forced-implantation command to begin the parasite's critical attachment phase. The current prototype requires manual activation; autonomous attack behavior will be added later.</description>
         <statBases>
             <MoveSpeed>4.8</MoveSpeed>
             <MarketValue>250</MarketValue>
@@ -31,6 +32,11 @@
                 <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
             </li>
         </tools>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_GoauldForcedImplantation">
+                <minimumTargetAgeYears>13</minimumTargetAgeYears>
+            </li>
+        </comps>
         <race>
             <body>Snake</body>
             <baseBodySize>0.15</baseBodySize>

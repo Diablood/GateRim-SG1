@@ -53,3 +53,14 @@ SG1_GoauldHostSymbiote
 - survive host death and extraction;
 - add named System Lords;
 - add Tok'ra origin and voluntary symbiosis.
+
+
+## Free-symbiote transfer prototype
+
+Since `0.1.17-dev`, a free symbiote pawn carries its own persistent data through:
+
+```text
+Comp_GoauldForcedImplantation
+```
+
+When the manual forced-implantation action succeeds, the same `GoauldSymbioteData` object is injected into `SG1_GoauldRecentImplantation` before the free pawn is destroyed.

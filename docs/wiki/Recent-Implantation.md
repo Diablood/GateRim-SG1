@@ -35,3 +35,10 @@ Le parasite tente de s'attacher au système nerveux et de prendre le contrôle d
 - fenêtre d'intervention médicale ;
 - extraction spécialisée ;
 - conversion automatique en hôte Goa'uld actif lorsque le temps est écoulé.
+
+
+## Origine interactive
+
+Depuis `0.1.17-dev`, cet état peut être appliqué par un `symbiote Goa'uld` libre grâce à la commande manuelle [Implantation forcée](Forced-Implantation).
+
+L'identité persistante du parasite est conservée entre l'entité libre et la victime.

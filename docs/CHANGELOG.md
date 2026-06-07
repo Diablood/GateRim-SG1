@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.17-dev
+- Add persistent identity data to the free Goa'uld symbiote pawn.
+- Add the manual adjacent-target `Forced implantation` command.
+- Transfer the same `GoauldSymbioteData` object into `SG1_GoauldRecentImplantation`.
+- Consume the free symbiote pawn after a successful implantation.
+- Reject children under 13, animals, mechanoids and already-implanted pawns.
+- Add bilingual `Keyed` strings, a placeholder command icon and lifecycle logging.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.1.16-dev
 - Add persistent `GoauldSymbioteData`.
 - Add `HediffComp_GoauldSymbiote` and its properties class.

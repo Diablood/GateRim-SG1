@@ -29,6 +29,13 @@ namespace GateRimSG1.Goauld
         public string CurrentHostThingId => currentHostThingId;
         public string PreviousHostThingId => previousHostThingId;
 
+        public static GoauldSymbioteData CreateFree(int currentTick)
+        {
+            var data = new GoauldSymbioteData();
+            data.EnsureIdentity(currentTick);
+            return data;
+        }
+
         public static GoauldSymbioteData CreateForHost(Pawn host, int currentTick)
         {
             var data = new GoauldSymbioteData();

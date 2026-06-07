@@ -82,3 +82,12 @@ SG1_GoauldRecentImplantation
 ```
 
 It represents the critical period after entry into a humanoid host. The free symbiote does not apply it automatically yet.
+
+
+## Interactive forced implantation
+
+Since `0.1.17-dev`, a selected free symbiote can implant the first compatible adjacent humanoid through a manual command.
+
+The free pawn disappears and its persistent identity moves into `SG1_GoauldRecentImplantation`.
+
+Autonomous attack AI remains future work.

@@ -5,4 +5,10 @@
     <GR_GoauldSymbioteOrigin_Goauld>Goa'uld</GR_GoauldSymbioteOrigin_Goauld>
     <GR_GoauldSymbioteOrigin_Tokra>Tok'ra</GR_GoauldSymbioteOrigin_Tokra>
     <GR_GoauldSymbioteHost_None>none</GR_GoauldSymbioteHost_None>
+    <GR_FreeGoauldSymbioteDataSummary>Free symbiote ID: {0}&#10;Origin: {1}</GR_FreeGoauldSymbioteDataSummary>
+    <GR_ForcedImplantation_CommandLabel>Forced implantation</GR_ForcedImplantation_CommandLabel>
+    <GR_ForcedImplantation_CommandDescription>Implant this free Goa'uld symbiote into the first compatible adjacent humanoid. The free symbiote is consumed and its persistent identity moves into the recent-implantation state. This is a manual prototype; autonomous attack behavior is not yet implemented.</GR_ForcedImplantation_CommandDescription>
+    <GR_ForcedImplantation_NoAdjacentTarget>No compatible adjacent humanoid is available for forced implantation.</GR_ForcedImplantation_NoAdjacentTarget>
+    <GR_ForcedImplantation_InternalError>Forced implantation failed because the recent-implantation state is missing its persistent symbiote component.</GR_ForcedImplantation_InternalError>
+    <GR_ForcedImplantation_Success>{0} has been forcibly implanted by Goa'uld symbiote {1}.</GR_ForcedImplantation_Success>
 </LanguageData>
