@@ -12,6 +12,7 @@ namespace GateRimSG1.Goauld
         private const int MissingDataWarningKey = 1160001;
 
         private GoauldSymbioteData symbioteData;
+        private bool transferredOut;
 
         public GoauldSymbioteData SymbioteData => symbioteData;
 
@@ -24,7 +25,20 @@ namespace GateRimSG1.Goauld
             }
 
             symbioteData = transferredData;
+            transferredOut = false;
             symbioteData.EnsureIdentity(CurrentGameTick());
+        }
+
+        public GoauldSymbioteData TakeDataForTransfer()
+        {
+            EnsureDataInitialized();
+            transferredOut = true;
+
+            GR_Log.Message(
+                $"Prepared Goa'uld symbiote {symbioteData.SymbioteId} "
+                + $"for transfer from host state on {PawnDebugLabel()}.");
+
+            return symbioteData;
         }
 
         public override string CompDescriptionExtra
@@ -62,6 +76,7 @@ namespace GateRimSG1.Goauld
             base.CompExposeData();
 
             Scribe_Deep.Look(ref symbioteData, "goauldSymbioteData");
+            Scribe_Values.Look(ref transferredOut, "transferredOut", false);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -88,6 +103,16 @@ namespace GateRimSG1.Goauld
 
             if (symbioteData == null)
             {
+                return;
+            }
+
+            if (transferredOut)
+            {
+                GR_Log.Message(
+                    $"Removed transferred Goa'uld symbiote state "
+                    + $"{symbioteData.SymbioteId} from host {PawnDebugLabel()} "
+                    + "without detaching the active symbiote.");
+
                 return;
             }
 

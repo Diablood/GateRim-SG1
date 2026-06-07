@@ -14,35 +14,31 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.17-dev — Add forced Goa'uld implantation prototype
+### 0.1.18-dev — Convert recent implantation into active Goa'uld host
 
-The first interactive forced-implantation loop is now implemented:
+The first complete adult-possession loop is now implemented:
 
 ```text
 free Goa'uld symbiote
-    ↓ manual command while adjacent to a compatible humanoid
+    ↓ manual forced implantation
 recent Goa'uld implantation
+    ↓ one-day countdown
+adult Goa'uld symbiote host state
 ```
 
-The same persistent symbiote identity is transferred into the host health state before the free pawn disappears.
+The same persistent symbiote identity is transferred into the active-host state immediately before the temporary implantation state expires.
 
-Current command:
+The acquired active-host state grants:
 
 ```text
-Forced implantation
+immunity gain ×1.75
+injury healing ×1.75
+incoming damage ×0.8
+lifespan ×5
+pain ×0.7
 ```
 
-Current compatibility rules:
-
-```text
-adult humanlike pawn: allowed
-child under 13: rejected
-animal: rejected
-mechanoid: rejected
-already implanted or possessed pawn: rejected
-```
-
-This milestone intentionally validates identity transfer first. Autonomous attack AI, target-selection jobs and ritual implantation remain separate follow-up tasks.
+The host's original germline xenotype remains unchanged.
 
 ## First playable milestone
 

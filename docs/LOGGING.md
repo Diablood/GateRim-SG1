@@ -86,3 +86,16 @@ Loaded free Goa'uld symbiote <id> as pawn <pawn>.
 Forced implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
 Consumed free Goa'uld symbiote <id> during forced implantation.
 ```
+
+
+## Active-host conversion diagnostics
+
+`0.1.18-dev` adds conversion logs:
+
+```text
+Prepared Goa'uld symbiote <id> for transfer from host state on <pawn>.
+Converted recent Goa'uld implantation <id> into active host state on <pawn>.
+Removed transferred Goa'uld symbiote state <id> from host <pawn> without detaching the active symbiote.
+```
+
+The same ID must remain visible before conversion, after conversion and after save/reload.

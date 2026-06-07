@@ -77,3 +77,16 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 7. Vérifie que le symbiote disparaît.
 8. Vérifie que la victime reçoit `implantation Goa'uld récente`.
 9. Vérifie que l'identifiant du parasite est conservé.
+
+
+## Vérifier la conversion en hôte actif
+
+1. Applique une implantation forcée sur un humanoïde adulte.
+2. Note l'identifiant du symbiote affiché dans `implantation Goa'uld récente`.
+3. Sauvegarde et recharge la partie pendant la phase critique.
+4. Attends la fin du compte à rebours d'une journée.
+5. Vérifie que l'état récent disparaît.
+6. Vérifie que `symbiote Goa'uld adulte` apparaît.
+7. Vérifie que l'identifiant est inchangé.
+8. Vérifie les nouveaux bonus biologiques.
+9. Vérifie que le xenotype germinal de la victime n'a pas changé.

@@ -69,3 +69,14 @@ Later milestones should:
 The recent-implantation state can now originate from a free symbiote through the manual adjacent-target `Forced implantation` command.
 
 The same persistent identity is transferred before the free symbiote pawn is consumed.
+
+
+## 0.1.18-dev automatic conversion
+
+When the recent-implantation countdown expires, the same persistent parasite identity automatically moves into:
+
+```text
+SG1_GoauldHostSymbiote
+```
+
+The victim keeps the original germline xenotype and gains an acquired active-host health state.

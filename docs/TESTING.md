@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.17.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.18.0 loaded.
    ```
 
 
@@ -177,3 +177,19 @@ Negative checks:
 - animal target;
 - pawn already implanted;
 - pawn already carrying an adult Goa'uld symbiote state.
+
+
+## Active Goa'uld host conversion
+
+1. Build with `build.cmd`.
+2. Implant an adjacent adult humanoid through the manual forced-implantation command.
+3. Record the persistent symbiote ID.
+4. Save and reload during `recent Goa'uld implantation`.
+5. Let the one-day countdown expire.
+6. Confirm that the recent state disappears.
+7. Confirm that `adult Goa'uld symbiote` appears.
+8. Confirm that the ID is unchanged.
+9. Confirm active-host modifiers and preservation of the original germline xenotype.
+10. Save and reload after conversion.
+11. Confirm that the ID remains unchanged.
+12. Inspect `Player.log` for preparation, conversion and safe-removal logs.

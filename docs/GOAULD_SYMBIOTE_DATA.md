@@ -64,3 +64,10 @@ Comp_GoauldForcedImplantation
 ```
 
 When the manual forced-implantation action succeeds, the same `GoauldSymbioteData` object is injected into `SG1_GoauldRecentImplantation` before the free pawn is destroyed.
+
+
+## Active-host conversion
+
+Since `0.1.18-dev`, `SG1_GoauldRecentImplantation` automatically transfers its `GoauldSymbioteData` object into `SG1_GoauldHostSymbiote` immediately before expiry.
+
+The temporary carrier marks its data as transferred-out so its removal does not clear the active identity.

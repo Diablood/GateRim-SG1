@@ -4,7 +4,8 @@
 > Première fondation XML : 0.1.7-dev  
 > Symbiote libre : 0.1.8-dev  
 > Implantation récente : 0.1.11-dev  
-> Implantation forcée interactive : 0.1.17-dev
+> Implantation forcée interactive : 0.1.17-dev  
+> Hôte actif : 0.1.18-dev
 
 ## Vue d'ensemble
 
@@ -40,11 +41,12 @@ Depuis `0.1.11-dev`, l'état de santé `implantation Goa'uld récente` représen
 
 Depuis `0.1.17-dev`, un symbiote libre peut appliquer cet état grâce à une commande manuelle lorsqu'il se trouve à côté d'un humanoïde adulte compatible. Son identité persistante est conservée lors du transfert.
 
+Depuis `0.1.18-dev`, le compte à rebours convertit automatiquement la victime en [hôte Goa'uld actif](Active-Goauld-Host) sans changer son xenotype germinal.
+
 ## Éléments de gameplay prévus
 
 - IA hostile autonome du symbiote libre ;
 - interruption médicale ;
-- conversion en hôte possédé lorsque le compte à rebours se termine ;
 - transfert vers un nouvel hôte ;
 - extraction spécialisée ;
 - différenciation claire entre Goa'uld et Tok'ra ;

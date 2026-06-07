@@ -47,12 +47,23 @@ Le symbiote disparaît et son identité persistante est transférée dans l'éta
 
 Consulte [Implantation forcée Goa'uld](Forced-Implantation) pour le mode d'emploi.
 
+### Hôte actif après conversion
+
+Depuis `0.1.18-dev`, la phase critique se transforme automatiquement après une journée de jeu en :
+
+```text
+symbiote Goa'uld adulte
+```
+
+Le même identifiant persistant est conservé. L'état actif apporte des bonus importants sans remplacer le xenotype germinal d'origine.
+
+Consulte [Hôte Goa'uld actif](Active-Goauld-Host).
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;
 - implantation rituelle ;
 - interruption médicale ;
-- prise de contrôle dynamique ;
 - extraction ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;

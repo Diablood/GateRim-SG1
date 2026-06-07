@@ -17,7 +17,7 @@ Le parasite tente de s'attacher au système nerveux et de prendre le contrôle d
 | Compte à rebours visible | Oui |
 | Douleur supplémentaire | `+15 %` |
 | Application automatique | Non |
-| Conversion automatique en hôte Goa'uld | Non |
+| Conversion automatique en hôte Goa'uld | Oui, après une journée |
 | Traitement médical | Non |
 
 ## Tester le prototype
@@ -42,3 +42,10 @@ Le parasite tente de s'attacher au système nerveux et de prendre le contrôle d
 Depuis `0.1.17-dev`, cet état peut être appliqué par un `symbiote Goa'uld` libre grâce à la commande manuelle [Implantation forcée](Forced-Implantation).
 
 L'identité persistante du parasite est conservée entre l'entité libre et la victime.
+
+
+## Conversion automatique
+
+Depuis `0.1.18-dev`, l'expiration du compte à rebours transforme automatiquement l'état récent en [hôte Goa'uld actif](Active-Goauld-Host).
+
+L'identité persistante du parasite est conservée.

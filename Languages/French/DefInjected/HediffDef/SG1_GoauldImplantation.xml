@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_GoauldRecentImplantation.label>implantation Goa'uld récente</SG1_GoauldRecentImplantation.label>
-    <SG1_GoauldRecentImplantation.description>Un symbiote Goa'uld adulte vient de pénétrer dans cet hôte et s'attache à son système nerveux. La victime traverse une phase critique douloureuse pendant que le parasite tente d'établir son contrôle. Dans ce prototype, cet état disparaît après une journée de jeu ; la conversion automatique en hôte Goa'uld actif sera implémentée ultérieurement.</SG1_GoauldRecentImplantation.description>
+    <SG1_GoauldRecentImplantation.description>Un symbiote Goa'uld adulte vient de pénétrer dans cet hôte et s'attache à son système nerveux. La victime traverse une phase critique douloureuse pendant que le parasite tente d'établir son contrôle. Après une journée de jeu, la même identité persistante du symbiote est automatiquement transférée vers l'état d'hôte Goa'uld actif.</SG1_GoauldRecentImplantation.description>
     <SG1_GoauldRecentImplantation.stages.0.label>phase critique d'implantation</SG1_GoauldRecentImplantation.stages.0.label>
 </LanguageData>

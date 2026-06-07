@@ -36,7 +36,7 @@ Pas encore. Dans `0.1.11-dev`, l'état `implantation Goa'uld récente` doit êtr
 
 ## La victime devient-elle automatiquement un hôte Goa'uld ?
 
-Pas encore. Dans ce prototype, l'état disparaît après une journée de jeu. La conversion automatique sera ajoutée lors d'un futur jalon C#.
+Oui. Depuis `0.1.18-dev`, l'état d'implantation récente devient automatiquement un état d'[hôte Goa'uld actif](Active-Goauld-Host) après une journée de jeu.
 
 ## Le symbiote libre apparaît-il naturellement ?
 

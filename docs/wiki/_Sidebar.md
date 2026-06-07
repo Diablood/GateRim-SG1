@@ -14,6 +14,7 @@
 - [Prim'ta](Primta)
 - [Implantation récente](Recent-Implantation)
 - [Implantation forcée](Forced-Implantation)
+- [Hôte Goa'uld actif](Active-Goauld-Host)
 
 ## Assistance
 

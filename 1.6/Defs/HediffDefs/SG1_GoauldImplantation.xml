@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        The recent-implantation phase now owns persistent adult-symbiote data.
-        A future conversion milestone will transfer the same identity into the
-        active-host state before this temporary Hediff disappears.
+        The recent-implantation phase owns persistent adult-symbiote data.
+        Immediately before its one-day countdown expires, the specialized
+        disappearing component transfers the same identity into the active-host
+        state. The temporary state then disappears normally.
     -->
     <HediffDef>
         <defName>SG1_GoauldRecentImplantation</defName>
         <label>recent Goa'uld implantation</label>
-        <description>An adult Goa'uld symbiote has recently entered this host and is attaching itself to the nervous system. The victim suffers a painful critical phase while the parasite attempts to establish control. This prototype state expires after one in-game day; automatic conversion into an active Goa'uld host will be implemented later.</description>
+        <description>An adult Goa'uld symbiote has recently entered this host and is attaching itself to the nervous system. The victim suffers a painful critical phase while the parasite attempts to establish control. After one in-game day, the same persistent symbiote identity automatically moves into the active Goa'uld host state.</description>
         <hediffClass>HediffWithComps</hediffClass>
         <isBad>true</isBad>
         <stages>
@@ -19,7 +20,7 @@
         </stages>
         <comps>
             <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldSymbiote" />
-            <li Class="HediffCompProperties_Disappears">
+            <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldImplantationConversion">
                 <disappearsAfterTicks>60000</disappearsAfterTicks>
                 <showRemainingTime>true</showRemainingTime>
             </li>

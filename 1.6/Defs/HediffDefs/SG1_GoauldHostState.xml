@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        Persistent identity carrier for an adult Goa'uld symbiote inside an
-        active host. It can currently be added manually for save/load tests.
-        Future conversion logic will add it automatically and transfer the
-        identity created during recent implantation.
+        Persistent acquired host state for an adult Goa'uld symbiote.
+        The host keeps the original germline xenotype. Adult possession is
+        represented as a removable health state with persistent identity data.
     -->
     <HediffDef>
         <defName>SG1_GoauldHostSymbiote</defName>
         <label>adult Goa'uld symbiote</label>
-        <description>An adult Goa'uld symbiote resides inside this host. This prototype health state stores the parasite's persistent identity across save and load operations. Automatic possession, abilities and transfer between hosts will be added in later milestones.</description>
+        <description>An adult Goa'uld symbiote resides inside this host and has established control. The parasite grants major biological advantages while preserving its own persistent identity. The host's original germline xenotype remains unchanged because adult possession is acquired during life.</description>
         <hediffClass>HediffWithComps</hediffClass>
         <isBad>false</isBad>
+        <stages>
+            <li>
+                <label>active Goa'uld host</label>
+                <painFactor>0.7</painFactor>
+                <statFactors>
+                    <ImmunityGainSpeed>1.75</ImmunityGainSpeed>
+                    <InjuryHealingFactor>1.75</InjuryHealingFactor>
+                    <IncomingDamageFactor>0.8</IncomingDamageFactor>
+                    <LifespanFactor>5</LifespanFactor>
+                </statFactors>
+            </li>
+        </stages>
         <comps>
             <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldSymbiote" />
         </comps>

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.18-dev
+- Add `HediffComp_GoauldImplantationConversion`.
+- Convert recent implantation into `SG1_GoauldHostSymbiote` immediately before expiry.
+- Transfer the same persistent `GoauldSymbioteData` identity into the active-host state.
+- Prevent the temporary state's removal from detaching transferred identity data.
+- Add active-host immunity, healing, damage-resistance, lifespan and pain modifiers.
+- Preserve the host's original germline xenotype.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.17-dev
 - Add persistent identity data to the free Goa'uld symbiote pawn.
 - Add the manual adjacent-target `Forced implantation` command.

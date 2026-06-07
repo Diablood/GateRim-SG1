@@ -88,6 +88,20 @@
 - [ ] Validate persistence after save and reload
 - [ ] Publish the updated player wiki
 
+## 0.1.18-dev — Convert recent implantation into active Goa'uld host
+- [x] Add `HediffComp_GoauldImplantationConversion`
+- [x] Derive conversion timing from `HediffComp_Disappears`
+- [x] Transfer the same persistent identity into `SG1_GoauldHostSymbiote`
+- [x] Prevent temporary-state removal from detaching the transferred symbiote
+- [x] Add acquired active-host biological modifiers
+- [x] Preserve the original germline xenotype
+- [x] Add bilingual UI text, documentation and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Validate save/reload during the critical phase
+- [ ] Validate conversion and identity persistence
+- [ ] Validate save/reload after conversion
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -102,7 +116,7 @@
 - [ ] Add autonomous hostile attack AI for free symbiotes
 - [ ] Add ritual Goa'uld implantation
 - [ ] Add medical interruption
-- [ ] Convert a victim into an active Goa'uld host when the timer ends
+- [x] Convert a victim into an active Goa'uld host when the timer ends
 - [ ] Add transfer between hosts
 - [ ] Add extraction
 - [ ] Add Tok'ra behavior
