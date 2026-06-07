@@ -10,6 +10,7 @@
 - [Jaffa](Jaffa)
 - [Goa'uld](Goauld)
 - [Symbiotes](Symbiotes)
+- [Implantation récente](Recent-Implantation)
 
 ## Assistance
 

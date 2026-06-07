@@ -71,3 +71,14 @@ The initial XML prototype incorrectly declared:
 inside the `RaceProperties` block. RimWorld 1.6 does not expose that field on `RaceProperties`, so the line has been removed.
 
 The pawn remains excluded from natural biome spawning because no biome table references it. Developer-mode spawning remains the intended test method.
+
+
+## Related implantation prototype
+
+Since `0.1.11-dev`, the temporary Hediff below can be added manually through developer mode:
+
+```text
+SG1_GoauldRecentImplantation
+```
+
+It represents the critical period after entry into a humanoid host. The free symbiote does not apply it automatically yet.

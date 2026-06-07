@@ -2,7 +2,8 @@
 
 > Statut : Prototype  
 > Première fondation XML : 0.1.7-dev  
-> Symbiote libre : 0.1.8-dev
+> Symbiote libre : 0.1.8-dev  
+> Implantation récente : 0.1.11-dev
 
 ## Vue d'ensemble
 
@@ -32,13 +33,16 @@ Symbiote libre ou nouvel hôte
 
 Depuis `0.1.7-dev`, le xenotype `hôte Goa'uld` permet de tester un pawn déjà possédé.
 
-Depuis `0.1.8-dev`, le pawn `symbiote Goa'uld` permet de tester l'organisme libre en mode développeur. Il dispose d'une apparence temporaire, de déplacements et d'une faible morsure. Il n'apparaît pas naturellement dans les biomes.
+Depuis `0.1.8-dev`, le pawn `symbiote Goa'uld` permet de tester l'organisme libre en mode développeur.
+
+Depuis `0.1.11-dev`, l'état de santé `implantation Goa'uld récente` représente la période critique après l'entrée dans un hôte. Il est encore ajouté manuellement.
 
 ## Éléments de gameplay prévus
 
 - attaque d'implantation à courte portée ;
-- période critique permettant une intervention médicale ;
-- hôte possédé avec bonus biologiques ;
+- application automatique de l'état critique ;
+- interruption médicale ;
+- conversion en hôte possédé lorsque le compte à rebours se termine ;
 - transfert vers un nouvel hôte ;
 - extraction spécialisée ;
 - différenciation claire entre Goa'uld et Tok'ra ;

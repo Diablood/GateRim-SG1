@@ -17,15 +17,6 @@ Le xenotype suivant permet de tester les effets biologiques d'un hôte déjà po
 hôte Goa'uld
 ```
 
-| Particularité | Effet actuel |
-|---|---|
-| Naquadah dans le sang | Marqueur visible destiné aux futurs systèmes |
-| Longévité de l'hôte | Espérance de vie multipliée par `5`, soit `500 %` |
-| Immunité | Résistance accrue aux maladies |
-| Récupération | Guérison accélérée |
-| Résistance physique | Meilleure tolérance au combat |
-| Force | Dégâts de mêlée améliorés |
-
 ### Symbiote libre
 
 Depuis `0.1.8-dev`, un symbiote adulte sans hôte peut être généré en mode développeur :
@@ -34,13 +25,21 @@ Depuis `0.1.8-dev`, un symbiote adulte sans hôte peut être généré en mode d
 symbiote Goa'uld
 ```
 
-Il s'agit actuellement d'une petite créature vulnérable disposant uniquement d'une faible morsure. Sa véritable menace viendra ultérieurement de sa capacité à s'implanter dans une cible humanoïde.
+### Implantation récente
+
+Depuis `0.1.11-dev`, un état de santé temporaire peut être ajouté manuellement à un pawn humanoïde :
+
+```text
+implantation Goa'uld récente
+```
+
+Cet état représente la phase critique pendant laquelle le parasite s'attache au système nerveux de sa victime. Il dure provisoirement une journée de jeu, affiche un compte à rebours et augmente la douleur.
 
 ## Ce qui n'est pas encore implémenté
 
-- attaque sauvage d'implantation ;
+- application automatique après une attaque du symbiote libre ;
 - implantation rituelle ;
-- période critique après infestation ;
+- interruption médicale ;
 - prise de contrôle dynamique ;
 - extraction ;
 - transfert entre plusieurs hôtes ;

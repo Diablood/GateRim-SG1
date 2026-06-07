@@ -66,3 +66,21 @@ After applying the free-symbiote XML correction:
    ```
 3. Spawn `SG1_GoauldSymbiote` through developer mode.
 4. Confirm that movement, the weak bite, and the temporary sprite still work.
+
+
+## Recent Goa'uld implantation prototype
+
+Add the following Hediff through developer mode to a humanoid pawn:
+
+```text
+SG1_GoauldRecentImplantation
+```
+
+Checklist:
+
+1. Confirm the health tab displays `recent Goa'uld implantation`.
+2. Confirm the remaining-time countdown appears.
+3. Confirm the pawn receives additional pain.
+4. Wait one in-game day and confirm the Hediff disappears.
+5. Switch to French and verify the translated label, description and stage.
+6. Check `Player.log` for `SG1_GoauldRecentImplantation` errors.

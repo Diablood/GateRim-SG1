@@ -21,35 +21,28 @@
 - [x] Add `SG1_GoauldLongevity`
 - [x] Add French translations and temporary local icons
 
-## 0.1.8-dev — Free Goa'uld symbiote prototype
+### 0.1.8-dev to 0.1.10-dev — Free symbiote and workflow fixes
 - [x] Add the XML-only `SG1_GoauldSymbiote` animal-style pawn
 - [x] Add a weak bite attack
-- [x] Exclude the symbiote from natural biome spawning
 - [x] Add a temporary local pawn sprite
+- [x] Correct the free-symbiote XML
+- [x] Add Windows-friendly wiki synchronization helpers
+
+## 0.1.11-dev — Recent Goa'uld implantation state
+- [x] Add `SG1_GoauldRecentImplantation`
+- [x] Add a visible one-day countdown
+- [x] Add a temporary pain offset during the critical phase
 - [x] Add French `DefInjected` translations
-- [x] Update wiki drafts
-- [x] Add `tools/sync-wiki.sh`
-- [ ] Validate the prototype in RimWorld 1.6
+- [x] Add technical documentation
+- [x] Update player-wiki drafts
+- [ ] Validate the Hediff in RimWorld 1.6
 - [ ] Publish the updated player-wiki pages
 
-## 0.1.9-dev — Fix free Goa'uld symbiote XML
-- [x] Remove the invalid `<wildness>` field from `RaceProperties`
-- [x] Preserve developer-mode spawning for isolated tests
-- [x] Keep the wiki unchanged because player-facing behavior is not modified
-- [ ] Re-run the minimal RimWorld test
-- [ ] Confirm that `Player.log` no longer reports the `wildness` XML error
-
-## 0.1.10-dev — Add Windows wiki synchronization helper
-- [x] Add `tools/sync-wiki.ps1`
-- [x] Add `tools/sync-wiki.cmd`
-- [x] Preserve the Bash helper
-- [x] Document Windows PowerShell and Bash usage
-- [ ] Validate `.\tools\sync-wiki.cmd` from the Windows Cursor terminal
-
 ## Next symbiote milestones
-- [ ] Add a recent-implantation Hediff
-- [ ] Add forced implantation
+- [ ] Apply recent implantation after a successful forced attack
 - [ ] Add ritual implantation
+- [ ] Add medical interruption
+- [ ] Convert a victim into an active Goa'uld host when the timer ends
 - [ ] Add transfer between hosts
 - [ ] Add extraction
 - [ ] Add Tok'ra behavior

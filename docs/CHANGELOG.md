@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.11-dev
+- Add the XML-only `SG1_GoauldRecentImplantation` Hediff prototype.
+- Add a visible one-day countdown through `HediffCompProperties_Disappears`.
+- Add a temporary pain offset during the critical implantation phase.
+- Add French `DefInjected` translations.
+- Add technical documentation and manual test instructions.
+- Update player-wiki drafts.
+
 ## 0.1.10-dev
 - Add `tools/sync-wiki.ps1` for Windows PowerShell.
 - Add `tools/sync-wiki.cmd` as the recommended Windows wrapper.

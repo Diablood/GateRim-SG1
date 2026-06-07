@@ -20,26 +20,29 @@ feature/jaffa-goauld-foundation
 
 ## Current milestone
 
-### 0.1.10-dev — Add Windows wiki synchronization helper
+### 0.1.11-dev — Recent Goa'uld implantation state
 
-The wiki synchronization workflow now includes Windows-friendly commands:
+The mod now includes an XML-only medical-state prototype representing the critical period after a Goa'uld symbiote enters a humanoid host:
 
-- Add `tools/sync-wiki.ps1` for PowerShell
-- Add `tools/sync-wiki.cmd` as the recommended Windows wrapper
-- Preserve `tools/sync-wiki.sh` for Bash environments
-- Keep wiki pages copied directly to the root of `GateRim-SG1.wiki`
-- No player-wiki content publication required for this maintenance-only correction
+- `SG1_GoauldRecentImplantation`
+- Visible remaining-time countdown
+- Temporary duration of one in-game day
+- Pain offset during the critical phase
+- French `DefInjected` translations
+- Updated technical documentation and player-wiki drafts
 
-Forced implantation, ritual implantation and host transfer remain later C# milestones.
+The Hediff can currently be added through developer mode. Automatic application, interruption and conversion into an active Goa'uld host remain later C# milestones.
 
 ## First playable milestone
 
 - [x] Jaffa xenotype foundation
 - [x] Goa'uld host xenotype prototype
 - [x] Free Goa'uld symbiote pawn prototype
-- [ ] Recent-implantation state
+- [x] Recent Goa'uld implantation Hediff prototype
 - [ ] Forced implantation
 - [ ] Ritual implantation
+- [ ] Medical interruption
+- [ ] Host conversion after the critical phase
 - [ ] Host transfer
 - [ ] Goa'uld faction
 - [ ] Jaffa pawn kinds

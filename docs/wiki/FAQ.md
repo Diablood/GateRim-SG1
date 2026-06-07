@@ -17,20 +17,23 @@ Non. Elle est prévue pour un lot ultérieur avec la trétonine et les conséque
 
 ## Les Goa'uld sont-ils déjà disponibles ?
 
-Deux prototypes existent :
+Trois prototypes existent :
 
 - un xenotype représentant un hôte déjà implanté ;
-- un symbiote libre générable en mode développeur.
+- un symbiote libre générable en mode développeur ;
+- un état de santé temporaire représentant l'implantation récente.
 
-L'implantation sauvage, le rituel et le transfert restent prévus pour de futurs lots.
+## L'implantation se déclenche-t-elle automatiquement ?
+
+Pas encore. Dans `0.1.11-dev`, l'état `implantation Goa'uld récente` doit être ajouté manuellement avec le mode développeur.
+
+## La victime devient-elle automatiquement un hôte Goa'uld ?
+
+Pas encore. Dans ce prototype, l'état disparaît après une journée de jeu. La conversion automatique sera ajoutée lors d'un futur jalon C#.
 
 ## Le symbiote libre apparaît-il naturellement ?
 
-Non. Dans `0.1.8-dev`, il est volontairement exclu des biomes et doit être généré en mode développeur pour les tests.
-
-## Pourquoi la longévité d'un hôte Goa'uld est-elle fixée à 500 % ?
-
-Cette valeur est provisoire. Elle permet de tester une durée de vie très supérieure à celle d'un humain sans encore gérer les sarcophages ou les Grands Maîtres exceptionnels.
+Non. Il reste volontairement exclu des biomes et doit être généré en mode développeur pour les tests.
 
 ## Le wiki décrit-il du contenu non encore disponible ?
 

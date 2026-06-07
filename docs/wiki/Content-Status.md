@@ -18,14 +18,16 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Naquadah dans le sang | Marqueur prototype | 0.1.7-dev |
 | Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
+| Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
 
 ## Prévu
 
 | Élément | État |
 |---|---|
-| État d'implantation récent | Prévu |
+| Application automatique après attaque sauvage | Prévu |
 | Implantation rituelle | Prévu |
-| Attaque sauvage d'un symbiote | Prévu |
+| Interruption médicale | Prévu |
+| Conversion automatique en hôte Goa'uld | Prévu |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
 | Dépendance des Jaffa au symbiote ou à la trétonine | Prévu |

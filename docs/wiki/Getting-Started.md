@@ -37,6 +37,15 @@ Le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
 4. Sélectionne `symbiote Goa'uld`.
 5. Vérifie son apparence, ses déplacements et sa faible attaque de morsure.
 
+## Vérifier l'implantation récente
+
+1. Sélectionne un pawn humanoïde.
+2. Utilise l'action de débogage permettant d'ajouter un état de santé.
+3. Ajoute `implantation Goa'uld récente`.
+4. Vérifie la présence du compte à rebours dans l'onglet de santé.
+5. Vérifie l'augmentation temporaire de la douleur.
+6. Attends une journée de jeu et confirme la disparition de l'état.
+
 ## Important
 
-Le symbiote libre est uniquement un prototype testable. Son attaque sauvage d'implantation, le rituel et le transfert entre hôtes ne sont pas encore actifs.
+L'état d'implantation récente est encore appliqué manuellement. L'attaque sauvage, le rituel, l'interruption médicale et la conversion automatique restent prévus.

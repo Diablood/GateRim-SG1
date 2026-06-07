@@ -12,13 +12,13 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 ## Contenu actuellement testable
 
 - [Jaffa](Jaffa) : xenotype prototype disponible.
-- [Goa'uld](Goauld) : prototype d'hôte déjà implanté et symbiote libre testable en mode développeur.
+- [Goa'uld](Goauld) : hôte déjà implanté, symbiote libre et [implantation récente](Recent-Implantation) testables.
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur l'état d'implantation récent, l'attaque forcée et le transfert du symbiote entre plusieurs hôtes.
+Les prochains lots porteront sur l'application automatique de l'implantation lors d'une attaque forcée, puis sur la conversion de la victime en hôte Goa'uld actif.
 
 ## Liens utiles
 
