@@ -14,21 +14,24 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.23-dev — Add explicit ritual target selection
+### 0.1.24-dev — Add core ritual ceremony duration and cancellation
 
-The controlled ritual command now opens a map-targeting cursor:
+Controlled ritual implantation is no longer instantaneous:
 
 ```text
-selected free Goa'uld symbiote
-    ↓ Ritual implantation
-click one compatible reachable humanoid within 12 cells
-    ↓
+selected free symbiote
+    ↓ explicit target selection
+600-tick core ceremony
+    ↓ target stays valid, reachable and within range
 recent Goa'uld implantation
 ```
 
-The clicked pawn is implanted even when another valid pawn is closer.
+The ceremony can be cancelled manually and stops automatically when its
+continuity requirements fail. Its target and remaining duration persist through
+save and reload.
 
-The existing persistent identity-transfer core remains unchanged.
+This fallback remains independent from `Ideology`. Optional DLC integration can
+later reuse the same transfer core.
 
 ## First playable milestone
 

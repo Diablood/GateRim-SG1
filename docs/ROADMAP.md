@@ -178,6 +178,22 @@
 - [ ] Validate identity persistence after save/reload
 - [ ] Publish the updated player wiki
 
+## 0.1.24-dev — Add core ritual ceremony duration and cancellation
+- [x] Add a `600`-tick core ritual ceremony after explicit targeting
+- [x] Persist ritual target and remaining duration through save/reload
+- [x] Display ritual progress in the free-symbiote inspection panel
+- [x] Add `Cancel ritual`
+- [x] Cancel automatically if the symbiote becomes unavailable, dead or downed
+- [x] Cancel automatically if the target becomes invalid, unreachable or out of range
+- [x] Preserve the same centralized identity-transfer flow on completion
+- [x] Keep the fallback independent from optional DLCs
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Validate timed completion
+- [ ] Validate save/reload during the ceremony
+- [ ] Validate manual and automatic cancellation
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -193,7 +209,9 @@
 - [ ] Add richer tactical priorities for autonomous symbiotes
 - [x] Add controlled ritual Goa'uld implantation prototype
 - [x] Add explicit ritual target selection
-- [ ] Add ritual ceremony duration and environmental requirements
+- [x] Add core ritual ceremony duration and cancellation
+- [ ] Add environmental requirements for the core ritual
+- [ ] Add optional Ideology ritual integration
 - [x] Add manual emergency extraction prototype
 - [x] Complement manual extraction with a medical surgery bill
 - [x] Convert a victim into an active Goa'uld host when the timer ends
@@ -216,3 +234,11 @@
 - [ ] Add Unas tribes
 - [ ] Add Asgard quest faction
 - [ ] Add Replicator swarm
+
+
+## Optional DLC integrations
+- [ ] Keep `Core + Biotech` as the required foundation
+- [ ] Evaluate optional `Ideology` integration for Goa'uld cults, ceremonies, roles and ritual requirements
+- [ ] Reuse the existing GateRim SG-1 identity-transfer core from optional Ideology rituals
+- [ ] Evaluate optional `Royalty` integration when System Lord factions are introduced
+- [ ] Assess titles, favor, permits, quests and limited thematic abilities without making `Royalty` mandatory

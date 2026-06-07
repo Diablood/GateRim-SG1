@@ -38,3 +38,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
 | Armes et armures Jaffa | Prévu |
+
+| Intégration optionnelle Ideology | Prévu | Futur |
+| Intégration optionnelle Royalty | À étudier avec les Grands Maîtres | Futur |

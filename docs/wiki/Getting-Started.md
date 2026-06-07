@@ -138,3 +138,17 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 7. Utilise le curseur pour cliquer sur le pawn précis à implanter.
 8. Vérifie que le pawn sélectionné reçoit `implantation Goa'uld récente`.
 9. Vérifie que l'identifiant est inchangé.
+
+
+## Vérifier la durée du rituel
+
+1. Génère un `symbiote Goa'uld`.
+2. Désactive `Chasse autonome`.
+3. Clique sur `Implantation rituelle`.
+4. Sélectionne une cible compatible dans un rayon de `12` cases.
+5. Vérifie que l'implantation n'est pas immédiate.
+6. Vérifie que la cible et les ticks restants apparaissent dans le panneau d'inspection.
+7. Sauvegarde et recharge pendant le rituel.
+8. Vérifie que le compte à rebours reprend.
+9. Teste `Annuler le rituel`.
+10. Déplace aussi la cible hors de portée pour vérifier l'annulation automatique.

@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.23.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.24.0 loaded.
    ```
 
 
@@ -280,3 +280,20 @@ Negative checks:
 11. Confirm rejection without consuming the free symbiote.
 12. Save and reload after a valid ritual.
 13. Confirm identity persistence.
+
+
+## Timed ritual ceremony and cancellation
+
+1. Build with `build.cmd`.
+2. Spawn a free Goa'uld symbiote and disable autonomous hunt.
+3. Start `Ritual implantation`.
+4. Select one compatible reachable humanoid within `12` cells.
+5. Confirm that implantation is not immediate.
+6. Confirm the inspection panel displays the target and remaining ticks.
+7. Save and reload during the ceremony.
+8. Confirm the countdown resumes.
+9. Let the countdown reach zero.
+10. Confirm recent implantation and persistent identity transfer.
+11. Start another ritual, click `Cancel ritual`, and confirm no transfer occurs.
+12. Start another ritual and move the target out of range.
+13. Confirm automatic cancellation without consuming the free symbiote.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.24-dev
+- Add a `600`-tick core ritual ceremony after explicit target selection.
+- Persist ritual target and remaining duration through save and reload.
+- Display ritual progress in the free-symbiote inspection panel.
+- Add `Cancel ritual`.
+- Cancel automatically when the symbiote or selected target becomes invalid, unreachable or out of range.
+- Preserve the centralized persistent identity-transfer flow on completion.
+- Keep the fallback independent from optional DLC integrations.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.23-dev
 - Replace automatic nearest-target ritual selection with explicit map targeting.
 - Add a ritual target validator for compatible reachable humanoids within `12` cells.

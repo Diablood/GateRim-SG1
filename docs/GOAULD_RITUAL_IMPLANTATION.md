@@ -102,3 +102,17 @@ next autonomous scan is delayed briefly so the controlled action remains stable.
 
 The previous automatic nearest-target selection is removed from the player-facing
 ritual path.
+
+
+## 0.1.24-dev timed core ceremony
+
+After explicit target selection, ritual implantation now enters a `600`-tick
+ceremony instead of transferring instantly.
+
+The selected target must remain valid, reachable and within `12` cells until
+completion. The free symbiote inspection panel displays the remaining duration.
+
+The ceremony can be cancelled manually and is automatically interrupted when
+its continuity requirements are no longer met.
+
+The ritual state is saved and resumes after reload.

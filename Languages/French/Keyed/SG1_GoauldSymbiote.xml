@@ -9,7 +9,10 @@ Hôte précédent : {4}</GR_GoauldSymbioteDataSummary>
     <GR_GoauldSymbioteOrigin_Goauld>Goa'uld</GR_GoauldSymbioteOrigin_Goauld>
     <GR_GoauldSymbioteOrigin_Tokra>Tok'ra</GR_GoauldSymbioteOrigin_Tokra>
     <GR_GoauldSymbioteHost_None>aucun</GR_GoauldSymbioteHost_None>
-    <GR_FreeGoauldSymbioteDataSummary>Identifiant du symbiote libre : {0}&amp;#10;Origine : {1}&amp;#10;Chasse autonome : {2}&amp;#10;Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
+    <GR_FreeGoauldSymbioteDataSummary>Identifiant du symbiote libre : {0}
+Origine : {1}
+Chasse autonome : {2}
+Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_CommandLabel>Implantation forcée</GR_ForcedImplantation_CommandLabel>
     <GR_ForcedImplantation_CommandDescription>Implante ce symbiote Goa'uld libre dans le premier humanoïde compatible adjacent. Le symbiote libre est consommé et son identité persistante est transférée vers l'état d'implantation récente. Il s'agit d'un prototype manuel ; le comportement d'attaque autonome n'est pas encore implémenté.</GR_ForcedImplantation_CommandDescription>
     <GR_ForcedImplantation_NoAdjacentTarget>Aucun humanoïde compatible adjacent n'est disponible pour une implantation forcée.</GR_ForcedImplantation_NoAdjacentTarget>
@@ -30,8 +33,16 @@ Hôte précédent : {4}</GR_GoauldSymbioteDataSummary>
     <GR_AutonomousHunt_Disabled>désactivée</GR_AutonomousHunt_Disabled>
     <GR_AutonomousImplantation_Success>{0} a subi l'implantation autonome du symbiote Goa'uld {1}.</GR_AutonomousImplantation_Success>
     <GR_RitualImplantation_CommandLabel>Implantation rituelle</GR_RitualImplantation_CommandLabel>
-    <GR_RitualImplantation_CommandDescription>Choisis un humanoïde compatible accessible dans le rayon du rituel. Le symbiote Goa'uld libre sélectionné est consommé et la même identité persistante est transférée vers l'implantation récente.</GR_RitualImplantation_CommandDescription>
+    <GR_RitualImplantation_CommandDescription>Choisis un humanoïde compatible accessible dans le rayon du rituel. La cible sélectionnée doit rester valide, accessible et dans le rayon pendant la cérémonie temporisée. À la fin, le symbiote libre est consommé et la même identité persistante est transférée vers l'implantation récente.</GR_RitualImplantation_CommandDescription>
     <GR_RitualImplantation_NoNearbyTarget>Aucun humanoïde compatible accessible n'est disponible dans le rayon du rituel.</GR_RitualImplantation_NoNearbyTarget>
     <GR_RitualImplantation_Success>{0} a subi le rituel contrôlé d'implantation du symbiote Goa'uld {1}.</GR_RitualImplantation_Success>
     <GR_RitualImplantation_InvalidTarget>Ce pawn n'est pas une cible valide pour l'implantation rituelle.</GR_RitualImplantation_InvalidTarget>
+    <GR_RitualCeremony_CancelCommandLabel>Annuler le rituel</GR_RitualCeremony_CancelCommandLabel>
+    <GR_RitualCeremony_CancelCommandDescription>Annule la cérémonie actuelle d'implantation Goa'uld avant son achèvement.</GR_RitualCeremony_CancelCommandDescription>
+    <GR_RitualCeremony_Started>Le rituel d'implantation Goa'uld de {0} a commencé. Maintiens la cible disponible et dans le rayon pendant {1} ticks.</GR_RitualCeremony_Started>
+    <GR_RitualCeremony_CancelledManual>Le rituel d'implantation Goa'uld a été annulé.</GR_RitualCeremony_CancelledManual>
+    <GR_RitualCeremony_CancelledInvalid>Le rituel d'implantation Goa'uld a été interrompu, car sa cible est devenue indisponible, invalide, inaccessible ou hors de portée.</GR_RitualCeremony_CancelledInvalid>
+    <GR_RitualCeremony_CompletionFailed>Le rituel d'implantation Goa'uld n'a pas pu être achevé.</GR_RitualCeremony_CompletionFailed>
+    <GR_RitualCeremony_Inspect>Cible du rituel : {0}
+Durée restante du rituel : {1} / {2} ticks</GR_RitualCeremony_Inspect>
 </LanguageData>

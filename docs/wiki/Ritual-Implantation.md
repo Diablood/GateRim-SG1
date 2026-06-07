@@ -57,3 +57,33 @@ carte. Clique directement sur le pawn à implanter.
 
 Le pawn doit être compatible, accessible, vivant, âgé d'au moins `13` ans et
 situé dans le rayon de `12` cases.
+
+
+## Cérémonie temporisée
+
+Depuis `0.1.24-dev`, l'implantation rituelle n'est plus instantanée.
+
+Après avoir choisi la cible, une cérémonie de `600` ticks commence. Le panneau
+d'inspection du symbiote affiche la cible et le temps restant.
+
+La cible doit rester :
+
+```text
+vivante
+compatible
+accessible
+dans le rayon de 12 cases
+```
+
+Le rituel peut être annulé manuellement avec `Annuler le rituel`. Il est aussi
+interrompu automatiquement si les conditions ne sont plus remplies.
+
+La progression est conservée lors d'une sauvegarde et reprend après rechargement.
+
+## Intégrations DLC futures
+
+Ce rituel de base fonctionne sans `Ideology`.
+
+Une intégration optionnelle pourra ultérieurement exploiter les rituels du DLC
+pour ajouter une idéologie Goa'uld, des rôles, des participants, des lieux et
+des objets cérémoniels tout en réutilisant le même transfert persistant.

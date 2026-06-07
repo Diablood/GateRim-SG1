@@ -160,3 +160,14 @@ use:
 ```text
 Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
 ```
+
+
+## Ritual-ceremony diagnostics
+
+`0.1.24-dev` adds core ceremony lifecycle logs:
+
+```text
+Started ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn> for <ticks> ticks.
+Cancelled ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn>.
+Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
+```

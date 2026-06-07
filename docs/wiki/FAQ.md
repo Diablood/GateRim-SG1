@@ -103,3 +103,18 @@ Oui. Depuis `0.1.22-dev`, sélectionne un symbiote libre puis clique sur
 
 Clique ensuite sur l'humanoïde compatible accessible à implanter dans un rayon
 de `12` cases. Une cérémonie plus complète sera ajoutée ultérieurement.
+
+
+## Le rituel Goa'uld est-il instantané ?
+
+Non. Depuis `0.1.24-dev`, l'implantation rituelle demande une cérémonie de
+`600` ticks. La cible doit rester compatible, accessible et dans le rayon de
+`12` cases.
+
+Le rituel peut être annulé manuellement et reprend après un rechargement de
+sauvegarde.
+
+## Ideology deviendra-t-il obligatoire ?
+
+Non. Le rituel de base reste disponible avec `Core + Biotech`. Une intégration
+avec `Ideology` est prévue comme extension optionnelle.

@@ -21,11 +21,17 @@ namespace GateRimSG1.Goauld
         private bool consumedByImplantation;
         private bool autonomousHuntingEnabled = true;
         private int nextAutonomousScanTick;
+        private Pawn ritualTarget;
+        private int ritualTicksRemaining;
+        private int ritualTicksTotal;
 
         private CompProperties_GoauldForcedImplantation Props
             => (CompProperties_GoauldForcedImplantation)props;
 
         private Pawn SymbiotePawn => parent as Pawn;
+
+        private bool RitualInProgress
+            => ritualTarget != null && ritualTicksRemaining > 0;
 
         public void InitializeWithTransferredData(GoauldSymbioteData transferredData)
         {
@@ -65,6 +71,9 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(ref consumedByImplantation, "consumedByImplantation", false);
             Scribe_Values.Look(ref autonomousHuntingEnabled, "autonomousHuntingEnabled", true);
             Scribe_Values.Look(ref nextAutonomousScanTick, "nextAutonomousScanTick", 0);
+            Scribe_References.Look(ref ritualTarget, "ritualTarget");
+            Scribe_Values.Look(ref ritualTicksRemaining, "ritualTicksRemaining", 0);
+            Scribe_Values.Look(ref ritualTicksTotal, "ritualTicksTotal", 0);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -80,13 +89,19 @@ namespace GateRimSG1.Goauld
         {
             base.CompTick();
 
+            Pawn symbiote = SymbiotePawn;
+            int currentTick = CurrentGameTick();
+
+            if (RitualInProgress)
+            {
+                TickRitualCeremony(symbiote);
+                return;
+            }
+
             if (!autonomousHuntingEnabled)
             {
                 return;
             }
-
-            Pawn symbiote = SymbiotePawn;
-            int currentTick = CurrentGameTick();
 
             if (symbiote == null
                 || symbiote.Destroyed
@@ -114,6 +129,19 @@ namespace GateRimSG1.Goauld
             Pawn symbiote = SymbiotePawn;
             if (symbiote == null || !symbiote.Spawned || symbiote.Destroyed)
             {
+                yield break;
+            }
+
+            if (RitualInProgress)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "GR_RitualCeremony_CancelCommandLabel".Translate(),
+                    defaultDesc = "GR_RitualCeremony_CancelCommandDescription".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                    action = CancelRitualCeremonyManually
+                };
+
                 yield break;
             }
 
@@ -154,11 +182,23 @@ namespace GateRimSG1.Goauld
                 ? "GR_AutonomousHunt_Enabled".Translate().ToString()
                 : "GR_AutonomousHunt_Disabled".Translate().ToString();
 
-            return "GR_FreeGoauldSymbioteDataSummary".Translate(
+            string summary = "GR_FreeGoauldSymbioteDataSummary".Translate(
                 symbioteData.SymbioteId,
                 symbioteData.GetOriginLabel(),
                 autonomousLabel,
                 cooldownTicks).ToString();
+
+            if (!RitualInProgress)
+            {
+                return summary;
+            }
+
+            return summary
+                + "\n"
+                + "GR_RitualCeremony_Inspect".Translate(
+                    ritualTarget.LabelShortCap,
+                    ritualTicksRemaining,
+                    ritualTicksTotal);
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
@@ -373,18 +413,160 @@ namespace GateRimSG1.Goauld
 
                     if (!IsValidRitualTarget(
                             symbiote,
-                            selectedTarget)
-                        || !TryImplantHost(
-                            selectedTarget,
-                            GoauldImplantationMode.RitualControlled))
+                            selectedTarget))
                     {
                         Messages.Message(
                             "GR_RitualImplantation_InvalidTarget".Translate(),
                             symbiote,
                             MessageTypeDefOf.RejectInput,
                             historical: false);
+
+                        return;
                     }
+
+                    StartRitualCeremony(selectedTarget);
                 });
+        }
+
+        private void StartRitualCeremony(Pawn selectedTarget)
+        {
+            Pawn symbiote = SymbiotePawn;
+
+            if (!IsValidRitualTarget(symbiote, selectedTarget))
+            {
+                Messages.Message(
+                    "GR_RitualImplantation_InvalidTarget".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            ritualTarget = selectedTarget;
+            ritualTicksTotal = Math.Max(1, Props.ritualCeremonyDurationTicks);
+            ritualTicksRemaining = ritualTicksTotal;
+            nextAutonomousScanTick = CurrentGameTick()
+                + ritualTicksTotal
+                + Math.Max(120, Props.autonomousScanIntervalTicks);
+
+            if (symbiote.jobs?.curJob?.def
+                == GR_DefOf.SG1_GoauldAutonomousImplant)
+            {
+                symbiote.jobs.EndCurrentJob(
+                    JobCondition.InterruptForced);
+            }
+
+            GR_Log.Message(
+                $"Started ritual implantation ceremony for Goa'uld symbiote "
+                + $"{symbioteData?.SymbioteId ?? "<uninitialized>"} "
+                + $"and target {PawnDebugLabel(selectedTarget)} "
+                + $"for {ritualTicksTotal} ticks.");
+
+            Messages.Message(
+                "GR_RitualCeremony_Started".Translate(
+                    selectedTarget.LabelShortCap,
+                    ritualTicksTotal),
+                selectedTarget,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+        }
+
+        private void TickRitualCeremony(Pawn symbiote)
+        {
+            if (!CanContinueRitualCeremony(symbiote, ritualTarget))
+            {
+                CancelRitualCeremony(
+                    "GR_RitualCeremony_CancelledInvalid",
+                    logAsWarning: true);
+
+                return;
+            }
+
+            ritualTicksRemaining--;
+
+            if (ritualTicksRemaining > 0)
+            {
+                return;
+            }
+
+            Pawn completedTarget = ritualTarget;
+            ClearRitualCeremony();
+
+            if (!TryImplantHost(
+                    completedTarget,
+                    GoauldImplantationMode.RitualControlled))
+            {
+                GR_Log.Warning(
+                    $"Ritual implantation completion failed for "
+                    + $"{PawnDebugLabel(completedTarget)}.");
+
+                Messages.Message(
+                    "GR_RitualCeremony_CompletionFailed".Translate(),
+                    SymbiotePawn,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+            }
+        }
+
+        private bool CanContinueRitualCeremony(
+            Pawn symbiote,
+            Pawn candidate)
+        {
+            return symbiote != null
+                && !symbiote.Destroyed
+                && symbiote.Spawned
+                && !symbiote.Dead
+                && !symbiote.Downed
+                && IsValidRitualTarget(symbiote, candidate);
+        }
+
+        private void CancelRitualCeremonyManually()
+        {
+            CancelRitualCeremony(
+                "GR_RitualCeremony_CancelledManual",
+                logAsWarning: false);
+        }
+
+        private void CancelRitualCeremony(
+            string translationKey,
+            bool logAsWarning)
+        {
+            Pawn previousTarget = ritualTarget;
+            bool hadRitual = RitualInProgress || previousTarget != null;
+
+            ClearRitualCeremony();
+
+            if (!hadRitual)
+            {
+                return;
+            }
+
+            string message = $"Cancelled ritual implantation ceremony for "
+                + $"Goa'uld symbiote {symbioteData?.SymbioteId ?? "<uninitialized>"} "
+                + $"and target {PawnDebugLabel(previousTarget)}.";
+
+            if (logAsWarning)
+            {
+                GR_Log.Warning(message);
+            }
+            else
+            {
+                GR_Log.Message(message);
+            }
+
+            Messages.Message(
+                translationKey.Translate(),
+                SymbiotePawn,
+                MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
+        private void ClearRitualCeremony()
+        {
+            ritualTarget = null;
+            ritualTicksRemaining = 0;
+            ritualTicksTotal = 0;
         }
 
         private void ToggleAutonomousHunting()

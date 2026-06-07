@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <SG1_GoauldSymbiote.label>symbiote Goa'uld</SG1_GoauldSymbiote.label>
-    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Il recherche les humanoïdes compatibles proches, les poursuit et commence automatiquement son implantation au contact. Une commande de rituel contrôlé ouvre désormais un ciblage sur la carte afin que le joueur choisisse un humanoïde compatible accessible dans un rayon limité. La commande d'implantation forcée reste disponible pour les tests de régression.</SG1_GoauldSymbiote.description>
+    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Il recherche les humanoïdes compatibles proches, les poursuit et commence automatiquement son implantation au contact. Une commande de rituel contrôlé ouvre un ciblage sur la carte, puis commence une cérémonie temporisée. L'humanoïde choisi doit rester valide, accessible et dans le rayon du rituel jusqu'à la fin. La commande d'implantation forcée reste disponible pour les tests de régression.</SG1_GoauldSymbiote.description>
     <SG1_GoauldSymbiote.tools.0.label>morsure</SG1_GoauldSymbiote.tools.0.label>
 </LanguageData>

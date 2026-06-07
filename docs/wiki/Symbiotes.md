@@ -9,7 +9,8 @@
 > Extraction d'urgence : 0.1.19-dev  
 > Chirurgie d'extraction : 0.1.20-dev  
 > Chasse autonome : 0.1.21-dev  
-> Implantation rituelle : 0.1.22-dev
+> Implantation rituelle : 0.1.22-dev  
+> Cérémonie rituelle temporisée : 0.1.24-dev
 
 ## Vue d'ensemble
 
@@ -54,6 +55,8 @@ Depuis `0.1.20-dev`, une [chirurgie d'extraction](Extraction-Surgery) planifiabl
 Depuis `0.1.21-dev`, un symbiote libre peut [chasser automatiquement](Autonomous-Hunt) un humanoïde compatible accessible et l'implanter au contact.
 
 Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée est disponible. Depuis `0.1.23-dev`, le joueur sélectionne explicitement la cible sur la carte dans un rayon limité.
+
+Depuis `0.1.24-dev`, une cérémonie temporisée doit s'achever. Elle peut être annulée et s'interrompt automatiquement si les conditions ne sont plus remplies.
 
 ## Éléments de gameplay prévus
 

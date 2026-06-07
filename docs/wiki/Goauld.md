@@ -110,6 +110,14 @@ persistante est conservée.
 
 Consulte [Implantation rituelle Goa'uld](Ritual-Implantation).
 
+### Durée du rituel
+
+Depuis `0.1.24-dev`, la cible rituelle n'est plus implantée immédiatement. Une
+cérémonie temporisée doit s'achever tandis que la cible reste valide, accessible
+et dans le rayon autorisé.
+
+Le rituel peut être annulé et sa progression survit aux sauvegardes.
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;
