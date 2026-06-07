@@ -60,6 +60,20 @@
 - [ ] Build through `build.cmd`
 - [ ] Confirm the colored bootstrap message in `Player.log`
 
+## 0.1.16-dev — Add persistent Goa'uld symbiote data
+- [x] Add `GoauldSymbioteData`
+- [x] Add `HediffComp_GoauldSymbiote`
+- [x] Add `HediffCompProperties_GoauldSymbiote`
+- [x] Deep-save one unique symbiote ID
+- [x] Store origin, age placeholder and host-history fields
+- [x] Attach persistence to `SG1_GoauldRecentImplantation`
+- [x] Add persistent manual-test carrier `SG1_GoauldHostSymbiote`
+- [x] Add bilingual `Keyed` UI strings
+- [x] Add lifecycle logging through `GR_Log`
+- [ ] Build locally against RimWorld 1.6
+- [ ] Validate ID persistence after save and reload
+- [ ] Confirm matching `Attached`, `Loaded` and `Detached` logs
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father

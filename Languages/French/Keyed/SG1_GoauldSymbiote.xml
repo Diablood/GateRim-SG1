@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldSymbioteDataMissing>Les données persistantes du symbiote sont absentes.</GR_GoauldSymbioteDataMissing>
+    <GR_GoauldSymbioteDataSummary>Identifiant du symbiote : {0}&#10;Origine : {1}&#10;Tick d'implantation : {2}&#10;Hôte actuel : {3}&#10;Hôte précédent : {4}</GR_GoauldSymbioteDataSummary>
+    <GR_GoauldSymbioteOrigin_Goauld>Goa'uld</GR_GoauldSymbioteOrigin_Goauld>
+    <GR_GoauldSymbioteOrigin_Tokra>Tok'ra</GR_GoauldSymbioteOrigin_Tokra>
+    <GR_GoauldSymbioteHost_None>aucun</GR_GoauldSymbioteHost_None>
+</LanguageData>

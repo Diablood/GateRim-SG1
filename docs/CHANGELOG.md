@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.16-dev
+- Add persistent `GoauldSymbioteData`.
+- Add `HediffComp_GoauldSymbiote` and its properties class.
+- Deep-save a unique adult-symbiote identity and host-history fields.
+- Attach persistent data to recent implantation.
+- Add the manual-test `SG1_GoauldHostSymbiote` state.
+- Add bilingual `Keyed` strings for the health-state description.
+- Log attach, load and detach lifecycle events through `GR_Log`.
+- Update technical documentation and save/load test instructions.
+
 ## 0.1.15-dev
 - Add a colored `<color=#D9B44A>[GateRim SG-1]</color>` logging prefix.
 - Add `build.cmd` for Windows users blocked by PowerShell execution policies.

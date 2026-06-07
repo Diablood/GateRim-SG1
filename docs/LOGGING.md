@@ -61,3 +61,16 @@ The current GateRim SG-1 log prefix uses:
 ```
 
 This gold tone keeps the mod visually distinct in `Player.log` and fits the Goa'uld / Stargate theme.
+
+
+## Persistent symbiote diagnostics
+
+`0.1.16-dev` adds lifecycle logs for adult Goa'uld symbiote data:
+
+```text
+Attached Goa'uld symbiote <id> to host <pawn>.
+Loaded Goa'uld symbiote <id> for host <pawn>.
+Detached Goa'uld symbiote <id> from host <pawn>.
+```
+
+The ID should remain identical after saving and reloading.

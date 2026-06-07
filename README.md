@@ -14,33 +14,38 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.15-dev — Add colored log prefix and Windows build wrapper
+### 0.1.16-dev — Add persistent Goa'uld symbiote data
 
-The centralized C# logging scaffold now uses a colored GateRim SG-1 prefix:
-
-```text
-<color=#D9B44A>[GateRim SG-1]</color>
-```
-
-The gold tone makes GateRim messages easier to identify in `Player.log`.
-
-A Windows build wrapper is also available:
-
-```powershell
-.\build.cmd "D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
-```
-
-This wrapper calls `dotnet build` directly and avoids PowerShell execution-policy issues.
-
-The underlying logging API remains:
+The first persistent adult Goa'uld symbiote identity is now implemented in C#:
 
 ```text
-Message
-Warning
-Error
-WarningOnce
-ErrorOnce
+GoauldSymbioteData
+HediffComp_GoauldSymbiote
+HediffCompProperties_GoauldSymbiote
 ```
+
+The data object is deep-saved inside a host health state and stores:
+
+```text
+unique symbiote ID
+optional future name
+origin
+biological age placeholder
+creation tick
+implantation tick
+current host
+previous host
+last detachment tick
+```
+
+Two manual-test health states currently carry the component:
+
+```text
+SG1_GoauldRecentImplantation
+SG1_GoauldHostSymbiote
+```
+
+Save/load persistence can now be validated before implementing attack-driven implantation and host transfer.
 
 ## First playable milestone
 

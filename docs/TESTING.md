@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.14.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.16.0 loaded.
    ```
 
 
@@ -130,3 +130,27 @@ Use newly generated pawns after applying `0.1.13-dev`.
    ```text
    <color=#D9B44A>[GateRim SG-1]</color>
    ```
+
+
+## Persistent Goa'uld symbiote identity
+
+1. Build the assembly with `build.cmd`.
+2. Launch RimWorld with `Core`, `Biotech`, and `GateRim SG-1`.
+3. Select a humanoid pawn.
+4. Add the health state:
+   ```text
+   adult Goa'uld symbiote
+   ```
+5. Open the health-state description and copy the displayed symbiote ID.
+6. Save the game.
+7. Reload the save.
+8. Confirm that the displayed symbiote ID is unchanged.
+9. Inspect `Player.log`.
+10. Confirm that `Attached` and `Loaded` messages use the same symbiote ID.
+11. Remove the Hediff and confirm a `Detached` message appears.
+
+Optional regression check:
+
+1. Add `recent Goa'uld implantation`.
+2. Confirm that it also receives a persistent symbiote ID.
+3. Confirm that the temporary state still disappears after one in-game day.

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        XML-only prototype:
-        This temporary Hediff represents the critical period immediately after
-        a Goa'uld symbiote enters a humanoid host.
-
-        It can currently be added through developer mode for medical and UI
-        tests. The future C# implantation workflow will apply it automatically,
-        then convert the target into an active Goa'uld host if the process is
-        not interrupted.
+        The recent-implantation phase now owns persistent adult-symbiote data.
+        A future conversion milestone will transfer the same identity into the
+        active-host state before this temporary Hediff disappears.
     -->
     <HediffDef>
         <defName>SG1_GoauldRecentImplantation</defName>
@@ -23,6 +18,7 @@
             </li>
         </stages>
         <comps>
+            <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldSymbiote" />
             <li Class="HediffCompProperties_Disappears">
                 <disappearsAfterTicks>60000</disappearsAfterTicks>
                 <showRemainingTime>true</showRemainingTime>
