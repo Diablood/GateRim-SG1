@@ -3,7 +3,7 @@
     <ThingDef ParentName="AnimalThingBase">
         <defName>SG1_GoauldSymbiote</defName>
         <label>Goa'uld symbiote</label>
-        <description>An adult Goa'uld symbiote outside a host. It searches for nearby compatible humanoids, pursues them and begins implantation automatically on contact. A controlled ritual command opens map targeting, then begins a timed ceremony. The selected humanoid must remain valid, reachable and within ritual range until completion. Manual forced implantation remains available for regression tests.</description>
+        <description>An adult Goa'uld symbiote outside a host. It searches for nearby compatible humanoids, pursues them and begins implantation automatically on contact. A controlled ritual command requires a nearby Goa'uld ritual basin, opens map targeting, then begins a timed ceremony. Both the selected humanoid and the symbiote must remain close to the basin until completion.</description>
         <statBases>
             <MoveSpeed>4.8</MoveSpeed>
             <MarketValue>250</MarketValue>
@@ -33,6 +33,7 @@
                 <autonomousCooldownAfterExtractionTicks>2500</autonomousCooldownAfterExtractionTicks>
                 <ritualImplantationRange>12</ritualImplantationRange>
                 <ritualCeremonyDurationTicks>600</ritualCeremonyDurationTicks>
+                <ritualBasinRange>6</ritualBasinRange>
             </li>
         </comps>
         <race>

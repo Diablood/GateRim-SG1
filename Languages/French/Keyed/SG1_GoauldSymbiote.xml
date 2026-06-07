@@ -33,7 +33,7 @@ Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_AutonomousHunt_Disabled>désactivée</GR_AutonomousHunt_Disabled>
     <GR_AutonomousImplantation_Success>{0} a subi l'implantation autonome du symbiote Goa'uld {1}.</GR_AutonomousImplantation_Success>
     <GR_RitualImplantation_CommandLabel>Implantation rituelle</GR_RitualImplantation_CommandLabel>
-    <GR_RitualImplantation_CommandDescription>Choisis un humanoïde compatible accessible dans le rayon du rituel. La cible sélectionnée doit rester valide, accessible et dans le rayon pendant la cérémonie temporisée. À la fin, le symbiote libre est consommé et la même identité persistante est transférée vers l'implantation récente.</GR_RitualImplantation_CommandDescription>
+    <GR_RitualImplantation_CommandDescription>Choisis un humanoïde compatible accessible dans le rayon du rituel. Un bassin rituel Goa'uld doit rester proche du symbiote libre et de la cible pendant la cérémonie temporisée. À la fin, la même identité persistante est transférée vers l'implantation récente.</GR_RitualImplantation_CommandDescription>
     <GR_RitualImplantation_NoNearbyTarget>Aucun humanoïde compatible accessible n'est disponible dans le rayon du rituel.</GR_RitualImplantation_NoNearbyTarget>
     <GR_RitualImplantation_Success>{0} a subi le rituel contrôlé d'implantation du symbiote Goa'uld {1}.</GR_RitualImplantation_Success>
     <GR_RitualImplantation_InvalidTarget>Ce pawn n'est pas une cible valide pour l'implantation rituelle.</GR_RitualImplantation_InvalidTarget>
@@ -44,5 +44,8 @@ Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_RitualCeremony_CancelledInvalid>Le rituel d'implantation Goa'uld a été interrompu, car sa cible est devenue indisponible, invalide, inaccessible ou hors de portée.</GR_RitualCeremony_CancelledInvalid>
     <GR_RitualCeremony_CompletionFailed>Le rituel d'implantation Goa'uld n'a pas pu être achevé.</GR_RitualCeremony_CompletionFailed>
     <GR_RitualCeremony_Inspect>Cible du rituel : {0}
-Durée restante du rituel : {1} / {2} ticks</GR_RitualCeremony_Inspect>
+Bassin rituel : {1}
+Durée restante du rituel : {2} / {3} ticks</GR_RitualCeremony_Inspect>
+    <GR_RitualCeremony_NoBasinNearby>Un bassin rituel Goa'uld proche est requis pour une implantation contrôlée.</GR_RitualCeremony_NoBasinNearby>
+    <GR_RitualCeremony_MissingBasin>bassin rituel manquant</GR_RitualCeremony_MissingBasin>
 </LanguageData>

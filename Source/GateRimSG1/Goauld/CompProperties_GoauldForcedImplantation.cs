@@ -11,6 +11,7 @@ namespace GateRimSG1.Goauld
         public int autonomousCooldownAfterExtractionTicks = 2500;
         public float ritualImplantationRange = 12f;
         public int ritualCeremonyDurationTicks = 600;
+        public float ritualBasinRange = 6f;
 
         public CompProperties_GoauldForcedImplantation()
         {

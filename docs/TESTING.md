@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.24.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.25.0 loaded.
    ```
 
 
@@ -297,3 +297,20 @@ Negative checks:
 11. Start another ritual, click `Cancel ritual`, and confirm no transfer occurs.
 12. Start another ritual and move the target out of range.
 13. Confirm automatic cancellation without consuming the free symbiote.
+
+
+## Goa'uld ritual basin requirement
+
+1. Build with `build.cmd`.
+2. Build or spawn `Goa'uld ritual basin`.
+3. Spawn a free symbiote and disable autonomous hunt.
+4. Keep the symbiote and one compatible target within `6` cells of the basin.
+5. Start ritual implantation and select the target.
+6. Confirm the inspection panel displays the ritual basin.
+7. Save and reload during the ceremony.
+8. Confirm the basin reference and countdown persist.
+9. Complete the ritual and confirm identity transfer.
+10. Start another ritual, destroy the basin, and confirm automatic cancellation.
+11. Start another ritual and move the target beyond `6` cells from the basin.
+12. Confirm cancellation without consuming the free symbiote.
+13. Try starting without a nearby basin and confirm rejection.

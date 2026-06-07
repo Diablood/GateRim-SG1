@@ -118,3 +118,11 @@ sauvegarde.
 
 Non. Le rituel de base reste disponible avec `Core + Biotech`. Une intégration
 avec `Ideology` est prévue comme extension optionnelle.
+
+
+## Faut-il construire une structure pour le rituel ?
+
+Oui. Depuis `0.1.25-dev`, un `bassin rituel Goa'uld` est requis. Le symbiote et
+sa cible doivent rester à moins de `6` cases du même bassin pendant la cérémonie.
+
+Le bassin fonctionne sans `Ideology`.

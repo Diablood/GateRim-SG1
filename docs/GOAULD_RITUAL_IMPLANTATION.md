@@ -116,3 +116,11 @@ The ceremony can be cancelled manually and is automatically interrupted when
 its continuity requirements are no longer met.
 
 The ritual state is saved and resumes after reload.
+
+
+## 0.1.25-dev environmental requirement
+
+Ritual implantation now requires a nearby Goa'uld ritual basin.
+
+The basin must remain close to both the free symbiote and the selected target
+until the timed ceremony finishes. Its destruction or removal cancels the ritual.

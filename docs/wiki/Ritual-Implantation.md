@@ -87,3 +87,13 @@ Ce rituel de base fonctionne sans `Ideology`.
 Une intégration optionnelle pourra ultérieurement exploiter les rituels du DLC
 pour ajouter une idéologie Goa'uld, des rôles, des participants, des lieux et
 des objets cérémoniels tout en réutilisant le même transfert persistant.
+
+
+## Bassin rituel requis
+
+Depuis `0.1.25-dev`, une [bassin rituel Goa'uld](Ritual-Basin) doit se trouver à
+proximité du symbiote et de la cible.
+
+Les deux doivent rester à moins de `6` cases du même bassin pendant toute la
+cérémonie. La destruction du bassin ou l'éloignement d'un participant annule le
+rituel.

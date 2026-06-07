@@ -171,3 +171,13 @@ Started ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn>
 Cancelled ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn>.
 Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
 ```
+
+
+## Ritual-basin diagnostics
+
+`0.1.25-dev` adds basin context to ceremony logs:
+
+```text
+Started ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn> near basin <thing> for <ticks> ticks.
+Cancelled ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn> near basin <thing>.
+```

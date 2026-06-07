@@ -194,6 +194,22 @@
 - [ ] Validate manual and automatic cancellation
 - [ ] Publish the updated player wiki
 
+## 0.1.25-dev — Add ritual environmental requirements
+- [x] Add `SG1_GoauldRitualBasin`
+- [x] Make the basin constructible without optional DLCs
+- [x] Require the free symbiote and ritual target near the same basin
+- [x] Save the active basin reference during the ceremony
+- [x] Display the active basin in the inspection panel
+- [x] Cancel if the basin is destroyed, removed or out of range
+- [x] Preserve identity after cancellation
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the basin is constructible
+- [ ] Validate ritual completion near a basin
+- [ ] Validate save/reload during a basin-backed ceremony
+- [ ] Validate cancellation after basin destruction and movement
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -210,7 +226,8 @@
 - [x] Add controlled ritual Goa'uld implantation prototype
 - [x] Add explicit ritual target selection
 - [x] Add core ritual ceremony duration and cancellation
-- [ ] Add environmental requirements for the core ritual
+- [x] Add a core ritual basin requirement
+- [ ] Add richer environmental requirements and dedicated assets
 - [ ] Add optional Ideology ritual integration
 - [x] Add manual emergency extraction prototype
 - [x] Complement manual extraction with a medical surgery bill

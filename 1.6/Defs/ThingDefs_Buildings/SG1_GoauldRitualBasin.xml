@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        First Core + Biotech environmental requirement for controlled Goa'uld
+        implantation ceremonies. The placeholder graphic will be replaced by a
+        dedicated asset later.
+    -->
+    <ThingDef ParentName="FurnitureBase">
+        <defName>SG1_GoauldRitualBasin</defName>
+        <label>Goa'uld ritual basin</label>
+        <description>A ceremonial basin used to prepare controlled Goa'uld implantation rituals. Both the free symbiote and the selected host must remain close to the basin until the ceremony is complete.</description>
+        <graphicData>
+            <texPath>Things/Building/SG1_GoauldRitualBasin</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+        <size>(1,1)</size>
+        <rotatable>false</rotatable>
+        <statBases>
+            <MaxHitPoints>180</MaxHitPoints>
+            <WorkToBuild>1200</WorkToBuild>
+            <Mass>18</Mass>
+            <Beauty>3</Beauty>
+            <Flammability>0.2</Flammability>
+        </statBases>
+        <costList>
+            <Steel>60</Steel>
+            <Gold>5</Gold>
+        </costList>
+        <designationCategory>Furniture</designationCategory>
+        <minifiedDef>MinifiedThing</minifiedDef>
+    </ThingDef>
+</Defs>

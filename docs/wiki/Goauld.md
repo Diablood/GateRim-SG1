@@ -118,6 +118,12 @@ et dans le rayon autorisé.
 
 Le rituel peut être annulé et sa progression survit aux sauvegardes.
 
+### Bassin rituel
+
+Depuis `0.1.25-dev`, la cérémonie contrôlée exige un
+[bassin rituel Goa'uld](Ritual-Basin). Le symbiote et la cible doivent rester
+proches de cette structure jusqu'à la fin.
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;

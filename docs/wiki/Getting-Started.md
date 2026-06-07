@@ -152,3 +152,15 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 8. Vérifie que le compte à rebours reprend.
 9. Teste `Annuler le rituel`.
 10. Déplace aussi la cible hors de portée pour vérifier l'annulation automatique.
+
+
+## Construire et tester le bassin rituel
+
+1. Construis ou génère un `bassin rituel Goa'uld`.
+2. Place un symbiote libre à moins de `6` cases.
+3. Place une cible compatible à moins de `6` cases du même bassin.
+4. Désactive `Chasse autonome`.
+5. Lance `Implantation rituelle`.
+6. Vérifie que le bassin apparaît dans le panneau d'inspection.
+7. Détruis ensuite le bassin pendant un second test.
+8. Vérifie que la cérémonie est annulée sans consommer le symbiote.

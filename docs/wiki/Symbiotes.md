@@ -10,7 +10,8 @@
 > Chirurgie d'extraction : 0.1.20-dev  
 > Chasse autonome : 0.1.21-dev  
 > Implantation rituelle : 0.1.22-dev  
-> Cérémonie rituelle temporisée : 0.1.24-dev
+> Cérémonie rituelle temporisée : 0.1.24-dev  
+> Bassin rituel requis : 0.1.25-dev
 
 ## Vue d'ensemble
 
@@ -57,6 +58,8 @@ Depuis `0.1.21-dev`, un symbiote libre peut [chasser automatiquement](Autonomous
 Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée est disponible. Depuis `0.1.23-dev`, le joueur sélectionne explicitement la cible sur la carte dans un rayon limité.
 
 Depuis `0.1.24-dev`, une cérémonie temporisée doit s'achever. Elle peut être annulée et s'interrompt automatiquement si les conditions ne sont plus remplies.
+
+Depuis `0.1.25-dev`, un [bassin rituel Goa'uld](Ritual-Basin) doit rester proche du symbiote et de la cible pendant toute la cérémonie.
 
 ## Éléments de gameplay prévus
 

@@ -22,6 +22,7 @@ namespace GateRimSG1.Goauld
         private bool autonomousHuntingEnabled = true;
         private int nextAutonomousScanTick;
         private Pawn ritualTarget;
+        private Thing ritualBasin;
         private int ritualTicksRemaining;
         private int ritualTicksTotal;
 
@@ -72,6 +73,7 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(ref autonomousHuntingEnabled, "autonomousHuntingEnabled", true);
             Scribe_Values.Look(ref nextAutonomousScanTick, "nextAutonomousScanTick", 0);
             Scribe_References.Look(ref ritualTarget, "ritualTarget");
+            Scribe_References.Look(ref ritualBasin, "ritualBasin");
             Scribe_Values.Look(ref ritualTicksRemaining, "ritualTicksRemaining", 0);
             Scribe_Values.Look(ref ritualTicksTotal, "ritualTicksTotal", 0);
 
@@ -197,6 +199,7 @@ namespace GateRimSG1.Goauld
                 + "\n"
                 + "GR_RitualCeremony_Inspect".Translate(
                     ritualTarget.LabelShortCap,
+                    RitualBasinDisplayLabel(),
                     ritualTicksRemaining,
                     ritualTicksTotal);
         }
@@ -371,9 +374,18 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            if (FindClosestCompatibleHost(
+            if (FindNearestValidRitualBasin(symbiote, null) == null)
+            {
+                Messages.Message(
+                    "GR_RitualCeremony_NoBasinNearby".Translate(),
                     symbiote,
-                    Props.ritualImplantationRange) == null)
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            if (FindClosestValidRitualTarget(symbiote) == null)
             {
                 Messages.Message(
                     "GR_RitualImplantation_NoNearbyTarget".Translate(),
@@ -443,7 +455,23 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            Thing selectedBasin = FindNearestValidRitualBasin(
+                symbiote,
+                selectedTarget);
+
+            if (selectedBasin == null)
+            {
+                Messages.Message(
+                    "GR_RitualCeremony_NoBasinNearby".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
             ritualTarget = selectedTarget;
+            ritualBasin = selectedBasin;
             ritualTicksTotal = Math.Max(1, Props.ritualCeremonyDurationTicks);
             ritualTicksRemaining = ritualTicksTotal;
             nextAutonomousScanTick = CurrentGameTick()
@@ -461,6 +489,7 @@ namespace GateRimSG1.Goauld
                 $"Started ritual implantation ceremony for Goa'uld symbiote "
                 + $"{symbioteData?.SymbioteId ?? "<uninitialized>"} "
                 + $"and target {PawnDebugLabel(selectedTarget)} "
+                + $"near basin {ThingDebugLabel(ritualBasin)} "
                 + $"for {ritualTicksTotal} ticks.");
 
             Messages.Message(
@@ -518,7 +547,11 @@ namespace GateRimSG1.Goauld
                 && symbiote.Spawned
                 && !symbiote.Dead
                 && !symbiote.Downed
-                && IsValidRitualTarget(symbiote, candidate);
+                && IsValidRitualTarget(symbiote, candidate)
+                && IsValidRitualBasin(
+                    ritualBasin,
+                    symbiote,
+                    candidate);
         }
 
         private void CancelRitualCeremonyManually()
@@ -533,6 +566,7 @@ namespace GateRimSG1.Goauld
             bool logAsWarning)
         {
             Pawn previousTarget = ritualTarget;
+            Thing previousBasin = ritualBasin;
             bool hadRitual = RitualInProgress || previousTarget != null;
 
             ClearRitualCeremony();
@@ -544,7 +578,8 @@ namespace GateRimSG1.Goauld
 
             string message = $"Cancelled ritual implantation ceremony for "
                 + $"Goa'uld symbiote {symbioteData?.SymbioteId ?? "<uninitialized>"} "
-                + $"and target {PawnDebugLabel(previousTarget)}.";
+                + $"and target {PawnDebugLabel(previousTarget)} "
+                + $"near basin {ThingDebugLabel(previousBasin)}.";
 
             if (logAsWarning)
             {
@@ -565,6 +600,7 @@ namespace GateRimSG1.Goauld
         private void ClearRitualCeremony()
         {
             ritualTarget = null;
+            ritualBasin = null;
             ritualTicksRemaining = 0;
             ritualTicksTotal = 0;
         }
@@ -746,12 +782,132 @@ namespace GateRimSG1.Goauld
                 && symbiote.CanReach(
                     candidate,
                     PathEndMode.Touch,
-                    Danger.Deadly);
+                    Danger.Deadly)
+                && FindNearestValidRitualBasin(
+                    symbiote,
+                    candidate) != null;
+        }
+
+        private Pawn FindClosestValidRitualTarget(Pawn symbiote)
+        {
+            Map map = symbiote?.Map;
+            if (map?.mapPawns?.AllPawnsSpawned == null)
+            {
+                return null;
+            }
+
+            Pawn bestTarget = null;
+            float bestDistanceSquared = float.MaxValue;
+            IReadOnlyList<Pawn> candidates = map.mapPawns.AllPawnsSpawned;
+
+            for (int index = 0; index < candidates.Count; index++)
+            {
+                Pawn candidate = candidates[index];
+
+                if (!IsValidRitualTarget(symbiote, candidate))
+                {
+                    continue;
+                }
+
+                float distanceSquared = DistanceSquared(
+                    symbiote,
+                    candidate);
+
+                if (distanceSquared < bestDistanceSquared)
+                {
+                    bestTarget = candidate;
+                    bestDistanceSquared = distanceSquared;
+                }
+            }
+
+            return bestTarget;
+        }
+
+        private Thing FindNearestValidRitualBasin(
+            Pawn symbiote,
+            Pawn candidate)
+        {
+            Map map = symbiote?.Map;
+            if (map?.listerThings == null
+                || GR_DefOf.SG1_GoauldRitualBasin == null)
+            {
+                return null;
+            }
+
+            Thing bestBasin = null;
+            float bestDistanceSquared = float.MaxValue;
+
+            IReadOnlyList<Thing> basins = map.listerThings.ThingsOfDef(
+                GR_DefOf.SG1_GoauldRitualBasin);
+
+            for (int index = 0; index < basins.Count; index++)
+            {
+                Thing basin = basins[index];
+
+                if (!IsValidRitualBasin(
+                        basin,
+                        symbiote,
+                        candidate))
+                {
+                    continue;
+                }
+
+                float distanceSquared = DistanceSquared(
+                    symbiote,
+                    basin);
+
+                if (distanceSquared < bestDistanceSquared)
+                {
+                    bestBasin = basin;
+                    bestDistanceSquared = distanceSquared;
+                }
+            }
+
+            return bestBasin;
+        }
+
+        private bool IsValidRitualBasin(
+            Thing basin,
+            Pawn symbiote,
+            Pawn candidate)
+        {
+            return basin != null
+                && !basin.Destroyed
+                && basin.Spawned
+                && basin.def == GR_DefOf.SG1_GoauldRitualBasin
+                && symbiote?.Map != null
+                && basin.Map == symbiote.Map
+                && IsWithinRadius(
+                    symbiote,
+                    basin,
+                    Props.ritualBasinRange)
+                && (candidate == null
+                    || IsWithinRadius(
+                        candidate,
+                        basin,
+                        Props.ritualBasinRange));
+        }
+
+        private string RitualBasinDisplayLabel()
+        {
+            return ritualBasin == null
+                ? "GR_RitualCeremony_MissingBasin".Translate().ToString()
+                : ritualBasin.LabelCap.ToString();
+        }
+
+        private static float DistanceSquared(
+            Thing first,
+            Thing second)
+        {
+            int deltaX = first.Position.x - second.Position.x;
+            int deltaZ = first.Position.z - second.Position.z;
+
+            return deltaX * deltaX + deltaZ * deltaZ;
         }
 
         private static bool IsWithinRadius(
-            Pawn first,
-            Pawn second,
+            Thing first,
+            Thing second,
             float radius)
         {
             if (first?.Map == null
@@ -854,6 +1010,16 @@ namespace GateRimSG1.Goauld
             }
 
             return $"{pawn.LabelShort} ({pawn.ThingID})";
+        }
+
+        private static string ThingDebugLabel(Thing thing)
+        {
+            if (thing == null)
+            {
+                return "<null thing>";
+            }
+
+            return $"{thing.LabelCap} ({thing.ThingID})";
         }
     }
 

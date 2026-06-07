@@ -14,24 +14,22 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.24-dev — Add core ritual ceremony duration and cancellation
+### 0.1.25-dev — Add ritual environmental requirements
 
-Controlled ritual implantation is no longer instantaneous:
+Controlled ritual implantation now requires a buildable Goa'uld ritual basin:
 
 ```text
-selected free symbiote
-    ↓ explicit target selection
-600-tick core ceremony
-    ↓ target stays valid, reachable and within range
-recent Goa'uld implantation
+Goa'uld ritual basin
 ```
 
-The ceremony can be cancelled manually and stops automatically when its
-continuity requirements fail. Its target and remaining duration persist through
-save and reload.
+The free symbiote and the selected target must both remain within `6` cells of
+the same basin throughout the `600`-tick ceremony.
 
-This fallback remains independent from `Ideology`. Optional DLC integration can
-later reuse the same transfer core.
+Destroying or removing the basin, or moving either participant too far away,
+cancels the ritual without consuming the symbiote.
+
+This remains a `Core + Biotech` fallback. Optional `Ideology` integration can
+later enrich the same structure and transfer core.
 
 ## First playable milestone
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.25-dev
+- Add the constructible `SG1_GoauldRitualBasin`.
+- Require the free symbiote and selected target near the same basin during controlled ceremonies.
+- Save and display the active ritual-basin reference.
+- Cancel rituals when the basin is destroyed, removed or out of range.
+- Preserve persistent symbiote identity after cancellation.
+- Keep the basin-backed fallback independent from optional DLC integrations.
+- Add French text, a temporary basin graphic, technical documentation and player-wiki drafts.
+
 ## 0.1.24-dev
 - Add a `600`-tick core ritual ceremony after explicit target selection.
 - Persist ritual target and remaining duration through save and reload.

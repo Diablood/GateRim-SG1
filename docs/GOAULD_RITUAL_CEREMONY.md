@@ -84,3 +84,18 @@ then call the same GateRim SG-1 identity-transfer core on successful completion.
 13. Confirm no implantation occurs and the free symbiote remains.
 14. Start another ritual and move the target out of range.
 15. Confirm automatic cancellation.
+
+
+## 0.1.25-dev ritual basin requirement
+
+Controlled ceremonies now require one spawned:
+
+```text
+SG1_GoauldRitualBasin
+```
+
+The free symbiote and selected target must both remain within `6` cells of the
+same basin during the full ceremony.
+
+The basin reference is saved alongside the ritual target and countdown. Destroying
+or removing the basin interrupts the ceremony without consuming the symbiote.
