@@ -53,31 +53,31 @@ incuber une larve de Prim'ta
 | Work skill | Animals |
 | Minimum skill | `4` |
 | Product | `1 × SG1_PrimtaLarva` |
-| Input ingredients | None in this prototype |
+| Raw meat input | `10` units |
+| Accepted category | `MeatRaw` |
 
-## Why the first bill has no ingredients
+## 0.1.29-dev nutrient requirement
 
-The goal of this milestone is to validate the complete gameplay loop:
+After validating the ingredient-free loop in `0.1.28-dev`, incubation now
+requires:
 
 ```text
-build basin
-    ↓ add incubation bill
-produce larva
-    ↓ store or haul larva
-implant compatible Jaffa
+10 units of raw meat
 ```
 
-Biological nutrient inputs, temperature, preservation, maturation time and
-faction-specific access remain future milestones. Adding them after this first
-validation keeps troubleshooting focused.
+The recipe accepts the `MeatRaw` category and allows mixed raw-meat stacks.
+
+This is the first biological-input balance pass. Temperature, preservation,
+nutrition-value calculation, maturation time and faction-specific access remain
+future milestones.
 
 ## Current flow
 
 ```text
 construct Prim'ta incubation basin
     ↓ add incubate Prim'ta larva bill
-colonist performs Intellectual work
-    ↓
+provide 10 units of raw meat
+    ↓ colon performs Handling work with Animals 4+
 physical SG1_PrimtaLarva item
     ↓
 Jaffa implantation surgery
@@ -89,13 +89,15 @@ Jaffa implantation surgery
 2. Construct or spawn `Prim'ta incubation basin`.
 3. Open the Bills tab.
 4. Add `incubate Prim'ta larva`.
-5. Let a colonist complete the work.
-6. Confirm one physical `Prim'ta larva` appears.
-7. Confirm the larva can be hauled and stacked.
-8. Implant it into a compatible Jaffa.
-9. Confirm the larva is consumed by surgery.
-10. Save and reload after production and after implantation.
-11. Confirm the item and Hediff persist as expected.
+5. Provide at least `10` units of raw meat.
+6. Let an eligible colonist complete the work.
+7. Confirm the meat is consumed.
+8. Confirm one physical `Prim'ta larva` appears.
+9. Confirm the larva can be hauled and stacked.
+10. Implant it into a compatible Jaffa.
+11. Confirm the larva is consumed by surgery.
+12. Save and reload after production and after implantation.
+13. Confirm the item and Hediff persist as expected.
 
 
 ## 0.1.28-dev-r1 work-giver registration fix

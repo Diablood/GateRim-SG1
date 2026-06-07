@@ -188,6 +188,8 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 2. Ouvre son onglet des tâches.
 3. Ajoute `incuber une larve de Prim'ta`.
 4. Vérifie qu'un colon possède le travail `Dressage` actif et un niveau `Animaux 4+`.
-5. Laisse ce colon effectuer le travail automatiquement ou priorise le bassin manuellement.
-6. Vérifie qu'une `larve de Prim'ta` physique apparaît.
-7. Stocke-la ou utilise-la pour une implantation médicale chez un Jaffa.
+5. Fournis au moins `10` unités de viande crue.
+6. Laisse ce colon effectuer le travail automatiquement ou priorise le bassin manuellement.
+7. Vérifie que la viande est consommée.
+8. Vérifie qu'une `larve de Prim'ta` physique apparaît.
+9. Stocke-la ou utilise-la pour une implantation médicale chez un Jaffa.

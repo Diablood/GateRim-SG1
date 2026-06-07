@@ -14,22 +14,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.28-dev — Add Prim'ta larva acquisition prototype
+### 0.1.29-dev — Add Prim'ta incubation nutrient requirements
 
-A new constructible worktable closes the first Jaffa resource loop:
+The incubation basin no longer produces larvae for free:
 
 ```text
+10 units of raw meat
+    ↓ Handling work with Animals skill 4+
 Prim'ta incubation basin
-    ↓ incubation bill
-physical Prim'ta larva
-    ↓ medical implantation
-Jaffa with acquired Prim'ta effects
+    ↓
+one physical Prim'ta larva
 ```
 
-The first incubation recipe uses Handling work and requires Animals skill `4`.
-A dedicated bill work giver registers the custom basin for automatic and manual
-work selection. Biological nutrient inputs, preservation, maturation and
-faction-specific access remain future refinements.
+The first balance pass accepts the vanilla `MeatRaw` category and allows mixed
+raw-meat stacks. Temperature, preservation and nutrition-value calculation
+remain future refinements.
 
 ## First playable milestone
 

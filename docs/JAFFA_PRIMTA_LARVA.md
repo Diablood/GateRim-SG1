@@ -98,3 +98,15 @@ without developer spawning.
 11. Confirm persistence.
 12. Try scheduling without any larva available.
 13. Confirm the bill cannot be completed until a larva exists.
+
+
+## 0.1.29-dev nutrient input
+
+The incubation bill now consumes:
+
+```text
+10 units of raw meat
+```
+
+This first balancing step replaces free production while keeping the validated
+Handling and Animals `4+` workflow.

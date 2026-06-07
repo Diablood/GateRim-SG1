@@ -64,3 +64,14 @@ incuber une larve de Prim'ta
 ```
 
 Le premier prototype exige uniquement du travail.
+
+
+## Nutriments d'incubation
+
+Depuis `0.1.29-dev`, le [bassin d'incubation](Primta-Incubation) consomme :
+
+```text
+10 unités de viande crue
+```
+
+pour produire une larve.

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.29-dev
+- Require `10` units of raw meat for `SG1_IncubatePrimtaLarva`.
+- Accept the vanilla `MeatRaw` category.
+- Allow mixed raw-meat stacks.
+- Preserve Handling work, Animals skill `4` and the dedicated incubation work giver.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.28-dev
 - Add the constructible `SG1_PrimtaIncubationBasin`.
 - Add the `SG1_IncubatePrimtaLarva` work bill.

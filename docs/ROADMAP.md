@@ -258,6 +258,20 @@
 - [ ] Validate the full production-to-implantation loop
 - [ ] Publish the updated player wiki
 
+## 0.1.29-dev — Add Prim'ta incubation nutrient requirements
+- [x] Require `10` units of raw meat for `SG1_IncubatePrimtaLarva`
+- [x] Accept the vanilla `MeatRaw` category
+- [x] Allow mixed raw-meat stacks
+- [x] Preserve the Handling work type and Animals skill `4`
+- [x] Preserve the dedicated incubation `WorkGiverDef`
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Reload RimWorld and validate XML Def loading
+- [ ] Confirm the bill waits without enough raw meat
+- [ ] Confirm `10` raw-meat units are consumed
+- [ ] Confirm one physical larva is produced
+- [ ] Validate the full incubation-to-implantation loop
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -270,7 +284,9 @@
 - [x] Add medical Jaffa Prim'ta implantation prototype
 - [x] Add a physical Prim'ta larva resource
 - [x] Add first Prim'ta larva incubation prototype
-- [ ] Add biological nutrient inputs and preservation constraints
+- [x] Add first raw-meat nutrient requirement
+- [ ] Add preservation and temperature constraints
+- [ ] Evaluate nutrition-value-based balancing
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation

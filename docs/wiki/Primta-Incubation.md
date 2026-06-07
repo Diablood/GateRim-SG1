@@ -28,7 +28,7 @@ Ouvre l'onglet des tâches du bassin puis ajoute :
 incuber une larve de Prim'ta
 ```
 
-Un colon ayant le travail **Dressage** actif et un niveau **Animaux 4+** effectue alors `1800` unités de travail et produit :
+Un colon ayant le travail **Dressage** actif et un niveau **Animaux 4+** apporte `10` unités de viande crue, effectue `1800` unités de travail et produit :
 
 ```text
 1 larve de Prim'ta
@@ -44,10 +44,18 @@ larve de Prim'ta physique
 implantation médicale chez un Jaffa
 ```
 
-## Limites du prototype
+## Nutriments requis
 
-La première recette ne consomme encore aucun nutriment. Elle sert à valider la
-boucle complète sans mode développeur.
+Depuis `0.1.29-dev`, chaque incubation consomme :
+
+```text
+10 unités de viande crue
+```
+
+Le prototype accepte les différentes viandes crues et permet de mélanger
+plusieurs piles.
+
+## Limites du prototype
 
 Les futurs lots ajouteront :
 

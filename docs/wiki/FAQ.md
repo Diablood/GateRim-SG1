@@ -141,8 +141,8 @@ Depuis `0.1.28-dev`, construis un
 [bassin d'incubation du Prim'ta](Primta-Incubation), ouvre son onglet des tâches
 puis ajoute `incuber une larve de Prim'ta`.
 
-La première recette demande uniquement du travail. Les nutriments et la
-conservation seront ajoutés ultérieurement.
+Depuis `0.1.29-dev`, la recette consomme `10` unités de viande crue. La
+conservation et la température seront ajoutées ultérieurement.
 
 
 ## Quelle compétence est utilisée pour incuber une larve ?
@@ -151,3 +151,11 @@ L'incubation relève du travail `Dressage` et exige un niveau `Animaux 4+`.
 
 Le colon doit avoir le travail `Dressage` actif. Il peut ensuite effectuer la
 tâche automatiquement ou la prioriser manuellement sur le bassin.
+
+
+## Quels nutriments sont nécessaires pour incuber une larve ?
+
+Depuis `0.1.29-dev`, chaque incubation consomme `10` unités de viande crue.
+
+La première version accepte toutes les viandes crues compatibles avec la
+catégorie vanilla correspondante.

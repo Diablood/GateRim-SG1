@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.28.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.29.0 loaded.
    ```
 
 
@@ -374,3 +374,18 @@ Negative checks:
 5. Confirm the same pawn starts the bill automatically when Handling work is enabled.
 6. Confirm a pawn below Animals `4` is rejected with a minimum-skill message.
 7. Let the work complete and confirm one physical larva appears.
+
+
+## Prim'ta incubation nutrient requirements
+
+1. Build with `build.cmd`.
+2. Construct or spawn `Prim'ta incubation basin`.
+3. Add `incubate Prim'ta larva`.
+4. Confirm a pawn with Handling enabled and Animals `4+` is eligible.
+5. Leave the map without raw meat and confirm the bill waits.
+6. Add fewer than `10` raw-meat units and confirm the bill still waits.
+7. Add at least `10` raw-meat units.
+8. Confirm the pawn hauls the meat and completes the bill.
+9. Confirm `10` units of raw meat are consumed.
+10. Confirm one physical `Prim'ta larva` appears.
+11. Complete the existing Jaffa implantation workflow.

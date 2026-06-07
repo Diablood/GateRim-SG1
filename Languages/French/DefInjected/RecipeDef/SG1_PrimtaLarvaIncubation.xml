@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_IncubatePrimtaLarva.label>incuber une larve de Prim'ta</SG1_IncubatePrimtaLarva.label>
-    <SG1_IncubatePrimtaLarva.description>Incube un symbiote Goa'uld immature destiné à une future implantation chez un Jaffa. Ce premier prototype relève du dressage et exige un niveau 4 en Animaux. Les nutriments, la conservation et la maturation seront ajoutés ultérieurement.</SG1_IncubatePrimtaLarva.description>
-    <SG1_IncubatePrimtaLarva.jobString>Incubation d'une larve de Prim'ta en cours.</SG1_IncubatePrimtaLarva.jobString>
+    <SG1_IncubatePrimtaLarva.description>Incube un symbiote Goa'uld immature destiné à une future implantation chez un Jaffa. Ce prototype consomme 10 unités de viande crue comme premier apport biologique et relève du dressage avec un niveau 4 en Animaux. La conservation, la température et une nutrition plus précise seront ajoutées ultérieurement.</SG1_IncubatePrimtaLarva.description>
+    <SG1_IncubatePrimtaLarva.jobString>Incubation d'une larve de Prim'ta avec des nutriments biologiques en cours.</SG1_IncubatePrimtaLarva.jobString>
 </LanguageData>
