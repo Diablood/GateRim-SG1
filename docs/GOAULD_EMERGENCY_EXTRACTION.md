@@ -69,3 +69,15 @@ Emergency Goa'uld extraction surgery
 
 That future version should require medical work, apply failure risks and possibly
 injure or kill the host.
+
+
+## 0.1.20-dev medical operation
+
+A real medical operation is now available from the pawn health tab:
+
+```text
+emergency Goa'uld extraction
+```
+
+The immediate command remains temporarily available as a regression-testing
+tool. The surgery is the intended player-facing path.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.20-dev
+- Add the `SG1_EmergencyExtractGoauldSymbiote` medical operation.
+- Add `Recipe_EmergencyExtractGoauldSymbiote`, derived from vanilla `Recipe_Surgery`.
+- Use the normal surgery outcome path through `CheckSurgeryFail(...)`.
+- Require Medicine `6`, one medicine ingredient and medical work time.
+- Preserve the same persistent symbiote identity after successful surgery.
+- Keep recent implantation active after failed surgery.
+- Keep the immediate extraction command temporarily for regression testing.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.19-dev
 - Add `HediffComp_GoauldEmergencyExtraction`.
 - Add a manual `Emergency extraction` command during recent implantation.

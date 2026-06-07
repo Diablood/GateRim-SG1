@@ -72,6 +72,20 @@ Le même parasite réapparaît sous la forme d'un symbiote libre à proximité.
 
 Consulte [Extraction d'urgence Goa'uld](Emergency-Extraction).
 
+### Chirurgie d'extraction
+
+Depuis `0.1.20-dev`, une victime récemment implantée peut recevoir une véritable
+opération médicale :
+
+```text
+extraction d'urgence Goa'uld
+```
+
+La réussite libère le même parasite avec son identifiant persistant. L'échec
+laisse l'implantation récente active.
+
+Consulte [Chirurgie d'extraction Goa'uld](Extraction-Surgery).
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;

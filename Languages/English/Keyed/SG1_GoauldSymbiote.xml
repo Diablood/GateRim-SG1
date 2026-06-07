@@ -22,4 +22,7 @@ Origin: {1}</GR_FreeGoauldSymbioteDataSummary>
     <GR_EmergencyExtraction_InternalError>Emergency extraction failed because the symbiote transfer system is incomplete.</GR_EmergencyExtraction_InternalError>
     <GR_EmergencyExtraction_NoSpawnCell>Emergency extraction failed because no nearby cell can receive the free symbiote.</GR_EmergencyExtraction_NoSpawnCell>
     <GR_EmergencyExtraction_Success>{0} has undergone emergency extraction. Goa'uld symbiote {1} is free again.</GR_EmergencyExtraction_Success>
+    <GR_EmergencyExtractionSurgery_InternalError>Emergency extraction surgery failed because the persistent symbiote transfer system is incomplete.</GR_EmergencyExtractionSurgery_InternalError>
+    <GR_EmergencyExtractionSurgery_NoSpawnCell>Emergency extraction surgery failed because no nearby cell can receive the extracted symbiote.</GR_EmergencyExtractionSurgery_NoSpawnCell>
+    <GR_EmergencyExtractionSurgery_Success>{0} has undergone emergency surgery. Goa'uld symbiote {1} is free again.</GR_EmergencyExtractionSurgery_Success>
 </LanguageData>

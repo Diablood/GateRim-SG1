@@ -117,6 +117,22 @@
 - [ ] Validate save/reload after extraction
 - [ ] Publish the updated player wiki
 
+## 0.1.20-dev — Add emergency Goa'uld extraction surgery
+- [x] Add `SG1_EmergencyExtractGoauldSymbiote`
+- [x] Add `Recipe_EmergencyExtractGoauldSymbiote`
+- [x] Derive the worker from vanilla `Recipe_Surgery`
+- [x] Use vanilla `CheckSurgeryFail(...)`
+- [x] Require Medicine `6`, medicine and medical work time
+- [x] Preserve the same symbiote identity after successful surgery
+- [x] Keep recent implantation active after failed surgery
+- [x] Keep the immediate command temporarily for regression tests
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the operation appears in the pawn health tab
+- [ ] Validate successful surgery and identity persistence
+- [ ] Validate failed surgery behavior
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -131,7 +147,7 @@
 - [ ] Add autonomous hostile attack AI for free symbiotes
 - [ ] Add ritual Goa'uld implantation
 - [x] Add manual emergency extraction prototype
-- [ ] Replace or complement manual extraction with a medical surgery bill
+- [x] Complement manual extraction with a medical surgery bill
 - [x] Convert a victim into an active Goa'uld host when the timer ends
 - [ ] Add transfer between hosts
 - [ ] Add extraction

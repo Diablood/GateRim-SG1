@@ -58,3 +58,12 @@ Depuis `0.1.19-dev`, sélectionne la victime puis clique sur
 
 Le processus est interrompu et le même parasite réapparaît sous la forme d'un
 [symbiote libre](Emergency-Extraction).
+
+
+## Chirurgie d'extraction
+
+Depuis `0.1.20-dev`, l'onglet de santé permet de planifier
+[extraction d'urgence Goa'uld](Extraction-Surgery).
+
+Une réussite libère le même parasite. Un échec laisse l'implantation récente
+active et le compte à rebours continue.

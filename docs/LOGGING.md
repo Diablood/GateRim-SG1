@@ -112,3 +112,15 @@ Removed transferred Goa'uld symbiote state <id> from host <pawn> without detachi
 ```
 
 The free pawn created after extraction must display the same ID.
+
+
+## Extraction-surgery diagnostics
+
+`0.1.20-dev` adds surgery-specific logs:
+
+```text
+Emergency extraction surgery failed for <pawn>.
+Emergency extraction surgery returned Goa'uld symbiote <id> from patient <pawn> with surgeon <pawn>.
+```
+
+A successful operation must preserve the same persistent parasite ID.

@@ -15,6 +15,7 @@
 - [Implantation récente](Recent-Implantation)
 - [Implantation forcée](Forced-Implantation)
 - [Extraction d'urgence](Emergency-Extraction)
+- [Chirurgie d'extraction](Extraction-Surgery)
 - [Hôte Goa'uld actif](Active-Goauld-Host)
 
 ## Assistance

@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.19.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.20.0 loaded.
    ```
 
 
@@ -209,3 +209,23 @@ Negative checks:
 10. Save and reload after extraction.
 11. Confirm that the free pawn ID remains unchanged.
 12. Inspect `Player.log` for reverse-transfer lifecycle logs.
+
+
+## Emergency Goa'uld extraction surgery
+
+1. Build with `build.cmd`.
+2. Implant an adult humanoid through `Forced implantation`.
+3. Open the health tab and schedule:
+   ```text
+   emergency Goa'uld extraction
+   ```
+4. Provide a doctor with Medicine `6+`, a bed and medicine.
+5. Let the bill complete.
+6. On success, confirm that recent implantation disappears.
+7. Confirm that a nearby free symbiote displays the same ID.
+8. Re-implant the extracted pawn and confirm the ID remains unchanged.
+9. Save and reload after extraction.
+10. Confirm persistence.
+11. Test a lower-quality medical setup.
+12. Confirm that a failed surgery leaves recent implantation in place.
+13. Inspect `Player.log`.

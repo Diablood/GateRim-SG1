@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <RecipeDef>
+        <defName>SG1_EmergencyExtractGoauldSymbiote</defName>
+        <label>emergency Goa'uld extraction</label>
+        <description>Attempt to surgically extract a recently implanted Goa'uld symbiote before it establishes control. A successful operation returns the same parasite as a free symbiote. Failure risks follow the normal surgery outcome system.</description>
+        <jobString>Performing emergency Goa'uld extraction.</jobString>
+        <workerClass>GateRimSG1.Goauld.Recipe_EmergencyExtractGoauldSymbiote</workerClass>
+        <workAmount>1800</workAmount>
+        <effectWorking>Surgery</effectWorking>
+        <soundWorking>Recipe_Surgery</soundWorking>
+        <workSpeedStat>MedicalOperationSpeed</workSpeedStat>
+        <workSkill>Medicine</workSkill>
+        <workSkillLearnFactor>16</workSkillLearnFactor>
+        <surgeryOutcomeEffect>SurgeryOutcomeBase</surgeryOutcomeEffect>
+        <surgerySuccessChanceFactor>0.85</surgerySuccessChanceFactor>
+        <deathOnFailedSurgeryChance>0.02</deathOnFailedSurgeryChance>
+        <targetsBodyPart>false</targetsBodyPart>
+        <humanlikeOnly>true</humanlikeOnly>
+        <developmentalStageFilter>Adult</developmentalStageFilter>
+        <skillRequirements>
+            <Medicine>6</Medicine>
+        </skillRequirements>
+        <ingredients>
+            <li>
+                <filter>
+                    <categories>
+                        <li>Medicine</li>
+                    </categories>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <categories>
+                <li>Medicine</li>
+            </categories>
+        </fixedIngredientFilter>
+        <recipeUsers>
+            <li>Human</li>
+        </recipeUsers>
+    </RecipeDef>
+</Defs>

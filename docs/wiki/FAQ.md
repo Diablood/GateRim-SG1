@@ -75,3 +75,13 @@ clique sur `Extraction d'urgence`.
 Le parasite réapparaît à proximité avec le même identifiant persistant. Cette
 commande reste un prototype manuel ; une véritable chirurgie sera ajoutée plus
 tard.
+
+
+## Existe-t-il une véritable chirurgie d'extraction ?
+
+Oui. Depuis `0.1.20-dev`, planifie `extraction d'urgence Goa'uld` dans l'onglet
+de santé de la victime récemment implantée.
+
+L'opération demande un médecin compétent, du temps et un médicament. Elle peut
+échouer. La commande instantanée reste temporairement présente comme outil de
+test.

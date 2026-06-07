@@ -30,7 +30,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 |---|---|
 | IA hostile autonome du symbiote libre | Prévu |
 | Implantation rituelle | Prévu |
-| Chirurgie d'extraction Goa'uld | Prévu |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
 | Automatisation du Prim'ta selon l'âge | Prévu |

@@ -14,25 +14,30 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.19-dev — Add emergency Goa'uld extraction prototype
+### 0.1.20-dev — Add emergency Goa'uld extraction surgery
 
-A recently implanted host now exposes a manual emergency countermeasure:
-
-```text
-Emergency extraction
-```
-
-Before the one-day countdown expires, the command:
+Recently implanted humanoids now expose a real medical operation in the health
+tab:
 
 ```text
-removes recent implantation
-respawns a free Goa'uld symbiote nearby
-preserves the same persistent symbiote ID
+emergency Goa'uld extraction
 ```
 
-This milestone intentionally validates reverse identity transfer first.
-Medical bills, doctor skill requirements, medicine consumption and surgery
-failure risks remain a later follow-up.
+The operation requires:
+
+```text
+Medicine skill 6
+one unit of medicine
+medical work time
+normal RimWorld surgery outcome checks
+```
+
+On success, the same persistent parasite identity returns to a nearby free
+symbiote pawn. On failure, recent implantation remains active and its countdown
+continues.
+
+The immediate extraction command remains temporarily available for regression
+testing.
 
 ## First playable milestone
 

@@ -22,4 +22,7 @@ Origine : {1}</GR_FreeGoauldSymbioteDataSummary>
     <GR_EmergencyExtraction_InternalError>L'extraction d'urgence a échoué, car le système de transfert du symbiote est incomplet.</GR_EmergencyExtraction_InternalError>
     <GR_EmergencyExtraction_NoSpawnCell>L'extraction d'urgence a échoué, car aucune case proche ne peut accueillir le symbiote libre.</GR_EmergencyExtraction_NoSpawnCell>
     <GR_EmergencyExtraction_Success>{0} a subi une extraction d'urgence. Le symbiote Goa'uld {1} est à nouveau libre.</GR_EmergencyExtraction_Success>
+    <GR_EmergencyExtractionSurgery_InternalError>La chirurgie d'extraction d'urgence a échoué, car le système persistant de transfert du symbiote est incomplet.</GR_EmergencyExtractionSurgery_InternalError>
+    <GR_EmergencyExtractionSurgery_NoSpawnCell>La chirurgie d'extraction d'urgence a échoué, car aucune case proche ne peut accueillir le symbiote extrait.</GR_EmergencyExtractionSurgery_NoSpawnCell>
+    <GR_EmergencyExtractionSurgery_Success>{0} a subi une chirurgie d'urgence. Le symbiote Goa'uld {1} est à nouveau libre.</GR_EmergencyExtractionSurgery_Success>
 </LanguageData>

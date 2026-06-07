@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_EmergencyExtractGoauldSymbiote.label>extraction d'urgence Goa'uld</SG1_EmergencyExtractGoauldSymbiote.label>
+    <SG1_EmergencyExtractGoauldSymbiote.description>Tente d'extraire chirurgicalement un symbiote Goa'uld récemment implanté avant qu'il n'établisse son contrôle. Une opération réussie libère le même parasite sous la forme d'un symbiote libre. Les risques d'échec suivent le système normal des chirurgies.</SG1_EmergencyExtractGoauldSymbiote.description>
+    <SG1_EmergencyExtractGoauldSymbiote.jobString>Extraction d'urgence du symbiote Goa'uld en cours.</SG1_EmergencyExtractGoauldSymbiote.jobString>
+</LanguageData>

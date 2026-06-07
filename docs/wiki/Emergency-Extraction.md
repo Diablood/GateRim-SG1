@@ -44,3 +44,10 @@ Le pawn extrait peut être implanté à nouveau.
 - l'extraction d'un hôte Goa'uld déjà actif n'est pas encore disponible.
 
 Une future opération médicale remplacera ou complétera cette commande de test.
+
+
+## Chirurgie disponible
+
+Depuis `0.1.20-dev`, la [chirurgie d'extraction](Extraction-Surgery) constitue le
+parcours joueur principal. La commande immédiate reste temporairement disponible
+pour faciliter les tests de développement.

@@ -102,3 +102,15 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 6. Vérifie qu'un symbiote libre réapparaît à proximité.
 7. Vérifie que son identifiant est inchangé.
 8. Implante-le à nouveau pour contrôler le transfert inverse.
+
+
+## Vérifier la chirurgie d'extraction
+
+1. Applique une implantation forcée à un humanoïde adulte contrôlable.
+2. Ouvre son onglet de santé.
+3. Planifie `extraction d'urgence Goa'uld`.
+4. Fournis un médecin de niveau `6+`, un lit et un médicament.
+5. Laisse l'opération s'achever.
+6. En cas de réussite, vérifie que le même parasite réapparaît à proximité.
+7. Vérifie que son identifiant persistant est inchangé.
+8. En cas d'échec, vérifie que l'implantation récente reste active.
