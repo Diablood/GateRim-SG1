@@ -49,3 +49,12 @@ Oui, mais chaque page affiche explicitement un statut :
 - `Implémenté`
 - `Prototype`
 - `Prévu`
+
+
+## Un enfant Jaffa naît-il avec une larve ?
+
+Non. Depuis `0.1.13-dev`, la lignée jaffa et le [Prim'ta](Primta) sont séparés. Un enfant peut naître Jaffa sans porter automatiquement un symbiote immature.
+
+## Le Prim'ta est-il déjà automatique ?
+
+Non. Dans `0.1.13-dev`, l'état `symbiote du Prim'ta` doit encore être ajouté ou retiré manuellement en mode développeur.

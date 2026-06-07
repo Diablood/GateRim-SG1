@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.13-dev
+- Split inherited Jaffa lineage traits from immature-symbiote Prim'ta effects.
+- Add `SG1_JaffaLineage`.
+- Add `SG1_JaffaPouchPotential`.
+- Add `SG1_JaffaSymbioteCompatibility`.
+- Reduce `SG1_Jaffa` to inherited lineage genes and lower its combat-power factor.
+- Add the persistent XML-only `SG1_JaffaPrimta` Hediff prototype.
+- Move immunity, healing, pain, damage-resistance and lifespan modifiers to the Prim'ta Hediff.
+- Keep `SG1_JaffaLongevity` as a legacy development Def for compatibility with earlier test saves.
+- Add French translations, technical documentation and player-wiki updates.
+- Add the future Goa'uld-faction Jaffa facial-marking feature to the roadmap.
+
 ## 0.1.12-dev
 - Set `SG1_Jaffa` to `<inheritable>true</inheritable>` so Jaffa use a germline/endogene foundation.
 - Keep `SG1_GoauldHost` non-heritable because adult Goa'uld possession is acquired during life.

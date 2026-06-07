@@ -49,3 +49,18 @@ Le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
 ## Important
 
 L'état d'implantation récente est encore appliqué manuellement. L'attaque sauvage, le rituel, l'interruption médicale et la conversion automatique restent prévus.
+
+
+## Vérifier le Prim'ta
+
+1. Génère un nouveau pawn Jaffa.
+2. Vérifie qu'il possède uniquement les gènes germinaux de la lignée jaffa.
+3. Sélectionne ce pawn.
+4. Utilise l'action de débogage permettant d'ajouter un état de santé.
+5. Ajoute `symbiote du Prim'ta`.
+6. Vérifie les bonus d'immunité, de guérison, de résistance, de longévité et la réduction de douleur.
+7. Retire l'état et vérifie que ces bonus disparaissent.
+
+## Remarque pour les anciennes sauvegardes de développement
+
+Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pawns de test peuvent conserver des gènes hérités des prototypes précédents.

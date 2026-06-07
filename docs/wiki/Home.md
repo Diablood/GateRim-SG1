@@ -11,14 +11,14 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 
 ## Contenu actuellement testable
 
-- [Jaffa](Jaffa) : xenotype prototype disponible.
+- [Jaffa](Jaffa) : lignée germinale et prototype du [Prim'ta](Primta) disponibles.
 - [Goa'uld](Goauld) : hôte déjà implanté, symbiote libre et [implantation récente](Recent-Implantation) testables.
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur l'application automatique de l'implantation lors d'une attaque forcée, puis sur la conversion de la victime en hôte Goa'uld actif.
+Les prochains lots porteront sur l'automatisation du Prim'ta, puis sur l'application automatique de l'implantation Goa'uld lors d'une attaque forcée.
 
 ## Liens utiles
 

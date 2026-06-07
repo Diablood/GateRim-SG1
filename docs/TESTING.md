@@ -84,3 +84,22 @@ Checklist:
 4. Wait one in-game day and confirm the Hediff disappears.
 5. Switch to French and verify the translated label, description and stage.
 6. Check `Player.log` for `SG1_GoauldRecentImplantation` errors.
+
+
+## Jaffa Prim'ta split
+
+Use newly generated pawns after applying `0.1.13-dev`.
+
+1. Generate a Jaffa pawn.
+2. Confirm the germline gene list contains:
+   ```text
+   SG1_JaffaLineage
+   SG1_JaffaPouchPotential
+   SG1_JaffaSymbioteCompatibility
+   SG1_JaffaPhysiology
+   ```
+3. Confirm `SG1_JaffaPrimta` is absent at birth or initial generation.
+4. Add `SG1_JaffaPrimta` through developer mode.
+5. Confirm immunity, healing, pain, damage and lifespan modifiers.
+6. Remove the Hediff and confirm the modifiers disappear.
+7. Check `Player.log` for `SG1_JaffaPrimta` errors.

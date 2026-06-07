@@ -12,42 +12,40 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Player wiki: `https://github.com/Diablood/GateRim-SG1/wiki`
 - Required DLC for the current development branch: `Biotech`
 
-## Initial development branch
-
-```text
-feature/jaffa-goauld-foundation
-```
-
 ## Current milestone
 
-### 0.1.12-dev — Jaffa germline correction
+### 0.1.13-dev — Split Jaffa lineage and Prim'ta effects
 
-The Jaffa xenotype foundation is corrected after clarifying the Biotech inheritance model:
+The inherited Jaffa lineage is now separated from the biological support supplied by an implanted immature Goa'uld symbiote.
 
-- `SG1_Jaffa` is now inheritable
-- Jaffa genes are treated as a germline/endogene foundation
-- Two Jaffa parents can produce Jaffa children instead of baseliner children
-- Goa'uld host traits remain non-heritable because possession is acquired during life
-- Symbiote-dependent Jaffa bonuses will be separated into a dedicated Hediff later
-- Player documentation now explains the difference between germline genes and acquired xenogenes
+Inherited germline foundation:
 
-The previously published `0.1.11-dev` implantation prototype remains unchanged:
+```text
+SG1_JaffaLineage
+SG1_JaffaPouchPotential
+SG1_JaffaSymbioteCompatibility
+SG1_JaffaPhysiology
+```
 
-- `SG1_GoauldRecentImplantation`
-- Visible one-day countdown
-- Temporary pain offset
+Persistent Prim'ta health-state prototype:
+
+```text
+SG1_JaffaPrimta
+```
+
+The Prim'ta prototype can currently be added or removed manually through developer mode. Ceremony logic, age checks, dependency and tretonin remain later milestones.
 
 ## First playable milestone
 
-- [x] Jaffa xenotype foundation
+- [x] Inheritable Jaffa xenotype foundation
+- [x] Separate inherited Jaffa lineage from Prim'ta effects
 - [x] Goa'uld host xenotype prototype
 - [x] Free Goa'uld symbiote pawn prototype
 - [x] Recent Goa'uld implantation Hediff prototype
-- [ ] Forced implantation
-- [ ] Ritual implantation
-- [ ] Medical interruption
+- [ ] Automatic Prim'ta workflow
+- [ ] Forced Goa'uld implantation
+- [ ] Ritual Goa'uld implantation
 - [ ] Host conversion after the critical phase
-- [ ] Host transfer
 - [ ] Goa'uld faction
 - [ ] Jaffa pawn kinds
 - [ ] Ma'Tok staff weapon
@@ -64,6 +62,6 @@ The previously published `0.1.11-dev` implantation prototype remains unchanged:
 - Use bilingual `Keyed` files for future UI messages and C# strings.
 - Keep versioned player-wiki drafts under `docs/wiki/`.
 - Publish wiki pages directly at the root of the separate `GateRim-SG1.wiki` repository.
-- Use `./tools/sync-wiki.sh` from Bash or `.\tools\sync-wiki.cmd` from Windows PowerShell to synchronize wiki drafts safely.
+- Use `./tools/sync-wiki.sh` from Bash or `.\tools\sync-wiki.cmd` from Windows PowerShell.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.

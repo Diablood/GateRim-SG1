@@ -12,41 +12,49 @@ RimWorld Biotech distinguishes:
 
 ## GateRim SG-1 mapping
 
-| GateRim content | Current representation | Intended long-term representation |
-|---|---|---|
-| Jaffa lineage | Inheritable xenotype | Germline/endogene xenotype |
-| Jaffa pouch and latent compatibility | Not yet implemented | Germline gene or dedicated mechanic |
-| Effects granted by an immature symbiote | Provisional genes inside `SG1_Jaffa` | Dedicated Jaffa symbiote Hediff |
-| Goa'uld adult possession | Non-inheritable `SG1_GoauldHost` prototype | Symbiote entity plus host Hediff/C# state |
-| Tok'ra adult symbiosis | Not yet implemented | Voluntary host Hediff/C# state |
+| GateRim content | Representation |
+|---|---|
+| Jaffa lineage | Inheritable germline xenotype |
+| Jaffa Prim'ta compatibility | Germline genes |
+| Functional pouch and immature symbiote | Persistent `SG1_JaffaPrimta` Hediff prototype |
+| Effects granted by the immature symbiote | Stage modifiers on `SG1_JaffaPrimta` |
+| Goa'uld adult possession | Non-inheritable prototype, later a persistent host state |
+| Tok'ra adult symbiosis | Future voluntary host state |
 
-## Immediate correction
+## 0.1.13-dev split
 
-`SG1_Jaffa` now uses:
+`SG1_Jaffa` now contains only inherited lineage genes:
 
-```xml
-<inheritable>true</inheritable>
+```text
+SG1_JaffaLineage
+SG1_JaffaPouchPotential
+SG1_JaffaSymbioteCompatibility
+SG1_JaffaPhysiology
 ```
 
-The current gene set is therefore created as a germline foundation when the xenotype is assigned.
+The following benefits move to the persistent Prim'ta Hediff prototype:
 
-`SG1_GoauldHost` intentionally remains:
-
-```xml
-<inheritable>false</inheritable>
+```text
+immunity gain
+injury healing
+pain reduction
+damage resistance
+lifespan factor
 ```
 
-A Goa'uld host is created during life by implantation and must not produce automatically possessed children.
+## Save compatibility
 
-## Planned refinement
+`SG1_JaffaLongevity` remains defined as a legacy development gene so older test saves do not lose the referenced `GeneDef`. Newly generated Jaffa no longer receive it from the xenotype.
 
-The current Jaffa xenotype still contains provisional bonuses associated with the immature symbiote:
+## Reproduction tests still required
 
-- immunity;
-- wound healing;
-- reduced pain;
-- long lifespan;
-- clotting;
-- digestive resilience.
+Observe:
 
-As the symbiote system matures, review each effect and move symbiote-dependent bonuses into a removable Hediff. Keep only the inherited Jaffa lineage traits in the germline xenotype.
+```text
+Jaffa × Jaffa
+Jaffa mother × baseliner father
+Baseliner mother × Jaffa father
+Jaffa × another germline xenotype
+```
+
+Do not add forced maternal inheritance until vanilla hybrid behavior has been evaluated in game.
