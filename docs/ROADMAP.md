@@ -163,6 +163,21 @@
 - [ ] Validate identity persistence after save/reload
 - [ ] Publish the updated player wiki
 
+## 0.1.23-dev — Add explicit ritual target selection
+- [x] Replace automatic nearest-target ritual selection
+- [x] Start vanilla map targeting from `Ritual implantation`
+- [x] Accept only compatible reachable humanoids within `12` cells
+- [x] Allow the player to choose a farther valid pawn
+- [x] Preserve centralized identity transfer
+- [x] Interrupt autonomous pursuit while controlled targeting starts
+- [x] Add bilingual UI text, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the targeting cursor appears
+- [ ] Confirm the clicked pawn is implanted
+- [ ] Validate rejection of invalid, unreachable and out-of-range targets
+- [ ] Validate identity persistence after save/reload
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -177,7 +192,8 @@
 - [x] Add autonomous free-symbiote pursuit and contact implantation
 - [ ] Add richer tactical priorities for autonomous symbiotes
 - [x] Add controlled ritual Goa'uld implantation prototype
-- [ ] Add explicit ritual target selection and ceremony flow
+- [x] Add explicit ritual target selection
+- [ ] Add ritual ceremony duration and environmental requirements
 - [x] Add manual emergency extraction prototype
 - [x] Complement manual extraction with a medical surgery bill
 - [x] Convert a victim into an active Goa'uld host when the timer ends

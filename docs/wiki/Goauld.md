@@ -104,8 +104,9 @@ Depuis `0.1.22-dev`, le symbiote libre peut déclencher une voie contrôlée :
 Implantation rituelle
 ```
 
-Le prototype choisit l'humanoïde compatible accessible le plus proche dans un
-rayon limité et réutilise la même identité persistante.
+La commande ouvre un curseur de ciblage : le joueur choisit directement un
+humanoïde compatible accessible dans un rayon limité. La même identité
+persistante est conservée.
 
 Consulte [Implantation rituelle Goa'uld](Ritual-Implantation).
 

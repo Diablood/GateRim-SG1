@@ -18,7 +18,7 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur la sélection explicite d'une cible rituelle, l'automatisation du Prim'ta et les événements faisant apparaître des symbiotes libres.
+Les prochains lots porteront sur la durée et les conditions de cérémonie, l'automatisation du Prim'ta et les événements faisant apparaître des symbiotes libres.
 
 ## Liens utiles
 

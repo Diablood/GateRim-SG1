@@ -20,9 +20,9 @@ distincte de sa chasse autonome.
 Implantation rituelle
 ```
 
-Le symbiote sélectionne automatiquement l'humanoïde compatible accessible le
-plus proche dans ce rayon, disparaît puis transfère son identité persistante dans
-l'état :
+Le jeu ouvre désormais un curseur de ciblage sur la carte. Clique sur l'humanoïde
+compatible accessible de ton choix dans ce rayon. Le symbiote disparaît puis
+transfère son identité persistante dans l'état :
 
 ```text
 implantation Goa'uld récente
@@ -42,11 +42,18 @@ même identifiant persistant
 
 ## Limites du prototype
 
-- la cible valide la plus proche est choisie automatiquement ;
-- le joueur ne clique pas encore sur une cible précise ;
 - aucune animation de cérémonie n'est encore présente ;
 - aucune durée de rituel n'est encore appliquée ;
 - aucune faction, salle, cuve ou structure n'est encore requise ;
 - l'utilisation sur prisonnier n'est pas encore distinguée.
 
 Ces éléments seront ajoutés après validation du transfert contrôlé.
+
+
+## Sélection explicite de la cible
+
+Depuis `0.1.23-dev`, la commande `Implantation rituelle` ouvre un curseur sur la
+carte. Clique directement sur le pawn à implanter.
+
+Le pawn doit être compatible, accessible, vivant, âgé d'au moins `13` ans et
+situé dans le rayon de `12` cases.

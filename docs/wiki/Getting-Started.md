@@ -135,5 +135,6 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 4. Sélectionne le symbiote libre.
 5. Note son identifiant.
 6. Clique sur `Implantation rituelle`.
-7. Vérifie que la cible reçoit `implantation Goa'uld récente`.
-8. Vérifie que l'identifiant est inchangé.
+7. Utilise le curseur pour cliquer sur le pawn précis à implanter.
+8. Vérifie que le pawn sélectionné reçoit `implantation Goa'uld récente`.
+9. Vérifie que l'identifiant est inchangé.

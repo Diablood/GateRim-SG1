@@ -130,7 +130,7 @@ namespace GateRimSG1.Goauld
                 defaultLabel = "GR_RitualImplantation_CommandLabel".Translate(),
                 defaultDesc = "GR_RitualImplantation_CommandDescription".Translate(),
                 icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
-                action = TryImplantNearestRitualHost
+                action = BeginRitualTargeting
             };
 
             yield return new Command_Toggle
@@ -213,10 +213,7 @@ namespace GateRimSG1.Goauld
             if (!IsCompatibleHost(target)
                 || (requiresContact && !IsAdjacentOrSameCell(symbiote, target))
                 || (!requiresContact
-                    && !IsWithinRadius(
-                        symbiote,
-                        target,
-                        Props.ritualImplantationRange)))
+                    && !IsValidRitualTarget(symbiote, target)))
             {
                 return false;
             }
@@ -319,14 +316,24 @@ namespace GateRimSG1.Goauld
             TryImplantHost(target, autonomous: false);
         }
 
-        private void TryImplantNearestRitualHost()
+        private void BeginRitualTargeting()
         {
             Pawn symbiote = SymbiotePawn;
-            Pawn target = FindClosestCompatibleHost(
-                symbiote,
-                Props.ritualImplantationRange);
 
-            if (target == null)
+            if (symbiote == null
+                || !symbiote.Spawned
+                || symbiote.Destroyed)
+            {
+                GR_Log.Warning(
+                    "Ritual implantation targeting requested from an "
+                    + "unavailable free symbiote pawn.");
+
+                return;
+            }
+
+            if (FindClosestCompatibleHost(
+                    symbiote,
+                    Props.ritualImplantationRange) == null)
             {
                 Messages.Message(
                     "GR_RitualImplantation_NoNearbyTarget".Translate(),
@@ -337,9 +344,47 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            TryImplantHost(
-                target,
-                GoauldImplantationMode.RitualControlled);
+            if (symbiote.jobs?.curJob?.def
+                == GR_DefOf.SG1_GoauldAutonomousImplant)
+            {
+                symbiote.jobs.EndCurrentJob(
+                    JobCondition.InterruptForced);
+            }
+
+            nextAutonomousScanTick = CurrentGameTick()
+                + Math.Max(120, Props.autonomousScanIntervalTicks);
+
+            TargetingParameters targetingParameters = new TargetingParameters
+            {
+                canTargetPawns = true,
+                canTargetLocations = false,
+                validator = delegate(TargetInfo targetInfo)
+                {
+                    Pawn candidate = targetInfo.Thing as Pawn;
+                    return IsValidRitualTarget(symbiote, candidate);
+                }
+            };
+
+            Find.Targeter.BeginTargeting(
+                targetingParameters,
+                delegate(LocalTargetInfo targetInfo)
+                {
+                    Pawn selectedTarget = targetInfo.Thing as Pawn;
+
+                    if (!IsValidRitualTarget(
+                            symbiote,
+                            selectedTarget)
+                        || !TryImplantHost(
+                            selectedTarget,
+                            GoauldImplantationMode.RitualControlled))
+                    {
+                        Messages.Message(
+                            "GR_RitualImplantation_InvalidTarget".Translate(),
+                            symbiote,
+                            MessageTypeDefOf.RejectInput,
+                            historical: false);
+                    }
+                });
         }
 
         private void ToggleAutonomousHunting()
@@ -505,6 +550,21 @@ namespace GateRimSG1.Goauld
             return Math.Max(
                 0,
                 Props.autonomousCooldownAfterExtractionTicks - elapsed);
+        }
+
+        private bool IsValidRitualTarget(
+            Pawn symbiote,
+            Pawn candidate)
+        {
+            return IsCompatibleHost(candidate)
+                && IsWithinRadius(
+                    symbiote,
+                    candidate,
+                    Props.ritualImplantationRange)
+                && symbiote.CanReach(
+                    candidate,
+                    PathEndMode.Touch,
+                    Danger.Deadly);
         }
 
         private static bool IsWithinRadius(

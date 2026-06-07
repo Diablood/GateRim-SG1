@@ -14,28 +14,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.22-dev — Add ritual Goa'uld implantation prototype
+### 0.1.23-dev — Add explicit ritual target selection
 
-A selected free adult Goa'uld symbiote now exposes a controlled ritual command:
-
-```text
-Ritual implantation
-```
-
-The command implants the nearest compatible reachable humanoid within a radius
-of `12` cells, consumes the free pawn and transfers the same persistent symbiote
-identity into recent implantation.
-
-All current implantation paths reuse the same transfer core:
+The controlled ritual command now opens a map-targeting cursor:
 
 ```text
-manual adjacent implantation
-autonomous contact implantation
-controlled ritual implantation
+selected free Goa'uld symbiote
+    ↓ Ritual implantation
+click one compatible reachable humanoid within 12 cells
+    ↓
+recent Goa'uld implantation
 ```
 
-Explicit target selection, ceremony duration and faction integration remain
-future refinements.
+The clicked pawn is implanted even when another valid pawn is closer.
+
+The existing persistent identity-transfer core remains unchanged.
 
 ## First playable milestone
 

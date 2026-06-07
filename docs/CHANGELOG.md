@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.23-dev
+- Replace automatic nearest-target ritual selection with explicit map targeting.
+- Add a ritual target validator for compatible reachable humanoids within `12` cells.
+- Allow the player to choose a farther valid pawn.
+- Interrupt autonomous pursuit while controlled ritual targeting starts.
+- Preserve the centralized persistent symbiote identity-transfer flow.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.22-dev
 - Add the controlled `Ritual implantation` command.
 - Reuse the centralized persistent symbiote identity-transfer flow.

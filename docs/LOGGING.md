@@ -150,3 +150,13 @@ Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into
 
 The same ID must appear before the ritual, during recent implantation and after
 save/reload.
+
+
+## Ritual map-targeting diagnostics
+
+`0.1.23-dev` changes only target selection. Successful ritual transfers still
+use:
+
+```text
+Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
+```

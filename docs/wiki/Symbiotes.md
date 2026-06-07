@@ -53,7 +53,7 @@ Depuis `0.1.20-dev`, une [chirurgie d'extraction](Extraction-Surgery) planifiabl
 
 Depuis `0.1.21-dev`, un symbiote libre peut [chasser automatiquement](Autonomous-Hunt) un humanoïde compatible accessible et l'implanter au contact.
 
-Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée permet d'implanter la cible valide la plus proche dans un rayon limité.
+Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée est disponible. Depuis `0.1.23-dev`, le joueur sélectionne explicitement la cible sur la carte dans un rayon limité.
 
 ## Éléments de gameplay prévus
 

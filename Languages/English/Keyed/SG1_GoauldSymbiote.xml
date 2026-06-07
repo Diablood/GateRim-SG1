@@ -30,7 +30,8 @@ Previous host: {4}</GR_GoauldSymbioteDataSummary>
     <GR_AutonomousHunt_Disabled>disabled</GR_AutonomousHunt_Disabled>
     <GR_AutonomousImplantation_Success>{0} has been autonomously implanted by Goa'uld symbiote {1}.</GR_AutonomousImplantation_Success>
     <GR_RitualImplantation_CommandLabel>Ritual implantation</GR_RitualImplantation_CommandLabel>
-    <GR_RitualImplantation_CommandDescription>Perform a controlled Goa'uld implantation ritual on the nearest compatible reachable humanoid within range. The free symbiote is consumed and the same persistent identity moves into recent implantation. This prototype chooses the nearest valid target automatically.</GR_RitualImplantation_CommandDescription>
+    <GR_RitualImplantation_CommandDescription>Choose one compatible reachable humanoid within ritual range. The selected free Goa'uld symbiote is consumed and the same persistent identity moves into recent implantation.</GR_RitualImplantation_CommandDescription>
     <GR_RitualImplantation_NoNearbyTarget>No compatible reachable humanoid is available within ritual range.</GR_RitualImplantation_NoNearbyTarget>
     <GR_RitualImplantation_Success>{0} has undergone the controlled implantation ritual for Goa'uld symbiote {1}.</GR_RitualImplantation_Success>
+    <GR_RitualImplantation_InvalidTarget>This pawn is not a valid ritual implantation target.</GR_RitualImplantation_InvalidTarget>
 </LanguageData>

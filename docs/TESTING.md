@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.22.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.23.0 loaded.
    ```
 
 
@@ -263,3 +263,20 @@ Negative checks:
 10. Save and reload.
 11. Confirm the same ID remains visible.
 12. Repeat without a valid target in range and confirm rejection.
+
+
+## Explicit ritual map target selection
+
+1. Build with `build.cmd`.
+2. Spawn a free Goa'uld symbiote.
+3. Place two compatible humanoids within `12` cells.
+4. Disable autonomous hunt for a controlled test.
+5. Select the symbiote and click `Ritual implantation`.
+6. Confirm that a map-targeting cursor appears.
+7. Click the farther valid humanoid.
+8. Confirm that the clicked pawn, not the nearest pawn, receives recent implantation.
+9. Confirm persistent identity transfer.
+10. Repeat with an invalid pawn, an out-of-range pawn and an unreachable pawn.
+11. Confirm rejection without consuming the free symbiote.
+12. Save and reload after a valid ritual.
+13. Confirm identity persistence.

@@ -72,3 +72,33 @@ These can be added after the controlled transfer path has been validated.
 10. Save and reload.
 11. Confirm identity persistence.
 12. Repeat with no compatible target in range and confirm rejection.
+
+
+## 0.1.23-dev explicit map target selection
+
+The ritual command now starts a vanilla map-targeting flow:
+
+```text
+selected free symbiote
+    ↓ Ritual implantation
+map cursor
+    ↓ click one valid humanoid
+recent Goa'uld implantation
+```
+
+The target validator keeps the existing restrictions:
+
+```text
+compatible humanlike pawn
+spawned and alive
+minimum biological age
+not already implanted or possessed
+within 12 cells
+reachable by the symbiote
+```
+
+The autonomous pursuit job is interrupted when ritual targeting starts, and the
+next autonomous scan is delayed briefly so the controlled action remains stable.
+
+The previous automatic nearest-target selection is removed from the player-facing
+ritual path.
