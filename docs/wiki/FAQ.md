@@ -65,3 +65,13 @@ Non. Dans `0.1.13-dev`, l'état `symbiote du Prim'ta` doit encore être ajouté 
 Oui, sous forme de prototype manuel depuis `0.1.17-dev`. Place un symbiote libre à côté d'un humanoïde adulte compatible, sélectionne le symbiote puis clique sur `Implantation forcée`.
 
 Le comportement hostile autonome sera ajouté ultérieurement.
+
+
+## Peut-on interrompre une implantation récente ?
+
+Oui. Depuis `0.1.19-dev`, sélectionne la victime pendant la phase critique puis
+clique sur `Extraction d'urgence`.
+
+Le parasite réapparaît à proximité avec le même identifiant persistant. Cette
+commande reste un prototype manuel ; une véritable chirurgie sera ajoutée plus
+tard.

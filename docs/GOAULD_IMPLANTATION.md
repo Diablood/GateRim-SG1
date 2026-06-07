@@ -80,3 +80,15 @@ SG1_GoauldHostSymbiote
 ```
 
 The victim keeps the original germline xenotype and gains an acquired active-host health state.
+
+
+## 0.1.19-dev emergency interruption
+
+Before the countdown expires, the selected host exposes:
+
+```text
+Emergency extraction
+```
+
+The manual prototype removes recent implantation and respawns the same parasite
+as a free pawn with the same persistent ID.

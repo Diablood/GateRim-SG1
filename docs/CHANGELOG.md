@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.19-dev
+- Add `HediffComp_GoauldEmergencyExtraction`.
+- Add a manual `Emergency extraction` command during recent implantation.
+- Transfer the same persistent identity back into a newly generated free symbiote pawn.
+- Add free-symbiote initialization from transferred data.
+- Add transfer rollback support if no nearby spawn cell is available.
+- Add bilingual text, a temporary command icon, technical documentation and player-wiki drafts.
+
 ## 0.1.18-dev
 - Add `HediffComp_GoauldImplantationConversion`.
 - Convert recent implantation into `SG1_GoauldHostSymbiote` immediately before expiry.

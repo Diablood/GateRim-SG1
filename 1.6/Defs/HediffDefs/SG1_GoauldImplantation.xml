@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-        The recent-implantation phase owns persistent adult-symbiote data.
-        Immediately before its one-day countdown expires, the specialized
-        disappearing component transfers the same identity into the active-host
-        state. The temporary state then disappears normally.
-    -->
     <HediffDef>
         <defName>SG1_GoauldRecentImplantation</defName>
         <label>recent Goa'uld implantation</label>
@@ -20,6 +14,7 @@
         </stages>
         <comps>
             <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldSymbiote" />
+            <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldEmergencyExtraction" />
             <li Class="GateRimSG1.Goauld.HediffCompProperties_GoauldImplantationConversion">
                 <disappearsAfterTicks>60000</disappearsAfterTicks>
                 <showRemainingTime>true</showRemainingTime>

@@ -71,3 +71,20 @@ When the manual forced-implantation action succeeds, the same `GoauldSymbioteDat
 Since `0.1.18-dev`, `SG1_GoauldRecentImplantation` automatically transfers its `GoauldSymbioteData` object into `SG1_GoauldHostSymbiote` immediately before expiry.
 
 The temporary carrier marks its data as transferred-out so its removal does not clear the active identity.
+
+
+## Reverse transfer during emergency extraction
+
+Since `0.1.19-dev`, a recent-implantation host can return its persistent
+`GoauldSymbioteData` object into a newly generated free symbiote pawn through the
+manual `Emergency extraction` command.
+
+The same ID should survive:
+
+```text
+free pawn
+recent implantation
+emergency extraction
+free pawn again
+save and reload
+```

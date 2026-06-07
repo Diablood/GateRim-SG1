@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.18.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.19.0 loaded.
    ```
 
 
@@ -193,3 +193,19 @@ Negative checks:
 10. Save and reload after conversion.
 11. Confirm that the ID remains unchanged.
 12. Inspect `Player.log` for preparation, conversion and safe-removal logs.
+
+
+## Emergency Goa'uld extraction prototype
+
+1. Build with `build.cmd`.
+2. Implant an adjacent adult humanoid through `Forced implantation`.
+3. Record the persistent symbiote ID.
+4. Select the implanted host before the critical countdown expires.
+5. Click `Emergency extraction`.
+6. Confirm that recent implantation disappears.
+7. Confirm that a free Goa'uld symbiote pawn appears nearby.
+8. Confirm that the free pawn displays the same ID.
+9. Re-implant the extracted pawn and confirm the ID remains unchanged.
+10. Save and reload after extraction.
+11. Confirm that the free pawn ID remains unchanged.
+12. Inspect `Player.log` for reverse-transfer lifecycle logs.

@@ -14,31 +14,25 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.18-dev — Convert recent implantation into active Goa'uld host
+### 0.1.19-dev — Add emergency Goa'uld extraction prototype
 
-The first complete adult-possession loop is now implemented:
-
-```text
-free Goa'uld symbiote
-    ↓ manual forced implantation
-recent Goa'uld implantation
-    ↓ one-day countdown
-adult Goa'uld symbiote host state
-```
-
-The same persistent symbiote identity is transferred into the active-host state immediately before the temporary implantation state expires.
-
-The acquired active-host state grants:
+A recently implanted host now exposes a manual emergency countermeasure:
 
 ```text
-immunity gain ×1.75
-injury healing ×1.75
-incoming damage ×0.8
-lifespan ×5
-pain ×0.7
+Emergency extraction
 ```
 
-The host's original germline xenotype remains unchanged.
+Before the one-day countdown expires, the command:
+
+```text
+removes recent implantation
+respawns a free Goa'uld symbiote nearby
+preserves the same persistent symbiote ID
+```
+
+This milestone intentionally validates reverse identity transfer first.
+Medical bills, doctor skill requirements, medicine consumption and surgery
+failure risks remain a later follow-up.
 
 ## First playable milestone
 

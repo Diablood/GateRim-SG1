@@ -17,4 +17,9 @@ Origin: {1}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_InternalError>Forced implantation failed because the recent-implantation state is missing its persistent symbiote component.</GR_ForcedImplantation_InternalError>
     <GR_ForcedImplantation_Success>{0} has been forcibly implanted by Goa'uld symbiote {1}.</GR_ForcedImplantation_Success>
     <GR_GoauldHostConversion_Success>{0} is now an active Goa'uld host for symbiote {1}.</GR_GoauldHostConversion_Success>
+    <GR_EmergencyExtraction_CommandLabel>Emergency extraction</GR_EmergencyExtraction_CommandLabel>
+    <GR_EmergencyExtraction_CommandDescription>Immediately extract the recently implanted Goa'uld symbiote. The parasite reappears as a free pawn with the same persistent identity. This is a manual prototype; medical surgery requirements and failure risks will be added later.</GR_EmergencyExtraction_CommandDescription>
+    <GR_EmergencyExtraction_InternalError>Emergency extraction failed because the symbiote transfer system is incomplete.</GR_EmergencyExtraction_InternalError>
+    <GR_EmergencyExtraction_NoSpawnCell>Emergency extraction failed because no nearby cell can receive the free symbiote.</GR_EmergencyExtraction_NoSpawnCell>
+    <GR_EmergencyExtraction_Success>{0} has undergone emergency extraction. Goa'uld symbiote {1} is free again.</GR_EmergencyExtraction_Success>
 </LanguageData>

@@ -90,3 +90,15 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 7. Vérifie que l'identifiant est inchangé.
 8. Vérifie les nouveaux bonus biologiques.
 9. Vérifie que le xenotype germinal de la victime n'a pas changé.
+
+
+## Vérifier l'extraction d'urgence
+
+1. Applique une implantation forcée à un humanoïde adulte.
+2. Note l'identifiant du symbiote.
+3. Sélectionne la victime avant la fin du compte à rebours.
+4. Clique sur `Extraction d'urgence`.
+5. Vérifie que l'état récent disparaît.
+6. Vérifie qu'un symbiote libre réapparaît à proximité.
+7. Vérifie que son identifiant est inchangé.
+8. Implante-le à nouveau pour contrôler le transfert inverse.

@@ -24,6 +24,19 @@ namespace GateRimSG1.Goauld
 
         private Pawn SymbiotePawn => parent as Pawn;
 
+        public void InitializeWithTransferredData(GoauldSymbioteData transferredData)
+        {
+            if (transferredData == null)
+            {
+                GR_Log.Error("Tried to initialize a free Goa'uld symbiote with null data.");
+                return;
+            }
+
+            symbioteData = transferredData;
+            consumedByImplantation = false;
+            symbioteData.EnsureIdentity(CurrentGameTick());
+        }
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);

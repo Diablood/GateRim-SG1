@@ -8,6 +8,7 @@ namespace GateRimSG1
     {
         public static HediffDef SG1_GoauldRecentImplantation;
         public static HediffDef SG1_GoauldHostSymbiote;
+        public static PawnKindDef SG1_GoauldSymbiote;
 
         static GR_DefOf()
         {

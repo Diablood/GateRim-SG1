@@ -96,10 +96,25 @@
 - [x] Add acquired active-host biological modifiers
 - [x] Preserve the original germline xenotype
 - [x] Add bilingual UI text, documentation and player-wiki drafts
+- [x] Build locally against RimWorld 1.6
+- [x] Validate save/reload during the critical phase
+- [x] Validate conversion and identity persistence
+- [x] Validate save/reload after conversion
+- [ ] Publish the updated player wiki
+
+## 0.1.19-dev — Add emergency Goa'uld extraction prototype
+- [x] Add `HediffComp_GoauldEmergencyExtraction`
+- [x] Add a manual `Emergency extraction` gizmo during recent implantation
+- [x] Transfer the same persistent identity back into a free symbiote pawn
+- [x] Preserve free-symbiote re-implantation support
+- [x] Add bilingual UI strings and a temporary command icon
+- [x] Add reverse-transfer lifecycle logging
+- [x] Update technical docs and player-wiki drafts
 - [ ] Build locally against RimWorld 1.6
-- [ ] Validate save/reload during the critical phase
-- [ ] Validate conversion and identity persistence
-- [ ] Validate save/reload after conversion
+- [ ] Validate extraction before countdown expiry
+- [ ] Validate identical ID after extraction
+- [ ] Validate re-implantation of the extracted pawn
+- [ ] Validate save/reload after extraction
 - [ ] Publish the updated player wiki
 
 ## Next genetics tests
@@ -115,7 +130,8 @@
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [ ] Add autonomous hostile attack AI for free symbiotes
 - [ ] Add ritual Goa'uld implantation
-- [ ] Add medical interruption
+- [x] Add manual emergency extraction prototype
+- [ ] Replace or complement manual extraction with a medical surgery bill
 - [x] Convert a victim into an active Goa'uld host when the timer ends
 - [ ] Add transfer between hosts
 - [ ] Add extraction

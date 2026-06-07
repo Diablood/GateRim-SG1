@@ -21,6 +21,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
 | Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
 | Hôte Goa'uld actif | Conversion automatique après la phase critique | 0.1.18-dev |
+| Extraction d'urgence Goa'uld | Interruption manuelle pendant la phase critique | 0.1.19-dev |
 | Symbiote du Prim'ta | État de santé persistant testable manuellement | 0.1.13-dev |
 
 ## Prévu
@@ -29,7 +30,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 |---|---|
 | IA hostile autonome du symbiote libre | Prévu |
 | Implantation rituelle | Prévu |
-| Interruption médicale | Prévu |
+| Chirurgie d'extraction Goa'uld | Prévu |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
 | Automatisation du Prim'ta selon l'âge | Prévu |

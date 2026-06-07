@@ -49,3 +49,12 @@ L'identité persistante du parasite est conservée entre l'entité libre et la v
 Depuis `0.1.18-dev`, l'expiration du compte à rebours transforme automatiquement l'état récent en [hôte Goa'uld actif](Active-Goauld-Host).
 
 L'identité persistante du parasite est conservée.
+
+
+## Extraction d'urgence
+
+Depuis `0.1.19-dev`, sélectionne la victime puis clique sur
+`Extraction d'urgence` avant l'expiration du compte à rebours.
+
+Le processus est interrompu et le même parasite réapparaît sous la forme d'un
+[symbiote libre](Emergency-Extraction).

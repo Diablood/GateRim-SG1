@@ -41,6 +41,18 @@ namespace GateRimSG1.Goauld
             return symbioteData;
         }
 
+        public void CancelTransferOut()
+        {
+            transferredOut = false;
+
+            if (symbioteData != null)
+            {
+                GR_Log.Warning(
+                    $"Cancelled transfer-out state for Goa'uld symbiote "
+                    + $"{symbioteData.SymbioteId} on {PawnDebugLabel()}.");
+            }
+        }
+
         public override string CompDescriptionExtra
         {
             get

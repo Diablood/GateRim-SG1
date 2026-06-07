@@ -99,3 +99,16 @@ Removed transferred Goa'uld symbiote state <id> from host <pawn> without detachi
 ```
 
 The same ID must remain visible before conversion, after conversion and after save/reload.
+
+
+## Emergency-extraction diagnostics
+
+`0.1.19-dev` adds reverse-transfer logs:
+
+```text
+Prepared Goa'uld symbiote <id> for transfer from host state on <pawn>.
+Emergency extraction returned Goa'uld symbiote <id> from host <pawn> to a free pawn.
+Removed transferred Goa'uld symbiote state <id> from host <pawn> without detaching the active symbiote.
+```
+
+The free pawn created after extraction must display the same ID.

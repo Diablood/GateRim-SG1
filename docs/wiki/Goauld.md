@@ -59,6 +59,19 @@ Le même identifiant persistant est conservé. L'état actif apporte des bonus i
 
 Consulte [Hôte Goa'uld actif](Active-Goauld-Host).
 
+### Extraction d'urgence
+
+Depuis `0.1.19-dev`, une victime récemment implantée peut interrompre le
+processus grâce à la commande manuelle :
+
+```text
+Extraction d'urgence
+```
+
+Le même parasite réapparaît sous la forme d'un symbiote libre à proximité.
+
+Consulte [Extraction d'urgence Goa'uld](Emergency-Extraction).
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;

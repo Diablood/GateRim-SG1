@@ -5,7 +5,8 @@
 > Symbiote libre : 0.1.8-dev  
 > Implantation récente : 0.1.11-dev  
 > Implantation forcée interactive : 0.1.17-dev  
-> Hôte actif : 0.1.18-dev
+> Hôte actif : 0.1.18-dev  
+> Extraction d'urgence : 0.1.19-dev
 
 ## Vue d'ensemble
 
@@ -42,6 +43,8 @@ Depuis `0.1.11-dev`, l'état de santé `implantation Goa'uld récente` représen
 Depuis `0.1.17-dev`, un symbiote libre peut appliquer cet état grâce à une commande manuelle lorsqu'il se trouve à côté d'un humanoïde adulte compatible. Son identité persistante est conservée lors du transfert.
 
 Depuis `0.1.18-dev`, le compte à rebours convertit automatiquement la victime en [hôte Goa'uld actif](Active-Goauld-Host) sans changer son xenotype germinal.
+
+Depuis `0.1.19-dev`, une [extraction d'urgence](Emergency-Extraction) manuelle peut interrompre la phase critique et faire réapparaître le même symbiote libre.
 
 ## Éléments de gameplay prévus
 
