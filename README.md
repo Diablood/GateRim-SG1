@@ -14,26 +14,37 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.13-dev — Split Jaffa lineage and Prim'ta effects
+### 0.1.14-dev — Add centralized C# logging scaffold
 
-The inherited Jaffa lineage is now separated from the biological support supplied by an implanted immature Goa'uld symbiote.
-
-Inherited germline foundation:
+The first C# scaffold is now in place:
 
 ```text
-SG1_JaffaLineage
-SG1_JaffaPouchPotential
-SG1_JaffaSymbioteCompatibility
-SG1_JaffaPhysiology
+Source/GateRimSG1/
+├── GateRimSG1.csproj
+├── GateRimSG1Bootstrap.cs
+└── GR_Log.cs
 ```
 
-Persistent Prim'ta health-state prototype:
+All future C# diagnostics should use the centralized `GR_Log` wrapper so entries remain easy to filter in `Player.log`.
+
+Available helpers:
 
 ```text
-SG1_JaffaPrimta
+Message
+Warning
+Error
+WarningOnce
+ErrorOnce
 ```
 
-The Prim'ta prototype can currently be added or removed manually through developer mode. Ceremony logic, age checks, dependency and tretonin remain later milestones.
+The bootstrap writes one smoke-test message when the assembly loads.
+
+Build documentation is available under:
+
+```text
+docs/BUILD.md
+docs/LOGGING.md
+```
 
 ## First playable milestone
 

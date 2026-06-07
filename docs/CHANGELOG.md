@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.14-dev
+- Add the first C# project scaffold.
+- Add centralized `GR_Log` diagnostics with `[GateRim SG-1]` prefix.
+- Add `Message`, `Warning`, `Error`, `WarningOnce` and `ErrorOnce`.
+- Add an assembly-load bootstrap smoke test.
+- Add Windows PowerShell and Bash build helpers.
+- Add build and logging documentation.
+
 ## 0.1.13-dev
 - Split inherited Jaffa lineage traits from immature-symbiote Prim'ta effects.
 - Add `SG1_JaffaLineage`.

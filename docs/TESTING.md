@@ -103,3 +103,16 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Confirm immunity, healing, pain, damage and lifespan modifiers.
 6. Remove the Hediff and confirm the modifiers disappear.
 7. Check `Player.log` for `SG1_JaffaPrimta` errors.
+
+
+## C# logging scaffold smoke test
+
+1. Build the mod assembly with `build.ps1` or `build.sh`.
+2. Confirm that `1.6/Assemblies/GateRimSG1.dll` exists locally.
+3. Launch RimWorld with `Core`, `Biotech`, and `GateRim SG-1`.
+4. Close the game after the main menu appears.
+5. Inspect `Player.log`.
+6. Confirm the presence of:
+   ```text
+   [GateRim SG-1] Version 0.1.14.0 loaded.
+   ```

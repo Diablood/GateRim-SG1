@@ -41,6 +41,17 @@
 - [ ] Validate manual add/remove of `SG1_JaffaPrimta`
 - [ ] Publish the updated player wiki
 
+## 0.1.14-dev — Add centralized C# logging scaffold
+- [x] Add `GR_Log`
+- [x] Add `Message`, `Warning`, `Error`, `WarningOnce` and `ErrorOnce`
+- [x] Prefix all diagnostics with `[GateRim SG-1]`
+- [x] Add a C# project and solution
+- [x] Add Windows and Bash build helpers
+- [x] Add an assembly-load smoke-test message
+- [x] Document the logging rules
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the bootstrap message in `Player.log`
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
