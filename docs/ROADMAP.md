@@ -52,6 +52,14 @@
 - [ ] Build locally against RimWorld 1.6
 - [ ] Confirm the bootstrap message in `Player.log`
 
+## 0.1.15-dev — Add colored log prefix and Windows build wrapper
+- [x] Add a colored `[GateRim SG-1]` logging prefix
+- [x] Use the gold tone `#D9B44A`
+- [x] Add `build.cmd`
+- [x] Document the Windows build wrapper
+- [ ] Build through `build.cmd`
+- [ ] Confirm the colored bootstrap message in `Player.log`
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father

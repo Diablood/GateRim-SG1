@@ -14,20 +14,25 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.14-dev — Add centralized C# logging scaffold
+### 0.1.15-dev — Add colored log prefix and Windows build wrapper
 
-The first C# scaffold is now in place:
+The centralized C# logging scaffold now uses a colored GateRim SG-1 prefix:
 
 ```text
-Source/GateRimSG1/
-├── GateRimSG1.csproj
-├── GateRimSG1Bootstrap.cs
-└── GR_Log.cs
+<color=#D9B44A>[GateRim SG-1]</color>
 ```
 
-All future C# diagnostics should use the centralized `GR_Log` wrapper so entries remain easy to filter in `Player.log`.
+The gold tone makes GateRim messages easier to identify in `Player.log`.
 
-Available helpers:
+A Windows build wrapper is also available:
+
+```powershell
+.\build.cmd "D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
+```
+
+This wrapper calls `dotnet build` directly and avoids PowerShell execution-policy issues.
+
+The underlying logging API remains:
 
 ```text
 Message
@@ -35,15 +40,6 @@ Warning
 Error
 WarningOnce
 ErrorOnce
-```
-
-The bootstrap writes one smoke-test message when the assembly loads.
-
-Build documentation is available under:
-
-```text
-docs/BUILD.md
-docs/LOGGING.md
 ```
 
 ## First playable milestone

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.15-dev
+- Add a colored `<color=#D9B44A>[GateRim SG-1]</color>` logging prefix.
+- Add `build.cmd` for Windows users blocked by PowerShell execution policies.
+- Document the Windows build wrapper and colored-log regression test.
+
 ## 0.1.14-dev
 - Add the first C# project scaffold.
 - Add centralized `GR_Log` diagnostics with `[GateRim SG-1]` prefix.

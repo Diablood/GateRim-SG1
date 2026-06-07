@@ -43,3 +43,20 @@ Then inspect `Player.log` for:
 ```
 
 The DLL is a local build output and remains ignored by Git.
+
+
+## Windows CMD wrapper
+
+If PowerShell script execution is blocked, use:
+
+```powershell
+.\build.cmd "D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
+```
+
+The wrapper calls `dotnet build` directly and does not depend on PowerShell script execution policies.
+
+If your RimWorld installation matches the default path currently configured in the wrapper, the argument can be omitted:
+
+```powershell
+.\build.cmd
+```

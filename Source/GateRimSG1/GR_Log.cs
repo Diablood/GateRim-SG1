@@ -9,7 +9,7 @@ namespace GateRimSG1
     /// </summary>
     public static class GR_Log
     {
-        private const string Prefix = "[GateRim SG-1]";
+        private const string Prefix = "<color=#D9B44A>[GateRim SG-1]</color>";
 
         public static void Message(string message)
         {

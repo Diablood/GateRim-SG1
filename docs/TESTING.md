@@ -114,5 +114,19 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   [GateRim SG-1] Version 0.1.14.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.14.0 loaded.
+   ```
+
+
+## Colored logging prefix regression check
+
+1. Build with:
+   ```powershell
+   .\build.cmd "D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
+   ```
+2. Launch RimWorld with `Core`, `Biotech`, and `GateRim SG-1`.
+3. Inspect `Player.log`.
+4. Confirm the bootstrap line contains:
+   ```text
+   <color=#D9B44A>[GateRim SG-1]</color>
    ```

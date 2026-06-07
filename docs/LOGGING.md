@@ -13,7 +13,7 @@ This keeps `Player.log` entries easy to filter and identify.
 ## Prefix
 
 ```text
-[GateRim SG-1]
+<color=#D9B44A>[GateRim SG-1]</color>
 ```
 
 ## Available methods
@@ -40,7 +40,7 @@ GR_Log.ErrorOnce("...", key);
 The bootstrap emits one message when the assembly loads:
 
 ```text
-[GateRim SG-1] Version 0.1.14.0 loaded.
+<color=#D9B44A>[GateRim SG-1]</color> Version 0.1.14.0 loaded.
 ```
 
 ## Future usage examples
@@ -50,3 +50,14 @@ GR_Log.Message($"Created Goa'uld symbiote {symbioteId}.");
 GR_Log.WarningOnce($"Unable to implant incompatible pawn {pawn.ThingID}.", pawn.thingIDNumber);
 GR_Log.Error($"Missing host state for symbiote {symbioteId}.");
 ```
+
+
+## Color choice
+
+The current GateRim SG-1 log prefix uses:
+
+```text
+#D9B44A
+```
+
+This gold tone keeps the mod visually distinct in `Player.log` and fits the Goa'uld / Stargate theme.

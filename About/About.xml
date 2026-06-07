@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.14-dev</modVersion>
+    <modVersion>0.1.15-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -25,7 +25,8 @@ Current development scope:
 - Recent Goa'uld implantation Hediff prototype
 - French translations for stabilized content
 - Player wiki maintained in parallel
-- Centralized C# logging scaffold
+- Centralized colored C# logging scaffold
+- Windows build wrapper
 - Forced implantation, ritual implantation and host transfer planned next
 
 Biotech is required for xenotype support.
