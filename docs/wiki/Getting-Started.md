@@ -125,3 +125,15 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 5. Vérifie l'implantation automatique au contact.
 6. Extrais le parasite chirurgicalement.
 7. Vérifie qu'un délai de sécurité empêche une réimplantation immédiate.
+
+
+## Vérifier l'implantation rituelle
+
+1. Génère un `symbiote Goa'uld`.
+2. Désactive `Chasse autonome`.
+3. Place un humanoïde compatible à moins de `12` cases sans le coller au parasite.
+4. Sélectionne le symbiote libre.
+5. Note son identifiant.
+6. Clique sur `Implantation rituelle`.
+7. Vérifie que la cible reçoit `implantation Goa'uld récente`.
+8. Vérifie que l'identifiant est inchangé.

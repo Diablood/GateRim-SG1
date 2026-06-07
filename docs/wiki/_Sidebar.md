@@ -15,6 +15,7 @@
 - [Implantation récente](Recent-Implantation)
 - [Chasse autonome](Autonomous-Hunt)
 - [Implantation forcée](Forced-Implantation)
+- [Implantation rituelle](Ritual-Implantation)
 - [Extraction d'urgence](Emergency-Extraction)
 - [Chirurgie d'extraction](Extraction-Surgery)
 - [Hôte Goa'uld actif](Active-Goauld-Host)

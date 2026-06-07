@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.21.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.22.0 loaded.
    ```
 
 
@@ -247,3 +247,19 @@ Negative checks:
 12. Toggle autonomous hunt off and on.
 13. Confirm the toggle interrupts and restores the autonomous behavior.
 14. Inspect `Player.log`.
+
+
+## Ritual Goa'uld implantation prototype
+
+1. Build with `build.cmd`.
+2. Spawn a free Goa'uld symbiote.
+3. Disable autonomous hunt.
+4. Place one compatible humanoid within 12 cells but not adjacent.
+5. Select the symbiote and record its persistent ID.
+6. Click `Ritual implantation`.
+7. Confirm that the nearest valid humanoid receives recent implantation.
+8. Confirm that the free pawn disappears.
+9. Confirm identity persistence.
+10. Save and reload.
+11. Confirm the same ID remains visible.
+12. Repeat without a valid target in range and confirm rejection.

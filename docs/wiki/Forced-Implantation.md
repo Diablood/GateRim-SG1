@@ -49,3 +49,9 @@ L'identité persistante du parasite est conservée.
 Depuis `0.1.21-dev`, la [chasse autonome](Autonomous-Hunt) constitue le
 comportement normal du symbiote libre. La commande manuelle reste disponible
 comme outil de test.
+
+
+## Voie rituelle distincte
+
+Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée
+permet de déclencher une implantation à portée limitée sans attendre le contact.

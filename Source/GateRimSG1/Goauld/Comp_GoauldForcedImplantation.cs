@@ -125,6 +125,14 @@ namespace GateRimSG1.Goauld
                 action = TryImplantAdjacentHostManually
             };
 
+            yield return new Command_Action
+            {
+                defaultLabel = "GR_RitualImplantation_CommandLabel".Translate(),
+                defaultDesc = "GR_RitualImplantation_CommandDescription".Translate(),
+                icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                action = TryImplantNearestRitualHost
+            };
+
             yield return new Command_Toggle
             {
                 defaultLabel = "GR_AutonomousHunt_CommandLabel".Translate(),
@@ -178,6 +186,17 @@ namespace GateRimSG1.Goauld
 
         public bool TryImplantHost(Pawn target, bool autonomous)
         {
+            return TryImplantHost(
+                target,
+                autonomous
+                    ? GoauldImplantationMode.AutonomousContact
+                    : GoauldImplantationMode.ManualContact);
+        }
+
+        private bool TryImplantHost(
+            Pawn target,
+            GoauldImplantationMode mode)
+        {
             Pawn symbiote = SymbiotePawn;
 
             if (symbiote == null || !symbiote.Spawned || symbiote.Destroyed)
@@ -189,7 +208,15 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            if (!IsCompatibleHost(target) || !IsAdjacentOrSameCell(symbiote, target))
+            bool requiresContact = mode != GoauldImplantationMode.RitualControlled;
+
+            if (!IsCompatibleHost(target)
+                || (requiresContact && !IsAdjacentOrSameCell(symbiote, target))
+                || (!requiresContact
+                    && !IsWithinRadius(
+                        symbiote,
+                        target,
+                        Props.ritualImplantationRange)))
             {
                 return false;
             }
@@ -227,17 +254,15 @@ namespace GateRimSG1.Goauld
             consumedByImplantation = true;
 
             GR_Log.Message(
-                $"{(autonomous ? "Autonomous" : "Manual")} implantation "
+                $"{GetImplantationModeLogLabel(mode)} implantation "
                 + $"transferred Goa'uld symbiote {transferredId} "
                 + $"from free pawn {PawnDebugLabel(symbiote)} "
                 + $"into host {PawnDebugLabel(target)}.");
 
             Messages.Message(
-                (autonomous
-                    ? "GR_AutonomousImplantation_Success"
-                    : "GR_ForcedImplantation_Success").Translate(
-                        target.LabelShortCap,
-                        transferredId),
+                GetImplantationSuccessTranslationKey(mode).Translate(
+                    target.LabelShortCap,
+                    transferredId),
                 target,
                 MessageTypeDefOf.NegativeEvent,
                 historical: true);
@@ -292,6 +317,29 @@ namespace GateRimSG1.Goauld
             }
 
             TryImplantHost(target, autonomous: false);
+        }
+
+        private void TryImplantNearestRitualHost()
+        {
+            Pawn symbiote = SymbiotePawn;
+            Pawn target = FindClosestCompatibleHost(
+                symbiote,
+                Props.ritualImplantationRange);
+
+            if (target == null)
+            {
+                Messages.Message(
+                    "GR_RitualImplantation_NoNearbyTarget".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            TryImplantHost(
+                target,
+                GoauldImplantationMode.RitualControlled);
         }
 
         private void ToggleAutonomousHunting()
@@ -356,14 +404,22 @@ namespace GateRimSG1.Goauld
 
         private Pawn FindClosestCompatibleHost(Pawn symbiote)
         {
-            Map map = symbiote.Map;
+            return FindClosestCompatibleHost(
+                symbiote,
+                Props.autonomousSearchRadius);
+        }
+
+        private Pawn FindClosestCompatibleHost(
+            Pawn symbiote,
+            float searchRadius)
+        {
+            Map map = symbiote?.Map;
             if (map?.mapPawns?.AllPawnsSpawned == null)
             {
                 return null;
             }
 
-            float radiusSquared = Props.autonomousSearchRadius
-                * Props.autonomousSearchRadius;
+            float radiusSquared = searchRadius * searchRadius;
 
             Pawn bestTarget = null;
             float bestDistanceSquared = float.MaxValue;
@@ -451,6 +507,56 @@ namespace GateRimSG1.Goauld
                 Props.autonomousCooldownAfterExtractionTicks - elapsed);
         }
 
+        private static bool IsWithinRadius(
+            Pawn first,
+            Pawn second,
+            float radius)
+        {
+            if (first?.Map == null
+                || second?.Map == null
+                || first.Map != second.Map)
+            {
+                return false;
+            }
+
+            int deltaX = first.Position.x - second.Position.x;
+            int deltaZ = first.Position.z - second.Position.z;
+
+            return deltaX * deltaX + deltaZ * deltaZ <= radius * radius;
+        }
+
+        private static string GetImplantationModeLogLabel(
+            GoauldImplantationMode mode)
+        {
+            switch (mode)
+            {
+                case GoauldImplantationMode.AutonomousContact:
+                    return "Autonomous";
+
+                case GoauldImplantationMode.RitualControlled:
+                    return "Ritual";
+
+                default:
+                    return "Manual";
+            }
+        }
+
+        private static string GetImplantationSuccessTranslationKey(
+            GoauldImplantationMode mode)
+        {
+            switch (mode)
+            {
+                case GoauldImplantationMode.AutonomousContact:
+                    return "GR_AutonomousImplantation_Success";
+
+                case GoauldImplantationMode.RitualControlled:
+                    return "GR_RitualImplantation_Success";
+
+                default:
+                    return "GR_ForcedImplantation_Success";
+            }
+        }
+
         private static bool IsAdjacentOrSameCell(Pawn first, Pawn second)
         {
             int deltaX = Math.Abs(first.Position.x - second.Position.x);
@@ -507,5 +613,12 @@ namespace GateRimSG1.Goauld
 
             return $"{pawn.LabelShort} ({pawn.ThingID})";
         }
+    }
+
+    internal enum GoauldImplantationMode
+    {
+        ManualContact,
+        AutonomousContact,
+        RitualControlled
     }
 }

@@ -149,6 +149,20 @@
 - [ ] Validate toggle behavior
 - [ ] Publish the updated player wiki
 
+## 0.1.22-dev — Add ritual Goa'uld implantation prototype
+- [x] Add `Ritual implantation`
+- [x] Reuse the centralized symbiote identity-transfer flow
+- [x] Search for the nearest compatible reachable humanoid within `12` cells
+- [x] Consume the free symbiote after controlled implantation
+- [x] Preserve the same persistent identity
+- [x] Add bilingual UI strings and a temporary command icon
+- [x] Add technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Validate ritual implantation outside contact range
+- [ ] Validate rejection when no compatible target is in range
+- [ ] Validate identity persistence after save/reload
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -162,7 +176,8 @@
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation
 - [ ] Add richer tactical priorities for autonomous symbiotes
-- [ ] Add ritual Goa'uld implantation
+- [x] Add controlled ritual Goa'uld implantation prototype
+- [ ] Add explicit ritual target selection and ceremony flow
 - [x] Add manual emergency extraction prototype
 - [x] Complement manual extraction with a medical surgery bill
 - [x] Convert a victim into an active Goa'uld host when the timer ends

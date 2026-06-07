@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <SG1_GoauldSymbiote.label>symbiote Goa'uld</SG1_GoauldSymbiote.label>
-    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Il recherche désormais les humanoïdes compatibles proches, les poursuit et commence automatiquement son implantation au contact. La commande d'implantation forcée manuelle reste disponible pour les tests. Après une extraction, la chasse autonome est brièvement suspendue afin d'éviter une réimplantation immédiate du patient.</SG1_GoauldSymbiote.description>
+    <SG1_GoauldSymbiote.description>Symbiote Goa'uld adulte privé d'hôte. Il recherche les humanoïdes compatibles proches, les poursuit et commence automatiquement son implantation au contact. Une commande de rituel contrôlé peut également implanter l'humanoïde compatible accessible le plus proche dans un rayon limité. La commande d'implantation forcée reste disponible pour les tests de régression.</SG1_GoauldSymbiote.description>
     <SG1_GoauldSymbiote.tools.0.label>morsure</SG1_GoauldSymbiote.tools.0.label>
 </LanguageData>

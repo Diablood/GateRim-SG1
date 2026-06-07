@@ -9,6 +9,7 @@ namespace GateRimSG1.Goauld
         public int autonomousScanIntervalTicks = 60;
         public float autonomousSearchRadius = 35f;
         public int autonomousCooldownAfterExtractionTicks = 2500;
+        public float ritualImplantationRange = 12f;
 
         public CompProperties_GoauldForcedImplantation()
         {

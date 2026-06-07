@@ -96,6 +96,19 @@ immédiate.
 
 Consulte [Chasse autonome des symbiotes libres](Autonomous-Hunt).
 
+### Implantation rituelle
+
+Depuis `0.1.22-dev`, le symbiote libre peut déclencher une voie contrôlée :
+
+```text
+Implantation rituelle
+```
+
+Le prototype choisit l'humanoïde compatible accessible le plus proche dans un
+rayon limité et réutilise la même identité persistante.
+
+Consulte [Implantation rituelle Goa'uld](Ritual-Implantation).
+
 ## Ce qui n'est pas encore implémenté
 
 - IA hostile autonome du symbiote libre ;

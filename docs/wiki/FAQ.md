@@ -94,3 +94,13 @@ le poursuit puis commence son implantation au contact.
 
 Après une extraction, un bref délai de sécurité empêche une réimplantation
 immédiate.
+
+
+## Existe-t-il une implantation rituelle contrôlée ?
+
+Oui. Depuis `0.1.22-dev`, sélectionne un symbiote libre puis clique sur
+`Implantation rituelle`.
+
+Le prototype choisit automatiquement l'humanoïde compatible accessible le plus
+proche dans un rayon de `12` cases. Une sélection explicite de cible et une
+cérémonie plus complète seront ajoutées ultérieurement.

@@ -8,7 +8,8 @@
 > Hôte actif : 0.1.18-dev  
 > Extraction d'urgence : 0.1.19-dev  
 > Chirurgie d'extraction : 0.1.20-dev  
-> Chasse autonome : 0.1.21-dev
+> Chasse autonome : 0.1.21-dev  
+> Implantation rituelle : 0.1.22-dev
 
 ## Vue d'ensemble
 
@@ -51,6 +52,8 @@ Depuis `0.1.19-dev`, une [extraction d'urgence](Emergency-Extraction) manuelle p
 Depuis `0.1.20-dev`, une [chirurgie d'extraction](Extraction-Surgery) planifiable fournit un parcours médical avec médecin, médicament, temps de travail et risque d'échec.
 
 Depuis `0.1.21-dev`, un symbiote libre peut [chasser automatiquement](Autonomous-Hunt) un humanoïde compatible accessible et l'implanter au contact.
+
+Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée permet d'implanter la cible valide la plus proche dans un rayon limité.
 
 ## Éléments de gameplay prévus
 

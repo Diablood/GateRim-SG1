@@ -29,4 +29,8 @@ Hôte précédent : {4}</GR_GoauldSymbioteDataSummary>
     <GR_AutonomousHunt_Enabled>active</GR_AutonomousHunt_Enabled>
     <GR_AutonomousHunt_Disabled>désactivée</GR_AutonomousHunt_Disabled>
     <GR_AutonomousImplantation_Success>{0} a subi l'implantation autonome du symbiote Goa'uld {1}.</GR_AutonomousImplantation_Success>
+    <GR_RitualImplantation_CommandLabel>Implantation rituelle</GR_RitualImplantation_CommandLabel>
+    <GR_RitualImplantation_CommandDescription>Effectue un rituel contrôlé d'implantation Goa'uld sur l'humanoïde compatible accessible le plus proche dans le rayon autorisé. Le symbiote libre est consommé et la même identité persistante est transférée vers l'implantation récente. Ce prototype choisit automatiquement la cible valide la plus proche.</GR_RitualImplantation_CommandDescription>
+    <GR_RitualImplantation_NoNearbyTarget>Aucun humanoïde compatible accessible n'est disponible dans le rayon du rituel.</GR_RitualImplantation_NoNearbyTarget>
+    <GR_RitualImplantation_Success>{0} a subi le rituel contrôlé d'implantation du symbiote Goa'uld {1}.</GR_RitualImplantation_Success>
 </LanguageData>

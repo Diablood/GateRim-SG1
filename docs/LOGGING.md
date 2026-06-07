@@ -138,3 +138,15 @@ Autonomous hunting for Goa'uld symbiote <id> set to <true|false>.
 
 After extraction, the free pawn inspection panel displays the remaining
 autonomous cooldown ticks.
+
+
+## Ritual-implantation diagnostics
+
+`0.1.22-dev` adds the controlled ritual entry log:
+
+```text
+Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
+```
+
+The same ID must appear before the ritual, during recent implantation and after
+save/reload.

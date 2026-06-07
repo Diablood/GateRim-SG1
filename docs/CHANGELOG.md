@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.22-dev
+- Add the controlled `Ritual implantation` command.
+- Reuse the centralized persistent symbiote identity-transfer flow.
+- Implant the nearest compatible reachable humanoid within `12` cells.
+- Consume the free symbiote pawn after successful ritual implantation.
+- Add bilingual text, a temporary ritual icon, technical documentation and player-wiki drafts.
+
 ## 0.1.21-dev
 - Add `SG1_GoauldAutonomousImplant`.
 - Add `JobDriver_GoauldAutonomousImplant`.

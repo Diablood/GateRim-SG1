@@ -14,23 +14,28 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.21-dev — Add autonomous free-symbiote hunt
+### 0.1.22-dev — Add ritual Goa'uld implantation prototype
 
-Free adult Goa'uld symbiotes now search for nearby compatible humanoids, pursue
-the closest reachable target and implant automatically on contact.
+A selected free adult Goa'uld symbiote now exposes a controlled ritual command:
 
 ```text
-free symbiote
-    ↓ periodic scan
-compatible humanoid target
-    ↓ autonomous pursuit job
-contact implantation
+Ritual implantation
 ```
 
-The manual forced-implantation command remains available for regression tests.
+The command implants the nearest compatible reachable humanoid within a radius
+of `12` cells, consumes the free pawn and transfers the same persistent symbiote
+identity into recent implantation.
 
-A short cooldown after manual or surgical extraction prevents immediate
-re-implantation of the patient.
+All current implantation paths reuse the same transfer core:
+
+```text
+manual adjacent implantation
+autonomous contact implantation
+controlled ritual implantation
+```
+
+Explicit target selection, ceremony duration and faction integration remain
+future refinements.
 
 ## First playable milestone
 
