@@ -11,6 +11,10 @@ namespace GateRimSG1
         public static PawnKindDef SG1_GoauldSymbiote;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
+        public static GeneDef SG1_JaffaLineage;
+        public static GeneDef SG1_JaffaPouchPotential;
+        public static GeneDef SG1_JaffaSymbioteCompatibility;
+        public static HediffDef SG1_JaffaPrimta;
 
         static GR_DefOf()
         {

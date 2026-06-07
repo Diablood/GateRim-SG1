@@ -14,22 +14,26 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.25-dev — Add ritual environmental requirements
+### 0.1.26-dev — Add Jaffa Prim'ta implantation prototype
 
-Controlled ritual implantation now requires a buildable Goa'uld ritual basin:
+Compatible Jaffa now expose a planifiable medical operation:
 
 ```text
-Goa'uld ritual basin
+implant Jaffa Prim'ta
 ```
 
-The free symbiote and the selected target must both remain within `6` cells of
-the same basin throughout the `600`-tick ceremony.
+The procedure requires one medicine and Medicine skill `4`. On success, it adds
+the persistent acquired state:
 
-Destroying or removing the basin, or moving either participant too far away,
-cancels the ritual without consuming the symbiote.
+```text
+SG1_JaffaPrimta
+```
 
-This remains a `Core + Biotech` fallback. Optional `Ideology` integration can
-later enrich the same structure and transfer core.
+Eligibility is restricted to Jaffa carrying the inherited lineage, pouch and
+immature-symbiote-compatibility genes. Duplicate implantation is rejected.
+
+A physical larva resource, age ceremony, dependency and tretonin remain future
+milestones.
 
 ## First playable milestone
 

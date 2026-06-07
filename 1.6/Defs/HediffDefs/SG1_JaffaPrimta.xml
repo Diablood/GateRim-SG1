@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        XML-only prototype:
-        This persistent Hediff represents the Prim'ta after implantation of an
-        immature Goa'uld symbiote into a compatible Jaffa.
+        Persistent acquired state representing an implanted immature Goa'uld
+        symbiote in a compatible Jaffa pouch.
 
-        It can currently be added and removed through developer mode. Automatic
-        age checks, the ceremony, dependency, tretonin substitution and medical
-        consequences require later C# milestones.
+        Since 0.1.26-dev, the state can be applied through a medical operation.
+        Future milestones will add a physical larva resource, age ceremony,
+        dependency after removal and tretonin substitution.
     -->
     <HediffDef>
         <defName>SG1_JaffaPrimta</defName>
         <label>Prim'ta symbiote</label>
-        <description>An immature Goa'uld symbiote resides in this Jaffa's abdominal pouch. It supports the host's immune system, accelerates recovery, reduces the impact of pain, improves resilience and extends lifespan. This prototype can currently be added or removed manually through developer mode.</description>
+        <description>An immature Goa'uld symbiote resides in this Jaffa's abdominal pouch. It supports the host's immune system, accelerates recovery, reduces the impact of pain, improves resilience and extends lifespan. This acquired state can be applied through the Jaffa Prim'ta implantation procedure.</description>
         <hediffClass>HediffWithComps</hediffClass>
         <isBad>false</isBad>
         <stages>
@@ -27,5 +26,8 @@
                 </statFactors>
             </li>
         </stages>
+        <comps>
+            <li Class="GateRimSG1.Jaffa.HediffCompProperties_JaffaPrimta" />
+        </comps>
     </HediffDef>
 </Defs>

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.26-dev
+- Add the `SG1_ImplantJaffaPrimta` medical operation.
+- Add `Recipe_ImplantJaffaPrimta`, derived from vanilla `Recipe_Surgery`.
+- Restrict the operation to compatible inherited Jaffa genes.
+- Reject duplicate Prim'ta implantation.
+- Attach lifecycle logging to `SG1_JaffaPrimta`.
+- Require Medicine `4`, one medicine ingredient and medical work time.
+- Keep the first prototype independent from a physical larva resource.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.25-dev
 - Add the constructible `SG1_GoauldRitualBasin`.
 - Require the free symbiote and selected target near the same basin during controlled ceremonies.

@@ -181,3 +181,16 @@ Ritual implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into
 Started ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn> near basin <thing> for <ticks> ticks.
 Cancelled ritual implantation ceremony for Goa'uld symbiote <id> and target <pawn> near basin <thing>.
 ```
+
+
+## Jaffa Prim'ta diagnostics
+
+`0.1.26-dev` adds Jaffa Prim'ta lifecycle logs:
+
+```text
+Attached Jaffa Prim'ta symbiote to <pawn>.
+Loaded Jaffa Prim'ta symbiote for <pawn>.
+Removed Jaffa Prim'ta symbiote from <pawn>.
+Jaffa Prim'ta implantation surgery completed for <pawn> with surgeon <pawn>.
+Jaffa Prim'ta implantation surgery failed for <pawn>.
+```

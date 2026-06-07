@@ -41,3 +41,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Intégration optionnelle Ideology | Prévu | Futur |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres | Futur |
+
+| Implantation médicale du Prim'ta | Opération planifiable pour un Jaffa compatible | 0.1.26-dev |

@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.25.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.26.0 loaded.
    ```
 
 
@@ -314,3 +314,21 @@ Negative checks:
 11. Start another ritual and move the target beyond `6` cells from the basin.
 12. Confirm cancellation without consuming the free symbiote.
 13. Try starting without a nearby basin and confirm rejection.
+
+
+## Jaffa Prim'ta implantation procedure
+
+1. Build with `build.cmd`.
+2. Spawn a newly generated Jaffa.
+3. Open the health-tab operation menu.
+4. Confirm `implant Jaffa Prim'ta` is available.
+5. Schedule the procedure.
+6. Provide one medicine and a doctor with Medicine `4+`.
+7. Let the operation complete.
+8. Confirm `Prim'ta symbiote` appears.
+9. Confirm the expected biological modifiers.
+10. Save and reload.
+11. Confirm persistence and the `Loaded Jaffa Prim'ta symbiote` log.
+12. Confirm the implantation operation is hidden while Prim'ta is present.
+13. Select a baseliner and confirm the operation is unavailable.
+14. Remove the Hediff in developer mode and confirm the removal log.

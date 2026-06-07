@@ -164,3 +164,17 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 6. Vérifie que le bassin apparaît dans le panneau d'inspection.
 7. Détruis ensuite le bassin pendant un second test.
 8. Vérifie que la cérémonie est annulée sans consommer le symbiote.
+
+
+## Vérifier l'implantation médicale du Prim'ta
+
+1. Génère un nouveau pawn Jaffa.
+2. Ouvre son onglet de santé.
+3. Planifie `implanter un Prim'ta jaffa`.
+4. Fournis un médecin de niveau `4+` et un médicament.
+5. Laisse l'opération s'achever.
+6. Vérifie que `symbiote du Prim'ta` apparaît.
+7. Vérifie les bonus biologiques.
+8. Sauvegarde et recharge.
+9. Vérifie que l'état persiste.
+10. Vérifie que l'opération n'est pas proposée à un humain basique.

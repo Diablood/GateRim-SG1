@@ -210,6 +210,23 @@
 - [ ] Validate cancellation after basin destruction and movement
 - [ ] Publish the updated player wiki
 
+## 0.1.26-dev — Add Jaffa Prim'ta implantation prototype
+- [x] Add `SG1_ImplantJaffaPrimta`
+- [x] Add `Recipe_ImplantJaffaPrimta`
+- [x] Restrict the operation to compatible Jaffa lineage genes
+- [x] Reject duplicate Prim'ta implantation
+- [x] Reuse the existing acquired `SG1_JaffaPrimta` effects
+- [x] Add lifecycle logging through `HediffComp_JaffaPrimta`
+- [x] Require Medicine `4`, one medicine and medical work time
+- [x] Keep the prototype independent from a physical larva resource
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the operation appears only for compatible Jaffa
+- [ ] Validate successful implantation and acquired effects
+- [ ] Validate save/reload persistence
+- [ ] Validate duplicate-operation rejection
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -219,6 +236,8 @@
 - [ ] Avoid forced maternal inheritance unless tests demonstrate a clear need
 
 ## Next symbiote milestones
+- [x] Add medical Jaffa Prim'ta implantation prototype
+- [ ] Add a physical Prim'ta larva resource
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.25-dev</modVersion>
+    <modVersion>0.1.26-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -20,6 +20,7 @@ GateRim SG-1 brings the Stargate SG-1 universe to RimWorld.
 Current development scope:
 - Inheritable Jaffa lineage genes
 - Prim'ta Hediff prototype for an implanted immature symbiote
+- Medical Jaffa Prim'ta implantation prototype
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -37,7 +38,8 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Optional Ideology integration, expanded ceremony requirements and host transfer planned next
+- Prim'ta larva resource, age ceremony, dependency and tretonin planned next
+- Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 
 Biotech is required for xenotype support.
 This is an early development version.

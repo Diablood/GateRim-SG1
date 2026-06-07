@@ -57,7 +57,7 @@ Non. Depuis `0.1.13-dev`, la lignée jaffa et le [Prim'ta](Primta) sont séparé
 
 ## Le Prim'ta est-il déjà automatique ?
 
-Non. Dans `0.1.13-dev`, l'état `symbiote du Prim'ta` doit encore être ajouté ou retiré manuellement en mode développeur.
+Pas encore. Depuis `0.1.26-dev`, un Jaffa compatible peut recevoir l'opération `implanter un Prim'ta jaffa` depuis son onglet de santé. La cérémonie d'âge automatique et la larve physique seront ajoutées ultérieurement.
 
 
 ## L'implantation forcée est-elle déjà disponible ?
@@ -126,3 +126,10 @@ Oui. Depuis `0.1.25-dev`, un `bassin rituel Goa'uld` est requis. Le symbiote et
 sa cible doivent rester à moins de `6` cases du même bassin pendant la cérémonie.
 
 Le bassin fonctionne sans `Ideology`.
+
+
+## Une larve de Prim'ta est-elle déjà une ressource physique ?
+
+Non. La première procédure médicale de `0.1.26-dev` valide l'éligibilité et les
+effets acquis. Une ressource dédiée représentant le symbiote immature sera
+ajoutée lors d'un lot ultérieur.

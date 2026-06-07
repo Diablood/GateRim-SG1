@@ -53,3 +53,16 @@ L'état doit encore être ajouté ou retiré manuellement avec le mode développ
 - conséquences médicales après retrait ;
 - sensibilité aux Goa'uld proches ;
 - marques faciales distinctives pour les Jaffa servant une faction Goa'uld.
+
+
+## Implantation médicale du Prim'ta
+
+Depuis `0.1.26-dev`, un Jaffa compatible peut recevoir l'opération :
+
+```text
+implanter un Prim'ta jaffa
+```
+
+La réussite ajoute les effets acquis du [Prim'ta](Primta). Consulte
+[Implantation du Prim'ta jaffa](Primta-Implantation) pour les conditions
+actuelles.
