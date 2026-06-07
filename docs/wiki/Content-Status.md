@@ -23,7 +23,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Hôte Goa'uld actif | Conversion automatique après la phase critique | 0.1.18-dev |
 | Extraction d'urgence Goa'uld | Interruption manuelle pendant la phase critique | 0.1.19-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
-| Larve de Prim'ta | Ressource physique transportable et consommée par l'opération | 0.1.27-dev |
+| Larve de Prim'ta | Ressource physique transportable, incubable et consommée par l'opération | 0.1.27-dev / incubation 0.1.28-dev |
+| Bassin d'incubation du Prim'ta | Atelier de Dressage produisant une larve physique, Animaux 4+ | 0.1.28-dev |
 | Implantation rituelle Goa'uld | Ciblage explicite, durée, annulation et bassin requis | 0.1.22-dev à 0.1.25-dev |
 | Bassin rituel Goa'uld | Structure cérémonielle constructible | 0.1.25-dev |
 
@@ -34,7 +35,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
 | Cérémonie du Prim'ta selon l'âge | Prévu |
-| Obtention naturelle des larves de Prim'ta | Prévu |
+| Nutriments et conservation des larves de Prim'ta | Prévu |
 | Dépendance des Jaffa au symbiote ou à la trétonine | Prévu |
 | Faction des Grands Maîtres Goa'uld | Prévu |
 | Nation Jaffa libre | Prévu |

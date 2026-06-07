@@ -22,8 +22,8 @@ larve de Prim'ta
 | Limite de pile | `10` |
 | Masse | `0,1` |
 | Valeur marchande | `35` |
-| Obtention naturelle | Pas encore implémentée |
-| Obtention pour les tests | Mode développeur |
+| Obtention jouable | [Bassin d'incubation](Primta-Incubation) |
+| Obtention pour les tests | Mode développeur toujours disponible |
 
 Le visuel actuel est temporaire.
 
@@ -46,9 +46,21 @@ La larve est transportée jusqu'au patient puis consommée par l'opération.
 
 ## Évolutions prévues
 
-- obtention naturelle ou production par les factions Goa'uld ;
+- nutriments biologiques et équilibrage de l'incubation ;
 - culture ou élevage de larves ;
 - conservation et contraintes de stockage ;
 - maturation en symbiote adulte ;
 - cérémonie liée à l'âge du Jaffa ;
 - dépendance et trétonine.
+
+
+## Bassin d'incubation
+
+Depuis `0.1.28-dev`, construis un
+[bassin d'incubation du Prim'ta](Primta-Incubation), puis ajoute la tâche :
+
+```text
+incuber une larve de Prim'ta
+```
+
+Le premier prototype exige uniquement du travail.

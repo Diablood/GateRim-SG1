@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Required registration for the custom incubation worktable.
+
+        WorkGiver_DoBill only scans bill givers listed in fixedBillGiverDefs
+        (or its dedicated pawn/corpse categories). Without this Def, automatic
+        work and direct manual prioritization cannot start on the basin.
+    -->
+    <WorkGiverDef>
+        <defName>SG1_DoBillsPrimtaIncubation</defName>
+        <label>incubate Prim'ta larvae</label>
+        <giverClass>WorkGiver_DoBill</giverClass>
+        <workType>Handling</workType>
+        <priorityInType>90</priorityInType>
+        <verb>incubate Prim'ta larvae</verb>
+        <gerund>incubating Prim'ta larvae</gerund>
+        <requiredCapacities>
+            <li>Manipulation</li>
+        </requiredCapacities>
+        <fixedBillGiverDefs>
+            <li>SG1_PrimtaIncubationBasin</li>
+        </fixedBillGiverDefs>
+    </WorkGiverDef>
+</Defs>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <RecipeDef>
+        <defName>SG1_IncubatePrimtaLarva</defName>
+        <label>incubate Prim'ta larva</label>
+        <description>Incubate one immature Goa'uld symbiote larva for later Jaffa implantation. This first prototype is performed through animal-handling work and requires Animals skill 4. Nutrient inputs, preservation and maturation systems will be added later.</description>
+        <jobString>Incubating a Prim'ta larva.</jobString>
+        <requiredGiverWorkType>Handling</requiredGiverWorkType>
+        <workAmount>1800</workAmount>
+        <workSkill>Animals</workSkill>
+        <workSkillLearnFactor>0.4</workSkillLearnFactor>
+        <skillRequirements>
+            <Animals>4</Animals>
+        </skillRequirements>
+        <products>
+            <SG1_PrimtaLarva>1</SG1_PrimtaLarva>
+        </products>
+    </RecipeDef>
+</Defs>

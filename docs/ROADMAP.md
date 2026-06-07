@@ -242,6 +242,22 @@
 - [ ] Validate save/reload persistence of the implanted Hediff
 - [ ] Publish the updated player wiki
 
+## 0.1.28-dev — Add Prim'ta larva acquisition prototype
+- [x] Add `SG1_PrimtaIncubationBasin`
+- [x] Make the incubation basin constructible from the Production category
+- [x] Add the `SG1_IncubatePrimtaLarva` work bill
+- [x] Register `SG1_DoBillsPrimtaIncubation` for automatic and manual work selection
+- [x] Use Handling work with Animals skill `4`
+- [x] Produce one physical `SG1_PrimtaLarva`
+- [x] Keep the first bill ingredient-free for isolated loop validation
+- [x] Add French translation, a temporary graphic, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the basin appears in the Production category
+- [ ] Confirm the bill is available
+- [ ] Validate larva production without developer spawning
+- [ ] Validate the full production-to-implantation loop
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -253,7 +269,8 @@
 ## Next symbiote milestones
 - [x] Add medical Jaffa Prim'ta implantation prototype
 - [x] Add a physical Prim'ta larva resource
-- [ ] Add natural Prim'ta larva acquisition and preservation
+- [x] Add first Prim'ta larva incubation prototype
+- [ ] Add biological nutrient inputs and preservation constraints
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation

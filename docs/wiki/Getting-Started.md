@@ -180,3 +180,14 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 10. Sauvegarde et recharge.
 11. Vérifie que l'état persiste.
 12. Vérifie que l'opération n'est pas proposée à un humain basique.
+
+
+## Produire une larve de Prim'ta
+
+1. Construis ou génère un `bassin d'incubation du Prim'ta`.
+2. Ouvre son onglet des tâches.
+3. Ajoute `incuber une larve de Prim'ta`.
+4. Vérifie qu'un colon possède le travail `Dressage` actif et un niveau `Animaux 4+`.
+5. Laisse ce colon effectuer le travail automatiquement ou priorise le bassin manuellement.
+6. Vérifie qu'une `larve de Prim'ta` physique apparaît.
+7. Stocke-la ou utilise-la pour une implantation médicale chez un Jaffa.

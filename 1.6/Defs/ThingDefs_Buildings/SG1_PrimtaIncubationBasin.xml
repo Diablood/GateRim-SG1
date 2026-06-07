@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        First larva-acquisition prototype.
+
+        The basin intentionally provides a simple no-input incubation bill so
+        the complete gameplay loop can be tested without developer spawning.
+        Nutrient inputs, preservation constraints and biological maturation
+        remain future milestones.
+    -->
+    <ThingDef ParentName="BenchBase">
+        <defName>SG1_PrimtaIncubationBasin</defName>
+        <label>Prim'ta incubation basin</label>
+        <description>A controlled incubation basin for immature Goa'uld symbiotes intended for Jaffa implantation. This first prototype produces Prim'ta larvae through a work bill. Nutrient inputs, preservation and maturation constraints will be introduced later.</description>
+        <thingClass>Building_WorkTable</thingClass>
+        <graphicData>
+            <texPath>Things/Building/SG1_PrimtaIncubationBasin</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,1)</drawSize>
+        </graphicData>
+        <size>(2,1)</size>
+        <rotatable>true</rotatable>
+        <fillPercent>0.5</fillPercent>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <hasInteractionCell>true</hasInteractionCell>
+        <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+        <surfaceType>Item</surfaceType>
+        <statBases>
+            <MaxHitPoints>220</MaxHitPoints>
+            <WorkToBuild>1600</WorkToBuild>
+            <Mass>35</Mass>
+            <Beauty>2</Beauty>
+            <Flammability>0.2</Flammability>
+        </statBases>
+        <costList>
+            <Steel>80</Steel>
+            <Gold>8</Gold>
+        </costList>
+        <designationCategory>Production</designationCategory>
+        <inspectorTabs>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+        <building>
+            <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+        </building>
+        <recipes>
+            <li>SG1_IncubatePrimtaLarva</li>
+        </recipes>
+        <minifiedDef>MinifiedThing</minifiedDef>
+    </ThingDef>
+</Defs>

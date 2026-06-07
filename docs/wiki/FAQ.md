@@ -132,4 +132,22 @@ Le bassin fonctionne sans `Ideology`.
 
 Oui. Depuis `0.1.27-dev`, la [larve de Prim'ta](Primta-Larva) est un objet transportable consommé par l'opération `implanter un Prim'ta jaffa`.
 
-Son obtention naturelle n'est pas encore implémentée : utilise le mode développeur pour les tests.
+Depuis `0.1.28-dev`, construis un [bassin d'incubation du Prim'ta](Primta-Incubation) pour produire des larves sans utiliser le mode développeur.
+
+
+## Comment produire une larve de Prim'ta ?
+
+Depuis `0.1.28-dev`, construis un
+[bassin d'incubation du Prim'ta](Primta-Incubation), ouvre son onglet des tâches
+puis ajoute `incuber une larve de Prim'ta`.
+
+La première recette demande uniquement du travail. Les nutriments et la
+conservation seront ajoutés ultérieurement.
+
+
+## Quelle compétence est utilisée pour incuber une larve ?
+
+L'incubation relève du travail `Dressage` et exige un niveau `Animaux 4+`.
+
+Le colon doit avoir le travail `Dressage` actif. Il peut ensuite effectuer la
+tâche automatiquement ou la prioriser manuellement sur le bassin.

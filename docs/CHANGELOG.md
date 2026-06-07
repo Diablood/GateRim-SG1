@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.28-dev
+- Add the constructible `SG1_PrimtaIncubationBasin`.
+- Add the `SG1_IncubatePrimtaLarva` work bill.
+- Register `SG1_DoBillsPrimtaIncubation` so pawns can detect and prioritize the basin.
+- Use Handling work with an explicit Animals skill requirement of `4`.
+- Produce one physical `SG1_PrimtaLarva` without developer spawning.
+- Keep the first incubation bill ingredient-free for isolated gameplay-loop validation.
+- Add French text, a temporary basin graphic, technical documentation and player-wiki drafts.
+
 ## 0.1.27-dev
 - Add the physical `SG1_PrimtaLarva` item resource.
 - Make Prim'ta larvae haulable, stackable and storable.

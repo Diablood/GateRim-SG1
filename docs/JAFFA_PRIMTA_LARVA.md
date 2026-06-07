@@ -32,8 +32,8 @@ larve de Prim'ta
 | Storage category | Manufactured |
 | Mass | `0.1` |
 | Market value | `35` |
-| Natural acquisition | Not implemented |
-| Current test acquisition | Developer spawn |
+| Natural acquisition | Prototype incubation basin |
+| Developer spawning | Still available for tests |
 
 The graphic is a temporary placeholder derived from the existing free-symbiote
 prototype.
@@ -62,10 +62,21 @@ successful surgery
 SG1_JaffaPrimta acquired state
 ```
 
+## 0.1.28-dev acquisition prototype
+
+The constructible `SG1_PrimtaIncubationBasin` now exposes:
+
+```text
+incubate Prim'ta larva
+```
+
+The first recipe requires work only so the complete gameplay loop can be tested
+without developer spawning.
+
 ## Future milestones
 
-- natural larva acquisition;
-- larva cultivation or Goa'uld supply chains;
+- biological nutrient inputs;
+- larva cultivation refinements or Goa'uld supply chains;
 - storage and preservation constraints;
 - maturation into adult symbiotes;
 - age ceremony for Jaffa implantation;
