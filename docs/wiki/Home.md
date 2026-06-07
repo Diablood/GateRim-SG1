@@ -11,14 +11,14 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 
 ## Contenu actuellement testable
 
-- [Jaffa](Jaffa) : lignée héréditaire, [Prim'ta](Primta) et [implantation du Prim'ta](Primta-Implantation). : lignée germinale et prototype du [Prim'ta](Primta) disponibles.
+- [Jaffa](Jaffa) : lignée héréditaire, [Prim'ta](Primta), [larve de Prim'ta](Primta-Larva) et [implantation du Prim'ta](Primta-Implantation).
 - [Goa'uld](Goauld) : [chasse autonome](Autonomous-Hunt), [implantation forcée](Forced-Implantation), [implantation rituelle](Ritual-Implantation), [bassin rituel](Ritual-Basin), [implantation récente](Recent-Implantation), [extraction d'urgence](Emergency-Extraction), [chirurgie d'extraction](Extraction-Surgery) et [hôte actif](Active-Goauld-Host) testables.
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur l'enrichissement des exigences environnementales, l'automatisation du Prim'ta et les événements faisant apparaître des symbiotes libres. Une intégration optionnelle avec Ideology est prévue ultérieurement.
+Les prochains lots porteront sur l'obtention naturelle des larves, la cérémonie du Prim'ta selon l'âge et les événements faisant apparaître des symbiotes libres. Une intégration optionnelle avec Ideology est prévue ultérieurement.
 
 ## Liens utiles
 

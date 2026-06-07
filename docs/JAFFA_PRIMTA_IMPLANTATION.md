@@ -58,21 +58,29 @@ The operation is unavailable when `SG1_JaffaPrimta` is already present.
 |---|---:|
 | Medicine skill | `4` |
 | Medicine | `1` unit |
+| Physical Prim'ta larva | `1` unit |
 | Work amount | `900` |
 | Surgery success factor | `1` |
 | Death chance on failure | `0.005` |
 | Specific body part | None |
 
-## Prototype limitation
+## Physical larva requirement
 
-A dedicated physical immature-symbiote resource does not exist yet.
+Since `0.1.27-dev`, the operation requires and consumes:
 
-The current medicine requirement represents the controlled procedure only.
+```text
+SG1_PrimtaLarva
+```
+
+The current item can be spawned through developer tools. Natural acquisition,
+cultivation and maturation remain future work.
+
 Future milestones will add:
 
 ```text
-Prim'ta larva resource
 age or life-stage ceremony
+natural larva acquisition
+storage and preservation constraints
 removal consequences
 dependency
 tretonin substitution
@@ -98,7 +106,7 @@ Jaffa Prim'ta implantation surgery failed for <pawn>.
    ```text
    implant Jaffa Prim'ta
    ```
-5. Provide one medicine and a doctor with Medicine `4+`.
+5. Provide one medicine, one `Prim'ta larva` and a doctor with Medicine `4+`.
 6. Let the operation complete.
 7. Confirm `Prim'ta symbiote` appears.
 8. Confirm immunity, healing, resistance, lifespan and pain modifiers.

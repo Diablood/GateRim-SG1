@@ -41,7 +41,7 @@ Lorsqu'il est présent, il accorde provisoirement :
 | Espérance de vie | `×1,5` |
 | Douleur | `×0,85` |
 
-L'état doit encore être ajouté ou retiré manuellement avec le mode développeur.
+Depuis `0.1.26-dev`, cet état peut être obtenu par une opération médicale. Depuis `0.1.27-dev`, l'opération consomme une [larve de Prim'ta](Primta-Larva) physique.
 
 ## Évolutions prévues
 
@@ -66,3 +66,10 @@ implanter un Prim'ta jaffa
 La réussite ajoute les effets acquis du [Prim'ta](Primta). Consulte
 [Implantation du Prim'ta jaffa](Primta-Implantation) pour les conditions
 actuelles.
+
+
+## Larve de Prim'ta
+
+Depuis `0.1.27-dev`, l'implantation médicale exige une
+[larve de Prim'ta](Primta-Larva) transportable. L'obtention naturelle de cette
+ressource n'est pas encore implémentée.

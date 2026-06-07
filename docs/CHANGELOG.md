@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.27-dev
+- Add the physical `SG1_PrimtaLarva` item resource.
+- Make Prim'ta larvae haulable, stackable and storable.
+- Require one larva and one medicine for `SG1_ImplantJaffaPrimta`.
+- Let the vanilla bill flow haul and consume the larva.
+- Add a defensive C# larva-ingredient validation step.
+- Add French text, a temporary larva graphic, technical documentation and player-wiki drafts.
+
 ## 0.1.26-dev
 - Add the `SG1_ImplantJaffaPrimta` medical operation.
 - Add `Recipe_ImplantJaffaPrimta`, derived from vanilla `Recipe_Surgery`.

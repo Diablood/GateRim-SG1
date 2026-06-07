@@ -9,8 +9,9 @@ namespace GateRimSG1.Jaffa
     ///
     /// The operation validates that the patient carries the inherited Jaffa
     /// compatibility genes and does not already host an immature symbiote.
-    /// A dedicated physical larva resource, age ceremony and dependency system
-    /// remain future milestones.
+    /// Since 0.1.27-dev, the vanilla bill must supply one physical
+    /// SG1_PrimtaLarva ingredient. Age ceremony, acquisition and dependency
+    /// systems remain future milestones.
     /// </summary>
     public class Recipe_ImplantJaffaPrimta : Recipe_Surgery
     {
@@ -53,6 +54,16 @@ namespace GateRimSG1.Jaffa
                 return;
             }
 
+            if (!ContainsPrimtaLarva(ingredients))
+            {
+                GR_Log.Error(
+                    $"Skipped Jaffa Prim'ta implantation for "
+                    + $"{JaffaPrimtaUtility.PawnDebugLabel(pawn)} "
+                    + "because the physical Prim'ta larva ingredient is missing.");
+
+                return;
+            }
+
             if (billDoer != null)
             {
                 if (CheckSurgeryFail(billDoer, pawn, ingredients, part, bill))
@@ -76,7 +87,8 @@ namespace GateRimSG1.Jaffa
             GR_Log.Message(
                 $"Jaffa Prim'ta implantation surgery completed for "
                 + $"{JaffaPrimtaUtility.PawnDebugLabel(pawn)} "
-                + $"with surgeon {JaffaPrimtaUtility.PawnDebugLabel(billDoer)}.");
+                + $"using physical Prim'ta larva with surgeon "
+                + $"{JaffaPrimtaUtility.PawnDebugLabel(billDoer)}.");
 
             Messages.Message(
                 "GR_JaffaPrimtaImplantation_Success".Translate(
@@ -84,6 +96,26 @@ namespace GateRimSG1.Jaffa
                 pawn,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+        }
+        private static bool ContainsPrimtaLarva(List<Thing> ingredients)
+        {
+            if (ingredients == null)
+            {
+                return false;
+            }
+
+            for (int index = 0; index < ingredients.Count; index++)
+            {
+                Thing ingredient = ingredients[index];
+
+                if (ingredient != null
+                    && ingredient.def == GR_DefOf.SG1_PrimtaLarva)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

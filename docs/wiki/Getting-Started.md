@@ -171,10 +171,12 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 1. Génère un nouveau pawn Jaffa.
 2. Ouvre son onglet de santé.
 3. Planifie `implanter un Prim'ta jaffa`.
-4. Fournis un médecin de niveau `4+` et un médicament.
-5. Laisse l'opération s'achever.
-6. Vérifie que `symbiote du Prim'ta` apparaît.
-7. Vérifie les bonus biologiques.
-8. Sauvegarde et recharge.
-9. Vérifie que l'état persiste.
-10. Vérifie que l'opération n'est pas proposée à un humain basique.
+4. Génère une `larve de Prim'ta` avec le mode développeur.
+5. Fournis un médecin de niveau `4+`, un médicament et une larve.
+6. Laisse l'opération s'achever.
+7. Vérifie que la larve est consommée.
+8. Vérifie que `symbiote du Prim'ta` apparaît.
+9. Vérifie les bonus biologiques.
+10. Sauvegarde et recharge.
+11. Vérifie que l'état persiste.
+12. Vérifie que l'opération n'est pas proposée à un humain basique.

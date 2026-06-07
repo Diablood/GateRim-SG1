@@ -227,6 +227,21 @@
 - [ ] Validate duplicate-operation rejection
 - [ ] Publish the updated player wiki
 
+## 0.1.27-dev — Add physical Prim'ta larva resource
+- [x] Add `SG1_PrimtaLarva`
+- [x] Make the larva a haulable and stackable item
+- [x] Require one physical larva in `SG1_ImplantJaffaPrimta`
+- [x] Keep the existing medicine requirement
+- [x] Let the vanilla bill flow haul and consume the larva
+- [x] Add a defensive C# ingredient check
+- [x] Add French translation, a temporary graphic, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the larva can be spawned, hauled and stored
+- [ ] Confirm the implantation bill waits without a larva
+- [ ] Validate larva consumption after successful surgery
+- [ ] Validate save/reload persistence of the implanted Hediff
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -237,7 +252,8 @@
 
 ## Next symbiote milestones
 - [x] Add medical Jaffa Prim'ta implantation prototype
-- [ ] Add a physical Prim'ta larva resource
+- [x] Add a physical Prim'ta larva resource
+- [ ] Add natural Prim'ta larva acquisition and preservation
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation

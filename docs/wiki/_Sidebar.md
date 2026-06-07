@@ -12,6 +12,7 @@
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)
+- [Larve de Prim'ta](Primta-Larva)
 - [Implantation du Prim'ta](Primta-Implantation)
 - [Implantation récente](Recent-Implantation)
 - [Chasse autonome](Autonomous-Hunt)

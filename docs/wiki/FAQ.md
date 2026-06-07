@@ -130,6 +130,6 @@ Le bassin fonctionne sans `Ideology`.
 
 ## Une larve de Prim'ta est-elle déjà une ressource physique ?
 
-Non. La première procédure médicale de `0.1.26-dev` valide l'éligibilité et les
-effets acquis. Une ressource dédiée représentant le symbiote immature sera
-ajoutée lors d'un lot ultérieur.
+Oui. Depuis `0.1.27-dev`, la [larve de Prim'ta](Primta-Larva) est un objet transportable consommé par l'opération `implanter un Prim'ta jaffa`.
+
+Son obtention naturelle n'est pas encore implémentée : utilise le mode développeur pour les tests.

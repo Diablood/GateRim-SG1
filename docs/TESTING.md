@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.26.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.27.0 loaded.
    ```
 
 
@@ -332,3 +332,20 @@ Negative checks:
 12. Confirm the implantation operation is hidden while Prim'ta is present.
 13. Select a baseliner and confirm the operation is unavailable.
 14. Remove the Hediff in developer mode and confirm the removal log.
+
+
+## Physical Prim'ta larva resource
+
+1. Build with `build.cmd`.
+2. Spawn one `Prim'ta larva` through developer tools.
+3. Confirm the physical item can be hauled and stored.
+4. Spawn a compatible Jaffa.
+5. Schedule `implant Jaffa Prim'ta`.
+6. Confirm the operation requires one medicine and one larva.
+7. Let the surgery complete.
+8. Confirm the larva is consumed.
+9. Confirm `Prim'ta symbiote` appears.
+10. Save and reload.
+11. Confirm persistence.
+12. Try the same workflow without an available larva.
+13. Confirm the bill waits for the missing ingredient.

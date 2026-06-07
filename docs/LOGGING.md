@@ -194,3 +194,15 @@ Removed Jaffa Prim'ta symbiote from <pawn>.
 Jaffa Prim'ta implantation surgery completed for <pawn> with surgeon <pawn>.
 Jaffa Prim'ta implantation surgery failed for <pawn>.
 ```
+
+
+## Physical Prim'ta-larva diagnostics
+
+`0.1.27-dev` adds a defensive ingredient check to Jaffa implantation:
+
+```text
+Skipped Jaffa Prim'ta implantation for <pawn> because the physical Prim'ta larva ingredient is missing.
+Jaffa Prim'ta implantation surgery completed for <pawn> using physical Prim'ta larva with surgeon <pawn>.
+```
+
+Normal bill execution should consume one `SG1_PrimtaLarva`.

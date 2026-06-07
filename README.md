@@ -14,26 +14,25 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.26-dev — Add Jaffa Prim'ta implantation prototype
+### 0.1.27-dev — Add physical Prim'ta larva resource
 
-Compatible Jaffa now expose a planifiable medical operation:
-
-```text
-implant Jaffa Prim'ta
-```
-
-The procedure requires one medicine and Medicine skill `4`. On success, it adds
-the persistent acquired state:
+Jaffa Prim'ta implantation now consumes a real haulable item:
 
 ```text
-SG1_JaffaPrimta
+SG1_PrimtaLarva
 ```
 
-Eligibility is restricted to Jaffa carrying the inherited lineage, pouch and
-immature-symbiote-compatibility genes. Duplicate implantation is rejected.
+The medical bill requires:
 
-A physical larva resource, age ceremony, dependency and tretonin remain future
-milestones.
+```text
+one Prim'ta larva
+one medicine
+Medicine skill 4
+```
+
+The larva is consumed by the vanilla bill flow when surgery succeeds. For this
+milestone, larvae are spawned through developer tools. Natural acquisition,
+cultivation, maturation, age ceremony and dependency remain future milestones.
 
 ## First playable milestone
 

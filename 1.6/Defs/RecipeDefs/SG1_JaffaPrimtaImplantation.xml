@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        First medical Jaffa Prim'ta implantation prototype.
-        The worker restricts availability to compatible Jaffa who do not
-        already carry SG1_JaffaPrimta.
+        Medical Jaffa Prim'ta implantation.
 
-        This version intentionally uses medicine as a procedural requirement.
-        A dedicated physical immature-symbiote resource will be added later.
+        Since 0.1.27-dev, the procedure consumes one physical SG1_PrimtaLarva
+        in addition to one medicine unit. The worker still restricts
+        availability to compatible Jaffa without an existing Prim'ta.
     -->
     <RecipeDef>
         <defName>SG1_ImplantJaffaPrimta</defName>
         <label>implant Jaffa Prim'ta</label>
-        <description>Implant an immature Goa'uld symbiote into the abdominal pouch of a compatible Jaffa. This prototype validates the medical procedure and acquired Prim'ta effects. A dedicated larva resource and age ceremony will be introduced later.</description>
-        <jobString>Implanting a Jaffa Prim'ta.</jobString>
+        <description>Implant a physical immature Goa'uld symbiote larva into the abdominal pouch of a compatible Jaffa. The operation consumes one Prim'ta larva and one medicine. Age ceremonies, natural larva acquisition and dependency systems will be introduced later.</description>
+        <jobString>Implanting a Jaffa Prim'ta larva.</jobString>
         <workerClass>GateRimSG1.Jaffa.Recipe_ImplantJaffaPrimta</workerClass>
         <workAmount>900</workAmount>
         <effectWorking>Surgery</effectWorking>
@@ -37,11 +36,22 @@
                 </filter>
                 <count>1</count>
             </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>SG1_PrimtaLarva</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
         </ingredients>
         <fixedIngredientFilter>
             <categories>
                 <li>Medicine</li>
             </categories>
+            <thingDefs>
+                <li>SG1_PrimtaLarva</li>
+            </thingDefs>
         </fixedIngredientFilter>
         <recipeUsers>
             <li>Human</li>

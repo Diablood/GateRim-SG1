@@ -33,7 +33,7 @@ implant Jaffa Prim'ta
 
 from the health-tab operation menu.
 
-The procedure requires one medicine and a doctor with Medicine `4+`.
+The procedure requires one medicine, one physical `SG1_PrimtaLarva` and a doctor with Medicine `4+`.
 
 ## Compatibility
 
@@ -43,9 +43,20 @@ is already present.
 
 ## Future work
 
-- add a physical Prim'ta larva resource;
 - apply age or life-stage checks;
 - represent the full ceremony;
 - add dependency after removal;
 - add tretonin as a substitute;
 - differentiate Free Jaffa treatment from Goa'uld-controlled implantation.
+
+
+## Physical larva resource
+
+Since `0.1.27-dev`, Jaffa implantation consumes one physical:
+
+```text
+SG1_PrimtaLarva
+```
+
+The first item prototype is haulable and stackable. Natural acquisition and
+maturation remain future work.

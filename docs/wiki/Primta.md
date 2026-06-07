@@ -2,7 +2,8 @@
 
 > Statut : Prototype  
 > Version d'introduction : 0.1.13-dev  
-> Procédure d'implantation : 0.1.26-dev
+> Procédure d'implantation : 0.1.26-dev  
+> Larve physique : 0.1.27-dev
 
 ## Présentation
 
@@ -40,9 +41,15 @@ est retirée ou remplacée par un traitement.
 
 ## Évolutions prévues
 
-- ressource physique représentant une larve immature ;
 - cérémonie du Prim'ta ;
 - contrôle de l'âge ;
 - dépendance après retrait ;
 - trétonine ;
 - différences entre Jaffa libres et Jaffa soumis aux Goa'uld.
+
+
+## Larve physique
+
+Depuis `0.1.27-dev`, la procédure consomme une
+[larve de Prim'ta](Primta-Larva) transportable. L'obtention naturelle de cette
+ressource sera ajoutée ultérieurement.

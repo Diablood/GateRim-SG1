@@ -26,6 +26,7 @@ implanter un Prim'ta jaffa
 | Patient | Jaffa compatible |
 | Compétence médicale minimale | `4` |
 | Médicament | `1` unité |
+| [Larve de Prim'ta](Primta-Larva) | `1` unité |
 | Temps de travail | `900` |
 | Prim'ta déjà présent | Opération indisponible |
 
@@ -50,9 +51,13 @@ symbiote du Prim'ta
 Les bonus d'immunité, de guérison, de résistance, de longévité et de réduction
 de douleur deviennent actifs.
 
+## Larve physique requise
+
+Depuis `0.1.27-dev`, l'opération consomme une
+[larve de Prim'ta](Primta-Larva) physique en plus du médicament.
+
 ## Limites du prototype
 
-- aucune larve physique n'est encore consommée ;
 - l'âge approprié n'est pas encore contrôlé ;
 - la cérémonie traditionnelle n'est pas encore représentée ;
 - l'absence prolongée de Prim'ta n'entraîne pas encore de dépendance ;
