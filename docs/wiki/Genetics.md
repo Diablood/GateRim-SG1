@@ -1,7 +1,8 @@
 # Génétique
 
 > Statut : Prototype  
-> Version d'introduction : 0.1.11-dev
+> Version d'introduction : 0.1.12-dev  
+> Séparation lignée / Prim'ta : 0.1.13-dev
 
 ## Deux catégories importantes
 
@@ -16,9 +17,9 @@ RimWorld distingue deux types de gènes :
 
 Les Jaffa constituent une lignée humaine modifiée. Leur xenotype est donc héréditaire.
 
-Deux parents Jaffa peuvent produire un enfant Jaffa au lieu d'un humain basique.
+Depuis `0.1.13-dev`, les effets apportés par la larve ne sont plus placés directement dans la fondation génétique. Ils sont représentés par l'état de santé [Prim'ta](Primta).
 
-Certains bonus sont encore provisoires : lorsqu'un système de symbiote immature sera ajouté, les effets dépendant réellement du parasite pourront quitter les gènes germinaux pour devenir des effets médicaux amovibles.
+Un enfant peut ainsi naître Jaffa sans naître avec une larve déjà implantée.
 
 ## Hôtes Goa'uld
 
@@ -26,6 +27,6 @@ Un hôte Goa'uld ne constitue pas une lignée héréditaire. Il s'agit d'un pawn
 
 Les enfants d'un hôte Goa'uld ne doivent donc pas naître automatiquement possédés.
 
-## Tok'ra
+## Tests de reproduction à venir
 
-Le futur système Tok'ra suivra la même logique générale que les Goa'uld : la symbiose adulte sera acquise au cours de la vie, mais volontaire.
+Le comportement vanilla doit encore être observé pour les couples mixtes avant d'ajouter une règle spéciale de transmission maternelle.

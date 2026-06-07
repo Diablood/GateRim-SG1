@@ -4,68 +4,57 @@
 
 ```text
 SG1_Jaffa
+SG1_JaffaLineage
+SG1_JaffaPouchPotential
+SG1_JaffaSymbioteCompatibility
 SG1_JaffaPhysiology
-SG1_JaffaLongevity
+SG1_JaffaPrimta
 ```
 
 ## Germline policy
 
 Jaffa are a modified human lineage that reproduces as Jaffa.
 
-The xenotype therefore uses:
+The inherited xenotype contains only lineage traits. A child can therefore be born Jaffa without already carrying an immature symbiote.
 
-```xml
-<inheritable>true</inheritable>
-```
+## Prim'ta policy
 
-This makes the current xenotype gene set a germline/endogene foundation instead of a set of acquired xenogenes.
-
-Two Jaffa parents should produce Jaffa children rather than baseliner children. A mixed pairing can still produce a hybrid according to RimWorld's normal germline inheritance logic.
-
-## Appearance policy
-
-Jaffa must not all look like visibly muscular RimWorld hulks.
-
-The vanilla `Body_Hulk` gene remains excluded because it restricts the visible body shape. No `Body_*` gene is imposed by the Jaffa xenotype.
-
-## Current custom genes
-
-| Gene | Effect | Current purpose |
-|---|---:|---|
-| `SG1_JaffaPhysiology` | `CarryingCapacity +15` | Inherited physical baseline without forced Hulk appearance |
-| `SG1_JaffaLongevity` | `LifespanFactor ×1.5` | Provisional 150% lifespan expectancy |
-
-## Important prototype limitation
-
-Not every current Jaffa bonus should necessarily remain germline-based forever.
-
-Several effects are likely to depend on the immature symbiote and should later move into a removable Jaffa symbiote Hediff:
-
-- part of the immunity bonus;
-- accelerated recovery;
-- reduced pain;
-- longevity;
-- symbiote dependency;
-- tretonin substitution;
-- nearby Goa'uld sensitivity.
-
-The current inheritable xenotype is a gameplay foundation until that split is implemented.
-
-## Temporary artwork
-
-`SG1_JaffaPhysiology` currently uses:
+The Prim'ta is represented separately by:
 
 ```text
-Textures/UI/Genes/SG1_JaffaPhysiology.png
+SG1_JaffaPrimta
 ```
+
+This persistent Hediff currently grants:
+
+| Effect | Current factor |
+|---|---:|
+| Immunity gain | `×1.5` |
+| Injury healing | `×1.5` |
+| Incoming damage | `×0.9` |
+| Lifespan expectancy | `×1.5` |
+| Pain | `×0.85` |
+
+## Prototype limitations
+
+The XML-only version does not yet implement:
+
+- age validation;
+- the Prim'ta ceremony;
+- automatic implantation;
+- symbiote dependency;
+- tretonin substitution;
+- medical consequences after removal;
+- nearby Goa'uld sensitivity.
 
 ## Manual test checklist
 
 1. Enable `Core`, `Biotech`, then `GateRim SG-1`.
-2. Open the xenotype editor.
-3. Confirm that `Jaffa` is marked as inheritable.
-4. Confirm that Jaffa genes display as germline genes.
-5. Generate or breed two Jaffa parents when practical.
-6. Confirm that their child inherits the Jaffa lineage rather than becoming a baseliner.
-7. Confirm that mixed-lineage offspring behave as RimWorld hybrids.
-8. Check `Player.log` for `SG1_Jaffa` errors.
+2. Generate a new Jaffa pawn.
+3. Confirm that only the four lineage genes are germline genes.
+4. Confirm that the pawn does not automatically receive `Prim'ta symbiote`.
+5. Add `SG1_JaffaPrimta` manually with developer mode.
+6. Confirm immunity, healing, pain, damage and lifespan modifiers.
+7. Remove the Hediff and confirm that the modifiers disappear.
+8. Use newly generated pawns for this test; older development pawns may retain legacy genes.
+9. Check `Player.log` for `SG1_Jaffa` or `SG1_JaffaPrimta` errors.

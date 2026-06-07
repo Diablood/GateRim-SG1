@@ -1,38 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        Prototype implementation:
-        Jaffa lineage traits are represented as inheritable germline genes.
-        Two Jaffa parents should therefore produce Jaffa children instead of
-        baseliner children.
-
-        Some current bonuses are provisional approximations of effects granted
-        by an immature symbiote. They may later move from the germline xenotype
-        to a dedicated symbiote Hediff system.
-
-        No Body_* gene is imposed here. Jaffa appearance should remain varied;
-        their enhanced physical baseline is represented by SG1_JaffaPhysiology.
+        Jaffa are an inheritable modified human lineage.
+        This xenotype intentionally excludes the bonuses provided by an
+        implanted immature symbiote. Those effects are handled by
+        SG1_JaffaPrimta so a Jaffa child can be born Jaffa without already
+        carrying a larva.
     -->
     <XenotypeDef>
         <defName>SG1_Jaffa</defName>
         <label>Jaffa</label>
-        <description>Jaffa are a modified human lineage adapted to carry an immature Goa'uld symbiote. Their children inherit the Jaffa germline foundation rather than being born as baseliners. Their current prototype bonuses include enhanced strength, resilience, immune response and slower aging without imposing a single visible body shape. Some symbiote-derived effects will later move to a dedicated symbiote system.</description>
-        <descriptionShort>An inheritable modified human lineage adapted to carry an immature Goa'uld symbiote.</descriptionShort>
+        <description>Jaffa are an inheritable modified human lineage adapted to undergo the Prim'ta and carry an immature Goa'uld symbiote. Children inherit the Jaffa lineage without automatically receiving a larva. Their inherited baseline remains intentionally modest; the stronger immune, healing and longevity benefits appear only while the Prim'ta health state is present.</description>
+        <descriptionShort>An inheritable modified human lineage adapted to undergo the Prim'ta.</descriptionShort>
         <!-- Temporary vanilla icon until dedicated Jaffa artwork is added. -->
         <iconPath>UI/Icons/Xenotypes/Hussar</iconPath>
         <inheritable>true</inheritable>
-        <combatPowerFactor>1.4</combatPowerFactor>
+        <combatPowerFactor>1.1</combatPowerFactor>
         <genes>
+            <li>SG1_JaffaLineage</li>
+            <li>SG1_JaffaPouchPotential</li>
+            <li>SG1_JaffaSymbioteCompatibility</li>
             <li>SG1_JaffaPhysiology</li>
-            <li>SG1_JaffaLongevity</li>
-            <li>AptitudeStrong_Melee</li>
-            <li>Immunity_Strong</li>
-            <li>MeleeDamage_Strong</li>
-            <li>Pain_Reduced</li>
-            <li>Robust</li>
-            <li>WoundHealing_Fast</li>
-            <li>Superclotting</li>
-            <li>StrongStomach</li>
         </genes>
     </XenotypeDef>
 </Defs>

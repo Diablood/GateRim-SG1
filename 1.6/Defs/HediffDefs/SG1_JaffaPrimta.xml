@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        XML-only prototype:
+        This persistent Hediff represents the Prim'ta after implantation of an
+        immature Goa'uld symbiote into a compatible Jaffa.
+
+        It can currently be added and removed through developer mode. Automatic
+        age checks, the ceremony, dependency, tretonin substitution and medical
+        consequences require later C# milestones.
+    -->
+    <HediffDef>
+        <defName>SG1_JaffaPrimta</defName>
+        <label>Prim'ta symbiote</label>
+        <description>An immature Goa'uld symbiote resides in this Jaffa's abdominal pouch. It supports the host's immune system, accelerates recovery, reduces the impact of pain, improves resilience and extends lifespan. This prototype can currently be added or removed manually through developer mode.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <isBad>false</isBad>
+        <stages>
+            <li>
+                <label>immature symbiote support</label>
+                <painFactor>0.85</painFactor>
+                <statFactors>
+                    <ImmunityGainSpeed>1.5</ImmunityGainSpeed>
+                    <InjuryHealingFactor>1.5</InjuryHealingFactor>
+                    <IncomingDamageFactor>0.9</IncomingDamageFactor>
+                    <LifespanFactor>1.5</LifespanFactor>
+                </statFactors>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>

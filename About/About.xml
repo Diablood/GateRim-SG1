@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.12-dev</modVersion>
+    <modVersion>0.1.13-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -18,11 +18,11 @@
 GateRim SG-1 brings the Stargate SG-1 universe to RimWorld.
 
 Current development scope:
-- Inheritable Jaffa germline xenotype foundation
-- Goa'uld host xenotype prototype kept non-heritable
+- Inheritable Jaffa lineage genes
+- Prim'ta Hediff prototype for an implanted immature symbiote
+- Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
-- Cross-platform wiki synchronization helpers
 - French translations for stabilized content
 - Player wiki maintained in parallel
 - Forced implantation, ritual implantation and host transfer planned next

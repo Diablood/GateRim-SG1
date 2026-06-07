@@ -11,6 +11,7 @@
 - [Goa'uld](Goauld)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
+- [Prim'ta](Primta)
 - [Implantation récente](Recent-Implantation)
 
 ## Assistance

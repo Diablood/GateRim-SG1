@@ -7,7 +7,7 @@
 - [x] Add project conventions and preserve the custom icon
 
 ### 0.1.1-dev to 0.1.5-dev — Jaffa foundation
-- [x] Add and validate the Jaffa xenotype foundation
+- [x] Add and validate the initial Jaffa xenotype
 - [x] Add French translations
 - [x] Correct first in-game log issues
 
@@ -15,51 +15,57 @@
 - [x] Add versioned wiki drafts
 - [x] Publish the initial GitHub wiki
 
-### 0.1.7-dev — Goa'uld host foundation
-- [x] Add the XML-only `SG1_GoauldHost` prototype
-- [x] Add `SG1_NaquadahBlood`
-- [x] Add `SG1_GoauldLongevity`
-- [x] Add French translations and temporary local icons
-
-### 0.1.8-dev to 0.1.10-dev — Free symbiote and workflow fixes
-- [x] Add the XML-only `SG1_GoauldSymbiote` animal-style pawn
-- [x] Add a weak bite attack
-- [x] Add a temporary local pawn sprite
-- [x] Correct the free-symbiote XML
+### 0.1.7-dev to 0.1.11-dev — Goa'uld prototype chain
+- [x] Add the XML-only Goa'uld host prototype
+- [x] Add the free-symbiote pawn prototype
+- [x] Add the recent-implantation Hediff prototype
 - [x] Add Windows-friendly wiki synchronization helpers
 
-## 0.1.11-dev — Recent Goa'uld implantation state
-- [x] Add `SG1_GoauldRecentImplantation`
-- [x] Add a visible one-day countdown
-- [x] Add a temporary pain offset during the critical phase
-- [x] Add French `DefInjected` translations
-- [x] Update technical documentation
-- [x] Update player-wiki drafts
-- [ ] Validate the implantation Hediff in RimWorld 1.6
+### 0.1.12-dev — Jaffa germline correction
+- [x] Set `SG1_Jaffa` to an inheritable germline xenotype
+- [x] Keep adult Goa'uld possession non-heritable
+- [x] Document genetics behavior
 
-## 0.1.12-dev — Jaffa germline correction
-- [x] Set `SG1_Jaffa` to `<inheritable>true</inheritable>`
-- [x] Document the germline/endogene versus xenogene distinction
-- [x] Keep `SG1_GoauldHost` non-heritable
-- [x] Add French text updates for the Jaffa xenotype
-- [x] Update player-wiki drafts
-- [ ] Validate Jaffa germline display and offspring behavior
-- [ ] Publish the updated player-wiki pages
+## 0.1.13-dev — Split Jaffa lineage and Prim'ta effects
+- [x] Reduce `SG1_Jaffa` to inherited lineage genes
+- [x] Add `SG1_JaffaLineage`
+- [x] Add `SG1_JaffaPouchPotential`
+- [x] Add `SG1_JaffaSymbioteCompatibility`
+- [x] Preserve the modest inherited `SG1_JaffaPhysiology`
+- [x] Keep `SG1_JaffaLongevity` as a legacy development Def
+- [x] Add persistent `SG1_JaffaPrimta`
+- [x] Move immunity, healing, pain, damage-resistance and lifespan effects to the Prim'ta Hediff
+- [x] Add French translations
+- [x] Update technical docs and wiki drafts
+- [ ] Validate newly generated Jaffa in RimWorld 1.6
+- [ ] Validate manual add/remove of `SG1_JaffaPrimta`
+- [ ] Publish the updated player wiki
+
+## Next genetics tests
+- [ ] Test Jaffa × Jaffa offspring
+- [ ] Test Jaffa mother × baseliner father
+- [ ] Test baseliner mother × Jaffa father
+- [ ] Test Jaffa × another germline xenotype
+- [ ] Decide whether vanilla hybrid inheritance is sufficient
+- [ ] Avoid forced maternal inheritance unless tests demonstrate a clear need
 
 ## Next symbiote milestones
-- [ ] Apply recent implantation after a successful forced attack
-- [ ] Add ritual implantation
+- [ ] Add automatic Prim'ta age checks and ceremony flow
+- [ ] Apply recent Goa'uld implantation after a successful forced attack
+- [ ] Add ritual Goa'uld implantation
 - [ ] Add medical interruption
 - [ ] Convert a victim into an active Goa'uld host when the timer ends
 - [ ] Add transfer between hosts
 - [ ] Add extraction
 - [ ] Add Tok'ra behavior
-- [ ] Implement Jaffa symbiote dependency
 - [ ] Add tretonin
 
-## Factions and equipment
+## Factions, visuals and equipment
 - [ ] Create the Goa'uld System Lords faction
 - [ ] Add Jaffa pawn kinds
+- [ ] Add Goa'uld-faction facial tattoos or markings for Jaffa
+- [ ] Add variants by System Lord or Goa'uld faction where practical
+- [ ] Keep Free Jaffa visually distinct from Goa'uld-aligned Jaffa
 - [ ] Add Ma'Tok staff weapon
 - [ ] Add Zat'nik'tel
 - [ ] Add generic Jaffa armor

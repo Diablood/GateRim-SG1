@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaPrimta.label>symbiote du Prim'ta</SG1_JaffaPrimta.label>
+    <SG1_JaffaPrimta.description>Un symbiote Goa'uld immature réside dans la poche abdominale de ce Jaffa. Il soutient le système immunitaire de l'hôte, accélère sa récupération, réduit les effets de la douleur, améliore sa résistance et prolonge son espérance de vie. Dans ce prototype, cet état peut être ajouté ou retiré manuellement grâce au mode développeur.</SG1_JaffaPrimta.description>
+    <SG1_JaffaPrimta.stages.0.label>soutien du symbiote immature</SG1_JaffaPrimta.stages.0.label>
+</LanguageData>

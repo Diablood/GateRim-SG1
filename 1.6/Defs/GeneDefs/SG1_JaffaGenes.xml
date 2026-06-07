@@ -1,18 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        Jaffa physiology is intentionally independent from RimWorld body types.
-        It represents increased physical capability without forcing the Hulk
-        visual body shape on every Jaffa pawn.
+        The Jaffa xenotype now contains only inherited lineage traits.
+        Benefits that depend on an implanted immature symbiote are represented
+        separately by SG1_JaffaPrimta.
+    -->
+    <GeneDef>
+        <defName>SG1_JaffaLineage</defName>
+        <label>Jaffa lineage</label>
+        <description>The carrier belongs to the modified human lineage known as the Jaffa. This inherited marker separates Jaffa ancestry from the later implantation of an immature Goa'uld symbiote.</description>
+        <iconPath>UI/Genes/SG1_JaffaLineage</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>698</displayOrderInCategory>
+        <biostatMet>0</biostatMet>
+        <biostatCpx>0</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    </GeneDef>
+
+    <GeneDef>
+        <defName>SG1_JaffaPouchPotential</defName>
+        <label>Jaffa pouch potential</label>
+        <description>The carrier is biologically adapted to undergo the Prim'ta and support an abdominal symbiote pouch. The functional pouch and its implanted larva will be represented by a separate health state.</description>
+        <iconPath>UI/Genes/SG1_JaffaPouchPotential</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>699</displayOrderInCategory>
+        <biostatMet>0</biostatMet>
+        <biostatCpx>1</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    </GeneDef>
+
+    <GeneDef>
+        <defName>SG1_JaffaSymbioteCompatibility</defName>
+        <label>immature symbiote compatibility</label>
+        <description>The carrier's body is compatible with the biological support provided by an immature Goa'uld symbiote after the Prim'ta.</description>
+        <iconPath>UI/Genes/SG1_JaffaSymbioteCompatibility</iconPath>
+        <displayCategory>Miscellaneous</displayCategory>
+        <displayOrderInCategory>700</displayOrderInCategory>
+        <biostatMet>0</biostatMet>
+        <biostatCpx>1</biostatCpx>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+    </GeneDef>
+
+    <!--
+        Mild inherited baseline. It intentionally does not force a visual body
+        shape and remains weaker than the benefits provided by the Prim'ta.
     -->
     <GeneDef>
         <defName>SG1_JaffaPhysiology</defName>
         <label>Jaffa physiology</label>
-        <description>Carriers possess the enhanced physical baseline associated with Jaffa warriors. Their strength is not tied to a single visible body shape: a Jaffa can be broad, average-built or lean while still benefiting from the biological support of an immature Goa'uld symbiote.</description>
-        <!-- Temporary GateRim placeholder until dedicated gene artwork is added. -->
+        <description>The carrier possesses the inherited physical baseline of the Jaffa lineage. This modest advantage is independent from visible body shape and remains separate from the stronger support provided by an implanted immature symbiote.</description>
         <iconPath>UI/Genes/SG1_JaffaPhysiology</iconPath>
         <displayCategory>Miscellaneous</displayCategory>
-        <displayOrderInCategory>700</displayOrderInCategory>
+        <displayOrderInCategory>701</displayOrderInCategory>
         <biostatMet>-1</biostatMet>
         <biostatCpx>1</biostatCpx>
         <canGenerateInGeneSet>false</canGenerateInGeneSet>
@@ -22,18 +61,19 @@
     </GeneDef>
 
     <!--
-        Prototype representation of the slowed aging granted by a Jaffa
-        symbiote. This gene can later be replaced or driven by the dedicated
-        symbiote Hediff system.
+        Legacy compatibility Def:
+        Previous development versions assigned this gene directly to the Jaffa
+        xenotype. It remains defined for save compatibility but is no longer
+        included in SG1_Jaffa. SG1_JaffaPrimta now provides the active lifespan
+        effect while an immature symbiote is present.
     -->
     <GeneDef>
         <defName>SG1_JaffaLongevity</defName>
-        <label>Jaffa longevity</label>
-        <description>Carriers age more slowly and develop age-related health conditions later in life. For Jaffa, this effect represents the long-term biological support provided by an immature Goa'uld symbiote.</description>
-        <!-- Temporary vanilla icon until dedicated GateRim gene artwork is added. -->
-        <iconPath>UI/Icons/Genes/Gene_Ageless</iconPath>
+        <label>Jaffa longevity (legacy)</label>
+        <description>Legacy prototype gene retained for compatibility with earlier development saves. Newly generated Jaffa receive longevity from the Prim'ta health state while an immature symbiote is present.</description>
+        <iconPath>UI/Genes/SG1_JaffaLongevity</iconPath>
         <displayCategory>Miscellaneous</displayCategory>
-        <displayOrderInCategory>701</displayOrderInCategory>
+        <displayOrderInCategory>799</displayOrderInCategory>
         <biostatMet>0</biostatMet>
         <biostatCpx>1</biostatCpx>
         <canGenerateInGeneSet>false</canGenerateInGeneSet>

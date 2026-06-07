@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+    <SG1_JaffaLineage.label>lignée jaffa</SG1_JaffaLineage.label>
+    <SG1_JaffaLineage.description>Le porteur appartient à la lignée humaine modifiée connue sous le nom de Jaffa. Ce marqueur héréditaire distingue l'ascendance jaffa de l'implantation ultérieure d'un symbiote Goa'uld immature.</SG1_JaffaLineage.description>
+    <SG1_JaffaPouchPotential.label>prédisposition à la poche jaffa</SG1_JaffaPouchPotential.label>
+    <SG1_JaffaPouchPotential.description>Le porteur est biologiquement adapté pour subir le Prim'ta et accueillir une poche abdominale destinée au symbiote. La poche fonctionnelle et sa larve implantée seront représentées par un état de santé distinct.</SG1_JaffaPouchPotential.description>
+    <SG1_JaffaSymbioteCompatibility.label>compatibilité avec un symbiote immature</SG1_JaffaSymbioteCompatibility.label>
+    <SG1_JaffaSymbioteCompatibility.description>Le corps du porteur est compatible avec le soutien biologique fourni par un symbiote Goa'uld immature après le Prim'ta.</SG1_JaffaSymbioteCompatibility.description>
     <SG1_JaffaPhysiology.label>physiologie jaffa</SG1_JaffaPhysiology.label>
-    <SG1_JaffaPhysiology.description>Les porteurs disposent des capacités physiques améliorées caractéristiques des guerriers jaffa. Leur force n'est pas liée à une morphologie visible unique : un Jaffa peut être massif, de corpulence moyenne ou plus mince tout en bénéficiant du soutien biologique d'un symbiote Goa'uld immature.</SG1_JaffaPhysiology.description>
-    <SG1_JaffaLongevity.label>longévité jaffa</SG1_JaffaLongevity.label>
-    <SG1_JaffaLongevity.description>Les porteurs vieillissent plus lentement et développent plus tardivement les problèmes de santé liés à l'âge. Chez les Jaffa, cet effet représente le soutien biologique à long terme fourni par un symbiote Goa'uld immature.</SG1_JaffaLongevity.description>
+    <SG1_JaffaPhysiology.description>Le porteur possède la base physique héréditaire de la lignée jaffa. Cet avantage modéré est indépendant de sa morphologie visible et reste distinct du soutien plus important fourni par un symbiote immature implanté.</SG1_JaffaPhysiology.description>
+    <SG1_JaffaLongevity.label>longévité jaffa (ancien prototype)</SG1_JaffaLongevity.label>
+    <SG1_JaffaLongevity.description>Ancien gène prototype conservé pour la compatibilité avec les sauvegardes de développement précédentes. Les nouveaux Jaffa reçoivent leur longévité grâce à l'état de santé du Prim'ta lorsqu'un symbiote immature est présent.</SG1_JaffaLongevity.description>
 </LanguageData>
