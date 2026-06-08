@@ -14,21 +14,24 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.30-dev — Add Prim'ta larva preservation prototype
+### 0.1.31-dev — Add Prim'ta larva biological storage category
 
-Physical Prim'ta larvae are now perishable through the vanilla rotting system:
+Physical Prim'ta larvae no longer appear under manufactured goods.
+
+They now use a dedicated non-food category:
 
 ```text
+raw resources
+    ↓
+Goa'uld biological products
+    ↓
 Prim'ta larva
-    ↓ warm storage
-progressive spoilage
-    ↓ fully rotted
-destroyed
 ```
 
-Cold storage is therefore recommended before implantation. This first pass uses
-vanilla `CompProperties_Rottable` with `6` days to rot. Dedicated living-symbiote
-temperature ranges and freezing penalties remain future refinements.
+The category is intentionally separate from vanilla raw animal products so the
+living larva does not become a cooking ingredient through broad food filters.
+
+A global object-category audit is documented for the final stabilization phase.
 
 ## First playable milestone
 

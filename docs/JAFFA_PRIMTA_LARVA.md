@@ -29,7 +29,7 @@ larve de Prim'ta
 |---|---:|
 | Type | Haulable item resource |
 | Stack limit | `10` |
-| Storage category | Manufactured |
+| Storage category | `SG1_GoauldBiologicalProducts` |
 | Mass | `0.1` |
 | Market value | `35` |
 | Natural acquisition | Prototype incubation basin |
@@ -126,3 +126,20 @@ fully rotted larvae are destroyed
 
 Cold storage is therefore recommended before implantation. Dedicated living
 symbiote temperature tuning remains future work.
+
+
+## 0.1.31-dev biological storage category
+
+The larva no longer uses the vanilla `Manufactured` category.
+
+It now uses:
+
+```text
+SG1_GoauldBiologicalProducts
+```
+
+This custom non-food category is nested under `ResourcesRaw`.
+
+The larva is deliberately not added to `AnimalProductRaw`, because that vanilla
+branch belongs to raw food and could make the living symbiote eligible for
+cooking recipes or broad modded food filters.

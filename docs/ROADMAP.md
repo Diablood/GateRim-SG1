@@ -287,6 +287,20 @@
 - [ ] Confirm implantation still consumes fresh larvae
 - [ ] Publish the updated player wiki
 
+## 0.1.31-dev — Add Prim'ta larva biological storage category
+- [x] Add `SG1_GoauldBiologicalProducts`
+- [x] Nest the custom category under `ResourcesRaw`
+- [x] Move `SG1_PrimtaLarva` out of `Manufactured`
+- [x] Keep the larva outside vanilla raw-food categories
+- [x] Add French translation, technical docs and player-wiki drafts
+- [x] Add a final object-category audit TODO
+- [ ] Reload RimWorld and validate XML Def loading
+- [ ] Confirm the stockpile-filter hierarchy
+- [ ] Confirm the larva is absent from manufactured goods
+- [ ] Confirm the larva is not treated as raw food
+- [ ] Validate stacking, rotting and implantation regressions
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -343,3 +357,12 @@
 - [ ] Reuse the existing GateRim SG-1 identity-transfer core from optional Ideology rituals
 - [ ] Evaluate optional `Royalty` integration when System Lord factions are introduced
 - [ ] Assess titles, favor, permits, quests and limited thematic abilities without making `Royalty` mandatory
+
+
+## Final object-category audit
+- [ ] Inventory every mod-added `ThingDef` and its `thingCategories`
+- [ ] Review vanilla-category semantics and side effects
+- [ ] Identify biological, technological, military, ritual and faction-specific families
+- [ ] Avoid categories that create unintended recipe, storage or trade eligibility
+- [ ] Create custom trees only when they improve player usability
+- [ ] Harmonize English/French labels, storage filters and wiki documentation

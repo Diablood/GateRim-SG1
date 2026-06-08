@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.30.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.31.0 loaded.
    ```
 
 
@@ -403,3 +403,20 @@ Negative checks:
 8. Let a warm larva fully rot.
 9. Confirm it is destroyed.
 10. Implant a fresh larva into a compatible Jaffa and confirm the medical loop still works.
+
+
+## Prim'ta larva biological storage category
+
+1. Build with `build.cmd`.
+2. Start RimWorld and inspect the log for XML errors.
+3. Produce or spawn one `Prim'ta larva`.
+4. Open a stockpile storage filter.
+5. Confirm the larva appears under:
+   ```text
+   raw resources
+       ↓
+   Goa'uld biological products
+   ```
+6. Confirm it no longer appears under `manufactured`.
+7. Confirm it is not presented as raw food or an animal food product.
+8. Confirm hauling, stacking, rotting and Jaffa implantation still work.

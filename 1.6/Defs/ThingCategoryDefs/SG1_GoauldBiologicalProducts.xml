@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Non-food biological storage category.
+
+        Prim'ta larvae must not use Manufactured because they are living
+        biological resources. They must not use vanilla AnimalProductRaw either,
+        because that category belongs to raw food and may be accepted by cooking
+        recipes or broad modded food filters.
+    -->
+    <ThingCategoryDef>
+        <defName>SG1_GoauldBiologicalProducts</defName>
+        <label>Goa'uld biological products</label>
+        <parent>ResourcesRaw</parent>
+    </ThingCategoryDef>
+</Defs>

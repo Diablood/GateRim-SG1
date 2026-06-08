@@ -167,3 +167,17 @@ Non. Depuis `0.1.30-dev`, elles sont périssables. Elles utilisent le système
 vanilla de pourrissement et sont détruites si elles pourrissent complètement.
 
 Un stockage froid est recommandé.
+
+
+## Où stocker les larves de Prim'ta ?
+
+Depuis `0.1.31-dev`, elles sont classées dans :
+
+```text
+ressources brutes
+    ↓
+produits biologiques Goa'uld
+```
+
+Elles ne sont plus rangées avec les produits manufacturés et ne sont pas
+considérées comme des aliments crus.

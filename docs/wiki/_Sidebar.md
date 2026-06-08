@@ -28,3 +28,5 @@
 
 - [FAQ](FAQ)
 - [Dépôt principal](https://github.com/Diablood/GateRim-SG1)
+
+- [Catégories de stockage](Storage-Categories)

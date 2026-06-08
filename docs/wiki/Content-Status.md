@@ -23,7 +23,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Hôte Goa'uld actif | Conversion automatique après la phase critique | 0.1.18-dev |
 | Extraction d'urgence Goa'uld | Interruption manuelle pendant la phase critique | 0.1.19-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
-| Larve de Prim'ta | Ressource physique transportable, incubable, périssable et consommée par l'opération | 0.1.27-dev / incubation 0.1.28-dev / conservation 0.1.30-dev |
+| Larve de Prim'ta | Ressource physique transportable, incubable, périssable, classée biologiquement et consommée par l'opération | 0.1.27-dev / incubation 0.1.28-dev / conservation 0.1.30-dev / catégorie 0.1.31-dev |
 | Bassin d'incubation du Prim'ta | Atelier de Dressage, Animaux 4+, consommant 10 viandes crues | 0.1.28-dev / nutriments 0.1.29-dev |
 | Implantation rituelle Goa'uld | Ciblage explicite, durée, annulation et bassin requis | 0.1.22-dev à 0.1.25-dev |
 | Bassin rituel Goa'uld | Structure cérémonielle constructible | 0.1.25-dev |
@@ -45,3 +45,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Intégration optionnelle Ideology | Prévu |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
+
+| Catégorie biologique Goa'uld | Filtre de stockage non alimentaire | 0.1.31-dev |

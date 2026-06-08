@@ -91,3 +91,19 @@ larve détruite si elle pourrit complètement
 
 Un stockage froid est recommandé avant l'implantation. Cette première version
 utilise le système vanilla de pourrissement avec une durée de `6` jours.
+
+
+## Catégorie de stockage
+
+Depuis `0.1.31-dev`, les larves ne sont plus classées dans les produits
+manufacturés.
+
+Elles apparaissent dans :
+
+```text
+ressources brutes
+    ↓
+produits biologiques Goa'uld
+```
+
+Cette catégorie est volontairement distincte des aliments crus.

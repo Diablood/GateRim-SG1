@@ -204,3 +204,16 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 5. Stocke une autre larve dans une pièce froide.
 6. Compare la progression de la détérioration.
 7. Utilise une larve fraîche pour l'implantation médicale.
+
+
+## Stocker une larve dans la catégorie biologique
+
+Dans les filtres d'une zone de stockage, cherche :
+
+```text
+ressources brutes
+    ↓
+produits biologiques Goa'uld
+```
+
+Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.

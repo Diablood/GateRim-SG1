@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.31-dev
+- Add the custom non-food `SG1_GoauldBiologicalProducts` storage category.
+- Nest Goa'uld biological products under vanilla `ResourcesRaw`.
+- Move `SG1_PrimtaLarva` out of `Manufactured`.
+- Keep the living larva outside vanilla raw-food categories such as `AnimalProductRaw`.
+- Add a final object-category audit TODO.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.30-dev
 - Make physical `SG1_PrimtaLarva` items perishable.
 - Add vanilla `CompProperties_Rottable` to Prim'ta larvae.
