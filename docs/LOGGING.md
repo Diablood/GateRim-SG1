@@ -206,3 +206,13 @@ Jaffa Prim'ta implantation surgery completed for <pawn> using physical Prim'ta l
 ```
 
 Normal bill execution should consume one `SG1_PrimtaLarva`.
+
+
+## Jaffa puberty-dependency diagnostics
+
+`0.1.34-dev` adds dependency lifecycle logs:
+
+```text
+Started Jaffa Prim'ta dependency for <pawn> at biological age <age>.
+Removed Jaffa Prim'ta dependency from <pawn>.
+```

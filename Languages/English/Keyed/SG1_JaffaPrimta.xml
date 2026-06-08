@@ -2,4 +2,6 @@
 <LanguageData>
     <GR_JaffaPrimtaImplantation_Success>{0} now carries an implanted Prim'ta symbiote.</GR_JaffaPrimtaImplantation_Success>
     <GR_JaffaPrimtaImplantation_TooYoung>{0} is too young for Prim'ta implantation. A compatible Jaffa must be at least {1} biological years old.</GR_JaffaPrimtaImplantation_TooYoung>
+    <GR_JaffaPrimtaDependency_Started>{0} has reached puberty without a Prim'ta. Their immune system is beginning to fail. Implant a Prim'ta before the deficiency worsens.</GR_JaffaPrimtaDependency_Started>
+    <GR_JaffaPrimtaDependency_Relieved>{0}'s Prim'ta deficiency has been relieved.</GR_JaffaPrimtaDependency_Relieved>
 </LanguageData>

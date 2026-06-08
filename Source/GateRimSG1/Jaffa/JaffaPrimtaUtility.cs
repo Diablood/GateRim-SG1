@@ -13,6 +13,9 @@ namespace GateRimSG1.Jaffa
     public static class JaffaPrimtaUtility
     {
         public const int MinimumPrimtaImplantationBiologicalAge = 10;
+        public const int MinimumPrimtaDependencyBiologicalAge = 12;
+        public const float PrimtaDependencySeverityPerDay = 0.1f;
+        public const float MaximumPrimtaDependencySeverity = 1f;
 
         public static bool IsCompatibleJaffa(Pawn pawn)
         {
@@ -35,6 +38,65 @@ namespace GateRimSG1.Jaffa
             return IsCompatibleJaffa(pawn)
                 && MeetsPrimtaImplantationAge(pawn)
                 && !HasPrimta(pawn);
+        }
+
+        public static bool ShouldHavePrimtaDependency(Pawn pawn)
+        {
+            return IsCompatibleJaffa(pawn)
+                && pawn?.ageTracker != null
+                && pawn.ageTracker.AgeBiologicalYears
+                    >= MinimumPrimtaDependencyBiologicalAge
+                && !HasPrimta(pawn);
+        }
+
+        public static Hediff GetPrimtaDependency(Pawn pawn)
+        {
+            if (pawn?.health?.hediffSet?.hediffs == null)
+            {
+                return null;
+            }
+
+            for (int index = 0; index < pawn.health.hediffSet.hediffs.Count; index++)
+            {
+                Hediff hediff = pawn.health.hediffSet.hediffs[index];
+
+                if (hediff.def == GR_DefOf.SG1_JaffaPrimtaDependency)
+                {
+                    return hediff;
+                }
+            }
+
+            return null;
+        }
+
+        public static bool RemovePrimtaDependency(
+            Pawn pawn,
+            bool showMessage)
+        {
+            Hediff dependency = GetPrimtaDependency(pawn);
+
+            if (dependency == null)
+            {
+                return false;
+            }
+
+            pawn.health.RemoveHediff(dependency);
+
+            GR_Log.Message(
+                $"Removed Jaffa Prim'ta dependency from "
+                + $"{PawnDebugLabel(pawn)}.");
+
+            if (showMessage)
+            {
+                Messages.Message(
+                    "GR_JaffaPrimtaDependency_Relieved".Translate(
+                        pawn.LabelShortCap),
+                    pawn,
+                    MessageTypeDefOf.PositiveEvent,
+                    historical: true);
+            }
+
+            return true;
         }
 
         public static bool HasPrimta(Pawn pawn)

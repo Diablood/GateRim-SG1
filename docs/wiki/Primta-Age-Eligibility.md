@@ -39,3 +39,9 @@ urgence médicale
     ↓
 implantation ou traitement à la trétonine
 ```
+
+
+## Dépendance à partir de 12 ans
+
+Depuis `0.1.34-dev`, un Jaffa compatible âgé de `12` ans ou plus sans Prim'ta
+développe une [dépendance pubertaire](Primta-Puberty-Dependency) progressive.

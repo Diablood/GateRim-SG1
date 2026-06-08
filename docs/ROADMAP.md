@@ -331,6 +331,23 @@
 - [ ] Validate successful surgery, duplicate guard and save persistence
 - [ ] Publish the updated player wiki
 
+## 0.1.34-dev — Add Jaffa puberty dependency prototype
+- [x] Add `SG1_JaffaPrimtaDependency`
+- [x] Add `GameComponent_JaffaPrimtaDependency`
+- [x] Start dependency from `12` biological years
+- [x] Scan spawned pawns on active maps every in-game hour
+- [x] Increase severity by `0.1` per in-game day
+- [x] Add four progressive immunity and recovery stages
+- [x] Remove dependency immediately when `SG1_JaffaPrimta` is attached
+- [x] Add bilingual messages, logs, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm no dependency at age `11`
+- [ ] Confirm dependency starts at age `12`
+- [ ] Confirm severity progression and stage modifiers
+- [ ] Confirm save/reload persistence
+- [ ] Confirm implantation removes the dependency immediately
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -350,7 +367,10 @@
 - [ ] Evaluate nutrition-value-based balancing
 - [x] Add first Prim'ta implantation age eligibility check
 - [ ] Add formal Prim'ta age ceremony flow
-- [ ] Add puberty dependency without Prim'ta or tretonin
+- [x] Add first puberty dependency without Prim'ta
+- [ ] Add tretonin substitution
+- [ ] Extend dependency progression to caravans and world pawns
+- [ ] Add direct lethal consequences if needed
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation
 - [ ] Add richer tactical priorities for autonomous symbiotes
@@ -399,3 +419,10 @@
 - [ ] Avoid categories that create unintended recipe, storage or trade eligibility
 - [ ] Create custom trees only when they improve player usability
 - [ ] Harmonize English/French labels, storage filters and wiki documentation
+
+
+## Future Prim'ta cultural thoughts
+- [ ] Add a light `awaiting Prim'ta` thought from age `10`
+- [ ] Add a temporary `received Prim'ta` thought after first implantation
+- [ ] Differentiate loyalist, traditional and Free Jaffa reactions later
+- [ ] Integrate faction and optional Ideology context when available

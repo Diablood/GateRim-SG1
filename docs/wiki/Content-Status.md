@@ -49,3 +49,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Catégorie biologique Goa'uld | Filtre de stockage non alimentaire | 0.1.31-dev |
 
 | Âge minimal du Prim'ta | Seuil biologique de 10 ans | 0.1.33-dev |
+
+| Dépendance pubertaire au Prim'ta | Déficience progressive dès 12 ans sans larve | 0.1.34-dev |

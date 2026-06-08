@@ -12,6 +12,10 @@ namespace GateRimSG1.Jaffa
         {
             base.CompPostPostAdd(dinfo);
 
+            JaffaPrimtaUtility.RemovePrimtaDependency(
+                Pawn,
+                showMessage: true);
+
             GR_Log.Message(
                 $"Attached Jaffa Prim'ta symbiote to "
                 + $"{JaffaPrimtaUtility.PawnDebugLabel(Pawn)}.");

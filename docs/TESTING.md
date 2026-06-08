@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.33.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.34.0 loaded.
    ```
 
 
@@ -455,3 +455,19 @@ Negative checks:
 8. Confirm the duplicate-operation guard still works.
 9. Save and reload.
 10. Confirm persistence.
+
+
+## Jaffa puberty dependency prototype
+
+1. Build with `build.cmd`.
+2. Spawn a compatible Jaffa aged `11` without Prim'ta.
+3. Wait at least one in-game hour and confirm no dependency appears.
+4. Spawn a compatible Jaffa aged `12` without Prim'ta.
+5. Wait up to one in-game hour.
+6. Confirm `Prim'ta deficiency` appears.
+7. Accelerate time and confirm progressive severity stages.
+8. Confirm immunity and healing modifiers worsen.
+9. Save and reload during progression.
+10. Confirm severity persists.
+11. Implant a physical larva with the existing medical procedure.
+12. Confirm the dependency disappears immediately.

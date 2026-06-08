@@ -15,6 +15,7 @@ namespace GateRimSG1
         public static GeneDef SG1_JaffaPouchPotential;
         public static GeneDef SG1_JaffaSymbioteCompatibility;
         public static HediffDef SG1_JaffaPrimta;
+        public static HediffDef SG1_JaffaPrimtaDependency;
         public static ThingDef SG1_PrimtaLarva;
 
         static GR_DefOf()

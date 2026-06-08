@@ -234,3 +234,14 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 3. Génère un Jaffa compatible âgé d'au moins `10` ans.
 4. Vérifie que l'opération apparaît.
 5. Effectue ensuite la chirurgie normale avec une larve et un médicament.
+
+
+## Vérifier la dépendance pubertaire au Prim'ta
+
+1. Génère un Jaffa compatible de `11` ans sans Prim'ta.
+2. Attends au moins une heure de jeu et vérifie l'absence de déficience.
+3. Génère un Jaffa compatible de `12` ans sans Prim'ta.
+4. Attends au maximum une heure de jeu.
+5. Vérifie que `déficience liée à l'absence de Prim'ta` apparaît.
+6. Accélère le temps pour observer son aggravation.
+7. Implanter une larve et vérifie la disparition immédiate de la déficience.

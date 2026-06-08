@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaPrimtaDependency.label>déficience liée à l'absence de Prim'ta</SG1_JaffaPrimtaDependency.label>
+    <SG1_JaffaPrimtaDependency.description>Ce Jaffa a atteint la puberté sans recevoir de Prim'ta. L'absence d'un symbiote Goa'uld immature affaiblit progressivement son système immunitaire et sa récupération. L'implantation d'un Prim'ta retire cette déficience. La substitution par trétonine n'est pas encore implémentée.</SG1_JaffaPrimtaDependency.description>
+    <SG1_JaffaPrimtaDependency.stages.0.label>déclin immunitaire précoce</SG1_JaffaPrimtaDependency.stages.0.label>
+    <SG1_JaffaPrimtaDependency.stages.1.label>déclin immunitaire modéré</SG1_JaffaPrimtaDependency.stages.1.label>
+    <SG1_JaffaPrimtaDependency.stages.2.label>déclin immunitaire avancé</SG1_JaffaPrimtaDependency.stages.2.label>
+    <SG1_JaffaPrimtaDependency.stages.3.label>déclin immunitaire critique</SG1_JaffaPrimtaDependency.stages.3.label>
+</LanguageData>

@@ -130,3 +130,13 @@ The operation is hidden for younger Jaffa. The worker performs the same check
 again during execution as a defensive safeguard.
 
 Puberty dependency and tretonin remain future milestones.
+
+
+## 0.1.34-dev puberty dependency relief
+
+From `12` biological years onward, compatible Jaffa without Prim'ta receive a
+progressive deficiency Hediff.
+
+Successful implantation removes that deficiency immediately.
+
+Tretonin substitution and cultural thoughts remain future milestones.

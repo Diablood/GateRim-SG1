@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.34-dev
+- Add the progressive `SG1_JaffaPrimtaDependency` Hediff.
+- Add `GameComponent_JaffaPrimtaDependency`.
+- Start biological dependency at `12` biological years for compatible Jaffa without Prim'ta.
+- Increase deficiency severity by `0.1` per in-game day.
+- Add four progressive immune and recovery stages.
+- Remove dependency immediately after successful Prim'ta implantation.
+- Add bilingual messages, logs, technical documentation and player-wiki drafts.
+
 ## 0.1.33-dev
 - Add a `10` biological-year minimum age for Jaffa Prim'ta implantation.
 - Centralize age eligibility in `JaffaPrimtaUtility`.

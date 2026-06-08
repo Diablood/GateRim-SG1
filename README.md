@@ -14,23 +14,23 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.33-dev — Add Prim'ta implantation age eligibility prototype
+### 0.1.34-dev — Add Jaffa puberty dependency prototype
 
-Jaffa Prim'ta implantation now requires:
+Compatible Jaffa aged `12` biological years or older now receive a progressive
+immune deficiency while they remain without an implanted Prim'ta:
 
 ```text
-compatible inherited Jaffa lineage
+age 12+ without Prim'ta
     ↓
-at least 10 biological years
+progressive immune decline
     ↓
-one physical Prim'ta larva + one medicine
+implant physical Prim'ta larva
+    ↓
+dependency removed immediately
 ```
 
-The operation is hidden for younger Jaffa and the surgery worker repeats the
-age check defensively during execution.
-
-Puberty dependency, the formal age ceremony and tretonin remain future
-milestones.
+The first prototype scans spawned pawns on active maps. Tretonin substitution,
+cultural thoughts and the formal ceremony remain future milestones.
 
 ## First playable milestone
 

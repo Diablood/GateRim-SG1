@@ -201,3 +201,12 @@ biologiques.
 
 Ce seuil représente une première approximation jouable de l'âge de Prata.
 La dépendance progressive liée à la puberté sera ajoutée ultérieurement.
+
+
+## Que se passe-t-il si un Jaffa atteint la puberté sans Prim'ta ?
+
+Depuis `0.1.34-dev`, un Jaffa compatible âgé de `12` ans ou plus sans Prim'ta
+développe une déficience immunitaire progressive.
+
+Une implantation réussie retire immédiatement ce malus. La trétonine sera
+ajoutée ultérieurement comme traitement de substitution.
