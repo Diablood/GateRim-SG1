@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.35-dev
+- Add the situational `SG1_AwaitingPrimta` thought.
+- Apply a light `-1` mood effect to compatible Jaffa aged `10+` without Prim'ta.
+- Add the temporary `SG1_ReceivedPrimta` memory.
+- Grant `+3` mood for `5` days after the first successful implantation.
+- Add `GameComponent_JaffaPrimtaCulturalThoughts`.
+- Persist first-implantation records and prevent repeated bonuses after reimplantation.
+- Keep cultural mood separate from medical dependency.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.34-dev
 - Add the progressive `SG1_JaffaPrimtaDependency` Hediff.
 - Add `GameComponent_JaffaPrimtaDependency`.

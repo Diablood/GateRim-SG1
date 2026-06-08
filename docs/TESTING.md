@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.34.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.35.0 loaded.
    ```
 
 
@@ -471,3 +471,21 @@ Negative checks:
 10. Confirm severity persists.
 11. Implant a physical larva with the existing medical procedure.
 12. Confirm the dependency disappears immediately.
+
+
+## Jaffa Prim'ta cultural thoughts
+
+1. Build with `build.cmd`.
+2. Spawn a compatible Jaffa aged `9` without Prim'ta.
+3. Confirm `awaiting Prim'ta` is absent.
+4. Spawn a compatible Jaffa aged `10` without Prim'ta.
+5. Confirm `awaiting Prim'ta` appears with mood `-1`.
+6. Implant a physical larva with the existing surgery.
+7. Confirm `awaiting Prim'ta` disappears.
+8. Confirm `received Prim'ta` appears with mood `+3`.
+9. Remove the Prim'ta in developer mode.
+10. Confirm `awaiting Prim'ta` returns.
+11. Save and reload.
+12. Reimplant a larva.
+13. Confirm the `received Prim'ta` memory is not granted again.
+14. Confirm the puberty dependency remains separate and still works from age `12`.

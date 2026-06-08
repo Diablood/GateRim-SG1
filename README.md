@@ -14,23 +14,22 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.34-dev — Add Jaffa puberty dependency prototype
+### 0.1.35-dev — Add Jaffa Prim'ta cultural thoughts
 
-Compatible Jaffa aged `12` biological years or older now receive a progressive
-immune deficiency while they remain without an implanted Prim'ta:
+The first lightweight cultural mood layer is now available:
 
 ```text
-age 12+ without Prim'ta
+compatible Jaffa aged 10+ without Prim'ta
     ↓
-progressive immune decline
+awaiting Prim'ta: -1 mood
+
+first successful implantation
     ↓
-implant physical Prim'ta larva
-    ↓
-dependency removed immediately
+received Prim'ta: +3 mood for 5 days
 ```
 
-The first prototype scans spawned pawns on active maps. Tretonin substitution,
-cultural thoughts and the formal ceremony remain future milestones.
+The positive memory is granted only once per pawn, even after removal and
+reimplantation. Biological dependency remains a separate health mechanic.
 
 ## First playable milestone
 

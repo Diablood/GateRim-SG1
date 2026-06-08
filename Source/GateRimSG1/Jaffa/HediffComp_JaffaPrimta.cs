@@ -16,6 +16,10 @@ namespace GateRimSG1.Jaffa
                 Pawn,
                 showMessage: true);
 
+            Current.Game
+                ?.GetComponent<GameComponent_JaffaPrimtaCulturalThoughts>()
+                ?.TryGrantReceivedPrimtaThought(Pawn);
+
             GR_Log.Message(
                 $"Attached Jaffa Prim'ta symbiote to "
                 + $"{JaffaPrimtaUtility.PawnDebugLabel(Pawn)}.");

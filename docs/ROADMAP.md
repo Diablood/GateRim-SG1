@@ -348,6 +348,25 @@
 - [ ] Confirm implantation removes the dependency immediately
 - [ ] Publish the updated player wiki
 
+## 0.1.35-dev — Add Jaffa Prim'ta cultural thoughts
+- [x] Add `SG1_AwaitingPrimta`
+- [x] Add `ThoughtWorker_AwaitingPrimta`
+- [x] Apply a situational `-1` mood effect from age `10` without Prim'ta
+- [x] Add the temporary `SG1_ReceivedPrimta` memory
+- [x] Grant `+3` mood for `5` days after the first implantation
+- [x] Add `GameComponent_JaffaPrimtaCulturalThoughts`
+- [x] Persist the first-implantation registry
+- [x] Prevent repeated bonuses after removal and reimplantation
+- [x] Keep cultural mood separate from medical dependency
+- [x] Add French text, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm waiting thought at age `10+`
+- [ ] Confirm no waiting thought at age `9`
+- [ ] Confirm first-implantation memory
+- [ ] Confirm removal and reimplantation do not repeat the memory
+- [ ] Confirm save/reload persistence of the registry
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -421,8 +440,8 @@
 - [ ] Harmonize English/French labels, storage filters and wiki documentation
 
 
-## Future Prim'ta cultural thoughts
-- [ ] Add a light `awaiting Prim'ta` thought from age `10`
-- [ ] Add a temporary `received Prim'ta` thought after first implantation
+## Future Prim'ta cultural-thought refinements
+- [x] Add a light `awaiting Prim'ta` thought from age `10`
+- [x] Add a temporary `received Prim'ta` thought after first implantation
 - [ ] Differentiate loyalist, traditional and Free Jaffa reactions later
 - [ ] Integrate faction and optional Ideology context when available

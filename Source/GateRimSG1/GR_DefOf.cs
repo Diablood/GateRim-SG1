@@ -17,6 +17,8 @@ namespace GateRimSG1
         public static HediffDef SG1_JaffaPrimta;
         public static HediffDef SG1_JaffaPrimtaDependency;
         public static ThingDef SG1_PrimtaLarva;
+        public static ThoughtDef SG1_AwaitingPrimta;
+        public static ThoughtDef SG1_ReceivedPrimta;
 
         static GR_DefOf()
         {

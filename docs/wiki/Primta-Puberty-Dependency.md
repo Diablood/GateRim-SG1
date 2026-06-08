@@ -52,3 +52,9 @@ mort directe
 pensées culturelles
 cérémonie formelle
 ```
+
+
+## Pensées d'humeur séparées
+
+Depuis `0.1.35-dev`, les [pensées culturelles](Primta-Cultural-Thoughts) sont
+gérées séparément de cette déficience médicale.

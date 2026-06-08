@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_AwaitingPrimta.stages.0.label>attend son Prim'ta</SG1_AwaitingPrimta.stages.0.label>
+    <SG1_AwaitingPrimta.stages.0.description>Ce Jaffa a atteint l'âge traditionnel pour recevoir un Prim'ta, mais n'a pas encore subi l'implantation.</SG1_AwaitingPrimta.stages.0.description>
+    <SG1_ReceivedPrimta.stages.0.label>a reçu son Prim'ta</SG1_ReceivedPrimta.stages.0.label>
+    <SG1_ReceivedPrimta.stages.0.description>Ce Jaffa a reçu un Prim'ta et accompli un important rite de passage.</SG1_ReceivedPrimta.stages.0.description>
+</LanguageData>

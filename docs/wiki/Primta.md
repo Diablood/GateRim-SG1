@@ -5,7 +5,8 @@
 > Procédure d'implantation : 0.1.26-dev  
 > Larve physique : 0.1.27-dev  
 > Âge minimal d'implantation : 0.1.33-dev  
-> Dépendance pubertaire : 0.1.34-dev
+> Dépendance pubertaire : 0.1.34-dev  
+> Pensées culturelles : 0.1.35-dev
 
 ## Présentation
 
@@ -69,3 +70,12 @@ Consulte [Âge requis pour le Prim'ta](Primta-Age-Eligibility).
 
 À partir de `12` ans biologiques, un Jaffa compatible sans Prim'ta subit une
 [déficience progressive](Primta-Puberty-Dependency).
+
+
+## Pensées culturelles
+
+Depuis `0.1.35-dev`, les Jaffa disposent de premières
+[pensées culturelles liées au Prim'ta](Primta-Cultural-Thoughts).
+
+Un Jaffa compatible âgé de `10` ans ou plus sans Prim'ta reçoit un léger malus.
+Sa première implantation lui accorde un bonus temporaire.

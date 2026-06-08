@@ -216,3 +216,14 @@ Normal bill execution should consume one `SG1_PrimtaLarva`.
 Started Jaffa Prim'ta dependency for <pawn> at biological age <age>.
 Removed Jaffa Prim'ta dependency from <pawn>.
 ```
+
+
+## Jaffa Prim'ta cultural-thought diagnostics
+
+`0.1.35-dev` logs the first rite-of-passage memory:
+
+```text
+Granted first Prim'ta cultural memory to <pawn>.
+```
+
+The log appears only once per pawn, even after removal and reimplantation.

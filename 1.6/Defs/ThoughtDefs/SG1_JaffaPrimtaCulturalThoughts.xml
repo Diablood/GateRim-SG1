@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        First lightweight cultural-thought prototype.
+
+        These thoughts represent social expectation and a rite of passage.
+        They are intentionally separate from the medical Prim'ta dependency.
+        Faction and Ideology-specific variations remain future work.
+    -->
+    <ThoughtDef>
+        <defName>SG1_AwaitingPrimta</defName>
+        <thoughtClass>Thought_Situational</thoughtClass>
+        <workerClass>GateRimSG1.Jaffa.ThoughtWorker_AwaitingPrimta</workerClass>
+        <stages>
+            <li>
+                <label>awaiting Prim'ta</label>
+                <description>This Jaffa has reached the traditional age for receiving a Prim'ta but has not yet undergone implantation.</description>
+                <baseMoodEffect>-1</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>SG1_ReceivedPrimta</defName>
+        <thoughtClass>Thought_Memory</thoughtClass>
+        <durationDays>5</durationDays>
+        <stackLimit>1</stackLimit>
+        <stages>
+            <li>
+                <label>received Prim'ta</label>
+                <description>This Jaffa has received a Prim'ta and completed an important rite of passage.</description>
+                <baseMoodEffect>3</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+</Defs>

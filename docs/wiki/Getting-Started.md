@@ -245,3 +245,15 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 5. Vérifie que `déficience liée à l'absence de Prim'ta` apparaît.
 6. Accélère le temps pour observer son aggravation.
 7. Implanter une larve et vérifie la disparition immédiate de la déficience.
+
+
+## Vérifier les pensées culturelles du Prim'ta
+
+1. Génère un Jaffa compatible âgé de `9` ans sans Prim'ta.
+2. Vérifie l'absence de `attend son Prim'ta`.
+3. Génère un Jaffa compatible âgé de `10` ans sans Prim'ta.
+4. Vérifie la présence de `attend son Prim'ta` avec un effet de `-1`.
+5. Implanter une larve.
+6. Vérifie la disparition du malus et l'apparition de `a reçu son Prim'ta`.
+7. Retire puis réimplante une larve.
+8. Vérifie que le bonus de rite de passage n'est pas accordé une seconde fois.
