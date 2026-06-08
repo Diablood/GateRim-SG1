@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.35.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.36.0 loaded.
    ```
 
 
@@ -489,3 +489,23 @@ Negative checks:
 12. Reimplant a larva.
 13. Confirm the `received Prim'ta` memory is not granted again.
 14. Confirm the puberty dependency remains separate and still works from age `12`.
+
+
+## Jaffa tretonin substitution prototype
+
+1. Build with `build.cmd`.
+2. Spawn a compatible Jaffa aged `12+` without Prim'ta.
+3. Wait for `Prim'ta deficiency`.
+4. Spawn one `tretonin dose`.
+5. Schedule `administer tretonin` from the health tab.
+6. Confirm the dose is consumed.
+7. Confirm the dependency disappears immediately.
+8. Confirm `tretonin substitution` appears with remaining time.
+9. Save and reload.
+10. Confirm remaining duration persistence.
+11. Let one day expire.
+12. Confirm substitution disappears.
+13. Wait for the next hourly dependency scan.
+14. Confirm dependency returns.
+15. Confirm Jaffa with implanted Prim'ta cannot receive tretonin.
+16. Confirm waiting-thought behavior remains separate.

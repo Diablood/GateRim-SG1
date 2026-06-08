@@ -19,6 +19,8 @@ namespace GateRimSG1
         public static ThingDef SG1_PrimtaLarva;
         public static ThoughtDef SG1_AwaitingPrimta;
         public static ThoughtDef SG1_ReceivedPrimta;
+        public static ThingDef SG1_TretoninDose;
+        public static HediffDef SG1_TretoninSubstitution;
 
         static GR_DefOf()
         {

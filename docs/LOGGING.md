@@ -227,3 +227,15 @@ Granted first Prim'ta cultural memory to <pawn>.
 ```
 
 The log appears only once per pawn, even after removal and reimplantation.
+
+
+## Tretonin-substitution diagnostics
+
+`0.1.36-dev` adds:
+
+```text
+Started tretonin substitution for <pawn>.
+Loaded tretonin substitution for <pawn>.
+Ended tretonin substitution for <pawn>.
+Tretonin dose administered to <pawn> by <pawn>.
+```

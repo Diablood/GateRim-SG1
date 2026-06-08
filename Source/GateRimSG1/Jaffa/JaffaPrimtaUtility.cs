@@ -46,7 +46,8 @@ namespace GateRimSG1.Jaffa
                 && pawn?.ageTracker != null
                 && pawn.ageTracker.AgeBiologicalYears
                     >= MinimumPrimtaDependencyBiologicalAge
-                && !HasPrimta(pawn);
+                && !HasPrimta(pawn)
+                && !HasTretoninSubstitution(pawn);
         }
 
         public static Hediff GetPrimtaDependency(Pawn pawn)
@@ -97,6 +98,41 @@ namespace GateRimSG1.Jaffa
             }
 
             return true;
+        }
+
+        public static Hediff GetTretoninSubstitution(Pawn pawn)
+        {
+            if (pawn?.health?.hediffSet?.hediffs == null)
+            {
+                return null;
+            }
+
+            for (int index = 0; index < pawn.health.hediffSet.hediffs.Count; index++)
+            {
+                Hediff hediff = pawn.health.hediffSet.hediffs[index];
+
+                if (hediff.def == GR_DefOf.SG1_TretoninSubstitution)
+                {
+                    return hediff;
+                }
+            }
+
+            return null;
+        }
+
+        public static bool HasTretoninSubstitution(Pawn pawn)
+        {
+            return GetTretoninSubstitution(pawn) != null;
+        }
+
+        public static bool IsEligibleForTretoninAdministration(Pawn pawn)
+        {
+            return IsCompatibleJaffa(pawn)
+                && pawn?.ageTracker != null
+                && pawn.ageTracker.AgeBiologicalYears
+                    >= MinimumPrimtaDependencyBiologicalAge
+                && !HasPrimta(pawn)
+                && !HasTretoninSubstitution(pawn);
         }
 
         public static bool HasPrimta(Pawn pawn)

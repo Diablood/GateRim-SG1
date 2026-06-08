@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TretoninDose.label>dose de trétonine</SG1_TretoninDose.label>
+    <SG1_TretoninDose.description>Dose préparée de trétonine. Administrée à un Jaffa compatible ne portant pas de Prim'ta implanté, elle remplace temporairement le soutien immunitaire fourni par le symbiote. Cette dose prototype protège le patient pendant un jour. La production naturelle et les chaînes d'approvisionnement ne sont pas encore implémentées.</SG1_TretoninDose.description>
+</LanguageData>

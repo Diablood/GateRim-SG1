@@ -51,3 +51,22 @@ modded food filters.
 During the final audit, decide whether `SG1_GoauldBiologicalProducts` should
 remain a single category or become the root of a deeper tree for larvae,
 symbiotes, biological components and related treatments.
+
+
+## 0.1.36-dev medical-products category
+
+`SG1_TretoninDose` uses:
+
+```text
+SG1_GoauldMedicalProducts
+```
+
+nested under:
+
+```text
+Manufactured
+```
+
+The dedicated category prevents tretonin from being treated as generic vanilla
+medicine. Re-evaluate this category during the final audit when more Goa'uld
+medical resources exist.

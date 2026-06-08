@@ -257,3 +257,16 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 6. Vérifie la disparition du malus et l'apparition de `a reçu son Prim'ta`.
 7. Retire puis réimplante une larve.
 8. Vérifie que le bonus de rite de passage n'est pas accordé une seconde fois.
+
+
+## Tester la trétonine
+
+1. Génère un Jaffa compatible de `12` ans ou plus sans Prim'ta.
+2. Attends l'apparition de la déficience.
+3. Génère une `dose de trétonine` en mode développeur.
+4. Planifie `administrer de la trétonine` depuis l'onglet Santé.
+5. Vérifie la consommation de la dose.
+6. Vérifie la disparition immédiate de la déficience.
+7. Vérifie l'apparition de `substitution par trétonine`.
+8. Laisse passer un jour.
+9. Vérifie la disparition du traitement puis le retour ultérieur de la déficience.

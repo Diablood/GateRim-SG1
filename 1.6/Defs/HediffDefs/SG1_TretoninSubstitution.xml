@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Temporary immune-system substitution after one physical tretonin dose.
+    -->
+    <HediffDef>
+        <defName>SG1_TretoninSubstitution</defName>
+        <label>tretonin substitution</label>
+        <description>A dose of tretonin is temporarily substituting for the immune-system support normally supplied by an implanted Prim'ta. When the treatment expires, a pubertal Jaffa without Prim'ta becomes vulnerable to progressive deficiency again.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <isBad>false</isBad>
+        <comps>
+            <li Class="GateRimSG1.Jaffa.HediffCompProperties_TretoninSubstitution" />
+            <li Class="HediffCompProperties_Disappears">
+                <disappearsAfterTicks>60000</disappearsAfterTicks>
+                <showRemainingTime>true</showRemainingTime>
+            </li>
+        </comps>
+    </HediffDef>
+</Defs>

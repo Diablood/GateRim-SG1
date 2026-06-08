@@ -58,3 +58,9 @@ cérémonie formelle
 
 Depuis `0.1.35-dev`, les [pensées culturelles](Primta-Cultural-Thoughts) sont
 gérées séparément de cette déficience médicale.
+
+
+## Trétonine
+
+Depuis `0.1.36-dev`, une [dose de trétonine](Tretonin) suspend temporairement
+la déficience pendant `1` jour.

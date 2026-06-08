@@ -219,3 +219,12 @@ plus sans Prim'ta reçoit la pensée `attend son Prim'ta` avec un effet de `-1`.
 
 La première implantation accorde `a reçu son Prim'ta`, un bonus de `+3` pendant
 `5` jours. Ce bonus n'est accordé qu'une seule fois par pawn.
+
+
+## La trétonine est-elle disponible ?
+
+Oui, sous forme de prototype depuis `0.1.36-dev`.
+
+Une `dose de trétonine` peut être administrée à un Jaffa pubère sans Prim'ta.
+Elle suspend sa déficience pendant `1` jour. La production naturelle sera
+ajoutée ultérieurement.

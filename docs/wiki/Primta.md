@@ -6,7 +6,8 @@
 > Larve physique : 0.1.27-dev  
 > Âge minimal d'implantation : 0.1.33-dev  
 > Dépendance pubertaire : 0.1.34-dev  
-> Pensées culturelles : 0.1.35-dev
+> Pensées culturelles : 0.1.35-dev  
+> Trétonine : 0.1.36-dev
 
 ## Présentation
 
@@ -79,3 +80,9 @@ Depuis `0.1.35-dev`, les Jaffa disposent de premières
 
 Un Jaffa compatible âgé de `10` ans ou plus sans Prim'ta reçoit un léger malus.
 Sa première implantation lui accorde un bonus temporaire.
+
+
+## Alternative temporaire : trétonine
+
+Depuis `0.1.36-dev`, la [trétonine](Tretonin) peut suspendre temporairement la
+déficience d'un Jaffa pubère sans Prim'ta.

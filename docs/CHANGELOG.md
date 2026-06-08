@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.36-dev
+- Add the physical `SG1_TretoninDose` item.
+- Add the dedicated `SG1_GoauldMedicalProducts` category.
+- Add the `SG1_AdministerTretonin` health-tab operation.
+- Add the temporary `SG1_TretoninSubstitution` Hediff.
+- Suppress Jaffa puberty dependency for one day after administration.
+- Remove existing deficiency immediately when tretonin is administered.
+- Keep tretonin outside vanilla generic medicine.
+- Add bilingual text, temporary texture, technical documentation and player-wiki drafts.
+
 ## 0.1.35-dev
 - Add the situational `SG1_AwaitingPrimta` thought.
 - Apply a light `-1` mood effect to compatible Jaffa aged `10+` without Prim'ta.

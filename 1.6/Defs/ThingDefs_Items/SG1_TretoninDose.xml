@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        First physical tretonin-dose prototype.
+
+        Acquisition remains developer-mode only in 0.1.36-dev.
+    -->
+    <ThingDef ParentName="ResourceBase">
+        <defName>SG1_TretoninDose</defName>
+        <label>tretonin dose</label>
+        <description>A prepared dose of tretonin. Administered to a compatible Jaffa without an implanted Prim'ta, it temporarily substitutes for the symbiote's immune-system support. This prototype dose protects the patient for one day. Natural production and supply chains are not implemented yet.</description>
+        <graphicData>
+            <texPath>Things/Item/SG1_TretoninDose</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.65,0.65)</drawSize>
+        </graphicData>
+        <stackLimit>25</stackLimit>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <thingCategories>
+            <li>SG1_GoauldMedicalProducts</li>
+        </thingCategories>
+        <statBases>
+            <MarketValue>45</MarketValue>
+            <Mass>0.02</Mass>
+        </statBases>
+        <tradeability>Sellable</tradeability>
+    </ThingDef>
+</Defs>

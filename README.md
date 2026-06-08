@@ -14,22 +14,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.35-dev — Add Jaffa Prim'ta cultural thoughts
+### 0.1.36-dev — Add tretonin substitution prototype
 
-The first lightweight cultural mood layer is now available:
+Pubertal Jaffa without an implanted Prim'ta can now receive a temporary
+tretonin treatment:
 
 ```text
-compatible Jaffa aged 10+ without Prim'ta
+physical tretonin dose
+    ↓ health-tab operation
+one day of immune-system substitution
     ↓
-awaiting Prim'ta: -1 mood
-
-first successful implantation
-    ↓
-received Prim'ta: +3 mood for 5 days
+Prim'ta dependency suppressed temporarily
 ```
 
-The positive memory is granted only once per pawn, even after removal and
-reimplantation. Biological dependency remains a separate health mechanic.
+The dose is a dedicated physical item. Natural production, automated treatment
+and Free Jaffa supply chains remain future milestones.
 
 ## First playable milestone
 

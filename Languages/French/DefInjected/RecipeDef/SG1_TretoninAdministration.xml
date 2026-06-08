@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_AdministerTretonin.label>administrer de la trétonine</SG1_AdministerTretonin.label>
+    <SG1_AdministerTretonin.description>Administre une dose physique de trétonine à un Jaffa compatible âgé d'au moins 12 ans biologiques et ne portant pas de Prim'ta implanté. Ce traitement temporaire suspend la déficience liée à l'absence de Prim'ta pendant un jour.</SG1_AdministerTretonin.description>
+    <SG1_AdministerTretonin.jobString>Administration de trétonine en cours.</SG1_AdministerTretonin.jobString>
+</LanguageData>

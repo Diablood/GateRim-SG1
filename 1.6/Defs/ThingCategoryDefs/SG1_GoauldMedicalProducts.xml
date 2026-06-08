@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Dedicated non-standard pharmaceutical category.
+
+        Tretonin is intentionally not added to vanilla Medicine so colonists do
+        not consume it as a generic treatment ingredient.
+    -->
+    <ThingCategoryDef>
+        <defName>SG1_GoauldMedicalProducts</defName>
+        <label>Goa'uld medical products</label>
+        <parent>Manufactured</parent>
+    </ThingCategoryDef>
+</Defs>

@@ -19,6 +19,7 @@
 - [Âge requis pour le Prim'ta](Primta-Age-Eligibility)
 - [Dépendance pubertaire](Primta-Puberty-Dependency)
 - [Pensées culturelles du Prim'ta](Primta-Cultural-Thoughts)
+- [Trétonine](Tretonin)
 - [Implantation récente](Recent-Implantation)
 - [Chasse autonome](Autonomous-Hunt)
 - [Implantation forcée](Forced-Implantation)

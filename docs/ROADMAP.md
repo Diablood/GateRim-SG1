@@ -367,6 +367,25 @@
 - [ ] Confirm save/reload persistence of the registry
 - [ ] Publish the updated player wiki
 
+## 0.1.36-dev — Add tretonin substitution prototype
+- [x] Add physical `SG1_TretoninDose`
+- [x] Add dedicated `SG1_GoauldMedicalProducts` storage category
+- [x] Keep tretonin outside vanilla generic medicine
+- [x] Add `SG1_AdministerTretonin`
+- [x] Restrict administration to compatible Jaffa aged `12+` without Prim'ta
+- [x] Add temporary `SG1_TretoninSubstitution`
+- [x] Use vanilla one-day `HediffCompProperties_Disappears`
+- [x] Suppress Prim'ta dependency while substitution is active
+- [x] Remove existing dependency immediately after administration
+- [x] Add bilingual text, temporary texture, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm dose storage and developer spawning
+- [ ] Confirm operation visibility rules
+- [ ] Confirm dose consumption and immediate relief
+- [ ] Confirm remaining-time display and save persistence
+- [ ] Confirm treatment expiry and dependency return
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -387,7 +406,10 @@
 - [x] Add first Prim'ta implantation age eligibility check
 - [ ] Add formal Prim'ta age ceremony flow
 - [x] Add first puberty dependency without Prim'ta
-- [ ] Add tretonin substitution
+- [x] Add first tretonin substitution prototype
+- [ ] Add tretonin acquisition and production
+- [ ] Evaluate automated administration and drug-policy integration
+- [ ] Evaluate tolerance, side effects and faction-specific access
 - [ ] Extend dependency progression to caravans and world pawns
 - [ ] Add direct lethal consequences if needed
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Medical injection bill for the first tretonin-substitution prototype.
+    -->
+    <RecipeDef>
+        <defName>SG1_AdministerTretonin</defName>
+        <label>administer tretonin</label>
+        <description>Administer one physical tretonin dose to a compatible Jaffa aged at least 12 biological years who does not carry an implanted Prim'ta. The temporary treatment suppresses Prim'ta deficiency for one day.</description>
+        <jobString>Administering tretonin.</jobString>
+        <workerClass>GateRimSG1.Jaffa.Recipe_AdministerTretonin</workerClass>
+        <workAmount>200</workAmount>
+        <effectWorking>Surgery</effectWorking>
+        <soundWorking>Recipe_Surgery</soundWorking>
+        <workSpeedStat>MedicalOperationSpeed</workSpeedStat>
+        <workSkill>Medicine</workSkill>
+        <workSkillLearnFactor>2</workSkillLearnFactor>
+        <targetsBodyPart>false</targetsBodyPart>
+        <humanlikeOnly>true</humanlikeOnly>
+        <skillRequirements>
+            <Medicine>2</Medicine>
+        </skillRequirements>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>SG1_TretoninDose</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>SG1_TretoninDose</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <recipeUsers>
+            <li>Human</li>
+        </recipeUsers>
+    </RecipeDef>
+</Defs>
