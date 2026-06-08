@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.30-dev
+- Make physical `SG1_PrimtaLarva` items perishable.
+- Add vanilla `CompProperties_Rottable` to Prim'ta larvae.
+- Set larvae to rot after `6` days.
+- Destroy fully rotted larvae.
+- Preserve the existing incubation-to-implantation loop.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.29-dev
 - Require `10` units of raw meat for `SG1_IncubatePrimtaLarva`.
 - Accept the vanilla `MeatRaw` category.

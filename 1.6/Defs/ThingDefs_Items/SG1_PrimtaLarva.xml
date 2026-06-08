@@ -1,17 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-        Physical immature Goa'uld symbiote resource used by Jaffa Prim'ta
-        implantation surgery.
-
-        Natural acquisition, cultivation, storage constraints and maturation
-        remain future milestones. For 0.1.27-dev the item is spawned through
-        developer tools to validate the bill ingredient flow.
-    -->
     <ThingDef ParentName="ResourceBase">
         <defName>SG1_PrimtaLarva</defName>
         <label>Prim'ta larva</label>
-        <description>An immature Goa'uld symbiote intended for implantation into a compatible Jaffa abdominal pouch. This living resource is consumed by the Jaffa Prim'ta implantation procedure. Natural acquisition and maturation systems are not implemented yet.</description>
+        <description>An immature Goa'uld symbiote intended for implantation into a compatible Jaffa abdominal pouch. This living resource is consumed by the Jaffa Prim'ta implantation procedure. It must now be preserved in cold storage: warm conditions cause progressive deterioration and a fully rotted larva is destroyed. Natural acquisition and maturation systems are still early prototypes.</description>
+        <thingClass>ThingWithComps</thingClass>
+        <tickerType>Rare</tickerType>
         <graphicData>
             <texPath>Things/Item/SG1_PrimtaLarva</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -27,5 +21,11 @@
             <Mass>0.1</Mass>
         </statBases>
         <tradeability>Sellable</tradeability>
+        <comps>
+            <li Class="CompProperties_Rottable">
+                <daysToRotStart>6</daysToRotStart>
+                <rotDestroys>true</rotDestroys>
+            </li>
+        </comps>
     </ThingDef>
 </Defs>

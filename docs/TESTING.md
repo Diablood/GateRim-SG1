@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.29.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.30.0 loaded.
    ```
 
 
@@ -389,3 +389,17 @@ Negative checks:
 9. Confirm `10` units of raw meat are consumed.
 10. Confirm one physical `Prim'ta larva` appears.
 11. Complete the existing Jaffa implantation workflow.
+
+
+## Prim'ta larva preservation prototype
+
+1. Build with `build.cmd`.
+2. Produce or spawn one `Prim'ta larva`.
+3. Select the item and confirm rotting/spoilage information appears.
+4. Store one larva at room temperature.
+5. Confirm rot progresses.
+6. Store one larva in a cold room or freezer.
+7. Confirm it is preserved better than the room-temperature larva.
+8. Let a warm larva fully rot.
+9. Confirm it is destroyed.
+10. Implant a fresh larva into a compatible Jaffa and confirm the medical loop still works.

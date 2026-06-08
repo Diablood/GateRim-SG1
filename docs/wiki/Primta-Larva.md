@@ -75,3 +75,19 @@ Depuis `0.1.29-dev`, le [bassin d'incubation](Primta-Incubation) consomme :
 ```
 
 pour produire une larve.
+
+
+## Conservation
+
+Depuis `0.1.30-dev`, les larves de Prim'ta sont périssables.
+
+```text
+stockage chaud
+    ↓
+détérioration progressive
+    ↓
+larve détruite si elle pourrit complètement
+```
+
+Un stockage froid est recommandé avant l'implantation. Cette première version
+utilise le système vanilla de pourrissement avec une durée de `6` jours.

@@ -272,6 +272,21 @@
 - [ ] Validate the full incubation-to-implantation loop
 - [ ] Publish the updated player wiki
 
+## 0.1.30-dev — Add Prim'ta larva preservation prototype
+- [x] Make `SG1_PrimtaLarva` a `ThingWithComps`
+- [x] Add vanilla `CompProperties_Rottable`
+- [x] Set `daysToRotStart` to `6`
+- [x] Destroy fully rotted larvae
+- [x] Preserve the existing incubation and implantation loops
+- [x] Add French translation, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm rotting information appears on the larva
+- [ ] Confirm warm-storage rot progression
+- [ ] Confirm cold storage improves preservation
+- [ ] Confirm fully rotted larvae are destroyed
+- [ ] Confirm implantation still consumes fresh larvae
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -285,7 +300,8 @@
 - [x] Add a physical Prim'ta larva resource
 - [x] Add first Prim'ta larva incubation prototype
 - [x] Add first raw-meat nutrient requirement
-- [ ] Add preservation and temperature constraints
+- [x] Add first vanilla larva preservation prototype
+- [ ] Add dedicated living-symbiote temperature tuning
 - [ ] Evaluate nutrition-value-based balancing
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype

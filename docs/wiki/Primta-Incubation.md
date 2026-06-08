@@ -76,3 +76,10 @@ Les futurs lots ajouteront :
 
 Le bassin est associé à un donneur de travail dédié. Il peut donc être traité
 automatiquement ou priorisé manuellement par un colon éligible.
+
+
+## Après production
+
+Depuis `0.1.30-dev`, les larves produites doivent être conservées correctement.
+Elles se détériorent dans de mauvaises conditions et sont détruites si elles
+pourrissent complètement.

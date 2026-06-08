@@ -33,6 +33,7 @@ larve de Prim'ta
 | Mass | `0.1` |
 | Market value | `35` |
 | Natural acquisition | Prototype incubation basin |
+| Preservation | Vanilla rotting, destroyed after spoilage |
 | Developer spawning | Still available for tests |
 
 The graphic is a temporary placeholder derived from the existing free-symbiote
@@ -110,3 +111,18 @@ The incubation bill now consumes:
 
 This first balancing step replaces free production while keeping the validated
 Handling and Animals `4+` workflow.
+
+
+## 0.1.30-dev preservation prototype
+
+Physical larvae are now perishable.
+
+They use RimWorld's vanilla rotting behavior:
+
+```text
+6 days to rot
+fully rotted larvae are destroyed
+```
+
+Cold storage is therefore recommended before implantation. Dedicated living
+symbiote temperature tuning remains future work.

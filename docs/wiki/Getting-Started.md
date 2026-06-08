@@ -193,3 +193,14 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 7. Vérifie que la viande est consommée.
 8. Vérifie qu'une `larve de Prim'ta` physique apparaît.
 9. Stocke-la ou utilise-la pour une implantation médicale chez un Jaffa.
+
+
+## Conserver une larve de Prim'ta
+
+1. Produis ou génère une `larve de Prim'ta`.
+2. Sélectionne l'objet.
+3. Vérifie que les informations de pourrissement sont visibles.
+4. Stocke une larve à température ambiante.
+5. Stocke une autre larve dans une pièce froide.
+6. Compare la progression de la détérioration.
+7. Utilise une larve fraîche pour l'implantation médicale.

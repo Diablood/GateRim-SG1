@@ -18,7 +18,7 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur la conservation et la température des larves, la cérémonie du Prim'ta selon l'âge et les événements faisant apparaître des symbiotes libres. Une intégration optionnelle avec Ideology est prévue ultérieurement.
+Les prochains lots porteront sur le réglage avancé de température des larves, la cérémonie du Prim'ta selon l'âge et les événements faisant apparaître des symbiotes libres. Une intégration optionnelle avec Ideology est prévue ultérieurement.
 
 ## Liens utiles
 

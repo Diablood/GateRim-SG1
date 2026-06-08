@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.29-dev</modVersion>
+    <modVersion>0.1.30-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -24,6 +24,7 @@ Current development scope:
 - Physical Prim'ta larva resource consumed by implantation surgery
 - Constructible Prim'ta incubation basin and larva-production bill
 - Raw-meat nutrient requirement for Prim'ta larva incubation
+- Vanilla preservation prototype for physical Prim'ta larvae
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -41,7 +42,7 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Prim'ta preservation, refined nutrition, age ceremony, dependency and tretonin planned next
+- Prim'ta refined preservation, temperature tuning, age ceremony, dependency and tretonin planned next
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 
 Biotech is required for xenotype support.

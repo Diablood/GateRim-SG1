@@ -159,3 +159,11 @@ Depuis `0.1.29-dev`, chaque incubation consomme `10` unités de viande crue.
 
 La première version accepte toutes les viandes crues compatibles avec la
 catégorie vanilla correspondante.
+
+
+## Les larves de Prim'ta se conservent-elles indéfiniment ?
+
+Non. Depuis `0.1.30-dev`, elles sont périssables. Elles utilisent le système
+vanilla de pourrissement et sont détruites si elles pourrissent complètement.
+
+Un stockage froid est recommandé.

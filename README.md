@@ -14,21 +14,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.29-dev — Add Prim'ta incubation nutrient requirements
+### 0.1.30-dev — Add Prim'ta larva preservation prototype
 
-The incubation basin no longer produces larvae for free:
+Physical Prim'ta larvae are now perishable through the vanilla rotting system:
 
 ```text
-10 units of raw meat
-    ↓ Handling work with Animals skill 4+
-Prim'ta incubation basin
-    ↓
-one physical Prim'ta larva
+Prim'ta larva
+    ↓ warm storage
+progressive spoilage
+    ↓ fully rotted
+destroyed
 ```
 
-The first balance pass accepts the vanilla `MeatRaw` category and allows mixed
-raw-meat stacks. Temperature, preservation and nutrition-value calculation
-remain future refinements.
+Cold storage is therefore recommended before implantation. This first pass uses
+vanilla `CompProperties_Rottable` with `6` days to rot. Dedicated living-symbiote
+temperature ranges and freezing penalties remain future refinements.
 
 ## First playable milestone
 
