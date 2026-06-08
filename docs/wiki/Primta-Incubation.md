@@ -83,3 +83,10 @@ automatiquement ou priorisé manuellement par un colon éligible.
 Depuis `0.1.30-dev`, les larves produites doivent être conservées correctement.
 Elles se détériorent dans de mauvaises conditions et sont détruites si elles
 pourrissent complètement.
+
+
+## Température après production
+
+Après incubation, consulte [Température des larves](Primta-Temperature).
+
+Une chambre froide limite la détérioration. Les fortes chaleurs l'accélèrent.

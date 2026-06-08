@@ -143,3 +143,21 @@ This custom non-food category is nested under `ResourcesRaw`.
 The larva is deliberately not added to `AnimalProductRaw`, because that vanilla
 branch belongs to raw food and could make the living symbiote eligible for
 cooking recipes or broad modded food filters.
+
+
+## 0.1.32-dev temperature tuning
+
+The vanilla rotting system is now supplemented by a lightweight biological
+temperature layer.
+
+```text
+below 0 °C        → deterioration stopped
+0 °C to 10 °C     → refrigerated storage
+10 °C to 25 °C    → normal deterioration
+25 °C to 40 °C    → ×2 deterioration
+40 °C and above   → ×3 deterioration
+```
+
+The inspection panel displays the current thermal condition and effective rate.
+
+Deep-freezing penalties remain future work.

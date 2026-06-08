@@ -13,6 +13,7 @@
 - [Génétique](Genetics)
 - [Prim'ta](Primta)
 - [Larve de Prim'ta](Primta-Larva)
+- [Température des larves](Primta-Temperature)
 - [Bassin d'incubation du Prim'ta](Primta-Incubation)
 - [Implantation du Prim'ta](Primta-Implantation)
 - [Implantation récente](Recent-Implantation)

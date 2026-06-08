@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_PrimtaLarva_ThermalStatus>Larva temperature: {0}
+Thermal condition: {1}
+Effective deterioration rate: ×{2}</GR_PrimtaLarva_ThermalStatus>
+    <GR_PrimtaLarva_Thermal_Frozen>frozen — deterioration stopped</GR_PrimtaLarva_Thermal_Frozen>
+    <GR_PrimtaLarva_Thermal_Refrigerated>refrigerated — recommended storage</GR_PrimtaLarva_Thermal_Refrigerated>
+    <GR_PrimtaLarva_Thermal_Normal>warm — normal deterioration</GR_PrimtaLarva_Thermal_Normal>
+    <GR_PrimtaLarva_Thermal_Hot>hot — accelerated deterioration</GR_PrimtaLarva_Thermal_Hot>
+    <GR_PrimtaLarva_Thermal_Critical>critical heat — severe deterioration</GR_PrimtaLarva_Thermal_Critical>
+</LanguageData>

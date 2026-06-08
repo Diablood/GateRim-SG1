@@ -14,24 +14,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.31-dev — Add Prim'ta larva biological storage category
+### 0.1.32-dev — Add Prim'ta larva temperature tuning
 
-Physical Prim'ta larvae no longer appear under manufactured goods.
-
-They now use a dedicated non-food category:
+Physical larvae now display a dedicated thermal condition and deteriorate faster
+in high heat:
 
 ```text
-raw resources
-    ↓
-Goa'uld biological products
-    ↓
-Prim'ta larva
+below 0 °C        → stopped
+0 °C to 10 °C     → refrigerated
+10 °C to 25 °C    → normal
+25 °C to 40 °C    → ×2
+40 °C and above   → ×3
 ```
 
-The category is intentionally separate from vanilla raw animal products so the
-living larva does not become a cooking ingredient through broad food filters.
-
-A global object-category audit is documented for the final stabilization phase.
+The implementation supplements vanilla `CompRottable` instead of replacing it.
+Deep-freezing penalties remain future work.
 
 ## First playable milestone
 

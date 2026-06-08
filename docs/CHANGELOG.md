@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.32-dev
+- Add `CompProperties_PrimtaLarvaTemperature`.
+- Add `Comp_PrimtaLarvaTemperature`.
+- Preserve vanilla frozen and refrigerated rotting behavior.
+- Accelerate larva deterioration to `×2` from `25 °C`.
+- Accelerate larva deterioration to `×3` from `40 °C`.
+- Display the current larva temperature, condition and effective deterioration rate.
+- Keep deep-freezing penalties outside this first prototype.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.31-dev
 - Add the custom non-food `SG1_GoauldBiologicalProducts` storage category.
 - Nest Goa'uld biological products under vanilla `ResourcesRaw`.

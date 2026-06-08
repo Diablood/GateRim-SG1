@@ -181,3 +181,14 @@ produits biologiques Goa'uld
 
 Elles ne sont plus rangées avec les produits manufacturés et ne sont pas
 considérées comme des aliments crus.
+
+
+## Quelle température convient aux larves de Prim'ta ?
+
+Une température comprise entre `0 °C` et `10 °C` est recommandée.
+
+La détérioration est normale au-dessus de `10 °C`, doublée à partir de `25 °C`
+et triplée à partir de `40 °C`.
+
+La congélation interrompt provisoirement la détérioration. Les éventuelles
+pénalités liées au gel profond seront étudiées ultérieurement.

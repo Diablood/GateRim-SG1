@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.31.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.32.0 loaded.
    ```
 
 
@@ -420,3 +420,24 @@ Negative checks:
 6. Confirm it no longer appears under `manufactured`.
 7. Confirm it is not presented as raw food or an animal food product.
 8. Confirm hauling, stacking, rotting and Jaffa implantation still work.
+
+
+## Prim'ta larva temperature tuning
+
+1. Build with `build.cmd`.
+2. Spawn or incubate several `Prim'ta larva` items.
+3. Select one larva and confirm the thermal inspection lines appear.
+4. Store larvae below `0 °C`, around `5 °C`, around `20 °C`, above `25 °C`
+   and above `40 °C`.
+5. Confirm the displayed effective rates are respectively approximately:
+   ```text
+   ×0
+   ×0.5
+   ×1
+   ×2
+   ×3
+   ```
+6. Confirm hot larvae deteriorate faster than room-temperature larvae.
+7. Confirm frozen larvae stop deteriorating for this prototype.
+8. Confirm storage category, hauling, stacking, incubation and implantation
+   regressions remain valid.

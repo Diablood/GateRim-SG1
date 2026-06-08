@@ -301,6 +301,22 @@
 - [ ] Validate stacking, rotting and implantation regressions
 - [ ] Publish the updated player wiki
 
+## 0.1.32-dev — Add Prim'ta larva temperature tuning
+- [x] Add `CompProperties_PrimtaLarvaTemperature`
+- [x] Add `Comp_PrimtaLarvaTemperature`
+- [x] Preserve vanilla rotting below `25 °C`
+- [x] Accelerate deterioration to `×2` from `25 °C`
+- [x] Accelerate deterioration to `×3` from `40 °C`
+- [x] Display the thermal condition and effective rate
+- [x] Keep freezing safe for this first pass
+- [x] Add English/French text, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm inspection strings
+- [ ] Confirm frozen, refrigerated, normal, hot and critical bands
+- [ ] Confirm hot deterioration acceleration
+- [ ] Confirm incubation, stacking, storage and implantation regressions
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -315,7 +331,8 @@
 - [x] Add first Prim'ta larva incubation prototype
 - [x] Add first raw-meat nutrient requirement
 - [x] Add first vanilla larva preservation prototype
-- [ ] Add dedicated living-symbiote temperature tuning
+- [x] Add first living-symbiote temperature tuning
+- [ ] Evaluate deep-freezing penalties and specialized containers
 - [ ] Evaluate nutrition-value-based balancing
 - [ ] Add automatic Prim'ta age checks and ceremony flow
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype

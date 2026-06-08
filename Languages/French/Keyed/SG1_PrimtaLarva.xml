@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_PrimtaLarva_ThermalStatus>Température de la larve : {0}
+Condition thermique : {1}
+Vitesse effective de détérioration : ×{2}</GR_PrimtaLarva_ThermalStatus>
+    <GR_PrimtaLarva_Thermal_Frozen>gelée — détérioration interrompue</GR_PrimtaLarva_Thermal_Frozen>
+    <GR_PrimtaLarva_Thermal_Refrigerated>réfrigérée — stockage recommandé</GR_PrimtaLarva_Thermal_Refrigerated>
+    <GR_PrimtaLarva_Thermal_Normal>température élevée — détérioration normale</GR_PrimtaLarva_Thermal_Normal>
+    <GR_PrimtaLarva_Thermal_Hot>chaude — détérioration accélérée</GR_PrimtaLarva_Thermal_Hot>
+    <GR_PrimtaLarva_Thermal_Critical>chaleur critique — détérioration sévère</GR_PrimtaLarva_Thermal_Critical>
+</LanguageData>

@@ -3,7 +3,7 @@
     <ThingDef ParentName="ResourceBase">
         <defName>SG1_PrimtaLarva</defName>
         <label>Prim'ta larva</label>
-        <description>An immature Goa'uld symbiote intended for implantation into a compatible Jaffa abdominal pouch. This living biological resource is stored under Goa'uld biological products rather than manufactured goods or raw food. It is consumed by the Jaffa Prim'ta implantation procedure. Warm conditions cause progressive deterioration and a fully rotted larva is destroyed.</description>
+        <description>An immature Goa'uld symbiote intended for implantation into a compatible Jaffa abdominal pouch. This living biological resource must be preserved carefully. Freezing stops deterioration for now, refrigeration slows it, warm storage causes normal spoilage, and high heat accelerates deterioration. A fully rotted larva is destroyed.</description>
         <thingClass>ThingWithComps</thingClass>
         <tickerType>Rare</tickerType>
         <graphicData>
@@ -22,6 +22,14 @@
         </statBases>
         <tradeability>Sellable</tradeability>
         <comps>
+            <li Class="GateRimSG1.Jaffa.CompProperties_PrimtaLarvaTemperature">
+                <recommendedMinTemperature>0</recommendedMinTemperature>
+                <recommendedMaxTemperature>10</recommendedMaxTemperature>
+                <hotTemperature>25</hotTemperature>
+                <criticalTemperature>40</criticalTemperature>
+                <hotRotRateMultiplier>2</hotRotRateMultiplier>
+                <criticalRotRateMultiplier>3</criticalRotRateMultiplier>
+            </li>
             <li Class="CompProperties_Rottable">
                 <daysToRotStart>6</daysToRotStart>
                 <rotDestroys>true</rotDestroys>

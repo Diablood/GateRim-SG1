@@ -217,3 +217,11 @@ produits biologiques Goa'uld
 ```
 
 Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
+
+
+## Vérifier le réglage thermique d'une larve
+
+1. Sélectionne une `larve de Prim'ta`.
+2. Vérifie les informations thermiques dans son panneau d'inspection.
+3. Compare une pièce gelée, une pièce réfrigérée, une pièce tempérée et une pièce chaude.
+4. Vérifie que les fortes chaleurs accélèrent la détérioration.

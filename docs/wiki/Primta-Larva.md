@@ -107,3 +107,17 @@ produits biologiques Goa'uld
 ```
 
 Cette catégorie est volontairement distincte des aliments crus.
+
+
+## Température détaillée
+
+Depuis `0.1.32-dev`, consulte [Température des larves](Primta-Temperature).
+
+Le stockage chaud accélère désormais la détérioration :
+
+```text
+25 °C et plus  → ×2
+40 °C et plus  → ×3
+```
+
+La congélation interrompt provisoirement la détérioration.
