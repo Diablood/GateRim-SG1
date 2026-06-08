@@ -27,6 +27,7 @@ implanter un Prim'ta jaffa
 | Compétence médicale minimale | `4` |
 | Médicament | `1` unité |
 | [Larve de Prim'ta](Primta-Larva) | `1` unité |
+| Âge biologique minimal | `10` ans |
 | Temps de travail | `900` |
 | Prim'ta déjà présent | Opération indisponible |
 
@@ -62,3 +63,11 @@ Depuis `0.1.27-dev`, l'opération consomme une
 - la cérémonie traditionnelle n'est pas encore représentée ;
 - l'absence prolongée de Prim'ta n'entraîne pas encore de dépendance ;
 - la trétonine n'est pas encore disponible.
+
+
+## Âge minimal
+
+Depuis `0.1.33-dev`, un Jaffa doit avoir au moins `10` ans biologiques pour
+recevoir un Prim'ta.
+
+Consulte [Âge requis pour le Prim'ta](Primta-Age-Eligibility).

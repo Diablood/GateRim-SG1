@@ -225,3 +225,12 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 2. Vérifie les informations thermiques dans son panneau d'inspection.
 3. Compare une pièce gelée, une pièce réfrigérée, une pièce tempérée et une pièce chaude.
 4. Vérifie que les fortes chaleurs accélèrent la détérioration.
+
+
+## Vérifier l'âge requis pour le Prim'ta
+
+1. Génère un Jaffa compatible de moins de `10` ans biologiques.
+2. Vérifie que l'opération `implanter un Prim'ta jaffa` est absente.
+3. Génère un Jaffa compatible âgé d'au moins `10` ans.
+4. Vérifie que l'opération apparaît.
+5. Effectue ensuite la chirurgie normale avec une larve et un médicament.

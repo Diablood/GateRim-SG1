@@ -59,6 +59,7 @@ The operation is unavailable when `SG1_JaffaPrimta` is already present.
 | Medicine skill | `4` |
 | Medicine | `1` unit |
 | Physical Prim'ta larva | `1` unit |
+| Minimum biological age | `10` years |
 | Work amount | `900` |
 | Surgery success factor | `1` |
 | Death chance on failure | `0.005` |
@@ -115,3 +116,17 @@ Jaffa Prim'ta implantation surgery failed for <pawn>.
 11. Confirm the operation no longer appears while Prim'ta is present.
 12. Try a baseliner and confirm the operation is unavailable.
 13. Remove the Hediff in developer mode and confirm the removal log.
+
+
+## 0.1.33-dev age eligibility
+
+The operation now requires the compatible Jaffa patient to be at least:
+
+```text
+10 biological years old
+```
+
+The operation is hidden for younger Jaffa. The worker performs the same check
+again during execution as a defensive safeguard.
+
+Puberty dependency and tretonin remain future milestones.

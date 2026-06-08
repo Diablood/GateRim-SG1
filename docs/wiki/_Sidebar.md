@@ -16,6 +16,7 @@
 - [Température des larves](Primta-Temperature)
 - [Bassin d'incubation du Prim'ta](Primta-Incubation)
 - [Implantation du Prim'ta](Primta-Implantation)
+- [Âge requis pour le Prim'ta](Primta-Age-Eligibility)
 - [Implantation récente](Recent-Implantation)
 - [Chasse autonome](Autonomous-Hunt)
 - [Implantation forcée](Forced-Implantation)

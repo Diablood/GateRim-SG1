@@ -24,8 +24,7 @@ namespace GateRimSG1.Jaffa
 
             Pawn pawn = thing as Pawn;
 
-            return JaffaPrimtaUtility.IsCompatibleJaffa(pawn)
-                && !JaffaPrimtaUtility.HasPrimta(pawn);
+            return JaffaPrimtaUtility.IsEligibleForPrimtaImplantation(pawn);
         }
 
         public override void ApplyOnPawn(
@@ -41,6 +40,26 @@ namespace GateRimSG1.Jaffa
                     $"Skipped Jaffa Prim'ta implantation for "
                     + $"{JaffaPrimtaUtility.PawnDebugLabel(pawn)} "
                     + "because the patient is not a compatible Jaffa.");
+
+                return;
+            }
+
+            if (!JaffaPrimtaUtility.MeetsPrimtaImplantationAge(pawn))
+            {
+                GR_Log.Warning(
+                    $"Skipped Jaffa Prim'ta implantation for "
+                    + $"{JaffaPrimtaUtility.PawnDebugLabel(pawn)} "
+                    + $"because the patient is younger than "
+                    + $"{JaffaPrimtaUtility.MinimumPrimtaImplantationBiologicalAge} "
+                    + "biological years.");
+
+                Messages.Message(
+                    "GR_JaffaPrimtaImplantation_TooYoung".Translate(
+                        pawn.LabelShortCap,
+                        JaffaPrimtaUtility.MinimumPrimtaImplantationBiologicalAge),
+                    pawn,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
 
                 return;
             }

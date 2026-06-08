@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <SG1_ImplantJaffaPrimta.label>implanter un Prim'ta jaffa</SG1_ImplantJaffaPrimta.label>
-    <SG1_ImplantJaffaPrimta.description>Implante une larve physique de symbiote Goa'uld immature dans la poche abdominale d'un Jaffa compatible. L'opération consomme une larve de Prim'ta et un médicament. La cérémonie liée à l'âge, l'obtention naturelle des larves et la dépendance seront introduites ultérieurement.</SG1_ImplantJaffaPrimta.description>
+    <SG1_ImplantJaffaPrimta.description>Implante une larve physique de symbiote Goa'uld immature dans la poche abdominale d'un Jaffa compatible âgé d'au moins 10 ans biologiques. L'opération consomme une larve de Prim'ta et un médicament. La dépendance liée à la puberté, la cérémonie formelle de passage et la trétonine seront introduites ultérieurement.</SG1_ImplantJaffaPrimta.description>
     <SG1_ImplantJaffaPrimta.jobString>Implantation d'une larve de Prim'ta jaffa en cours.</SG1_ImplantJaffaPrimta.jobString>
 </LanguageData>

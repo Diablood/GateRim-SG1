@@ -3,7 +3,8 @@
 > Statut : Prototype  
 > Version d'introduction : 0.1.13-dev  
 > Procédure d'implantation : 0.1.26-dev  
-> Larve physique : 0.1.27-dev
+> Larve physique : 0.1.27-dev  
+> Âge minimal d'implantation : 0.1.33-dev
 
 ## Présentation
 
@@ -53,3 +54,11 @@ est retirée ou remplacée par un traitement.
 Depuis `0.1.27-dev`, la procédure consomme une
 [larve de Prim'ta](Primta-Larva) transportable. L'obtention naturelle de cette
 ressource sera ajoutée ultérieurement.
+
+
+## Âge de Prata
+
+Depuis `0.1.33-dev`, l'implantation est disponible à partir de `10` ans
+biologiques.
+
+Consulte [Âge requis pour le Prim'ta](Primta-Age-Eligibility).

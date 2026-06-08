@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.32-dev</modVersion>
+    <modVersion>0.1.33-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -27,6 +27,7 @@ Current development scope:
 - Vanilla preservation prototype for physical Prim'ta larvae
 - Dedicated non-food biological storage category for Prim'ta larvae
 - Prim'ta larva temperature-tuning prototype with heat acceleration
+- Prim'ta implantation biological-age eligibility prototype
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -44,7 +45,7 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Prim'ta freezing penalties, age ceremony, dependency and tretonin planned next
+- Prim'ta age ceremony, puberty dependency, tretonin and freezing penalties planned next
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

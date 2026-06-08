@@ -192,3 +192,12 @@ et triplée à partir de `40 °C`.
 
 La congélation interrompt provisoirement la détérioration. Les éventuelles
 pénalités liées au gel profond seront étudiées ultérieurement.
+
+
+## À partir de quel âge un Jaffa peut-il recevoir un Prim'ta ?
+
+Depuis `0.1.33-dev`, l'opération devient disponible à partir de `10` ans
+biologiques.
+
+Ce seuil représente une première approximation jouable de l'âge de Prata.
+La dépendance progressive liée à la puberté sera ajoutée ultérieurement.

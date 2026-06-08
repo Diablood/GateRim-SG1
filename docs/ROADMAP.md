@@ -317,6 +317,20 @@
 - [ ] Confirm incubation, stacking, storage and implantation regressions
 - [ ] Publish the updated player wiki
 
+## 0.1.33-dev — Add Prim'ta implantation age eligibility prototype
+- [x] Add the `10` biological-year implantation threshold
+- [x] Centralize the threshold in `JaffaPrimtaUtility`
+- [x] Hide the operation for compatible Jaffa below the threshold
+- [x] Keep a defensive age check during surgery execution
+- [x] Add a bilingual rejection message
+- [x] Preserve physical larva, medicine and compatibility requirements
+- [x] Add technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm the operation is hidden below age `10`
+- [ ] Confirm the operation appears from age `10`
+- [ ] Validate successful surgery, duplicate guard and save persistence
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -334,7 +348,9 @@
 - [x] Add first living-symbiote temperature tuning
 - [ ] Evaluate deep-freezing penalties and specialized containers
 - [ ] Evaluate nutrition-value-based balancing
-- [ ] Add automatic Prim'ta age checks and ceremony flow
+- [x] Add first Prim'ta implantation age eligibility check
+- [ ] Add formal Prim'ta age ceremony flow
+- [ ] Add puberty dependency without Prim'ta or tretonin
 - [x] Apply recent Goa'uld implantation through a manual adjacent forced-implantation prototype
 - [x] Add autonomous free-symbiote pursuit and contact implantation
 - [ ] Add richer tactical priorities for autonomous symbiotes

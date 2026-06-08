@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.32.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.33.0 loaded.
    ```
 
 
@@ -441,3 +441,17 @@ Negative checks:
 7. Confirm frozen larvae stop deteriorating for this prototype.
 8. Confirm storage category, hauling, stacking, incubation and implantation
    regressions remain valid.
+
+
+## Jaffa Prim'ta implantation age eligibility
+
+1. Build with `build.cmd`.
+2. Spawn a compatible Jaffa below `10` biological years.
+3. Confirm `implant Jaffa Prim'ta` is absent from the operations list.
+4. Spawn a compatible Jaffa aged exactly `10` biological years.
+5. Confirm the operation appears.
+6. Complete the normal surgery with one medicine and one larva.
+7. Confirm `Prim'ta symbiote` is attached.
+8. Confirm the duplicate-operation guard still works.
+9. Save and reload.
+10. Confirm persistence.

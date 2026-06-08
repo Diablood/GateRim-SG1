@@ -1,16 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-        Medical Jaffa Prim'ta implantation.
-
-        Since 0.1.27-dev, the procedure consumes one physical SG1_PrimtaLarva
-        in addition to one medicine unit. The worker still restricts
-        availability to compatible Jaffa without an existing Prim'ta.
-    -->
     <RecipeDef>
         <defName>SG1_ImplantJaffaPrimta</defName>
         <label>implant Jaffa Prim'ta</label>
-        <description>Implant a physical immature Goa'uld symbiote larva into the abdominal pouch of a compatible Jaffa. The operation consumes one Prim'ta larva and one medicine. Age ceremonies, natural larva acquisition and dependency systems will be introduced later.</description>
+        <description>Implant a physical immature Goa'uld symbiote larva into the abdominal pouch of a compatible Jaffa aged at least 10 biological years. The operation consumes one Prim'ta larva and one medicine. Puberty dependency, the formal age ceremony and tretonin substitution will be introduced later.</description>
         <jobString>Implanting a Jaffa Prim'ta larva.</jobString>
         <workerClass>GateRimSG1.Jaffa.Recipe_ImplantJaffaPrimta</workerClass>
         <workAmount>900</workAmount>

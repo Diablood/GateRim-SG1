@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <GR_JaffaPrimtaImplantation_Success>{0} now carries an implanted Prim'ta symbiote.</GR_JaffaPrimtaImplantation_Success>
+    <GR_JaffaPrimtaImplantation_TooYoung>{0} is too young for Prim'ta implantation. A compatible Jaffa must be at least {1} biological years old.</GR_JaffaPrimtaImplantation_TooYoung>
 </LanguageData>

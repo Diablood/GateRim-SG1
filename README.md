@@ -14,21 +14,23 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.32-dev — Add Prim'ta larva temperature tuning
+### 0.1.33-dev — Add Prim'ta implantation age eligibility prototype
 
-Physical larvae now display a dedicated thermal condition and deteriorate faster
-in high heat:
+Jaffa Prim'ta implantation now requires:
 
 ```text
-below 0 °C        → stopped
-0 °C to 10 °C     → refrigerated
-10 °C to 25 °C    → normal
-25 °C to 40 °C    → ×2
-40 °C and above   → ×3
+compatible inherited Jaffa lineage
+    ↓
+at least 10 biological years
+    ↓
+one physical Prim'ta larva + one medicine
 ```
 
-The implementation supplements vanilla `CompRottable` instead of replacing it.
-Deep-freezing penalties remain future work.
+The operation is hidden for younger Jaffa and the surgery worker repeats the
+age check defensively during execution.
+
+Puberty dependency, the formal age ceremony and tretonin remain future
+milestones.
 
 ## First playable milestone
 

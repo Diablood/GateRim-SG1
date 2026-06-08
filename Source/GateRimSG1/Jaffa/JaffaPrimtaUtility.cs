@@ -12,6 +12,8 @@ namespace GateRimSG1.Jaffa
     /// </summary>
     public static class JaffaPrimtaUtility
     {
+        public const int MinimumPrimtaImplantationBiologicalAge = 10;
+
         public static bool IsCompatibleJaffa(Pawn pawn)
         {
             return pawn != null
@@ -19,6 +21,20 @@ namespace GateRimSG1.Jaffa
                 && pawn.genes.HasActiveGene(GR_DefOf.SG1_JaffaLineage)
                 && pawn.genes.HasActiveGene(GR_DefOf.SG1_JaffaPouchPotential)
                 && pawn.genes.HasActiveGene(GR_DefOf.SG1_JaffaSymbioteCompatibility);
+        }
+
+        public static bool MeetsPrimtaImplantationAge(Pawn pawn)
+        {
+            return pawn?.ageTracker != null
+                && pawn.ageTracker.AgeBiologicalYears
+                    >= MinimumPrimtaImplantationBiologicalAge;
+        }
+
+        public static bool IsEligibleForPrimtaImplantation(Pawn pawn)
+        {
+            return IsCompatibleJaffa(pawn)
+                && MeetsPrimtaImplantationAge(pawn)
+                && !HasPrimta(pawn);
         }
 
         public static bool HasPrimta(Pawn pawn)

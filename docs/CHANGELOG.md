@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.33-dev
+- Add a `10` biological-year minimum age for Jaffa Prim'ta implantation.
+- Centralize age eligibility in `JaffaPrimtaUtility`.
+- Hide the implantation operation for younger compatible Jaffa.
+- Add a defensive worker check and bilingual rejection message.
+- Preserve physical-larva, medicine, lineage and duplicate-implantation requirements.
+- Add technical documentation and player-wiki drafts.
+
 ## 0.1.32-dev
 - Add `CompProperties_PrimtaLarvaTemperature`.
 - Add `Comp_PrimtaLarvaTemperature`.
