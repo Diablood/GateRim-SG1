@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.36.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.37.0 loaded.
    ```
 
 
@@ -509,3 +509,20 @@ Negative checks:
 14. Confirm dependency returns.
 15. Confirm Jaffa with implanted Prim'ta cannot receive tretonin.
 16. Confirm waiting-thought behavior remains separate.
+
+
+## Tretonin acquisition prototype
+
+1. Build with `build.cmd`.
+2. Build or spawn the vanilla `DrugLab`.
+3. Confirm `prepare tretonin doses` appears in its Bills tab.
+4. Confirm the minimum Intellectual skill is `6`.
+5. Test with no larva and confirm the bill waits.
+6. Test with no medicine and confirm the bill waits.
+7. Supply one `Prim'ta larva` and one medicine unit.
+8. Complete the bill.
+9. Confirm both inputs are consumed.
+10. Confirm exactly five `tretonin dose` items appear.
+11. Confirm storage and stacking.
+12. Administer one dose to an eligible Jaffa.
+13. Confirm the existing one-day substitution workflow remains valid.

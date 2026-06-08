@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.37-dev
+- Add `SG1_PrepareTretoninDoses`.
+- Reuse the vanilla `DrugLab` for the first player-usable tretonin-production route.
+- Require one physical Prim'ta larva and one medicine unit.
+- Produce five physical tretonin doses.
+- Require Intellectual skill `6`.
+- Preserve the dedicated Goa'uld medical-products storage category.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.36-dev
 - Add the physical `SG1_TretoninDose` item.
 - Add the dedicated `SG1_GoauldMedicalProducts` category.

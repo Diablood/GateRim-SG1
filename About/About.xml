@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.36-dev</modVersion>
+    <modVersion>0.1.37-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -31,6 +31,7 @@ Current development scope:
 - Progressive Jaffa puberty dependency prototype without Prim'ta
 - Lightweight Jaffa Prim'ta cultural-thought prototype
 - Temporary tretonin substitution prototype for Jaffa without Prim'ta
+- Drug-lab tretonin acquisition prototype using one Prim'ta larva
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -48,7 +49,7 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Prim'ta formal ceremony, tretonin acquisition and freezing penalties planned next
+- Prim'ta formal ceremony, refined tretonin production and freezing penalties planned next
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

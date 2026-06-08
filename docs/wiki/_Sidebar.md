@@ -20,6 +20,7 @@
 - [Dépendance pubertaire](Primta-Puberty-Dependency)
 - [Pensées culturelles du Prim'ta](Primta-Cultural-Thoughts)
 - [Trétonine](Tretonin)
+- [Production de trétonine](Tretonin-Production)
 - [Implantation récente](Recent-Implantation)
 - [Chasse autonome](Autonomous-Hunt)
 - [Implantation forcée](Forced-Implantation)

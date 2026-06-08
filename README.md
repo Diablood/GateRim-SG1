@@ -14,21 +14,19 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.36-dev — Add tretonin substitution prototype
+### 0.1.37-dev — Add tretonin acquisition prototype
 
-Pubertal Jaffa without an implanted Prim'ta can now receive a temporary
-tretonin treatment:
+Tretonin no longer requires developer spawning for normal gameplay tests:
 
 ```text
-physical tretonin dose
-    ↓ health-tab operation
-one day of immune-system substitution
-    ↓
-Prim'ta dependency suppressed temporarily
+1 Prim'ta larva + 1 medicine
+    ↓ vanilla DrugLab, Intellectual 6+
+5 physical tretonin doses
 ```
 
-The dose is a dedicated physical item. Natural production, automated treatment
-and Free Jaffa supply chains remain future milestones.
+The first recipe creates a deliberate choice between permanent implantation and
+several days of temporary substitution. A specialized Goa'uld pharmaceutical
+chain can replace this prototype later.
 
 ## First playable milestone
 

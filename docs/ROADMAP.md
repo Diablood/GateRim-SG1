@@ -386,6 +386,22 @@
 - [ ] Confirm treatment expiry and dependency return
 - [ ] Publish the updated player wiki
 
+## 0.1.37-dev — Add tretonin acquisition prototype
+- [x] Add `SG1_PrepareTretoninDoses`
+- [x] Reuse vanilla `DrugLab` for the first production route
+- [x] Require one physical `SG1_PrimtaLarva`
+- [x] Require one vanilla medicine unit
+- [x] Produce five physical `SG1_TretoninDose` items
+- [x] Require Intellectual skill `6`
+- [x] Preserve the dedicated Goa'uld medical-products category
+- [x] Add French text, technical docs and player-wiki drafts
+- [ ] Reload RimWorld and validate XML Def loading
+- [ ] Confirm the recipe appears on `DrugLab`
+- [ ] Confirm ingredient requirements and consumption
+- [ ] Confirm exactly five doses are produced
+- [ ] Validate storage, stacking and administration regressions
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -407,7 +423,9 @@
 - [ ] Add formal Prim'ta age ceremony flow
 - [x] Add first puberty dependency without Prim'ta
 - [x] Add first tretonin substitution prototype
-- [ ] Add tretonin acquisition and production
+- [x] Add first tretonin acquisition prototype
+- [ ] Add specialized Goa'uld pharmaceutical production
+- [ ] Evaluate tretonin-specific research and upgraded yields
 - [ ] Evaluate automated administration and drug-policy integration
 - [ ] Evaluate tolerance, side effects and faction-specific access
 - [ ] Extend dependency progression to caravans and world pawns

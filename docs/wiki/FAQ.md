@@ -226,5 +226,15 @@ La première implantation accorde `a reçu son Prim'ta`, un bonus de `+3` pendan
 Oui, sous forme de prototype depuis `0.1.36-dev`.
 
 Une `dose de trétonine` peut être administrée à un Jaffa pubère sans Prim'ta.
-Elle suspend sa déficience pendant `1` jour. La production naturelle sera
-ajoutée ultérieurement.
+Elle suspend sa déficience pendant `1` jour.
+
+Depuis `0.1.37-dev`, produis `5` doses dans un laboratoire de drogues vanilla
+avec une larve de Prim'ta et un médicament.
+
+
+## Combien de doses produit une larve de Prim'ta ?
+
+La recette prototype de `0.1.37-dev` consomme une larve de Prim'ta et un
+médicament pour produire `5` doses de trétonine.
+
+Ce rendement pourra être ajusté pendant l'équilibrage.

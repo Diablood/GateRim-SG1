@@ -70,3 +70,19 @@ Manufactured
 The dedicated category prevents tretonin from being treated as generic vanilla
 medicine. Re-evaluate this category during the final audit when more Goa'uld
 medical resources exist.
+
+
+## 0.1.37-dev tretonin recipe review
+
+`SG1_PrepareTretoninDoses` intentionally consumes:
+
+```text
+SG1_PrimtaLarva
+Medicine
+```
+
+The larva remains in `SG1_GoauldBiologicalProducts` and the output remains in
+`SG1_GoauldMedicalProducts`.
+
+During the final audit, review whether tretonin should keep accepting generic
+vanilla medicine or require a dedicated pharmaceutical input.

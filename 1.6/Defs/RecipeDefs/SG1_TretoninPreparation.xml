@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        First player-usable tretonin-acquisition prototype.
+
+        One physical Prim'ta larva and one generic medicine unit are processed
+        at the vanilla drug lab into five temporary-substitution doses.
+
+        This creates a deliberate gameplay choice:
+        permanent implantation for one compatible Jaffa, or several days of
+        temporary tretonin support.
+    -->
+    <RecipeDef>
+        <defName>SG1_PrepareTretoninDoses</defName>
+        <label>prepare tretonin doses</label>
+        <description>Process one immature Prim'ta larva with one medicine unit at a drug lab to prepare five doses of tretonin. This first prototype represents pharmaceutical extraction from Goa'uld biological material. A more advanced production chain may be introduced later.</description>
+        <jobString>Preparing tretonin doses.</jobString>
+        <workAmount>1800</workAmount>
+        <workSkill>Intellectual</workSkill>
+        <workSkillLearnFactor>1</workSkillLearnFactor>
+        <skillRequirements>
+            <Intellectual>6</Intellectual>
+        </skillRequirements>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>SG1_PrimtaLarva</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+            <li>
+                <filter>
+                    <categories>
+                        <li>Medicine</li>
+                    </categories>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>SG1_PrimtaLarva</li>
+            </thingDefs>
+            <categories>
+                <li>Medicine</li>
+            </categories>
+        </fixedIngredientFilter>
+        <products>
+            <SG1_TretoninDose>5</SG1_TretoninDose>
+        </products>
+        <recipeUsers>
+            <li>DrugLab</li>
+        </recipeUsers>
+    </RecipeDef>
+</Defs>

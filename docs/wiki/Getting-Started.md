@@ -270,3 +270,15 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 7. Vérifie l'apparition de `substitution par trétonine`.
 8. Laisse passer un jour.
 9. Vérifie la disparition du traitement puis le retour ultérieur de la déficience.
+
+
+## Produire de la trétonine
+
+1. Construis ou génère un laboratoire de drogues vanilla.
+2. Ouvre son onglet des tâches.
+3. Ajoute `préparer des doses de trétonine`.
+4. Fournis une `larve de Prim'ta` et un médicament.
+5. Vérifie qu'un colon possède `Intellectuel 6+`.
+6. Laisse la tâche s'achever.
+7. Vérifie que les deux ingrédients sont consommés.
+8. Vérifie que `5` doses de trétonine apparaissent.

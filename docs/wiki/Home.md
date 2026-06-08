@@ -18,7 +18,7 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur la production de trétonine, la cérémonie formelle du Prim'ta, les variantes culturelles selon les factions, les pénalités éventuelles de congélation profonde et les événements faisant apparaître des symbiotes libres. Une intégration optionnelle avec Ideology est prévue ultérieurement.
+Les prochains lots porteront sur la cérémonie formelle du Prim'ta, l'amélioration de la chaîne pharmaceutique de trétonine, les variantes culturelles selon les factions, les pénalités éventuelles de congélation profonde et les événements faisant apparaître des symbiotes libres. Une intégration optionnelle avec Ideology est prévue ultérieurement.
 
 ## Liens utiles
 

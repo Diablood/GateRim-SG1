@@ -19,7 +19,7 @@ dose de trétonine
 | Limite de pile | `25` |
 | Masse | `0,02` |
 | Catégorie | Produits médicaux Goa'uld |
-| Obtention actuelle | Mode développeur |
+| Obtention actuelle | [Production au laboratoire de drogues](Tretonin-Production) ou mode développeur |
 
 La dose n'est pas classée comme médicament vanilla générique.
 
@@ -67,3 +67,18 @@ tolérance
 effets secondaires
 approvisionnement des Jaffa libres
 ```
+
+
+## Production
+
+Depuis `0.1.37-dev`, prépare les doses au laboratoire de drogues vanilla :
+
+```text
+1 larve de Prim'ta
+    +
+1 médicament
+    ↓
+5 doses de trétonine
+```
+
+Consulte [Production de trétonine](Tretonin-Production).

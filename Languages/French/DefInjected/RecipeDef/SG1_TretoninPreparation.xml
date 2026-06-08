@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_PrepareTretoninDoses.label>préparer des doses de trétonine</SG1_PrepareTretoninDoses.label>
+    <SG1_PrepareTretoninDoses.description>Transforme une larve immature de Prim'ta et un médicament dans un laboratoire de drogues afin de préparer cinq doses de trétonine. Ce premier prototype représente l'extraction pharmaceutique de matière biologique Goa'uld. Une chaîne de production plus avancée pourra être ajoutée ultérieurement.</SG1_PrepareTretoninDoses.description>
+    <SG1_PrepareTretoninDoses.jobString>Préparation de doses de trétonine en cours.</SG1_PrepareTretoninDoses.jobString>
+</LanguageData>

@@ -23,7 +23,7 @@ dose de trétonine
 | Mass | `0.02` |
 | Market value | `45` |
 | Storage category | `SG1_GoauldMedicalProducts` |
-| Current acquisition | Developer spawn |
+| Current acquisition | Vanilla drug-lab recipe or developer spawn |
 
 Tretonin is deliberately not placed in vanilla `Medicine`, so colonists do not
 consume it as a generic treatment ingredient.
@@ -118,3 +118,21 @@ Free Jaffa faction supply
 14. Wait for the next hourly scan.
 15. Confirm the dependency appears again.
 16. Confirm a Jaffa with Prim'ta cannot receive tretonin.
+
+
+## 0.1.37-dev acquisition route
+
+Physical doses can now be prepared at the vanilla `DrugLab`:
+
+```text
+1 Prim'ta larva
+    +
+1 medicine
+    ↓
+5 tretonin doses
+```
+
+The recipe requires Intellectual `6+`.
+
+This first balancing pass creates a meaningful choice between permanent Prim'ta
+implantation and several days of temporary treatment.

@@ -55,3 +55,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Pensées culturelles du Prim'ta | Attente légère et souvenir temporaire après première implantation | 0.1.35-dev |
 
 | Trétonine | Dose physique suspendant temporairement la déficience pubertaire | 0.1.36-dev |
+
+| Production de trétonine | Recette au laboratoire de drogues : 1 larve + 1 médicament → 5 doses | 0.1.37-dev |
