@@ -74,4 +74,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un pawn atteint d'une affection biologique curable non traumatique ; offre temporaire de 2 jours avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 
-| Confiance Tok'ra | Jauge persistante de `-100` à `100` avec paliers modulant la durée des offres thérapeutiques et la taille des escortes | 0.1.50-dev / paliers 0.1.51-dev |
+| Confiance Tok'ra | Jauge persistante de `-100` à `100` avec paliers modulant la durée des offres thérapeutiques, la taille des escortes et les cadeaux de trétonine | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
+
+| Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |

@@ -13,8 +13,8 @@ namespace GateRimSG1.Goauld
     /// small mod-owned trust score until broader diplomacy is introduced.
     ///
     /// Trust tiers now provide the first concrete gameplay integration: they
-    /// adjust therapeutic-offer duration and escort size without enabling full
-    /// diplomacy, quests or material rewards yet.
+    /// adjust therapeutic-offer duration, escort size and lightweight
+    /// tretonin support gifts without enabling full diplomacy or quests yet.
     /// </summary>
     public class GameComponent_TokraTrustTracker : GameComponent
     {
@@ -31,6 +31,9 @@ namespace GateRimSG1.Goauld
         public const int NeutralOfferDurationTicks = 120000;
         public const int CooperativeOfferDurationTicks = 180000;
         public const int TrustedOfferDurationTicks = 240000;
+
+        public const int CooperativeTretoninGiftCount = 1;
+        public const int TrustedTretoninGiftCount = 2;
 
         private int trustScore;
 
@@ -88,6 +91,11 @@ namespace GateRimSG1.Goauld
         public static string GetCurrentTierLogLabel()
         {
             return GetTierLogLabel(GetCurrentTier());
+        }
+
+        public static int GetCurrentTretoninGiftCount()
+        {
+            return GetTretoninGiftCount(GetCurrentTier());
         }
 
         public static void NotifyTherapeuticOfferOutcome(
@@ -191,6 +199,19 @@ namespace GateRimSG1.Goauld
                     minimumEscortCount = 1;
                     maximumEscortCount = 2;
                     return;
+            }
+        }
+
+        private static int GetTretoninGiftCount(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Cooperative:
+                    return CooperativeTretoninGiftCount;
+                case TokraTrustTier.Trusted:
+                    return TrustedTretoninGiftCount;
+                default:
+                    return 0;
             }
         }
 

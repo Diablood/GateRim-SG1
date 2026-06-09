@@ -24,7 +24,7 @@
         <minRefireDays>60</minRefireDays>
         <requireColonistsPresent>true</requireColonistsPresent>
         <letterLabel>Escorted Tok'ra therapeutic opportunity</letterLabel>
-        <letterText>A small Tok'ra team has arrived near the colony after learning that {PAWN_labelShort} suffers from {CONDITIONS}. The group is escorting a free Tok'ra symbiote willing to enter a compatible voluntary host. The temporary offer expires after two days. Select the symbiote and use its therapeutic implantation command if you accept the permanent symbiosis, or refuse the offer directly from the symbiote.</letterText>
+        <letterText>A small Tok'ra team has arrived near the colony after learning that {PAWN_labelShort} suffers from {CONDITIONS}. The group is escorting a free Tok'ra symbiote willing to enter a compatible voluntary host. The temporary offer duration depends on current Tok'ra trust, and trusted teams may also bring medical support supplies. Select the symbiote and use its therapeutic implantation command if you accept the permanent symbiosis, or refuse the offer directly from the symbiote.</letterText>
         <letterDef>PositiveEvent</letterDef>
     </IncidentDef>
 </Defs>

@@ -5,6 +5,7 @@
 > Escorte légère : 0.1.48-dev
 > Offre temporaire : 0.1.49-dev
 > Fondation de confiance : 0.1.50-dev
+> Cadeaux de soutien médical : 0.1.52-dev
 
 ## Principe
 
@@ -107,3 +108,11 @@ récompense et relations vanilla seront étudiés dans des jalons séparés.
 Depuis `0.1.51-dev`, la durée d'une nouvelle offre et la taille de son escorte
 dépendent des [paliers de confiance Tok'ra](Tokra-Trust-Thresholds). Une offre
 déjà en cours conserve les paramètres déterminés lors de son apparition.
+
+
+## Soutien médical en trétonine
+
+Depuis `0.1.52-dev`, une offre créée au palier coopérative apporte `1` dose
+physique de trétonine. Au palier fiable, l'équipe apporte `2` doses. Les
+ressources apparaissent près du point d'arrivée et restent sur la carte quelle
+que soit la réponse apportée à l'offre.

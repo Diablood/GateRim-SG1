@@ -3,8 +3,9 @@
 ## Status
 
 Prototype introduced in `0.1.47-dev`, with a lightweight peaceful escort added
-in `0.1.48-dev`, a persistent time-limited lifecycle added in `0.1.49-dev` and
-a lightweight Tok'ra trust foundation added in `0.1.50-dev`.
+in `0.1.48-dev`, a persistent time-limited lifecycle added in `0.1.49-dev`,
+a lightweight Tok'ra trust foundation added in `0.1.50-dev`, trust tiers added
+in `0.1.51-dev` and tretonin-support gifts added in `0.1.52-dev`.
 
 ## Purpose
 
@@ -79,7 +80,16 @@ last `1` day with `1` escort, neutral offers last `2` days with `1` to `2`
 escorts, cooperative offers last `3` days with `2` escorts, and trusted offers
 last `4` days with `2` to `3` escorts.
 
+## Tretonin-support gifts
+
+Since `0.1.52-dev`, cooperative teams bring `1` physical `SG1_TretoninDose`
+and trusted teams bring `2`. Wary and neutral teams bring no material support.
+The supplies are placed near the arrival point and remain on the map regardless
+of the final response. Refusal and expiration still reduce trust, limiting
+repeat harvesting naturally.
+
 ## Current limits
 
-The escort and trust layer are intentionally lightweight. Quests, medical
-envoys and vanilla-goodwill integration remain separate future milestones.
+The escort and trust layer remain intentionally lightweight. Quests, broader
+medical envoys, storyteller-weight changes and vanilla-goodwill integration
+remain separate future milestones.

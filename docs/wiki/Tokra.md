@@ -176,3 +176,11 @@ escorte pacifique.
 
 La faction reste masquée : cette jauge constitue une fondation légère avant
 l'introduction de quêtes et de relations diplomatiques plus complètes.
+
+
+## Soutien médical en trétonine
+
+Depuis `0.1.52-dev`, les équipes Tok'ra suffisamment confiantes apportent un
+[cadeau léger de trétonine](Tokra-Medical-Support-Gifts) lors d'une opportunité
+thérapeutique escortée. Le palier coopérative fournit `1` dose et le palier
+fiable `2` doses. Les paliers méfiante et neutre n'apportent aucune ressource.

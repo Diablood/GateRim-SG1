@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.52-dev — Add Tok'ra tretonin support gifts
+- Add the first lightweight material benefit unlocked by Tok'ra trust tiers.
+- Keep wary and neutral therapeutic opportunities unchanged with no material support.
+- Spawn `1` physical `SG1_TretoninDose` item with cooperative therapeutic teams.
+- Spawn `2` physical `SG1_TretoninDose` items with trusted therapeutic teams.
+- Place the support stack near the Tok'ra arrival point and keep it on the map regardless of acceptance, refusal or expiration.
+- Add bilingual player feedback and `GR_Log` diagnostics for support-gift spawning.
+- Update incident text so the offer duration is no longer described as a fixed two-day value.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.1.51-dev — Add Tok'ra trust tiers for therapeutic offers
 - Add four persistent trust tiers: wary below `0`, neutral from `0` to `9`, cooperative from `10` to `24`, and trusted from `25` upward.
 - Display the current localized trust tier beside the numeric Tok'ra trust score.

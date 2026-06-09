@@ -12,7 +12,8 @@ namespace GateRimSG1.Goauld
     /// least one non-traumatic biological condition accepted by the shared
     /// Tok'ra healing filter. It then spawns one free Tok'ra symbiote with a
     /// small peaceful escort and leaves the final implantation choice to the
-    /// player's existing therapeutic-implantation command.
+    /// player's existing therapeutic-implantation command. Cooperative and
+    /// trusted teams also bring a small physical tretonin-support gift.
     /// </summary>
     public class IncidentWorker_TokraTherapeuticOpportunity : IncidentWorker
     {
@@ -128,6 +129,15 @@ namespace GateRimSG1.Goauld
                 = GameComponent_TokraTrustTracker.RollCurrentEscortCount();
             string trustTierLabel
                 = GameComponent_TokraTrustTracker.GetCurrentTierLogLabel();
+            int requestedTretoninGiftCount
+                = GameComponent_TokraTrustTracker
+                    .GetCurrentTretoninGiftCount();
+            Thing placedTretoninGift;
+            int spawnedTretoninGiftCount = SpawnTretoninGift(
+                map,
+                entryCell,
+                requestedTretoninGiftCount,
+                out placedTretoninGift);
 
             List<Pawn> escortPawns = SpawnEscortPawns(
                 map,
@@ -167,8 +177,9 @@ namespace GateRimSG1.Goauld
                 + $"{PawnDebugLabel(candidate)} with conditions "
                 + $"{conditionLabels}; spawned free symbiote "
                 + $"{PawnDebugLabel(symbiote)} at {entryCell} with "
-                + $"{escortPawns.Count} escort pawn(s) for "
-                + $"{offerDurationTicks} ticks at {trustTierLabel} trust "
+                + $"{escortPawns.Count} escort pawn(s), "
+                + $"{spawnedTretoninGiftCount} tretonin support dose(s), "
+                + $"for {offerDurationTicks} ticks at {trustTierLabel} trust "
                 + $"tier.");
 
             SendStandardLetter(
@@ -177,7 +188,70 @@ namespace GateRimSG1.Goauld
                 candidate.Named("PAWN"),
                 conditionLabels.Named("CONDITIONS"));
 
+            if (spawnedTretoninGiftCount > 0 && placedTretoninGift != null)
+            {
+                Messages.Message(
+                    "GR_TokraMedicalSupport_GiftReceived"
+                        .Translate(spawnedTretoninGiftCount),
+                    placedTretoninGift,
+                    MessageTypeDefOf.PositiveEvent,
+                    historical: true);
+            }
+
             return true;
+        }
+
+        private static int SpawnTretoninGift(
+            Map map,
+            IntVec3 entryCell,
+            int requestedDoseCount,
+            out Thing placedTretoninGift)
+        {
+            placedTretoninGift = null;
+
+            if (requestedDoseCount <= 0)
+            {
+                return 0;
+            }
+
+            ThingDef tretoninDoseDef
+                = DefDatabase<ThingDef>.GetNamedSilentFail("SG1_TretoninDose");
+
+            if (tretoninDoseDef == null)
+            {
+                GR_Log.Warning(
+                    "Unable to spawn Tok'ra tretonin-support gift: "
+                    + "SG1_TretoninDose could not be resolved.");
+                return 0;
+            }
+
+            Thing tretoninGift = ThingMaker.MakeThing(tretoninDoseDef);
+            tretoninGift.stackCount = requestedDoseCount;
+
+            if (!GenPlace.TryPlaceThing(
+                    tretoninGift,
+                    entryCell,
+                    map,
+                    ThingPlaceMode.Near,
+                    out placedTretoninGift))
+            {
+                if (!tretoninGift.Destroyed)
+                {
+                    tretoninGift.Destroy(DestroyMode.Vanish);
+                }
+
+                GR_Log.Warning(
+                    "Unable to place Tok'ra tretonin-support gift near "
+                    + $"entry cell {entryCell}.");
+                return 0;
+            }
+
+            GR_Log.Message(
+                $"Spawned {requestedDoseCount} tretonin support dose(s) "
+                + $"near {placedTretoninGift.Position} for a Tok'ra "
+                + "therapeutic opportunity.");
+
+            return requestedDoseCount;
         }
 
         private static List<Pawn> SpawnEscortPawns(

@@ -18,12 +18,12 @@ fiable      : 25 à 100
 
 ## Effets
 
-| Palier | Durée de l'offre | Taille de l'escorte |
-|---|---:|---:|
-| Méfiante | 1 jour RimWorld | exactement 1 hôte |
-| Neutre | 2 jours RimWorld | 1 à 2 hôtes |
-| Coopérative | 3 jours RimWorld | exactement 2 hôtes |
-| Fiable | 4 jours RimWorld | 2 à 3 hôtes |
+| Palier | Durée de l'offre | Taille de l'escorte | Soutien en trétonine |
+|---|---:|---:|---:|
+| Méfiante | 1 jour RimWorld | exactement 1 hôte | aucun |
+| Neutre | 2 jours RimWorld | 1 à 2 hôtes | aucun |
+| Coopérative | 3 jours RimWorld | exactement 2 hôtes | 1 dose |
+| Fiable | 4 jours RimWorld | 2 à 3 hôtes | 2 doses |
 
 Une offre déjà active conserve ses paramètres même si la confiance change
 ensuite. Les nouveaux paramètres sont calculés uniquement au démarrage de la
@@ -31,6 +31,7 @@ prochaine opportunité.
 
 ## Limites actuelles
 
-Les paliers ne modifient pas encore la fréquence storyteller, ne débloquent pas
-de récompense et ne déclenchent pas de quête dédiée. La faction Tok'ra reste
-masquée et séparée de la diplomatie vanilla.
+Depuis `0.1.52-dev`, les paliers coopérative et fiable débloquent un petit
+cadeau physique de trétonine lors de l'arrivée de l'équipe. Les paliers ne
+modifient pas encore la fréquence storyteller et ne déclenchent pas de quête
+dédiée. La faction Tok'ra reste masquée et séparée de la diplomatie vanilla.

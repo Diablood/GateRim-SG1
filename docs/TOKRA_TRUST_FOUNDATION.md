@@ -30,8 +30,9 @@ expiration without an answer = -2
 ```
 
 Since `0.1.51-dev`, the score also selects a lightweight gameplay tier for
-therapeutic offers. It still prepares future thresholds for quests, visitors,
-recruitment and eventual broader diplomacy.
+therapeutic offers. Since `0.1.52-dev`, cooperative and trusted tiers unlock
+small tretonin-support gifts. The score still prepares future thresholds for
+quests, visitors, recruitment and eventual broader diplomacy.
 
 ## Persistence and visibility
 
@@ -42,7 +43,8 @@ bilingual player message and a `GR_Log` line.
 
 ## Current limits
 
-The score now adjusts therapeutic-offer duration and escort size. It does not
-yet unlock rewards, block incidents, change storyteller weights or synchronize
-with vanilla goodwill. Those integrations remain future milestones after the
-hidden-faction prototype is stabilized.
+The score now adjusts therapeutic-offer duration, escort size and small
+physical tretonin-support gifts. It does not yet block incidents, change
+storyteller weights, unlock quests or synchronize with vanilla goodwill. Those
+integrations remain future milestones after the hidden-faction prototype is
+stabilized.
