@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LanguageData>
-    <SG1_TokraTherapeuticOpportunity.label>opportunité thérapeutique Tok'ra</SG1_TokraTherapeuticOpportunity.label>
-    <SG1_TokraTherapeuticOpportunity.letterLabel>Opportunité thérapeutique Tok'ra</SG1_TokraTherapeuticOpportunity.letterLabel>
-    <SG1_TokraTherapeuticOpportunity.letterText>Un symbiote Tok'ra libre est arrivé près de la colonie après avoir appris que {PAWN_labelShort} souffre de {CONDITIONS}. Le symbiote accepte de rejoindre un hôte volontaire compatible. Sélectionnez le symbiote et utilisez sa commande d'implantation thérapeutique si vous acceptez cette symbiose permanente.</SG1_TokraTherapeuticOpportunity.letterText>
+    <SG1_TokraTherapeuticOpportunity.label>opportunité thérapeutique Tok'ra escortée</SG1_TokraTherapeuticOpportunity.label>
+    <SG1_TokraTherapeuticOpportunity.letterLabel>Opportunité thérapeutique Tok'ra escortée</SG1_TokraTherapeuticOpportunity.letterLabel>
+    <SG1_TokraTherapeuticOpportunity.letterText>Une petite équipe Tok'ra est arrivée près de la colonie après avoir appris que {PAWN_labelShort} souffre de {CONDITIONS}. Le groupe escorte un symbiote Tok'ra libre disposé à rejoindre un hôte volontaire compatible. Sélectionnez le symbiote et utilisez sa commande d'implantation thérapeutique si vous acceptez la symbiose permanente.</SG1_TokraTherapeuticOpportunity.letterText>
 </LanguageData>

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.48-dev — Add Tok'ra therapeutic escort prototype
+- Extend the natural therapeutic-opportunity incident with a small Tok'ra escort.
+- Spawn one or two `SG1_TokraVoluntaryHost` pawns near the free symbiote.
+- Attach the escort to the vanilla peaceful colony-visit lord behavior.
+- Keep the free symbiote selected by the existing voluntary therapeutic workflow.
+- Keep implantation manual and protected by the consent confirmation dialog.
+- Add `TokraFactionUtility` so peaceful visitors and therapeutic escorts reuse one hidden persistent Tok'ra faction instance.
+- Update English and French incident text, technical documentation and player-wiki drafts.
+
 ## 0.1.47-dev — Add Tok'ra therapeutic-opportunity incident prototype
 - Added rare storyteller-selected `SG1_TokraTherapeuticOpportunity` incident after day `30`.
 - Added a `60`-day minimum refire interval and a low `0.035` base chance.
@@ -47,7 +56,6 @@
 - Keep developer-triggered incident testing available.
 - Keep the hidden Tok'ra faction disconnected from world generation, settlements, traders and diplomacy.
 - Remove `(test)` from English and French visitor labels.
-- Refresh the English and French hidden-faction descriptions.
 - Rename visitor logs to reflect natural incident support.
 - Update technical documentation and player-wiki drafts.
 

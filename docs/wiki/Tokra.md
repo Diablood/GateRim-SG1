@@ -156,5 +156,6 @@ confirmation explicite avant d'utiliser le flux d'implantation existant.
 Depuis `0.1.47-dev`, une
 [opportunité thérapeutique Tok'ra](Tokra-Therapeutic-Opportunity) peut
 apparaître rarement lorsqu'un pawn compatible souffre d'une affection
-biologique curable non traumatique. Un symbiote Tok'ra libre arrive au bord de
-la carte, mais l'implantation reste un choix manuel soumis à confirmation.
+biologique curable non traumatique. Depuis `0.1.48-dev`, le symbiote Tok'ra
+libre arrive avec une petite escorte de 1 à 2 hôtes volontaires. L'implantation
+reste un choix manuel soumis à confirmation.

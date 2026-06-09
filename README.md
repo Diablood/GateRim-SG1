@@ -13,20 +13,17 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.47-dev — Add Tok'ra therapeutic-opportunity incident prototype
+### 0.1.48-dev — Add Tok'ra therapeutic escort prototype
 
-A rare storyteller-selected incident can now appear after day 30 when a
-player-controlled compatible humanoid suffers from a non-traumatic biological
-condition accepted by the Tok'ra healing filter. The incident spawns one free
-Tok'ra symbiote at a reachable map edge and sends a letter naming the sick
-pawn and the detected conditions.
+The rare therapeutic-opportunity incident now arrives as a small Tok'ra
+mission instead of an isolated free symbiote. One or two Tok'ra voluntary
+hosts accompany the symbiote from the map edge and reuse the vanilla peaceful
+visit behavior while the player considers permanent symbiosis.
 
-The final choice remains manual: the player must select the symbiote and use
-the existing therapeutic-implantation command, including its explicit consent
-confirmation. Recent injuries can still regenerate in active hosts, but they
-do not trigger the narrative incident by themselves. A 60-day minimum refire
-delay keeps the opportunity rare while quests, escorted envoys and full Tok'ra
-diplomacy remain planned separately.
+The hidden Tok'ra faction is lazily created through a shared helper and reused
+by both peaceful visits and therapeutic escorts. The final implantation remains
+manual and protected by the existing explicit consent confirmation. Quests,
+time-limited decisions and diplomatic consequences remain planned separately.
 
 ## First playable milestone
 

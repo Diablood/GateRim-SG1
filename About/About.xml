@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <ModMetaData>
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.47-dev</modVersion>
+    <modVersion>0.1.48-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -18,6 +19,7 @@
 GateRim SG-1 brings the Stargate SG-1 universe to RimWorld.
 
 Current development scope:
+
 - Inheritable Jaffa lineage genes
 - Prim'ta Hediff prototype for an implanted immature symbiote
 - Medical Jaffa Prim'ta implantation prototype
@@ -39,7 +41,7 @@ Current development scope:
 - Low-frequency natural Tok'ra peaceful visitor incident prototype
 - RimWorld-oriented Tok'ra biological healing with curable-condition filtering and progressive wound regeneration
 - Explicit voluntary Tok'ra therapeutic implantation prototype with consent confirmation
-- Low-frequency Tok'ra therapeutic-opportunity incident prototype for sick colonists
+- Low-frequency escorted Tok'ra therapeutic-opportunity incident prototype for sick colonists
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -62,6 +64,7 @@ Current development scope:
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 
 Biotech is required for xenotype support.
+
 This is an early development version.
     </description>
 </ModMetaData>

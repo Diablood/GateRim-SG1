@@ -1,24 +1,23 @@
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
+using Verse.AI.Group;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Rare natural Tok'ra therapeutic-opportunity prototype.
+    /// Rare natural escorted Tok'ra therapeutic opportunity.
     ///
     /// The incident looks for a player-controlled compatible humanoid with at
     /// least one non-traumatic biological condition accepted by the shared
-    /// Tok'ra healing filter. It then spawns one free Tok'ra symbiote at a
-    /// reachable map edge and leaves the final implantation choice to the
+    /// Tok'ra healing filter. It then spawns one free Tok'ra symbiote with a
+    /// small peaceful escort and leaves the final implantation choice to the
     /// player's existing therapeutic-implantation command.
     /// </summary>
     public class IncidentWorker_TokraTherapeuticOpportunity : IncidentWorker
     {
-        private const string TokraSymbiotePawnKindDefName
-            = "SG1_TokraSymbiote";
-
         private const float MinimumVoluntaryHostAgeYears = 13f;
+        private const int EscortSpawnRadius = 5;
 
         protected override bool CanFireNowSub(IncidentParms parms)
         {
@@ -31,7 +30,9 @@ namespace GateRimSG1.Goauld
 
             if (map == null
                 || FindBestCandidate(map) == null
-                || ResolveTokraSymbiotePawnKind() == null)
+                || GR_DefOf.SG1_TokraSymbiote == null
+                || GR_DefOf.SG1_TokraVoluntaryHost == null
+                || GR_DefOf.SG1_Tokra == null)
             {
                 return false;
             }
@@ -43,15 +44,68 @@ namespace GateRimSG1.Goauld
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = parms.target as Map;
+
+            if (map == null)
+            {
+                GR_Log.Warning(
+                    "Cannot start the escorted Tok'ra therapeutic "
+                    + "opportunity: the incident target is not a map.");
+                return false;
+            }
+
             Pawn candidate = FindBestCandidate(map);
-            PawnKindDef symbioteKind = ResolveTokraSymbiotePawnKind();
+
+            if (candidate == null)
+            {
+                GR_Log.Warning(
+                    "Cannot start the escorted Tok'ra therapeutic "
+                    + "opportunity: no eligible sick player-controlled "
+                    + "humanoid was found. "
+                    + BuildCandidateDiagnostics(map));
+                return false;
+            }
+
+            PawnKindDef symbioteKind = GR_DefOf.SG1_TokraSymbiote;
+
+            if (symbioteKind == null)
+            {
+                GR_Log.Warning(
+                    "Cannot start the escorted Tok'ra therapeutic "
+                    + "opportunity: SG1_TokraSymbiote could not be "
+                    + "resolved from GR_DefOf.");
+                return false;
+            }
+
+            PawnKindDef escortKind = GR_DefOf.SG1_TokraVoluntaryHost;
+
+            if (escortKind == null)
+            {
+                GR_Log.Warning(
+                    "Cannot start the escorted Tok'ra therapeutic "
+                    + "opportunity: SG1_TokraVoluntaryHost could not be "
+                    + "resolved from GR_DefOf.");
+                return false;
+            }
+
             IntVec3 entryCell;
 
-            if (map == null
-                || candidate == null
-                || symbioteKind == null
-                || !TryFindEntryCell(map, out entryCell))
+            if (!TryFindEntryCell(map, out entryCell))
             {
+                GR_Log.Warning(
+                    "Cannot start the escorted Tok'ra therapeutic "
+                    + "opportunity: no reachable unfogged map-edge entry "
+                    + "cell was found.");
+                return false;
+            }
+
+            Faction tokraFaction = TokraFactionUtility.GetOrCreateHiddenFaction(
+                "therapeutic Tok'ra opportunities");
+
+            if (tokraFaction == null)
+            {
+                GR_Log.Error(
+                    "Cannot start the Tok'ra therapeutic opportunity: "
+                    + "the hidden Tok'ra faction could not be created.");
                 return false;
             }
 
@@ -67,15 +121,33 @@ namespace GateRimSG1.Goauld
 
             GenSpawn.Spawn(symbiote, entryCell, map);
 
+            List<Pawn> escortPawns = SpawnEscortPawns(
+                map,
+                entryCell,
+                tokraFaction,
+                escortKind);
+
+            if (escortPawns.Count == 0)
+            {
+                GR_Log.Warning(
+                    "Started a Tok'ra therapeutic opportunity without an "
+                    + "escort because no escort pawn could be generated.");
+            }
+            else
+            {
+                StartEscortVisit(map, entryCell, tokraFaction, escortPawns);
+            }
+
             string conditionLabels
                 = GameComponent_TokraTherapeuticHosting
                     .GetSeriousTherapeuticNeedLabels(candidate);
 
             GR_Log.Message(
-                $"Started Tok'ra therapeutic opportunity for "
+                $"Started escorted Tok'ra therapeutic opportunity for "
                 + $"{PawnDebugLabel(candidate)} with conditions "
                 + $"{conditionLabels}; spawned free symbiote "
-                + $"{PawnDebugLabel(symbiote)} at {entryCell}.");
+                + $"{PawnDebugLabel(symbiote)} at {entryCell} with "
+                + $"{escortPawns.Count} escort pawn(s).");
 
             SendStandardLetter(
                 parms,
@@ -84,6 +156,63 @@ namespace GateRimSG1.Goauld
                 conditionLabels.Named("CONDITIONS"));
 
             return true;
+        }
+
+        private static List<Pawn> SpawnEscortPawns(
+            Map map,
+            IntVec3 entryCell,
+            Faction tokraFaction,
+            PawnKindDef escortKind)
+        {
+            int escortCount = Rand.RangeInclusive(1, 2);
+            List<Pawn> escortPawns = new List<Pawn>(escortCount);
+
+            for (int index = 0; index < escortCount; index++)
+            {
+                Pawn escortPawn = PawnGenerator.GeneratePawn(
+                    escortKind,
+                    tokraFaction);
+
+                if (escortPawn == null)
+                {
+                    GR_Log.Warning(
+                        "Unable to generate one Tok'ra escort pawn for a "
+                        + "therapeutic-opportunity incident.");
+                    continue;
+                }
+
+                IntVec3 escortCell = CellFinder.RandomClosewalkCellNear(
+                    entryCell,
+                    map,
+                    EscortSpawnRadius);
+
+                GenSpawn.Spawn(escortPawn, escortCell, map);
+                escortPawns.Add(escortPawn);
+            }
+
+            return escortPawns;
+        }
+
+        private static void StartEscortVisit(
+            Map map,
+            IntVec3 entryCell,
+            Faction tokraFaction,
+            List<Pawn> escortPawns)
+        {
+            IntVec3 visitSpot;
+
+            if (!RCellFinder.TryFindRandomSpotJustOutsideColony(
+                    escortPawns[0],
+                    out visitSpot))
+            {
+                visitSpot = entryCell;
+            }
+
+            LordMaker.MakeNewLord(
+                tokraFaction,
+                new LordJob_VisitColony(tokraFaction, visitSpot),
+                map,
+                escortPawns);
         }
 
         private static Pawn FindBestCandidate(Map map)
@@ -121,6 +250,62 @@ namespace GateRimSG1.Goauld
             return bestCandidate;
         }
 
+        private static string BuildCandidateDiagnostics(Map map)
+        {
+            IReadOnlyList<Pawn> pawns = map?.mapPawns?.AllPawnsSpawned;
+
+            if (pawns == null)
+            {
+                return "The map pawn list is unavailable.";
+            }
+
+            int playerHumanlikes = 0;
+            int underMinimumAge = 0;
+            int existingSymbioteState = 0;
+            int seriousTherapeuticNeed = 0;
+
+            for (int index = 0; index < pawns.Count; index++)
+            {
+                Pawn pawn = pawns[index];
+
+                if (pawn == null
+                    || !pawn.Spawned
+                    || pawn.Destroyed
+                    || pawn.Dead
+                    || pawn.Faction != Faction.OfPlayer
+                    || !pawn.RaceProps.Humanlike)
+                {
+                    continue;
+                }
+
+                playerHumanlikes++;
+
+                if (pawn.ageTracker != null
+                    && pawn.ageTracker.AgeBiologicalYearsFloat
+                        < MinimumVoluntaryHostAgeYears)
+                {
+                    underMinimumAge++;
+                }
+
+                if (HasExistingSymbioteState(pawn))
+                {
+                    existingSymbioteState++;
+                }
+
+                if (GameComponent_TokraTherapeuticHosting
+                    .HasSeriousTherapeuticNeed(pawn))
+                {
+                    seriousTherapeuticNeed++;
+                }
+            }
+
+            return $"Player humanoids: {playerHumanlikes}; "
+                + $"under {MinimumVoluntaryHostAgeYears:0} years: "
+                + $"{underMinimumAge}; existing symbiote state: "
+                + $"{existingSymbioteState}; with a serious therapeutic "
+                + $"need: {seriousTherapeuticNeed}.";
+        }
+
         private static bool IsValidCandidate(Pawn pawn)
         {
             return pawn != null
@@ -154,12 +339,6 @@ namespace GateRimSG1.Goauld
             }
 
             return false;
-        }
-
-        private static PawnKindDef ResolveTokraSymbiotePawnKind()
-        {
-            return DefDatabase<PawnKindDef>.GetNamedSilentFail(
-                TokraSymbiotePawnKindDefName);
         }
 
         private static bool TryFindEntryCell(Map map, out IntVec3 cell)
