@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.56-dev docs — Add pre-0.2 cleanup roadmap
+
+- Refresh the first-playable checklist to reflect already validated Jaffa and Goa'uld prototype workflows.
+- Add a pre-`0.2.x` audit plan for player-facing information, debug-only diagnostics and conditional gizmos.
+- Plan a future GateRim-specific debug option in addition to the RimWorld developer mode.
+- Add the missing human SG-team equipment roadmap: generic uniform, tactical boots and tactical gloves.
+- Record a wiki-image and Workshop-asset roadmap while keeping all current visuals explicitly provisional.
+- Add a dedicated French translation-report follow-up checklist without guessing the five remaining errors.
+
 ## 0.1.56-dev — Add trusted Tok'ra advanced medicine support
 
 - Add the first positive trusted-tier diplomatic reward beyond tretonin quantity and storyteller weighting.

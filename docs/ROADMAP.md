@@ -1,17 +1,55 @@
-# GateRim SG-1 — Initial roadmap
+# GateRim SG-1 — Development roadmap
 
-## 0.1.47-dev — Add Tok'ra therapeutic-opportunity incident prototype
-- [x] Add rare natural therapeutic-opportunity incident after day 30
-- [x] Require a compatible player-controlled humanoid with a non-traumatic treatable biological condition
-- [x] Spawn one free Tok'ra symbiote at a reachable map edge
-- [x] Send a targeted letter naming the sick pawn and detected conditions
-- [x] Preserve explicit voluntary implantation and consent confirmation
-- [x] Keep injuries healable without making minor wounds trigger the incident
-- [ ] Build locally against RimWorld 1.6
-- [ ] Trigger the incident manually with a carcinoma or asthma test target
-- [ ] Confirm no incident is available for a pawn with only a recent injury
-- [ ] Validate save and reload after accepting the therapeutic offer
-- [ ] Publish the updated player wiki
+## Immediate maintenance — pre-0.2 cleanup preparation
+
+- [ ] Generate the RimWorld French translation report and fix the five remaining localization errors from the report.
+- [x] Restore the broken `Content-Status.md` planned-content table.
+- [ ] Audit player-facing inspection text, contextual information and debug-only diagnostics.
+- [ ] Audit gizmos and commands: always visible, contextual, mod-debug only, RimWorld-dev only or removed.
+- [ ] Add a GateRim-specific debug option before the `0.2.x` Stargate chapter.
+- [ ] Keep final wiki images and Workshop presentation assets as a separate later production pass.
+
+## Pre-0.2 gameplay roadmap
+
+### Biological and faction foundations
+
+- [ ] Evaluate deep-freezing penalties and specialized larva containers.
+- [ ] Add a Goa'uld queen biological-foundation prototype.
+- [ ] Turn the current Prim'ta incubation basin into assisted maturation infrastructure rather than a fully ex-nihilo source.
+- [ ] Add the first Goa'uld System Lord faction prototype.
+- [ ] Add Goa'uld-aligned Jaffa pawn kinds and keep Free Jaffa visually distinct.
+- [ ] Add a first Jaffa facial-marking prototype linked to a Goa'uld faction or future System Lord style.
+
+### Emblematic equipment
+
+- [ ] Add a Ma'Tok staff-weapon prototype.
+- [ ] Add a Zat'nik'tel prototype.
+- [ ] Add generic Jaffa armor.
+- [ ] Add a generic human SG-team uniform.
+- [ ] Add SG tactical boots.
+- [ ] Add SG tactical gloves.
+- [ ] Add a first SG tactical vest or visual equipment layer.
+- [ ] Plan later uniform variants for roles and environments: standard SGC, desert, forest, heavy tactical, medical and scientific.
+
+### Interface and debug cleanup before 0.2.x
+
+- [ ] Inventory every visible information line, gizmo, button and gameplay log.
+- [ ] Classify each element as always visible, contextual, mod-debug only, RimWorld-dev only or removed.
+- [ ] Hide persistent IDs, raw ticks and internal counters outside debug modes unless they are directly useful to the player.
+- [ ] Keep contextual player information readable, such as remaining offer duration expressed in days.
+- [ ] Replace development-only commands with contextual gameplay triggers where appropriate.
+- [ ] Add a mod settings entry to show advanced GateRim SG-1 diagnostics.
+
+### Wiki visuals and Workshop preparation
+
+- [ ] Create the wiki-asset folder structure only when definitive images start to exist.
+- [ ] Capture final or near-final UI buttons, larva, tretonin vial, buildings, clothing, boots, gloves, weapons and representative events.
+- [ ] Reuse selected wiki images later for the Steam Workshop page.
+- [ ] Keep current temporary textures explicitly provisional.
+
+### New chapter
+
+- [ ] Start `0.2.x` with a Stargate-foundation prototype after the cleanup and equipment baseline.
 
 ## Completed milestones
 

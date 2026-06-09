@@ -24,6 +24,15 @@ The additional medicine is intentionally limited to the trusted tier and to
 independent deliveries. It provides a concrete positive diplomatic reward
 without introducing traders, quests or a new interface yet.
 
+## Next maintenance focus
+
+Before the next gameplay expansion, the project will perform a consolidation pass:
+
+- fix the remaining French translation-report errors;
+- audit player-facing information, debug-only diagnostics and conditional gizmos;
+- prepare a mod-specific debug option before the `0.2.x` Stargate chapter;
+- preserve the future wiki-image and Workshop-asset plan without claiming final visuals yet.
+
 ## First playable milestone
 
 - [x] Inheritable Jaffa xenotype foundation
@@ -31,15 +40,18 @@ without introducing traders, quests or a new interface yet.
 - [x] Goa'uld host xenotype prototype
 - [x] Free Goa'uld symbiote pawn prototype
 - [x] Recent Goa'uld implantation Hediff prototype
-- [ ] Automatic Prim'ta workflow
-- [ ] Forced Goa'uld implantation
-- [ ] Ritual Goa'uld implantation
-- [ ] Host conversion after the critical phase
+- [x] Automatic Prim'ta workflow
+- [x] Forced Goa'uld implantation
+- [x] Ritual Goa'uld implantation
+- [x] Host conversion after the critical phase
 - [ ] Goa'uld faction
 - [ ] Jaffa pawn kinds
 - [ ] Ma'Tok staff weapon
 - [ ] Zat'nik'tel
 - [ ] Generic Jaffa armor
+- [ ] Generic human SG-team uniform
+- [ ] SG tactical boots
+- [ ] SG tactical gloves
 
 ## Development notes
 
