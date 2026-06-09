@@ -88,7 +88,8 @@ namespace GateRimSG1.Goauld
                         record,
                         "GR_TokraTherapeuticOpportunity_Expired",
                         "expired",
-                        vanishSymbiote: true);
+                        vanishSymbiote: true,
+                        outcome: TokraTherapeuticOfferOutcome.Expired);
                 }
             }
         }
@@ -143,9 +144,14 @@ namespace GateRimSG1.Goauld
                 return string.Empty;
             }
 
-            return "GR_TokraTherapeuticOpportunity_Inspect"
+            string offerInspect = "GR_TokraTherapeuticOpportunity_Inspect"
                 .Translate(remainingDays)
                 .ToString();
+
+            string trustInspect
+                = GameComponent_TokraTrustTracker.GetInspectString();
+
+            return offerInspect + "\n" + trustInspect;
         }
 
         public static bool TryRejectOffer(Pawn symbiote)
@@ -165,7 +171,8 @@ namespace GateRimSG1.Goauld
                 record,
                 "GR_TokraTherapeuticOpportunity_Refused",
                 "refused",
-                vanishSymbiote: true);
+                vanishSymbiote: true,
+                outcome: TokraTherapeuticOfferOutcome.Refused);
 
             return true;
         }
@@ -185,6 +192,8 @@ namespace GateRimSG1.Goauld
 
             tracker.activeOffers.Remove(record);
             OrderEscortDeparture(record.EscortPawns);
+            GameComponent_TokraTrustTracker.NotifyTherapeuticOfferOutcome(
+                TokraTherapeuticOfferOutcome.Accepted);
 
             GR_Log.Message(
                 $"Closed accepted Tok'ra therapeutic opportunity for "
@@ -235,7 +244,8 @@ namespace GateRimSG1.Goauld
             TokraTherapeuticOpportunityRecord record,
             string messageKey,
             string logReason,
-            bool vanishSymbiote)
+            bool vanishSymbiote,
+            TokraTherapeuticOfferOutcome outcome)
         {
             if (record == null)
             {
@@ -260,6 +270,9 @@ namespace GateRimSG1.Goauld
                     symbiote.Destroy(DestroyMode.Vanish);
                 }
             }
+
+            GameComponent_TokraTrustTracker.NotifyTherapeuticOfferOutcome(
+                outcome);
 
             GR_Log.Message(
                 $"Closed {logReason} Tok'ra therapeutic opportunity for "

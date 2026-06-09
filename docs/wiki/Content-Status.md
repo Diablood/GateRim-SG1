@@ -73,3 +73,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un pawn atteint d'une affection biologique curable non traumatique ; offre temporaire de 2 jours avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
+
+| Confiance Tok'ra | Jauge persistante légère de `-100` à `100` alimentée par l'acceptation, le refus ou l'expiration des offres thérapeutiques | 0.1.50-dev |

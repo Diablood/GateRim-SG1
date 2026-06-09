@@ -4,6 +4,7 @@
 > Version d'introduction : 0.1.47-dev
 > Escorte légère : 0.1.48-dev
 > Offre temporaire : 0.1.49-dev
+> Fondation de confiance : 0.1.50-dev
 
 ## Principe
 
@@ -81,7 +82,22 @@ disparition du symbiote libre puis départ de l'escorte
 
 Le délai restant persiste après sauvegarde et rechargement.
 
+## Confiance Tok'ra
+
+Depuis `0.1.50-dev`, l'issue de chaque offre modifie une jauge persistante de
+confiance Tok'ra :
+
+```text
+acceptation = +5
+refus explicite = -1
+expiration sans réponse = -2
+```
+
+Le symbiote proposé affiche cette confiance sous la durée restante. Cette jauge
+prépare les futures quêtes et relations avec la résistance Tok'ra sans activer
+encore une diplomatie complète sur la carte du monde.
+
 ## Limites actuelles
 
-L'escorte est volontairement légère. Les quêtes, conséquences diplomatiques et
-refus mémorisés seront étudiés dans des jalons séparés.
+L'escorte et la confiance restent volontairement légères. Les quêtes, seuils de
+récompense et relations vanilla seront étudiés dans des jalons séparés.

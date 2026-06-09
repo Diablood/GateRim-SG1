@@ -161,3 +161,14 @@ libre arrive avec une petite escorte de 1 à 2 hôtes volontaires. L'implantatio
 reste un choix manuel soumis à confirmation. Depuis `0.1.49-dev`, l'offre est
 limitée à deux jours : le joueur peut l'accepter, la refuser explicitement ou
 la laisser expirer. Dans les trois cas, l'escorte repart proprement.
+
+
+## Confiance Tok'ra
+
+Depuis `0.1.50-dev`, les issues des offres thérapeutiques alimentent une
+[jauge persistante de confiance Tok'ra](Tokra-Trust). L'acceptation augmente la
+confiance, le refus explicite l'abaisse légèrement et l'expiration sans réponse
+la réduit davantage.
+
+La faction reste masquée : cette jauge constitue une fondation légère avant
+l'introduction de quêtes et de relations diplomatiques plus complètes.

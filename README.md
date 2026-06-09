@@ -13,16 +13,17 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.49-dev — Add Tok'ra therapeutic offer lifecycle
+### 0.1.50-dev — Add lightweight Tok'ra trust foundation
 
-The escorted therapeutic opportunity is now temporary. Its free Tok'ra
-symbiote remains available for two RimWorld days, exposes the remaining time in
-its inspection text and provides an explicit refusal command.
+Therapeutic-offer outcomes now update a persistent Tok'ra trust score while the
+runtime faction remains hidden from normal world diplomacy. Accepting an offer
+adds `+5`, refusing explicitly applies `-1`, and letting an offer expire applies
+`-2`.
 
-Expiration, refusal and successful implantation all close the tracked offer and
-ask the Tok'ra escort to leave the map through vanilla lord behavior. The
-lifecycle is persisted across save and reload. Quests and diplomatic
-consequences remain planned separately.
+Tracked therapeutic symbiotes display the current trust score alongside the
+remaining offer duration. This mod-owned foundation is intentionally lightweight
+and prepares future quests, diplomatic thresholds and a later transition toward
+broader faction interactions.
 
 ## First playable milestone
 

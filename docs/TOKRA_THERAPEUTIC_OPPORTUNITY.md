@@ -3,7 +3,8 @@
 ## Status
 
 Prototype introduced in `0.1.47-dev`, with a lightweight peaceful escort added
-in `0.1.48-dev` and a persistent time-limited lifecycle added in `0.1.49-dev`.
+in `0.1.48-dev`, a persistent time-limited lifecycle added in `0.1.49-dev` and
+a lightweight Tok'ra trust foundation added in `0.1.50-dev`.
 
 ## Purpose
 
@@ -57,7 +58,23 @@ successful implantation all close the record and ask the escort to leave
 through vanilla `LordJob_TravelAndExit` behavior. Save and reload preserve the
 remaining duration.
 
+## Lightweight trust foundation
+
+Since `0.1.50-dev`, therapeutic-offer outcomes update a persistent mod-owned
+Tok'ra trust score while the runtime faction remains hidden from normal world
+diplomacy:
+
+```text
+accepted offer = +5 trust
+explicit refusal = -1 trust
+unanswered expiration = -2 trust
+```
+
+Tracked free symbiotes display the current score below the remaining offer
+duration. The score is clamped between `-100` and `100` and persists across save
+and reload. It prepares later quest thresholds and broader faction relations.
+
 ## Current limits
 
-The escort is intentionally lightweight. Quests, medical envoys, remembered
-refusals and diplomatic consequences remain separate future milestones.
+The escort and trust layer are intentionally lightweight. Quests, medical
+envoys and vanilla-goodwill integration remain separate future milestones.

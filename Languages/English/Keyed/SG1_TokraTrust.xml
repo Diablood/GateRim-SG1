@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <GR_TokraTrust_Inspect>Tok'ra trust: {0}</GR_TokraTrust_Inspect>
+    <GR_TokraTrust_OfferAccepted>Tok'ra trust increased after the therapeutic offer was accepted: {0} ({1}).</GR_TokraTrust_OfferAccepted>
+    <GR_TokraTrust_OfferRefused>Tok'ra trust decreased slightly after the therapeutic offer was refused: {0} ({1}).</GR_TokraTrust_OfferRefused>
+    <GR_TokraTrust_OfferExpired>Tok'ra trust decreased after the therapeutic offer expired without an answer: {0} ({1}).</GR_TokraTrust_OfferExpired>
+    <GR_TokraTrust_Changed>Tok'ra trust changed: {0} ({1}).</GR_TokraTrust_Changed>
+</LanguageData>

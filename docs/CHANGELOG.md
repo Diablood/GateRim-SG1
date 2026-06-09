@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.50-dev — Add lightweight Tok'ra trust foundation
+- Add persistent `GameComponent_TokraTrustTracker` storage clamped between `-100` and `100`.
+- Increase Tok'ra trust by `+5` when a therapeutic offer is accepted.
+- Reduce Tok'ra trust by `-1` after an explicit refusal and by `-2` after an unanswered expiration.
+- Display the current trust score below the remaining duration of tracked therapeutic symbiotes.
+- Add bilingual keyed messages and logs for each trust adjustment.
+- Keep the Tok'ra runtime faction hidden and defer vanilla-goodwill integration until broader diplomacy is introduced.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.1.49-dev — Add Tok'ra therapeutic offer lifecycle
 - Add persistent `GameComponent_TokraTherapeuticOpportunityTracker` records for escorted offers.
 - Keep each offer available for two RimWorld days.
