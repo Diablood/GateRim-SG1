@@ -425,6 +425,30 @@
 - [ ] Confirm surgery remains available independently
 - [ ] Publish the updated player wiki
 
+## 0.1.39-dev — Add Tok'ra foundation prototype
+- [x] Add hidden non-generated `SG1_Tokra` faction foundation
+- [x] Remove unsupported Tok'ra FactionDef placeholder fields
+- [x] Add the required Tok'ra raid-loot curve for clean Def validation
+- [x] Add `SG1_TokraSymbiote`
+- [x] Create free symbiotes with explicit persistent origin
+- [x] Disable autonomous hunting for Tok'ra
+- [x] Hide forced implantation for Tok'ra
+- [x] Hide Goa'uld ritual implantation for Tok'ra
+- [x] Hide the autonomous-hunt toggle for Tok'ra
+- [x] Add explicit voluntary Tok'ra host targeting
+- [x] Restrict voluntary targets to nearby player-controlled compatible humanoids
+- [x] Preserve Tok'ra origin through save/reload and extraction
+- [x] Return extracted Tok'ra identities as the non-hunting pawn variant
+- [x] Generalize shared adult-host descriptions for Goa'uld and Tok'ra origins
+- [x] Add bilingual text, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm Tok'ra dev spawning and inspection data
+- [ ] Confirm Tok'ra-only voluntary gizmo
+- [ ] Confirm voluntary implantation, conversion and save persistence
+- [ ] Confirm extraction returns the Tok'ra variant
+- [ ] Confirm normal Goa'uld workflows remain unchanged
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -518,3 +542,12 @@
 - [ ] Turn the current incubation basin into assisted maturation infrastructure
 - [ ] Integrate Goa'uld factions, Tok'ra, Free Jaffa, trade, quests and events
 - [ ] Revisit this feature after the first Tok'ra iteration
+
+
+## Future Tok'ra expansion
+- [ ] Generate the Tok'ra world faction after pawn-group definitions exist
+- [ ] Add Tok'ra settlements, visitors, traders and diplomacy
+- [ ] Add voluntary-host recruitment events and quests
+- [ ] Add Tok'ra-specific host visuals and cultural content
+- [ ] Add named Tok'ra content when the generic foundation is stable
+- [ ] Revisit queen-origin biology and Egeria-inspired content afterward

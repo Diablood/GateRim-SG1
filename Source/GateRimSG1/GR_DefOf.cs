@@ -9,6 +9,8 @@ namespace GateRimSG1
         public static HediffDef SG1_GoauldRecentImplantation;
         public static HediffDef SG1_GoauldHostSymbiote;
         public static PawnKindDef SG1_GoauldSymbiote;
+        public static PawnKindDef SG1_TokraSymbiote;
+        public static FactionDef SG1_Tokra;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
         public static GeneDef SG1_JaffaLineage;

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <PawnKindDef ParentName="AnimalKindBase">
+        <defName>SG1_TokraSymbiote</defName>
+        <label>Tok'ra symbiote</label>
+        <race>SG1_TokraSymbiote</race>
+        <combatPower>15</combatPower>
+        <ecoSystemWeight>0</ecoSystemWeight>
+        <wildGroupSize>1</wildGroupSize>
+        <lifeStages>
+            <li>
+                <bodyGraphicData>
+                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>0.55</drawSize>
+                </bodyGraphicData>
+                <dessicatedBodyGraphicData>
+                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>0.55</drawSize>
+                </dessicatedBodyGraphicData>
+            </li>
+        </lifeStages>
+    </PawnKindDef>
+</Defs>

@@ -38,9 +38,20 @@ Prim'ta larvae
 ```text
 stabilize Jaffa loop
     ↓
-introduce Tok'ra iteration
+introduce Tok'ra foundation
+    ↓
+expand Tok'ra iteration
     ↓
 design queen origin
     ↓
 replace abstract larva generation with assisted maturation
 ```
+
+
+## Tok'ra foundation milestone
+
+`0.1.39-dev` introduces the first non-hunting Tok'ra symbiote and voluntary host
+flow.
+
+Queen-origin biology remains deferred until Tok'ra settlements, supply chains,
+quests and broader faction gameplay are better defined.

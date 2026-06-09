@@ -69,3 +69,12 @@ Depuis `0.1.25-dev`, un [bassin rituel Goa'uld](Ritual-Basin) doit rester proche
 - extraction spécialisée ;
 - différenciation claire entre Goa'uld et Tok'ra ;
 - dépendance future des Jaffa au symbiote ou à la trétonine.
+
+
+## Symbiotes Tok'ra
+
+Depuis `0.1.39-dev`, un [symbiote Tok'ra](Tokra) libre peut être généré en mode
+développeur.
+
+Contrairement au Goa'uld hostile, il ne chasse pas et n'utilise que
+l'implantation volontaire sur un hôte contrôlé par le joueur.

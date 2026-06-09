@@ -59,3 +59,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Production de trétonine | Recette au laboratoire de drogues : 1 larve + 1 médicament → 5 doses | 0.1.37-dev |
 
 | Cérémonie formelle du Prim'ta | Rite temporisé au bassin rituel, avec consommation d'une larve proche | 0.1.38-dev |
+
+| Tok'ra | Fondation masquée de faction, symbiote libre testable et implantation volontaire | 0.1.39-dev |

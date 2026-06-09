@@ -14,24 +14,22 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.38-dev — Add formal Prim'ta ceremony prototype
+### 0.1.39-dev — Add Tok'ra foundation prototype
 
-The Goa'uld ritual basin now supports a formal Jaffa rite:
+The first Tok'ra adult-symbiote path is now testable through developer spawning:
 
 ```text
-ritual basin
-    +
-eligible nearby Jaffa
-    +
-physical nearby Prim'ta larva
-    ↓ 600-tick ceremony
-Prim'ta implanted
+free Tok'ra symbiote
+    ↓ no autonomous hunt, no forced implantation
+choose nearby player-controlled host
+    ↓ voluntary implantation
+persistent Tok'ra identity
+    ↓ extraction
+free non-hunting Tok'ra symbiote
 ```
 
-The timed rite persists through save and reload, consumes the larva only on
-successful completion and remains separate from the medical-operation workflow.
-
-Future optional Ideology integration can reuse this Core + Biotech fallback.
+A hidden, non-generated Tok'ra `FactionDef` is included as a safe anchor for
+future settlements, pawn groups, traders, diplomacy and queen-origin biology.
 
 ## First playable milestone
 

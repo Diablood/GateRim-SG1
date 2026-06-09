@@ -55,7 +55,8 @@ namespace GateRimSG1.Goauld
 
             if (!respawningAfterLoad)
             {
-                autonomousHuntingEnabled = Props.autonomousHuntingEnabled;
+                autonomousHuntingEnabled = Props.autonomousHuntingEnabled
+                    && Props.symbioteOrigin != GoauldSymbioteOrigin.Tokra;
                 nextAutonomousScanTick = CurrentGameTick() + Props.autonomousScanIntervalTicks;
 
                 GR_Log.Message(
@@ -147,30 +148,50 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            yield return new Command_Action
+            if (Props.allowForcedImplantation)
             {
-                defaultLabel = "GR_ForcedImplantation_CommandLabel".Translate(),
-                defaultDesc = "GR_ForcedImplantation_CommandDescription".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_ForcedImplantation"),
-                action = TryImplantAdjacentHostManually
-            };
+                yield return new Command_Action
+                {
+                    defaultLabel = "GR_ForcedImplantation_CommandLabel".Translate(),
+                    defaultDesc = "GR_ForcedImplantation_CommandDescription".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_ForcedImplantation"),
+                    action = TryImplantAdjacentHostManually
+                };
+            }
 
-            yield return new Command_Action
+            if (Props.allowRitualImplantation)
             {
-                defaultLabel = "GR_RitualImplantation_CommandLabel".Translate(),
-                defaultDesc = "GR_RitualImplantation_CommandDescription".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
-                action = BeginRitualTargeting
-            };
+                yield return new Command_Action
+                {
+                    defaultLabel = "GR_RitualImplantation_CommandLabel".Translate(),
+                    defaultDesc = "GR_RitualImplantation_CommandDescription".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                    action = BeginRitualTargeting
+                };
+            }
 
-            yield return new Command_Toggle
+            if (Props.allowVoluntaryImplantation)
             {
-                defaultLabel = "GR_AutonomousHunt_CommandLabel".Translate(),
-                defaultDesc = "GR_AutonomousHunt_CommandDescription".Translate(),
-                icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_AutonomousHunt"),
-                isActive = () => autonomousHuntingEnabled,
-                toggleAction = ToggleAutonomousHunting
-            };
+                yield return new Command_Action
+                {
+                    defaultLabel = "GR_TokraVoluntaryImplantation_CommandLabel".Translate(),
+                    defaultDesc = "GR_TokraVoluntaryImplantation_CommandDescription".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                    action = BeginVoluntaryTokraTargeting
+                };
+            }
+
+            if (Props.allowAutonomousHuntToggle)
+            {
+                yield return new Command_Toggle
+                {
+                    defaultLabel = "GR_AutonomousHunt_CommandLabel".Translate(),
+                    defaultDesc = "GR_AutonomousHunt_CommandDescription".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_AutonomousHunt"),
+                    isActive = () => autonomousHuntingEnabled,
+                    toggleAction = ToggleAutonomousHunting
+                };
+            }
         }
 
         public override string CompInspectStringExtra()
@@ -251,12 +272,11 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            bool requiresContact = mode != GoauldImplantationMode.RitualControlled;
-
             if (!IsCompatibleHost(target)
-                || (requiresContact && !IsAdjacentOrSameCell(symbiote, target))
-                || (!requiresContact
-                    && !IsValidRitualTarget(symbiote, target)))
+                || !IsValidImplantationPosition(
+                    symbiote,
+                    target,
+                    mode))
             {
                 return false;
             }
@@ -304,7 +324,7 @@ namespace GateRimSG1.Goauld
                     target.LabelShortCap,
                     transferredId),
                 target,
-                MessageTypeDefOf.NegativeEvent,
+                GetImplantationMessageType(mode),
                 historical: true);
 
             symbiote.Destroy(DestroyMode.Vanish);
@@ -338,6 +358,141 @@ namespace GateRimSG1.Goauld
             }
 
             return true;
+        }
+
+        private bool IsValidImplantationPosition(
+            Pawn symbiote,
+            Pawn target,
+            GoauldImplantationMode mode)
+        {
+            switch (mode)
+            {
+                case GoauldImplantationMode.RitualControlled:
+                    return IsValidRitualTarget(symbiote, target);
+
+                case GoauldImplantationMode.VoluntaryTokra:
+                    return IsValidVoluntaryTokraTarget(symbiote, target);
+
+                default:
+                    return IsAdjacentOrSameCell(symbiote, target);
+            }
+        }
+
+        private void BeginVoluntaryTokraTargeting()
+        {
+            Pawn symbiote = SymbiotePawn;
+
+            if (symbiote == null
+                || !symbiote.Spawned
+                || symbiote.Destroyed)
+            {
+                GR_Log.Warning(
+                    "Voluntary Tok'ra implantation targeting requested from an "
+                    + "unavailable free symbiote pawn.");
+
+                return;
+            }
+
+            if (FindClosestValidVoluntaryTokraTarget(symbiote) == null)
+            {
+                Messages.Message(
+                    "GR_TokraVoluntaryImplantation_NoNearbyTarget".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            TargetingParameters targetingParameters = new TargetingParameters
+            {
+                canTargetPawns = true,
+                canTargetLocations = false,
+                validator = delegate(TargetInfo targetInfo)
+                {
+                    return IsValidVoluntaryTokraTarget(
+                        symbiote,
+                        targetInfo.Thing as Pawn);
+                }
+            };
+
+            Find.Targeter.BeginTargeting(
+                targetingParameters,
+                delegate(LocalTargetInfo targetInfo)
+                {
+                    Pawn selectedTarget = targetInfo.Thing as Pawn;
+
+                    if (!IsValidVoluntaryTokraTarget(
+                            symbiote,
+                            selectedTarget))
+                    {
+                        Messages.Message(
+                            "GR_TokraVoluntaryImplantation_InvalidTarget".Translate(),
+                            symbiote,
+                            MessageTypeDefOf.RejectInput,
+                            historical: false);
+
+                        return;
+                    }
+
+                    TryImplantHost(
+                        selectedTarget,
+                        GoauldImplantationMode.VoluntaryTokra);
+                });
+        }
+
+        private bool IsValidVoluntaryTokraTarget(
+            Pawn symbiote,
+            Pawn candidate)
+        {
+            return IsCompatibleHost(candidate)
+                && candidate.Faction == Faction.OfPlayer
+                && IsWithinRadius(
+                    symbiote,
+                    candidate,
+                    Props.voluntaryImplantationRange)
+                && symbiote.CanReach(
+                    candidate,
+                    PathEndMode.Touch,
+                    Danger.Deadly);
+        }
+
+        private Pawn FindClosestValidVoluntaryTokraTarget(Pawn symbiote)
+        {
+            Map map = symbiote?.Map;
+
+            if (map?.mapPawns?.AllPawnsSpawned == null)
+            {
+                return null;
+            }
+
+            Pawn bestTarget = null;
+            float bestDistanceSquared = float.MaxValue;
+            IReadOnlyList<Pawn> candidates = map.mapPawns.AllPawnsSpawned;
+
+            for (int index = 0; index < candidates.Count; index++)
+            {
+                Pawn candidate = candidates[index];
+
+                if (!IsValidVoluntaryTokraTarget(
+                        symbiote,
+                        candidate))
+                {
+                    continue;
+                }
+
+                float distanceSquared = DistanceSquared(
+                    symbiote,
+                    candidate);
+
+                if (distanceSquared < bestDistanceSquared)
+                {
+                    bestTarget = candidate;
+                    bestDistanceSquared = distanceSquared;
+                }
+            }
+
+            return bestTarget;
         }
 
         private void TryImplantAdjacentHostManually()
@@ -934,6 +1089,9 @@ namespace GateRimSG1.Goauld
                 case GoauldImplantationMode.RitualControlled:
                     return "Ritual";
 
+                case GoauldImplantationMode.VoluntaryTokra:
+                    return "Voluntary Tok'ra";
+
                 default:
                     return "Manual";
             }
@@ -950,9 +1108,20 @@ namespace GateRimSG1.Goauld
                 case GoauldImplantationMode.RitualControlled:
                     return "GR_RitualImplantation_Success";
 
+                case GoauldImplantationMode.VoluntaryTokra:
+                    return "GR_TokraVoluntaryImplantation_Success";
+
                 default:
                     return "GR_ForcedImplantation_Success";
             }
+        }
+
+        private static MessageTypeDef GetImplantationMessageType(
+            GoauldImplantationMode mode)
+        {
+            return mode == GoauldImplantationMode.VoluntaryTokra
+                ? MessageTypeDefOf.PositiveEvent
+                : MessageTypeDefOf.NegativeEvent;
         }
 
         private static bool IsAdjacentOrSameCell(Pawn first, Pawn second)
@@ -989,7 +1158,9 @@ namespace GateRimSG1.Goauld
         {
             if (symbioteData == null)
             {
-                symbioteData = GoauldSymbioteData.CreateFree(CurrentGameTick());
+                symbioteData = GoauldSymbioteData.CreateFree(
+                    CurrentGameTick(),
+                    Props.symbioteOrigin);
             }
             else
             {
@@ -1027,6 +1198,7 @@ namespace GateRimSG1.Goauld
     {
         ManualContact,
         AutonomousContact,
-        RitualControlled
+        RitualControlled,
+        VoluntaryTokra
     }
 }

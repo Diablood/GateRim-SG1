@@ -48,4 +48,10 @@ Bassin rituel : {1}
 Durée restante du rituel : {2} / {3} ticks</GR_RitualCeremony_Inspect>
     <GR_RitualCeremony_NoBasinNearby>Un bassin rituel Goa'uld proche est requis pour une implantation contrôlée.</GR_RitualCeremony_NoBasinNearby>
     <GR_RitualCeremony_MissingBasin>bassin rituel manquant</GR_RitualCeremony_MissingBasin>
+    <GR_TokraVoluntaryImplantation_CommandLabel>Implantation Tok'ra volontaire</GR_TokraVoluntaryImplantation_CommandLabel>
+    <GR_TokraVoluntaryImplantation_CommandDescription>Choisis un humanoïde compatible proche contrôlé par le joueur, qui acceptera volontairement d'héberger ce symbiote Tok'ra. Le symbiote ne chasse pas, ne peut pas forcer l'implantation et conserve la même identité persistante.</GR_TokraVoluntaryImplantation_CommandDescription>
+    <GR_TokraVoluntaryImplantation_NoNearbyTarget>Aucun humanoïde compatible proche contrôlé par le joueur n'est disponible pour une implantation Tok'ra volontaire.</GR_TokraVoluntaryImplantation_NoNearbyTarget>
+    <GR_TokraVoluntaryImplantation_InvalidTarget>Ce pawn n'est pas un hôte compatible proche contrôlé par le joueur pour une implantation Tok'ra volontaire.</GR_TokraVoluntaryImplantation_InvalidTarget>
+    <GR_TokraVoluntaryImplantation_Success>{0} a volontairement accepté le symbiote Tok'ra {1}.</GR_TokraVoluntaryImplantation_Success>
+    <GR_TokraHostConversion_Success>{0} est désormais en symbiose Tok'ra active avec le symbiote {1}.</GR_TokraHostConversion_Success>
 </LanguageData>

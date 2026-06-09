@@ -247,3 +247,13 @@ Oui. Depuis `0.1.38-dev`, utilise un bassin rituel Goa'uld pour lancer une
 
 Le Jaffa et une larve physique doivent rester proches du bassin pendant `600`
 ticks. La chirurgie médicale reste également disponible.
+
+
+## Les Tok'ra sont-ils déjà disponibles ?
+
+Partiellement. Depuis `0.1.39-dev`, un `symbiote Tok'ra` peut être généré en
+mode développeur afin de tester l'implantation volontaire et la persistance de
+son identité après extraction.
+
+La faction mondiale, les colonies, les visiteurs, les marchands et les quêtes
+Tok'ra seront ajoutés ultérieurement.

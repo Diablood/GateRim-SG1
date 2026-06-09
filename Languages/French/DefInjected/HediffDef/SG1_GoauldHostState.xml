@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
-    <SG1_GoauldHostSymbiote.label>symbiote Goa'uld adulte</SG1_GoauldHostSymbiote.label>
-    <SG1_GoauldHostSymbiote.description>Un symbiote Goa'uld adulte réside dans cet hôte et a établi son contrôle. Le parasite lui confère d'importants avantages biologiques tout en conservant sa propre identité persistante. Le xenotype germinal d'origine de l'hôte reste inchangé, car la possession adulte est acquise au cours de la vie.</SG1_GoauldHostSymbiote.description>
-    <SG1_GoauldHostSymbiote.stages.0.label>hôte Goa'uld actif</SG1_GoauldHostSymbiote.stages.0.label>
+    <SG1_GoauldHostSymbiote.label>symbiote adulte de lignée Goa'uld</SG1_GoauldHostSymbiote.label>
+    <SG1_GoauldHostSymbiote.description>Un symbiote adulte d'origine Goa'uld réside dans cet hôte. Selon son origine persistante, cette relation peut représenter le contrôle parasitaire d'un Goa'uld ou une symbiose Tok'ra volontaire. Le symbiote confère d'importants avantages biologiques tout en préservant sa propre identité. Le xenotype germinal d'origine de l'hôte reste inchangé, car l'implantation adulte est acquise au cours de la vie.</SG1_GoauldHostSymbiote.description>
+    <SG1_GoauldHostSymbiote.stages.0.label>hôte actif d'un symbiote adulte</SG1_GoauldHostSymbiote.stages.0.label>
 </LanguageData>

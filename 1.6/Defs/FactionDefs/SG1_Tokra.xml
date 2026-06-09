@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <FactionDef>
+        <defName>SG1_Tokra</defName>
+        <label>Tok'ra</label>
+        <description>A hidden foundation definition for the Tok'ra resistance. The Tok'ra seek voluntary hosts and oppose Goa'uld domination. This first prototype does not generate settlements, visitors, raids or world factions automatically.</description>
+        <fixedName>Tok'ra</fixedName>
+        <humanlikeFaction>true</humanlikeFaction>
+        <hidden>true</hidden>
+        <techLevel>Spacer</techLevel>
+        <backstoryCategories>
+            <li>Civil</li>
+        </backstoryCategories>
+        <permanentEnemy>false</permanentEnemy>
+        <canMakeRandomly>false</canMakeRandomly>
+        <requiredCountAtGameStart>0</requiredCountAtGameStart>
+        <maxCountAtGameStart>0</maxCountAtGameStart>
+        <settlementGenerationWeight>0</settlementGenerationWeight>
+        <raidLootValueFromPointsCurve>
+            <points>
+                <li>(35, 15)</li>
+                <li>(100, 120)</li>
+                <li>(1000, 500)</li>
+                <li>(2000, 800)</li>
+                <li>(4000, 1000)</li>
+            </points>
+        </raidLootValueFromPointsCurve>
+    </FactionDef>
+</Defs>

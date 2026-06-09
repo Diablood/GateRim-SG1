@@ -18,7 +18,7 @@ Ce wiki présente les races, factions, objets, événements et mécaniques parti
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur l'amélioration de la chaîne pharmaceutique de trétonine, les variantes culturelles selon les factions, les pénalités éventuelles de congélation profonde, les Tok'ra et l'origine future des larves via une reine Goa'uld. Une intégration optionnelle avec Ideology est prévue ultérieurement.
+Les prochains lots porteront sur l'expansion de la faction Tok'ra, l'amélioration de la chaîne pharmaceutique de trétonine, les variantes culturelles selon les factions, les pénalités éventuelles de congélation profonde et l'origine future des larves via une reine. Une intégration optionnelle avec Ideology est prévue ultérieurement.
 
 ## Liens utiles
 

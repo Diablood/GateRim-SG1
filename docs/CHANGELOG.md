@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.39-dev
+- Remove unsupported Tok'ra `FactionDef` placeholder fields and add the required raid-loot curve.
+- Add the hidden non-generated `SG1_Tokra` faction foundation.
+- Add the dev-spawnable `SG1_TokraSymbiote` pawn variant.
+- Add explicit persistent-origin creation for free adult symbiotes.
+- Disable forced implantation, ritual implantation and autonomous hunting for Tok'ra.
+- Add nearby player-controlled voluntary-host targeting.
+- Preserve Tok'ra origin through save/reload and extraction.
+- Return extracted Tok'ra identities as the non-hunting Tok'ra pawn variant.
+- Generalize shared adult-host descriptions for Goa'uld and Tok'ra origins.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.38-dev
 - Register `SG1_GoauldRitualBasin` with `<tickerType>Normal</tickerType>` so the timed ceremony progresses.
 - Add `CompProperties_JaffaPrimtaCeremony`.

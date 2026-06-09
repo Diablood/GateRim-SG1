@@ -9,6 +9,7 @@
 
 - [Jaffa](Jaffa)
 - [Goa'uld](Goauld)
+- [Tok'ra](Tokra)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

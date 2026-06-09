@@ -2,8 +2,8 @@
 <Defs>
     <HediffDef>
         <defName>SG1_GoauldRecentImplantation</defName>
-        <label>recent Goa'uld implantation</label>
-        <description>An adult Goa'uld symbiote has recently entered this host and is attaching itself to the nervous system. The victim suffers a painful critical phase while the parasite attempts to establish control. After one in-game day, the same persistent symbiote identity automatically moves into the active Goa'uld host state.</description>
+        <label>recent adult-symbiote implantation</label>
+        <description>An adult symbiote of Goa'uld origin has recently entered this host and is attaching itself to the nervous system. The relationship may be forced Goa'uld possession or voluntary Tok'ra symbiosis, depending on the persistent origin of the symbiote. After one in-game day, the same identity moves automatically into the active adult-host state.</description>
         <hediffClass>HediffWithComps</hediffClass>
         <isBad>true</isBad>
         <stages>

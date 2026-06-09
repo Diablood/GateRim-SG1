@@ -294,3 +294,16 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 6. Sélectionne le Jaffa.
 7. Maintiens la cible et la larve près du bassin pendant `600` ticks.
 8. Vérifie la consommation de la larve et l'ajout du Prim'ta.
+
+
+## Tester un symbiote Tok'ra
+
+1. Fais apparaître un `symbiote Tok'ra` en mode développeur.
+2. Sélectionne-le.
+3. Vérifie que seule `Implantation Tok'ra volontaire` est disponible.
+4. Place un colon humanoïde compatible adulte dans un rayon de `12` cases.
+5. Lance la commande et cible ce colon.
+6. Vérifie l'origine `Tok'ra` dans les informations persistantes.
+7. Sauvegarde puis recharge.
+8. Effectue une extraction pendant l'implantation récente.
+9. Vérifie que le symbiote libre réapparu reste un `symbiote Tok'ra`.

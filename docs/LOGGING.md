@@ -251,3 +251,17 @@ Loaded formal Jaffa Prim'ta ceremony for <pawn> near basin <thing> with <remaini
 Completed formal Jaffa Prim'ta ceremony for <pawn> near basin <thing>.
 Cancelled formal Jaffa Prim'ta ceremony for <pawn> near basin <thing> using larva <thing>.
 ```
+
+
+## Tok'ra-foundation diagnostics
+
+`0.1.39-dev` reuses the adult-symbiote lifecycle logs with origin-sensitive
+inspection data.
+
+The voluntary implantation log uses:
+
+```text
+Voluntary Tok'ra implantation transferred Goa'uld symbiote <id> from free pawn <pawn> into host <pawn>.
+```
+
+After extraction, the free pawn should remain the non-hunting Tok'ra variant.

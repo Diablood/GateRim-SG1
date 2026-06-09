@@ -62,7 +62,8 @@ namespace GateRimSG1.Goauld
             }
 
             Pawn freeSymbiote = PawnGenerator.GeneratePawn(
-                GR_DefOf.SG1_GoauldSymbiote);
+                GoauldSymbioteUtility.GetFreeSymbiotePawnKind(
+                    sourceComp.SymbioteData));
 
             if (freeSymbiote == null)
             {

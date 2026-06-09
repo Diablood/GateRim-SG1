@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.38.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.39.0 loaded.
    ```
 
 
@@ -558,3 +558,41 @@ Negative checks:
 6. Confirm the remaining duration decreases from `600 / 600`.
 7. Let the ceremony complete and confirm one larva is consumed.
 8. Confirm the Prim'ta Hediff is attached.
+
+
+## Tok'ra foundation prototype
+
+1. Build with `build.cmd`.
+2. Spawn `Tok'ra symbiote` through developer tools.
+3. Confirm the inspection panel displays origin `Tok'ra` and autonomous hunt `disabled`.
+4. Confirm only `Voluntary Tok'ra implantation` is available.
+5. Confirm forced implantation, Goa'uld ritual implantation and autonomous hunt are absent.
+6. Place a player-controlled compatible adult within `12` cells.
+7. Start voluntary implantation and target the colonist.
+8. Confirm recent implantation uses the same persistent ID.
+9. Save and reload.
+10. Wait one day and confirm active Tok'ra symbiosis.
+11. Repeat and extract during recent implantation.
+12. Confirm the free pawn returns as `Tok'ra symbiote`.
+13. Confirm origin remains `Tok'ra` and hunt remains disabled.
+14. Spawn a normal `Goa'uld symbiote`.
+15. Confirm previous Goa'uld forced, ritual and autonomous workflows remain available.
+
+
+## Tok'ra FactionDef loading regression
+
+1. Apply the `0.1.39-dev-r1` XML patch.
+2. Restart RimWorld completely.
+3. Open `Player.log`.
+4. Confirm the following errors no longer appear:
+   ```text
+   hairTags doesn't correspond to any field in type FactionDef
+   startingGoodwill doesn't correspond to any field in type FactionDef
+   naturalColonyGoodwill doesn't correspond to any field in type FactionDef
+   raidLootValueFromPointsCurve must be defined
+   ```
+5. Confirm:
+   ```text
+   [GateRim SG-1] Version 0.1.39.0 loaded.
+   ```
+6. Continue the Tok'ra voluntary-implantation regression tests.

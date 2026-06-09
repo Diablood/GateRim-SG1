@@ -107,12 +107,19 @@ namespace GateRimSG1.Goauld
                 $"Converted recent Goa'uld implantation {transferredId} "
                 + $"into active host state on {PawnDebugLabel(host)}.");
 
+            bool isTokra = transferredData.Origin
+                == GoauldSymbioteOrigin.Tokra;
+
             Messages.Message(
-                "GR_GoauldHostConversion_Success".Translate(
-                    host.LabelShortCap,
-                    transferredId),
+                (isTokra
+                    ? "GR_TokraHostConversion_Success"
+                    : "GR_GoauldHostConversion_Success").Translate(
+                        host.LabelShortCap,
+                        transferredId),
                 host,
-                MessageTypeDefOf.NegativeEvent,
+                isTokra
+                    ? MessageTypeDefOf.PositiveEvent
+                    : MessageTypeDefOf.NegativeEvent,
                 historical: true);
 
             return true;
