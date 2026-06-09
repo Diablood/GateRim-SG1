@@ -14,22 +14,15 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.42-dev — Add Tok'ra peaceful visitor prototype
+### 0.1.43-dev — Enable low-frequency natural Tok'ra visits
 
-A first peaceful Tok'ra visit can now be triggered manually through developer
-tools:
+The hidden Tok'ra faction can now appear through a rare storyteller-selected
+peaceful visitor incident after day `15`. A minimum refire delay of `30` days
+prevents repeated visits.
 
-```text
-Do incident
-    ↓
-Tok'ra peaceful visitors (test)
-    ↓
-1 to 3 non-player Tok'ra hosts
-```
-
-The first visit creates a hidden Tok'ra faction instance and later visits reuse
-it. The storyteller chance remains `0`: random visits, traders, settlements and
-world-faction generation are still disabled.
+Visitors are still non-traders. The Tok'ra faction remains hidden and
+disconnected from normal world generation, settlements and diplomacy. Developer
+tools remain available for controlled tests.
 
 ## First playable milestone
 

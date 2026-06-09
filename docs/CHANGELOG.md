@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.43-dev
+- Enable low-frequency storyteller-selected Tok'ra peaceful visits.
+- Set `baseChance = 0.10`.
+- Delay the first natural visit until day `15`.
+- Add a `30`-day minimum refire interval.
+- Keep developer-triggered incident testing available.
+- Keep the hidden Tok'ra faction disconnected from world generation, settlements, traders and diplomacy.
+- Remove `(test)` from English and French visitor labels.
+- Refresh the English and French hidden-faction descriptions.
+- Rename visitor logs to reflect natural incident support.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.1.42-dev
 - Create the hidden Tok'ra runtime faction with explicit `FactionGeneratorParms`.
 - Add the developer-triggered `SG1_TokraPeacefulVisitors` incident.

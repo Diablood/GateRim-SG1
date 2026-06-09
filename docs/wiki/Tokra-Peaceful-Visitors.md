@@ -1,18 +1,30 @@
 # Visiteurs Tok'ra pacifiques
 
-> Statut : Prototype de test  
+> Statut : Prototype naturel rare
 > Version d'introduction : 0.1.42-dev
+> Sélection naturelle activée : 0.1.43-dev
 
 ## Présentation
 
-Une première équipe Tok'ra pacifique peut désormais visiter la colonie.
+Une petite équipe Tok'ra pacifique peut désormais visiter naturellement la
+colonie à partir du jour `15`.
 
-Cette visite doit être déclenchée manuellement en mode développeur :
+```text
+sélection rare par le storyteller
+    ↓
+visiteurs Tok'ra pacifiques
+    ↓
+1 à 3 hôtes Tok'ra volontaires
+```
+
+Un délai minimal de `30` jours empêche deux visites rapprochées.
+
+La visite reste aussi déclenchable manuellement en mode développeur :
 
 ```text
 Do incident
     ↓
-visiteurs Tok'ra pacifiques (test)
+visiteurs Tok'ra pacifiques
 ```
 
 ## Composition
@@ -54,7 +66,6 @@ rechargement.
 ## Limites actuelles
 
 ```text
-aucune sélection aléatoire par le storyteller
 aucune colonie Tok'ra
 aucun marchand
 aucun stock commercial
@@ -62,5 +73,5 @@ aucune diplomatie complète
 aucune quête
 ```
 
-L'incident reste un outil de test contrôlé avant l'activation progressive de la
-présence Tok'ra dans le monde.
+Cette première présence naturelle reste volontairement rare avant l'ajout de
+relations Tok'ra plus complètes.

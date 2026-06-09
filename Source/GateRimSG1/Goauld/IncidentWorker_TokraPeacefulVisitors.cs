@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Developer-triggered peaceful Tok'ra visitor prototype.
+    /// Low-frequency peaceful Tok'ra visitor incident.
     ///
-    /// The incident deliberately has zero storyteller base chance. Trigger it
-    /// through developer tools while the Tok'ra faction remains hidden and
-    /// disconnected from normal world generation.
+    /// The storyteller may select this incident rarely while developer tools
+    /// remain available for controlled tests. The Tok'ra faction stays hidden
+    /// and disconnected from normal world generation.
     ///
     /// The worker creates the hidden Tok'ra faction on first use, then reuses
     /// the vanilla peaceful-visitor workflow with the nested Tok'ra Peaceful
@@ -45,7 +46,7 @@ namespace GateRimSG1.Goauld
             if (succeeded)
             {
                 GR_Log.Message(
-                    $"Started peaceful Tok'ra visitor prototype for "
+                    $"Started peaceful Tok'ra visitor group for "
                     + $"{tokraFaction.Name} with {parms.points} points.");
             }
 
@@ -67,9 +68,78 @@ namespace GateRimSG1.Goauld
             Pawn leader,
             bool traderExists)
         {
+            EnsureRelatedPawnsAreWorldManaged(pawns);
+
             SendStandardLetter(
                 parms,
                 pawns[0]);
+        }
+
+        private static void EnsureRelatedPawnsAreWorldManaged(List<Pawn> pawns)
+        {
+            if (pawns == null
+                || pawns.Count == 0
+                || Find.WorldPawns == null)
+            {
+                return;
+            }
+
+            Queue<Pawn> pendingPawns = new Queue<Pawn>();
+            HashSet<Pawn> visitedPawns = new HashSet<Pawn>();
+
+            for (int index = 0; index < pawns.Count; index++)
+            {
+                Pawn pawn = pawns[index];
+
+                if (pawn != null)
+                {
+                    pendingPawns.Enqueue(pawn);
+                }
+            }
+
+            while (pendingPawns.Count > 0)
+            {
+                Pawn pawn = pendingPawns.Dequeue();
+
+                if (pawn?.relations == null
+                    || !visitedPawns.Add(pawn))
+                {
+                    continue;
+                }
+
+                List<DirectPawnRelation> directRelations =
+                    pawn.relations.DirectRelations;
+
+                for (int index = 0; index < directRelations.Count; index++)
+                {
+                    Pawn relatedPawn = directRelations[index]?.otherPawn;
+
+                    if (relatedPawn == null
+                        || visitedPawns.Contains(relatedPawn))
+                    {
+                        continue;
+                    }
+
+                    pendingPawns.Enqueue(relatedPawn);
+
+                    if (relatedPawn.Spawned
+                        || relatedPawn.Destroyed
+                        || relatedPawn.Discarded
+                        || Find.WorldPawns.Contains(relatedPawn))
+                    {
+                        continue;
+                    }
+
+                    Find.WorldPawns.PassToWorld(
+                        relatedPawn,
+                        PawnDiscardDecideMode.KeepForever);
+
+                    GR_Log.Message(
+                        $"Registered unmanaged related pawn "
+                        + $"{relatedPawn.LabelShort} ({relatedPawn.ThingID}) "
+                        + "as a world pawn for Tok'ra visitor save safety.");
+                }
+            }
         }
 
         private static Faction GetOrCreateTokraFaction()
@@ -99,7 +169,7 @@ namespace GateRimSG1.Goauld
             GR_Log.Message(
                 $"Created hidden Tok'ra faction instance "
                 + $"{createdFaction.Name} ({createdFaction.loadID}) "
-                + "for peaceful visitor testing.");
+                + "for peaceful Tok'ra visitors.");
 
             return createdFaction;
         }

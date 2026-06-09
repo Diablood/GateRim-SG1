@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LanguageData>
-    <SG1_TokraPeacefulVisitors.label>visiteurs Tok'ra pacifiques (test)</SG1_TokraPeacefulVisitors.label>
+    <SG1_TokraPeacefulVisitors.label>visiteurs Tok'ra pacifiques</SG1_TokraPeacefulVisitors.label>
     <SG1_TokraPeacefulVisitors.letterLabel>Visiteurs Tok'ra pacifiques</SG1_TokraPeacefulVisitors.letterLabel>
-    <SG1_TokraPeacefulVisitors.letterText>Une petite équipe Tok'ra est arrivée pacifiquement près de la colonie. Il s'agit d'un prototype de développement contrôlé : les visiteurs ne sont pas encore des marchands et la faction Tok'ra masquée reste déconnectée de la génération mondiale normale.</SG1_TokraPeacefulVisitors.letterText>
+    <SG1_TokraPeacefulVisitors.letterText>Une petite équipe Tok'ra est arrivée pacifiquement près de la colonie. Les visiteurs ne sont pas des marchands, mais leur présence pourrait annoncer une future coopération.</SG1_TokraPeacefulVisitors.letterText>
 </LanguageData>

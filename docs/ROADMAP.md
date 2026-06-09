@@ -506,6 +506,23 @@
 - [ ] Confirm Tok'ra and Goa'uld regression workflows
 - [ ] Publish the updated player wiki
 
+## 0.1.43-dev — Enable low-frequency natural Tok'ra visits
+- [x] Enable storyteller selection with `baseChance = 0.10`
+- [x] Delay natural visits until day `15`
+- [x] Add a `30`-day minimum refire interval
+- [x] Keep developer-triggered testing available
+- [x] Remove `(test)` from English and French labels
+- [x] Keep the Tok'ra faction hidden and disconnected from world generation
+- [x] Keep settlements, traders, trade stock and diplomacy disabled
+- [x] Update logs, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm clean `Player.log`
+- [ ] Confirm developer incident still works
+- [ ] Observe at least one natural visit after day `15`
+- [ ] Confirm the `30`-day refire interval during extended balancing
+- [ ] Confirm Tok'ra and Goa'uld regression workflows
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -604,7 +621,7 @@
 ## Future Tok'ra expansion
 - [ ] Generate the Tok'ra world faction after pawn-group definitions exist
 - [x] Add developer-triggered peaceful Tok'ra visitor prototype
-- [ ] Enable controlled random Tok'ra visits after balancing
+- [x] Enable controlled low-frequency random Tok'ra visits
 - [ ] Add Tok'ra settlements, traders and diplomacy
 - [ ] Add voluntary-host recruitment events and quests
 - [x] Add first developer-spawnable Tok'ra host pawn prototype

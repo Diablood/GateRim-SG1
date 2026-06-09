@@ -66,4 +66,4 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Groupes de pawns Tok'ra | Fondation technique non encore reliée à la génération mondiale | 0.1.41-dev |
 
-| Visiteurs Tok'ra pacifiques | Incident manuel de test : 1 à 3 hôtes non joueurs, sans génération aléatoire | 0.1.42-dev |
+| Visiteurs Tok'ra pacifiques | Incident naturel rare après le jour 15 : 1 à 3 hôtes non joueurs, délai minimal de 30 jours | 0.1.42-dev / sélection naturelle 0.1.43-dev |

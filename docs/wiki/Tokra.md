@@ -26,7 +26,6 @@ Les éléments suivants viendront plus tard :
 
 ```text
 colonies Tok'ra
-visiteurs
 marchands
 quêtes
 diplomatie
@@ -121,10 +120,12 @@ La faction masquée contient désormais des profils internes `Combat` et
 `Peaceful`, mais la génération mondiale automatique reste désactivée.
 
 
-## Visiteurs pacifiques de test
+## Visiteurs pacifiques
 
 Depuis `0.1.42-dev`, une
 [visite Tok'ra pacifique](Tokra-Peaceful-Visitors) peut être déclenchée
 manuellement en mode développeur.
 
-La génération aléatoire par le storyteller reste désactivée.
+Depuis `0.1.43-dev`, le storyteller peut également sélectionner rarement cette
+visite à partir du jour `15`. Un délai minimal de `30` jours évite les visites
+trop rapprochées.

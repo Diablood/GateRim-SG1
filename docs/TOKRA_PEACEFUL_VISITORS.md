@@ -1,9 +1,11 @@
-# Tok'ra peaceful visitor prototype
+# Low-frequency natural Tok'ra peaceful visitors
 
-## Scope of 0.1.42-dev
+## Scope of 0.1.43-dev
 
-This milestone adds a developer-triggered peaceful Tok'ra visitor incident
-without enabling random world generation.
+This milestone enables rare storyteller-selected peaceful Tok'ra visits while
+keeping the hidden faction disconnected from normal world generation.
+
+Developer tools remain available for immediate controlled tests.
 
 ## IncidentDef
 
@@ -14,31 +16,42 @@ SG1_TokraPeacefulVisitors
 French label:
 
 ```text
-visiteurs Tok'ra pacifiques (test)
+visiteurs Tok'ra pacifiques
 ```
 
-## Trigger method
+## Natural selection settings
 
-Use developer tools:
+```xml
+<baseChance>0.10</baseChance>
+<earliestDay>15</earliestDay>
+<minRefireDays>30</minRefireDays>
+```
+
+The first natural Tok'ra visit cannot occur before day `15`. After a successful
+visit, the same incident cannot fire naturally again for at least `30` days.
+
+## Trigger methods
+
+Natural storyteller selection:
+
+```text
+rare storyteller selection after day 15
+    ↓
+Tok'ra peaceful visitors
+```
+
+Controlled developer test:
 
 ```text
 Do incident
     ↓
-Tok'ra peaceful visitors (test)
+Tok'ra peaceful visitors
 ```
-
-The incident declares:
-
-```xml
-<baseChance>0</baseChance>
-```
-
-so the storyteller cannot select it randomly.
 
 ## Visitor flow
 
 ```text
-developer-triggered incident
+storyteller-selected or developer-triggered incident
     ↓
 create or reuse hidden SG1_Tokra faction instance
     ↓
@@ -62,7 +75,7 @@ and receives an active persistent Tok'ra symbiote within `60` ticks.
 The first visit creates one hidden Tok'ra faction instance through:
 
 ```text
-FactionGenerator.NewGeneratedFaction(SG1_Tokra)
+FactionGenerator.NewGeneratedFaction(...)
 Find.FactionManager.Add(...)
 ```
 
@@ -111,10 +124,9 @@ and the current Tok'ra host costs:
 
 ## Scope boundaries
 
-This prototype does not yet enable:
+This milestone still does not enable:
 
 ```text
-random storyteller visits
 visible world faction
 settlements
 traders
@@ -129,25 +141,29 @@ queen-origin biology
 
 1. Build with `build.cmd`.
 2. Restart RimWorld completely.
-3. Open developer tools.
-4. Run:
+3. Confirm no XML error or C# exception appears during loading.
+4. Open developer tools.
+5. Run:
    ```text
    Do incident
        ↓
-   Tok'ra peaceful visitors (test)
+   Tok'ra peaceful visitors
    ```
-5. Confirm a neutral letter appears.
-6. Confirm `1` to `3` Tok'ra hosts enter from the map edge.
-7. Wait up to `60` ticks.
-8. Confirm each visitor receives an active adult symbiote with origin `Tok'ra`.
-9. Confirm the visitors are not player-controlled.
-10. Confirm they leave automatically after their peaceful visit.
-11. Save and reload after the first incident.
-12. Trigger the incident again.
-13. Confirm the hidden Tok'ra faction instance is reused.
-14. Confirm no settlement, trader or random storyteller visit appears.
-15. Confirm the free Tok'ra and Goa'uld regression workflows remain valid.
+6. Confirm the neutral French letter no longer contains `(test)`.
+7. Confirm `1` to `3` Tok'ra hosts enter from the map edge.
+8. Wait up to `60` ticks.
+9. Confirm each visitor receives an active adult symbiote with origin `Tok'ra`.
+10. Confirm the visitors are not player-controlled.
+11. Confirm they leave automatically after their peaceful visit.
+12. Save and reload after the first incident.
+13. Trigger the incident again.
+14. Confirm the hidden Tok'ra faction instance is reused.
+15. Confirm no settlement or trader appears.
+16. Confirm the free Tok'ra and Goa'uld regression workflows remain valid.
+17. During extended balancing, observe at least one natural visit after day `15`.
+18. During extended balancing, confirm the `30`-day minimum refire delay.
 
+The immediate smoke test does not require waiting for a natural incident.
 
 ## 0.1.42-dev-r1 faction-generator build fix
 
@@ -168,5 +184,11 @@ FactionGenerator.NewGeneratedFaction(
 ```
 
 The explicit `hidden: true` argument is intentional. It keeps the runtime Tok'ra
-faction instance hidden and prevents settlement creation during this controlled
-visitor prototype.
+faction instance hidden and prevents settlement creation during this staged
+visitor rollout.
+
+## 0.1.42-dev-r2 backstory-filter cleanup
+
+The Tok'ra faction now uses the modern `backstoryFilters` declaration with the
+`Offworld` category. This prevents fallback biography warnings when voluntary
+Tok'ra hosts are generated.

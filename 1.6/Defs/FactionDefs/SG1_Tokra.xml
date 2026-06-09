@@ -3,7 +3,7 @@
     <FactionDef>
         <defName>SG1_Tokra</defName>
         <label>Tok'ra</label>
-        <description>A hidden foundation definition for the Tok'ra resistance. The Tok'ra seek voluntary hosts and oppose Goa'uld domination. This prototype can create a hidden Tok'ra faction instance when the developer-triggered peaceful visitor incident is used. Settlements, random storyteller visits, traders, raids and world-faction generation remain disabled.</description>
+        <description>A hidden foundation definition for the Tok'ra resistance. The Tok'ra seek voluntary hosts and oppose Goa'uld domination. This prototype can create a hidden Tok'ra faction instance when the low-frequency peaceful visitor incident is selected naturally or triggered through developer tools. Settlements, traders, raids and world-faction generation remain disabled.</description>
         <fixedName>Tok'ra</fixedName>
         <pawnsPlural>Tok'ra</pawnsPlural>
         <pawnSingular>Tok'ra</pawnSingular>

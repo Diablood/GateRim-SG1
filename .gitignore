@@ -23,3 +23,4 @@ Thumbs.db
 # RimWorld local and workshop artifacts
 About/PublishedFileId.txt
 *.zip
+*.patch
