@@ -13,6 +13,7 @@
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Groupes Tok'ra](Tokra-Pawn-Groups)
 - [Visiteurs Tok'ra pacifiques](Tokra-Peaceful-Visitors)
+- [Hébergement thérapeutique Tok'ra](Tokra-Therapeutic-Hosting)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

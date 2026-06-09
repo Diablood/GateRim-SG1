@@ -1,6 +1,6 @@
 # Tok'ra
 
-> Statut : Prototype  
+> Statut : Prototype
 > Version d'introduction : 0.1.39-dev
 
 ## Présentation
@@ -129,3 +129,13 @@ manuellement en mode développeur.
 Depuis `0.1.43-dev`, le storyteller peut également sélectionner rarement cette
 visite à partir du jour `15`. Un délai minimal de `30` jours évite les visites
 trop rapprochées.
+
+
+## Hébergement thérapeutique
+
+Depuis `0.1.44-dev`, les hôtes Tok'ra actifs disposent d'un premier
+[prototype d'hébergement thérapeutique](Tokra-Therapeutic-Hosting).
+
+Toutes les `60` ticks, leur symbiote retire automatiquement une courte liste
+de pathologies graves configurées. Les blessures, cicatrices et maladies non
+listées restent inchangées.

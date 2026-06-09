@@ -14,15 +14,16 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.43-dev — Enable low-frequency natural Tok'ra visits
+### 0.1.44-dev — Add Tok'ra therapeutic healing prototype
 
-The hidden Tok'ra faction can now appear through a rare storyteller-selected
-peaceful visitor incident after day `15`. A minimum refire delay of `30` days
-prevents repeated visits.
+Active Tok'ra hosts now remove a narrow configured set of serious pathologies
+during a lightweight recurring scan. The first list covers carcinoma,
+infection, plague, malaria, flu, sleeping sickness and blood rot when those
+HediffDefs are available.
 
-Visitors are still non-traders. The Tok'ra faction remains hidden and
-disconnected from normal world generation, settlements and diplomacy. Developer
-tools remain available for controlled tests.
+Injuries, scars and unlisted illnesses remain unchanged. Voluntary therapeutic
+target selection, configurable XML rules, recruitment events, quests,
+settlements, traders and full diplomacy remain planned.
 
 ## First playable milestone
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.44-dev
+- Add `GameComponent_TokraTherapeuticHosting`.
+- Scan spawned active Tok'ra hosts every `60` ticks.
+- Reuse persistent adult-symbiote origin data to distinguish Tok'ra from Goa'uld hosts.
+- Cure a deliberately narrow configured serious-pathology list.
+- Keep injuries, scars and unlisted illnesses untouched.
+- Keep Goa'uld hosts unchanged.
+- Add bilingual healing feedback, technical documentation and player-wiki drafts.
+
 ## 0.1.43-dev
 - Enable low-frequency storyteller-selected Tok'ra peaceful visits.
 - Set `baseChance = 0.10`.

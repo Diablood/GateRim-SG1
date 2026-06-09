@@ -523,6 +523,22 @@
 - [ ] Confirm Tok'ra and Goa'uld regression workflows
 - [ ] Publish the updated player wiki
 
+## 0.1.44-dev — Add Tok'ra therapeutic healing prototype
+- [x] Add `GameComponent_TokraTherapeuticHosting`
+- [x] Scan spawned active Tok'ra hosts every `60` ticks
+- [x] Reuse persistent symbiote origin instead of creating a separate host state
+- [x] Cure a narrow configured list of serious pathologies
+- [x] Keep Goa'uld hosts unchanged
+- [x] Keep injuries, scars and unlisted illnesses untouched
+- [x] Add bilingual feedback, logs, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm clean `Player.log`
+- [ ] Confirm an active Tok'ra host removes each configured available pathology
+- [ ] Confirm injuries, scars and unlisted illnesses remain
+- [ ] Confirm an active Goa'uld host does not receive Tok'ra healing
+- [ ] Confirm treatment still works after save/reload
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -566,7 +582,7 @@
 - [x] Convert a victim into an active Goa'uld host when the timer ends
 - [ ] Add transfer between hosts
 - [ ] Add extraction
-- [ ] Add Tok'ra behavior
+- [x] Add first Tok'ra therapeutic-healing behavior
 - [ ] Add tretonin
 
 ## Factions, visuals and equipment
@@ -633,7 +649,8 @@
 ## Future therapeutic Tok'ra hosting
 - [ ] Detect compatible humanoids with serious or potentially fatal illnesses
 - [ ] Add explicit voluntary therapeutic implantation
-- [ ] Stabilize, reduce or cure configured pathologies when appropriate
+- [x] Add first automatic cure prototype for configured serious pathologies
+- [ ] Move pathology rules into configurable Defs and extend modded-disease support
 - [ ] Keep the long-term narrative cost: the pawn becomes a durable Tok'ra host
 - [ ] Support vanilla and modded diseases through configurable rules
 - [ ] Integrate later with events, quests, visitors, recruitment and diplomacy
