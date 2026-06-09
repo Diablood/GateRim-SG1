@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <SG1_TokraSymbiote.label>symbiote Tok'ra</SG1_TokraSymbiote.label>
-    <SG1_TokraSymbiote.description>Symbiote Tok'ra adulte hors de son hôte. Contrairement à un parasite Goa'uld hostile, ce symbiote ne chasse pas les humanoïdes, ne peut pas utiliser l'implantation forcée et ne peut pas lancer un rituel d'implantation Goa'uld. Sélectionne-le et choisis l'implantation volontaire pour cibler un humanoïde proche contrôlé par le joueur, qui servira d'hôte consentant. La même identité Tok'ra persistante survit à l'implantation, à la conversion, au chargement d'une sauvegarde et à l'extraction.</SG1_TokraSymbiote.description>
+ <SG1_TokraSymbiote.label>symbiote Tok'ra</SG1_TokraSymbiote.label>
+ <SG1_TokraSymbiote.description>Symbiote Tok'ra adulte hors de son hôte. Contrairement à un parasite Goa'uld hostile, ce symbiote ne chasse pas les humanoïdes, ne peut pas utiliser l'implantation forcée et ne peut pas lancer un rituel d'implantation Goa'uld. Sélectionne-le et choisis l'implantation volontaire pour cibler un humanoïde proche contrôlé par le joueur, qui servira d'hôte consentant.
+La même identité Tok'ra persistante survit à l'implantation, à la conversion, au chargement d'une sauvegarde et à l'extraction.</SG1_TokraSymbiote.description>
+ <SG1_TokraSymbiote.tools.bite.label>morsure</SG1_TokraSymbiote.tools.bite.label>
 </LanguageData>
