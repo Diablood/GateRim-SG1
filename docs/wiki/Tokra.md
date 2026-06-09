@@ -133,12 +133,15 @@ trop rapprochées.
 
 ## Hébergement thérapeutique
 
-Depuis `0.1.44-dev`, les hôtes Tok'ra actifs disposent d'un premier
-[prototype d'hébergement thérapeutique](Tokra-Therapeutic-Hosting).
+Les hôtes Tok'ra actifs soignent désormais les affections biologiques curables
+selon les règles de santé de RimWorld. L'asthme est pris en charge même lorsqu'il
+affecte les deux poumons, et les blessures non permanentes se régénèrent
+progressivement.
 
-Toutes les `60` ticks, leur symbiote retire automatiquement une courte liste
-de pathologies graves configurées. Les blessures, cicatrices et maladies non
-listées restent inchangées.
+Les cicatrices permanentes, les membres manquants, les implants, les prothèses,
+les addictions et les dépendances restent inchangés. Une éventuelle
+régénération avancée devra être étudiée séparément.
+
 
 ## Implantation thérapeutique volontaire
 

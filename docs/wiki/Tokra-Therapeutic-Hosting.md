@@ -1,55 +1,43 @@
 # Hébergement thérapeutique Tok'ra
 
-> Statut : Prototype
-> Version d'introduction : 0.1.44-dev
+**Statut : Implémenté — prototype `0.1.44-dev`, extension `0.1.46-dev`**
 
-## Principe
+Un symbiote Tok'ra adulte actif améliore fortement la capacité de guérison de
+son hôte. La mécanique suit désormais davantage les règles de santé de
+RimWorld qu'une courte liste fermée de maladies.
 
-Un symbiote Tok'ra actif peut désormais soigner automatiquement certaines
-pathologies graves de son hôte.
+## Affections traitées
 
-Cette première version reste volontairement limitée afin de valider la
-mécanique sans déséquilibrer les soins classiques.
+Le symbiote soigne les affections biologiques visibles et néfastes que RimWorld
+considère comme curables par un objet médical. Cela couvre notamment les pathologies déjà
+testées comme le carcinome, ainsi que l'asthme. Lorsque l'asthme affecte les deux
+poumons, les deux occurrences sont retirées.
 
-## Pathologies prises en charge
+Les blessures récentes non permanentes sont régénérées progressivement. Elles
+ne disparaissent pas instantanément afin que les hôtes Tok'ra restent
+vulnérables pendant un combat.
 
-Le prototype couvre une courte liste configurée :
+## Limites conservées
 
-```text
-carcinome
-infection
-peste
-paludisme
-grippe
-maladie du sommeil
-pourriture du sang
-```
+Le prototype ne retire pas :
 
-Une pathologie absente de la partie chargée est simplement ignorée.
+- les cicatrices permanentes ;
+- les membres manquants ou amputés ;
+- les implants et prothèses ;
+- les addictions, sevrages et dépendances ;
+- les états liés à une grossesse ;
+- les états internes propres à GateRim SG-1.
 
-## Ce qui ne change pas
+Une régénération avancée des cicatrices ou des membres perdus pourra être
+étudiée séparément si le lore et l'équilibrage le justifient.
 
-Le prototype ne retire pas automatiquement :
+## Implantation thérapeutique volontaire
 
-```text
-blessures
-cicatrices
-maladies non listées
-```
+Un symbiote Tok'ra libre peut proposer une implantation thérapeutique à un pawn
+compatible souffrant d'une affection curable. Une confirmation explicite reste
+requise avant le transfert permanent du symbiote.
 
-Les hôtes Goa'uld ne bénéficient pas de cette guérison Tok'ra.
+## Exclusion des hôtes Goa'uld
 
-## Implantation volontaire thérapeutique
-
-Depuis `0.1.45-dev`, un symbiote Tok'ra libre peut proposer une
-[implantation thérapeutique volontaire](Tokra-Therapeutic-Implantation) à un
-humanoïde malade compatible contrôlé par le joueur. Une fenêtre de
-confirmation apparaît avant le transfert.
-
-## Évolutions prévues
-
-```text
-règles configurables pour les maladies moddées
-événements et quêtes de recrutement
-intégration avec les visiteurs et la diplomatie Tok'ra
-```
+Les hôtes Goa'uld ne bénéficient pas automatiquement de cette mécanique
+Tok'ra, même s'ils utilisent le même type général de symbiote adulte actif.

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.46-dev — Expand RimWorld-oriented Tok'ra biological healing
+- Replaced the narrow hard-coded serious-pathology list with a dynamic RimWorld-oriented treatment filter.
+- Reused vanilla `isBad` and `everCurableByItem` as the default signals for visible harmful biological conditions.
+- Added explicit exclusions for permanent scars, missing body parts, implants, addictions, withdrawals, dependencies, pregnancy and GateRim SG-1 state Hediffs.
+- Added progressive regeneration for non-permanent injuries at `0.05` severity per `60`-tick scan.
+- Aggregated repeated labels such as asthma on both lungs in confirmation and healing feedback.
+- Reused the same dynamic rule for voluntary therapeutic implantation targets.
+- Kept advanced scar and limb regeneration outside this milestone.
+
+
 ## 0.1.45-dev — Add voluntary therapeutic Tok'ra implantation
 
 - Added a dedicated therapeutic implantation command to free Tok'ra symbiotes.

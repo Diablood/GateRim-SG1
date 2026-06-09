@@ -1,62 +1,62 @@
-# Tok'ra therapeutic-hosting prototype
+# Tok'ra therapeutic hosting
 
-## Milestone
+## Status
+Implemented prototype — `0.1.44-dev`, expanded in `0.1.46-dev`.
 
-`0.1.45-dev — Add voluntary therapeutic Tok'ra implantation`
+## Purpose
+An active Tok'ra symbiote now provides broad biological healing that follows
+RimWorld health semantics more closely than a small lore-only allowlist.
 
-## Scope
+The system remains deliberately conservative around permanent damage. It heals
+conditions that RimWorld marks as curable by an item and progressively repairs
+non-permanent injuries, but it does not erase scars or recreate missing body
+parts.
 
-Active Tok'ra hosts retain the automatic therapeutic healing behavior
-introduced in `0.1.44-dev`. Free Tok'ra symbiotes now also expose a dedicated
-therapeutic implantation action.
+## Eligibility
+The periodic treatment component runs only for pawns with:
 
-The action targets nearby player-controlled compatible humanoids affected by at
-least one configured serious pathology. After map targeting, a confirmation
-dialog asks for explicit consent before the existing persistent implantation
-flow starts.
+- the active adult-host Hediff `SG1_GoauldHostSymbiote`;
+- persistent symbiote origin `Tokra`.
 
-The selected pawn still passes through `SG1_GoauldRecentImplantation`, then the
-existing active-host conversion. Once active, the Tok'ra therapeutic-hosting
-scan removes matching pathologies every `60` ticks.
+Goa'uld hosts remain excluded even though they use the same adult-host Hediff.
 
-Configured pathology DefNames remain deliberately narrow:
+## Dynamic treatment filter
+Every `60` ticks, the component examines visible Hediffs on eligible hosts.
 
-```text
-Carcinoma
-Infection
-Plague
-Malaria
-Flu
-SleepingSickness
-BloodRot
-```
+A visible non-injury condition is treatable when RimWorld marks its definition
+as harmful and with `everCurableByItem`, unless an explicit exclusion applies.
 
-## Deliberate limits
+A non-permanent `Hediff_Injury` is regenerated progressively at `0.05` severity
+per scan. It is not erased instantly, so Tok'ra hosts remain vulnerable during
+combat.
 
-This milestone does not heal injuries, scars or illnesses outside the small
-configured list. It does not add XML-configurable pathology rules, automatic
-selection, medical surgery, quests, recruitment, traders or diplomacy.
+Repeated labels are aggregated in feedback. For example, asthma affecting both
+lungs is displayed as `asthma x2` and both Hediffs are removed.
 
-Generic Tok'ra voluntary implantation remains available for regression tests.
-The hard-coded pathology list is temporary.
+## Explicit exclusions
+The prototype does not remove:
 
-## Manual regression test
+- permanent scars;
+- missing or amputated body parts;
+- added body parts, implants or prostheses;
+- addictions, withdrawals or dependencies;
+- pregnancy-related Hediffs;
+- GateRim SG-1 state Hediffs whose `defName` starts with `SG1_`;
+- invisible internal state Hediffs.
 
-1. Start RimWorld with Core, Biotech and GateRim SG-1.
-2. Enable developer mode on a test map.
-3. Spawn a free Tok'ra symbiote and a compatible player-controlled humanoid.
-4. Add `carcinome` / `Carcinoma` to the humanoid through developer health tools.
-5. Select the free Tok'ra symbiote and choose the therapeutic implantation command.
-6. Target the sick humanoid and confirm the dialog.
-7. Confirm the free symbiote disappears and recent implantation begins.
-8. Let the conversion complete.
-9. Confirm the active Tok'ra host loses the configured pathology after the therapeutic scan.
-10. Repeat with a healthy pawn and confirm therapeutic targeting rejects it.
-11. Repeat generic voluntary Tok'ra implantation and Goa'uld workflows as regression tests.
+Advanced scar or limb regeneration may be studied later as a separate,
+explicitly balanced mechanic if the lore and gameplay justify it.
 
-Expected diagnostic shapes:
+## Voluntary therapeutic implantation
+The free Tok'ra symbiote action added in `0.1.45-dev` reuses the same dynamic
+filter. A pawn with asthma, carcinoma or another compatible curable condition
+can therefore be selected for therapeutic implantation.
 
-```text
-[GateRim SG-1] Therapeutic Tok'ra implantation transferred Goa'uld symbiote ...
-[GateRim SG-1] Tok'ra therapeutic hosting removed ... from ... for symbiote ....
-```
+## Recommended tests
+- Add asthma to both lungs of a Tok'ra host: both Hediffs must disappear.
+- Add a fresh wound: severity must decrease progressively.
+- Add a permanent scar: it must remain.
+- Remove a body part: it must remain missing.
+- Add carcinoma to a Goa'uld host: it must remain.
+- Use a free Tok'ra symbiote against a pawn with asthma only: therapeutic target
+  selection and explicit confirmation must remain available.

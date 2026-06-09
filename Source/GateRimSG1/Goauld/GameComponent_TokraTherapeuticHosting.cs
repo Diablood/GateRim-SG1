@@ -6,38 +6,37 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// First Tok'ra therapeutic-hosting prototype.
+    /// RimWorld-oriented Tok'ra therapeutic-hosting prototype.
     ///
-    /// Active Tok'ra symbiotes cure a deliberately narrow configured list of
-    /// serious pathologies. Injuries, scars and unlisted diseases remain
-    /// untouched so later milestones can refine balance and XML configuration.
+    /// Active Tok'ra symbiotes remove biological conditions that vanilla marks
+    /// as curable by an item and progressively regenerate non-permanent
+    /// injuries. Permanent scars, missing body parts, implants, addictions,
+    /// dependencies and GateRim SG-1 state Hediffs remain untouched.
     /// </summary>
     public class GameComponent_TokraTherapeuticHosting : GameComponent
     {
         private const int ScanIntervalTicks = 60;
-
-        private static readonly HashSet<string> CurablePathologyDefNames
-            = new HashSet<string>(StringComparer.Ordinal)
-            {
-                "Carcinoma",
-                "Infection",
-                "Plague",
-                "Malaria",
-                "Flu",
-                "SleepingSickness",
-                "BloodRot"
-            };
+        private const float InjuryHealingPerScan = 0.05f;
 
         public GameComponent_TokraTherapeuticHosting(Game game)
         {
         }
 
+        /// <summary>
+        /// Kept for compatibility with the existing therapeutic-implantation
+        /// action. The milestone now accepts any treatable biological condition
+        /// rather than a small hard-coded pathology list.
+        /// </summary>
         public static bool HasConfiguredCurablePathology(Pawn pawn)
         {
             return !string.IsNullOrEmpty(
                 GetConfiguredCurablePathologyLabels(pawn));
         }
 
+        /// <summary>
+        /// Kept for compatibility with the existing therapeutic-implantation
+        /// confirmation dialog.
+        /// </summary>
         public static string GetConfiguredCurablePathologyLabels(Pawn pawn)
         {
             List<Hediff> hediffs = pawn?.health?.hediffSet?.hediffs;
@@ -52,10 +51,8 @@ namespace GateRimSG1.Goauld
             for (int index = 0; index < hediffs.Count; index++)
             {
                 Hediff hediff = hediffs[index];
-                string defName = hediff?.def?.defName;
 
-                if (string.IsNullOrEmpty(defName)
-                    || !CurablePathologyDefNames.Contains(defName))
+                if (!IsTreatableCondition(hediff))
                 {
                     continue;
                 }
@@ -63,7 +60,7 @@ namespace GateRimSG1.Goauld
                 labels.Add(hediff.LabelCap.ToString());
             }
 
-            return string.Join(", ", labels.ToArray());
+            return FormatLabels(labels);
         }
 
         public override void GameComponentTick()
@@ -116,43 +113,172 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            List<string> removedLabels = new List<string>();
+            List<string> completedLabels = new List<string>();
             List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
 
             for (int index = hediffs.Count - 1; index >= 0; index--)
             {
                 Hediff hediff = hediffs[index];
-                string defName = hediff?.def?.defName;
 
-                if (string.IsNullOrEmpty(defName)
-                    || !CurablePathologyDefNames.Contains(defName))
+                if (!IsTreatableCondition(hediff))
                 {
                     continue;
                 }
 
-                removedLabels.Add(hediff.LabelCap.ToString());
+                Hediff_Injury injury = hediff as Hediff_Injury;
+
+                if (injury != null)
+                {
+                    TryRegenerateInjury(pawn, injury, completedLabels);
+                    continue;
+                }
+
+                completedLabels.Add(hediff.LabelCap.ToString());
                 pawn.health.RemoveHediff(hediff);
             }
 
-            if (removedLabels.Count == 0)
+            if (completedLabels.Count == 0)
             {
                 return;
             }
 
-            string healedPathologies = string.Join(", ", removedLabels.ToArray());
+            string healedConditions = FormatLabels(completedLabels);
 
             GR_Log.Message(
-                $"Tok'ra therapeutic hosting removed {healedPathologies} "
-                + $"from {PawnDebugLabel(pawn)} for symbiote "
+                $"Tok'ra therapeutic hosting healed {healedConditions} "
+                + $"for {PawnDebugLabel(pawn)} with symbiote "
                 + $"{symbioteComp.SymbioteData.SymbioteId}.");
 
             Messages.Message(
                 "GR_TokraTherapeuticHosting_Healed".Translate(
                     pawn.LabelShortCap,
-                    healedPathologies),
+                    healedConditions),
                 pawn,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+        }
+
+        private static bool IsTreatableCondition(Hediff hediff)
+        {
+            if (hediff == null
+                || hediff.def == null
+                || !hediff.Visible)
+            {
+                return false;
+            }
+
+            string defName = hediff.def.defName;
+
+            if (string.IsNullOrEmpty(defName)
+                || defName.StartsWith("SG1_", StringComparison.Ordinal)
+                || IsExcludedDefName(defName))
+            {
+                return false;
+            }
+
+            if (hediff is Hediff_MissingPart
+                || hediff is Hediff_AddedPart
+                || hediff is Hediff_Implant
+                || hediff is Hediff_Addiction)
+            {
+                return false;
+            }
+
+            Hediff_Injury injury = hediff as Hediff_Injury;
+
+            if (injury != null)
+            {
+                return !IsPermanentInjury(injury);
+            }
+
+            return hediff.def.isBad && hediff.def.everCurableByItem;
+        }
+
+        private static bool IsExcludedDefName(string defName)
+        {
+            return defName.IndexOf("Pregnan", StringComparison.OrdinalIgnoreCase)
+                    >= 0
+                || defName.EndsWith("Withdrawal", StringComparison.OrdinalIgnoreCase)
+                || defName.EndsWith("Dependency", StringComparison.OrdinalIgnoreCase)
+                || defName.EndsWith("Addiction", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool IsPermanentInjury(Hediff_Injury injury)
+        {
+            HediffComp_GetsPermanent permanentComp
+                = injury.TryGetComp<HediffComp_GetsPermanent>();
+
+            return permanentComp?.IsPermanent == true;
+        }
+
+        private static void TryRegenerateInjury(
+            Pawn pawn,
+            Hediff_Injury injury,
+            List<string> completedLabels)
+        {
+            string injuryLabel = injury.LabelCap.ToString();
+
+            injury.Heal(InjuryHealingPerScan);
+
+            if (injury.Severity > 0f)
+            {
+                return;
+            }
+
+            if (pawn.health.hediffSet.hediffs.Contains(injury))
+            {
+                pawn.health.RemoveHediff(injury);
+            }
+
+            completedLabels.Add(injuryLabel);
+        }
+
+        private static string FormatLabels(List<string> labels)
+        {
+            if (labels == null || labels.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            Dictionary<string, int> counts
+                = new Dictionary<string, int>(StringComparer.Ordinal);
+            List<string> orderedLabels = new List<string>();
+
+            for (int index = 0; index < labels.Count; index++)
+            {
+                string label = labels[index];
+
+                if (string.IsNullOrEmpty(label))
+                {
+                    continue;
+                }
+
+                int count;
+
+                if (counts.TryGetValue(label, out count))
+                {
+                    counts[label] = count + 1;
+                    continue;
+                }
+
+                counts.Add(label, 1);
+                orderedLabels.Add(label);
+            }
+
+            List<string> formattedLabels = new List<string>();
+
+            for (int index = 0; index < orderedLabels.Count; index++)
+            {
+                string label = orderedLabels[index];
+                int count = counts[label];
+
+                formattedLabels.Add(
+                    count > 1
+                        ? $"{label} x{count}"
+                        : label);
+            }
+
+            return string.Join(", ", formattedLabels.ToArray());
         }
 
         private static HediffComp_GoauldSymbiote FindActiveTokraSymbioteComp(

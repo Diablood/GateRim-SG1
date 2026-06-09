@@ -13,19 +13,19 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
+### 0.1.46-dev — Expand RimWorld-oriented Tok'ra biological healing
 
-### 0.1.45-dev — Add voluntary therapeutic Tok'ra implantation
+Active Tok'ra hosts now remove visible harmful biological conditions that RimWorld marks
+as curable by an item. The therapeutic filter keeps explicit exclusions for
+permanent scars, missing body parts, implants, addictions, withdrawals,
+dependencies, pregnancy and GateRim SG-1 state Hediffs.
 
-Free Tok'ra symbiotes now expose a dedicated therapeutic implantation action.
-It targets nearby player-controlled compatible humanoids with one of the
-configured serious pathologies, then asks for explicit confirmation before
-reusing the persistent implantation flow.
-
-The resulting host still passes through recent implantation and active Tok'ra
-conversion. The existing lightweight healing scan then removes configured
-pathologies. Generic voluntary implantation remains available for regression
-tests. XML-configurable pathology rules, recruitment events, quests,
-settlements, traders and full diplomacy remain planned.
+Non-permanent injuries are regenerated progressively instead of being erased
+instantly. Free Tok'ra symbiotes reuse the same dynamic filter for voluntary
+therapeutic implantation, so conditions such as asthma on both lungs are now
+valid treatment targets. Advanced scar or limb regeneration, XML overrides,
+recruitment events, quests, settlements, traders and full diplomacy remain
+planned separately.
 
 ## First playable milestone
 
