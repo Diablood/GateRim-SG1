@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.51-dev — Add Tok'ra trust tiers for therapeutic offers
+- Add four persistent trust tiers: wary below `0`, neutral from `0` to `9`, cooperative from `10` to `24`, and trusted from `25` upward.
+- Display the current localized trust tier beside the numeric Tok'ra trust score.
+- Reduce wary therapeutic offers to `1` day with exactly `1` escort pawn.
+- Keep neutral therapeutic offers at `2` days with `1` to `2` escort pawns.
+- Extend cooperative therapeutic offers to `3` days with exactly `2` escort pawns.
+- Extend trusted therapeutic offers to `4` days with `2` to `3` escort pawns.
+- Compute duration and escort size once when each offer is created so later trust changes do not mutate an active offer.
+- Keep storyteller weights, material rewards, quests and vanilla-goodwill integration outside this first threshold milestone.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.1.50-dev — Add lightweight Tok'ra trust foundation
 - Add persistent `GameComponent_TokraTrustTracker` storage clamped between `-100` and `100`.
 - Increase Tok'ra trust by `+5` when a therapeutic offer is accepted.

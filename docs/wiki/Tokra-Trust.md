@@ -33,13 +33,18 @@ d'inspection affiche :
 
 ```text
 Offre thérapeutique Tok'ra : ... jour(s) restant(s)
-Confiance Tok'ra : ...
+Confiance Tok'ra : ... (...)
 ```
 
-La valeur persiste après sauvegarde et rechargement.
+La valeur et son palier persistent après sauvegarde et rechargement.
+
+Depuis `0.1.51-dev`, consulte aussi les
+[paliers de confiance Tok'ra](Tokra-Trust-Thresholds). Ils modulent la durée des
+offres thérapeutiques et la taille de leur escorte pacifique.
 
 ## Limites actuelles
 
 La faction Tok'ra reste masquée et n'utilise pas encore la diplomatie vanilla.
-La confiance ne débloque pas encore de récompense, de quête ou de visite
-spéciale. Elle servira de base à ces systèmes dans de futurs jalons.
+Les paliers ne débloquent pas encore de récompense, de quête ou de visite
+spéciale et ne modifient pas encore la fréquence storyteller. Ils serviront de
+base à ces systèmes dans de futurs jalons.

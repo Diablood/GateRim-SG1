@@ -70,9 +70,14 @@ explicit refusal = -1 trust
 unanswered expiration = -2 trust
 ```
 
-Tracked free symbiotes display the current score below the remaining offer
-duration. The score is clamped between `-100` and `100` and persists across save
-and reload. It prepares later quest thresholds and broader faction relations.
+Tracked free symbiotes display the current score and localized tier below the
+remaining offer duration. The score is clamped between `-100` and `100` and
+persists across save and reload.
+
+Since `0.1.51-dev`, the tier is read once when an offer is created. Wary offers
+last `1` day with `1` escort, neutral offers last `2` days with `1` to `2`
+escorts, cooperative offers last `3` days with `2` escorts, and trusted offers
+last `4` days with `2` to `3` escorts.
 
 ## Current limits
 

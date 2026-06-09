@@ -29,18 +29,20 @@ explicit refusal = -1
 expiration without an answer = -2
 ```
 
-The score is intentionally simple and prepares future thresholds for quests,
-visitors, recruitment and eventual broader diplomacy.
+Since `0.1.51-dev`, the score also selects a lightweight gameplay tier for
+therapeutic offers. It still prepares future thresholds for quests, visitors,
+recruitment and eventual broader diplomacy.
 
 ## Persistence and visibility
 
 `GameComponent_TokraTrustTracker` stores the score across save and reload.
-Tracked therapeutic symbiotes display the current trust score below the offer
-remaining duration. Each adjustment also generates a bilingual player message
-and a `GR_Log` line.
+Tracked therapeutic symbiotes display the current trust score and localized
+tier below the offer remaining duration. Each adjustment also generates a
+bilingual player message and a `GR_Log` line.
 
 ## Current limits
 
-The score does not yet unlock rewards, block incidents, change storyteller
-weights or synchronize with vanilla goodwill. Those integrations remain future
-milestones after the hidden-faction prototype is stabilized.
+The score now adjusts therapeutic-offer duration and escort size. It does not
+yet unlock rewards, block incidents, change storyteller weights or synchronize
+with vanilla goodwill. Those integrations remain future milestones after the
+hidden-faction prototype is stabilized.

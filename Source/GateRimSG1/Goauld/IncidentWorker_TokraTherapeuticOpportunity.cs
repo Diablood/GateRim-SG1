@@ -121,11 +121,20 @@ namespace GateRimSG1.Goauld
 
             GenSpawn.Spawn(symbiote, entryCell, map);
 
+            int offerDurationTicks
+                = GameComponent_TokraTrustTracker
+                    .GetCurrentOfferDurationTicks();
+            int requestedEscortCount
+                = GameComponent_TokraTrustTracker.RollCurrentEscortCount();
+            string trustTierLabel
+                = GameComponent_TokraTrustTracker.GetCurrentTierLogLabel();
+
             List<Pawn> escortPawns = SpawnEscortPawns(
                 map,
                 entryCell,
                 tokraFaction,
-                escortKind);
+                escortKind,
+                requestedEscortCount);
 
             if (escortPawns.Count == 0)
             {
@@ -135,11 +144,19 @@ namespace GateRimSG1.Goauld
             }
             else
             {
-                StartEscortVisit(map, entryCell, tokraFaction, escortPawns);
+                StartEscortVisit(
+                    map,
+                    entryCell,
+                    tokraFaction,
+                    escortPawns,
+                    offerDurationTicks);
             }
 
             GameComponent_TokraTherapeuticOpportunityTracker
-                .RegisterOpportunity(symbiote, escortPawns);
+                .RegisterOpportunity(
+                    symbiote,
+                    escortPawns,
+                    offerDurationTicks);
 
             string conditionLabels
                 = GameComponent_TokraTherapeuticHosting
@@ -150,7 +167,9 @@ namespace GateRimSG1.Goauld
                 + $"{PawnDebugLabel(candidate)} with conditions "
                 + $"{conditionLabels}; spawned free symbiote "
                 + $"{PawnDebugLabel(symbiote)} at {entryCell} with "
-                + $"{escortPawns.Count} escort pawn(s).");
+                + $"{escortPawns.Count} escort pawn(s) for "
+                + $"{offerDurationTicks} ticks at {trustTierLabel} trust "
+                + $"tier.");
 
             SendStandardLetter(
                 parms,
@@ -165,9 +184,9 @@ namespace GateRimSG1.Goauld
             Map map,
             IntVec3 entryCell,
             Faction tokraFaction,
-            PawnKindDef escortKind)
+            PawnKindDef escortKind,
+            int escortCount)
         {
-            int escortCount = Rand.RangeInclusive(1, 2);
             List<Pawn> escortPawns = new List<Pawn>(escortCount);
 
             for (int index = 0; index < escortCount; index++)
@@ -200,7 +219,8 @@ namespace GateRimSG1.Goauld
             Map map,
             IntVec3 entryCell,
             Faction tokraFaction,
-            List<Pawn> escortPawns)
+            List<Pawn> escortPawns,
+            int offerDurationTicks)
         {
             IntVec3 visitSpot;
 
@@ -216,8 +236,7 @@ namespace GateRimSG1.Goauld
                 new LordJob_TokraTherapeuticEscort(
                     tokraFaction,
                     visitSpot,
-                    GameComponent_TokraTherapeuticOpportunityTracker
-                        .OfferDurationTicks),
+                    offerDurationTicks),
                 map,
                 escortPawns);
         }

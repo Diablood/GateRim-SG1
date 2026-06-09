@@ -16,7 +16,7 @@ namespace GateRimSG1.Goauld
     /// </summary>
     public class GameComponent_TokraTherapeuticOpportunityTracker : GameComponent
     {
-        public const int OfferDurationTicks = 120000;
+        public const int DefaultOfferDurationTicks = 120000;
 
         private const int ScanIntervalTicks = 60;
         private const int TicksPerDay = 60000;
@@ -96,7 +96,8 @@ namespace GateRimSG1.Goauld
 
         public static void RegisterOpportunity(
             Pawn symbiote,
-            List<Pawn> escortPawns)
+            List<Pawn> escortPawns,
+            int offerDurationTicks)
         {
             GameComponent_TokraTherapeuticOpportunityTracker tracker
                 = GetCurrentTracker();
@@ -109,7 +110,10 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            tracker.RegisterOpportunityInternal(symbiote, escortPawns);
+            tracker.RegisterOpportunityInternal(
+                symbiote,
+                escortPawns,
+                offerDurationTicks);
         }
 
         public static bool IsTrackedOffer(Pawn symbiote)
@@ -202,7 +206,8 @@ namespace GateRimSG1.Goauld
 
         private void RegisterOpportunityInternal(
             Pawn symbiote,
-            List<Pawn> escortPawns)
+            List<Pawn> escortPawns,
+            int offerDurationTicks)
         {
             if (symbiote == null || symbiote.Destroyed)
             {
@@ -212,13 +217,16 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            int normalizedOfferDurationTicks
+                = NormalizeOfferDurationTicks(offerDurationTicks);
+
             TokraTherapeuticOpportunityRecord existingRecord
                 = FindRecord(symbiote);
 
             if (existingRecord != null)
             {
                 existingRecord.ExpirationTick = CurrentGameTick()
-                    + OfferDurationTicks;
+                    + normalizedOfferDurationTicks;
                 existingRecord.EscortPawns = CopyEscortList(escortPawns);
                 return;
             }
@@ -228,7 +236,8 @@ namespace GateRimSG1.Goauld
                 {
                     Symbiote = symbiote,
                     EscortPawns = CopyEscortList(escortPawns),
-                    ExpirationTick = CurrentGameTick() + OfferDurationTicks
+                    ExpirationTick = CurrentGameTick()
+                        + normalizedOfferDurationTicks
                 };
 
             activeOffers.Add(record);
@@ -237,7 +246,7 @@ namespace GateRimSG1.Goauld
                 $"Registered Tok'ra therapeutic opportunity for "
                 + $"{PawnDebugLabel(symbiote)} with "
                 + $"{record.EscortPawns.Count} escort pawn(s) for "
-                + $"{OfferDurationTicks} ticks.");
+                + $"{normalizedOfferDurationTicks} ticks.");
         }
 
         private void CloseOffer(
@@ -452,6 +461,14 @@ namespace GateRimSG1.Goauld
                 0f);
 
             return exitCell.IsValid;
+        }
+
+        private static int NormalizeOfferDurationTicks(
+            int offerDurationTicks)
+        {
+            return offerDurationTicks > 0
+                ? offerDurationTicks
+                : DefaultOfferDurationTicks;
         }
 
         private static List<Pawn> CopyEscortList(List<Pawn> escortPawns)

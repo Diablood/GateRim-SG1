@@ -170,5 +170,9 @@ Depuis `0.1.50-dev`, les issues des offres thérapeutiques alimentent une
 confiance, le refus explicite l'abaisse légèrement et l'expiration sans réponse
 la réduit davantage.
 
+Depuis `0.1.51-dev`, les [paliers de confiance Tok'ra](Tokra-Trust-Thresholds)
+modulent la durée des nouvelles offres thérapeutiques et la taille de leur
+escorte pacifique.
+
 La faction reste masquée : cette jauge constitue une fondation légère avant
 l'introduction de quêtes et de relations diplomatiques plus complètes.

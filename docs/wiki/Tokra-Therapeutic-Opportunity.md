@@ -101,3 +101,9 @@ encore une diplomatie complète sur la carte du monde.
 
 L'escorte et la confiance restent volontairement légères. Les quêtes, seuils de
 récompense et relations vanilla seront étudiés dans des jalons séparés.
+
+## Paliers de confiance
+
+Depuis `0.1.51-dev`, la durée d'une nouvelle offre et la taille de son escorte
+dépendent des [paliers de confiance Tok'ra](Tokra-Trust-Thresholds). Une offre
+déjà en cours conserve les paramètres déterminés lors de son apparition.
