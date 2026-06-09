@@ -6,7 +6,8 @@ Prototype introduced in `0.1.47-dev`, with a lightweight peaceful escort added
 in `0.1.48-dev`, a persistent time-limited lifecycle added in `0.1.49-dev`,
 a lightweight Tok'ra trust foundation added in `0.1.50-dev`, trust tiers added
 in `0.1.51-dev`, tretonin-support gifts added in `0.1.52-dev` and
-storyteller trust weighting added in `0.1.54-dev`.
+storyteller trust weighting added in `0.1.54-dev` and a wary diplomatic
+cooldown added in `0.1.55-dev`.
 
 ## Purpose
 

@@ -40,6 +40,8 @@ namespace GateRimSG1.Goauld
             Map map = parms.target as Map;
 
             if (map == null
+                || GameComponent_TokraTrustTracker
+                    .IsWaryDiplomaticCooldownActive()
                 || FindBestCandidate(map) == null
                 || GR_DefOf.SG1_TokraSymbiote == null
                 || GR_DefOf.SG1_TokraVoluntaryHost == null
@@ -61,6 +63,24 @@ namespace GateRimSG1.Goauld
                 GR_Log.Warning(
                     "Cannot start the escorted Tok'ra therapeutic "
                     + "opportunity: the incident target is not a map.");
+                return false;
+            }
+
+            if (GameComponent_TokraTrustTracker
+                .IsWaryDiplomaticCooldownActive())
+            {
+                int remainingTicks
+                    = GameComponent_TokraTrustTracker
+                        .GetRemainingWaryDiplomaticCooldownTicks();
+                float remainingDays
+                    = GameComponent_TokraTrustTracker
+                        .GetRemainingWaryDiplomaticCooldownDays();
+
+                GR_Log.Warning(
+                    "Cannot start the escorted Tok'ra therapeutic "
+                    + "opportunity: the wary diplomatic cooldown remains "
+                    + $"active for {remainingTicks} tick(s) "
+                    + $"({remainingDays:0.#} RimWorld day(s)).");
                 return false;
             }
 

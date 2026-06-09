@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.55-dev — Add wary Tok'ra diplomatic cooldown
+
+- Add a persistent cooldown for new therapeutic opportunities while Tok'ra trust is wary.
+- Apply a `3`-day RimWorld cooldown after an explicit refusal that leaves trust below `0`.
+- Apply a `5`-day RimWorld cooldown after an unanswered expiration that leaves trust below `0`.
+- Preserve the existing `×0.50` wary storyteller multiplier after the cooldown ends.
+- Keep ordinary peaceful Tok'ra visitors available during the cooldown.
+- Keep independent medical-support deliveries locked below cooperative trust.
+- Add bilingual cooldown feedback, technical documentation and player-wiki drafts.
+
 ## 0.1.54-dev — Add Tok'ra storyteller trust weighting
 
 - Keep XML incident chances as readable neutral baseline values.

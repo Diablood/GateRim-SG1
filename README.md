@@ -13,16 +13,15 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.54-dev — Add Tok'ra storyteller trust weighting
+### 0.1.55-dev — Add wary Tok'ra diplomatic cooldown
 
-Tok'ra trust tiers now also influence storyteller selection weights. Therapeutic
-opportunities become rarer while relations are wary and slightly more likely as
-trust improves. Independent medical-support deliveries remain locked below the
-cooperative tier and become moderately more likely at trusted relations.
+Wary Tok'ra relations now suspend new therapeutic opportunities for a short
+period after a negative response. An explicit refusal applies a three-day
+RimWorld cooldown, while an unanswered expiration applies a five-day cooldown.
 
-The XML incident chances remain readable baseline values. The runtime workers
-multiply those bases by the current trust-tier factor. Developer-triggered
-incidents remain available for controlled tests.
+The cooldown persists across save and reload. Independent medical-support
+deliveries remain locked below cooperative trust, while ordinary peaceful
+Tok'ra visitors remain available so wary relations are not permanently closed.
 
 ## First playable milestone
 

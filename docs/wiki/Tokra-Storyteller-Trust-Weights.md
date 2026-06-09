@@ -22,7 +22,10 @@ tests.
 | Fiable | ×1,50 | 0,0525 |
 
 Les conditions médicales, la première apparition possible au jour `30` et le
-délai minimal de `60` jours restent inchangés.
+délai minimal de `60` jours restent inchangés. Depuis `0.1.55-dev`, un
+[refroidissement diplomatique](Tokra-Wary-Diplomatic-Cooldown) suspend également
+les nouvelles offres pendant quelques jours après une réponse négative au
+palier méfiant.
 
 ## Livraisons médicales indépendantes
 

@@ -24,6 +24,9 @@ namespace GateRimSG1.Goauld
         public const int RefusedOfferTrustChange = -1;
         public const int ExpiredOfferTrustChange = -2;
 
+        public const int RefusedWaryDiplomaticCooldownTicks = 180000;
+        public const int ExpiredWaryDiplomaticCooldownTicks = 300000;
+
         public const int CooperativeThreshold = 10;
         public const int TrustedThreshold = 25;
 
@@ -45,6 +48,7 @@ namespace GateRimSG1.Goauld
         public const float TrustedMedicalSupportDeliveryChanceFactor = 1.50f;
 
         private int trustScore;
+        private int waryDiplomaticCooldownUntilTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -55,7 +59,17 @@ namespace GateRimSG1.Goauld
             base.ExposeData();
 
             Scribe_Values.Look(ref trustScore, "tokraTrustScore", 0);
+            Scribe_Values.Look(
+                ref waryDiplomaticCooldownUntilTick,
+                "tokraWaryDiplomaticCooldownUntilTick",
+                0);
+
             trustScore = ClampTrust(trustScore);
+
+            if (trustScore >= 0)
+            {
+                waryDiplomaticCooldownUntilTick = 0;
+            }
         }
 
         public static int GetCurrentTrustScore()
@@ -117,6 +131,22 @@ namespace GateRimSG1.Goauld
             return GetMedicalSupportDeliveryChanceFactor(GetCurrentTier());
         }
 
+        public static bool IsWaryDiplomaticCooldownActive()
+        {
+            return GetCurrentTracker()?.HasActiveWaryDiplomaticCooldown()
+                ?? false;
+        }
+
+        public static int GetRemainingWaryDiplomaticCooldownTicks()
+        {
+            return GetCurrentTracker()?.GetRemainingWaryCooldownTicks() ?? 0;
+        }
+
+        public static float GetRemainingWaryDiplomaticCooldownDays()
+        {
+            return GetRemainingWaryDiplomaticCooldownTicks() / 60000f;
+        }
+
         public static void NotifyTherapeuticOfferOutcome(
             TokraTherapeuticOfferOutcome outcome)
         {
@@ -158,6 +188,79 @@ namespace GateRimSG1.Goauld
                 + $"offer: {previousTrust} -> {trustScore} "
                 + $"({signedChange}); tier {GetTierLogLabel(previousTier)} "
                 + $"-> {GetTierLogLabel(currentTier)}.");
+
+            UpdateWaryDiplomaticCooldown(outcome, currentTier);
+        }
+
+        private void UpdateWaryDiplomaticCooldown(
+            TokraTherapeuticOfferOutcome outcome,
+            TokraTrustTier currentTier)
+        {
+            if (currentTier != TokraTrustTier.Wary)
+            {
+                waryDiplomaticCooldownUntilTick = 0;
+                return;
+            }
+
+            int cooldownTicks = GetWaryDiplomaticCooldownTicks(outcome);
+
+            if (cooldownTicks <= 0 || Find.TickManager == null)
+            {
+                return;
+            }
+
+            int requestedCooldownUntilTick
+                = Find.TickManager.TicksGame + cooldownTicks;
+
+            if (requestedCooldownUntilTick > waryDiplomaticCooldownUntilTick)
+            {
+                waryDiplomaticCooldownUntilTick = requestedCooldownUntilTick;
+            }
+
+            float remainingDays = GetRemainingWaryCooldownTicks() / 60000f;
+
+            Messages.Message(
+                "GR_TokraDiplomaticCooldown_Started"
+                    .Translate(remainingDays.ToString("0.#")),
+                MessageTypeDefOf.NegativeEvent,
+                historical: true);
+
+            GR_Log.Message(
+                $"Started Tok'ra wary diplomatic cooldown after "
+                + $"{GetOutcomeLogLabel(outcome)} therapeutic offer: "
+                + $"{GetRemainingWaryCooldownTicks()} tick(s) "
+                + $"({remainingDays:0.#} RimWorld day(s)) remaining.");
+        }
+
+        private bool HasActiveWaryDiplomaticCooldown()
+        {
+            return trustScore < 0 && GetRemainingWaryCooldownTicks() > 0;
+        }
+
+        private int GetRemainingWaryCooldownTicks()
+        {
+            if (Find.TickManager == null)
+            {
+                return 0;
+            }
+
+            return Math.Max(
+                0,
+                waryDiplomaticCooldownUntilTick - Find.TickManager.TicksGame);
+        }
+
+        private static int GetWaryDiplomaticCooldownTicks(
+            TokraTherapeuticOfferOutcome outcome)
+        {
+            switch (outcome)
+            {
+                case TokraTherapeuticOfferOutcome.Refused:
+                    return RefusedWaryDiplomaticCooldownTicks;
+                case TokraTherapeuticOfferOutcome.Expired:
+                    return ExpiredWaryDiplomaticCooldownTicks;
+                default:
+                    return 0;
+            }
         }
 
         private static TokraTrustTier GetTierForScore(int score)

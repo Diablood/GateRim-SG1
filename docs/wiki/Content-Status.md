@@ -81,3 +81,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
+
+
+| Refroidissement diplomatique Tok'ra | Suspension persistante des nouvelles offres thérapeutiques pendant 3 jours après refus ou 5 jours après expiration lorsque la confiance reste négative | 0.1.55-dev |

@@ -24,7 +24,9 @@ The XML incident definition keeps a readable neutral baseline chance of
 | Trusted | ×1.50 | 0.0525 |
 
 The existing day-`30` earliest date, sick-pawn eligibility checks and `60`-day
-minimum refire interval still apply.
+minimum refire interval still apply. Since `0.1.55-dev`, wary relations also
+apply a persistent short diplomatic cooldown after a refusal or expiration
+before the `×0.50` selection weight becomes usable again.
 
 ## Independent medical-support deliveries
 

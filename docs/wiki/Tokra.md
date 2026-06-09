@@ -201,3 +201,12 @@ modulent la fréquence naturelle des opportunités thérapeutiques et des
 livraisons médicales indépendantes. Les relations méfiantes réduisent les
 offres, tandis que les relations fiables rendent les deux incidents légèrement
 plus probables.
+
+
+## Refroidissement diplomatique méfiant
+
+Depuis `0.1.55-dev`, un [refroidissement diplomatique Tok'ra](Tokra-Wary-Diplomatic-Cooldown)
+suspend temporairement les nouvelles opportunités thérapeutiques lorsque la
+confiance reste sous `0` après une réponse négative : `3` jours après un refus
+explicite et `5` jours après une expiration sans réponse. Les visites pacifiques
+ordinaires restent possibles.

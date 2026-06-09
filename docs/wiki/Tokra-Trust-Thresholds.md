@@ -20,7 +20,7 @@ fiable      : 25 à 100
 
 | Palier | Durée de l'offre | Escorte | Cadeau | Poids de l'offre | Livraison | Poids de livraison |
 |---|---:|---:|---:|---:|---:|---:|
-| Méfiante | 1 jour RimWorld | exactement 1 hôte | aucun | ×0,50 | indisponible | ×0,00 |
+| Méfiante | 1 jour RimWorld | exactement 1 hôte | aucun | ×0,50 après refroidissement | indisponible | ×0,00 |
 | Neutre | 2 jours RimWorld | 1 à 2 hôtes | aucun | ×1,00 | indisponible | ×0,00 |
 | Coopérative | 3 jours RimWorld | exactement 2 hôtes | 1 dose | ×1,25 | 2 doses avec 1 visiteur | ×1,00 |
 | Fiable | 4 jours RimWorld | 2 à 3 hôtes | 2 doses | ×1,50 | 4 doses avec 2 visiteurs | ×1,50 |
@@ -36,5 +36,7 @@ cadeau physique de trétonine lors de l'arrivée de l'équipe. Depuis `0.1.53-de
 ils débloquent aussi une [livraison médicale indépendante](Tokra-Medical-Support-Deliveries).
 Depuis `0.1.54-dev`, les [pondérations storyteller Tok'ra](Tokra-Storyteller-Trust-Weights)
 modulent aussi la fréquence naturelle des offres et des livraisons selon le
-palier. Aucune quête dédiée n'est encore active. La faction Tok'ra reste
+palier. Depuis `0.1.55-dev`, les relations méfiantes appliquent aussi un
+[refroidissement diplomatique](Tokra-Wary-Diplomatic-Cooldown) temporaire après
+un refus ou une expiration. Aucune quête dédiée n'est encore active. La faction Tok'ra reste
 masquée et séparée de la diplomatie vanilla.

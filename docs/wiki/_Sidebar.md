@@ -21,6 +21,7 @@
 - [Soutien médical en trétonine](Tokra-Medical-Support-Gifts)
 - [Livraisons médicales Tok'ra](Tokra-Medical-Support-Deliveries)
 - [Pondérations storyteller Tok'ra](Tokra-Storyteller-Trust-Weights)
+- [Refroidissement diplomatique Tok'ra](Tokra-Wary-Diplomatic-Cooldown)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

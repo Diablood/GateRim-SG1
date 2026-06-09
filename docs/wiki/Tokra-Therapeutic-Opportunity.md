@@ -7,6 +7,7 @@
 > Fondation de confiance : 0.1.50-dev
 > Cadeaux de soutien médical : 0.1.52-dev
 > Pondération storyteller par confiance : 0.1.54-dev
+> Refroidissement diplomatique méfiant : 0.1.55-dev
 
 ## Principe
 
@@ -125,3 +126,11 @@ Depuis `0.1.52-dev`, une offre créée au palier coopérative apporte `1` dose
 physique de trétonine. Au palier fiable, l'équipe apporte `2` doses. Les
 ressources apparaissent près du point d'arrivée et restent sur la carte quelle
 que soit la réponse apportée à l'offre.
+
+
+## Refroidissement diplomatique méfiant
+
+Depuis `0.1.55-dev`, un refus ou une expiration laissant la confiance sous `0`
+suspend temporairement les nouvelles offres thérapeutiques : `3` jours après
+un refus explicite et `5` jours après une expiration sans réponse. Le délai est
+persistant. Les visites pacifiques ordinaires restent possibles.
