@@ -14,22 +14,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.39-dev — Add Tok'ra foundation prototype
+### 0.1.40-dev — Add Tok'ra voluntary host pawn prototype
 
-The first Tok'ra adult-symbiote path is now testable through developer spawning:
+A first Tok'ra host pawn is now testable through developer spawning:
 
 ```text
-free Tok'ra symbiote
-    ↓ no autonomous hunt, no forced implantation
-choose nearby player-controlled host
-    ↓ voluntary implantation
-persistent Tok'ra identity
-    ↓ extraction
-free non-hunting Tok'ra symbiote
+spawn Tok'ra voluntary host
+    ↓ player-controlled human pawn
+automatic one-time initialization
+    ↓
+active adult symbiote with persistent Tok'ra origin
 ```
 
-A hidden, non-generated Tok'ra `FactionDef` is included as a safe anchor for
-future settlements, pawn groups, traders, diplomacy and queen-origin biology.
+The initialized-pawn registry is saved. Removing the symbiote later does not
+create an artificial replacement. Tok'ra world settlements, visitors, traders
+and quests remain future milestones.
 
 ## First playable milestone
 

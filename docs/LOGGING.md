@@ -265,3 +265,13 @@ Voluntary Tok'ra implantation transferred Goa'uld symbiote <id> from free pawn <
 ```
 
 After extraction, the free pawn should remain the non-hunting Tok'ra variant.
+
+
+## Tok'ra voluntary-host prototype diagnostics
+
+`0.1.40-dev` adds:
+
+```text
+Initialized Tok'ra voluntary-host prototype <pawn> with symbiote <id>.
+Registered existing Tok'ra voluntary-host prototype <pawn> without creating a duplicate symbiote.
+```

@@ -163,3 +163,23 @@ raidLootValueFromPointsCurve
 The Tok'ra faction remains hidden and non-generated. Goodwill and diplomacy
 will be designed during the later faction-expansion milestone rather than being
 represented by invalid placeholder fields.
+
+
+## Voluntary-host pawn prototype
+
+`0.1.40-dev` adds:
+
+```text
+SG1_TokraVoluntaryHost
+```
+
+Spawn this player-controlled human pawn through developer tools. Within `60`
+ticks, it receives one active adult symbiote with persistent origin:
+
+```text
+Tokra
+```
+
+The initialization registry is persistent and grants the embedded symbiote only
+once per pawn. Removing the symbiote later does not create an artificial
+replacement.

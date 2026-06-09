@@ -101,3 +101,12 @@ approvisionnement en trétonine
 reine Goa'uld ou Tok'ra
 origine biologique des larves
 ```
+
+
+## Prototype d'hôte volontaire
+
+Depuis `0.1.40-dev`, fais apparaître un
+[prototype d'hôte Tok'ra volontaire](Tokra-Host-Prototype) en mode développeur.
+
+Ce colon humain contrôlé par le joueur reçoit automatiquement une identité
+Tok'ra persistante après son apparition.

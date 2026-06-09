@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.39.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.40.0 loaded.
    ```
 
 
@@ -596,3 +596,35 @@ Negative checks:
    [GateRim SG-1] Version 0.1.39.0 loaded.
    ```
 6. Continue the Tok'ra voluntary-implantation regression tests.
+
+
+## Tok'ra voluntary-host pawn prototype
+
+1. Build with `build.cmd`.
+2. Spawn `Tok'ra voluntary host` through developer tools.
+3. Confirm the pawn is player-controlled.
+4. Wait up to `60` ticks.
+5. Confirm `adult Goa'uld-family symbiote` appears in the Health tab.
+6. Confirm the persistent origin is `Tok'ra`.
+7. Save and reload.
+8. Confirm the same symbiote identity persists.
+9. Spawn a second prototype host.
+10. Confirm the second pawn receives a distinct identity.
+11. Confirm free Tok'ra voluntary implantation still works.
+12. Confirm normal Goa'uld workflows remain available.
+
+
+## Tok'ra voluntary-host resistance-range regression
+
+1. Apply the `0.1.40-dev-r1` XML patch.
+2. Restart RimWorld completely.
+3. Open `Player.log`.
+4. Confirm the following error no longer appears:
+   ```text
+   Config error in SG1_TokraVoluntaryHost: initial resistance range is undefined for humanlike pawn kind.
+   ```
+5. Confirm:
+   ```text
+   [GateRim SG-1] Version 0.1.40.0 loaded.
+   ```
+6. Repeat the developer-spawn and save/reload regression tests.

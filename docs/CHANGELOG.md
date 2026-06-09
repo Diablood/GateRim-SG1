@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.40-dev
+- Define a neutral `initialResistanceRange` for the humanlike Tok'ra voluntary-host prototype.
+- Add the developer-spawnable `SG1_TokraVoluntaryHost` PawnKindDef.
+- Reuse the vanilla human body and player-colony control for the first Tok'ra host pawn.
+- Add `GameComponent_TokraHostPrototypeInitializer`.
+- Initialize one active adult symbiote with persistent Tok'ra origin.
+- Persist initialized pawn IDs and prevent artificial replacement after later removal.
+- Reuse the shared adult Goa'uld-family host Hediff.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.39-dev
 - Remove unsupported Tok'ra `FactionDef` placeholder fields and add the required raid-loot curve.
 - Add the hidden non-generated `SG1_Tokra` faction foundation.

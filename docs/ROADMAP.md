@@ -449,6 +449,26 @@
 - [ ] Confirm normal Goa'uld workflows remain unchanged
 - [ ] Publish the updated player wiki
 
+## 0.1.40-dev — Add Tok'ra voluntary host pawn prototype
+- [x] Add `SG1_TokraVoluntaryHost`
+- [x] Define a neutral humanlike `initialResistanceRange`
+- [x] Reuse vanilla `Human` as the first host body
+- [x] Spawn the prototype under `PlayerColony`
+- [x] Add `GameComponent_TokraHostPrototypeInitializer`
+- [x] Scan spawned maps every `60` ticks
+- [x] Attach one active adult symbiote with origin `Tokra`
+- [x] Persist initialized pawn `ThingID` values
+- [x] Prevent artificial replacement after later extraction or removal
+- [x] Reuse the shared Goa'uld-family active-host Hediff
+- [x] Add bilingual text, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm developer spawning and player control
+- [ ] Confirm one-time Tok'ra symbiote initialization
+- [ ] Confirm persistent ID after save/reload
+- [ ] Confirm distinct IDs on multiple prototype hosts
+- [ ] Confirm free Tok'ra and Goa'uld workflow regressions
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -548,6 +568,7 @@
 - [ ] Generate the Tok'ra world faction after pawn-group definitions exist
 - [ ] Add Tok'ra settlements, visitors, traders and diplomacy
 - [ ] Add voluntary-host recruitment events and quests
+- [x] Add first developer-spawnable Tok'ra host pawn prototype
 - [ ] Add Tok'ra-specific host visuals and cultural content
 - [ ] Add named Tok'ra content when the generic foundation is stable
 - [ ] Revisit queen-origin biology and Egeria-inspired content afterward

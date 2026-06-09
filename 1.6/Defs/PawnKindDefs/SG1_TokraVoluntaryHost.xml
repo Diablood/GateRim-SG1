@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <PawnKindDef ParentName="BasePlayerPawnKind">
+        <defName>SG1_TokraVoluntaryHost</defName>
+        <label>Tok'ra voluntary host</label>
+        <race>Human</race>
+        <defaultFactionType>PlayerColony</defaultFactionType>
+        <combatPower>80</combatPower>
+        <isFighter>false</isFighter>
+        <minGenerationAge>18</minGenerationAge>
+        <maxGenerationAge>70</maxGenerationAge>
+        <initialResistanceRange>0~0</initialResistanceRange>
+    </PawnKindDef>
+</Defs>

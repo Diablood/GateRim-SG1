@@ -307,3 +307,15 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 7. Sauvegarde puis recharge.
 8. Effectue une extraction pendant l'implantation récente.
 9. Vérifie que le symbiote libre réapparu reste un `symbiote Tok'ra`.
+
+
+## Tester un hôte Tok'ra volontaire
+
+1. Fais apparaître `hôte Tok'ra volontaire` en mode développeur.
+2. Vérifie que le pawn est contrôlé par le joueur.
+3. Attends au maximum `60` ticks.
+4. Ouvre son onglet Santé.
+5. Vérifie la présence de `symbiote adulte de lignée Goa'uld`.
+6. Vérifie que l'origine persistante est `Tok'ra`.
+7. Sauvegarde puis recharge.
+8. Vérifie que l'identifiant du symbiote reste identique.

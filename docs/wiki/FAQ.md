@@ -257,3 +257,13 @@ son identité après extraction.
 
 La faction mondiale, les colonies, les visiteurs, les marchands et les quêtes
 Tok'ra seront ajoutés ultérieurement.
+
+
+## Peut-on générer directement un hôte Tok'ra ?
+
+Oui, à des fins de test. Depuis `0.1.40-dev`, fais apparaître
+`hôte Tok'ra volontaire` en mode développeur.
+
+Ce colon humain contrôlé par le joueur reçoit automatiquement un symbiote Tok'ra
+adulte actif avec une identité persistante. Les véritables visiteurs et colonies
+Tok'ra viendront ultérieurement.

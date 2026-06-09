@@ -61,3 +61,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Cérémonie formelle du Prim'ta | Rite temporisé au bassin rituel, avec consommation d'une larve proche | 0.1.38-dev |
 
 | Tok'ra | Fondation masquée de faction, symbiote libre testable et implantation volontaire | 0.1.39-dev |
+
+| Hôte Tok'ra volontaire | Pawn humain contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |

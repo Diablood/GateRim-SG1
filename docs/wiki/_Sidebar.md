@@ -10,6 +10,7 @@
 - [Jaffa](Jaffa)
 - [Goa'uld](Goauld)
 - [Tok'ra](Tokra)
+- [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)
