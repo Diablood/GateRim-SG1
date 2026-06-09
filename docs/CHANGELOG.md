@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.45-dev — Add voluntary therapeutic Tok'ra implantation
+
+- Added a dedicated therapeutic implantation command to free Tok'ra symbiotes.
+- Restricted therapeutic targets to nearby player-controlled compatible humanoids with a configured serious pathology.
+- Added an explicit consent confirmation dialog before the existing implantation transfer begins.
+- Reused the recent-implantation conversion and active-host healing flows without changing generic Tok'ra voluntary implantation.
+- Added English and French keyed translations plus player-wiki documentation.
+
+
 ## 0.1.44-dev
 - Add `GameComponent_TokraTherapeuticHosting`.
 - Scan spawned active Tok'ra hosts every `60` ticks.

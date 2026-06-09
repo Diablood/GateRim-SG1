@@ -32,6 +32,40 @@ namespace GateRimSG1.Goauld
         {
         }
 
+        public static bool HasConfiguredCurablePathology(Pawn pawn)
+        {
+            return !string.IsNullOrEmpty(
+                GetConfiguredCurablePathologyLabels(pawn));
+        }
+
+        public static string GetConfiguredCurablePathologyLabels(Pawn pawn)
+        {
+            List<Hediff> hediffs = pawn?.health?.hediffSet?.hediffs;
+
+            if (hediffs == null)
+            {
+                return string.Empty;
+            }
+
+            List<string> labels = new List<string>();
+
+            for (int index = 0; index < hediffs.Count; index++)
+            {
+                Hediff hediff = hediffs[index];
+                string defName = hediff?.def?.defName;
+
+                if (string.IsNullOrEmpty(defName)
+                    || !CurablePathologyDefNames.Contains(defName))
+                {
+                    continue;
+                }
+
+                labels.Add(hediff.LabelCap.ToString());
+            }
+
+            return string.Join(", ", labels.ToArray());
+        }
+
         public override void GameComponentTick()
         {
             TickManager tickManager = Find.TickManager;

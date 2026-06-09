@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.44-dev</modVersion>
+    <modVersion>0.1.45-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -38,6 +38,7 @@ Current development scope:
 - Tok'ra pawn-group foundation prototype for developer tests
 - Low-frequency natural Tok'ra peaceful visitor incident prototype
 - Automatic Tok'ra therapeutic healing prototype for configured serious pathologies
+- Explicit voluntary Tok'ra therapeutic implantation prototype with consent confirmation
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -55,7 +56,7 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Tok'ra therapeutic-hosting refinement, faction expansion, queen-origin biology and freezing penalties planned next
+- Tok'ra therapeutic-hosting XML configuration, faction expansion, queen-origin biology and freezing penalties planned next
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

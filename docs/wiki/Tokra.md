@@ -139,3 +139,10 @@ Depuis `0.1.44-dev`, les hôtes Tok'ra actifs disposent d'un premier
 Toutes les `60` ticks, leur symbiote retire automatiquement une courte liste
 de pathologies graves configurées. Les blessures, cicatrices et maladies non
 listées restent inchangées.
+
+## Implantation thérapeutique volontaire
+
+Depuis `0.1.45-dev`, un symbiote Tok'ra libre dispose d'une
+[action d'implantation thérapeutique](Tokra-Therapeutic-Implantation). Elle
+cible un humanoïde malade compatible contrôlé par le joueur et demande une
+confirmation explicite avant d'utiliser le flux d'implantation existant.

@@ -14,15 +14,17 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.44-dev — Add Tok'ra therapeutic healing prototype
+### 0.1.45-dev — Add voluntary therapeutic Tok'ra implantation
 
-Active Tok'ra hosts now remove a narrow configured set of serious pathologies
-during a lightweight recurring scan. The first list covers carcinoma,
-infection, plague, malaria, flu, sleeping sickness and blood rot when those
-HediffDefs are available.
+Free Tok'ra symbiotes now expose a dedicated therapeutic implantation action.
+It targets nearby player-controlled compatible humanoids with one of the
+configured serious pathologies, then asks for explicit confirmation before
+reusing the persistent implantation flow.
 
-Injuries, scars and unlisted illnesses remain unchanged. Voluntary therapeutic
-target selection, configurable XML rules, recruitment events, quests,
+The resulting host still passes through recent implantation and active Tok'ra
+conversion. The existing lightweight healing scan then removes configured
+pathologies. Generic voluntary implantation remains available for regression
+tests. XML-configurable pathology rules, recruitment events, quests,
 settlements, traders and full diplomacy remain planned.
 
 ## First playable milestone

@@ -179,6 +179,14 @@ namespace GateRimSG1.Goauld
                     icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
                     action = BeginVoluntaryTokraTargeting
                 };
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "GR_TokraTherapeuticImplantation_CommandLabel".Translate(),
+                    defaultDesc = "GR_TokraTherapeuticImplantation_CommandDescription".Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                    action = BeginTherapeuticTokraTargeting
+                };
             }
 
             if (Props.allowAutonomousHuntToggle)
@@ -373,6 +381,9 @@ namespace GateRimSG1.Goauld
                 case GoauldImplantationMode.VoluntaryTokra:
                     return IsValidVoluntaryTokraTarget(symbiote, target);
 
+                case GoauldImplantationMode.TherapeuticTokra:
+                    return IsValidTherapeuticTokraTarget(symbiote, target);
+
                 default:
                     return IsAdjacentOrSameCell(symbiote, target);
             }
@@ -477,6 +488,164 @@ namespace GateRimSG1.Goauld
                 if (!IsValidVoluntaryTokraTarget(
                         symbiote,
                         candidate))
+                {
+                    continue;
+                }
+
+                float distanceSquared = DistanceSquared(
+                    symbiote,
+                    candidate);
+
+                if (distanceSquared < bestDistanceSquared)
+                {
+                    bestTarget = candidate;
+                    bestDistanceSquared = distanceSquared;
+                }
+            }
+
+            return bestTarget;
+        }
+
+        private void BeginTherapeuticTokraTargeting()
+        {
+            Pawn symbiote = SymbiotePawn;
+
+            if (symbiote == null
+                || !symbiote.Spawned
+                || symbiote.Destroyed)
+            {
+                GR_Log.Warning(
+                    "Therapeutic Tok'ra implantation targeting requested from an "
+                    + "unavailable free symbiote pawn.");
+
+                return;
+            }
+
+            if (FindClosestValidTherapeuticTokraTarget(symbiote) == null)
+            {
+                Messages.Message(
+                    "GR_TokraTherapeuticImplantation_NoNearbyTarget".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            TargetingParameters targetingParameters = new TargetingParameters
+            {
+                canTargetPawns = true,
+                canTargetLocations = false,
+                validator = delegate(TargetInfo targetInfo)
+                {
+                    return IsValidTherapeuticTokraTarget(
+                        symbiote,
+                        targetInfo.Thing as Pawn);
+                }
+            };
+
+            Find.Targeter.BeginTargeting(
+                targetingParameters,
+                delegate(LocalTargetInfo targetInfo)
+                {
+                    Pawn selectedTarget = targetInfo.Thing as Pawn;
+
+                    if (!IsValidTherapeuticTokraTarget(
+                            symbiote,
+                            selectedTarget))
+                    {
+                        Messages.Message(
+                            "GR_TokraTherapeuticImplantation_InvalidTarget".Translate(),
+                            symbiote,
+                            MessageTypeDefOf.RejectInput,
+                            historical: false);
+
+                        return;
+                    }
+
+                    ShowTherapeuticTokraConsentConfirmation(selectedTarget);
+                });
+        }
+
+        private void ShowTherapeuticTokraConsentConfirmation(
+            Pawn selectedTarget)
+        {
+            Pawn symbiote = SymbiotePawn;
+
+            if (!IsValidTherapeuticTokraTarget(symbiote, selectedTarget))
+            {
+                Messages.Message(
+                    "GR_TokraTherapeuticImplantation_InvalidTarget".Translate(),
+                    selectedTarget,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+
+                return;
+            }
+
+            string pathologyLabels
+                = GameComponent_TokraTherapeuticHosting
+                    .GetConfiguredCurablePathologyLabels(selectedTarget);
+
+            Find.WindowStack.Add(
+                Dialog_MessageBox.CreateConfirmation(
+                    "GR_TokraTherapeuticImplantation_Confirm".Translate(
+                        selectedTarget.LabelShortCap,
+                        pathologyLabels),
+                    delegate
+                    {
+                        Pawn currentSymbiote = SymbiotePawn;
+
+                        if (!IsValidTherapeuticTokraTarget(
+                                currentSymbiote,
+                                selectedTarget))
+                        {
+                            Messages.Message(
+                                "GR_TokraTherapeuticImplantation_InvalidTarget".Translate(),
+                                selectedTarget,
+                                MessageTypeDefOf.RejectInput,
+                                historical: false);
+
+                            return;
+                        }
+
+                        TryImplantHost(
+                            selectedTarget,
+                            GoauldImplantationMode.TherapeuticTokra);
+                    },
+                    destructive: false,
+                    title: "GR_TokraTherapeuticImplantation_ConfirmTitle"
+                        .Translate()
+                        .ToString()));
+        }
+
+        private bool IsValidTherapeuticTokraTarget(
+            Pawn symbiote,
+            Pawn candidate)
+        {
+            return IsValidVoluntaryTokraTarget(symbiote, candidate)
+                && GameComponent_TokraTherapeuticHosting
+                    .HasConfiguredCurablePathology(candidate);
+        }
+
+        private Pawn FindClosestValidTherapeuticTokraTarget(Pawn symbiote)
+        {
+            Map map = symbiote?.Map;
+
+            if (map?.mapPawns?.AllPawnsSpawned == null)
+            {
+                return null;
+            }
+
+            Pawn bestTarget = null;
+            float bestDistanceSquared = float.MaxValue;
+            IReadOnlyList<Pawn> candidates = map.mapPawns.AllPawnsSpawned;
+
+            for (int index = 0; index < candidates.Count; index++)
+            {
+                Pawn candidate = candidates[index];
+
+                if (!IsValidTherapeuticTokraTarget(symbiote, candidate))
                 {
                     continue;
                 }
@@ -1092,6 +1261,9 @@ namespace GateRimSG1.Goauld
                 case GoauldImplantationMode.VoluntaryTokra:
                     return "Voluntary Tok'ra";
 
+                case GoauldImplantationMode.TherapeuticTokra:
+                    return "Therapeutic Tok'ra";
+
                 default:
                     return "Manual";
             }
@@ -1111,6 +1283,9 @@ namespace GateRimSG1.Goauld
                 case GoauldImplantationMode.VoluntaryTokra:
                     return "GR_TokraVoluntaryImplantation_Success";
 
+                case GoauldImplantationMode.TherapeuticTokra:
+                    return "GR_TokraTherapeuticImplantation_Success";
+
                 default:
                     return "GR_ForcedImplantation_Success";
             }
@@ -1119,7 +1294,11 @@ namespace GateRimSG1.Goauld
         private static MessageTypeDef GetImplantationMessageType(
             GoauldImplantationMode mode)
         {
-            return mode == GoauldImplantationMode.VoluntaryTokra
+            bool isVoluntaryTokraImplantation
+                = mode == GoauldImplantationMode.VoluntaryTokra
+                || mode == GoauldImplantationMode.TherapeuticTokra;
+
+            return isVoluntaryTokraImplantation
                 ? MessageTypeDefOf.PositiveEvent
                 : MessageTypeDefOf.NegativeEvent;
         }
@@ -1199,6 +1378,7 @@ namespace GateRimSG1.Goauld
         ManualContact,
         AutonomousContact,
         RitualControlled,
-        VoluntaryTokra
+        VoluntaryTokra,
+        TherapeuticTokra
     }
 }

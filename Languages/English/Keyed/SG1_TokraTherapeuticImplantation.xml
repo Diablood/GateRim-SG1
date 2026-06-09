@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <GR_TokraTherapeuticImplantation_CommandLabel>Therapeutic Tok'ra implantation</GR_TokraTherapeuticImplantation_CommandLabel>
+    <GR_TokraTherapeuticImplantation_CommandDescription>Choose one nearby player-controlled compatible humanoid with a configured serious pathology. A confirmation dialog asks for explicit consent before this Tok'ra symbiote transfers into the host. The resulting durable Tok'ra symbiosis uses the existing implantation and healing flows.</GR_TokraTherapeuticImplantation_CommandDescription>
+    <GR_TokraTherapeuticImplantation_NoNearbyTarget>No nearby player-controlled compatible humanoid with a configured serious pathology is available for therapeutic Tok'ra implantation.</GR_TokraTherapeuticImplantation_NoNearbyTarget>
+    <GR_TokraTherapeuticImplantation_InvalidTarget>This pawn is not a nearby player-controlled compatible therapeutic Tok'ra host with a configured serious pathology.</GR_TokraTherapeuticImplantation_InvalidTarget>
+    <GR_TokraTherapeuticImplantation_ConfirmTitle>Confirm therapeutic Tok'ra implantation</GR_TokraTherapeuticImplantation_ConfirmTitle>
+    <GR_TokraTherapeuticImplantation_Confirm>{0} is affected by: {1}.
+
+Confirm voluntary therapeutic implantation. The pawn will become a durable Tok'ra host after the existing implantation conversion completes.</GR_TokraTherapeuticImplantation_Confirm>
+    <GR_TokraTherapeuticImplantation_Success>{0} has voluntarily accepted therapeutic implantation by Tok'ra symbiote {1}.</GR_TokraTherapeuticImplantation_Success>
+</LanguageData>

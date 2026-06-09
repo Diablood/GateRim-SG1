@@ -646,9 +646,19 @@
 - [ ] Revisit queen-origin biology and Egeria-inspired content afterward
 
 
+## 0.1.45-dev — Voluntary therapeutic Tok'ra implantation
+
+- [x] Add a dedicated command to free Tok'ra symbiotes
+- [x] Filter targets against the configured serious-pathology list
+- [x] Restrict the first prototype to compatible nearby player-controlled humanoids
+- [x] Ask for explicit confirmation before transfer
+- [x] Reuse the existing recent-implantation and active-host conversion flow
+- [x] Preserve generic Tok'ra voluntary implantation for regression testing
+
+
 ## Future therapeutic Tok'ra hosting
-- [ ] Detect compatible humanoids with serious or potentially fatal illnesses
-- [ ] Add explicit voluntary therapeutic implantation
+- [x] Detect compatible humanoids with serious or potentially fatal illnesses
+- [x] Add explicit voluntary therapeutic implantation
 - [x] Add first automatic cure prototype for configured serious pathologies
 - [ ] Move pathology rules into configurable Defs and extend modded-disease support
 - [ ] Keep the long-term narrative cost: the pawn becomes a durable Tok'ra host

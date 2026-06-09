@@ -2,22 +2,24 @@
 
 ## Milestone
 
-`0.1.44-dev — Add Tok'ra therapeutic healing prototype`
+`0.1.45-dev — Add voluntary therapeutic Tok'ra implantation`
 
 ## Scope
 
-This first isolated prototype adds automatic therapeutic healing to active
-Tok'ra hosts without modifying the existing implantation, extraction or
-visitor flows.
+Active Tok'ra hosts retain the automatic therapeutic healing behavior
+introduced in `0.1.44-dev`. Free Tok'ra symbiotes now also expose a dedicated
+therapeutic implantation action.
 
-An active Tok'ra host is identified through the shared
-`SG1_GoauldHostSymbiote` Hediff and the persistent adult-symbiote origin stored
-in `GoauldSymbioteData`. The same host Hediff is reused intentionally: the
-origin value distinguishes Tok'ra symbiosis from Goa'uld possession.
+The action targets nearby player-controlled compatible humanoids affected by at
+least one configured serious pathology. After map targeting, a confirmation
+dialog asks for explicit consent before the existing persistent implantation
+flow starts.
 
-`GameComponent_TokraTherapeuticHosting` scans spawned map pawns every `60`
-ticks. For active Tok'ra hosts only, it removes these configured pathology
-DefNames when they exist in the loaded game:
+The selected pawn still passes through `SG1_GoauldRecentImplantation`, then the
+existing active-host conversion. Once active, the Tok'ra therapeutic-hosting
+scan removes matching pathologies every `60` ticks.
+
+Configured pathology DefNames remain deliberately narrow:
 
 ```text
 Carcinoma
@@ -32,27 +34,29 @@ BloodRot
 ## Deliberate limits
 
 This milestone does not heal injuries, scars or illnesses outside the small
-configured list. It does not add therapeutic target eligibility, explicit
-medical consent UI, quests, recruitment, traders or diplomacy.
+configured list. It does not add XML-configurable pathology rules, automatic
+selection, medical surgery, quests, recruitment, traders or diplomacy.
 
-The hard-coded list is temporary. A later iteration should move pathology
-rules into configurable Defs and extend compatibility with modded diseases.
+Generic Tok'ra voluntary implantation remains available for regression tests.
+The hard-coded pathology list is temporary.
 
 ## Manual regression test
 
 1. Start RimWorld with Core, Biotech and GateRim SG-1.
 2. Enable developer mode on a test map.
-3. Spawn `hôte Tok'ra volontaire`.
-4. Wait briefly for its active Tok'ra symbiote initialization.
-5. Add `carcinome` / `Carcinoma` through the developer health tools.
-6. Let the game run for at least `60` ticks.
-7. Confirm the pathology disappears and a positive message appears.
-8. Add a normal injury and confirm that it remains.
-9. Test an active Goa'uld host with the same pathology and confirm that it is not healed.
-10. Save, reload and repeat the Tok'ra-host test.
+3. Spawn a free Tok'ra symbiote and a compatible player-controlled humanoid.
+4. Add `carcinome` / `Carcinoma` to the humanoid through developer health tools.
+5. Select the free Tok'ra symbiote and choose the therapeutic implantation command.
+6. Target the sick humanoid and confirm the dialog.
+7. Confirm the free symbiote disappears and recent implantation begins.
+8. Let the conversion complete.
+9. Confirm the active Tok'ra host loses the configured pathology after the therapeutic scan.
+10. Repeat with a healthy pawn and confirm therapeutic targeting rejects it.
+11. Repeat generic voluntary Tok'ra implantation and Goa'uld workflows as regression tests.
 
-Expected diagnostic shape:
+Expected diagnostic shapes:
 
 ```text
+[GateRim SG-1] Therapeutic Tok'ra implantation transferred Goa'uld symbiote ...
 [GateRim SG-1] Tok'ra therapeutic hosting removed ... from ... for symbiote ....
 ```

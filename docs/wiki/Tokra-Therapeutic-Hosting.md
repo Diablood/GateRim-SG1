@@ -39,10 +39,16 @@ maladies non listées
 
 Les hôtes Goa'uld ne bénéficient pas de cette guérison Tok'ra.
 
+## Implantation volontaire thérapeutique
+
+Depuis `0.1.45-dev`, un symbiote Tok'ra libre peut proposer une
+[implantation thérapeutique volontaire](Tokra-Therapeutic-Implantation) à un
+humanoïde malade compatible contrôlé par le joueur. Une fenêtre de
+confirmation apparaît avant le transfert.
+
 ## Évolutions prévues
 
 ```text
-sélection volontaire d'un hôte malade
 règles configurables pour les maladies moddées
 événements et quêtes de recrutement
 intégration avec les visiteurs et la diplomatie Tok'ra
