@@ -1,5 +1,18 @@
 # GateRim SG-1 — Initial roadmap
 
+## 0.1.47-dev — Add Tok'ra therapeutic-opportunity incident prototype
+- [x] Add rare natural therapeutic-opportunity incident after day 30
+- [x] Require a compatible player-controlled humanoid with a non-traumatic treatable biological condition
+- [x] Spawn one free Tok'ra symbiote at a reachable map edge
+- [x] Send a targeted letter naming the sick pawn and detected conditions
+- [x] Preserve explicit voluntary implantation and consent confirmation
+- [x] Keep injuries healable without making minor wounds trigger the incident
+- [ ] Build locally against RimWorld 1.6
+- [ ] Trigger the incident manually with a carcinoma or asthma test target
+- [ ] Confirm no incident is available for a pawn with only a recent injury
+- [ ] Validate save and reload after accepting the therapeutic offer
+- [ ] Publish the updated player wiki
+
 ## Completed milestones
 
 ### 0.1.0-dev — Foundation

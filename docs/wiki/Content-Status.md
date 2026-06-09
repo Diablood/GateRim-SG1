@@ -71,3 +71,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Hébergement thérapeutique Tok'ra | Filtre biologique curable dynamique, asthme inclus et régénération progressive des blessures non permanentes ; cicatrices et amputations conservées | 0.1.44-dev / extension 0.1.46-dev |
 
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
+
+| Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre pour un pawn atteint d'une affection biologique curable non traumatique | 0.1.47-dev |

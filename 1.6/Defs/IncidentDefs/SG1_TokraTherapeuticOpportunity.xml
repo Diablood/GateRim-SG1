@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <!--
+    Rare natural Tok'ra therapeutic-opportunity prototype.
+
+    The incident appears only when a compatible player-controlled humanoid
+    has at least one non-traumatic biological condition accepted by the
+    RimWorld-oriented Tok'ra healing filter. It spawns one free Tok'ra
+    symbiote at a reachable map edge and leaves the final voluntary choice to
+    the player through the existing therapeutic-implantation command.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraTherapeuticOpportunity</defName>
+        <label>Tok'ra therapeutic opportunity</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraTherapeuticOpportunity</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.035</baseChance>
+        <earliestDay>30</earliestDay>
+        <minRefireDays>60</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra therapeutic opportunity</letterLabel>
+        <letterText>A free Tok'ra symbiote has arrived near the colony after learning that {PAWN_labelShort} suffers from {CONDITIONS}. The symbiote is willing to enter a compatible voluntary host. Select the symbiote and use its therapeutic implantation command if you accept the permanent symbiosis.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>

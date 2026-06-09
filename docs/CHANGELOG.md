@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.47-dev — Add Tok'ra therapeutic-opportunity incident prototype
+- Added rare storyteller-selected `SG1_TokraTherapeuticOpportunity` incident after day `30`.
+- Added a `60`-day minimum refire interval and a low `0.035` base chance.
+- Search player-controlled compatible humanoids for non-traumatic biological conditions accepted by the shared Tok'ra healing filter.
+- Prefer the candidate with the highest aggregated therapeutic-need severity.
+- Spawn one free Tok'ra symbiote at a reachable map edge and send a targeted letter.
+- Keep the final implantation voluntary through the existing therapeutic command and consent dialog.
+- Keep recent injuries healable by active Tok'ra hosts without allowing a minor wound to trigger the narrative incident.
+- Add French DefInjected text, technical documentation and player-wiki drafts.
+
+
 ## 0.1.46-dev — Expand RimWorld-oriented Tok'ra biological healing
 - Replaced the narrow hard-coded serious-pathology list with a dynamic RimWorld-oriented treatment filter.
 - Reused vanilla `isBad` and `everCurableByItem` as the default signals for visible harmful biological conditions.

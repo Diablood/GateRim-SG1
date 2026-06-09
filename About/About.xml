@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.46-dev</modVersion>
+    <modVersion>0.1.47-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -39,6 +39,7 @@ Current development scope:
 - Low-frequency natural Tok'ra peaceful visitor incident prototype
 - RimWorld-oriented Tok'ra biological healing with curable-condition filtering and progressive wound regeneration
 - Explicit voluntary Tok'ra therapeutic implantation prototype with consent confirmation
+- Low-frequency Tok'ra therapeutic-opportunity incident prototype for sick colonists
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype

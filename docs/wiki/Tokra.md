@@ -149,3 +149,12 @@ Depuis `0.1.45-dev`, un symbiote Tok'ra libre dispose d'une
 [action d'implantation thérapeutique](Tokra-Therapeutic-Implantation). Elle
 cible un humanoïde malade compatible contrôlé par le joueur et demande une
 confirmation explicite avant d'utiliser le flux d'implantation existant.
+
+
+## Opportunité thérapeutique naturelle
+
+Depuis `0.1.47-dev`, une
+[opportunité thérapeutique Tok'ra](Tokra-Therapeutic-Opportunity) peut
+apparaître rarement lorsqu'un pawn compatible souffre d'une affection
+biologique curable non traumatique. Un symbiote Tok'ra libre arrive au bord de
+la carte, mais l'implantation reste un choix manuel soumis à confirmation.

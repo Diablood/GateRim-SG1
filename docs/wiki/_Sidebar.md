@@ -15,6 +15,7 @@
 - [Visiteurs Tok'ra pacifiques](Tokra-Peaceful-Visitors)
 - [Hébergement thérapeutique Tok'ra](Tokra-Therapeutic-Hosting)
 - [Implantation thérapeutique Tok'ra](Tokra-Therapeutic-Implantation)
+- [Opportunité thérapeutique Tok'ra](Tokra-Therapeutic-Opportunity)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

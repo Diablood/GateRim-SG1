@@ -34,6 +34,76 @@ namespace GateRimSG1.Goauld
         }
 
         /// <summary>
+        /// Returns whether the pawn has at least one non-traumatic biological
+        /// condition suitable for a narrative Tok'ra therapeutic offer. Recent
+        /// injuries are healed by active hosts but do not trigger an envoy
+        /// incident on their own.
+        /// </summary>
+        public static bool HasSeriousTherapeuticNeed(Pawn pawn)
+        {
+            return !string.IsNullOrEmpty(
+                GetSeriousTherapeuticNeedLabels(pawn));
+        }
+
+        /// <summary>
+        /// Formats the non-traumatic biological conditions that can justify a
+        /// Tok'ra therapeutic-opportunity incident.
+        /// </summary>
+        public static string GetSeriousTherapeuticNeedLabels(Pawn pawn)
+        {
+            List<Hediff> hediffs = pawn?.health?.hediffSet?.hediffs;
+
+            if (hediffs == null)
+            {
+                return string.Empty;
+            }
+
+            List<string> labels = new List<string>();
+
+            for (int index = 0; index < hediffs.Count; index++)
+            {
+                Hediff hediff = hediffs[index];
+
+                if (!IsSeriousTherapeuticNeed(hediff))
+                {
+                    continue;
+                }
+
+                labels.Add(hediff.LabelCap.ToString());
+            }
+
+            return FormatLabels(labels);
+        }
+
+        /// <summary>
+        /// Provides a stable ordering score when several colonists could
+        /// receive the same rare therapeutic opportunity.
+        /// </summary>
+        public static float GetSeriousTherapeuticNeedScore(Pawn pawn)
+        {
+            List<Hediff> hediffs = pawn?.health?.hediffSet?.hediffs;
+
+            if (hediffs == null)
+            {
+                return 0f;
+            }
+
+            float score = 0f;
+
+            for (int index = 0; index < hediffs.Count; index++)
+            {
+                Hediff hediff = hediffs[index];
+
+                if (IsSeriousTherapeuticNeed(hediff))
+                {
+                    score += Math.Max(0.1f, hediff.Severity);
+                }
+            }
+
+            return score;
+        }
+
+        /// <summary>
         /// Kept for compatibility with the existing therapeutic-implantation
         /// confirmation dialog.
         /// </summary>
@@ -192,6 +262,12 @@ namespace GateRimSG1.Goauld
             }
 
             return hediff.def.isBad && hediff.def.everCurableByItem;
+        }
+
+        private static bool IsSeriousTherapeuticNeed(Hediff hediff)
+        {
+            return IsTreatableCondition(hediff)
+                && !(hediff is Hediff_Injury);
         }
 
         private static bool IsExcludedDefName(string defName)
