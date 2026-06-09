@@ -3,7 +3,7 @@
 ## Status
 
 Prototype introduced in `0.1.47-dev`, with a lightweight peaceful escort added
-in `0.1.48-dev`.
+in `0.1.48-dev` and a persistent time-limited lifecycle added in `0.1.49-dev`.
 
 ## Purpose
 
@@ -45,8 +45,19 @@ conditions. The player must still select the symbiote and use the dedicated
 therapeutic-implantation command. The explicit consent dialog remains
 mandatory.
 
+## Temporary offer lifecycle
+
+Since `0.1.49-dev`, the opportunity remains active for two RimWorld days. The
+free symbiote displays the remaining duration in its inspection text and gains
+an explicit refusal command.
+
+The persistent `GameComponent_TokraTherapeuticOpportunityTracker` records the
+free symbiote, escort pawns and expiration tick. Expiration, refusal and
+successful implantation all close the record and ask the escort to leave
+through vanilla `LordJob_TravelAndExit` behavior. Save and reload preserve the
+remaining duration.
+
 ## Current limits
 
-The escort is intentionally lightweight. Quests, time-limited decisions,
-medical envoys, refusal memory and diplomatic consequences remain separate
-future milestones.
+The escort is intentionally lightweight. Quests, medical envoys, remembered
+refusals and diplomatic consequences remain separate future milestones.

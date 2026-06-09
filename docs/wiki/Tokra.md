@@ -158,4 +158,6 @@ Depuis `0.1.47-dev`, une
 apparaître rarement lorsqu'un pawn compatible souffre d'une affection
 biologique curable non traumatique. Depuis `0.1.48-dev`, le symbiote Tok'ra
 libre arrive avec une petite escorte de 1 à 2 hôtes volontaires. L'implantation
-reste un choix manuel soumis à confirmation.
+reste un choix manuel soumis à confirmation. Depuis `0.1.49-dev`, l'offre est
+limitée à deux jours : le joueur peut l'accepter, la refuser explicitement ou
+la laisser expirer. Dans les trois cas, l'escorte repart proprement.

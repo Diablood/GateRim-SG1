@@ -3,6 +3,7 @@
 > Statut : Prototype
 > Version d'introduction : 0.1.47-dev
 > Escorte légère : 0.1.48-dev
+> Offre temporaire : 0.1.49-dev
 
 ## Principe
 
@@ -62,8 +63,25 @@ délai minimal entre deux offres : 60 jours
 chance storyteller : faible
 ```
 
+## Offre temporaire
+
+Depuis `0.1.49-dev`, l'offre reste disponible pendant deux jours RimWorld. Le
+symbiote libre affiche le temps restant dans son panneau d'inspection et propose
+une commande dédiée permettant de refuser explicitement l'offre.
+
+```text
+acceptation
+    ↓
+implantation puis départ de l'escorte
+
+refus ou expiration
+    ↓
+disparition du symbiote libre puis départ de l'escorte
+```
+
+Le délai restant persiste après sauvegarde et rechargement.
+
 ## Limites actuelles
 
-L'escorte est volontairement légère. Les quêtes, conséquences diplomatiques,
-refus mémorisés et décisions limitées dans le temps seront étudiés dans des
-jalons séparés.
+L'escorte est volontairement légère. Les quêtes, conséquences diplomatiques et
+refus mémorisés seront étudiés dans des jalons séparés.

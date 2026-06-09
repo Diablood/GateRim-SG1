@@ -138,6 +138,9 @@ namespace GateRimSG1.Goauld
                 StartEscortVisit(map, entryCell, tokraFaction, escortPawns);
             }
 
+            GameComponent_TokraTherapeuticOpportunityTracker
+                .RegisterOpportunity(symbiote, escortPawns);
+
             string conditionLabels
                 = GameComponent_TokraTherapeuticHosting
                     .GetSeriousTherapeuticNeedLabels(candidate);
@@ -210,7 +213,11 @@ namespace GateRimSG1.Goauld
 
             LordMaker.MakeNewLord(
                 tokraFaction,
-                new LordJob_VisitColony(tokraFaction, visitSpot),
+                new LordJob_TokraTherapeuticEscort(
+                    tokraFaction,
+                    visitSpot,
+                    GameComponent_TokraTherapeuticOpportunityTracker
+                        .OfferDurationTicks),
                 map,
                 escortPawns);
         }

@@ -13,17 +13,16 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.48-dev — Add Tok'ra therapeutic escort prototype
+### 0.1.49-dev — Add Tok'ra therapeutic offer lifecycle
 
-The rare therapeutic-opportunity incident now arrives as a small Tok'ra
-mission instead of an isolated free symbiote. One or two Tok'ra voluntary
-hosts accompany the symbiote from the map edge and reuse the vanilla peaceful
-visit behavior while the player considers permanent symbiosis.
+The escorted therapeutic opportunity is now temporary. Its free Tok'ra
+symbiote remains available for two RimWorld days, exposes the remaining time in
+its inspection text and provides an explicit refusal command.
 
-The hidden Tok'ra faction is lazily created through a shared helper and reused
-by both peaceful visits and therapeutic escorts. The final implantation remains
-manual and protected by the existing explicit consent confirmation. Quests,
-time-limited decisions and diplomatic consequences remain planned separately.
+Expiration, refusal and successful implantation all close the tracked offer and
+ask the Tok'ra escort to leave the map through vanilla lord behavior. The
+lifecycle is persisted across save and reload. Quests and diplomatic
+consequences remain planned separately.
 
 ## First playable milestone
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.49-dev — Add Tok'ra therapeutic offer lifecycle
+- Add persistent `GameComponent_TokraTherapeuticOpportunityTracker` records for escorted offers.
+- Keep each offer available for two RimWorld days.
+- Display the remaining duration in the free symbiote inspection text.
+- Add an explicit refusal gizmo with confirmation dialog.
+- Remove the free symbiote and ask the escort to leave when an offer expires or is refused.
+- Ask the escort to leave after successful implantation consumes the offered symbiote.
+- Extend escort visits to the offer duration instead of the vanilla random visitor duration.
+- Persist tracked symbiote references, escort references and expiration ticks across save and reload.
+- Add bilingual keyed messages and update technical documentation and player-wiki drafts.
+
 ## 0.1.48-dev — Add Tok'ra therapeutic escort prototype
 - Extend the natural therapeutic-opportunity incident with a small Tok'ra escort.
 - Spawn one or two `SG1_TokraVoluntaryHost` pawns near the free symbiote.

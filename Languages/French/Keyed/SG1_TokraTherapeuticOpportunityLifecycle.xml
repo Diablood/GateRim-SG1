@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <GR_TokraTherapeuticOpportunity_RejectCommandLabel>Refuser l'offre thérapeutique Tok'ra</GR_TokraTherapeuticOpportunity_RejectCommandLabel>
+    <GR_TokraTherapeuticOpportunity_RejectCommandDescription>Décline cette proposition thérapeutique Tok'ra temporaire. Le symbiote libre disparaîtra immédiatement et son escorte quittera la carte.</GR_TokraTherapeuticOpportunity_RejectCommandDescription>
+    <GR_TokraTherapeuticOpportunity_RejectConfirmTitle>Refuser l'offre thérapeutique Tok'ra</GR_TokraTherapeuticOpportunity_RejectConfirmTitle>
+    <GR_TokraTherapeuticOpportunity_RejectConfirm>Refuser cette proposition thérapeutique Tok'ra temporaire ? Le symbiote libre disparaîtra et son escorte quittera la carte.</GR_TokraTherapeuticOpportunity_RejectConfirm>
+    <GR_TokraTherapeuticOpportunity_NoActiveOffer>Ce symbiote Tok'ra n'est plus lié à une offre thérapeutique active.</GR_TokraTherapeuticOpportunity_NoActiveOffer>
+    <GR_TokraTherapeuticOpportunity_Expired>L'offre thérapeutique Tok'ra temporaire a expiré. Le symbiote libre et son escorte repartent.</GR_TokraTherapeuticOpportunity_Expired>
+    <GR_TokraTherapeuticOpportunity_Refused>L'offre thérapeutique Tok'ra temporaire a été refusée. Le symbiote libre et son escorte repartent.</GR_TokraTherapeuticOpportunity_Refused>
+    <GR_TokraTherapeuticOpportunity_Inspect>Offre thérapeutique Tok'ra : {0} jour(s) restant(s)</GR_TokraTherapeuticOpportunity_Inspect>
+</LanguageData>

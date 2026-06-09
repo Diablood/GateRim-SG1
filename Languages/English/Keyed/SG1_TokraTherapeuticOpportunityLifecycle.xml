@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <GR_TokraTherapeuticOpportunity_RejectCommandLabel>Refuse Tok'ra therapeutic offer</GR_TokraTherapeuticOpportunity_RejectCommandLabel>
+    <GR_TokraTherapeuticOpportunity_RejectCommandDescription>Decline this temporary Tok'ra therapeutic proposal. The free symbiote will leave immediately and its escort will depart from the map.</GR_TokraTherapeuticOpportunity_RejectCommandDescription>
+    <GR_TokraTherapeuticOpportunity_RejectConfirmTitle>Refuse Tok'ra therapeutic offer</GR_TokraTherapeuticOpportunity_RejectConfirmTitle>
+    <GR_TokraTherapeuticOpportunity_RejectConfirm>Refuse this temporary therapeutic Tok'ra proposal? The free symbiote will disappear and its escort will leave the map.</GR_TokraTherapeuticOpportunity_RejectConfirm>
+    <GR_TokraTherapeuticOpportunity_NoActiveOffer>This Tok'ra symbiote is no longer linked to an active therapeutic offer.</GR_TokraTherapeuticOpportunity_NoActiveOffer>
+    <GR_TokraTherapeuticOpportunity_Expired>The temporary Tok'ra therapeutic offer has expired. The free symbiote and its escort are leaving.</GR_TokraTherapeuticOpportunity_Expired>
+    <GR_TokraTherapeuticOpportunity_Refused>The temporary Tok'ra therapeutic offer has been refused. The free symbiote and its escort are leaving.</GR_TokraTherapeuticOpportunity_Refused>
+    <GR_TokraTherapeuticOpportunity_Inspect>Therapeutic Tok'ra offer: {0} day(s) remaining</GR_TokraTherapeuticOpportunity_Inspect>
+</LanguageData>

@@ -148,6 +148,20 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
+            if (GameComponent_TokraTherapeuticOpportunityTracker
+                .IsTrackedOffer(symbiote))
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "GR_TokraTherapeuticOpportunity_RejectCommandLabel"
+                        .Translate(),
+                    defaultDesc = "GR_TokraTherapeuticOpportunity_RejectCommandDescription"
+                        .Translate(),
+                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                    action = ConfirmRejectTrackedTherapeuticOpportunity
+                };
+            }
+
             if (Props.allowForcedImplantation)
             {
                 yield return new Command_Action
@@ -218,6 +232,15 @@ namespace GateRimSG1.Goauld
                 symbioteData.GetOriginLabel(),
                 autonomousLabel,
                 cooldownTicks).ToString();
+
+            string offerInspect
+                = GameComponent_TokraTherapeuticOpportunityTracker
+                    .GetInspectString(SymbiotePawn);
+
+            if (!string.IsNullOrEmpty(offerInspect))
+            {
+                summary += "\n" + offerInspect;
+            }
 
             if (!RitualInProgress)
             {
@@ -334,6 +357,9 @@ namespace GateRimSG1.Goauld
                 target,
                 GetImplantationMessageType(mode),
                 historical: true);
+
+            GameComponent_TokraTherapeuticOpportunityTracker
+                .NotifySymbioteImplanted(symbiote);
 
             symbiote.Destroy(DestroyMode.Vanish);
             return true;
@@ -662,6 +688,44 @@ namespace GateRimSG1.Goauld
             }
 
             return bestTarget;
+        }
+
+
+        private void ConfirmRejectTrackedTherapeuticOpportunity()
+        {
+            Pawn symbiote = SymbiotePawn;
+
+            if (!GameComponent_TokraTherapeuticOpportunityTracker
+                .IsTrackedOffer(symbiote))
+            {
+                Messages.Message(
+                    "GR_TokraTherapeuticOpportunity_NoActiveOffer".Translate(),
+                    symbiote,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Find.WindowStack.Add(
+                Dialog_MessageBox.CreateConfirmation(
+                    "GR_TokraTherapeuticOpportunity_RejectConfirm".Translate(),
+                    delegate
+                    {
+                        if (!GameComponent_TokraTherapeuticOpportunityTracker
+                            .TryRejectOffer(SymbiotePawn))
+                        {
+                            Messages.Message(
+                                "GR_TokraTherapeuticOpportunity_NoActiveOffer"
+                                    .Translate(),
+                                SymbiotePawn,
+                                MessageTypeDefOf.RejectInput,
+                                historical: false);
+                        }
+                    },
+                    destructive: true,
+                    title: "GR_TokraTherapeuticOpportunity_RejectConfirmTitle"
+                        .Translate()
+                        .ToString()));
         }
 
         private void TryImplantAdjacentHostManually()
