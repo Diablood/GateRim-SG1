@@ -28,11 +28,12 @@ trusted factor     : ×1.50 -> effective base chance 0.027
 | Wary | locked | locked |
 | Neutral | locked | locked |
 | Cooperative | 2 physical doses | exactly 1 voluntary host |
-| Trusted | 4 physical doses | exactly 2 voluntary hosts |
+| Trusted | 4 physical doses + 1 ultratech medicine | exactly 2 voluntary hosts |
 
-The supplies appear near the Tok'ra arrival point. The accompanying hosts reuse
-the vanilla peaceful colony-visit behavior and leave naturally after a short
-stay.
+The supplies appear near the Tok'ra arrival point. Since `0.1.56-dev`, trusted
+deliveries also include `1` physical vanilla `MedicineUltratech` unit as an
+advanced aid package. The accompanying hosts reuse the vanilla peaceful
+colony-visit behavior and leave naturally after a short stay.
 
 ## Separation from therapeutic opportunities
 
@@ -49,5 +50,6 @@ does not alter Tok'ra trust directly
 
 The Tok'ra faction remains hidden and disconnected from normal world
 settlements, traders, vanilla goodwill and quests. Since `0.1.54-dev`, trusted relations also increase the storyteller weight
-of future deliveries moderately. Future milestones may add broader medical
-aid, trade access or quest rewards.
+of future deliveries moderately. The first trusted-tier advanced medicine package was added in `0.1.56-dev`.
+Future milestones may add trade access, quest rewards or broader diplomatic
+services.

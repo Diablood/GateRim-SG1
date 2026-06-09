@@ -21,6 +21,7 @@ namespace GateRimSG1.Goauld
         private const int TrustedDeliveryDoseCount = 4;
         private const int CooperativeEscortCount = 1;
         private const int TrustedEscortCount = 2;
+        private const int TrustedAdvancedMedicineCount = 1;
 
         public override float BaseChanceThisGame
         {
@@ -45,7 +46,8 @@ namespace GateRimSG1.Goauld
                 || !IsCurrentTierEligible()
                 || GR_DefOf.SG1_TokraVoluntaryHost == null
                 || GR_DefOf.SG1_Tokra == null
-                || ResolveTretoninDoseDef() == null)
+                || ResolveTretoninDoseDef() == null
+                || !CanResolveTrustedAdvancedMedicine())
             {
                 return false;
             }
@@ -136,6 +138,20 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            int requestedAdvancedMedicineCount
+                = GetAdvancedMedicineCount(trustTier);
+            Thing placedAdvancedMedicine;
+
+            if (!TrySpawnTrustedAdvancedMedicineDelivery(
+                    map,
+                    entryCell,
+                    requestedAdvancedMedicineCount,
+                    out placedAdvancedMedicine))
+            {
+                DestroyIfSpawned(placedDelivery);
+                return false;
+            }
+
             int requestedEscortCount = GetEscortCount(trustTier);
             List<Pawn> escortPawns = SpawnEscortPawns(
                 map,
@@ -146,10 +162,8 @@ namespace GateRimSG1.Goauld
 
             if (escortPawns.Count == 0)
             {
-                if (!placedDelivery.Destroyed)
-                {
-                    placedDelivery.Destroy(DestroyMode.Vanish);
-                }
+                DestroyIfSpawned(placedDelivery);
+                DestroyIfSpawned(placedAdvancedMedicine);
 
                 GR_Log.Warning(
                     "Cannot start the Tok'ra medical-support delivery: no "
@@ -167,7 +181,8 @@ namespace GateRimSG1.Goauld
             GR_Log.Message(
                 $"Started Tok'ra medical-support delivery at {entryCell} "
                 + $"with {requestedDoseCount} tretonin dose(s), "
-                + $"{escortPawns.Count} visitor pawn(s) and "
+                + $"{requestedAdvancedMedicineCount} advanced medicine "
+                + $"unit(s), {escortPawns.Count} visitor pawn(s) and "
                 + $"{trustTierLabel} trust tier ({trustScore}); "
                 + $"storyteller chance factor "
                 + $"x{storytellerChanceFactor:0.00}, effective base chance "
@@ -178,6 +193,16 @@ namespace GateRimSG1.Goauld
                 placedDelivery,
                 requestedDoseCount.ToString().Named("COUNT"),
                 trustTierLabel.Named("TIER"));
+
+            if (placedAdvancedMedicine != null)
+            {
+                Messages.Message(
+                    "GR_TokraTrustedAdvancedMedicine_GiftReceived"
+                        .Translate(requestedAdvancedMedicineCount),
+                    placedAdvancedMedicine,
+                    MessageTypeDefOf.PositiveEvent,
+                    historical: true);
+            }
 
             return true;
         }
@@ -208,6 +233,13 @@ namespace GateRimSG1.Goauld
                 : CooperativeEscortCount;
         }
 
+        private static int GetAdvancedMedicineCount(TokraTrustTier tier)
+        {
+            return tier == TokraTrustTier.Trusted
+                ? TrustedAdvancedMedicineCount
+                : 0;
+        }
+
         private static string GetTierLogLabel(TokraTrustTier tier)
         {
             switch (tier)
@@ -226,6 +258,19 @@ namespace GateRimSG1.Goauld
         private static ThingDef ResolveTretoninDoseDef()
         {
             return DefDatabase<ThingDef>.GetNamedSilentFail("SG1_TretoninDose");
+        }
+
+        private static ThingDef ResolveTrustedAdvancedMedicineDef()
+        {
+            return DefDatabase<ThingDef>.GetNamedSilentFail(
+                "MedicineUltratech");
+        }
+
+        private static bool CanResolveTrustedAdvancedMedicine()
+        {
+            return GameComponent_TokraTrustTracker.GetCurrentTier()
+                    != TokraTrustTier.Trusted
+                || ResolveTrustedAdvancedMedicineDef() != null;
         }
 
         private static bool TrySpawnTretoninDelivery(
@@ -258,6 +303,68 @@ namespace GateRimSG1.Goauld
             }
 
             return true;
+        }
+
+        private static bool TrySpawnTrustedAdvancedMedicineDelivery(
+            Map map,
+            IntVec3 entryCell,
+            int requestedMedicineCount,
+            out Thing placedAdvancedMedicine)
+        {
+            placedAdvancedMedicine = null;
+
+            if (requestedMedicineCount <= 0)
+            {
+                return true;
+            }
+
+            ThingDef medicineDef = ResolveTrustedAdvancedMedicineDef();
+
+            if (medicineDef == null)
+            {
+                GR_Log.Warning(
+                    "Cannot start the trusted Tok'ra medical-support "
+                    + "delivery: MedicineUltratech could not be resolved.");
+                return false;
+            }
+
+            Thing medicine = ThingMaker.MakeThing(medicineDef);
+            medicine.stackCount = requestedMedicineCount;
+
+            if (!GenPlace.TryPlaceThing(
+                    medicine,
+                    entryCell,
+                    map,
+                    ThingPlaceMode.Near,
+                    out placedAdvancedMedicine))
+            {
+                if (!medicine.Destroyed)
+                {
+                    medicine.Destroy(DestroyMode.Vanish);
+                }
+
+                GR_Log.Warning(
+                    "Cannot start the trusted Tok'ra medical-support "
+                    + $"delivery: unable to place {requestedMedicineCount} "
+                    + $"advanced medicine unit(s) near entry cell "
+                    + $"{entryCell}.");
+                return false;
+            }
+
+            GR_Log.Message(
+                $"Spawned {requestedMedicineCount} advanced medicine "
+                + $"unit(s) near {entryCell} for a trusted Tok'ra "
+                + "medical-support delivery.");
+
+            return true;
+        }
+
+        private static void DestroyIfSpawned(Thing thing)
+        {
+            if (thing != null && !thing.Destroyed)
+            {
+                thing.Destroy(DestroyMode.Vanish);
+            }
         }
 
         private static List<Pawn> SpawnEscortPawns(

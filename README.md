@@ -13,15 +13,16 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.55-dev — Add wary Tok'ra diplomatic cooldown
+### 0.1.56-dev — Add trusted Tok'ra advanced medicine support
 
-Wary Tok'ra relations now suspend new therapeutic opportunities for a short
-period after a negative response. An explicit refusal applies a three-day
-RimWorld cooldown, while an unanswered expiration applies a five-day cooldown.
+Trusted Tok'ra medical-support deliveries now include one physical unit of
+vanilla ultratech medicine in addition to their existing tretonin shipment.
+Cooperative deliveries remain unchanged with two tretonin doses and one
+visitor, while trusted deliveries keep four tretonin doses and two visitors.
 
-The cooldown persists across save and reload. Independent medical-support
-deliveries remain locked below cooperative trust, while ordinary peaceful
-Tok'ra visitors remain available so wary relations are not permanently closed.
+The additional medicine is intentionally limited to the trusted tier and to
+independent deliveries. It provides a concrete positive diplomatic reward
+without introducing traders, quests or a new interface yet.
 
 ## First playable milestone
 

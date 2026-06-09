@@ -36,8 +36,9 @@ relations may also receive independent rare tretonin-support deliveries.
 Since `0.1.54-dev`, the current tier also modulates the storyteller weights of
 therapeutic opportunities and independent deliveries. Since `0.1.55-dev`, a
 negative response that leaves trust below `0` also starts a temporary wary
-diplomatic cooldown before another therapeutic opportunity may begin. The score
-still prepares future thresholds for quests, visitors, recruitment and eventual
+diplomatic cooldown before another therapeutic opportunity may begin. Since
+`0.1.56-dev`, trusted independent deliveries also include one vanilla
+ultratech medicine unit. The score still prepares future thresholds for quests, visitors, recruitment and eventual
 broader diplomacy.
 
 ## Persistence and visibility
@@ -52,6 +53,7 @@ bilingual player message and a `GR_Log` line.
 The score now adjusts therapeutic-offer duration, escort size, small physical
 tretonin-support gifts and storyteller weights for the two trust-sensitive
 Tok'ra incidents. Wary relations now also suspend new therapeutic offers for a
-short persistent cooldown after refusal or expiration. It does not yet unlock
+short persistent cooldown after refusal or expiration, while trusted deliveries
+include one small advanced medicine package. It does not yet unlock
 quests or synchronize with vanilla goodwill. Those integrations remain future milestones after the hidden-faction
 prototype is stabilized.

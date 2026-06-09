@@ -210,3 +210,11 @@ suspend temporairement les nouvelles opportunités thérapeutiques lorsque la
 confiance reste sous `0` après une réponse négative : `3` jours après un refus
 explicite et `5` jours après une expiration sans réponse. Les visites pacifiques
 ordinaires restent possibles.
+
+
+## Soutien médical avancé au palier fiable
+
+Depuis `0.1.56-dev`, une [livraison médicale Tok'ra fiable](Tokra-Trusted-Advanced-Medicine-Support)
+ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine
+déjà fournies. Cette première récompense positive reste rare et ne transforme
+pas encore les Tok'ra en marchands.

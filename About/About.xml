@@ -4,7 +4,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.55-dev</modVersion>
+    <modVersion>0.1.56-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -46,6 +46,7 @@ Current development scope:
 - Trust-gated independent Tok'ra medical-support delivery incident
 - Trust-weighted storyteller chances for Tok'ra therapeutic offers and medical-support deliveries
 - Persistent wary Tok'ra diplomatic cooldown after refused or expired therapeutic offers
+- Trusted Tok'ra medical-support deliveries include one advanced ultratech medicine unit
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype

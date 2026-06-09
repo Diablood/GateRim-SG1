@@ -18,10 +18,11 @@ apparaître de symbiote libre et ne propose aucune implantation.
 | Méfiante | indisponible | aucun |
 | Neutre | indisponible | aucun |
 | Coopérative | 2 doses physiques de trétonine | 1 hôte Tok'ra volontaire |
-| Fiable | 4 doses physiques de trétonine | 2 hôtes Tok'ra volontaires |
+| Fiable | 4 doses physiques de trétonine + 1 médicament ultratechnologique | 2 hôtes Tok'ra volontaires |
 
-Les doses apparaissent près du point d'arrivée de l'équipe. Les visiteurs
-restent pacifiques et quittent naturellement la carte après une courte visite.
+Les ressources apparaissent près du point d'arrivée de l'équipe. Depuis
+`0.1.56-dev`, une livraison fiable contient aussi `1` unité physique de
+médicament ultratechnologique vanilla. Les visiteurs restent pacifiques et quittent naturellement la carte après une courte visite.
 
 ## Conditions naturelles
 

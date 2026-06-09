@@ -84,3 +84,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 
 | Refroidissement diplomatique Tok'ra | Suspension persistante des nouvelles offres thérapeutiques pendant 3 jours après refus ou 5 jours après expiration lorsque la confiance reste négative | 0.1.55-dev |
+
+
+| Soutien médical avancé Tok'ra fiable | Une livraison indépendante fiable ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine existantes | 0.1.56-dev |

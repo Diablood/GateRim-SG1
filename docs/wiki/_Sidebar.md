@@ -22,6 +22,7 @@
 - [Livraisons médicales Tok'ra](Tokra-Medical-Support-Deliveries)
 - [Pondérations storyteller Tok'ra](Tokra-Storyteller-Trust-Weights)
 - [Refroidissement diplomatique Tok'ra](Tokra-Wary-Diplomatic-Cooldown)
+- [Soutien médical avancé Tok'ra fiable](Tokra-Trusted-Advanced-Medicine-Support)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

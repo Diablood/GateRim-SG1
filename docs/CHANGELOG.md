@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.56-dev — Add trusted Tok'ra advanced medicine support
+
+- Add the first positive trusted-tier diplomatic reward beyond tretonin quantity and storyteller weighting.
+- Keep cooperative medical-support deliveries unchanged with `2` tretonin doses and `1` visitor.
+- Keep trusted medical-support deliveries at `4` tretonin doses and `2` visitors.
+- Add `1` physical vanilla `MedicineUltratech` unit to trusted independent deliveries.
+- Place the advanced medicine near the Tok'ra arrival point and keep it on the map after the visit.
+- Add bilingual player feedback, `GR_Log` diagnostics, technical documentation and player-wiki drafts.
+
 ## 0.1.55-dev — Add wary Tok'ra diplomatic cooldown
 
 - Add a persistent cooldown for new therapeutic opportunities while Tok'ra trust is wary.

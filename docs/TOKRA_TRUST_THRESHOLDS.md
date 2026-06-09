@@ -28,13 +28,14 @@ trusted     : 25 to 100
 | Wary | 1 RimWorld day | exactly 1 host | none | ×0.50 after cooldown | locked | ×0.00 |
 | Neutral | 2 RimWorld days | 1 to 2 hosts | none | ×1.00 | locked | ×0.00 |
 | Cooperative | 3 RimWorld days | exactly 2 hosts | 1 dose | ×1.25 | 2 doses with 1 visitor | ×1.00 |
-| Trusted | 4 RimWorld days | 2 to 3 hosts | 2 doses | ×1.50 | 4 doses with 2 visitors | ×1.50 |
+| Trusted | 4 RimWorld days | 2 to 3 hosts | 2 doses | ×1.50 | 4 doses + 1 ultratech medicine with 2 visitors | ×1.50 |
 
 Since `0.1.53-dev`, cooperative and trusted relations may also receive an
 independent rare medical-support delivery without a sick pawn or symbiosis
 offer. Since `0.1.55-dev`, wary relations temporarily suspend new therapeutic
 opportunities after a negative response: `3` days after an explicit refusal and
-`5` days after an unanswered expiration.
+`5` days after an unanswered expiration. Since `0.1.56-dev`, trusted independent
+deliveries also include one vanilla ultratech medicine unit.
 
 ## Current limits
 
