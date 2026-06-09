@@ -13,17 +13,16 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.52-dev — Add Tok'ra tretonin support gifts
+### 0.1.53-dev — Add Tok'ra medical-support deliveries
 
-Cooperative and trusted Tok'ra therapeutic teams now bring a small physical
-tretonin-support gift alongside the offered symbiote. Cooperative teams bring
-`1` dose and trusted teams bring `2` doses. Wary and neutral teams bring no
-material support yet.
+Cooperative and trusted Tok'ra relations can now trigger a rare independent
+medical-support delivery without requiring a sick colon or a symbiosis offer.
+Cooperative teams bring `2` physical tretonin doses with `1` visitor, while
+trusted teams bring `4` doses with `2` visitors.
 
-The supplies remain on the map regardless of the final response. Refusal and
-expiration still reduce trust, naturally preventing repeated low-trust farming.
-Quests, storyteller-weight changes and broader diplomacy remain separate future
-milestones.
+The hidden Tok'ra faction remains disconnected from world settlements, traders
+and vanilla goodwill. Quests, storyteller-weight changes for existing offers
+and broader diplomacy remain separate future milestones.
 
 ## First playable milestone
 

@@ -77,3 +77,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Confiance Tok'ra | Jauge persistante de `-100` à `100` avec paliers modulant la durée des offres thérapeutiques, la taille des escortes et les cadeaux de trétonine | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
 
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
+
+| Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |

@@ -31,8 +31,10 @@ expiration without an answer = -2
 
 Since `0.1.51-dev`, the score also selects a lightweight gameplay tier for
 therapeutic offers. Since `0.1.52-dev`, cooperative and trusted tiers unlock
-small tretonin-support gifts. The score still prepares future thresholds for
-quests, visitors, recruitment and eventual broader diplomacy.
+small tretonin-support gifts. Since `0.1.53-dev`, cooperative and trusted
+relations may also receive independent rare tretonin-support deliveries. The
+score still prepares future thresholds for quests, visitors, recruitment and
+eventual broader diplomacy.
 
 ## Persistence and visibility
 

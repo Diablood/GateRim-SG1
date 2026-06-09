@@ -184,3 +184,11 @@ Depuis `0.1.52-dev`, les équipes Tok'ra suffisamment confiantes apportent un
 [cadeau léger de trétonine](Tokra-Medical-Support-Gifts) lors d'une opportunité
 thérapeutique escortée. Le palier coopérative fournit `1` dose et le palier
 fiable `2` doses. Les paliers méfiante et neutre n'apportent aucune ressource.
+
+
+## Livraisons médicales indépendantes
+
+Depuis `0.1.53-dev`, les relations Tok'ra coopératives ou fiables peuvent
+déclencher rarement une [livraison médicale indépendante](Tokra-Medical-Support-Deliveries).
+Cette équipe apporte de la trétonine sans exiger de pawn malade et sans proposer
+de symbiose : `2` doses au palier coopérative, puis `4` doses au palier fiable.

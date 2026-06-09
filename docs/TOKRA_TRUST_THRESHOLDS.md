@@ -21,23 +21,24 @@ cooperative : 10 to 24
 trusted     : 25 to 100
 ```
 
-## Therapeutic-offer effects
+## Trust-tier effects
 
-| Tier | Offer duration | Escort size | Tretonin support gift |
-|---|---:|---:|---:|
-| Wary | 1 RimWorld day | exactly 1 host | none |
-| Neutral | 2 RimWorld days | 1 to 2 hosts | none |
-| Cooperative | 3 RimWorld days | exactly 2 hosts | 1 dose |
-| Trusted | 4 RimWorld days | 2 to 3 hosts | 2 doses |
+| Tier | Offer duration | Offer escort | Offer gift | Independent delivery |
+|---|---:|---:|---:|---:|
+| Wary | 1 RimWorld day | exactly 1 host | none | locked |
+| Neutral | 2 RimWorld days | 1 to 2 hosts | none | locked |
+| Cooperative | 3 RimWorld days | exactly 2 hosts | 1 dose | 2 doses with 1 visitor |
+| Trusted | 4 RimWorld days | 2 to 3 hosts | 2 doses | 4 doses with 2 visitors |
 
-The thresholds intentionally remain easy to test during development. Two
-accepted offers move a neutral colony into the cooperative tier, while five
-accepted offers reach the trusted tier from the default score of `0`.
+Since `0.1.53-dev`, cooperative and trusted relations may also receive an
+independent rare medical-support delivery without a sick pawn or symbiosis
+offer.
 
 ## Current limits
 
 Since `0.1.52-dev`, cooperative and trusted teams bring a small physical
 trétonin-support gift near their arrival point. The supplies remain available
-regardless of the final response. The tiers do not yet modify storyteller
-weights, start quests, block incidents or synchronize with vanilla goodwill.
-Those integrations remain separate milestones.
+regardless of the final response. The existing therapeutic-opportunity storyteller weight remains unchanged.
+The new independent delivery has its own rare incident definition. Quests,
+incident blocking and vanilla-goodwill synchronization remain separate
+milestones.

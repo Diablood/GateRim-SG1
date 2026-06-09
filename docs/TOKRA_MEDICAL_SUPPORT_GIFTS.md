@@ -31,5 +31,8 @@ still reduce the trust score, naturally preventing repeated low-trust farming.
 
 ## Current limits
 
-The support gift currently uses only physical tretonin doses. Future milestones
-may add medical envoys, special equipment, trade access or quest rewards.
+The support gift currently uses only physical tretonin doses. Since
+`0.1.53-dev`, cooperative and trusted relations may also trigger an independent
+[Tok'ra medical-support delivery](TOKRA_MEDICAL_SUPPORT_DELIVERIES.md) without a
+symbiosis offer. Future milestones may add broader medical aid, special
+equipment, trade access or quest rewards.

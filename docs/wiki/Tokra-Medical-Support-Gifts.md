@@ -27,5 +27,7 @@ indéfiniment cette récupération lorsque la relation se dégrade.
 
 ## Limites actuelles
 
-Les Tok'ra n'apportent pas encore d'équipement avancé, ne proposent pas de
-commerce et ne déclenchent pas de quête dédiée.
+Depuis `0.1.53-dev`, une relation suffisamment avancée peut également
+déclencher une [livraison médicale Tok'ra indépendante](Tokra-Medical-Support-Deliveries)
+sans offre de symbiose. Les Tok'ra n'apportent pas encore d'équipement avancé,
+ne proposent pas de commerce et ne déclenchent pas de quête dédiée.

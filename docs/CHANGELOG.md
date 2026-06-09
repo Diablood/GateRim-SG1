@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.53-dev — Add Tok'ra medical-support deliveries
+- Add rare storyteller-selected `SG1_TokraMedicalSupportDelivery` incident after day `45`.
+- Unlock independent support deliveries only at cooperative and trusted Tok'ra trust tiers.
+- Deliver `2` physical `SG1_TretoninDose` items with `1` visitor at cooperative trust.
+- Deliver `4` physical `SG1_TretoninDose` items with `2` visitors at trusted trust.
+- Reuse the lazily created hidden Tok'ra faction and vanilla peaceful visitor behavior.
+- Keep support deliveries separate from therapeutic symbiosis opportunities and trust changes.
+- Add English `Defs`, French `DefInjected` text, technical documentation and player-wiki drafts.
+
+## 0.1.52-dev-r1 — Exclude cause-driven Tok'ra healing states
+- Exclude `Malnutrition`, `BloodLoss`, `Heatstroke`, `Hypothermia` and `ToxicBuildup` from instant Tok'ra condition removal.
+- Prevent repeated remove-and-recreate loops while the underlying hunger, bleeding, temperature or toxic exposure cause remains active.
+- Keep RimWorld-oriented healing for curable biological conditions and progressive non-permanent injury regeneration unchanged.
+
 ## 0.1.52-dev — Add Tok'ra tretonin support gifts
 - Add the first lightweight material benefit unlocked by Tok'ra trust tiers.
 - Keep wary and neutral therapeutic opportunities unchanged with no material support.

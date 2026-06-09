@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+    <SG1_TokraMedicalSupportDelivery.label>livraison de soutien médical Tok'ra</SG1_TokraMedicalSupportDelivery.label>
+    <SG1_TokraMedicalSupportDelivery.letterLabel>Livraison de soutien médical Tok'ra</SG1_TokraMedicalSupportDelivery.letterLabel>
+    <SG1_TokraMedicalSupportDelivery.letterText>Une équipe médicale Tok'ra est arrivée pacifiquement près de la colonie avec {COUNT} dose(s) de trétonine. Cette livraison de soutien indépendante reflète le palier de confiance {TIER} actuel et ne nécessite aucune offre de symbiose. Les fournitures ont été déposées près des visiteurs.</SG1_TokraMedicalSupportDelivery.letterText>
+</LanguageData>

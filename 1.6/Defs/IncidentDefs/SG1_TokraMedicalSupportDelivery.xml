@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Defs>
+    <!--
+    Trust-gated Tok'ra medical-support delivery.
+
+    Cooperative and trusted colonies may receive a rare independent delivery
+    of physical tretonin doses. The incident does not require a sick pawn and
+    does not create a therapeutic symbiosis offer.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraMedicalSupportDelivery</defName>
+        <label>Tok'ra medical-support delivery</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraMedicalSupportDelivery</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.018</baseChance>
+        <earliestDay>45</earliestDay>
+        <minRefireDays>60</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra medical-support delivery</letterLabel>
+        <letterText>A Tok'ra medical team has arrived peacefully near the colony with {COUNT} dose(s) of tretonin. This independent support delivery reflects the current {TIER} trust tier and does not require a symbiosis offer. The supplies have been placed near the visitors.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>
