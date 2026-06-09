@@ -39,7 +39,7 @@ GateRim SG-1
 Then inspect `Player.log` for:
 
 ```text
-[GateRim SG-1] Version 0.1.40.0 loaded.
+[GateRim SG-1] Version 0.1.41.0 loaded.
 ```
 
 The DLL is a local build output and remains ignored by Git.

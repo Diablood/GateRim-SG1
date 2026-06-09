@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Intentionally empty since 0.1.41-dev-r1.
+
+        RimWorld does not load PawnGroupMaker as a standalone Def type.
+        The Tok'ra Combat and Peaceful foundation profiles now live inside:
+
+        1.6/Defs/FactionDefs/SG1_Tokra.xml
+            <pawnGroupMakers>...</pawnGroupMakers>
+    -->
+</Defs>

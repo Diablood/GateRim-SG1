@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.40.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.41.0 loaded.
    ```
 
 
@@ -628,3 +628,40 @@ Negative checks:
    [GateRim SG-1] Version 0.1.40.0 loaded.
    ```
 6. Repeat the developer-spawn and save/reload regression tests.
+
+
+## Tok'ra pawn-group foundation
+
+1. Restart RimWorld completely.
+2. Open `Player.log`.
+3. Confirm no XML or Def-validation errors reference:
+   ```text
+   SG1_TokraSmallTeam
+   SG1_TokraVisitorPrototype
+   ```
+4. Confirm:
+   ```text
+   [GateRim SG-1] Version 0.1.41.0 loaded.
+   ```
+5. Confirm the Tok'ra faction remains hidden and non-generated.
+6. Spawn `Tok'ra voluntary host` and confirm one-time Tok'ra initialization.
+7. Spawn `Tok'ra symbiote` and confirm voluntary implantation only.
+8. Spawn `Goa'uld symbiote` and confirm previous hostile workflows.
+
+
+## Tok'ra pawn-group nested-profile regression
+
+1. Apply the `0.1.41-dev-r1` patch.
+2. Restart RimWorld completely.
+3. Open `Player.log`.
+4. Confirm this error no longer appears:
+   ```text
+   Type PawnGroupMakerDef is not a Def type or could not be found
+   ```
+5. Confirm no new `SG1_Tokra`, `pawnGroupMakers` or
+   `maxPawnCostPerTotalPointsCurve` error appears.
+6. Confirm:
+   ```text
+   [GateRim SG-1] Version 0.1.41.0 loaded.
+   ```
+7. Repeat Tok'ra-host, free-Tok'ra and Goa'uld regression tests.

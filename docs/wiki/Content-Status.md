@@ -63,3 +63,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Tok'ra | Fondation masquée de faction, symbiote libre testable et implantation volontaire | 0.1.39-dev |
 
 | Hôte Tok'ra volontaire | Pawn humain contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |
+
+| Groupes de pawns Tok'ra | Fondation technique non encore reliée à la génération mondiale | 0.1.41-dev |

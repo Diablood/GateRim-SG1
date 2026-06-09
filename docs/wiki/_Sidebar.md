@@ -11,6 +11,7 @@
 - [Goa'uld](Goauld)
 - [Tok'ra](Tokra)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
+- [Groupes Tok'ra](Tokra-Pawn-Groups)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

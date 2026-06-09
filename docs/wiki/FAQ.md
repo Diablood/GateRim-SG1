@@ -267,3 +267,13 @@ Oui, à des fins de test. Depuis `0.1.40-dev`, fais apparaître
 Ce colon humain contrôlé par le joueur reçoit automatiquement un symbiote Tok'ra
 adulte actif avec une identité persistante. Les véritables visiteurs et colonies
 Tok'ra viendront ultérieurement.
+
+
+## Les groupes Tok'ra apparaissent-ils automatiquement ?
+
+Pas encore.
+
+Depuis `0.1.41-dev`, les premiers profils internes `Combat` et `Peaceful`
+existent dans la faction Tok'ra masquée, mais la génération mondiale reste
+désactivée. Les visiteurs, marchands, colonies et événements Tok'ra seront
+activés progressivement.

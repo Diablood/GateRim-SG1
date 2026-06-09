@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.40-dev</modVersion>
+    <modVersion>0.1.41-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -35,6 +35,7 @@ Current development scope:
 - Formal Jaffa Prim'ta ceremony prototype at the Goa'uld ritual basin
 - Tok'ra foundation prototype with voluntary adult-symbiote implantation
 - Developer-spawnable player-controlled Tok'ra voluntary-host pawn prototype
+- Tok'ra pawn-group foundation prototype for developer tests
 - Goa'uld host xenotype prototype
 - Free Goa'uld symbiote pawn prototype
 - Recent Goa'uld implantation Hediff prototype
@@ -52,7 +53,7 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Tok'ra host content, faction expansion, queen-origin biology and freezing penalties planned next
+- Tok'ra visitor and faction expansion, therapeutic hosting, queen-origin biology and freezing penalties planned next
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

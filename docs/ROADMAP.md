@@ -469,6 +469,21 @@
 - [ ] Confirm free Tok'ra and Goa'uld workflow regressions
 - [ ] Publish the updated player wiki
 
+## 0.1.41-dev — Add Tok'ra pawn-group foundation
+- [x] Fix invalid standalone `PawnGroupMakerDef` declarations
+- [x] Add a nested Tok'ra `Combat` pawn-group profile
+- [x] Add a nested Tok'ra `Peaceful` pawn-group profile
+- [x] Reuse `SG1_TokraVoluntaryHost` as the first pawn option
+- [x] Add the required `maxPawnCostPerTotalPointsCurve`
+- [x] Keep the hidden Tok'ra faction disconnected from automatic world generation
+- [x] Preserve the staged rollout before visitors, traders and world settlements
+- [x] Document future therapeutic Tok'ra hosting separately
+- [x] Add technical docs and player-wiki drafts
+- [ ] Restart RimWorld and validate clean Def loading
+- [ ] Confirm no group-maker XML errors in `Player.log`
+- [ ] Confirm Tok'ra and Goa'uld regression workflows
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -572,3 +587,12 @@
 - [ ] Add Tok'ra-specific host visuals and cultural content
 - [ ] Add named Tok'ra content when the generic foundation is stable
 - [ ] Revisit queen-origin biology and Egeria-inspired content afterward
+
+
+## Future therapeutic Tok'ra hosting
+- [ ] Detect compatible humanoids with serious or potentially fatal illnesses
+- [ ] Add explicit voluntary therapeutic implantation
+- [ ] Stabilize, reduce or cure configured pathologies when appropriate
+- [ ] Keep the long-term narrative cost: the pawn becomes a durable Tok'ra host
+- [ ] Support vanilla and modded diseases through configurable rules
+- [ ] Integrate later with events, quests, visitors, recruitment and diplomacy

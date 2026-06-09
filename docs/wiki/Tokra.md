@@ -110,3 +110,12 @@ Depuis `0.1.40-dev`, fais apparaître un
 
 Ce colon humain contrôlé par le joueur reçoit automatiquement une identité
 Tok'ra persistante après son apparition.
+
+
+## Fondation des groupes de pawns
+
+Depuis `0.1.41-dev`, une
+[fondation technique des groupes Tok'ra](Tokra-Pawn-Groups) existe.
+
+La faction masquée contient désormais des profils internes `Combat` et
+`Peaceful`, mais la génération mondiale automatique reste désactivée.

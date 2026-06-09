@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.41-dev
+- Replace invalid standalone `PawnGroupMakerDef` entries with nested Tok'ra `FactionDef.pawnGroupMakers`.
+- Add one Tok'ra `Combat` profile and one Tok'ra `Peaceful` profile.
+- Add the required `maxPawnCostPerTotalPointsCurve`.
+- Reuse `SG1_TokraVoluntaryHost` as the first Tok'ra pawn option.
+- Keep the hidden Tok'ra faction disconnected from automatic world generation.
+- Preserve the staged rollout before visitors, traders and world settlements.
+- Document the future therapeutic Tok'ra-hosting path.
+- Add technical documentation and player-wiki drafts.
+
 ## 0.1.40-dev
 - Define a neutral `initialResistanceRange` for the humanlike Tok'ra voluntary-host prototype.
 - Add the developer-spawnable `SG1_TokraVoluntaryHost` PawnKindDef.

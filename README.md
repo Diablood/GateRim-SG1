@@ -14,21 +14,20 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.40-dev — Add Tok'ra voluntary host pawn prototype
+### 0.1.41-dev — Add Tok'ra pawn-group foundation
 
-A first Tok'ra host pawn is now testable through developer spawning:
+The hidden Tok'ra faction now contains two valid nested pawn-group profiles:
 
 ```text
-spawn Tok'ra voluntary host
-    ↓ player-controlled human pawn
-automatic one-time initialization
-    ↓
-active adult symbiote with persistent Tok'ra origin
+Combat
+Peaceful
 ```
 
-The initialized-pawn registry is saved. Removing the symbiote later does not
-create an artificial replacement. Tok'ra world settlements, visitors, traders
-and quests remain future milestones.
+They currently reuse the developer-spawnable voluntary host pawn.
+
+Automatic world generation remains disabled. This milestone validates the group
+foundation before visitors, traders, settlements, diplomacy and therapeutic-host
+events are enabled.
 
 ## First playable milestone
 

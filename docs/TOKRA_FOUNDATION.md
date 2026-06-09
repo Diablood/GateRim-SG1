@@ -183,3 +183,24 @@ Tokra
 The initialization registry is persistent and grants the embedded symbiote only
 once per pawn. Removing the symbiote later does not create an artificial
 replacement.
+
+
+## Pawn-group foundation
+
+`0.1.41-dev-r1` adds two valid nested profiles inside the hidden Tok'ra
+`FactionDef`:
+
+```text
+Combat
+Peaceful
+```
+
+Both currently use:
+
+```text
+SG1_TokraVoluntaryHost
+```
+
+The faction remains hidden and non-generated. These profiles prepare future
+small teams and peaceful visitors without enabling settlements, traders or
+diplomacy.
