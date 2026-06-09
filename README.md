@@ -14,19 +14,24 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.37-dev — Add tretonin acquisition prototype
+### 0.1.38-dev — Add formal Prim'ta ceremony prototype
 
-Tretonin no longer requires developer spawning for normal gameplay tests:
+The Goa'uld ritual basin now supports a formal Jaffa rite:
 
 ```text
-1 Prim'ta larva + 1 medicine
-    ↓ vanilla DrugLab, Intellectual 6+
-5 physical tretonin doses
+ritual basin
+    +
+eligible nearby Jaffa
+    +
+physical nearby Prim'ta larva
+    ↓ 600-tick ceremony
+Prim'ta implanted
 ```
 
-The first recipe creates a deliberate choice between permanent implantation and
-several days of temporary substitution. A specialized Goa'uld pharmaceutical
-chain can replace this prototype later.
+The timed rite persists through save and reload, consumes the larva only on
+successful completion and remains separate from the medical-operation workflow.
+
+Future optional Ideology integration can reuse this Core + Biotech fallback.
 
 ## First playable milestone
 

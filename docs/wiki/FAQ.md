@@ -238,3 +238,12 @@ La recette prototype de `0.1.37-dev` consomme une larve de Prim'ta et un
 médicament pour produire `5` doses de trétonine.
 
 Ce rendement pourra être ajusté pendant l'équilibrage.
+
+
+## Peut-on implanter un Prim'ta sans chirurgie ?
+
+Oui. Depuis `0.1.38-dev`, utilise un bassin rituel Goa'uld pour lancer une
+`Cérémonie formelle du Prim'ta`.
+
+Le Jaffa et une larve physique doivent rester proches du bassin pendant `600`
+ticks. La chirurgie médicale reste également disponible.

@@ -57,3 +57,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Trétonine | Dose physique suspendant temporairement la déficience pubertaire | 0.1.36-dev |
 
 | Production de trétonine | Recette au laboratoire de drogues : 1 larve + 1 médicament → 5 doses | 0.1.37-dev |
+
+| Cérémonie formelle du Prim'ta | Rite temporisé au bassin rituel, avec consommation d'une larve proche | 0.1.38-dev |

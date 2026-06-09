@@ -282,3 +282,15 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 6. Laisse la tâche s'achever.
 7. Vérifie que les deux ingrédients sont consommés.
 8. Vérifie que `5` doses de trétonine apparaissent.
+
+
+## Organiser une cérémonie formelle du Prim'ta
+
+1. Construis ou génère un `bassin rituel Goa'uld`.
+2. Place une larve de Prim'ta dans un rayon de `6` cases.
+3. Place un Jaffa éligible dans le même rayon.
+4. Sélectionne le bassin.
+5. Lance `Cérémonie formelle du Prim'ta`.
+6. Sélectionne le Jaffa.
+7. Maintiens la cible et la larve près du bassin pendant `600` ticks.
+8. Vérifie la consommation de la larve et l'ajout du Prim'ta.

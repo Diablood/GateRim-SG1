@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.37.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.38.0 loaded.
    ```
 
 
@@ -526,3 +526,35 @@ Negative checks:
 11. Confirm storage and stacking.
 12. Administer one dose to an eligible Jaffa.
 13. Confirm the existing one-day substitution workflow remains valid.
+
+
+## Formal Jaffa Prim'ta ceremony prototype
+
+1. Build with `build.cmd`.
+2. Construct or spawn one `Goa'uld ritual basin`.
+3. Place one physical `Prim'ta larva` within `6` cells.
+4. Place one compatible Jaffa aged `10+` within `6` cells.
+5. Select the basin and start `Formal Prim'ta ceremony`.
+6. Target the Jaffa.
+7. Confirm the inspection panel shows target, reserved larva and progress.
+8. Save and reload during the rite.
+9. Confirm progress persists.
+10. Let the rite complete.
+11. Confirm one larva is consumed and `Prim'ta symbiote` appears.
+12. Confirm dependency relief and cultural-memory behavior.
+13. Test manual cancellation.
+14. Test automatic cancellation after moving the larva away.
+15. Confirm cancelled ceremonies do not consume the larva.
+16. Confirm the medical implantation operation still works independently.
+
+
+## Formal Jaffa Prim'ta ceremony ticker regression
+
+1. Restart RimWorld after applying the XML fix.
+2. Construct or reuse one `Goa'uld ritual basin`.
+3. Place one eligible Jaffa and one larva within `6` cells.
+4. Start `Formal Prim'ta ceremony`.
+5. Select the basin.
+6. Confirm the remaining duration decreases from `600 / 600`.
+7. Let the ceremony complete and confirm one larva is consumed.
+8. Confirm the Prim'ta Hediff is attached.

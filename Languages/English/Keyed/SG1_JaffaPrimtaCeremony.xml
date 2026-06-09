@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_JaffaPrimtaCeremony_CommandLabel>Formal Prim'ta ceremony</GR_JaffaPrimtaCeremony_CommandLabel>
+    <GR_JaffaPrimtaCeremony_CommandDescription>Choose one nearby eligible Jaffa. A physical Prim'ta larva must remain close to the ritual basin until the timed ceremony is complete. The larva is consumed and implanted without using the medical-operation bill.</GR_JaffaPrimtaCeremony_CommandDescription>
+    <GR_JaffaPrimtaCeremony_CancelCommandLabel>Cancel Prim'ta ceremony</GR_JaffaPrimtaCeremony_CancelCommandLabel>
+    <GR_JaffaPrimtaCeremony_CancelCommandDescription>Cancel the current formal Jaffa Prim'ta ceremony before completion.</GR_JaffaPrimtaCeremony_CancelCommandDescription>
+    <GR_JaffaPrimtaCeremony_NoLarvaNearby>A physical Prim'ta larva must be placed near the ritual basin.</GR_JaffaPrimtaCeremony_NoLarvaNearby>
+    <GR_JaffaPrimtaCeremony_NoTargetNearby>No eligible Jaffa is available near the ritual basin.</GR_JaffaPrimtaCeremony_NoTargetNearby>
+    <GR_JaffaPrimtaCeremony_InvalidTarget>This pawn is not an eligible nearby Jaffa for the formal Prim'ta ceremony.</GR_JaffaPrimtaCeremony_InvalidTarget>
+    <GR_JaffaPrimtaCeremony_StartFailed>The formal Prim'ta ceremony could not be started. Check the target and nearby larva.</GR_JaffaPrimtaCeremony_StartFailed>
+    <GR_JaffaPrimtaCeremony_Started>{0}'s formal Prim'ta ceremony has begun. Keep the Jaffa and larva near the basin for {1} ticks.</GR_JaffaPrimtaCeremony_Started>
+    <GR_JaffaPrimtaCeremony_CancelledManual>The formal Prim'ta ceremony has been cancelled.</GR_JaffaPrimtaCeremony_CancelledManual>
+    <GR_JaffaPrimtaCeremony_CancelledInvalid>The formal Prim'ta ceremony was interrupted because the target, basin or larva became unavailable or moved out of range.</GR_JaffaPrimtaCeremony_CancelledInvalid>
+    <GR_JaffaPrimtaCeremony_Success>{0} has received a Prim'ta during a formal ceremony.</GR_JaffaPrimtaCeremony_Success>
+    <GR_JaffaPrimtaCeremony_Inspect>Formal Prim'ta ceremony target: {0}
+Reserved larva: {1}
+Ceremony duration remaining: {2} / {3} ticks</GR_JaffaPrimtaCeremony_Inspect>
+</LanguageData>

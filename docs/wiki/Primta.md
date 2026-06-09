@@ -7,7 +7,8 @@
 > Âge minimal d'implantation : 0.1.33-dev  
 > Dépendance pubertaire : 0.1.34-dev  
 > Pensées culturelles : 0.1.35-dev  
-> Trétonine : 0.1.36-dev
+> Trétonine : 0.1.36-dev  
+> Cérémonie formelle : 0.1.38-dev
 
 ## Présentation
 
@@ -86,3 +87,9 @@ Sa première implantation lui accorde un bonus temporaire.
 
 Depuis `0.1.36-dev`, la [trétonine](Tretonin) peut suspendre temporairement la
 déficience d'un Jaffa pubère sans Prim'ta.
+
+
+## Cérémonie formelle
+
+Depuis `0.1.38-dev`, le [bassin rituel Goa'uld](Primta-Formal-Ceremony) permet
+d'implanter une larve de Prim'ta au cours d'un rite temporisé.

@@ -16,6 +16,7 @@
 - [Température des larves](Primta-Temperature)
 - [Bassin d'incubation du Prim'ta](Primta-Incubation)
 - [Implantation du Prim'ta](Primta-Implantation)
+- [Cérémonie formelle du Prim'ta](Primta-Formal-Ceremony)
 - [Âge requis pour le Prim'ta](Primta-Age-Eligibility)
 - [Dépendance pubertaire](Primta-Puberty-Dependency)
 - [Pensées culturelles du Prim'ta](Primta-Cultural-Thoughts)

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.38-dev
+- Register `SG1_GoauldRitualBasin` with `<tickerType>Normal</tickerType>` so the timed ceremony progresses.
+- Add `CompProperties_JaffaPrimtaCeremony`.
+- Add `Comp_JaffaPrimtaCeremony`.
+- Extend the Goa'uld ritual basin with a formal Jaffa Prim'ta ceremony command.
+- Require an eligible nearby Jaffa and one nearby physical larva.
+- Add a persistent `600`-tick ceremony with manual and automatic cancellation.
+- Consume the larva only after successful completion.
+- Reuse existing Prim'ta dependency relief and first-implantation cultural memory.
+- Keep the medical implantation operation available as a separate workflow.
+- Document a future Goa'uld-queen larva-origin iteration.
+- Add bilingual text, technical documentation and player-wiki drafts.
+
 ## 0.1.37-dev
 - Add `SG1_PrepareTretoninDoses`.
 - Reuse the vanilla `DrugLab` for the first player-usable tretonin-production route.

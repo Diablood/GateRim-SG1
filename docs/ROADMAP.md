@@ -402,6 +402,29 @@
 - [ ] Validate storage, stacking and administration regressions
 - [ ] Publish the updated player wiki
 
+## 0.1.38-dev — Add formal Prim'ta ceremony prototype
+- [x] Add `CompProperties_JaffaPrimtaCeremony`
+- [x] Add `Comp_JaffaPrimtaCeremony`
+- [x] Attach the ceremony to `SG1_GoauldRitualBasin`
+- [x] Register the basin with `tickerType = Normal`
+- [x] Require one eligible nearby Jaffa
+- [x] Require one nearby physical `SG1_PrimtaLarva`
+- [x] Add a `600`-tick timed rite
+- [x] Persist target, reserved larva and remaining duration
+- [x] Consume the larva only after successful completion
+- [x] Attach `SG1_JaffaPrimta` and reuse dependency/cultural side effects
+- [x] Add manual and automatic cancellation
+- [x] Keep the existing medical-operation workflow
+- [x] Add bilingual text, technical docs and player-wiki drafts
+- [x] Document the future Goa'uld-queen larva-origin TODO
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm basin command, targeting and range rules
+- [ ] Confirm save/reload persistence
+- [ ] Confirm successful completion and larva consumption
+- [ ] Confirm cancellation without larva consumption
+- [ ] Confirm surgery remains available independently
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -420,7 +443,8 @@
 - [ ] Evaluate deep-freezing penalties and specialized containers
 - [ ] Evaluate nutrition-value-based balancing
 - [x] Add first Prim'ta implantation age eligibility check
-- [ ] Add formal Prim'ta age ceremony flow
+- [x] Add first formal Prim'ta ceremony fallback
+- [ ] Add richer ceremony roles, staging and optional Ideology integration
 - [x] Add first puberty dependency without Prim'ta
 - [x] Add first tretonin substitution prototype
 - [x] Add first tretonin acquisition prototype
@@ -485,3 +509,12 @@
 - [x] Add a temporary `received Prim'ta` thought after first implantation
 - [ ] Differentiate loyalist, traditional and Free Jaffa reactions later
 - [ ] Integrate faction and optional Ideology context when available
+
+
+## Future Goa'uld queen larva origin
+- [ ] Introduce a Goa'uld queen as the primary biological source of immature symbiotes
+- [ ] Decide between special pawn, living building, event, quest reward or faction resource
+- [ ] Support hosted and/or hostless queen representations as appropriate
+- [ ] Turn the current incubation basin into assisted maturation infrastructure
+- [ ] Integrate Goa'uld factions, Tok'ra, Free Jaffa, trade, quests and events
+- [ ] Revisit this feature after the first Tok'ra iteration

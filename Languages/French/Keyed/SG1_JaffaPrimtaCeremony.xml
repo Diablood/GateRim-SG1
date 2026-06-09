@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_JaffaPrimtaCeremony_CommandLabel>Cérémonie formelle du Prim'ta</GR_JaffaPrimtaCeremony_CommandLabel>
+    <GR_JaffaPrimtaCeremony_CommandDescription>Choisis un Jaffa éligible proche. Une larve physique de Prim'ta doit rester près du bassin rituel jusqu'à la fin de la cérémonie temporisée. La larve est consommée et implantée sans utiliser l'opération médicale.</GR_JaffaPrimtaCeremony_CommandDescription>
+    <GR_JaffaPrimtaCeremony_CancelCommandLabel>Annuler la cérémonie du Prim'ta</GR_JaffaPrimtaCeremony_CancelCommandLabel>
+    <GR_JaffaPrimtaCeremony_CancelCommandDescription>Annule la cérémonie formelle actuelle du Prim'ta jaffa avant son achèvement.</GR_JaffaPrimtaCeremony_CancelCommandDescription>
+    <GR_JaffaPrimtaCeremony_NoLarvaNearby>Une larve physique de Prim'ta doit être placée près du bassin rituel.</GR_JaffaPrimtaCeremony_NoLarvaNearby>
+    <GR_JaffaPrimtaCeremony_NoTargetNearby>Aucun Jaffa éligible n'est disponible près du bassin rituel.</GR_JaffaPrimtaCeremony_NoTargetNearby>
+    <GR_JaffaPrimtaCeremony_InvalidTarget>Ce pawn n'est pas un Jaffa proche et éligible pour la cérémonie formelle du Prim'ta.</GR_JaffaPrimtaCeremony_InvalidTarget>
+    <GR_JaffaPrimtaCeremony_StartFailed>La cérémonie formelle du Prim'ta n'a pas pu commencer. Vérifie la cible et la larve proche.</GR_JaffaPrimtaCeremony_StartFailed>
+    <GR_JaffaPrimtaCeremony_Started>La cérémonie formelle du Prim'ta de {0} a commencé. Maintiens le Jaffa et la larve près du bassin pendant {1} ticks.</GR_JaffaPrimtaCeremony_Started>
+    <GR_JaffaPrimtaCeremony_CancelledManual>La cérémonie formelle du Prim'ta a été annulée.</GR_JaffaPrimtaCeremony_CancelledManual>
+    <GR_JaffaPrimtaCeremony_CancelledInvalid>La cérémonie formelle du Prim'ta a été interrompue, car la cible, le bassin ou la larve est devenu indisponible ou hors de portée.</GR_JaffaPrimtaCeremony_CancelledInvalid>
+    <GR_JaffaPrimtaCeremony_Success>{0} a reçu un Prim'ta au cours d'une cérémonie formelle.</GR_JaffaPrimtaCeremony_Success>
+    <GR_JaffaPrimtaCeremony_Inspect>Cible de la cérémonie formelle : {0}
+Larve réservée : {1}
+Durée restante de la cérémonie : {2} / {3} ticks</GR_JaffaPrimtaCeremony_Inspect>
+</LanguageData>

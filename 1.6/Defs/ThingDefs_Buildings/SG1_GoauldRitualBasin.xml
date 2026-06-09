@@ -1,14 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-        First Core + Biotech environmental requirement for controlled Goa'uld
-        implantation ceremonies. The placeholder graphic will be replaced by a
-        dedicated asset later.
-    -->
     <ThingDef ParentName="FurnitureBase">
         <defName>SG1_GoauldRitualBasin</defName>
         <label>Goa'uld ritual basin</label>
-        <description>A ceremonial basin used to prepare controlled Goa'uld implantation rituals. Both the free symbiote and the selected host must remain close to the basin until the ceremony is complete.</description>
+        <description>A ceremonial basin used to prepare controlled Goa'uld implantation rituals and formal Jaffa Prim'ta ceremonies. Adult free-symbiote rituals require the symbiote and selected host to remain close to the basin. Jaffa ceremonies consume one nearby physical Prim'ta larva after a timed rite.</description>
         <graphicData>
             <texPath>Things/Building/SG1_GoauldRitualBasin</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -16,6 +11,7 @@
         </graphicData>
         <size>(1,1)</size>
         <rotatable>false</rotatable>
+        <tickerType>Normal</tickerType>
         <statBases>
             <MaxHitPoints>180</MaxHitPoints>
             <WorkToBuild>1200</WorkToBuild>
@@ -29,5 +25,11 @@
         </costList>
         <designationCategory>Furniture</designationCategory>
         <minifiedDef>MinifiedThing</minifiedDef>
+        <comps>
+            <li Class="GateRimSG1.Jaffa.CompProperties_JaffaPrimtaCeremony">
+                <ceremonyRange>6</ceremonyRange>
+                <ceremonyDurationTicks>600</ceremonyDurationTicks>
+            </li>
+        </comps>
     </ThingDef>
 </Defs>

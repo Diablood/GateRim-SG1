@@ -239,3 +239,15 @@ Loaded tretonin substitution for <pawn>.
 Ended tretonin substitution for <pawn>.
 Tretonin dose administered to <pawn> by <pawn>.
 ```
+
+
+## Formal Jaffa Prim'ta-ceremony diagnostics
+
+`0.1.38-dev` adds:
+
+```text
+Started formal Jaffa Prim'ta ceremony for <pawn> near basin <thing> using larva <thing> for <ticks> ticks.
+Loaded formal Jaffa Prim'ta ceremony for <pawn> near basin <thing> with <remaining> / <total> ticks remaining.
+Completed formal Jaffa Prim'ta ceremony for <pawn> near basin <thing>.
+Cancelled formal Jaffa Prim'ta ceremony for <pawn> near basin <thing> using larva <thing>.
+```
