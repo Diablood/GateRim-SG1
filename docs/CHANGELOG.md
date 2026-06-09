@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.54-dev — Add Tok'ra storyteller trust weighting
+
+- Keep XML incident chances as readable neutral baseline values.
+- Multiply therapeutic-opportunity storyteller weight by the current Tok'ra trust tier.
+- Reduce wary therapeutic opportunities to `×0.50` of their baseline weight.
+- Keep neutral therapeutic opportunities at `×1.00`.
+- Raise cooperative therapeutic opportunities to `×1.25`.
+- Raise trusted therapeutic opportunities to `×1.50`.
+- Keep independent medical-support deliveries locked below cooperative trust.
+- Keep cooperative medical-support deliveries at `×1.00` of their baseline weight.
+- Raise trusted medical-support deliveries to `×1.50`.
+- Add `GR_Log` diagnostics for the active factor and effective runtime base chance.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.1.53-dev — Add Tok'ra medical-support deliveries
 - Add rare storyteller-selected `SG1_TokraMedicalSupportDelivery` incident after day `45`.
 - Unlock independent support deliveries only at cooperative and trusted Tok'ra trust tiers.

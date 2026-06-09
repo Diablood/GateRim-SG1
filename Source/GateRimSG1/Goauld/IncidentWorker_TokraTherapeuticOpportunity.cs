@@ -20,6 +20,16 @@ namespace GateRimSG1.Goauld
         private const float MinimumVoluntaryHostAgeYears = 13f;
         private const int EscortSpawnRadius = 5;
 
+        public override float BaseChanceThisGame
+        {
+            get
+            {
+                return base.BaseChanceThisGame
+                    * GameComponent_TokraTrustTracker
+                        .GetCurrentTherapeuticOpportunityChanceFactor();
+            }
+        }
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             if (!base.CanFireNowSub(parms))
@@ -132,6 +142,9 @@ namespace GateRimSG1.Goauld
             int requestedTretoninGiftCount
                 = GameComponent_TokraTrustTracker
                     .GetCurrentTretoninGiftCount();
+            float storytellerChanceFactor
+                = GameComponent_TokraTrustTracker
+                    .GetCurrentTherapeuticOpportunityChanceFactor();
             Thing placedTretoninGift;
             int spawnedTretoninGiftCount = SpawnTretoninGift(
                 map,
@@ -180,7 +193,9 @@ namespace GateRimSG1.Goauld
                 + $"{escortPawns.Count} escort pawn(s), "
                 + $"{spawnedTretoninGiftCount} tretonin support dose(s), "
                 + $"for {offerDurationTicks} ticks at {trustTierLabel} trust "
-                + $"tier.");
+                + $"tier; storyteller chance factor "
+                + $"x{storytellerChanceFactor:0.00}, effective base chance "
+                + $"{BaseChanceThisGame:0.####}.");
 
             SendStandardLetter(
                 parms,

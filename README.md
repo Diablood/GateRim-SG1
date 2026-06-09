@@ -13,16 +13,16 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.53-dev — Add Tok'ra medical-support deliveries
+### 0.1.54-dev — Add Tok'ra storyteller trust weighting
 
-Cooperative and trusted Tok'ra relations can now trigger a rare independent
-medical-support delivery without requiring a sick colon or a symbiosis offer.
-Cooperative teams bring `2` physical tretonin doses with `1` visitor, while
-trusted teams bring `4` doses with `2` visitors.
+Tok'ra trust tiers now also influence storyteller selection weights. Therapeutic
+opportunities become rarer while relations are wary and slightly more likely as
+trust improves. Independent medical-support deliveries remain locked below the
+cooperative tier and become moderately more likely at trusted relations.
 
-The hidden Tok'ra faction remains disconnected from world settlements, traders
-and vanilla goodwill. Quests, storyteller-weight changes for existing offers
-and broader diplomacy remain separate future milestones.
+The XML incident chances remain readable baseline values. The runtime workers
+multiply those bases by the current trust-tier factor. Developer-triggered
+incidents remain available for controlled tests.
 
 ## First playable milestone
 

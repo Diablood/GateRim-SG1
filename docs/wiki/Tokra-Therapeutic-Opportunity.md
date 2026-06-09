@@ -6,6 +6,7 @@
 > Offre temporaire : 0.1.49-dev
 > Fondation de confiance : 0.1.50-dev
 > Cadeaux de soutien médical : 0.1.52-dev
+> Pondération storyteller par confiance : 0.1.54-dev
 
 ## Principe
 
@@ -62,7 +63,8 @@ ne suffit donc pas à provoquer une offre rare.
 ```text
 première apparition possible : jour 30
 délai minimal entre deux offres : 60 jours
-chance storyteller : faible
+chance XML de base : 0,035
+pondération par confiance : ×0,50 à ×1,50
 ```
 
 ## Offre temporaire
@@ -98,10 +100,17 @@ Le symbiote proposé affiche cette confiance sous la durée restante. Cette jaug
 prépare les futures quêtes et relations avec la résistance Tok'ra sans activer
 encore une diplomatie complète sur la carte du monde.
 
+## Pondération storyteller
+
+Depuis `0.1.54-dev`, la fréquence naturelle des offres dépend du palier de
+confiance : `×0,50` en méfiante, `×1,00` en neutre, `×1,25` en coopérative
+et `×1,50` en fiable. Les conditions médicales et le délai minimal de `60`
+jours restent inchangés.
+
 ## Limites actuelles
 
-L'escorte et la confiance restent volontairement légères. Les quêtes, seuils de
-récompense et relations vanilla seront étudiés dans des jalons séparés.
+L'escorte et la confiance restent volontairement légères. Les quêtes et
+relations vanilla seront étudiées dans des jalons séparés.
 
 ## Paliers de confiance
 

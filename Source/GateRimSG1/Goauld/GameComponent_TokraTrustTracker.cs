@@ -35,6 +35,15 @@ namespace GateRimSG1.Goauld
         public const int CooperativeTretoninGiftCount = 1;
         public const int TrustedTretoninGiftCount = 2;
 
+        public const float WaryTherapeuticOpportunityChanceFactor = 0.50f;
+        public const float NeutralTherapeuticOpportunityChanceFactor = 1.00f;
+        public const float CooperativeTherapeuticOpportunityChanceFactor = 1.25f;
+        public const float TrustedTherapeuticOpportunityChanceFactor = 1.50f;
+
+        public const float LockedMedicalSupportDeliveryChanceFactor = 0.00f;
+        public const float CooperativeMedicalSupportDeliveryChanceFactor = 1.00f;
+        public const float TrustedMedicalSupportDeliveryChanceFactor = 1.50f;
+
         private int trustScore;
 
         public GameComponent_TokraTrustTracker(Game game)
@@ -96,6 +105,16 @@ namespace GateRimSG1.Goauld
         public static int GetCurrentTretoninGiftCount()
         {
             return GetTretoninGiftCount(GetCurrentTier());
+        }
+
+        public static float GetCurrentTherapeuticOpportunityChanceFactor()
+        {
+            return GetTherapeuticOpportunityChanceFactor(GetCurrentTier());
+        }
+
+        public static float GetCurrentMedicalSupportDeliveryChanceFactor()
+        {
+            return GetMedicalSupportDeliveryChanceFactor(GetCurrentTier());
         }
 
         public static void NotifyTherapeuticOfferOutcome(
@@ -212,6 +231,36 @@ namespace GateRimSG1.Goauld
                     return TrustedTretoninGiftCount;
                 default:
                     return 0;
+            }
+        }
+
+        private static float GetTherapeuticOpportunityChanceFactor(
+            TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return WaryTherapeuticOpportunityChanceFactor;
+                case TokraTrustTier.Cooperative:
+                    return CooperativeTherapeuticOpportunityChanceFactor;
+                case TokraTrustTier.Trusted:
+                    return TrustedTherapeuticOpportunityChanceFactor;
+                default:
+                    return NeutralTherapeuticOpportunityChanceFactor;
+            }
+        }
+
+        private static float GetMedicalSupportDeliveryChanceFactor(
+            TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Cooperative:
+                    return CooperativeMedicalSupportDeliveryChanceFactor;
+                case TokraTrustTier.Trusted:
+                    return TrustedMedicalSupportDeliveryChanceFactor;
+                default:
+                    return LockedMedicalSupportDeliveryChanceFactor;
             }
         }
 

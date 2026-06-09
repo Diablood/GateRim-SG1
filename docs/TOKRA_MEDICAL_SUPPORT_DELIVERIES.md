@@ -13,10 +13,12 @@ when no colon currently needs a host symbiote.
 ## Storyteller tuning
 
 ```text
-base chance        : 0.018
+XML baseline chance: 0.018
 earliest day       : 45
 minimum refire     : 60 days
 required trust tier: cooperative or trusted
+cooperative factor : ×1.00 -> effective base chance 0.018
+trusted factor     : ×1.50 -> effective base chance 0.027
 ```
 
 ## Tier behavior
@@ -46,5 +48,6 @@ does not alter Tok'ra trust directly
 ## Current limits
 
 The Tok'ra faction remains hidden and disconnected from normal world
-settlements, traders, vanilla goodwill and quests. Future milestones may add
-broader medical aid, trade access or quest rewards.
+settlements, traders, vanilla goodwill and quests. Since `0.1.54-dev`, trusted relations also increase the storyteller weight
+of future deliveries moderately. Future milestones may add broader medical
+aid, trade access or quest rewards.

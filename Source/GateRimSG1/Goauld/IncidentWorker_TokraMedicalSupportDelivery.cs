@@ -22,6 +22,16 @@ namespace GateRimSG1.Goauld
         private const int CooperativeEscortCount = 1;
         private const int TrustedEscortCount = 2;
 
+        public override float BaseChanceThisGame
+        {
+            get
+            {
+                return base.BaseChanceThisGame
+                    * GameComponent_TokraTrustTracker
+                        .GetCurrentMedicalSupportDeliveryChanceFactor();
+            }
+        }
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             if (!base.CanFireNowSub(parms))
@@ -150,12 +160,18 @@ namespace GateRimSG1.Goauld
             StartSupportVisit(map, entryCell, tokraFaction, escortPawns);
 
             string trustTierLabel = GetTierLogLabel(trustTier);
+            float storytellerChanceFactor
+                = GameComponent_TokraTrustTracker
+                    .GetCurrentMedicalSupportDeliveryChanceFactor();
 
             GR_Log.Message(
                 $"Started Tok'ra medical-support delivery at {entryCell} "
                 + $"with {requestedDoseCount} tretonin dose(s), "
                 + $"{escortPawns.Count} visitor pawn(s) and "
-                + $"{trustTierLabel} trust tier ({trustScore}).");
+                + $"{trustTierLabel} trust tier ({trustScore}); "
+                + $"storyteller chance factor "
+                + $"x{storytellerChanceFactor:0.00}, effective base chance "
+                + $"{BaseChanceThisGame:0.####}.");
 
             SendStandardLetter(
                 parms,

@@ -5,7 +5,8 @@
 Prototype introduced in `0.1.47-dev`, with a lightweight peaceful escort added
 in `0.1.48-dev`, a persistent time-limited lifecycle added in `0.1.49-dev`,
 a lightweight Tok'ra trust foundation added in `0.1.50-dev`, trust tiers added
-in `0.1.51-dev` and tretonin-support gifts added in `0.1.52-dev`.
+in `0.1.51-dev`, tretonin-support gifts added in `0.1.52-dev` and
+storyteller trust weighting added in `0.1.54-dev`.
 
 ## Purpose
 
@@ -19,13 +20,23 @@ player-controlled humanoid has at least one non-traumatic biological condition
 accepted by the RimWorld-oriented Tok'ra healing filter. Recent injuries alone
 do not qualify.
 
-Initial storyteller tuning:
+Storyteller tuning:
 
 ```text
-baseChance = 0.035
-earliestDay = 30
-minRefireDays = 60
+XML baseline chance = 0.035
+earliest day        = 30
+minimum refire      = 60 days
 ```
+
+Since `0.1.54-dev`, the runtime worker multiplies the XML baseline by the
+current trust tier:
+
+| Tier | Factor | Effective base chance |
+|---|---:|---:|
+| Wary | ×0.50 | 0.0175 |
+| Neutral | ×1.00 | 0.0350 |
+| Cooperative | ×1.25 | 0.04375 |
+| Trusted | ×1.50 | 0.0525 |
 
 ## Escorted arrival
 
@@ -91,5 +102,5 @@ repeat harvesting naturally.
 ## Current limits
 
 The escort and trust layer remain intentionally lightweight. Quests, broader
-medical envoys, storyteller-weight changes and vanilla-goodwill integration
-remain separate future milestones.
+medical envoys and vanilla-goodwill integration remain separate future
+milestones.

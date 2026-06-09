@@ -32,9 +32,11 @@ expiration without an answer = -2
 Since `0.1.51-dev`, the score also selects a lightweight gameplay tier for
 therapeutic offers. Since `0.1.52-dev`, cooperative and trusted tiers unlock
 small tretonin-support gifts. Since `0.1.53-dev`, cooperative and trusted
-relations may also receive independent rare tretonin-support deliveries. The
-score still prepares future thresholds for quests, visitors, recruitment and
-eventual broader diplomacy.
+relations may also receive independent rare tretonin-support deliveries.
+Since `0.1.54-dev`, the current tier also modulates the storyteller weights of
+therapeutic opportunities and independent deliveries. The score still
+prepares future thresholds for quests, visitors, recruitment and eventual
+broader diplomacy.
 
 ## Persistence and visibility
 
@@ -45,8 +47,8 @@ bilingual player message and a `GR_Log` line.
 
 ## Current limits
 
-The score now adjusts therapeutic-offer duration, escort size and small
-physical tretonin-support gifts. It does not yet block incidents, change
-storyteller weights, unlock quests or synchronize with vanilla goodwill. Those
-integrations remain future milestones after the hidden-faction prototype is
-stabilized.
+The score now adjusts therapeutic-offer duration, escort size, small physical
+tretonin-support gifts and storyteller weights for the two trust-sensitive
+Tok'ra incidents. It does not yet unlock quests or synchronize with vanilla
+goodwill. Those integrations remain future milestones after the hidden-faction
+prototype is stabilized.

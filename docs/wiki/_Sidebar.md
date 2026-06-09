@@ -20,6 +20,7 @@
 - [Paliers de confiance Tok'ra](Tokra-Trust-Thresholds)
 - [Soutien médical en trétonine](Tokra-Medical-Support-Gifts)
 - [Livraisons médicales Tok'ra](Tokra-Medical-Support-Deliveries)
+- [Pondérations storyteller Tok'ra](Tokra-Storyteller-Trust-Weights)
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
 - [Prim'ta](Primta)

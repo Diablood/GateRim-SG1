@@ -192,3 +192,12 @@ Depuis `0.1.53-dev`, les relations Tok'ra coopératives ou fiables peuvent
 déclencher rarement une [livraison médicale indépendante](Tokra-Medical-Support-Deliveries).
 Cette équipe apporte de la trétonine sans exiger de pawn malade et sans proposer
 de symbiose : `2` doses au palier coopérative, puis `4` doses au palier fiable.
+
+
+## Pondérations storyteller par confiance
+
+Depuis `0.1.54-dev`, les [pondérations storyteller Tok'ra](Tokra-Storyteller-Trust-Weights)
+modulent la fréquence naturelle des opportunités thérapeutiques et des
+livraisons médicales indépendantes. Les relations méfiantes réduisent les
+offres, tandis que les relations fiables rendent les deux incidents légèrement
+plus probables.

@@ -27,7 +27,9 @@ restent pacifiques et quittent naturellement la carte après une courte visite.
 
 ```text
 première apparition possible : jour 45
-fréquence naturelle          : rare
+chance XML de base           : 0,018
+palier coopérative           : ×1,00 -> 0,018
+palier fiable                : ×1,50 -> 0,027
 délai minimal                : 60 jours
 ```
 
@@ -36,5 +38,7 @@ tests.
 
 ## Limites actuelles
 
-La faction Tok'ra reste masquée. Les livraisons ne sont pas encore des quêtes,
-ne reposent pas sur le commerce et ne modifient pas directement la confiance.
+Depuis `0.1.54-dev`, une confiance fiable augmente modérément leur fréquence
+naturelle. La faction Tok'ra reste masquée. Les livraisons ne sont pas encore
+des quêtes, ne reposent pas sur le commerce et ne modifient pas directement la
+confiance.
