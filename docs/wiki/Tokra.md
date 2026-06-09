@@ -119,3 +119,12 @@ Depuis `0.1.41-dev`, une
 
 La faction masquée contient désormais des profils internes `Combat` et
 `Peaceful`, mais la génération mondiale automatique reste désactivée.
+
+
+## Visiteurs pacifiques de test
+
+Depuis `0.1.42-dev`, une
+[visite Tok'ra pacifique](Tokra-Peaceful-Visitors) peut être déclenchée
+manuellement en mode développeur.
+
+La génération aléatoire par le storyteller reste désactivée.

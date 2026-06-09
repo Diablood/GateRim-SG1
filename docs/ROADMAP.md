@@ -484,6 +484,28 @@
 - [ ] Confirm Tok'ra and Goa'uld regression workflows
 - [ ] Publish the updated player wiki
 
+## 0.1.42-dev — Add Tok'ra peaceful visitor prototype
+- [x] Add `SG1_TokraPeacefulVisitors`
+- [x] Add `IncidentWorker_TokraPeacefulVisitors`
+- [x] Keep storyteller `baseChance = 0`
+- [x] Trigger visits manually through developer tools
+- [x] Create or reuse one hidden Tok'ra faction instance
+- [x] Build the hidden faction with explicit `FactionGeneratorParms`
+- [x] Reuse the nested Tok'ra `Peaceful` pawn-group profile
+- [x] Spawn `1` to `3` Tok'ra voluntary-host pawns
+- [x] Reuse vanilla peaceful visit and automatic departure behavior
+- [x] Preserve hidden faction state and disable settlements, traders and random visits
+- [x] Add French text, technical docs and player-wiki drafts
+- [ ] Build locally against RimWorld 1.6
+- [ ] Confirm clean `Player.log`
+- [ ] Confirm developer incident appears
+- [ ] Confirm `1` to `3` peaceful non-player visitors
+- [ ] Confirm automatic Tok'ra-host initialization
+- [ ] Confirm automatic visitor departure
+- [ ] Confirm hidden faction persistence after save/reload
+- [ ] Confirm Tok'ra and Goa'uld regression workflows
+- [ ] Publish the updated player wiki
+
 ## Next genetics tests
 - [ ] Test Jaffa × Jaffa offspring
 - [ ] Test Jaffa mother × baseliner father
@@ -581,7 +603,9 @@
 
 ## Future Tok'ra expansion
 - [ ] Generate the Tok'ra world faction after pawn-group definitions exist
-- [ ] Add Tok'ra settlements, visitors, traders and diplomacy
+- [x] Add developer-triggered peaceful Tok'ra visitor prototype
+- [ ] Enable controlled random Tok'ra visits after balancing
+- [ ] Add Tok'ra settlements, traders and diplomacy
 - [ ] Add voluntary-host recruitment events and quests
 - [x] Add first developer-spawnable Tok'ra host pawn prototype
 - [ ] Add Tok'ra-specific host visuals and cultural content

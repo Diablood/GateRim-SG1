@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+        Developer-triggered Tok'ra visitor incident.
+
+        baseChance = 0 keeps it out of random storyteller selection while the
+        hidden faction, visitor balance and narrative integration are still
+        under development.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraPeacefulVisitors</defName>
+        <label>Tok'ra peaceful visitors (test)</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraPeacefulVisitors</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0</baseChance>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Peaceful Tok'ra visitors</letterLabel>
+        <letterText>A small Tok'ra team has arrived peacefully near the colony. This is a controlled development prototype: the visitors are not traders yet, and the hidden Tok'ra faction is still disconnected from normal world generation.</letterText>
+        <letterDef>NeutralEvent</letterDef>
+    </IncidentDef>
+</Defs>

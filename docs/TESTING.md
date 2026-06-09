@@ -114,7 +114,7 @@ Use newly generated pawns after applying `0.1.13-dev`.
 5. Inspect `Player.log`.
 6. Confirm the presence of:
    ```text
-   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.41.0 loaded.
+   <color=#D9B44A>[GateRim SG-1]</color> Version 0.1.42.0 loaded.
    ```
 
 
@@ -665,3 +665,45 @@ Negative checks:
    [GateRim SG-1] Version 0.1.41.0 loaded.
    ```
 7. Repeat Tok'ra-host, free-Tok'ra and Goa'uld regression tests.
+
+
+## Tok'ra peaceful visitor prototype
+
+1. Build with `build.cmd`.
+2. Restart RimWorld completely.
+3. Open developer tools.
+4. Run:
+   ```text
+   Do incident
+       ↓
+   Tok'ra peaceful visitors (test)
+   ```
+5. Confirm a neutral letter appears.
+6. Confirm `1` to `3` Tok'ra hosts enter from the map edge.
+7. Wait up to `60` ticks.
+8. Confirm each visitor receives active Tok'ra symbiosis.
+9. Confirm visitors are not player-controlled.
+10. Confirm automatic departure after the visit.
+11. Save and reload after the first visit.
+12. Trigger the incident again.
+13. Confirm the same hidden Tok'ra faction instance is reused.
+14. Confirm no random storyteller visits, traders or settlements are enabled.
+15. Repeat free-Tok'ra, Tok'ra-host and Goa'uld regression tests.
+
+
+## Tok'ra peaceful-visitor faction-generator build regression
+
+1. Apply the `0.1.42-dev-r1` patch.
+2. Rebuild with `build.cmd`.
+3. Confirm the compiler no longer reports:
+   ```text
+   CS1503: cannot convert from 'RimWorld.FactionDef' to 'RimWorld.FactionGeneratorParms'
+   ```
+4. Restart RimWorld completely.
+5. Trigger:
+   ```text
+   Do incident
+       ↓
+   Tok'ra peaceful visitors (test)
+   ```
+6. Confirm the hidden Tok'ra faction is created and the peaceful visit starts.

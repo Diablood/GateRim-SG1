@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.42-dev
+- Create the hidden Tok'ra runtime faction with explicit `FactionGeneratorParms`.
+- Add the developer-triggered `SG1_TokraPeacefulVisitors` incident.
+- Add `IncidentWorker_TokraPeacefulVisitors`.
+- Create or reuse one persistent hidden Tok'ra faction instance.
+- Reuse the valid nested Tok'ra `Peaceful` pawn-group profile.
+- Spawn one to three non-player Tok'ra voluntary-host visitors.
+- Reuse vanilla peaceful visitor and departure behavior.
+- Keep storyteller chance at `0`.
+- Keep settlements, traders and random world generation disabled.
+- Add French text, technical documentation and player-wiki drafts.
+
 ## 0.1.41-dev
 - Replace invalid standalone `PawnGroupMakerDef` entries with nested Tok'ra `FactionDef.pawnGroupMakers`.
 - Add one Tok'ra `Combat` profile and one Tok'ra `Peaceful` profile.

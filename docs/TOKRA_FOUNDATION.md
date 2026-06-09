@@ -204,3 +204,20 @@ SG1_TokraVoluntaryHost
 The faction remains hidden and non-generated. These profiles prepare future
 small teams and peaceful visitors without enabling settlements, traders or
 diplomacy.
+
+
+## Peaceful visitor incident prototype
+
+`0.1.42-dev` adds:
+
+```text
+SG1_TokraPeacefulVisitors
+```
+
+Trigger it manually through developer tools.
+
+The incident creates or reuses a hidden Tok'ra faction instance and spawns a
+small peaceful visitor team through the existing nested `Peaceful` pawn-group
+profile.
+
+The storyteller chance remains `0`, so random Tok'ra visits are not enabled yet.

@@ -14,20 +14,22 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 
 ## Current milestone
 
-### 0.1.41-dev — Add Tok'ra pawn-group foundation
+### 0.1.42-dev — Add Tok'ra peaceful visitor prototype
 
-The hidden Tok'ra faction now contains two valid nested pawn-group profiles:
+A first peaceful Tok'ra visit can now be triggered manually through developer
+tools:
 
 ```text
-Combat
-Peaceful
+Do incident
+    ↓
+Tok'ra peaceful visitors (test)
+    ↓
+1 to 3 non-player Tok'ra hosts
 ```
 
-They currently reuse the developer-spawnable voluntary host pawn.
-
-Automatic world generation remains disabled. This milestone validates the group
-foundation before visitors, traders, settlements, diplomacy and therapeutic-host
-events are enabled.
+The first visit creates a hidden Tok'ra faction instance and later visits reuse
+it. The storyteller chance remains `0`: random visits, traders, settlements and
+world-faction generation are still disabled.
 
 ## First playable milestone
 

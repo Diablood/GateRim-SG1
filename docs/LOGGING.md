@@ -275,3 +275,16 @@ After extraction, the free pawn should remain the non-hunting Tok'ra variant.
 Initialized Tok'ra voluntary-host prototype <pawn> with symbiote <id>.
 Registered existing Tok'ra voluntary-host prototype <pawn> without creating a duplicate symbiote.
 ```
+
+
+## Tok'ra peaceful-visitor diagnostics
+
+`0.1.42-dev` adds:
+
+```text
+Created hidden Tok'ra faction instance <name> (<id>) for peaceful visitor testing.
+Started peaceful Tok'ra visitor prototype for <faction> with <points> points.
+```
+
+The faction-creation line should appear only on the first manually triggered
+visit in a save.

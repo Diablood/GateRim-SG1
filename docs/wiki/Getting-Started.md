@@ -319,3 +319,15 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 6. Vérifie que l'origine persistante est `Tok'ra`.
 7. Sauvegarde puis recharge.
 8. Vérifie que l'identifiant du symbiote reste identique.
+
+
+## Tester une visite Tok'ra pacifique
+
+1. Active le mode développeur.
+2. Ouvre `Do incident`.
+3. Lance `visiteurs Tok'ra pacifiques (test)`.
+4. Vérifie l'arrivée de `1` à `3` hôtes Tok'ra.
+5. Attends au maximum `60` ticks.
+6. Vérifie leur symbiose Tok'ra active.
+7. Vérifie qu'ils ne sont pas contrôlés par le joueur.
+8. Laisse-les repartir automatiquement.

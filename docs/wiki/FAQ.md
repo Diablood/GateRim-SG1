@@ -277,3 +277,19 @@ Depuis `0.1.41-dev`, les premiers profils internes `Combat` et `Peaceful`
 existent dans la faction Tok'ra masquée, mais la génération mondiale reste
 désactivée. Les visiteurs, marchands, colonies et événements Tok'ra seront
 activés progressivement.
+
+
+## Peut-on recevoir une visite Tok'ra ?
+
+Oui, à des fins de test depuis `0.1.42-dev`.
+
+Active le mode développeur puis lance :
+
+```text
+Do incident
+    ↓
+visiteurs Tok'ra pacifiques (test)
+```
+
+Une petite équipe non hostile apparaîtra puis repartira automatiquement. Les
+visites aléatoires du storyteller ne sont pas encore activées.

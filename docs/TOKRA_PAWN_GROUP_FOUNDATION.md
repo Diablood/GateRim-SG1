@@ -98,3 +98,16 @@ The nested profiles provide a valid technical foundation only.
    [GateRim SG-1] Version 0.1.41.0 loaded.
    ```
 7. Repeat the free Tok'ra, Tok'ra host and Goa'uld regression tests.
+
+
+## 0.1.42-dev first Peaceful-profile use
+
+The nested Tok'ra `Peaceful` profile is now used by the manually triggered:
+
+```text
+SG1_TokraPeacefulVisitors
+```
+
+incident.
+
+Automatic storyteller selection and world generation remain disabled.

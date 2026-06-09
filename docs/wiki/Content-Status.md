@@ -65,3 +65,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Hôte Tok'ra volontaire | Pawn humain contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |
 
 | Groupes de pawns Tok'ra | Fondation technique non encore reliée à la génération mondiale | 0.1.41-dev |
+
+| Visiteurs Tok'ra pacifiques | Incident manuel de test : 1 à 3 hôtes non joueurs, sans génération aléatoire | 0.1.42-dev |
