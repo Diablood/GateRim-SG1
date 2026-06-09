@@ -18,6 +18,16 @@ namespace GateRimSG1.Goauld
         private const int ScanIntervalTicks = 60;
         private const float InjuryHealingPerScan = 0.05f;
 
+        private static readonly HashSet<string> CauseDrivenConditionDefNames
+            = new HashSet<string>(StringComparer.Ordinal)
+            {
+                "BloodLoss",
+                "Heatstroke",
+                "Hypothermia",
+                "Malnutrition",
+                "ToxicBuildup"
+            };
+
         public GameComponent_TokraTherapeuticHosting(Game game)
         {
         }
@@ -241,7 +251,8 @@ namespace GateRimSG1.Goauld
 
             if (string.IsNullOrEmpty(defName)
                 || defName.StartsWith("SG1_", StringComparison.Ordinal)
-                || IsExcludedDefName(defName))
+                || IsExcludedDefName(defName)
+                || IsCauseDrivenCondition(defName))
             {
                 return false;
             }
@@ -277,6 +288,17 @@ namespace GateRimSG1.Goauld
                 || defName.EndsWith("Withdrawal", StringComparison.OrdinalIgnoreCase)
                 || defName.EndsWith("Dependency", StringComparison.OrdinalIgnoreCase)
                 || defName.EndsWith("Addiction", StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        /// Conditions rebuilt continuously from an unresolved need or
+        /// environmental cause must not be removed as if they were diseases.
+        /// Keeping them allows vanilla recovery to resume normally once their
+        /// actual cause has been resolved and avoids remove/recreate log loops.
+        /// </summary>
+        private static bool IsCauseDrivenCondition(string defName)
+        {
+            return CauseDrivenConditionDefNames.Contains(defName);
         }
 
         private static bool IsPermanentInjury(Hediff_Injury injury)
