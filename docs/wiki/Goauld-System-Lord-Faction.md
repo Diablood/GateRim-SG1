@@ -3,6 +3,7 @@
 > Statut : Prototype
 > Version d'introduction : 0.1.61-dev
 > Extension Jaffa serviteurs : 0.1.62-dev
+> Attribution initiale du Prim'ta : 0.1.63-dev
 
 ## Présentation
 
@@ -38,21 +39,22 @@ Les deux variantes forcent la lignée Jaffa héréditaire existante. Le domaine
 possède également un profil technique `Combat` composé majoritairement de
 guerriers et plus rarement de gardes.
 
+Depuis `0.1.63-dev`, chacun de ces serviteurs reçoit automatiquement un
+Prim'ta initial lorsqu'il est généré. Cette attribution n'est effectuée
+qu'une fois par pawn : une larve retirée ultérieurement ne réapparaît pas.
+
 ## Pourquoi la faction reste masquée
 
 Le profil de groupe prépare les futurs contenus hostiles, mais il n'est pas
 encore relié à une génération naturelle. Les pawns peuvent être générés
 manuellement pour vérifier leur xenotype.
 
-L'attribution automatique d'un Prim'ta, l'équipement, les marques faciales et
-l'équilibrage doivent encore être ajoutés avant l'activation des raids et des
-colonies.
+L'équipement, les marques faciales et l'équilibrage doivent encore être
+ajoutés avant l'activation des raids et des colonies.
 
 ## Suite prévue
 
 ```text
-attribution cohérente du Prim'ta
-    ↓
 équipement et identité visuelle
     ↓
 tests contrôlés de groupes ennemis

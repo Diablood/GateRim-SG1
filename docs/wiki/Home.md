@@ -38,9 +38,10 @@ disponible du contenu encore en développement.
 ## Prochain développement majeur
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : attribution cohérente du Prim'ta aux serviteurs
-Jaffa générés, équipement, marques visuelles, premiers groupes ennemis
-exploitables, puis activation contrôlée des raids et de la présence mondiale.
+de Grands Maîtres Goa'uld : équipement, marques visuelles, premiers groupes
+ennemis exploitables, puis activation contrôlée des raids et de la présence
+mondiale. Les serviteurs Jaffa générés reçoivent désormais automatiquement
+un Prim'ta initial.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

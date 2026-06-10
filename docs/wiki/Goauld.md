@@ -172,6 +172,10 @@ Les deux pawns utilisent la lignée héréditaire Jaffa existante. Un profil
 technique de groupe `Combat` est également rattaché au domaine prototype,
 sans activer encore les raids naturels.
 
+Depuis `0.1.63-dev`, chaque nouveau guerrier ou garde Jaffa généré reçoit
+automatiquement un Prim'ta initial. L'attribution n'est effectuée qu'une
+seule fois : retirer ensuite la larve ne crée pas de remplacement artificiel.
+
 Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
 
 ## Ce qui n'est pas encore implémenté
@@ -180,7 +184,6 @@ Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
 - disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- attribution automatique du Prim'ta aux serviteurs Jaffa Goa'uld ;
 - équipement et marques visuelles des serviteurs Jaffa ;
 - colonies, raids et événements Goa'uld.
 

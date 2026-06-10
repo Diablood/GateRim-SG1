@@ -11,6 +11,8 @@ namespace GateRimSG1
         public static PawnKindDef SG1_GoauldSymbiote;
         public static PawnKindDef SG1_TokraSymbiote;
         public static PawnKindDef SG1_TokraVoluntaryHost;
+        public static PawnKindDef SG1_GoauldJaffaWarrior;
+        public static PawnKindDef SG1_GoauldJaffaGuard;
         public static FactionDef SG1_Tokra;
         public static IncidentDef SG1_TokraPeacefulVisitors;
         public static JobDef SG1_GoauldAutonomousImplant;

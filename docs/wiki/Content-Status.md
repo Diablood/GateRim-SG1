@@ -54,12 +54,12 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Domaine d'un Grand Maître Goa'uld | Fondation hostile masquée, sans génération mondiale, raids ou marchands | 0.1.61-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profil de groupe Goa'uld `Combat` | Profil technique imbriqué dans le domaine prototype, sans activation des raids naturels | 0.1.62-dev |
+| Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 
 ## Prévu
 
 | Élément | État |
 |---|---|
-| Attribution automatique du Prim'ta aux serviteurs Jaffa Goa'uld | Prévu |
 | Premiers raids et présence mondiale des domaines Goa'uld | Prévu |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
