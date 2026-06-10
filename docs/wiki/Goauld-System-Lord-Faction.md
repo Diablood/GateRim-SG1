@@ -2,12 +2,13 @@
 
 > Statut : Prototype
 > Version d'introduction : 0.1.61-dev
+> Extension Jaffa serviteurs : 0.1.62-dev
 
 ## Présentation
 
-Le premier domaine d'un Grand Maître Goa'uld est une fondation technique hostile.
-Il prépare l'arrivée future des Jaffa serviteurs, des groupes ennemis et des
-événements Goa'uld.
+Le premier domaine d'un Grand Maître Goa'uld est une fondation technique
+hostile. Il prépare l'arrivée progressive des groupes ennemis, raids, colonies
+et événements Goa'uld.
 
 ```text
 domaine d'un Grand Maître Goa'uld
@@ -15,33 +16,46 @@ domaine d'un Grand Maître Goa'uld
 
 ## Fonctionnement actuel
 
-La définition est volontairement limitée :
+La définition reste volontairement limitée :
 
 - hostilité permanente ;
 - faction masquée ;
 - aucune génération automatique au démarrage ;
 - aucune colonie mondiale ;
-- aucun raid ;
+- aucun raid naturel ;
 - aucun marchand ;
-- aucun site de quête ;
-- aucun groupe de pawns actif.
+- aucun site de quête.
+
+Depuis `0.1.62-dev`, deux premiers `PawnKindDef` de serviteurs Jaffa sont
+disponibles pour les tests développeur :
+
+```text
+guerrier Jaffa au service des Goa'uld
+garde Jaffa au service des Goa'uld
+```
+
+Les deux variantes forcent la lignée Jaffa héréditaire existante. Le domaine
+possède également un profil technique `Combat` composé majoritairement de
+guerriers et plus rarement de gardes.
 
 ## Pourquoi la faction reste masquée
 
-Les premiers Jaffa serviteurs Goa'uld n'existent pas encore. Activer des raids ou
-des colonies avant leurs `PawnKindDef` introduirait une faction incomplète.
+Le profil de groupe prépare les futurs contenus hostiles, mais il n'est pas
+encore relié à une génération naturelle. Les pawns peuvent être générés
+manuellement pour vérifier leur xenotype.
 
-Le prochain jalon ajoutera :
-
-```text
-Jaffa serviteurs Goa'uld
-    ↓
-profils de groupes Combat
-    ↓
-premiers tests de génération contrôlée
-```
+L'attribution automatique d'un Prim'ta, l'équipement, les marques faciales et
+l'équilibrage doivent encore être ajoutés avant l'activation des raids et des
+colonies.
 
 ## Suite prévue
 
-Les marques faciales Jaffa, l'équipement, les colonies, les raids et les
-événements de Grand Maître seront ajoutés progressivement.
+```text
+attribution cohérente du Prim'ta
+    ↓
+équipement et identité visuelle
+    ↓
+tests contrôlés de groupes ennemis
+    ↓
+activation progressive des raids et de la présence mondiale
+```

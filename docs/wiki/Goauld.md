@@ -5,7 +5,10 @@
 
 ## Présentation
 
-Les Goa'uld sont des symbiotes parasites capables de prendre le contrôle d'un hôte humanoïde. Contrairement à un simple xenotype, le système final devra traiter le Goa'uld comme un organisme distinct pouvant entrer dans un hôte, le quitter et éventuellement être transféré.
+Les Goa'uld sont des symbiotes parasites capables de prendre le contrôle d'un
+hôte humanoïde. Contrairement à un simple xenotype, le système final devra
+traiter le Goa'uld comme un organisme distinct pouvant entrer dans un hôte,
+le quitter et éventuellement être transféré.
 
 ## Prototypes actuels
 
@@ -27,35 +30,42 @@ symbiote Goa'uld
 
 ### Implantation récente
 
-Depuis `0.1.11-dev`, un état de santé temporaire peut être ajouté manuellement à un pawn humanoïde :
+Depuis `0.1.11-dev`, un état de santé temporaire peut être ajouté manuellement
+à un pawn humanoïde :
 
 ```text
 implantation Goa'uld récente
 ```
 
-Cet état représente la phase critique pendant laquelle le parasite s'attache au système nerveux de sa victime. Il dure provisoirement une journée de jeu, affiche un compte à rebours et augmente la douleur.
+Cet état représente la phase critique pendant laquelle le parasite s'attache
+au système nerveux de sa victime. Il dure provisoirement une journée de jeu,
+affiche un compte à rebours et augmente la douleur.
 
 ### Implantation forcée interactive
 
-Depuis `0.1.17-dev`, un symbiote libre adjacent à un humanoïde adulte compatible peut déclencher manuellement :
+Depuis `0.1.17-dev`, un symbiote libre adjacent à un humanoïde adulte compatible
+peut déclencher manuellement :
 
 ```text
 Implantation forcée
 ```
 
-Le symbiote disparaît et son identité persistante est transférée dans l'état `implantation Goa'uld récente`.
+Le symbiote disparaît et son identité persistante est transférée dans l'état
+`implantation Goa'uld récente`.
 
 Consulte [Implantation forcée Goa'uld](Forced-Implantation) pour le mode d'emploi.
 
 ### Hôte actif après conversion
 
-Depuis `0.1.18-dev`, la phase critique se transforme automatiquement après une journée de jeu en :
+Depuis `0.1.18-dev`, la phase critique se transforme automatiquement après une
+journée de jeu en :
 
 ```text
 symbiote Goa'uld adulte
 ```
 
-Le même identifiant persistant est conservé. L'état actif apporte des bonus importants sans remplacer le xenotype germinal d'origine.
+Le même identifiant persistant est conservé. L'état actif apporte des bonus
+importants sans remplacer le xenotype germinal d'origine.
 
 Consulte [Hôte Goa'uld actif](Active-Goauld-Host).
 
@@ -134,8 +144,8 @@ reine Goa'uld
 ```
 
 Ce premier prototype est volontairement passif. Il prépare une future origine
-biologique contrôlée pour les symbiotes immatures sans modifier encore la boucle
-jouable d'incubation du Prim'ta.
+biologique contrôlée pour les symbiotes immatures sans modifier encore la
+boucle jouable d'incubation du Prim'ta.
 
 Consulte [Reine Goa'uld](Goauld-Queen).
 
@@ -148,10 +158,19 @@ domaine d'un Grand Maître Goa'uld
 ```
 
 Cette définition reste masquée et non générée automatiquement. Elle n'ajoute
-encore aucune colonie, aucun raid, aucun marchand et aucun groupe de pawns.
+encore aucune colonie, aucun raid et aucun marchand.
 
-Le prochain jalon ajoutera les premiers Jaffa serviteurs et les profils de
-groupes liés à cette faction.
+Depuis `0.1.62-dev`, deux premiers serviteurs Jaffa Goa'uld peuvent être
+générés manuellement pour les tests développeur :
+
+```text
+guerrier Jaffa au service des Goa'uld
+garde Jaffa au service des Goa'uld
+```
+
+Les deux pawns utilisent la lignée héréditaire Jaffa existante. Un profil
+technique de groupe `Combat` est également rattaché au domaine prototype,
+sans activer encore les raids naturels.
 
 Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
 
@@ -161,9 +180,12 @@ Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
 - disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- Jaffa serviteurs et groupes de pawns des Grands Maîtres ;
+- attribution automatique du Prim'ta aux serviteurs Jaffa Goa'uld ;
+- équipement et marques visuelles des serviteurs Jaffa ;
 - colonies, raids et événements Goa'uld.
 
 ## Différence avec les sanguophages
 
-Un sanguophage transmet un xenogerm. Un Goa'uld devra se déplacer réellement entre plusieurs corps. Le futur système évitera donc toute duplication automatique du symbiote.
+Un sanguophage transmet un xenogerm. Un Goa'uld devra se déplacer réellement
+entre plusieurs corps. Le futur système évitera donc toute duplication
+automatique du symbiote.

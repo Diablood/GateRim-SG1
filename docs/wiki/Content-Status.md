@@ -51,15 +51,18 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
-| Domaine d'un Grand Maître Goa'uld | Fondation hostile masquée, sans génération mondiale, raids ou groupes de pawns actifs | 0.1.61-dev |
+| Domaine d'un Grand Maître Goa'uld | Fondation hostile masquée, sans génération mondiale, raids ou marchands | 0.1.61-dev |
+| Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
+| Profil de groupe Goa'uld `Combat` | Profil technique imbriqué dans le domaine prototype, sans activation des raids naturels | 0.1.62-dev |
 
 ## Prévu
 
 | Élément | État |
 |---|---|
+| Attribution automatique du Prim'ta aux serviteurs Jaffa Goa'uld | Prévu |
+| Premiers raids et présence mondiale des domaines Goa'uld | Prévu |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
-| Jaffa serviteurs et groupes des Grands Maîtres | Prévu |
 | Nation Jaffa libre | Prévu |
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |

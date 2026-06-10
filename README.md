@@ -13,13 +13,15 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.61-dev — Add first Goa'uld System Lord faction foundation
+### 0.1.62-dev — Add Goa'uld-aligned Jaffa pawn kinds and Combat group profile
 
-A first hidden hostile Goa'uld System Lord faction definition now establishes
-the faction identity and permanent hostility without enabling world generation.
+Two first Goa'uld-aligned Jaffa pawn kinds now force the inheritable Jaffa
+lineage and are exposed through the hidden hostile System Lord faction's
+nested Combat group profile.
 
-Settlements, raids, traders and pawn groups remain disabled until dedicated
-Goa'uld-aligned Jaffa pawn kinds and group profiles are introduced.
+The faction remains hidden and cannot generate world settlements, natural
+raids or traders yet. Equipment, visual markings and automatic Prim'ta
+provisioning remain intentionally deferred.
 
 ## Next maintenance focus
 
@@ -42,7 +44,7 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - [x] Ritual Goa'uld implantation
 - [x] Host conversion after the critical phase
 - [x] Goa'uld System Lord faction foundation
-- [ ] Goa'uld-aligned Jaffa pawn kinds
+- [x] Goa'uld-aligned Jaffa pawn kinds
 - [ ] Ma'Tok staff weapon
 - [ ] Zat'nik'tel
 - [ ] Generic Jaffa armor
@@ -60,6 +62,6 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - Use bilingual `Keyed` files for future UI messages and C# strings.
 - Keep versioned player-wiki drafts under `docs/wiki/`.
 - Publish wiki pages directly at the root of the separate `GateRim-SG1.wiki` repository.
-- Use `./tools/sync-wiki.sh` from Bash or `.\tools\sync-wiki.cmd` from Windows PowerShell.
+- Use `./tools/sync-wiki.sh` from Bash or `.	ools\sync-wiki.cmd` from Windows PowerShell.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.
