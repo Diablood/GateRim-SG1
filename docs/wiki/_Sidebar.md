@@ -12,6 +12,7 @@
 - [Reine Goa'uld](Goauld-Queen)
 - [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation)
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)
+- [Congélation profonde des Prim'ta](Primta-Deep-Freezing)
 - [Tok'ra](Tokra)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Groupes Tok'ra](Tokra-Pawn-Groups)

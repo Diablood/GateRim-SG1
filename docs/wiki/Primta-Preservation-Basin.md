@@ -34,8 +34,9 @@ Le bassin ne remplace pas la mécanique de température ambiante :
 - sans bassin, un réfrigérateur ralentit toujours la détérioration ;
 - sans bassin, le gel interrompt encore provisoirement la détérioration ;
 - les fortes chaleurs restent dangereuses ;
-- les conséquences de la congélation profonde seront ajoutées dans un prochain
-  jalon.
+- la congélation profonde sous `-15 °C` accumule désormais une exposition
+  biologique persistante hors bassin actif ;
+- consulte [Congélation profonde des Prim'ta](Primta-Deep-Freezing).
 
 ## Limites du prototype
 

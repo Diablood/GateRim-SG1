@@ -50,6 +50,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Reine Goa'uld | Prototype animal-style générable en mode développeur avec texture temporaire | 0.1.57-dev |
 | Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
+| Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 
 ## Prévu
 

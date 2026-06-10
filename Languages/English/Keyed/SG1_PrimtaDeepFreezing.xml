@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_PrimtaDeepFreeze_Tolerated>Ambient temperature: {0}
+Deep-freeze exposure is temporarily tolerated.
+Biological tolerance remaining: {1}
+Current deep-freezing deterioration: ×0</GR_PrimtaDeepFreeze_Tolerated>
+    <GR_PrimtaDeepFreeze_Damaging>Ambient temperature: {0}
+Prolonged deep-freeze exposure is damaging this biological resource.
+Deep-freezing deterioration rate: ×{1}</GR_PrimtaDeepFreeze_Damaging>
+    <GR_PrimtaDeepFreeze_Critical>Ambient temperature: {0}
+Critical deep-freeze exposure is damaging this biological resource more rapidly.
+Deep-freezing deterioration rate: ×{1}</GR_PrimtaDeepFreeze_Critical>
+    <GR_PrimtaDeepFreeze_Recovery>Recovering from previous deep-freeze exposure.
+Estimated recovery time: {0}
+Current deep-freezing deterioration: ×0</GR_PrimtaDeepFreeze_Recovery>
+</LanguageData>

@@ -35,6 +35,6 @@ The basin uses a provisional reuse of the Prim'ta incubation-basin texture.
 
 ## Next step
 
-Add deep-freezing penalties outside an active preservation basin. A powered basin
-should protect stored resources by maintaining its internal ideal biological
-environment.
+Implemented in `0.1.60-dev`: deep-freezing penalties now accumulate outside an
+active preservation basin below `-15 °C`. A powered basin protects stored
+resources and progressively reduces accumulated exposure.

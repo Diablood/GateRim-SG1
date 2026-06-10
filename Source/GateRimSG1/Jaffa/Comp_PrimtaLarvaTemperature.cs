@@ -42,6 +42,15 @@ namespace GateRimSG1.Jaffa
                     basin.IdealTemperature.ToStringTemperature("F0"));
             }
 
+            Comp_PrimtaBiologicalPreservation preservation =
+                parent.TryGetComp<Comp_PrimtaBiologicalPreservation>();
+
+            if (preservation != null
+                && preservation.HasDeepFreezeInspectStatus)
+            {
+                return preservation.GetDeepFreezeInspectString();
+            }
+
             float temperature = parent.AmbientTemperature;
             float effectiveRate = EffectiveDeteriorationRateAt(temperature);
 

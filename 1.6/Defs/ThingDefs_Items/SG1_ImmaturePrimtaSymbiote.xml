@@ -3,7 +3,7 @@
     <ThingDef ParentName="ResourceBase">
         <defName>SG1_ImmaturePrimtaSymbiote</defName>
         <label>immature Prim'ta symbiote</label>
-        <description>A fragile queen-origin immature Goa'uld symbiote. It must be matured in a Prim'ta incubation basin with raw meat nutrients before implantation into a Jaffa. A powered Prim'ta preservation basin suspends further deterioration without repairing existing spoilage.</description>
+        <description>A fragile queen-origin immature Goa'uld symbiote. It must be matured in a Prim'ta incubation basin with raw meat nutrients before implantation into a Jaffa. A powered Prim'ta preservation basin suspends further deterioration without repairing existing spoilage. Outside a basin, prolonged storage below -15 °C accumulates deep-freezing damage and critical cold below -30 °C is more dangerous.</description>
         <thingClass>ThingWithComps</thingClass>
         <tickerType>Rare</tickerType>
         <graphicData>
@@ -25,6 +25,12 @@
             <li Class="GateRimSG1.Jaffa.CompProperties_PrimtaBiologicalPreservation">
                 <daysToRotStart>2</daysToRotStart>
                 <rotDestroys>true</rotDestroys>
+                <deepFreezeTemperature>-15</deepFreezeTemperature>
+                <criticalDeepFreezeTemperature>-30</criticalDeepFreezeTemperature>
+                <deepFreezeGraceTicks>60000</deepFreezeGraceTicks>
+                <deepFreezeRecoveryRate>2</deepFreezeRecoveryRate>
+                <deepFreezeRotRateMultiplier>0.25</deepFreezeRotRateMultiplier>
+                <criticalDeepFreezeRotRateMultiplier>0.5</criticalDeepFreezeRotRateMultiplier>
             </li>
         </comps>
     </ThingDef>

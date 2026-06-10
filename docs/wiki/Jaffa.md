@@ -92,3 +92,10 @@ offre un stockage spécialisé alimenté pour les symbiotes immatures et les
 larves matures. Il suspend toute aggravation sans réparer une ressource déjà
 détériorée. Le réfrigérateur et le congélateur restent utiles lorsque ce bassin
 n'est pas disponible.
+
+
+## Congélation profonde
+
+Depuis `0.1.60-dev`, les ressources biologiques du Prim'ta accumulent des
+dommages après une exposition prolongée sous `-15 °C` hors bassin actif.
+Consulte [Congélation profonde des Prim'ta](Primta-Deep-Freezing).

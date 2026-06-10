@@ -13,14 +13,14 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.59-dev — Add Prim'ta preservation basin prototype
+### 0.1.60-dev — Add Prim'ta deep-freezing penalties
 
-A powered dedicated preservation basin now stores fragile Prim'ta biological
-resources under an ideal internal environment. It suspends additional
-deterioration without repairing existing spoilage.
+Fragile Prim'ta biological resources now accumulate persistent deep-freezing
+exposure below -15 °C when no powered preservation basin protects them.
 
-Refrigerators and freezers remain useful whenever the specialized basin is
-unavailable or unpowered. Deep-freezing penalties remain planned next.
+The first RimWorld day remains tolerated. Longer exposure causes slow damage,
+critical cold below -30 °C is more dangerous, and safer storage progressively
+reduces exposure. Refrigerators and moderate freezers remain useful fallbacks.
 
 ## Next maintenance focus
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_PrimtaDeepFreeze_Tolerated>Température ambiante : {0}
+L'exposition à la congélation profonde est temporairement tolérée.
+Tolérance biologique restante : {1}
+Détérioration actuelle liée à la congélation profonde : ×0</GR_PrimtaDeepFreeze_Tolerated>
+    <GR_PrimtaDeepFreeze_Damaging>Température ambiante : {0}
+L'exposition prolongée à la congélation profonde endommage cette ressource biologique.
+Vitesse de détérioration liée à la congélation profonde : ×{1}</GR_PrimtaDeepFreeze_Damaging>
+    <GR_PrimtaDeepFreeze_Critical>Température ambiante : {0}
+La congélation profonde critique endommage plus rapidement cette ressource biologique.
+Vitesse de détérioration liée à la congélation profonde : ×{1}</GR_PrimtaDeepFreeze_Critical>
+    <GR_PrimtaDeepFreeze_Recovery>Récupération après une exposition antérieure à la congélation profonde.
+Temps de récupération estimé : {0}
+Détérioration actuelle liée à la congélation profonde : ×0</GR_PrimtaDeepFreeze_Recovery>
+</LanguageData>

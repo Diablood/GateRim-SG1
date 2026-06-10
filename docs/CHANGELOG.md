@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.60-dev — Add Prim'ta deep-freezing penalties
+
+- Add persistent deep-freezing exposure for mature Prim'ta larvae and queen-origin immature symbiotes.
+- Keep powered preservation basins fully protective and allow them to reduce accumulated cold exposure.
+- Trigger deep-freezing exposure only outside an active basin and at temperatures of `-15 °C` or lower.
+- Keep the first `60000` ticks (`1` RimWorld day) temporarily tolerated.
+- Add slow biological deterioration at `×0.25` after the grace period.
+- Increase deep-freezing deterioration to `×0.50` at `-30 °C` or lower.
+- Reduce accumulated exposure at `×2` speed in safer storage or inside an active preservation basin.
+- Preserve exposure through save/load, stack merges and stack splits.
+- Add English/French status strings, technical documentation and player-wiki drafts.
+
+
 ## 0.1.59-dev — Add Prim'ta preservation basin prototype
 
 - Add the powered `SG1_PrimtaPreservationBasin` dedicated storage building.

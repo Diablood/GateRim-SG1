@@ -3,7 +3,7 @@
     <ThingDef ParentName="ResourceBase">
         <defName>SG1_PrimtaLarva</defName>
         <label>Prim'ta larva</label>
-        <description>An immature Goa'uld symbiote intended for implantation into a compatible Jaffa abdominal pouch. This living biological resource must be preserved carefully. A powered Prim'ta preservation basin suspends further deterioration without repairing existing spoilage. Without a basin, refrigeration, freezing and heat continue to use the ambient-temperature preservation model.</description>
+        <description>An immature Goa'uld symbiote intended for implantation into a compatible Jaffa abdominal pouch. This living biological resource must be preserved carefully. A powered Prim'ta preservation basin suspends further deterioration without repairing existing spoilage. Without a basin, refrigeration and moderate freezing remain useful, but prolonged storage below -15 °C accumulates deep-freezing damage. Critical cold below -30 °C is more dangerous.</description>
         <thingClass>ThingWithComps</thingClass>
         <tickerType>Rare</tickerType>
         <graphicData>
@@ -33,6 +33,12 @@
             <li Class="GateRimSG1.Jaffa.CompProperties_PrimtaBiologicalPreservation">
                 <daysToRotStart>6</daysToRotStart>
                 <rotDestroys>true</rotDestroys>
+                <deepFreezeTemperature>-15</deepFreezeTemperature>
+                <criticalDeepFreezeTemperature>-30</criticalDeepFreezeTemperature>
+                <deepFreezeGraceTicks>60000</deepFreezeGraceTicks>
+                <deepFreezeRecoveryRate>2</deepFreezeRecoveryRate>
+                <deepFreezeRotRateMultiplier>0.25</deepFreezeRotRateMultiplier>
+                <criticalDeepFreezeRotRateMultiplier>0.5</criticalDeepFreezeRotRateMultiplier>
             </li>
         </comps>
     </ThingDef>
