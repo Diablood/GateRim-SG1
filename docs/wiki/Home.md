@@ -39,8 +39,8 @@ disponible du contenu encore en développement.
 ## Prochain développement majeur
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : casque Jaffa rétractable, loadouts d'armure,
-marques visuelles, premiers groupes ennemis exploitables, puis activation
+de Grands Maîtres Goa'uld : loadouts automatiques d'armure, marques
+visuelles, premiers groupes ennemis exploitables, puis activation
 contrôlée des raids et de la présence mondiale. Les serviteurs Jaffa générés
 reçoivent déjà automatiquement un Prim'ta initial et un bâton Ma'Tok.
 

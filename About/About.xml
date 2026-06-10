@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.66-dev</modVersion>
+    <modVersion>0.1.67-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -73,6 +73,7 @@ Current development scope:
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
 - Vanilla weapon-tag Ma'Tok loadout for generated Goa'uld-aligned Jaffa servants
 - Modular Jaffa armor prototypes with localized hand, finger, foot and toe protection
+- Persistent retractable Jaffa helmet modes with automatic drafted deployment
 - Natural Goa'uld raids, settlements and world presence planned later
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later

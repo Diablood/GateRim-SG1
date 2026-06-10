@@ -13,22 +13,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.66-dev — Add modular Jaffa armor prototypes
+### 0.1.67-dev — Add retractable Jaffa helmet modes
 
-Five first modular Jaffa apparel prototypes can now be spawned, worn and
-crafted at a machining table after Gunsmithing research:
+The deployed Jaffa helmet now supports three persistent deployment modes:
 
-- light torso armor;
-- heavy torso armor;
-- armored gauntlets protecting arms, hands and fingers;
-- reinforced boots protecting legs, feet and toes;
-- a static deployed helmet protecting the full head.
+- automatic: retracted outside draft, deployed while drafted;
+- always deployed;
+- always retracted.
 
-The torso armor uses the vanilla `Shell` layer. Gauntlets and boots use the
-vanilla `Middle` layer, while the deployed helmet uses `Overhead`.
+Raw armor ratings remain identical in both positions. The deployed state
+protects `FullHead`, while the retracted state protects `UpperHead`.
 
-Retractable helmet visuals and automatic Jaffa armor loadouts remain
-intentionally deferred to later milestones.
+A worn-apparel gizmo cycles the mode, and a lightweight game component keeps
+automatic deployment synchronized with draft state.
+
+Automatic armor loadouts for generated Goa'uld-aligned Jaffa remain deferred.
 
 ## Next maintenance focus
 
@@ -57,7 +56,7 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - [x] Automatic Ma'Tok loadout for Goa'uld Jaffa
 - [ ] Zat'nik'tel
 - [x] Modular Jaffa armor prototypes
-- [ ] Retractable Jaffa helmet modes
+- [x] Retractable Jaffa helmet modes
 - [ ] Automatic Jaffa armor loadouts
 - [ ] Generic human SG-team uniform
 - [ ] SG tactical boots

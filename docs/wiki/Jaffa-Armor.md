@@ -34,15 +34,20 @@ ne sont pas uniquement visuels.
 
 ## Casque Jaffa
 
-Le casque actuel représente sa position déployée et protège la tête complète.
-Une évolution ultérieure ajoutera une rétraction visuelle :
+Depuis `0.1.67-dev`, le casque dispose de trois modes persistants :
 
-| État futur | Couverture |
+- automatique : rétracté hors enrôlement, déployé pendant l'enrôlement ;
+- toujours déployé ;
+- toujours rétracté.
+
+La position modifie la couverture réelle :
+
+| Position | Couverture |
 |---|---|
 | Rétracté | sommet de la tête |
 | Déployé | tête complète et visage |
 
-Les valeurs brutes d'armure resteront identiques. La différence défensive
+Les valeurs brutes d'armure restent identiques. La différence défensive
 viendra uniquement des zones corporelles couvertes.
 
 ## Fabrication

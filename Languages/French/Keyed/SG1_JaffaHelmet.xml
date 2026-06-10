@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaHelmetModeCommand>Mode du casque Jaffa</SG1_JaffaHelmetModeCommand>
+    <SG1_JaffaHelmetModeCommandDesc>Change le comportement de déploiement du casque Jaffa. Le mode automatique rétracte le casque hors enrôlement et le déploie lorsque le pawn est enrôlé. Les valeurs brutes d'armure restent identiques ; seule la couverture de la tête change.</SG1_JaffaHelmetModeCommandDesc>
+    <SG1_JaffaHelmetModeInspect>Mode du casque Jaffa</SG1_JaffaHelmetModeInspect>
+    <SG1_JaffaHelmetPositionInspect>Position du casque Jaffa</SG1_JaffaHelmetPositionInspect>
+    <SG1_JaffaHelmetModeAutomatic>automatique</SG1_JaffaHelmetModeAutomatic>
+    <SG1_JaffaHelmetModeAlwaysDeployed>toujours déployé</SG1_JaffaHelmetModeAlwaysDeployed>
+    <SG1_JaffaHelmetModeAlwaysRetracted>toujours rétracté</SG1_JaffaHelmetModeAlwaysRetracted>
+    <SG1_JaffaHelmetPositionDeployed>déployé</SG1_JaffaHelmetPositionDeployed>
+    <SG1_JaffaHelmetPositionRetracted>rétracté</SG1_JaffaHelmetPositionRetracted>
+    <SG1_JaffaHelmetModeChanged>Mode du casque Jaffa modifié</SG1_JaffaHelmetModeChanged>
+</LanguageData>

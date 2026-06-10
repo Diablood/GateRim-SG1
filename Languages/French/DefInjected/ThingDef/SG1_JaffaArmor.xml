@@ -9,5 +9,7 @@
     <SG1_JaffaReinforcedBoots.label>bottes renforcées Jaffa</SG1_JaffaReinforcedBoots.label>
     <SG1_JaffaReinforcedBoots.description>Bottes renforcées Jaffa protégeant les jambes, les pieds et les orteils. Leurs plaques segmentées limitent les blessures invalidantes aux membres inférieurs tout en restant séparées de l'armure de torse.</SG1_JaffaReinforcedBoots.description>
     <SG1_JaffaDeployedHelmet.label>casque Jaffa déployé</SG1_JaffaDeployedHelmet.label>
-    <SG1_JaffaDeployedHelmet.description>Casque Jaffa entièrement déployé protégeant la tête et le visage. Ce premier prototype statique prépare une version rétractable ultérieure : le futur mode rétracté conservera les mêmes valeurs d'armure brutes, mais réduira sa couverture de la tête complète au sommet de la tête.</SG1_JaffaDeployedHelmet.description>
+    <SG1_JaffaDeployedHelmet.description>Casque Jaffa entièrement déployé protégeant la tête et le visage. Son mécanisme rétractable conserve les mêmes valeurs d'armure brutes dans les deux positions, mais réduit la couverture au sommet de la tête lorsqu'il est rétracté.</SG1_JaffaDeployedHelmet.description>
+    <SG1_JaffaRetractedHelmet.label>casque Jaffa rétracté</SG1_JaffaRetractedHelmet.label>
+    <SG1_JaffaRetractedHelmet.description>Casque Jaffa rétracté laissant le visage visible tout en protégeant le sommet de la tête. Il s'agit d'un état alternatif interne du casque déployé et il conserve les mêmes valeurs d'armure brutes.</SG1_JaffaRetractedHelmet.description>
 </LanguageData>

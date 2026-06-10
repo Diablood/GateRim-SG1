@@ -12,6 +12,7 @@
 - [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction)
 - [Bâton Ma'Tok](Matok-Staff)
 - [Armures Jaffa](Jaffa-Armor)
+- [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Reine Goa'uld](Goauld-Queen)
 - [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation)
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)

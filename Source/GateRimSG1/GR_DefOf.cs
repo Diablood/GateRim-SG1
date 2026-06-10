@@ -27,6 +27,8 @@ namespace GateRimSG1
         public static ThoughtDef SG1_ReceivedPrimta;
         public static ThingDef SG1_TretoninDose;
         public static HediffDef SG1_TretoninSubstitution;
+        public static ThingDef SG1_JaffaDeployedHelmet;
+        public static ThingDef SG1_JaffaRetractedHelmet;
 
         static GR_DefOf()
         {
