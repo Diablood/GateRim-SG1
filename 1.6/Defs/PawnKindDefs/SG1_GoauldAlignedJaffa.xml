@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    First Goa'uld-aligned Jaffa pawn kinds.
-    These humanlike servants force the inheritable Jaffa lineage xenotype
-    through the vanilla PawnKindDef xenotypeSet mechanism.
-    Equipment, visual markings and automatic Prim'ta provisioning remain
-    intentionally deferred to later milestones.
+    Goa'uld-aligned Jaffa pawn kinds.
+    These humanlike servants force the inheritable Jaffa lineage xenotype,
+    receive a one-time automatic Prim'ta through the existing initializer,
+    and now use the vanilla weapon-tag system to spawn with a Ma'Tok staff.
+    Natural raids and world generation remain intentionally disabled.
     -->
     <PawnKindDef ParentName="BasePlayerPawnKind">
         <defName>SG1_GoauldJaffaWarrior</defName>
@@ -21,6 +21,10 @@
         <combatPower>100</combatPower>
         <isFighter>true</isFighter>
         <initialResistanceRange>0~0</initialResistanceRange>
+        <weaponMoney>2000~2000</weaponMoney>
+        <weaponTags>
+            <li>SG1_MatokStaff</li>
+        </weaponTags>
         <minGenerationAge>18</minGenerationAge>
         <maxGenerationAge>60</maxGenerationAge>
     </PawnKindDef>
@@ -39,6 +43,10 @@
         <combatPower>145</combatPower>
         <isFighter>true</isFighter>
         <initialResistanceRange>0~0</initialResistanceRange>
+        <weaponMoney>2000~2000</weaponMoney>
+        <weaponTags>
+            <li>SG1_MatokStaff</li>
+        </weaponTags>
         <minGenerationAge>20</minGenerationAge>
         <maxGenerationAge>65</maxGenerationAge>
     </PawnKindDef>

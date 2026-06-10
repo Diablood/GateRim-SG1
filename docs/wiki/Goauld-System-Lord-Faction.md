@@ -5,6 +5,7 @@
 > Extension Jaffa serviteurs : 0.1.62-dev
 > Attribution initiale du Prim'ta : 0.1.63-dev
 > Premier équipement Jaffa : 0.1.64-dev
+> Loadout Ma'Tok automatique : 0.1.65-dev
 
 ## Présentation
 
@@ -51,15 +52,14 @@ encore relié à une génération naturelle. Les pawns peuvent être générés
 manuellement pour vérifier leur xenotype.
 
 Depuis `0.1.64-dev`, un premier [bâton Ma'Tok](Matok-Staff) jouable peut être
-fabriqué et testé manuellement. Son attribution automatique aux serviteurs
-Jaffa reste à ajouter. Les armures, marques faciales et l'équilibrage doivent
-encore être complétés avant l'activation des raids et des colonies.
+fabriqué et testé manuellement. Depuis `0.1.65-dev`, les guerriers et gardes
+Jaffa générés le reçoivent automatiquement via le système vanilla de loadout.
+Les armures, marques faciales et l'équilibrage doivent encore être complétés
+avant l'activation des raids et des colonies.
 
 ## Suite prévue
 
 ```text
-attribution du bâton Ma'Tok aux profils Jaffa
-    ↓
 armure et identité visuelle
     ↓
 tests contrôlés de groupes ennemis

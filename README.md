@@ -13,18 +13,14 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.64-dev — Add Ma'Tok staff weapon prototype
+### 0.1.65-dev — Add automatic Ma'Tok loadout for Goa'uld Jaffa
 
-The first playable Ma'Tok staff weapon can now be spawned, equipped and
-crafted at a machining table after Gunsmithing research.
+Generated Goa'uld-aligned Jaffa warriors and guards now receive the Ma'Tok
+staff weapon through RimWorld's vanilla `weaponTags` loadout system.
 
-Its gameplay profile combines a heavy melee shaft with a slow but powerful
-ranged burn blast. Dedicated temporary textures are included so the weapon
-can be tested without relying on final artwork.
-
-Automatic assignment to Goa'uld-aligned Jaffa servants remains intentionally
-deferred to a later milestone. Natural Goa'uld raids, settlements and traders
-also remain disabled.
+The weapon remains independently spawnable and craftable. No additional C#
+scanner is introduced. Natural Goa'uld raids, settlements and traders remain
+disabled while equipment and visual identity continue to be developed.
 
 ## Next maintenance focus
 
@@ -50,7 +46,7 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - [x] Goa'uld-aligned Jaffa pawn kinds
 - [x] Automatic initial Prim'ta for Goa'uld-aligned Jaffa
 - [x] Ma'Tok staff weapon prototype
-- [ ] Automatic Ma'Tok loadout for Goa'uld Jaffa
+- [x] Automatic Ma'Tok loadout for Goa'uld Jaffa
 - [ ] Zat'nik'tel
 - [ ] Generic Jaffa armor
 - [ ] Generic human SG-team uniform

@@ -38,6 +38,6 @@ recherche Armurerie
 
 ## Limites du prototype
 
-Le visuel sera retravaillé ultérieurement. L'arme n'est pas encore attribuée
-automatiquement aux guerriers ou gardes Jaffa Goa'uld générés. Les raids
-naturels Goa'uld restent également désactivés.
+Le visuel sera retravaillé ultérieurement. Depuis `0.1.65-dev`, les guerriers
+et gardes Jaffa Goa'uld générés reçoivent automatiquement cette arme grâce au
+système vanilla de loadout. Les raids naturels Goa'uld restent désactivés.
