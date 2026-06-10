@@ -10,6 +10,7 @@
 - [Jaffa](Jaffa)
 - [Goa'uld](Goauld)
 - [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction)
+- [Bâton Ma'Tok](Matok-Staff)
 - [Reine Goa'uld](Goauld-Queen)
 - [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation)
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)

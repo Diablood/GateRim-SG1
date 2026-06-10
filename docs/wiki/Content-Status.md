@@ -55,6 +55,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profil de groupe Goa'uld `Combat` | Profil technique imbriqué dans le domaine prototype, sans activation des raids naturels | 0.1.62-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
+| Bâton Ma'Tok | Premier prototype jouable : arme énergétique à distance et hampe de mêlée, fabricable au banc d'usinage avec visuels temporaires dédiés | 0.1.64-dev |
 
 ## Prévu
 
@@ -66,6 +67,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Nation Jaffa libre | Prévu |
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
-| Armes et armures Jaffa | Prévu |
+| Attribution automatique du bâton Ma'Tok aux serviteurs Jaffa Goa'uld | Prévu |
+| Armures Jaffa | Prévu |
 | Intégration optionnelle Ideology | Prévu |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

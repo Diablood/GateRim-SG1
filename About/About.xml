@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.63-dev</modVersion>
+    <modVersion>0.1.64-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -70,6 +70,7 @@ Current development scope:
 - Hidden hostile Goa'uld System Lord faction-foundation prototype
 - Goa'uld-aligned Jaffa pawn kinds and hidden Combat-group prototype
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
+- Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
 - Natural Goa'uld raids, settlements and world presence planned later
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later

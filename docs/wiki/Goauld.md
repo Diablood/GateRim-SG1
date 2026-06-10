@@ -178,13 +178,30 @@ seule fois : retirer ensuite la larve ne crée pas de remplacement artificiel.
 
 Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
 
+### Bâton Ma'Tok
+
+Depuis `0.1.64-dev`, le premier équipement Jaffa jouable est disponible :
+
+```text
+bâton Ma'Tok
+```
+
+Cette arme associe une décharge énergétique lente mais puissante à une
+hampe utilisable au corps à corps. Elle peut être fabriquée au banc
+d'usinage après la recherche Armurerie et utilise encore des visuels
+temporaires dédiés. Son attribution automatique aux serviteurs Jaffa
+Goa'uld sera ajoutée séparément.
+
+Consulte [Bâton Ma'Tok](Matok-Staff).
+
 ## Ce qui n'est pas encore implémenté
 
 - reproduction autonome de la reine ;
 - disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- équipement et marques visuelles des serviteurs Jaffa ;
+- attribution automatique du bâton Ma'Tok aux serviteurs Jaffa ;
+- armures et marques visuelles des serviteurs Jaffa ;
 - colonies, raids et événements Goa'uld.
 
 ## Différence avec les sanguophages

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="BaseBullet">
+        <defName>SG1_MatokStaffProjectile</defName>
+        <label>Ma'Tok staff blast</label>
+        <graphicData>
+            <texPath>Things/Projectile/SG1_MatokBlast</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Burn</damageDef>
+            <damageAmountBase>24</damageAmountBase>
+            <armorPenetrationBase>0.28</armorPenetrationBase>
+            <speed>55</speed>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseHumanMakeableGun">
+        <defName>SG1_MatokStaff</defName>
+        <label>Ma'Tok staff weapon</label>
+        <description>An iconic Goa'uld energy weapon carried by Jaffa warriors. The Ma'Tok staff combines a heavy melee shaft with a slow but powerful ranged energy blast. This first playable prototype is craftable and uses a temporary dedicated graphic while final artwork and automatic Jaffa loadouts remain in development.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponRanged/SG1_MatokStaff</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.45</drawSize>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <statBases>
+            <WorkToMake>18000</WorkToMake>
+            <Mass>4.2</Mass>
+            <AccuracyTouch>0.78</AccuracyTouch>
+            <AccuracyShort>0.72</AccuracyShort>
+            <AccuracyMedium>0.55</AccuracyMedium>
+            <AccuracyLong>0.34</AccuracyLong>
+            <RangedWeapon_Cooldown>2.4</RangedWeapon_Cooldown>
+        </statBases>
+        <costList>
+            <Steel>60</Steel>
+            <Plasteel>20</Plasteel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+        </recipeMaker>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>SG1_MatokStaffProjectile</defaultProjectile>
+                <warmupTime>1.5</warmupTime>
+                <range>27.9</range>
+                <soundCast>Shot_ChargeRifle</soundCast>
+                <soundCastTail>GunTail_Heavy</soundCastTail>
+                <muzzleFlashScale>14</muzzleFlashScale>
+            </li>
+        </verbs>
+        <weaponTags>
+            <li>SG1_MatokStaff</li>
+        </weaponTags>
+        <tools>
+            <li>
+                <label>shaft</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>11</power>
+                <cooldownTime>2.1</cooldownTime>
+            </li>
+            <li>
+                <label>tip</label>
+                <capacities>
+                    <li>Blunt</li>
+                    <li>Poke</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>1.9</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+</Defs>
