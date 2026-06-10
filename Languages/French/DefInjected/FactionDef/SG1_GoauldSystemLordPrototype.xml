@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_GoauldSystemLordPrototype.label>domaine d'un Grand Maître Goa'uld</SG1_GoauldSystemLordPrototype.label>
+    <SG1_GoauldSystemLordPrototype.description>Définition fondatrice hostile et masquée pour le domaine d'un Grand Maître Goa'uld. Ce premier prototype établit l'identité de faction et son hostilité permanente sans générer de colonies, raids, marchands ou pawns. De futurs jalons ajouteront les serviteurs Jaffa alignés, les profils de groupes, les marques visuelles et la présence mondiale.</SG1_GoauldSystemLordPrototype.description>
+    <SG1_GoauldSystemLordPrototype.fixedName>domaine prototype d'un Grand Maître Goa'uld</SG1_GoauldSystemLordPrototype.fixedName>
+    <SG1_GoauldSystemLordPrototype.pawnsPlural>sujets Goa'uld</SG1_GoauldSystemLordPrototype.pawnsPlural>
+    <SG1_GoauldSystemLordPrototype.pawnSingular>sujet Goa'uld</SG1_GoauldSystemLordPrototype.pawnSingular>
+    <SG1_GoauldSystemLordPrototype.leaderTitle>Grand Maître</SG1_GoauldSystemLordPrototype.leaderTitle>
+</LanguageData>

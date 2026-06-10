@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.60-dev</modVersion>
+    <modVersion>0.1.61-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -68,7 +68,8 @@ Current development scope:
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins
-- Goa'uld faction expansion planned next
+- Hidden hostile Goa'uld System Lord faction-foundation prototype
+- Goa'uld-aligned Jaffa pawn kinds and faction group profiles planned next
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

@@ -13,10 +13,10 @@
 
 ### Biological and faction foundations
 
-- [ ] Evaluate deep-freezing penalties and specialized larva containers.
+- [x] Evaluate deep-freezing penalties and specialized larva containers.
 - [x] Add a Goa'uld queen biological-foundation prototype.
 - [x] Turn the current Prim'ta incubation basin into assisted maturation infrastructure with a developer-only queen-origin sourcing prototype.
-- [ ] Add the first Goa'uld System Lord faction prototype.
+- [x] Add the first Goa'uld System Lord faction prototype.
 - [ ] Add Goa'uld-aligned Jaffa pawn kinds and keep Free Jaffa visually distinct.
 - [ ] Add a first Jaffa facial-marking prototype linked to a Goa'uld faction or future System Lord style.
 

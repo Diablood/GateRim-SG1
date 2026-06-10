@@ -13,14 +13,13 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.60-dev — Add Prim'ta deep-freezing penalties
+### 0.1.61-dev — Add first Goa'uld System Lord faction foundation
 
-Fragile Prim'ta biological resources now accumulate persistent deep-freezing
-exposure below -15 °C when no powered preservation basin protects them.
+A first hidden hostile Goa'uld System Lord faction definition now establishes
+the faction identity and permanent hostility without enabling world generation.
 
-The first RimWorld day remains tolerated. Longer exposure causes slow damage,
-critical cold below -30 °C is more dangerous, and safer storage progressively
-reduces exposure. Refrigerators and moderate freezers remain useful fallbacks.
+Settlements, raids, traders and pawn groups remain disabled until dedicated
+Goa'uld-aligned Jaffa pawn kinds and group profiles are introduced.
 
 ## Next maintenance focus
 
@@ -42,8 +41,8 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - [x] Forced Goa'uld implantation
 - [x] Ritual Goa'uld implantation
 - [x] Host conversion after the critical phase
-- [ ] Goa'uld faction
-- [ ] Jaffa pawn kinds
+- [x] Goa'uld System Lord faction foundation
+- [ ] Goa'uld-aligned Jaffa pawn kinds
 - [ ] Ma'Tok staff weapon
 - [ ] Zat'nik'tel
 - [ ] Generic Jaffa armor

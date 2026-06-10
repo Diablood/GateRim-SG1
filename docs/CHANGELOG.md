@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.61-dev — Add first Goa'uld System Lord faction foundation
+
+- Add the hidden hostile `SG1_GoauldSystemLordPrototype` faction definition.
+- Keep permanent hostility enabled for the first Goa'uld System Lord domain.
+- Keep automatic world generation disabled: no settlements, raids, traders or quest sites.
+- Keep pawn groups intentionally absent until Goa'uld-aligned Jaffa pawn kinds exist.
+- Add the required `Spacer` tech level, `Offworld` backstory filter and raid-loot curve.
+- Add French `DefInjected` translations, technical documentation and player-wiki drafts.
+- Prepare the next faction milestone for Jaffa servants and nested pawn-group profiles.
+
+
 ## 0.1.60-dev — Add Prim'ta deep-freezing penalties
 
 - Add persistent deep-freezing exposure for mature Prim'ta larvae and queen-origin immature symbiotes.

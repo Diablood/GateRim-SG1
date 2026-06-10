@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    First hostile Goa'uld System Lord faction foundation.
+
+    This faction remains hidden and is not generated automatically. It has no
+    settlements, raids, traders or pawn groups yet. The next faction milestone
+    will add Goa'uld-aligned Jaffa PawnKindDefs and nested pawn-group profiles.
+    -->
+    <FactionDef>
+        <defName>SG1_GoauldSystemLordPrototype</defName>
+        <label>Goa'uld System Lord domain</label>
+        <description>A hidden hostile foundation definition for a Goa'uld System Lord domain. This first prototype establishes the faction identity and permanent hostility without generating settlements, raids, traders or pawns. Future milestones will add Goa'uld-aligned Jaffa servants, pawn-group profiles, visual markings and world presence.</description>
+        <fixedName>prototype Goa'uld System Lord domain</fixedName>
+        <pawnsPlural>Goa'uld subjects</pawnsPlural>
+        <pawnSingular>Goa'uld subject</pawnSingular>
+        <leaderTitle>System Lord</leaderTitle>
+        <humanlikeFaction>true</humanlikeFaction>
+        <hidden>true</hidden>
+        <techLevel>Spacer</techLevel>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Offworld</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+        <permanentEnemy>true</permanentEnemy>
+        <naturalEnemy>true</naturalEnemy>
+        <canMakeRandomly>false</canMakeRandomly>
+        <requiredCountAtGameStart>0</requiredCountAtGameStart>
+        <maxCountAtGameStart>0</maxCountAtGameStart>
+        <settlementGenerationWeight>0</settlementGenerationWeight>
+        <raidsForbidden>true</raidsForbidden>
+        <canRequestTraders>false</canRequestTraders>
+        <canRequestMilitaryAid>false</canRequestMilitaryAid>
+        <canGenerateQuestSites>false</canGenerateQuestSites>
+        <raidLootValueFromPointsCurve>
+            <points>
+                <li>(35, 15)</li>
+                <li>(100, 120)</li>
+                <li>(1000, 500)</li>
+                <li>(2000, 800)</li>
+                <li>(4000, 1000)</li>
+            </points>
+        </raidLootValueFromPointsCurve>
+    </FactionDef>
+</Defs>

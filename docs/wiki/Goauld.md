@@ -1,6 +1,6 @@
 # Goa'uld
 
-> Statut : Prototype
+> Statut : Prototype  
 > Première fondation : 0.1.7-dev
 
 ## Présentation
@@ -139,13 +139,30 @@ jouable d'incubation du Prim'ta.
 
 Consulte [Reine Goa'uld](Goauld-Queen).
 
+### Domaine d'un Grand Maître Goa'uld
+
+Depuis `0.1.61-dev`, une première fondation hostile de faction existe :
+
+```text
+domaine d'un Grand Maître Goa'uld
+```
+
+Cette définition reste masquée et non générée automatiquement. Elle n'ajoute
+encore aucune colonie, aucun raid, aucun marchand et aucun groupe de pawns.
+
+Le prochain jalon ajoutera les premiers Jaffa serviteurs et les profils de
+groupes liés à cette faction.
+
+Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
+
 ## Ce qui n'est pas encore implémenté
 
-- production de symbiotes immatures par la reine ;
-- maturation assistée des larves de Prim'ta ;
+- reproduction autonome de la reine ;
+- disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- faction des Grands Maîtres Goa'uld.
+- Jaffa serviteurs et groupes de pawns des Grands Maîtres ;
+- colonies, raids et événements Goa'uld.
 
 ## Différence avec les sanguophages
 
