@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaLightArmor.label>armure Jaffa légère</SG1_JaffaLightArmor.label>
+    <SG1_JaffaLightArmor.description>Armure légère modulaire portée par les guerriers Jaffa au service des Goa'uld. Ses plaques protégeant le torse et les épaules favorisent la mobilité tout en offrant une résistance utile à la chaleur des armes énergétiques. Des gantelets et bottes renforcées séparés complètent l'équipement prévu.</SG1_JaffaLightArmor.description>
+    <SG1_JaffaHeavyArmor.label>armure Jaffa lourde</SG1_JaffaHeavyArmor.label>
+    <SG1_JaffaHeavyArmor.description>Armure modulaire renforcée réservée aux gardes Jaffa d'élite. Ses lourdes plaques protégeant le torse et les épaules approchent une protection physique de niveau marine tout en conservant une résistance distinctive aux attaques énergétiques thermiques. Des gantelets et bottes renforcées séparés complètent l'équipement prévu.</SG1_JaffaHeavyArmor.description>
+    <SG1_JaffaGauntlets.label>gantelets blindés Jaffa</SG1_JaffaGauntlets.label>
+    <SG1_JaffaGauntlets.description>Gantelets segmentés Jaffa protégeant les bras, les mains et les doigts. Ils réduisent le risque de perte fréquente de doigts lors des combats rapprochés sans remplacer l'armure de torse.</SG1_JaffaGauntlets.description>
+    <SG1_JaffaReinforcedBoots.label>bottes renforcées Jaffa</SG1_JaffaReinforcedBoots.label>
+    <SG1_JaffaReinforcedBoots.description>Bottes renforcées Jaffa protégeant les jambes, les pieds et les orteils. Leurs plaques segmentées limitent les blessures invalidantes aux membres inférieurs tout en restant séparées de l'armure de torse.</SG1_JaffaReinforcedBoots.description>
+    <SG1_JaffaDeployedHelmet.label>casque Jaffa déployé</SG1_JaffaDeployedHelmet.label>
+    <SG1_JaffaDeployedHelmet.description>Casque Jaffa entièrement déployé protégeant la tête et le visage. Ce premier prototype statique prépare une version rétractable ultérieure : le futur mode rétracté conservera les mêmes valeurs d'armure brutes, mais réduira sa couverture de la tête complète au sommet de la tête.</SG1_JaffaDeployedHelmet.description>
+</LanguageData>

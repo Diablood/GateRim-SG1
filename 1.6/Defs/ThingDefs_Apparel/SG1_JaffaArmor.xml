@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Modular Jaffa armor prototypes.
+    Torso armor uses Shell. Gauntlets and boots use Middle. The deployed helmet
+    uses Overhead and FullHead. Retractable visual modes are intentionally
+    deferred to a later C# milestone.
+    -->
+    <ThingDef ParentName="ArmorMachineableBase">
+        <defName>SG1_JaffaLightArmor</defName>
+        <label>light Jaffa armor</label>
+        <description>A modular light armor worn by Goa'uld-aligned Jaffa warriors. Its plated torso and shoulder protection favors mobility while offering useful resistance to energy heat. Separate gauntlets and reinforced boots complete the intended battlefield loadout.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaLightArmor/JaffaLightArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.15</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>70</Steel>
+            <Plasteel>20</Plasteel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>16000</WorkToMake>
+            <MaxHitPoints>240</MaxHitPoints>
+            <Mass>6.5</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.68</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.28</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.42</ArmorRating_Heat>
+            <EquipDelay>9</EquipDelay>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.06</MoveSpeed>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Neck</li>
+                <li>Shoulders</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaLightArmor/JaffaLightArmor</wornGraphicPath>
+            <layers>
+                <li>Shell</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaArmorLight</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ArmorMachineableBase">
+        <defName>SG1_JaffaHeavyArmor</defName>
+        <label>heavy Jaffa armor</label>
+        <description>A reinforced modular armor reserved for elite Jaffa guards. Its heavier torso and shoulder plates approach marine-grade physical protection while retaining a distinctive resistance to heat-based energy attacks. Separate gauntlets and reinforced boots complete the intended battlefield loadout.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaHeavyArmor/JaffaHeavyArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.08</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>100</Steel>
+            <Plasteel>45</Plasteel>
+            <ComponentIndustrial>4</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>26000</WorkToMake>
+            <MaxHitPoints>340</MaxHitPoints>
+            <Mass>11</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.88</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.40</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.56</ArmorRating_Heat>
+            <EquipDelay>14</EquipDelay>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.22</MoveSpeed>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>8</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Neck</li>
+                <li>Shoulders</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaHeavyArmor/JaffaHeavyArmor</wornGraphicPath>
+            <layers>
+                <li>Shell</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaArmorHeavy</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ArmorMachineableBase">
+        <defName>SG1_JaffaGauntlets</defName>
+        <label>Jaffa armored gauntlets</label>
+        <description>Segmented Jaffa gauntlets protecting the arms, hands and fingers. They reduce the frequent loss of digits during close-range fighting without replacing torso armor.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaGauntlets/JaffaGauntlets</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.15</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>20</Steel>
+            <Plasteel>8</Plasteel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>7000</WorkToMake>
+            <MaxHitPoints>170</MaxHitPoints>
+            <Mass>0.8</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.48</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.22</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.38</ArmorRating_Heat>
+            <EquipDelay>3</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Arms</li>
+                <li>Hands</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaGauntlets/JaffaGauntlets</wornGraphicPath>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaGauntlets</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ArmorMachineableBase">
+        <defName>SG1_JaffaReinforcedBoots</defName>
+        <label>Jaffa reinforced boots</label>
+        <description>Reinforced Jaffa boots protecting the legs, feet and toes. Their segmented plates limit crippling lower-limb injuries while remaining separate from torso armor.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaReinforcedBoots/JaffaReinforcedBoots</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.15</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>28</Steel>
+            <Plasteel>10</Plasteel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>8500</WorkToMake>
+            <MaxHitPoints>190</MaxHitPoints>
+            <Mass>1.2</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.52</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.38</ArmorRating_Heat>
+            <EquipDelay>4</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Legs</li>
+                <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaReinforcedBoots/JaffaReinforcedBoots</wornGraphicPath>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaReinforcedBoots</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ArmorHelmetMakeableBase">
+        <defName>SG1_JaffaDeployedHelmet</defName>
+        <label>deployed Jaffa helmet</label>
+        <description>A fully deployed Jaffa helmet protecting the entire head and face. This static prototype prepares a later retractable version: the future retracted mode will preserve the same raw armor ratings while reducing coverage from the full head to the upper head.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaDeployedHelmet/JaffaDeployedHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.10</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>40</Steel>
+            <Plasteel>18</Plasteel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>12000</WorkToMake>
+            <MaxHitPoints>220</MaxHitPoints>
+            <Mass>2.8</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.52</ArmorRating_Heat>
+            <EquipDelay>5</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>7</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaDeployedHelmet/JaffaDeployedHelmet</wornGraphicPath>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaHelmet</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+</Defs>

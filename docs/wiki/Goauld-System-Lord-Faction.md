@@ -6,6 +6,7 @@
 > Attribution initiale du Prim'ta : 0.1.63-dev
 > Premier équipement Jaffa : 0.1.64-dev
 > Loadout Ma'Tok automatique : 0.1.65-dev
+> Armures Jaffa modulaires : 0.1.66-dev
 
 ## Présentation
 
@@ -54,13 +55,19 @@ manuellement pour vérifier leur xenotype.
 Depuis `0.1.64-dev`, un premier [bâton Ma'Tok](Matok-Staff) jouable peut être
 fabriqué et testé manuellement. Depuis `0.1.65-dev`, les guerriers et gardes
 Jaffa générés le reçoivent automatiquement via le système vanilla de loadout.
-Les armures, marques faciales et l'équilibrage doivent encore être complétés
-avant l'activation des raids et des colonies.
+Depuis `0.1.66-dev`, cinq [armures Jaffa modulaires](Jaffa-Armor) peuvent être
+fabriquées et testées manuellement : deux torses, des gantelets protégeant
+les doigts, des bottes protégeant les orteils et un casque statique déployé.
+Le casque rétractable, les loadouts d'armure automatiques, les marques
+faciales et l'équilibrage doivent encore être complétés avant l'activation
+des raids et des colonies.
 
 ## Suite prévue
 
 ```text
-armure et identité visuelle
+casque rétractable et loadouts d'armure
+    ↓
+identité visuelle
     ↓
 tests contrôlés de groupes ennemis
     ↓

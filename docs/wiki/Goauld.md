@@ -196,13 +196,33 @@ automatiquement cette arme grâce au système vanilla de loadout.
 
 Consulte [Bâton Ma'Tok](Matok-Staff).
 
+### Armures Jaffa modulaires
+
+Depuis `0.1.66-dev`, cinq premières pièces d'équipement Jaffa peuvent être
+fabriquées et testées manuellement :
+
+```text
+armure Jaffa légère
+armure Jaffa lourde
+gantelets blindés Jaffa
+bottes renforcées Jaffa
+casque Jaffa déployé
+```
+
+Les gantelets protègent réellement les bras, mains et doigts. Les bottes
+protègent les jambes, pieds et orteils. Le premier casque est statique et
+déployé : une version rétractable sera ajoutée ultérieurement.
+
+Consulte [Armures Jaffa](Jaffa-Armor).
+
 ## Ce qui n'est pas encore implémenté
 
 - reproduction autonome de la reine ;
 - disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- armures et marques visuelles des serviteurs Jaffa ;
+- casque Jaffa rétractable ;
+- loadouts automatiques d'armures et marques visuelles des serviteurs Jaffa ;
 - colonies, raids et événements Goa'uld.
 
 ## Différence avec les sanguophages

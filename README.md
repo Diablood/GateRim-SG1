@@ -13,14 +13,22 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.65-dev — Add automatic Ma'Tok loadout for Goa'uld Jaffa
+### 0.1.66-dev — Add modular Jaffa armor prototypes
 
-Generated Goa'uld-aligned Jaffa warriors and guards now receive the Ma'Tok
-staff weapon through RimWorld's vanilla `weaponTags` loadout system.
+Five first modular Jaffa apparel prototypes can now be spawned, worn and
+crafted at a machining table after Gunsmithing research:
 
-The weapon remains independently spawnable and craftable. No additional C#
-scanner is introduced. Natural Goa'uld raids, settlements and traders remain
-disabled while equipment and visual identity continue to be developed.
+- light torso armor;
+- heavy torso armor;
+- armored gauntlets protecting arms, hands and fingers;
+- reinforced boots protecting legs, feet and toes;
+- a static deployed helmet protecting the full head.
+
+The torso armor uses the vanilla `Shell` layer. Gauntlets and boots use the
+vanilla `Middle` layer, while the deployed helmet uses `Overhead`.
+
+Retractable helmet visuals and automatic Jaffa armor loadouts remain
+intentionally deferred to later milestones.
 
 ## Next maintenance focus
 
@@ -48,7 +56,9 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - [x] Ma'Tok staff weapon prototype
 - [x] Automatic Ma'Tok loadout for Goa'uld Jaffa
 - [ ] Zat'nik'tel
-- [ ] Generic Jaffa armor
+- [x] Modular Jaffa armor prototypes
+- [ ] Retractable Jaffa helmet modes
+- [ ] Automatic Jaffa armor loadouts
 - [ ] Generic human SG-team uniform
 - [ ] SG tactical boots
 - [ ] SG tactical gloves

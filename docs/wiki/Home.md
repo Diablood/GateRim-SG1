@@ -26,8 +26,8 @@ disponible du contenu encore en développement.
   [reine Goa'uld](Goauld-Queen), [maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation),
   [bassin de conservation](Primta-Preservation-Basin),
   [congélation profonde](Primta-Deep-Freezing),
-  [domaine prototype d'un Grand Maître](Goauld-System-Lord-Faction) et
-  [bâton Ma'Tok](Matok-Staff).
+  [domaine prototype d'un Grand Maître](Goauld-System-Lord-Faction),
+  [bâton Ma'Tok](Matok-Staff) et [armures Jaffa](Jaffa-Armor).
 - [Tok'ra](Tokra) : symbiote libre volontaire,
   [prototype d'hôte volontaire](Tokra-Host-Prototype),
   [visiteurs pacifiques](Tokra-Peaceful-Visitors),
@@ -39,10 +39,10 @@ disponible du contenu encore en développement.
 ## Prochain développement majeur
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : armure, marques visuelles, premiers groupes
-ennemis exploitables, puis activation contrôlée des raids et de la présence
-mondiale. Les serviteurs Jaffa générés reçoivent déjà automatiquement un
-Prim'ta initial et un bâton Ma'Tok.
+de Grands Maîtres Goa'uld : casque Jaffa rétractable, loadouts d'armure,
+marques visuelles, premiers groupes ennemis exploitables, puis activation
+contrôlée des raids et de la présence mondiale. Les serviteurs Jaffa générés
+reçoivent déjà automatiquement un Prim'ta initial et un bâton Ma'Tok.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.
