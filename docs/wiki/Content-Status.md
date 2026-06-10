@@ -47,7 +47,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
 | Refroidissement diplomatique Tok'ra | Suspension persistante des nouvelles offres thérapeutiques pendant 3 jours après refus ou 5 jours après expiration lorsque la confiance reste négative | 0.1.55-dev |
 | Soutien médical avancé Tok'ra fiable | Une livraison indépendante fiable ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine existantes | 0.1.56-dev |
-| Reine Goa'uld | Prototype animal-style passif, générable uniquement en mode développeur avec texture temporaire | 0.1.57-dev |
+| Reine Goa'uld | Prototype animal-style générable en mode développeur avec texture temporaire | 0.1.57-dev |
+| Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
 
 ## Prévu
 

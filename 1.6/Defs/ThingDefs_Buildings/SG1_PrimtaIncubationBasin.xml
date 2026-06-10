@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        First larva-acquisition prototype.
+    Queen-origin assisted-maturation prototype.
 
-        The basin intentionally provides a simple no-input incubation bill so
-        the complete gameplay loop can be tested without developer spawning.
-        Nutrient inputs, preservation constraints and biological maturation
-        remain future milestones.
+    The basin now consumes one physical immature symbiote extracted from a
+    Goa'uld queen and 10 units of raw meat nutrients to mature one physical
+    Prim'ta larva. Autonomous queen reproduction remains a future milestone.
     -->
     <ThingDef ParentName="BenchBase">
         <defName>SG1_PrimtaIncubationBasin</defName>
         <label>Prim'ta incubation basin</label>
-        <description>A controlled incubation basin for immature Goa'uld symbiotes intended for Jaffa implantation. This first prototype produces Prim'ta larvae through a work bill. Nutrient inputs, preservation and maturation constraints will be introduced later.</description>
+        <description>A controlled biological basin used for assisted maturation of queen-origin immature Goa'uld symbiotes into physical Prim'ta larvae. One immature symbiote and 10 units of raw meat nutrients are required for each transportable larva.</description>
         <thingClass>Building_WorkTable</thingClass>
         <graphicData>
             <texPath>Things/Building/SG1_PrimtaIncubationBasin</texPath>

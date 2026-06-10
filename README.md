@@ -13,14 +13,13 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.57-dev — Add Goa'uld queen biological foundation
+### 0.1.58-dev — Add queen-origin Prim'ta assisted maturation prototype
 
-A distinct Goa'uld queen animal-style pawn can now be generated through
-developer mode. This first foundation is intentionally passive: it does not
-implant hosts, hunt humanoids or produce larvae yet.
+The Goa'uld queen now exposes a developer-only prototype command that extracts
+one physical immature Prim'ta symbiote with a persistent one-day cooldown.
 
-The queen fixes the biological representation before the next milestone turns
-the existing Prim'ta basin into assisted maturation infrastructure.
+The Prim'ta incubation basin now consumes one queen-origin immature symbiote
+and ten raw-meat nutrients to mature one transportable Prim'ta larva.
 
 ## Next maintenance focus
 

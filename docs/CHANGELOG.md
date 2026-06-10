@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.58-dev — Add queen-origin Prim'ta assisted maturation prototype
+
+- Add the physical `SG1_ImmaturePrimtaSymbiote` biological resource.
+- Add a developer-only queen extraction gizmo with a persistent one-day cooldown.
+- Keep technical queen cooldown information hidden outside RimWorld developer mode.
+- Change `SG1_IncubatePrimtaLarva` from ex-nihilo larva production to assisted maturation.
+- Require one queen-origin immature symbiote and ten units of raw meat per mature Prim'ta larva.
+- Reuse the current larva texture provisionally at a smaller draw size for the immature resource.
+- Keep autonomous queen reproduction, natural sourcing and dedicated queen infrastructure planned for later.
+- Add French translations, technical documentation and player-wiki drafts.
+
+
 ## 0.1.57-dev — Add Goa'uld queen biological foundation
 
 - Add the XML-only `SG1_GoauldQueen` animal-style pawn prototype.

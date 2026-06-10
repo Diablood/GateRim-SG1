@@ -1,10 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <RecipeDef>
         <defName>SG1_IncubatePrimtaLarva</defName>
-        <label>incubate Prim'ta larva</label>
-        <description>Incubate one immature Goa'uld symbiote larva for later Jaffa implantation. This prototype consumes 10 units of raw meat as a first biological nutrient requirement and uses animal-handling work with Animals skill 4. Preservation, temperature and refined nutrition systems will be added later.</description>
-        <jobString>Incubating a Prim'ta larva with biological nutrients.</jobString>
+        <label>mature Prim'ta larva</label>
+        <description>Mature one queen-origin immature Prim'ta symbiote into a transportable larva for later Jaffa implantation. The basin consumes one physical immature symbiote and 10 units of raw meat nutrients while preserving the existing animal-handling work requirement and Animals skill 4 threshold.</description>
+        <jobString>Maturing a Prim'ta larva with biological nutrients.</jobString>
         <requiredGiverWorkType>Handling</requiredGiverWorkType>
         <allowMixingIngredients>true</allowMixingIngredients>
         <workAmount>1800</workAmount>
@@ -16,6 +16,14 @@
         <ingredients>
             <li>
                 <filter>
+                    <thingDefs>
+                        <li>SG1_ImmaturePrimtaSymbiote</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+            <li>
+                <filter>
                     <categories>
                         <li>MeatRaw</li>
                     </categories>
@@ -24,6 +32,9 @@
             </li>
         </ingredients>
         <fixedIngredientFilter>
+            <thingDefs>
+                <li>SG1_ImmaturePrimtaSymbiote</li>
+            </thingDefs>
             <categories>
                 <li>MeatRaw</li>
             </categories>

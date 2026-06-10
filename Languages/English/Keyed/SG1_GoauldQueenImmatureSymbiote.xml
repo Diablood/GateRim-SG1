@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldQueenHarvestImmatureSymbioteLabel>Extract immature symbiote (prototype)</GR_GoauldQueenHarvestImmatureSymbioteLabel>
+    <GR_GoauldQueenHarvestImmatureSymbioteDesc>Developer-only prototype command. Extract one physical immature Prim'ta symbiote from this Goa'uld queen. The resource must then be matured in a Prim'ta incubation basin with raw meat nutrients.</GR_GoauldQueenHarvestImmatureSymbioteDesc>
+    <GR_GoauldQueenHarvestCooldown>Queen-origin extraction cooldown: {0} RimWorld day(s) remaining.</GR_GoauldQueenHarvestCooldown>
+    <GR_GoauldQueenHarvestDebugCooldown>Queen-origin immature-symbiote extraction cooldown: {0} tick(s)</GR_GoauldQueenHarvestDebugCooldown>
+    <GR_GoauldQueenHarvestPlacementFailed>Unable to place the extracted immature Prim'ta symbiote near the Goa'uld queen.</GR_GoauldQueenHarvestPlacementFailed>
+    <GR_GoauldQueenHarvestedImmatureSymbiote>Extracted {0} immature Prim'ta symbiote(s) from the Goa'uld queen.</GR_GoauldQueenHarvestedImmatureSymbiote>
+</LanguageData>

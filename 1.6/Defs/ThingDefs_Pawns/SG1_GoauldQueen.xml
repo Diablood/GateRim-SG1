@@ -3,7 +3,7 @@
     <ThingDef ParentName="AnimalThingBase">
         <defName>SG1_GoauldQueen</defName>
         <label>Goa'uld queen</label>
-        <description>A Goa'uld queen outside any specialized reproductive infrastructure. This first biological-foundation prototype is intentionally passive and can only be spawned through developer mode. Future milestones will connect queens to controlled immature-symbiote sourcing and assisted Prim'ta maturation.</description>
+        <description>A Goa'uld queen outside any specialized reproductive infrastructure. This assisted-maturation prototype exposes a developer-only extraction command for one physical immature Prim'ta symbiote. The queen does not yet reproduce autonomously or appear naturally.</description>
         <statBases>
             <MoveSpeed>2.6</MoveSpeed>
             <MarketValue>2500</MarketValue>
@@ -24,6 +24,12 @@
                 <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
             </li>
         </tools>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_GoauldQueenImmatureSymbioteSource">
+                <harvestCooldownTicks>60000</harvestCooldownTicks>
+                <spawnCount>1</spawnCount>
+            </li>
+        </comps>
         <race>
             <body>Snake</body>
             <baseBodySize>0.6</baseBodySize>

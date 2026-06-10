@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_GoauldQueen.label>reine Goa'uld</SG1_GoauldQueen.label>
-    <SG1_GoauldQueen.description>Reine Goa'uld hors de toute infrastructure reproductive spécialisée. Ce premier prototype de fondation biologique est volontairement passif et ne peut être généré qu'en mode développeur. De futurs jalons relieront les reines à l'obtention contrôlée de symbiotes immatures et à la maturation assistée des Prim'ta.</SG1_GoauldQueen.description>
+    <SG1_GoauldQueen.description>Reine Goa'uld hors de toute infrastructure reproductive spécialisée. Ce prototype de maturation assistée expose une commande réservée au mode développeur permettant d'extraire un symbiote immature de Prim'ta physique. La reine ne se reproduit pas encore de manière autonome et n'apparaît pas naturellement.</SG1_GoauldQueen.description>
     <SG1_GoauldQueen.tools.bite.label>morsure</SG1_GoauldQueen.tools.bite.label>
 </LanguageData>

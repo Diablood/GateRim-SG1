@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ResourceBase">
+        <defName>SG1_ImmaturePrimtaSymbiote</defName>
+        <label>immature Prim'ta symbiote</label>
+        <description>A fragile queen-origin immature Goa'uld symbiote. It must be matured in a Prim'ta incubation basin with raw meat nutrients before implantation into a Jaffa.</description>
+        <thingClass>ThingWithComps</thingClass>
+        <tickerType>Rare</tickerType>
+        <graphicData>
+            <texPath>Things/Item/SG1_PrimtaLarva</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.6,0.6)</drawSize>
+        </graphicData>
+        <stackLimit>10</stackLimit>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <thingCategories>
+            <li>SG1_GoauldBiologicalProducts</li>
+        </thingCategories>
+        <statBases>
+            <MarketValue>20</MarketValue>
+            <Mass>0.05</Mass>
+        </statBases>
+        <tradeability>Sellable</tradeability>
+        <comps>
+            <li Class="CompProperties_Rottable">
+                <daysToRotStart>2</daysToRotStart>
+                <rotDestroys>true</rotDestroys>
+            </li>
+        </comps>
+    </ThingDef>
+</Defs>

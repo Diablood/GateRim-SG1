@@ -71,5 +71,15 @@ actuelles.
 ## Larve de Prim'ta
 
 Depuis `0.1.27-dev`, l'implantation médicale exige une
-[larve de Prim'ta](Primta-Larva) transportable. L'obtention naturelle de cette
-ressource n'est pas encore implémentée.
+[larve de Prim'ta](Primta-Larva) transportable.
+
+Depuis `0.1.58-dev`, le bassin fait mûrir cette larve à partir de :
+
+```text
+1 symbiote immature de Prim'ta issu d'une reine Goa'uld
+    +
+10 unités de viande crue
+```
+
+L'extraction depuis la reine reste pour l'instant un prototype réservé au mode
+développeur. Consulte [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation).

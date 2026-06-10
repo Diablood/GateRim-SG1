@@ -10,6 +10,7 @@
 - [Jaffa](Jaffa)
 - [Goa'uld](Goauld)
 - [Reine Goa'uld](Goauld-Queen)
+- [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation)
 - [Tok'ra](Tokra)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Groupes Tok'ra](Tokra-Pawn-Groups)

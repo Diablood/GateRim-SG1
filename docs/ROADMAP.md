@@ -15,7 +15,7 @@
 
 - [ ] Evaluate deep-freezing penalties and specialized larva containers.
 - [x] Add a Goa'uld queen biological-foundation prototype.
-- [ ] Turn the current Prim'ta incubation basin into assisted maturation infrastructure rather than a fully ex-nihilo source.
+- [x] Turn the current Prim'ta incubation basin into assisted maturation infrastructure with a developer-only queen-origin sourcing prototype.
 - [ ] Add the first Goa'uld System Lord faction prototype.
 - [ ] Add Goa'uld-aligned Jaffa pawn kinds and keep Free Jaffa visually distinct.
 - [ ] Add a first Jaffa facial-marking prototype linked to a Goa'uld faction or future System Lord style.
@@ -677,10 +677,10 @@
 
 
 ## Future Goa'uld queen larva origin
-- [ ] Introduce a Goa'uld queen as the primary biological source of immature symbiotes
-- [ ] Decide between special pawn, living building, event, quest reward or faction resource
+- [x] Introduce a Goa'uld queen as the primary biological source of immature symbiotes
+- [x] Introduce the first queen representation as a special pawn; evaluate natural acquisition routes later
 - [ ] Support hosted and/or hostless queen representations as appropriate
-- [ ] Turn the current incubation basin into assisted maturation infrastructure
+- [x] Turn the current incubation basin into assisted maturation infrastructure
 - [ ] Integrate Goa'uld factions, Tok'ra, Free Jaffa, trade, quests and events
 - [ ] Revisit this feature after the first Tok'ra iteration
 
