@@ -83,3 +83,12 @@ Depuis `0.1.58-dev`, le bassin fait mûrir cette larve à partir de :
 
 L'extraction depuis la reine reste pour l'instant un prototype réservé au mode
 développeur. Consulte [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation).
+
+
+## Conservation biologique dédiée
+
+Depuis `0.1.59-dev`, le [bassin de conservation du Prim'ta](Primta-Preservation-Basin)
+offre un stockage spécialisé alimenté pour les symbiotes immatures et les
+larves matures. Il suspend toute aggravation sans réparer une ressource déjà
+détériorée. Le réfrigérateur et le congélateur restent utiles lorsque ce bassin
+n'est pas disponible.

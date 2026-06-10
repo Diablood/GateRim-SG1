@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Powered dedicated storage prototype for fragile Prim'ta biological resources.
+
+    The basin does not alter room temperature and does not replace refrigerators.
+    It stabilizes stored immature symbiotes and mature larvae only while powered.
+    Deep-freezing penalties outside the basin remain planned for a later milestone.
+    -->
+    <ThingDef ParentName="ShelfBase">
+        <defName>SG1_PrimtaPreservationBasin</defName>
+        <label>Prim'ta preservation basin</label>
+        <description>A powered biological storage basin that maintains an ideal internal environment for Prim'ta resources. It suspends further deterioration of stored immature symbiotes and mature larvae without repairing existing spoilage. Refrigerators and freezers remain useful whenever this specialized basin is unavailable or unpowered.</description>
+        <thingClass>Building_Storage</thingClass>
+        <graphicData>
+            <texPath>Things/Building/SG1_PrimtaIncubationBasin</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,1)</drawSize>
+        </graphicData>
+        <size>(2,1)</size>
+        <rotatable>true</rotatable>
+        <fillPercent>0.5</fillPercent>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <statBases>
+            <MaxHitPoints>180</MaxHitPoints>
+            <WorkToBuild>1400</WorkToBuild>
+            <Mass>30</Mass>
+            <Beauty>1</Beauty>
+            <Flammability>0.2</Flammability>
+        </statBases>
+        <costList>
+            <Steel>60</Steel>
+            <Gold>4</Gold>
+            <ComponentIndustrial>2</ComponentIndustrial>
+        </costList>
+        <designationCategory>Production</designationCategory>
+        <building>
+            <maxItemsInCell>2</maxItemsInCell>
+            <fixedStorageSettings>
+                <filter>
+                    <thingDefs>
+                        <li>SG1_ImmaturePrimtaSymbiote</li>
+                        <li>SG1_PrimtaLarva</li>
+                    </thingDefs>
+                </filter>
+            </fixedStorageSettings>
+            <defaultStorageSettings>
+                <filter>
+                    <thingDefs>
+                        <li>SG1_ImmaturePrimtaSymbiote</li>
+                        <li>SG1_PrimtaLarva</li>
+                    </thingDefs>
+                </filter>
+            </defaultStorageSettings>
+        </building>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>120</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="GateRimSG1.Jaffa.CompProperties_PrimtaPreservationBasin">
+                <idealTemperature>4</idealTemperature>
+            </li>
+        </comps>
+        <minifiedDef>MinifiedThing</minifiedDef>
+    </ThingDef>
+</Defs>

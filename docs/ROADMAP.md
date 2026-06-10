@@ -715,3 +715,5 @@
 - [ ] Keep the long-term narrative cost: the pawn becomes a durable Tok'ra host
 - [ ] Support vanilla and modded diseases through configurable rules
 - [ ] Integrate later with events, quests, visitors, recruitment and diplomacy
+
+- [x] Add a powered dedicated Prim'ta preservation basin prototype without replacing refrigerators.

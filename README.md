@@ -13,13 +13,14 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.58-dev — Add queen-origin Prim'ta assisted maturation prototype
+### 0.1.59-dev — Add Prim'ta preservation basin prototype
 
-The Goa'uld queen now exposes a developer-only prototype command that extracts
-one physical immature Prim'ta symbiote with a persistent one-day cooldown.
+A powered dedicated preservation basin now stores fragile Prim'ta biological
+resources under an ideal internal environment. It suspends additional
+deterioration without repairing existing spoilage.
 
-The Prim'ta incubation basin now consumes one queen-origin immature symbiote
-and ten raw-meat nutrients to mature one transportable Prim'ta larva.
+Refrigerators and freezers remain useful whenever the specialized basin is
+unavailable or unpowered. Deep-freezing penalties remain planned next.
 
 ## Next maintenance focus
 

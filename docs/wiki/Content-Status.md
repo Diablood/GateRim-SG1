@@ -49,6 +49,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Soutien médical avancé Tok'ra fiable | Une livraison indépendante fiable ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine existantes | 0.1.56-dev |
 | Reine Goa'uld | Prototype animal-style générable en mode développeur avec texture temporaire | 0.1.57-dev |
 | Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
+| Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 
 ## Prévu
 

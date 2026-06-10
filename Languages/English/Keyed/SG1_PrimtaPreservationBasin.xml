@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_PrimtaPreservationBasin_Online>Biological stabilization active. Internal target temperature: {0}.</GR_PrimtaPreservationBasin_Online>
+    <GR_PrimtaPreservationBasin_Offline>Biological stabilization inactive. Electrical power is required.</GR_PrimtaPreservationBasin_Offline>
+    <GR_PrimtaLarva_PreservationBasinStatus>Larva internally stabilized at {0} by a powered Prim'ta preservation basin.\nThermal condition: dedicated biological stabilization\nEffective deterioration rate: ×0</GR_PrimtaLarva_PreservationBasinStatus>
+    <GR_PrimtaImmature_PreservationBasinStatus>Immature symbiote internally stabilized at {0} by a powered Prim'ta preservation basin.\nEffective deterioration rate: ×0</GR_PrimtaImmature_PreservationBasinStatus>
+</LanguageData>

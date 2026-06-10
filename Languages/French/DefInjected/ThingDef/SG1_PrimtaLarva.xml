@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_PrimtaLarva.label>larve de Prim'ta</SG1_PrimtaLarva.label>
-    <SG1_PrimtaLarva.description>Symbiote Goa'uld immature destiné à être implanté dans la poche abdominale d'un Jaffa compatible. Cette ressource biologique vivante doit être conservée avec précaution. Le gel interrompt provisoirement sa détérioration, la réfrigération la ralentit, le stockage chaud provoque un pourrissement normal et les fortes chaleurs accélèrent sa dégradation. Une larve entièrement pourrie est détruite.</SG1_PrimtaLarva.description>
+    <SG1_PrimtaLarva.description>Symbiote Goa'uld immature destiné à être implanté dans la poche abdominale d'un Jaffa compatible. Cette ressource biologique vivante doit être conservée avec précaution. Un bassin de conservation du Prim'ta alimenté suspend toute aggravation sans réparer une larve déjà détériorée. Sans bassin, la réfrigération, le gel et la chaleur continuent d'utiliser la température ambiante.</SG1_PrimtaLarva.description>
 </LanguageData>

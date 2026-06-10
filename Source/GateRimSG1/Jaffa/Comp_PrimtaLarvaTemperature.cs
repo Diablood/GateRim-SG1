@@ -10,6 +10,10 @@ namespace GateRimSG1.Jaffa
     /// and uses the normal rate above 10 °C. This component preserves that
     /// behavior and adds extra deterioration above the configured heat limits.
     ///
+    /// A powered Prim'ta preservation basin suspends ambient deterioration.
+    /// The basin does not repair existing spoilage and does not replace the
+    /// normal refrigerator or freezer fallback when no basin is available.
+    ///
     /// The XML lists this component before CompRottable so its additional
     /// progress is applied before vanilla performs stage transitions and
     /// destruction checks during the same rare tick.
@@ -24,11 +28,20 @@ namespace GateRimSG1.Jaffa
         public override void CompTickRare()
         {
             base.CompTickRare();
+
             ApplyAdditionalHeatDeterioration(RareTickInterval);
         }
 
         public override string CompInspectStringExtra()
         {
+            if (PrimtaPreservationUtility.TryGetActiveBasin(
+                    parent,
+                    out Comp_PrimtaPreservationBasin basin))
+            {
+                return "GR_PrimtaLarva_PreservationBasinStatus".Translate(
+                    basin.IdealTemperature.ToStringTemperature("F0"));
+            }
+
             float temperature = parent.AmbientTemperature;
             float effectiveRate = EffectiveDeteriorationRateAt(temperature);
 
@@ -40,6 +53,13 @@ namespace GateRimSG1.Jaffa
 
         private void ApplyAdditionalHeatDeterioration(int ticks)
         {
+            if (PrimtaPreservationUtility.TryGetActiveBasin(
+                    parent,
+                    out _))
+            {
+                return;
+            }
+
             CompRottable rottable = parent.TryGetComp<CompRottable>();
 
             if (rottable == null || !rottable.Active)

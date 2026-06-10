@@ -3,7 +3,7 @@
     <ThingDef ParentName="ResourceBase">
         <defName>SG1_ImmaturePrimtaSymbiote</defName>
         <label>immature Prim'ta symbiote</label>
-        <description>A fragile queen-origin immature Goa'uld symbiote. It must be matured in a Prim'ta incubation basin with raw meat nutrients before implantation into a Jaffa.</description>
+        <description>A fragile queen-origin immature Goa'uld symbiote. It must be matured in a Prim'ta incubation basin with raw meat nutrients before implantation into a Jaffa. A powered Prim'ta preservation basin suspends further deterioration without repairing existing spoilage.</description>
         <thingClass>ThingWithComps</thingClass>
         <tickerType>Rare</tickerType>
         <graphicData>
@@ -22,7 +22,7 @@
         </statBases>
         <tradeability>Sellable</tradeability>
         <comps>
-            <li Class="CompProperties_Rottable">
+            <li Class="GateRimSG1.Jaffa.CompProperties_PrimtaBiologicalPreservation">
                 <daysToRotStart>2</daysToRotStart>
                 <rotDestroys>true</rotDestroys>
             </li>

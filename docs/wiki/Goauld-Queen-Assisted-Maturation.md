@@ -46,3 +46,11 @@ Le symbiote immature de Prim'ta est une ressource biologique physique :
 La reine ne se reproduit pas encore automatiquement et n'apparaît pas
 naturellement. La disponibilité normale de cette ressource sera définie dans un
 jalon ultérieur.
+
+
+## Conservation
+
+Les symbiotes immatures et les larves matures peuvent être stockés dans un
+[bassin de conservation du Prim'ta](Primta-Preservation-Basin) alimenté. Le
+stockage spécialisé suspend l'aggravation sans restaurer une ressource déjà
+détériorée.

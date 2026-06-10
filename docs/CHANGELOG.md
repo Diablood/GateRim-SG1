@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.59-dev — Add Prim'ta preservation basin prototype
+
+- Add the powered `SG1_PrimtaPreservationBasin` dedicated storage building.
+- Restrict the basin to immature queen-origin symbiotes and mature Prim'ta larvae.
+- Suspend additional rot progression while stored in a powered basin.
+- Preserve deterioration accumulated before storage: the basin does not repair biological resources.
+- Keep refrigerator, freezer and ambient-temperature gameplay active when no powered basin is available.
+- Keep deep-freezing penalties planned for a dedicated follow-up milestone.
+- Reuse the incubation-basin texture provisionally.
+- Add French translations, technical documentation and player-wiki drafts.
+
+
 ## 0.1.58-dev — Add queen-origin Prim'ta assisted maturation prototype
 
 - Add the physical `SG1_ImmaturePrimtaSymbiote` biological resource.
