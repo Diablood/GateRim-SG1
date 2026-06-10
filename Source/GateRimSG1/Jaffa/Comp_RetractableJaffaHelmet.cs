@@ -24,7 +24,9 @@ namespace GateRimSG1.Jaffa
 
     public class Comp_RetractableJaffaHelmet : ThingComp
     {
-        private JaffaHelmetMode mode = JaffaHelmetMode.Automatic;
+        private const JaffaHelmetMode DefaultMode = JaffaHelmetMode.Automatic;
+
+        private JaffaHelmetMode mode = DefaultMode;
 
         public CompProperties_RetractableJaffaHelmet Props =>
             (CompProperties_RetractableJaffaHelmet)props;
@@ -36,7 +38,7 @@ namespace GateRimSG1.Jaffa
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Values.Look(ref mode, "jaffaHelmetMode", JaffaHelmetMode.Automatic);
+            Scribe_Values.Look(ref mode, "jaffaHelmetMode", DefaultMode);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -46,6 +48,12 @@ namespace GateRimSG1.Jaffa
 
         public override IEnumerable<Gizmo> CompGetWornGizmosExtra()
         {
+            Pawn wearer = Helmet?.Wearer;
+            if (wearer == null || !wearer.IsColonistPlayerControlled)
+            {
+                yield break;
+            }
+
             yield return new Command_Action
             {
                 defaultLabel = "SG1_JaffaHelmetModeCommand".Translate() + ": " + ModeLabel,

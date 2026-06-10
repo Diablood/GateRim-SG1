@@ -59,6 +59,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Loadout Ma'Tok des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` pour les guerriers et gardes générés | 0.1.65-dev |
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
+| Loadouts automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 
 ## Prévu
 
@@ -70,6 +71,5 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Nation Jaffa libre | Prévu |
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
-| Loadouts automatiques d'armures Jaffa | Prévu |
 | Intégration optionnelle Ideology | Prévu |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

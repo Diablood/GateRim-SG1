@@ -39,10 +39,11 @@ disponible du contenu encore en développement.
 ## Prochain développement majeur
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : loadouts automatiques d'armure, marques
-visuelles, premiers groupes ennemis exploitables, puis activation
+de Grands Maîtres Goa'uld : marques visuelles, premiers groupes ennemis
+exploitables, puis activation
 contrôlée des raids et de la présence mondiale. Les serviteurs Jaffa générés
-reçoivent déjà automatiquement un Prim'ta initial et un bâton Ma'Tok.
+reçoivent déjà automatiquement un Prim'ta initial, un bâton Ma'Tok et leur
+ensemble d'armure modulaire.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

@@ -7,6 +7,8 @@
 > Premier équipement Jaffa : 0.1.64-dev
 > Loadout Ma'Tok automatique : 0.1.65-dev
 > Armures Jaffa modulaires : 0.1.66-dev
+> Casque Jaffa rétractable : 0.1.67-dev
+> Loadouts d'armures automatiques : 0.1.68-dev
 
 ## Présentation
 
@@ -57,16 +59,16 @@ fabriqué et testé manuellement. Depuis `0.1.65-dev`, les guerriers et gardes
 Jaffa générés le reçoivent automatiquement via le système vanilla de loadout.
 Depuis `0.1.66-dev`, cinq [armures Jaffa modulaires](Jaffa-Armor) peuvent être
 fabriquées et testées manuellement : deux torses, des gantelets protégeant
-les doigts, des bottes protégeant les orteils et un casque statique déployé.
-Le casque rétractable, les loadouts d'armure automatiques, les marques
-faciales et l'équilibrage doivent encore être complétés avant l'activation
+les doigts, des bottes protégeant les orteils et un casque déployé.
+Depuis `0.1.67-dev`, le casque possède trois modes rétractables persistants.
+Depuis `0.1.68-dev`, les guerriers et gardes générés reçoivent automatiquement
+leur ensemble modulaire adapté. Les marques faciales et l'équilibrage doivent
+encore être complétés avant l'activation
 des raids et des colonies.
 
 ## Suite prévue
 
 ```text
-casque rétractable et loadouts d'armure
-    ↓
 identité visuelle
     ↓
 tests contrôlés de groupes ennemis

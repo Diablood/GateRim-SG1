@@ -13,21 +13,23 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.67-dev — Add retractable Jaffa helmet modes
+### 0.1.68-dev — Add automatic Jaffa armor loadouts
 
-The deployed Jaffa helmet now supports three persistent deployment modes:
+Generated Goa'uld-aligned Jaffa servants now receive deterministic modular
+armor loadouts through RimWorld's vanilla `apparelRequired` field.
 
-- automatic: retracted outside draft, deployed while drafted;
-- always deployed;
-- always retracted.
+Warriors receive:
 
-Raw armor ratings remain identical in both positions. The deployed state
-protects `FullHead`, while the retracted state protects `UpperHead`.
+- light Jaffa torso armor;
+- armored gauntlets;
+- reinforced boots;
+- deployed retractable helmet.
 
-A worn-apparel gizmo cycles the mode, and a lightweight game component keeps
-automatic deployment synchronized with draft state.
+Guards receive the same modular set with heavy torso armor instead.
 
-Automatic armor loadouts for generated Goa'uld-aligned Jaffa remain deferred.
+Existing automatic Prim'ta initialization, Ma'Tok weapon loadouts and helmet
+deployment modes remain unchanged. Natural Goa'uld raids, settlements and
+traders remain disabled.
 
 ## Next maintenance focus
 
@@ -57,7 +59,7 @@ Before the next gameplay expansion, the project will perform a consolidation pas
 - [ ] Zat'nik'tel
 - [x] Modular Jaffa armor prototypes
 - [x] Retractable Jaffa helmet modes
-- [ ] Automatic Jaffa armor loadouts
+- [x] Automatic Jaffa armor loadouts
 - [ ] Generic human SG-team uniform
 - [ ] SG tactical boots
 - [ ] SG tactical gloves

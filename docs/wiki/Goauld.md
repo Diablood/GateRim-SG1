@@ -210,8 +210,13 @@ casque Jaffa déployé
 ```
 
 Les gantelets protègent réellement les bras, mains et doigts. Les bottes
-protègent les jambes, pieds et orteils. Le premier casque est statique et
-déployé : une version rétractable sera ajoutée ultérieurement.
+protègent les jambes, pieds et orteils. Depuis `0.1.67-dev`, le casque peut
+être rétracté ou déployé, automatiquement lors de l'enrôlement ou selon le
+mode persistant choisi par le joueur.
+
+Depuis `0.1.68-dev`, les guerriers et gardes générés reçoivent automatiquement
+leur ensemble modulaire : armure légère pour le guerrier, armure lourde pour
+le garde, avec gantelets, bottes et casque rétractable pour les deux profils.
 
 Consulte [Armures Jaffa](Jaffa-Armor).
 
@@ -221,8 +226,7 @@ Consulte [Armures Jaffa](Jaffa-Armor).
 - disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- casque Jaffa rétractable ;
-- loadouts automatiques d'armures et marques visuelles des serviteurs Jaffa ;
+- marques visuelles des serviteurs Jaffa ;
 - colonies, raids et événements Goa'uld.
 
 ## Différence avec les sanguophages

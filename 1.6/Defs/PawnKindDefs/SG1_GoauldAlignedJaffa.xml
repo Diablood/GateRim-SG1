@@ -4,7 +4,8 @@
     Goa'uld-aligned Jaffa pawn kinds.
     These humanlike servants force the inheritable Jaffa lineage xenotype,
     receive a one-time automatic Prim'ta through the existing initializer,
-    and now use the vanilla weapon-tag system to spawn with a Ma'Tok staff.
+    use the vanilla weapon-tag system to spawn with a Ma'Tok staff,
+    and now use apparelRequired for deterministic modular armor loadouts.
     Natural raids and world generation remain intentionally disabled.
     -->
     <PawnKindDef ParentName="BasePlayerPawnKind">
@@ -25,6 +26,13 @@
         <weaponTags>
             <li>SG1_MatokStaff</li>
         </weaponTags>
+        <apparelMoney>0</apparelMoney>
+        <apparelRequired Inherit="False">
+            <li>SG1_JaffaLightArmor</li>
+            <li>SG1_JaffaGauntlets</li>
+            <li>SG1_JaffaReinforcedBoots</li>
+            <li>SG1_JaffaDeployedHelmet</li>
+        </apparelRequired>
         <minGenerationAge>18</minGenerationAge>
         <maxGenerationAge>60</maxGenerationAge>
     </PawnKindDef>
@@ -47,6 +55,13 @@
         <weaponTags>
             <li>SG1_MatokStaff</li>
         </weaponTags>
+        <apparelMoney>0</apparelMoney>
+        <apparelRequired Inherit="False">
+            <li>SG1_JaffaHeavyArmor</li>
+            <li>SG1_JaffaGauntlets</li>
+            <li>SG1_JaffaReinforcedBoots</li>
+            <li>SG1_JaffaDeployedHelmet</li>
+        </apparelRequired>
         <minGenerationAge>20</minGenerationAge>
         <maxGenerationAge>65</maxGenerationAge>
     </PawnKindDef>
