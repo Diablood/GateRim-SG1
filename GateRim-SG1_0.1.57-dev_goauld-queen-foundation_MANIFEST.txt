@@ -1,0 +1,50 @@
+GateRim SG-1 — 0.1.57-dev Goa'uld queen biological foundation
+
+Scope
+=====
+Adds a developer-spawnable passive Goa'uld queen biological-foundation prototype.
+
+Intentional limitations
+=======================
+- No natural spawning
+- No storyteller incident
+- No host implantation
+- No autonomous hunting
+- No Prim'ta larva production yet
+- No specialized queen chamber yet
+- Temporary reuse of the adult-symbiote texture at a larger draw size
+
+Files added or replaced
+=======================
+1.6/Defs/PawnKindDefs/SG1_GoauldQueen.xml
+1.6/Defs/ThingDefs_Pawns/SG1_GoauldQueen.xml
+About/About.xml
+Languages/French/DefInjected/PawnKindDef/SG1_GoauldQueen.xml
+Languages/French/DefInjected/ThingDef/SG1_GoauldQueen.xml
+README.md
+Source/GateRimSG1/GateRimSG1.csproj
+docs/CHANGELOG.md
+docs/GOAULD_QUEEN_FOUNDATION.md
+docs/ROADMAP.md
+docs/wiki/Content-Status.md
+docs/wiki/Goauld-Queen.md
+docs/wiki/Goauld.md
+docs/wiki/_Sidebar.md
+
+Validation
+==========
+- XML parsing: OK
+- git apply --check --whitespace=error-all: OK
+- git apply --whitespace=error-all: OK
+- Exact file comparison after application: OK
+- No tabs in delivered files: OK
+
+Build
+=====
+Recommended: YES
+Reason: Source/GateRimSG1/GateRimSG1.csproj version changes to 0.1.57.0.
+No gameplay C# source file changes.
+
+Suggested commit
+================
+0.1.57-dev - Add Goa'uld queen biological foundation

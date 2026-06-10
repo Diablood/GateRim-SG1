@@ -1,6 +1,6 @@
 # Goa'uld
 
-> Statut : Prototype  
+> Statut : Prototype
 > Première fondation : 0.1.7-dev
 
 ## Présentation
@@ -124,12 +124,25 @@ Depuis `0.1.25-dev`, la cérémonie contrôlée exige un
 [bassin rituel Goa'uld](Ritual-Basin). Le symbiote et la cible doivent rester
 proches de cette structure jusqu'à la fin.
 
+### Reine Goa'uld
+
+Depuis `0.1.57-dev`, une reine Goa'uld distincte peut être générée en mode
+développeur :
+
+```text
+reine Goa'uld
+```
+
+Ce premier prototype est volontairement passif. Il prépare une future origine
+biologique contrôlée pour les symbiotes immatures sans modifier encore la boucle
+jouable d'incubation du Prim'ta.
+
+Consulte [Reine Goa'uld](Goauld-Queen).
+
 ## Ce qui n'est pas encore implémenté
 
-- IA hostile autonome du symbiote libre ;
-- implantation rituelle ;
-- interruption médicale ;
-- extraction ;
+- production de symbiotes immatures par la reine ;
+- maturation assistée des larves de Prim'ta ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
 - faction des Grands Maîtres Goa'uld.

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="AnimalThingBase">
+        <defName>SG1_GoauldQueen</defName>
+        <label>Goa'uld queen</label>
+        <description>A Goa'uld queen outside any specialized reproductive infrastructure. This first biological-foundation prototype is intentionally passive and can only be spawned through developer mode. Future milestones will connect queens to controlled immature-symbiote sourcing and assisted Prim'ta maturation.</description>
+        <statBases>
+            <MoveSpeed>2.6</MoveSpeed>
+            <MarketValue>2500</MarketValue>
+            <ComfyTemperatureMin>5</ComfyTemperatureMin>
+            <ComfyTemperatureMax>35</ComfyTemperatureMax>
+            <LeatherAmount>0</LeatherAmount>
+            <MeatAmount>0</MeatAmount>
+            <Mass>12</Mass>
+        </statBases>
+        <tools>
+            <li>
+                <label>bite</label>
+                <capacities>
+                    <li>Bite</li>
+                </capacities>
+                <power>5</power>
+                <cooldownTime>2</cooldownTime>
+                <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+            </li>
+        </tools>
+        <race>
+            <body>Snake</body>
+            <baseBodySize>0.6</baseBodySize>
+            <baseHungerRate>0.18</baseHungerRate>
+            <baseHealthScale>1.2</baseHealthScale>
+            <foodType>CarnivoreAnimal</foodType>
+            <leatherDef>Leather_Plain</leatherDef>
+            <lifeExpectancy>200</lifeExpectancy>
+            <hasGenders>false</hasGenders>
+            <lifeStageAges>
+                <li>
+                    <def>AnimalAdult</def>
+                    <minAge>0</minAge>
+                </li>
+            </lifeStageAges>
+            <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+            <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+            <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+        </race>
+    </ThingDef>
+</Defs>

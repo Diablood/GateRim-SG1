@@ -1,0 +1,42 @@
+GateRim SG-1 — 0.1.57-dev r1 indentation correction
+
+Reason
+======
+The first generated 0.1.57-dev archive used one-space XML/project indentation.
+The project .editorconfig requires:
+- indent_style = space
+- indent_size = 4
+
+Scope
+=====
+Same gameplay content as 0.1.57-dev Goa'uld queen biological foundation.
+No functional change.
+
+Corrected structured files
+==========================
+1.6/Defs/PawnKindDefs/SG1_GoauldQueen.xml
+1.6/Defs/ThingDefs_Pawns/SG1_GoauldQueen.xml
+About/About.xml
+Languages/French/DefInjected/PawnKindDef/SG1_GoauldQueen.xml
+Languages/French/DefInjected/ThingDef/SG1_GoauldQueen.xml
+Source/GateRimSG1/GateRimSG1.csproj
+
+Delivery modes
+==============
+1. Recommended: extract the consolidated r1 ZIP directly over the project root.
+2. Alternative after extracting the obsolete ZIP: apply the indentation-only patch.
+
+Validation
+==========
+- XML parsing: OK
+- LF line endings: OK
+- Final newline: OK
+- No tabs: OK
+- No trailing whitespace: OK
+- Structured indentation is a multiple of four spaces: OK
+
+Build required
+==============
+If the queen foundation has not yet been built locally: YES.
+If the obsolete 0.1.57-dev package was already built successfully: no additional
+build is required solely for this formatting correction.

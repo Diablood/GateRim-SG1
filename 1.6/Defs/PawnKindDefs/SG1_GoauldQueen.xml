@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    The queen is intentionally excluded from biome tables and normal incidents.
+    Spawn it through developer mode during this foundation milestone.
+    The adult-symbiote texture is reused provisionally at a larger draw size.
+    -->
+    <PawnKindDef ParentName="AnimalKindBase">
+        <defName>SG1_GoauldQueen</defName>
+        <label>Goa'uld queen</label>
+        <race>SG1_GoauldQueen</race>
+        <combatPower>30</combatPower>
+        <ecoSystemWeight>0</ecoSystemWeight>
+        <wildGroupSize>1</wildGroupSize>
+        <lifeStages>
+            <li>
+                <bodyGraphicData>
+                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>1.1</drawSize>
+                </bodyGraphicData>
+                <dessicatedBodyGraphicData>
+                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
+                    <graphicClass>Graphic_Single</graphicClass>
+                    <drawSize>1.1</drawSize>
+                </dessicatedBodyGraphicData>
+            </li>
+        </lifeStages>
+    </PawnKindDef>
+</Defs>

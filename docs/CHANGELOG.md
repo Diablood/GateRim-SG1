@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.57-dev — Add Goa'uld queen biological foundation
+
+- Add the XML-only `SG1_GoauldQueen` animal-style pawn prototype.
+- Add the developer-spawnable `SG1_GoauldQueen` PawnKindDef.
+- Keep the queen excluded from biome tables, storyteller incidents and natural acquisition.
+- Keep the first queen prototype passive: no hunting, implantation or larva production.
+- Reuse the adult-symbiote texture provisionally at a larger draw size.
+- Add French `DefInjected` translations, technical documentation and player-wiki drafts.
+- Prepare the next assisted-maturation iteration for Prim'ta incubation.
+
+
 ## 0.1.56-dev docs — Add pre-0.2 cleanup roadmap
 
 - Refresh the first-playable checklist to reflect already validated Jaffa and Goa'uld prototype workflows.

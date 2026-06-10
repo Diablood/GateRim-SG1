@@ -13,22 +13,20 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.56-dev — Add trusted Tok'ra advanced medicine support
+### 0.1.57-dev — Add Goa'uld queen biological foundation
 
-Trusted Tok'ra medical-support deliveries now include one physical unit of
-vanilla ultratech medicine in addition to their existing tretonin shipment.
-Cooperative deliveries remain unchanged with two tretonin doses and one
-visitor, while trusted deliveries keep four tretonin doses and two visitors.
+A distinct Goa'uld queen animal-style pawn can now be generated through
+developer mode. This first foundation is intentionally passive: it does not
+implant hosts, hunt humanoids or produce larvae yet.
 
-The additional medicine is intentionally limited to the trusted tier and to
-independent deliveries. It provides a concrete positive diplomatic reward
-without introducing traders, quests or a new interface yet.
+The queen fixes the biological representation before the next milestone turns
+the existing Prim'ta basin into assisted maturation infrastructure.
 
 ## Next maintenance focus
 
 Before the next gameplay expansion, the project will perform a consolidation pass:
 
-- fix the remaining French translation-report errors;
+- keep the five remaining French translation load errors identified as vanilla RimWorld issues;
 - audit player-facing information, debug-only diagnostics and conditional gizmos;
 - prepare a mod-specific debug option before the `0.2.x` Stargate chapter;
 - preserve the future wiki-image and Workshop-asset plan without claiming final visuals yet.

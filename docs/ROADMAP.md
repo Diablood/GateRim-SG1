@@ -2,7 +2,7 @@
 
 ## Immediate maintenance — pre-0.2 cleanup preparation
 
-- [ ] Generate the RimWorld French translation report and fix the five remaining localization errors from the report.
+- [x] Generate the RimWorld French translation report and add the two missing GateRim SG-1 entries. Keep the five remaining load errors documented as vanilla RimWorld French issues.
 - [x] Restore the broken `Content-Status.md` planned-content table.
 - [ ] Audit player-facing inspection text, contextual information and debug-only diagnostics.
 - [ ] Audit gizmos and commands: always visible, contextual, mod-debug only, RimWorld-dev only or removed.
@@ -14,7 +14,7 @@
 ### Biological and faction foundations
 
 - [ ] Evaluate deep-freezing penalties and specialized larva containers.
-- [ ] Add a Goa'uld queen biological-foundation prototype.
+- [x] Add a Goa'uld queen biological-foundation prototype.
 - [ ] Turn the current Prim'ta incubation basin into assisted maturation infrastructure rather than a fully ex-nihilo source.
 - [ ] Add the first Goa'uld System Lord faction prototype.
 - [ ] Add Goa'uld-aligned Jaffa pawn kinds and keep Free Jaffa visually distinct.

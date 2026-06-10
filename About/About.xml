@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ModMetaData>
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.56-dev</modVersion>
+    <modVersion>0.1.57-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -64,7 +63,8 @@ Current development scope:
 - Explicit map target selection for ritual implantation
 - Timed core ritual ceremony with cancellation and save persistence
 - Core Goa'uld ritual basin environmental requirement
-- Tok'ra faction expansion, queen-origin biology and freezing penalties planned next
+- Developer-spawnable Goa'uld queen biological-foundation prototype
+- Assisted Prim'ta maturation, deep-freezing penalties and Goa'uld faction expansion planned next
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 
