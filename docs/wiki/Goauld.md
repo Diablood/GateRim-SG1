@@ -230,6 +230,10 @@ Ce parcours sert à tester la faction non joueuse réelle, le profil de groupe
 `Combat`, les loadouts complets et l'absence de bouton de casque sur les
 ennemis.
 
+Depuis `0.1.70-dev`, il utilise explicitement la stratégie vanilla
+`ImmediateAttack`, afin d'éviter le fallback du générateur de raids tout en
+conservant le même comportement d'assaut direct.
+
 Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
 
 ## Ce qui n'est pas encore implémenté

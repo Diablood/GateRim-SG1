@@ -65,3 +65,17 @@ the Def names.
 8. Spawn `SG1_GoauldJaffaWarrior` and `SG1_GoauldJaffaGuard` and confirm that
    their existing automatic Prim'ta initialization still works.
 9. Confirm that no natural Goa'uld raid, settlement or trader has been enabled.
+
+## AI combat primary verb
+
+Since `0.1.70-dev r2`, the Ma'Tok ranged verb is explicitly marked as the
+equipment primary verb:
+
+```xml
+<isPrimary>true</isPrimary>
+```
+
+Manual firing was already available through `hasStandardCommand`, but hostile
+AI combat requires the equipment tracker to expose a primary verb. Without this
+flag, generated Jaffa could receive an assault lord duty while failing to select
+an attack job.

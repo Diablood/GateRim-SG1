@@ -27,6 +27,7 @@ namespace GateRimSG1.Goauld
 
             if (existingFaction != null)
             {
+                RefreshAttackTargetCaches(existingFaction);
                 return existingFaction;
             }
 
@@ -37,8 +38,46 @@ namespace GateRimSG1.Goauld
                     hidden: true));
 
             Find.FactionManager.Add(createdFaction);
+            RefreshAttackTargetCaches(createdFaction);
 
             return createdFaction;
+        }
+
+        private static void RefreshAttackTargetCaches(Faction goauldFaction)
+        {
+            if (goauldFaction == null
+                || Find.FactionManager == null
+                || Find.Maps == null)
+            {
+                return;
+            }
+
+            for (int mapIndex = 0; mapIndex < Find.Maps.Count; mapIndex++)
+            {
+                Map map = Find.Maps[mapIndex];
+
+                if (map?.attackTargetsCache == null)
+                {
+                    continue;
+                }
+
+                for (int factionIndex = 0;
+                    factionIndex < Find.FactionManager.AllFactionsListForReading.Count;
+                    factionIndex++)
+                {
+                    Faction otherFaction =
+                        Find.FactionManager.AllFactionsListForReading[factionIndex];
+
+                    if (otherFaction == null || otherFaction == goauldFaction)
+                    {
+                        continue;
+                    }
+
+                    map.attackTargetsCache.Notify_FactionHostilityChanged(
+                        goauldFaction,
+                        otherFaction);
+                }
+            }
         }
     }
 }

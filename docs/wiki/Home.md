@@ -40,7 +40,7 @@ disponible du contenu encore en développement.
 ## Prochain développement majeur
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : validation du premier groupe ennemi contrôlé,
+de Grands Maîtres Goa'uld : stabilisation du premier groupe ennemi contrôlé,
 marques visuelles, puis activation progressive des raids naturels et de la
 présence mondiale. Les serviteurs Jaffa générés
 reçoivent déjà automatiquement un Prim'ta initial, un bâton Ma'Tok et leur

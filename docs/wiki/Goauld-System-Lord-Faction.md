@@ -10,6 +10,7 @@
 > Casque Jaffa rétractable : 0.1.67-dev
 > Loadouts d'armures automatiques : 0.1.68-dev
 > Raid Jaffa contrôlé : 0.1.69-dev
+> Stratégie de raid contrôlé explicite : 0.1.70-dev
 
 ## Présentation
 

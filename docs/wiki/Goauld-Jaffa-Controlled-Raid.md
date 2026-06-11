@@ -33,6 +33,15 @@ La chance storyteller de cet incident est fixée à :
 
 Aucun raid Goa'uld naturel n'est donc activé par ce prototype.
 
+Depuis `0.1.70-dev`, l'incident sélectionne explicitement :
+
+```text
+ImmediateAttack
+```
+
+Le groupe conserve son assaut direct, mais RimWorld n'a plus besoin de
+retomber sur une stratégie par défaut.
+
 ## Objectifs du test
 
 Le parcours contrôlé permet de vérifier :

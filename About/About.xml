@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.69-dev</modVersion>
+    <modVersion>0.1.70-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -76,6 +76,7 @@ Current development scope:
 - Persistent retractable Jaffa helmet modes with automatic drafted deployment
 - Deterministic modular armor loadouts for generated Goa'uld-aligned Jaffa servants
 - Developer-only controlled Goa'uld Jaffa raid incident with zero storyteller chance
+- Explicit vanilla ImmediateAttack strategy for controlled Goa'uld Jaffa raid tests
 - Natural Goa'uld raids, settlements and world presence planned later
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later

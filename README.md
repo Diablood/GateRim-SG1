@@ -13,22 +13,21 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.69-dev — Add controlled Goa'uld Jaffa test raid
+### 0.1.70-dev — Add explicit Goa'uld controlled-raid strategy
 
-A developer-only controlled raid incident now creates one persistent hidden
-Goa'uld System Lord faction instance on demand, then delegates pawn-group
-generation and assault behavior to RimWorld's vanilla raid workflow.
+The developer-only controlled Goa'uld Jaffa raid now assigns the vanilla
+`RaidStrategyDefOf.ImmediateAttack` strategy explicitly before delegating to
+RimWorld's raid worker.
 
-The incident has a storyteller base chance of `0`. Natural Goa'uld raids,
-settlements and traders therefore remain disabled.
+Gameplay behavior remains unchanged: test groups attack immediately. The
+explicit assignment removes the vanilla fallback warning:
 
-This milestone exists to validate:
+```text
+No raid strategy found, defaulting to ImmediateAttack.
+```
 
-- a real hostile non-player Goa'uld faction instance;
-- the existing hidden `Combat` pawn-group profile;
-- automatic Prim'ta, Ma'Tok and armor loadouts in a real enemy group;
-- automatic Jaffa helmet behavior on enemy pawns;
-- the absence of the player-only helmet gizmo on enemies.
+The incident still has a storyteller base chance of `0`. Natural Goa'uld
+raids, settlements and traders remain disabled.
 
 ## Next maintenance focus
 

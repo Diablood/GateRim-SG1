@@ -97,9 +97,6 @@ namespace GateRimSG1.Jaffa
             parent.def = desiredDef;
             wearer?.Drawer?.renderer?.SetAllGraphicsDirty();
 
-            GR_Log.Message(
-                $"Updated Jaffa helmet {parent.ThingID} to "
-                + $"{(IsDeployed ? "deployed" : "retracted")} state in {mode} mode.");
         }
 
         private bool ShouldBeDeployed(Pawn wearer)

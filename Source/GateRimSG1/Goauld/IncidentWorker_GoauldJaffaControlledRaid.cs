@@ -48,6 +48,8 @@ namespace GateRimSG1.Goauld
 
             parms.faction = goauldFaction;
             parms.forced = true;
+            parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+            parms.canSteal = false;
 
             if (!(parms.points > 0f))
             {

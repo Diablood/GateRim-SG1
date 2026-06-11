@@ -61,6 +61,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Loadouts automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle créant une faction hostile cachée réelle et réutilisant le workflow vanilla de raid | 0.1.69-dev |
+| Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans fallback ni activation des raids naturels | 0.1.70-dev |
 
 ## Prévu
 

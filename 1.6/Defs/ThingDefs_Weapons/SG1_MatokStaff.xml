@@ -51,6 +51,7 @@
         <verbs>
             <li>
                 <verbClass>Verb_Shoot</verbClass>
+                <isPrimary>true</isPrimary>
                 <hasStandardCommand>true</hasStandardCommand>
                 <defaultProjectile>SG1_MatokStaffProjectile</defaultProjectile>
                 <warmupTime>1.5</warmupTime>

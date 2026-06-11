@@ -30,3 +30,12 @@ A lightweight updater synchronizes automatic mode every `15` ticks.
 7. Save and reload in each mode to confirm persistence.
 8. Confirm the armor ratings stay identical in both positions.
 9. Confirm all Jaffa apparel remains under `Apparel > Jaffa`.
+
+## Logging policy
+
+Automatic helmet deployment and retraction are intentionally silent. These
+state transitions happen routinely during pawn generation, draft changes and
+periodic synchronization. Emitting a normal log message for every transition
+can create noisy in-game developer popups and verbose Unity stack traces.
+
+The synchronization behavior remains unchanged.

@@ -76,3 +76,54 @@ When developer tools do not supply points, the worker defaults to `500`.
    faction instance is reused.
 10. Confirm that no natural Goa'uld raid starts without a manual developer
     trigger.
+
+## Late-created faction attack-target cache refresh
+
+Since `0.1.70-dev r4`, the hidden runtime System Lord faction refreshes each
+loaded map's attack-target cache after it is created or reused.
+
+The controlled faction is intentionally created lazily, after the player map
+and colonists may already exist. Initial faction relations alone are not enough
+to rebuild attack-target cache entries for previously spawned pawns.
+
+The utility therefore calls:
+
+```csharp
+map.attackTargetsCache.Notify_FactionHostilityChanged(
+    goauldFaction,
+    otherFaction);
+```
+
+for every loaded map and every other known faction before the raid worker
+generates its pawns.
+
+## Temporary diagnostics cleanup
+
+The `r3` diagnostic component is no longer required after this fix. Remove:
+
+```text
+Source/GateRimSG1/Goauld/GameComponent_GoauldJaffaRaidDiagnostics.cs
+docs/GOAULD_JAFFA_RAID_DIAGNOSTICS.md
+```
+
+before the final commit.
+
+## Controlled direct-assault baseline
+
+Since `0.1.70-dev r5`, the developer-only controlled raid disables vanilla
+stealing explicitly:
+
+```csharp
+parms.canSteal = false;
+```
+
+`RaidStrategyWorker_ImmediateAttack` forwards `IncidentParms.canSteal` to
+`LordJob_AssaultColony`. When stealing is allowed, the vanilla lord graph can
+transition to `LordJob_Steal` as soon as high-value items are detected.
+
+The controlled incident exists to validate sustained Jaffa combat behavior, so
+this transition is intentionally disabled for the test raid only.
+
+Timeout and flee behavior remain vanilla. Kidnapping behavior is not changed by
+this patch and can be reviewed separately as a lore and balance decision before
+natural Goa'uld raids are enabled.
