@@ -18,7 +18,9 @@ namespace GateRimSG1
         public static IncidentDef SG1_TokraPeacefulVisitors;
         public static IncidentDef SG1_GoauldJaffaControlledRaid;
         public static IncidentDef SG1_GoauldJaffaControlledAbductionRaid;
+        public static IncidentDef SG1_GoauldJaffaControlledDestructionRaid;
         public static RaidStrategyDef SG1_GoauldJaffaAbductionAssault;
+        public static RaidStrategyDef SG1_GoauldJaffaDestructionAssault;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
         public static GeneDef SG1_JaffaLineage;

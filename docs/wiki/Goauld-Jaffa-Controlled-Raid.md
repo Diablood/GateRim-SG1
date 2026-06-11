@@ -67,3 +67,11 @@ et l'enlèvement. Il sert de référence pour tester un combat prolongé.
 La doctrine d'enlèvement possède son propre incident développeur :
 
 [Raid d'enlèvement Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid).
+
+## Doctrine de destruction séparée
+
+Depuis `0.1.72-dev`, un troisième incident conserve un assaut militaire
+prolongé puis autorise seulement après cette phase la récupération
+opportuniste de captifs et d'objets de valeur :
+
+[Raid de destruction Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid).

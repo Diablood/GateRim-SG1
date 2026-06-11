@@ -12,6 +12,7 @@
 > Raid Jaffa contrôlé : 0.1.69-dev
 > Stratégie de raid contrôlé explicite : 0.1.70-dev
 > Raid d'enlèvement Jaffa contrôlé : 0.1.71-dev
+> Raid de destruction Jaffa contrôlé : 0.1.72-dev
 
 ## Présentation
 

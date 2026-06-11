@@ -241,6 +241,13 @@ limitée.
 
 Consulte [Raid d'enlèvement Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid).
 
+Depuis `0.1.72-dev`, un troisième incident contrôlé teste une doctrine de
+destruction : les Jaffa conduisent d'abord un assaut militaire prolongé,
+puis tentent de récupérer des captifs ou des objets de valeur avant leur
+extraction.
+
+Consulte [Raid de destruction Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid).
+
 Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
 
 ## Ce qui n'est pas encore implémenté

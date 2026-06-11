@@ -13,25 +13,29 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.71-dev — Add controlled Goa'uld Jaffa abduction raid
+### 0.1.72-dev — Add controlled Goa'uld Jaffa destruction raid
 
-A second developer-only controlled raid incident now exercises a dedicated
-Goa'uld abduction doctrine.
+A third developer-only incident now exercises a destruction doctrine with a
+separate post-assault recovery phase.
 
-During the capture window:
+Military phase:
 
-- Jaffa with nearby safe downed colonists attempt to kidnap them;
-- unassigned Jaffa continue normal `AssaultColony` combat duties;
-- new victims are reevaluated periodically.
+- Jaffa conduct a sustained `AssaultColony` attack;
+- opportunistic stealing and kidnapping remain disabled during combat;
+- the phase ends after sufficient colony damage or after `12000` ticks.
 
-After `2400` ticks, the surviving group switches to extraction and leaves
-the map with or without victims.
+Recovery phase:
 
-The existing controlled direct-assault incident now explicitly disables both
-stealing and kidnapping so it remains a pure sustained-combat baseline.
+- available Jaffa prioritize nearby downed colonists;
+- remaining available Jaffa may seize valuable nearby items;
+- unassigned Jaffa keep fighting to cover the recovery;
+- after `2400` ticks, all survivors extract with or without loot.
 
-Both incidents keep storyteller base chance `0`. Natural Goa'uld raids,
-settlements and traders remain disabled.
+The original controlled direct-assault and abduction incidents remain
+separate regression baselines.
+
+All controlled incidents keep storyteller base chance `0`. Natural Goa'uld
+raids, settlements and traders remain disabled.
 
 ## Next maintenance focus
 

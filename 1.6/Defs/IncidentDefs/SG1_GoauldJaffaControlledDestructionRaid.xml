@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Developer-only controlled Goa'uld Jaffa destruction raid.
+    Storyteller base chance stays zero: natural raids remain disabled.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldJaffaControlledDestructionRaid</defName>
+        <label>controlled Goa'uld Jaffa destruction test raid</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldJaffaControlledDestructionRaid</workerClass>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0</baseChance>
+        <earliestDay>0</earliestDay>
+        <minRefireDays>0</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+    </IncidentDef>
+</Defs>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Dedicated developer-test destruction strategy.
+    Its selection weight remains zero so it cannot be selected naturally.
+    -->
+    <RaidStrategyDef>
+        <defName>SG1_GoauldJaffaDestructionAssault</defName>
+        <workerClass>GateRimSG1.Goauld.RaidStrategyWorker_GoauldJaffaDestructionAssault</workerClass>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 0)</li>
+                <li>(10000, 0)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+        </arriveModes>
+        <arrivalTextEnemy>Jaffa serving a Goa'uld System Lord are launching a destructive assault. If they consider the colony sufficiently weakened, surviving troops may seize captives or valuables before withdrawing.</arrivalTextEnemy>
+        <arrivalTextFriendly>Jaffa serving a Goa'uld System Lord are launching a destructive assault.</arrivalTextFriendly>
+        <letterLabelEnemy>Goa'uld Jaffa destruction raid</letterLabelEnemy>
+        <letterLabelFriendly>Goa'uld Jaffa destruction raid</letterLabelFriendly>
+    </RaidStrategyDef>
+</Defs>

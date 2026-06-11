@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.71-dev</modVersion>
+    <modVersion>0.1.72-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -78,6 +78,7 @@ Current development scope:
 - Developer-only controlled Goa'uld Jaffa raid incident with zero storyteller chance
 - Explicit vanilla ImmediateAttack strategy for controlled Goa'uld Jaffa raid tests
 - Developer-only controlled Goa'uld Jaffa abduction raid with cover-and-extract doctrine
+- Developer-only controlled Goa'uld Jaffa destruction raid with post-assault recovery phase
 - Natural Goa'uld raids, settlements and world presence planned later
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
