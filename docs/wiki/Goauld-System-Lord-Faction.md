@@ -9,6 +9,7 @@
 > Armures Jaffa modulaires : 0.1.66-dev
 > Casque Jaffa rétractable : 0.1.67-dev
 > Loadouts d'armures automatiques : 0.1.68-dev
+> Raid Jaffa contrôlé : 0.1.69-dev
 
 ## Présentation
 

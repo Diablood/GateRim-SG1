@@ -14,6 +14,7 @@
 - [Armures Jaffa](Jaffa-Armor)
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Loadouts d'armures Jaffa](Jaffa-Armor-Loadouts)
+- [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid)
 - [Reine Goa'uld](Goauld-Queen)
 - [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation)
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)

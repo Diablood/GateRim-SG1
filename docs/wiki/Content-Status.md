@@ -60,6 +60,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Loadouts automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
+| Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle créant une faction hostile cachée réelle et réutilisant le workflow vanilla de raid | 0.1.69-dev |
 
 ## Prévu
 

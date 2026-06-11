@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Developer-only controlled Goa'uld Jaffa raid.
+    A zero storyteller base chance keeps natural raids disabled.
+    Use developer incident tools to exercise the real hidden hostile
+    faction, Combat pawn-group profile and vanilla raid workflow.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldJaffaControlledRaid</defName>
+        <label>controlled Goa'uld Jaffa test raid</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldJaffaControlledRaid</workerClass>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0</baseChance>
+        <earliestDay>0</earliestDay>
+        <minRefireDays>0</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+    </IncidentDef>
+</Defs>

@@ -14,7 +14,9 @@ namespace GateRimSG1
         public static PawnKindDef SG1_GoauldJaffaWarrior;
         public static PawnKindDef SG1_GoauldJaffaGuard;
         public static FactionDef SG1_Tokra;
+        public static FactionDef SG1_GoauldSystemLordPrototype;
         public static IncidentDef SG1_TokraPeacefulVisitors;
+        public static IncidentDef SG1_GoauldJaffaControlledRaid;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
         public static GeneDef SG1_JaffaLineage;

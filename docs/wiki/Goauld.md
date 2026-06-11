@@ -220,6 +220,18 @@ le garde, avec gantelets, bottes et casque rétractable pour les deux profils.
 
 Consulte [Armures Jaffa](Jaffa-Armor).
 
+### Raid Jaffa Goa'uld contrôlé
+
+Depuis `0.1.69-dev`, un incident réservé aux outils développeur permet de
+faire arriver un véritable groupe hostile de Jaffa Goa'uld. Sa chance
+storyteller est fixée à `0` : il ne se déclenche jamais naturellement.
+
+Ce parcours sert à tester la faction non joueuse réelle, le profil de groupe
+`Combat`, les loadouts complets et l'absence de bouton de casque sur les
+ennemis.
+
+Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
+
 ## Ce qui n'est pas encore implémenté
 
 - reproduction autonome de la reine ;
