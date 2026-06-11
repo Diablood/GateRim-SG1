@@ -13,29 +13,29 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.72-dev — Add controlled Goa'uld Jaffa destruction raid
+### 0.1.73-dev — Add intrinsic generic Jaffa forehead mark prototype
 
-A third developer-only incident now exercises a destruction doctrine with a
-separate post-assault recovery phase.
+Jaffa pawns now receive a generic black forehead mark rendered as an
+intrinsic tattoo-like visual rather than an apparel item.
 
-Military phase:
+The implementation uses a dedicated cosmetic technical gene:
 
-- Jaffa conduct a sustained `AssaultColony` attack;
-- opportunistic stealing and kidnapping remain disabled during combat;
-- the phase ends after sufficient colony damage or after `12000` ticks.
+```text
+SG1_JaffaForeheadMark_Generic
+```
 
-Recovery phase:
+This gene contributes a vanilla `PawnRenderNode_AttachmentHead` under the
+pawn's head node. It therefore creates no inventory object, no recipe, no
+storage entry, no armor coverage and no loot drop.
 
-- available Jaffa prioritize nearby downed colonists;
-- remaining available Jaffa may seize valuable nearby items;
-- unassigned Jaffa keep fighting to cover the recovery;
-- after `2400` ticks, all survivors extract with or without loot.
+The generic mark is intentionally black. Future milestones can introduce
+separate silver or gold variants for elite guards and First Primes, then
+replace the generic technical gene according to the serving System Lord.
 
-The original controlled direct-assault and abduction incidents remain
-separate regression baselines.
+The previous internal apparel-overlay prototype must be removed locally
+before testing this revision.
 
-All controlled incidents keep storyteller base chance `0`. Natural Goa'uld
-raids, settlements and traders remain disabled.
+Natural Goa'uld raids, settlements and traders remain disabled.
 
 ## Next maintenance focus
 

@@ -43,8 +43,9 @@ disponible du contenu encore en développement.
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
 de Grands Maîtres Goa'uld : validation des doctrines contrôlées d'assaut,
-d'enlèvement et de destruction, marques visuelles, puis activation
-progressive des raids naturels et de la présence mondiale. Les serviteurs Jaffa générés
+d'enlèvement et de destruction, marque frontale noire intrinsèque des Jaffa,
+puis variantes propres aux Grands Maîtres avant l'activation progressive
+des raids naturels et de la présence mondiale. Les serviteurs Jaffa générés
 reçoivent déjà automatiquement un Prim'ta initial, un bâton Ma'Tok et leur
 ensemble d'armure modulaire.
 

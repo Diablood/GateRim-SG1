@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!--
+    The Jaffa xenotype already exists in earlier milestones. Add the
+    dedicated intrinsic cosmetic mark gene without redefining the xenotype.
+    -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/XenotypeDef[defName="SG1_Jaffa"]/genes</xpath>
+        <value>
+            <li>SG1_JaffaForeheadMark_Generic</li>
+        </value>
+    </Operation>
+</Patch>

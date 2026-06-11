@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Cosmetic technical gene used to render an intrinsic Jaffa forehead mark.
+    It represents a tattoo/scarification attached to the pawn rather than an
+    apparel item. Future System Lord variants can replace this generic mark.
+    -->
+    <GeneDef>
+        <defName>SG1_JaffaForeheadMark_Generic</defName>
+        <label>generic Jaffa forehead mark</label>
+        <labelShortAdj>marked</labelShortAdj>
+        <description>A generic black forehead mark identifying a Jaffa servant. This cosmetic technical gene renders an intrinsic tattoo-like insignia and prepares future System Lord-specific variants.</description>
+        <iconPath>Genes/Icons/SG1_JaffaForeheadMark_Generic</iconPath>
+        <biostatCpx>0</biostatCpx>
+        <biostatMet>0</biostatMet>
+        <canGenerateInGeneSet>false</canGenerateInGeneSet>
+        <passOnDirectly>false</passOnDirectly>
+        <selectionWeight>0</selectionWeight>
+        <renderNodeProperties>
+            <li>
+                <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+                <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+                <texPath>Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark</texPath>
+                <parentTagDef>Head</parentTagDef>
+                <rotDrawMode>Fresh, Rotting</rotDrawMode>
+                <visibleFacing>
+                    <li>East</li>
+                    <li>South</li>
+                    <li>West</li>
+                </visibleFacing>
+                <drawData>
+                    <defaultData>
+                        <layer>60</layer>
+                    </defaultData>
+                    <dataEast>
+                        <offset>(-0.03, 0, -0.055)</offset>
+                    </dataEast>
+                    <dataSouth>
+                        <offset>(0, 0, -0.055)</offset>
+                    </dataSouth>
+                    <dataWest>
+                        <offset>(0.03, 0, -0.055)</offset>
+                    </dataWest>
+                </drawData>
+            </li>
+        </renderNodeProperties>
+    </GeneDef>
+</Defs>

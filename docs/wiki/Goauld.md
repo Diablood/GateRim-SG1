@@ -264,3 +264,14 @@ Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
 Un sanguophage transmet un xenogerm. Un Goa'uld devra se déplacer réellement
 entre plusieurs corps. Le futur système évitera donc toute duplication
 automatique du symbiote.
+
+## Identité visuelle Jaffa générique
+
+Depuis `0.1.73-dev`, les Jaffa reçoivent automatiquement une marque frontale
+noire générique rendue comme un tatouage intrinsèque.
+
+Cet insigne est uniquement visuel : il ne fournit aucune armure, ne remplace
+aucune pièce d'équipement et ne peut pas devenir du butin. Il prépare les
+futures variantes propres aux différents Grands Maîtres.
+
+Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).

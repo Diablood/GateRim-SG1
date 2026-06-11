@@ -77,3 +77,4 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
+| Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue comme un tatouage via un gène cosmétique technique ; aucune pièce d'inventaire ou statistique ; base extensible pour les futurs domaines | 0.1.73-dev |

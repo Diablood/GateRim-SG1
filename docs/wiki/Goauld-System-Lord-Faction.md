@@ -13,6 +13,7 @@
 > Stratégie de raid contrôlé explicite : 0.1.70-dev
 > Raid d'enlèvement Jaffa contrôlé : 0.1.71-dev
 > Raid de destruction Jaffa contrôlé : 0.1.72-dev
+> Identité visuelle Jaffa générique : 0.1.73-dev
 
 ## Présentation
 
@@ -79,3 +80,13 @@ tests contrôlés de groupes ennemis
     ↓
 activation progressive des raids et de la présence mondiale
 ```
+
+## Marque frontale Jaffa générique
+
+Depuis `0.1.73-dev`, les serviteurs Jaffa générés reçoivent une marque
+frontale noire intrinsèque rendue comme un tatouage. Cette première couche
+visuelle reste indépendante des doctrines de raid et de l'armure modulaire.
+
+Elle prépare des variantes propres aux futurs domaines de Grands Maîtres.
+
+Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).
