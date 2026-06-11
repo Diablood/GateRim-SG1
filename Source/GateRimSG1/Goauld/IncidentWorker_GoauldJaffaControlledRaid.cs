@@ -16,6 +16,46 @@ namespace GateRimSG1.Goauld
     {
         private const float DefaultControlledRaidPoints = 500f;
 
+        protected virtual string ControlledRaidPurpose
+        {
+            get
+            {
+                return "controlled Goa'uld Jaffa direct-assault tests";
+            }
+        }
+
+        protected virtual RaidStrategyDef ControlledRaidStrategy
+        {
+            get
+            {
+                return RaidStrategyDefOf.ImmediateAttack;
+            }
+        }
+
+        protected virtual bool ControlledRaidCanSteal
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        protected virtual bool ControlledRaidCanKidnap
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        protected virtual bool ControlledRaidCanTimeoutOrFlee
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             return parms?.target is Map
@@ -35,7 +75,7 @@ namespace GateRimSG1.Goauld
 
             Faction goauldFaction =
                 GoauldSystemLordFactionUtility.GetOrCreateHiddenFaction(
-                    "controlled Goa'uld Jaffa raid tests");
+                    ControlledRaidPurpose);
 
             if (goauldFaction == null)
             {
@@ -48,8 +88,10 @@ namespace GateRimSG1.Goauld
 
             parms.faction = goauldFaction;
             parms.forced = true;
-            parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
-            parms.canSteal = false;
+            parms.raidStrategy = ControlledRaidStrategy;
+            parms.canSteal = ControlledRaidCanSteal;
+            parms.canKidnap = ControlledRaidCanKidnap;
+            parms.canTimeoutOrFlee = ControlledRaidCanTimeoutOrFlee;
 
             if (!(parms.points > 0f))
             {

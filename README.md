@@ -13,21 +13,25 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.70-dev — Add explicit Goa'uld controlled-raid strategy
+### 0.1.71-dev — Add controlled Goa'uld Jaffa abduction raid
 
-The developer-only controlled Goa'uld Jaffa raid now assigns the vanilla
-`RaidStrategyDefOf.ImmediateAttack` strategy explicitly before delegating to
-RimWorld's raid worker.
+A second developer-only controlled raid incident now exercises a dedicated
+Goa'uld abduction doctrine.
 
-Gameplay behavior remains unchanged: test groups attack immediately. The
-explicit assignment removes the vanilla fallback warning:
+During the capture window:
 
-```text
-No raid strategy found, defaulting to ImmediateAttack.
-```
+- Jaffa with nearby safe downed colonists attempt to kidnap them;
+- unassigned Jaffa continue normal `AssaultColony` combat duties;
+- new victims are reevaluated periodically.
 
-The incident still has a storyteller base chance of `0`. Natural Goa'uld
-raids, settlements and traders remain disabled.
+After `2400` ticks, the surviving group switches to extraction and leaves
+the map with or without victims.
+
+The existing controlled direct-assault incident now explicitly disables both
+stealing and kidnapping so it remains a pure sustained-combat baseline.
+
+Both incidents keep storyteller base chance `0`. Natural Goa'uld raids,
+settlements and traders remain disabled.
 
 ## Next maintenance focus
 

@@ -234,6 +234,13 @@ Depuis `0.1.70-dev`, il utilise explicitement la stratégie vanilla
 `ImmediateAttack`, afin d'éviter le fallback du générateur de raids tout en
 conservant le même comportement d'assaut direct.
 
+Depuis `0.1.71-dev`, un second incident contrôlé teste une doctrine
+d'enlèvement : certains Jaffa évacuent les colons à terre tandis que les
+autres continuent le combat, puis le groupe se replie après une fenêtre
+limitée.
+
+Consulte [Raid d'enlèvement Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid).
+
 Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
 
 ## Ce qui n'est pas encore implémenté

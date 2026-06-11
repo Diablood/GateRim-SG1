@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Dedicated developer-test raid strategy.
+    Its selection curve remains zero so normal raid strategy resolution
+    never selects it naturally.
+    -->
+    <RaidStrategyDef>
+        <defName>SG1_GoauldJaffaAbductionAssault</defName>
+        <workerClass>GateRimSG1.Goauld.RaidStrategyWorker_GoauldJaffaAbductionAssault</workerClass>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 0)</li>
+                <li>(10000, 0)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+        </arriveModes>
+        <arrivalTextEnemy>Jaffa serving a Goa'uld System Lord are attempting to seize colonists. Some will cover the attack while others extract downed victims.</arrivalTextEnemy>
+        <arrivalTextFriendly>Jaffa serving a Goa'uld System Lord are attempting to seize colonists.</arrivalTextFriendly>
+        <letterLabelEnemy>Goa'uld Jaffa abduction raid</letterLabelEnemy>
+        <letterLabelFriendly>Goa'uld Jaffa abduction raid</letterLabelFriendly>
+    </RaidStrategyDef>
+</Defs>

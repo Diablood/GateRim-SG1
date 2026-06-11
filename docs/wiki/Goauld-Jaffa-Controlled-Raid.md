@@ -58,3 +58,12 @@ Le parcours contrôlé permet de vérifier :
 
 Les raids naturels, colonies et marchands Goa'uld restent désactivés. Les
 visuels d'armure sont encore temporaires.
+
+## Séparation des doctrines
+
+Depuis `0.1.71-dev`, ce raid d'assaut contrôlé désactive explicitement le vol
+et l'enlèvement. Il sert de référence pour tester un combat prolongé.
+
+La doctrine d'enlèvement possède son propre incident développeur :
+
+[Raid d'enlèvement Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid).

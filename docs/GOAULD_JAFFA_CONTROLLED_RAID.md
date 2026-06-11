@@ -127,3 +127,16 @@ this transition is intentionally disabled for the test raid only.
 Timeout and flee behavior remain vanilla. Kidnapping behavior is not changed by
 this patch and can be reviewed separately as a lore and balance decision before
 natural Goa'uld raids are enabled.
+
+## Direct-assault kidnapping policy
+
+Since `0.1.71-dev`, the direct-assault test incident explicitly disables
+kidnapping as well as stealing:
+
+```csharp
+parms.canSteal = false;
+parms.canKidnap = false;
+```
+
+This keeps the existing incident focused on sustained combat. The separate
+controlled abduction incident validates kidnapping behavior independently.

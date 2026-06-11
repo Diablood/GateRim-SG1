@@ -62,6 +62,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Loadouts automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle créant une faction hostile cachée réelle et réutilisant le workflow vanilla de raid | 0.1.69-dev |
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans fallback ni activation des raids naturels | 0.1.70-dev |
+| Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |
 
 ## Prévu
 
