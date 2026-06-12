@@ -13,45 +13,42 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.81-dev — Add SG tactical vest prototype
+### 0.1.82-dev — Add black and desert SG-team uniform variants
 
-The fourth modular SG-team field-equipment item is now available:
-
-```text
-SG1_SGTacticalVest
-```
-
-The prototype represents a black load-bearing tactical vest worn over the
-olive-drab SG-team field uniform. It uses the `Middle` apparel layer, covers
-the torso and shoulders, and remains compatible with the separate tactical
-boots and gloves because they protect different body-part groups.
-
-The vest:
-
-- adds modest protection without becoming heavy body armor;
-- keeps enough mobility for exploration and extended field operations;
-- is craftable at the vanilla hand and electric tailoring benches;
-- costs `30` plain leather and `35` cloth;
-- requires `Crafting 4`;
-- reuses the dedicated `SG teams` apparel category;
-- includes temporary body-type and facing-specific graphics.
-
-The first generic SG-team field-equipment baseline is now complete:
+Two visual alternatives now complement the standard olive-drab SG-team field
+uniform:
 
 ```text
-SG-team field uniform
-SG tactical boots
-SG tactical gloves
-SG tactical vest
+SG1_BlackSGTeamUniform
+SG1_DesertSGTeamUniform
 ```
+
+The three uniforms intentionally share the same gameplay statistics, crafting
+cost, `OnSkin` layer and body-part coverage:
+
+```text
+olive-drab -> standard field uniform
+black      -> tactical and low-visibility missions
+desert     -> arid missions
+```
+
+The choice is aesthetic and narrative rather than mechanical. The existing
+tactical boots, gloves and vest remain shared modular equipment for all three
+uniforms.
+
+A forest-camouflage variant is intentionally omitted for now because its
+small RimWorld sprite would be too close to the existing olive-drab baseline.
+A sand-colored tactical-vest variant remains optional and should be considered
+only after the desert uniform has been reviewed in game with the existing
+black vest.
 
 Natural Goa'uld raids, settlements and traders remain disabled.
 
 ## Next development focus
 
-- validate the full four-piece SG-team field set in game;
-- review the remaining pre-0.2 roadmap before adding environment-specific or
-  role-specific uniform variants;
+- validate black and desert rendering across body types and facings;
+- review the desert uniform together with the existing black tactical vest;
+- add a sand-colored vest only if the contrast is visually distracting;
 - keep final art and semi-realistic wiki concept art as a later dedicated
   visual-production pass.
 
@@ -78,6 +75,8 @@ Natural Goa'uld raids, settlements and traders remain disabled.
 - [x] SG-team field uniform prototype
 - [x] SG tactical boots prototype
 - [x] SG tactical gloves prototype
+- [x] SG tactical vest prototype
+- [x] Black and desert SG-team uniform variants
 
 ## Development notes
 

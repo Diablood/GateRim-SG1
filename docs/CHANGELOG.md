@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.82-dev — Add black and desert SG-team uniform variants
+
+- Add `SG1_BlackSGTeamUniform`.
+- Add `SG1_DesertSGTeamUniform`.
+- Keep both variants purely visual with the same protection, cost, coverage and crafting requirements as `SG1_GenericSGTeamUniform`.
+- Reuse the dedicated `SG1_SGTeamApparel` category and existing modular tactical boots, gloves and vest.
+- Add temporary black and desert inventory graphics, facing-specific graphics and body-type-specific graphics by recoloring the validated olive-drab baseline.
+- Keep a forest-camouflage variant intentionally omitted because it would remain too visually close to the olive-drab sprite at RimWorld scale.
+- Keep a sand-colored tactical-vest variant optional pending an in-game visual review.
+- Add French translations, technical documentation and player-wiki drafts.
+
 ## 0.1.81-dev — Add SG tactical vest prototype
 
 - Add `SG1_SGTacticalVest`.

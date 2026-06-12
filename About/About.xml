@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.81-dev</modVersion>
+    <modVersion>0.1.82-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -77,6 +77,7 @@ Current development scope:
 - Separate SG tactical-boots prototype with lightweight foot protection
 - Separate SG tactical-gloves prototype with lightweight hand protection
 - Separate SG tactical-vest prototype with modest torso and shoulder protection
+- Black and desert SG-team field-uniform visual variants
 - Vanilla weapon-tag Ma'Tok loadout for generated Goa'uld-aligned Jaffa servants
 - Modular Jaffa armor prototypes with localized hand, finger, foot and toe protection
 - Persistent retractable Jaffa helmet modes with automatic drafted deployment

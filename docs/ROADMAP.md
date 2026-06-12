@@ -29,7 +29,7 @@
 - [x] Add SG tactical boots prototype.
 - [x] Add SG tactical gloves prototype.
 - [x] Add a first SG tactical vest or visual equipment layer.
-- [ ] Plan later uniform variants for roles and environments: standard SGC, desert, forest, heavy tactical, medical and scientific.
+- [x] Add black and desert SG-team field-uniform variants. Keep forest camouflage omitted unless a stronger visual need emerges. Reserve heavy tactical, medical and scientific variants for later.
 
 ### Interface and debug cleanup before 0.2.x
 
@@ -800,3 +800,15 @@
 - [x] Complete the first generic four-piece SG-team field-equipment baseline
 - [ ] Validate visuals and compatibility in game
 - [ ] Review the remaining pre-0.2 roadmap before adding variants
+
+
+## 0.1.82-dev — Black and desert SG-team uniform variants
+
+- [x] Add a black SG-team field-uniform variant
+- [x] Add a desert SG-team field-uniform variant
+- [x] Keep both variants mechanically identical to the olive-drab baseline
+- [x] Reuse the existing SG-team apparel category and modular accessories
+- [x] Recolor the validated temporary body-type and facing-specific graphics
+- [x] Omit forest camouflage for now because it would be too close to olive-drab at RimWorld scale
+- [ ] Validate black and desert visuals in game
+- [ ] Decide after testing whether a desert tactical-vest variant is actually needed

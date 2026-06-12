@@ -45,5 +45,12 @@ Les ajouts suivants resteront modulaires :
 - [gants tactiques SG](SG-Tactical-Gloves) ;
 - [gilet tactique SG](SG-Tactical-Vest).
 
-Des variantes noires, forêt, désert, médicales et scientifiques pourront être
-ajoutées ultérieurement après validation de cette base.
+Deux variantes visuelles sont disponibles depuis `0.1.82-dev` :
+
+- [treillis noir d'équipe SG](SG-Team-Uniform-Variants) ;
+- [treillis désert d'équipe SG](SG-Team-Uniform-Variants).
+
+Le camouflage forêt est volontairement omis pour le moment : à l'échelle des
+sprites RimWorld, il resterait trop proche du vert olive standard. Les futures
+variantes médicales, scientifiques ou tactiques lourdes ne seront ajoutées
+qu'avec un besoin clair.

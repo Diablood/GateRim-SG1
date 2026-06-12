@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Purely visual SG-team field-uniform variants.
+    Statistics, coverage, crafting cost and layer intentionally match the
+    existing olive-drab SG1_GenericSGTeamUniform.
+    -->
+    <ThingDef ParentName="ApparelMakeableBase">
+        <defName>SG1_BlackSGTeamUniform</defName>
+        <label>black SG-team field uniform</label>
+        <description>A black variant of the SG-team field uniform suited to tactical and low-visibility missions. It uses the same lightweight jacket-and-trousers construction as the standard olive-drab treillis. The difference is visual rather than mechanical.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamUniformBlack/SGTeamUniformBlack</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.06</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>80</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>6000</WorkToMake>
+            <MaxHitPoints>130</MaxHitPoints>
+            <Mass>1.6</Mass>
+            <Flammability>1</Flammability>
+            <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.04</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.10</ArmorRating_Heat>
+            <EquipDelay>2</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Shoulders</li>
+                <li>Arms</li>
+                <li>Legs</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamUniformBlack/SGTeamUniformBlack</wornGraphicPath>
+            <layers>
+                <li>OnSkin</li>
+            </layers>
+            <tags>
+                <li>IndustrialAdvanced</li>
+                <li>SG1_SGTeamUniform</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Worker</li>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ApparelMakeableBase">
+        <defName>SG1_DesertSGTeamUniform</defName>
+        <label>desert SG-team field uniform</label>
+        <description>A sand-colored variant of the SG-team field uniform suited to arid missions. It uses the same lightweight jacket-and-trousers construction as the standard olive-drab treillis. The difference is visual rather than mechanical.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamUniformDesert/SGTeamUniformDesert</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.06</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>80</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>6000</WorkToMake>
+            <MaxHitPoints>130</MaxHitPoints>
+            <Mass>1.6</Mass>
+            <Flammability>1</Flammability>
+            <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.04</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.10</ArmorRating_Heat>
+            <EquipDelay>2</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Shoulders</li>
+                <li>Arms</li>
+                <li>Legs</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamUniformDesert/SGTeamUniformDesert</wornGraphicPath>
+            <layers>
+                <li>OnSkin</li>
+            </layers>
+            <tags>
+                <li>IndustrialAdvanced</li>
+                <li>SG1_SGTeamUniform</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Worker</li>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>

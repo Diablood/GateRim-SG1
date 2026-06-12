@@ -13,6 +13,7 @@
 - [Bâton Ma'Tok](Matok-Staff)
 - [Zat'nik'tel](ZatnikTel)
 - [Treillis d'équipe SG](SG-Team-Uniform)
+- [Variantes du treillis SG](SG-Team-Uniform-Variants)
 - [Bottes tactiques SG](SG-Tactical-Boots)
 - [Gants tactiques SG](SG-Tactical-Gloves)
 - [Gilet tactique SG](SG-Tactical-Vest)
