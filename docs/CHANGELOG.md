@@ -5,6 +5,8 @@
 - Add a persistent GateRim SG-1 mod setting for optional advanced debug information.
 - Keep RimWorld developer mode as an automatic override for advanced diagnostics.
 - Gate routine `GR_Log.Message(...)` lifecycle traces behind advanced diagnostics.
+- Route informational lifecycle traces directly to `Player.log` so they do not enter RimWorld's in-game log queue or auto-open an error-looking popup.
+- Reclassify expected Tok'ra incident refusals as informational traces when a forced developer test has no eligible patient, an active wary cooldown, an insufficient trust tier or no valid map-edge entry cell.
 - Keep `GR_Log.Warning(...)`, `GR_Log.Error(...)` and their `Once` variants always visible.
 - Hide raw free-symbiote IDs and autonomous cooldown ticks from normal inspection panels.
 - Hide the Goa'uld queen raw extraction cooldown outside advanced diagnostics.

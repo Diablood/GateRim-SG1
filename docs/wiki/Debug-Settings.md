@@ -25,10 +25,15 @@ les rituels actifs.
 
 Les informations techniques supplémentaires réapparaissent dans les panneaux
 d'inspection. Les traces détaillées `GR_Log.Message(...)` sont également
-écrites dans `Player.log`.
+écrites directement dans `Player.log`.
 
-Le mode développeur de RimWorld active automatiquement ces diagnostics, même
-si l'option du mod est désactivée.
+Ces traces informatives n'entrent pas dans la fenêtre de journal interne de
+RimWorld et ne doivent donc pas ouvrir de popup ressemblant à une erreur. Cela
+inclut les refus normaux d'un incident Tok'ra forcé pour un test, par exemple
+l'absence de colon malade admissible ou un palier de confiance insuffisant.
+
+Le mode développeur de RimWorld active automatiquement les diagnostics
+avancés, même si l'option du mod est désactivée.
 
 ## Avertissements et erreurs
 

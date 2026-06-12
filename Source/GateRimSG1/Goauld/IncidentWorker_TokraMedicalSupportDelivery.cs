@@ -75,7 +75,7 @@ namespace GateRimSG1.Goauld
 
             if (!IsEligibleTier(trustTier))
             {
-                GR_Log.Warning(
+                GR_Log.Message(
                     "Cannot start the Tok'ra medical-support delivery: "
                     + $"the current {GetTierLogLabel(trustTier)} trust tier "
                     + $"({trustScore}) has not unlocked independent "
@@ -108,7 +108,7 @@ namespace GateRimSG1.Goauld
 
             if (!TryFindEntryCell(map, out entryCell))
             {
-                GR_Log.Warning(
+                GR_Log.Message(
                     "Cannot start the Tok'ra medical-support delivery: no "
                     + "reachable unfogged map-edge entry cell was found.");
                 return false;

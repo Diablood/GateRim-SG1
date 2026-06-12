@@ -28,15 +28,26 @@ GR_Log.ErrorOnce("...", key);
 
 ## Visibility since 0.1.75-dev
 
-`GR_Log.Message(...)` is intended for routine lifecycle traces. It is emitted
-only when RimWorld developer mode is active or the player enables:
+`GR_Log.Message(...)` is intended for routine lifecycle traces. It is written
+directly to Unity's `Player.log` only when RimWorld developer mode is active
+or the player enables:
 
 ```text
 Show advanced GateRim SG-1 debug information
 ```
 
-Warnings, errors and their `Once` variants always remain visible in
-`Player.log`.
+It deliberately bypasses `Verse.Log.Message(...)`. This prevents routine
+informational traces from entering RimWorld's in-game log queue and opening
+an error-looking popup when `Log.openOnMessage` is active.
+
+Warnings, errors and their `Once` variants continue to use the normal
+`Verse.Log` channel and always remain visible in `Player.log`.
+
+Expected incident precondition failures are not warnings. For example, a
+developer-forced Tok'ra opportunity without an eligible sick colon, an active
+wary diplomatic cooldown, an insufficient trust tier or an unavailable
+map-edge entry cell are routine refusal diagnostics and use
+`GR_Log.Message(...)`.
 
 ## Rules
 

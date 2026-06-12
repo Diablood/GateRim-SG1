@@ -5,9 +5,12 @@ namespace GateRimSG1
     /// <summary>
     /// Centralized logging helper for GateRim SG-1.
     ///
-    /// Informational lifecycle traces are visible only with RimWorld developer
-    /// mode or the dedicated GateRim advanced-debug option. Warnings and
-    /// errors always remain visible in Player.log.
+    /// Informational lifecycle traces are written directly to Player.log only
+    /// while RimWorld developer mode or the dedicated GateRim advanced-debug
+    /// option is enabled. They intentionally bypass Verse.Log.Message so
+    /// routine diagnostics cannot auto-open RimWorld's in-game log window.
+    ///
+    /// Warnings and errors continue to use Verse.Log and always remain visible.
     /// </summary>
     public static class GR_Log
     {
@@ -20,7 +23,7 @@ namespace GateRimSG1
                 return;
             }
 
-            Log.Message(Prefix + " " + message);
+            UnityEngine.Debug.Log(Prefix + " " + message);
         }
 
         public static void Warning(string message)

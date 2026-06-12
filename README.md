@@ -32,9 +32,11 @@ Temporary Tok'ra therapeutic offers remain readable during normal gameplay,
 but show only the trust tier. The underlying numeric trust score remains
 available through advanced diagnostics.
 
-Routine `GR_Log.Message(...)` lifecycle traces are now emitted only while
-advanced diagnostics are visible. Warnings and errors always remain in
-`Player.log`.
+Routine `GR_Log.Message(...)` lifecycle traces are now written directly to
+`Player.log` only while advanced diagnostics are visible. They bypass
+RimWorld's in-game log queue so informational traces cannot open an
+error-looking popup. Warnings and errors always remain visible through the
+normal RimWorld log channel.
 
 Developer-only prototype commands remain tied to RimWorld developer mode.
 Gameplay mechanics validated through `0.1.74-dev` are unchanged.

@@ -35,7 +35,8 @@ Warnings and errors in `Player.log` remain visible regardless of this rule.
 | Raw Tok'ra trust score | GateRim debug | Numeric implementation detail |
 | Active Goa'uld ritual target, basin and remaining ticks | Contextual | Useful while the ceremony is active |
 | Goa'uld queen raw extraction cooldown ticks | GateRim debug | Developer-only prototype source |
-| Routine `GR_Log.Message(...)` lifecycle traces | GateRim debug | Useful during tests, noisy for normal players |
+| Routine `GR_Log.Message(...)` lifecycle traces | GateRim debug, `Player.log` only | Useful during tests; must not enter RimWorld's in-game log queue or open an error-looking popup |
+| Expected Tok'ra incident refusal during a forced test | GateRim debug, `Player.log` only | Missing eligible patient, active wary cooldown, insufficient trust tier or unavailable entry cell are normal precondition failures, not warnings |
 | `GR_Log.Warning(...)` and `GR_Log.Error(...)` | Always logged | Required for troubleshooting |
 | Jaffa forehead-mark assignment actions | RimWorld dev mode | Regression and scenario test utility |
 | Queen immature-symbiote extraction command | RimWorld dev mode | Explicit developer-only prototype |

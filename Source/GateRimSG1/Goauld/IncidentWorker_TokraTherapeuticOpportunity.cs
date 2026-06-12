@@ -76,7 +76,7 @@ namespace GateRimSG1.Goauld
                     = GameComponent_TokraTrustTracker
                         .GetRemainingWaryDiplomaticCooldownDays();
 
-                GR_Log.Warning(
+                GR_Log.Message(
                     "Cannot start the escorted Tok'ra therapeutic "
                     + "opportunity: the wary diplomatic cooldown remains "
                     + $"active for {remainingTicks} tick(s) "
@@ -88,7 +88,7 @@ namespace GateRimSG1.Goauld
 
             if (candidate == null)
             {
-                GR_Log.Warning(
+                GR_Log.Message(
                     "Cannot start the escorted Tok'ra therapeutic "
                     + "opportunity: no eligible sick player-controlled "
                     + "humanoid was found. "
@@ -122,7 +122,7 @@ namespace GateRimSG1.Goauld
 
             if (!TryFindEntryCell(map, out entryCell))
             {
-                GR_Log.Warning(
+                GR_Log.Message(
                     "Cannot start the escorted Tok'ra therapeutic "
                     + "opportunity: no reachable unfogged map-edge entry "
                     + "cell was found.");
