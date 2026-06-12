@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    SG-team tactical vest prototype.
+    The Middle-layer vest complements the OnSkin field uniform while
+    remaining compatible with separate Middle-layer boots and gloves because
+    they cover different body-part groups.
+    -->
+    <ThingDef ParentName="ApparelMakeableBase">
+        <defName>SG1_SGTacticalVest</defName>
+        <label>SG tactical vest</label>
+        <description>A black load-bearing tactical vest intended for SG-team field operations. It adds modest protection for the torso and shoulders while keeping enough mobility for exploration and extended missions. The vest remains a separate modular item compatible with the SG-team field uniform, tactical boots and tactical gloves.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTacticalVest/SGTacticalVest</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.07</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Leather_Plain>30</Leather_Plain>
+            <Cloth>35</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>5200</WorkToMake>
+            <MaxHitPoints>160</MaxHitPoints>
+            <Mass>2.4</Mass>
+            <Flammability>0.70</Flammability>
+            <ArmorRating_Sharp>0.28</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.14</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.10</ArmorRating_Heat>
+            <EquipDelay>2.5</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Shoulders</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTacticalVest/SGTacticalVest</wornGraphicPath>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <tags>
+                <li>SG1_SGTacticalVest</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>

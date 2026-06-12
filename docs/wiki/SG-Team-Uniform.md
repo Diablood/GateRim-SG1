@@ -43,7 +43,7 @@ Les ajouts suivants resteront modulaires :
 
 - [bottes tactiques SG](SG-Tactical-Boots) ;
 - [gants tactiques SG](SG-Tactical-Gloves) ;
-- gilet tactique SG.
+- [gilet tactique SG](SG-Tactical-Vest).
 
 Des variantes noires, forêt, désert, médicales et scientifiques pourront être
 ajoutées ultérieurement après validation de cette base.

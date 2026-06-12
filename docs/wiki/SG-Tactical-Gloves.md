@@ -40,7 +40,7 @@ avec le [treillis d'équipe SG](SG-Team-Uniform) et les
 
 Le prochain ajout modulaire prévu est :
 
-- gilet tactique SG.
+- [gilet tactique SG](SG-Tactical-Vest).
 
 Les visuels définitifs et les concept arts semi-réalistes destinés au wiki
 seront produits lors d'une future passe graphique dédiée.

@@ -28,7 +28,7 @@
 - [x] Add an SG-team field uniform prototype.
 - [x] Add SG tactical boots prototype.
 - [x] Add SG tactical gloves prototype.
-- [ ] Add a first SG tactical vest or visual equipment layer.
+- [x] Add a first SG tactical vest or visual equipment layer.
 - [ ] Plan later uniform variants for roles and environments: standard SGC, desert, forest, heavy tactical, medical and scientific.
 
 ### Interface and debug cleanup before 0.2.x
@@ -787,3 +787,16 @@
 - [x] Add temporary inventory and body-type-specific graphics
 - [ ] Validate visuals and compatibility in game
 - [ ] Add SG tactical vest as a separate modular item
+
+
+## 0.1.81-dev — SG tactical vest prototype
+
+- [x] Add separate SG tactical-vest apparel Def
+- [x] Reuse the SG-team apparel category
+- [x] Keep the vest compatible with the OnSkin field uniform and limb-specific Middle-layer equipment
+- [x] Cover torso and shoulders with moderate protection
+- [x] Add vanilla hand and electric tailoring-bench recipes
+- [x] Add temporary inventory and body-type-specific graphics
+- [x] Complete the first generic four-piece SG-team field-equipment baseline
+- [ ] Validate visuals and compatibility in game
+- [ ] Review the remaining pre-0.2 roadmap before adding variants

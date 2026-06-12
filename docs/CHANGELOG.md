@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.81-dev — Add SG tactical vest prototype
+
+- Add `SG1_SGTacticalVest`.
+- Keep the vest separate from the SG-team field uniform, tactical boots and tactical gloves.
+- Reuse the dedicated `SG1_SGTeamApparel` category.
+- Cover `Torso` and `Shoulders` on the `Middle` layer so the vest remains compatible with the `OnSkin` field uniform and limb-specific SG equipment.
+- Add modest torso and shoulder protection without turning the load-bearing vest into heavy armor.
+- Add crafting recipes for the vanilla hand and electric tailoring benches.
+- Require `30` plain leather, `35` cloth and `Crafting 4`.
+- Add temporary inventory, facing-specific and body-type-specific graphics.
+- Complete the first generic four-piece SG-team field-equipment baseline.
+- Add French translation, technical documentation and player-wiki drafts.
+
 ## 0.1.80-dev — Add SG tactical gloves prototype
 
 - Add `SG1_SGTacticalGloves`.

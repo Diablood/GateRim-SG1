@@ -13,31 +13,35 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.80-dev — Add SG tactical gloves prototype
+### 0.1.81-dev — Add SG tactical vest prototype
 
-The next modular SG-team equipment item is now available:
+The fourth modular SG-team field-equipment item is now available:
 
 ```text
-SG1_SGTacticalGloves
+SG1_SGTacticalVest
 ```
 
-The prototype represents durable black tactical gloves intended for field
-operations. They remain separate from the SG-team field uniform and SG
-tactical boots, and use the `Middle` apparel layer so the current modular set
-can be worn together.
+The prototype represents a black load-bearing tactical vest worn over the
+olive-drab SG-team field uniform. It uses the `Middle` apparel layer, covers
+the torso and shoulders, and remains compatible with the separate tactical
+boots and gloves because they protect different body-part groups.
 
-The gloves:
+The vest:
 
-- protect hands and fingers without becoming armored gauntlets;
-- remain lighter than Jaffa gauntlets;
-- are craftable at the vanilla hand and electric tailoring benches;
-- cost `20` plain leather and `8` cloth;
-- reuse the dedicated `SG teams` apparel category;
-- include temporary body-type and facing-specific graphics.
+- adds modest protection without becoming heavy body armor;
+- keeps enough mobility for exploration and extended field operations;
+- is craftable at the vanilla hand and electric tailoring benches;
+- costs `30` plain leather and `35` cloth;
+- requires `Crafting 4`;
+- reuses the dedicated `SG teams` apparel category;
+- includes temporary body-type and facing-specific graphics.
 
-The following modular SG-team item remains a separate planned milestone:
+The first generic SG-team field-equipment baseline is now complete:
 
 ```text
+SG-team field uniform
+SG tactical boots
+SG tactical gloves
 SG tactical vest
 ```
 
@@ -45,9 +49,11 @@ Natural Goa'uld raids, settlements and traders remain disabled.
 
 ## Next development focus
 
-- validate rendering with the SG-team field uniform and boots;
-- validate crafting and apparel-layer compatibility;
-- add the SG tactical vest as the next modular equipment item.
+- validate the full four-piece SG-team field set in game;
+- review the remaining pre-0.2 roadmap before adding environment-specific or
+  role-specific uniform variants;
+- keep final art and semi-realistic wiki concept art as a later dedicated
+  visual-production pass.
 
 ## First playable milestone
 
