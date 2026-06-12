@@ -39,18 +39,20 @@ disponible du contenu encore en développement.
   [opportunités thérapeutiques](Tokra-Therapeutic-Opportunity),
   [confiance](Tokra-Trust) et [livraisons médicales](Tokra-Medical-Support-Deliveries).
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
+- [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario) : premier départ de partie jouable sans Porte fonctionnelle.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
 - [Réglages de debug avancés](Debug-Settings) : diagnostics techniques optionnels pour les tests et le dépannage.
 
 ## Prochain développement majeur
 
-Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : création des premiers domaines nommés, attribution
-explicite des rangs supérieurs, variantes visuelles propres aux Grands Maîtres,
-puis activation progressive des raids naturels et de la présence mondiale.
-Les serviteurs Jaffa générés reçoivent déjà automatiquement un Prim'ta initial,
-un bâton Ma'Tok, leur ensemble d'armure modulaire et une marque frontale noire
-intrinsèque persistante.
+La phase `0.2.x` transforme désormais les prototypes techniques en une tranche
+jouable sans Porte fonctionnelle. Le premier scénario
+[Équipe SG isolée](Stranded-SG-Team-Scenario) est disponible.
+
+Les prochains lots activeront progressivement la présence mondiale Goa'uld,
+les raids naturels prudents, les Jaffa libres, la présence Tok'ra et
+l'acquisition normale des objets Stargate. La Porte des étoiles fonctionnelle
+appartiendra à la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

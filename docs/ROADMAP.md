@@ -49,7 +49,12 @@
 
 ### New chapter
 
-- [ ] Start `0.2.x` with a Stargate-foundation prototype after the cleanup and equipment baseline.
+- [x] Close `0.1.x` as the mechanical-foundation phase.
+- [x] Start `0.2.x` as the playable no-gate phase with a stranded SG-team starter scenario.
+- [ ] Add a playable Goa'uld world-faction baseline.
+- [ ] Add a Free Jaffa world-faction baseline.
+- [ ] Consolidate Tok'ra world presence and non-developer acquisition loops.
+- [ ] Start `0.3.x` with the Stargate foundation only after the no-gate slice is playable.
 
 ## Completed milestones
 
@@ -812,3 +817,28 @@
 - [x] Omit forest camouflage for now because it would be too close to olive-drab at RimWorld scale
 - [ ] Validate black and desert visuals in game
 - [ ] Decide after testing whether a desert tactical-vest variant is actually needed
+
+
+## 0.2.0-dev — Stranded SG-team starter scenario
+
+- [x] Add a selectable stranded SG-team scenario
+- [x] Generate four adult player starters
+- [x] Dress starter pawns automatically with the olive-drab four-piece SG-team set
+- [x] Add temporary vanilla Tau'ri firearms as distributable supplies
+- [x] Add four cloth bedrolls
+- [x] Add emergency food, medicine and resource crates
+- [x] Avoid preconstructed workshops
+- [x] Keep the Stargate unusable in the scenario narrative
+- [ ] Validate scenario selection and new-game start in RimWorld
+- [ ] Continue with the playable Goa'uld world-faction baseline
+
+
+## 0.2.0-dev-r1 — Refine stranded SG-team starter scenario
+
+- [x] Add a dedicated SGC expedition player faction
+- [x] Reduce pawn selection to four candidates for four slots
+- [x] Reject starters incapable of violence
+- [x] Resolve the translated narrative visibly in the scenario editor
+- [x] Open the translated narrative reliably at map start
+- [ ] Validate the refined scenario in RimWorld
+- [ ] Add an optional SG-team helmet as a separate equipment milestone

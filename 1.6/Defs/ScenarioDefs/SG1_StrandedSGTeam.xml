@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ScenarioDef>
+        <defName>SG1_StrandedSGTeam</defName>
+        <label>stranded SG team</label>
+        <description>A four-member SG team must establish a camp after a failed off-world mission left the local Stargate unusable.</description>
+        <scenario>
+            <name>Stranded SG team</name>
+            <summary>Four SG-team members stranded on an alien world with field equipment, weapons, bivouac gear and recovered supply crates.</summary>
+            <description>A reconnaissance mission went wrong. The local Stargate became unusable before your extraction and contact with the SGC is impossible. Your four-member SG team recovered its field equipment, bivouac gear and several emergency-supply crates. Establish a camp, survive and prepare for the local powers that may already control this world.</description>
+            <playerFaction Class="ScenPart_PlayerFaction">
+                <def>PlayerFaction</def>
+                <factionDef>SG1_PlayerSGCExpedition</factionDef>
+            </playerFaction>
+            <surfaceLayer Class="ScenPart_PlanetLayer">
+                <def>PlanetLayerFixed</def>
+                <layer>Surface</layer>
+                <settingsDef>Surface</settingsDef>
+                <hide>true</hide>
+                <tag>Surface</tag>
+            </surfaceLayer>
+            <parts>
+                <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+                    <def>ConfigPage_ConfigureStartingPawns</def>
+                    <pawnCount>4</pawnCount>
+                    <pawnChoiceCount>4</pawnChoiceCount>
+                    <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+                </li>
+                <li Class="GateRimSG1.Scenarios.ScenPart_SGTeamStartingGear">
+                    <def>SG1_StrandedSGTeamStartingGear</def>
+                    <uniform>SG1_GenericSGTeamUniform</uniform>
+                    <boots>SG1_SGTacticalBoots</boots>
+                    <gloves>SG1_SGTacticalGloves</gloves>
+                    <vest>SG1_SGTacticalVest</vest>
+                </li>
+                <li Class="ScenPart_PlayerPawnsArriveMethod">
+                    <def>PlayerPawnsArriveMethod</def>
+                    <method>Standing</method>
+                </li>
+
+                <!-- Temporary Tau'ri weapons until dedicated SGC firearms exist. -->
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Gun_AssaultRifle</thingDef>
+                    <count>3</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Gun_PumpShotgun</thingDef>
+                    <count>1</count>
+                </li>
+
+                <!-- Bivouac equipment. -->
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Bedroll</thingDef>
+                    <stuff>Cloth</stuff>
+                    <count>4</count>
+                </li>
+
+                <!-- Recovered emergency-supply crates. -->
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MealSurvivalPack</thingDef>
+                    <count>30</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MedicineIndustrial</thingDef>
+                    <count>20</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Steel</thingDef>
+                    <count>300</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>WoodLog</thingDef>
+                    <count>150</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>ComponentIndustrial</thingDef>
+                    <count>20</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Cloth</thingDef>
+                    <count>120</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Leather_Plain</thingDef>
+                    <count>80</count>
+                </li>
+
+                <li Class="GateRimSG1.Scenarios.ScenPart_TranslatedGameStartDialog">
+                    <def>GameStartDialog</def>
+                    <textKey>GR_StrandedSGTeam_GameStartDialog</textKey>
+                    <closeSound>GameStartSting</closeSound>
+                </li>
+            </parts>
+        </scenario>
+    </ScenarioDef>
+</Defs>

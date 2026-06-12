@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_PlayerSGCExpedition.label>expédition du SGC</SG1_PlayerSGCExpedition.label>
+    <SG1_PlayerSGCExpedition.description>Expédition hors-monde isolée du SGC contrainte d'établir un avant-poste de terrain après avoir perdu l'accès à sa Porte des étoiles locale.</SG1_PlayerSGCExpedition.description>
+    <SG1_PlayerSGCExpedition.pawnSingular>membre d'équipe SG</SG1_PlayerSGCExpedition.pawnSingular>
+    <SG1_PlayerSGCExpedition.pawnsPlural>membres d'équipe SG</SG1_PlayerSGCExpedition.pawnsPlural>
+    <SG1_PlayerSGCExpedition.leaderTitle>chef d'équipe</SG1_PlayerSGCExpedition.leaderTitle>
+</LanguageData>

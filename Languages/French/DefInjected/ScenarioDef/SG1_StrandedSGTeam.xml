@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_StrandedSGTeam.label>équipe SG isolée</SG1_StrandedSGTeam.label>
+    <SG1_StrandedSGTeam.description>Une équipe SG de quatre membres doit établir un camp après l'échec d'une mission hors-monde ayant rendu la Porte des étoiles locale inutilisable.</SG1_StrandedSGTeam.description>
+    <SG1_StrandedSGTeam.scenario.name>Équipe SG isolée</SG1_StrandedSGTeam.scenario.name>
+    <SG1_StrandedSGTeam.scenario.summary>Quatre membres d'équipe SG isolés sur un monde extraterrestre avec leur équipement de terrain, des armes, du matériel de bivouac et des caisses de ravitaillement récupérées.</SG1_StrandedSGTeam.scenario.summary>
+    <SG1_StrandedSGTeam.scenario.description>Une mission de reconnaissance a mal tourné. La Porte des étoiles locale est devenue inutilisable avant votre extraction et tout contact avec le SGC est impossible. Votre équipe SG de quatre membres a récupéré son équipement de terrain, son matériel de bivouac et plusieurs caisses de ravitaillement d'urgence. Établissez un camp, survivez et préparez-vous à affronter les puissances locales qui contrôlent peut-être déjà ce monde.</SG1_StrandedSGTeam.scenario.description>
+</LanguageData>

@@ -15,6 +15,27 @@ GateRim SG-1
 
 Le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
 
+## Démarrer une première partie jouable
+
+Depuis `0.2.0-dev`, sélectionne le scénario :
+
+```text
+Équipe SG isolée
+```
+
+Ce scénario génère exactement quatre membres adultes d'équipe SG capables de
+se battre, déjà vêtus de leur treillis, de leurs bottes, de leurs gants et de
+leur gilet tactique. La faction joueur apparaît comme **expédition du SGC**.
+Le scénario ajoute également des armes vanilla temporaires, quatre sacs de
+couchage et plusieurs caisses de ravitaillement. Une introduction narrative
+doit s'ouvrir automatiquement au lancement de la carte.
+
+La Porte des étoiles locale est volontairement inutilisable dans cette
+première tranche jouable. Les factions mondiales Stargate seront activées
+progressivement pendant la phase `0.2.x`.
+
+Consulte [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario).
+
 ## Vérifier le contenu Jaffa
 
 1. Lance une nouvelle partie temporaire.

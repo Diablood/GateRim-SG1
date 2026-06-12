@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.82-dev</modVersion>
+    <modVersion>0.2.0-dev-r1</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -78,6 +78,8 @@ Current development scope:
 - Separate SG tactical-gloves prototype with lightweight hand protection
 - Separate SG tactical-vest prototype with modest torso and shoulder protection
 - Black and desert SG-team field-uniform visual variants
+- First playable stranded SG-team starter scenario without a functional Stargate
+- Scenario refinement: dedicated SGC expedition faction, four candidates, violence-capable starters and translated launch narrative
 - Vanilla weapon-tag Ma'Tok loadout for generated Goa'uld-aligned Jaffa servants
 - Modular Jaffa armor prototypes with localized hand, finger, foot and toe protection
 - Persistent retractable Jaffa helmet modes with automatic drafted deployment
@@ -91,7 +93,7 @@ Current development scope:
 - Developer map tools to assign or remove black, silver and gold forehead marks on any pawn
 - Data-driven Goa'uld System Lord domain identity foundation with rank-specific intrinsic-mark slots
 - Player-facing GateRim SG-1 setting for optional advanced diagnostic information
-- Natural Goa'uld raids, settlements and world presence planned later
+- Natural Goa'uld raids, settlements and world presence planned for the 0.2.x playable-slice phase
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

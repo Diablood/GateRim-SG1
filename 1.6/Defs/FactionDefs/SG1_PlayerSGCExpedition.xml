@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Player-facing faction for the stranded SG-team starter scenario.
+    It inherits the vanilla industrial player-faction foundation while using
+    SGC-specific identity text.
+    -->
+    <FactionDef ParentName="PlayerFactionBase">
+        <defName>SG1_PlayerSGCExpedition</defName>
+        <label>SGC expedition</label>
+        <description>An isolated off-world SGC expedition forced to establish a field outpost after losing access to its local Stargate.</description>
+        <isPlayer>true</isPlayer>
+        <basicMemberKind>Colonist</basicMemberKind>
+        <pawnSingular>SG-team member</pawnSingular>
+        <pawnsPlural>SG-team members</pawnsPlural>
+        <leaderTitle>team leader</leaderTitle>
+        <techLevel>Industrial</techLevel>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Civil</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+        <playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
+        <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+        <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+        <startingResearchTags>
+            <li>ClassicStart</li>
+        </startingResearchTags>
+        <apparelStuffFilter>
+            <thingDefs>
+                <li>Synthread</li>
+            </thingDefs>
+        </apparelStuffFilter>
+        <colorSpectrum>
+            <li>(0.16, 0.31, 0.47)</li>
+        </colorSpectrum>
+    </FactionDef>
+</Defs>

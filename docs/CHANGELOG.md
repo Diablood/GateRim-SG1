@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.0-dev-r1 — Refine stranded SG-team starter scenario
+
+- Add the dedicated player faction `SG1_PlayerSGCExpedition`.
+- Display the player faction as `SGC expedition` / `expédition du SGC` instead of vanilla `New Arrivals`.
+- Reduce the pawn-selection page from eight candidates to exactly four candidates for four starting slots.
+- Reject generated player starters that are incapable of violence.
+- Add `ScenPart_TranslatedGameStartDialog` so the narrative field resolves visibly in the scenario editor and the translated introduction opens reliably at map start.
+- Keep the SG-team helmet as a separate follow-up equipment milestone.
+- Update documentation and player-wiki drafts.
+
+## 0.2.0-dev — Add stranded SG-team starter scenario
+
+- Start the `0.2.x` playable-slice phase after the `0.1.x` mechanical-foundation phase.
+- Add the selectable `SG1_StrandedSGTeam` scenario.
+- Start with four adult player pawns and eight candidate pawns in the selection page.
+- Add `ScenPart_SGTeamStartingGear` to dress generated starters automatically with the validated olive-drab four-piece SG-team field set.
+- Keep temporary Tau'ri firearms as recoverable starting supplies: three vanilla assault rifles and one vanilla pump shotgun.
+- Add four cloth bedrolls as believable bivouac equipment.
+- Add emergency-supply crates represented by survival meals, industrial medicine, steel, wood, industrial components, cloth and plain leather.
+- Do not provide a preconstructed tailoring bench.
+- Keep Ma'Tok staffs, Zat'nik'tel sidearms, functional Stargates, world-faction activation and natural Goa'uld raids outside this first playable-slice milestone.
+- Add bilingual scenario text, French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.0`.
+
 ## 0.1.82-dev — Add black and desert SG-team uniform variants
 
 - Add `SG1_BlackSGTeamUniform`.

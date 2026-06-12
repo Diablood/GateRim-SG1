@@ -2,6 +2,7 @@
 
 - [Accueil](Home)
 - [Bien débuter](Getting-Started)
+- [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario)
 - [Installation et dépendances](Installation-and-Requirements)
 - [État du contenu](Content-Status)
 

@@ -13,44 +13,60 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.82-dev — Add black and desert SG-team uniform variants
+### 0.2.0-dev-r1 — Refine stranded SG-team starter scenario
 
-Two visual alternatives now complement the standard olive-drab SG-team field
-uniform:
-
-```text
-SG1_BlackSGTeamUniform
-SG1_DesertSGTeamUniform
-```
-
-The three uniforms intentionally share the same gameplay statistics, crafting
-cost, `OnSkin` layer and body-part coverage:
+GateRim SG-1 now opens its first playable no-gate phase with a selectable
+scenario:
 
 ```text
-olive-drab -> standard field uniform
-black      -> tactical and low-visibility missions
-desert     -> arid missions
+Stranded SG team
 ```
 
-The choice is aesthetic and narrative rather than mechanical. The existing
-tactical boots, gloves and vest remain shared modular equipment for all three
-uniforms.
+The player starts with four adult SG-team members after a failed off-world
+reconnaissance mission. The player faction is the dedicated `SGC expedition`
+identity rather than vanilla `New Arrivals`. The local Stargate is unusable and contact with the
+SGC is impossible.
 
-A forest-camouflage variant is intentionally omitted for now because its
-small RimWorld sprite would be too close to the existing olive-drab baseline.
-A sand-colored tactical-vest variant remains optional and should be considered
-only after the desert uniform has been reviewed in game with the existing
-black vest.
+Each generated starter pawn automatically wears:
 
-Natural Goa'uld raids, settlements and traders remain disabled.
+```text
+SG-team field uniform
+SG tactical boots
+SG tactical gloves
+SG tactical vest
+```
+
+The starting camp receives recovered field supplies rather than a
+preconstructed workshop:
+
+```text
+3 assault rifles
+1 pump shotgun
+4 cloth bedrolls
+30 packaged survival meals
+20 industrial medicine
+300 steel
+150 wood
+20 industrial components
+120 cloth
+80 plain leather
+```
+
+The vanilla firearms are temporary Tau'ri placeholders until dedicated SGC
+weapons are introduced. Ma'Tok staffs and Zat'nik'tel sidearms remain absent
+from the starter loadout so their future natural acquisition retains gameplay
+value.
+
+This milestone does not enable world factions, natural Goa'uld raids or a
+functional Stargate yet. Those become the next `0.2.x` playable-slice steps.
 
 ## Next development focus
 
-- validate black and desert rendering across body types and facings;
-- review the desert uniform together with the existing black tactical vest;
-- add a sand-colored vest only if the contrast is visually distracting;
-- keep final art and semi-realistic wiki concept art as a later dedicated
-  visual-production pass.
+- validate the dedicated SGC expedition identity, four-candidate selection
+  page and translated launch narrative without developer tools;
+- validate automatic SG-team apparel on all four starter pawns;
+- add the first playable Goa'uld world-faction baseline;
+- activate natural encounters progressively rather than all at once.
 
 ## First playable milestone
 
@@ -77,6 +93,7 @@ Natural Goa'uld raids, settlements and traders remain disabled.
 - [x] SG tactical gloves prototype
 - [x] SG tactical vest prototype
 - [x] Black and desert SG-team uniform variants
+- [x] Stranded SG-team starter scenario
 
 ## Development notes
 
