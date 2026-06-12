@@ -1,19 +1,19 @@
 # Identité visuelle des Jaffa Goa'uld
 
-> Statut : Prototype
-> Version d'introduction : 0.1.73-dev
+> Statut : Prototype intrinsèque persistant  
+> Version d'introduction : 0.1.73-dev  
+> Stockage intrinsèque dédié : 0.1.74-dev
 
 ## Présentation
 
 Les Jaffa reçoivent automatiquement une marque frontale noire générique.
-
-```text
-marque frontale Jaffa générique
-```
+Depuis `0.1.74-dev`, cette marque n'est plus représentée par un gène cosmétique
+technique : elle est conservée comme une donnée intrinsèque propre au pawn.
 
 ## Nature de la marque
 
-La marque est intrinsèque au pawn et rendue comme un tatouage :
+La marque est indépendante du xenotype, de la faction actuelle et de
+l'équipement. Elle fonctionne comme un insigne culturel ou une scarification :
 
 ```text
 aucune pièce d'inventaire
@@ -22,13 +22,12 @@ aucune catégorie de stockage
 aucune protection
 aucune statistique d'armure
 aucun butin retirable
+aucun gène visible
 ```
 
 Elle reste distincte du casque rétractable et de l'ensemble modulaire Jaffa.
 
 ## Hiérarchie visuelle prévue
-
-Le visuel noir actuel correspond aux Jaffa ordinaires.
 
 ```text
 Jaffa ordinaires      -> marque noire
@@ -38,24 +37,21 @@ Premier Primat        -> marque dorée embossée
 
 Un garde lourd n'est pas automatiquement un Premier Primat.
 
-## Objectif du prototype
+## Attribution manuelle
 
-Le rendu actuel est temporaire. Il valide l'emplacement intrinsèque avant
-l'introduction de variantes propres aux futurs domaines Goa'uld.
+Les outils développeur permettent d'appliquer ou retirer une marque sur
+n'importe quel pawn. Un humain ou un Goa'uld infiltré peut donc recevoir une
+fausse marque sans acquérir la génétique Jaffa.
+
+## Persistance et migration
+
+La marque survit aux sauvegardes. Les anciens gènes techniques des prototypes
+précédents sont convertis automatiquement en données intrinsèques lorsqu'un
+pawn concerné est rencontré.
 
 ## Limites
 
-Les raids naturels, colonies et marchands Goa'uld restent désactivés.
-
-## Calibration temporaire du positionnement
-
-Le premier rendu intrinsèque validait correctement la présence de la marque,
-mais l'insigne temporaire flottait au-dessus du front. Une calibration
-provisoire abaisse le dessin et son offset de rendu. Le visuel définitif restera
-à retravailler lors de l'introduction des marques propres aux Grands Maîtres.
-
-## Calibration latérale
-
-Après validation en jeu, les vues sud et nord sont jugées correctes. Le
-correctif suivant recentre uniquement les vues est et ouest vers l'avant du
-front, sans changer l'architecture du rendu intrinsèque.
+Les visuels actuels restent temporaires. Les variantes propres aux futurs
+Grands Maîtres, leur placement définitif et l'attribution automatique des rangs
+supérieurs seront traités ultérieurement. Les raids naturels, colonies et
+marchands Goa'uld restent désactivés.

@@ -14,6 +14,7 @@
 > Raid d'enlèvement Jaffa contrôlé : 0.1.71-dev
 > Raid de destruction Jaffa contrôlé : 0.1.72-dev
 > Identité visuelle Jaffa générique : 0.1.73-dev
+> Fondation d'identité des domaines : 0.1.74-dev
 
 ## Présentation
 
@@ -67,9 +68,10 @@ fabriquées et testées manuellement : deux torses, des gantelets protégeant
 les doigts, des bottes protégeant les orteils et un casque déployé.
 Depuis `0.1.67-dev`, le casque possède trois modes rétractables persistants.
 Depuis `0.1.68-dev`, les guerriers et gardes générés reçoivent automatiquement
-leur ensemble modulaire adapté. Les marques faciales et l'équilibrage doivent
-encore être complétés avant l'activation
-des raids et des colonies.
+leur ensemble modulaire adapté. Depuis `0.1.74-dev`, leur marque frontale noire
+est conservée comme une donnée intrinsèque persistante indépendante des gènes,
+du xenotype et de l'équipement. L'équilibrage reste à compléter avant
+l'activation des raids et des colonies naturels.
 
 ## Suite prévue
 
@@ -90,3 +92,16 @@ visuelle reste indépendante des doctrines de raid et de l'armure modulaire.
 Elle prépare des variantes propres aux futurs domaines de Grands Maîtres.
 
 Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).
+
+## Profil de domaine
+
+Depuis `0.1.74-dev`, la faction prototype est associée à un profil
+d'identité piloté par les Defs. Ce profil prépare trois variantes intrinsèques
+de marque frontale : noire pour les Jaffa ordinaires, argentée pour des élites
+sélectionnées et dorée embossée pour un futur Premier Primat.
+
+Les variantes de rang ne sont pas encore attribuées automatiquement. Elles
+peuvent être testées manuellement sur n'importe quel pawn avec les outils
+développeur.
+
+Consulte [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity).

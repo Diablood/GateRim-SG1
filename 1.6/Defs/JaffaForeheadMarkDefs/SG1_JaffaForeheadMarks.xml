@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Intrinsic forehead marks are pawn data, not genes and not apparel.
+    The render-node payload intentionally mirrors the validated 0.1.73-dev
+    prototype while remaining independent from the Jaffa xenotype.
+    -->
+    <GateRimSG1.Jaffa.JaffaForeheadMarkDef>
+        <defName>SG1_JaffaForeheadMark_GenericIntrinsic</defName>
+        <label>generic intrinsic Jaffa forehead mark</label>
+        <description>A generic black intrinsic forehead mark identifying a Jaffa servant. It is stored directly as pawn data rather than as a gene or removable apparel.</description>
+        <renderNodeProperties>
+            <li>
+                <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+                <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+                <texPath>Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark</texPath>
+                <parentTagDef>Head</parentTagDef>
+                <rotDrawMode>Fresh, Rotting</rotDrawMode>
+                <visibleFacing>
+                    <li>East</li>
+                    <li>South</li>
+                    <li>West</li>
+                </visibleFacing>
+                <drawData>
+                    <defaultData>
+                        <layer>60</layer>
+                    </defaultData>
+                    <dataEast>
+                        <offset>(-0.03, 0, 0.015)</offset>
+                    </dataEast>
+                    <dataSouth>
+                        <offset>(0, 0, 0.015)</offset>
+                    </dataSouth>
+                    <dataWest>
+                        <offset>(0.03, 0, 0.015)</offset>
+                    </dataWest>
+                </drawData>
+            </li>
+        </renderNodeProperties>
+    </GateRimSG1.Jaffa.JaffaForeheadMarkDef>
+
+    <GateRimSG1.Jaffa.JaffaForeheadMarkDef>
+        <defName>SG1_JaffaForeheadMark_GenericSilverIntrinsic</defName>
+        <label>generic intrinsic silver Jaffa forehead mark</label>
+        <description>A temporary intrinsic silver forehead-mark variant reserved for selected elite Jaffa. Future System Lord domains can replace this generic placeholder.</description>
+        <renderNodeProperties>
+            <li>
+                <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+                <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+                <texPath>Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark</texPath>
+                <parentTagDef>Head</parentTagDef>
+                <rotDrawMode>Fresh, Rotting</rotDrawMode>
+                <visibleFacing>
+                    <li>East</li>
+                    <li>South</li>
+                    <li>West</li>
+                </visibleFacing>
+                <drawData>
+                    <defaultData>
+                        <layer>60</layer>
+                    </defaultData>
+                    <dataEast>
+                        <offset>(-0.03, 0, -0.055)</offset>
+                    </dataEast>
+                    <dataSouth>
+                        <offset>(0, 0, -0.055)</offset>
+                    </dataSouth>
+                    <dataWest>
+                        <offset>(0.03, 0, -0.055)</offset>
+                    </dataWest>
+                </drawData>
+            </li>
+        </renderNodeProperties>
+    </GateRimSG1.Jaffa.JaffaForeheadMarkDef>
+
+    <GateRimSG1.Jaffa.JaffaForeheadMarkDef>
+        <defName>SG1_JaffaForeheadMark_GenericGoldIntrinsic</defName>
+        <label>generic intrinsic gold Jaffa forehead mark</label>
+        <description>A temporary intrinsic gold embossed forehead-mark variant reserved for a future First Prime profile. A heavy-armored guard is not automatically a First Prime.</description>
+        <renderNodeProperties>
+            <li>
+                <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+                <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+                <texPath>Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark</texPath>
+                <parentTagDef>Head</parentTagDef>
+                <rotDrawMode>Fresh, Rotting</rotDrawMode>
+                <visibleFacing>
+                    <li>East</li>
+                    <li>South</li>
+                    <li>West</li>
+                </visibleFacing>
+                <drawData>
+                    <defaultData>
+                        <layer>60</layer>
+                    </defaultData>
+                    <dataEast>
+                        <offset>(-0.03, 0, -0.055)</offset>
+                    </dataEast>
+                    <dataSouth>
+                        <offset>(0, 0, -0.055)</offset>
+                    </dataSouth>
+                    <dataWest>
+                        <offset>(0.03, 0, -0.055)</offset>
+                    </dataWest>
+                </drawData>
+            </li>
+        </renderNodeProperties>
+    </GateRimSG1.Jaffa.JaffaForeheadMarkDef>
+</Defs>

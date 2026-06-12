@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Generic fallback domain. Future named System Lords can define their own
+    profiles and attach them to dedicated faction Defs.
+    -->
+    <GateRimSG1.Goauld.GoauldSystemLordDomainDef>
+        <defName>SG1_GoauldSystemLordDomainPrototype</defName>
+        <label>prototype Goa'uld System Lord domain identity</label>
+        <description>Generic fallback identity profile for the first hidden Goa'uld System Lord domain prototype.</description>
+        <ordinaryJaffaMark>SG1_JaffaForeheadMark_GenericIntrinsic</ordinaryJaffaMark>
+        <eliteJaffaMark>SG1_JaffaForeheadMark_GenericSilverIntrinsic</eliteJaffaMark>
+        <firstPrimeJaffaMark>SG1_JaffaForeheadMark_GenericGoldIntrinsic</firstPrimeJaffaMark>
+    </GateRimSG1.Goauld.GoauldSystemLordDomainDef>
+</Defs>

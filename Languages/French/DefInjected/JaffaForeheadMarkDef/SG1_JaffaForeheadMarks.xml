@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaForeheadMark_GenericIntrinsic.label>marque frontale Jaffa intrinsèque générique</SG1_JaffaForeheadMark_GenericIntrinsic.label>
+    <SG1_JaffaForeheadMark_GenericIntrinsic.description>Marque frontale noire intrinsèque générique identifiant un serviteur Jaffa. Elle est stockée directement dans les données du pion plutôt que sous forme de gène ou de vêtement amovible.</SG1_JaffaForeheadMark_GenericIntrinsic.description>
+    <SG1_JaffaForeheadMark_GenericSilverIntrinsic.label>marque frontale Jaffa argentée intrinsèque générique</SG1_JaffaForeheadMark_GenericSilverIntrinsic.label>
+    <SG1_JaffaForeheadMark_GenericSilverIntrinsic.description>Variante argentée intrinsèque temporaire réservée à certains Jaffa d'élite. Les futurs domaines de Grands Maîtres pourront remplacer ce visuel générique.</SG1_JaffaForeheadMark_GenericSilverIntrinsic.description>
+    <SG1_JaffaForeheadMark_GenericGoldIntrinsic.label>marque frontale Jaffa dorée intrinsèque générique</SG1_JaffaForeheadMark_GenericGoldIntrinsic.label>
+    <SG1_JaffaForeheadMark_GenericGoldIntrinsic.description>Variante dorée embossée intrinsèque temporaire réservée à un futur profil de Premier Primat. Un garde en armure lourde n'est pas automatiquement un Premier Primat.</SG1_JaffaForeheadMark_GenericGoldIntrinsic.description>
+</LanguageData>

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.1.73-dev</modVersion>
+    <modVersion>0.1.74-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -79,7 +79,10 @@ Current development scope:
 - Explicit vanilla ImmediateAttack strategy for controlled Goa'uld Jaffa raid tests
 - Developer-only controlled Goa'uld Jaffa abduction raid with cover-and-extract doctrine
 - Developer-only controlled Goa'uld Jaffa destruction raid with post-assault recovery phase
-- Intrinsic generic black Jaffa forehead-mark visual identity prototype
+- Save-persistent intrinsic Jaffa forehead-mark data independent from genes, xenotypes and apparel
+- Automatic migration from obsolete technical forehead-mark genes
+- Developer map tools to assign or remove black, silver and gold forehead marks on any pawn
+- Data-driven Goa'uld System Lord domain identity foundation with rank-specific intrinsic-mark slots
 - Natural Goa'uld raids, settlements and world presence planned later
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later

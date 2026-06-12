@@ -1,64 +1,35 @@
-# Intrinsic generic Jaffa forehead-mark prototype
+# Intrinsic Jaffa forehead-mark data
 
-Version: `0.1.73-dev r2`
+Version: `0.1.74-dev r1`
 
 ## Design correction
 
-The first local prototype modeled the mark as an internal apparel overlay.
-That approach was discarded.
+The validated forehead-mark render node remains attached to the pawn's head,
+but its storage no longer relies on a technical cosmetic gene.
 
-A Jaffa forehead mark is intrinsic to the pawn: it behaves like a tattoo or
-scarification, not like removable equipment.
-
-## Implementation
-
-The current prototype defines a dedicated cosmetic technical gene:
+A Jaffa forehead mark is cultural and political pawn data. It is independent
+from:
 
 ```text
-SG1_JaffaForeheadMark_Generic
+xenotype
+hereditary genes
+apparel
+current faction
+colonist, prisoner or enemy status
 ```
 
-The gene contributes a native RimWorld render-tree node:
+This also permits a non-Jaffa pawn to receive a mark manually, which covers an
+infiltration scenario without changing the pawn's biology.
 
-```xml
-<renderNodeProperties>
-    <li>
-        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
-        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
-        <texPath>Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark</texPath>
-        <parentTagDef>Head</parentTagDef>
-        <rotDrawMode>Fresh, Rotting</rotDrawMode>
-        <visibleFacing>
-            <li>East</li>
-            <li>South</li>
-            <li>West</li>
-        </visibleFacing>
-        <drawData>
-            <defaultData>
-                <layer>60</layer>
-            </defaultData>
-        </drawData>
-    </li>
-</renderNodeProperties>
-```
-
-The visual is attached to the pawn's head render node and uses no apparel
-item. It therefore creates:
+## Intrinsic Defs
 
 ```text
-no inventory entry
-no crafting recipe
-no storage category
-no armor coverage
-no defensive statistic
-no removable loot
+SG1_JaffaForeheadMark_GenericIntrinsic
+SG1_JaffaForeheadMark_GenericSilverIntrinsic
+SG1_JaffaForeheadMark_GenericGoldIntrinsic
 ```
 
-## Generic black mark
-
-The prototype uses a black temporary emblem suitable for ordinary Jaffa.
-
-Future rank variants should remain separate:
+The temporary rank convention remains:
 
 ```text
 ordinary Jaffa       -> black mark
@@ -68,57 +39,71 @@ First Prime          -> gold embossed mark
 
 A heavy-armored guard is not automatically a First Prime.
 
-## Xenotype integration
+## Persistent storage
 
-The existing `SG1_Jaffa` xenotype receives the cosmetic technical gene
-through a small XML patch. This keeps the mark separate from the hereditary
-lineage gene and makes future replacement straightforward.
+`GameComponent_JaffaForeheadMarks` stores an optional mark Def for each pawn
+ThingID. Compatible Jaffa receive an ordinary domain mark once when first
+encountered on a map. Removing a mark manually does not cause it to reappear on
+the next scan.
 
-## Local cleanup required
+## Native render-tree integration
 
-Before testing this revision, remove the obsolete apparel prototype:
+`DynamicPawnRenderNodeSetup_JaffaForeheadMarks` is discovered by RimWorld's
+native dynamic render-node setup. It reads the intrinsic mark data and injects
+the validated head attachment into the pawn render tree.
+
+The mark therefore creates:
 
 ```text
-1.6/Defs/ThingDefs_Apparel/SG1_JaffaSystemLordMarks.xml
-Languages/French/DefInjected/ThingDef/SG1_JaffaSystemLordMarks.xml
-Textures/Things/Pawn/Humanlike/Apparel/JaffaSystemLordMarks
+no inventory entry
+no crafting recipe
+no storage category
+no armor coverage
+no defensive statistic
+no removable loot
+no visible gene entry
+```
+
+## Legacy migration
+
+The former technical genes remain declared as invisible migration placeholders:
+
+```text
+SG1_JaffaForeheadMark_Generic
+SG1_JaffaForeheadMark_GenericSilver
+SG1_JaffaForeheadMark_GenericGold
+```
+
+They have no render-node properties and are no longer patched into the Jaffa
+xenotype. When an affected pawn is encountered, the component transfers the
+appropriate rank mark into intrinsic data and removes every legacy technical
+gene from that pawn.
+
+Keeping these Defs temporarily prevents missing-Def errors when loading saves
+created during the earlier prototypes.
+
+## Developer tools
+
+RimWorld developer actions under `GateRim SG-1` can target any map pawn:
+
+```text
+Set forehead mark: ordinary black
+Set forehead mark: elite silver
+Set forehead mark: First Prime gold
+Remove forehead mark
 ```
 
 ## Manual test checklist
 
-1. Remove the obsolete apparel-prototype files.
-2. Start RimWorld and confirm that no XML or translation error appears.
-3. Trigger any controlled Goa'uld Jaffa raid.
-4. Confirm that generated Jaffa visibly carry a black forehead mark while
-   facing south, east or west.
-5. Confirm that the mark is not rendered from behind.
-6. Confirm that the mark is visible when the helmet is retracted.
-7. Confirm that the deployed helmet visually covers the mark.
-8. Confirm that the mark does not appear as worn apparel or loot.
-9. Recheck the direct-assault, abduction and destruction incidents.
-10. Confirm that natural Goa'uld raids remain disabled.
-
-## r3 temporary position calibration
-
-The intrinsic render-node architecture is validated in-game. The remaining
-prototype issue was visual placement: the temporary emblem floated above the
-forehead.
-
-This revision:
-
-- moves the painted emblem lower inside the transparent texture canvas;
-- applies a small negative vertical render offset on east, south and west
-  facings;
-- keeps the intrinsic gene, render-node class, parent head tag and layer
-  unchanged.
-
-The artwork remains temporary. This calibration only aims to place the
-prototype visibly on the forehead before final domain-specific designs.
-
-## r4 side-view calibration
-
-South and north views are now considered acceptable in-game. The remaining
-prototype issue concerned only east and west side views.
-
-This revision keeps the intrinsic gene and render-node offsets unchanged and
-re-centers only the east/west emblem paintings toward the visible forehead.
+1. Extract the ZIP at the repository root and run the included PowerShell apply helper.
+2. Build the C# assembly.
+3. Start RimWorld and confirm that no XML, translation, DefOf or C# error appears.
+4. Trigger each controlled Goa'uld Jaffa raid and confirm that ordinary Jaffa carry the black mark.
+5. Confirm that the mark is absent from the pawn's genes and apparel.
+6. Confirm south, east and west rendering, the hidden north view and helmet coverage.
+7. Use the developer tools to assign silver and gold marks to selected pawns.
+8. Use the developer tools to apply a black mark to a non-Jaffa pawn.
+9. Save, reload and confirm persistence for each manually assigned mark.
+10. Remove a Jaffa mark manually, save, reload and confirm that it does not return automatically.
+11. Load a save containing an earlier technical mark gene and confirm automatic migration without errors.
+12. Confirm that natural Goa'uld raids remain disabled.

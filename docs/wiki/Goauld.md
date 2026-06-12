@@ -256,7 +256,6 @@ Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
 - disponibilité naturelle des symbiotes immatures ;
 - transfert entre plusieurs hôtes ;
 - sarcophage ;
-- marques visuelles des serviteurs Jaffa ;
 - colonies, raids et événements Goa'uld.
 
 ## Différence avec les sanguophages
@@ -268,10 +267,31 @@ automatique du symbiote.
 ## Identité visuelle Jaffa générique
 
 Depuis `0.1.73-dev`, les Jaffa reçoivent automatiquement une marque frontale
-noire générique rendue comme un tatouage intrinsèque.
+noire générique rendue comme un tatouage intrinsèque. Depuis `0.1.74-dev`, elle
+est stockée comme une donnée persistante propre au pawn plutôt que comme un
+gène cosmétique technique.
 
 Cet insigne est uniquement visuel : il ne fournit aucune armure, ne remplace
-aucune pièce d'équipement et ne peut pas devenir du butin. Il prépare les
-futures variantes propres aux différents Grands Maîtres.
+aucune pièce d'équipement et ne peut pas devenir du butin. Les outils
+développeur permettent aussi de l'appliquer ou de le retirer manuellement sur
+n'importe quel pawn, y compris un infiltrateur non-Jaffa.
 
 Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).
+
+## Fondation des domaines de Grands Maîtres
+
+Depuis `0.1.74-dev`, l'identité visuelle des serviteurs est préparée par un
+profil de domaine piloté par les Defs.
+
+Le domaine prototype associe trois emplacements de rang :
+
+```text
+Jaffa ordinaire      -> marque noire
+élite sélectionnée   -> marque argentée temporaire
+Premier Primat       -> marque dorée embossée temporaire
+```
+
+Les variantes argentée et dorée existent comme données intrinsèques de
+fondation mais ne sont pas encore attribuées automatiquement.
+
+Consulte [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity).

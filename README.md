@@ -13,29 +13,40 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.73-dev — Add intrinsic generic Jaffa forehead mark prototype
+### 0.1.74-dev — Replace technical Jaffa mark genes with intrinsic mark data
 
-Jaffa pawns now receive a generic black forehead mark rendered as an
-intrinsic tattoo-like visual rather than an apparel item.
+Jaffa forehead marks are now stored as dedicated save-persistent pawn data.
+They are no longer part of the Jaffa xenotype and no longer use genes as their
+runtime rendering source.
 
-The implementation uses a dedicated cosmetic technical gene:
+The new intrinsic Defs are:
 
 ```text
-SG1_JaffaForeheadMark_Generic
+SG1_JaffaForeheadMark_GenericIntrinsic
+SG1_JaffaForeheadMark_GenericSilverIntrinsic
+SG1_JaffaForeheadMark_GenericGoldIntrinsic
 ```
 
-This gene contributes a vanilla `PawnRenderNode_AttachmentHead` under the
-pawn's head node. It therefore creates no inventory object, no recipe, no
-storage entry, no armor coverage and no loot drop.
+A custom dynamic render-node setup injects the selected mark into RimWorld's
+native pawn render tree. The validated head attachment, facings and temporary
+textures remain unchanged.
 
-The generic mark is intentionally black. Future milestones can introduce
-separate silver or gold variants for elite guards and First Primes, then
-replace the generic technical gene according to the serving System Lord.
+The existing Goa'uld domain profile now exposes three explicit intrinsic-mark
+slots:
 
-The previous internal apparel-overlay prototype must be removed locally
-before testing this revision.
+```text
+ordinary Jaffa  -> generic black intrinsic mark
+selected elite  -> temporary generic silver intrinsic mark
+First Prime     -> temporary generic gold embossed intrinsic mark
+```
 
-Natural Goa'uld raids, settlements and traders remain disabled.
+Former technical `GeneDef` entries remain declared only as invisible migration
+placeholders. Encountered pawns are converted automatically and the obsolete
+genes are removed from them. A developer map tool can also assign or remove any
+mark manually on any pawn, including a non-Jaffa infiltrator.
+
+Heavy armor does not imply First Prime status. Natural Goa'uld raids,
+settlements and traders remain disabled.
 
 ## Next maintenance focus
 

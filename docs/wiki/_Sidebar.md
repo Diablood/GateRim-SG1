@@ -15,6 +15,7 @@
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Loadouts d'armures Jaffa](Jaffa-Armor-Loadouts)
 - [Identité visuelle Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity)
+- [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity)
 - [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid)
 - [Raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)
 - [Raid de destruction Jaffa contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid)

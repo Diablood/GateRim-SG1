@@ -1,3 +1,5 @@
+using GateRimSG1.Goauld;
+using GateRimSG1.Jaffa;
 using RimWorld;
 using Verse;
 
@@ -23,6 +25,18 @@ namespace GateRimSG1
         public static RaidStrategyDef SG1_GoauldJaffaDestructionAssault;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
+
+        // Legacy technical genes retained only for save migration.
+        public static GeneDef SG1_JaffaForeheadMark_Generic;
+        public static GeneDef SG1_JaffaForeheadMark_GenericSilver;
+        public static GeneDef SG1_JaffaForeheadMark_GenericGold;
+
+        // Intrinsic forehead-mark data Defs.
+        public static JaffaForeheadMarkDef SG1_JaffaForeheadMark_GenericIntrinsic;
+        public static JaffaForeheadMarkDef SG1_JaffaForeheadMark_GenericSilverIntrinsic;
+        public static JaffaForeheadMarkDef SG1_JaffaForeheadMark_GenericGoldIntrinsic;
+
+        public static GoauldSystemLordDomainDef SG1_GoauldSystemLordDomainPrototype;
         public static GeneDef SG1_JaffaLineage;
         public static GeneDef SG1_JaffaPouchPotential;
         public static GeneDef SG1_JaffaSymbioteCompatibility;

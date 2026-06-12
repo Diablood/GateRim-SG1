@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.74-dev-r1 — Replace technical Jaffa mark genes with intrinsic mark data
+
+- Replace runtime forehead-mark `GeneDef` rendering with dedicated `JaffaForeheadMarkDef` data.
+- Persist one optional intrinsic forehead mark per pawn through `GameComponent_JaffaForeheadMarks`.
+- Inject intrinsic marks into RimWorld's native render tree through a dedicated dynamic setup.
+- Keep the validated black, silver and gold temporary textures and their rank-specific domain slots.
+- Remove the xenotype patch that assigned the generic black mark as a hereditary technical gene.
+- Retain invisible legacy `GeneDef` placeholders solely to migrate existing saves without missing-Def errors.
+- Convert encountered legacy genes into intrinsic pawn data, then remove the obsolete genes from affected pawns.
+- Automatically initialize compatible Jaffa with an ordinary domain mark once, while preserving later manual removal.
+- Add developer map tools to apply black, silver or gold marks, or remove a mark, on any pawn.
+- Update bilingual strings, technical documentation and player-wiki drafts.
+
 ## 0.1.61-dev — Add first Goa'uld System Lord faction foundation
 
 - Add the hidden hostile `SG1_GoauldSystemLordPrototype` faction definition.

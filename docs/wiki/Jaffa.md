@@ -52,7 +52,7 @@ Depuis `0.1.26-dev`, cet état peut être obtenu par une opération médicale. D
 - trétonine ;
 - conséquences médicales après retrait ;
 - sensibilité aux Goa'uld proches ;
-- marques faciales distinctives pour les Jaffa servant une faction Goa'uld.
+- variantes de marques propres aux domaines Goa'uld nommés et attribution automatique des rangs supérieurs.
 
 
 ## Implantation médicale du Prim'ta
@@ -99,3 +99,17 @@ n'est pas disponible.
 Depuis `0.1.60-dev`, les ressources biologiques du Prim'ta accumulent des
 dommages après une exposition prolongée sous `-15 °C` hors bassin actif.
 Consulte [Congélation profonde des Prim'ta](Primta-Deep-Freezing).
+
+
+## Marques frontales intrinsèques
+
+Depuis `0.1.74-dev`, les marques frontales Jaffa sont stockées comme des données
+persistantes propres au pawn. Elles ne font pas partie du xenotype, ne sont pas
+des gènes et ne sont pas des vêtements.
+
+La variante noire générique est attribuée automatiquement aux Jaffa compatibles.
+Les outils développeur permettent aussi d'appliquer les variantes argentée et
+dorée, de retirer une marque, ou d'apposer une marque sur un pawn non-Jaffa pour
+un scénario d'infiltration.
+
+Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).

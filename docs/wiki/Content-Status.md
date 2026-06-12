@@ -64,6 +64,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans fallback ni activation des raids naturels | 0.1.70-dev |
 | Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |
 | Raid de destruction Jaffa Goa'uld contrôlé | Incident développeur séparé : assaut militaire prolongé, puis récupération opportuniste de captifs et d'objets de valeur avant extraction | 0.1.72-dev |
+| Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par le pawn render tree, sans gène actif, équipement ou statistique ; stockage persistant dédié par pawn | 0.1.73-dev / stockage dédié 0.1.74-dev |
+| Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
+| Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel pawn, y compris non-Jaffa | 0.1.74-dev |
 
 ## Prévu
 
@@ -77,4 +80,3 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
-| Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue comme un tatouage via un gène cosmétique technique ; aucune pièce d'inventaire ou statistique ; base extensible pour les futurs domaines | 0.1.73-dev |

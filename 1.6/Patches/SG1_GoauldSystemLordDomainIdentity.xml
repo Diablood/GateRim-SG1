@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <!--
+    Associate the existing hidden Goa'uld prototype faction with its
+    data-driven identity profile. No raids or world presence are enabled.
+    -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="SG1_GoauldSystemLordPrototype"]</xpath>
+        <value>
+            <modExtensions>
+                <li Class="GateRimSG1.Goauld.GoauldSystemLordDomainExtension">
+                    <domain>SG1_GoauldSystemLordDomainPrototype</domain>
+                </li>
+            </modExtensions>
+        </value>
+    </Operation>
+</Patch>

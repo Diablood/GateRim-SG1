@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_JaffaForeheadMark_Applied>{0} applied to {1}.</GR_JaffaForeheadMark_Applied>
+    <GR_JaffaForeheadMark_AlreadyApplied>{1} already has {0}.</GR_JaffaForeheadMark_AlreadyApplied>
+    <GR_JaffaForeheadMark_Removed>Forehead mark removed from {0}.</GR_JaffaForeheadMark_Removed>
+    <GR_JaffaForeheadMark_AlreadyAbsent>{0} has no forehead mark.</GR_JaffaForeheadMark_AlreadyAbsent>
+</LanguageData>

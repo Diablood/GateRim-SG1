@@ -27,6 +27,8 @@ disponible du contenu encore en développement.
   [bassin de conservation](Primta-Preservation-Basin),
   [congélation profonde](Primta-Deep-Freezing),
   [domaine prototype d'un Grand Maître](Goauld-System-Lord-Faction),
+  [identité visuelle Jaffa intrinsèque](Jaffa-System-Lord-Visual-Identity),
+  [profil d'identité des domaines](Goauld-System-Lord-Domain-Identity),
   [bâton Ma'Tok](Matok-Staff), [armures Jaffa](Jaffa-Armor) et
   [raid Jaffa contrôlé](Goauld-Jaffa-Controlled-Raid) et
   [raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)
@@ -42,12 +44,12 @@ disponible du contenu encore en développement.
 ## Prochain développement majeur
 
 Les prochains lots porteront sur l'approfondissement progressif des domaines
-de Grands Maîtres Goa'uld : validation des doctrines contrôlées d'assaut,
-d'enlèvement et de destruction, marque frontale noire intrinsèque des Jaffa,
-puis variantes propres aux Grands Maîtres avant l'activation progressive
-des raids naturels et de la présence mondiale. Les serviteurs Jaffa générés
-reçoivent déjà automatiquement un Prim'ta initial, un bâton Ma'Tok et leur
-ensemble d'armure modulaire.
+de Grands Maîtres Goa'uld : création des premiers domaines nommés, attribution
+explicite des rangs supérieurs, variantes visuelles propres aux Grands Maîtres,
+puis activation progressive des raids naturels et de la présence mondiale.
+Les serviteurs Jaffa générés reçoivent déjà automatiquement un Prim'ta initial,
+un bâton Ma'Tok, leur ensemble d'armure modulaire et une marque frontale noire
+intrinsèque persistante.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.
