@@ -2,7 +2,7 @@
 <LanguageData>
     <SG1_MatokStaffProjectile.label>décharge de bâton Ma'Tok</SG1_MatokStaffProjectile.label>
     <SG1_MatokStaff.label>bâton Ma'Tok</SG1_MatokStaff.label>
-    <SG1_MatokStaff.description>Arme énergétique emblématique des Goa'uld portée par les guerriers Jaffa. Le bâton Ma'Tok associe une lourde hampe utilisable au corps à corps à une décharge énergétique lente mais puissante. Ce premier prototype jouable peut être fabriqué et utilise un visuel temporaire dédié, en attendant l'illustration finale et son attribution automatique aux Jaffa.</SG1_MatokStaff.description>
+    <SG1_MatokStaff.description>Arme énergétique emblématique des Goa'uld portée par les guerriers Jaffa. Le bâton Ma'Tok associe une lourde hampe utilisable au corps à corps à une décharge de plasma lente mais puissante. Son impact conserve une blessure thermique importante contre les êtres biologiques et ajoute une détérioration structurelle réduite contre les cibles non organiques et les bâtiments. Ce prototype jouable peut être fabriqué et utilise un visuel temporaire dédié.</SG1_MatokStaff.description>
     <SG1_MatokStaff.tools.shaft.label>hampe</SG1_MatokStaff.tools.shaft.label>
     <SG1_MatokStaff.tools.tip.label>extrémité</SG1_MatokStaff.tools.tip.label>
 </LanguageData>

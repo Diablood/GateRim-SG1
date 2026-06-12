@@ -13,41 +13,38 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.75-dev — Consolidate debug tools and player-facing diagnostics
+### 0.1.76-dev — Add Ma'Tok plasma-impact damage prototype
 
-GateRim SG-1 now exposes a dedicated mod setting:
+The Ma'Tok staff remains primarily a Goa'uld plasma weapon:
 
 ```text
-Show advanced GateRim SG-1 debug information
+24 burn damage
+0.28 base armor penetration
 ```
 
-The option is disabled by default. RimWorld developer mode still forces
-advanced diagnostics on automatically.
+Its projectile now adds a deliberately reduced structural follow-up only when
+it hits:
 
-Normal gameplay inspection panels no longer display raw persistent symbiote
-IDs or raw autonomous-hunt cooldown ticks. The Goa'uld queen extraction
-cooldown in raw ticks is also hidden outside advanced diagnostics.
+```text
+non-organic pawn  -> 8 blunt damage
+building          -> 12 blunt damage
+```
 
-Temporary Tok'ra therapeutic offers remain readable during normal gameplay,
-but show only the trust tier. The underlying numeric trust score remains
-available through advanced diagnostics.
+Organic pawns do not receive the secondary impact, preventing an unintended
+anti-personnel damage increase. The prototype does not add an area explosion.
 
-Routine `GR_Log.Message(...)` lifecycle traces are now written directly to
-`Player.log` only while advanced diagnostics are visible. They bypass
-RimWorld's in-game log queue so informational traces cannot open an
-error-looking popup. Warnings and errors always remain visible through the
-normal RimWorld log channel.
+The staff weapon and projectile also expose a reusable `Goauld` energy-
+technology extension. It has no resistance effect yet, but prepares a shared
+hook for future Replicator behavior without hard-coding one exception per
+weapon.
 
-Developer-only prototype commands remain tied to RimWorld developer mode.
-Gameplay mechanics validated through `0.1.74-dev` are unchanged.
+Natural Goa'uld raids, settlements and traders remain disabled.
 
-## Next maintenance focus
+## Next development focus
 
-- generate the native French translation report for the five remaining load
-  warnings before changing any translation blindly;
-- continue the conditional-gizmo audit only where a player-facing command is
-  actually misleading or unnecessarily exposed;
-- keep the next gameplay expansion separate from this maintenance pass.
+- validate Ma'Tok damage against biological pawns, mechanoids and structures;
+- keep future Replicator resistance separate from this vanilla-target pass;
+- continue with the first Zat'nik'tel prototype after validation.
 
 ## First playable milestone
 

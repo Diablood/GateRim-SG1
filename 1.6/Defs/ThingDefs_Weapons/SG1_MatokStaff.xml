@@ -3,10 +3,17 @@
     <ThingDef ParentName="BaseBullet">
         <defName>SG1_MatokStaffProjectile</defName>
         <label>Ma'Tok staff blast</label>
+        <thingClass>GateRimSG1.Weapons.Projectile_MatokPlasmaImpact</thingClass>
         <graphicData>
             <texPath>Things/Projectile/SG1_MatokBlast</texPath>
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
+        <modExtensions>
+            <li Class="GateRimSG1.Weapons.SG1EnergyWeaponExtension">
+                <technology>Goauld</technology>
+                <affectedByFutureReplicatorResistance>true</affectedByFutureReplicatorResistance>
+            </li>
+        </modExtensions>
         <projectile>
             <damageDef>Burn</damageDef>
             <damageAmountBase>24</damageAmountBase>
@@ -18,7 +25,7 @@
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SG1_MatokStaff</defName>
         <label>Ma'Tok staff weapon</label>
-        <description>An iconic Goa'uld energy weapon carried by Jaffa warriors. The Ma'Tok staff combines a heavy melee shaft with a slow but powerful ranged energy blast. This first playable prototype is craftable and uses a temporary dedicated graphic while final artwork and automatic Jaffa loadouts remain in development.</description>
+        <description>An iconic Goa'uld energy weapon carried by Jaffa warriors. The Ma'Tok staff combines a heavy melee shaft with a slow but powerful plasma blast. Its impact preserves substantial thermal injury against biological targets while adding reduced structural damage against non-organic targets and buildings. This playable prototype is craftable and uses a temporary dedicated graphic.</description>
         <graphicData>
             <texPath>Things/Item/Equipment/WeaponRanged/SG1_MatokStaff</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -64,6 +71,12 @@
         <weaponTags>
             <li>SG1_MatokStaff</li>
         </weaponTags>
+        <modExtensions>
+            <li Class="GateRimSG1.Weapons.SG1EnergyWeaponExtension">
+                <technology>Goauld</technology>
+                <affectedByFutureReplicatorResistance>true</affectedByFutureReplicatorResistance>
+            </li>
+        </modExtensions>
         <tools>
             <li>
                 <label>shaft</label>

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.76-dev — Add Ma'Tok plasma-impact damage prototype
+
+- Keep the Ma'Tok projectile's existing `24` burn damage and `0.28` base armor penetration.
+- Add `Projectile_MatokPlasmaImpact` as a specialized ranged projectile.
+- Apply an additional reduced `8` blunt damage only to non-organic pawns.
+- Apply an additional reduced `12` blunt damage to buildings and turrets.
+- Avoid secondary impact damage on organic pawns to prevent an unintended anti-personnel buff.
+- Keep area explosions intentionally deferred.
+- Add a declarative `Goauld` energy-weapon technology extension on the staff and projectile.
+- Reserve that extension as a future shared hook for Replicator resistance.
+- Update the technical documentation and player-wiki drafts.
+
 ## 0.1.75-dev — Consolidate debug tools and player-facing diagnostics
 
 - Add a persistent GateRim SG-1 mod setting for optional advanced debug information.

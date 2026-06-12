@@ -48,6 +48,6 @@ initializer remains unchanged.
 2. Spawn `SG1_GoauldJaffaWarrior`.
 3. Verify that the generated warrior has the Jaffa xenotype, an automatic Prim'ta and an equipped Ma'Tok staff.
 4. Spawn `SG1_GoauldJaffaGuard` and verify the same three elements.
-5. Make each pawn fire the Ma'Tok staff and confirm that the projectile and burn damage still work.
+5. Make each pawn fire the Ma'Tok staff and confirm that the projectile, primary burn damage and reduced structural impact against a mechanoid or building still work.
 6. Save and reload, then verify that the equipped weapons remain present.
 7. Confirm that no natural Goa'uld raid, settlement or trader has been enabled.

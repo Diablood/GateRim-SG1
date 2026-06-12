@@ -18,7 +18,10 @@ bâton Ma'Tok
 Ce premier prototype est jouable :
 
 - arme à distance à tir unique ;
-- dégâts de brûlure ;
+- dégâts thermiques principaux ;
+- impact structurel réduit contre les pawns non organiques ;
+- impact structurel réduit contre les bâtiments et tourelles ;
+- aucune explosion de zone ;
 - cadence volontairement lente ;
 - portée intermédiaire ;
 - capacités de mêlée avec la hampe et l'extrémité ;
@@ -35,6 +38,17 @@ niveau 6 en Fabrication
 banc d'usinage
 recherche Armurerie
 ```
+
+## Impact plasma
+
+Depuis `0.1.76-dev`, le projectile conserve ses dégâts thermiques principaux
+contre les êtres biologiques et ajoute une détérioration contondante réduite
+contre les cibles non organiques et les bâtiments. Le bâton reste donc utile
+face aux mécanoïdes vanilla sans devenir une arme spécialisée anti-machine.
+
+Cette adaptation ne préjuge pas du comportement des futurs Réplicateurs
+Stargate : leur résistance particulière aux technologies Goa'uld et Tok'ra
+sera ajoutée séparément.
 
 ## Limites du prototype
 

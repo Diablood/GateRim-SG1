@@ -15,8 +15,12 @@ crafted at a machining table after `Gunsmithing` research.
 ## Prototype balance
 
 - Spacer-level weapon.
-- `24` burn damage per shot.
+- `24` primary burn damage per shot.
 - `0.28` base armor penetration.
+- `8` additional blunt impact damage against non-organic pawns.
+- `12` additional blunt impact damage against buildings and turrets.
+- No additional blunt impact against organic pawns.
+- No area explosion.
 - Slow `2.4` second ranged cooldown.
 - `1.5` second warmup.
 - `27.9` cell range.
@@ -59,12 +63,17 @@ the Def names.
 4. Equip the staff on a pawn and fire at a target.
 5. Confirm that the projectile is visible, deals burn damage and produces no
    exception.
-6. Verify that the staff remains usable as a melee weapon.
-7. With `Gunsmithing` researched, confirm that a machining table offers a bill
-   to craft the staff.
-8. Spawn `SG1_GoauldJaffaWarrior` and `SG1_GoauldJaffaGuard` and confirm that
-   their existing automatic Prim'ta initialization still works.
-9. Confirm that no natural Goa'uld raid, settlement or trader has been enabled.
+6. Fire at a vanilla mechanoid and confirm that the reduced structural impact
+   prevents the weapon from becoming ineffective.
+7. Fire at a turret and a wall and confirm reduced structural deterioration.
+8. Confirm that biological pawns do not receive an extra blunt injury and that
+   the shot does not create an area explosion.
+9. Verify that the staff remains usable as a melee weapon.
+10. With `Gunsmithing` researched, confirm that a machining table offers a
+    bill to craft the staff.
+11. Spawn `SG1_GoauldJaffaWarrior` and `SG1_GoauldJaffaGuard` and confirm that
+    their existing automatic Prim'ta initialization still works.
+12. Confirm that no natural Goa'uld raid, settlement or trader has been enabled.
 
 ## AI combat primary verb
 

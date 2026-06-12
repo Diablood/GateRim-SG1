@@ -727,3 +727,13 @@
 - [x] Hide raw symbiote IDs and cooldown ticks from normal inspection panels
 - [x] Keep contextual Tok'ra-offer and ritual information readable
 - [x] Document remaining French translation-report follow-up
+
+
+## 0.1.76-dev — Ma'Tok plasma-impact damage prototype
+
+- [x] Preserve the existing thermal plasma injury against biological targets
+- [x] Add reduced structural impact against non-organic pawns
+- [x] Add reduced structural impact against buildings and turrets
+- [x] Keep area explosions deferred
+- [x] Add reusable Goa'uld energy-technology classification
+- [ ] Add future Replicator resistance as a separate milestone

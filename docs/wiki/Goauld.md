@@ -194,6 +194,10 @@ temporaires dédiés.
 Depuis `0.1.65-dev`, les guerriers et gardes Jaffa Goa'uld générés reçoivent
 automatiquement cette arme grâce au système vanilla de loadout.
 
+Depuis `0.1.76-dev`, son impact plasma conserve les dégâts thermiques
+principaux et ajoute une détérioration structurelle réduite contre les
+mécanoïdes vanilla et les bâtiments.
+
 Consulte [Bâton Ma'Tok](Matok-Staff).
 
 ### Armures Jaffa modulaires
