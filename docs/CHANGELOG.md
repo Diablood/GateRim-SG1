@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0-dev-r2 — Add optional SG-team field helmet prototype
+
+- Add `SG1_SGTeamFieldHelmet`.
+- Model the SG helmet as an open-face `UpperHead` / `Overhead` field helmet.
+- Keep protection moderate and below Jaffa helmet values.
+- Add crafting after `Gunsmithing` with `25` steel, `15` cloth and `Crafting 4`.
+- Add temporary inventory and four-facing graphics.
+- Add four helmets to the stranded SG-team scenario supply crates.
+- Keep the helmets optional: starter pawns do not auto-equip them.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.2.0-dev-r1 — Refine stranded SG-team starter scenario
 
 - Add the dedicated player faction `SG1_PlayerSGCExpedition`.

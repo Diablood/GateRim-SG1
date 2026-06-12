@@ -13,60 +13,51 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.0-dev-r1 — Refine stranded SG-team starter scenario
+### 0.2.0-dev-r2 — Add optional SG-team field helmet prototype
 
-GateRim SG-1 now opens its first playable no-gate phase with a selectable
-scenario:
+The stranded SG-team starter scenario now supplies four optional open-face
+field helmets:
 
 ```text
-Stranded SG team
+SG1_SGTeamFieldHelmet
 ```
 
-The player starts with four adult SG-team members after a failed off-world
-reconnaissance mission. The player faction is the dedicated `SGC expedition`
-identity rather than vanilla `New Arrivals`. The local Stargate is unusable and contact with the
-SGC is impossible.
+The helmets are deliberately added to the recovered equipment crates rather
+than forced onto the generated starter pawns. This reflects their situational
+use during SG missions and leaves the player free to decide when the extra
+upper-head protection is worth wearing.
 
-Each generated starter pawn automatically wears:
+The helmet:
+
+- covers `UpperHead` on the `Overhead` layer;
+- remains compatible with the complete SG-team field set;
+- weighs `0.9`;
+- provides moderate protection without becoming heavy armor;
+- costs `25` steel and `15` cloth when crafted;
+- requires `Gunsmithing` and `Crafting 4`;
+- includes temporary dedicated graphics.
+
+The scenario still starts with:
 
 ```text
-SG-team field uniform
-SG tactical boots
-SG tactical gloves
-SG tactical vest
-```
-
-The starting camp receives recovered field supplies rather than a
-preconstructed workshop:
-
-```text
+4 SG-team members
 3 assault rifles
 1 pump shotgun
 4 cloth bedrolls
-30 packaged survival meals
-20 industrial medicine
-300 steel
-150 wood
-20 industrial components
-120 cloth
-80 plain leather
+4 optional SG-team field helmets
+emergency food, medicine and resource crates
 ```
 
-The vanilla firearms are temporary Tau'ri placeholders until dedicated SGC
-weapons are introduced. Ma'Tok staffs and Zat'nik'tel sidearms remain absent
-from the starter loadout so their future natural acquisition retains gameplay
-value.
-
-This milestone does not enable world factions, natural Goa'uld raids or a
-functional Stargate yet. Those become the next `0.2.x` playable-slice steps.
+The next gameplay step remains the first playable Goa'uld world-faction
+baseline.
 
 ## Next development focus
 
-- validate the dedicated SGC expedition identity, four-candidate selection
-  page and translated launch narrative without developer tools;
-- validate automatic SG-team apparel on all four starter pawns;
-- add the first playable Goa'uld world-faction baseline;
-- activate natural encounters progressively rather than all at once.
+- validate that four helmets appear in the scenario supplies but are not
+  auto-equipped;
+- validate the helmet rendering in all facings;
+- keep final textures and wiki concept art for the later visual pass;
+- add the playable Goa'uld world-faction baseline.
 
 ## First playable milestone
 

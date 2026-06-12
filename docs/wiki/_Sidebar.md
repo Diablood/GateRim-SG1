@@ -18,6 +18,7 @@
 - [Bottes tactiques SG](SG-Tactical-Boots)
 - [Gants tactiques SG](SG-Tactical-Gloves)
 - [Gilet tactique SG](SG-Tactical-Vest)
+- [Casque de terrain SG](SG-Team-Field-Helmet)
 - [Armures Jaffa](Jaffa-Armor)
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Loadouts d'armures Jaffa](Jaffa-Armor-Loadouts)

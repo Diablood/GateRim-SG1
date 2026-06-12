@@ -66,6 +66,17 @@ choisisse leur répartition.
 
 Aucun établi préconstruit n'est fourni.
 
+## Casques de terrain facultatifs
+
+```text
+4 casques de terrain SG
+```
+
+Les casques arrivent dans les fournitures de départ. Ils ne sont pas équipés
+automatiquement : le joueur choisit quand les utiliser.
+
+Consulte [Casque de terrain SG](SG-Team-Field-Helmet).
+
 ## Caisses de ravitaillement récupérées
 
 ```text

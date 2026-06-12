@@ -58,6 +58,13 @@
                     <count>4</count>
                 </li>
 
+                <!-- Optional field helmets: supplied, never auto-equipped. -->
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>SG1_SGTeamFieldHelmet</thingDef>
+                    <count>4</count>
+                </li>
+
                 <!-- Recovered emergency-supply crates. -->
                 <li Class="ScenPart_StartingThing_Defined">
                     <def>StartingThing_Defined</def>

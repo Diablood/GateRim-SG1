@@ -63,6 +63,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Bottes tactiques SG | Chaussures de terrain modulaires noires : protection légère des pieds, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.79-dev |
 | Gants tactiques SG | Gants de terrain modulaires noirs : protection légère des mains, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.80-dev |
 | Gilet tactique SG | Gilet noir de portage modulaire : protection modérée du torse et des épaules, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec l'ensemble SG existant | 0.1.81-dev |
+| Casque de terrain SG | Casque ouvert facultatif : protection modérée du haut de la tête, fabrication après Armurerie et quatre exemplaires fournis sans équipement automatique dans le scénario Équipe SG isolée | 0.2.0-dev-r2 |
 | Loadout Ma'Tok des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` pour les guerriers et gardes générés | 0.1.65-dev |
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |

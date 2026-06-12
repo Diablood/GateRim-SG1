@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Optional SG-team open-face field helmet.
+    It is supplied by the stranded-team scenario but deliberately left
+    unequipped so the player chooses when it is worth wearing.
+    -->
+    <ThingDef ParentName="ArmorHelmetMakeableBase">
+        <defName>SG1_SGTeamFieldHelmet</defName>
+        <label>SG-team field helmet</label>
+        <description>An open-face SG-team field helmet intended for hazardous missions. It offers useful upper-head protection without becoming heavy armor. The stranded SG-team scenario supplies four helmets as optional equipment rather than forcing them onto every team member.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamFieldHelmet/SGTeamFieldHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.06</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>25</Steel>
+            <Cloth>15</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>4200</WorkToMake>
+            <MaxHitPoints>140</MaxHitPoints>
+            <Mass>0.9</Mass>
+            <Flammability>0.35</Flammability>
+            <ArmorRating_Sharp>0.32</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.18</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.10</ArmorRating_Heat>
+            <EquipDelay>1.5</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>UpperHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamFieldHelmet/SGTeamFieldHelmet</wornGraphicPath>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SG1_SGTeamFieldHelmet</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>

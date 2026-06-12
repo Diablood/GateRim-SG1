@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.0-dev-r1</modVersion>
+    <modVersion>0.2.0-dev-r2</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -80,6 +80,7 @@ Current development scope:
 - Black and desert SG-team field-uniform visual variants
 - First playable stranded SG-team starter scenario without a functional Stargate
 - Scenario refinement: dedicated SGC expedition faction, four candidates, violence-capable starters and translated launch narrative
+- Optional SG-team open-face field-helmet prototype supplied by the stranded-team scenario
 - Vanilla weapon-tag Ma'Tok loadout for generated Goa'uld-aligned Jaffa servants
 - Modular Jaffa armor prototypes with localized hand, finger, foot and toe protection
 - Persistent retractable Jaffa helmet modes with automatic drafted deployment

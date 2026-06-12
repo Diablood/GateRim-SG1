@@ -101,6 +101,14 @@ stuff: Cloth
 
 No preconstructed tailoring bench is provided.
 
+## Optional field helmets
+
+```text
+4 SG1_SGTeamFieldHelmet
+```
+
+The helmets arrive as supplies and are deliberately not auto-equipped.
+
 ## Emergency-supply crates
 
 ```text
@@ -137,7 +145,7 @@ Not enabled yet:
 9. Start the map and confirm that four player pawns arrive standing on the map.
 10. Confirm that the translated narrative introduction opens automatically.
 11. Confirm the presence of three assault rifles, one pump shotgun, four cloth
-   bedrolls and all emergency supplies.
+   bedrolls, four unequipped SG-team field helmets and all emergency supplies.
 12. Confirm that no tailoring bench is supplied.
 13. Save and reload the new colony.
 14. Confirm that the existing Jaffa developer raid tests still work when

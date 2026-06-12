@@ -842,3 +842,15 @@
 - [x] Open the translated narrative reliably at map start
 - [ ] Validate the refined scenario in RimWorld
 - [ ] Add an optional SG-team helmet as a separate equipment milestone
+
+
+## 0.2.0-dev-r2 — Optional SG-team field helmet prototype
+
+- [x] Add an open-face SG-team field helmet
+- [x] Cover `UpperHead` on the `Overhead` layer
+- [x] Keep protection moderate and below Jaffa helmet values
+- [x] Add four optional helmets to the stranded-team supply crates
+- [x] Avoid automatic helmet equipment on starter pawns
+- [x] Add temporary inventory and facing-specific graphics
+- [ ] Validate the helmet and scenario supplies in RimWorld
+- [ ] Continue with the playable Goa'uld world-faction baseline
