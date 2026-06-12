@@ -27,7 +27,7 @@ Il demande une compétence **Artisanat 3**.
 
 ## Couverture et rôle
 
-L'uniforme couvre :
+Le treillis couvre :
 
 - le torse ;
 - les épaules ;
@@ -41,7 +41,7 @@ est de fournir une base visuelle et fonctionnelle aux futures équipes SG.
 
 Les ajouts suivants resteront modulaires :
 
-- bottes tactiques SG ;
+- [bottes tactiques SG](SG-Tactical-Boots) ;
 - gants tactiques SG ;
 - gilet tactique SG.
 

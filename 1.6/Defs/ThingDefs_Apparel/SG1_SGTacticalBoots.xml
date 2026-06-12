@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    SG-team tactical boots prototype.
+    They remain a separate Middle-layer footwear item compatible with the
+    OnSkin SG-team field uniform.
+    -->
+    <ThingDef ParentName="ApparelMakeableBase">
+        <defName>SG1_SGTacticalBoots</defName>
+        <label>SG tactical boots</label>
+        <description>Durable black tactical boots intended for SG-team field operations. They provide modest protection for the feet while remaining light enough for extended missions. The boots are a separate modular item compatible with the SG-team field uniform.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTacticalBoots/SGTacticalBoots</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.08</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Leather_Plain>35</Leather_Plain>
+            <Cloth>10</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>3600</WorkToMake>
+            <MaxHitPoints>120</MaxHitPoints>
+            <Mass>0.75</Mass>
+            <Flammability>0.65</Flammability>
+            <ArmorRating_Sharp>0.12</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.08</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.08</ArmorRating_Heat>
+            <Insulation_Cold>2</Insulation_Cold>
+            <EquipDelay>1</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Feet</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTacticalBoots/SGTacticalBoots</wornGraphicPath>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <tags>
+                <li>SG1_SGTacticalBoots</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Worker</li>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>

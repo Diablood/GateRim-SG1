@@ -29,7 +29,7 @@ disponible du contenu encore en développement.
   [domaine prototype d'un Grand Maître](Goauld-System-Lord-Faction),
   [identité visuelle Jaffa intrinsèque](Jaffa-System-Lord-Visual-Identity),
   [profil d'identité des domaines](Goauld-System-Lord-Domain-Identity),
-  [bâton Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel), [treillis d'équipe SG](SG-Team-Uniform), [armures Jaffa](Jaffa-Armor) et
+  [bâton Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel), [treillis d'équipe SG](SG-Team-Uniform), [bottes tactiques SG](SG-Tactical-Boots), [armures Jaffa](Jaffa-Armor) et
   [raid Jaffa contrôlé](Goauld-Jaffa-Controlled-Raid) et
   [raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)
   et [raid de destruction Jaffa contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid).

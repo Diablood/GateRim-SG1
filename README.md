@@ -13,45 +13,41 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.78-dev — Add SG-team field uniform prototype
+### 0.1.79-dev — Add SG tactical boots prototype
 
-The first SG-team clothing baseline is now available:
+The first modular SG-team footwear item is now available:
 
 ```text
-SG1_GenericSGTeamUniform
+SG1_SGTacticalBoots
 ```
 
-The prototype represents a lightweight olive-drab field BDU combining jacket
-and trousers as one textile base layer. It covers torso, shoulders, arms and
-legs without attempting to replace later modular equipment.
+The prototype represents durable black tactical boots intended for extended
+field operations. They remain separate from the olive-drab SG-team field
+uniform and use the `Middle` apparel layer so both items can be worn together.
 
-The uniform is:
+The boots:
 
-- craftable at vanilla tailoring workstations;
-- categorized under the dedicated `SG teams` apparel category;
-- wearable on the `OnSkin` layer;
-- intentionally low-protection compared with dedicated armor;
-- supplied with temporary body-type and facing-specific graphics.
+- protect the feet without treating ordinary footwear as leg armor;
+- remain lightweight compared with reinforced Jaffa boots;
+- are craftable at the vanilla hand and electric tailoring benches;
+- cost `35` plain leather and `10` cloth;
+- reuse the dedicated `SG teams` apparel category;
+- include temporary body-type and facing-specific graphics.
 
-The following SG-team items remain separate planned milestones:
+The following modular SG-team items remain separate planned milestones:
 
 ```text
-SG tactical boots
 SG tactical gloves
 SG tactical vest
 ```
-
-Environmental and role variants such as black, woodland, desert, heavy
-tactical, medical and scientific uniforms remain deferred until the generic
-baseline is validated.
 
 Natural Goa'uld raids, settlements and traders remain disabled.
 
 ## Next development focus
 
-- validate rendering across body types and facings;
-- validate tailoring recipes and apparel compatibility;
-- add SG tactical boots as the next modular equipment item.
+- validate rendering with and without the SG-team field uniform;
+- validate crafting and apparel-layer compatibility;
+- add SG tactical gloves as the next modular equipment item.
 
 ## First playable milestone
 
@@ -74,7 +70,7 @@ Natural Goa'uld raids, settlements and traders remain disabled.
 - [x] Retractable Jaffa helmet modes
 - [x] Automatic Jaffa armor loadouts
 - [x] SG-team field uniform prototype
-- [ ] SG tactical boots
+- [x] SG tactical boots prototype
 - [ ] SG tactical gloves
 
 ## Development notes

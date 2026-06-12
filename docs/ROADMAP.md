@@ -26,7 +26,7 @@
 - [x] Add a Zat'nik'tel first-shot incapacitation prototype.
 - [x] Add generic Jaffa armor.
 - [x] Add an SG-team field uniform prototype.
-- [ ] Add SG tactical boots.
+- [x] Add SG tactical boots prototype.
 - [ ] Add SG tactical gloves.
 - [ ] Add a first SG tactical vest or visual equipment layer.
 - [ ] Plan later uniform variants for roles and environments: standard SGC, desert, forest, heavy tactical, medical and scientific.
@@ -763,3 +763,15 @@
 - [x] Keep tactical boots, gloves and vest separate
 - [ ] Validate apparel compatibility and visuals in game
 - [ ] Add later environment and role variants only after the baseline is stable
+
+
+## 0.1.79-dev — SG tactical boots prototype
+
+- [x] Add separate SG tactical-boots apparel Def
+- [x] Reuse the SG-team apparel category
+- [x] Keep the boots compatible with the OnSkin field uniform
+- [x] Limit protection to feet rather than full legs
+- [x] Add vanilla hand and electric tailoring-bench recipes
+- [x] Add temporary inventory and body-type-specific graphics
+- [ ] Validate visuals and compatibility in game
+- [ ] Add SG tactical gloves as a separate modular item

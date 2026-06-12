@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.79-dev — Add SG tactical boots prototype
+
+- Add `SG1_SGTacticalBoots`.
+- Keep the footwear separate from the SG-team field uniform.
+- Reuse the dedicated `SG1_SGTeamApparel` category.
+- Cover only `Feet` on the `Middle` layer so the boots remain compatible with the `OnSkin` field uniform.
+- Add modest foot protection without approaching reinforced Jaffa-boot armor values.
+- Add crafting recipes for the vanilla hand and electric tailoring benches.
+- Require `35` plain leather and `10` cloth.
+- Add temporary inventory, facing-specific and body-type-specific graphics.
+- Add French translation, technical documentation and player-wiki drafts.
+
 ## 0.1.78-dev — Add SG-team field uniform prototype
 
 - Add `SG1_GenericSGTeamUniform`.
