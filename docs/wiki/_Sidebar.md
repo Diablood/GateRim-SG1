@@ -11,6 +11,7 @@
 - [Goa'uld](Goauld)
 - [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction)
 - [Bâton Ma'Tok](Matok-Staff)
+- [Zat'nik'tel](ZatnikTel)
 - [Armures Jaffa](Jaffa-Armor)
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Loadouts d'armures Jaffa](Jaffa-Armor-Loadouts)

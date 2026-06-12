@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.77-dev — Add Zat'nik'tel incapacitation prototype
+
+- Add the craftable `SG1_ZatnikTel` compact Goa'uld energy sidearm.
+- Add a dedicated temporary weapon graphic and pulse-projectile graphic.
+- Add `Projectile_ZatnikTelDisruption`.
+- Use vanilla `Stun` as the direct first-shot neutralization effect with a base amount of `10`.
+- Add a weak targeted `10 EMP` follow-up against non-organic pawns.
+- Add a weak targeted `8 EMP` follow-up against buildings and turrets.
+- Avoid physical injury and structural damage in the first-shot prototype.
+- Reuse the declarative `Goauld` energy-technology extension.
+- Keep lethal second-shot behavior, third-shot disintegration, automatic Jaffa loadouts and complex visuals deferred.
+- Add French translation, technical documentation and player-wiki drafts.
+
 ## 0.1.76-dev — Add Ma'Tok plasma-impact damage prototype
 
 - Keep the Ma'Tok projectile's existing `24` burn damage and `0.28` base armor penetration.

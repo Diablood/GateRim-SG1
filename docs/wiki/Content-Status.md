@@ -56,6 +56,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Profil de groupe Goa'uld `Combat` | Profil technique imbriqué dans le domaine prototype, sans activation des raids naturels | 0.1.62-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les pawns non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
+| Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique et faible perturbation IEM supplémentaire contre les cibles mécaniques compatibles | 0.1.77-dev |
 | Loadout Ma'Tok des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` pour les guerriers et gardes générés | 0.1.65-dev |
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |

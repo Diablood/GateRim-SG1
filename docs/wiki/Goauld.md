@@ -200,6 +200,25 @@ mécanoïdes vanilla et les bâtiments.
 
 Consulte [Bâton Ma'Tok](Matok-Staff).
 
+### Zat'nik'tel
+
+Depuis `0.1.77-dev`, une première arme de poing Goa'uld peut être fabriquée et
+testée manuellement :
+
+```text
+Zat'nik'tel
+```
+
+Ce premier prototype représente uniquement la neutralisation temporaire du
+premier tir. Il ajoute une faible perturbation IEM contre les mécanoïdes
+vanilla et les bâtiments compatibles, sans blessure physique ni explosion de
+zone.
+
+Le deuxième tir létal et le troisième tir désintégrant restent prévus pour des
+itérations séparées.
+
+Consulte [Zat'nik'tel](ZatnikTel).
+
 ### Armures Jaffa modulaires
 
 Depuis `0.1.66-dev`, cinq premières pièces d'équipement Jaffa peuvent être

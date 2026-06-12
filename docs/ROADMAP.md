@@ -643,7 +643,7 @@
 - [ ] Add variants by System Lord or Goa'uld faction where practical
 - [ ] Keep Free Jaffa visually distinct from Goa'uld-aligned Jaffa
 - [ ] Add Ma'Tok staff weapon
-- [ ] Add Zat'nik'tel
+- [x] Add Zat'nik'tel first-shot incapacitation prototype
 - [ ] Add generic Jaffa armor
 - [ ] Add Free Jaffa Nation
 - [ ] Add Tok'ra resistance
@@ -737,3 +737,17 @@
 - [x] Keep area explosions deferred
 - [x] Add reusable Goa'uld energy-technology classification
 - [ ] Add future Replicator resistance as a separate milestone
+
+
+## 0.1.77-dev — Zat'nik'tel incapacitation prototype
+
+- [x] Add craftable Zat'nik'tel sidearm Def
+- [x] Add temporary dedicated item and projectile graphics
+- [x] Add first-shot vanilla Stun neutralization
+- [x] Add weak EMP follow-up against non-organic pawns
+- [x] Add weak EMP follow-up against buildings and turrets
+- [x] Reuse Goa'uld energy-technology classification
+- [ ] Tune stun and EMP values after hands-on testing
+- [ ] Add persistent second-shot lethal state in a separate milestone
+- [ ] Add third-shot disintegration only after reviewing gameplay value
+- [ ] Decide later whether any Jaffa loadout should receive a Zat automatically

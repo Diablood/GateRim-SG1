@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="BaseBullet">
+        <defName>SG1_ZatnikTelProjectile</defName>
+        <label>Zat'nik'tel disruption pulse</label>
+        <thingClass>GateRimSG1.Weapons.Projectile_ZatnikTelDisruption</thingClass>
+        <graphicData>
+            <texPath>Things/Projectile/SG1_ZatnikTelBlast</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <modExtensions>
+            <li Class="GateRimSG1.Weapons.SG1EnergyWeaponExtension">
+                <technology>Goauld</technology>
+                <affectedByFutureReplicatorResistance>true</affectedByFutureReplicatorResistance>
+            </li>
+        </modExtensions>
+        <projectile>
+            <damageDef>Stun</damageDef>
+            <damageAmountBase>10</damageAmountBase>
+            <speed>75</speed>
+        </projectile>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseHumanMakeableGun">
+        <defName>SG1_ZatnikTel</defName>
+        <label>Zat'nik'tel</label>
+        <description>A compact Goa'uld energy sidearm designed to neutralize targets. This first prototype models only the initial non-lethal discharge: biological targets are temporarily stunned, while non-organic pawns and compatible buildings receive an additional weak EMP disruption. The later lethal second shot and disintegrating third shot are intentionally deferred.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.78</drawSize>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <statBases>
+            <WorkToMake>9000</WorkToMake>
+            <Mass>0.65</Mass>
+            <AccuracyTouch>0.88</AccuracyTouch>
+            <AccuracyShort>0.82</AccuracyShort>
+            <AccuracyMedium>0.68</AccuracyMedium>
+            <AccuracyLong>0.38</AccuracyLong>
+            <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+        </statBases>
+        <costList>
+            <Steel>18</Steel>
+            <Plasteel>4</Plasteel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <recipeMaker>
+            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>5</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+        </recipeMaker>
+        <verbs>
+            <li>
+                <verbClass>Verb_Shoot</verbClass>
+                <isPrimary>true</isPrimary>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>SG1_ZatnikTelProjectile</defaultProjectile>
+                <warmupTime>0.45</warmupTime>
+                <range>18.9</range>
+                <soundCast>Shot_ChargeRifle</soundCast>
+                <soundCastTail>GunTail_Light</soundCastTail>
+                <muzzleFlashScale>4</muzzleFlashScale>
+            </li>
+        </verbs>
+        <weaponTags>
+            <li>SG1_ZatnikTel</li>
+        </weaponTags>
+        <modExtensions>
+            <li Class="GateRimSG1.Weapons.SG1EnergyWeaponExtension">
+                <technology>Goauld</technology>
+                <affectedByFutureReplicatorResistance>true</affectedByFutureReplicatorResistance>
+            </li>
+        </modExtensions>
+        <tools>
+            <li>
+                <label>grip</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>6</power>
+                <cooldownTime>1.7</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+</Defs>
