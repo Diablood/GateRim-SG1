@@ -22,10 +22,10 @@
 
 ### Emblematic equipment
 
-- [ ] Add a Ma'Tok staff-weapon prototype.
-- [ ] Add a Zat'nik'tel prototype.
-- [ ] Add generic Jaffa armor.
-- [ ] Add a generic human SG-team uniform.
+- [x] Add a Ma'Tok staff-weapon prototype.
+- [x] Add a Zat'nik'tel first-shot incapacitation prototype.
+- [x] Add generic Jaffa armor.
+- [x] Add an SG-team field uniform prototype.
 - [ ] Add SG tactical boots.
 - [ ] Add SG tactical gloves.
 - [ ] Add a first SG tactical vest or visual equipment layer.
@@ -751,3 +751,15 @@
 - [ ] Add persistent second-shot lethal state in a separate milestone
 - [ ] Add third-shot disintegration only after reviewing gameplay value
 - [ ] Decide later whether any Jaffa loadout should receive a Zat automatically
+
+
+## 0.1.78-dev — SG-team field uniform prototype
+
+- [x] Add a dedicated SG-team apparel category
+- [x] Add one lightweight olive-drab BDU uniform
+- [x] Cover torso, shoulders, arms and legs on the `OnSkin` layer
+- [x] Add vanilla tailoring-workstation recipes
+- [x] Add temporary inventory and body-type-specific graphics
+- [x] Keep tactical boots, gloves and vest separate
+- [ ] Validate apparel compatibility and visuals in game
+- [ ] Add later environment and role variants only after the baseline is stable

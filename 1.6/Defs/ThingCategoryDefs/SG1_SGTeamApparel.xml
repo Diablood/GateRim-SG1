@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingCategoryDef>
+        <defName>SG1_SGTeamApparel</defName>
+        <label>SG teams</label>
+        <parent>Apparel</parent>
+    </ThingCategoryDef>
+</Defs>

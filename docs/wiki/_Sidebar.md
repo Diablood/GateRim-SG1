@@ -12,6 +12,7 @@
 - [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction)
 - [Bâton Ma'Tok](Matok-Staff)
 - [Zat'nik'tel](ZatnikTel)
+- [Uniforme générique d'équipe SG](SG-Team-Uniform)
 - [Armures Jaffa](Jaffa-Armor)
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Loadouts d'armures Jaffa](Jaffa-Armor-Loadouts)

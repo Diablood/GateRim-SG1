@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.78-dev — Add SG-team field uniform prototype
+
+- Add `SG1_GenericSGTeamUniform`.
+- Add a dedicated `SG1_SGTeamApparel` storage category under apparel.
+- Model the first SG-team clothing baseline as an olive-drab jacket-and-trousers BDU.
+- Keep the uniform on the `OnSkin` layer with torso, shoulder, arm and leg coverage.
+- Keep protection deliberately lightweight and separate from future tactical armor.
+- Add tailoring recipes for the hand tailoring bench and electric tailoring bench.
+- Add temporary graphics for inventory, all four facings and the existing body-type variants.
+- Keep SG tactical boots, gloves and vest as separate future apparel items.
+- Normalize custom DefInjected translation folders with fully qualified GateRim SG-1 type names.
+- Rename the player-facing uniform label to `SG-team field uniform` / `treillis d'équipe SG` and remove unnecessary human-only wording.
+- Add French translations, technical documentation and player-wiki drafts.
+
 ## 0.1.77-dev — Add Zat'nik'tel incapacitation prototype
 
 - Add the craftable `SG1_ZatnikTel` compact Goa'uld energy sidearm.
