@@ -23,7 +23,7 @@ Un enfant peut ainsi naître Jaffa sans naître avec une larve déjà implantée
 
 ## Hôtes Goa'uld
 
-Un hôte Goa'uld ne constitue pas une lignée héréditaire. Il s'agit d'un pawn possédé au cours de sa vie par un symbiote adulte.
+Un hôte Goa'uld ne constitue pas une lignée héréditaire. Il s'agit d'un individu possédé au cours de sa vie par un symbiote adulte.
 
 Les enfants d'un hôte Goa'uld ne doivent donc pas naître automatiquement possédés.
 

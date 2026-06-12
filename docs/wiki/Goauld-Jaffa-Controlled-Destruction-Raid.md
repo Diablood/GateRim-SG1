@@ -53,5 +53,7 @@ captif ou butin.
 
 ## Limites
 
-Les raids naturels, colonies et marchands Goa'uld restent désactivés. Les
-seuils de dégâts et les délais sont encore des valeurs de prototype.
+Les colonies mondiales et les rares assauts directs naturels sont actifs depuis
+`0.2.1-dev`. Cette doctrine de destruction reste réservée aux outils
+développeur. Les seuils de dégâts et les délais sont encore des valeurs de
+prototype.

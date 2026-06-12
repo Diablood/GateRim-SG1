@@ -1,107 +1,82 @@
-# Domaine d'un Grand Maître Goa'uld
+# Domaines des Grands Maîtres Goa'uld
 
-> Statut : Prototype
-> Version d'introduction : 0.1.61-dev
-> Extension Jaffa serviteurs : 0.1.62-dev
-> Attribution initiale du Prim'ta : 0.1.63-dev
-> Premier équipement Jaffa : 0.1.64-dev
-> Loadout Ma'Tok automatique : 0.1.65-dev
-> Armures Jaffa modulaires : 0.1.66-dev
-> Casque Jaffa rétractable : 0.1.67-dev
-> Loadouts d'armures automatiques : 0.1.68-dev
-> Raid Jaffa contrôlé : 0.1.69-dev
-> Stratégie de raid contrôlé explicite : 0.1.70-dev
-> Raid d'enlèvement Jaffa contrôlé : 0.1.71-dev
-> Raid de destruction Jaffa contrôlé : 0.1.72-dev
-> Identité visuelle Jaffa générique : 0.1.73-dev
-> Fondation d'identité des domaines : 0.1.74-dev
+> Statut : Première base mondiale jouable  
+> Fondation technique : 0.1.61-dev  
+> Présence mondiale et premier raid naturel : 0.2.1-dev
 
 ## Présentation
 
-Le premier domaine d'un Grand Maître Goa'uld est une fondation technique
-hostile. Il prépare l'arrivée progressive des groupes ennemis, raids, colonies
-et événements Goa'uld.
+Les territoires contrôlés par les Grands Maîtres Goa'uld sont désormais
+représentés sur la carte du monde par une faction hostile visible :
 
 ```text
-domaine d'un Grand Maître Goa'uld
+Domaines des Grands Maîtres Goa'uld
 ```
 
-## Fonctionnement actuel
+Cette faction unique sert d'abstraction pratique RimWorld pour plusieurs
+domaines Goa'uld rivaux.
 
-La définition reste volontairement limitée :
+## Présence mondiale
 
-- hostilité permanente ;
-- faction masquée ;
-- aucune génération automatique au démarrage ;
-- aucune colonie mondiale ;
-- aucun raid naturel ;
-- aucun marchand ;
-- aucun site de quête.
+Une nouvelle planète génère :
 
-Depuis `0.1.62-dev`, deux premiers `PawnKindDef` de serviteurs Jaffa sont
-disponibles pour les tests développeur :
+```text
+1 faction Goa'uld hostile
+un nombre limité de colonies visibles
+```
+
+La présence mondiale utilise volontairement un poids de génération de colonies
+réduit. Les Goa'uld sont visibles sans saturer la carte.
+
+## Hostilité
+
+La faction est ennemie permanente de l'expédition du SGC.
+
+Les marchands, l'aide militaire et les sites de quête Goa'uld restent
+désactivés.
+
+## Serviteurs Jaffa
+
+Les colonies et groupes de combat utilisent actuellement :
 
 ```text
 guerrier Jaffa au service des Goa'uld
 garde Jaffa au service des Goa'uld
 ```
 
-Les deux variantes forcent la lignée Jaffa héréditaire existante. Le domaine
-possède également un profil technique `Combat` composé majoritairement de
-guerriers et plus rarement de gardes.
+Les serviteurs reçoivent automatiquement :
 
-Depuis `0.1.63-dev`, chacun de ces serviteurs reçoit automatiquement un
-Prim'ta initial lorsqu'il est généré. Cette attribution n'est effectuée
-qu'une fois par pawn : une larve retirée ultérieurement ne réapparaît pas.
+- leur lignée Jaffa ;
+- un Prim'ta initial ;
+- un bâton Ma'Tok ;
+- leur armure modulaire ;
+- leur casque rétractable ;
+- leur marque frontale intrinsèque.
 
-## Pourquoi la faction reste masquée
+## Premier raid naturel
 
-Le profil de groupe prépare les futurs contenus hostiles, mais il n'est pas
-encore relié à une génération naturelle. Les pawns peuvent être générés
-manuellement pour vérifier leur xenotype.
+Depuis `0.2.1-dev`, un incident rare peut lancer un assaut direct :
 
-Depuis `0.1.64-dev`, un premier [bâton Ma'Tok](Matok-Staff) jouable peut être
-fabriqué et testé manuellement. Depuis `0.1.65-dev`, les guerriers et gardes
-Jaffa générés le reçoivent automatiquement via le système vanilla de loadout.
-Depuis `0.1.66-dev`, cinq [armures Jaffa modulaires](Jaffa-Armor) peuvent être
-fabriquées et testées manuellement : deux torses, des gantelets protégeant
-les doigts, des bottes protégeant les orteils et un casque déployé.
-Depuis `0.1.67-dev`, le casque possède trois modes rétractables persistants.
-Depuis `0.1.68-dev`, les guerriers et gardes générés reçoivent automatiquement
-leur ensemble modulaire adapté. Depuis `0.1.74-dev`, leur marque frontale noire
-est conservée comme une donnée intrinsèque persistante indépendante des gènes,
-du xenotype et de l'équipement. L'équilibrage reste à compléter avant
-l'activation des raids et des colonies naturels.
+[Raids naturels de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid).
 
-## Suite prévue
+Cette première activation conserve :
 
 ```text
-identité visuelle
-    ↓
-tests contrôlés de groupes ennemis
-    ↓
-activation progressive des raids et de la présence mondiale
+ImmediateAttack
+aucun vol opportuniste
+aucun enlèvement opportuniste
 ```
 
-## Marque frontale Jaffa générique
+## Doctrines encore contrôlées
 
-Depuis `0.1.73-dev`, les serviteurs Jaffa générés reçoivent une marque
-frontale noire intrinsèque rendue comme un tatouage. Cette première couche
-visuelle reste indépendante des doctrines de raid et de l'armure modulaire.
+Les raids d'enlèvement et de destruction restent disponibles uniquement pour
+les tests développeur. Ils seront activés naturellement plus tard après une
+passe d'équilibrage séparée.
 
-Elle prépare des variantes propres aux futurs domaines de Grands Maîtres.
+## Identité de domaine
 
-Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).
-
-## Profil de domaine
-
-Depuis `0.1.74-dev`, la faction prototype est associée à un profil
-d'identité piloté par les Defs. Ce profil prépare trois variantes intrinsèques
-de marque frontale : noire pour les Jaffa ordinaires, argentée pour des élites
-sélectionnées et dorée embossée pour un futur Premier Primat.
-
-Les variantes de rang ne sont pas encore attribuées automatiquement. Elles
-peuvent être testées manuellement sur n'importe quel pawn avec les outils
-développeur.
+Le profil piloté par les Defs introduit en `0.1.74-dev` reste associé à la
+faction. Il prépare les marques intrinsèques noire, argentée et dorée selon le
+rang, sans encore multiplier les factions mondiales.
 
 Consulte [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity).

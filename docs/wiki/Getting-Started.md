@@ -40,7 +40,7 @@ Consulte [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario).
 ## Vérifier le contenu Jaffa
 
 1. Lance une nouvelle partie temporaire.
-2. Ouvre l'éditeur de xenotype lors de la création d'un pawn.
+2. Ouvre l'éditeur de xenotype lors de la création d'un personnage.
 3. Sélectionne le xenotype `Jaffa`.
 4. Vérifie la présence des gènes `physiologie jaffa` et `longévité jaffa`.
 5. Vérifie que l'espérance de vie indiquée est de `150 %`.
@@ -55,13 +55,13 @@ Consulte [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario).
 
 1. Active le mode développeur.
 2. Ouvre les actions de débogage.
-3. Utilise l'action de génération d'un pawn.
+3. Utilise l'action de génération d'un personnage.
 4. Sélectionne `symbiote Goa'uld`.
 5. Vérifie son apparence, ses déplacements et sa faible attaque de morsure.
 
 ## Vérifier l'implantation récente
 
-1. Sélectionne un pawn humanoïde.
+1. Sélectionne un humanoïde.
 2. Utilise l'action de débogage permettant d'ajouter un état de santé.
 3. Ajoute `implantation Goa'uld récente`.
 4. Vérifie la présence du compte à rebours dans l'onglet de santé.
@@ -75,9 +75,9 @@ L'état d'implantation récente est encore appliqué manuellement. L'attaque sau
 
 ## Vérifier le Prim'ta
 
-1. Génère un nouveau pawn Jaffa.
+1. Génère un nouveau Jaffa.
 2. Vérifie qu'il possède uniquement les gènes germinaux de la lignée jaffa.
-3. Sélectionne ce pawn.
+3. Sélectionne ce Jaffa.
 4. Utilise l'action de débogage permettant d'ajouter un état de santé.
 5. Ajoute `symbiote du Prim'ta`.
 6. Vérifie les bonus d'immunité, de guérison, de résistance, de longévité et la réduction de douleur.
@@ -85,7 +85,7 @@ L'état d'implantation récente est encore appliqué manuellement. L'attaque sau
 
 ## Remarque pour les anciennes sauvegardes de développement
 
-Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pawns de test peuvent conserver des gènes hérités des prototypes précédents.
+Utilise un personnage nouvellement généré pour valider `0.1.13-dev`. Les anciens personnages de test peuvent conserver des gènes hérités des prototypes précédents.
 
 
 ## Tester l'implantation forcée
@@ -157,8 +157,8 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 4. Sélectionne le symbiote libre.
 5. Note son identifiant.
 6. Clique sur `Implantation rituelle`.
-7. Utilise le curseur pour cliquer sur le pawn précis à implanter.
-8. Vérifie que le pawn sélectionné reçoit `implantation Goa'uld récente`.
+7. Utilise le curseur pour cliquer sur la cible précise à implanter.
+8. Vérifie que la cible sélectionnée reçoit `implantation Goa'uld récente`.
 9. Vérifie que l'identifiant est inchangé.
 
 
@@ -190,7 +190,7 @@ Utilise un pawn nouvellement généré pour valider `0.1.13-dev`. Les anciens pa
 
 ## Vérifier l'implantation médicale du Prim'ta
 
-1. Génère un nouveau pawn Jaffa.
+1. Génère un nouveau Jaffa.
 2. Ouvre son onglet de santé.
 3. Planifie `implanter un Prim'ta jaffa`.
 4. Génère une `larve de Prim'ta` avec le mode développeur.
@@ -334,7 +334,7 @@ Les larves de Prim'ta ne se trouvent plus dans les produits manufacturés.
 ## Tester un hôte Tok'ra volontaire
 
 1. Fais apparaître `hôte Tok'ra volontaire` en mode développeur.
-2. Vérifie que le pawn est contrôlé par le joueur.
+2. Vérifie que le personnage est contrôlé par le joueur.
 3. Attends au maximum `60` ticks.
 4. Ouvre son onglet Santé.
 5. Vérifie la présence de `symbiote adulte de lignée Goa'uld`.

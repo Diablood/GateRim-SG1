@@ -33,7 +33,7 @@ Prim'ta initial
 ## Casque rétractable
 
 Le casque est généré en position déployée, puis son mode persistant est
-appliqué normalement. En mode automatique, il se rétracte lorsque le pawn
+appliqué normalement. En mode automatique, il se rétracte lorsque le porteur
 n'est pas enrôlé et se déploie pendant l'enrôlement.
 
 ## Limites du prototype

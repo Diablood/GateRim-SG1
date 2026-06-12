@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
     <!--
-    Associate the existing hidden Goa'uld prototype faction with its
-    data-driven identity profile. No raids or world presence are enabled.
+    Associate the Goa'uld world faction with its data-driven identity
+    profile. The faction becomes visible in 0.2.1-dev while rank assignment
+    remains intentionally separate.
     -->
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/FactionDef[defName="SG1_GoauldSystemLordPrototype"]</xpath>

@@ -53,9 +53,9 @@ Ces éléments seront ajoutés après validation du transfert contrôlé.
 ## Sélection explicite de la cible
 
 Depuis `0.1.23-dev`, la commande `Implantation rituelle` ouvre un curseur sur la
-carte. Clique directement sur le pawn à implanter.
+carte. Clique directement sur la cible à implanter.
 
-Le pawn doit être compatible, accessible, vivant, âgé d'au moins `13` ans et
+La cible doit être compatible, accessible, vivant, âgé d'au moins `13` ans et
 situé dans le rayon de `12` cases.
 
 

@@ -31,7 +31,7 @@ symbiote Goa'uld
 ### Implantation récente
 
 Depuis `0.1.11-dev`, un état de santé temporaire peut être ajouté manuellement
-à un pawn humanoïde :
+à un humanoïde :
 
 ```text
 implantation Goa'uld récente
@@ -149,34 +149,41 @@ boucle jouable d'incubation du Prim'ta.
 
 Consulte [Reine Goa'uld](Goauld-Queen).
 
-### Domaine d'un Grand Maître Goa'uld
+### Domaines des Grands Maîtres Goa'uld
 
-Depuis `0.1.61-dev`, une première fondation hostile de faction existe :
+Depuis `0.1.61-dev`, une première fondation hostile de faction existe.
+
+Depuis `0.2.1-dev`, elle devient une présence mondiale jouable :
 
 ```text
-domaine d'un Grand Maître Goa'uld
+Domaines des Grands Maîtres Goa'uld
 ```
 
-Cette définition reste masquée et non générée automatiquement. Elle n'ajoute
-encore aucune colonie, aucun raid et aucun marchand.
+Une nouvelle planète génère une faction hostile visible avec un nombre limité
+de colonies. Les marchands Goa'uld restent désactivés.
 
-Depuis `0.1.62-dev`, deux premiers serviteurs Jaffa Goa'uld peuvent être
-générés manuellement pour les tests développeur :
+Depuis `0.1.62-dev`, deux premiers serviteurs Jaffa Goa'uld sont utilisés par
+les groupes de combat et les défenses de colonies :
 
 ```text
 guerrier Jaffa au service des Goa'uld
 garde Jaffa au service des Goa'uld
 ```
 
-Les deux pawns utilisent la lignée héréditaire Jaffa existante. Un profil
-technique de groupe `Combat` est également rattaché au domaine prototype,
-sans activer encore les raids naturels.
+Les deux types de serviteurs utilisent la lignée héréditaire Jaffa existante. Les profils
+`Combat` et `Settlement` servent respectivement aux assauts et aux premières
+défenses de colonies.
+
+Depuis `0.2.1-dev`, un
+[raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid) rare réutilise
+uniquement l'assaut direct déjà validé. Les doctrines naturelles d'enlèvement
+et de destruction restent désactivées.
 
 Depuis `0.1.63-dev`, chaque nouveau guerrier ou garde Jaffa généré reçoit
 automatiquement un Prim'ta initial. L'attribution n'est effectuée qu'une
 seule fois : retirer ensuite la larve ne crée pas de remplacement artificiel.
 
-Consulte [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction).
+Consulte [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction).
 
 ### Bâton Ma'Tok
 
@@ -291,13 +298,13 @@ automatique du symbiote.
 
 Depuis `0.1.73-dev`, les Jaffa reçoivent automatiquement une marque frontale
 noire générique rendue comme un tatouage intrinsèque. Depuis `0.1.74-dev`, elle
-est stockée comme une donnée persistante propre au pawn plutôt que comme un
+est stockée comme une donnée persistante propre au personnage plutôt que comme un
 gène cosmétique technique.
 
 Cet insigne est uniquement visuel : il ne fournit aucune armure, ne remplace
 aucune pièce d'équipement et ne peut pas devenir du butin. Les outils
 développeur permettent aussi de l'appliquer ou de le retirer manuellement sur
-n'importe quel pawn, y compris un infiltrateur non-Jaffa.
+n'importe quel personnage, y compris un infiltrateur non-Jaffa.
 
 Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).
 

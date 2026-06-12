@@ -6,7 +6,7 @@
     <GR_JaffaPrimtaCeremony_CancelCommandDescription>Annule la cérémonie formelle actuelle du Prim'ta jaffa avant son achèvement.</GR_JaffaPrimtaCeremony_CancelCommandDescription>
     <GR_JaffaPrimtaCeremony_NoLarvaNearby>Une larve physique de Prim'ta doit être placée près du bassin rituel.</GR_JaffaPrimtaCeremony_NoLarvaNearby>
     <GR_JaffaPrimtaCeremony_NoTargetNearby>Aucun Jaffa éligible n'est disponible près du bassin rituel.</GR_JaffaPrimtaCeremony_NoTargetNearby>
-    <GR_JaffaPrimtaCeremony_InvalidTarget>Ce pawn n'est pas un Jaffa proche et éligible pour la cérémonie formelle du Prim'ta.</GR_JaffaPrimtaCeremony_InvalidTarget>
+    <GR_JaffaPrimtaCeremony_InvalidTarget>Cette cible n'est pas un Jaffa proche et éligible pour la cérémonie formelle du Prim'ta.</GR_JaffaPrimtaCeremony_InvalidTarget>
     <GR_JaffaPrimtaCeremony_StartFailed>La cérémonie formelle du Prim'ta n'a pas pu commencer. Vérifie la cible et la larve proche.</GR_JaffaPrimtaCeremony_StartFailed>
     <GR_JaffaPrimtaCeremony_Started>La cérémonie formelle du Prim'ta de {0} a commencé. Maintiens le Jaffa et la larve près du bassin pendant {1} ticks.</GR_JaffaPrimtaCeremony_Started>
     <GR_JaffaPrimtaCeremony_CancelledManual>La cérémonie formelle du Prim'ta a été annulée.</GR_JaffaPrimtaCeremony_CancelledManual>

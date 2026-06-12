@@ -20,7 +20,7 @@ Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_Success>{0} a subi l'implantation forcée du symbiote Goa'uld {1}.</GR_ForcedImplantation_Success>
     <GR_GoauldHostConversion_Success>{0} est désormais l'hôte Goa'uld actif du symbiote {1}.</GR_GoauldHostConversion_Success>
     <GR_EmergencyExtraction_CommandLabel>Extraction d'urgence</GR_EmergencyExtraction_CommandLabel>
-    <GR_EmergencyExtraction_CommandDescription>Extrait immédiatement le symbiote Goa'uld récemment implanté. Le parasite réapparaît sous la forme d'un pawn libre avec la même identité persistante. Il s'agit d'un prototype manuel ; les exigences médicales et les risques d'échec seront ajoutés ultérieurement.</GR_EmergencyExtraction_CommandDescription>
+    <GR_EmergencyExtraction_CommandDescription>Extrait immédiatement le symbiote Goa'uld récemment implanté. Le parasite réapparaît sous sa forme libre avec la même identité persistante. Il s'agit d'un prototype manuel ; les exigences médicales et les risques d'échec seront ajoutés ultérieurement.</GR_EmergencyExtraction_CommandDescription>
     <GR_EmergencyExtraction_InternalError>L'extraction d'urgence a échoué, car le système de transfert du symbiote est incomplet.</GR_EmergencyExtraction_InternalError>
     <GR_EmergencyExtraction_NoSpawnCell>L'extraction d'urgence a échoué, car aucune case proche ne peut accueillir le symbiote libre.</GR_EmergencyExtraction_NoSpawnCell>
     <GR_EmergencyExtraction_Success>{0} a subi une extraction d'urgence. Le symbiote Goa'uld {1} est à nouveau libre.</GR_EmergencyExtraction_Success>
@@ -36,7 +36,7 @@ Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_RitualImplantation_CommandDescription>Choisis un humanoïde compatible accessible dans le rayon du rituel. Un bassin rituel Goa'uld doit rester proche du symbiote libre et de la cible pendant la cérémonie temporisée. À la fin, la même identité persistante est transférée vers l'implantation récente.</GR_RitualImplantation_CommandDescription>
     <GR_RitualImplantation_NoNearbyTarget>Aucun humanoïde compatible accessible n'est disponible dans le rayon du rituel.</GR_RitualImplantation_NoNearbyTarget>
     <GR_RitualImplantation_Success>{0} a subi le rituel contrôlé d'implantation du symbiote Goa'uld {1}.</GR_RitualImplantation_Success>
-    <GR_RitualImplantation_InvalidTarget>Ce pawn n'est pas une cible valide pour l'implantation rituelle.</GR_RitualImplantation_InvalidTarget>
+    <GR_RitualImplantation_InvalidTarget>Cette cible n'est pas valide pour l'implantation rituelle.</GR_RitualImplantation_InvalidTarget>
     <GR_RitualCeremony_CancelCommandLabel>Annuler le rituel</GR_RitualCeremony_CancelCommandLabel>
     <GR_RitualCeremony_CancelCommandDescription>Annule la cérémonie actuelle d'implantation Goa'uld avant son achèvement.</GR_RitualCeremony_CancelCommandDescription>
     <GR_RitualCeremony_Started>Le rituel d'implantation Goa'uld de {0} a commencé. Maintiens la cible disponible et dans le rayon pendant {1} ticks.</GR_RitualCeremony_Started>
@@ -51,7 +51,7 @@ Durée restante du rituel : {2} / {3} ticks</GR_RitualCeremony_Inspect>
     <GR_TokraVoluntaryImplantation_CommandLabel>Implantation Tok'ra volontaire</GR_TokraVoluntaryImplantation_CommandLabel>
     <GR_TokraVoluntaryImplantation_CommandDescription>Choisis un humanoïde compatible proche contrôlé par le joueur, qui acceptera volontairement d'héberger ce symbiote Tok'ra. Le symbiote ne chasse pas, ne peut pas forcer l'implantation et conserve la même identité persistante.</GR_TokraVoluntaryImplantation_CommandDescription>
     <GR_TokraVoluntaryImplantation_NoNearbyTarget>Aucun humanoïde compatible proche contrôlé par le joueur n'est disponible pour une implantation Tok'ra volontaire.</GR_TokraVoluntaryImplantation_NoNearbyTarget>
-    <GR_TokraVoluntaryImplantation_InvalidTarget>Ce pawn n'est pas un hôte compatible proche contrôlé par le joueur pour une implantation Tok'ra volontaire.</GR_TokraVoluntaryImplantation_InvalidTarget>
+    <GR_TokraVoluntaryImplantation_InvalidTarget>Cette cible n'est pas un hôte compatible proche contrôlé par le joueur pour une implantation Tok'ra volontaire.</GR_TokraVoluntaryImplantation_InvalidTarget>
     <GR_TokraVoluntaryImplantation_Success>{0} a volontairement accepté le symbiote Tok'ra {1}.</GR_TokraVoluntaryImplantation_Success>
     <GR_TokraHostConversion_Success>{0} est désormais en symbiose Tok'ra active avec le symbiote {1}.</GR_TokraHostConversion_Success>
 </LanguageData>

@@ -1,4 +1,4 @@
-# Fondation des groupes de pawns Tok'ra
+# Fondation des groupes Tok'ra
 
 > Statut : Prototype technique  
 > Version d'introduction : 0.1.41-dev

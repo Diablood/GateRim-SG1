@@ -12,11 +12,11 @@
 ## Principe
 
 Une opportunité thérapeutique Tok'ra peut apparaître rarement à partir du jour
-`30` lorsqu'un pawn humanoïde compatible contrôlé par le joueur souffre d'une
+`30` lorsqu'un colon humanoïde compatible contrôlé par le joueur souffre d'une
 affection biologique curable non traumatique.
 
 ```text
-pawn malade compatible
+colon malade compatible
     ↓
 incident naturel rare
     ↓
@@ -27,7 +27,7 @@ lettre ciblée
 choix manuel du joueur
 ```
 
-La lettre indique le pawn concerné et les affections détectées. Le joueur doit
+La lettre indique le colon concerné et les affections détectées. Le joueur doit
 ensuite sélectionner le symbiote et utiliser la commande d'implantation
 thérapeutique déjà existante. La fenêtre de consentement reste obligatoire.
 

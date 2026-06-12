@@ -218,7 +218,7 @@ Oui, légèrement. Depuis `0.1.35-dev`, un Jaffa compatible âgé de `10` ans ou
 plus sans Prim'ta reçoit la pensée `attend son Prim'ta` avec un effet de `-1`.
 
 La première implantation accorde `a reçu son Prim'ta`, un bonus de `+3` pendant
-`5` jours. Ce bonus n'est accordé qu'une seule fois par pawn.
+`5` jours. Ce bonus n'est accordé qu'une seule fois par personnage.
 
 
 ## La trétonine est-elle disponible ?

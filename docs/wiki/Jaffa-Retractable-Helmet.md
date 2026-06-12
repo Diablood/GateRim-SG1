@@ -5,7 +5,7 @@
 
 ## Modes disponibles
 
-| Mode | Hors enrôlement | Pawn enrôlé |
+| Mode | Hors enrôlement | Porteur enrôlé |
 |---|---|---|
 | Automatique | rétracté | déployé |
 | Toujours déployé | déployé | déployé |
@@ -15,7 +15,7 @@ Le choix est conservé après sauvegarde et rechargement. Les valeurs brutes
 d'armure restent identiques. Seule la couverture varie : `UpperHead` lorsque le
 casque est rétracté, `FullHead` lorsqu'il est déployé.
 
-Lorsque l'un de tes propres pawns porte le casque, sélectionne-le puis utilise
+Lorsque l'un de tes propres Jaffa porte le casque, sélectionne-le puis utilise
 le gizmo :
 
 ```text

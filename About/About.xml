@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.0-dev-r2</modVersion>
+    <modVersion>0.2.1-dev-r3</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -67,7 +67,10 @@ Current development scope:
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins
-- Hidden hostile Goa'uld System Lord faction-foundation prototype
+- Visible hostile Goa'uld System Lord world-faction baseline with limited settlements
+- Remove invalid Goa'uld FactionDef world-icon fields for RimWorld 1.6
+- Expose the Goa'uld faction in RimWorld 1.6 world creation and normalize French player-facing vocabulary
+- Capitalize the French Goa'uld faction name and restore the SGC expedition faction icon
 - Goa'uld-aligned Jaffa pawn kinds and hidden Combat-group prototype
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
@@ -85,6 +88,7 @@ Current development scope:
 - Modular Jaffa armor prototypes with localized hand, finger, foot and toe protection
 - Persistent retractable Jaffa helmet modes with automatic drafted deployment
 - Deterministic modular armor loadouts for generated Goa'uld-aligned Jaffa servants
+- Low-frequency natural Goa'uld Jaffa direct-assault raid incident
 - Developer-only controlled Goa'uld Jaffa raid incident with zero storyteller chance
 - Explicit vanilla ImmediateAttack strategy for controlled Goa'uld Jaffa raid tests
 - Developer-only controlled Goa'uld Jaffa abduction raid with cover-and-extract doctrine
@@ -94,7 +98,7 @@ Current development scope:
 - Developer map tools to assign or remove black, silver and gold forehead marks on any pawn
 - Data-driven Goa'uld System Lord domain identity foundation with rank-specific intrinsic-mark slots
 - Player-facing GateRim SG-1 setting for optional advanced diagnostic information
-- Natural Goa'uld raids, settlements and world presence planned for the 0.2.x playable-slice phase
+- Goa'uld world presence and rare natural direct-assault raids enabled; advanced natural doctrines remain planned
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
 

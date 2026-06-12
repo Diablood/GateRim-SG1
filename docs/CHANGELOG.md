@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.2.1-dev-r3 — Capitalize Goa'uld name and restore SGC faction icon
+
+- Capitalize the French player-facing faction name to `Domaines des Grands Maîtres Goa'uld`.
+- Capitalize the matching fixed faction name.
+- Add explicit vanilla-style `factionIconPath = World/WorldObjects/Expanding/Town` to `SG1_PlayerSGCExpedition`.
+- Add explicit `settlementTexturePath = World/WorldObjects/DefaultSettlement` to `SG1_PlayerSGCExpedition`.
+- Keep the custom SGC expedition identity and existing faction color spectrum.
+- No C# rebuild is required for this XML and documentation correction.
+
+## 0.2.1-dev-r2 — Expose Goa'uld faction and normalize French vocabulary
+
+- Add `maxConfigurableAtWorldCreation = 1` and `startingCountAtWorldCreation = 1` to the Goa'uld `FactionDef`.
+- Make the Goa'uld faction appear once by default in RimWorld 1.6 world creation.
+- Prevent duplicate Goa'uld factions through the Add faction menu.
+- Add valid `factionIconPath` and `settlementTexturePath` fields.
+- Remove deprecated `canMakeRandomly` and `maxCountAtGameStart` fields.
+- Preserve `requiredCountAtGameStart = 1` for generation paths that do not receive an explicit world-creation faction list.
+- Replace unnecessary `pawn` jargon in French player-facing strings and wiki prose with contextual terms such as soldier, target, host, colonist, Jaffa or character.
+- Keep technical identifiers such as `PawnKindDef` unchanged where they refer to RimWorld code concepts.
+- No C# rebuild is required for this XML and documentation correction.
+
+## 0.2.1-dev-r1 — Remove invalid Goa'uld faction icon fields
+
+- Remove invalid `FactionDef` fields `expandingIconTexture` and `homeIconPath`.
+- Keep world-map settlements on RimWorld's default rendering.
+- Preserve Goa'uld settlement naming, faction color spectrum, world generation and natural-raid behavior.
+- No C# rebuild is required for this XML-only correction.
+
+## 0.2.1-dev — Add playable Goa'uld world-faction baseline
+
+- Turn `SG1_GoauldSystemLordPrototype` into a visible hostile world faction.
+- Generate exactly one Goa'uld System Lord-domain faction on new worlds.
+- Use a reduced `0.35` settlement-generation weight for a visible but limited world presence.
+- Add world-map settlement naming and a gold-toned color spectrum.
+- Add a `Settlement` pawn-group profile reusing Goa'uld-aligned Jaffa warriors and guards.
+- Keep `raidsForbidden = true` so generic vanilla enemy-raid selection cannot enable unintended doctrines.
+- Add the low-frequency storyteller incident `SG1_GoauldJaffaNaturalRaid`.
+- Reuse the validated direct-assault workflow with explicit `ImmediateAttack`, `canSteal = false` and `canKidnap = false`.
+- Keep natural abduction and destruction doctrines disabled.
+- Preserve developer-controlled raid incidents for regression testing.
+- Rename the shared Goa'uld runtime-faction helper so it no longer implies hidden-only behavior.
+- Keep a visible lazy runtime fallback for older saves and isolated controlled tests.
+- Update French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.1`.
+
 ## 0.2.0-dev-r2 — Add optional SG-team field helmet prototype
 
 - Add `SG1_SGTeamFieldHelmet`.

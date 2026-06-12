@@ -31,7 +31,9 @@ La chance storyteller de cet incident est fixée à :
 0
 ```
 
-Aucun raid Goa'uld naturel n'est donc activé par ce prototype.
+Ce prototype reste manuel. Depuis `0.2.1-dev`, un incident séparé active
+néanmoins de rares [raids naturels de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid)
+sans modifier cette voie de test contrôlée.
 
 Depuis `0.1.70-dev`, l'incident sélectionne explicitement :
 
@@ -46,7 +48,7 @@ retomber sur une stratégie par défaut.
 
 Le parcours contrôlé permet de vérifier :
 
-- la création d'une faction Goa'uld hostile cachée réelle ;
+- la réutilisation de la faction mondiale Goa'uld hostile réelle ;
 - la génération vanilla du profil de groupe `Combat` ;
 - le Prim'ta initial des Jaffa ;
 - les bâtons Ma'Tok équipés ;
@@ -56,8 +58,9 @@ Le parcours contrôlé permet de vérifier :
 
 ## Limites
 
-Les raids naturels, colonies et marchands Goa'uld restent désactivés. Les
-visuels d'armure sont encore temporaires.
+Les colonies mondiales et l'assaut naturel rare sont actifs depuis
+`0.2.1-dev`. Les marchands et les doctrines naturelles avancées restent
+désactivés. Les visuels d'armure sont encore temporaires.
 
 ## Séparation des doctrines
 

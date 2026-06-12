@@ -8,7 +8,7 @@
 
 Les Jaffa reçoivent automatiquement une marque frontale noire générique.
 Depuis `0.1.74-dev`, cette marque n'est plus représentée par un gène cosmétique
-technique : elle est conservée comme une donnée intrinsèque propre au pawn.
+technique : elle est conservée comme une donnée intrinsèque propre au personnage.
 
 ## Nature de la marque
 
@@ -40,18 +40,19 @@ Un garde lourd n'est pas automatiquement un Premier Primat.
 ## Attribution manuelle
 
 Les outils développeur permettent d'appliquer ou retirer une marque sur
-n'importe quel pawn. Un humain ou un Goa'uld infiltré peut donc recevoir une
+n'importe quel personnage. Un humain ou un Goa'uld infiltré peut donc recevoir une
 fausse marque sans acquérir la génétique Jaffa.
 
 ## Persistance et migration
 
 La marque survit aux sauvegardes. Les anciens gènes techniques des prototypes
 précédents sont convertis automatiquement en données intrinsèques lorsqu'un
-pawn concerné est rencontré.
+personnage concerné est rencontré.
 
 ## Limites
 
 Les visuels actuels restent temporaires. Les variantes propres aux futurs
 Grands Maîtres, leur placement définitif et l'attribution automatique des rangs
-supérieurs seront traités ultérieurement. Les raids naturels, colonies et
-marchands Goa'uld restent désactivés.
+supérieurs seront traités ultérieurement. Les colonies visibles et les rares
+assauts directs naturels sont actifs depuis `0.2.1-dev`, mais les marchands et
+les doctrines naturelles avancées restent désactivés.

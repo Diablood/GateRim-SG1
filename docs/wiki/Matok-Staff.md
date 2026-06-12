@@ -19,7 +19,7 @@ Ce premier prototype est jouable :
 
 - arme à distance à tir unique ;
 - dégâts thermiques principaux ;
-- impact structurel réduit contre les pawns non organiques ;
+- impact structurel réduit contre les cibles non organiques ;
 - impact structurel réduit contre les bâtiments et tourelles ;
 - aucune explosion de zone ;
 - cadence volontairement lente ;

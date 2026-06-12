@@ -854,3 +854,47 @@
 - [x] Add temporary inventory and facing-specific graphics
 - [ ] Validate the helmet and scenario supplies in RimWorld
 - [ ] Continue with the playable Goa'uld world-faction baseline
+
+
+## 0.2.1-dev — Playable Goa'uld world-faction baseline
+
+- [x] Turn the Goa'uld System Lord prototype into a visible hostile world faction
+- [x] Generate exactly one Goa'uld faction on new worlds
+- [x] Use a reduced settlement-generation weight
+- [x] Add a settlement-defense pawn-group profile
+- [x] Preserve permanent hostility
+- [x] Keep generic vanilla raid selection blocked
+- [x] Add one low-frequency natural direct-assault incident
+- [x] Reuse explicit `ImmediateAttack`, `canSteal = false` and `canKidnap = false`
+- [x] Keep natural abduction and destruction doctrines disabled
+- [x] Preserve controlled developer incidents for regression testing
+- [ ] Validate world generation, settlements and the first natural raid in RimWorld
+- [ ] Continue with the Free Jaffa world-faction baseline
+
+
+## 0.2.1-dev-r1 — Remove invalid Goa'uld faction icon fields
+
+- [x] Remove invalid `FactionDef` fields `expandingIconTexture` and `homeIconPath`
+- [x] Keep default RimWorld world-map settlement rendering
+- [x] Preserve settlement naming, gold-toned faction color and world-generation behavior
+- [ ] Relaunch RimWorld and confirm that the two XML startup errors are gone
+
+
+## 0.2.1-dev-r2 — Expose Goa'uld faction and normalize French vocabulary
+
+- [x] Add RimWorld 1.6 configurable-faction fields
+- [x] Show one Goa'uld faction by default in world creation
+- [x] Prevent duplicate Goa'uld factions through the Add menu
+- [x] Use valid `factionIconPath` and `settlementTexturePath` fields
+- [x] Remove deprecated world-generation compatibility fields
+- [x] Replace unnecessary French `pawn` jargon with contextual player-facing terms
+- [ ] Reopen Create World and validate the visible Goa'uld faction row
+- [ ] Generate a new planet and validate Goa'uld settlements
+
+
+## 0.2.1-dev-r3 — Capitalize Goa'uld name and restore SGC faction icon
+
+- [x] Capitalize the French Goa'uld faction name
+- [x] Add explicit vanilla-style SGC expedition faction icon path
+- [x] Add explicit default SGC settlement texture path
+- [ ] Reopen world creation and validate both faction icons

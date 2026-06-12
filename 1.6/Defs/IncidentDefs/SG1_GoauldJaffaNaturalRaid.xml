@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Low-frequency natural Goa'uld Jaffa direct-assault raid.
+
+    This incident deliberately reuses only the validated ImmediateAttack path.
+    Abduction and destruction doctrines remain developer-only until their
+    natural weights are balanced separately.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldJaffaNaturalRaid</defName>
+        <label>Goa'uld Jaffa raid</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldJaffaNaturalRaid</workerClass>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.08</baseChance>
+        <earliestDay>12</earliestDay>
+        <minRefireDays>18</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+    </IncidentDef>
+</Defs>

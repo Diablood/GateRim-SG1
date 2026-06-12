@@ -18,6 +18,7 @@ namespace GateRimSG1
         public static FactionDef SG1_Tokra;
         public static FactionDef SG1_GoauldSystemLordPrototype;
         public static IncidentDef SG1_TokraPeacefulVisitors;
+        public static IncidentDef SG1_GoauldJaffaNaturalRaid;
         public static IncidentDef SG1_GoauldJaffaControlledRaid;
         public static IncidentDef SG1_GoauldJaffaControlledAbductionRaid;
         public static IncidentDef SG1_GoauldJaffaControlledDestructionRaid;

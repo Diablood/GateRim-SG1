@@ -5,7 +5,7 @@
 
 ## Présentation
 
-Un premier pawn hôte Tok'ra peut désormais être généré en mode développeur.
+Un premier hôte Tok'ra peut désormais être généré en mode développeur.
 
 ```text
 hôte Tok'ra volontaire
@@ -15,7 +15,7 @@ colon humain contrôlé par le joueur
 symbiote Tok'ra adulte actif
 ```
 
-## Tester le pawn
+## Tester l'hôte
 
 Fais apparaître en mode développeur :
 
@@ -39,10 +39,10 @@ origine : Tok'ra
 
 ## Identité persistante
 
-Chaque pawn reçoit une identité Tok'ra distincte.
+Chaque hôte reçoit une identité Tok'ra distincte.
 
 ```text
-première apparition du pawn
+première apparition de l'hôte
     ↓
 un symbiote Tok'ra créé
 
@@ -51,7 +51,7 @@ retrait ultérieur du symbiote
 aucun remplacement artificiel
 ```
 
-Le registre d'initialisation est sauvegardé afin d'éviter qu'un même pawn ne
+Le registre d'initialisation est sauvegardé afin d'éviter qu'un même hôte ne
 devienne une source infinie de symbiotes.
 
 ## Limites actuelles

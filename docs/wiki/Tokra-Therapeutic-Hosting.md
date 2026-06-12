@@ -33,7 +33,7 @@ Une régénération avancée des cicatrices ou des membres perdus pourra être
 
 ## Implantation thérapeutique volontaire
 
-Un symbiote Tok'ra libre peut proposer une implantation thérapeutique à un pawn
+Un symbiote Tok'ra libre peut proposer une implantation thérapeutique à un colon
 compatible souffrant d'une affection curable. Une confirmation explicite reste
 requise avant le transfert permanent du symbiote.
 

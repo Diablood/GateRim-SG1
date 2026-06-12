@@ -11,7 +11,7 @@ Un symbiote Goa'uld adulte privé d'hôte peut désormais commencer une implanta
 
 1. Active le mode développeur.
 2. Génère un `symbiote Goa'uld`.
-3. Place-le à côté d'un pawn humanoïde adulte.
+3. Place-le à côté d'un humanoïde adulte.
 4. Sélectionne le symbiote libre.
 5. Clique sur `Implantation forcée`.
 
@@ -32,7 +32,7 @@ L'identité persistante du parasite est conservée.
 | Enfant de moins de 13 ans | Refusé |
 | Animal | Refusé |
 | Mécanoïde | Refusé |
-| Pawn déjà implanté | Refusé |
+| Cible déjà implantée | Refusée |
 | Hôte possédant déjà un symbiote adulte | Refusé |
 
 ## Limites du prototype

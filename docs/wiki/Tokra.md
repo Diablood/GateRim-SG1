@@ -29,7 +29,7 @@ colonies Tok'ra
 marchands
 quêtes
 diplomatie
-groupes de pawns
+groupes
 personnages nommés
 ```
 
@@ -111,7 +111,7 @@ Ce colon humain contrôlé par le joueur reçoit automatiquement une identité
 Tok'ra persistante après son apparition.
 
 
-## Fondation des groupes de pawns
+## Fondation des groupes
 
 Depuis `0.1.41-dev`, une
 [fondation technique des groupes Tok'ra](Tokra-Pawn-Groups) existe.
@@ -155,7 +155,7 @@ confirmation explicite avant d'utiliser le flux d'implantation existant.
 
 Depuis `0.1.47-dev`, une
 [opportunité thérapeutique Tok'ra](Tokra-Therapeutic-Opportunity) peut
-apparaître rarement lorsqu'un pawn compatible souffre d'une affection
+apparaître rarement lorsqu'un colon compatible souffre d'une affection
 biologique curable non traumatique. Depuis `0.1.48-dev`, le symbiote Tok'ra
 libre arrive avec une petite escorte de 1 à 2 hôtes volontaires. L'implantation
 reste un choix manuel soumis à confirmation. Depuis `0.1.49-dev`, l'offre est
@@ -190,7 +190,7 @@ fiable `2` doses. Les paliers méfiante et neutre n'apportent aucune ressource.
 
 Depuis `0.1.53-dev`, les relations Tok'ra coopératives ou fiables peuvent
 déclencher rarement une [livraison médicale indépendante](Tokra-Medical-Support-Deliveries).
-Cette équipe apporte de la trétonine sans exiger de pawn malade et sans proposer
+Cette équipe apporte de la trétonine sans exiger de colon malade et sans proposer
 de symbiose : `2` doses au palier coopérative, puis `4` doses au palier fiable.
 
 

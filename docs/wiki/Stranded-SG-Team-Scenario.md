@@ -22,7 +22,7 @@ Le scénario génère exactement quatre membres adultes d'équipe SG. Les quatre
 
 Les candidats incapables de violence sont exclus afin que l'équipe de départ reste crédible pour une mission militaire. Des profils scientifiques restent possibles tant que leur parcours ne leur interdit pas totalement le combat.
 
-Chaque pawn porte automatiquement :
+Chaque soldat porte automatiquement :
 
 - un [treillis d'équipe SG](SG-Team-Uniform) vert olive ;
 - des [bottes tactiques SG](SG-Tactical-Boots) ;

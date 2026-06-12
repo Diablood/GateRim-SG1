@@ -31,7 +31,7 @@ implantation Goa'uld récente
 | Enfant de moins de 13 ans | Refusé |
 | Animal | Refusé |
 | Mécanoïde | Refusé |
-| Pawn déjà implanté ou possédé | Refusé |
+| Cible déjà implantée ou possédée | Refusée |
 
 ## Extraction et délai de sécurité
 

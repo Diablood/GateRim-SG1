@@ -13,51 +13,78 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.0-dev-r2 — Add optional SG-team field helmet prototype
+### 0.2.1-dev-r3 — Polish world-faction presentation
 
-The stranded SG-team starter scenario now supplies four optional open-face
-field helmets:
-
-```text
-SG1_SGTeamFieldHelmet
-```
-
-The helmets are deliberately added to the recovered equipment crates rather
-than forced onto the generated starter pawns. This reflects their situational
-use during SG missions and leaves the player free to decide when the extra
-upper-head protection is worth wearing.
-
-The helmet:
-
-- covers `UpperHead` on the `Overhead` layer;
-- remains compatible with the complete SG-team field set;
-- weighs `0.9`;
-- provides moderate protection without becoming heavy armor;
-- costs `25` steel and `15` cloth when crafted;
-- requires `Gunsmithing` and `Crafting 4`;
-- includes temporary dedicated graphics.
-
-The scenario still starts with:
+The first hostile Stargate world presence is now enabled:
 
 ```text
-4 SG-team members
-3 assault rifles
-1 pump shotgun
-4 cloth bedrolls
-4 optional SG-team field helmets
-emergency food, medicine and resource crates
+SG1_GoauldSystemLordPrototype
 ```
 
-The next gameplay step remains the first playable Goa'uld world-faction
-baseline.
+New worlds generate one visible faction representing several Goa'uld System
+Lord domains as a practical RimWorld abstraction. Its reduced settlement
+weight keeps the presence visible but limited.
+
+The `r1` startup fix removed two invalid `FactionDef` icon fields.
+
+The `r2` fix adds the RimWorld 1.6 configurable-faction fields used by the
+Create World page:
+
+```text
+maxConfigurableAtWorldCreation = 1
+startingCountAtWorldCreation = 1
+```
+
+The Goa'uld faction now appears once by default in world creation, cannot be
+duplicated through the Add faction menu, and uses the valid
+`factionIconPath` / `settlementTexturePath` fields for world presentation.
+
+The same correction also removes unnecessary `pawn` jargon from French
+player-facing strings and wiki pages.
+
+The `r3` presentation fix capitalizes the French Goa'uld faction name and
+adds explicit vanilla-style `Town` / `DefaultSettlement` icon paths to the
+custom `SGC expedition` player faction so its UI icon no longer falls back to
+a missing-texture placeholder.
+
+The baseline adds:
+
+```text
+visible Goa'uld System Lord domains
+permanent hostility
+limited world settlements
+Combat pawn-group profile
+Settlement defense pawn-group profile
+rare natural direct-assault Jaffa raids
+```
+
+Natural raids use a dedicated low-frequency incident:
+
+```text
+SG1_GoauldJaffaNaturalRaid
+```
+
+The incident reuses the validated direct-assault path:
+
+```text
+ImmediateAttack
+canSteal = false
+canKidnap = false
+```
+
+Generic vanilla faction raid selection remains blocked deliberately. Natural
+abduction and destruction doctrines remain disabled until they receive a
+separate balancing pass.
+
+The existing developer incidents remain available for controlled regression
+tests.
 
 ## Next development focus
 
-- validate that four helmets appear in the scenario supplies but are not
-  auto-equipped;
-- validate the helmet rendering in all facings;
-- keep final textures and wiki concept art for the later visual pass;
-- add the playable Goa'uld world-faction baseline.
+- validate a newly generated world with visible hostile Goa'uld settlements;
+- validate one natural or developer-triggered natural direct-assault raid;
+- confirm recoverable Ma'Tok loot after combat;
+- add the Free Jaffa world-faction baseline next.
 
 ## First playable milestone
 

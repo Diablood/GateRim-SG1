@@ -6,7 +6,8 @@ Version: `0.1.74-dev r1`
 
 The data-driven Goa'uld domain identity profile remains in place, but its rank
 slots now reference intrinsic forehead-mark Defs rather than technical genes.
-No natural raids or world presence are enabled.
+Since `0.2.1-dev`, the same profile is attached to the visible Goa'uld
+world-faction baseline and its rare direct-assault raid path.
 
 ## Domain Def
 
@@ -26,7 +27,7 @@ It maps rank slots to intrinsic marks:
 
 ## Faction association
 
-The hidden prototype faction still receives a
+The visible world faction receives a
 `GoauldSystemLordDomainExtension` through an XML patch.
 
 ```xml
@@ -47,5 +48,6 @@ ordinary mark.
 - Compatible Jaffa currently initialize with the ordinary black fallback.
 - Silver and gold marks are available through developer tools but are not assigned automatically.
 - Named System Lords are not introduced yet.
-- Natural Goa'uld raids, settlements and traders remain disabled.
+- Visible settlements and rare direct-assault raids are enabled since `0.2.1-dev`.
+- Natural abduction raids, natural destruction raids and traders remain disabled.
 - Final emblem artwork and lateral calibration remain deferred.

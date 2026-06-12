@@ -23,7 +23,7 @@ Le parasite tente de s'attacher au système nerveux et de prendre le contrôle d
 ## Tester le prototype
 
 1. Active le mode développeur.
-2. Sélectionne un pawn humanoïde.
+2. Sélectionne un humanoïde.
 3. Utilise l'action permettant d'ajouter un état de santé.
 4. Ajoute `implantation Goa'uld récente`.
 5. Vérifie le compte à rebours et la douleur temporaire.

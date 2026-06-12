@@ -11,15 +11,19 @@ SG1_GoauldJaffaControlledRaid
 ```
 
 Its storyteller base chance is exactly `0`. The incident must be triggered
-manually through RimWorld developer tools. Natural Goa'uld raids, world
-settlements and traders remain disabled.
+manually through RimWorld developer tools. Since `0.2.1-dev`, visible Goa'uld
+world settlements and one separate low-frequency natural direct-assault
+incident exist, while this controlled incident remains available for precise
+regression tests.
 
 ## Runtime faction
 
-`GoauldSystemLordFactionUtility` lazily creates one hidden runtime instance
-of `SG1_GoauldSystemLordPrototype` when the controlled incident is triggered.
+`GoauldSystemLordFactionUtility` normally reuses the visible world-generated
+instance of `SG1_GoauldSystemLordPrototype`.
 
-The utility reuses the same persistent instance on subsequent test raids.
+For older saves or isolated tests without that faction, the utility can still
+create one visible runtime fallback. The fallback is reused on subsequent
+controlled raids but does not retroactively generate settlements.
 
 Routine success logs are intentionally omitted. Unity can attach verbose
 stack traces to ordinary log messages depending on the active stack-trace
@@ -72,17 +76,17 @@ When developer tools do not supply points, the worker defaults to `500`.
 7. Confirm that the helmet-mode gizmo is absent on the enemy pawn.
 8. Draft a player colonist wearing a Jaffa helmet and confirm that the same
    gizmo remains visible for the controlled player pawn.
-9. Trigger the incident a second time and confirm that the existing hidden
-   faction instance is reused.
-10. Confirm that no natural Goa'uld raid starts without a manual developer
-    trigger.
+9. Trigger the incident a second time and confirm that the existing faction
+   instance is reused.
+10. Confirm that the separate natural direct-assault incident remains
+    available without modifying the controlled test path.
 
 ## Late-created faction attack-target cache refresh
 
-Since `0.1.70-dev r4`, the hidden runtime System Lord faction refreshes each
+Since `0.1.70-dev r4`, the resolved System Lord faction refreshes each
 loaded map's attack-target cache after it is created or reused.
 
-The controlled faction is intentionally created lazily, after the player map
+The fallback faction can still be created lazily, after the player map
 and colonists may already exist. Initial faction relations alone are not enough
 to rebuild attack-target cache entries for previously spawned pawns.
 

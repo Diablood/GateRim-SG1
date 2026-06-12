@@ -33,7 +33,7 @@ implanter un Prim'ta jaffa
 
 ## Compatibilité biologique
 
-Le pawn doit porter les gènes hérités suivants :
+Le Jaffa doit porter les gènes hérités suivants :
 
 ```text
 lignée jaffa

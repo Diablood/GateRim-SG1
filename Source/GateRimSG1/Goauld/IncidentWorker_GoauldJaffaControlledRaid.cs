@@ -4,12 +4,12 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Developer-only controlled Goa'uld-aligned Jaffa raid.
+    /// Shared Goa'uld-aligned Jaffa direct-assault raid path.
     ///
-    /// The IncidentDef has a zero storyteller base chance. It exists only
-    /// so developer tools can create a real hidden hostile faction instance
-    /// and exercise the vanilla Combat pawn-group and raid workflows.
-    /// Natural Goa'uld raids remain disabled.
+    /// The original controlled IncidentDef keeps a zero storyteller chance
+    /// for developer regression tests. A separate low-frequency natural
+    /// incident reuses this validated path after the visible world faction
+    /// baseline is enabled.
     /// </summary>
     public class IncidentWorker_GoauldJaffaControlledRaid
         : IncidentWorker_RaidEnemy
@@ -21,6 +21,14 @@ namespace GateRimSG1.Goauld
             get
             {
                 return "controlled Goa'uld Jaffa direct-assault tests";
+            }
+        }
+
+        protected virtual string RaidLogContext
+        {
+            get
+            {
+                return "controlled Goa'uld Jaffa raid";
             }
         }
 
@@ -67,21 +75,21 @@ namespace GateRimSG1.Goauld
             if (!(parms?.target is Map))
             {
                 GR_Log.Warning(
-                    "Cannot start controlled Goa'uld Jaffa raid: "
+                    $"Cannot start {RaidLogContext}: "
                     + "the incident target is not a map.");
 
                 return false;
             }
 
             Faction goauldFaction =
-                GoauldSystemLordFactionUtility.GetOrCreateHiddenFaction(
+                GoauldSystemLordFactionUtility.GetOrCreateFaction(
                     ControlledRaidPurpose);
 
             if (goauldFaction == null)
             {
                 GR_Log.Error(
-                    "Cannot start controlled Goa'uld Jaffa raid: "
-                    + "the hidden System Lord faction could not be created.");
+                    $"Cannot start {RaidLogContext}: "
+                    + "the System Lord faction could not be resolved.");
 
                 return false;
             }
@@ -103,8 +111,8 @@ namespace GateRimSG1.Goauld
             if (!succeeded)
             {
                 GR_Log.Warning(
-                    "Unable to start controlled Goa'uld Jaffa raid after "
-                    + "creating or resolving the hidden System Lord faction.");
+                    $"Unable to start {RaidLogContext} after "
+                    + "resolving the System Lord faction.");
             }
 
             return succeeded;

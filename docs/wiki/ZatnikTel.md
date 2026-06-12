@@ -15,7 +15,7 @@ premier tir.
 
 ```text
 cible directe          -> étourdissement temporaire
-pawn non organique     -> faible perturbation IEM supplémentaire
+cible non organique     -> faible perturbation IEM supplémentaire
 bâtiment ou tourelle   -> faible perturbation IEM supplémentaire
 ```
 

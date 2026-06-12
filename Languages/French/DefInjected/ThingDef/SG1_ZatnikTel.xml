@@ -2,6 +2,6 @@
 <LanguageData>
     <SG1_ZatnikTelProjectile.label>impulsion de perturbation du Zat'nik'tel</SG1_ZatnikTelProjectile.label>
     <SG1_ZatnikTel.label>Zat'nik'tel</SG1_ZatnikTel.label>
-    <SG1_ZatnikTel.description>Arme de poing énergétique compacte Goa'uld conçue pour neutraliser ses cibles. Ce premier prototype représente uniquement la première décharge non létale : les cibles biologiques sont temporairement étourdies, tandis que les pawns non organiques et les bâtiments compatibles subissent une faible perturbation IEM supplémentaire. Le deuxième tir létal et le troisième tir désintégrant sont volontairement reportés.</SG1_ZatnikTel.description>
+    <SG1_ZatnikTel.description>Arme de poing énergétique compacte Goa'uld conçue pour neutraliser ses cibles. Ce premier prototype représente uniquement la première décharge non létale : les cibles biologiques sont temporairement étourdies, tandis que les cibles non organiques et les bâtiments compatibles subissent une faible perturbation IEM supplémentaire. Le deuxième tir létal et le troisième tir désintégrant sont volontairement reportés.</SG1_ZatnikTel.description>
     <SG1_ZatnikTel.tools.0.label>poignée</SG1_ZatnikTel.tools.0.label>
 </LanguageData>

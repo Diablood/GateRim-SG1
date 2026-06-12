@@ -56,9 +56,9 @@ ticks impose tout de même le repli afin d'éviter un combat sans fin.
 
 ## Limites
 
-Les raids naturels, colonies et marchands Goa'uld restent désactivés. La
-future doctrine de destruction avec pillage opportuniste après victoire sera
-ajoutée séparément.
+Les colonies mondiales et les rares assauts directs naturels sont actifs depuis
+`0.2.1-dev`. Cette doctrine d'enlèvement reste réservée aux outils développeur.
+Les marchands Goa'uld restent désactivés.
 
 ## Déclenchement pendant le combat
 

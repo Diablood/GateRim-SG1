@@ -11,8 +11,9 @@ Le domaine Goa'uld prototype possède un profil d'identité piloté par les Defs
 SG1_GoauldSystemLordDomainPrototype
 ```
 
-Ce profil est associé à la faction cachée existante. Il ne déclenche aucun
-raid naturel et n'ajoute aucune présence mondiale.
+Ce profil est associé à la faction mondiale Goa'uld. Depuis `0.2.1-dev`,
+cette faction possède des colonies visibles et un premier raid naturel rare
+d'assaut direct.
 
 ## Emplacements de rang intrinsèques
 
@@ -48,5 +49,6 @@ doctrines de raid ou le rendu intrinsèque déjà validé.
 
 ## Limites
 
-Les raids naturels, colonies et marchands Goa'uld restent désactivés. Les
-visuels argenté et doré sont temporaires.
+Les colonies visibles et les rares assauts directs naturels sont actifs.
+Les marchands, les raids naturels d'enlèvement et les raids naturels de
+destruction restent désactivés. Les visuels argenté et doré sont temporaires.

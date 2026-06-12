@@ -2,9 +2,10 @@
 <Defs>
     <!--
     Developer-only controlled Goa'uld Jaffa raid.
-    A zero storyteller base chance keeps natural raids disabled.
-    Use developer incident tools to exercise the real hidden hostile
-    faction, Combat pawn-group profile and vanilla raid workflow.
+    A zero storyteller base chance keeps this test path manual.
+    Use developer incident tools to exercise the real hostile faction,
+    Combat pawn-group profile and vanilla raid workflow independently from
+    the separate low-frequency natural direct-assault incident.
     -->
     <IncidentDef>
         <defName>SG1_GoauldJaffaControlledRaid</defName>

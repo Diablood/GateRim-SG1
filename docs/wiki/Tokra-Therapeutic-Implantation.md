@@ -22,7 +22,7 @@ avant le transfert.
 
 ## Après l'implantation
 
-Le pawn passe par la conversion d'implantation déjà existante avant de devenir
+L'hôte passe par la conversion d'implantation déjà existante avant de devenir
 un hôte Tok'ra actif durable. Le symbiote peut alors retirer automatiquement
 les pathologies graves configurées grâce au prototype d'hébergement
 thérapeutique.

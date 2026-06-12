@@ -18,7 +18,7 @@ interrompre manuellement la prise de contrôle.
 Extraction d'urgence
 ```
 
-Le symbiote quitte sa victime et réapparaît sous la forme d'un pawn libre à
+Le symbiote quitte sa victime et réapparaît sous sa forme libre à
 proximité.
 
 ## Identité persistante
@@ -33,7 +33,7 @@ implantation récente
 symbiote libre
 ```
 
-Le pawn extrait peut être implanté à nouveau.
+Le symbiote extrait peut être implanté à nouveau.
 
 ## Limites du prototype
 

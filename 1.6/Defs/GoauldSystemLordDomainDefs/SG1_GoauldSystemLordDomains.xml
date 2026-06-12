@@ -7,7 +7,7 @@
     <GateRimSG1.Goauld.GoauldSystemLordDomainDef>
         <defName>SG1_GoauldSystemLordDomainPrototype</defName>
         <label>prototype Goa'uld System Lord domain identity</label>
-        <description>Generic fallback identity profile for the first hidden Goa'uld System Lord domain prototype.</description>
+        <description>Generic fallback identity profile for the first playable Goa'uld System Lord world-faction baseline.</description>
         <ordinaryJaffaMark>SG1_JaffaForeheadMark_GenericIntrinsic</ordinaryJaffaMark>
         <eliteJaffaMark>SG1_JaffaForeheadMark_GenericSilverIntrinsic</eliteJaffaMark>
         <firstPrimeJaffaMark>SG1_JaffaForeheadMark_GenericGoldIntrinsic</firstPrimeJaffaMark>

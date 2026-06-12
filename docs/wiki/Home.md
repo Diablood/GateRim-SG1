@@ -49,10 +49,13 @@ La phase `0.2.x` transforme désormais les prototypes techniques en une tranche
 jouable sans Porte fonctionnelle. Le premier scénario
 [Équipe SG isolée](Stranded-SG-Team-Scenario) est disponible.
 
-Les prochains lots activeront progressivement la présence mondiale Goa'uld,
-les raids naturels prudents, les Jaffa libres, la présence Tok'ra et
-l'acquisition normale des objets Stargate. La Porte des étoiles fonctionnelle
-appartiendra à la future phase `0.3.x`.
+Depuis `0.2.1-dev`, les [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
+apparaissent sur la carte du monde et peuvent lancer de rares
+[raids naturels de Jaffa](Goauld-Jaffa-Natural-Raid).
+
+Les prochains lots ajouteront progressivement les Jaffa libres, la présence
+Tok'ra mondiale et l'acquisition normale des objets Stargate. La Porte des
+étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    First hostile Goa'uld System Lord faction foundation.
-    This faction remains hidden and is not generated automatically.
-    It now exposes developer-testable Goa'uld-aligned Jaffa PawnKindDefs
-    through a nested Combat pawn-group profile. Natural settlements,
-    raids and traders remain disabled.
+    First playable Goa'uld world-faction baseline.
+
+    One hostile world faction is generated at game start as a practical
+    RimWorld abstraction for several Goa'uld System Lord domains. A reduced
+    settlement-generation weight keeps its world presence visible but limited.
+
+    Generic vanilla faction selection remains blocked through raidsForbidden.
+    Natural Goa'uld attacks use the dedicated low-frequency
+    SG1_GoauldJaffaNaturalRaid incident so only the validated direct-assault
+    doctrine is enabled in normal play during this milestone.
     -->
     <FactionDef>
         <defName>SG1_GoauldSystemLordPrototype</defName>
-        <label>Goa'uld System Lord domain</label>
-        <description>A hidden hostile foundation definition for a Goa'uld System Lord domain. This prototype establishes the faction identity and permanent hostility, exposes the first Goa'uld-aligned Jaffa servants through a developer-testable Combat pawn-group profile, and still avoids generating settlements, natural raids or traders. Future milestones will add equipment, visual markings and world presence.</description>
-        <fixedName>prototype Goa'uld System Lord domain</fixedName>
+        <label>Goa'uld System Lord domains</label>
+        <description>A hostile world-faction abstraction for territories controlled by Goa'uld System Lords. The first playable baseline generates a limited number of visible settlements and enables rare direct-assault Jaffa raids through a dedicated incident. Traders, military aid, quest sites, natural abduction raids and natural destruction raids remain disabled.</description>
+        <fixedName>Goa'uld System Lord domains</fixedName>
         <pawnsPlural>Goa'uld subjects</pawnsPlural>
         <pawnSingular>Goa'uld subject</pawnSingular>
         <leaderTitle>System Lord</leaderTitle>
         <humanlikeFaction>true</humanlikeFaction>
-        <hidden>true</hidden>
+        <hidden>false</hidden>
+        <listOrderPriority>8</listOrderPriority>
         <techLevel>Spacer</techLevel>
         <backstoryFilters>
             <li>
@@ -27,14 +33,44 @@
         </backstoryFilters>
         <permanentEnemy>true</permanentEnemy>
         <naturalEnemy>true</naturalEnemy>
-        <canMakeRandomly>false</canMakeRandomly>
-        <requiredCountAtGameStart>0</requiredCountAtGameStart>
-        <maxCountAtGameStart>0</maxCountAtGameStart>
-        <settlementGenerationWeight>0</settlementGenerationWeight>
+        <requiredCountAtGameStart>1</requiredCountAtGameStart>
+
+        <!--
+        RimWorld 1.6 world-creation UI fields.
+        The faction appears once by default and cannot be duplicated through
+        the Add faction menu.
+        -->
+        <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+        <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+        <configurationListOrderPriority>8</configurationListOrderPriority>
+        <displayInFactionSelection>true</displayInFactionSelection>
+
+        <settlementGenerationWeight>0.35</settlementGenerationWeight>
+        <factionIconPath>World/WorldObjects/Expanding/PirateOutpost</factionIconPath>
+        <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+        <factionNameMaker>NamerFactionPirate</factionNameMaker>
+        <settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+        <colorSpectrum>
+            <li>(0.60, 0.43, 0.10)</li>
+            <li>(0.85, 0.68, 0.20)</li>
+        </colorSpectrum>
+        <allowedArrivalTemperatureRange>
+            <min>-40</min>
+            <max>55</max>
+        </allowedArrivalTemperatureRange>
+
+        <!--
+        Keep generic vanilla enemy-raid selection disabled. Dedicated natural
+        and controlled incidents set the faction explicitly and force the
+        already validated ImmediateAttack path.
+        -->
         <raidsForbidden>true</raidsForbidden>
+        <canSiege>false</canSiege>
+        <canStageAttacks>false</canStageAttacks>
         <canRequestTraders>false</canRequestTraders>
         <canRequestMilitaryAid>false</canRequestMilitaryAid>
         <canGenerateQuestSites>false</canGenerateQuestSites>
+
         <maxPawnCostPerTotalPointsCurve>
             <points>
                 <li>(0, 35)</li>
@@ -56,6 +92,14 @@
         <pawnGroupMakers>
             <li>
                 <kindDef>Combat</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <SG1_GoauldJaffaWarrior>4</SG1_GoauldJaffaWarrior>
+                    <SG1_GoauldJaffaGuard>1</SG1_GoauldJaffaGuard>
+                </options>
+            </li>
+            <li>
+                <kindDef>Settlement</kindDef>
                 <commonality>1</commonality>
                 <options>
                     <SG1_GoauldJaffaWarrior>4</SG1_GoauldJaffaWarrior>

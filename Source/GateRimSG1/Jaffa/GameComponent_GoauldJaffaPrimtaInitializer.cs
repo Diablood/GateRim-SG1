@@ -7,8 +7,8 @@ namespace GateRimSG1.Jaffa
     /// <summary>
     /// Assigns one initial Prim'ta to generated Goa'uld-aligned Jaffa servants.
     ///
-    /// The initializer intentionally targets only the two prototype pawn kinds
-    /// attached to the hidden System Lord faction. Initialization is recorded
+    /// The initializer intentionally targets only the two Goa'uld-aligned pawn
+    /// kinds attached to the System Lord faction. Initialization is recorded
     /// once per pawn ThingID. Removing the Prim'ta later must not create an
     /// artificial replacement.
     /// </summary>

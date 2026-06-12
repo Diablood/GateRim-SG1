@@ -4,17 +4,15 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Shared helper for the lazily created hidden Goa'uld System Lord
-    /// prototype faction instance.
+    /// Shared helper for the Goa'uld System Lord world-faction instance.
     ///
-    /// The faction remains disconnected from normal world generation.
-    /// Controlled developer incidents may create one persistent runtime
-    /// instance so vanilla raid generation can be tested without enabling
-    /// storyteller raids, settlements or traders.
+    /// New worlds generate one visible faction normally. Controlled developer
+    /// incidents still retain a lazy runtime fallback for older saves or
+    /// isolated regression tests that do not yet contain the world faction.
     /// </summary>
     internal static class GoauldSystemLordFactionUtility
     {
-        public static Faction GetOrCreateHiddenFaction(string purpose)
+        public static Faction GetOrCreateFaction(string purpose)
         {
             if (GR_DefOf.SG1_GoauldSystemLordPrototype == null
                 || Find.FactionManager == null)
@@ -35,7 +33,7 @@ namespace GateRimSG1.Goauld
                 new FactionGeneratorParms(
                     GR_DefOf.SG1_GoauldSystemLordPrototype,
                     default(IdeoGenerationParms),
-                    hidden: true));
+                    hidden: false));
 
             Find.FactionManager.Add(createdFaction);
             RefreshAttackTargetCaches(createdFaction);
