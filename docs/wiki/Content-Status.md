@@ -67,6 +67,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par le pawn render tree, sans gène actif, équipement ou statistique ; stockage persistant dédié par pawn | 0.1.73-dev / stockage dédié 0.1.74-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel pawn, y compris non-Jaffa | 0.1.74-dev |
+| Réglages de debug avancés | Option persistante masquant les informations techniques et les logs informatifs de routine hors mode développeur | 0.1.75-dev |
 
 ## Prévu
 

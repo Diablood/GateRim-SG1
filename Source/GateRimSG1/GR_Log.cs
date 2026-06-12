@@ -4,8 +4,10 @@ namespace GateRimSG1
 {
     /// <summary>
     /// Centralized logging helper for GateRim SG-1.
-    /// Keep all future C# diagnostics behind this wrapper so Player.log
-    /// entries remain easy to filter and identify.
+    ///
+    /// Informational lifecycle traces are visible only with RimWorld developer
+    /// mode or the dedicated GateRim advanced-debug option. Warnings and
+    /// errors always remain visible in Player.log.
     /// </summary>
     public static class GR_Log
     {
@@ -13,6 +15,11 @@ namespace GateRimSG1
 
         public static void Message(string message)
         {
+            if (!GR_Debug.ShowAdvancedInformation)
+            {
+                return;
+            }
+
             Log.Message(Prefix + " " + message);
         }
 

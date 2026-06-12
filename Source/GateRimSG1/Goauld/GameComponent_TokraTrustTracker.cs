@@ -87,8 +87,15 @@ namespace GateRimSG1.Goauld
             int score = GetCurrentTrustScore();
             TokraTrustTier tier = GetTierForScore(score);
 
-            return "GR_TokraTrust_Inspect"
-                .Translate(score, GetTierLabel(tier))
+            if (GR_Debug.ShowAdvancedInformation)
+            {
+                return "GR_TokraTrust_Inspect"
+                    .Translate(score, GetTierLabel(tier))
+                    .ToString();
+            }
+
+            return "GR_TokraTrust_InspectTierOnly"
+                .Translate(GetTierLabel(tier))
                 .ToString();
         }
 

@@ -26,10 +26,22 @@ GR_Log.WarningOnce("...", key);
 GR_Log.ErrorOnce("...", key);
 ```
 
+## Visibility since 0.1.75-dev
+
+`GR_Log.Message(...)` is intended for routine lifecycle traces. It is emitted
+only when RimWorld developer mode is active or the player enables:
+
+```text
+Show advanced GateRim SG-1 debug information
+```
+
+Warnings, errors and their `Once` variants always remain visible in
+`Player.log`.
+
 ## Rules
 
-- Use `Message` for important lifecycle events and useful state transitions.
-- Use `Warning` for recoverable inconsistencies.
+- Use `Message` for detailed lifecycle events and useful test transitions.
+- Use `Warning` for recoverable inconsistencies that should remain visible.
 - Use `Error` for failures that prevent the intended behavior.
 - Prefer `WarningOnce` and `ErrorOnce` inside repeated tick or event paths.
 - Do not log every tick.
@@ -37,10 +49,10 @@ GR_Log.ErrorOnce("...", key);
 
 ## Current smoke test
 
-The bootstrap emits one message when the assembly loads:
+The bootstrap emits one message when advanced diagnostics are visible:
 
 ```text
-<color=#D9B44A>[GateRim SG-1]</color> Version 0.1.14.0 loaded.
+<color=#D9B44A>[GateRim SG-1]</color> Version 0.1.75.0 loaded.
 ```
 
 ## Future usage examples

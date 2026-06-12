@@ -220,18 +220,24 @@ namespace GateRimSG1.Goauld
         {
             EnsureDataInitialized();
 
-            int cooldownTicks = GetAutonomousCooldownTicksRemaining(
-                CurrentGameTick());
+            List<string> inspectLines = new List<string>();
 
-            string autonomousLabel = autonomousHuntingEnabled
-                ? "GR_AutonomousHunt_Enabled".Translate().ToString()
-                : "GR_AutonomousHunt_Disabled".Translate().ToString();
+            if (GR_Debug.ShowAdvancedInformation)
+            {
+                int cooldownTicks = GetAutonomousCooldownTicksRemaining(
+                    CurrentGameTick());
 
-            string summary = "GR_FreeGoauldSymbioteDataSummary".Translate(
-                symbioteData.SymbioteId,
-                symbioteData.GetOriginLabel(),
-                autonomousLabel,
-                cooldownTicks).ToString();
+                string autonomousLabel = autonomousHuntingEnabled
+                    ? "GR_AutonomousHunt_Enabled".Translate().ToString()
+                    : "GR_AutonomousHunt_Disabled".Translate().ToString();
+
+                inspectLines.Add(
+                    "GR_FreeGoauldSymbioteDataSummary".Translate(
+                        symbioteData.SymbioteId,
+                        symbioteData.GetOriginLabel(),
+                        autonomousLabel,
+                        cooldownTicks).ToString());
+            }
 
             string offerInspect
                 = GameComponent_TokraTherapeuticOpportunityTracker
@@ -239,21 +245,22 @@ namespace GateRimSG1.Goauld
 
             if (!string.IsNullOrEmpty(offerInspect))
             {
-                summary += "\n" + offerInspect;
+                inspectLines.Add(offerInspect);
             }
 
-            if (!RitualInProgress)
+            if (RitualInProgress)
             {
-                return summary;
+                inspectLines.Add(
+                    "GR_RitualCeremony_Inspect".Translate(
+                        ritualTarget.LabelShortCap,
+                        RitualBasinDisplayLabel(),
+                        ritualTicksRemaining,
+                        ritualTicksTotal).ToString());
             }
 
-            return summary
-                + "\n"
-                + "GR_RitualCeremony_Inspect".Translate(
-                    ritualTarget.LabelShortCap,
-                    RitualBasinDisplayLabel(),
-                    ritualTicksRemaining,
-                    ritualTicksTotal);
+            return inspectLines.Count > 0
+                ? string.Join("\n", inspectLines)
+                : null;
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)

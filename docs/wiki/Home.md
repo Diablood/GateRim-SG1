@@ -40,6 +40,7 @@ disponible du contenu encore en développement.
   [confiance](Tokra-Trust) et [livraisons médicales](Tokra-Medical-Support-Deliveries).
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
+- [Réglages de debug avancés](Debug-Settings) : diagnostics techniques optionnels pour les tests et le dépannage.
 
 ## Prochain développement majeur
 

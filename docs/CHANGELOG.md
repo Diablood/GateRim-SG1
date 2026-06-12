@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.75-dev — Consolidate debug tools and player-facing diagnostics
+
+- Add a persistent GateRim SG-1 mod setting for optional advanced debug information.
+- Keep RimWorld developer mode as an automatic override for advanced diagnostics.
+- Gate routine `GR_Log.Message(...)` lifecycle traces behind advanced diagnostics.
+- Keep `GR_Log.Warning(...)`, `GR_Log.Error(...)` and their `Once` variants always visible.
+- Hide raw free-symbiote IDs and autonomous cooldown ticks from normal inspection panels.
+- Hide the Goa'uld queen raw extraction cooldown outside advanced diagnostics.
+- Show only the Tok'ra trust tier during normal therapeutic offers while retaining the raw score in advanced diagnostics.
+- Keep contextual ritual and temporary Tok'ra-offer information visible during normal gameplay.
+- Document the first completed debug-UI consolidation pass and update player-wiki drafts.
+
 ## 0.1.74-dev-r1 — Replace technical Jaffa mark genes with intrinsic mark data
 
 - Replace runtime forehead-mark `GeneDef` rendering with dedicated `JaffaForeheadMarkDef` data.

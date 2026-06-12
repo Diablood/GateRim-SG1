@@ -13,49 +13,39 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.1.74-dev — Replace technical Jaffa mark genes with intrinsic mark data
+### 0.1.75-dev — Consolidate debug tools and player-facing diagnostics
 
-Jaffa forehead marks are now stored as dedicated save-persistent pawn data.
-They are no longer part of the Jaffa xenotype and no longer use genes as their
-runtime rendering source.
-
-The new intrinsic Defs are:
+GateRim SG-1 now exposes a dedicated mod setting:
 
 ```text
-SG1_JaffaForeheadMark_GenericIntrinsic
-SG1_JaffaForeheadMark_GenericSilverIntrinsic
-SG1_JaffaForeheadMark_GenericGoldIntrinsic
+Show advanced GateRim SG-1 debug information
 ```
 
-A custom dynamic render-node setup injects the selected mark into RimWorld's
-native pawn render tree. The validated head attachment, facings and temporary
-textures remain unchanged.
+The option is disabled by default. RimWorld developer mode still forces
+advanced diagnostics on automatically.
 
-The existing Goa'uld domain profile now exposes three explicit intrinsic-mark
-slots:
+Normal gameplay inspection panels no longer display raw persistent symbiote
+IDs or raw autonomous-hunt cooldown ticks. The Goa'uld queen extraction
+cooldown in raw ticks is also hidden outside advanced diagnostics.
 
-```text
-ordinary Jaffa  -> generic black intrinsic mark
-selected elite  -> temporary generic silver intrinsic mark
-First Prime     -> temporary generic gold embossed intrinsic mark
-```
+Temporary Tok'ra therapeutic offers remain readable during normal gameplay,
+but show only the trust tier. The underlying numeric trust score remains
+available through advanced diagnostics.
 
-Former technical `GeneDef` entries remain declared only as invisible migration
-placeholders. Encountered pawns are converted automatically and the obsolete
-genes are removed from them. A developer map tool can also assign or remove any
-mark manually on any pawn, including a non-Jaffa infiltrator.
+Routine `GR_Log.Message(...)` lifecycle traces are now emitted only while
+advanced diagnostics are visible. Warnings and errors always remain in
+`Player.log`.
 
-Heavy armor does not imply First Prime status. Natural Goa'uld raids,
-settlements and traders remain disabled.
+Developer-only prototype commands remain tied to RimWorld developer mode.
+Gameplay mechanics validated through `0.1.74-dev` are unchanged.
 
 ## Next maintenance focus
 
-Before the next gameplay expansion, the project will perform a consolidation pass:
-
-- keep the five remaining French translation load errors identified as vanilla RimWorld issues;
-- audit player-facing information, debug-only diagnostics and conditional gizmos;
-- prepare a mod-specific debug option before the `0.2.x` Stargate chapter;
-- preserve the future wiki-image and Workshop-asset plan without claiming final visuals yet.
+- generate the native French translation report for the five remaining load
+  warnings before changing any translation blindly;
+- continue the conditional-gizmo audit only where a player-facing command is
+  actually misleading or unnecessarily exposed;
+- keep the next gameplay expansion separate from this maintenance pass.
 
 ## First playable milestone
 

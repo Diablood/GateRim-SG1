@@ -717,3 +717,13 @@
 - [ ] Integrate later with events, quests, visitors, recruitment and diplomacy
 
 - [x] Add a powered dedicated Prim'ta preservation basin prototype without replacing refrigerators.
+
+
+## 0.1.75-dev — Debug and player-facing diagnostics consolidation
+
+- [x] Add a persistent GateRim SG-1 advanced-debug setting
+- [x] Keep RimWorld developer mode as an automatic debug override
+- [x] Gate routine informational C# traces while preserving warnings and errors
+- [x] Hide raw symbiote IDs and cooldown ticks from normal inspection panels
+- [x] Keep contextual Tok'ra-offer and ritual information readable
+- [x] Document remaining French translation-report follow-up

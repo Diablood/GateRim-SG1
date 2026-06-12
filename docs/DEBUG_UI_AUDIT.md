@@ -2,84 +2,65 @@
 
 ## Purpose
 
-Before the `0.2.x` Stargate chapter, review every piece of player-facing technical information and every command added during prototyping.
+Keep normal gameplay readable while preserving advanced prototype diagnostics
+for development and troubleshooting.
 
-The goal is to keep the normal player experience readable while preserving advanced diagnostics for development and troubleshooting.
+## Shared visibility rule
 
-## Visibility classes
-
-| Class | Meaning | Typical examples |
-|---|---|---|
-| Always visible | Useful for normal gameplay decisions | readable remaining offer duration, relevant biological condition, trust tier when it affects an offer |
-| Contextual | Visible only while the related mechanic is active | refuse a temporary Tok'ra offer, cancel an active ritual, ritual progress |
-| GateRim debug | Advanced diagnostic shown only with a future mod option | persistent symbiote ID, raw expiration ticks, tracker state, runtime counters |
-| RimWorld dev mode | Development or regression-test command | manual prototype spawning, unrestricted test actions |
-| Remove from player UI | Internal implementation detail with no player value | raw object references, Lord references, low-level scan counters |
-
-## Information inventory checklist
-
-### Symbiotes and hosts
-
-- [ ] Persistent symbiote ID
-- [ ] Symbiote origin
-- [ ] Host history
-- [ ] Raw age placeholders
-- [ ] Implantation countdown
-- [ ] Offer expiration ticks
-- [ ] Human-readable remaining days
-- [ ] Autonomous-hunt cooldown
-- [ ] Ritual target and ritual-basin references
-
-### Tok'ra diplomacy
-
-- [ ] Trust score
-- [ ] Trust tier
-- [ ] Wary cooldown remaining time
-- [ ] Storyteller chance factors
-- [ ] Effective runtime base chances
-- [ ] Tracked-offer internal state
-- [ ] Escort references
-
-### Jaffa biology
-
-- [ ] Prim'ta dependency severity
-- [ ] Tretonin substitution time remaining
-- [ ] Larva temperature
-- [ ] Larva effective deterioration rate
-- [ ] Internal temperature-band counters
-
-## Gizmo inventory checklist
-
-| Gizmo or command | Initial audit direction |
-|---|---|
-| Forced Goa'uld implantation | likely contextual gameplay action or dev-only until faction content exists |
-| Ritual Goa'uld implantation | contextual near valid ritual requirements |
-| Cancel ritual | contextual during active ritual only |
-| Emergency extraction | audit after surgery path is fully established; likely dev-only or narrowly contextual |
-| Autonomous hunt toggle | likely dev-only unless exposed through a deliberate gameplay rule |
-| Tok'ra voluntary implantation | contextual for free Tok'ra symbiotes |
-| Tok'ra therapeutic implantation | contextual when compatible sick targets exist |
-| Refuse Tok'ra offer | contextual only for tracked temporary offers |
-| Manual incubation actions | audit against the normal RimWorld bill workflow |
-
-## Future mod setting
-
-Add a GateRim SG-1 option similar to:
+`0.1.75-dev` introduces:
 
 ```text
 Show advanced GateRim SG-1 debug information
 ```
 
-Recommended display rule:
+Advanced diagnostics are visible when:
 
 ```text
 GateRim debug option enabled
     OR
 RimWorld developer mode enabled
-    ↓
-show advanced diagnostics
 ```
 
-## Audit output expected before 0.2.x
+Warnings and errors in `Player.log` remain visible regardless of this rule.
 
-Produce a final table listing every visible information line, gizmo, button and diagnostic log with one of the five visibility classes.
+## First completed pass
+
+| Information or command | Visibility after 0.1.75-dev | Reason |
+|---|---|---|
+| Free symbiote persistent ID | GateRim debug | Internal identity-transfer diagnostic |
+| Free symbiote origin | GateRim debug | Prototype diagnostic until origin affects normal gameplay decisions |
+| Autonomous-hunt enabled state and raw cooldown ticks | GateRim debug | Low-level prototype state |
+| Active Tok'ra therapeutic-offer remaining days | Contextual | Player needs it while deciding |
+| Tok'ra trust tier during an active offer | Contextual | Tier affects the current proposal |
+| Raw Tok'ra trust score | GateRim debug | Numeric implementation detail |
+| Active Goa'uld ritual target, basin and remaining ticks | Contextual | Useful while the ceremony is active |
+| Goa'uld queen raw extraction cooldown ticks | GateRim debug | Developer-only prototype source |
+| Routine `GR_Log.Message(...)` lifecycle traces | GateRim debug | Useful during tests, noisy for normal players |
+| `GR_Log.Warning(...)` and `GR_Log.Error(...)` | Always logged | Required for troubleshooting |
+| Jaffa forehead-mark assignment actions | RimWorld dev mode | Regression and scenario test utility |
+| Queen immature-symbiote extraction command | RimWorld dev mode | Explicit developer-only prototype |
+
+## Gizmo decisions preserved
+
+The first pass does not change contextual gameplay commands:
+
+| Gizmo or command | Current decision |
+|---|---|
+| Forced Goa'uld implantation | Preserve prototype command |
+| Ritual Goa'uld implantation | Preserve contextual command |
+| Cancel active ritual | Preserve contextual command |
+| Emergency extraction | Preserve narrow recent-implantation command |
+| Autonomous-hunt toggle | Preserve prototype command pending broader Goa'uld faction design |
+| Tok'ra voluntary implantation | Preserve prototype command |
+| Tok'ra therapeutic implantation | Preserve prototype command |
+| Refuse tracked Tok'ra offer | Preserve contextual command |
+| Jaffa Prim'ta ceremony | Preserve player-faction basin command |
+| Jaffa helmet mode | Preserve player-controlled wearer command |
+
+## Remaining follow-up
+
+- Generate the native French translation report before editing the five
+  remaining load warnings.
+- Revisit prototype gameplay-command exposure after natural Goa'uld presence
+  and acquisition routes are introduced.
+- Keep raw IDs, counters and scanner state behind the shared debug rule.

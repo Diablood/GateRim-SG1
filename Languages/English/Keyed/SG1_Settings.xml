@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_Settings_ShowAdvancedDebugInformation_Label>Show advanced GateRim SG-1 debug information</GR_Settings_ShowAdvancedDebugInformation_Label>
+    <GR_Settings_ShowAdvancedDebugInformation_Desc>Expose technical prototype diagnostics such as persistent symbiote IDs, raw cooldown ticks and detailed lifecycle traces in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
+    <GR_Settings_ShowAdvancedDebugInformation_Note>RimWorld developer mode always exposes advanced GateRim SG-1 diagnostics, regardless of this setting. Warnings and errors always remain visible in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
+</LanguageData>

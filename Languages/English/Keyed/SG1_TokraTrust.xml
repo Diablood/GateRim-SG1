@@ -2,6 +2,7 @@
 
 <LanguageData>
     <GR_TokraTrust_Inspect>Tok'ra trust: {0} ({1})</GR_TokraTrust_Inspect>
+    <GR_TokraTrust_InspectTierOnly>Tok'ra trust: {0}</GR_TokraTrust_InspectTierOnly>
     <GR_TokraTrust_Tier_Wary>wary</GR_TokraTrust_Tier_Wary>
     <GR_TokraTrust_Tier_Neutral>neutral</GR_TokraTrust_Tier_Neutral>
     <GR_TokraTrust_Tier_Cooperative>cooperative</GR_TokraTrust_Tier_Cooperative>

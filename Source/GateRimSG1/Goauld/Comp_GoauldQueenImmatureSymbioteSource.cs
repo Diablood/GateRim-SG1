@@ -63,7 +63,7 @@ namespace GateRimSG1.Goauld
 
         public override string CompInspectStringExtra()
         {
-            if (!Prefs.DevMode)
+            if (!GR_Debug.ShowAdvancedInformation)
             {
                 return null;
             }

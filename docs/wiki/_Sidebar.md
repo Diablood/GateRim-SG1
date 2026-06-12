@@ -61,6 +61,7 @@
 
 ## Assistance
 
+- [Réglages de debug avancés](Debug-Settings)
 - [FAQ](FAQ)
 - [Dépôt principal](https://github.com/Diablood/GateRim-SG1)
 
