@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.80-dev — Add SG tactical gloves prototype
+
+- Add `SG1_SGTacticalGloves`.
+- Keep the gloves separate from the SG-team field uniform and tactical boots.
+- Reuse the dedicated `SG1_SGTeamApparel` category.
+- Cover `Hands` on the `Middle` layer so the gloves remain compatible with the `OnSkin` field uniform.
+- Add modest hand and finger protection without approaching Jaffa-gauntlet armor values.
+- Add crafting recipes for the vanilla hand and electric tailoring benches.
+- Require `20` plain leather and `8` cloth.
+- Add temporary inventory, facing-specific and body-type-specific graphics.
+- Add French translation, technical documentation and player-wiki drafts.
+
 ## 0.1.79-dev — Add SG tactical boots prototype
 
 - Add `SG1_SGTacticalBoots`.

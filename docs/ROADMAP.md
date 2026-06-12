@@ -27,7 +27,7 @@
 - [x] Add generic Jaffa armor.
 - [x] Add an SG-team field uniform prototype.
 - [x] Add SG tactical boots prototype.
-- [ ] Add SG tactical gloves.
+- [x] Add SG tactical gloves prototype.
 - [ ] Add a first SG tactical vest or visual equipment layer.
 - [ ] Plan later uniform variants for roles and environments: standard SGC, desert, forest, heavy tactical, medical and scientific.
 
@@ -775,3 +775,15 @@
 - [x] Add temporary inventory and body-type-specific graphics
 - [ ] Validate visuals and compatibility in game
 - [ ] Add SG tactical gloves as a separate modular item
+
+
+## 0.1.80-dev — SG tactical gloves prototype
+
+- [x] Add separate SG tactical-gloves apparel Def
+- [x] Reuse the SG-team apparel category
+- [x] Keep the gloves compatible with the OnSkin field uniform
+- [x] Cover hands with modest protection
+- [x] Add vanilla hand and electric tailoring-bench recipes
+- [x] Add temporary inventory and body-type-specific graphics
+- [ ] Validate visuals and compatibility in game
+- [ ] Add SG tactical vest as a separate modular item

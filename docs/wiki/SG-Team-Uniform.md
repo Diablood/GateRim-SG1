@@ -42,7 +42,7 @@ est de fournir une base visuelle et fonctionnelle aux futures équipes SG.
 Les ajouts suivants resteront modulaires :
 
 - [bottes tactiques SG](SG-Tactical-Boots) ;
-- gants tactiques SG ;
+- [gants tactiques SG](SG-Tactical-Gloves) ;
 - gilet tactique SG.
 
 Des variantes noires, forêt, désert, médicales et scientifiques pourront être

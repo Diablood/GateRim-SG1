@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    SG-team tactical gloves prototype.
+    They remain separate Middle-layer handwear compatible with the OnSkin
+    SG-team field uniform and the existing SG tactical boots.
+    -->
+    <ThingDef ParentName="ApparelMakeableBase">
+        <defName>SG1_SGTacticalGloves</defName>
+        <label>SG tactical gloves</label>
+        <description>Durable black tactical gloves intended for SG-team field operations. They protect the hands and fingers from minor cuts, heat and blunt impacts while remaining light enough for weapons handling and technical work. The gloves are a separate modular item compatible with the SG-team field uniform.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTacticalGloves/SGTacticalGloves</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.08</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Leather_Plain>20</Leather_Plain>
+            <Cloth>8</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Mass>0.35</Mass>
+            <Flammability>0.65</Flammability>
+            <ArmorRating_Sharp>0.10</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.07</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.09</ArmorRating_Heat>
+            <EquipDelay>1</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Hands</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTacticalGloves/SGTacticalGloves</wornGraphicPath>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <tags>
+                <li>SG1_SGTacticalGloves</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Worker</li>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>

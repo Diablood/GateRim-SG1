@@ -39,7 +39,7 @@ sans devenir une armure de jambes. Elles peuvent être portées avec le
 
 Les prochains ajouts modulaires sont :
 
-- gants tactiques SG ;
+- [gants tactiques SG](SG-Tactical-Gloves) ;
 - gilet tactique SG.
 
 Les visuels définitifs et les concept arts semi-réalistes destinés au wiki

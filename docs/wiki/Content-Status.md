@@ -59,6 +59,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique et faible perturbation IEM supplémentaire contre les cibles mécaniques compatibles | 0.1.77-dev |
 | Treillis d'équipe SG | Premier BDU vert olive : couche textile légère regroupant veste et pantalon, fabrication aux établis de couture manuel et électrique vanilla et visuels temporaires selon la morphologie | 0.1.78-dev |
 | Bottes tactiques SG | Chaussures de terrain modulaires noires : protection légère des pieds, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.79-dev |
+| Gants tactiques SG | Gants de terrain modulaires noirs : protection légère des mains, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.80-dev |
 | Loadout Ma'Tok des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` pour les guerriers et gardes générés | 0.1.65-dev |
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
