@@ -13,78 +13,80 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.1-dev-r3 — Polish world-faction presentation
+### 0.2.2-dev-r2 — Expand faction limits and generate provisional leaders
 
-The first hostile Stargate world presence is now enabled:
-
-```text
-SG1_GoauldSystemLordPrototype
-```
-
-New worlds generate one visible faction representing several Goa'uld System
-Lord domains as a practical RimWorld abstraction. Its reduced settlement
-weight keeps the presence visible but limited.
-
-The `r1` startup fix removed two invalid `FactionDef` icon fields.
-
-The `r2` fix adds the RimWorld 1.6 configurable-faction fields used by the
-Create World page:
+The second visible Stargate world presence is now enabled:
 
 ```text
-maxConfigurableAtWorldCreation = 1
-startingCountAtWorldCreation = 1
+SG1_FreeJaffa
 ```
 
-The Goa'uld faction now appears once by default in world creation, cannot be
-duplicated through the Add faction menu, and uses the valid
-`factionIconPath` / `settlementTexturePath` fields for world presentation.
+New worlds generate one visible neutral faction:
 
-The same correction also removes unnecessary `pawn` jargon from French
-player-facing strings and wiki pages.
+```text
+Free Jaffa
+```
 
-The `r3` presentation fix capitalizes the French Goa'uld faction name and
-adds explicit vanilla-style `Town` / `DefaultSettlement` icon paths to the
-custom `SGC expedition` player faction so its UI icon no longer falls back to
-a missing-texture placeholder.
+The faction represents independent Jaffa communities freed from Goa'uld
+domination. It uses a reduced settlement-generation weight so its colonies
+remain visible but limited.
 
 The baseline adds:
 
 ```text
-visible Goa'uld System Lord domains
-permanent hostility
+one configurable Free Jaffa faction by default
+neutral initial relation with the SGC expedition
+hostility toward Goa'uld domains through the Goa'uld permanent-enemy rule
 limited world settlements
 Combat pawn-group profile
 Settlement defense pawn-group profile
-rare natural direct-assault Jaffa raids
 ```
 
-Natural raids use a dedicated low-frequency incident:
+Two new pawn kinds support the faction:
 
 ```text
-SG1_GoauldJaffaNaturalRaid
+SG1_FreeJaffaWarrior
+SG1_FreeJaffaGuard
 ```
 
-The incident reuses the validated direct-assault path:
+They reuse the validated Jaffa lineage, one-time Prim'ta provisioning, Ma'Tok
+weapon tag and modular armor loadouts.
+
+A visual-identity correction is included: automatic forehead marks now apply
+only to Jaffa whose faction carries a Goa'uld System Lord-domain extension.
+Free Jaffa remain unmarked unless a mark is assigned manually or migrated from
+an older save.
+
+Trade, quests, aid, visitors and natural Free Jaffa raids remain disabled for
+this first world-presence milestone.
+
+The `r1` alignment fix adds faction-level xenotype summaries:
 
 ```text
-ImmediateAttack
-canSteal = false
-canKidnap = false
+Free Jaffa                    -> Jaffa: 100%
+Goa'uld System Lord domains  -> Jaffa: 100% for the current servant baseline
 ```
 
-Generic vanilla faction raid selection remains blocked deliberately. Natural
-abduction and destruction doctrines remain disabled until they receive a
-separate balancing pass.
+The Goa'uld summary is intentionally provisional. True Goa'uld host profiles
+remain a separate milestone because a xenotype alone would not create the
+persistent implanted symbiote identity required by the existing mechanics.
 
-The existing developer incidents remain available for controlled regression
-tests.
+The `r2` fix keeps one faction of each type by default while allowing players
+to add additional Goa'uld-domain or Free Jaffa factions manually from Create
+World. It also gives both visible humanlike factions a generated provisional
+leader so RimWorld no longer logs a missing faction leader.
+
+Until true persistent Goa'uld hosts exist, each generated Goa'uld-domain
+faction is represented by a senior Jaffa commander rather than a fake
+incomplete System Lord host.
 
 ## Next development focus
 
-- validate a newly generated world with visible hostile Goa'uld settlements;
-- validate one natural or developer-triggered natural direct-assault raid;
-- confirm recoverable Ma'Tok loot after combat;
-- add the Free Jaffa world-faction baseline next.
+- validate one visible neutral Free Jaffa faction in world creation;
+- validate limited Free Jaffa settlements and neutral SGC relations;
+- visit or attack a test settlement and confirm Free Jaffa defenders;
+- confirm Prim'ta, Ma'Tok, modular armor and absence of forced forehead marks;
+- add peaceful Free Jaffa encounters in a separate balancing milestone.
 
 ## First playable milestone
 
@@ -112,6 +114,8 @@ tests.
 - [x] SG tactical vest prototype
 - [x] Black and desert SG-team uniform variants
 - [x] Stranded SG-team starter scenario
+- [x] Playable Goa'uld world-faction baseline
+- [x] Free Jaffa world-faction baseline
 
 ## Development notes
 

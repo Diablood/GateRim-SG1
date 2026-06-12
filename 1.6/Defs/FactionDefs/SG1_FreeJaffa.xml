@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    First playable Free Jaffa world-faction baseline.
+
+    The faction starts neutral toward the player, remains hostile to the
+    Goa'uld through the Goa'uld faction's permanent-enemy rule, and exposes a
+    limited settlement presence without traders, quests, aid or natural raids
+    yet.
+    -->
+    <FactionDef>
+        <defName>SG1_FreeJaffa</defName>
+        <label>Free Jaffa</label>
+        <description>Independent Jaffa communities freed from Goa'uld domination. This first playable baseline generates a limited number of visible settlements and neutral initial relations with the SGC expedition. Traders, military aid, quests, natural visitors and natural raids remain disabled until later balancing passes.</description>
+        <fixedName>Free Jaffa</fixedName>
+        <pawnsPlural>Free Jaffa</pawnsPlural>
+        <pawnSingular>Free Jaffa</pawnSingular>
+        <leaderTitle>Jaffa leader</leaderTitle>
+        <fixedLeaderKinds>
+            <li>SG1_FreeJaffaGuard</li>
+        </fixedLeaderKinds>
+        <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+        <humanlikeFaction>true</humanlikeFaction>
+        <hidden>false</hidden>
+        <listOrderPriority>9</listOrderPriority>
+        <techLevel>Spacer</techLevel>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Offworld</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+        <naturalEnemy>false</naturalEnemy>
+        <permanentEnemy>false</permanentEnemy>
+        <requiredCountAtGameStart>1</requiredCountAtGameStart>
+
+        <!-- RimWorld 1.6 configurable world-faction fields. -->
+        <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
+        <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+        <configurationListOrderPriority>9</configurationListOrderPriority>
+        <displayInFactionSelection>true</displayInFactionSelection>
+
+        <settlementGenerationWeight>0.25</settlementGenerationWeight>
+        <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+        <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+        <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+        <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+        <colorSpectrum>
+            <li>(0.18, 0.42, 0.20)</li>
+            <li>(0.30, 0.58, 0.32)</li>
+        </colorSpectrum>
+        <allowedArrivalTemperatureRange>
+            <min>-40</min>
+            <max>55</max>
+        </allowedArrivalTemperatureRange>
+
+        <!--
+        Baseline policy: world presence and settlement defense only.
+        Peaceful encounters, trade and quest integration come later.
+        -->
+        <raidsForbidden>true</raidsForbidden>
+        <canSiege>false</canSiege>
+        <canStageAttacks>false</canStageAttacks>
+        <canRequestTraders>false</canRequestTraders>
+        <canRequestMilitaryAid>false</canRequestMilitaryAid>
+        <canGenerateQuestSites>false</canGenerateQuestSites>
+
+        <!--
+        RimWorld uses the faction-level xenotype set for the Create World
+        summary and as the generic generation baseline. Free Jaffa are
+        explicitly Jaffa rather than baseliners.
+        -->
+        <xenotypeSet>
+            <xenotypeChances>
+                <SG1_Jaffa>1</SG1_Jaffa>
+            </xenotypeChances>
+        </xenotypeSet>
+
+        <basicMemberKind>SG1_FreeJaffaWarrior</basicMemberKind>
+        <maxPawnCostPerTotalPointsCurve>
+            <points>
+                <li>(0, 35)</li>
+                <li>(70, 50)</li>
+                <li>(700, 100)</li>
+                <li>(1300, 150)</li>
+                <li>(100000, 10000)</li>
+            </points>
+        </maxPawnCostPerTotalPointsCurve>
+        <raidLootValueFromPointsCurve>
+            <points>
+                <li>(35, 15)</li>
+                <li>(100, 120)</li>
+                <li>(1000, 500)</li>
+                <li>(2000, 800)</li>
+                <li>(4000, 1000)</li>
+            </points>
+        </raidLootValueFromPointsCurve>
+        <pawnGroupMakers>
+            <li>
+                <kindDef>Combat</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <SG1_FreeJaffaWarrior>4</SG1_FreeJaffaWarrior>
+                    <SG1_FreeJaffaGuard>1</SG1_FreeJaffaGuard>
+                </options>
+            </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <SG1_FreeJaffaWarrior>4</SG1_FreeJaffaWarrior>
+                    <SG1_FreeJaffaGuard>1</SG1_FreeJaffaGuard>
+                </options>
+            </li>
+        </pawnGroupMakers>
+    </FactionDef>
+</Defs>

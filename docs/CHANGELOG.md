@@ -1,5 +1,47 @@
 # Changelog
 
+## 0.2.2-dev-r2 — Expand faction limits and generate provisional leaders
+
+- Keep `startingCountAtWorldCreation = 1` for both `SG1_GoauldSystemLordPrototype` and `SG1_FreeJaffa`.
+- Raise `maxConfigurableAtWorldCreation` from `1` to `9999` for both factions so players may add extra instances manually like configurable vanilla factions.
+- Preserve the default world-generation baseline of one Goa'uld-domain faction and one Free Jaffa faction.
+- Add `fixedLeaderKinds` and `leaderForceGenerateNewPawn = true` to both visible humanlike factions.
+- Use `SG1_FreeJaffaGuard` as the initial Free Jaffa leader kind.
+- Use `SG1_GoauldJaffaGuard` as a provisional Goa'uld-domain leader kind.
+- Add `SG1_GoauldJaffaWarrior` as the Goa'uld faction `basicMemberKind` fallback.
+- Rename the provisional Goa'uld faction leader title to `domain Jaffa commander` / `commandant Jaffa de domaine`.
+- Avoid pretending that the temporary Jaffa commander is already a true Goa'uld System Lord host.
+- Reserve real persistent Goa'uld host leaders for a dedicated later milestone.
+- No C# rebuild is required for this XML and documentation correction.
+
+## 0.2.2-dev-r1 — Align faction xenotype summaries
+
+- Add a faction-level `xenotypeSet` declaring `SG1_Jaffa = 100%` for `SG1_FreeJaffa`.
+- Add a provisional faction-level `xenotypeSet` declaring `SG1_Jaffa = 100%` for `SG1_GoauldSystemLordPrototype`.
+- Fix the misleading `baseliner / human = 100%` summaries shown by RimWorld world creation.
+- Keep the Goa'uld summary intentionally limited to the current Jaffa-servant baseline.
+- Do not add `SG1_GoauldHost` naively at faction level: a xenotype alone would create incomplete hosts without persistent implanted symbiote identity.
+- Reserve true minority Goa'uld host profiles for a dedicated later milestone.
+- Keep thematic faction icons as a later dedicated visual-production pass.
+- No C# rebuild is required for this XML and documentation correction.
+
+## 0.2.2-dev — Add Free Jaffa world-faction baseline
+
+- Add the visible neutral world faction `SG1_FreeJaffa`.
+- Generate exactly one Free Jaffa faction by default in RimWorld 1.6 world creation.
+- Use a reduced `0.25` settlement-generation weight for a visible but limited presence.
+- Add valid vanilla-style faction and settlement icon paths.
+- Add `SG1_FreeJaffaWarrior` and `SG1_FreeJaffaGuard`.
+- Reuse the validated Jaffa xenotype, Ma'Tok weapon tag and modular armor loadouts.
+- Extend one-time Prim'ta initialization to generated Free Jaffa warrior and guard kinds.
+- Preserve the historical Prim'ta-initializer component and save-data key for compatibility.
+- Add `GoauldSystemLordDomainUtility.HasAssignedDomain(...)`.
+- Restrict automatic forehead-mark assignment to Jaffa whose faction carries a Goa'uld domain extension.
+- Keep Free Jaffa unmarked by default while preserving manual mark assignment and legacy migration.
+- Keep Free Jaffa trade, quests, military aid, visitors and natural raids disabled for this baseline.
+- Add French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.2`.
+
 ## 0.2.1-dev-r3 — Capitalize Goa'uld name and restore SGC faction icon
 
 - Capitalize the French player-facing faction name to `Domaines des Grands Maîtres Goa'uld`.

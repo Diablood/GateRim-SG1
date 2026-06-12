@@ -5,12 +5,13 @@ using Verse;
 namespace GateRimSG1.Jaffa
 {
     /// <summary>
-    /// Assigns one initial Prim'ta to generated Goa'uld-aligned Jaffa servants.
+    /// Assigns one initial Prim'ta to generated Jaffa combatants.
     ///
-    /// The initializer intentionally targets only the two Goa'uld-aligned pawn
-    /// kinds attached to the System Lord faction. Initialization is recorded
-    /// once per pawn ThingID. Removing the Prim'ta later must not create an
-    /// artificial replacement.
+    /// The initializer originally targeted the two Goa'uld-aligned pawn kinds.
+    /// It now also covers the Free Jaffa warrior and guard kinds while keeping
+    /// the historical component and save-data key for compatibility.
+    /// Initialization is recorded once per pawn ThingID. Removing the Prim'ta
+    /// later must not create an artificial replacement.
     /// </summary>
     public class GameComponent_GoauldJaffaPrimtaInitializer : GameComponent
     {
@@ -70,7 +71,7 @@ namespace GateRimSG1.Jaffa
                 || pawn.Destroyed
                 || pawn.Dead
                 || pawn.health == null
-                || !IsGoauldAlignedJaffaPawnKind(pawn.kindDef))
+                || !IsGeneratedJaffaPawnKind(pawn.kindDef))
             {
                 return;
             }
@@ -87,7 +88,7 @@ namespace GateRimSG1.Jaffa
                 initializedPawnThingIds.Add(pawnThingId);
 
                 GR_Log.Message(
-                    $"Registered existing Prim'ta for Goa'uld-aligned Jaffa "
+                    $"Registered existing Prim'ta for generated Jaffa "
                     + $"{JaffaPrimtaUtility.PawnDebugLabel(pawn)}.");
 
                 return;
@@ -106,15 +107,17 @@ namespace GateRimSG1.Jaffa
             initializedPawnThingIds.Add(pawnThingId);
 
             GR_Log.Message(
-                $"Initialized Goa'uld-aligned Jaffa "
+                $"Initialized generated Jaffa "
                 + $"{JaffaPrimtaUtility.PawnDebugLabel(pawn)} "
                 + "with an automatic Prim'ta.");
         }
 
-        private static bool IsGoauldAlignedJaffaPawnKind(PawnKindDef pawnKindDef)
+        private static bool IsGeneratedJaffaPawnKind(PawnKindDef pawnKindDef)
         {
             return pawnKindDef == GR_DefOf.SG1_GoauldJaffaWarrior
-                || pawnKindDef == GR_DefOf.SG1_GoauldJaffaGuard;
+                || pawnKindDef == GR_DefOf.SG1_GoauldJaffaGuard
+                || pawnKindDef == GR_DefOf.SG1_FreeJaffaWarrior
+                || pawnKindDef == GR_DefOf.SG1_FreeJaffaGuard;
         }
     }
 }

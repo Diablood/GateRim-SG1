@@ -91,14 +91,15 @@ Consulte [Casque de terrain SG](SG-Team-Field-Helmet).
 
 ## Limites actuelles
 
-Cette première étape rend le départ de partie jouable, mais n'active pas encore
-les factions mondiales et les rencontres naturelles Stargate.
+Cette première étape rend le départ de partie jouable.
+
+Depuis les jalons suivants, les factions mondiales Goa'uld et
+[Jaffa libres](Free-Jaffa-Faction) sont actives, ainsi que de rares assauts
+directs naturels Goa'uld.
 
 Les prochains jalons `0.2.x` introduiront progressivement :
 
-- la présence mondiale Goa'uld ;
-- les premiers raids naturels prudents ;
-- les Jaffa libres ;
+- les rencontres pacifiques avec les Jaffa libres ;
 - la présence Tok'ra ;
 - l'acquisition naturelle des armes et ressources Stargate.
 

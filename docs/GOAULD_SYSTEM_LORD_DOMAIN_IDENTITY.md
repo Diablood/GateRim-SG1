@@ -39,13 +39,17 @@ The visible world faction receives a
 ## Resolver
 
 `GoauldSystemLordDomainUtility` centralizes domain and intrinsic-mark lookup.
-If a faction has no explicit extension, the resolver falls back to the
-prototype domain. Missing higher-rank slots fall back progressively toward the
-ordinary mark.
+If a lookup needs a fallback, the resolver still returns the prototype domain.
+Missing higher-rank slots fall back progressively toward the ordinary mark.
+
+Automatic assignment now checks `HasAssignedDomain(...)` first. This prevents
+Free Jaffa from receiving a Goa'uld-domain mark while preserving the fallback
+for explicit domain lookups and manual tools.
 
 ## Current limits
 
-- Compatible Jaffa currently initialize with the ordinary black fallback.
+- Goa'uld-domain Jaffa initialize with the ordinary black mark.
+- Free Jaffa remain unmarked by default.
 - Silver and gold marks are available through developer tools but are not assigned automatically.
 - Named System Lords are not introduced yet.
 - Visible settlements and rare direct-assault raids are enabled since `0.2.1-dev`.

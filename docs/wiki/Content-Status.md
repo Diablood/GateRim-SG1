@@ -51,7 +51,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
-| Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction générée au démarrage, colonies limitées et identité de domaine persistante | 0.1.61-dev / présence mondiale 0.2.1-dev |
+| Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé provisoire `Jaffa : 100 %` et commandant Jaffa de domaine temporaire | 0.1.61-dev / présence mondiale 0.2.1-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
+| Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, dirigeant généré, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
+| Profils de groupe Jaffa libres `Combat` et `Settlement` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Guerriers et gardes Jaffa pour les raids directs et la défense initiale des colonies visibles | 0.1.62-dev / colonies 0.2.1-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
@@ -84,8 +86,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 |---|---|
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
-| Nation Jaffa libre | Prévu |
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
+| Véritables profils d'hôtes Goa'uld minoritaires | Prévu : initialisation complète du symbiote persistant avant ajout au résumé et aux colonies |
+| Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

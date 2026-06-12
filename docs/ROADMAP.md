@@ -17,7 +17,7 @@
 - [x] Add a Goa'uld queen biological-foundation prototype.
 - [x] Turn the current Prim'ta incubation basin into assisted maturation infrastructure with a developer-only queen-origin sourcing prototype.
 - [x] Add the first Goa'uld System Lord faction prototype.
-- [ ] Add Goa'uld-aligned Jaffa pawn kinds and keep Free Jaffa visually distinct.
+- [x] Add Goa'uld-aligned Jaffa pawn kinds and keep Free Jaffa visually distinct.
 - [ ] Add a first Jaffa facial-marking prototype linked to a Goa'uld faction or future System Lord style.
 
 ### Emblematic equipment
@@ -51,8 +51,8 @@
 
 - [x] Close `0.1.x` as the mechanical-foundation phase.
 - [x] Start `0.2.x` as the playable no-gate phase with a stranded SG-team starter scenario.
-- [ ] Add a playable Goa'uld world-faction baseline.
-- [ ] Add a Free Jaffa world-faction baseline.
+- [x] Add a playable Goa'uld world-faction baseline.
+- [x] Add a Free Jaffa world-faction baseline.
 - [ ] Consolidate Tok'ra world presence and non-developer acquisition loops.
 - [ ] Start `0.3.x` with the Stargate foundation only after the no-gate slice is playable.
 
@@ -898,3 +898,41 @@
 - [x] Add explicit vanilla-style SGC expedition faction icon path
 - [x] Add explicit default SGC settlement texture path
 - [ ] Reopen world creation and validate both faction icons
+
+
+## 0.2.2-dev — Free Jaffa world-faction baseline
+
+- [x] Add one visible neutral Free Jaffa faction by default
+- [x] Add limited world settlements
+- [x] Add Combat and Settlement pawn-group profiles
+- [x] Add Free Jaffa warrior and guard PawnKindDefs
+- [x] Reuse Jaffa lineage, Ma'Tok and modular armor loadouts
+- [x] Extend one-time Prim'ta provisioning to generated Free Jaffa combatants
+- [x] Restrict automatic forehead marks to Goa'uld-domain factions
+- [x] Keep Free Jaffa unmarked by default
+- [x] Keep trade, aid, quests, visitors and natural raids disabled for the baseline
+- [ ] Validate world generation, relations, defenders and visual distinction in RimWorld
+- [ ] Add peaceful Free Jaffa encounters as a separate milestone
+
+
+## 0.2.2-dev-r1 — Align faction xenotype summaries
+
+- [x] Declare `SG1_Jaffa = 100%` for the Free Jaffa faction summary
+- [x] Declare provisional `SG1_Jaffa = 100%` for the current Goa'uld servant baseline
+- [x] Remove misleading human-baseliner summaries from world creation
+- [x] Keep true Goa'uld hosts deferred until persistent symbiote initialization is connected
+- [x] Record a later thematic faction-icon visual pass
+- [ ] Reopen Create World and validate both faction xenotype summaries
+- [ ] Add true minority Goa'uld host profiles in a dedicated later milestone
+
+
+## 0.2.2-dev-r2 — Expand faction limits and generate provisional leaders
+
+- [x] Keep one Goa'uld-domain faction and one Free Jaffa faction by default
+- [x] Allow players to add extra instances manually from Create World
+- [x] Add an explicit generated Free Jaffa leader
+- [x] Add an explicit provisional Goa'uld-domain Jaffa commander
+- [x] Remove `Faction leader ... is null` logs without creating incomplete Goa'uld hosts
+- [ ] Validate extra-faction additions in Create World
+- [ ] Validate clean new-game logs without missing faction leaders
+- [ ] Replace provisional Goa'uld-domain commanders with true persistent host profiles later

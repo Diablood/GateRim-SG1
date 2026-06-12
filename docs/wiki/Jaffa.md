@@ -107,9 +107,28 @@ Depuis `0.1.74-dev`, les marques frontales Jaffa sont stockées comme des donné
 persistantes propres au personnage. Elles ne font pas partie du xenotype, ne sont pas
 des gènes et ne sont pas des vêtements.
 
-La variante noire générique est attribuée automatiquement aux Jaffa compatibles.
+La variante noire générique est attribuée automatiquement uniquement aux Jaffa
+rattachés à un domaine Goa'uld. Les [Jaffa libres](Free-Jaffa-Faction) restent
+sans marque imposée.
+
 Les outils développeur permettent aussi d'appliquer les variantes argentée et
-dorée, de retirer une marque, ou d'apposer une marque sur un personnage non-Jaffa pour
-un scénario d'infiltration.
+dorée, de retirer une marque, ou d'apposer une marque sur un personnage
+non-Jaffa pour un scénario d'infiltration.
 
 Consulte [Identité visuelle des Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity).
+
+
+## Faction mondiale des Jaffa libres
+
+Depuis `0.2.2-dev`, une nouvelle planète génère une faction neutre :
+
+```text
+Jaffa libres
+```
+
+Elle possède un nombre limité de colonies visibles. Ses guerriers et gardes
+utilisent la lignée Jaffa, un Prim'ta initial, des Ma'Tok et les armures
+modulaires existantes sans recevoir automatiquement une marque frontale
+Goa'uld.
+
+Consulte [Jaffa libres](Free-Jaffa-Faction).

@@ -42,9 +42,10 @@ A heavy-armored guard is not automatically a First Prime.
 ## Persistent storage
 
 `GameComponent_JaffaForeheadMarks` stores an optional mark Def for each pawn
-ThingID. Compatible Jaffa receive an ordinary domain mark once when first
-encountered on a map. Removing a mark manually does not cause it to reappear on
-the next scan.
+ThingID. Compatible Jaffa receive an ordinary mark once when first encountered
+on a map only when their faction carries a Goa'uld System Lord-domain
+extension. Free Jaffa intentionally remain unmarked. Removing a mark manually
+does not cause it to reappear on the next scan.
 
 ## Native render-tree integration
 
@@ -106,4 +107,4 @@ Remove forehead mark
 9. Save, reload and confirm persistence for each manually assigned mark.
 10. Remove a Jaffa mark manually, save, reload and confirm that it does not return automatically.
 11. Load a save containing an earlier technical mark gene and confirm automatic migration without errors.
-12. Confirm that natural Goa'uld raids remain disabled.
+12. Confirm that Goa'uld-domain Jaffa receive marks while Free Jaffa remain unmarked.

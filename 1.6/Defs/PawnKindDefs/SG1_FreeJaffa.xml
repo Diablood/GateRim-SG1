@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    Goa'uld-aligned Jaffa pawn kinds.
-    These humanlike servants force the inheritable Jaffa lineage xenotype,
-    receive a one-time automatic Prim'ta through the existing initializer,
-    use the vanilla weapon-tag system to spawn with a Ma'Tok staff,
-    and now use apparelRequired for deterministic modular armor loadouts.
-    Since 0.2.1-dev, they support visible Goa'uld settlements and rare natural
-    direct-assault raids.
+    Free Jaffa pawn kinds.
+
+    They share the existing Jaffa lineage, Prim'ta provisioning, Ma'Tok
+    weapon tags and modular armor baseline, but they do not belong to a
+    Goa'uld System Lord domain and therefore receive no automatic forehead
+    mark.
     -->
     <PawnKindDef ParentName="BasePlayerPawnKind">
-        <defName>SG1_GoauldJaffaWarrior</defName>
-        <label>Goa'uld Jaffa warrior</label>
+        <defName>SG1_FreeJaffaWarrior</defName>
+        <label>Free Jaffa warrior</label>
         <race>Human</race>
-        <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
+        <defaultFactionType>SG1_FreeJaffa</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
         <xenotypeSet>
             <xenotypeChances>
@@ -39,10 +38,10 @@
     </PawnKindDef>
 
     <PawnKindDef ParentName="BasePlayerPawnKind">
-        <defName>SG1_GoauldJaffaGuard</defName>
-        <label>Goa'uld Jaffa guard</label>
+        <defName>SG1_FreeJaffaGuard</defName>
+        <label>Free Jaffa guard</label>
         <race>Human</race>
-        <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
+        <defaultFactionType>SG1_FreeJaffa</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
         <xenotypeSet>
             <xenotypeChances>

@@ -21,12 +21,35 @@ domaines Goa'uld rivaux.
 Une nouvelle planète génère :
 
 ```text
-1 faction Goa'uld hostile
+1 faction Goa'uld hostile par défaut
 un nombre limité de colonies visibles
 ```
 
+Le joueur peut ajouter manuellement plusieurs factions Goa'uld s'il souhaite
+représenter séparément plusieurs domaines de Grands Maîtres.
+
 La présence mondiale utilise volontairement un poids de génération de colonies
 réduit. Les Goa'uld sont visibles sans saturer la carte.
+
+## Résumé de xénotype provisoire
+
+Dans l'écran de création du monde, la faction indique actuellement :
+
+```text
+xénotype : Jaffa (100 %)
+```
+
+Ce résumé correspond à la baseline jouable actuelle : les groupes générés sont
+composés de serviteurs Jaffa. De véritables profils d'hôtes Goa'uld minoritaires
+seront ajoutés plus tard dans un jalon dédié. Ajouter seulement un xénotype
+d'hôte créerait pour le moment des hôtes incomplets sans symbiote persistant.
+
+## Dirigeant provisoire
+
+En attendant les véritables hôtes Goa'uld persistants, chaque domaine visible
+génère un **commandant Jaffa de domaine**. Ce représentant temporaire évite les
+erreurs de dirigeant manquant sans prétendre qu'un simple Jaffa est déjà un
+Grand Maître Goa'uld.
 
 ## Hostilité
 

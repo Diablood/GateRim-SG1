@@ -19,7 +19,17 @@
         <fixedName>Goa'uld System Lord domains</fixedName>
         <pawnsPlural>Goa'uld subjects</pawnsPlural>
         <pawnSingular>Goa'uld subject</pawnSingular>
-        <leaderTitle>System Lord</leaderTitle>
+        <!--
+        Provisional leader baseline: until true persistent Goa'uld host profiles
+        exist, visible domains are represented by a generated senior Jaffa
+        commander rather than an incomplete fake System Lord host.
+        -->
+        <leaderTitle>domain Jaffa commander</leaderTitle>
+        <basicMemberKind>SG1_GoauldJaffaWarrior</basicMemberKind>
+        <fixedLeaderKinds>
+            <li>SG1_GoauldJaffaGuard</li>
+        </fixedLeaderKinds>
+        <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
         <humanlikeFaction>true</humanlikeFaction>
         <hidden>false</hidden>
         <listOrderPriority>8</listOrderPriority>
@@ -37,10 +47,10 @@
 
         <!--
         RimWorld 1.6 world-creation UI fields.
-        The faction appears once by default and cannot be duplicated through
-        the Add faction menu.
+        The faction appears once by default. Players may add more instances
+        manually, like configurable vanilla factions.
         -->
-        <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+        <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
         <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
         <configurationListOrderPriority>8</configurationListOrderPriority>
         <displayInFactionSelection>true</displayInFactionSelection>
@@ -70,6 +80,21 @@
         <canRequestTraders>false</canRequestTraders>
         <canRequestMilitaryAid>false</canRequestMilitaryAid>
         <canGenerateQuestSites>false</canGenerateQuestSites>
+
+        <!--
+        Current baseline: the faction generates Jaffa servants only.
+        Declare SG1_Jaffa explicitly so the Create World summary does not
+        misleadingly report 100% baseliners.
+
+        True Goa'uld hosts remain a later dedicated milestone: adding only the
+        SG1_GoauldHost xenotype here would create incomplete hosts without a
+        persistent implanted symbiote identity.
+        -->
+        <xenotypeSet>
+            <xenotypeChances>
+                <SG1_Jaffa>1</SG1_Jaffa>
+            </xenotypeChances>
+        </xenotypeSet>
 
         <maxPawnCostPerTotalPointsCurve>
             <points>

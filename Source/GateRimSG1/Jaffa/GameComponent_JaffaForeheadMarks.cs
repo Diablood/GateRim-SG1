@@ -11,6 +11,10 @@ namespace GateRimSG1.Jaffa
     /// Existing technical mark genes remain declared only as migration
     /// placeholders. When an affected pawn is encountered on a map, the gene
     /// is converted into intrinsic data and removed from the pawn.
+    ///
+    /// Automatic assignment is restricted to Jaffa attached to a Goa'uld
+    /// System Lord domain. Free Jaffa remain unmarked unless a mark is
+    /// applied manually or migrated from earlier save data.
     /// </summary>
     public class GameComponent_JaffaForeheadMarks : GameComponent
     {
@@ -183,7 +187,9 @@ namespace GateRimSG1.Jaffa
             if (pawn == null
                 || pawn.Destroyed
                 || pawn.Dead
-                || !JaffaPrimtaUtility.IsCompatibleJaffa(pawn))
+                || !JaffaPrimtaUtility.IsCompatibleJaffa(pawn)
+                || !GoauldSystemLordDomainUtility.HasAssignedDomain(
+                    pawn.Faction))
             {
                 return;
             }

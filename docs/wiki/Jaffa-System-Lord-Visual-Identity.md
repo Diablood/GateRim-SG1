@@ -6,14 +6,16 @@
 
 ## Présentation
 
-Les Jaffa reçoivent automatiquement une marque frontale noire générique.
+Les Jaffa rattachés à un domaine Goa'uld reçoivent automatiquement une
+marque frontale noire générique.
 Depuis `0.1.74-dev`, cette marque n'est plus représentée par un gène cosmétique
 technique : elle est conservée comme une donnée intrinsèque propre au personnage.
 
 ## Nature de la marque
 
-La marque est indépendante du xenotype, de la faction actuelle et de
-l'équipement. Elle fonctionne comme un insigne culturel ou une scarification :
+Une fois attribuée, la marque est indépendante du xenotype, de la faction
+actuelle et de l'équipement. Elle fonctionne comme un insigne culturel ou une
+scarification :
 
 ```text
 aucune pièce d'inventaire
@@ -53,6 +55,9 @@ personnage concerné est rencontré.
 
 Les visuels actuels restent temporaires. Les variantes propres aux futurs
 Grands Maîtres, leur placement définitif et l'attribution automatique des rangs
-supérieurs seront traités ultérieurement. Les colonies visibles et les rares
-assauts directs naturels sont actifs depuis `0.2.1-dev`, mais les marchands et
-les doctrines naturelles avancées restent désactivés.
+supérieurs seront traités ultérieurement.
+
+Depuis `0.2.2-dev`, les [Jaffa libres](Free-Jaffa-Faction) restent sans marque
+imposée. Les colonies visibles et les rares assauts directs naturels Goa'uld
+sont actifs depuis `0.2.1-dev`, mais les marchands et les doctrines naturelles
+avancées restent désactivés.

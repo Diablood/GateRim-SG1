@@ -1,6 +1,6 @@
 # Goa'uld System Lord world-faction baseline
 
-Version: `0.2.1-dev-r3`
+Version: `0.2.2-dev-r2`
 
 ## Scope
 
@@ -19,7 +19,7 @@ Goa'uld System Lord domains.
 ```text
 hidden: false
 requiredCountAtGameStart: 1
-maxConfigurableAtWorldCreation: 1
+maxConfigurableAtWorldCreation: 9999
 startingCountAtWorldCreation: 1
 displayInFactionSelection: true
 settlementGenerationWeight: 0.35
@@ -27,7 +27,23 @@ permanentEnemy: true
 ```
 
 New worlds therefore contain one visible hostile Goa'uld faction with a
-limited number of settlements.
+limited number of settlements. Players may add additional Goa'uld-domain
+factions manually from Create World.
+
+## Provisional xenotype summary
+
+```text
+SG1_Jaffa: 100%
+```
+
+The current world-faction baseline generates Jaffa servants only. The
+faction-level `xenotypeSet` now reflects that reality in the Create World
+summary instead of falling back to human baseliners.
+
+True Goa'uld hosts remain deferred. Adding `SG1_GoauldHost` to this summary
+before connecting persistent symbiote initialization would generate
+incomplete hosts that do not participate correctly in implantation,
+extraction or identity-transfer mechanics.
 
 ## World-map support
 
@@ -62,6 +78,20 @@ SG1_GoauldJaffaGuard
 The `Settlement` profile ensures that visible world bases have a first
 defender pool if they are visited or attacked.
 
+## Provisional faction leader
+
+```text
+basicMemberKind: SG1_GoauldJaffaWarrior
+fixedLeaderKinds: SG1_GoauldJaffaGuard
+leaderForceGenerateNewPawn: true
+leaderTitle: domain Jaffa commander
+```
+
+Visible humanlike factions require a leader. Until real persistent Goa'uld
+host profiles exist, the faction generates a senior Jaffa commander. This
+removes missing-leader logs without pretending that a xenotype-only pawn is a
+true Goa'uld System Lord host.
+
 ## Controlled raid policy
 
 The faction deliberately keeps:
@@ -90,8 +120,11 @@ fallback has no retroactively generated settlements.
 
 1. Open Create World and confirm that `Domaines des Grands Maîtres Goa'uld` appears exactly once by default.
 2. Confirm one visible hostile Goa'uld faction in the faction list.
-3. Confirm multiple limited Goa'uld settlements on the world map.
-4. Inspect the gold-toned faction color and default settlement rendering.
-5. Confirm permanent hostility to the SGC expedition.
-6. Validate the dedicated natural direct-assault incident.
-7. Validate the three controlled developer incidents.
+3. Confirm that the faction summary displays `Jaffa: 100%` provisionally.
+4. Add at least one extra Goa'uld-domain faction manually.
+5. Confirm multiple limited Goa'uld settlements on the world map.
+6. Inspect the gold-toned faction color and default settlement rendering.
+7. Confirm permanent hostility to the SGC expedition.
+8. Confirm that no `Faction leader for Domaines des Grands Maîtres Goa'uld is null` log appears.
+9. Validate the dedicated natural direct-assault incident.
+10. Validate the three controlled developer incidents.

@@ -11,15 +11,24 @@ prototypes:
 - `SG1_GoauldJaffaGuard`
 
 Both pawn kinds force the existing inheritable `SG1_Jaffa` xenotype and are
-exposed through the hidden `SG1_GoauldSystemLordPrototype` faction's nested
-`Combat` pawn-group profile.
+exposed through the visible `SG1_GoauldSystemLordPrototype` faction's
+`Combat` and `Settlement` pawn-group profiles.
 
-## Intentionally deferred
+## Current integration
 
-The faction still does not generate naturally. Settlements, raids and
-traders remain disabled. The first Jaffa servants also do not yet receive
-automatic Prim'ta provisioning, faction-specific visual markings, dedicated
-armor or Ma'Tok equipment.
+Since later milestones, the Goa'uld world faction generates visible
+settlements and rare natural direct-assault raids. Its servants receive:
+
+```text
+automatic Prim'ta
+Ma'Tok
+modular armor
+retractable helmet
+automatic Goa'uld-domain forehead mark
+```
+
+Free Jaffa use separate PawnKindDefs since `0.2.2-dev` and intentionally
+remain without an automatic forehead mark.
 
 ## Manual test checklist
 

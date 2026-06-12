@@ -9,8 +9,9 @@
 ## Races et mécaniques
 
 - [Jaffa](Jaffa)
+- [Jaffa libres](Free-Jaffa-Faction)
 - [Goa'uld](Goauld)
-- [Domaine d'un Grand Maître Goa'uld](Goauld-System-Lord-Faction)
+- [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
 - [Bâton Ma'Tok](Matok-Staff)
 - [Zat'nik'tel](ZatnikTel)
 - [Treillis d'équipe SG](SG-Team-Uniform)

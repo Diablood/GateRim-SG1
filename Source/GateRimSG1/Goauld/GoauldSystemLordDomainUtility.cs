@@ -12,6 +12,13 @@ namespace GateRimSG1.Goauld
     /// </summary>
     public static class GoauldSystemLordDomainUtility
     {
+        public static bool HasAssignedDomain(Faction faction)
+        {
+            return faction?.def
+                ?.GetModExtension<GoauldSystemLordDomainExtension>()
+                ?.domain != null;
+        }
+
         public static GoauldSystemLordDomainDef DomainFor(Faction faction)
         {
             GoauldSystemLordDomainExtension extension =

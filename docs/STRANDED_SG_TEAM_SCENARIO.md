@@ -123,11 +123,14 @@ The helmets arrive as supplies and are deliberately not auto-equipped.
 
 ## Intentionally deferred
 
-Not enabled yet:
+Enabled since later `0.2.x` milestones:
 
 - Goa'uld world settlements;
-- natural Goa'uld raids;
-- Free Jaffa world presence;
+- rare natural Goa'uld direct-assault raids;
+- Free Jaffa world presence.
+
+Still deferred:
+
 - Tok'ra world-presence balancing;
 - natural acquisition of Ma'Tok and Zat'nik'tel weapons;
 - a functional Stargate.

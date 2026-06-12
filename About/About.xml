@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.1-dev-r3</modVersion>
+    <modVersion>0.2.2-dev-r2</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -71,7 +71,12 @@ Current development scope:
 - Remove invalid Goa'uld FactionDef world-icon fields for RimWorld 1.6
 - Expose the Goa'uld faction in RimWorld 1.6 world creation and normalize French player-facing vocabulary
 - Capitalize the French Goa'uld faction name and restore the SGC expedition faction icon
-- Goa'uld-aligned Jaffa pawn kinds and hidden Combat-group prototype
+- Visible neutral Free Jaffa world-faction baseline with limited settlements
+- Free Jaffa warrior and guard profiles with Prim'ta, Ma'Tok and modular armor
+- Automatic forehead marks restricted to Goa'uld-domain Jaffa; Free Jaffa remain unmarked
+- Faction-level Jaffa xenotype summaries aligned with current generated populations
+- Configurable multi-faction limits and provisional generated leaders for Goa'uld and Free Jaffa factions
+- Goa'uld-aligned Jaffa pawn kinds with Combat and Settlement profiles
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
 - Ma'Tok plasma-impact prototype with reduced structural damage against non-organic targets and buildings

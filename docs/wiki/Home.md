@@ -16,7 +16,8 @@ disponible du contenu encore en développement.
 - [Jaffa](Jaffa) : lignée héréditaire, [Prim'ta](Primta),
   [larve de Prim'ta](Primta-Larva), [bassin d'incubation](Primta-Incubation),
   [implantation médicale](Primta-Implantation),
-  [cérémonie formelle](Primta-Formal-Ceremony) et [trétonine](Tretonin).
+  [cérémonie formelle](Primta-Formal-Ceremony), [trétonine](Tretonin) et
+  [faction mondiale des Jaffa libres](Free-Jaffa-Faction).
 - [Goa'uld](Goauld) : [chasse autonome](Autonomous-Hunt),
   [implantation forcée](Forced-Implantation),
   [implantation rituelle](Ritual-Implantation),
@@ -53,9 +54,13 @@ Depuis `0.2.1-dev`, les [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lor
 apparaissent sur la carte du monde et peuvent lancer de rares
 [raids naturels de Jaffa](Goauld-Jaffa-Natural-Raid).
 
-Les prochains lots ajouteront progressivement les Jaffa libres, la présence
-Tok'ra mondiale et l'acquisition normale des objets Stargate. La Porte des
-étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
+Depuis `0.2.2-dev`, les [Jaffa libres](Free-Jaffa-Faction) apparaissent
+également sur la carte du monde avec des colonies limitées et une relation
+initiale neutre envers l'expédition du SGC.
+
+Les prochains lots ajouteront progressivement leurs rencontres pacifiques, la
+présence Tok'ra mondiale et l'acquisition normale des objets Stargate. La
+Porte des étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.
