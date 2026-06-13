@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    First contextual social baseline.
+
+    The effects are deliberately modest. They enrich cultural identity without
+    forcing permanent relationships, automatic attacks or absolute social
+    restrictions.
+    -->
+    <ThoughtDef>
+        <defName>SG1_FreeJaffaDistrustsGoauldHost</defName>
+        <thoughtClass>Thought_SituationalSocial</thoughtClass>
+        <workerClass>GateRimSG1.Social.ThoughtWorker_FreeJaffaDistrustsGoauldHost</workerClass>
+        <stages>
+            <li>
+                <label>distrusts a Goa'uld</label>
+                <description>This Free Jaffa recognizes an active Goa'uld host and remembers the domination imposed by the System Lords.</description>
+                <baseOpinionOffset>-30</baseOpinionOffset>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>SG1_TokraSeesGoauldEnemy</defName>
+        <thoughtClass>Thought_SituationalSocial</thoughtClass>
+        <workerClass>GateRimSG1.Social.ThoughtWorker_TokraSeesGoauldEnemy</workerClass>
+        <stages>
+            <li>
+                <label>sees a Goa'uld enemy</label>
+                <description>This Tok'ra recognizes an active Goa'uld host as a representative of the enemy it has resisted for generations.</description>
+                <baseOpinionOffset>-40</baseOpinionOffset>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>SG1_FreeJaffaWaryOfMarkedJaffa</defName>
+        <thoughtClass>Thought_SituationalSocial</thoughtClass>
+        <workerClass>GateRimSG1.Social.ThoughtWorker_FreeJaffaWaryOfMarkedJaffa</workerClass>
+        <stages>
+            <li>
+                <label>wary of a Goa'uld-marked Jaffa</label>
+                <description>This Free Jaffa remains cautious around a Jaffa who still bears the mark of a Goa'uld domain. The mark may reflect coercion, former service, pride or infiltration.</description>
+                <baseOpinionOffset>-8</baseOpinionOffset>
+            </li>
+        </stages>
+    </ThoughtDef>
+
+    <ThoughtDef>
+        <defName>SG1_DomainJaffaUnderSystemLordGaze</defName>
+        <thoughtClass>Thought_Situational</thoughtClass>
+        <workerClass>GateRimSG1.Social.ThoughtWorker_DomainJaffaUnderSystemLordGaze</workerClass>
+        <stages>
+            <li>
+                <label>under a System Lord's gaze</label>
+                <description>This Jaffa is close to the domain's Grand Master. Fear, habit and rigid discipline leave little room for doubt.</description>
+                <baseMoodEffect>2</baseMoodEffect>
+            </li>
+        </stages>
+    </ThoughtDef>
+</Defs>

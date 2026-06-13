@@ -1012,3 +1012,19 @@
 - [ ] Generate a fresh Free Jaffa city and validate visible Jaffa and portraits
 - [ ] Confirm `Getting apparel graphic with undefined body type` no longer appears
 - [ ] Confirm portrait-rendering null-reference errors no longer appear
+
+
+## 0.2.5-dev — Contextual social baseline
+
+- [x] Add centralized social-identity utility
+- [x] Add Free Jaffa distrust toward active Goa'uld hosts
+- [x] Add stronger Tok'ra hostility toward active Goa'uld hosts
+- [x] Add mild Free Jaffa caution toward Goa'uld-marked Jaffa
+- [x] Add local discipline thought for Goa'uld-domain Jaffa near their System Lord
+- [x] Keep the effects contextual rather than absolute
+- [x] Avoid automatic attacks and permanent forced relationships
+- [ ] Validate all opinion thoughts in RimWorld
+- [ ] Validate System Lord proximity activation and deactivation
+- [ ] Validate save and reload behavior
+- [ ] Consider voluntary Tok'ra-host positive memories separately
+- [ ] Add optional Ideology integration later

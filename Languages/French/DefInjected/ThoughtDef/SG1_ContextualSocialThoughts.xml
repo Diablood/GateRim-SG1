@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_FreeJaffaDistrustsGoauldHost.stages.0.label>se méfie d'un Goa'uld</SG1_FreeJaffaDistrustsGoauldHost.stages.0.label>
+    <SG1_FreeJaffaDistrustsGoauldHost.stages.0.description>Ce Jaffa libre reconnaît un hôte Goa'uld actif et se souvient de la domination imposée par les Grands Maîtres.</SG1_FreeJaffaDistrustsGoauldHost.stages.0.description>
+
+    <SG1_TokraSeesGoauldEnemy.stages.0.label>voit un ennemi Goa'uld</SG1_TokraSeesGoauldEnemy.stages.0.label>
+    <SG1_TokraSeesGoauldEnemy.stages.0.description>Ce Tok'ra reconnaît un hôte Goa'uld actif comme un représentant de l'ennemi auquel il résiste depuis des générations.</SG1_TokraSeesGoauldEnemy.stages.0.description>
+
+    <SG1_FreeJaffaWaryOfMarkedJaffa.stages.0.label>se méfie d'un Jaffa marqué par les Goa'uld</SG1_FreeJaffaWaryOfMarkedJaffa.stages.0.label>
+    <SG1_FreeJaffaWaryOfMarkedJaffa.stages.0.description>Ce Jaffa libre reste prudent face à un Jaffa qui porte encore la marque d'un domaine Goa'uld. Cette marque peut évoquer la contrainte, un ancien service, la fierté ou une infiltration.</SG1_FreeJaffaWaryOfMarkedJaffa.stages.0.description>
+
+    <SG1_DomainJaffaUnderSystemLordGaze.stages.0.label>sous le regard d'un Grand Maître</SG1_DomainJaffaUnderSystemLordGaze.stages.0.label>
+    <SG1_DomainJaffaUnderSystemLordGaze.stages.0.description>Ce Jaffa se trouve près du Grand Maître de son domaine. La peur, l'habitude et une discipline rigide laissent peu de place au doute.</SG1_DomainJaffaUnderSystemLordGaze.stages.0.description>
+</LanguageData>

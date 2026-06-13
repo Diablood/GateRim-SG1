@@ -62,10 +62,15 @@ Depuis `0.2.4-dev`, une première couche d'[histoires culturelles](Cultural-Back
 distingue les humains Tau'ri, les Jaffa, les hôtes Goa'uld et les agents Tok'ra
 générés.
 
-Les prochains lots ajouteront progressivement les réactions sociales
-contextuelles, les rencontres pacifiques Jaffa libres, la présence Tok'ra
-mondiale et l'acquisition normale des objets Stargate. La Porte des étoiles
-fonctionnelle appartiendra à la future phase `0.3.x`.
+Depuis `0.2.5-dev`, une première couche de
+[réactions sociales contextuelles](Contextual-Social-Baseline) ajoute des
+opinions propres aux Jaffa libres, aux Tok'ra et aux Goa'uld, ainsi qu'une
+discipline locale des serviteurs proches d'un Grand Maître.
+
+Les prochains lots ajouteront progressivement les rencontres pacifiques Jaffa
+libres, la présence Tok'ra mondiale et l'acquisition normale des objets
+Stargate. La Porte des étoiles fonctionnelle appartiendra à la future phase
+`0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

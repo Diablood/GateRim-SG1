@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.5-dev — Add contextual social baseline
+
+- Add `GateRimSG1.Social.ContextualSocialIdentityUtility`.
+- Distinguish inherited Jaffa physiology, current allegiance, Free Jaffa background, adult-symbiote origin, intrinsic forehead marks and real System Lord hosts.
+- Add social thought `SG1_FreeJaffaDistrustsGoauldHost` with `-30` opinion.
+- Add social thought `SG1_TokraSeesGoauldEnemy` with `-40` opinion.
+- Add social thought `SG1_FreeJaffaWaryOfMarkedJaffa` with `-8` opinion.
+- Add mood thought `SG1_DomainJaffaUnderSystemLordGaze` with `+2` mood within `12` cells.
+- Restrict the System Lord proximity thought to a Jaffa and System Lord belonging to the same Goa'uld-domain faction.
+- Preserve contextual interpretation of forehead marks: former service, coercion, pride and infiltration remain possible.
+- Avoid forced permanent relationships, automatic attacks and absolute social restrictions.
+- Add French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.5`.
+- Require a forced C# rebuild after extraction.
+
 ## 0.2.4-dev-r1 — Define adulthood backstory body types
 
 - Add `bodyTypeMale = Male` and `bodyTypeFemale = Female` to all `38` dedicated adulthood backstories.

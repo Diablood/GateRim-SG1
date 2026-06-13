@@ -13,70 +13,60 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.4-dev-r1 — Define adulthood body types
+### 0.2.5-dev — Add contextual social baseline
 
-The first native cultural-history layer is now in place without adding
-Humanoid Alien Races as a dependency.
+The first lightweight social layer is now in place.
 
-The milestone adds:
-
-```text
-6 Tau'ri SGC adult careers
-8 shared Jaffa childhoods
-8 Goa'uld-domain Jaffa adult careers
-8 Free Jaffa adult careers
-6 off-world human childhoods
-6 ordinary Goa'uld-host adult careers
-4 System Lord adult careers
-6 generated Tok'ra-agent adult careers
-```
-
-Generation policy:
+It adds three situational opinion modifiers:
 
 ```text
-Tau'ri
--> broad vanilla Earth-compatible histories
--> smaller optional chance of an SGC-specific adulthood
+Free Jaffa -> active Goa'uld host
+    distrusts a Goa'uld: -30 opinion
 
-Goa'uld-domain Jaffa
--> dedicated Jaffa childhoods and domain careers only
+active Tok'ra host -> active Goa'uld host
+    sees a Goa'uld enemy: -40 opinion
 
-Free Jaffa
--> dedicated Jaffa childhoods and liberated-community careers only
-
-Generated Goa'uld hosts
--> off-world human childhoods and Goa'uld caste careers only
-
-Generated Tok'ra prototype agents
--> off-world human childhoods and Tok'ra careers only
+Free Jaffa -> Goa'uld-marked Jaffa
+    wary of a Goa'uld-marked Jaffa: -8 opinion
 ```
 
-Existing colonists who voluntarily accept a Tok'ra symbiote keep their
-original childhood and adulthood. Dedicated stories use
-`requiresSpawnCategory = true` so they do not leak into unrelated vanilla
-generation.
-
-The baseline is intentionally narrative-first. More stories and granular
-skill effects can be added later through small content patches.
-
-The `r1` rendering fix assigns standard gender-appropriate vanilla body types
-to every dedicated adulthood history:
+It also adds one local mood thought:
 
 ```text
-male character   -> Male
-female character -> Female
+Goa'uld-domain Jaffa within 12 cells of the same faction's active System Lord
+    under a System Lord's gaze: +2 mood
 ```
 
-RimWorld directly asks the selected adulthood backstory for the pawn body
-type. Without these fields, generated off-world pawns could receive an
-undefined body type, become invisible and trigger portrait-rendering errors.
+The small positive mood value represents imposed composure and rigid
+discipline rather than genuine happiness.
+
+The logic is centralized in:
+
+```text
+GateRimSG1.Social.ContextualSocialIdentityUtility
+```
+
+The utility separates:
+
+```text
+inherited Jaffa physiology
+current faction allegiance
+persistent Free Jaffa background from PawnKindDef
+adult-symbiote origin
+intrinsic forehead marks
+actual System Lord host profile
+```
+
+The baseline deliberately avoids automatic attacks, forced permanent
+relationships and absolute social restrictions.
 
 ## Next development focus
 
-- validate representative generation samples;
-- confirm no terrestrial histories appear on generated Jaffa or Goa'uld;
-- confirm no `No shuffled Childhood` or `No shuffled Adulthood` fallback logs;
-- add contextual social rules separately.
+- validate each opinion modifier with developer-spawned test pawns;
+- validate the local System Lord proximity thought;
+- confirm save and reload behavior;
+- refine social effects incrementally after gameplay observation;
+- keep optional Ideology integration as a later layer.
 
 ## First playable milestone
 
@@ -108,6 +98,7 @@ undefined body type, become invisible and trigger portrait-rendering errors.
 - [x] Free Jaffa world-faction baseline
 - [x] Persistent Goa'uld host-caste baseline
 - [x] Cultural backstory baseline
+- [x] Contextual social baseline
 
 ## Development notes
 

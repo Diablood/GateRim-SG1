@@ -4,6 +4,7 @@
 - [Bien débuter](Getting-Started)
 - [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario)
 - [Histoires culturelles](Cultural-Backstories)
+- [Réactions sociales contextuelles](Contextual-Social-Baseline)
 - [Installation et dépendances](Installation-and-Requirements)
 - [État du contenu](Content-Status)
 
