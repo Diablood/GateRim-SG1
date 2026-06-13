@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.13-dev — Add Tok'ra safehouse signal baseline
+
+- Add storyteller incident `SG1_TokraSafehouseSignal`.
+- Add `IncidentWorker_TokraSafehouseSignal`.
+- Reuse the persistent hidden `SG1_Tokra` faction.
+- Add a rare letter-only encrypted safehouse signal from a clandestine Tok'ra cell.
+- Gate the incident to neutral, cooperative or trusted Tok'ra trust tiers.
+- Keep wary trust excluded.
+- Add a tiny `+1` Tok'ra trust increase when the signal is acknowledged.
+- Add `GameComponent_TokraTrustTracker.NotifyHiddenSafehouseSignalAcknowledged()`.
+- Add trust message translations.
+- Keep the event non-territorial: no world site, no settlement, no caravan, no trader, no recruitment, no loot, no military aid and no raid.
+- Align C# assembly version with `0.2.13`.
+- Update French translations, technical documentation, wiki drafts and `docs/PROJECT_STATE.md`.
+- Requires forced C# rebuild after application.
+
 ## 0.2.12-dev-r1 — Normalize Tok'ra cell cache French label
 
 - Rename the French incident label from `cache d'une cellule Tok'ra cachée` to `cache d'une cellule Tok'ra`.

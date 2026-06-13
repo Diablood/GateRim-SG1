@@ -16,33 +16,33 @@ Before starting a task:
 Latest prepared milestone:
 
 ```text
-0.2.12-dev - Add hidden Tok'ra cell cache baseline
+0.2.13-dev - Add Tok'ra safehouse signal baseline
 ```
 
 Expected tag after validation and publication:
 
 ```text
-v0.2.12-dev
+v0.2.13-dev
 ```
 
 Publication status at the time this handoff was written:
 
 ```text
-0.2.12-dev validated locally.
-A label-only r1 patch normalizes the French incident name from `cache d'une cellule Tok'ra cachée` to `cache d'une cellule Tok'ra`.
+0.2.13-dev patch prepared in ChatGPT.
+Validate locally before commit/tag/push.
 ```
 
-Current mod metadata after applying `0.2.12-dev`:
+Current mod metadata after applying `0.2.13-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.12-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.12
+About/About.xml: modVersion = 0.2.13-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.13
 ```
 
 Reason:
 
 ```text
-0.2.12-dev adds C# incident-worker code and requires a forced rebuild.
+0.2.13-dev adds C# incident-worker and trust-tracker code and requires a forced rebuild.
 ```
 
 ## Environment and conventions
@@ -86,252 +86,125 @@ dotnet build `
     -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
 ```
 
-## Stable architectural decisions
-
-Do not refactor the mod around Humanoid Alien Races.
-
-The project uses:
-- Biotech xenotypes;
-- Hediffs;
-- intrinsic data and render nodes;
-- `PawnKindDef`;
-- `FactionDef`;
-- targeted C# components.
-
-HAR-like ideas may be implemented natively:
-- cultural backstories;
-- contextual social thoughts;
-- faction-specific generation rules.
-
-Social systems should remain contextual and moderate:
-- no automatic attacks;
-- no forced permanent relations;
-- no absolute social locks unless explicitly designed later.
-
-## Latest validated milestones
+## Latest validated and prepared milestones
 
 ### 0.2.8-dev-r1 — Require adult stranded SG-team candidates
 
-The `Équipe SG isolée` scenario no longer offers underage starting candidates.
-
-Implementation:
-- `ScenPart_SGTeamStartingGear.AllowPlayerStartingPawn(...)`;
-- minimum biological age: `20`;
-- still rejects candidates incapable of violence.
+The `Équipe SG isolée` scenario rejects underage starting candidates and requires
+a minimum biological age of `20`.
 
 ### 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
 
-The Zat'nik'tel is now recoverable naturally but remains rare.
-
-Behavior:
-- ordinary Goa'uld Jaffa warriors remain Ma'Tok-only;
-- Goa'uld Jaffa guards can generate with either Ma'Tok or Zat'nik'tel;
-- settlement guards can also generate with either weapon;
-- natural acquisition comes from existing Goa'uld raids and settlements;
-- recovered Zats remain usable before research;
-- local crafting remains gated by `SG1_JaffaWeaponry`.
+Goa'uld Jaffa guards can rarely carry Zat'nik'tel weapons. Ordinary warriors
+remain Ma'Tok-only. Recovered Zats are usable before research; local crafting
+remains gated by `SG1_JaffaWeaponry`.
 
 ### 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
 
-Adds rare natural incident `SG1_GoauldQueenArrival`.
-
-Behavior:
-- escaped player-controlled Goa'uld queen;
-- duplicate queen prevention across maps and caravans;
-- player command to extract one immature Prim'ta symbiote;
-- persistent extraction cooldown;
-- assisted maturation remains gated by `SG1_GoauldBiotechnology`.
+Adds rare `SG1_GoauldQueenArrival`, duplicate queen prevention and
+player-controlled queen extraction of immature Prim'ta symbiotes.
 
 ### 0.2.11-dev — Balance queen-origin Prim'ta acquisition
 
-Balances the queen-origin Prim'ta loop.
-
-Updated values:
+Current queen loop:
 - queen-arrival `earliestDay`: `45`;
 - queen-arrival `baseChance`: `0.015`;
 - queen-arrival `minRefireDays`: `90`;
-- queen extraction recovery: `180000` ticks, or 3 RimWorld days;
-- each extraction produces `1` immature Prim'ta symbiote;
-- assisted maturation costs `20` raw meat;
-- assisted maturation `workAmount`: `2400`.
+- extraction recovery: `180000` ticks, or 3 RimWorld days;
+- `1` immature Prim'ta symbiote per extraction;
+- maturation costs `20` raw meat and `2400` work.
 
-### 0.2.12-dev — Add hidden Tok'ra cell cache baseline
+### 0.2.12-dev-r1 — Add hidden Tok'ra cell cache baseline
 
-Label-only follow-up:
-- French player-facing incident label normalized to `cache d'une cellule Tok'ra` to avoid the awkward `cache/cachée` repetition.
+Adds `SG1_TokraHiddenCellCache`.
+
+Behavior:
+- reuses persistent hidden `SG1_Tokra`;
+- no Tok'ra settlement, site, trader, recruitment, military aid or raid;
+- neutral: `1` tretonin + `2` industrial medicine;
+- cooperative: `2` tretonin + `2` industrial medicine;
+- trusted: `2` tretonin + `3` industrial medicine;
+- refuses at wary trust;
+- French label normalized to `cache d'une cellule Tok'ra`.
+
+### 0.2.13-dev — Add Tok'ra safehouse signal baseline
 
 Prepared behavior:
-- adds incident `SG1_TokraHiddenCellCache`;
-- adds worker `IncidentWorker_TokraHiddenCellCache`;
-- reuses persistent hidden `SG1_Tokra` faction;
-- creates no Tok'ra settlement, world site, trader, recruitment, military aid or raid;
-- places a small medical cache near a reachable unfogged map-edge cell;
+- adds incident `SG1_TokraSafehouseSignal`;
+- adds worker `IncidentWorker_TokraSafehouseSignal`;
+- reuses persistent hidden `SG1_Tokra`;
 - can trigger only at neutral, cooperative or trusted Tok'ra trust;
 - refuses at wary trust;
-- no trust change yet.
-
-Cache contents:
-- neutral: `1` tretonin dose + `2` industrial medicine;
-- cooperative: `2` tretonin doses + `2` industrial medicine;
-- trusted: `2` tretonin doses + `3` industrial medicine.
+- applies a tiny `+1` Tok'ra trust gain;
+- creates no world site, settlement, caravan, visitor group, trader, recruitment, loot, military aid or raid;
+- updates `GameComponent_TokraTrustTracker` with `NotifyHiddenSafehouseSignalAcknowledged()`.
 
 This milestone changes C# and requires forced rebuild after application.
 
-## Current validated gameplay state
+## Current gameplay state
 
-### World factions
+World factions:
+- Goa'uld: visible, limited settlements, direct natural Jaffa assault raids, true Goa'uld System Lord leaders.
+- Free Jaffa: visible, neutral with SGC by default, settlements and peaceful visitors.
+- Tok'ra: one persistent hidden faction, no settlements, no raids, no configurable world-creation entry.
 
-Goa'uld:
-- visible world faction;
-- limited settlements;
-- direct natural Jaffa assault raids enabled;
-- natural abduction/destruction doctrines still disabled;
-- leaders are true Goa'uld System Lord hosts with persistent symbiote identity.
-
-Free Jaffa:
-- visible world faction;
-- neutral with the SGC expedition by default;
-- settlements generated with limited presence;
-- peaceful visitor incident exists;
-- no automatic Goa'uld forehead mark;
-- Free Jaffa visitors use Jaffa lineage, initial Prim'ta, Ma'Tok, modular armor and retractable helmet.
-
-Tok'ra:
-- one persistent hidden faction per game;
-- no configurable world-creation entry;
-- no settlements;
-- no natural raids;
-- no traders, military aid or automatic quest sites;
-- peaceful visitors, therapeutic opportunities and medical-support deliveries reuse the same hidden faction;
-- hidden cell cache incident now gives the faction a small non-territorial footprint;
-- hidden internal leader is initialized with a persistent Tok'ra symbiote when applicable.
-
-### Research and production
-
-Dedicated research tab:
-
-```text
-GateRim SG-1
-```
-
-Projects:
-- `SG1_JaffaWeaponry` after vanilla `Gunsmithing`;
-- `SG1_JaffaArmor` after vanilla `FlakArmor`;
-- `SG1_SGFieldEquipment` after vanilla `ComplexClothing`;
-- `SG1_GoauldBiotechnology` after vanilla `DrugProduction`.
-
-The research gates local reproduction and construction only.
-
-Objects already captured, supplied, gifted or otherwise acquired remain usable:
-- Ma'Tok;
-- Zat'nik'tel;
-- Jaffa armor;
-- SG-team equipment;
-- tretonin doses;
-- Prim'ta larvae.
-
-### Biological acquisition
-
-Queen-origin loop:
-
-```text
-rare queen arrival
--> player-controlled Goa'uld queen
--> 1 immature Prim'ta symbiote every 3 RimWorld days
--> 20 raw meat + Prim'ta incubation basin + SG1_GoauldBiotechnology
--> 1 mature Prim'ta larva
-```
-
-The current loop is intentionally modest. Future upgrades should require visible investment.
-
-## Known TODO and deferred work
-
-### Tok'ra content
-
-Implemented:
-- hidden persistent Tok'ra faction;
-- peaceful visits;
+Tok'ra systems:
+- peaceful visitors;
 - therapeutic opportunities;
 - medical-support deliveries;
-- hidden cell cache baseline.
+- hidden cell cache;
+- safehouse signal.
 
-Deferred:
-- true hidden Tok'ra world sites or safehouses;
-- Tok'ra quest sites;
-- richer diplomacy;
-- special rewards;
-- limited recruitment or host-volunteer events.
+Research:
+- dedicated `GateRim SG-1` tab;
+- `SG1_JaffaWeaponry`;
+- `SG1_JaffaArmor`;
+- `SG1_SGFieldEquipment`;
+- `SG1_GoauldBiotechnology`.
 
-### Normal resource acquisition
+Biological acquisition:
+- rare queen arrival;
+- one immature Prim'ta symbiote every 3 days from a player queen;
+- maturation costs 20 raw meat and requires Goa'uld biotechnology.
 
-Partially done:
-- Zat'nik'tel rare natural recovery via Goa'uld guards;
-- queen-origin Prim'ta loop;
-- Tok'ra medical deliveries;
-- hidden Tok'ra cell cache.
+## Validation checklist for 0.2.13-dev
 
-Still to review later:
-- natural tretonin availability pacing after several seasons;
-- larva availability outside queen-origin loop;
-- whether Free Jaffa visitors should ever give limited supplies;
-- whether Goa'uld settlements should contain biological loot.
+1. Apply ZIP at repository root.
+2. Rebuild C# with `-t:Rebuild`.
+3. Start RimWorld and confirm no red errors.
+4. Force `SG1_TokraSafehouseSignal` at neutral trust.
+5. Confirm a positive letter appears.
+6. Confirm Tok'ra trust increases by `+1`.
+7. Confirm no site, pawn, caravan, loot, trader, recruitment, military aid or raid is created.
+8. Save and reload.
+9. Confirm the trust score persists.
+10. If possible, set trust to wary and confirm the incident refuses.
+11. Confirm no duplicate Tok'ra faction is created.
 
-### Visual/faction polish
+## Recommended next milestone after 0.2.13 validation
 
-Deferred:
-- simplified custom faction icons for SGC, Free Jaffa, Goa'uld domains and future factions;
-- final Jaffa forehead-mark artwork and placement pass.
-
-## Recommended validation for 0.2.12-dev
-
-Fresh game:
-- no Tok'ra settlements appear;
-- exactly one hidden Tok'ra faction persists;
-- force `SG1_TokraHiddenCellCache`;
-- cache appears only at neutral or better trust;
-- cache uses `SG1_Tokra`;
-- no Tok'ra visitor group, trader, recruitment, military aid or raid appears.
-
-Old save:
-- Tok'ra hidden faction migrates if missing;
-- cache reuses the migrated faction;
-- no duplicate Tok'ra faction is created.
-
-Gameplay:
-- cache resolves cleanly;
-- rewards are modest;
-- save/reload after cache placement remains stable.
-
-Logs:
-- no unresolved cross-reference;
-- no red errors;
-- no accidental debug popup for expected refusal cases.
-
-## Recommended next milestone after 0.2.12 validation
-
-If the cache baseline is stable:
+Preferred:
 
 ```text
-0.2.13-dev - Add hidden Tok'ra world-site prototype
+0.2.14-dev - Add hidden Tok'ra world-site prototype
 ```
 
-Keep it small:
+Scope:
 - one temporary hidden safehouse or signal site;
-- modest reward;
 - no trader yet;
 - no recruitment yet;
+- modest reward only;
 - no permanent settlement.
 
 Alternative:
 
 ```text
-0.2.13-dev - Review normal resource acquisition pacing
+0.2.14-dev - Review normal resource acquisition pacing
 ```
 
-Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after
-playtesting.
+Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after playtesting.
 
-## Publication checklist for any milestone
+## Publication checklist
 
 Before commit:
 - run RimWorld startup test;

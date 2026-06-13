@@ -11,4 +11,5 @@
     <GR_TokraTrust_OfferRefused>Tok'ra trust decreased slightly after the therapeutic offer was refused: {0} ({1}).</GR_TokraTrust_OfferRefused>
     <GR_TokraTrust_OfferExpired>Tok'ra trust decreased after the therapeutic offer expired without an answer: {0} ({1}).</GR_TokraTrust_OfferExpired>
     <GR_TokraTrust_Changed>Tok'ra trust changed: {0} ({1}).</GR_TokraTrust_Changed>
+    <GR_TokraTrust_HiddenSafehouseSignalAcknowledged>Acknowledged Tok'ra safehouse signal. Tok'ra trust: {0} ({1}).</GR_TokraTrust_HiddenSafehouseSignalAcknowledged>
 </LanguageData>

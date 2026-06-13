@@ -11,4 +11,5 @@
     <GR_TokraTrust_OfferRefused>La confiance Tok'ra diminue légèrement après le refus de l'offre thérapeutique : {0} ({1}).</GR_TokraTrust_OfferRefused>
     <GR_TokraTrust_OfferExpired>La confiance Tok'ra diminue après l'expiration de l'offre thérapeutique sans réponse : {0} ({1}).</GR_TokraTrust_OfferExpired>
     <GR_TokraTrust_Changed>La confiance Tok'ra évolue : {0} ({1}).</GR_TokraTrust_Changed>
+    <GR_TokraTrust_HiddenSafehouseSignalAcknowledged>Signal de planque Tok'ra reçu. Confiance Tok'ra : {0} ({1}).</GR_TokraTrust_HiddenSafehouseSignalAcknowledged>
 </LanguageData>

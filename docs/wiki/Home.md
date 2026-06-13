@@ -98,3 +98,7 @@ ultérieurement.
 - [Installation et dépendances](Installation-and-Requirements)
 - [FAQ](FAQ)
 - [Dépôt GitHub principal](https://github.com/Diablood/GateRim-SG1)
+
+Depuis `0.2.13-dev`, une cellule Tok'ra clandestine peut transmettre un
+[signal de planque](Tokra-Safehouse-Signal), sans créer encore de site mondial
+visitable.

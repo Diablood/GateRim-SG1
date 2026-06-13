@@ -21,6 +21,7 @@ namespace GateRimSG1.Goauld
         public const int MinimumTrust = -100;
         public const int MaximumTrust = 100;
         public const int AcceptedOfferTrustChange = 5;
+        public const int HiddenSafehouseSignalTrustChange = 1;
         public const int RefusedOfferTrustChange = -1;
         public const int ExpiredOfferTrustChange = -2;
 
@@ -154,6 +155,24 @@ namespace GateRimSG1.Goauld
             return GetRemainingWaryDiplomaticCooldownTicks() / 60000f;
         }
 
+        public static void NotifyHiddenSafehouseSignalAcknowledged()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot update Tok'ra trust: the trust tracker is "
+                    + "unavailable.");
+                return;
+            }
+
+            tracker.ApplyFlatTrustChange(
+                HiddenSafehouseSignalTrustChange,
+                "hidden safehouse signal",
+                "GR_TokraTrust_HiddenSafehouseSignalAcknowledged");
+        }
+
         public static void NotifyTherapeuticOfferOutcome(
             TokraTherapeuticOfferOutcome outcome)
         {
@@ -168,6 +187,32 @@ namespace GateRimSG1.Goauld
             }
 
             tracker.ApplyTherapeuticOfferOutcome(outcome);
+        }
+
+        private void ApplyFlatTrustChange(
+            int requestedChange,
+            string reasonLabel,
+            string messageKey)
+        {
+            int previousTrust = trustScore;
+            TokraTrustTier previousTier = GetTierForScore(previousTrust);
+
+            trustScore = ClampTrust(trustScore + requestedChange);
+
+            int appliedChange = trustScore - previousTrust;
+            TokraTrustTier currentTier = GetTierForScore(trustScore);
+            string signedChange = FormatSignedChange(appliedChange);
+
+            Messages.Message(
+                messageKey.Translate(trustScore, signedChange),
+                GetMessageType(appliedChange),
+                historical: true);
+
+            GR_Log.Message(
+                $"Adjusted Tok'ra trust after {reasonLabel}: "
+                + $"{previousTrust} -> {trustScore} ({signedChange}); "
+                + $"tier {GetTierLogLabel(previousTier)} -> "
+                + $"{GetTierLogLabel(currentTier)}.");
         }
 
         private void ApplyTherapeuticOfferOutcome(

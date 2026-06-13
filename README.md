@@ -13,7 +13,7 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.12-dev — Add hidden Tok'ra cell cache baseline
+### 0.2.13-dev — Add Tok'ra safehouse signal baseline
 
 A rare storyteller incident can now provide one escaped Goa'uld queen after
 day `30` when the player does not already control a living queen.
@@ -116,3 +116,14 @@ no raid
 The cache is available only when Tok'ra trust is not wary. This gives the
 hidden world presence a first tangible footprint without changing Tok'ra into a
 territorial faction.
+
+
+#### Tok'ra safehouse signal
+
+A rare clandestine Tok'ra contact can now transmit an encrypted safehouse
+signal. This is a letter-only event that adds a tiny `+1` Tok'ra trust gain
+without creating a world site yet.
+
+The event deliberately creates no settlement, caravan, visitor group, trader,
+recruitment, loot, military aid or raid. It prepares the design space for a
+future hidden Tok'ra safehouse or world-site prototype.

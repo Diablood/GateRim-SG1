@@ -230,3 +230,11 @@ Depuis `0.2.12-dev`, les Tok'ra peuvent laisser un
 
 Il s'agit d'une présence discrète, non territoriale et limitée à quelques
 fournitures médicales. Elle ne crée ni colonie, ni marchand, ni recrutement.
+
+## Signaux de planque
+
+Depuis `0.2.13-dev`, une cellule Tok'ra clandestine peut envoyer un
+[signal de planque](Tokra-Safehouse-Signal).
+
+Ce signal ne crée pas encore de site visitable. Il confirme seulement un canal
+clandestin et accorde un très léger gain de confiance.

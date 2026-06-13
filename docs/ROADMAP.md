@@ -1110,3 +1110,18 @@
 - [ ] Validate old-save migration and incident reuse
 - [ ] Validate no duplicate Tok'ra faction
 - [ ] Validate save/reload after cache placement
+
+
+## 0.2.13-dev — Tok'ra safehouse signal baseline
+
+- [x] Add rare Tok'ra safehouse signal incident
+- [x] Reuse persistent hidden Tok'ra faction
+- [x] Keep no world site yet
+- [x] Keep no settlement, trader, recruitment, loot, military aid or raid
+- [x] Add tiny trust gain
+- [x] Exclude wary trust
+- [x] Update `docs/PROJECT_STATE.md`
+- [ ] Validate fresh-game incident
+- [ ] Validate old-save migration and incident reuse
+- [ ] Validate +1 trust persistence after save/reload
+- [ ] Validate no duplicate Tok'ra faction

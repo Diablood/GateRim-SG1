@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Rare letter-only Tok'ra safehouse signal.
+
+    This deliberately does not create a world site yet. It is a low-risk
+    intermediate step before true hidden safehouses or quest sites.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraSafehouseSignal</defName>
+        <label>Tok'ra safehouse signal</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraSafehouseSignal</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.008</baseChance>
+        <earliestDay>45</earliestDay>
+        <minRefireDays>60</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra safehouse signal</letterLabel>
+        <letterText>A hidden Tok'ra cell has transmitted a brief encrypted safehouse signal. The coordinates are intentionally incomplete and cannot be visited yet, but acknowledging the signal strengthens the clandestine channel. Tok'ra trust changed by {TRUSTCHANGE}; current score: {TRUSTSCORE}. Current tier: {TIER}.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>
