@@ -80,9 +80,11 @@ Depuis `0.2.8-dev`, un onglet de
 reproduction locale des armes, armures, équipements SG et biotechnologies
 Goa'uld derrière des prérequis vanilla cohérents.
 
-Les prochains lots ajouteront progressivement l'acquisition normale des objets
-Stargate et des interactions diplomatiques plus riches. La Porte des étoiles
-fonctionnelle appartiendra à la future phase `0.3.x`.
+Depuis `0.2.9-dev`, les gardes Jaffa Goa'uld constituent une première source
+naturelle rare de Zat'nik'tel récupérables. Les prochains lots compléteront
+progressivement l'acquisition normale des ressources biologiques et les
+interactions diplomatiques. La Porte des étoiles fonctionnelle appartiendra à
+la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

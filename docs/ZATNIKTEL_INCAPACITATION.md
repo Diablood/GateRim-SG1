@@ -19,10 +19,13 @@ temporary non-lethal neutralization
 SG1_ZatnikTel
 ```
 
-The prototype is craftable at the machining table after `Gunsmithing`.
+The prototype is craftable at the machining table after
+`SG1_JaffaWeaponry`.
 
-It intentionally remains outside automatic Jaffa loadouts until its combat
-balance is validated manually.
+Since `0.2.9-dev`, Goa'uld Jaffa guard profiles may generate with either a
+Ma'Tok staff or a Zat'nik'tel. Ordinary warrior profiles remain restricted to
+Ma'Tok staffs. This creates a rare natural acquisition route through existing
+Goa'uld raids and settlements without changing the weapon's combat behavior.
 
 ## Projectile class
 
@@ -72,7 +75,7 @@ Not included yet:
 - lethal second shot;
 - disintegrating third shot;
 - persistent recent-shot state on targets;
-- automatic Jaffa loadout integration;
+- broader Jaffa loadout integration beyond Goa'uld guard profiles;
 - complex weapon-opening animation;
 - future Replicator and Kull-specific resistances.
 
@@ -88,6 +91,11 @@ Not included yet:
 7. Shoot a normal wall and confirm no structural damage.
 8. Confirm that the pulse projectile is visible and does not cause an area
    explosion.
-9. Confirm that newly generated Jaffa still receive Ma'Tok staffs rather than
-   Zat'nik'tel sidearms.
-10. Trigger the three controlled Jaffa raids and confirm no regression.
+9. Generate several Goa'uld Jaffa warriors and confirm they still receive only
+   Ma'Tok staffs.
+10. Generate several Goa'uld Jaffa guards and confirm both Ma'Tok and
+    Zat'nik'tel outcomes occur.
+11. Trigger natural Goa'uld raids and confirm rare Zat'nik'tel carriers can
+    appear without changing the raid doctrine.
+12. Recover a Zat'nik'tel before `SG1_JaffaWeaponry` and confirm it remains
+    usable while local crafting stays locked.

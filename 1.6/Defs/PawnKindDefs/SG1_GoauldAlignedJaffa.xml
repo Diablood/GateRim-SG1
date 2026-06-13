@@ -75,6 +75,7 @@
         <weaponMoney>2000~2000</weaponMoney>
         <weaponTags>
             <li>SG1_MatokStaff</li>
+            <li>SG1_ZatnikTel</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">
@@ -171,6 +172,7 @@
         <weaponMoney>2000~2000</weaponMoney>
         <weaponTags>
             <li>SG1_MatokStaff</li>
+            <li>SG1_ZatnikTel</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">

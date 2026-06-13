@@ -2,13 +2,16 @@
 
 Version: `0.1.65-dev`
 
+Guard diversification: `0.2.9-dev`
+
 ## Scope
 
-Generated Goa'uld-aligned Jaffa servants now receive the existing
-`SG1_MatokStaff` weapon automatically:
+Generated Goa'uld-aligned Jaffa servants use the existing weapon-tag loadout
+system:
 
-- `SG1_GoauldJaffaWarrior`
-- `SG1_GoauldJaffaGuard`
+- warrior profiles receive `SG1_MatokStaff`;
+- guard profiles may receive `SG1_MatokStaff` or `SG1_ZatnikTel` since
+  `0.2.9-dev`.
 
 ## Implementation
 
@@ -22,7 +25,7 @@ The Ma'Tok staff already declares:
 </weaponTags>
 ```
 
-Both Jaffa `PawnKindDef` entries now declare:
+Warrior `PawnKindDef` entries declare:
 
 ```xml
 <weaponMoney>2000~2000</weaponMoney>
@@ -31,23 +34,34 @@ Both Jaffa `PawnKindDef` entries now declare:
 </weaponTags>
 ```
 
+Guard `PawnKindDef` entries declare:
+
+```xml
+<weaponMoney>2000~2000</weaponMoney>
+<weaponTags>
+    <li>SG1_MatokStaff</li>
+    <li>SG1_ZatnikTel</li>
+</weaponTags>
+```
+
 No new C# component is required. The existing one-time automatic Prim'ta
 initializer remains unchanged.
 
 ## Intentionally deferred
 
-- Natural Goa'uld raids, settlements and traders.
+- Goa'uld traders and dedicated salvage incidents.
 - Final weapon artwork.
 - Jaffa armor and facial markings.
-- Loadout diversification between warriors and guards.
-- Zat'nik'tel integration.
+- Additional loadout roles beyond the current warrior/guard distinction.
 
 ## Manual test checklist
 
 1. Start RimWorld with developer mode enabled and confirm that no new XML loading error appears.
 2. Spawn `SG1_GoauldJaffaWarrior`.
 3. Verify that the generated warrior has the Jaffa xenotype, an automatic Prim'ta and an equipped Ma'Tok staff.
-4. Spawn `SG1_GoauldJaffaGuard` and verify the same three elements.
+4. Spawn several `SG1_GoauldJaffaGuard` pawns and verify that Ma'Tok and
+   Zat'nik'tel weapon outcomes both occur.
 5. Make each pawn fire the Ma'Tok staff and confirm that the projectile, primary burn damage and reduced structural impact against a mechanoid or building still work.
 6. Save and reload, then verify that the equipped weapons remain present.
-7. Confirm that no natural Goa'uld raid, settlement or trader has been enabled.
+7. Trigger a natural Goa'uld raid and confirm guards can provide a rare
+   Zat'nik'tel recovery route.

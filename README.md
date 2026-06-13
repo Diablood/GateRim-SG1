@@ -13,27 +13,26 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.8-dev-r1 — Require adult stranded SG-team candidates
+### 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
 
-The `Stranded SG team` scenario now rejects generated starting candidates
-whose biological age is below `20`, ensuring an adulthood backstory is
-available.
+Goa'uld Jaffa guards can now generate with either a Ma'Tok staff or a
+Zat'nik'tel through RimWorld's existing weapon-tag loadout system.
 
 ```text
-minimum biological age: 20
-violence-capable candidates only
-four candidates for four starting slots
+Goa'uld Jaffa warriors -> Ma'Tok staff
+Goa'uld Jaffa guards   -> Ma'Tok staff or Zat'nik'tel
 ```
 
-The correction extends the existing scenario-level candidate filter. Each of
-the four candidate slots can still be regenerated normally, and every new
-candidate must pass the same age and combat-capability checks.
+This creates a rare natural source through existing Goa'uld raids and
+settlements. Captured Zat'nik'tel weapons remain usable before completing the
+Jaffa weaponry research; that research still gates local manufacturing only.
 
-A forced C# rebuild is required for this correction.
+No C# rebuild is required for this XML-only milestone.
 
 ## Next development focus
 
-- add normal acquisition sources for rare Stargate resources separately.
+- design natural queen-origin Prim'ta sourcing as a separate biological
+  milestone.
 
 ## First playable milestone
 

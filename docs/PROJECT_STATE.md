@@ -2,7 +2,7 @@
 
 ## Latest published milestone
 
-`v0.2.8-dev-r1 - Require adult stranded SG-team candidates`
+`v0.2.9-dev - Add natural Zat'nik'tel acquisition baseline`
 
 The main GitHub repository and the separate wiki repository are synchronized.
 
@@ -65,7 +65,36 @@ Environment note: an earlier `Player.log` detected the sibling
 stored under `RimWorld/Mods`; `CharacterEditor` was active during that launch.
 Those unrelated warnings were excluded from the isolated validation result.
 
+## Validated acquisition baseline
+
+Validated branch:
+
+```text
+feature/stargate-resource-acquisition-baseline
+```
+
+Validated behavior:
+- keep Goa'uld Jaffa warriors restricted to Ma'Tok staff weapons;
+- allow Goa'uld Jaffa guards to generate with either a Ma'Tok staff or a
+  Zat'nik'tel;
+- reuse existing natural Goa'uld raids and settlements as the acquisition
+  source;
+- preserve immediate use of captured weapons before research;
+- keep local manufacturing gated by `SG1_JaffaWeaponry`.
+
+This acquisition milestone is XML-only, so no C# rebuild was required.
+
+Validation completed:
+- multiple Goa'uld Jaffa guards generated with both weapon outcomes: passed;
+- ordinary and settlement warriors restricted to Ma'Tok staff weapons: passed;
+- settlement guards generated with both weapon outcomes: passed;
+- natural Goa'uld raids produced rare Zat'nik'tel carriers: passed;
+- recovered Zat'nik'tel weapons remained usable before research: passed;
+- local crafting remained unavailable until `SG1_JaffaWeaponry`: passed;
+- no XML or pawn-generation errors observed in `Player.log`: passed;
+- all `70` gameplay Def XML files parsed successfully.
+
 ## Next focus
 
-- Add normal acquisition sources for rare Stargate resources in a separate
-  milestone.
+Design natural queen-origin Prim'ta sourcing as a separate biological milestone.
+This requires explicit decisions about queen access, control and reproduction.

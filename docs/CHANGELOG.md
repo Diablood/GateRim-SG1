@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
+
+- Add `SG1_ZatnikTel` to the weapon-tag pools of Goa'uld Jaffa guard profiles.
+- Keep ordinary Goa'uld Jaffa warriors restricted to Ma'Tok staff weapons.
+- Allow rare Zat'nik'tel recovery through existing natural Goa'uld raids and
+  generated Goa'uld settlements.
+- Preserve immediate use of recovered weapons before `SG1_JaffaWeaponry`.
+- Keep local Zat'nik'tel manufacturing gated by `SG1_JaffaWeaponry`.
+- Keep queen-origin Prim'ta sourcing outside this focused equipment milestone.
+- Keep the milestone XML-only: no C# rebuild is required.
+- Validate warrior, guard, settlement and natural-raid loadouts in game.
+- Validate recovered Zat'nik'tel use before research and crafting locks after
+  research.
+- Update technical documentation and player-wiki drafts.
+
 ## 0.2.8-dev-r1 — Require adult stranded SG-team candidates
 
 - Reject `Stranded SG team` starting candidates below `20` biological years so

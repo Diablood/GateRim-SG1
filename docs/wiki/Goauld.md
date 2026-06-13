@@ -202,11 +202,12 @@ bâton Ma'Tok
 
 Cette arme associe une décharge énergétique lente mais puissante à une
 hampe utilisable au corps à corps. Elle peut être fabriquée au banc
-d'usinage après la recherche Armurerie et utilise encore des visuels
+d'usinage après la recherche Armement Jaffa et utilise encore des visuels
 temporaires dédiés.
 
-Depuis `0.1.65-dev`, les guerriers et gardes Jaffa Goa'uld générés reçoivent
-automatiquement cette arme grâce au système vanilla de loadout.
+Depuis `0.1.65-dev`, les guerriers Jaffa Goa'uld générés reçoivent
+automatiquement cette arme grâce au système vanilla de loadout. Depuis
+`0.2.9-dev`, les gardes peuvent recevoir un Ma'Tok ou un Zat'nik'tel.
 
 Depuis `0.1.76-dev`, son impact plasma conserve les dégâts thermiques
 principaux et ajoute une détérioration structurelle réduite contre les
@@ -217,7 +218,7 @@ Consulte [Bâton Ma'Tok](Matok-Staff).
 ### Zat'nik'tel
 
 Depuis `0.1.77-dev`, une première arme de poing Goa'uld peut être fabriquée et
-testée manuellement :
+testée :
 
 ```text
 Zat'nik'tel
@@ -227,6 +228,10 @@ Ce premier prototype représente uniquement la neutralisation temporaire du
 premier tir. Il ajoute une faible perturbation IEM contre les mécanoïdes
 vanilla et les bâtiments compatibles, sans blessure physique ni explosion de
 zone.
+
+Depuis `0.2.9-dev`, les gardes Jaffa Goa'uld peuvent apparaître avec un Ma'Tok
+ou un Zat'nik'tel. Les raids naturels et colonies Goa'uld deviennent donc une
+source rare d'armes récupérables.
 
 Le deuxième tir létal et le troisième tir désintégrant restent prévus pour des
 itérations séparées.

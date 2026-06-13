@@ -1074,4 +1074,5 @@
 - [x] Validate all four projects in RimWorld
 - [x] Validate all crafting and construction locks before research
 - [x] Validate unlocks after research completion
-- [ ] Add normal rare-resource acquisition separately
+- [x] Add rare natural Zat'nik'tel acquisition through Goa'uld Jaffa guards
+- [ ] Add natural queen-origin Prim'ta acquisition separately

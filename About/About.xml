@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.8-dev-r1</modVersion>
+    <modVersion>0.2.9-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -91,6 +91,7 @@ Current development scope:
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
 - Ma'Tok plasma-impact prototype with reduced structural damage against non-organic targets and buildings
 - Zat'nik'tel first-shot incapacitation prototype with weak EMP disruption against mechanical targets
+- Rare natural Zat'nik'tel acquisition through Goa'uld Jaffa guard loadouts
 - SG-team olive-drab field-uniform prototype
 - Separate SG tactical-boots prototype with lightweight foot protection
 - Separate SG tactical-gloves prototype with lightweight hand protection

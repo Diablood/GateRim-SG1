@@ -2,6 +2,8 @@
 
 Version: `0.1.64-dev`
 
+Current acquisition update: `0.2.9-dev`
+
 ## Scope
 
 This milestone introduces the first playable Jaffa equipment item:
@@ -10,7 +12,7 @@ This milestone introduces the first playable Jaffa equipment item:
 - `SG1_MatokStaffProjectile`
 
 The staff can be spawned with developer tools, equipped by a pawn and
-crafted at a machining table after `Gunsmithing` research.
+crafted at a machining table after `SG1_JaffaWeaponry` research.
 
 ## Prototype balance
 
@@ -34,7 +36,7 @@ crafted at a machining table after `Gunsmithing` research.
 - `2` industrial components.
 - Crafting skill `6`.
 - Machining table.
-- `Gunsmithing` research.
+- `SG1_JaffaWeaponry` research.
 
 ## Graphics
 
@@ -51,7 +53,7 @@ the Def names.
 - Automatic assignment to Goa'uld-aligned Jaffa servants.
 - Final artwork.
 - Dedicated custom sound effects.
-- Natural Goa'uld raids, settlements and traders.
+- Goa'uld traders and dedicated salvage incidents.
 - Jaffa armor and facial markings.
 
 ## Manual test checklist
@@ -69,11 +71,14 @@ the Def names.
 8. Confirm that biological pawns do not receive an extra blunt injury and that
    the shot does not create an area explosion.
 9. Verify that the staff remains usable as a melee weapon.
-10. With `Gunsmithing` researched, confirm that a machining table offers a
-    bill to craft the staff.
-11. Spawn `SG1_GoauldJaffaWarrior` and `SG1_GoauldJaffaGuard` and confirm that
-    their existing automatic Prim'ta initialization still works.
-12. Confirm that no natural Goa'uld raid, settlement or trader has been enabled.
+10. With `SG1_JaffaWeaponry` researched, confirm that a machining table offers
+    a bill to craft the staff.
+11. Spawn `SG1_GoauldJaffaWarrior` and confirm that its automatic Prim'ta and
+    Ma'Tok loadout still work.
+12. Spawn several `SG1_GoauldJaffaGuard` pawns and confirm that both Ma'Tok and
+    Zat'nik'tel weapon outcomes occur while Prim'ta initialization still works.
+13. Trigger a natural Goa'uld raid and confirm that guards can provide a rare
+    Zat'nik'tel recovery route.
 
 ## AI combat primary verb
 
