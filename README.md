@@ -13,26 +13,30 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
+### 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
 
-Goa'uld Jaffa guards can now generate with either a Ma'Tok staff or a
-Zat'nik'tel through RimWorld's existing weapon-tag loadout system.
+A rare storyteller incident can now provide one escaped Goa'uld queen after
+day `30` when the player does not already control a living queen.
 
 ```text
-Goa'uld Jaffa warriors -> Ma'Tok staff
-Goa'uld Jaffa guards   -> Ma'Tok staff or Zat'nik'tel
+escaped Goa'uld queen
+    -> player control
+    -> one immature Prim'ta symbiote per extraction
+    -> one-day persistent extraction cooldown
 ```
 
-This creates a rare natural source through existing Goa'uld raids and
-settlements. Captured Zat'nik'tel weapons remain usable before completing the
-Jaffa weaponry research; that research still gates local manufacturing only.
+The existing incubation basin still requires one immature symbiote and `10`
+raw meat to mature one implantable Prim'ta larva. Local assisted maturation
+remains gated by Goa'uld biotechnology research.
 
-No C# rebuild is required for this XML-only milestone.
+A forced C# rebuild is required for this milestone.
 
 ## Next development focus
 
-- design natural queen-origin Prim'ta sourcing as a separate biological
-  milestone.
+- validate the rare queen-arrival incident, extraction ownership guard and
+  one-day cooldown;
+- consider specialized queen infrastructure and faction-linked acquisition
+  separately.
 
 ## First playable milestone
 
@@ -68,6 +72,7 @@ No C# rebuild is required for this XML-only milestone.
 - [x] Free Jaffa peaceful visitors baseline
 - [x] Hidden Tok'ra world-presence baseline
 - [x] Stargate crafting-research baseline
+- [x] Natural Goa'uld queen acquisition baseline
 
 ## Development notes
 

@@ -56,8 +56,10 @@ est retirée ou remplacée par un traitement.
 ## Larve physique
 
 Depuis `0.1.27-dev`, la procédure consomme une
-[larve de Prim'ta](Primta-Larva) transportable. L'obtention naturelle de cette
-ressource sera ajoutée ultérieurement.
+[larve de Prim'ta](Primta-Larva) transportable. Depuis `0.2.10-dev`, la chaîne
+biologique complète peut commencer par une
+[reine Goa'uld échappée](Goauld-Queen-Arrival), puis passer par la maturation
+assistée au bassin d'incubation.
 
 
 ## Âge de Prata

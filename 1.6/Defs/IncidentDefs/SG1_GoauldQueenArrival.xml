@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Rare natural access to the existing Goa'uld queen production loop.
+
+    The worker gives the player one escaped queen only while no living
+    player-controlled queen exists on a map or in a caravan. The queen's
+    existing persistent extraction cooldown controls later production.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldQueenArrival</defName>
+        <label>escaped Goa'uld queen</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldQueenArrival</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.02</baseChance>
+        <earliestDay>30</earliestDay>
+        <minRefireDays>60</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Escaped Goa'uld queen</letterLabel>
+        <letterText>A Goa'uld queen separated from its former keepers has reached the colony. Exhausted and unable to survive alone, it has accepted the protection and control of your handlers. While it remains under your control, the queen can provide immature Prim'ta symbiotes for assisted maturation.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>

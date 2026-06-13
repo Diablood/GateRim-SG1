@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
+
+- Add the rare `SG1_GoauldQueenArrival` storyteller incident after day `30`.
+- Enforce a minimum `60`-day refire delay.
+- Give the player one escaped Goa'uld queen only when no living
+  player-controlled queen exists on a map or in a caravan.
+- Expose immature Prim'ta extraction to player-controlled queens while
+  retaining unrestricted developer-mode testing.
+- Preserve the persistent one-day extraction cooldown and one-resource yield.
+- Preserve assisted maturation with one immature symbiote and `10` raw meat.
+- Keep local maturation gated by `SG1_GoauldBiotechnology`.
+- Align the C# assembly version with `0.2.10`.
+- Require a forced C# rebuild.
+- Add English and French text, technical documentation and player-wiki drafts.
+
 ## 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
 
 - Add `SG1_ZatnikTel` to the weapon-tag pools of Goa'uld Jaffa guard profiles.

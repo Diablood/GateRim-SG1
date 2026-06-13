@@ -81,8 +81,9 @@ Depuis `0.1.58-dev`, le bassin fait mûrir cette larve à partir de :
 10 unités de viande crue
 ```
 
-L'extraction depuis la reine reste pour l'instant un prototype réservé au mode
-développeur. Consulte [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation).
+Depuis `0.2.10-dev`, une reine obtenue par l'incident naturel rare peut fournir
+ce symbiote lorsqu'elle est contrôlée par le joueur. Consulte
+[Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation).
 
 
 ## Conservation biologique dédiée

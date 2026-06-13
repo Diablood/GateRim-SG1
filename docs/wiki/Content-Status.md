@@ -47,8 +47,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
 | Refroidissement diplomatique Tok'ra | Suspension persistante des nouvelles offres thérapeutiques pendant 3 jours après refus ou 5 jours après expiration lorsque la confiance reste négative | 0.1.55-dev |
 | Soutien médical avancé Tok'ra fiable | Une livraison indépendante fiable ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine existantes | 0.1.56-dev |
-| Reine Goa'uld | Prototype animal-style générable en mode développeur avec texture temporaire | 0.1.57-dev |
-| Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
+| Reine Goa'uld | Prototype animal-style avec texture temporaire, accessible par un incident naturel rare après le jour 30 et limité à une reine vivante contrôlée par le joueur | 0.1.57-dev / acquisition 0.2.10-dev |
+| Maturation assistée du Prim'ta | Extraction contrôlée d'un symbiote immature depuis une reine du joueur, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev / accès joueur 0.2.10-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |

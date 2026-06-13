@@ -3,7 +3,7 @@
     <ThingDef ParentName="AnimalThingBase">
         <defName>SG1_GoauldQueen</defName>
         <label>Goa'uld queen</label>
-        <description>A Goa'uld queen outside any specialized reproductive infrastructure. This assisted-maturation prototype exposes a developer-only extraction command for one physical immature Prim'ta symbiote. The queen does not yet reproduce autonomously or appear naturally.</description>
+        <description>A Goa'uld queen outside any specialized reproductive infrastructure. A rare escaped queen may seek protection at a player colony. Once under player control, it can provide one physical immature Prim'ta symbiote at a time for assisted maturation.</description>
         <statBases>
             <MoveSpeed>2.6</MoveSpeed>
             <MarketValue>2500</MarketValue>

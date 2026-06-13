@@ -34,12 +34,12 @@ Warnings and errors in `Player.log` remain visible regardless of this rule.
 | Tok'ra trust tier during an active offer | Contextual | Tier affects the current proposal |
 | Raw Tok'ra trust score | GateRim debug | Numeric implementation detail |
 | Active Goa'uld ritual target, basin and remaining ticks | Contextual | Useful while the ceremony is active |
-| Goa'uld queen raw extraction cooldown ticks | GateRim debug | Developer-only prototype source |
+| Goa'uld queen raw extraction cooldown ticks | GateRim debug | Low-level timing detail; normal players see the rounded remaining days on the disabled command |
 | Routine `GR_Log.Message(...)` lifecycle traces | GateRim debug, `Player.log` only | Useful during tests; must not enter RimWorld's in-game log queue or open an error-looking popup |
 | Expected Tok'ra incident refusal during a forced test | GateRim debug, `Player.log` only | Missing eligible patient, active wary cooldown, insufficient trust tier or unavailable entry cell are normal precondition failures, not warnings |
 | `GR_Log.Warning(...)` and `GR_Log.Error(...)` | Always logged | Required for troubleshooting |
 | Jaffa forehead-mark assignment actions | RimWorld dev mode | Regression and scenario test utility |
-| Queen immature-symbiote extraction command | RimWorld dev mode | Explicit developer-only prototype |
+| Queen immature-symbiote extraction command | Player-controlled queen or RimWorld dev mode | Normal acquisition is available after the rare queen-arrival incident; developer mode preserves unrestricted tests |
 
 ## Gizmo decisions preserved
 
@@ -62,6 +62,6 @@ The first pass does not change contextual gameplay commands:
 
 - Generate the native French translation report before editing the five
   remaining load warnings.
-- Revisit prototype gameplay-command exposure after natural Goa'uld presence
-  and acquisition routes are introduced.
+- Revisit the remaining prototype gameplay commands as later natural
+  acquisition routes are introduced.
 - Keep raw IDs, counters and scanner state behind the shared debug rule.

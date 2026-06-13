@@ -96,5 +96,32 @@ Validation completed:
 
 ## Next focus
 
-Design natural queen-origin Prim'ta sourcing as a separate biological milestone.
-This requires explicit decisions about queen access, control and reproduction.
+Prepare `0.2.10-dev` on branch:
+
+```text
+feature/goauld-queen-natural-acquisition
+```
+
+Current scope:
+- add a rare escaped-queen storyteller incident after day `30`;
+- enforce a minimum `60`-day refire delay;
+- suppress the incident while any living player-controlled queen exists on a
+  map or in a caravan;
+- make immature-symbiote extraction available to player-controlled queens;
+- preserve developer-mode extraction for isolated tests;
+- preserve the persistent one-day cooldown and assisted-maturation recipe;
+- keep local maturation gated by `SG1_GoauldBiotechnology`.
+
+This milestone requires C# for deterministic queen generation, player-control
+checks and duplicate prevention.
+
+Validation required:
+- force `SG1_GoauldQueenArrival` and confirm one player-controlled queen enters
+  from a reachable map edge;
+- confirm the extraction command is visible without developer mode;
+- extract one immature symbiote and confirm the one-day cooldown;
+- save and reload during the cooldown and confirm it persists;
+- confirm a second forced incident is refused while the queen is alive;
+- move the queen into a caravan and confirm duplicate prevention still works;
+- mature the resource with `10` raw meat after `SG1_GoauldBiotechnology`;
+- confirm no XML, incident or pawn-generation errors appear in `Player.log`.

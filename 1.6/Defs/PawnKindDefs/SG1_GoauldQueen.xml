@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    The queen is intentionally excluded from biome tables and normal incidents.
-    Spawn it through developer mode during this foundation milestone.
+    The queen remains excluded from biome tables. Natural access uses the
+    dedicated rare SG1_GoauldQueenArrival incident.
     The adult-symbiote texture is reused provisionally at a larger draw size.
     -->
     <PawnKindDef ParentName="AnimalKindBase">

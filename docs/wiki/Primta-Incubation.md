@@ -5,8 +5,8 @@
 
 ## Présentation
 
-Le bassin d'incubation du Prim'ta est la première source jouable de larves sans
-passer par le mode développeur.
+Le bassin d'incubation du Prim'ta transforme un symbiote immature issu d'une
+reine Goa'uld en larve transportable destinée à un Jaffa.
 
 ## Construction
 
@@ -28,7 +28,9 @@ Ouvre l'onglet des tâches du bassin puis ajoute :
 incuber une larve de Prim'ta
 ```
 
-Un colon ayant le travail **Dressage** actif et un niveau **Animaux 4+** apporte `10` unités de viande crue, effectue `1800` unités de travail et produit :
+Un colon ayant le travail **Dressage** actif et un niveau **Animaux 4+** apporte
+`1` symbiote immature de Prim'ta et `10` unités de viande crue, effectue `1800`
+unités de travail et produit :
 
 ```text
 1 larve de Prim'ta
@@ -37,7 +39,11 @@ Un colon ayant le travail **Dressage** actif et un niveau **Animaux 4+** apporte
 ## Boucle actuelle
 
 ```text
-bassin d'incubation du Prim'ta
+reine Goa'uld contrôlée
+    ↓ extraction
+symbiote immature de Prim'ta
+    + 10 unités de viande crue
+    ↓ bassin d'incubation du Prim'ta
     ↓ tâche d'incubation
 larve de Prim'ta physique
     ↓ stockage ou transport
@@ -46,9 +52,10 @@ implantation médicale chez un Jaffa
 
 ## Nutriments requis
 
-Depuis `0.1.29-dev`, chaque incubation consomme :
+Chaque maturation consomme :
 
 ```text
+1 symbiote immature de Prim'ta
 10 unités de viande crue
 ```
 
@@ -57,13 +64,8 @@ plusieurs piles.
 
 ## Limites du prototype
 
-Les futurs lots ajouteront :
-
-- nutriments biologiques ;
-- conservation ;
-- durée et contraintes de maturation ;
-- approvisionnement des factions Goa'uld ;
-- équilibrage de rareté.
+Les futurs lots ajouteront une infrastructure reproductive spécialisée et une
+intégration plus directe aux factions Goa'uld.
 
 
 ## Travail requis

@@ -35,7 +35,7 @@ namespace GateRimSG1.Goauld
                 yield return gizmo;
             }
 
-            if (!Prefs.DevMode || !parent.Spawned)
+            if (!CanHarvestFromQueen())
             {
                 yield break;
             }
@@ -74,9 +74,7 @@ namespace GateRimSG1.Goauld
 
         private void TryHarvest()
         {
-            if (!Prefs.DevMode
-                || !parent.Spawned
-                || RemainingCooldownTicks > 0)
+            if (!CanHarvestFromQueen() || RemainingCooldownTicks > 0)
             {
                 return;
             }
@@ -137,8 +135,14 @@ namespace GateRimSG1.Goauld
                 $"Harvested {Props.spawnCount} immature Prim'ta "
                 + $"symbiote(s) from Goa'uld queen {parent.LabelCap} "
                 + $"({parent.ThingID}) at {parent.Position}; next "
-                + $"developer harvest in {Props.harvestCooldownTicks} "
+                + $"harvest in {Props.harvestCooldownTicks} "
                 + "tick(s).");
+        }
+
+        private bool CanHarvestFromQueen()
+        {
+            return parent.Spawned
+                && (Prefs.DevMode || parent.Faction == Faction.OfPlayer);
         }
     }
 }

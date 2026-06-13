@@ -1075,4 +1075,6 @@
 - [x] Validate all crafting and construction locks before research
 - [x] Validate unlocks after research completion
 - [x] Add rare natural Zat'nik'tel acquisition through Goa'uld Jaffa guards
-- [ ] Add natural queen-origin Prim'ta acquisition separately
+- [x] Add rare natural Goa'uld queen arrival and player-controlled extraction
+- [ ] Validate queen arrival, duplicate prevention and cooldown persistence
+- [ ] Add specialized queen infrastructure and faction-linked acquisition later

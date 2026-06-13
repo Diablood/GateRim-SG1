@@ -1,13 +1,14 @@
-# Future Goa'uld queen larva origin
+# Goa'uld queen larva origin roadmap
 
 ## Status
 
 ```text
-Planned for a later iteration
+Partially implemented through 0.2.10-dev
 ```
 
-This feature is deliberately deferred until the current Jaffa loop and future
-Tok'ra content are stable.
+The biological production loop is playable through assisted maturation and a
+rare escaped-queen incident. Broader faction and infrastructure integration
+remains deferred.
 
 ## Purpose
 
@@ -23,13 +24,10 @@ Prim'ta larvae
 
 ## Design questions
 
-- Should a queen be a special pawn, a living building, a quest reward, an event
-  entity or a faction-owned strategic resource?
+- Should later acquisition replace or supplement the current rare arrival?
 - Should queens require a host, optionally use a host, or exist in both hosted
   and hostless forms?
-- Should the current incubation basin mature queen-produced offspring rather
-  than create larvae from raw meat alone?
-- How rare should queens be?
+- What specialized infrastructure should a controlled queen require?
 - How should Goa'uld factions, Tok'ra, Free Jaffa, trade, raids and quests
   interact with them?
 
@@ -37,14 +35,16 @@ Prim'ta larvae
 
 ```text
 stabilize Jaffa loop
-    ↓
+    ->
 introduce Tok'ra foundation
-    ↓
+    ->
 expand Tok'ra iteration
-    ↓
+    ->
 design queen origin
-    ↓
+    ->
 replace abstract larva generation with assisted maturation
+    ->
+add rare player-controlled queen acquisition
 ```
 
 
@@ -53,5 +53,5 @@ replace abstract larva generation with assisted maturation
 `0.1.39-dev` introduces the first non-hunting Tok'ra symbiote and voluntary host
 flow.
 
-Queen-origin biology remains deferred until Tok'ra settlements, supply chains,
-quests and broader faction gameplay are better defined.
+Queen-origin biology is now playable. Tok'ra, Free Jaffa, Goa'uld-faction,
+trade and quest interactions remain later design work.

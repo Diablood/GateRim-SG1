@@ -81,10 +81,13 @@ reproduction locale des armes, armures, équipements SG et biotechnologies
 Goa'uld derrière des prérequis vanilla cohérents.
 
 Depuis `0.2.9-dev`, les gardes Jaffa Goa'uld constituent une première source
-naturelle rare de Zat'nik'tel récupérables. Les prochains lots compléteront
-progressivement l'acquisition normale des ressources biologiques et les
-interactions diplomatiques. La Porte des étoiles fonctionnelle appartiendra à
-la future phase `0.3.x`.
+naturelle rare de Zat'nik'tel récupérables.
+
+Depuis `0.2.10-dev`, une [reine Goa'uld échappée](Goauld-Queen-Arrival) peut
+rarement rejoindre la colonie et fournir des symbiotes immatures de Prim'ta
+pour la maturation assistée. Les prochains lots développeront les
+infrastructures biologiques et les interactions diplomatiques. La Porte des
+étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

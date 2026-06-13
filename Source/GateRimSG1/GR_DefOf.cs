@@ -21,12 +21,14 @@ namespace GateRimSG1
         public static PawnKindDef SG1_FreeJaffaGuard;
         public static PawnKindDef SG1_GoauldHostCaste;
         public static PawnKindDef SG1_GoauldSystemLordHost;
+        public static PawnKindDef SG1_GoauldQueen;
         public static FactionDef SG1_Tokra;
         public static FactionDef SG1_GoauldSystemLordPrototype;
         public static FactionDef SG1_FreeJaffa;
         public static IncidentDef SG1_TokraPeacefulVisitors;
         public static IncidentDef SG1_FreeJaffaPeacefulVisitors;
         public static IncidentDef SG1_GoauldJaffaNaturalRaid;
+        public static IncidentDef SG1_GoauldQueenArrival;
         public static IncidentDef SG1_GoauldJaffaControlledRaid;
         public static IncidentDef SG1_GoauldJaffaControlledAbductionRaid;
         public static IncidentDef SG1_GoauldJaffaControlledDestructionRaid;

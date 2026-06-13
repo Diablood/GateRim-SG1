@@ -143,9 +143,10 @@ développeur :
 reine Goa'uld
 ```
 
-Ce premier prototype est volontairement passif. Il prépare une future origine
-biologique contrôlée pour les symbiotes immatures sans modifier encore la
-boucle jouable d'incubation du Prim'ta.
+Depuis `0.2.10-dev`, une rare reine échappée peut également rejoindre
+naturellement la colonie sous le contrôle du joueur. Elle fournit des
+symbiotes immatures avec un délai persistant d'un jour, qui doivent ensuite
+mûrir au bassin d'incubation du Prim'ta.
 
 Consulte [Reine Goa'uld](Goauld-Queen).
 

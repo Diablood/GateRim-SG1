@@ -34,6 +34,7 @@
 - [Raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)
 - [Raid de destruction Jaffa contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid)
 - [Reine Goa'uld](Goauld-Queen)
+- [Arrivée d'une reine Goa'uld](Goauld-Queen-Arrival)
 - [Maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation)
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)
 - [Congélation profonde des Prim'ta](Primta-Deep-Freezing)

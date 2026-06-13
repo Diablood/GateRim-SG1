@@ -22,7 +22,7 @@ larve de Prim'ta
 | Limite de pile | `10` |
 | Masse | `0,1` |
 | Valeur marchande | `35` |
-| Obtention jouable | [Bassin d'incubation](Primta-Incubation) |
+| Obtention jouable | [Reine Goa'uld](Goauld-Queen), puis [bassin d'incubation](Primta-Incubation) |
 | Obtention pour les tests | Mode développeur toujours disponible |
 
 Le visuel actuel est temporaire.
@@ -46,12 +46,9 @@ La larve est transportée jusqu'au patient puis consommée par l'opération.
 
 ## Évolutions prévues
 
-- nutriments biologiques et équilibrage de l'incubation ;
-- culture ou élevage de larves ;
-- conservation et contraintes de stockage ;
-- maturation en symbiote adulte ;
-- cérémonie liée à l'âge du Jaffa ;
-- dépendance et trétonine.
+- infrastructure spécialisée pour les reines ;
+- intégration aux factions, quêtes et échanges ;
+- maturation en symbiote adulte.
 
 
 ## Bassin d'incubation
@@ -63,14 +60,16 @@ Depuis `0.1.28-dev`, construis un
 incuber une larve de Prim'ta
 ```
 
-Le premier prototype exige uniquement du travail.
+Depuis `0.1.58-dev`, le bassin exige aussi un symbiote immature issu d'une
+reine Goa'uld.
 
 
 ## Nutriments d'incubation
 
-Depuis `0.1.29-dev`, le [bassin d'incubation](Primta-Incubation) consomme :
+Le [bassin d'incubation](Primta-Incubation) consomme :
 
 ```text
+1 symbiote immature de Prim'ta
 10 unités de viande crue
 ```
 
