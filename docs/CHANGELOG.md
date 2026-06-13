@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.8-dev-r1 — Require adult stranded SG-team candidates
+
+- Reject `Stranded SG team` starting candidates below `20` biological years so
+  every candidate receives an adulthood backstory.
+- Keep the existing violence-capability requirement.
+- Preserve regeneration of all four candidate slots through the vanilla selection page.
+- Keep the scenario XML unchanged because `allowedDevelopmentalStages` cannot express an exact minimum age.
+- Align the C# assembly version with `0.2.8`.
+- Require a forced C# rebuild after extraction.
+- Validate the `20+` age threshold, adulthood backstories and repeated
+  regeneration of all four candidate slots in game.
+- Update technical documentation and the player-wiki draft.
+
 ## 0.2.8-dev — Add Stargate crafting-research baseline
 
 - Add dedicated research tab `SG1_GateRimResearch`.

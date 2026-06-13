@@ -6,25 +6,27 @@
 
 The main GitHub repository and the separate wiki repository are synchronized.
 
-## Current known follow-up
+## Current validated correction
 
-The `Équipe SG isolée` starting scenario can still propose underage candidates.
+Branch: `fix/stranded-sg-team-adult-candidates`
+Prepared version: `0.2.8-dev-r1`
 
-Observed examples:
-- age 13;
-- age 15;
-- no adult backstory for those candidates.
+The `Équipe SG isolée` starting scenario now rejects candidates below `20`
+biological years through the existing C# starting-pawn filter. This threshold
+ensures that every candidate has an adulthood backstory.
 
-Expected correction:
-- require operational adult candidates, ideally age 18+;
-- preserve the ability to regenerate the four candidates;
-- keep the correction as small and testable as possible.
+Preserved behavior:
+- exactly four candidates for four starting slots;
+- regeneration of every candidate slot;
+- rejection of candidates incapable of violence;
+- automatic SG-team field equipment.
 
-## Workflow
+## Validation status
 
-1. Create a dedicated branch from `v0.2.8-dev`.
-2. Inspect the scenario generation configuration.
-3. Prepare the smallest correction.
-4. Rebuild with `-t:Rebuild` if C# changes are required.
-5. Update documentation and wiki drafts when relevant.
-6. Report test cases before publication.
+- Forced C# rebuild: passed with no warnings or errors.
+- Four initial candidates aged `20+`: passed.
+- Adulthood backstories present: passed.
+- Repeated regeneration of all four slots: passed.
+- Violence capability and SG-team equipment preserved: passed.
+
+The validated correction is ready for publication as `0.2.8-dev-r1`.

@@ -13,6 +13,8 @@ namespace GateRimSG1.Scenarios
     /// </summary>
     public class ScenPart_SGTeamStartingGear : ScenPart
     {
+        private const int MinimumStartingAge = 20;
+
         public ThingDef uniform;
         public ThingDef boots;
         public ThingDef gloves;
@@ -38,7 +40,8 @@ namespace GateRimSG1.Scenarios
             bool tryingToRedress,
             PawnGenerationRequest request)
         {
-            return pawn != null
+            return pawn?.ageTracker != null
+                && pawn.ageTracker.AgeBiologicalYears >= MinimumStartingAge
                 && !pawn.WorkTagIsDisabled(WorkTags.Violent);
         }
 

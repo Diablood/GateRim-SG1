@@ -1,6 +1,6 @@
 # Stranded SG-team starter scenario
 
-Version: `0.2.3-dev-r1`
+Version: `0.2.8-dev-r1`
 
 ## Purpose
 
@@ -28,7 +28,7 @@ supplies.
 ## Starter pawns
 
 ```text
-4 adult player starters
+4 player starters aged 20+ with adulthood backstories
 4 candidate pawns during selection
 Violence-capable starters only
 Standing map arrival
@@ -52,10 +52,12 @@ SG1_SGTacticalVest
 Existing randomly generated clothing is removed first so every candidate and
 selected starter visually represents an SG-team member.
 
-The same scenario part rejects candidates incapable of violence through
-`AllowPlayerStartingPawn(...)`. This keeps the initial four-person team
-combat-capable while still allowing specialist backgrounds that do not disable
-combat.
+The same scenario part rejects candidates below `20` biological years or
+incapable of violence through `AllowPlayerStartingPawn(...)`. The age threshold
+ensures that every accepted candidate has an adulthood backstory. The check is
+applied to every newly generated candidate, so all four slots remain
+regenerable while the initial team stays adult and combat-capable. Specialist
+backgrounds remain available when they do not disable combat.
 
 ## Player faction
 
@@ -142,19 +144,25 @@ Still deferred:
 
 ## Manual test checklist
 
+Validation result for `0.2.8-dev-r1`: passed in game, including repeated
+regeneration of all four candidate slots.
+
 1. Rebuild the assembly with `-t:Rebuild`.
 2. Launch RimWorld without enabling developer mode.
 3. Select `Équipe SG isolée` from the new-game scenario list.
 4. Confirm that the scenario summary displays the dedicated `expédition du SGC` faction and the expected supplies.
 5. Confirm that the narrative text field is visibly populated in the scenario editor.
 6. Generate the world and inspect the pawn-selection page.
-7. Confirm that exactly four adult candidates are available and that none is incapable of violence.
-8. Confirm that every generated candidate wears the complete olive-drab SG-team field set.
-9. Start the map and confirm that four player pawns arrive standing on the map.
-10. Confirm that the translated narrative introduction opens automatically.
-11. Confirm the presence of three assault rifles, one pump shotgun, four cloth
+7. Confirm that exactly four candidates are available, each is at least `20`
+   biological years old, has an adulthood backstory and is capable of violence.
+8. Regenerate each candidate slot repeatedly and confirm the same age and
+   violence-capability requirements are preserved.
+9. Confirm that every generated candidate wears the complete olive-drab SG-team field set.
+10. Start the map and confirm that four player pawns arrive standing on the map.
+11. Confirm that the translated narrative introduction opens automatically.
+12. Confirm the presence of three assault rifles, one pump shotgun, four cloth
    bedrolls, four unequipped SG-team field helmets and all emergency supplies.
-12. Confirm that no tailoring bench is supplied.
-13. Save and reload the new colony.
-14. Confirm that the existing Jaffa developer raid tests still work when
+13. Confirm that no tailoring bench is supplied.
+14. Save and reload the new colony.
+15. Confirm that the existing Jaffa developer raid tests still work when
     developer mode is enabled for regression testing.

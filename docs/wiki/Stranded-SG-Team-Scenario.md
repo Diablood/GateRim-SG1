@@ -2,6 +2,7 @@
 
 > Statut : Prototype jouable  
 > Première version : 0.2.0-dev
+> Correction des candidats mineurs : 0.2.8-dev-r1
 
 ## Présentation
 
@@ -18,7 +19,12 @@ impossible. L'équipe doit établir un camp avec le matériel récupéré sur pl
 
 ## Équipe de départ
 
-Le scénario génère exactement quatre membres adultes d'équipe SG. Les quatre candidats affichés sont les quatre membres de départ : il n'ajoute pas de sélection élargie inutile.
+Le scénario génère exactement quatre membres d'équipe SG âgés d'au moins `20`
+ans biologiques afin que chacun dispose d'une histoire adulte. Les quatre
+candidats affichés sont les quatre membres de
+départ : il n'ajoute pas de sélection élargie inutile. Chaque emplacement peut
+toujours être régénéré, et le nouveau candidat doit respecter le même seuil
+d'âge.
 
 Les humains Tau'ri conservent temporairement un accès large aux histoires
 vanilla cohérentes avec une origine terrienne. Des parcours SGC dédiés seront

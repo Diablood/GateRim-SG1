@@ -13,56 +13,28 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.8-dev — Add Stargate crafting-research baseline
+### 0.2.8-dev-r1 — Require adult stranded SG-team candidates
 
-GateRim SG-1 now has a dedicated research tab with four production projects.
-
-```text
-Jaffa weaponry
--> prerequisite: Gunsmithing
--> unlocks local Ma'Tok and Zat'nik'tel crafting
-
-Jaffa armor
--> prerequisite: Flak armor
--> unlocks local Jaffa armor-component crafting
-
-SGC field equipment
--> prerequisite: Complex clothing
--> unlocks local SG-team clothing and mission-equipment crafting
-
-Goa'uld biotechnology
--> prerequisite: Drug production
--> unlocks tretonin preparation and specialized Prim'ta basins
-```
-
-The research gates local reproduction only.
+The `Stranded SG team` scenario now rejects generated starting candidates
+whose biological age is below `20`, ensuring an adulthood backstory is
+available.
 
 ```text
-captured weapons remain usable
-captured armor remains wearable
-existing tretonin doses remain administrable
-existing Prim'ta larvae remain implantable
-scenario-supplied SG equipment remains usable
+minimum biological age: 20
+violence-capable candidates only
+four candidates for four starting slots
 ```
 
-The Goa'uld-biotechnology project also gates:
+The correction extends the existing scenario-level candidate filter. Each of
+the four candidate slots can still be regenerated normally, and every new
+candidate must pass the same age and combat-capability checks.
 
-```text
-Prim'ta incubation basin
-Prim'ta preservation basin
-Goa'uld ritual basin
-Prim'ta assisted-maturation bill
-tretonin-preparation bill
-```
-
-No C# rebuild is required for this XML-only milestone.
+A forced C# rebuild is required for this correction.
 
 ## Next development focus
 
-- validate the GateRim SG-1 research tab;
-- validate every vanilla prerequisite and unlock;
-- confirm captured or supplied equipment remains usable before research;
-- add normal acquisition sources for rare Stargate resources separately.
+- publish the validated SG-team candidate-age correction;
+- continue validation of the GateRim SG-1 research tab.
 
 ## First playable milestone
 
