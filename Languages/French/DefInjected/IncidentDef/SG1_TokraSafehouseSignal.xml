@@ -2,5 +2,5 @@
 <LanguageData>
     <SG1_TokraSafehouseSignal.label>signal de planque Tok'ra</SG1_TokraSafehouseSignal.label>
     <SG1_TokraSafehouseSignal.letterLabel>Signal de planque Tok'ra</SG1_TokraSafehouseSignal.letterLabel>
-    <SG1_TokraSafehouseSignal.letterText>Une cellule Tok'ra clandestine a transmis un bref signal chiffré de planque. Les coordonnées sont volontairement incomplètes et ne peuvent pas encore être visitées, mais accuser réception du signal renforce le canal clandestin. Confiance Tok'ra : {TRUSTCHANGE} ; score actuel : {TRUSTSCORE}. Palier actuel : {TIER}.</SG1_TokraSafehouseSignal.letterText>
+    <SG1_TokraSafehouseSignal.letterText>Une cellule Tok'ra clandestine a transmis un bref signal chiffré de planque. Les coordonnées sont volontairement incomplètes et ne peuvent pas encore être visitées, mais accuser réception du signal renforce le canal clandestin et conserve une piste de planque pour un suivi ultérieur. Confiance Tok'ra : {TRUSTCHANGE} ; score actuel : {TRUSTSCORE}. Palier actuel : {TIER}. Pistes de planque : {LEADCOUNT}/{LEADMAX} ({LEADCHANGE}).</SG1_TokraSafehouseSignal.letterText>
 </LanguageData>

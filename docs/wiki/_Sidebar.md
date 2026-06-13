@@ -43,6 +43,7 @@
 - [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
 - [Cache d'une cellule Tok'ra](Tokra-Hidden-Cell-Cache)
 - [Signal de planque Tok'ra](Tokra-Safehouse-Signal)
+- [Pistes de planque Tok'ra](Tokra-Safehouse-Leads)
 - [Recherches de fabrication Stargate](Stargate-Crafting-Research)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Groupes Tok'ra](Tokra-Pawn-Groups)

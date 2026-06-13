@@ -9,7 +9,7 @@ sites.
 
 A clandestine Tok'ra cell transmits an encrypted safehouse signal. The
 coordinates are intentionally incomplete and cannot be visited yet, but
-acknowledging the contact confirms a functioning clandestine channel.
+acknowledging the contact confirms a functioning clandestine channel and stores a persistent safehouse lead for future follow-up.
 
 ## Incident
 
@@ -68,10 +68,11 @@ Wary
 
 ## Trust effect
 
-Acknowledging the signal applies a tiny trust gain:
+Acknowledging the signal applies a tiny trust gain and stores one safehouse lead:
 
 ```text
 +1 Tok'ra trust
++1 Tok'ra safehouse lead
 ```
 
 This is deliberately much smaller than accepting a therapeutic hosting offer.

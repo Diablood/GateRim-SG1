@@ -7,9 +7,10 @@ namespace GateRimSG1.Goauld
     /// Rare, letter-only clandestine Tok'ra contact.
     ///
     /// This is a safe intermediate step before true hidden world sites. The
-    /// Tok'ra transmit a short safehouse signal and the player gains a tiny
-    /// amount of trust for acknowledging the contact. No site, pawn, caravan,
-    /// trader, loot or raid is created.
+    /// Tok'ra transmit a short safehouse signal. The player gains a tiny
+    /// amount of trust and stores one persistent safehouse lead for a future
+    /// world-site milestone. No site, pawn, caravan, trader, loot or raid is
+    /// created yet.
     /// </summary>
     public class IncidentWorker_TokraSafehouseSignal : IncidentWorker
     {
@@ -75,28 +76,44 @@ namespace GateRimSG1.Goauld
 
             int previousTrustScore
                 = GameComponent_TokraTrustTracker.GetCurrentTrustScore();
+            int previousLeadCount
+                = GameComponent_TokraSafehouseLeadTracker.GetCurrentLeadCount();
 
             GameComponent_TokraTrustTracker
                 .NotifyHiddenSafehouseSignalAcknowledged();
+            GameComponent_TokraSafehouseLeadTracker
+                .NotifySafehouseSignalAcknowledged();
 
             int currentTrustScore
                 = GameComponent_TokraTrustTracker.GetCurrentTrustScore();
+            int currentLeadCount
+                = GameComponent_TokraSafehouseLeadTracker.GetCurrentLeadCount();
             int appliedTrustChange = currentTrustScore - previousTrustScore;
+            int appliedLeadChange = currentLeadCount - previousLeadCount;
 
             string trustTierLabel = GetTierLogLabel(trustTier);
             string signedTrustChange = FormatSignedChange(appliedTrustChange);
+            string signedLeadChange = FormatSignedChange(appliedLeadChange);
 
             GR_Log.Message(
                 $"Started Tok'ra safehouse signal using {tokraFaction.Name} "
                 + $"({tokraFaction.loadID}) at {trustTierLabel} trust tier "
-                + $"({previousTrustScore}); trust change {signedTrustChange}.");
+                + $"({previousTrustScore}); trust change {signedTrustChange}; "
+                + $"safehouse leads {previousLeadCount} -> "
+                + $"{currentLeadCount} ({signedLeadChange}).");
 
             SendStandardLetter(
                 parms,
                 letterTarget,
                 signedTrustChange.Named("TRUSTCHANGE"),
                 currentTrustScore.ToString().Named("TRUSTSCORE"),
-                trustTierLabel.Named("TIER"));
+                trustTierLabel.Named("TIER"),
+                signedLeadChange.Named("LEADCHANGE"),
+                currentLeadCount.ToString().Named("LEADCOUNT"),
+                GameComponent_TokraSafehouseLeadTracker
+                    .MaximumSafehouseLeads
+                    .ToString()
+                    .Named("LEADMAX"));
 
             return true;
         }

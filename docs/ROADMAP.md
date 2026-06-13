@@ -1125,3 +1125,17 @@
 - [ ] Validate old-save migration and incident reuse
 - [ ] Validate +1 trust persistence after save/reload
 - [ ] Validate no duplicate Tok'ra faction
+
+
+## 0.2.14-dev — Tok'ra safehouse lead tracker baseline
+
+- [x] Add persistent Tok'ra safehouse lead tracker
+- [x] Cap provisional leads at 3
+- [x] Make safehouse signal store one lead
+- [x] Preserve +1 Tok'ra trust gain
+- [x] Keep no world site yet
+- [x] Update `docs/PROJECT_STATE.md`
+- [ ] Validate signal stores a lead
+- [ ] Validate lead count persists after save/reload
+- [ ] Validate lead cap at 3
+- [ ] Validate no world object or site is created

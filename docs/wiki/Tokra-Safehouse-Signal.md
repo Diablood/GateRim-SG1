@@ -14,10 +14,11 @@ cachés Tok'ra.
 
 ## Effet
 
-Accuser réception du signal augmente légèrement la confiance Tok'ra :
+Accuser réception du signal augmente légèrement la confiance Tok'ra et conserve une piste de planque :
 
 ```text
 +1 confiance Tok'ra
++1 piste de planque Tok'ra
 ```
 
 ## Conditions

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.13-dev</modVersion>
+    <modVersion>0.2.14-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -67,6 +67,7 @@ Current development scope:
 - Balanced queen-origin Prim'ta acquisition with rarer arrival, three-day extraction recovery and higher maturation cost
 - Rare hidden Tok'ra cell cache incident with modest medical supplies
 - Rare Tok'ra safehouse signal incident with tiny trust gain and no world site yet
+- Persistent Tok'ra safehouse lead tracker for future hidden-site follow-up
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

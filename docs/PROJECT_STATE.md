@@ -16,67 +16,59 @@ Before starting a task:
 Latest prepared milestone:
 
 ```text
-0.2.13-dev - Add Tok'ra safehouse signal baseline
+0.2.14-dev - Add Tok'ra safehouse lead tracker baseline
 ```
 
 Expected tag after validation and publication:
 
 ```text
-v0.2.13-dev
+v0.2.14-dev
 ```
 
 Publication status at the time this handoff was written:
 
 ```text
-0.2.13-dev patch prepared in ChatGPT.
+0.2.14-dev patch prepared in ChatGPT.
 Validate locally before commit/tag/push.
 ```
 
-Current mod metadata after applying `0.2.13-dev`:
+Current mod metadata after applying `0.2.14-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.13-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.13
+About/About.xml: modVersion = 0.2.14-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.14
 ```
 
 Reason:
 
 ```text
-0.2.13-dev adds C# incident-worker and trust-tracker code and requires a forced rebuild.
+0.2.14-dev adds C# GameComponent code and updates the safehouse signal worker.
+A forced rebuild is required.
 ```
 
 ## Environment and conventions
 
 Project:
+- GateRim SG-1
+- RimWorld 1.6
+- Author/public pseudo: Diablood
 
-```text
-GateRim SG-1
-RimWorld 1.6
-Author/public pseudo: Diablood
-```
+Developer environment:
+- Windows 11
+- Cursor
+- PowerShell
+- .NET
 
-Local developer environment used by the maintainer:
-
-```text
-Windows 11
-Cursor
-PowerShell
-.NET
-```
-
-Repository rules:
+Rules:
 - work in small, testable milestones on dedicated branches;
 - use four spaces for indentation where applicable;
 - preserve `About/ModIcon.png`;
 - keep English Defs and French translations aligned;
-- keep README, technical documentation and `docs/wiki/` drafts aligned when behavior changes;
-- do not add temporary root patch-note files such as `README-*.txt`;
+- update README, technical docs, wiki drafts and this file when behavior changes;
+- do not add temporary root `README-*.txt` files;
 - do not commit ZIP archives from the repository root.
 
-Build rule for C# changes:
-- always force rebuild after C# changes or extracted ZIP patches.
-
-Recommended direct command:
+C# build command:
 
 ```powershell
 dotnet build `
@@ -86,74 +78,70 @@ dotnet build `
     -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
 ```
 
-## Latest validated and prepared milestones
+## Stable architecture
 
-### 0.2.8-dev-r1 — Require adult stranded SG-team candidates
+Do not refactor around Humanoid Alien Races.
 
-The `Équipe SG isolée` scenario rejects underage starting candidates and requires
-a minimum biological age of `20`.
+The mod uses:
+- Biotech xenotypes;
+- Hediffs;
+- intrinsic data/render nodes;
+- `PawnKindDef`;
+- `FactionDef`;
+- targeted C# components.
 
-### 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
+Social systems should remain contextual and moderate.
 
-Goa'uld Jaffa guards can rarely carry Zat'nik'tel weapons. Ordinary warriors
-remain Ma'Tok-only. Recovered Zats are usable before research; local crafting
-remains gated by `SG1_JaffaWeaponry`.
+## Recent milestones
 
-### 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
-
-Adds rare `SG1_GoauldQueenArrival`, duplicate queen prevention and
-player-controlled queen extraction of immature Prim'ta symbiotes.
-
-### 0.2.11-dev — Balance queen-origin Prim'ta acquisition
-
-Current queen loop:
-- queen-arrival `earliestDay`: `45`;
-- queen-arrival `baseChance`: `0.015`;
-- queen-arrival `minRefireDays`: `90`;
-- extraction recovery: `180000` ticks, or 3 RimWorld days;
-- `1` immature Prim'ta symbiote per extraction;
-- maturation costs `20` raw meat and `2400` work.
-
-### 0.2.12-dev-r1 — Add hidden Tok'ra cell cache baseline
+### 0.2.12-dev-r1 — Hidden Tok'ra cell cache baseline
 
 Adds `SG1_TokraHiddenCellCache`.
 
 Behavior:
 - reuses persistent hidden `SG1_Tokra`;
-- no Tok'ra settlement, site, trader, recruitment, military aid or raid;
+- no settlement, site, trader, recruitment, military aid or raid;
 - neutral: `1` tretonin + `2` industrial medicine;
 - cooperative: `2` tretonin + `2` industrial medicine;
 - trusted: `2` tretonin + `3` industrial medicine;
 - refuses at wary trust;
-- French label normalized to `cache d'une cellule Tok'ra`.
+- French label: `cache d'une cellule Tok'ra`.
 
-### 0.2.13-dev — Add Tok'ra safehouse signal baseline
+### 0.2.13-dev — Tok'ra safehouse signal baseline
+
+Adds `SG1_TokraSafehouseSignal`.
+
+Behavior:
+- reuses persistent hidden `SG1_Tokra`;
+- triggers only at neutral/cooperative/trusted trust;
+- refuses at wary trust;
+- applies `+1` Tok'ra trust;
+- creates no world site, settlement, caravan, visitor, trader, recruitment, loot, military aid or raid.
+
+### 0.2.14-dev — Tok'ra safehouse lead tracker baseline
 
 Prepared behavior:
-- adds incident `SG1_TokraSafehouseSignal`;
-- adds worker `IncidentWorker_TokraSafehouseSignal`;
-- reuses persistent hidden `SG1_Tokra`;
-- can trigger only at neutral, cooperative or trusted Tok'ra trust;
-- refuses at wary trust;
-- applies a tiny `+1` Tok'ra trust gain;
-- creates no world site, settlement, caravan, visitor group, trader, recruitment, loot, military aid or raid;
-- updates `GameComponent_TokraTrustTracker` with `NotifyHiddenSafehouseSignalAcknowledged()`.
-
-This milestone changes C# and requires forced rebuild after application.
+- adds `GameComponent_TokraSafehouseLeadTracker`;
+- persists `tokraSafehouseLeadCount`;
+- safehouse signal stores `+1` lead on success;
+- maximum provisional lead count: `3`;
+- signal still grants `+1` Tok'ra trust;
+- signal letter shows lead progress;
+- no world site is created yet.
 
 ## Current gameplay state
 
-World factions:
-- Goa'uld: visible, limited settlements, direct natural Jaffa assault raids, true Goa'uld System Lord leaders.
-- Free Jaffa: visible, neutral with SGC by default, settlements and peaceful visitors.
-- Tok'ra: one persistent hidden faction, no settlements, no raids, no configurable world-creation entry.
-
-Tok'ra systems:
+Tok'ra:
+- one hidden persistent faction;
+- no normal settlements;
+- no natural raids;
+- no configurable world-creation entry;
 - peaceful visitors;
 - therapeutic opportunities;
 - medical-support deliveries;
 - hidden cell cache;
-- safehouse signal.
+- safehouse signal;
+- safehouse lead tracker.
 
 Research:
 - dedicated `GateRim SG-1` tab;
@@ -167,7 +155,7 @@ Biological acquisition:
 - one immature Prim'ta symbiote every 3 days from a player queen;
 - maturation costs 20 raw meat and requires Goa'uld biotechnology.
 
-## Validation checklist for 0.2.13-dev
+## Validation checklist for 0.2.14-dev
 
 1. Apply ZIP at repository root.
 2. Rebuild C# with `-t:Rebuild`.
@@ -175,34 +163,40 @@ Biological acquisition:
 4. Force `SG1_TokraSafehouseSignal` at neutral trust.
 5. Confirm a positive letter appears.
 6. Confirm Tok'ra trust increases by `+1`.
-7. Confirm no site, pawn, caravan, loot, trader, recruitment, military aid or raid is created.
+7. Confirm safehouse leads increase by `+1`.
 8. Save and reload.
-9. Confirm the trust score persists.
-10. If possible, set trust to wary and confirm the incident refuses.
-11. Confirm no duplicate Tok'ra faction is created.
+9. Force the signal again and confirm the previous lead count persists.
+10. Repeat until `3/3`.
+11. Confirm further signals do not exceed `3/3`.
+12. Confirm no world site, pawn, item, caravan, trader, recruitment, military aid or raid is created.
 
-## Recommended next milestone after 0.2.13 validation
+## Recommended next milestone after 0.2.14 validation
 
 Preferred:
 
 ```text
-0.2.14-dev - Add hidden Tok'ra world-site prototype
+0.2.15-dev - Add hidden Tok'ra world-site prototype
 ```
 
-Scope:
-- one temporary hidden safehouse or signal site;
+The site milestone can consume one stored safehouse lead and create a temporary
+non-hostile world marker or small safehouse site.
+
+Keep it small:
+- consume 1 lead;
+- create one temporary hidden site or marker;
 - no trader yet;
 - no recruitment yet;
-- modest reward only;
-- no permanent settlement.
+- no permanent settlement;
+- modest reward only.
 
 Alternative:
 
 ```text
-0.2.14-dev - Review normal resource acquisition pacing
+0.2.15-dev - Review normal resource acquisition pacing
 ```
 
-Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after playtesting.
+Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after
+playtesting.
 
 ## Publication checklist
 
@@ -214,7 +208,7 @@ Before commit:
 - update `docs/CHANGELOG.md`;
 - update relevant technical docs under `docs/`;
 - update `docs/wiki/` drafts;
-- update this `docs/PROJECT_STATE.md` handoff.
+- update this `docs/PROJECT_STATE.md`.
 
 Commit:
 

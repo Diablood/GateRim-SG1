@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraSafehouseLead_Gained>Piste de planque Tok'ra conservée : {0}/{1} ({2}).</GR_TokraSafehouseLead_Gained>
+    <GR_TokraSafehouseLead_AlreadyFull>Le registre des pistes de planque Tok'ra est déjà plein : {0}/{1}.</GR_TokraSafehouseLead_AlreadyFull>
+</LanguageData>

@@ -102,3 +102,7 @@ ultérieurement.
 Depuis `0.2.13-dev`, une cellule Tok'ra clandestine peut transmettre un
 [signal de planque](Tokra-Safehouse-Signal), sans créer encore de site mondial
 visitable.
+
+Depuis `0.2.14-dev`, les signaux de planque Tok'ra conservent des
+[pistes de planque](Tokra-Safehouse-Leads), qui serviront de base au futur
+prototype de site caché Tok'ra.

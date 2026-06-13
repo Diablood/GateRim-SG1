@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.14-dev — Add Tok'ra safehouse lead tracker baseline
+
+- Add `GameComponent_TokraSafehouseLeadTracker`.
+- Persist `tokraSafehouseLeadCount` in saves.
+- Cap stored safehouse leads at `3`.
+- Update `SG1_TokraSafehouseSignal` so each successful signal stores one lead.
+- Keep the signal's `+1` Tok'ra trust gain.
+- Update signal letters to show safehouse lead progress.
+- Add English/French lead messages.
+- Keep the system non-territorial: no world site, no settlement, no caravan, no loot, no trader, no recruitment, no military aid and no raid.
+- Align C# assembly version with `0.2.14`.
+- Update documentation, wiki drafts and `docs/PROJECT_STATE.md`.
+- Requires forced C# rebuild after application.
+
 ## 0.2.13-dev — Add Tok'ra safehouse signal baseline
 
 - Add storyteller incident `SG1_TokraSafehouseSignal`.

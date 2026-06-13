@@ -238,3 +238,11 @@ Depuis `0.2.13-dev`, une cellule Tok'ra clandestine peut envoyer un
 
 Ce signal ne crée pas encore de site visitable. Il confirme seulement un canal
 clandestin et accorde un très léger gain de confiance.
+
+## Pistes de planque
+
+Depuis `0.2.14-dev`, les signaux de planque Tok'ra conservent aussi des
+[pistes de planque](Tokra-Safehouse-Leads).
+
+Ces pistes ne créent pas encore de site mondial. Elles préparent le futur
+prototype de planque Tok'ra visitable.
