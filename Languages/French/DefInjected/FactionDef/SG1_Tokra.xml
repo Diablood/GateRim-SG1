@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
- <SG1_Tokra.label>Tok'ra</SG1_Tokra.label>
- <SG1_Tokra.description>Définition fondatrice masquée de la résistance Tok'ra. Les Tok'ra recherchent des hôtes volontaires et s'opposent à la domination Goa'uld. Ce prototype peut créer une instance masquée de faction Tok'ra lorsque l'incident rare de visiteurs pacifiques est sélectionné naturellement ou déclenché en mode développeur. Les colonies, marchands, raids et la génération mondiale restent désactivés.</SG1_Tokra.description>
- <SG1_Tokra.fixedName>Tok'ra</SG1_Tokra.fixedName>
- <SG1_Tokra.pawnSingular>Tok'ra</SG1_Tokra.pawnSingular>
- <SG1_Tokra.pawnsPlural>Tok'ra</SG1_Tokra.pawnsPlural>
- <SG1_Tokra.leaderTitle>dirigeant</SG1_Tokra.leaderTitle>
+    <SG1_Tokra.label>Tok'ra</SG1_Tokra.label>
+    <SG1_Tokra.description>Point d'ancrage mondial persistant mais masqué pour la résistance Tok'ra. Les Tok'ra recherchent des hôtes volontaires et s'opposent à la domination Goa'uld en opérant par cellules clandestines plutôt qu'au moyen de colonies territoriales. Une instance masquée unique de faction existe dans chaque partie et est réutilisée par les visites pacifiques, les opportunités thérapeutiques et les livraisons de soutien médical. Les colonies, marchands, raids et entrées configurables dans la création du monde restent désactivés.</SG1_Tokra.description>
+    <SG1_Tokra.fixedName>Tok'ra</SG1_Tokra.fixedName>
+    <SG1_Tokra.pawnSingular>Tok'ra</SG1_Tokra.pawnSingular>
+    <SG1_Tokra.pawnsPlural>Tok'ra</SG1_Tokra.pawnsPlural>
+    <SG1_Tokra.leaderTitle>coordinateur de cellule</SG1_Tokra.leaderTitle>
 </LanguageData>

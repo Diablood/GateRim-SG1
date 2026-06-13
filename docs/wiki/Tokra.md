@@ -17,21 +17,23 @@ hôte volontaire
 symbiose persistante
 ```
 
-## Limite de la faction actuelle
+## Présence mondiale masquée
 
-La définition technique de faction Tok'ra existe déjà, mais elle reste masquée
-et n'est pas générée automatiquement sur la carte du monde.
-
-Les éléments suivants viendront plus tard :
+Depuis `0.2.7-dev`, les Tok'ra disposent d'une
+[présence mondiale masquée](Tokra-World-Presence) persistante.
 
 ```text
-colonies Tok'ra
-marchands
-quêtes
-diplomatie
-groupes
-personnages nommés
+1 faction Tok'ra persistante
+0 colonie mondiale classique
+0 raid naturel
 ```
+
+La faction représente un réseau clandestin de cellules plutôt qu'une
+civilisation territoriale visible. Les visiteurs, opportunités thérapeutiques
+et livraisons médicales existantes réutilisent cette même présence sauvegardée.
+
+Les bases cachées visitables, sites de quête, marchands et personnages nommés
+restent prévus pour plus tard.
 
 ## Tester un symbiote Tok'ra
 
@@ -117,7 +119,8 @@ Depuis `0.1.41-dev`, une
 [fondation technique des groupes Tok'ra](Tokra-Pawn-Groups) existe.
 
 La faction masquée contient désormais des profils internes `Combat` et
-`Peaceful`, mais la génération mondiale automatique reste désactivée.
+`Peaceful`. Depuis `0.2.7-dev`, une instance persistante unique est générée
+sans créer de colonie mondiale.
 
 
 ## Visiteurs pacifiques

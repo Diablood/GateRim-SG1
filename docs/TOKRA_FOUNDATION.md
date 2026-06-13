@@ -221,3 +221,24 @@ small peaceful visitor team through the existing nested `Peaceful` pawn-group
 profile.
 
 The storyteller chance remains `0`, so random Tok'ra visits are not enabled yet.
+
+
+## 0.2.7-dev hidden world-presence baseline
+
+The Tok'ra faction is no longer created only when an incident first needs it.
+
+New worlds now generate exactly one persistent hidden faction anchor:
+
+```text
+SG1_Tokra
+```
+
+Older saves receive the same hidden presence automatically through:
+
+```text
+GameComponent_TokraWorldPresenceInitializer
+```
+
+The faction still creates no settlements, appears in no configurable
+world-creation list and launches no natural raids. Existing visitor,
+therapeutic-opportunity and medical-support incidents reuse the saved anchor.

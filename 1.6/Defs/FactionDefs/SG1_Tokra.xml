@@ -1,12 +1,23 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
+    <!--
+    Persistent hidden Tok'ra world-presence anchor.
+
+    New worlds generate exactly one hidden faction instance. It creates no
+    settlement, remains absent from configurable world-creation lists and
+    never participates in natural raids.
+
+    GameComponent_TokraWorldPresenceInitializer creates the same hidden
+    presence on older saves that predate this milestone.
+    -->
     <FactionDef>
         <defName>SG1_Tokra</defName>
         <label>Tok'ra</label>
-        <description>A hidden foundation definition for the Tok'ra resistance. The Tok'ra seek voluntary hosts and oppose Goa'uld domination. This prototype can create a hidden Tok'ra faction instance when the low-frequency peaceful visitor incident is selected naturally or triggered through developer tools. Settlements, traders, raids and world-faction generation remain disabled.</description>
+        <description>A persistent but hidden world-presence anchor for the Tok'ra resistance. The Tok'ra seek voluntary hosts and oppose Goa'uld domination while operating through clandestine cells rather than territorial settlements. One hidden faction instance exists in each game and is reused by peaceful visits, therapeutic opportunities and medical-support deliveries. Settlements, traders, raids and configurable world-creation entries remain disabled.</description>
         <fixedName>Tok'ra</fixedName>
         <pawnsPlural>Tok'ra</pawnsPlural>
         <pawnSingular>Tok'ra</pawnSingular>
+        <leaderTitle>cell coordinator</leaderTitle>
         <humanlikeFaction>true</humanlikeFaction>
         <hidden>true</hidden>
         <techLevel>Spacer</techLevel>
@@ -18,10 +29,25 @@
             </li>
         </backstoryFilters>
         <permanentEnemy>false</permanentEnemy>
+        <naturalEnemy>false</naturalEnemy>
         <canMakeRandomly>false</canMakeRandomly>
-        <requiredCountAtGameStart>0</requiredCountAtGameStart>
-        <maxCountAtGameStart>0</maxCountAtGameStart>
+
+        <!--
+        One hidden presence is generated for new worlds. It remains absent
+        from the configurable faction-selection UI.
+        -->
+        <requiredCountAtGameStart>1</requiredCountAtGameStart>
+        <maxCountAtGameStart>1</maxCountAtGameStart>
         <settlementGenerationWeight>0</settlementGenerationWeight>
+
+        <!-- Clandestine baseline: no territorial or military systems yet. -->
+        <raidsForbidden>true</raidsForbidden>
+        <canSiege>false</canSiege>
+        <canStageAttacks>false</canStageAttacks>
+        <canRequestTraders>false</canRequestTraders>
+        <canRequestMilitaryAid>false</canRequestMilitaryAid>
+        <canGenerateQuestSites>false</canGenerateQuestSites>
+
         <maxPawnCostPerTotalPointsCurve>
             <points>
                 <li>(0, 35)</li>

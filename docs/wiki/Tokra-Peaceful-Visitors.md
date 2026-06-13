@@ -58,10 +58,12 @@ son apparition.
 
 ## Faction masquée persistante
 
-La première visite crée une instance masquée de la faction Tok'ra.
+Depuis `0.2.7-dev`, chaque partie possède déjà une
+[présence mondiale masquée Tok'ra](Tokra-World-Presence).
 
-Les visites suivantes réutilisent cette même instance après sauvegarde et
-rechargement.
+Les visites réutilisent cette même instance après sauvegarde et rechargement.
+Une ancienne sauvegarde qui en est dépourvue reçoit automatiquement la présence
+masquée sans créer de colonie.
 
 ## Limites actuelles
 

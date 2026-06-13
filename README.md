@@ -13,62 +13,65 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.6-dev — Add Free Jaffa peaceful visitors baseline
+### 0.2.7-dev — Add hidden Tok'ra world-presence baseline
 
-Free Jaffa communities can now appear naturally as rare peaceful visitors.
-
-The new incident:
+Tok'ra incidents now share one persistent hidden world-faction anchor:
 
 ```text
-SG1_FreeJaffaPeacefulVisitors
+SG1_Tokra
 ```
 
-reuses RimWorld's vanilla peaceful visitor-group workflow.
-
-It explicitly selects one existing visible Free Jaffa world faction that is
-still non-hostile toward the player. It does not create a hidden runtime
-fallback faction for old saves.
-
-Natural parameters:
+New worlds generate exactly one hidden Tok'ra faction instance. The faction:
 
 ```text
-earliest day: 10
-base chance: 0.14
-minimum refire delay: 20 days
-group size target: 2 to 4 armed visitors
+creates no world settlement
+does not appear in configurable world-creation lists
+launches no natural raids
+requests no traders or military aid
+generates no quest sites yet
 ```
 
-The faction receives a dedicated `Peaceful` pawn-group profile:
+Older saves receive the same hidden presence automatically through:
 
 ```text
-Free Jaffa warrior: weight 4
-Free Jaffa guard:   weight 1
+GameComponent_TokraWorldPresenceInitializer
 ```
 
-Visitors therefore reuse the validated Free Jaffa identity:
+Existing Tok'ra incidents now reuse this saved world presence:
 
 ```text
-Jaffa lineage
-initial Prim'ta
-Ma'Tok
-modular armor
-retractable helmet
-Free Jaffa cultural backstories
-no forced Goa'uld forehead mark
+peaceful Tok'ra visitors
+therapeutic opportunities
+medical-support deliveries
 ```
 
-The baseline remains intentionally narrow. The visitors are not traders and
-the milestone does not yet add quests, gifts, military aid, recruitment or
-custom diplomatic interactions.
+The historical event-time creation helper remains as a compatibility alias,
+but new code uses:
+
+```text
+TokraFactionUtility.GetOrCreatePersistentFaction(...)
+```
+
+The hidden faction leader is also initialized through the existing Tok'ra-host
+initializer so the internal faction remains biologically coherent:
+
+```text
+human host body
++
+active persistent Tok'ra symbiote identity
+```
+
+The baseline stays deliberately clandestine. Hidden cells, special quest sites
+and richer diplomacy remain later milestones.
 
 ## Next development focus
 
-- validate a developer-triggered peaceful Free Jaffa visit;
-- validate storyteller selection after day 10;
-- confirm non-hostile world-faction selection with multiple communities;
-- confirm hostile Free Jaffa factions are excluded;
-- observe the armed visitor presentation before adding civilian or diplomatic
-  profiles later.
+- validate one hidden Tok'ra faction in a fresh game;
+- validate automatic migration on a pre-0.2.7 save;
+- validate all existing Tok'ra incidents after save and reload;
+- confirm zero Tok'ra settlements and zero natural raids;
+- decide whether the next Tok'ra expansion should add hidden quest sites or
+  normal acquisition paths for Stargate resources.
 
 ## First playable milestone
 
@@ -102,6 +105,7 @@ custom diplomatic interactions.
 - [x] Cultural backstory baseline
 - [x] Contextual social baseline
 - [x] Free Jaffa peaceful visitors baseline
+- [x] Hidden Tok'ra world-presence baseline
 
 ## Development notes
 

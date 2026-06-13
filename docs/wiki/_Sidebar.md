@@ -38,6 +38,7 @@
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)
 - [Congélation profonde des Prim'ta](Primta-Deep-Freezing)
 - [Tok'ra](Tokra)
+- [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Groupes Tok'ra](Tokra-Pawn-Groups)
 - [Visiteurs Tok'ra pacifiques](Tokra-Peaceful-Visitors)

@@ -71,10 +71,13 @@ Depuis `0.2.6-dev`, de rares
 [visiteurs Jaffa libres pacifiques](Free-Jaffa-Peaceful-Visitors) peuvent
 également atteindre naturellement la colonie.
 
-Les prochains lots ajouteront progressivement la présence Tok'ra mondiale,
-l'acquisition normale des objets Stargate et des interactions diplomatiques
-plus riches. La Porte des étoiles fonctionnelle appartiendra à la future phase
-`0.3.x`.
+Depuis `0.2.7-dev`, les Tok'ra disposent d'une
+[présence mondiale masquée](Tokra-World-Presence) persistante sans colonie
+territoriale classique.
+
+Les prochains lots ajouteront progressivement l'acquisition normale des objets
+Stargate et des interactions diplomatiques plus riches. La Porte des étoiles
+fonctionnelle appartiendra à la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

@@ -114,14 +114,14 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            Faction tokraFaction = TokraFactionUtility.GetOrCreateHiddenFaction(
+            Faction tokraFaction = TokraFactionUtility.GetOrCreatePersistentFaction(
                 "medical-support deliveries");
 
             if (tokraFaction == null)
             {
                 GR_Log.Error(
                     "Cannot start the Tok'ra medical-support delivery: "
-                    + "the hidden Tok'ra faction could not be created.");
+                    + "the persistent hidden Tok'ra world faction could not be resolved.");
                 return false;
             }
 

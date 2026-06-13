@@ -3,7 +3,7 @@
 ## Scope of 0.1.43-dev
 
 This milestone enables rare storyteller-selected peaceful Tok'ra visits while
-keeping the hidden faction disconnected from normal world generation.
+keeping the hidden faction free of normal territorial settlements.
 
 Developer tools remain available for immediate controlled tests.
 
@@ -53,7 +53,7 @@ Tok'ra peaceful visitors
 ```text
 storyteller-selected or developer-triggered incident
     ↓
-create or reuse hidden SG1_Tokra faction instance
+reuse persistent hidden SG1_Tokra world-faction instance
     ↓
 reuse nested Peaceful pawn-group profile
     ↓
@@ -72,14 +72,14 @@ and receives an active persistent Tok'ra symbiote within `60` ticks.
 
 ## Persistent hidden faction instance
 
-The first visit creates one hidden Tok'ra faction instance through:
+Since `0.2.7-dev`, new worlds already contain one hidden Tok'ra
+world-faction anchor. Older saves receive the same presence automatically.
+
+Visits reuse that saved instance through:
 
 ```text
-FactionGenerator.NewGeneratedFaction(...)
-Find.FactionManager.Add(...)
+TokraFactionUtility.GetOrCreatePersistentFaction(...)
 ```
-
-Later visits reuse the same saved instance.
 
 The faction remains hidden and does not create a settlement.
 

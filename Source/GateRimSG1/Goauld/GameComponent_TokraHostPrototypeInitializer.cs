@@ -5,10 +5,12 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Initializes developer-spawned Tok'ra voluntary-host prototype pawns.
+    /// Initializes generated Tok'ra voluntary-host prototype pawns.
     ///
-    /// The prototype pawn is a player-controlled human PawnKindDef. The first
-    /// scan attaches one active Tok'ra symbiote with a persistent identity.
+    /// The same PawnKindDef supports developer-spawned prototypes, peaceful
+    /// visitors, therapeutic escorts, medical-support escorts and the internal
+    /// leader of the persistent hidden Tok'ra world faction. The first scan
+    /// attaches one active Tok'ra symbiote with a persistent identity.
     ///
     /// Initialization is recorded once per pawn ThingID. If the symbiote is
     /// removed later, the same host pawn is not given an artificial replacement.
@@ -45,10 +47,20 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            InitializeFactionLeader();
+
             for (int mapIndex = 0; mapIndex < Find.Maps.Count; mapIndex++)
             {
                 UpdateMap(Find.Maps[mapIndex]);
             }
+        }
+
+        private void InitializeFactionLeader()
+        {
+            Faction tokraFaction = Find.FactionManager?.FirstFactionOfDef(
+                GR_DefOf.SG1_Tokra);
+
+            TryInitializePrototypePawn(tokraFaction?.leader);
         }
 
         private void UpdateMap(Map map)

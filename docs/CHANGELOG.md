@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.7-dev — Add hidden Tok'ra world-presence baseline
+
+- Promote `SG1_Tokra` from lazy event-time creation to one persistent hidden world-faction anchor.
+- Set `requiredCountAtGameStart = 1` and `maxCountAtGameStart = 1`.
+- Keep the Tok'ra faction hidden and absent from configurable world-creation lists.
+- Keep `settlementGenerationWeight = 0`, natural raids forbidden and territorial systems disabled.
+- Add `GameComponent_TokraWorldPresenceInitializer`.
+- Automatically create the same hidden presence when loading older saves that do not yet contain a Tok'ra faction.
+- Add retry initialization every `600` ticks for robust staged startup.
+- Replace incident-time calls with `TokraFactionUtility.GetOrCreatePersistentFaction(...)`.
+- Retain `GetOrCreateHiddenFaction(...)` as a historical source-compatibility alias.
+- Reuse the same saved Tok'ra faction for peaceful visitors, therapeutic opportunities and medical-support deliveries.
+- Extend `GameComponent_TokraHostPrototypeInitializer` to initialize the internal hidden-faction leader with a persistent Tok'ra symbiote identity.
+- Preserve existing visitor behavior, trust tiers, therapeutic lifecycle and medical-support logic.
+- Add French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.7`.
+- Require a forced C# rebuild after extraction.
+
 ## 0.2.6-dev — Add Free Jaffa peaceful visitors baseline
 
 - Add storyteller incident `SG1_FreeJaffaPeacefulVisitors`.

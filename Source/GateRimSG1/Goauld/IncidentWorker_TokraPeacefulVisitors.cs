@@ -9,10 +9,10 @@ namespace GateRimSG1.Goauld
     ///
     /// The storyteller may select this incident rarely while developer tools
     /// remain available for controlled tests. The Tok'ra faction stays hidden
-    /// and disconnected from normal world generation.
+    /// and has no territorial settlements.
     ///
-    /// The worker creates the hidden Tok'ra faction on first use through the
-    /// shared utility, then reuses the vanilla peaceful-visitor workflow with
+    /// The worker reuses the persistent hidden Tok'ra world-faction anchor,
+    /// then reuses the vanilla peaceful-visitor workflow with
     /// the nested Tok'ra Peaceful pawn-group profile.
     /// </summary>
     public class IncidentWorker_TokraPeacefulVisitors : IncidentWorker_VisitorGroup
@@ -27,14 +27,14 @@ namespace GateRimSG1.Goauld
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            Faction tokraFaction = TokraFactionUtility.GetOrCreateHiddenFaction(
+            Faction tokraFaction = TokraFactionUtility.GetOrCreatePersistentFaction(
                 "peaceful Tok'ra visitors");
 
             if (tokraFaction == null)
             {
                 GR_Log.Error(
                     "Cannot start peaceful Tok'ra visitors: "
-                    + "the hidden Tok'ra faction could not be created.");
+                    + "the persistent hidden Tok'ra world faction could not be resolved.");
 
                 return false;
             }

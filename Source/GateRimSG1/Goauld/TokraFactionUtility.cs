@@ -4,14 +4,23 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Shared helper for the lazily created hidden Tok'ra faction instance.
+    /// Shared helper for the persistent hidden Tok'ra world-faction instance.
     ///
-    /// The Tok'ra remain disconnected from normal world generation while
-    /// visitor and therapeutic incidents reuse one persistent runtime faction.
+    /// New games receive one instance through the Tok'ra FactionDef. Older
+    /// saves receive the same presence through
+    /// GameComponent_TokraWorldPresenceInitializer.
+    ///
+    /// All Tok'ra incidents reuse the first saved SG1_Tokra faction instead of
+    /// creating event-specific factions.
     /// </summary>
     internal static class TokraFactionUtility
     {
-        public static Faction GetOrCreateHiddenFaction(string purpose)
+        public static bool HasPersistentFaction()
+        {
+            return GetExistingFaction() != null;
+        }
+
+        public static Faction GetOrCreatePersistentFaction(string purpose)
         {
             if (GR_DefOf.SG1_Tokra == null
                 || Find.FactionManager == null)
@@ -19,8 +28,7 @@ namespace GateRimSG1.Goauld
                 return null;
             }
 
-            Faction existingFaction = Find.FactionManager.FirstFactionOfDef(
-                GR_DefOf.SG1_Tokra);
+            Faction existingFaction = GetExistingFaction();
 
             if (existingFaction != null)
             {
@@ -36,11 +44,29 @@ namespace GateRimSG1.Goauld
             Find.FactionManager.Add(createdFaction);
 
             GR_Log.Message(
-                $"Created hidden Tok'ra faction instance "
+                $"Created persistent hidden Tok'ra world-faction instance "
                 + $"{createdFaction.Name} ({createdFaction.loadID}) "
                 + $"for {purpose}.");
 
             return createdFaction;
+        }
+
+        /// <summary>
+        /// Historical alias retained for source compatibility with older local
+        /// patches. New code should use GetOrCreatePersistentFaction.
+        /// </summary>
+        public static Faction GetOrCreateHiddenFaction(string purpose)
+        {
+            return GetOrCreatePersistentFaction(purpose);
+        }
+
+        private static Faction GetExistingFaction()
+        {
+            return GR_DefOf.SG1_Tokra == null
+                || Find.FactionManager == null
+                    ? null
+                    : Find.FactionManager.FirstFactionOfDef(
+                        GR_DefOf.SG1_Tokra);
         }
     }
 }

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.6-dev</modVersion>
+    <modVersion>0.2.7-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -84,6 +84,7 @@ Current development scope:
 - Define standard male and female body types for every dedicated adulthood backstory
 - Contextual social baseline with Free Jaffa, Tok'ra, Goa'uld-host and System Lord proximity reactions
 - Low-frequency natural Free Jaffa peaceful visitor incident using existing neutral world factions
+- Persistent hidden Tok'ra world-presence anchor reused by visitors, therapeutic offers and medical-support deliveries
 - Goa'uld-aligned Jaffa pawn kinds with Combat and Settlement profiles
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics

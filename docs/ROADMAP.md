@@ -1044,3 +1044,19 @@
 - [ ] Validate natural storyteller selection after day 10
 - [ ] Validate non-hostile-faction selection and hostile-faction exclusion
 - [ ] Consider civilian or diplomatic Free Jaffa profiles later
+
+
+## 0.2.7-dev — Hidden Tok'ra world-presence baseline
+
+- [x] Generate one hidden Tok'ra faction anchor in new worlds
+- [x] Keep Tok'ra absent from configurable world-creation lists
+- [x] Keep zero Tok'ra settlements
+- [x] Keep natural Tok'ra raids forbidden
+- [x] Add old-save migration through a GameComponent
+- [x] Reuse one saved faction across all existing Tok'ra incidents
+- [x] Initialize the internal Tok'ra leader with a persistent symbiote identity
+- [x] Preserve visitor, therapeutic and medical-support behavior
+- [ ] Validate a fresh game
+- [ ] Validate a pre-0.2.7 save migration
+- [ ] Validate all existing Tok'ra incidents after save and reload
+- [ ] Consider hidden Tok'ra quest sites separately

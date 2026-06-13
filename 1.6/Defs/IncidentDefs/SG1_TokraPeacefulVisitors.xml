@@ -4,8 +4,10 @@
     <!--
     Low-frequency natural Tok'ra visitor incident.
 
-    The Tok'ra faction remains hidden and disconnected from normal world
-    generation. Developer tools remain available for controlled tests.
+    The Tok'ra faction remains hidden and territorial settlements remain
+    disabled. Since 0.2.7-dev, one persistent hidden world-faction anchor is
+    generated for new games and migrated into older saves.
+    Developer tools remain available for controlled tests.
     -->
     <IncidentDef>
         <defName>SG1_TokraPeacefulVisitors</defName>
