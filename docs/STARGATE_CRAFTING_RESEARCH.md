@@ -114,6 +114,29 @@ preserving inventory resources by ordinary refrigeration
 
 ## Manual test checklist
 
+Static preflight completed on `validation/stargate-crafting-research`:
+
+```text
+4 vanilla prerequisites resolved
+4 GateRim projects parsed
+19 production gates mapped
+70 gameplay Def XML files parsed
+89 French translation XML files parsed
+no GateRim research loading error in Player.log
+```
+
+Use this isolated active mod list:
+
+```text
+Core
+Biotech
+GateRim SG-1
+```
+
+Validation result: passed in game. The dedicated tab, prerequisites, pre-research
+locks, post-research unlocks, continued use of existing equipment and log check
+all behaved as documented.
+
 1. Start a fresh `Équipe SG isolée` game.
 2. Open the research window and confirm the `GateRim SG-1` tab.
 3. Confirm all four projects are visible.

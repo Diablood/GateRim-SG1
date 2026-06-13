@@ -1071,7 +1071,7 @@
 - [x] Add Goa'uld-biotechnology project after vanilla Drug production
 - [x] Gate local crafting and specialized-basin construction only
 - [x] Preserve immediate use of captured, gifted and scenario-supplied items
-- [ ] Validate all four projects in RimWorld
-- [ ] Validate all crafting and construction locks before research
-- [ ] Validate unlocks after research completion
+- [x] Validate all four projects in RimWorld
+- [x] Validate all crafting and construction locks before research
+- [x] Validate unlocks after research completion
 - [ ] Add normal rare-resource acquisition separately

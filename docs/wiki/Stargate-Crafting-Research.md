@@ -1,7 +1,8 @@
 # Recherches de fabrication Stargate
 
-> Statut : Première base jouable  
+> Statut : Implémenté
 > Première version : 0.2.8-dev
+> Validation complète : 0.2.8-dev-r1
 
 ## Présentation
 
@@ -18,6 +19,9 @@ Les recherches représentent l'analyse, l'adaptation et la reproduction locale
 de technologies récupérées ou connues.
 
 Les objets déjà obtenus restent utilisables avant la fin de ces recherches.
+
+L'onglet, les quatre prérequis, les verrouillages de production et les
+déblocages correspondants ont été validés en jeu.
 
 ## Armement Jaffa
 
