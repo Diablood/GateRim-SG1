@@ -13,60 +13,62 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.5-dev — Add contextual social baseline
+### 0.2.6-dev — Add Free Jaffa peaceful visitors baseline
 
-The first lightweight social layer is now in place.
+Free Jaffa communities can now appear naturally as rare peaceful visitors.
 
-It adds three situational opinion modifiers:
-
-```text
-Free Jaffa -> active Goa'uld host
-    distrusts a Goa'uld: -30 opinion
-
-active Tok'ra host -> active Goa'uld host
-    sees a Goa'uld enemy: -40 opinion
-
-Free Jaffa -> Goa'uld-marked Jaffa
-    wary of a Goa'uld-marked Jaffa: -8 opinion
-```
-
-It also adds one local mood thought:
+The new incident:
 
 ```text
-Goa'uld-domain Jaffa within 12 cells of the same faction's active System Lord
-    under a System Lord's gaze: +2 mood
+SG1_FreeJaffaPeacefulVisitors
 ```
 
-The small positive mood value represents imposed composure and rigid
-discipline rather than genuine happiness.
+reuses RimWorld's vanilla peaceful visitor-group workflow.
 
-The logic is centralized in:
+It explicitly selects one existing visible Free Jaffa world faction that is
+still non-hostile toward the player. It does not create a hidden runtime
+fallback faction for old saves.
+
+Natural parameters:
 
 ```text
-GateRimSG1.Social.ContextualSocialIdentityUtility
+earliest day: 10
+base chance: 0.14
+minimum refire delay: 20 days
+group size target: 2 to 4 armed visitors
 ```
 
-The utility separates:
+The faction receives a dedicated `Peaceful` pawn-group profile:
 
 ```text
-inherited Jaffa physiology
-current faction allegiance
-persistent Free Jaffa background from PawnKindDef
-adult-symbiote origin
-intrinsic forehead marks
-actual System Lord host profile
+Free Jaffa warrior: weight 4
+Free Jaffa guard:   weight 1
 ```
 
-The baseline deliberately avoids automatic attacks, forced permanent
-relationships and absolute social restrictions.
+Visitors therefore reuse the validated Free Jaffa identity:
+
+```text
+Jaffa lineage
+initial Prim'ta
+Ma'Tok
+modular armor
+retractable helmet
+Free Jaffa cultural backstories
+no forced Goa'uld forehead mark
+```
+
+The baseline remains intentionally narrow. The visitors are not traders and
+the milestone does not yet add quests, gifts, military aid, recruitment or
+custom diplomatic interactions.
 
 ## Next development focus
 
-- validate each opinion modifier with developer-spawned test pawns;
-- validate the local System Lord proximity thought;
-- confirm save and reload behavior;
-- refine social effects incrementally after gameplay observation;
-- keep optional Ideology integration as a later layer.
+- validate a developer-triggered peaceful Free Jaffa visit;
+- validate storyteller selection after day 10;
+- confirm non-hostile world-faction selection with multiple communities;
+- confirm hostile Free Jaffa factions are excluded;
+- observe the armed visitor presentation before adding civilian or diplomatic
+  profiles later.
 
 ## First playable milestone
 
@@ -99,6 +101,7 @@ relationships and absolute social restrictions.
 - [x] Persistent Goa'uld host-caste baseline
 - [x] Cultural backstory baseline
 - [x] Contextual social baseline
+- [x] Free Jaffa peaceful visitors baseline
 
 ## Development notes
 

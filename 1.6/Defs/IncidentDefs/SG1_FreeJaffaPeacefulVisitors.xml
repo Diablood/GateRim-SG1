@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Low-frequency natural Free Jaffa visitor incident.
+
+    The worker requires an existing visible Free Jaffa world faction that is
+    still non-hostile toward the player. It reuses the vanilla peaceful
+    visitor-group behavior and the faction's dedicated Peaceful profile.
+    -->
+    <IncidentDef>
+        <defName>SG1_FreeJaffaPeacefulVisitors</defName>
+        <label>Free Jaffa peaceful visitors</label>
+        <workerClass>GateRimSG1.Jaffa.IncidentWorker_FreeJaffaPeacefulVisitors</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.14</baseChance>
+        <earliestDay>10</earliestDay>
+        <minRefireDays>20</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Peaceful Free Jaffa visitors</letterLabel>
+        <letterText>A small group of Free Jaffa has arrived peacefully near the colony. They are armed travelers rather than traders, and their visit may be an opportunity to become familiar with a liberated Jaffa community.</letterText>
+        <letterDef>NeutralEvent</letterDef>
+    </IncidentDef>
+</Defs>

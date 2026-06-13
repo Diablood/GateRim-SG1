@@ -1028,3 +1028,19 @@
 - [ ] Validate save and reload behavior
 - [ ] Consider voluntary Tok'ra-host positive memories separately
 - [ ] Add optional Ideology integration later
+
+
+## 0.2.6-dev — Free Jaffa peaceful visitors baseline
+
+- [x] Add low-frequency storyteller incident `SG1_FreeJaffaPeacefulVisitors`
+- [x] Select one existing visible non-hostile Free Jaffa world faction
+- [x] Support multiple manually configured Free Jaffa communities
+- [x] Avoid hidden fallback-faction creation on old saves
+- [x] Add dedicated Free Jaffa `Peaceful` pawn-group profile
+- [x] Reuse warrior and guard profiles with Prim'ta, Ma'Tok and modular armor
+- [x] Target two to four armed visitors
+- [x] Keep trade, quests, aid, recruitment and natural raids deferred
+- [ ] Validate developer-triggered visitor incident
+- [ ] Validate natural storyteller selection after day 10
+- [ ] Validate non-hostile-faction selection and hostile-faction exclusion
+- [ ] Consider civilian or diplomatic Free Jaffa profiles later

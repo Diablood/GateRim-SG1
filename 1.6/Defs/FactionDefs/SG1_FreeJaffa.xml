@@ -11,7 +11,7 @@
     <FactionDef>
         <defName>SG1_FreeJaffa</defName>
         <label>Free Jaffa</label>
-        <description>Independent Jaffa communities freed from Goa'uld domination. This first playable baseline generates a limited number of visible settlements and neutral initial relations with the SGC expedition. Traders, military aid, quests, natural visitors and natural raids remain disabled until later balancing passes.</description>
+        <description>Independent Jaffa communities freed from Goa'uld domination. This playable baseline generates a limited number of visible settlements, neutral initial relations with the SGC expedition and rare peaceful visitor groups. Traders, military aid, quests and natural raids remain disabled until later balancing passes.</description>
         <fixedName>Free Jaffa</fixedName>
         <pawnsPlural>Free Jaffa</pawnsPlural>
         <pawnSingular>Free Jaffa</pawnSingular>
@@ -56,8 +56,8 @@
         </allowedArrivalTemperatureRange>
 
         <!--
-        Baseline policy: world presence and settlement defense only.
-        Peaceful encounters, trade and quest integration come later.
+        Baseline policy: world presence, settlement defense and rare
+        peaceful visitors only. Trade, aid and quest integration come later.
         -->
         <raidsForbidden>true</raidsForbidden>
         <canSiege>false</canSiege>
@@ -107,6 +107,14 @@
             </li>
             <li>
                 <kindDef>Settlement</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <SG1_FreeJaffaWarrior>4</SG1_FreeJaffaWarrior>
+                    <SG1_FreeJaffaGuard>1</SG1_FreeJaffaGuard>
+                </options>
+            </li>
+            <li>
+                <kindDef>Peaceful</kindDef>
                 <commonality>1</commonality>
                 <options>
                     <SG1_FreeJaffaWarrior>4</SG1_FreeJaffaWarrior>

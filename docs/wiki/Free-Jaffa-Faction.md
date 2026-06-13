@@ -64,13 +64,19 @@ Cette absence de marque imposée permet de les distinguer des serviteurs des
 Grands Maîtres tout en conservant la possibilité d'appliquer manuellement une
 marque dans un scénario particulier.
 
-## Limites actuelles
+## Visiteurs pacifiques
 
-Cette première étape ajoute la présence mondiale et la défense des colonies.
+Depuis `0.2.6-dev`, de rares groupes de
+[visiteurs Jaffa libres pacifiques](Free-Jaffa-Peaceful-Visitors) peuvent
+apparaître naturellement près de la colonie du joueur.
+
+Ces premiers voyageurs sont armés, mais ne sont pas hostiles ni marchands.
+
+## Limites actuelles
 
 Restent prévus pour plus tard :
 
-- visiteurs amicaux ;
+- profils civils ou diplomatiques spécialisés ;
 - caravanes commerciales ;
 - quêtes ;
 - aide militaire ;

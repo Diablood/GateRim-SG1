@@ -1,6 +1,6 @@
 # Free Jaffa world-faction baseline
 
-Version: `0.2.2-dev-r2`
+Version: `0.2.6-dev`
 
 ## Scope
 
@@ -74,7 +74,9 @@ canRequestMilitaryAid: false
 canGenerateQuestSites: false
 ```
 
-Peaceful visitors and trade are intentionally deferred to a later milestone.
+Rare peaceful visitors are enabled since `0.2.6-dev`.
+
+Trade, quests and military aid remain intentionally deferred.
 
 ## Provisional faction leader
 
@@ -91,9 +93,10 @@ Free Jaffa guard as its initial leader.
 ```text
 Combat
 Settlement
+Peaceful
 ```
 
-Both use:
+All three use:
 
 ```text
 SG1_FreeJaffaWarrior
@@ -115,4 +118,5 @@ SG1_FreeJaffaGuard
 11. Confirm Free Jaffa warrior and guard defenders.
 12. Confirm Ma'Tok, modular armor, automatic Prim'ta and no forced forehead mark.
 13. Confirm that no `Faction leader for Jaffa libres is null` log appears.
-14. Save and reload.
+14. Trigger `SG1_FreeJaffaPeacefulVisitors` and confirm a peaceful armed visitor group.
+15. Save and reload.

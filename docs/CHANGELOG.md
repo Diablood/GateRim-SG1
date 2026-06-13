@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.6-dev — Add Free Jaffa peaceful visitors baseline
+
+- Add storyteller incident `SG1_FreeJaffaPeacefulVisitors`.
+- Add `GateRimSG1.Jaffa.IncidentWorker_FreeJaffaPeacefulVisitors`.
+- Add `GateRimSG1.Jaffa.FreeJaffaFactionUtility`.
+- Select one existing visible non-hostile `SG1_FreeJaffa` world faction at random.
+- Do not fabricate a hidden Free Jaffa fallback faction for old saves without world presence.
+- Reuse RimWorld's vanilla peaceful visitor-group workflow.
+- Add a dedicated Free Jaffa `Peaceful` pawn-group profile.
+- Reuse validated `SG1_FreeJaffaWarrior` and `SG1_FreeJaffaGuard` profiles.
+- Target two to four armed visitors with `110` points per visitor.
+- Enable natural selection after day `10`, with `baseChance = 0.14` and `minRefireDays = 20`.
+- Keep trade, gifts, quests, military aid, recruitment and custom diplomacy deferred.
+- Preserve disabled natural Free Jaffa raids.
+- Add French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.6`.
+- Require a forced C# rebuild after extraction.
+
 ## 0.2.5-dev — Add contextual social baseline
 
 - Add `GateRimSG1.Social.ContextualSocialIdentityUtility`.

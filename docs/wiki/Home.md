@@ -67,9 +67,13 @@ Depuis `0.2.5-dev`, une première couche de
 opinions propres aux Jaffa libres, aux Tok'ra et aux Goa'uld, ainsi qu'une
 discipline locale des serviteurs proches d'un Grand Maître.
 
-Les prochains lots ajouteront progressivement les rencontres pacifiques Jaffa
-libres, la présence Tok'ra mondiale et l'acquisition normale des objets
-Stargate. La Porte des étoiles fonctionnelle appartiendra à la future phase
+Depuis `0.2.6-dev`, de rares
+[visiteurs Jaffa libres pacifiques](Free-Jaffa-Peaceful-Visitors) peuvent
+également atteindre naturellement la colonie.
+
+Les prochains lots ajouteront progressivement la présence Tok'ra mondiale,
+l'acquisition normale des objets Stargate et des interactions diplomatiques
+plus riches. La Porte des étoiles fonctionnelle appartiendra à la future phase
 `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
