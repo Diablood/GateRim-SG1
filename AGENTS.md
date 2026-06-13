@@ -6,6 +6,7 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 
 ## General rules
 
+- Before starting any task, read `docs/PROJECT_STATE.md` and treat it as the current project handoff document.
 - Work in small, testable milestones on dedicated Git branches.
 - Do not switch to `main`: it is not a usable working base.
 - Start new branches from the latest validated published branch or explicit `v...-dev` tag.
