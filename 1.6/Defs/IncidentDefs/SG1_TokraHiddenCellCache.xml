@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Rare hidden Tok'ra cell cache.
+
+    This incident is the first map-level Tok'ra cell footprint. It reuses the
+    persistent hidden SG1_Tokra faction but does not create a settlement,
+    caravan, trader, quest site, visitor group, military aid or raid.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraHiddenCellCache</defName>
+        <label>Tok'ra hidden-cell cache</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraHiddenCellCache</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.012</baseChance>
+        <earliestDay>30</earliestDay>
+        <minRefireDays>45</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra hidden-cell cache</letterLabel>
+        <letterText>A hidden Tok'ra cell has made brief contact and left a small medical cache near the colony before disappearing again. The cache contains {TRETONINCOUNT} tretonin dose(s) and {MEDICINECOUNT} medicine unit(s). This reflects the current {TIER} trust tier, but it is not a trade caravan, settlement or recruitment offer.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>

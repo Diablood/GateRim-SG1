@@ -73,7 +73,8 @@ Depuis `0.2.6-dev`, de rares
 
 Depuis `0.2.7-dev`, les Tok'ra disposent d'une
 [présence mondiale masquée](Tokra-World-Presence) persistante sans colonie
-territoriale classique.
+territoriale classique. Depuis `0.2.12-dev`, une cellule clandestine peut laisser un
+[cache médical discret](Tokra-Hidden-Cell-Cache).
 
 Depuis `0.2.8-dev`, un onglet de
 [recherches de fabrication Stargate](Stargate-Crafting-Research) verrouille la

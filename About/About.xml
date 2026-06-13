@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.11-dev</modVersion>
+    <modVersion>0.2.12-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -65,6 +65,7 @@ Current development scope:
 - Rare natural Goa'uld queen arrival incident
 - Player-controlled queen-origin immature-symbiote extraction
 - Balanced queen-origin Prim'ta acquisition with rarer arrival, three-day extraction recovery and higher maturation cost
+- Rare hidden Tok'ra cell cache incident with modest medical supplies
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

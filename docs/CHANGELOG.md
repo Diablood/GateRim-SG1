@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.2.12-dev-r1 — Normalize Tok'ra cell cache French label
+
+- Rename the French incident label from `cache d'une cellule Tok'ra cachée` to `cache d'une cellule Tok'ra`.
+- Adjust related French/wiki wording from `cachée` repetition to `clandestine` where useful.
+- Text-only patch: no rebuild required.
+
+## 0.2.12-dev — Add hidden Tok'ra cell cache baseline
+
+- Add storyteller incident `SG1_TokraHiddenCellCache`.
+- Add `IncidentWorker_TokraHiddenCellCache`.
+- Reuse the persistent hidden `SG1_Tokra` faction through `TokraFactionUtility.GetOrCreatePersistentFaction(...)`.
+- Add a rare non-hostile map-edge cache representing a hidden Tok'ra cell.
+- Gate the incident to neutral, cooperative or trusted Tok'ra trust tiers.
+- Keep wary trust excluded from clandestine support.
+- Spawn modest supplies only:
+  - `1` tretonin dose and `2` industrial medicine at neutral trust;
+  - `2` tretonin doses and `2` industrial medicine at cooperative trust;
+  - `2` tretonin doses and `3` industrial medicine at trusted trust.
+- Keep the event non-territorial: no settlement, caravan, trader, recruitment, military aid, quest site or raid.
+- Update `GR_DefOf`.
+- Align C# assembly version with `0.2.12`.
+- Update French translations, technical documentation, wiki drafts and `docs/PROJECT_STATE.md`.
+- Requires forced C# rebuild after application.
+
 ## 0.2.11-dev — Balance queen-origin Prim'ta acquisition
 
 - Reduce natural queen-arrival frequency from `baseChance = 0.02` to `0.015`.

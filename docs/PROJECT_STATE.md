@@ -13,37 +13,36 @@ Before starting a task:
 
 ## Current known baseline
 
-Latest validated local milestone:
+Latest prepared milestone:
 
 ```text
-0.2.11-dev - Balance queen-origin Prim'ta acquisition
+0.2.12-dev - Add hidden Tok'ra cell cache baseline
 ```
 
-Expected tag after publication:
+Expected tag after validation and publication:
 
 ```text
-v0.2.11-dev
+v0.2.12-dev
 ```
 
 Publication status at the time this handoff was written:
 
 ```text
-0.2.11-dev validated locally.
-If the tag v0.2.11-dev is not present locally/remotely, publish 0.2.11-dev
-before starting the next milestone.
+0.2.12-dev validated locally.
+A label-only r1 patch normalizes the French incident name from `cache d'une cellule Tok'ra cachée` to `cache d'une cellule Tok'ra`.
 ```
 
-Current mod metadata after applying `0.2.11-dev`:
+Current mod metadata after applying `0.2.12-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.11-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion remain 0.2.10
+About/About.xml: modVersion = 0.2.12-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.12
 ```
 
 Reason:
 
 ```text
-0.2.11-dev is XML-only and does not require a C# assembly version bump.
+0.2.12-dev adds C# incident-worker code and requires a forced rebuild.
 ```
 
 ## Environment and conventions
@@ -120,18 +119,6 @@ Implementation:
 - minimum biological age: `20`;
 - still rejects candidates incapable of violence.
 
-Preserved behavior:
-- four candidate slots;
-- each slot remains regenerable;
-- starting SG equipment is still applied;
-- vanilla Earth-compatible backstories and optional SGC adult careers remain possible.
-
-Validated:
-- candidates aged `20+`;
-- adulthood backstories present;
-- regeneration still works;
-- violence-capability filter preserved.
-
 ### 0.2.9-dev — Add natural Zat'nik'tel acquisition baseline
 
 The Zat'nik'tel is now recoverable naturally but remains rare.
@@ -144,50 +131,51 @@ Behavior:
 - recovered Zats remain usable before research;
 - local crafting remains gated by `SG1_JaffaWeaponry`.
 
-This milestone is XML-only.
-
 ### 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
 
-Adds the rare natural incident:
+Adds rare natural incident `SG1_GoauldQueenArrival`.
 
-```text
-SG1_GoauldQueenArrival
-```
-
-Initial behavior:
-- rare escaped Goa'uld queen arrival;
-- player-controlled queen enters from a reachable, unfogged map-edge cell;
-- incident refuses if a living player-controlled queen already exists on a map or in a caravan;
-- player-controlled queen exposes `Extract immature Prim'ta symbiote`;
-- developer-mode access remains available for tests;
-- extraction produces `1` `SG1_ImmaturePrimtaSymbiote`;
-- cooldown is persistent across save/load;
+Behavior:
+- escaped player-controlled Goa'uld queen;
+- duplicate queen prevention across maps and caravans;
+- player command to extract one immature Prim'ta symbiote;
+- persistent extraction cooldown;
 - assisted maturation remains gated by `SG1_GoauldBiotechnology`.
-
-This milestone changes C# and requires forced rebuild after application.
 
 ### 0.2.11-dev — Balance queen-origin Prim'ta acquisition
 
 Balances the queen-origin Prim'ta loop.
 
 Updated values:
-- queen-arrival `earliestDay`: `30` -> `45`;
-- queen-arrival `baseChance`: `0.02` -> `0.015`;
-- queen-arrival `minRefireDays`: `60` -> `90`;
-- queen extraction recovery: `60000` ticks -> `180000` ticks;
-- recovery equals `3` RimWorld days;
-- each extraction still produces `1` immature Prim'ta symbiote;
-- assisted maturation raw-meat cost: `10` -> `20`;
-- assisted maturation `workAmount`: `1800` -> `2400`;
-- `SG1_GoauldBiotechnology` and the Prim'ta incubation basin remain required.
+- queen-arrival `earliestDay`: `45`;
+- queen-arrival `baseChance`: `0.015`;
+- queen-arrival `minRefireDays`: `90`;
+- queen extraction recovery: `180000` ticks, or 3 RimWorld days;
+- each extraction produces `1` immature Prim'ta symbiote;
+- assisted maturation costs `20` raw meat;
+- assisted maturation `workAmount`: `2400`.
 
-Preserved:
-- duplicate queen prevention;
-- persistent extraction cooldown;
-- developer-mode test access;
-- one mature Prim'ta larva per maturation.
+### 0.2.12-dev — Add hidden Tok'ra cell cache baseline
 
-This milestone is XML-only and requires no C# rebuild.
+Label-only follow-up:
+- French player-facing incident label normalized to `cache d'une cellule Tok'ra` to avoid the awkward `cache/cachée` repetition.
+
+Prepared behavior:
+- adds incident `SG1_TokraHiddenCellCache`;
+- adds worker `IncidentWorker_TokraHiddenCellCache`;
+- reuses persistent hidden `SG1_Tokra` faction;
+- creates no Tok'ra settlement, world site, trader, recruitment, military aid or raid;
+- places a small medical cache near a reachable unfogged map-edge cell;
+- can trigger only at neutral, cooperative or trusted Tok'ra trust;
+- refuses at wary trust;
+- no trust change yet.
+
+Cache contents:
+- neutral: `1` tretonin dose + `2` industrial medicine;
+- cooperative: `2` tretonin doses + `2` industrial medicine;
+- trusted: `2` tretonin doses + `3` industrial medicine.
+
+This milestone changes C# and requires forced rebuild after application.
 
 ## Current validated gameplay state
 
@@ -215,6 +203,7 @@ Tok'ra:
 - no natural raids;
 - no traders, military aid or automatic quest sites;
 - peaceful visitors, therapeutic opportunities and medical-support deliveries reuse the same hidden faction;
+- hidden cell cache incident now gives the faction a small non-territorial footprint;
 - hidden internal leader is initialized with a persistent Tok'ra symbiote when applicable.
 
 ### Research and production
@@ -257,27 +246,17 @@ The current loop is intentionally modest. Future upgrades should require visible
 
 ## Known TODO and deferred work
 
-### Balance and progression
-
-Potential future upgrades for queen-origin production:
-- specialized queen chamber;
-- advanced Goa'uld biotechnology research;
-- power or maintenance requirement;
-- higher nutrient cost;
-- risk events or containment incidents.
-
-Do not improve queen output for free.
-
 ### Tok'ra content
 
-Tok'ra currently have:
-- hidden persistent faction;
+Implemented:
+- hidden persistent Tok'ra faction;
 - peaceful visits;
 - therapeutic opportunities;
-- medical-support deliveries.
+- medical-support deliveries;
+- hidden cell cache baseline.
 
 Deferred:
-- hidden Tok'ra cells or temporary safehouses;
+- true hidden Tok'ra world sites or safehouses;
 - Tok'ra quest sites;
 - richer diplomacy;
 - special rewards;
@@ -288,12 +267,13 @@ Deferred:
 Partially done:
 - Zat'nik'tel rare natural recovery via Goa'uld guards;
 - queen-origin Prim'ta loop;
-- Tok'ra medical deliveries.
+- Tok'ra medical deliveries;
+- hidden Tok'ra cell cache.
 
 Still to review later:
-- natural tretonin availability pacing;
+- natural tretonin availability pacing after several seasons;
 - larva availability outside queen-origin loop;
-- whether Jaffa Free visitors should ever give limited supplies;
+- whether Free Jaffa visitors should ever give limited supplies;
 - whether Goa'uld settlements should contain biological loot.
 
 ### Visual/faction polish
@@ -302,88 +282,54 @@ Deferred:
 - simplified custom faction icons for SGC, Free Jaffa, Goa'uld domains and future factions;
 - final Jaffa forehead-mark artwork and placement pass.
 
-## Recommended next milestone
-
-Recommended branch:
-
-```text
-feature/tokra-hidden-cell-site-baseline
-```
-
-Recommended milestone:
-
-```text
-0.2.12-dev - Add hidden Tok'ra cell-site baseline
-```
-
-Rationale:
-- Tok'ra world presence already exists but has no world/map footprint;
-- adding hidden cells/safehouses is more lore-appropriate than normal Tok'ra settlements;
-- this should enrich diplomacy and resources without turning Tok'ra into a territorial faction.
-
-### Proposed 0.2.12 scope
-
-Keep it small and testable.
-
-Add one rare, non-hostile hidden Tok'ra site or cell encounter that:
-- uses the existing persistent hidden `SG1_Tokra` faction;
-- does not create normal Tok'ra settlements;
-- does not enable natural Tok'ra raids;
-- is rare and controlled;
-- can be found through a storyteller incident, quest/site part or map event;
-- despawns/ends cleanly after resolution.
-
-Possible first implementation options:
-1. temporary hidden Tok'ra safehouse site;
-2. short-lived map encounter with a Tok'ra cell;
-3. rare signal/intel incident that creates a small world site.
-
-Preferred first pass:
-- choose the simplest implementation compatible with RimWorld 1.6;
-- avoid complex multi-stage quests at first;
-- do not add recruitment yet;
-- do not add a full trader yet;
-- do not add military aid yet.
-
-### Suggested rewards for a first cell-site baseline
-
-Keep rewards modest:
-- small tretonin cache;
-- medical supplies;
-- information/flavor letter;
-- optionally a small trust increase if the existing Tok'ra trust system supports it cleanly.
-
-Avoid:
-- large weapon rewards;
-- queen rewards;
-- many Prim'ta resources;
-- permanent Tok'ra pawns;
-- major diplomacy swings.
-
-### 0.2.12 validation checklist
+## Recommended validation for 0.2.12-dev
 
 Fresh game:
 - no Tok'ra settlements appear;
 - exactly one hidden Tok'ra faction persists;
-- new cell/site appears only through intended trigger;
-- site/event uses `SG1_Tokra`;
-- no natural Tok'ra raids occur.
+- force `SG1_TokraHiddenCellCache`;
+- cache appears only at neutral or better trust;
+- cache uses `SG1_Tokra`;
+- no Tok'ra visitor group, trader, recruitment, military aid or raid appears.
 
 Old save:
 - Tok'ra hidden faction migrates if missing;
-- new site/event reuses the migrated faction;
+- cache reuses the migrated faction;
 - no duplicate Tok'ra faction is created.
 
 Gameplay:
-- site/event resolves cleanly;
+- cache resolves cleanly;
 - rewards are modest;
-- no hostile behavior unless explicitly designed;
-- save/reload during site/event remains stable.
+- save/reload after cache placement remains stable.
 
 Logs:
 - no unresolved cross-reference;
 - no red errors;
 - no accidental debug popup for expected refusal cases.
+
+## Recommended next milestone after 0.2.12 validation
+
+If the cache baseline is stable:
+
+```text
+0.2.13-dev - Add hidden Tok'ra world-site prototype
+```
+
+Keep it small:
+- one temporary hidden safehouse or signal site;
+- modest reward;
+- no trader yet;
+- no recruitment yet;
+- no permanent settlement.
+
+Alternative:
+
+```text
+0.2.13-dev - Review normal resource acquisition pacing
+```
+
+Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after
+playtesting.
 
 ## Publication checklist for any milestone
 

@@ -221,3 +221,12 @@ Depuis `0.1.56-dev`, une [livraison médicale Tok'ra fiable](Tokra-Trusted-Advan
 ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine
 déjà fournies. Cette première récompense positive reste rare et ne transforme
 pas encore les Tok'ra en marchands.
+
+
+## Cellules clandestines
+
+Depuis `0.2.12-dev`, les Tok'ra peuvent laisser un
+[cache d'une cellule clandestine](Tokra-Hidden-Cell-Cache).
+
+Il s'agit d'une présence discrète, non territoriale et limitée à quelques
+fournitures médicales. Elle ne crée ni colonie, ni marchand, ni recrutement.

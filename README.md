@@ -13,7 +13,7 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.11-dev — Balance queen-origin Prim'ta acquisition
+### 0.2.12-dev — Add hidden Tok'ra cell cache baseline
 
 A rare storyteller incident can now provide one escaped Goa'uld queen after
 day `30` when the player does not already control a living queen.
@@ -89,3 +89,30 @@ A forced C# rebuild is required for this milestone.
 - Use `./tools/sync-wiki.sh` from Bash or `.\tools\sync-wiki.cmd` from Windows PowerShell.
 - Use dedicated branches for functional changes and important fixes.
 - Create annotated Git tags for versioned milestones.
+
+
+#### Hidden Tok'ra cell cache
+
+A rare non-territorial Tok'ra cell contact can now leave a modest medical cache
+near a reachable map edge:
+
+```text
+1-2 tretonin dose(s)
+2-3 industrial medicine unit(s)
+```
+
+The event uses the persistent hidden `SG1_Tokra` faction and remains
+deliberately limited:
+
+```text
+no Tok'ra settlement
+no world site yet
+no trader
+no recruitment
+no military aid
+no raid
+```
+
+The cache is available only when Tok'ra trust is not wary. This gives the
+hidden world presence a first tangible footprint without changing Tok'ra into a
+territorial faction.

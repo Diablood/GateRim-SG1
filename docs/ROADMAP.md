@@ -1094,3 +1094,19 @@
 - [ ] Validate extraction cooldown after save/reload
 - [ ] Validate assisted maturation cost and work amount
 - [ ] Validate incident refusal while an existing player queen is alive
+
+
+## 0.2.12-dev — Hidden Tok'ra cell cache baseline
+
+- [x] Add rare hidden Tok'ra cell cache incident
+- [x] Reuse persistent hidden Tok'ra faction
+- [x] Keep no Tok'ra settlements
+- [x] Keep no Tok'ra raids
+- [x] Keep no traders, recruitment or military aid
+- [x] Spawn only modest medical supplies
+- [x] Exclude wary trust
+- [x] Update `docs/PROJECT_STATE.md`
+- [ ] Validate fresh-game incident
+- [ ] Validate old-save migration and incident reuse
+- [ ] Validate no duplicate Tok'ra faction
+- [ ] Validate save/reload after cache placement

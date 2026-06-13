@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraHiddenCellCache.label>cache d'une cellule Tok'ra</SG1_TokraHiddenCellCache.label>
+    <SG1_TokraHiddenCellCache.letterLabel>Cache d'une cellule Tok'ra</SG1_TokraHiddenCellCache.letterLabel>
+    <SG1_TokraHiddenCellCache.letterText>Une cellule Tok'ra clandestine a établi un bref contact et laissé un petit cache médical près de la colonie avant de disparaître à nouveau. Le cache contient {TRETONINCOUNT} dose(s) de trétonine et {MEDICINECOUNT} unité(s) de médicament. Cela reflète le palier de confiance {TIER} actuel, mais ce n'est ni une caravane marchande, ni une colonie, ni une offre de recrutement.</SG1_TokraHiddenCellCache.letterText>
+</LanguageData>
