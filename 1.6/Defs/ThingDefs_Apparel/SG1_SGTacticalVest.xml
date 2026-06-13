@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-    SG-team tactical vest prototype.
-    The Middle-layer vest complements the OnSkin field uniform while
-    remaining compatible with separate Middle-layer boots and gloves because
-    they cover different body-part groups.
-    -->
     <ThingDef ParentName="ApparelMakeableBase">
         <defName>SG1_SGTacticalVest</defName>
         <label>SG tactical vest</label>
@@ -35,6 +29,7 @@
             <EquipDelay>2.5</EquipDelay>
         </statBases>
         <recipeMaker>
+            <researchPrerequisite>SG1_SGFieldEquipment</researchPrerequisite>
             <skillRequirements>
                 <Crafting>4</Crafting>
             </skillRequirements>

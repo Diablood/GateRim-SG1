@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-    Queen-origin assisted-maturation prototype.
-
-    The basin now consumes one physical immature symbiote extracted from a
-    Goa'uld queen and 10 units of raw meat nutrients to mature one physical
-    Prim'ta larva. Autonomous queen reproduction remains a future milestone.
-    -->
     <ThingDef ParentName="BenchBase">
         <defName>SG1_PrimtaIncubationBasin</defName>
         <label>Prim'ta incubation basin</label>
@@ -38,6 +31,9 @@
             <Gold>8</Gold>
         </costList>
         <designationCategory>Production</designationCategory>
+        <researchPrerequisites>
+            <li>SG1_GoauldBiotechnology</li>
+        </researchPrerequisites>
         <inspectorTabs>
             <li>ITab_Bills</li>
         </inspectorTabs>

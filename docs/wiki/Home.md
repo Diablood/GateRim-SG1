@@ -75,6 +75,11 @@ Depuis `0.2.7-dev`, les Tok'ra disposent d'une
 [présence mondiale masquée](Tokra-World-Presence) persistante sans colonie
 territoriale classique.
 
+Depuis `0.2.8-dev`, un onglet de
+[recherches de fabrication Stargate](Stargate-Crafting-Research) verrouille la
+reproduction locale des armes, armures, équipements SG et biotechnologies
+Goa'uld derrière des prérequis vanilla cohérents.
+
 Les prochains lots ajouteront progressivement l'acquisition normale des objets
 Stargate et des interactions diplomatiques plus riches. La Porte des étoiles
 fonctionnelle appartiendra à la future phase `0.3.x`.

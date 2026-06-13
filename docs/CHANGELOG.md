@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.8-dev — Add Stargate crafting-research baseline
+
+- Add dedicated research tab `SG1_GateRimResearch`.
+- Add `SG1_JaffaWeaponry` after vanilla `Gunsmithing`.
+- Gate local Ma'Tok and Zat'nik'tel crafting behind `SG1_JaffaWeaponry`.
+- Add `SG1_JaffaArmor` after vanilla `FlakArmor`.
+- Gate local Jaffa light armor, heavy armor, gauntlets, reinforced boots and deployed-helmet crafting behind `SG1_JaffaArmor`.
+- Add `SG1_SGFieldEquipment` after vanilla `ComplexClothing`.
+- Gate local SG-team uniform variants, tactical boots, tactical gloves, tactical vest and open-face field helmet crafting behind `SG1_SGFieldEquipment`.
+- Add `SG1_GoauldBiotechnology` after vanilla `DrugProduction`.
+- Gate local tretonin preparation, assisted Prim'ta maturation and construction of the incubation, preservation and ritual basins behind `SG1_GoauldBiotechnology`.
+- Keep administration of existing tretonin doses, implantation of existing Prim'ta larvae and use of captured or scenario-supplied equipment available before research.
+- Keep the milestone XML-only: no C# rebuild is required.
+- Add French translations, technical documentation and player-wiki drafts.
+
 ## 0.2.7-dev — Add hidden Tok'ra world-presence baseline
 
 - Promote `SG1_Tokra` from lazy event-time creation to one persistent hidden world-faction anchor.

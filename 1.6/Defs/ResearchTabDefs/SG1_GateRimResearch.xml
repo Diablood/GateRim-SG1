@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ResearchTabDef>
+        <defName>SG1_GateRimResearch</defName>
+        <label>GateRim SG-1</label>
+        <generalTitle>GateRim SG-1 research</generalTitle>
+        <generalDescription>Research projects for adapting Tau'ri production methods to Stargate equipment and Goa'uld biological technologies.</generalDescription>
+    </ResearchTabDef>
+</Defs>

@@ -24,6 +24,9 @@
             <Gold>5</Gold>
         </costList>
         <designationCategory>Furniture</designationCategory>
+        <researchPrerequisites>
+            <li>SG1_GoauldBiotechnology</li>
+        </researchPrerequisites>
         <minifiedDef>MinifiedThing</minifiedDef>
         <comps>
             <li Class="GateRimSG1.Jaffa.CompProperties_JaffaPrimtaCeremony">

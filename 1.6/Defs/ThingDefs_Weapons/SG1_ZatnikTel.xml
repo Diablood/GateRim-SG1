@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
     <ThingDef ParentName="BaseBullet">
         <defName>SG1_ZatnikTelProjectile</defName>
@@ -20,7 +20,6 @@
             <speed>75</speed>
         </projectile>
     </ThingDef>
-
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SG1_ZatnikTel</defName>
         <label>Zat'nik'tel</label>
@@ -46,7 +45,7 @@
             <ComponentIndustrial>1</ComponentIndustrial>
         </costList>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaWeaponry</researchPrerequisite>
             <skillRequirements>
                 <Crafting>5</Crafting>
             </skillRequirements>

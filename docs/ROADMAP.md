@@ -1060,3 +1060,18 @@
 - [ ] Validate a pre-0.2.7 save migration
 - [ ] Validate all existing Tok'ra incidents after save and reload
 - [ ] Consider hidden Tok'ra quest sites separately
+
+
+## 0.2.8-dev — Stargate crafting-research baseline
+
+- [x] Add dedicated GateRim SG-1 research tab
+- [x] Add Jaffa weaponry project after vanilla Gunsmithing
+- [x] Add Jaffa armor project after vanilla Flak armor
+- [x] Add SGC field-equipment project after vanilla Complex clothing
+- [x] Add Goa'uld-biotechnology project after vanilla Drug production
+- [x] Gate local crafting and specialized-basin construction only
+- [x] Preserve immediate use of captured, gifted and scenario-supplied items
+- [ ] Validate all four projects in RimWorld
+- [ ] Validate all crafting and construction locks before research
+- [ ] Validate unlocks after research completion
+- [ ] Add normal rare-resource acquisition separately

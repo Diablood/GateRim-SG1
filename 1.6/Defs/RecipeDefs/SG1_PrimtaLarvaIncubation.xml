@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
     <RecipeDef>
         <defName>SG1_IncubatePrimtaLarva</defName>
@@ -42,5 +42,6 @@
         <products>
             <SG1_PrimtaLarva>1</SG1_PrimtaLarva>
         </products>
+        <researchPrerequisite>SG1_GoauldBiotechnology</researchPrerequisite>
     </RecipeDef>
 </Defs>

@@ -39,6 +39,7 @@
 - [Congélation profonde des Prim'ta](Primta-Deep-Freezing)
 - [Tok'ra](Tokra)
 - [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
+- [Recherches de fabrication Stargate](Stargate-Crafting-Research)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Groupes Tok'ra](Tokra-Pawn-Groups)
 - [Visiteurs Tok'ra pacifiques](Tokra-Peaceful-Visitors)

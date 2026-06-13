@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-    Powered dedicated storage prototype for fragile Prim'ta biological resources.
-
-    The basin does not alter room temperature and does not replace refrigerators.
-    It stabilizes stored immature symbiotes and mature larvae only while powered.
-    Deep-freezing penalties outside the basin remain planned for a later milestone.
-    -->
     <ThingDef ParentName="ShelfBase">
         <defName>SG1_PrimtaPreservationBasin</defName>
         <label>Prim'ta preservation basin</label>
@@ -36,6 +29,9 @@
             <ComponentIndustrial>2</ComponentIndustrial>
         </costList>
         <designationCategory>Production</designationCategory>
+        <researchPrerequisites>
+            <li>SG1_GoauldBiotechnology</li>
+        </researchPrerequisites>
         <building>
             <maxItemsInCell>2</maxItemsInCell>
             <fixedStorageSettings>

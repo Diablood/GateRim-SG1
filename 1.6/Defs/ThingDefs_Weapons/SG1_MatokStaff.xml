@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
     <ThingDef ParentName="BaseBullet">
         <defName>SG1_MatokStaffProjectile</defName>
@@ -21,7 +21,6 @@
             <speed>55</speed>
         </projectile>
     </ThingDef>
-
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SG1_MatokStaff</defName>
         <label>Ma'Tok staff weapon</label>
@@ -47,7 +46,7 @@
             <ComponentIndustrial>2</ComponentIndustrial>
         </costList>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaWeaponry</researchPrerequisite>
             <skillRequirements>
                 <Crafting>6</Crafting>
             </skillRequirements>

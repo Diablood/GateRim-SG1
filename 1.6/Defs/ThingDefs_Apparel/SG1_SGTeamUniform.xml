@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-    SG-team field BDU prototype.
-    Boots, gloves and tactical vest remain separate planned apparel items.
-    -->
     <ThingDef ParentName="ApparelMakeableBase">
         <defName>SG1_GenericSGTeamUniform</defName>
         <label>SG-team field uniform</label>
@@ -32,6 +28,7 @@
             <EquipDelay>2</EquipDelay>
         </statBases>
         <recipeMaker>
+            <researchPrerequisite>SG1_SGFieldEquipment</researchPrerequisite>
             <skillRequirements>
                 <Crafting>3</Crafting>
             </skillRequirements>

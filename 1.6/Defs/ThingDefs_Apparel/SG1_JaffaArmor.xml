@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-    Modular Jaffa armor prototypes.
-    Torso armor uses Shell. Gauntlets and boots use Middle. The deployed helmet
-    uses Overhead and FullHead. Retractable visual modes are intentionally
-    deferred to a later C# milestone.
-    -->
     <ThingDef ParentName="ArmorMachineableBase">
         <defName>SG1_JaffaLightArmor</defName>
         <label>light Jaffa armor</label>
@@ -39,7 +33,7 @@
             <MoveSpeed>-0.06</MoveSpeed>
         </equippedStatOffsets>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
             <skillRequirements>
                 <Crafting>6</Crafting>
             </skillRequirements>
@@ -63,7 +57,6 @@
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
         </apparel>
     </ThingDef>
-
     <ThingDef ParentName="ArmorMachineableBase">
         <defName>SG1_JaffaHeavyArmor</defName>
         <label>heavy Jaffa armor</label>
@@ -97,7 +90,7 @@
             <MoveSpeed>-0.22</MoveSpeed>
         </equippedStatOffsets>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
             <skillRequirements>
                 <Crafting>8</Crafting>
             </skillRequirements>
@@ -121,7 +114,6 @@
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
         </apparel>
     </ThingDef>
-
     <ThingDef ParentName="ArmorMachineableBase">
         <defName>SG1_JaffaGauntlets</defName>
         <label>Jaffa armored gauntlets</label>
@@ -152,7 +144,7 @@
             <EquipDelay>3</EquipDelay>
         </statBases>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
             <skillRequirements>
                 <Crafting>6</Crafting>
             </skillRequirements>
@@ -175,7 +167,6 @@
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
         </apparel>
     </ThingDef>
-
     <ThingDef ParentName="ArmorMachineableBase">
         <defName>SG1_JaffaReinforcedBoots</defName>
         <label>Jaffa reinforced boots</label>
@@ -206,7 +197,7 @@
             <EquipDelay>4</EquipDelay>
         </statBases>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
             <skillRequirements>
                 <Crafting>6</Crafting>
             </skillRequirements>
@@ -229,7 +220,6 @@
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
         </apparel>
     </ThingDef>
-
     <ThingDef ParentName="ArmorHelmetMakeableBase">
         <defName>SG1_JaffaDeployedHelmet</defName>
         <label>deployed Jaffa helmet</label>
@@ -260,7 +250,7 @@
             <EquipDelay>5</EquipDelay>
         </statBases>
         <recipeMaker>
-            <researchPrerequisite>Gunsmithing</researchPrerequisite>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
             <skillRequirements>
                 <Crafting>7</Crafting>
             </skillRequirements>
@@ -285,51 +275,49 @@
             <useDeflectMetalEffect>true</useDeflectMetalEffect>
         </apparel>
     </ThingDef>
-<!-- Internal alternate state used by Comp_RetractableJaffaHelmet. -->
-<ThingDef ParentName="ApparelBase">
-    <defName>SG1_JaffaRetractedHelmet</defName>
-    <label>retracted Jaffa helmet</label>
-    <description>A retracted Jaffa helmet exposing the face while retaining upper-head protection. It is an internal alternate state of the deployed helmet and preserves identical raw armor ratings.</description>
-    <graphicData>
-        <texPath>Things/Pawn/Humanlike/Apparel/JaffaRetractedHelmet/JaffaRetractedHelmet</texPath>
-        <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <techLevel>Spacer</techLevel>
-    <tradeability>None</tradeability>
-    <generateCommonality>0</generateCommonality>
-    <smeltable>false</smeltable>
-    <thingCategories Inherit="False">
-        <li>SG1_JaffaApparel</li>
-    </thingCategories>
-    <statBases>
-        <WorkToMake>12000</WorkToMake>
-        <MaxHitPoints>220</MaxHitPoints>
-        <Mass>2.8</Mass>
-        <Flammability>0</Flammability>
-        <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
-        <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
-        <ArmorRating_Heat>0.52</ArmorRating_Heat>
-        <EquipDelay>5</EquipDelay>
-    </statBases>
-    <comps>
-        <li Class="GateRimSG1.Jaffa.CompProperties_RetractableJaffaHelmet" />
-    </comps>
-    <apparel>
-        <bodyPartGroups>
-            <li>UpperHead</li>
-        </bodyPartGroups>
-        <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaRetractedHelmet/JaffaRetractedHelmet</wornGraphicPath>
-        <layers>
-            <li>Overhead</li>
-        </layers>
-        <tags>
-            <li>SG1_JaffaHelmet</li>
-        </tags>
-        <defaultOutfitTags>
-            <li>Soldier</li>
-        </defaultOutfitTags>
-        <useDeflectMetalEffect>true</useDeflectMetalEffect>
-    </apparel>
-</ThingDef>
-
+    <ThingDef ParentName="ApparelBase">
+        <defName>SG1_JaffaRetractedHelmet</defName>
+        <label>retracted Jaffa helmet</label>
+        <description>A retracted Jaffa helmet exposing the face while retaining upper-head protection. It is an internal alternate state of the deployed helmet and preserves identical raw armor ratings.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaRetractedHelmet/JaffaRetractedHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>None</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <smeltable>false</smeltable>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <statBases>
+            <WorkToMake>12000</WorkToMake>
+            <MaxHitPoints>220</MaxHitPoints>
+            <Mass>2.8</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.52</ArmorRating_Heat>
+            <EquipDelay>5</EquipDelay>
+        </statBases>
+        <comps>
+            <li Class="GateRimSG1.Jaffa.CompProperties_RetractableJaffaHelmet" />
+        </comps>
+        <apparel>
+            <bodyPartGroups>
+                <li>UpperHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaRetractedHelmet/JaffaRetractedHelmet</wornGraphicPath>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaHelmet</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
 </Defs>

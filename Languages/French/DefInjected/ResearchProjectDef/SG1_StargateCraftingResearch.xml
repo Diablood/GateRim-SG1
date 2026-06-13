@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaWeaponry.label>Armement Jaffa</SG1_JaffaWeaponry.label>
+    <SG1_JaffaWeaponry.description>Étudier les modèles d'armes Jaffa récupérés et adapter les techniques locales d'usinage afin de reproduire des armes énergétiques Goa'uld. Les armes complètes récupérées sur le terrain restent utilisables avant la fin de cette recherche.</SG1_JaffaWeaponry.description>
+
+    <SG1_JaffaArmor.label>Armures Jaffa</SG1_JaffaArmor.label>
+    <SG1_JaffaArmor.description>Analyser les protections de combat modulaires Jaffa et reproduire leurs composants blindés superposés à partir de matériaux industriels locaux. Les armures capturées restent portables avant la fin de cette recherche.</SG1_JaffaArmor.description>
+
+    <SG1_SGFieldEquipment.label>Équipement de terrain du SGC</SG1_SGFieldEquipment.label>
+    <SG1_SGFieldEquipment.description>Standardiser la production locale des vêtements de terrain et équipements modulaires des équipes SG à partir des techniques établies de confection complexe. Le matériel fourni par le scénario d'équipe isolée reste utilisable immédiatement.</SG1_SGFieldEquipment.description>
+
+    <SG1_GoauldBiotechnology.label>Biotechnologies Goa'uld</SG1_GoauldBiotechnology.label>
+    <SG1_GoauldBiotechnology.description>Adapter les techniques pharmaceutiques et biologiques à l'exploitation des matières symbiotiques Goa'uld, à la préparation de trétonine et à la construction de bassins spécialisés pour les Prim'ta. Les doses et larves déjà obtenues restent utilisables avant la fin de cette recherche.</SG1_GoauldBiotechnology.description>
+</LanguageData>

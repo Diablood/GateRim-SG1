@@ -1,15 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
-    <!--
-        First player-usable tretonin-acquisition prototype.
-
-        One physical Prim'ta larva and one generic medicine unit are processed
-        at the vanilla drug lab into five temporary-substitution doses.
-
-        This creates a deliberate gameplay choice:
-        permanent implantation for one compatible Jaffa, or several days of
-        temporary tretonin support.
-    -->
     <RecipeDef>
         <defName>SG1_PrepareTretoninDoses</defName>
         <label>prepare tretonin doses</label>
@@ -53,5 +43,6 @@
         <recipeUsers>
             <li>DrugLab</li>
         </recipeUsers>
+        <researchPrerequisite>SG1_GoauldBiotechnology</researchPrerequisite>
     </RecipeDef>
 </Defs>

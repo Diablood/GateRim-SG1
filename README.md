@@ -13,65 +13,56 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.7-dev — Add hidden Tok'ra world-presence baseline
+### 0.2.8-dev — Add Stargate crafting-research baseline
 
-Tok'ra incidents now share one persistent hidden world-faction anchor:
-
-```text
-SG1_Tokra
-```
-
-New worlds generate exactly one hidden Tok'ra faction instance. The faction:
+GateRim SG-1 now has a dedicated research tab with four production projects.
 
 ```text
-creates no world settlement
-does not appear in configurable world-creation lists
-launches no natural raids
-requests no traders or military aid
-generates no quest sites yet
+Jaffa weaponry
+-> prerequisite: Gunsmithing
+-> unlocks local Ma'Tok and Zat'nik'tel crafting
+
+Jaffa armor
+-> prerequisite: Flak armor
+-> unlocks local Jaffa armor-component crafting
+
+SGC field equipment
+-> prerequisite: Complex clothing
+-> unlocks local SG-team clothing and mission-equipment crafting
+
+Goa'uld biotechnology
+-> prerequisite: Drug production
+-> unlocks tretonin preparation and specialized Prim'ta basins
 ```
 
-Older saves receive the same hidden presence automatically through:
+The research gates local reproduction only.
 
 ```text
-GameComponent_TokraWorldPresenceInitializer
+captured weapons remain usable
+captured armor remains wearable
+existing tretonin doses remain administrable
+existing Prim'ta larvae remain implantable
+scenario-supplied SG equipment remains usable
 ```
 
-Existing Tok'ra incidents now reuse this saved world presence:
+The Goa'uld-biotechnology project also gates:
 
 ```text
-peaceful Tok'ra visitors
-therapeutic opportunities
-medical-support deliveries
+Prim'ta incubation basin
+Prim'ta preservation basin
+Goa'uld ritual basin
+Prim'ta assisted-maturation bill
+tretonin-preparation bill
 ```
 
-The historical event-time creation helper remains as a compatibility alias,
-but new code uses:
-
-```text
-TokraFactionUtility.GetOrCreatePersistentFaction(...)
-```
-
-The hidden faction leader is also initialized through the existing Tok'ra-host
-initializer so the internal faction remains biologically coherent:
-
-```text
-human host body
-+
-active persistent Tok'ra symbiote identity
-```
-
-The baseline stays deliberately clandestine. Hidden cells, special quest sites
-and richer diplomacy remain later milestones.
+No C# rebuild is required for this XML-only milestone.
 
 ## Next development focus
 
-- validate one hidden Tok'ra faction in a fresh game;
-- validate automatic migration on a pre-0.2.7 save;
-- validate all existing Tok'ra incidents after save and reload;
-- confirm zero Tok'ra settlements and zero natural raids;
-- decide whether the next Tok'ra expansion should add hidden quest sites or
-  normal acquisition paths for Stargate resources.
+- validate the GateRim SG-1 research tab;
+- validate every vanilla prerequisite and unlock;
+- confirm captured or supplied equipment remains usable before research;
+- add normal acquisition sources for rare Stargate resources separately.
 
 ## First playable milestone
 
@@ -106,6 +97,7 @@ and richer diplomacy remain later milestones.
 - [x] Contextual social baseline
 - [x] Free Jaffa peaceful visitors baseline
 - [x] Hidden Tok'ra world-presence baseline
+- [x] Stargate crafting-research baseline
 
 ## Development notes
 
