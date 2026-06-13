@@ -27,7 +27,7 @@ disponible du contenu encore en développement.
   [reine Goa'uld](Goauld-Queen), [maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation),
   [bassin de conservation](Primta-Preservation-Basin),
   [congélation profonde](Primta-Deep-Freezing),
-  [domaine prototype d'un Grand Maître](Goauld-System-Lord-Faction),
+  [domaines des Grands Maîtres](Goauld-System-Lord-Faction), [caste des hôtes Goa'uld](Goauld-Host-Caste),
   [identité visuelle Jaffa intrinsèque](Jaffa-System-Lord-Visual-Identity),
   [profil d'identité des domaines](Goauld-System-Lord-Domain-Identity),
   [bâton Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel), [treillis d'équipe SG](SG-Team-Uniform), [variantes noire et désert](SG-Team-Uniform-Variants), [bottes tactiques SG](SG-Tactical-Boots), [gants tactiques SG](SG-Tactical-Gloves), [gilet tactique SG](SG-Tactical-Vest), [casque de terrain SG](SG-Team-Field-Helmet), [armures Jaffa](Jaffa-Armor) et

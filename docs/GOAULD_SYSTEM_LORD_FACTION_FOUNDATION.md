@@ -1,6 +1,6 @@
 # Goa'uld System Lord world-faction baseline
 
-Version: `0.2.2-dev-r2`
+Version: `0.2.3-dev`
 
 ## Scope
 
@@ -68,29 +68,40 @@ Combat
 Settlement
 ```
 
-Both profiles currently use:
+The `Combat` profile remains Jaffa-only:
 
 ```text
 SG1_GoauldJaffaWarrior
 SG1_GoauldJaffaGuard
 ```
 
-The `Settlement` profile ensures that visible world bases have a first
-defender pool if they are visited or attacked.
+The `Settlement` profile uses dedicated capped variants:
 
-## Provisional faction leader
+```text
+SG1_GoauldSettlementJaffaWarrior: weight 4, max 7
+SG1_GoauldSettlementJaffaGuard:   weight 2, max 2
+SG1_GoauldHostCaste:              weight 1, max 1
+```
+
+These are per-generated-group caps. A full settlement map may resolve more
+than one group, so a larger city can contain two persistent ordinary Goa'uld
+hosts while keeping the caste minoritarian.
+
+Direct raids therefore remain Jaffa-only while visited domains reliably
+contain persistent Goa'uld hosts.
+
+## Goa'uld System Lord leader
 
 ```text
 basicMemberKind: SG1_GoauldJaffaWarrior
-fixedLeaderKinds: SG1_GoauldJaffaGuard
+fixedLeaderKinds: SG1_GoauldSystemLordHost
 leaderForceGenerateNewPawn: true
-leaderTitle: domain Jaffa commander
+leaderTitle: System Lord
 ```
 
-Visible humanlike factions require a leader. Until real persistent Goa'uld
-host profiles exist, the faction generates a senior Jaffa commander. This
-removes missing-leader logs without pretending that a xenotype-only pawn is a
-true Goa'uld System Lord host.
+Since `0.2.3-dev`, visible domains generate a true persistent Goa'uld host as
+their leader. The host body remains biologically human and receives an active
+adult-symbiote Hediff with persistent identity.
 
 ## Controlled raid policy
 

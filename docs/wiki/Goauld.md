@@ -183,6 +183,13 @@ Depuis `0.1.63-dev`, chaque nouveau guerrier ou garde Jaffa généré reçoit
 automatiquement un Prim'ta initial. L'attribution n'est effectuée qu'une
 seule fois : retirer ensuite la larve ne crée pas de remplacement artificiel.
 
+Depuis `0.2.3-dev`, les domaines possèdent aussi une
+[caste d'hôtes Goa'uld](Goauld-Host-Caste) minoritaire. Chaque faction génère
+un véritable **Grand Maître Goa'uld** comme dirigeant, tandis que certains
+groupes de colonie peuvent inclure des profils ordinaires nommés simplement
+**Goa'uld**. Ces hôtes reçoivent un symbiote adulte actif avec identité
+persistante.
+
 Consulte [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction).
 
 ### Bâton Ma'Tok

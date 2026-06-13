@@ -936,3 +936,53 @@
 - [ ] Validate extra-faction additions in Create World
 - [ ] Validate clean new-game logs without missing faction leaders
 - [ ] Replace provisional Goa'uld-domain commanders with true persistent host profiles later
+
+
+## 0.2.3-dev — Goa'uld host-caste baseline
+
+- [x] Add ordinary generated `Goa'uld` host caste
+- [x] Add generated `Goa'uld System Lord` host leader kind
+- [x] Initialize generated hosts with one persistent adult Goa'uld symbiote identity
+- [x] Scan Goa'uld faction leaders and spawned settlement pawns
+- [x] Replace provisional Jaffa-domain commanders with true System Lord hosts
+- [x] Add ordinary Goa'uld hosts only to Settlement groups
+- [x] Keep direct raids Jaffa-only
+- [x] Preserve acquired-host Hediff architecture instead of forcing the legacy xenotype
+- [ ] Validate faction leader persistent data in RimWorld
+- [ ] Validate minority settlement Goa'uld hosts
+- [ ] Validate save and reload persistence
+- [ ] Add cultural backstories separately
+- [ ] Add active-host extraction separately
+
+
+## 0.2.3-dev-r1 — Stabilize Goa'uld settlement castes and Tau'ri backstories
+
+- [x] Add settlement-only capped Goa'uld Jaffa warrior and guard profiles
+- [x] Guarantee readable settlement groups with per-group caps: 7 warriors, 2 guards, 1 host
+- [x] Keep direct raids Jaffa-only and unchanged
+- [x] Extend one-time Prim'ta initialization to settlement-only Jaffa profiles
+- [x] Replace the narrow provisional SGC `Civil` filter with a broad vanilla-compatible Tau'ri filter
+- [ ] Validate settlement caste composition in RimWorld
+- [ ] Validate clean SGC starter generation logs
+- [ ] Continue with dedicated cultural backstories
+
+
+## 0.2.3-dev-r2 — Provisional Goa'uld attire and generated-host healing
+
+- [x] Prevent ordinary generated Goa'uld hosts from appearing naked
+- [x] Prevent generated System Lord hosts from appearing naked
+- [x] Use temporary vanilla pants, shirt and duster
+- [x] Heal a narrow list of chronic biological ailments after host initialization
+- [x] Preserve scars, missing parts and combat injuries
+- [x] Keep dedicated Goa'uld apparel for a later visual-production pass
+- [ ] Validate clothing on ordinary hosts and System Lords
+- [ ] Validate that lumbago and similar chronic conditions are removed
+- [ ] Validate persistence after save and reload
+
+
+## 0.2.3-dev-r3 — Fix provisional Goa'uld shirt reference
+
+- [x] Replace invalid `Apparel_ButtonDownShirt`
+- [x] Use vanilla `Apparel_CollarShirt`
+- [x] Preserve temporary Goa'uld outfit and host-healing behavior
+- [ ] Relaunch RimWorld and confirm that both unresolved ThingDef messages are gone

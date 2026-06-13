@@ -1,6 +1,6 @@
 # Stranded SG-team starter scenario
 
-Version: `0.2.0-dev`
+Version: `0.2.3-dev-r1`
 
 ## Purpose
 
@@ -71,6 +71,11 @@ expédition du SGC
 
 This replaces the vanilla `New Arrivals` identity for the scenario while
 retaining an industrial player-faction foundation.
+
+Since `0.2.3-dev-r1`, the custom faction uses one broad vanilla-compatible
+backstory filter. Tau'ri starters keep access to coherent Earth-origin vanilla
+histories until dedicated SGC additions are introduced. This removes the
+temporary `No shuffled Childhood` and `No shuffled Adulthood` fallback logs.
 
 ## Launch narrative
 

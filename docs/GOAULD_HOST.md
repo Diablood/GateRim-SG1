@@ -40,6 +40,16 @@ It intentionally does not yet simulate:
 
 `LifespanFactor ×5` is a provisional value for a standard implanted host. It represents a much longer life without treating every host as effectively immortal. Sarcophagus use and exceptional named Goa'uld can be balanced separately later.
 
+## Current architecture note
+
+Since later milestones, the functional possession architecture is carried by
+the persistent `SG1_GoauldHostSymbiote` Hediff rather than by forcing this
+legacy xenotype onto every active host.
+
+Since `0.2.3-dev`, naturally generated Goa'uld host castes also use that
+persistent Hediff architecture. The xenotype remains available as an early
+prototype and manual-test artifact.
+
 ## Future architecture
 
 The final system should follow this cycle:

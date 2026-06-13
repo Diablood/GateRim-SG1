@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.2-dev-r2</modVersion>
+    <modVersion>0.2.3-dev-r3</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -76,6 +76,10 @@ Current development scope:
 - Automatic forehead marks restricted to Goa'uld-domain Jaffa; Free Jaffa remain unmarked
 - Faction-level Jaffa xenotype summaries aligned with current generated populations
 - Configurable multi-faction limits and provisional generated leaders for Goa'uld and Free Jaffa factions
+- Persistent Goa'uld host-caste baseline with minority settlement hosts and real System Lord leaders
+- Stabilized Goa'uld settlement caste mix and broad temporary Tau'ri vanilla-backstory filter
+- Provisional vanilla attire and initial chronic-ailment healing for generated Goa'uld hosts
+- Fix provisional Goa'uld shirt reference to vanilla Apparel_CollarShirt
 - Goa'uld-aligned Jaffa pawn kinds with Combat and Settlement profiles
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics

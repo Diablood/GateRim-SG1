@@ -1,0 +1,162 @@
+# Goa'uld host-caste baseline
+
+Version: `0.2.3-dev-r3`
+
+## Purpose
+
+This milestone adds naturally generated persistent Goa'uld hosts to visible
+Goa'uld-domain factions.
+
+```text
+SG1_GoauldHostCaste
+SG1_GoauldSystemLordHost
+```
+
+Player-facing labels:
+
+```text
+Goa'uld
+Goa'uld System Lord
+```
+
+The ordinary host is deliberately called simply `Goa'uld`.
+
+## Architecture
+
+Generated hosts remain biologically human baseliners. Possession is acquired:
+
+```text
+human host body
++
+SG1_GoauldHostSymbiote
++
+GoauldSymbioteData with Goauld origin
+```
+
+This matches the existing implantation-conversion architecture.
+
+The legacy non-inheritable xenotype prototype:
+
+```text
+SG1_GoauldHost
+```
+
+is not forced onto generated castes. Doing so would model acquired possession
+as a permanent xenotype and would leave Goa'uld genes behind after a future
+extraction.
+
+## Initialization
+
+```text
+GateRimSG1.Goauld.GameComponent_GoauldHostCasteInitializer
+```
+
+The component scans every 60 ticks:
+
+```text
+Goa'uld faction leaders
+spawned map pawns
+```
+
+It targets only:
+
+```text
+SG1_GoauldHostCaste
+SG1_GoauldSystemLordHost
+```
+
+For each newly observed host, it adds one active host Hediff and one persistent
+adult symbiote identity. The pawn ThingID is recorded so removing the symbiote
+later cannot create an artificial replacement.
+
+## Faction integration
+
+The faction leader kind becomes:
+
+```text
+SG1_GoauldSystemLordHost
+```
+
+The Settlement group uses dedicated capped profiles:
+
+```text
+SG1_GoauldSettlementJaffaWarrior: weight 4, max 7
+SG1_GoauldSettlementJaffaGuard:   weight 2, max 2
+SG1_GoauldHostCaste:              weight 1, max 1
+```
+
+The caps apply to each generated settlement group:
+
+```text
+up to 7 warriors per group
+up to 2 guards per group
+up to 1 ordinary Goa'uld host per group
+```
+
+A full settlement map may resolve more than one group. The final city-wide
+count can therefore include two ordinary Goa'uld hosts while keeping them a
+minority among the Jaffa defenders.
+
+The Combat group remains unchanged, so direct raids stay Jaffa-only.
+
+## Vanilla Create World summary limitation
+
+The faction-level summary remains:
+
+```text
+Jaffa: 100%
+```
+
+This is intentionally provisional. Vanilla summarizes xenotypes, not acquired
+Hediff-based possession states. The generated Goa'uld castes are real persistent
+hosts even though they are not represented by that xenotype summary.
+
+## Temporary attire
+
+Until dedicated Goa'uld visuals exist, both naturally generated host kinds
+receive:
+
+```text
+Apparel_Pants
+Apparel_CollarShirt
+Apparel_Duster
+```
+
+This prevents naked generated hosts while keeping the final visual pass
+separate.
+
+## Initial biological healing
+
+Immediately after the persistent adult symbiote is attached, the generated-host
+initializer removes a narrow set of chronic biological ailments such as bad
+back, frailty, cataracts, hearing loss, dementia, asthma, artery blockage and
+carcinoma.
+
+It deliberately preserves scars, missing body parts and ordinary combat
+injuries.
+
+## Deferred work
+
+- dedicated cultural backstories;
+- dedicated Goa'uld apparel;
+- active-host extraction;
+- custom UI summary for host castes;
+- thematic faction icons.
+
+## Manual test checklist
+
+1. Rebuild the C# assembly with `-t:Rebuild`.
+2. Generate a new world with at least one Goa'uld-domain faction.
+3. Start the colony and inspect the Goa'uld faction leader.
+4. Confirm the leader kind is `Grand Maître Goa'uld`.
+5. Confirm the leader has `SG1_GoauldHostSymbiote`.
+6. Enable advanced diagnostics and record the persistent symbiote ID.
+7. Visit or attack a Goa'uld settlement on a disposable save.
+8. Confirm a mixed Jaffa settlement with at least one ordinary pawn labelled `Goa'uld`; two hosts on a larger city map remain acceptable.
+9. Confirm the ordinary Goa'uld host carries `SG1_GoauldHostSymbiote`.
+10. Confirm ordinary hosts and System Lords wear temporary vanilla clothing.
+11. Confirm that generated hosts do not retain bad back or similar chronic conditions.
+12. Confirm Jaffa remain the majority.
+11. Trigger a direct natural or controlled raid and confirm it contains Jaffa only.
+12. Save and reload.
+13. Confirm the same leader and ordinary-host symbiote IDs remain stable.

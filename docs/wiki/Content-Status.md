@@ -51,11 +51,12 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Maturation assistée du Prim'ta | Extraction développeur d'un symbiote immature depuis la reine, puis consommation avec `10` viandes crues au bassin | 0.1.58-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
-| Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé provisoire `Jaffa : 100 %` et commandant Jaffa de domaine temporaire | 0.1.61-dev / présence mondiale 0.2.1-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
+| Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, dirigeant généré, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
 | Profils de groupe Jaffa libres `Combat` et `Settlement` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
-| Profils de groupe Goa'uld `Combat` et `Settlement` | Guerriers et gardes Jaffa pour les raids directs et la défense initiale des colonies visibles | 0.1.62-dev / colonies 0.2.1-dev |
+| Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
+| Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire et nettoyage initial des affections chroniques biologiques | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique et faible perturbation IEM supplémentaire contre les cibles mécaniques compatibles | 0.1.77-dev |
@@ -89,6 +90,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
-| Véritables profils d'hôtes Goa'uld minoritaires | Prévu : initialisation complète du symbiote persistant avant ajout au résumé et aux colonies |
+| Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

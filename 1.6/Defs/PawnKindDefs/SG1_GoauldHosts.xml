@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Naturally generated Goa'uld host castes.
+
+    These PawnKindDefs remain biologically human baseliners. Their Goa'uld
+    state is acquired during life and is initialized through the persistent
+    SG1_GoauldHostSymbiote Hediff, preserving the existing implantation model.
+
+    Do not force the legacy SG1_GoauldHost xenotype here: doing so would leave
+    Goa'uld genes behind after a future extraction and would contradict the
+    established host-transfer architecture.
+    -->
+    <PawnKindDef ParentName="BasePlayerPawnKind">
+        <defName>SG1_GoauldHostCaste</defName>
+        <label>Goa'uld</label>
+        <race>Human</race>
+        <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
+        <useFactionXenotypes>false</useFactionXenotypes>
+        <combatPower>115</combatPower>
+        <maxPerGroup>1</maxPerGroup>
+        <isFighter>false</isFighter>
+        <!--
+        Temporary vanilla attire until dedicated Goa'uld clothing exists.
+        Prevent naturally generated hosts from appearing naked.
+        -->
+        <apparelMoney>0</apparelMoney>
+        <apparelRequired Inherit="False">
+            <li>Apparel_Pants</li>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_Duster</li>
+        </apparelRequired>
+        <initialResistanceRange>0~0</initialResistanceRange>
+        <minGenerationAge>18</minGenerationAge>
+        <maxGenerationAge>80</maxGenerationAge>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="BasePlayerPawnKind">
+        <defName>SG1_GoauldSystemLordHost</defName>
+        <label>Goa'uld System Lord</label>
+        <race>Human</race>
+        <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
+        <useFactionXenotypes>false</useFactionXenotypes>
+        <combatPower>170</combatPower>
+        <isFighter>true</isFighter>
+        <!--
+        Temporary vanilla attire until dedicated System Lord clothing exists.
+        -->
+        <apparelMoney>0</apparelMoney>
+        <apparelRequired Inherit="False">
+            <li>Apparel_Pants</li>
+            <li>Apparel_CollarShirt</li>
+            <li>Apparel_Duster</li>
+        </apparelRequired>
+        <initialResistanceRange>0~0</initialResistanceRange>
+        <minGenerationAge>25</minGenerationAge>
+        <maxGenerationAge>100</maxGenerationAge>
+    </PawnKindDef>
+</Defs>

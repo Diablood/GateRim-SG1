@@ -1,5 +1,62 @@
 # Changelog
 
+## 0.2.3-dev-r3 — Fix provisional Goa'uld shirt reference
+
+- Replace invalid `Apparel_ButtonDownShirt` references with vanilla `Apparel_CollarShirt`.
+- Apply the correction to both `SG1_GoauldHostCaste` and `SG1_GoauldSystemLordHost`.
+- Preserve the temporary pants, collared shirt and duster outfit.
+- Keep generated-host healing, settlement composition and persistent symbiote behavior unchanged.
+- No C# rebuild is required for this XML and documentation correction.
+
+## 0.2.3-dev-r2 — Add provisional Goa'uld attire and heal generated hosts
+
+- Add temporary vanilla apparel requirements to `SG1_GoauldHostCaste`.
+- Add the same temporary vanilla apparel requirements to `SG1_GoauldSystemLordHost`.
+- Use pants, button-down shirt and duster until dedicated Goa'uld clothing exists.
+- Extend `GameComponent_GoauldHostCasteInitializer` with a narrow generated-host chronic-ailment cleanup.
+- Heal pre-existing bad back, frailty, cataracts, blindness, hearing loss, dementia, Alzheimer's, asthma, artery blockage, carcinoma, cirrhosis and organ decay after generated-host symbiote initialization.
+- Preserve scars, missing body parts and ordinary combat injuries.
+- Apply the same cleanup when an existing generated host already carries an adult symbiote state.
+- Keep settlement composition, direct raids and persistent identity behavior unchanged.
+- Keep dedicated Goa'uld apparel as a later visual milestone.
+- Update technical documentation and player-wiki drafts.
+- Keep assembly version `0.2.3.0`; a forced rebuild is required because C# changed.
+
+## 0.2.3-dev-r1 — Stabilize Goa'uld settlement castes and Tau'ri backstories
+
+- Add `SG1_GoauldSettlementJaffaWarrior`.
+- Add `SG1_GoauldSettlementJaffaGuard`.
+- Keep the direct-raid `Combat` profile unchanged.
+- Use settlement-only capped profiles for the Goa'uld `Settlement` group.
+- Cap each generated settlement group at seven warriors, two guards and one ordinary Goa'uld host; a full city map may resolve more than one group.
+- Lower the settlement-only guard combat cost to `130` so it remains eligible throughout the vanilla settlement point range.
+- Cap `SG1_GoauldHostCaste` at one pawn per generated group.
+- Extend one-time automatic Prim'ta initialization to both settlement-only Jaffa profiles.
+- Keep Goa'uld-domain forehead-mark assignment automatic through the existing faction-domain rule.
+- Replace the custom SGC expedition faction's narrow temporary `Civil` backstory filter with one broad vanilla-compatible filter.
+- Preserve Tau'ri access to generic vanilla Earth-origin histories until dedicated SGC additions are introduced.
+- Keep cultural backstories as a separate later milestone.
+- Update technical documentation and player-wiki drafts.
+- Keep assembly version `0.2.3.0`; a forced rebuild is still required because C# changed.
+
+## 0.2.3-dev — Add Goa'uld host-caste baseline
+
+- Add `SG1_GoauldHostCaste` with the player-facing label `Goa'uld`.
+- Add `SG1_GoauldSystemLordHost` with the player-facing label `Goa'uld System Lord`.
+- Add `GameComponent_GoauldHostCasteInitializer`.
+- Initialize each generated Goa'uld host-caste pawn exactly once with `SG1_GoauldHostSymbiote`.
+- Create one persistent `GoauldSymbioteData` identity with `Goauld` origin for each generated host.
+- Scan both spawned map pawns and Goa'uld faction leaders.
+- Preserve one-time initialization so later removal cannot create an artificial replacement.
+- Replace the provisional Jaffa commander leader with a true System Lord host kind.
+- Add ordinary Goa'uld hosts as a minority `Settlement` option with weight `0.75`.
+- Keep the `Combat` profile and direct raids Jaffa-only.
+- Keep the faction-level `Jaffa = 100%` summary as a vanilla-UI limitation: acquired host Hediffs are not xenotypes.
+- Do not force the legacy `SG1_GoauldHost` xenotype onto generated hosts.
+- Keep backstories, dedicated Goa'uld apparel and active-host extraction as separate later milestones.
+- Add French translations, technical documentation and player-wiki drafts.
+- Align the C# assembly version with `0.2.3`.
+
 ## 0.2.2-dev-r2 — Expand faction limits and generate provisional leaders
 
 - Keep `startingCountAtWorldCreation = 1` for both `SG1_GoauldSystemLordPrototype` and `SG1_FreeJaffa`.

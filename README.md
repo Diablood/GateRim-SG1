@@ -13,80 +13,52 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.2-dev-r2 — Expand faction limits and generate provisional leaders
+### 0.2.3-dev-r3 — Fix provisional Goa'uld shirt reference
 
-The second visible Stargate world presence is now enabled:
-
-```text
-SG1_FreeJaffa
-```
-
-New worlds generate one visible neutral faction:
+Naturally generated ordinary Goa'uld and System Lord hosts no longer appear
+naked. Until dedicated Goa'uld clothing is designed, both host profiles use a
+temporary vanilla outfit:
 
 ```text
-Free Jaffa
+pants
+collared shirt
+duster
 ```
 
-The faction represents independent Jaffa communities freed from Goa'uld
-domination. It uses a reduced settlement-generation weight so its colonies
-remain visible but limited.
+The generated-host initializer also heals a narrow list of chronic biological
+ailments immediately after attaching the persistent adult symbiote identity.
 
-The baseline adds:
+This includes conditions such as:
 
 ```text
-one configurable Free Jaffa faction by default
-neutral initial relation with the SGC expedition
-hostility toward Goa'uld domains through the Goa'uld permanent-enemy rule
-limited world settlements
-Combat pawn-group profile
-Settlement defense pawn-group profile
+bad back
+frailty
+cataracts
+hearing loss
+dementia
+asthma
+artery blockage
+carcinoma
 ```
 
-Two new pawn kinds support the faction:
+The cleanup is intentionally limited. It does not erase scars, missing body
+parts or ordinary combat injuries. It only prevents naturally generated
+Goa'uld hosts from starting with biological chronic conditions that their
+adult symbiote should already have repaired.
 
-```text
-SG1_FreeJaffaWarrior
-SG1_FreeJaffaGuard
-```
+Dedicated Goa'uld and System Lord apparel remains a later visual-production
+milestone.
 
-They reuse the validated Jaffa lineage, one-time Prim'ta provisioning, Ma'Tok
-weapon tag and modular armor loadouts.
-
-A visual-identity correction is included: automatic forehead marks now apply
-only to Jaffa whose faction carries a Goa'uld System Lord-domain extension.
-Free Jaffa remain unmarked unless a mark is assigned manually or migrated from
-an older save.
-
-Trade, quests, aid, visitors and natural Free Jaffa raids remain disabled for
-this first world-presence milestone.
-
-The `r1` alignment fix adds faction-level xenotype summaries:
-
-```text
-Free Jaffa                    -> Jaffa: 100%
-Goa'uld System Lord domains  -> Jaffa: 100% for the current servant baseline
-```
-
-The Goa'uld summary is intentionally provisional. True Goa'uld host profiles
-remain a separate milestone because a xenotype alone would not create the
-persistent implanted symbiote identity required by the existing mechanics.
-
-The `r2` fix keeps one faction of each type by default while allowing players
-to add additional Goa'uld-domain or Free Jaffa factions manually from Create
-World. It also gives both visible humanlike factions a generated provisional
-leader so RimWorld no longer logs a missing faction leader.
-
-Until true persistent Goa'uld hosts exist, each generated Goa'uld-domain
-faction is represented by a senior Jaffa commander rather than a fake
-incomplete System Lord host.
+The `r3` startup fix replaces the invalid temporary shirt reference
+`Apparel_ButtonDownShirt` with the vanilla `Apparel_CollarShirt` ThingDef.
 
 ## Next development focus
 
-- validate one visible neutral Free Jaffa faction in world creation;
-- validate limited Free Jaffa settlements and neutral SGC relations;
-- visit or attack a test settlement and confirm Free Jaffa defenders;
-- confirm Prim'ta, Ma'Tok, modular armor and absence of forced forehead marks;
-- add peaceful Free Jaffa encounters in a separate balancing milestone.
+- validate clothed ordinary Goa'uld and System Lord hosts;
+- confirm generated hosts no longer retain bad back or similar chronic ailments;
+- confirm persistent symbiote identity remains stable after save and reload;
+- keep direct raids Jaffa-only;
+- add cultural backstories separately.
 
 ## First playable milestone
 
@@ -116,6 +88,7 @@ incomplete System Lord host.
 - [x] Stranded SG-team starter scenario
 - [x] Playable Goa'uld world-faction baseline
 - [x] Free Jaffa world-faction baseline
+- [x] Persistent Goa'uld host-caste baseline
 
 ## Development notes
 

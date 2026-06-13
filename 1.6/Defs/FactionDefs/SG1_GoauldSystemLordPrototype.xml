@@ -20,14 +20,14 @@
         <pawnsPlural>Goa'uld subjects</pawnsPlural>
         <pawnSingular>Goa'uld subject</pawnSingular>
         <!--
-        Provisional leader baseline: until true persistent Goa'uld host profiles
-        exist, visible domains are represented by a generated senior Jaffa
-        commander rather than an incomplete fake System Lord host.
+        Real host-caste leader baseline. The generated System Lord body remains
+        biologically human and receives one persistent adult symbiote identity
+        from GameComponent_GoauldHostCasteInitializer.
         -->
-        <leaderTitle>domain Jaffa commander</leaderTitle>
+        <leaderTitle>System Lord</leaderTitle>
         <basicMemberKind>SG1_GoauldJaffaWarrior</basicMemberKind>
         <fixedLeaderKinds>
-            <li>SG1_GoauldJaffaGuard</li>
+            <li>SG1_GoauldSystemLordHost</li>
         </fixedLeaderKinds>
         <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
         <humanlikeFaction>true</humanlikeFaction>
@@ -82,13 +82,14 @@
         <canGenerateQuestSites>false</canGenerateQuestSites>
 
         <!--
-        Current baseline: the faction generates Jaffa servants only.
-        Declare SG1_Jaffa explicitly so the Create World summary does not
-        misleadingly report 100% baseliners.
+        The vanilla Create World summary still declares the dominant Jaffa
+        servant population explicitly. Naturally generated Goa'uld hosts now
+        exist as a minority settlement caste, but their possessed state is an
+        acquired persistent Hediff rather than a permanent xenotype.
 
-        True Goa'uld hosts remain a later dedicated milestone: adding only the
-        SG1_GoauldHost xenotype here would create incomplete hosts without a
-        persistent implanted symbiote identity.
+        Adding SG1_GoauldHost here would misleadingly model possession as a
+        germline-style xenotype and would leave Goa'uld genes behind after a
+        future extraction.
         -->
         <xenotypeSet>
             <xenotypeChances>
@@ -127,8 +128,9 @@
                 <kindDef>Settlement</kindDef>
                 <commonality>1</commonality>
                 <options>
-                    <SG1_GoauldJaffaWarrior>4</SG1_GoauldJaffaWarrior>
-                    <SG1_GoauldJaffaGuard>1</SG1_GoauldJaffaGuard>
+                    <SG1_GoauldSettlementJaffaWarrior>4</SG1_GoauldSettlementJaffaWarrior>
+                    <SG1_GoauldSettlementJaffaGuard>2</SG1_GoauldSettlementJaffaGuard>
+                    <SG1_GoauldHostCaste>1</SG1_GoauldHostCaste>
                 </options>
             </li>
         </pawnGroupMakers>

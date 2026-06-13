@@ -20,6 +20,10 @@ impossible. L'équipe doit établir un camp avec le matériel récupéré sur pl
 
 Le scénario génère exactement quatre membres adultes d'équipe SG. Les quatre candidats affichés sont les quatre membres de départ : il n'ajoute pas de sélection élargie inutile.
 
+Les humains Tau'ri conservent temporairement un accès large aux histoires
+vanilla cohérentes avec une origine terrienne. Des parcours SGC dédiés seront
+ajoutés plus tard en complément.
+
 Les candidats incapables de violence sont exclus afin que l'équipe de départ reste crédible pour une mission militaire. Des profils scientifiques restent possibles tant que leur parcours ne leur interdit pas totalement le combat.
 
 Chaque soldat porte automatiquement :

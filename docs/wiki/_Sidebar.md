@@ -12,6 +12,7 @@
 - [Jaffa libres](Free-Jaffa-Faction)
 - [Goa'uld](Goauld)
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
+- [Caste des hôtes Goa'uld](Goauld-Host-Caste)
 - [Bâton Ma'Tok](Matok-Staff)
 - [Zat'nik'tel](ZatnikTel)
 - [Treillis d'équipe SG](SG-Team-Uniform)

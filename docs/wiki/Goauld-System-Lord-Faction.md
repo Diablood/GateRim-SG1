@@ -39,17 +39,23 @@ Dans l'écran de création du monde, la faction indique actuellement :
 xénotype : Jaffa (100 %)
 ```
 
-Ce résumé correspond à la baseline jouable actuelle : les groupes générés sont
-composés de serviteurs Jaffa. De véritables profils d'hôtes Goa'uld minoritaires
-seront ajoutés plus tard dans un jalon dédié. Ajouter seulement un xénotype
-d'hôte créerait pour le moment des hôtes incomplets sans symbiote persistant.
+Ce résumé reste une limite de l'interface vanilla : elle affiche les
+xenotypes, pas les états parasitaires acquis. Depuis `0.2.3-dev`, des profils
+d'hôtes Goa'uld minoritaires existent réellement dans les colonies et parmi
+les dirigeants, avec un symbiote persistant.
 
-## Dirigeant provisoire
+## Grand Maître Goa'uld
 
-En attendant les véritables hôtes Goa'uld persistants, chaque domaine visible
-génère un **commandant Jaffa de domaine**. Ce représentant temporaire évite les
-erreurs de dirigeant manquant sans prétendre qu'un simple Jaffa est déjà un
-Grand Maître Goa'uld.
+Depuis `0.2.3-dev`, chaque domaine visible génère un véritable :
+
+```text
+Grand Maître Goa'uld
+```
+
+Le dirigeant reçoit un symbiote adulte actif avec une identité persistante. Le
+représentant provisoire `commandant Jaffa de domaine` n'est plus utilisé.
+
+Consulte [Caste des hôtes Goa'uld](Goauld-Host-Caste).
 
 ## Hostilité
 
@@ -60,12 +66,23 @@ désactivés.
 
 ## Serviteurs Jaffa
 
-Les colonies et groupes de combat utilisent actuellement :
+Les raids directs utilisent toujours :
 
 ```text
 guerrier Jaffa au service des Goa'uld
 garde Jaffa au service des Goa'uld
 ```
+
+Les groupes générés dans les villes utilisent des plafonds lisibles :
+
+```text
+jusqu'à 7 guerriers Jaffa par groupe
+jusqu'à 2 gardes Jaffa par groupe
+jusqu'à 1 Goa'uld par groupe
+```
+
+Une même carte de ville peut résoudre plusieurs groupes. Deux Goa'uld dans une
+colonie restent donc possibles sans remettre en cause leur statut minoritaire.
 
 Les serviteurs reçoivent automatiquement :
 

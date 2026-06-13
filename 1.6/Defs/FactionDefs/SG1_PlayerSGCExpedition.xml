@@ -15,12 +15,13 @@
         <pawnsPlural>SG-team members</pawnsPlural>
         <leaderTitle>team leader</leaderTitle>
         <techLevel>Industrial</techLevel>
+        <!--
+        Temporary Tau'ri baseline: accept generic vanilla backstories broadly.
+        Dedicated SGC backstories will be added later without excluding
+        coherent Earth-origin vanilla histories.
+        -->
         <backstoryFilters>
-            <li>
-                <categories>
-                    <li>Civil</li>
-                </categories>
-            </li>
+            <li />
         </backstoryFilters>
         <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
