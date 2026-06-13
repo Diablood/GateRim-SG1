@@ -14,6 +14,16 @@
         <race>Human</race>
         <defaultFactionType>SG1_FreeJaffa</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
+        <backstoryFiltersOverride>
+            <li>
+                <categoriesChildhood>
+                    <li>SG1_JaffaChildhood</li>
+                </categoriesChildhood>
+                <categoriesAdulthood>
+                    <li>SG1_FreeJaffaAdulthood</li>
+                </categoriesAdulthood>
+            </li>
+        </backstoryFiltersOverride>
         <xenotypeSet>
             <xenotypeChances>
                 <SG1_Jaffa>999</SG1_Jaffa>
@@ -43,6 +53,16 @@
         <race>Human</race>
         <defaultFactionType>SG1_FreeJaffa</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
+        <backstoryFiltersOverride>
+            <li>
+                <categoriesChildhood>
+                    <li>SG1_JaffaChildhood</li>
+                </categoriesChildhood>
+                <categoriesAdulthood>
+                    <li>SG1_FreeJaffaAdulthood</li>
+                </categoriesAdulthood>
+            </li>
+        </backstoryFiltersOverride>
         <xenotypeSet>
             <xenotypeChances>
                 <SG1_Jaffa>999</SG1_Jaffa>

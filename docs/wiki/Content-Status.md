@@ -91,5 +91,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
 | Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
+| Histoires culturelles | Première base native : parcours SGC complémentaires, enfances Jaffa, carrières Jaffa de domaine et libres, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

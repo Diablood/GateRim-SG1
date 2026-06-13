@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.4-dev-r1 — Define adulthood backstory body types
+
+- Add `bodyTypeMale = Male` and `bodyTypeFemale = Female` to all `38` dedicated adulthood backstories.
+- Keep childhood backstories unchanged.
+- Fix generated Jaffa, Goa'uld, Tok'ra and occasional SGC-profile pawns receiving an undefined body type.
+- Fix invisible pawn bodies, missing apparel graphics and portrait-rendering null-reference errors caused by the undefined body type.
+- Reapply the correct provisional Goa'uld shirt file using vanilla `Apparel_CollarShirt` as a safety overwrite.
+- Keep the milestone XML-only: no C# rebuild is required.
+
+## 0.2.4-dev — Add cultural backstory baseline
+
+- Add `52` native `BackstoryDef` entries.
+- Add optional Tau'ri SGC adult careers while preserving vanilla Earth-origin histories.
+- Add shared Jaffa childhoods, Goa'uld-domain Jaffa careers and Free Jaffa careers.
+- Add off-world human childhoods for generated Goa'uld and Tok'ra hosts.
+- Add ordinary Goa'uld-host, System Lord and generated Tok'ra-agent careers.
+- Mark every dedicated story with `requiresSpawnCategory = true`.
+- Add `backstoryFiltersOverride` to off-world PawnKindDefs.
+- Keep existing voluntary Tok'ra host histories unchanged.
+- Keep the milestone XML-only: no C# rebuild is required.
+- Add French translations, technical documentation and player-wiki drafts.
+
 ## 0.2.3-dev-r3 — Fix provisional Goa'uld shirt reference
 
 - Replace invalid `Apparel_ButtonDownShirt` references with vanilla `Apparel_CollarShirt`.

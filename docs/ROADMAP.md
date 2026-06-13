@@ -986,3 +986,29 @@
 - [x] Use vanilla `Apparel_CollarShirt`
 - [x] Preserve temporary Goa'uld outfit and host-healing behavior
 - [ ] Relaunch RimWorld and confirm that both unresolved ThingDef messages are gone
+
+
+## 0.2.4-dev — Cultural backstory baseline
+
+- [x] Preserve vanilla Earth histories for Tau'ri humans
+- [x] Add optional SGC adulthood careers
+- [x] Add shared Jaffa childhood histories
+- [x] Add separate Goa'uld-domain and Free Jaffa adulthood histories
+- [x] Add off-world human childhood histories
+- [x] Add Goa'uld-host, System Lord and generated Tok'ra careers
+- [x] Prevent dedicated histories from leaking into unrelated vanilla generation
+- [x] Preserve existing voluntary Tok'ra host histories
+- [ ] Validate generation samples and clean logs in RimWorld
+- [ ] Add contextual social rules separately
+
+
+## 0.2.4-dev-r1 — Define adulthood backstory body types
+
+- [x] Add standard male and female body types to all `38` dedicated adulthood stories
+- [x] Preserve childhood stories unchanged
+- [x] Prevent generated off-world pawns from receiving an undefined body type
+- [x] Reapply the corrected provisional Goa'uld shirt reference as a safety overwrite
+- [ ] Generate a fresh Goa'uld city and validate visible Jaffa, Goa'uld and portraits
+- [ ] Generate a fresh Free Jaffa city and validate visible Jaffa and portraits
+- [ ] Confirm `Getting apparel graphic with undefined body type` no longer appears
+- [ ] Confirm portrait-rendering null-reference errors no longer appear

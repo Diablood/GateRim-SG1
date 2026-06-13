@@ -58,9 +58,14 @@ Depuis `0.2.2-dev`, les [Jaffa libres](Free-Jaffa-Faction) apparaissent
 également sur la carte du monde avec des colonies limitées et une relation
 initiale neutre envers l'expédition du SGC.
 
-Les prochains lots ajouteront progressivement leurs rencontres pacifiques, la
-présence Tok'ra mondiale et l'acquisition normale des objets Stargate. La
-Porte des étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
+Depuis `0.2.4-dev`, une première couche d'[histoires culturelles](Cultural-Backstories)
+distingue les humains Tau'ri, les Jaffa, les hôtes Goa'uld et les agents Tok'ra
+générés.
+
+Les prochains lots ajouteront progressivement les réactions sociales
+contextuelles, les rencontres pacifiques Jaffa libres, la présence Tok'ra
+mondiale et l'acquisition normale des objets Stargate. La Porte des étoiles
+fonctionnelle appartiendra à la future phase `0.3.x`.
 
 Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
 ultérieurement.

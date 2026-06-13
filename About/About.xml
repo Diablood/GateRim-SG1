@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.3-dev-r3</modVersion>
+    <modVersion>0.2.4-dev-r1</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -80,6 +80,8 @@ Current development scope:
 - Stabilized Goa'uld settlement caste mix and broad temporary Tau'ri vanilla-backstory filter
 - Provisional vanilla attire and initial chronic-ailment healing for generated Goa'uld hosts
 - Fix provisional Goa'uld shirt reference to vanilla Apparel_CollarShirt
+- Cultural backstory baseline for Tau'ri, Jaffa, Goa'uld hosts and generated Tok'ra agents
+- Define standard male and female body types for every dedicated adulthood backstory
 - Goa'uld-aligned Jaffa pawn kinds with Combat and Settlement profiles
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics

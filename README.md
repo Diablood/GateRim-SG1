@@ -13,52 +13,70 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.3-dev-r3 — Fix provisional Goa'uld shirt reference
+### 0.2.4-dev-r1 — Define adulthood body types
 
-Naturally generated ordinary Goa'uld and System Lord hosts no longer appear
-naked. Until dedicated Goa'uld clothing is designed, both host profiles use a
-temporary vanilla outfit:
+The first native cultural-history layer is now in place without adding
+Humanoid Alien Races as a dependency.
 
-```text
-pants
-collared shirt
-duster
-```
-
-The generated-host initializer also heals a narrow list of chronic biological
-ailments immediately after attaching the persistent adult symbiote identity.
-
-This includes conditions such as:
+The milestone adds:
 
 ```text
-bad back
-frailty
-cataracts
-hearing loss
-dementia
-asthma
-artery blockage
-carcinoma
+6 Tau'ri SGC adult careers
+8 shared Jaffa childhoods
+8 Goa'uld-domain Jaffa adult careers
+8 Free Jaffa adult careers
+6 off-world human childhoods
+6 ordinary Goa'uld-host adult careers
+4 System Lord adult careers
+6 generated Tok'ra-agent adult careers
 ```
 
-The cleanup is intentionally limited. It does not erase scars, missing body
-parts or ordinary combat injuries. It only prevents naturally generated
-Goa'uld hosts from starting with biological chronic conditions that their
-adult symbiote should already have repaired.
+Generation policy:
 
-Dedicated Goa'uld and System Lord apparel remains a later visual-production
-milestone.
+```text
+Tau'ri
+-> broad vanilla Earth-compatible histories
+-> smaller optional chance of an SGC-specific adulthood
 
-The `r3` startup fix replaces the invalid temporary shirt reference
-`Apparel_ButtonDownShirt` with the vanilla `Apparel_CollarShirt` ThingDef.
+Goa'uld-domain Jaffa
+-> dedicated Jaffa childhoods and domain careers only
+
+Free Jaffa
+-> dedicated Jaffa childhoods and liberated-community careers only
+
+Generated Goa'uld hosts
+-> off-world human childhoods and Goa'uld caste careers only
+
+Generated Tok'ra prototype agents
+-> off-world human childhoods and Tok'ra careers only
+```
+
+Existing colonists who voluntarily accept a Tok'ra symbiote keep their
+original childhood and adulthood. Dedicated stories use
+`requiresSpawnCategory = true` so they do not leak into unrelated vanilla
+generation.
+
+The baseline is intentionally narrative-first. More stories and granular
+skill effects can be added later through small content patches.
+
+The `r1` rendering fix assigns standard gender-appropriate vanilla body types
+to every dedicated adulthood history:
+
+```text
+male character   -> Male
+female character -> Female
+```
+
+RimWorld directly asks the selected adulthood backstory for the pawn body
+type. Without these fields, generated off-world pawns could receive an
+undefined body type, become invisible and trigger portrait-rendering errors.
 
 ## Next development focus
 
-- validate clothed ordinary Goa'uld and System Lord hosts;
-- confirm generated hosts no longer retain bad back or similar chronic ailments;
-- confirm persistent symbiote identity remains stable after save and reload;
-- keep direct raids Jaffa-only;
-- add cultural backstories separately.
+- validate representative generation samples;
+- confirm no terrestrial histories appear on generated Jaffa or Goa'uld;
+- confirm no `No shuffled Childhood` or `No shuffled Adulthood` fallback logs;
+- add contextual social rules separately.
 
 ## First playable milestone
 
@@ -89,6 +107,7 @@ The `r3` startup fix replaces the invalid temporary shirt reference
 - [x] Playable Goa'uld world-faction baseline
 - [x] Free Jaffa world-faction baseline
 - [x] Persistent Goa'uld host-caste baseline
+- [x] Cultural backstory baseline
 
 ## Development notes
 

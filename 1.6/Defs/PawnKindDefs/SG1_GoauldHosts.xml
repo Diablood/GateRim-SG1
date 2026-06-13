@@ -17,6 +17,16 @@
         <race>Human</race>
         <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
+        <backstoryFiltersOverride>
+            <li>
+                <categoriesChildhood>
+                    <li>SG1_OffworldHumanChildhood</li>
+                </categoriesChildhood>
+                <categoriesAdulthood>
+                    <li>SG1_GoauldHostAdulthood</li>
+                </categoriesAdulthood>
+            </li>
+        </backstoryFiltersOverride>
         <combatPower>115</combatPower>
         <maxPerGroup>1</maxPerGroup>
         <isFighter>false</isFighter>
@@ -41,6 +51,16 @@
         <race>Human</race>
         <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
+        <backstoryFiltersOverride>
+            <li>
+                <categoriesChildhood>
+                    <li>SG1_OffworldHumanChildhood</li>
+                </categoriesChildhood>
+                <categoriesAdulthood>
+                    <li>SG1_GoauldSystemLordAdulthood</li>
+                </categoriesAdulthood>
+            </li>
+        </backstoryFiltersOverride>
         <combatPower>170</combatPower>
         <isFighter>true</isFighter>
         <!--

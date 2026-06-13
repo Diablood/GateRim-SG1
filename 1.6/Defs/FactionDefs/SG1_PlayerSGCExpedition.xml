@@ -21,7 +21,15 @@
         coherent Earth-origin vanilla histories.
         -->
         <backstoryFilters>
-            <li />
+            <li>
+                <commonality>4</commonality>
+            </li>
+            <li>
+                <categoriesAdulthood>
+                    <li>SG1_TauriSGCAdulthood</li>
+                </categoriesAdulthood>
+                <commonality>1</commonality>
+            </li>
         </backstoryFilters>
         <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>

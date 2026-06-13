@@ -1,0 +1,651 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_SpecialForcesOperator</defName>
+        <title>SGC special-forces operator</title>
+        <titleShort>SGC operator</titleShort>
+        <description>Assigned to the Stargate program after an exacting military career, this operator learned to improvise under fire and protect a team far from Earth.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_FieldMedic</defName>
+        <title>SGC field medic</title>
+        <titleShort>SGC medic</titleShort>
+        <description>This medic joined off-world teams to keep explorers alive when evacuation through the Stargate could not be taken for granted.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_Researcher</defName>
+        <title>SGC researcher</title>
+        <titleShort>SGC researcher</titleShort>
+        <description>Recruited for work on alien technology and unfamiliar biology, this researcher became accustomed to making careful decisions with incomplete information.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_Linguist</defName>
+        <title>SGC linguist</title>
+        <titleShort>SGC linguist</titleShort>
+        <description>This specialist studied languages, myths and ancient inscriptions before joining missions where a mistranslated warning could endanger an entire team.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_FieldEngineer</defName>
+        <title>SGC field engineer</title>
+        <titleShort>SGC engineer</titleShort>
+        <description>Trained to keep equipment running under difficult conditions, this engineer accompanied SG teams whenever a remote mission needed practical solutions.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_LiaisonOfficer</defName>
+        <title>SGC liaison officer</title>
+        <titleShort>SGC liaison</titleShort>
+        <description>This officer learned to negotiate between military priorities, scientific caution and the needs of communities encountered beyond the Stargate.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_VillageChild</defName>
+        <title>Jaffa village child</title>
+        <titleShort>village child</titleShort>
+        <description>Raised in a Jaffa village under distant stars, this child learned communal duties, old stories and household discipline.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_TempleAttendant</defName>
+        <title>temple attendant</title>
+        <titleShort>temple attendant</titleShort>
+        <description>This child served around a Goa'uld temple, carrying messages and observing ceremonies long before understanding the powers behind them.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_WarriorHousehold</defName>
+        <title>warrior-household child</title>
+        <titleShort>warrior household</titleShort>
+        <description>Born into a household of Jaffa fighters, this child grew up around drills, armor maintenance and the expectation of service.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_TributeWorldShepherd</defName>
+        <title>tribute-world shepherd</title>
+        <titleShort>young shepherd</titleShort>
+        <description>This child watched herds on a tributary world and learned to survive far from fortified settlements.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_ArtisanApprentice</defName>
+        <title>Jaffa artisan apprentice</title>
+        <titleShort>artisan apprentice</titleShort>
+        <description>Apprenticed to local craftspeople, this child learned the patient routines that kept a Jaffa community equipped and fed.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_FortressChild</defName>
+        <title>fortress child</title>
+        <titleShort>fortress child</titleShort>
+        <description>This child grew up inside a fortified Jaffa garrison, where alarms, patrols and passing war bands were ordinary parts of life.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_SanctuaryWard</defName>
+        <title>sanctuary ward</title>
+        <titleShort>sanctuary ward</titleShort>
+        <description>Taken in by a sanctuary community, this child learned caution, mutual aid and the value of listening before speaking.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Jaffa_TrainingCampYouth</defName>
+        <title>training-camp youth</title>
+        <titleShort>camp youth</titleShort>
+        <description>This child spent formative years around a Jaffa training camp, helping with simple duties while veterans prepared the next generation.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_DomainWarrior</defName>
+        <title>domain Jaffa warrior</title>
+        <titleShort>domain warrior</titleShort>
+        <description>This Jaffa fought for a Goa'uld domain, enforcing its borders and obeying commands delivered in the name of a distant master.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_TempleGuard</defName>
+        <title>Goa'uld temple guard</title>
+        <titleShort>temple guard</titleShort>
+        <description>Stationed at a Goa'uld temple, this Jaffa guarded sacred spaces and learned the rituals of rigid hierarchy.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_FortressGuard</defName>
+        <title>domain fortress guard</title>
+        <titleShort>fortress guard</titleShort>
+        <description>This Jaffa spent years on fortress duty, maintaining weapons, drilling patrols and reacting quickly whenever alarms sounded.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_CampaignVeteran</defName>
+        <title>System Lord war veteran</title>
+        <titleShort>war veteran</titleShort>
+        <description>This Jaffa survived campaigns between rival System Lords and learned that battlefield discipline mattered more than promises.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_Instructor</defName>
+        <title>Jaffa drill instructor</title>
+        <titleShort>drill instructor</titleShort>
+        <description>Charged with preparing younger warriors, this Jaffa repeated old lessons until recruits could act without hesitation.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_ProcessionEscort</defName>
+        <title>Goa'uld procession escort</title>
+        <titleShort>procession escort</titleShort>
+        <description>This Jaffa escorted officials, priests and tribute caravans, remaining alert whenever displays of power invited resentment.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_GarrisonOfficer</defName>
+        <title>Jaffa garrison officer</title>
+        <titleShort>garrison officer</titleShort>
+        <description>Promoted within a domain garrison, this Jaffa coordinated sentries, supplies and discipline.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_ChappaaiSentinel</defName>
+        <title>Chappa'ai sentinel</title>
+        <titleShort>Chappa'ai sentinel</titleShort>
+        <description>This Jaffa guarded a Chappa'ai and treated every activation as a possible arrival of allies, raiders or displeased superiors.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_LiberatedWarrior</defName>
+        <title>liberated Jaffa warrior</title>
+        <titleShort>liberated warrior</titleShort>
+        <description>This Jaffa broke from Goa'uld service and learned to fight for a community rather than for the pride of a System Lord.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_CommunityProtector</defName>
+        <title>Free Jaffa community protector</title>
+        <titleShort>community protector</titleShort>
+        <description>This Jaffa defended an independent settlement where every patrol protected families, fields and the fragile idea of freedom.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_RebellionVeteran</defName>
+        <title>Jaffa rebellion veteran</title>
+        <titleShort>rebellion veteran</titleShort>
+        <description>This Jaffa fought in an uprising against Goa'uld rule and carried forward lessons learned from victories and losses.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_Scout</defName>
+        <title>Free Jaffa scout</title>
+        <titleShort>Free Jaffa scout</titleShort>
+        <description>This Jaffa travelled between liberated communities, watching roads, ruins and Stargates for signs of returning enemies.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_Artisan</defName>
+        <title>Free Jaffa artisan</title>
+        <titleShort>Free Jaffa artisan</titleShort>
+        <description>This Jaffa built a civilian life after generations of imposed service, repairing tools and teaching practical crafts.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_Farmer</defName>
+        <title>Free Jaffa farmer</title>
+        <titleShort>Free Jaffa farmer</titleShort>
+        <description>This Jaffa worked the soil of an independent village and prepared carefully for the next season.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_Healer</defName>
+        <title>Free Jaffa healer</title>
+        <titleShort>Free Jaffa healer</titleShort>
+        <description>This Jaffa cared for neighbors with limited supplies, combining inherited knowledge with locally available remedies.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_FormerDeserter</defName>
+        <title>former Goa'uld deserter</title>
+        <titleShort>former deserter</titleShort>
+        <description>This Jaffa deserted a Goa'uld force and spent years proving that leaving an old master was only the first step toward becoming free.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_TributaryVillageChild</defName>
+        <title>tributary-village child</title>
+        <titleShort>tributary child</titleShort>
+        <description>Raised in a remote human settlement under distant rulers, this child learned that survival often depended on caution and cooperation.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_PalaceServantChild</defName>
+        <title>palace-servant child</title>
+        <titleShort>palace servant</titleShort>
+        <description>This child grew up among servants attached to a great household, learning to observe rank, mood and danger before speaking.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_MarketSettlementChild</defName>
+        <title>off-world market child</title>
+        <titleShort>market child</titleShort>
+        <description>This child grew up around a busy off-world market where travelers, rumors and unfamiliar goods arrived from distant settlements.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_TempleWard</defName>
+        <title>temple ward</title>
+        <titleShort>temple ward</titleShort>
+        <description>Raised near a temple complex, this child learned ceremonies, taboos and the uneasy silence expected around powerful visitors.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_CaravanChild</defName>
+        <title>off-world caravan child</title>
+        <titleShort>caravan child</titleShort>
+        <description>This child travelled with a caravan between scattered communities and learned to adapt quickly whenever the road changed.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_RemoteFarmChild</defName>
+        <title>remote-farm child</title>
+        <titleShort>farm child</titleShort>
+        <description>This child grew up on an isolated farm where weather, harvests and armed strangers shaped everyday life.</description>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_DomainAdministrator</defName>
+        <title>Goa'uld domain administrator</title>
+        <titleShort>domain administrator</titleShort>
+        <description>This Goa'uld managed tribute, labor and local disputes from the safety of a domain settlement.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_PalaceEmissary</defName>
+        <title>Goa'uld palace emissary</title>
+        <titleShort>palace emissary</titleShort>
+        <description>This Goa'uld carried demands and promises between courts, treating every conversation as a test of influence.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_TributaryGovernor</defName>
+        <title>Goa'uld tributary governor</title>
+        <titleShort>tributary governor</titleShort>
+        <description>This Goa'uld supervised a tributary community and learned to extract obedience without provoking rebellion.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_CultPriest</defName>
+        <title>Goa'uld cult priest</title>
+        <titleShort>cult priest</titleShort>
+        <description>This Goa'uld cultivated ritual authority, encouraging worshippers to confuse fear, awe and loyalty.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_ArchiveKeeper</defName>
+        <title>Goa'uld archive keeper</title>
+        <titleShort>archive keeper</titleShort>
+        <description>This Goa'uld maintained records, artifacts and carefully edited histories intended to strengthen a domain.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_CourtStrategist</defName>
+        <title>Goa'uld court strategist</title>
+        <titleShort>court strategist</titleShort>
+        <description>This Goa'uld advised a court where every alliance was temporary and every apparent concession concealed another calculation.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_SystemLord_Conqueror</defName>
+        <title>Goa'uld System Lord conqueror</title>
+        <titleShort>System Lord conqueror</titleShort>
+        <description>This System Lord built a domain through conquest, tribute and carefully displayed cruelty.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldSystemLordAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_SystemLord_Dynast</defName>
+        <title>Goa'uld System Lord dynast</title>
+        <titleShort>System Lord dynast</titleShort>
+        <description>This System Lord inherited an old domain and spent years preserving its image of permanence while rivals tested every border.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldSystemLordAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_SystemLord_Schemer</defName>
+        <title>Goa'uld System Lord schemer</title>
+        <titleShort>System Lord schemer</titleShort>
+        <description>This System Lord preferred manipulation to open war, using emissaries, hostages and selective generosity to weaken rivals.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldSystemLordAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_SystemLord_Warlord</defName>
+        <title>Goa'uld System Lord warlord</title>
+        <titleShort>System Lord warlord</titleShort>
+        <description>This System Lord ruled through military spectacle and expected Jaffa commanders to answer every setback with a harsher campaign.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldSystemLordAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Tokra_Infiltrator</defName>
+        <title>Tok'ra infiltrator</title>
+        <titleShort>Tok'ra infiltrator</titleShort>
+        <description>This Tok'ra spent years behind hostile lines, cultivating patience and habits that made a false identity believable.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Tokra_Medic</defName>
+        <title>Tok'ra medic</title>
+        <titleShort>Tok'ra medic</titleShort>
+        <description>This Tok'ra treated hosts, agents and allies with limited resources while weighing medical need against operational secrecy.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Tokra_Diplomat</defName>
+        <title>Tok'ra diplomat</title>
+        <titleShort>Tok'ra diplomat</titleShort>
+        <description>This Tok'ra negotiated fragile cooperation with suspicious communities and learned that trust was earned gradually.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Tokra_Scout</defName>
+        <title>Tok'ra scout</title>
+        <titleShort>Tok'ra scout</titleShort>
+        <description>This Tok'ra mapped safe routes, abandoned sites and enemy movements, often travelling with little more than a cover story.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Tokra_Analyst</defName>
+        <title>Tok'ra intelligence analyst</title>
+        <titleShort>Tok'ra analyst</titleShort>
+        <description>This Tok'ra assembled scattered reports into useful intelligence and learned to distrust simple explanations.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+    <BackstoryDef>
+        <defName>SG1_Tokra_Courier</defName>
+        <title>Tok'ra courier</title>
+        <titleShort>Tok'ra courier</titleShort>
+        <description>This Tok'ra carried messages and supplies between hidden cells, treating every journey as a test of discretion.</description>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+</Defs>

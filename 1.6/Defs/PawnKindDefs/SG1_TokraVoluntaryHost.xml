@@ -5,6 +5,16 @@
         <label>Tok'ra voluntary host</label>
         <race>Human</race>
         <defaultFactionType>PlayerColony</defaultFactionType>
+        <backstoryFiltersOverride>
+            <li>
+                <categoriesChildhood>
+                    <li>SG1_OffworldHumanChildhood</li>
+                </categoriesChildhood>
+                <categoriesAdulthood>
+                    <li>SG1_TokraAgentAdulthood</li>
+                </categoriesAdulthood>
+            </li>
+        </backstoryFiltersOverride>
         <combatPower>80</combatPower>
         <isFighter>false</isFighter>
         <minGenerationAge>18</minGenerationAge>
