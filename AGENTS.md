@@ -1,32 +1,33 @@
-# AGENTS.md
+# GateRim SG-1 — Agent instructions
 
 ## Project
 
 This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 
-## Working rules
+## General rules
 
 - Work in small, testable milestones on dedicated Git branches.
-- Do not switch to `main`: the usable base is the latest validated published branch or explicit `v...-dev` tag.
+- Do not switch to `main`: it is not a usable working base.
+- Start new branches from the latest validated published branch or explicit `v...-dev` tag.
 - Use four spaces for indentation where applicable.
 - Preserve `About/ModIcon.png`.
-- Do not add temporary patch notes or `README-*.txt` files at the repository root.
+- Do not create temporary `README-*.txt` patch-note files at the repository root.
 - Keep English source Defs and French translations aligned.
 - Keep README, technical documentation, and `docs/wiki/` drafts aligned when behavior changes.
-- Do not commit ZIP patch archives stored at the repository root.
-- Do not push commits, tags, or branches unless explicitly requested.
-- Do not rewrite or move existing Git tags unless explicitly requested.
+- Do not commit ZIP archives stored at the repository root.
+- Do not push commits, branches, or tags unless explicitly requested.
 
-## C# changes
+## C# build rules
 
-- For C# changes, use a forced rebuild after extracting or applying patches because preserved ZIP timestamps can leave an obsolete DLL treated as current.
-- Prefer the existing Windows build scripts.
-- Use `dotnet build ... -t:Rebuild` when invoking `dotnet` directly.
+- After applying C# changes, run a forced rebuild because extracted ZIP files may preserve timestamps.
+- Prefer the existing Windows scripts.
+- When invoking dotnet directly, use `-t:Rebuild`.
 
-## Delivery
+## Delivery rules
 
-- Summarize the modified files.
-- Report the executed build or validation commands and their outcome.
-- Propose a short Git commit message in the format:
+- Summarize modified files.
+- Report the validation and build commands executed.
+- Report any remaining uncertainty.
+- Propose a short Git commit message:
   `version - description`
-- When relevant, propose an annotated Git tag prefixed with `v`.
+- When relevant, propose an annotated tag prefixed with `v`.
