@@ -2,14 +2,11 @@
 
 ## Latest published milestone
 
-`v0.2.8-dev - Add Stargate crafting-research baseline`
+`v0.2.8-dev-r1 - Require adult stranded SG-team candidates`
 
 The main GitHub repository and the separate wiki repository are synchronized.
 
-## Current validated correction
-
-Branch: `fix/stranded-sg-team-adult-candidates`
-Prepared version: `0.2.8-dev-r1`
+## Current validated behavior
 
 The `Équipe SG isolée` starting scenario now rejects candidates below `20`
 biological years through the existing C# starting-pawn filter. This threshold
@@ -29,4 +26,6 @@ Preserved behavior:
 - Repeated regeneration of all four slots: passed.
 - Violence capability and SG-team equipment preserved: passed.
 
-The validated correction is ready for publication as `0.2.8-dev-r1`.
+## Next focus
+
+- Continue validation of the GateRim SG-1 research tab.

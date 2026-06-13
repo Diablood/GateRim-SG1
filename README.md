@@ -33,7 +33,6 @@ A forced C# rebuild is required for this correction.
 
 ## Next development focus
 
-- publish the validated SG-team candidate-age correction;
 - continue validation of the GateRim SG-1 research tab.
 
 ## First playable milestone
