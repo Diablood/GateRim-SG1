@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.11-dev — Balance queen-origin Prim'ta acquisition
+
+- Reduce natural queen-arrival frequency from `baseChance = 0.02` to `0.015`.
+- Move queen-arrival eligibility from day `30` to day `45`.
+- Increase queen-arrival `minRefireDays` from `60` to `90`.
+- Increase player-controlled queen extraction recovery from `60000` ticks to `180000` ticks.
+- Keep each extraction at `1` immature Prim'ta symbiote.
+- Increase assisted maturation cost from `10` to `20` raw meat.
+- Increase assisted maturation work amount from `1800` to `2400`.
+- Keep `SG1_GoauldBiotechnology` as the research gate for maturation and specialized basins.
+- Keep captured, existing or already produced biological resources usable.
+- Update English/French player text, technical documentation and wiki pages.
+- XML-only balance pass: no C# rebuild is required.
+
 ## 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
 
 - Add the rare `SG1_GoauldQueenArrival` storyteller incident after day `30`.

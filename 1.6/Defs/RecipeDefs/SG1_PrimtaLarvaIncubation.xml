@@ -3,11 +3,11 @@
     <RecipeDef>
         <defName>SG1_IncubatePrimtaLarva</defName>
         <label>mature Prim'ta larva</label>
-        <description>Mature one queen-origin immature Prim'ta symbiote into a transportable larva for later Jaffa implantation. The basin consumes one physical immature symbiote and 10 units of raw meat nutrients while preserving the existing animal-handling work requirement and Animals skill 4 threshold.</description>
+        <description>Mature one queen-origin immature Prim'ta symbiote into a transportable larva for later Jaffa implantation. The basin consumes one physical immature symbiote and 20 units of raw meat nutrients while preserving the existing animal-handling work requirement and Animals skill 4 threshold.</description>
         <jobString>Maturing a Prim'ta larva with biological nutrients.</jobString>
         <requiredGiverWorkType>Handling</requiredGiverWorkType>
         <allowMixingIngredients>true</allowMixingIngredients>
-        <workAmount>1800</workAmount>
+        <workAmount>2400</workAmount>
         <workSkill>Animals</workSkill>
         <workSkillLearnFactor>0.4</workSkillLearnFactor>
         <skillRequirements>
@@ -28,7 +28,7 @@
                         <li>MeatRaw</li>
                     </categories>
                 </filter>
-                <count>10</count>
+                <count>20</count>
             </li>
         </ingredients>
         <fixedIngredientFilter>

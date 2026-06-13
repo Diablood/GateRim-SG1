@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_GoauldQueenHarvestImmatureSymbioteLabel>Extraire un symbiote immature</GR_GoauldQueenHarvestImmatureSymbioteLabel>
-    <GR_GoauldQueenHarvestImmatureSymbioteDesc>Extraire un symbiote immature de Prim'ta physique de cette reine Goa'uld contrôlée par le joueur. La ressource doit ensuite mûrir dans un bassin d'incubation du Prim'ta avec des nutriments issus de viande crue.</GR_GoauldQueenHarvestImmatureSymbioteDesc>
-    <GR_GoauldQueenHarvestCooldown>Délai d'extraction lié à la reine : encore {0} jour(s) RimWorld.</GR_GoauldQueenHarvestCooldown>
+    <GR_GoauldQueenHarvestImmatureSymbioteDesc>Extraire un symbiote immature de Prim'ta physique de cette reine Goa'uld contrôlée par le joueur. La reine a besoin de trois jours RimWorld avant une nouvelle extraction, et la ressource doit ensuite mûrir dans un bassin d'incubation du Prim'ta avec des nutriments issus de viande crue.</GR_GoauldQueenHarvestImmatureSymbioteDesc>
+    <GR_GoauldQueenHarvestCooldown>Récupération d'extraction liée à la reine : encore {0} jour(s) RimWorld.</GR_GoauldQueenHarvestCooldown>
     <GR_GoauldQueenHarvestDebugCooldown>Délai d'extraction du symbiote immature lié à la reine : {0} tick(s)</GR_GoauldQueenHarvestDebugCooldown>
     <GR_GoauldQueenHarvestPlacementFailed>Impossible de placer le symbiote immature de Prim'ta extrait près de la reine Goa'uld.</GR_GoauldQueenHarvestPlacementFailed>
     <GR_GoauldQueenHarvestedImmatureSymbiote>{0} symbiote(s) immature(s) de Prim'ta extrait(s) de la reine Goa'uld.</GR_GoauldQueenHarvestedImmatureSymbiote>

@@ -15,7 +15,7 @@ reine Goa'uld
     ↓
 symbiote immature de Prim'ta
     +
-10 unités de viande crue
+20 unités de viande crue
     ↓
 bassin d'incubation du Prim'ta
     ↓

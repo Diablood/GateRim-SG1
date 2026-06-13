@@ -29,7 +29,7 @@ incuber une larve de Prim'ta
 ```
 
 Un colon ayant le travail **Dressage** actif et un niveau **Animaux 4+** apporte
-`1` symbiote immature de Prim'ta et `10` unités de viande crue, effectue `1800`
+`1` symbiote immature de Prim'ta et `20` unités de viande crue, effectue `1800`
 unités de travail et produit :
 
 ```text
@@ -42,7 +42,7 @@ unités de travail et produit :
 reine Goa'uld contrôlée
     ↓ extraction
 symbiote immature de Prim'ta
-    + 10 unités de viande crue
+    + 20 unités de viande crue
     ↓ bassin d'incubation du Prim'ta
     ↓ tâche d'incubation
 larve de Prim'ta physique
@@ -56,7 +56,7 @@ Chaque maturation consomme :
 
 ```text
 1 symbiote immature de Prim'ta
-10 unités de viande crue
+20 unités de viande crue
 ```
 
 Le prototype accepte les différentes viandes crues et permet de mélanger

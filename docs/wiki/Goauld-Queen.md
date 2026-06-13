@@ -24,7 +24,7 @@ La reine reste volontairement limitée :
 - elle ne rejoint pas encore une faction Goa'uld ;
 - son extraction exige qu'elle soit contrôlée par le joueur, sauf en mode
   développeur ;
-- elle fournit `1` symbiote immature physique avec un délai d'un jour ;
+- elle fournit `1` symbiote immature physique avec une récupération de trois jours ;
 - aucun nouvel incident n'est sélectionné tant qu'une reine du joueur est
   vivante sur une carte ou dans une caravane.
 

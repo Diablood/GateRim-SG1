@@ -3,7 +3,7 @@
     <ThingDef ParentName="AnimalThingBase">
         <defName>SG1_GoauldQueen</defName>
         <label>Goa'uld queen</label>
-        <description>A Goa'uld queen outside any specialized reproductive infrastructure. A rare escaped queen may seek protection at a player colony. Once under player control, it can provide one physical immature Prim'ta symbiote at a time for assisted maturation.</description>
+        <description>A Goa'uld queen outside any specialized reproductive infrastructure. A rare escaped queen may seek protection at a player colony. Once under player control, it can provide one physical immature Prim'ta symbiote at a time for assisted maturation, but only after a multi-day biological recovery period.</description>
         <statBases>
             <MoveSpeed>2.6</MoveSpeed>
             <MarketValue>2500</MarketValue>
@@ -26,7 +26,7 @@
         </tools>
         <comps>
             <li Class="GateRimSG1.Goauld.CompProperties_GoauldQueenImmatureSymbioteSource">
-                <harvestCooldownTicks>60000</harvestCooldownTicks>
+                <harvestCooldownTicks>180000</harvestCooldownTicks>
                 <spawnCount>1</spawnCount>
             </li>
         </comps>

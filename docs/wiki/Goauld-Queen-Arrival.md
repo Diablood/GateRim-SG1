@@ -9,9 +9,9 @@ Une reine Goa'uld séparée de ses gardiens peut rarement atteindre la colonie e
 accepter le contrôle des dresseurs du joueur.
 
 ```text
-jour minimal : 30
-chance de base : 0,02
-délai minimal : 60 jours
+jour minimal : 45
+chance de base : 0,015
+délai minimal : 90 jours
 limite : aucune autre reine vivante du joueur
 ```
 
@@ -27,14 +27,14 @@ Une reine contrôlée par le joueur expose la commande :
 Extraire un symbiote immature
 ```
 
-Chaque extraction produit un symbiote immature physique et impose un délai
-persistant d'un jour RimWorld. Le mode développeur permet toujours de tester la
+Chaque extraction produit un symbiote immature physique et impose une récupération
+persistante de trois jours RimWorld. Le mode développeur permet toujours de tester la
 commande sur une reine qui n'appartient pas au joueur.
 
 ## Maturation
 
 Le symbiote immature doit encore être transformé au bassin d'incubation avec
-`10` unités de viande crue. Cette production locale reste verrouillée par la
+`20` unités de viande crue. Cette production locale reste verrouillée par la
 recherche **Biotechnologies Goa'uld**.
 
 Consulte [Reine Goa'uld](Goauld-Queen) et

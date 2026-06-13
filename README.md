@@ -13,7 +13,7 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.10-dev — Add natural Goa'uld queen acquisition baseline
+### 0.2.11-dev — Balance queen-origin Prim'ta acquisition
 
 A rare storyteller incident can now provide one escaped Goa'uld queen after
 day `30` when the player does not already control a living queen.

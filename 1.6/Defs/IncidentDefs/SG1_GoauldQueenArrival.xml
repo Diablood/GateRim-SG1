@@ -5,7 +5,8 @@
 
     The worker gives the player one escaped queen only while no living
     player-controlled queen exists on a map or in a caravan. The queen's
-    existing persistent extraction cooldown controls later production.
+    persistent three-day extraction cooldown and the assisted-maturation
+    nutrient cost control later production.
     -->
     <IncidentDef>
         <defName>SG1_GoauldQueenArrival</defName>
@@ -15,12 +16,12 @@
         <targetTags>
             <li>Map_PlayerHome</li>
         </targetTags>
-        <baseChance>0.02</baseChance>
-        <earliestDay>30</earliestDay>
-        <minRefireDays>60</minRefireDays>
+        <baseChance>0.015</baseChance>
+        <earliestDay>45</earliestDay>
+        <minRefireDays>90</minRefireDays>
         <requireColonistsPresent>true</requireColonistsPresent>
         <letterLabel>Escaped Goa'uld queen</letterLabel>
-        <letterText>A Goa'uld queen separated from its former keepers has reached the colony. Exhausted and unable to survive alone, it has accepted the protection and control of your handlers. While it remains under your control, the queen can provide immature Prim'ta symbiotes for assisted maturation.</letterText>
+        <letterText>A Goa'uld queen separated from its former keepers has reached the colony. Exhausted and unable to survive alone, it has accepted the protection and control of your handlers. While it remains under your control, the queen can rarely provide immature Prim'ta symbiotes for assisted maturation, but each extraction requires several days of recovery.</letterText>
         <letterDef>PositiveEvent</letterDef>
     </IncidentDef>
 </Defs>

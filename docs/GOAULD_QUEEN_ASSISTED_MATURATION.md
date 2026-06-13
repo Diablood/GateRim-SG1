@@ -20,7 +20,7 @@ player-controlled extraction command
     ↓
 physical immature Prim'ta symbiote
     +
-10 raw meat nutrients
+20 raw meat nutrients
     ↓
 Prim'ta incubation basin
     ↓

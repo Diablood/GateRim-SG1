@@ -1078,3 +1078,19 @@
 - [x] Add rare natural Goa'uld queen arrival and player-controlled extraction
 - [ ] Validate queen arrival, duplicate prevention and cooldown persistence
 - [ ] Add specialized queen infrastructure and faction-linked acquisition later
+
+
+## 0.2.11-dev — Balance queen-origin Prim'ta acquisition
+
+- [x] Make rare queen arrival less early
+- [x] Lower natural queen-arrival chance
+- [x] Increase queen-arrival refire delay
+- [x] Increase queen extraction recovery to three days
+- [x] Increase assisted maturation meat cost
+- [x] Increase assisted maturation work amount
+- [x] Preserve one immature symbiote per extraction
+- [x] Preserve `SG1_GoauldBiotechnology` as the research gate
+- [ ] Validate fresh queen arrival through developer tools
+- [ ] Validate extraction cooldown after save/reload
+- [ ] Validate assisted maturation cost and work amount
+- [ ] Validate incident refusal while an existing player queen is alive
