@@ -1,6 +1,7 @@
 using GateRimSG1.Goauld;
 using GateRimSG1.Jaffa;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GateRimSG1
@@ -29,6 +30,8 @@ namespace GateRimSG1
         public static IncidentDef SG1_TokraHiddenCellCache;
         public static IncidentDef SG1_TokraSafehouseSignal;
         public static IncidentDef SG1_TokraSafehouseLeadCache;
+        public static IncidentDef SG1_TokraHiddenSafehouseWorldMarker;
+        public static WorldObjectDef SG1_TokraHiddenSafehouseMarker;
         public static IncidentDef SG1_FreeJaffaPeacefulVisitors;
         public static IncidentDef SG1_GoauldJaffaNaturalRaid;
         public static IncidentDef SG1_GoauldQueenArrival;

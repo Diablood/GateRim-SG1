@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraHiddenSafehouseMarker.label>marqueur de planque Tok'ra</SG1_TokraHiddenSafehouseMarker.label>
+    <SG1_TokraHiddenSafehouseMarker.description>Un marqueur temporaire non hostile représentant des coordonnées incomplètes vers une planque Tok'ra cachée. Il ne peut pas encore être visité et sert seulement de première présence sur la carte du monde.</SG1_TokraHiddenSafehouseMarker.description>
+</LanguageData>

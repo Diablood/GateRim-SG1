@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.16-dev — Add hidden Tok'ra safehouse world marker
+
+- Add world object `SG1_TokraHiddenSafehouseMarker`.
+- Add `WorldObject_TokraHiddenSafehouseMarker`.
+- Add incident `SG1_TokraHiddenSafehouseWorldMarker`.
+- Add `IncidentWorker_TokraHiddenSafehouseWorldMarker`.
+- Consume one stored Tok'ra safehouse lead to create a temporary non-hostile marker on the world map.
+- Keep the marker intentionally non-enterable and temporary.
+- Prevent duplicate active safehouse markers.
+- Reuse the persistent hidden `SG1_Tokra` faction.
+- Keep wary trust excluded.
+- Keep no generated map, loot, trader, recruitment, military aid or raid.
+- Align C# assembly version with `0.2.16`.
+- Update documentation, wiki drafts and `docs/PROJECT_STATE.md`.
+- Requires forced C# rebuild after application.
+
 ## 0.2.15-dev — Add Tok'ra safehouse lead cache baseline
 
 - Add storyteller incident `SG1_TokraSafehouseLeadCache`.

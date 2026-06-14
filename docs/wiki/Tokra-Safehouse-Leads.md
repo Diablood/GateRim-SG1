@@ -47,3 +47,12 @@ Les pistes ne créent pas encore :
 - de raid.
 
 Depuis `0.2.15-dev`, une piste peut déjà être exploitée pour retrouver un petit [cache médical](Tokra-Safehouse-Lead-Cache). Elles prépareront ensuite un futur jalon de planque Tok'ra visitable.
+
+
+## Marqueur mondial
+
+Depuis `0.2.16-dev`, une piste peut aussi être consommée pour créer un
+[marqueur de planque Tok'ra](Tokra-Hidden-Safehouse-World-Marker) temporaire sur
+la carte du monde.
+
+Ce marqueur ne peut pas encore être visité.

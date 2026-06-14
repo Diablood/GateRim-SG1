@@ -31,6 +31,11 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 
 - Summarize modified files.
 - Report the validation and build commands executed.
+- Before requesting in-game validation, add the exact manual test checklist to
+  `docs/PROJECT_STATE.md` and to the relevant technical document.
+- After the user reports the results, record the validation status in
+  `docs/PROJECT_STATE.md` and update the corresponding `docs/ROADMAP.md`
+  checklist.
 - Report any remaining uncertainty.
 - Propose a short Git commit message:
   `version - description`

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_TokraHiddenSafehouseMarker</defName>
+        <label>Tok'ra hidden safehouse marker</label>
+        <description>A temporary non-hostile marker representing incomplete coordinates to a hidden Tok'ra safehouse. It cannot be entered yet and exists only as a world-map footprint for future Tok'ra safehouse systems.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraHiddenSafehouseMarker</worldObjectClass>
+        <texture>World/WorldObjects/DefaultSettlement</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Town</expandingIconTexture>
+        <expandingIconPriority>35</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>true</canHaveFaction>
+    </WorldObjectDef>
+</Defs>

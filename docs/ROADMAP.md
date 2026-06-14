@@ -1154,3 +1154,19 @@
 - [ ] Validate one lead is consumed
 - [ ] Validate cache contents
 - [ ] Validate save/reload after consumption
+
+
+## 0.2.16-dev — Hidden Tok'ra safehouse world marker
+
+- [x] Add temporary Tok'ra safehouse world marker
+- [x] Consume one stored safehouse lead
+- [x] Reuse persistent hidden Tok'ra faction
+- [x] Keep marker non-enterable
+- [x] Keep no generated map yet
+- [x] Prevent duplicate active markers
+- [x] Keep no trader, recruitment, loot, military aid or raid
+- [x] Update `docs/PROJECT_STATE.md`
+- [x] Validate marker creation
+- [x] Validate marker expiration
+- [x] Validate save/reload with active marker
+- [x] Validate no duplicate marker

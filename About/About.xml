@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.15-dev</modVersion>
+    <modVersion>0.2.16-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -69,6 +69,7 @@ Current development scope:
 - Rare Tok'ra safehouse signal incident with tiny trust gain and no world site yet
 - Persistent Tok'ra safehouse lead tracker for future hidden-site follow-up
 - Safehouse lead follow-up cache that consumes one stored lead for modest medical supplies
+- Temporary hidden Tok'ra safehouse world marker consuming one stored lead
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

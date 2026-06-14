@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraHiddenSafehouseMarker_InspectString>Coordonnées de planque Tok'ra incomplètes. Expire dans environ {0} jour(s). Ce marqueur ne peut pas encore être visité.</GR_TokraHiddenSafehouseMarker_InspectString>
+    <GR_TokraHiddenSafehouseMarker_Expired>Les coordonnées incomplètes de la planque Tok'ra ne sont plus exploitables.</GR_TokraHiddenSafehouseMarker_Expired>
+</LanguageData>

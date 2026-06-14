@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraHiddenSafehouseMarker_InspectString>Incomplete Tok'ra safehouse coordinates. Expires in about {0} day(s). This marker cannot be entered yet.</GR_TokraHiddenSafehouseMarker_InspectString>
+    <GR_TokraHiddenSafehouseMarker_Expired>The incomplete Tok'ra safehouse coordinates have gone cold.</GR_TokraHiddenSafehouseMarker_Expired>
+</LanguageData>

@@ -252,3 +252,9 @@ Depuis `0.2.15-dev`, une piste de planque peut mener à un
 
 Cette étape consomme une piste, mais ne crée pas encore de vraie planque
 visitable.
+
+Depuis `0.2.16-dev`, une piste de planque peut aussi créer un
+[marqueur temporaire de planque Tok'ra](Tokra-Hidden-Safehouse-World-Marker) sur
+la carte du monde.
+
+Le marqueur ne crée pas encore de site visitable.

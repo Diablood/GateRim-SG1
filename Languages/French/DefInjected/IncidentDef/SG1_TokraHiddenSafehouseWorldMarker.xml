@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraHiddenSafehouseWorldMarker.label>marqueur de planque Tok'ra</SG1_TokraHiddenSafehouseWorldMarker.label>
+    <SG1_TokraHiddenSafehouseWorldMarker.letterLabel>Coordonnées de planque Tok'ra retracées</SG1_TokraHiddenSafehouseWorldMarker.letterLabel>
+    <SG1_TokraHiddenSafehouseWorldMarker.letterText>Vos colons ont retracé assez d'informations d'une piste de planque Tok'ra pour marquer une possible planque clandestine sur la carte du monde. Le lieu reste incomplet et ne peut pas encore être visité, mais il prouve que le canal caché peut mener à un endroit réel. Une piste de planque a été consommée. Pistes de planque restantes : {LEADCOUNT}/{LEADMAX}.</SG1_TokraHiddenSafehouseWorldMarker.letterText>
+</LanguageData>

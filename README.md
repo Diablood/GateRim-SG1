@@ -13,30 +13,29 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.15-dev — Add Tok'ra safehouse lead cache baseline
+### 0.2.16-dev — Add hidden Tok'ra safehouse world marker
 
-A rare storyteller incident can now provide one escaped Goa'uld queen after
-day `30` when the player does not already control a living queen.
+A stored Tok'ra safehouse lead can now reveal one temporary marker on the
+world map.
 
 ```text
-escaped Goa'uld queen
-    -> player control
-    -> one immature Prim'ta symbiote per extraction
-    -> one-day persistent extraction cooldown
+1 stored safehouse lead
+    -> consumed by SG1_TokraHiddenSafehouseWorldMarker
+    -> one non-hostile world marker near the colony
+    -> automatic expiration after 5 RimWorld days
 ```
 
-The existing incubation basin still requires one immature symbiote and `10`
-raw meat to mature one implantable Prim'ta larva. Local assisted maturation
-remains gated by Goa'uld biotechnology research.
+The marker deliberately creates no map, loot, pawn, caravan, trader,
+recruitment, military aid or raid. A second marker cannot be created while the
+first remains active.
 
 A forced C# rebuild is required for this milestone.
 
 ## Next development focus
 
-- validate the rare queen-arrival incident, extraction ownership guard and
-  one-day cooldown;
-- consider specialized queen infrastructure and faction-linked acquisition
-  separately.
+- validate marker creation, save persistence, duplicate prevention and
+  expiration;
+- add an enterable hidden Tok'ra safehouse site only in a later milestone.
 
 ## First playable milestone
 
@@ -156,3 +155,18 @@ Stored safehouse leads can now be consumed by a rare follow-up cache incident:
 The event still creates no world site, generated map, caravan, pawn, trader,
 recruitment, military aid or raid. It proves lead persistence and consumption
 before the future hidden safehouse world-site prototype.
+
+
+#### Tok'ra hidden safehouse world marker
+
+Stored safehouse leads can now become a temporary world-map marker:
+
+```text
+-1 safehouse lead
+1 temporary non-hostile world marker
+duration: 5 RimWorld days
+```
+
+The marker cannot be entered yet. It creates no map, loot, trader,
+recruitment, military aid or raid. It is the first safe world-map footprint for
+future hidden Tok'ra safehouse systems.

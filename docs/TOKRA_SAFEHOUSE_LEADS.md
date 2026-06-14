@@ -62,3 +62,12 @@ clandestine meeting site
 6. Repeat until the count reaches `3/3`.
 7. Confirm further signals do not exceed `3/3`.
 8. Confirm no world site or object is created.
+
+
+## World-marker follow-up
+
+Since `0.2.16-dev`, one stored lead can also be consumed to create a temporary
+non-enterable hidden Tok'ra safehouse marker on the world map.
+
+This is the first world-map footprint for the safehouse system, but it still
+does not generate a map or rewards.

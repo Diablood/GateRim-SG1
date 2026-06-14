@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Consumes one stored Tok'ra safehouse lead and creates a temporary
+    non-hostile world marker. No generated map or reward is created yet.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraHiddenSafehouseWorldMarker</defName>
+        <label>Tok'ra hidden safehouse marker</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraHiddenSafehouseWorldMarker</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.004</baseChance>
+        <earliestDay>75</earliestDay>
+        <minRefireDays>60</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra safehouse coordinates traced</letterLabel>
+        <letterText>Your colonists have traced enough of a stored Tok'ra safehouse lead to mark a possible clandestine safehouse on the world map. The location is still incomplete and cannot be entered yet, but it proves that the hidden channel can point to a real place. One safehouse lead was consumed. Remaining safehouse leads: {LEADCOUNT}/{LEADMAX}.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>
