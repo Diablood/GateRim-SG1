@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>SG1_TokraSafehouseContactDialogue</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraSafehouseContactDialogue</driverClass>
+        <reportString>exchanging with Tok'ra safehouse contact.</reportString>
+        <casualInterruptible>true</casualInterruptible>
+    </JobDef>
+</Defs>

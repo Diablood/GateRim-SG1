@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <HediffDef>
+        <defName>SG1_TokraSafehouseContactDialogue</defName>
+        <label>Tok'ra safehouse contact dialogue</label>
+        <description>A lightweight internal marker allowing a peaceful Tok'ra safehouse contact to provide a short, once-per-contact briefing.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <isBad>false</isBad>
+        <stages>
+            <li>
+                <label>briefing available</label>
+            </li>
+        </stages>
+        <comps>
+            <li Class="GateRimSG1.Goauld.HediffCompProperties_TokraSafehouseContactDialogue" />
+        </comps>
+    </HediffDef>
+</Defs>
