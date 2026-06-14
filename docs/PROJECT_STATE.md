@@ -16,13 +16,13 @@ Before starting a task:
 Latest validated published milestone:
 
 ```text
-0.2.19-dev-r1 - Add Tok'ra field clothing set
+0.2.20-dev-r2 - Add Tok'ra safehouse basic dialogue outcome
 ```
 
 Validated behavior:
 
 ```text
-The generated Tok'ra safehouse contact now wears the dedicated SG1_TokraFieldGarb outfit, including worn textures for Male, Female, Thin, Fat and Hulk body types.
+The generated Tok'ra safehouse contact is non-hostile, non-trading, non-recruitable and can be contacted through the vanilla colonist right-click flow. The once-per-contact exchange gives a narrative acknowledgement and +1 Tok'ra trust without Harmony.
 ```
 
 ## Current development milestone
@@ -30,20 +30,20 @@ The generated Tok'ra safehouse contact now wears the dedicated SG1_TokraFieldGar
 Current local milestone:
 
 ```text
-0.2.20-dev-r1 - Add Tok'ra safehouse basic dialogue outcome
+0.2.21-dev - Add Tok'ra safehouse medical briefing outcome
 ```
 
 Purpose:
 
 ```text
-Give the peaceful Tok'ra safehouse contact a first minimal player-facing interaction without adding trade, recruitment, quests, military aid or repeatable rewards.
+Give the peaceful Tok'ra safehouse contact a small non-material benefit by turning the existing once-per-contact exchange into a short field medical briefing for the selected colonist.
 ```
 
-Current mod metadata after applying `0.2.20-dev-r1`:
+Current mod metadata after applying `0.2.21-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.20-dev-r1
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.20
+About/About.xml: modVersion = 0.2.21-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.21
 ```
 
 Implementation scope:
@@ -52,7 +52,9 @@ Implementation scope:
 HediffDef: SG1_TokraSafehouseContactDialogue
 HediffComp: HediffComp_TokraSafehouseContactDialogue
 Generation hook: GenStep_TokraHiddenSafehouseContact
+Interaction flow: select player colonist -> right-click Tok'ra safehouse contact
 Trust effect: +1 Tok'ra trust once per generated contact
+Medical effect: selected colonist receives 400 Medicine XP once per generated contact
 ```
 
 Build requirement:

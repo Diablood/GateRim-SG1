@@ -1195,6 +1195,13 @@
 - [x] Validate no duplicate Tok'ra faction
 
 
+## 0.2.21-dev — Tok'ra safehouse medical briefing
+
+- Extend the validated non-trading safehouse contact dialogue with a modest medical briefing.
+- Award `400` Medicine XP to the selected colonist who performs the once-per-contact exchange.
+- Preserve the existing `+1` Tok'ra trust acknowledgement.
+- Keep no trader, recruitment, military aid, repeatable reward loop or quest.
+
 ## 0.2.18-dev — Non-trading Tok'ra safehouse contact
 
 - [x] Add exactly one peaceful Tok'ra contact to the generated safehouse map

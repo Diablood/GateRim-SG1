@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.21-dev — Add Tok'ra safehouse medical briefing outcome
+
+- Extend the once-per-contact Tok'ra safehouse exchange with a modest field medical briefing.
+- The selected colonist who performs the right-click interaction receives `400` Medicine XP.
+- Keep the existing `+1` Tok'ra trust acknowledgement and narrative message.
+- Keep the contact non-trading, non-recruitable, non-hostile and non-repeatable.
+- Align mod metadata and C# assembly version with `0.2.21`.
+- Requires a forced C# rebuild.
+
+
 ## 0.2.19-dev-r1 — Add Tok'ra field-garb body-type textures
 
 - Add missing worn apparel texture variants for vanilla adult body types: `Male`, `Female`, `Thin`, `Fat` and `Hulk`.

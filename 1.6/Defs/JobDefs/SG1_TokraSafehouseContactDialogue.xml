@@ -3,7 +3,7 @@
     <JobDef>
         <defName>SG1_TokraSafehouseContactDialogue</defName>
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraSafehouseContactDialogue</driverClass>
-        <reportString>exchanging with Tok'ra safehouse contact.</reportString>
+        <reportString>receiving a Tok'ra medical briefing.</reportString>
         <casualInterruptible>true</casualInterruptible>
     </JobDef>
 </Defs>

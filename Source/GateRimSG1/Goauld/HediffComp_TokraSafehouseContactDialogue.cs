@@ -13,6 +13,8 @@ namespace GateRimSG1.Goauld
     /// </summary>
     public class HediffComp_TokraSafehouseContactDialogue : HediffComp
     {
+        private const float MedicalBriefingMedicineXp = 400f;
+
         private bool contactAcknowledged;
 
         public bool ContactAcknowledged => contactAcknowledged;
@@ -58,10 +60,16 @@ namespace GateRimSG1.Goauld
 
             contactAcknowledged = true;
 
+            bool appliedMedicalBriefing = TryApplyMedicalBriefingTraining(
+                negotiator);
+
             string negotiatorLabel = negotiator?.LabelShortCap ?? "";
             Messages.Message(
                 "GR_TokraSafehouseContactDialogue_Acknowledged"
-                    .Translate(contact.LabelShortCap, negotiatorLabel),
+                    .Translate(
+                        contact.LabelShortCap,
+                        negotiatorLabel,
+                        ((int)MedicalBriefingMedicineXp).ToString()),
                 contact,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
@@ -71,8 +79,28 @@ namespace GateRimSG1.Goauld
             GR_Log.Message(
                 $"Acknowledged Tok'ra safehouse contact dialogue with "
                 + $"{contact.LabelShortCap} on map "
-                + $"{contact.Map?.uniqueID.ToString() ?? "unknown"}.");
+                + $"{contact.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"medical briefing applied: {appliedMedicalBriefing}.");
 
+            return true;
+        }
+
+        private static bool TryApplyMedicalBriefingTraining(Pawn negotiator)
+        {
+            if (negotiator?.skills == null)
+            {
+                return false;
+            }
+
+            SkillRecord medicine = negotiator.skills.GetSkill(
+                SkillDefOf.Medicine);
+
+            if (medicine == null)
+            {
+                return false;
+            }
+
+            medicine.Learn(MedicalBriefingMedicineXp, true);
             return true;
         }
     }

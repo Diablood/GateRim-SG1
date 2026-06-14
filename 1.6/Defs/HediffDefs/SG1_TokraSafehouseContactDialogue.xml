@@ -3,7 +3,7 @@
     <HediffDef>
         <defName>SG1_TokraSafehouseContactDialogue</defName>
         <label>Tok'ra safehouse contact dialogue</label>
-        <description>A lightweight internal marker allowing a peaceful Tok'ra safehouse contact to provide a short, once-per-contact briefing.</description>
+        <description>A lightweight internal marker allowing a peaceful Tok'ra safehouse contact to provide a short, once-per-contact medical briefing.</description>
         <hediffClass>HediffWithComps</hediffClass>
         <isBad>false</isBad>
         <stages>
