@@ -4,6 +4,13 @@
     <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet désormais de demander une diversion défensive rare si une menace hostile active est présente.</GR_TokraSecureCommunicator_CommandDesc>
     <GR_TokraSecureCommunicator_DiversionCommandLabel>Demander une diversion Tok'ra</GR_TokraSecureCommunicator_DiversionCommandLabel>
     <GR_TokraSecureCommunicator_DiversionCommandDesc>Demander aux Tok'ra une perturbation défensive discrète contre quelques ennemis actifs sur la carte : désorientation immédiate, puis nausées retardées pour les cibles biologiques. Nécessite le palier fiable, une alimentation électrique, une menace hostile active et un long délai entre deux demandes.</GR_TokraSecureCommunicator_DiversionCommandDesc>
+    <GR_TokraSecureCommunicator_FloatMenuUseLabel>Utiliser le communicateur Tok'ra</GR_TokraSecureCommunicator_FloatMenuUseLabel>
+    <GR_TokraSecureCommunicator_FloatMenuDiversionLabel>Demander une diversion Tok'ra</GR_TokraSecureCommunicator_FloatMenuDiversionLabel>
+    <GR_TokraSecureCommunicator_SelectPawnToUse>Sélectionnez un colon, puis faites un clic droit sur le communicateur pour l'utiliser.</GR_TokraSecureCommunicator_SelectPawnToUse>
+    <GR_TokraSecureCommunicator_PlayerPawnRequired>Seul un colon humain contrôlé par la colonie peut utiliser le communicateur.</GR_TokraSecureCommunicator_PlayerPawnRequired>
+    <GR_TokraSecureCommunicator_CannotReach>Le colon sélectionné ne peut pas atteindre le communicateur.</GR_TokraSecureCommunicator_CannotReach>
+    <GR_TokraSecureCommunicator_Reserved>Un autre colon utilise déjà le communicateur.</GR_TokraSecureCommunicator_Reserved>
+    <GR_TokraSecureCommunicator_JobUnavailable>L'interaction du communicateur Tok'ra est indisponible.</GR_TokraSecureCommunicator_JobUnavailable>
     <GR_TokraSecureCommunicator_NotPlayerControlled>Ce communicateur n'est pas contrôlé par la colonie.</GR_TokraSecureCommunicator_NotPlayerControlled>
     <GR_TokraSecureCommunicator_Unpowered>Le communicateur Tok'ra doit être alimenté.</GR_TokraSecureCommunicator_Unpowered>
     <GR_TokraSecureCommunicator_RequiresTrusted>Les Tok'ra refusent d'ouvrir ce canal sécurisé tant que la confiance reste au palier {0}. Palier requis : fiable.</GR_TokraSecureCommunicator_RequiresTrusted>
@@ -28,6 +35,8 @@ Le contact confirme que la colonie est considérée comme suffisamment fiable po
 Options actuelles :
 
 - demander une diversion défensive rare pendant une attaque active.
+
+Les demandes doivent maintenant être opérées par un colon : sélectionnez un colon, puis faites un clic droit sur le communicateur.
 
 Options prévues pour les prochains jalons :
 

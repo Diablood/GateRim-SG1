@@ -44,3 +44,9 @@ remplacer les défenses de la colonie ni créer une alliance militaire ouverte.
 0.2.27-dev-r1 : corrige l'appel de stun RimWorld 1.6.
 0.2.27-dev-r2 : mélange interruption immédiate et vomissement retardé.
 ```
+
+## Note 0.2.28-dev
+
+La demande de diversion passe maintenant par un colon sélectionné via le menu
+clic droit du communicateur. Les conditions et les effets existants ne changent
+pas.

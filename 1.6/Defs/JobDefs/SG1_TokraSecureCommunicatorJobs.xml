@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>SG1_UseTokraSecureCommunicator</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
+        <reportString>using Tok'ra secure communicator.</reportString>
+    </JobDef>
+
+    <JobDef>
+        <defName>SG1_RequestTokraDefensiveDiversion</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
+        <reportString>requesting Tok'ra defensive diversion.</reportString>
+    </JobDef>
+</Defs>

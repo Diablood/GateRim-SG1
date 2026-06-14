@@ -42,6 +42,7 @@
 - [Tok'ra](Tokra)
 - [Feuille de route des interactions Tok'ra](Tokra-Interaction-Roadmap)
 - [Communicateur sécurisé Tok'ra](Tokra-Secure-Communicator)
+- [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)
 - [Diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request)
 - [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
 - [Cache d'une cellule Tok'ra](Tokra-Hidden-Cell-Cache)

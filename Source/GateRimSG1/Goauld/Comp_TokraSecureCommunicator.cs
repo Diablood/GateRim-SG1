@@ -21,6 +21,8 @@ namespace GateRimSG1.Goauld
         private const int DefensiveDiversionMinimumVomitDelayTicks = 240;
         private const int DefensiveDiversionMaximumVomitDelayTicks = 600;
         private const int MaximumDefensiveDiversionTargets = 3;
+        private const string UseCommunicatorJobDefName = "SG1_UseTokraSecureCommunicator";
+        private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
 
         private int nextDefensiveDiversionRequestTick;
         private List<Pawn> pendingDiversionVomitPawns = new List<Pawn>();
@@ -71,19 +73,23 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
+            // Player-facing use goes through pawn right-click work. Direct
+            // building gizmos are kept only for debug diagnostics.
+            if (!GR_Debug.ShowAdvancedInformation)
+            {
+                yield break;
+            }
+
             Command_Action contactCommand = new Command_Action
             {
                 defaultLabel = "GR_TokraSecureCommunicator_CommandLabel".Translate(),
                 defaultDesc = "GR_TokraSecureCommunicator_CommandDesc".Translate(),
-                action = TryOpenSecureChannel
+                action = ShowPawnOperationRequiredMessage
             };
 
             string channelDisabledReason = GetChannelDisabledReason();
 
-            if (!string.IsNullOrEmpty(channelDisabledReason))
-            {
-                contactCommand.Disable(channelDisabledReason);
-            }
+            contactCommand.Disable(GetGizmoDisabledReason(channelDisabledReason));
 
             yield return contactCommand;
 
@@ -93,17 +99,84 @@ namespace GateRimSG1.Goauld
                     .Translate(),
                 defaultDesc = "GR_TokraSecureCommunicator_DiversionCommandDesc"
                     .Translate(),
-                action = TryRequestDefensiveDiversion
+                action = ShowPawnOperationRequiredMessage
             };
 
             string diversionDisabledReason = GetDiversionDisabledReason();
 
-            if (!string.IsNullOrEmpty(diversionDisabledReason))
-            {
-                diversionCommand.Disable(diversionDisabledReason);
-            }
+            diversionCommand.Disable(GetGizmoDisabledReason(diversionDisabledReason));
 
             yield return diversionCommand;
+        }
+
+
+        public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(
+            Pawn selPawn)
+        {
+            foreach (FloatMenuOption option in base.CompFloatMenuOptions(selPawn))
+            {
+                yield return option;
+            }
+
+            if (!parent.Spawned
+                || (parent.Faction != null && parent.Faction != Faction.OfPlayer))
+            {
+                yield break;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                UseCommunicatorJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuUseLabel".Translate().ToString(),
+                requestDiversion: false))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                RequestDiversionJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuDiversionLabel".Translate().ToString(),
+                requestDiversion: true))
+            {
+                yield return option;
+            }
+        }
+
+        private IEnumerable<FloatMenuOption> GetOperateFloatMenuOptions(
+            Pawn selPawn,
+            string jobDefName,
+            string label,
+            bool requestDiversion)
+        {
+            string disabledReason = GetPawnOperationDisabledReason(
+                selPawn,
+                requestDiversion);
+
+            JobDef jobDef = GetOperationJobDef(jobDefName);
+
+            if (jobDef == null && string.IsNullOrEmpty(disabledReason))
+            {
+                disabledReason = "GR_TokraSecureCommunicator_JobUnavailable"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                yield return new FloatMenuOption(
+                    label + ": " + disabledReason,
+                    null);
+                yield break;
+            }
+
+            yield return new FloatMenuOption(
+                label,
+                delegate
+                {
+                    Job job = JobMaker.MakeJob(jobDef, parent);
+                    selPawn.jobs.TryTakeOrderedJob(job);
+                });
         }
 
         public override string CompInspectStringExtra()
@@ -119,7 +192,7 @@ namespace GateRimSG1.Goauld
                 GetDiversionStatusLabel()).ToString();
         }
 
-        private void TryOpenSecureChannel()
+        internal bool TryOpenSecureChannel(Pawn operatorPawn)
         {
             string disabledReason = GetChannelDisabledReason();
 
@@ -130,7 +203,7 @@ namespace GateRimSG1.Goauld
                     parent,
                     MessageTypeDefOf.RejectInput,
                     historical: false);
-                return;
+                return false;
             }
 
             Find.WindowStack.Add(
@@ -147,10 +220,13 @@ namespace GateRimSG1.Goauld
             GR_Log.Message(
                 $"Opened trusted Tok'ra secure communicator channel at "
                 + $"{parent.Position} on map "
-                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}.");
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
         }
 
-        private void TryRequestDefensiveDiversion()
+        internal bool TryRequestDefensiveDiversion(Pawn operatorPawn)
         {
             string disabledReason = GetDiversionDisabledReason();
 
@@ -161,7 +237,7 @@ namespace GateRimSG1.Goauld
                     parent,
                     MessageTypeDefOf.RejectInput,
                     historical: false);
-                return;
+                return false;
             }
 
             List<Pawn> targets = GetHostileThreats();
@@ -187,7 +263,7 @@ namespace GateRimSG1.Goauld
                     parent,
                     MessageTypeDefOf.RejectInput,
                     historical: false);
-                return;
+                return false;
             }
 
             nextDefensiveDiversionRequestTick = Find.TickManager.TicksGame
@@ -212,10 +288,79 @@ namespace GateRimSG1.Goauld
                 $"Requested trusted Tok'ra defensive diversion from "
                 + $"communicator at {parent.Position} on map "
                 + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
-                + $"affected {affectedCount} hostile pawn(s).");
+                + $"affected {affectedCount} hostile pawn(s); "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
         }
 
-        private string GetChannelDisabledReason()
+
+        private void ShowPawnOperationRequiredMessage()
+        {
+            Messages.Message(
+                "GR_TokraSecureCommunicator_SelectPawnToUse".Translate(),
+                parent,
+                MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
+        private string GetGizmoDisabledReason(string operationDisabledReason)
+        {
+            if (!string.IsNullOrEmpty(operationDisabledReason))
+            {
+                return operationDisabledReason;
+            }
+
+            return "GR_TokraSecureCommunicator_SelectPawnToUse"
+                .Translate()
+                .ToString();
+        }
+
+        private string GetPawnOperationDisabledReason(
+            Pawn operatorPawn,
+            bool requestDiversion)
+        {
+            if (!CanUsePlayerOperator(operatorPawn))
+            {
+                return "GR_TokraSecureCommunicator_PlayerPawnRequired"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!operatorPawn.CanReach(parent, PathEndMode.Touch, Danger.Deadly))
+            {
+                return "GR_TokraSecureCommunicator_CannotReach"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!operatorPawn.CanReserve(parent))
+            {
+                return "GR_TokraSecureCommunicator_Reserved"
+                    .Translate()
+                    .ToString();
+            }
+
+            return requestDiversion
+                ? GetDiversionDisabledReason()
+                : GetChannelDisabledReason();
+        }
+
+        private static bool CanUsePlayerOperator(Pawn pawn)
+        {
+            return pawn != null
+                && !pawn.Dead
+                && !pawn.Downed
+                && pawn.Faction == Faction.OfPlayer
+                && pawn.RaceProps?.Humanlike == true;
+        }
+
+        private static JobDef GetOperationJobDef(string defName)
+        {
+            return DefDatabase<JobDef>.GetNamedSilentFail(defName);
+        }
+
+        internal string GetChannelDisabledReason()
         {
             if (parent.Faction != null && parent.Faction != Faction.OfPlayer)
             {
@@ -243,7 +388,7 @@ namespace GateRimSG1.Goauld
             return null;
         }
 
-        private string GetDiversionDisabledReason()
+        internal string GetDiversionDisabledReason()
         {
             string channelDisabledReason = GetChannelDisabledReason();
 

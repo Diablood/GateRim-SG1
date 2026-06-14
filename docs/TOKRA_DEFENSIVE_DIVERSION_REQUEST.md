@@ -1,6 +1,6 @@
 # Tok'ra defensive diversion request
 
-Version: `0.2.27-dev-r2`
+Version: `0.2.28-dev`
 
 This milestone adds the first active support request to the trusted Tok'ra
 secure communicator.
@@ -51,3 +51,9 @@ diversion because the stun call did not match RimWorld 1.6 method signatures.
 short immediate stun, followed by delayed vomiting for biological targets when
 the vanilla vomit job is available. This keeps the effect defensive and limited
 while making the timing less predictable.
+
+## 0.2.28-dev note
+
+The diversion request is now operated by a selected colonist through the
+communicator's right-click menu. The existing requirements and effects are
+unchanged.

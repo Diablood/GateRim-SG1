@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.28-dev-r1 — Hide direct Tok'ra communicator gizmos outside debug
+
+- Hide direct communicator building gizmos during normal play.
+- Keep the selected-colonist right-click workflow as the player-facing interaction.
+- Keep direct building commands available only when RimWorld developer mode or the GateRim SG-1 advanced debug information option exposes diagnostic UI.
+- Preserve the validated pawn-operated channel and defensive-diversion jobs.
+- Requires a forced C# rebuild.
+
+## 0.2.28-dev — Add pawn-operated Tok'ra communicator interaction
+
+- Move Tok'ra secure-communicator use to selected-pawn right-click interactions.
+- Add two communicator jobs: open the trusted channel and request a defensive diversion.
+- Keep the existing trust, power, active-threat and five-day cooldown requirements.
+- Leave building gizmos as status/instruction entries: the player must select a colonist and right-click the communicator to operate it.
+- Preserve the validated mixed diversion effect: short immediate stun plus delayed vomiting for biological targets.
+- Align mod metadata and C# assembly version with `0.2.28`.
+- Requires a forced C# rebuild.
+
+
 ## 0.2.27-dev-r2 — Mix Tok'ra defensive diversion effects
 
 - Change successful defensive diversion from a pure stun into a mixed disruption.

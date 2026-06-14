@@ -3,6 +3,7 @@
 > Statut : prototype actif
 > Version d'introduction : 0.2.26-dev
 > Première demande active : 0.2.27-dev
+> Interaction opérée par un colon : 0.2.28-dev
 
 Le communicateur sécurisé Tok'ra est une passerelle de confiance vers les
 soutiens avancés Tok'ra. Il reste volontairement clandestin : il ne transforme
@@ -14,6 +15,7 @@ pas les Tok'ra en faction alliée classique.
 - bâtiment constructible et alimenté
 - nécessite la recherche Microélectronique
 - utilisable seulement au palier de confiance fiable
+- utilisé par un colon sélectionné via clic droit
 - ouvre une fenêtre vanilla de contact sécurisé
 - peut demander une diversion défensive pendant une attaque active
 ```
@@ -46,8 +48,11 @@ Le communicateur sert donc de premier accès fiable aux futures demandes Tok'ra
 plus avancées.
 
 
-## Direction future
+## Utilisation par un colon
 
-L’utilisation actuelle passe par les commandes du bâtiment. Une prochaine étape
-devra envisager une interaction via un colon sélectionné, afin que le
-communicateur se comporte davantage comme une console opérée par un pion.
+Depuis `0.2.28-dev`, les demandes passent par un colon : sélectionnez un colon,
+puis faites un clic droit sur le communicateur. Le colon rejoint le bâtiment,
+l'utilise brièvement, puis la fenêtre ou la demande Tok'ra se déclenche.
+
+Les commandes du bâtiment servent surtout d'information : elles rappellent de
+sélectionner un colon pour utiliser réellement l'appareil.

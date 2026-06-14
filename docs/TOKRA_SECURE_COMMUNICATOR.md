@@ -1,6 +1,6 @@
 # Tok'ra secure communicator
 
-Version: `0.2.27-dev`
+Version: `0.2.28-dev`
 
 The Tok'ra secure communicator is the trusted-channel interaction point for
 advanced Tok'ra support. It is still deliberately limited: the Tok'ra remain
@@ -11,6 +11,8 @@ clandestine and do not become a normal allied faction.
 ```text
 buildable powered communicator
 requires Microelectronics
+operated by a selected player colonist
+right-click interaction on the communicator
 usable only at trusted Tok'ra confidence
 opens a vanilla contact dialog
 can request a rare defensive diversion during an active attack
@@ -53,8 +55,9 @@ This keeps the current Tok'ra design intact: support is useful in a crisis, but
 rare, defensive and non-repeatable in the short term.
 
 
-## Future direction
+## 0.2.28-dev note
 
-The current prototype exposes building gizmos directly. A later milestone should
-move communicator requests toward a selected-pawn interaction so the device feels
-like a console operated by a colonist rather than an instant remote button.
+Communicator requests are now pawn-operated. The player selects a colonist,
+right-clicks the communicator and chooses either the trusted contact channel or
+the defensive-diversion request. Building gizmos remain as status/instruction
+entries, but active requests are no longer instant building actions.
