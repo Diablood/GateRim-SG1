@@ -35,12 +35,10 @@ namespace GateRimSG1.Goauld
                 worldObject.Destroy();
             }
 
-            bool trustPrepared
-                = GameComponent_TokraTrustTracker.DebugSetTrustScore(0);
             bool leadPrepared
                 = GameComponent_TokraSafehouseLeadTracker.DebugSetLeadCount(1);
 
-            if (!trustPrepared || !leadPrepared)
+            if (!leadPrepared)
             {
                 Messages.Message(
                     "GR_TokraSafehouseDebug_Unavailable".Translate(),
@@ -49,8 +47,16 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            int trustScore = GameComponent_TokraTrustTracker
+                .GetCurrentTrustScore();
+            TokraTrustTier tier = GameComponent_TokraTrustTracker
+                .GetCurrentTier();
+
             Messages.Message(
-                "GR_TokraSafehouseDebug_Prepared".Translate(),
+                "GR_TokraSafehouseDebug_Prepared"
+                    .Translate(
+                        trustScore.ToString(),
+                        GetDebugTrustTierLabel(tier)),
                 MessageTypeDefOf.PositiveEvent,
                 historical: false);
         }
@@ -89,6 +95,27 @@ namespace GateRimSG1.Goauld
                     MessageTypeDefOf.RejectInput,
                     historical: false);
             }
+        }
+
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Increase Tok'ra trust test step",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void IncreaseTokraTrustTestStep()
+        {
+            AdjustTokraTrustForDebug(5);
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Decrease Tok'ra trust test step",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void DecreaseTokraTrustTestStep()
+        {
+            AdjustTokraTrustForDebug(-5);
         }
 
         [DebugAction(
@@ -158,6 +185,82 @@ namespace GateRimSG1.Goauld
                     ? MessageTypeDefOf.PositiveEvent
                     : MessageTypeDefOf.RejectInput,
                 historical: false);
+        }
+
+
+        private static void AdjustTokraTrustForDebug(int requestedChange)
+        {
+            int previousScore = GameComponent_TokraTrustTracker
+                .GetCurrentTrustScore();
+            int targetScore = previousScore + requestedChange;
+
+            if (targetScore > GameComponent_TokraTrustTracker.MaximumTrust)
+            {
+                targetScore = GameComponent_TokraTrustTracker.MaximumTrust;
+            }
+            else if (targetScore < GameComponent_TokraTrustTracker.MinimumTrust)
+            {
+                targetScore = GameComponent_TokraTrustTracker.MinimumTrust;
+            }
+
+            if (!GameComponent_TokraTrustTracker.DebugSetTrustScore(targetScore))
+            {
+                Messages.Message(
+                    "GR_TokraSafehouseDebug_Unavailable".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            int appliedChange = targetScore - previousScore;
+            TokraTrustTier tier = GameComponent_TokraTrustTracker
+                .GetCurrentTier();
+
+            Messages.Message(
+                "GR_TokraSafehouseDebug_TrustAdjusted"
+                    .Translate(
+                        targetScore.ToString(),
+                        GetDebugTrustTierLabel(tier),
+                        FormatSignedChange(appliedChange)),
+                GetTrustDebugMessageType(appliedChange),
+                historical: false);
+        }
+
+        private static string GetDebugTrustTierLabel(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return "GR_TokraTrust_Tier_Wary".Translate().ToString();
+                case TokraTrustTier.Cooperative:
+                    return "GR_TokraTrust_Tier_Cooperative"
+                        .Translate()
+                        .ToString();
+                case TokraTrustTier.Trusted:
+                    return "GR_TokraTrust_Tier_Trusted".Translate().ToString();
+                default:
+                    return "GR_TokraTrust_Tier_Neutral".Translate().ToString();
+            }
+        }
+
+        private static MessageTypeDef GetTrustDebugMessageType(int change)
+        {
+            if (change > 0)
+            {
+                return MessageTypeDefOf.PositiveEvent;
+            }
+
+            if (change < 0)
+            {
+                return MessageTypeDefOf.NegativeEvent;
+            }
+
+            return MessageTypeDefOf.NeutralEvent;
+        }
+
+        private static string FormatSignedChange(int change)
+        {
+            return change > 0 ? $"+{change}" : change.ToString();
         }
 
         private static List<WorldObject> GetActiveSafehouseWorldObjects()

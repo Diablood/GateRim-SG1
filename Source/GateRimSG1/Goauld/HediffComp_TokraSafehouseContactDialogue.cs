@@ -13,7 +13,10 @@ namespace GateRimSG1.Goauld
     /// </summary>
     public class HediffComp_TokraSafehouseContactDialogue : HediffComp
     {
-        private const float MedicalBriefingMedicineXp = 400f;
+        private const int WaryMedicalBriefingMedicineXp = 250;
+        private const int NeutralMedicalBriefingMedicineXp = 400;
+        private const int CooperativeMedicalBriefingMedicineXp = 600;
+        private const int TrustedMedicalBriefingMedicineXp = 800;
 
         private bool contactAcknowledged;
 
@@ -60,16 +63,21 @@ namespace GateRimSG1.Goauld
 
             contactAcknowledged = true;
 
+            TokraTrustTier briefingTier = GameComponent_TokraTrustTracker
+                .GetCurrentTier();
+            int medicalBriefingMedicineXp = GetMedicalBriefingMedicineXp(
+                briefingTier);
             bool appliedMedicalBriefing = TryApplyMedicalBriefingTraining(
-                negotiator);
+                negotiator,
+                medicalBriefingMedicineXp);
 
             string negotiatorLabel = negotiator?.LabelShortCap ?? "";
             Messages.Message(
-                "GR_TokraSafehouseContactDialogue_Acknowledged"
+                GetAcknowledgementMessageKey(briefingTier)
                     .Translate(
                         contact.LabelShortCap,
                         negotiatorLabel,
-                        ((int)MedicalBriefingMedicineXp).ToString()),
+                        medicalBriefingMedicineXp.ToString()),
                 contact,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
@@ -80,14 +88,18 @@ namespace GateRimSG1.Goauld
                 $"Acknowledged Tok'ra safehouse contact dialogue with "
                 + $"{contact.LabelShortCap} on map "
                 + $"{contact.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"trust tier {GetBriefingTierLogLabel(briefingTier)}; "
+                + $"medicine XP {medicalBriefingMedicineXp}; "
                 + $"medical briefing applied: {appliedMedicalBriefing}.");
 
             return true;
         }
 
-        private static bool TryApplyMedicalBriefingTraining(Pawn negotiator)
+        private static bool TryApplyMedicalBriefingTraining(
+            Pawn negotiator,
+            int medicineXp)
         {
-            if (negotiator?.skills == null)
+            if (medicineXp <= 0 || negotiator?.skills == null)
             {
                 return false;
             }
@@ -100,8 +112,53 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            medicine.Learn(MedicalBriefingMedicineXp, true);
+            medicine.Learn(medicineXp, true);
             return true;
+        }
+
+        private static int GetMedicalBriefingMedicineXp(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return WaryMedicalBriefingMedicineXp;
+                case TokraTrustTier.Cooperative:
+                    return CooperativeMedicalBriefingMedicineXp;
+                case TokraTrustTier.Trusted:
+                    return TrustedMedicalBriefingMedicineXp;
+                default:
+                    return NeutralMedicalBriefingMedicineXp;
+            }
+        }
+
+        private static string GetAcknowledgementMessageKey(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return "GR_TokraSafehouseContactDialogue_Acknowledged_Wary";
+                case TokraTrustTier.Cooperative:
+                    return "GR_TokraSafehouseContactDialogue_Acknowledged_Cooperative";
+                case TokraTrustTier.Trusted:
+                    return "GR_TokraSafehouseContactDialogue_Acknowledged_Trusted";
+                default:
+                    return "GR_TokraSafehouseContactDialogue_Acknowledged_Neutral";
+            }
+        }
+
+        private static string GetBriefingTierLogLabel(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return "wary";
+                case TokraTrustTier.Cooperative:
+                    return "cooperative";
+                case TokraTrustTier.Trusted:
+                    return "trusted";
+                default:
+                    return "neutral";
+            }
         }
     }
 }

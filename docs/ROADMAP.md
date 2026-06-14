@@ -54,6 +54,7 @@
 - [x] Add a playable Goa'uld world-faction baseline.
 - [x] Add a Free Jaffa world-faction baseline.
 - [ ] Consolidate Tok'ra world presence and non-developer acquisition loops.
+  - [x] Trust-scaled Tok'ra safehouse briefing validation tooling preserves current trust during test preparation.
 - [ ] Start `0.3.x` with the Stargate foundation only after the no-gate slice is playable.
 
 ## Completed milestones
@@ -1194,6 +1195,15 @@
 - [x] Validate marker/site duplicate prevention
 - [x] Validate no duplicate Tok'ra faction
 
+
+## 0.2.22-dev — Trust-scaled Tok'ra safehouse briefing
+
+- [x] Keep the safehouse contact non-trading, non-recruitable and non-hostile.
+- [x] Keep the exchange unique per generated contact.
+- [x] Preserve the `+1` Tok'ra trust acknowledgement.
+- [x] Scale Medicine briefing XP by current trust tier.
+- [x] Add tier-specific narrative messages.
+- [x] Keep no trader, recruitment, military aid, repeatable reward loop or quest.
 
 ## 0.2.21-dev — Tok'ra safehouse medical briefing
 

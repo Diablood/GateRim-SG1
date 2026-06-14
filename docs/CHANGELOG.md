@@ -1,5 +1,24 @@
 # Changelog
 
+
+## 0.2.22-dev-r2 — Preserve Tok'ra trust during safehouse briefing tests
+
+- Keep `Prepare Tok'ra safehouse site test` focused on the safehouse test environment: remove inactive safehouse markers/sites and store one lead.
+- Stop resetting Tok'ra trust to neutral during preparation, so cooperative and trusted briefing XP can be tested after using the +5/-5 trust debug actions.
+- Update the preparation message to show the preserved trust score and tier.
+- Requires a forced C# rebuild.
+
+## 0.2.22-dev — Add trust-scaled Tok'ra safehouse briefing outcome
+
+- Keep the once-per-contact Tok'ra safehouse exchange as a non-trading, non-recruitable contact outcome.
+- Read the current Tok'ra trust tier before applying the safehouse contact acknowledgement.
+- Scale the Medicine briefing XP by trust tier: `250` wary, `400` neutral, `600` cooperative and `800` trusted.
+- Add tier-specific French narrative messages for the safehouse contact briefing.
+- Preserve the existing `+1` Tok'ra trust gain, once-per-contact persistence and no-repeatable-reward rule.
+- Align mod metadata and C# assembly version with `0.2.22`.
+- Add two developer actions for testing trust-scaled outcomes without hard-coded tier setters: increase Tok'ra trust by `+5` and decrease it by `-5`, clamped to the existing trust minimum and maximum.
+- Requires a forced C# rebuild.
+
 ## 0.2.21-dev — Add Tok'ra safehouse medical briefing outcome
 
 - Extend the once-per-contact Tok'ra safehouse exchange with a modest field medical briefing.

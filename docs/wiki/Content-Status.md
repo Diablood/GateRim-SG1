@@ -37,6 +37,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Tok'ra | Faction mondiale persistante mais masquée : une instance unique par partie, aucune colonie classique, aucun raid naturel ; symbiote libre testable et implantation volontaire | 0.1.39-dev / présence mondiale 0.2.7-dev |
 | Hôte Tok'ra volontaire | Humanoïde contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |
 | Groupes Tok'ra | Profils internes `Combat` et `Peaceful` réutilisés par la présence mondiale masquée et les incidents Tok'ra ; cache médical, signal, pistes de planque, cache de suivi, marqueur mondial, planque visitable, contact pacifique et interaction légère de contact | 0.1.41-dev / présence 0.2.7-dev / cache 0.2.12-dev / signal 0.2.13-dev / pistes 0.2.14-dev / suivi 0.2.15-dev / marqueur 0.2.16-dev / site 0.2.17-dev / contact 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev |
+| Contact de planque Tok'ra | Contact pacifique non marchand dans les planques cachées, échange unique via clic droit, +1 confiance Tok'ra et briefing médical dont l'XP varie selon le palier de confiance | 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev / paliers 0.2.22-dev |
 | Tenue de terrain Tok'ra | Vêtement Tok'ra unique, sobre et non militaire, appliqué directement à l'hôte Tok'ra volontaire généré dans les planques | 0.2.19-dev |
 | Visiteurs Tok'ra pacifiques | Incident naturel rare après le jour 15 : 1 à 3 hôtes non joueurs, délai minimal de 30 jours | 0.1.42-dev / sélection naturelle 0.1.43-dev |
 | Hébergement thérapeutique Tok'ra | Filtre biologique curable dynamique, asthme inclus et régénération progressive des blessures non permanentes ; cicatrices et amputations conservées | 0.1.44-dev / extension 0.1.46-dev |
@@ -98,3 +99,6 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
+
+
+Development note: `0.2.22-dev-r2` preserves Tok'ra trust during safehouse preparation tests so trust-scaled contact outcomes can be validated reliably.
