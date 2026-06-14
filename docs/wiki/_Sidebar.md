@@ -47,6 +47,7 @@
 - [Cache découvert grâce à une piste Tok'ra](Tokra-Safehouse-Lead-Cache)
 - [Marqueur de planque Tok'ra](Tokra-Hidden-Safehouse-World-Marker)
 - [Planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site)
+- [Contact de planque Tok'ra](Tokra-Safehouse-Contact)
 - [Tenue de terrain Tok'ra](Tokra-Field-Clothing-Set)
 - [Recherches de fabrication Stargate](Stargate-Crafting-Research)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)

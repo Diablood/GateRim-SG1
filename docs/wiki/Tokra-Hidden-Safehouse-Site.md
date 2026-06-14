@@ -4,6 +4,7 @@
 > Première version : 0.2.17-dev
 > Contact pacifique : 0.2.18-dev
 > Tenue Tok'ra dédiée : 0.2.19-dev
+> Interaction de contact : 0.2.20-dev
 
 ## Présentation
 
@@ -45,6 +46,8 @@ Depuis `0.2.18-dev`, un seul hôte Tok'ra volontaire demeure sur place. Il est
 Tok'ra persistante. Il n'a aucun rôle marchand et n'est pas recrutable.
 
 Depuis `0.2.19-dev`, ce contact porte directement la [tenue de terrain Tok'ra](Tokra-Field-Clothing-Set), ce qui évite le défaut du contact généré nu.
+
+Depuis `0.2.20-dev`, le contact peut aussi fournir un [bref compte rendu de planque](Tokra-Safehouse-Contact). Cette interaction donne seulement un message narratif et un très léger gain de confiance Tok'ra.
 
 Le prototype ne crée pas :
 

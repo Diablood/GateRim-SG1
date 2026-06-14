@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraSafehouseContactDialogue_CommandLabel>Échanger avec le contact Tok'ra</GR_TokraSafehouseContactDialogue_CommandLabel>
+    <GR_TokraSafehouseContactDialogue_CommandDescription>Recueillir un bref compte rendu auprès du contact Tok'ra de la planque. Cette interaction est volontairement limitée : elle n'ouvre ni commerce, ni recrutement, ni quête, ni aide militaire. Elle ne peut être validée qu'une seule fois pour ce contact.</GR_TokraSafehouseContactDialogue_CommandDescription>
+    <GR_TokraSafehouseContactDialogue_FloatMenuLabel>Échanger avec {0}</GR_TokraSafehouseContactDialogue_FloatMenuLabel>
+    <GR_TokraSafehouseContactDialogue_PlayerPawnRequired>sélectionnez un colon disponible</GR_TokraSafehouseContactDialogue_PlayerPawnRequired>
+    <GR_TokraSafehouseContactDialogue_CannotReach>impossible d'atteindre le contact</GR_TokraSafehouseContactDialogue_CannotReach>
+    <GR_TokraSafehouseContactDialogue_JobUnavailable>interaction indisponible</GR_TokraSafehouseContactDialogue_JobUnavailable>
+    <GR_TokraSafehouseContactDialogue_AlreadyAcknowledged>Le contact Tok'ra a déjà transmis son compte rendu pour cette planque.</GR_TokraSafehouseContactDialogue_AlreadyAcknowledged>
+    <GR_TokraSafehouseContactDialogue_Acknowledged>{1} échange brièvement avec {0}. Le contact Tok'ra transmet un compte rendu : la planque restera discrète, ses coordonnées ne doivent pas être réutilisées et le réseau Tok'ra note votre prudence.</GR_TokraSafehouseContactDialogue_Acknowledged>
+</LanguageData>

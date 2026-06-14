@@ -16,13 +16,13 @@ Before starting a task:
 Latest validated published milestone:
 
 ```text
-0.2.18-dev - Add non-trading Tok'ra safehouse contact
+0.2.19-dev-r1 - Add Tok'ra field clothing set
 ```
 
-Known issue carried from that milestone:
+Validated behavior:
 
 ```text
-The generated Tok'ra safehouse contact was functionally correct but could appear naked.
+The generated Tok'ra safehouse contact now wears the dedicated SG1_TokraFieldGarb outfit, including worn textures for Male, Female, Thin, Fat and Hulk body types.
 ```
 
 ## Current development milestone
@@ -30,37 +30,35 @@ The generated Tok'ra safehouse contact was functionally correct but could appear
 Current local milestone:
 
 ```text
-0.2.19-dev-r1 - Add Tok'ra field-garb body-type textures
+0.2.20-dev-r1 - Add Tok'ra safehouse basic dialogue outcome
 ```
 
 Purpose:
 
 ```text
-Create the dedicated Tok'ra clothing set first, then apply it directly to the
-safehouse contact instead of using temporary vanilla apparel.
+Give the peaceful Tok'ra safehouse contact a first minimal player-facing interaction without adding trade, recruitment, quests, military aid or repeatable rewards.
 ```
 
-Current mod metadata after applying `0.2.19-dev`:
+Current mod metadata after applying `0.2.20-dev-r1`:
 
 ```text
-About/About.xml: modVersion = 0.2.19-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.19
+About/About.xml: modVersion = 0.2.20-dev-r1
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.20
 ```
 
 Implementation scope:
 
 ```text
-ThingDef: SG1_TokraFieldGarb
-PawnKindDef updated: SG1_TokraVoluntaryHost
-French translation: tenue de terrain Tok'ra
-Textures: Textures/Things/Pawn/Humanlike/Apparel/TokraFieldGarb
+HediffDef: SG1_TokraSafehouseContactDialogue
+HediffComp: HediffComp_TokraSafehouseContactDialogue
+Generation hook: GenStep_TokraHiddenSafehouseContact
+Trust effect: +1 Tok'ra trust once per generated contact
 ```
 
 Build requirement:
 
 ```text
-Gameplay change is XML/texture only. A rebuild is not required to test the
-apparel, but a forced rebuild may be run to refresh assembly metadata.
+C# changed. Use a forced rebuild with -t:Rebuild after extracting the ZIP.
 ```
 
 ## Environment and conventions
@@ -85,7 +83,7 @@ Rules:
 - do not add temporary root `README-*.txt` files;
 - do not commit ZIP archives from the repository root.
 
-C# build command, optional for this XML/texture milestone:
+C# build command:
 
 ```powershell
 dotnet build `
@@ -95,69 +93,55 @@ dotnet build `
     -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
 ```
 
-## 0.2.19-dev — Tok'ra field clothing set
+## 0.2.20-dev-r1 — Tok'ra safehouse basic dialogue outcome
 
-Adds one dedicated Tok'ra clothing set:
-
-```text
-SG1_TokraFieldGarb / Tok'ra field garb
-```
-
-Design intent:
+Adds a first selected-contact command to the peaceful Tok'ra contact generated
+inside enterable hidden safehouse sites:
 
 ```text
-one set only
-sober sand/beige visual identity
-quilted or brocade-inspired tunic silhouette
-structured shoulders
-visible belt
-minimal protection
-no combat-armor role
-no visual variants
+Échanger avec le contact Tok'ra
 ```
 
-Integration:
+Outcome:
 
 ```text
-SG1_TokraVoluntaryHost now uses apparelRequired = SG1_TokraFieldGarb.
+short narrative message
++1 Tok'ra trust
+once per generated contact
+save-persistent acknowledgement flag
 ```
 
-This fixes the validated `0.2.18-dev` safehouse contact appearing naked without
-adding a temporary vanilla-clothing workaround.
+Non-goals remain explicit:
 
-## Manual test checklist for 0.2.19-dev
+```text
+no trader
+no recruitment
+no quest
+no military aid
+no repeatable reward farm
+```
+
+## Manual test checklist for 0.2.20-dev-r1
 
 1. Apply the ZIP from the repository root.
-2. Start RimWorld and confirm there are no red XML load errors referencing
-   `SG1_TokraFieldGarb` or `SG1_TokraVoluntaryHost`.
-3. Check a tailoring bench after `SG1_SGFieldEquipment` is available and confirm
-   the `Tok'ra field garb` bill exists.
+2. Run the forced C# rebuild.
+3. Start RimWorld and confirm there are no red XML or C# errors.
 4. Use the existing Tok'ra safehouse debug workflow to create a safehouse site.
-5. Enter the site and confirm the Tok'ra contact is no longer naked.
-6. Confirm the contact remains non-hostile, non-trading and non-recruitable.
-
-
-## 0.2.19-dev-r1 — Tok'ra field-garb body-type textures
-
-Test status before correction:
-
-```text
-0.2.19-dev behavior validated, but the worn apparel graphic was missing for at least the Female body type on the generated contact.
-```
-
-Correction:
-
-```text
-Add TokraFieldGarb worn texture variants for Male, Female, Thin, Fat and Hulk body types.
-```
-
-Build requirement:
-
-```text
-Texture/docs-only correction. No C# rebuild is required.
-```
+5. Enter the site.
+6. Run `GateRim SG-1 > Verify Tok'ra safehouse contact test`.
+7. Confirm the verification message is green and includes `dialogue : True`.
+8. Select the Tok'ra contact.
+9. Use `Échanger avec le contact Tok'ra`.
+10. Confirm a narrative message appears and Tok'ra trust increases by `+1`.
+11. Confirm the same command becomes disabled for that contact.
+12. Save/reload on the safehouse map and confirm the command remains disabled.
 
 ## Recent Tok'ra milestones
+
+### 0.2.19-dev-r1 — Tok'ra field clothing set
+
+Adds one dedicated Tok'ra outfit, applies it directly to safehouse contacts and
+adds worn body-type textures for Male, Female, Thin, Fat and Hulk.
 
 ### 0.2.18-dev — Non-trading Tok'ra safehouse contact
 
@@ -173,9 +157,6 @@ Validated behavior:
 - not recruitable;
 - the safehouse remains temporary and non-hostile.
 
-Known follow-up fixed by `0.2.19-dev`:
-- the contact could appear naked.
-
 ### 0.2.17-dev — Enterable hidden Tok'ra safehouse site
 
 Adds `SG1_TokraHiddenSafehouseSiteIncident`, a temporary enterable site and a
@@ -185,3 +166,14 @@ modest medical stash.
 
 Adds `SG1_TokraHiddenSafehouseWorldMarker`, a temporary non-enterable world-map
 marker consuming one stored safehouse lead.
+
+## 0.2.20-dev-r2 - Tok'ra safehouse contact dialogue right-click fix
+
+- Replaced the failed Harmony-based right-click implementation from `r1` with a
+  filtered `ThingComp` attached to human pawns by XML patch.
+- Removed the `0Harmony` project reference so the mod keeps its existing build
+  assumptions.
+- The Tok'ra safehouse contact dialogue remains a colonist right-click action:
+  select a colonist, right-click the Tok'ra contact, then choose the exchange.
+- The contact remains non-trading, non-recruitable and non-hostile.
+

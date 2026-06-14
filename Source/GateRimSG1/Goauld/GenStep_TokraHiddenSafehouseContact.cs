@@ -11,6 +11,8 @@ namespace GateRimSG1.Goauld
     public class GenStep_TokraHiddenSafehouseContact : GenStep
     {
         private const int ContactVisitDurationTicks = 180000;
+        private const string SafehouseContactDialogueHediffDefName
+            = "SG1_TokraSafehouseContactDialogue";
 
         public override int SeedPart => 1732149017;
 
@@ -44,6 +46,7 @@ namespace GateRimSG1.Goauld
             }
 
             contact.guest.Recruitable = false;
+            TryAddSafehouseDialogueHediff(contact);
 
             IntVec3 contactCell = CellFinder.RandomClosewalkCellNear(
                 map.Center,
@@ -64,7 +67,35 @@ namespace GateRimSG1.Goauld
             GR_Log.Message(
                 $"Generated non-trading, non-recruitable Tok'ra safehouse "
                 + $"contact {contact.LabelShortCap} at {contactCell} with a "
-                + "three-day peaceful visit duty.");
+                + "three-day peaceful visit duty and one basic dialogue "
+                + "outcome.");
+        }
+
+        private static void TryAddSafehouseDialogueHediff(Pawn contact)
+        {
+            if (contact?.health == null)
+            {
+                return;
+            }
+
+            HediffDef dialogueHediffDef = DefDatabase<HediffDef>
+                .GetNamedSilentFail(SafehouseContactDialogueHediffDefName);
+
+            if (dialogueHediffDef == null)
+            {
+                GR_Log.Warning(
+                    "Cannot add the Tok'ra safehouse contact dialogue "
+                    + "outcome: SG1_TokraSafehouseContactDialogue could "
+                    + "not be resolved from DefDatabase.");
+                return;
+            }
+
+            if (contact.health.hediffSet?.HasHediff(dialogueHediffDef) == true)
+            {
+                return;
+            }
+
+            contact.health.AddHediff(dialogueHediffDef);
         }
     }
 }

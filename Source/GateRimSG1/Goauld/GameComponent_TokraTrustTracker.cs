@@ -22,6 +22,7 @@ namespace GateRimSG1.Goauld
         public const int MaximumTrust = 100;
         public const int AcceptedOfferTrustChange = 5;
         public const int HiddenSafehouseSignalTrustChange = 1;
+        public const int SafehouseContactTrustChange = 1;
         public const int RefusedOfferTrustChange = -1;
         public const int ExpiredOfferTrustChange = -2;
 
@@ -185,6 +186,24 @@ namespace GateRimSG1.Goauld
                 HiddenSafehouseSignalTrustChange,
                 "hidden safehouse signal",
                 "GR_TokraTrust_HiddenSafehouseSignalAcknowledged");
+        }
+
+        public static void NotifySafehouseContactAcknowledged()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot update Tok'ra trust: the trust tracker is "
+                    + "unavailable.");
+                return;
+            }
+
+            tracker.ApplyFlatTrustChange(
+                SafehouseContactTrustChange,
+                "safehouse contact dialogue",
+                "GR_TokraTrust_SafehouseContactAcknowledged");
         }
 
         public static void NotifyTherapeuticOfferOutcome(

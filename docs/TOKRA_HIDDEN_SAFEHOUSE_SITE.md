@@ -3,7 +3,8 @@
 Version: `0.2.19-dev`
 
 Validation: `0.2.18-dev` contact flow passed. `0.2.19-dev` adds the
-Tok'ra clothing requirement for the generated contact.
+Tok'ra clothing requirement for the generated contact. `0.2.20-dev` adds a
+basic once-per-contact dialogue outcome.
 
 ## Purpose
 
@@ -73,6 +74,7 @@ has no trader role or inventory
 has Recruitable set to false
 starts non-hostile
 wears the dedicated `SG1_TokraFieldGarb` outfit since `0.2.19-dev`
+receives one basic safehouse briefing command since `0.2.20-dev`
 ```
 
 ## Manual test checklist
@@ -96,8 +98,8 @@ wears the dedicated `SG1_TokraFieldGarb` outfit since `0.2.19-dev`
 5. À l'arrivée, ouvre `Actions de débogage`, puis choisis directement :
    `GateRim SG-1 > Verify Tok'ra safehouse contact test`.
    Résultat attendu : un message vert indique `Contacts : 1`, un âge d'au moins
-   `20`, `histoire adulte : True`, `hostile : False`, `marchand : False` et
-   `recrutable : False`.
+   `20`, `histoire adulte : True`, `hostile : False`, `marchand : False`,
+   `recrutable : False` et `dialogue : True`.
 6. Vérifie que le cache contient toujours exactement `2` doses de trétonine et
    `4` médicaments industriels.
 7. Sauvegarde puis recharge pendant que la carte de la planque est ouverte,

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.19-dev</modVersion>
+    <modVersion>0.2.20-dev-r1</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -72,6 +72,7 @@ Current development scope:
 - Temporary hidden Tok'ra safehouse world marker consuming one stored lead
 - Enterable temporary Tok'ra safehouse site with a modest medical cache and one peaceful non-trading contact
 - Dedicated Tok'ra field clothing set applied to generated safehouse contacts
+- Basic Tok'ra safehouse contact dialogue outcome with a once-per-contact trust acknowledgement
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

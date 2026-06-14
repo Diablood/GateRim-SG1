@@ -128,12 +128,18 @@ namespace GateRimSG1.Goauld
                 || Faction.OfPlayer.HostileTo(contact.Faction);
             bool hasTraderRole = contact?.TraderKind != null;
             bool isRecruitable = contact?.guest?.Recruitable ?? true;
+            HediffDef dialogueHediffDef = DefDatabase<HediffDef>
+                .GetNamedSilentFail("SG1_TokraSafehouseContactDialogue");
+            bool hasDialogueOutcome = dialogueHediffDef != null
+                && contact?.health?.hediffSet
+                    ?.GetFirstHediffOfDef(dialogueHediffDef) != null;
             bool passed = contacts.Count == 1
                 && biologicalAge >= 20
                 && hasAdultBackstory
                 && !isHostile
                 && !hasTraderRole
-                && !isRecruitable;
+                && !isRecruitable
+                && hasDialogueOutcome;
 
             string messageKey = passed
                 ? "GR_TokraSafehouseDebug_ContactPassed"
@@ -146,7 +152,8 @@ namespace GateRimSG1.Goauld
                     hasAdultBackstory.ToString().Named("ADULTBACKSTORY"),
                     isHostile.ToString().Named("HOSTILE"),
                     hasTraderRole.ToString().Named("TRADER"),
-                    isRecruitable.ToString().Named("RECRUITABLE")),
+                    isRecruitable.ToString().Named("RECRUITABLE"),
+                    hasDialogueOutcome.ToString().Named("DIALOGUE")),
                 passed
                     ? MessageTypeDefOf.PositiveEvent
                     : MessageTypeDefOf.RejectInput,
