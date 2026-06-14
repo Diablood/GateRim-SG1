@@ -1,9 +1,9 @@
 # Enterable Tok'ra hidden safehouse site
 
-Version: `0.2.18-dev`
+Version: `0.2.19-dev`
 
-Validation: forced C# rebuild passed. Manual RimWorld validation of the new
-contact is pending.
+Validation: `0.2.18-dev` contact flow passed. `0.2.19-dev` adds the
+Tok'ra clothing requirement for the generated contact.
 
 ## Purpose
 
@@ -72,6 +72,7 @@ has an adulthood backstory
 has no trader role or inventory
 has Recruitable set to false
 starts non-hostile
+wears the dedicated `SG1_TokraFieldGarb` outfit since `0.2.19-dev`
 ```
 
 ## Manual test checklist

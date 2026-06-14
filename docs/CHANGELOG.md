@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.19-dev-r1 — Add Tok'ra field-garb body-type textures
+
+- Add missing worn apparel texture variants for vanilla adult body types: `Male`, `Female`, `Thin`, `Fat` and `Hulk`.
+- Fix the runtime missing-texture report for `Things/Pawn/Humanlike/Apparel/TokraFieldGarb/TokraFieldGarb_Female` observed on a generated Tok'ra safehouse contact.
+- Keep the existing `SG1_TokraFieldGarb` gameplay definition unchanged.
+- Texture/docs-only patch: no C# rebuild required.
+
+## 0.2.19-dev — Add Tok'ra field clothing set
+
+- Add the single dedicated apparel set `SG1_TokraFieldGarb` / `Tok'ra field garb`.
+- Keep the Tok'ra clothing direction deliberately narrow: one sober sand-colored outfit, no variants.
+- Use a light textile OnSkin apparel profile covering torso, neck, shoulders, arms and legs.
+- Make the outfit craftable at manual and electric tailoring benches after `SG1_SGFieldEquipment`.
+- Apply the outfit directly to `SG1_TokraVoluntaryHost` through `apparelRequired`.
+- This fixes the validated `0.2.18-dev` safehouse contact appearing naked without a temporary vanilla-clothing workaround.
+- Add temporary dedicated item and worn graphics plus French translations, technical documentation and wiki drafts.
+- Align C# assembly metadata with `0.2.19`; gameplay changes are XML/texture only.
+
 ## 0.2.18-dev — Add non-trading Tok'ra safehouse contact
 
 - Add `GenStep_TokraHiddenSafehouseContact` after the validated item-stash

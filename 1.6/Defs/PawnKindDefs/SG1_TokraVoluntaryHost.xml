@@ -17,6 +17,10 @@
         </backstoryFiltersOverride>
         <combatPower>80</combatPower>
         <isFighter>false</isFighter>
+        <apparelMoney>0</apparelMoney>
+        <apparelRequired Inherit="False">
+            <li>SG1_TokraFieldGarb</li>
+        </apparelRequired>
         <minGenerationAge>20</minGenerationAge>
         <maxGenerationAge>70</maxGenerationAge>
         <initialResistanceRange>0~0</initialResistanceRange>

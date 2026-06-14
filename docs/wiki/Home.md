@@ -38,7 +38,7 @@ disponible du contenu encore en développement.
   [prototype d'hôte volontaire](Tokra-Host-Prototype),
   [visiteurs pacifiques](Tokra-Peaceful-Visitors),
   [opportunités thérapeutiques](Tokra-Therapeutic-Opportunity),
-  [confiance](Tokra-Trust) et [livraisons médicales](Tokra-Medical-Support-Deliveries).
+  [confiance](Tokra-Trust), [livraisons médicales](Tokra-Medical-Support-Deliveries) et [tenue de terrain Tok'ra](Tokra-Field-Clothing-Set).
 - [Bien débuter](Getting-Started) : installation et premiers contrôles.
 - [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario) : premier départ de partie jouable sans Porte fonctionnelle.
 - [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.

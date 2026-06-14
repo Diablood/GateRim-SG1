@@ -92,6 +92,12 @@ origine Tok'ra
 chasse autonome désactivée
 ```
 
+## Tenue de terrain Tok'ra
+
+Depuis `0.2.19-dev`, les hôtes Tok'ra volontaires générés pour les planques peuvent porter une [tenue de terrain Tok'ra](Tokra-Field-Clothing-Set) dédiée.
+
+Cette tenue unique donne une identité visuelle sobre aux agents Tok'ra et corrige le contact de planque qui pouvait apparaître nu après le jalon `0.2.18-dev`.
+
 ## Évolutions prévues
 
 ```text
