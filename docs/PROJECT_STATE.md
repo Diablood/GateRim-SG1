@@ -1,72 +1,43 @@
 # Project state
 
-0.2.25-dev - Define Tok'ra interaction roadmap
+0.2.26-dev - Add trusted Tok'ra secure communicator foundation
 
-Status: prepared for local application and review.
+Status: prepared for local application and testing.
 
-This milestone is documentation/design focused. It freezes the current Tok'ra
-interaction direction before adding larger rewards, a communicator, quests or
-military support.
+This milestone adds the first trusted-tier Tok'ra communicator prototype. It is
+intentionally a foundation: it gives the player a visible, powered object and a
+vanilla dialog for the secure channel, but it does not yet grant medical help,
+safehouse leads, quests, recruitment, trade or military aid.
 
-Current mod metadata after applying `0.2.25-dev`:
+Current mod metadata after applying `0.2.26-dev`:
 
-- `About/About.xml`: `modVersion = 0.2.25-dev`
-- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.25`
+- `About/About.xml`: `modVersion = 0.2.26-dev`
+- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.26`
 
-## Current implemented Tok'ra loop
+## Implemented in this milestone
 
 ```text
-hidden persistent Tok'ra faction
-    -> Tok'ra trust score and tiers
-    -> medical/support incidents
-    -> safehouse signals and stored leads
-    -> temporary safehouse marker/site
-    -> peaceful non-trading safehouse contact
-    -> once-per-contact briefing
+buildable Tok'ra secure communicator
+powered building using Microelectronics as a construction prerequisite
+trusted-tier command gate
+short historical message when a channel is opened
+vanilla closeable dialog listing future request families
 ```
 
-Implemented contact outcome:
+## Current limits
 
 ```text
-+1 Tok'ra trust
-trust-scaled Medicine XP
-closeable vanilla briefing dialog
-cooperative/trusted tiers can provide one follow-up safehouse lead if capacity remains
-```
-
-Current limits remain:
-
-```text
+no medical request yet
+no safehouse-lead request yet
+no defensive aid yet
 no trade
 no recruitment
-no automatic cure
-no questline yet
-no military aid yet
-no permanent Tok'ra settlement
+no questline step yet
 ```
 
-## Roadmap decision
-
-Before adding a final reward, the Tok'ra direction is now split into planned
-families:
+## Recommended next implementation path
 
 ```text
-medical support
-safehouse network
-secure Tok'ra communicator
-rare defensive military support
-short questline
-later race/culture-specific branches
-```
-
-Military support should be rare, defensive and trusted-tier only. Preferred
-first directions are tactical warning or covert disruption, before any temporary
-agent reinforcement.
-
-Recommended next implementation path:
-
-```text
-0.2.26-dev - Add trusted Tok'ra communicator foundation
 0.2.27-dev - Add communicator medical-support request
 0.2.28-dev - Add communicator safehouse-lead request
 0.2.29-dev - Add trusted Tok'ra tactical warning prototype
@@ -75,8 +46,8 @@ later      - Add short Tok'ra questline and race/culture branches
 
 ## Build note
 
-No gameplay C# logic is changed in `0.2.25-dev`. A rebuild is optional unless
-assembly metadata must be refreshed locally.
+This milestone adds C# gameplay code and a building def. Use a forced rebuild
+after applying the ZIP.
 
 ## Repository rules reminder
 

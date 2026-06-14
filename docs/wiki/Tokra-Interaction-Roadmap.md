@@ -93,6 +93,16 @@ conditions plus strictes, plutôt que des blocages absolus partout.
 
 ## Suite logique
 
-La suite la plus propre serait de poser d'abord une base de communicateur
-Tok'ra, puis d'y raccorder progressivement le soutien médical, les pistes de
-planque et une première aide défensive rare.
+La base du communicateur sécurisé est posée en `0.2.26-dev`. Elle ouvre un canal
+au palier fiable, mais ne donne pas encore de récompense directe. Les prochaines
+évolutions pourront y raccorder progressivement le soutien médical, les pistes
+de planque et une première aide défensive rare.
+
+## Mise à jour 0.2.26-dev
+
+Un premier communicateur sécurisé Tok'ra est disponible comme bâtiment alimenté.
+Il sert de point d'accès visible pour les futurs soutiens, mais son canal ne
+s'ouvre qu'au palier de confiance fiable.
+
+Il ne donne pas encore de soin, d'objet, de piste, d'aide militaire, de commerce,
+de recrutement ou de quête.

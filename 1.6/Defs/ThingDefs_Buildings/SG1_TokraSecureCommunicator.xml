@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="FurnitureBase">
+        <defName>SG1_TokraSecureCommunicator</defName>
+        <label>Tok'ra secure communicator</label>
+        <description>A discreet encrypted Tok'ra communication station. In this prototype it establishes a trusted contact channel and lists the future request families without granting items, treatment, quests, recruitment, trade or military aid yet.</description>
+        <graphicData>
+            <texPath>Things/Building/SG1_TokraSecureCommunicator</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+        <size>(1,1)</size>
+        <rotatable>false</rotatable>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.35</fillPercent>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>25</pathCost>
+        <statBases>
+            <MaxHitPoints>120</MaxHitPoints>
+            <WorkToBuild>900</WorkToBuild>
+            <Mass>12</Mass>
+            <Beauty>0</Beauty>
+            <Flammability>0.3</Flammability>
+        </statBases>
+        <costList>
+            <Steel>40</Steel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+            <Gold>2</Gold>
+        </costList>
+        <designationCategory>Misc</designationCategory>
+        <researchPrerequisites>
+            <li>MicroelectronicsBasics</li>
+        </researchPrerequisites>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>40</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+            <li Class="GateRimSG1.Goauld.CompProperties_TokraSecureCommunicator" />
+        </comps>
+        <minifiedDef>MinifiedThing</minifiedDef>
+    </ThingDef>
+</Defs>

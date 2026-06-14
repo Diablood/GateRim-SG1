@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraSecureCommunicator_CommandLabel>Contacter les Tok'ra</GR_TokraSecureCommunicator_CommandLabel>
+    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Ce prototype prépare les futures demandes médicales, les pistes de planque et l'aide défensive rare, sans encore accorder de récompense directe.</GR_TokraSecureCommunicator_CommandDesc>
+    <GR_TokraSecureCommunicator_NotPlayerControlled>Ce communicateur n'est pas contrôlé par la colonie.</GR_TokraSecureCommunicator_NotPlayerControlled>
+    <GR_TokraSecureCommunicator_Unpowered>Le communicateur Tok'ra doit être alimenté.</GR_TokraSecureCommunicator_Unpowered>
+    <GR_TokraSecureCommunicator_RequiresTrusted>Les Tok'ra refusent d'ouvrir ce canal sécurisé tant que la confiance reste au palier {0}. Palier requis : fiable.</GR_TokraSecureCommunicator_RequiresTrusted>
+    <GR_TokraSecureCommunicator_StatusReady>canal prêt</GR_TokraSecureCommunicator_StatusReady>
+    <GR_TokraSecureCommunicator_StatusLocked>canal verrouillé</GR_TokraSecureCommunicator_StatusLocked>
+    <GR_TokraSecureCommunicator_Inspect>Canal Tok'ra : {1}
+Confiance Tok'ra actuelle : {0}</GR_TokraSecureCommunicator_Inspect>
+    <GR_TokraSecureCommunicator_ChannelOpened>Canal sécurisé Tok'ra établi. Les demandes opérationnelles restent en préparation.</GR_TokraSecureCommunicator_ChannelOpened>
+    <GR_TokraSecureCommunicator_DialogTrusted>Le communicateur stabilise un canal discret avec une cellule Tok'ra.
+
+Le contact confirme que la colonie est désormais considérée comme suffisamment fiable pour préparer des demandes plus sensibles. Les protocoles restent prudents : les Tok'ra ne veulent ni commerce ouvert, ni recrutement, ni présence militaire permanente.
+
+Options prévues pour les prochains jalons :
+
+- demander un conseil médical avancé ;
+- demander une piste de planque ;
+- demander une aide défensive rare en situation critique.
+
+Aucune de ces options n'est encore activée dans ce prototype.</GR_TokraSecureCommunicator_DialogTrusted>
+</LanguageData>

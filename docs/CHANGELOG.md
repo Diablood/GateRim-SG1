@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.26-dev — Add trusted Tok'ra secure communicator foundation
+
+- Add the buildable `SG1_TokraSecureCommunicator` as a first secure-channel prototype.
+- Gate its active contact command behind the trusted Tok'ra trust tier; lower tiers can see the locked state but cannot open the channel.
+- Require power and Microelectronics before use, while keeping the actual Tok'ra access controlled by trust.
+- Show a vanilla closeable dialog listing future request families: advanced medical advice, safehouse leads and rare defensive support.
+- Do not grant items, treatment, quests, recruitment, trade or military aid in this foundation step.
+- Align mod metadata and C# assembly version with `0.2.26`.
+- Requires a forced C# rebuild.
+
 
 ## 0.2.25-dev — Define Tok'ra interaction roadmap
 

@@ -222,7 +222,7 @@ story supports it.
 ## Recommended next implementation order
 
 ```text
-0.2.26-dev - Add trusted Tok'ra communicator foundation
+0.2.26-dev - Add trusted Tok'ra communicator foundation (implemented)
 0.2.27-dev - Add communicator medical-support request
 0.2.28-dev - Add communicator safehouse-lead request
 0.2.29-dev - Add trusted Tok'ra tactical warning prototype
@@ -231,6 +231,13 @@ later      - Add short Tok'ra questline and race/culture branches
 
 The exact order may change, but the communicator foundation is the cleanest
 bridge between current safehouse contacts and future medical or military aid.
+
+## 0.2.26-dev update
+
+The first trusted-tier communicator foundation is now implemented as a powered
+building. It opens only at the trusted Tok'ra tier and displays the future
+request families in a vanilla closeable dialog. It deliberately does not grant
+items, treatment, leads, military support, trade, recruitment or quests yet.
 
 ## Non-goals for the current chapter
 
