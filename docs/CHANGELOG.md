@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.15-dev — Add Tok'ra safehouse lead cache baseline
+
+- Add storyteller incident `SG1_TokraSafehouseLeadCache`.
+- Add `IncidentWorker_TokraSafehouseLeadCache`.
+- Add `GameComponent_TokraSafehouseLeadTracker.TryConsumeSafehouseLead(...)`.
+- Consume one stored Tok'ra safehouse lead when the follow-up cache resolves.
+- Reuse the persistent hidden `SG1_Tokra` faction.
+- Keep wary trust excluded.
+- Spawn a modest medical cache only:
+  - `2` tretonin doses;
+  - `3` industrial medicine.
+- Keep no world site, generated map, pawn, caravan, trader, recruitment, military aid or raid.
+- Add French translations and player messages.
+- Align C# assembly version with `0.2.15`.
+- Update documentation, wiki drafts and `docs/PROJECT_STATE.md`.
+- Requires forced C# rebuild after application.
+
 ## 0.2.14-dev — Add Tok'ra safehouse lead tracker baseline
 
 - Add `GameComponent_TokraSafehouseLeadTracker`.

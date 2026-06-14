@@ -28,6 +28,7 @@ namespace GateRimSG1
         public static IncidentDef SG1_TokraPeacefulVisitors;
         public static IncidentDef SG1_TokraHiddenCellCache;
         public static IncidentDef SG1_TokraSafehouseSignal;
+        public static IncidentDef SG1_TokraSafehouseLeadCache;
         public static IncidentDef SG1_FreeJaffaPeacefulVisitors;
         public static IncidentDef SG1_GoauldJaffaNaturalRaid;
         public static IncidentDef SG1_GoauldQueenArrival;

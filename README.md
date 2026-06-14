@@ -13,7 +13,7 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.14-dev — Add Tok'ra safehouse lead tracker baseline
+### 0.2.15-dev — Add Tok'ra safehouse lead cache baseline
 
 A rare storyteller incident can now provide one escaped Goa'uld queen after
 day `30` when the player does not already control a living queen.
@@ -141,3 +141,18 @@ maximum: 3 leads
 
 Leads do not create a world site yet. They are a saved progression bridge for a
 future hidden Tok'ra world-site or safehouse prototype.
+
+
+#### Tok'ra safehouse lead cache
+
+Stored safehouse leads can now be consumed by a rare follow-up cache incident:
+
+```text
+-1 safehouse lead
+2 tretonin doses
+3 industrial medicine
+```
+
+The event still creates no world site, generated map, caravan, pawn, trader,
+recruitment, military aid or raid. It proves lead persistence and consumption
+before the future hidden safehouse world-site prototype.

@@ -46,4 +46,4 @@ Les pistes ne créent pas encore :
 - d'aide militaire ;
 - de raid.
 
-Elles préparent simplement un futur jalon de planque Tok'ra visitable.
+Depuis `0.2.15-dev`, une piste peut déjà être exploitée pour retrouver un petit [cache médical](Tokra-Safehouse-Lead-Cache). Elles prépareront ensuite un futur jalon de planque Tok'ra visitable.

@@ -106,3 +106,7 @@ visitable.
 Depuis `0.2.14-dev`, les signaux de planque Tok'ra conservent des
 [pistes de planque](Tokra-Safehouse-Leads), qui serviront de base au futur
 prototype de site caché Tok'ra.
+
+Depuis `0.2.15-dev`, une piste de planque Tok'ra peut être exploitée pour
+retrouver un [cache médical discret](Tokra-Safehouse-Lead-Cache), sans créer
+encore de site mondial visitable.

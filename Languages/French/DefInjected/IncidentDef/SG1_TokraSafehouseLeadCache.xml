@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraSafehouseLeadCache.label>cache découvert grâce à une piste Tok'ra</SG1_TokraSafehouseLeadCache.label>
+    <SG1_TokraSafehouseLeadCache.letterLabel>Piste de planque Tok'ra exploitée</SG1_TokraSafehouseLeadCache.letterLabel>
+    <SG1_TokraSafehouseLeadCache.letterText>Vos colons ont décodé assez d'informations d'une piste de planque Tok'ra pour retrouver un petit cache médical. Les coordonnées n'ont pas révélé de planque visitable, mais elles ont mené à {TRETONINCOUNT} dose(s) de trétonine et {MEDICINECOUNT} unité(s) de médicament. Pistes de planque restantes : {LEADCOUNT}/{LEADMAX}.</SG1_TokraSafehouseLeadCache.letterText>
+</LanguageData>

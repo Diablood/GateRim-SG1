@@ -246,3 +246,9 @@ Depuis `0.2.14-dev`, les signaux de planque Tok'ra conservent aussi des
 
 Ces pistes ne créent pas encore de site mondial. Elles préparent le futur
 prototype de planque Tok'ra visitable.
+
+Depuis `0.2.15-dev`, une piste de planque peut mener à un
+[cache médical découvert grâce à une piste Tok'ra](Tokra-Safehouse-Lead-Cache).
+
+Cette étape consomme une piste, mais ne crée pas encore de vraie planque
+visitable.

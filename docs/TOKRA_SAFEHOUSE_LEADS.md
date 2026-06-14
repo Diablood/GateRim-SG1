@@ -44,7 +44,7 @@ The event still creates no object, world site, pawn, caravan, loot or raid.
 
 ## Future use
 
-A later milestone can consume one or more stored leads to create:
+Since `0.2.15-dev`, one stored lead can already be consumed by `SG1_TokraSafehouseLeadCache` for a modest medical cache. A later milestone can consume one or more stored leads to create:
 
 ```text
 temporary hidden safehouse site

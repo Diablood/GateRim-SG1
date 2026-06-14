@@ -49,6 +49,22 @@ namespace GateRimSG1.Goauld
             return GetCurrentLeadCount() < MaximumSafehouseLeads;
         }
 
+        public static bool TryConsumeSafehouseLead(string reasonLabel)
+        {
+            GameComponent_TokraSafehouseLeadTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot consume a Tok'ra safehouse lead: the lead "
+                    + "tracker is unavailable.");
+                return false;
+            }
+
+            return tracker.TryConsumeLead(reasonLabel);
+        }
+
         public static void NotifySafehouseSignalAcknowledged()
         {
             GameComponent_TokraSafehouseLeadTracker tracker
@@ -65,6 +81,44 @@ namespace GateRimSG1.Goauld
             tracker.ApplyLeadGain(
                 SafehouseSignalLeadGain,
                 "safehouse signal");
+        }
+
+        private bool TryConsumeLead(string reasonLabel)
+        {
+            if (safehouseLeadCount <= 0)
+            {
+                Messages.Message(
+                    "GR_TokraSafehouseLead_NoneToConsume"
+                        .Translate(),
+                    MessageTypeDefOf.NeutralEvent,
+                    historical: true);
+
+                GR_Log.Message(
+                    $"Could not consume a Tok'ra safehouse lead for "
+                    + $"{reasonLabel}: no leads are stored.");
+                return false;
+            }
+
+            int previousLeadCount = safehouseLeadCount;
+            safehouseLeadCount = ClampLeadCount(safehouseLeadCount - 1);
+            int appliedChange = safehouseLeadCount - previousLeadCount;
+
+            Messages.Message(
+                "GR_TokraSafehouseLead_Consumed"
+                    .Translate(
+                        safehouseLeadCount,
+                        MaximumSafehouseLeads,
+                        FormatSignedChange(appliedChange)),
+                MessageTypeDefOf.PositiveEvent,
+                historical: true);
+
+            GR_Log.Message(
+                $"Consumed a Tok'ra safehouse lead for {reasonLabel}: "
+                + $"{previousLeadCount} -> {safehouseLeadCount} "
+                + $"({FormatSignedChange(appliedChange)}); maximum "
+                + $"{MaximumSafehouseLeads}.");
+
+            return true;
         }
 
         private void ApplyLeadGain(int requestedGain, string reasonLabel)

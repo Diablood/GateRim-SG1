@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_TokraSafehouseLead_Gained>Tok'ra safehouse lead stored: {0}/{1} ({2}).</GR_TokraSafehouseLead_Gained>
-    <GR_TokraSafehouseLead_AlreadyFull>Tok'ra safehouse lead archive is already full: {0}/{1}.</GR_TokraSafehouseLead_AlreadyFull>
+    <GR_TokraSafehouseLead_AlreadyFull>The Tok'ra signal confirms coordinates you already have. Your colony has already stored the current maximum number of safehouse leads: {0}/{1}.</GR_TokraSafehouseLead_AlreadyFull>
+    <GR_TokraSafehouseLead_Consumed>Tok'ra safehouse lead used: {0}/{1} ({2}).</GR_TokraSafehouseLead_Consumed>
+    <GR_TokraSafehouseLead_NoneToConsume>No Tok'ra safehouse lead is available to follow up.</GR_TokraSafehouseLead_NoneToConsume>
 </LanguageData>

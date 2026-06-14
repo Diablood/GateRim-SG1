@@ -16,33 +16,33 @@ Before starting a task:
 Latest prepared milestone:
 
 ```text
-0.2.14-dev - Add Tok'ra safehouse lead tracker baseline
+0.2.15-dev - Add Tok'ra safehouse lead cache baseline
 ```
 
 Expected tag after validation and publication:
 
 ```text
-v0.2.14-dev
+v0.2.15-dev
 ```
 
 Publication status at the time this handoff was written:
 
 ```text
-0.2.14-dev patch prepared in ChatGPT.
+0.2.15-dev patch prepared in ChatGPT.
 Validate locally before commit/tag/push.
 ```
 
-Current mod metadata after applying `0.2.14-dev`:
+Current mod metadata after applying `0.2.15-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.14-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.14
+About/About.xml: modVersion = 0.2.15-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.15
 ```
 
 Reason:
 
 ```text
-0.2.14-dev adds C# GameComponent code and updates the safehouse signal worker.
+0.2.15-dev adds C# incident-worker code and lead-consumption code.
 A forced rebuild is required.
 ```
 
@@ -78,21 +78,7 @@ dotnet build `
     -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
 ```
 
-## Stable architecture
-
-Do not refactor around Humanoid Alien Races.
-
-The mod uses:
-- Biotech xenotypes;
-- Hediffs;
-- intrinsic data/render nodes;
-- `PawnKindDef`;
-- `FactionDef`;
-- targeted C# components.
-
-Social systems should remain contextual and moderate.
-
-## Recent milestones
+## Recent Tok'ra milestones
 
 ### 0.2.12-dev-r1 — Hidden Tok'ra cell cache baseline
 
@@ -118,16 +104,34 @@ Behavior:
 - applies `+1` Tok'ra trust;
 - creates no world site, settlement, caravan, visitor, trader, recruitment, loot, military aid or raid.
 
-### 0.2.14-dev — Tok'ra safehouse lead tracker baseline
+### 0.2.14-dev-r2 — Tok'ra safehouse lead tracker baseline
 
-Prepared behavior:
-- adds `GameComponent_TokraSafehouseLeadTracker`;
+Adds `GameComponent_TokraSafehouseLeadTracker`.
+
+Behavior:
 - persists `tokraSafehouseLeadCount`;
 - safehouse signal stores `+1` lead on success;
 - maximum provisional lead count: `3`;
 - signal still grants `+1` Tok'ra trust;
 - signal letter shows lead progress;
-- no world site is created yet.
+- no world site is created yet;
+- r1 fixed missing `using RimWorld`;
+- r2 improved the player-facing full-lead message.
+
+### 0.2.15-dev — Tok'ra safehouse lead cache baseline
+
+Prepared behavior:
+- adds `SG1_TokraSafehouseLeadCache`;
+- adds `IncidentWorker_TokraSafehouseLeadCache`;
+- adds `GameComponent_TokraSafehouseLeadTracker.TryConsumeSafehouseLead(...)`;
+- requires at least `1` stored safehouse lead;
+- consumes `1` lead on success;
+- reuses persistent hidden `SG1_Tokra`;
+- excludes wary trust;
+- places a modest medical cache:
+  - `2` tretonin doses;
+  - `3` industrial medicine;
+- creates no world site, generated map, pawn, caravan, visitor, trader, recruitment, military aid or raid.
 
 ## Current gameplay state
 
@@ -141,7 +145,8 @@ Tok'ra:
 - medical-support deliveries;
 - hidden cell cache;
 - safehouse signal;
-- safehouse lead tracker.
+- safehouse lead tracker;
+- safehouse lead follow-up cache.
 
 Research:
 - dedicated `GateRim SG-1` tab;
@@ -155,27 +160,27 @@ Biological acquisition:
 - one immature Prim'ta symbiote every 3 days from a player queen;
 - maturation costs 20 raw meat and requires Goa'uld biotechnology.
 
-## Validation checklist for 0.2.14-dev
+## Validation checklist for 0.2.15-dev
 
 1. Apply ZIP at repository root.
 2. Rebuild C# with `-t:Rebuild`.
 3. Start RimWorld and confirm no red errors.
-4. Force `SG1_TokraSafehouseSignal` at neutral trust.
-5. Confirm a positive letter appears.
-6. Confirm Tok'ra trust increases by `+1`.
-7. Confirm safehouse leads increase by `+1`.
-8. Save and reload.
-9. Force the signal again and confirm the previous lead count persists.
-10. Repeat until `3/3`.
-11. Confirm further signals do not exceed `3/3`.
-12. Confirm no world site, pawn, item, caravan, trader, recruitment, military aid or raid is created.
+4. Force `SG1_TokraSafehouseLeadCache` at `0` leads and confirm it refuses.
+5. Force `SG1_TokraSafehouseSignal` to store at least one lead.
+6. Force `SG1_TokraSafehouseLeadCache`.
+7. Confirm one lead is consumed.
+8. Confirm `2` tretonin doses and `3` industrial medicine appear.
+9. Confirm no world site, generated map, pawn, caravan, trader, recruitment, military aid or raid appears.
+10. Save and reload.
+11. Confirm consumed lead count persists.
+12. Confirm no duplicate Tok'ra faction is created.
 
-## Recommended next milestone after 0.2.14 validation
+## Recommended next milestone after 0.2.15 validation
 
 Preferred:
 
 ```text
-0.2.15-dev - Add hidden Tok'ra world-site prototype
+0.2.16-dev - Add hidden Tok'ra world-site prototype
 ```
 
 The site milestone can consume one stored safehouse lead and create a temporary
@@ -192,7 +197,7 @@ Keep it small:
 Alternative:
 
 ```text
-0.2.15-dev - Review normal resource acquisition pacing
+0.2.16-dev - Review normal resource acquisition pacing
 ```
 
 Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after
@@ -201,6 +206,8 @@ playtesting.
 ## Publication checklist
 
 Before commit:
+- verify the current branch with `git branch --show-current`;
+- if needed, create a dedicated branch, for example `git switch -c feature/tokra-safehouse-lead-cache-baseline`;
 - run RimWorld startup test;
 - run targeted developer-tool tests;
 - inspect `Player.log`;

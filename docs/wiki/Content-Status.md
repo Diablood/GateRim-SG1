@@ -36,7 +36,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Cérémonie formelle du Prim'ta | Rite temporisé au bassin rituel, avec consommation d'une larve proche | 0.1.38-dev |
 | Tok'ra | Faction mondiale persistante mais masquée : une instance unique par partie, aucune colonie classique, aucun raid naturel ; symbiote libre testable et implantation volontaire | 0.1.39-dev / présence mondiale 0.2.7-dev |
 | Hôte Tok'ra volontaire | Humanoïde contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |
-| Groupes Tok'ra | Profils internes `Combat` et `Peaceful` réutilisés par la présence mondiale masquée et les incidents Tok'ra ; cache médical, signal et pistes de planque ajoutés | 0.1.41-dev / présence 0.2.7-dev / cache 0.2.12-dev / signal 0.2.13-dev / pistes 0.2.14-dev |
+| Groupes Tok'ra | Profils internes `Combat` et `Peaceful` réutilisés par la présence mondiale masquée et les incidents Tok'ra ; cache médical, signal, pistes de planque et cache de suivi ajoutés | 0.1.41-dev / présence 0.2.7-dev / cache 0.2.12-dev / signal 0.2.13-dev / pistes 0.2.14-dev / suivi 0.2.15-dev |
 | Visiteurs Tok'ra pacifiques | Incident naturel rare après le jour 15 : 1 à 3 hôtes non joueurs, délai minimal de 30 jours | 0.1.42-dev / sélection naturelle 0.1.43-dev |
 | Hébergement thérapeutique Tok'ra | Filtre biologique curable dynamique, asthme inclus et régénération progressive des blessures non permanentes ; cicatrices et amputations conservées | 0.1.44-dev / extension 0.1.46-dev |
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |

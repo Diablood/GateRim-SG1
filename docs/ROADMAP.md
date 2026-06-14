@@ -1139,3 +1139,18 @@
 - [ ] Validate lead count persists after save/reload
 - [ ] Validate lead cap at 3
 - [ ] Validate no world object or site is created
+
+
+## 0.2.15-dev — Tok'ra safehouse lead cache baseline
+
+- [x] Add lead-consuming Tok'ra follow-up cache
+- [x] Consume one stored safehouse lead
+- [x] Reuse persistent hidden Tok'ra faction
+- [x] Keep no world site yet
+- [x] Keep rewards modest
+- [x] Keep no trader, recruitment, military aid or raid
+- [x] Update `docs/PROJECT_STATE.md`
+- [ ] Validate no trigger when leads are 0
+- [ ] Validate one lead is consumed
+- [ ] Validate cache contents
+- [ ] Validate save/reload after consumption

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_TokraSafehouseLead_Gained>Piste de planque Tok'ra conservée : {0}/{1} ({2}).</GR_TokraSafehouseLead_Gained>
-    <GR_TokraSafehouseLead_AlreadyFull>Le registre des pistes de planque Tok'ra est déjà plein : {0}/{1}.</GR_TokraSafehouseLead_AlreadyFull>
+    <GR_TokraSafehouseLead_AlreadyFull>Les informations Tok'ra reçues confirment des pistes déjà connues. Vos colons ont déjà conservé le maximum de pistes de planque : {0}/{1}.</GR_TokraSafehouseLead_AlreadyFull>
+    <GR_TokraSafehouseLead_Consumed>Piste de planque Tok'ra exploitée : {0}/{1} ({2}).</GR_TokraSafehouseLead_Consumed>
+    <GR_TokraSafehouseLead_NoneToConsume>Aucune piste de planque Tok'ra n'est disponible pour un suivi.</GR_TokraSafehouseLead_NoneToConsume>
 </LanguageData>
