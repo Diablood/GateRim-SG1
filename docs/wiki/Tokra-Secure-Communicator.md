@@ -4,6 +4,7 @@
 > Version d'introduction : 0.2.26-dev
 > Première demande active : 0.2.27-dev
 > Interaction opérée par un colon : 0.2.28-dev
+> Demande médicale : 0.2.29-dev
 
 Le communicateur sécurisé Tok'ra est une passerelle de confiance vers les
 soutiens avancés Tok'ra. Il reste volontairement clandestin : il ne transforme
@@ -18,6 +19,7 @@ pas les Tok'ra en faction alliée classique.
 - utilisé par un colon sélectionné via clic droit
 - ouvre une fenêtre vanilla de contact sécurisé
 - peut demander une diversion défensive pendant une attaque active
+- peut demander un [soutien médical limité](Tokra-Communicator-Medical-Support) si un colon est blessé ou malade
 ```
 
 ## Diversion défensive
@@ -35,7 +37,7 @@ pas d'escouade Tok'ra physique
 ## Limites actuelles
 
 ```text
-pas de soin direct
+pas de soin direct automatique
 pas d'objet donné
 pas de demande de piste de planque via communicateur
 pas de renfort permanent
@@ -56,3 +58,10 @@ l'utilise brièvement, puis la fenêtre ou la demande Tok'ra se déclenche.
 
 Les commandes du bâtiment servent surtout d'information : elles rappellent de
 sélectionner un colon pour utiliser réellement l'appareil.
+
+
+## Soutien médical limité
+
+Depuis `0.2.29-dev`, une colonie fiable peut demander un conseil médical Tok'ra
+via le communicateur. Cette demande donne de l'expérience en Médecine au colon
+opérateur, mais ne soigne pas directement et ne livre aucun objet.

@@ -14,6 +14,7 @@ namespace GateRimSG1.Goauld
         private const TargetIndex CommunicatorIndex = TargetIndex.A;
         private const int OperationTicks = 180;
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
+        private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -60,6 +61,10 @@ namespace GateRimSG1.Goauld
                     {
                         comp.TryRequestDefensiveDiversion(pawn);
                     }
+                    else if (IsMedicalSupportRequestJob())
+                    {
+                        comp.TryRequestMedicalSupport(pawn);
+                    }
                     else
                     {
                         comp.TryOpenSecureChannel(pawn);
@@ -80,9 +85,20 @@ namespace GateRimSG1.Goauld
                 return true;
             }
 
-            string disabledReason = IsDiversionRequestJob()
-                ? comp.GetDiversionDisabledReason()
-                : comp.GetChannelDisabledReason();
+            string disabledReason;
+
+            if (IsDiversionRequestJob())
+            {
+                disabledReason = comp.GetDiversionDisabledReason();
+            }
+            else if (IsMedicalSupportRequestJob())
+            {
+                disabledReason = comp.GetMedicalSupportDisabledReason();
+            }
+            else
+            {
+                disabledReason = comp.GetChannelDisabledReason();
+            }
 
             return !string.IsNullOrEmpty(disabledReason);
         }
@@ -90,6 +106,11 @@ namespace GateRimSG1.Goauld
         private bool IsDiversionRequestJob()
         {
             return job?.def?.defName == RequestDiversionJobDefName;
+        }
+
+        private bool IsMedicalSupportRequestJob()
+        {
+            return job?.def?.defName == RequestMedicalSupportJobDefName;
         }
 
         private Comp_TokraSecureCommunicator GetCommunicatorComp()

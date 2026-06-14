@@ -1264,3 +1264,6 @@
 
 - Tok'ra safehouse contact briefing details moved to a vanilla closeable dialog.
 - Message history kept concise with a short XP summary.
+
+
+Development note: `0.2.29-dev` adds a trusted pawn-operated Tok'ra medical-guidance request through the secure communicator: advisory Medicine XP only, no direct treatment or item delivery.

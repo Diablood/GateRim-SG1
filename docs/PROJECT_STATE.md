@@ -1,5 +1,7 @@
 # Project state
 
+Current milestone: `0.2.29-dev - Add Tok'ra communicator medical support request` adds a trusted, pawn-operated medical-guidance request to the secure communicator. It requires a relevant wounded or sick colonist, grants Medicine XP to the operator and does not directly heal or deliver items.
+
 0.2.28-dev - Pawn-operated Tok'ra secure communicator
 
 Status: validated locally after `r1` hides direct communicator gizmos outside debug diagnostics.

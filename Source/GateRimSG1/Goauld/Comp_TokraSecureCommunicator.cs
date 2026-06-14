@@ -17,14 +17,25 @@ namespace GateRimSG1.Goauld
     public class Comp_TokraSecureCommunicator : ThingComp
     {
         private const int DefensiveDiversionCooldownTicks = 300000;
+        private const int MedicalSupportCooldownTicks = 180000;
+        private const int MedicalSupportMedicineXp = 600;
         private const int DefensiveDiversionStunTicks = 180;
         private const int DefensiveDiversionMinimumVomitDelayTicks = 240;
         private const int DefensiveDiversionMaximumVomitDelayTicks = 600;
         private const int MaximumDefensiveDiversionTargets = 3;
         private const string UseCommunicatorJobDefName = "SG1_UseTokraSecureCommunicator";
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
+        private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
+
+        private enum TokraCommunicatorOperation
+        {
+            OpenChannel,
+            DefensiveDiversion,
+            MedicalSupport
+        }
 
         private int nextDefensiveDiversionRequestTick;
+        private int nextMedicalSupportRequestTick;
         private List<Pawn> pendingDiversionVomitPawns = new List<Pawn>();
         private List<int> pendingDiversionVomitTicks = new List<int>();
 
@@ -35,6 +46,11 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref nextDefensiveDiversionRequestTick,
                 "tokraNextDefensiveDiversionRequestTick",
+                0);
+
+            Scribe_Values.Look(
+                ref nextMedicalSupportRequestTick,
+                "tokraNextMedicalSupportRequestTick",
                 0);
 
             Scribe_Collections.Look(
@@ -107,6 +123,21 @@ namespace GateRimSG1.Goauld
             diversionCommand.Disable(GetGizmoDisabledReason(diversionDisabledReason));
 
             yield return diversionCommand;
+
+            Command_Action medicalCommand = new Command_Action
+            {
+                defaultLabel = "GR_TokraSecureCommunicator_MedicalCommandLabel"
+                    .Translate(),
+                defaultDesc = "GR_TokraSecureCommunicator_MedicalCommandDesc"
+                    .Translate(),
+                action = ShowPawnOperationRequiredMessage
+            };
+
+            string medicalDisabledReason = GetMedicalSupportDisabledReason();
+
+            medicalCommand.Disable(GetGizmoDisabledReason(medicalDisabledReason));
+
+            yield return medicalCommand;
         }
 
 
@@ -128,7 +159,7 @@ namespace GateRimSG1.Goauld
                 selPawn,
                 UseCommunicatorJobDefName,
                 "GR_TokraSecureCommunicator_FloatMenuUseLabel".Translate().ToString(),
-                requestDiversion: false))
+                TokraCommunicatorOperation.OpenChannel))
             {
                 yield return option;
             }
@@ -137,7 +168,16 @@ namespace GateRimSG1.Goauld
                 selPawn,
                 RequestDiversionJobDefName,
                 "GR_TokraSecureCommunicator_FloatMenuDiversionLabel".Translate().ToString(),
-                requestDiversion: true))
+                TokraCommunicatorOperation.DefensiveDiversion))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                RequestMedicalSupportJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuMedicalLabel".Translate().ToString(),
+                TokraCommunicatorOperation.MedicalSupport))
             {
                 yield return option;
             }
@@ -147,11 +187,11 @@ namespace GateRimSG1.Goauld
             Pawn selPawn,
             string jobDefName,
             string label,
-            bool requestDiversion)
+            TokraCommunicatorOperation operation)
         {
             string disabledReason = GetPawnOperationDisabledReason(
                 selPawn,
-                requestDiversion);
+                operation);
 
             JobDef jobDef = GetOperationJobDef(jobDefName);
 
@@ -189,7 +229,8 @@ namespace GateRimSG1.Goauld
             return "GR_TokraSecureCommunicator_Inspect".Translate(
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
-                GetDiversionStatusLabel()).ToString();
+                GetDiversionStatusLabel(),
+                GetMedicalSupportStatusLabel()).ToString();
         }
 
         internal bool TryOpenSecureChannel(Pawn operatorPawn)
@@ -295,6 +336,86 @@ namespace GateRimSG1.Goauld
         }
 
 
+        internal bool TryRequestMedicalSupport(Pawn operatorPawn)
+        {
+            string disabledReason = GetMedicalSupportDisabledReason();
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            if (!CanReceiveMedicalGuidance(operatorPawn))
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_MedicalOperatorIncapable".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            List<Pawn> patients = GetMedicalSupportCandidates();
+            int patientCount = patients.Count;
+
+            if (patientCount <= 0)
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_MedicalNoPatient".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            if (!TryGrantMedicalGuidanceExperience(operatorPawn))
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_MedicalOperatorIncapable".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            nextMedicalSupportRequestTick = Find.TickManager.TicksGame
+                + MedicalSupportCooldownTicks;
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_MedicalRequested".Translate(
+                    operatorPawn.LabelShortCap,
+                    MedicalSupportMedicineXp.ToString(),
+                    patientCount.ToString(),
+                    FormatDays(MedicalSupportCooldownTicks)),
+                parent,
+                MessageTypeDefOf.PositiveEvent,
+                historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_MedicalDialog".Translate(
+                        operatorPawn.LabelShortCap,
+                        MedicalSupportMedicineXp.ToString(),
+                        patientCount.ToString(),
+                        FormatDays(MedicalSupportCooldownTicks))
+                    .ToString()));
+
+            GR_Log.Message(
+                $"Requested trusted Tok'ra medical guidance from "
+                + $"communicator at {parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn.LabelShortCap}; "
+                + $"patient candidates {patientCount}.");
+
+            return true;
+        }
+
+
         private void ShowPawnOperationRequiredMessage()
         {
             Messages.Message(
@@ -318,7 +439,7 @@ namespace GateRimSG1.Goauld
 
         private string GetPawnOperationDisabledReason(
             Pawn operatorPawn,
-            bool requestDiversion)
+            TokraCommunicatorOperation operation)
         {
             if (!CanUsePlayerOperator(operatorPawn))
             {
@@ -341,9 +462,29 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
-            return requestDiversion
-                ? GetDiversionDisabledReason()
-                : GetChannelDisabledReason();
+            if (operation == TokraCommunicatorOperation.MedicalSupport
+                && !CanReceiveMedicalGuidance(operatorPawn))
+            {
+                return "GR_TokraSecureCommunicator_MedicalOperatorIncapable"
+                    .Translate()
+                    .ToString();
+            }
+
+            return GetDisabledReasonForOperation(operation);
+        }
+
+        private string GetDisabledReasonForOperation(
+            TokraCommunicatorOperation operation)
+        {
+            switch (operation)
+            {
+                case TokraCommunicatorOperation.DefensiveDiversion:
+                    return GetDiversionDisabledReason();
+                case TokraCommunicatorOperation.MedicalSupport:
+                    return GetMedicalSupportDisabledReason();
+                default:
+                    return GetChannelDisabledReason();
+            }
         }
 
         private static bool CanUsePlayerOperator(Pawn pawn)
@@ -414,6 +555,32 @@ namespace GateRimSG1.Goauld
             return null;
         }
 
+        internal string GetMedicalSupportDisabledReason()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return channelDisabledReason;
+            }
+
+            if (IsMedicalSupportCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_MedicalCooldown".Translate(
+                    FormatDays(GetRemainingMedicalSupportCooldownTicks()))
+                    .ToString();
+            }
+
+            if (!HasMedicalSupportCandidates())
+            {
+                return "GR_TokraSecureCommunicator_MedicalNoPatient"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
         private string GetStatusLabel()
         {
             string disabledReason = GetChannelDisabledReason();
@@ -457,6 +624,36 @@ namespace GateRimSG1.Goauld
                 .ToString();
         }
 
+        private string GetMedicalSupportStatusLabel()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return "GR_TokraSecureCommunicator_MedicalStatusLocked"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (IsMedicalSupportCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_MedicalStatusCooldown"
+                    .Translate(FormatDays(GetRemainingMedicalSupportCooldownTicks()))
+                    .ToString();
+            }
+
+            if (!HasMedicalSupportCandidates())
+            {
+                return "GR_TokraSecureCommunicator_MedicalStatusNoPatient"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_MedicalStatusReady"
+                .Translate()
+                .ToString();
+        }
+
         private bool HasHostileThreats()
         {
             return GetHostileThreats().Count > 0;
@@ -490,6 +687,123 @@ namespace GateRimSG1.Goauld
                 && !pawn.Dead
                 && !pawn.Downed
                 && pawn.HostileTo(Faction.OfPlayer);
+        }
+
+        private bool HasMedicalSupportCandidates()
+        {
+            return GetMedicalSupportCandidates().Count > 0;
+        }
+
+        private List<Pawn> GetMedicalSupportCandidates()
+        {
+            List<Pawn> candidates = new List<Pawn>();
+            Map map = parent.Map;
+
+            if (map == null)
+            {
+                return candidates;
+            }
+
+            foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+            {
+                if (IsValidMedicalSupportCandidate(pawn))
+                {
+                    candidates.Add(pawn);
+                }
+            }
+
+            return candidates;
+        }
+
+        private static bool IsValidMedicalSupportCandidate(Pawn pawn)
+        {
+            return pawn != null
+                && pawn.Spawned
+                && !pawn.Dead
+                && pawn.Faction == Faction.OfPlayer
+                && pawn.RaceProps?.Humanlike == true
+                && HasCurrentMedicalConcern(pawn);
+        }
+
+        private static bool HasCurrentMedicalConcern(Pawn pawn)
+        {
+            if (pawn?.health?.hediffSet?.hediffs == null)
+            {
+                return false;
+            }
+
+            List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
+
+            for (int i = 0; i < hediffs.Count; i++)
+            {
+                Hediff hediff = hediffs[i];
+
+                if (hediff == null)
+                {
+                    continue;
+                }
+
+                if (hediff.Bleeding || hediff.TendableNow())
+                {
+                    return true;
+                }
+
+                if (hediff is Hediff_Injury && hediff.Severity > 0.05f)
+                {
+                    return true;
+                }
+
+                if (hediff.def != null
+                    && hediff.def.isBad
+                    && hediff.Visible
+                    && hediff.Severity > 0.05f)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool CanReceiveMedicalGuidance(Pawn pawn)
+        {
+            if (!CanUsePlayerOperator(pawn) || pawn.skills == null)
+            {
+                return false;
+            }
+
+            SkillRecord medicine = pawn.skills.GetSkill(SkillDefOf.Medicine);
+
+            return medicine != null && !medicine.TotallyDisabled;
+        }
+
+        private static bool TryGrantMedicalGuidanceExperience(Pawn pawn)
+        {
+            if (!CanReceiveMedicalGuidance(pawn))
+            {
+                return false;
+            }
+
+            SkillRecord medicine = pawn.skills.GetSkill(SkillDefOf.Medicine);
+            medicine.Learn(MedicalSupportMedicineXp, true);
+            return true;
+        }
+
+        private bool IsMedicalSupportCooldownActive()
+        {
+            return GetRemainingMedicalSupportCooldownTicks() > 0;
+        }
+
+        private int GetRemainingMedicalSupportCooldownTicks()
+        {
+            if (Find.TickManager == null)
+            {
+                return 0;
+            }
+
+            return Math.Max(
+                0,
+                nextMedicalSupportRequestTick - Find.TickManager.TicksGame);
         }
 
         private bool IsDefensiveDiversionCooldownActive()

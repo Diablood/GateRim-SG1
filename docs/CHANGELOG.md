@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.29-dev — Add Tok'ra communicator medical support request
+
+- Add a trusted-tier medical guidance request to the Tok'ra secure communicator.
+- Require a powered communicator, selected-pawn operation and at least one wounded or sick human colonist on the current map.
+- Grant `600` Medicine XP to the operator and start a dedicated three-day medical-channel cooldown.
+- Keep the support advisory only: no direct treatment, item delivery, trade, recruitment, quest or military aid.
+- Align mod metadata and C# assembly version with `0.2.29`.
+- Requires a forced C# rebuild.
+
+
 ## 0.2.28-dev-r1 — Hide direct Tok'ra communicator gizmos outside debug
 
 - Hide direct communicator building gizmos during normal play.

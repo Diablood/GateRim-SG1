@@ -49,6 +49,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
 | Refroidissement diplomatique Tok'ra | Suspension persistante des nouvelles offres thérapeutiques pendant 3 jours après refus ou 5 jours après expiration lorsque la confiance reste négative | 0.1.55-dev |
 | Soutien médical avancé Tok'ra fiable | Une livraison indépendante fiable ajoute `1` médicament ultratechnologique vanilla aux `4` doses de trétonine existantes | 0.1.56-dev |
+| Soutien médical via communicateur Tok'ra | Demande fiable opérée par un colon : conseil médical avancé, 600 XP Médecine à l'opérateur, aucun soin direct ni objet livré | 0.2.29-dev |
 | Reine Goa'uld | Prototype animal-style avec texture temporaire, accessible par un incident naturel rare après le jour 45 et limité à une reine vivante contrôlée par le joueur | 0.1.57-dev / acquisition 0.2.10-dev / équilibrage 0.2.11-dev |
 | Maturation assistée du Prim'ta | Extraction contrôlée d'un symbiote immature depuis une reine du joueur, récupération de 3 jours, puis consommation avec `20` viandes crues au bassin | 0.1.58-dev / accès joueur 0.2.10-dev / équilibrage 0.2.11-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |

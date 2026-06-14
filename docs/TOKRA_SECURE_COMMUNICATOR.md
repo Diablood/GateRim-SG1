@@ -1,6 +1,6 @@
 # Tok'ra secure communicator
 
-Version: `0.2.28-dev`
+Version: `0.2.29-dev`
 
 The Tok'ra secure communicator is the trusted-channel interaction point for
 advanced Tok'ra support. It is still deliberately limited: the Tok'ra remain
@@ -16,6 +16,22 @@ right-click interaction on the communicator
 usable only at trusted Tok'ra confidence
 opens a vanilla contact dialog
 can request a rare defensive diversion during an active attack
+can request limited medical guidance when a colonist is wounded or sick
+```
+
+## Medical guidance
+
+The trusted medical request is advisory only. A selected colonist operates the
+communicator while at least one wounded or sick human colonist is on the map.
+The Tok'ra transmit field guidance, the operator gains Medicine experience and
+the medical channel enters a short cooldown.
+
+```text
+trusted tier only
+patient on current map required
+600 Medicine XP to the operator
+3-day medical cooldown
+no direct treatment or item delivery
 ```
 
 ## Defensive diversion
@@ -40,7 +56,7 @@ no recruitment
 no permanent military help
 no offensive strike
 no direct item reward
-no medical request yet
+medical request is guidance-only for now
 no safehouse-lead request yet
 no quest start yet
 ```
@@ -61,3 +77,10 @@ Communicator requests are now pawn-operated. The player selects a colonist,
 right-clicks the communicator and chooses either the trusted contact channel or
 the defensive-diversion request. Building gizmos remain as status/instruction
 entries, but active requests are no longer instant building actions.
+
+
+## 0.2.29-dev note
+
+The communicator now supports a trusted medical-guidance request. It is operated
+through the selected-colonist right-click workflow, requires a local wounded or
+sick colonist, grants Medicine XP to the operator and does not heal directly.
