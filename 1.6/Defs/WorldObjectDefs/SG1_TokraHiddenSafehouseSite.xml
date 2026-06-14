@@ -3,7 +3,7 @@
     <WorldObjectDef ParentName="Site">
         <defName>SG1_TokraHiddenSafehouseSite</defName>
         <label>hidden Tok'ra safehouse</label>
-        <description>A temporary non-hostile Tok'ra safehouse that can be visited by caravan.</description>
+        <description>A temporary non-hostile Tok'ra safehouse containing a modest medical cache and one peaceful non-trading contact.</description>
         <overrideMapSize>(120, 1, 120)</overrideMapSize>
     </WorldObjectDef>
 </Defs>

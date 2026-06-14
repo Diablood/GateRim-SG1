@@ -118,3 +118,6 @@ sans générer encore de carte secondaire.
 Depuis `0.2.17-dev`, une piste peut aussi révéler une
 [planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site) temporaire contenant un
 petit cache médical non défendu.
+
+Depuis `0.2.18-dev`, cette planque contient aussi un unique contact Tok'ra
+pacifique, sans commerce ni recrutement.

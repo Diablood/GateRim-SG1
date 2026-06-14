@@ -17,7 +17,7 @@
         </backstoryFiltersOverride>
         <combatPower>80</combatPower>
         <isFighter>false</isFighter>
-        <minGenerationAge>18</minGenerationAge>
+        <minGenerationAge>20</minGenerationAge>
         <maxGenerationAge>70</maxGenerationAge>
         <initialResistanceRange>0~0</initialResistanceRange>
     </PawnKindDef>

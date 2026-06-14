@@ -91,6 +91,68 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        [DebugAction(
+            "GateRim SG-1",
+            "Verify Tok'ra safehouse contact test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void VerifySafehouseContactTest()
+        {
+            Map map = Find.CurrentMap;
+            List<Pawn> contacts = new List<Pawn>();
+
+            if (map?.mapPawns == null
+                || map.Parent?.def != GR_DefOf.SG1_TokraHiddenSafehouseSite)
+            {
+                Messages.Message(
+                    "GR_TokraSafehouseDebug_ContactUnavailable".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            foreach (Pawn pawn in map.mapPawns.AllPawnsSpawned)
+            {
+                if (pawn?.kindDef == GR_DefOf.SG1_TokraVoluntaryHost
+                    && pawn.Faction?.def == GR_DefOf.SG1_Tokra)
+                {
+                    contacts.Add(pawn);
+                }
+            }
+
+            Pawn contact = contacts.Count == 1 ? contacts[0] : null;
+            int biologicalAge = contact?.ageTracker?.AgeBiologicalYears ?? -1;
+            bool hasAdultBackstory = contact?.story?.Adulthood != null;
+            bool isHostile = contact?.Faction == null
+                || contact.Faction.HostileTo(Faction.OfPlayer)
+                || Faction.OfPlayer.HostileTo(contact.Faction);
+            bool hasTraderRole = contact?.TraderKind != null;
+            bool isRecruitable = contact?.guest?.Recruitable ?? true;
+            bool passed = contacts.Count == 1
+                && biologicalAge >= 20
+                && hasAdultBackstory
+                && !isHostile
+                && !hasTraderRole
+                && !isRecruitable;
+
+            string messageKey = passed
+                ? "GR_TokraSafehouseDebug_ContactPassed"
+                : "GR_TokraSafehouseDebug_ContactFailed";
+
+            Messages.Message(
+                messageKey.Translate(
+                    contacts.Count.ToString().Named("CONTACTCOUNT"),
+                    biologicalAge.ToString().Named("AGE"),
+                    hasAdultBackstory.ToString().Named("ADULTBACKSTORY"),
+                    isHostile.ToString().Named("HOSTILE"),
+                    hasTraderRole.ToString().Named("TRADER"),
+                    isRecruitable.ToString().Named("RECRUITABLE")),
+                passed
+                    ? MessageTypeDefOf.PositiveEvent
+                    : MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
         private static List<WorldObject> GetActiveSafehouseWorldObjects()
         {
             List<WorldObject> safehouseObjects = new List<WorldObject>();

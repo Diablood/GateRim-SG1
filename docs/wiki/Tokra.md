@@ -262,3 +262,7 @@ Le marqueur ne crée pas encore de site visitable.
 Depuis `0.2.17-dev`, une piste peut enfin révéler une
 [planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site). Une caravane peut
 explorer sa petite carte non hostile et récupérer un cache médical limité.
+
+Depuis `0.2.18-dev`, un unique hôte Tok'ra volontaire âgé d'au moins `20` ans
+demeure dans la planque. Ce contact est pacifique, non marchand et non
+recrutable.

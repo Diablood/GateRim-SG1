@@ -1193,3 +1193,22 @@
 - [x] Validate site cleanup and unvisited expiration
 - [x] Validate marker/site duplicate prevention
 - [x] Validate no duplicate Tok'ra faction
+
+
+## 0.2.18-dev — Non-trading Tok'ra safehouse contact
+
+- [x] Add exactly one peaceful Tok'ra contact to the generated safehouse map
+- [x] Reuse `SG1_TokraVoluntaryHost` and the persistent hidden Tok'ra faction
+- [x] Keep the contact on site through a three-day peaceful visit duty
+- [x] Require generated Tok'ra voluntary hosts to be at least 20 years old
+- [x] Keep an adulthood backstory on the generated contact
+- [x] Keep the contact explicitly non-recruitable
+- [x] Keep no trader role or trade inventory
+- [x] Keep no military aid, raid, permanent settlement or default combat
+- [x] Add one deterministic developer verification action
+- [x] Add English/French text, technical docs and player-wiki drafts
+- [ ] Validate exactly one contact on arrival
+- [ ] Validate age 20+, adulthood backstory and persistent Tok'ra faction
+- [ ] Validate no trader role and disabled recruitment
+- [ ] Validate save/reload with the contact present
+- [ ] Validate clean caravan departure and site removal

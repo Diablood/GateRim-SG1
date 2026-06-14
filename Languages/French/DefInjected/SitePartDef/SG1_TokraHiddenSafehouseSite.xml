@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_TokraHiddenSafehouseSitePart.label>planque Tok'ra cachée</SG1_TokraHiddenSafehouseSitePart.label>
-    <SG1_TokraHiddenSafehouseSitePart.description>Une planque Tok'ra clandestine temporaire contenant un modeste cache médical.</SG1_TokraHiddenSafehouseSitePart.description>
+    <SG1_TokraHiddenSafehouseSitePart.description>Une planque Tok'ra clandestine temporaire contenant un modeste cache médical et un contact pacifique.</SG1_TokraHiddenSafehouseSitePart.description>
     <SG1_TokraHiddenSafehouseSitePart.approachOrderString>Visiter {0}</SG1_TokraHiddenSafehouseSitePart.approachOrderString>
     <SG1_TokraHiddenSafehouseSitePart.approachingReportString>En route vers {0}.</SG1_TokraHiddenSafehouseSitePart.approachingReportString>
     <SG1_TokraHiddenSafehouseSitePart.arrivedLetterLabelPart>planque Tok'ra</SG1_TokraHiddenSafehouseSitePart.arrivedLetterLabelPart>
-    <SG1_TokraHiddenSafehouseSitePart.arrivedLetter>Les coordonnées mènent à une planque Tok'ra silencieuse. Aucune cellule permanente ne demeure ici, mais un modeste cache médical a été laissé pour votre caravane.</SG1_TokraHiddenSafehouseSitePart.arrivedLetter>
+    <SG1_TokraHiddenSafehouseSitePart.arrivedLetter>Les coordonnées mènent à une planque Tok'ra silencieuse. Un contact pacifique demeure auprès d'un modeste cache médical, mais ne propose ni commerce, ni recrutement, ni soutien militaire.</SG1_TokraHiddenSafehouseSitePart.arrivedLetter>
 </LanguageData>

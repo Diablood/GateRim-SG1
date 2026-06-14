@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.2.18-dev — Add non-trading Tok'ra safehouse contact
+
+- Add `GenStep_TokraHiddenSafehouseContact` after the validated item-stash
+  generation step.
+- Generate exactly one `SG1_TokraVoluntaryHost` on the safehouse map.
+- Reuse the site's persistent hidden `SG1_Tokra` faction.
+- Assign a three-day vanilla peaceful-visit `LordJob` so the contact remains
+  on the generated map instead of immediately leaving it.
+- Raise the Tok'ra voluntary-host minimum generation age from `18` to `20` so
+  generated contacts receive an adulthood backstory.
+- Keep the contact peaceful, explicitly non-recruitable and without a trader
+  role or trade inventory.
+- Add `Verify Tok'ra safehouse contact test` under the `GateRim SG-1`
+  developer actions for a deterministic in-game validation report.
+- Preserve the existing medical cache, timeout, site cleanup and absence of
+  military aid, raids or permanent settlement.
+- Add English/French text, technical documentation, manual tests and wiki
+  drafts.
+- Align C# assembly version with `0.2.18`.
+- Requires a forced C# rebuild.
+
 ## 0.2.17-dev — Add enterable hidden Tok'ra safehouse site
 
 - Add incident `SG1_TokraHiddenSafehouseSiteIncident`.

@@ -13,30 +13,32 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.17-dev — Add enterable hidden Tok'ra safehouse site
+### 0.2.18-dev — Add non-trading Tok'ra safehouse contact
 
-A stored Tok'ra safehouse lead can now reveal one temporary site that a
-caravan can visit.
+The enterable Tok'ra safehouse now contains one peaceful contact in addition
+to its medical cache.
 
 ```text
 1 stored safehouse lead
     -> consumed by SG1_TokraHiddenSafehouseSiteIncident
     -> one non-hostile vanilla site near the colony
     -> one small generated map
+    -> one peaceful Tok'ra voluntary host aged 20+
     -> 2 tretonin doses and 4 industrial medicine
     -> automatic expiration after 10 RimWorld days if unvisited
 ```
 
-The site deliberately creates no trader, recruitment, permanent settlement,
-military aid, hostile pawn or raid. A marker and a site cannot coexist.
+The contact has no trader role and is explicitly non-recruitable. The site
+still creates no permanent settlement, military aid, hostile pawn or raid. A
+marker and a site cannot coexist.
 
 A forced C# rebuild is required for this milestone.
 
 ## Next development focus
 
-- validate site creation, caravan travel, map generation, reward contents,
-  save persistence, cleanup and expiration;
-- keep Tok'ra contacts, trading and recruitment for later milestones.
+- validate contact generation, age, adult backstory, peaceful status, absent
+  trade role, disabled recruitment, save persistence and clean site removal;
+- keep dialogue, trade inventory and recruitment outside this milestone.
 
 ## First playable milestone
 
@@ -175,15 +177,17 @@ future hidden Tok'ra safehouse systems.
 
 #### Enterable Tok'ra hidden safehouse
 
-Since `0.2.17-dev`, one stored lead can create a temporary vanilla site:
+Since `0.2.17-dev`, one stored lead can create a temporary vanilla site. Since
+`0.2.18-dev`, that site also contains one peaceful Tok'ra contact:
 
 ```text
 -1 safehouse lead
 1 enterable non-hostile site
+1 non-trading, non-recruitable Tok'ra contact aged 20+
 2 tretonin doses
 4 industrial medicine
 duration before arrival: 10 RimWorld days
 ```
 
 The generated map is deliberately small and contains no hostile defenders,
-trader, recruitable pawn, military aid or permanent settlement.
+trade inventory, recruitable pawn, military aid or permanent settlement.

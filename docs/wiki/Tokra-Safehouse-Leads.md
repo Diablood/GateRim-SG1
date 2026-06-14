@@ -62,6 +62,8 @@ Ce marqueur ne peut pas encore être visité.
 Depuis `0.2.17-dev`, une piste peut aussi être consommée pour créer une
 [planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site).
 
-La planque est temporaire, non hostile et contient uniquement un petit cache
-médical. Un marqueur et une planque visitable ne peuvent pas être actifs en
-même temps.
+La planque est temporaire, non hostile et contient un petit cache médical. Un
+marqueur et une planque visitable ne peuvent pas être actifs en même temps.
+
+Depuis `0.2.18-dev`, elle accueille également un seul contact Tok'ra pacifique,
+sans rôle marchand et non recrutable.

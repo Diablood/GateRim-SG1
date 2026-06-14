@@ -2,5 +2,5 @@
 <LanguageData>
     <SG1_TokraHiddenSafehouseSiteIncident.label>planque Tok'ra cachée</SG1_TokraHiddenSafehouseSiteIncident.label>
     <SG1_TokraHiddenSafehouseSiteIncident.letterLabel>Planque Tok'ra cachée localisée</SG1_TokraHiddenSafehouseSiteIncident.letterLabel>
-    <SG1_TokraHiddenSafehouseSiteIncident.letterText>Vos colons ont complété une piste de planque Tok'ra. Une planque temporaire non hostile est désormais visible sur la carte du monde et peut être visitée par une caravane pour récupérer {TRETONINCOUNT} dose(s) de trétonine et {MEDICINECOUNT} unité(s) de médicament industriel. Une piste de planque a été consommée. Pistes restantes : {LEADCOUNT}/{LEADMAX}.</SG1_TokraHiddenSafehouseSiteIncident.letterText>
+    <SG1_TokraHiddenSafehouseSiteIncident.letterText>Vos colons ont complété une piste de planque Tok'ra. Une planque temporaire non hostile est désormais visible sur la carte du monde et peut être visitée par une caravane. Un contact pacifique y demeure avec {TRETONINCOUNT} dose(s) de trétonine et {MEDICINECOUNT} unité(s) de médicament industriel, mais ne propose ni commerce ni recrutement. Une piste de planque a été consommée. Pistes restantes : {LEADCOUNT}/{LEADMAX}.</SG1_TokraHiddenSafehouseSiteIncident.letterText>
 </LanguageData>

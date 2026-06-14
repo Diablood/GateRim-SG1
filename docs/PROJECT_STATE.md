@@ -22,15 +22,15 @@ v0.2.17-dev - Add enterable hidden Tok'ra safehouse site
 Current working branch:
 
 ```text
-feature/tokra-enterable-safehouse-site-prototype
+feature/tokra-safehouse-contact-prototype
 ```
 
-## Current validated milestone
+## Current development milestone
 
-Latest validated local milestone:
+Current local milestone:
 
 ```text
-0.2.17-dev - Add enterable hidden Tok'ra safehouse site
+0.2.18-dev - Add a non-trading Tok'ra safehouse contact prototype
 ```
 
 Published tag:
@@ -39,27 +39,27 @@ Published tag:
 v0.2.17-dev
 ```
 
-Publication status at the time this handoff was written:
+Development status at the time this handoff was written:
 
 ```text
-0.2.17-dev prepared locally from the published v0.2.16-dev tag.
-Forced C# rebuild and XML validation passed.
-Manual RimWorld tests passed on June 14, 2026 using the dedicated preparation
-and site-creation debug actions.
-Published as v0.2.17-dev on June 14, 2026.
+0.2.18-dev prepared locally from the published v0.2.17-dev tag.
+The C# implementation compiles against RimWorld 1.6.
+Manual RimWorld validation is pending.
+The branch, commit and tag have not been published.
 ```
 
-Current mod metadata after applying `0.2.17-dev`:
+Current mod metadata after applying `0.2.18-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.17-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.17
+About/About.xml: modVersion = 0.2.18-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.18
 ```
 
 Reason:
 
 ```text
-0.2.17-dev adds C# incident-worker and vanilla Site integration code.
+0.2.18-dev adds a custom C# map-generation step and a contact-verification
+developer action.
 A forced rebuild is required.
 ```
 
@@ -186,6 +186,21 @@ Validated behavior:
 - creates no hostile pawn, trader, recruitment, military aid, raid or
   permanent settlement.
 
+### 0.2.18-dev — Non-trading Tok'ra safehouse contact
+
+Current implementation awaiting manual validation:
+- adds `GenStep_TokraHiddenSafehouseContact` after the medical stash;
+- generates exactly one `SG1_TokraVoluntaryHost` on the safehouse map;
+- reuses the persistent hidden `SG1_Tokra` faction;
+- assigns a three-day peaceful visit duty so the contact remains on site;
+- raises the voluntary-host minimum generation age from 18 to 20;
+- requires an adulthood backstory through the existing PawnKind filter;
+- sets the generated contact as non-recruitable;
+- gives the contact no trader role or trade inventory;
+- adds `Verify Tok'ra safehouse contact test` under the `GateRim SG-1` debug
+  actions;
+- preserves the existing cache, timeout and clean-departure design.
+
 ## Current gameplay state
 
 Tok'ra:
@@ -201,7 +216,8 @@ Tok'ra:
 - safehouse lead tracker;
 - safehouse lead follow-up cache;
 - temporary hidden safehouse world marker;
-- temporary enterable hidden safehouse site.
+- temporary enterable hidden safehouse site;
+- one peaceful non-trading contact on the generated safehouse map.
 
 Research:
 - dedicated `GateRim SG-1` tab;
@@ -215,9 +231,9 @@ Biological acquisition:
 - one immature Prim'ta symbiote every 3 days from a player queen;
 - maturation costs 20 raw meat and requires Goa'uld biotechnology.
 
-## Validation checklist for 0.2.17-dev
+## Validation checklist for 0.2.18-dev
 
-Result: passed in RimWorld on June 14, 2026.
+Result: pending manual RimWorld validation.
 
 Mandatory happy-path test:
 
@@ -232,11 +248,17 @@ Mandatory happy-path test:
    Expected: a positive letter, lead count `0/3`, and exactly one world site.
 4. Form a caravan with at least one colonist and send it to the safehouse.
    Expected: the available action is a visit, not an attack.
-5. On arrival, confirm the small map has no enemies and contains exactly `2`
-   tretonin doses and `4` industrial medicine.
-6. Save and reload while the safehouse map is open.
-   Expected: map, caravan and cache persist without red errors.
-7. Use `Reform caravan` and leave.
+5. On arrival, open `Debug actions` and choose
+   `GateRim SG-1 > Verify Tok'ra safehouse contact test`.
+   Expected in French: a green message reports `Contacts : 1`, age at least
+   `20`, `histoire adulte : True`, `hostile : False`, `marchand : False` and
+   `recrutable : False`.
+6. Confirm the cache still contains exactly `2` tretonin doses and `4`
+   industrial medicine.
+7. Save and reload while the safehouse map is open, then run
+   `GateRim SG-1 > Verify Tok'ra safehouse contact test` again.
+   Expected: the report remains green and no red error appears.
+8. Use `Reform caravan` and leave.
    Expected: the temporary map and world site disappear cleanly.
 
 Optional regression tests:
@@ -244,31 +266,32 @@ Optional regression tests:
 1. With `0` leads and no active site, run
    `GateRim SG-1 > Create Tok'ra safehouse test site` again.
    Expected: no site appears.
-2. Prepare and create one site, then run the same creation action again before
-   visiting it. Expected: no second site appears.
-3. Prepare and create one site, then leave it unvisited for `10` RimWorld
-   days. Expected: the site expires automatically.
+2. On a map other than the generated safehouse map, run
+   `GateRim SG-1 > Verify Tok'ra safehouse contact test`.
+   Expected: a red message asks to open the generated safehouse map.
+3. Prepare, create and visit a second site after leaving the first one.
+   Expected: exactly one contact appears and passes the same verification
+   action.
 
-## Recommended next milestone after 0.2.17 validation
+## Recommended next milestone after 0.2.18 validation
 
 Preferred:
 
 ```text
-0.2.18-dev - Add a non-trading Tok'ra safehouse contact prototype
+0.2.19-dev - Add one minimal Tok'ra safehouse contact interaction
 ```
 
 Keep it small:
-- add at most one peaceful Tok'ra host to the validated safehouse map;
-- keep the pawn non-recruitable;
-- keep no trade inventory;
-- keep no military aid;
-- preserve clean site departure and removal;
-- keep no combat by default.
+- expose at most one explicit player interaction;
+- keep no trader inventory or recruitment;
+- avoid repeatable reward farming;
+- keep no military aid, raid or permanent settlement;
+- preserve clean site departure and removal.
 
 Alternative:
 
 ```text
-0.2.18-dev - Review safehouse reward and travel pacing
+0.2.19-dev - Review safehouse reward and travel pacing
 ```
 
 Use this if the travel cost, ten-day timeout or medical reward feels wrong

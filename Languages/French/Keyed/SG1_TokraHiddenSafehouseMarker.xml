@@ -6,4 +6,7 @@
     <GR_TokraSafehouseDebug_ActiveMap>Impossible de préparer le test pendant qu'une carte de planque Tok'ra est active. Reformez la caravane et quittez d'abord cette carte.</GR_TokraSafehouseDebug_ActiveMap>
     <GR_TokraSafehouseDebug_Unavailable>Impossible de préparer le test de planque Tok'ra, car ses registres de partie sont indisponibles.</GR_TokraSafehouseDebug_Unavailable>
     <GR_TokraSafehouseDebug_CreateFailed>Impossible de créer la planque Tok'ra de test. Lancez d'abord « Prepare Tok'ra safehouse site test » et vérifiez que la colonie est affichée.</GR_TokraSafehouseDebug_CreateFailed>
+    <GR_TokraSafehouseDebug_ContactUnavailable>Ouvrez la carte générée de la planque Tok'ra avant de vérifier son contact.</GR_TokraSafehouseDebug_ContactUnavailable>
+    <GR_TokraSafehouseDebug_ContactPassed>Test du contact de la planque Tok'ra réussi. Contacts : {CONTACTCOUNT} ; âge : {AGE} ; histoire adulte : {ADULTBACKSTORY} ; hostile : {HOSTILE} ; marchand : {TRADER} ; recrutable : {RECRUITABLE}.</GR_TokraSafehouseDebug_ContactPassed>
+    <GR_TokraSafehouseDebug_ContactFailed>Échec du test du contact de la planque Tok'ra. Contacts : {CONTACTCOUNT} ; âge : {AGE} ; histoire adulte : {ADULTBACKSTORY} ; hostile : {HOSTILE} ; marchand : {TRADER} ; recrutable : {RECRUITABLE}.</GR_TokraSafehouseDebug_ContactFailed>
 </LanguageData>

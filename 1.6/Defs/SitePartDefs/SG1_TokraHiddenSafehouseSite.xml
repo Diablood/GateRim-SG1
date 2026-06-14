@@ -3,7 +3,7 @@
     <SitePartDef>
         <defName>SG1_TokraHiddenSafehouseSitePart</defName>
         <label>hidden Tok'ra safehouse</label>
-        <description>A temporary clandestine Tok'ra safehouse containing a modest medical cache.</description>
+        <description>A temporary clandestine Tok'ra safehouse containing a modest medical cache and one peaceful contact.</description>
         <workerClass>RimWorld.Planet.SitePartWorker_ItemStash</workerClass>
         <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
         <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
@@ -12,7 +12,7 @@
         <approachOrderString>Visit {0}</approachOrderString>
         <approachingReportString>Visiting {0}.</approachingReportString>
         <arrivedLetterLabelPart>Tok'ra safehouse</arrivedLetterLabelPart>
-        <arrivedLetter>The coordinates lead to a quiet Tok'ra safehouse. No permanent cell remains here, but a modest medical cache has been left for your caravan.</arrivedLetter>
+        <arrivedLetter>The coordinates lead to a quiet Tok'ra safehouse. One peaceful contact remains with a modest medical cache, but offers no trade, recruitment or military support.</arrivedLetter>
         <arrivedLetterDef>PositiveEvent</arrivedLetterDef>
         <gravShipsCanLandOn>true</gravShipsCanLandOn>
         <tags>
@@ -28,5 +28,12 @@
             <count>1</count>
             <nearMapCenter>true</nearMapCenter>
         </genStep>
+    </GenStepDef>
+
+    <GenStepDef>
+        <defName>SG1_TokraHiddenSafehouseContact</defName>
+        <linkWithSite>SG1_TokraHiddenSafehouseSitePart</linkWithSite>
+        <order>410</order>
+        <genStep Class="GateRimSG1.Goauld.GenStep_TokraHiddenSafehouseContact" />
     </GenStepDef>
 </Defs>
