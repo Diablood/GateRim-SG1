@@ -98,6 +98,13 @@ Depuis `0.2.19-dev`, les hôtes Tok'ra volontaires générés pour les planques 
 
 Cette tenue unique donne une identité visuelle sobre aux agents Tok'ra et corrige le contact de planque qui pouvait apparaître nu après le jalon `0.2.18-dev`.
 
+
+## Feuille de route des interactions
+
+Depuis `0.2.25-dev`, une [feuille de route des interactions Tok'ra](Tokra-Interaction-Roadmap) cadre les prochaines évolutions de la faction.
+
+Elle couvre les pistes suivantes : soutien médical, réseau de planques, communicateur sécurisé, aide défensive rare, courte questline et réactions futures selon les races ou cultures.
+
 ## Évolutions prévues
 
 ```text

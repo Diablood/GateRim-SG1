@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.2.25-dev — Define Tok'ra interaction roadmap
+
+- Add a technical roadmap for Tok'ra interactions before adding larger rewards.
+- Document the current implemented loop: hidden faction, trust, safehouse leads, safehouse sites, peaceful contact and once-per-contact briefing.
+- Define future interaction families: medical support, safehouse network, secure communicator, rare defensive military support, short questline and later race/culture-specific branches.
+- Keep the milestone documentation-focused: no new item, treatment, quest, recruitment, trade or military-aid implementation is added.
+- Align mod metadata and C# assembly version with `0.2.25`.
+
 ## 0.2.24-dev — Add trust-gated Tok'ra safehouse follow-up lead
 
 - Keep the Tok'ra safehouse contact exchange non-trading, non-recruitable, non-hostile and once per generated contact.

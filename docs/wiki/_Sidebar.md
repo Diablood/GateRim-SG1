@@ -40,6 +40,7 @@
 - [Bassin de conservation du Prim'ta](Primta-Preservation-Basin)
 - [Congélation profonde des Prim'ta](Primta-Deep-Freezing)
 - [Tok'ra](Tokra)
+- [Feuille de route des interactions Tok'ra](Tokra-Interaction-Roadmap)
 - [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
 - [Cache d'une cellule Tok'ra](Tokra-Hidden-Cell-Cache)
 - [Signal de planque Tok'ra](Tokra-Safehouse-Signal)

@@ -10,6 +10,15 @@
 
 # GateRim SG-1 — Development roadmap
 
+## Tok'ra interaction roadmap — 0.2.25-dev
+
+- [x] Document the current Tok'ra interaction loop: hidden faction, trust tiers, safehouse leads, hidden sites and safehouse contacts.
+- [x] Define the main future interaction families: medical support, safehouse network, communicator, rare defensive military support, short questline and race/culture branches.
+- [ ] Add a trusted Tok'ra communicator foundation.
+- [ ] Add communicator requests for medical support and safehouse leads.
+- [ ] Add rare trusted defensive support, preferably as tactical warning or covert disruption before direct reinforcements.
+- [ ] Later, extend Tok'ra interactions by race or culture: SG personnel, Free Jaffa, Goa'uld-aligned Jaffa, Goa'uld hosts and Tok'ra hosts.
+
 ## Immediate maintenance — pre-0.2 cleanup preparation
 
 - [x] Generate the RimWorld French translation report and add the two missing GateRim SG-1 entries. Keep the five remaining load errors documented as vanilla RimWorld French issues.
