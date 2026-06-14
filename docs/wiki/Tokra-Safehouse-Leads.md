@@ -67,3 +67,13 @@ marqueur et une planque visitable ne peuvent pas être actifs en même temps.
 
 Depuis `0.2.18-dev`, elle accueille également un seul contact Tok'ra pacifique,
 sans rôle marchand et non recrutable.
+
+## Piste de suivi par contact
+
+Depuis `0.2.24-dev`, un contact Tok'ra de planque peut transmettre une piste
+de suivi supplémentaire si la confiance Tok'ra est au moins coopérative et si
+le registre n'est pas déjà plein.
+
+Les contacts méfiants ou neutres restent limités au briefing médical. La limite
+de `3` pistes conservées ne change pas, et ce suivi ne crée ni objet, ni soin
+direct, ni commerce, ni recrutement, ni quête, ni aide militaire.

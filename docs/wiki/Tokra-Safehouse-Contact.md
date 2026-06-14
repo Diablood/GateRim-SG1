@@ -38,3 +38,9 @@ with the dedicated increase/decrease debug actions before creating a new test
 safehouse.
 
 Starting with `0.2.23-dev-r1`, the detailed briefing opens in a vanilla dialog, while the message history keeps a short summary with the Medicine XP gained.
+
+Starting with `0.2.24-dev`, cooperative and trusted contacts may also pass on
+one follow-up safehouse lead if the stored lead registry has room. This does
+not create a quest, caravan, trader, item reward or direct medical treatment;
+it only stores a lead for the existing safehouse follow-up systems. Wary and
+neutral contacts keep the exchange limited to the medical briefing.

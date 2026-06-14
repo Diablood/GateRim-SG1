@@ -707,3 +707,15 @@ Negative checks:
    Tok'ra peaceful visitors (test)
    ```
 6. Confirm the hidden Tok'ra faction is created and the peaceful visit starts.
+
+## 0.2.24-dev - Tok'ra safehouse follow-up lead
+
+Suggested validation:
+
+1. Build with a forced C# rebuild.
+2. Prepare a safehouse test and keep Tok'ra trust neutral.
+3. Enter the safehouse and exchange with the contact: the dialogue should give Medicine XP, but no follow-up lead.
+4. Raise Tok'ra trust to cooperative with the debug step action, prepare/create a fresh safehouse, then exchange: one follow-up safehouse lead should be stored if capacity remains.
+5. Raise Tok'ra trust to trusted and repeat with a fresh contact: one follow-up lead should again be stored if capacity remains.
+6. Fill the lead registry to the cap and repeat: the briefing should report that stored lead capacity is already full.
+7. Confirm the contact remains non-trading, non-recruitable, non-hostile and once per generated contact.

@@ -1,3 +1,13 @@
+# Roadmap
+
+## 0.2.24-dev — Tok'ra safehouse follow-up lead
+
+- Preserve the validated non-trading Tok'ra safehouse contact exchange.
+- Keep the once-per-contact trust acknowledgement, trust-scaled Medicine XP and closeable briefing dialog.
+- Add a trust-gated follow-up safehouse lead for cooperative and trusted Tok'ra contacts when stored lead capacity remains.
+- Keep wary and neutral contacts limited to briefing information.
+- No trade, recruitment, direct treatment, item reward, quest or military aid.
+
 # GateRim SG-1 — Development roadmap
 
 ## Immediate maintenance — pre-0.2 cleanup preparation

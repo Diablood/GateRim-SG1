@@ -1,6 +1,17 @@
 # Changelog
 
 
+## 0.2.24-dev — Add trust-gated Tok'ra safehouse follow-up lead
+
+- Keep the Tok'ra safehouse contact exchange non-trading, non-recruitable, non-hostile and once per generated contact.
+- Preserve the existing `+1` Tok'ra trust acknowledgement, trust-scaled Medicine XP and detailed vanilla briefing dialog.
+- Add a trust-gated follow-up lead after the safehouse contact exchange: cooperative and trusted tiers can store one additional Tok'ra safehouse lead if the lead registry has room.
+- Keep wary and neutral contacts limited to medical briefing information only.
+- Preserve the existing safehouse lead cap and avoid direct item rewards, treatment, recruitment, quests, commerce or military aid.
+- Align mod metadata and C# assembly version with `0.2.24`.
+- Requires a forced C# rebuild.
+
+
 ## 0.2.23-dev-r1 — Move Tok'ra safehouse briefing details to dialog
 
 - Keep the historical message short so the vanilla message history remains readable.

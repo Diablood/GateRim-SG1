@@ -1,6 +1,6 @@
 # Tok'ra safehouse contact dialogue
 
-Version: `0.2.23-dev`
+Version: `0.2.24-dev`
 
 This milestone keeps the very small, non-trading dialogue outcome of the
 peaceful Tok'ra contact generated inside hidden safehouse sites, then makes the
@@ -19,7 +19,7 @@ medical briefing scale lightly with the current Tok'ra trust tier.
   - cooperative: `600` XP;
   - trusted: `800` XP.
 - The briefing message now appends a small medical hint that also varies by trust tier.
-- The hint is narrative only: it does not create a treatment, item reward, quest or future obligation.
+- The hint remains narrative, but cooperative and trusted contacts can now provide one follow-up safehouse lead if the lead registry has room.
 - The exchange can only be completed once per generated safehouse contact.
 - No merchant stock, recruitment, military aid, world quest or caravan is added.
 
@@ -84,3 +84,17 @@ The detailed safehouse briefing is now shown in a vanilla closeable dialog. The
 message history only receives a short summary with the Medicine XP gained, so
 the player can still review the event without flooding the message log with the
 full narrative text.
+
+## 0.2.24-dev update
+
+The safehouse contact can now provide a light follow-up lead when Tok'ra trust is
+high enough:
+
+- wary and neutral contacts provide no additional lead;
+- cooperative contacts can store one follow-up safehouse lead if capacity remains;
+- trusted contacts can also store one follow-up safehouse lead, with a more confident narrative note;
+- the existing lead cap of `3` is preserved.
+
+The outcome remains deliberately limited. The contact still does not trade,
+recruit, heal directly, start a quest, provide items or call military aid. The
+lead is only a saved pointer for the existing safehouse follow-up systems.

@@ -18,30 +18,43 @@ Le contact Tok'ra limite volontairement ses informations aux gestes médicaux es
 
 {1} reçoit {2} points d'expérience en Médecine.
 
-{3}</GR_TokraSafehouseContactDialogue_BriefingDialog_Wary>
+{3}
+
+{4}</GR_TokraSafehouseContactDialogue_BriefingDialog_Wary>
     <GR_TokraSafehouseContactDialogue_BriefingDialog_Neutral>{1} échange brièvement avec {0}.
 
 Le contact Tok'ra transmet un compte rendu médical de terrain : la planque restera discrète, ses coordonnées ne doivent pas être réutilisées et le réseau Tok'ra note votre prudence.
 
 {1} reçoit {2} points d'expérience en Médecine.
 
-{3}</GR_TokraSafehouseContactDialogue_BriefingDialog_Neutral>
+{3}
+
+{4}</GR_TokraSafehouseContactDialogue_BriefingDialog_Neutral>
     <GR_TokraSafehouseContactDialogue_BriefingDialog_Cooperative>{1} échange avec {0}.
 
 Le contact Tok'ra partage des procédures de triage et de stabilisation plus détaillées, signe que le réseau accepte une coopération prudente.
 
 {1} reçoit {2} points d'expérience en Médecine.
 
-{3}</GR_TokraSafehouseContactDialogue_BriefingDialog_Cooperative>
+{3}
+
+{4}</GR_TokraSafehouseContactDialogue_BriefingDialog_Cooperative>
     <GR_TokraSafehouseContactDialogue_BriefingDialog_Trusted>{1} échange longuement avec {0}.
 
 Le contact Tok'ra transmet un briefing médical avancé sur la stabilisation de terrain et les signes biologiques liés aux symbiotes. Le réseau Tok'ra traite votre discrétion comme fiable.
 
 {1} reçoit {2} points d'expérience en Médecine.
 
-{3}</GR_TokraSafehouseContactDialogue_BriefingDialog_Trusted>
+{3}
+
+{4}</GR_TokraSafehouseContactDialogue_BriefingDialog_Trusted>
     <GR_TokraSafehouseContactDialogue_Hint_Wary>Le contact ne va pas plus loin : il déconseille toute tentative locale de procédure Tok'ra avancée tant que le réseau reste méfiant.</GR_TokraSafehouseContactDialogue_Hint_Wary>
     <GR_TokraSafehouseContactDialogue_Hint_Neutral>Il laisse entendre que les Tok'ra peuvent reconnaître certains signes biologiques avant les médecins ordinaires, mais refuse de transmettre plus qu'un protocole de terrain.</GR_TokraSafehouseContactDialogue_Hint_Neutral>
     <GR_TokraSafehouseContactDialogue_Hint_Cooperative>Il évoque prudemment des méthodes de stabilisation plus avancées qui exigeraient une relation durable avec le réseau Tok'ra, pas une simple planque de passage.</GR_TokraSafehouseContactDialogue_Hint_Cooperative>
     <GR_TokraSafehouseContactDialogue_Hint_Trusted>Il mentionne que des cellules fiables peuvent parfois recevoir des orientations médicales Tok'ra beaucoup plus sensibles, mais seulement par des canaux séparés et préparés.</GR_TokraSafehouseContactDialogue_Hint_Trusted>
+    <GR_TokraSafehouseContactDialogue_FollowUpLead_None>Le contact ne fournit aucune nouvelle piste de planque exploitable.</GR_TokraSafehouseContactDialogue_FollowUpLead_None>
+    <GR_TokraSafehouseContactDialogue_FollowUpLead_Cooperative>Avant de repartir dans la clandestinité, le contact transmet une piste de planque Tok'ra à vérifier plus tard.</GR_TokraSafehouseContactDialogue_FollowUpLead_Cooperative>
+    <GR_TokraSafehouseContactDialogue_FollowUpLead_Trusted>Le contact confirme un canal plus fiable vers une autre planque Tok'ra discrète.</GR_TokraSafehouseContactDialogue_FollowUpLead_Trusted>
+    <GR_TokraSafehouseContactDialogue_FollowUpLead_Full>Vos colons disposent déjà du maximum de pistes de planque Tok'ra conservables.</GR_TokraSafehouseContactDialogue_FollowUpLead_Full>
+    <GR_TokraSafehouseContactDialogue_FollowUpLead_Unavailable>Le réseau Tok'ra n'arrive pas à transmettre une piste de suivi exploitable pour le moment.</GR_TokraSafehouseContactDialogue_FollowUpLead_Unavailable>
 </LanguageData>

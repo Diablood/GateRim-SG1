@@ -17,6 +17,7 @@ namespace GateRimSG1.Goauld
         private const int NeutralMedicalBriefingMedicineXp = 400;
         private const int CooperativeMedicalBriefingMedicineXp = 600;
         private const int TrustedMedicalBriefingMedicineXp = 800;
+        private const int FollowUpLeadGain = 1;
 
         private bool contactAcknowledged;
 
@@ -74,6 +75,11 @@ namespace GateRimSG1.Goauld
             string negotiatorLabel = negotiator?.LabelShortCap ?? "";
             string medicineXpText = medicalBriefingMedicineXp.ToString();
             string medicalHint = GetMedicalHintMessage(briefingTier);
+            FollowUpLeadResult followUpLeadResult = TryGrantFollowUpLead(
+                briefingTier);
+            string followUpLeadText = GetFollowUpLeadDialogMessage(
+                briefingTier,
+                followUpLeadResult);
 
             Messages.Message(
                 GetAcknowledgementMessageKey(briefingTier)
@@ -92,7 +98,8 @@ namespace GateRimSG1.Goauld
                             contact.LabelShortCap,
                             negotiatorLabel,
                             medicineXpText,
-                            medicalHint)
+                            medicalHint,
+                            followUpLeadText)
                         .ToString()));
 
             GameComponent_TokraTrustTracker.NotifySafehouseContactAcknowledged();
@@ -103,9 +110,34 @@ namespace GateRimSG1.Goauld
                 + $"{contact.Map?.uniqueID.ToString() ?? "unknown"}; "
                 + $"trust tier {GetBriefingTierLogLabel(briefingTier)}; "
                 + $"medicine XP {medicalBriefingMedicineXp}; "
+                + $"follow-up lead result: "
+                + $"{GetFollowUpLeadResultLogLabel(followUpLeadResult)}; "
                 + $"medical briefing applied: {appliedMedicalBriefing}.");
 
             return true;
+        }
+
+        private static FollowUpLeadResult TryGrantFollowUpLead(
+            TokraTrustTier tier)
+        {
+            if (tier == TokraTrustTier.Wary || tier == TokraTrustTier.Neutral)
+            {
+                return FollowUpLeadResult.NotOffered;
+            }
+
+            if (!GameComponent_TokraSafehouseLeadTracker.CanStoreMoreLeads())
+            {
+                return FollowUpLeadResult.AlreadyFull;
+            }
+
+            bool stored = GameComponent_TokraSafehouseLeadTracker
+                .TryStoreSafehouseLead(
+                    FollowUpLeadGain,
+                    "safehouse contact follow-up");
+
+            return stored
+                ? FollowUpLeadResult.Stored
+                : FollowUpLeadResult.Unavailable;
         }
 
         private static bool TryApplyMedicalBriefingTraining(
@@ -179,6 +211,39 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        private static string GetFollowUpLeadDialogMessage(
+            TokraTrustTier tier,
+            FollowUpLeadResult result)
+        {
+            return GetFollowUpLeadDialogMessageKey(tier, result)
+                .Translate()
+                .ToString();
+        }
+
+        private static string GetFollowUpLeadDialogMessageKey(
+            TokraTrustTier tier,
+            FollowUpLeadResult result)
+        {
+            if (result == FollowUpLeadResult.Stored)
+            {
+                return tier == TokraTrustTier.Trusted
+                    ? "GR_TokraSafehouseContactDialogue_FollowUpLead_Trusted"
+                    : "GR_TokraSafehouseContactDialogue_FollowUpLead_Cooperative";
+            }
+
+            if (result == FollowUpLeadResult.AlreadyFull)
+            {
+                return "GR_TokraSafehouseContactDialogue_FollowUpLead_Full";
+            }
+
+            if (result == FollowUpLeadResult.Unavailable)
+            {
+                return "GR_TokraSafehouseContactDialogue_FollowUpLead_Unavailable";
+            }
+
+            return "GR_TokraSafehouseContactDialogue_FollowUpLead_None";
+        }
+
         private static string GetBriefingDialogMessageKey(TokraTrustTier tier)
         {
             switch (tier)
@@ -207,6 +272,30 @@ namespace GateRimSG1.Goauld
                 default:
                     return "neutral";
             }
+        }
+
+        private static string GetFollowUpLeadResultLogLabel(
+            FollowUpLeadResult result)
+        {
+            switch (result)
+            {
+                case FollowUpLeadResult.Stored:
+                    return "stored";
+                case FollowUpLeadResult.AlreadyFull:
+                    return "already full";
+                case FollowUpLeadResult.Unavailable:
+                    return "unavailable";
+                default:
+                    return "not offered";
+            }
+        }
+
+        private enum FollowUpLeadResult
+        {
+            NotOffered,
+            Stored,
+            AlreadyFull,
+            Unavailable
         }
     }
 }

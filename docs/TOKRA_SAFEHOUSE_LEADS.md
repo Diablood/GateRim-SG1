@@ -77,3 +77,13 @@ does not generate a map or rewards.
 Since `0.2.17-dev`, one stored lead can instead create a temporary enterable
 safehouse site containing a small medical stash. Only one Tok'ra safehouse
 marker or site can be active at a time.
+
+## Contact follow-up lead
+
+Since `0.2.24-dev`, a cooperative or trusted Tok'ra safehouse contact can store
+one additional safehouse lead after the once-per-contact briefing, as long as
+the saved lead registry has remaining capacity.
+
+Wary and neutral contacts do not provide a follow-up lead. The cap remains
+`3` stored leads. This adds no item reward, direct treatment, trade,
+recruitment, quest or military aid.

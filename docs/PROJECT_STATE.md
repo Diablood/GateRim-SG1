@@ -1,3 +1,16 @@
+# Project state
+
+0.2.24-dev - Add trust-gated Tok'ra safehouse follow-up lead
+
+Status: prepared for local application and testing.
+
+The safehouse contact exchange remains a vanilla colonist right-click outcome, unique per generated contact. It preserves the existing trust acknowledgement, trust-scaled Medicine XP and detailed briefing dialog. At cooperative and trusted Tok'ra trust tiers, the contact can now store one additional safehouse lead if the lead registry has remaining capacity. Wary and neutral contacts do not provide a follow-up lead. No trade, recruitment, direct treatment, item reward, quest or military aid is added.
+
+Current mod metadata after applying `0.2.24-dev`:
+
+- `About/About.xml`: `modVersion = 0.2.24-dev`
+- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.24`
+
 # GateRim SG-1 — Current project state
 
 ## Purpose

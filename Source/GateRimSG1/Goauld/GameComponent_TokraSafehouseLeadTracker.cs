@@ -63,6 +63,24 @@ namespace GateRimSG1.Goauld
             return GetCurrentLeadCount() < MaximumSafehouseLeads;
         }
 
+        public static bool TryStoreSafehouseLead(
+            int requestedGain,
+            string reasonLabel)
+        {
+            GameComponent_TokraSafehouseLeadTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot store a Tok'ra safehouse lead: the lead "
+                    + "tracker is unavailable.");
+                return false;
+            }
+
+            return tracker.TryStoreLead(requestedGain, reasonLabel);
+        }
+
         public static bool TryConsumeSafehouseLead(string reasonLabel)
         {
             GameComponent_TokraSafehouseLeadTracker tracker
@@ -95,6 +113,23 @@ namespace GateRimSG1.Goauld
             tracker.ApplyLeadGain(
                 SafehouseSignalLeadGain,
                 "safehouse signal");
+        }
+
+        private bool TryStoreLead(int requestedGain, string reasonLabel)
+        {
+            if (requestedGain <= 0)
+            {
+                GR_Log.Message(
+                    $"Ignored non-positive Tok'ra safehouse lead gain "
+                    + $"request after {reasonLabel}: {requestedGain}.");
+                return false;
+            }
+
+            int previousLeadCount = safehouseLeadCount;
+
+            ApplyLeadGain(requestedGain, reasonLabel);
+
+            return safehouseLeadCount > previousLeadCount;
         }
 
         private bool TryConsumeLead(string reasonLabel)
