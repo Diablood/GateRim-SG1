@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.2.27-dev-r2 — Mix Tok'ra defensive diversion effects
+
+- Change successful defensive diversion from a pure stun into a mixed disruption.
+- Keep a short immediate stun for fast feedback.
+- Add delayed nausea/vomiting for biological targets when the vanilla vomit job is available.
+- Preserve existing limits: trusted tier only, powered communicator, active threat required, up to three hostile pawns, five-day cooldown.
+- Keep the future direction that communicator actions should later be operated through a pawn interaction.
+- Requires a forced C# rebuild.
+
+## 0.2.27-dev-r1 — Fix Tok'ra defensive diversion stun targeting
+
+- Fix the communicator defensive-diversion request so RimWorld 1.6 stun signatures are matched by parameter type instead of assuming a generic `Thing` instigator.
+- Prevent valid hostile targets from always falling through to the diversion-failed message.
+- Keep the design unchanged: trusted tier only, active threat required, up to three hostile pawns briefly disrupted, five-day cooldown.
+- Note future direction: communicator requests should later be operated through a pawn interaction rather than only as direct building gizmos.
+- Requires a forced C# rebuild.
+
+## 0.2.27-dev — Add Tok'ra defensive diversion request
+
+- Add the first active trusted-channel request to the Tok'ra secure communicator.
+- Allow trusted colonies to request a rare defensive diversion while hostile pawns are active on the current map.
+- Disrupt up to three hostile pawns briefly, then place the request on a five-day cooldown.
+- Keep the support defensive and clandestine: no Tok'ra squad, trade, recruitment, quest, item reward or permanent military aid is added.
+- Align mod metadata and C# assembly version with `0.2.27`.
+- Requires a forced C# rebuild.
+
 ## 0.2.26-dev — Add trusted Tok'ra secure communicator foundation
 
 - Add the buildable `SG1_TokraSecureCommunicator` as a first secure-channel prototype.

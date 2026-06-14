@@ -1,6 +1,6 @@
 # Tok'ra interaction roadmap
 
-Version: `0.2.25-dev`
+Version: `0.2.27-dev`
 
 This document freezes the current Tok'ra interaction direction before adding
 larger rewards, quests or military support. It is intentionally a design and
@@ -128,7 +128,7 @@ Possible actions:
 request medical advice
 request a safehouse lead
 request emergency extraction support
-request defensive disruption during a major attack
+request defensive disruption during a major attack (first prototype added in `0.2.27-dev`)
 ```
 
 The communicator should not create normal trade, recruitment or a permanent
@@ -173,8 +173,7 @@ Candidate forms:
    - more thematic than direct combat power
 ```
 
-The first coded military-support step should probably be tactical warning or
-covert disruption, not a full reinforcement squad.
+The first coded military-support step is now covert defensive disruption through the trusted communicator (`0.2.27-dev`). Full reinforcement squads remain outside the current scope.
 
 ### 5. Short questline option
 
@@ -223,14 +222,13 @@ story supports it.
 
 ```text
 0.2.26-dev - Add trusted Tok'ra communicator foundation (implemented)
-0.2.27-dev - Add communicator medical-support request
-0.2.28-dev - Add communicator safehouse-lead request
-0.2.29-dev - Add trusted Tok'ra tactical warning prototype
+0.2.27-dev - Add trusted Tok'ra defensive diversion request (implemented)
+0.2.28-dev - Add communicator medical-support request
+0.2.29-dev - Add communicator safehouse-lead request
 later      - Add short Tok'ra questline and race/culture branches
 ```
 
-The exact order may change, but the communicator foundation is the cleanest
-bridge between current safehouse contacts and future medical or military aid.
+The exact order may change, but the communicator now has a first active trusted request. Medical and safehouse requests should remain limited and cooldown-gated.
 
 ## 0.2.26-dev update
 
@@ -249,3 +247,13 @@ no large allied army calls
 no automatic cure-all medical button
 no direct Stargate travel requirement yet
 ```
+
+## 0.2.27-dev update
+
+The first active trusted communicator request is now implemented as a defensive
+diversion. It requires a powered communicator, trusted Tok'ra tier, active
+hostile pawns on the current map and an available cooldown. It briefly disrupts
+up to three enemies, then enters a five-day silence period.
+
+This intentionally avoids physical Tok'ra reinforcements, offensive strikes,
+trade, recruitment, quests or item rewards.

@@ -3,7 +3,7 @@
     <ThingDef ParentName="FurnitureBase">
         <defName>SG1_TokraSecureCommunicator</defName>
         <label>Tok'ra secure communicator</label>
-        <description>A discreet encrypted Tok'ra communication station. In this prototype it establishes a trusted contact channel and lists the future request families without granting items, treatment, quests, recruitment, trade or military aid yet.</description>
+        <description>A discreet encrypted Tok'ra communication station. It establishes a trusted contact channel and can request a rare defensive diversion during an active attack without enabling trade, recruitment, quests or permanent military aid.</description>
         <graphicData>
             <texPath>Things/Building/SG1_TokraSecureCommunicator</texPath>
             <graphicClass>Graphic_Single</graphicClass>

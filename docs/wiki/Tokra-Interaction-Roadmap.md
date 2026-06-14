@@ -1,10 +1,10 @@
 # Feuille de route des interactions Tok'ra
 
 > Statut : feuille de route
-> Version : 0.2.25-dev
+> Version : 0.2.27-dev
 
 Cette page résume la direction prévue pour les interactions avec les Tok'ra.
-Elle ne débloque pas encore de nouvelle récompense en jeu.
+Depuis `0.2.27-dev`, la première aide défensive active existe via le communicateur fiable.
 
 ## Déjà en place
 
@@ -22,8 +22,7 @@ piste de suivi aux paliers coopératif et fiable
 ```
 
 Les Tok'ra restent une faction clandestine : pas de colonie publique, pas de
-commerce classique, pas de recrutement et pas d'aide militaire directe pour le
-moment.
+commerce classique, pas de recrutement et pas de renfort militaire permanent.
 
 ## Sens des paliers
 
@@ -31,7 +30,7 @@ moment.
 méfiante     : contact très limité
 neutre       : aide médicale modeste et prudente
 coopérative  : coordination via planques et pistes de suivi
-fiable       : future base pour les soutiens avancés
+fiable       : base pour les soutiens avancés
 ```
 
 ## Directions prévues
@@ -57,8 +56,7 @@ confiance. Il pourrait permettre de demander ponctuellement :
 ```text
 une piste de planque
 un conseil médical
-une aide d'urgence rare
-une perturbation défensive pendant une attaque
+une diversion défensive pendant une attaque active
 ```
 
 ### Aide militaire
@@ -68,7 +66,7 @@ sont plutôt :
 
 ```text
 avertissement tactique avant une menace
-sabotage discret ou perturbation d'un raid
+sabotage discret ou perturbation d'un raid (premier prototype en `0.2.27-dev`)
 petit groupe temporaire de 1 à 3 agents en cas de crise
 extraction ou aide d'urgence limitée
 ```

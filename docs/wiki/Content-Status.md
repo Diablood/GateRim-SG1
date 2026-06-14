@@ -96,7 +96,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
 | Histoires culturelles | Première base native : parcours SGC complémentaires, enfances Jaffa, carrières Jaffa de domaine et libres, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
 | Réactions sociales contextuelles | Première base : méfiance Jaffa libre envers les hôtes Goa'uld, hostilité Tok'ra envers les Goa'uld, prudence envers les Jaffa marqués et discipline locale près d'un Grand Maître | 0.2.5-dev |
-| Communicateur sécurisé Tok'ra | Prototype de bâtiment alimenté ouvrant un canal au palier fiable ; prépare les futures demandes médicales, pistes et aides défensives sans récompense directe pour le moment | 0.2.26-dev |
+| Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; permet une diversion défensive rare pendant une attaque active et prépare encore les futures demandes médicales, pistes et questline | 0.2.26-dev / diversion 0.2.27-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
@@ -107,3 +107,5 @@ Development note: `0.2.22-dev-r2` preserves Tok'ra trust during safehouse prepar
 Development note: `0.2.23-dev` adds trust-tier medical hints to the Tok'ra safehouse contact briefing without adding item rewards, direct treatment, quests, recruitment, trade or military aid.
 
 Development note: `0.2.24-dev` lets cooperative and trusted Tok'ra safehouse contacts store one follow-up safehouse lead when the lead registry has remaining capacity, without adding trade, recruitment, direct treatment, items, quests or military aid.
+
+Development note: `0.2.27-dev` adds the first active trusted communicator request: a rare defensive Tok'ra diversion during an active hostile threat, without trade, recruitment, physical reinforcements or material rewards.

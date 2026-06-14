@@ -105,6 +105,13 @@ Depuis `0.2.25-dev`, une [feuille de route des interactions Tok'ra](Tokra-Intera
 
 Elle couvre les pistes suivantes : soutien médical, réseau de planques, communicateur sécurisé, aide défensive rare, courte questline et réactions futures selon les races ou cultures.
 
+
+## Communicateur sécurisé Tok'ra
+
+Depuis `0.2.26-dev`, les colonies ayant atteint le palier fiable peuvent construire un [communicateur sécurisé Tok'ra](Tokra-Secure-Communicator).
+
+Depuis `0.2.27-dev`, ce communicateur permet de demander une [diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request) pendant une attaque active. L'aide reste limitée et clandestine : elle perturbe quelques ennemis, mais ne fait pas apparaître de renforts permanents.
+
 ## Évolutions prévues
 
 ```text

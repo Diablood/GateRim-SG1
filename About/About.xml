@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.26-dev</modVersion>
+    <modVersion>0.2.27-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -74,6 +74,7 @@ Current development scope:
 - Dedicated Tok'ra field clothing set applied to generated safehouse contacts
 - Trust-scaled Tok'ra safehouse contact dialogue outcome with a once-per-contact trust acknowledgement, medical briefing, tier-specific advanced medical hint and trust-gated follow-up lead
 - Trusted-tier Tok'ra secure communicator foundation for future medical, safehouse and defensive support requests
+- Trusted Tok'ra secure communicator defensive-diversion request prototype
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

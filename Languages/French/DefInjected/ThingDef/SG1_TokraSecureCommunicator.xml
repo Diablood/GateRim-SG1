@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_TokraSecureCommunicator.label>communicateur sécurisé Tok'ra</SG1_TokraSecureCommunicator.label>
-    <SG1_TokraSecureCommunicator.description>Station de communication Tok'ra discrète et chiffrée. Dans ce prototype, elle établit un canal de contact au palier fiable et présente les futures familles de demandes sans encore accorder d'objet, soin, quête, recrutement, commerce ou aide militaire.</SG1_TokraSecureCommunicator.description>
+    <SG1_TokraSecureCommunicator.description>Station de communication Tok'ra discrète et chiffrée. Elle établit un canal de contact au palier fiable et permet une diversion défensive rare pendant une attaque active, sans commerce, recrutement, quête, soin direct ou aide militaire permanente.</SG1_TokraSecureCommunicator.description>
 </LanguageData>
