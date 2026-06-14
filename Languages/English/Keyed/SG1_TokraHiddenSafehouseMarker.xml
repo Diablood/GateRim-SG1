@@ -2,4 +2,8 @@
 <LanguageData>
     <GR_TokraHiddenSafehouseMarker_InspectString>Incomplete Tok'ra safehouse coordinates. Expires in about {0} day(s). This marker cannot be entered yet.</GR_TokraHiddenSafehouseMarker_InspectString>
     <GR_TokraHiddenSafehouseMarker_Expired>The incomplete Tok'ra safehouse coordinates have gone cold.</GR_TokraHiddenSafehouseMarker_Expired>
+    <GR_TokraSafehouseDebug_Prepared>Tok'ra safehouse test prepared: neutral trust, 1 stored lead and no inactive safehouse marker or site.</GR_TokraSafehouseDebug_Prepared>
+    <GR_TokraSafehouseDebug_ActiveMap>Cannot prepare the test while a Tok'ra safehouse map is active. Reform the caravan and leave that map first.</GR_TokraSafehouseDebug_ActiveMap>
+    <GR_TokraSafehouseDebug_Unavailable>Cannot prepare the Tok'ra safehouse test because its game trackers are unavailable.</GR_TokraSafehouseDebug_Unavailable>
+    <GR_TokraSafehouseDebug_CreateFailed>Could not create the Tok'ra safehouse test site. Run "Prepare Tok'ra safehouse site test" first and make sure the colony is selected.</GR_TokraSafehouseDebug_CreateFailed>
 </LanguageData>

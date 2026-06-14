@@ -83,6 +83,20 @@ namespace GateRimSG1.Goauld
             return GetTierForScore(GetCurrentTrustScore());
         }
 
+        public static bool DebugSetTrustScore(int value)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.trustScore = ClampTrust(value);
+            tracker.waryDiplomaticCooldownUntilTick = 0;
+            return true;
+        }
+
         public static string GetInspectString()
         {
             int score = GetCurrentTrustScore();

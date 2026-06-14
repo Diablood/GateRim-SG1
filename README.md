@@ -13,29 +13,30 @@ A Stargate SG-1 mod project for RimWorld 1.6.
 - Required DLC for the current development branch: `Biotech`
 
 ## Current milestone
-### 0.2.16-dev — Add hidden Tok'ra safehouse world marker
+### 0.2.17-dev — Add enterable hidden Tok'ra safehouse site
 
-A stored Tok'ra safehouse lead can now reveal one temporary marker on the
-world map.
+A stored Tok'ra safehouse lead can now reveal one temporary site that a
+caravan can visit.
 
 ```text
 1 stored safehouse lead
-    -> consumed by SG1_TokraHiddenSafehouseWorldMarker
-    -> one non-hostile world marker near the colony
-    -> automatic expiration after 5 RimWorld days
+    -> consumed by SG1_TokraHiddenSafehouseSiteIncident
+    -> one non-hostile vanilla site near the colony
+    -> one small generated map
+    -> 2 tretonin doses and 4 industrial medicine
+    -> automatic expiration after 10 RimWorld days if unvisited
 ```
 
-The marker deliberately creates no map, loot, pawn, caravan, trader,
-recruitment, military aid or raid. A second marker cannot be created while the
-first remains active.
+The site deliberately creates no trader, recruitment, permanent settlement,
+military aid, hostile pawn or raid. A marker and a site cannot coexist.
 
 A forced C# rebuild is required for this milestone.
 
 ## Next development focus
 
-- validate marker creation, save persistence, duplicate prevention and
-  expiration;
-- add an enterable hidden Tok'ra safehouse site only in a later milestone.
+- validate site creation, caravan travel, map generation, reward contents,
+  save persistence, cleanup and expiration;
+- keep Tok'ra contacts, trading and recruitment for later milestones.
 
 ## First playable milestone
 
@@ -170,3 +171,19 @@ duration: 5 RimWorld days
 The marker cannot be entered yet. It creates no map, loot, trader,
 recruitment, military aid or raid. It is the first safe world-map footprint for
 future hidden Tok'ra safehouse systems.
+
+
+#### Enterable Tok'ra hidden safehouse
+
+Since `0.2.17-dev`, one stored lead can create a temporary vanilla site:
+
+```text
+-1 safehouse lead
+1 enterable non-hostile site
+2 tretonin doses
+4 industrial medicine
+duration before arrival: 10 RimWorld days
+```
+
+The generated map is deliberately small and contains no hostile defenders,
+trader, recruitable pawn, military aid or permanent settlement.

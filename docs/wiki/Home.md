@@ -114,3 +114,7 @@ encore de site mondial visitable.
 Depuis `0.2.16-dev`, une piste de planque Tok'ra peut créer un
 [marqueur temporaire sur la carte du monde](Tokra-Hidden-Safehouse-World-Marker),
 sans générer encore de carte secondaire.
+
+Depuis `0.2.17-dev`, une piste peut aussi révéler une
+[planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site) temporaire contenant un
+petit cache médical non défendu.

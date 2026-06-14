@@ -52,3 +52,7 @@ Le marqueur ne crée pas encore :
 - de colonie permanente.
 
 Il sert de première étape avant une vraie planque Tok'ra visitable.
+
+Depuis `0.2.17-dev`, la [planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site)
+constitue l'étape suivante. Un marqueur actif empêche sa création, et une
+planque active empêche la création d'un nouveau marqueur.

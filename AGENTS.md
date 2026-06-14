@@ -33,6 +33,11 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 - Report the validation and build commands executed.
 - Before requesting in-game validation, add the exact manual test checklist to
   `docs/PROJECT_STATE.md` and to the relevant technical document.
+- Manual tests must name the exact developer-menu path and visible label for
+  every action. Do not require hidden state changes or debug actions that do
+  not exist.
+- Keep the mandatory happy-path test short. Put refusal, expiration and other
+  regression cases in a separate optional section.
 - After the user reports the results, record the validation status in
   `docs/PROJECT_STATE.md` and update the corresponding `docs/ROADMAP.md`
   checklist.

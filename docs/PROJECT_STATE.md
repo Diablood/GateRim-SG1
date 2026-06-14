@@ -16,13 +16,13 @@ Before starting a task:
 Latest validated published tag:
 
 ```text
-v0.2.16-dev - Add hidden Tok'ra safehouse world marker
+v0.2.17-dev - Add enterable hidden Tok'ra safehouse site
 ```
 
 Current working branch:
 
 ```text
-feature/tokra-hidden-safehouse-world-marker
+feature/tokra-enterable-safehouse-site-prototype
 ```
 
 ## Current validated milestone
@@ -30,35 +30,36 @@ feature/tokra-hidden-safehouse-world-marker
 Latest validated local milestone:
 
 ```text
-0.2.16-dev - Add hidden Tok'ra safehouse world marker
+0.2.17-dev - Add enterable hidden Tok'ra safehouse site
 ```
 
 Published tag:
 
 ```text
-v0.2.16-dev
+v0.2.17-dev
 ```
 
 Publication status at the time this handoff was written:
 
 ```text
-0.2.16-dev repaired locally after an incomplete browser-generated attempt.
+0.2.17-dev prepared locally from the published v0.2.16-dev tag.
 Forced C# rebuild and XML validation passed.
-Manual RimWorld tests passed on June 14, 2026.
-Published as v0.2.16-dev on June 14, 2026.
+Manual RimWorld tests passed on June 14, 2026 using the dedicated preparation
+and site-creation debug actions.
+Published as v0.2.17-dev on June 14, 2026.
 ```
 
-Current mod metadata after applying `0.2.16-dev`:
+Current mod metadata after applying `0.2.17-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.16-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.16
+About/About.xml: modVersion = 0.2.17-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.17
 ```
 
 Reason:
 
 ```text
-0.2.16-dev adds C# incident-worker and WorldObject code.
+0.2.17-dev adds C# incident-worker and vanilla Site integration code.
 A forced rebuild is required.
 ```
 
@@ -166,6 +167,25 @@ Validated behavior:
 - prevents duplicate active markers;
 - creates no generated map, loot, pawn, caravan, visitor, trader, recruitment, military aid or raid.
 
+### 0.2.17-dev — Enterable hidden Tok'ra safehouse site
+
+Validated behavior:
+- adds `SG1_TokraHiddenSafehouseSiteIncident`;
+- adds `IncidentWorker_TokraHiddenSafehouseSite`;
+- adds `SG1_TokraHiddenSafehouseSite` based on the vanilla `Site` world object;
+- adds `SG1_TokraHiddenSafehouseSitePart` based on the vanilla item-stash site
+  worker and generation step;
+- requires and consumes `1` stored safehouse lead;
+- reuses persistent hidden `SG1_Tokra`;
+- excludes wary trust;
+- creates one temporary site 5 to 12 world tiles from the colony;
+- generates a reduced `120 x 120` non-hostile map when visited;
+- places `2` tretonin doses and `4` industrial medicine;
+- expires after `600000` ticks, or 10 RimWorld days, if unvisited;
+- prevents a safehouse marker and safehouse site from coexisting;
+- creates no hostile pawn, trader, recruitment, military aid, raid or
+  permanent settlement.
+
 ## Current gameplay state
 
 Tok'ra:
@@ -180,7 +200,8 @@ Tok'ra:
 - safehouse signal;
 - safehouse lead tracker;
 - safehouse lead follow-up cache;
-- temporary hidden safehouse world marker.
+- temporary hidden safehouse world marker;
+- temporary enterable hidden safehouse site.
 
 Research:
 - dedicated `GateRim SG-1` tab;
@@ -194,56 +215,70 @@ Biological acquisition:
 - one immature Prim'ta symbiote every 3 days from a player queen;
 - maturation costs 20 raw meat and requires Goa'uld biotechnology.
 
-## Validation checklist for 0.2.16-dev
+## Validation checklist for 0.2.17-dev
 
 Result: passed in RimWorld on June 14, 2026.
 
-1. Rebuild C# with `-t:Rebuild`.
-2. Start RimWorld and confirm no red errors.
-3. Force `SG1_TokraHiddenSafehouseWorldMarker` at `0` leads and confirm it refuses.
-4. Force `SG1_TokraSafehouseSignal` to store at least one lead.
-5. Force `SG1_TokraHiddenSafehouseWorldMarker`.
-6. Confirm one lead is consumed.
-7. Confirm a world marker appears near the colony.
-8. Confirm the marker is selectable and says it cannot be entered yet.
-9. Confirm no generated map, loot, pawn, caravan, trader, recruitment, military aid or raid appears.
-10. Save and reload with the marker active.
-11. Confirm the marker remains.
-12. Let time pass until expiration and confirm it disappears.
-13. Confirm forcing another marker while one exists refuses.
-14. Confirm no duplicate Tok'ra faction is created.
+Mandatory happy-path test:
 
-## Recommended next milestone after 0.2.16 validation
+1. After rebuilding, fully close and restart RimWorld. Enable developer mode
+   under `Options > General > Development mode`, then load a colony.
+2. On the colony map, open `Debug actions` and choose
+   `GateRim SG-1 > Prepare Tok'ra safehouse site test`.
+   Expected: a green message confirms neutral trust, `1` stored lead and no
+   inactive safehouse marker or site.
+3. Open `Debug actions` and choose
+   `GateRim SG-1 > Create Tok'ra safehouse test site`.
+   Expected: a positive letter, lead count `0/3`, and exactly one world site.
+4. Form a caravan with at least one colonist and send it to the safehouse.
+   Expected: the available action is a visit, not an attack.
+5. On arrival, confirm the small map has no enemies and contains exactly `2`
+   tretonin doses and `4` industrial medicine.
+6. Save and reload while the safehouse map is open.
+   Expected: map, caravan and cache persist without red errors.
+7. Use `Reform caravan` and leave.
+   Expected: the temporary map and world site disappear cleanly.
+
+Optional regression tests:
+
+1. With `0` leads and no active site, run
+   `GateRim SG-1 > Create Tok'ra safehouse test site` again.
+   Expected: no site appears.
+2. Prepare and create one site, then run the same creation action again before
+   visiting it. Expected: no second site appears.
+3. Prepare and create one site, then leave it unvisited for `10` RimWorld
+   days. Expected: the site expires automatically.
+
+## Recommended next milestone after 0.2.17 validation
 
 Preferred:
 
 ```text
-0.2.17-dev - Add enterable hidden Tok'ra safehouse site prototype
+0.2.18-dev - Add a non-trading Tok'ra safehouse contact prototype
 ```
 
 Keep it small:
-- consume 1 lead;
-- create one temporary site;
-- generate a small non-hostile map or simple reward flow;
-- no trader yet;
-- no recruitment yet;
-- no permanent settlement;
-- no combat by default.
+- add at most one peaceful Tok'ra host to the validated safehouse map;
+- keep the pawn non-recruitable;
+- keep no trade inventory;
+- keep no military aid;
+- preserve clean site departure and removal;
+- keep no combat by default.
 
 Alternative:
 
 ```text
-0.2.17-dev - Review normal resource acquisition pacing
+0.2.18-dev - Review safehouse reward and travel pacing
 ```
 
-Use this if tretonin, Prim'ta or Goa'uld equipment availability feels off after
-playtesting.
+Use this if the travel cost, ten-day timeout or medical reward feels wrong
+after playtesting.
 
 ## Publication checklist
 
 Before commit:
 - verify the current branch with `git branch --show-current`;
-- if needed, create a dedicated branch, for example `git switch -c feature/tokra-hidden-safehouse-world-marker`;
+- if needed, create a dedicated branch, for example `git switch -c feature/tokra-enterable-safehouse-site-prototype`;
 - run RimWorld startup test;
 - run targeted developer-tool tests;
 - inspect `Player.log`;

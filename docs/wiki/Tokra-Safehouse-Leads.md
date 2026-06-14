@@ -56,3 +56,12 @@ Depuis `0.2.16-dev`, une piste peut aussi être consommée pour créer un
 la carte du monde.
 
 Ce marqueur ne peut pas encore être visité.
+
+## Planque visitable
+
+Depuis `0.2.17-dev`, une piste peut aussi être consommée pour créer une
+[planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site).
+
+La planque est temporaire, non hostile et contient uniquement un petit cache
+médical. Un marqueur et une planque visitable ne peuvent pas être actifs en
+même temps.

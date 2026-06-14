@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.2.17-dev — Add enterable hidden Tok'ra safehouse site
+
+- Add incident `SG1_TokraHiddenSafehouseSiteIncident`.
+- Add `IncidentWorker_TokraHiddenSafehouseSite`.
+- Add vanilla-based site part `SG1_TokraHiddenSafehouseSitePart`.
+- Add a reduced-size enterable `Site` world object.
+- Consume one stored Tok'ra safehouse lead on successful site creation.
+- Reuse the persistent hidden `SG1_Tokra` faction.
+- Place `2` tretonin doses and `4` industrial medicine on the generated map.
+- Expire an unvisited site after `10` RimWorld days.
+- Prevent a Tok'ra safehouse marker and site from coexisting.
+- Add `Prepare Tok'ra safehouse site test` under the `GateRim SG-1` developer
+  actions to reset trust to neutral, store one lead and remove inactive test
+  markers or sites.
+- Add `Create Tok'ra safehouse test site` so validation does not depend on
+  RimWorld's truncated `Do incident (Map)` Def-name list.
+- Keep the site non-hostile, with no trader, recruitment, military aid, raid or
+  permanent settlement.
+- Add French translations, technical documentation, manual tests and wiki
+  drafts.
+- Align C# assembly version with `0.2.17`.
+- Requires a forced C# rebuild.
+
 ## 0.2.16-dev — Add hidden Tok'ra safehouse world marker
 
 - Add world object `SG1_TokraHiddenSafehouseMarker`.

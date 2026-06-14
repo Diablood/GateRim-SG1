@@ -258,3 +258,7 @@ Depuis `0.2.16-dev`, une piste de planque peut aussi créer un
 la carte du monde.
 
 Le marqueur ne crée pas encore de site visitable.
+
+Depuis `0.2.17-dev`, une piste peut enfin révéler une
+[planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site). Une caravane peut
+explorer sa petite carte non hostile et récupérer un cache médical limité.

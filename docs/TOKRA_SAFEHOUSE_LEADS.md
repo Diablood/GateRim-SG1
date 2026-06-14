@@ -71,3 +71,9 @@ non-enterable hidden Tok'ra safehouse marker on the world map.
 
 This is the first world-map footprint for the safehouse system, but it still
 does not generate a map or rewards.
+
+## Enterable-site follow-up
+
+Since `0.2.17-dev`, one stored lead can instead create a temporary enterable
+safehouse site containing a small medical stash. Only one Tok'ra safehouse
+marker or site can be active at a time.

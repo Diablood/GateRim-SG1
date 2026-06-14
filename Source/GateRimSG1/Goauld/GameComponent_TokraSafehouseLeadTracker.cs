@@ -39,6 +39,20 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.safehouseLeadCount ?? 0;
         }
 
+        public static bool DebugSetLeadCount(int value)
+        {
+            GameComponent_TokraSafehouseLeadTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.safehouseLeadCount = ClampLeadCount(value);
+            return true;
+        }
+
         public static int GetRemainingLeadCapacity()
         {
             return MaximumSafehouseLeads - GetCurrentLeadCount();

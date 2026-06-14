@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <IncidentDef>
+        <defName>SG1_TokraHiddenSafehouseSiteIncident</defName>
+        <label>Tok'ra hidden safehouse</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraHiddenSafehouseSite</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.002</baseChance>
+        <earliestDay>90</earliestDay>
+        <minRefireDays>90</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra hidden safehouse located</letterLabel>
+        <letterText>Your colonists have completed a stored Tok'ra safehouse lead. A temporary non-hostile safehouse is now visible on the world map and can be visited by caravan for {TRETONINCOUNT} tretonin dose(s) and {MEDICINECOUNT} industrial medicine unit(s). One safehouse lead was consumed. Remaining safehouse leads: {LEADCOUNT}/{LEADMAX}.</letterText>
+        <letterDef>PositiveEvent</letterDef>
+    </IncidentDef>
+</Defs>

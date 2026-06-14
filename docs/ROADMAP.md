@@ -1170,3 +1170,26 @@
 - [x] Validate marker expiration
 - [x] Validate save/reload with active marker
 - [x] Validate no duplicate marker
+
+
+## 0.2.17-dev — Enterable hidden Tok'ra safehouse site
+
+- [x] Add a vanilla-based enterable safehouse site
+- [x] Consume one stored safehouse lead
+- [x] Reuse the persistent hidden Tok'ra faction
+- [x] Generate a reduced-size non-hostile map
+- [x] Add a modest medical stash
+- [x] Expire an unvisited site after 10 days
+- [x] Prevent marker and site coexistence
+- [x] Add one deterministic developer action for test preparation
+- [x] Add one direct developer action for test-site creation
+- [x] Keep no trader, recruitment, military aid, hostile pawns or raid
+- [x] Add French translations, technical docs and player-wiki drafts
+- [x] Validate incident refusal at 0 leads
+- [x] Validate site creation and lead consumption
+- [x] Validate caravan travel and non-hostile arrival
+- [x] Validate generated-map size and medical stash contents
+- [x] Validate save/reload before and after map generation
+- [x] Validate site cleanup and unvisited expiration
+- [x] Validate marker/site duplicate prevention
+- [x] Validate no duplicate Tok'ra faction

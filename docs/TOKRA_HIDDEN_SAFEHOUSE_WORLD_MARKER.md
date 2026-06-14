@@ -19,6 +19,9 @@ safehouse signal
 -> visible world marker
 ```
 
+Since `0.2.17-dev`, an active marker also blocks creation of the enterable
+safehouse site, and an active site blocks creation of another marker.
+
 ## Incident
 
 ```text

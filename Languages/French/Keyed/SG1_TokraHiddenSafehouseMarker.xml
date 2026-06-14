@@ -2,4 +2,8 @@
 <LanguageData>
     <GR_TokraHiddenSafehouseMarker_InspectString>Coordonnées de planque Tok'ra incomplètes. Expire dans environ {0} jour(s). Ce marqueur ne peut pas encore être visité.</GR_TokraHiddenSafehouseMarker_InspectString>
     <GR_TokraHiddenSafehouseMarker_Expired>Les coordonnées incomplètes de la planque Tok'ra ne sont plus exploitables.</GR_TokraHiddenSafehouseMarker_Expired>
+    <GR_TokraSafehouseDebug_Prepared>Test de planque Tok'ra préparé : confiance neutre, 1 piste stockée et aucun marqueur ou site de planque inactif.</GR_TokraSafehouseDebug_Prepared>
+    <GR_TokraSafehouseDebug_ActiveMap>Impossible de préparer le test pendant qu'une carte de planque Tok'ra est active. Reformez la caravane et quittez d'abord cette carte.</GR_TokraSafehouseDebug_ActiveMap>
+    <GR_TokraSafehouseDebug_Unavailable>Impossible de préparer le test de planque Tok'ra, car ses registres de partie sont indisponibles.</GR_TokraSafehouseDebug_Unavailable>
+    <GR_TokraSafehouseDebug_CreateFailed>Impossible de créer la planque Tok'ra de test. Lancez d'abord « Prepare Tok'ra safehouse site test » et vérifiez que la colonie est affichée.</GR_TokraSafehouseDebug_CreateFailed>
 </LanguageData>
