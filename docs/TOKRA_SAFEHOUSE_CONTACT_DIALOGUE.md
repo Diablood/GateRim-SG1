@@ -1,6 +1,6 @@
 # Tok'ra safehouse contact dialogue
 
-Version: `0.2.22-dev`
+Version: `0.2.23-dev`
 
 This milestone keeps the very small, non-trading dialogue outcome of the
 peaceful Tok'ra contact generated inside hidden safehouse sites, then makes the
@@ -18,6 +18,8 @@ medical briefing scale lightly with the current Tok'ra trust tier.
   - neutral: `400` XP;
   - cooperative: `600` XP;
   - trusted: `800` XP.
+- The briefing message now appends a small medical hint that also varies by trust tier.
+- The hint is narrative only: it does not create a treatment, item reward, quest or future obligation.
 - The exchange can only be completed once per generated safehouse contact.
 - No merchant stock, recruitment, military aid, world quest or caravan is added.
 
@@ -65,3 +67,20 @@ safehouse, and accidentally resets trust back to neutral before speaking to the
 next contact. Use the `Increase Tok'ra trust test step` and `Decrease Tok'ra
 trust test step` actions to adjust the score before generating the next
 safehouse contact.
+
+## 0.2.23-dev update
+
+The safehouse briefing now appends a small trust-tier medical hint. The hint is
+intended to make Tok'ra medical knowledge feel more progressive and to prepare
+future advanced support, while deliberately preserving the current limited
+contact design.
+
+The contact still does not trade, recruit, heal directly, start a quest, provide
+items or call military aid.
+
+## 0.2.23-dev-r1 update
+
+The detailed safehouse briefing is now shown in a vanilla closeable dialog. The
+message history only receives a short summary with the Medicine XP gained, so
+the player can still review the event without flooding the message log with the
+full narrative text.

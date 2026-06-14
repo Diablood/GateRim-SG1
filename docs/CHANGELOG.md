@@ -1,6 +1,21 @@
 # Changelog
 
 
+## 0.2.23-dev-r1 — Move Tok'ra safehouse briefing details to dialog
+
+- Keep the historical message short so the vanilla message history remains readable.
+- Show the detailed trust-tier medical briefing in a vanilla closeable dialog after the exchange.
+- Preserve the validated mechanics: once per contact, `+1` Tok'ra trust and trust-scaled Medicine XP.
+
+## 0.2.23-dev — Add Tok'ra safehouse advanced medical hint
+
+- Keep the Tok'ra safehouse contact exchange non-trading, non-recruitable, non-hostile and once per generated contact.
+- Preserve the existing `+1` Tok'ra trust acknowledgement and trust-scaled Medicine XP.
+- Add a small tier-specific medical hint to the contact briefing, foreshadowing future Tok'ra medical support without granting items, quests, recruitment or military aid.
+- Align mod metadata and C# assembly version with `0.2.23`.
+- Requires a forced C# rebuild.
+
+
 ## 0.2.22-dev-r2 — Preserve Tok'ra trust during safehouse briefing tests
 
 - Keep `Prepare Tok'ra safehouse site test` focused on the safehouse test environment: remove inactive safehouse markers/sites and store one lead.

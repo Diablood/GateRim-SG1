@@ -55,6 +55,7 @@
 - [x] Add a Free Jaffa world-faction baseline.
 - [ ] Consolidate Tok'ra world presence and non-developer acquisition loops.
   - [x] Trust-scaled Tok'ra safehouse briefing validation tooling preserves current trust during test preparation.
+  - [x] Safehouse contact briefings now include tier-specific medical hints without adding rewards or quests.
 - [ ] Start `0.3.x` with the Stargate foundation only after the no-gate slice is playable.
 
 ## Completed milestones
@@ -1205,6 +1206,15 @@
 - [x] Add tier-specific narrative messages.
 - [x] Keep no trader, recruitment, military aid, repeatable reward loop or quest.
 
+## 0.2.23-dev — Tok'ra safehouse advanced medical hint
+
+- [x] Keep the safehouse contact non-trading, non-recruitable and non-hostile.
+- [x] Keep the exchange unique per generated contact.
+- [x] Preserve the `+1` Tok'ra trust acknowledgement.
+- [x] Preserve trust-scaled Medicine briefing XP.
+- [x] Add a tier-specific medical hint to the briefing message.
+- [x] Keep no item reward, direct treatment, trader, recruitment, military aid, repeatable reward loop or quest.
+
 ## 0.2.21-dev — Tok'ra safehouse medical briefing
 
 - Extend the validated non-trading safehouse contact dialogue with a modest medical briefing.
@@ -1229,3 +1239,9 @@
 - [ ] Validate no trader role and disabled recruitment
 - [ ] Validate save/reload with the contact present
 - [ ] Validate clean caravan departure and site removal
+
+
+## Recent adjustment — 0.2.23-dev-r1
+
+- Tok'ra safehouse contact briefing details moved to a vanilla closeable dialog.
+- Message history kept concise with a short XP summary.

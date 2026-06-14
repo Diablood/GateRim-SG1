@@ -72,15 +72,28 @@ namespace GateRimSG1.Goauld
                 medicalBriefingMedicineXp);
 
             string negotiatorLabel = negotiator?.LabelShortCap ?? "";
+            string medicineXpText = medicalBriefingMedicineXp.ToString();
+            string medicalHint = GetMedicalHintMessage(briefingTier);
+
             Messages.Message(
                 GetAcknowledgementMessageKey(briefingTier)
                     .Translate(
                         contact.LabelShortCap,
                         negotiatorLabel,
-                        medicalBriefingMedicineXp.ToString()),
+                        medicineXpText),
                 contact,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    GetBriefingDialogMessageKey(briefingTier)
+                        .Translate(
+                            contact.LabelShortCap,
+                            negotiatorLabel,
+                            medicineXpText,
+                            medicalHint)
+                        .ToString()));
 
             GameComponent_TokraTrustTracker.NotifySafehouseContactAcknowledged();
 
@@ -143,6 +156,41 @@ namespace GateRimSG1.Goauld
                     return "GR_TokraSafehouseContactDialogue_Acknowledged_Trusted";
                 default:
                     return "GR_TokraSafehouseContactDialogue_Acknowledged_Neutral";
+            }
+        }
+
+        private static string GetMedicalHintMessage(TokraTrustTier tier)
+        {
+            return GetMedicalHintMessageKey(tier).Translate().ToString();
+        }
+
+        private static string GetMedicalHintMessageKey(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return "GR_TokraSafehouseContactDialogue_Hint_Wary";
+                case TokraTrustTier.Cooperative:
+                    return "GR_TokraSafehouseContactDialogue_Hint_Cooperative";
+                case TokraTrustTier.Trusted:
+                    return "GR_TokraSafehouseContactDialogue_Hint_Trusted";
+                default:
+                    return "GR_TokraSafehouseContactDialogue_Hint_Neutral";
+            }
+        }
+
+        private static string GetBriefingDialogMessageKey(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return "GR_TokraSafehouseContactDialogue_BriefingDialog_Wary";
+                case TokraTrustTier.Cooperative:
+                    return "GR_TokraSafehouseContactDialogue_BriefingDialog_Cooperative";
+                case TokraTrustTier.Trusted:
+                    return "GR_TokraSafehouseContactDialogue_BriefingDialog_Trusted";
+                default:
+                    return "GR_TokraSafehouseContactDialogue_BriefingDialog_Neutral";
             }
         }
 

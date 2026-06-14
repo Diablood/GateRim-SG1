@@ -16,13 +16,13 @@ Before starting a task:
 Latest validated published milestone:
 
 ```text
-0.2.21-dev - Add Tok'ra safehouse medical briefing outcome
+0.2.23-dev-r1 - Add Tok'ra safehouse advanced medical hint
 ```
 
 Validated behavior:
 
 ```text
-The generated Tok'ra safehouse contact is non-hostile, non-trading, non-recruitable and can be contacted through the vanilla colonist right-click flow. The once-per-contact exchange gives a narrative acknowledgement, +1 Tok'ra trust and 400 Medicine XP to the selected colonist.
+The generated Tok'ra safehouse contact is non-hostile, non-trading, non-recruitable and can be contacted through the vanilla colonist right-click flow. The once-per-contact exchange gives a narrative acknowledgement, +1 Tok'ra trust and trust-scaled Medicine XP to the selected colonist. Debug actions can increase or decrease Tok'ra trust by 5 for tier testing, and safehouse preparation preserves the current trust score.
 ```
 
 ## Current development milestone
@@ -36,14 +36,14 @@ Current local milestone:
 Purpose:
 
 ```text
-Make the non-trading Tok'ra safehouse medical briefing reflect the current Tok'ra trust tier without adding commerce, recruitment, quests, military aid or repeatable rewards.
+Add a small tier-specific medical hint to the non-trading Tok'ra safehouse briefing, foreshadowing future advanced Tok'ra medical support without adding commerce, recruitment, quests, military aid, items or repeatable rewards.
 ```
 
 Current mod metadata after applying `0.2.22-dev`:
 
 ```text
-About/About.xml: modVersion = 0.2.22-dev
-Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.22
+About/About.xml: modVersion = 0.2.23-dev
+Source/GateRimSG1/GateRimSG1.csproj: Version/AssemblyVersion/FileVersion = 0.2.23
 ```
 
 Implementation scope:
@@ -56,6 +56,7 @@ Interaction flow: select player colonist -> right-click Tok'ra safehouse contact
 Trust effect: +1 Tok'ra trust once per generated contact
 Medical effect: selected colonist receives trust-scaled Medicine XP once per generated contact
 Trust-scaled XP: wary 250, neutral 400, cooperative 600, trusted 800
+Medical hint: tier-specific narrative hint appended to the briefing message; no direct item, treatment, quest or aid is granted
 Debug support: generic +5 / -5 Tok'ra trust actions for tier testing; safehouse preparation preserves current trust while refreshing the test lead/site environment
 ```
 
@@ -69,6 +70,23 @@ C# changed. Use a forced rebuild with -t:Rebuild after extracting the ZIP.
 
 ```text
 Prepare Tok'ra safehouse site test no longer resets trust to neutral. It cleans inactive safehouse markers/sites, stores one lead and reports the preserved trust score/tier. Use the +5/-5 trust debug actions before creating a fresh safehouse contact.
+```
+
+
+## 0.2.23-dev — Tok'ra safehouse advanced medical hint
+
+Adds a non-mechanical medical hint to the existing once-per-contact Tok'ra
+safehouse briefing. The hint varies by current trust tier and foreshadows future
+advanced Tok'ra medical support while preserving all current limitations:
+
+```text
+no item reward
+no direct healing
+no trade
+no recruitment
+no quest
+no military aid
+no repeatable reward loop
 ```
 
 ## Environment and conventions
@@ -187,3 +205,10 @@ marker consuming one stored safehouse lead.
   select a colonist, right-click the Tok'ra contact, then choose the exchange.
 - The contact remains non-trading, non-recruitable and non-hostile.
 
+
+
+### 0.2.23-dev-r1 note
+
+The Tok'ra safehouse advanced medical hint remains mechanically unchanged, but
+the detailed briefing text now appears in a vanilla closeable dialog. The
+message history records only a short summary.
