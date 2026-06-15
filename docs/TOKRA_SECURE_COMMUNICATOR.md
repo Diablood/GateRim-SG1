@@ -1,6 +1,6 @@
 # Tok'ra secure communicator
 
-Version: `0.2.31-dev`
+Version: `0.2.32-dev`
 
 The Tok'ra secure communicator is the trusted-channel interaction point for
 advanced Tok'ra support. It is still deliberately limited: the Tok'ra remain
@@ -18,6 +18,7 @@ opens a vanilla contact dialog
 can request a rare defensive diversion during an active attack
 can request limited medical guidance when a colonist is wounded or sick
 can request an informational tactical threat assessment during an active hostile threat
+can show a non-effect status report for channel availability and cooldowns
 ```
 
 ## Medical guidance
@@ -105,3 +106,11 @@ one-day tactical cooldown
 no combat effect
 no map reveal
 ```
+
+
+## 0.2.32-dev status report
+
+The communicator can now show a non-effect status report through the selected
+colonist right-click workflow. It lists power, trust, local context and the
+current availability or cooldown state of every implemented Tok'ra request.
+The consultation does not consume any cooldown and does not trigger support.

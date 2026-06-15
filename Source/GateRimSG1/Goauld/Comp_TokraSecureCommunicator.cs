@@ -28,6 +28,7 @@ namespace GateRimSG1.Goauld
         private const int DefensiveDiversionMaximumVomitDelayTicks = 600;
         private const int MaximumDefensiveDiversionTargets = 3;
         private const string UseCommunicatorJobDefName = "SG1_UseTokraSecureCommunicator";
+        private const string CheckStatusReportJobDefName = "SG1_CheckTokraCommunicatorStatus";
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
         private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
         private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
@@ -36,6 +37,7 @@ namespace GateRimSG1.Goauld
         private enum TokraCommunicatorOperation
         {
             OpenChannel,
+            StatusReport,
             DefensiveDiversion,
             MedicalSupport,
             MedicalCache,
@@ -210,6 +212,17 @@ namespace GateRimSG1.Goauld
 
             foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
                 selPawn,
+                CheckStatusReportJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuStatusLabel"
+                    .Translate()
+                    .ToString(),
+                TokraCommunicatorOperation.StatusReport))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
                 UseCommunicatorJobDefName,
                 "GR_TokraSecureCommunicator_FloatMenuUseLabel".Translate().ToString(),
                 TokraCommunicatorOperation.OpenChannel))
@@ -308,6 +321,56 @@ namespace GateRimSG1.Goauld
                 GetThreatAssessmentStatusLabel(),
                 GetMedicalSupportStatusLabel(),
                 GetMedicalCacheStatusLabel()).ToString();
+        }
+
+        internal bool TryShowStatusReport(Pawn operatorPawn)
+        {
+            string disabledReason = GetStatusReportDisabledReason();
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            TokraTrustTier currentTier = GameComponent_TokraTrustTracker
+                .GetCurrentTier();
+            List<Pawn> threats = GetHostileThreats();
+            List<Pawn> patients = GetMedicalSupportCandidates();
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_StatusReportDialog".Translate(
+                        GetTrustTierLabel(currentTier),
+                        GetTrustStatusReportLabel(currentTier),
+                        GetPowerStatusReportLabel(),
+                        GetStatusLabel(),
+                        GetDiversionStatusLabel(),
+                        GetThreatAssessmentStatusLabel(),
+                        GetMedicalSupportStatusLabel(),
+                        GetMedicalCacheStatusLabel(),
+                        threats.Count.ToString(),
+                        patients.Count.ToString())
+                    .ToString()));
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_StatusReportOpened".Translate(),
+                parent,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+
+            GR_Log.Message(
+                $"Checked trusted Tok'ra communicator status at "
+                + $"{parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}; "
+                + $"hostiles {threats.Count}; patients {patients.Count}.");
+
+            return true;
         }
 
         internal bool TryOpenSecureChannel(Pawn operatorPawn)
@@ -676,6 +739,11 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
+            if (operation == TokraCommunicatorOperation.StatusReport)
+            {
+                return GetStatusReportDisabledReason();
+            }
+
             if (operation == TokraCommunicatorOperation.MedicalSupport
                 && !CanReceiveMedicalGuidance(operatorPawn))
             {
@@ -692,6 +760,8 @@ namespace GateRimSG1.Goauld
         {
             switch (operation)
             {
+                case TokraCommunicatorOperation.StatusReport:
+                    return GetStatusReportDisabledReason();
                 case TokraCommunicatorOperation.DefensiveDiversion:
                     return GetDiversionDisabledReason();
                 case TokraCommunicatorOperation.MedicalSupport:
@@ -717,6 +787,18 @@ namespace GateRimSG1.Goauld
         private static JobDef GetOperationJobDef(string defName)
         {
             return DefDatabase<JobDef>.GetNamedSilentFail(defName);
+        }
+
+        internal string GetStatusReportDisabledReason()
+        {
+            if (parent.Faction != null && parent.Faction != Faction.OfPlayer)
+            {
+                return "GR_TokraSecureCommunicator_NotPlayerControlled"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
         }
 
         internal string GetChannelDisabledReason()
@@ -849,6 +931,43 @@ namespace GateRimSG1.Goauld
             }
 
             return null;
+        }
+
+        private string GetTrustStatusReportLabel(TokraTrustTier tier)
+        {
+            if (tier == TokraTrustTier.Trusted)
+            {
+                return "GR_TokraSecureCommunicator_StatusReportTrustSufficient"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_StatusReportTrustInsufficient"
+                .Translate()
+                .ToString();
+        }
+
+        private string GetPowerStatusReportLabel()
+        {
+            CompPowerTrader powerComp = parent.GetComp<CompPowerTrader>();
+
+            if (powerComp == null)
+            {
+                return "GR_TokraSecureCommunicator_StatusReportPowerNotApplicable"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (powerComp.PowerOn)
+            {
+                return "GR_TokraSecureCommunicator_StatusReportPowerOn"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_StatusReportPowerOff"
+                .Translate()
+                .ToString();
         }
 
         private string GetStatusLabel()

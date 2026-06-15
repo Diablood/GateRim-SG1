@@ -7,6 +7,12 @@
     </JobDef>
 
     <JobDef>
+        <defName>SG1_CheckTokraCommunicatorStatus</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
+        <reportString>checking Tok'ra communicator channel status.</reportString>
+    </JobDef>
+
+    <JobDef>
         <defName>SG1_RequestTokraDefensiveDiversion</defName>
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
         <reportString>requesting Tok'ra defensive diversion.</reportString>

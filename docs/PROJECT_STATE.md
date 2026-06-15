@@ -1,53 +1,53 @@
 # Project state
 
-Current milestone: `0.2.30-dev - Add Tok'ra emergency medical cache request` adds a trusted, pawn-operated request that places a small emergency medical cache near the secure communicator when a wounded or sick colonist is present.
+Current milestone: `0.2.32-dev-r2 - Remove redundant power line from Tok'ra status report`.
 
-0.2.30-dev - Tok'ra emergency medical cache request
+## Current status
 
-Status: patch generated for local validation.
+`0.2.32-dev` added a pawn-operated Tok'ra communicator status report. The report
+lets a selected colonist consult the secure communicator without sending a real
+request or consuming any cooldown.
 
-This milestone gives the trusted communicator its first limited material support request without turning the Tok'ra into traders or direct healers.
+`0.2.32-dev-r1` kept the feature unchanged and replaced the first
+technical/debug-style report text with a more in-universe Tok'ra transmission.
 
-Current mod metadata after applying `0.2.30-dev`:
+`0.2.32-dev-r2` keeps the same gameplay and removes the visible power-state
+line from the report because the communicator can only be operated when its
+power state is already meaningful to the player.
 
-- `About/About.xml`: `modVersion = 0.2.30-dev`
-- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.30`
-
-## Implemented in this milestone
+## Implemented status report information
 
 ```text
 selected colonist -> right-click communicator
-request emergency medical cache
-trusted Tok'ra tier required
-powered communicator required
-wounded or sick human colonist required
-small cache placed near communicator
-medicine plus optional tretonin dose
-seven-day dedicated cache cooldown
-no direct healing, trade, recruitment, quest or military aid
+consult Tok'ra channel status
+Tok'ra trust state
+main channel state
+defensive diversion availability or cooldown
+tactical assessment availability or cooldown
+medical support availability or cooldown
+emergency medical cache availability or cooldown
+active hostile count
+wounded/sick human colonist count
+no request sent
+no cooldown consumed
+no gameplay effect triggered
 ```
 
-## Current limits
+## Current polish note
 
-```text
-cache content is deliberately small
-no direct healing
-no recurring supply chain
-no Tok'ra trade inventory
-no recruitment
-no questline step yet
-```
+A broader end-of-project pass should review all player-facing letters, messages,
+popups and dialogue windows for RP tone. The 0.2.32 status report is the first
+localized correction in that direction.
 
-## Recommended next implementation path
+## Current mod metadata after applying `0.2.32-dev-r2`
 
-```text
-0.2.31-dev - Add communicator safehouse-lead request
-later      - Add short Tok'ra questline and race/culture branches
-```
+- `About/About.xml`: `modVersion = 0.2.32-dev-r2`
+- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` remain set to `0.2.32`
 
 ## Build note
 
-This milestone updates C# gameplay code. Use a forced rebuild after applying the ZIP.
+This patch changes localization and metadata only. A forced rebuild is still safe
+and recommended in the normal validation workflow.
 
 ## Repository rules reminder
 

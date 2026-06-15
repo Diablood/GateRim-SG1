@@ -14,6 +14,7 @@ namespace GateRimSG1.Goauld
         private const TargetIndex CommunicatorIndex = TargetIndex.A;
         private const int OperationTicks = 180;
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
+        private const string CheckStatusReportJobDefName = "SG1_CheckTokraCommunicatorStatus";
         private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
         private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
         private const string RequestThreatAssessmentJobDefName = "SG1_RequestTokraThreatAssessment";
@@ -59,7 +60,11 @@ namespace GateRimSG1.Goauld
                         return;
                     }
 
-                    if (IsDiversionRequestJob())
+                    if (IsStatusReportJob())
+                    {
+                        comp.TryShowStatusReport(pawn);
+                    }
+                    else if (IsDiversionRequestJob())
                     {
                         comp.TryRequestDefensiveDiversion(pawn);
                     }
@@ -97,7 +102,11 @@ namespace GateRimSG1.Goauld
 
             string disabledReason;
 
-            if (IsDiversionRequestJob())
+            if (IsStatusReportJob())
+            {
+                disabledReason = comp.GetStatusReportDisabledReason();
+            }
+            else if (IsDiversionRequestJob())
             {
                 disabledReason = comp.GetDiversionDisabledReason();
             }
@@ -119,6 +128,11 @@ namespace GateRimSG1.Goauld
             }
 
             return !string.IsNullOrEmpty(disabledReason);
+        }
+
+        private bool IsStatusReportJob()
+        {
+            return job?.def?.defName == CheckStatusReportJobDefName;
         }
 
         private bool IsDiversionRequestJob()

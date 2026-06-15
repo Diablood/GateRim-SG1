@@ -1,3 +1,27 @@
+## 0.2.32-dev-r2 - Remove redundant power line from Tok'ra status report
+
+- Remove the visible "alimentation du relais" line from the Tok'ra channel status report.
+- Keep the same internal validation and communicator requirements.
+- Preserve the RP-style transmission introduced in `0.2.32-dev-r1`.
+- No gameplay change.
+- Requires no new XML root `About.xml`; keep metadata under `About/About.xml`.
+
+
+## 0.2.32-dev-r1 - RP pass on Tok'ra communicator status report
+
+- Reword the Tok'ra channel status report as an in-universe fragmented transmission.
+- Keep the same useful information: trust, power, channel availability, cooldown states, active hostiles and medical context.
+- Remove the most technical/debug-like player-facing phrasing from the report body.
+- No gameplay change.
+- Requires no new XML root `About.xml`; keep metadata under `About/About.xml`.
+
+
+## 0.2.32-dev - Tok'ra communicator status report
+
+- Added a pawn-operated Tok'ra communicator status report.
+- The report lists trust, power, implemented channel availability and cooldown states.
+- The consultation has no direct gameplay effect and consumes no cooldown.
+
 # Changelog
 
 ## 0.2.31-dev — Add Tok'ra tactical threat assessment request
