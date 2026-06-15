@@ -45,6 +45,7 @@
 - [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)
 - [Diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request)
 - [Soutien médical via communicateur Tok'ra](Tokra-Communicator-Medical-Support)
+- [Cache médicale d'urgence Tok'ra](Tokra-Emergency-Medical-Cache)
 - [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
 - [Cache d'une cellule Tok'ra](Tokra-Hidden-Cell-Cache)
 - [Signal de planque Tok'ra](Tokra-Safehouse-Signal)

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.30-dev — Add Tok'ra emergency medical cache request
+
+- Add a trusted-tier emergency medical cache request to the pawn-operated Tok'ra secure communicator.
+- Require a powered communicator, trusted Tok'ra tier and at least one wounded or sick human colonist on the current map.
+- Place a small emergency cache near the communicator with limited medicine and, when available, one tretonin dose.
+- Start a dedicated seven-day cache cooldown.
+- Keep the request non-commercial and non-repeatable in the short term: no direct healing, recruitment, quest or military aid.
+- Align mod metadata and C# assembly version with `0.2.30`.
+- Requires a forced C# rebuild.
+
+
 ## 0.2.29-dev — Add Tok'ra communicator medical support request
 
 - Add a trusted-tier medical guidance request to the Tok'ra secure communicator.

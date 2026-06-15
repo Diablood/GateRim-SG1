@@ -17,4 +17,10 @@
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
         <reportString>requesting Tok'ra medical guidance.</reportString>
     </JobDef>
+
+    <JobDef>
+        <defName>SG1_RequestTokraEmergencyMedicalCache</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
+        <reportString>requesting Tok'ra emergency medical cache.</reportString>
+    </JobDef>
 </Defs>

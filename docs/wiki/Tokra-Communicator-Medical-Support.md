@@ -40,3 +40,11 @@ pas d'aide militaire
 
 Cette demande donne une première utilité médicale au communicateur sans régler
 définitivement la future récompense Tok'ra.
+
+
+## Cache médicale séparée
+
+Depuis `0.2.30-dev`, le communicateur propose aussi une demande distincte de
+[cache médicale d'urgence](Tokra-Emergency-Medical-Cache). Contrairement au
+conseil médical, cette demande donne quelques fournitures limitées, mais ne
+soigne toujours pas directement.

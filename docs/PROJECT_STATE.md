@@ -1,37 +1,39 @@
 # Project state
 
-Current milestone: `0.2.29-dev - Add Tok'ra communicator medical support request` adds a trusted, pawn-operated medical-guidance request to the secure communicator. It requires a relevant wounded or sick colonist, grants Medicine XP to the operator and does not directly heal or deliver items.
+Current milestone: `0.2.30-dev - Add Tok'ra emergency medical cache request` adds a trusted, pawn-operated request that places a small emergency medical cache near the secure communicator when a wounded or sick colonist is present.
 
-0.2.28-dev - Pawn-operated Tok'ra secure communicator
+0.2.30-dev - Tok'ra emergency medical cache request
 
-Status: validated locally after `r1` hides direct communicator gizmos outside debug diagnostics.
+Status: patch generated for local validation.
 
-This milestone makes the trusted Tok'ra communicator behave like a device operated by a colonist instead of an instant building button.
+This milestone gives the trusted communicator its first limited material support request without turning the Tok'ra into traders or direct healers.
 
-Current mod metadata after applying `0.2.28-dev`:
+Current mod metadata after applying `0.2.30-dev`:
 
-- `About/About.xml`: `modVersion = 0.2.28-dev`
-- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.28`
+- `About/About.xml`: `modVersion = 0.2.30-dev`
+- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.30`
 
 ## Implemented in this milestone
 
 ```text
 selected colonist -> right-click communicator
-use secure communicator job
-request defensive diversion job
-short operation delay at the building
-trusted/powered/threat/cooldown checks preserved
-validated mixed diversion effects preserved
-direct building gizmos hidden unless advanced debug information is visible
+request emergency medical cache
+trusted Tok'ra tier required
+powered communicator required
+wounded or sick human colonist required
+small cache placed near communicator
+medicine plus optional tretonin dose
+seven-day dedicated cache cooldown
+no direct healing, trade, recruitment, quest or military aid
 ```
 
 ## Current limits
 
 ```text
-no Tok'ra reinforcement squad
-no direct medical request yet
-no safehouse-lead communicator request yet
-no trade
+cache content is deliberately small
+no direct healing
+no recurring supply chain
+no Tok'ra trade inventory
 no recruitment
 no questline step yet
 ```
@@ -39,8 +41,7 @@ no questline step yet
 ## Recommended next implementation path
 
 ```text
-0.2.29-dev - Add communicator medical-support request
-0.2.30-dev - Add communicator safehouse-lead request
+0.2.31-dev - Add communicator safehouse-lead request
 later      - Add short Tok'ra questline and race/culture branches
 ```
 

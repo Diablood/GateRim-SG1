@@ -84,3 +84,11 @@ entries, but active requests are no longer instant building actions.
 The communicator now supports a trusted medical-guidance request. It is operated
 through the selected-colonist right-click workflow, requires a local wounded or
 sick colonist, grants Medicine XP to the operator and does not heal directly.
+
+
+## 0.2.30-dev emergency medical cache
+
+The trusted communicator can now request a small emergency medical cache when a
+wounded or sick human colonist is present. The cache places limited medical
+supplies near the communicator and starts its own seven-day cooldown. It does not
+heal pawns directly and does not open trade, recruitment, quests or military aid.

@@ -15,6 +15,7 @@ namespace GateRimSG1.Goauld
         private const int OperationTicks = 180;
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
         private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
+        private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -65,6 +66,10 @@ namespace GateRimSG1.Goauld
                     {
                         comp.TryRequestMedicalSupport(pawn);
                     }
+                    else if (IsMedicalCacheRequestJob())
+                    {
+                        comp.TryRequestEmergencyMedicalCache(pawn);
+                    }
                     else
                     {
                         comp.TryOpenSecureChannel(pawn);
@@ -95,6 +100,10 @@ namespace GateRimSG1.Goauld
             {
                 disabledReason = comp.GetMedicalSupportDisabledReason();
             }
+            else if (IsMedicalCacheRequestJob())
+            {
+                disabledReason = comp.GetMedicalCacheDisabledReason();
+            }
             else
             {
                 disabledReason = comp.GetChannelDisabledReason();
@@ -111,6 +120,11 @@ namespace GateRimSG1.Goauld
         private bool IsMedicalSupportRequestJob()
         {
             return job?.def?.defName == RequestMedicalSupportJobDefName;
+        }
+
+        private bool IsMedicalCacheRequestJob()
+        {
+            return job?.def?.defName == RequestMedicalCacheJobDefName;
         }
 
         private Comp_TokraSecureCommunicator GetCommunicatorComp()

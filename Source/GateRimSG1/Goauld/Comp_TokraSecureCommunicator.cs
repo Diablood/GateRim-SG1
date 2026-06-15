@@ -18,7 +18,10 @@ namespace GateRimSG1.Goauld
     {
         private const int DefensiveDiversionCooldownTicks = 300000;
         private const int MedicalSupportCooldownTicks = 180000;
+        private const int MedicalCacheCooldownTicks = 420000;
         private const int MedicalSupportMedicineXp = 600;
+        private const int MedicalCacheIndustrialMedicineCount = 4;
+        private const int MedicalCacheTretoninDoseCount = 1;
         private const int DefensiveDiversionStunTicks = 180;
         private const int DefensiveDiversionMinimumVomitDelayTicks = 240;
         private const int DefensiveDiversionMaximumVomitDelayTicks = 600;
@@ -26,16 +29,19 @@ namespace GateRimSG1.Goauld
         private const string UseCommunicatorJobDefName = "SG1_UseTokraSecureCommunicator";
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
         private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
+        private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
 
         private enum TokraCommunicatorOperation
         {
             OpenChannel,
             DefensiveDiversion,
-            MedicalSupport
+            MedicalSupport,
+            MedicalCache
         }
 
         private int nextDefensiveDiversionRequestTick;
         private int nextMedicalSupportRequestTick;
+        private int nextMedicalCacheRequestTick;
         private List<Pawn> pendingDiversionVomitPawns = new List<Pawn>();
         private List<int> pendingDiversionVomitTicks = new List<int>();
 
@@ -51,6 +57,11 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref nextMedicalSupportRequestTick,
                 "tokraNextMedicalSupportRequestTick",
+                0);
+
+            Scribe_Values.Look(
+                ref nextMedicalCacheRequestTick,
+                "tokraNextMedicalCacheRequestTick",
                 0);
 
             Scribe_Collections.Look(
@@ -138,6 +149,22 @@ namespace GateRimSG1.Goauld
             medicalCommand.Disable(GetGizmoDisabledReason(medicalDisabledReason));
 
             yield return medicalCommand;
+
+            Command_Action medicalCacheCommand = new Command_Action
+            {
+                defaultLabel = "GR_TokraSecureCommunicator_MedicalCacheCommandLabel"
+                    .Translate(),
+                defaultDesc = "GR_TokraSecureCommunicator_MedicalCacheCommandDesc"
+                    .Translate(),
+                action = ShowPawnOperationRequiredMessage
+            };
+
+            string medicalCacheDisabledReason = GetMedicalCacheDisabledReason();
+
+            medicalCacheCommand.Disable(GetGizmoDisabledReason(
+                medicalCacheDisabledReason));
+
+            yield return medicalCacheCommand;
         }
 
 
@@ -178,6 +205,17 @@ namespace GateRimSG1.Goauld
                 RequestMedicalSupportJobDefName,
                 "GR_TokraSecureCommunicator_FloatMenuMedicalLabel".Translate().ToString(),
                 TokraCommunicatorOperation.MedicalSupport))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                RequestMedicalCacheJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuMedicalCacheLabel"
+                    .Translate()
+                    .ToString(),
+                TokraCommunicatorOperation.MedicalCache))
             {
                 yield return option;
             }
@@ -230,7 +268,8 @@ namespace GateRimSG1.Goauld
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
                 GetDiversionStatusLabel(),
-                GetMedicalSupportStatusLabel()).ToString();
+                GetMedicalSupportStatusLabel(),
+                GetMedicalCacheStatusLabel()).ToString();
         }
 
         internal bool TryOpenSecureChannel(Pawn operatorPawn)
@@ -416,6 +455,82 @@ namespace GateRimSG1.Goauld
         }
 
 
+        internal bool TryRequestEmergencyMedicalCache(Pawn operatorPawn)
+        {
+            string disabledReason = GetMedicalCacheDisabledReason();
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            List<Pawn> patients = GetMedicalSupportCandidates();
+            int patientCount = patients.Count;
+
+            if (patientCount <= 0)
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_MedicalNoPatient".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            int medicineCount;
+            int tretoninDoseCount;
+
+            if (!TryPlaceEmergencyMedicalCache(
+                out medicineCount,
+                out tretoninDoseCount))
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_MedicalCacheFailed".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            nextMedicalCacheRequestTick = Find.TickManager.TicksGame
+                + MedicalCacheCooldownTicks;
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_MedicalCacheRequested".Translate(
+                    medicineCount.ToString(),
+                    tretoninDoseCount.ToString(),
+                    patientCount.ToString(),
+                    FormatDays(MedicalCacheCooldownTicks)),
+                parent,
+                MessageTypeDefOf.PositiveEvent,
+                historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_MedicalCacheDialog".Translate(
+                        medicineCount.ToString(),
+                        tretoninDoseCount.ToString(),
+                        patientCount.ToString(),
+                        FormatDays(MedicalCacheCooldownTicks))
+                    .ToString()));
+
+            GR_Log.Message(
+                $"Requested trusted Tok'ra emergency medical cache from "
+                + $"communicator at {parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}; "
+                + $"placed medicine {medicineCount}, tretonin {tretoninDoseCount}; "
+                + $"patient candidates {patientCount}.");
+
+            return true;
+        }
+
+
         private void ShowPawnOperationRequiredMessage()
         {
             Messages.Message(
@@ -482,6 +597,8 @@ namespace GateRimSG1.Goauld
                     return GetDiversionDisabledReason();
                 case TokraCommunicatorOperation.MedicalSupport:
                     return GetMedicalSupportDisabledReason();
+                case TokraCommunicatorOperation.MedicalCache:
+                    return GetMedicalCacheDisabledReason();
                 default:
                     return GetChannelDisabledReason();
             }
@@ -581,6 +698,32 @@ namespace GateRimSG1.Goauld
             return null;
         }
 
+        internal string GetMedicalCacheDisabledReason()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return channelDisabledReason;
+            }
+
+            if (IsMedicalCacheCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_MedicalCacheCooldown".Translate(
+                    FormatDays(GetRemainingMedicalCacheCooldownTicks()))
+                    .ToString();
+            }
+
+            if (!HasMedicalSupportCandidates())
+            {
+                return "GR_TokraSecureCommunicator_MedicalNoPatient"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
         private string GetStatusLabel()
         {
             string disabledReason = GetChannelDisabledReason();
@@ -650,6 +793,36 @@ namespace GateRimSG1.Goauld
             }
 
             return "GR_TokraSecureCommunicator_MedicalStatusReady"
+                .Translate()
+                .ToString();
+        }
+
+        private string GetMedicalCacheStatusLabel()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return "GR_TokraSecureCommunicator_MedicalCacheStatusLocked"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (IsMedicalCacheCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_MedicalCacheStatusCooldown"
+                    .Translate(FormatDays(GetRemainingMedicalCacheCooldownTicks()))
+                    .ToString();
+            }
+
+            if (!HasMedicalSupportCandidates())
+            {
+                return "GR_TokraSecureCommunicator_MedicalCacheStatusNoPatient"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_MedicalCacheStatusReady"
                 .Translate()
                 .ToString();
         }
@@ -789,6 +962,52 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+        private bool TryPlaceEmergencyMedicalCache(
+            out int medicineCount,
+            out int tretoninDoseCount)
+        {
+            medicineCount = TryPlaceMedicalCacheStack(
+                "MedicineIndustrial",
+                MedicalCacheIndustrialMedicineCount);
+
+            tretoninDoseCount = TryPlaceMedicalCacheStack(
+                "SG1_TretoninDose",
+                MedicalCacheTretoninDoseCount);
+
+            return medicineCount > 0 || tretoninDoseCount > 0;
+        }
+
+        private int TryPlaceMedicalCacheStack(string defName, int stackCount)
+        {
+            Map map = parent.Map;
+
+            if (map == null || stackCount <= 0)
+            {
+                return 0;
+            }
+
+            ThingDef thingDef = DefDatabase<ThingDef>.GetNamedSilentFail(defName);
+
+            if (thingDef == null)
+            {
+                return 0;
+            }
+
+            Thing thing = ThingMaker.MakeThing(thingDef);
+            thing.stackCount = Math.Min(stackCount, thingDef.stackLimit);
+
+            if (!GenPlace.TryPlaceThing(
+                thing,
+                parent.Position,
+                map,
+                ThingPlaceMode.Near))
+            {
+                return 0;
+            }
+
+            return thing.stackCount;
+        }
+
         private bool IsMedicalSupportCooldownActive()
         {
             return GetRemainingMedicalSupportCooldownTicks() > 0;
@@ -804,6 +1023,23 @@ namespace GateRimSG1.Goauld
             return Math.Max(
                 0,
                 nextMedicalSupportRequestTick - Find.TickManager.TicksGame);
+        }
+
+        private bool IsMedicalCacheCooldownActive()
+        {
+            return GetRemainingMedicalCacheCooldownTicks() > 0;
+        }
+
+        private int GetRemainingMedicalCacheCooldownTicks()
+        {
+            if (Find.TickManager == null)
+            {
+                return 0;
+            }
+
+            return Math.Max(
+                0,
+                nextMedicalCacheRequestTick - Find.TickManager.TicksGame);
         }
 
         private bool IsDefensiveDiversionCooldownActive()
