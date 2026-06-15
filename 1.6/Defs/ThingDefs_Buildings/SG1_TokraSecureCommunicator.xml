@@ -3,7 +3,7 @@
     <ThingDef ParentName="FurnitureBase">
         <defName>SG1_TokraSecureCommunicator</defName>
         <label>Tok'ra secure communicator</label>
-        <description>A discreet encrypted Tok'ra communication station. It establishes a trusted contact channel and can request rare defensive, medical-guidance, emergency-cache or tactical threat-assessment support, and a status report for current channel cooldowns without enabling trade, recruitment, quests, direct treatment, intelligence fog removal or permanent military aid.</description>
+        <description>A discreet encrypted Tok'ra communication station. It establishes a trusted contact channel and can request rare defensive, medical-guidance, emergency-cache, tactical threat-assessment or operational-debrief support, and a status report for current channel cooldowns without enabling trade, recruitment, quests, direct treatment, intelligence fog removal or permanent military aid.</description>
         <graphicData>
             <texPath>Things/Building/SG1_TokraSecureCommunicator</texPath>
             <graphicClass>Graphic_Single</graphicClass>

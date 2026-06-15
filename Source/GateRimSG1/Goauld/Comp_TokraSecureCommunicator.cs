@@ -20,6 +20,8 @@ namespace GateRimSG1.Goauld
         private const int MedicalSupportCooldownTicks = 180000;
         private const int MedicalCacheCooldownTicks = 420000;
         private const int ThreatAssessmentCooldownTicks = 60000;
+        private const int OperationalDebriefCooldownTicks = 120000;
+        private const int OperationalDebriefSkillXp = 400;
         private const int MedicalSupportMedicineXp = 600;
         private const int MedicalCacheIndustrialMedicineCount = 4;
         private const int MedicalCacheTretoninDoseCount = 1;
@@ -33,6 +35,7 @@ namespace GateRimSG1.Goauld
         private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
         private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
         private const string RequestThreatAssessmentJobDefName = "SG1_RequestTokraThreatAssessment";
+        private const string RequestOperationalDebriefJobDefName = "SG1_SendTokraOperationalDebrief";
 
         private enum TokraCommunicatorOperation
         {
@@ -41,13 +44,15 @@ namespace GateRimSG1.Goauld
             DefensiveDiversion,
             MedicalSupport,
             MedicalCache,
-            ThreatAssessment
+            ThreatAssessment,
+            OperationalDebrief
         }
 
         private int nextDefensiveDiversionRequestTick;
         private int nextMedicalSupportRequestTick;
         private int nextMedicalCacheRequestTick;
         private int nextThreatAssessmentRequestTick;
+        private int nextOperationalDebriefRequestTick;
         private List<Pawn> pendingDiversionVomitPawns = new List<Pawn>();
         private List<int> pendingDiversionVomitTicks = new List<int>();
 
@@ -73,6 +78,11 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref nextThreatAssessmentRequestTick,
                 "tokraNextThreatAssessmentRequestTick",
+                0);
+
+            Scribe_Values.Look(
+                ref nextOperationalDebriefRequestTick,
+                "tokraNextOperationalDebriefRequestTick",
                 0);
 
             Scribe_Collections.Look(
@@ -163,6 +173,22 @@ namespace GateRimSG1.Goauld
 
             yield return threatAssessmentCommand;
 
+            Command_Action debriefCommand = new Command_Action
+            {
+                defaultLabel = "GR_TokraSecureCommunicator_DebriefCommandLabel"
+                    .Translate(),
+                defaultDesc = "GR_TokraSecureCommunicator_DebriefCommandDesc"
+                    .Translate(),
+                action = ShowPawnOperationRequiredMessage
+            };
+
+            string debriefDisabledReason = GetOperationalDebriefDisabledReason();
+
+            debriefCommand.Disable(GetGizmoDisabledReason(
+                debriefDisabledReason));
+
+            yield return debriefCommand;
+
             Command_Action medicalCommand = new Command_Action
             {
                 defaultLabel = "GR_TokraSecureCommunicator_MedicalCommandLabel"
@@ -226,6 +252,17 @@ namespace GateRimSG1.Goauld
                 UseCommunicatorJobDefName,
                 "GR_TokraSecureCommunicator_FloatMenuUseLabel".Translate().ToString(),
                 TokraCommunicatorOperation.OpenChannel))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                RequestOperationalDebriefJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuDebriefLabel"
+                    .Translate()
+                    .ToString(),
+                TokraCommunicatorOperation.OperationalDebrief))
             {
                 yield return option;
             }
@@ -317,6 +354,7 @@ namespace GateRimSG1.Goauld
             return "GR_TokraSecureCommunicator_Inspect".Translate(
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
+                GetOperationalDebriefStatusLabel(),
                 GetDiversionStatusLabel(),
                 GetThreatAssessmentStatusLabel(),
                 GetMedicalSupportStatusLabel(),
@@ -350,6 +388,7 @@ namespace GateRimSG1.Goauld
                         GetTrustStatusReportLabel(currentTier),
                         GetTrustProgressStatusReportLabel(trustScore, currentTier),
                         GetStatusLabel(),
+                        GetOperationalDebriefStatusLabel(),
                         GetDiversionStatusLabel(),
                         GetThreatAssessmentStatusLabel(),
                         GetMedicalSupportStatusLabel(),
@@ -404,6 +443,67 @@ namespace GateRimSG1.Goauld
                 + $"{parent.Position} on map "
                 + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
                 + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
+        internal bool TrySendOperationalDebrief(Pawn operatorPawn)
+        {
+            string disabledReason = GetOperationalDebriefDisabledReason();
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            string skillLabel;
+
+            if (!TryGrantOperationalDebriefExperience(
+                operatorPawn,
+                out skillLabel))
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_DebriefOperatorIncapable"
+                        .Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            nextOperationalDebriefRequestTick = Find.TickManager.TicksGame
+                + OperationalDebriefCooldownTicks;
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_DebriefRequested".Translate(
+                    operatorPawn.LabelShortCap,
+                    OperationalDebriefSkillXp.ToString(),
+                    skillLabel,
+                    FormatDays(OperationalDebriefCooldownTicks)),
+                parent,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_DebriefDialog".Translate(
+                        operatorPawn.LabelShortCap,
+                        OperationalDebriefSkillXp.ToString(),
+                        skillLabel,
+                        FormatDays(OperationalDebriefCooldownTicks))
+                    .ToString()));
+
+            GR_Log.Message(
+                $"Sent trusted Tok'ra operational debrief from "
+                + $"communicator at {parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn.LabelShortCap}; "
+                + $"trained {skillLabel} by {OperationalDebriefSkillXp} XP.");
 
             return true;
         }
@@ -753,6 +853,14 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
+            if (operation == TokraCommunicatorOperation.OperationalDebrief
+                && !CanReceiveOperationalDebriefExperience(operatorPawn))
+            {
+                return "GR_TokraSecureCommunicator_DebriefOperatorIncapable"
+                    .Translate()
+                    .ToString();
+            }
+
             return GetFloatMenuDisabledReasonForOperation(operation);
         }
 
@@ -773,6 +881,17 @@ namespace GateRimSG1.Goauld
 
             switch (operation)
             {
+                case TokraCommunicatorOperation.OperationalDebrief:
+                    if (IsOperationalDebriefCooldownActive())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuCooldown"
+                            .Translate(FormatDays(
+                                GetRemainingOperationalDebriefCooldownTicks()))
+                            .ToString();
+                    }
+
+                    return null;
+
                 case TokraCommunicatorOperation.DefensiveDiversion:
                     if (IsDefensiveDiversionCooldownActive())
                     {
@@ -894,6 +1013,8 @@ namespace GateRimSG1.Goauld
                     return GetMedicalCacheDisabledReason();
                 case TokraCommunicatorOperation.ThreatAssessment:
                     return GetThreatAssessmentDisabledReason();
+                case TokraCommunicatorOperation.OperationalDebrief:
+                    return GetOperationalDebriefDisabledReason();
                 default:
                     return GetChannelDisabledReason();
             }
@@ -947,6 +1068,25 @@ namespace GateRimSG1.Goauld
                 return "GR_TokraSecureCommunicator_RequiresTrusted".Translate(
                     GetTrustTierLabel(
                         GameComponent_TokraTrustTracker.GetCurrentTier()))
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        internal string GetOperationalDebriefDisabledReason()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return channelDisabledReason;
+            }
+
+            if (IsOperationalDebriefCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_DebriefCooldown".Translate(
+                    FormatDays(GetRemainingOperationalDebriefCooldownTicks()))
                     .ToString();
             }
 
@@ -1160,6 +1300,30 @@ namespace GateRimSG1.Goauld
             }
 
             return "GR_TokraSecureCommunicator_StatusLocked".Translate().ToString();
+        }
+
+        private string GetOperationalDebriefStatusLabel()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return "GR_TokraSecureCommunicator_DebriefStatusLocked"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (IsOperationalDebriefCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_DebriefStatusCooldown"
+                    .Translate(FormatDays(
+                        GetRemainingOperationalDebriefCooldownTicks()))
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_DebriefStatusReady"
+                .Translate()
+                .ToString();
         }
 
         private string GetDiversionStatusLabel()
@@ -1448,6 +1612,73 @@ namespace GateRimSG1.Goauld
             return false;
         }
 
+        private static bool CanReceiveOperationalDebriefExperience(Pawn pawn)
+        {
+            if (!CanUsePlayerOperator(pawn) || pawn.skills == null)
+            {
+                return false;
+            }
+
+            return GetOperationalDebriefSkill(pawn) != null;
+        }
+
+        private static bool TryGrantOperationalDebriefExperience(
+            Pawn pawn,
+            out string skillLabel)
+        {
+            skillLabel = null;
+
+            if (!CanReceiveOperationalDebriefExperience(pawn))
+            {
+                return false;
+            }
+
+            SkillRecord skill = GetOperationalDebriefSkill(pawn);
+
+            if (skill == null)
+            {
+                return false;
+            }
+
+            skill.Learn(OperationalDebriefSkillXp, true);
+            skillLabel = GetSkillLabel(skill);
+            return true;
+        }
+
+        private static SkillRecord GetOperationalDebriefSkill(Pawn pawn)
+        {
+            if (pawn?.skills == null)
+            {
+                return null;
+            }
+
+            SkillRecord social = pawn.skills.GetSkill(SkillDefOf.Social);
+
+            if (social != null && !social.TotallyDisabled)
+            {
+                return social;
+            }
+
+            SkillRecord intellectual = pawn.skills.GetSkill(SkillDefOf.Intellectual);
+
+            if (intellectual != null && !intellectual.TotallyDisabled)
+            {
+                return intellectual;
+            }
+
+            return null;
+        }
+
+        private static string GetSkillLabel(SkillRecord skill)
+        {
+            if (skill?.def == null)
+            {
+                return "compétence";
+            }
+
+            return skill.def.LabelCap.ToString();
+        }
+
         private static bool CanReceiveMedicalGuidance(Pawn pawn)
         {
             if (!CanUsePlayerOperator(pawn) || pawn.skills == null)
@@ -1516,6 +1747,23 @@ namespace GateRimSG1.Goauld
             }
 
             return thing.stackCount;
+        }
+
+        private bool IsOperationalDebriefCooldownActive()
+        {
+            return GetRemainingOperationalDebriefCooldownTicks() > 0;
+        }
+
+        private int GetRemainingOperationalDebriefCooldownTicks()
+        {
+            if (Find.TickManager == null)
+            {
+                return 0;
+            }
+
+            return Math.Max(
+                0,
+                nextOperationalDebriefRequestTick - Find.TickManager.TicksGame);
         }
 
         private bool IsThreatAssessmentCooldownActive()

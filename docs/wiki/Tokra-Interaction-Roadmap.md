@@ -104,3 +104,11 @@ s'ouvre qu'au palier de confiance fiable.
 
 Il ne donne pas encore de soin, d'objet, de piste, d'aide militaire, de commerce,
 de recrutement ou de quête.
+
+
+## Interaction ajoutée en 0.2.34-dev
+
+Le communicateur fiable permet désormais de transmettre un débriefing
+opérationnel Tok'ra. Cette interaction reste non matérielle : elle accorde un
+petit retour formatif à l'opérateur et prépare une future boucle RP de confiance
+ou de mission sans livrer d'objet ni appeler de renfort.

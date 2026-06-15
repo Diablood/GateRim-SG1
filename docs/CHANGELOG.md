@@ -1,3 +1,11 @@
+## 0.2.34-dev - Add Tok'ra operational debrief request
+
+- Add a pawn-operated trusted-channel operational debrief request to the Tok'ra secure communicator.
+- Require a powered communicator, trusted Tok'ra tier and an operator capable of learning Social or Intellectual.
+- Grant a small Social or Intellectual XP gain to the operator through a vanilla RP dialog, then apply a dedicated two-day cooldown.
+- Keep the request non-material and non-military: no item, treatment, reinforcement, trade, recruitment or quest is added.
+- Extend the Tok'ra channel status report and documentation with the new debrief channel.
+
 ## 0.2.33-dev-r1 - Simplify locked Tok'ra communicator option labels
 
 - Keep the trust-progression status report introduced in `0.2.33-dev`.

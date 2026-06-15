@@ -43,6 +43,7 @@
 - [Feuille de route des interactions Tok'ra](Tokra-Interaction-Roadmap)
 - [Communicateur sécurisé Tok'ra](Tokra-Secure-Communicator)
 - [État du canal Tok'ra](Tokra-Communicator-Status-Report)
+- [Débriefing opérationnel Tok'ra](Tokra-Operational-Debrief)
 - [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)
 - [Diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request)
 - [Soutien médical via communicateur Tok'ra](Tokra-Communicator-Medical-Support)

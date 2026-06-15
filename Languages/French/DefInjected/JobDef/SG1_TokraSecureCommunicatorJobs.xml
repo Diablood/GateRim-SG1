@@ -3,6 +3,7 @@
     <SG1_UseTokraSecureCommunicator.reportString>utilise le communicateur sécurisé Tok'ra.</SG1_UseTokraSecureCommunicator.reportString>
     <SG1_CheckTokraCommunicatorStatus.reportString>consulte l'état du canal Tok'ra.</SG1_CheckTokraCommunicatorStatus.reportString>
     <SG1_RequestTokraDefensiveDiversion.reportString>demande une diversion défensive Tok'ra.</SG1_RequestTokraDefensiveDiversion.reportString>
+    <SG1_SendTokraOperationalDebrief.reportString>transmet un débriefing opérationnel Tok'ra.</SG1_SendTokraOperationalDebrief.reportString>
     <SG1_RequestTokraMedicalSupport.reportString>demande un soutien médical Tok'ra.</SG1_RequestTokraMedicalSupport.reportString>
     <SG1_RequestTokraThreatAssessment.reportString>demande une évaluation tactique Tok'ra.</SG1_RequestTokraThreatAssessment.reportString>
     <SG1_RequestTokraEmergencyMedicalCache.reportString>demande une cache médicale d'urgence Tok'ra.</SG1_RequestTokraEmergencyMedicalCache.reportString>

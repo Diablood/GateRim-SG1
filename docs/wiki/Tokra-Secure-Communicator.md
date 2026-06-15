@@ -9,6 +9,7 @@
 > Évaluation tactique : 0.2.31-dev
 > Rapport d'état du canal : 0.2.32-dev  
 > Lecture de posture Tok'ra : 0.2.33-dev-r1
+> Débriefing opérationnel : 0.2.34-dev
 
 Le communicateur sécurisé Tok'ra est une passerelle de confiance vers les
 soutiens avancés Tok'ra. Il reste volontairement clandestin : il ne transforme
@@ -96,3 +97,11 @@ médicale, ainsi que le palier de confiance, la posture actuelle de la cellule e
 ## Libellés verrouillés simplifiés
 
 Depuis `0.2.33-dev-r1`, les options du clic droit gardent des raisons de verrouillage courtes. Le rapport d'état du canal reste l'endroit principal où le joueur consulte les détails de posture Tok'ra et de disponibilité des demandes.
+
+
+## Débriefing opérationnel
+
+Depuis `0.2.34-dev`, une colonie fiable peut transmettre un débriefing
+opérationnel à la cellule Tok'ra. Cette demande entraîne un court retour RP et
+un gain modeste en Social ou en Intellectuel pour l'opérateur, sans fournir
+d'objet, de soin, de renfort, de commerce, de recrutement ou de quête.
