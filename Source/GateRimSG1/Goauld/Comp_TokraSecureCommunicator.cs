@@ -337,6 +337,7 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            int trustScore = GameComponent_TokraTrustTracker.GetCurrentTrustScore();
             TokraTrustTier currentTier = GameComponent_TokraTrustTracker
                 .GetCurrentTier();
             List<Pawn> threats = GetHostileThreats();
@@ -347,7 +348,7 @@ namespace GateRimSG1.Goauld
                     "GR_TokraSecureCommunicator_StatusReportDialog".Translate(
                         GetTrustTierLabel(currentTier),
                         GetTrustStatusReportLabel(currentTier),
-                        GetPowerStatusReportLabel(),
+                        GetTrustProgressStatusReportLabel(trustScore, currentTier),
                         GetStatusLabel(),
                         GetDiversionStatusLabel(),
                         GetThreatAssessmentStatusLabel(),
@@ -752,7 +753,130 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
-            return GetDisabledReasonForOperation(operation);
+            return GetFloatMenuDisabledReasonForOperation(operation);
+        }
+
+        private string GetFloatMenuDisabledReasonForOperation(
+            TokraCommunicatorOperation operation)
+        {
+            if (operation == TokraCommunicatorOperation.StatusReport)
+            {
+                return GetStatusReportDisabledReason();
+            }
+
+            string channelDisabledReason = GetBasicChannelFloatMenuDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return channelDisabledReason;
+            }
+
+            switch (operation)
+            {
+                case TokraCommunicatorOperation.DefensiveDiversion:
+                    if (IsDefensiveDiversionCooldownActive())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuCooldown"
+                            .Translate(FormatDays(
+                                GetRemainingDefensiveDiversionCooldownTicks()))
+                            .ToString();
+                    }
+
+                    if (!HasHostileThreats())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuNoThreat"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return null;
+
+                case TokraCommunicatorOperation.ThreatAssessment:
+                    if (IsThreatAssessmentCooldownActive())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuCooldown"
+                            .Translate(FormatDays(
+                                GetRemainingThreatAssessmentCooldownTicks()))
+                            .ToString();
+                    }
+
+                    if (!HasHostileThreats())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuNoThreat"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return null;
+
+                case TokraCommunicatorOperation.MedicalSupport:
+                    if (IsMedicalSupportCooldownActive())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuCooldown"
+                            .Translate(FormatDays(
+                                GetRemainingMedicalSupportCooldownTicks()))
+                            .ToString();
+                    }
+
+                    if (!HasMedicalSupportCandidates())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuNoPatient"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return null;
+
+                case TokraCommunicatorOperation.MedicalCache:
+                    if (IsMedicalCacheCooldownActive())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuCooldown"
+                            .Translate(FormatDays(
+                                GetRemainingMedicalCacheCooldownTicks()))
+                            .ToString();
+                    }
+
+                    if (!HasMedicalSupportCandidates())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuNoPatient"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return null;
+
+                default:
+                    return null;
+            }
+        }
+
+        private string GetBasicChannelFloatMenuDisabledReason()
+        {
+            if (parent.Faction != null && parent.Faction != Faction.OfPlayer)
+            {
+                return "GR_TokraSecureCommunicator_NotPlayerControlled"
+                    .Translate()
+                    .ToString();
+            }
+
+            CompPowerTrader powerComp = parent.GetComp<CompPowerTrader>();
+
+            if (powerComp != null && !powerComp.PowerOn)
+            {
+                return "GR_TokraSecureCommunicator_FloatMenuUnpowered"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (GameComponent_TokraTrustTracker.GetCurrentTier()
+                != TokraTrustTier.Trusted)
+            {
+                return "GR_TokraSecureCommunicator_FloatMenuTrustInsufficient"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
         }
 
         private string GetDisabledReasonForOperation(
@@ -945,6 +1069,62 @@ namespace GateRimSG1.Goauld
             return "GR_TokraSecureCommunicator_StatusReportTrustInsufficient"
                 .Translate()
                 .ToString();
+        }
+
+        private string GetTrustProgressStatusReportLabel(
+            int trustScore,
+            TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    if (trustScore >= -5)
+                    {
+                        return "GR_TokraSecureCommunicator_StatusReportTrustWaryNearNeutral"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return "GR_TokraSecureCommunicator_StatusReportTrustWaryDistant"
+                        .Translate()
+                        .ToString();
+
+                case TokraTrustTier.Neutral:
+                    if (trustScore
+                        >= GameComponent_TokraTrustTracker.CooperativeThreshold - 2)
+                    {
+                        return "GR_TokraSecureCommunicator_StatusReportTrustNeutralNearCooperative"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return "GR_TokraSecureCommunicator_StatusReportTrustNeutralCautious"
+                        .Translate()
+                        .ToString();
+
+                case TokraTrustTier.Cooperative:
+                    if (trustScore
+                        >= GameComponent_TokraTrustTracker.TrustedThreshold - 3)
+                    {
+                        return "GR_TokraSecureCommunicator_StatusReportTrustCooperativeNearTrusted"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return "GR_TokraSecureCommunicator_StatusReportTrustCooperativeStable"
+                        .Translate()
+                        .ToString();
+
+                case TokraTrustTier.Trusted:
+                    return "GR_TokraSecureCommunicator_StatusReportTrustTrustedStable"
+                        .Translate()
+                        .ToString();
+
+                default:
+                    return "GR_TokraSecureCommunicator_StatusReportTrustNeutralCautious"
+                        .Translate()
+                        .ToString();
+            }
         }
 
         private string GetPowerStatusReportLabel()

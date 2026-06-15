@@ -7,7 +7,8 @@
 > Demande médicale : 0.2.29-dev
 > Cache médicale d'urgence : 0.2.30-dev
 > Évaluation tactique : 0.2.31-dev
-> Rapport d'état du canal : 0.2.32-dev
+> Rapport d'état du canal : 0.2.32-dev  
+> Lecture de posture Tok'ra : 0.2.33-dev-r1
 
 Le communicateur sécurisé Tok'ra est une passerelle de confiance vers les
 soutiens avancés Tok'ra. Il reste volontairement clandestin : il ne transforme
@@ -89,4 +90,9 @@ Depuis `0.2.31-dev`, une colonie fiable peut demander une évaluation tactique T
 Depuis `0.2.32-dev`, le communicateur peut afficher un rapport d'état sans
 consommer de cooldown. Le rapport liste les disponibilités ou verrouillages des
 canaux de diversion, d'évaluation tactique, de soutien médical et de cache
-médicale, ainsi que le palier de confiance et le contexte local.
+médicale, ainsi que le palier de confiance, la posture actuelle de la cellule et le contexte local.
+
+
+## Libellés verrouillés simplifiés
+
+Depuis `0.2.33-dev-r1`, les options du clic droit gardent des raisons de verrouillage courtes. Le rapport d'état du canal reste l'endroit principal où le joueur consulte les détails de posture Tok'ra et de disponibilité des demandes.

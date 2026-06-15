@@ -1,3 +1,20 @@
+## 0.2.33-dev-r1 - Simplify locked Tok'ra communicator option labels
+
+- Keep the trust-progression status report introduced in `0.2.33-dev`.
+- Replace verbose locked right-click option explanations with concise player-facing reasons.
+- Locked requests now show short labels such as `Confiance Tok'ra insuffisante` instead of repeating the required trust tier on every command.
+- Keep detailed context in the status report, where the player can intentionally consult the channel state.
+
+## 0.2.33-dev - Add Tok'ra trust progression status report
+
+- Enrich the pawn-operated Tok'ra communicator status report with an RP reading of the current Tok'ra cell posture.
+- Keep the player-facing report non-numeric: it indicates whether the cell is distant, cautious, cooperative, close to a posture change or already trusted.
+- Reuse the existing status consultation: no request is sent, no cooldown is consumed and no gameplay effect is triggered.
+- Align mod metadata and C# assembly version with `0.2.33`.
+- Requires a forced C# rebuild.
+- Requires no new XML root `About.xml`; keep metadata under `About/About.xml`.
+
+
 ## 0.2.32-dev-r2 - Remove redundant power line from Tok'ra status report
 
 - Remove the visible "alimentation du relais" line from the Tok'ra channel status report.

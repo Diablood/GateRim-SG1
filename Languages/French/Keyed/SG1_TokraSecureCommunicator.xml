@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_TokraSecureCommunicator_CommandLabel>Contacter les Tok'ra</GR_TokraSecureCommunicator_CommandLabel>
-    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet désormais de demander une diversion défensive rare, un conseil médical avancé limité, une cache médicale d'urgence, une évaluation tactique de menace ou une consultation d'état du canal.</GR_TokraSecureCommunicator_CommandDesc>
+    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet désormais de demander une diversion défensive rare, un conseil médical avancé limité, une cache médicale d'urgence, une évaluation tactique de menace ou une consultation d'état du canal et de la posture Tok'ra.</GR_TokraSecureCommunicator_CommandDesc>
     <GR_TokraSecureCommunicator_DiversionCommandLabel>Demander une diversion Tok'ra</GR_TokraSecureCommunicator_DiversionCommandLabel>
     <GR_TokraSecureCommunicator_DiversionCommandDesc>Demander aux Tok'ra une perturbation défensive discrète contre quelques ennemis actifs sur la carte : désorientation immédiate, puis nausées retardées pour les cibles biologiques. Nécessite le palier fiable, une alimentation électrique, une menace hostile active et un long délai entre deux demandes.</GR_TokraSecureCommunicator_DiversionCommandDesc>
     <GR_TokraSecureCommunicator_MedicalCommandLabel>Demander un soutien médical Tok'ra</GR_TokraSecureCommunicator_MedicalCommandLabel>
@@ -23,6 +23,11 @@
     <GR_TokraSecureCommunicator_JobUnavailable>L'interaction du communicateur Tok'ra est indisponible.</GR_TokraSecureCommunicator_JobUnavailable>
     <GR_TokraSecureCommunicator_NotPlayerControlled>Ce communicateur n'est pas contrôlé par la colonie.</GR_TokraSecureCommunicator_NotPlayerControlled>
     <GR_TokraSecureCommunicator_Unpowered>Le communicateur Tok'ra doit être alimenté.</GR_TokraSecureCommunicator_Unpowered>
+    <GR_TokraSecureCommunicator_FloatMenuTrustInsufficient>Confiance Tok'ra insuffisante</GR_TokraSecureCommunicator_FloatMenuTrustInsufficient>
+    <GR_TokraSecureCommunicator_FloatMenuUnpowered>Communicateur non alimenté</GR_TokraSecureCommunicator_FloatMenuUnpowered>
+    <GR_TokraSecureCommunicator_FloatMenuNoThreat>Aucune menace active</GR_TokraSecureCommunicator_FloatMenuNoThreat>
+    <GR_TokraSecureCommunicator_FloatMenuNoPatient>Aucun patient concerné</GR_TokraSecureCommunicator_FloatMenuNoPatient>
+    <GR_TokraSecureCommunicator_FloatMenuCooldown>Canal indisponible : {0} jour(s)</GR_TokraSecureCommunicator_FloatMenuCooldown>
     <GR_TokraSecureCommunicator_RequiresTrusted>Les Tok'ra refusent d'ouvrir ce canal sécurisé tant que la confiance reste au palier {0}. Palier requis : fiable.</GR_TokraSecureCommunicator_RequiresTrusted>
     <GR_TokraSecureCommunicator_DiversionNoThreat>Aucune menace hostile active n'est détectée sur cette carte.</GR_TokraSecureCommunicator_DiversionNoThreat>
     <GR_TokraSecureCommunicator_DiversionCooldown>Le canal de diversion Tok'ra doit rester silencieux encore {0} jour(s).</GR_TokraSecureCommunicator_DiversionCooldown>
@@ -35,6 +40,13 @@
     <GR_TokraSecureCommunicator_DiversionFailed>La cellule Tok'ra ne parvient pas à perturber les assaillants.</GR_TokraSecureCommunicator_DiversionFailed>
     <GR_TokraSecureCommunicator_StatusReportTrustSufficient>confiance suffisante</GR_TokraSecureCommunicator_StatusReportTrustSufficient>
     <GR_TokraSecureCommunicator_StatusReportTrustInsufficient>confiance insuffisante</GR_TokraSecureCommunicator_StatusReportTrustInsufficient>
+    <GR_TokraSecureCommunicator_StatusReportTrustWaryDistant>la cellule garde ses distances et répond au minimum</GR_TokraSecureCommunicator_StatusReportTrustWaryDistant>
+    <GR_TokraSecureCommunicator_StatusReportTrustWaryNearNeutral>la méfiance recule, mais le canal reste surveillé</GR_TokraSecureCommunicator_StatusReportTrustWaryNearNeutral>
+    <GR_TokraSecureCommunicator_StatusReportTrustNeutralCautious>la cellule observe encore la colonie avant d'élargir le contact</GR_TokraSecureCommunicator_StatusReportTrustNeutralCautious>
+    <GR_TokraSecureCommunicator_StatusReportTrustNeutralNearCooperative>les réponses deviennent moins brèves ; une coopération plus nette semble proche</GR_TokraSecureCommunicator_StatusReportTrustNeutralNearCooperative>
+    <GR_TokraSecureCommunicator_StatusReportTrustCooperativeStable>la cellule coopère prudemment, sans exposer ses relais</GR_TokraSecureCommunicator_StatusReportTrustCooperativeStable>
+    <GR_TokraSecureCommunicator_StatusReportTrustCooperativeNearTrusted>la cellule prépare des échanges plus sensibles si la discrétion se maintient</GR_TokraSecureCommunicator_StatusReportTrustCooperativeNearTrusted>
+    <GR_TokraSecureCommunicator_StatusReportTrustTrustedStable>la cellule considère le canal comme fiable pour les demandes sensibles</GR_TokraSecureCommunicator_StatusReportTrustTrustedStable>
     <GR_TokraSecureCommunicator_StatusReportPowerOn>alimenté</GR_TokraSecureCommunicator_StatusReportPowerOn>
     <GR_TokraSecureCommunicator_StatusReportPowerOff>non alimenté</GR_TokraSecureCommunicator_StatusReportPowerOff>
     <GR_TokraSecureCommunicator_StatusReportPowerNotApplicable>alimentation non requise</GR_TokraSecureCommunicator_StatusReportPowerNotApplicable>
@@ -76,6 +88,7 @@ Cache médicale : {5}</GR_TokraSecureCommunicator_Inspect>
 Signal établi :
 - relation avec la cellule : {0}
 - confiance opérationnelle : {1}
+- posture de la cellule : {2}
 - canal principal : {3}
 
 Réponses que la cellule accepte encore de recevoir :
