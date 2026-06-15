@@ -97,7 +97,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
 | Histoires culturelles | Première base native : parcours SGC complémentaires, enfances Jaffa, carrières Jaffa de domaine et libres, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
 | Réactions sociales contextuelles | Première base : méfiance Jaffa libre envers les hôtes Goa'uld, hostilité Tok'ra envers les Goa'uld, prudence envers les Jaffa marqués et discipline locale près d'un Grand Maître | 0.2.5-dev |
-| Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : débriefing opérationnel, diversion défensive, soutien médical, cache médicale, évaluation tactique et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés | 0.2.26-dev à 0.2.34-dev |
+| Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : débriefing opérationnel, préparation de mission discrète, diversion défensive, soutien médical, cache médicale, évaluation tactique et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés | 0.2.26-dev à 0.2.35-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

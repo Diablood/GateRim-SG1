@@ -51,6 +51,8 @@ namespace GateRimSG1.Goauld
 
         private int trustScore;
         private int waryDiplomaticCooldownUntilTick;
+        private bool firstTrustMissionHookPrepared;
+        private int firstTrustMissionHookPreparedTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -64,6 +66,14 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref waryDiplomaticCooldownUntilTick,
                 "tokraWaryDiplomaticCooldownUntilTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionHookPrepared,
+                "tokraFirstTrustMissionHookPrepared",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionHookPreparedTick,
+                "tokraFirstTrustMissionHookPreparedTick",
                 0);
 
             trustScore = ClampTrust(trustScore);
@@ -152,6 +162,38 @@ namespace GateRimSG1.Goauld
         public static float GetCurrentMedicalSupportDeliveryChanceFactor()
         {
             return GetMedicalSupportDeliveryChanceFactor(GetCurrentTier());
+        }
+
+        public static bool IsFirstTrustMissionHookPrepared()
+        {
+            return GetCurrentTracker()?.firstTrustMissionHookPrepared ?? false;
+        }
+
+        public static int GetFirstTrustMissionHookPreparedTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionHookPreparedTick ?? 0;
+        }
+
+        public static bool NotifyFirstTrustMissionHookPrepared()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot prepare Tok'ra trust mission hook: the trust "
+                    + "tracker is unavailable.");
+                return false;
+            }
+
+            if (!tracker.firstTrustMissionHookPrepared)
+            {
+                tracker.firstTrustMissionHookPrepared = true;
+                tracker.firstTrustMissionHookPreparedTick =
+                    Find.TickManager?.TicksGame ?? 0;
+            }
+
+            return true;
         }
 
         public static bool IsWaryDiplomaticCooldownActive()

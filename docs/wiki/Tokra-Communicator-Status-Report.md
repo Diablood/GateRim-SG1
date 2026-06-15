@@ -27,6 +27,7 @@ transmission Tok'ra plus RP. Depuis `0.2.32-dev-r2`, le rapport ne répète plus
 - relation, confiance opérationnelle et posture de la cellule
 - état du canal principal
 - débriefing opérationnel : disponible, verrouillé ou en cooldown
+- mission discrète : disponible, verrouillée ou déjà en préparation
 - diversion défensive : disponible, verrouillée ou en cooldown
 - évaluation tactique : disponible, verrouillée ou en cooldown
 - soutien médical : disponible, verrouillé ou en cooldown
@@ -67,3 +68,5 @@ Depuis `0.2.33-dev-r1`, les options du clic droit gardent des raisons de verroui
 Depuis `0.2.34-dev`, le rapport affiche aussi l'état du canal de débriefing
 opérationnel. Ce canal reste informatif et formateur : il ne déclenche aucun
 soutien matériel ni militaire.
+
+Depuis `0.2.35-dev`, le rapport affiche aussi l'état de la mission discrète Tok'ra : elle peut être verrouillée, prête à être proposée ou déjà en préparation.

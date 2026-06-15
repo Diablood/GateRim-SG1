@@ -36,6 +36,7 @@ namespace GateRimSG1.Goauld
         private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
         private const string RequestThreatAssessmentJobDefName = "SG1_RequestTokraThreatAssessment";
         private const string RequestOperationalDebriefJobDefName = "SG1_SendTokraOperationalDebrief";
+        private const string RequestFirstTrustMissionJobDefName = "SG1_RequestTokraFirstTrustMission";
 
         private enum TokraCommunicatorOperation
         {
@@ -45,7 +46,8 @@ namespace GateRimSG1.Goauld
             MedicalSupport,
             MedicalCache,
             ThreatAssessment,
-            OperationalDebrief
+            OperationalDebrief,
+            FirstTrustMission
         }
 
         private int nextDefensiveDiversionRequestTick;
@@ -189,6 +191,22 @@ namespace GateRimSG1.Goauld
 
             yield return debriefCommand;
 
+            Command_Action firstMissionCommand = new Command_Action
+            {
+                defaultLabel = "GR_TokraSecureCommunicator_FirstMissionCommandLabel"
+                    .Translate(),
+                defaultDesc = "GR_TokraSecureCommunicator_FirstMissionCommandDesc"
+                    .Translate(),
+                action = ShowPawnOperationRequiredMessage
+            };
+
+            string firstMissionDisabledReason = GetFirstTrustMissionDisabledReason();
+
+            firstMissionCommand.Disable(GetGizmoDisabledReason(
+                firstMissionDisabledReason));
+
+            yield return firstMissionCommand;
+
             Command_Action medicalCommand = new Command_Action
             {
                 defaultLabel = "GR_TokraSecureCommunicator_MedicalCommandLabel"
@@ -263,6 +281,17 @@ namespace GateRimSG1.Goauld
                     .Translate()
                     .ToString(),
                 TokraCommunicatorOperation.OperationalDebrief))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                RequestFirstTrustMissionJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuFirstMissionLabel"
+                    .Translate()
+                    .ToString(),
+                TokraCommunicatorOperation.FirstTrustMission))
             {
                 yield return option;
             }
@@ -355,6 +384,7 @@ namespace GateRimSG1.Goauld
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
                 GetOperationalDebriefStatusLabel(),
+                GetFirstTrustMissionStatusLabel(),
                 GetDiversionStatusLabel(),
                 GetThreatAssessmentStatusLabel(),
                 GetMedicalSupportStatusLabel(),
@@ -389,6 +419,7 @@ namespace GateRimSG1.Goauld
                         GetTrustProgressStatusReportLabel(trustScore, currentTier),
                         GetStatusLabel(),
                         GetOperationalDebriefStatusLabel(),
+                        GetFirstTrustMissionStatusLabel(),
                         GetDiversionStatusLabel(),
                         GetThreatAssessmentStatusLabel(),
                         GetMedicalSupportStatusLabel(),
@@ -504,6 +535,56 @@ namespace GateRimSG1.Goauld
                 + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
                 + $"operator {operatorPawn.LabelShortCap}; "
                 + $"trained {skillLabel} by {OperationalDebriefSkillXp} XP.");
+
+            return true;
+        }
+
+        internal bool TryRequestFirstTrustMissionHook(Pawn operatorPawn)
+        {
+            string disabledReason = GetFirstTrustMissionDisabledReason();
+            string operatorLabel = operatorPawn != null
+                ? operatorPawn.LabelShortCap.ToString()
+                : "Unknown";
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            if (!GameComponent_TokraTrustTracker
+                .NotifyFirstTrustMissionHookPrepared())
+            {
+                Messages.Message(
+                    "GR_TokraSecureCommunicator_FirstMissionFailed".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_FirstMissionRequested".Translate(
+                    operatorLabel),
+                parent,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_FirstMissionDialog".Translate(
+                        operatorLabel)
+                    .ToString()));
+
+            GR_Log.Message(
+                $"Prepared trusted Tok'ra first mission hook from "
+                + $"communicator at {parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
 
             return true;
         }
@@ -892,6 +973,17 @@ namespace GateRimSG1.Goauld
 
                     return null;
 
+                case TokraCommunicatorOperation.FirstTrustMission:
+                    if (GameComponent_TokraTrustTracker
+                        .IsFirstTrustMissionHookPrepared())
+                    {
+                        return "GR_TokraSecureCommunicator_FloatMenuFirstMissionPrepared"
+                            .Translate()
+                            .ToString();
+                    }
+
+                    return null;
+
                 case TokraCommunicatorOperation.DefensiveDiversion:
                     if (IsDefensiveDiversionCooldownActive())
                     {
@@ -1015,6 +1107,8 @@ namespace GateRimSG1.Goauld
                     return GetThreatAssessmentDisabledReason();
                 case TokraCommunicatorOperation.OperationalDebrief:
                     return GetOperationalDebriefDisabledReason();
+                case TokraCommunicatorOperation.FirstTrustMission:
+                    return GetFirstTrustMissionDisabledReason();
                 default:
                     return GetChannelDisabledReason();
             }
@@ -1087,6 +1181,25 @@ namespace GateRimSG1.Goauld
             {
                 return "GR_TokraSecureCommunicator_DebriefCooldown".Translate(
                     FormatDays(GetRemainingOperationalDebriefCooldownTicks()))
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        internal string GetFirstTrustMissionDisabledReason()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return channelDisabledReason;
+            }
+
+            if (GameComponent_TokraTrustTracker.IsFirstTrustMissionHookPrepared())
+            {
+                return "GR_TokraSecureCommunicator_FirstMissionAlreadyPreparing"
+                    .Translate()
                     .ToString();
             }
 
@@ -1322,6 +1435,29 @@ namespace GateRimSG1.Goauld
             }
 
             return "GR_TokraSecureCommunicator_DebriefStatusReady"
+                .Translate()
+                .ToString();
+        }
+
+        private string GetFirstTrustMissionStatusLabel()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return "GR_TokraSecureCommunicator_FirstMissionStatusLocked"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (GameComponent_TokraTrustTracker.IsFirstTrustMissionHookPrepared())
+            {
+                return "GR_TokraSecureCommunicator_FirstMissionStatusPreparing"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_FirstMissionStatusReady"
                 .Translate()
                 .ToString();
         }
