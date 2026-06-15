@@ -1,31 +1,20 @@
 # Débriefing opérationnel Tok'ra
 
-> Statut : prototype actif  
+> Statut : prototype masqué temporairement depuis 0.2.36-dev  
 > Version d'introduction : 0.2.34-dev
 
-Le débriefing opérationnel Tok'ra est une demande calme transmise via le
-communicateur sécurisé. Il sert à renforcer la coordination avec la cellule sans
-ajouter de récompense matérielle.
+Le débriefing opérationnel Tok'ra existe comme prototype, mais son option est
+masquée temporairement dans l'interface joueur depuis `0.2.36-dev`. Son intérêt
+sera réévalué lorsqu'il pourra contribuer clairement à la confiance Tok'ra ou à
+une progression narrative.
 
-## Conditions
-
-```text
-- communicateur sécurisé Tok'ra construit et alimenté
-- confiance Tok'ra au palier fiable
-- colon opérateur humain contrôlé par la colonie
-- opérateur capable d'apprendre Social ou Intellectuel
-- canal de débriefing hors cooldown
-```
-
-## Effet
-
-Le colon utilise brièvement le communicateur, transmet un compte rendu et reçoit
-un retour codé de la cellule Tok'ra.
+## État actuel
 
 ```text
-+400 XP en Social si l'opérateur peut apprendre Social
-sinon +400 XP en Intellectuel si l'opérateur peut apprendre Intellectuel
-cooldown dédié de 2 jours
+option non affichée au joueur
+code conservé pour réévaluation future
+pas de boucle de spam communicateur
+pas d'effet de progression active pour le moment
 ```
 
 ## Limites

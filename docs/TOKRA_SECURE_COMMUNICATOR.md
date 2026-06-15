@@ -1,6 +1,6 @@
 # Tok'ra secure communicator
 
-Version: `0.2.32-dev`
+Version: `0.2.36-dev`
 
 The Tok'ra secure communicator is the trusted-channel interaction point for
 advanced Tok'ra support. It is still deliberately limited: the Tok'ra remain
@@ -18,6 +18,8 @@ opens a vanilla contact dialog
 can request a rare defensive diversion during an active attack
 can request limited medical guidance when a colonist is wounded or sick
 can request an informational tactical threat assessment during an active hostile threat
+can request preparation of a discreet future Tok'ra mission
+can receive a Tok'ra-initiated briefing contact after that preparation
 can show a non-effect status report for channel availability and cooldowns
 ```
 
@@ -114,3 +116,21 @@ The communicator can now show a non-effect status report through the selected
 colonist right-click workflow. It lists power, trust, local context and the
 current availability or cooldown state of every implemented Tok'ra request.
 The consultation does not consume any cooldown and does not trigger support.
+
+
+## 0.2.36-dev initiated mission briefing
+
+The operational debrief request is temporarily hidden from player-facing
+communicator options until it has a clearer trust or narrative role.
+
+When a trusted colony has prepared a discreet Tok'ra mission, the next step is
+no longer another immediate communicator command. A Tok'ra cell can recontact the
+colony automatically after a short delay and transmit the initial briefing.
+
+```text
+prepared mission state required
+Tok'ra-initiated contact after delay
+persistent briefing-received state
+visible in the channel status report
+no site, raid or immediate reward
+```

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.35-dev</modVersion>
+    <modVersion>0.2.36-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -80,8 +80,9 @@ Current development scope:
 - Trusted Tok'ra secure communicator emergency medical-cache request prototype
 - Trusted Tok'ra tactical threat-assessment request prototype
 - Tok'ra communicator cooldown-status and trust-progression report prototype with concise locked-option labels
-- Trusted Tok'ra operational-debrief request prototype for Social or Intellectual training without material support
+- Trusted Tok'ra operational-debrief request prototype for Social or Intellectual training without material support, now temporarily hidden from player-facing communicator options until it has a clearer trust role
 - Trusted Tok'ra first trust mission hook preparing a future discreet operation without immediate quest or reward
+- Tok'ra initiated first-mission briefing contact after a prepared discreet mission, with persistent briefing state and no immediate site, raid or reward
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

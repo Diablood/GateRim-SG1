@@ -49,10 +49,17 @@ namespace GateRimSG1.Goauld
         public const float CooperativeMedicalSupportDeliveryChanceFactor = 1.00f;
         public const float TrustedMedicalSupportDeliveryChanceFactor = 1.50f;
 
+        private const int FirstTrustMissionBriefingMinimumDelayTicks = 30000;
+        private const int FirstTrustMissionBriefingMaximumDelayTicks = 90000;
+        private const int FirstTrustMissionBriefingCheckIntervalTicks = 2500;
+
         private int trustScore;
         private int waryDiplomaticCooldownUntilTick;
         private bool firstTrustMissionHookPrepared;
         private int firstTrustMissionHookPreparedTick;
+        private bool firstTrustMissionBriefingReceived;
+        private int firstTrustMissionBriefingContactTick;
+        private int nextFirstTrustMissionBriefingCheckTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -75,6 +82,18 @@ namespace GateRimSG1.Goauld
                 ref firstTrustMissionHookPreparedTick,
                 "tokraFirstTrustMissionHookPreparedTick",
                 0);
+            Scribe_Values.Look(
+                ref firstTrustMissionBriefingReceived,
+                "tokraFirstTrustMissionBriefingReceived",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionBriefingContactTick,
+                "tokraFirstTrustMissionBriefingContactTick",
+                0);
+            Scribe_Values.Look(
+                ref nextFirstTrustMissionBriefingCheckTick,
+                "tokraNextFirstTrustMissionBriefingCheckTick",
+                0);
 
             trustScore = ClampTrust(trustScore);
 
@@ -82,6 +101,13 @@ namespace GateRimSG1.Goauld
             {
                 waryDiplomaticCooldownUntilTick = 0;
             }
+        }
+
+        public override void GameComponentTick()
+        {
+            base.GameComponentTick();
+
+            TrySendPendingFirstTrustMissionBriefingContact();
         }
 
         public static int GetCurrentTrustScore()
@@ -174,6 +200,31 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.firstTrustMissionHookPreparedTick ?? 0;
         }
 
+        public static bool IsFirstTrustMissionBriefingReceived()
+        {
+            return GetCurrentTracker()?.firstTrustMissionBriefingReceived ?? false;
+        }
+
+        public static int GetFirstTrustMissionBriefingContactTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionBriefingContactTick ?? 0;
+        }
+
+        public static int GetRemainingFirstTrustMissionBriefingContactTicks()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null || tracker.firstTrustMissionBriefingReceived)
+            {
+                return 0;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            return Math.Max(
+                0,
+                tracker.firstTrustMissionBriefingContactTick - currentTick);
+        }
+
         public static bool NotifyFirstTrustMissionHookPrepared()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -191,6 +242,12 @@ namespace GateRimSG1.Goauld
                 tracker.firstTrustMissionHookPrepared = true;
                 tracker.firstTrustMissionHookPreparedTick =
                     Find.TickManager?.TicksGame ?? 0;
+                tracker.ScheduleFirstTrustMissionBriefingContact();
+            }
+            else if (!tracker.firstTrustMissionBriefingReceived
+                && tracker.firstTrustMissionBriefingContactTick <= 0)
+            {
+                tracker.ScheduleFirstTrustMissionBriefingContact();
             }
 
             return true;
@@ -262,6 +319,73 @@ namespace GateRimSG1.Goauld
             }
 
             tracker.ApplyTherapeuticOfferOutcome(outcome);
+        }
+
+        private void TrySendPendingFirstTrustMissionBriefingContact()
+        {
+            if (!firstTrustMissionHookPrepared
+                || firstTrustMissionBriefingReceived
+                || Find.TickManager == null)
+            {
+                return;
+            }
+
+            int currentTick = Find.TickManager.TicksGame;
+
+            if (firstTrustMissionBriefingContactTick <= 0)
+            {
+                ScheduleFirstTrustMissionBriefingContact();
+                return;
+            }
+
+            if (currentTick < nextFirstTrustMissionBriefingCheckTick)
+            {
+                return;
+            }
+
+            nextFirstTrustMissionBriefingCheckTick = currentTick
+                + FirstTrustMissionBriefingCheckIntervalTicks;
+
+            if (currentTick < firstTrustMissionBriefingContactTick)
+            {
+                return;
+            }
+
+            firstTrustMissionBriefingReceived = true;
+
+            Find.LetterStack.ReceiveLetter(
+                "GR_TokraFirstMissionBriefing_LetterLabel".Translate(),
+                "GR_TokraFirstMissionBriefing_LetterText".Translate(),
+                LetterDefOf.NeutralEvent);
+
+            Messages.Message(
+                "GR_TokraFirstMissionBriefing_Received".Translate(),
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Tok'ra first mission briefing contact sent after prepared "
+                + "trusted mission hook.");
+        }
+
+        private void ScheduleFirstTrustMissionBriefingContact()
+        {
+            if (Find.TickManager == null)
+            {
+                return;
+            }
+
+            firstTrustMissionBriefingContactTick = Find.TickManager.TicksGame
+                + Rand.RangeInclusive(
+                    FirstTrustMissionBriefingMinimumDelayTicks,
+                    FirstTrustMissionBriefingMaximumDelayTicks);
+            nextFirstTrustMissionBriefingCheckTick = Find.TickManager.TicksGame
+                + FirstTrustMissionBriefingCheckIntervalTicks;
+
+            GR_Log.Message(
+                "Scheduled Tok'ra first mission briefing contact in "
+                + $"{firstTrustMissionBriefingContactTick - Find.TickManager.TicksGame} "
+                + "tick(s).");
         }
 
         private void ApplyFlatTrustChange(

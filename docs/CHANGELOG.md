@@ -1,3 +1,20 @@
+## 0.2.36-dev - Add Tok'ra initiated mission briefing contact
+
+- Temporarily hide the player-facing Tok'ra operational debrief request until it has a clearer trust or narrative role.
+- Keep the first discreet Tok'ra mission request as a pawn-operated communicator action at trusted tier.
+- After a mission is prepared, let the Tok'ra cell recontact the colony automatically after a short RP delay.
+- Record a persistent "briefing received" state and display it in the communicator status report.
+- Keep the step non-material: no world site, raid, reward, trade, recruitment or direct support is created.
+- Align mod metadata and C# assembly version with `0.2.36`.
+- Requires a forced C# rebuild.
+
+## 0.2.35-dev - Add Tok'ra first trust mission hook
+
+- Add a pawn-operated trusted-channel request for a discreet future Tok'ra mission.
+- Require a powered communicator and trusted Tok'ra confidence.
+- Persist the prepared mission hook in the save and expose it in the Tok'ra channel status report.
+- Keep the hook deliberately lightweight: no complete quest, world site, forced raid or immediate reward is added.
+
 ## 0.2.34-dev - Add Tok'ra operational debrief request
 
 - Add a pawn-operated trusted-channel operational debrief request to the Tok'ra secure communicator.

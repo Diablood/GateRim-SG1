@@ -110,3 +110,6 @@ Development note: `0.2.23-dev` adds trust-tier medical hints to the Tok'ra safeh
 Development note: `0.2.24-dev` lets cooperative and trusted Tok'ra safehouse contacts store one follow-up safehouse lead when the lead registry has remaining capacity, without adding trade, recruitment, direct treatment, items, quests or military aid.
 
 Development note: `0.2.27-dev` adds the first active trusted communicator request: a rare defensive Tok'ra diversion during an active hostile threat, without trade, recruitment, physical reinforcements or material rewards.
+
+
+- `0.2.36-dev` : contact de briefing de mission Tok'ra initié automatiquement après préparation de mission discrète.
