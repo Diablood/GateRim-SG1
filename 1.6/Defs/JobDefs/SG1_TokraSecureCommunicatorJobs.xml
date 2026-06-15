@@ -13,6 +13,12 @@
     </JobDef>
 
     <JobDef>
+        <defName>SG1_RequestTokraThreatAssessment</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
+        <reportString>requesting Tok'ra tactical threat assessment.</reportString>
+    </JobDef>
+
+    <JobDef>
         <defName>SG1_RequestTokraMedicalSupport</defName>
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
         <reportString>requesting Tok'ra medical guidance.</reportString>

@@ -19,6 +19,7 @@ namespace GateRimSG1.Goauld
         private const int DefensiveDiversionCooldownTicks = 300000;
         private const int MedicalSupportCooldownTicks = 180000;
         private const int MedicalCacheCooldownTicks = 420000;
+        private const int ThreatAssessmentCooldownTicks = 60000;
         private const int MedicalSupportMedicineXp = 600;
         private const int MedicalCacheIndustrialMedicineCount = 4;
         private const int MedicalCacheTretoninDoseCount = 1;
@@ -30,18 +31,21 @@ namespace GateRimSG1.Goauld
         private const string RequestDiversionJobDefName = "SG1_RequestTokraDefensiveDiversion";
         private const string RequestMedicalSupportJobDefName = "SG1_RequestTokraMedicalSupport";
         private const string RequestMedicalCacheJobDefName = "SG1_RequestTokraEmergencyMedicalCache";
+        private const string RequestThreatAssessmentJobDefName = "SG1_RequestTokraThreatAssessment";
 
         private enum TokraCommunicatorOperation
         {
             OpenChannel,
             DefensiveDiversion,
             MedicalSupport,
-            MedicalCache
+            MedicalCache,
+            ThreatAssessment
         }
 
         private int nextDefensiveDiversionRequestTick;
         private int nextMedicalSupportRequestTick;
         private int nextMedicalCacheRequestTick;
+        private int nextThreatAssessmentRequestTick;
         private List<Pawn> pendingDiversionVomitPawns = new List<Pawn>();
         private List<int> pendingDiversionVomitTicks = new List<int>();
 
@@ -62,6 +66,11 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref nextMedicalCacheRequestTick,
                 "tokraNextMedicalCacheRequestTick",
+                0);
+
+            Scribe_Values.Look(
+                ref nextThreatAssessmentRequestTick,
+                "tokraNextThreatAssessmentRequestTick",
                 0);
 
             Scribe_Collections.Look(
@@ -135,6 +144,23 @@ namespace GateRimSG1.Goauld
 
             yield return diversionCommand;
 
+            Command_Action threatAssessmentCommand = new Command_Action
+            {
+                defaultLabel = "GR_TokraSecureCommunicator_ThreatCommandLabel"
+                    .Translate(),
+                defaultDesc = "GR_TokraSecureCommunicator_ThreatCommandDesc"
+                    .Translate(),
+                action = ShowPawnOperationRequiredMessage
+            };
+
+            string threatAssessmentDisabledReason =
+                GetThreatAssessmentDisabledReason();
+
+            threatAssessmentCommand.Disable(GetGizmoDisabledReason(
+                threatAssessmentDisabledReason));
+
+            yield return threatAssessmentCommand;
+
             Command_Action medicalCommand = new Command_Action
             {
                 defaultLabel = "GR_TokraSecureCommunicator_MedicalCommandLabel"
@@ -196,6 +222,17 @@ namespace GateRimSG1.Goauld
                 RequestDiversionJobDefName,
                 "GR_TokraSecureCommunicator_FloatMenuDiversionLabel".Translate().ToString(),
                 TokraCommunicatorOperation.DefensiveDiversion))
+            {
+                yield return option;
+            }
+
+            foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                selPawn,
+                RequestThreatAssessmentJobDefName,
+                "GR_TokraSecureCommunicator_FloatMenuThreatLabel"
+                    .Translate()
+                    .ToString(),
+                TokraCommunicatorOperation.ThreatAssessment))
             {
                 yield return option;
             }
@@ -268,6 +305,7 @@ namespace GateRimSG1.Goauld
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
                 GetDiversionStatusLabel(),
+                GetThreatAssessmentStatusLabel(),
                 GetMedicalSupportStatusLabel(),
                 GetMedicalCacheStatusLabel()).ToString();
         }
@@ -370,6 +408,67 @@ namespace GateRimSG1.Goauld
                 + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
                 + $"affected {affectedCount} hostile pawn(s); "
                 + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
+
+        internal bool TryRequestTacticalThreatAssessment(Pawn operatorPawn)
+        {
+            string disabledReason = GetThreatAssessmentDisabledReason();
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            List<Pawn> threats = GetHostileThreats();
+
+            int hostileCount = threats.Count;
+            int humanlikeCount = CountHumanlikeThreats(threats);
+            int mechanoidCount = CountMechanoidThreats(threats);
+            int otherCount = Math.Max(
+                0,
+                hostileCount - humanlikeCount - mechanoidCount);
+            string severityLabel = GetThreatSeverityLabel(
+                hostileCount,
+                mechanoidCount);
+
+            nextThreatAssessmentRequestTick = Find.TickManager.TicksGame
+                + ThreatAssessmentCooldownTicks;
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_ThreatRequested".Translate(
+                    hostileCount.ToString(),
+                    severityLabel,
+                    FormatDays(ThreatAssessmentCooldownTicks)),
+                parent,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_ThreatDialog".Translate(
+                        hostileCount.ToString(),
+                        humanlikeCount.ToString(),
+                        mechanoidCount.ToString(),
+                        otherCount.ToString(),
+                        severityLabel,
+                        FormatDays(ThreatAssessmentCooldownTicks))
+                    .ToString()));
+
+            GR_Log.Message(
+                $"Requested trusted Tok'ra tactical threat assessment from "
+                + $"communicator at {parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}; "
+                + $"hostiles {hostileCount}, humanlike {humanlikeCount}, "
+                + $"mechanoid {mechanoidCount}, other {otherCount}.");
 
             return true;
         }
@@ -599,6 +698,8 @@ namespace GateRimSG1.Goauld
                     return GetMedicalSupportDisabledReason();
                 case TokraCommunicatorOperation.MedicalCache:
                     return GetMedicalCacheDisabledReason();
+                case TokraCommunicatorOperation.ThreatAssessment:
+                    return GetThreatAssessmentDisabledReason();
                 default:
                     return GetChannelDisabledReason();
             }
@@ -659,6 +760,32 @@ namespace GateRimSG1.Goauld
             {
                 return "GR_TokraSecureCommunicator_DiversionCooldown".Translate(
                     FormatDays(GetRemainingDefensiveDiversionCooldownTicks()))
+                    .ToString();
+            }
+
+            if (!HasHostileThreats())
+            {
+                return "GR_TokraSecureCommunicator_DiversionNoThreat"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        internal string GetThreatAssessmentDisabledReason()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return channelDisabledReason;
+            }
+
+            if (IsThreatAssessmentCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_ThreatCooldown".Translate(
+                    FormatDays(GetRemainingThreatAssessmentCooldownTicks()))
                     .ToString();
             }
 
@@ -767,6 +894,37 @@ namespace GateRimSG1.Goauld
                 .ToString();
         }
 
+        private string GetThreatAssessmentStatusLabel()
+        {
+            string channelDisabledReason = GetChannelDisabledReason();
+
+            if (!string.IsNullOrEmpty(channelDisabledReason))
+            {
+                return "GR_TokraSecureCommunicator_ThreatStatusLocked"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (IsThreatAssessmentCooldownActive())
+            {
+                return "GR_TokraSecureCommunicator_ThreatStatusCooldown"
+                    .Translate(FormatDays(
+                        GetRemainingThreatAssessmentCooldownTicks()))
+                    .ToString();
+            }
+
+            if (!HasHostileThreats())
+            {
+                return "GR_TokraSecureCommunicator_ThreatStatusNoThreat"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_ThreatStatusReady"
+                .Translate()
+                .ToString();
+        }
+
         private string GetMedicalSupportStatusLabel()
         {
             string channelDisabledReason = GetChannelDisabledReason();
@@ -860,6 +1018,59 @@ namespace GateRimSG1.Goauld
                 && !pawn.Dead
                 && !pawn.Downed
                 && pawn.HostileTo(Faction.OfPlayer);
+        }
+
+        private static int CountHumanlikeThreats(List<Pawn> threats)
+        {
+            int count = 0;
+
+            for (int i = 0; i < threats.Count; i++)
+            {
+                if (threats[i]?.RaceProps?.Humanlike == true)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        private static int CountMechanoidThreats(List<Pawn> threats)
+        {
+            int count = 0;
+
+            for (int i = 0; i < threats.Count; i++)
+            {
+                if (threats[i]?.RaceProps?.IsMechanoid == true)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
+
+        private static string GetThreatSeverityLabel(
+            int hostileCount,
+            int mechanoidCount)
+        {
+            if (hostileCount >= 12 || mechanoidCount >= 4)
+            {
+                return "GR_TokraSecureCommunicator_ThreatSeverityHigh"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (hostileCount >= 5 || mechanoidCount > 0)
+            {
+                return "GR_TokraSecureCommunicator_ThreatSeverityModerate"
+                    .Translate()
+                    .ToString();
+            }
+
+            return "GR_TokraSecureCommunicator_ThreatSeverityLimited"
+                .Translate()
+                .ToString();
         }
 
         private bool HasMedicalSupportCandidates()
@@ -1006,6 +1217,23 @@ namespace GateRimSG1.Goauld
             }
 
             return thing.stackCount;
+        }
+
+        private bool IsThreatAssessmentCooldownActive()
+        {
+            return GetRemainingThreatAssessmentCooldownTicks() > 0;
+        }
+
+        private int GetRemainingThreatAssessmentCooldownTicks()
+        {
+            if (Find.TickManager == null)
+            {
+                return 0;
+            }
+
+            return Math.Max(
+                0,
+                nextThreatAssessmentRequestTick - Find.TickManager.TicksGame);
         }
 
         private bool IsMedicalSupportCooldownActive()

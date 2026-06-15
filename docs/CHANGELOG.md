@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.31-dev — Add Tok'ra tactical threat assessment request
+
+- Add a trusted-tier tactical threat assessment request to the pawn-operated Tok'ra secure communicator.
+- Require a powered communicator, trusted Tok'ra tier, selected-pawn operation and an active hostile threat on the current map.
+- Open a vanilla tactical report summarizing hostile count, broad threat composition and severity label.
+- Start a dedicated one-day tactical-channel cooldown.
+- Keep the request informational only: no damage, stun, healing, item delivery, map reveal, trade, recruitment, quest or reinforcements.
+- Align mod metadata and C# assembly version with `0.2.31`.
+- Requires a forced C# rebuild.
+
 ## 0.2.30-dev — Add Tok'ra emergency medical cache request
 
 - Add a trusted-tier emergency medical cache request to the pawn-operated Tok'ra secure communicator.

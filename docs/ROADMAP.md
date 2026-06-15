@@ -1267,3 +1267,7 @@
 
 
 Development note: `0.2.29-dev` adds a trusted pawn-operated Tok'ra medical-guidance request through the secure communicator: advisory Medicine XP only, no direct treatment or item delivery.
+
+## 0.2.31-dev note
+
+The trusted Tok'ra communicator now includes an informational tactical threat assessment request. It reports broad hostile presence and composition during an active threat without adding combat effects, items, reinforcements, quests or map reveal.

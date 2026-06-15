@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.30-dev</modVersion>
+    <modVersion>0.2.31-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -77,6 +77,8 @@ Current development scope:
 - Trusted Tok'ra secure communicator defensive-diversion request prototype
 - Pawn-operated Tok'ra secure communicator workflow with hidden direct gizmos outside debug
 - Trusted Tok'ra secure communicator medical-guidance request prototype
+- Trusted Tok'ra secure communicator emergency medical-cache request prototype
+- Trusted Tok'ra tactical threat-assessment request prototype
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

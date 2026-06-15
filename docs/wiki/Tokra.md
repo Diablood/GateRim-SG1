@@ -112,6 +112,8 @@ Depuis `0.2.26-dev`, les colonies ayant atteint le palier fiable peuvent constru
 
 Depuis `0.2.27-dev`, ce communicateur permet de demander une [diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request) pendant une attaque active. L'aide reste limitée et clandestine : elle perturbe quelques ennemis, mais ne fait pas apparaître de renforts permanents.
 
+Depuis `0.2.31-dev`, il peut aussi fournir une [évaluation tactique Tok'ra](Tokra-Tactical-Threat-Assessment) purement informative pendant une menace hostile active.
+
 ## Évolutions prévues
 
 ```text

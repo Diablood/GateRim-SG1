@@ -6,6 +6,7 @@
 > Interaction opérée par un colon : 0.2.28-dev
 > Demande médicale : 0.2.29-dev
 > Cache médicale d'urgence : 0.2.30-dev
+> Évaluation tactique : 0.2.31-dev
 
 Le communicateur sécurisé Tok'ra est une passerelle de confiance vers les
 soutiens avancés Tok'ra. Il reste volontairement clandestin : il ne transforme
@@ -22,6 +23,7 @@ pas les Tok'ra en faction alliée classique.
 - peut demander une diversion défensive pendant une attaque active
 - peut demander un [soutien médical limité](Tokra-Communicator-Medical-Support) si un colon est blessé ou malade
 - peut demander une [cache médicale d'urgence](Tokra-Emergency-Medical-Cache) dans les mêmes circonstances
+- peut demander une [évaluation tactique Tok'ra](Tokra-Tactical-Threat-Assessment) pendant une menace hostile active
 ```
 
 ## Diversion défensive
@@ -74,3 +76,7 @@ opérateur, mais ne soigne pas directement et ne livre aucun objet.
 Depuis `0.2.30-dev`, une colonie fiable peut demander une petite cache médicale
 d'urgence. La cache apparaît près du communicateur et reste limitée : elle ne
 soigne pas directement et ne crée pas de commerce Tok'ra.
+
+## Évaluation tactique
+
+Depuis `0.2.31-dev`, une colonie fiable peut demander une évaluation tactique Tok'ra pendant une menace hostile active. Le rapport reste informatif : il résume le nombre d'hostiles, leur composition générale et un niveau de menace, sans révéler la carte, infliger de dégâts ou appeler des renforts.

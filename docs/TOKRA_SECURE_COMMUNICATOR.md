@@ -1,6 +1,6 @@
 # Tok'ra secure communicator
 
-Version: `0.2.29-dev`
+Version: `0.2.31-dev`
 
 The Tok'ra secure communicator is the trusted-channel interaction point for
 advanced Tok'ra support. It is still deliberately limited: the Tok'ra remain
@@ -17,6 +17,7 @@ usable only at trusted Tok'ra confidence
 opens a vanilla contact dialog
 can request a rare defensive diversion during an active attack
 can request limited medical guidance when a colonist is wounded or sick
+can request an informational tactical threat assessment during an active hostile threat
 ```
 
 ## Medical guidance
@@ -92,3 +93,15 @@ The trusted communicator can now request a small emergency medical cache when a
 wounded or sick human colonist is present. The cache places limited medical
 supplies near the communicator and starts its own seven-day cooldown. It does not
 heal pawns directly and does not open trade, recruitment, quests or military aid.
+
+## Tactical threat assessment
+
+Since `0.2.31-dev`, the trusted communicator can request a quick Tok'ra tactical assessment during an active hostile threat. The request is informational only: it summarizes hostile count, broad composition and threat severity without damaging enemies, revealing the map or calling reinforcements.
+
+```text
+trusted tier only
+active hostile threat required
+one-day tactical cooldown
+no combat effect
+no map reveal
+```
