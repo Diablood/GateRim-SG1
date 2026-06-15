@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraInterceptedThreat_Intercepted>Les Tok'ra signalent une force Goa'uld/Jaffa en approche.</GR_TokraInterceptedThreat_Intercepted>
+    <GR_TokraInterceptedThreat_LetterLabel>Menace Goa'uld interceptée</GR_TokraInterceptedThreat_LetterLabel>
+    <GR_TokraInterceptedThreat_LetterText>Une cellule Tok'ra a intercepté des mouvements Goa'uld/Jaffa convergeant vers votre région. La force n'est pas encore visible depuis la colonie, mais le canal estime le contact {0}. Signature probable : {1}. Les Tok'ra n'enverront ni troupes ni fournitures, mais le canal d'évaluation tactique peut transmettre davantage de renseignements avant l'arrivée de l'attaque.</GR_TokraInterceptedThreat_LetterText>
+    <GR_TokraInterceptedThreat_AlertLabel>Menace Goa'uld interceptée</GR_TokraInterceptedThreat_AlertLabel>
+    <GR_TokraInterceptedThreat_AlertExplanationFallback>Une cellule Tok'ra a intercepté une menace Goa'uld/Jaffa en approche. L'alerte disparaîtra lorsque l'attaque commencera.</GR_TokraInterceptedThreat_AlertExplanationFallback>
+    <GR_TokraInterceptedThreat_AlertExplanation>Une cellule Tok'ra signale qu'une force affiliée aux Goa'uld progresse vers la région.
+
+Signature probable : {0}
+Intention probable : {1}
+Arrivée estimée : {2}
+
+Conseil Tok'ra : {3}
+
+L'alerte disparaîtra automatiquement lorsque l'attaque commencera.</GR_TokraInterceptedThreat_AlertExplanation>
+    <GR_TokraInterceptedThreat_StatusNone>aucune interception active</GR_TokraInterceptedThreat_StatusNone>
+    <GR_TokraInterceptedThreat_StatusActive>force hostile en approche, arrivée {0}</GR_TokraInterceptedThreat_StatusActive>
+    <GR_TokraInterceptedThreat_StatusAssessed>renseignement tactique reçu, arrivée {0}</GR_TokraInterceptedThreat_StatusAssessed>
+    <GR_TokraInterceptedThreat_SignatureUnknown>signature inconnue</GR_TokraInterceptedThreat_SignatureUnknown>
+    <GR_TokraInterceptedThreat_SignatureJaffaPatrol>patrouille Jaffa Goa'uld</GR_TokraInterceptedThreat_SignatureJaffaPatrol>
+    <GR_TokraInterceptedThreat_SignatureJaffaAssault>force d'assaut Jaffa Goa'uld</GR_TokraInterceptedThreat_SignatureJaffaAssault>
+    <GR_TokraInterceptedThreat_IntentUnknown>intention inconnue</GR_TokraInterceptedThreat_IntentUnknown>
+    <GR_TokraInterceptedThreat_IntentPunitiveProbe>attaque punitive limitée</GR_TokraInterceptedThreat_IntentPunitiveProbe>
+    <GR_TokraInterceptedThreat_IntentDirectAssault>attaque directe contre la colonie</GR_TokraInterceptedThreat_IntentDirectAssault>
+    <GR_TokraInterceptedThreat_WindowUnknown>fenêtre inconnue</GR_TokraInterceptedThreat_WindowUnknown>
+    <GR_TokraInterceptedThreat_WindowDays>dans environ {0} jour(s)</GR_TokraInterceptedThreat_WindowDays>
+    <GR_TokraInterceptedThreat_WindowSoon>très prochainement</GR_TokraInterceptedThreat_WindowSoon>
+    <GR_TokraInterceptedThreat_AdviceGeneral>renforcer les défenses et maintenir le communicateur disponible</GR_TokraInterceptedThreat_AdviceGeneral>
+    <GR_TokraInterceptedThreat_AdvicePatrol>renforcer les accès, protéger les non-combattants et garder une réserve mobile</GR_TokraInterceptedThreat_AdvicePatrol>
+    <GR_TokraInterceptedThreat_AdviceAssault>préparer les positions défensives, répartir les soins d'urgence et éviter d'exposer les blessés</GR_TokraInterceptedThreat_AdviceAssault>
+    <GR_TokraInterceptedThreat_AttackStarted>La force Goa'uld/Jaffa interceptée atteint la colonie.</GR_TokraInterceptedThreat_AttackStarted>
+    <GR_TokraInterceptedThreat_AttackFailed>La force Goa'uld/Jaffa interceptée disparaît des canaux Tok'ra avant d'atteindre la colonie.</GR_TokraInterceptedThreat_AttackFailed>
+    <GR_TokraInterceptedThreat_DebugCreated>Menace Goa'uld/Jaffa interceptée créée pour test. Attaque imminente.</GR_TokraInterceptedThreat_DebugCreated>
+    <GR_TokraInterceptedThreat_DebugCreateFailed>Impossible de créer une menace interceptée Tok'ra de test.</GR_TokraInterceptedThreat_DebugCreateFailed>
+    <GR_TokraInterceptedThreat_DebugCleared>Menace interceptée Tok'ra effacée.</GR_TokraInterceptedThreat_DebugCleared>
+    <GR_TokraInterceptedThreat_DebugClearFailed>Aucune menace interceptée Tok'ra active à effacer.</GR_TokraInterceptedThreat_DebugClearFailed>
+</LanguageData>

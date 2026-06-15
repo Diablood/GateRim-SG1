@@ -1,10 +1,9 @@
 # Tok'ra tactical threat assessment request
 
-Version: `0.2.31-dev`
+Version: `0.2.31-dev`  
+Updated: `0.2.37-dev`
 
-This milestone adds an informational tactical request to the pawn-operated
-Tok'ra secure communicator. It gives the player a brief trusted-channel report
-without becoming a combat power, spy satellite or allied reinforcement system.
+This request gives the player a brief trusted-channel tactical report without becoming a combat power, spy satellite or allied reinforcement system.
 
 ## Player-facing behavior
 
@@ -21,11 +20,13 @@ vanilla report window opens
 ```text
 trusted Tok'ra trust tier
 powered communicator
-active hostile threat on the current map
 tactical cooldown available
+active hostile threat OR Tok'ra-intercepted threat
 ```
 
-## Current report
+## Active-threat report
+
+When enemies are already present on the map, the report summarizes:
 
 ```text
 hostile pawn count
@@ -34,6 +35,18 @@ mechanoid hostile count
 other hostile signatures
 broad severity label
 one-day dedicated cooldown
+```
+
+## Intercepted-threat report
+
+Since `0.2.37-dev`, if a Tok'ra cell has intercepted an approaching Goa'uld/Jaffa force, the same command can reveal useful information before the attack is visible:
+
+```text
+probable signature
+probable intent
+estimated arrival window
+broad severity label
+short preparation advice
 ```
 
 ## Boundaries

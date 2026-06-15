@@ -380,6 +380,7 @@ namespace GateRimSG1.Goauld
                 .GetCurrentTier();
             List<Pawn> threats = GetHostileThreats();
             List<Pawn> patients = GetMedicalSupportCandidates();
+            string interceptedThreatStatus = GetInterceptedThreatStatusLabel();
 
             Find.WindowStack.Add(
                 new Dialog_MessageBox(
@@ -394,7 +395,8 @@ namespace GateRimSG1.Goauld
                         GetMedicalSupportStatusLabel(),
                         GetMedicalCacheStatusLabel(),
                         threats.Count.ToString(),
-                        patients.Count.ToString())
+                        patients.Count.ToString(),
+                        interceptedThreatStatus)
                     .ToString()));
 
             Messages.Message(
@@ -641,6 +643,12 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            if (GameComponent_TokraInterceptedThreatTracker
+                .HasActiveThreatForMap(parent.Map))
+            {
+                return TryRequestInterceptedThreatAssessment(operatorPawn);
+            }
+
             List<Pawn> threats = GetHostileThreats();
 
             int hostileCount = threats.Count;
@@ -687,6 +695,55 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+
+        private bool TryRequestInterceptedThreatAssessment(Pawn operatorPawn)
+        {
+            nextThreatAssessmentRequestTick = Find.TickManager.TicksGame
+                + ThreatAssessmentCooldownTicks;
+
+            GameComponent_TokraInterceptedThreatTracker
+                .NotifyTacticalAssessmentRequested(parent.Map);
+
+            string severityLabel = GameComponent_TokraInterceptedThreatTracker
+                .GetThreatSeverityLabelForMap(parent.Map);
+
+            Messages.Message(
+                "GR_TokraSecureCommunicator_InterceptedThreatRequested"
+                    .Translate(
+                        GameComponent_TokraInterceptedThreatTracker
+                            .GetThreatSignatureLabelForMap(parent.Map),
+                        severityLabel,
+                        GameComponent_TokraInterceptedThreatTracker
+                            .GetRemainingThreatWindowLabelForMap(parent.Map),
+                        FormatDays(ThreatAssessmentCooldownTicks)),
+                parent,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    "GR_TokraSecureCommunicator_InterceptedThreatDialog"
+                        .Translate(
+                            GameComponent_TokraInterceptedThreatTracker
+                                .GetThreatSignatureLabelForMap(parent.Map),
+                            GameComponent_TokraInterceptedThreatTracker
+                                .GetThreatIntentLabelForMap(parent.Map),
+                            GameComponent_TokraInterceptedThreatTracker
+                                .GetRemainingThreatWindowLabelForMap(parent.Map),
+                            severityLabel,
+                            GameComponent_TokraInterceptedThreatTracker
+                                .GetThreatPreparationAdviceLabelForMap(parent.Map),
+                            FormatDays(ThreatAssessmentCooldownTicks))
+                        .ToString()));
+
+            GR_Log.Message(
+                $"Requested trusted Tok'ra intercepted-threat assessment from "
+                + $"communicator at {parent.Position} on map "
+                + $"{parent.Map?.uniqueID.ToString() ?? "unknown"}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
 
         internal bool TryRequestMedicalSupport(Pawn operatorPawn)
         {
@@ -988,7 +1045,7 @@ namespace GateRimSG1.Goauld
                             .ToString();
                     }
 
-                    if (!HasHostileThreats())
+                    if (!HasThreatAssessmentContext())
                     {
                         return "GR_TokraSecureCommunicator_FloatMenuNoThreat"
                             .Translate()
@@ -1233,7 +1290,7 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
-            if (!HasHostileThreats())
+            if (!HasThreatAssessmentContext())
             {
                 return "GR_TokraSecureCommunicator_DiversionNoThreat"
                     .Translate()
@@ -1505,6 +1562,14 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
+            if (GameComponent_TokraInterceptedThreatTracker
+                .HasActiveThreatForMap(parent.Map))
+            {
+                return "GR_TokraSecureCommunicator_ThreatStatusIntercepted"
+                    .Translate()
+                    .ToString();
+            }
+
             if (!HasHostileThreats())
             {
                 return "GR_TokraSecureCommunicator_ThreatStatusNoThreat"
@@ -1573,6 +1638,27 @@ namespace GateRimSG1.Goauld
             }
 
             return "GR_TokraSecureCommunicator_MedicalCacheStatusReady"
+                .Translate()
+                .ToString();
+        }
+
+        private bool HasThreatAssessmentContext()
+        {
+            return HasHostileThreats()
+                || GameComponent_TokraInterceptedThreatTracker
+                    .HasActiveThreatForMap(parent.Map);
+        }
+
+        private string GetInterceptedThreatStatusLabel()
+        {
+            if (GameComponent_TokraInterceptedThreatTracker
+                .HasActiveThreatForMap(parent.Map))
+            {
+                return GameComponent_TokraInterceptedThreatTracker
+                    .GetStatusReportLabelForMap(parent.Map);
+            }
+
+            return "GR_TokraSecureCommunicator_InterceptedThreatStatusNone"
                 .Translate()
                 .ToString();
         }

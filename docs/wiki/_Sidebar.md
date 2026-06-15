@@ -43,6 +43,7 @@
 - [Feuille de route des interactions Tok'ra](Tokra-Interaction-Roadmap)
 - [Communicateur sécurisé Tok'ra](Tokra-Secure-Communicator)
 - [État du canal Tok'ra](Tokra-Communicator-Status-Report)
+- [Renseignement Tok'ra sur menace interceptée](Tokra-Intercepted-Threat-Intelligence)
 - [Débriefing opérationnel Tok'ra](Tokra-Operational-Debrief)
 - [Briefing de mission Tok'ra](Tokra-First-Mission-Briefing)
 - [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)

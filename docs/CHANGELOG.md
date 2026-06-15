@@ -1,3 +1,24 @@
+## 0.2.37-dev-r1 - Fix Tok'ra intercepted threat alert build
+
+### 0.2.37-dev-r2
+
+- Fixed the Tok'ra intercepted threat debug action so it also opens the RP letter used by the natural incident.
+
+
+- Add the missing RimWorld namespace import for the Tok'ra intercepted threat alert.
+- Keep the intercepted threat behavior unchanged.
+
+## 0.2.37-dev - Add Tok'ra intercepted threat intelligence
+
+- Add a rare Tok'ra interception incident that warns trusted colonies about an approaching Goa'uld/Jaffa force.
+- Create a persistent intercepted-threat state with a right-side alert and hover details until the delayed attack starts.
+- Schedule the delayed attack after a 1 to 3 day preparation window.
+- Enrich the tactical threat assessment request so it can reveal useful information before the threat is visible.
+- Keep the interaction non-material: no Tok'ra reinforcements, items, healing, trade, recruitment or reward is created.
+- Add debug actions to create or clear an intercepted threat for testing.
+- Align mod metadata and C# assembly version with `0.2.37`.
+- Requires a forced C# rebuild.
+
 ## 0.2.36-dev - Add Tok'ra initiated mission briefing contact
 
 - Temporarily hide the player-facing Tok'ra operational debrief request until it has a clearer trust or narrative role.

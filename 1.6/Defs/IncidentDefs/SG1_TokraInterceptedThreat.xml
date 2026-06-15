@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Rare Tok'ra advance-warning incident.
+
+    This does not immediately spawn enemies. It creates a persistent
+    intercepted-threat state, shows an alert and schedules a delayed
+    Goa'uld/Jaffa attack after a short preparation window.
+    -->
+    <IncidentDef>
+        <defName>SG1_TokraInterceptedThreat</defName>
+        <label>Tok'ra intercepted threat</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraInterceptedThreat</workerClass>
+        <category>Misc</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.012</baseChance>
+        <earliestDay>35</earliestDay>
+        <minRefireDays>45</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+        <letterLabel>Tok'ra intercepted threat</letterLabel>
+        <letterText>A Tok'ra cell has intercepted Goa'uld/Jaffa movements converging toward your region. The force is not visible from the colony yet, but the channel estimates contact {ARRIVALWINDOW}. Probable signature: {SIGNATURE}. The Tok'ra will not send troops or supplies, but the tactical assessment channel may reveal more before the attack reaches you.</letterText>
+        <letterDef>ThreatSmall</letterDef>
+    </IncidentDef>
+</Defs>

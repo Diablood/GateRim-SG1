@@ -188,6 +188,85 @@ namespace GateRimSG1.Goauld
         }
 
 
+        [DebugAction(
+            "GateRim SG-1",
+            "Create Tok'ra intercepted threat test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void CreateTokraInterceptedThreatTest()
+        {
+            Map map = Find.CurrentMap;
+
+            if (map == null)
+            {
+                Messages.Message(
+                    "GR_TokraSafehouseDebug_Unavailable".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            GameComponent_TokraTrustTracker.DebugSetTrustScore(
+                GameComponent_TokraTrustTracker.TrustedThreshold);
+
+            if (!GameComponent_TokraInterceptedThreatTracker
+                .TryStartInterceptedThreat(map, debugShortDelay: true))
+            {
+                Messages.Message(
+                    "GR_TokraInterceptedThreat_DebugCreateFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            SendTokraInterceptedThreatDebugLetter(map);
+
+            Messages.Message(
+                "GR_TokraInterceptedThreat_DebugCreated".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Clear Tok'ra intercepted threat test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ClearTokraInterceptedThreatTest()
+        {
+            if (!GameComponent_TokraInterceptedThreatTracker
+                .DebugClearInterceptedThreat())
+            {
+                Messages.Message(
+                    "GR_TokraInterceptedThreat_DebugClearFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraInterceptedThreat_DebugCleared".Translate(),
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        private static void SendTokraInterceptedThreatDebugLetter(Map map)
+        {
+            if (map == null || Find.LetterStack == null)
+            {
+                return;
+            }
+
+            Find.LetterStack.ReceiveLetter(
+                "GR_TokraInterceptedThreat_LetterLabel".Translate(),
+                "GR_TokraInterceptedThreat_LetterText".Translate(
+                    GameComponent_TokraInterceptedThreatTracker
+                        .GetRemainingThreatWindowLabelForMap(map),
+                    GameComponent_TokraInterceptedThreatTracker
+                        .GetThreatSignatureLabelForMap(map)),
+                LetterDefOf.ThreatSmall);
+        }
+
         private static void AdjustTokraTrustForDebug(int requestedChange)
         {
             int previousScore = GameComponent_TokraTrustTracker

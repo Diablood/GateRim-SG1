@@ -1,42 +1,46 @@
 # Évaluation tactique Tok'ra
 
-> Statut : actif
-> Version d'introduction : 0.2.31-dev
+Introduit en `0.2.31-dev`, enrichi en `0.2.37-dev`.
 
-L'évaluation tactique Tok'ra est une demande informative via le
-[communicateur sécurisé Tok'ra](Tokra-Secure-Communicator).
+## Principe
 
-## Utilisation
+La commande `Demander une évaluation tactique Tok'ra` sert à obtenir un renseignement court via le communicateur sécurisé Tok'ra.
 
-```text
-sélectionner un colon
-clic droit sur le communicateur Tok'ra
-demander une évaluation tactique Tok'ra
-le colon utilise brièvement l'appareil
-une fenêtre vanilla affiche le rapport
-```
+Elle ne provoque aucun effet direct sur la carte.
 
-## Conditions
+## Menace active
 
-```text
-confiance Tok'ra fiable
-communicateur alimenté
-menace hostile active sur la carte
-cooldown tactique disponible
-```
+Si une menace hostile est déjà présente, le rapport résume :
 
-## Rapport actuel
+- le nombre d'hostiles ;
+- les humanoïdes ou assimilés ;
+- les mécanoïdes ;
+- les autres signatures ;
+- le niveau général de menace.
 
-```text
-nombre d'hostiles actifs
-nombre d'hostiles humanoïdes
-nombre de mécanoïdes
-autres signatures hostiles
-niveau global de menace
-```
+## Menace interceptée
+
+Depuis `0.2.37-dev`, la commande peut aussi être utilisée lorsqu'une cellule Tok'ra a intercepté une force Goa'uld/Jaffa en approche.
+
+Dans ce cas, le rapport peut révéler :
+
+- la signature probable ;
+- l'intention probable ;
+- la fenêtre d'arrivée estimée ;
+- le niveau général de menace ;
+- un court conseil de préparation.
 
 ## Limites
 
-Cette demande ne révèle pas la carte et ne déclenche aucun effet de combat.
-Elle ne soigne pas, ne livre aucun objet, ne lance pas de quête et n'appelle pas
-de renforts Tok'ra.
+L'évaluation tactique ne fournit pas :
+
+- dégâts ;
+- étourdissement ;
+- soin ;
+- objet ;
+- renfort ;
+- commerce ;
+- recrutement ;
+- quête immédiate.
+
+Elle sert uniquement à mieux préparer la colonie.

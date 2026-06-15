@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_TokraSecureCommunicator_CommandLabel>Contacter les Tok'ra</GR_TokraSecureCommunicator_CommandLabel>
-    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet désormais de préparer une mission discrète future, de demander une diversion défensive rare, un conseil médical avancé, une cache médicale d'urgence, une évaluation tactique ou une consultation d'état du canal et de la posture Tok'ra.</GR_TokraSecureCommunicator_CommandDesc>
+    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet de préparer une mission discrète future, de demander une diversion défensive rare, un conseil médical avancé, une cache médicale d'urgence, une évaluation tactique pendant une menace active ou interceptée, ou une consultation d'état du canal et de la posture Tok'ra.</GR_TokraSecureCommunicator_CommandDesc>
     <GR_TokraSecureCommunicator_DiversionCommandLabel>Demander une diversion Tok'ra</GR_TokraSecureCommunicator_DiversionCommandLabel>
     <GR_TokraSecureCommunicator_DiversionCommandDesc>Demander aux Tok'ra une perturbation défensive discrète contre quelques ennemis actifs sur la carte : désorientation immédiate, puis nausées retardées pour les cibles biologiques. Nécessite le palier fiable, une alimentation électrique, une menace hostile active et un long délai entre deux demandes.</GR_TokraSecureCommunicator_DiversionCommandDesc>
     <GR_TokraSecureCommunicator_MedicalCommandLabel>Demander un soutien médical Tok'ra</GR_TokraSecureCommunicator_MedicalCommandLabel>
@@ -9,7 +9,7 @@
     <GR_TokraSecureCommunicator_MedicalCacheCommandLabel>Demander une cache médicale Tok'ra</GR_TokraSecureCommunicator_MedicalCacheCommandLabel>
     <GR_TokraSecureCommunicator_ThreatCommandLabel>Demander une évaluation tactique Tok'ra</GR_TokraSecureCommunicator_ThreatCommandLabel>
     <GR_TokraSecureCommunicator_MedicalCacheCommandDesc>Demander à une cellule Tok'ra fiable de déposer une petite cache médicale d'urgence près du communicateur. Nécessite le palier fiable, une alimentation électrique, au moins un colon blessé ou malade et un long délai dédié.</GR_TokraSecureCommunicator_MedicalCacheCommandDesc>
-    <GR_TokraSecureCommunicator_ThreatCommandDesc>Demander à une cellule Tok'ra fiable une lecture tactique rapide de la menace hostile active. La réponse donne un résumé du nombre d'hostiles et de leur nature générale, sans révéler la carte ni infliger d'effet.</GR_TokraSecureCommunicator_ThreatCommandDesc>
+    <GR_TokraSecureCommunicator_ThreatCommandDesc>Demander à une cellule Tok'ra fiable une lecture tactique rapide d'une menace hostile active ou d'une force Goa'uld/Jaffa interceptée avant son arrivée. La réponse donne un résumé exploitable sans révéler toute la carte ni infliger d'effet.</GR_TokraSecureCommunicator_ThreatCommandDesc>
     <GR_TokraSecureCommunicator_DebriefCommandLabel>Transmettre un débriefing Tok'ra</GR_TokraSecureCommunicator_DebriefCommandLabel>
     <GR_TokraSecureCommunicator_DebriefCommandDesc>Transmettre à la cellule Tok'ra un court débriefing opérationnel. La réponse affine les procédures du colon opérateur sans ouvrir de commerce, livraison, quête ou aide directe.</GR_TokraSecureCommunicator_DebriefCommandDesc>
     <GR_TokraSecureCommunicator_FirstMissionCommandLabel>Demander une mission Tok'ra discrète</GR_TokraSecureCommunicator_FirstMissionCommandLabel>
@@ -31,13 +31,13 @@
     <GR_TokraSecureCommunicator_Unpowered>Le communicateur Tok'ra doit être alimenté.</GR_TokraSecureCommunicator_Unpowered>
     <GR_TokraSecureCommunicator_FloatMenuTrustInsufficient>Confiance Tok'ra insuffisante</GR_TokraSecureCommunicator_FloatMenuTrustInsufficient>
     <GR_TokraSecureCommunicator_FloatMenuUnpowered>Communicateur non alimenté</GR_TokraSecureCommunicator_FloatMenuUnpowered>
-    <GR_TokraSecureCommunicator_FloatMenuNoThreat>Aucune menace active</GR_TokraSecureCommunicator_FloatMenuNoThreat>
+    <GR_TokraSecureCommunicator_FloatMenuNoThreat>Aucune menace active ou interceptée</GR_TokraSecureCommunicator_FloatMenuNoThreat>
     <GR_TokraSecureCommunicator_FloatMenuNoPatient>Aucun patient concerné</GR_TokraSecureCommunicator_FloatMenuNoPatient>
     <GR_TokraSecureCommunicator_FloatMenuCooldown>Canal indisponible : {0} jour(s)</GR_TokraSecureCommunicator_FloatMenuCooldown>
     <GR_TokraSecureCommunicator_FloatMenuFirstMissionPrepared>Mission déjà en préparation</GR_TokraSecureCommunicator_FloatMenuFirstMissionPrepared>
     <GR_TokraSecureCommunicator_FloatMenuFirstMissionBriefingReceived>Briefing déjà reçu</GR_TokraSecureCommunicator_FloatMenuFirstMissionBriefingReceived>
     <GR_TokraSecureCommunicator_RequiresTrusted>Les Tok'ra refusent d'ouvrir ce canal sécurisé tant que la confiance reste au palier {0}. Palier requis : fiable.</GR_TokraSecureCommunicator_RequiresTrusted>
-    <GR_TokraSecureCommunicator_DiversionNoThreat>Aucune menace hostile active n'est détectée sur cette carte.</GR_TokraSecureCommunicator_DiversionNoThreat>
+    <GR_TokraSecureCommunicator_DiversionNoThreat>Aucune menace hostile active ou interceptée n'est disponible sur cette carte.</GR_TokraSecureCommunicator_DiversionNoThreat>
     <GR_TokraSecureCommunicator_DiversionCooldown>Le canal de diversion Tok'ra doit rester silencieux encore {0} jour(s).</GR_TokraSecureCommunicator_DiversionCooldown>
     <GR_TokraSecureCommunicator_MedicalCooldown>Le canal médical Tok'ra doit rester silencieux encore {0} jour(s).</GR_TokraSecureCommunicator_MedicalCooldown>
     <GR_TokraSecureCommunicator_MedicalCacheCooldown>Le canal de cache médicale Tok'ra doit rester silencieux encore {0} jour(s).</GR_TokraSecureCommunicator_MedicalCacheCooldown>
@@ -82,7 +82,8 @@
     <GR_TokraSecureCommunicator_MedicalStatusCooldown>silence médical : {0} jour(s)</GR_TokraSecureCommunicator_MedicalStatusCooldown>
     <GR_TokraSecureCommunicator_ThreatStatusLocked>verrouillée</GR_TokraSecureCommunicator_ThreatStatusLocked>
     <GR_TokraSecureCommunicator_ThreatStatusReady>prête pendant une menace active</GR_TokraSecureCommunicator_ThreatStatusReady>
-    <GR_TokraSecureCommunicator_ThreatStatusNoThreat>aucune menace active</GR_TokraSecureCommunicator_ThreatStatusNoThreat>
+    <GR_TokraSecureCommunicator_ThreatStatusIntercepted>menace interceptée en approche</GR_TokraSecureCommunicator_ThreatStatusIntercepted>
+    <GR_TokraSecureCommunicator_ThreatStatusNoThreat>aucune menace active ou interceptée</GR_TokraSecureCommunicator_ThreatStatusNoThreat>
     <GR_TokraSecureCommunicator_ThreatStatusCooldown>silence tactique : {0} jour(s)</GR_TokraSecureCommunicator_ThreatStatusCooldown>
     <GR_TokraSecureCommunicator_ThreatSeverityLimited>limitée</GR_TokraSecureCommunicator_ThreatSeverityLimited>
     <GR_TokraSecureCommunicator_ThreatSeverityModerate>modérée</GR_TokraSecureCommunicator_ThreatSeverityModerate>
@@ -106,6 +107,7 @@ Cache médicale : {6}</GR_TokraSecureCommunicator_Inspect>
     <GR_TokraSecureCommunicator_DebriefRequested>{0} transmet un débriefing opérationnel Tok'ra : +{1} XP en {2}. Nouveau silence de coordination : {3} jour(s).</GR_TokraSecureCommunicator_DebriefRequested>
     <GR_TokraSecureCommunicator_FirstMissionRequested>{0} transmet une demande de mission discrète aux Tok'ra. La cellule accepte de préparer une opération future.</GR_TokraSecureCommunicator_FirstMissionRequested>
     <GR_TokraSecureCommunicator_ThreatRequested>La cellule Tok'ra transmet une évaluation tactique : {0} hostile(s), menace {1}. Nouveau silence tactique : {2} jour(s).</GR_TokraSecureCommunicator_ThreatRequested>
+    <GR_TokraSecureCommunicator_InterceptedThreatRequested>La cellule Tok'ra affine l'interception : {0}, menace {1}, arrivée {2}. Nouveau silence tactique : {3} jour(s).</GR_TokraSecureCommunicator_InterceptedThreatRequested>
     <GR_TokraSecureCommunicator_StatusReportDialog>Le communicateur accroche un canal Tok'ra fragmenté. Quelques secondes passent dans le silence, puis une réponse basse et codée traverse les interférences.
 
 Signal établi :
@@ -124,6 +126,7 @@ Réponses que la cellule accepte encore de recevoir :
 Données locales transmises :
 - signatures hostiles proches : {9}
 - colons signalés comme blessés ou malades : {10}
+- menace interceptée : {11}
 
 La cellule reste en écoute, sans agir tant qu'aucune demande précise n'est envoyée. Les étapes sensibles déjà engagées peuvent aussi reprendre d'elles-mêmes contact avec la colonie.</GR_TokraSecureCommunicator_StatusReportDialog>
     <GR_TokraSecureCommunicator_DialogTrusted>Le communicateur stabilise un canal discret avec une cellule Tok'ra.
@@ -136,7 +139,7 @@ Options actuelles :
 - demander une diversion défensive rare pendant une attaque active ;
 - demander un conseil médical avancé si un colon blessé ou malade est présent ;
 - demander une petite cache médicale d'urgence dans les mêmes circonstances ;
-- demander une évaluation tactique rapide pendant une menace active.
+- demander une évaluation tactique rapide pendant une menace active ou après une interception Tok'ra.
 
 Les demandes doivent maintenant être opérées par un colon : sélectionnez un colon, puis faites un clic droit sur le communicateur.
 
@@ -169,6 +172,18 @@ Résumé détecté :
 - évaluation globale : menace {4}
 
 Aucun tir, aucun sabotage, aucune révélation de carte et aucun renfort ne sont déclenchés. Nouvelle demande possible après environ {5} jour(s).</GR_TokraSecureCommunicator_ThreatDialog>
+    <GR_TokraSecureCommunicator_InterceptedThreatDialog>La réponse Tok'ra arrive par fragments serrés, comme si la cellule surveillait déjà plusieurs canaux ennemis.
+
+La menace n'est pas encore visible depuis la colonie. Les Tok'ra ont intercepté des mouvements en approche, mais ne transmettent que ce qui peut aider sans exposer leurs relais.
+
+Renseignement transmis :
+- signature probable : {0}
+- intention probable : {1}
+- arrivée estimée : {2}
+- évaluation globale : menace {3}
+- conseil Tok'ra : {4}
+
+Aucun tir, aucun sabotage, aucune révélation de carte et aucun renfort ne sont déclenchés. Nouvelle demande possible après environ {5} jour(s).</GR_TokraSecureCommunicator_InterceptedThreatDialog>
     <GR_TokraSecureCommunicator_MedicalCacheDialog>La réponse Tok'ra reste brève.
 
 Une cellule proche transmet des coordonnées locales et fait déposer une petite cache médicale près du communicateur. Le paquet ne révèle aucune route de repli et ne contient que de quoi stabiliser une urgence, pas de quoi établir un commerce ou un soutien permanent.
@@ -192,6 +207,7 @@ Une cellule voisine détourne des communications, brouille des ordres et force p
 Effet : {0} ennemi(s) perturbé(s).
 
 Les Tok'ra coupent ensuite le canal pour protéger leur cellule. Nouvelle demande possible après environ {1} jour(s).</GR_TokraSecureCommunicator_DiversionDialog>
+    <GR_TokraSecureCommunicator_InterceptedThreatStatusNone>aucune interception Tok'ra active</GR_TokraSecureCommunicator_InterceptedThreatStatusNone>
     <GR_TokraFirstMissionBriefing_LetterLabel>Briefing Tok'ra discret</GR_TokraFirstMissionBriefing_LetterLabel>
     <GR_TokraFirstMissionBriefing_LetterText>Le communicateur sécurisé s'active sans demande de la colonie. La cellule Tok'ra reprend contact par une transmission courte, masquée derrière plusieurs rebonds radio.
 

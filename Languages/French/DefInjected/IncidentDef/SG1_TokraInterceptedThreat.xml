@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraInterceptedThreat.label>menace interceptée Tok'ra</SG1_TokraInterceptedThreat.label>
+    <SG1_TokraInterceptedThreat.letterLabel>Menace Goa'uld interceptée</SG1_TokraInterceptedThreat.letterLabel>
+    <SG1_TokraInterceptedThreat.letterText>Une cellule Tok'ra a intercepté des mouvements Goa'uld/Jaffa convergeant vers votre région. La force n'est pas encore visible depuis la colonie, mais le canal estime le contact {ARRIVALWINDOW}. Signature probable : {SIGNATURE}. Les Tok'ra n'enverront ni troupes ni fournitures, mais le canal d'évaluation tactique peut transmettre davantage de renseignements avant l'arrivée de l'attaque.</SG1_TokraInterceptedThreat.letterText>
+</LanguageData>
