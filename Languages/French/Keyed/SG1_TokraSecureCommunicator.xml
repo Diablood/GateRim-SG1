@@ -74,6 +74,7 @@
     <GR_TokraSecureCommunicator_FirstMissionStatusBriefingReceived>briefing reçu</GR_TokraSecureCommunicator_FirstMissionStatusBriefingReceived>
     <GR_TokraSecureCommunicator_FirstMissionStatusCachePending>renseignements en transit : {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusCachePending>
     <GR_TokraSecureCommunicator_FirstMissionStatusCacheDelivered>renseignements codés livrés</GR_TokraSecureCommunicator_FirstMissionStatusCacheDelivered>
+    <GR_TokraSecureCommunicator_FirstMissionStatusIntelAnalyzed>renseignements codés analysés</GR_TokraSecureCommunicator_FirstMissionStatusIntelAnalyzed>
     <GR_TokraSecureCommunicator_DiversionStatusLocked>verrouillée</GR_TokraSecureCommunicator_DiversionStatusLocked>
     <GR_TokraSecureCommunicator_DiversionStatusReady>prête si la menace se maintient</GR_TokraSecureCommunicator_DiversionStatusReady>
     <GR_TokraSecureCommunicator_DiversionStatusNoThreat>aucune menace active</GR_TokraSecureCommunicator_DiversionStatusNoThreat>

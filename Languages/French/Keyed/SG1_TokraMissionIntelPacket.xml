@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraMissionIntelPacket_FloatMenuAnalyzeLabel>Analyser les renseignements codés Tok'ra</GR_TokraMissionIntelPacket_FloatMenuAnalyzeLabel>
+    <GR_TokraMissionIntelPacket_PlayerPawnRequired>Seul un colon humain contrôlé par la colonie peut analyser ce paquet.</GR_TokraMissionIntelPacket_PlayerPawnRequired>
+    <GR_TokraMissionIntelPacket_IntellectualRequired>Le colon sélectionné ne peut pas exploiter ces renseignements.</GR_TokraMissionIntelPacket_IntellectualRequired>
+    <GR_TokraMissionIntelPacket_AlreadyAnalyzed>Renseignements déjà analysés</GR_TokraMissionIntelPacket_AlreadyAnalyzed>
+    <GR_TokraMissionIntelPacket_CannotReach>Le colon sélectionné ne peut pas atteindre le paquet.</GR_TokraMissionIntelPacket_CannotReach>
+    <GR_TokraMissionIntelPacket_Reserved>Un autre colon utilise déjà ce paquet.</GR_TokraMissionIntelPacket_Reserved>
+    <GR_TokraMissionIntelPacket_JobUnavailable>L'analyse du paquet Tok'ra est indisponible.</GR_TokraMissionIntelPacket_JobUnavailable>
+    <GR_TokraMissionIntelPacket_AnalysisFailed>Le paquet codé Tok'ra ne peut pas être exploité pour le moment.</GR_TokraMissionIntelPacket_AnalysisFailed>
+    <GR_TokraMissionIntelPacket_Analyzed>{0} analyse les renseignements codés Tok'ra : +{1} XP en Intellectuel.</GR_TokraMissionIntelPacket_Analyzed>
+    <GR_TokraMissionIntelPacket_AnalysisDialogText>{0} recoupe les fragments de route et les protocoles de silence transmis par la cellule Tok'ra.
+
+Le paquet ne révèle pas encore de cible exploitable. Il confirme cependant qu'une opération discrète peut être préparée sans exposer directement la colonie ni la cellule Tok'ra.
+
+Les renseignements sont maintenant exploitables pour une future étape de mission.</GR_TokraMissionIntelPacket_AnalysisDialogText>
+</LanguageData>

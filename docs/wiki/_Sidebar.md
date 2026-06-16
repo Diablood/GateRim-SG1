@@ -48,6 +48,7 @@
 - [Débriefing opérationnel Tok'ra](Tokra-Operational-Debrief)
 - [Briefing de mission Tok'ra](Tokra-First-Mission-Briefing)
 - [Cache de mission Tok'ra](Tokra-First-Mission-Cache)
+- [Analyse des renseignements codés Tok'ra](Tokra-Coded-Intelligence-Analysis)
 - [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)
 - [Diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request)
 - [Soutien médical via communicateur Tok'ra](Tokra-Communicator-Medical-Support)

@@ -1,3 +1,12 @@
+## 0.2.40-dev - Add Tok'ra coded intelligence analysis
+
+- Make the Tok'ra encoded intelligence packet analyzable by a colon capable of Intellectual.
+- Add a short right-click work interaction on the packet and a light Intellectual XP gain.
+- Track the analyzed intelligence state persistently and expose it through the Tok'ra channel status report.
+- Keep the step non-material: no world site, raid, healing, reinforcements, trade, recruitment or reward is created.
+- Align mod metadata and C# assembly version with `0.2.40`.
+- Requires a forced C# rebuild.
+
 ## 0.2.39-dev - Add Tok'ra mission briefing follow-up cache
 
 - Add an automatic follow-up cache after the first Tok'ra mission briefing has been received.

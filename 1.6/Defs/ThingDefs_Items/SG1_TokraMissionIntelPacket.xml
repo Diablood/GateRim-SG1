@@ -3,6 +3,7 @@
     <ThingDef ParentName="ResourceBase">
         <defName>SG1_TokraMissionIntelPacket</defName>
         <label>Tok'ra encoded intelligence packet</label>
+        <thingClass>ThingWithComps</thingClass>
         <description>A sealed Tok'ra packet containing coded instructions, fragments of route intelligence and operational silence protocols for a future discreet mission. It is not a trade good or a material reward.</description>
         <graphicData>
             <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
@@ -19,5 +20,8 @@
             <Mass>0.01</Mass>
         </statBases>
         <tradeability>None</tradeability>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_TokraMissionIntelPacket" />
+        </comps>
     </ThingDef>
 </Defs>

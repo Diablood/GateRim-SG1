@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>SG1_AnalyzeTokraMissionIntelPacket</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraAnalyzeMissionIntelPacket</driverClass>
+        <reportString>analyzing Tok'ra coded intelligence.</reportString>
+        <casualInterruptible>false</casualInterruptible>
+    </JobDef>
+</Defs>

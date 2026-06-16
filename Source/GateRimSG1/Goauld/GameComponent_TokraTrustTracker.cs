@@ -69,6 +69,8 @@ namespace GateRimSG1.Goauld
         private bool firstTrustMissionCacheDelivered;
         private int firstTrustMissionCacheDeliveryTick;
         private int nextFirstTrustMissionCacheCheckTick;
+        private bool firstTrustMissionIntelAnalyzed;
+        private int firstTrustMissionIntelAnalyzedTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -114,6 +116,14 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref nextFirstTrustMissionCacheCheckTick,
                 "tokraNextFirstTrustMissionCacheCheckTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionIntelAnalyzed,
+                "tokraFirstTrustMissionIntelAnalyzed",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionIntelAnalyzedTick,
+                "tokraFirstTrustMissionIntelAnalyzedTick",
                 0);
 
             trustScore = ClampTrust(trustScore);
@@ -257,6 +267,16 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.firstTrustMissionCacheDeliveryTick ?? 0;
         }
 
+        public static bool IsFirstTrustMissionIntelAnalyzed()
+        {
+            return GetCurrentTracker()?.firstTrustMissionIntelAnalyzed ?? false;
+        }
+
+        public static int GetFirstTrustMissionIntelAnalyzedTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionIntelAnalyzedTick ?? 0;
+        }
+
         public static int GetRemainingFirstTrustMissionCacheDeliveryTicks()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -332,7 +352,59 @@ namespace GateRimSG1.Goauld
             tracker.firstTrustMissionCacheDelivered = false;
             tracker.firstTrustMissionCacheDeliveryTick = 0;
             tracker.nextFirstTrustMissionCacheCheckTick = 0;
+            tracker.firstTrustMissionIntelAnalyzed = false;
+            tracker.firstTrustMissionIntelAnalyzedTick = 0;
             tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
+            return true;
+        }
+
+        public static bool NotifyFirstTrustMissionIntelAnalyzed(Pawn analyzer)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot mark Tok'ra mission intelligence as analyzed: "
+                    + "the trust tracker is unavailable.");
+                return false;
+            }
+
+            if (tracker.firstTrustMissionIntelAnalyzed)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+            tracker.firstTrustMissionCacheDelivered = true;
+
+            if (tracker.firstTrustMissionHookPreparedTick <= 0)
+            {
+                tracker.firstTrustMissionHookPreparedTick = currentTick;
+            }
+
+            if (tracker.firstTrustMissionBriefingContactTick <= 0)
+            {
+                tracker.firstTrustMissionBriefingContactTick = currentTick;
+            }
+
+            if (tracker.firstTrustMissionCacheDeliveryTick <= 0
+                || tracker.firstTrustMissionCacheDeliveryTick > currentTick)
+            {
+                tracker.firstTrustMissionCacheDeliveryTick = currentTick;
+            }
+
+            tracker.nextFirstTrustMissionCacheCheckTick = 0;
+            tracker.firstTrustMissionIntelAnalyzed = true;
+            tracker.firstTrustMissionIntelAnalyzedTick = currentTick;
+
+            GR_Log.Message(
+                "Tok'ra first mission encoded intelligence analyzed by "
+                + $"{analyzer?.LabelShortCap ?? "unknown"}.");
+
             return true;
         }
 
