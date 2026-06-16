@@ -56,6 +56,9 @@ namespace GateRimSG1.Goauld
         private const int FirstTrustMissionCacheMaximumDelayTicks = 45000;
         private const int FirstTrustMissionCacheCheckIntervalTicks = 2500;
         private const int FirstTrustMissionCacheRetryDelayTicks = 7500;
+        private const int FirstTrustMissionDecodedLeadMinimumDelayTicks = 15000;
+        private const int FirstTrustMissionDecodedLeadMaximumDelayTicks = 45000;
+        private const int FirstTrustMissionDecodedLeadCheckIntervalTicks = 2500;
         private const string FirstTrustMissionCacheThingDefName =
             "SG1_TokraMissionIntelPacket";
 
@@ -71,6 +74,10 @@ namespace GateRimSG1.Goauld
         private int nextFirstTrustMissionCacheCheckTick;
         private bool firstTrustMissionIntelAnalyzed;
         private int firstTrustMissionIntelAnalyzedTick;
+        private bool firstTrustMissionLeadDecoded;
+        private int firstTrustMissionLeadDecodedTick;
+        private int firstTrustMissionLeadDecodeContactTick;
+        private int nextFirstTrustMissionLeadDecodeCheckTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -125,6 +132,22 @@ namespace GateRimSG1.Goauld
                 ref firstTrustMissionIntelAnalyzedTick,
                 "tokraFirstTrustMissionIntelAnalyzedTick",
                 0);
+            Scribe_Values.Look(
+                ref firstTrustMissionLeadDecoded,
+                "tokraFirstTrustMissionLeadDecoded",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionLeadDecodedTick,
+                "tokraFirstTrustMissionLeadDecodedTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionLeadDecodeContactTick,
+                "tokraFirstTrustMissionLeadDecodeContactTick",
+                0);
+            Scribe_Values.Look(
+                ref nextFirstTrustMissionLeadDecodeCheckTick,
+                "tokraNextFirstTrustMissionLeadDecodeCheckTick",
+                0);
 
             trustScore = ClampTrust(trustScore);
 
@@ -140,6 +163,7 @@ namespace GateRimSG1.Goauld
 
             TrySendPendingFirstTrustMissionBriefingContact();
             TryDeliverPendingFirstTrustMissionCache();
+            TrySendPendingFirstTrustMissionDecodedLead();
         }
 
         public static int GetCurrentTrustScore()
@@ -277,6 +301,35 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.firstTrustMissionIntelAnalyzedTick ?? 0;
         }
 
+        public static bool IsFirstTrustMissionLeadDecoded()
+        {
+            return GetCurrentTracker()?.firstTrustMissionLeadDecoded ?? false;
+        }
+
+        public static int GetFirstTrustMissionLeadDecodedTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionLeadDecodedTick ?? 0;
+        }
+
+        public static int GetRemainingFirstTrustMissionLeadDecodeTicks()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null
+                || tracker.firstTrustMissionLeadDecoded
+                || !tracker.firstTrustMissionIntelAnalyzed)
+            {
+                return 0;
+            }
+
+            tracker.EnsureFirstTrustMissionLeadDecodeScheduled();
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            return Math.Max(
+                0,
+                tracker.firstTrustMissionLeadDecodeContactTick - currentTick);
+        }
+
         public static int GetRemainingFirstTrustMissionCacheDeliveryTicks()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -354,8 +407,31 @@ namespace GateRimSG1.Goauld
             tracker.nextFirstTrustMissionCacheCheckTick = 0;
             tracker.firstTrustMissionIntelAnalyzed = false;
             tracker.firstTrustMissionIntelAnalyzedTick = 0;
+            tracker.firstTrustMissionLeadDecoded = false;
+            tracker.firstTrustMissionLeadDecodedTick = 0;
+            tracker.firstTrustMissionLeadDecodeContactTick = 0;
+            tracker.nextFirstTrustMissionLeadDecodeCheckTick = 0;
             tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
             return true;
+        }
+
+        public static bool DebugMarkFirstTrustMissionLeadDecoded()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+            tracker.firstTrustMissionCacheDelivered = true;
+            tracker.firstTrustMissionIntelAnalyzed = true;
+            return tracker.MarkFirstTrustMissionLeadDecoded(
+                "debug action",
+                sendLetter: true,
+                sendMessage: true);
         }
 
         public static bool NotifyFirstTrustMissionIntelAnalyzed(Pawn analyzer)
@@ -400,6 +476,7 @@ namespace GateRimSG1.Goauld
             tracker.nextFirstTrustMissionCacheCheckTick = 0;
             tracker.firstTrustMissionIntelAnalyzed = true;
             tracker.firstTrustMissionIntelAnalyzedTick = currentTick;
+            tracker.EnsureFirstTrustMissionLeadDecodeScheduled();
 
             GR_Log.Message(
                 "Tok'ra first mission encoded intelligence analyzed by "
@@ -585,6 +662,144 @@ namespace GateRimSG1.Goauld
             }
 
             ScheduleFirstTrustMissionCacheDelivery();
+        }
+
+        private void TrySendPendingFirstTrustMissionDecodedLead()
+        {
+            if (!firstTrustMissionIntelAnalyzed
+                || firstTrustMissionLeadDecoded
+                || Find.TickManager == null)
+            {
+                return;
+            }
+
+            EnsureFirstTrustMissionLeadDecodeScheduled();
+
+            int currentTick = Find.TickManager.TicksGame;
+
+            if (firstTrustMissionLeadDecodeContactTick <= 0)
+            {
+                return;
+            }
+
+            if (currentTick < nextFirstTrustMissionLeadDecodeCheckTick)
+            {
+                return;
+            }
+
+            nextFirstTrustMissionLeadDecodeCheckTick = currentTick
+                + FirstTrustMissionDecodedLeadCheckIntervalTicks;
+
+            if (currentTick < firstTrustMissionLeadDecodeContactTick)
+            {
+                return;
+            }
+
+            MarkFirstTrustMissionLeadDecoded(
+                "delayed Tok'ra decoded mission lead",
+                sendLetter: true,
+                sendMessage: true);
+        }
+
+        private void EnsureFirstTrustMissionLeadDecodeScheduled()
+        {
+            if (!firstTrustMissionIntelAnalyzed
+                || firstTrustMissionLeadDecoded
+                || Find.TickManager == null
+                || firstTrustMissionLeadDecodeContactTick > 0)
+            {
+                return;
+            }
+
+            ScheduleFirstTrustMissionLeadDecode();
+        }
+
+        private void ScheduleFirstTrustMissionLeadDecode()
+        {
+            if (Find.TickManager == null || firstTrustMissionLeadDecoded)
+            {
+                return;
+            }
+
+            firstTrustMissionLeadDecodeContactTick = Find.TickManager.TicksGame
+                + Rand.RangeInclusive(
+                    FirstTrustMissionDecodedLeadMinimumDelayTicks,
+                    FirstTrustMissionDecodedLeadMaximumDelayTicks);
+            nextFirstTrustMissionLeadDecodeCheckTick = Find.TickManager.TicksGame
+                + FirstTrustMissionDecodedLeadCheckIntervalTicks;
+
+            GR_Log.Message(
+                "Scheduled Tok'ra decoded mission lead contact in "
+                + $"{firstTrustMissionLeadDecodeContactTick - Find.TickManager.TicksGame} "
+                + "tick(s).");
+        }
+
+        private bool MarkFirstTrustMissionLeadDecoded(
+            string reasonLabel,
+            bool sendLetter,
+            bool sendMessage)
+        {
+            if (firstTrustMissionLeadDecoded)
+            {
+                return true;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            firstTrustMissionHookPrepared = true;
+            firstTrustMissionBriefingReceived = true;
+            firstTrustMissionCacheDelivered = true;
+            firstTrustMissionIntelAnalyzed = true;
+
+            if (firstTrustMissionHookPreparedTick <= 0)
+            {
+                firstTrustMissionHookPreparedTick = currentTick;
+            }
+
+            if (firstTrustMissionBriefingContactTick <= 0)
+            {
+                firstTrustMissionBriefingContactTick = currentTick;
+            }
+
+            if (firstTrustMissionCacheDeliveryTick <= 0
+                || firstTrustMissionCacheDeliveryTick > currentTick)
+            {
+                firstTrustMissionCacheDeliveryTick = currentTick;
+            }
+
+            if (firstTrustMissionIntelAnalyzedTick <= 0
+                || firstTrustMissionIntelAnalyzedTick > currentTick)
+            {
+                firstTrustMissionIntelAnalyzedTick = currentTick;
+            }
+
+            firstTrustMissionLeadDecoded = true;
+            firstTrustMissionLeadDecodedTick = currentTick;
+            firstTrustMissionLeadDecodeContactTick = currentTick;
+            nextFirstTrustMissionLeadDecodeCheckTick = 0;
+
+            if (sendLetter)
+            {
+                Find.LetterStack.ReceiveLetter(
+                    "GR_TokraDecodedMissionLead_LetterLabel".Translate(),
+                    "GR_TokraDecodedMissionLead_LetterText".Translate(),
+                    LetterDefOf.NeutralEvent);
+            }
+
+            if (sendMessage)
+            {
+                Messages.Message(
+                    "GR_TokraDecodedMissionLead_Decoded".Translate(),
+                    MessageTypeDefOf.NeutralEvent,
+                    historical: true);
+            }
+
+            GR_Log.Message(
+                "Tok'ra decoded first mission lead recorded after "
+                + reasonLabel
+                + ".");
+
+            return true;
         }
 
         private void TryDeliverPendingFirstTrustMissionCache()

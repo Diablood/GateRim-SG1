@@ -1,53 +1,21 @@
 # Project state
 
-Current milestone: `0.2.32-dev-r2 - Remove redundant power line from Tok'ra status report`.
+Current milestone: `0.2.41-dev - Add Tok'ra decoded mission lead`.
 
 ## Current status
 
-`0.2.32-dev` added a pawn-operated Tok'ra communicator status report. The report
-lets a selected colonist consult the secure communicator without sending a real
-request or consuming any cooldown.
+`0.2.41-dev` extends the first Tok'ra mission chain after the encoded intelligence packet has been analyzed. The Tok'ra cell can now return with a decoded operational lead around an isolated Goa'uld relay.
 
-`0.2.32-dev-r1` kept the feature unchanged and replaced the first
-technical/debug-style report text with a more in-universe Tok'ra transmission.
+The step remains deliberately preparatory: it records a persistent mission-lead state and updates the communicator report, but it does not create a world site, raid, reward, healing, reinforcements, trade or recruitment.
 
-`0.2.32-dev-r2` keeps the same gameplay and removes the visible power-state
-line from the report because the communicator can only be operated when its
-power state is already meaningful to the player.
+## Current mod metadata after applying `0.2.41-dev`
 
-## Implemented status report information
-
-```text
-selected colonist -> right-click communicator
-consult Tok'ra channel status
-Tok'ra trust state
-main channel state
-defensive diversion availability or cooldown
-tactical assessment availability or cooldown
-medical support availability or cooldown
-emergency medical cache availability or cooldown
-active hostile count
-wounded/sick human colonist count
-no request sent
-no cooldown consumed
-no gameplay effect triggered
-```
-
-## Current polish note
-
-A broader end-of-project pass should review all player-facing letters, messages,
-popups and dialogue windows for RP tone. The 0.2.32 status report is the first
-localized correction in that direction.
-
-## Current mod metadata after applying `0.2.32-dev-r2`
-
-- `About/About.xml`: `modVersion = 0.2.32-dev-r2`
-- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` remain set to `0.2.32`
+- `About/About.xml`: `modVersion = 0.2.41-dev`
+- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.41`
 
 ## Build note
 
-This patch changes localization and metadata only. A forced rebuild is still safe
-and recommended in the normal validation workflow.
+A forced C# rebuild is required.
 
 ## Repository rules reminder
 

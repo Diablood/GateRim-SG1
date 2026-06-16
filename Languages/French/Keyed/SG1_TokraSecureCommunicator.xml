@@ -75,6 +75,8 @@
     <GR_TokraSecureCommunicator_FirstMissionStatusCachePending>renseignements en transit : {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusCachePending>
     <GR_TokraSecureCommunicator_FirstMissionStatusCacheDelivered>renseignements codés livrés</GR_TokraSecureCommunicator_FirstMissionStatusCacheDelivered>
     <GR_TokraSecureCommunicator_FirstMissionStatusIntelAnalyzed>renseignements codés analysés</GR_TokraSecureCommunicator_FirstMissionStatusIntelAnalyzed>
+    <GR_TokraSecureCommunicator_FirstMissionStatusLeadPending>piste en décodage Tok'ra : {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusLeadPending>
+    <GR_TokraSecureCommunicator_FirstMissionStatusLeadDecoded>piste décodée : relais Goa'uld isolé</GR_TokraSecureCommunicator_FirstMissionStatusLeadDecoded>
     <GR_TokraSecureCommunicator_DiversionStatusLocked>verrouillée</GR_TokraSecureCommunicator_DiversionStatusLocked>
     <GR_TokraSecureCommunicator_DiversionStatusReady>prête si la menace se maintient</GR_TokraSecureCommunicator_DiversionStatusReady>
     <GR_TokraSecureCommunicator_DiversionStatusNoThreat>aucune menace active</GR_TokraSecureCommunicator_DiversionStatusNoThreat>
@@ -227,4 +229,11 @@ Si une zone de livraison Tok'ra existe sur la carte, le dépôt y a été dirig�
     <GR_TokraFirstMissionCache_Delivered>Une cache de mission Tok'ra a été déposée.</GR_TokraFirstMissionCache_Delivered>
     <GR_TokraFirstMissionCache_DebugDelivered>Cache de mission Tok'ra livrée pour le test.</GR_TokraFirstMissionCache_DebugDelivered>
     <GR_TokraFirstMissionCache_DebugDeliveryFailed>Impossible de livrer la cache de mission Tok'ra de test.</GR_TokraFirstMissionCache_DebugDeliveryFailed>
+    <GR_TokraDecodedMissionLead_LetterLabel>Piste Tok'ra décodée</GR_TokraDecodedMissionLead_LetterLabel>
+    <GR_TokraDecodedMissionLead_LetterText>La cellule Tok'ra reprend contact après l'analyse du paquet codé. Les fragments recoupés ne révèlent pas encore de coordonnées exploitables, mais ils isolent une piste cohérente : un relais Goa'uld discret, probablement utilisé pour surveiller un point de transit Jaffa.
+
+Les Tok'ra demandent de ne pas agir immédiatement. La piste doit encore être confirmée avant de créer une opération hors carte. Aucun site n'est révélé, aucun raid n'est provoqué et aucune récompense n'est livrée.</GR_TokraDecodedMissionLead_LetterText>
+    <GR_TokraDecodedMissionLead_Decoded>Les Tok'ra confirment une piste opérationnelle décodée.</GR_TokraDecodedMissionLead_Decoded>
+    <GR_TokraDecodedMissionLead_DebugDecoded>Piste de mission Tok'ra décodée pour le test.</GR_TokraDecodedMissionLead_DebugDecoded>
+    <GR_TokraDecodedMissionLead_DebugFailed>Impossible de décoder la piste Tok'ra de test.</GR_TokraDecodedMissionLead_DebugFailed>
 </LanguageData>

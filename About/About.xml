@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.40-dev</modVersion>
+    <modVersion>0.2.41-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -86,6 +86,7 @@ Current development scope:
 - Tok'ra intercepted threat intelligence: rare advance warning for a delayed Goa'uld/Jaffa attack, with persistent alert and enriched tactical assessment
 - Tok'ra mission briefing follow-up cache delivering a low-value encoded intelligence packet through the Tok'ra delivery zone
 - Tok'ra coded intelligence analysis by an Intellectual-capable colon, marking the packet as analyzed for a future mission step
+- Tok'ra decoded mission lead after analyzing the coded intelligence packet, adding a persistent operational lead state without spawning a world site or reward
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

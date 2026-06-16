@@ -260,6 +260,34 @@ namespace GateRimSG1.Goauld
         }
 
 
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Decode Tok'ra mission lead test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void DecodeTokraMissionLeadTest()
+        {
+            GameComponent_TokraTrustTracker.DebugSetTrustScore(
+                GameComponent_TokraTrustTracker.TrustedThreshold);
+
+            if (!GameComponent_TokraTrustTracker
+                    .DebugMarkFirstTrustMissionLeadDecoded())
+            {
+                Messages.Message(
+                    "GR_TokraDecodedMissionLead_DebugFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraDecodedMissionLead_DebugDecoded".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+
         [DebugAction(
             "GateRim SG-1",
             "Create Tok'ra intercepted threat test",

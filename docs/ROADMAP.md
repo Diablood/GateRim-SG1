@@ -1271,3 +1271,6 @@ Development note: `0.2.29-dev` adds a trusted pawn-operated Tok'ra medical-guida
 ## 0.2.31-dev note
 
 The trusted Tok'ra communicator now includes an informational tactical threat assessment request. It reports broad hostile presence and composition during an active threat without adding combat effects, items, reinforcements, quests or map reveal.
+
+
+- `0.2.41-dev` : piste de mission Tok'ra décodée après analyse du paquet de renseignements codés, sans créer encore de site monde ni récompense.

@@ -1493,8 +1493,26 @@ namespace GateRimSG1.Goauld
             }
 
             if (GameComponent_TokraTrustTracker
+                .IsFirstTrustMissionLeadDecoded())
+            {
+                return "GR_TokraSecureCommunicator_FirstMissionStatusLeadDecoded"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (GameComponent_TokraTrustTracker
                 .IsFirstTrustMissionIntelAnalyzed())
             {
+                int remainingLeadTicks = GameComponent_TokraTrustTracker
+                    .GetRemainingFirstTrustMissionLeadDecodeTicks();
+
+                if (remainingLeadTicks > 0)
+                {
+                    return "GR_TokraSecureCommunicator_FirstMissionStatusLeadPending"
+                        .Translate(FormatDays(remainingLeadTicks))
+                        .ToString();
+                }
+
                 return "GR_TokraSecureCommunicator_FirstMissionStatusIntelAnalyzed"
                     .Translate()
                     .ToString();
