@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraSecureCommunicator_FirstMissionStatusWorldSitePending>coordonnées de mission en confirmation : {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusWorldSitePending>
+    <GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed>site révélé : relais Goa'uld isolé</GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed>
+    <GR_TokraDecodedMissionWorldSite_LetterLabel>Site Tok'ra révélé</GR_TokraDecodedMissionWorldSite_LetterLabel>
+    <GR_TokraDecodedMissionWorldSite_LetterText>La cellule Tok'ra transmet enfin des coordonnées exploitables. La piste décodée pointe vers un relais Goa'uld isolé, probablement lié à un point de transit Jaffa surveillé discrètement.
+
+Le site est désormais visible sur la carte du monde. Les Tok'ra recommandent encore l'observation et ne demandent pas d'assaut immédiat. Cette étape ne déclenche aucun raid, ne livre aucune récompense et n'ouvre pas encore de résolution de mission complète.</GR_TokraDecodedMissionWorldSite_LetterText>
+    <GR_TokraDecodedMissionWorldSite_Revealed>Les coordonnées d'un relais Goa'uld isolé ont été révélées sur la carte du monde.</GR_TokraDecodedMissionWorldSite_Revealed>
+    <GR_TokraDecodedMissionWorldSite_InspectString>Relais Goa'uld isolé identifié par les Tok'ra. Expire dans environ {0} jour(s). Le site ne peut pas encore être résolu.</GR_TokraDecodedMissionWorldSite_InspectString>
+    <GR_TokraDecodedMissionWorldSite_Expired>Les coordonnées du relais Goa'uld isolé ne sont plus exploitables.</GR_TokraDecodedMissionWorldSite_Expired>
+    <GR_TokraDecodedMissionWorldSite_DebugRevealed>Site de mission Tok'ra révélé pour le test.</GR_TokraDecodedMissionWorldSite_DebugRevealed>
+    <GR_TokraDecodedMissionWorldSite_DebugFailed>Impossible de révéler le site de mission Tok'ra de test.</GR_TokraDecodedMissionWorldSite_DebugFailed>
+</LanguageData>

@@ -1,5 +1,6 @@
 using System;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GateRimSG1.Goauld
@@ -59,8 +60,16 @@ namespace GateRimSG1.Goauld
         private const int FirstTrustMissionDecodedLeadMinimumDelayTicks = 15000;
         private const int FirstTrustMissionDecodedLeadMaximumDelayTicks = 45000;
         private const int FirstTrustMissionDecodedLeadCheckIntervalTicks = 2500;
+        private const int FirstTrustMissionWorldSiteMinimumDelayTicks = 15000;
+        private const int FirstTrustMissionWorldSiteMaximumDelayTicks = 45000;
+        private const int FirstTrustMissionWorldSiteCheckIntervalTicks = 2500;
+        private const int FirstTrustMissionWorldSiteRetryDelayTicks = 7500;
+        private const int FirstTrustMissionWorldSiteMinimumDistance = 6;
+        private const int FirstTrustMissionWorldSiteMaximumDistance = 18;
         private const string FirstTrustMissionCacheThingDefName =
             "SG1_TokraMissionIntelPacket";
+        private const string FirstTrustMissionWorldSiteDefName =
+            "SG1_TokraDecodedMissionWorldSite";
 
         private int trustScore;
         private int waryDiplomaticCooldownUntilTick;
@@ -78,6 +87,10 @@ namespace GateRimSG1.Goauld
         private int firstTrustMissionLeadDecodedTick;
         private int firstTrustMissionLeadDecodeContactTick;
         private int nextFirstTrustMissionLeadDecodeCheckTick;
+        private bool firstTrustMissionWorldSiteRevealed;
+        private int firstTrustMissionWorldSiteRevealedTick;
+        private int firstTrustMissionWorldSiteRevealTick;
+        private int nextFirstTrustMissionWorldSiteRevealCheckTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -148,6 +161,22 @@ namespace GateRimSG1.Goauld
                 ref nextFirstTrustMissionLeadDecodeCheckTick,
                 "tokraNextFirstTrustMissionLeadDecodeCheckTick",
                 0);
+            Scribe_Values.Look(
+                ref firstTrustMissionWorldSiteRevealed,
+                "tokraFirstTrustMissionWorldSiteRevealed",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionWorldSiteRevealedTick,
+                "tokraFirstTrustMissionWorldSiteRevealedTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionWorldSiteRevealTick,
+                "tokraFirstTrustMissionWorldSiteRevealTick",
+                0);
+            Scribe_Values.Look(
+                ref nextFirstTrustMissionWorldSiteRevealCheckTick,
+                "tokraNextFirstTrustMissionWorldSiteRevealCheckTick",
+                0);
 
             trustScore = ClampTrust(trustScore);
 
@@ -164,6 +193,7 @@ namespace GateRimSG1.Goauld
             TrySendPendingFirstTrustMissionBriefingContact();
             TryDeliverPendingFirstTrustMissionCache();
             TrySendPendingFirstTrustMissionDecodedLead();
+            TryRevealPendingFirstTrustMissionWorldSite();
         }
 
         public static int GetCurrentTrustScore()
@@ -311,6 +341,35 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.firstTrustMissionLeadDecodedTick ?? 0;
         }
 
+        public static bool IsFirstTrustMissionWorldSiteRevealed()
+        {
+            return GetCurrentTracker()?.firstTrustMissionWorldSiteRevealed ?? false;
+        }
+
+        public static int GetFirstTrustMissionWorldSiteRevealedTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionWorldSiteRevealedTick ?? 0;
+        }
+
+        public static int GetRemainingFirstTrustMissionWorldSiteRevealTicks()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null
+                || tracker.firstTrustMissionWorldSiteRevealed
+                || !tracker.firstTrustMissionLeadDecoded)
+            {
+                return 0;
+            }
+
+            tracker.EnsureFirstTrustMissionWorldSiteRevealScheduled();
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            return Math.Max(
+                0,
+                tracker.firstTrustMissionWorldSiteRevealTick - currentTick);
+        }
+
         public static int GetRemainingFirstTrustMissionLeadDecodeTicks()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -411,6 +470,10 @@ namespace GateRimSG1.Goauld
             tracker.firstTrustMissionLeadDecodedTick = 0;
             tracker.firstTrustMissionLeadDecodeContactTick = 0;
             tracker.nextFirstTrustMissionLeadDecodeCheckTick = 0;
+            tracker.firstTrustMissionWorldSiteRevealed = false;
+            tracker.firstTrustMissionWorldSiteRevealedTick = 0;
+            tracker.firstTrustMissionWorldSiteRevealTick = 0;
+            tracker.nextFirstTrustMissionWorldSiteRevealCheckTick = 0;
             tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
             return true;
         }
@@ -432,6 +495,26 @@ namespace GateRimSG1.Goauld
                 "debug action",
                 sendLetter: true,
                 sendMessage: true);
+        }
+
+        public static bool DebugRevealFirstTrustMissionWorldSite(Map map)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+            tracker.firstTrustMissionCacheDelivered = true;
+            tracker.firstTrustMissionIntelAnalyzed = true;
+            tracker.MarkFirstTrustMissionLeadDecoded(
+                "debug world-site reveal action",
+                sendLetter: false,
+                sendMessage: false);
+            return tracker.TryRevealFirstTrustMissionWorldSite(map);
         }
 
         public static bool NotifyFirstTrustMissionIntelAnalyzed(Pawn analyzer)
@@ -701,6 +784,43 @@ namespace GateRimSG1.Goauld
                 sendMessage: true);
         }
 
+        private void TryRevealPendingFirstTrustMissionWorldSite()
+        {
+            if (!firstTrustMissionLeadDecoded
+                || firstTrustMissionWorldSiteRevealed
+                || Find.TickManager == null)
+            {
+                return;
+            }
+
+            EnsureFirstTrustMissionWorldSiteRevealScheduled();
+
+            int currentTick = Find.TickManager.TicksGame;
+
+            if (firstTrustMissionWorldSiteRevealTick <= 0)
+            {
+                return;
+            }
+
+            if (currentTick < nextFirstTrustMissionWorldSiteRevealCheckTick)
+            {
+                return;
+            }
+
+            nextFirstTrustMissionWorldSiteRevealCheckTick = currentTick
+                + FirstTrustMissionWorldSiteCheckIntervalTicks;
+
+            if (currentTick < firstTrustMissionWorldSiteRevealTick)
+            {
+                return;
+            }
+
+            if (!TryRevealFirstTrustMissionWorldSite(null))
+            {
+                RescheduleFirstTrustMissionWorldSiteRetry();
+            }
+        }
+
         private void EnsureFirstTrustMissionLeadDecodeScheduled()
         {
             if (!firstTrustMissionIntelAnalyzed
@@ -777,6 +897,7 @@ namespace GateRimSG1.Goauld
             firstTrustMissionLeadDecodedTick = currentTick;
             firstTrustMissionLeadDecodeContactTick = currentTick;
             nextFirstTrustMissionLeadDecodeCheckTick = 0;
+            EnsureFirstTrustMissionWorldSiteRevealScheduled();
 
             if (sendLetter)
             {
@@ -800,6 +921,201 @@ namespace GateRimSG1.Goauld
                 + ".");
 
             return true;
+        }
+
+        private void EnsureFirstTrustMissionWorldSiteRevealScheduled()
+        {
+            if (!firstTrustMissionLeadDecoded
+                || firstTrustMissionWorldSiteRevealed
+                || Find.TickManager == null
+                || firstTrustMissionWorldSiteRevealTick > 0)
+            {
+                return;
+            }
+
+            ScheduleFirstTrustMissionWorldSiteReveal();
+        }
+
+        private void ScheduleFirstTrustMissionWorldSiteReveal()
+        {
+            if (Find.TickManager == null
+                || firstTrustMissionWorldSiteRevealed)
+            {
+                return;
+            }
+
+            firstTrustMissionWorldSiteRevealTick = Find.TickManager.TicksGame
+                + Rand.RangeInclusive(
+                    FirstTrustMissionWorldSiteMinimumDelayTicks,
+                    FirstTrustMissionWorldSiteMaximumDelayTicks);
+            nextFirstTrustMissionWorldSiteRevealCheckTick = Find.TickManager.TicksGame
+                + FirstTrustMissionWorldSiteCheckIntervalTicks;
+
+            GR_Log.Message(
+                "Scheduled Tok'ra decoded mission world-site reveal in "
+                + $"{firstTrustMissionWorldSiteRevealTick - Find.TickManager.TicksGame} "
+                + "tick(s).");
+        }
+
+        private bool TryRevealFirstTrustMissionWorldSite(Map preferredMap)
+        {
+            WorldObjectDef siteDef = DefDatabase<WorldObjectDef>
+                .GetNamedSilentFail(FirstTrustMissionWorldSiteDefName);
+
+            if (siteDef == null)
+            {
+                GR_Log.Error(
+                    "Cannot reveal Tok'ra decoded mission world site: the "
+                    + "world-object def is missing.");
+                return false;
+            }
+
+            if (HasActiveFirstTrustMissionWorldSite(siteDef))
+            {
+                MarkFirstTrustMissionWorldSiteRevealed(
+                    "existing active Tok'ra decoded mission world site");
+                return true;
+            }
+
+            Map map = GetMissionCacheDeliveryMap(preferredMap);
+
+            if (map == null)
+            {
+                GR_Log.Message(
+                    "Tok'ra decoded mission world site reveal delayed: no "
+                    + "player home map is currently available.");
+                return false;
+            }
+
+            Faction tokraFaction = TokraFactionUtility.GetOrCreatePersistentFaction(
+                "Tok'ra decoded mission world site");
+
+            if (tokraFaction == null)
+            {
+                GR_Log.Error(
+                    "Cannot reveal Tok'ra decoded mission world site: the "
+                    + "persistent hidden Tok'ra world faction could not be "
+                    + "resolved.");
+                return false;
+            }
+
+            PlanetTile siteTile;
+
+            if (!TryFindFirstTrustMissionWorldSiteTile(map.Tile, out siteTile))
+            {
+                GR_Log.Message(
+                    "Tok'ra decoded mission world site reveal delayed: no "
+                    + "valid nearby world tile was found.");
+                return false;
+            }
+
+            WorldObject site = WorldObjectMaker.MakeWorldObject(siteDef);
+            site.Tile = siteTile;
+            site.SetFaction(tokraFaction);
+
+            Find.WorldObjects.Add(site);
+            MarkFirstTrustMissionWorldSiteRevealed(
+                "decoded Tok'ra mission lead");
+
+            Find.LetterStack.ReceiveLetter(
+                "GR_TokraDecodedMissionWorldSite_LetterLabel".Translate(),
+                "GR_TokraDecodedMissionWorldSite_LetterText".Translate(),
+                LetterDefOf.NeutralEvent,
+                site);
+
+            Messages.Message(
+                "GR_TokraDecodedMissionWorldSite_Revealed".Translate(),
+                site,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Tok'ra decoded mission world site revealed at tile "
+                + $"{siteTile} using {tokraFaction.Name} "
+                + $"({tokraFaction.loadID}).");
+
+            return true;
+        }
+
+        private void MarkFirstTrustMissionWorldSiteRevealed(
+            string reasonLabel)
+        {
+            if (firstTrustMissionWorldSiteRevealed)
+            {
+                return;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            firstTrustMissionHookPrepared = true;
+            firstTrustMissionBriefingReceived = true;
+            firstTrustMissionCacheDelivered = true;
+            firstTrustMissionIntelAnalyzed = true;
+            firstTrustMissionLeadDecoded = true;
+
+            if (firstTrustMissionLeadDecodedTick <= 0
+                || firstTrustMissionLeadDecodedTick > currentTick)
+            {
+                firstTrustMissionLeadDecodedTick = currentTick;
+            }
+
+            firstTrustMissionWorldSiteRevealed = true;
+            firstTrustMissionWorldSiteRevealedTick = currentTick;
+            firstTrustMissionWorldSiteRevealTick = currentTick;
+            nextFirstTrustMissionWorldSiteRevealCheckTick = 0;
+
+            GR_Log.Message(
+                "Tok'ra first mission world-site reveal recorded after "
+                + reasonLabel
+                + ".");
+        }
+
+        private static bool HasActiveFirstTrustMissionWorldSite(
+            WorldObjectDef siteDef)
+        {
+            if (siteDef == null || Find.WorldObjects == null)
+            {
+                return false;
+            }
+
+            foreach (WorldObject worldObject in Find.WorldObjects.AllWorldObjects)
+            {
+                if (worldObject?.def == siteDef
+                    && !worldObject.Destroyed)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool TryFindFirstTrustMissionWorldSiteTile(
+            PlanetTile originTile,
+            out PlanetTile tile)
+        {
+            return TileFinder.TryFindNewSiteTile(
+                out tile,
+                originTile,
+                minDist: FirstTrustMissionWorldSiteMinimumDistance,
+                maxDist: FirstTrustMissionWorldSiteMaximumDistance,
+                allowCaravans: false,
+                selectLandmarkChance: 0f,
+                layer: originTile.Layer);
+        }
+
+        private void RescheduleFirstTrustMissionWorldSiteRetry()
+        {
+            if (Find.TickManager == null
+                || firstTrustMissionWorldSiteRevealed)
+            {
+                return;
+            }
+
+            firstTrustMissionWorldSiteRevealTick = Find.TickManager.TicksGame
+                + FirstTrustMissionWorldSiteRetryDelayTicks;
+            nextFirstTrustMissionWorldSiteRevealCheckTick = Find.TickManager.TicksGame
+                + FirstTrustMissionWorldSiteCheckIntervalTicks;
         }
 
         private void TryDeliverPendingFirstTrustMissionCache()

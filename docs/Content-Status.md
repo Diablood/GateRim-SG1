@@ -102,7 +102,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, priorisant l'emplacement des caches médicales, caches de planque, livraisons médicales escortées et futures livraisons discrètes Tok'ra | 0.2.38-dev-r1 |
 | Cache de mission Tok'ra | Livraison automatique d'un paquet de renseignements codés après briefing reçu, via zone de livraison Tok'ra | 0.2.39-dev |
 | Analyse des renseignements codés Tok'ra | Interaction par clic droit sur le paquet livré : un colon capable d'Intellectuel l'analyse, reçoit un léger gain d'XP et marque l'étape comme prête pour une future mission complète | 0.2.40-dev |
-| Piste de mission Tok'ra décodée | Après analyse des renseignements codés, la cellule Tok'ra reprend contact et confirme une piste opérationnelle limitée autour d'un relais Goa'uld isolé, sans générer encore de site monde ni récompense | 0.2.41-dev |
+| Piste de mission Tok'ra décodée | Après analyse des renseignements codés, la cellule Tok'ra reprend contact et confirme une piste opérationnelle limitée autour d'un relais Goa'uld isolé | 0.2.41-dev |
+| Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

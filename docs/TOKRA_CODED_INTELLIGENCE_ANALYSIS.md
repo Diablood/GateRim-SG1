@@ -15,6 +15,7 @@ This milestone gives the Tok'ra encoded intelligence packet its first player-fac
 
 - The analyzing colon works briefly at the packet.
 - The colon receives a light Intellectual XP gain.
+- The physical packet is consumed after successful analysis.
 - The global Tok'ra mission state records that the coded intelligence has been analyzed.
 - The Tok'ra channel status report displays the analyzed-intelligence state.
 

@@ -4,7 +4,7 @@
         <defName>SG1_TokraMissionIntelPacket</defName>
         <label>Tok'ra encoded intelligence packet</label>
         <thingClass>ThingWithComps</thingClass>
-        <description>A sealed Tok'ra packet containing coded instructions, fragments of route intelligence and operational silence protocols for a future discreet mission. It can be analyzed to let the Tok'ra confirm a limited operational lead. It is not a trade good or a material reward.</description>
+        <description>A sealed Tok'ra packet containing coded instructions, fragments of route intelligence and operational silence protocols for a future discreet mission. It is not a trade good or a material reward. The physical packet is consumed once analyzed.</description>
         <graphicData>
             <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
             <graphicClass>Graphic_Single</graphicClass>

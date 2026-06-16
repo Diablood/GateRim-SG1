@@ -141,7 +141,19 @@ namespace GateRimSG1.Goauld
                 + $"{pawn.LabelShortCap}; +{IntellectualExperience} "
                 + "Intellectual XP.");
 
+            ConsumeAnalyzedPacket();
+
             return true;
+        }
+
+        private void ConsumeAnalyzedPacket()
+        {
+            if (parent == null || parent.Destroyed)
+            {
+                return;
+            }
+
+            parent.Destroy(DestroyMode.Vanish);
         }
 
         private static bool CanUsePlayerOperator(Pawn pawn)

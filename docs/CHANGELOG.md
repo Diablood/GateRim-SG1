@@ -1,3 +1,17 @@
+# Changelog
+
+## 0.2.42-dev-r2
+- Consume the Tok'ra encoded intelligence packet after successful analysis.
+- Clarify that the mission state persists through the Tok'ra channel report after the physical packet is removed.
+- Keep the decoded mission world-site feature unchanged.
+
+## 0.2.42-dev
+- Add a temporary Tok'ra decoded mission world-site marker after the decoded operational lead.
+- Add persistent state for the revealed Tok'ra mission site.
+- Update the Tok'ra communicator status report with pending and revealed site states.
+- Add a debug action to reveal the site for validation.
+- Keep the milestone non-rewarding: no generated combat map, raid, item reward, healing, reinforcements, trade or recruitment.
+
 ## 0.2.40-dev - Add Tok'ra coded intelligence analysis
 
 - Make the Tok'ra encoded intelligence packet analyzable by a colon capable of Intellectual.

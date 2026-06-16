@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_TokraDecodedMissionWorldSite</defName>
+        <label>Tok'ra decoded mission site</label>
+        <description>A temporary non-hostile marker representing the isolated Goa'uld relay identified from decoded Tok'ra intelligence. It cannot be entered yet and prepares a future mission step.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraDecodedMissionSite</worldObjectClass>
+        <texture>World/WorldObjects/Sites/GenericSite</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconPriority>36</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>true</canHaveFaction>
+    </WorldObjectDef>
+</Defs>

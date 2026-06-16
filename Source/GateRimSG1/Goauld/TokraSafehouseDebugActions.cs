@@ -290,6 +290,44 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Reveal Tok'ra decoded mission world site test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void RevealTokraDecodedMissionWorldSiteTest()
+        {
+            Map map = Find.CurrentMap;
+
+            if (map == null)
+            {
+                Messages.Message(
+                    "GR_TokraSafehouseDebug_Unavailable".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            GameComponent_TokraTrustTracker.DebugSetTrustScore(
+                GameComponent_TokraTrustTracker.TrustedThreshold);
+
+            if (!GameComponent_TokraTrustTracker
+                    .DebugRevealFirstTrustMissionWorldSite(map))
+            {
+                Messages.Message(
+                    "GR_TokraDecodedMissionWorldSite_DebugFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraDecodedMissionWorldSite_DebugRevealed".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+
+        [DebugAction(
+            "GateRim SG-1",
             "Create Tok'ra intercepted threat test",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
