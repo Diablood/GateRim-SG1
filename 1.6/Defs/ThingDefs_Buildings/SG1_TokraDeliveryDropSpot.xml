@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="FurnitureBase">
+        <defName>SG1_TokraDeliveryDropSpot</defName>
+        <label>Tok'ra delivery drop zone</label>
+        <description>A discreet ground marker used to prioritize clandestine Tok'ra cache and delivery placement on the colony map. Placing a new marker removes the previous one on the same map.</description>
+        <thingClass>Building</thingClass>
+        <minifiedDef IsNull="True" />
+        <graphicData>
+            <texPath>Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+        <size>(1,1)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>Standable</passability>
+        <fillPercent>0</fillPercent>
+        <pathCost>0</pathCost>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <statBases>
+            <MaxHitPoints>50</MaxHitPoints>
+            <WorkToBuild>0</WorkToBuild>
+            <Mass>0</Mass>
+            <Beauty>0</Beauty>
+            <Flammability>0</Flammability>
+        </statBases>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <thingCategories Inherit="False" />
+        <designationCategory>Misc</designationCategory>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_TokraDeliveryDropSpot" />
+        </comps>
+    </ThingDef>
+</Defs>

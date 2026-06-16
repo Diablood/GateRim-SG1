@@ -1,3 +1,23 @@
+## 0.2.38-dev-r2
+
+- Removed inherited storage/thing filter category from the Tok'ra delivery drop zone so the non-minifiable marker no longer reports a startup config warning.
+
+## 0.2.38-dev-r1 - Keep Tok'ra delivery drop zone non-minifiable
+
+- Disable minification for the Tok'ra delivery drop zone.
+- Keep replacement as the intended way to move the marker: placing a new zone removes the previous one.
+- Keep delivery routing behavior unchanged.
+
+## 0.2.38-dev - Add Tok'ra delivery drop zone
+
+- Add a free, immediate Tok'ra delivery drop zone marker for player-controlled cache placement.
+- Keep one Tok'ra delivery zone per map by removing the previous marker when a new one is placed.
+- Route manual emergency medical caches, hidden-cell caches, safehouse-lead caches and escorted medical-support supplies through the delivery zone when present.
+- Fall back near a powered Tok'ra communicator, then to a reachable map edge if no delivery zone exists; escorted Tok'ra visitors still enter from the map edge.
+- Keep the marker non-production and non-storage: it adds no item generation, no healing, no recruitment, no trade and no military aid.
+- Align mod metadata and C# assembly version with `0.2.38`.
+- Requires a forced C# rebuild.
+
 ## 0.2.37-dev-r1 - Fix Tok'ra intercepted threat alert build
 
 ### 0.2.37-dev-r2

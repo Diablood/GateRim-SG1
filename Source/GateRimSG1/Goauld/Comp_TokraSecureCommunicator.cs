@@ -1952,16 +1952,23 @@ namespace GateRimSG1.Goauld
             Thing thing = ThingMaker.MakeThing(thingDef);
             thing.stackCount = Math.Min(stackCount, thingDef.stackLimit);
 
-            if (!GenPlace.TryPlaceThing(
-                thing,
-                parent.Position,
-                map,
-                ThingPlaceMode.Near))
+            Thing placedThing;
+
+            if (!TokraDeliveryDropUtility.TryPlaceThingNearPreferredDeliveryCell(
+                    thing,
+                    map,
+                    parent,
+                    out placedThing))
             {
+                if (!thing.Destroyed)
+                {
+                    thing.Destroy(DestroyMode.Vanish);
+                }
+
                 return 0;
             }
 
-            return thing.stackCount;
+            return placedThing != null ? placedThing.stackCount : thing.stackCount;
         }
 
         private bool IsOperationalDebriefCooldownActive()

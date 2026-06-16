@@ -53,7 +53,12 @@ namespace GateRimSG1.Goauld
             }
 
             IntVec3 unusedEntryCell;
-            return TryFindEntryCell(map, out unusedEntryCell);
+            IntVec3 unusedDeliveryCell;
+            return TryFindEntryCell(map, out unusedEntryCell)
+                && TokraDeliveryDropUtility.TryFindPreferredDeliveryCell(
+                    map,
+                    null,
+                    out unusedDeliveryCell);
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms)
@@ -114,6 +119,19 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            IntVec3 deliveryCell;
+
+            if (!TokraDeliveryDropUtility.TryFindPreferredDeliveryCell(
+                    map,
+                    null,
+                    out deliveryCell))
+            {
+                GR_Log.Message(
+                    "Cannot start the Tok'ra medical-support delivery: no "
+                    + "valid delivery cell was found.");
+                return false;
+            }
+
             Faction tokraFaction = TokraFactionUtility.GetOrCreatePersistentFaction(
                 "medical-support deliveries");
 
@@ -130,7 +148,7 @@ namespace GateRimSG1.Goauld
 
             if (!TrySpawnTretoninDelivery(
                     map,
-                    entryCell,
+                    deliveryCell,
                     tretoninDoseDef,
                     requestedDoseCount,
                     out placedDelivery))
@@ -144,7 +162,7 @@ namespace GateRimSG1.Goauld
 
             if (!TrySpawnTrustedAdvancedMedicineDelivery(
                     map,
-                    entryCell,
+                    deliveryCell,
                     requestedAdvancedMedicineCount,
                     out placedAdvancedMedicine))
             {
@@ -179,8 +197,9 @@ namespace GateRimSG1.Goauld
                     .GetCurrentMedicalSupportDeliveryChanceFactor();
 
             GR_Log.Message(
-                $"Started Tok'ra medical-support delivery at {entryCell} "
-                + $"with {requestedDoseCount} tretonin dose(s), "
+                $"Started Tok'ra medical-support delivery at {deliveryCell} "
+                + $"with escort entry at {entryCell}, "
+                + $"{requestedDoseCount} tretonin dose(s), "
                 + $"{requestedAdvancedMedicineCount} advanced medicine "
                 + $"unit(s), {escortPawns.Count} visitor pawn(s) and "
                 + $"{trustTierLabel} trust tier ({trustScore}); "
@@ -275,7 +294,7 @@ namespace GateRimSG1.Goauld
 
         private static bool TrySpawnTretoninDelivery(
             Map map,
-            IntVec3 entryCell,
+            IntVec3 deliveryCell,
             ThingDef tretoninDoseDef,
             int requestedDoseCount,
             out Thing placedDelivery)
@@ -285,7 +304,7 @@ namespace GateRimSG1.Goauld
 
             if (!GenPlace.TryPlaceThing(
                     delivery,
-                    entryCell,
+                    deliveryCell,
                     map,
                     ThingPlaceMode.Near,
                     out placedDelivery))
@@ -298,7 +317,7 @@ namespace GateRimSG1.Goauld
                 GR_Log.Warning(
                     "Cannot start the Tok'ra medical-support delivery: "
                     + $"unable to place {requestedDoseCount} tretonin "
-                    + $"dose(s) near entry cell {entryCell}.");
+                    + $"dose(s) near entry cell {deliveryCell}.");
                 return false;
             }
 
@@ -307,7 +326,7 @@ namespace GateRimSG1.Goauld
 
         private static bool TrySpawnTrustedAdvancedMedicineDelivery(
             Map map,
-            IntVec3 entryCell,
+            IntVec3 deliveryCell,
             int requestedMedicineCount,
             out Thing placedAdvancedMedicine)
         {
@@ -333,7 +352,7 @@ namespace GateRimSG1.Goauld
 
             if (!GenPlace.TryPlaceThing(
                     medicine,
-                    entryCell,
+                    deliveryCell,
                     map,
                     ThingPlaceMode.Near,
                     out placedAdvancedMedicine))
@@ -347,13 +366,13 @@ namespace GateRimSG1.Goauld
                     "Cannot start the trusted Tok'ra medical-support "
                     + $"delivery: unable to place {requestedMedicineCount} "
                     + $"advanced medicine unit(s) near entry cell "
-                    + $"{entryCell}.");
+                    + $"{deliveryCell}.");
                 return false;
             }
 
             GR_Log.Message(
                 $"Spawned {requestedMedicineCount} advanced medicine "
-                + $"unit(s) near {entryCell} for a trusted Tok'ra "
+                + $"unit(s) near {deliveryCell} for a trusted Tok'ra "
                 + "medical-support delivery.");
 
             return true;

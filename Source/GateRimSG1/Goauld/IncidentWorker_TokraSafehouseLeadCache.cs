@@ -243,11 +243,9 @@ namespace GateRimSG1.Goauld
 
         private static bool TryFindCacheCell(Map map, out IntVec3 cell)
         {
-            return CellFinder.TryFindRandomEdgeCellWith(
-                candidateCell => map.reachability.CanReachColony(candidateCell)
-                    && !candidateCell.Fogged(map),
+            return TokraDeliveryDropUtility.TryFindPreferredDeliveryCell(
                 map,
-                CellFinder.EdgeRoadChance_Neutral,
+                null,
                 out cell);
         }
     }

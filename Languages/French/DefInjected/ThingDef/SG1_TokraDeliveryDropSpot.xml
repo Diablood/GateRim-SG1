@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraDeliveryDropSpot.label>zone de livraison Tok'ra</SG1_TokraDeliveryDropSpot.label>
+    <SG1_TokraDeliveryDropSpot.description>Marqueur discret au sol servant à prioriser les caches et livraisons clandestines Tok'ra sur la carte de colonie. Placer une nouvelle zone efface l'ancienne sur la même carte.</SG1_TokraDeliveryDropSpot.description>
+</LanguageData>
