@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_TokraSecureCommunicator_CommandLabel>Contacter les Tok'ra</GR_TokraSecureCommunicator_CommandLabel>
-    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet de préparer une mission discrète future, de demander une diversion défensive rare, un conseil médical avancé, une cache médicale d'urgence, une évaluation tactique pendant une menace active ou interceptée, ou une consultation d'état du canal et de la posture Tok'ra.</GR_TokraSecureCommunicator_CommandDesc>
+    <GR_TokraSecureCommunicator_CommandDesc>Ouvrir un canal sécurisé avec les Tok'ra. Le canal fiable permet de préparer une mission discrète future, de demander une diversion défensive rare, un conseil médical avancé, une cache médicale d'urgence, une évaluation tactique pendant une menace active ou interceptée, ou une consultation d'état du canal, de la posture Tok'ra et des étapes de mission déjà engagées.</GR_TokraSecureCommunicator_CommandDesc>
     <GR_TokraSecureCommunicator_DiversionCommandLabel>Demander une diversion Tok'ra</GR_TokraSecureCommunicator_DiversionCommandLabel>
     <GR_TokraSecureCommunicator_DiversionCommandDesc>Demander aux Tok'ra une perturbation défensive discrète contre quelques ennemis actifs sur la carte : désorientation immédiate, puis nausées retardées pour les cibles biologiques. Nécessite le palier fiable, une alimentation électrique, une menace hostile active et un long délai entre deux demandes.</GR_TokraSecureCommunicator_DiversionCommandDesc>
     <GR_TokraSecureCommunicator_MedicalCommandLabel>Demander un soutien médical Tok'ra</GR_TokraSecureCommunicator_MedicalCommandLabel>
@@ -13,7 +13,7 @@
     <GR_TokraSecureCommunicator_DebriefCommandLabel>Transmettre un débriefing Tok'ra</GR_TokraSecureCommunicator_DebriefCommandLabel>
     <GR_TokraSecureCommunicator_DebriefCommandDesc>Transmettre à la cellule Tok'ra un court débriefing opérationnel. La réponse affine les procédures du colon opérateur sans ouvrir de commerce, livraison, quête ou aide directe.</GR_TokraSecureCommunicator_DebriefCommandDesc>
     <GR_TokraSecureCommunicator_FirstMissionCommandLabel>Demander une mission Tok'ra discrète</GR_TokraSecureCommunicator_FirstMissionCommandLabel>
-    <GR_TokraSecureCommunicator_FirstMissionCommandDesc>Demander à la cellule Tok'ra de préparer une future opération discrète. Cette demande ne crée pas encore de site, de raid, de récompense ou de quête complète.</GR_TokraSecureCommunicator_FirstMissionCommandDesc>
+    <GR_TokraSecureCommunicator_FirstMissionCommandDesc>Demander à la cellule Tok'ra de préparer une future opération discrète. Cette demande ne crée pas encore de site, de raid, de récompense ou de quête complète. Les étapes suivantes peuvent reprendre contact d'elles-mêmes et livrer des renseignements codés vers la zone Tok'ra.</GR_TokraSecureCommunicator_FirstMissionCommandDesc>
     <GR_TokraSecureCommunicator_FloatMenuStatusLabel>Consulter l'état du canal Tok'ra</GR_TokraSecureCommunicator_FloatMenuStatusLabel>
     <GR_TokraSecureCommunicator_FloatMenuUseLabel>Utiliser le communicateur Tok'ra</GR_TokraSecureCommunicator_FloatMenuUseLabel>
     <GR_TokraSecureCommunicator_FloatMenuDebriefLabel>Transmettre un débriefing opérationnel Tok'ra</GR_TokraSecureCommunicator_FloatMenuDebriefLabel>
@@ -72,6 +72,8 @@
     <GR_TokraSecureCommunicator_FirstMissionStatusReady>prête à être proposée</GR_TokraSecureCommunicator_FirstMissionStatusReady>
     <GR_TokraSecureCommunicator_FirstMissionStatusPreparing>opération en préparation</GR_TokraSecureCommunicator_FirstMissionStatusPreparing>
     <GR_TokraSecureCommunicator_FirstMissionStatusBriefingReceived>briefing reçu</GR_TokraSecureCommunicator_FirstMissionStatusBriefingReceived>
+    <GR_TokraSecureCommunicator_FirstMissionStatusCachePending>renseignements en transit : {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusCachePending>
+    <GR_TokraSecureCommunicator_FirstMissionStatusCacheDelivered>renseignements codés livrés</GR_TokraSecureCommunicator_FirstMissionStatusCacheDelivered>
     <GR_TokraSecureCommunicator_DiversionStatusLocked>verrouillée</GR_TokraSecureCommunicator_DiversionStatusLocked>
     <GR_TokraSecureCommunicator_DiversionStatusReady>prête si la menace se maintient</GR_TokraSecureCommunicator_DiversionStatusReady>
     <GR_TokraSecureCommunicator_DiversionStatusNoThreat>aucune menace active</GR_TokraSecureCommunicator_DiversionStatusNoThreat>
@@ -215,4 +217,13 @@ La mission évoquée précédemment n'est plus une simple hypothèse : les Tok'r
 
 Aucun site n'est révélé, aucun raid n'est provoqué et aucune récompense n'est fournie. La cellule a seulement franchi une étape : le briefing initial est reçu.</GR_TokraFirstMissionBriefing_LetterText>
     <GR_TokraFirstMissionBriefing_Received>Une cellule Tok'ra reprend contact et transmet un briefing discret.</GR_TokraFirstMissionBriefing_Received>
+    <GR_TokraFirstMissionCache_LetterLabel>Cache de mission Tok'ra</GR_TokraFirstMissionCache_LetterLabel>
+    <GR_TokraFirstMissionCache_LetterText>La cellule Tok'ra reprend contact sans ouvrir de canal complet. Une courte transmission confirme qu'un paquet de renseignements codés vient d'être déposé pour la colonie.
+
+Le contenu n'est pas une récompense matérielle : il s'agit d'une trame de consignes, de fragments de route et de précautions de silence destinés à préparer une future opération. Les Tok'ra rappellent que le paquet ne doit pas être traité comme une cargaison commerciale.
+
+Si une zone de livraison Tok'ra existe sur la carte, le dépôt y a été dirigé en priorité. À défaut, la cellule a utilisé un point discret près du communicateur ou en bord de carte.</GR_TokraFirstMissionCache_LetterText>
+    <GR_TokraFirstMissionCache_Delivered>Une cache de mission Tok'ra a été déposée.</GR_TokraFirstMissionCache_Delivered>
+    <GR_TokraFirstMissionCache_DebugDelivered>Cache de mission Tok'ra livrée pour le test.</GR_TokraFirstMissionCache_DebugDelivered>
+    <GR_TokraFirstMissionCache_DebugDeliveryFailed>Impossible de livrer la cache de mission Tok'ra de test.</GR_TokraFirstMissionCache_DebugDeliveryFailed>
 </LanguageData>

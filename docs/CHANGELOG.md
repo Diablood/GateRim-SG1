@@ -1,3 +1,11 @@
+## 0.2.39-dev - Add Tok'ra mission briefing follow-up cache
+
+- Add an automatic follow-up cache after the first Tok'ra mission briefing has been received.
+- Deliver a low-value encoded Tok'ra intelligence packet through the Tok'ra delivery drop zone, with communicator and map-edge fallbacks.
+- Track the delivered mission cache persistently and expose the state in the Tok'ra channel status report.
+- Add a debug action to force-deliver the mission cache for testing.
+- No world site, raid, trade, recruitment, healing, military aid or major material reward is created.
+
 ## 0.2.38-dev-r2
 
 - Removed inherited storage/thing filter category from the Tok'ra delivery drop zone so the non-minifiable marker no longer reports a startup config warning.

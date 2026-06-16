@@ -190,6 +190,78 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Deliver Tok'ra first mission cache test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void DeliverTokraFirstMissionCacheTest()
+        {
+            Map map = Find.CurrentMap;
+
+            if (map == null)
+            {
+                Messages.Message(
+                    "GR_TokraSafehouseDebug_Unavailable".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            GameComponent_TokraTrustTracker.DebugSetTrustScore(
+                GameComponent_TokraTrustTracker.TrustedThreshold);
+
+            if (!GameComponent_TokraTrustTracker
+                .DebugMarkFirstTrustMissionBriefingReceived())
+            {
+                Messages.Message(
+                    "GR_TokraFirstMissionCache_DebugDeliveryFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            if (!GameComponent_TokraTrustTracker
+                .DebugDeliverFirstTrustMissionCache(map))
+            {
+                Messages.Message(
+                    "GR_TokraFirstMissionCache_DebugDeliveryFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraFirstMissionCache_DebugDelivered".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Reset Tok'ra first mission cache test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ResetTokraFirstMissionCacheTest()
+        {
+            if (!GameComponent_TokraTrustTracker
+                    .DebugResetFirstTrustMissionCacheDelivery())
+            {
+                Messages.Message(
+                    "GR_TokraFirstMissionCache_DebugDeliveryFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "Tok'ra first mission cache test state reset.",
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+
+        [DebugAction(
+            "GateRim SG-1",
             "Create Tok'ra intercepted threat test",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

@@ -97,7 +97,10 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
 | Histoires culturelles | Première base native : parcours SGC complémentaires, enfances Jaffa, carrières Jaffa de domaine et libres, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
 | Réactions sociales contextuelles | Première base : méfiance Jaffa libre envers les hôtes Goa'uld, hostilité Tok'ra envers les Goa'uld, prudence envers les Jaffa marqués et discipline locale près d'un Grand Maître | 0.2.5-dev |
-| Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : débriefing opérationnel, préparation de mission discrète, diversion défensive, soutien médical, cache médicale, évaluation tactique et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés | 0.2.26-dev à 0.2.35-dev |
+| Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : préparation de mission discrète, diversion défensive, soutien médical, cache médicale, évaluation tactique active/interceptée et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés ; débriefing temporairement masqué | 0.2.26-dev à 0.2.37-dev |
+| Renseignement Tok'ra sur menace interceptée | Incident rare au palier fiable : annonce une force Goa'uld/Jaffa 1 à 3 jours avant l'attaque, ajoute une alerte persistante et enrichit l'évaluation tactique avant l'arrivée ennemie | 0.2.37-dev |
+| Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, priorisant l'emplacement des caches médicales, caches de planque, livraisons médicales escortées et futures livraisons discrètes Tok'ra | 0.2.38-dev-r1 |
+| Cache de mission Tok'ra | Livraison automatique d'un paquet de renseignements codés après briefing reçu, via zone de livraison Tok'ra | 0.2.39-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
@@ -110,3 +113,12 @@ Development note: `0.2.23-dev` adds trust-tier medical hints to the Tok'ra safeh
 Development note: `0.2.24-dev` lets cooperative and trusted Tok'ra safehouse contacts store one follow-up safehouse lead when the lead registry has remaining capacity, without adding trade, recruitment, direct treatment, items, quests or military aid.
 
 Development note: `0.2.27-dev` adds the first active trusted communicator request: a rare defensive Tok'ra diversion during an active hostile threat, without trade, recruitment, physical reinforcements or material rewards.
+
+
+- `0.2.36-dev` : contact de briefing de mission Tok'ra initié automatiquement après préparation de mission discrète.
+
+- `0.2.37-dev` : renseignement Tok'ra sur menace Goa'uld/Jaffa interceptée avant son arrivée, avec alerte persistante et évaluation tactique enrichie.
+
+- `0.2.38-dev-r1` : zone de livraison Tok'ra gratuite, non minifiable et unique par carte, utilisée en priorité pour les caches et livraisons discrètes.
+
+- Tok'ra delivery drop zone marker is non-minifiable and uses an explicit empty thing category list to avoid storage/filter warnings.

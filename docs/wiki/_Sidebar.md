@@ -47,6 +47,7 @@
 - [Zone de livraison Tok'ra](Tokra-Delivery-Drop-Zone)
 - [Débriefing opérationnel Tok'ra](Tokra-Operational-Debrief)
 - [Briefing de mission Tok'ra](Tokra-First-Mission-Briefing)
+- [Cache de mission Tok'ra](Tokra-First-Mission-Cache)
 - [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)
 - [Diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request)
 - [Soutien médical via communicateur Tok'ra](Tokra-Communicator-Medical-Support)

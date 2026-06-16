@@ -81,6 +81,22 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            IntVec3 visibleDeliveryCell;
+
+            if (TryFindVisibleDeliveryCellNear(
+                    deliveryCell,
+                    map,
+                    out visibleDeliveryCell)
+                && GenPlace.TryPlaceThing(
+                    thing,
+                    visibleDeliveryCell,
+                    map,
+                    ThingPlaceMode.Direct,
+                    out placedThing))
+            {
+                return true;
+            }
+
             return GenPlace.TryPlaceThing(
                 thing,
                 deliveryCell,
@@ -129,6 +145,46 @@ namespace GateRimSG1.Goauld
             }
 
             return spotsToRemove.Count > 0;
+        }
+
+
+        private static bool TryFindVisibleDeliveryCellNear(
+            IntVec3 center,
+            Map map,
+            out IntVec3 cell)
+        {
+            cell = IntVec3.Invalid;
+
+            if (map == null || !center.IsValid || !center.InBounds(map))
+            {
+                return false;
+            }
+
+            foreach (IntVec3 candidate in GenRadial.RadialCellsAround(
+                         center,
+                         3.9f,
+                         true))
+            {
+                if (!IsVisibleDeliveryCell(candidate, map))
+                {
+                    continue;
+                }
+
+                cell = candidate;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsVisibleDeliveryCell(IntVec3 cell, Map map)
+        {
+            return map != null
+                && cell.IsValid
+                && cell.InBounds(map)
+                && !cell.Fogged(map)
+                && cell.Standable(map)
+                && cell.GetEdifice(map) == null;
         }
 
         private static Thing FindDeliveryDropSpot(Map map)

@@ -52,6 +52,12 @@ namespace GateRimSG1.Goauld
         private const int FirstTrustMissionBriefingMinimumDelayTicks = 30000;
         private const int FirstTrustMissionBriefingMaximumDelayTicks = 90000;
         private const int FirstTrustMissionBriefingCheckIntervalTicks = 2500;
+        private const int FirstTrustMissionCacheMinimumDelayTicks = 15000;
+        private const int FirstTrustMissionCacheMaximumDelayTicks = 45000;
+        private const int FirstTrustMissionCacheCheckIntervalTicks = 2500;
+        private const int FirstTrustMissionCacheRetryDelayTicks = 7500;
+        private const string FirstTrustMissionCacheThingDefName =
+            "SG1_TokraMissionIntelPacket";
 
         private int trustScore;
         private int waryDiplomaticCooldownUntilTick;
@@ -60,6 +66,9 @@ namespace GateRimSG1.Goauld
         private bool firstTrustMissionBriefingReceived;
         private int firstTrustMissionBriefingContactTick;
         private int nextFirstTrustMissionBriefingCheckTick;
+        private bool firstTrustMissionCacheDelivered;
+        private int firstTrustMissionCacheDeliveryTick;
+        private int nextFirstTrustMissionCacheCheckTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -94,6 +103,18 @@ namespace GateRimSG1.Goauld
                 ref nextFirstTrustMissionBriefingCheckTick,
                 "tokraNextFirstTrustMissionBriefingCheckTick",
                 0);
+            Scribe_Values.Look(
+                ref firstTrustMissionCacheDelivered,
+                "tokraFirstTrustMissionCacheDelivered",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionCacheDeliveryTick,
+                "tokraFirstTrustMissionCacheDeliveryTick",
+                0);
+            Scribe_Values.Look(
+                ref nextFirstTrustMissionCacheCheckTick,
+                "tokraNextFirstTrustMissionCacheCheckTick",
+                0);
 
             trustScore = ClampTrust(trustScore);
 
@@ -108,6 +129,7 @@ namespace GateRimSG1.Goauld
             base.GameComponentTick();
 
             TrySendPendingFirstTrustMissionBriefingContact();
+            TryDeliverPendingFirstTrustMissionCache();
         }
 
         public static int GetCurrentTrustScore()
@@ -225,6 +247,95 @@ namespace GateRimSG1.Goauld
                 tracker.firstTrustMissionBriefingContactTick - currentTick);
         }
 
+        public static bool IsFirstTrustMissionCacheDelivered()
+        {
+            return GetCurrentTracker()?.firstTrustMissionCacheDelivered ?? false;
+        }
+
+        public static int GetFirstTrustMissionCacheDeliveryTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionCacheDeliveryTick ?? 0;
+        }
+
+        public static int GetRemainingFirstTrustMissionCacheDeliveryTicks()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null || tracker.firstTrustMissionCacheDelivered)
+            {
+                return 0;
+            }
+
+            tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            return Math.Max(
+                0,
+                tracker.firstTrustMissionCacheDeliveryTick - currentTick);
+        }
+
+        public static bool DebugMarkFirstTrustMissionBriefingReceived()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+
+            if (tracker.firstTrustMissionHookPreparedTick <= 0)
+            {
+                tracker.firstTrustMissionHookPreparedTick = currentTick;
+            }
+
+            if (tracker.firstTrustMissionBriefingContactTick <= 0)
+            {
+                tracker.firstTrustMissionBriefingContactTick = currentTick;
+            }
+
+            if (!tracker.firstTrustMissionCacheDelivered
+                && tracker.firstTrustMissionCacheDeliveryTick <= 0)
+            {
+                tracker.ScheduleFirstTrustMissionCacheDelivery();
+            }
+
+            return true;
+        }
+
+        public static bool DebugDeliverFirstTrustMissionCache(Map map)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+            return tracker.TryDeliverFirstTrustMissionCache(map);
+        }
+
+        public static bool DebugResetFirstTrustMissionCacheDelivery()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.firstTrustMissionCacheDelivered = false;
+            tracker.firstTrustMissionCacheDeliveryTick = 0;
+            tracker.nextFirstTrustMissionCacheCheckTick = 0;
+            tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
+            return true;
+        }
+
         public static bool NotifyFirstTrustMissionHookPrepared()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -249,6 +360,8 @@ namespace GateRimSG1.Goauld
             {
                 tracker.ScheduleFirstTrustMissionBriefingContact();
             }
+
+            tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
 
             return true;
         }
@@ -352,6 +465,7 @@ namespace GateRimSG1.Goauld
             }
 
             firstTrustMissionBriefingReceived = true;
+            ScheduleFirstTrustMissionCacheDelivery();
 
             Find.LetterStack.ReceiveLetter(
                 "GR_TokraFirstMissionBriefing_LetterLabel".Translate(),
@@ -386,6 +500,175 @@ namespace GateRimSG1.Goauld
                 "Scheduled Tok'ra first mission briefing contact in "
                 + $"{firstTrustMissionBriefingContactTick - Find.TickManager.TicksGame} "
                 + "tick(s).");
+        }
+
+        private void EnsureFirstTrustMissionCacheDeliveryScheduled()
+        {
+            if (!firstTrustMissionBriefingReceived
+                || firstTrustMissionCacheDelivered
+                || Find.TickManager == null
+                || firstTrustMissionCacheDeliveryTick > 0)
+            {
+                return;
+            }
+
+            ScheduleFirstTrustMissionCacheDelivery();
+        }
+
+        private void TryDeliverPendingFirstTrustMissionCache()
+        {
+            if (!firstTrustMissionBriefingReceived
+                || firstTrustMissionCacheDelivered
+                || Find.TickManager == null)
+            {
+                return;
+            }
+
+            EnsureFirstTrustMissionCacheDeliveryScheduled();
+
+            int currentTick = Find.TickManager.TicksGame;
+
+            if (firstTrustMissionCacheDeliveryTick <= 0)
+            {
+                return;
+            }
+
+            if (currentTick < nextFirstTrustMissionCacheCheckTick)
+            {
+                return;
+            }
+
+            nextFirstTrustMissionCacheCheckTick = currentTick
+                + FirstTrustMissionCacheCheckIntervalTicks;
+
+            if (currentTick < firstTrustMissionCacheDeliveryTick)
+            {
+                return;
+            }
+
+            if (!TryDeliverFirstTrustMissionCache(null))
+            {
+                RescheduleFirstTrustMissionCacheRetry();
+            }
+        }
+
+        private bool TryDeliverFirstTrustMissionCache(Map preferredMap)
+        {
+            ThingDef cacheThingDef = DefDatabase<ThingDef>.GetNamedSilentFail(
+                FirstTrustMissionCacheThingDefName);
+
+            if (cacheThingDef == null)
+            {
+                GR_Log.Error(
+                    "Cannot deliver Tok'ra mission cache: encoded "
+                    + "intelligence packet ThingDef is missing.");
+                return false;
+            }
+
+            Map map = GetMissionCacheDeliveryMap(preferredMap);
+
+            if (map == null)
+            {
+                GR_Log.Message(
+                    "Tok'ra mission cache delivery delayed: no player home "
+                    + "map is currently available.");
+                return false;
+            }
+
+            Thing cacheThing = ThingMaker.MakeThing(cacheThingDef);
+            cacheThing.stackCount = 1;
+            Thing placedThing;
+
+            if (!TokraDeliveryDropUtility.TryPlaceThingNearPreferredDeliveryCell(
+                    cacheThing,
+                    map,
+                    null,
+                    out placedThing))
+            {
+                GR_Log.Message(
+                    "Tok'ra mission cache delivery delayed: no valid "
+                    + $"delivery cell found on map {map.uniqueID}.");
+                return false;
+            }
+
+            firstTrustMissionCacheDelivered = true;
+            firstTrustMissionCacheDeliveryTick = Find.TickManager?.TicksGame ?? 0;
+            nextFirstTrustMissionCacheCheckTick = 0;
+
+            Find.LetterStack.ReceiveLetter(
+                "GR_TokraFirstMissionCache_LetterLabel".Translate(),
+                "GR_TokraFirstMissionCache_LetterText".Translate(),
+                LetterDefOf.NeutralEvent);
+
+            Messages.Message(
+                "GR_TokraFirstMissionCache_Delivered".Translate(),
+                placedThing,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Tok'ra first mission cache delivered at "
+                + $"{placedThing.Position} on map {map.uniqueID}.");
+
+            return true;
+        }
+
+        private static Map GetMissionCacheDeliveryMap(Map preferredMap)
+        {
+            if (preferredMap != null && preferredMap.IsPlayerHome)
+            {
+                return preferredMap;
+            }
+
+            if (Find.Maps == null)
+            {
+                return null;
+            }
+
+            for (int index = 0; index < Find.Maps.Count; index++)
+            {
+                Map map = Find.Maps[index];
+
+                if (map != null && map.IsPlayerHome)
+                {
+                    return map;
+                }
+            }
+
+            return null;
+        }
+
+        private void ScheduleFirstTrustMissionCacheDelivery()
+        {
+            if (Find.TickManager == null || firstTrustMissionCacheDelivered)
+            {
+                return;
+            }
+
+            firstTrustMissionCacheDeliveryTick = Find.TickManager.TicksGame
+                + Rand.RangeInclusive(
+                    FirstTrustMissionCacheMinimumDelayTicks,
+                    FirstTrustMissionCacheMaximumDelayTicks);
+            nextFirstTrustMissionCacheCheckTick = Find.TickManager.TicksGame
+                + FirstTrustMissionCacheCheckIntervalTicks;
+
+            GR_Log.Message(
+                "Scheduled Tok'ra first mission cache delivery in "
+                + $"{firstTrustMissionCacheDeliveryTick - Find.TickManager.TicksGame} "
+                + "tick(s).");
+        }
+
+        private void RescheduleFirstTrustMissionCacheRetry()
+        {
+            if (Find.TickManager == null || firstTrustMissionCacheDelivered)
+            {
+                return;
+            }
+
+            firstTrustMissionCacheDeliveryTick = Find.TickManager.TicksGame
+                + FirstTrustMissionCacheRetryDelayTicks;
+            nextFirstTrustMissionCacheCheckTick = Find.TickManager.TicksGame
+                + FirstTrustMissionCacheCheckIntervalTicks;
         }
 
         private void ApplyFlatTrustChange(

@@ -100,6 +100,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : préparation de mission discrète, diversion défensive, soutien médical, cache médicale, évaluation tactique active/interceptée et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés ; débriefing temporairement masqué | 0.2.26-dev à 0.2.37-dev |
 | Renseignement Tok'ra sur menace interceptée | Incident rare au palier fiable : annonce une force Goa'uld/Jaffa 1 à 3 jours avant l'attaque, ajoute une alerte persistante et enrichit l'évaluation tactique avant l'arrivée ennemie | 0.2.37-dev |
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, priorisant l'emplacement des caches médicales, caches de planque, livraisons médicales escortées et futures livraisons discrètes Tok'ra | 0.2.38-dev-r1 |
+| Cache de mission Tok'ra | Livraison automatique d'un paquet de renseignements codés après briefing reçu, via zone de livraison Tok'ra | 0.2.39-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

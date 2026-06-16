@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ResourceBase">
+        <defName>SG1_TokraMissionIntelPacket</defName>
+        <label>Tok'ra encoded intelligence packet</label>
+        <description>A sealed Tok'ra packet containing coded instructions, fragments of route intelligence and operational silence protocols for a future discreet mission. It is not a trade good or a material reward.</description>
+        <graphicData>
+            <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.65,0.65)</drawSize>
+        </graphicData>
+        <stackLimit>1</stackLimit>
+        <drawGUIOverlay>false</drawGUIOverlay>
+        <thingCategories>
+            <li>Manufactured</li>
+        </thingCategories>
+        <statBases>
+            <MarketValue>1</MarketValue>
+            <Mass>0.01</Mass>
+        </statBases>
+        <tradeability>None</tradeability>
+    </ThingDef>
+</Defs>
