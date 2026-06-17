@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraFirstMissionOutcomeDebrief_SuccessLetterLabel>Tok'ra debrief: operation successful</GR_TokraFirstMissionOutcomeDebrief_SuccessLetterLabel>
+    <GR_TokraFirstMissionOutcomeDebrief_SuccessLetterText>A few hours after the relay evacuation, the Tok'ra cell re-establishes contact through a fragmented channel.
+
+The team's transmitted readings confirm that the Goa'uld control node was neutralized without directly exposing the Tok'ra network. The cell considers that the colony respected the required secrecy protocols despite the Jaffa garrison.
+
+This success strengthens the cell's trust in the colony. The relationship is now assessed as {0}.
+
+No new objective is transmitted for now. The Tok'ra close the channel to let enemy activity around their relays subside.</GR_TokraFirstMissionOutcomeDebrief_SuccessLetterText>
+    <GR_TokraFirstMissionOutcomeDebrief_FailureLetterLabel>Tok'ra debrief: operation compromised</GR_TokraFirstMissionOutcomeDebrief_FailureLetterLabel>
+    <GR_TokraFirstMissionOutcomeDebrief_FailureLetterText>A few hours after the relay evacuation, the Tok'ra cell re-establishes contact through a brief and tense transmission.
+
+The direct destruction of the control node left a traceable signature on the Goa'uld network. Although the team escaped the area, the Tok'ra must relocate several secondary channels and temporarily reduce sensitive exchanges with the colony.
+
+This failure weakens the cell's trust. The relationship is now assessed as {0}.
+
+The transmission provides no further information about the expected Goa'uld retaliation. The channel is closed before another position can be compromised.</GR_TokraFirstMissionOutcomeDebrief_FailureLetterText>
+    <GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefPending>operation complete: Tok'ra debrief expected in about {0} day(s)</GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefPending>
+    <GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefSuccess>operation successful: cell trust strengthened</GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefSuccess>
+    <GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefFailure>operation compromised: cell trust reduced</GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefFailure>
+</LanguageData>

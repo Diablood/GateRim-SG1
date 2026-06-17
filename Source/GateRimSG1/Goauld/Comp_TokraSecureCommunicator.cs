@@ -1483,6 +1483,28 @@ namespace GateRimSG1.Goauld
 
         private string GetFirstTrustMissionStatusLabel()
         {
+            if (GameComponent_TokraTrustTracker
+                .IsFirstTrustMissionOutcomeDebriefReceived())
+            {
+                string outcomeStatusKey = GameComponent_TokraTrustTracker
+                    .WasFirstTrustMissionOutcomeSuccessful()
+                    ? "GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefSuccess"
+                    : "GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefFailure";
+
+                return outcomeStatusKey.Translate().ToString();
+            }
+
+            if (GameComponent_TokraTrustTracker
+                .IsFirstTrustMissionOutcomeRecorded())
+            {
+                int remainingDebriefTicks = GameComponent_TokraTrustTracker
+                    .GetRemainingFirstTrustMissionOutcomeDebriefTicks();
+
+                return "GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefPending"
+                    .Translate(FormatDays(remainingDebriefTicks))
+                    .ToString();
+            }
+
             string channelDisabledReason = GetChannelDisabledReason();
 
             if (!string.IsNullOrEmpty(channelDisabledReason))

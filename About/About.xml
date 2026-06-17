@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.46-dev-r5</modVersion>
+    <modVersion>0.2.47-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -53,6 +53,7 @@ Current development scope:
 - Centralized colored C# logging with optional advanced-debug visibility
 - Windows build wrapper
 - Playable Tok'ra relay sabotage mission with several fortified site layouts and a modest salvage reward
+- Automatic Tok'ra relay-operation outcome debrief with trust consequences after evacuation
 - Persistent Goa'uld symbiote identity data
 - Interactive forced Goa'uld implantation prototype
 - Automatic conversion into an active Goa'uld host state

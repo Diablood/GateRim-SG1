@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.47-dev - Add Tok'ra relay operation outcome debrief
+
+- Record the relay-operation outcome only when the resolved temporary site is removed after the caravan has left.
+- Schedule an automatic Tok'ra debrief between 6 and 18 in-game hours later without adding another player action.
+- Strengthen Tok'ra trust by 5 after a successful discreet sabotage, or reduce it by 3 after destructive mission failure.
+- Update the secure-communicator channel report while the debrief is pending and after the final outcome is received.
+- Persist the recorded outcome, scheduled contact and completed debrief across saves.
+- Migrate completed successful `0.2.46` operations whose temporary relay site has already disappeared.
+- Preserve the existing salvage, reinforcement, evacuation and delayed Goa'uld-retaliation behavior without adding a new reward, raid or world action.
+- Raise the assembly version to `0.2.47.0`.
+
 ## 0.2.46-dev-r5 - Restore complete roofing and remove resolved relay site
 
 - Restore the full roof and room-refog generation pass lost when the dedicated Goa'uld outpost structures were introduced.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraFirstMissionOutcomeDebrief_SuccessLetterLabel>Débriefing Tok'ra : opération réussie</GR_TokraFirstMissionOutcomeDebrief_SuccessLetterLabel>
+    <GR_TokraFirstMissionOutcomeDebrief_SuccessLetterText>Quelques heures après l'évacuation du relais, la cellule Tok'ra reprend contact par un canal fragmenté.
+
+Les relevés transmis par l'équipe confirment que le nœud Goa'uld a été neutralisé sans exposer directement le réseau Tok'ra. La cellule considère que la colonie a respecté les protocoles de discrétion malgré la présence de la garnison Jaffa.
+
+Cette réussite renforce la confiance accordée à la colonie. La relation avec la cellule est désormais qualifiée de {0}.
+
+Aucun nouvel objectif n'est transmis pour le moment. Les Tok'ra referment le canal afin de laisser retomber l'activité ennemie autour de leurs relais.</GR_TokraFirstMissionOutcomeDebrief_SuccessLetterText>
+    <GR_TokraFirstMissionOutcomeDebrief_FailureLetterLabel>Débriefing Tok'ra : opération compromise</GR_TokraFirstMissionOutcomeDebrief_FailureLetterLabel>
+    <GR_TokraFirstMissionOutcomeDebrief_FailureLetterText>Quelques heures après l'évacuation du relais, la cellule Tok'ra reprend contact par une transmission brève et tendue.
+
+La destruction directe du nœud a laissé une signature exploitable sur le réseau Goa'uld. Même si l'équipe a pu quitter la zone, les Tok'ra doivent déplacer plusieurs canaux secondaires et réduire temporairement les échanges sensibles avec la colonie.
+
+Cet échec entame la confiance de la cellule. La relation est désormais qualifiée de {0}.
+
+La transmission ne précise rien de plus sur la riposte Goa'uld annoncée. Le canal est coupé avant qu'une nouvelle position puisse être compromise.</GR_TokraFirstMissionOutcomeDebrief_FailureLetterText>
+    <GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefPending>opération terminée : débriefing Tok'ra attendu dans environ {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefPending>
+    <GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefSuccess>opération réussie : confiance de la cellule renforcée</GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefSuccess>
+    <GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefFailure>opération compromise : confiance de la cellule réduite</GR_TokraSecureCommunicator_FirstMissionStatusOutcomeDebriefFailure>
+</LanguageData>

@@ -84,6 +84,10 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            GameComponent_TokraTrustTracker
+                .NotifyFirstTrustMissionRelayOperationDeparted(
+                    component.SabotageCompleted && !component.MissionFailed);
+
             alsoRemoveWorldObject = true;
             return true;
         }

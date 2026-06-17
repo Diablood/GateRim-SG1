@@ -26,6 +26,8 @@ namespace GateRimSG1.Goauld
         public const int SafehouseContactTrustChange = 1;
         public const int RefusedOfferTrustChange = -1;
         public const int ExpiredOfferTrustChange = -2;
+        public const int FirstTrustMissionSuccessTrustChange = 5;
+        public const int FirstTrustMissionFailureTrustChange = -3;
 
         public const int RefusedWaryDiplomaticCooldownTicks = 180000;
         public const int ExpiredWaryDiplomaticCooldownTicks = 300000;
@@ -64,6 +66,12 @@ namespace GateRimSG1.Goauld
         private const int FirstTrustMissionWorldSiteMaximumDelayTicks = 45000;
         private const int FirstTrustMissionWorldSiteCheckIntervalTicks = 2500;
         private const int FirstTrustMissionWorldSiteRetryDelayTicks = 7500;
+        private const int FirstTrustMissionOutcomeDebriefMinimumDelayTicks =
+            15000;
+        private const int FirstTrustMissionOutcomeDebriefMaximumDelayTicks =
+            45000;
+        private const int FirstTrustMissionOutcomeDebriefCheckIntervalTicks =
+            2500;
         private const int FirstTrustMissionWorldSiteMinimumDistance = 6;
         private const int FirstTrustMissionWorldSiteMaximumDistance = 18;
         private const string FirstTrustMissionCacheThingDefName =
@@ -97,6 +105,13 @@ namespace GateRimSG1.Goauld
         private int firstTrustMissionRelaySabotagePreparedTick;
         private bool firstTrustMissionRelaySabotageCompleted;
         private int firstTrustMissionRelaySabotageCompletedTick;
+        private bool firstTrustMissionOutcomeRecorded;
+        private bool firstTrustMissionOutcomeSucceeded;
+        private int firstTrustMissionOutcomeRecordedTick;
+        private bool firstTrustMissionOutcomeDebriefReceived;
+        private int firstTrustMissionOutcomeDebriefContactTick;
+        private int nextFirstTrustMissionOutcomeDebriefCheckTick;
+        private bool firstTrustMissionOutcomeMigrationCheckedThisSession;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -207,6 +222,30 @@ namespace GateRimSG1.Goauld
                 ref firstTrustMissionRelaySabotageCompletedTick,
                 "tokraFirstTrustMissionRelaySabotageCompletedTick",
                 0);
+            Scribe_Values.Look(
+                ref firstTrustMissionOutcomeRecorded,
+                "tokraFirstTrustMissionOutcomeRecorded",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionOutcomeSucceeded,
+                "tokraFirstTrustMissionOutcomeSucceeded",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionOutcomeRecordedTick,
+                "tokraFirstTrustMissionOutcomeRecordedTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionOutcomeDebriefReceived,
+                "tokraFirstTrustMissionOutcomeDebriefReceived",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionOutcomeDebriefContactTick,
+                "tokraFirstTrustMissionOutcomeDebriefContactTick",
+                0);
+            Scribe_Values.Look(
+                ref nextFirstTrustMissionOutcomeDebriefCheckTick,
+                "tokraNextFirstTrustMissionOutcomeDebriefCheckTick",
+                0);
 
             trustScore = ClampTrust(trustScore);
 
@@ -224,6 +263,8 @@ namespace GateRimSG1.Goauld
             TryDeliverPendingFirstTrustMissionCache();
             TrySendPendingFirstTrustMissionDecodedLead();
             TryRevealPendingFirstTrustMissionWorldSite();
+            TryMigrateCompletedFirstTrustMissionOutcome();
+            TrySendPendingFirstTrustMissionOutcomeDebrief();
         }
 
         public static int GetCurrentTrustScore()
@@ -413,6 +454,62 @@ namespace GateRimSG1.Goauld
         {
             return GetCurrentTracker()?.firstTrustMissionRelaySabotageCompletedTick
                 ?? 0;
+        }
+
+        public static bool IsFirstTrustMissionOutcomeRecorded()
+        {
+            return GetCurrentTracker()?.firstTrustMissionOutcomeRecorded
+                ?? false;
+        }
+
+        public static bool WasFirstTrustMissionOutcomeSuccessful()
+        {
+            return GetCurrentTracker()?.firstTrustMissionOutcomeSucceeded
+                ?? false;
+        }
+
+        public static bool IsFirstTrustMissionOutcomeDebriefReceived()
+        {
+            return GetCurrentTracker()?.firstTrustMissionOutcomeDebriefReceived
+                ?? false;
+        }
+
+        public static int GetRemainingFirstTrustMissionOutcomeDebriefTicks()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null
+                || !tracker.firstTrustMissionOutcomeRecorded
+                || tracker.firstTrustMissionOutcomeDebriefReceived)
+            {
+                return 0;
+            }
+
+            tracker.EnsureFirstTrustMissionOutcomeDebriefScheduled();
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            return Math.Max(
+                0,
+                tracker.firstTrustMissionOutcomeDebriefContactTick
+                    - currentTick);
+        }
+
+        public static bool NotifyFirstTrustMissionRelayOperationDeparted(
+            bool succeeded)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot record the Tok'ra relay operation outcome: "
+                    + "the trust tracker is unavailable.");
+                return false;
+            }
+
+            return tracker.RecordFirstTrustMissionOutcome(
+                succeeded,
+                "resolved relay-site departure");
         }
 
         public static int GetRemainingFirstTrustMissionWorldSiteRevealTicks()
@@ -1411,6 +1508,172 @@ namespace GateRimSG1.Goauld
                 + ".");
 
             return true;
+        }
+
+        private bool RecordFirstTrustMissionOutcome(
+            bool succeeded,
+            string reasonLabel)
+        {
+            if (firstTrustMissionOutcomeRecorded)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            firstTrustMissionOutcomeRecorded = true;
+            firstTrustMissionOutcomeSucceeded = succeeded;
+            firstTrustMissionOutcomeRecordedTick = currentTick;
+            firstTrustMissionOutcomeDebriefReceived = false;
+
+            ScheduleFirstTrustMissionOutcomeDebrief();
+
+            GR_Log.Message(
+                "Tok'ra first mission outcome recorded as "
+                + (succeeded ? "successful" : "failed")
+                + " after "
+                + reasonLabel
+                + ".");
+
+            return true;
+        }
+
+        private void TryMigrateCompletedFirstTrustMissionOutcome()
+        {
+            if (firstTrustMissionOutcomeMigrationCheckedThisSession
+                || firstTrustMissionOutcomeRecorded
+                || !firstTrustMissionRelaySabotageCompleted)
+            {
+                return;
+            }
+
+            firstTrustMissionOutcomeMigrationCheckedThisSession = true;
+
+            WorldObjectDef siteDef = DefDatabase<WorldObjectDef>
+                .GetNamedSilentFail(FirstTrustMissionWorldSiteDefName);
+
+            if (HasActiveFirstTrustMissionWorldSite(siteDef))
+            {
+                return;
+            }
+
+            RecordFirstTrustMissionOutcome(
+                succeeded: true,
+                reasonLabel: "legacy completed relay sabotage migration");
+        }
+
+        private void EnsureFirstTrustMissionOutcomeDebriefScheduled()
+        {
+            if (!firstTrustMissionOutcomeRecorded
+                || firstTrustMissionOutcomeDebriefReceived
+                || firstTrustMissionOutcomeDebriefContactTick > 0)
+            {
+                return;
+            }
+
+            ScheduleFirstTrustMissionOutcomeDebrief();
+        }
+
+        private void ScheduleFirstTrustMissionOutcomeDebrief()
+        {
+            if (Find.TickManager == null
+                || !firstTrustMissionOutcomeRecorded
+                || firstTrustMissionOutcomeDebriefReceived)
+            {
+                return;
+            }
+
+            firstTrustMissionOutcomeDebriefContactTick =
+                Find.TickManager.TicksGame
+                + Rand.RangeInclusive(
+                    FirstTrustMissionOutcomeDebriefMinimumDelayTicks,
+                    FirstTrustMissionOutcomeDebriefMaximumDelayTicks);
+            nextFirstTrustMissionOutcomeDebriefCheckTick =
+                Find.TickManager.TicksGame
+                + FirstTrustMissionOutcomeDebriefCheckIntervalTicks;
+
+            GR_Log.Message(
+                "Scheduled Tok'ra relay operation outcome debrief in "
+                + $"{firstTrustMissionOutcomeDebriefContactTick - Find.TickManager.TicksGame} "
+                + "tick(s).");
+        }
+
+        private void TrySendPendingFirstTrustMissionOutcomeDebrief()
+        {
+            if (!firstTrustMissionOutcomeRecorded
+                || firstTrustMissionOutcomeDebriefReceived
+                || Find.TickManager == null)
+            {
+                return;
+            }
+
+            EnsureFirstTrustMissionOutcomeDebriefScheduled();
+
+            int currentTick = Find.TickManager.TicksGame;
+
+            if (currentTick < nextFirstTrustMissionOutcomeDebriefCheckTick)
+            {
+                return;
+            }
+
+            nextFirstTrustMissionOutcomeDebriefCheckTick =
+                currentTick + FirstTrustMissionOutcomeDebriefCheckIntervalTicks;
+
+            if (currentTick < firstTrustMissionOutcomeDebriefContactTick)
+            {
+                return;
+            }
+
+            int requestedTrustChange = firstTrustMissionOutcomeSucceeded
+                ? FirstTrustMissionSuccessTrustChange
+                : FirstTrustMissionFailureTrustChange;
+
+            ApplyFirstTrustMissionOutcomeTrustChange(requestedTrustChange);
+
+            firstTrustMissionOutcomeDebriefReceived = true;
+            firstTrustMissionOutcomeDebriefContactTick = 0;
+            nextFirstTrustMissionOutcomeDebriefCheckTick = 0;
+
+            string tierLabel = GetTierLabel(GetTierForScore(trustScore));
+            string letterLabelKey = firstTrustMissionOutcomeSucceeded
+                ? "GR_TokraFirstMissionOutcomeDebrief_SuccessLetterLabel"
+                : "GR_TokraFirstMissionOutcomeDebrief_FailureLetterLabel";
+            string letterTextKey = firstTrustMissionOutcomeSucceeded
+                ? "GR_TokraFirstMissionOutcomeDebrief_SuccessLetterText"
+                : "GR_TokraFirstMissionOutcomeDebrief_FailureLetterText";
+            LetterDef letterDef = firstTrustMissionOutcomeSucceeded
+                ? LetterDefOf.PositiveEvent
+                : LetterDefOf.NegativeEvent;
+
+            Find.LetterStack.ReceiveLetter(
+                letterLabelKey.Translate(),
+                letterTextKey.Translate(tierLabel),
+                letterDef);
+
+            GR_Log.Message(
+                "Sent the Tok'ra relay operation outcome debrief after "
+                + (firstTrustMissionOutcomeSucceeded
+                    ? "successful sabotage."
+                    : "destructive mission failure."));
+        }
+
+        private void ApplyFirstTrustMissionOutcomeTrustChange(
+            int requestedChange)
+        {
+            int previousTrust = trustScore;
+            TokraTrustTier previousTier = GetTierForScore(previousTrust);
+
+            trustScore = ClampTrust(trustScore + requestedChange);
+
+            int appliedChange = trustScore - previousTrust;
+            TokraTrustTier currentTier = GetTierForScore(trustScore);
+            string signedChange = FormatSignedChange(appliedChange);
+
+            GR_Log.Message(
+                "Adjusted Tok'ra trust after the relay operation outcome: "
+                + $"{previousTrust} -> {trustScore} ({signedChange}); "
+                + $"tier {GetTierLogLabel(previousTier)} -> "
+                + $"{GetTierLogLabel(currentTier)}.");
         }
 
         private static bool HasActiveFirstTrustMissionWorldSite(
