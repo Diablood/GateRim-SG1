@@ -1,5 +1,60 @@
 # Changelog
 
+## 0.2.45-dev-r5 - Force rebuilt sabotage work and direct Jaffa spawning
+
+- Move sabotage progress onto the relay-device component so work persists across interruptions and saves.
+- Use 30,000 work units with Intellectual-based speed: about 12 hours at level 0, 8 hours at level 10, and 6 hours at level 20.
+- Keep the duration hidden from the player-facing right-click option.
+- Remove `PawnGroupMakerUtility` from both initial defenders and delayed reinforcements because the Goa'uld faction currently has no usable low-point combat group maker.
+- Generate Goa'uld/Jaffa defenders directly from the existing warrior and guard PawnKindDefs while still deriving group size from vanilla threat points.
+- Send the reinforcement letter only after at least one Jaffa is actually spawned and target that pawn directly.
+- Retry failed reinforcement placement up to three times instead of marking an empty wave as arrived.
+- Raise the assembly version to `0.2.45.5` so the loaded DLL can be verified in `Player.log`; a clean rebuild is required.
+
+## 0.2.45-dev-r4 - Fix relay sabotage interaction and work duration
+
+- Remove the pawn-specific sabotage estimate from the player-facing right-click option.
+- Replace the formatted device label with a fixed translated action label to prevent the empty `(~ h)` text and its associated interaction error.
+- Replace the standard wait toil with a persistent tick-by-tick sabotage work counter so the operation cannot complete immediately.
+- Keep sabotage speed inversely tied to Intellectual level: about 10 hours at level 0, 5 hours at level 10, and 3.3 hours at level 20.
+- Add French DefInjected translations for the relay control node and its active job report.
+
+## 0.2.45-dev-r3 - Rebalance relay sabotage and fix reinforcements
+
+- Scale relay sabotage duration inversely with the operating pawn's Intellectual level.
+- Use an estimated duration of about 10 hours at Intellectual 0, 5 hours at 10, and 3.3 hours at 20 while keeping the reinforcement warning at 12 hours.
+- Prevent pawns incapable of Intellectual work from starting the sabotage.
+- Display the pawn-specific estimated sabotage duration in the right-click option.
+- Generate the delayed reinforcement wave directly from Goa'uld Jaffa warrior pawn kinds instead of using a low-point pawn group that could resolve to zero pawns.
+- Keep the delayed wave small at one to three Jaffa, derived from the existing reinforcement threat budget.
+- Send the arrival letter and message only after at least one reinforcement pawn has spawned, and target the first spawned Jaffa instead of the world site.
+
+## 0.2.45-dev-r2 - Fix relay sabotage mission loading
+
+- Remove the invalid XML `AlertDef`; RimWorld discovers concrete `Alert` subclasses directly.
+- Point the relay control node to the existing GateRim SG-1 secure-communicator texture instead of a missing vanilla texture path.
+- Keep the reinforcement countdown alert class and all mission behavior unchanged.
+- Leave the remaining generic French translation warning for a dedicated translation report if it persists after this load fix.
+
+## 0.2.45-dev-r1 - Fix relay sabotage mission build
+
+- Replace mixed `Thing`/world-object null-coalescing targets with explicit target branches for RimWorld letter and message APIs.
+- Use the read-only pawn collection type returned by `MapPawns.AllPawnsSpawned`.
+- Keep all playable relay sabotage mission behavior unchanged.
+
+## 0.2.45-dev - Add playable Tok'ra relay sabotage site
+
+- Consolidated the decoded Tok'ra relay flow into a single player-facing world action.
+- Launching the operation now generates a temporary local mission map.
+- The mission map contains a Goa'uld relay control node to sabotage and a hostile Goa'uld/Jaffa defense scaled from vanilla threat points.
+- A colonist must right-click the relay control node and work on the sabotage for a short duration.
+- Starting the sabotage triggers a visible reinforcement countdown.
+- If the player leaves before the countdown expires, the announced reinforcements do not block evacuation.
+- If the countdown expires, a smaller Goa'uld/Jaffa reinforcement wave arrives and becomes an active threat.
+- After sabotage, the caravan can leave once no active hostile enemies remain on the map.
+- Preserved the older reconnaissance and sabotage-preparation states for save compatibility while turning them into background mission context.
+- Added relay sabotage completion state, report text, debug action, device ThingDef, JobDef, alert, and EN/FR keyed text.
+
 ## 0.2.44-dev - Add Tok'ra relay sabotage objective
 
 - After the isolated Goa'uld relay has been reconnoitered, let a player caravan present on the site prepare a discreet sabotage plan through the world-map right-click menu.

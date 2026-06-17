@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>SG1_TokraSabotageRelayDevice</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraSabotageRelayDevice</driverClass>
+        <reportString>sabotaging Goa'uld relay.</reportString>
+        <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    </JobDef>
+</Defs>

@@ -1,20 +1,24 @@
 using System.Collections.Generic;
 using RimWorld;
 using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Temporary non-hostile Tok'ra mission marker created from the decoded
-    /// operational lead. It represents an isolated Goa'uld relay on the world
-    /// map without generating a combat map, reward or resolution yet.
+    /// Temporary Tok'ra mission marker created from the decoded operational
+    /// lead. The public player flow is now a single world action that opens a
+    /// playable sabotage map instead of chaining several similar world-map
+    /// interactions on the same marker.
     /// </summary>
-    public class WorldObject_TokraDecodedMissionSite : WorldObject
+    public class WorldObject_TokraDecodedMissionSite : MapParent
     {
         public const int DurationTicks = 720000;
+        private const int MissionMapSize = 120;
 
         private int ticksRemaining = DurationTicks;
+        private bool operationLaunched;
 
         public override void ExposeData()
         {
@@ -24,11 +28,20 @@ namespace GateRimSG1.Goauld
                 ref ticksRemaining,
                 "ticksRemaining",
                 DurationTicks);
+            Scribe_Values.Look(
+                ref operationLaunched,
+                "tokraRelaySabotageOperationLaunched",
+                false);
         }
 
         protected override void Tick()
         {
             base.Tick();
+
+            if (HasMap)
+            {
+                return;
+            }
 
             ticksRemaining--;
 
@@ -45,70 +58,34 @@ namespace GateRimSG1.Goauld
                 yield return gizmo;
             }
 
-            // The normal player-facing flow is the caravan world-map
-            // right-click menu. Keep direct world-site commands only as
-            // diagnostic shortcuts.
             if (!GR_Debug.ShowAdvancedInformation)
             {
                 yield break;
             }
 
-            Command_Action reconCommand = new Command_Action
+            Command_Action launchCommand = new Command_Action
             {
-                defaultLabel = "GR_TokraDecodedMissionWorldSite_ReconCommandLabel"
+                defaultLabel = "GR_TokraDecodedMissionWorldSite_LaunchCommandLabel"
                     .Translate(),
-                defaultDesc = "GR_TokraDecodedMissionWorldSite_ReconCommandDesc"
+                defaultDesc = "GR_TokraDecodedMissionWorldSite_LaunchCommandDesc"
                     .Translate(GetRemainingDaysString()),
-                action = TryPerformReconnaissance
+                action = TryLaunchOperation
             };
 
-            if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
+            if (operationLaunched || HasMap)
             {
-                reconCommand.Disable(
-                    "GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete"
+                launchCommand.Disable(
+                    "GR_TokraDecodedMissionWorldSite_OperationAlreadyLaunched"
                         .Translate());
             }
             else if (GetPlayerCaravanAtSite() == null)
             {
-                reconCommand.Disable(
-                    "GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan"
+                launchCommand.Disable(
+                    "GR_TokraDecodedMissionWorldSite_LaunchRequiresCaravan"
                         .Translate());
             }
 
-            yield return reconCommand;
-
-            Command_Action sabotageCommand = new Command_Action
-            {
-                defaultLabel = "GR_TokraDecodedMissionWorldSite_SabotageCommandLabel"
-                    .Translate(),
-                defaultDesc = "GR_TokraDecodedMissionWorldSite_SabotageCommandDesc"
-                    .Translate(GetRemainingDaysString()),
-                action = TryPrepareSabotageObjective
-            };
-
-            if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionRelaySabotagePrepared())
-            {
-                sabotageCommand.Disable(
-                    "GR_TokraDecodedMissionWorldSite_SabotageAlreadyPrepared"
-                        .Translate());
-            }
-            else if (!GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
-            {
-                sabotageCommand.Disable(
-                    "GR_TokraDecodedMissionWorldSite_SabotageRequiresRecon"
-                        .Translate());
-            }
-            else if (GetPlayerCaravanAtSite() == null)
-            {
-                sabotageCommand.Disable(
-                    "GR_TokraDecodedMissionWorldSite_SabotageRequiresCaravan"
-                        .Translate());
-            }
-
-            yield return sabotageCommand;
+            yield return launchCommand;
         }
 
         public override IEnumerable<FloatMenuOption> GetFloatMenuOptions(
@@ -136,14 +113,7 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            if (!GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
-            {
-                yield return GetReconnaissanceFloatMenuOption(caravan);
-                yield break;
-            }
-
-            yield return GetSabotageObjectiveFloatMenuOption(caravan);
+            yield return GetLaunchOperationFloatMenuOption(caravan);
         }
 
         public override string GetInspectString()
@@ -152,23 +122,22 @@ namespace GateRimSG1.Goauld
             string missionInspectString;
 
             if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionRelaySabotagePrepared())
+                .IsFirstTrustMissionRelaySabotageCompleted())
             {
                 missionInspectString =
-                    "GR_TokraDecodedMissionWorldSite_InspectStringSabotagePrepared"
-                        .Translate(GetRemainingDaysString());
+                    "GR_TokraDecodedMissionWorldSite_InspectStringSabotageCompleted"
+                        .Translate();
             }
-            else if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
+            else if (operationLaunched || HasMap)
             {
                 missionInspectString =
-                    "GR_TokraDecodedMissionWorldSite_InspectStringReconnoitered"
-                        .Translate(GetRemainingDaysString());
+                    "GR_TokraDecodedMissionWorldSite_InspectStringOperationActive"
+                        .Translate();
             }
             else
             {
                 missionInspectString =
-                    "GR_TokraDecodedMissionWorldSite_InspectString"
+                    "GR_TokraDecodedMissionWorldSite_InspectStringPlayable"
                         .Translate(GetRemainingDaysString());
             }
 
@@ -180,137 +149,98 @@ namespace GateRimSG1.Goauld
             return baseInspectString + "\n" + missionInspectString;
         }
 
-        private void TryPerformReconnaissance()
+        public void NotifyRelaySabotageMapReady(Map map)
         {
-            TryPerformReconnaissance(GetPlayerCaravanAtSite());
-        }
-
-        private void TryPerformReconnaissance(Caravan caravan)
-        {
-            if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
-            {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            if (!IsValidPlayerCaravanAtSite(caravan))
-            {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            if (!GameComponent_TokraTrustTracker
-                .NotifyFirstTrustMissionWorldSiteReconnoitered())
-            {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            Find.LetterStack.ReceiveLetter(
-                "GR_TokraDecodedMissionWorldSite_ReconLetterLabel".Translate(),
-                "GR_TokraDecodedMissionWorldSite_ReconLetterText".Translate(
-                    caravan.LabelCap),
-                LetterDefOf.NeutralEvent,
-                this);
-
-            Messages.Message(
-                "GR_TokraDecodedMissionWorldSite_ReconComplete".Translate(),
-                this,
-                MessageTypeDefOf.NeutralEvent,
-                historical: true);
+            operationLaunched = true;
+            GameComponent_TokraTrustTracker
+                .NotifyFirstTrustMissionWorldSiteReconnoitered();
+            GameComponent_TokraTrustTracker
+                .NotifyFirstTrustMissionRelaySabotagePrepared();
 
             GR_Log.Message(
-                "Tok'ra decoded mission world site reconnoitered by caravan "
-                + $"{caravan.LabelCap} at tile {Tile}.");
+                "Tok'ra relay sabotage mission map ready at tile "
+                + $"{Tile} on map {map?.uniqueID ?? -1}.");
         }
 
-        private void TryPrepareSabotageObjective()
+        public void NotifyRelaySabotageCompleted()
         {
-            TryPrepareSabotageObjective(GetPlayerCaravanAtSite());
-        }
-
-        private void TryPrepareSabotageObjective(Caravan caravan)
-        {
-            if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionRelaySabotagePrepared())
-            {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_SabotageAlreadyPrepared"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
             if (!GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
+                .NotifyFirstTrustMissionRelaySabotageCompleted())
             {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_SabotageRequiresRecon"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            if (!IsValidPlayerCaravanAtSite(caravan))
-            {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_SabotageRequiresCaravan"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            if (!GameComponent_TokraTrustTracker
-                .NotifyFirstTrustMissionRelaySabotagePrepared())
-            {
-                Messages.Message(
-                    "GR_TokraDecodedMissionWorldSite_SabotageAlreadyPrepared"
-                        .Translate(),
-                    this,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
                 return;
             }
 
             Find.LetterStack.ReceiveLetter(
-                "GR_TokraDecodedMissionWorldSite_SabotageLetterLabel"
+                "GR_TokraDecodedMissionWorldSite_CompletedLetterLabel"
                     .Translate(),
-                "GR_TokraDecodedMissionWorldSite_SabotageLetterText"
-                    .Translate(caravan.LabelCap),
-                LetterDefOf.NeutralEvent,
+                "GR_TokraDecodedMissionWorldSite_CompletedLetterText"
+                    .Translate(),
+                LetterDefOf.PositiveEvent,
                 this);
 
             Messages.Message(
-                "GR_TokraDecodedMissionWorldSite_SabotageComplete".Translate(),
+                "GR_TokraDecodedMissionWorldSite_SabotageCompleted"
+                    .Translate(),
                 this,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+        }
 
-            GR_Log.Message(
-                "Tok'ra relay sabotage objective prepared by caravan "
-                + $"{caravan.LabelCap} at tile {Tile}.");
+        private void TryLaunchOperation()
+        {
+            TryLaunchOperation(GetPlayerCaravanAtSite());
+        }
+
+        private void TryLaunchOperation(Caravan caravan)
+        {
+            if (!IsValidPlayerCaravanAtSite(caravan))
+            {
+                Messages.Message(
+                    "GR_TokraDecodedMissionWorldSite_LaunchRequiresCaravan"
+                        .Translate(),
+                    this,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            if (operationLaunched || HasMap)
+            {
+                Messages.Message(
+                    "GR_TokraDecodedMissionWorldSite_OperationAlreadyLaunched"
+                        .Translate(),
+                    this,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            LongEventHandler.QueueLongEvent(
+                delegate
+                {
+                    Map map = GetOrGenerateMapUtility.GetOrGenerateMap(
+                        Tile,
+                        new IntVec3(MissionMapSize, 1, MissionMapSize),
+                        def);
+
+                    TokraRelaySabotageMissionUtility.EnsureMissionMapInitialized(
+                        map,
+                        this);
+
+                    NotifyRelaySabotageMapReady(map);
+
+                    CaravanEnterMapUtility.Enter(
+                        caravan,
+                        map,
+                        CaravanEnterMode.Edge,
+                        CaravanDropInventoryMode.DoNotDrop,
+                        true);
+
+                    Find.TickManager.CurTimeSpeed = TimeSpeed.Paused;
+                },
+                "GeneratingMap",
+                doAsynchronously: false,
+                exceptionHandler: null);
         }
 
         private FloatMenuOption GetTravelToSiteFloatMenuOption(Caravan caravan)
@@ -322,53 +252,18 @@ namespace GateRimSG1.Goauld
                 () => caravan.pather.StartPath(Tile, null, true, true));
         }
 
-        private FloatMenuOption GetReconnaissanceFloatMenuOption(
+        private FloatMenuOption GetLaunchOperationFloatMenuOption(
             Caravan caravan)
         {
-            string label = "GR_TokraDecodedMissionWorldSite_ReconCommandLabel"
+            string label = "GR_TokraDecodedMissionWorldSite_LaunchCommandLabel"
                 .Translate()
                 .ToString();
 
-            if (!IsValidPlayerCaravanAtSite(caravan))
+            if (operationLaunched || HasMap)
             {
                 return new FloatMenuOption(
                     label + ": "
-                    + "GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan"
-                        .Translate()
-                        .ToString(),
-                    null);
-            }
-
-            return new FloatMenuOption(
-                label,
-                () => TryPerformReconnaissance(caravan));
-        }
-
-        private FloatMenuOption GetSabotageObjectiveFloatMenuOption(
-            Caravan caravan)
-        {
-            string label =
-                "GR_TokraDecodedMissionWorldSite_SabotageCommandLabel"
-                    .Translate()
-                    .ToString();
-
-            if (GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionRelaySabotagePrepared())
-            {
-                return new FloatMenuOption(
-                    label + ": "
-                    + "GR_TokraDecodedMissionWorldSite_SabotageAlreadyPrepared"
-                        .Translate()
-                        .ToString(),
-                    null);
-            }
-
-            if (!GameComponent_TokraTrustTracker
-                .IsFirstTrustMissionWorldSiteReconnoitered())
-            {
-                return new FloatMenuOption(
-                    label + ": "
-                    + "GR_TokraDecodedMissionWorldSite_SabotageRequiresRecon"
+                    + "GR_TokraDecodedMissionWorldSite_OperationAlreadyLaunched"
                         .Translate()
                         .ToString(),
                     null);
@@ -378,7 +273,7 @@ namespace GateRimSG1.Goauld
             {
                 return new FloatMenuOption(
                     label + ": "
-                    + "GR_TokraDecodedMissionWorldSite_SabotageRequiresCaravan"
+                    + "GR_TokraDecodedMissionWorldSite_LaunchRequiresCaravan"
                         .Translate()
                         .ToString(),
                     null);
@@ -386,7 +281,7 @@ namespace GateRimSG1.Goauld
 
             return new FloatMenuOption(
                 label,
-                () => TryPrepareSabotageObjective(caravan));
+                () => TryLaunchOperation(caravan));
         }
 
         private bool IsValidPlayerCaravan(Caravan caravan)

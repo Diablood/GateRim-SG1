@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <GR_TokraSecureCommunicator_FirstMissionStatusWorldSitePending>coordonnées de mission en confirmation : {0} jour(s)</GR_TokraSecureCommunicator_FirstMissionStatusWorldSitePending>
     <GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed>site révélé : relais Goa'uld isolé</GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed>
@@ -43,4 +43,38 @@ La cellule demande à la colonie d'attendre un nouveau contact avant d'agir.</GR
     <GR_TokraDecodedMissionWorldSite_SabotageComplete>Le plan de sabotage du relais Goa'uld est prêt.</GR_TokraDecodedMissionWorldSite_SabotageComplete>
     <GR_TokraDecodedMissionWorldSite_SabotageDebugComplete>Plan de sabotage du relais Tok'ra préparé pour le test.</GR_TokraDecodedMissionWorldSite_SabotageDebugComplete>
     <GR_TokraDecodedMissionWorldSite_SabotageDebugFailed>Impossible de préparer le plan de sabotage du relais Tok'ra de test.</GR_TokraDecodedMissionWorldSite_SabotageDebugFailed>
+    <GR_TokraSecureCommunicator_FirstMissionStatusRelaySabotageCompleted>relais saboté : extraction autorisée après sécurisation de la zone</GR_TokraSecureCommunicator_FirstMissionStatusRelaySabotageCompleted>
+    <GR_TokraDecodedMissionWorldSite_InspectStringPlayable>Relais Goa'uld isolé identifié par les Tok'ra. Expire dans environ {0} jour(s). Une caravane présente sur le site peut lancer l'opération de sabotage.</GR_TokraDecodedMissionWorldSite_InspectStringPlayable>
+    <GR_TokraDecodedMissionWorldSite_InspectStringOperationActive>Opération de sabotage Tok'ra en cours sur la carte locale.</GR_TokraDecodedMissionWorldSite_InspectStringOperationActive>
+    <GR_TokraDecodedMissionWorldSite_InspectStringSabotageCompleted>Relais Goa'uld saboté. La cellule Tok'ra confirme que l'objectif principal est accompli.</GR_TokraDecodedMissionWorldSite_InspectStringSabotageCompleted>
+    <GR_TokraDecodedMissionWorldSite_LaunchCommandLabel>Lancer l'opération contre le relais</GR_TokraDecodedMissionWorldSite_LaunchCommandLabel>
+    <GR_TokraDecodedMissionWorldSite_LaunchCommandDesc>Entrer sur le site, neutraliser ou éviter la garnison, saboter le dispositif Goa'uld et évacuer avant l'arrivée des renforts. Le marqueur expire dans environ {0} jour(s).</GR_TokraDecodedMissionWorldSite_LaunchCommandDesc>
+    <GR_TokraDecodedMissionWorldSite_LaunchRequiresCaravan>Une caravane de la colonie doit être présente sur le site.</GR_TokraDecodedMissionWorldSite_LaunchRequiresCaravan>
+    <GR_TokraDecodedMissionWorldSite_OperationAlreadyLaunched>L'opération contre ce relais est déjà lancée.</GR_TokraDecodedMissionWorldSite_OperationAlreadyLaunched>
+    <GR_TokraRelaySabotageMission_LetterLabel>Opération Tok'ra lancée</GR_TokraRelaySabotageMission_LetterLabel>
+    <GR_TokraRelaySabotageMission_LetterText>La caravane entre dans le périmètre du relais Goa'uld. Les Tok'ra confirment une garnison Jaffa sur place et désignent un nœud de contrôle à saboter.
+
+Un colon doit atteindre le dispositif et travailler dessus assez longtemps pour neutraliser le relais. Si l'opération traîne, les transmissions ennemies peuvent attirer une petite vague de renforts. Après le sabotage, la caravane peut repartir dès qu'aucun hostile actif ne reste sur la carte.</GR_TokraRelaySabotageMission_LetterText>
+    <GR_TokraRelaySabotageDevice_FloatMenuLabel>Saboter le nœud de contrôle du relais Goa'uld</GR_TokraRelaySabotageDevice_FloatMenuLabel>
+    <GR_TokraRelaySabotageDevice_PawnUnavailable>colon valide requis</GR_TokraRelaySabotageDevice_PawnUnavailable>
+    <GR_TokraRelaySabotageDevice_AlreadySabotaged>dispositif déjà saboté</GR_TokraRelaySabotageDevice_AlreadySabotaged>
+    <GR_TokraRelaySabotageDevice_CannotReach>impossible d'atteindre le dispositif</GR_TokraRelaySabotageDevice_CannotReach>
+    <GR_TokraRelaySabotageDevice_JobUnavailable>travail de sabotage indisponible</GR_TokraRelaySabotageDevice_JobUnavailable>
+    <GR_TokraRelaySabotageMission_ReinforcementTimerLetterLabel>Renforts Goa'uld en approche</GR_TokraRelaySabotageMission_ReinforcementTimerLetterLabel>
+    <GR_TokraRelaySabotageMission_ReinforcementTimerLetterText>Le sabotage déclenche des échanges codés sur le réseau Goa'uld. Des renforts Jaffa sont probablement en route et devraient atteindre le site dans environ {0} heure(s).
+
+Le compte à rebours n'empêche pas l'évacuation. Si le relais est saboté et qu'aucun hostile actif ne reste sur la carte, la caravane peut repartir avant leur arrivée.</GR_TokraRelaySabotageMission_ReinforcementTimerLetterText>
+    <GR_TokraRelaySabotageMission_ReinforcementAlertLabel>Renforts Goa'uld : {0} h</GR_TokraRelaySabotageMission_ReinforcementAlertLabel>
+    <GR_TokraRelaySabotageMission_ReinforcementAlertDesc>Une petite force Goa'uld/Jaffa approche du relais saboté. Elle ne bloque pas l'évacuation tant qu'elle n'est pas arrivée. Si le joueur reste jusqu'à la fin du compte à rebours, les renforts deviendront une menace active.</GR_TokraRelaySabotageMission_ReinforcementAlertDesc>
+    <GR_TokraRelaySabotageMission_ReinforcementsLetterLabel>Renforts Goa'uld arrivés</GR_TokraRelaySabotageMission_ReinforcementsLetterLabel>
+    <GR_TokraRelaySabotageMission_ReinforcementsLetterText>Les renforts Goa'uld atteignent le relais. Cette force est plus réduite que la garnison initiale, mais elle redevient une menace active que la caravane devra neutraliser ou faire fuir avant de pouvoir quitter la carte en sécurité.</GR_TokraRelaySabotageMission_ReinforcementsLetterText>
+    <GR_TokraRelaySabotageMission_ReinforcementsArrived>{0} Jaffa de renfort arrivent au relais.</GR_TokraRelaySabotageMission_ReinforcementsArrived>
+    <GR_TokraDecodedMissionWorldSite_CompletedLetterLabel>Relais Goa'uld saboté</GR_TokraDecodedMissionWorldSite_CompletedLetterLabel>
+    <GR_TokraDecodedMissionWorldSite_CompletedLetterText>Le nœud de contrôle du relais Goa'uld est neutralisé. Les Tok'ra confirment la rupture du signal et recommandent une évacuation rapide avant que les Jaffa ne resserrent le périmètre.</GR_TokraDecodedMissionWorldSite_CompletedLetterText>
+    <GR_TokraDecodedMissionWorldSite_SabotageCompleted>Le relais Goa'uld a été saboté.</GR_TokraDecodedMissionWorldSite_SabotageCompleted>
+    <GR_TokraRelaySabotageMission_ExtractionAvailable>Objectif accompli : la zone est assez sûre pour reformer la caravane.</GR_TokraRelaySabotageMission_ExtractionAvailable>
+    <GR_TokraRelaySabotageMission_ExtractionBlocked>Objectif accompli, mais des hostiles actifs bloquent encore l'évacuation.</GR_TokraRelaySabotageMission_ExtractionBlocked>
+    <GR_TokraRelaySabotageMission_DebugCompleted>Sabotage du relais Tok'ra marqué comme accompli pour le test.</GR_TokraRelaySabotageMission_DebugCompleted>
+    <GR_TokraRelaySabotageMission_DebugCompleteFailed>Impossible de marquer le sabotage du relais Tok'ra comme accompli.</GR_TokraRelaySabotageMission_DebugCompleteFailed>
+    <GR_TokraRelaySabotageDevice_IntellectualRequired>travail intellectuel requis</GR_TokraRelaySabotageDevice_IntellectualRequired>
 </LanguageData>

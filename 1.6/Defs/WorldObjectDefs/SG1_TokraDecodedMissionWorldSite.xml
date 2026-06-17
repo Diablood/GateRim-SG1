@@ -3,7 +3,7 @@
     <WorldObjectDef>
         <defName>SG1_TokraDecodedMissionWorldSite</defName>
         <label>Tok'ra decoded mission site</label>
-        <description>A temporary non-hostile marker representing the isolated Goa'uld relay identified from decoded Tok'ra intelligence. A player caravan can reconnoiter it and prepare a future sabotage objective without entering a combat map yet.</description>
+        <description>A temporary mission marker representing the isolated Goa'uld relay identified from decoded Tok'ra intelligence. A player caravan can launch a playable sabotage operation from this site.</description>
         <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraDecodedMissionSite</worldObjectClass>
         <texture>World/WorldObjects/Sites/GenericSite</texture>
         <expandingIcon>true</expandingIcon>
@@ -11,5 +11,6 @@
         <expandingIconPriority>36</expandingIconPriority>
         <expandMore>true</expandMore>
         <canHaveFaction>true</canHaveFaction>
+        <useDynamicDrawer>true</useDynamicDrawer>
     </WorldObjectDef>
 </Defs>

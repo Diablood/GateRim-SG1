@@ -290,3 +290,17 @@ explorer sa petite carte non hostile et récupérer un cache médical limité.
 Depuis `0.2.18-dev`, un unique hôte Tok'ra volontaire âgé d'au moins `20` ans
 demeure dans la planque. Ce contact est pacifique, non marchand et non
 recrutable.
+
+## Playable relay sabotage mission
+
+The decoded relay marker now leads to a single playable operation. A caravan present at the relay can launch the mission, generating a temporary local map with a Goa'uld relay control node and a hostile Jaffa/Goa'uld defense. The relay must be sabotaged by a pawn through a timed Intellectual work action. The duration scales inversely with Intellectual: roughly 10 hours at level 0, 5 hours at level 10, and 3.3 hours at level 20. The estimate is intentionally hidden from the player-facing right-click option. Pawns incapable of Intellectual work cannot perform the sabotage.
+
+When sabotage begins, a visible 12-hour reinforcement warning appears. The countdown creates evacuation pressure but does not block departure before the reinforcements arrive. Once the relay is sabotaged, the caravan may reform as soon as there are no active hostile enemies on the map. If the player stays until the timer expires, one to three Jaffa enter from the map edge; the arrival letter targets the first spawned reinforcement, and the new hostiles must be neutralized or driven off before safe departure.
+
+Older reconnaissance and sabotage-preparation states are kept for save compatibility and for the Tok'ra channel report, but the visible player flow is intended to become one world action followed by the local mission.
+
+
+
+### 0.2.45-dev-r5 validation note
+
+Relay sabotage work is now stored on the device and persists if the pawn is interrupted. The hidden duration scales from roughly 12 in-game hours at Intellectual 0 to 6 hours at Intellectual 20. Initial defenders and delayed reinforcements are spawned directly from Goa'uld Jaffa pawn kinds, avoiding the faction combat-group generator that cannot resolve the low reinforcement budget.

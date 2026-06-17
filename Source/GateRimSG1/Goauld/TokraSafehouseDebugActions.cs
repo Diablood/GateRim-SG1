@@ -383,6 +383,36 @@ namespace GateRimSG1.Goauld
         }
 
 
+
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Complete Tok'ra relay sabotage test",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void CompleteTokraRelaySabotageTest()
+        {
+            GameComponent_TokraTrustTracker.DebugSetTrustScore(
+                GameComponent_TokraTrustTracker.TrustedThreshold);
+
+            if (!GameComponent_TokraTrustTracker
+                    .DebugCompleteFirstTrustMissionRelaySabotage())
+            {
+                Messages.Message(
+                    "GR_TokraRelaySabotageMission_DebugCompleteFailed"
+                        .Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraRelaySabotageMission_DebugCompleted".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+
         [DebugAction(
             "GateRim SG-1",
             "Create Tok'ra intercepted threat test",

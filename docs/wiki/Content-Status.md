@@ -127,3 +127,13 @@ Development note: `0.2.27-dev` adds the first active trusted communicator reques
 - `0.2.38-dev-r1` : zone de livraison Tok'ra gratuite, non minifiable et unique par carte, utilisée en priorité pour les caches et livraisons discrètes.
 
 - Tok'ra delivery drop zone marker is non-minifiable and uses an explicit empty thing category list to avoid storage/filter warnings.
+
+### 0.2.45-dev - Tok'ra playable relay sabotage site
+
+The decoded Tok'ra relay chain now moves toward a playable local mission instead of repeating similar world-map actions on the same marker. A caravan launches one operation from the world site, enters a temporary map, faces a Goa'uld/Jaffa defense scaled with vanilla threat points, and must sabotage a relay control node with a pawn work action. Sabotage time scales inversely with the pawn's Intellectual level, from roughly 10 hours at level 0 to 5 hours at level 10 and 3.3 hours at level 20; this estimate remains internal and is not shown in the right-click option. Starting the sabotage announces a 12-hour reinforcement countdown; the player may still leave before reinforcements arrive once the relay is sabotaged and no active hostiles remain. If the timer expires, one to three Jaffa enter from the map edge and the arrival letter targets the spawned group.
+
+
+
+### 0.2.45-dev-r5 validation note
+
+Relay sabotage work is now stored on the device and persists if the pawn is interrupted. The hidden duration scales from roughly 12 in-game hours at Intellectual 0 to 6 hours at Intellectual 20. Initial defenders and delayed reinforcements are spawned directly from Goa'uld Jaffa pawn kinds, avoiding the faction combat-group generator that cannot resolve the low reinforcement budget.

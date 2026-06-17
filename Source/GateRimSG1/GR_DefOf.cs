@@ -45,6 +45,8 @@ namespace GateRimSG1
         public static RaidStrategyDef SG1_GoauldJaffaDestructionAssault;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
+        public static ThingDef SG1_TokraRelaySabotageDevice;
+        public static JobDef SG1_TokraSabotageRelayDevice;
 
         // Legacy technical genes retained only for save migration.
         public static GeneDef SG1_JaffaForeheadMark_Generic;
