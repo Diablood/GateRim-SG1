@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraOrganicOperation_FloatMenuUnavailable>Opération Tok'ra indisponible</GR_TokraOrganicOperation_FloatMenuUnavailable>
+    <GR_TokraOrganicOperation_FloatMenuAcceptObservation>Accepter la demande d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuAcceptObservation>
+    <GR_TokraOrganicOperation_FloatMenuTransmitObservation>Transmettre le rapport d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuTransmitObservation>
+    <GR_TokraOrganicOperation_TrackerUnavailable>Canal opérationnel Tok'ra indisponible</GR_TokraOrganicOperation_TrackerUnavailable>
+    <GR_TokraOrganicOperation_NoActiveOpportunity>Aucune demande Tok'ra active</GR_TokraOrganicOperation_NoActiveOpportunity>
+    <GR_TokraOrganicOperation_ObservationInProgress>Observation encore en cours ({0} h restantes)</GR_TokraOrganicOperation_ObservationInProgress>
+    <GR_TokraOrganicOperation_ObservationExpired>Fenêtre de transmission du rapport expirée</GR_TokraOrganicOperation_ObservationExpired>
+    <GR_TokraOrganicOperation_OperatorIncapable>L'opérateur doit être capable d'effectuer un travail intellectuel</GR_TokraOrganicOperation_OperatorIncapable>
+
+    <GR_TokraOrganicOperation_OfferLetterLabel>Demande d'observation Tok'ra discrète</GR_TokraOrganicOperation_OfferLetterLabel>
+    <GR_TokraOrganicOperation_OfferLetterText>Un contact Tok'ra prudent a ouvert un canal étroit. La cellule ne vous confie pas une mission sensible. Elle demande seulement à votre colonie de surveiller discrètement d'éventuels mouvements Goa'uld inhabituels dans la région, puis de transmettre un rapport concis.
+
+Sélectionnez un colon, puis faites un clic droit sur le communicateur sécurisé Tok'ra alimenté pour accepter la demande. Le canal restera disponible pendant environ {0} heures. Le laisser se refermer n'entraîne aucune perte de confiance.</GR_TokraOrganicOperation_OfferLetterText>
+    <GR_TokraOrganicOperation_OfferExpired>Le canal d'observation ouvert par la cellule Tok'ra s'est refermé sans réponse.</GR_TokraOrganicOperation_OfferExpired>
+    <GR_TokraOrganicOperation_Accepted>{0} a accepté la demande d'observation Tok'ra. Un rapport utile pourra être transmis après environ {1} heures de surveillance discrète.</GR_TokraOrganicOperation_Accepted>
+    <GR_TokraOrganicOperation_ReportReady>La période d'observation demandée est terminée. Un colon peut maintenant transmettre le rapport au moyen du communicateur Tok'ra.</GR_TokraOrganicOperation_ReportReady>
+    <GR_TokraOrganicOperation_FailedLetterLabel>Fenêtre d'observation Tok'ra manquée</GR_TokraOrganicOperation_FailedLetterLabel>
+    <GR_TokraOrganicOperation_FailedLetterText>La demande d'observation avait été acceptée, mais le rapport n'a pas été transmis avant la fermeture de la fenêtre sécurisée. La cellule Tok'ra se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_FailedLetterText>
+    <GR_TokraOrganicOperation_SuccessLetterLabel>Rapport d'observation Tok'ra reçu</GR_TokraOrganicOperation_SuccessLetterLabel>
+    <GR_TokraOrganicOperation_SuccessLetterText>{0} a transmis un rapport concis sur l'activité Goa'uld environnante. La cellule Tok'ra confirme que ces renseignements sont utiles. L'opérateur gagne {1} XP en Intellectuel et la confiance de la cellule envers la colonie progresse.</GR_TokraOrganicOperation_SuccessLetterText>
+
+    <GR_TokraOrganicOperation_StatusReportNone>Initiatives Tok'ra : aucune demande active.</GR_TokraOrganicOperation_StatusReportNone>
+    <GR_TokraOrganicOperation_StatusReportActive>Initiatives Tok'ra : {0}</GR_TokraOrganicOperation_StatusReportActive>
+    <GR_TokraOrganicOperation_StatusOffered>demande d'observation discrète en attente d'une réponse ({0} h restantes)</GR_TokraOrganicOperation_StatusOffered>
+    <GR_TokraOrganicOperation_StatusObserving>observation en cours ({0} h avant que le rapport soit exploitable)</GR_TokraOrganicOperation_StatusObserving>
+    <GR_TokraOrganicOperation_StatusReady>rapport d'observation prêt ({0} h avant la fermeture du canal sécurisé)</GR_TokraOrganicOperation_StatusReady>
+    <GR_TokraOrganicOperation_InspectPrefix>Opération Tok'ra : {0}</GR_TokraOrganicOperation_InspectPrefix>
+
+    <GR_TokraTrust_OrganicObservationSucceeded>La cellule Tok'ra reconnaît la valeur du rapport d'observation. Son attitude envers la colonie s'améliore.</GR_TokraTrust_OrganicObservationSucceeded>
+    <GR_TokraTrust_OrganicObservationFailed>L'absence du rapport attendu rend la cellule Tok'ra légèrement plus prudente.</GR_TokraTrust_OrganicObservationFailed>
+
+    <GR_TokraOrganicOperation_DebugUnavailable>Le suivi des opérations Tok'ra organiques est indisponible.</GR_TokraOrganicOperation_DebugUnavailable>
+    <GR_TokraOrganicOperation_DebugForced>Une opportunité d'observation Tok'ra organique a été forcée.</GR_TokraOrganicOperation_DebugForced>
+    <GR_TokraOrganicOperation_DebugNoAcceptedOperation>Aucune opération d'observation Tok'ra acceptée n'est active sur cette carte.</GR_TokraOrganicOperation_DebugNoAcceptedOperation>
+    <GR_TokraOrganicOperation_DebugReady>Le rapport d'observation Tok'ra est maintenant prêt à être transmis.</GR_TokraOrganicOperation_DebugReady>
+    <GR_TokraOrganicOperation_DebugReset>Le suivi des opérations Tok'ra organiques a été réinitialisé.</GR_TokraOrganicOperation_DebugReset>
+</LanguageData>

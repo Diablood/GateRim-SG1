@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <JobDef>
+        <defName>SG1_HandleTokraOrganicObservation</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
+        <reportString>handling a discreet Tok'ra observation request.</reportString>
+    </JobDef>
+</Defs>

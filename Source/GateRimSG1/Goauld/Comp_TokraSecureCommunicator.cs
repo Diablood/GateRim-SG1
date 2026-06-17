@@ -37,6 +37,8 @@ namespace GateRimSG1.Goauld
         private const string RequestThreatAssessmentJobDefName = "SG1_RequestTokraThreatAssessment";
         private const string RequestOperationalDebriefJobDefName = "SG1_SendTokraOperationalDebrief";
         private const string RequestFirstTrustMissionJobDefName = "SG1_RequestTokraFirstTrustMission";
+        private const string HandleOrganicObservationJobDefName =
+            "SG1_HandleTokraOrganicObservation";
 
         private enum TokraCommunicatorOperation
         {
@@ -47,7 +49,8 @@ namespace GateRimSG1.Goauld
             MedicalCache,
             ThreatAssessment,
             OperationalDebrief,
-            FirstTrustMission
+            FirstTrustMission,
+            OrganicObservation
         }
 
         private int nextDefensiveDiversionRequestTick;
@@ -237,6 +240,20 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
+            if (GameComponent_TokraOrganicOperationTracker
+                .HasActiveOpportunityForMap(parent.Map))
+            {
+                foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
+                    selPawn,
+                    HandleOrganicObservationJobDefName,
+                    GameComponent_TokraOrganicOperationTracker
+                        .GetCommunicatorActionLabel(parent.Map),
+                    TokraCommunicatorOperation.OrganicObservation))
+                {
+                    yield return option;
+                }
+            }
+
             foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
                 selPawn,
                 CheckStatusReportJobDefName,
@@ -351,7 +368,7 @@ namespace GateRimSG1.Goauld
                 return null;
             }
 
-            return "GR_TokraSecureCommunicator_Inspect".Translate(
+            string inspectText = "GR_TokraSecureCommunicator_Inspect".Translate(
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
                 GetFirstTrustMissionStatusLabel(),
@@ -359,6 +376,13 @@ namespace GateRimSG1.Goauld
                 GetThreatAssessmentStatusLabel(),
                 GetMedicalSupportStatusLabel(),
                 GetMedicalCacheStatusLabel()).ToString();
+            string organicOperationStatus
+                = GameComponent_TokraOrganicOperationTracker
+                    .GetInspectStatusForMap(parent.Map);
+
+            return string.IsNullOrEmpty(organicOperationStatus)
+                ? inspectText
+                : inspectText + "\n" + organicOperationStatus;
         }
 
         internal bool TryShowStatusReport(Pawn operatorPawn)
@@ -382,22 +406,28 @@ namespace GateRimSG1.Goauld
             List<Pawn> patients = GetMedicalSupportCandidates();
             string interceptedThreatStatus = GetInterceptedThreatStatusLabel();
 
+            string statusReportText
+                = "GR_TokraSecureCommunicator_StatusReportDialog".Translate(
+                    GetTrustTierLabel(currentTier),
+                    GetTrustStatusReportLabel(currentTier),
+                    GetTrustProgressStatusReportLabel(trustScore, currentTier),
+                    GetStatusLabel(),
+                    GetFirstTrustMissionStatusLabel(),
+                    GetDiversionStatusLabel(),
+                    GetThreatAssessmentStatusLabel(),
+                    GetMedicalSupportStatusLabel(),
+                    GetMedicalCacheStatusLabel(),
+                    threats.Count.ToString(),
+                    patients.Count.ToString(),
+                    interceptedThreatStatus)
+                .ToString();
+            string organicOperationStatus
+                = GameComponent_TokraOrganicOperationTracker
+                    .GetStatusReportLineForMap(parent.Map);
+
             Find.WindowStack.Add(
                 new Dialog_MessageBox(
-                    "GR_TokraSecureCommunicator_StatusReportDialog".Translate(
-                        GetTrustTierLabel(currentTier),
-                        GetTrustStatusReportLabel(currentTier),
-                        GetTrustProgressStatusReportLabel(trustScore, currentTier),
-                        GetStatusLabel(),
-                        GetFirstTrustMissionStatusLabel(),
-                        GetDiversionStatusLabel(),
-                        GetThreatAssessmentStatusLabel(),
-                        GetMedicalSupportStatusLabel(),
-                        GetMedicalCacheStatusLabel(),
-                        threats.Count.ToString(),
-                        patients.Count.ToString(),
-                        interceptedThreatStatus)
-                    .ToString()));
+                    statusReportText + "\n\n" + organicOperationStatus));
 
             Messages.Message(
                 "GR_TokraSecureCommunicator_StatusReportOpened".Translate(),
@@ -413,6 +443,34 @@ namespace GateRimSG1.Goauld
                 + $"hostiles {threats.Count}; patients {patients.Count}.");
 
             return true;
+        }
+
+        internal bool TryHandleOrganicObservation(Pawn operatorPawn)
+        {
+            string disabledReason = GetOrganicObservationDisabledReason();
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            if (!CanHandleOrganicObservation(operatorPawn))
+            {
+                Messages.Message(
+                    "GR_TokraOrganicOperation_OperatorIncapable".Translate(),
+                    parent,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            return GameComponent_TokraOrganicOperationTracker
+                .TryHandleCommunicatorInteraction(parent.Map, operatorPawn);
         }
 
         internal bool TryOpenSecureChannel(Pawn operatorPawn)
@@ -968,6 +1026,14 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
+            if (operation == TokraCommunicatorOperation.OrganicObservation
+                && !CanHandleOrganicObservation(operatorPawn))
+            {
+                return "GR_TokraOrganicOperation_OperatorIncapable"
+                    .Translate()
+                    .ToString();
+            }
+
             return GetFloatMenuDisabledReasonForOperation(operation);
         }
 
@@ -977,6 +1043,11 @@ namespace GateRimSG1.Goauld
             if (operation == TokraCommunicatorOperation.StatusReport)
             {
                 return GetStatusReportDisabledReason();
+            }
+
+            if (operation == TokraCommunicatorOperation.OrganicObservation)
+            {
+                return GetOrganicObservationDisabledReason();
             }
 
             string channelDisabledReason = GetBasicChannelFloatMenuDisabledReason();
@@ -1143,6 +1214,8 @@ namespace GateRimSG1.Goauld
                     return GetOperationalDebriefDisabledReason();
                 case TokraCommunicatorOperation.FirstTrustMission:
                     return GetFirstTrustMissionDisabledReason();
+                case TokraCommunicatorOperation.OrganicObservation:
+                    return GetOrganicObservationDisabledReason();
                 default:
                     return GetChannelDisabledReason();
             }
@@ -1200,6 +1273,28 @@ namespace GateRimSG1.Goauld
             }
 
             return null;
+        }
+
+        internal string GetOrganicObservationDisabledReason()
+        {
+            if (parent.Faction != null && parent.Faction != Faction.OfPlayer)
+            {
+                return "GR_TokraSecureCommunicator_NotPlayerControlled"
+                    .Translate()
+                    .ToString();
+            }
+
+            CompPowerTrader powerComp = parent.GetComp<CompPowerTrader>();
+
+            if (powerComp != null && !powerComp.PowerOn)
+            {
+                return "GR_TokraSecureCommunicator_Unpowered"
+                    .Translate()
+                    .ToString();
+            }
+
+            return GameComponent_TokraOrganicOperationTracker
+                .GetCommunicatorDisabledReason(parent.Map);
         }
 
         internal string GetOperationalDebriefDisabledReason()
@@ -1933,6 +2028,19 @@ namespace GateRimSG1.Goauld
             }
 
             return false;
+        }
+
+        private static bool CanHandleOrganicObservation(Pawn pawn)
+        {
+            if (!CanUsePlayerOperator(pawn) || pawn.skills == null)
+            {
+                return false;
+            }
+
+            SkillRecord intellectual = pawn.skills.GetSkill(
+                SkillDefOf.Intellectual);
+
+            return intellectual != null && !intellectual.TotallyDisabled;
         }
 
         private static bool CanReceiveOperationalDebriefExperience(Pawn pawn)

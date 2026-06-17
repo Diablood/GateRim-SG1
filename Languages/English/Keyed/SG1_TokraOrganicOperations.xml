@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraOrganicOperation_FloatMenuUnavailable>Tok'ra operation unavailable</GR_TokraOrganicOperation_FloatMenuUnavailable>
+    <GR_TokraOrganicOperation_FloatMenuAcceptObservation>Accept Tok'ra observation request</GR_TokraOrganicOperation_FloatMenuAcceptObservation>
+    <GR_TokraOrganicOperation_FloatMenuTransmitObservation>Transmit Tok'ra observation report</GR_TokraOrganicOperation_FloatMenuTransmitObservation>
+    <GR_TokraOrganicOperation_TrackerUnavailable>Tok'ra operation channel unavailable</GR_TokraOrganicOperation_TrackerUnavailable>
+    <GR_TokraOrganicOperation_NoActiveOpportunity>No active Tok'ra request</GR_TokraOrganicOperation_NoActiveOpportunity>
+    <GR_TokraOrganicOperation_ObservationInProgress>Observation still underway ({0} h remaining)</GR_TokraOrganicOperation_ObservationInProgress>
+    <GR_TokraOrganicOperation_ObservationExpired>Observation report window expired</GR_TokraOrganicOperation_ObservationExpired>
+    <GR_TokraOrganicOperation_OperatorIncapable>The operator must be capable of Intellectual work</GR_TokraOrganicOperation_OperatorIncapable>
+
+    <GR_TokraOrganicOperation_OfferLetterLabel>Discreet Tok'ra observation request</GR_TokraOrganicOperation_OfferLetterLabel>
+    <GR_TokraOrganicOperation_OfferLetterText>A cautious Tok'ra contact has opened a narrow channel. The cell is not offering a sensitive mission. It asks only that your colony discreetly watch for unusual Goa'uld movement in the surrounding region and later transmit a concise report.
+
+Select a colonist, then right-click the powered Tok'ra secure communicator to accept the request. The channel will remain available for about {0} hours. Letting it close carries no trust penalty.</GR_TokraOrganicOperation_OfferLetterText>
+    <GR_TokraOrganicOperation_OfferExpired>The cautious Tok'ra observation channel has closed without a response.</GR_TokraOrganicOperation_OfferExpired>
+    <GR_TokraOrganicOperation_Accepted>{0} has accepted the Tok'ra observation request. A useful report can be transmitted after about {1} hours of discreet monitoring.</GR_TokraOrganicOperation_Accepted>
+    <GR_TokraOrganicOperation_ReportReady>The requested observation period is complete. A colonist can now transmit the report through the Tok'ra communicator.</GR_TokraOrganicOperation_ReportReady>
+    <GR_TokraOrganicOperation_FailedLetterLabel>Tok'ra observation window missed</GR_TokraOrganicOperation_FailedLetterLabel>
+    <GR_TokraOrganicOperation_FailedLetterText>The observation request was accepted, but the report was not transmitted before the secure window closed. The Tok'ra cell will be more cautious about relying on the colony.</GR_TokraOrganicOperation_FailedLetterText>
+    <GR_TokraOrganicOperation_SuccessLetterLabel>Tok'ra observation report received</GR_TokraOrganicOperation_SuccessLetterLabel>
+    <GR_TokraOrganicOperation_SuccessLetterText>{0} has transmitted a concise report on nearby Goa'uld activity. The Tok'ra cell confirms that the information was useful. The operator gains {1} Intellectual XP, and the cell's trust in the colony improves.</GR_TokraOrganicOperation_SuccessLetterText>
+
+    <GR_TokraOrganicOperation_StatusReportNone>Tok'ra initiatives: no active request.</GR_TokraOrganicOperation_StatusReportNone>
+    <GR_TokraOrganicOperation_StatusReportActive>Tok'ra initiatives: {0}</GR_TokraOrganicOperation_StatusReportActive>
+    <GR_TokraOrganicOperation_StatusOffered>discreet observation request awaiting a response ({0} h remaining)</GR_TokraOrganicOperation_StatusOffered>
+    <GR_TokraOrganicOperation_StatusObserving>observation underway ({0} h before the report is useful)</GR_TokraOrganicOperation_StatusObserving>
+    <GR_TokraOrganicOperation_StatusReady>observation report ready ({0} h before the secure window closes)</GR_TokraOrganicOperation_StatusReady>
+    <GR_TokraOrganicOperation_InspectPrefix>Tok'ra operation: {0}</GR_TokraOrganicOperation_InspectPrefix>
+
+    <GR_TokraTrust_OrganicObservationSucceeded>The Tok'ra cell acknowledges the value of the observation report. Its posture toward the colony improves.</GR_TokraTrust_OrganicObservationSucceeded>
+    <GR_TokraTrust_OrganicObservationFailed>The missed observation report makes the Tok'ra cell slightly more cautious.</GR_TokraTrust_OrganicObservationFailed>
+
+    <GR_TokraOrganicOperation_DebugUnavailable>Tok'ra organic operation tracker unavailable.</GR_TokraOrganicOperation_DebugUnavailable>
+    <GR_TokraOrganicOperation_DebugForced>Tok'ra organic observation opportunity forced.</GR_TokraOrganicOperation_DebugForced>
+    <GR_TokraOrganicOperation_DebugNoAcceptedOperation>No accepted Tok'ra observation operation is active on this map.</GR_TokraOrganicOperation_DebugNoAcceptedOperation>
+    <GR_TokraOrganicOperation_DebugReady>Tok'ra observation report is now ready for transmission.</GR_TokraOrganicOperation_DebugReady>
+    <GR_TokraOrganicOperation_DebugReset>Tok'ra organic operation tracker reset.</GR_TokraOrganicOperation_DebugReset>
+</LanguageData>

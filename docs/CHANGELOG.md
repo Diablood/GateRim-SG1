@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.48-dev - Add organic Tok'ra operation opportunities
+
+- Add a persistent scheduler for Tok'ra-initiated opportunities with hidden variable delays and save-persistent active state.
+- Add the first preliminary archetype: a discreet Goa'uld-activity observation request available before the Trusted trust tier.
+- Require a powered player-controlled Tok'ra secure communicator and an operator capable of Intellectual work, without weakening existing Trusted-tier requirements for manual requests.
+- Let the player ignore an unsolicited offer without a trust penalty, while an accepted but missed report reduces trust by `1`.
+- Grant `3` Tok'ra trust and `250` Intellectual XP when the completed observation report is transmitted.
+- Add trust-tier scheduling ranges, trust-dependent archetype weights, and persisted anti-repetition context for future operation variety.
+- Add communicator right-click actions, inspect/status-report integration, developer validation actions, English/French keyed text, JobDef and French DefInjected text.
+- Clarify the secure communicator description so preliminary incoming requests are distinct from trusted outgoing support requests.
+- Update `docs/PROJECT_STATE.md`, add design/test documentation and prepare the wiki draft.
+- Raise the assembly version to `0.2.48.0` and the mod metadata version to `0.2.48-dev`.
+
 ## 0.2.47-dev - Add Tok'ra relay operation outcome debrief
 
 - Record the relay-operation outcome only when the resolved temporary site is removed after the caravan has left.

@@ -5,8 +5,8 @@ using Verse.AI;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Operates the trusted Tok'ra secure communicator through a selected
-    /// player pawn. This keeps contact and support requests grounded as a
+    /// Operates the Tok'ra secure communicator through a selected player
+    /// pawn. This keeps contact and support requests grounded as a
     /// colonist action instead of an instant building-only remote command.
     /// </summary>
     public class JobDriver_TokraOperateSecureCommunicator : JobDriver
@@ -20,6 +20,8 @@ namespace GateRimSG1.Goauld
         private const string RequestThreatAssessmentJobDefName = "SG1_RequestTokraThreatAssessment";
         private const string RequestOperationalDebriefJobDefName = "SG1_SendTokraOperationalDebrief";
         private const string RequestFirstTrustMissionJobDefName = "SG1_RequestTokraFirstTrustMission";
+        private const string HandleOrganicObservationJobDefName =
+            "SG1_HandleTokraOrganicObservation";
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -62,7 +64,11 @@ namespace GateRimSG1.Goauld
                         return;
                     }
 
-                    if (IsStatusReportJob())
+                    if (IsOrganicObservationJob())
+                    {
+                        comp.TryHandleOrganicObservation(pawn);
+                    }
+                    else if (IsStatusReportJob())
                     {
                         comp.TryShowStatusReport(pawn);
                     }
@@ -112,7 +118,11 @@ namespace GateRimSG1.Goauld
 
             string disabledReason;
 
-            if (IsStatusReportJob())
+            if (IsOrganicObservationJob())
+            {
+                disabledReason = comp.GetOrganicObservationDisabledReason();
+            }
+            else if (IsStatusReportJob())
             {
                 disabledReason = comp.GetStatusReportDisabledReason();
             }
@@ -181,6 +191,11 @@ namespace GateRimSG1.Goauld
         private bool IsFirstTrustMissionRequestJob()
         {
             return job?.def?.defName == RequestFirstTrustMissionJobDefName;
+        }
+
+        private bool IsOrganicObservationJob()
+        {
+            return job?.def?.defName == HandleOrganicObservationJobDefName;
         }
 
         private Comp_TokraSecureCommunicator GetCommunicatorComp()

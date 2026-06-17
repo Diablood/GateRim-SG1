@@ -28,6 +28,8 @@ namespace GateRimSG1.Goauld
         public const int ExpiredOfferTrustChange = -2;
         public const int FirstTrustMissionSuccessTrustChange = 5;
         public const int FirstTrustMissionFailureTrustChange = -3;
+        public const int OrganicObservationSuccessTrustChange = 3;
+        public const int OrganicObservationFailureTrustChange = -1;
 
         public const int RefusedWaryDiplomaticCooldownTicks = 180000;
         public const int ExpiredWaryDiplomaticCooldownTicks = 300000;
@@ -960,6 +962,34 @@ namespace GateRimSG1.Goauld
                 SafehouseContactTrustChange,
                 "safehouse contact dialogue",
                 "GR_TokraTrust_SafehouseContactAcknowledged");
+        }
+
+        public static void NotifyOrganicObservationOutcome(
+            TokraOrganicOperationOutcome outcome)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot update Tok'ra trust: the trust tracker is "
+                    + "unavailable.");
+                return;
+            }
+
+            if (outcome == TokraOrganicOperationOutcome.Succeeded)
+            {
+                tracker.ApplyFlatTrustChange(
+                    OrganicObservationSuccessTrustChange,
+                    "successful organic Goa'uld observation operation",
+                    "GR_TokraTrust_OrganicObservationSucceeded");
+                return;
+            }
+
+            tracker.ApplyFlatTrustChange(
+                OrganicObservationFailureTrustChange,
+                "failed organic Goa'uld observation operation",
+                "GR_TokraTrust_OrganicObservationFailed");
         }
 
         public static void NotifyTherapeuticOfferOutcome(
@@ -2233,5 +2263,11 @@ namespace GateRimSG1.Goauld
         Accepted,
         Refused,
         Expired
+    }
+
+    public enum TokraOrganicOperationOutcome
+    {
+        Succeeded,
+        Failed
     }
 }
