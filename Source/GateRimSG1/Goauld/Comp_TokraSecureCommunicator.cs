@@ -1493,6 +1493,14 @@ namespace GateRimSG1.Goauld
             }
 
             if (GameComponent_TokraTrustTracker
+                .IsFirstTrustMissionWorldSiteReconnoitered())
+            {
+                return "GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteReconnoitered"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (GameComponent_TokraTrustTracker
                 .IsFirstTrustMissionWorldSiteRevealed())
             {
                 return "GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed"

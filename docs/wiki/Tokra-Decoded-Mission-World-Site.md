@@ -16,3 +16,10 @@ The marker appears on the world map and expires if ignored. At this stage, it is
 - It does not provide trade, recruitment, healing or reinforcements.
 
 This step exists to bridge the Tok'ra communicator chain toward a future true mission site.
+
+## 0.2.43-dev reconnaissance step
+
+- A revealed decoded mission site can now be reconnoitered when a player caravan is present on the site tile.
+- Reconnaissance confirms Goa'uld/Jaffa activity through an RP letter and persistent Tok'ra mission state.
+- The Tok'ra channel report now distinguishes between a revealed site and a reconnoitered site.
+- The world site remains non-combat and non-rewarding for this milestone: no generated combat map, no raid, no direct reward, no healing, no reinforcements, no trade and no recruitment.

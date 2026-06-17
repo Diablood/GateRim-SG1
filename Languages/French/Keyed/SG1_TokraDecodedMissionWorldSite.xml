@@ -11,4 +11,20 @@ Le site est désormais visible sur la carte du monde. Les Tok'ra recommandent en
     <GR_TokraDecodedMissionWorldSite_Expired>Les coordonnées du relais Goa'uld isolé ne sont plus exploitables.</GR_TokraDecodedMissionWorldSite_Expired>
     <GR_TokraDecodedMissionWorldSite_DebugRevealed>Site de mission Tok'ra révélé pour le test.</GR_TokraDecodedMissionWorldSite_DebugRevealed>
     <GR_TokraDecodedMissionWorldSite_DebugFailed>Impossible de révéler le site de mission Tok'ra de test.</GR_TokraDecodedMissionWorldSite_DebugFailed>
+    <GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteReconnoitered>site reconnu : activité Goa'uld/Jaffa confirmée</GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteReconnoitered>
+    <GR_TokraDecodedMissionWorldSite_InspectStringReconnoitered>Relais Goa'uld isolé reconnu par une caravane de la colonie. Expire dans environ {0} jour(s). Les Tok'ra confirment une activité Goa'uld/Jaffa, mais aucune résolution complète n'est encore ouverte.</GR_TokraDecodedMissionWorldSite_InspectStringReconnoitered>
+    <GR_TokraDecodedMissionWorldSite_ReconCommandLabel>Reconnaître le relais Tok'ra</GR_TokraDecodedMissionWorldSite_ReconCommandLabel>
+    <GR_TokraDecodedMissionWorldSite_ReconCommandDesc>Effectuer une reconnaissance prudente du relais Goa'uld isolé avec une caravane présente sur le site. Le marqueur expire dans environ {0} jour(s). Cette action confirme l'activité ennemie sans générer de carte de combat, de raid ou de récompense immédiate.</GR_TokraDecodedMissionWorldSite_ReconCommandDesc>
+    <GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan>Une caravane de la colonie doit être présente sur le site.</GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan>
+    <GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete>Reconnaissance déjà effectuée.</GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete>
+    <GR_TokraDecodedMissionWorldSite_ReconLetterLabel>Reconnaissance Tok'ra confirmée</GR_TokraDecodedMissionWorldSite_ReconLetterLabel>
+    <GR_TokraDecodedMissionWorldSite_ReconLetterText>{0} approche du relais Goa'uld isolé indiqué par la cellule Tok'ra. La reconnaissance reste distante : aucune équipe ne force l'entrée, aucun combat n'est engagé et aucune cache n'est récupérée.
+
+Les relevés confirment toutefois une activité Goa'uld/Jaffa cohérente avec la piste décodée. Le relais semble encore lié à un point de transit surveillé, mais les Tok'ra recommandent de ne pas lancer d'assaut sans préparation supplémentaire.
+
+La cellule enregistre la reconnaissance. Cette étape ne crée aucune récompense immédiate, aucun raid et aucune résolution complète de mission.</GR_TokraDecodedMissionWorldSite_ReconLetterText>
+    <GR_TokraDecodedMissionWorldSite_ReconComplete>La reconnaissance du relais Tok'ra confirme une activité Goa'uld/Jaffa.</GR_TokraDecodedMissionWorldSite_ReconComplete>
+    <GR_TokraDecodedMissionWorldSite_ReconDebugComplete>Reconnaissance du site de mission Tok'ra enregistrée pour le test.</GR_TokraDecodedMissionWorldSite_ReconDebugComplete>
+    <GR_TokraDecodedMissionWorldSite_ReconDebugFailed>Impossible d'enregistrer la reconnaissance du site de mission Tok'ra de test.</GR_TokraDecodedMissionWorldSite_ReconDebugFailed>
+    <GR_TokraDecodedMissionWorldSite_TravelCommandLabel>Aller au relais Tok'ra</GR_TokraDecodedMissionWorldSite_TravelCommandLabel>
 </LanguageData>

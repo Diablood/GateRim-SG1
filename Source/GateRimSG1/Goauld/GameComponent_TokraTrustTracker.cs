@@ -91,6 +91,8 @@ namespace GateRimSG1.Goauld
         private int firstTrustMissionWorldSiteRevealedTick;
         private int firstTrustMissionWorldSiteRevealTick;
         private int nextFirstTrustMissionWorldSiteRevealCheckTick;
+        private bool firstTrustMissionWorldSiteReconnoitered;
+        private int firstTrustMissionWorldSiteReconnoiteredTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -176,6 +178,14 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref nextFirstTrustMissionWorldSiteRevealCheckTick,
                 "tokraNextFirstTrustMissionWorldSiteRevealCheckTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionWorldSiteReconnoitered,
+                "tokraFirstTrustMissionWorldSiteReconnoitered",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionWorldSiteReconnoiteredTick,
+                "tokraFirstTrustMissionWorldSiteReconnoiteredTick",
                 0);
 
             trustScore = ClampTrust(trustScore);
@@ -351,6 +361,16 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.firstTrustMissionWorldSiteRevealedTick ?? 0;
         }
 
+        public static bool IsFirstTrustMissionWorldSiteReconnoitered()
+        {
+            return GetCurrentTracker()?.firstTrustMissionWorldSiteReconnoitered ?? false;
+        }
+
+        public static int GetFirstTrustMissionWorldSiteReconnoiteredTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionWorldSiteReconnoiteredTick ?? 0;
+        }
+
         public static int GetRemainingFirstTrustMissionWorldSiteRevealTicks()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -474,6 +494,8 @@ namespace GateRimSG1.Goauld
             tracker.firstTrustMissionWorldSiteRevealedTick = 0;
             tracker.firstTrustMissionWorldSiteRevealTick = 0;
             tracker.nextFirstTrustMissionWorldSiteRevealCheckTick = 0;
+            tracker.firstTrustMissionWorldSiteReconnoitered = false;
+            tracker.firstTrustMissionWorldSiteReconnoiteredTick = 0;
             tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
             return true;
         }
@@ -515,6 +537,42 @@ namespace GateRimSG1.Goauld
                 sendLetter: false,
                 sendMessage: false);
             return tracker.TryRevealFirstTrustMissionWorldSite(map);
+        }
+
+        public static bool DebugReconnoiterFirstTrustMissionWorldSite()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+            tracker.firstTrustMissionCacheDelivered = true;
+            tracker.firstTrustMissionIntelAnalyzed = true;
+            tracker.firstTrustMissionLeadDecoded = true;
+            tracker.MarkFirstTrustMissionWorldSiteRevealed(
+                "debug world-site reconnaissance action");
+            return tracker.MarkFirstTrustMissionWorldSiteReconnoitered(
+                "debug action");
+        }
+
+        public static bool NotifyFirstTrustMissionWorldSiteReconnoitered()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot mark Tok'ra mission site as reconnoitered: "
+                    + "the trust tracker is unavailable.");
+                return false;
+            }
+
+            return tracker.MarkFirstTrustMissionWorldSiteReconnoitered(
+                "caravan reconnaissance");
         }
 
         public static bool NotifyFirstTrustMissionIntelAnalyzed(Pawn analyzer)
@@ -1068,6 +1126,46 @@ namespace GateRimSG1.Goauld
                 "Tok'ra first mission world-site reveal recorded after "
                 + reasonLabel
                 + ".");
+        }
+
+        private bool MarkFirstTrustMissionWorldSiteReconnoitered(
+            string reasonLabel)
+        {
+            if (firstTrustMissionWorldSiteReconnoitered)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            firstTrustMissionHookPrepared = true;
+            firstTrustMissionBriefingReceived = true;
+            firstTrustMissionCacheDelivered = true;
+            firstTrustMissionIntelAnalyzed = true;
+            firstTrustMissionLeadDecoded = true;
+            firstTrustMissionWorldSiteRevealed = true;
+
+            if (firstTrustMissionLeadDecodedTick <= 0
+                || firstTrustMissionLeadDecodedTick > currentTick)
+            {
+                firstTrustMissionLeadDecodedTick = currentTick;
+            }
+
+            if (firstTrustMissionWorldSiteRevealedTick <= 0
+                || firstTrustMissionWorldSiteRevealedTick > currentTick)
+            {
+                firstTrustMissionWorldSiteRevealedTick = currentTick;
+            }
+
+            firstTrustMissionWorldSiteReconnoitered = true;
+            firstTrustMissionWorldSiteReconnoiteredTick = currentTick;
+
+            GR_Log.Message(
+                "Tok'ra first mission world site reconnoitered after "
+                + reasonLabel
+                + ".");
+
+            return true;
         }
 
         private static bool HasActiveFirstTrustMissionWorldSite(

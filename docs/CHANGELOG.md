@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.43-dev-r2 - Restrict site gizmo and restore caravan travel option
+
+- Hide the direct Tok'ra decoded mission site reconnaissance gizmo in normal gameplay; it remains available only through developer mode or the GateRim SG-1 advanced debug option.
+- Keep the player-facing reconnaissance flow on the selected caravan world-map right-click menu.
+- Add a travel float-menu option when the selected caravan is not yet on the site tile, so changing destination back to the revealed relay remains possible.
+- Keep all reconnaissance limits unchanged: no generated combat map, raid, item reward, healing, reinforcements, trade or recruitment is created.
+
+## 0.2.43-dev-r1 - Add caravan right-click reconnaissance action
+
+- Add a world-map float-menu option so a selected player caravan can reconnoiter the revealed Tok'ra decoded mission site by right-clicking the site tile.
+- Keep the existing site gizmo as a fallback entry point.
+- Keep all reconnaissance limits unchanged: no generated combat map, raid, item reward, healing, reinforcements, trade or recruitment is created.
+
+## 0.2.43-dev - Add Tok'ra decoded mission site reconnaissance
+
+- Allow the revealed Tok'ra decoded mission world site to be reconnoitered by a player caravan present on the site tile.
+- Record a persistent reconnoitered-site state and expose it through the Tok'ra communicator status report.
+- Add RP letter, world-site command, inspect-string update and debug action for the reconnaissance step.
+- Keep the step lightweight: no generated combat map, raid, item reward, healing, reinforcements, trade or recruitment is created.
+- Align mod metadata and C# assembly version with `0.2.43`.
+- Requires a forced C# rebuild.
+
 ## 0.2.42-dev-r2
 - Consume the Tok'ra encoded intelligence packet after successful analysis.
 - Clarify that the mission state persists through the Tok'ra channel report after the physical packet is removed.
@@ -137,6 +159,19 @@
 - The consultation has no direct gameplay effect and consumes no cooldown.
 
 # Changelog
+
+## 0.2.43-dev-r2 - Restrict site gizmo and restore caravan travel option
+
+- Hide the direct Tok'ra decoded mission site reconnaissance gizmo in normal gameplay; it remains available only through developer mode or the GateRim SG-1 advanced debug option.
+- Keep the player-facing reconnaissance flow on the selected caravan world-map right-click menu.
+- Add a travel float-menu option when the selected caravan is not yet on the site tile, so changing destination back to the revealed relay remains possible.
+- Keep all reconnaissance limits unchanged: no generated combat map, raid, item reward, healing, reinforcements, trade or recruitment is created.
+
+## 0.2.43-dev-r1 - Add caravan right-click reconnaissance action
+
+- Add a world-map float-menu option so a selected player caravan can reconnoiter the revealed Tok'ra decoded mission site by right-clicking the site tile.
+- Keep the existing site gizmo as a fallback entry point.
+- Keep all reconnaissance limits unchanged: no generated combat map, raid, item reward, healing, reinforcements, trade or recruitment is created.
 
 ## 0.2.31-dev — Add Tok'ra tactical threat assessment request
 
