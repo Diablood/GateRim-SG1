@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="Wall">
+        <defName>SG1_TokraRelaySiteWall</defName>
+        <label>Goa'uld outpost wall</label>
+        <description>A reinforced wall forming part of an isolated Goa'uld relay outpost.</description>
+        <thingClass>GateRimSG1.Goauld.Building_TokraRelaySiteStructure</thingClass>
+        <designationCategory IsNull="True" />
+        <building>
+            <neverBuildable>true</neverBuildable>
+        </building>
+    </ThingDef>
+
+    <ThingDef ParentName="DoorBase">
+        <defName>SG1_TokraRelaySiteDoor</defName>
+        <label>Goa'uld outpost door</label>
+        <description>A manually operated reinforced door used in an isolated Goa'uld relay outpost.</description>
+        <thingClass>GateRimSG1.Goauld.Building_TokraRelaySiteDoor</thingClass>
+        <statBases>
+            <WorkToBuild>850</WorkToBuild>
+        </statBases>
+        <graphicData>
+            <texPath>Things/Building/Door/DoorSimple_Mover</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <damageData>
+                <enabled>false</enabled>
+            </damageData>
+        </graphicData>
+        <uiIconPath>Things/Building/Door/DoorSimple_MenuIcon</uiIconPath>
+        <costStuffCount>25</costStuffCount>
+        <designationCategory IsNull="True" />
+        <building>
+            <neverBuildable>true</neverBuildable>
+        </building>
+    </ThingDef>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>SG1_TokraRelaySiteBarricade</defName>
+        <label>Goa'uld defensive barricade</label>
+        <description>A low defensive barrier protecting an isolated Goa'uld relay outpost.</description>
+        <thingClass>GateRimSG1.Goauld.Building_TokraRelaySiteStructure</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Linked/Sandbags_Atlas</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <linkType>Basic</linkType>
+            <linkFlags>
+                <li>Sandbags</li>
+            </linkFlags>
+        </graphicData>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <pathCost>40</pathCost>
+        <useHitPoints>true</useHitPoints>
+        <fillPercent>0.65</fillPercent>
+        <statBases>
+            <MaxHitPoints>450</MaxHitPoints>
+            <WorkToBuild>180</WorkToBuild>
+            <Mass>5</Mass>
+            <Flammability>0</Flammability>
+        </statBases>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <costStuffCount>5</costStuffCount>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <rotatable>false</rotatable>
+        <selectable>true</selectable>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <staticSunShadowHeight>0.20</staticSunShadowHeight>
+        <designationCategory IsNull="True" />
+        <building>
+            <neverBuildable>true</neverBuildable>
+            <isInert>true</isInert>
+            <ai_chillDestination>false</ai_chillDestination>
+        </building>
+    </ThingDef>
+</Defs>

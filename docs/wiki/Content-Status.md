@@ -106,6 +106,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
 | Reconnaissance du site de mission Tok'ra | Une caravane présente sur le site peut confirmer l'activité Goa'uld/Jaffa du relais isolé, sans carte de combat ni récompense immédiate | 0.2.43-dev |
 | Préparation du sabotage du relais Tok'ra | Après reconnaissance, une caravane présente sur le relais peut relever les angles morts, les patrouilles et une voie d'approche afin d'enregistrer un plan de sabotage persistant, sans encore attaquer ni détruire le site | 0.2.44-dev |
+| Mission jouable de sabotage du relais Tok'ra | Une caravane infiltre l'un de trois petits postes Goa'uld fortifiés, affronte une garnison d'abord en défense, sabote un nœud de contrôle, peut évacuer avant les renforts et récupérer une réserve déjà placée sur étagère ; détruire le relais provoque un échec avec riposte Goa'uld différée | 0.2.45-dev-r5 à 0.2.46-dev-r5 |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
@@ -128,11 +129,9 @@ Development note: `0.2.27-dev` adds the first active trusted communicator reques
 
 - Tok'ra delivery drop zone marker is non-minifiable and uses an explicit empty thing category list to avoid storage/filter warnings.
 
-### 0.2.45-dev - Tok'ra playable relay sabotage site
+### 0.2.45-dev-r5 à 0.2.46-dev-r5 - Mission jouable de sabotage Tok'ra
 
-The decoded Tok'ra relay chain now moves toward a playable local mission instead of repeating similar world-map actions on the same marker. A caravan launches one operation from the world site, enters a temporary map, faces a Goa'uld/Jaffa defense scaled with vanilla threat points, and must sabotage a relay control node with a pawn work action. Sabotage time scales inversely with the pawn's Intellectual level, from roughly 10 hours at level 0 to 5 hours at level 10 and 3.3 hours at level 20; this estimate remains internal and is not shown in the right-click option. Starting the sabotage announces a 12-hour reinforcement countdown; the player may still leave before reinforcements arrive once the relay is sabotaged and no active hostiles remain. If the timer expires, one to three Jaffa enter from the map edge and the arrival letter targets the spawned group.
-
-
+La chaîne du relais aboutit à une carte temporaire avec défense Goa'uld/Jaffa proportionnée aux points de menace, sabotage progressif lié à l'Intellectuel, compte à rebours de renforts et évacuation possible avant leur arrivée. Depuis `0.2.46-dev-r1`, le site choisit entre trois plans de poste fortifié couverts, masque les pièces fermées jusqu'à leur ouverture et place dès la génération une petite réserve sur étagère. Depuis `0.2.46-dev-r2`, la garnison défend le poste sans charger immédiatement la caravane et la destruction du relais avant sabotage abandonne la mission, puis programme une riposte Goa'uld différée. Depuis `0.2.46-dev-r4`, l'action vanilla de reformation de caravane devient disponible après réussite ou échec dès qu'aucun hostile actif ne reste. Les murs, portes et barricades du poste restent destructibles par les armes. Ils suivent ensuite le comportement vanilla : ils deviennent déconstruisibles après avoir été revendiqués, sans verrouillage supplémentaire si un nouvel ennemi arrive plus tard. Depuis `0.2.46-dev-r5`, la toiture est appliquée après la pose complète des structures et le site temporaire disparaît avec sa carte une fois la caravane repartie. L'arme énergétique Goa'uld et les composants sont accessibles normalement dès la découverte du local, au lieu d'apparaître après le sabotage.
 
 ### 0.2.45-dev-r5 validation note
 

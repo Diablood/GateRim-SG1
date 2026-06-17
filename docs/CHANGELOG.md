@@ -1,5 +1,62 @@
 # Changelog
 
+## 0.2.46-dev-r5 - Restore complete roofing and remove resolved relay site
+
+- Restore the full roof and room-refog generation pass lost when the dedicated Goa'uld outpost structures were introduced.
+- Spawn all perimeter walls and doors before applying constructed roofs across the complete room footprint, preventing unsupported partial roofs during generation.
+- Remove the temporary mission map and its world marker after a resolved operation once the reformed caravan has left the map.
+- Ignore leftover outpost buildings when cleaning up the completed temporary site; unselected contents are handled by the normal temporary-map removal flow.
+- Preserve active-pawn and incoming-transporter safeguards before map cleanup.
+- Raise the assembly version to `0.2.46.5`.
+
+## 0.2.46-dev-r4 - Restore caravan reforming and protect enemy outpost structures
+
+- Add a mission-gated variant of the vanilla caravan-reformation component to the Tok'ra relay world site.
+- Expose `Reform caravan` only after the relay operation has reached either success or destructive failure.
+- Keep the vanilla active-threat restriction: announced reinforcements do not block departure before arrival, while Jaffa currently active on the map do.
+- Generate relay walls, doors and defensive barricades from dedicated Goa'uld outpost ThingDefs.
+- Keep those enemy structures destructible by weapons while preventing deconstruction until each individual building has been claimed by the player; once claimed, normal vanilla deconstruction remains available even if a new hostile later enters the map.
+- Preserve the existing sabotage, reward, reinforcement and retaliation behavior.
+- Raise the assembly version to `0.2.46.4`.
+
+## 0.2.46-dev-r3 - Fix defend-base constructor for RimWorld 1.6
+
+- Update the initial Goa'uld/Jaffa garrison LordJob creation to the RimWorld 1.6 `LordJob_DefendBase(Faction, IntVec3, int, bool)` constructor signature.
+- Use the vanilla ten-hour defensive delay before an uncompromised garrison may independently escalate, while sabotage or relay damage still activates it immediately.
+- Keep the infiltration, destructive-failure and retaliation behavior from `0.2.46-dev-r2` unchanged.
+- Raise the assembly version to `0.2.46.3`.
+
+## 0.2.46-dev-r2 - Add guarded infiltration and destructive-failure consequence
+
+- Put the initial Goa'uld/Jaffa garrison on a vanilla defend-base LordJob instead of ordering an immediate assault when the caravan enters the map.
+- Let the defenders escalate naturally when attacked or when a hostile Goa'uld building is damaged, and explicitly switch them to assault when sabotage begins.
+- Assign the relay control node to the Goa'uld faction so it is treated as an enemy installation rather than a player-owned building with a normal deconstruction order.
+- Keep the relay physically destructible; destroying it before sabotage now marks the Tok'ra operation as failed instead of leaving the mission unresolved.
+- Cancel the local reinforcement countdown after destructive failure, alert the remaining garrison, and allow evacuation once no active hostiles remain.
+- Queue a delayed controlled Goa'uld/Jaffa retaliation against a player home map between roughly two and six days later without revealing the exact timing to the player.
+- Persist the mission-failure and retaliation-queued states across saves and display the failed operation state on the world object.
+- Raise the assembly version to `0.2.46.2`.
+
+## 0.2.46-dev-r1 - Roof relay outposts and pre-position salvage
+
+- Apply constructed roofs across the complete footprint of every generated relay building.
+- Refog enclosed room interiors after generation so the outpost is revealed through normal door entry instead of exposing every room immediately.
+- Place the Goa'uld weapon and industrial components during site generation on a vanilla shelf inside the storage room.
+- Keep the pre-positioned salvage accessible normally from the beginning of the operation, without an artificial forbidden state or post-sabotage materialization.
+- Preserve the existing evacuation rule: the equipment cannot be taken off-map until the relay has been sabotaged and no active hostiles remain.
+- Migrate already initialized `0.2.46-dev` mission maps by preparing the shelf cache on the next map tick when the old delayed reward has not yet been granted.
+- Raise the assembly version to `0.2.46.1`.
+
+## 0.2.46-dev - Enrich playable Tok'ra relay sabotage site
+
+- Replace the nearly empty relay map with one of three Goa'uld outpost layouts: a command bunker with annex, a split relay station, or a walled courtyard compound.
+- Build the layouts from base-game walls, doors, concrete floors, roofs and defensive barricades without adding a new DLC dependency.
+- Place the relay control node inside the generated compound and position the initial Jaffa defense around the outpost.
+- Grant a modest one-time salvage reward when sabotage completes: one Goa'uld energy weapon, weighted toward a Zat'nik'tel, plus one or two industrial components.
+- Spawn the reward directly on the mission map so no additional world action or analysis step is required.
+- Persist the planned reward location and reward-granted state for save compatibility.
+- Keep threat scaling, sabotage duration, reinforcement timing and evacuation rules unchanged.
+
 ## 0.2.45-dev-r5 - Force rebuilt sabotage work and direct Jaffa spawning
 
 - Move sabotage progress onto the relay-device component so work persists across interruptions and saves.

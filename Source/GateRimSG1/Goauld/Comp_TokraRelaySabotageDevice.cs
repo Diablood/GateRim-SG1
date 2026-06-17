@@ -57,6 +57,30 @@ namespace GateRimSG1.Goauld
                 0f);
         }
 
+        public override void PostPostApplyDamage(
+            DamageInfo dinfo,
+            float totalDamageDealt)
+        {
+            base.PostPostApplyDamage(dinfo, totalDamageDealt);
+
+            if (totalDamageDealt > 0f)
+            {
+                TokraRelaySabotageMissionUtility
+                    .ActivateDefendersForAssault(parent.Map);
+            }
+        }
+
+        public override void PostDestroy(
+            DestroyMode mode,
+            Map previousMap)
+        {
+            base.PostDestroy(mode, previousMap);
+
+            TokraRelaySabotageMissionUtility
+                .GetComponent(previousMap)
+                ?.NotifyRelayDestroyed(mode);
+        }
+
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(
             Pawn selPawn)
         {

@@ -114,7 +114,7 @@ Depuis `0.2.27-dev`, ce communicateur permet de demander une [diversion défensi
 
 Depuis `0.2.31-dev`, il peut aussi fournir une [évaluation tactique Tok'ra](Tokra-Tactical-Threat-Assessment) purement informative pendant une menace hostile active.
 
-Depuis `0.2.44-dev`, la première chaîne de mission Tok'ra permet, après décodage d'une piste et reconnaissance d'un relais Goa'uld isolé, de préparer un plan de sabotage avec une caravane présente sur le site. Cette étape enregistre les angles morts, les patrouilles et une voie d'approche, mais ne lance encore aucun combat et ne détruit pas le relais.
+Depuis `0.2.45-dev-r5`, cette chaîne aboutit à une opération locale jouable : la caravane entre sur une carte temporaire, affronte une garnison Jaffa adaptée aux points de menace de la colonie et sabote un nœud de contrôle avant l'arrivée éventuelle de renforts. Depuis `0.2.46-dev-r1`, le relais occupe l'un de trois petits postes Goa'uld préconçus, dont les pièces couvertes restent masquées jusqu'à leur ouverture, et une réserve limitée est déjà stockée dans le poste.
 
 ## Évolutions prévues
 
@@ -291,16 +291,22 @@ Depuis `0.2.18-dev`, un unique hôte Tok'ra volontaire âgé d'au moins `20` ans
 demeure dans la planque. Ce contact est pacifique, non marchand et non
 recrutable.
 
-## Playable relay sabotage mission
+## Mission jouable de sabotage du relais
 
-The decoded relay marker now leads to a single playable operation. A caravan present at the relay can launch the mission, generating a temporary local map with a Goa'uld relay control node and a hostile Jaffa/Goa'uld defense. The relay must be sabotaged by a pawn through a timed Intellectual work action. The duration scales inversely with Intellectual: roughly 10 hours at level 0, 5 hours at level 10, and 3.3 hours at level 20. The estimate is intentionally hidden from the player-facing right-click option. Pawns incapable of Intellectual work cannot perform the sabotage.
+La piste décodée mène à une seule opération jouable. Une caravane présente sur le relais lance la mission et entre sur une carte temporaire avec une garnison Goa'uld/Jaffa dimensionnée à partir des points de menace vanilla. Depuis `0.2.46-dev-r2`, cette garnison protège d'abord le poste au lieu de charger immédiatement les intrus ; elle passe à l'assaut si elle est attaquée, si une installation Goa'uld est endommagée ou dès que le sabotage commence. Le nœud de contrôle doit être saboté par un colon capable de travail intellectuel ; sa progression persiste si le travail est interrompu.
 
-When sabotage begins, a visible 12-hour reinforcement warning appears. The countdown creates evacuation pressure but does not block departure before the reinforcements arrive. Once the relay is sabotaged, the caravan may reform as soon as there are no active hostile enemies on the map. If the player stays until the timer expires, one to three Jaffa enter from the map edge; the arrival letter targets the first spawned reinforcement, and the new hostiles must be neutralized or driven off before safe departure.
+Depuis `0.2.46-dev-r1`, la carte utilise aléatoirement l'un de trois plans de poste relais : bunker de commandement avec annexe, station divisée en deux bâtiments ou enceinte fortifiée avec cour intérieure. Les bâtiments utilisent des murs, portes, sols, toits et barricades vanilla, sans dépendance à un DLC supplémentaire. Les pièces fermées sont couvertes et restent masquées jusqu'à l'ouverture normale d'une porte.
 
-Older reconnaissance and sabotage-preparation states are kept for save compatibility and for the Tok'ra channel report, but the visible player flow is intended to become one world action followed by the local mission.
+Le sabotage déclenche un avertissement de renforts de 12 heures. Le compte à rebours ne bloque pas le départ : une fois l'objectif accompli et les hostiles actifs neutralisés ou en fuite, la caravane peut repartir avant l'arrivée de la vague. Si le joueur reste, un à trois Jaffa arrivent depuis le bord de carte.
 
+La réserve est présente dès la génération sur une étagère du local de stockage : une arme énergétique Goa'uld, généralement un Zat'nik'tel et plus rarement un Ma'Tok, ainsi qu'un ou deux composants industriels. Son contenu est accessible normalement dès la découverte du local et peut même être utilisé pendant l'opération. La règle d'évacuation empêche toutefois de l'emporter hors de la carte avant le sabotage et la neutralisation des hostiles actifs, sans nouvelle interaction monde ni analyse supplémentaire.
 
+Les anciens états de reconnaissance et de préparation restent conservés pour la compatibilité des sauvegardes et le rapport du canal Tok'ra, mais le flux visible reste une seule action monde suivie de la mission locale.
 
-### 0.2.45-dev-r5 validation note
+Le relais reste physiquement destructible. S'il est détruit avant la fin du sabotage, l'opération discrète échoue, les Jaffa encore présents sont alertés et le compte à rebours local de renforts est annulé. La caravane peut évacuer dès qu'aucun hostile actif ne reste, mais la destruction laisse une signature exploitable : une riposte Goa'uld/Jaffa est programmée contre une colonie après un délai inconnu du joueur.
+
+Depuis `0.2.46-dev-r4`, la commande vanilla de reformation de caravane est explicitement rattachée au site : elle reste masquée tant que l'opération n'est ni réussie ni abandonnée, puis devient disponible dès qu'aucun hostile actif ne subsiste. Une vague seulement annoncée ne bloque pas le départ. Les murs, portes et barricades Goa'uld restent vulnérables aux armes. Leur revendication suit les règles vanilla et, une fois un élément revendiqué, sa déconstruction reste disponible normalement même si un nouvel ennemi apparaît ensuite sur la carte. Depuis `0.2.46-dev-r5`, la carte temporaire et son marqueur monde sont supprimés automatiquement après le départ de la caravane, et la génération applique de nouveau une toiture complète après la pose de toutes les structures.
+
+## 0.2.45-dev-r5 validation note
 
 Relay sabotage work is now stored on the device and persists if the pawn is interrupted. The hidden duration scales from roughly 12 in-game hours at Intellectual 0 to 6 hours at Intellectual 20. Initial defenders and delayed reinforcements are spawned directly from Goa'uld Jaffa pawn kinds, avoiding the faction combat-group generator that cannot resolve the low reinforcement budget.

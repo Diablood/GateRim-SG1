@@ -46,6 +46,9 @@ namespace GateRimSG1
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
         public static ThingDef SG1_TokraRelaySabotageDevice;
+        public static ThingDef SG1_TokraRelaySiteWall;
+        public static ThingDef SG1_TokraRelaySiteDoor;
+        public static ThingDef SG1_TokraRelaySiteBarricade;
         public static JobDef SG1_TokraSabotageRelayDevice;
 
         // Legacy technical genes retained only for save migration.
@@ -68,6 +71,8 @@ namespace GateRimSG1
         public static ThoughtDef SG1_AwaitingPrimta;
         public static ThoughtDef SG1_ReceivedPrimta;
         public static ThingDef SG1_TretoninDose;
+        public static ThingDef SG1_MatokStaff;
+        public static ThingDef SG1_ZatnikTel;
         public static HediffDef SG1_TretoninSubstitution;
         public static ThingDef SG1_JaffaDeployedHelmet;
         public static ThingDef SG1_JaffaRetractedHelmet;

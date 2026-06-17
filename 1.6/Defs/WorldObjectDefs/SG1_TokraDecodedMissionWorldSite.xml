@@ -12,5 +12,8 @@
         <expandMore>true</expandMore>
         <canHaveFaction>true</canHaveFaction>
         <useDynamicDrawer>true</useDynamicDrawer>
+        <comps>
+            <li Class="GateRimSG1.Goauld.WorldObjectCompProperties_TokraRelayFormCaravan" />
+        </comps>
     </WorldObjectDef>
 </Defs>

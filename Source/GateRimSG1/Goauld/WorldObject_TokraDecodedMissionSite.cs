@@ -19,6 +19,7 @@ namespace GateRimSG1.Goauld
 
         private int ticksRemaining = DurationTicks;
         private bool operationLaunched;
+        private bool operationFailed;
 
         public override void ExposeData()
         {
@@ -31,6 +32,10 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref operationLaunched,
                 "tokraRelaySabotageOperationLaunched",
+                false);
+            Scribe_Values.Look(
+                ref operationFailed,
+                "tokraRelaySabotageOperationFailed",
                 false);
         }
 
@@ -49,6 +54,38 @@ namespace GateRimSG1.Goauld
             {
                 Expire();
             }
+        }
+
+        public override bool ShouldRemoveMapNow(
+            out bool alsoRemoveWorldObject)
+        {
+            alsoRemoveWorldObject = false;
+
+            if (!HasMap)
+            {
+                return false;
+            }
+
+            MapComponent_TokraRelaySabotageMission component = Map
+                .GetComponent<MapComponent_TokraRelaySabotageMission>();
+
+            if (component == null || !component.OperationResolved)
+            {
+                return false;
+            }
+
+            if (Map.mapPawns.AnyPawnBlockingMapRemoval)
+            {
+                return false;
+            }
+
+            if (TransporterUtility.IncomingTransporterPreventingMapRemoval(Map))
+            {
+                return false;
+            }
+
+            alsoRemoveWorldObject = true;
+            return true;
         }
 
         public override IEnumerable<Gizmo> GetGizmos()
@@ -121,7 +158,13 @@ namespace GateRimSG1.Goauld
             string baseInspectString = base.GetInspectString();
             string missionInspectString;
 
-            if (GameComponent_TokraTrustTracker
+            if (operationFailed)
+            {
+                missionInspectString =
+                    "GR_TokraDecodedMissionWorldSite_InspectStringOperationFailed"
+                        .Translate();
+            }
+            else if (GameComponent_TokraTrustTracker
                 .IsFirstTrustMissionRelaySabotageCompleted())
             {
                 missionInspectString =
@@ -184,6 +227,14 @@ namespace GateRimSG1.Goauld
                 this,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+        }
+
+        public void NotifyRelaySabotageFailed()
+        {
+            operationFailed = true;
+            GR_Log.Warning(
+                "Tok'ra relay sabotage operation marked as failed after "
+                + "destructive loss of the control node.");
         }
 
         private void TryLaunchOperation()

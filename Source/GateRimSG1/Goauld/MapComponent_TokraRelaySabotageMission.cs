@@ -7,10 +7,15 @@ namespace GateRimSG1.Goauld
     {
         private bool initialized;
         private bool sabotageCompleted;
+        private bool missionFailed;
+        private bool retaliationQueued;
         private bool reinforcementTimerStarted;
         private bool reinforcementsArrived;
         private int reinforcementsArriveTick;
         private int reinforcementSpawnAttempts;
+        private int rewardPreparationRetryTick;
+        private bool rewardGranted;
+        private IntVec3 rewardCell = IntVec3.Invalid;
         private Thing relayDevice;
         private WorldObject_TokraDecodedMissionSite parentSite;
 
@@ -26,6 +31,16 @@ namespace GateRimSG1.Goauld
         public bool SabotageCompleted
         {
             get { return sabotageCompleted; }
+        }
+
+        public bool MissionFailed
+        {
+            get { return missionFailed; }
+        }
+
+        public bool OperationResolved
+        {
+            get { return sabotageCompleted || missionFailed; }
         }
 
         public bool ReinforcementTimerStarted
@@ -59,10 +74,14 @@ namespace GateRimSG1.Goauld
 
             Scribe_Values.Look(ref initialized, "tokraRelaySabotageInitialized", false);
             Scribe_Values.Look(ref sabotageCompleted, "tokraRelaySabotageCompleted", false);
+            Scribe_Values.Look(ref missionFailed, "tokraRelaySabotageMissionFailed", false);
+            Scribe_Values.Look(ref retaliationQueued, "tokraRelaySabotageRetaliationQueued", false);
             Scribe_Values.Look(ref reinforcementTimerStarted, "tokraRelayReinforcementTimerStarted", false);
             Scribe_Values.Look(ref reinforcementsArrived, "tokraRelayReinforcementsArrived", false);
             Scribe_Values.Look(ref reinforcementsArriveTick, "tokraRelayReinforcementsArriveTick", 0);
             Scribe_Values.Look(ref reinforcementSpawnAttempts, "tokraRelayReinforcementSpawnAttempts", 0);
+            Scribe_Values.Look(ref rewardGranted, "tokraRelaySabotageRewardGranted", false);
+            Scribe_Values.Look(ref rewardCell, "tokraRelaySabotageRewardCell", IntVec3.Invalid);
             Scribe_References.Look(ref relayDevice, "tokraRelaySabotageDevice");
             Scribe_References.Look(ref parentSite, "tokraRelaySabotageParentSite");
         }
@@ -70,6 +89,30 @@ namespace GateRimSG1.Goauld
         public override void MapComponentTick()
         {
             base.MapComponentTick();
+
+            if (initialized
+                && !OperationResolved
+                && relayDevice != null
+                && !relayDevice.Destroyed
+                && (relayDevice.Faction == null
+                    || relayDevice.Faction == Faction.OfPlayer))
+            {
+                Faction goauldFaction = GoauldSystemLordFactionUtility
+                    .GetOrCreateFaction(
+                        "loaded Tok'ra relay sabotage mission");
+
+                if (goauldFaction != null)
+                {
+                    relayDevice.SetFaction(goauldFaction);
+                }
+            }
+
+            if (initialized
+                && !rewardGranted
+                && Find.TickManager.TicksGame >= rewardPreparationRetryTick)
+            {
+                TryPrepareMissionRewardCache();
+            }
 
             if (!reinforcementTimerStarted || reinforcementsArrived)
             {
@@ -109,15 +152,26 @@ namespace GateRimSG1.Goauld
 
         public void Initialize(
             WorldObject_TokraDecodedMissionSite parent,
-            Thing relay)
+            Thing relay,
+            IntVec3 plannedRewardCell)
         {
             initialized = true;
             parentSite = parent;
             relayDevice = relay;
+            rewardCell = plannedRewardCell;
+            TryPrepareMissionRewardCache();
         }
 
         public void NotifySabotageStarted()
         {
+            if (sabotageCompleted || missionFailed)
+            {
+                return;
+            }
+
+            TokraRelaySabotageMissionUtility
+                .ActivateDefendersForAssault(map);
+
             if (reinforcementTimerStarted || reinforcementsArrived)
             {
                 return;
@@ -161,7 +215,7 @@ namespace GateRimSG1.Goauld
 
         public void NotifySabotageCompleted(Pawn saboteur)
         {
-            if (sabotageCompleted)
+            if (sabotageCompleted || missionFailed)
             {
                 return;
             }
@@ -233,6 +287,120 @@ namespace GateRimSG1.Goauld
                         historical: true);
                 }
             }
+        }
+
+
+        public void NotifyRelayDestroyed(DestroyMode mode)
+        {
+            if (!initialized
+                || sabotageCompleted
+                || missionFailed
+                || (mode != DestroyMode.KillFinalize
+                    && mode != DestroyMode.Deconstruct))
+            {
+                return;
+            }
+
+            missionFailed = true;
+            relayDevice = null;
+            reinforcementTimerStarted = false;
+            reinforcementsArrived = true;
+            reinforcementSpawnAttempts = 0;
+
+            TokraRelaySabotageMissionUtility
+                .ActivateDefendersForAssault(map);
+
+            if (parentSite == null)
+            {
+                parentSite = map.Parent
+                    as WorldObject_TokraDecodedMissionSite;
+            }
+
+            parentSite?.NotifyRelaySabotageFailed();
+
+            if (!retaliationQueued)
+            {
+                retaliationQueued = TokraRelaySabotageMissionUtility
+                    .TryQueueRelayDestructionRetaliation();
+            }
+
+            if (map.Parent != null)
+            {
+                Find.LetterStack.ReceiveLetter(
+                    "GR_TokraRelaySabotageMission_RelayDestroyedLetterLabel"
+                        .Translate(),
+                    "GR_TokraRelaySabotageMission_RelayDestroyedLetterText"
+                        .Translate(),
+                    LetterDefOf.NegativeEvent,
+                    map.Parent);
+            }
+            else
+            {
+                Find.LetterStack.ReceiveLetter(
+                    "GR_TokraRelaySabotageMission_RelayDestroyedLetterLabel"
+                        .Translate(),
+                    "GR_TokraRelaySabotageMission_RelayDestroyedLetterText"
+                        .Translate(),
+                    LetterDefOf.NegativeEvent);
+            }
+
+            bool hostilesRemain = TokraRelaySabotageMissionUtility
+                .HasActiveHostiles(map);
+            TaggedString extractionMessage = hostilesRemain
+                ? "GR_TokraRelaySabotageMission_FailedExtractionBlocked"
+                    .Translate()
+                : "GR_TokraRelaySabotageMission_FailedExtractionAvailable"
+                    .Translate();
+            MessageTypeDef messageType = hostilesRemain
+                ? MessageTypeDefOf.ThreatSmall
+                : MessageTypeDefOf.NeutralEvent;
+
+            if (map.Parent != null)
+            {
+                Messages.Message(
+                    extractionMessage,
+                    map.Parent,
+                    messageType,
+                    historical: true);
+            }
+            else
+            {
+                Messages.Message(
+                    extractionMessage,
+                    messageType,
+                    historical: true);
+            }
+
+            GR_Log.Warning(
+                "Tok'ra relay sabotage mission failed because the control "
+                + $"node was destroyed with mode {mode}.");
+        }
+
+
+        private void TryPrepareMissionRewardCache()
+        {
+            if (rewardGranted)
+            {
+                return;
+            }
+
+            IntVec3 targetCell = rewardCell;
+
+            if (!targetCell.IsValid || !targetCell.InBounds(map))
+            {
+                targetCell = relayDevice?.Position ?? map.Center;
+            }
+
+            Thing reward = TokraRelaySabotageMissionUtility
+                .TryPrepareMissionRewardCache(map, targetCell);
+
+            if (reward != null)
+            {
+                rewardGranted = true;
+                return;
+            }
+
+            rewardPreparationRetryTick = Find.TickManager.TicksGame + 2500;
         }
 
         public string FormatRemainingReinforcementTime()
