@@ -93,6 +93,8 @@ namespace GateRimSG1.Goauld
         private int nextFirstTrustMissionWorldSiteRevealCheckTick;
         private bool firstTrustMissionWorldSiteReconnoitered;
         private int firstTrustMissionWorldSiteReconnoiteredTick;
+        private bool firstTrustMissionRelaySabotagePrepared;
+        private int firstTrustMissionRelaySabotagePreparedTick;
 
         public GameComponent_TokraTrustTracker(Game game)
         {
@@ -186,6 +188,14 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref firstTrustMissionWorldSiteReconnoiteredTick,
                 "tokraFirstTrustMissionWorldSiteReconnoiteredTick",
+                0);
+            Scribe_Values.Look(
+                ref firstTrustMissionRelaySabotagePrepared,
+                "tokraFirstTrustMissionRelaySabotagePrepared",
+                false);
+            Scribe_Values.Look(
+                ref firstTrustMissionRelaySabotagePreparedTick,
+                "tokraFirstTrustMissionRelaySabotagePreparedTick",
                 0);
 
             trustScore = ClampTrust(trustScore);
@@ -371,6 +381,18 @@ namespace GateRimSG1.Goauld
             return GetCurrentTracker()?.firstTrustMissionWorldSiteReconnoiteredTick ?? 0;
         }
 
+        public static bool IsFirstTrustMissionRelaySabotagePrepared()
+        {
+            return GetCurrentTracker()?.firstTrustMissionRelaySabotagePrepared
+                ?? false;
+        }
+
+        public static int GetFirstTrustMissionRelaySabotagePreparedTick()
+        {
+            return GetCurrentTracker()?.firstTrustMissionRelaySabotagePreparedTick
+                ?? 0;
+        }
+
         public static int GetRemainingFirstTrustMissionWorldSiteRevealTicks()
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -496,6 +518,8 @@ namespace GateRimSG1.Goauld
             tracker.nextFirstTrustMissionWorldSiteRevealCheckTick = 0;
             tracker.firstTrustMissionWorldSiteReconnoitered = false;
             tracker.firstTrustMissionWorldSiteReconnoiteredTick = 0;
+            tracker.firstTrustMissionRelaySabotagePrepared = false;
+            tracker.firstTrustMissionRelaySabotagePreparedTick = 0;
             tracker.EnsureFirstTrustMissionCacheDeliveryScheduled();
             return true;
         }
@@ -573,6 +597,57 @@ namespace GateRimSG1.Goauld
 
             return tracker.MarkFirstTrustMissionWorldSiteReconnoitered(
                 "caravan reconnaissance");
+        }
+
+        public static bool DebugPrepareFirstTrustMissionRelaySabotageObjective()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            tracker.firstTrustMissionHookPrepared = true;
+            tracker.firstTrustMissionBriefingReceived = true;
+            tracker.firstTrustMissionCacheDelivered = true;
+            tracker.firstTrustMissionIntelAnalyzed = true;
+            tracker.firstTrustMissionLeadDecoded = true;
+            tracker.MarkFirstTrustMissionWorldSiteRevealed(
+                "debug relay sabotage objective action");
+
+            if (!tracker.firstTrustMissionWorldSiteReconnoitered)
+            {
+                tracker.MarkFirstTrustMissionWorldSiteReconnoitered(
+                    "debug relay sabotage objective action");
+            }
+
+            return tracker.MarkFirstTrustMissionRelaySabotagePrepared(
+                "debug action");
+        }
+
+        public static bool NotifyFirstTrustMissionRelaySabotagePrepared()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot prepare Tok'ra relay sabotage objective: "
+                    + "the trust tracker is unavailable.");
+                return false;
+            }
+
+            if (!tracker.firstTrustMissionWorldSiteReconnoitered)
+            {
+                GR_Log.Error(
+                    "Cannot prepare Tok'ra relay sabotage objective before "
+                    + "the mission site has been reconnoitered.");
+                return false;
+            }
+
+            return tracker.MarkFirstTrustMissionRelaySabotagePrepared(
+                "caravan sabotage planning");
         }
 
         public static bool NotifyFirstTrustMissionIntelAnalyzed(Pawn analyzer)
@@ -1162,6 +1237,49 @@ namespace GateRimSG1.Goauld
 
             GR_Log.Message(
                 "Tok'ra first mission world site reconnoitered after "
+                + reasonLabel
+                + ".");
+
+            return true;
+        }
+
+        private bool MarkFirstTrustMissionRelaySabotagePrepared(
+            string reasonLabel)
+        {
+            if (firstTrustMissionRelaySabotagePrepared)
+            {
+                return false;
+            }
+
+            if (!firstTrustMissionWorldSiteReconnoitered)
+            {
+                GR_Log.Error(
+                    "Cannot prepare Tok'ra relay sabotage objective before "
+                    + "the world site reconnaissance state is recorded.");
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            firstTrustMissionHookPrepared = true;
+            firstTrustMissionBriefingReceived = true;
+            firstTrustMissionCacheDelivered = true;
+            firstTrustMissionIntelAnalyzed = true;
+            firstTrustMissionLeadDecoded = true;
+            firstTrustMissionWorldSiteRevealed = true;
+            firstTrustMissionWorldSiteReconnoitered = true;
+
+            if (firstTrustMissionWorldSiteReconnoiteredTick <= 0
+                || firstTrustMissionWorldSiteReconnoiteredTick > currentTick)
+            {
+                firstTrustMissionWorldSiteReconnoiteredTick = currentTick;
+            }
+
+            firstTrustMissionRelaySabotagePrepared = true;
+            firstTrustMissionRelaySabotagePreparedTick = currentTick;
+
+            GR_Log.Message(
+                "Tok'ra relay sabotage objective prepared after "
                 + reasonLabel
                 + ".");
 

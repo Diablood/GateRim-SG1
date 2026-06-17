@@ -105,6 +105,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Piste de mission Tok'ra décodée | Après analyse des renseignements codés, la cellule Tok'ra reprend contact et confirme une piste opérationnelle limitée autour d'un relais Goa'uld isolé | 0.2.41-dev |
 | Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
 | Reconnaissance du site de mission Tok'ra | Une caravane présente sur le site peut confirmer l'activité Goa'uld/Jaffa du relais isolé, sans carte de combat ni récompense immédiate | 0.2.43-dev |
+| Préparation du sabotage du relais Tok'ra | Après reconnaissance, une caravane présente sur le relais peut relever les angles morts, les patrouilles et une voie d'approche afin d'enregistrer un plan de sabotage persistant, sans encore attaquer ni détruire le site | 0.2.44-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.43-dev-r1</modVersion>
+    <modVersion>0.2.44-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -88,6 +88,7 @@ Current development scope:
 - Tok'ra coded intelligence analysis by an Intellectual-capable colon, consuming the packet and marking the intelligence as analyzed for a future mission step
 - Tok'ra decoded mission lead after analyzing the coded intelligence packet, adding a persistent operational lead state without spawning a world site or reward
 - Tok'ra decoded mission world site revealing an isolated Goa'uld relay marker from the decoded operational lead without immediate assault or reward
+- Tok'ra relay sabotage objective preparation after caravan reconnaissance, recording a persistent plan without executing the sabotage
 - Queen-origin assisted Prim'ta maturation at the incubation basin
 - Powered Prim'ta preservation-basin storage prototype
 - Persistent Prim'ta deep-freezing penalties outside active preservation basins

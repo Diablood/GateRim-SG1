@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraSecureCommunicator_FirstMissionStatusWorldSitePending>mission coordinates being confirmed: {0} day(s)</GR_TokraSecureCommunicator_FirstMissionStatusWorldSitePending>
+    <GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed>site revealed: isolated Goa'uld relay</GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteRevealed>
+    <GR_TokraDecodedMissionWorldSite_LetterLabel>Tok'ra site revealed</GR_TokraDecodedMissionWorldSite_LetterLabel>
+    <GR_TokraDecodedMissionWorldSite_LetterText>The Tok'ra cell finally transmits usable coordinates. The decoded lead points to an isolated Goa'uld relay, probably connected to a discreetly monitored Jaffa transit point.
+
+The site is now visible on the world map. The Tok'ra still recommend observation and are not requesting an immediate assault. This step triggers no raid, grants no reward and does not yet open a complete mission resolution.</GR_TokraDecodedMissionWorldSite_LetterText>
+    <GR_TokraDecodedMissionWorldSite_Revealed>The coordinates of an isolated Goa'uld relay have been revealed on the world map.</GR_TokraDecodedMissionWorldSite_Revealed>
+    <GR_TokraDecodedMissionWorldSite_InspectString>Isolated Goa'uld relay identified by the Tok'ra. Expires in about {0} day(s). The site cannot be resolved yet.</GR_TokraDecodedMissionWorldSite_InspectString>
+    <GR_TokraDecodedMissionWorldSite_Expired>The isolated Goa'uld relay coordinates are no longer usable.</GR_TokraDecodedMissionWorldSite_Expired>
+    <GR_TokraDecodedMissionWorldSite_DebugRevealed>Tok'ra mission site revealed for testing.</GR_TokraDecodedMissionWorldSite_DebugRevealed>
+    <GR_TokraDecodedMissionWorldSite_DebugFailed>Unable to reveal the Tok'ra mission site for testing.</GR_TokraDecodedMissionWorldSite_DebugFailed>
+    <GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteReconnoitered>site reconnoitered: Goa'uld/Jaffa activity confirmed</GR_TokraSecureCommunicator_FirstMissionStatusWorldSiteReconnoitered>
+    <GR_TokraDecodedMissionWorldSite_InspectStringReconnoitered>Isolated Goa'uld relay reconnoitered by a colony caravan. Expires in about {0} day(s). The Tok'ra confirm Goa'uld/Jaffa activity, but no complete resolution is available yet.</GR_TokraDecodedMissionWorldSite_InspectStringReconnoitered>
+    <GR_TokraDecodedMissionWorldSite_ReconCommandLabel>Reconnoiter the Goa'uld relay</GR_TokraDecodedMissionWorldSite_ReconCommandLabel>
+    <GR_TokraDecodedMissionWorldSite_ReconCommandDesc>Carefully reconnoiter the isolated Goa'uld relay with a caravan present on the site. The marker expires in about {0} day(s). This action confirms enemy activity without generating a combat map, raid or immediate reward.</GR_TokraDecodedMissionWorldSite_ReconCommandDesc>
+    <GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan>A colony caravan must be present on the site.</GR_TokraDecodedMissionWorldSite_ReconRequiresCaravan>
+    <GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete>Reconnaissance has already been completed.</GR_TokraDecodedMissionWorldSite_ReconAlreadyComplete>
+    <GR_TokraDecodedMissionWorldSite_ReconLetterLabel>Tok'ra reconnaissance confirmed</GR_TokraDecodedMissionWorldSite_ReconLetterLabel>
+    <GR_TokraDecodedMissionWorldSite_ReconLetterText>{0} approaches the isolated Goa'uld relay indicated by the Tok'ra cell. The reconnaissance remains distant: no team forces an entry, no combat begins and no cache is recovered.
+
+The observations nevertheless confirm Goa'uld/Jaffa activity consistent with the decoded lead. The relay still appears connected to a monitored transit point, but the Tok'ra recommend avoiding an assault without further preparation.
+
+The cell records the reconnaissance. This step creates no immediate reward, raid or complete mission resolution.</GR_TokraDecodedMissionWorldSite_ReconLetterText>
+    <GR_TokraDecodedMissionWorldSite_ReconComplete>Reconnaissance of the Goa'uld relay confirms Goa'uld/Jaffa activity.</GR_TokraDecodedMissionWorldSite_ReconComplete>
+    <GR_TokraDecodedMissionWorldSite_ReconDebugComplete>Tok'ra mission site reconnaissance recorded for testing.</GR_TokraDecodedMissionWorldSite_ReconDebugComplete>
+    <GR_TokraDecodedMissionWorldSite_ReconDebugFailed>Unable to record Tok'ra mission site reconnaissance for testing.</GR_TokraDecodedMissionWorldSite_ReconDebugFailed>
+    <GR_TokraDecodedMissionWorldSite_TravelCommandLabel>Travel to the Goa'uld relay</GR_TokraDecodedMissionWorldSite_TravelCommandLabel>
+    <GR_TokraSecureCommunicator_FirstMissionStatusRelaySabotagePrepared>sabotage plan ready: awaiting the Tok'ra signal</GR_TokraSecureCommunicator_FirstMissionStatusRelaySabotagePrepared>
+    <GR_TokraDecodedMissionWorldSite_InspectStringSabotagePrepared>Goa'uld relay reconnoitered and sabotage plan prepared. Expires in about {0} day(s). The Tok'ra cell now has an approach route, but no attack or destruction has been triggered.</GR_TokraDecodedMissionWorldSite_InspectStringSabotagePrepared>
+    <GR_TokraDecodedMissionWorldSite_SabotageCommandLabel>Prepare relay sabotage</GR_TokraDecodedMissionWorldSite_SabotageCommandLabel>
+    <GR_TokraDecodedMissionWorldSite_SabotageCommandDesc>Use the reconnaissance to identify sensor blind spots, patrol timing and a discreet approach route. The marker expires in about {0} day(s). This action prepares a future sabotage attempt without starting combat, destroying the relay or granting a reward.</GR_TokraDecodedMissionWorldSite_SabotageCommandDesc>
+    <GR_TokraDecodedMissionWorldSite_SabotageRequiresRecon>The relay must be reconnoitered first.</GR_TokraDecodedMissionWorldSite_SabotageRequiresRecon>
+    <GR_TokraDecodedMissionWorldSite_SabotageRequiresCaravan>A colony caravan must be present on the reconnoitered relay.</GR_TokraDecodedMissionWorldSite_SabotageRequiresCaravan>
+    <GR_TokraDecodedMissionWorldSite_SabotageAlreadyPrepared>The sabotage plan is already prepared.</GR_TokraDecodedMissionWorldSite_SabotageAlreadyPrepared>
+    <GR_TokraDecodedMissionWorldSite_SabotageLetterLabel>Tok'ra sabotage plan prepared</GR_TokraDecodedMissionWorldSite_SabotageLetterLabel>
+    <GR_TokraDecodedMissionWorldSite_SabotageLetterText>{0} remains at a distance from the Goa'uld relay and works from the previous reconnaissance. The observers identify a gap between two Jaffa patrols, several sensor blind spots and an approach route that could support planting a charge or extracting data without launching an immediate assault.
+
+The information is transmitted to the Tok'ra cell in fragmented form. The plan is now usable, but the sabotage has not been carried out: the relay remains intact, no enemy force is alerted and no reward is granted.
+
+The cell asks the colony to wait for another contact before acting.</GR_TokraDecodedMissionWorldSite_SabotageLetterText>
+    <GR_TokraDecodedMissionWorldSite_SabotageComplete>The Goa'uld relay sabotage plan is ready.</GR_TokraDecodedMissionWorldSite_SabotageComplete>
+    <GR_TokraDecodedMissionWorldSite_SabotageDebugComplete>Tok'ra relay sabotage plan prepared for testing.</GR_TokraDecodedMissionWorldSite_SabotageDebugComplete>
+    <GR_TokraDecodedMissionWorldSite_SabotageDebugFailed>Unable to prepare the Tok'ra relay sabotage plan for testing.</GR_TokraDecodedMissionWorldSite_SabotageDebugFailed>
+</LanguageData>

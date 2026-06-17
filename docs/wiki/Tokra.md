@@ -114,6 +114,8 @@ Depuis `0.2.27-dev`, ce communicateur permet de demander une [diversion défensi
 
 Depuis `0.2.31-dev`, il peut aussi fournir une [évaluation tactique Tok'ra](Tokra-Tactical-Threat-Assessment) purement informative pendant une menace hostile active.
 
+Depuis `0.2.44-dev`, la première chaîne de mission Tok'ra permet, après décodage d'une piste et reconnaissance d'un relais Goa'uld isolé, de préparer un plan de sabotage avec une caravane présente sur le site. Cette étape enregistre les angles morts, les patrouilles et une voie d'approche, mais ne lance encore aucun combat et ne détruit pas le relais.
+
 ## Évolutions prévues
 
 ```text

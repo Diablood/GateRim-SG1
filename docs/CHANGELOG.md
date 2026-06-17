@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.44-dev - Add Tok'ra relay sabotage objective
+
+- After the isolated Goa'uld relay has been reconnoitered, let a player caravan present on the site prepare a discreet sabotage plan through the world-map right-click menu.
+- Record a persistent relay-sabotage objective state and expose it through the Tok'ra communicator status report.
+- Add RP letter, inspect-string update, advanced-debug gizmo and dedicated debug action for the planning step.
+- Add an English keyed translation file for the decoded mission world-site sequence while preserving the existing French localization.
+- Keep the milestone preparatory: the relay remains intact and no combat map, raid, item reward, healing, reinforcements, trade or recruitment is created.
+- Align mod metadata and C# assembly version with `0.2.44`.
+- Requires a forced C# rebuild.
+
 ## 0.2.43-dev-r2 - Restrict site gizmo and restore caravan travel option
 
 - Hide the direct Tok'ra decoded mission site reconnaissance gizmo in normal gameplay; it remains available only through developer mode or the GateRim SG-1 advanced debug option.
