@@ -30,6 +30,8 @@ namespace GateRimSG1.Goauld
         public const int FirstTrustMissionFailureTrustChange = -3;
         public const int OrganicObservationSuccessTrustChange = 3;
         public const int OrganicObservationFailureTrustChange = -1;
+        public const int OrganicDeadDropSuccessTrustChange = 2;
+        public const int OrganicDeadDropFailureTrustChange = -1;
 
         public const int RefusedWaryDiplomaticCooldownTicks = 180000;
         public const int ExpiredWaryDiplomaticCooldownTicks = 300000;
@@ -990,6 +992,34 @@ namespace GateRimSG1.Goauld
                 OrganicObservationFailureTrustChange,
                 "failed organic Goa'uld observation operation",
                 "GR_TokraTrust_OrganicObservationFailed");
+        }
+
+        public static void NotifyOrganicDeadDropOutcome(
+            TokraOrganicOperationOutcome outcome)
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot update Tok'ra trust: the trust tracker is "
+                    + "unavailable.");
+                return;
+            }
+
+            if (outcome == TokraOrganicOperationOutcome.Succeeded)
+            {
+                tracker.ApplyFlatTrustChange(
+                    OrganicDeadDropSuccessTrustChange,
+                    "successful organic Tok'ra intelligence recovery",
+                    "GR_TokraTrust_OrganicDeadDropSucceeded");
+                return;
+            }
+
+            tracker.ApplyFlatTrustChange(
+                OrganicDeadDropFailureTrustChange,
+                "failed organic Tok'ra intelligence recovery",
+                "GR_TokraTrust_OrganicDeadDropFailed");
         }
 
         public static void NotifyTherapeuticOfferOutcome(

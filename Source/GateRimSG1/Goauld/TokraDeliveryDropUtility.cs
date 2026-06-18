@@ -147,7 +147,6 @@ namespace GateRimSG1.Goauld
             return spotsToRemove.Count > 0;
         }
 
-
         private static bool TryFindVisibleDeliveryCellNear(
             IntVec3 center,
             Map map,
@@ -155,7 +154,9 @@ namespace GateRimSG1.Goauld
         {
             cell = IntVec3.Invalid;
 
-            if (map == null || !center.IsValid || !center.InBounds(map))
+            if (map == null
+                || !center.IsValid
+                || !center.InBounds(map))
             {
                 return false;
             }

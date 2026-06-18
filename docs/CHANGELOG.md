@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.49-dev - Add Tok'ra organic intelligence recovery
+
+- Add a second preliminary Tok'ra organic-operation archetype available before Trusted contact.
+- Let a selected Intellectual-capable colon accept the recovery of a sealed Tok'ra intelligence module through the powered Tok'ra communicator.
+- Deliver one sealed intelligence module beside the Tok'ra delivery drop zone when present, otherwise beside a powered communicator, and use a reachable map edge only when neither preferred delivery target exists.
+- Reuse the same preferred-cell lookup and vanilla `ThingPlaceMode.Near` placement flow already used by validated Tok'ra medical deliveries and cache incidents.
+- Restore the shared Tok'ra delivery utility to its published `v0.2.48-dev` behavior instead of maintaining a separate placement variant for this objective.
+- Complete the operation directly at the module without requiring another communicator transmission.
+- Grant `+2` Tok'ra trust and `200` Intellectual XP on success, with no material contents or item reward.
+- Apply `-1` Tok'ra trust exactly once when an accepted module expires, is destroyed or is otherwise lost.
+- Keep ignored offers consequence-free and leave the offer available when no valid delivery location can be generated.
+- Persist the active module reference, operation deadline, offer state and anti-repetition context across saves.
+- Add trust-tier-specific intelligence-recovery weights and make the existing repeat-weight reduction meaningful across two compatible archetypes.
+- Add a non-buildable, non-minifiable and non-deconstructable intelligence-module objective that remains physically destructible.
+- Add direct module interaction, a dedicated job, developer validation actions, English/French text and French DefInjected text.
+- Clarify the secure communicator description so preliminary observation and intelligence-recovery requests remain distinct from Trusted outgoing support.
+- Consolidate durable validation in `docs/TESTING.md`, remove milestone-specific test-plan files, update `docs/PROJECT_STATE.md` and prepare the wiki draft.
+- Raise the assembly version to `0.2.49.0` and the mod metadata version to `0.2.49-dev`.
+
 ## 0.2.48-dev - Add organic Tok'ra operation opportunities
 
 - Add a persistent scheduler for Tok'ra-initiated opportunities with hidden variable delays and save-persistent active state.
@@ -10,7 +29,7 @@
 - Add trust-tier scheduling ranges, trust-dependent archetype weights, and persisted anti-repetition context for future operation variety.
 - Add communicator right-click actions, inspect/status-report integration, developer validation actions, English/French keyed text, JobDef and French DefInjected text.
 - Clarify the secure communicator description so preliminary incoming requests are distinct from trusted outgoing support requests.
-- Update `docs/PROJECT_STATE.md`, add design/test documentation and prepare the wiki draft.
+- Consolidate durable validation in `docs/TESTING.md`, remove milestone-specific test-plan files, update `docs/PROJECT_STATE.md` and prepare the wiki draft.
 - Raise the assembly version to `0.2.48.0` and the mod metadata version to `0.2.48-dev`.
 
 ## 0.2.47-dev - Add Tok'ra relay operation outcome debrief

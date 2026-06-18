@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.2.48-dev</modVersion>
+    <modVersion>0.2.49-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -53,7 +53,7 @@ Current development scope:
 - Windows build wrapper
 - Playable Tok'ra relay sabotage mission with several fortified site layouts and a modest salvage reward
 - Automatic Tok'ra relay-operation outcome debrief with trust consequences after evacuation
-- Organic low-sensitivity Tok'ra observation opportunities available before trusted contact, with hidden variable delays, persistent state and trust consequences
+- Organic low-sensitivity Tok'ra observation and clandestine dead-drop recovery opportunities available before trusted contact, with hidden variable delays, persistent state, anti-repetition and trust consequences
 - Persistent Goa'uld symbiote identity data
 - Interactive forced Goa'uld implantation prototype
 - Automatic conversion into an active Goa'uld host state

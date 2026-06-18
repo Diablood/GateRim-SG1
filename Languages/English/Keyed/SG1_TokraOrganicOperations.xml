@@ -3,6 +3,8 @@
     <GR_TokraOrganicOperation_FloatMenuUnavailable>Tok'ra operation unavailable</GR_TokraOrganicOperation_FloatMenuUnavailable>
     <GR_TokraOrganicOperation_FloatMenuAcceptObservation>Accept Tok'ra observation request</GR_TokraOrganicOperation_FloatMenuAcceptObservation>
     <GR_TokraOrganicOperation_FloatMenuTransmitObservation>Transmit Tok'ra observation report</GR_TokraOrganicOperation_FloatMenuTransmitObservation>
+    <GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop>Accept Tok'ra intelligence recovery</GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop>
+    <GR_TokraOrganicOperation_FloatMenuSecureDeadDrop>Secure Tok'ra intelligence module</GR_TokraOrganicOperation_FloatMenuSecureDeadDrop>
     <GR_TokraOrganicOperation_TrackerUnavailable>Tok'ra operation channel unavailable</GR_TokraOrganicOperation_TrackerUnavailable>
     <GR_TokraOrganicOperation_NoActiveOpportunity>No active Tok'ra request</GR_TokraOrganicOperation_NoActiveOpportunity>
     <GR_TokraOrganicOperation_ObservationInProgress>Observation still underway ({0} h remaining)</GR_TokraOrganicOperation_ObservationInProgress>
@@ -21,19 +23,46 @@ Select a colonist, then right-click the powered Tok'ra secure communicator to ac
     <GR_TokraOrganicOperation_SuccessLetterLabel>Tok'ra observation report received</GR_TokraOrganicOperation_SuccessLetterLabel>
     <GR_TokraOrganicOperation_SuccessLetterText>{0} has transmitted a concise report on nearby Goa'uld activity. The Tok'ra cell confirms that the information was useful. The operator gains {1} Intellectual XP, and the cell's trust in the colony improves.</GR_TokraOrganicOperation_SuccessLetterText>
 
+    <GR_TokraOrganicOperation_DeadDropNoLongerActive>This Tok'ra intelligence module is no longer part of an active operation</GR_TokraOrganicOperation_DeadDropNoLongerActive>
+    <GR_TokraOrganicOperation_DeadDropWindowExpired>The Tok'ra intelligence recovery window has closed</GR_TokraOrganicOperation_DeadDropWindowExpired>
+    <GR_TokraOrganicOperation_DeadDropCannotReach>No safe path to the Tok'ra intelligence module</GR_TokraOrganicOperation_DeadDropCannotReach>
+    <GR_TokraOrganicOperation_DeadDropReserved>Another colonist has reserved the Tok'ra intelligence module</GR_TokraOrganicOperation_DeadDropReserved>
+    <GR_TokraOrganicOperation_DeadDropJobUnavailable>Tok'ra intelligence module job unavailable</GR_TokraOrganicOperation_DeadDropJobUnavailable>
+    <GR_TokraOrganicOperation_DeadDropSpawnFailed>No valid location could be found at the Tok'ra delivery zone, near a powered communicator or at the map edge. The request remains available.</GR_TokraOrganicOperation_DeadDropSpawnFailed>
+    <GR_TokraOrganicOperation_DeadDropOfferLetterLabel>Tok'ra intelligence recovery request</GR_TokraOrganicOperation_DeadDropOfferLetterLabel>
+    <GR_TokraOrganicOperation_DeadDropOfferLetterText>A Tok'ra cell wants to entrust the colony with a sealed module containing encrypted intelligence on Goa'uld activity. Accepting the request authorizes delivery to the Tok'ra delivery zone. If no valid zone exists, the delivery point will be chosen near a powered communicator and then at the map edge.
+
+Select a colonist, then right-click the powered Tok'ra secure communicator to accept the recovery. The offer will remain available for about {0} hours. An Intellectual-capable colonist must then secure the module. This operation represents extracting and transmitting the data; the container provides no recoverable item. Ignoring the offer carries no trust penalty.</GR_TokraOrganicOperation_DeadDropOfferLetterText>
+    <GR_TokraOrganicOperation_DeadDropOfferExpired>The Tok'ra intelligence recovery request has closed without a response.</GR_TokraOrganicOperation_DeadDropOfferExpired>
+    <GR_TokraOrganicOperation_DeadDropAccepted>{0} has accepted the Tok'ra intelligence recovery. The data must be secured within about {1} hours.</GR_TokraOrganicOperation_DeadDropAccepted>
+    <GR_TokraOrganicOperation_DeadDropLocatedLetterLabel>Tok'ra intelligence module delivered</GR_TokraOrganicOperation_DeadDropLocatedLetterLabel>
+    <GR_TokraOrganicOperation_DeadDropLocatedLetterText>An encrypted Tok'ra intelligence module has been delivered to the selected delivery point. Send an Intellectual-capable colonist to secure it within about {0} hours. Securing the module represents checking its integrity, extracting its data and transmitting it to the cell. It contains no recoverable supplies.</GR_TokraOrganicOperation_DeadDropLocatedLetterText>
+    <GR_TokraOrganicOperation_DeadDropFailedLetterLabel>Tok'ra intelligence recovery failed</GR_TokraOrganicOperation_DeadDropFailedLetterLabel>
+    <GR_TokraOrganicOperation_DeadDropTimedOutLetterText>The request was accepted, but the data in the Tok'ra module was not secured before the contact window closed. The cell will be more cautious about relying on the colony.</GR_TokraOrganicOperation_DeadDropTimedOutLetterText>
+    <GR_TokraOrganicOperation_DeadDropLostLetterText>The request was accepted, but the Tok'ra intelligence module was lost or destroyed before its data could be extracted. The cell will be more cautious about relying on the colony.</GR_TokraOrganicOperation_DeadDropLostLetterText>
+    <GR_TokraOrganicOperation_DeadDropSuccessLetterLabel>Tok'ra intelligence secured</GR_TokraOrganicOperation_DeadDropSuccessLetterLabel>
+    <GR_TokraOrganicOperation_DeadDropSuccessLetterText>{0} checked the module, extracted its encrypted intelligence and confirmed transmission to the Tok'ra cell. The operator gains {1} Intellectual XP, and the cell's trust in the colony improves.</GR_TokraOrganicOperation_DeadDropSuccessLetterText>
+
     <GR_TokraOrganicOperation_StatusReportNone>Tok'ra initiatives: no active request.</GR_TokraOrganicOperation_StatusReportNone>
     <GR_TokraOrganicOperation_StatusReportActive>Tok'ra initiatives: {0}</GR_TokraOrganicOperation_StatusReportActive>
     <GR_TokraOrganicOperation_StatusOffered>discreet observation request awaiting a response ({0} h remaining)</GR_TokraOrganicOperation_StatusOffered>
     <GR_TokraOrganicOperation_StatusObserving>observation underway ({0} h before the report is useful)</GR_TokraOrganicOperation_StatusObserving>
     <GR_TokraOrganicOperation_StatusReady>observation report ready ({0} h before the secure window closes)</GR_TokraOrganicOperation_StatusReady>
+    <GR_TokraOrganicOperation_StatusDeadDropOffered>intelligence-module recovery awaiting a response ({0} h remaining)</GR_TokraOrganicOperation_StatusDeadDropOffered>
+    <GR_TokraOrganicOperation_StatusDeadDropActive>intelligence-module recovery active ({0} h before the window closes)</GR_TokraOrganicOperation_StatusDeadDropActive>
     <GR_TokraOrganicOperation_InspectPrefix>Tok'ra operation: {0}</GR_TokraOrganicOperation_InspectPrefix>
 
     <GR_TokraTrust_OrganicObservationSucceeded>The Tok'ra cell acknowledges the value of the observation report. Its posture toward the colony improves.</GR_TokraTrust_OrganicObservationSucceeded>
     <GR_TokraTrust_OrganicObservationFailed>The missed observation report makes the Tok'ra cell slightly more cautious.</GR_TokraTrust_OrganicObservationFailed>
+    <GR_TokraTrust_OrganicDeadDropSucceeded>The Tok'ra cell confirms that the encrypted intelligence was recovered and transmitted without incident. Its confidence in the colony improves.</GR_TokraTrust_OrganicDeadDropSucceeded>
+    <GR_TokraTrust_OrganicDeadDropFailed>The failed intelligence recovery makes the Tok'ra cell slightly more cautious.</GR_TokraTrust_OrganicDeadDropFailed>
 
     <GR_TokraOrganicOperation_DebugUnavailable>Tok'ra organic operation tracker unavailable.</GR_TokraOrganicOperation_DebugUnavailable>
     <GR_TokraOrganicOperation_DebugForced>Tok'ra organic observation opportunity forced.</GR_TokraOrganicOperation_DebugForced>
+    <GR_TokraOrganicOperation_DebugForcedDeadDrop>Tok'ra organic intelligence-recovery opportunity forced.</GR_TokraOrganicOperation_DebugForcedDeadDrop>
     <GR_TokraOrganicOperation_DebugNoAcceptedOperation>No accepted Tok'ra observation operation is active on this map.</GR_TokraOrganicOperation_DebugNoAcceptedOperation>
     <GR_TokraOrganicOperation_DebugReady>Tok'ra observation report is now ready for transmission.</GR_TokraOrganicOperation_DebugReady>
+    <GR_TokraOrganicOperation_DebugNoActiveOperation>No accepted Tok'ra organic operation is active on this map.</GR_TokraOrganicOperation_DebugNoActiveOperation>
+    <GR_TokraOrganicOperation_DebugExpired>The active Tok'ra organic operation will expire on the next tracker check.</GR_TokraOrganicOperation_DebugExpired>
     <GR_TokraOrganicOperation_DebugReset>Tok'ra organic operation tracker reset.</GR_TokraOrganicOperation_DebugReset>
 </LanguageData>

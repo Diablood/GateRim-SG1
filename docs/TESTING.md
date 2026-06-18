@@ -719,3 +719,22 @@ Suggested validation:
 5. Raise Tok'ra trust to trusted and repeat with a fresh contact: one follow-up lead should again be stored if capacity remains.
 6. Fill the lead registry to the cap and repeat: the briefing should report that stored lead capacity is already full.
 7. Confirm the contact remains non-trading, non-recruitable, non-hostile and once per generated contact.
+
+## Tok'ra organic operation opportunities
+
+Use a player home map with a powered Tok'ra secure communicator, one colon capable of Intellectual work and developer mode enabled.
+
+1. At Tok'ra trust `0`, force each available preliminary archetype and confirm both can be accepted before Trusted contact.
+2. Ignore an unsolicited offer and confirm it expires without changing trust.
+3. Complete the Goa'uld-observation flow and confirm `+3` trust, Intellectual XP and save persistence.
+4. Accept an intelligence-recovery offer and confirm the same delivery routing already used by existing Tok'ra deliveries and caches:
+   - beside or on the Tok'ra delivery drop zone when one exists;
+   - beside a powered Tok'ra secure communicator when no delivery zone exists;
+   - a reachable, unfogged map-edge cell only when neither a delivery zone nor a communicator is available for delivery routing.
+5. Confirm the GateRim log reports both the preferred delivery cell and the final module cell, then repeat the three routing cases above.
+6. Secure the intelligence module and confirm `+2` trust, Intellectual XP, objective removal and no material reward.
+7. Destroy or expire an accepted intelligence module and confirm `-1` trust is applied exactly once.
+8. Save and reload during offered and accepted states and confirm deadlines, active objective references and anti-repetition context persist.
+9. Verify both organic archetypes remain selectable, with the last offered archetype strongly discouraged but not forbidden.
+10. Re-test existing manual communicator actions and confirm their Trusted-tier requirements and independent cooldowns remain unchanged.
+11. Check English and French player-facing text and confirm no red errors in `Player.log`.

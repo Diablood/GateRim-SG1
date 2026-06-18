@@ -22,8 +22,12 @@ namespace GateRimSG1.Goauld
         private const int OfferDurationTicks = 120000;
         private const int ObservationMinimumDurationTicks = 15000;
         private const int ObservationDeadlineTicks = 120000;
+        private const int DeadDropDeadlineTicks = 90000;
         private const int ObservationIntellectualXp = 250;
+        private const int DeadDropIntellectualXp = 200;
         private const float RepeatedArchetypeWeightFactor = 0.25f;
+        private const string DeadDropThingDefName =
+            "SG1_TokraOrganicDeadDrop";
 
         private int nextStateCheckTick;
         private int nextOpportunityTick;
@@ -36,6 +40,7 @@ namespace GateRimSG1.Goauld
         private int reportReadyTick;
         private int operationDeadlineTick;
         private bool readyNotificationSent;
+        private Thing activeDeadDrop;
         private TokraOrganicOperationArchetype lastOfferedArchetype;
         private TokraOrganicOperationArchetype lastCompletedArchetype;
         private int completedOperationCount;
@@ -94,6 +99,9 @@ namespace GateRimSG1.Goauld
                 ref readyNotificationSent,
                 "tokraOrganicReadyNotificationSent",
                 false);
+            Scribe_References.Look(
+                ref activeDeadDrop,
+                "tokraOrganicActiveDeadDrop");
             Scribe_Values.Look(
                 ref lastOfferedArchetype,
                 "tokraOrganicLastOfferedArchetype",
@@ -170,7 +178,7 @@ namespace GateRimSG1.Goauld
                 = GetCurrentTracker();
 
             return tracker != null
-                && tracker.IsActiveForMap(map);
+                && tracker.HasCommunicatorInteractionForMap(map);
         }
 
         public static string GetCommunicatorActionLabel(Map map)
@@ -178,7 +186,8 @@ namespace GateRimSG1.Goauld
             GameComponent_TokraOrganicOperationTracker tracker
                 = GetCurrentTracker();
 
-            if (tracker == null || !tracker.IsActiveForMap(map))
+            if (tracker == null
+                || !tracker.HasCommunicatorInteractionForMap(map))
             {
                 return "GR_TokraOrganicOperation_FloatMenuUnavailable"
                     .Translate()
@@ -187,6 +196,14 @@ namespace GateRimSG1.Goauld
 
             if (tracker.activeState == TokraOrganicOperationState.Offered)
             {
+                if (tracker.activeArchetype
+                    == TokraOrganicOperationArchetype.DeadDropRecovery)
+                {
+                    return "GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop"
+                        .Translate()
+                        .ToString();
+                }
+
                 return "GR_TokraOrganicOperation_FloatMenuAcceptObservation"
                     .Translate()
                     .ToString();
@@ -209,7 +226,7 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
-            if (!tracker.IsActiveForMap(map))
+            if (!tracker.HasCommunicatorInteractionForMap(map))
             {
                 return "GR_TokraOrganicOperation_NoActiveOpportunity"
                     .Translate()
@@ -281,7 +298,8 @@ namespace GateRimSG1.Goauld
             GameComponent_TokraOrganicOperationTracker tracker
                 = GetCurrentTracker();
 
-            if (tracker == null || !tracker.IsActiveForMap(map))
+            if (tracker == null
+                || !tracker.HasCommunicatorInteractionForMap(map))
             {
                 return false;
             }
@@ -289,25 +307,74 @@ namespace GateRimSG1.Goauld
             return tracker.TryHandleInteraction(map, operatorPawn);
         }
 
-        public static bool DebugForceOpportunity(Map map)
+        public static bool IsActiveDeadDrop(Thing deadDrop)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            return tracker != null
+                && tracker.IsExactActiveDeadDrop(deadDrop)
+                && !tracker.IsOperationDeadlineExpired();
+        }
+
+        public static string GetDeadDropDisabledReason(Thing deadDrop)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return "GR_TokraOrganicOperation_TrackerUnavailable"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!tracker.IsExactActiveDeadDrop(deadDrop))
+            {
+                return "GR_TokraOrganicOperation_DeadDropNoLongerActive"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (tracker.IsOperationDeadlineExpired())
+            {
+                return "GR_TokraOrganicOperation_DeadDropWindowExpired"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        public static bool TrySecureDeadDrop(
+            Thing deadDrop,
+            Pawn operatorPawn)
         {
             GameComponent_TokraOrganicOperationTracker tracker
                 = GetCurrentTracker();
 
             if (tracker == null
-                || map == null
-                || FindPoweredCommunicator(map) == null)
+                || !tracker.IsExactActiveDeadDrop(deadDrop)
+                || tracker.IsOperationDeadlineExpired())
             {
                 return false;
             }
 
-            tracker.ClearActiveOpportunity();
-            tracker.nextOpportunityTick = 0;
-            return tracker.TryCreateOpportunity(
+            return tracker.CompleteDeadDropOperation(deadDrop, operatorPawn);
+        }
+
+        public static bool DebugForceOpportunity(Map map)
+        {
+            return DebugForceSpecificOpportunity(
                 map,
-                TokraOrganicOperationArchetype.GoauldObservation,
-                Find.TickManager?.TicksGame ?? 0,
-                forced: true);
+                TokraOrganicOperationArchetype.GoauldObservation);
+        }
+
+        public static bool DebugForceDeadDropOpportunity(Map map)
+        {
+            return DebugForceSpecificOpportunity(
+                map,
+                TokraOrganicOperationArchetype.DeadDropRecovery);
         }
 
         public static bool DebugMakeObservationReady(Map map)
@@ -317,6 +384,8 @@ namespace GateRimSG1.Goauld
 
             if (tracker == null
                 || !tracker.IsActiveForMap(map)
+                || tracker.activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
                 || tracker.activeState != TokraOrganicOperationState.Accepted)
             {
                 return false;
@@ -328,6 +397,23 @@ namespace GateRimSG1.Goauld
                 tracker.operationDeadlineTick,
                 currentTick + StateCheckIntervalTicks);
             tracker.readyNotificationSent = true;
+            return true;
+        }
+
+        public static bool DebugExpireActiveOperation(Map map)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null
+                || !tracker.IsActiveForMap(map)
+                || tracker.activeState != TokraOrganicOperationState.Accepted)
+            {
+                return false;
+            }
+
+            tracker.operationDeadlineTick = Find.TickManager?.TicksGame ?? 0;
+            tracker.nextStateCheckTick = 0;
             return true;
         }
 
@@ -349,14 +435,49 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+        private static bool DebugForceSpecificOpportunity(
+            Map map,
+            TokraOrganicOperationArchetype archetype)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null
+                || map == null
+                || FindPoweredCommunicator(map) == null)
+            {
+                return false;
+            }
+
+            tracker.ClearActiveOpportunity();
+            tracker.nextOpportunityTick = 0;
+            return tracker.TryCreateOpportunity(
+                map,
+                archetype,
+                Find.TickManager?.TicksGame ?? 0,
+                forced: true);
+        }
+
         private void TickActiveOpportunity(int currentTick)
         {
             Map activeMap = GetActiveMap();
 
             if (activeMap == null)
             {
-                ClearActiveOpportunity();
-                ScheduleNextOpportunity(currentTick);
+                if (activeState == TokraOrganicOperationState.Accepted
+                    && activeArchetype
+                        == TokraOrganicOperationArchetype.DeadDropRecovery)
+                {
+                    FailDeadDropOperation(
+                        currentTick,
+                        "GR_TokraOrganicOperation_DeadDropLostLetterText");
+                }
+                else
+                {
+                    ClearActiveOpportunity();
+                    ScheduleNextOpportunity(currentTick);
+                }
+
                 return;
             }
 
@@ -366,7 +487,7 @@ namespace GateRimSG1.Goauld
                 {
                     expiredOfferCount++;
                     Messages.Message(
-                        "GR_TokraOrganicOperation_OfferExpired".Translate(),
+                        GetOfferExpiredMessageKey().Translate(),
                         MessageTypeDefOf.NeutralEvent,
                         historical: true);
                     ClearActiveOpportunity();
@@ -381,6 +502,18 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.DeadDropRecovery)
+            {
+                TickAcceptedDeadDrop(currentTick);
+                return;
+            }
+
+            TickAcceptedObservation(currentTick);
+        }
+
+        private void TickAcceptedObservation(int currentTick)
+        {
             if (!readyNotificationSent && currentTick >= reportReadyTick)
             {
                 readyNotificationSent = true;
@@ -404,6 +537,29 @@ namespace GateRimSG1.Goauld
 
                 ClearActiveOpportunity();
                 ScheduleNextOpportunity(currentTick);
+            }
+        }
+
+        private void TickAcceptedDeadDrop(int currentTick)
+        {
+            if (activeDeadDrop == null
+                || activeDeadDrop.Destroyed
+                || !activeDeadDrop.Spawned
+                || activeDeadDrop.Map == null
+                || activeDeadDrop.Map.uniqueID != activeMapId)
+            {
+                FailDeadDropOperation(
+                    currentTick,
+                    "GR_TokraOrganicOperation_DeadDropLostLetterText");
+                return;
+            }
+
+            if (operationDeadlineTick > 0
+                && currentTick >= operationDeadlineTick)
+            {
+                FailDeadDropOperation(
+                    currentTick,
+                    "GR_TokraOrganicOperation_DeadDropTimedOutLetterText");
             }
         }
 
@@ -468,12 +624,13 @@ namespace GateRimSG1.Goauld
             reportReadyTick = 0;
             operationDeadlineTick = 0;
             readyNotificationSent = false;
+            activeDeadDrop = null;
             lastOfferedArchetype = archetype;
             nextOpportunityTick = 0;
 
             Find.LetterStack?.ReceiveLetter(
-                "GR_TokraOrganicOperation_OfferLetterLabel".Translate(),
-                "GR_TokraOrganicOperation_OfferLetterText".Translate(
+                GetOfferLetterLabelKey().Translate(),
+                GetOfferLetterTextKey().Translate(
                     GetRoundedUpHours(OfferDurationTicks).ToString()),
                 LetterDefOf.NeutralEvent,
                 communicator);
@@ -489,34 +646,57 @@ namespace GateRimSG1.Goauld
 
         private bool TryHandleInteraction(Map map, Pawn operatorPawn)
         {
-            int currentTick = Find.TickManager?.TicksGame ?? 0;
-
             if (activeState == TokraOrganicOperationState.Offered)
             {
-                activeState = TokraOrganicOperationState.Accepted;
-                acceptedTick = currentTick;
-                reportReadyTick = currentTick
-                    + ObservationMinimumDurationTicks;
-                operationDeadlineTick = currentTick
-                    + ObservationDeadlineTicks;
-                readyNotificationSent = false;
+                if (activeArchetype
+                    == TokraOrganicOperationArchetype.DeadDropRecovery)
+                {
+                    return TryAcceptDeadDropOperation(map, operatorPawn);
+                }
 
-                Messages.Message(
-                    "GR_TokraOrganicOperation_Accepted".Translate(
-                        operatorPawn?.LabelShortCap ?? "?",
-                        GetRoundedUpHours(
-                            ObservationMinimumDurationTicks).ToString()),
-                    MessageTypeDefOf.NeutralEvent,
-                    historical: true);
-
-                GR_Log.Message(
-                    "Accepted Tok'ra Goa'uld observation opportunity on map "
-                    + $"{map.uniqueID}; report ready at tick "
-                    + $"{reportReadyTick}; deadline {operationDeadlineTick}; "
-                    + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
-
-                return true;
+                return TryAcceptObservationOperation(map, operatorPawn);
             }
+
+            if (activeArchetype
+                != TokraOrganicOperationArchetype.GoauldObservation)
+            {
+                return false;
+            }
+
+            return TryCompleteObservationOperation(map, operatorPawn);
+        }
+
+        private bool TryAcceptObservationOperation(Map map, Pawn operatorPawn)
+        {
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            reportReadyTick = currentTick + ObservationMinimumDurationTicks;
+            operationDeadlineTick = currentTick + ObservationDeadlineTicks;
+            readyNotificationSent = false;
+
+            Messages.Message(
+                "GR_TokraOrganicOperation_Accepted".Translate(
+                    operatorPawn?.LabelShortCap ?? "?",
+                    GetRoundedUpHours(
+                        ObservationMinimumDurationTicks).ToString()),
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Accepted Tok'ra Goa'uld observation opportunity on map "
+                + $"{map.uniqueID}; report ready at tick "
+                + $"{reportReadyTick}; deadline {operationDeadlineTick}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
+        private bool TryCompleteObservationOperation(
+            Map map,
+            Pawn operatorPawn)
+        {
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
 
             if (activeState != TokraOrganicOperationState.Accepted
                 || currentTick < reportReadyTick
@@ -525,7 +705,9 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            GrantObservationExperience(operatorPawn);
+            GrantIntellectualExperience(
+                operatorPawn,
+                ObservationIntellectualXp);
             completedOperationCount++;
             lastCompletedArchetype = activeArchetype;
 
@@ -547,6 +729,179 @@ namespace GateRimSG1.Goauld
 
             ClearActiveOpportunity();
             ScheduleNextOpportunity(currentTick);
+            return true;
+        }
+
+        private bool TryAcceptDeadDropOperation(Map map, Pawn operatorPawn)
+        {
+            Thing deadDrop;
+
+            if (!TrySpawnDeadDrop(map, out deadDrop))
+            {
+                Messages.Message(
+                    "GR_TokraOrganicOperation_DeadDropSpawnFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            reportReadyTick = 0;
+            operationDeadlineTick = currentTick + DeadDropDeadlineTicks;
+            readyNotificationSent = false;
+            activeDeadDrop = deadDrop;
+
+            Messages.Message(
+                "GR_TokraOrganicOperation_DeadDropAccepted".Translate(
+                    operatorPawn?.LabelShortCap ?? "?",
+                    GetRoundedUpHours(DeadDropDeadlineTicks).ToString()),
+                deadDrop,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.LetterStack?.ReceiveLetter(
+                "GR_TokraOrganicOperation_DeadDropLocatedLetterLabel"
+                    .Translate(),
+                "GR_TokraOrganicOperation_DeadDropLocatedLetterText"
+                    .Translate(
+                        GetRoundedUpHours(DeadDropDeadlineTicks).ToString()),
+                LetterDefOf.NeutralEvent,
+                deadDrop);
+
+            GR_Log.Message(
+                "Accepted Tok'ra organic intelligence recovery on map "
+                + $"{map.uniqueID}; cache at {deadDrop.Position}; "
+                + $"deadline {operationDeadlineTick}; operator "
+                + $"{operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
+        private bool CompleteDeadDropOperation(
+            Thing deadDrop,
+            Pawn operatorPawn)
+        {
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            Map map = deadDrop?.Map;
+
+            GrantIntellectualExperience(operatorPawn, DeadDropIntellectualXp);
+            completedOperationCount++;
+            lastCompletedArchetype = activeArchetype;
+
+            GameComponent_TokraTrustTracker.NotifyOrganicDeadDropOutcome(
+                TokraOrganicOperationOutcome.Succeeded);
+
+            Find.LetterStack?.ReceiveLetter(
+                "GR_TokraOrganicOperation_DeadDropSuccessLetterLabel"
+                    .Translate(),
+                "GR_TokraOrganicOperation_DeadDropSuccessLetterText"
+                    .Translate(
+                        operatorPawn?.LabelShortCap ?? "?",
+                        DeadDropIntellectualXp.ToString()),
+                LetterDefOf.PositiveEvent,
+                operatorPawn ?? deadDrop);
+
+            GR_Log.Message(
+                "Completed Tok'ra organic intelligence recovery on map "
+                + $"{map?.uniqueID.ToString() ?? "unknown"}; operator "
+                + $"{operatorPawn?.LabelShortCap ?? "unknown"}; "
+                + $"Intellectual XP {DeadDropIntellectualXp}.");
+
+            DestroyActiveDeadDrop();
+            ClearActiveOpportunity(destroyDeadDrop: false);
+            ScheduleNextOpportunity(currentTick);
+            return true;
+        }
+
+        private void FailDeadDropOperation(
+            int currentTick,
+            string failureTextKey)
+        {
+            failedOperationCount++;
+            GameComponent_TokraTrustTracker.NotifyOrganicDeadDropOutcome(
+                TokraOrganicOperationOutcome.Failed);
+
+            Find.LetterStack?.ReceiveLetter(
+                "GR_TokraOrganicOperation_DeadDropFailedLetterLabel"
+                    .Translate(),
+                failureTextKey.Translate(),
+                LetterDefOf.NegativeEvent);
+
+            GR_Log.Message(
+                "Failed Tok'ra organic intelligence recovery; reason key "
+                + $"{failureTextKey}; map {activeMapId}.");
+
+            DestroyActiveDeadDrop();
+            ClearActiveOpportunity(destroyDeadDrop: false);
+            ScheduleNextOpportunity(currentTick);
+        }
+
+        private static bool TrySpawnDeadDrop(Map map, out Thing deadDrop)
+        {
+            deadDrop = null;
+
+            ThingDef thingDef = DefDatabase<ThingDef>.GetNamedSilentFail(
+                DeadDropThingDefName);
+
+            if (map == null || thingDef == null)
+            {
+                return false;
+            }
+
+            IntVec3 deliveryCell;
+
+            if (!TokraDeliveryDropUtility.TryFindPreferredDeliveryCell(
+                    map,
+                    null,
+                    out deliveryCell))
+            {
+                return false;
+            }
+
+            DestroyDeadDropsOnMap(map);
+
+            Thing thing = ThingMaker.MakeThing(thingDef);
+            thing.SetFaction(Faction.OfPlayer);
+
+            Thing placedThing;
+
+            if (!GenPlace.TryPlaceThing(
+                    thing,
+                    deliveryCell,
+                    map,
+                    ThingPlaceMode.Near,
+                    out placedThing))
+            {
+                if (!thing.Destroyed)
+                {
+                    thing.Destroy(DestroyMode.Vanish);
+                }
+
+                return false;
+            }
+
+            if (placedThing == null
+                || !placedThing.Spawned
+                || placedThing.Map != map
+                || placedThing.Position.Fogged(map)
+                || !map.reachability.CanReachColony(placedThing.Position))
+            {
+                if (placedThing != null
+                    && !placedThing.Destroyed)
+                {
+                    placedThing.Destroy(DestroyMode.Vanish);
+                }
+
+                return false;
+            }
+
+            GR_Log.Message(
+                "Placed Tok'ra organic intelligence module from preferred "
+                + $"delivery cell {deliveryCell} to {placedThing.Position}.");
+
+            deadDrop = placedThing;
             return true;
         }
 
@@ -620,7 +975,10 @@ namespace GateRimSG1.Goauld
             {
                 new OrganicOperationCandidate(
                     TokraOrganicOperationArchetype.GoauldObservation,
-                    GetObservationWeight(tier))
+                    GetObservationWeight(tier)),
+                new OrganicOperationCandidate(
+                    TokraOrganicOperationArchetype.DeadDropRecovery,
+                    GetDeadDropWeight(tier))
             };
         }
 
@@ -636,6 +994,23 @@ namespace GateRimSG1.Goauld
                     return 0.85f;
                 case TokraTrustTier.Trusted:
                     return 0.35f;
+                default:
+                    return 0f;
+            }
+        }
+
+        private static float GetDeadDropWeight(TokraTrustTier tier)
+        {
+            switch (tier)
+            {
+                case TokraTrustTier.Wary:
+                    return 0.35f;
+                case TokraTrustTier.Neutral:
+                    return 0.85f;
+                case TokraTrustTier.Cooperative:
+                    return 1.00f;
+                case TokraTrustTier.Trusted:
+                    return 0.55f;
                 default:
                     return 0f;
             }
@@ -667,12 +1042,46 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        private bool HasCommunicatorInteractionForMap(Map map)
+        {
+            if (!IsActiveForMap(map))
+            {
+                return false;
+            }
+
+            if (activeState == TokraOrganicOperationState.Offered)
+            {
+                return true;
+            }
+
+            return activeState == TokraOrganicOperationState.Accepted
+                && activeArchetype
+                    == TokraOrganicOperationArchetype.GoauldObservation;
+        }
+
         private bool IsActiveForMap(Map map)
         {
             return map != null
                 && activeState != TokraOrganicOperationState.None
                 && activeArchetype != TokraOrganicOperationArchetype.None
                 && activeMapId == map.uniqueID;
+        }
+
+        private bool IsExactActiveDeadDrop(Thing deadDrop)
+        {
+            return deadDrop != null
+                && activeArchetype
+                    == TokraOrganicOperationArchetype.DeadDropRecovery
+                && activeState == TokraOrganicOperationState.Accepted
+                && activeDeadDrop == deadDrop;
+        }
+
+        private bool IsOperationDeadlineExpired()
+        {
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            return operationDeadlineTick > 0
+                && currentTick >= operationDeadlineTick;
         }
 
         private Map GetActiveMap()
@@ -745,8 +1154,22 @@ namespace GateRimSG1.Goauld
 
             if (activeState == TokraOrganicOperationState.Offered)
             {
-                status = "GR_TokraOrganicOperation_StatusOffered".Translate(
+                string key = activeArchetype
+                    == TokraOrganicOperationArchetype.DeadDropRecovery
+                    ? "GR_TokraOrganicOperation_StatusDeadDropOffered"
+                    : "GR_TokraOrganicOperation_StatusOffered";
+
+                status = key.Translate(
                     GetRoundedUpHours(offerExpiryTick - currentTick).ToString())
+                    .ToString();
+            }
+            else if (activeArchetype
+                == TokraOrganicOperationArchetype.DeadDropRecovery)
+            {
+                status = "GR_TokraOrganicOperation_StatusDeadDropActive"
+                    .Translate(
+                        GetRoundedUpHours(
+                            operationDeadlineTick - currentTick).ToString())
                     .ToString();
             }
             else if (currentTick < reportReadyTick)
@@ -773,19 +1196,86 @@ namespace GateRimSG1.Goauld
                 .ToString();
         }
 
-        private static void GrantObservationExperience(Pawn pawn)
+        private string GetOfferLetterLabelKey()
+        {
+            return activeArchetype
+                == TokraOrganicOperationArchetype.DeadDropRecovery
+                ? "GR_TokraOrganicOperation_DeadDropOfferLetterLabel"
+                : "GR_TokraOrganicOperation_OfferLetterLabel";
+        }
+
+        private string GetOfferLetterTextKey()
+        {
+            return activeArchetype
+                == TokraOrganicOperationArchetype.DeadDropRecovery
+                ? "GR_TokraOrganicOperation_DeadDropOfferLetterText"
+                : "GR_TokraOrganicOperation_OfferLetterText";
+        }
+
+        private string GetOfferExpiredMessageKey()
+        {
+            return activeArchetype
+                == TokraOrganicOperationArchetype.DeadDropRecovery
+                ? "GR_TokraOrganicOperation_DeadDropOfferExpired"
+                : "GR_TokraOrganicOperation_OfferExpired";
+        }
+
+        private static void GrantIntellectualExperience(Pawn pawn, int amount)
         {
             SkillRecord intellectual = pawn?.skills?.GetSkill(
                 SkillDefOf.Intellectual);
 
             if (intellectual != null && !intellectual.TotallyDisabled)
             {
-                intellectual.Learn(ObservationIntellectualXp, true);
+                intellectual.Learn(amount, true);
             }
         }
 
-        private void ClearActiveOpportunity()
+        private void DestroyActiveDeadDrop()
         {
+            Map map = GetActiveMap();
+            Thing deadDrop = activeDeadDrop;
+            activeDeadDrop = null;
+
+            if (deadDrop != null && !deadDrop.Destroyed)
+            {
+                deadDrop.Destroy(DestroyMode.Vanish);
+            }
+
+            DestroyDeadDropsOnMap(map);
+        }
+
+        private static void DestroyDeadDropsOnMap(Map map)
+        {
+            if (map?.listerThings?.AllThings == null)
+            {
+                return;
+            }
+
+            List<Thing> staleDeadDrops = map.listerThings.AllThings
+                .Where(thing =>
+                    thing != null
+                    && thing.def?.defName == DeadDropThingDefName)
+                .ToList();
+
+            for (int i = 0; i < staleDeadDrops.Count; i++)
+            {
+                Thing staleDeadDrop = staleDeadDrops[i];
+
+                if (!staleDeadDrop.Destroyed)
+                {
+                    staleDeadDrop.Destroy(DestroyMode.Vanish);
+                }
+            }
+        }
+
+        private void ClearActiveOpportunity(bool destroyDeadDrop = true)
+        {
+            if (destroyDeadDrop)
+            {
+                DestroyActiveDeadDrop();
+            }
+
             activeArchetype = TokraOrganicOperationArchetype.None;
             activeState = TokraOrganicOperationState.None;
             activeMapId = -1;
@@ -795,6 +1285,7 @@ namespace GateRimSG1.Goauld
             reportReadyTick = 0;
             operationDeadlineTick = 0;
             readyNotificationSent = false;
+            activeDeadDrop = null;
         }
 
         private void RepairLoadedState()
@@ -803,6 +1294,11 @@ namespace GateRimSG1.Goauld
                 || activeArchetype == TokraOrganicOperationArchetype.None)
             {
                 ClearActiveOpportunity();
+            }
+            else if (activeArchetype
+                != TokraOrganicOperationArchetype.DeadDropRecovery)
+            {
+                activeDeadDrop = null;
             }
 
             completedOperationCount = Math.Max(0, completedOperationCount);
@@ -840,7 +1336,8 @@ namespace GateRimSG1.Goauld
     public enum TokraOrganicOperationArchetype
     {
         None,
-        GoauldObservation
+        GoauldObservation,
+        DeadDropRecovery
     }
 
     public enum TokraOrganicOperationState

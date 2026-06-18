@@ -3,6 +3,11 @@
     <JobDef>
         <defName>SG1_HandleTokraOrganicObservation</defName>
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
-        <reportString>handling a discreet Tok'ra observation request.</reportString>
+        <reportString>handling a discreet Tok'ra operation request.</reportString>
+    </JobDef>
+    <JobDef>
+        <defName>SG1_SecureTokraOrganicDeadDrop</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraSecureOrganicDeadDrop</driverClass>
+        <reportString>securing a Tok'ra encrypted intelligence module.</reportString>
     </JobDef>
 </Defs>

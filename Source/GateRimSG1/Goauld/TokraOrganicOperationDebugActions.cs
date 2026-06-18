@@ -18,15 +18,34 @@ namespace GateRimSG1.Goauld
             if (!GameComponent_TokraOrganicOperationTracker
                 .DebugForceOpportunity(map))
             {
-                Messages.Message(
-                    "GR_TokraOrganicOperation_DebugUnavailable".Translate(),
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
+                ShowUnavailableMessage();
                 return;
             }
 
             Messages.Message(
                 "GR_TokraOrganicOperation_DebugForced".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Force Tok'ra organic intelligence-recovery opportunity",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceOrganicDeadDropOpportunity()
+        {
+            Map map = Find.CurrentMap;
+
+            if (!GameComponent_TokraOrganicOperationTracker
+                .DebugForceDeadDropOpportunity(map))
+            {
+                ShowUnavailableMessage();
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraOrganicOperation_DebugForcedDeadDrop".Translate(),
                 MessageTypeDefOf.PositiveEvent,
                 historical: false);
         }
@@ -57,6 +76,30 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Expire active Tok'ra organic operation",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ExpireActiveOrganicOperation()
+        {
+            if (!GameComponent_TokraOrganicOperationTracker
+                .DebugExpireActiveOperation(Find.CurrentMap))
+            {
+                Messages.Message(
+                    "GR_TokraOrganicOperation_DebugNoActiveOperation"
+                        .Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraOrganicOperation_DebugExpired".Translate(),
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Reset Tok'ra organic operation tracker",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
@@ -64,16 +107,21 @@ namespace GateRimSG1.Goauld
         {
             if (!GameComponent_TokraOrganicOperationTracker.DebugReset())
             {
-                Messages.Message(
-                    "GR_TokraOrganicOperation_DebugUnavailable".Translate(),
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
+                ShowUnavailableMessage();
                 return;
             }
 
             Messages.Message(
                 "GR_TokraOrganicOperation_DebugReset".Translate(),
                 MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        private static void ShowUnavailableMessage()
+        {
+            Messages.Message(
+                "GR_TokraOrganicOperation_DebugUnavailable".Translate(),
+                MessageTypeDefOf.RejectInput,
                 historical: false);
         }
     }

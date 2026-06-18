@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <SG1_HandleTokraOrganicObservation.reportString>traite une demande d'observation Tok'ra discrète.</SG1_HandleTokraOrganicObservation.reportString>
+    <SG1_HandleTokraOrganicObservation.reportString>traite une demande d'opération Tok'ra discrète.</SG1_HandleTokraOrganicObservation.reportString>
+    <SG1_SecureTokraOrganicDeadDrop.reportString>sécurise un module de renseignements chiffré Tok'ra.</SG1_SecureTokraOrganicDeadDrop.reportString>
 </LanguageData>
