@@ -736,13 +736,14 @@ The procedures below are arranged to minimize reloads. Keep developer mode enabl
    - one colon capable of Intellectual work;
    - one colon capable of Medical work;
    - at least one available medical bed and ordinary medical supplies;
+   - at least two industrial medicines in one reachable stockpile stack;
    - developer mode enabled.
 2. Select the Intellectual-capable colon and record the current Intellectual XP.
 3. Open the Tok'ra channel report and note the current qualitative relationship state. Exact trust values are intentionally hidden from the normal player interface.
 4. Run `Reset Tok'ra operations`.
 5. Save the game as `GR_TokraOrganic_Base`.
 
-**Expected result:** no organic Tok'ra operation or intelligence module is active. This save is the common checkpoint for later reload and failure tests.
+**Expected result:** no organic Tok'ra operation, intelligence module, visiting medical liaison, legacy handoff container or wounded patient is active. This save is the common checkpoint for later reload and failure tests.
 
 ### Continuous session A — success paths and placement
 
@@ -858,7 +859,43 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 
 **End state:** continue directly to A6.
 
-#### A6 — Verify manual communicator actions remain independent
+#### A6 — Complete a medical-supply handoff with a visiting liaison
+
+**Purpose:** verify that the new social-logistical archetype does not inspect stocks before acceptance, then consumes exactly two industrial medicines only when the liaison dialogue confirms the donation.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Record the Social XP of one player colon capable of Social.
+3. Temporarily forbid or move all industrial medicine so none is accessible to that colon.
+4. Run `Force Tok'ra medical resupply offer`.
+5. Read the offer and confirm that it asks for two industrial medicines, does not claim to know the colony's reserves, and says that ignoring it has no consequence.
+6. Select any valid colon, right-click the powered communicator and choose `Accept Tok'ra medical resupply request` or `Accepter la demande de ravitaillement médical Tok'ra`.
+7. Confirm that acceptance succeeds despite the unavailable medicine and that no container is created.
+8. Advance normal game time. Confirm that one Tok'ra liaison enters from the map edge roughly one to two in-game hours later.
+9. With a Tok'ra delivery zone present, confirm that the liaison walks toward it. Repeat from a fresh checkpoint without the zone and confirm fallback near the powered communicator. If neither target exists, confirm a reachable point near the colony centre is used.
+10. Select a colon incapable of Social and right-click the liaison. Confirm that the interaction is disabled with a short reason.
+11. Select the Social-capable colon, right-click the liaison and choose the short talk action.
+12. Confirm that the paused dialogue contains exactly two choices: give two medicines or cancel.
+13. Choose the donation while no medicine is accessible. Confirm that an error message appears, the medicine count remains unchanged and the operation remains active.
+14. Reopen the dialogue, choose cancel and confirm that only the window closes.
+15. Make exactly two industrial medicines accessible, including a test where the units are split between two stacks.
+16. Reopen the dialogue and confirm the donation.
+17. Compare the medicine count and Social XP, then inspect the result letter, liaison behavior and channel report.
+
+**Expected result:**
+
+- the offer and acceptance never inspect medicine stocks;
+- the liaison arrives only after the delayed entry and uses the expected meeting-point priority;
+- Social, not Medicine or Intellectual, controls the player interaction;
+- cancel closes only the dialogue;
+- insufficient stocks show a rejection without resolving the operation;
+- exactly two accessible industrial medicine units are consumed on confirmation, including across multiple stacks;
+- the negotiating colon gains exactly `350` Social XP;
+- one qualitative Tok'ra trust improvement and one success letter are applied immediately;
+- the communicator immediately returns to its generic RP state;
+- the liaison begins leaving the map, but their physical exit is not required for success;
+- no temporary handoff container appears.
+
+#### A7 — Verify manual communicator actions remain independent
 
 **Purpose:** detect regressions outside the organic-operation framework.
 
@@ -933,6 +970,22 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 
 **Expected result:** shock persists before first treatment, remains removed after the treatment checkpoint, the same patient and health state survive reloads, the departure order survives the second reload, success occurs once after map exit, and reloading the resolved save does not repeat trust feedback or letters.
 
+#### B5 — Reload the medical-supply liaison flow and resolve it once
+
+**Purpose:** verify restoration of delayed arrival, meeting state, dialogue cancellation, deadline, donation and post-success departure without duplicate effects.
+
+1. Load `GR_TokraOrganic_Base`, run `Force Tok'ra medical resupply offer` and accept through the communicator.
+2. Save immediately as `GR_TokraOrganic_MedicalSupplyBeforeArrival`, reload it and confirm that the liaison still arrives once after the remaining delay.
+3. While the liaison is walking to the meeting point, save as `GR_TokraOrganic_MedicalSupplyApproaching` and reload it.
+4. Confirm that the same liaison continues toward the same meeting point and that no duplicate pawn appears.
+5. Once the liaison is ready, open the dialogue, choose cancel, save as `GR_TokraOrganic_MedicalSupplyWaiting` and reload it.
+6. Confirm that the same liaison remains available, the deadline is coherent and the dialogue can be reopened.
+7. Record the negotiator's Social XP and the exact industrial-medicine count, then donate two units.
+8. Save immediately while the successful liaison is leaving as `GR_TokraOrganic_MedicalSupplyDeparting`, reload it and allow the pawn to exit.
+9. Save as `GR_TokraOrganic_MedicalSupplyResolved` and reload once more.
+
+**Expected result:** each checkpoint restores one liaison, one meeting point and one deadline; cancelling the dialogue never changes stocks or trust; exactly two medicine units and exactly `350` Social XP are applied once; success remains resolved while the liaison leaves; no duplicate letter, trust result, medicine consumption, XP gain or liaison appears after reload.
+
 ### Failure session C — destructive and expiry paths
 
 Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
@@ -981,7 +1034,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run either `Force Tok'ra observation offer` or `Force Tok'ra intelligence module offer`.
+3. Run any one of `Force Tok'ra observation offer`, `Force Tok'ra intelligence module offer`, `Force Tok'ra wounded agent offer` or `Force Tok'ra medical resupply offer`.
 4. Do not accept it and advance game time until the offer closes.
 
 **Expected result:** the offer disappears, trust remains unchanged, no failure letter is issued and a future hidden opportunity can still be scheduled.
@@ -1020,6 +1073,46 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 **Expected result:** one timeout failure explains that a covert Tok'ra team recovered the living agent, the patient is removed by operation cleanup, and no second failure occurs later or after reload.
 
+#### C8 — Lose the liaison before the handoff
+
+**Purpose:** verify the accepted-operation failure paths tied to the visiting pawn.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Note the current qualitative Tok'ra relationship state in the channel report.
+3. Force and accept the medical-resupply offer, then wait for the liaison to arrive.
+4. In separate copies of the checkpoint, test one of these conditions before donating medicine:
+   - kill the liaison;
+   - arrest the liaison;
+   - remove or despawn the liaison through developer tools.
+5. Let the tracker process the state, then save and reload.
+
+**Expected result:** each scenario produces one appropriate RP failure, one qualitative deterioration after the accepted commitment, immediate return to the generic channel state and no repeated failure after reload. No medicine is consumed.
+
+#### C9 — Let the liaison leave without receiving medicine
+
+**Purpose:** verify that missing supplies before acceptance is allowed, but an accepted commitment fails when the liaison's waiting window expires.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Forbid or remove all industrial medicine.
+3. Force and accept the medical-resupply offer; confirm that acceptance still succeeds.
+4. Wait for the liaison to arrive and reach the meeting point.
+5. Do not complete the donation. Advance beyond the six-hour window shown by the channel report.
+6. Confirm that the liaison begins leaving, then save and reload.
+
+**Expected result:** the operation expires once with its specific accepted-failure text and qualitative trust deterioration; the liaison leaves; no medicine is consumed; the communicator returns to its generic state; no repeated letter or penalty appears after more time or reload.
+
+#### C10 — Kill the liaison after a successful donation
+
+**Purpose:** verify that a post-handoff death has a separate diplomatic consequence without invalidating completed success.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Force and accept the medical-resupply offer, wait for the liaison and donate two medicines successfully.
+3. Confirm the success letter, generic communicator state and departure order.
+4. Before the liaison reaches the map edge, kill them through developer tools or an in-game threat.
+5. Continue several tracker checks, then save and reload.
+
+**Expected result:** the operation remains completed and never changes to failure; consumed medicine and Social XP are not restored; one separate negative RP letter and qualitative relationship penalty are applied for the liaison's death; neither the success nor the death consequence repeats after reload.
+
 ### Legacy-save migration session D
 
 These tests require preserved saves created with the stated published version. They cannot be replaced by a current-version checkpoint.
@@ -1047,21 +1140,33 @@ These tests require preserved saves created with the stated published version. T
 
 1. Load a save created before the wounded-agent archetype existed.
 2. Confirm that no patient or stale patient state is created during migration.
-3. Force each of the three current archetypes in turn, resolving or resetting one before forcing the next.
+3. Force each of the four current archetypes in turn, resolving or resetting one before forcing the next.
 
-**Expected result:** previous observation and intelligence states remain compatible, the new archetype becomes available normally, and only the currently active operation is displayed.
+**Expected result:** previous observation and intelligence states remain compatible, both newer archetypes become available normally, and only the currently active operation is displayed.
+
+#### D4 — Load a published `0.2.51-dev` save and an optional `0.2.52-dev-r1/r2` development save
+
+1. Load a clean `0.2.51-dev` save with no active organic operation.
+2. Confirm that no liaison or stale handoff state is created during migration.
+3. Force and accept the new medical-resupply offer, save before arrival, reload, then complete or reset it once.
+4. Load a separate `0.2.51-dev` save with a wounded-agent operation in progress and confirm that its patient state still behaves normally.
+5. When an unpublished `0.2.52-dev-r1/r2` save with the temporary container exists, load it and inspect the former handoff location.
+
+**Expected result:** the framework initializes at save version `5` without red loading errors; the liaison archetype becomes available normally; existing wounded-agent treatment, departure and death-priority behavior remain intact; an old development container disappears automatically and the accepted handoff restarts as a delayed liaison visit without duplicate trust, XP or resource effects.
 
 ### Developer actions, presentation and final log review
 
-1. Confirm the three force actions create the explicitly named archetype:
+1. Confirm the four force actions create the explicitly named archetype:
    - `Force Tok'ra observation offer`;
    - `Force Tok'ra intelligence module offer`;
-   - `Force Tok'ra wounded agent offer`.
-2. Confirm `Advance active Tok'ra operation` prepares an accepted observation report and does not invalidate an already placed intelligence module.
-3. Confirm `Reset Tok'ra operations` clears the active state, intelligence objective or living patient without changing trust. A dead patient's corpse should remain.
-4. Review English and French player-facing letters, messages and context actions for RP tone and understandable wording.
-5. Confirm communicator and module context labels remain short.
-6. Confirm developer-action labels remain technical, explicit and readable without meaningful truncation. In particular, verify these compact legacy labels:
+   - `Force Tok'ra wounded agent offer`;
+   - `Force Tok'ra medical resupply offer`.
+2. Confirm `Advance active Tok'ra operation` prepares an accepted observation report and does not invalidate an already placed intelligence module, wounded patient or visiting medical liaison.
+3. Confirm `Reset Tok'ra operations` clears the active state, intelligence objective, living patient or active liaison without changing trust. A dead patient's or liaison's corpse should remain.
+4. Review English and French player-facing letters, messages, dialogue and context actions for RP tone and understandable wording.
+5. Confirm communicator, module and liaison interaction labels remain short.
+6. Confirm the medical dialogue displays only the donation and cancel buttons, with no technical state or hidden timing details.
+7. Confirm developer-action labels remain technical, explicit and readable without meaningful truncation. In particular, verify these compact legacy labels:
    - `Jaffa mark: black`, `Jaffa mark: silver`, `Jaffa mark: gold`, `Clear Jaffa mark`;
    - `Tok'ra safehouse: prepare`, `Tok'ra safehouse: create`, `Tok'ra safehouse: verify`;
    - `Tok'ra trust: +5`, `Tok'ra trust: -5`;
@@ -1069,7 +1174,6 @@ These tests require preserved saves created with the stated published version. T
    - `Tok'ra lead: decode`, `Tok'ra site: reveal`, `Tok'ra site: recon`;
    - `Tok'ra relay: prepare`, `Tok'ra relay: complete`;
    - `Tok'ra threat: create`, `Tok'ra threat: clear`.
-7. Close or pause the game and inspect `Player.log`.
+8. Close or pause the game and inspect `Player.log`.
 
-**Expected result:** no red errors related to operation loading, Scribe references, pawn or lord persistence, health checks, ThingDefs, JobDefs, objective cleanup, departure or duplicate resolution appear.
-
+**Expected result:** no red errors related to operation loading, Scribe references, pawn or lord persistence, meeting-point pathing, dialogue jobs, stock counting, medicine consumption, legacy-container cleanup, departure monitoring or duplicate resolution appear.

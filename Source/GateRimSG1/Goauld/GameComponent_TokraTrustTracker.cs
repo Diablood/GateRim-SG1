@@ -34,6 +34,9 @@ namespace GateRimSG1.Goauld
         public const int OrganicDeadDropFailureTrustChange = -1;
         public const int OrganicWoundedAgentSuccessTrustChange = 3;
         public const int OrganicWoundedAgentFailureTrustChange = -2;
+        public const int OrganicMedicalSupplySuccessTrustChange = 2;
+        public const int OrganicMedicalSupplyFailureTrustChange = -1;
+        public const int OrganicMedicalSupplyLiaisonDeathTrustChange = -2;
 
         public const int RefusedWaryDiplomaticCooldownTicks = 180000;
         public const int ExpiredWaryDiplomaticCooldownTicks = 300000;
@@ -1031,6 +1034,32 @@ namespace GateRimSG1.Goauld
             NotifyOrganicOperationOutcome(
                 TokraOrganicOperationArchetype.WoundedAgentCare,
                 outcome);
+        }
+
+        public static void NotifyOrganicMedicalSupplyOutcome(
+            TokraOrganicOperationOutcome outcome)
+        {
+            NotifyOrganicOperationOutcome(
+                TokraOrganicOperationArchetype.MedicalSupplyHandoff,
+                outcome);
+        }
+
+        public static void NotifyOrganicMedicalSupplyLiaisonDeath()
+        {
+            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                GR_Log.Error(
+                    "Cannot update Tok'ra trust after a medical liaison "
+                    + "death: the trust tracker is unavailable.");
+                return;
+            }
+
+            tracker.ApplyFlatTrustChange(
+                OrganicMedicalSupplyLiaisonDeathTrustChange,
+                "death of a departing Tok'ra medical liaison",
+                "GR_TokraTrust_MedicalSupplyLiaisonDied");
         }
 
         public static void NotifyTherapeuticOfferOutcome(

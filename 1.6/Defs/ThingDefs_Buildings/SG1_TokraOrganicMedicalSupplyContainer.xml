@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Legacy unpublished r1/r2 objective retained only so development saves
+         can load and migrate cleanly. The operation tracker removes every
+         remaining instance during post-load repair. -->
+    <ThingDef ParentName="FurnitureBase">
+        <defName>SG1_TokraOrganicMedicalSupplyContainer</defName>
+        <label>legacy Tok'ra medical handoff container</label>
+        <description>A deprecated development objective retained only for save migration. Current Tok'ra medical resupply operations use an in-person liaison.</description>
+        <thingClass>GateRimSG1.Goauld.Building_TokraOrganicMedicalSupplyContainer</thingClass>
+        <minifiedDef IsNull="True" />
+        <graphicData>
+            <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.95,0.95)</drawSize>
+            <color>(0.65,0.85,0.70)</color>
+        </graphicData>
+        <size>(1,1)</size>
+        <rotatable>false</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>Standable</passability>
+        <fillPercent>0.10</fillPercent>
+        <pathCost>5</pathCost>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <statBases>
+            <MaxHitPoints>90</MaxHitPoints>
+            <WorkToBuild>0</WorkToBuild>
+            <Mass>10</Mass>
+            <MarketValue>0</MarketValue>
+            <Beauty>0</Beauty>
+            <Flammability>0.20</Flammability>
+        </statBases>
+        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+        <thingCategories Inherit="False" />
+    </ThingDef>
+</Defs>

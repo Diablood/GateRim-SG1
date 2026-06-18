@@ -14,6 +14,8 @@ namespace GateRimSG1.Goauld
             int readyDelayTicks,
             int deadlineTicks,
             int intellectualXp,
+            int medicineXp,
+            int socialXp,
             int successTrustChange,
             int failureTrustChange,
             float waryWeight,
@@ -38,6 +40,8 @@ namespace GateRimSG1.Goauld
             ReadyDelayTicks = readyDelayTicks;
             DeadlineTicks = deadlineTicks;
             IntellectualXp = intellectualXp;
+            MedicineXp = medicineXp;
+            SocialXp = socialXp;
             SuccessTrustChange = successTrustChange;
             FailureTrustChange = failureTrustChange;
             WaryWeight = waryWeight;
@@ -67,6 +71,10 @@ namespace GateRimSG1.Goauld
         public int DeadlineTicks { get; }
 
         public int IntellectualXp { get; }
+
+        public int MedicineXp { get; }
+
+        public int SocialXp { get; }
 
         public int SuccessTrustChange { get; }
 
@@ -130,7 +138,7 @@ namespace GateRimSG1.Goauld
 
     internal static class TokraOrganicOperationFramework
     {
-        public const int CurrentSaveVersion = 3;
+        public const int CurrentSaveVersion = 5;
         public const float RepeatedArchetypeWeightFactor = 0.25f;
 
         private static readonly IReadOnlyDictionary<
@@ -148,6 +156,8 @@ namespace GateRimSG1.Goauld
                             readyDelayTicks: 15000,
                             deadlineTicks: 120000,
                             intellectualXp: 250,
+                            medicineXp: 0,
+                            socialXp: 0,
                             successTrustChange:
                                 GameComponent_TokraTrustTracker
                                     .OrganicObservationSuccessTrustChange,
@@ -189,6 +199,8 @@ namespace GateRimSG1.Goauld
                             readyDelayTicks: 0,
                             deadlineTicks: 90000,
                             intellectualXp: 200,
+                            medicineXp: 0,
+                            socialXp: 0,
                             successTrustChange:
                                 GameComponent_TokraTrustTracker
                                     .OrganicDeadDropSuccessTrustChange,
@@ -230,6 +242,8 @@ namespace GateRimSG1.Goauld
                             readyDelayTicks: 0,
                             deadlineTicks: 300000,
                             intellectualXp: 0,
+                            medicineXp: 0,
+                            socialXp: 0,
                             successTrustChange:
                                 GameComponent_TokraTrustTracker
                                     .OrganicWoundedAgentSuccessTrustChange,
@@ -261,6 +275,48 @@ namespace GateRimSG1.Goauld
                             failureTrustMessageKey:
                                 "GR_TokraTrust_WoundedAgentFailed",
                             debugLabel: "WoundedAgentCare")
+                    },
+                    {
+                        TokraOrganicOperationArchetype.MedicalSupplyHandoff,
+                        new TokraOrganicOperationDefinition(
+                            TokraOrganicOperationArchetype.MedicalSupplyHandoff,
+                            offerDurationTicks: 120000,
+                            readyDelayTicks: 0,
+                            deadlineTicks: 15000,
+                            intellectualXp: 0,
+                            medicineXp: 0,
+                            socialXp: 350,
+                            successTrustChange:
+                                GameComponent_TokraTrustTracker
+                                    .OrganicMedicalSupplySuccessTrustChange,
+                            failureTrustChange:
+                                GameComponent_TokraTrustTracker
+                                    .OrganicMedicalSupplyFailureTrustChange,
+                            waryWeight: 0.20f,
+                            neutralWeight: 0.70f,
+                            cooperativeWeight: 1.00f,
+                            trustedWeight: 0.65f,
+                            objectiveThingDefName: null,
+                            acceptActionKey:
+                                "GR_TokraMedicalSupply_Accept",
+                            completeActionKey: null,
+                            offerLetterLabelKey:
+                                "GR_TokraMedicalSupply_OfferLabel",
+                            offerLetterTextKey:
+                                "GR_TokraMedicalSupply_OfferText",
+                            offerExpiredMessageKey:
+                                "GR_TokraMedicalSupply_OfferExpired",
+                            offeredStatusKey:
+                                "GR_TokraMedicalSupply_StatusOffered",
+                            activeStatusKey:
+                                "GR_TokraMedicalSupply_StatusAwaitingArrival",
+                            readyStatusKey:
+                                "GR_TokraMedicalSupply_StatusReady",
+                            successTrustMessageKey:
+                                "GR_TokraTrust_MedicalSupplySucceeded",
+                            failureTrustMessageKey:
+                                "GR_TokraTrust_MedicalSupplyFailed",
+                            debugLabel: "MedicalSupplyHandoff")
                     }
                 };
 

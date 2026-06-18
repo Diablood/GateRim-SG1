@@ -24,6 +24,12 @@ A cell may instead entrust the colony with a sealed module containing encrypted 
 
 The module represents intelligence, not supplies, and provides no material loot.
 
+## Medical-supply handoff
+
+A cell may request two industrial medicines without checking the colony's reserves. After acceptance, one Tok'ra liaison arrives roughly one to two hours later and walks to the delivery zone, the powered communicator or a reachable point near the colony centre.
+
+A Social-capable colon must speak with the liaison. The dialogue can give two accessible industrial medicines or simply close so the player can return later. A successful donation consumes exactly two units, grants Social experience and resolves the operation immediately. If no donation is made during the liaison's waiting window, the liaison leaves and the accepted request fails. A liaison killed after a successful handoff does not cancel that success, but the death still damages relations separately.
+
 ## Consequences
 
 Ignoring an unsolicited offer does not reduce trust. Once a request has been accepted, missing its deadline or losing its objective makes the cell slightly more cautious.

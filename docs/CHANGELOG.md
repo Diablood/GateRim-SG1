@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.52-dev - Add organic Tok'ra medical supply handoff
+
+- Add a fourth recurring Tok'ra organic-operation archetype: a face-to-face logistical handoff of two industrial medicines.
+- Allow the offer to appear and be accepted without inspecting or requiring the colony's current medicine reserves.
+- Schedule one Tok'ra liaison to enter from a reachable map edge roughly one to two in-game hours after acceptance.
+- Send the liaison toward the Tok'ra delivery zone, then a powered communicator, then a reachable point near the colony centre.
+- Require a player colon capable of Social to talk to the liaison and open a paused two-choice dialogue.
+- Let the player give two industrial medicines directly from accessible colony stocks or cancel the dialogue without resolving the operation.
+- Reject the donation cleanly when fewer than two reachable, unforbidden industrial medicines are available.
+- Consume exactly two medicine units and grant `350` Social XP only when the donation is confirmed.
+- Resolve success immediately on donation and order the liaison to leave without keeping the operation visible on the communicator.
+- Keep the completed operation successful if the liaison dies while leaving, while applying a separate qualitative Tok'ra relationship penalty.
+- Make the liaison leave and resolve one accepted failure when the six-hour meeting window expires without a donation.
+- Retain a minimal legacy container definition only for unpublished `r1/r2` save migration, automatically remove stale containers on load, and remove the obsolete container components and hauling job.
+- Reuse the consolidated persistence, cleanup, anti-repetition, single-visible-operation and duplicate-resolution protections.
+- Keep `MedicalSupplyHandoff = 4` without renumbering existing archetypes and raise the organic-operation framework save version to `5`.
+- Add the short developer action `Force Tok'ra medical resupply offer`, English and French texts, durable tests and wiki documentation.
+- Raise the assembly version to `0.2.52.0` and the mod metadata version to `0.2.52-dev`.
+
 ## 0.2.51-dev - Add organic Tok'ra wounded agent care
 
 - Add a third recurring Tok'ra organic-operation archetype: shelter and treat a seriously wounded or sick Tok'ra agent.

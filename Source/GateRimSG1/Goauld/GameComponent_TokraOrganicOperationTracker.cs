@@ -14,10 +14,14 @@ namespace GateRimSG1.Goauld
     public class GameComponent_TokraOrganicOperationTracker : GameComponent
     {
         private const int StateCheckIntervalTicks = 2500;
+        private const int MedicalSupplyStateCheckIntervalTicks = 250;
         private const int InitialMinimumDelayTicks = 180000;
         private const int InitialMaximumDelayTicks = 360000;
         private const int WoundedAgentStableDurationTicks = 5000;
         private const int WoundedAgentDepartureGraceTicks = 60000;
+        private const int MedicalSupplyArrivalMinimumDelayTicks = 2500;
+        private const int MedicalSupplyArrivalMaximumDelayTicks = 5000;
+        private const int MedicalSupplyDepartureGraceTicks = 60000;
 
         private int frameworkSaveVersion;
         private int nextStateCheckTick;
@@ -39,6 +43,13 @@ namespace GateRimSG1.Goauld
         private int woundedAgentStableSinceTick;
         private bool woundedAgentDepartureOrdered;
         private int woundedAgentDepartureDeadlineTick;
+        private Pawn activeMedicalSupplyLiaison;
+        private IntVec3 medicalSupplyMeetingCell = IntVec3.Invalid;
+        private int medicalSupplyArrivalTick;
+        private bool medicalSupplyArrivalNotified;
+        private bool medicalSupplyDepartureOrdered;
+        private Pawn departingMedicalSupplyLiaison;
+        private bool departingMedicalSupplyDeathPenaltyPending;
         private TokraOrganicOperationArchetype lastOfferedArchetype;
         private TokraOrganicOperationArchetype lastCompletedArchetype;
         private int completedOperationCount;
@@ -133,6 +144,32 @@ namespace GateRimSG1.Goauld
                 ref woundedAgentDepartureDeadlineTick,
                 "tokraOrganicWoundedAgentDepartureDeadlineTick",
                 0);
+            Scribe_References.Look(
+                ref activeMedicalSupplyLiaison,
+                "tokraOrganicActiveMedicalSupplyLiaison");
+            Scribe_Values.Look(
+                ref medicalSupplyMeetingCell,
+                "tokraOrganicMedicalSupplyMeetingCell",
+                IntVec3.Invalid);
+            Scribe_Values.Look(
+                ref medicalSupplyArrivalTick,
+                "tokraOrganicMedicalSupplyArrivalTick",
+                0);
+            Scribe_Values.Look(
+                ref medicalSupplyArrivalNotified,
+                "tokraOrganicMedicalSupplyArrivalNotified",
+                false);
+            Scribe_Values.Look(
+                ref medicalSupplyDepartureOrdered,
+                "tokraOrganicMedicalSupplyDepartureOrdered",
+                false);
+            Scribe_References.Look(
+                ref departingMedicalSupplyLiaison,
+                "tokraOrganicDepartingMedicalSupplyLiaison");
+            Scribe_Values.Look(
+                ref departingMedicalSupplyDeathPenaltyPending,
+                "tokraOrganicDepartingMedicalSupplyDeathPenaltyPending",
+                false);
             Scribe_Values.Look(
                 ref lastOfferedArchetype,
                 "tokraOrganicLastOfferedArchetype",
@@ -176,7 +213,11 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            nextStateCheckTick = currentTick + StateCheckIntervalTicks;
+            int stateCheckInterval = IsMedicalSupplyStateActive()
+                ? MedicalSupplyStateCheckIntervalTicks
+                : StateCheckIntervalTicks;
+            nextStateCheckTick = currentTick + stateCheckInterval;
+            TickDepartingMedicalSupplyLiaison();
 
             if (activeState != TokraOrganicOperationState.None)
             {
@@ -393,6 +434,179 @@ namespace GateRimSG1.Goauld
                     null);
         }
 
+        public static bool IsMedicalSupplyLiaison(Pawn liaison)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            return tracker != null
+                && tracker.IsExactMedicalSupplyLiaison(liaison);
+        }
+
+        public static bool IsActiveMedicalSupplyLiaison(Pawn liaison)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            return tracker != null
+                && tracker.IsExactMedicalSupplyLiaison(liaison)
+                && tracker.activeState == TokraOrganicOperationState.Ready
+                && !tracker.IsOperationDeadlineExpired();
+        }
+
+        public static string GetMedicalSupplyLiaisonDisabledReason(
+            Pawn liaison,
+            Pawn negotiator)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return "GR_TokraOrganicOperation_TrackerUnavailable"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!tracker.IsExactMedicalSupplyLiaison(liaison))
+            {
+                return "GR_TokraMedicalSupply_NoLongerActive"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (tracker.activeState != TokraOrganicOperationState.Ready)
+            {
+                return "GR_TokraMedicalSupply_LiaisonEnRoute"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (tracker.IsOperationDeadlineExpired())
+            {
+                return "GR_TokraMedicalSupply_WindowExpired"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (negotiator == null
+                || negotiator.Dead
+                || negotiator.Downed
+                || negotiator.Faction != Faction.OfPlayer
+                || negotiator.RaceProps?.Humanlike != true
+                || negotiator.jobs == null)
+            {
+                return "GR_TokraSecureCommunicator_PlayerPawnRequired"
+                    .Translate()
+                    .ToString();
+            }
+
+            SkillRecord social = negotiator.skills?.GetSkill(
+                SkillDefOf.Social);
+
+            if (social == null || social.TotallyDisabled)
+            {
+                return "GR_TokraMedicalSupply_OperatorIncapable"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!negotiator.CanReach(
+                    liaison,
+                    Verse.AI.PathEndMode.Touch,
+                    Danger.Some))
+            {
+                return "GR_TokraMedicalSupply_CannotReachLiaison"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        public static bool TryOpenMedicalSupplyDialogue(
+            Pawn liaison,
+            Pawn negotiator)
+        {
+            string disabledReason = GetMedicalSupplyLiaisonDisabledReason(
+                liaison,
+                negotiator);
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            Find.WindowStack.Add(
+                new Dialog_TokraMedicalSupplyHandoff(
+                    liaison,
+                    negotiator));
+            return true;
+        }
+
+        public static bool TryCompleteMedicalSupplyHandoff(
+            Pawn liaison,
+            Pawn negotiator)
+        {
+            GameComponent_TokraOrganicOperationTracker tracker
+                = GetCurrentTracker();
+            string disabledReason = GetMedicalSupplyLiaisonDisabledReason(
+                liaison,
+                negotiator);
+
+            if (tracker == null || !string.IsNullOrEmpty(disabledReason))
+            {
+                if (!string.IsNullOrEmpty(disabledReason))
+                {
+                    Messages.Message(
+                        disabledReason,
+                        MessageTypeDefOf.RejectInput,
+                        historical: false);
+                }
+
+                return false;
+            }
+
+            Map map = liaison.Map;
+
+            if (!TokraOrganicMedicalSupplyUtility
+                .HasEnoughIndustrialMedicine(map, negotiator))
+            {
+                Messages.Message(
+                    "GR_TokraMedicalSupply_NeedMedicine".Translate(
+                        TokraOrganicMedicalSupplyUtility
+                            .RequiredMedicineCount.ToString()),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            if (!TokraOrganicMedicalSupplyUtility
+                .TryConsumeIndustrialMedicine(map, negotiator))
+            {
+                Messages.Message(
+                    "GR_TokraMedicalSupply_NeedMedicine".Translate(
+                        TokraOrganicMedicalSupplyUtility
+                            .RequiredMedicineCount.ToString()),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            tracker.BeginMedicalSupplyDeparture(
+                liaison,
+                monitorDeath: true);
+
+            return tracker.TryResolveActiveOperation(
+                TokraOrganicOperationOutcome.Succeeded,
+                negotiator,
+                null);
+        }
+
         public static bool DebugForceOpportunity(Map map)
         {
             return DebugForceSpecificOpportunity(
@@ -414,6 +628,13 @@ namespace GateRimSG1.Goauld
                 TokraOrganicOperationArchetype.WoundedAgentCare);
         }
 
+        public static bool DebugForceMedicalSupplyOpportunity(Map map)
+        {
+            return DebugForceSpecificOpportunity(
+                map,
+                TokraOrganicOperationArchetype.MedicalSupplyHandoff);
+        }
+
         public static bool DebugMakeActiveReady(Map map)
         {
             GameComponent_TokraOrganicOperationTracker tracker
@@ -431,7 +652,9 @@ namespace GateRimSG1.Goauld
 
             if (definition == null
                 || definition.Archetype
-                    == TokraOrganicOperationArchetype.WoundedAgentCare)
+                    == TokraOrganicOperationArchetype.WoundedAgentCare
+                || definition.Archetype
+                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
             {
                 return false;
             }
@@ -497,6 +720,11 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.WoundedAgentCare)
             {
                 failureTextKey = "GR_TokraWoundedAgent_FailedTimeoutText";
+            }
+            else if (tracker.activeArchetype
+                == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+            {
+                failureTextKey = "GR_TokraMedicalSupply_TimedOutText";
             }
 
             return tracker.TryResolveActiveOperation(
@@ -574,9 +802,13 @@ namespace GateRimSG1.Goauld
                     string lostTextKey = definition.Archetype
                         == TokraOrganicOperationArchetype.WoundedAgentCare
                         ? "GR_TokraWoundedAgent_FailedLostText"
-                        : definition.HasPhysicalObjective
-                            ? "GR_TokraOrganicOperation_DeadDropLostLetterText"
-                            : null;
+                        : definition.Archetype
+                            == TokraOrganicOperationArchetype
+                                .MedicalSupplyHandoff
+                            ? "GR_TokraMedicalSupply_LiaisonLostText"
+                            : definition.HasPhysicalObjective
+                                ? "GR_TokraOrganicOperation_DeadDropLostLetterText"
+                                : null;
 
                     TryResolveActiveOperation(
                         TokraOrganicOperationOutcome.Failed,
@@ -615,6 +847,13 @@ namespace GateRimSG1.Goauld
             }
 
             if (definition.Archetype
+                == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+            {
+                TickAcceptedMedicalSupply(currentTick);
+                return;
+            }
+
+            if (definition.Archetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare)
             {
                 TickAcceptedWoundedAgent(currentTick);
@@ -628,6 +867,189 @@ namespace GateRimSG1.Goauld
             }
 
             TickAcceptedObservation(currentTick);
+        }
+
+        private void TickAcceptedMedicalSupply(int currentTick)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            if (definition == null)
+            {
+                return;
+            }
+
+            if (operationDeadlineTick > 0
+                && currentTick >= operationDeadlineTick)
+            {
+                BeginMedicalSupplyDeparture(
+                    activeMedicalSupplyLiaison,
+                    monitorDeath: false);
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    activeMedicalSupplyLiaison,
+                    "GR_TokraMedicalSupply_TimedOutText");
+                return;
+            }
+
+            if (activeMedicalSupplyLiaison == null)
+            {
+                if (currentTick < medicalSupplyArrivalTick)
+                {
+                    return;
+                }
+
+                Pawn liaison;
+                IntVec3 meetingCell;
+
+                if (!TokraOrganicMedicalSupplyUtility.TrySpawnLiaison(
+                        GetActiveMap(),
+                        definition.DeadlineTicks
+                            + MedicalSupplyDepartureGraceTicks,
+                        out liaison,
+                        out meetingCell))
+                {
+                    medicalSupplyArrivalTick
+                        = currentTick + MedicalSupplyStateCheckIntervalTicks;
+                    return;
+                }
+
+                activeMedicalSupplyLiaison = liaison;
+                medicalSupplyMeetingCell = meetingCell;
+                activeState = TokraOrganicOperationState.Accepted;
+                reportReadyTick = currentTick;
+                operationDeadlineTick
+                    = currentTick + definition.DeadlineTicks;
+                readyNotificationSent = false;
+                medicalSupplyArrivalNotified = false;
+                medicalSupplyDepartureOrdered = false;
+
+                Find.LetterStack?.ReceiveLetter(
+                    "GR_TokraMedicalSupply_ArrivalLabel".Translate(),
+                    "GR_TokraMedicalSupply_ArrivalText".Translate(
+                        liaison.LabelShortCap,
+                        GetRoundedUpHours(
+                            operationDeadlineTick - currentTick).ToString()),
+                    LetterDefOf.NeutralEvent,
+                    liaison);
+
+                GR_Log.Message(
+                    "Tok'ra medical supply liaison "
+                    + $"{liaison.LabelShortCap} entered map {activeMapId}; "
+                    + $"meeting cell {medicalSupplyMeetingCell}; deadline "
+                    + $"{operationDeadlineTick}.");
+                return;
+            }
+
+            Pawn activeLiaison = activeMedicalSupplyLiaison;
+
+            if (activeLiaison.Dead)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    activeLiaison,
+                    "GR_TokraMedicalSupply_LiaisonDeathText");
+                return;
+            }
+
+            if (activeLiaison.Destroyed
+                || activeLiaison.MapHeld == null
+                || activeLiaison.MapHeld.uniqueID != activeMapId)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    activeLiaison,
+                    "GR_TokraMedicalSupply_LiaisonLostText");
+                return;
+            }
+
+            if (activeLiaison.IsPrisonerOfColony)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    activeLiaison,
+                    "GR_TokraMedicalSupply_LiaisonCapturedText");
+                return;
+            }
+
+            if (activeState == TokraOrganicOperationState.Ready)
+            {
+                return;
+            }
+
+            if (!TokraOrganicMedicalSupplyUtility.HasReachedMeetingPoint(
+                    activeLiaison,
+                    medicalSupplyMeetingCell))
+            {
+                return;
+            }
+
+            activeState = TokraOrganicOperationState.Ready;
+            readyNotificationSent = true;
+
+            if (!medicalSupplyArrivalNotified)
+            {
+                medicalSupplyArrivalNotified = true;
+                Messages.Message(
+                    "GR_TokraMedicalSupply_LiaisonReady".Translate(
+                        activeLiaison.LabelShortCap),
+                    activeLiaison,
+                    MessageTypeDefOf.NeutralEvent,
+                    historical: true);
+            }
+        }
+
+        private void TickDepartingMedicalSupplyLiaison()
+        {
+            Pawn liaison = departingMedicalSupplyLiaison;
+
+            if (liaison == null)
+            {
+                departingMedicalSupplyDeathPenaltyPending = false;
+                return;
+            }
+
+            if (liaison.Dead)
+            {
+                if (departingMedicalSupplyDeathPenaltyPending)
+                {
+                    departingMedicalSupplyDeathPenaltyPending = false;
+                    GameComponent_TokraTrustTracker
+                        .NotifyOrganicMedicalSupplyLiaisonDeath();
+
+                    Find.LetterStack?.ReceiveLetter(
+                        "GR_TokraMedicalSupply_PostHandoffDeathLabel"
+                            .Translate(),
+                        "GR_TokraMedicalSupply_PostHandoffDeathText"
+                            .Translate(liaison.LabelShortCap),
+                        LetterDefOf.NegativeEvent,
+                        liaison);
+                }
+
+                departingMedicalSupplyLiaison = null;
+                return;
+            }
+
+            if (liaison.Destroyed || liaison.MapHeld == null)
+            {
+                departingMedicalSupplyLiaison = null;
+                departingMedicalSupplyDeathPenaltyPending = false;
+            }
+        }
+
+        private void BeginMedicalSupplyDeparture(
+            Pawn liaison,
+            bool monitorDeath)
+        {
+            if (liaison == null || liaison.Dead || liaison.Destroyed)
+            {
+                return;
+            }
+
+            medicalSupplyDepartureOrdered
+                = TokraOrganicMedicalSupplyUtility.TryOrderDeparture(liaison);
+            departingMedicalSupplyLiaison = liaison;
+            departingMedicalSupplyDeathPenaltyPending = monitorDeath;
         }
 
         private void TickAcceptedWoundedAgent(int currentTick)
@@ -837,6 +1259,8 @@ namespace GateRimSG1.Goauld
                 || definition.HasPhysicalObjective
                 || definition.Archetype
                     == TokraOrganicOperationArchetype.WoundedAgentCare
+                || definition.Archetype
+                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff
                 || activeState == TokraOrganicOperationState.Offered
                 || activeState == TokraOrganicOperationState.None
                 || currentTick < reportReadyTick)
@@ -959,6 +1383,11 @@ namespace GateRimSG1.Goauld
             woundedAgentStableSinceTick = 0;
             woundedAgentDepartureOrdered = false;
             woundedAgentDepartureDeadlineTick = 0;
+            activeMedicalSupplyLiaison = null;
+            medicalSupplyMeetingCell = IntVec3.Invalid;
+            medicalSupplyArrivalTick = 0;
+            medicalSupplyArrivalNotified = false;
+            medicalSupplyDepartureOrdered = false;
             lastOfferedArchetype = archetype;
             nextOpportunityTick = 0;
 
@@ -997,6 +1426,14 @@ namespace GateRimSG1.Goauld
                     return TryAcceptWoundedAgentCare(map, operatorPawn);
                 }
 
+                if (definition.Archetype
+                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+                {
+                    return TryAcceptMedicalSupplyHandoff(
+                        map,
+                        operatorPawn);
+                }
+
                 return definition.HasPhysicalObjective
                     ? TryAcceptPhysicalObjectiveOperation(map, operatorPawn)
                     : TryAcceptObservationOperation(map, operatorPawn);
@@ -1012,6 +1449,56 @@ namespace GateRimSG1.Goauld
                     TokraOrganicOperationOutcome.Succeeded,
                     operatorPawn,
                     null);
+        }
+
+        private bool TryAcceptMedicalSupplyHandoff(
+            Map map,
+            Pawn operatorPawn)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            if (definition == null || map == null)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            int arrivalDelay = Rand.RangeInclusive(
+                MedicalSupplyArrivalMinimumDelayTicks,
+                MedicalSupplyArrivalMaximumDelayTicks);
+
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            medicalSupplyArrivalTick = currentTick + arrivalDelay;
+            reportReadyTick = medicalSupplyArrivalTick;
+            operationDeadlineTick = 0;
+            readyNotificationSent = false;
+            resolutionApplied = false;
+            activeDeadDrop = null;
+            activeMedicalSupplyLiaison = null;
+            medicalSupplyMeetingCell = IntVec3.Invalid;
+            medicalSupplyArrivalNotified = false;
+            medicalSupplyDepartureOrdered = false;
+            nextStateCheckTick
+                = currentTick + MedicalSupplyStateCheckIntervalTicks;
+
+            Messages.Message(
+                "GR_TokraMedicalSupply_Accepted".Translate(
+                    operatorPawn?.LabelShortCap ?? "?",
+                    GetRoundedUpHours(arrivalDelay).ToString()),
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Accepted Tok'ra organic operation "
+                + $"{definition.DebugLabel} on map {map.uniqueID}; "
+                + $"liaison arrival scheduled at tick "
+                + $"{medicalSupplyArrivalTick}; deadline "
+                + $"{operationDeadlineTick}; operator "
+                + $"{operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
         }
 
         private bool TryAcceptWoundedAgentCare(
@@ -1121,7 +1608,6 @@ namespace GateRimSG1.Goauld
             TokraOrganicOperationDefinition definition
                 = GetActiveDefinition();
             Thing objective;
-
             if (definition == null
                 || !TokraOrganicOperationFramework.TryPlaceObjective(
                     map,
@@ -1144,21 +1630,26 @@ namespace GateRimSG1.Goauld
             resolutionApplied = false;
             activeDeadDrop = objective;
 
+            string acceptedKey
+                = "GR_TokraOrganicOperation_DeadDropAccepted";
+            string locatedLabelKey
+                = "GR_TokraOrganicOperation_DeadDropLocatedLetterLabel";
+            string locatedTextKey
+                = "GR_TokraOrganicOperation_DeadDropLocatedLetterText";
+            string remainingHours = GetRoundedUpHours(
+                definition.DeadlineTicks).ToString();
+
             Messages.Message(
-                "GR_TokraOrganicOperation_DeadDropAccepted".Translate(
+                acceptedKey.Translate(
                     operatorPawn?.LabelShortCap ?? "?",
-                    GetRoundedUpHours(definition.DeadlineTicks).ToString()),
+                    remainingHours),
                 objective,
                 MessageTypeDefOf.NeutralEvent,
                 historical: true);
 
             Find.LetterStack?.ReceiveLetter(
-                "GR_TokraOrganicOperation_DeadDropLocatedLetterLabel"
-                    .Translate(),
-                "GR_TokraOrganicOperation_DeadDropLocatedLetterText"
-                    .Translate(
-                        GetRoundedUpHours(
-                            definition.DeadlineTicks).ToString()),
+                locatedLabelKey.Translate(),
+                locatedTextKey.Translate(remainingHours),
                 LetterDefOf.NeutralEvent,
                 objective);
 
@@ -1171,6 +1662,7 @@ namespace GateRimSG1.Goauld
 
             return true;
         }
+
 
         private bool TryResolveActiveOperation(
             TokraOrganicOperationOutcome outcome,
@@ -1195,6 +1687,8 @@ namespace GateRimSG1.Goauld
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             bool isWoundedAgent = definition.Archetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare;
+            bool isMedicalSupply = definition.Archetype
+                == TokraOrganicOperationArchetype.MedicalSupplyHandoff;
 
             if (outcome == TokraOrganicOperationOutcome.Succeeded)
             {
@@ -1208,6 +1702,16 @@ namespace GateRimSG1.Goauld
                         return false;
                     }
                 }
+                else if (isMedicalSupply)
+                {
+                    if (activeMedicalSupplyLiaison == null
+                        || activeMedicalSupplyLiaison.Dead
+                        || activeState != TokraOrganicOperationState.Ready
+                        || IsOperationDeadlineExpired())
+                    {
+                        return false;
+                    }
+                }
                 else if (IsOperationDeadlineExpired()
                     || (!definition.HasPhysicalObjective
                         && currentTick < reportReadyTick))
@@ -1216,14 +1720,27 @@ namespace GateRimSG1.Goauld
                 }
             }
 
+            if (isMedicalSupply
+                && outcome == TokraOrganicOperationOutcome.Failed)
+            {
+                BeginMedicalSupplyDeparture(
+                    activeMedicalSupplyLiaison,
+                    monitorDeath: false);
+            }
+
             resolutionApplied = true;
             Pawn patient = activeWoundedAgent;
             Thing patientTarget = patient != null && patient.Spawned
                 ? patient
                 : null;
+            Thing liaisonTarget = activeMedicalSupplyLiaison != null
+                    && activeMedicalSupplyLiaison.Spawned
+                ? activeMedicalSupplyLiaison
+                : null;
             Thing letterTarget = operatorPawn
                 ?? activeDeadDrop
                 ?? patientTarget
+                ?? liaisonTarget
                 ?? FindPoweredCommunicator(GetActiveMap());
 
             if (outcome == TokraOrganicOperationOutcome.Succeeded)
@@ -1231,6 +1748,12 @@ namespace GateRimSG1.Goauld
                 GrantIntellectualExperience(
                     operatorPawn,
                     definition.IntellectualXp);
+                GrantMedicineExperience(
+                    operatorPawn,
+                    definition.MedicineXp);
+                GrantSocialExperience(
+                    operatorPawn,
+                    definition.SocialXp);
                 completedOperationCount++;
                 lastCompletedArchetype = activeArchetype;
             }
@@ -1257,7 +1780,12 @@ namespace GateRimSG1.Goauld
                 + $"map {activeMapId}; operator "
                 + $"{operatorPawn?.LabelShortCap ?? "none"}; "
                 + $"patient {patient?.LabelShortCap ?? "none"}; "
-                + $"XP {(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.IntellectualXp : 0)}.");
+                + $"Intellectual XP "
+                + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.IntellectualXp : 0)}; "
+                + $"Medicine XP "
+                + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.MedicineXp : 0)}; "
+                + $"Social XP "
+                + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.SocialXp : 0)}.");
 
             bool preservePatientAfterFailure = patient != null
                 && (patient.Dead
@@ -1337,6 +1865,35 @@ namespace GateRimSG1.Goauld
                         "GR_TokraOrganicOperation_FailedLetterText"
                             .Translate(),
                         LetterDefOf.NegativeEvent);
+                }
+
+                return;
+            }
+
+            if (definition.Archetype
+                == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+            {
+                if (outcome == TokraOrganicOperationOutcome.Succeeded)
+                {
+                    Find.LetterStack?.ReceiveLetter(
+                        "GR_TokraMedicalSupply_SuccessLabel".Translate(),
+                        "GR_TokraMedicalSupply_SuccessText".Translate(
+                            operatorPawn?.LabelShortCap ?? "?",
+                            definition.SocialXp.ToString()),
+                        LetterDefOf.PositiveEvent,
+                        letterTarget);
+                }
+                else
+                {
+                    string textKey = string.IsNullOrEmpty(failureTextKey)
+                        ? "GR_TokraMedicalSupply_TimedOutText"
+                        : failureTextKey;
+
+                    Find.LetterStack?.ReceiveLetter(
+                        "GR_TokraMedicalSupply_FailedLabel".Translate(),
+                        textKey.Translate(),
+                        LetterDefOf.NegativeEvent,
+                        letterTarget);
                 }
 
                 return;
@@ -1480,9 +2037,24 @@ namespace GateRimSG1.Goauld
 
             return deadDrop != null
                 && definition != null
-                && definition.HasPhysicalObjective
+                && definition.Archetype
+                    == TokraOrganicOperationArchetype.DeadDropRecovery
                 && activeState == TokraOrganicOperationState.Accepted
                 && activeDeadDrop == deadDrop;
+        }
+
+        private bool IsExactMedicalSupplyLiaison(Pawn liaison)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            return liaison != null
+                && definition != null
+                && definition.Archetype
+                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff
+                && (activeState == TokraOrganicOperationState.Accepted
+                    || activeState == TokraOrganicOperationState.Ready)
+                && activeMedicalSupplyLiaison == liaison;
         }
 
         private bool IsOperationDeadlineExpired()
@@ -1611,6 +2183,34 @@ namespace GateRimSG1.Goauld
                         .ToString();
                 }
             }
+            else if (definition.Archetype
+                == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+            {
+                if (activeMedicalSupplyLiaison == null)
+                {
+                    status = definition.ActiveStatusKey.Translate(
+                        GetRoundedUpHours(
+                            medicalSupplyArrivalTick - currentTick).ToString())
+                        .ToString();
+                }
+                else if (activeState == TokraOrganicOperationState.Ready)
+                {
+                    status = definition.ReadyStatusKey.Translate(
+                        activeMedicalSupplyLiaison.LabelShortCap,
+                        GetRoundedUpHours(
+                            operationDeadlineTick - currentTick).ToString())
+                        .ToString();
+                }
+                else
+                {
+                    status = "GR_TokraMedicalSupply_StatusApproaching"
+                        .Translate(
+                            activeMedicalSupplyLiaison.LabelShortCap,
+                            GetRoundedUpHours(
+                                operationDeadlineTick - currentTick).ToString())
+                        .ToString();
+                }
+            }
             else if (definition.HasPhysicalObjective)
             {
                 status = definition.ActiveStatusKey.Translate(
@@ -1652,6 +2252,37 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        private static void GrantMedicineExperience(Pawn pawn, int amount)
+        {
+            if (amount <= 0)
+            {
+                return;
+            }
+
+            SkillRecord medicine = pawn?.skills?.GetSkill(
+                SkillDefOf.Medicine);
+
+            if (medicine != null && !medicine.TotallyDisabled)
+            {
+                medicine.Learn(amount, true);
+            }
+        }
+
+        private static void GrantSocialExperience(Pawn pawn, int amount)
+        {
+            if (amount <= 0)
+            {
+                return;
+            }
+
+            SkillRecord social = pawn?.skills?.GetSkill(SkillDefOf.Social);
+
+            if (social != null && !social.TotallyDisabled)
+            {
+                social.Learn(amount, true);
+            }
+        }
+
         private void DestroyActiveObjective()
         {
             TokraOrganicOperationDefinition definition
@@ -1683,6 +2314,14 @@ namespace GateRimSG1.Goauld
                     activeWoundedAgent);
             }
 
+            if (activeMedicalSupplyLiaison != null
+                && activeMedicalSupplyLiaison
+                    != departingMedicalSupplyLiaison)
+            {
+                TokraOrganicMedicalSupplyUtility.TryOrderDeparture(
+                    activeMedicalSupplyLiaison);
+            }
+
             activeArchetype = TokraOrganicOperationArchetype.None;
             activeState = TokraOrganicOperationState.None;
             activeMapId = -1;
@@ -1700,11 +2339,18 @@ namespace GateRimSG1.Goauld
             woundedAgentStableSinceTick = 0;
             woundedAgentDepartureOrdered = false;
             woundedAgentDepartureDeadlineTick = 0;
+            activeMedicalSupplyLiaison = null;
+            medicalSupplyMeetingCell = IntVec3.Invalid;
+            medicalSupplyArrivalTick = 0;
+            medicalSupplyArrivalNotified = false;
+            medicalSupplyDepartureOrdered = false;
         }
 
         private void RepairLoadedState()
         {
             int previousFrameworkSaveVersion = frameworkSaveVersion;
+
+            DestroyLegacyMedicalSupplyContainers();
 
             completedOperationCount = Math.Max(0, completedOperationCount);
             failedOperationCount = Math.Max(0, failedOperationCount);
@@ -1760,7 +2406,10 @@ namespace GateRimSG1.Goauld
             else if (activeState == TokraOrganicOperationState.Accepted
                 || activeState == TokraOrganicOperationState.Ready)
             {
-                if (operationDeadlineTick <= 0)
+                if (operationDeadlineTick <= 0
+                    && definition.Archetype
+                        != TokraOrganicOperationArchetype
+                            .MedicalSupplyHandoff)
                 {
                     operationDeadlineTick
                         = Math.Max(currentTick, acceptedTick)
@@ -1824,6 +2473,80 @@ namespace GateRimSG1.Goauld
                         woundedAgentDepartureDeadlineTick = 0;
                     }
                 }
+                else if (definition.Archetype
+                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+                {
+                    activeWoundedAgent = null;
+                    woundedAgentStableSinceTick = 0;
+                    woundedAgentDepartureOrdered = false;
+                    woundedAgentDepartureDeadlineTick = 0;
+
+                    if (activeDeadDrop != null && !activeDeadDrop.Destroyed)
+                    {
+                        activeDeadDrop.Destroy(DestroyMode.Vanish);
+                    }
+
+                    activeDeadDrop = null;
+
+                    if (previousFrameworkSaveVersion
+                        < TokraOrganicOperationFramework.CurrentSaveVersion)
+                    {
+                        activeMedicalSupplyLiaison = null;
+                        medicalSupplyMeetingCell = IntVec3.Invalid;
+                        medicalSupplyArrivalTick
+                            = currentTick + MedicalSupplyStateCheckIntervalTicks;
+                        reportReadyTick = medicalSupplyArrivalTick;
+                        operationDeadlineTick = 0;
+                        medicalSupplyArrivalNotified = false;
+                        medicalSupplyDepartureOrdered = false;
+                        activeState = TokraOrganicOperationState.Accepted;
+                    }
+                    else if (activeMedicalSupplyLiaison == null)
+                    {
+                        if (medicalSupplyArrivalTick <= 0)
+                        {
+                            medicalSupplyArrivalTick
+                                = currentTick + MedicalSupplyStateCheckIntervalTicks;
+                        }
+
+                        reportReadyTick = medicalSupplyArrivalTick;
+
+                        operationDeadlineTick = 0;
+
+                        medicalSupplyMeetingCell = IntVec3.Invalid;
+                        medicalSupplyArrivalNotified = false;
+                        medicalSupplyDepartureOrdered = false;
+                        activeState = TokraOrganicOperationState.Accepted;
+                    }
+                    else
+                    {
+                        medicalSupplyArrivalTick = currentTick;
+                        reportReadyTick = currentTick;
+
+                        if (operationDeadlineTick <= currentTick)
+                        {
+                            operationDeadlineTick
+                                = currentTick + definition.DeadlineTicks;
+                        }
+
+                        if (!medicalSupplyMeetingCell.IsValid
+                            && activeMedicalSupplyLiaison.Spawned)
+                        {
+                            medicalSupplyMeetingCell
+                                = activeMedicalSupplyLiaison.Position;
+                        }
+
+                        bool liaisonReady = medicalSupplyArrivalNotified
+                            || TokraOrganicMedicalSupplyUtility
+                                .HasReachedMeetingPoint(
+                                    activeMedicalSupplyLiaison,
+                                    medicalSupplyMeetingCell);
+                        activeState = liaisonReady
+                            ? TokraOrganicOperationState.Ready
+                            : TokraOrganicOperationState.Accepted;
+                        readyNotificationSent = liaisonReady;
+                    }
+                }
                 else if (definition.HasPhysicalObjective)
                 {
                     activeWoundedAgent = null;
@@ -1885,6 +2608,48 @@ namespace GateRimSG1.Goauld
                 + $"{activeMapId}.");
         }
 
+        private bool IsMedicalSupplyStateActive()
+        {
+            return activeArchetype
+                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff
+                && (activeState == TokraOrganicOperationState.Accepted
+                    || activeState == TokraOrganicOperationState.Ready);
+        }
+
+        private static void DestroyLegacyMedicalSupplyContainers()
+        {
+            ThingDef legacyContainerDef
+                = DefDatabase<ThingDef>.GetNamedSilentFail(
+                    "SG1_TokraOrganicMedicalSupplyContainer");
+
+            if (legacyContainerDef == null || Find.Maps == null)
+            {
+                return;
+            }
+
+            for (int mapIndex = 0; mapIndex < Find.Maps.Count; mapIndex++)
+            {
+                Map map = Find.Maps[mapIndex];
+                List<Thing> containers = map?.listerThings
+                    ?.ThingsOfDef(legacyContainerDef);
+
+                if (containers == null || containers.Count == 0)
+                {
+                    continue;
+                }
+
+                for (int index = containers.Count - 1; index >= 0; index--)
+                {
+                    Thing container = containers[index];
+
+                    if (container != null && !container.Destroyed)
+                    {
+                        container.Destroy(DestroyMode.Vanish);
+                    }
+                }
+            }
+        }
+
         private static int GetRoundedUpHours(int ticks)
         {
             return Math.Max(0, (int)Math.Ceiling(Math.Max(0, ticks) / 2500f));
@@ -1917,7 +2682,8 @@ namespace GateRimSG1.Goauld
         None = 0,
         GoauldObservation = 1,
         DeadDropRecovery = 2,
-        WoundedAgentCare = 3
+        WoundedAgentCare = 3,
+        MedicalSupplyHandoff = 4
     }
 
     public enum TokraOrganicOperationState

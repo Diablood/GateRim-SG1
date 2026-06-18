@@ -68,6 +68,26 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Force Tok'ra medical resupply offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceOrganicMedicalSupplyOpportunity()
+        {
+            if (!GameComponent_TokraOrganicOperationTracker
+                .DebugForceMedicalSupplyOpportunity(Find.CurrentMap))
+            {
+                ShowUnavailableMessage();
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraMedicalSupply_DebugForced".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Advance active Tok'ra operation",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

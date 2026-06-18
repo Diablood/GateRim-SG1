@@ -10,4 +10,9 @@
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraSecureOrganicDeadDrop</driverClass>
         <reportString>securing a Tok'ra encrypted intelligence module.</reportString>
     </JobDef>
+    <JobDef>
+        <defName>SG1_TalkToTokraMedicalSupplyLiaison</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraMedicalSupplyDialogue</driverClass>
+        <reportString>speaking with a Tok'ra medical liaison.</reportString>
+    </JobDef>
 </Defs>

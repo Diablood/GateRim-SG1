@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraMedicalSupply_Accept>Accepter la demande de ravitaillement médical Tok'ra</GR_TokraMedicalSupply_Accept>
+    <GR_TokraMedicalSupply_OfferLabel>Demande de ravitaillement médical Tok'ra</GR_TokraMedicalSupply_OfferLabel>
+    <GR_TokraMedicalSupply_OfferText>Une cellule Tok'ra vient d'ouvrir un canal discret pour demander deux unités de médicaments industriels. Si la colonie accepte, un agent de liaison rejoindra la base pour récupérer les fournitures en personne.
+
+Sélectionnez un colon, puis faites un clic droit sur le communicateur sécurisé Tok'ra alimenté pour répondre. L'offre restera disponible pendant environ {0} heures. La cellule ignore l'état réel des réserves de la colonie. Ignorer la demande n'entraîne aucune conséquence.</GR_TokraMedicalSupply_OfferText>
+    <GR_TokraMedicalSupply_OfferExpired>Le canal de ravitaillement médical Tok'ra s'est refermé sans réponse.</GR_TokraMedicalSupply_OfferExpired>
+    <GR_TokraMedicalSupply_Accepted>{0} a accepté la demande de ravitaillement médical Tok'ra. Un agent de liaison devrait atteindre la colonie dans environ {1} heures.</GR_TokraMedicalSupply_Accepted>
+
+    <GR_TokraMedicalSupply_ArrivalLabel>Arrivée d'un agent de liaison Tok'ra</GR_TokraMedicalSupply_ArrivalLabel>
+    <GR_TokraMedicalSupply_ArrivalText>{0}, un agent de liaison Tok'ra, vient d'entrer sur la carte. Il se dirige vers la zone de livraison Tok'ra, le communicateur sécurisé ou un point central de la colonie. Une fois en place, envoyez un colon capable de Social lui parler. La remise doit être conclue dans environ {1} heures.</GR_TokraMedicalSupply_ArrivalText>
+    <GR_TokraMedicalSupply_LiaisonReady>{0} a atteint le point de rencontre Tok'ra et attend un représentant de la colonie.</GR_TokraMedicalSupply_LiaisonReady>
+
+    <GR_TokraMedicalSupply_TalkToLiaison>Parler à {0} du ravitaillement Tok'ra</GR_TokraMedicalSupply_TalkToLiaison>
+    <GR_TokraMedicalSupply_NoLongerActive>Cet agent n'est plus lié à un transfert médical Tok'ra actif</GR_TokraMedicalSupply_NoLongerActive>
+    <GR_TokraMedicalSupply_LiaisonEnRoute>L'agent Tok'ra n'a pas encore atteint le point de rencontre</GR_TokraMedicalSupply_LiaisonEnRoute>
+    <GR_TokraMedicalSupply_WindowExpired>La fenêtre de remise médicale Tok'ra est refermée</GR_TokraMedicalSupply_WindowExpired>
+    <GR_TokraMedicalSupply_OperatorIncapable>Nécessite un colon capable de Social</GR_TokraMedicalSupply_OperatorIncapable>
+    <GR_TokraMedicalSupply_CannotReachLiaison>Aucun chemin sûr vers l'agent de liaison Tok'ra</GR_TokraMedicalSupply_CannotReachLiaison>
+    <GR_TokraMedicalSupply_LiaisonReserved>Un autre colon parle déjà à l'agent Tok'ra</GR_TokraMedicalSupply_LiaisonReserved>
+    <GR_TokraMedicalSupply_NeedMedicine>La colonie ne dispose pas de {0} médicaments industriels accessibles</GR_TokraMedicalSupply_NeedMedicine>
+    <GR_TokraMedicalSupply_JobUnavailable>Interaction avec l'agent Tok'ra indisponible</GR_TokraMedicalSupply_JobUnavailable>
+
+    <GR_TokraMedicalSupply_DialogTitle>Entretien avec {0}</GR_TokraMedicalSupply_DialogTitle>
+    <GR_TokraMedicalSupply_DialogText>{0} confirme que sa cellule a besoin de {1} unités de médicaments industriels. Les fournitures seront prélevées directement parmi les réserves accessibles de la colonie dès que la remise sera validée.</GR_TokraMedicalSupply_DialogText>
+    <GR_TokraMedicalSupply_GiveMedicine>Donner 2 médicaments</GR_TokraMedicalSupply_GiveMedicine>
+    <GR_TokraMedicalSupply_CancelDialogue>Annuler</GR_TokraMedicalSupply_CancelDialogue>
+
+    <GR_TokraMedicalSupply_StatusOffered>demande de ravitaillement médical en attente de réponse ({0} h restantes)</GR_TokraMedicalSupply_StatusOffered>
+    <GR_TokraMedicalSupply_StatusAwaitingArrival>agent de liaison médical attendu dans environ {0} h</GR_TokraMedicalSupply_StatusAwaitingArrival>
+    <GR_TokraMedicalSupply_StatusApproaching>{0} rejoint le point de rencontre ({1} h avant son départ)</GR_TokraMedicalSupply_StatusApproaching>
+    <GR_TokraMedicalSupply_StatusReady>{0} attend la remise de deux médicaments industriels ({1} h restantes)</GR_TokraMedicalSupply_StatusReady>
+
+    <GR_TokraMedicalSupply_SuccessLabel>Ravitaillement médical Tok'ra remis</GR_TokraMedicalSupply_SuccessLabel>
+    <GR_TokraMedicalSupply_SuccessText>{0} a remis deux unités de médicaments industriels à l'agent de liaison Tok'ra. L'échange est immédiatement considéré comme réussi. Le négociateur gagne {1} XP en Social et la confiance de la cellule envers la colonie s'améliore.</GR_TokraMedicalSupply_SuccessText>
+    <GR_TokraMedicalSupply_FailedLabel>Échec du ravitaillement médical Tok'ra</GR_TokraMedicalSupply_FailedLabel>
+    <GR_TokraMedicalSupply_TimedOutText>L'agent de liaison Tok'ra a attendu plusieurs heures sans recevoir les deux médicaments demandés. Il quitte la colonie et la cellule hésitera davantage à compter sur elle.</GR_TokraMedicalSupply_TimedOutText>
+    <GR_TokraMedicalSupply_LiaisonDeathText>L'agent de liaison Tok'ra est mort avant que les fournitures aient pu être remises. La demande échoue et la cellule tient la colonie pour incapable d'assurer la rencontre.</GR_TokraMedicalSupply_LiaisonDeathText>
+    <GR_TokraMedicalSupply_LiaisonLostText>L'agent de liaison Tok'ra a disparu ou quitté la carte avant la remise des fournitures. La demande échoue.</GR_TokraMedicalSupply_LiaisonLostText>
+    <GR_TokraMedicalSupply_LiaisonCapturedText>L'agent de liaison Tok'ra a été capturé avant la remise des fournitures. La demande échoue et la cellule réagit avec méfiance.</GR_TokraMedicalSupply_LiaisonCapturedText>
+
+    <GR_TokraMedicalSupply_PostHandoffDeathLabel>Mort de l'agent de liaison Tok'ra</GR_TokraMedicalSupply_PostHandoffDeathLabel>
+    <GR_TokraMedicalSupply_PostHandoffDeathText>{0} est mort avant de pouvoir quitter la carte. La remise médicale reste validée, mais la perte de l'agent détériore les relations avec sa cellule.</GR_TokraMedicalSupply_PostHandoffDeathText>
+
+    <GR_TokraTrust_MedicalSupplySucceeded>La cellule Tok'ra confirme la réception des fournitures médicales. Sa confiance envers la colonie s'améliore.</GR_TokraTrust_MedicalSupplySucceeded>
+    <GR_TokraTrust_MedicalSupplyFailed>L'échec de la remise médicale rend la cellule Tok'ra légèrement plus prudente.</GR_TokraTrust_MedicalSupplyFailed>
+    <GR_TokraTrust_MedicalSupplyLiaisonDied>La mort de l'agent de liaison après la remise détériore la confiance de la cellule Tok'ra.</GR_TokraTrust_MedicalSupplyLiaisonDied>
+
+    <GR_TokraMedicalSupply_DebugForced>Opportunité organique de ravitaillement médical Tok'ra forcée.</GR_TokraMedicalSupply_DebugForced>
+</LanguageData>

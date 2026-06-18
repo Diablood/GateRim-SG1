@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraMedicalSupply_Accept>Accept Tok'ra medical resupply request</GR_TokraMedicalSupply_Accept>
+    <GR_TokraMedicalSupply_OfferLabel>Tok'ra medical resupply request</GR_TokraMedicalSupply_OfferLabel>
+    <GR_TokraMedicalSupply_OfferText>A Tok'ra cell has opened a discreet channel to request two units of industrial medicine. If the colony accepts, a liaison will come to the base and collect the supplies in person.
+
+Select a colonist, then right-click the powered Tok'ra secure communicator to respond. The offer will remain available for about {0} hours. The cell has no knowledge of the colony's current stocks. Ignoring the request carries no consequence.</GR_TokraMedicalSupply_OfferText>
+    <GR_TokraMedicalSupply_OfferExpired>The Tok'ra medical resupply channel has closed without a response.</GR_TokraMedicalSupply_OfferExpired>
+    <GR_TokraMedicalSupply_Accepted>{0} has accepted the Tok'ra medical resupply request. A liaison should reach the colony in about {1} hours.</GR_TokraMedicalSupply_Accepted>
+
+    <GR_TokraMedicalSupply_ArrivalLabel>Tok'ra liaison arriving</GR_TokraMedicalSupply_ArrivalLabel>
+    <GR_TokraMedicalSupply_ArrivalText>{0}, a Tok'ra liaison, has entered the map. The agent is heading for the Tok'ra delivery zone, the secure communicator, or a central colony meeting point. Once in position, send a colonist capable of Social to speak with the liaison. The handoff must be completed within about {1} hours.</GR_TokraMedicalSupply_ArrivalText>
+    <GR_TokraMedicalSupply_LiaisonReady>{0} has reached the Tok'ra meeting point and is waiting for a colony representative.</GR_TokraMedicalSupply_LiaisonReady>
+
+    <GR_TokraMedicalSupply_TalkToLiaison>Discuss the Tok'ra resupply with {0}</GR_TokraMedicalSupply_TalkToLiaison>
+    <GR_TokraMedicalSupply_NoLongerActive>This agent is no longer part of an active Tok'ra medical handoff</GR_TokraMedicalSupply_NoLongerActive>
+    <GR_TokraMedicalSupply_LiaisonEnRoute>The Tok'ra liaison has not yet reached the meeting point</GR_TokraMedicalSupply_LiaisonEnRoute>
+    <GR_TokraMedicalSupply_WindowExpired>The Tok'ra medical handoff window has closed</GR_TokraMedicalSupply_WindowExpired>
+    <GR_TokraMedicalSupply_OperatorIncapable>Requires a colonist capable of Social</GR_TokraMedicalSupply_OperatorIncapable>
+    <GR_TokraMedicalSupply_CannotReachLiaison>No safe path to the Tok'ra liaison</GR_TokraMedicalSupply_CannotReachLiaison>
+    <GR_TokraMedicalSupply_LiaisonReserved>Another colonist is already speaking with the Tok'ra liaison</GR_TokraMedicalSupply_LiaisonReserved>
+    <GR_TokraMedicalSupply_NeedMedicine>The colony does not have {0} accessible units of industrial medicine</GR_TokraMedicalSupply_NeedMedicine>
+    <GR_TokraMedicalSupply_JobUnavailable>Tok'ra liaison interaction unavailable</GR_TokraMedicalSupply_JobUnavailable>
+
+    <GR_TokraMedicalSupply_DialogTitle>Meeting with {0}</GR_TokraMedicalSupply_DialogTitle>
+    <GR_TokraMedicalSupply_DialogText>{0} confirms that the cell needs {1} units of industrial medicine. The supplies will be removed directly from the colony's accessible stocks when the handoff is confirmed.</GR_TokraMedicalSupply_DialogText>
+    <GR_TokraMedicalSupply_GiveMedicine>Give 2 medicine</GR_TokraMedicalSupply_GiveMedicine>
+    <GR_TokraMedicalSupply_CancelDialogue>Cancel</GR_TokraMedicalSupply_CancelDialogue>
+
+    <GR_TokraMedicalSupply_StatusOffered>medical resupply request awaiting a response ({0} h remaining)</GR_TokraMedicalSupply_StatusOffered>
+    <GR_TokraMedicalSupply_StatusAwaitingArrival>medical liaison expected in about {0} h</GR_TokraMedicalSupply_StatusAwaitingArrival>
+    <GR_TokraMedicalSupply_StatusApproaching>{0} is approaching the meeting point ({1} h before departure)</GR_TokraMedicalSupply_StatusApproaching>
+    <GR_TokraMedicalSupply_StatusReady>{0} is waiting for two units of industrial medicine ({1} h remaining)</GR_TokraMedicalSupply_StatusReady>
+
+    <GR_TokraMedicalSupply_SuccessLabel>Tok'ra medical resupply delivered</GR_TokraMedicalSupply_SuccessLabel>
+    <GR_TokraMedicalSupply_SuccessText>{0} handed two units of industrial medicine to the Tok'ra liaison. The exchange is immediately considered successful. The negotiator gains {1} Social XP and the cell's trust in the colony improves.</GR_TokraMedicalSupply_SuccessText>
+    <GR_TokraMedicalSupply_FailedLabel>Tok'ra medical resupply failed</GR_TokraMedicalSupply_FailedLabel>
+    <GR_TokraMedicalSupply_TimedOutText>The Tok'ra liaison waited several hours without receiving the requested medicine. The agent is leaving, and the cell will be more hesitant to rely on the colony.</GR_TokraMedicalSupply_TimedOutText>
+    <GR_TokraMedicalSupply_LiaisonDeathText>The Tok'ra liaison died before the supplies could be handed over. The request has failed, and the cell considers the colony unable to secure the meeting.</GR_TokraMedicalSupply_LiaisonDeathText>
+    <GR_TokraMedicalSupply_LiaisonLostText>The Tok'ra liaison disappeared or left the map before the supplies were handed over. The request has failed.</GR_TokraMedicalSupply_LiaisonLostText>
+    <GR_TokraMedicalSupply_LiaisonCapturedText>The Tok'ra liaison was captured before the supplies were handed over. The request has failed, and the cell reacts with distrust.</GR_TokraMedicalSupply_LiaisonCapturedText>
+
+    <GR_TokraMedicalSupply_PostHandoffDeathLabel>Tok'ra liaison killed</GR_TokraMedicalSupply_PostHandoffDeathLabel>
+    <GR_TokraMedicalSupply_PostHandoffDeathText>{0} died before leaving the map. The medical handoff remains completed, but the loss of the liaison damages relations with the cell.</GR_TokraMedicalSupply_PostHandoffDeathText>
+
+    <GR_TokraTrust_MedicalSupplySucceeded>The Tok'ra cell confirms receipt of the medical supplies. Its trust in the colony improves.</GR_TokraTrust_MedicalSupplySucceeded>
+    <GR_TokraTrust_MedicalSupplyFailed>The failed medical handoff makes the Tok'ra cell slightly more cautious.</GR_TokraTrust_MedicalSupplyFailed>
+    <GR_TokraTrust_MedicalSupplyLiaisonDied>The liaison's death after the handoff damages Tok'ra trust.</GR_TokraTrust_MedicalSupplyLiaisonDied>
+
+    <GR_TokraMedicalSupply_DebugForced>Forced a Tok'ra organic medical resupply opportunity.</GR_TokraMedicalSupply_DebugForced>
+</LanguageData>
