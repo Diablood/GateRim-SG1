@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <HediffDef>
+        <defName>SG1_TokraWoundedAgentSymbioteShock</defName>
+        <label>symbiote shock</label>
+        <description>The host and symbiote are both in acute systemic shock. The condition itself requires emergency tending in a colony medical bed; until treated, movement is impossible and the symbiote cannot sustain its usual regenerative response.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <isBad>true</isBad>
+        <tendable>true</tendable>
+        <scenarioCanAdd>false</scenarioCanAdd>
+        <comps>
+            <li Class="HediffCompProperties_TendDuration">
+                <baseTendDurationHours>24</baseTendDurationHours>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <label>acute symbiote shock</label>
+                <statFactors>
+                    <InjuryHealingFactor>0</InjuryHealingFactor>
+                    <ImmunityGainSpeed>0</ImmunityGainSpeed>
+                </statFactors>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <setMax>0</setMax>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>

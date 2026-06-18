@@ -1,76 +1,77 @@
 # Project state
 
-Current milestone: `0.2.50-dev - Consolidate organic Tok'ra operation framework`.
+Current milestone: `0.2.51-dev - Add organic Tok'ra wounded agent care`.
 
 ## Active development base
 
-- Authoritative base tag: `v0.2.49-dev`.
-- Dedicated branch: `feature/tokra-organic-operation-framework-consolidation`.
-- Planned final tag after local validation: `v0.2.50-dev`.
-- Local test archive revision: `0.2.50-dev-r5`.
+- Authoritative base tag: `v0.2.50-dev`.
+- Dedicated branch: `feature/tokra-organic-wounded-agent-care`.
+- Planned final tag after local validation: `v0.2.51-dev`.
+- Current local test archive revision: `0.2.51-dev-r4`.
 
 ## Milestone scope
 
-This milestone consolidates the two existing preliminary Tok'ra operations without adding a new player-visible archetype or changing their balance:
+This milestone adds a third recurring organic Tok'ra operation without changing the two existing archetypes:
 
 - discreet Goa'uld activity observation;
-- encrypted Tok'ra intelligence-module recovery.
+- encrypted Tok'ra intelligence-module recovery;
+- shelter and medical care for a seriously wounded Tok'ra agent.
 
-Manual communicator requests, the playable relay mission and all Trusted-tier requirements remain separate and unchanged.
+The former prototype based on placing two industrial medicines in a container is not part of this milestone. It may be reconsidered later as a separate logistical operation.
 
-## Shared operation framework
+## Player flow
 
-`TokraOrganicOperationFramework` now contains the common definition of each archetype:
+1. A Tok'ra cell opens an urgent channel and asks whether the colony can shelter a wounded agent.
+2. The offer does not inspect colony medicine stocks and may be ignored without consequence.
+3. A selected colon accepts through the powered Tok'ra secure communicator.
+4. The wounded agent reaches the map from a reachable, unfogged edge and arrives downed under acute symbiote shock.
+5. The shock prevents movement and suppresses the usual accelerated Tok'ra recovery, so the agent cannot walk to the colony or complete the event without player care.
+6. The player must rescue the agent into a player medical bed and tend the symbiote shock itself; being carried during rescue remains a valid active-map state.
+7. Once the shock has been tended, it is removed and normal Tok'ra regeneration resumes alongside vanilla medical care. The shock remains treatable even if all ordinary injuries or illnesses have already healed.
+8. Once the agent remains medically stable and fit to travel for a short period, the agent is ordered to leave.
+9. Success is applied only after the living agent has actually left the map.
 
-- trust-tier selection weights and repeat reduction;
-- offer duration, preparation delay and operation deadline;
-- Intellectual XP and Tok'ra trust consequences;
-- communicator action, letter and status translation keys;
-- optional physical objective definition;
-- shared objective placement, lookup and cleanup rules.
+The agent does not need to be completely healed. Departure requires consciousness, sufficient movement, controlled bleeding, acceptable overall health, no urgent medical-rest need and no condition near lethal severity.
 
-The persistent tracker keeps the established player flow while using one common resolution path for success and failure. That path applies trust, XP, letters, counters, cleanup and rescheduling once only.
-Observation readiness is now an explicit persistent state. Tick processing, communicator menu generation, direct interaction and load repair all synchronize the state before deciding whether `Transmit Tok'ra observation report` is available.
+## Resolution rules
+
+- Successful safe departure improves Tok'ra trust qualitatively.
+- The exact trust variation remains hidden from normal player-facing text.
+- Normal tending grants vanilla Medicine experience; no artificial skill XP is added by the operation framework.
+- Death, capture, disappearance or failure to become fit before the secure deadline causes one accepted-operation failure.
+- Ignoring the initial offer causes no penalty.
+- Resolution guards prevent duplicate trust effects, letters or cleanup after save/reload.
+- A dead patient's corpse and a captured prisoner are not silently removed; other living unresolved patients are removed only by reset or failed-operation extraction cleanup.
+
+## Recurrence and anti-repetition
+
+The wounded-agent archetype is not permanently consumed after success or failure. It returns to the shared hidden scheduler and can recur in long games.
+
+- Hidden variable delays remain active between Tok'ra organic opportunities.
+- The last offered archetype receives the existing strong local weight reduction.
+- The operation remains compatible with vanilla and modded storytellers.
+- Broader coordination between vanilla and GateRim incidents remains planned for the future GateRim SG-1 storyteller.
+
+## Communicator presentation
+
+The communicator exposes only the operation that is actually active:
+
+- current offer awaiting a response;
+- accepted wounded-agent care with the patient's name and remaining secure window;
+- recovered agent departing;
+- generic RP channel status immediately after resolution.
+
+It does not display a catalog, historical list, future archetypes, selection weights or internal delays. The observation and intelligence-recovery archetypes must continue following the same rule to prevent stale or offset status text.
 
 ## Save compatibility
 
-Compatibility with saves created by `0.2.48-dev` and `0.2.49-dev` is required:
-
-- existing archetype values and the legacy state values `None = 0`, `Offered = 1` and `Accepted = 2` remain unchanged;
-- the consolidated observation-ready state is persisted as the new value `Ready = 3`;
-- all existing `tokraOrganic...` Scribe keys remain available;
-- a framework save-version key and resolution guard are added with safe defaults;
-- missing legacy deadlines and preparation ticks are reconstructed from the current archetype definition;
-- an accepted intelligence module is recovered from the active map when the saved reference is absent;
-- stale intelligence modules not associated with the active operation are removed;
-- reloading or calling completion twice must never grant duplicate trust, XP or letters.
-
-## Existing balance preserved
-
-Observation remains:
-
-- success: `+3` Tok'ra trust and `250` Intellectual XP;
-- accepted failure: `-1` trust;
-- report preparation and secure-window timings unchanged.
-
-Intelligence recovery remains:
-
-- success: `+2` Tok'ra trust and `200` Intellectual XP;
-- accepted failure: `-1` trust;
-- delivery and recovery timings unchanged;
-- no material reward.
-
-Ignored offers remain consequence-free.
-
-## Physical-objective routing
-
-Physical Tok'ra objectives use the shared delivery helper already used elsewhere in the mod:
-
-1. beside or on the Tok'ra delivery drop zone when present;
-2. beside a powered Tok'ra secure communicator when no delivery zone is available;
-3. at a reachable, unfogged map edge only as the final fallback.
-
-The intelligence-module operation still requires a communicator for acceptance, so the edge-only path remains primarily an internal safety fallback.
+- Existing archetype values remain unchanged: `None = 0`, `GoauldObservation = 1`, `DeadDropRecovery = 2`.
+- `WoundedAgentCare = 3` is appended without renumbering prior values.
+- Existing operation-state values remain unchanged.
+- Existing `tokraOrganic...` save keys remain available.
+- New persistent fields track the patient, whether initial colony treatment has occurred, the stable period, departure order and departure grace deadline.
+- The framework save version advances to `3`.
+- Saves from `0.2.48-dev`, `0.2.49-dev` and `0.2.50-dev` remain migration targets.
 
 ## Developer validation actions
 
@@ -78,45 +79,46 @@ Under RimWorld developer actions:
 
 - `Force Tok'ra observation offer`;
 - `Force Tok'ra intelligence module offer`;
+- `Force Tok'ra wounded agent offer`;
 - `Advance active Tok'ra operation`;
 - `Fail active Tok'ra operation`;
 - `Reset Tok'ra operations`.
 
-Developer labels remain technical but are deliberately short enough to avoid truncation in RimWorld's developer-action menu. Player-facing communicator labels and messages remain concise and RP-oriented. Player-facing tests verify qualitative trust feedback rather than hidden raw values.
-
-Earlier developer actions now follow the same compact `subject: action` convention for Jaffa marks and the Tok'ra safehouse, trust, cache, mission-site, relay and intercepted-threat tools.
+`Advance active Tok'ra operation` remains intended for observation readiness. Patient recovery should normally be tested through health manipulation or real treatment so the fitness and departure checks are exercised.
 
 ## Metadata
 
-- `About/About.xml`: `modVersion = 0.2.50-dev`.
-- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.50.0`.
+- `About/About.xml`: `modVersion = 0.2.51-dev`.
+- `Source/GateRimSG1/GateRimSG1.csproj`: `Version`, `AssemblyVersion` and `FileVersion` set to `0.2.51.0`.
 - Expected build output: `1.6/Assemblies/GateRimSG1.dll`.
 
 ## Required local validation
 
-The durable checklist is maintained in `docs/TESTING.md` under **Tok'ra organic operation opportunities**, using the structure defined in `docs/TESTING_GUIDELINES.md`. Tests are ordered as reusable sessions rather than milestone shorthand:
+The durable checklist is maintained in `docs/TESTING.md` under **Tok'ra organic operation opportunities** and follows `docs/TESTING_GUIDELINES.md`:
 
-1. run the uninterrupted observation and intelligence-recovery success paths consecutively;
-2. verify delivery-zone and communicator placement in the same running game;
-3. use named current-version checkpoints for offered, accepted, ready and resolved reload tests;
-4. run destructive and expiry failures from copies of the common base checkpoint;
-5. load preserved `0.2.48-dev` and `0.2.49-dev` saves for migration checks;
-6. retest manual communicator requests and review `Player.log` for regressions.
+1. accept the request and verify that the patient arrives downed, cannot walk and cannot become fit to leave before colony treatment;
+2. rescue the patient into a player medical bed, verify that carrying them does not fail or remove the operation, tend the symbiote shock itself even when it is the only remaining condition, and verify that the shock is removed before normal Tok'ra recovery resumes;
+3. verify departure as soon as the patient is fit, without waiting for complete healing;
+4. verify success only after the patient leaves the map;
+5. verify death, capture, timeout and reset cleanup as separate destructive tests;
+6. save and reload while the offer is pending, during care, while departing and after resolution;
+7. transition through observation, intelligence recovery and wounded-agent care without stale communicator text;
+8. load preserved `0.2.48-dev` to `0.2.50-dev` saves and review `Player.log`.
 
 ## Publication after validation
 
-1. Commit with `0.2.50-dev - consolidate organic Tok'ra operation framework`.
-2. Publish `feature/tokra-organic-operation-framework-consolidation`.
-3. Create and publish the unique annotated tag `v0.2.50-dev`.
+1. Commit with `0.2.51-dev - add organic Tok'ra wounded agent care`.
+2. Publish `feature/tokra-organic-wounded-agent-care`.
+3. Create and publish the unique annotated tag `v0.2.51-dev`.
 4. Update the separate wiki repository with `git pull --ff-only`.
 5. Run `.\tools\sync-wiki.cmd` from the main repository root.
 6. Return to `GateRim-SG1.wiki`, review, commit and run `git push origin HEAD`.
 
 ## Repository rules reminder
 
-- Work from `v0.2.49-dev`, not `main`.
+- Work from `v0.2.50-dev`, not `main`.
 - Publish only the final milestone tag without an `-rN` suffix.
 - Keep test ZIP archives ignored and out of commits.
 - Preserve `About/ModIcon.png`.
 - Keep metadata only in `About/About.xml` and the changelog only in `docs/CHANGELOG.md`.
-- Keep durable tests in `docs/TESTING.md`, follow `docs/TESTING_GUIDELINES.md`, and do not create milestone-specific `TEST_PLAN_*.md` files.
+- Keep durable tests in `docs/TESTING.md`; do not create milestone-specific `TEST_PLAN_*.md` files.

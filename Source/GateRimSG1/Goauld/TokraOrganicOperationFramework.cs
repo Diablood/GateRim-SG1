@@ -130,7 +130,7 @@ namespace GateRimSG1.Goauld
 
     internal static class TokraOrganicOperationFramework
     {
-        public const int CurrentSaveVersion = 2;
+        public const int CurrentSaveVersion = 3;
         public const float RepeatedArchetypeWeightFactor = 0.25f;
 
         private static readonly IReadOnlyDictionary<
@@ -221,6 +221,46 @@ namespace GateRimSG1.Goauld
                             failureTrustMessageKey:
                                 "GR_TokraTrust_OrganicDeadDropFailed",
                             debugLabel: "IntelligenceRecovery")
+                    },
+                    {
+                        TokraOrganicOperationArchetype.WoundedAgentCare,
+                        new TokraOrganicOperationDefinition(
+                            TokraOrganicOperationArchetype.WoundedAgentCare,
+                            offerDurationTicks: 120000,
+                            readyDelayTicks: 0,
+                            deadlineTicks: 300000,
+                            intellectualXp: 0,
+                            successTrustChange:
+                                GameComponent_TokraTrustTracker
+                                    .OrganicWoundedAgentSuccessTrustChange,
+                            failureTrustChange:
+                                GameComponent_TokraTrustTracker
+                                    .OrganicWoundedAgentFailureTrustChange,
+                            waryWeight: 0.10f,
+                            neutralWeight: 0.55f,
+                            cooperativeWeight: 1.00f,
+                            trustedWeight: 0.85f,
+                            objectiveThingDefName: null,
+                            acceptActionKey:
+                                "GR_TokraWoundedAgent_Accept",
+                            completeActionKey: null,
+                            offerLetterLabelKey:
+                                "GR_TokraWoundedAgent_OfferLabel",
+                            offerLetterTextKey:
+                                "GR_TokraWoundedAgent_OfferText",
+                            offerExpiredMessageKey:
+                                "GR_TokraWoundedAgent_OfferExpired",
+                            offeredStatusKey:
+                                "GR_TokraWoundedAgent_StatusOffered",
+                            activeStatusKey:
+                                "GR_TokraWoundedAgent_StatusCare",
+                            readyStatusKey:
+                                "GR_TokraWoundedAgent_StatusDeparting",
+                            successTrustMessageKey:
+                                "GR_TokraTrust_WoundedAgentSucceeded",
+                            failureTrustMessageKey:
+                                "GR_TokraTrust_WoundedAgentFailed",
+                            debugLabel: "WoundedAgentCare")
                     }
                 };
 

@@ -32,6 +32,8 @@ namespace GateRimSG1.Goauld
         public const int OrganicObservationFailureTrustChange = -1;
         public const int OrganicDeadDropSuccessTrustChange = 2;
         public const int OrganicDeadDropFailureTrustChange = -1;
+        public const int OrganicWoundedAgentSuccessTrustChange = 3;
+        public const int OrganicWoundedAgentFailureTrustChange = -2;
 
         public const int RefusedWaryDiplomaticCooldownTicks = 180000;
         public const int ExpiredWaryDiplomaticCooldownTicks = 300000;
@@ -1020,6 +1022,14 @@ namespace GateRimSG1.Goauld
         {
             NotifyOrganicOperationOutcome(
                 TokraOrganicOperationArchetype.DeadDropRecovery,
+                outcome);
+        }
+
+        public static void NotifyOrganicWoundedAgentOutcome(
+            TokraOrganicOperationOutcome outcome)
+        {
+            NotifyOrganicOperationOutcome(
+                TokraOrganicOperationArchetype.WoundedAgentCare,
                 outcome);
         }
 

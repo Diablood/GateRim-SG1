@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.51-dev - Add organic Tok'ra wounded agent care
+
+- Add a third recurring Tok'ra organic-operation archetype: shelter and treat a seriously wounded or sick Tok'ra agent.
+- Allow the offer to appear before Trusted trust without inspecting the colony's medicine reserves.
+- Accept the request through the powered Tok'ra communicator, then receive the patient from a reachable map edge.
+- Use normal RimWorld rescue, bed, medicine and tending behavior rather than a special supply-container job.
+- Make the patient arrive downed under a temporary symbiote-shock condition that blocks movement and suppresses the usual accelerated Tok'ra recovery until the colony places the patient in a medical bed and performs at least one real treatment.
+- Make symbiote shock directly tendable so the operation cannot deadlock when all ordinary injuries or illnesses heal before a doctor treats the patient; initial care is confirmed only after the shock itself has been tended in a player medical bed.
+- Keep the patient attached to the active operation while a colon is carrying them during a vanilla rescue, instead of treating the temporary despawned carry state as a disappearance.
+- Consider the patient fit to travel once conscious, mobile, medically stable and free from critical untreated conditions; complete the operation only after the patient actually leaves the map.
+- Fail the accepted operation once if the patient dies, is captured, disappears or remains unfit when the secure care window closes.
+- Keep ignored offers consequence-free, preserve hidden variable delays, and apply the existing anti-repetition weighting so the archetype can recur without immediately repeating.
+- Persist the patient reference, stability period and departure state while preserving all `0.2.48` to `0.2.50` operation save keys and enum values.
+- Keep the communicator limited to the currently active operation and return immediately to its generic RP state after resolution.
+- Add short developer action `Force Tok'ra wounded agent offer`, durable tests, technical documentation and wiki draft.
+- Raise the assembly version to `0.2.51.0` and the mod metadata version to `0.2.51-dev`.
+
 ## 0.2.50-dev - Consolidate organic Tok'ra operation framework
 
 - Consolidate the two existing organic Tok'ra operation archetypes behind one shared definition registry without adding a new player-visible operation.

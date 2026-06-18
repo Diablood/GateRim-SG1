@@ -48,6 +48,26 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Force Tok'ra wounded agent offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceOrganicWoundedAgentOpportunity()
+        {
+            if (!GameComponent_TokraOrganicOperationTracker
+                .DebugForceWoundedAgentOpportunity(Find.CurrentMap))
+            {
+                ShowUnavailableMessage();
+                return;
+            }
+
+            Messages.Message(
+                "GR_TokraWoundedAgent_DebugForced".Translate(),
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Advance active Tok'ra operation",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraWoundedAgent_Accept>Accueillir l'agent Tok'ra blessé</GR_TokraWoundedAgent_Accept>
+
+    <GR_TokraWoundedAgent_OfferLabel>Un agent Tok'ra cherche refuge</GR_TokraWoundedAgent_OfferLabel>
+    <GR_TokraWoundedAgent_OfferText>Une cellule Tok'ra vient d'ouvrir un canal urgent. L'un de ses agents est grièvement blessé et ne peut rejoindre un autre refuge sans danger. La cellule demande si votre colonie peut l'accueillir, lui prodiguer des soins et le laisser repartir dès qu'il sera apte à voyager.
+
+Sélectionnez un colon, puis faites un clic droit sur le communicateur sécurisé Tok'ra alimenté pour accepter. Le canal restera ouvert pendant environ {0} heures. Ignorer cette demande n'entraîne aucune conséquence.</GR_TokraWoundedAgent_OfferText>
+    <GR_TokraWoundedAgent_OfferExpired>Le canal médical Tok'ra s'est refermé sans réponse.</GR_TokraWoundedAgent_OfferExpired>
+    <GR_TokraWoundedAgent_SpawnFailed>L'agent Tok'ra blessé n'a pas pu rejoindre la colonie en sécurité. La demande reste disponible.</GR_TokraWoundedAgent_SpawnFailed>
+    <GR_TokraWoundedAgent_AcceptedMessage>{0} a accepté d'accueillir un agent Tok'ra blessé. {1} s'est effondré près de la colonie et doit être secouru immédiatement.</GR_TokraWoundedAgent_AcceptedMessage>
+    <GR_TokraWoundedAgent_ArrivalLabel>Agent Tok'ra blessé</GR_TokraWoundedAgent_ArrivalLabel>
+    <GR_TokraWoundedAgent_ArrivalText>{0}, un agent Tok'ra grièvement blessé, s'est effondré près de la colonie. L'hôte et le symbiote sont plongés dans un choc aigu : l'agent ne peut pas marcher et la régénération Tok'ra restera suspendue tant qu'un traitement d'urgence n'aura pas été prodigué dans un lit médical de la colonie.
+
+Secourez l'agent, installez-le dans un lit médical et prodiguez-lui au moins un véritable soin. Une fois le choc dissipé, la récupération Tok'ra normale pourra reprendre. La cellule espère que l'agent sera apte à voyager dans environ {1} heures.
+
+L'opération ne sera réussie qu'après son départ effectif de la carte. Sa mort, sa capture ou sa disparition entraînera un échec.</GR_TokraWoundedAgent_ArrivalText>
+    <GR_TokraWoundedAgent_InitialCareMessage>{0} a reçu les premiers soins d'urgence. Le choc du symbiote se dissipe et la régénération Tok'ra commence à reprendre.</GR_TokraWoundedAgent_InitialCareMessage>
+    <GR_TokraWoundedAgent_StableMessage>{0} est désormais assez stable pour préparer son départ.</GR_TokraWoundedAgent_StableMessage>
+    <GR_TokraWoundedAgent_DepartingMessage>{0} est apte à voyager et repart rejoindre la cellule Tok'ra.</GR_TokraWoundedAgent_DepartingMessage>
+
+    <GR_TokraWoundedAgent_StatusOffered>demande de refuge pour un agent blessé en attente de réponse ({0} h restantes)</GR_TokraWoundedAgent_StatusOffered>
+    <GR_TokraWoundedAgent_StatusAwaitingCare>{0} attend d'être secouru et traité en urgence ({1} h avant la fermeture du canal)</GR_TokraWoundedAgent_StatusAwaitingCare>
+    <GR_TokraWoundedAgent_StatusCare>{0} reçoit des soins ({1} h avant la fermeture du canal)</GR_TokraWoundedAgent_StatusCare>
+    <GR_TokraWoundedAgent_StatusDeparting>{0} est apte à voyager et quitte la colonie</GR_TokraWoundedAgent_StatusDeparting>
+
+    <GR_TokraWoundedAgent_SuccessLabel>Agent Tok'ra reparti sain et sauf</GR_TokraWoundedAgent_SuccessLabel>
+    <GR_TokraWoundedAgent_SuccessText>{0} a quitté la colonie vivant et apte à voyager. La cellule Tok'ra confirme son retour et accorde davantage de confiance à la colonie pour les soins prodigués.</GR_TokraWoundedAgent_SuccessText>
+    <GR_TokraWoundedAgent_FailedLabel>Refuge médical Tok'ra compromis</GR_TokraWoundedAgent_FailedLabel>
+    <GR_TokraWoundedAgent_FailedDeathText>{0} est mort avant de pouvoir rejoindre la cellule Tok'ra. Cette perte a entamé la confiance que la cellule accordait à la colonie.</GR_TokraWoundedAgent_FailedDeathText>
+    <GR_TokraWoundedAgent_FailedCapturedText>{0} a été placé en détention au lieu d'être soigné puis autorisé à repartir. La cellule Tok'ra considère le refuge comme compromis.</GR_TokraWoundedAgent_FailedCapturedText>
+    <GR_TokraWoundedAgent_FailedLostText>{0} a disparu avant que son retour puisse être confirmé. La cellule Tok'ra considère le refuge comme compromis.</GR_TokraWoundedAgent_FailedLostText>
+    <GR_TokraWoundedAgent_FailedTimeoutText>{0} ne s'est pas suffisamment rétabli avant la fermeture du canal sécurisé. Une équipe Tok'ra clandestine a récupéré l'agent, mais la cellule hésitera davantage avant de confier une autre vie à la colonie.</GR_TokraWoundedAgent_FailedTimeoutText>
+
+    <GR_TokraTrust_WoundedAgentSucceeded>La cellule Tok'ra confirme le retour sain et sauf de son agent. Sa confiance envers la colonie s'améliore.</GR_TokraTrust_WoundedAgentSucceeded>
+    <GR_TokraTrust_WoundedAgentFailed>La perte de l'agent Tok'ra rend la cellule nettement plus prudente.</GR_TokraTrust_WoundedAgentFailed>
+
+    <GR_TokraWoundedAgent_DebugForced>Opportunité de prise en charge d'un agent Tok'ra blessé forcée.</GR_TokraWoundedAgent_DebugForced>
+</LanguageData>

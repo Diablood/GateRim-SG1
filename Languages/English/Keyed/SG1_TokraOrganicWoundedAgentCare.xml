@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraWoundedAgent_Accept>Accept the wounded Tok'ra agent</GR_TokraWoundedAgent_Accept>
+
+    <GR_TokraWoundedAgent_OfferLabel>Tok'ra agent in need of shelter</GR_TokraWoundedAgent_OfferLabel>
+    <GR_TokraWoundedAgent_OfferText>A Tok'ra cell has opened an urgent channel. One of its agents is badly wounded and cannot safely reach another refuge. The cell asks whether your colony can receive the agent, provide medical care and let them depart once they are fit to travel.
+
+Select a colonist, then right-click the powered Tok'ra secure communicator to accept. The channel will remain open for about {0} hours. Ignoring the request carries no penalty.</GR_TokraWoundedAgent_OfferText>
+    <GR_TokraWoundedAgent_OfferExpired>The Tok'ra medical channel has closed without a response.</GR_TokraWoundedAgent_OfferExpired>
+    <GR_TokraWoundedAgent_SpawnFailed>The wounded Tok'ra agent could not reach the colony safely. The request remains available.</GR_TokraWoundedAgent_SpawnFailed>
+    <GR_TokraWoundedAgent_AcceptedMessage>{0} has agreed to shelter a wounded Tok'ra agent. {1} has collapsed near the colony and needs immediate rescue.</GR_TokraWoundedAgent_AcceptedMessage>
+    <GR_TokraWoundedAgent_ArrivalLabel>Wounded Tok'ra agent</GR_TokraWoundedAgent_ArrivalLabel>
+    <GR_TokraWoundedAgent_ArrivalText>{0}, a badly wounded Tok'ra agent, has collapsed near the colony. The host and symbiote are in acute shock: the agent cannot walk, and Tok'ra regeneration will remain suppressed until emergency treatment is provided in a colony medical bed.
+
+Rescue the agent, place them in a medical bed and provide at least one real treatment. Once the shock eases, normal Tok'ra recovery can resume. The cell expects the agent to be fit to travel within about {1} hours.
+
+The operation succeeds only after the recovered agent leaves the map. Their death, capture or disappearance will be treated as a failure.</GR_TokraWoundedAgent_ArrivalText>
+    <GR_TokraWoundedAgent_InitialCareMessage>{0} has received emergency treatment. The symbiote shock is easing, and Tok'ra regeneration is beginning to recover.</GR_TokraWoundedAgent_InitialCareMessage>
+    <GR_TokraWoundedAgent_StableMessage>{0} is now stable enough to prepare for departure.</GR_TokraWoundedAgent_StableMessage>
+    <GR_TokraWoundedAgent_DepartingMessage>{0} is fit to travel and is leaving to rejoin the Tok'ra cell.</GR_TokraWoundedAgent_DepartingMessage>
+
+    <GR_TokraWoundedAgent_StatusOffered>wounded-agent shelter request awaiting a response ({0} h remaining)</GR_TokraWoundedAgent_StatusOffered>
+    <GR_TokraWoundedAgent_StatusAwaitingCare>{0} is awaiting rescue and emergency treatment ({1} h before the contact window closes)</GR_TokraWoundedAgent_StatusAwaitingCare>
+    <GR_TokraWoundedAgent_StatusCare>{0} is receiving care ({1} h before the contact window closes)</GR_TokraWoundedAgent_StatusCare>
+    <GR_TokraWoundedAgent_StatusDeparting>{0} is fit to travel and departing</GR_TokraWoundedAgent_StatusDeparting>
+
+    <GR_TokraWoundedAgent_SuccessLabel>Tok'ra agent returned safely</GR_TokraWoundedAgent_SuccessLabel>
+    <GR_TokraWoundedAgent_SuccessText>{0} has left the colony alive and fit to travel. The Tok'ra cell confirms the agent's safe return and regards the colony's care with greater confidence.</GR_TokraWoundedAgent_SuccessText>
+    <GR_TokraWoundedAgent_FailedLabel>Tok'ra medical refuge failed</GR_TokraWoundedAgent_FailedLabel>
+    <GR_TokraWoundedAgent_FailedDeathText>{0} died before they could return to the Tok'ra cell. The loss has damaged the cell's confidence in the colony.</GR_TokraWoundedAgent_FailedDeathText>
+    <GR_TokraWoundedAgent_FailedCapturedText>{0} was taken into custody instead of being allowed to recover and return. The Tok'ra cell considers the refuge compromised.</GR_TokraWoundedAgent_FailedCapturedText>
+    <GR_TokraWoundedAgent_FailedLostText>{0} disappeared before their safe return could be confirmed. The Tok'ra cell considers the refuge compromised.</GR_TokraWoundedAgent_FailedLostText>
+    <GR_TokraWoundedAgent_FailedTimeoutText>{0} did not recover enough to leave before the secure contact window closed. A covert Tok'ra team has recovered the agent, but the cell will be more cautious about entrusting another life to the colony.</GR_TokraWoundedAgent_FailedTimeoutText>
+
+    <GR_TokraTrust_WoundedAgentSucceeded>The Tok'ra cell confirms that its agent returned safely. Its confidence in the colony improves.</GR_TokraTrust_WoundedAgentSucceeded>
+    <GR_TokraTrust_WoundedAgentFailed>The loss of the Tok'ra agent makes the cell markedly more cautious.</GR_TokraTrust_WoundedAgentFailed>
+
+    <GR_TokraWoundedAgent_DebugForced>Tok'ra wounded-agent care opportunity forced.</GR_TokraWoundedAgent_DebugForced>
+</LanguageData>

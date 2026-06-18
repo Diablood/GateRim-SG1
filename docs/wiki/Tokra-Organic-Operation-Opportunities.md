@@ -33,3 +33,9 @@ Organic requests use hidden variable delays. The channel report shows the curren
 ## Sensitive operations remain distinct
 
 Manual support requests and missions such as relay sabotage retain their existing Trusted-tier requirements. Preliminary organic requests test the colony's reliability; they do not grant unrestricted access to the Tok'ra network.
+## Wounded-agent refuge
+
+A cell may also ask the colony to shelter a seriously wounded Tok'ra agent. The agent is treated through normal RimWorld medical care and leaves once fit to travel; complete healing is not required. Safe departure improves the relationship, while death or loss after acceptance damages it.
+
+Only the currently active offer or operation is shown on the communicator. Completed operations do not remain as a visible catalog or history.
+

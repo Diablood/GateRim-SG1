@@ -734,6 +734,8 @@ The procedures below are arranged to minimize reloads. Keep developer mode enabl
    - one powered Tok'ra secure communicator;
    - one Tok'ra delivery drop zone;
    - one colon capable of Intellectual work;
+   - one colon capable of Medical work;
+   - at least one available medical bed and ordinary medical supplies;
    - developer mode enabled.
 2. Select the Intellectual-capable colon and record the current Intellectual XP.
 3. Open the Tok'ra channel report and note the current qualitative relationship state. Exact trust values are intentionally hidden from the normal player interface.
@@ -818,7 +820,45 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 
 **End state:** recreate the delivery zone if desired, then continue to A5.
 
-#### A5 — Verify manual communicator actions remain independent
+#### A5 — Shelter, stabilize and release a wounded Tok'ra agent
+
+**Purpose:** verify that the patient cannot recover alone, requires real colony treatment, then resumes normal Tok'ra recovery and leaves once fit to travel.
+
+1. Recreate the Tok'ra delivery zone if it was removed; its presence is irrelevant to this pawn-arrival operation.
+2. Run `Force Tok'ra wounded agent offer`.
+3. Read the offer and confirm that it asks for shelter and treatment, does not mention colony medicine stocks, and says that ignoring it has no consequence.
+4. Select a colon, right-click the powered communicator and choose `Accept the wounded Tok'ra agent` in English or `Accueillir l'agent Tok'ra blessé` in French.
+5. Confirm that exactly one injured Tok'ra agent appears at a reachable map edge, already downed, with the health condition `symbiote shock` or `choc du symbiote`.
+6. Pause briefly without rescuing the patient. Confirm that the agent cannot stand or walk toward the colony. Slow vanilla or residual healing may still occur, but the shock must keep the patient downed and unable to complete the event without colony care.
+7. Consult the channel report and confirm that it names only this current operation and indicates that the agent is awaiting rescue and emergency treatment.
+8. Rescue the agent into a player-owned bed marked for medical use. While a colon is carrying the patient, confirm that the patient does not vanish and that no operation-failure letter appears.
+9. Once the patient is placed in the bed and before a doctor tends the agent, confirm that the shock remains active.
+10. If ordinary injuries or illnesses are still present, let them heal or remove them through developer tools until `symbiote shock` / `choc du symbiote` is the patient's only remaining medical condition.
+11. Select a doctor, right-click the patient in the player medical bed and confirm that a normal tending action is still available for the shock itself. Complete that tending action.
+12. Wait for the shared operation check, then confirm that a message reports the emergency treatment, the shock hediff disappears and normal Tok'ra regeneration can resume.
+13. Continue ordinary medical care, feeding and rest. Do not use `Advance active Tok'ra operation`; that command is not intended to heal the patient.
+14. Observe the health tab while recovery progresses. Complete healing is not required.
+15. When the agent becomes conscious, mobile and medically stable, confirm that a message announces preparation for departure.
+16. Let the agent walk off the map.
+
+**Expected result:**
+
+- the patient arrives downed and cannot travel or become fit to leave before player intervention;
+- the temporary carried state used by vanilla rescue does not count as the patient disappearing from the map;
+- rescue to a medical bed alone does not remove the shock;
+- the shock itself remains directly tendable even when every ordinary injury or illness has already healed;
+- the shock is removed only after that condition has been tended in a player medical bed;
+- after that treatment, normal Tok'ra recovery resumes alongside vanilla medical care;
+- the operation does not create a medicine container or consume an arbitrary fixed stack;
+- the agent may leave with minor remaining injuries once fit to travel;
+- success is not reported merely when the agent becomes stable; it is reported once after the living agent actually leaves the map;
+- the player-facing result indicates improved Tok'ra confidence without revealing a raw value;
+- the communicator immediately returns to its generic RP state;
+- no stale observation or intelligence-module text remains.
+
+**End state:** continue directly to A6.
+
+#### A6 — Verify manual communicator actions remain independent
 
 **Purpose:** detect regressions outside the organic-operation framework.
 
@@ -877,6 +917,22 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 
 **Expected result:** the tracker recovers the active module after reload; completion reports a single qualitative trust improvement and grants exactly `200` Intellectual XP once; the module is removed; the resolved save does not repeat the outcome.
 
+#### B4 — Reload wounded-agent shock, care and departure states
+
+**Purpose:** verify persistence of the patient reference, initial-treatment flag, health progress and departure state.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Run `Force Tok'ra wounded agent offer`, accept through the communicator and save as `GR_TokraOrganic_PatientShock` before rescuing the downed patient.
+3. Reload that save and confirm that the same named patient remains downed with symbiote shock, no duplicate pawn appears and regeneration is still suppressed.
+4. Rescue the patient into a player medical bed. If necessary, let or force every ordinary injury and illness to heal so that only symbiote shock remains.
+5. Confirm that a doctor can still tend the shock itself, complete that tending action and wait until the shock is removed. Then save as `GR_TokraOrganic_PatientCare` while the patient is still recovering.
+6. Reload that save and confirm that the same named patient remains active, the shock does not return, no duplicate pawn appears and the communicator reports only that patient's care.
+7. Continue treatment until the departure message appears, then save immediately as `GR_TokraOrganic_PatientDeparting` before the patient reaches the edge.
+8. Reload the departing save and allow the patient to leave.
+9. Save as `GR_TokraOrganic_PatientResolved` and reload once more.
+
+**Expected result:** shock persists before first treatment, remains removed after the treatment checkpoint, the same patient and health state survive reloads, the departure order survives the second reload, success occurs once after map exit, and reloading the resolved save does not repeat trust feedback or letters.
+
 ### Failure session C — destructive and expiry paths
 
 Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
@@ -930,6 +986,40 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 **Expected result:** the offer disappears, trust remains unchanged, no failure letter is issued and a future hidden opportunity can still be scheduled.
 
+#### C5 — Let the wounded agent die
+
+**Purpose:** verify death failure while preserving the corpse and preventing duplicate consequences.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Force and accept `Force Tok'ra wounded agent offer`.
+3. After the patient arrives, allow the injuries or illness to cause death, or use a developer health action to kill the patient without deleting the pawn.
+4. Advance the game until the tracker processes the death, then save and reload.
+
+**Expected result:** one RP failure reports the death and deterioration of Tok'ra confidence; the operation clears once; the corpse is not silently removed; reload does not apply a second failure.
+
+#### C6 — Capture the wounded agent
+
+**Purpose:** verify that taking the patient prisoner is treated as compromising the refuge.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Force and accept the wounded-agent offer.
+3. Arrest or otherwise turn the patient into a colony prisoner before departure.
+4. Advance the game until the tracker processes the new status.
+
+**Expected result:** one RP failure explains that the refuge was compromised, the operation clears, the captured pawn remains a prisoner, and no repeated penalty appears.
+
+#### C7 — Keep the patient unfit until the care window closes
+
+**Purpose:** verify the specific medical timeout rather than death or disappearance.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Force and accept the wounded-agent offer.
+3. Keep the patient alive but medically unfit to travel; for example, stabilize immediate bleeding while leaving a serious condition unresolved.
+4. Advance beyond the remaining secure window shown by the communicator report.
+5. Continue several more in-game hours, then save and reload.
+
+**Expected result:** one timeout failure explains that a covert Tok'ra team recovered the living agent, the patient is removed by operation cleanup, and no second failure occurs later or after reload.
+
 ### Legacy-save migration session D
 
 These tests require preserved saves created with the stated published version. They cannot be replaced by a current-version checkpoint.
@@ -953,13 +1043,22 @@ These tests require preserved saves created with the stated published version. T
 
 **Expected result:** no red loading error occurs, no duplicate module is created, and the result applies only once.
 
+#### D3 — Load a published `0.2.50-dev` save
+
+1. Load a save created before the wounded-agent archetype existed.
+2. Confirm that no patient or stale patient state is created during migration.
+3. Force each of the three current archetypes in turn, resolving or resetting one before forcing the next.
+
+**Expected result:** previous observation and intelligence states remain compatible, the new archetype becomes available normally, and only the currently active operation is displayed.
+
 ### Developer actions, presentation and final log review
 
-1. Confirm the two force actions create the explicitly named archetype:
+1. Confirm the three force actions create the explicitly named archetype:
    - `Force Tok'ra observation offer`;
-   - `Force Tok'ra intelligence module offer`.
+   - `Force Tok'ra intelligence module offer`;
+   - `Force Tok'ra wounded agent offer`.
 2. Confirm `Advance active Tok'ra operation` prepares an accepted observation report and does not invalidate an already placed intelligence module.
-3. Confirm `Reset Tok'ra operations` clears the active state and physical objective without changing trust.
+3. Confirm `Reset Tok'ra operations` clears the active state, intelligence objective or living patient without changing trust. A dead patient's corpse should remain.
 4. Review English and French player-facing letters, messages and context actions for RP tone and understandable wording.
 5. Confirm communicator and module context labels remain short.
 6. Confirm developer-action labels remain technical, explicit and readable without meaningful truncation. In particular, verify these compact legacy labels:
@@ -972,5 +1071,5 @@ These tests require preserved saves created with the stated published version. T
    - `Tok'ra threat: create`, `Tok'ra threat: clear`.
 7. Close or pause the game and inspect `Player.log`.
 
-**Expected result:** no red errors related to operation loading, Scribe references, ThingDefs, JobDefs, objective cleanup or duplicate resolution appear.
+**Expected result:** no red errors related to operation loading, Scribe references, pawn or lord persistence, health checks, ThingDefs, JobDefs, objective cleanup, departure or duplicate resolution appear.
 

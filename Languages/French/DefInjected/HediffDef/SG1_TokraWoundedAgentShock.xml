@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraWoundedAgentSymbioteShock.label>choc du symbiote</SG1_TokraWoundedAgentSymbioteShock.label>
+    <SG1_TokraWoundedAgentSymbioteShock.description>L'hôte et le symbiote sont tous deux plongés dans un choc systémique aigu. Cette affection doit elle-même recevoir un soin d'urgence dans un lit médical de la colonie ; tant qu'elle n'est pas traitée, tout déplacement est impossible et le symbiote ne peut maintenir sa régénération habituelle.</SG1_TokraWoundedAgentSymbioteShock.description>
+    <SG1_TokraWoundedAgentSymbioteShock.stages.0.label>choc aigu du symbiote</SG1_TokraWoundedAgentSymbioteShock.stages.0.label>
+</LanguageData>
