@@ -966,7 +966,8 @@ namespace GateRimSG1.Goauld
                 "GR_TokraTrust_SafehouseContactAcknowledged");
         }
 
-        public static void NotifyOrganicObservationOutcome(
+        public static void NotifyOrganicOperationOutcome(
+            TokraOrganicOperationArchetype archetype,
             TokraOrganicOperationOutcome outcome)
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
@@ -979,47 +980,47 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            if (outcome == TokraOrganicOperationOutcome.Succeeded)
+            TokraOrganicOperationDefinition definition
+                = TokraOrganicOperationFramework.GetDefinition(archetype);
+
+            if (definition == null)
             {
-                tracker.ApplyFlatTrustChange(
-                    OrganicObservationSuccessTrustChange,
-                    "successful organic Goa'uld observation operation",
-                    "GR_TokraTrust_OrganicObservationSucceeded");
+                GR_Log.Error(
+                    "Cannot update Tok'ra trust: unknown organic operation "
+                    + $"archetype {archetype}.");
                 return;
             }
 
+            bool succeeded = outcome
+                == TokraOrganicOperationOutcome.Succeeded;
+            int trustChange = succeeded
+                ? definition.SuccessTrustChange
+                : definition.FailureTrustChange;
+            string messageKey = succeeded
+                ? definition.SuccessTrustMessageKey
+                : definition.FailureTrustMessageKey;
+
             tracker.ApplyFlatTrustChange(
-                OrganicObservationFailureTrustChange,
-                "failed organic Goa'uld observation operation",
-                "GR_TokraTrust_OrganicObservationFailed");
+                trustChange,
+                $"organic Tok'ra operation {definition.DebugLabel} "
+                    + $"resolved as {outcome}",
+                messageKey);
+        }
+
+        public static void NotifyOrganicObservationOutcome(
+            TokraOrganicOperationOutcome outcome)
+        {
+            NotifyOrganicOperationOutcome(
+                TokraOrganicOperationArchetype.GoauldObservation,
+                outcome);
         }
 
         public static void NotifyOrganicDeadDropOutcome(
             TokraOrganicOperationOutcome outcome)
         {
-            GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
-
-            if (tracker == null)
-            {
-                GR_Log.Error(
-                    "Cannot update Tok'ra trust: the trust tracker is "
-                    + "unavailable.");
-                return;
-            }
-
-            if (outcome == TokraOrganicOperationOutcome.Succeeded)
-            {
-                tracker.ApplyFlatTrustChange(
-                    OrganicDeadDropSuccessTrustChange,
-                    "successful organic Tok'ra intelligence recovery",
-                    "GR_TokraTrust_OrganicDeadDropSucceeded");
-                return;
-            }
-
-            tracker.ApplyFlatTrustChange(
-                OrganicDeadDropFailureTrustChange,
-                "failed organic Tok'ra intelligence recovery",
-                "GR_TokraTrust_OrganicDeadDropFailed");
+            NotifyOrganicOperationOutcome(
+                TokraOrganicOperationArchetype.DeadDropRecovery,
+                outcome);
         }
 
         public static void NotifyTherapeuticOfferOutcome(

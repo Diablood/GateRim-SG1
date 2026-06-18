@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.50-dev - Consolidate organic Tok'ra operation framework
+
+- Consolidate the two existing organic Tok'ra operation archetypes behind one shared definition registry without adding a new player-visible operation.
+- Centralize each archetype's trust-tier weights, hidden timings, Intellectual XP, trust consequences, player-action keys, status keys and optional physical objective.
+- Centralize offered, accepted, ready and resolved handling while retaining the existing persisted enum values and Scribe keys used by `0.2.48-dev` and `0.2.49-dev` saves.
+- Persist the consolidated observation `Ready` state explicitly as enum value `3`, preserving the legacy `None = 0`, `Offered = 1` and `Accepted = 2` values, and make the advance debug action expose the report-transmission menu immediately.
+- Synchronize an elapsed accepted observation to the ready state from ticking, communicator menu queries, interaction handling and legacy-save repair so the right-click action cannot disappear between state checks.
+- Add a framework save version and a guarded resolution flag so trust, XP, letters, counters and cleanup cannot be applied twice after reload or repeated completion calls.
+- Repair incomplete legacy state on load, recover the active intelligence-module reference when possible and remove stale physical objectives that do not belong to the active operation.
+- Route physical objectives through the shared validated Tok'ra delivery helper: delivery zone first, powered communicator second and reachable map edge only as a final fallback.
+- Generalize Tok'ra trust outcome handling while retaining the previous observation and intelligence-recovery wrapper methods for compatibility.
+- Replace operation-specific progression and expiry debug actions with common advance, fail and reset actions while keeping the two force-archetype actions explicit.
+- Shorten the five organic-operation developer-action labels so RimWorld displays them clearly without truncation, and align the durable tests with their exact English names.
+- Shorten the earlier Jaffa-mark, Tok'ra safehouse, trust, mission-cache, mission-site, relay and intercepted-threat developer actions using consistent compact labels.
+- Preserve all existing operation weights, hidden delays, deadlines, trust gains or losses, Intellectual XP and player-facing flows.
+- Add `docs/TESTING_GUIDELINES.md` and rewrite the durable organic-operation checks as standalone, session-ordered procedures with explicit setup, actions, expected results and reload requirements; update `docs/PROJECT_STATE.md`, framework documentation and player wiki drafts.
+- Verify trust changes in player-facing tests through qualitative RP feedback rather than requiring hidden raw trust values.
+- Raise the assembly version to `0.2.50.0` and the mod metadata version to `0.2.50-dev`.
+
 ## 0.2.49-dev - Add Tok'ra organic intelligence recovery
 
 - Add a second preliminary Tok'ra organic-operation archetype available before Trusted contact.

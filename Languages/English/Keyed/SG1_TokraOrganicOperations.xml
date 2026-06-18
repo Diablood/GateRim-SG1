@@ -64,5 +64,8 @@ Select a colonist, then right-click the powered Tok'ra secure communicator to ac
     <GR_TokraOrganicOperation_DebugReady>Tok'ra observation report is now ready for transmission.</GR_TokraOrganicOperation_DebugReady>
     <GR_TokraOrganicOperation_DebugNoActiveOperation>No accepted Tok'ra organic operation is active on this map.</GR_TokraOrganicOperation_DebugNoActiveOperation>
     <GR_TokraOrganicOperation_DebugExpired>The active Tok'ra organic operation will expire on the next tracker check.</GR_TokraOrganicOperation_DebugExpired>
+    <GR_TokraOrganicOperation_DebugNoAdvanceableOperation>No accepted Tok'ra organic operation can be advanced on this map.</GR_TokraOrganicOperation_DebugNoAdvanceableOperation>
+    <GR_TokraOrganicOperation_DebugAdvanced>The active Tok'ra organic operation is ready for its completion step.</GR_TokraOrganicOperation_DebugAdvanced>
+    <GR_TokraOrganicOperation_DebugFailed>The active Tok'ra organic operation was resolved as failed.</GR_TokraOrganicOperation_DebugFailed>
     <GR_TokraOrganicOperation_DebugReset>Tok'ra organic operation tracker reset.</GR_TokraOrganicOperation_DebugReset>
 </LanguageData>

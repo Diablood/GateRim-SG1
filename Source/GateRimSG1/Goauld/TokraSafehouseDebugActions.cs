@@ -10,7 +10,7 @@ namespace GateRimSG1.Goauld
     {
         [DebugAction(
             "GateRim SG-1",
-            "Prepare Tok'ra safehouse site test",
+            "Tok'ra safehouse: prepare",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void PrepareSafehouseSiteTest()
@@ -63,7 +63,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Create Tok'ra safehouse test site",
+            "Tok'ra safehouse: create",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void CreateSafehouseTestSite()
@@ -100,7 +100,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Increase Tok'ra trust test step",
+            "Tok'ra trust: +5",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void IncreaseTokraTrustTestStep()
@@ -110,7 +110,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Decrease Tok'ra trust test step",
+            "Tok'ra trust: -5",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void DecreaseTokraTrustTestStep()
@@ -120,7 +120,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Verify Tok'ra safehouse contact test",
+            "Tok'ra safehouse: verify",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void VerifySafehouseContactTest()
@@ -190,7 +190,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Deliver Tok'ra first mission cache test",
+            "Tok'ra cache: deliver",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void DeliverTokraFirstMissionCacheTest()
@@ -238,7 +238,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Reset Tok'ra first mission cache test",
+            "Tok'ra cache: reset",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ResetTokraFirstMissionCacheTest()
@@ -263,7 +263,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Decode Tok'ra mission lead test",
+            "Tok'ra lead: decode",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void DecodeTokraMissionLeadTest()
@@ -290,7 +290,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Reveal Tok'ra decoded mission world site test",
+            "Tok'ra site: reveal",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void RevealTokraDecodedMissionWorldSiteTest()
@@ -328,7 +328,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Recon Tok'ra decoded mission world site test",
+            "Tok'ra site: recon",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ReconTokraDecodedMissionWorldSiteTest()
@@ -356,7 +356,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Prepare Tok'ra relay sabotage objective test",
+            "Tok'ra relay: prepare",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void PrepareTokraRelaySabotageObjectiveTest()
@@ -387,7 +387,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Complete Tok'ra relay sabotage test",
+            "Tok'ra relay: complete",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void CompleteTokraRelaySabotageTest()
@@ -415,7 +415,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Create Tok'ra intercepted threat test",
+            "Tok'ra threat: create",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void CreateTokraInterceptedThreatTest()
@@ -454,7 +454,7 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
-            "Clear Tok'ra intercepted threat test",
+            "Tok'ra threat: clear",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ClearTokraInterceptedThreatTest()

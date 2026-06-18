@@ -12,7 +12,7 @@ namespace GateRimSG1.Jaffa
     {
         [DebugAction(
             "GateRim SG-1",
-            "Set forehead mark: ordinary black",
+            "Jaffa mark: black",
             actionType = DebugActionType.ToolMapForPawns,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void SetOrdinaryBlack(Pawn pawn)
@@ -22,7 +22,7 @@ namespace GateRimSG1.Jaffa
 
         [DebugAction(
             "GateRim SG-1",
-            "Set forehead mark: elite silver",
+            "Jaffa mark: silver",
             actionType = DebugActionType.ToolMapForPawns,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void SetEliteSilver(Pawn pawn)
@@ -32,7 +32,7 @@ namespace GateRimSG1.Jaffa
 
         [DebugAction(
             "GateRim SG-1",
-            "Set forehead mark: First Prime gold",
+            "Jaffa mark: gold",
             actionType = DebugActionType.ToolMapForPawns,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void SetFirstPrimeGold(Pawn pawn)
@@ -42,7 +42,7 @@ namespace GateRimSG1.Jaffa
 
         [DebugAction(
             "GateRim SG-1",
-            "Remove forehead mark",
+            "Clear Jaffa mark",
             actionType = DebugActionType.ToolMapForPawns,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void Remove(Pawn pawn)

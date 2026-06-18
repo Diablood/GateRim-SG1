@@ -1,5 +1,7 @@
 # Testing workflow
 
+Durable tests follow the structure and ordering rules in `docs/TESTING_GUIDELINES.md`.
+
 ## Minimal isolated test
 
 Use this active mod list first:
@@ -722,19 +724,253 @@ Suggested validation:
 
 ## Tok'ra organic operation opportunities
 
-Use a player home map with a powered Tok'ra secure communicator, one colon capable of Intellectual work and developer mode enabled.
+The procedures below are arranged to minimize reloads. Keep developer mode enabled and use the exact developer-action labels shown in backticks. Player-facing trust changes are checked through qualitative RP messages and the channel report; exact trust deltas are internal balance values and are not expected to appear in the normal interface.
 
-1. At Tok'ra trust `0`, force each available preliminary archetype and confirm both can be accepted before Trusted contact.
-2. Ignore an unsolicited offer and confirm it expires without changing trust.
-3. Complete the Goa'uld-observation flow and confirm `+3` trust, Intellectual XP and save persistence.
-4. Accept an intelligence-recovery offer and confirm the same delivery routing already used by existing Tok'ra deliveries and caches:
-   - beside or on the Tok'ra delivery drop zone when one exists;
-   - beside a powered Tok'ra secure communicator when no delivery zone exists;
-   - a reachable, unfogged map-edge cell only when neither a delivery zone nor a communicator is available for delivery routing.
-5. Confirm the GateRim log reports both the preferred delivery cell and the final module cell, then repeat the three routing cases above.
-6. Secure the intelligence module and confirm `+2` trust, Intellectual XP, objective removal and no material reward.
-7. Destroy or expire an accepted intelligence module and confirm `-1` trust is applied exactly once.
-8. Save and reload during offered and accepted states and confirm deadlines, active objective references and anti-repetition context persist.
-9. Verify both organic archetypes remain selectable, with the last offered archetype strongly discouraged but not forbidden.
-10. Re-test existing manual communicator actions and confirm their Trusted-tier requirements and independent cooldowns remain unchanged.
-11. Check English and French player-facing text and confirm no red errors in `Player.log`.
+### Shared preparation — perform once
+
+**Purpose:** create a reusable starting state for all current-version tests.
+
+1. Load a player home map with:
+   - one powered Tok'ra secure communicator;
+   - one Tok'ra delivery drop zone;
+   - one colon capable of Intellectual work;
+   - developer mode enabled.
+2. Select the Intellectual-capable colon and record the current Intellectual XP.
+3. Open the Tok'ra channel report and note the current qualitative relationship state. Exact trust values are intentionally hidden from the normal player interface.
+4. Run `Reset Tok'ra operations`.
+5. Save the game as `GR_TokraOrganic_Base`.
+
+**Expected result:** no organic Tok'ra operation or intelligence module is active. This save is the common checkpoint for later reload and failure tests.
+
+### Continuous session A — success paths and placement
+
+These tests may be executed consecutively without reloading `GR_TokraOrganic_Base`.
+
+#### A1 — Complete an observation operation
+
+**Purpose:** verify the complete observation success path and its rewards.
+
+1. Run `Force Tok'ra observation offer`.
+2. Select the Intellectual-capable colon.
+3. Right-click the powered communicator and choose `Accept Tok'ra observation request`.
+4. Confirm that the communicator reports the observation as in progress.
+5. Run `Advance active Tok'ra operation`.
+6. Right-click the communicator again. Confirm that `Transmit Tok'ra observation report` is now present and enabled, then choose it.
+7. Compare the transmitting colonist's Intellectual XP with the value recorded before step 1, then read the success message and the Tok'ra channel report.
+
+**Expected result:**
+
+- the player-facing message and channel report indicate that Tok'ra confidence has improved; the exact internal trust change is not required in the normal interface;
+- immediately after the advance action, the communicator exposes `Transmit Tok'ra observation report`;
+- the transmitting colonist gains exactly `250` Intellectual XP;
+- the success letter appears once;
+- no organic operation remains active;
+- no physical objective exists for this archetype.
+
+**End state:** continue directly to A2.
+
+#### A2 — Verify that a resolved observation cannot resolve twice
+
+**Purpose:** verify the shared resolution guard immediately after A1.
+
+1. Record the current Intellectual XP and note the current qualitative Tok'ra relationship state in the channel report.
+2. Run `Advance active Tok'ra operation`.
+3. Run `Fail active Tok'ra operation`.
+4. Right-click the communicator and verify that `Transmit Tok'ra observation report` is absent.
+
+**Expected result:** both developer actions report that no suitable active operation exists. The qualitative trust state and XP remain unchanged, and no second success or failure letter appears.
+
+**End state:** continue directly to A3.
+
+#### A3 — Recover an intelligence module at the delivery zone
+
+**Purpose:** verify the physical-objective success path and preferred delivery-zone routing.
+
+1. Record the selected colon's Intellectual XP and note the current qualitative Tok'ra relationship state in the channel report.
+2. Run `Force Tok'ra intelligence module offer`.
+3. Right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
+4. Confirm that exactly one sealed intelligence module appears on or immediately beside the Tok'ra delivery drop zone.
+5. Select an Intellectual-capable colon, right-click the module and choose `Secure Tok'ra intelligence module`.
+
+**Expected result:**
+
+- the player-facing message and channel report indicate that Tok'ra confidence has improved; the exact internal trust change is not required in the normal interface;
+- the colon securing the module gains exactly `200` Intellectual XP;
+- the module disappears after completion;
+- the success letter appears once;
+- no item, resource or material reward remains;
+- no organic operation remains active.
+
+**End state:** continue directly to A4.
+
+#### A4 — Verify communicator placement when no delivery zone exists
+
+**Purpose:** verify the second placement route without reloading the game.
+
+1. Remove the Tok'ra delivery drop zone.
+2. Keep the secure communicator powered.
+3. Run `Force Tok'ra intelligence module offer`.
+4. Accept it through `Accept Tok'ra intelligence recovery` on the communicator.
+5. Confirm that exactly one intelligence module appears beside the powered communicator rather than at the map edge.
+6. Secure the module through `Secure Tok'ra intelligence module`.
+
+**Expected result:** the operation completes normally, the module is removed, and no stale or duplicate module remains. The border fallback is not used while a powered communicator exists.
+
+**End state:** recreate the delivery zone if desired, then continue to A5.
+
+#### A5 — Verify manual communicator actions remain independent
+
+**Purpose:** detect regressions outside the organic-operation framework.
+
+1. Open the communicator's right-click menu with a selected valid colon.
+2. Inspect the existing manual Tok'ra requests and channel report.
+3. Trigger one manual request whose ordinary conditions are currently satisfied, or inspect its disabled reason when conditions are not satisfied.
+
+**Expected result:** existing Trusted-tier requirements, threat or patient conditions and request cooldowns remain unchanged. Organic-operation successes have not consumed manual-request cooldowns.
+
+**End state:** continuous success-path testing is complete. Use `GR_TokraOrganic_Base` for the reload and failure sessions below.
+
+### Checkpoint session B — current-version save and reload
+
+Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates another checkpoint.
+
+#### B1 — Reload an offered observation
+
+**Purpose:** verify persistence before an offer is accepted.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Run `Force Tok'ra observation offer`.
+3. Save as `GR_TokraOrganic_ObservationOffered`.
+4. Reload `GR_TokraOrganic_ObservationOffered`.
+5. Select the Intellectual-capable colon and right-click the powered communicator.
+
+**Expected result:** `Accept Tok'ra observation request` is still available, the remaining offer time is coherent, and no duplicate offer or letter appears.
+
+#### B2 — Reload an accepted observation and resolve it once
+
+**Purpose:** verify accepted-state migration, readiness and single resolution.
+
+1. From B1, accept the observation request.
+2. Save as `GR_TokraOrganic_ObservationAccepted` before advancing it.
+3. Reload that save.
+4. Run `Advance active Tok'ra operation`.
+5. Right-click the communicator and confirm that `Transmit Tok'ra observation report` is present and enabled.
+6. Save as `GR_TokraOrganic_ObservationReady`.
+7. Reload that save.
+8. Right-click the communicator again and confirm that the same transmission action remains available.
+9. Record Intellectual XP, note the qualitative Tok'ra relationship state, then transmit the report through the communicator.
+10. Save the completed game as `GR_TokraOrganic_ObservationResolved` and reload it.
+
+**Expected result:** the accepted and explicit ready states survive reloads; the transmission action is available both before and after reloading the ready checkpoint; completion reports a single qualitative trust improvement and grants exactly `250` Intellectual XP once; reloading the resolved save does not repeat the letter, trust gain or XP gain.
+
+#### B3 — Reload an accepted intelligence module and resolve it once
+
+**Purpose:** verify restoration of the physical-objective reference and deadline.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Run `Force Tok'ra intelligence module offer` and accept it through the communicator.
+3. Confirm that one module exists, then save as `GR_TokraOrganic_ModuleAccepted`.
+4. Reload that save.
+5. Confirm the same module is still active and can be selected.
+6. Record Intellectual XP, note the qualitative Tok'ra relationship state, secure the module, then save as `GR_TokraOrganic_ModuleResolved`.
+7. Reload the resolved save.
+
+**Expected result:** the tracker recovers the active module after reload; completion reports a single qualitative trust improvement and grants exactly `200` Intellectual XP once; the module is removed; the resolved save does not repeat the outcome.
+
+### Failure session C — destructive and expiry paths
+
+Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
+
+#### C1 — Fail an accepted observation through the shared debug action
+
+**Purpose:** verify one failure consequence and no duplicate application.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Note the current qualitative Tok'ra relationship state in the channel report.
+3. Run `Force Tok'ra observation offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra observation request`.
+4. Run `Fail active Tok'ra operation`.
+5. Save as `GR_TokraOrganic_ObservationFailed` and reload it.
+6. Run `Fail active Tok'ra operation` again.
+
+**Expected result:** one player-facing message reports a deterioration of Tok'ra confidence, the failure letter appears once, the operation is cleared, and the second failure attempt does not change trust.
+
+#### C2 — Destroy an accepted intelligence module
+
+**Purpose:** verify physical-objective loss and cleanup.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Note the current qualitative Tok'ra relationship state in the channel report.
+3. Run `Force Tok'ra intelligence module offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
+4. Destroy the spawned intelligence module through developer tools or damage.
+5. Let the game advance until the tracker processes the missing objective.
+6. Save and reload after the failure has been reported.
+
+**Expected result:** one player-facing message reports a deterioration of Tok'ra confidence, one failure letter appears, the operation is cleared, and no stale module remains after reload.
+
+#### C3 — Let an accepted operation expire
+
+**Purpose:** verify deadline failure independently from manual destruction.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Note the current qualitative Tok'ra relationship state in the channel report.
+3. Force and accept one archetype using its exact developer action and communicator action listed in A1 or A3.
+4. Do not complete the objective; advance game time beyond the displayed secure window.
+5. After the failure appears, continue the game for several additional hours and then save/reload.
+
+**Expected result:** one player-facing message reports a deterioration of Tok'ra confidence. No repeated failure, letter or additional trust loss occurs after more time or after reload.
+
+#### C4 — Ignore an unsolicited offer
+
+**Purpose:** verify that declining by inaction remains consequence-free.
+
+1. Load `GR_TokraOrganic_Base`.
+2. Note the current qualitative Tok'ra relationship state in the channel report.
+3. Run either `Force Tok'ra observation offer` or `Force Tok'ra intelligence module offer`.
+4. Do not accept it and advance game time until the offer closes.
+
+**Expected result:** the offer disappears, trust remains unchanged, no failure letter is issued and a future hidden opportunity can still be scheduled.
+
+### Legacy-save migration session D
+
+These tests require preserved saves created with the stated published version. They cannot be replaced by a current-version checkpoint.
+
+#### D1 — Load `0.2.48-dev` observation states
+
+1. Load a `0.2.48-dev` save with an observation offer active.
+2. Confirm it can still be accepted or ignored normally.
+3. Load a separate `0.2.48-dev` save with observation already accepted.
+4. Confirm its remaining preparation or transmission window is coherent and that it can complete once.
+
+**Expected result:** no red loading error occurs, no duplicate offer is created and the operation retains one qualitative trust improvement on success, `250` Intellectual XP, and one qualitative trust deterioration after an accepted failure.
+
+#### D2 — Load `0.2.49-dev` intelligence-recovery states
+
+1. Load a `0.2.49-dev` save with the offer active and accept it.
+2. Confirm one module is placed through the normal preferred route.
+3. Load a separate `0.2.49-dev` save with an accepted module already on the map.
+4. Confirm the tracker recovers that module and its deadline.
+5. Complete or fail the operation once.
+
+**Expected result:** no red loading error occurs, no duplicate module is created, and the result applies only once.
+
+### Developer actions, presentation and final log review
+
+1. Confirm the two force actions create the explicitly named archetype:
+   - `Force Tok'ra observation offer`;
+   - `Force Tok'ra intelligence module offer`.
+2. Confirm `Advance active Tok'ra operation` prepares an accepted observation report and does not invalidate an already placed intelligence module.
+3. Confirm `Reset Tok'ra operations` clears the active state and physical objective without changing trust.
+4. Review English and French player-facing letters, messages and context actions for RP tone and understandable wording.
+5. Confirm communicator and module context labels remain short.
+6. Confirm developer-action labels remain technical, explicit and readable without meaningful truncation. In particular, verify these compact legacy labels:
+   - `Jaffa mark: black`, `Jaffa mark: silver`, `Jaffa mark: gold`, `Clear Jaffa mark`;
+   - `Tok'ra safehouse: prepare`, `Tok'ra safehouse: create`, `Tok'ra safehouse: verify`;
+   - `Tok'ra trust: +5`, `Tok'ra trust: -5`;
+   - `Tok'ra cache: deliver`, `Tok'ra cache: reset`;
+   - `Tok'ra lead: decode`, `Tok'ra site: reveal`, `Tok'ra site: recon`;
+   - `Tok'ra relay: prepare`, `Tok'ra relay: complete`;
+   - `Tok'ra threat: create`, `Tok'ra threat: clear`.
+7. Close or pause the game and inspect `Player.log`.
+
+**Expected result:** no red errors related to operation loading, Scribe references, ThingDefs, JobDefs, objective cleanup or duplicate resolution appear.
+

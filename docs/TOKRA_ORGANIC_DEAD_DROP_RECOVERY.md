@@ -98,3 +98,8 @@ This milestone does not add:
 - trade, recruitment or medical support;
 - changes to manual Trusted-tier communicator requests;
 - changes to the playable relay sabotage mission.
+
+
+## Shared framework
+
+From `0.2.50-dev`, timings, weights, outcomes, placement and cleanup are registered through `TokraOrganicOperationFramework`. Existing `DeadDrop` class, Def and Scribe identifiers remain unchanged for save compatibility; they are not exposed in player-facing text.
