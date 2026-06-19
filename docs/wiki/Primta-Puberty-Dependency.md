@@ -1,14 +1,14 @@
 # Dépendance pubertaire au Prim'ta
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.34-dev
+> Statut : prototype jouable
+> Première version : `0.1.34-dev`
 
 ## Présentation
 
 Un jeune Jaffa peut recevoir un Prim'ta à partir de `10` ans biologiques.
 
-À partir de `12` ans biologiques, l'absence de Prim'ta commence désormais à
-provoquer une déficience progressive.
+À partir de `12` ans, l'absence de Prim'ta provoque une déficience progressive
+qui réduit surtout l'immunité et la guérison.
 
 ## Fenêtre actuelle
 
@@ -39,28 +39,16 @@ La gravité augmente progressivement sur plusieurs jours.
 
 ## Soulagement
 
-Une implantation médicale réussie retire immédiatement la déficience.
+Deux solutions existent :
 
-## Limites actuelles
+- une implantation réussie retire immédiatement la déficience ;
+- une [dose de trétonine](Tretonin) suspend temporairement sa progression.
 
-Cette première version ne gère pas encore :
+Les [pensées culturelles](Primta-Cultural-Thoughts) et la
+[cérémonie formelle](Primta-Formal-Ceremony) complètent cette mécanique sans
+modifier directement la gravité médicale.
 
-```text
-trétonine
-progression en caravane
-mort directe
-pensées culturelles
-cérémonie formelle
-```
+## Limite actuelle
 
-
-## Pensées d'humeur séparées
-
-Depuis `0.1.35-dev`, les [pensées culturelles](Primta-Cultural-Thoughts) sont
-gérées séparément de cette déficience médicale.
-
-
-## Trétonine
-
-Depuis `0.1.36-dev`, une [dose de trétonine](Tretonin) suspend temporairement
-la déficience pendant `1` jour.
+La déficience n'entraîne pas une mort automatique à un seuil fixe. Elle rend le
+Jaffa de plus en plus vulnérable aux maladies et blessures.

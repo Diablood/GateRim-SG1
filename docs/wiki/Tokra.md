@@ -255,41 +255,25 @@ Depuis `0.2.12-dev`, les Tok'ra peuvent laisser un
 Il s'agit d'une présence discrète, non territoriale et limitée à quelques
 fournitures médicales. Elle ne crée ni colonie, ni marchand, ni recrutement.
 
-## Signaux de planque
 
-Depuis `0.2.13-dev`, une cellule Tok'ra clandestine peut envoyer un
-[signal de planque](Tokra-Safehouse-Signal).
+## Signaux et pistes de planque
 
-Ce signal ne crée pas encore de site visitable. Il confirme seulement un canal
-clandestin et accorde un très léger gain de confiance.
+Depuis `0.2.13-dev`, une cellule clandestine peut envoyer un
+[signal de planque](Tokra-Safehouse-Signal). Accuser réception améliore
+légèrement la relation et ajoute une piste lorsque le registre n'est pas plein.
 
-## Pistes de planque
+Les [pistes de planque](Tokra-Safehouse-Leads) peuvent être utilisées de
+plusieurs manières :
 
-Depuis `0.2.14-dev`, les signaux de planque Tok'ra conservent aussi des
-[pistes de planque](Tokra-Safehouse-Leads).
+- retrouver un [cache médical local](Tokra-Safehouse-Lead-Cache) ;
+- créer un [marqueur temporaire](Tokra-Hidden-Safehouse-World-Marker) sur la
+  carte du monde ;
+- révéler une [planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site).
 
-Ces pistes ne créent pas encore de site mondial. Elles préparent le futur
-prototype de planque Tok'ra visitable.
-
-Depuis `0.2.15-dev`, une piste de planque peut mener à un
-[cache médical découvert grâce à une piste Tok'ra](Tokra-Safehouse-Lead-Cache).
-
-Cette étape consomme une piste, mais ne crée pas encore de vraie planque
-visitable.
-
-Depuis `0.2.16-dev`, une piste de planque peut aussi créer un
-[marqueur temporaire de planque Tok'ra](Tokra-Hidden-Safehouse-World-Marker) sur
-la carte du monde.
-
-Le marqueur ne crée pas encore de site visitable.
-
-Depuis `0.2.17-dev`, une piste peut enfin révéler une
-[planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site). Une caravane peut
-explorer sa petite carte non hostile et récupérer un cache médical limité.
-
-Depuis `0.2.18-dev`, un unique hôte Tok'ra volontaire âgé d'au moins `20` ans
-demeure dans la planque. Ce contact est pacifique, non marchand et non
-recrutable.
+La planque visitable est temporaire et non hostile. Elle contient un petit
+cache médical et un contact Tok'ra pacifique, non marchand et non recrutable.
+Ce contact peut transmettre un briefing médical et, selon la confiance, une
+piste de suivi supplémentaire.
 
 ## Mission jouable de sabotage du relais
 
@@ -306,7 +290,3 @@ Les anciens états de reconnaissance et de préparation restent conservés pour 
 Le relais reste physiquement destructible. S'il est détruit avant la fin du sabotage, l'opération discrète échoue, les Jaffa encore présents sont alertés et le compte à rebours local de renforts est annulé. La caravane peut évacuer dès qu'aucun hostile actif ne reste, mais la destruction laisse une signature exploitable : une riposte Goa'uld/Jaffa est programmée contre une colonie après un délai inconnu du joueur.
 
 Depuis `0.2.46-dev-r4`, la commande vanilla de reformation de caravane est explicitement rattachée au site : elle reste masquée tant que l'opération n'est ni réussie ni abandonnée, puis devient disponible dès qu'aucun hostile actif ne subsiste. Une vague seulement annoncée ne bloque pas le départ. Les murs, portes et barricades Goa'uld restent vulnérables aux armes. Leur revendication suit les règles vanilla et, une fois un élément revendiqué, sa déconstruction reste disponible normalement même si un nouvel ennemi apparaît ensuite sur la carte. Depuis `0.2.46-dev-r5`, la carte temporaire et son marqueur monde sont supprimés automatiquement après le départ de la caravane, et la génération applique de nouveau une toiture complète après la pose de toutes les structures. Depuis `0.2.47-dev`, ce départ enregistre automatiquement l'issue de l'opération. La cellule Tok'ra transmet ensuite un débriefing entre 6 et 18 heures plus tard : un sabotage discret réussi renforce sa confiance, tandis qu'une destruction directe du relais la réduit. Aucune nouvelle action sur la carte du monde n'est demandée au joueur.
-
-## 0.2.45-dev-r5 validation note
-
-Relay sabotage work is now stored on the device and persists if the pawn is interrupted. The hidden duration scales from roughly 12 in-game hours at Intellectual 0 to 6 hours at Intellectual 20. Initial defenders and delayed reinforcements are spawned directly from Goa'uld Jaffa pawn kinds, avoiding the faction combat-group generator that cannot resolve the low reinforcement budget.

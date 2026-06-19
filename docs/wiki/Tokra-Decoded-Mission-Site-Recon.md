@@ -1,8 +1,24 @@
-# Tok'ra Decoded Mission Site Reconnaissance
+# Reconnaissance du site de mission Tok'ra
 
-A revealed Tok'ra decoded mission site can be reconnoitered by a player caravan on the site tile. The normal player-facing action is available from the caravan right-click menu on the world map. The direct site command is kept only for developer mode or the GateRim SG-1 advanced debug option.
+> Première version : `0.2.43-dev`
 
-This confirms Goa'uld/Jaffa activity through an RP letter and updates the Tok'ra channel report, but it does not create a combat map, raid, reward, healing, reinforcement, trade, recruitment or full mission resolution yet.
+Cette étape a d'abord permis à une caravane présente sur le relais Goa'uld
+révélé de confirmer l'activité ennemie par une lettre RP et de mettre à jour le
+rapport du canal Tok'ra.
 
+La commande normale était accessible depuis le menu de clic droit de la
+caravane sur la carte du monde. Si la caravane n'était pas encore sur la bonne
+tuile, ce même menu permettait de choisir de nouveau le relais comme
+destination. La commande directe du site restait réservée au mode développeur
+ou à l'option de debug avancé GateRim SG-1.
 
-If the selected caravan is not currently on the site tile, the same right-click menu offers travel back to the revealed relay before reconnaissance is available.
+## État actuel
+
+Depuis l'introduction de la mission jouable de sabotage, cette reconnaissance
+n'est plus une action séparée répétée au joueur. Une seule interaction monde
+lance désormais l'opération sur la carte temporaire.
+
+Les anciens états de reconnaissance et de préparation sont conservés pour la
+compatibilité des sauvegardes existantes et pour le rapport du communicateur,
+mais ils ne forment plus une chaîne visible de plusieurs clics successifs sur
+le même site.

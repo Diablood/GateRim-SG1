@@ -1,80 +1,61 @@
 # Symbiotes
 
-> Statut : Prototype  
-> Première fondation XML : 0.1.7-dev  
-> Symbiote libre : 0.1.8-dev  
-> Implantation récente : 0.1.11-dev  
-> Implantation forcée interactive : 0.1.17-dev  
-> Hôte actif : 0.1.18-dev  
-> Extraction d'urgence : 0.1.19-dev  
-> Chirurgie d'extraction : 0.1.20-dev  
-> Chasse autonome : 0.1.21-dev  
-> Implantation rituelle : 0.1.22-dev  
-> Cérémonie rituelle temporisée : 0.1.24-dev  
-> Bassin rituel requis : 0.1.25-dev
+> Statut : fondation jouable
+> Première fondation : `0.1.7-dev`
 
 ## Vue d'ensemble
 
 Les symbiotes sont une mécanique centrale de GateRim SG-1.
 
-Plusieurs variantes partageront une base commune, mais leurs relations avec leurs hôtes resteront différentes.
-
-| Type | Hôte | Relation prévue |
+| Type | Hôte | Relation |
 |---|---|---|
-| Goa'uld adulte | Humain ou Unas | Prise de contrôle forcée |
-| Tok'ra adulte | Hôte volontaire | Coexistence et partage du contrôle |
-| Larve portée par un Jaffa | Jaffa | Soutien biologique sans possession |
+| Goa'uld adulte | humain, Jaffa ou futur Unas compatible | prise de contrôle forcée |
+| Tok'ra adulte | hôte volontaire | coexistence et partage du contrôle |
+| Prim'ta immature | Jaffa | soutien biologique sans possession |
 
-## Cycle Goa'uld prévu
+## Cycle Goa'uld actuel
 
 ```text
-Symbiote libre
-    ↓ attaque sauvage ou rituel
-Hôte récemment infesté
+symbiote libre
+    ↓ chasse autonome, commande de test ou rituel
+implantation Goa'uld récente
     ↓ période critique
-Hôte Goa'uld actif
-    ↓ extraction, mort ou transfert
-Symbiote libre ou nouvel hôte
+hôte Goa'uld actif
 ```
 
-## État actuel
+Pendant la phase récente, une extraction instantanée de test ou une chirurgie
+planifiable peut faire réapparaître le même symbiote avec son identité
+persistante.
 
-Depuis `0.1.7-dev`, le xenotype `hôte Goa'uld` permet de tester un hôte déjà possédé.
+Les fonctions actuellement disponibles comprennent :
 
-Depuis `0.1.8-dev`, le personnage `symbiote Goa'uld` permet de tester l'organisme libre en mode développeur.
-
-Depuis `0.1.11-dev`, l'état de santé `implantation Goa'uld récente` représente la période critique après l'entrée dans un hôte.
-
-Depuis `0.1.17-dev`, un symbiote libre peut appliquer cet état grâce à une commande manuelle lorsqu'il se trouve à côté d'un humanoïde adulte compatible. Son identité persistante est conservée lors du transfert.
-
-Depuis `0.1.18-dev`, le compte à rebours convertit automatiquement la victime en [hôte Goa'uld actif](Active-Goauld-Host) sans changer son xenotype germinal.
-
-Depuis `0.1.19-dev`, une [extraction d'urgence](Emergency-Extraction) manuelle peut interrompre la phase critique et faire réapparaître le même symbiote libre.
-
-Depuis `0.1.20-dev`, une [chirurgie d'extraction](Extraction-Surgery) planifiable fournit un parcours médical avec médecin, médicament, temps de travail et risque d'échec.
-
-Depuis `0.1.21-dev`, un symbiote libre peut [chasser automatiquement](Autonomous-Hunt) un humanoïde compatible accessible et l'implanter au contact.
-
-Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée est disponible. Depuis `0.1.23-dev`, le joueur sélectionne explicitement la cible sur la carte dans un rayon limité.
-
-Depuis `0.1.24-dev`, une cérémonie temporisée doit s'achever. Elle peut être annulée et s'interrompt automatiquement si les conditions ne sont plus remplies.
-
-Depuis `0.1.25-dev`, un [bassin rituel Goa'uld](Ritual-Basin) doit rester proche du symbiote et de la cible pendant toute la cérémonie.
-
-## Éléments de gameplay prévus
-
-- IA hostile autonome du symbiote libre ;
-- interruption médicale ;
-- transfert vers un nouvel hôte ;
-- extraction spécialisée ;
-- différenciation claire entre Goa'uld et Tok'ra ;
-- dépendance future des Jaffa au symbiote ou à la trétonine.
-
+- chasse autonome d'un humanoïde compatible ;
+- implantation forcée au contact ;
+- implantation rituelle temporisée avec cible choisie ;
+- bassin rituel requis ;
+- conversion automatique en hôte Goa'uld actif ;
+- extraction d'urgence pendant la phase critique ;
+- chirurgie d'extraction avec risque d'échec.
 
 ## Symbiotes Tok'ra
 
-Depuis `0.1.39-dev`, un [symbiote Tok'ra](Tokra) libre peut être généré en mode
-développeur.
+Un symbiote Tok'ra libre peut être généré pour les tests et utiliser une
+implantation volontaire sur un hôte contrôlé par le joueur.
 
-Contrairement au Goa'uld hostile, il ne chasse pas et n'utilise que
-l'implantation volontaire sur un hôte contrôlé par le joueur.
+Les hôtes Tok'ra sont également utilisés par les visiteurs, planques,
+opportunités thérapeutiques, livraisons et opérations organiques. Contrairement
+au Goa'uld libre, le symbiote Tok'ra ne chasse pas de cible contre sa volonté.
+
+## Prim'ta jaffa
+
+Le Prim'ta est séparé de la lignée génétique Jaffa. Il peut être implanté par
+chirurgie ou cérémonie, améliore plusieurs capacités biologiques et répond à
+des systèmes d'âge, de dépendance pubertaire, de trétonine, d'incubation et de
+conservation.
+
+## Développements encore prévus
+
+- transfert d'un symbiote adulte actif vers un nouvel hôte ;
+- extraction spécialisée d'un hôte déjà totalement converti ;
+- règles biologiques propres aux Unas ;
+- approfondissement des relations entre personnalité de l'hôte et symbiote.

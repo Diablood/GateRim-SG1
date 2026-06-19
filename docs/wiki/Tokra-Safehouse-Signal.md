@@ -1,44 +1,33 @@
 # Signal de planque Tok'ra
 
-> Statut : Première base jouable  
-> Première version : 0.2.13-dev
+> Statut : fonctionnalité jouable
+> Première version : `0.2.13-dev`
 
 ## Présentation
 
-Une cellule Tok'ra clandestine peut désormais transmettre un bref signal chiffré
-de planque.
-
-Les coordonnées sont volontairement incomplètes : il ne s'agit pas encore d'un
-site visitable. Le signal sert d'étape sûre avant de futurs refuges ou sites
-cachés Tok'ra.
+Une cellule clandestine peut transmettre un bref signal chiffré. Les
+coordonnées restent incomplètes, mais elles fournissent une nouvelle piste au
+réseau de planques Tok'ra.
 
 ## Effet
 
-Accuser réception du signal augmente légèrement la confiance Tok'ra et conserve une piste de planque :
+Accuser réception :
 
-```text
-+1 confiance Tok'ra
-+1 piste de planque Tok'ra
-```
+- améliore légèrement et qualitativement la confiance ;
+- ajoute une piste de planque lorsque le registre dispose encore d'une place.
 
 ## Conditions
 
-Le signal peut apparaître si la confiance Tok'ra est au moins neutre.
+Le signal peut apparaître lorsque la relation n'est pas méfiante. Sa fréquence
+reste volontairement faible.
 
-Il ne se déclenche pas lorsque les Tok'ra sont méfiants.
+## Suites possibles
 
-## Limites actuelles
+Une piste peut actuellement servir à :
 
-Le signal ne crée pas :
+- retrouver un [cache médical local](Tokra-Safehouse-Lead-Cache) ;
+- créer un [marqueur temporaire](Tokra-Hidden-Safehouse-World-Marker) ;
+- révéler une [planque visitable](Tokra-Hidden-Safehouse-Site).
 
-- de site mondial ;
-- de colonie ;
-- de caravane ;
-- de visiteurs ;
-- de marchand ;
-- de recrutement ;
-- d'objet ;
-- d'aide militaire ;
-- de raid.
-
-Les véritables planques visitables restent prévues pour un jalon ultérieur.
+Le signal lui-même ne crée ni colonie, ni marchand, ni recrutement, ni aide
+militaire, ni raid.

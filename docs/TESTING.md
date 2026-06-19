@@ -1,5 +1,27 @@
 # Testing workflow
 
+## Vérification du wiki joueur français
+
+À exécuter après toute passe globale de traduction ou de réorganisation du
+wiki :
+
+1. Ouvrir `docs/wiki/Home.md`, `Content-Status.md`,
+   `Tokra-Interaction-Roadmap.md`, `_Sidebar.md` et `_Footer.md`.
+2. Vérifier que les versions, états et directions de développement correspondent
+   à `docs/PROJECT_STATE.md`.
+3. Vérifier que `Liens utiles` ne contient que des liens ou références et que
+   les éléments de roadmap se trouvent dans une section de développement.
+4. Rechercher les formulations anglaises restantes dans `docs/wiki/*.md`.
+   Conserver uniquement les noms propres, identifiants techniques, commandes
+   RimWorld et termes volontairement non traduits.
+5. Cliquer chaque lien interne des pages modifiées et confirmer que la page
+   cible existe.
+6. Synchroniser `docs/wiki/*.md` vers le dépôt wiki séparé et vérifier le rendu
+   de l'accueil, de la barre latérale, des tableaux et des listes.
+7. Vérifier qu'aucune page française n'annonce une fonctionnalité prévue comme
+   déjà jouable, ou inversement.
+
+
 Durable tests follow the structure and ordering rules in `docs/TESTING_GUIDELINES.md`.
 
 ## Minimal isolated test

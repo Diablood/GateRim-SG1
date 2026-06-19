@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.53-dev - Consolidate French player wiki
+
+- Rewrite the French wiki home page to reflect the actual playable `0.2.x` scope instead of the early `0.1.6-dev` prototype state.
+- Replace obsolete version promises in `Prochain développement majeur` with current development directions.
+- Keep `Liens utiles` limited to navigation, installation, status, FAQ and repository references.
+- Rewrite the Tok'ra interaction roadmap through the four recurring organic-operation archetypes and the playable relay mission.
+- Reorganize the content-status page so implemented `0.2.x` systems are no longer listed under planned content.
+- Translate remaining English player-facing prose in Tok'ra operation, delivery-zone, safehouse-contact, decoded-site and reconnaissance pages.
+- Remove obsolete English validation notes from public wiki pages.
+- Harmonize French labels in the sidebar and expose mission pages without raw wiki-link syntax.
+- Correct obsolete Prim'ta documentation for age eligibility, puberty dependency, tretonin support, deep-freezing and implantation paths.
+- Correct obsolete Goa'uld documentation for autonomous forced implantation, automatic host conversion and the completed ritual flow.
+- Update Tok'ra trust, pawn groups, safehouse leads, medical support and decoded-mission pages to their current implemented state.
+- Refresh contradictory FAQ answers that still described existing systems as future additions.
+- Add a durable French-wiki consistency checklist to `docs/TESTING.md`.
+- Keep gameplay, save data and Defs unchanged.
+- Raise the assembly version to `0.2.53.0` and the mod metadata version to `0.2.53-dev`.
+
 ## 0.2.52-dev - Add organic Tok'ra medical supply handoff
 
 - Add a fourth recurring Tok'ra organic-operation archetype: a face-to-face logistical handoff of two industrial medicines.
@@ -379,6 +397,24 @@
 - The consultation has no direct gameplay effect and consumes no cooldown.
 
 # Changelog
+
+## 0.2.53-dev - Consolidate French player wiki
+
+- Rewrite the French wiki home page to reflect the actual playable `0.2.x` scope instead of the early `0.1.6-dev` prototype state.
+- Replace obsolete version promises in `Prochain développement majeur` with current development directions.
+- Keep `Liens utiles` limited to navigation, installation, status, FAQ and repository references.
+- Rewrite the Tok'ra interaction roadmap through the four recurring organic-operation archetypes and the playable relay mission.
+- Reorganize the content-status page so implemented `0.2.x` systems are no longer listed under planned content.
+- Translate remaining English player-facing prose in Tok'ra operation, delivery-zone, safehouse-contact, decoded-site and reconnaissance pages.
+- Remove obsolete English validation notes from public wiki pages.
+- Harmonize French labels in the sidebar and expose mission pages without raw wiki-link syntax.
+- Correct obsolete Prim'ta documentation for age eligibility, puberty dependency, tretonin support, deep-freezing and implantation paths.
+- Correct obsolete Goa'uld documentation for autonomous forced implantation, automatic host conversion and the completed ritual flow.
+- Update Tok'ra trust, pawn groups, safehouse leads, medical support and decoded-mission pages to their current implemented state.
+- Refresh contradictory FAQ answers that still described existing systems as future additions.
+- Add a durable French-wiki consistency checklist to `docs/TESTING.md`.
+- Keep gameplay, save data and Defs unchanged.
+- Raise the assembly version to `0.2.53.0` and the mod metadata version to `0.2.53-dev`.
 
 ## 0.2.43-dev-r2 - Restrict site gizmo and restore caravan travel option
 

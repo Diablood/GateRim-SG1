@@ -1,55 +1,40 @@
 # Fondation des groupes Tok'ra
 
-> Statut : Prototype technique  
-> Version d'introduction : 0.1.41-dev
+> Statut : fondation active
+> Première version : `0.1.41-dev`
 
 ## Présentation
 
-Le mod contient désormais une première fondation technique valide pour les
-futurs groupes Tok'ra.
+La faction Tok'ra masquée utilise plusieurs profils internes pour générer ses
+agents selon le contexte.
 
-La faction Tok'ra masquée contient deux profils internes :
+Les profils historiques principaux sont :
 
 ```text
 Combat
 Peaceful
 ```
 
-Ils utilisent actuellement :
+Ils reposent sur les hôtes Tok'ra volontaires et sont réutilisés par la présence
+mondiale masquée, les visites, les opportunités thérapeutiques, les livraisons,
+les planques et les opérations de terrain.
 
-```text
-hôte Tok'ra volontaire
-```
+## Présence actuelle
 
-## Limite actuelle
+Les Tok'ra peuvent apparaître sous forme de :
 
-Ces profils ne déclenchent pas encore de génération mondiale automatique.
+- visiteurs pacifiques ;
+- escortes thérapeutiques ;
+- agents de liaison ;
+- contacts de planque ;
+- patients blessés ;
+- groupes associés à certaines missions ou livraisons.
 
-Tu ne verras donc pas encore apparaître automatiquement :
+Ils ne possèdent toujours pas de colonies publiques ni de marchands permanents.
+La faction reste clandestine et non territoriale.
 
-```text
-colonies Tok'ra
-visiteurs
-marchands
-groupes opérationnels
-quêtes
-```
+## Limites actuelles
 
-## Pourquoi cette étape existe
-
-Cette étape permet de vérifier le chargement propre des profils avant d'activer
-progressivement les événements et la présence Tok'ra dans le monde.
-
-Le profil `Peaceful` prépare les futurs visiteurs. Un véritable profil
-`Trader` sera ajouté plus tard avec des marchands, gardes et porteurs adaptés.
-
-## Étapes suivantes prévues
-
-```text
-visiteurs de test
-marchands
-groupes équilibrés
-diplomatie
-implantation thérapeutique volontaire
-reine et origine biologique des larves
-```
+Il n'existe pas encore de profil marchand complet avec gardes, porteurs et
+économie dédiée. Les groupes opérationnels restent volontairement modestes et
+liés à des événements précis.

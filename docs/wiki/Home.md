@@ -1,123 +1,84 @@
 # GateRim SG-1
 
-Bienvenue dans le wiki joueur de **GateRim SG-1**, un mod Stargate SG-1 pour RimWorld 1.6.
+Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
+Stargate SG-1 pour RimWorld 1.6.
 
-> Statut du wiki : Prototype
-> Version de première publication : 0.1.6-dev
+> Statut du wiki : documentation française active
+> Version du mod documentée : `0.2.53-dev`
 
-## Objectif du wiki
+## Le mod en bref
 
-Ce wiki présente les races, factions, objets, événements et mécaniques
-particulières ajoutés par le mod. Il distingue clairement le contenu déjà
-disponible du contenu encore en développement.
+GateRim SG-1 développe progressivement une expérience jouable autour des Jaffa,
+des Goa'uld, des Tok'ra et d'une équipe du SGC isolée sur RimWorld. La Porte des
+étoiles fonctionnelle n'est pas encore disponible : la phase actuelle renforce
+les factions, la biologie des symbiotes, l'équipement, les événements et les
+premières opérations de terrain.
 
-## Contenu actuellement testable
+## Contenu actuellement jouable
 
-- [Jaffa](Jaffa) : lignée héréditaire, [Prim'ta](Primta),
-  [larve de Prim'ta](Primta-Larva), [bassin d'incubation](Primta-Incubation),
-  [implantation médicale](Primta-Implantation),
-  [cérémonie formelle](Primta-Formal-Ceremony), [trétonine](Tretonin) et
-  [faction mondiale des Jaffa libres](Free-Jaffa-Faction).
-- [Goa'uld](Goauld) : [chasse autonome](Autonomous-Hunt),
-  [implantation forcée](Forced-Implantation),
-  [implantation rituelle](Ritual-Implantation),
-  [bassin rituel](Ritual-Basin), [implantation récente](Recent-Implantation),
-  [extraction d'urgence](Emergency-Extraction),
-  [chirurgie d'extraction](Extraction-Surgery), [hôte actif](Active-Goauld-Host),
-  [reine Goa'uld](Goauld-Queen), [maturation assistée des Prim'ta](Goauld-Queen-Assisted-Maturation),
-  [bassin de conservation](Primta-Preservation-Basin),
-  [congélation profonde](Primta-Deep-Freezing),
-  [domaines des Grands Maîtres](Goauld-System-Lord-Faction), [caste des hôtes Goa'uld](Goauld-Host-Caste),
-  [identité visuelle Jaffa intrinsèque](Jaffa-System-Lord-Visual-Identity),
-  [profil d'identité des domaines](Goauld-System-Lord-Domain-Identity),
-  [bâton Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel), [treillis d'équipe SG](SG-Team-Uniform), [variantes noire et désert](SG-Team-Uniform-Variants), [bottes tactiques SG](SG-Tactical-Boots), [gants tactiques SG](SG-Tactical-Gloves), [gilet tactique SG](SG-Tactical-Vest), [casque de terrain SG](SG-Team-Field-Helmet), [armures Jaffa](Jaffa-Armor) et
-  [raid Jaffa contrôlé](Goauld-Jaffa-Controlled-Raid) et
-  [raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)
-  et [raid de destruction Jaffa contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid).
-- [Tok'ra](Tokra) : symbiote libre volontaire,
-  [prototype d'hôte volontaire](Tokra-Host-Prototype),
-  [visiteurs pacifiques](Tokra-Peaceful-Visitors),
-  [opportunités thérapeutiques](Tokra-Therapeutic-Opportunity),
-  [confiance](Tokra-Trust), [livraisons médicales](Tokra-Medical-Support-Deliveries) et [tenue de terrain Tok'ra](Tokra-Field-Clothing-Set).
-- [Bien débuter](Getting-Started) : installation et premiers contrôles.
-- [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario) : premier départ de partie jouable sans Porte fonctionnelle.
-- [État du contenu](Content-Status) : fonctionnalités implémentées, en prototype ou prévues.
-- [Réglages de debug avancés](Debug-Settings) : diagnostics techniques optionnels pour les tests et le dépannage.
+### Jaffa et Goa'uld
+
+- [Jaffa](Jaffa), [Prim'ta](Primta), trétonine, implantation médicale et
+  [cérémonie formelle](Primta-Formal-Ceremony).
+- [Bassin d'incubation](Primta-Incubation),
+  [bassin de conservation](Primta-Preservation-Basin) et
+  [congélation profonde](Primta-Deep-Freezing) des symbiotes immatures.
+- [Goa'uld](Goauld), implantation forcée ou rituelle, extraction d'urgence,
+  hôtes actifs et [reine Goa'uld](Goauld-Queen).
+- [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
+  [Jaffa libres](Free-Jaffa-Faction), colonies mondiales et incidents associés.
+- Armes et équipements : [Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel),
+  [armures Jaffa](Jaffa-Armor) et tenue de terrain du SGC.
+
+### Tok'ra
+
+- Faction mondiale masquée, visiteurs pacifiques, implantation thérapeutique et
+  [confiance Tok'ra](Tokra-Trust).
+- Réseau de planques, caches médicaux, contact de terrain et
+  [communicateur sécurisé](Tokra-Secure-Communicator).
+- [Zone de livraison Tok'ra](Tokra-Delivery-Drop-Zone) pour les caches et
+  livraisons clandestines.
+- [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
+  observation discrète, récupération de renseignements, accueil d'un agent
+  blessé et remise de médicaments à un agent de liaison.
+- Première mission jouable sur carte temporaire : infiltration et sabotage d'un
+  relais Goa'uld, renforts différés, évacuation et débriefing Tok'ra.
+
+### Colonie et progression
+
+- [Scénario Équipe SG isolée](Stranded-SG-Team-Scenario).
+- [Histoires culturelles](Cultural-Backstories) et
+  [réactions sociales contextuelles](Contextual-Social-Baseline).
+- [Recherches de fabrication Stargate](Stargate-Crafting-Research).
+- [État détaillé du contenu](Content-Status) pour distinguer les éléments
+  jouables, les prototypes et les développements encore prévus.
 
 ## Prochain développement majeur
 
-La phase `0.2.x` transforme désormais les prototypes techniques en une tranche
-jouable sans Porte fonctionnelle. Le premier scénario
-[Équipe SG isolée](Stranded-SG-Team-Scenario) est disponible.
+La phase `0.2.x` reste consacrée à la consolidation d'une expérience complète
+avant l'ouverture d'une Porte des étoiles fonctionnelle.
 
-Depuis `0.2.1-dev`, les [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
-apparaissent sur la carte du monde et peuvent lancer de rares
-[raids naturels de Jaffa](Goauld-Jaffa-Natural-Raid).
+Les principales directions prévues sont :
 
-Depuis `0.2.2-dev`, les [Jaffa libres](Free-Jaffa-Faction) apparaissent
-également sur la carte du monde avec des colonies limitées et une relation
-initiale neutre envers l'expédition du SGC.
+- diversifier les opérations Tok'ra récurrentes et les missions de terrain, sans
+  cycle visible ni répétition immédiate ;
+- enrichir les cultures du mod avec davantage d'histoires personnelles, des
+  effets de statistiques cohérents et un générateur de noms adapté aux Jaffa,
+  Goa'uld, Tok'ra et autres groupes ;
+- créer un storyteller GateRim SG-1, tout en maintenant les événements du mod
+  accessibles avec les storytellers vanilla et moddés compatibles ;
+- poursuivre la passe globale sur les textes joueurs, l'équilibrage et la
+  stabilité avant une première publication publique solide ;
+- préparer la future phase `0.3.x`, qui doit introduire la progression liée à
+  une Porte des étoiles fonctionnelle et aux expéditions hors monde.
 
-Depuis `0.2.4-dev`, une première couche d'[histoires culturelles](Cultural-Backstories)
-distingue les humains Tau'ri, les Jaffa, les hôtes Goa'uld et les agents Tok'ra
-générés.
-
-Depuis `0.2.5-dev`, une première couche de
-[réactions sociales contextuelles](Contextual-Social-Baseline) ajoute des
-opinions propres aux Jaffa libres, aux Tok'ra et aux Goa'uld, ainsi qu'une
-discipline locale des serviteurs proches d'un Grand Maître.
-
-Depuis `0.2.6-dev`, de rares
-[visiteurs Jaffa libres pacifiques](Free-Jaffa-Peaceful-Visitors) peuvent
-également atteindre naturellement la colonie.
-
-Depuis `0.2.7-dev`, les Tok'ra disposent d'une
-[présence mondiale masquée](Tokra-World-Presence) persistante sans colonie
-territoriale classique. Depuis `0.2.12-dev`, une cellule clandestine peut laisser un
-[cache médical discret](Tokra-Hidden-Cell-Cache).
-
-Depuis `0.2.8-dev`, un onglet de
-[recherches de fabrication Stargate](Stargate-Crafting-Research) verrouille la
-reproduction locale des armes, armures, équipements SG et biotechnologies
-Goa'uld derrière des prérequis vanilla cohérents.
-
-Depuis `0.2.9-dev`, les gardes Jaffa Goa'uld constituent une première source
-naturelle rare de Zat'nik'tel récupérables.
-
-Depuis `0.2.10-dev`, une [reine Goa'uld échappée](Goauld-Queen-Arrival) peut
-rarement rejoindre la colonie et fournir des symbiotes immatures de Prim'ta
-pour la maturation assistée. Les prochains lots développeront les
-infrastructures biologiques et les interactions diplomatiques. La Porte des
-étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
-
-Une intégration optionnelle avec Ideology et Royalty reste prévue ou à étudier
-ultérieurement.
+Aucun numéro de version intermédiaire n'est promis pour ces éléments : leur
+ordre pourra évoluer selon les tests et les dépendances techniques.
 
 ## Liens utiles
 
+- [Bien débuter](Getting-Started)
 - [Installation et dépendances](Installation-and-Requirements)
+- [État du contenu](Content-Status)
 - [FAQ](FAQ)
 - [Dépôt GitHub principal](https://github.com/Diablood/GateRim-SG1)
-
-Depuis `0.2.13-dev`, une cellule Tok'ra clandestine peut transmettre un
-[signal de planque](Tokra-Safehouse-Signal), sans créer encore de site mondial
-visitable.
-
-Depuis `0.2.14-dev`, les signaux de planque Tok'ra conservent des
-[pistes de planque](Tokra-Safehouse-Leads), qui serviront de base au futur
-prototype de site caché Tok'ra.
-
-Depuis `0.2.15-dev`, une piste de planque Tok'ra peut être exploitée pour
-retrouver un [cache médical discret](Tokra-Safehouse-Lead-Cache), sans créer
-encore de site mondial visitable.
-
-Depuis `0.2.16-dev`, une piste de planque Tok'ra peut créer un
-[marqueur temporaire sur la carte du monde](Tokra-Hidden-Safehouse-World-Marker),
-sans générer encore de carte secondaire.
-
-Depuis `0.2.17-dev`, une piste peut aussi révéler une
-[planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site) temporaire contenant un
-petit cache médical non défendu.
-
-Depuis `0.2.18-dev`, cette planque contient aussi un unique contact Tok'ra
-pacifique, sans commerce ni recrutement.

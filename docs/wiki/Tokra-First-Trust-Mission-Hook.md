@@ -1,37 +1,38 @@
-# Accroche de première mission Tok'ra
+# Première demande de mission Tok'ra
 
-> Statut : prototype actif  
-> Version d'introduction : 0.2.35-dev
+> Statut : étape active de la chaîne de mission
+> Première version : `0.2.35-dev`
 
-L'accroche de première mission Tok'ra prépare une future opération discrète sans
-encore ouvrir une vraie quête. Elle sert de jalon RP entre les demandes de
-soutien ponctuelles du communicateur et une future chaîne de confiance Tok'ra.
+Une colonie ayant obtenu la confiance fiable peut signaler, via le
+communicateur, qu'elle accepte de servir de point d'appui pour une opération
+discrète.
 
 ## Conditions
 
 ```text
-- communicateur sécurisé Tok'ra construit et alimenté
-- confiance Tok'ra au palier fiable
-- colon opérateur humain contrôlé par la colonie
-- aucune mission discrète Tok'ra déjà en préparation
+communicateur sécurisé Tok'ra construit et alimenté
+confiance Tok'ra au palier fiable
+colon opérateur contrôlé par la colonie
+aucune mission discrète déjà engagée
 ```
 
 ## Effet
 
-Le colon utilise brièvement le communicateur et transmet à la cellule Tok'ra que
-la colonie peut servir de point d'appui discret. La cellule accepte d'étudier une
-opération future et l'état de préparation est conservé dans la sauvegarde.
+Le colon utilise le communicateur et transmet la disponibilité de la colonie.
+La cellule enregistre cette préparation puis reprend contact d'elle-même après
+un délai narratif.
+
+L'action n'accorde pas immédiatement de récompense et ne crée pas directement
+un site ou un raid. Elle ouvre la chaîne suivante :
 
 ```text
-mission discrète Tok'ra marquée comme en préparation
-aucune récompense immédiate
-aucun site monde créé
-aucun raid forcé
-aucune quête complète ouverte
+demande de mission
+→ briefing Tok'ra
+→ cache de renseignements
+→ analyse
+→ piste décodée
+→ relais Goa'uld
+→ sabotage jouable
 ```
 
-## Limites
-
-Cette interaction est volontairement une accroche. Elle prépare le terrain pour
-un jalon ultérieur où une vraie mission Tok'ra pourra être proposée avec ses
-propres conditions, risques et résultats.
+L'état est persistant et apparaît dans le rapport du canal Tok'ra.

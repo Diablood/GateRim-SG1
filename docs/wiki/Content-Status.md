@@ -1,7 +1,8 @@
 # État du contenu
 
-> Statut : Implémenté
-> Version d'introduction : 0.1.6-dev
+> Statut : documentation du contenu jouable
+> Première version : `0.1.6-dev`
+> Dernière révision : `0.2.53-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -37,13 +38,13 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Tok'ra | Faction mondiale persistante mais masquée : une instance unique par partie, aucune colonie classique, aucun raid naturel ; symbiote libre testable et implantation volontaire | 0.1.39-dev / présence mondiale 0.2.7-dev |
 | Hôte Tok'ra volontaire | Humanoïde contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |
 | Groupes Tok'ra | Profils internes `Combat` et `Peaceful` réutilisés par la présence mondiale masquée et les incidents Tok'ra ; cache médical, signal, pistes de planque, cache de suivi, marqueur mondial, planque visitable, contact pacifique et interaction légère de contact | 0.1.41-dev / présence 0.2.7-dev / cache 0.2.12-dev / signal 0.2.13-dev / pistes 0.2.14-dev / suivi 0.2.15-dev / marqueur 0.2.16-dev / site 0.2.17-dev / contact 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev |
-| Contact de planque Tok'ra | Contact pacifique non marchand dans les planques cachées, échange unique via clic droit, +1 confiance Tok'ra, briefing médical dont l'XP varie selon le palier de confiance, indice médical narratif et piste de suivi aux paliers coopératif/fiable si le registre n'est pas plein | 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev / paliers 0.2.22-dev / indices 0.2.23-dev / suivi 0.2.24-dev |
+| Contact de planque Tok'ra | Contact pacifique non marchand dans les planques cachées, échange unique via clic droit, amélioration qualitative de la confiance, briefing médical dont l'XP varie selon le palier, indice narratif et piste de suivi aux paliers coopératif ou fiable si le registre n'est pas plein | 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev / paliers 0.2.22-dev / indices 0.2.23-dev / suivi 0.2.24-dev |
 | Tenue de terrain Tok'ra | Vêtement Tok'ra unique, sobre et non militaire, appliqué directement à l'hôte Tok'ra volontaire généré dans les planques | 0.2.19-dev |
 | Visiteurs Tok'ra pacifiques | Incident naturel rare après le jour 15 : 1 à 3 hôtes non joueurs, délai minimal de 30 jours | 0.1.42-dev / sélection naturelle 0.1.43-dev |
 | Hébergement thérapeutique Tok'ra | Filtre biologique curable dynamique, asthme inclus et régénération progressive des blessures non permanentes ; cicatrices et amputations conservées | 0.1.44-dev / extension 0.1.46-dev |
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
-| Confiance Tok'ra | Jauge persistante de `-100` à `100` avec paliers modulant la durée des offres thérapeutiques, la taille des escortes et les cadeaux de trétonine | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
+| Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
 | Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation discrète, récupération d'un module de renseignement, accueil d'un agent blessé et remise de deux médicaments à un agent Tok'ra en visite ; refus sans pénalité, conséquence après engagement accepté | 0.2.48-dev à 0.2.52-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
@@ -72,68 +73,42 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Gants tactiques SG | Gants de terrain modulaires noirs : protection légère des mains, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.80-dev |
 | Gilet tactique SG | Gilet noir de portage modulaire : protection modérée du torse et des épaules, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec l'ensemble SG existant | 0.1.81-dev |
 | Casque de terrain SG | Casque ouvert facultatif : protection modérée du haut de la tête, fabrication après Équipement de terrain du SGC et quatre exemplaires fournis sans équipement automatique dans le scénario Équipe SG isolée | 0.2.0-dev-r2 |
-| Loadout des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` : Ma'Tok pour les guerriers, Ma'Tok ou Zat'nik'tel pour les gardes | 0.1.65-dev / diversification 0.2.9-dev |
+| Équipement des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` : Ma'Tok pour les guerriers, Ma'Tok ou Zat'nik'tel pour les gardes | 0.1.65-dev / diversification 0.2.9-dev |
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
-| Loadouts automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
+| Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 | Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : assaut direct `ImmediateAttack`, sans vol ni enlèvement opportuniste | 0.2.1-dev |
-| Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le workflow vanilla de raid | 0.1.69-dev |
-| Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans fallback ni activation des raids naturels | 0.1.70-dev |
+| Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
+| Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans solution de repli ni activation des raids naturels | 0.1.70-dev |
 | Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |
 | Raid de destruction Jaffa Goa'uld contrôlé | Incident développeur séparé : assaut militaire prolongé, puis récupération opportuniste de captifs et d'objets de valeur avant extraction | 0.1.72-dev |
 | Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre de rendu du personnage, sans gène actif, équipement ou statistique ; stockage persistant dédié par personnage | 0.1.73-dev / stockage dédié 0.1.74-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
 | Réglages de debug avancés | Option persistante masquant les informations techniques et les logs informatifs de routine hors mode développeur | 0.1.75-dev |
+| Histoires culturelles | Parcours SGC, enfances et carrières Jaffa, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
+| Réactions sociales contextuelles | Opinions et réactions selon l'identité Jaffa libre, Goa'uld, Tok'ra ou Grand Maître proche | 0.2.5-dev |
+| Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement du SGC et biotechnologies Goa'uld | 0.2.8-dev |
+| Communicateur sécurisé Tok'ra | Bâtiment alimenté opéré par un colon : demandes fiables, évaluation tactique, état RP du canal et premiers déclencheurs de mission | 0.2.26-dev à 0.2.37-dev |
+| Renseignement Tok'ra sur menace interceptée | Avertissement rare annonçant une attaque Goa'uld/Jaffa avant son arrivée, avec alerte persistante | 0.2.37-dev |
+| Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
+| Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
+| Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
 
 ## Prévu
 
-| Élément | État |
+| Élément | Direction actuelle |
 |---|---|
+| Diversification des opérations Tok'ra | Ajouter de nouveaux archétypes récurrents, des variantes et d'autres missions de terrain sans cycle visible ni répétition immédiate |
+| Générateur de noms culturels | Produire des noms RP adaptés aux Jaffa, Goa'uld, Tok'ra et autres groupes du mod |
+| Enrichissement des histoires personnelles | Ajouter des descriptions, des modificateurs de statistiques et davantage de variété culturelle |
+| Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |
 | Résistance Tok'ra | Prévu |
-| Réplicateurs | Prévu |
-| Intégration optionnelle Ideology | Prévu |
-| Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
-| Histoires culturelles | Première base native : parcours SGC complémentaires, enfances Jaffa, carrières Jaffa de domaine et libres, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
-| Réactions sociales contextuelles | Première base : méfiance Jaffa libre envers les hôtes Goa'uld, hostilité Tok'ra envers les Goa'uld, prudence envers les Jaffa marqués et discipline locale près d'un Grand Maître | 0.2.5-dev |
-| Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : préparation de mission discrète, diversion défensive, soutien médical, cache médicale, évaluation tactique active/interceptée et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés ; débriefing temporairement masqué | 0.2.26-dev à 0.2.37-dev |
-| Renseignement Tok'ra sur menace interceptée | Incident rare au palier fiable : annonce une force Goa'uld/Jaffa 1 à 3 jours avant l'attaque, ajoute une alerte persistante et enrichit l'évaluation tactique avant l'arrivée ennemie | 0.2.37-dev |
-| Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, priorisant l'emplacement des caches médicales, caches de planque, livraisons médicales escortées et futures livraisons discrètes Tok'ra | 0.2.38-dev-r1 |
-| Cache de mission Tok'ra | Livraison automatique d'un paquet de renseignements codés après briefing reçu, via zone de livraison Tok'ra | 0.2.39-dev |
-| Analyse des renseignements codés Tok'ra | Interaction par clic droit sur le paquet livré : un colon capable d'Intellectuel l'analyse, reçoit un léger gain d'XP et marque l'étape comme prête pour une future mission complète | 0.2.40-dev |
-| Piste de mission Tok'ra décodée | Après analyse des renseignements codés, la cellule Tok'ra reprend contact et confirme une piste opérationnelle limitée autour d'un relais Goa'uld isolé | 0.2.41-dev |
-| Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
-| Reconnaissance du site de mission Tok'ra | Une caravane présente sur le site peut confirmer l'activité Goa'uld/Jaffa du relais isolé, sans carte de combat ni récompense immédiate | 0.2.43-dev |
-| Préparation du sabotage du relais Tok'ra | Après reconnaissance, une caravane présente sur le relais peut relever les angles morts, les patrouilles et une voie d'approche afin d'enregistrer un plan de sabotage persistant, sans encore attaquer ni détruire le site | 0.2.44-dev |
-| Mission jouable de sabotage du relais Tok'ra | Une caravane infiltre l'un de trois petits postes Goa'uld fortifiés, affronte une garnison d'abord en défense, sabote un nœud de contrôle, peut évacuer avant les renforts et récupérer une réserve déjà placée sur étagère ; détruire le relais provoque un échec avec riposte Goa'uld différée ; le départ déclenche ensuite un débriefing Tok'ra automatique avec conséquence sur la confiance | 0.2.45-dev-r5 à 0.2.47-dev |
-| Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
-| Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
+| Résumé personnalisé des castes Goa'uld | Compléter le résumé vanilla des xenotypes avec les états parasitaires acquis |
+| Icônes thématiques des factions | Préparer des identités visuelles cohérentes pour l'expédition du SGC, les Jaffa libres et les domaines Goa'uld |
+| Réplicateurs | Prévu pour une phase ultérieure |
+| Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
-
-
-Development note: `0.2.22-dev-r2` preserves Tok'ra trust during safehouse preparation tests so trust-scaled contact outcomes can be validated reliably.
-
-Development note: `0.2.23-dev` adds trust-tier medical hints to the Tok'ra safehouse contact briefing without adding item rewards, direct treatment, quests, recruitment, trade or military aid.
-
-Development note: `0.2.24-dev` lets cooperative and trusted Tok'ra safehouse contacts store one follow-up safehouse lead when the lead registry has remaining capacity, without adding trade, recruitment, direct treatment, items, quests or military aid.
-
-Development note: `0.2.27-dev` adds the first active trusted communicator request: a rare defensive Tok'ra diversion during an active hostile threat, without trade, recruitment, physical reinforcements or material rewards.
-
-
-- `0.2.36-dev` : contact de briefing de mission Tok'ra initié automatiquement après préparation de mission discrète.
-
-- `0.2.37-dev` : renseignement Tok'ra sur menace Goa'uld/Jaffa interceptée avant son arrivée, avec alerte persistante et évaluation tactique enrichie.
-
-- `0.2.38-dev-r1` : zone de livraison Tok'ra gratuite, non minifiable et unique par carte, utilisée en priorité pour les caches et livraisons discrètes.
-
-- Tok'ra delivery drop zone marker is non-minifiable and uses an explicit empty thing category list to avoid storage/filter warnings.
-
-### 0.2.45-dev-r5 à 0.2.46-dev-r5 - Mission jouable de sabotage Tok'ra
-
-La chaîne du relais aboutit à une carte temporaire avec défense Goa'uld/Jaffa proportionnée aux points de menace, sabotage progressif lié à l'Intellectuel, compte à rebours de renforts et évacuation possible avant leur arrivée. Depuis `0.2.46-dev-r1`, le site choisit entre trois plans de poste fortifié couverts, masque les pièces fermées jusqu'à leur ouverture et place dès la génération une petite réserve sur étagère. Depuis `0.2.46-dev-r2`, la garnison défend le poste sans charger immédiatement la caravane et la destruction du relais avant sabotage abandonne la mission, puis programme une riposte Goa'uld différée. Depuis `0.2.46-dev-r4`, l'action vanilla de reformation de caravane devient disponible après réussite ou échec dès qu'aucun hostile actif ne reste. Les murs, portes et barricades du poste restent destructibles par les armes. Ils suivent ensuite le comportement vanilla : ils deviennent déconstruisibles après avoir été revendiqués, sans verrouillage supplémentaire si un nouvel ennemi arrive plus tard. Depuis `0.2.46-dev-r5`, la toiture est appliquée après la pose complète des structures et le site temporaire disparaît avec sa carte une fois la caravane repartie. L'arme énergétique Goa'uld et les composants sont accessibles normalement dès la découverte du local, au lieu d'apparaître après le sabotage. Depuis `0.2.47-dev`, la disparition du site enregistre la réussite ou l'échec et programme un débriefing automatique sous 6 à 18 heures. Le rapport du communicateur indique l'attente puis le résultat ; la confiance Tok'ra augmente après une réussite discrète et diminue après une destruction directe.
-
-### 0.2.45-dev-r5 validation note
-
-Relay sabotage work is now stored on the device and persists if the pawn is interrupted. The hidden duration scales from roughly 12 in-game hours at Intellectual 0 to 6 hours at Intellectual 20. Initial defenders and delayed reinforcements are spawned directly from Goa'uld Jaffa pawn kinds, avoiding the faction combat-group generator that cannot resolve the low reinforcement budget.
+| Porte des étoiles fonctionnelle | Future phase `0.3.x`, avec progression et expéditions hors monde |

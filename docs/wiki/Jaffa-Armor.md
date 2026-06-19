@@ -1,12 +1,12 @@
 # Armures Jaffa modulaires
 
-> Statut : Prototype
-> Version d'introduction : 0.1.66-dev
+> Statut : prototype jouable
+> Première version : `0.1.66-dev`
 
 ## Présentation
 
-Les premières armures Jaffa sont modulaires. Elles protègent les zones vitales,
-mais également les mains, doigts, pieds et orteils qui restent vulnérables dans
+Les armures Jaffa sont modulaires. Elles protègent les zones vitales, mais
+également les mains, doigts, pieds et orteils qui restent vulnérables dans
 RimWorld.
 
 ## Pièces disponibles
@@ -16,7 +16,7 @@ armure Jaffa légère
 armure Jaffa lourde
 gantelets blindés Jaffa
 bottes renforcées Jaffa
-casque Jaffa déployé
+casque Jaffa rétractable
 ```
 
 ## Protection localisée
@@ -29,26 +29,26 @@ casque Jaffa déployé
 | Bottes | jambes, pieds, orteils |
 | Casque déployé | tête complète et visage |
 
-Les gantelets et bottes constituent de véritables équipements défensifs : ils
-ne sont pas uniquement visuels.
+Les gantelets et les bottes sont de véritables équipements défensifs, pas de
+simples éléments visuels.
 
 ## Casque Jaffa
 
-Depuis `0.1.67-dev`, le casque dispose de trois modes persistants :
+Le casque dispose de trois modes persistants :
 
 - automatique : rétracté hors enrôlement, déployé pendant l'enrôlement ;
 - toujours déployé ;
 - toujours rétracté.
 
-La position modifie la couverture réelle :
+La position modifie sa couverture réelle :
 
 | Position | Couverture |
 |---|---|
 | Rétracté | sommet de la tête |
 | Déployé | tête complète et visage |
 
-Les valeurs brutes d'armure restent identiques. La différence défensive
-viendra uniquement des zones corporelles couvertes.
+Les valeurs brutes d'armure restent identiques. La différence défensive vient
+des zones corporelles effectivement couvertes.
 
 ## Fabrication
 
@@ -56,8 +56,15 @@ Les cinq pièces sont fabriquées au banc d'usinage après la recherche
 `Armurerie`. Les coûts et prérequis de Fabrication augmentent avec le niveau de
 protection.
 
-## Limites du prototype
+## Équipement des Jaffa générés
 
-Les textures sont temporaires. Les serviteurs Jaffa Goa'uld générés ne reçoivent
-pas encore automatiquement ces armures. Les raids naturels Goa'uld restent
-désactivés.
+Les guerriers et gardes Jaffa Goa'uld reçoivent automatiquement des ensembles
+adaptés à leur rôle. Les armures sont utilisées dans les raids, colonies et
+missions du mod.
+
+Consulte [Équipements automatiques des Jaffa Goa'uld](Jaffa-Armor-Loadouts).
+
+## Limites actuelles
+
+Les textures restent provisoires. Une future passe graphique pourra distinguer
+davantage les domaines Goa'uld et les rangs Jaffa.

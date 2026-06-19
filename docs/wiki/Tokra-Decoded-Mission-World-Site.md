@@ -1,25 +1,46 @@
-# Tokra Decoded Mission World Site
+# Site monde de mission Tok'ra décodée
 
-The decoded Tok'ra mission lead can now reveal a temporary world-map marker.
+> Première version : `0.2.42-dev`
 
-## Current behavior
+Après l'analyse du paquet de renseignements codés et la réception d'une
+[piste de mission décodée](Tokra-Decoded-Mission-Lead), la cellule Tok'ra peut
+révéler les coordonnées d'un relais Goa'uld isolé.
 
-After the colony analyzes the coded Tok'ra intelligence packet and receives the decoded mission lead, the Tok'ra cell may reveal coordinates for an isolated Goa'uld relay.
+## Apparition sur la carte du monde
 
-The marker appears on the world map and expires if ignored. At this stage, it is still a mission lead rather than a full mission encounter.
+Le relais apparaît comme un site temporaire. Le marqueur expire si la colonie
+l'ignore trop longtemps.
 
-## What it does not do yet
+Une caravane sélectionnée peut recevoir l'ordre de rejoindre le site depuis le
+menu contextuel de la carte du monde. Le même menu permet de redonner le relais
+comme destination si la route de la caravane a été modifiée.
 
-- It does not generate a combat map.
-- It does not trigger a raid.
-- It does not give a reward.
-- It does not provide trade, recruitment, healing or reinforcements.
+## Déroulement actuel
 
-This step exists to bridge the Tok'ra communicator chain toward a future true mission site.
+Le marqueur n'est plus une simple piste sans contenu. Il mène à une opération
+jouable sur carte temporaire :
 
-## 0.2.43-dev reconnaissance step
+- garnison Goa'uld/Jaffa dimensionnée selon la menace de la colonie ;
+- l'un de plusieurs petits postes relais fortifiés ;
+- nœud de contrôle à saboter par un colon capable d'Intellectuel ;
+- progression du sabotage conservée en cas d'interruption ;
+- avertissement avant l'arrivée éventuelle de renforts ;
+- évacuation possible après résolution lorsque plus aucun hostile actif ne
+  bloque le départ ;
+- petite réserve déjà présente dans le poste ;
+- débriefing Tok'ra différé après le retour de la caravane.
 
-- A revealed decoded mission site can now be reconnoitered when a player caravan is present on the site tile.
-- Reconnaissance confirms Goa'uld/Jaffa activity through an RP letter and persistent Tok'ra mission state.
-- The Tok'ra channel report now distinguishes between a revealed site and a reconnoitered site.
-- The world site remains non-combat and non-rewarding for this milestone: no generated combat map, no raid, no direct reward, no healing, no reinforcements, no trade and no recruitment.
+Détruire le relais avant la fin du sabotage provoque un échec de l'approche
+discrète et prépare une riposte Goa'uld.
+
+## Compatibilité des anciennes étapes
+
+La reconnaissance introduite en `0.2.43-dev` et la préparation du sabotage
+introduite en `0.2.44-dev` restent enregistrées pour les anciennes sauvegardes
+et le rapport du canal Tok'ra.
+
+Le flux actuel évite toutefois une succession d'actions similaires : le joueur
+utilise une seule action sur le site pour lancer l'opération locale.
+
+Après le départ de la caravane, la carte temporaire et le marqueur monde sont
+supprimés proprement.

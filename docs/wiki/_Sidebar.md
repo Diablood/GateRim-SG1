@@ -26,7 +26,7 @@
 - [Casque de terrain SG](SG-Team-Field-Helmet)
 - [Armures Jaffa](Jaffa-Armor)
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
-- [Loadouts d'armures Jaffa](Jaffa-Armor-Loadouts)
+- [Équipements automatiques des Jaffa Goa'uld](Jaffa-Armor-Loadouts)
 - [Identité visuelle Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity)
 - [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity)
 - [Raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid)
@@ -54,10 +54,13 @@
 - [Cache de mission Tok'ra](Tokra-First-Mission-Cache)
 - [Analyse des renseignements codés Tok'ra](Tokra-Coded-Intelligence-Analysis)
 - [Piste de mission Tok'ra décodée](Tokra-Decoded-Mission-Lead)
+- [Première demande de mission Tok'ra](Tokra-First-Trust-Mission-Hook)
+- [Site monde de mission Tok'ra](Tokra-Decoded-Mission-World-Site)
+- [Reconnaissance du relais Tok'ra](Tokra-Decoded-Mission-Site-Recon)
 - [Communicateur opéré par un colon](Tokra-Pawn-Operated-Communicator)
 - [Diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request)
 - [Soutien médical via communicateur Tok'ra](Tokra-Communicator-Medical-Support)
-- [Cache médicale d'urgence Tok'ra](Tokra-Emergency-Medical-Cache)
+- [Cache médical d'urgence Tok'ra](Tokra-Emergency-Medical-Cache)
 - [Présence mondiale masquée Tok'ra](Tokra-World-Presence)
 - [Cache d'une cellule Tok'ra](Tokra-Hidden-Cell-Cache)
 - [Signal de planque Tok'ra](Tokra-Safehouse-Signal)
@@ -105,12 +108,7 @@
 
 ## Assistance
 
+- [Catégories de stockage](Storage-Categories)
 - [Réglages de debug avancés](Debug-Settings)
 - [FAQ](FAQ)
 - [Dépôt principal](https://github.com/Diablood/GateRim-SG1)
-
-- [Catégories de stockage](Storage-Categories)
-
-- [[Tokra-First-Trust-Mission-Hook]]
-
-- [Tokra Decoded Mission World Site](Tokra-Decoded-Mission-World-Site)

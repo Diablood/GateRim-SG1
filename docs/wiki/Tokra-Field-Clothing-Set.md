@@ -1,24 +1,23 @@
 # Tenue de terrain Tok'ra
 
-> Statut : Prototype visuel
-> Première version : 0.2.19-dev
+> Statut : prototype visuel
+> Première version : `0.2.19-dev`
 
 ## Présentation
 
-Les Tok'ra disposent maintenant d'une tenue dédiée unique. Contrairement aux
-uniformes SG ou aux armures Jaffa, elle n'a pas de variantes pour le moment.
+Les Tok'ra disposent d'une tenue dédiée unique. Contrairement aux uniformes SG
+ou aux armures Jaffa, elle ne possède pas encore de variante.
 
 L'objectif est de donner une identité visuelle sobre aux agents Tok'ra sans les
 transformer en soldats lourdement armés.
 
 ```text
-couleur sable / beige
+couleur sable ou beige
 style discret et semi-formel
 tunique matelassée ou brodée
 épaules légèrement structurées
 ceinture visible
 pas d'armure lourde
-pas de variante noire, désert ou lourde
 ```
 
 ## Effet en jeu
@@ -31,24 +30,21 @@ et culturel.
 
 ## Contact de planque
 
-Depuis `0.2.19-dev`, le contact Tok'ra généré dans une
+Depuis `0.2.19-dev`, le contact généré dans une
 [planque Tok'ra visitable](Tokra-Hidden-Safehouse-Site) porte directement cette
-tenue.
-
-Cela corrige le défaut observé après la validation de `0.2.18-dev`, où le
-contact pouvait apparaître nu.
+tenue. Cela évite qu'un contact apparaisse sans vêtement adapté.
 
 ## Fabrication
 
 La tenue peut être fabriquée aux établis de couture manuel et électrique après
 la recherche d'équipement de terrain SG.
 
-Ce verrou est provisoire : une future passe de diplomatie ou d'acquisition
+Ce verrou reste provisoire : une future passe de diplomatie ou d'acquisition
 Tok'ra pourra fournir un accès plus thématique.
 
-## Texture compatibility note
+## Compatibilité des textures
 
-`0.2.19-dev-r1` adds explicit worn texture variants for RimWorld's standard
-adult body types (`Male`, `Female`, `Thin`, `Fat`, `Hulk`) so generated Tok'ra
-contacts can wear the outfit correctly regardless of body type.
-
+Depuis `0.2.19-dev-r1`, la tenue dispose de textures portées explicites pour les
+morphologies adultes standard de RimWorld (`Male`, `Female`, `Thin`, `Fat` et
+`Hulk`). Les contacts Tok'ra générés peuvent ainsi la porter correctement quelle
+que soit leur morphologie.

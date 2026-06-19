@@ -1,46 +1,53 @@
-# Tok'ra safehouse contact
+# Contact de planque Tok'ra
 
-Hidden Tok'ra safehouses may contain a single peaceful Tok'ra contact.
+Une planque Tok'ra cachée peut contenir un unique contact pacifique.
 
-The contact is intentionally limited:
+Ce contact est volontairement limité :
 
-- not hostile;
-- not a trader;
-- not recruitable;
-- not a source of military aid;
-- not a quest giver yet.
+- il n'est pas hostile ;
+- il n'est pas marchand ;
+- il n'est pas recrutable ;
+- il ne fournit pas d'aide militaire ;
+- il ne distribue pas encore de quête.
 
-Starting with `0.2.20-dev`, a colonist can perform one short exchange with this
-contact. Select a colonist, right-click the Tok'ra contact and choose the
-exchange option. The dialogue gives a small narrative acknowledgement, a minor
-Tok'ra trust increase and a Medicine learning boost for the selected colonist.
+Depuis `0.2.20-dev`, un colon peut effectuer un court échange avec lui.
+Sélectionnez le colon, effectuez un clic droit sur le contact Tok'ra puis
+choisissez l'option d'échange. Le dialogue apporte une reconnaissance narrative,
+une légère amélioration qualitative de la confiance Tok'ra et de l'expérience
+en Médecine au colon choisi.
 
-This interaction can only be used once for each generated safehouse contact.
+Cette interaction ne peut être utilisée qu'une seule fois pour chaque contact
+de planque généré.
 
-Starting with `0.2.21-dev`, this exchange is treated as a short field medical
-briefing. Starting with `0.2.22-dev`, the briefing scales lightly with current
-Tok'ra trust. Starting with `0.2.23-dev`, the message also includes a small
-medical hint that reflects the current trust tier:
+Depuis `0.2.21-dev`, l'échange prend la forme d'un bref conseil médical de
+terrain. Depuis `0.2.22-dev`, son contenu et l'expérience accordée varient
+légèrement selon la confiance actuelle. Depuis `0.2.23-dev`, le dialogue inclut
+aussi un indice médical adapté au palier :
 
-| Tok'ra trust tier | Medicine XP |
+| Palier de confiance Tok'ra | XP en Médecine |
 |---|---:|
-| Wary | 250 |
-| Neutral | 400 |
-| Cooperative | 600 |
-| Trusted | 800 |
+| Méfiante | 250 |
+| Neutre | 400 |
+| Coopérative | 600 |
+| Fiable | 800 |
 
-The exchange remains a small, non-repeatable contact outcome. The extra hint is narrative only: it does not open trade, recruitment, military aid, direct treatment, item rewards or a quest chain.
+L'indice supplémentaire reste narratif. Il n'ouvre ni commerce, ni recrutement,
+ni aide militaire, ni traitement direct, ni récompense matérielle, ni chaîne
+de quête.
 
+Depuis `0.2.23-dev-r1`, le briefing détaillé s'ouvre dans une fenêtre vanilla,
+tandis que l'historique des messages conserve un résumé court avec l'expérience
+en Médecine reçue.
 
-Developer testing note: the safehouse preparation debug action prepares the
-site test environment and keeps the current Tok'ra trust score. Adjust trust
-with the dedicated increase/decrease debug actions before creating a new test
-safehouse.
+Depuis `0.2.24-dev`, un contact coopératif ou fiable peut également transmettre
+une piste de planque supplémentaire si le registre dispose encore d'une place.
+Cette piste alimente les systèmes de suivi existants sans créer immédiatement
+de quête, caravane, marchand, objet ou traitement direct. Les contacts méfiants
+et neutres restent limités au briefing médical.
 
-Starting with `0.2.23-dev-r1`, the detailed briefing opens in a vanilla dialog, while the message history keeps a short summary with the Medicine XP gained.
+## Note de test développeur
 
-Starting with `0.2.24-dev`, cooperative and trusted contacts may also pass on
-one follow-up safehouse lead if the stored lead registry has room. This does
-not create a quest, caravan, trader, item reward or direct medical treatment;
-it only stores a lead for the existing safehouse follow-up systems. Wary and
-neutral contacts keep the exchange limited to the medical briefing.
+L'action développeur de préparation d'une planque crée l'environnement de test
+sans modifier la confiance Tok'ra actuelle. Les actions dédiées permettent
+d'ajuster la confiance avant de générer une nouvelle planque afin de vérifier
+les différents paliers.

@@ -1,6 +1,6 @@
 # Cérémonie formelle du Prim'ta
 
-> Statut : Prototype  
+> Statut : Prototype
 > Version d'introduction : 0.1.38-dev
 
 ## Présentation
@@ -56,5 +56,5 @@ Une cérémonie annulée ne consomme pas la larve.
 
 ## Évolutions prévues
 
-Une intégration optionnelle avec Ideology pourra enrichir ce fallback avec des
+Une intégration optionnelle avec Ideology pourra enrichir cette solution provisoire avec des
 rôles, des exigences de lieu et une mise en scène rituelle plus complète.

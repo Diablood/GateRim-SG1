@@ -1,120 +1,92 @@
 # Communicateur sécurisé Tok'ra
 
-> Statut : prototype actif
-> Version d'introduction : 0.2.26-dev
-> Première demande active : 0.2.27-dev
-> Interaction opérée par un colon : 0.2.28-dev
-> Demande médicale : 0.2.29-dev
-> Cache médicale d'urgence : 0.2.30-dev
-> Évaluation tactique : 0.2.31-dev
-> Rapport d'état du canal : 0.2.32-dev  
-> Lecture de posture Tok'ra : 0.2.33-dev-r1
-> Débriefing opérationnel : 0.2.34-dev, masqué temporairement en 0.2.36-dev
-> Mission discrète : 0.2.35-dev
-> Contact de briefing Tok'ra : 0.2.36-dev
+> Statut : système actif
+> Première version : `0.2.26-dev`
 
-Le communicateur sécurisé Tok'ra est une passerelle de confiance vers les
-soutiens avancés Tok'ra. Il reste volontairement clandestin : il ne transforme
-pas les Tok'ra en faction alliée classique.
+Le communicateur sécurisé est le principal point de contact entre la colonie et
+les cellules Tok'ra. Il reste clandestin et ne transforme pas les Tok'ra en
+faction alliée classique.
+
+## Construction et utilisation
+
+- bâtiment alimenté ;
+- recherche Microélectronique requise ;
+- interaction principale par un colon sélectionné puis clic droit ;
+- courte utilisation du bâtiment avant l'ouverture d'une fenêtre ou la
+  transmission de la demande ;
+- commandes directes du bâtiment masquées en jeu normal et réservées au debug.
+
+Les demandes manuelles sensibles exigent généralement une confiance fiable.
+Certaines offres organiques initiées par les Tok'ra peuvent apparaître plus tôt.
 
 ## Fonctions actuelles
 
-```text
-- bâtiment constructible et alimenté
-- nécessite la recherche Microélectronique
-- utilisable seulement au palier de confiance fiable
-- utilisé par un colon sélectionné via clic droit
-- ouvre une fenêtre vanilla de contact sécurisé
-- peut demander une diversion défensive pendant une attaque active
-- peut demander un [soutien médical limité](Tokra-Communicator-Medical-Support) si un colon est blessé ou malade
-- peut demander une [cache médicale d'urgence](Tokra-Emergency-Medical-Cache) dans les mêmes circonstances
-- peut demander une [évaluation tactique Tok'ra](Tokra-Tactical-Threat-Assessment) pendant une menace hostile active
-- peut demander la préparation d'une mission Tok'ra discrète future
-- peut recevoir ensuite un contact de briefing lancé par les Tok'ra
-- peut afficher un [rapport d'état du canal](Tokra-Communicator-Status-Report) sans déclencher de demande
-```
+Le communicateur permet notamment :
 
-## Diversion défensive
+- de répondre aux [opérations organiques](Tokra-Organic-Operation-Opportunities)
+  actuellement proposées ;
+- de demander une [diversion défensive](Tokra-Defensive-Diversion-Request)
+  pendant une menace active ;
+- de solliciter un [conseil médical](Tokra-Communicator-Medical-Support) ;
+- de demander un [cache médical d'urgence](Tokra-Emergency-Medical-Cache) ;
+- d'obtenir une [évaluation tactique](Tokra-Tactical-Threat-Assessment) ;
+- de consulter un [rapport d'état du canal](Tokra-Communicator-Status-Report) ;
+- d'ouvrir la première chaîne de mission Tok'ra.
 
-Depuis `0.2.27-dev`, une colonie fiable peut demander une
-[diversion défensive Tok'ra](Tokra-Defensive-Diversion-Request).
+## Rapport du canal
 
-```text
-menace hostile active requise
-jusqu'à 3 ennemis brièvement perturbés
-long délai avant nouvelle demande
-pas d'escouade Tok'ra physique
-```
+Le rapport donne une lecture RP de la posture de la cellule, des demandes
+actives, des délais de soutien et du contexte local.
+
+Il ne consomme aucun délai et ne révèle ni score brut de confiance, ni
+pondération, ni calendrier futur des opérations organiques.
+
+Les options verrouillées utilisent des raisons courtes. Les détails restent
+dans le rapport plutôt que dans des libellés de bouton trop longs.
+
+## Soutiens fiables
+
+### Diversion défensive
+
+Pendant une attaque active, la cellule peut perturber brièvement un petit nombre
+d'ennemis. Aucun renfort Tok'ra physique n'arrive sur la carte.
+
+### Conseil médical
+
+Un colon reçoit un conseil et de l'expérience en Médecine, sans soin direct ni
+objet livré.
+
+### Cache médical d'urgence
+
+Une petite cache est déposée selon la priorité de la
+[zone de livraison Tok'ra](Tokra-Delivery-Drop-Zone), puis du communicateur et
+du point de repli prévu.
+
+### Évaluation tactique
+
+Le rapport résume la force hostile active ou enrichit les informations d'une
+menace interceptée, sans infliger de dégâts ni révéler toute la carte.
+
+## Chaîne de mission
+
+Une colonie fiable peut déclarer sa disponibilité pour une opération discrète.
+La cellule transmet ensuite un briefing, livre des renseignements codés et peut
+révéler un relais Goa'uld menant à une mission de sabotage jouable.
+
+La progression ne demande pas une succession immédiate de clics au
+communicateur : plusieurs étapes sont initiées automatiquement par les Tok'ra.
 
 ## Limites actuelles
 
-```text
-pas de soin direct automatique
-pas de livraison régulière
-pas de demande de piste de planque via communicateur
-pas de renfort permanent
-pas de commerce
-pas de recrutement
-pas de quête
-```
+Le communicateur ne fournit pas :
 
-Le communicateur sert donc de premier accès fiable aux futures demandes Tok'ra
-plus avancées.
+- de soin automatique ;
+- de commerce permanent ;
+- de recrutement ;
+- de renfort militaire récurrent ;
+- de catalogue de quêtes ;
+- de liste des futures opérations organiques.
 
-
-## Utilisation par un colon
-
-Depuis `0.2.28-dev`, les demandes passent par un colon : sélectionnez un colon,
-puis faites un clic droit sur le communicateur. Le colon rejoint le bâtiment,
-l'utilise brièvement, puis la fenêtre ou la demande Tok'ra se déclenche.
-
-Les commandes du bâtiment servent surtout d'information : elles rappellent de
-sélectionner un colon pour utiliser réellement l'appareil.
-
-
-## Soutien médical limité
-
-Depuis `0.2.29-dev`, une colonie fiable peut demander un conseil médical Tok'ra
-via le communicateur. Cette demande donne de l'expérience en Médecine au colon
-opérateur, mais ne soigne pas directement et ne livre aucun objet.
-
-
-## Cache médicale d'urgence
-
-Depuis `0.2.30-dev`, une colonie fiable peut demander une petite cache médicale
-d'urgence. La cache apparaît près du communicateur et reste limitée : elle ne
-soigne pas directement et ne crée pas de commerce Tok'ra.
-
-## Évaluation tactique
-
-Depuis `0.2.31-dev`, une colonie fiable peut demander une évaluation tactique Tok'ra pendant une menace hostile active. Le rapport reste informatif : il résume le nombre d'hostiles, leur composition générale et un niveau de menace, sans révéler la carte, infliger de dégâts ou appeler des renforts.
-
-
-## Rapport d'état du canal
-
-Depuis `0.2.32-dev`, le communicateur peut afficher un rapport d'état sans
-consommer de cooldown. Le rapport liste les disponibilités ou verrouillages des
-canaux de diversion, d'évaluation tactique, de soutien médical et de cache
-médicale, ainsi que le palier de confiance, la posture actuelle de la cellule et le contexte local.
-
-
-## Libellés verrouillés simplifiés
-
-Depuis `0.2.33-dev-r1`, les options du clic droit gardent des raisons de verrouillage courtes. Le rapport d'état du canal reste l'endroit principal où le joueur consulte les détails de posture Tok'ra et de disponibilité des demandes.
-
-
-## Débriefing opérationnel
-
-Depuis `0.2.36-dev`, cette commande est masquée temporairement dans l'interface
-joueur. Le prototype existe encore côté code, mais il attend une mécanique de
-confiance ou de progression plus claire avant de revenir dans le communicateur.
-
-## Mission discrète et contact Tok'ra
-
-Depuis `0.2.35-dev`, une colonie fiable peut demander à la cellule Tok'ra de
-préparer une mission discrète future. Depuis `0.2.36-dev`, la suite ne dépend
-plus d'un second clic immédiat du joueur : après un délai, les Tok'ra peuvent
-reprendre contact d'eux-mêmes et transmettre un premier briefing.
-
-Cette étape reste volontairement non matérielle : aucun site monde, raid forcé,
-objet, soin, renfort, commerce, recrutement ou récompense immédiate n'est créé.
+Le prototype de débriefing manuel existe encore côté code mais reste masqué
+dans l'interface joueur ; les débriefings utiles à la mission du relais sont
+transmis automatiquement.

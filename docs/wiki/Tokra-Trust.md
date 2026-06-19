@@ -1,50 +1,60 @@
 # Confiance Tok'ra
 
-> Statut : Prototype
-> Version d'introduction : 0.1.50-dev
+> Statut : système actif
+> Première version : `0.1.50-dev`
 
 ## Principe
 
-Les choix effectués pendant une opportunité thérapeutique modifient désormais
-une jauge persistante de confiance Tok'ra.
+Les choix de la colonie construisent ou détériorent une relation persistante
+avec les cellules Tok'ra.
+
+Le joueur voit surtout une posture qualitative :
 
 ```text
-minimum : -100
-valeur initiale : 0
-maximum : 100
+méfiante
+neutre
+coopérative
+fiable
 ```
+
+Les variations numériques exactes restent internes. Les lettres, dialogues et
+rapports du canal décrivent plutôt une amélioration, une dégradation ou la
+prudence actuelle de la cellule.
+
+## Sources de progression
+
+La confiance peut évoluer à travers :
+
+- les opportunités thérapeutiques ;
+- les signaux, planques et contacts ;
+- les demandes du communicateur ;
+- les opérations organiques récurrentes ;
+- les missions de terrain et leurs débriefings ;
+- la réussite ou l'échec d'engagements déjà acceptés.
+
+Ignorer certaines offres non sollicitées, notamment les opérations organiques,
+n'entraîne aucune pénalité. Les conséquences dépendent du type d'événement.
 
 ## Effets actuels
 
-```text
-accepter une offre thérapeutique : +5
-refuser explicitement une offre : -1
-laisser expirer une offre sans réponse : -2
-```
+Les paliers influencent notamment :
 
-Le refus explicite entraîne donc une conséquence légère, tandis que l'absence
-de réponse pénalise davantage la relation. L'acceptation constitue le premier
-moyen de construire progressivement une relation de confiance avec les Tok'ra.
+- la durée ou la disponibilité de certaines offres ;
+- la taille de certaines escortes ;
+- les cadeaux et livraisons médicales ;
+- les pondérations de plusieurs incidents ;
+- l'accès aux demandes fiables du communicateur ;
+- certains dialogues, conseils et pistes de planque ;
+- les opérations et missions jugées assez sensibles.
 
-## Affichage
+## Consultation
 
-Pendant une offre active, sélectionne le symbiote Tok'ra libre. Son panneau
-d'inspection affiche :
-
-```text
-Offre thérapeutique Tok'ra : ... jour(s) restant(s)
-Confiance Tok'ra : ... (...)
-```
-
-La valeur et son palier persistent après sauvegarde et rechargement.
-
-Depuis `0.1.51-dev`, consulte aussi les
-[paliers de confiance Tok'ra](Tokra-Trust-Thresholds). Ils modulent la durée des
-offres thérapeutiques et la taille de leur escorte pacifique.
+Le [rapport d'état du canal](Tokra-Communicator-Status-Report) donne une lecture
+RP de la posture actuelle, des demandes actives et de plusieurs délais sans
+révéler les scores bruts ni le calendrier interne des événements.
 
 ## Limites actuelles
 
-La faction Tok'ra reste masquée et n'utilise pas encore la diplomatie vanilla.
-Les paliers ne débloquent pas encore de récompense, de quête ou de visite
-spéciale et ne modifient pas encore la fréquence storyteller. Ils serviront de
-base à ces systèmes dans de futurs jalons.
+La faction Tok'ra reste masquée et n'utilise pas la diplomatie territoriale
+vanilla. Elle ne possède ni colonies publiques, ni commerce permanent, ni
+recrutement classique.

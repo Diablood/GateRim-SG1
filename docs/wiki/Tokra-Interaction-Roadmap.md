@@ -1,114 +1,110 @@
 # Feuille de route des interactions Tok'ra
 
-> Statut : feuille de route
-> Version : 0.2.27-dev
+> Statut : feuille de route évolutive
+> Dernière révision : `0.2.53-dev`
 
-Cette page résume la direction prévue pour les interactions avec les Tok'ra.
-Depuis `0.2.27-dev`, la première aide défensive active existe via le communicateur fiable.
+Cette page résume la direction des interactions Tok'ra. Elle ne constitue pas
+un calendrier de versions et ne garantit pas l'ordre exact des futurs jalons.
 
-## Déjà en place
+## Fondations déjà en place
 
-```text
-faction Tok'ra masquée
-confiance Tok'ra persistante
-caches médicaux modestes
-signaux de planque
-pistes de planque
-planques temporaires visitables
-contact Tok'ra pacifique et non marchand
-briefing médical unique par contact
-XP Médecine selon la confiance
-piste de suivi aux paliers coopératif et fiable
-```
+Les Tok'ra disposent désormais de plusieurs couches complémentaires :
 
-Les Tok'ra restent une faction clandestine : pas de colonie publique, pas de
-commerce classique, pas de recrutement et pas de renfort militaire permanent.
+- une faction mondiale persistante mais masquée ;
+- une confiance qualitative et persistante ;
+- des visiteurs, opportunités thérapeutiques et livraisons médicales rares ;
+- un réseau de signaux, pistes, caches et planques temporaires ;
+- un [communicateur sécurisé](Tokra-Secure-Communicator) opéré par un colon ;
+- une [zone de livraison clandestine](Tokra-Delivery-Drop-Zone) ;
+- des demandes fiables de soutien médical, diversion défensive et évaluation
+  tactique ;
+- un renseignement intercepté annonçant parfois une attaque Goa'uld/Jaffa ;
+- une première chaîne de mission aboutissant au sabotage jouable d'un relais ;
+- des [opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities).
 
-## Sens des paliers
+Les Tok'ra restent une organisation clandestine : aucune colonie publique,
+aucun commerce classique, aucun recrutement permanent et aucun bouton de
+renfort militaire allié standard.
 
-```text
-méfiante     : contact très limité
-neutre       : aide médicale modeste et prudente
-coopérative  : coordination via planques et pistes de suivi
-fiable       : base pour les soutiens avancés
-```
+## Opérations organiques récurrentes
 
-## Directions prévues
+Quatre archétypes peuvent actuellement revenir au cours d'une partie longue :
 
-### Soutien médical
+1. observer discrètement une activité Goa'uld ;
+2. récupérer et transmettre un module de renseignement ;
+3. accueillir et soigner un agent Tok'ra gravement blessé ;
+4. remettre deux médicaments industriels à un agent de liaison.
 
-Les Tok'ra sont d'abord une faction de soutien médical et de renseignement.
-Les prochaines récompenses fiables devraient donc rester limitées et rares :
-conseils avancés, petit cache médical ou accès conditionnel à une aide plus
-spécialisée.
+Ces offres utilisent des délais cachés et une pondération anti-répétition. Le
+communicateur n'affiche que l'opération réellement active et ne révèle ni
+catalogue, ni historique complet, ni calendrier futur.
 
-### Réseau de planques
+Ignorer une offre non sollicitée ne détériore pas la relation. Une conséquence
+négative n'intervient qu'après l'acceptation d'un engagement qui échoue.
 
-Les signaux, pistes et planques forment déjà une boucle courte. Une future
-mini-questline pourra s'appuyer dessus : signal, planque, contact, puis choix de
-récompense ou de coopération.
+## Première mission de terrain
 
-### Communicateur Tok'ra
+La chaîne de renseignements Tok'ra peut révéler un relais Goa'uld isolé. Une
+caravane peut lancer une opération sur carte temporaire, affronter une garnison
+Jaffa, saboter le nœud de contrôle et évacuer avant l'arrivée de renforts.
 
-Une piste importante est un communicateur sécurisé, débloqué seulement à haute
-confiance. Il pourrait permettre de demander ponctuellement :
+Le relais peut aussi être détruit, mais cette méthode provoque un échec de
+l'opération discrète et prépare une riposte Goa'uld. Après le départ de la
+caravane, la cellule Tok'ra transmet un débriefing avec une conséquence
+qualitative sur la confiance.
 
-```text
-une piste de planque
-un conseil médical
-une diversion défensive pendant une attaque active
-```
+Les anciens états de reconnaissance et de préparation restent conservés pour
+la compatibilité des sauvegardes, mais le flux visible est volontairement
+ramené à une seule action sur la carte du monde avant la mission locale.
 
-### Aide militaire
+## Principes de conception
 
-L'aide militaire Tok'ra doit rester rare et défensive. Les options envisagées
-sont plutôt :
+Les futures interactions Tok'ra doivent respecter les règles suivantes :
 
-```text
-avertissement tactique avant une menace
-sabotage discret ou perturbation d'un raid (premier prototype en `0.2.27-dev`)
-petit groupe temporaire de 1 à 3 agents en cas de crise
-extraction ou aide d'urgence limitée
-```
+- rester rares, clandestines et cohérentes avec le niveau de confiance ;
+- apparaître naturellement par le storyteller, les quêtes ou l'état du monde ;
+- ne jamais suivre un cycle fixe ou un compte à rebours prévisible ;
+- éviter les répétitions immédiates d'un même archétype ;
+- permettre à une réussite comme à un échec d'influencer la relation ;
+- rester compatibles avec les storytellers vanilla et moddés ;
+- ne montrer au joueur que les informations nécessaires à la situation active ;
+- privilégier les conséquences narratives et les récompenses modestes.
 
-Ce ne doit pas devenir un bouton de renfort allié classique.
+## Directions futures
 
-## Extensions futures par culture
+### Diversifier les opérations
 
-Plus tard, les Tok'ra pourront réagir différemment aux grands profils du mod :
+Ajouter d'autres archétypes réellement distincts : renseignement, logistique,
+extraction, accueil temporaire, infiltration, sabotage ou aide médicale. Un
+même type d'opération doit pouvoir revenir avec des variantes sans devenir une
+suite procédurale répétitive.
 
-```text
-membres d'équipe SG
-Jaffa libres
-Jaffa de domaine Goa'uld
-hôtes Goa'uld actifs
-hôtes Tok'ra actifs
-Grands Maîtres Goa'uld
-```
+### Enrichir les missions de terrain
 
-Ces différences devraient rester contextuelles : bonus, méfiance, dialogues ou
-conditions plus strictes, plutôt que des blocages absolus partout.
+Le sabotage du relais constitue un premier modèle, pas une conclusion de la
+partie Tok'ra. D'autres sites et objectifs pourront exploiter des cartes
+temporaires, des choix d'approche et des conséquences différentes.
 
-## Suite logique
+### Renforcer les réactions culturelles
 
-La base du communicateur sécurisé est posée en `0.2.26-dev`. Elle ouvre un canal
-au palier fiable, mais ne donne pas encore de récompense directe. Les prochaines
-évolutions pourront y raccorder progressivement le soutien médical, les pistes
-de planque et une première aide défensive rare.
+Les Tok'ra pourront réagir différemment aux membres du SGC, aux Jaffa libres,
+aux Jaffa marqués, aux hôtes Goa'uld et aux autres profils importants. Ces
+différences doivent surtout modifier les dialogues, conditions et pondérations,
+sans imposer partout des blocages absolus.
 
-## Mise à jour 0.2.26-dev
+### Storyteller GateRim SG-1
 
-Un premier communicateur sécurisé Tok'ra est disponible comme bâtiment alimenté.
-Il sert de point d'accès visible pour les futurs soutiens, mais son canal ne
-s'ouvre qu'au palier de confiance fiable.
+Un storyteller dédié pourra mieux espacer et coordonner les événements du mod
+avec les incidents vanilla. Les événements GateRim SG-1 devront toutefois
+rester accessibles avec tout storyteller compatible.
 
-Il ne donne pas encore de soin, d'objet, de piste, d'aide militaire, de commerce,
-de recrutement ou de quête.
+## Limites volontaires actuelles
 
+Les Tok'ra ne proposent pas encore :
 
-## Interaction ajoutée en 0.2.34-dev
-
-Le communicateur fiable permet désormais de transmettre un débriefing
-opérationnel Tok'ra. Cette interaction reste non matérielle : elle accorde un
-petit retour formatif à l'opérateur et prépare une future boucle RP de confiance
-ou de mission sans livrer d'objet ni appeler de renfort.
+- de commerce permanent ;
+- de recrutement direct ;
+- de renfort militaire récurrent ;
+- de réseau de colonies publiques ;
+- de campagne complète et linéaire ;
+- de voyage par une Porte des étoiles fonctionnelle.

@@ -1,6 +1,6 @@
 # FAQ
 
-> Statut : Prototype  
+> Statut : Prototype
 > Version d'introduction : 0.1.6-dev
 
 ## Pourquoi Biotech est-il requis ?
@@ -55,16 +55,19 @@ Oui, mais chaque page affiche explicitement un statut :
 
 Non. Depuis `0.1.13-dev`, la lignée jaffa et le [Prim'ta](Primta) sont séparés. Un enfant peut naître Jaffa sans porter automatiquement un symbiote immature.
 
-## Le Prim'ta est-il déjà automatique ?
+## Le Prim'ta est-il automatique ?
 
-Pas encore. Depuis `0.1.26-dev`, un Jaffa compatible peut recevoir l'opération `implanter un Prim'ta jaffa` depuis son onglet de santé. La cérémonie d'âge automatique et la larve physique seront ajoutées ultérieurement.
+Un Jaffa généré comme serviteur Goa'uld reçoit normalement son Prim'ta selon son
+profil. Pour les colons, l'implantation reste une décision du joueur : elle peut
+être réalisée par opération médicale ou par cérémonie formelle et consomme une
+larve physique.
 
 
 ## L'implantation forcée est-elle déjà disponible ?
 
 Oui, sous forme de prototype manuel depuis `0.1.17-dev`. Place un symbiote libre à côté d'un humanoïde adulte compatible, sélectionne le symbiote puis clique sur `Implantation forcée`.
 
-Le comportement hostile autonome sera ajouté ultérieurement.
+Le symbiote dispose aussi d'une chasse autonome vers les cibles compatibles.
 
 
 ## Peut-on interrompre une implantation récente ?
@@ -72,9 +75,9 @@ Le comportement hostile autonome sera ajouté ultérieurement.
 Oui. Depuis `0.1.19-dev`, sélectionne la victime pendant la phase critique puis
 clique sur `Extraction d'urgence`.
 
-Le parasite réapparaît à proximité avec le même identifiant persistant. Cette
-commande reste un prototype manuel ; une véritable chirurgie sera ajoutée plus
-tard.
+Le parasite réapparaît à proximité avec le même identifiant persistant. La
+commande instantanée reste un outil de test ; une chirurgie planifiable existe
+également dans l'onglet de santé.
 
 
 ## Existe-t-il une véritable chirurgie d'extraction ?
@@ -102,7 +105,8 @@ Oui. Depuis `0.1.22-dev`, sélectionne un symbiote libre puis clique sur
 `Implantation rituelle`.
 
 Clique ensuite sur l'humanoïde compatible accessible à implanter dans un rayon
-de `12` cases. Une cérémonie plus complète sera ajoutée ultérieurement.
+de `12` cases. Le rituel demande ensuite du temps, un bassin cérémoniel contrôlé
+et une cible qui reste valide et accessible.
 
 
 ## Le rituel Goa'uld est-il instantané ?
@@ -190,8 +194,9 @@ Une température comprise entre `0 °C` et `10 °C` est recommandée.
 La détérioration est normale au-dessus de `10 °C`, doublée à partir de `25 °C`
 et triplée à partir de `40 °C`.
 
-La congélation interrompt provisoirement la détérioration. Les éventuelles
-pénalités liées au gel profond seront étudiées ultérieurement.
+La congélation interrompt la détérioration ordinaire, mais une exposition
+prolongée sous `-15 °C` hors bassin de conservation provoque désormais des
+dommages de gel profond, aggravés sous `-30 °C`.
 
 
 ## À partir de quel âge un Jaffa peut-il recevoir un Prim'ta ?
@@ -199,8 +204,8 @@ pénalités liées au gel profond seront étudiées ultérieurement.
 Depuis `0.1.33-dev`, l'opération devient disponible à partir de `10` ans
 biologiques.
 
-Ce seuil représente une première approximation jouable de l'âge de Prata.
-La dépendance progressive liée à la puberté sera ajoutée ultérieurement.
+Ce seuil représente une approximation jouable de l'âge de Prata. À partir de
+`12` ans, l'absence de Prim'ta provoque une dépendance progressive.
 
 
 ## Que se passe-t-il si un Jaffa atteint la puberté sans Prim'ta ?
@@ -208,8 +213,8 @@ La dépendance progressive liée à la puberté sera ajoutée ultérieurement.
 Depuis `0.1.34-dev`, un Jaffa compatible âgé de `12` ans ou plus sans Prim'ta
 développe une déficience immunitaire progressive.
 
-Une implantation réussie retire immédiatement ce malus. La trétonine sera
-ajoutée ultérieurement comme traitement de substitution.
+Une implantation réussie retire immédiatement ce malus. Une dose de trétonine
+peut aussi suspendre temporairement la déficience.
 
 
 ## L'absence de Prim'ta affecte-t-elle aussi l'humeur ?
@@ -251,12 +256,13 @@ ticks. La chirurgie médicale reste également disponible.
 
 ## Les Tok'ra sont-ils déjà disponibles ?
 
-Partiellement. Depuis `0.1.39-dev`, un `symbiote Tok'ra` peut être généré en
-mode développeur afin de tester l'implantation volontaire et la persistance de
-son identité après extraction.
+Oui, sous forme d'une faction mondiale masquée et clandestine. Le mod comprend
+des symbiotes et hôtes volontaires, des visiteurs, opportunités thérapeutiques,
+livraisons, planques, un communicateur sécurisé, des opérations organiques et
+une première mission de sabotage.
 
-La faction mondiale, les colonies, les visiteurs, les marchands et les quêtes
-Tok'ra seront ajoutés ultérieurement.
+Les Tok'ra ne possèdent toutefois ni colonies publiques, ni marchands
+permanents, ni recrutement classique.
 
 
 ## Peut-on générer directement un hôte Tok'ra ?
@@ -273,10 +279,10 @@ Tok'ra viendront ultérieurement.
 
 Pas encore.
 
-Depuis `0.1.41-dev`, les premiers profils internes `Combat` et `Peaceful`
-existent dans la faction Tok'ra masquée, mais la génération mondiale reste
-désactivée. Les visiteurs, marchands, colonies et événements Tok'ra seront
-activés progressivement.
+Les profils internes `Combat` et `Peaceful` alimentent désormais les visites,
+opportunités thérapeutiques, livraisons, planques et opérations Tok'ra. La
+faction reste toutefois masquée, sans colonies publiques ni marchands
+permanents.
 
 
 ## Peut-on recevoir une visite Tok'ra ?
@@ -291,5 +297,6 @@ Do incident
 visiteurs Tok'ra pacifiques (test)
 ```
 
-Une petite équipe non hostile apparaîtra puis repartira automatiquement. Les
-visites aléatoires du storyteller ne sont pas encore activées.
+Une petite équipe non hostile apparaît puis repart automatiquement. Ces visites
+peuvent aussi être sélectionnées rarement par le storyteller après le début de
+partie, avec un délai empêchant les répétitions rapprochées.

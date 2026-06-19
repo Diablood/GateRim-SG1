@@ -1,27 +1,33 @@
 # Piste de mission Tok'ra décodée
 
-Version d'introduction : `0.2.41-dev`
+> Première version : `0.2.41-dev`
 
-Après l'analyse du paquet de renseignements codés Tok'ra, la cellule Tok'ra peut reprendre contact pour confirmer une première piste opérationnelle.
+Après l'analyse du paquet de renseignements codés, la cellule Tok'ra peut
+reprendre contact pour confirmer une piste opérationnelle autour d'un relais
+Goa'uld isolé.
 
 ## Chaîne de progression
 
 ```text
 mission discrète demandée
 → briefing Tok'ra reçu
-→ cache de mission livrée
-→ paquet de renseignements codés analysé
-→ piste de mission Tok'ra décodée
+→ cache de mission livré
+→ renseignements codés analysés
+→ piste de mission décodée
+→ relais Goa'uld révélé sur la carte du monde
+→ opération de sabotage
 ```
 
 ## Effet en jeu
 
-La réponse indique qu'un relais Goa'uld isolé semble lié aux fragments décodés. Cette piste prépare une future vraie mission, mais elle ne crée pas encore de site monde.
+La piste décodée prépare la révélation du
+[site monde de mission Tok'ra](Tokra-Decoded-Mission-World-Site). La cellule
+transmet ensuite les coordonnées du relais après un nouveau contact narratif.
 
-## Limites volontaires
-
-Cette étape ne fournit pas de récompense matérielle, ne provoque aucun raid, ne révèle aucun site monde, ne soigne aucun colon et n'ajoute aucun renfort.
+Cette étape n'accorde pas de récompense matérielle immédiate et ne déclenche pas
+elle-même un raid.
 
 ## Rapport du canal
 
-Le rapport du communicateur Tok'ra indique si la piste est encore en décodage ou déjà confirmée.
+Le rapport du communicateur indique si les renseignements sont encore en cours
+d'analyse, si la piste est confirmée ou si le relais a déjà été révélé.

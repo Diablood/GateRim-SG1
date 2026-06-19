@@ -1,99 +1,52 @@
 # Implantation rituelle Goa'uld
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.22-dev
+> Statut : prototype jouable
+> Première version : `0.1.22-dev`
 
 ## Présentation
 
-Le symbiote Goa'uld libre dispose désormais d'une voie d'implantation contrôlée,
-distincte de sa chasse autonome.
+Le symbiote Goa'uld libre dispose d'une voie d'implantation contrôlée, distincte
+de sa chasse autonome.
 
-## Utilisation actuelle
+## Utilisation
 
-1. Génère ou récupère un `symbiote Goa'uld`.
-2. Désactive `Chasse autonome` pour préparer calmement le test.
-3. Place un humanoïde adulte compatible dans un rayon de `12` cases.
-4. Sélectionne le symbiote libre.
-5. Clique sur :
+1. Générer ou récupérer un symbiote Goa'uld libre.
+2. Désactiver sa chasse autonome pour préparer le rituel sans interruption.
+3. Placer une cible humanoïde compatible et un bassin rituel à proximité.
+4. Sélectionner le symbiote puis utiliser `Implantation rituelle`.
+5. Choisir explicitement la cible dans le rayon autorisé.
 
-```text
-Implantation rituelle
-```
+Une cérémonie temporisée commence. Le symbiote, la cible et le bassin doivent
+rester accessibles et suffisamment proches jusqu'à son terme.
 
-Le jeu ouvre désormais un curseur de ciblage sur la carte. Clique sur l'humanoïde
-compatible accessible de ton choix dans ce rayon. Le symbiote disparaît puis
-transfère son identité persistante dans l'état :
+## Conditions principales
 
 ```text
-implantation Goa'uld récente
+cible vivante et compatible
+âge minimal de 13 ans
+distance maximale de 12 cases pour le ciblage
+bassin rituel contrôlé à moins de 6 cases
+durée de cérémonie : 600 ticks
 ```
 
-## Identité persistante
+Le rituel peut être annulé manuellement. Il s'interrompt aussi si la cible
+devient invalide, si un participant s'éloigne ou si le bassin est détruit.
 
-L'identifiant reste identique avant et après le rituel :
+La progression et la cible sont conservées dans la sauvegarde.
 
-```text
-symbiote libre
-    ↓ implantation rituelle
-implantation récente
-    ↓
-même identifiant persistant
-```
+## Résultat
 
-## Limites du prototype
+À la fin de la cérémonie, le symbiote libre disparaît et la cible reçoit une
+implantation Goa'uld récente. L'identité persistante du parasite est conservée,
+puis la conversion automatique en hôte actif suit le cycle habituel si aucune
+extraction n'intervient.
 
-- aucune animation de cérémonie n'est encore présente ;
-- aucune durée de rituel n'est encore appliquée ;
-- aucune faction, salle, cuve ou structure n'est encore requise ;
-- l'utilisation sur prisonnier n'est pas encore distinguée.
+## Limites actuelles
 
-Ces éléments seront ajoutés après validation du transfert contrôlé.
+- aucune animation cérémonielle spécialisée ;
+- pas de distinction particulière pour les prisonniers ;
+- aucun système d'idéologie Goa'uld complet.
 
-
-## Sélection explicite de la cible
-
-Depuis `0.1.23-dev`, la commande `Implantation rituelle` ouvre un curseur sur la
-carte. Clique directement sur la cible à implanter.
-
-La cible doit être compatible, accessible, vivant, âgé d'au moins `13` ans et
-situé dans le rayon de `12` cases.
-
-
-## Cérémonie temporisée
-
-Depuis `0.1.24-dev`, l'implantation rituelle n'est plus instantanée.
-
-Après avoir choisi la cible, une cérémonie de `600` ticks commence. Le panneau
-d'inspection du symbiote affiche la cible et le temps restant.
-
-La cible doit rester :
-
-```text
-vivante
-compatible
-accessible
-dans le rayon de 12 cases
-```
-
-Le rituel peut être annulé manuellement avec `Annuler le rituel`. Il est aussi
-interrompu automatiquement si les conditions ne sont plus remplies.
-
-La progression est conservée lors d'une sauvegarde et reprend après rechargement.
-
-## Intégrations DLC futures
-
-Ce rituel de base fonctionne sans `Ideology`.
-
-Une intégration optionnelle pourra ultérieurement exploiter les rituels du DLC
-pour ajouter une idéologie Goa'uld, des rôles, des participants, des lieux et
-des objets cérémoniels tout en réutilisant le même transfert persistant.
-
-
-## Bassin rituel requis
-
-Depuis `0.1.25-dev`, une [bassin rituel Goa'uld](Ritual-Basin) doit se trouver à
-proximité du symbiote et de la cible.
-
-Les deux doivent rester à moins de `6` cases du même bassin pendant toute la
-cérémonie. La destruction du bassin ou l'éloignement d'un participant annule le
-rituel.
+Le rituel de base fonctionne avec `Core + Biotech`. Une intégration optionnelle
+à Ideology pourra ultérieurement ajouter rôles, participants et exigences de
+lieu sans remplacer ce fonctionnement.

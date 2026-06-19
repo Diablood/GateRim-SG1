@@ -1,57 +1,50 @@
 # Implantation forcée Goa'uld
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.17-dev
+> Statut : prototype jouable
+> Première version : `0.1.17-dev`
 
 ## Présentation
 
-Un symbiote Goa'uld adulte privé d'hôte peut désormais commencer une implantation forcée sur un humanoïde compatible adjacent.
+Un symbiote Goa'uld adulte privé d'hôte peut implanter de force un humanoïde
+compatible.
 
-## Utilisation actuelle
+## Comportement normal
 
-1. Active le mode développeur.
-2. Génère un `symbiote Goa'uld`.
-3. Place-le à côté d'un humanoïde adulte.
-4. Sélectionne le symbiote libre.
-5. Clique sur `Implantation forcée`.
+Le symbiote libre recherche de manière autonome une cible adulte accessible,
+la poursuit et commence l'implantation au contact.
 
-Le symbiote libre disparaît et la victime reçoit :
+La victime reçoit une implantation Goa'uld récente. Si le symbiote n'est pas
+extrait pendant la phase critique, la conversion en hôte Goa'uld actif se
+produit automatiquement.
 
-```text
-implantation Goa'uld récente
-```
+L'identité persistante du parasite est conservée pendant tout le processus.
 
-L'identité persistante du parasite est conservée.
+## Commande de test
+
+Le mode développeur permet encore de sélectionner un symbiote adjacent à une
+cible et d'utiliser `Implantation forcée`. Cette commande sert aux validations
+rapides et choisit le premier humanoïde adjacent compatible.
 
 ## Cibles acceptées
 
 | Cible | Résultat |
 |---|---|
-| Humanoïde adulte | Autorisé |
-| Jaffa adulte | Autorisé |
-| Enfant de moins de 13 ans | Refusé |
-| Animal | Refusé |
-| Mécanoïde | Refusé |
-| Cible déjà implantée | Refusée |
-| Hôte possédant déjà un symbiote adulte | Refusé |
+| Humanoïde adulte | autorisé |
+| Jaffa adulte | autorisé |
+| Enfant de moins de 13 ans | refusé |
+| Animal | refusé |
+| Mécanoïde | refusé |
+| Cible déjà implantée | refusée |
+| Hôte possédant déjà un symbiote adulte | refusé |
 
-## Limites du prototype
+## Autres voies
 
-- la commande choisit le premier humanoïde adjacent compatible ;
-- l'action doit être déclenchée manuellement ;
-- le symbiote ne dispose pas encore d'une IA hostile autonome ;
-- la conversion finale en hôte Goa'uld actif n'est pas encore automatique ;
-- les futurs Unas ne sont pas encore gérés.
+- [Chasse autonome](Autonomous-Hunt)
+- [Implantation rituelle](Ritual-Implantation)
+- [Extraction d'urgence](Emergency-Extraction)
+- [Chirurgie d'extraction](Extraction-Surgery)
 
+## Limite actuelle
 
-## Chasse autonome disponible
-
-Depuis `0.1.21-dev`, la [chasse autonome](Autonomous-Hunt) constitue le
-comportement normal du symbiote libre. La commande manuelle reste disponible
-comme outil de test.
-
-
-## Voie rituelle distincte
-
-Depuis `0.1.22-dev`, une [implantation rituelle](Ritual-Implantation) contrôlée
-permet de déclencher une implantation à portée limitée sans attendre le contact.
+Les futurs Unas et leurs règles biologiques particulières ne sont pas encore
+gérés.

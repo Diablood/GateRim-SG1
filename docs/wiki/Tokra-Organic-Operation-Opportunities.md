@@ -1,47 +1,84 @@
-# Tok'ra organic operation opportunities
+# Opérations Tok'ra organiques
 
-Tok'ra cells do not immediately entrust an unfamiliar colony with sabotage or other sensitive missions. They may first open cautious channels and ask for limited assistance.
+Les cellules Tok'ra ne confient pas immédiatement des sabotages ou des missions
+sensibles à une colonie inconnue. Elles commencent par ouvrir des canaux
+prudents et proposer des tâches limitées.
 
-These requests can appear before the relationship reaches the Trusted tier, creating a gradual path from initial neutral contact toward more sensitive cooperation.
+Ces demandes peuvent apparaître avant le palier de confiance fiable. Elles
+créent une progression naturelle entre le premier contact et une coopération
+plus sensible.
 
-## Discreet observation
+## Observation discrète
 
-A cell may ask the colony to watch for unusual Goa'uld activity.
+Une cellule peut demander à la colonie de surveiller une activité Goa'uld
+inhabituelle.
 
-1. Accept the request with a colon at a powered Tok'ra communicator.
-2. Allow the discreet observation period to finish.
-3. Transmit the report before the secure channel closes.
+1. Accepter la demande avec un colon capable d'Intellectuel au communicateur
+   Tok'ra alimenté.
+2. Laisser la période d'observation se terminer.
+3. Transmettre le rapport avant la fermeture du canal sécurisé.
 
-A useful report improves Tok'ra trust and grants a small amount of Intellectual experience.
+Un rapport utile améliore qualitativement la confiance Tok'ra et accorde un peu
+d'expérience en Intellectuel.
 
-## Intelligence-module recovery
+## Récupération d'un module de renseignement
 
-A cell may instead entrust the colony with a sealed module containing encrypted intelligence.
+Une cellule peut confier à la colonie un module scellé contenant des
+renseignements chiffrés.
 
-1. Accept the recovery request at a powered communicator.
-2. The module is delivered at the Tok'ra delivery zone when possible, otherwise near the communicator.
-3. Send an Intellectual-capable colon to secure and transmit its data before the contact window closes.
+1. Accepter la récupération au communicateur alimenté.
+2. Recevoir le module dans la zone de livraison Tok'ra, près du communicateur
+   ou, en dernier recours, près d'un bord de carte accessible.
+3. Envoyer un colon capable d'Intellectuel sécuriser et transmettre les données
+   avant la fermeture de la fenêtre de contact.
 
-The module represents intelligence, not supplies, and provides no material loot.
+Le module représente du renseignement et non des fournitures. Il ne contient
+aucune récompense matérielle récupérable.
 
-## Medical-supply handoff
+## Accueil d'un agent blessé
 
-A cell may request two industrial medicines without checking the colony's reserves. After acceptance, one Tok'ra liaison arrives roughly one to two hours later and walks to the delivery zone, the powered communicator or a reachable point near the colony centre.
+Une cellule peut demander d'abriter un agent Tok'ra gravement blessé ou malade.
 
-A Social-capable colon must speak with the liaison. The dialogue can give two accessible industrial medicines or simply close so the player can return later. A successful donation consumes exactly two units, grants Social experience and resolves the operation immediately. If no donation is made during the liaison's waiting window, the liaison leaves and the accepted request fails. A liaison killed after a successful handoff does not cancel that success, but the death still damages relations separately.
+L'agent arrive inconscient depuis le bord de la carte. La colonie doit le
+secourir et le traiter avec les soins médicaux normaux de RimWorld. Une guérison
+complète n'est pas nécessaire : lorsqu'il est conscient, mobile et suffisamment
+stable, il tente de quitter la carte.
 
-## Consequences
+La réussite n'est accordée qu'après sa sortie effective et vivante. Sa mort, sa
+capture ou sa disparition avant cette sortie provoque l'échec.
 
-Ignoring an unsolicited offer does not reduce trust. Once a request has been accepted, missing its deadline or losing its objective makes the cell slightly more cautious.
+## Remise de ravitaillement médical
 
-Organic requests use hidden variable delays. The channel report shows the current request state, but never reveals a fixed schedule for future contacts.
+Une cellule peut demander deux médicaments industriels sans connaître les
+réserves de la colonie.
 
-## Sensitive operations remain distinct
+Après acceptation, un agent de liaison Tok'ra rejoint discrètement la zone de
+livraison, le communicateur ou un point accessible près du centre de la
+colonie. Un colon capable de Social doit lui parler. Le dialogue permet de
+remettre les deux médicaments ou de fermer la fenêtre pour revenir plus tard.
 
-Manual support requests and missions such as relay sabotage retain their existing Trusted-tier requirements. Preliminary organic requests test the colony's reliability; they do not grant unrestricted access to the Tok'ra network.
-## Wounded-agent refuge
+Le don consomme exactement deux unités accessibles, accorde un peu d'expérience
+en Social et résout immédiatement l'opération. Si aucune remise n'est effectuée
+avant le départ de l'agent, l'engagement accepté échoue. La mort de l'agent
+après une remise réussie n'annule pas le succès, mais détériore séparément les
+relations avec la cellule.
 
-A cell may also ask the colony to shelter a seriously wounded Tok'ra agent. The agent is treated through normal RimWorld medical care and leaves once fit to travel; complete healing is not required. Safe departure improves the relationship, while death or loss after acceptance damages it.
+## Conséquences et récurrence
 
-Only the currently active offer or operation is shown on the communicator. Completed operations do not remain as a visible catalog or history.
+Ignorer une offre non sollicitée ne réduit pas la confiance. Après acceptation,
+perdre l'objectif ou dépasser le délai rend la cellule plus prudente.
 
+Les offres utilisent des délais cachés et une forte réduction de probabilité
+pour le dernier archétype joué. Elles peuvent revenir au cours d'une partie
+longue sans former un cycle fixe.
+
+Le communicateur affiche uniquement l'offre ou l'opération actuellement active.
+Les opérations terminées ne restent pas visibles sous forme de catalogue ou
+d'historique.
+
+## Opérations sensibles distinctes
+
+Les demandes manuelles et les missions comme le sabotage du relais conservent
+leurs propres conditions de confiance. Les opérations organiques préliminaires
+évaluent la fiabilité de la colonie ; elles ne donnent pas un accès illimité au
+réseau Tok'ra.

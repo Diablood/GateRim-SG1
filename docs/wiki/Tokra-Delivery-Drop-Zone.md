@@ -1,39 +1,46 @@
-# Tok'ra delivery drop zone
+# Zone de livraison Tok'ra
 
-> Introduced in `0.2.38-dev`.
+> Première version : `0.2.38-dev`
 
-The Tok'ra delivery drop zone is a discreet ground marker used by the colony to indicate where clandestine Tok'ra caches should appear.
+La zone de livraison Tok'ra est un marqueur discret au sol. Elle indique
+l'emplacement privilégié pour les caches et livraisons clandestines de la
+cellule.
 
 ## Placement
 
-- The marker is placed from the Architect menu.
-- It is free and immediate to place.
-- It does not require materials, work, research or a colonist builder.
-- It is not meant to be minified or transported: moving it is done by placing a new marker.
-- Only one marker is kept per map: placing a new one removes the previous one.
+- Le marqueur se place depuis le menu Architecte.
+- Sa pose est gratuite et immédiate.
+- Il ne demande ni ressource, ni travail, ni recherche, ni constructeur.
+- Il ne peut pas être minifié ou transporté.
+- Une seule zone est conservée par carte : en placer une nouvelle supprime
+  automatiquement l'ancienne.
 
-## Delivery priority
+## Priorité de livraison
 
-Tok'ra cache placement now checks delivery locations in this order:
+Les systèmes Tok'ra recherchent un emplacement dans l'ordre suivant :
 
-1. The Tok'ra delivery drop zone, when present.
-2. A powered Tok'ra secure communicator, when no delivery zone exists.
-3. A reachable unfogged map-edge cell as a final fallback.
+1. la zone de livraison Tok'ra, lorsqu'elle existe ;
+2. un communicateur sécurisé Tok'ra alimenté ;
+3. une cellule accessible et non masquée près d'un bord de carte.
 
-## Current use
+## Utilisation actuelle
 
-The marker is used by:
+La zone est utilisée en priorité pour :
 
-- manual Tok'ra emergency medical cache requests;
-- rare hidden-cell Tok'ra caches;
-- Tok'ra safehouse lead caches;
-- escorted Tok'ra medical-support supply drops, while the visitors still enter from the map edge.
+- les demandes manuelles de cache médical d'urgence ;
+- les caches rares de cellules clandestines ;
+- les caches découverts grâce aux pistes de planque ;
+- les livraisons médicales Tok'ra escortées ;
+- les objectifs physiques de certaines opérations organiques.
 
-It is also intended as the future target for discreet Tok'ra mission drops and automatic material deliveries.
+Les visiteurs et agents continuent d'entrer normalement depuis le bord de la
+carte avant de rejoindre le point de rendez-vous.
 
-## Limits
+## Limites
 
-The marker does not store items, produce resources, call reinforcements, trade, recruit, heal colonists or start quests by itself.
+La zone ne stocke rien par elle-même. Elle ne produit aucune ressource, ne
+déclenche pas de quête, n'appelle pas de renfort, ne soigne personne et
+n'autorise ni commerce ni recrutement.
 
-
-The marker is non-minifiable and cannot be transported. To move it, place a new marker; the previous marker is removed automatically.
+Pour la déplacer, placez simplement une nouvelle zone : l'ancienne sera
+retirée automatiquement.

@@ -1,23 +1,19 @@
 # Implantation du Prim'ta jaffa
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.26-dev
+> Statut : prototype jouable
+> Première version : `0.1.26-dev`
 
 ## Présentation
 
-Un Jaffa compatible peut désormais recevoir un Prim'ta grâce à une opération
-médicale planifiable.
+Un Jaffa compatible peut recevoir un Prim'ta grâce à une opération médicale
+planifiable.
 
 ## Planifier l'opération
 
-1. Sélectionne un Jaffa.
-2. Ouvre l'onglet de santé.
-3. Ouvre la liste des opérations.
-4. Ajoute :
-
-```text
-implanter un Prim'ta jaffa
-```
+1. Sélectionnez un Jaffa.
+2. Ouvrez l'onglet de santé.
+3. Ouvrez la liste des opérations.
+4. Ajoutez `implanter un Prim'ta jaffa`.
 
 ## Conditions actuelles
 
@@ -29,45 +25,27 @@ implanter un Prim'ta jaffa
 | [Larve de Prim'ta](Primta-Larva) | `1` unité |
 | Âge biologique minimal | `10` ans |
 | Temps de travail | `900` |
-| Prim'ta déjà présent | Opération indisponible |
+| Prim'ta déjà présent | opération indisponible |
 
 ## Compatibilité biologique
 
-Le Jaffa doit porter les gènes hérités suivants :
-
-```text
-lignée jaffa
-prédisposition à la poche jaffa
-compatibilité avec le symbiote immature
-```
+Le Jaffa doit porter les fondations héréditaires de lignée, de poche jaffa et de
+compatibilité avec le symbiote immature.
 
 ## Résultat
 
-Une réussite ajoute :
+Une réussite ajoute le symbiote du Prim'ta. Les bonus d'immunité, de guérison,
+de résistance, de longévité et de réduction de douleur deviennent actifs.
 
-```text
-symbiote du Prim'ta
-```
+L'opération consomme une larve physique et le médicament prévu.
 
-Les bonus d'immunité, de guérison, de résistance, de longévité et de réduction
-de douleur deviennent actifs.
+## Systèmes associés
 
-## Larve physique requise
+- [Âge requis pour le Prim'ta](Primta-Age-Eligibility)
+- [Dépendance pubertaire](Primta-Puberty-Dependency)
+- [Trétonine](Tretonin)
+- [Cérémonie formelle du Prim'ta](Primta-Formal-Ceremony)
 
-Depuis `0.1.27-dev`, l'opération consomme une
-[larve de Prim'ta](Primta-Larva) physique en plus du médicament.
-
-## Limites du prototype
-
-- l'âge approprié n'est pas encore contrôlé ;
-- la cérémonie traditionnelle n'est pas encore représentée ;
-- l'absence prolongée de Prim'ta n'entraîne pas encore de dépendance ;
-- la trétonine n'est pas encore disponible.
-
-
-## Âge minimal
-
-Depuis `0.1.33-dev`, un Jaffa doit avoir au moins `10` ans biologiques pour
-recevoir un Prim'ta.
-
-Consulte [Âge requis pour le Prim'ta](Primta-Age-Eligibility).
+La cérémonie constitue une autre méthode d'implantation, plus culturelle et
+temporisée, tandis que l'opération médicale reste disponible pour les soins
+ordinaires.

@@ -1,21 +1,30 @@
-# Tok'ra intelligence-module recovery
+# Récupération d'un module de renseignement Tok'ra
 
-A Tok'ra cell may ask the colony to recover a sealed module containing encrypted information about Goa'uld activity.
+Une cellule Tok'ra peut demander à la colonie de récupérer un module scellé
+contenant des informations chiffrées sur une activité Goa'uld.
 
-## Accepting the request
+## Accepter la demande
 
-The offer arrives through the Tok'ra channel and can be accepted by an Intellectual-capable colon at a powered secure communicator. Ignoring the offer has no trust consequence.
+L'offre arrive par le canal Tok'ra. Un colon capable d'Intellectuel peut
+l'accepter depuis un communicateur sécurisé alimenté. Ignorer l'offre n'a
+aucune conséquence sur la confiance.
 
-Once accepted, the module is delivered:
+Après acceptation, le module est livré selon cet ordre de priorité :
 
-1. on or beside the Tok'ra delivery drop zone when one exists;
-2. beside a powered Tok'ra communicator when no delivery zone is available;
-3. at a reachable map edge only as a last-resort delivery route.
+1. sur la zone de livraison Tok'ra ou juste à côté ;
+2. près d'un communicateur Tok'ra alimenté ;
+3. près d'un bord de carte accessible, uniquement en dernier recours.
 
-## Securing the intelligence
+## Sécuriser les renseignements
 
-Select an Intellectual-capable colon and order them to secure the module before the contact window closes. This represents checking its integrity, extracting the encrypted information and transmitting it to the Tok'ra cell.
+Sélectionnez un colon capable d'Intellectuel et ordonnez-lui de sécuriser le
+module avant la fermeture de la fenêtre de contact. Cette opération représente
+la vérification de son intégrité, l'extraction des données et leur transmission
+à la cellule Tok'ra.
 
-The module contains no recoverable supplies and disappears when the operation is resolved.
+Le module ne contient aucune fourniture récupérable et disparaît lorsque
+l'opération est résolue.
 
-Success slightly improves Tok'ra trust and grants Intellectual experience. Losing the module or missing the accepted deadline makes the cell slightly more cautious.
+Une transmission réussie améliore qualitativement la confiance Tok'ra et accorde
+de l'expérience en Intellectuel. La perte du module ou l'expiration d'un
+engagement accepté rend la cellule plus prudente.

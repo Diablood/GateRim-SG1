@@ -1,12 +1,12 @@
 # Soutien médical Tok'ra en trétonine
 
-> Statut : Prototype
-> Version d'introduction : 0.1.52-dev
+> Statut : prototype jouable
+> Première version : `0.1.52-dev`
 
 ## Principe
 
-La confiance Tok'ra débloque désormais un premier soutien matériel léger lors
-des opportunités thérapeutiques escortées.
+La confiance Tok'ra débloque un premier soutien matériel léger pendant les
+opportunités thérapeutiques escortées.
 
 ```text
 méfiante    : aucun cadeau
@@ -15,19 +15,20 @@ coopérative : 1 dose physique de trétonine
 fiable      : 2 doses physiques de trétonine
 ```
 
-Les doses apparaissent près du point d'arrivée de l'équipe Tok'ra. Un message
-permet de les localiser rapidement.
+Les doses apparaissent près du point d'arrivée de l'équipe Tok'ra et un message
+permet de les localiser.
 
 ## Issue de l'offre
 
-Le soutien reste sur la carte même si l'offre est refusée ou expire. Ce choix
-représente une aide médicale humanitaire. Le refus et l'expiration continuent
-toutefois à réduire la confiance, ce qui empêche naturellement de répéter
-indéfiniment cette récupération lorsque la relation se dégrade.
+Le soutien reste sur la carte même si l'offre thérapeutique est refusée ou
+expire. Il représente une aide humanitaire distincte de la décision concernant
+la symbiose.
 
-## Limites actuelles
+## Soutiens associés
 
-Depuis `0.1.53-dev`, une relation suffisamment avancée peut également
-déclencher une [livraison médicale Tok'ra indépendante](Tokra-Medical-Support-Deliveries)
-sans offre de symbiose. Les Tok'ra n'apportent pas encore d'équipement avancé,
-ne proposent pas de commerce et ne déclenchent pas de quête dédiée.
+Une relation suffisamment avancée peut également déclencher une
+[livraison médicale indépendante](Tokra-Medical-Support-Deliveries). Au palier
+fiable, cette autre livraison inclut aussi un médicament ultratechnologique.
+
+Les Tok'ra ne proposent toujours pas de commerce permanent ni de catalogue
+d'équipement.
