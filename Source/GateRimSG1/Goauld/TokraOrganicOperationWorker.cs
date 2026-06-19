@@ -87,6 +87,13 @@ namespace GateRimSG1.Goauld
                 map,
                 operatorPawn);
         }
+
+        public override bool TryHandleCommunicatorCompletion(
+            GameComponent_TokraOrganicOperationManager manager,
+            Pawn operatorPawn)
+        {
+            return manager.TryOpenIntelligenceAnalysis(operatorPawn);
+        }
     }
 
     internal sealed class TokraOrganicOperationWorker_WoundedAgentCare

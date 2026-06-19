@@ -4,7 +4,7 @@
 
 The organic-operation framework schedules recurring requests initiated by Tok'ra cells. It remains separate from manual communicator support requests and from the decoded-relay mission chain.
 
-`0.3.0-dev` replaces the former monolithic operation tracker with an internal reusable framework. No new player-visible operation is added by this milestone.
+`0.3.0-dev` replaced the former monolithic operation tracker with an internal reusable framework. `0.3.1-dev` is the first content rework built on it, expanding the intelligence worker without duplicating scheduling, persistence, trust resolution or cleanup.
 
 ## Compatibility boundary
 
@@ -45,7 +45,8 @@ The common record contains:
 - duplicate-resolution guard;
 - optional physical objective;
 - optional wounded-agent pawn and medical-care state;
-- optional medical liaison, meeting cell and arrival state.
+- optional medical liaison, meeting cell and arrival state;
+- intelligence-analysis method, total/remaining work, interference state, patrol queue state and RP result variant.
 
 A future archetype should extend the shared instance only when a field is genuinely reusable. Operation-specific behavior belongs in a worker.
 
@@ -54,7 +55,7 @@ A future archetype should extend the shared instance only when a field is genuin
 Each archetype is selected through a worker registry:
 
 - `TokraOrganicOperationWorker_GoauldObservation`;
-- `TokraOrganicOperationWorker_DeadDropRecovery`;
+- `TokraOrganicOperationWorker_DeadDropRecovery`, which now routes analysis through the powered communicator;
 - `TokraOrganicOperationWorker_WoundedAgentCare`;
 - `TokraOrganicOperationWorker_MedicalSupplyHandoff`.
 
@@ -84,7 +85,8 @@ Existing services remain reusable behind the framework:
 - `TokraDeliveryDropUtility` for preferred placement;
 - `TokraOrganicWoundedAgentUtility` for patient generation and departure;
 - `TokraOrganicMedicalSupplyUtility` for liaison arrival, resource transfer and departure;
-- `GameComponent_TokraTrustTracker` for qualitative relationship consequences.
+- `GameComponent_TokraTrustTracker` for qualitative relationship consequences;
+- the dedicated zero-chance `SG1_GoauldJaffaSignalPatrol` incident for a delayed accelerated-decoding consequence.
 
 ## Persistent post-resolution consequences
 
@@ -123,7 +125,7 @@ RimWorld developer mode provides compact actions under `GateRim SG-1`:
 
 The same controls are available from one `Tok'ra operation debug` menu on the secure communicator whenever RimWorld developer mode or the GateRim SG-1 advanced-debug setting is active. No debug command is visible during normal play.
 
-Player-facing texts remain RP-oriented. The state report and debug labels may expose technical details.
+Player-facing texts remain RP-oriented. The normal communicator report exposes only the currently active organic operation and relevant durable unique-mission progress. The complete catalogue, exact work ticks, hidden scheduling, interference state and incident queue details are reserved for the debug report and logs.
 
 ## Adding a future archetype
 

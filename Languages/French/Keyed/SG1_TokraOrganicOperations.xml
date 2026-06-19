@@ -4,13 +4,10 @@
     <GR_TokraOrganicOperation_FloatMenuAcceptObservation>Accepter la demande d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuAcceptObservation>
     <GR_TokraOrganicOperation_FloatMenuTransmitObservation>Transmettre le rapport d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuTransmitObservation>
     <GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop>Accepter la récupération du module de renseignements Tok'ra</GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop>
-    <GR_TokraOrganicOperation_FloatMenuSecureDeadDrop>Sécuriser le module de renseignements Tok'ra</GR_TokraOrganicOperation_FloatMenuSecureDeadDrop>
-    <GR_TokraOrganicOperation_TrackerUnavailable>Canal opérationnel Tok'ra indisponible</GR_TokraOrganicOperation_TrackerUnavailable>
     <GR_TokraOrganicOperation_NoActiveOpportunity>Aucune demande Tok'ra active</GR_TokraOrganicOperation_NoActiveOpportunity>
     <GR_TokraOrganicOperation_ObservationInProgress>Observation encore en cours ({0} h restantes)</GR_TokraOrganicOperation_ObservationInProgress>
     <GR_TokraOrganicOperation_ObservationExpired>Fenêtre de transmission du rapport expirée</GR_TokraOrganicOperation_ObservationExpired>
     <GR_TokraOrganicOperation_OperatorIncapable>L'opérateur doit être capable d'effectuer un travail intellectuel</GR_TokraOrganicOperation_OperatorIncapable>
-
     <GR_TokraOrganicOperation_OfferLetterLabel>Demande d'observation Tok'ra discrète</GR_TokraOrganicOperation_OfferLetterLabel>
     <GR_TokraOrganicOperation_OfferLetterText>Un contact Tok'ra prudent a ouvert un canal étroit. La cellule ne vous confie pas une mission sensible. Elle demande seulement à votre colonie de surveiller discrètement d'éventuels mouvements Goa'uld inhabituels dans la région, puis de transmettre un rapport concis.
 
@@ -22,41 +19,33 @@ Sélectionnez un colon, puis faites un clic droit sur le communicateur sécuris�
     <GR_TokraOrganicOperation_FailedLetterText>La demande d'observation avait été acceptée, mais le rapport n'a pas été transmis avant la fermeture de la fenêtre sécurisée. La cellule Tok'ra se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_FailedLetterText>
     <GR_TokraOrganicOperation_SuccessLetterLabel>Rapport d'observation Tok'ra reçu</GR_TokraOrganicOperation_SuccessLetterLabel>
     <GR_TokraOrganicOperation_SuccessLetterText>{0} a transmis un rapport concis sur l'activité Goa'uld environnante. La cellule Tok'ra confirme que ces renseignements sont utiles. L'opérateur gagne {1} XP en Intellectuel et la confiance de la cellule envers la colonie progresse.</GR_TokraOrganicOperation_SuccessLetterText>
-
     <GR_TokraOrganicOperation_DeadDropNoLongerActive>Ce module de renseignements Tok'ra ne fait plus partie d'une opération active</GR_TokraOrganicOperation_DeadDropNoLongerActive>
     <GR_TokraOrganicOperation_DeadDropWindowExpired>La fenêtre de récupération des renseignements Tok'ra s'est refermée</GR_TokraOrganicOperation_DeadDropWindowExpired>
-    <GR_TokraOrganicOperation_DeadDropCannotReach>Aucun chemin sûr vers le module de renseignements Tok'ra</GR_TokraOrganicOperation_DeadDropCannotReach>
-    <GR_TokraOrganicOperation_DeadDropReserved>Un autre colon a réservé le module de renseignements Tok'ra</GR_TokraOrganicOperation_DeadDropReserved>
-    <GR_TokraOrganicOperation_DeadDropJobUnavailable>Tâche de sécurisation du module de renseignements Tok'ra indisponible</GR_TokraOrganicOperation_DeadDropJobUnavailable>
     <GR_TokraOrganicOperation_DeadDropSpawnFailed>Aucun emplacement valide n'a pu être trouvé dans la zone de livraison Tok'ra, près d'un communicateur alimenté ou en bordure de carte. La demande reste disponible.</GR_TokraOrganicOperation_DeadDropSpawnFailed>
-    <GR_TokraOrganicOperation_DeadDropOfferLetterLabel>Demande de récupération de renseignements Tok'ra</GR_TokraOrganicOperation_DeadDropOfferLetterLabel>
-    <GR_TokraOrganicOperation_DeadDropOfferLetterText>Une cellule Tok'ra souhaite confier à la colonie un module scellé contenant des renseignements chiffrés sur l'activité Goa'uld. Accepter la demande autorisera son dépôt dans la zone de livraison Tok'ra. En l'absence de zone valide, le point de dépôt sera choisi près d'un communicateur alimenté, puis en bordure de carte.
+    <GR_TokraOrganicOperation_DeadDropOfferLetterLabel>Demande d'analyse de renseignements Tok'ra</GR_TokraOrganicOperation_DeadDropOfferLetterLabel>
+    <GR_TokraOrganicOperation_DeadDropOfferLetterText>Une cellule Tok'ra souhaite confier à la colonie un module scellé contenant des renseignements chiffrés sur l'activité Goa'uld. Accepter autorisera son dépôt dans la zone de livraison Tok'ra, près d'un communicateur alimenté si aucune zone n'est disponible, ou près d'un bord de carte accessible en dernier recours.
 
-Sélectionnez un colon, puis faites un clic droit sur le communicateur sécurisé Tok'ra alimenté pour accepter la récupération. L'offre restera disponible pendant environ {0} heures. Le module devra ensuite être sécurisé par un colon capable de travail Intellectuel. Cette opération représente l'extraction et la transmission des données : le conteneur ne fournit aucun objet récupérable. Ignorer l'offre n'entraîne aucune perte de confiance.</GR_TokraOrganicOperation_DeadDropOfferLetterText>
+Sélectionnez un colon, puis faites un clic droit sur le communicateur sécurisé Tok'ra alimenté pour accepter. L'offre restera disponible pendant environ {0} heures. Une fois le module livré, un colon capable de travail Intellectuel devra le relier à ce communicateur et choisir une méthode de décodage. Ignorer l'offre n'entraîne aucune perte de confiance.</GR_TokraOrganicOperation_DeadDropOfferLetterText>
     <GR_TokraOrganicOperation_DeadDropOfferExpired>La demande de récupération de renseignements Tok'ra s'est refermée sans réponse.</GR_TokraOrganicOperation_DeadDropOfferExpired>
-    <GR_TokraOrganicOperation_DeadDropAccepted>{0} a accepté la récupération du module de renseignements Tok'ra. Les données doivent être sécurisées dans un délai d'environ {1} heures.</GR_TokraOrganicOperation_DeadDropAccepted>
+    <GR_TokraOrganicOperation_DeadDropAccepted>{0} a accepté l'analyse des renseignements Tok'ra. Le module doit être décodé dans un délai d'environ {1} heures.</GR_TokraOrganicOperation_DeadDropAccepted>
     <GR_TokraOrganicOperation_DeadDropLocatedLetterLabel>Module de renseignements Tok'ra livré</GR_TokraOrganicOperation_DeadDropLocatedLetterLabel>
-    <GR_TokraOrganicOperation_DeadDropLocatedLetterText>Un module de renseignements Tok'ra chiffré a été déposé au point de livraison retenu. Envoyez un colon capable de travail Intellectuel pour le sécuriser dans un délai d'environ {0} heures. Sécuriser le module représente la vérification de son intégrité, l'extraction de ses données et leur transmission à la cellule. Il ne contient aucune fourniture récupérable.</GR_TokraOrganicOperation_DeadDropLocatedLetterText>
+    <GR_TokraOrganicOperation_DeadDropLocatedLetterText>Un module de renseignements Tok'ra chiffré a été déposé au point retenu. Dans un délai d'environ {0} heures, sélectionnez un colon capable de travail Intellectuel et utilisez le communicateur sécurisé Tok'ra alimenté pour commencer l'analyse. Le module ne contient aucune fourniture récupérable et ne peut pas être analysé directement.</GR_TokraOrganicOperation_DeadDropLocatedLetterText>
     <GR_TokraOrganicOperation_DeadDropFailedLetterLabel>Échec de la récupération des renseignements Tok'ra</GR_TokraOrganicOperation_DeadDropFailedLetterLabel>
-    <GR_TokraOrganicOperation_DeadDropTimedOutLetterText>La demande avait été acceptée, mais les données du module Tok'ra n'ont pas été sécurisées avant la fermeture de la fenêtre de contact. La cellule se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_DeadDropTimedOutLetterText>
-    <GR_TokraOrganicOperation_DeadDropLostLetterText>La demande avait été acceptée, mais le module de renseignements Tok'ra a été perdu ou détruit avant l'extraction de ses données. La cellule se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_DeadDropLostLetterText>
-    <GR_TokraOrganicOperation_DeadDropSuccessLetterLabel>Renseignements Tok'ra sécurisés</GR_TokraOrganicOperation_DeadDropSuccessLetterLabel>
-    <GR_TokraOrganicOperation_DeadDropSuccessLetterText>{0} a vérifié le module, extrait ses renseignements chiffrés et confirmé leur transmission à la cellule Tok'ra. L'opérateur gagne {1} XP en Intellectuel et la confiance de la cellule envers la colonie progresse.</GR_TokraOrganicOperation_DeadDropSuccessLetterText>
-
+    <GR_TokraOrganicOperation_DeadDropTimedOutLetterText>La demande avait été acceptée, mais le module n'a pas été décodé avant la fermeture de la fenêtre de contact sécurisée. La cellule se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_DeadDropTimedOutLetterText>
+    <GR_TokraOrganicOperation_DeadDropLostLetterText>La demande avait été acceptée, mais le module de renseignements Tok'ra a été perdu ou détruit avant le décodage de ses données. La cellule se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_DeadDropLostLetterText>
+    <GR_TokraOrganicOperation_DeadDropSuccessLetterLabel>Renseignements Tok'ra décodés</GR_TokraOrganicOperation_DeadDropSuccessLetterLabel>
     <GR_TokraOrganicOperation_StatusReportNone>Initiatives Tok'ra : aucune demande active.</GR_TokraOrganicOperation_StatusReportNone>
     <GR_TokraOrganicOperation_StatusReportActive>Initiatives Tok'ra : {0}</GR_TokraOrganicOperation_StatusReportActive>
     <GR_TokraOrganicOperation_StatusOffered>demande d'observation discrète en attente d'une réponse ({0} h restantes)</GR_TokraOrganicOperation_StatusOffered>
     <GR_TokraOrganicOperation_StatusObserving>observation en cours ({0} h avant que le rapport soit exploitable)</GR_TokraOrganicOperation_StatusObserving>
     <GR_TokraOrganicOperation_StatusReady>rapport d'observation prêt ({0} h avant la fermeture du canal sécurisé)</GR_TokraOrganicOperation_StatusReady>
     <GR_TokraOrganicOperation_StatusDeadDropOffered>récupération d'un module de renseignements en attente d'une réponse ({0} h restantes)</GR_TokraOrganicOperation_StatusDeadDropOffered>
-    <GR_TokraOrganicOperation_StatusDeadDropActive>sécurisation du module de renseignements en cours ({0} h avant la fermeture de la fenêtre)</GR_TokraOrganicOperation_StatusDeadDropActive>
+    <GR_TokraOrganicOperation_StatusDeadDropActive>module de renseignements livré ({0} h avant la fermeture de la fenêtre sécurisée)</GR_TokraOrganicOperation_StatusDeadDropActive>
     <GR_TokraOrganicOperation_InspectPrefix>Opération Tok'ra : {0}</GR_TokraOrganicOperation_InspectPrefix>
-
     <GR_TokraTrust_OrganicObservationSucceeded>La cellule Tok'ra reconnaît la valeur du rapport d'observation. Son attitude envers la colonie s'améliore.</GR_TokraTrust_OrganicObservationSucceeded>
     <GR_TokraTrust_OrganicObservationFailed>L'absence du rapport attendu rend la cellule Tok'ra légèrement plus prudente.</GR_TokraTrust_OrganicObservationFailed>
-    <GR_TokraTrust_OrganicDeadDropSucceeded>La cellule Tok'ra confirme que les renseignements chiffrés ont été récupérés et transmis sans incident. Sa confiance envers la colonie progresse.</GR_TokraTrust_OrganicDeadDropSucceeded>
+    <GR_TokraTrust_OrganicDeadDropSucceeded>La cellule Tok'ra confirme la réception des renseignements décodés. Sa confiance envers la colonie progresse.</GR_TokraTrust_OrganicDeadDropSucceeded>
     <GR_TokraTrust_OrganicDeadDropFailed>L'échec de la récupération des renseignements rend la cellule Tok'ra légèrement plus prudente.</GR_TokraTrust_OrganicDeadDropFailed>
-
     <GR_TokraOrganicOperation_DebugUnavailable>Cette action du framework des opérations Tok'ra est indisponible dans l'état actuel.</GR_TokraOrganicOperation_DebugUnavailable>
     <GR_TokraOrganicOperation_DebugForced>Une opportunité d'observation Tok'ra organique a été forcée.</GR_TokraOrganicOperation_DebugForced>
     <GR_TokraOrganicOperation_DebugForcedDeadDrop>Une opportunité de récupération de renseignements Tok'ra a été forcée.</GR_TokraOrganicOperation_DebugForcedDeadDrop>
@@ -85,4 +74,38 @@ Sélectionnez un colon, puis faites un clic droit sur le communicateur sécuris�
     <GR_TokraOrganicOperation_DebugMenuForceWounded>Forcer l'offre de l'agent blessé</GR_TokraOrganicOperation_DebugMenuForceWounded>
     <GR_TokraOrganicOperation_DebugMenuForceMedical>Forcer l'offre de remise médicale</GR_TokraOrganicOperation_DebugMenuForceMedical>
     <GR_TokraOrganicOperation_DebugMenuFollowUp>Appliquer la conséquence en attente</GR_TokraOrganicOperation_DebugMenuFollowUp>
+    <GR_TokraOrganicOperation_ManagerUnavailable>Canal des opérations Tok'ra indisponible</GR_TokraOrganicOperation_ManagerUnavailable>
+    <GR_TokraOrganicOperation_FloatMenuAnalyzeIntelligence>Analyser le module de renseignements Tok'ra</GR_TokraOrganicOperation_FloatMenuAnalyzeIntelligence>
+    <GR_TokraOrganicOperation_FloatMenuResumeIntelligence>Reprendre l'analyse des renseignements Tok'ra</GR_TokraOrganicOperation_FloatMenuResumeIntelligence>
+    <GR_TokraOrganicOperation_IntelligenceDialogTitle>Analyse des renseignements Tok'ra</GR_TokraOrganicOperation_IntelligenceDialogTitle>
+    <GR_TokraOrganicOperation_IntelligenceDialogText>{0} peut relier le module livré au communicateur sécurisé.
+
+L'analyse prudente demande plus de temps, mais maintient la transmission sous contrôle. Le décodage accéléré est plus rapide et accorde davantage d'expérience en Intellectuel, mais peut produire une interférence détectable et attirer vers la colonie une patrouille Goa'uld présente dans la région. Une fois choisie, la méthode reste fixée pour cette opération.</GR_TokraOrganicOperation_IntelligenceDialogText>
+    <GR_TokraOrganicOperation_IntelligenceCautiousButton>Analyse prudente</GR_TokraOrganicOperation_IntelligenceCautiousButton>
+    <GR_TokraOrganicOperation_IntelligenceAcceleratedButton>Décodage accéléré</GR_TokraOrganicOperation_IntelligenceAcceleratedButton>
+    <GR_TokraOrganicOperation_IntelligenceCancelButton>Annuler</GR_TokraOrganicOperation_IntelligenceCancelButton>
+    <GR_TokraOrganicOperation_IntelligenceCautiousStarted>{0} part récupérer le module livré et l'apportera au communicateur Tok'ra avant de commencer une analyse prudente.</GR_TokraOrganicOperation_IntelligenceCautiousStarted>
+    <GR_TokraOrganicOperation_IntelligenceAcceleratedStarted>{0} part récupérer le module livré et l'apportera au communicateur Tok'ra avant de lancer un décodage accéléré. Toute interférence échappée du canal pourrait révéler la position de la colonie.</GR_TokraOrganicOperation_IntelligenceAcceleratedStarted>
+    <GR_TokraOrganicOperation_IntelligenceMethodLocked>La méthode de décodage a déjà été fixée pour ce module.</GR_TokraOrganicOperation_IntelligenceMethodLocked>
+    <GR_TokraOrganicOperation_IntelligenceJobUnavailable>Le module ne peut pas être récupéré et apporté à ce communicateur Tok'ra pour analyse.</GR_TokraOrganicOperation_IntelligenceJobUnavailable>
+    <GR_TokraOrganicOperation_IntelligenceMethodCautious>prudente</GR_TokraOrganicOperation_IntelligenceMethodCautious>
+    <GR_TokraOrganicOperation_IntelligenceMethodAccelerated>accélérée</GR_TokraOrganicOperation_IntelligenceMethodAccelerated>
+    <GR_TokraOrganicOperation_StatusIntelligenceAwaitingAnalysis>module de renseignements en attente d'analyse au communicateur sécurisé ({0} h restantes)</GR_TokraOrganicOperation_StatusIntelligenceAwaitingAnalysis>
+    <GR_TokraOrganicOperation_StatusIntelligenceAnalyzing>analyse {0} engagée ; elle peut être reprise au communicateur ({1} h restantes)</GR_TokraOrganicOperation_StatusIntelligenceAnalyzing>
+    <GR_TokraOrganicOperation_IntelligenceCautiousSuccess1>{0} a isolé plusieurs changements dans les routes logistiques Goa'uld et transmis une synthèse recoupée à la cellule Tok'ra. L'analyse prudente a préservé la discrétion du canal. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceCautiousSuccess1>
+    <GR_TokraOrganicOperation_IntelligenceCautiousSuccess2>{0} a reconstitué les cycles d'une fréquence de commandement Goa'uld sans laisser de signature exploitable. La cellule Tok'ra dispose désormais d'une nouvelle fenêtre d'écoute. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceCautiousSuccess2>
+    <GR_TokraOrganicOperation_IntelligenceCautiousSuccess3>{0} a dégagé une série de passages de patrouilles Jaffa et transmis les créneaux les plus sûrs à la cellule Tok'ra. Le décodage est resté silencieux. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceCautiousSuccess3>
+    <GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess1>{0} a rapidement récupéré un fragment de registre logistique Goa'uld avant le changement de chiffrement. Le résultat a été transmis à la cellule Tok'ra. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess1>
+    <GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess2>{0} a forcé une partie du calendrier d'un relais chiffré et révélé une courte fenêtre de déplacement Goa'uld. Aucune réaction menaçante n'a été détectée. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess2>
+    <GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess3>{0} a extrait un fragment de commandement exploitable avant la fermeture des protections du module. La cellule Tok'ra confirme que ces renseignements pourront être utilisés. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess3>
+    <GR_TokraOrganicOperation_IntelligenceInterferenceSuccess1>{0} a récupéré des changements dans les routes logistiques Goa'uld, mais une impulsion parasite s'est échappée du communicateur pendant le décodage accéléré. Une patrouille proche pourrait remonter le signal. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceInterferenceSuccess1>
+    <GR_TokraOrganicOperation_IntelligenceInterferenceSuccess2>{0} a percé le calendrier chiffré d'un relais Goa'uld. Les renseignements ont atteint la cellule Tok'ra, mais la transmission a aussi produit une interférence détectable. Une patrouille présente dans la région pourrait venir enquêter. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceInterferenceSuccess2>
+    <GR_TokraOrganicOperation_IntelligenceInterferenceSuccess3>{0} a extrait une fenêtre exploitable dans les mouvements Jaffa avant le verrouillage du module. La transmission précipitée a laissé une signature assez forte pour attirer l'attention Goa'uld. {0} gagne {1} XP en Intellectuel.</GR_TokraOrganicOperation_IntelligenceInterferenceSuccess3>
+    <GR_TokraOrganicOperation_DebugMenuIntelligenceCautious>Renseignements : méthode prudente</GR_TokraOrganicOperation_DebugMenuIntelligenceCautious>
+    <GR_TokraOrganicOperation_DebugMenuIntelligenceAccelerated>Renseignements : méthode accélérée</GR_TokraOrganicOperation_DebugMenuIntelligenceAccelerated>
+    <GR_TokraOrganicOperation_DebugMenuIntelligenceInterference>Renseignements : forcer la patrouille</GR_TokraOrganicOperation_DebugMenuIntelligenceInterference>
+    <GR_TokraOrganicOperation_DebugIntelligenceCautious>La méthode prudente a été sélectionnée pour l'analyse.</GR_TokraOrganicOperation_DebugIntelligenceCautious>
+    <GR_TokraOrganicOperation_DebugIntelligenceAccelerated>Le décodage accéléré a été sélectionné.</GR_TokraOrganicOperation_DebugIntelligenceAccelerated>
+    <GR_TokraOrganicOperation_DebugIntelligenceInterference>Une patrouille Goa'uld attirée par le signal a été programmée.</GR_TokraOrganicOperation_DebugIntelligenceInterference>
+    <GR_TokraOrganicOperation_IntelligenceLegacyJobRedirected>L'ancienne tâche directe sur le module a été interrompue. Reprenez l'analyse depuis le communicateur sécurisé Tok'ra alimenté.</GR_TokraOrganicOperation_IntelligenceLegacyJobRedirected>
 </LanguageData>

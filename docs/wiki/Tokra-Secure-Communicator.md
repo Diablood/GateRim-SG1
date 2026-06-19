@@ -39,7 +39,10 @@ Le rapport donne une lecture RP de la posture de la cellule, des demandes
 actives, des délais de soutien et du contexte local.
 
 Il ne consomme aucun délai et ne révèle ni score brut de confiance, ni
-pondération, ni calendrier futur des opérations organiques.
+pondération, ni calendrier futur des opérations organiques. Il affiche
+uniquement l'opération organique réellement en cours et les étapes durables des
+missions uniques déjà accomplies lorsqu'elles restent utiles au joueur. Les
+détails complets sont réservés au debug.
 
 Les options verrouillées utilisent des raisons courtes. Les détails restent
 dans le rapport plutôt que dans des libellés de bouton trop longs.
@@ -90,3 +93,7 @@ Le communicateur ne fournit pas :
 Le prototype de débriefing manuel existe encore côté code mais reste masqué
 dans l'interface joueur ; les débriefings utiles à la mission du relais sont
 transmis automatiquement.
+
+## Affichage en jeu normal
+
+Le panneau d'inspection reste volontairement compact. Il affiche uniquement l'état du canal, l'opération organique actuellement en cours et, lorsqu'elle existe, l'issue durable d'une mission unique achevée. Les demandes verrouillées, délais internes, pondérations, historiques et diagnostics complets sont réservés au mode développeur ou à l'option de debug avancé GateRim SG-1.

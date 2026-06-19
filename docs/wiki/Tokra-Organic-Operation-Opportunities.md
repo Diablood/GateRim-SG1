@@ -21,19 +21,22 @@ inhabituelle.
 Un rapport utile améliore qualitativement la confiance Tok'ra et accorde un peu
 d'expérience en Intellectuel.
 
-## Récupération d'un module de renseignement
+## Analyse d'un module de renseignement
 
 Une cellule peut confier à la colonie un module scellé contenant des
 renseignements chiffrés.
 
-1. Accepter la récupération au communicateur alimenté.
+1. Accepter depuis le communicateur Tok'ra alimenté.
 2. Recevoir le module dans la zone de livraison Tok'ra, près du communicateur
-   ou, en dernier recours, près d'un bord de carte accessible.
-3. Envoyer un colon capable d'Intellectuel sécuriser et transmettre les données
-   avant la fermeture de la fenêtre de contact.
+   ou sur un bord de carte accessible.
+3. Utiliser de nouveau le communicateur avec un colon capable d'Intellectuel.
+4. Choisir une analyse prudente ou un décodage accéléré.
+5. Terminer le travail, qui peut être interrompu et repris.
 
-Le module représente du renseignement et non des fournitures. Il ne contient
-aucune récompense matérielle récupérable.
+Le module n'est pas constructible et ne peut pas être analysé directement.
+L'analyse prudente est plus longue et discrète. Le décodage accéléré est plus
+rapide, mais une interférence peut attirer une petite patrouille Goa'uld/Jaffa
+vers la colonie après la réussite.
 
 ## Accueil d'un agent blessé
 
@@ -73,8 +76,9 @@ pour le dernier archétype joué. Elles peuvent revenir au cours d'une partie
 longue sans former un cycle fixe.
 
 Le communicateur affiche uniquement l'offre ou l'opération actuellement active.
-Les opérations terminées ne restent pas visibles sous forme de catalogue ou
-d'historique.
+Les opérations organiques terminées ne restent pas visibles sous forme de
+catalogue ou d'historique. Les étapes durables d'une mission unique peuvent
+cependant rester résumées séparément lorsqu'elles sont utiles au joueur.
 
 ## Opérations sensibles distinctes
 

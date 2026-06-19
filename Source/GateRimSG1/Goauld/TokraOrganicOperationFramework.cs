@@ -197,7 +197,7 @@ namespace GateRimSG1.Goauld
                             offerDurationTicks: 120000,
                             readyDelayTicks: 0,
                             deadlineTicks: 90000,
-                            intellectualXp: 200,
+                            intellectualXp: 350,
                             medicineXp: 0,
                             socialXp: 0,
                             successTrustChange:
@@ -214,7 +214,8 @@ namespace GateRimSG1.Goauld
                                 "SG1_TokraOrganicDeadDrop",
                             acceptActionKey:
                                 "GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop",
-                            completeActionKey: null,
+                            completeActionKey:
+                                "GR_TokraOrganicOperation_FloatMenuAnalyzeIntelligence",
                             offerLetterLabelKey:
                                 "GR_TokraOrganicOperation_DeadDropOfferLetterLabel",
                             offerLetterTextKey:
@@ -390,7 +391,12 @@ namespace GateRimSG1.Goauld
             DestroyObjectives(map, definition);
 
             Thing thing = ThingMaker.MakeThing(thingDef);
-            thing.SetFaction(Faction.OfPlayer);
+
+            if (thingDef.category == ThingCategory.Building)
+            {
+                thing.SetFaction(Faction.OfPlayer);
+            }
+
             Thing placedThing;
 
             if (!TokraDeliveryDropUtility

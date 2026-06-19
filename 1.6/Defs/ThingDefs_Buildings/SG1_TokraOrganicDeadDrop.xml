@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <ThingDef ParentName="FurnitureBase">
+    <ThingDef>
         <defName>SG1_TokraOrganicDeadDrop</defName>
         <label>Tok'ra encrypted intelligence module</label>
-        <description>A sealed module containing encrypted Tok'ra intelligence. Securing it represents checking its integrity, extracting its data and transmitting it to the cell. It contains no recoverable supplies.</description>
+        <description>A sealed portable module containing encrypted Tok'ra intelligence. A colon must carry it to a powered Tok'ra secure communicator before its data can be analyzed. It contains no recoverable supplies.</description>
         <thingClass>GateRimSG1.Goauld.Building_TokraOrganicDeadDrop</thingClass>
-        <minifiedDef IsNull="True" />
+        <category>Item</category>
+        <drawerType>MapMeshOnly</drawerType>
         <graphicData>
             <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <drawSize>(0.85,0.85)</drawSize>
         </graphicData>
-        <size>(1,1)</size>
+        <altitudeLayer>Item</altitudeLayer>
+        <useHitPoints>true</useHitPoints>
+        <selectable>true</selectable>
+        <alwaysHaulable>true</alwaysHaulable>
         <rotatable>false</rotatable>
-        <altitudeLayer>Building</altitudeLayer>
-        <passability>Standable</passability>
-        <fillPercent>0.10</fillPercent>
-        <pathCost>5</pathCost>
-        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <stackLimit>1</stackLimit>
+        <pathCost>14</pathCost>
         <statBases>
             <MaxHitPoints>80</MaxHitPoints>
-            <WorkToBuild>0</WorkToBuild>
             <Mass>8</Mass>
             <MarketValue>0</MarketValue>
-            <Beauty>0</Beauty>
             <Flammability>0.20</Flammability>
         </statBases>
-        <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
-        <thingCategories Inherit="False" />
-        <comps>
-            <li Class="GateRimSG1.Goauld.CompProperties_TokraOrganicDeadDrop" />
-        </comps>
     </ThingDef>
 </Defs>

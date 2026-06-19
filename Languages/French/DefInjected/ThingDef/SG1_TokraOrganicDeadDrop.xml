@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_TokraOrganicDeadDrop.label>module de renseignements Tok'ra</SG1_TokraOrganicDeadDrop.label>
-    <SG1_TokraOrganicDeadDrop.description>Module scellé contenant des renseignements Tok'ra chiffrés. Le sécuriser représente la vérification de son intégrité, l'extraction de ses données et leur transmission à la cellule. Il ne contient aucune fourniture récupérable.</SG1_TokraOrganicDeadDrop.description>
+    <SG1_TokraOrganicDeadDrop.description>Module portatif scellé contenant des renseignements Tok'ra chiffrés. Un colon doit le transporter jusqu'à un communicateur sécurisé Tok'ra alimenté avant de pouvoir analyser ses données. Il ne contient aucune fourniture récupérable.</SG1_TokraOrganicDeadDrop.description>
 </LanguageData>

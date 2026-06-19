@@ -40,6 +40,45 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Tok'ra ops: intelligence cautious method",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void SelectCautiousIntelligence()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugSelectCautiousIntelligence(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugIntelligenceCautious");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: intelligence accelerated method",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void SelectAcceleratedIntelligence()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugSelectAcceleratedIntelligence(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugIntelligenceAccelerated");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: force intelligence interference",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceIntelligenceInterference()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceIntelligenceInterference(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugIntelligenceInterference");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Tok'ra ops: force wounded agent offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

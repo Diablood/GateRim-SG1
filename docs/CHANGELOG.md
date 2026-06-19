@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.1-dev - Rework organic Tok'ra intelligence operation
+
+- Move intelligence-module analysis entirely to the powered Tok'ra secure communicator and remove the former direct module interaction.
+- Make the selected colon physically retrieve and carry the delivered module to the communicator before analysis begins.
+- Replace the normal communicator inspection and status report with a compact player-facing view; retain the full request catalog and framework diagnostics only in debug mode.
+- Keep the operation-generated module non-buildable and explicitly remove it from the Architect menu.
+- Let an Intellectual-capable colon choose between a longer cautious analysis and shorter accelerated decoding.
+- Persist the chosen method and remaining work so interrupted analysis can resume after another job or save reload.
+- Grant `350` Intellectual XP for cautious analysis and `500` for accelerated decoding.
+- Give accelerated decoding a chance to leak detectable interference and queue a small delayed Goa'uld Jaffa signal patrol scaled from current vanilla threat points.
+- Add a dedicated zero-base-chance signal-patrol incident instead of reusing the developer controlled-raid Def.
+- Add three contextual success variants for each outcome family: cautious, accelerated without detection, and accelerated with a patrol warning.
+- Persist the last intelligence-result variant and prevent immediate repetition when possible.
+- Keep the normal communicator report limited to the currently active operation and durable unique-mission progress; expose exact work, interference and queued-patrol state only in debug diagnostics.
+- Extend the single communicator debug menu and RimWorld developer actions with cautious, accelerated and forced-interference controls.
+- Retain the former direct-module JobDef and a safe redirect JobDriver solely so `0.3.0-dev` saves made during that job can load and resume through the communicator.
+- Remove the two obsolete direct-interaction ThingComp classes.
+- Update durable tests, framework documentation, project state and the French player wiki.
+- Raise the assembly version to `0.3.1.0` and the mod metadata version to `0.3.1-dev`.
+
 ## 0.3.0-dev - Refactor organic operation framework
 
 - Replace the monolithic `GameComponent_TokraOrganicOperationTracker` with `GameComponent_TokraOrganicOperationManager`.

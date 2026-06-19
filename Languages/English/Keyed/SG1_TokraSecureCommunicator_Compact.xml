@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraSecureCommunicator_InspectCompact>Tok'ra channel: {0}</GR_TokraSecureCommunicator_InspectCompact>
+    <GR_TokraSecureCommunicator_InspectCompletedMission>Completed unique mission: {0}</GR_TokraSecureCommunicator_InspectCompletedMission>
+    <GR_TokraSecureCommunicator_StatusReportDialogCompact>The communicator catches a fragmented Tok'ra channel. After a short silence, a low coded response confirms only the information currently relevant to the colony.
+
+Current relationship: {0}
+Main channel: {1}</GR_TokraSecureCommunicator_StatusReportDialogCompact>
+</LanguageData>

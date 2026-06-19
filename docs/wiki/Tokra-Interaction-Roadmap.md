@@ -1,7 +1,7 @@
 # Feuille de route des interactions Tok'ra
 
 > Statut : feuille de route évolutive
-> Dernière révision : `0.3.0-dev`
+> Dernière révision : `0.3.1-dev`
 
 Cette page résume la direction des interactions Tok'ra. Elle ne constitue pas
 un calendrier de versions et ne garantit pas l'ordre exact des futurs jalons.
@@ -74,18 +74,12 @@ Les futures interactions Tok'ra doivent respecter les règles suivantes :
 
 ### Retravailler certains archétypes existants
 
-Après stabilisation du framework `0.3.0-dev`, trois opérations existantes
-doivent être enrichies avant d'être considérées comme des modèles aboutis :
+Le framework `0.3.0-dev` est stabilisé. La première refonte de contenu est mise en œuvre dans `0.3.1-dev` : le module de renseignements s'analyse désormais au communicateur avec un choix entre méthode prudente et décodage accéléré, ce dernier pouvant attirer une patrouille Goa'uld.
 
-- l'observation Goa'uld doit proposer un objectif plus immersif, plus interactif
-  et plus intéressant pour le joueur ;
-- la récupération du module de renseignement doit gagner en mise en scène, en
-  contraintes significatives et en choix ;
-- l'agent Tok'ra blessé doit récupérer beaucoup plus lentement afin que les
-  soins de la colonie jouent réellement un rôle dans sa survie.
+Deux opérations existantes restent à enrichir :
 
-Ces améliorations sont prévues dans des jalons de contenu ultérieurs. Elles ne
-doivent pas retarder la stabilisation technique du framework.
+- l'observation Goa'uld doit proposer un objectif plus immersif, plus interactif et plus intéressant pour le joueur ;
+- l'agent Tok'ra blessé doit récupérer beaucoup plus lentement afin que les soins de la colonie jouent réellement un rôle dans sa survie.
 
 ### Diversifier les opérations
 

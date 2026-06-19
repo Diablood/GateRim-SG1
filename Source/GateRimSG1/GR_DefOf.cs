@@ -39,6 +39,8 @@ namespace GateRimSG1
         public static IncidentDef SG1_GoauldJaffaNaturalRaid;
         public static IncidentDef SG1_GoauldQueenArrival;
         public static IncidentDef SG1_GoauldJaffaControlledRaid;
+
+        public static IncidentDef SG1_GoauldJaffaSignalPatrol;
         public static IncidentDef SG1_GoauldJaffaControlledAbductionRaid;
         public static IncidentDef SG1_GoauldJaffaControlledDestructionRaid;
         public static RaidStrategyDef SG1_GoauldJaffaAbductionAssault;

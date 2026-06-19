@@ -1,5 +1,109 @@
 # Testing workflow
 
+## 0.3.1-dev - Refonte de l'opération de renseignements Tok'ra
+
+### Préconditions
+
+- Utiliser une sauvegarde créée avec `0.3.0-dev` ou une nouvelle partie.
+- Disposer d'un communicateur sécurisé Tok'ra alimenté.
+- Disposer d'un colon capable de travail Intellectuel.
+- Activer le mode développeur RimWorld ou l'option avancée GateRim SG-1 pour les contrôles techniques.
+- Conserver deux médicaments et les autres préconditions des opérations sans les utiliser : cette série de tests doit rester isolée sur l'archétype de renseignements.
+
+### Test 1 — Module réservé à l'opération
+
+1. Ouvrir `Architecte`, notamment `Mobilier`, puis rechercher le module de renseignements Tok'ra.
+2. Vérifier qu'il n'apparaît dans aucune catégorie et ne peut pas être construit.
+3. Forcer l'offre de renseignements depuis le menu debug unique du communicateur.
+4. Accepter normalement l'offre.
+5. Vérifier que le module est généré selon l'ordre zone de livraison, communicateur, puis bord de carte accessible.
+6. Sélectionner le module et vérifier qu'il ne propose aucune action directe d'analyse.
+
+Résultat attendu : le module est uniquement un objectif généré par l'opération ; toute analyse passe par le communicateur.
+
+### Test 2 — Informations affichées sur le communicateur
+
+1. Avant l'offre, consulter normalement l'état du canal.
+2. Vérifier qu'aucun catalogue d'opérations, délai caché, pondération ou historique technique n'est révélé.
+3. Forcer puis accepter l'offre de renseignements.
+4. Consulter de nouveau le rapport normal à chaque phase : offre, module livré, méthode choisie, opération résolue.
+5. En mode normal, vérifier que le panneau d'inspection ne liste ni les demandes verrouillées, ni les délais internes, ni le catalogue des opérations.
+6. Vérifier qu'il ne montre que l'opération organique réellement en cours et les éventuelles étapes durables des missions uniques.
+7. Activer ensuite le mode debug et confirmer que le rapport technique complet reste accessible.
+8. Ouvrir `Afficher l'état du framework` depuis le menu debug.
+9. Vérifier que le rapport technique affiche la méthode, le travail restant, l'état de l'interférence, la patrouille programmée, le porteur du module et la variante de résultat.
+
+Résultat attendu : séparation nette entre le rapport RP normal et le diagnostic complet réservé au debug.
+
+### Test 3 — Analyse prudente
+
+1. Forcer et accepter l'offre, puis sélectionner un colon capable d'Intellectuel.
+2. Faire un clic droit sur le communicateur et choisir l'analyse du module.
+3. Dans la fenêtre, choisir `Analyse prudente`.
+4. Vérifier que le colon rejoint d'abord le module, le prend en charge puis le transporte physiquement jusqu'au communicateur.
+5. Vérifier que l'analyse ne commence qu'une fois le module arrivé au communicateur.
+6. Interrompre le colon avant le ramassage, pendant le transport puis pendant l'analyse, lui donner une autre tâche, puis reprendre depuis le communicateur.
+7. Sauvegarder pendant le transport et pendant le travail, recharger puis reprendre.
+8. Laisser l'analyse se terminer.
+9. Vérifier la disparition du module, une seule réussite, l'amélioration qualitative de la confiance et `350 XP` en Intellectuel.
+10. Vérifier qu'aucune patrouille Goa'uld n'est programmée par cette méthode.
+
+### Test 4 — Décodage accéléré sans interférence
+
+1. Recréer l'offre et choisir `Décodage accéléré`.
+2. Vérifier que le travail est nettement plus court que l'analyse prudente.
+3. Interrompre puis reprendre une fois pour confirmer la persistance de la progression.
+4. Terminer une occurrence sans interférence.
+5. Vérifier `500 XP` en Intellectuel, la réussite unique et l'absence de patrouille programmée.
+
+### Test 5 — Interférence et patrouille Goa'uld
+
+1. Forcer une nouvelle offre, l'accepter et choisir le décodage accéléré.
+2. Utiliser `Renseignements : forcer la patrouille` dans le menu debug avant la résolution, ou répéter naturellement jusqu'à produire l'interférence.
+3. Terminer l'analyse.
+4. Vérifier que la lettre de réussite avertit en RP qu'une émission parasite a pu attirer une patrouille.
+5. Vérifier que l'opération est immédiatement réussie, que le module disparaît et que la confiance positive n'est pas annulée.
+6. Consulter le rapport debug et confirmer qu'une patrouille différée a été programmée.
+7. Attendre environ deux à cinq heures de jeu.
+8. Vérifier l'arrivée d'une petite force Goa'uld/Jaffa dimensionnée sous la menace normale de la colonie.
+9. Sauvegarder après la réussite mais avant l'arrivée, recharger et vérifier que l'incident programmé arrive toujours.
+
+Résultat attendu : la patrouille est une conséquence réelle du choix risqué, distincte du résultat positif de l'opération.
+
+### Test 6 — Échecs et méthode verrouillée
+
+1. Choisir une méthode, interrompre le travail puis tenter de sélectionner l'autre méthode.
+2. Vérifier que la méthode reste verrouillée pour cette occurrence.
+3. Détruire le module avant la fin et confirmer un seul échec.
+4. Refaire l'opération et laisser expirer la fenêtre après acceptation.
+5. Vérifier un seul échec, aucun XP, aucun module résiduel et aucune patrouille créée par une analyse inachevée.
+
+### Test 7 — Variantes RP répétées
+
+1. Résoudre plusieurs occurrences prudentes, accélérées sans interférence et accélérées avec interférence.
+2. Noter les lettres de réussite.
+3. Vérifier que chaque famille dispose de plusieurs formulations cohérentes avec le contexte.
+4. Vérifier que deux résultats successifs évitent la même variante lorsque plusieurs variantes sont disponibles.
+5. Vérifier qu'aucun texte joueur ne mentionne un jet, un pourcentage, un compteur interne ou une règle de framework.
+
+### Test 8 — Debug regroupé et compatibilité `0.3.0-dev`
+
+1. Vérifier qu'un seul gizmo `Debug des opérations Tok'ra` regroupe les actions sur le communicateur.
+2. Vérifier les entrées de méthode prudente, méthode accélérée et interférence forcée.
+3. Désactiver le mode développeur et l'option avancée, puis vérifier la disparition de tous ces contrôles.
+4. Charger si possible une sauvegarde `0.3.0-dev` avec une offre ou un module de renseignements actif.
+5. Vérifier que l'opération peut reprendre depuis le communicateur.
+6. Pour une sauvegarde prise pendant l'ancienne tâche directe, vérifier que cette tâche s'arrête proprement avec un message invitant à utiliser le communicateur, sans erreur de Def ou de JobDriver.
+
+### Contrôle final `0.3.1-dev`
+
+- Rejouer une analyse prudente et un décodage accéléré sans debug.
+- Vérifier qu'aucune table de recherche vanilla ne propose l'analyse.
+- Vérifier qu'aucune action directe ne reste sur le module.
+- Vérifier le retour du canal à son état RP générique après résolution.
+- Vérifier `Player.log` : aucune Def manquante, erreur de Scribe, référence nulle, tâche invalide ou résolution double.
+
+
 ## 0.3.0-dev - Framework interne des opérations Tok'ra organiques
 
 ### Préconditions générales
@@ -893,7 +997,7 @@ The procedures below are arranged to minimize reloads. Keep developer mode enabl
    - developer mode enabled.
 2. Select the Intellectual-capable colon and record the current Intellectual XP.
 3. Open the Tok'ra channel report and note the current qualitative relationship state. Exact trust values are intentionally hidden from the normal player interface.
-4. Run `Reset Tok'ra operations`.
+4. Run `Tok'ra ops: reset framework`.
 5. Save the game as `GR_TokraOrganic_Base`.
 
 **Expected result:** no organic Tok'ra operation, intelligence module, visiting medical liaison, legacy handoff container or wounded patient is active. This save is the common checkpoint for later reload and failure tests.
@@ -906,11 +1010,11 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 
 **Purpose:** verify the complete observation success path and its rewards.
 
-1. Run `Force Tok'ra observation offer`.
+1. Run `Tok'ra ops: force observation offer`.
 2. Select the Intellectual-capable colon.
 3. Right-click the powered communicator and choose `Accept Tok'ra observation request`.
 4. Confirm that the communicator reports the observation as in progress.
-5. Run `Advance active Tok'ra operation`.
+5. Run `Tok'ra ops: advance current phase`.
 6. Right-click the communicator again. Confirm that `Transmit Tok'ra observation report` is now present and enabled, then choose it.
 7. Compare the transmitting colonist's Intellectual XP with the value recorded before step 1, then read the success message and the Tok'ra channel report.
 
@@ -930,47 +1034,54 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 **Purpose:** verify the shared resolution guard immediately after A1.
 
 1. Record the current Intellectual XP and note the current qualitative Tok'ra relationship state in the channel report.
-2. Run `Advance active Tok'ra operation`.
-3. Run `Fail active Tok'ra operation`.
+2. Run `Tok'ra ops: advance current phase`.
+3. Run `Tok'ra ops: fail current operation`.
 4. Right-click the communicator and verify that `Transmit Tok'ra observation report` is absent.
 
 **Expected result:** both developer actions report that no suitable active operation exists. The qualitative trust state and XP remain unchanged, and no second success or failure letter appears.
 
 **End state:** continue directly to A3.
 
-#### A3 — Recover an intelligence module at the delivery zone
+#### A3 — Analyze an intelligence module cautiously at the delivery zone
 
-**Purpose:** verify the physical-objective success path and preferred delivery-zone routing.
+**Purpose:** verify preferred placement and the complete cautious-analysis path.
 
 1. Record the selected colon's Intellectual XP and note the current qualitative Tok'ra relationship state in the channel report.
-2. Run `Force Tok'ra intelligence module offer`.
+2. Run `Tok'ra ops: force intelligence offer`.
 3. Right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
 4. Confirm that exactly one sealed intelligence module appears on or immediately beside the Tok'ra delivery drop zone.
-5. Select an Intellectual-capable colon, right-click the module and choose `Secure Tok'ra intelligence module`.
+5. Confirm that the module has no direct completion action.
+6. Select an Intellectual-capable colon, right-click the powered communicator and choose `Analyze Tok'ra intelligence module`.
+7. Choose `Cautious analysis`.
+8. Confirm that the colon walks to the module, carries it to the communicator, and only then begins the analysis.
+9. Let the work complete.
 
 **Expected result:**
 
 - the player-facing message and channel report indicate that Tok'ra confidence has improved; the exact internal trust change is not required in the normal interface;
-- the colon securing the module gains exactly `200` Intellectual XP;
+- the analyzing colon gains exactly `350` Intellectual XP;
 - the module disappears after completion;
-- the success letter appears once;
+- one cautious success variant appears;
+- no signal patrol is queued;
 - no item, resource or material reward remains;
 - no organic operation remains active.
 
 **End state:** continue directly to A4.
 
-#### A4 — Verify communicator placement when no delivery zone exists
+#### A4 — Verify communicator placement and accelerated decoding
 
-**Purpose:** verify the second placement route without reloading the game.
+**Purpose:** verify the second placement route and the accelerated method without reloading the game.
 
 1. Remove the Tok'ra delivery drop zone.
 2. Keep the secure communicator powered.
-3. Run `Force Tok'ra intelligence module offer`.
-4. Accept it through `Accept Tok'ra intelligence recovery` on the communicator.
+3. Run `Tok'ra ops: force intelligence offer`.
+4. Accept it through the communicator.
 5. Confirm that exactly one intelligence module appears beside the powered communicator rather than at the map edge.
-6. Secure the module through `Secure Tok'ra intelligence module`.
+6. Start analysis from the communicator and choose `Accelerated decoding`.
+7. Confirm that the colon retrieves and carries the module to the communicator before decoding begins.
+8. Complete the work. When necessary, use the dedicated debug action to test the interference branch separately.
 
-**Expected result:** the operation completes normally, the module is removed, and no stale or duplicate module remains. The border fallback is not used while a powered communicator exists.
+**Expected result:** the accelerated work is shorter, the operator gains exactly `500` Intellectual XP, the module is removed, and no stale or duplicate module remains. The border fallback is not used while a powered communicator exists. A detected-interference occurrence queues a delayed patrol without cancelling the success.
 
 **End state:** recreate the delivery zone if desired, then continue to A5.
 
@@ -979,7 +1090,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 **Purpose:** verify that the patient cannot recover alone, requires real colony treatment, then resumes normal Tok'ra recovery and leaves once fit to travel.
 
 1. Recreate the Tok'ra delivery zone if it was removed; its presence is irrelevant to this pawn-arrival operation.
-2. Run `Force Tok'ra wounded agent offer`.
+2. Run `Tok'ra ops: force wounded agent offer`.
 3. Read the offer and confirm that it asks for shelter and treatment, does not mention colony medicine stocks, and says that ignoring it has no consequence.
 4. Select a colon, right-click the powered communicator and choose `Accept the wounded Tok'ra agent` in English or `Accueillir l'agent Tok'ra blessé` in French.
 5. Confirm that exactly one injured Tok'ra agent appears at a reachable map edge, already downed, with the health condition `symbiote shock` or `choc du symbiote`.
@@ -990,7 +1101,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 10. If ordinary injuries or illnesses are still present, let them heal or remove them through developer tools until `symbiote shock` / `choc du symbiote` is the patient's only remaining medical condition.
 11. Select a doctor, right-click the patient in the player medical bed and confirm that a normal tending action is still available for the shock itself. Complete that tending action.
 12. Wait for the shared operation check, then confirm that a message reports the emergency treatment, the shock hediff disappears and normal Tok'ra regeneration can resume.
-13. Continue ordinary medical care, feeding and rest. Do not use `Advance active Tok'ra operation`; that command is not intended to heal the patient.
+13. Continue ordinary medical care, feeding and rest. Do not use `Tok'ra ops: advance current phase`; that command is not intended to heal the patient.
 14. Observe the health tab while recovery progresses. Complete healing is not required.
 15. When the agent becomes conscious, mobile and medically stable, confirm that a message announces preparation for departure.
 16. Let the agent walk off the map.
@@ -1019,7 +1130,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 1. Load `GR_TokraOrganic_Base`.
 2. Record the Social XP of one player colon capable of Social.
 3. Temporarily forbid or move all industrial medicine so none is accessible to that colon.
-4. Run `Force Tok'ra medical resupply offer`.
+4. Run `Tok'ra ops: force medical handoff offer`.
 5. Read the offer and confirm that it asks for two industrial medicines, does not claim to know the colony's reserves, and says that ignoring it has no consequence.
 6. Select any valid colon, right-click the powered communicator and choose `Accept Tok'ra medical resupply request` or `Accepter la demande de ravitaillement médical Tok'ra`.
 7. Confirm that acceptance succeeds despite the unavailable medicine and that no container is created.
@@ -1069,7 +1180,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 **Purpose:** verify persistence before an offer is accepted.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Run `Force Tok'ra observation offer`.
+2. Run `Tok'ra ops: force observation offer`.
 3. Save as `GR_TokraOrganic_ObservationOffered`.
 4. Reload `GR_TokraOrganic_ObservationOffered`.
 5. Select the Intellectual-capable colon and right-click the powered communicator.
@@ -1083,7 +1194,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 1. From B1, accept the observation request.
 2. Save as `GR_TokraOrganic_ObservationAccepted` before advancing it.
 3. Reload that save.
-4. Run `Advance active Tok'ra operation`.
+4. Run `Tok'ra ops: advance current phase`.
 5. Right-click the communicator and confirm that `Transmit Tok'ra observation report` is present and enabled.
 6. Save as `GR_TokraOrganic_ObservationReady`.
 7. Reload that save.
@@ -1093,26 +1204,27 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 
 **Expected result:** the accepted and explicit ready states survive reloads; the transmission action is available both before and after reloading the ready checkpoint; completion reports a single qualitative trust improvement and grants exactly `250` Intellectual XP once; reloading the resolved save does not repeat the letter, trust gain or XP gain.
 
-#### B3 — Reload an accepted intelligence module and resolve it once
+#### B3 — Reload an accepted intelligence analysis and resolve it once
 
-**Purpose:** verify restoration of the physical-objective reference and deadline.
+**Purpose:** verify restoration of the physical objective, selected method, remaining work and deadline.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Run `Force Tok'ra intelligence module offer` and accept it through the communicator.
+2. Run `Tok'ra ops: force intelligence offer` and accept it through the communicator.
 3. Confirm that one module exists, then save as `GR_TokraOrganic_ModuleAccepted`.
-4. Reload that save.
-5. Confirm the same module is still active and can be selected.
-6. Record Intellectual XP, note the qualitative Tok'ra relationship state, secure the module, then save as `GR_TokraOrganic_ModuleResolved`.
-7. Reload the resolved save.
+4. Reload that save and confirm that the same module remains active.
+5. Start cautious analysis from the communicator and save once while the colon is carrying the module toward the communicator.
+6. Reload, confirm that the same module remains associated with the operation, then interrupt the analysis after partial progress and save as `GR_TokraOrganic_ModuleAnalysis`.
+7. Reload, resume from the communicator and complete the analysis.
+8. Save as `GR_TokraOrganic_ModuleResolved`, then reload the resolved save.
 
-**Expected result:** the tracker recovers the active module after reload; completion reports a single qualitative trust improvement and grants exactly `200` Intellectual XP once; the module is removed; the resolved save does not repeat the outcome.
+**Expected result:** the framework restores the same module, method and remaining work after reload; completion reports one qualitative trust improvement and grants exactly `350` Intellectual XP once; the module is removed; the resolved save does not repeat the outcome.
 
 #### B4 — Reload wounded-agent shock, care and departure states
 
 **Purpose:** verify persistence of the patient reference, initial-treatment flag, health progress and departure state.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Run `Force Tok'ra wounded agent offer`, accept through the communicator and save as `GR_TokraOrganic_PatientShock` before rescuing the downed patient.
+2. Run `Tok'ra ops: force wounded agent offer`, accept through the communicator and save as `GR_TokraOrganic_PatientShock` before rescuing the downed patient.
 3. Reload that save and confirm that the same named patient remains downed with symbiote shock, no duplicate pawn appears and regeneration is still suppressed.
 4. Rescue the patient into a player medical bed. If necessary, let or force every ordinary injury and illness to heal so that only symbiote shock remains.
 5. Confirm that a doctor can still tend the shock itself, complete that tending action and wait until the shock is removed. Then save as `GR_TokraOrganic_PatientCare` while the patient is still recovering.
@@ -1127,7 +1239,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 
 **Purpose:** verify restoration of delayed arrival, meeting state, dialogue cancellation, deadline, donation and post-success departure without duplicate effects.
 
-1. Load `GR_TokraOrganic_Base`, run `Force Tok'ra medical resupply offer` and accept through the communicator.
+1. Load `GR_TokraOrganic_Base`, run `Tok'ra ops: force medical handoff offer` and accept through the communicator.
 2. Save immediately as `GR_TokraOrganic_MedicalSupplyBeforeArrival`, reload it and confirm that the liaison still arrives once after the remaining delay.
 3. While the liaison is walking to the meeting point, save as `GR_TokraOrganic_MedicalSupplyApproaching` and reload it.
 4. Confirm that the same liaison continues toward the same meeting point and that no duplicate pawn appears.
@@ -1149,10 +1261,10 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run `Force Tok'ra observation offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra observation request`.
-4. Run `Fail active Tok'ra operation`.
+3. Run `Tok'ra ops: force observation offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra observation request`.
+4. Run `Tok'ra ops: fail current operation`.
 5. Save as `GR_TokraOrganic_ObservationFailed` and reload it.
-6. Run `Fail active Tok'ra operation` again.
+6. Run `Tok'ra ops: fail current operation` again.
 
 **Expected result:** one player-facing message reports a deterioration of Tok'ra confidence, the failure letter appears once, the operation is cleared, and the second failure attempt does not change trust.
 
@@ -1162,7 +1274,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run `Force Tok'ra intelligence module offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
+3. Run `Tok'ra ops: force intelligence offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
 4. Destroy the spawned intelligence module through developer tools or damage.
 5. Let the game advance until the tracker processes the missing objective.
 6. Save and reload after the failure has been reported.
@@ -1187,7 +1299,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run any one of `Force Tok'ra observation offer`, `Force Tok'ra intelligence module offer`, `Force Tok'ra wounded agent offer` or `Force Tok'ra medical resupply offer`.
+3. Run any one of `Tok'ra ops: force observation offer`, `Tok'ra ops: force intelligence offer`, `Tok'ra ops: force wounded agent offer` or `Tok'ra ops: force medical handoff offer`.
 4. Do not accept it and advance game time until the offer closes.
 
 **Expected result:** the offer disappears, trust remains unchanged, no failure letter is issued and a future hidden opportunity can still be scheduled.
@@ -1197,7 +1309,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 **Purpose:** verify death failure while preserving the corpse and preventing duplicate consequences.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Force and accept `Force Tok'ra wounded agent offer`.
+2. Force and accept `Tok'ra ops: force wounded agent offer`.
 3. After the patient arrives, allow the injuries or illness to cause death, or use a developer health action to kill the patient without deleting the pawn.
 4. Advance the game until the tracker processes the death, then save and reload.
 
@@ -1310,12 +1422,12 @@ These tests require preserved saves created with the stated published version. T
 ### Developer actions, presentation and final log review
 
 1. Confirm the four force actions create the explicitly named archetype:
-   - `Force Tok'ra observation offer`;
-   - `Force Tok'ra intelligence module offer`;
-   - `Force Tok'ra wounded agent offer`;
-   - `Force Tok'ra medical resupply offer`.
-2. Confirm `Advance active Tok'ra operation` prepares an accepted observation report and does not invalidate an already placed intelligence module, wounded patient or visiting medical liaison.
-3. Confirm `Reset Tok'ra operations` clears the active state, intelligence objective, living patient or active liaison without changing trust. A dead patient's or liaison's corpse should remain.
+   - `Tok'ra ops: force observation offer`;
+   - `Tok'ra ops: force intelligence offer`;
+   - `Tok'ra ops: force wounded agent offer`;
+   - `Tok'ra ops: force medical handoff offer`.
+2. Confirm `Tok'ra ops: advance current phase` prepares an accepted observation report and does not invalidate an already placed intelligence module, wounded patient or visiting medical liaison.
+3. Confirm `Tok'ra ops: reset framework` clears the active state, intelligence objective, living patient or active liaison without changing trust. A dead patient's or liaison's corpse should remain.
 4. Review English and French player-facing letters, messages, dialogue and context actions for RP tone and understandable wording.
 5. Confirm communicator, module and liaison interaction labels remain short.
 6. Confirm the medical dialogue displays only the donation and cancel buttons, with no technical state or hidden timing details.

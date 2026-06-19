@@ -379,6 +379,38 @@ namespace GateRimSG1.Goauld
                 return null;
             }
 
+            if (GR_Debug.ShowAdvancedInformation)
+            {
+                return BuildDetailedInspectString();
+            }
+
+            List<string> lines = new List<string>
+            {
+                "GR_TokraSecureCommunicator_InspectCompact"
+                    .Translate(GetStatusLabel())
+                    .ToString()
+            };
+            string organicOperationStatus
+                = GameComponent_TokraOrganicOperationManager
+                    .GetInspectStatusForMap(parent.Map);
+            string completedMissionStatus
+                = GetCompletedUniqueMissionInspectLine();
+
+            if (!string.IsNullOrEmpty(organicOperationStatus))
+            {
+                lines.Add(organicOperationStatus);
+            }
+
+            if (!string.IsNullOrEmpty(completedMissionStatus))
+            {
+                lines.Add(completedMissionStatus);
+            }
+
+            return string.Join("\n", lines);
+        }
+
+        private string BuildDetailedInspectString()
+        {
             string inspectText = "GR_TokraSecureCommunicator_Inspect".Translate(
                 GetTrustTierLabel(GameComponent_TokraTrustTracker.GetCurrentTier()),
                 GetStatusLabel(),
@@ -417,28 +449,60 @@ namespace GateRimSG1.Goauld
             List<Pawn> patients = GetMedicalSupportCandidates();
             string interceptedThreatStatus = GetInterceptedThreatStatusLabel();
 
-            string statusReportText
-                = "GR_TokraSecureCommunicator_StatusReportDialog".Translate(
-                    GetTrustTierLabel(currentTier),
-                    GetTrustStatusReportLabel(currentTier),
-                    GetTrustProgressStatusReportLabel(trustScore, currentTier),
-                    GetStatusLabel(),
-                    GetFirstTrustMissionStatusLabel(),
-                    GetDiversionStatusLabel(),
-                    GetThreatAssessmentStatusLabel(),
-                    GetMedicalSupportStatusLabel(),
-                    GetMedicalCacheStatusLabel(),
-                    threats.Count.ToString(),
-                    patients.Count.ToString(),
-                    interceptedThreatStatus)
-                .ToString();
-            string organicOperationStatus
-                = GameComponent_TokraOrganicOperationManager
-                    .GetStatusReportLineForMap(parent.Map);
+            string statusReportText;
+
+            if (GR_Debug.ShowAdvancedInformation)
+            {
+                statusReportText
+                    = "GR_TokraSecureCommunicator_StatusReportDialog".Translate(
+                        GetTrustTierLabel(currentTier),
+                        GetTrustStatusReportLabel(currentTier),
+                        GetTrustProgressStatusReportLabel(
+                            trustScore,
+                            currentTier),
+                        GetStatusLabel(),
+                        GetFirstTrustMissionStatusLabel(),
+                        GetDiversionStatusLabel(),
+                        GetThreatAssessmentStatusLabel(),
+                        GetMedicalSupportStatusLabel(),
+                        GetMedicalCacheStatusLabel(),
+                        threats.Count.ToString(),
+                        patients.Count.ToString(),
+                        interceptedThreatStatus)
+                    .ToString();
+                statusReportText += "\n\n"
+                    + GameComponent_TokraOrganicOperationManager
+                        .GetDebugStateReport(parent.Map);
+            }
+            else
+            {
+                statusReportText
+                    = "GR_TokraSecureCommunicator_StatusReportDialogCompact"
+                        .Translate(
+                            GetTrustTierLabel(currentTier),
+                            GetStatusLabel())
+                        .ToString();
+                string organicOperationStatus
+                    = GameComponent_TokraOrganicOperationManager
+                        .GetInspectStatusForMap(parent.Map);
+                string completedMissionStatus
+                    = GetCompletedUniqueMissionInspectLine();
+
+                if (!string.IsNullOrEmpty(organicOperationStatus))
+                {
+                    statusReportText += "\n\n"
+                        + organicOperationStatus;
+                }
+
+                if (!string.IsNullOrEmpty(completedMissionStatus))
+                {
+                    statusReportText += "\n"
+                        + completedMissionStatus;
+                }
+            }
 
             Find.WindowStack.Add(
-                new Dialog_MessageBox(
-                    statusReportText + "\n\n" + organicOperationStatus));
+                new Dialog_MessageBox(statusReportText));
 
             Messages.Message(
                 "GR_TokraSecureCommunicator_StatusReportOpened".Translate(),
@@ -1726,6 +1790,23 @@ namespace GateRimSG1.Goauld
                 .ToString();
         }
 
+        private string GetCompletedUniqueMissionInspectLine()
+        {
+            if (!GameComponent_TokraTrustTracker
+                    .IsFirstTrustMissionRelaySabotageCompleted()
+                && !GameComponent_TokraTrustTracker
+                    .IsFirstTrustMissionOutcomeRecorded()
+                && !GameComponent_TokraTrustTracker
+                    .IsFirstTrustMissionOutcomeDebriefReceived())
+            {
+                return null;
+            }
+
+            return "GR_TokraSecureCommunicator_InspectCompletedMission"
+                .Translate(GetFirstTrustMissionStatusLabel())
+                .ToString();
+        }
+
         private string GetDiversionStatusLabel()
         {
             string channelDisabledReason = GetChannelDisabledReason();
@@ -2587,6 +2668,36 @@ namespace GateRimSG1.Goauld
                             GameComponent_TokraOrganicOperationManager
                                 .DebugForceDeadDropOpportunity(map),
                             "GR_TokraOrganicOperation_DebugForcedDeadDrop");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuIntelligenceCautious"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugSelectCautiousIntelligence(map),
+                            "GR_TokraOrganicOperation_DebugIntelligenceCautious");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuIntelligenceAccelerated"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugSelectAcceleratedIntelligence(map),
+                            "GR_TokraOrganicOperation_DebugIntelligenceAccelerated");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuIntelligenceInterference"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugForceIntelligenceInterference(map),
+                            "GR_TokraOrganicOperation_DebugIntelligenceInterference");
                     }),
                 new FloatMenuOption(
                     "GR_TokraOrganicOperation_DebugMenuForceWounded"

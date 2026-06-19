@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.0-dev`
+> Version du mod documentée : `0.3.1-dev`
 
 ## Le mod en bref
 
@@ -39,8 +39,8 @@ premières opérations de terrain.
 - [Zone de livraison Tok'ra](Tokra-Delivery-Drop-Zone) pour les caches et
   livraisons clandestines.
 - [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
-  observation discrète, récupération de renseignements, accueil d'un agent
-  blessé et remise de médicaments à un agent de liaison.
+  observation discrète, analyse de renseignements avec choix de méthode,
+  accueil d'un agent blessé et remise de médicaments à un agent de liaison.
 - Première mission jouable sur carte temporaire : infiltration et sabotage d'un
   relais Goa'uld, renforts différés, évacuation et débriefing Tok'ra.
 
@@ -55,8 +55,8 @@ premières opérations de terrain.
 
 ## Prochain développement majeur
 
-La phase `0.2.x` reste consacrée à la consolidation d'une expérience complète
-avant l'ouverture d'une Porte des étoiles fonctionnelle.
+La phase `0.3.x` consolide les systèmes réutilisables et enrichit les
+opérations existantes avant l'ouverture d'une Porte des étoiles fonctionnelle.
 
 Les principales directions prévues sont :
 
@@ -69,8 +69,8 @@ Les principales directions prévues sont :
   accessibles avec les storytellers vanilla et moddés compatibles ;
 - poursuivre la passe globale sur les textes joueurs, l'équilibrage et la
   stabilité avant une première publication publique solide ;
-- préparer la future phase `0.3.x`, qui doit introduire la progression liée à
-  une Porte des étoiles fonctionnelle et aux expéditions hors monde.
+- préparer une phase ultérieure consacrée à la progression liée à une Porte des
+  étoiles fonctionnelle et aux expéditions hors monde.
 
 Aucun numéro de version intermédiaire n'est promis pour ces éléments : leur
 ordre pourra évoluer selon les tests et les dépendances techniques.

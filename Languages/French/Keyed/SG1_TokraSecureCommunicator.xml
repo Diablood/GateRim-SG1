@@ -104,6 +104,12 @@ Diversion défensive : {3}
 Évaluation tactique : {4}
 Soutien médical : {5}
 Cache médicale : {6}</GR_TokraSecureCommunicator_Inspect>
+    <GR_TokraSecureCommunicator_InspectCompact>Canal Tok'ra : {0}</GR_TokraSecureCommunicator_InspectCompact>
+    <GR_TokraSecureCommunicator_InspectCompletedMission>Mission unique achevée : {0}</GR_TokraSecureCommunicator_InspectCompletedMission>
+    <GR_TokraSecureCommunicator_StatusReportDialogCompact>Le communicateur accroche un canal Tok'ra fragmenté. Après un court silence, une réponse basse et codée ne confirme que les informations actuellement utiles à la colonie.
+
+Relation actuelle : {0}
+Canal principal : {1}</GR_TokraSecureCommunicator_StatusReportDialogCompact>
     <GR_TokraSecureCommunicator_StatusReportOpened>Canal Tok'ra sondé.</GR_TokraSecureCommunicator_StatusReportOpened>
     <GR_TokraSecureCommunicator_ChannelOpened>Canal sécurisé Tok'ra établi.</GR_TokraSecureCommunicator_ChannelOpened>
     <GR_TokraSecureCommunicator_DiversionRequested>Une cellule Tok'ra perturbe discrètement {0} assaillant(s). Effets retardés possibles. Nouveau silence radio : {1} jour(s).</GR_TokraSecureCommunicator_DiversionRequested>

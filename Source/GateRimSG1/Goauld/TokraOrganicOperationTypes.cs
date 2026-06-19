@@ -16,4 +16,11 @@ namespace GateRimSG1.Goauld
         Accepted = 2,
         Ready = 3
     }
+
+    public enum TokraIntelligenceAnalysisMethod
+    {
+        None = 0,
+        Cautious = 1,
+        Accelerated = 2
+    }
 }

@@ -21,6 +21,14 @@ namespace GateRimSG1.Goauld
         public bool resolutionApplied;
 
         public Thing objective;
+        public TokraIntelligenceAnalysisMethod intelligenceAnalysisMethod;
+        public int intelligenceWorkTotalTicks;
+        public int intelligenceWorkRemainingTicks;
+        public bool intelligenceInterferenceRollResolved;
+        public bool intelligenceInterferenceTriggered;
+        public bool intelligencePatrolQueued;
+        public int intelligenceResultVariant = -1;
+
         public Pawn woundedAgent;
         public bool woundedAgentInitialCareReceived;
         public int woundedAgentInitialTendedConditionCount;
@@ -63,6 +71,35 @@ namespace GateRimSG1.Goauld
                 false);
 
             Scribe_References.Look(ref objective, "objective");
+            Scribe_Values.Look(
+                ref intelligenceAnalysisMethod,
+                "intelligenceAnalysisMethod",
+                TokraIntelligenceAnalysisMethod.None);
+            Scribe_Values.Look(
+                ref intelligenceWorkTotalTicks,
+                "intelligenceWorkTotalTicks",
+                0);
+            Scribe_Values.Look(
+                ref intelligenceWorkRemainingTicks,
+                "intelligenceWorkRemainingTicks",
+                0);
+            Scribe_Values.Look(
+                ref intelligenceInterferenceRollResolved,
+                "intelligenceInterferenceRollResolved",
+                false);
+            Scribe_Values.Look(
+                ref intelligenceInterferenceTriggered,
+                "intelligenceInterferenceTriggered",
+                false);
+            Scribe_Values.Look(
+                ref intelligencePatrolQueued,
+                "intelligencePatrolQueued",
+                false);
+            Scribe_Values.Look(
+                ref intelligenceResultVariant,
+                "intelligenceResultVariant",
+                -1);
+
             Scribe_References.Look(ref woundedAgent, "woundedAgent");
             Scribe_Values.Look(
                 ref woundedAgentInitialCareReceived,
@@ -119,6 +156,13 @@ namespace GateRimSG1.Goauld
             readyNotificationSent = false;
             resolutionApplied = false;
             objective = null;
+            intelligenceAnalysisMethod = TokraIntelligenceAnalysisMethod.None;
+            intelligenceWorkTotalTicks = 0;
+            intelligenceWorkRemainingTicks = 0;
+            intelligenceInterferenceRollResolved = false;
+            intelligenceInterferenceTriggered = false;
+            intelligencePatrolQueued = false;
+            intelligenceResultVariant = -1;
             woundedAgent = null;
             woundedAgentInitialCareReceived = false;
             woundedAgentInitialTendedConditionCount = 0;

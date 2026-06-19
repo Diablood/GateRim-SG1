@@ -1,105 +1,124 @@
-# Tok'ra organic intelligence recovery
+# Tok'ra organic intelligence analysis
 
 ## Purpose
 
-This milestone adds a second preliminary organic Tok'ra operation so the scheduler introduced in `0.2.48-dev` can select between genuinely different activities. It also makes the persisted anti-repetition weight visible in normal play without turning opportunities into a fixed alternating sequence.
+`0.3.1-dev` reworks the recurring intelligence-module archetype on top of the reusable `0.3.0-dev` operation framework.
 
-The player-facing objective is a sealed **Tok'ra intelligence module**, not a material cache or a loot container. Internal `DeadDrop` identifiers remain unchanged only to preserve save compatibility.
+Internal identifiers containing `DeadDrop` remain stable for save compatibility, but player-facing text describes an intelligence-analysis request.
 
 ## Player flow
 
-1. The organic-operation scheduler waits for a hidden trust-dependent delay.
-2. It may open a cautious intelligence-recovery offer on a player home map with a powered Tok'ra secure communicator.
-3. Ignoring the offer simply lets the channel close; trust does not change.
-4. An Intellectual-capable colon accepts the request by right-clicking the communicator.
-5. Only after acceptance, a sealed intelligence module is delivered through the same established routing and placement flow already used by other Tok'ra deliveries and caches:
-   - beside or on the dedicated Tok'ra delivery drop zone when one exists;
-   - beside a powered Tok'ra secure communicator only when no delivery zone exists;
-   - at a reachable and unfogged map edge only when neither preferred delivery target exists.
+1. The shared scheduler opens the offer after a hidden trust-dependent delay.
+2. Ignoring the offer closes it without a trust penalty.
+3. An Intellectual-capable colon accepts through a powered Tok'ra secure communicator.
+4. The operation places one sealed module near the Tok'ra delivery zone, near the communicator, or at a reachable map edge.
+5. The module itself has no right-click completion action and is never constructible.
+6. A colon uses the powered communicator and chooses one method:
+   - cautious analysis;
+   - accelerated decoding.
+7. The colon performs persistent work at the communicator. Interruption or save reload preserves remaining work.
+8. Completion removes the module, applies the common success once, sends one contextual result and schedules the next hidden opportunity.
 
-The shared delivery utility is left unchanged; the operation resolves its preferred anchor first and then uses vanilla near-placement exactly like the validated delivery incidents.
-6. An Intellectual-capable colon right-clicks the module and spends a short time checking its integrity, extracting its encrypted data and transmitting it to the Tok'ra cell.
-7. The module vanishes and the operation completes immediately.
+No vanilla research bench can analyze the module.
 
-There is no second communicator action, no recovered inventory object and no material reward.
+## Analysis methods
 
-## Outcomes
+### Cautious analysis
 
-### Success
+- `5000` work ticks, roughly two in-game hours.
+- `350` Intellectual XP.
+- No signal-patrol consequence.
+- Result text is selected from three cautious variants.
 
-- `+2` Tok'ra trust.
-- `200` Intellectual XP for the colon who secures the module.
-- The module is removed.
-- A new hidden delay is scheduled.
+### Accelerated decoding
 
-### Ignored offer
+- `2000` work ticks, under one in-game hour.
+- `500` Intellectual XP, including the accelerated bonus.
+- A `35%` internal chance of detectable interference after successful decoding.
+- Result text is selected from three safe accelerated variants or three interference variants.
 
-- No trust change.
-- No module is delivered.
-- A new hidden delay is scheduled after the offer closes.
+The chosen method is persisted and cannot be changed for that operation.
 
-### Accepted failure
+## Detectable interference
 
-An accepted recovery fails when:
+When accelerated decoding leaks a usable signal:
 
-- the roughly `36`-hour recovery window expires;
-- the module is destroyed;
-- the module, its map or its saved reference is lost before completion.
+- the primary intelligence operation still succeeds immediately;
+- a dedicated `SG1_GoauldJaffaSignalPatrol` incident is queued after `5000` to `12500` ticks, roughly two to five hours;
+- the patrol uses the validated direct-assault worker and the current player map;
+- threat points use `35%` of current default vanilla threat points, clamped between `180` and `700`;
+- the incident has zero natural storyteller chance and can only be queued by this consequence or its debug action;
+- the success letter warns the player in RP terms without exposing the roll or exact delay.
 
-Failure applies `-1` Tok'ra trust exactly once, removes any remaining module and schedules the next hidden opportunity.
+## Repeated result text
 
-## Selection and anti-repetition
+The manager persists the last result-variant index. Each successful occurrence chooses among three compatible variants and avoids the immediately previous index when possible.
 
-Both current archetypes are compatible at all four Tok'ra trust tiers:
+Variants are grouped by context:
 
-| Tier | Observation | Intelligence recovery |
-|---|---:|---:|
-| Wary | 0.60 | 0.35 |
-| Neutral | 1.00 | 0.85 |
-| Cooperative | 0.85 | 1.00 |
-| Trusted | 0.35 | 0.55 |
+- cautious decoding;
+- accelerated decoding without detected interference;
+- accelerated decoding with a queued patrol.
 
-When multiple archetypes are available, the last offered archetype has its weight multiplied by `0.25`. Repetition remains possible, but another compatible operation becomes much more likely.
+The text can describe logistics, command frequencies, relay schedules or Jaffa patrol windows without pretending every repeated module contains the same intelligence.
 
-## Physical objective rules
+## Failure
 
-The intelligence module:
+An accepted operation fails exactly once if:
 
-- is spawned by the operation and cannot be constructed;
-- cannot be minified, hauled or deconstructed;
-- has no market value;
-- yields no resources when destroyed;
+- the module is destroyed or lost;
+- its saved reference or active map becomes invalid;
+- the secure deadline expires before analysis finishes.
+
+An unfinished or failed operation cannot queue the signal patrol.
+
+## Architect and objective rules
+
+The module:
+
+- has `<designationCategory IsNull="True" />`;
+- has no build designation and no Architect category;
+- is generated only by the operation;
+- cannot be minified or deconstructed;
+- has no market value and yields no resources;
 - remains physically destructible;
-- uses the existing Tok'ra coded-intelligence packet texture;
-- exposes only the operation-specific right-click action while it is active.
+- contains no direct-interaction ThingComp.
 
-If no valid delivery-zone, communicator or reachable edge location can be found, acceptance is rejected without changing the offer state or trust.
+## Persistence
 
-## Save compatibility
+`TokraOrganicOperationInstance` persists:
 
-The tracker persists:
+- chosen method;
+- total and remaining work ticks;
+- whether the interference roll was resolved;
+- whether interference occurred;
+- whether the patrol was queued;
+- selected result variant.
 
-- archetype and state;
-- active map;
-- offer and operation deadlines;
-- direct reference to the active intelligence module;
-- last offered and completed archetypes;
-- completion, failure and expiry counters.
+`lastIntelligenceResultVariant` is persisted by the manager to prevent immediate repeated prose across occurrences.
 
-Existing `0.2.48-dev` observation saves contain no module reference and continue through the original flow. Internal enum, Def and class names containing `DeadDrop` are retained to avoid unnecessary save migration.
+## `0.3.0-dev` compatibility
 
-## Out of scope
+The `0.3.0-dev` save baseline remains supported:
 
-This milestone does not add:
+- new fields default to no selected method and zero progress;
+- an accepted module resumes through the communicator;
+- the former `SG1_SecureTokraOrganicDeadDrop` JobDef remains as compatibility-only data;
+- its rewritten JobDriver stops an already saved direct-module job and tells the player to resume from the communicator;
+- no new direct-module job can be created.
 
-- loot or inventory contents;
-- a raid or automatic hostile response;
-- a world site;
-- trade, recruitment or medical support;
-- changes to manual Trusted-tier communicator requests;
-- changes to the playable relay sabotage mission.
+The obsolete direct-interaction ThingComp classes are removed.
 
+## Debug surface
 
-## Shared framework
+The single communicator debug menu and developer actions can:
 
-From `0.2.50-dev`, timings, weights, outcomes, placement and cleanup are registered through `TokraOrganicOperationFramework`. Existing `DeadDrop` class, Def and Scribe identifiers remain unchanged for save compatibility; they are not exposed in player-facing text.
+- force the offer;
+- accept and place the module;
+- select either method;
+- force the interference patrol;
+- advance, succeed, fail or expire the operation;
+- inspect exact persisted work and consequence state;
+- reset the framework.
+
+Normal communicator text never reveals the operation catalogue, hidden timing, interference roll or queued-incident internals.

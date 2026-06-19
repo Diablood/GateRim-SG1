@@ -1,65 +1,36 @@
 using System.Collections.Generic;
+using RimWorld;
 using Verse;
 using Verse.AI;
 
 namespace GateRimSG1.Goauld
 {
+    /// <summary>
+    /// Compatibility bridge for a 0.3.0 save made while the former direct
+    /// module job was active. New jobs are never created with this Def.
+    /// </summary>
     public class JobDriver_TokraSecureOrganicDeadDrop : JobDriver
     {
-        private const TargetIndex DeadDropIndex = TargetIndex.A;
-        private const int SecureTicks = 600;
-
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
-            LocalTargetInfo deadDrop = job.GetTarget(DeadDropIndex);
-
-            return deadDrop.HasThing
-                && pawn.Reserve(
-                    deadDrop,
-                    job,
-                    1,
-                    -1,
-                    null,
-                    errorOnFailed);
+            return true;
         }
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnDespawnedNullOrForbidden(DeadDropIndex);
-            this.FailOn(() =>
+            Toil redirect = ToilMaker.MakeToil(
+                "RedirectLegacyTokraIntelligenceJob");
+            redirect.initAction = delegate
             {
-                Comp_TokraOrganicDeadDrop comp = GetDeadDropComp();
-                return comp == null || !comp.IsOperationActive();
-            });
-
-            yield return Toils_Goto.GotoThing(
-                DeadDropIndex,
-                PathEndMode.Touch);
-
-            Toil secure = Toils_General.Wait(
-                SecureTicks,
-                DeadDropIndex);
-            secure.WithProgressBarToilDelay(DeadDropIndex);
-            yield return secure;
-
-            Toil finish = new Toil
-            {
-                initAction = delegate
-                {
-                    GetDeadDropComp()?.TrySecure(pawn);
-                },
-                defaultCompleteMode = ToilCompleteMode.Instant
+                Messages.Message(
+                    "GR_TokraOrganicOperation_IntelligenceLegacyJobRedirected"
+                        .Translate(),
+                    pawn,
+                    MessageTypeDefOf.NeutralEvent,
+                    historical: false);
             };
-
-            yield return finish;
-        }
-
-        private Comp_TokraOrganicDeadDrop GetDeadDropComp()
-        {
-            ThingWithComps deadDrop = job.GetTarget(DeadDropIndex).Thing
-                as ThingWithComps;
-
-            return deadDrop?.GetComp<Comp_TokraOrganicDeadDrop>();
+            redirect.defaultCompleteMode = ToilCompleteMode.Instant;
+            yield return redirect;
         }
     }
 }

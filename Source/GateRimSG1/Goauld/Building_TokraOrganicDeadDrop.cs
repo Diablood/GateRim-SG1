@@ -1,18 +1,13 @@
-using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Temporary Tok'ra intelligence-module objective spawned by an organic operation.
-    /// It remains physically destructible but cannot be deconstructed for
-    /// resources or moved as colony furniture.
+    /// Portable Tok'ra intelligence module spawned by the organic operation.
+    /// The legacy class name is kept so saves created with 0.3.0-dev can still
+    /// resolve the same object while the module now behaves as a carried item.
     /// </summary>
-    public class Building_TokraOrganicDeadDrop : Building
+    public class Building_TokraOrganicDeadDrop : ThingWithComps
     {
-        public override AcceptanceReport DeconstructibleBy(Faction faction)
-        {
-            return false;
-        }
     }
 }

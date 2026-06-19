@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Queued only after detectable interference from accelerated Tok'ra
+    intelligence decoding. A zero base chance prevents storyteller selection.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldJaffaSignalPatrol</defName>
+        <label>Goa'uld signal patrol</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldJaffaSignalPatrol</workerClass>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0</baseChance>
+        <earliestDay>0</earliestDay>
+        <minRefireDays>0</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+    </IncidentDef>
+</Defs>
