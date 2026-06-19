@@ -3,4 +3,7 @@
     <SG1_TokraWoundedAgentSymbioteShock.label>choc du symbiote</SG1_TokraWoundedAgentSymbioteShock.label>
     <SG1_TokraWoundedAgentSymbioteShock.description>L'hôte et le symbiote sont tous deux plongés dans un choc systémique aigu. Cette affection doit elle-même recevoir un soin d'urgence dans un lit médical de la colonie ; tant qu'elle n'est pas traitée, tout déplacement est impossible et le symbiote ne peut maintenir sa régénération habituelle.</SG1_TokraWoundedAgentSymbioteShock.description>
     <SG1_TokraWoundedAgentSymbioteShock.stages.0.label>choc aigu du symbiote</SG1_TokraWoundedAgentSymbioteShock.stages.0.label>
+    <SG1_TokraWoundedAgentPostShockRecovery.label>récupération affaiblie du symbiote</SG1_TokraWoundedAgentPostShockRecovery.label>
+    <SG1_TokraWoundedAgentPostShockRecovery.description>Le choc aigu a été traité, mais la réponse régénératrice du symbiote reste fortement affaiblie. Des soins conventionnels et du repos demeurent nécessaires jusqu'à ce que l'agent soit apte à voyager.</SG1_TokraWoundedAgentPostShockRecovery.description>
+    <SG1_TokraWoundedAgentPostShockRecovery.stages.0.label>récupération affaiblie</SG1_TokraWoundedAgentPostShockRecovery.stages.0.label>
 </LanguageData>

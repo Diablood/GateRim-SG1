@@ -9,6 +9,8 @@ namespace GateRimSG1.Goauld
     {
         private const string SymbioteShockDefName
             = "SG1_TokraWoundedAgentSymbioteShock";
+        private const string PostShockRecoveryDefName
+            = "SG1_TokraWoundedAgentPostShockRecovery";
         private const float MinimumMovingCapacity = 0.50f;
         private const float MinimumConsciousnessCapacity = 0.50f;
         private const float MinimumSummaryHealth = 0.55f;
@@ -194,11 +196,19 @@ namespace GateRimSG1.Goauld
                 && patient.health.hediffSet.HasHediff(shockDef);
         }
 
+        public static bool HasPostShockRecovery(Pawn patient)
+        {
+            HediffDef recoveryDef = GetPostShockRecoveryDef();
+
+            return recoveryDef != null
+                && patient?.health?.hediffSet != null
+                && patient.health.hediffSet.HasHediff(recoveryDef);
+        }
+
         public static void RemoveSymbioteShock(Pawn patient)
         {
             if (patient == null
                 || patient.Destroyed
-                || patient.Dead
                 || patient.health?.hediffSet == null)
             {
                 return;
@@ -217,6 +227,60 @@ namespace GateRimSG1.Goauld
             if (shock != null)
             {
                 patient.health.RemoveHediff(shock);
+            }
+        }
+
+        public static void BeginPostShockRecovery(Pawn patient)
+        {
+            RemoveSymbioteShock(patient);
+            EnsurePostShockRecovery(patient);
+        }
+
+        public static void EnsurePostShockRecovery(Pawn patient)
+        {
+            if (patient == null
+                || patient.Destroyed
+                || patient.Dead
+                || patient.health?.hediffSet == null)
+            {
+                return;
+            }
+
+            HediffDef recoveryDef = GetPostShockRecoveryDef();
+
+            if (recoveryDef == null
+                || patient.health.hediffSet.HasHediff(recoveryDef))
+            {
+                return;
+            }
+
+            patient.health.AddHediff(recoveryDef);
+        }
+
+        public static void ClearOperationHealthConditions(Pawn patient)
+        {
+            if (patient == null
+                || patient.Destroyed
+                || patient.health?.hediffSet == null)
+            {
+                return;
+            }
+
+            RemoveSymbioteShock(patient);
+
+            HediffDef recoveryDef = GetPostShockRecoveryDef();
+
+            if (recoveryDef == null)
+            {
+                return;
+            }
+
+            Hediff recovery = patient.health.hediffSet
+                .GetFirstHediffOfDef(recoveryDef);
+
+            if (recovery != null)
+            {
+                patient.health.RemoveHediff(recovery);
             }
         }
 
@@ -337,6 +401,12 @@ namespace GateRimSG1.Goauld
         {
             return DefDatabase<HediffDef>.GetNamedSilentFail(
                 SymbioteShockDefName);
+        }
+
+        private static HediffDef GetPostShockRecoveryDef()
+        {
+            return DefDatabase<HediffDef>.GetNamedSilentFail(
+                PostShockRecoveryDefName);
         }
 
         private static bool TryFindEntryCell(Map map, out IntVec3 entryCell)

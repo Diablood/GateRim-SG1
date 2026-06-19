@@ -10,7 +10,9 @@ traité avec les soins médicaux normaux de RimWorld.
 
 Le choc de symbiote est lui-même soignable. L'opération ne peut donc pas rester
 bloquée si les autres blessures ou maladies disparaissent avant ce premier
-traitement.
+traitement. Une fois ce choc traité, le symbiote reste toutefois affaibli :
+la guérison des blessures demeure nettement plus lente que chez un Tok'ra en
+bonne santé, ce qui laisse un rôle réel aux soins ordinaires et au repos médical.
 
 L'agent n'a pas besoin d'être entièrement guéri. Lorsqu'il est conscient,
 mobile et suffisamment stable pour voyager, il commence à quitter la carte. La

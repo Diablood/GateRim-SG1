@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.3-dev - Rework organic Tok'ra wounded agent care
+
+- Keep the validated wounded-agent arrival, rescue, treatment, departure and living-exit resolution flow unchanged.
+- Add `SG1_TokraWoundedAgentPostShockRecovery` after the acute symbiote shock is tended.
+- Suspend the direct Tok'ra therapeutic injury regeneration while acute symbiote shock remains active, then resume it at `25%` of its normal rate after emergency treatment.
+- Keep ordinary tending, bleeding control and medical rest relevant without requiring forced medicine consumption or an arbitrary fixed waiting timer.
+- Preserve the existing travel-fitness checks, five-day care window and death-priority failure rule.
+- Apply the same weakened-recovery state through the shared debug phase-advance action.
+- Remove the operation-specific shock and recovery conditions when the operation resolves.
+- Update RP text so first aid no longer claims that normal Tok'ra regeneration immediately resumes.
+- Preserve compatibility with saves created from the `0.3.0-dev` framework baseline.
+- Raise the assembly version to `0.3.3.0` and the mod metadata version to `0.3.3-dev`.
+
 ## 0.3.2-dev - Rework organic Tok'ra observation operation
 
 - Replace the former abstract observation timer with a physical field device and a temporary peripheral observation point.

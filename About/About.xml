@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.3.2-dev</modVersion>
+    <modVersion>0.3.3-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>

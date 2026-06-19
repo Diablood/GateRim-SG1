@@ -1,5 +1,77 @@
 # Testing workflow
 
+## 0.3.3-dev - Ralentissement de la récupération de l'agent Tok'ra blessé
+
+Cette série conserve le flux validé de l'événement et vérifie uniquement le nouveau rythme de récupération après les premiers soins.
+
+### Préconditions
+
+- Utiliser une nouvelle partie ou une sauvegarde créée avec `0.3.0-dev` ou une version ultérieure.
+- Disposer d'un communicateur sécurisé Tok'ra alimenté, d'un lit médical de la colonie et d'un colon capable de Médecine.
+- Activer le mode développeur RimWorld ou l'option avancée GateRim SG-1 uniquement pour forcer l'offre et inspecter l'état technique.
+
+### Test 1 — Choc aigu avant traitement
+
+1. Forcer l'offre d'agent blessé et l'accepter normalement au communicateur.
+2. Vérifier que le même agent arrive inconscient avec `choc du symbiote`.
+3. Laisser avancer brièvement le temps avant tout soin.
+4. Vérifier que l'agent ne se relève pas et que ses blessures, leur gravité et le saignement associé ne diminuent plus automatiquement sous l'effet de la régénération thérapeutique Tok'ra tant que le choc est actif.
+
+Résultat attendu : le comportement précédemment validé du choc aigu reste inchangé.
+
+### Test 2 — Passage à la récupération affaiblie
+
+1. Secourir l'agent dans un lit médical appartenant à la colonie.
+2. Faire soigner le choc lui-même, y compris si toutes les autres affections ont déjà disparu.
+3. Vérifier que `choc du symbiote` disparaît.
+4. Vérifier que `récupération affaiblie du symbiote` apparaît immédiatement.
+5. Lire le message de premiers soins et vérifier qu'il demande de poursuivre les soins et le repos au lieu d'annoncer une régénération normale immédiate.
+
+Résultat attendu : les premiers soins débloquent l'agent, puis la régénération thérapeutique Tok'ra ne reprend qu'à 25 % de sa vitesse normale ; les soins conventionnels restent visiblement utiles.
+
+### Test 3 — Rythme de guérison et utilité des soins
+
+1. Noter les blessures restantes juste après le premier traitement.
+2. Maintenir l'agent au repos médical avec les soins vanilla disponibles.
+3. Observer sa récupération sur plusieurs heures de jeu.
+4. Vérifier qu'elle est nettement plus lente qu'en `0.3.2-dev`, sans devenir bloquée.
+5. Confirmer que le contrôle des saignements, les soins ordinaires et le lit médical restent utiles.
+6. Vérifier que les médicaments ne sont pas imposés artificiellement lorsque les réglages de soin permettent de traiter sans eux.
+
+Résultat attendu : la guérison n'est plus presque immédiate après la levée du choc, mais l'agent peut encore devenir apte au voyage avant la fermeture de la fenêtre de cinq jours avec une prise en charge correcte.
+
+### Test 4 — Sauvegarde et chargement
+
+1. Sauvegarder avant le premier soin et recharger.
+2. Soigner le choc, sauvegarder pendant la récupération affaiblie puis recharger.
+3. Vérifier que le choc ne revient pas et que la récupération affaiblie reste présente.
+4. Continuer jusqu'au message de départ, sauvegarder pendant le trajet puis recharger.
+
+Résultat attendu : le même patient, ses blessures, sa phase de récupération et son ordre de départ persistent sans doublon.
+
+### Test 5 — Résolution et nettoyage
+
+1. Laisser l'agent quitter la carte vivant et vérifier que la réussite survient uniquement après la sortie effective.
+2. Sur une autre occurrence, tuer l'agent avant sa sortie, y compris pendant le trajet de départ.
+3. Vérifier que la mort provoque l'échec et reste prioritaire sur toute réussite en attente.
+4. Tester séparément une capture avec les outils développeur.
+5. Vérifier qu'après chaque résolution les affections temporaires propres à l'opération ne restent pas sur un pawn conservé.
+
+Résultat attendu : aucune modification des règles de réussite ou d'échec précédemment validées, et aucun Hediff temporaire orphelin.
+
+### Test 6 — Outil debug commun
+
+1. Forcer et accepter une nouvelle occurrence.
+2. Utiliser l'action commune d'avancement de phase pour l'agent blessé.
+3. Vérifier qu'elle retire le choc aigu et applique la récupération affaiblie, comme le flux médical normal.
+4. Vérifier que les outils restent regroupés dans le gizmo debug unique et invisibles lorsque les deux modes debug sont désactivés.
+
+### Contrôle final
+
+- Rejouer rapidement les opérations d'observation, de renseignements et de remise médicale afin de confirmer l'absence de régression.
+- Revoir `Player.log` et vérifier l'absence d'erreurs XML, Hediff, Scribe, référence de Def, double résolution ou ancienne DLL.
+
+
 ## 0.3.2-dev - Refonte de l'opération d'observation Tok'ra
 
 Cette section remplace les anciens sous-tests d'observation abstraite présents plus bas dans le document. Les autres archétypes conservent leurs procédures actuelles.

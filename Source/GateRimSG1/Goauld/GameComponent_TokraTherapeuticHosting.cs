@@ -17,6 +17,7 @@ namespace GateRimSG1.Goauld
     {
         private const int ScanIntervalTicks = 60;
         private const float InjuryHealingPerScan = 0.05f;
+        private const float PostShockInjuryHealingFactor = 0.25f;
 
         private static readonly HashSet<string> CauseDrivenConditionDefNames
             = new HashSet<string>(StringComparer.Ordinal)
@@ -193,6 +194,17 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            if (TokraOrganicWoundedAgentUtility.HasSymbioteShock(pawn))
+            {
+                return;
+            }
+
+            float injuryHealingPerScan
+                = TokraOrganicWoundedAgentUtility
+                    .HasPostShockRecovery(pawn)
+                    ? InjuryHealingPerScan * PostShockInjuryHealingFactor
+                    : InjuryHealingPerScan;
+
             List<string> completedLabels = new List<string>();
             List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
 
@@ -209,7 +221,11 @@ namespace GateRimSG1.Goauld
 
                 if (injury != null)
                 {
-                    TryRegenerateInjury(pawn, injury, completedLabels);
+                    TryRegenerateInjury(
+                        pawn,
+                        injury,
+                        completedLabels,
+                        injuryHealingPerScan);
                     continue;
                 }
 
@@ -312,11 +328,12 @@ namespace GateRimSG1.Goauld
         private static void TryRegenerateInjury(
             Pawn pawn,
             Hediff_Injury injury,
-            List<string> completedLabels)
+            List<string> completedLabels,
+            float healingAmount)
         {
             string injuryLabel = injury.LabelCap.ToString();
 
-            injury.Heal(InjuryHealingPerScan);
+            injury.Heal(healingAmount);
 
             if (injury.Severity > 0f)
             {

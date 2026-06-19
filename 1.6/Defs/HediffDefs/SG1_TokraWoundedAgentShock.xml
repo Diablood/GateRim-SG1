@@ -29,4 +29,21 @@
             </li>
         </stages>
     </HediffDef>
+
+    <HediffDef>
+        <defName>SG1_TokraWoundedAgentPostShockRecovery</defName>
+        <label>weakened symbiote recovery</label>
+        <description>The acute shock has been treated, but the symbiote's regenerative response remains severely weakened. Conventional medical care and rest are still required until the agent is fit to travel.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <isBad>true</isBad>
+        <scenarioCanAdd>false</scenarioCanAdd>
+        <stages>
+            <li>
+                <label>weakened recovery</label>
+                <statFactors>
+                    <InjuryHealingFactor>0.25</InjuryHealingFactor>
+                </statFactors>
+            </li>
+        </stages>
+    </HediffDef>
 </Defs>

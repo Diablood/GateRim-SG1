@@ -1354,7 +1354,8 @@ namespace GateRimSG1.Goauld
                 }
 
                 manager.woundedAgentInitialCareReceived = true;
-                TokraOrganicWoundedAgentUtility.RemoveSymbioteShock(patient);
+                TokraOrganicWoundedAgentUtility
+                    .BeginPostShockRecovery(patient);
                 manager.woundedAgentStableSinceTick
                     = currentTick - WoundedAgentStableDurationTicks;
                 manager.TickAcceptedWoundedAgent(currentTick);
@@ -2010,7 +2011,8 @@ namespace GateRimSG1.Goauld
                 }
 
                 woundedAgentInitialCareReceived = true;
-                TokraOrganicWoundedAgentUtility.RemoveSymbioteShock(patient);
+                TokraOrganicWoundedAgentUtility
+                    .BeginPostShockRecovery(patient);
 
                 Messages.Message(
                     "GR_TokraWoundedAgent_InitialCareMessage".Translate(
@@ -2021,11 +2023,14 @@ namespace GateRimSG1.Goauld
 
                 GR_Log.Message(
                     "Initial colony treatment received by wounded Tok'ra "
-                    + $"agent {patient.LabelShortCap}; symbiote shock lifted.");
+                    + $"agent {patient.LabelShortCap}; symbiote shock lifted "
+                    + "and weakened recovery applied.");
             }
             else
             {
                 TokraOrganicWoundedAgentUtility.RemoveSymbioteShock(patient);
+                TokraOrganicWoundedAgentUtility
+                    .EnsurePostShockRecovery(patient);
             }
 
             if (!TokraOrganicWoundedAgentUtility.IsFitForDeparture(patient))
@@ -3423,6 +3428,9 @@ namespace GateRimSG1.Goauld
                 letterTarget,
                 patient,
                 intellectualXp);
+
+            TokraOrganicWoundedAgentUtility
+                .ClearOperationHealthConditions(patient);
 
             GR_Log.Message(
                 "Resolved Tok'ra organic operation "

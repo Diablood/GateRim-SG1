@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.2-dev`
+> Dernière révision : `0.3.3-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -45,7 +45,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
-| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation discrète, analyse d'un module de renseignement au communicateur avec choix prudent ou accéléré, accueil d'un agent blessé et remise de deux médicaments à un agent Tok'ra en visite ; refus sans pénalité, conséquence après engagement accepté | 0.2.48-dev à 0.3.1-dev |
+| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation de terrain, analyse d'un module de renseignement au communicateur avec choix prudent ou accéléré, accueil prolongé d'un agent blessé à la récupération symbiotique affaiblie et remise de deux médicaments à un agent Tok'ra en visite ; refus sans pénalité, conséquence après engagement accepté | 0.2.48-dev à 0.3.3-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
@@ -94,7 +94,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
-| Opérations Tok'ra organiques | Framework récurrent avec observation de terrain, analyse de renseignements, accueil d'un agent blessé et remise médicale | 0.2.48-dev à 0.3.2-dev |
+| Opérations Tok'ra organiques | Framework récurrent avec observation de terrain, analyse de renseignements, accueil médical prolongé d'un agent blessé et remise médicale | 0.2.48-dev à 0.3.3-dev |
 
 ## Prévu
 

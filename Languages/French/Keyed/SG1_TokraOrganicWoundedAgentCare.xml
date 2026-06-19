@@ -12,10 +12,10 @@ Sélectionnez un colon, puis faites un clic droit sur le communicateur sécuris�
     <GR_TokraWoundedAgent_ArrivalLabel>Agent Tok'ra blessé</GR_TokraWoundedAgent_ArrivalLabel>
     <GR_TokraWoundedAgent_ArrivalText>{0}, un agent Tok'ra grièvement blessé, s'est effondré près de la colonie. L'hôte et le symbiote sont plongés dans un choc aigu : l'agent ne peut pas marcher et la régénération Tok'ra restera suspendue tant qu'un traitement d'urgence n'aura pas été prodigué dans un lit médical de la colonie.
 
-Secourez l'agent, installez-le dans un lit médical et prodiguez-lui au moins un véritable soin. Une fois le choc dissipé, la récupération Tok'ra normale pourra reprendre. La cellule espère que l'agent sera apte à voyager dans environ {1} heures.
+Secourez l'agent, installez-le dans un lit médical et prodiguez-lui au moins un véritable soin. Une fois le choc dissipé, le symbiote restera affaibli et l'agent aura encore besoin de soins conventionnels et de repos médical. La cellule espère que l'agent sera apte à voyager dans environ {1} heures.
 
 L'opération ne sera réussie qu'après son départ effectif de la carte. Sa mort, sa capture ou sa disparition entraînera un échec.</GR_TokraWoundedAgent_ArrivalText>
-    <GR_TokraWoundedAgent_InitialCareMessage>{0} a reçu les premiers soins d'urgence. Le choc du symbiote se dissipe et la régénération Tok'ra commence à reprendre.</GR_TokraWoundedAgent_InitialCareMessage>
+    <GR_TokraWoundedAgent_InitialCareMessage>{0} a reçu les premiers soins d'urgence. Le choc aigu du symbiote se dissipe, mais sa régénération reste affaiblie. Les soins et le repos médical doivent se poursuivre.</GR_TokraWoundedAgent_InitialCareMessage>
     <GR_TokraWoundedAgent_StableMessage>{0} est désormais assez stable pour préparer son départ.</GR_TokraWoundedAgent_StableMessage>
     <GR_TokraWoundedAgent_DepartingMessage>{0} est apte à voyager et repart rejoindre la cellule Tok'ra.</GR_TokraWoundedAgent_DepartingMessage>
 

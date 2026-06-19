@@ -12,10 +12,10 @@ Select a colonist, then right-click the powered Tok'ra secure communicator to ac
     <GR_TokraWoundedAgent_ArrivalLabel>Wounded Tok'ra agent</GR_TokraWoundedAgent_ArrivalLabel>
     <GR_TokraWoundedAgent_ArrivalText>{0}, a badly wounded Tok'ra agent, has collapsed near the colony. The host and symbiote are in acute shock: the agent cannot walk, and Tok'ra regeneration will remain suppressed until emergency treatment is provided in a colony medical bed.
 
-Rescue the agent, place them in a medical bed and provide at least one real treatment. Once the shock eases, normal Tok'ra recovery can resume. The cell expects the agent to be fit to travel within about {1} hours.
+Rescue the agent, place them in a medical bed and provide at least one real treatment. Once the shock eases, the symbiote will remain weakened and the agent will still need ordinary treatment and medical rest. The cell expects the agent to be fit to travel within about {1} hours.
 
 The operation succeeds only after the recovered agent leaves the map. Their death, capture or disappearance will be treated as a failure.</GR_TokraWoundedAgent_ArrivalText>
-    <GR_TokraWoundedAgent_InitialCareMessage>{0} has received emergency treatment. The symbiote shock is easing, and Tok'ra regeneration is beginning to recover.</GR_TokraWoundedAgent_InitialCareMessage>
+    <GR_TokraWoundedAgent_InitialCareMessage>{0} has received emergency treatment. The acute shock is easing, but the symbiote's regeneration remains weak. Continued treatment and medical rest are still needed.</GR_TokraWoundedAgent_InitialCareMessage>
     <GR_TokraWoundedAgent_StableMessage>{0} is now stable enough to prepare for departure.</GR_TokraWoundedAgent_StableMessage>
     <GR_TokraWoundedAgent_DepartingMessage>{0} is fit to travel and is leaving to rejoin the Tok'ra cell.</GR_TokraWoundedAgent_DepartingMessage>
 

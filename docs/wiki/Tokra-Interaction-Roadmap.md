@@ -1,7 +1,7 @@
 # Feuille de route des interactions Tok'ra
 
 > Statut : feuille de route évolutive
-> Dernière révision : `0.3.2-dev`
+> Dernière révision : `0.3.3-dev`
 
 Cette page résume la direction des interactions Tok'ra. Elle ne constitue pas
 un calendrier de versions et ne garantit pas l'ordre exact des futurs jalons.
@@ -78,9 +78,7 @@ Le framework `0.3.0-dev` est stabilisé. La première refonte de contenu est mis
 
 La seconde refonte de contenu est mise en œuvre dans `0.3.2-dev` : l'observation Goa'uld utilise désormais un dispositif physique à livrer en périphérie, protéger, récupérer puis rapporter au communicateur avant la réussite.
 
-Une opération existante reste prioritaire à retravailler :
-
-- l'agent Tok'ra blessé doit récupérer beaucoup plus lentement afin que les soins de la colonie jouent réellement un rôle dans sa survie.
+La troisième refonte de contenu est mise en œuvre dans `0.3.3-dev` : après les premiers soins, l'agent Tok'ra blessé conserve une récupération symbiotique fortement affaiblie. Les soins conventionnels, le repos médical et le contrôle des blessures restent ainsi utiles jusqu'à son départ.
 
 ### Diversifier les opérations
 
