@@ -1,64 +1,62 @@
 # Project state
 
-Current milestone: `0.3.3-dev - Rework organic Tok'ra wounded agent care`.
+Current milestone: `0.3.4-dev - Improve Tok'ra observation site visuals and field flow`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.2-dev`.
-- Dedicated branch: `feature/tokra-wounded-agent-care-rework`.
-- Planned final tag after local validation: `v0.3.3-dev`.
-- Current local test archive revision: `0.3.3-dev-r1`.
+- Functional base tag: `v0.3.3-dev`.
+- Dedicated branch: `feature/tokra-observation-site-visual-rework`.
+- Planned final tag after local validation: `v0.3.4-dev`.
+- Current local test archive revision: `0.3.4-dev-r4`.
 
 ## Milestone scope
 
-This milestone keeps the validated wounded-agent event flow intact and changes only the recovery pace after emergency treatment.
+This milestone keeps the established Tok'ra observation objective but improves both its visual readability and the coherence of the field actions.
 
-The existing sequence remains:
+The old automatic six-hour recording phase is removed. Observation is now an operator-controlled task:
 
-1. a wounded Tok'ra agent arrives downed under acute symbiote shock;
-2. the colony rescues the agent into a player medical bed;
-3. a doctor tends the shock itself;
-4. the shock is lifted and ordinary medical care continues;
-5. the agent leaves only after becoming fit to travel;
-6. success is resolved only after the agent exits the map alive;
-7. death before effective exit remains the priority failure condition.
+1. a Tok'ra observation device is delivered to the map;
+2. a colon carries it to the peripheral observation point;
+3. the device is installed as a dedicated field scope;
+4. the same colon remains at the scope and observes for a random duration of roughly one to two in-game hours;
+5. when the observation is complete, the colon immediately packs the scope up;
+6. the colon carries it directly to the powered Tok'ra communicator;
+7. the final transmission resolves the operation.
 
-## Recovery rework
+If the continuous task is interrupted after deployment, the player can right-click the installed observation site to resume the remaining observation work and continue through recovery and transmission.
 
-Before initial treatment, `SG1_TokraWoundedAgentSymbioteShock` still blocks movement and suppresses injury healing completely.
+## Visual and animation rework
 
-After the shock is tended:
+The temporary observation point no longer reuses the generic Tok'ra delivery spot ring. It uses a dedicated field-scope texture with a tripod, directional optic and compact sensor housing.
 
-- the acute shock is removed;
-- the operation adds `SG1_TokraWoundedAgentPostShockRecovery`;
-- acute symbiote shock suspends the direct Tok'ra therapeutic injury regeneration; after emergency treatment, the post-shock condition limits that regeneration to `25%` of its normal rate and also multiplies vanilla Injury Healing Factor by `0.25`;
-- for vanilla natural healing, the adult symbiote's normal `1.75` factor is reduced to about `0.4375` of a normal human; the separate therapeutic regeneration also runs at only `25%` of its normal Tok'ra rate;
-- conventional tending, bleeding control, medical rest and protection therefore remain relevant;
-- the condition is removed when the operation resolves, including success, failure or capture cleanup.
+The previous construction effect and drill-like sound are removed from deployment and recovery. During the actual observation toil, the colon remains beside the scope and faces it, matching the visual language of using an observation instrument rather than constructing a building.
 
-No mandatory medicine consumption, artificial fixed waiting timer or change to the validated departure criteria is added.
+## Failure conditions
 
-## Player-facing rules
+The operation fails if:
 
-- The event remains optional before acceptance.
-- The shock itself remains tendable even when it is the patient's only remaining condition.
-- After first aid, the player is explicitly told that the symbiote remains weakened and that continued care is required.
-- The agent does not need complete healing, but must meet the existing travel-fitness checks.
-- Success still requires a living exit from the map.
-- Death at any moment before effective exit still causes failure, including during the departure journey.
+- the observation site or device is destroyed before transmission;
+- the device becomes unavailable;
+- the accepted operation is not completed before its existing secure deadline.
+
+The operation no longer succeeds from a background timer. Success is granted only after the observed data are physically returned and transmitted.
 
 ## Save compatibility
 
-- `0.3.0-dev` remains the compatibility baseline.
-- Existing `0.3.2-dev` saves with an untreated patient keep the acute shock and receive the new recovery condition after tending.
-- Existing saves with initial care already recorded receive the post-shock recovery condition when the framework next checks the patient.
-- The new condition is stored as a normal pawn Hediff and needs no additional manager save field.
+- `0.3.0-dev` remains the framework compatibility baseline.
+- Existing `0.3.2-dev` and `0.3.3-dev` observation saves remain loadable.
+- A deployed site using the old automatic timer is converted into remaining operator-controlled observation work.
+- An already-ready site remains ready for recovery.
+- No active observation should be duplicated during conversion.
 
 ## Debug requirements
 
-The existing single communicator debug menu remains unchanged in structure.
+The grouped communicator debug menu remains the single debug entry point.
 
-The wounded-agent phase advance action now applies the same post-shock recovery condition as normal medical treatment. Existing force-offer, accept, arrival, failure, expiration, state-report and reset actions remain available only in RimWorld developer mode or through the GateRim SG-1 advanced debug option.
+- `Observation : déployer le dispositif` creates the installed field state.
+- `Observation : terminer l’enregistrement` completes the operator-controlled observation work.
+- Full progress values remain visible only in the technical debug report.
+- No debug gizmo is visible in normal play.
 
 ## Files intentionally removed
 
@@ -66,24 +64,39 @@ None for this milestone revision.
 
 ## Required local validation
 
-1. Build the assembly and confirm version `0.3.3.0`.
-2. Force and accept the wounded-agent offer on a save compatible with `0.3.0-dev` or later.
-3. Confirm the untreated shock still blocks movement and injury healing.
-4. Rescue the agent into a player medical bed and tend the shock.
-5. Confirm the acute shock disappears and `récupération affaiblie du symbiote` appears.
-6. Confirm the patient no longer recovers at the former accelerated Tok'ra rate.
-7. Continue ordinary treatment and confirm eventual travel fitness remains achievable before the five-day operation deadline.
-8. Save and reload before treatment, during weakened recovery and during departure.
-9. Confirm success only after living map exit and failure on death before exit.
-10. Confirm the operation-specific recovery condition is removed after resolution.
-11. Re-run the debug phase advance and verify it uses the same weakened-recovery state.
-12. Review `Player.log` for XML, Hediff, Scribe or duplicate-resolution errors.
+1. Build the assembly and confirm version `0.3.4.0`.
+2. Confirm the observation point remains absent from all Architect categories.
+3. Force and accept an observation operation.
+4. Confirm the temporary site uses the dedicated field-scope visual.
+5. Start deployment and confirm the colon carries the device to the site.
+6. Confirm deployment no longer plays the construction drill effect.
+7. Confirm the same colon remains at the scope and faces it during roughly one to two hours of observation work.
+8. Confirm the colon immediately packs the scope, returns to the communicator and transmits without an automatic waiting phase or a second player order.
+9. Interrupt during observation, then resume by right-clicking the installed site.
+10. Save and reload during observation, during recovery and during the return trip.
+11. Destroy the installed site and confirm a single failure.
+12. Let the secure deadline expire and confirm a single failure.
+13. Review `Player.log` for XML, texture, job, reservation, Scribe or duplicate-resolution errors.
+
+## Durable handoff files
+
+Project continuity must not depend on the current discussion history. Before resuming work after a context loss or in a new discussion, consult:
+
+- `docs/PROJECT_STATE.md` for the active milestone;
+- `docs/ROADMAP.md` for all deferred additions and future actions;
+- `docs/MILESTONE_PUBLICATION.md` before publication;
+- `AGENTS.md` for repository working rules.
+
+The former outdated roadmap has been replaced by a concise current backlog. Historical milestone details remain in `docs/CHANGELOG.md`.
 
 ## Deferred follow-up
 
-- Review the observation site's visual so it clearly resembles a field scope or telescope.
-- Continue consolidating device-specific debug actions into grouped menus when several exist on the same object.
-- Add further distinct operation archetypes only after the existing four remain stable on the shared framework.
+The complete durable backlog is maintained in `docs/ROADMAP.md`. The most directly related deferred items are:
+
+- replace the provisional mail-like texture of the portable observation device during the global object-visual pass;
+- consider a separate visual state for completed observation data only if it provides clear value;
+- continue consolidating device-specific debug actions into grouped menus when several exist on the same object;
+- add further distinct operation archetypes only after the existing four remain stable on the shared framework.
 
 ## Publication after validation
 
@@ -91,9 +104,9 @@ Follow `docs/MILESTONE_PUBLICATION.md`.
 
 Expected final publication identifiers:
 
-- commit: `0.3.3-dev - rework organic Tok'ra wounded agent care`;
-- branch: `feature/tokra-wounded-agent-care-rework`;
-- annotated tag: `v0.3.3-dev`.
+- commit: `0.3.4-dev - improve Tok'ra observation field flow`;
+- branch: `feature/tokra-observation-site-visual-rework`;
+- annotated tag: `v0.3.4-dev`.
 
 ## Repository rules reminder
 

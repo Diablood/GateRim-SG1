@@ -3,14 +3,14 @@
     <ThingDef ParentName="FurnitureBase">
         <defName>SG1_TokraObservationPoint</defName>
         <label>Tok'ra observation point</label>
-        <description>A peripheral position selected by the Tok'ra cell for a discreet field watch. Once the delivered sensor is installed here, it records nearby Goa'uld activity until its data can be recovered and carried directly to the secure communicator.</description>
+        <description>A peripheral position selected by the Tok'ra cell for a discreet field watch. Once the delivered sensor is installed here, an operator must remain at the scope to conduct the field watch before packing it up and returning it directly to the secure communicator.</description>
         <thingClass>GateRimSG1.Goauld.Building_TokraObservationPoint</thingClass>
         <designationCategory IsNull="True" />
         <minifiedDef IsNull="True" />
         <graphicData>
-            <texPath>Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot</texPath>
+            <texPath>Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint</texPath>
             <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>(1,1)</drawSize>
+            <drawSize>(1.1,1.1)</drawSize>
         </graphicData>
         <size>(1,1)</size>
         <rotatable>false</rotatable>

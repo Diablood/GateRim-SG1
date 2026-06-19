@@ -21,6 +21,7 @@ Accepting the request will authorize delivery of the device and reveal the obser
     <GR_TokraOrganicOperation_SuccessLetterText>{0} has transmitted a concise report on nearby Goa'uld activity. The Tok'ra cell confirms that the information was useful. The operator gains {1} Intellectual XP, and the cell's trust in the colony improves.</GR_TokraOrganicOperation_SuccessLetterText>
     <GR_TokraObservation_DeployAction>Deploy Tok'ra observation device</GR_TokraObservation_DeployAction>
     <GR_TokraObservation_ResumeTransmissionAction>Resume Tok'ra observation transmission</GR_TokraObservation_ResumeTransmissionAction>
+    <GR_TokraObservation_ContinueAction>Continue observation and transmit data</GR_TokraObservation_ContinueAction>
     <GR_TokraObservation_RecoverAction>Pack up device and transmit data</GR_TokraObservation_RecoverAction>
     <GR_TokraObservation_JobUnavailable>deployment task unavailable</GR_TokraObservation_JobUnavailable>
     <GR_TokraObservation_NoActiveDeployment>this device is not part of an active observation operation</GR_TokraObservation_NoActiveDeployment>
@@ -36,18 +37,19 @@ Accepting the request will authorize delivery of the device and reveal the obser
     <GR_TokraObservation_TargetLetterLabel>Tok'ra observation point identified</GR_TokraObservation_TargetLetterLabel>
     <GR_TokraObservation_TargetLetterText>A compact Tok'ra field sensor has been delivered through the usual discreet route. The cell has also marked a peripheral position from which it can record nearby Goa'uld traffic.
 
-Select an Intellectual-capable colonist, right-click the delivered device and install it at the marked point. Once the recording is complete, right-click the observation site itself: the colonist will pack up the sensor, carry it to the Tok'ra communicator and transmit the data as one continuous task. The operational window remains open for about {0} hours.</GR_TokraObservation_TargetLetterText>
-    <GR_TokraObservation_Deployed>{0} has installed the Tok'ra observation device at the marked site. Its recording should be complete in about {1} hours.</GR_TokraObservation_Deployed>
-    <GR_TokraObservation_DataReady>The Tok'ra device has completed its recording. Select a colonist and right-click the observation site to pack up the sensor and carry its data directly to the communicator.</GR_TokraObservation_DataReady>
+Select an Intellectual-capable colonist, right-click the delivered device and install it at the marked point. The same colonist will remain at the scope for roughly one to two hours, then pack it up, return it to the Tok'ra communicator and transmit the data as one continuous task. If the task is interrupted, right-click the installed site to continue. The operational window remains open for about {0} hours.</GR_TokraObservation_TargetLetterText>
+    <GR_TokraObservation_Deployed>{0} has installed the Tok'ra observation scope and begins the field watch. The observation should take about {1} hours before the device can be packed up and returned.</GR_TokraObservation_Deployed>
+    <GR_TokraObservation_DataReady>The field watch is complete. The operator can now pack up the Tok'ra scope and return it directly to the communicator.</GR_TokraObservation_DataReady>
     <GR_TokraObservation_TransmissionStarted>{0} is carrying the observation device back to the Tok'ra communicator.</GR_TokraObservation_TransmissionStarted>
+    <GR_TokraObservation_ObservationStarted>{0} resumes the field watch through the Tok'ra observation scope.</GR_TokraObservation_ObservationStarted>
     <GR_TokraObservation_RecoveryStarted>{0} begins packing up the observation device before returning it to the communicator.</GR_TokraObservation_RecoveryStarted>
     <GR_TokraObservation_StatusAwaitingDeployment>observation device delivered; deployment pending ({0} h remaining)</GR_TokraObservation_StatusAwaitingDeployment>
-    <GR_TokraObservation_StatusRecording>field device recording at the marked position ({0} h remaining)</GR_TokraObservation_StatusRecording>
+    <GR_TokraObservation_StatusRecording>operator conducting the field watch ({0} h of observation remaining)</GR_TokraObservation_StatusRecording>
     <GR_TokraObservation_StatusDataReady>data ready at the observation site; recovery required ({0} h remaining)</GR_TokraObservation_StatusDataReady>
     <GR_TokraObservation_StatusTransmissionInterrupted>observation data transmission interrupted; it can be resumed ({0} h remaining)</GR_TokraObservation_StatusTransmissionInterrupted>
-    <GR_TokraObservation_FailedTimeoutText>The field device was deployed or recovered too late to transmit its observations before the secure window closed. The Tok'ra cell will be more cautious before relying on the colony again.</GR_TokraObservation_FailedTimeoutText>
+    <GR_TokraObservation_FailedTimeoutText>The observation was not completed and transmitted before the secure window closed. The Tok'ra cell will be more cautious before relying on the colony again.</GR_TokraObservation_FailedTimeoutText>
     <GR_TokraObservation_FailedDeviceLostText>The Tok'ra observation device was lost or destroyed before its field data could be transmitted. The cell will be more cautious before entrusting the colony with another watch assignment.</GR_TokraObservation_FailedDeviceLostText>
-    <GR_TokraObservation_SuccessText1>{0} packed up the field sensor and returned it to the secure communicator and transmitted a record of irregular Jaffa patrol passages along a nearby route. The Tok'ra cell can now avoid the exposed intervals. {0} gains {1} Intellectual XP.</GR_TokraObservation_SuccessText1>
+    <GR_TokraObservation_SuccessText1>{0} packed up the field sensor, returned it to the secure communicator and transmitted a record of irregular Jaffa patrol passages along a nearby route. The Tok'ra cell can now avoid the exposed intervals. {0} gains {1} Intellectual XP.</GR_TokraObservation_SuccessText1>
     <GR_TokraObservation_SuccessText2>{0} transmitted the sensor's record of short Goa'uld relay bursts crossing the region. The Tok'ra cell has isolated a safer listening window from the pattern. {0} gains {1} Intellectual XP.</GR_TokraObservation_SuccessText2>
     <GR_TokraObservation_SuccessText3>{0} delivered a clean observation record showing changes in a Goa'uld supply corridor. The Tok'ra cell confirms that the route can be exploited without exposing the colony. {0} gains {1} Intellectual XP.</GR_TokraObservation_SuccessText3>
     <GR_TokraOrganicOperation_DeadDropNoLongerActive>This Tok'ra intelligence module is no longer part of an active operation</GR_TokraOrganicOperation_DeadDropNoLongerActive>

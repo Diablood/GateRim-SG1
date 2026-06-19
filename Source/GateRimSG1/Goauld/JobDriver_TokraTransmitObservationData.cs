@@ -48,10 +48,6 @@ namespace GateRimSG1.Goauld
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDespawnedNullOrForbidden(CommunicatorIndex);
-            this.FailOn(() => !GameComponent_TokraOrganicOperationManager
-                .CanContinueObservationTransmission(
-                    job.GetTarget(CommunicatorIndex).Thing,
-                    pawn));
 
             if (TokraObservationUtility.IsObservationPoint(
                     job.GetTarget(DeviceIndex).Thing))
@@ -60,19 +56,57 @@ namespace GateRimSG1.Goauld
                     DeviceIndex,
                     PathEndMode.Touch);
 
-                Toil recover = Toils_General.Wait(
+                if (!GameComponent_TokraOrganicOperationManager
+                    .IsObservationWorkComplete(
+                        job.GetTarget(DeviceIndex).Thing))
+                {
+                    Toil observe = ToilMaker.MakeToil(
+                        "OperateTokraObservationScope");
+                    observe.tickAction = delegate
+                    {
+                        Thing observationPoint
+                            = job.GetTarget(DeviceIndex).Thing;
+                        Pawn actor = observe.actor;
+                        actor.rotationTracker.FaceTarget(observationPoint);
+
+                        if (!GameComponent_TokraOrganicOperationManager
+                            .PerformObservationWork(
+                                observationPoint,
+                                actor))
+                        {
+                            EndJobWith(JobCondition.Incompletable);
+                            return;
+                        }
+
+                        if (GameComponent_TokraOrganicOperationManager
+                            .IsObservationWorkComplete(observationPoint))
+                        {
+                            ReadyForNextToil();
+                        }
+                    };
+                    observe.defaultCompleteMode = ToilCompleteMode.Never;
+                    observe.handlingFacing = true;
+                    observe.WithProgressBar(
+                        DeviceIndex,
+                        delegate
+                        {
+                            return GameComponent_TokraOrganicOperationManager
+                                .GetObservationWorkProgress(
+                                    job.GetTarget(DeviceIndex).Thing);
+                        });
+                    yield return observe;
+                }
+
+                Toil pack = Toils_General.Wait(
                     GameComponent_TokraOrganicOperationManager
                         .ObservationRecoveryWorkTicks,
                     DeviceIndex);
-                recover.WithProgressBarToilDelay(DeviceIndex);
-                recover.WithEffect(
-                    EffecterDefOf.ConstructMetal,
-                    DeviceIndex);
-                yield return recover;
+                pack.WithProgressBarToilDelay(DeviceIndex);
+                yield return pack;
 
-                Toil pack = ToilMaker.MakeToil(
+                Toil recover = ToilMaker.MakeToil(
                     "RecoverTokraObservationDevice");
-                pack.initAction = delegate
+                recover.initAction = delegate
                 {
                     Thing recoveredDevice;
 
@@ -99,8 +133,8 @@ namespace GateRimSG1.Goauld
                         EndJobWith(JobCondition.Incompletable);
                     }
                 };
-                pack.defaultCompleteMode = ToilCompleteMode.Instant;
-                yield return pack;
+                recover.defaultCompleteMode = ToilCompleteMode.Instant;
+                yield return recover;
             }
 
             if (pawn.carryTracker?.CarriedThing

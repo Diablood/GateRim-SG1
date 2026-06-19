@@ -3,7 +3,7 @@
     <ThingDef>
         <defName>SG1_TokraObservationDevice</defName>
         <label>Tok'ra observation device</label>
-        <description>A compact Tok'ra field sensor delivered for a discreet observation operation. It must be carried to the marked peripheral position and installed there. Once its recording is complete, an operator can pack it up and carry it directly to a powered secure communicator.</description>
+        <description>A compact Tok'ra field sensor delivered for a discreet observation operation. It must be carried to the marked peripheral position and installed there. The operator remains at the deployed scope for the observation, then packs it up and carries it directly to a powered secure communicator.</description>
         <thingClass>GateRimSG1.Goauld.Thing_TokraObservationDevice</thingClass>
         <category>Item</category>
         <drawerType>MapMeshOnly</drawerType>

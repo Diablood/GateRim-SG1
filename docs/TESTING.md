@@ -1,5 +1,68 @@
 # Testing workflow
 
+## 0.3.4-dev - Visuel et déroulement du site d'observation Tok'ra
+
+Cette série vérifie le nouveau visuel ainsi que la suppression de l'attente automatique après déploiement.
+
+### Préconditions
+
+- Utiliser une sauvegarde compatible avec `0.3.0-dev` ou une version ultérieure.
+- Disposer d'un communicateur sécurisé Tok'ra alimenté et d'un colon capable d'Intellectuel.
+- Activer les outils debug uniquement pour forcer l'offre et inspecter l'état interne.
+
+### Test 1 — Visibilité et placement
+
+1. Vérifier que le point d'observation n'apparaît dans aucune catégorie Architecte.
+2. Forcer puis accepter l'opération.
+3. Vérifier que le point temporaire utilise le nouveau visuel de lunette sur trépied.
+
+Résultat attendu : le site est lisible comme équipement d'observation et reste exclusivement généré par l'opération.
+
+### Test 2 — Tâche continue
+
+1. Faire un clic droit sur le dispositif livré avec un colon valide.
+2. Vérifier qu'il transporte le dispositif jusqu'au site.
+3. Vérifier que l'installation courte ne joue plus l'effet de construction métallique ni un bruit de perceuse.
+4. Vérifier que le colon reste auprès de la lunette, lui fait face et observe pendant environ une à deux heures de jeu.
+5. À la fin, vérifier qu'il replie immédiatement le dispositif.
+6. Vérifier qu'il le rapporte directement au communicateur et transmet les données sans deuxième ordre du joueur.
+
+Résultat attendu : le flux complet se déroule en une seule tâche cohérente.
+
+### Test 3 — Interruption et reprise
+
+1. Interrompre volontairement le colon pendant l'observation.
+2. Sélectionner un colon valide et faire un clic droit sur le site installé.
+3. Utiliser `Poursuivre l'observation et transmettre les données`.
+4. Vérifier que le travail restant reprend, puis que le repli, le retour et la transmission s'enchaînent.
+
+Résultat attendu : la progression persiste et aucun timer de fond ne termine l'observation sans opérateur.
+
+### Test 4 — Sauvegarde et chargement
+
+1. Sauvegarder pendant l'observation puis recharger.
+2. Sauvegarder après le repli pendant le trajet vers le communicateur puis recharger.
+3. Vérifier qu'aucun dispositif ni site supplémentaire n'est créé.
+4. Vérifier que la réussite n'est appliquée qu'une fois après transmission.
+
+### Test 5 — Échecs
+
+1. Détruire le site pendant l'observation et vérifier un échec unique.
+2. Tester séparément l'expiration de la fenêtre sécurisée avant transmission.
+3. Vérifier qu'une interruption normale ne provoque pas l'échec tant que la fenêtre reste ouverte et que le site existe.
+
+### Compatibilité
+
+- Charger une sauvegarde `0.3.3-dev` avec un site déjà déployé et un ancien timer actif.
+- Vérifier que l'état devient un travail d'observation restant à accomplir par un colon.
+- Charger un site déjà prêt et vérifier qu'il peut être replié puis transmis normalement.
+
+### Contrôle final
+
+- Vérifier les deux actions d'observation du menu debug regroupé.
+- Revoir `Player.log` et vérifier l'absence d'erreurs XML, texture, JobDriver, réservation, Scribe, ancienne DLL ou double résolution.
+
+
 ## 0.3.3-dev - Ralentissement de la récupération de l'agent Tok'ra blessé
 
 Cette série conserve le flux validé de l'événement et vérifie uniquement le nouveau rythme de récupération après les premiers soins.

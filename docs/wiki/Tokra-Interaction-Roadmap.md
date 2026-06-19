@@ -76,7 +76,7 @@ Les futures interactions Tok'ra doivent respecter les règles suivantes :
 
 Le framework `0.3.0-dev` est stabilisé. La première refonte de contenu est mise en œuvre dans `0.3.1-dev` : le module de renseignements s'analyse désormais au communicateur avec un choix entre méthode prudente et décodage accéléré, ce dernier pouvant attirer une patrouille Goa'uld.
 
-La seconde refonte de contenu est mise en œuvre dans `0.3.2-dev` : l'observation Goa'uld utilise désormais un dispositif physique à livrer en périphérie, protéger, récupérer puis rapporter au communicateur avant la réussite.
+La seconde refonte de contenu est mise en œuvre dans `0.3.2-dev` puis affinée dans `0.3.4-dev` : l'observation Goa'uld utilise un dispositif physique à livrer en périphérie. Un colon reste désormais à la lunette pendant la veille, puis la replie et la rapporte directement au communicateur dans une seule tâche continue.
 
 La troisième refonte de contenu est mise en œuvre dans `0.3.3-dev` : après les premiers soins, l'agent Tok'ra blessé conserve une récupération symbiotique fortement affaiblie. Les soins conventionnels, le repos médical et le contrôle des blessures restent ainsi utiles jusqu'à son départ.
 

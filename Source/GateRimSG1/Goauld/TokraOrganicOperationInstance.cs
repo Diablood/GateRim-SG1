@@ -26,6 +26,8 @@ namespace GateRimSG1.Goauld
         public IntVec3 observationTargetCell = IntVec3.Invalid;
         public bool observationDeviceDeployed;
         public int observationReadyTick;
+        public int observationWorkTotalTicks;
+        public int observationWorkRemainingTicks;
         public int observationTransmissionTotalTicks;
         public int observationTransmissionRemainingTicks;
         public int observationResultVariant = -1;
@@ -95,6 +97,14 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref observationReadyTick,
                 "observationReadyTick",
+                0);
+            Scribe_Values.Look(
+                ref observationWorkTotalTicks,
+                "observationWorkTotalTicks",
+                0);
+            Scribe_Values.Look(
+                ref observationWorkRemainingTicks,
+                "observationWorkRemainingTicks",
                 0);
             Scribe_Values.Look(
                 ref observationTransmissionTotalTicks,
@@ -198,6 +208,8 @@ namespace GateRimSG1.Goauld
             observationTargetCell = IntVec3.Invalid;
             observationDeviceDeployed = false;
             observationReadyTick = 0;
+            observationWorkTotalTicks = 0;
+            observationWorkRemainingTicks = 0;
             observationTransmissionTotalTicks = 0;
             observationTransmissionRemainingTicks = 0;
             observationResultVariant = -1;

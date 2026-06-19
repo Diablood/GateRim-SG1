@@ -152,7 +152,7 @@ namespace GateRimSG1.Goauld
                         new TokraOrganicOperationDefinition(
                             TokraOrganicOperationArchetype.GoauldObservation,
                             offerDurationTicks: 120000,
-                            readyDelayTicks: 15000,
+                            readyDelayTicks: 0,
                             deadlineTicks: 120000,
                             intellectualXp: 250,
                             medicineXp: 0,

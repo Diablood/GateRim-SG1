@@ -7,6 +7,7 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 ## General rules
 
 - Before starting any task, read `docs/PROJECT_STATE.md` and treat it as the current project handoff document.
+- Also read `docs/ROADMAP.md`; it is the durable backlog for future additions, deferred improvements and cross-discussion decisions.
 - Work in small, testable milestones on dedicated Git branches.
 - Do not switch to `main`: it is not a usable working base.
 - Start new branches from the latest validated published branch or explicit `v...-dev` tag.
@@ -20,6 +21,17 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
   unless explicitly instructed not to publish.
 - Do not commit ZIP archives stored at the repository root.
 - Do not push commits, branches, or tags unless explicitly requested.
+
+## Context recovery
+
+After a discussion reaches its context limit, after starting a new discussion or whenever project continuity is uncertain, read these files before proposing work:
+
+1. `AGENTS.md`;
+2. `docs/PROJECT_STATE.md`;
+3. `docs/ROADMAP.md`;
+4. `docs/MILESTONE_PUBLICATION.md` before any commit, tag, push or wiki publication instructions.
+
+Do not rely on conversation memory for deferred work when it can be recorded in `docs/ROADMAP.md`. Add newly validated future work to that file during the current milestone.
 
 ## C# build rules
 

@@ -47,9 +47,12 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            IntVec3 targetCell
+            Thing observationPoint
                 = GameComponent_TokraOrganicOperationManager
-                    .GetObservationTargetCell(parent.Map);
+                    .GetObservationPoint(parent.Map);
+            Thing communicator
+                = GameComponent_TokraOrganicOperationManager
+                    .GetPoweredObservationCommunicator(parent.Map);
 
             yield return new FloatMenuOption(
                 label,
@@ -58,7 +61,8 @@ namespace GateRimSG1.Goauld
                     Job job = JobMaker.MakeJob(
                         jobDef,
                         parent,
-                        new LocalTargetInfo(targetCell));
+                        observationPoint,
+                        communicator);
                     job.count = 1;
                     selPawn.jobs.TryTakeOrderedJob(job);
                 });

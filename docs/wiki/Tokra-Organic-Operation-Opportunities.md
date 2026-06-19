@@ -14,12 +14,11 @@ Une cellule peut demander à la colonie de surveiller un secteur périphérique 
 
 1. Accepter la demande avec un colon capable d'Intellectuel au communicateur Tok'ra alimenté.
 2. Recevoir un dispositif d'observation compact et les coordonnées d'un point temporaire en bordure de carte.
-3. Faire récupérer le dispositif par un colon, le transporter physiquement jusqu'au point indiqué et le déployer.
-4. Protéger le dispositif pendant plusieurs heures pendant qu'il enregistre les mouvements du secteur.
-5. Lorsque les données sont prêtes, utiliser le communicateur avec un colon capable d'Intellectuel.
-6. Le colon récupère alors le dispositif, le rapporte au communicateur et transmet l'enregistrement.
+3. Faire récupérer le dispositif par un colon, le transporter physiquement jusqu'au point indiqué et l'installer comme lunette de terrain.
+4. Le même colon reste à la lunette pendant environ une à deux heures pour mener personnellement la veille.
+5. Une fois l'observation terminée, il replie immédiatement le dispositif, le rapporte au communicateur et transmet l'enregistrement dans la même tâche.
 
-La fin de l'enregistrement ne suffit pas : la réussite n'est accordée qu'après le retour du dispositif et la transmission complète. Sa destruction ou l'expiration de la fenêtre après acceptation provoque l'échec. Les résultats utilisent plusieurs formulations RP afin que les occurrences répétées ne donnent pas toujours la même conclusion.
+Si la tâche est interrompue, un clic droit sur le site installé permet de reprendre le travail restant. Aucun timer de fond ne termine l'observation sans opérateur. La réussite n'est accordée qu'après le retour du dispositif et la transmission complète. La destruction du site ou l'expiration de la fenêtre après acceptation provoque l'échec. Les résultats utilisent plusieurs formulations RP afin que les occurrences répétées ne donnent pas toujours la même conclusion.
 
 ## Analyse d'un module de renseignement
 

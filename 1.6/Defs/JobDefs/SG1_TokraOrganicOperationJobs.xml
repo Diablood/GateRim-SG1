@@ -8,12 +8,12 @@
     <JobDef>
         <defName>SG1_DeployTokraObservationDevice</defName>
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraDeployObservationDevice</driverClass>
-        <reportString>carrying and deploying a Tok'ra observation device.</reportString>
+        <reportString>installing and operating a Tok'ra observation scope.</reportString>
     </JobDef>
     <JobDef>
         <defName>SG1_TransmitTokraObservationData</defName>
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraTransmitObservationData</driverClass>
-        <reportString>packing up a Tok'ra observation device and transmitting its data.</reportString>
+        <reportString>operating or recovering a Tok'ra observation scope.</reportString>
     </JobDef>
     <!-- Compatibility-only Def for 0.3.0 saves with an active direct-module job. -->
     <JobDef>

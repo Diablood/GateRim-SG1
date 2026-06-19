@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.4-dev - Improve Tok'ra observation site visuals and field flow
+
+- Replace the generic observation-point marker with a dedicated field-scope texture so the deployed site reads clearly as Tok'ra surveillance equipment.
+- Remove the former automatic six-hour recording timer.
+- Require the assigned colon to remain at the deployed scope for a random observation period of roughly one to two in-game hours.
+- Keep deployment, observation, recovery, return to the communicator and transmission in one continuous ordered task.
+- Allow an interrupted field watch to resume directly from the installed observation site.
+- Remove the construction effect and drill-like sound from deployment and recovery; the observer now remains beside and faces the scope during the field watch.
+- Keep failure on device/site loss and on expiration of the accepted operation deadline.
+- Convert active older timed observations into persistent remaining operator-controlled work without invalidating `0.3.x-dev` saves.
+- Keep the observation site non-buildable and absent from Architect categories.
+- Raise the assembly version to `0.3.4.0` and the mod metadata version to `0.3.4-dev`.
+- Replace the outdated roadmap with a concise durable backlog and add explicit context-recovery instructions in `AGENTS.md` and `docs/PROJECT_STATE.md`.
+
 ## 0.3.3-dev - Rework organic Tok'ra wounded agent care
 
 - Keep the validated wounded-agent arrival, rescue, treatment, departure and living-exit resolution flow unchanged.
