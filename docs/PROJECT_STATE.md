@@ -1,119 +1,78 @@
 # Project state
 
-Current milestone: `0.3.5-dev - Add culture-specific pawn name generators`.
+Current milestone: `0.3.6-dev - Consolidate Goa'uld Jaffa PawnKind variants`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.4-dev`.
-- Dedicated branch: `feature/cultural-pawn-name-generators`.
-- Planned final tag after local validation: `v0.3.5-dev`.
-- Current local test archive revision: `0.3.5-dev-r2`.
+- Functional base tag: `v0.3.5-dev`.
+- Dedicated branch: `feature/goauld-jaffa-pawnkind-consolidation`.
+- Planned final tag after local validation: `v0.3.6-dev`.
+- Current local documentation archive revision: `0.3.6-dev-r2`.
+
+## Audit result
+
+The four apparently duplicated Goa'uld-aligned Jaffa PawnKinds are contextually distinct and must remain available:
+
+- `SG1_GoauldJaffaWarrior` is the standard warrior used by the faction baseline and Combat groups;
+- `SG1_GoauldJaffaGuard` is the standard guard used by Combat groups with `combatPower` `145`;
+- `SG1_GoauldSettlementJaffaWarrior` is restricted to Settlement groups and keeps `maxPerGroup` `7`;
+- `SG1_GoauldSettlementJaffaGuard` is restricted to Settlement groups, keeps `maxPerGroup` `2`, and intentionally uses `combatPower` `130`.
+
+The Settlement variants therefore are not accidental duplicates. Their dedicated `defName` values preserve validated settlement composition without changing direct raids.
 
 ## Milestone scope
 
-This milestone adds a reusable internal naming layer without adding a new race, faction, incident or gameplay reward.
+This milestone consolidates only the duplicated XML structure:
 
-The first supported cultural groups are:
-
-1. Goa'uld-aligned Jaffa;
-2. Free Jaffa;
-3. Goa'uld;
-4. Tok'ra;
-5. Tau'ri / SGC.
-
-The generated pools use original culture-inspired combinations with enough variation for recurring visitors, raids and long-running games.
-
-## Assignment model
-
-`GameComponent_CulturalPawnNameManager` scans newly generated pawns on maps, faction leaders and world pawns.
-
-The manager resolves culture from GateRim SG-1 PawnKinds and faction identity, then assigns one persistent cultural name. It stores:
-
-- processed pawn ThingIDs, preventing repeated renaming;
-- reserved generated name keys, reducing duplicate cultural names within the same save;
-- an initialization baseline, protecting pawns that already existed before the feature was enabled.
-
-Starting player pawns are protected during new-game initialization so scenario-editor names remain unchanged. Pawns already present in a pre-`0.3.5-dev` save are registered without being renamed.
-
-Newly generated visitors, raiders, settlement pawns, faction leaders and compatible debug-spawned pawns are eligible once they enter the normal map or world-pawn lifecycle.
-
-## Host and symbiote identity
-
-`GoauldSymbioteData` now stores both a persistent `symbioteName` and the captured `hostName`.
-
-For newly generated Goa'uld and Tok'ra host profiles:
-
-- the original human name is captured as the host identity;
-- the persistent symbiote receives a culture-specific Goa'uld or Tok'ra identity;
-- the visible generated pawn receives the culture-specific identity once;
-- later implantation, extraction, recruitment or faction changes do not repeatedly rename the pawn.
-
-This milestone prepares the distinction without exposing both identities in every normal player interface.
-
-## Debug requirements
-
-One grouped debug action is added:
-
-```text
-Cultural names: show samples
-```
-
-It displays examples for all current cultural groups in one report. The same report is accessible from the GateRim SG-1 settings page while advanced debug information is enabled.
-
-No additional communicator gizmo is added, and no name-debug control is visible in normal play.
+- add one abstract warrior profile and one abstract guard profile;
+- inherit the four concrete PawnKinds from those shared profiles;
+- preserve all four existing concrete `defName` values;
+- preserve faction group references, labels, xenotype, backstories, equipment, ages, combat power and settlement caps;
+- keep all cultural-name behavior introduced by `0.3.5-dev` unchanged;
+- add no new pawn, faction, incident, raid doctrine, settlement behavior or player-facing option.
 
 ## Save compatibility
 
 - `0.3.0-dev` remains the framework compatibility baseline.
-- Existing pawns in older saves are never renamed when the component first initializes.
-- The new processed-ID and reserved-name collections are saved normally from `0.3.5-dev` onward.
-- Existing persistent symbiote data receives missing internal host/symbiote identity fields without changing the pawn's current visible name.
+- No concrete PawnKind is removed or renamed.
+- Existing saves and references continue to resolve the same four concrete `defName` values.
+- No Scribe migration or C# compatibility layer is required.
 
-## Durable roadmap additions
+## Documentation scope
 
-`docs/ROADMAP.md` now records:
+Updated in this revision:
 
-- future Asgard support, trade, military aid and quest-giver presence without ordinary world settlements;
-- future pacifist Nox trade and diplomacy;
-- future hostile Unas populations and their potential as Goa'uld hosts;
-- an optional GateRim SG-1-only world preset that removes selectable vanilla factions where safe;
-- a dedicated GateRim SG-1 storyteller that never becomes mandatory for the mod's events.
+- `docs/PROJECT_STATE.md`;
+- `docs/ROADMAP.md`;
+- `docs/TESTING.md`;
+- `docs/CHANGELOG.md`;
+- `About/About.xml` and the assembly metadata for version `0.3.6-dev`.
 
-## Immediate developer-spawn and starter integration
-
-Compatible pawns now notify the relevant host initializer and the shared name manager from `PostSpawnSetup`, allowing the vanilla developer `Spawn pawn` tool to initialize and name GateRim pawns before the player inspects them, even while paused.
-
-The stranded SG-team scenario also assigns Tau'ri names when each candidate is generated for the configuration page. The player may still rename any candidate manually; the manager registers the final chosen names at game start and never overwrites them later.
-
-Generic raid generation is not a valid test for every culture: Tok'ra and Free Jaffa factions currently declare `raidsForbidden`, and the SGC expedition is a player faction. Their names must be tested through their supported visitors, faction leaders, scenario pawns or direct PawnKind spawning instead of forcing a vanilla raid.
+No player wiki page is changed because the gameplay behavior and visible content remain identical.
 
 ## Files intentionally removed
 
 None for this milestone revision.
 
-## Required local validation
+## Local validation result
 
-1. Build the assembly and confirm version `0.3.5.0`.
-2. Open the grouped cultural-name sample report from RimWorld developer mode.
-3. Enable the GateRim SG-1 advanced debug option and open the same report from mod settings.
-4. Generate multiple Goa'uld-aligned Jaffa and confirm culturally coherent single names.
-5. Generate multiple Free Jaffa and confirm a related but distinct naming style.
-6. Generate Goa'uld and Tok'ra host profiles and confirm their visible names and persistent symbiote names.
-7. Generate or encounter SGC expedition pawns and confirm Tau'ri-style first and last names.
-8. Confirm starting player pawns and pawns already present in an older save are not renamed.
-9. Confirm visitors, raids and faction leaders keep the same names after save/load.
-10. Confirm later recruitment, implantation, extraction or faction changes do not rename processed pawns.
-11. Generate several dozen samples per group and check diversity and immediate duplicates.
-12. Review `Player.log` for Name, Scribe, GameComponent, world-pawn or missing-Def errors.
+The complete targeted validation is successful:
+
+- assembly `0.3.6.0` builds and loads correctly;
+- both abstract XML parents load without becoming spawnable PawnKinds;
+- all four concrete PawnKinds generate correctly while the game is paused;
+- cultural names, xenotypes, Prim'ta, marks, weapons and armor remain correct;
+- no second naming or equipment replacement occurs after time resumes;
+- direct Goa'uld raids still use the standard Combat profiles;
+- Goa'uld settlements still use the contextual Settlement profiles and their limits;
+- save/reload preserves all four profiles;
+- `Player.log` is clean.
 
 ## Deferred follow-up
 
-The complete durable backlog remains in `docs/ROADMAP.md`. Relevant follow-ups include:
+The complete durable backlog remains in `docs/ROADMAP.md`. This maintenance milestone does not alter the future work on names, backstories, races, the GateRim-only world preset or the dedicated storyteller.
 
-- extend the naming framework when Asgard, Nox, Unas and other cultures are implemented;
-- decide where both host and symbiote names should be visible in normal play;
-- continue enriching cultural backstories and their stat modifiers;
-- use the naming foundation in the future GateRim SG-1-only world preset.
+A future documentation-focused milestone must also rewrite `About/About.xml`. Its current description is excessively long and exposes too many implementation details. The replacement should be concise, immersive and focused on the player experience and the mod's major features, following the general presentation rhythm of the Zombieland example supplied by the project author without copying its wording.
 
 ## Publication after validation
 
@@ -121,9 +80,9 @@ Follow the corrected `docs/MILESTONE_PUBLICATION.md` from the repository.
 
 Expected final publication identifiers:
 
-- commit: `0.3.5-dev - add culture-specific pawn name generators`;
-- branch: `feature/cultural-pawn-name-generators`;
-- annotated tag: `v0.3.5-dev`.
+- commit: `0.3.6-dev - consolidate Goa'uld Jaffa PawnKind variants`;
+- branch: `feature/goauld-jaffa-pawnkind-consolidation`;
+- annotated tag: `v0.3.6-dev`.
 
 ## Repository rules reminder
 

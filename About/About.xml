@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.3.5-dev</modVersion>
+    <modVersion>0.3.6-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -16,7 +16,9 @@
     <url>https://github.com/Diablood/GateRim-SG1</url>
     <description>
 GateRim SG-1 brings the Stargate SG-1 universe to RimWorld.
+
 Current development scope:
+
 - Inheritable Jaffa lineage genes
 - Prim'ta Hediff prototype for an implanted immature symbiote
 - Medical Jaffa Prim'ta implantation prototype
@@ -116,7 +118,8 @@ Current development scope:
 - Low-frequency natural Free Jaffa peaceful visitor incident using existing neutral world factions
 - Persistent hidden Tok'ra world-presence anchor reused by visitors, therapeutic offers and medical-support deliveries
 - GateRim SG-1 crafting-research tab with four vanilla-gated production projects
-- Goa'uld-aligned Jaffa pawn kinds with Combat and Settlement profiles
+- Goa'uld-aligned Jaffa pawn kinds with distinct Combat and Settlement profiles
+- Shared abstract XML profiles for Goa'uld-aligned Jaffa warriors and guards without changing the four contextual PawnKind defNames
 - Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
 - Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
 - Ma'Tok plasma-impact prototype with reduced structural damage against non-organic targets and buildings
@@ -147,7 +150,9 @@ Current development scope:
 - Goa'uld world presence and rare natural direct-assault raids enabled; advanced natural doctrines remain planned
 - Global object-category audit planned before final stabilization
 - Optional Ideology integration, expanded ceremony requirements and host transfer planned later
+
 Biotech is required for xenotype support.
+
 This is an early development version.
     </description>
 </ModMetaData>

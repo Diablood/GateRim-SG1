@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    Goa'uld-aligned Jaffa pawn kinds.
-    These humanlike servants force the inheritable Jaffa lineage xenotype,
-    receive a one-time automatic Prim'ta through the existing initializer,
-    use the vanilla weapon-tag system to spawn with a Ma'Tok staff,
-    and now use apparelRequired for deterministic modular armor loadouts.
-    Since 0.2.1-dev, they support visible Goa'uld settlements and rare natural
-    direct-assault raids.
+        Shared Goa'uld-aligned Jaffa profiles.
+
+        The concrete Combat and Settlement PawnKinds keep their existing defNames
+        and faction references. Abstract parents only centralize fields that must
+        stay identical between the contextual variants.
     -->
-    <PawnKindDef ParentName="BasePlayerPawnKind">
-        <defName>SG1_GoauldJaffaWarrior</defName>
-        <label>Goa'uld Jaffa warrior</label>
+    <PawnKindDef Name="SG1_GoauldJaffaWarriorBase" Abstract="True" ParentName="BasePlayerPawnKind">
         <race>Human</race>
         <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
@@ -48,9 +44,7 @@
         <maxGenerationAge>60</maxGenerationAge>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="BasePlayerPawnKind">
-        <defName>SG1_GoauldJaffaGuard</defName>
-        <label>Goa'uld Jaffa guard</label>
+    <PawnKindDef Name="SG1_GoauldJaffaGuardBase" Abstract="True" ParentName="BasePlayerPawnKind">
         <race>Human</race>
         <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
@@ -88,100 +82,40 @@
         <maxGenerationAge>65</maxGenerationAge>
     </PawnKindDef>
 
-    <!--
-    Settlement-only profiles.
-
-    Vanilla settlement map generation uses a point budget and weighted random
-    options. Separate capped profiles keep direct raids unchanged while making
-    the first visited Goa'uld cities visibly mixed and testable:
-
-    Per generated settlement group:
-    - 7 Jaffa warriors maximum
-    - 2 Jaffa guards maximum
-    - 1 Goa'uld host maximum (declared on SG1_GoauldHostCaste)
-
-    A settlement map may resolve more than one generated group, so the final
-    city-wide total can exceed these per-group caps while keeping Goa'uld hosts
-    visibly minoritarian.
-    -->
-    <PawnKindDef ParentName="BasePlayerPawnKind">
-        <defName>SG1_GoauldSettlementJaffaWarrior</defName>
-        <label>Goa'uld settlement Jaffa warrior</label>
-        <race>Human</race>
-        <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
-        <useFactionXenotypes>false</useFactionXenotypes>
-        <backstoryFiltersOverride>
-            <li>
-                <categoriesChildhood>
-                    <li>SG1_JaffaChildhood</li>
-                </categoriesChildhood>
-                <categoriesAdulthood>
-                    <li>SG1_GoauldJaffaAdulthood</li>
-                </categoriesAdulthood>
-            </li>
-        </backstoryFiltersOverride>
-        <xenotypeSet>
-            <xenotypeChances>
-                <SG1_Jaffa>999</SG1_Jaffa>
-            </xenotypeChances>
-        </xenotypeSet>
-        <combatPower>100</combatPower>
-        <maxPerGroup>7</maxPerGroup>
-        <isFighter>true</isFighter>
-        <initialResistanceRange>0~0</initialResistanceRange>
-        <weaponMoney>2000~2000</weaponMoney>
-        <weaponTags>
-            <li>SG1_MatokStaff</li>
-        </weaponTags>
-        <apparelMoney>0</apparelMoney>
-        <apparelRequired Inherit="False">
-            <li>SG1_JaffaLightArmor</li>
-            <li>SG1_JaffaGauntlets</li>
-            <li>SG1_JaffaReinforcedBoots</li>
-            <li>SG1_JaffaDeployedHelmet</li>
-        </apparelRequired>
-        <minGenerationAge>18</minGenerationAge>
-        <maxGenerationAge>60</maxGenerationAge>
+    <!-- Standard profiles used by basic faction membership and Combat groups. -->
+    <PawnKindDef ParentName="SG1_GoauldJaffaWarriorBase">
+        <defName>SG1_GoauldJaffaWarrior</defName>
+        <label>Goa'uld Jaffa warrior</label>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="BasePlayerPawnKind">
+    <PawnKindDef ParentName="SG1_GoauldJaffaGuardBase">
+        <defName>SG1_GoauldJaffaGuard</defName>
+        <label>Goa'uld Jaffa guard</label>
+    </PawnKindDef>
+
+    <!--
+        Settlement-only profiles.
+
+        Vanilla settlement map generation uses weighted point budgets. These
+        contextual variants preserve the validated per-group limits while leaving
+        direct raids unchanged:
+        - 7 Jaffa warriors maximum;
+        - 2 Jaffa guards maximum;
+        - 1 Goa'uld host maximum, declared on SG1_GoauldHostCaste.
+
+        The settlement guard intentionally keeps combatPower 130 instead of the
+        standard guard's 145.
+    -->
+    <PawnKindDef ParentName="SG1_GoauldJaffaWarriorBase">
+        <defName>SG1_GoauldSettlementJaffaWarrior</defName>
+        <label>Goa'uld settlement Jaffa warrior</label>
+        <maxPerGroup>7</maxPerGroup>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="SG1_GoauldJaffaGuardBase">
         <defName>SG1_GoauldSettlementJaffaGuard</defName>
         <label>Goa'uld settlement Jaffa guard</label>
-        <race>Human</race>
-        <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
-        <useFactionXenotypes>false</useFactionXenotypes>
-        <backstoryFiltersOverride>
-            <li>
-                <categoriesChildhood>
-                    <li>SG1_JaffaChildhood</li>
-                </categoriesChildhood>
-                <categoriesAdulthood>
-                    <li>SG1_GoauldJaffaAdulthood</li>
-                </categoriesAdulthood>
-            </li>
-        </backstoryFiltersOverride>
-        <xenotypeSet>
-            <xenotypeChances>
-                <SG1_Jaffa>999</SG1_Jaffa>
-            </xenotypeChances>
-        </xenotypeSet>
         <combatPower>130</combatPower>
         <maxPerGroup>2</maxPerGroup>
-        <isFighter>true</isFighter>
-        <initialResistanceRange>0~0</initialResistanceRange>
-        <weaponMoney>2000~2000</weaponMoney>
-        <weaponTags>
-            <li>SG1_MatokStaff</li>
-            <li>SG1_ZatnikTel</li>
-        </weaponTags>
-        <apparelMoney>0</apparelMoney>
-        <apparelRequired Inherit="False">
-            <li>SG1_JaffaHeavyArmor</li>
-            <li>SG1_JaffaGauntlets</li>
-            <li>SG1_JaffaReinforcedBoots</li>
-            <li>SG1_JaffaDeployedHelmet</li>
-        </apparelRequired>
-        <minGenerationAge>20</minGenerationAge>
-        <maxGenerationAge>65</maxGenerationAge>
     </PawnKindDef>
 </Defs>

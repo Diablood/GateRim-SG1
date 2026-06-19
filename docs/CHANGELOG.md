@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.6-dev - Consolidate Goa'uld Jaffa PawnKind variants
+
+- Audit the standard and Settlement Goa'uld-aligned Jaffa PawnKinds instead of treating their similar definitions as accidental duplicates.
+- Keep `SG1_GoauldJaffaWarrior` and `SG1_GoauldJaffaGuard` for basic faction membership and Combat groups.
+- Keep `SG1_GoauldSettlementJaffaWarrior` and `SG1_GoauldSettlementJaffaGuard` for Settlement groups.
+- Preserve the Settlement warrior `maxPerGroup` limit of `7` and the Settlement guard limit of `2`.
+- Preserve the standard guard `combatPower` of `145` and the intentionally lower Settlement guard value of `130`.
+- Add abstract warrior and guard XML profiles to centralize the xenotype, backstories, weapons, apparel, ages and other shared fields.
+- Preserve all four concrete `defName` values, faction references, save compatibility and cultural-name behavior.
+- Add no new pawn, faction, incident, raid doctrine, settlement behavior or player-facing option.
+- Update the durable project state, roadmap, testing workflow and version metadata.
+- Record a future concise, immersive rewrite of the oversized `About/About.xml` description without changing it in this milestone.
+- Raise the assembly version to `0.3.6.0` and the mod metadata version to `0.3.6-dev`.
+
 ## 0.3.5-dev - Add culture-specific pawn name generators
 
 

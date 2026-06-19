@@ -5,16 +5,18 @@
         <Nullable>disable</Nullable>
         <AssemblyName>GateRimSG1</AssemblyName>
         <RootNamespace>GateRimSG1</RootNamespace>
-        <Version>0.3.5.0</Version>
-        <AssemblyVersion>0.3.5.0</AssemblyVersion>
-        <FileVersion>0.3.5.0</FileVersion>
+        <Version>0.3.6.0</Version>
+        <AssemblyVersion>0.3.6.0</AssemblyVersion>
+        <FileVersion>0.3.6.0</FileVersion>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <OutputPath>..\..\1.6\Assemblies\</OutputPath>
     </PropertyGroup>
+
     <PropertyGroup>
         <RimWorldManagedDir Condition="'$(RimWorldManagedDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed</RimWorldManagedDir>
     </PropertyGroup>
+
     <ItemGroup>
         <Reference Include="Assembly-CSharp">
             <HintPath>$(RimWorldManagedDir)\Assembly-CSharp.dll</HintPath>

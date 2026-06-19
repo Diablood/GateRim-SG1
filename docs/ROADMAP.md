@@ -13,14 +13,24 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Stabiliser et publier `0.3.5-dev`
+### Consolider les variantes PawnKind Jaffa Goa'uld (`0.3.6-dev`)
 
-- [ ] Valider les générateurs de noms pour Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
-- [ ] Vérifier que les personnages déjà présents, les colons de départ et les noms choisis par le joueur ne sont jamais écrasés.
-- [ ] Vérifier les visiteurs, raids, dirigeants de faction, sauvegardes et chargements.
-- [ ] Vérifier la distinction persistante entre nom d'hôte et nom de symbiote.
-- [ ] Publier le jalon depuis `feature/cultural-pawn-name-generators` avec le tag final `v0.3.5-dev`.
-- [ ] Synchroniser et publier le wiki séparé selon la procédure corrigée de `docs/MILESTONE_PUBLICATION.md`.
+- [x] Auditer les usages de `SG1_GoauldJaffaWarrior`, `SG1_GoauldJaffaGuard`, `SG1_GoauldSettlementJaffaWarrior` et `SG1_GoauldSettlementJaffaGuard`.
+- [x] Confirmer que les variantes `Settlement` sont contextuelles et ne doivent pas être fusionnées avec les profils de raids.
+- [x] Centraliser les champs XML communs dans deux profils abstraits sans renommer les quatre Defs concrètes.
+- [x] Valider les quatre PawnKinds avec `Spawn pawn` pendant que le jeu est en pause.
+- [x] Rejouer un raid Goa'uld et générer ou visiter une colonie Goa'uld pour vérifier les deux contextes.
+- [x] Vérifier la sauvegarde, le chargement et `Player.log`.
+- [ ] Publier la branche `feature/goauld-jaffa-pawnkind-consolidation` et le tag final `v0.3.6-dev`.
+
+## Présentation du mod et métadonnées
+
+- [ ] Réécrire la description de `About/About.xml`, actuellement trop longue et trop chargée en détails techniques ou historiques.
+- [ ] Adopter une présentation courte, immersive et immédiatement compréhensible, centrée sur la promesse GateRim SG-1 et les grandes expériences de jeu.
+- [ ] Structurer la description en quelques paragraphes naturels : ambiance, menaces et factions, principales possibilités de jeu, puis dépendances indispensables.
+- [ ] Éviter les inventaires exhaustifs de fonctionnalités, les détails de jalons, les prototypes internes et les éléments de roadmap.
+- [ ] Utiliser le rythme général de la description Zombieland fournie comme référence éditoriale, sans reprendre ses formulations.
+- [ ] Harmoniser ensuite cette présentation courte avec la page Workshop et l'accueil du wiki.
 
 ## Passe visuelle globale des objets
 
@@ -55,7 +65,7 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 
 ## Noms, cultures et backstories
 
-- [ ] Stabiliser le premier générateur de noms culturels de `0.3.5-dev` pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
+- [x] Premier générateur de noms culturels publié dans `0.3.5-dev` pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
 - [ ] Étendre plus tard les générateurs aux Asgard, Nox, Unas et autres cultures ajoutées au mod.
 - [ ] Déterminer dans quelles interfaces normales afficher séparément le nom de l'hôte et celui du symbiote.
 - [ ] Revoir toutes les backstories existantes pour enrichir leur texte descriptif.

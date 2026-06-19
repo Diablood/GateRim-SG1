@@ -1,5 +1,86 @@
 # Testing workflow
 
+## 0.3.6-dev - Consolidation des PawnKinds Jaffa Goa'uld
+
+Cette série vérifie que la réduction de duplication XML ne change ni les raids, ni les colonies Goa'uld, ni les noms culturels validés dans `0.3.5-dev`.
+
+### Préconditions
+
+- Extraire le correctif sur une base propre issue du tag `v0.3.5-dev`.
+- Reconstruire complètement `GateRimSG1.dll` afin d'obtenir la version `0.3.6.0`.
+- Utiliser une nouvelle partie ou une sauvegarde compatible avec la base `0.3.x-dev`.
+- Activer le mode développeur RimWorld pour les générations ciblées.
+
+### Test 1 — Chargement des Defs héritées
+
+1. Lancer RimWorld avec GateRim SG-1 actif.
+2. Ouvrir le journal développeur dès le menu principal.
+3. Rechercher les erreurs relatives à `ParentName`, `Abstract`, `PawnKindDef`, `SG1_GoauldJaffaWarriorBase` ou `SG1_GoauldJaffaGuardBase`.
+
+Résultat attendu : les deux parents abstraits sont chargés sans devenir des PawnKinds générables, et les quatre Defs concrètes restent disponibles.
+
+### Test 2 — Génération ciblée des quatre PawnKinds
+
+1. Mettre le jeu en pause.
+2. Ouvrir `Debug actions menu` > `Spawn pawn`, puis générer successivement :
+   - `SG1_GoauldJaffaWarrior`;
+   - `SG1_GoauldJaffaGuard`;
+   - `SG1_GoauldSettlementJaffaWarrior`;
+   - `SG1_GoauldSettlementJaffaGuard`.
+3. Vérifier immédiatement leur nom culturel, leur xenotype Jaffa, leur Prim'ta et leur équipement.
+4. Reprendre le temps et vérifier qu'aucun nom ou équipement n'est remplacé une seconde fois.
+
+Résultat attendu : les profils standards et `Settlement` restent générables et identiques à leur comportement validé dans `0.3.5-dev`.
+
+### Test 3 — Différences intentionnelles entre profils
+
+1. Vérifier en jeu que les guerriers standards et de colonie portent l'armure légère, les gantelets, les bottes renforcées, le casque déployé et un Ma'Tok.
+2. Vérifier en jeu que les gardes standards et de colonie portent l'armure lourde, les gantelets, les bottes renforcées, le casque déployé et disposent des profils d'armes Ma'Tok/Zat.
+3. Ouvrir `1.6/Defs/PawnKindDefs/SG1_GoauldAlignedJaffa.xml` dans Cursor.
+4. Vérifier que `SG1_GoauldJaffaGuardBase` conserve `combatPower` `145`.
+5. Vérifier que `SG1_GoauldSettlementJaffaGuard` remplace cette valeur par `130` et conserve `maxPerGroup` `2`.
+6. Vérifier que `SG1_GoauldSettlementJaffaWarrior` conserve `maxPerGroup` `7`.
+
+Résultat attendu : seuls les champs communs sont hérités; les différences contextuelles restent explicites dans le fichier et intactes en jeu.
+
+### Test 4 — Raid Goa'uld
+
+1. Ouvrir `Debug actions menu` > `Do incident (map)` > `controlled Goa'uld Jaffa test raid`, ou laisser survenir le raid naturel déjà validé.
+2. Vérifier que le groupe apparaît normalement et utilise les profils standards de guerrier et de garde.
+3. Contrôler les armes, armures, Prim'ta, marques et noms culturels.
+4. Vérifier l'absence de régression dans le comportement du raid.
+
+Résultat attendu : les groupes `Combat` restent inchangés et ne dépendent pas des limites `Settlement`.
+
+### Test 5 — Colonie Goa'uld
+
+1. Générer ou visiter une colonie Goa'uld.
+2. Vérifier que les profils `SG1_GoauldSettlementJaffaWarrior` et `SG1_GoauldSettlementJaffaGuard` sont utilisés dans le contexte `Settlement`.
+3. Vérifier que la colonie reste composée majoritairement de Jaffa avec une présence Goa'uld minoritaire.
+4. Vérifier qu'aucune limite de groupe n'est perdue après l'héritage XML.
+
+Résultat attendu : la composition validée des colonies est conservée sans modifier les raids directs.
+
+### Test 6 — Sauvegarde, chargement et journal
+
+1. Sauvegarder avec les quatre PawnKinds présents sur une carte.
+2. Quitter complètement RimWorld puis recharger la sauvegarde.
+3. Vérifier que les personnages, noms, équipements, Prim'ta et marques restent inchangés.
+4. Contrôler `Player.log`.
+
+Résultat attendu : aucune erreur XML, Def, faction, PawnKind, nom culturel, sauvegarde ou ancienne DLL.
+
+### Contrôle final
+
+- Confirmer la version d'assembly `0.3.6.0` et la version de mod `0.3.6-dev`.
+- Confirmer que les quatre `defName` concrets n'ont pas changé.
+- Confirmer qu'aucun nouveau contenu joueur, incident ou équilibrage n'a été introduit.
+- Confirmer que `Player.log` est propre.
+
+### Validation locale
+
+Validation complète réussie : chargement XML, génération immédiate des quatre PawnKinds, différences contextuelles, raid Goa'uld, colonie Goa'uld, sauvegarde/rechargement et `Player.log`. Aucun écart ni régression constaté.
+
 ## 0.3.5-dev - Générateurs de noms culturels
 
 Cette série vérifie l'attribution unique de noms cohérents aux nouveaux personnages GateRim SG-1, sans renommer les personnages déjà présents ou nommés par le joueur.
