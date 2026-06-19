@@ -10,16 +10,16 @@ plus sensible.
 
 ## Observation discrète
 
-Une cellule peut demander à la colonie de surveiller une activité Goa'uld
-inhabituelle.
+Une cellule peut demander à la colonie de surveiller un secteur périphérique où une activité Goa'uld inhabituelle a été repérée.
 
-1. Accepter la demande avec un colon capable d'Intellectuel au communicateur
-   Tok'ra alimenté.
-2. Laisser la période d'observation se terminer.
-3. Transmettre le rapport avant la fermeture du canal sécurisé.
+1. Accepter la demande avec un colon capable d'Intellectuel au communicateur Tok'ra alimenté.
+2. Recevoir un dispositif d'observation compact et les coordonnées d'un point temporaire en bordure de carte.
+3. Faire récupérer le dispositif par un colon, le transporter physiquement jusqu'au point indiqué et le déployer.
+4. Protéger le dispositif pendant plusieurs heures pendant qu'il enregistre les mouvements du secteur.
+5. Lorsque les données sont prêtes, utiliser le communicateur avec un colon capable d'Intellectuel.
+6. Le colon récupère alors le dispositif, le rapporte au communicateur et transmet l'enregistrement.
 
-Un rapport utile améliore qualitativement la confiance Tok'ra et accorde un peu
-d'expérience en Intellectuel.
+La fin de l'enregistrement ne suffit pas : la réussite n'est accordée qu'après le retour du dispositif et la transmission complète. Sa destruction ou l'expiration de la fenêtre après acceptation provoque l'échec. Les résultats utilisent plusieurs formulations RP afin que les occurrences répétées ne donnent pas toujours la même conclusion.
 
 ## Analyse d'un module de renseignement
 

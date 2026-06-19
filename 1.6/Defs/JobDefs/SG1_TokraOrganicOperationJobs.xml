@@ -5,6 +5,16 @@
         <driverClass>GateRimSG1.Goauld.JobDriver_TokraOperateSecureCommunicator</driverClass>
         <reportString>handling a discreet Tok'ra operation request.</reportString>
     </JobDef>
+    <JobDef>
+        <defName>SG1_DeployTokraObservationDevice</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraDeployObservationDevice</driverClass>
+        <reportString>carrying and deploying a Tok'ra observation device.</reportString>
+    </JobDef>
+    <JobDef>
+        <defName>SG1_TransmitTokraObservationData</defName>
+        <driverClass>GateRimSG1.Goauld.JobDriver_TokraTransmitObservationData</driverClass>
+        <reportString>packing up a Tok'ra observation device and transmitting its data.</reportString>
+    </JobDef>
     <!-- Compatibility-only Def for 0.3.0 saves with an active direct-module job. -->
     <JobDef>
         <defName>SG1_SecureTokraOrganicDeadDrop</defName>

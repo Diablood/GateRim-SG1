@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.1-dev`
+> Dernière révision : `0.3.2-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -94,6 +94,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
+| Opérations Tok'ra organiques | Framework récurrent avec observation de terrain, analyse de renseignements, accueil d'un agent blessé et remise médicale | 0.2.48-dev à 0.3.2-dev |
 
 ## Prévu
 

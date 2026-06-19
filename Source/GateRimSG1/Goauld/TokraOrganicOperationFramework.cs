@@ -167,7 +167,8 @@ namespace GateRimSG1.Goauld
                             neutralWeight: 1.00f,
                             cooperativeWeight: 0.85f,
                             trustedWeight: 0.35f,
-                            objectiveThingDefName: null,
+                            objectiveThingDefName:
+                                "SG1_TokraObservationDevice",
                             acceptActionKey:
                                 "GR_TokraOrganicOperation_FloatMenuAcceptObservation",
                             completeActionKey:

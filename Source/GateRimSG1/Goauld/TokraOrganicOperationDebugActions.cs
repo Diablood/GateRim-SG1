@@ -27,6 +27,32 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Tok'ra ops: deploy observation device",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void DeployObservationDevice()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugDeployObservationDevice(Find.CurrentMap),
+                "GR_TokraObservation_DebugDeployed");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: finish observation recording",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void FinishObservationRecording()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugMakeObservationReady(Find.CurrentMap),
+                "GR_TokraObservation_DebugReady");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Tok'ra ops: force intelligence offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

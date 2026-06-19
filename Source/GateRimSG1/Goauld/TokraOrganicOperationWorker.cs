@@ -58,10 +58,7 @@ namespace GateRimSG1.Goauld
                 notifyPlayer: false);
 
             return manager.ActiveState == TokraOrganicOperationState.Ready
-                && manager.TryResolveActiveOperation(
-                    TokraOrganicOperationOutcome.Succeeded,
-                    operatorPawn,
-                    null);
+                && manager.TryStartObservationTransmission(operatorPawn);
         }
     }
 

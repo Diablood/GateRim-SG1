@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraObservationDevice.label>dispositif d'observation Tok'ra</SG1_TokraObservationDevice.label>
+    <SG1_TokraObservationDevice.description>Un capteur de terrain Tok'ra compact livré pour une opération d'observation discrète. Il doit être transporté jusqu'à la position périphérique indiquée et y être installé. Une fois l'enregistrement terminé, un opérateur peut le replier et le rapporter directement à un communicateur sécurisé alimenté.</SG1_TokraObservationDevice.description>
+    <SG1_TokraObservationPoint.label>point d'observation Tok'ra</SG1_TokraObservationPoint.label>
+    <SG1_TokraObservationPoint.description>Une position périphérique retenue par la cellule Tok'ra pour une veille discrète. Une fois le capteur installé, le site enregistre l'activité Goa'uld proche jusqu'à ce qu'un opérateur le replie et rapporte ses données au communicateur.</SG1_TokraObservationPoint.description>
+</LanguageData>

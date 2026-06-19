@@ -1,109 +1,97 @@
 # Project state
 
-Current milestone: `0.3.1-dev - Rework organic Tok'ra intelligence operation`.
+Current milestone: `0.3.2-dev - Rework organic Tok'ra observation operation`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.0-dev`.
-- Dedicated branch: `feature/tokra-intelligence-operation-rework`.
-- Planned final tag after local validation: `v0.3.1-dev`.
-- Current local test archive revision: `0.3.1-dev-r1`.
+- Functional base tag: `v0.3.1-dev`.
+- Dedicated branch: `feature/tokra-observation-operation-rework`.
+- Planned final tag after local validation: `v0.3.2-dev`.
+- Current local test archive revision: `0.3.2-dev-r3`.
 
 ## Milestone scope
 
-This milestone reworks the existing recurring intelligence-module operation without adding a fifth archetype.
+This milestone reworks the existing recurring Goa'uld-observation archetype without adding a fifth organic operation.
 
-The validated `0.3.0-dev` framework remains the lifecycle and persistence base. The intelligence worker now adds a richer operation-specific flow:
+The `0.3.0-dev` framework remains the lifecycle and persistence base. The observation worker now uses a physical field-operation flow:
 
-1. the Tok'ra cell offers encrypted intelligence through the communicator;
-2. acceptance delivers one operation-only module through the delivery-zone/communicator/map-edge placement order;
-3. an Intellectual-capable colon uses the powered Tok'ra communicator, never a research bench or the module directly;
-4. the player chooses cautious analysis or accelerated decoding;
-5. work can be interrupted and resumed without losing progress;
-6. success removes the module, grants XP, improves trust and uses a contextual RP result variant;
-7. accelerated decoding can leak interference and queue a delayed small Goa'uld signal patrol.
+1. acceptance delivers one operation-only Tok'ra observation device;
+2. a temporary observation point is selected near the map perimeter;
+3. an Intellectual-capable colon retrieves the device, carries it to that point and installs it as a field station;
+4. the installed station records for several in-game hours while remaining exposed to normal map danger;
+5. once the data is ready, an Intellectual-capable colon starts recovery directly from the field station;
+6. that colon packs up the sensor, carries it straight to the powered communicator and transmits the recording in the same continuous job;
+7. success is applied only after the final transmission completes.
 
 ## Player-facing rules
 
-- The intelligence module is generated only by the operation.
-- The selected colon physically retrieves the module and carries it to the powered Tok'ra communicator before analysis starts.
-- Normal communicator inspection is compact: only the channel state, the active organic operation and completed unique mission state are shown; the full catalog remains debug-only.
-- It is not constructible and does not appear in any Architect category.
-- Cautious analysis takes longer and grants `350` Intellectual XP.
-- Accelerated decoding is shorter and grants `500` Intellectual XP, but can attract a nearby Goa'uld patrol.
-- The patrol consequence does not cancel an already completed intelligence success.
-- Ignoring the offer remains consequence-free.
-- Losing the accepted module or missing the deadline remains an accepted failure.
-- Success letters use several context-compatible variants and avoid immediate repetition when possible.
+- The observation device and temporary point are generated only by the operation.
+- Neither appears in the Architect menu or can be built by the player.
+- Deployment begins by right-clicking the delivered device with an Intellectual-capable colon.
+- The deployment job physically carries the device to the marked peripheral point and installs it instead of dropping it as a loose item.
+- Interrupted transport, deployment, recovery or transmission can be resumed; the communicator is used only to resume after the sensor has already been packed up.
+- Destroying or losing the accepted device produces one accepted failure.
+- Exceeding the operation deadline after acceptance produces one accepted failure.
+- The recording finishing by itself does not grant success.
+- Success requires the field station to be packed up on site, carried directly to a powered Tok'ra communicator and transmitted.
+- Successful occurrences use several RP result variants and avoid immediate repetition when possible.
 
 ## Communicator information boundary
 
 Normal play shows only:
 
 - the currently offered, accepted or active organic operation;
-- durable completed progress from unique mission chains when it remains relevant to the player.
+- the observation phase relevant to the player: awaiting deployment, recording, data ready or interrupted transmission;
+- durable completed progress from unique mission chains when it remains relevant.
 
-Normal play must not reveal:
-
-- the full operation catalogue;
-- future archetypes or hidden scheduling;
-- selection weights or anti-repetition internals;
-- exact persisted work ticks;
-- the interference roll or queued incident internals;
-- technical history and diagnostics.
-
-The developer report may expose all of these technical states.
+Normal play must not reveal internal timers, selection weights, saved object identifiers, result-variant indices or framework history. The developer report may expose all technical state.
 
 ## Save compatibility
 
-- `0.3.0-dev` is the compatibility baseline and remains supported.
-- New intelligence fields load with safe defaults.
-- An accepted `0.3.0-dev` intelligence module can continue by selecting a method at the communicator.
-- The former direct-module JobDef and a compatibility JobDriver are retained only to load a save made while that old job was active; the job stops cleanly and directs the player to the communicator.
-- The two obsolete direct-interaction ThingComp classes are removed because the module Def no longer instantiates them.
+- `0.3.0-dev` remains the compatibility baseline.
+- New observation fields load with safe defaults.
+- A `0.3.1-dev` observation offer remains acceptable.
+- A `0.3.1-dev` observation already accepted under the old abstract timer is converted once into the new delivered-device workflow instead of being lost.
+- Resolved operations and the other three archetypes retain their existing persistence.
 
 ## Debug requirements
 
-The existing single communicator gizmo remains the main debug surface. Its menu and the RimWorld developer actions must allow:
+The existing single communicator debug gizmo remains the main debug surface. Its menu and the RimWorld developer actions must allow:
 
-- forcing the intelligence offer;
-- accepting and delivering the module;
-- choosing cautious analysis;
-- choosing accelerated decoding;
-- forcing detectable interference and the delayed patrol;
-- advancing/finishing, failing or expiring the active operation;
-- inspecting the complete persisted intelligence state;
+- forcing and accepting the observation offer;
+- forcing device deployment;
+- completing the recording period;
+- forcing success, failure or expiration;
+- inspecting the complete persisted observation state;
 - resetting the framework.
 
-No intelligence debug control may be visible in normal play.
+No observation debug control may be visible in normal play.
 
 ## Files intentionally removed
 
-- `Source/GateRimSG1/Goauld/CompProperties_TokraOrganicDeadDrop.cs`;
-- `Source/GateRimSG1/Goauld/Comp_TokraOrganicDeadDrop.cs`.
-
-They provided the obsolete direct right-click interaction on the module. The physical module class, Def and compatibility JobDriver remain.
+None for this milestone revision.
 
 ## Required local validation
 
-1. Delete the two obsolete ThingComp files before extracting the milestone ZIP.
-2. Build the assembly and confirm version `0.3.1.0`.
-3. Confirm the intelligence module is absent from every Architect category.
-4. Validate delivery and both analysis methods through the powered communicator only.
-5. Interrupt and resume both methods, including across save/reload.
-6. Validate cautious XP, accelerated XP and module cleanup.
-7. Force interference and verify a small delayed Goa'uld patrol is queued and later arrives.
-8. Confirm the intelligence success remains acquired when the patrol arrives.
-9. Repeat successes to review contextual variants and immediate-repeat prevention.
-10. Confirm the normal status report exposes only the current operation while the debug report shows full technical state.
-11. Validate the compatibility redirect with the legacy JobDef through debug/save inspection if practical.
-12. Run the durable `0.3.1-dev` checks in `docs/TESTING.md` and review `Player.log`.
+1. Build the assembly and confirm version `0.3.2.0`.
+2. Start from a new game or a save created with `0.3.0-dev`/`0.3.1-dev`.
+3. Confirm the device and temporary point are absent from every Architect category.
+4. Accept the offer and validate delivery plus peripheral point selection.
+5. Make a colon retrieve, carry and deploy the device.
+6. Interrupt and resume deployment, including across save/reload.
+7. Confirm the recording finishes without granting success.
+8. Start the final action directly from the observation site and validate packing, return and transmission as one continuous job.
+9. Interrupt recovery before packing, during the return trip and during transmission, including across save/reload.
+10. Validate success only after transmission, device cleanup, XP/trust feedback and RP result variants.
+11. Validate destruction and deadline failures without duplicate consequences.
+12. Compare the compact normal communicator report with the complete debug report.
+13. Run the durable `0.3.2-dev` checks in `docs/TESTING.md` and review `Player.log`.
 
 ## Deferred follow-up
 
-- Rework the Goa'uld observation operation into a more immersive activity.
 - Slow the wounded Tok'ra agent's recovery so colony care remains mechanically important.
-- Continue consolidating other device-specific debug actions into one grouped menu when several exist on the same object.
+- Continue consolidating device-specific debug actions into grouped menus when several exist on the same object.
+- Add further distinct operation archetypes only after the existing four remain stable on the shared framework.
 
 ## Publication after validation
 
@@ -111,9 +99,9 @@ Follow `docs/MILESTONE_PUBLICATION.md`.
 
 Expected final publication identifiers:
 
-- commit: `0.3.1-dev - rework organic Tok'ra intelligence operation`;
-- branch: `feature/tokra-intelligence-operation-rework`;
-- annotated tag: `v0.3.1-dev`.
+- commit: `0.3.2-dev - rework organic Tok'ra observation operation`;
+- branch: `feature/tokra-observation-operation-rework`;
+- annotated tag: `v0.3.2-dev`.
 
 ## Repository rules reminder
 

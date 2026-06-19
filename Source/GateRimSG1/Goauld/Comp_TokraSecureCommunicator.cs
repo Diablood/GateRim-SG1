@@ -2660,6 +2660,24 @@ namespace GateRimSG1.Goauld
                             "GR_TokraOrganicOperation_DebugForced");
                     }),
                 new FloatMenuOption(
+                    "GR_TokraObservation_DebugMenuDeploy".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugDeployObservationDevice(map),
+                            "GR_TokraObservation_DebugDeployed");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraObservation_DebugMenuReady".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugMakeObservationReady(map),
+                            "GR_TokraObservation_DebugReady");
+                    }),
+                new FloatMenuOption(
                     "GR_TokraOrganicOperation_DebugMenuForceIntelligence"
                         .Translate(),
                     delegate

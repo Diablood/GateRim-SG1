@@ -21,6 +21,15 @@ namespace GateRimSG1.Goauld
         public bool resolutionApplied;
 
         public Thing objective;
+
+        public Thing observationPointMarker;
+        public IntVec3 observationTargetCell = IntVec3.Invalid;
+        public bool observationDeviceDeployed;
+        public int observationReadyTick;
+        public int observationTransmissionTotalTicks;
+        public int observationTransmissionRemainingTicks;
+        public int observationResultVariant = -1;
+
         public TokraIntelligenceAnalysisMethod intelligenceAnalysisMethod;
         public int intelligenceWorkTotalTicks;
         public int intelligenceWorkRemainingTicks;
@@ -71,6 +80,35 @@ namespace GateRimSG1.Goauld
                 false);
 
             Scribe_References.Look(ref objective, "objective");
+
+            Scribe_References.Look(
+                ref observationPointMarker,
+                "observationPointMarker");
+            Scribe_Values.Look(
+                ref observationTargetCell,
+                "observationTargetCell",
+                IntVec3.Invalid);
+            Scribe_Values.Look(
+                ref observationDeviceDeployed,
+                "observationDeviceDeployed",
+                false);
+            Scribe_Values.Look(
+                ref observationReadyTick,
+                "observationReadyTick",
+                0);
+            Scribe_Values.Look(
+                ref observationTransmissionTotalTicks,
+                "observationTransmissionTotalTicks",
+                0);
+            Scribe_Values.Look(
+                ref observationTransmissionRemainingTicks,
+                "observationTransmissionRemainingTicks",
+                0);
+            Scribe_Values.Look(
+                ref observationResultVariant,
+                "observationResultVariant",
+                -1);
+
             Scribe_Values.Look(
                 ref intelligenceAnalysisMethod,
                 "intelligenceAnalysisMethod",
@@ -156,6 +194,13 @@ namespace GateRimSG1.Goauld
             readyNotificationSent = false;
             resolutionApplied = false;
             objective = null;
+            observationPointMarker = null;
+            observationTargetCell = IntVec3.Invalid;
+            observationDeviceDeployed = false;
+            observationReadyTick = 0;
+            observationTransmissionTotalTicks = 0;
+            observationTransmissionRemainingTicks = 0;
+            observationResultVariant = -1;
             intelligenceAnalysisMethod = TokraIntelligenceAnalysisMethod.None;
             intelligenceWorkTotalTicks = 0;
             intelligenceWorkRemainingTicks = 0;

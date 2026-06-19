@@ -1,5 +1,102 @@
 # Testing workflow
 
+## 0.3.2-dev - Refonte de l'opération d'observation Tok'ra
+
+Cette section remplace les anciens sous-tests d'observation abstraite présents plus bas dans le document. Les autres archétypes conservent leurs procédures actuelles.
+
+### Préconditions
+
+- Utiliser une sauvegarde créée avec `0.3.0-dev`, `0.3.1-dev` ou une nouvelle partie.
+- Disposer d'un communicateur sécurisé Tok'ra alimenté.
+- Disposer d'un colon capable de travail Intellectuel.
+- Activer le mode développeur RimWorld ou l'option avancée GateRim SG-1 uniquement pour les contrôles techniques.
+
+### Test 1 — Objets réservés à l'opération
+
+1. Ouvrir toutes les catégories d'Architecte et rechercher le dispositif ainsi que le point d'observation Tok'ra.
+2. Vérifier qu'aucun des deux ne peut être construit.
+3. Forcer l'offre d'observation depuis le menu debug unique du communicateur.
+4. Accepter normalement l'offre.
+5. Vérifier qu'un seul dispositif apparaît selon l'ordre zone de livraison, communicateur, puis fallback valide.
+6. Vérifier qu'un seul point temporaire apparaît en extérieur, près de la périphérie et sur une cellule accessible.
+
+Résultat attendu : les deux objets sont exclusivement générés par l'opération et aucun doublon n'apparaît.
+
+### Test 2 — Transport et déploiement
+
+1. Sélectionner un colon incapable d'Intellectuel et cliquer droit sur le dispositif.
+2. Vérifier la raison courte de blocage.
+3. Sélectionner un colon capable d'Intellectuel et choisir l'action de déploiement.
+4. Vérifier qu'il rejoint le dispositif, le prend, se rend physiquement au point indiqué puis effectue un travail d'installation.
+5. Vérifier que le dispositif porté est consommé par l'installation et que le point devient la station d'observation active, sans objet lâché au sol.
+6. Interrompre successivement avant le ramassage, pendant le transport et pendant le travail d'installation.
+7. Reprendre l'action depuis le dispositif à chaque fois.
+8. Sauvegarder pendant le transport, recharger et terminer l'installation.
+
+Résultat attendu : la progression ne se résout pas instantanément, le dispositif est physiquement transporté puis installé comme station de terrain ; aucun objet libre n'est jeté au sol à la fin du travail.
+
+### Test 3 — Enregistrement sur le terrain
+
+1. Après le déploiement, consulter le communicateur en mode normal.
+2. Vérifier qu'il indique seulement que l'observation est en cours, sans révéler les ticks ou états internes.
+3. Laisser la durée d'enregistrement se terminer ou utiliser `Observation : terminer l'enregistrement` dans le menu debug.
+4. Vérifier qu'un message annonce les données prêtes.
+5. Vérifier qu'aucune réussite, aucun XP et aucune amélioration de confiance ne sont encore appliqués.
+6. Sauvegarder avant puis après la fin de l'enregistrement et recharger les deux états.
+
+Résultat attendu : le dispositif reste présent, l'état `données prêtes` persiste et la réussite attend toujours la transmission finale.
+
+### Test 4 — Récupération et transmission
+
+1. Lorsque les données sont prêtes, sélectionner un colon capable d'Intellectuel et faire un clic droit directement sur la station d'observation.
+2. Choisir `Replier le dispositif et transmettre les données`.
+3. Vérifier que le colon travaille sur place pour replier le capteur, récupère l'objet portable puis part immédiatement vers le communicateur sans détour préalable par la base.
+4. Vérifier que la transmission ne commence qu'une fois le dispositif revenu au communicateur.
+5. Interrompre avant le repli, pendant le trajet retour puis pendant la transmission.
+6. Après un repli déjà effectué mais interrompu, reprendre depuis le communicateur avec le dispositif portable.
+7. Sauvegarder pendant le trajet retour et pendant la transmission, recharger puis terminer.
+8. Vérifier que le succès est appliqué une seule fois après la fin du travail.
+
+Résultat attendu : le flux normal part du site d'observation, le repli, le retour et la transmission forment une tâche continue ; le dispositif disparaît après la transmission, le colon reçoit l'XP prévue, la confiance s'améliore qualitativement et le canal revient à son état RP générique.
+
+### Test 5 — Variantes RP et répétition
+
+1. Réaliser au moins trois occurrences réussies en réinitialisant proprement le framework entre elles si nécessaire.
+2. Lire chaque résultat sans consulter le rapport debug.
+3. Vérifier que plusieurs formulations cohérentes peuvent apparaître et que la même variante n'est pas répétée immédiatement lorsque d'autres variantes sont disponibles.
+
+### Test 6 — Destruction, expiration et double résolution
+
+1. Accepter une nouvelle observation et détruire le dispositif avant le déploiement.
+2. Refaire le test en le détruisant pendant l'enregistrement.
+3. Vérifier dans chaque cas un seul échec et le nettoyage du point temporaire.
+4. Refaire l'opération et laisser dépasser la fenêtre après acceptation.
+5. Vérifier un seul échec d'expiration.
+6. Après chaque résolution, utiliser les actions de réussite et d'échec forcées et confirmer qu'aucune conséquence supplémentaire n'est appliquée.
+
+### Test 7 — Affichage normal et debug
+
+1. Désactiver simultanément le mode développeur et l'option avancée GateRim SG-1.
+2. Consulter le communicateur à chaque phase : offre, attente de déploiement, enregistrement, données prêtes et transmission interrompue.
+3. Vérifier qu'il ne montre que l'état utile au joueur et les éventuelles missions uniques durables.
+4. Réactiver le debug et ouvrir `Afficher l'état du framework`.
+5. Vérifier la présence des références d'objet, cellule cible, ticks, progression et variante de résultat.
+6. Vérifier qu'un seul gizmo debug du communicateur regroupe les actions d'observation.
+
+### Test 8 — Compatibilité `0.3.1-dev`
+
+1. Charger une sauvegarde `0.3.1-dev` avec une offre d'observation encore proposée et l'accepter.
+2. Vérifier qu'elle démarre directement le nouveau flux physique.
+3. Charger séparément une sauvegarde `0.3.1-dev` avec une observation déjà acceptée sous l'ancien minuteur abstrait.
+4. Laisser passer le contrôle du framework.
+5. Vérifier qu'un dispositif et un point sont créés une seule fois et que l'opération peut continuer normalement.
+
+### Contrôle final
+
+- Rejouer rapidement les opérations de renseignements, agent blessé et remise médicale afin de confirmer l'absence de régression.
+- Revoir `Player.log` et vérifier notamment l'absence de `Invalid count: -1`, d'erreurs XML, Scribe, réservation, transport, placement, destruction ou double résolution.
+
+
 ## 0.3.1-dev - Refonte de l'opération de renseignements Tok'ra
 
 ### Préconditions

@@ -15,7 +15,16 @@ namespace GateRimSG1.Goauld
     public class GameComponent_TokraOrganicOperationManager : GameComponent
     {
         internal const int StateCheckIntervalTicks = 2500;
+        internal const int ObservationStateCheckIntervalTicks = 250;
         internal const int MedicalSupplyStateCheckIntervalTicks = 250;
+        internal const int ObservationDeploymentWorkTicks = 1250;
+        internal const int ObservationDurationTicks = 15000;
+        internal const int ObservationRecoveryWorkTicks = 1000;
+        internal const int ObservationTransmissionWorkTicks = 2500;
+        private const string ObservationDeploymentJobDefName
+            = "SG1_DeployTokraObservationDevice";
+        private const string ObservationTransmissionJobDefName
+            = "SG1_TransmitTokraObservationData";
         private const int InitialMinimumDelayTicks = 180000;
         private const int InitialMaximumDelayTicks = 360000;
         private const int WoundedAgentStableDurationTicks = 5000;
@@ -47,6 +56,7 @@ namespace GateRimSG1.Goauld
         private int completedOperationCount;
         private int failedOperationCount;
         private int expiredOfferCount;
+        private int lastObservationResultVariant = -1;
         private int lastIntelligenceResultVariant = -1;
 
         private TokraOrganicOperationArchetype activeArchetype
@@ -113,6 +123,48 @@ namespace GateRimSG1.Goauld
         {
             get => activeOperation.objective;
             set => activeOperation.objective = value;
+        }
+
+        private Thing observationPointMarker
+        {
+            get => activeOperation.observationPointMarker;
+            set => activeOperation.observationPointMarker = value;
+        }
+
+        private IntVec3 observationTargetCell
+        {
+            get => activeOperation.observationTargetCell;
+            set => activeOperation.observationTargetCell = value;
+        }
+
+        private bool observationDeviceDeployed
+        {
+            get => activeOperation.observationDeviceDeployed;
+            set => activeOperation.observationDeviceDeployed = value;
+        }
+
+        private int observationReadyTick
+        {
+            get => activeOperation.observationReadyTick;
+            set => activeOperation.observationReadyTick = value;
+        }
+
+        private int observationTransmissionTotalTicks
+        {
+            get => activeOperation.observationTransmissionTotalTicks;
+            set => activeOperation.observationTransmissionTotalTicks = value;
+        }
+
+        private int observationTransmissionRemainingTicks
+        {
+            get => activeOperation.observationTransmissionRemainingTicks;
+            set => activeOperation.observationTransmissionRemainingTicks = value;
+        }
+
+        private int observationResultVariant
+        {
+            get => activeOperation.observationResultVariant;
+            set => activeOperation.observationResultVariant = value;
         }
 
         private TokraIntelligenceAnalysisMethod intelligenceAnalysisMethod
@@ -281,6 +333,10 @@ namespace GateRimSG1.Goauld
                 "tokraOrganicExpiredOfferCount",
                 0);
             Scribe_Values.Look(
+                ref lastObservationResultVariant,
+                "tokraOrganicLastObservationResultVariant",
+                -1);
+            Scribe_Values.Look(
                 ref lastIntelligenceResultVariant,
                 "tokraOrganicLastIntelligenceResultVariant",
                 -1);
@@ -309,7 +365,9 @@ namespace GateRimSG1.Goauld
 
             int stateCheckInterval = IsMedicalSupplyStateActive()
                 ? MedicalSupplyStateCheckIntervalTicks
-                : StateCheckIntervalTicks;
+                : IsObservationStateActive()
+                    ? ObservationStateCheckIntervalTicks
+                    : StateCheckIntervalTicks;
             nextStateCheckTick = currentTick + stateCheckInterval;
             TickDepartingMedicalSupplyLiaison();
 
@@ -377,6 +435,13 @@ namespace GateRimSG1.Goauld
                 key = definition.AcceptActionKey;
             }
             else if (manager.activeArchetype
+                    == TokraOrganicOperationArchetype.GoauldObservation
+                && manager.observationTransmissionTotalTicks > 0
+                && manager.observationTransmissionRemainingTicks > 0)
+            {
+                key = "GR_TokraObservation_ResumeTransmissionAction";
+            }
+            else if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.DeadDropRecovery
                 && manager.intelligenceAnalysisMethod
                     != TokraIntelligenceAnalysisMethod.None)
@@ -420,6 +485,31 @@ namespace GateRimSG1.Goauld
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            if (manager.activeArchetype
+                == TokraOrganicOperationArchetype.GoauldObservation)
+            {
+                if (!manager.HasValidObservationDevice())
+                {
+                    return "GR_TokraObservation_DeviceLost"
+                        .Translate()
+                        .ToString();
+                }
+
+                if (manager.operationDeadlineTick > 0
+                    && currentTick >= manager.operationDeadlineTick)
+                {
+                    return "GR_TokraOrganicOperation_ObservationExpired"
+                        .Translate()
+                        .ToString();
+                }
+
+                return manager.activeState == TokraOrganicOperationState.Ready
+                    ? null
+                    : "GR_TokraObservation_DataNotReady"
+                        .Translate()
+                        .ToString();
+            }
 
             if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.DeadDropRecovery)
@@ -506,6 +596,187 @@ namespace GateRimSG1.Goauld
             return manager != null
                 && manager.HasCommunicatorInteractionForMap(map)
                 && manager.TryHandleInteraction(map, operatorPawn);
+        }
+
+        public static IntVec3 GetObservationTargetCell(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                    && manager.IsActiveForMap(map)
+                    && manager.activeArchetype
+                        == TokraOrganicOperationArchetype.GoauldObservation
+                ? manager.observationTargetCell
+                : IntVec3.Invalid;
+        }
+
+        public static string GetObservationDeploymentDisabledReason(
+            Thing device,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null)
+            {
+                return "GR_TokraOrganicOperation_ManagerUnavailable"
+                    .Translate()
+                    .ToString();
+            }
+
+            return manager.GetObservationDeploymentDisabledReasonInternal(
+                device,
+                operatorPawn);
+        }
+
+        public static bool CanContinueObservationDeployment(
+            Thing device,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.CanContinueObservationDeploymentInternal(
+                    device,
+                    operatorPawn);
+        }
+
+        public static bool NotifyObservationDeviceDeployed(
+            Thing device,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.NotifyObservationDeviceDeployedInternal(
+                    device,
+                    operatorPawn);
+        }
+
+        public static bool IsObservationRecoveryVisible(
+            Thing observationPoint)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.activeArchetype
+                    == TokraOrganicOperationArchetype.GoauldObservation
+                && manager.observationDeviceDeployed
+                && manager.activeDeadDrop == observationPoint
+                && TokraObservationUtility.IsObservationPoint(
+                    observationPoint);
+        }
+
+        public static string GetObservationRecoveryDisabledReason(
+            Thing observationPoint,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null)
+            {
+                return "GR_TokraOrganicOperation_ManagerUnavailable"
+                    .Translate()
+                    .ToString();
+            }
+
+            return manager.GetObservationRecoveryDisabledReasonInternal(
+                observationPoint,
+                operatorPawn);
+        }
+
+        public static bool TryStartObservationRecovery(
+            Thing observationPoint,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.TryStartObservationRecoveryInternal(
+                    observationPoint,
+                    operatorPawn);
+        }
+
+        public static bool TryRecoverObservationDevice(
+            Thing observationPoint,
+            Pawn operatorPawn,
+            out Thing recoveredDevice)
+        {
+            recoveredDevice = null;
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.TryRecoverObservationDeviceInternal(
+                    observationPoint,
+                    operatorPawn,
+                    out recoveredDevice);
+        }
+
+        public static bool CanContinueObservationTransmission(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.CanContinueObservationTransmissionInternal(
+                    communicator,
+                    operatorPawn);
+        }
+
+        public static bool PerformObservationTransmissionWork(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.PerformObservationTransmissionWorkInternal(
+                    communicator,
+                    operatorPawn);
+        }
+
+        public static bool IsObservationTransmissionComplete(
+            Thing communicator)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.IsObservationTransmissionCompleteInternal(
+                    communicator);
+        }
+
+        public static float GetObservationTransmissionProgress(
+            Thing communicator)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager?.GetObservationTransmissionProgressInternal(
+                communicator) ?? 0f;
+        }
+
+        public static bool TryCompleteObservationTransmission(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.TryCompleteObservationTransmissionInternal(
+                    communicator,
+                    operatorPawn);
         }
 
         public static bool TryStartIntelligenceAnalysis(
@@ -955,6 +1226,18 @@ namespace GateRimSG1.Goauld
                 + " | carried by: "
                 + (manager.FindIntelligenceObjectiveCarrier()?.LabelShortCap
                     ?? "none")
+                + "\nObservation target: "
+                + manager.observationTargetCell
+                + " | deployed: "
+                + manager.observationDeviceDeployed
+                + " | ready tick: "
+                + manager.observationReadyTick
+                + " | transmission: "
+                + manager.observationTransmissionRemainingTicks
+                + "/"
+                + manager.observationTransmissionTotalTicks
+                + " | result variant: "
+                + manager.observationResultVariant
                 + "\nIntelligence method: "
                 + manager.intelligenceAnalysisMethod
                 + "\nIntelligence work: "
@@ -999,6 +1282,51 @@ namespace GateRimSG1.Goauld
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            if (definition.Archetype
+                == TokraOrganicOperationArchetype.GoauldObservation)
+            {
+                if (!manager.HasValidObservationDevice())
+                {
+                    return false;
+                }
+
+                if (!manager.observationDeviceDeployed)
+                {
+                    Thing device = manager.activeDeadDrop;
+
+                    if (!device.Spawned)
+                    {
+                        return false;
+                    }
+
+                    Thing station = manager.observationPointMarker;
+
+                    if (station == null
+                        || station.Destroyed
+                        || !station.Spawned)
+                    {
+                        return false;
+                    }
+
+                    device.Destroy(DestroyMode.Vanish);
+                    manager.activeDeadDrop = station;
+                    manager.observationDeviceDeployed = true;
+                    manager.observationReadyTick
+                        = currentTick + ObservationDurationTicks;
+                    manager.reportReadyTick
+                        = manager.observationReadyTick;
+                    return true;
+                }
+
+                manager.observationReadyTick = currentTick;
+                manager.reportReadyTick = currentTick;
+                manager.UpdateObservationReadyState(
+                    currentTick,
+                    notifyPlayer: false);
+                return manager.activeState
+                    == TokraOrganicOperationState.Ready;
+            }
 
             if (definition.Archetype
                 == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
@@ -1148,7 +1476,7 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
-        public static bool DebugMakeObservationReady(Map map)
+        public static bool DebugDeployObservationDevice(Map map)
         {
             GameComponent_TokraOrganicOperationManager manager
                 = GetCurrentManager();
@@ -1156,6 +1484,33 @@ namespace GateRimSG1.Goauld
             return manager != null
                 && manager.activeArchetype
                     == TokraOrganicOperationArchetype.GoauldObservation
+                && manager.activeState
+                    == TokraOrganicOperationState.Accepted
+                && !manager.observationDeviceDeployed
+                && DebugMakeActiveReady(map);
+        }
+
+        public static bool DebugMakeObservationReady(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || manager.activeState
+                    != TokraOrganicOperationState.Accepted)
+            {
+                return false;
+            }
+
+            if (!manager.observationDeviceDeployed
+                && !DebugMakeActiveReady(map))
+            {
+                return false;
+            }
+
+            return manager.observationDeviceDeployed
                 && DebugMakeActiveReady(map);
         }
 
@@ -1300,9 +1655,13 @@ namespace GateRimSG1.Goauld
                             == TokraOrganicOperationArchetype
                                 .MedicalSupplyHandoff
                             ? "GR_TokraMedicalSupply_LiaisonLostText"
-                            : definition.HasPhysicalObjective
-                                ? "GR_TokraOrganicOperation_DeadDropLostLetterText"
-                                : null;
+                            : definition.Archetype
+                                == TokraOrganicOperationArchetype
+                                    .GoauldObservation
+                                ? "GR_TokraObservation_FailedDeviceLostText"
+                                : definition.HasPhysicalObjective
+                                    ? "GR_TokraOrganicOperation_DeadDropLostLetterText"
+                                    : null;
 
                     TryResolveActiveOperation(
                         TokraOrganicOperationOutcome.Failed,
@@ -1720,6 +2079,16 @@ namespace GateRimSG1.Goauld
 
         internal void TickAcceptedObservation(int currentTick)
         {
+            if (!TryRepairLegacyObservationState(currentTick)
+                || !HasValidObservationDevice())
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    "GR_TokraObservation_FailedDeviceLostText");
+                return;
+            }
+
             UpdateObservationReadyState(currentTick, notifyPlayer: true);
 
             if (operationDeadlineTick > 0
@@ -1728,7 +2097,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     null,
-                    null);
+                    "GR_TokraObservation_FailedTimeoutText");
             }
         }
 
@@ -1736,23 +2105,18 @@ namespace GateRimSG1.Goauld
             int currentTick,
             bool notifyPlayer)
         {
-            TokraOrganicOperationDefinition definition
-                = GetActiveDefinition();
-
-            if (definition == null
-                || definition.HasPhysicalObjective
-                || definition.Archetype
-                    == TokraOrganicOperationArchetype.WoundedAgentCare
-                || definition.Archetype
-                    == TokraOrganicOperationArchetype.MedicalSupplyHandoff
-                || activeState == TokraOrganicOperationState.Offered
-                || activeState == TokraOrganicOperationState.None
-                || currentTick < reportReadyTick)
+            if (activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || activeState != TokraOrganicOperationState.Accepted
+                || !observationDeviceDeployed
+                || observationReadyTick <= 0
+                || currentTick < observationReadyTick)
             {
                 return;
             }
 
             activeState = TokraOrganicOperationState.Ready;
+            reportReadyTick = currentTick;
 
             if (readyNotificationSent)
             {
@@ -1764,7 +2128,8 @@ namespace GateRimSG1.Goauld
             if (notifyPlayer)
             {
                 Messages.Message(
-                    "GR_TokraOrganicOperation_ReportReady".Translate(),
+                    "GR_TokraObservation_DataReady".Translate(),
+                    activeDeadDrop,
                     MessageTypeDefOf.PositiveEvent,
                     historical: true);
             }
@@ -1857,6 +2222,13 @@ namespace GateRimSG1.Goauld
             readyNotificationSent = false;
             resolutionApplied = false;
             activeDeadDrop = null;
+            observationPointMarker = null;
+            observationTargetCell = IntVec3.Invalid;
+            observationDeviceDeployed = false;
+            observationReadyTick = 0;
+            observationTransmissionTotalTicks = 0;
+            observationTransmissionRemainingTicks = 0;
+            observationResultVariant = -1;
             intelligenceAnalysisMethod
                 = TokraIntelligenceAnalysisMethod.None;
             intelligenceWorkTotalTicks = 0;
@@ -1909,6 +2281,483 @@ namespace GateRimSG1.Goauld
             return activeState == TokraOrganicOperationState.Offered
                 ? worker.TryAccept(this, map, operatorPawn)
                 : worker.TryHandleCommunicatorCompletion(this, operatorPawn);
+        }
+
+        internal bool TryStartObservationTransmission(Pawn operatorPawn)
+        {
+            ThingWithComps communicator = FindPoweredCommunicator(
+                GetActiveMap());
+
+            if (communicator == null)
+            {
+                return false;
+            }
+
+            return TryStartObservationTransmissionInternal(
+                communicator,
+                operatorPawn);
+        }
+
+        private string GetObservationDeploymentDisabledReasonInternal(
+            Thing device,
+            Pawn operatorPawn)
+        {
+            if (activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || activeState != TokraOrganicOperationState.Accepted
+                || activeDeadDrop != device)
+            {
+                return "GR_TokraObservation_NoActiveDeployment"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (observationDeviceDeployed)
+            {
+                return "GR_TokraObservation_AlreadyDeployed"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (IsOperationDeadlineExpired())
+            {
+                return "GR_TokraOrganicOperation_ObservationExpired"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!CanUseIntellectualOperator(operatorPawn))
+            {
+                return "GR_TokraOrganicOperation_OperatorIncapable"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!observationTargetCell.IsValid
+                || device == null
+                || device.Destroyed
+                || (!device.Spawned
+                    && operatorPawn?.carryTracker?.CarriedThing != device))
+            {
+                return "GR_TokraObservation_DeviceLost"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (device.Spawned
+                && !operatorPawn.CanReserveAndReach(
+                    device,
+                    PathEndMode.ClosestTouch,
+                    Danger.Some))
+            {
+                return "GR_TokraObservation_CannotReachDevice"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!operatorPawn.CanReach(
+                    new LocalTargetInfo(observationTargetCell),
+                    PathEndMode.OnCell,
+                    Danger.Some))
+            {
+                return "GR_TokraObservation_CannotReachPoint"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        private bool CanContinueObservationDeploymentInternal(
+            Thing device,
+            Pawn operatorPawn)
+        {
+            return string.IsNullOrEmpty(
+                GetObservationDeploymentDisabledReasonInternal(
+                    device,
+                    operatorPawn));
+        }
+
+        private bool NotifyObservationDeviceDeployedInternal(
+            Thing device,
+            Pawn operatorPawn)
+        {
+            Thing observationPoint = observationPointMarker;
+
+            if (!CanUseIntellectualOperator(operatorPawn)
+                || activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || activeState != TokraOrganicOperationState.Accepted
+                || activeDeadDrop != device
+                || device == null
+                || device.Destroyed
+                || operatorPawn?.carryTracker?.CarriedThing != device
+                || observationPoint == null
+                || observationPoint.Destroyed
+                || !observationPoint.Spawned
+                || !observationTargetCell.IsValid
+                || observationPoint.Map?.uniqueID != activeMapId
+                || observationPoint.Position
+                    .DistanceToSquared(observationTargetCell) > 2)
+            {
+                return false;
+            }
+
+            device.Destroy(DestroyMode.Vanish);
+            activeDeadDrop = observationPoint;
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            observationDeviceDeployed = true;
+            observationReadyTick = currentTick + ObservationDurationTicks;
+            reportReadyTick = observationReadyTick;
+            readyNotificationSent = false;
+            observationTransmissionTotalTicks = 0;
+            observationTransmissionRemainingTicks = 0;
+
+            Messages.Message(
+                "GR_TokraObservation_Deployed".Translate(
+                    operatorPawn.LabelShortCap,
+                    GetRoundedUpHours(ObservationDurationTicks).ToString()),
+                observationPoint,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Installed Tok'ra observation device at "
+                + $"{observationPoint.Position}; data ready tick "
+                + $"{observationReadyTick}; operator "
+                + $"{operatorPawn.LabelShortCap}.");
+            return true;
+        }
+
+        private string GetObservationRecoveryDisabledReasonInternal(
+            Thing observationPoint,
+            Pawn operatorPawn)
+        {
+            if (activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || activeState != TokraOrganicOperationState.Ready
+                || !observationDeviceDeployed
+                || activeDeadDrop != observationPoint
+                || !TokraObservationUtility
+                    .IsObservationPoint(observationPoint))
+            {
+                return "GR_TokraObservation_NoReadyRecovery"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (IsOperationDeadlineExpired())
+            {
+                return "GR_TokraOrganicOperation_ObservationExpired"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!CanUseIntellectualOperator(operatorPawn))
+            {
+                return "GR_TokraOrganicOperation_OperatorIncapable"
+                    .Translate()
+                    .ToString();
+            }
+
+            ThingWithComps communicator = FindPoweredCommunicator(
+                GetActiveMap());
+
+            if (communicator == null)
+            {
+                return "GR_TokraSecureCommunicator_Unpowered"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!operatorPawn.CanReserveAndReach(
+                    observationPoint,
+                    PathEndMode.Touch,
+                    Danger.Some))
+            {
+                return "GR_TokraObservation_CannotReachPoint"
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!operatorPawn.CanReach(
+                    communicator,
+                    PathEndMode.Touch,
+                    Danger.Some))
+            {
+                return "GR_TokraObservation_CannotReachCommunicator"
+                    .Translate()
+                    .ToString();
+            }
+
+            return null;
+        }
+
+        private bool CanContinueObservationRecoveryInternal(
+            Thing observationPoint,
+            Pawn operatorPawn)
+        {
+            return activeArchetype
+                    == TokraOrganicOperationArchetype.GoauldObservation
+                && activeState == TokraOrganicOperationState.Ready
+                && observationDeviceDeployed
+                && activeDeadDrop == observationPoint
+                && TokraObservationUtility.IsObservationPoint(
+                    observationPoint)
+                && observationPoint != null
+                && !observationPoint.Destroyed
+                && observationPoint.Spawned
+                && !IsOperationDeadlineExpired()
+                && CanUseIntellectualOperator(operatorPawn);
+        }
+
+        private bool TryStartObservationRecoveryInternal(
+            Thing observationPoint,
+            Pawn operatorPawn)
+        {
+            string disabledReason
+                = GetObservationRecoveryDisabledReasonInternal(
+                    observationPoint,
+                    operatorPawn);
+
+            if (!string.IsNullOrEmpty(disabledReason))
+            {
+                Messages.Message(
+                    disabledReason,
+                    observationPoint,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            ThingWithComps communicator = FindPoweredCommunicator(
+                GetActiveMap());
+            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
+                ObservationTransmissionJobDefName);
+
+            if (communicator == null || jobDef == null)
+            {
+                return false;
+            }
+
+            Job job = JobMaker.MakeJob(
+                jobDef,
+                communicator,
+                observationPoint);
+            job.count = 1;
+
+            if (!operatorPawn.jobs.TryTakeOrderedJob(job))
+            {
+                return false;
+            }
+
+            Messages.Message(
+                "GR_TokraObservation_RecoveryStarted".Translate(
+                    operatorPawn.LabelShortCap),
+                observationPoint,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+            return true;
+        }
+
+        private bool TryRecoverObservationDeviceInternal(
+            Thing observationPoint,
+            Pawn operatorPawn,
+            out Thing recoveredDevice)
+        {
+            recoveredDevice = null;
+
+            if (!CanContinueObservationRecoveryInternal(
+                    observationPoint,
+                    operatorPawn))
+            {
+                return false;
+            }
+
+            ThingDef deviceDef = DefDatabase<ThingDef>.GetNamedSilentFail(
+                TokraObservationUtility.DeviceDefName);
+
+            if (deviceDef == null)
+            {
+                return false;
+            }
+
+            Thing created = ThingMaker.MakeThing(deviceDef);
+            Thing placed;
+
+            if (!GenPlace.TryPlaceThing(
+                    created,
+                    operatorPawn.Position,
+                    operatorPawn.Map,
+                    ThingPlaceMode.Near,
+                    out placed))
+            {
+                if (!created.Destroyed)
+                {
+                    created.Destroy(DestroyMode.Vanish);
+                }
+
+                return false;
+            }
+
+            activeDeadDrop = placed;
+            observationPointMarker = null;
+
+            if (!observationPoint.Destroyed)
+            {
+                observationPoint.Destroy(DestroyMode.Vanish);
+            }
+
+            recoveredDevice = placed;
+
+            GR_Log.Message(
+                "Recovered Tok'ra observation device at "
+                + $"{operatorPawn.Position}; operator "
+                + $"{operatorPawn.LabelShortCap}.");
+            return true;
+        }
+
+        private bool TryStartObservationTransmissionInternal(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            if (!CanContinueObservationTransmissionInternal(
+                    communicator,
+                    operatorPawn)
+                || TokraObservationUtility.IsObservationPoint(activeDeadDrop))
+            {
+                return false;
+            }
+
+            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
+                ObservationTransmissionJobDefName);
+
+            if (jobDef == null)
+            {
+                return false;
+            }
+
+            if (observationTransmissionTotalTicks <= 0)
+            {
+                observationTransmissionTotalTicks
+                    = ObservationTransmissionWorkTicks;
+                observationTransmissionRemainingTicks
+                    = ObservationTransmissionWorkTicks;
+            }
+
+            bool deviceAlreadyCarried
+                = operatorPawn.carryTracker?.CarriedThing == activeDeadDrop;
+
+            if (!deviceAlreadyCarried
+                && (!activeDeadDrop.Spawned
+                    || !operatorPawn.CanReserveAndReach(
+                        activeDeadDrop,
+                        PathEndMode.ClosestTouch,
+                        Danger.Some)))
+            {
+                return false;
+            }
+
+            Job job = JobMaker.MakeJob(
+                jobDef,
+                communicator,
+                activeDeadDrop);
+            job.count = 1;
+
+            if (!operatorPawn.jobs.TryTakeOrderedJob(job))
+            {
+                return false;
+            }
+
+            Messages.Message(
+                "GR_TokraObservation_TransmissionStarted".Translate(
+                    operatorPawn.LabelShortCap),
+                communicator,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+            return true;
+        }
+
+        private bool CanContinueObservationTransmissionInternal(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            return activeArchetype
+                    == TokraOrganicOperationArchetype.GoauldObservation
+                && activeState == TokraOrganicOperationState.Ready
+                && observationDeviceDeployed
+                && HasValidObservationDevice()
+                && !IsOperationDeadlineExpired()
+                && IsPoweredSecureCommunicator(communicator)
+                && communicator.Map?.uniqueID == activeMapId
+                && CanUseIntellectualOperator(operatorPawn);
+        }
+
+        private bool PerformObservationTransmissionWorkInternal(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            if (!CanContinueObservationTransmissionInternal(
+                    communicator,
+                    operatorPawn))
+            {
+                return false;
+            }
+
+            if (observationTransmissionTotalTicks <= 0)
+            {
+                observationTransmissionTotalTicks
+                    = ObservationTransmissionWorkTicks;
+                observationTransmissionRemainingTicks
+                    = ObservationTransmissionWorkTicks;
+            }
+
+            if (observationTransmissionRemainingTicks > 0)
+            {
+                observationTransmissionRemainingTicks--;
+            }
+
+            return true;
+        }
+
+        private bool IsObservationTransmissionCompleteInternal(
+            Thing communicator)
+        {
+            return IsPoweredSecureCommunicator(communicator)
+                && observationTransmissionTotalTicks > 0
+                && observationTransmissionRemainingTicks <= 0;
+        }
+
+        private float GetObservationTransmissionProgressInternal(
+            Thing communicator)
+        {
+            if (!IsPoweredSecureCommunicator(communicator)
+                || observationTransmissionTotalTicks <= 0)
+            {
+                return 0f;
+            }
+
+            return 1f - (float)observationTransmissionRemainingTicks
+                / observationTransmissionTotalTicks;
+        }
+
+        private bool TryCompleteObservationTransmissionInternal(
+            Thing communicator,
+            Pawn operatorPawn)
+        {
+            if (!CanContinueObservationTransmissionInternal(
+                    communicator,
+                    operatorPawn)
+                || observationTransmissionRemainingTicks > 0)
+            {
+                return false;
+            }
+
+            return TryResolveActiveOperation(
+                TokraOrganicOperationOutcome.Succeeded,
+                operatorPawn,
+                null);
         }
 
         internal bool TryOpenIntelligenceAnalysis(Pawn operatorPawn)
@@ -2258,32 +3107,61 @@ namespace GateRimSG1.Goauld
         {
             TokraOrganicOperationDefinition definition
                 = GetActiveDefinition();
+            Thing device;
+            Thing marker;
+            IntVec3 targetCell;
 
-            if (definition == null)
+            if (definition == null
+                || !CanUseIntellectualOperator(operatorPawn)
+                || !TokraObservationUtility.TryCreateOperationTargets(
+                    map,
+                    out device,
+                    out marker,
+                    out targetCell))
             {
+                Messages.Message(
+                    "GR_TokraObservation_SpawnFailed".Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
                 return false;
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             activeState = TokraOrganicOperationState.Accepted;
             acceptedTick = currentTick;
-            reportReadyTick = currentTick + definition.ReadyDelayTicks;
+            reportReadyTick = 0;
             operationDeadlineTick = currentTick + definition.DeadlineTicks;
             readyNotificationSent = false;
             resolutionApplied = false;
+            activeDeadDrop = device;
+            observationPointMarker = marker;
+            observationTargetCell = targetCell;
+            observationDeviceDeployed = false;
+            observationReadyTick = 0;
+            observationTransmissionTotalTicks = 0;
+            observationTransmissionRemainingTicks = 0;
+            observationResultVariant = -1;
 
             Messages.Message(
-                "GR_TokraOrganicOperation_Accepted".Translate(
+                "GR_TokraObservation_Accepted".Translate(
                     operatorPawn?.LabelShortCap ?? "?",
-                    GetRoundedUpHours(definition.ReadyDelayTicks).ToString()),
+                    GetRoundedUpHours(definition.DeadlineTicks).ToString()),
+                marker,
                 MessageTypeDefOf.NeutralEvent,
                 historical: true);
 
+            Find.LetterStack?.ReceiveLetter(
+                "GR_TokraObservation_TargetLetterLabel".Translate(),
+                "GR_TokraObservation_TargetLetterText".Translate(
+                    GetRoundedUpHours(definition.DeadlineTicks).ToString()),
+                LetterDefOf.NeutralEvent,
+                marker);
+
             GR_Log.Message(
-                "Accepted Tok'ra organic operation "
-                + $"{definition.DebugLabel} on map {map.uniqueID}; "
-                + $"ready at tick {reportReadyTick}; "
-                + $"deadline {operationDeadlineTick}; operator "
+                "Accepted Tok'ra observation operation on map "
+                + $"{map.uniqueID}; device at {device.Position}; "
+                + $"target {targetCell}; deadline "
+                + $"{operationDeadlineTick}; operator "
                 + $"{operatorPawn?.LabelShortCap ?? "unknown"}.");
 
             return true;
@@ -2382,12 +3260,26 @@ namespace GateRimSG1.Goauld
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
+            bool isObservation = definition.Archetype
+                == TokraOrganicOperationArchetype.GoauldObservation;
             bool isWoundedAgent = definition.Archetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare;
             bool isMedicalSupply = definition.Archetype
                 == TokraOrganicOperationArchetype.MedicalSupplyHandoff;
             bool isIntelligence = definition.Archetype
                 == TokraOrganicOperationArchetype.DeadDropRecovery;
+
+            if (isObservation
+                && outcome == TokraOrganicOperationOutcome.Succeeded
+                && bypassSuccessValidation)
+            {
+                observationDeviceDeployed = true;
+                observationReadyTick = currentTick;
+                observationTransmissionTotalTicks
+                    = ObservationTransmissionWorkTicks;
+                observationTransmissionRemainingTicks = 0;
+                activeState = TokraOrganicOperationState.Ready;
+            }
 
             if (isIntelligence
                 && outcome == TokraOrganicOperationOutcome.Succeeded
@@ -2405,7 +3297,19 @@ namespace GateRimSG1.Goauld
             if (outcome == TokraOrganicOperationOutcome.Succeeded
                 && !bypassSuccessValidation)
             {
-                if (isWoundedAgent)
+                if (isObservation)
+                {
+                    if (!observationDeviceDeployed
+                        || !HasValidObservationDevice()
+                        || activeState != TokraOrganicOperationState.Ready
+                        || observationTransmissionTotalTicks <= 0
+                        || observationTransmissionRemainingTicks > 0
+                        || IsOperationDeadlineExpired())
+                    {
+                        return false;
+                    }
+                }
+                else if (isWoundedAgent)
                 {
                     if (!woundedAgentDepartureOrdered
                         || activeWoundedAgent == null
@@ -2450,6 +3354,12 @@ namespace GateRimSG1.Goauld
                 BeginMedicalSupplyDeparture(
                     activeMedicalSupplyLiaison,
                     monitorDeath: false);
+            }
+
+            if (isObservation
+                && outcome == TokraOrganicOperationOutcome.Succeeded)
+            {
+                PrepareObservationOutcome();
             }
 
             if (isIntelligence
@@ -2591,21 +3501,25 @@ namespace GateRimSG1.Goauld
                     Find.LetterStack?.ReceiveLetter(
                         "GR_TokraOrganicOperation_SuccessLetterLabel"
                             .Translate(),
-                        "GR_TokraOrganicOperation_SuccessLetterText"
-                            .Translate(
-                                operatorPawn?.LabelShortCap ?? "?",
-                                definition.IntellectualXp.ToString()),
+                        GetObservationSuccessTextKey().Translate(
+                            operatorPawn?.LabelShortCap ?? "?",
+                            definition.IntellectualXp.ToString()),
                         LetterDefOf.PositiveEvent,
                         letterTarget);
                 }
                 else
                 {
+                    string observationFailureKey
+                        = string.IsNullOrEmpty(failureTextKey)
+                            ? "GR_TokraObservation_FailedTimeoutText"
+                            : failureTextKey;
+
                     Find.LetterStack?.ReceiveLetter(
                         "GR_TokraOrganicOperation_FailedLetterLabel"
                             .Translate(),
-                        "GR_TokraOrganicOperation_FailedLetterText"
-                            .Translate(),
-                        LetterDefOf.NegativeEvent);
+                        observationFailureKey.Translate(),
+                        LetterDefOf.NegativeEvent,
+                        letterTarget);
                 }
 
                 return;
@@ -2664,6 +3578,32 @@ namespace GateRimSG1.Goauld
                     .Translate(),
                 deadDropTextKey.Translate(),
                 LetterDefOf.NegativeEvent);
+        }
+
+        private void PrepareObservationOutcome()
+        {
+            if (observationResultVariant >= 0)
+            {
+                return;
+            }
+
+            int variant = Rand.Range(0, 3);
+
+            if (variant == lastObservationResultVariant)
+            {
+                variant = (variant + Rand.RangeInclusive(1, 2)) % 3;
+            }
+
+            observationResultVariant = variant;
+            lastObservationResultVariant = variant;
+        }
+
+        private string GetObservationSuccessTextKey()
+        {
+            int variant = Math.Max(0, Math.Min(2, observationResultVariant))
+                + 1;
+
+            return "GR_TokraObservation_SuccessText" + variant;
         }
 
         private void PrepareIntelligenceOutcome()
@@ -2874,6 +3814,18 @@ namespace GateRimSG1.Goauld
                 Find.TickManager?.TicksGame ?? 0,
                 notifyPlayer: false);
 
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.GoauldObservation)
+            {
+                if (activeState != TokraOrganicOperationState.Ready)
+                {
+                    return false;
+                }
+
+                return !TokraObservationUtility
+                    .IsObservationPoint(activeDeadDrop);
+            }
+
             return activeState == TokraOrganicOperationState.Accepted
                 || activeState == TokraOrganicOperationState.Ready;
         }
@@ -2957,6 +3909,146 @@ namespace GateRimSG1.Goauld
             }
 
             return null;
+        }
+
+        private bool HasValidObservationDevice()
+        {
+            if (activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || activeDeadDrop == null
+                || activeDeadDrop.Destroyed)
+            {
+                return false;
+            }
+
+            if (activeDeadDrop.Spawned
+                && activeDeadDrop.Map?.uniqueID == activeMapId)
+            {
+                return true;
+            }
+
+            Map map = GetActiveMap();
+
+            if (map?.mapPawns?.AllPawnsSpawned == null)
+            {
+                return false;
+            }
+
+            IReadOnlyList<Pawn> pawns = map.mapPawns.AllPawnsSpawned;
+
+            for (int i = 0; i < pawns.Count; i++)
+            {
+                if (pawns[i]?.carryTracker?.CarriedThing == activeDeadDrop)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool TryRepairLegacyObservationState(int currentTick)
+        {
+            if (activeArchetype
+                    != TokraOrganicOperationArchetype.GoauldObservation
+                || (activeState != TokraOrganicOperationState.Accepted
+                    && activeState != TokraOrganicOperationState.Ready))
+            {
+                return true;
+            }
+
+            if (observationDeviceDeployed
+                && TokraObservationUtility.IsObservationDevice(activeDeadDrop)
+                && activeDeadDrop.Spawned
+                && observationTransmissionTotalTicks <= 0)
+            {
+                Map legacyMap = GetActiveMap();
+                ThingDef markerDef = DefDatabase<ThingDef>.GetNamedSilentFail(
+                    TokraObservationUtility.MarkerDefName);
+
+                if (legacyMap != null && markerDef != null)
+                {
+                    IntVec3 legacyCell = activeDeadDrop.Position;
+                    Thing createdMarker = ThingMaker.MakeThing(markerDef);
+                    Thing placedMarker;
+
+                    if (GenPlace.TryPlaceThing(
+                            createdMarker,
+                            legacyCell,
+                            legacyMap,
+                            ThingPlaceMode.Near,
+                            out placedMarker))
+                    {
+                        Thing legacyDevice = activeDeadDrop;
+                        activeDeadDrop = placedMarker;
+                        observationPointMarker = placedMarker;
+                        observationTargetCell = placedMarker.Position;
+
+                        if (legacyDevice != null
+                            && !legacyDevice.Destroyed)
+                        {
+                            legacyDevice.Destroy(DestroyMode.Vanish);
+                        }
+
+                        GR_Log.Message(
+                            "Converted a 0.3.2 loose observation device "
+                            + "into an installed field station.");
+                    }
+                    else if (!createdMarker.Destroyed)
+                    {
+                        createdMarker.Destroy(DestroyMode.Vanish);
+                    }
+                }
+            }
+
+            if (HasValidObservationDevice())
+            {
+                return true;
+            }
+
+            if (observationTargetCell.IsValid)
+            {
+                return false;
+            }
+
+            Map map = GetActiveMap();
+            Thing device;
+            Thing marker;
+            IntVec3 targetCell;
+
+            if (!TokraObservationUtility.TryCreateOperationTargets(
+                    map,
+                    out device,
+                    out marker,
+                    out targetCell))
+            {
+                return false;
+            }
+
+            activeDeadDrop = device;
+            observationPointMarker = marker;
+            observationTargetCell = targetCell;
+            observationDeviceDeployed = false;
+            observationReadyTick = 0;
+            observationTransmissionTotalTicks = 0;
+            observationTransmissionRemainingTicks = 0;
+            observationResultVariant = -1;
+            activeState = TokraOrganicOperationState.Accepted;
+            reportReadyTick = 0;
+            readyNotificationSent = false;
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            int restoredDeadline = definition != null
+                ? definition.DeadlineTicks
+                : ObservationDurationTicks + ObservationTransmissionWorkTicks;
+            operationDeadlineTick = Math.Max(
+                operationDeadlineTick,
+                currentTick + restoredDeadline);
+
+            GR_Log.Message(
+                "Converted a legacy accepted Tok'ra observation into the "
+                + "0.3.2 field-device workflow.");
+            return true;
         }
 
         private bool HasValidIntelligenceObjective()
@@ -3105,6 +4197,47 @@ namespace GateRimSG1.Goauld
                     GetRoundedUpHours(
                         offerExpiryTick - currentTick).ToString())
                     .ToString();
+            }
+            else if (definition.Archetype
+                == TokraOrganicOperationArchetype.GoauldObservation)
+            {
+                if (!observationDeviceDeployed)
+                {
+                    status = "GR_TokraObservation_StatusAwaitingDeployment"
+                        .Translate(
+                            GetRoundedUpHours(
+                                operationDeadlineTick - currentTick)
+                                .ToString())
+                        .ToString();
+                }
+                else if (activeState == TokraOrganicOperationState.Accepted)
+                {
+                    status = "GR_TokraObservation_StatusRecording"
+                        .Translate(
+                            GetRoundedUpHours(
+                                observationReadyTick - currentTick)
+                                .ToString())
+                        .ToString();
+                }
+                else if (observationTransmissionTotalTicks > 0
+                    && observationTransmissionRemainingTicks > 0)
+                {
+                    status = "GR_TokraObservation_StatusTransmissionInterrupted"
+                        .Translate(
+                            GetRoundedUpHours(
+                                operationDeadlineTick - currentTick)
+                                .ToString())
+                        .ToString();
+                }
+                else
+                {
+                    status = "GR_TokraObservation_StatusDataReady"
+                        .Translate(
+                            GetRoundedUpHours(
+                                operationDeadlineTick - currentTick)
+                                .ToString())
+                        .ToString();
+                }
             }
             else if (definition.Archetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare)
@@ -3269,14 +4402,22 @@ namespace GateRimSG1.Goauld
                 = GetActiveDefinition();
             Map map = GetActiveMap();
             Thing objective = activeDeadDrop;
+            Thing marker = observationPointMarker;
             activeDeadDrop = null;
+            observationPointMarker = null;
 
             if (objective != null && !objective.Destroyed)
             {
                 objective.Destroy(DestroyMode.Vanish);
             }
 
+            if (marker != null && !marker.Destroyed)
+            {
+                marker.Destroy(DestroyMode.Vanish);
+            }
+
             TokraOrganicOperationFramework.DestroyObjectives(map, definition);
+            TokraObservationUtility.DestroyAllTargets(map, null, null);
         }
 
         private void ClearActiveOpportunity(
@@ -3344,6 +4485,28 @@ namespace GateRimSG1.Goauld
                 }
 
                 if (activeArchetype
+                        == TokraOrganicOperationArchetype.GoauldObservation
+                    && (activeState == TokraOrganicOperationState.Accepted
+                        || activeState == TokraOrganicOperationState.Ready))
+                {
+                    if (observationTransmissionTotalTicks <= 0)
+                    {
+                        observationTransmissionTotalTicks = 0;
+                        observationTransmissionRemainingTicks = 0;
+                    }
+                    else
+                    {
+                        observationTransmissionTotalTicks
+                            = ObservationTransmissionWorkTicks;
+                        observationTransmissionRemainingTicks = Math.Max(
+                            0,
+                            Math.Min(
+                                observationTransmissionTotalTicks,
+                                observationTransmissionRemainingTicks));
+                    }
+                }
+
+                if (activeArchetype
                         == TokraOrganicOperationArchetype.DeadDropRecovery
                     && (activeState == TokraOrganicOperationState.Accepted
                         || activeState == TokraOrganicOperationState.Ready)
@@ -3375,6 +4538,21 @@ namespace GateRimSG1.Goauld
 
             TokraOrganicOperationFramework.DestroyAllObjectivesExcept(
                 activeDeadDrop);
+            TokraObservationUtility.DestroyAllTargets(
+                GetActiveMap(),
+                activeArchetype
+                        == TokraOrganicOperationArchetype.GoauldObservation
+                    ? activeDeadDrop
+                    : null,
+                observationPointMarker);
+        }
+
+        private bool IsObservationStateActive()
+        {
+            return activeArchetype
+                    == TokraOrganicOperationArchetype.GoauldObservation
+                && (activeState == TokraOrganicOperationState.Accepted
+                    || activeState == TokraOrganicOperationState.Ready);
         }
 
         private bool IsMedicalSupplyStateActive()

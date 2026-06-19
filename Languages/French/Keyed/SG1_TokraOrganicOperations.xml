@@ -2,23 +2,54 @@
 <LanguageData>
     <GR_TokraOrganicOperation_FloatMenuUnavailable>Opération Tok'ra indisponible</GR_TokraOrganicOperation_FloatMenuUnavailable>
     <GR_TokraOrganicOperation_FloatMenuAcceptObservation>Accepter la demande d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuAcceptObservation>
-    <GR_TokraOrganicOperation_FloatMenuTransmitObservation>Transmettre le rapport d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuTransmitObservation>
+    <GR_TokraOrganicOperation_FloatMenuTransmitObservation>Récupérer et transmettre les données d'observation Tok'ra</GR_TokraOrganicOperation_FloatMenuTransmitObservation>
     <GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop>Accepter la récupération du module de renseignements Tok'ra</GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop>
     <GR_TokraOrganicOperation_NoActiveOpportunity>Aucune demande Tok'ra active</GR_TokraOrganicOperation_NoActiveOpportunity>
     <GR_TokraOrganicOperation_ObservationInProgress>Observation encore en cours ({0} h restantes)</GR_TokraOrganicOperation_ObservationInProgress>
     <GR_TokraOrganicOperation_ObservationExpired>Fenêtre de transmission du rapport expirée</GR_TokraOrganicOperation_ObservationExpired>
     <GR_TokraOrganicOperation_OperatorIncapable>L'opérateur doit être capable d'effectuer un travail intellectuel</GR_TokraOrganicOperation_OperatorIncapable>
     <GR_TokraOrganicOperation_OfferLetterLabel>Demande d'observation Tok'ra discrète</GR_TokraOrganicOperation_OfferLetterLabel>
-    <GR_TokraOrganicOperation_OfferLetterText>Un contact Tok'ra prudent a ouvert un canal étroit. La cellule ne vous confie pas une mission sensible. Elle demande seulement à votre colonie de surveiller discrètement d'éventuels mouvements Goa'uld inhabituels dans la région, puis de transmettre un rapport concis.
+    <GR_TokraOrganicOperation_OfferLetterText>Un contact Tok'ra prudent a ouvert un canal étroit. La cellule a identifié une position périphérique depuis laquelle un capteur de terrain compact pourrait enregistrer discrètement des mouvements Goa'uld inhabituels près de la colonie.
 
-Sélectionnez un colon, puis faites un clic droit sur le communicateur sécurisé Tok'ra alimenté pour accepter la demande. Le canal restera disponible pendant environ {0} heures. Le laisser se refermer n'entraîne aucune perte de confiance.</GR_TokraOrganicOperation_OfferLetterText>
+Accepter la demande autorisera la livraison du dispositif et révélera le point d'observation. Un colon capable de travail Intellectuel devra transporter le dispositif jusqu'à cette position, l'y laisser pendant l'enregistrement, puis le récupérer et le rapporter au communicateur sécurisé Tok'ra alimenté. L'offre restera disponible pendant environ {0} heures. L'ignorer n'entraîne aucune perte de confiance.</GR_TokraOrganicOperation_OfferLetterText>
     <GR_TokraOrganicOperation_OfferExpired>Le canal d'observation ouvert par la cellule Tok'ra s'est refermé sans réponse.</GR_TokraOrganicOperation_OfferExpired>
-    <GR_TokraOrganicOperation_Accepted>{0} a accepté la demande d'observation Tok'ra. Un rapport utile pourra être transmis après environ {1} heures de surveillance discrète.</GR_TokraOrganicOperation_Accepted>
-    <GR_TokraOrganicOperation_ReportReady>La période d'observation demandée est terminée. Un colon peut maintenant transmettre le rapport au moyen du communicateur Tok'ra.</GR_TokraOrganicOperation_ReportReady>
+    <GR_TokraOrganicOperation_Accepted>{0} a accepté la demande d'observation Tok'ra. Le dispositif de terrain et la position périphérique retenue restent disponibles pendant environ {1} heures.</GR_TokraOrganicOperation_Accepted>
+    <GR_TokraOrganicOperation_ReportReady>Le dispositif d'observation Tok'ra a terminé son enregistrement. Récupérez-le et utilisez le communicateur sécurisé alimenté pour transmettre les données.</GR_TokraOrganicOperation_ReportReady>
     <GR_TokraOrganicOperation_FailedLetterLabel>Fenêtre d'observation Tok'ra manquée</GR_TokraOrganicOperation_FailedLetterLabel>
-    <GR_TokraOrganicOperation_FailedLetterText>La demande d'observation avait été acceptée, mais le rapport n'a pas été transmis avant la fermeture de la fenêtre sécurisée. La cellule Tok'ra se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_FailedLetterText>
+    <GR_TokraOrganicOperation_FailedLetterText>La demande d'observation avait été acceptée, mais les données de terrain n'ont pas été transmises avant la fermeture de la fenêtre sécurisée. La cellule Tok'ra se montrera plus prudente avant de compter sur la colonie.</GR_TokraOrganicOperation_FailedLetterText>
     <GR_TokraOrganicOperation_SuccessLetterLabel>Rapport d'observation Tok'ra reçu</GR_TokraOrganicOperation_SuccessLetterLabel>
     <GR_TokraOrganicOperation_SuccessLetterText>{0} a transmis un rapport concis sur l'activité Goa'uld environnante. La cellule Tok'ra confirme que ces renseignements sont utiles. L'opérateur gagne {1} XP en Intellectuel et la confiance de la cellule envers la colonie progresse.</GR_TokraOrganicOperation_SuccessLetterText>
+    <GR_TokraObservation_DeployAction>Déployer le dispositif d'observation Tok'ra</GR_TokraObservation_DeployAction>
+    <GR_TokraObservation_ResumeTransmissionAction>Reprendre la transmission d'observation Tok'ra</GR_TokraObservation_ResumeTransmissionAction>
+    <GR_TokraObservation_RecoverAction>Replier le dispositif et transmettre les données</GR_TokraObservation_RecoverAction>
+    <GR_TokraObservation_JobUnavailable>tâche de déploiement indisponible</GR_TokraObservation_JobUnavailable>
+    <GR_TokraObservation_NoActiveDeployment>ce dispositif ne fait pas partie d'une opération d'observation active</GR_TokraObservation_NoActiveDeployment>
+    <GR_TokraObservation_AlreadyDeployed>dispositif déjà déployé</GR_TokraObservation_AlreadyDeployed>
+    <GR_TokraObservation_DeviceLost>le dispositif d'observation Tok'ra est introuvable</GR_TokraObservation_DeviceLost>
+    <GR_TokraObservation_DataNotReady>les données d'observation ne sont pas encore prêtes</GR_TokraObservation_DataNotReady>
+    <GR_TokraObservation_CannotReachDevice>le dispositif ne peut pas être atteint ou réservé</GR_TokraObservation_CannotReachDevice>
+    <GR_TokraObservation_CannotReachPoint>le point d'observation indiqué est inaccessible</GR_TokraObservation_CannotReachPoint>
+    <GR_TokraObservation_CannotReachCommunicator>aucun trajet sûr ne permet de rapporter le dispositif au communicateur</GR_TokraObservation_CannotReachCommunicator>
+    <GR_TokraObservation_NoReadyRecovery>les données ne sont pas encore prêtes à être récupérées sur ce site</GR_TokraObservation_NoReadyRecovery>
+    <GR_TokraObservation_SpawnFailed>Aucune route de livraison et aucun point d'observation périphérique valides n'ont pu être préparés. La demande reste disponible.</GR_TokraObservation_SpawnFailed>
+    <GR_TokraObservation_Accepted>{0} a accepté la demande d'observation de terrain Tok'ra. Le dispositif doit être déployé et ses données rapportées dans un délai d'environ {1} heures.</GR_TokraObservation_Accepted>
+    <GR_TokraObservation_TargetLetterLabel>Point d'observation Tok'ra identifié</GR_TokraObservation_TargetLetterLabel>
+    <GR_TokraObservation_TargetLetterText>Un capteur de terrain Tok'ra compact a été livré par la voie discrète habituelle. La cellule a également marqué une position périphérique depuis laquelle il pourra enregistrer le trafic Goa'uld proche.
+
+Sélectionnez un colon capable de travail Intellectuel, faites un clic droit sur le dispositif livré et installez-le au point indiqué. Une fois l'enregistrement terminé, faites un clic droit directement sur le site d'observation : le colon repliera le capteur, le rapportera au communicateur Tok'ra et transmettra les données dans la même tâche. La fenêtre opérationnelle reste ouverte pendant environ {0} heures.</GR_TokraObservation_TargetLetterText>
+    <GR_TokraObservation_Deployed>{0} a installé le dispositif d'observation Tok'ra sur le site indiqué. Son enregistrement devrait être terminé dans environ {1} heures.</GR_TokraObservation_Deployed>
+    <GR_TokraObservation_DataReady>Le dispositif Tok'ra a terminé son enregistrement. Sélectionnez un colon puis faites un clic droit sur le site d'observation pour replier le capteur et rapporter directement ses données au communicateur.</GR_TokraObservation_DataReady>
+    <GR_TokraObservation_TransmissionStarted>{0} rapporte le dispositif d'observation au communicateur Tok'ra.</GR_TokraObservation_TransmissionStarted>
+    <GR_TokraObservation_RecoveryStarted>{0} commence à replier le dispositif d'observation avant de le rapporter au communicateur.</GR_TokraObservation_RecoveryStarted>
+    <GR_TokraObservation_StatusAwaitingDeployment>dispositif d'observation livré ; déploiement en attente ({0} h restantes)</GR_TokraObservation_StatusAwaitingDeployment>
+    <GR_TokraObservation_StatusRecording>dispositif en enregistrement au point indiqué ({0} h restantes)</GR_TokraObservation_StatusRecording>
+    <GR_TokraObservation_StatusDataReady>données prêtes sur le site d'observation ; récupération requise ({0} h restantes)</GR_TokraObservation_StatusDataReady>
+    <GR_TokraObservation_StatusTransmissionInterrupted>transmission des données d'observation interrompue ; elle peut être reprise ({0} h restantes)</GR_TokraObservation_StatusTransmissionInterrupted>
+    <GR_TokraObservation_FailedTimeoutText>Le dispositif de terrain a été déployé ou récupéré trop tard pour transmettre ses observations avant la fermeture de la fenêtre sécurisée. La cellule Tok'ra se montrera plus prudente avant de compter de nouveau sur la colonie.</GR_TokraObservation_FailedTimeoutText>
+    <GR_TokraObservation_FailedDeviceLostText>Le dispositif d'observation Tok'ra a été perdu ou détruit avant la transmission de ses données de terrain. La cellule se montrera plus prudente avant de confier une nouvelle veille à la colonie.</GR_TokraObservation_FailedDeviceLostText>
+    <GR_TokraObservation_SuccessText1>{0} a replié le capteur de terrain et l'a rapporté au communicateur sécurisé et transmis un relevé de passages irréguliers de patrouilles Jaffa le long d'un itinéraire voisin. La cellule Tok'ra peut désormais éviter les créneaux exposés. {0} gagne {1} XP en Intellectuel.</GR_TokraObservation_SuccessText1>
+    <GR_TokraObservation_SuccessText2>{0} a transmis l'enregistrement de brèves impulsions de relais Goa'uld traversant la région. La cellule Tok'ra a isolé une fenêtre d'écoute plus sûre à partir de leur rythme. {0} gagne {1} XP en Intellectuel.</GR_TokraObservation_SuccessText2>
+    <GR_TokraObservation_SuccessText3>{0} a remis un relevé propre montrant des changements dans un corridor logistique Goa'uld. La cellule Tok'ra confirme que cette route pourra être exploitée sans exposer la colonie. {0} gagne {1} XP en Intellectuel.</GR_TokraObservation_SuccessText3>
     <GR_TokraOrganicOperation_DeadDropNoLongerActive>Ce module de renseignements Tok'ra ne fait plus partie d'une opération active</GR_TokraOrganicOperation_DeadDropNoLongerActive>
     <GR_TokraOrganicOperation_DeadDropWindowExpired>La fenêtre de récupération des renseignements Tok'ra s'est refermée</GR_TokraOrganicOperation_DeadDropWindowExpired>
     <GR_TokraOrganicOperation_DeadDropSpawnFailed>Aucun emplacement valide n'a pu être trouvé dans la zone de livraison Tok'ra, près d'un communicateur alimenté ou en bordure de carte. La demande reste disponible.</GR_TokraOrganicOperation_DeadDropSpawnFailed>
@@ -37,8 +68,8 @@ Sélectionnez un colon, puis faites un clic droit sur le communicateur sécuris�
     <GR_TokraOrganicOperation_StatusReportNone>Initiatives Tok'ra : aucune demande active.</GR_TokraOrganicOperation_StatusReportNone>
     <GR_TokraOrganicOperation_StatusReportActive>Initiatives Tok'ra : {0}</GR_TokraOrganicOperation_StatusReportActive>
     <GR_TokraOrganicOperation_StatusOffered>demande d'observation discrète en attente d'une réponse ({0} h restantes)</GR_TokraOrganicOperation_StatusOffered>
-    <GR_TokraOrganicOperation_StatusObserving>observation en cours ({0} h avant que le rapport soit exploitable)</GR_TokraOrganicOperation_StatusObserving>
-    <GR_TokraOrganicOperation_StatusReady>rapport d'observation prêt ({0} h avant la fermeture du canal sécurisé)</GR_TokraOrganicOperation_StatusReady>
+    <GR_TokraOrganicOperation_StatusObserving>observation de terrain en cours ({0} h avant que les données soient prêtes)</GR_TokraOrganicOperation_StatusObserving>
+    <GR_TokraOrganicOperation_StatusReady>données d'observation prêtes à être récupérées ({0} h avant la fermeture du canal)</GR_TokraOrganicOperation_StatusReady>
     <GR_TokraOrganicOperation_StatusDeadDropOffered>récupération d'un module de renseignements en attente d'une réponse ({0} h restantes)</GR_TokraOrganicOperation_StatusDeadDropOffered>
     <GR_TokraOrganicOperation_StatusDeadDropActive>module de renseignements livré ({0} h avant la fermeture de la fenêtre sécurisée)</GR_TokraOrganicOperation_StatusDeadDropActive>
     <GR_TokraOrganicOperation_InspectPrefix>Opération Tok'ra : {0}</GR_TokraOrganicOperation_InspectPrefix>
@@ -108,4 +139,8 @@ L'analyse prudente demande plus de temps, mais maintient la transmission sous co
     <GR_TokraOrganicOperation_DebugIntelligenceAccelerated>Le décodage accéléré a été sélectionné.</GR_TokraOrganicOperation_DebugIntelligenceAccelerated>
     <GR_TokraOrganicOperation_DebugIntelligenceInterference>Une patrouille Goa'uld attirée par le signal a été programmée.</GR_TokraOrganicOperation_DebugIntelligenceInterference>
     <GR_TokraOrganicOperation_IntelligenceLegacyJobRedirected>L'ancienne tâche directe sur le module a été interrompue. Reprenez l'analyse depuis le communicateur sécurisé Tok'ra alimenté.</GR_TokraOrganicOperation_IntelligenceLegacyJobRedirected>
+    <GR_TokraObservation_DebugMenuDeploy>Observation : déployer le dispositif</GR_TokraObservation_DebugMenuDeploy>
+    <GR_TokraObservation_DebugMenuReady>Observation : terminer l’enregistrement</GR_TokraObservation_DebugMenuReady>
+    <GR_TokraObservation_DebugDeployed>Le dispositif d’observation a été déployé au point indiqué.</GR_TokraObservation_DebugDeployed>
+    <GR_TokraObservation_DebugReady>L’enregistrement d’observation est prêt à être récupéré.</GR_TokraObservation_DebugReady>
 </LanguageData>

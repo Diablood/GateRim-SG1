@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.2-dev - Rework organic Tok'ra observation operation
+
+- Replace the former abstract observation timer with a physical field device and a temporary peripheral observation point.
+- Deliver the operation-only device through the shared Tok'ra delivery-zone, communicator and fallback placement order.
+- Require an Intellectual-capable colon to retrieve the device, carry it to the marked point and spend time deploying it.
+- Keep the deployed device exposed to ordinary map dangers while it records Goa'uld activity for several in-game hours.
+- Require the final action to begin from a powered Tok'ra communicator, then physically recover the device and return it before transmission starts.
+- Resolve success only after the final transmission completes; recording readiness alone no longer grants success.
+- Persist the device, marker, target cell, deployment state, recording deadline and interrupted transmission progress.
+- Preserve compatibility with `0.3.0-dev` and `0.3.1-dev` saves, including conversion of an accepted legacy observation into the new physical workflow.
+- Add several RP success variants with immediate-repeat prevention.
+- Keep the normal communicator report limited to the active player-facing phase while reserving exact state and diagnostics for debug.
+- Add grouped observation debug actions for deployment and recording completion without adding another communicator gizmo.
+- Keep the observation device and marker non-buildable and absent from Architect categories.
+- Raise the assembly version to `0.3.2.0` and the mod metadata version to `0.3.2-dev`.
+
+- Observation deployment now installs the field sensor instead of dropping it as a loose item.
+- Data recovery starts directly from the observation site and continues to the communicator as one job.
+- Observation hauling jobs now explicitly carry one device, removing the `Invalid count: -1` warning.
+
 ## 0.3.1-dev - Rework organic Tok'ra intelligence operation
 
 - Move intelligence-module analysis entirely to the powered Tok'ra secure communicator and remove the former direct module interaction.
