@@ -1,78 +1,105 @@
 # Project state
 
-Current milestone: `0.2.53-dev - Consolidate French player wiki`.
+Current milestone: `0.3.0-dev - Refactor organic operation framework`.
 
 ## Active development base
 
-- Functional base tag: `v0.2.52-dev`.
-- Dedicated branch: `feature/french-player-wiki-consolidation`.
-- Planned final tag after local validation: `v0.2.53-dev`.
-- Current local test archive revision: `0.2.53-dev-r1`.
+- Functional base tag: `v0.2.53-dev`.
+- Dedicated branch: `feature/organic-operation-framework-refactor`.
+- Planned final tag after local validation: `v0.3.0-dev`.
+- Current local test archive revision: `0.3.0-dev-r2`.
 
 ## Milestone scope
 
-This milestone changes documentation only. It does not add or alter gameplay.
+This is an internal architectural milestone. It adds no new player-visible Tok'ra operation.
 
-The French player wiki is consolidated to match the current project state:
+The four existing recurring operations are moved behind a reusable framework:
 
-- rewrite `docs/wiki/Home.md`;
-- correct obsolete milestone and roadmap information;
-- move development directions out of the useful-links section;
-- rewrite the Tok'ra interaction roadmap through `0.2.52-dev`;
-- reorganize `docs/wiki/Content-Status.md` so implemented features are no
-  longer listed under planned content;
-- translate remaining English player-facing prose in `docs/wiki/*.md`;
-- keep proper names, RimWorld identifiers, developer-action names and technical
-  values in English when translation would be misleading;
-- clean raw or inconsistent labels in `_Sidebar.md`;
-- correct clearly obsolete player documentation for Prim'ta age, dependency,
-  temperature and implantation, Goa'uld forced or ritual implantation, Tok'ra
-  trust, support deliveries, safehouse leads and the decoded mission chain;
-- update contradictory FAQ answers that still described implemented systems as
-  future work;
-- validate internal wiki links and French terminology.
+- Goa'uld observation;
+- intelligence-module recovery;
+- wounded-agent care;
+- medical-supply handoff.
 
-English mirror pages are explicitly outside this milestone. They may be added
-later after the French documentation and gameplay have reached a stable public
-state.
+The target architecture contains:
 
-## Main wiki updates
+- `GameComponent_TokraOrganicOperationManager` for scheduling and shared lifecycle;
+- `TokraOrganicOperationInstance` for the single persistent active operation;
+- `TokraOrganicOperationFollowUp` for consequences that outlive primary resolution;
+- one worker per archetype;
+- shared definition, placement, visitor, resource and trust services;
+- one common debug and validation surface.
 
-- `Home.md` now reflects the playable `0.2.x` scope and no longer presents the
-  wiki as an early `0.1.6-dev` prototype.
-- `Prochain développement majeur` now lists current directions without assigning
-  unsupported intermediate version numbers.
-- `Liens utiles` contains only navigation and repository references.
-- Tok'ra organic-operation, delivery-zone, safehouse-contact and decoded-site
-  pages are fully harmonized in French.
-- Obsolete English validation notes are removed from player-facing pages.
-- Earlier Prim'ta, Goa'uld and Tok'ra pages no longer contradict later
-  implemented milestones.
-- The FAQ reflects autonomous Goa'uld implantation, Prim'ta dependency,
-  deep-freezing penalties and current Tok'ra world events.
-- The sidebar uses French labels and exposes the decoded-site and
-  reconnaissance pages without raw wiki-link syntax.
+## Intentional save break
 
-## Compatibility
+- Saves created with any `0.2.x-dev` build are unsupported.
+- A new game is required for `0.3.0-dev`.
+- Old Scribe fields and load migrations are not retained.
+- The unpublished legacy medical-supply container class, Def and translation are removed.
+- New saves created from `0.3.0-dev` become the future compatibility baseline.
 
-- No Def, save key, enum, C# behavior or gameplay data changes.
-- Save compatibility is unchanged from `0.2.52-dev`.
-- `About/ModIcon.png` remains untouched.
-- `About/About.xml` and assembly metadata advance to `0.2.53-dev` /
-  `0.2.53.0` only to identify the milestone consistently.
+## Debug requirements
+
+The framework test surface must remain accessible through either:
+
+- RimWorld developer mode; or
+- the GateRim SG-1 advanced-debug option.
+
+Required common controls:
+
+- force any of the four offers;
+- accept the current offer;
+- advance the current testable phase;
+- resolve success;
+- resolve failure;
+- expire the current state;
+- inspect detailed persisted state;
+- apply a pending post-operation consequence;
+- reset the framework.
+
+No technical control may be visible in normal play.
+
+## Files intentionally removed
+
+- `Source/GateRimSG1/Goauld/GameComponent_TokraOrganicOperationTracker.cs`;
+- `Source/GateRimSG1/Goauld/Building_TokraOrganicMedicalSupplyContainer.cs`;
+- `1.6/Defs/ThingDefs_Buildings/SG1_TokraOrganicMedicalSupplyContainer.xml`;
+- `Languages/French/DefInjected/ThingDef/SG1_TokraOrganicMedicalSupplyContainer.xml`.
+
+The tracker is replaced by the manager. The other three files existed only for unpublished `0.2.52-dev-r1/r2` save migration.
 
 ## Required local validation
 
-1. Build the assembly and confirm version `0.2.53.0`.
-2. Review `Home.md`, `Content-Status.md`, `Tokra-Interaction-Roadmap.md`,
-   `_Sidebar.md` and every modified Tok'ra page.
-3. Confirm that player-facing prose is French while proper names, commands and
-   technical identifiers remain readable.
-4. Check every internal Markdown link in `docs/wiki/*.md`.
-5. Run the durable French-wiki checklist in `docs/TESTING.md`.
-6. Synchronize the separate wiki only after local validation.
-7. Review `Player.log` to confirm that the metadata-only assembly change adds
-   no loading error.
+1. Delete the four obsolete files listed above before extracting the milestone ZIP.
+2. Build the assembly and confirm version `0.3.0.0`.
+3. Start a new game; do not reuse a `0.2.x-dev` save.
+4. Validate all four organic operations through their normal player flows.
+5. Save and reload during offered, accepted and ready phases.
+6. Save and reload while the medical liaison is leaving after success, then validate the separate death consequence.
+7. Validate every common developer action and the communicator debug menu.
+8. Disable developer mode and the advanced-debug option, then confirm that no operation-debug control remains visible.
+9. Review `Player.log` for loading, Scribe, null-reference or duplicate-resolution errors.
+10. Run the durable `0.3.0-dev` framework checks in `docs/TESTING.md`.
+
+## Local validation status
+
+The framework is functionally validated after `r2`:
+
+- the assembly builds successfully;
+- all four existing organic operations complete their tested player flows;
+- save and reload work across the shared lifecycle phases;
+- the common developer actions and communicator debug menu are accessible through the intended debug gates;
+- no operation-debug control remains visible in normal play;
+- no additional functional correction is currently required before publication.
+
+## Deferred gameplay follow-up
+
+These improvements are deliberately postponed until after framework stabilization:
+
+- redesign the Goa'uld observation operation with a more immersive, interactive and rewarding objective;
+- redesign the intelligence-module operation with stronger roleplay, meaningful constraints and more engaging player choices;
+- slow the wounded Tok'ra agent's recovery so colony medical care remains necessary and mechanically significant.
+
+They must be handled in later content milestones and must not delay publication of `0.3.0-dev`.
 
 ## Publication after validation
 
@@ -80,14 +107,13 @@ Follow `docs/MILESTONE_PUBLICATION.md`.
 
 Expected final publication identifiers:
 
-- commit: `0.2.53-dev - consolidate French player wiki`;
-- branch: `feature/french-player-wiki-consolidation`;
-- annotated tag: `v0.2.53-dev`.
+- commit: `0.3.0-dev - refactor organic operation framework`;
+- branch: `feature/organic-operation-framework-refactor`;
+- annotated tag: `v0.3.0-dev`.
 
 ## Repository rules reminder
 
-- Generate ZIP archives directly at the repository root; they are ignored by
-  Git.
+- Generate ZIP archives directly at the repository root; they are ignored by Git.
 - Publish only the final milestone tag without an `-rN` suffix.
 - Preserve `About/ModIcon.png`.
 - Keep metadata only in `About/About.xml`.

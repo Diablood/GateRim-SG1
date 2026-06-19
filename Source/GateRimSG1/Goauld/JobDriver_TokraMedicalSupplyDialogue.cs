@@ -22,7 +22,7 @@ namespace GateRimSG1.Goauld
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOn(() => !GameComponent_TokraOrganicOperationTracker
+            this.FailOn(() => !GameComponent_TokraOrganicOperationManager
                 .IsActiveMedicalSupplyLiaison(GetLiaison()));
 
             yield return Toils_Goto.GotoThing(
@@ -39,7 +39,7 @@ namespace GateRimSG1.Goauld
             {
                 initAction = delegate
                 {
-                    GameComponent_TokraOrganicOperationTracker
+                    GameComponent_TokraOrganicOperationManager
                         .TryOpenMedicalSupplyDialogue(
                             GetLiaison(),
                             pawn);

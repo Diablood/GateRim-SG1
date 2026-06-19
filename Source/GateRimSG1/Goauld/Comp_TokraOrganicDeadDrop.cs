@@ -74,21 +74,21 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            return GameComponent_TokraOrganicOperationTracker.TrySecureDeadDrop(
+            return GameComponent_TokraOrganicOperationManager.TrySecureDeadDrop(
                 parent,
                 operatorPawn);
         }
 
         internal bool IsOperationActive()
         {
-            return GameComponent_TokraOrganicOperationTracker
+            return GameComponent_TokraOrganicOperationManager
                 .IsActiveDeadDrop(parent);
         }
 
         private string GetDisabledReason(Pawn pawn)
         {
             string trackerReason
-                = GameComponent_TokraOrganicOperationTracker
+                = GameComponent_TokraOrganicOperationManager
                     .GetDeadDropDisabledReason(parent);
 
             if (!string.IsNullOrEmpty(trackerReason))

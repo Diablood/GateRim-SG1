@@ -57,7 +57,7 @@ Sélectionnez un colon, puis faites un clic droit sur le communicateur sécuris�
     <GR_TokraTrust_OrganicDeadDropSucceeded>La cellule Tok'ra confirme que les renseignements chiffrés ont été récupérés et transmis sans incident. Sa confiance envers la colonie progresse.</GR_TokraTrust_OrganicDeadDropSucceeded>
     <GR_TokraTrust_OrganicDeadDropFailed>L'échec de la récupération des renseignements rend la cellule Tok'ra légèrement plus prudente.</GR_TokraTrust_OrganicDeadDropFailed>
 
-    <GR_TokraOrganicOperation_DebugUnavailable>Le suivi des opérations Tok'ra organiques est indisponible.</GR_TokraOrganicOperation_DebugUnavailable>
+    <GR_TokraOrganicOperation_DebugUnavailable>Cette action du framework des opérations Tok'ra est indisponible dans l'état actuel.</GR_TokraOrganicOperation_DebugUnavailable>
     <GR_TokraOrganicOperation_DebugForced>Une opportunité d'observation Tok'ra organique a été forcée.</GR_TokraOrganicOperation_DebugForced>
     <GR_TokraOrganicOperation_DebugForcedDeadDrop>Une opportunité de récupération de renseignements Tok'ra a été forcée.</GR_TokraOrganicOperation_DebugForcedDeadDrop>
     <GR_TokraOrganicOperation_DebugNoAcceptedOperation>Aucune opération d'observation Tok'ra acceptée n'est active sur cette carte.</GR_TokraOrganicOperation_DebugNoAcceptedOperation>
@@ -67,5 +67,22 @@ Sélectionnez un colon, puis faites un clic droit sur le communicateur sécuris�
     <GR_TokraOrganicOperation_DebugNoAdvanceableOperation>Aucune opération Tok'ra organique acceptée ne peut être avancée sur cette carte.</GR_TokraOrganicOperation_DebugNoAdvanceableOperation>
     <GR_TokraOrganicOperation_DebugAdvanced>L'opération Tok'ra organique active est prête pour son étape de résolution.</GR_TokraOrganicOperation_DebugAdvanced>
     <GR_TokraOrganicOperation_DebugFailed>L'opération Tok'ra organique active a été résolue comme un échec.</GR_TokraOrganicOperation_DebugFailed>
-    <GR_TokraOrganicOperation_DebugReset>Le suivi des opérations Tok'ra organiques a été réinitialisé.</GR_TokraOrganicOperation_DebugReset>
+    <GR_TokraOrganicOperation_DebugReset>Le framework des opérations Tok'ra organiques a été réinitialisé.</GR_TokraOrganicOperation_DebugReset>
+    <GR_TokraOrganicOperation_DebugAccepted>L'offre Tok'ra organique actuelle a été acceptée.</GR_TokraOrganicOperation_DebugAccepted>
+    <GR_TokraOrganicOperation_DebugSucceeded>L'opération Tok'ra organique active a été résolue comme une réussite.</GR_TokraOrganicOperation_DebugSucceeded>
+    <GR_TokraOrganicOperation_DebugMenuLabel>Debug des opérations Tok'ra</GR_TokraOrganicOperation_DebugMenuLabel>
+    <GR_TokraOrganicOperation_DebugMenuDesc>Ouvre les contrôles techniques communs de l'opération Tok'ra organique actuelle.</GR_TokraOrganicOperation_DebugMenuDesc>
+    <GR_TokraOrganicOperation_DebugMenuState>Afficher l'état du framework</GR_TokraOrganicOperation_DebugMenuState>
+    <GR_TokraOrganicOperation_DebugMenuAccept>Accepter l'offre actuelle</GR_TokraOrganicOperation_DebugMenuAccept>
+    <GR_TokraOrganicOperation_DebugMenuAdvance>Avancer la phase actuelle</GR_TokraOrganicOperation_DebugMenuAdvance>
+    <GR_TokraOrganicOperation_DebugMenuSucceed>Résoudre en réussite</GR_TokraOrganicOperation_DebugMenuSucceed>
+    <GR_TokraOrganicOperation_DebugMenuFail>Résoudre en échec</GR_TokraOrganicOperation_DebugMenuFail>
+    <GR_TokraOrganicOperation_DebugMenuExpire>Faire expirer l'état actuel</GR_TokraOrganicOperation_DebugMenuExpire>
+    <GR_TokraOrganicOperation_DebugMenuReset>Réinitialiser le framework</GR_TokraOrganicOperation_DebugMenuReset>
+    <GR_TokraOrganicOperation_DebugFollowUpApplied>La conséquence Tok'ra post-opération en attente a été appliquée.</GR_TokraOrganicOperation_DebugFollowUpApplied>
+    <GR_TokraOrganicOperation_DebugMenuForceObservation>Forcer l'offre d'observation</GR_TokraOrganicOperation_DebugMenuForceObservation>
+    <GR_TokraOrganicOperation_DebugMenuForceIntelligence>Forcer l'offre de renseignement</GR_TokraOrganicOperation_DebugMenuForceIntelligence>
+    <GR_TokraOrganicOperation_DebugMenuForceWounded>Forcer l'offre de l'agent blessé</GR_TokraOrganicOperation_DebugMenuForceWounded>
+    <GR_TokraOrganicOperation_DebugMenuForceMedical>Forcer l'offre de remise médicale</GR_TokraOrganicOperation_DebugMenuForceMedical>
+    <GR_TokraOrganicOperation_DebugMenuFollowUp>Appliquer la conséquence en attente</GR_TokraOrganicOperation_DebugMenuFollowUp>
 </LanguageData>

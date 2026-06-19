@@ -2,99 +2,140 @@
 
 ## Purpose
 
-The organic-operation framework schedules low-sensitivity requests initiated by Tok'ra cells. It remains separate from manual communicator support requests and from sensitive mission chains.
+The organic-operation framework schedules recurring requests initiated by Tok'ra cells. It remains separate from manual communicator support requests and from the decoded-relay mission chain.
 
-`0.2.50-dev` consolidated observation and intelligence recovery. `0.2.51-dev` extends the same framework with recurring care for a wounded Tok'ra agent without renumbering the established save values.
+`0.3.0-dev` replaces the former monolithic operation tracker with an internal reusable framework. No new player-visible operation is added by this milestone.
 
-## Definitions
+## Compatibility boundary
 
-Each archetype is described by `TokraOrganicOperationDefinition` and registered in `TokraOrganicOperationFramework`.
+`0.3.0-dev` deliberately starts a new save architecture.
 
-A definition contains:
+- Saves created with `0.2.x-dev` are not supported.
+- A new game is required when moving to `0.3.0-dev`.
+- Obsolete migration-only fields, load repair and the former medical-container compatibility Def are removed.
+- Saves created from `0.3.0-dev` are the new compatibility baseline for future development.
 
-- persisted archetype identity;
-- trust-tier selection weights;
-- offer, preparation and deadline timing;
-- success and failure trust changes;
-- optional skill XP;
-- player-facing action, letter and status keys;
-- an optional physical-objective ThingDef;
-- a technical debug label.
+This breaking change is acceptable before public release and avoids carrying unpublished development migrations into the stable mod.
 
-This keeps scheduler behavior data-oriented while retaining ordinary C# definitions and the existing save identifiers.
+## Main architecture
 
-## Persistent state
+### `GameComponent_TokraOrganicOperationManager`
 
-`GameComponent_TokraOrganicOperationTracker` remains the authoritative save-persistent tracker. Existing Scribe keys from `0.2.48-dev` and `0.2.49-dev` are retained.
+The game component owns only framework-wide responsibilities:
 
-Framework save version `2` added an explicit ready state. Version `3` adds the wounded-agent pawn lifecycle while retaining all previous numeric values and Scribe keys.
+- hidden scheduling and trust-tier delays;
+- weighted archetype selection and local anti-repetition;
+- the currently offered or active instance;
+- one post-resolution consequence record;
+- shared communicator status;
+- success, failure and ignored-offer counters;
+- shared developer controls.
 
-Compatibility fields include:
+Manual Tok'ra requests remain outside this manager.
 
-- `tokraOrganicFrameworkSaveVersion`;
-- `tokraOrganicResolutionApplied`;
-- `tokraOrganicActiveWoundedAgent`;
-- `tokraOrganicWoundedAgentStableSinceTick`;
-- `tokraOrganicWoundedAgentDepartureOrdered`;
-- `tokraOrganicWoundedAgentDepartureDeadlineTick`.
+### `TokraOrganicOperationInstance`
 
-The existing enum values remain stable:
+Only one organic operation can be visible at a time. Its persisted runtime data is stored in one `IExposable` instance rather than as new fields added to the game component for every archetype.
 
-```text
-TokraOrganicOperationArchetype.None = 0
-TokraOrganicOperationArchetype.GoauldObservation = 1
-TokraOrganicOperationArchetype.DeadDropRecovery = 2
-TokraOrganicOperationArchetype.WoundedAgentCare = 3
+The common record contains:
 
-TokraOrganicOperationState.None = 0
-TokraOrganicOperationState.Offered = 1
-TokraOrganicOperationState.Accepted = 2
-TokraOrganicOperationState.Ready = 3
-```
+- archetype and state;
+- map identifier;
+- offer, acceptance, readiness and deadline ticks;
+- duplicate-resolution guard;
+- optional physical objective;
+- optional wounded-agent pawn and medical-care state;
+- optional medical liaison, meeting cell and arrival state.
 
-The internal `DeadDrop` name is retained only to avoid breaking saved data and Def references. Player text describes a Tok'ra intelligence module.
-For legacy saves, an accepted observation whose preparation tick has already elapsed is promoted to `Ready` during load repair. The same promotion is performed lazily when the communicator menu or interaction is queried, preventing the transmission action from depending on the next periodic tracker tick.
+A future archetype should extend the shared instance only when a field is genuinely reusable. Operation-specific behavior belongs in a worker.
+
+### `TokraOrganicOperationWorker`
+
+Each archetype is selected through a worker registry:
+
+- `TokraOrganicOperationWorker_GoauldObservation`;
+- `TokraOrganicOperationWorker_DeadDropRecovery`;
+- `TokraOrganicOperationWorker_WoundedAgentCare`;
+- `TokraOrganicOperationWorker_MedicalSupplyHandoff`.
+
+A worker owns the routing for:
+
+- acceptance;
+- active ticking;
+- communicator completion when relevant.
+
+Shared scheduling, persistence, trust resolution and cleanup remain in the manager.
+
+### `TokraOrganicOperationDefinition`
+
+Definitions continue to provide data shared by scheduling and presentation:
+
+- trust-tier weights;
+- offer, preparation and deadline timings;
+- XP and trust consequences;
+- translation keys;
+- optional physical-objective Def;
+- short technical label.
+
+### Shared services
+
+Existing services remain reusable behind the framework:
+
+- `TokraDeliveryDropUtility` for preferred placement;
+- `TokraOrganicWoundedAgentUtility` for patient generation and departure;
+- `TokraOrganicMedicalSupplyUtility` for liaison arrival, resource transfer and departure;
+- `GameComponent_TokraTrustTracker` for qualitative relationship consequences.
+
+## Persistent post-resolution consequences
+
+A consequence can outlive the primary operation. The first implemented case is the medical liaison dying while leaving after a successful handoff.
+
+`TokraOrganicOperationFollowUp` persists this reference and its pending penalty separately. Clearing the primary operation therefore cannot erase the follow-up check or reapply the primary success.
 
 ## Resolution guarantee
 
-All accepted-operation outcomes pass through one guarded resolver. A successful or failed outcome can apply only once:
+All accepted outcomes pass through one guarded resolver. A primary outcome can apply only once:
 
-- optional skill XP;
+- skill XP;
 - Tok'ra trust change;
 - outcome letter;
 - success/failure counters;
-- physical-objective cleanup;
+- objective cleanup;
 - next hidden scheduling delay.
 
-The guard is persisted so a save created around resolution cannot reapply the outcome after loading.
+The guard is stored inside the active instance.
 
-## Physical objectives
+## Debug and validation surface
 
-The shared framework handles lookup, placement and cleanup of physical objectives.
+The framework exposes one shared test API.
 
-Placement delegates to `TokraDeliveryDropUtility.TryPlaceThingNearPreferredDeliveryCell`, preserving the established hierarchy:
+RimWorld developer mode provides compact actions under `GateRim SG-1`:
 
-1. Tok'ra delivery drop zone;
-2. powered secure communicator;
-3. reachable and unfogged map edge.
+- force each archetype offer;
+- accept the current offer;
+- advance the current phase;
+- resolve success;
+- resolve failure;
+- expire the current state;
+- display the full framework state;
+- apply a pending post-operation consequence;
+- reset the framework.
 
-On load, an absent saved reference can be recovered by searching the active map for the objective ThingDef. Stale objectives outside the active operation are removed.
+The same controls are available from one `Tok'ra operation debug` menu on the secure communicator whenever RimWorld developer mode or the GateRim SG-1 advanced-debug setting is active. No debug command is visible during normal play.
+
+Player-facing texts remain RP-oriented. The state report and debug labels may expose technical details.
 
 ## Adding a future archetype
 
-A future operation should:
+A new organic operation should:
 
-1. add a stable enum value without renumbering existing values;
-2. register one definition with timings, weights, outcomes and translation keys;
-3. reuse the shared offer and resolution flow;
-4. add custom interaction code only for genuinely distinct player actions;
-5. preserve RP player text, concise menu labels and technical-only debug labels;
-6. extend the durable checks in `docs/TESTING.md` using the standalone, session-ordered format defined in `docs/TESTING_GUIDELINES.md`.
+1. add a stable archetype value without renumbering existing values;
+2. register one definition;
+3. add one worker;
+4. reuse the manager's offer, persistence, resolution and scheduling flow;
+5. reuse existing visitor, delivery, resource or trust services when applicable;
+6. add only genuinely reusable runtime data to `TokraOrganicOperationInstance`;
+7. expose all important phases through the common debug API;
+8. extend the durable checks in `docs/TESTING.md`.
 
-A new archetype should not duplicate scheduling, trust resolution, persistence, objective cleanup or delivery routing.
-## Wounded-agent care archetype
-
-`WoundedAgentCare = 3` extends the framework without renumbering the observation or intelligence-recovery values. It uses a persistent pawn reference instead of a building objective. The tracker owns the care deadline, stability interval, departure order and single resolution, while vanilla rescue and tending systems own the actual medical gameplay.
-
-The communicator displays only the currently active patient state. After departure, death or failure, the shared status returns immediately to the generic channel line and the archetype becomes eligible again after the hidden scheduler delay.
-
+A new archetype must not duplicate hidden scheduling, anti-repetition, trust resolution, single-visible-operation handling or duplicate-resolution protection.

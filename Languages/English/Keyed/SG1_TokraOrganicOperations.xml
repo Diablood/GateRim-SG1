@@ -57,7 +57,7 @@ Select a colonist, then right-click the powered Tok'ra secure communicator to ac
     <GR_TokraTrust_OrganicDeadDropSucceeded>The Tok'ra cell confirms that the encrypted intelligence was recovered and transmitted without incident. Its confidence in the colony improves.</GR_TokraTrust_OrganicDeadDropSucceeded>
     <GR_TokraTrust_OrganicDeadDropFailed>The failed intelligence recovery makes the Tok'ra cell slightly more cautious.</GR_TokraTrust_OrganicDeadDropFailed>
 
-    <GR_TokraOrganicOperation_DebugUnavailable>Tok'ra organic operation tracker unavailable.</GR_TokraOrganicOperation_DebugUnavailable>
+    <GR_TokraOrganicOperation_DebugUnavailable>Tok'ra organic operation framework action unavailable in the current state.</GR_TokraOrganicOperation_DebugUnavailable>
     <GR_TokraOrganicOperation_DebugForced>Tok'ra organic observation opportunity forced.</GR_TokraOrganicOperation_DebugForced>
     <GR_TokraOrganicOperation_DebugForcedDeadDrop>Tok'ra organic intelligence-recovery opportunity forced.</GR_TokraOrganicOperation_DebugForcedDeadDrop>
     <GR_TokraOrganicOperation_DebugNoAcceptedOperation>No accepted Tok'ra observation operation is active on this map.</GR_TokraOrganicOperation_DebugNoAcceptedOperation>
@@ -67,5 +67,22 @@ Select a colonist, then right-click the powered Tok'ra secure communicator to ac
     <GR_TokraOrganicOperation_DebugNoAdvanceableOperation>No accepted Tok'ra organic operation can be advanced on this map.</GR_TokraOrganicOperation_DebugNoAdvanceableOperation>
     <GR_TokraOrganicOperation_DebugAdvanced>The active Tok'ra organic operation is ready for its completion step.</GR_TokraOrganicOperation_DebugAdvanced>
     <GR_TokraOrganicOperation_DebugFailed>The active Tok'ra organic operation was resolved as failed.</GR_TokraOrganicOperation_DebugFailed>
-    <GR_TokraOrganicOperation_DebugReset>Tok'ra organic operation tracker reset.</GR_TokraOrganicOperation_DebugReset>
+    <GR_TokraOrganicOperation_DebugReset>Tok'ra organic operation framework reset.</GR_TokraOrganicOperation_DebugReset>
+    <GR_TokraOrganicOperation_DebugAccepted>The current Tok'ra organic operation offer was accepted.</GR_TokraOrganicOperation_DebugAccepted>
+    <GR_TokraOrganicOperation_DebugSucceeded>The active Tok'ra organic operation was resolved as a success.</GR_TokraOrganicOperation_DebugSucceeded>
+    <GR_TokraOrganicOperation_DebugMenuLabel>Tok'ra operation debug</GR_TokraOrganicOperation_DebugMenuLabel>
+    <GR_TokraOrganicOperation_DebugMenuDesc>Open the shared technical controls for the current Tok'ra organic operation.</GR_TokraOrganicOperation_DebugMenuDesc>
+    <GR_TokraOrganicOperation_DebugMenuState>Show framework state</GR_TokraOrganicOperation_DebugMenuState>
+    <GR_TokraOrganicOperation_DebugMenuAccept>Accept current offer</GR_TokraOrganicOperation_DebugMenuAccept>
+    <GR_TokraOrganicOperation_DebugMenuAdvance>Advance current phase</GR_TokraOrganicOperation_DebugMenuAdvance>
+    <GR_TokraOrganicOperation_DebugMenuSucceed>Resolve as success</GR_TokraOrganicOperation_DebugMenuSucceed>
+    <GR_TokraOrganicOperation_DebugMenuFail>Resolve as failure</GR_TokraOrganicOperation_DebugMenuFail>
+    <GR_TokraOrganicOperation_DebugMenuExpire>Expire current state</GR_TokraOrganicOperation_DebugMenuExpire>
+    <GR_TokraOrganicOperation_DebugMenuReset>Reset framework</GR_TokraOrganicOperation_DebugMenuReset>
+    <GR_TokraOrganicOperation_DebugFollowUpApplied>The pending Tok'ra post-operation consequence was applied.</GR_TokraOrganicOperation_DebugFollowUpApplied>
+    <GR_TokraOrganicOperation_DebugMenuForceObservation>Force observation offer</GR_TokraOrganicOperation_DebugMenuForceObservation>
+    <GR_TokraOrganicOperation_DebugMenuForceIntelligence>Force intelligence offer</GR_TokraOrganicOperation_DebugMenuForceIntelligence>
+    <GR_TokraOrganicOperation_DebugMenuForceWounded>Force wounded agent offer</GR_TokraOrganicOperation_DebugMenuForceWounded>
+    <GR_TokraOrganicOperation_DebugMenuForceMedical>Force medical handoff offer</GR_TokraOrganicOperation_DebugMenuForceMedical>
+    <GR_TokraOrganicOperation_DebugMenuFollowUp>Apply pending follow-up</GR_TokraOrganicOperation_DebugMenuFollowUp>
 </LanguageData>

@@ -4,160 +4,178 @@ using Verse;
 
 namespace GateRimSG1.Goauld
 {
+    /// <summary>
+    /// Shared debug surface for every organic Tok'ra operation worker.
+    /// These actions are visible only through RimWorld developer tools.
+    /// Equivalent diagnostics are exposed on the communicator when the
+    /// GateRim SG-1 advanced-debug option is enabled.
+    /// </summary>
     public static class TokraOrganicOperationDebugActions
     {
         [DebugAction(
             "GateRim SG-1",
-            "Force Tok'ra observation offer",
+            "Tok'ra ops: force observation offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void ForceOrganicObservationOpportunity()
+        public static void ForceObservationOffer()
         {
-            if (!GameComponent_TokraOrganicOperationTracker
-                .DebugForceOpportunity(Find.CurrentMap))
-            {
-                ShowUnavailableMessage();
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraOrganicOperation_DebugForced".Translate(),
-                MessageTypeDefOf.PositiveEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceOpportunity(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugForced");
         }
 
         [DebugAction(
             "GateRim SG-1",
-            "Force Tok'ra intelligence module offer",
+            "Tok'ra ops: force intelligence offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void ForceOrganicDeadDropOpportunity()
+        public static void ForceIntelligenceOffer()
         {
-            if (!GameComponent_TokraOrganicOperationTracker
-                .DebugForceDeadDropOpportunity(Find.CurrentMap))
-            {
-                ShowUnavailableMessage();
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraOrganicOperation_DebugForcedDeadDrop".Translate(),
-                MessageTypeDefOf.PositiveEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceDeadDropOpportunity(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugForcedDeadDrop");
         }
 
         [DebugAction(
             "GateRim SG-1",
-            "Force Tok'ra wounded agent offer",
+            "Tok'ra ops: force wounded agent offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void ForceOrganicWoundedAgentOpportunity()
+        public static void ForceWoundedAgentOffer()
         {
-            if (!GameComponent_TokraOrganicOperationTracker
-                .DebugForceWoundedAgentOpportunity(Find.CurrentMap))
-            {
-                ShowUnavailableMessage();
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraWoundedAgent_DebugForced".Translate(),
-                MessageTypeDefOf.PositiveEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceWoundedAgentOpportunity(Find.CurrentMap),
+                "GR_TokraWoundedAgent_DebugForced");
         }
 
         [DebugAction(
             "GateRim SG-1",
-            "Force Tok'ra medical resupply offer",
+            "Tok'ra ops: force medical handoff offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void ForceOrganicMedicalSupplyOpportunity()
+        public static void ForceMedicalHandoffOffer()
         {
-            if (!GameComponent_TokraOrganicOperationTracker
-                .DebugForceMedicalSupplyOpportunity(Find.CurrentMap))
-            {
-                ShowUnavailableMessage();
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraMedicalSupply_DebugForced".Translate(),
-                MessageTypeDefOf.PositiveEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceMedicalSupplyOpportunity(Find.CurrentMap),
+                "GR_TokraMedicalSupply_DebugForced");
         }
 
         [DebugAction(
             "GateRim SG-1",
-            "Advance active Tok'ra operation",
+            "Tok'ra ops: accept current offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void AdvanceActiveOrganicOperation()
+        public static void AcceptCurrentOffer()
         {
-            if (!GameComponent_TokraOrganicOperationTracker
-                .DebugMakeActiveReady(Find.CurrentMap))
-            {
-                Messages.Message(
-                    "GR_TokraOrganicOperation_DebugNoAdvanceableOperation"
-                        .Translate(),
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraOrganicOperation_DebugAdvanced".Translate(),
-                MessageTypeDefOf.PositiveEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugAcceptActiveOffer(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugAccepted");
         }
 
         [DebugAction(
             "GateRim SG-1",
-            "Fail active Tok'ra operation",
+            "Tok'ra ops: advance current phase",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void FailActiveOrganicOperation()
+        public static void AdvanceCurrentPhase()
         {
-            if (!GameComponent_TokraOrganicOperationTracker
-                .DebugFailActiveOperation(Find.CurrentMap))
-            {
-                Messages.Message(
-                    "GR_TokraOrganicOperation_DebugNoActiveOperation"
-                        .Translate(),
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraOrganicOperation_DebugFailed".Translate(),
-                MessageTypeDefOf.NeutralEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugMakeActiveReady(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugAdvanced");
         }
 
         [DebugAction(
             "GateRim SG-1",
-            "Reset Tok'ra operations",
+            "Tok'ra ops: succeed current operation",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
-        public static void ResetOrganicOperationTracker()
+        public static void SucceedCurrentOperation()
         {
-            if (!GameComponent_TokraOrganicOperationTracker.DebugReset())
-            {
-                ShowUnavailableMessage();
-                return;
-            }
-
-            Messages.Message(
-                "GR_TokraOrganicOperation_DebugReset".Translate(),
-                MessageTypeDefOf.NeutralEvent,
-                historical: false);
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugSucceedActiveOperation(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugSucceeded");
         }
 
-        private static void ShowUnavailableMessage()
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: fail current operation",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void FailCurrentOperation()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugFailActiveOperation(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugFailed");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: expire current state",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ExpireCurrentState()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugExpireCurrentState(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugExpired");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: show framework state",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ShowFrameworkState()
+        {
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    GameComponent_TokraOrganicOperationManager
+                        .GetDebugStateReport(Find.CurrentMap)));
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: apply pending follow-up",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ApplyPendingFollowUp()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugApplyPendingFollowUp(),
+                "GR_TokraOrganicOperation_DebugFollowUpApplied");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: reset framework",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ResetFramework()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager.DebugReset(),
+                "GR_TokraOrganicOperation_DebugReset");
+        }
+
+        private static void Run(bool succeeded, string successMessageKey)
         {
             Messages.Message(
-                "GR_TokraOrganicOperation_DebugUnavailable".Translate(),
-                MessageTypeDefOf.RejectInput,
+                succeeded
+                    ? successMessageKey.Translate()
+                    : "GR_TokraOrganicOperation_DebugUnavailable".Translate(),
+                succeeded
+                    ? MessageTypeDefOf.PositiveEvent
+                    : MessageTypeDefOf.RejectInput,
                 historical: false);
         }
     }

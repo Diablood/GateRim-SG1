@@ -59,7 +59,7 @@ namespace GateRimSG1.Goauld
                     giveButtonRect,
                     "GR_TokraMedicalSupply_GiveMedicine".Translate()))
             {
-                if (GameComponent_TokraOrganicOperationTracker
+                if (GameComponent_TokraOrganicOperationManager
                     .TryCompleteMedicalSupplyHandoff(
                         liaison,
                         negotiator))

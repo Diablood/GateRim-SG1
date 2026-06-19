@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.0-dev - Refactor organic operation framework
+
+- Replace the monolithic `GameComponent_TokraOrganicOperationTracker` with `GameComponent_TokraOrganicOperationManager`.
+- Persist the single offered or active operation through `TokraOrganicOperationInstance` instead of adding archetype-specific fields directly to the game component.
+- Persist post-resolution consequences separately through `TokraOrganicOperationFollowUp`.
+- Add a worker registry and one worker for each existing organic archetype: observation, intelligence recovery, wounded-agent care and medical-supply handoff.
+- Route acceptance, active ticking and communicator completion through the registered worker while retaining the validated player-facing behavior.
+- Keep hidden scheduling, trust-tier weighting, anti-repetition, common resolution and cleanup in the shared manager.
+- Deliberately end compatibility with unpublished `0.2.x-dev` saves and require a new game for `0.3.0-dev`.
+- Remove the old per-field Scribe migration and load-repair framework.
+- Remove the unpublished legacy medical-supply container class, ThingDef and French DefInjected text.
+- Add common developer controls to force offers, accept, advance, succeed, fail, expire, inspect, apply pending follow-up consequences and reset organic operations.
+- Add one compact communicator debug menu when RimWorld developer mode or the GateRim SG-1 advanced-debug option is active.
+- Keep all operation debug controls hidden during normal play.
+- Add durable new-save, persistence, duplicate-resolution and debug-visibility checks to `docs/TESTING.md`.
+- Rewrite the framework architecture document and update project state and French wiki revision markers.
+- Raise the assembly version to `0.3.0.0` and the mod metadata version to `0.3.0-dev`.
+
+
 ## 0.2.53-dev - Consolidate French player wiki
 
 - Rewrite the French wiki home page to reflect the actual playable `0.2.x` scope instead of the early `0.1.6-dev` prototype state.

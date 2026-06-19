@@ -138,7 +138,6 @@ namespace GateRimSG1.Goauld
 
     internal static class TokraOrganicOperationFramework
     {
-        public const int CurrentSaveVersion = 5;
         public const float RepeatedArchetypeWeightFactor = 0.25f;
 
         private static readonly IReadOnlyDictionary<

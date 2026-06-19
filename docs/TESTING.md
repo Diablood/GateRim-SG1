@@ -1,5 +1,136 @@
 # Testing workflow
 
+## 0.3.0-dev - Framework interne des opérations Tok'ra organiques
+
+### Préconditions générales
+
+- Utiliser une nouvelle partie créée avec `0.3.0-dev`.
+- Ne pas charger de sauvegarde `0.2.x-dev` pour cette validation.
+- Construire la DLL puis vérifier l'absence d'erreur rouge au démarrage.
+- Disposer d'un communicateur Tok'ra alimenté et d'au moins un colon valide.
+- Conserver `Player.log` pour le contrôle final.
+
+### Test 1 — Visibilité normale et debug
+
+1. Désactiver le mode développeur RimWorld.
+2. Désactiver `Afficher les informations de debug avancées` dans les options GateRim SG-1.
+3. Sélectionner le communicateur.
+4. Vérifier qu'aucun menu ou gizmo technique des opérations organiques n'est visible.
+5. Activer l'option avancée GateRim SG-1 sans activer le mode développeur.
+6. Sélectionner de nouveau le communicateur.
+7. Vérifier la présence d'un seul gizmo `Debug des opérations Tok'ra`.
+8. Ouvrir ce menu et vérifier les actions d'état, acceptation, avancement,
+   réussite, échec, expiration, conséquence secondaire et réinitialisation.
+9. Désactiver l'option avancée, activer le mode développeur et confirmer que
+   les actions compactes `Tok'ra ops: ...` sont disponibles dans les outils
+   développeur.
+
+Résultat attendu : le système de test est accessible par les deux voies prévues,
+mais totalement absent du jeu normal.
+
+### Test 2 — Offre et persistance communes
+
+Pour chacun des quatre archétypes :
+
+1. Forcer l'offre correspondante.
+2. Ouvrir `Afficher l'état du framework` et noter l'archétype, l'état, la carte
+   et le tick d'expiration.
+3. Sauvegarder puis recharger.
+4. Vérifier que la même offre reste active et qu'aucune seconde offre
+   organique n'apparaît.
+5. Utiliser `Accepter l'offre actuelle` ou l'interaction normale du
+   communicateur.
+6. Sauvegarder puis recharger avant la résolution.
+7. Vérifier que l'instance active, ses références et ses délais restent
+   cohérents.
+
+Résultat attendu : une seule instance persistante porte l'opération active,
+sans ancien champ de migration ni double création.
+
+### Test 3 — Observation Goa'uld
+
+1. Forcer puis accepter l'offre d'observation.
+2. Utiliser `Avancer la phase actuelle`.
+3. Vérifier que le rapport est immédiatement prêt à transmettre.
+4. Sauvegarder et recharger dans cet état.
+5. Transmettre normalement via le communicateur.
+6. Vérifier une seule réussite, un seul gain de confiance qualitatif et un seul
+   gain d'expérience.
+7. Répéter avec `Résoudre en échec`.
+
+### Test 4 — Module de renseignement
+
+1. Forcer puis accepter l'offre de récupération.
+2. Vérifier le placement selon l'ordre zone de livraison, communicateur,
+   fallback accessible.
+3. Sauvegarder et recharger avec le module présent.
+4. Sécuriser normalement le module.
+5. Vérifier une seule réussite et la disparition de l'objectif.
+6. Refaire le test en détruisant le module ou avec `Faire expirer l'état
+   actuel`.
+7. Vérifier un seul échec et aucun objectif résiduel.
+
+### Test 5 — Agent Tok'ra blessé
+
+1. Forcer puis accepter l'offre.
+2. Vérifier l'arrivée du patient, le choc de symbiote et le flux médical
+   vanilla.
+3. Sauvegarder et recharger pendant le transport vers un lit, après un soin et
+   pendant le départ.
+4. Vérifier que la réussite n'est appliquée qu'après la sortie réelle.
+5. Refaire le test avec la mort du patient avant sa sortie.
+6. Vérifier que la mort produit un seul échec.
+7. Vérifier aussi l'action debug d'avancement, qui doit lever le blocage de
+   soin et conduire à la phase suivante sans dupliquer la résolution.
+
+### Test 6 — Remise de fournitures médicales
+
+1. Forcer puis accepter l'offre.
+2. Utiliser l'action d'avancement avant l'arrivée et vérifier que l'agent de
+   liaison est généré et progresse vers le point de rencontre.
+3. Sauvegarder et recharger avant puis après son arrivée.
+4. Effectuer la remise normale de deux médicaments.
+5. Vérifier la réussite immédiate et le départ du visiteur.
+6. Sauvegarder et recharger pendant son départ.
+7. Tuer le visiteur avant sa sortie.
+8. Vérifier que la réussite n'est pas annulée et que la conséquence
+   relationnelle secondaire n'est appliquée qu'une fois.
+9. Refaire sans remise et faire expirer l'opération pour vérifier l'échec
+   unique.
+
+### Test 7 — Résolution et nettoyage partagés
+
+1. Sur chaque archétype accepté, utiliser successivement les actions debug de
+   réussite, échec ou expiration dans des sessions séparées.
+2. Après chaque résolution, rouvrir l'état du framework.
+3. Vérifier l'absence d'opération active et la programmation d'une future
+   opportunité.
+4. Réutiliser immédiatement l'action de résolution précédente.
+5. Vérifier qu'aucun gain, perte, lettre ou compteur n'est appliqué une seconde
+   fois.
+6. Utiliser `Réinitialiser le framework` et confirmer le nettoyage de tout
+   objectif ou visiteur encore rattaché à l'instance active.
+
+### Test 8 — Contrôle de la rupture de sauvegarde
+
+1. Vérifier qu'aucun des fichiers de compatibilité du conteneur médical n'est
+   encore présent dans le dépôt.
+2. Vérifier que le code ne contient plus
+   `GameComponent_TokraOrganicOperationTracker`.
+3. Vérifier que les nouvelles sauvegardes contiennent
+   `tokraOrganicActiveOperation` et `tokraOrganicOperationFollowUp`.
+4. Ne pas demander de prise en charge d'une sauvegarde `0.2.x-dev` : cette
+   rupture est volontaire et documentée.
+
+### Contrôle final
+
+- Rejouer une occurrence normale de chaque archétype sans outil debug.
+- Vérifier le retour immédiat à l'état RP générique du canal après résolution.
+- Vérifier l'anti-répétition locale et le délai caché entre opportunités.
+- Vérifier `Player.log` : aucune erreur de chargement de type, de Scribe, de
+  référence nulle, de Def manquante ou de résolution double.
+
+
 ## Vérification du wiki joueur français
 
 À exécuter après toute passe globale de traduction ou de réorganisation du

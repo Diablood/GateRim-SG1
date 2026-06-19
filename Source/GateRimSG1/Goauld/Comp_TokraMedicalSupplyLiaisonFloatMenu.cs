@@ -29,7 +29,7 @@ namespace GateRimSG1.Goauld
 
             Pawn liaison = parent as Pawn;
 
-            if (!GameComponent_TokraOrganicOperationTracker
+            if (!GameComponent_TokraOrganicOperationManager
                 .IsMedicalSupplyLiaison(liaison))
             {
                 yield break;
@@ -38,7 +38,7 @@ namespace GateRimSG1.Goauld
             string label = "GR_TokraMedicalSupply_TalkToLiaison"
                 .Translate(liaison.LabelShortCap);
             string disabledReason
-                = GameComponent_TokraOrganicOperationTracker
+                = GameComponent_TokraOrganicOperationManager
                     .GetMedicalSupplyLiaisonDisabledReason(
                         liaison,
                         selPawn);

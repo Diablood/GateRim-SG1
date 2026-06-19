@@ -223,6 +223,17 @@ namespace GateRimSG1.Goauld
                 medicalCacheDisabledReason));
 
             yield return medicalCacheCommand;
+
+            Command_Action organicOperationDebugCommand = new Command_Action
+            {
+                defaultLabel = "GR_TokraOrganicOperation_DebugMenuLabel"
+                    .Translate(),
+                defaultDesc = "GR_TokraOrganicOperation_DebugMenuDesc"
+                    .Translate(),
+                action = OpenOrganicOperationDebugMenu
+            };
+
+            yield return organicOperationDebugCommand;
         }
 
 
@@ -240,13 +251,13 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            if (GameComponent_TokraOrganicOperationTracker
+            if (GameComponent_TokraOrganicOperationManager
                 .HasActiveOpportunityForMap(parent.Map))
             {
                 foreach (FloatMenuOption option in GetOperateFloatMenuOptions(
                     selPawn,
                     HandleOrganicObservationJobDefName,
-                    GameComponent_TokraOrganicOperationTracker
+                    GameComponent_TokraOrganicOperationManager
                         .GetCommunicatorActionLabel(parent.Map),
                     TokraCommunicatorOperation.OrganicObservation))
                 {
@@ -377,7 +388,7 @@ namespace GateRimSG1.Goauld
                 GetMedicalSupportStatusLabel(),
                 GetMedicalCacheStatusLabel()).ToString();
             string organicOperationStatus
-                = GameComponent_TokraOrganicOperationTracker
+                = GameComponent_TokraOrganicOperationManager
                     .GetInspectStatusForMap(parent.Map);
 
             return string.IsNullOrEmpty(organicOperationStatus)
@@ -422,7 +433,7 @@ namespace GateRimSG1.Goauld
                     interceptedThreatStatus)
                 .ToString();
             string organicOperationStatus
-                = GameComponent_TokraOrganicOperationTracker
+                = GameComponent_TokraOrganicOperationManager
                     .GetStatusReportLineForMap(parent.Map);
 
             Find.WindowStack.Add(
@@ -469,7 +480,7 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            return GameComponent_TokraOrganicOperationTracker
+            return GameComponent_TokraOrganicOperationManager
                 .TryHandleCommunicatorInteraction(parent.Map, operatorPawn);
         }
 
@@ -1293,7 +1304,7 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
-            return GameComponent_TokraOrganicOperationTracker
+            return GameComponent_TokraOrganicOperationManager
                 .GetCommunicatorDisabledReason(parent.Map);
         }
 
@@ -2551,5 +2562,142 @@ namespace GateRimSG1.Goauld
         {
             return (ticks / 60000f).ToString("0.#");
         }
+
+        private void OpenOrganicOperationDebugMenu()
+        {
+            Map map = parent.Map;
+            List<FloatMenuOption> options = new List<FloatMenuOption>
+            {
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuForceObservation"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugForceOpportunity(map),
+                            "GR_TokraOrganicOperation_DebugForced");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuForceIntelligence"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugForceDeadDropOpportunity(map),
+                            "GR_TokraOrganicOperation_DebugForcedDeadDrop");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuForceWounded"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugForceWoundedAgentOpportunity(map),
+                            "GR_TokraWoundedAgent_DebugForced");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuForceMedical"
+                        .Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugForceMedicalSupplyOpportunity(map),
+                            "GR_TokraMedicalSupply_DebugForced");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuState".Translate(),
+                    delegate
+                    {
+                        Find.WindowStack.Add(
+                            new Dialog_MessageBox(
+                                GameComponent_TokraOrganicOperationManager
+                                    .GetDebugStateReport(map)));
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuAccept".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugAcceptActiveOffer(map),
+                            "GR_TokraOrganicOperation_DebugAccepted");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuAdvance".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugMakeActiveReady(map),
+                            "GR_TokraOrganicOperation_DebugAdvanced");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuSucceed".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugSucceedActiveOperation(map),
+                            "GR_TokraOrganicOperation_DebugSucceeded");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuFail".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugFailActiveOperation(map),
+                            "GR_TokraOrganicOperation_DebugFailed");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuExpire".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugExpireCurrentState(map),
+                            "GR_TokraOrganicOperation_DebugExpired");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuFollowUp".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugApplyPendingFollowUp(),
+                            "GR_TokraOrganicOperation_DebugFollowUpApplied");
+                    }),
+                new FloatMenuOption(
+                    "GR_TokraOrganicOperation_DebugMenuReset".Translate(),
+                    delegate
+                    {
+                        ShowOrganicOperationDebugResult(
+                            GameComponent_TokraOrganicOperationManager
+                                .DebugReset(),
+                            "GR_TokraOrganicOperation_DebugReset");
+                    })
+            };
+
+            Find.WindowStack.Add(new FloatMenu(options));
+        }
+
+        private static void ShowOrganicOperationDebugResult(
+            bool succeeded,
+            string successMessageKey)
+        {
+            Messages.Message(
+                succeeded
+                    ? successMessageKey.Translate()
+                    : "GR_TokraOrganicOperation_DebugUnavailable".Translate(),
+                succeeded
+                    ? MessageTypeDefOf.PositiveEvent
+                    : MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
     }
 }
