@@ -1,5 +1,49 @@
 # Testing workflow
 
+## 0.3.7-dev - Présentation courte du mod
+
+Cette vérification confirme que la nouvelle description et les métadonnées s'affichent correctement sans modifier le gameplay.
+
+### Préconditions
+
+- Extraire le correctif sur une branche créée depuis le tag `v0.3.6-dev`.
+- Reconstruire complètement `GateRimSG1.dll`.
+
+### Test 1 — Métadonnées XML
+
+1. Ouvrir `About/About.xml` dans Cursor.
+2. Vérifier que le document XML ne signale aucune erreur.
+3. Vérifier la version `0.3.7-dev`, RimWorld `1.6`, la dépendance Biotech et l'URL du dépôt.
+4. Vérifier que `About/ModIcon.png` est toujours présent et inchangé.
+
+Résultat attendu : les métadonnées sont valides et aucune duplication de `About.xml` n'existe à la racine.
+
+### Test 2 — Affichage dans le gestionnaire de mods
+
+1. Lancer RimWorld.
+2. Ouvrir le gestionnaire de mods.
+3. Sélectionner GateRim SG-1.
+4. Lire l'intégralité de la description et vérifier les paragraphes, apostrophes et retours à la ligne.
+5. Vérifier que l'ancien inventaire commençant par `Current development scope` n'apparaît plus.
+
+Résultat attendu : la présentation est courte, lisible, immersive et ne déborde pas en une liste technique.
+
+### Test 3 — Version d'assembly et chargement
+
+1. Reconstruire le projet avec `-t:Rebuild`.
+2. Vérifier que `1.6/Assemblies/GateRimSG1.dll` porte la version `0.3.7.0`.
+3. Charger le menu principal puis une partie existante compatible.
+4. Contrôler `Player.log`.
+
+Résultat attendu : le mod charge normalement, sans erreur XML, assembly, dépendance ou régression de sauvegarde.
+
+### Contrôle final
+
+- Confirmer qu'aucun Def ou fichier C# de gameplay n'est modifié.
+- Confirmer qu'aucun fichier `docs/wiki/*.md` n'est modifié.
+- Confirmer la version de mod `0.3.7-dev` et la version d'assembly `0.3.7.0`.
+- Confirmer que `Player.log` est propre.
+
 ## 0.3.6-dev - Consolidation des PawnKinds Jaffa Goa'uld
 
 Cette série vérifie que la réduction de duplication XML ne change ni les raids, ni les colonies Goa'uld, ni les noms culturels validés dans `0.3.5-dev`.

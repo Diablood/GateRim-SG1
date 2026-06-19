@@ -13,24 +13,21 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Consolider les variantes PawnKind Jaffa Goa'uld (`0.3.6-dev`)
+### Réécrire la présentation du mod (`0.3.7-dev`)
 
-- [x] Auditer les usages de `SG1_GoauldJaffaWarrior`, `SG1_GoauldJaffaGuard`, `SG1_GoauldSettlementJaffaWarrior` et `SG1_GoauldSettlementJaffaGuard`.
-- [x] Confirmer que les variantes `Settlement` sont contextuelles et ne doivent pas être fusionnées avec les profils de raids.
-- [x] Centraliser les champs XML communs dans deux profils abstraits sans renommer les quatre Defs concrètes.
-- [x] Valider les quatre PawnKinds avec `Spawn pawn` pendant que le jeu est en pause.
-- [x] Rejouer un raid Goa'uld et générer ou visiter une colonie Goa'uld pour vérifier les deux contextes.
-- [x] Vérifier la sauvegarde, le chargement et `Player.log`.
-- [ ] Publier la branche `feature/goauld-jaffa-pawnkind-consolidation` et le tag final `v0.3.6-dev`.
+- [x] Remplacer l'inventaire exhaustif de `About/About.xml` par une présentation courte et immersive.
+- [x] Centrer le texte sur la promesse GateRim SG-1, les factions, les principales expériences de jeu et l'état réel du développement.
+- [x] Conserver une mention claire de la dépendance Biotech.
+- [x] Préciser que la Porte des étoiles fonctionnelle et la progression hors monde complète ne sont pas encore incluses.
+- [ ] Valider l'affichage dans le gestionnaire de mods, la compilation `0.3.7.0` et `Player.log`.
+- [ ] Publier la branche `feature/about-description-rewrite` et le tag final `v0.3.7-dev`.
 
 ## Présentation du mod et métadonnées
 
-- [ ] Réécrire la description de `About/About.xml`, actuellement trop longue et trop chargée en détails techniques ou historiques.
-- [ ] Adopter une présentation courte, immersive et immédiatement compréhensible, centrée sur la promesse GateRim SG-1 et les grandes expériences de jeu.
-- [ ] Structurer la description en quelques paragraphes naturels : ambiance, menaces et factions, principales possibilités de jeu, puis dépendances indispensables.
-- [ ] Éviter les inventaires exhaustifs de fonctionnalités, les détails de jalons, les prototypes internes et les éléments de roadmap.
-- [ ] Utiliser le rythme général de la description Zombieland fournie comme référence éditoriale, sans reprendre ses formulations.
-- [ ] Harmoniser ensuite cette présentation courte avec la page Workshop et l'accueil du wiki.
+- [x] Réécrire la description de `About/About.xml` dans un style court, immersif et immédiatement compréhensible.
+- [x] Retirer les inventaires de fonctionnalités, détails de jalons, prototypes internes et éléments de roadmap.
+- [x] Structurer la présentation autour de l'ambiance, des factions, des possibilités de jeu et des dépendances indispensables.
+- [ ] Harmoniser ultérieurement cette présentation avec la page Workshop et l'accueil du wiki lors d'un jalon qui modifiera réellement `docs/wiki/*.md`.
 
 ## Passe visuelle globale des objets
 

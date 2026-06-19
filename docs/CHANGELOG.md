@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.7-dev - Rewrite mod presentation
+
+- Replace the oversized `About/About.xml` development inventory with a concise, immersive presentation.
+- Introduce the stranded SG-team premise and the current Goa'uld, Jaffa, Free Jaffa and Tok'ra conflict.
+- Summarize the major playable experiences without exposing milestone history, internal prototypes or the complete feature catalogue.
+- State clearly that the functional Stargate and full off-world progression are not yet included.
+- Keep the RimWorld Biotech dependency explicit.
+- Add no gameplay, balance, Def, save-data or wiki change.
+- Raise the assembly version to `0.3.7.0` and the mod metadata version to `0.3.7-dev`.
+
 ## 0.3.6-dev - Consolidate Goa'uld Jaffa PawnKind variants
 
 - Audit the standard and Settlement Goa'uld-aligned Jaffa PawnKinds instead of treating their similar definitions as accidental duplicates.

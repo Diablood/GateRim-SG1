@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.3.6-dev</modVersion>
+    <modVersion>0.3.7-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -15,144 +15,14 @@
     </modDependencies>
     <url>https://github.com/Diablood/GateRim-SG1</url>
     <description>
-GateRim SG-1 brings the Stargate SG-1 universe to RimWorld.
+An SG team is stranded on an unknown RimWorld. The Stargate is silent, Earth is out of reach, and the colony must survive among enemies that have already claimed this world.
 
-Current development scope:
+GateRim SG-1 brings Goa'uld System Lords, Jaffa warriors, Free Jaffa and hidden Tok'ra cells into RimWorld. Face raids armed with Ma'Tok staffs and Zat'nik'tels, encounter implanted hosts and symbiote biology, and decide which alien contacts deserve your trust.
 
-- Inheritable Jaffa lineage genes
-- Prim'ta Hediff prototype for an implanted immature symbiote
-- Medical Jaffa Prim'ta implantation prototype
-- Physical Prim'ta larva resource consumed by implantation surgery
-- Constructible Prim'ta incubation basin and larva-production bill
-- Raw-meat nutrient requirement for Prim'ta larva incubation
-- Vanilla preservation prototype for physical Prim'ta larvae
-- Dedicated non-food biological storage category for Prim'ta larvae
-- Prim'ta larva temperature-tuning prototype with heat acceleration
-- Prim'ta implantation biological-age eligibility prototype
-- Progressive Jaffa puberty dependency prototype without Prim'ta
-- Lightweight Jaffa Prim'ta cultural-thought prototype
-- Temporary tretonin substitution prototype for Jaffa without Prim'ta
-- Drug-lab tretonin acquisition prototype using one Prim'ta larva
-- Formal Jaffa Prim'ta ceremony prototype at the Goa'uld ritual basin
-- Tok'ra foundation prototype with voluntary adult-symbiote implantation
-- Developer-spawnable player-controlled Tok'ra voluntary-host pawn prototype
-- Tok'ra pawn-group foundation prototype for developer tests
-- Low-frequency natural Tok'ra peaceful visitor incident prototype
-- RimWorld-oriented Tok'ra biological healing with curable-condition filtering and progressive wound regeneration
-- Explicit voluntary Tok'ra therapeutic implantation prototype with consent confirmation
-- Time-limited escorted Tok'ra therapeutic-opportunity incident with explicit refusal and coordinated departure
-- Persistent Tok'ra trust tiers modulating therapeutic-offer duration, escort size and tretonin support gifts
-- Trust-gated independent Tok'ra medical-support delivery incident
-- Trust-weighted storyteller chances for Tok'ra therapeutic offers and medical-support deliveries
-- Persistent wary Tok'ra diplomatic cooldown after refused or expired therapeutic offers
-- Trusted Tok'ra medical-support deliveries include one advanced ultratech medicine unit
-- Goa'uld host xenotype prototype
-- Free Goa'uld symbiote pawn prototype
-- Recent Goa'uld implantation Hediff prototype
-- French translations for stabilized content
-- Player wiki maintained in parallel
-- Centralized colored C# logging with optional advanced-debug visibility
-- Windows build wrapper
-- Playable Tok'ra relay sabotage mission with several fortified site layouts and a modest salvage reward
-- Automatic Tok'ra relay-operation outcome debrief with trust consequences after evacuation
-- Consolidated organic Tok'ra operation framework for low-sensitivity observation and intelligence-recovery opportunities, with hidden delays, persistent state, anti-repetition, shared cleanup and single-application outcomes
-- Recurring organic Tok'ra wounded-agent refuge using normal rescue and medical care, with departure once fit to travel and failure on death or loss
-- Recurring organic Tok'ra medical resupply handoff with a visiting liaison, Social dialogue and two industrial medicines
-- Persistent Goa'uld symbiote identity data
-- Interactive forced Goa'uld implantation prototype
-- Automatic conversion into an active Goa'uld host state
-- Manual emergency extraction during recent implantation
-- Medical emergency Goa'uld extraction surgery
-- Autonomous free-symbiote pursuit and contact implantation
-- Controlled ritual Goa'uld implantation prototype
-- Explicit map target selection for ritual implantation
-- Timed core ritual ceremony with cancellation and save persistence
-- Core Goa'uld ritual basin environmental requirement
-- Rare natural Goa'uld queen arrival incident
-- Player-controlled queen-origin immature-symbiote extraction
-- Balanced queen-origin Prim'ta acquisition with rarer arrival, three-day extraction recovery and higher maturation cost
-- Rare hidden Tok'ra cell cache incident with modest medical supplies
-- Rare Tok'ra safehouse signal incident with tiny trust gain and no world site yet
-- Persistent Tok'ra safehouse lead tracker for future hidden-site follow-up
-- Safehouse lead follow-up cache that consumes one stored lead for modest medical supplies
-- Temporary hidden Tok'ra safehouse world marker consuming one stored lead
-- Enterable temporary Tok'ra safehouse site with a modest medical cache and one peaceful non-trading contact
-- Dedicated Tok'ra field clothing set applied to generated safehouse contacts
-- Trust-scaled Tok'ra safehouse contact dialogue outcome with a once-per-contact trust acknowledgement, medical briefing, tier-specific advanced medical hint and trust-gated follow-up lead
-- Trusted-tier Tok'ra secure communicator foundation for future medical, safehouse and defensive support requests
-- Trusted Tok'ra secure communicator defensive-diversion request prototype
-- Pawn-operated Tok'ra secure communicator workflow with hidden direct gizmos outside debug
-- Trusted Tok'ra secure communicator medical-guidance request prototype
-- Trusted Tok'ra secure communicator emergency medical-cache request prototype
-- Trusted Tok'ra tactical threat-assessment request prototype
-- Tok'ra communicator cooldown-status and trust-progression report prototype with concise locked-option labels
-- Trusted Tok'ra operational-debrief request prototype for Social or Intellectual training without material support, now temporarily hidden from player-facing communicator options until it has a clearer trust role
-- Trusted Tok'ra first trust mission hook preparing a future discreet operation without immediate quest or reward
-- Tok'ra initiated first-mission briefing contact after a prepared discreet mission, with persistent briefing state and no immediate site, raid or reward
-- Tok'ra intercepted threat intelligence: rare advance warning for a delayed Goa'uld/Jaffa attack, with persistent alert and enriched tactical assessment
-- Tok'ra mission briefing follow-up cache delivering a low-value encoded intelligence packet through the Tok'ra delivery zone
-- Tok'ra coded intelligence analysis by an Intellectual-capable colon, consuming the packet and marking the intelligence as analyzed for a future mission step
-- Tok'ra decoded mission lead after analyzing the coded intelligence packet, adding a persistent operational lead state without spawning a world site or reward
-- Tok'ra decoded mission world site revealing an isolated Goa'uld relay marker from the decoded operational lead without immediate assault or reward
-- Tok'ra relay sabotage objective preparation after caravan reconnaissance, recording a persistent plan without executing the sabotage
-- Queen-origin assisted Prim'ta maturation at the incubation basin
-- Powered Prim'ta preservation-basin storage prototype
-- Persistent Prim'ta deep-freezing penalties outside active preservation basins
-- Visible hostile Goa'uld System Lord world-faction baseline with limited settlements
-- Remove invalid Goa'uld FactionDef world-icon fields for RimWorld 1.6
-- Expose the Goa'uld faction in RimWorld 1.6 world creation and normalize French player-facing vocabulary
-- Capitalize the French Goa'uld faction name and restore the SGC expedition faction icon
-- Visible neutral Free Jaffa world-faction baseline with limited settlements
-- Free Jaffa warrior and guard profiles with Prim'ta, Ma'Tok and modular armor
-- Automatic forehead marks restricted to Goa'uld-domain Jaffa; Free Jaffa remain unmarked
-- Faction-level Jaffa xenotype summaries aligned with current generated populations
-- Configurable multi-faction limits and provisional generated leaders for Goa'uld and Free Jaffa factions
-- Persistent Goa'uld host-caste baseline with minority settlement hosts and real System Lord leaders
-- Stabilized Goa'uld settlement caste mix and broad temporary Tau'ri vanilla-backstory filter
-- Provisional vanilla attire and initial chronic-ailment healing for generated Goa'uld hosts
-- Fix provisional Goa'uld shirt reference to vanilla Apparel_CollarShirt
-- Cultural backstory baseline for Tau'ri, Jaffa, Goa'uld hosts and generated Tok'ra agents
-- Culture-specific persistent pawn names for Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld, Tok'ra and Tau'ri / SGC groups
-- Define standard male and female body types for every dedicated adulthood backstory
-- Contextual social baseline with Free Jaffa, Tok'ra, Goa'uld-host and System Lord proximity reactions
-- Low-frequency natural Free Jaffa peaceful visitor incident using existing neutral world factions
-- Persistent hidden Tok'ra world-presence anchor reused by visitors, therapeutic offers and medical-support deliveries
-- GateRim SG-1 crafting-research tab with four vanilla-gated production projects
-- Goa'uld-aligned Jaffa pawn kinds with distinct Combat and Settlement profiles
-- Shared abstract XML profiles for Goa'uld-aligned Jaffa warriors and guards without changing the four contextual PawnKind defNames
-- Automatic Prim'ta provisioning for generated Goa'uld-aligned Jaffa servants
-- Craftable Ma'Tok staff weapon prototype with dedicated temporary graphics
-- Ma'Tok plasma-impact prototype with reduced structural damage against non-organic targets and buildings
-- Zat'nik'tel first-shot incapacitation prototype with weak EMP disruption against mechanical targets
-- Rare natural Zat'nik'tel acquisition through Goa'uld Jaffa guard loadouts
-- SG-team olive-drab field-uniform prototype
-- Separate SG tactical-boots prototype with lightweight foot protection
-- Separate SG tactical-gloves prototype with lightweight hand protection
-- Separate SG tactical-vest prototype with modest torso and shoulder protection
-- Black and desert SG-team field-uniform visual variants
-- First playable stranded SG-team starter scenario without a functional Stargate
-- Scenario refinement: dedicated SGC expedition faction, four regenerable candidates aged 20+ with adult backstories, violence-capable starters and translated launch narrative
-- Optional SG-team open-face field-helmet prototype supplied by the stranded-team scenario
-- Vanilla weapon-tag Ma'Tok loadout for generated Goa'uld-aligned Jaffa servants
-- Modular Jaffa armor prototypes with localized hand, finger, foot and toe protection
-- Persistent retractable Jaffa helmet modes with automatic drafted deployment
-- Deterministic modular armor loadouts for generated Goa'uld-aligned Jaffa servants
-- Low-frequency natural Goa'uld Jaffa direct-assault raid incident
-- Developer-only controlled Goa'uld Jaffa raid incident with zero storyteller chance
-- Explicit vanilla ImmediateAttack strategy for controlled Goa'uld Jaffa raid tests
-- Developer-only controlled Goa'uld Jaffa abduction raid with cover-and-extract doctrine
-- Developer-only controlled Goa'uld Jaffa destruction raid with post-assault recovery phase
-- Save-persistent intrinsic Jaffa forehead-mark data independent from genes, xenotypes and apparel
-- Automatic migration from obsolete technical forehead-mark genes
-- Developer map tools to assign or remove black, silver and gold forehead marks on any pawn
-- Data-driven Goa'uld System Lord domain identity foundation with rank-specific intrinsic-mark slots
-- Player-facing GateRim SG-1 setting for optional advanced diagnostic information
-- Goa'uld world presence and rare natural direct-assault raids enabled; advanced natural doctrines remain planned
-- Global object-category audit planned before final stabilization
-- Optional Ideology integration, expanded ceremony requirements and host transfer planned later
+Play the dedicated stranded SG-team scenario or let the mod's factions, weapons, medical systems and storyteller-driven events enter a normal colony. Raise and preserve Prim'ta, manage tretonin dependency, survive Goa'uld implantation, work with the Tok'ra through a secure communicator, and take part in recurring intelligence, medical and sabotage operations.
 
-Biotech is required for xenotype support.
+This is an early development version. The functional Stargate and full off-world progression are not yet included; the current release focuses on the people, factions, technologies and conflicts surrounding it.
 
-This is an early development version.
+Requires RimWorld: Biotech.
     </description>
 </ModMetaData>
