@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="Human"]/comps</xpath>
+        <value>
+            <li Class="GateRimSG1.Names.CompProperties_CulturalPawnNameOnSpawn" />
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="SG1_GoauldSymbiote"]/comps</xpath>
+        <value>
+            <li Class="GateRimSG1.Names.CompProperties_CulturalPawnNameOnSpawn" />
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="SG1_TokraSymbiote"]/comps</xpath>
+        <value>
+            <li Class="GateRimSG1.Names.CompProperties_CulturalPawnNameOnSpawn" />
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="SG1_GoauldQueen"]/comps</xpath>
+        <value>
+            <li Class="GateRimSG1.Names.CompProperties_CulturalPawnNameOnSpawn" />
+        </value>
+    </Operation>
+</Patch>

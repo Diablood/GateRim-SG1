@@ -25,6 +25,20 @@ namespace GateRimSG1.Goauld
         {
         }
 
+        public static GameComponent_TokraHostPrototypeInitializer Current
+        {
+            get
+            {
+                return Verse.Current.Game
+                    ?.GetComponent<GameComponent_TokraHostPrototypeInitializer>();
+            }
+        }
+
+        public void NotifyPawnSpawned(Pawn pawn)
+        {
+            TryInitializePrototypePawn(pawn);
+        }
+
         public override void ExposeData()
         {
             base.ExposeData();

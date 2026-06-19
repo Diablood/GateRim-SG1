@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.4-dev`
+> Dernière révision : `0.3.5-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -87,6 +87,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
 | Réglages de debug avancés | Option persistante masquant les informations techniques et les logs informatifs de routine hors mode développeur | 0.1.75-dev |
 | Histoires culturelles | Parcours SGC, enfances et carrières Jaffa, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
+| Noms culturels persistants | Générateurs dédiés aux Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC ; attribution unique aux nouvelles générations, protection des personnages existants et préparation de la distinction hôte/symbiote | 0.3.5-dev |
 | Réactions sociales contextuelles | Opinions et réactions selon l'identité Jaffa libre, Goa'uld, Tok'ra ou Grand Maître proche | 0.2.5-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement du SGC et biotechnologies Goa'uld | 0.2.8-dev |
 | Communicateur sécurisé Tok'ra | Bâtiment alimenté opéré par un colon : demandes fiables, évaluation tactique, état RP du canal et premiers déclencheurs de mission | 0.2.26-dev à 0.2.37-dev |
@@ -101,8 +102,11 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Élément | Direction actuelle |
 |---|---|
 | Diversification des opérations Tok'ra | Ajouter de nouveaux archétypes récurrents, des variantes et d'autres missions de terrain sans cycle visible ni répétition immédiate |
-| Générateur de noms culturels | Produire des noms RP adaptés aux Jaffa, Goa'uld, Tok'ra et autres groupes du mod |
 | Enrichissement des histoires personnelles | Ajouter des descriptions, des modificateurs de statistiques et davantage de variété culturelle |
+| Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
+| Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
+| Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
+| Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
 | Transfert entre hôtes | Prévu |
 | Extraction Tok'ra | Prévu |

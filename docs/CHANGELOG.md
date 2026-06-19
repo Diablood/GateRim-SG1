@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.5-dev - Add culture-specific pawn name generators
+
+
+- Apply cultural names immediately when compatible pawns spawn, including through the vanilla developer `Spawn pawn` tool while the game is paused.
+- Initialize generated Goa'uld and Tok'ra hosts before immediate naming so host and symbiote identities remain coherent even in paused developer spawns.
+- Generate Tau'ri names for the stranded SG-team candidates before the player configuration page, while preserving later manual renaming.
+- Preserve the initial player-pawn baseline while removing the short post-start window that could permanently register newly spawned test pawns under vanilla names.
+- Add reusable culture-specific name generation for Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld, Tok'ra and Tau'ri / SGC pawns.
+- Apply cultural names once to newly generated map pawns, faction leaders and world pawns while preserving all existing pawns in older saves.
+- Protect starting player pawns so scenario-editor and player-selected names remain unchanged.
+- Persist processed pawn IDs and reserved cultural names to prevent repeated renaming and reduce duplicates during long games.
+- Extend persistent adult-symbiote data with separate host and symbiote names, preparing future dual-identity displays.
+- Add one grouped developer report containing samples from all five current cultural generators.
+- Expose the same sample report from GateRim SG-1 settings only while advanced debug information is enabled.
+- Record the future Asgard, Nox and Unas cultures, the optional GateRim-only world preset and the dedicated non-mandatory storyteller in the durable roadmap.
+- Preserve compatibility with saves created from the `0.3.0-dev` framework baseline without renaming existing pawns.
+- Raise the assembly version to `0.3.5.0` and the mod metadata version to `0.3.5-dev`.
+
 ## 0.3.4-dev - Improve Tok'ra observation site visuals and field flow
 
 - Replace the generic observation-point marker with a dedicated field-scope texture so the deployed site reads clearly as Tok'ra surveillance equipment.

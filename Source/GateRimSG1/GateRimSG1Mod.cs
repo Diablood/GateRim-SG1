@@ -1,3 +1,4 @@
+using GateRimSG1.Names;
 using UnityEngine;
 using Verse;
 
@@ -58,6 +59,19 @@ namespace GateRimSG1
             listing.Gap();
             listing.Label(
                 "GR_Settings_ShowAdvancedDebugInformation_Note".Translate());
+
+            if (GR_Debug.ShowAdvancedInformation)
+            {
+                listing.GapLine();
+                listing.Label(
+                    "GR_CulturalNames_SettingsDebugLabel".Translate());
+
+                if (listing.ButtonText(
+                    "GR_CulturalNames_OpenSamplesButton".Translate()))
+                {
+                    CulturalPawnNameDebugActions.OpenSampleReport();
+                }
+            }
 
             listing.End();
         }

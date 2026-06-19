@@ -1,5 +1,97 @@
 # Testing workflow
 
+## 0.3.5-dev - Générateurs de noms culturels
+
+Cette série vérifie l'attribution unique de noms cohérents aux nouveaux personnages GateRim SG-1, sans renommer les personnages déjà présents ou nommés par le joueur.
+
+### Préconditions
+
+- Utiliser d'abord une nouvelle partie créée avec `0.3.5-dev`.
+- Préparer aussi une sauvegarde créée avec `0.3.4-dev` contenant plusieurs personnages déjà nommés.
+- Activer le mode développeur RimWorld ou l'option avancée GateRim SG-1 uniquement pour ouvrir le rapport d'exemples.
+
+### Test 1 — Rapport debug regroupé
+
+1. En mode développeur, exécuter `Cultural names: show samples`.
+2. Vérifier qu'un seul rapport contient des exemples pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
+3. Désactiver le mode développeur, activer l'option avancée GateRim SG-1 et ouvrir le même rapport depuis les réglages du mod.
+4. Désactiver les deux modes et vérifier qu'aucun contrôle de noms n'est visible en jeu normal.
+
+Résultat attendu : un point d'entrée regroupé, sans multiplication des gizmos ni modification de personnages.
+
+### Test 2 — Jaffa Goa'uld et Jaffa libres
+
+1. Générer plusieurs guerriers et gardes Jaffa Goa'uld avec les outils développeur ou un raid contrôlé.
+2. Vérifier que leurs noms utilisent le style Jaffa aligné aux domaines Goa'uld.
+3. Générer plusieurs Jaffa libres via leur incident de visiteurs ou les outils développeur.
+4. Vérifier un style culturel apparenté mais distinct.
+5. Générer au moins vingt exemples de chaque groupe et relever les doublons immédiats éventuels.
+
+Résultat attendu : noms cohérents, variés et conservés après sauvegarde/chargement.
+
+### Test 3 — Goa'uld, Tok'ra et double identité
+
+1. Générer un hôte Goa'uld et un hôte Tok'ra volontaire.
+2. Laisser leurs initialisateurs de symbiote s'exécuter.
+3. Vérifier que le nom visible devient culturellement cohérent.
+4. Activer les informations debug et vérifier que les données persistantes contiennent un `hostName` et un `symbioteName` distincts.
+5. Sauvegarder et recharger.
+6. Vérifier que le nom visible et les deux champs persistants restent identiques.
+
+Résultat attendu : la distinction hôte/symbiote est préparée sans changement répété du nom affiché.
+
+### Test 4 — Tau'ri / SGC et protection des noms joueur
+
+1. Démarrer le scénario Équipe SG isolée avec des noms choisis ou régénérés dans l'écran de préparation.
+2. Vérifier que les personnages de départ conservent exactement ces noms.
+3. Générer ensuite un nouveau personnage appartenant à la faction d'expédition du SGC.
+4. Vérifier qu'il reçoit un prénom et un nom de famille Tau'ri.
+5. Renommer manuellement un personnage déjà traité, puis laisser passer plusieurs scans.
+
+Résultat attendu : les personnages de départ et les renommages ultérieurs ne sont pas écrasés par le gestionnaire.
+
+### Test 5 — Compatibilité d'une sauvegarde antérieure
+
+1. Charger la sauvegarde `0.3.4-dev` contenant plusieurs personnages déjà nommés.
+2. Laisser passer au moins dix secondes de jeu.
+3. Vérifier qu'aucun personnage existant n'est renommé.
+4. Générer ensuite un nouveau visiteur ou assaillant GateRim SG-1.
+5. Vérifier que seul ce nouveau personnage reçoit un nom culturel.
+
+Résultat attendu : l'activation initiale enregistre l'existant sans le modifier, puis traite normalement les nouvelles générations.
+
+### Test 6 — Incidents, monde et persistance
+
+1. Tester au moins un groupe de visiteurs Tok'ra, un groupe de Jaffa libres et un raid Jaffa Goa'uld.
+2. Vérifier les noms sur la carte et dans les inspections de personnages.
+3. Vérifier les dirigeants des factions Goa'uld, Jaffa libres et Tok'ra lorsque disponibles.
+4. Sauvegarder, quitter complètement RimWorld, recharger et comparer les noms.
+5. Recruter, capturer, implanter ou extraire un personnage déjà traité et vérifier qu'il n'est pas renommé.
+
+Résultat attendu : chaque personnage garde une identité stable indépendamment de son changement de statut.
+
+### Contrôle final
+
+- Vérifier la version d'assembly `0.3.5.0`.
+- Revoir `Player.log` et vérifier l'absence d'erreurs `Name`, `Scribe`, `GameComponent`, `WorldPawns`, `DefOf` ou ancienne DLL.
+- Confirmer qu'aucun autre gameplay, incident ou équilibrage n'a été modifié.
+
+
+### Test ciblé r2 — Génération développeur immédiate et équipe SG
+
+1. Mettre le jeu en pause.
+2. Utiliser l'outil vanilla `Spawn pawn` sur chacun des PawnKinds `SG1_...` disponibles.
+3. Vérifier immédiatement, sans reprendre le temps, que les Jaffa, Goa'uld, Tok'ra et symbiotes concernés reçoivent un nom culturel.
+4. Pour les hôtes Goa'uld et Tok'ra, vérifier aussi que l'identité du symbiote est initialisée avant l'attribution du nom visible.
+5. Reprendre le temps et vérifier que le gestionnaire ne remplace pas une seconde fois ces noms.
+6. Générer ensuite un raid Goa'uld et confirmer que la voie naturelle déjà validée reste inchangée.
+7. Ne pas utiliser un raid vanilla comme test pour les Tok'ra, les Jaffa libres ou l'expédition SGC : leurs Defs interdisent actuellement les raids ou correspondent à la faction du joueur. Tester plutôt leurs visiteurs, dirigeants ou PawnKinds directs.
+8. Créer une nouvelle partie avec le scénario de l'équipe SG isolée.
+9. Vérifier que les quatre candidats reçoivent des noms Tau'ri cohérents avant le lancement de la partie.
+10. Renommer manuellement un candidat, lancer la partie puis vérifier que ce choix n'est jamais écrasé.
+
+Résultat attendu : `Spawn pawn`, les générations naturelles et le scénario SG utilisent le même système culturel, sans délai visible ni renommage ultérieur des choix du joueur.
+
 ## 0.3.4-dev - Visuel et déroulement du site d'observation Tok'ra
 
 Cette série vérifie le nouveau visuel ainsi que la suppression de l'attente automatique après déploiement.

@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.3.4-dev</modVersion>
+    <modVersion>0.3.5-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -110,6 +110,7 @@ Current development scope:
 - Provisional vanilla attire and initial chronic-ailment healing for generated Goa'uld hosts
 - Fix provisional Goa'uld shirt reference to vanilla Apparel_CollarShirt
 - Cultural backstory baseline for Tau'ri, Jaffa, Goa'uld hosts and generated Tok'ra agents
+- Culture-specific persistent pawn names for Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld, Tok'ra and Tau'ri / SGC groups
 - Define standard male and female body types for every dedicated adulthood backstory
 - Contextual social baseline with Free Jaffa, Tok'ra, Goa'uld-host and System Lord proximity reactions
 - Low-frequency natural Free Jaffa peaceful visitor incident using existing neutral world factions

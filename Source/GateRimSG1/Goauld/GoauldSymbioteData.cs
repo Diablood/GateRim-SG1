@@ -1,4 +1,5 @@
 using System;
+using GateRimSG1.Names;
 using Verse;
 
 namespace GateRimSG1.Goauld
@@ -11,6 +12,7 @@ namespace GateRimSG1.Goauld
     {
         private string symbioteId = string.Empty;
         private string symbioteName = string.Empty;
+        private string hostName = string.Empty;
         private GoauldSymbioteOrigin origin = GoauldSymbioteOrigin.Goauld;
         private long biologicalAgeTicks;
         private int createdAtTick = -1;
@@ -21,6 +23,7 @@ namespace GateRimSG1.Goauld
 
         public string SymbioteId => symbioteId;
         public string SymbioteName => symbioteName;
+        public string HostName => hostName;
         public GoauldSymbioteOrigin Origin => origin;
         public long BiologicalAgeTicks => biologicalAgeTicks;
         public int CreatedAtTick => createdAtTick;
@@ -57,9 +60,34 @@ namespace GateRimSG1.Goauld
                 symbioteId = Guid.NewGuid().ToString("N");
             }
 
+            if (string.IsNullOrEmpty(symbioteName))
+            {
+                symbioteName = CulturalPawnNameUtility
+                    .GenerateSymbioteNameText(origin);
+            }
+
             if (createdAtTick < 0)
             {
                 createdAtTick = currentTick;
+            }
+        }
+
+        public void CaptureHostName(Pawn host)
+        {
+            if (!string.IsNullOrEmpty(hostName)
+                || host?.Name == null)
+            {
+                return;
+            }
+
+            hostName = host.Name.ToStringFull;
+        }
+
+        public void SetSymbioteName(string value)
+        {
+            if (!value.NullOrEmpty())
+            {
+                symbioteName = value;
             }
         }
 
@@ -73,6 +101,13 @@ namespace GateRimSG1.Goauld
                 && currentHostThingId != nextHostThingId)
             {
                 previousHostThingId = currentHostThingId;
+            }
+
+            if (host?.Name != null
+                && (string.IsNullOrEmpty(hostName)
+                    || currentHostThingId != nextHostThingId))
+            {
+                hostName = host.Name.ToStringFull;
             }
 
             currentHostThingId = nextHostThingId;
@@ -110,9 +145,12 @@ namespace GateRimSG1.Goauld
 
         public string ToDebugString()
         {
-            return $"id={symbioteId}, origin={origin}, ageTicks={biologicalAgeTicks}, "
-                + $"createdAt={createdAtTick}, implantedAt={implantationTick}, "
-                + $"currentHost={currentHostThingId}, previousHost={previousHostThingId}, "
+            return $"id={symbioteId}, symbioteName={symbioteName}, "
+                + $"hostName={hostName}, origin={origin}, "
+                + $"ageTicks={biologicalAgeTicks}, createdAt={createdAtTick}, "
+                + $"implantedAt={implantationTick}, "
+                + $"currentHost={currentHostThingId}, "
+                + $"previousHost={previousHostThingId}, "
                 + $"lastDetach={lastDetachTick}";
         }
 
@@ -120,6 +158,7 @@ namespace GateRimSG1.Goauld
         {
             Scribe_Values.Look(ref symbioteId, "symbioteId", string.Empty);
             Scribe_Values.Look(ref symbioteName, "symbioteName", string.Empty);
+            Scribe_Values.Look(ref hostName, "hostName", string.Empty);
             Scribe_Values.Look(ref origin, "origin", GoauldSymbioteOrigin.Goauld);
             Scribe_Values.Look(ref biologicalAgeTicks, "biologicalAgeTicks", 0L);
             Scribe_Values.Look(ref createdAtTick, "createdAtTick", -1);

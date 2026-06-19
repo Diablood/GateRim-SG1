@@ -50,6 +50,20 @@ namespace GateRimSG1.Goauld
         {
         }
 
+        public static GameComponent_GoauldHostCasteInitializer Current
+        {
+            get
+            {
+                return Verse.Current.Game
+                    ?.GetComponent<GameComponent_GoauldHostCasteInitializer>();
+            }
+        }
+
+        public void NotifyPawnSpawned(Pawn pawn)
+        {
+            TryInitializeHostPawn(pawn);
+        }
+
         public override void ExposeData()
         {
             base.ExposeData();

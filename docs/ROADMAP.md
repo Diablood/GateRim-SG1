@@ -13,13 +13,14 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Stabiliser et publier `0.3.4-dev`
+### Stabiliser et publier `0.3.5-dev`
 
-- [ ] Valider le nouveau flux continu de l'opération d'observation Tok'ra : installation, observation opérée pendant environ une à deux heures, repli, retour et transmission.
-- [ ] Vérifier les interruptions, sauvegardes, destructions et expirations sans double résolution.
-- [ ] Vérifier le nouveau visuel du site d'observation et l'absence dans les catégories Architecte.
-- [ ] Publier le jalon depuis `feature/tokra-observation-site-visual-rework` avec le tag final `v0.3.4-dev`.
-- [ ] Synchroniser et publier le wiki séparé.
+- [ ] Valider les générateurs de noms pour Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
+- [ ] Vérifier que les personnages déjà présents, les colons de départ et les noms choisis par le joueur ne sont jamais écrasés.
+- [ ] Vérifier les visiteurs, raids, dirigeants de faction, sauvegardes et chargements.
+- [ ] Vérifier la distinction persistante entre nom d'hôte et nom de symbiote.
+- [ ] Publier le jalon depuis `feature/cultural-pawn-name-generators` avec le tag final `v0.3.5-dev`.
+- [ ] Synchroniser et publier le wiki séparé selon la procédure corrigée de `docs/MILESTONE_PUBLICATION.md`.
 
 ## Passe visuelle globale des objets
 
@@ -54,18 +55,54 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 
 ## Noms, cultures et backstories
 
-- [ ] Ajouter un générateur ou des listes de noms RP par culture et faction, notamment Jaffa, Goa'uld, Tok'ra, SGC et autres groupes pertinents.
+- [ ] Stabiliser le premier générateur de noms culturels de `0.3.5-dev` pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
+- [ ] Étendre plus tard les générateurs aux Asgard, Nox, Unas et autres cultures ajoutées au mod.
+- [ ] Déterminer dans quelles interfaces normales afficher séparément le nom de l'hôte et celui du symbiote.
 - [ ] Revoir toutes les backstories existantes pour enrichir leur texte descriptif.
 - [ ] Ajouter des modificateurs de statistiques cohérents aux backstories qui n'en possèdent pas encore.
 - [ ] Créer davantage de backstories afin d'améliorer la variété culturelle et le renouvellement des pawns.
 - [ ] Vérifier la cohérence entre noms, backstories, factions, marques Jaffa et identités sociales.
 
+## Futures races et factions
+
+### Asgard
+
+- [ ] Ajouter une race technologiquement avancée orientée soutien commercial, aide militaire et attribution de quêtes.
+- [ ] Concevoir une présence sans colonie ou base mondiale permanente visible, proche d'une organisation itinérante de soutien.
+- [ ] Prévoir une tendance naturellement alliée aux Tau'ri sans rendre cette relation absolument fixe dans tous les scénarios.
+- [ ] Créer des incidents de commerce, d'assistance et de mission compatibles avec tous les storytellers.
+
+### Nox
+
+- [ ] Ajouter une race pacifique à l'apparence primitive mais technologiquement avancée.
+- [ ] Orienter sa présence vers le commerce, la diplomatie et les rencontres non militaires.
+- [ ] Conserver une tendance neutre et éviter les raids ou renforts armés ordinaires.
+- [ ] Représenter leur technologie discrète sans les transformer en simple faction tribale vanilla.
+
+### Unas
+
+- [ ] Ajouter une race reptilienne généralement hostile, avec cultures ou variantes tribales possibles.
+- [ ] Permettre aux Unas de servir d'hôtes Goa'uld compatibles avec le système persistant de symbiote.
+- [ ] Prévoir des PawnKinds sauvages, tribaux ou dominés par les Goa'uld selon les futurs besoins.
+- [ ] Éviter de rendre toute présence Unas obligatoirement identique ou uniformément organisée.
+
+## Monde entièrement GateRim SG-1
+
+- [ ] Permettre de créer une partie avec uniquement les races, cultures et factions GateRim SG-1.
+- [ ] Ajouter un préréglage ou scénario optionnel de génération du monde retirant les factions vanilla sélectionnables.
+- [ ] Conserver uniquement les factions système techniquement indispensables lorsque leur suppression complète n'est pas sûre.
+- [ ] Couvrir à terme les Tau'ri / SGC, Goa'uld, Jaffa soumis, Jaffa libres, Tok'ra, Asgard, Nox, Unas et futures civilisations Stargate.
+- [ ] Vérifier raids, caravanes, commerce, quêtes, incidents, relations, génération de pawns et conditions de victoire sans factions vanilla.
+- [ ] Garder tous les contenus du mod fonctionnels dans une partie vanilla ou moddé classique : ce préréglage ne doit jamais devenir obligatoire.
+
 ## Storyteller et orchestration des événements
 
-- [ ] Concevoir un storyteller dédié à GateRim SG-1.
+- [ ] Concevoir un storyteller GateRim SG-1 avec une identité, un rythme et des pondérations propres.
+- [ ] Orchestrer de manière cohérente les incidents, opérations, quêtes, factions et menaces du mod.
+- [ ] Intégrer ce storyteller au futur préréglage de monde entièrement GateRim SG-1.
 - [ ] Garder tous les incidents et événements GateRim SG-1 accessibles avec les storytellers vanilla ou moddés compatibles.
-- [ ] Utiliser le storyteller dédié pour améliorer l'espacement et l'orchestration globale des événements, sans en faire une dépendance obligatoire.
-- [ ] Éviter que plusieurs opérations Tok'ra ou événements GateRim SG-1 se succèdent de manière artificielle sur une courte période.
+- [ ] Ne jamais faire du storyteller dédié une dépendance obligatoire pour recevoir le contenu du mod.
+- [ ] Utiliser son orchestration pour espacer les opérations Tok'ra et éviter les successions artificielles d'événements GateRim SG-1.
 
 ## Progression Stargate et contenu majeur
 

@@ -3,4 +3,14 @@
     <GR_Settings_ShowAdvancedDebugInformation_Label>Show advanced GateRim SG-1 debug information</GR_Settings_ShowAdvancedDebugInformation_Label>
     <GR_Settings_ShowAdvancedDebugInformation_Desc>Expose technical prototype diagnostics such as persistent symbiote IDs, raw cooldown ticks and detailed lifecycle traces in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
     <GR_Settings_ShowAdvancedDebugInformation_Note>RimWorld developer mode always exposes advanced GateRim SG-1 diagnostics, regardless of this setting. Warnings and errors always remain visible in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
+    <GR_CulturalNames_SettingsDebugLabel>Cultural pawn-name generator diagnostics</GR_CulturalNames_SettingsDebugLabel>
+    <GR_CulturalNames_OpenSamplesButton>Open cultural name samples</GR_CulturalNames_OpenSamplesButton>
+    <GR_CulturalNames_SampleReportTitle>GateRim SG-1 cultural name samples</GR_CulturalNames_SampleReportTitle>
+    <GR_CulturalNames_SampleReportIntro>Generated examples for the current cultural name banks. These samples do not create or rename pawns.</GR_CulturalNames_SampleReportIntro>
+    <GR_CulturalNames_Group_None>Unassigned culture</GR_CulturalNames_Group_None>
+    <GR_CulturalNames_Group_GoauldJaffa>Goa'uld-aligned Jaffa</GR_CulturalNames_Group_GoauldJaffa>
+    <GR_CulturalNames_Group_FreeJaffa>Free Jaffa</GR_CulturalNames_Group_FreeJaffa>
+    <GR_CulturalNames_Group_Goauld>Goa'uld</GR_CulturalNames_Group_Goauld>
+    <GR_CulturalNames_Group_Tokra>Tok'ra</GR_CulturalNames_Group_Tokra>
+    <GR_CulturalNames_Group_Tauri>Tau'ri / SGC</GR_CulturalNames_Group_Tauri>
 </LanguageData>

@@ -3,4 +3,14 @@
     <GR_Settings_ShowAdvancedDebugInformation_Label>Afficher les informations de debug avancées de GateRim SG-1</GR_Settings_ShowAdvancedDebugInformation_Label>
     <GR_Settings_ShowAdvancedDebugInformation_Desc>Affiche les diagnostics techniques des prototypes, notamment les identifiants persistants des symbiotes, les délais bruts en ticks et les traces détaillées du cycle de vie dans Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
     <GR_Settings_ShowAdvancedDebugInformation_Note>Le mode développeur de RimWorld affiche toujours les diagnostics avancés de GateRim SG-1, indépendamment de cette option. Les avertissements et erreurs restent toujours visibles dans Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
+    <GR_CulturalNames_SettingsDebugLabel>Diagnostic des générateurs de noms culturels</GR_CulturalNames_SettingsDebugLabel>
+    <GR_CulturalNames_OpenSamplesButton>Ouvrir des exemples de noms culturels</GR_CulturalNames_OpenSamplesButton>
+    <GR_CulturalNames_SampleReportTitle>Exemples de noms culturels GateRim SG-1</GR_CulturalNames_SampleReportTitle>
+    <GR_CulturalNames_SampleReportIntro>Exemples générés à partir des banques de noms culturelles actuelles. Cet aperçu ne crée et ne renomme aucun personnage.</GR_CulturalNames_SampleReportIntro>
+    <GR_CulturalNames_Group_None>Culture non attribuée</GR_CulturalNames_Group_None>
+    <GR_CulturalNames_Group_GoauldJaffa>Jaffa alignés Goa'uld</GR_CulturalNames_Group_GoauldJaffa>
+    <GR_CulturalNames_Group_FreeJaffa>Jaffa libres</GR_CulturalNames_Group_FreeJaffa>
+    <GR_CulturalNames_Group_Goauld>Goa'uld</GR_CulturalNames_Group_Goauld>
+    <GR_CulturalNames_Group_Tokra>Tok'ra</GR_CulturalNames_Group_Tokra>
+    <GR_CulturalNames_Group_Tauri>Tau'ri / SGC</GR_CulturalNames_Group_Tauri>
 </LanguageData>

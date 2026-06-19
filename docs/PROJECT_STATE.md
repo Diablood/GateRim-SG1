@@ -1,62 +1,91 @@
 # Project state
 
-Current milestone: `0.3.4-dev - Improve Tok'ra observation site visuals and field flow`.
+Current milestone: `0.3.5-dev - Add culture-specific pawn name generators`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.3-dev`.
-- Dedicated branch: `feature/tokra-observation-site-visual-rework`.
-- Planned final tag after local validation: `v0.3.4-dev`.
-- Current local test archive revision: `0.3.4-dev-r4`.
+- Functional base tag: `v0.3.4-dev`.
+- Dedicated branch: `feature/cultural-pawn-name-generators`.
+- Planned final tag after local validation: `v0.3.5-dev`.
+- Current local test archive revision: `0.3.5-dev-r2`.
 
 ## Milestone scope
 
-This milestone keeps the established Tok'ra observation objective but improves both its visual readability and the coherence of the field actions.
+This milestone adds a reusable internal naming layer without adding a new race, faction, incident or gameplay reward.
 
-The old automatic six-hour recording phase is removed. Observation is now an operator-controlled task:
+The first supported cultural groups are:
 
-1. a Tok'ra observation device is delivered to the map;
-2. a colon carries it to the peripheral observation point;
-3. the device is installed as a dedicated field scope;
-4. the same colon remains at the scope and observes for a random duration of roughly one to two in-game hours;
-5. when the observation is complete, the colon immediately packs the scope up;
-6. the colon carries it directly to the powered Tok'ra communicator;
-7. the final transmission resolves the operation.
+1. Goa'uld-aligned Jaffa;
+2. Free Jaffa;
+3. Goa'uld;
+4. Tok'ra;
+5. Tau'ri / SGC.
 
-If the continuous task is interrupted after deployment, the player can right-click the installed observation site to resume the remaining observation work and continue through recovery and transmission.
+The generated pools use original culture-inspired combinations with enough variation for recurring visitors, raids and long-running games.
 
-## Visual and animation rework
+## Assignment model
 
-The temporary observation point no longer reuses the generic Tok'ra delivery spot ring. It uses a dedicated field-scope texture with a tripod, directional optic and compact sensor housing.
+`GameComponent_CulturalPawnNameManager` scans newly generated pawns on maps, faction leaders and world pawns.
 
-The previous construction effect and drill-like sound are removed from deployment and recovery. During the actual observation toil, the colon remains beside the scope and faces it, matching the visual language of using an observation instrument rather than constructing a building.
+The manager resolves culture from GateRim SG-1 PawnKinds and faction identity, then assigns one persistent cultural name. It stores:
 
-## Failure conditions
+- processed pawn ThingIDs, preventing repeated renaming;
+- reserved generated name keys, reducing duplicate cultural names within the same save;
+- an initialization baseline, protecting pawns that already existed before the feature was enabled.
 
-The operation fails if:
+Starting player pawns are protected during new-game initialization so scenario-editor names remain unchanged. Pawns already present in a pre-`0.3.5-dev` save are registered without being renamed.
 
-- the observation site or device is destroyed before transmission;
-- the device becomes unavailable;
-- the accepted operation is not completed before its existing secure deadline.
+Newly generated visitors, raiders, settlement pawns, faction leaders and compatible debug-spawned pawns are eligible once they enter the normal map or world-pawn lifecycle.
 
-The operation no longer succeeds from a background timer. Success is granted only after the observed data are physically returned and transmitted.
+## Host and symbiote identity
+
+`GoauldSymbioteData` now stores both a persistent `symbioteName` and the captured `hostName`.
+
+For newly generated Goa'uld and Tok'ra host profiles:
+
+- the original human name is captured as the host identity;
+- the persistent symbiote receives a culture-specific Goa'uld or Tok'ra identity;
+- the visible generated pawn receives the culture-specific identity once;
+- later implantation, extraction, recruitment or faction changes do not repeatedly rename the pawn.
+
+This milestone prepares the distinction without exposing both identities in every normal player interface.
+
+## Debug requirements
+
+One grouped debug action is added:
+
+```text
+Cultural names: show samples
+```
+
+It displays examples for all current cultural groups in one report. The same report is accessible from the GateRim SG-1 settings page while advanced debug information is enabled.
+
+No additional communicator gizmo is added, and no name-debug control is visible in normal play.
 
 ## Save compatibility
 
 - `0.3.0-dev` remains the framework compatibility baseline.
-- Existing `0.3.2-dev` and `0.3.3-dev` observation saves remain loadable.
-- A deployed site using the old automatic timer is converted into remaining operator-controlled observation work.
-- An already-ready site remains ready for recovery.
-- No active observation should be duplicated during conversion.
+- Existing pawns in older saves are never renamed when the component first initializes.
+- The new processed-ID and reserved-name collections are saved normally from `0.3.5-dev` onward.
+- Existing persistent symbiote data receives missing internal host/symbiote identity fields without changing the pawn's current visible name.
 
-## Debug requirements
+## Durable roadmap additions
 
-The grouped communicator debug menu remains the single debug entry point.
+`docs/ROADMAP.md` now records:
 
-- `Observation : déployer le dispositif` creates the installed field state.
-- `Observation : terminer l’enregistrement` completes the operator-controlled observation work.
-- Full progress values remain visible only in the technical debug report.
-- No debug gizmo is visible in normal play.
+- future Asgard support, trade, military aid and quest-giver presence without ordinary world settlements;
+- future pacifist Nox trade and diplomacy;
+- future hostile Unas populations and their potential as Goa'uld hosts;
+- an optional GateRim SG-1-only world preset that removes selectable vanilla factions where safe;
+- a dedicated GateRim SG-1 storyteller that never becomes mandatory for the mod's events.
+
+## Immediate developer-spawn and starter integration
+
+Compatible pawns now notify the relevant host initializer and the shared name manager from `PostSpawnSetup`, allowing the vanilla developer `Spawn pawn` tool to initialize and name GateRim pawns before the player inspects them, even while paused.
+
+The stranded SG-team scenario also assigns Tau'ri names when each candidate is generated for the configuration page. The player may still rename any candidate manually; the manager registers the final chosen names at game start and never overwrites them later.
+
+Generic raid generation is not a valid test for every culture: Tok'ra and Free Jaffa factions currently declare `raidsForbidden`, and the SGC expedition is a player faction. Their names must be tested through their supported visitors, faction leaders, scenario pawns or direct PawnKind spawning instead of forcing a vanilla raid.
 
 ## Files intentionally removed
 
@@ -64,49 +93,37 @@ None for this milestone revision.
 
 ## Required local validation
 
-1. Build the assembly and confirm version `0.3.4.0`.
-2. Confirm the observation point remains absent from all Architect categories.
-3. Force and accept an observation operation.
-4. Confirm the temporary site uses the dedicated field-scope visual.
-5. Start deployment and confirm the colon carries the device to the site.
-6. Confirm deployment no longer plays the construction drill effect.
-7. Confirm the same colon remains at the scope and faces it during roughly one to two hours of observation work.
-8. Confirm the colon immediately packs the scope, returns to the communicator and transmits without an automatic waiting phase or a second player order.
-9. Interrupt during observation, then resume by right-clicking the installed site.
-10. Save and reload during observation, during recovery and during the return trip.
-11. Destroy the installed site and confirm a single failure.
-12. Let the secure deadline expire and confirm a single failure.
-13. Review `Player.log` for XML, texture, job, reservation, Scribe or duplicate-resolution errors.
-
-## Durable handoff files
-
-Project continuity must not depend on the current discussion history. Before resuming work after a context loss or in a new discussion, consult:
-
-- `docs/PROJECT_STATE.md` for the active milestone;
-- `docs/ROADMAP.md` for all deferred additions and future actions;
-- `docs/MILESTONE_PUBLICATION.md` before publication;
-- `AGENTS.md` for repository working rules.
-
-The former outdated roadmap has been replaced by a concise current backlog. Historical milestone details remain in `docs/CHANGELOG.md`.
+1. Build the assembly and confirm version `0.3.5.0`.
+2. Open the grouped cultural-name sample report from RimWorld developer mode.
+3. Enable the GateRim SG-1 advanced debug option and open the same report from mod settings.
+4. Generate multiple Goa'uld-aligned Jaffa and confirm culturally coherent single names.
+5. Generate multiple Free Jaffa and confirm a related but distinct naming style.
+6. Generate Goa'uld and Tok'ra host profiles and confirm their visible names and persistent symbiote names.
+7. Generate or encounter SGC expedition pawns and confirm Tau'ri-style first and last names.
+8. Confirm starting player pawns and pawns already present in an older save are not renamed.
+9. Confirm visitors, raids and faction leaders keep the same names after save/load.
+10. Confirm later recruitment, implantation, extraction or faction changes do not rename processed pawns.
+11. Generate several dozen samples per group and check diversity and immediate duplicates.
+12. Review `Player.log` for Name, Scribe, GameComponent, world-pawn or missing-Def errors.
 
 ## Deferred follow-up
 
-The complete durable backlog is maintained in `docs/ROADMAP.md`. The most directly related deferred items are:
+The complete durable backlog remains in `docs/ROADMAP.md`. Relevant follow-ups include:
 
-- replace the provisional mail-like texture of the portable observation device during the global object-visual pass;
-- consider a separate visual state for completed observation data only if it provides clear value;
-- continue consolidating device-specific debug actions into grouped menus when several exist on the same object;
-- add further distinct operation archetypes only after the existing four remain stable on the shared framework.
+- extend the naming framework when Asgard, Nox, Unas and other cultures are implemented;
+- decide where both host and symbiote names should be visible in normal play;
+- continue enriching cultural backstories and their stat modifiers;
+- use the naming foundation in the future GateRim SG-1-only world preset.
 
 ## Publication after validation
 
-Follow `docs/MILESTONE_PUBLICATION.md`.
+Follow the corrected `docs/MILESTONE_PUBLICATION.md` from the repository.
 
 Expected final publication identifiers:
 
-- commit: `0.3.4-dev - improve Tok'ra observation field flow`;
-- branch: `feature/tokra-observation-site-visual-rework`;
-- annotated tag: `v0.3.4-dev`.
+- commit: `0.3.5-dev - add culture-specific pawn name generators`;
+- branch: `feature/cultural-pawn-name-generators`;
+- annotated tag: `v0.3.5-dev`.
 
 ## Repository rules reminder
 

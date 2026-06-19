@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.4-dev`
+> Version du mod documentée : `0.3.5-dev`
 
 ## Le mod en bref
 
@@ -47,7 +47,8 @@ premières opérations de terrain.
 ### Colonie et progression
 
 - [Scénario Équipe SG isolée](Stranded-SG-Team-Scenario).
-- [Histoires culturelles](Cultural-Backstories) et
+- [Histoires culturelles](Cultural-Backstories), noms culturels persistants
+  pour les groupes GateRim SG-1 et
   [réactions sociales contextuelles](Contextual-Social-Baseline).
 - [Recherches de fabrication Stargate](Stargate-Crafting-Research).
 - [État détaillé du contenu](Content-Status) pour distinguer les éléments
@@ -62,9 +63,9 @@ Les principales directions prévues sont :
 
 - diversifier les opérations Tok'ra récurrentes et les missions de terrain, sans
   cycle visible ni répétition immédiate ;
-- enrichir les cultures du mod avec davantage d'histoires personnelles, des
-  effets de statistiques cohérents et un générateur de noms adapté aux Jaffa,
-  Goa'uld, Tok'ra et autres groupes ;
+- étendre les noms culturels désormais disponibles, enrichir les histoires
+  personnelles et ajouter des effets de statistiques cohérents aux différentes
+  cultures ;
 - créer un storyteller GateRim SG-1, tout en maintenant les événements du mod
   accessibles avec les storytellers vanilla et moddés compatibles ;
 - poursuivre la passe globale sur les textes joueurs, l'équilibrage et la
