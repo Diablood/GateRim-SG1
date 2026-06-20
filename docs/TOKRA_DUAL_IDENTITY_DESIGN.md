@@ -1,6 +1,6 @@
 # Tok'ra host / symbiote dual identity — phased design
 
-Status: phases 1, 2 and 3 are implemented and functionally validated. `0.3.13-dev` implements phase 4 for Tok'ra generated directly already fused; focused validation is in progress.
+Status: phases 1 through 5 are implemented, functionally validated and published. The death, corpse, grave and resurrection audit completed in `0.3.14-dev` without requiring additional behavior code.
 
 ## Phased implementation
 
@@ -40,7 +40,7 @@ Validated before publication:
 - player / AI gizmo boundaries and Goa'uld non-regression;
 - clean `Player.log`.
 
-Deferred compatibility audits remain for death or resurrection flows, social presentation, letters, quests and third-party pawn interfaces.
+The death and resurrection compatibility audit is completed. Future compatibility work remains limited to concrete issues reported in social presentation, letters, quests or third-party pawn interfaces.
 
 ### Phase 3 — `0.3.12-dev`
 
@@ -67,7 +67,7 @@ Validated in game:
 
 ### Phase 4 — `0.3.13-dev` — distinct identities for generated pre-joined Tok'ra
 
-Implemented for focused testing:
+Implemented and validated:
 
 - add the persistent `TokraHostIdentitySource` marker with explicit unknown, real-implantation and generated-pre-joined states;
 - never classify an identity source by comparing the two display names;
@@ -84,7 +84,24 @@ Implemented for focused testing:
 
 The initial off-world-human origin is intentionally not Tau'ri. Future Tau'ri, Jaffa, Unas or other compatible origins can be added as weighted XML Defs after their cultures, backstories and biological rules are available.
 
-Focused validation must cover developer spawning, world-generated Tok'ra, repeated switching, save/load, migration from `0.3.12-dev`, actual implantation, extraction and reimplantation. The death, corpse, grave and resurrection audit remains separate from this generation fix.
+Validated after local revision `r2`: developer spawning, identity variety, repeated switching, save/load, migration from `0.3.12-dev`, world-generation paths available for testing, actual implantation, extraction, reimplantation and clean logs. The death, corpse, grave and resurrection audit remains separate from this generation fix.
+
+
+### Phase 5 — `0.3.14-dev` — death, corpse, grave and resurrection audit
+
+Implemented and validated without additional behavior code. The complete `GoauldSymbioteData` object remains deep-saved by the symbiote Hediff component and attached to the pawn contained by its corpse.
+
+Validated with both active-personality states:
+
+- death with the host active, followed by corpse save/load, burial, grave save/load and resurrection;
+- the same complete sequence with the symbiote active;
+- no switch gizmo while dead or buried and exactly one after resurrection;
+- preservation of both names, both backstory records, the active-personality state and shared skill progress;
+- vanilla corpse and grave naming based on the active display name at death without a second corpse identity;
+- repeated switching, save/load, extraction and reimplantation after resurrection;
+- Goa'uld and ordinary-human death/resurrection regressions with a clean log.
+
+No data-loss, state-loss or presentation defect was reproduced. Death therefore remains distinct from extraction or ordinary Hediff removal, and the system does not force the host personality merely because the pawn died.
 
 ## Purpose
 

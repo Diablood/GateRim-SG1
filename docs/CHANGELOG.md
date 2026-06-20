@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.14-dev - Audit Tok'ra identity through death and resurrection
+
+- Validate the complete death, corpse, burial, grave save/load and resurrection lifecycle with either the host or symbiote personality active.
+- Confirm that both names, both backstory records, the active-personality state and shared skill progression persist without rerolling or reconstruction.
+- Confirm that no personality gizmo is exposed while the pawn is dead or buried and that exactly one returns after resurrection.
+- Accept vanilla corpse and grave labels based on the active display name at death without creating a second corpse or grave identity.
+- Validate ten repeated post-resurrection switches without skill loss, duplication or stacking.
+- Validate post-resurrection save/load, Tok'ra extraction and reimplantation, plus Goa'uld and ordinary-human regressions.
+- Keep the existing single-pawn, single-symbiote-data and shared-skill architecture because no reproducible defect required a C# correction.
+- Correct stale `0.3.13-dev` validation and publication statuses left in the published tracking documents.
+- Strengthen the milestone publication procedure with a documentary consistency gate before the final commit and a published-file review after tagging.
+- Raise the assembly version to `0.3.14.0` and the mod metadata version to `0.3.14-dev`.
+
 ## 0.3.13-dev - Generate distinct identities for pre-joined Tok'ra
 
 - Add a persistent `TokraHostIdentitySource` marker that distinguishes real implantations from Tok'ra generated already fused.

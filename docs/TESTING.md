@@ -2,9 +2,33 @@
 
 > Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
 
+## 0.3.14-dev - Mort, cadavre, tombe et résurrection de l'identité Tok'ra
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.14-dev`. Aucun changement C# n'a été nécessaire : l'architecture persistante existante couvre correctement le cycle de vie testé.
+
+Couverture validée :
+
+- mort avec l'hôte actif puis sauvegarde/recharge du cadavre ;
+- inhumation, sauvegarde/recharge de la tombe et récupération du cadavre ;
+- résurrection avec conservation des deux identités, de la personnalité active et de la progression commune ;
+- répétition complète avec le symbiote actif au moment de la mort ;
+- absence de gizmo sur un pawn mort, un cadavre ou une tombe ;
+- retour d'un gizmo unique après résurrection pour un colon directement contrôlé ;
+- dix basculements post-résurrection sans perte, duplication ni cumul ;
+- extraction et réimplantation après résurrection ;
+- régressions sur Goa'uld, humains ordinaires, sauvegarde et `Player.log`.
+
+Points de régression durables :
+
+- conserver un seul pawn et un seul objet persistant de données de symbiote à travers le cadavre et la tombe ;
+- ne pas créer de seconde identité propre au cadavre ou à la résurrection ;
+- accepter que le libellé vanilla du cadavre ou de la tombe suive le nom actif au moment de la mort tant que les deux identités restent stockées ;
+- ne pas restaurer automatiquement l'hôte à la mort sans besoin fonctionnel démontré ;
+- n'ajouter un correctif qu'après reproduction d'un défaut précis avec l'hôte actif ou le symbiote actif.
+
 ## 0.3.13-dev - Identités distinctes pour les Tok'ra générés déjà fusionnés
 
-Validation en cours. Les tests détaillés et leurs résultats sont conservés dans `docs/TESTING_CURRENT.md`.
+Validation locale terminée après la révision `r2`, puis jalon publié et wiki synchronisé. La couverture durable reste conservée ci-dessous.
 
 Couverture obligatoire :
 

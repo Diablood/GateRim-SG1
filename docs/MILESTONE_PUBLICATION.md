@@ -28,7 +28,48 @@ feature/<nom-du-jalon>
 
 Toujours rappeler explicitement la branche active avant la publication.
 
-## 3. Vérifier, committer et publier le dépôt principal
+## 3. Verrou documentaire avant le commit final
+
+Avant `git add -A`, relire les fichiers directement depuis l’arbre de travail qui sera publié, et non depuis une ancienne conversation ou un ancien tag :
+
+- `docs/PROJECT_STATE.md` doit être basculé vers l’état final destiné au tag : tests terminés, jalon clôturé, identifiants de publication définitifs et aucune prochaine étape de test déjà effectuée ;
+- `docs/ROADMAP.md` doit marquer comme terminées la validation et la publication du jalon en cours, puis identifier clairement le prochain travail différé ;
+- `docs/TESTING_CURRENT.md` doit conserver le résultat final des tests, la dernière révision locale validée et les éventuelles limites connues ;
+- `docs/TESTING.md` doit recevoir la couverture durable du jalon ;
+- `docs/CHANGELOG.md` doit décrire l’état réellement publié avec la version finale sans suffixe `-rN` ;
+- `About/About.xml` et `Source/GateRimSG1/GateRimSG1.csproj` doivent porter la même version de jalon.
+
+Contrôle recommandé :
+
+```powershell
+git diff -- `
+    .\About\About.xml `
+    .\Source\GateRimSG1\GateRimSG1.csproj `
+    .\docs\PROJECT_STATE.md `
+    .\docs\ROADMAP.md `
+    .\docs\TESTING_CURRENT.md `
+    .\docs\TESTING.md `
+    .\docs\CHANGELOG.md
+```
+
+Rechercher ensuite les marqueurs susceptibles d’être devenus obsolètes :
+
+```powershell
+git grep -n -E "Validation en cours|focused validation is in progress|remain required|reste requis|jalon prêt à tester" -- `
+    docs/PROJECT_STATE.md `
+    docs/ROADMAP.md `
+    docs/TESTING_CURRENT.md `
+    docs/TESTING.md `
+    docs/CHANGELOG.md
+```
+
+Une occurrence peut être légitime dans l’historique d’un jalon plus ancien, mais toute occurrence décrivant le jalon en cours doit être corrigée avant le commit.
+
+Le commit final est l’état qui recevra le tag. Les documents doivent donc déjà décrire le jalon comme clôturé et sa publication comme effectuée. Les commandes de push et de tag sont exécutées immédiatement après ce commit. Si la publication échoue, ne pas commencer le jalon suivant tant que l’échec n’est pas résolu ; ne pas créer un second commit uniquement pour changer « prêt à publier » en « publié ».
+
+Si cette vérification révèle une faiblesse récurrente de la procédure, modifier ce fichier dans le même jalon afin que la correction ne dépende pas de la mémoire d’une conversation.
+
+## 4. Vérifier, committer et publier le dépôt principal
 
 ```powershell
 git status --short
@@ -48,7 +89,7 @@ Convention de commit :
 0.2.51-dev - add organic Tok'ra wounded agent care
 ```
 
-## 4. Créer et publier le tag final unique
+## 5. Créer et publier le tag final unique
 
 Avant la première release publique :
 
@@ -69,7 +110,9 @@ git tag -a v0.2.51-dev -m "0.2.51-dev - add organic Tok'ra wounded agent care"
 git push origin v0.2.51-dev
 ```
 
-## 5. Synchroniser et publier le wiki séparé
+## 6. Synchroniser le wiki séparé uniquement si nécessaire
+
+Synchroniser le wiki lorsque le jalon modifie réellement un fichier `docs/wiki/*.md`. En l’absence de modification dans ce dossier, noter explicitement qu’aucune synchronisation n’est nécessaire et ne pas créer de commit wiki vide.
 
 Chemins locaux habituels :
 
@@ -112,7 +155,7 @@ Utiliser `git push origin HEAD` plutôt qu’un nom de branche wiki codé en dur
 
 Le message de commit du wiki doit utiliser la version finale du jalon, sans suffixe `-rN`.
 
-## 6. Vérification finale du dépôt principal
+## 7. Vérification finale du dépôt principal
 
 Depuis `GateRim-SG1` :
 
@@ -129,9 +172,19 @@ v<version>
 nothing to commit, working tree clean
 ```
 
-## 7. Vérification finale du wiki
+Relire ensuite les fichiers publiés depuis `HEAD` pour éviter qu’un document local non indexé ou une ancienne version ait été contrôlé par erreur :
 
-Depuis `GateRim-SG1.wiki` :
+```powershell
+git show HEAD:docs/PROJECT_STATE.md | Select-Object -First 40
+git show HEAD:docs/ROADMAP.md | Select-Object -First 70
+git show HEAD:docs/TESTING_CURRENT.md | Select-Object -First 30
+```
+
+Ils doivent décrire le jalon comme validé et publié, sans annoncer comme prochaine étape un test déjà terminé.
+
+## 8. Vérification finale du wiki
+
+Seulement lorsqu’une synchronisation wiki a été nécessaire :
 
 ```powershell
 git log -1 --oneline
@@ -144,7 +197,7 @@ Résultat attendu :
 nothing to commit, working tree clean
 ```
 
-## 8. Règles permanentes associées
+## 9. Règles permanentes associées
 
 À chaque nouveau jalon :
 
@@ -157,6 +210,7 @@ nothing to commit, working tree clean
 - préserver `About/ModIcon.png` ;
 - mettre à jour `docs/PROJECT_STATE.md` ;
 - intégrer les tests durables dans `docs/TESTING.md` ;
+- mettre à jour cette procédure lorsqu’une amélioration durable est découverte ;
 - attendre la validation locale avant commit, tag, push et publication du wiki ;
 - proposer un commit court au format `<version> - <description>` ;
 - proposer un tag Git annoté préfixé par `v`.

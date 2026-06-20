@@ -11,25 +11,36 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
-## Priorité immédiate
+## Dernier jalon clôturé
 
-### Identité d'hôte des Tok'ra générés déjà fusionnés (`0.3.13-dev`)
+### Mort, cadavre, tombe et résurrection des Tok'ra (`0.3.14-dev`)
 
-- [x] Distinguer par un marqueur persistant une implantation réelle d'un Tok'ra généré directement déjà fusionné.
-- [x] Ne jamais détecter ce cas par une simple comparaison entre le nom de l'hôte et celui du symbiote.
-- [x] Ajouter des profils XML d'origine d'hôte pondérés au framework culturel.
-- [x] Configurer une origine humaine hors-monde par défaut, sans supposer une origine Tau'ri.
-- [x] Générer un nom, une enfance et une carrière d'hôte stables à partir de l'identifiant persistant du symbiote.
-- [x] Garantir que les deux identités d'un même Tok'ra portent des noms distincts.
-- [x] Ajouter six carrières adultes humaines hors-monde strictement nécessaires à une identité d'hôte complète.
-- [x] Préserver séparément l'identité Tok'ra du symbiote et maintenir l'hôte actif par défaut.
-- [x] Corriger le gestionnaire de noms afin qu'il finalise le nom du symbiote sans écraser le nom d'hôte actif.
-- [x] Prévoir une migration stable des anciennes sauvegardes sans reroll à chaque chargement.
-- [x] Remplacer l'origine générée par l'identité du nouvel hôte lors d'une extraction suivie d'une vraie réimplantation.
-- [ ] Valider `Spawn pawn`, la variété, le basculement, la sauvegarde/recharge et la migration d'une sauvegarde `0.3.12-dev`.
-- [ ] Valider les visiteurs, escortes, chefs de faction et autres Tok'ra pré-fusionnés générés hors de la carte principale.
-- [ ] Valider l'absence de régression sur les implantations réelles, les caravanes, l'extraction et les Goa'uld.
-- [ ] Publier la branche `feature/tokra-generated-host-identities`, le tag `v0.3.13-dev` et synchroniser le wiki.
+- [x] Partir du tag publié `v0.3.13-dev` sur la branche dédiée `feature/tokra-death-resurrection-audit`.
+- [x] Auditer statiquement la persistance existante avant d'ajouter du code.
+- [x] Conserver un seul pawn, un seul objet `GoauldSymbioteData` et une seule progression de compétences partagée.
+- [x] Ne créer aucun système parallèle propre au cadavre, à la tombe ou à la résurrection sans défaut reproductible.
+- [x] Tester une mort avec l'hôte actif, puis cadavre, sauvegarde/recharge, tombe et résurrection.
+- [x] Tester la même séquence avec le symbiote actif.
+- [x] Vérifier que le cadavre et la tombe restent cohérents avec le nom actif au moment de la mort.
+- [x] Vérifier qu'aucun gizmo de personnalité n'est exposé sur un pawn mort ou son cadavre.
+- [x] Vérifier après résurrection les deux noms, les backstories, la personnalité active, les compétences et l'absence de cumul.
+- [x] Tester un nouveau basculement, une sauvegarde/recharge et une extraction après résurrection.
+- [x] Corriger uniquement les défauts reproduits, puis compléter les régressions Goa'uld et `Player.log`.
+- [x] Publier la branche et le tag final unique `v0.3.14-dev`.
+
+Le cycle complet a été validé sur la révision locale `r1` sans correctif C# : les données persistantes existantes couvrent correctement le cadavre, la tombe, la résurrection, le basculement post-résurrection et l'extraction ultérieure. Aucun fichier wiki n'a été modifié.
+
+Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.14-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
+
+### Jalon précédent — identités distinctes des Tok'ra pré-fusionnés (`0.3.13-dev`)
+
+- [x] Distinguer une implantation réelle d'une génération déjà fusionnée avec un marqueur persistant.
+- [x] Générer une identité d'hôte humain hors-monde stable et distincte via des Defs XML pondérés.
+- [x] Préserver séparément l'identité Tok'ra et maintenir l'hôte actif par défaut.
+- [x] Valider `Spawn pawn`, variété, basculement, sauvegarde/recharge et migration d'une sauvegarde `0.3.12-dev`.
+- [x] Valider les générations disponibles hors carte et l'absence de régression sur les implantations réelles, caravanes, extractions et Goa'uld.
+- [x] Corriger le chargement XML des `skillGains` dans la révision locale `r2`.
+- [x] Publier `feature/tokra-generated-host-identities`, le tag `v0.3.13-dev` et synchroniser le wiki.
 
 ### Extensions futures des origines d'hôte
 
@@ -40,19 +51,15 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ### Intégration de l'identité Tok'ra active (`0.3.12-dev`)
 
-- [x] Partir du basculement de personnalité publié dans `v0.3.11-dev`.
-- [x] Centraliser la règle de contrôle direct pour les colons présents sur carte et les propriétaires d'une caravane du joueur.
+- [x] Centraliser la règle de contrôle direct sur carte et en caravane.
 - [x] Conserver l'exclusion des invités, prisonniers, esclaves, alliés, visiteurs et pawns de quête non recrutés.
-- [x] Ajouter un gizmo unique de caravane ouvrant une liste des Tok'ra éligibles, sans dupliquer le gizmo par pawn.
-- [x] Réutiliser le même service de basculement et le même modèle de progression commune que sur carte.
-- [x] Valider le passage carte → caravane → carte sans cumul ni perte de progression.
-- [x] Auditer les onglets Bio, Social et Santé, les messages, les caravanes et les relations lorsque le symbiote est actif.
-- [ ] Auditer ultérieurement la mort, le cadavre, la tombe et la résurrection lorsqu'un flux de test sûr est utile.
+- [x] Réutiliser un seul service de basculement et une seule progression commune.
+- [x] Valider les onglets Bio, Social et Santé, les messages, caravanes et relations lorsque le symbiote est actif.
+- [x] Reporter explicitement la mort, le cadavre, la tombe et la résurrection vers le jalon dédié `0.3.14-dev`.
 - [x] Publier la branche `feature/tokra-active-identity-integration`, le tag `v0.3.12-dev` et synchroniser le wiki.
 
 ### Après validation
 
-- [ ] Auditer la mort, le cadavre, la tombe et la résurrection sans créer de second système d'identité parallèle.
 - [ ] Tester les interfaces de mods de préparation ou de gestion de pawns lorsqu'une incompatibilité concrète est signalée.
 - [ ] Reprendre l'extension générale du catalogue de backstories dans une discussion dédiée, avec une quantité raisonnable et culturellement cohérente.
 
@@ -131,7 +138,7 @@ La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.m
 - [x] Implémenter dans `0.3.11-dev` une progression commune des niveaux et de l'expérience, à valider contre toute perte, duplication ou cumul lors des tests ciblés.
 - [x] Afficher dès `0.3.10-dev` les deux identités dans l'inspection des Tok'ra contrôlés par le joueur, puis conserver cet affichage quelle que soit la personnalité active dans le futur jalon de basculement.
 - [x] Vérifier sauvegarde, rechargement, extraction et réimplantation.
-- [ ] Auditer dans `0.3.12-dev` la mort, la résurrection éventuelle, les relations, lettres, quêtes et interfaces tierces lorsque la personnalité du symbiote est active.
+- [x] Auditer dans `0.3.12-dev` les relations, lettres, quêtes et interfaces principales ; traiter la mort, le cadavre, la tombe et la résurrection dans le jalon dédié `0.3.14-dev`.
 - [x] Exclure par défaut les invités et pawns de quête temporairement contrôlables tant qu'ils ne rejoignent pas réellement la colonie.
 - [ ] Réévaluer cette frontière uniquement si un futur type de pawn temporaire possède un véritable contrôle joueur et un besoin de gameplay démontré.
 - [x] Étendre dans `0.3.12-dev` le basculement aux Tok'ra propriétaires d'une caravane directement contrôlée par le joueur.
