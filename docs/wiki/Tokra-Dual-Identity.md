@@ -1,6 +1,6 @@
 # Double identité Tok'ra
 
-> Statut : basculement de personnalité validé dans `0.3.11-dev`
+> Statut : basculement et intégration carte / caravane validés dans `0.3.12-dev`
 
 Un Tok'ra réunit deux personnes conscientes dans un même corps : l'hôte et le
 symbiote. GateRim SG-1 conserve donc leurs deux identités au lieu d'effacer le
@@ -73,3 +73,30 @@ ne changent pas manuellement de personnalité.
 
 Le gizmo disparaît également lorsqu'un colon n'est plus directement contrôlable,
 par exemple pendant un état mental, puis réapparaît lorsque le contrôle revient.
+
+## Voyage en caravane
+
+Un colon Tok'ra reste contrôlé par le joueur lorsqu'il quitte la carte dans une
+caravane. La caravane sélectionnée dispose donc d'un unique gizmo
+**Identités Tok'ra** lorsqu'elle transporte au moins un Tok'ra éligible.
+
+Ce gizmo ouvre une liste : chaque ligne indique le pawn concerné et l'identité
+qui prendra le contrôle. Le basculement réutilise exactement les mêmes données,
+backstories et règles de progression que le gizmo du pawn sur une carte.
+
+Les invités, prisonniers, esclaves et pawns de quête non recrutés transportés
+avec la caravane restent exclus. Le système ne transforme pas un simple contrôle
+temporaire en appartenance réelle à la colonie.
+
+## Intégration aux interfaces vanilla
+
+Le nom et les backstories actifs sont les vraies données affichées par le pawn.
+Les onglets Bio, Social et Santé, les caravanes et les nouveaux messages doivent
+donc refléter la personnalité active, tandis que le résumé de santé conserve
+toujours les deux identités.
+
+Les anciennes lettres déjà reçues restent des traces historiques et ne sont pas
+réécrites après un basculement ultérieur. La mort, les cadavres et la
+résurrection sont audités avant toute correction spécifique afin d'éviter un
+second système d'identité parallèle.
+

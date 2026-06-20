@@ -1,89 +1,83 @@
 # Project state
 
-Current milestone: `0.3.11-dev - Add player-controlled Tok'ra personality switching`.
+Current milestone: `0.3.12-dev - Audit Tok'ra active identity integration`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.10-dev`.
-- Dedicated branch: `feature/tokra-personality-switching`.
-- Planned final tag: `v0.3.11-dev`.
-- Current local archive revision: `0.3.11-dev-r3` (final documentation and publication archive).
+- Functional base tag: `v0.3.11-dev`.
+- Dedicated branch: `feature/tokra-active-identity-integration`.
+- Planned final tag: `v0.3.12-dev`.
+- Current local archive revision: `0.3.12-dev-r2`.
 
 ## Milestone goal
 
-Allow a directly player-controlled Tok'ra host to choose which consciousness is currently active without creating a second pawn or altering the shared body, faction, relations, traits, equipment or health state.
+Audit how the active Tok'ra identity introduced in `0.3.11-dev` propagates through vanilla interfaces and correct only confirmed integration gaps without changing the validated shared-skill model.
 
-The milestone:
+The confirmed integration gap concerned caravans: `Pawn.IsColonistPlayerControlled` requires a spawned pawn, so a permanent player colonist travelling on the world map lost the map-only Hediff gizmo even though the caravan remained directly controlled by the player.
 
-- adds one player-only gizmo to Tok'ra host Hediffs;
-- switches the displayed primary name between the stored host name and the stored symbiote name;
-- switches the active backstories between the two persistent identity records, while preserving the host childhood whenever no dedicated symbiote childhood is configured;
-- applies only the skill-level differences granted by the active backstories;
-- keeps one shared XP progression that is synchronized before every switch;
-- persists the active personality and shared skill state through save/load;
-- restores the host identity automatically before extraction, transfer or ordinary Hediff removal;
-- keeps the two identities visible in the health description at all times;
-- leaves AI-managed Tok'ra, visitors, allies, enemies and uncontrolled quest pawns unchanged;
-- adds no separate pawn, Harmony dependency, faction change, relation change or body replacement.
+## Implemented integration
 
-## Implementation
+### Shared control boundary
 
-New reusable cultural-framework utility:
+`Source/GateRimSG1/Goauld/TokraPlayerControlUtility.cs` centralizes the eligibility rule:
 
-- `Source/GateRimSG1/Culture/BackstorySkillOffsetUtility.cs` stores a shared XP baseline per skill, synchronizes XP earned under the currently active identity and reapplies only the target backstory offsets.
+- a spawned colon must satisfy the existing vanilla `IsColonistPlayerControlled` rule;
+- a travelling pawn must belong to and be an owner of a player-controlled caravan;
+- dead pawns and pawns in a mental state are excluded;
+- guests, prisoners, slaves, visitors, allies and uncontrolled quest pawns remain excluded;
+- the pawn must carry persistent Tok'ra symbiote data.
 
-Extended persistent data:
+### Caravan interface
 
-- `Source/GateRimSG1/Goauld/GoauldSymbioteData.cs` stores the active personality, exact host-name structure and shared skill-progress records;
-- the existing host and symbiote backstories remain the authoritative identity records;
-- old `0.3.10-dev` saves default safely to the host personality and initialize missing switch data on first use.
+`Source/GateRimSG1/Goauld/WorldObjectComp_TokraCaravanIdentity.cs` adds one compact `Identités Tok'ra` command to a selected player caravan when at least one eligible Tok'ra is present.
 
-Player interface:
+The command opens a menu containing one action per eligible Tok'ra and delegates the switch to the same `HediffComp_GoauldSymbiote.TryTogglePersonality()` method used on a map. No duplicate identity or skill logic is introduced.
 
-- `Source/GateRimSG1/Goauld/HediffComp_GoauldSymbiote.cs` exposes one short gizmo only while `Pawn.IsColonistPlayerControlled` is true;
-- the gizmo target is the inactive identity;
-- the health description now also reports the active personality;
-- switching marks colonist and pawn-table interfaces dirty and shows a short RP message.
+`1.6/Patches/SG1_TokraCaravanIdentity.xml` attaches the new world-object component to the vanilla `Caravan` definition without Harmony.
 
-## Skill model
+### Existing map behavior
 
-The skill model is:
+`Source/GateRimSG1/Goauld/HediffComp_GoauldSymbiote.cs` now consumes the shared eligibility utility and exposes a safe public switch method for the caravan component. The ordinary pawn gizmo, dual-identity health summary, save data and skill model remain unchanged.
 
-`effective skill = shared progression + active backstory offset`
+## Audit results
 
-Before every switch, the framework compares the pawn's current raw XP state with the state last applied by the framework. The difference is merged into the shared progression. It then applies the target identity's backstory offsets once.
+The focused tests validate:
 
-This must preserve:
+- map → caravan → map switching without skill stacking, XP loss or identity reroll;
+- one grouped caravan gizmo with one action per eligible Tok'ra;
+- unchanged exclusion of guests, prisoners, slaves, AI-managed Tok'ra and unrecruited quest pawns;
+- coherent Bio, Social, Health and caravan information for the active personality;
+- unchanged relations and persistent dual-identity health summary;
+- save/load, extraction and the `0.3.11-dev` shared-skill model without regression;
+- a clean `Player.log`.
 
-- passions;
-- gene aptitudes;
-- XP and levels earned during play;
-- skill decay;
-- the randomized skill baseline created with the pawn.
+Death, corpse, grave and resurrection remain a deferred compatibility audit because no dedicated correction was required for the validated caravan integration.
 
-Repeated switching must not stack, duplicate or erase backstory bonuses.
+## Distinct generated-host identity gap
 
-## Save migration and compatibility
+An exploratory developer spawn exposed a separate generation problem:
 
-- Existing `0.3.0-dev` or later saves remain the compatibility baseline.
-- Existing `0.3.10-dev` Tok'ra identities load with the host active by default.
-- Missing exact host-name components are captured from the current host while the host identity is active.
-- Existing symbiote names and cultural backstories are retained.
-- The shared skill baseline is created only on the first personality switch.
-- A save made with the symbiote active must reload with the symbiote name, backstories and offsets still active.
-- Extraction or Hediff removal restores the host identity before the symbiote data leaves the body.
-- Reimplanting the same symbiote into a new host resets host-specific switch state while preserving the symbiote identity.
-- AI-managed Tok'ra keep the classic interface and behavior.
+- `Spawn pawn > SG1_TokraVoluntaryHost` creates a Tok'ra already fused before any historical implantation exists;
+- the current initializer can therefore record the same generated Tok'ra name for both the host and the symbiote while only the adulthood changes;
+- this is not an interface or caravan regression and is intentionally not patched in `0.3.12-dev`.
+
+The future fix must not infer the problem by comparing names. A persistent identity-source marker must distinguish:
+
+- a real implantation into an already existing host;
+- a pawn generated directly as a pre-joined Tok'ra.
+
+For a pre-joined Tok'ra, the cultural framework must generate a separate host identity from configurable weighted origin profiles. The current default should be an off-world human host, without assuming Tau'ri origin, and the design must remain extensible to Tau'ri, Jaffa, Unas and other compatible hosts. The symbiote keeps its own Tok'ra identity. Existing real-implantation flows remain unchanged.
 
 ## Files changed
 
 - `About/About.xml`;
 - `Source/GateRimSG1/GateRimSG1.csproj`;
-- `Source/GateRimSG1/Culture/BackstorySkillOffsetUtility.cs`;
-- `Source/GateRimSG1/Goauld/GoauldSymbioteData.cs`;
 - `Source/GateRimSG1/Goauld/HediffComp_GoauldSymbiote.cs`;
-- `Languages/English/Keyed/SG1_TokraDualIdentity.xml`;
-- `Languages/French/Keyed/SG1_TokraDualIdentity.xml`;
+- `Source/GateRimSG1/Goauld/TokraPlayerControlUtility.cs`;
+- `Source/GateRimSG1/Goauld/WorldObjectComp_TokraCaravanIdentity.cs`;
+- `1.6/Patches/SG1_TokraCaravanIdentity.xml`;
+- `Languages/English/Keyed/SG1_TokraIdentityIntegration.xml`;
+- `Languages/French/Keyed/SG1_TokraIdentityIntegration.xml`;
 - `docs/CULTURAL_FRAMEWORK.md`;
 - `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`;
 - `docs/wiki/Tokra-Dual-Identity.md`;
@@ -98,35 +92,25 @@ The separate wiki must be synchronized when the milestone is published.
 
 ## Validation status
 
-Functional validation completed for `0.3.11-dev-r2`:
+`0.3.12-dev-r1` is functionally validated:
 
-- metadata versions are `0.3.11-dev` and `0.3.11.0`;
-- the first gizmo click succeeds without assigning a missing Tok'ra childhood to the vanilla story tracker;
-- the host childhood remains active while the Tok'ra adulthood and symbiote name become active;
-- switching back restores the exact host identity;
-- ten repeated host / symbiote cycles produce no skill drift, stacking or cumulative bonuses;
-- XP and levels earned under either personality remain part of the shared progression;
-- save/load is validated with both the host and the symbiote active;
-- extraction while the symbiote is active restores the host before removal;
-- reimplanting the same symbiote preserves its identity without transferring the previous host's skill state;
-- the gizmo is limited to directly controlled player Tok'ra and remains absent for AI-managed Tok'ra and Goa'uld;
-- Goa'uld implantation and extraction show no regression;
-- `Player.log` is clean;
-- no Harmony dependency or second pawn is introduced;
-- English and French translation XML files are valid;
-- `About/ModIcon.png` remains unchanged.
+- forced rebuild completed with assembly version `0.3.12.0`;
+- focused map and caravan tests passed;
+- interface and player-control boundaries passed;
+- no regression was observed in personality switching, shared skills, save/load or extraction;
+- `Player.log` is clean.
 
-The milestone is ready for commit, branch publication, the unique final tag and wiki synchronization.
+`0.3.12-dev-r2` only records the validated result and the deferred generated-host design. No new build or in-game test is required after extracting `r2`.
 
 ## Publication identifiers
 
-- commit: `0.3.11-dev - add player-controlled Tok'ra personality switching`;
-- branch: `feature/tokra-personality-switching`;
-- annotated tag: `v0.3.11-dev`.
+- commit: `0.3.12-dev - integrate Tok'ra active identity interfaces`;
+- branch: `feature/tokra-active-identity-integration`;
+- annotated tag: `v0.3.12-dev`.
 
 ## Next step
 
-Publish the validated branch, create the unique final tag `v0.3.11-dev`, synchronize the separate wiki and verify both repositories are clean.
+Publish the validated branch and final tag, synchronize the wiki, then start a dedicated milestone for distinct host identities on pre-joined generated Tok'ra.
 
 ## Files intentionally removed
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraCaravanIdentity_Label>Identités Tok'ra</GR_TokraCaravanIdentity_Label>
+    <GR_TokraCaravanIdentity_Desc>Choisir la personnalité active des Tok'ra contrôlés par le joueur qui voyagent avec cette caravane.</GR_TokraCaravanIdentity_Desc>
+    <GR_TokraCaravanIdentity_Option>{0} : activer {1}</GR_TokraCaravanIdentity_Option>
+</LanguageData>

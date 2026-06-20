@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/WorldObjectDef[defName="Caravan"]/comps</xpath>
+        <match Class="PatchOperationAdd">
+            <xpath>Defs/WorldObjectDef[defName="Caravan"]/comps</xpath>
+            <value>
+                <li Class="GateRimSG1.Goauld.WorldObjectCompProperties_TokraCaravanIdentity" />
+            </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/WorldObjectDef[defName="Caravan"]</xpath>
+            <value>
+                <comps>
+                    <li Class="GateRimSG1.Goauld.WorldObjectCompProperties_TokraCaravanIdentity" />
+                </comps>
+            </value>
+        </nomatch>
+    </Operation>
+</Patch>

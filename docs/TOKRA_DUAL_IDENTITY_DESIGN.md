@@ -1,6 +1,6 @@
 # Tok'ra host / symbiote dual identity — phased design
 
-Status: phases 1 and 2 are implemented and functionally validated. `0.3.10-dev` preserves both identities; `0.3.11-dev-r2` adds player-only personality switching, active identity persistence and shared skill progression. The `r2` correction preserves the host childhood when no dedicated symbiote childhood exists.
+Status: phases 1, 2 and 3 are implemented and functionally validated. `0.3.10-dev` preserves both identities; `0.3.11-dev` adds player-only personality switching and shared skill progression; `0.3.12-dev` preserves direct control while travelling in a player caravan and validates the main vanilla interfaces. A later dedicated phase must generate a distinct host identity for Tok'ra created already fused.
 
 ## Phased implementation
 
@@ -41,6 +41,46 @@ Validated before publication:
 - clean `Player.log`.
 
 Deferred compatibility audits remain for death or resurrection flows, social presentation, letters, quests and third-party pawn interfaces.
+
+### Phase 3 — `0.3.12-dev`
+
+Implemented in the first test revision:
+
+- centralize the player-control boundary in `TokraPlayerControlUtility`;
+- preserve the normal pawn gizmo for spawned player colonists;
+- recognize permanent colonist owners of a player-controlled caravan as directly controlled while travelling;
+- attach one `WorldObjectComp` to the vanilla caravan Def and expose one grouped identity menu;
+- reuse `HediffComp_GoauldSymbiote.TryTogglePersonality()` instead of duplicating name, backstory or skill logic;
+- keep guests, prisoners, slaves, visitors, allies, mental-state pawns and unrecruited quest pawns excluded;
+- audit Bio, Social, Health, messages, relations, death and resurrection before adding any interface-specific patch.
+
+Historical letters and messages remain immutable snapshots. New text generated after a switch should read the pawn's active name normally. Death or resurrection receives no special code until focused tests demonstrate an actual data or presentation problem.
+
+Validated in game:
+
+- map → caravan → map switching without skill stacking or XP loss;
+- one grouped caravan menu for one or several eligible Tok'ra;
+- coherent Bio, Social, Health and caravan presentation;
+- unchanged player/guest/AI boundaries;
+- save/load and extraction without regression;
+- clean `Player.log`.
+
+### Phase 4 — distinct identities for generated pre-joined Tok'ra
+
+An exploratory `Spawn pawn > SG1_TokraVoluntaryHost` test exposed a separate generation path. The pawn is created already fused, so no real historical host existed before the initializer stored the dual identity. This can leave the host and symbiote with the same generated name while only their adulthood records differ.
+
+The future implementation must:
+
+- add an explicit persistent source marker distinguishing real implantation from pre-joined generation;
+- generate a complete host identity for pre-joined Tok'ra before activating the symbiote identity;
+- select the host origin from configurable weighted cultural profiles;
+- default to an off-world human origin in the current content set, without assuming Tau'ri ancestry;
+- remain extensible to Tau'ri, Jaffa, Unas and other compatible hosts;
+- preserve the separate Tok'ra symbiote identity;
+- migrate older identical identity records conservatively;
+- leave all real implantation flows unchanged.
+
+Do not detect this state by comparing names and do not perform a late reroll after the pawn has entered play.
 
 ## Purpose
 

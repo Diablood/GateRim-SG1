@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GateRimSG1.Goauld
@@ -17,6 +18,17 @@ namespace GateRimSG1.Goauld
         private bool transferredOut;
 
         public GoauldSymbioteData SymbioteData => symbioteData;
+
+        public Pawn HostPawn => Pawn;
+
+        public bool CanSwitchPersonality
+            => CanShowPlayerTokraIdentity()
+                && symbioteData.CanSwitchPersonality(Pawn);
+
+        public string InactivePersonalityName
+            => symbioteData?.IsSymbiotePersonalityActive == true
+                ? DisplayHostName()
+                : DisplaySymbioteName();
 
         public void InitializeWithTransferredData(GoauldSymbioteData transferredData)
         {
@@ -94,8 +106,7 @@ namespace GateRimSG1.Goauld
 
         public override IEnumerable<Gizmo> CompGetGizmos()
         {
-            if (!CanShowPlayerTokraIdentity()
-                || !symbioteData.CanSwitchPersonality(Pawn))
+            if (!CanSwitchPersonality)
             {
                 yield break;
             }
@@ -118,7 +129,7 @@ namespace GateRimSG1.Goauld
                         ? DisplaySymbioteName()
                         : DisplayHostName()).ToString(),
                 icon = TexCommand.GatherSpotActive,
-                action = TogglePersonality
+                action = () => TryTogglePersonality()
             };
         }
 
@@ -193,12 +204,12 @@ namespace GateRimSG1.Goauld
             return symbioteData?.ToDebugString() ?? "No Goa'uld symbiote data.";
         }
 
-        private void TogglePersonality()
+        public bool TryTogglePersonality()
         {
-            if (!CanShowPlayerTokraIdentity()
+            if (!CanSwitchPersonality
                 || !symbioteData.ToggleActivePersonality(Pawn))
             {
-                return;
+                return false;
             }
 
             Find.ColonistBar.MarkColonistsDirty();
@@ -207,20 +218,24 @@ namespace GateRimSG1.Goauld
             string messageKey = symbioteData.IsSymbiotePersonalityActive
                 ? "GR_TokraPersonalitySwitch_SymbioteActive"
                 : "GR_TokraPersonalitySwitch_HostActive";
+            Caravan caravan = Pawn.GetCaravan();
+            LookTargets lookTargets = Pawn.Spawned || caravan == null
+                ? new LookTargets(Pawn)
+                : new LookTargets(caravan);
             Messages.Message(
                 messageKey.Translate(
                     DisplayHostName(),
                     DisplaySymbioteName()).ToString(),
-                Pawn,
+                lookTargets,
                 MessageTypeDefOf.NeutralEvent,
                 historical: false);
+
+            return true;
         }
 
         private bool CanShowPlayerTokraIdentity()
         {
-            return symbioteData?.Origin == GoauldSymbioteOrigin.Tokra
-                && Pawn != null
-                && Pawn.IsColonistPlayerControlled;
+            return TokraPlayerControlUtility.IsEligibleTokra(Pawn, this);
         }
 
         private string TechnicalSummary()

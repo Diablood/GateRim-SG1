@@ -2,6 +2,28 @@
 
 > Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
 
+## 0.3.12-dev - Intégration de l'identité Tok'ra active
+
+Validation en cours. Les tests détaillés et leurs résultats sont conservés dans `docs/TESTING_CURRENT.md`.
+
+Couverture obligatoire :
+
+- basculement sur carte, formation d'une caravane, basculement sur la carte du monde puis retour sur carte ;
+- menu unique pour une caravane contenant un ou plusieurs Tok'ra du joueur ;
+- exclusion des invités, prisonniers, esclaves, pawns en état mental et Tok'ra gérés par l'IA ;
+- cohérence des onglets Bio, Social et Santé ainsi que de la fiche du pawn depuis une caravane ;
+- conservation de la progression commune, de l'anti-cumul, de la sauvegarde et de l'extraction validés dans `0.3.11-dev` ;
+- audit facultatif de la mort, du cadavre et de la résurrection lorsqu'un flux de test sûr est disponible ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- ne jamais utiliser `Pawn.IsColonistPlayerControlled` seul pour décider qu'un colon permanent en caravane a perdu le contrôle joueur ;
+- utiliser `Caravan.IsOwner(pawn)` afin de ne pas exposer la mécanique aux invités, prisonniers ou esclaves transportés ;
+- conserver un seul service de basculement et un seul modèle de progression partagée ;
+- ne pas réécrire rétroactivement les lettres ou messages historiques déjà créés ;
+- ne corriger les interfaces vanilla qu'après reproduction d'une incohérence réelle.
+
 ## 0.3.10-dev - Persistance de l'identité Tok'ra implantée
 
 Validation locale terminée sur `r1`. Les tests détaillés et leurs résultats sont conservés dans `docs/TESTING_CURRENT.md`.
@@ -2100,3 +2122,22 @@ Validation completed after `0.3.11-dev-r2`:
 - no gizmo exposed to AI-managed Tok'ra or Goa'uld;
 - Goa'uld flows unchanged;
 - `Player.log` clean.
+
+
+# 0.3.12-dev - Tok'ra active identity integration audit
+
+The concise validated checklist is maintained in `docs/TESTING_CURRENT.md`. The milestone validated:
+
+- one grouped Tok'ra identity gizmo on player caravans;
+- switching from map to caravan and back without skill stacking, XP loss or identity reroll;
+- multiple eligible Tok'ra listed separately in one caravan menu;
+- exclusion of guests, prisoners, slaves, AI-managed Tok'ra and unrecruited quest pawns;
+- coherent Bio, Social, Health and caravan presentation for the active identity;
+- unchanged relations and persistent display of both identities in the health summary;
+- save/load, extraction and the shared-skill model without regression;
+- a clean `Player.log`.
+
+Death, corpse, grave and resurrection remain a later optional compatibility audit.
+
+An additional developer spawn test with `SG1_TokraVoluntaryHost` exposed a separate generation gap: a Tok'ra created already fused has no historical host identity to capture, so the stored host and symbiote names may be identical. This is deferred to a dedicated milestone using an explicit identity-source marker and configurable weighted host-origin profiles. Real implantation flows must remain unchanged.
+

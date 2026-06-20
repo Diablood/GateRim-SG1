@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.12-dev - Audit Tok'ra active identity integration
+
+- Centralize the direct-player-control boundary for Tok'ra dual-identity interfaces.
+- Keep the existing map behavior for spawned player colonists.
+- Treat permanent colonist owners of a player-controlled caravan as directly controlled while travelling.
+- Keep guests, prisoners, slaves, allies, visitors, mental-state pawns and unrecruited quest pawns excluded.
+- Add one compact `Tok'ra identities` caravan command that opens a list instead of creating one world-map gizmo per pawn.
+- Delegate caravan switching to the same validated Hediff method and shared skill model used on colony maps.
+- Attach the integration through a vanilla `WorldObjectComp` patch without adding Harmony.
+- Prepare focused audits for Bio, Social, Health, messages, relations, death and resurrection before adding any further compatibility patch.
+- Validate map-to-caravan-to-map switching, grouped multi-Tok'ra selection, interface consistency, player/AI boundaries, shared progression, save/load, extraction and a clean `Player.log`.
+- Record the distinct generation gap for Tok'ra PawnKinds created already fused: a future dedicated milestone must generate a separate host identity from configurable weighted cultural origins instead of comparing or rerolling duplicate names.
+- Raise the assembly version to `0.3.12.0` and the mod metadata version to `0.3.12-dev`.
+
 ## 0.3.11-dev - Add player-controlled Tok'ra personality switching
 
 - Add one personality-switch gizmo to directly player-controlled Tok'ra colonists only.

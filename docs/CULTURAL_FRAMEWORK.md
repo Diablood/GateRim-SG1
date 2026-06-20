@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.11-dev`
+Version: `0.3.12-dev`
 
 ## Purpose
 
@@ -135,3 +135,22 @@ No C# change should be required while the existing matcher and rule types expres
 ## Future extensions
 
 The same resolved profile may later expose data for scenarios, equipment preferences, incidents, quests, dialogue, debug tools and other systems. Persistent identity pools are now an implemented example of this reuse. Those fields should be added only when at least one real consumer requires them.
+## Active identity interface integration (`0.3.12-dev`)
+
+The shared identity framework now also centralizes whether a Tok'ra is directly controlled by the player. The rule covers spawned colonists and permanent colonist owners travelling in a player caravan, while excluding guests, prisoners, slaves and AI-managed pawns. Map and caravan interfaces delegate to the same persistent identity and shared-skill services rather than maintaining separate switch implementations.
+
+## Planned generated-host origin profiles
+
+The `0.3.12-dev` audit exposed a generation case that must use the framework rather than a Tok'ra-specific name reroll. A Tok'ra PawnKind created already fused has no historical implantation event and therefore no pre-existing host identity to capture.
+
+A future consumer must let a cultural profile declare one or more weighted compatible host origins. Each origin can provide:
+
+- a cultural name group;
+- compatible childhood and adulthood pools;
+- a weight;
+- optional biological or scenario restrictions.
+
+The initial fallback origin should be an off-world human, not an assumed Tau'ri. The schema must remain extensible to Tau'ri, Jaffa, Unas and future compatible hosts.
+
+Persistent data must record whether an identity came from a real implantation or from generated pre-joined initialization. Migration must use that explicit source marker and never infer the state by comparing display names. Real implantations continue to capture the existing host unchanged.
+

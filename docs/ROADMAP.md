@@ -13,24 +13,34 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Basculement de personnalité Tok'ra contrôlé par le joueur (`0.3.11-dev`)
+### Identité d'hôte des Tok'ra générés déjà fusionnés (jalon dédié suivant)
 
-- [x] Partir du système d'identité persistante publié dans `v0.3.10-dev`.
-- [x] Ajouter un gizmo uniquement aux Tok'ra appartenant au joueur et directement contrôlables.
-- [x] Basculer le nom actif entre le nom exact de l'hôte et le nom du symbiote.
-- [x] Basculer l'enfance, l'âge adulte et le titre affichés entre les deux identités persistantes.
-- [x] Ajouter un service culturel réutilisable qui applique uniquement les écarts de compétences dus aux backstories.
-- [x] Conserver une progression d'XP commune sans cumuler ni perdre les bonus lors des basculements.
-- [x] Persister la personnalité active et les données de progression partagée.
-- [x] Restaurer automatiquement l'identité de l'hôte avant extraction, transfert ou retrait du Hediff.
-- [x] Conserver le comportement classique sans gizmo pour les Tok'ra gérés par l'IA.
-- [x] Valider en jeu les basculements répétés, l'XP commune, les sauvegardes, l'extraction et la frontière joueur/IA.
-- [ ] Publier la branche `feature/tokra-personality-switching`, le tag `v0.3.11-dev` et synchroniser le wiki.
+- [ ] Distinguer par un marqueur persistant une implantation réelle d'un Tok'ra généré directement déjà fusionné.
+- [ ] Ne jamais détecter ce cas par une simple comparaison entre le nom de l'hôte et celui du symbiote.
+- [ ] Générer pour les Tok'ra pré-fusionnés une identité d'hôte complète et distincte avant d'activer la symbiose.
+- [ ] Piloter les origines d'hôte par des profils culturels XML pondérés : générateur de noms, enfances et carrières compatibles.
+- [ ] Utiliser par défaut un profil humain hors-monde dans l'état actuel du mod, sans supposer une origine Tau'ri.
+- [ ] Prévoir l'extension future aux hôtes Tau'ri, Jaffa, Unas et autres espèces ou cultures compatibles.
+- [ ] Conserver séparément l'identité Tok'ra du symbiote et ne pas modifier les implantations réelles existantes.
+- [ ] Prévoir une migration prudente des anciennes sauvegardes dont les deux identités ont été initialisées de façon identique.
+- [ ] Tester `Spawn pawn`, visiteurs, recrues, chefs ou pawns de quête générés déjà fusionnés, sauvegarde/recharge, extraction et réimplantation.
+
+### Intégration de l'identité Tok'ra active (`0.3.12-dev`)
+
+- [x] Partir du basculement de personnalité publié dans `v0.3.11-dev`.
+- [x] Centraliser la règle de contrôle direct pour les colons présents sur carte et les propriétaires d'une caravane du joueur.
+- [x] Conserver l'exclusion des invités, prisonniers, esclaves, alliés, visiteurs et pawns de quête non recrutés.
+- [x] Ajouter un gizmo unique de caravane ouvrant une liste des Tok'ra éligibles, sans dupliquer le gizmo par pawn.
+- [x] Réutiliser le même service de basculement et le même modèle de progression commune que sur carte.
+- [x] Valider le passage carte → caravane → carte sans cumul ni perte de progression.
+- [x] Auditer les onglets Bio, Social et Santé, les messages, les caravanes et les relations lorsque le symbiote est actif.
+- [ ] Auditer ultérieurement la mort, le cadavre, la tombe et la résurrection lorsqu'un flux de test sûr est utile.
+- [ ] Publier la branche `feature/tokra-active-identity-integration`, le tag `v0.3.12-dev` et synchroniser le wiki.
 
 ### Après validation
 
-- [ ] Auditer les éventuelles incohérences restantes dans les lettres, quêtes, relations sociales et interfaces tierces lorsque la personnalité du symbiote est active.
-- [ ] Décider si les invités ou pawns de quête temporairement contrôlables doivent rester exclus ou recevoir une règle dédiée.
+- [ ] Corriger uniquement les incohérences confirmées par les tests d'intégration, sans ajouter de stockage parallèle.
+- [ ] Tester les interfaces de mods de préparation ou de gestion de pawns lorsqu'une incompatibilité concrète est signalée.
 
 ## Présentation du mod et métadonnées
 
@@ -107,8 +117,10 @@ La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.m
 - [x] Implémenter dans `0.3.11-dev` une progression commune des niveaux et de l'expérience, à valider contre toute perte, duplication ou cumul lors des tests ciblés.
 - [x] Afficher dès `0.3.10-dev` les deux identités dans l'inspection des Tok'ra contrôlés par le joueur, puis conserver cet affichage quelle que soit la personnalité active dans le futur jalon de basculement.
 - [x] Vérifier sauvegarde, rechargement, extraction et réimplantation.
-- [ ] Vérifier plus tard la mort, la résurrection éventuelle, les relations, lettres, quêtes et interfaces tierces lorsque la personnalité du symbiote est active.
-- [ ] Décider explicitement du cas des invités ou pawns de quête temporairement contrôlables ; les exclure par défaut tant qu'ils ne rejoignent pas la colonie.
+- [ ] Auditer dans `0.3.12-dev` la mort, la résurrection éventuelle, les relations, lettres, quêtes et interfaces tierces lorsque la personnalité du symbiote est active.
+- [x] Exclure par défaut les invités et pawns de quête temporairement contrôlables tant qu'ils ne rejoignent pas réellement la colonie.
+- [ ] Réévaluer cette frontière uniquement si un futur type de pawn temporaire possède un véritable contrôle joueur et un besoin de gameplay démontré.
+- [x] Étendre dans `0.3.12-dev` le basculement aux Tok'ra propriétaires d'une caravane directement contrôlée par le joueur.
 
 ## Futures races et factions
 
