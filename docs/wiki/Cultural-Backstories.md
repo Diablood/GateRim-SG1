@@ -2,11 +2,11 @@
 
 > Statut : Base culturelle enrichie
 >
-> Version documentée : `0.3.9-dev`
+> Version documentée : `0.3.13-dev`
 
 GateRim SG-1 utilise des histoires culturelles natives de RimWorld sans dépendre de Humanoid Alien Races.
 
-Les `52` histoires existantes ont été conservées, mais leurs descriptions sont désormais plus détaillées en anglais comme en français. Chacune explique à la fois l'origine du personnage et les habitudes pratiques acquises au cours de sa vie.
+Le catalogue compte désormais `58` histoires. Les `52` histoires enrichies en `0.3.8-dev` restent inchangées ; six carrières adultes humaines hors-monde ont été ajoutées en `0.3.13-dev` afin de créer une identité d'hôte complète pour les Tok'ra générés déjà fusionnés. Chacune explique à la fois l'origine du personnage et les habitudes pratiques acquises au cours de sa vie.
 
 ## Effets en jeu
 
@@ -97,6 +97,17 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Enfance | enfant de caravane hors-monde | Cet enfant a voyagé avec une caravane entre des communautés dispersées et appris à s'adapter rapidement lorsque la route changeait. Il a appris à calmer les animaux, juger les étrangers et trouver de la nourriture ou un abri sur des itinéraires incertains. | Animaux +2, Social +2, Plantes +1 |
 | Enfance | enfant d'une ferme isolée | Cet enfant a grandi dans une ferme isolée où la météo, les récoltes et les étrangers armés façonnaient le quotidien. L'isolement l'a rendu à l'aise avec le bétail, les cultures et les problèmes qu'il fallait résoudre sans aide extérieure. | Plantes +3, Animaux +2 |
 
+### Humains hors-monde — carrières adultes
+
+| Étape | Nom | Description | Compétences |
+|---|---|---|---|
+| Âge adulte | intendant de village hors-monde | Cette personne coordonnait les réserves, les disputes et les travaux saisonniers d'une communauté humaine isolée. Maintenir un petit village en vie lui a appris à comprendre les autres, anticiper les besoins et économiser les ressources rares. | Social +3, Plantes +2, Intellectuel +1 |
+| Âge adulte | guide de caravane hors-monde | Cette personne guidait marchands et familles entre des communautés éloignées, sur des routes incertaines où les inconnus pouvaient être dangereux. Elle a appris à lire le terrain, conduire les animaux et apaiser les rencontres tendues avant que les armes ne soient tirées. | Animaux +3, Social +2, Tir +1 |
+| Âge adulte | guérisseur de terrain hors-monde | Cette personne soignait maladies et blessures avec peu d'outils, des remèdes transmis et ce qui pouvait être récolté localement. Les urgences répétées lui ont donné des gestes sûrs, un regard attentif et de la patience envers les patients apeurés. | Médecine +4, Plantes +2 |
+| Âge adulte | chasseur des frontières hors-monde | Cette personne chassait au-delà des terres sûres et surveillait les pillards, les prédateurs et les signes de patrouilles en approche. Les longues absences ont renforcé sa précision, son sens du terrain et sa capacité à vivre d'une terre difficile. | Tir +3, Animaux +2, Plantes +1 |
+| Âge adulte | artisan de colonie hors-monde | Cette personne réparait les outils, les maisons et les machines simples d'une communauté incapable de remplacer facilement ce qui cassait. La nécessité en a fait un bâtisseur patient et un artisan polyvalent. | Artisanat +3, Construction +3 |
+| Âge adulte | gardien des archives hors-monde | Cette personne préservait l'histoire locale, les accords et les connaissances pratiques dans une communauté où les documents écrits étaient rares. Son travail exigeait mémoire, discrétion et capacité à transmettre les anciennes leçons. | Intellectuel +3, Social +2, Art +1 |
+
 ### Hôtes Goa'uld
 
 | Étape | Nom | Description | Compétences |
@@ -149,7 +160,7 @@ Les Goa'uld ordinaires et les Grands Maîtres utilisent une enfance humaine hors
 
 Les agents Tok'ra générés reçoivent des parcours d'infiltrateur, médecin, diplomate, éclaireur, analyste ou messager.
 
-Un colon existant qui accepte volontairement un symbiote Tok'ra conserve son histoire passée.
+Un colon existant qui accepte volontairement un symbiote Tok'ra conserve son histoire passée. Un Tok'ra généré directement déjà fusionné reçoit désormais une identité d'hôte humaine hors-monde distincte, choisie dans les enfances et carrières dédiées ci-dessus.
 
 ## Création manuelle et compatibilité
 
@@ -157,4 +168,4 @@ Les filtres garantissent une génération cohérente par défaut. Un outil exter
 
 Les identifiants, catégories et silhouettes des histoires existantes sont conservés. Les anciennes sauvegardes ne nécessitent aucune migration et aucun personnage n'est renommé ou régénéré.
 
-Le nombre d'histoires n'augmente pas dans cette version. Une extension raisonnable pourra être étudiée plus tard. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.
+Les six nouvelles carrières humaines hors-monde répondent à un besoin précis du système d'identité Tok'ra. Une extension plus générale du catalogue restera discutée séparément afin de conserver une quantité raisonnable. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.

@@ -1,6 +1,6 @@
 # Tok'ra host / symbiote dual identity — phased design
 
-Status: phases 1, 2 and 3 are implemented and functionally validated. `0.3.10-dev` preserves both identities; `0.3.11-dev` adds player-only personality switching and shared skill progression; `0.3.12-dev` preserves direct control while travelling in a player caravan and validates the main vanilla interfaces. A later dedicated phase must generate a distinct host identity for Tok'ra created already fused.
+Status: phases 1, 2 and 3 are implemented and functionally validated. `0.3.13-dev` implements phase 4 for Tok'ra generated directly already fused; focused validation is in progress.
 
 ## Phased implementation
 
@@ -65,22 +65,26 @@ Validated in game:
 - save/load and extraction without regression;
 - clean `Player.log`.
 
-### Phase 4 — distinct identities for generated pre-joined Tok'ra
+### Phase 4 — `0.3.13-dev` — distinct identities for generated pre-joined Tok'ra
 
-An exploratory `Spawn pawn > SG1_TokraVoluntaryHost` test exposed a separate generation path. The pawn is created already fused, so no real historical host existed before the initializer stored the dual identity. This can leave the host and symbiote with the same generated name while only their adulthood records differ.
+Implemented for focused testing:
 
-The future implementation must:
+- add the persistent `TokraHostIdentitySource` marker with explicit unknown, real-implantation and generated-pre-joined states;
+- never classify an identity source by comparing the two display names;
+- add reusable weighted `GeneratedHostOriginDef` data to the shared cultural framework;
+- configure an initial off-world-human origin for `SG1_TokraVoluntaryHost`;
+- generate a stable host name, childhood and adulthood from the persistent symbiote ID;
+- ensure the generated host name differs from the stored symbiote name;
+- add six civilian off-world-human adult careers needed for a complete host background;
+- make the generated host active by default while retaining the Tok'ra name and career for personality switching;
+- let the cultural name manager finalize the symbiote's Tok'ra name without replacing the active host name;
+- migrate older pre-joined Tok'ra once when their source marker is still unknown;
+- reject generated-host migration when persistent transfer history indicates a real implantation;
+- replace the generated origin with the real new-host identity after extraction and reimplantation.
 
-- add an explicit persistent source marker distinguishing real implantation from pre-joined generation;
-- generate a complete host identity for pre-joined Tok'ra before activating the symbiote identity;
-- select the host origin from configurable weighted cultural profiles;
-- default to an off-world human origin in the current content set, without assuming Tau'ri ancestry;
-- remain extensible to Tau'ri, Jaffa, Unas and other compatible hosts;
-- preserve the separate Tok'ra symbiote identity;
-- migrate older identical identity records conservatively;
-- leave all real implantation flows unchanged.
+The initial off-world-human origin is intentionally not Tau'ri. Future Tau'ri, Jaffa, Unas or other compatible origins can be added as weighted XML Defs after their cultures, backstories and biological rules are available.
 
-Do not detect this state by comparing names and do not perform a late reroll after the pawn has entered play.
+Focused validation must cover developer spawning, world-generated Tok'ra, repeated switching, save/load, migration from `0.3.12-dev`, actual implantation, extraction and reimplantation. The death, corpse, grave and resurrection audit remains separate from this generation fix.
 
 ## Purpose
 

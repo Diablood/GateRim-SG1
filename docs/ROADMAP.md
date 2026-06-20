@@ -13,17 +13,30 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Identité d'hôte des Tok'ra générés déjà fusionnés (jalon dédié suivant)
+### Identité d'hôte des Tok'ra générés déjà fusionnés (`0.3.13-dev`)
 
-- [ ] Distinguer par un marqueur persistant une implantation réelle d'un Tok'ra généré directement déjà fusionné.
-- [ ] Ne jamais détecter ce cas par une simple comparaison entre le nom de l'hôte et celui du symbiote.
-- [ ] Générer pour les Tok'ra pré-fusionnés une identité d'hôte complète et distincte avant d'activer la symbiose.
-- [ ] Piloter les origines d'hôte par des profils culturels XML pondérés : générateur de noms, enfances et carrières compatibles.
-- [ ] Utiliser par défaut un profil humain hors-monde dans l'état actuel du mod, sans supposer une origine Tau'ri.
-- [ ] Prévoir l'extension future aux hôtes Tau'ri, Jaffa, Unas et autres espèces ou cultures compatibles.
-- [ ] Conserver séparément l'identité Tok'ra du symbiote et ne pas modifier les implantations réelles existantes.
-- [ ] Prévoir une migration prudente des anciennes sauvegardes dont les deux identités ont été initialisées de façon identique.
-- [ ] Tester `Spawn pawn`, visiteurs, recrues, chefs ou pawns de quête générés déjà fusionnés, sauvegarde/recharge, extraction et réimplantation.
+- [x] Distinguer par un marqueur persistant une implantation réelle d'un Tok'ra généré directement déjà fusionné.
+- [x] Ne jamais détecter ce cas par une simple comparaison entre le nom de l'hôte et celui du symbiote.
+- [x] Ajouter des profils XML d'origine d'hôte pondérés au framework culturel.
+- [x] Configurer une origine humaine hors-monde par défaut, sans supposer une origine Tau'ri.
+- [x] Générer un nom, une enfance et une carrière d'hôte stables à partir de l'identifiant persistant du symbiote.
+- [x] Garantir que les deux identités d'un même Tok'ra portent des noms distincts.
+- [x] Ajouter six carrières adultes humaines hors-monde strictement nécessaires à une identité d'hôte complète.
+- [x] Préserver séparément l'identité Tok'ra du symbiote et maintenir l'hôte actif par défaut.
+- [x] Corriger le gestionnaire de noms afin qu'il finalise le nom du symbiote sans écraser le nom d'hôte actif.
+- [x] Prévoir une migration stable des anciennes sauvegardes sans reroll à chaque chargement.
+- [x] Remplacer l'origine générée par l'identité du nouvel hôte lors d'une extraction suivie d'une vraie réimplantation.
+- [ ] Valider `Spawn pawn`, la variété, le basculement, la sauvegarde/recharge et la migration d'une sauvegarde `0.3.12-dev`.
+- [ ] Valider les visiteurs, escortes, chefs de faction et autres Tok'ra pré-fusionnés générés hors de la carte principale.
+- [ ] Valider l'absence de régression sur les implantations réelles, les caravanes, l'extraction et les Goa'uld.
+- [ ] Publier la branche `feature/tokra-generated-host-identities`, le tag `v0.3.13-dev` et synchroniser le wiki.
+
+### Extensions futures des origines d'hôte
+
+- [ ] Ajouter des profils pondérés Tau'ri, Jaffa, Unas ou autres uniquement lorsque ces origines sont réellement disponibles et cohérentes en jeu.
+- [ ] Garder le moteur C# générique : les nouvelles origines doivent être ajoutées principalement par XML.
+- [ ] Vérifier les compatibilités biologiques, les générateurs de noms et les pools de backstories avant d'activer une nouvelle origine.
+- [ ] Ne jamais appliquer une origine générée aux implantations réelles, qui doivent conserver l'identité existante du pawn.
 
 ### Intégration de l'identité Tok'ra active (`0.3.12-dev`)
 
@@ -35,12 +48,13 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 - [x] Valider le passage carte → caravane → carte sans cumul ni perte de progression.
 - [x] Auditer les onglets Bio, Social et Santé, les messages, les caravanes et les relations lorsque le symbiote est actif.
 - [ ] Auditer ultérieurement la mort, le cadavre, la tombe et la résurrection lorsqu'un flux de test sûr est utile.
-- [ ] Publier la branche `feature/tokra-active-identity-integration`, le tag `v0.3.12-dev` et synchroniser le wiki.
+- [x] Publier la branche `feature/tokra-active-identity-integration`, le tag `v0.3.12-dev` et synchroniser le wiki.
 
 ### Après validation
 
-- [ ] Corriger uniquement les incohérences confirmées par les tests d'intégration, sans ajouter de stockage parallèle.
+- [ ] Auditer la mort, le cadavre, la tombe et la résurrection sans créer de second système d'identité parallèle.
 - [ ] Tester les interfaces de mods de préparation ou de gestion de pawns lorsqu'une incompatibilité concrète est signalée.
+- [ ] Reprendre l'extension générale du catalogue de backstories dans une discussion dédiée, avec une quantité raisonnable et culturellement cohérente.
 
 ## Présentation du mod et métadonnées
 

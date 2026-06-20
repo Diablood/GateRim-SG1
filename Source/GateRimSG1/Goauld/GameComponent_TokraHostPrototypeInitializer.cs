@@ -105,20 +105,57 @@ namespace GateRimSG1.Goauld
 
             string pawnThingId = pawn.ThingID;
 
-            if (string.IsNullOrEmpty(pawnThingId)
-                || initializedPawnThingIds.Contains(pawnThingId))
+            if (string.IsNullOrEmpty(pawnThingId))
             {
                 return;
             }
 
-            if (HasAdultSymbioteState(pawn))
+            HediffComp_GoauldSymbiote existingComp
+                = FindExistingPersistentSymbioteComp(pawn);
+
+            if (existingComp != null)
             {
-                initializedPawnThingIds.Add(pawnThingId);
+                GoauldSymbioteData existingData = existingComp.SymbioteData;
+                bool needsMigration = existingData != null
+                    && existingData.HostIdentitySource
+                        == TokraHostIdentitySource.Unknown;
 
-                GR_Log.Message(
-                    $"Registered existing Tok'ra voluntary-host prototype "
-                    + $"{PawnDebugLabel(pawn)} without creating a duplicate symbiote.");
+                bool alreadyRegistered = initializedPawnThingIds.Contains(
+                    pawnThingId);
 
+                if (alreadyRegistered && !needsMigration)
+                {
+                    return;
+                }
+
+                bool migrated = needsMigration
+                    && existingData.TryInitializeGeneratedPreJoinedHost(
+                        pawn,
+                        Find.TickManager?.TicksGame ?? 0);
+
+                if (!alreadyRegistered)
+                {
+                    initializedPawnThingIds.Add(pawnThingId);
+                }
+
+                if (migrated)
+                {
+                    GR_Log.Message(
+                        $"Migrated pre-joined Tok'ra {PawnDebugLabel(pawn)} "
+                        + "to a distinct generated host identity.");
+                }
+                else if (!alreadyRegistered)
+                {
+                    GR_Log.Message(
+                        $"Registered existing Tok'ra voluntary-host prototype "
+                        + $"{PawnDebugLabel(pawn)} without creating a duplicate symbiote.");
+                }
+
+                return;
+            }
+
+            if (initializedPawnThingIds.Contains(pawnThingId))
+            {
                 return;
             }
 
@@ -139,9 +176,9 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            GoauldSymbioteData data = GoauldSymbioteData.CreateFree(
-                Find.TickManager?.TicksGame ?? 0,
-                GoauldSymbioteOrigin.Tokra);
+            GoauldSymbioteData data = GoauldSymbioteData.CreatePreJoinedTokra(
+                pawn,
+                Find.TickManager?.TicksGame ?? 0);
 
             targetComp.InitializeWithTransferredData(data);
             pawn.health.AddHediff(activeHostState);
@@ -150,7 +187,9 @@ namespace GateRimSG1.Goauld
 
             GR_Log.Message(
                 $"Initialized Tok'ra voluntary-host prototype "
-                + $"{PawnDebugLabel(pawn)} with symbiote {data.SymbioteId}.");
+                + $"{PawnDebugLabel(pawn)} with symbiote {data.SymbioteId} "
+                + $"and generated host origin "
+                + $"{data.GeneratedHostOrigin?.defName ?? "<none>"}.");
 
             Messages.Message(
                 "GR_TokraHostPrototype_Initialized".Translate(
@@ -161,25 +200,34 @@ namespace GateRimSG1.Goauld
                 historical: true);
         }
 
-        private static bool HasAdultSymbioteState(Pawn pawn)
+        private static HediffComp_GoauldSymbiote
+            FindExistingPersistentSymbioteComp(Pawn pawn)
         {
             if (pawn?.health?.hediffSet?.hediffs == null)
             {
-                return false;
+                return null;
             }
 
             for (int index = 0; index < pawn.health.hediffSet.hediffs.Count; index++)
             {
                 Hediff hediff = pawn.health.hediffSet.hediffs[index];
 
-                if (hediff.def == GR_DefOf.SG1_GoauldRecentImplantation
-                    || hediff.def == GR_DefOf.SG1_GoauldHostSymbiote)
+                if (hediff.def != GR_DefOf.SG1_GoauldRecentImplantation
+                    && hediff.def != GR_DefOf.SG1_GoauldHostSymbiote)
                 {
-                    return true;
+                    continue;
+                }
+
+                HediffComp_GoauldSymbiote comp
+                    = FindPersistentSymbioteComp(hediff);
+
+                if (comp != null)
+                {
+                    return comp;
                 }
             }
 
-            return false;
+            return null;
         }
 
         private static HediffComp_GoauldSymbiote FindPersistentSymbioteComp(

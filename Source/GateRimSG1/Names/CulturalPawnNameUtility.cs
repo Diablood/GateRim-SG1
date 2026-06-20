@@ -12,7 +12,8 @@ namespace GateRimSG1.Names
         FreeJaffa,
         Goauld,
         Tokra,
-        Tauri
+        Tauri,
+        OffworldHuman
     }
 
     /// <summary>
@@ -78,6 +79,20 @@ namespace GateRimSG1.Names
             "ya", "yel", "zen", "zar"
         };
 
+        private static readonly string[] OffworldHumanPrefixes =
+        {
+            "Ala", "Bera", "Cali", "Dara", "Eli", "Fara", "Galen", "Hara",
+            "Ilan", "Jera", "Kara", "Loran", "Mera", "Nerin", "Ora", "Palen",
+            "Rana", "Saren", "Tala", "Ulan", "Vara", "Yaren", "Zela", "Korin"
+        };
+
+        private static readonly string[] OffworldHumanSuffixes =
+        {
+            "an", "ar", "as", "el", "en", "eth", "ia", "in", "ir", "is",
+            "on", "or", "ra", "ren", "ria", "ril", "tan", "var", "ven", "ya",
+            "iel", "nor", "sel", "tek"
+        };
+
         private static readonly string[] TauriMaleFirstNames =
         {
             "Aaron", "Adam", "Adrian", "Alex", "Andre", "Ben", "Caleb", "Daniel",
@@ -141,6 +156,60 @@ namespace GateRimSG1.Names
                     string lastName = Pick(TauriLastNames);
                     return new NameTriple(firstName, firstName, lastName);
 
+                case CulturalPawnNameGroup.OffworldHuman:
+                    return new NameSingle(
+                        Pick(OffworldHumanPrefixes)
+                        + Pick(OffworldHumanSuffixes));
+
+                default:
+                    return null;
+            }
+        }
+
+        public static Name GenerateStableName(
+            CulturalPawnNameGroup group,
+            Gender gender,
+            string identityKey)
+        {
+            switch (group)
+            {
+                case CulturalPawnNameGroup.GoauldJaffa:
+                    return new NameSingle(
+                        PickStable(GoauldJaffaPrefixes, identityKey, "prefix")
+                        + "'"
+                        + PickStable(GoauldJaffaSuffixes, identityKey, "suffix"));
+
+                case CulturalPawnNameGroup.FreeJaffa:
+                    return new NameSingle(
+                        PickStable(FreeJaffaPrefixes, identityKey, "prefix")
+                        + PickStable(FreeJaffaSuffixes, identityKey, "suffix"));
+
+                case CulturalPawnNameGroup.Goauld:
+                    return new NameSingle(
+                        PickStable(GoauldPrefixes, identityKey, "prefix")
+                        + PickStable(GoauldSuffixes, identityKey, "suffix"));
+
+                case CulturalPawnNameGroup.Tokra:
+                    return new NameSingle(
+                        PickStable(TokraPrefixes, identityKey, "prefix")
+                        + PickStable(TokraSuffixes, identityKey, "suffix"));
+
+                case CulturalPawnNameGroup.Tauri:
+                    string firstName = PickStable(
+                        GetTauriFirstNames(gender),
+                        identityKey,
+                        "first");
+                    string lastName = PickStable(
+                        TauriLastNames,
+                        identityKey,
+                        "last");
+                    return new NameTriple(firstName, firstName, lastName);
+
+                case CulturalPawnNameGroup.OffworldHuman:
+                    return new NameSingle(
+                        PickStable(OffworldHumanPrefixes, identityKey, "prefix")
+                        + PickStable(OffworldHumanSuffixes, identityKey, "suffix"));
+
                 default:
                     return null;
             }
@@ -189,6 +258,11 @@ namespace GateRimSG1.Names
                 CulturalPawnNameGroup.Tokra,
                 Gender.None,
                 sampleCount);
+            AppendSamples(
+                builder,
+                CulturalPawnNameGroup.OffworldHuman,
+                Gender.None,
+                sampleCount);
             AppendTauriSamples(builder, sampleCount);
 
             return builder.ToString().TrimEndNewlines();
@@ -216,6 +290,10 @@ namespace GateRimSG1.Names
 
                 case CulturalPawnNameGroup.Tauri:
                     return "GR_CulturalNames_Group_Tauri"
+                        .Translate().ToString();
+
+                case CulturalPawnNameGroup.OffworldHuman:
+                    return "GR_CulturalNames_Group_OffworldHuman"
                         .Translate().ToString();
 
                 default:
@@ -313,6 +391,33 @@ namespace GateRimSG1.Names
         private static string Pick(string[] values)
         {
             return values[Rand.Range(0, values.Length)];
+        }
+
+        private static string PickStable(
+            string[] values,
+            string identityKey,
+            string salt)
+        {
+            if (values == null || values.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            unchecked
+            {
+                uint hash = 2166136261u;
+                string source = (identityKey ?? string.Empty)
+                    + ":"
+                    + (salt ?? string.Empty);
+
+                for (int index = 0; index < source.Length; index++)
+                {
+                    hash ^= source[index];
+                    hash *= 16777619u;
+                }
+
+                return values[(int)(hash % (uint)values.Length)];
+            }
         }
     }
 }

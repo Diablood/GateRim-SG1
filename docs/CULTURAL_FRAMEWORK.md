@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.12-dev`
+Version: `0.3.13-dev`
 
 ## Purpose
 
@@ -22,6 +22,7 @@ The framework separates:
 - optional name rules based on selected childhood or adulthood;
 - optional starting-pawn backstory rules;
 - configurable exclusive replacement rules and additive weighted-pool rules for childhoods and adulthoods;
+- optional weighted generated-host origins for identities created already joined with a symbiote;
 - optional scenario-part requirements.
 
 Each matcher can identify a pawn through one or more of:
@@ -92,7 +93,7 @@ The framework does not replace the pawn's active backstories or apply skill chan
 
 ## Boundaries
 
-The framework does not modify:
+The starter-profile consumer does not modify:
 
 - raids;
 - visitors;
@@ -101,6 +102,8 @@ The framework does not modify:
 - developer `Spawn pawn` generation;
 - existing saves or already generated pawns;
 - manual edits made by a compatible pawn editor after generation.
+
+The generated-host consumer is a separate explicit exception: it acts only on a Tok'ra PawnKind created already fused, because that pawn has no historical implantation from which a host identity could otherwise be captured. It does not broaden starter filtering or globally replace world-pawn backstories.
 
 The XML patch adds the hidden part to scenarios defined through `ScenarioDef`. Custom scenario files that bypass Def loading remain a compatibility case for later testing.
 
@@ -135,22 +138,42 @@ No C# change should be required while the existing matcher and rule types expres
 ## Future extensions
 
 The same resolved profile may later expose data for scenarios, equipment preferences, incidents, quests, dialogue, debug tools and other systems. Persistent identity pools are now an implemented example of this reuse. Those fields should be added only when at least one real consumer requires them.
+
 ## Active identity interface integration (`0.3.12-dev`)
 
 The shared identity framework now also centralizes whether a Tok'ra is directly controlled by the player. The rule covers spawned colonists and permanent colonist owners travelling in a player caravan, while excluding guests, prisoners, slaves and AI-managed pawns. Map and caravan interfaces delegate to the same persistent identity and shared-skill services rather than maintaining separate switch implementations.
 
-## Planned generated-host origin profiles
+## Generated-host origin profiles (`0.3.13-dev`)
 
-The `0.3.12-dev` audit exposed a generation case that must use the framework rather than a Tok'ra-specific name reroll. A Tok'ra PawnKind created already fused has no historical implantation event and therefore no pre-existing host identity to capture.
+The `0.3.12-dev` audit exposed a generation case that now uses the framework rather than a Tok'ra-specific name reroll. A Tok'ra PawnKind created already fused has no historical implantation event and therefore no pre-existing host identity to capture.
 
-A future consumer must let a cultural profile declare one or more weighted compatible host origins. Each origin can provide:
+`GeneratedHostOriginDef` declares one possible historical host culture:
 
-- a cultural name group;
+- selection weight;
+- cultural name group;
 - compatible childhood and adulthood pools;
-- a weight;
-- optional biological or scenario restrictions.
+- optional race and xenotype restrictions.
 
-The initial fallback origin should be an off-world human, not an assumed Tau'ri. The schema must remain extensible to Tau'ri, Jaffa, Unas and future compatible hosts.
+`CulturalPawnProfileDef.generatedHostOrigins` exposes one or more of those Defs to a profile. `CulturalGeneratedHostIdentityUtility` resolves the winning profile, filters compatible origins and selects a stable origin, name, childhood and adulthood from the persistent symbiote ID.
 
-Persistent data must record whether an identity came from a real implantation or from generated pre-joined initialization. Migration must use that explicit source marker and never infer the state by comparing display names. Real implantations continue to capture the existing host unchanged.
+The initial `SG1_GeneratedHost_OffworldHuman` origin uses:
+
+- the Human race;
+- the off-world-human name generator;
+- six existing off-world-human childhoods;
+- six new civilian off-world-human adult careers.
+
+The name selection retries deterministically if it would equal the stored symbiote name. The result therefore remains stable across save/load while keeping the two identities of the same Tok'ra distinct.
+
+`TokraHostIdentitySource` explicitly records whether data came from:
+
+- an unknown older save awaiting classification;
+- a real implantation into an existing host;
+- generated pre-joined initialization.
+
+Migration never infers the source by comparing display names. A real implantation continues to capture the existing pawn unchanged. If a symbiote originally generated pre-joined is later extracted and implanted into a new pawn, the source changes to the real-host state and the generated historical-host origin is cleared.
+
+The cultural name manager cooperates with this consumer: it may assign a proper Tok'ra name to the symbiote identity, but it leaves the generated historical host visible while the host personality is active.
+
+Future Tau'ri, Jaffa, Unas or other compatible origins can be added mainly in XML once their races, backstories and name generators exist. No additional branch is required while the current origin schema is sufficient.
 

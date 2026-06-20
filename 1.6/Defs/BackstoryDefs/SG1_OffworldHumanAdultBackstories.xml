@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_VillageSteward</defName>
+        <title>off-world village steward</title>
+        <titleShort>village steward</titleShort>
+        <description>This person coordinated stores, disputes and seasonal work in an isolated human settlement. Keeping a small community alive taught them to read people, plan ahead and make scarce supplies last.</description>
+        <skillGains>
+            <Social>3</Social>
+            <Plants>2</Plants>
+            <Intellectual>1</Intellectual>
+        </skillGains>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_CaravanGuide</defName>
+        <title>off-world caravan guide</title>
+        <titleShort>caravan guide</titleShort>
+        <description>This person guided traders and families between distant settlements where roads were uncertain and strangers could be dangerous. They learned to judge terrain, handle animals and settle tense encounters before weapons were drawn.</description>
+        <skillGains>
+            <Animals>3</Animals>
+            <Social>2</Social>
+            <Shooting>1</Shooting>
+        </skillGains>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_FieldHealer</defName>
+        <title>off-world field healer</title>
+        <titleShort>field healer</titleShort>
+        <description>This person treated illness and injury with limited tools, inherited remedies and whatever could be gathered locally. Repeated emergencies taught them steady hands, careful observation and patience with frightened patients.</description>
+        <skillGains>
+            <Medicine>4</Medicine>
+            <Plants>2</Plants>
+        </skillGains>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_FrontierHunter</defName>
+        <title>off-world frontier hunter</title>
+        <titleShort>frontier hunter</titleShort>
+        <description>This person hunted beyond the safety of settled ground and watched for raiders, predators and signs of approaching patrols. Long absences from home sharpened their aim, fieldcraft and ability to live from difficult land.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Animals>2</Animals>
+            <Plants>1</Plants>
+        </skillGains>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_SettlementArtisan</defName>
+        <title>off-world settlement artisan</title>
+        <titleShort>settlement artisan</titleShort>
+        <description>This person repaired tools, homes and simple machines for a community that could not easily replace what broke. Practical necessity made them a patient builder and a versatile craftsperson.</description>
+        <skillGains>
+            <Crafting>3</Crafting>
+            <Construction>3</Construction>
+        </skillGains>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_KeeperOfRecords</defName>
+        <title>off-world keeper of records</title>
+        <titleShort>record keeper</titleShort>
+        <description>This person preserved local histories, agreements and practical knowledge in a settlement where written records were rare. Their work demanded memory, discretion and the ability to explain old lessons to new listeners.</description>
+        <skillGains>
+            <Intellectual>3</Intellectual>
+            <Social>2</Social>
+            <Artistic>1</Artistic>
+        </skillGains>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+        <shuffleable>true</shuffleable>
+    </BackstoryDef>
+</Defs>

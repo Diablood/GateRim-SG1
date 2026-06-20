@@ -316,6 +316,11 @@ namespace GateRimSG1.Names
                 }
 
                 symbioteData.CaptureHostName(pawn);
+
+                if (!symbioteData.HostName.NullOrEmpty())
+                {
+                    ReserveNameKey(symbioteData.HostName);
+                }
             }
 
             Name generatedName = GenerateUniqueName(group, pawn.gender);
@@ -326,7 +331,27 @@ namespace GateRimSG1.Names
                 return;
             }
 
-            pawn.Name = generatedName;
+            if (symbioteData != null
+                && generatedName.ToStringFull == symbioteData.HostName)
+            {
+                RegisterProcessedPawn(pawnThingId);
+                GR_Log.Warning(
+                    $"Rejected cultural symbiote name "
+                    + $"{generatedName.ToStringFull} for {pawnThingId} because "
+                    + "it matched the stored host identity. The existing "
+                    + "symbiote name was preserved.");
+                return;
+            }
+
+            bool keepGeneratedHostIdentityActive = symbioteData != null
+                && symbioteData.HostIdentitySource
+                    == TokraHostIdentitySource.GeneratedPreJoined
+                && !symbioteData.IsSymbiotePersonalityActive;
+
+            if (!keepGeneratedHostIdentityActive)
+            {
+                pawn.Name = generatedName;
+            }
 
             if (symbioteData != null)
             {
@@ -336,8 +361,14 @@ namespace GateRimSG1.Names
             RegisterProcessedPawn(pawnThingId);
 
             GR_Log.Message(
-                $"Assigned {group} cultural name {generatedName.ToStringFull} "
-                + $"to {pawnThingId} ({pawn.kindDef?.defName ?? "no kind"}).");
+                keepGeneratedHostIdentityActive
+                    ? $"Assigned {group} cultural name "
+                        + $"{generatedName.ToStringFull} to the symbiote identity "
+                        + $"of {pawnThingId} while preserving active host "
+                        + $"{pawn.Name?.ToStringFull ?? "<unnamed>"}."
+                    : $"Assigned {group} cultural name "
+                        + $"{generatedName.ToStringFull} to {pawnThingId} "
+                        + $"({pawn.kindDef?.defName ?? "no kind"}).");
         }
 
         private void RegisterExistingPawn(Pawn pawn)

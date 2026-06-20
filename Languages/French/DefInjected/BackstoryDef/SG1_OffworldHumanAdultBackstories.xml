@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_OffworldHuman_VillageSteward.title>intendant de village hors-monde</SG1_OffworldHuman_VillageSteward.title>
+    <SG1_OffworldHuman_VillageSteward.titleShort>intendant de village</SG1_OffworldHuman_VillageSteward.titleShort>
+    <SG1_OffworldHuman_VillageSteward.description>Cette personne coordonnait les réserves, les disputes et les travaux saisonniers d'une communauté humaine isolée. Maintenir un petit village en vie lui a appris à comprendre les autres, anticiper les besoins et économiser les ressources rares.</SG1_OffworldHuman_VillageSteward.description>
+
+    <SG1_OffworldHuman_CaravanGuide.title>guide de caravane hors-monde</SG1_OffworldHuman_CaravanGuide.title>
+    <SG1_OffworldHuman_CaravanGuide.titleShort>guide de caravane</SG1_OffworldHuman_CaravanGuide.titleShort>
+    <SG1_OffworldHuman_CaravanGuide.description>Cette personne guidait marchands et familles entre des communautés éloignées, sur des routes incertaines où les inconnus pouvaient être dangereux. Elle a appris à lire le terrain, conduire les animaux et apaiser les rencontres tendues avant que les armes ne soient tirées.</SG1_OffworldHuman_CaravanGuide.description>
+
+    <SG1_OffworldHuman_FieldHealer.title>guérisseur de terrain hors-monde</SG1_OffworldHuman_FieldHealer.title>
+    <SG1_OffworldHuman_FieldHealer.titleShort>guérisseur de terrain</SG1_OffworldHuman_FieldHealer.titleShort>
+    <SG1_OffworldHuman_FieldHealer.description>Cette personne soignait maladies et blessures avec peu d'outils, des remèdes transmis et ce qui pouvait être récolté localement. Les urgences répétées lui ont donné des gestes sûrs, un regard attentif et de la patience envers les patients apeurés.</SG1_OffworldHuman_FieldHealer.description>
+
+    <SG1_OffworldHuman_FrontierHunter.title>chasseur des frontières hors-monde</SG1_OffworldHuman_FrontierHunter.title>
+    <SG1_OffworldHuman_FrontierHunter.titleShort>chasseur des frontières</SG1_OffworldHuman_FrontierHunter.titleShort>
+    <SG1_OffworldHuman_FrontierHunter.description>Cette personne chassait au-delà des terres sûres et surveillait les pillards, les prédateurs et les signes de patrouilles en approche. Les longues absences ont renforcé sa précision, son sens du terrain et sa capacité à vivre d'une terre difficile.</SG1_OffworldHuman_FrontierHunter.description>
+
+    <SG1_OffworldHuman_SettlementArtisan.title>artisan de colonie hors-monde</SG1_OffworldHuman_SettlementArtisan.title>
+    <SG1_OffworldHuman_SettlementArtisan.titleShort>artisan de colonie</SG1_OffworldHuman_SettlementArtisan.titleShort>
+    <SG1_OffworldHuman_SettlementArtisan.description>Cette personne réparait les outils, les maisons et les machines simples d'une communauté incapable de remplacer facilement ce qui cassait. La nécessité en a fait un bâtisseur patient et un artisan polyvalent.</SG1_OffworldHuman_SettlementArtisan.description>
+
+    <SG1_OffworldHuman_KeeperOfRecords.title>gardien des archives hors-monde</SG1_OffworldHuman_KeeperOfRecords.title>
+    <SG1_OffworldHuman_KeeperOfRecords.titleShort>gardien des archives</SG1_OffworldHuman_KeeperOfRecords.titleShort>
+    <SG1_OffworldHuman_KeeperOfRecords.description>Cette personne préservait l'histoire locale, les accords et les connaissances pratiques dans une communauté où les documents écrits étaient rares. Son travail exigeait mémoire, discrétion et capacité à transmettre les anciennes leçons.</SG1_OffworldHuman_KeeperOfRecords.description>
+</LanguageData>

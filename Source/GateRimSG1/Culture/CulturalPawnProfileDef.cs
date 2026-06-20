@@ -26,6 +26,8 @@ namespace GateRimSG1.Culture
             = new List<BackstoryDef>();
         public List<BackstoryDef> identityAdulthoods
             = new List<BackstoryDef>();
+        public List<GeneratedHostOriginDef> generatedHostOrigins
+            = new List<GeneratedHostOriginDef>();
 
         public bool HasIdentityBackstories
         {
@@ -123,6 +125,18 @@ namespace GateRimSG1.Culture
                 {
                     yield return $"{defName} uses childhood "
                         + $"{adulthood.defName} as an identity adulthood.";
+                }
+            }
+
+            if (!generatedHostOrigins.NullOrEmpty())
+            {
+                for (int index = 0; index < generatedHostOrigins.Count; index++)
+                {
+                    GeneratedHostOriginDef origin = generatedHostOrigins[index];
+                    if (origin == null)
+                    {
+                        yield return $"{defName} generated-host origin {index} is null.";
+                    }
                 }
             }
 

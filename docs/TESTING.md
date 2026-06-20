@@ -2,9 +2,36 @@
 
 > Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
 
-## 0.3.12-dev - Intégration de l'identité Tok'ra active
+## 0.3.13-dev - Identités distinctes pour les Tok'ra générés déjà fusionnés
 
 Validation en cours. Les tests détaillés et leurs résultats sont conservés dans `docs/TESTING_CURRENT.md`.
+
+Couverture obligatoire :
+
+- chargement des `GeneratedHostOriginDef` et du profil Tok'ra sans erreur XML ni référence manquante ;
+- génération directe de `SG1_TokraVoluntaryHost` avec un nom d'hôte et un nom de symbiote distincts ;
+- enfance et carrière humaines hors-monde pour l'hôte, carrière Tok'ra pour le symbiote ;
+- conservation de l'hôte actif pendant la finalisation différée du nom culturel du symbiote ;
+- basculements répétés sans dérive des compétences ni reroll des identités ;
+- sauvegarde/recharge avec l'hôte actif puis le symbiote actif ;
+- migration stable d'une sauvegarde `0.3.12-dev` contenant un Tok'ra pré-fusionné ;
+- implantation Tok'ra réelle conservant l'identité existante du pawn ;
+- extraction puis réimplantation remplaçant l'origine générée par le nouvel hôte réel ;
+- visiteurs, escortes, chef de faction et autres générations hors carte lorsque disponibles ;
+- absence de régression sur les caravanes, les Tok'ra IA, les Goa'uld et `Player.log`.
+
+Points de régression durables :
+
+- ne jamais déduire la source d'identité en comparant les noms affichés ;
+- conserver un marqueur persistant explicite pour les implantations réelles et les générations pré-fusionnées ;
+- générer les origines d'hôte par Defs XML pondérés et non par branches culturelles codées en dur ;
+- conserver le nom du symbiote sans écraser le nom de l'hôte actif ;
+- ne pas appliquer l'identité d'hôte historique générée au nouveau pawn après une vraie réimplantation ;
+- maintenir le catalogue wiki à jour lors de toute modification des six carrières humaines hors-monde.
+
+## 0.3.12-dev - Intégration de l'identité Tok'ra active
+
+Validation locale terminée et jalon publié. Les tests détaillés et leurs résultats restent conservés dans l'historique du projet.
 
 Couverture obligatoire :
 

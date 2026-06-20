@@ -3,7 +3,7 @@
     <name>GateRim SG-1</name>
     <author>Diablood</author>
     <packageId>diablood.gaterimsg1</packageId>
-    <modVersion>0.3.12-dev</modVersion>
+    <modVersion>0.3.13-dev</modVersion>
     <supportedVersions>
         <li>1.6</li>
     </supportedVersions>
@@ -14,12 +14,13 @@
         </li>
     </modDependencies>
     <url>https://github.com/Diablood/GateRim-SG1</url>
-    <description>
-An SG team is stranded on an unknown RimWorld. The Stargate is silent, Earth is out of reach, and the colony must survive among enemies that have already claimed this world.
+    <description>An SG team is stranded on an unknown RimWorld. The Stargate is silent, Earth is out of reach, and the colony must survive among enemies that have already claimed this world.
+
 GateRim SG-1 brings Goa'uld System Lords, Jaffa warriors, Free Jaffa and hidden Tok'ra cells into RimWorld. Face raids armed with Ma'Tok staffs and Zat'nik'tels, encounter implanted hosts and symbiote biology, and decide which alien contacts deserve your trust.
+
 Play the dedicated stranded SG-team scenario or let the mod's factions, weapons, medical systems and storyteller-driven events enter a normal colony. Raise and preserve Prim'ta, manage tretonin dependency, survive Goa'uld implantation, work with the Tok'ra through a secure communicator, and take part in recurring intelligence, medical and sabotage operations.
+
 This is an early development version. The functional Stargate and full off-world progression are not yet included; the current release focuses on the people, factions, technologies and conflicts surrounding it.
 
-Requires RimWorld: Biotech.
-    </description>
+Requires RimWorld: Biotech.</description>
 </ModMetaData>

@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.13-dev - Generate distinct identities for pre-joined Tok'ra
+
+- Add a persistent `TokraHostIdentitySource` marker that distinguishes real implantations from Tok'ra generated already fused.
+- Add configurable weighted `GeneratedHostOriginDef` profiles to the shared cultural framework.
+- Configure an initial off-world-human host origin for `SG1_TokraVoluntaryHost` pawns without assuming Tau'ri ancestry.
+- Generate one stable historical host name, childhood and adulthood from the persistent symbiote identity key.
+- Keep the generated host and Tok'ra symbiote names distinct without relying on duplicate-name detection for migration.
+- Add six narrowly scoped adult off-world-human backstories for village, caravan, medical, frontier, artisan and record-keeping lives.
+- Declare those careers with the RimWorld 1.6 skill-gain map syntax and require their dedicated spawn category so they cannot leak into ordinary human backstory pools.
+- Preserve the generated host as the active identity by default while keeping the Tok'ra name and career available through personality switching.
+- Coordinate the cultural name manager so it can finalize the symbiote name without replacing the active generated-host name.
+- Migrate older pre-joined Tok'ra once from an explicit unknown source marker and keep the result stable through later loads.
+- Preserve real implantation behavior and replace the generated-host source with the actual new host after extraction and reimplantation.
+- Extend the cultural-name debug samples and the player-facing backstory catalogue for the new off-world-human data.
+- Raise the assembly version to `0.3.13.0` and the mod metadata version to `0.3.13-dev`.
+
 ## 0.3.12-dev - Audit Tok'ra active identity integration
 
 - Centralize the direct-player-control boundary for Tok'ra dual-identity interfaces.

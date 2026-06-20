@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_Tokra"]</xpath>
+        <value>
+            <generatedHostOrigins>
+                <li>SG1_GeneratedHost_OffworldHuman</li>
+            </generatedHostOrigins>
+        </value>
+    </Operation>
+</Patch>

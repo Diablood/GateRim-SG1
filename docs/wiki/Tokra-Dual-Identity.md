@@ -1,6 +1,6 @@
 # Double identité Tok'ra
 
-> Statut : basculement et intégration carte / caravane validés dans `0.3.12-dev`
+> Statut : basculement carte / caravane validé ; identités distinctes des Tok'ra générés déjà fusionnés ajoutées dans `0.3.13-dev`
 
 Un Tok'ra réunit deux personnes conscientes dans un même corps : l'hôte et le
 symbiote. GateRim SG-1 conserve donc leurs deux identités au lieu d'effacer le
@@ -19,6 +19,33 @@ Lorsqu'un symbiote Tok'ra rejoint un hôte, le mod enregistre séparément :
 
 Le symbiote conserve la même identité lors de la conversion en symbiose active,
 d'une sauvegarde, d'une extraction et d'une nouvelle implantation.
+
+## Tok'ra générés déjà fusionnés
+
+Certains Tok'ra sont créés directement par le jeu comme des hôtes volontaires déjà
+fusionnés, par exemple lors d'un incident, d'une visite, pour un chef de faction
+ou avec l'action développeur `Spawn pawn`. Dans ce cas, aucune implantation
+historique n'existait auparavant pour fournir une identité d'hôte.
+
+GateRim SG-1 génère désormais deux identités séparées :
+
+- un hôte humain hors-monde avec son propre nom, son enfance et sa carrière ;
+- un symbiote Tok'ra avec son nom et son parcours d'agent.
+
+L'hôte est actif par défaut. Les deux noms sont toujours distincts et restent
+stables après une sauvegarde ou un rechargement. Le mod enregistre explicitement
+que cette identité d'hôte a été générée pour un Tok'ra déjà fusionné ; il ne se
+contente pas de comparer les noms.
+
+L'origine humaine hors-monde est le profil disponible actuellement. Le système
+est conçu pour accepter plus tard des origines Tau'ri, Jaffa, Unas ou autres,
+avec leurs propres pondérations, noms et histoires culturelles.
+
+Une implantation réelle reste différente : lorsqu'un symbiote rejoint un pawn
+existant, le nom et les backstories de ce pawn deviennent l'identité de l'hôte,
+sans génération artificielle. Après extraction d'un Tok'ra pré-fusionné puis
+réimplantation dans un nouveau colon, la véritable identité du nouveau colon
+remplace l'ancienne origine générée.
 
 ## Basculement de personnalité
 

@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.12-dev`
+> Version du mod documentée : `0.3.13-dev`
 
 ## Le mod en bref
 
@@ -34,8 +34,9 @@ premières opérations de terrain.
 
 - Faction mondiale masquée, visiteurs pacifiques, implantation thérapeutique,
   [double identité hôte / symbiote](Tokra-Dual-Identity) avec basculement de la
-  personnalité active sur carte ou en caravane pour les Tok'ra contrôlés par le joueur, et
-  [confiance Tok'ra](Tokra-Trust).
+  personnalité active sur carte ou en caravane pour les Tok'ra contrôlés par le joueur,
+  et identité d'hôte distincte pour les Tok'ra générés directement déjà fusionnés.
+- [Confiance Tok'ra](Tokra-Trust), réseau clandestin et progression relationnelle persistante.
 - Réseau de planques, caches médicaux, contact de terrain et
   [communicateur sécurisé](Tokra-Secure-Communicator).
 - [Zone de livraison Tok'ra](Tokra-Delivery-Drop-Zone) pour les caches et
@@ -50,8 +51,9 @@ premières opérations de terrain.
 
 - [Scénario Équipe SG isolée](Stranded-SG-Team-Scenario).
 - [Histoires culturelles](Cultural-Backstories) enrichies avec des bonus de
-  compétences cohérents, profils culturels de randomisation des pawns de
-  départ — avec carrières Tau'ri optionnelles pour les humains ordinaires —,
+  compétences cohérents, dont les nouveaux parcours humains hors-monde utilisés
+  pour les hôtes historiques générés ; profils culturels de randomisation des
+  pawns de départ — avec carrières Tau'ri optionnelles pour les humains ordinaires —,
   noms persistants pour les groupes GateRim SG-1 et
   [réactions sociales contextuelles](Contextual-Social-Baseline).
 - [Recherches de fabrication Stargate](Stargate-Crafting-Research).

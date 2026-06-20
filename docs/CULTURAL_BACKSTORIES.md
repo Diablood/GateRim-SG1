@@ -1,10 +1,14 @@
 # Cultural backstories
 
-Version: `0.3.9-dev-r2`
+Version: `0.3.13-dev`
 
 ## Scope
 
-GateRim SG-1 currently defines `52` native RimWorld `BackstoryDef` entries. This milestone reworks the existing set without adding or deleting any backstory.
+GateRim SG-1 currently defines `58` native RimWorld `BackstoryDef` entries.
+
+The `52` entries reworked in `0.3.8-dev` remain unchanged. `0.3.13-dev` adds six narrowly scoped adult off-world-human careers because a Tok'ra generated already fused needs a complete historical host identity rather than only an off-world childhood and a Tok'ra adulthood.
+
+This targeted addition does not replace the later discussion about a broader but reasonable expansion of the catalogue.
 
 The stable structure remains:
 
@@ -53,7 +57,9 @@ Eight Goa'uld-aligned adult careers emphasize military service, ritual security,
 
 Six off-world childhoods represent tributary villages, palaces, markets, temples, caravans and isolated farms.
 
-Ordinary Goa'uld hosts use six administrative or court careers. System Lords retain four dedicated rulership profiles with stronger social, intellectual or military emphasis.
+Six civilian off-world adult careers now cover village stewardship, caravan guidance, field medicine, frontier hunting, settlement craft and record keeping. Their first consumer is the generated historical host identity of a pre-joined Tok'ra. They use their own `SG1_OffworldHumanAdulthood` category and are not inserted into ordinary Tau'ri starter randomization.
+
+Ordinary Goa'uld hosts continue to use six administrative or court careers. System Lords retain four dedicated rulership profiles with stronger social, intellectual or military emphasis.
 
 ### Tok'ra
 
@@ -61,9 +67,10 @@ Six agent careers cover infiltration, medicine, diplomacy, scouting, intelligenc
 
 ## Compatibility
 
-- No `defName`, slot, category or body-type default is changed.
-- No pawn is rerolled or renamed.
-- Existing saves keep their assigned backstories; the newly defined skill bonuses are read from those same Defs when the pawn's skill offsets are evaluated.
+- No existing `defName`, slot, category or body-type default is changed.
+- Existing pawns are not globally rerolled or renamed.
+- The six new Defs are selected only by explicitly configured generated-host origins unless another future system deliberately references their category.
+- Existing saves keep their assigned backstories; only an older pre-joined Tok'ra with an unknown identity source receives one stable generated host background during the dedicated migration.
 - The `0.3.0-dev` framework remains the save-compatibility baseline.
 
 ## Integration with the cultural framework
@@ -78,15 +85,17 @@ A configurable cultural profile can reference:
 - scenario-specific starting-pawn restrictions;
 - optional data used by other culture-aware systems.
 
-The first consumers are cultural name resolution and culture-aware starting-pawn randomization. The starter behavior remains restricted to newly generated player starters; world pawn generation and manual editor assignments remain unchanged.
+The first consumers are cultural name resolution and culture-aware starting-pawn randomization. `0.3.13-dev` adds a generated-host-origin consumer for the specific case of Tok'ra PawnKinds created already fused. Ordinary world pawn generation and manual editor assignments remain unchanged outside that explicit consumer.
 
 ## Deferred expansion
 
-The number of backstories is not increased in this milestone. A later discussion will decide whether additional entries are useful, while keeping the set readable and maintainable.
+The six adult off-world-human careers in `0.3.13-dev` are a targeted dependency of the generated-host identity system, not the start of an unrestricted catalogue expansion.
+
+A later discussion will still decide whether additional entries are useful, while keeping the set readable, maintainable and culturally distinct.
 
 Future cultures such as Asgard, Nox and Unas must receive coherent name generators and backstories when the race or faction is introduced, or in an immediately following milestone.
 
-The separate question of preserving and switching a player-controlled Tok'ra host / symbiote identity is intentionally deferred. Its complete design record is maintained in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`; it must not be implemented as a hidden side effect of backstory data.
+The Tok'ra host / symbiote identity implementation is documented in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`. Backstory data remains passive content: the persistent identity system explicitly selects and applies the relevant host or symbiote profile.
 
 ## Wiki catalogue maintenance
 

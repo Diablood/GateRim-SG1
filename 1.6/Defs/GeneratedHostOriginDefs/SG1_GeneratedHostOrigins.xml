@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <GateRimSG1.Culture.GeneratedHostOriginDef>
+        <defName>SG1_GeneratedHost_OffworldHuman</defName>
+        <label>off-world human host</label>
+        <weight>1</weight>
+        <nameGroup>OffworldHuman</nameGroup>
+        <races>
+            <li>Human</li>
+        </races>
+        <childhoods>
+            <li>SG1_OffworldHuman_TributaryVillageChild</li>
+            <li>SG1_OffworldHuman_PalaceServantChild</li>
+            <li>SG1_OffworldHuman_MarketSettlementChild</li>
+            <li>SG1_OffworldHuman_TempleWard</li>
+            <li>SG1_OffworldHuman_CaravanChild</li>
+            <li>SG1_OffworldHuman_RemoteFarmChild</li>
+        </childhoods>
+        <adulthoods>
+            <li>SG1_OffworldHuman_VillageSteward</li>
+            <li>SG1_OffworldHuman_CaravanGuide</li>
+            <li>SG1_OffworldHuman_FieldHealer</li>
+            <li>SG1_OffworldHuman_FrontierHunter</li>
+            <li>SG1_OffworldHuman_SettlementArtisan</li>
+            <li>SG1_OffworldHuman_KeeperOfRecords</li>
+        </adulthoods>
+    </GateRimSG1.Culture.GeneratedHostOriginDef>
+</Defs>
