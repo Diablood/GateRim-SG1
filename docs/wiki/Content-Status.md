@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.5-dev`
+> Dernière révision : `0.3.17-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -86,7 +86,11 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
 | Réglages de debug avancés | Option persistante masquant les informations techniques et les logs informatifs de routine hors mode développeur | 0.1.75-dev |
-| Histoires culturelles | Parcours SGC, enfances et carrières Jaffa, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
+| Histoires culturelles | Catalogue natif de 70 enfances et carrières SGC, Jaffa, Goa'uld, Tok'ra et humaines hors-monde, avec descriptions enrichies et bonus de compétences modérés | 0.2.4-dev / refonte 0.3.8-dev / extensions 0.3.13-dev et 0.3.16-dev |
+| Profils culturels configurables des pawns de départ | Profils XML prioritaires pour les starters Jaffa, hôtes Goa'uld, humains ordinaires et scénario Équipe SG isolée, sans modifier la génération normale du monde | 0.3.9-dev |
+| Double identité Tok'ra contrôlée par le joueur | Conservation séparée de l'hôte et du symbiote, basculement de personnalité, progression de compétences commune, caravanes, sauvegarde, extraction, mort et résurrection | 0.3.10-dev à 0.3.14-dev |
+| Identité d'hôte des Tok'ra générés déjà fusionnés | Origine humaine hors-monde configurable, nom et parcours historiques distincts, marqueur persistant de source d'identité | 0.3.13-dev |
+| Diagnostic culturel unifié | Rapport développeur en lecture seule regroupant profils, noms, backstories, faction, identité Jaffa, marque et données de symbiote | 0.3.15-dev |
 | Noms culturels persistants | Générateurs dédiés aux Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC ; attribution unique aux nouvelles générations, protection des personnages existants et préparation de la distinction hôte/symbiote | 0.3.5-dev |
 | Réactions sociales contextuelles | Opinions et réactions selon l'identité Jaffa libre, Goa'uld, Tok'ra ou Grand Maître proche | 0.2.5-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement du SGC et biotechnologies Goa'uld | 0.2.8-dev |
@@ -102,18 +106,14 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Élément | Direction actuelle |
 |---|---|
 | Diversification des opérations Tok'ra | Ajouter de nouveaux archétypes récurrents, des variantes et d'autres missions de terrain sans cycle visible ni répétition immédiate |
-| Enrichissement des histoires personnelles | Ajouter des descriptions, des modificateurs de statistiques et davantage de variété culturelle |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
 | Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
-| Transfert entre hôtes | Prévu |
-| Extraction Tok'ra | Prévu |
-| Résistance Tok'ra | Prévu |
 | Résumé personnalisé des castes Goa'uld | Compléter le résumé vanilla des xenotypes avec les états parasitaires acquis |
-| Icônes thématiques des factions | Préparer des identités visuelles cohérentes pour l'expédition du SGC, les Jaffa libres et les domaines Goa'uld |
+| Passe visuelle des objets et factions | Remplacer les textures provisoires ou trompeuses et préparer des identités visuelles cohérentes pour le SGC, les Tok'ra, les Jaffa et les domaines Goa'uld |
 | Réplicateurs | Prévu pour une phase ultérieure |
 | Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
-| Porte des étoiles fonctionnelle | Future phase `0.3.x`, avec progression et expéditions hors monde |
+| Porte des étoiles fonctionnelle | Phase majeure ultérieure avec progression et expéditions hors monde, après stabilisation des fondations actuelles |

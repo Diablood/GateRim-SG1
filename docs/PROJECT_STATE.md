@@ -1,84 +1,68 @@
 # Project state
 
-Current milestone: `0.3.16-dev - Expand cultural backstory variety` — functionally validated, closed and published.
+Current milestone: `0.3.17-dev - Refresh project and wiki presentation` — validated, closed and published.
 
 ## Published milestone
 
-- Development base tag: `v0.3.15-dev`.
-- Dedicated branch: `feature/cultural-backstory-expansion`.
-- Validated local archive revision: `0.3.16-dev-r1`.
-- Final published tag: `v0.3.16-dev`.
-- Final commit: `0.3.16-dev - expand cultural backstory variety`.
+- Development base tag: `v0.3.16-dev`.
+- Dedicated branch: `feature/project-presentation-refresh`.
+- Validated local archive revision: `0.3.17-dev-r2`.
+- Final published tag: `v0.3.17-dev`.
+- Final commit: `0.3.17-dev - refresh project and wiki presentation`.
 
-The local `r1` suffix identifies only the tested archive revision. It does not appear in the published commit or tag.
+The local `r2` suffix identifies only the tested archive revision. It does not appear in the published commit or tag.
 
 ## Milestone result
 
-GateRim SG-1 now defines `70` native RimWorld `BackstoryDef` entries, up from `58` before this milestone.
+The public presentation now reflects the actual `0.3.x` project state instead of older milestone snapshots:
 
-The twelve additions are distributed evenly across cultures already implemented in game:
+- the root README is a durable English overview of the mod and its current playable systems;
+- the French wiki home documents the project through `0.3.17-dev`;
+- `Content-Status.md` distinguishes playable content from future work and includes the cultural framework, the 70-backstory catalogue and persistent Tok'ra dual identity;
+- the wiki sidebar is organized into stable thematic categories rather than one long linear list;
+- the existing Tok'ra dual-identity and tactical-assessment pages are now present in the navigation;
+- the publication procedure now requires every new or renamed wiki page to be assigned to an appropriate sidebar category and checked for missing, obsolete or duplicate links.
 
-- two Tau'ri / SGC adult careers;
-- two shared Jaffa childhoods;
-- two Goa'uld-aligned Jaffa adult careers;
-- two Free Jaffa adult careers;
-- two ordinary Goa'uld-host adult careers;
-- two Tok'ra adult careers.
+No gameplay code, Def, translation, texture or balance value changed in this milestone.
 
-The new content remains fully data-driven:
+## Validation
 
-- one dedicated BackstoryDef XML file;
-- one matching French DefInjected file;
-- one XML patch extending the existing starter-profile pools and cultural name rules;
-- no change to the shared C# resolver, starter-generation engine, naming engine or reversible Tok'ra skill-offset logic.
+The complete focused matrix was validated on local revision `r2`:
 
-No Asgard, Nox or Unas backstory was added before those cultures exist as playable or generated content.
+- forced rebuild and DLL version `0.3.17.0`;
+- RimWorld loading to the main menu without a new GateRim SG-1 error;
+- mod metadata version `0.3.17-dev` and unchanged immersive About description;
+- removal of stale active-version claims from the README and wiki presentation pages;
+- valid repository and wiki links for the tested scope;
+- readable thematic sidebar categories in the narrow wiki layout;
+- preservation of all previous internal navigation targets without duplication;
+- addition of `Tokra-Dual-Identity` and `Tokra-Tactical-Threat-Assessment` to the sidebar;
+- accurate separation between current playable systems and future content;
+- confirmation that `About/ModIcon.png`, gameplay C#, Defs, translations and textures are unchanged;
+- clean `Player.log` for the main-menu smoke test.
 
-## Functional validation
-
-The complete focused matrix was validated on local revision `r1`:
-
-- forced rebuild and DLL version `0.3.16.0`;
-- main-menu loading without new XML, patch, BackstoryDef or translation errors;
-- all twelve French titles, descriptions and moderate skill bonuses;
-- Jaffa starter childhood and adulthood pools, including matching `GoauldJaffa` and `FreeJaffa` name groups;
-- Goa'uld-host starter careers, including matching `Goauld` and `Tokra` name groups;
-- the stranded SG-team scenario with eight exclusive SGC adult careers;
-- ordinary human starters retaining a clear vanilla majority while allowing occasional SGC careers;
-- representative Jaffa, Goa'uld-host, Tok'ra, raid and world-pawn generation;
-- save/load persistence, manual-name preservation and Tok'ra personality switching without skill drift;
-- the complete `70`-entry wiki catalogue matching the French in-game content;
-- clean `Player.log` for the tested scope.
-
-No corrective `r2` code or Def revision was required.
-
-## Architecture decision
-
-This milestone confirms the preferred content-extension path for existing cultures: add passive Defs and extend explicit profile lists through XML while the current schema remains sufficient.
-
-The generic cultural framework must not gain a new matcher, branch or special case merely to expand a catalogue. A C# change remains justified only when a real culture-dependent rule cannot be represented accurately by the existing Def model.
+No corrective gameplay revision was required after `r2`.
 
 ## Files published
 
+- `README.md`;
 - `About/About.xml`;
 - `Source/GateRimSG1/GateRimSG1.csproj`;
-- `1.6/Defs/BackstoryDefs/SG1_CulturalBackstoryExpansion.xml`;
-- `1.6/Patches/SG1_CulturalBackstoryExpansion.xml`;
-- `Languages/French/DefInjected/BackstoryDef/SG1_CulturalBackstoryExpansion.xml`;
 - `docs/PROJECT_STATE.md`;
 - `docs/ROADMAP.md`;
 - `docs/TESTING_CURRENT.md`;
 - `docs/TESTING.md`;
 - `docs/CHANGELOG.md`;
-- `docs/CULTURAL_BACKSTORIES.md`;
-- `docs/CULTURAL_FRAMEWORK.md`;
-- `docs/wiki/Cultural-Backstories.md`.
+- `docs/MILESTONE_PUBLICATION.md`;
+- `docs/wiki/Home.md`;
+- `docs/wiki/Content-Status.md`;
+- `docs/wiki/_Sidebar.md`.
 
-Because `docs/wiki/Cultural-Backstories.md` changed, the separate wiki repository must be synchronized as part of the final publication.
+Because `docs/wiki/*.md` changed, the separate wiki repository must be synchronized as part of the final publication.
 
 ## Next development base
 
-The next milestone must start from the published tag `v0.3.16-dev` on a new dedicated `feature/...` branch.
+The next milestone must start from the published tag `v0.3.17-dev` on a new dedicated `feature/...` branch.
 
 Before selecting it, reread:
 

@@ -114,6 +114,21 @@ git push origin v0.2.51-dev
 
 Synchroniser le wiki lorsque le jalon modifie réellement un fichier `docs/wiki/*.md`. En l’absence de modification dans ce dossier, noter explicitement qu’aucune synchronisation n’est nécessaire et ne pas créer de commit wiki vide.
 
+Avant la synchronisation, vérifier la cohérence de la navigation :
+
+- toute page wiki créée ou renommée doit être ajoutée à `docs/wiki/_Sidebar.md` dans la catégorie thématique appropriée ;
+- ne pas ajouter les nouvelles pages à la fin d’une liste linéaire : conserver les catégories existantes ou créer une catégorie durable seulement lorsqu’elle regroupe plusieurs pages cohérentes ;
+- vérifier que chaque cible interne de la sidebar correspond à un fichier `docs/wiki/<cible>.md` existant ;
+- supprimer ou corriger dans le même jalon tout lien devenu obsolète à la suite d’un renommage ou d’une suppression ;
+- éviter les doublons de liens internes dans la sidebar.
+
+Contrôle rapide des pages et de la sidebar :
+
+```powershell
+Get-ChildItem .\docs\wiki -Filter *.md | Select-Object -ExpandProperty BaseName | Sort-Object
+Get-Content .\docs\wiki\_Sidebar.md
+```
+
 Chemins locaux habituels :
 
 ```powershell

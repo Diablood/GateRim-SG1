@@ -1,193 +1,54 @@
 # GateRim SG-1
 
-A Stargate SG-1 mod project for RimWorld 1.6.
+GateRim SG-1 is an early-development Stargate SG-1 content mod for RimWorld 1.6.
+It builds a playable foundation around the SGC, Goa'uld, Jaffa, Free Jaffa and
+Tok'ra before the later introduction of a functional Stargate and full
+off-world progression.
 
-## Project identity
+## Current status
 
-- Public name: `GateRim SG-1`
-- Author: `Diablood`
+- Development version: `0.3.17-dev`
+- RimWorld version: `1.6`
+- Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
-- C# namespace: `GateRimSG1`
-- Repository: `https://github.com/Diablood/GateRim-SG1`
-- Player wiki: `https://github.com/Diablood/GateRim-SG1/wiki`
-- Required DLC for the current development branch: `Biotech`
+- Author: `Diablood`
 
-## Current milestone
-### 0.2.18-dev — Add non-trading Tok'ra safehouse contact
+The functional Stargate is not yet included. The current build focuses on the
+people, factions, technologies, biology and conflicts surrounding it.
 
-The enterable Tok'ra safehouse now contains one peaceful contact in addition
-to its medical cache.
+## Playable content
 
-```text
-1 stored safehouse lead
-    -> consumed by SG1_TokraHiddenSafehouseSiteIncident
-    -> one non-hostile vanilla site near the colony
-    -> one small generated map
-    -> one peaceful Tok'ra voluntary host aged 20+
-    -> 2 tretonin doses and 4 industrial medicine
-    -> automatic expiration after 10 RimWorld days if unvisited
-```
+- A stranded four-person SG-team starting scenario with dedicated field gear.
+- Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and a hidden
+  Tok'ra world presence.
+- Persistent Goa'uld and Tok'ra symbiote identities, implantation, extraction
+  and player-controlled Tok'ra host/symbiote personality switching.
+- Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin
+  dependency and formal ceremonies.
+- Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and SGC field equipment.
+- Tok'ra trust, safehouses, medical support, secure communications, recurring
+  organic operations and a sabotage mission on a temporary map.
+- Configurable cultural profiles, persistent cultural names and 70 cultural
+  backstories integrated with starting pawns and world generation.
 
-The contact has no trader role and is explicitly non-recruitable. The site
-still creates no permanent settlement, military aid, hostile pawn or raid. A
-marker and a site cannot coexist.
+GateRim SG-1 content remains compatible with normal colonies and compatible
+vanilla or modded storytellers. The dedicated scenario is optional.
 
-A forced C# rebuild is required for this milestone.
+## Documentation
 
-## Next development focus
+- [Player wiki](https://github.com/Diablood/GateRim-SG1/wiki)
+- [Current content status](docs/wiki/Content-Status.md)
+- [Development roadmap](docs/ROADMAP.md)
+- [Changelog](docs/CHANGELOG.md)
+- [Build instructions](docs/BUILD.md)
+- [Current validation plan](docs/TESTING_CURRENT.md)
 
-- validate contact generation, age, adult backstory, peaceful status, absent
-  trade role, disabled recruitment, save persistence and clean site removal;
-- keep dialogue, trade inventory and recruitment outside this milestone.
+## Development workflow
 
-## First playable milestone
+Development proceeds through small, testable milestones on dedicated branches
+created from the latest validated `v...-dev` tag. Repository rules and context
+recovery instructions are maintained in [AGENTS.md](AGENTS.md), while the
+current handoff is maintained in [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md).
 
-- [x] Inheritable Jaffa xenotype foundation
-- [x] Separate inherited Jaffa lineage from Prim'ta effects
-- [x] Goa'uld host xenotype prototype
-- [x] Free Goa'uld symbiote pawn prototype
-- [x] Recent Goa'uld implantation Hediff prototype
-- [x] Automatic Prim'ta workflow
-- [x] Forced Goa'uld implantation
-- [x] Ritual Goa'uld implantation
-- [x] Host conversion after the critical phase
-- [x] Goa'uld System Lord faction foundation
-- [x] Goa'uld-aligned Jaffa pawn kinds
-- [x] Automatic initial Prim'ta for Goa'uld-aligned Jaffa
-- [x] Ma'Tok staff weapon prototype
-- [x] Automatic Ma'Tok loadout for Goa'uld Jaffa
-- [x] Zat'nik'tel first-shot incapacitation prototype
-- [x] Modular Jaffa armor prototypes
-- [x] Retractable Jaffa helmet modes
-- [x] Automatic Jaffa armor loadouts
-- [x] SG-team field uniform prototype
-- [x] SG tactical boots prototype
-- [x] SG tactical gloves prototype
-- [x] SG tactical vest prototype
-- [x] Black and desert SG-team uniform variants
-- [x] Stranded SG-team starter scenario
-- [x] Playable Goa'uld world-faction baseline
-- [x] Free Jaffa world-faction baseline
-- [x] Persistent Goa'uld host-caste baseline
-- [x] Cultural backstory baseline
-- [x] Contextual social baseline
-- [x] Free Jaffa peaceful visitors baseline
-- [x] Hidden Tok'ra world-presence baseline
-- [x] Stargate crafting-research baseline
-- [x] Natural Goa'uld queen acquisition baseline
-
-## Development notes
-
-- Keep indentation at 4 spaces.
-- Preserve `About/ModIcon.png`.
-- Develop incrementally and test after each small content batch.
-- Include code, technical documentation and wiki drafts in the first ZIP of each milestone.
-- Keep manifests outside ZIP archives.
-- Keep English in `Defs`.
-- Add French `DefInjected` translations as soon as a content batch is stabilized.
-- Use bilingual `Keyed` files for future UI messages and C# strings.
-- Keep versioned player-wiki drafts under `docs/wiki/`.
-- Publish wiki pages directly at the root of the separate `GateRim-SG1.wiki` repository.
-- Use `./tools/sync-wiki.sh` from Bash or `.\tools\sync-wiki.cmd` from Windows PowerShell.
-- Use dedicated branches for functional changes and important fixes.
-- Create annotated Git tags for versioned milestones.
-
-
-#### Hidden Tok'ra cell cache
-
-A rare non-territorial Tok'ra cell contact can now leave a modest medical cache
-near a reachable map edge:
-
-```text
-1-2 tretonin dose(s)
-2-3 industrial medicine unit(s)
-```
-
-The event uses the persistent hidden `SG1_Tokra` faction and remains
-deliberately limited:
-
-```text
-no Tok'ra settlement
-no world site yet
-no trader
-no recruitment
-no military aid
-no raid
-```
-
-The cache is available only when Tok'ra trust is not wary. This gives the
-hidden world presence a first tangible footprint without changing Tok'ra into a
-territorial faction.
-
-
-#### Tok'ra safehouse signal
-
-A rare clandestine Tok'ra contact can now transmit an encrypted safehouse
-signal. This is a letter-only event that adds a tiny `+1` Tok'ra trust gain
-without creating a world site yet.
-
-The event deliberately creates no settlement, caravan, visitor group, trader,
-recruitment, loot, military aid or raid. It prepares the design space for a
-future hidden Tok'ra safehouse or world-site prototype.
-
-
-#### Tok'ra safehouse leads
-
-The safehouse signal now stores a persistent Tok'ra safehouse lead:
-
-```text
-+1 Tok'ra trust
-+1 safehouse lead
-maximum: 3 leads
-```
-
-Leads do not create a world site yet. They are a saved progression bridge for a
-future hidden Tok'ra world-site or safehouse prototype.
-
-
-#### Tok'ra safehouse lead cache
-
-Stored safehouse leads can now be consumed by a rare follow-up cache incident:
-
-```text
--1 safehouse lead
-2 tretonin doses
-3 industrial medicine
-```
-
-The event still creates no world site, generated map, caravan, pawn, trader,
-recruitment, military aid or raid. It proves lead persistence and consumption
-before the future hidden safehouse world-site prototype.
-
-
-#### Tok'ra hidden safehouse world marker
-
-Stored safehouse leads can now become a temporary world-map marker:
-
-```text
--1 safehouse lead
-1 temporary non-hostile world marker
-duration: 5 RimWorld days
-```
-
-The marker cannot be entered yet. It creates no map, loot, trader,
-recruitment, military aid or raid. It is the first safe world-map footprint for
-future hidden Tok'ra safehouse systems.
-
-
-#### Enterable Tok'ra hidden safehouse
-
-Since `0.2.17-dev`, one stored lead can create a temporary vanilla site. Since
-`0.2.18-dev`, that site also contains one peaceful Tok'ra contact:
-
-```text
--1 safehouse lead
-1 enterable non-hostile site
-1 non-trading, non-recruitable Tok'ra contact aged 20+
-2 tretonin doses
-4 industrial medicine
-duration before arrival: 10 RimWorld days
-```
-
-The generated map is deliberately small and contains no hostile defenders,
-trade inventory, recruitable pawn, military aid or permanent settlement.
+Root ZIP archives are local delivery artifacts and must not be committed.
+`About/ModIcon.png` must be preserved.

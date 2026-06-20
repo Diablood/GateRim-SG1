@@ -13,7 +13,29 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Extension mesurée des backstories culturelles (`0.3.16-dev`)
+### Harmonisation de la présentation du projet et du wiki (`0.3.17-dev`)
+
+- [x] Partir du tag publié `v0.3.16-dev` sur la branche dédiée `feature/project-presentation-refresh`.
+- [x] Remplacer le README historique centré sur `0.2.18-dev` par une présentation durable du projet.
+- [x] Mettre à jour l'accueil du wiki jusqu'à `0.3.17-dev` et retirer les directions déjà terminées.
+- [x] Actualiser `Content-Status.md` avec les systèmes culturels et Tok'ra validés depuis `0.3.5-dev`.
+- [x] Remplacer la sidebar devenue linéaire par des catégories thématiques stables.
+- [x] Réintégrer dans la navigation les pages existantes sur la double identité Tok'ra et l'évaluation tactique.
+- [x] Ajouter à la procédure de publication un contrôle durable de la navigation lors de toute création ou renommage de page wiki.
+- [x] Retirer de la section future les fonctions déjà implémentées ou les formulations devenues trompeuses.
+- [x] Conserver une séparation explicite entre contenu jouable, développement en cours et grands chapitres futurs.
+- [x] Valider le rebuild `0.3.17.0`, le chargement du menu principal et la version About.
+- [x] Relire les liens et les formulations des trois pages de présentation.
+- [x] Vérifier le rendu de la sidebar, ses catégories et l'ensemble de ses liens internes.
+- [x] Publier la branche, le tag final unique `v0.3.17-dev` et synchroniser le wiki séparé.
+
+La validation locale de `r2` confirme que la présentation publique est cohérente, que la sidebar catégorisée reste lisible et qu'aucune cible interne de l'ancienne navigation n'a été perdue ou dupliquée. Les pages sur la double identité Tok'ra et l'évaluation tactique sont désormais accessibles depuis la sidebar. Le rebuild, le chargement du menu principal, les métadonnées et `Player.log` sont validés sans modification de gameplay.
+
+Ce jalon ne modifie aucun comportement de jeu. Il transforme les pages publiques et leur navigation en documents durables afin qu'elles ne redeviennent pas obsolètes à chaque micro-jalon. La description Workshop proprement dite restera à publier lors de la préparation de la première version publique ; `About/About.xml`, le README et l'accueil du wiki en constituent désormais la base éditoriale commune.
+
+Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.17-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
+
+### Jalon précédent — extension mesurée des backstories culturelles (`0.3.16-dev`)
 
 - [x] Partir du tag publié `v0.3.15-dev` sur la branche dédiée `feature/cultural-backstory-expansion`.
 - [x] Limiter l'extension à douze backstories afin de préserver la lisibilité et la cohérence culturelle.
@@ -31,9 +53,7 @@ Ce jalon ne crée aucune race, faction ou nouvelle branche C#. Il exploite le fr
 
 La matrice complète a été validée sur la révision locale `r1` : les douze entrées sont chargées et traduites, les profils mixtes conservent les groupes de noms attendus, les humains ordinaires gardent une majorité de carrières vanilla, la génération normale et la sauvegarde restent stables, et `Player.log` est propre. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
 
-Le catalogue wiki contient désormais les `70` backstories et doit être synchronisé avec le dépôt wiki séparé lors de la publication finale.
-
-Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.16-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
+Le catalogue wiki contient désormais les `70` backstories et a été synchronisé avec le dépôt wiki séparé lors de la publication finale.
 
 ### Jalon précédent — diagnostic unifié de l'identité culturelle (`0.3.15-dev`)
 
@@ -108,7 +128,7 @@ Le cycle complet a été validé sur la révision locale `r1` sans correctif C# 
 - [x] Réécrire la description de `About/About.xml` dans un style court, immersif et immédiatement compréhensible.
 - [x] Retirer les inventaires de fonctionnalités, détails de jalons, prototypes internes et éléments de roadmap.
 - [x] Structurer la présentation autour de l'ambiance, des factions, des possibilités de jeu et des dépendances indispensables.
-- [ ] Harmoniser ultérieurement cette présentation avec la page Workshop et l'accueil du wiki lors d'un jalon qui modifiera réellement `docs/wiki/*.md`.
+- [ ] Publier et maintenir la description Workshop lors de la préparation de la première version publique, en réutilisant la base harmonisée par `0.3.17-dev`.
 
 ## Passe visuelle globale des objets
 

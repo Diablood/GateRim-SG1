@@ -1,5 +1,34 @@
 # Tests
 
+## 0.3.17-dev - Harmonisation de la présentation du projet et du wiki
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.17-dev`. Aucun correctif de gameplay n'a été nécessaire.
+
+Couverture validée :
+
+- rebuild forcé et DLL `0.3.17.0` ;
+- chargement jusqu'au menu principal sans nouvelle erreur GateRim SG-1 ;
+- version de mod `0.3.17-dev` et description About inchangée ;
+- remplacement du README historique par une présentation durable ;
+- accueil du wiki et état du contenu cohérents avec les systèmes validés jusqu'à `0.3.17-dev` ;
+- distinction claire entre contenu jouable et grands développements futurs ;
+- sidebar organisée en catégories thématiques lisibles ;
+- conservation de toutes les anciennes cibles internes sans doublon ;
+- ajout à la navigation des pages `Tokra-Dual-Identity` et `Tokra-Tactical-Threat-Assessment` ;
+- vérification des liens internes et externes du périmètre ;
+- absence de modification des fichiers C#, Defs, traductions, textures et de `About/ModIcon.png` ;
+- `Player.log` propre pour le test de chargement.
+
+Points de régression durables :
+
+- conserver le README comme présentation stable plutôt que comme journal du dernier micro-jalon ;
+- mettre à jour `Home.md` et `Content-Status.md` lorsqu'un changement public rend leur résumé obsolète ;
+- classer toute nouvelle page wiki dans une catégorie thématique de `_Sidebar.md` ;
+- vérifier à chaque création, renommage ou suppression de page que la sidebar ne contient ni cible absente, ni doublon, ni lien obsolète ;
+- ne pas présenter comme jouable un système encore limité à la roadmap ;
+- préserver la séparation entre documentation joueur, documents de développement et diagnostics techniques.
+
+
 ## 0.3.16-dev - Extension mesurée des backstories culturelles
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.16-dev`. Aucun correctif C# ou Def supplémentaire n'a été nécessaire après la matrice complète.

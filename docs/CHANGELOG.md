@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.17-dev - Refresh project and wiki presentation
+
+- Replace the root README's obsolete `0.2.18-dev` milestone log with a durable project overview.
+- Summarize the currently playable SGC, Jaffa, Goa'uld and Tok'ra systems without exposing internal milestone history as player documentation.
+- Update the French wiki home to the current `0.3.17-dev` documentation baseline.
+- Record the 70-backstory catalogue, configurable starter profiles and persistent Tok'ra dual-identity systems in the public presentation.
+- Bring `Content-Status.md` forward from its `0.3.5-dev` revision and register the validated cultural and identity milestones through `0.3.16-dev`.
+- Remove completed or misleading future entries, including generic backstory enrichment and Tok'ra extraction listed as unavailable.
+- Replace the increasingly confusing flat wiki sidebar with stable thematic categories while preserving all existing navigation targets.
+- Add the existing Tok'ra dual-identity and tactical-assessment pages that were missing from the former sidebar.
+- Extend the milestone publication procedure so new or renamed wiki pages must be assigned to an appropriate sidebar category and checked before synchronization.
+- Keep the functional Stargate, Asgard, Nox, Unas, dedicated storyteller and full GateRim SG-1 world preset explicitly separated as future work.
+- Raise the assembly version to `0.3.17.0` and the mod metadata version to `0.3.17-dev` without changing gameplay code or Defs.
+- Validate the rebuild, main-menu loading, public-page links, categorized sidebar, preserved navigation targets and a clean `Player.log` on local revision `r2`.
+
 ## 0.3.16-dev - Expand cultural backstory variety
 
 - Add twelve culturally distinct native RimWorld backstories without changing the shared cultural resolver.
