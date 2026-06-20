@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.9-dev`
+Version: `0.3.10-dev`
 
 ## Purpose
 
@@ -74,6 +74,22 @@ The ordinary-human profile is deliberately lower priority than the Jaffa, Goa'ul
 
 The SG-team profile intentionally preserves the existing vanilla childhood until a dedicated Tau'ri childhood set is designed. This milestone does not increase the number of backstories.
 
+### Persistent host / symbiote identities
+
+`0.3.10-dev` adds a third consumer without adding culture-specific branches to the resolver.
+
+A profile may expose optional `identityChildhoods` and `identityAdulthoods`. `CulturalIdentityUtility` selects a stable entry from those lists using the persistent identity key, so save migration and repeated loading do not depend on a new random roll.
+
+The first configured use is the Tok'ra symbiote identity:
+
+- the six existing Tok'ra adult careers are declared on `SG1_Culture_Tokra`;
+- the persistent symbiote ID selects one career deterministically;
+- the host's current name and backstories are captured separately at implantation;
+- the same data object already used by implantation and extraction carries both records;
+- only a directly player-controlled Tok'ra exposes the new RP summary.
+
+The framework does not replace the pawn's active backstories or apply skill changes in this phase. Future cultures may configure identity pools without C# changes while the existing slots are sufficient.
+
 ## Boundaries
 
 The framework does not modify:
@@ -103,4 +119,4 @@ No C# change should be required while the existing matcher and rule types expres
 
 ## Future extensions
 
-The same resolved profile may later expose data for scenarios, equipment preferences, incidents, quests, dialogue, debug tools and other systems. Those fields should be added only when at least one real consumer requires them.
+The same resolved profile may later expose data for scenarios, equipment preferences, incidents, quests, dialogue, debug tools and other systems. Persistent identity pools are now an implemented example of this reuse. Those fields should be added only when at least one real consumer requires them.

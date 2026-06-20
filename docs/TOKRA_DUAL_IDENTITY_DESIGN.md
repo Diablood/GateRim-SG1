@@ -1,6 +1,32 @@
-# Tok'ra host / symbiote dual identity — deferred design
+# Tok'ra host / symbiote dual identity — phased design
 
-Status: deferred dedicated milestone. This document records the validated design direction only; no gameplay behavior is implemented by `0.3.8-dev`.
+Status: phase 1 implemented and validated in `0.3.10-dev`. Persistence and player-facing inspection are complete; the personality-switch gizmo and skill-offset logic remain deferred to a later dedicated milestone.
+
+## Phased implementation
+
+### Phase 1 — `0.3.10-dev`
+
+Implemented and validated:
+
+- store the current host name, childhood and adulthood in the existing persistent symbiote data;
+- assign and store a Tok'ra adulthood from the shared cultural profile;
+- preserve the same records through implantation, active-host conversion, save/load, extraction and reimplantation;
+- show both identities in the health description only when the Tok'ra is a directly player-controlled colon;
+- retain the technical transfer history in advanced debug information;
+- do not alter the pawn's active name, active backstories or skills;
+- expose no personality-switch gizmo.
+
+No dedicated Tok'ra childhood set currently exists. Phase 1 therefore stores an optional symbiote childhood field for future use but configures only the six existing adult Tok'ra careers.
+
+### Later phase — personality switching
+
+Still deferred:
+
+- player-only gizmo;
+- active name and displayed-backstory switching;
+- safe shared skill baseline and backstory-only offsets;
+- active-personality persistence;
+- detailed compatibility tests with social, quest and editor interfaces.
 
 ## Purpose
 

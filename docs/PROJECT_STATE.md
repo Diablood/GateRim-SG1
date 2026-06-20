@@ -1,84 +1,75 @@
 # Project state
 
-Current milestone: `0.3.9-dev - Add configurable starter cultural profiles`.
+Current milestone: `0.3.10-dev - Preserve implanted Tok'ra identity`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.8-dev`.
-- Dedicated branch: `feature/cultural-starter-profiles`.
-- Planned final tag: `v0.3.9-dev`.
-- Final local archive revision: `0.3.9-dev-r4`.
+- Functional base tag: `v0.3.9-dev`.
+- Dedicated branch: `feature/tokra-identity-persistence`.
+- Planned final tag: `v0.3.10-dev`.
+- Current local archive revision: `0.3.10-dev-r2`.
 
 ## Milestone goal
 
-Introduce the first reusable Def-driven cultural profiles and consume them from two real systems: cultural names and starting-pawn backstory randomization.
+Preserve and expose the two identities carried by a player-controlled Tok'ra host without yet implementing personality switching.
 
 The milestone:
 
-- centralizes current cultural identification in `CulturalPawnProfileDef` XML profiles;
-- resolves profiles generically by priority from race, xenotype, `PawnKindDef`, faction and generation-context criteria;
-- keeps the existing cultural name pools while removing the hard-coded culture switch from the world-pawn name manager;
-- adds the hidden `ScenPart_CulturalStarterProfiles` to Def-based scenarios without adding Harmony as a dependency;
-- affects only newly generated `PlayerStarter` pawns;
-- gives Jaffa starters a Jaffa childhood and an adulthood drawn from either Goa'uld-aligned or Free Jaffa careers;
-- gives Goa'uld-host starters an off-world-human childhood and an adulthood drawn from either Goa'uld-host or Tok'ra careers;
-- allows ordinary human starters in normal scenarios to keep vanilla backstories while adding the six current Tau'ri / SGC adult careers to the same effective weighted pool as compatible vanilla adult backstories;
-- restricts adults in the `Équipe SG isolée` scenario to the six current Tau'ri / SGC careers while preserving ordinary childhood generation because no dedicated Tau'ri childhood set exists yet;
-- chooses a cultural starter name from the adulthood actually selected for mixed Jaffa and host profiles;
-- adjusts starter skills once by the exact difference between the old and new backstory bonuses;
-- leaves manual edits made after generation untouched;
-- leaves raids, visitors, settlements, incidents, quests, developer-spawned pawns and ordinary world generation unchanged;
-- retains `docs/TESTING_CURRENT.md` as the concise active test record and `docs/TESTING.md` as the historical archive.
+- extends the shared cultural profile schema with configurable persistent-identity childhood and adulthood pools;
+- configures the existing Tok'ra profile with the six current Tok'ra adult careers;
+- assigns one deterministic Tok'ra career to each persistent symbiote identity;
+- stores the host name, host childhood and host adulthood when the symbiote attaches to a host;
+- stores the symbiote name and configured cultural backstories in the existing `GoauldSymbioteData` object;
+- transfers those records unchanged between free symbiote, recent implantation, active host and extraction states;
+- displays both names and both recorded backgrounds in the health description of a directly player-controlled Tok'ra host;
+- retains the previous technical identity report when advanced debug information is enabled;
+- keeps AI-managed Tok'ra, visitors, allies, enemies and uncontrolled quest pawns on the existing classic behavior;
+- does not change the pawn's active name, active backstories, skills, relations, faction, body or equipment;
+- leaves the personality-switch gizmo and backstory-derived skill switching for a later dedicated milestone.
 
 ## Framework implementation
 
-New framework files:
+New framework consumer:
 
-- `Source/GateRimSG1/Culture/CulturalPawnProfileDef.cs`;
-- `Source/GateRimSG1/Culture/CulturalProfileResolver.cs`;
-- `Source/GateRimSG1/Culture/ScenPart_CulturalStarterProfiles.cs`;
-- `1.6/Defs/CulturalProfileDefs/SG1_CulturalProfiles.xml`;
-- `1.6/Defs/ScenPartDefs/SG1_CulturalStarterProfiles.xml`;
-- `1.6/Patches/SG1_CulturalStarterProfiles.xml`;
-- `docs/CULTURAL_FRAMEWORK.md`.
+- `Source/GateRimSG1/Culture/CulturalIdentityUtility.cs` selects a stable persistent backstory from the resolved cultural profile and a saved identity key.
 
-Migrated consumers:
+Extended framework files:
 
-- `GameComponent_CulturalPawnNameManager` now asks the shared resolver for a name group instead of carrying its own culture-specific condition tree;
-- `ScenPart_SGTeamStartingGear` remains responsible only for equipment; Tau'ri starter naming moves to the shared cultural starter part.
+- `Source/GateRimSG1/Culture/CulturalPawnProfileDef.cs` exposes `identityChildhoods` and `identityAdulthoods`;
+- `Source/GateRimSG1/Culture/CulturalProfileResolver.cs` resolves the highest-priority identity profile for a cultural name group;
+- `1.6/Patches/SG1_TokraIdentityProfiles.xml` configures the six current Tok'ra careers without duplicating culture-specific C# conditions.
 
-Initial XML profiles:
+Persistent symbiote files:
 
-- starter Jaffa;
-- starter Goa'uld host;
-- Goa'uld-aligned Jaffa;
-- Free Jaffa;
-- Goa'uld;
-- Tok'ra;
-- ordinary human / optional Tau'ri career;
-- Tau'ri / SGC.
+- `Source/GateRimSG1/Goauld/GoauldSymbioteData.cs` stores host and symbiote backstory references alongside the existing names and host history;
+- `Source/GateRimSG1/Goauld/HediffComp_GoauldSymbiote.cs` exposes the RP summary only for directly player-controlled Tok'ra hosts.
 
-## Compatibility boundary
+## Save migration and compatibility
 
-- No save migration is required.
-- Existing processed-name state is preserved.
-- No existing pawn is renamed or assigned a new backstory.
-- Starter filtering runs only during `PawnGenerationContext.PlayerStarter` generation callbacks.
-- Compatible pawn editors can still replace names and backstories manually after generation because the framework does not validate or reject the final selection.
-- Raids, visitors, settlements, incidents, quests, developer `Spawn pawn` generation and ordinary world pawn generation retain their previous behavior.
-- Custom local or external scenarios that do not originate from a patched `ScenarioDef` may not contain the hidden scenario part; this remains an explicit compatibility boundary for later testing.
-- `0.3.0-dev` remains the save-compatibility baseline.
+- Existing `0.3.0-dev` or later saves remain the compatibility baseline.
+- Existing symbiote IDs and names are retained.
+- On the first load with `0.3.10-dev`, missing Tok'ra career data is generated deterministically from the existing symbiote ID and then saved normally.
+- Missing host backstories are captured from the current host without changing the pawn.
+- Repeated loads do not add skills or replace active backstories.
+- Goa'uld hosts keep their current display and behavior because no Goa'uld persistent-identity pool is configured in this milestone.
+- AI-managed Tok'ra may carry the identity data internally for extraction and later implantation, but receive no new player interface or gizmo.
+- Temporary guests and quest pawns remain excluded because the player-facing summary requires `IsColonistPlayerControlled`.
 
 ## Files changed
 
 - `About/About.xml`;
 - `Source/GateRimSG1/GateRimSG1.csproj`;
-- the new culture framework source and Def files listed above;
-- `Source/GateRimSG1/Names/GameComponent_CulturalPawnNameManager.cs`;
-- `Source/GateRimSG1/Scenarios/ScenPart_SGTeamStartingGear.cs`;
+- `Source/GateRimSG1/Culture/CulturalPawnProfileDef.cs`;
+- `Source/GateRimSG1/Culture/CulturalProfileResolver.cs`;
+- `Source/GateRimSG1/Culture/CulturalIdentityUtility.cs`;
+- `Source/GateRimSG1/Goauld/GoauldSymbioteData.cs`;
+- `Source/GateRimSG1/Goauld/HediffComp_GoauldSymbiote.cs`;
+- `1.6/Patches/SG1_TokraIdentityProfiles.xml`;
+- `Languages/English/Keyed/SG1_TokraDualIdentity.xml`;
+- `Languages/French/Keyed/SG1_TokraDualIdentity.xml`;
 - `docs/CULTURAL_FRAMEWORK.md`;
-- `docs/CULTURAL_BACKSTORIES.md`;
-- `docs/wiki/Cultural-Backstories.md`;
+- `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`;
+- `docs/wiki/Tokra-Dual-Identity.md`;
 - `docs/wiki/Home.md`;
 - `docs/PROJECT_STATE.md`;
 - `docs/ROADMAP.md`;
@@ -88,42 +79,35 @@ Initial XML profiles:
 
 The separate wiki must be synchronized when the milestone is published.
 
-## Validation completed
+## Validation status
 
-Static validation:
+Local build and focused in-game validation completed successfully on `0.3.10-dev-r1`:
 
-- all new XML files parse successfully;
-- all referenced xenotypes, pawn kinds, factions, scenario parts and backstories resolve;
-- eight cultural profiles load without unintended priority ties in the tested cases;
-- metadata versions are `0.3.9-dev` and `0.3.9.0`;
-- no Harmony reference or dependency was added;
-- the archive contains complete files at repository-relative paths and omits `About/ModIcon.png`.
+- metadata versions are `0.3.10-dev` and `0.3.10.0`;
+- the Tok'ra profile patch loads the six current adult careers without XML or cross-reference errors;
+- voluntary implantation preserves the host's active name, backstories and skills;
+- the symbiote name and Tok'ra career remain stable through recent implantation, active-host conversion, save/load, extraction and reimplantation;
+- an older compatible save initializes missing identity data once without later rerolls;
+- the detailed dual-identity summary is exposed only to directly player-controlled Tok'ra colonists;
+- AI-managed Tok'ra keep the classic behavior and interface;
+- Goa'uld implantation, active-host conversion and extraction show no regression;
+- `Player.log` is clean for the tested scope;
+- no Harmony dependency or new pawn component is introduced;
+- `About/ModIcon.png` remains unchanged.
 
-Local functional validation:
-
-- the project rebuild succeeded and `GateRimSG1.dll` reports version `0.3.9.0`;
-- the stranded SG-team scenario consistently assigns one of the six configured SGC adult careers and preserves compatible ordinary childhoods;
-- Jaffa starters use only configured Jaffa childhoods and Goa'uld-aligned or Free Jaffa adult careers;
-- Goa'uld-host starters use only configured off-world-human childhoods and Goa'uld-host or Tok'ra adult careers;
-- mixed profiles select names matching the final adulthood and apply only the expected backstory skill differences;
-- ordinary human starters keep vanilla childhoods and a clear majority of vanilla adult careers, while Tau'ri / SGC careers appear occasionally through the compatible vanilla-weighted pool rather than a fixed percentage;
-- exclusive profiles remain higher priority than the ordinary-human additive profile;
-- manual post-generation name and backstory changes remain untouched in the tested flow;
-- developer-spawned and naturally generated world pawns retain the `0.3.8-dev` behavior;
-- saving, fully quitting and reloading does not reapply naming, backstory selection or skill adjustments;
-- `Player.log` is clean for the tested scope.
-
-The milestone is ready for commit, branch publication, final annotated tag and wiki synchronization.
+The active test record is in `docs/TESTING_CURRENT.md`. No further gameplay change is required before publication.
 
 ## Publication identifiers
 
-- commit: `0.3.9-dev - add configurable starter cultural profiles`;
-- branch: `feature/cultural-starter-profiles`;
-- annotated tag: `v0.3.9-dev`.
+- commit: `0.3.10-dev - preserve implanted Tok'ra identity`;
+- branch: `feature/tokra-identity-persistence`;
+- annotated tag: `v0.3.10-dev`.
 
 ## Next step
 
-After publication, select the next real consumer of the shared cultural framework before extending its schema. The player-controlled Tok'ra dual-identity design remains a separate future milestone in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
+Publish the validated branch, create the final annotated tag `v0.3.10-dev`, synchronize the separate wiki and verify both repositories are clean.
+
+After publication, a separate milestone may prototype the player-only personality-switch gizmo and safe backstory-derived skill offsets described in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
 
 ## Files intentionally removed
 

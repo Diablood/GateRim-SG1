@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraDualIdentity_Summary>Host: {0}\nTok'ra symbiote: {1}\nHost background: {2}\nSymbiote background: {3}</GR_TokraDualIdentity_Summary>
+    <GR_TokraDualIdentity_BackstoryPair>{0}; {1}</GR_TokraDualIdentity_BackstoryPair>
+    <GR_TokraDualIdentity_NotRecorded>not recorded</GR_TokraDualIdentity_NotRecorded>
+</LanguageData>

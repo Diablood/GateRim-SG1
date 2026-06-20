@@ -1,12 +1,15 @@
 using System;
+using GateRimSG1.Culture;
 using GateRimSG1.Names;
+using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
     /// Persistent identity and host-tracking data for one adult Goa'uld
-    /// symbiote. This object is deep-saved inside a HediffComp.
+    /// symbiote. This object is deep-saved inside a HediffComp and transferred
+    /// unchanged between free, implanted and extracted states.
     /// </summary>
     public class GoauldSymbioteData : IExposable
     {
@@ -14,6 +17,10 @@ namespace GateRimSG1.Goauld
         private string symbioteName = string.Empty;
         private string hostName = string.Empty;
         private GoauldSymbioteOrigin origin = GoauldSymbioteOrigin.Goauld;
+        private BackstoryDef hostChildhood;
+        private BackstoryDef hostAdulthood;
+        private BackstoryDef symbioteChildhood;
+        private BackstoryDef symbioteAdulthood;
         private long biologicalAgeTicks;
         private int createdAtTick = -1;
         private int implantationTick = -1;
@@ -25,6 +32,10 @@ namespace GateRimSG1.Goauld
         public string SymbioteName => symbioteName;
         public string HostName => hostName;
         public GoauldSymbioteOrigin Origin => origin;
+        public BackstoryDef HostChildhood => hostChildhood;
+        public BackstoryDef HostAdulthood => hostAdulthood;
+        public BackstoryDef SymbioteChildhood => symbioteChildhood;
+        public BackstoryDef SymbioteAdulthood => symbioteAdulthood;
         public long BiologicalAgeTicks => biologicalAgeTicks;
         public int CreatedAtTick => createdAtTick;
         public int ImplantationTick => implantationTick;
@@ -66,6 +77,8 @@ namespace GateRimSG1.Goauld
                     .GenerateSymbioteNameText(origin);
             }
 
+            EnsureCulturalIdentity();
+
             if (createdAtTick < 0)
             {
                 createdAtTick = currentTick;
@@ -81,6 +94,7 @@ namespace GateRimSG1.Goauld
             }
 
             hostName = host.Name.ToStringFull;
+            CaptureHostBackstories(host, overwriteExisting: false);
         }
 
         public void SetSymbioteName(string value)
@@ -96,20 +110,21 @@ namespace GateRimSG1.Goauld
             EnsureIdentity(currentTick);
 
             string nextHostThingId = host?.ThingID ?? string.Empty;
+            bool hostChanged = currentHostThingId != nextHostThingId;
 
             if (!string.IsNullOrEmpty(currentHostThingId)
-                && currentHostThingId != nextHostThingId)
+                && hostChanged)
             {
                 previousHostThingId = currentHostThingId;
             }
 
             if (host?.Name != null
-                && (string.IsNullOrEmpty(hostName)
-                    || currentHostThingId != nextHostThingId))
+                && (string.IsNullOrEmpty(hostName) || hostChanged))
             {
                 hostName = host.Name.ToStringFull;
             }
 
+            CaptureHostBackstories(host, overwriteExisting: hostChanged);
             currentHostThingId = nextHostThingId;
 
             if (recordImplantationTick && implantationTick < 0)
@@ -147,6 +162,10 @@ namespace GateRimSG1.Goauld
         {
             return $"id={symbioteId}, symbioteName={symbioteName}, "
                 + $"hostName={hostName}, origin={origin}, "
+                + $"hostChildhood={hostChildhood?.defName ?? "<none>"}, "
+                + $"hostAdulthood={hostAdulthood?.defName ?? "<none>"}, "
+                + $"symbioteChildhood={symbioteChildhood?.defName ?? "<none>"}, "
+                + $"symbioteAdulthood={symbioteAdulthood?.defName ?? "<none>"}, "
                 + $"ageTicks={biologicalAgeTicks}, createdAt={createdAtTick}, "
                 + $"implantedAt={implantationTick}, "
                 + $"currentHost={currentHostThingId}, "
@@ -160,12 +179,55 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(ref symbioteName, "symbioteName", string.Empty);
             Scribe_Values.Look(ref hostName, "hostName", string.Empty);
             Scribe_Values.Look(ref origin, "origin", GoauldSymbioteOrigin.Goauld);
+            Scribe_Defs.Look(ref hostChildhood, "hostChildhood");
+            Scribe_Defs.Look(ref hostAdulthood, "hostAdulthood");
+            Scribe_Defs.Look(ref symbioteChildhood, "symbioteChildhood");
+            Scribe_Defs.Look(ref symbioteAdulthood, "symbioteAdulthood");
             Scribe_Values.Look(ref biologicalAgeTicks, "biologicalAgeTicks", 0L);
             Scribe_Values.Look(ref createdAtTick, "createdAtTick", -1);
             Scribe_Values.Look(ref implantationTick, "implantationTick", -1);
             Scribe_Values.Look(ref lastDetachTick, "lastDetachTick", -1);
             Scribe_Values.Look(ref currentHostThingId, "currentHostThingId", string.Empty);
             Scribe_Values.Look(ref previousHostThingId, "previousHostThingId", string.Empty);
+        }
+
+        private void EnsureCulturalIdentity()
+        {
+            CulturalPawnNameGroup nameGroup = origin == GoauldSymbioteOrigin.Tokra
+                ? CulturalPawnNameGroup.Tokra
+                : CulturalPawnNameGroup.Goauld;
+
+            if (symbioteChildhood == null)
+            {
+                symbioteChildhood = CulturalIdentityUtility.ResolveChildhood(
+                    nameGroup,
+                    symbioteId);
+            }
+
+            if (symbioteAdulthood == null)
+            {
+                symbioteAdulthood = CulturalIdentityUtility.ResolveAdulthood(
+                    nameGroup,
+                    symbioteId);
+            }
+        }
+
+        private void CaptureHostBackstories(Pawn host, bool overwriteExisting)
+        {
+            if (host?.story == null)
+            {
+                return;
+            }
+
+            if (overwriteExisting || hostChildhood == null)
+            {
+                hostChildhood = host.story.Childhood;
+            }
+
+            if (overwriteExisting || hostAdulthood == null)
+            {
+                hostAdulthood = host.story.Adulthood;
+            }
         }
     }
 

@@ -2,6 +2,31 @@
 
 > Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
 
+## 0.3.10-dev - Persistance de l'identité Tok'ra implantée
+
+Validation locale terminée sur `r1`. Les tests détaillés et leurs résultats sont conservés dans `docs/TESTING_CURRENT.md`.
+
+Couverture validée :
+
+- chargement des pools d'identité configurés dans le profil Tok'ra ;
+- implantation volontaire sans changement du nom principal, des backstories actives ou des compétences de l'hôte ;
+- affichage du nom de l'hôte, du nom du symbiote et des deux parcours sur un colon Tok'ra contrôlé par le joueur ;
+- transfert intact lors de la conversion entre implantation récente et hôte actif ;
+- migration d'une sauvegarde `0.3.9-dev` sans remplacement de l'identité existante ;
+- sauvegarde, arrêt complet et rechargement sans reroll ;
+- extraction et réimplantation du même symbiote avec conservation de son nom et de sa carrière ;
+- remplacement des seules informations d'hôte lors d'un transfert vers un nouveau colon ;
+- absence du nouveau résumé et de tout gizmo sur les Tok'ra gérés par l'IA ;
+- absence de régression sur les implantations et extractions Goa'uld ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- ne jamais modifier les backstories actives ou les compétences dans la phase de persistance seule ;
+- conserver les données dans l'objet de symbiote déjà transféré entre les états ;
+- ne pas exposer le futur basculement aux visiteurs, alliés, ennemis ou pawns de quête non recrutés ;
+- vérifier extraction et réimplantation à chaque évolution du format d'identité.
+
 
 ## 0.3.9-dev - Profils culturels configurables pour les starters
 

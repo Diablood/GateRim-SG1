@@ -13,23 +13,22 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Profils culturels configurables pour les starters (`0.3.9-dev`)
+### Persistance de l'identité Tok'ra implantée (`0.3.10-dev`)
 
-- [x] Préparer un résolveur culturel commun piloté par des Defs XML.
-- [x] Migrer la résolution des générateurs de noms existants vers les profils communs.
-- [x] Limiter le filtrage à la génération des pawns de départ via un ScenPart caché, sans dépendance Harmony.
-- [x] Configurer les pools Jaffa, hôtes Goa'uld / Tok'ra et Tau'ri / SGC.
-- [x] Autoriser les carrières Tau'ri / SGC sur les starters humains ordinaires sans supprimer les backstories vanilla.
-- [x] Aligner le profil humain additif sur une sélection pondérée par le pool vanilla compatible, sans pourcentage fixe.
-- [x] Vérifier qu'une modification manuelle après génération reste intacte.
-- [x] Vérifier l'absence de régression sur les pawns générés dans le monde.
-- [x] Vérifier sauvegarde, rechargement et absence de second traitement.
-- [ ] Publier la branche `feature/cultural-starter-profiles`, le tag `v0.3.9-dev` et synchroniser le wiki.
+- [x] Étendre les profils culturels avec des pools d'identité persistante configurables en XML.
+- [x] Configurer les six carrières Tok'ra existantes comme parcours possibles du symbiote.
+- [x] Conserver le nom, le parcours et l'historique d'hôtes dans les données déjà transférées avec le symbiote.
+- [x] Capturer le nom et les backstories de l'hôte sans modifier son identité active.
+- [x] Afficher les deux identités uniquement sur les Tok'ra directement contrôlés par le joueur.
+- [x] Conserver le comportement et l'interface classiques pour les Tok'ra gérés par l'IA.
+- [x] Vérifier la migration des sauvegardes, la conversion en hôte actif, l'extraction et la réimplantation.
+- [x] Vérifier qu'aucun nom, aucune backstory active et aucune compétence ne sont modifiés.
+- [ ] Publier la branche `feature/tokra-identity-persistence`, le tag `v0.3.10-dev` et synchroniser le wiki.
 
 ### Étape suivante
 
-- [ ] Déterminer après publication le prochain consommateur réel du framework culturel commun avant d'étendre son schéma.
-- [ ] Conserver le système de double identité Tok'ra dans un jalon séparé selon `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
+- [ ] Prototyper dans un jalon séparé le gizmo de personnalité réservé aux Tok'ra contrôlés par le joueur.
+- [ ] Avant tout basculement, valider une méthode sûre pour appliquer uniquement les écarts de compétences dus aux backstories sans cumul ni perte d'expérience.
 
 ## Présentation du mod et métadonnées
 
@@ -76,7 +75,7 @@ La série `0.3.x` doit construire un framework interne global et réutilisable, 
 - [x] Centraliser une première identification culturelle dans un service commun avec profils configurables en XML.
 - [x] Permettre à un profil de déclarer ses critères d'identification, générateurs de noms, backstories autorisées, priorités et restrictions de scénario.
 - [x] Raisonner en profils culturels plutôt qu'en simples races biologiques afin de couvrir Jaffa soumis ou libres, hôtes Goa'uld ou Tok'ra, Tau'ri / SGC et futurs cas hybrides.
-- [ ] Réutiliser ces profils, lorsque pertinent, pour les noms, backstories, pawns de départ, scénarios, génération de pawns, incidents, quêtes, équipements culturels et outils debug.
+- [ ] Réutiliser ces profils, lorsque pertinent, pour les noms, backstories, pawns de départ, identités persistantes, scénarios, génération de pawns, incidents, quêtes, équipements culturels et outils debug.
 - [x] Garder des interfaces C# stables et étendre le moteur seulement lorsqu'un nouveau besoin réel n'est pas exprimable par les Defs existantes.
 - [x] Éviter la sur-généralisation : une abstraction doit répondre à plusieurs usages réels avant d'être intégrée au noyau commun.
 - [x] Ajouter des diagnostics techniques pour les profils absents, ambigus, contradictoires ou mal configurés.
@@ -85,26 +84,26 @@ La série `0.3.x` doit construire un framework interne global et réutilisable, 
 
 - [x] Premier générateur de noms culturels publié dans `0.3.5-dev` pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
 - [ ] Ajouter les générateurs de noms et les backstories propres aux Asgard, Nox, Unas et autres cultures lors de leur création ou dans un jalon immédiatement suivant.
-- [ ] Implémenter dans un jalon dédié la persistance et l'affichage séparés des identités de l'hôte et du symbiote, selon `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
+- [x] Valider dans `0.3.10-dev` la persistance et l'affichage séparés des identités de l'hôte et du symbiote, selon `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
 - [x] Valider en jeu la refonte `0.3.8-dev` des `52` backstories existantes et de leurs descriptions anglaises et françaises.
 - [x] Valider en jeu les bonus de compétences modérés ajoutés aux backstories dans `0.3.8-dev`.
 - [ ] Organiser une discussion dédiée avant d'étendre le nombre de backstories ; conserver une quantité raisonnable, lisible et maintenable plutôt qu'un catalogue massif.
 - [ ] Vérifier la cohérence entre noms, backstories, factions, marques Jaffa et identités sociales.
 - [x] Migrer les générateurs de noms existants vers la consommation des profils culturels communs sans renommer les pawns déjà traités.
-- [ ] Préparer la distinction hôte / symbiote dans les profils sans imposer prématurément son affichage dans toutes les interfaces.
+- [x] Valider les pools d'identité hôte / symbiote dans les profils sans imposer leur affichage aux pawns gérés par l'IA.
 - [x] Maintenir dans le wiki les tableaux de backstories par culture avec nom, description et bonus de compétences ; toute future backstory doit y être ajoutée dans le même jalon.
 
 ## Identité Tok'ra contrôlée par le joueur
 
 La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`. Elle doit être reprise dans un jalon dédié après audit des mécanismes vanilla et prototype.
 
-- [ ] Conserver durablement le nom et les backstories propres du symbiote après implantation.
-- [ ] Conserver l'identité originale de l'hôte sans renommer ni réécrire rétroactivement son histoire.
+- [x] Valider dans `0.3.10-dev` la conservation durable du nom et des backstories propres du symbiote après implantation.
+- [x] Valider dans `0.3.10-dev` la conservation de l'identité originale de l'hôte sans renommer ni réécrire rétroactivement son histoire.
 - [ ] Réserver le gizmo de basculement aux Tok'ra appartenant au joueur et directement contrôlables.
 - [ ] Laisser les Tok'ra gérés par le jeu dans leur fonctionnement classique, sans gizmo ni changement manuel de personnalité.
 - [ ] Basculer le nom, les backstories affichées et seulement les écarts de compétences dus aux backstories actives.
 - [ ] Garder communs les niveaux et l'expérience acquis pendant la partie, sans perte, duplication ni cumul à chaque basculement.
-- [ ] Afficher en permanence les deux identités dans l'inspection, quelle que soit la personnalité active.
+- [x] Afficher dès `0.3.10-dev` les deux identités dans l'inspection des Tok'ra contrôlés par le joueur, puis conserver cet affichage quelle que soit la personnalité active dans le futur jalon de basculement.
 - [ ] Vérifier sauvegarde, rechargement, mort, extraction, réimplantation, relations, lettres, quêtes et interfaces compatibles.
 - [ ] Décider explicitement du cas des invités ou pawns de quête temporairement contrôlables ; les exclure par défaut tant qu'ils ne rejoignent pas la colonie.
 

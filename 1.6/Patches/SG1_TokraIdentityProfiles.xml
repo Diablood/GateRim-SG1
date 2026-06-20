@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_Tokra"]</xpath>
+        <value>
+            <identityAdulthoods>
+                <li>SG1_Tokra_Infiltrator</li>
+                <li>SG1_Tokra_Medic</li>
+                <li>SG1_Tokra_Diplomat</li>
+                <li>SG1_Tokra_Scout</li>
+                <li>SG1_Tokra_Analyst</li>
+                <li>SG1_Tokra_Courier</li>
+            </identityAdulthoods>
+        </value>
+    </Operation>
+</Patch>

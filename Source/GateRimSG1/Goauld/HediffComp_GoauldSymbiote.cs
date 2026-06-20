@@ -1,11 +1,12 @@
+using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Persists the identity of an adult Goa'uld symbiote while it is carried
-    /// by a host Hediff. Future milestones will transfer the same data object
-    /// between recent implantation, active possession and extraction states.
+    /// Persists one adult symbiote identity while carried by a host Hediff.
+    /// The same data object is transferred between implantation, active-host
+    /// and extraction states.
     /// </summary>
     public class HediffComp_GoauldSymbiote : HediffComp
     {
@@ -62,12 +63,29 @@ namespace GateRimSG1.Goauld
                     return "GR_GoauldSymbioteDataMissing".Translate().ToString();
                 }
 
-                return "GR_GoauldSymbioteDataSummary".Translate(
-                    symbioteData.SymbioteId,
-                    symbioteData.GetOriginLabel(),
-                    symbioteData.ImplantationTick,
-                    DisplayHost(symbioteData.CurrentHostThingId),
-                    DisplayHost(symbioteData.PreviousHostThingId)).ToString();
+                if (CanShowPlayerTokraIdentity())
+                {
+                    string identitySummary = "GR_TokraDualIdentity_Summary".Translate(
+                        DisplayHostName(),
+                        DisplaySymbioteName(),
+                        DisplayBackstories(
+                            symbioteData.HostChildhood,
+                            symbioteData.HostAdulthood),
+                        DisplayBackstories(
+                            symbioteData.SymbioteChildhood,
+                            symbioteData.SymbioteAdulthood)).ToString();
+
+                    if (!GR_Debug.ShowAdvancedInformation)
+                    {
+                        return identitySummary;
+                    }
+
+                    return identitySummary
+                        + "\n\n"
+                        + TechnicalSummary();
+                }
+
+                return TechnicalSummary();
             }
         }
 
@@ -138,6 +156,69 @@ namespace GateRimSG1.Goauld
         public override string CompDebugString()
         {
             return symbioteData?.ToDebugString() ?? "No Goa'uld symbiote data.";
+        }
+
+        private bool CanShowPlayerTokraIdentity()
+        {
+            return symbioteData?.Origin == GoauldSymbioteOrigin.Tokra
+                && Pawn != null
+                && Pawn.IsColonistPlayerControlled;
+        }
+
+        private string TechnicalSummary()
+        {
+            return "GR_GoauldSymbioteDataSummary".Translate(
+                symbioteData.SymbioteId,
+                symbioteData.GetOriginLabel(),
+                symbioteData.ImplantationTick,
+                DisplayHost(symbioteData.CurrentHostThingId),
+                DisplayHost(symbioteData.PreviousHostThingId)).ToString();
+        }
+
+        private string DisplayHostName()
+        {
+            if (!symbioteData.HostName.NullOrEmpty())
+            {
+                return symbioteData.HostName;
+            }
+
+            return Pawn?.Name?.ToStringFull
+                ?? "GR_TokraDualIdentity_NotRecorded".Translate().ToString();
+        }
+
+        private string DisplaySymbioteName()
+        {
+            return symbioteData.SymbioteName.NullOrEmpty()
+                ? "GR_TokraDualIdentity_NotRecorded".Translate().ToString()
+                : symbioteData.SymbioteName;
+        }
+
+        private string DisplayBackstories(
+            BackstoryDef childhood,
+            BackstoryDef adulthood)
+        {
+            string childhoodTitle = childhood?.TitleFor(Pawn.gender);
+            string adulthoodTitle = adulthood?.TitleFor(Pawn.gender);
+
+            if (!childhoodTitle.NullOrEmpty()
+                && !adulthoodTitle.NullOrEmpty())
+            {
+                return "GR_TokraDualIdentity_BackstoryPair".Translate(
+                    childhoodTitle,
+                    adulthoodTitle).ToString();
+            }
+
+            if (!adulthoodTitle.NullOrEmpty())
+            {
+                return adulthoodTitle;
+            }
+
+            if (!childhoodTitle.NullOrEmpty())
+            {
+                return childhoodTitle;
+            }
+
+            return "GR_TokraDualIdentity_NotRecorded".Translate().ToString();
         }
 
         private void EnsureDataInitialized()

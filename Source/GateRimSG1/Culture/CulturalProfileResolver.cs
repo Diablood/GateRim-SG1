@@ -60,6 +60,51 @@ namespace GateRimSG1.Culture
             return selected;
         }
 
+        public static CulturalPawnProfileDef ResolveIdentityProfile(
+            CulturalPawnNameGroup nameGroup)
+        {
+            if (nameGroup == CulturalPawnNameGroup.None)
+            {
+                return null;
+            }
+
+            List<CulturalPawnProfileDef> matches =
+                DefDatabase<CulturalPawnProfileDef>
+                    .AllDefsListForReading
+                    .Where(profile => profile != null
+                        && profile.defaultNameGroup == nameGroup
+                        && profile.HasIdentityBackstories)
+                    .OrderByDescending(profile => profile.priority)
+                    .ThenBy(profile => profile.defName)
+                    .ToList();
+
+            if (matches.Count == 0)
+            {
+                return null;
+            }
+
+            CulturalPawnProfileDef selected = matches[0];
+            List<CulturalPawnProfileDef> tied = matches
+                .Where(profile => profile.priority == selected.priority)
+                .ToList();
+
+            if (tied.Count > 1)
+            {
+                string key = "identity:" + nameGroup + ":" + string.Join(
+                    ",",
+                    tied.Select(profile => profile.defName));
+
+                if (ReportedAmbiguities.Add(key))
+                {
+                    GR_Log.Warning(
+                        $"Ambiguous cultural identity profiles for "
+                        + $"{nameGroup}: {key}. Using {selected.defName}.");
+                }
+            }
+
+            return selected;
+        }
+
         public static CulturalPawnNameGroup ResolveNameGroup(
             Pawn pawn,
             PawnGenerationContext context)

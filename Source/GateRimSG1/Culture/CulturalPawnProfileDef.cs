@@ -22,6 +22,19 @@ namespace GateRimSG1.Culture
             = new List<CulturalNameRule>();
         public List<CulturalStarterRule> starterRules
             = new List<CulturalStarterRule>();
+        public List<BackstoryDef> identityChildhoods
+            = new List<BackstoryDef>();
+        public List<BackstoryDef> identityAdulthoods
+            = new List<BackstoryDef>();
+
+        public bool HasIdentityBackstories
+        {
+            get
+            {
+                return !identityChildhoods.NullOrEmpty()
+                    || !identityAdulthoods.NullOrEmpty();
+            }
+        }
 
         public bool Matches(Pawn pawn, PawnGenerationContext context)
         {
@@ -88,6 +101,28 @@ namespace GateRimSG1.Culture
                         yield return $"{defName} matcher {index} has no "
                             + "race, xenotype, PawnKindDef or faction criterion.";
                     }
+                }
+            }
+
+            foreach (BackstoryDef childhood in
+                identityChildhoods ?? new List<BackstoryDef>())
+            {
+                if (childhood != null
+                    && childhood.slot != BackstorySlot.Childhood)
+                {
+                    yield return $"{defName} uses adulthood "
+                        + $"{childhood.defName} as an identity childhood.";
+                }
+            }
+
+            foreach (BackstoryDef adulthood in
+                identityAdulthoods ?? new List<BackstoryDef>())
+            {
+                if (adulthood != null
+                    && adulthood.slot != BackstorySlot.Adulthood)
+                {
+                    yield return $"{defName} uses childhood "
+                        + $"{adulthood.defName} as an identity adulthood.";
                 }
             }
 

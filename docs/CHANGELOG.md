@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.10-dev - Preserve implanted Tok'ra identity
+
+- Extend the shared cultural profile schema with configurable persistent-identity childhood and adulthood pools.
+- Configure the existing Tok'ra profile with the six current Tok'ra adult careers without adding culture-specific selection branches.
+- Add deterministic identity-backstory selection keyed by the persistent symbiote ID.
+- Store the host name, host childhood and host adulthood alongside the existing symbiote name and host history.
+- Preserve the same symbiote name and Tok'ra career through recent implantation, active-host conversion, save/load, extraction and reimplantation.
+- Display both identities and their recorded backgrounds in the health description of directly player-controlled Tok'ra hosts.
+- Keep AI-managed Tok'ra on the previous classic display and expose no personality-switch gizmo in this milestone.
+- Preserve the pawn's active name, active backstories, skills, relations, faction, body and equipment.
+- Record the later player-only personality-switch prototype as a separate milestone because safe backstory-derived skill offsets still require dedicated validation.
+- Raise the assembly version to `0.3.10.0` and the mod metadata version to `0.3.10-dev`.
+- Validate implantation, active-host conversion, save migration, save/load, extraction, reimplantation, player/AI boundaries, Goa'uld regressions and clean logs in game.
+
 ## 0.3.9-dev - Add configurable starter cultural profiles
 
 - Add reusable `CulturalPawnProfileDef` profiles configured in XML and resolved generically by priority.
