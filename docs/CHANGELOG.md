@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.16-dev - Expand cultural backstory variety
+
+- Add twelve culturally distinct native RimWorld backstories without changing the shared cultural resolver.
+- Add two SGC adult careers for survival preparation and expedition logistics.
+- Add two shared Jaffa childhoods rooted in naquadah mining and Chappa'ai settlement life.
+- Add two Goa'uld-aligned Jaffa careers for Ha'tak boarding and tribute enforcement.
+- Add two Free Jaffa careers for settlement diplomacy and captured-equipment maintenance.
+- Add two ordinary Goa'uld-host careers for naquadah oversight and ship-system maintenance.
+- Add two Tok'ra careers for covert engineering and safehouse coordination.
+- Append the new Defs to the existing starter-profile and cultural-name rules through XML patches only.
+- Preserve the additive vanilla-majority behavior of ordinary human starters and the exclusive SGC adulthood pool of the stranded SG-team scenario.
+- Expand the player-facing wiki catalogue from `58` to `70` entries.
+- Raise the assembly version to `0.3.16.0` and the mod metadata version to `0.3.16-dev`.
+- Validate all twelve French entries, moderate skill bonuses, spawn categories and cultural-profile integration.
+- Validate Jaffa, Goa'uld-host, ordinary-human and stranded-SG-team starters, normal world generation, save/load, Tok'ra switching and a clean `Player.log`.
+- Confirm that the complete expansion requires no post-test C# or Def correction after local revision `r1`.
+
 ## 0.3.15-dev - Add unified cultural identity diagnostics
 
 - Add one read-only technical report for the currently selected pawn.

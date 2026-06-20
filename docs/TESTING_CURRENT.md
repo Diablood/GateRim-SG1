@@ -1,28 +1,32 @@
 # Tests du jalon actif
 
-Jalon : `0.3.15-dev - Add unified cultural identity diagnostics`
+Jalon : `0.3.16-dev - Expand cultural backstory variety`
 
-Branche attendue : `feature/cultural-identity-diagnostics`
+Branche attendue : `feature/cultural-backstory-expansion`
 
-Base attendue : `v0.3.14-dev`
+Base attendue : `v0.3.15-dev`
 
-Version de DLL attendue : `0.3.15.0`
+Révision locale validée : `0.3.16-dev-r1`
 
-Statut : validation fonctionnelle terminée sur `0.3.15-dev-r1` ; aucun correctif supplémentaire requis ; jalon clôturé et publié sous `v0.3.15-dev`.
+Version de DLL attendue : `0.3.16.0`
+
+Statut : validation fonctionnelle terminée sur `0.3.16-dev-r1` ; aucun correctif supplémentaire requis ; jalon clôturé et publié sous `v0.3.16-dev`.
 
 ## Résultat final validé
 
-- Rebuild forcé validé avec la DLL `0.3.15.0`.
-- Chargement du jeu validé sans nouvelle erreur rouge.
-- Rejet traduit validé lorsqu'aucun pawn n'est sélectionné.
-- Rapports validés pour un humain ordinaire, un Jaffa libre, un Jaffa Goa'uld, un hôte Goa'uld et un Tok'ra pré-fusionné.
-- Profils, groupes de noms, backstories, faction, physiologie Jaffa, Prim'ta, marque frontale et identités sociales cohérents avec l'état réel des pawns testés.
-- Basculement de personnalité Tok'ra validé sans changement de l'enregistrement persistant ni reroll des deux identités.
-- Accès identique validé depuis l'action développeur et depuis les options avancées.
-- Masquage complet validé lorsque le mode développeur et l'option avancée sont désactivés.
-- Ouvertures répétées, sauvegarde/recharge et conservation des noms manuels validées sans mutation du pawn.
+- Rebuild forcé validé avec la DLL `0.3.16.0`.
+- Chargement validé sans nouvelle erreur XML, `BackstoryDef`, `skillGains`, patch ou traduction.
+- Les douze titres, descriptions et bonus français correspondent aux Defs et au catalogue wiki.
+- Les deux nouvelles enfances et les quatre nouvelles carrières Jaffa apparaissent dans les pools attendus.
+- Les carrières Jaffa mixtes conservent les groupes de noms `GoauldJaffa` et `FreeJaffa` attendus.
+- Les quatre nouvelles carrières d'hôtes Goa'uld apparaissent avec les groupes `Goauld` et `Tokra` attendus.
+- Le scénario Équipe SG isolée reste limité aux huit carrières SGC, avec des enfances vanilla.
+- Les humains ordinaires conservent une majorité claire de carrières vanilla et leurs noms vanilla.
+- La génération normale du monde, les raids et les identités Jaffa, Goa'uld et Tok'ra ne régressent pas.
+- Sauvegarde/recharge, noms manuels et basculement de personnalité Tok'ra validés sans reroll ni dérive de compétences.
+- Le catalogue wiki contient les `70` entrées et correspond au contenu français en jeu.
 - `Player.log` propre pour le périmètre testé.
-- Décision finale : conserver le rapport comme consommateur strictement en lecture seule des services existants.
+- Décision finale : conserver l'extension entièrement pilotée par XML ; aucun correctif C# ou Def supplémentaire n'est nécessaire.
 
 ## 1. Préparation et chargement
 
@@ -30,11 +34,18 @@ Statut : validation fonctionnelle terminée sur `0.3.15-dev-r1` ; aucun correcti
 2. Créer la branche depuis le tag publié :
 
 ```powershell
-git switch -c feature/cultural-identity-diagnostics v0.3.14-dev
+git switch -c feature/cultural-backstory-expansion v0.3.15-dev
 ```
 
 3. Extraire l'archive `r1` à la racine du dépôt.
-4. Effectuer un rebuild forcé :
+4. Contrôler les changements :
+
+```powershell
+git status --short
+git diff --check
+```
+
+5. Effectuer un rebuild forcé :
 
 ```powershell
 dotnet build .\Source\GateRimSG1\GateRimSG1.csproj `
@@ -42,105 +53,100 @@ dotnet build .\Source\GateRimSG1\GateRimSG1.csproj `
     -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
 ```
 
-5. Vérifier que le build se termine sans erreur.
-6. Vérifier que `1.6/Assemblies/GateRimSG1.dll` porte la version `0.3.15.0`.
+6. Vérifier que `1.6/Assemblies/GateRimSG1.dll` porte la version `0.3.16.0`.
 7. Lancer RimWorld avec GateRim SG-1 et Biotech.
-8. Attendre le menu principal et vérifier l'absence d'erreur rouge.
+8. Attendre le menu principal et vérifier l'absence d'erreur rouge, notamment pour :
+   - `BackstoryDef` ;
+   - `skillGains` ;
+   - `PatchOperationAdd` ;
+   - `CulturalPawnProfileDef` ;
+   - traduction DefInjected.
 
-## 2. Accès développeur et absence de sélection
+## 2. Catalogue et traduction française
 
-1. Charger une carte et activer le mode développeur RimWorld.
-2. Ne sélectionner aucun pawn.
-3. Ouvrir `Debug actions menu` → `GateRim SG-1` → `Cultural identity: inspect selected pawn`.
-4. Vérifier qu'un message de rejet traduit demande de sélectionner un pawn.
-5. Vérifier qu'aucune exception n'apparaît dans le journal.
+1. Passer le jeu en français.
+2. Vérifier que les douze nouvelles entrées peuvent être observées pendant les tests suivants et qu'elles affichent un titre, une description et les bonus attendus :
+   - spécialiste de survie du SGC ;
+   - quartier-maître du SGC ;
+   - enfant des mines de naquadah ;
+   - messager d'une colonie du Chappa'ai ;
+   - guerrier d'abordage de Ha'tak ;
+   - collecteur de tribut Goa'uld ;
+   - émissaire d'une colonie Jaffa libre ;
+   - armurier Jaffa libre ;
+   - contremaître Goa'uld du naquadah ;
+   - gardien des systèmes de vaisseau Goa'uld ;
+   - sapeur Tok'ra ;
+   - coordinateur de refuge Tok'ra.
+3. Vérifier qu'aucune balise, clé de traduction ou formulation technique n'est visible pour le joueur.
+4. Vérifier que les bonus restent modérés et ne créent ni passion, ni trait, ni incapacité de travail.
 
-## 3. Humain ordinaire
+## 3. Starter Jaffa
 
-1. Sélectionner un colon humain ordinaire sans symbiote ni physiologie Jaffa.
-2. Ouvrir le rapport par l'action développeur.
-3. Vérifier que le rapport correspond au pawn pour :
-   - nom et `ThingID` ;
-   - race, xenotype, `PawnKindDef` et faction ;
-   - enfance et âge adulte actifs.
-4. Vérifier que les indicateurs Jaffa, Goa'uld et Tok'ra sont faux.
-5. Vérifier que la marque frontale et les données de symbiote indiquent `<none>`.
-6. Vérifier que les profils `NonPlayer` et `PlayerStarter` sont affichés séparément, même lorsqu'aucun profil ne correspond.
+1. Démarrer un scénario permettant de randomiser un pawn de départ avec le xenotype `SG1_Jaffa`.
+2. Effectuer au moins cinquante randomisations réparties sur plusieurs candidats.
+3. Vérifier que les deux nouvelles enfances peuvent apparaître avec les huit anciennes.
+4. Vérifier que les quatre nouvelles carrières adultes peuvent apparaître avec les seize anciennes.
+5. Pour chaque nouvelle carrière adulte observée, ouvrir le diagnostic culturel de `0.3.15-dev` et vérifier le groupe de noms :
+   - guerrier d'abordage et collecteur de tribut → `GoauldJaffa` ;
+   - émissaire et armurier → `FreeJaffa`.
+6. Vérifier qu'une sélection manuelle effectuée ensuite par un éditeur de pawns compatible n'est pas remplacée.
 
-## 4. Jaffa libre
+## 4. Starter hôte Goa'uld
 
-1. Générer un Jaffa libre avec `Debug actions menu` → `Spawn pawn` et un `PawnKindDef` GateRim SG-1 approprié.
-2. Attendre la fin de son initialisation, puis le sélectionner.
-3. Ouvrir le rapport.
-4. Vérifier :
-   - physiologie Jaffa compatible : `True` ;
-   - profil et groupe de noms cohérents avec les Jaffa libres ;
-   - identité sociale `Free Jaffa` : `True` ;
-   - identité `Goa'uld-domain Jaffa` : `False`, sauf si le pawn a été volontairement replacé dans une faction Goa'uld pour un test complémentaire ;
-   - état de Prim'ta et marque frontale identiques à l'état réellement généré.
+1. Randomiser un pawn de départ avec le xenotype `SG1_GoauldHost`.
+2. Effectuer au moins cinquante randomisations.
+3. Vérifier que les quatre nouvelles carrières adultes apparaissent dans le pool existant.
+4. Contrôler avec le diagnostic culturel :
+   - contremaître du naquadah et gardien de systèmes → groupe `Goauld` ;
+   - sapeur et coordinateur de refuge → groupe `Tokra`.
+5. Vérifier que les enfances restent limitées aux six enfances humaines hors-monde existantes.
+6. Vérifier que les noms sont cohérents dès l'écran de sélection et restent stables au lancement de la partie.
 
-## 5. Jaffa Goa'uld
+## 5. Scénario Équipe SG isolée
 
-1. Générer un guerrier ou garde Jaffa Goa'uld.
-2. Ouvrir le rapport après initialisation.
-3. Vérifier :
-   - physiologie Jaffa compatible : `True` ;
-   - profil et groupe de noms cohérents avec les Jaffa Goa'uld ;
-   - faction et `PawnKindDef` exacts ;
-   - Prim'ta et marque frontale identiques à l'inspection du pawn ;
-   - indicateurs `Goa'uld-domain Jaffa` et `Marked Jaffa` cohérents avec la faction et la marque réellement présentes.
-4. Si un Grand Maître allié de la même faction est placé à moins de 12 cases, vérifier que `Nearby System Lord` devient `True`, puis redevient `False` hors de portée.
+1. Lancer le scénario **Équipe SG isolée**.
+2. Randomiser les quatre candidats plusieurs fois.
+3. Vérifier que les huit carrières SGC sont désormais possibles : les six anciennes, spécialiste de survie et quartier-maître.
+4. Vérifier qu'aucune carrière vanilla ou d'une autre culture n'est attribuée comme âge adulte.
+5. Vérifier que les enfances restent vanilla, conformément au profil actuel.
+6. Modifier manuellement au moins un nom, lancer la partie et vérifier qu'il reste inchangé.
 
-## 6. Hôte Goa'uld
+## 6. Humains ordinaires dans un scénario normal
 
-1. Générer un hôte Goa'uld actif.
-2. Ouvrir le rapport.
-3. Vérifier :
-   - profil culturel et groupe de noms Goa'uld cohérents ;
-   - `Active Goa'uld host` : `True` ;
-   - `Active Tok'ra host` : `False` ;
-   - Hediff de symbiote et ligne `Data` présents ;
-   - origine, noms, backstories et source d'identité de la ligne technique cohérents avec l'inspection du pawn.
-4. Pour un Grand Maître, vérifier également `System Lord host`.
+1. Lancer un scénario vanilla ou moddé ordinaire avec des starters humains.
+2. Effectuer un ensemble suffisamment large de randomisations pour observer plusieurs carrières vanilla et, occasionnellement, des carrières SGC.
+3. Vérifier que les deux nouvelles carrières SGC rejoignent le pool pondéré existant sans remplacer systématiquement les carrières vanilla.
+4. Vérifier que les backstories Tau'ri / SGC ne deviennent pas la majorité évidente des résultats.
+5. Vérifier qu'un humain ordinaire conserve son nom vanilla et n'est pas renommé par le profil additif.
 
-## 7. Tok'ra pré-fusionné et personnalité active
+## 7. Génération normale du monde
 
-1. Générer `SG1_TokraVoluntaryHost`.
-2. Noter le nom de l'hôte, le nom du symbiote, les backstories et la personnalité active.
-3. Ouvrir le rapport.
-4. Vérifier :
-   - profil culturel et groupe de noms Tok'ra cohérents ;
-   - `Active Tok'ra host` : `True` ;
-   - `Active Goa'uld host` : `False` ;
-   - ligne de données persistantes présente avec deux identités distinctes ;
-   - `hostIdentitySource` et `generatedHostOrigin` cohérents avec un Tok'ra généré déjà fusionné.
-5. Basculer vers l'autre personnalité.
-6. Rouvrir le rapport et vérifier :
-   - nom et backstories actifs mis à jour ;
-   - même identifiant de symbiote ;
-   - mêmes identités d'hôte et de symbiote stockées ;
-   - personnalité active mise à jour ;
-   - aucun reroll ni changement de faction, race ou `PawnKindDef`.
+1. Utiliser `Debug actions menu` → `Spawn pawn` avec des PawnKinds représentatifs :
+   - Jaffa Goa'uld ;
+   - Jaffa libre ;
+   - hôte Goa'uld ;
+   - `SG1_TokraVoluntaryHost`.
+2. Générer également un raid Goa'uld et, si disponible, des visiteurs ou habitants de colonie Free Jaffa.
+3. Vérifier que les spawn categories continuent de produire des parcours adaptés à la culture.
+4. Vérifier que les nouveaux parcours peuvent apparaître naturellement sans forcer un profil de starter.
+5. Vérifier que les noms culturels, Prim'ta, marques Jaffa et identités Tok'ra ne régressent pas.
 
-## 8. Accès depuis les options du mod
+## 8. Sauvegarde et rechargement
 
-1. Sélectionner un pawn de référence.
-2. Ouvrir `Options` → `Mod settings` → `GateRim SG-1`.
-3. Avec le mode développeur actif, vérifier la présence du bloc de diagnostic culturel et du bouton `Inspecter le pawn sélectionné`.
-4. Cliquer sur le bouton et vérifier qu'il ouvre le même rapport que l'action développeur.
-5. Désactiver le mode développeur, activer l'option avancée GateRim SG-1 et vérifier que le bouton reste accessible.
-6. Désactiver ensuite l'option avancée et vérifier que les outils techniques disparaissent des paramètres.
+1. Conserver au moins quatre pawns portant de nouvelles backstories, dont un Jaffa et un Tok'ra.
+2. Noter les noms, enfances, âges adultes et niveaux de compétences visibles.
+3. Sauvegarder, quitter complètement le jeu et recharger.
+4. Vérifier que les backstories, noms et bonus restent identiques.
+5. Pour un Tok'ra contrôlé, basculer la personnalité avant et après rechargement et vérifier l'absence de cumul ou de perte de compétences.
+6. Vérifier qu'aucun pawn existant d'une ancienne sauvegarde n'est reroll ou renommé.
 
-## 9. Sauvegarde, rechargement et non-régression
+## 9. Wiki et journal final
 
-1. Sauvegarder avec au moins un Jaffa et un Tok'ra déjà inspectés.
-2. Recharger la sauvegarde.
-3. Réouvrir leurs rapports.
-4. Vérifier que les rapports restent cohérents et qu'aucune donnée n'a été créée ou modifiée par l'inspection.
-5. Vérifier qu'un pawn renommé manuellement conserve son nom.
-6. Vérifier qu'aucune backstory, faction, marque, Prim'ta ou identité de symbiote n'a changé après ouverture répétée du rapport.
-7. Contrôler `Player.log` : aucune erreur rouge, aucune exception liée au diagnostic et aucun avertissement nouveau inexpliqué.
+1. Vérifier que `docs/wiki/Cultural-Backstories.md` annonce `70` histoires et contient les douze nouvelles lignes dans les sections correspondantes.
+2. Vérifier que les titres, descriptions et bonus du wiki correspondent exactement au contenu français en jeu.
+3. Fermer ou mettre en pause le jeu et contrôler `Player.log`.
 
 ## Critère de validation
 
-Critère atteint : le même rapport central reproduit fidèlement l'état fourni par les services culturels, sociaux, Jaffa et symbiotes pour tous les cas ciblés, tout en restant strictement en lecture seule et masqué hors des accès techniques autorisés.
+Critère atteint : les douze backstories sont chargées, traduites, culturellement filtrées et persistantes ; les profils de départ conservent leurs règles de noms ; les humains ordinaires gardent une majorité de carrières vanilla ; et aucune erreur nouvelle n'apparaît dans `Player.log`.

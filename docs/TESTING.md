@@ -1,5 +1,32 @@
 # Tests
 
+## 0.3.16-dev - Extension mesurée des backstories culturelles
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.16-dev`. Aucun correctif C# ou Def supplémentaire n'a été nécessaire après la matrice complète.
+
+Couverture validée :
+
+- rebuild forcé et DLL `0.3.16.0` ;
+- chargement sans nouvelle erreur XML, BackstoryDef, `skillGains`, patch ou traduction ;
+- douze titres, descriptions et bonus français conformes aux Defs et au wiki ;
+- nouveaux pools d'enfances et de carrières Jaffa, avec groupes de noms `GoauldJaffa` et `FreeJaffa` cohérents ;
+- nouvelles carrières d'hôtes Goa'uld avec groupes `Goauld` et `Tokra` cohérents ;
+- huit carrières SGC exclusives dans le scénario Équipe SG isolée ;
+- intégration additive des carrières SGC chez les humains ordinaires sans dépasser la majorité vanilla ;
+- génération représentative de pawns, raids et identités culturelles sans régression ;
+- sauvegarde/recharge, noms manuels et basculement Tok'ra sans reroll ni dérive de compétences ;
+- catalogue wiki complet de `70` backstories ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- étendre les catalogues existants par Defs et patches XML tant que le schéma actuel exprime correctement le besoin ;
+- conserver des bonus modérés sans imposer traits, passions, incapacités ou multiplicateurs directs ;
+- maintenir la cohérence entre les pools mixtes de backstories et leurs règles de noms culturels ;
+- préserver la majorité vanilla du profil humain additif et l'exclusivité SGC du scénario dédié ;
+- mettre à jour le tableau wiki correspondant dans le même jalon que toute modification de backstory ;
+- ne pas ajouter de backstories Asgard, Nox, Unas ou d'une autre culture avant que cette culture existe réellement dans le mod.
+
 ## 0.3.15-dev - Diagnostic unifié de l'identité culturelle
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.15-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire après la matrice complète.
@@ -2217,3 +2244,19 @@ Death, corpse, grave and resurrection remain a later optional compatibility audi
 
 An additional developer spawn test with `SG1_TokraVoluntaryHost` exposed a separate generation gap: a Tok'ra created already fused has no historical host identity to capture, so the stored host and symbiote names may be identical. This is deferred to a dedicated milestone using an explicit identity-source marker and configurable weighted host-origin profiles. Real implantation flows must remain unchanged.
 
+
+# 0.3.16-dev - Cultural backstory variety expansion
+
+The concise active checklist is maintained in `docs/TESTING_CURRENT.md`. The milestone must validate:
+
+- twelve new native `BackstoryDef` entries and their French DefInjected text;
+- moderate skill bonuses and correct childhood/adulthood slots;
+- two additional SGC careers in ordinary-human additive randomization and the stranded SG-team scenario;
+- two additional shared Jaffa childhoods;
+- correct Goa'uld Jaffa and Free Jaffa name-group selection for four new Jaffa adult careers;
+- correct Goa'uld and Tok'ra name-group selection for four new host adult careers;
+- unchanged vanilla-majority behavior for ordinary human starters;
+- unchanged normal world-pawn generation boundaries;
+- save/load and Tok'ra active-identity skill-offset compatibility;
+- complete wiki catalogue synchronization;
+- clean `Player.log`.

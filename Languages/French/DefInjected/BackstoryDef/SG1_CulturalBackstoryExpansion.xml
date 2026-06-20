@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TauriSGC_SurvivalSpecialist.title>spécialiste de survie du SGC</SG1_TauriSGC_SurvivalSpecialist.title>
+    <SG1_TauriSGC_SurvivalSpecialist.titleShort>spécialiste de survie</SG1_TauriSGC_SurvivalSpecialist.titleShort>
+    <SG1_TauriSGC_SurvivalSpecialist.description>Après avoir rejoint le SGC, ce spécialiste a préparé les équipes d'expédition aux climats hostiles, aux ruptures de ravitaillement et aux longues attentes avant extraction. Lire un terrain inconnu, gérer les animaux disponibles et défendre un camp isolé relevaient d'une même discipline de survie.</SG1_TauriSGC_SurvivalSpecialist.description>
+
+    <SG1_TauriSGC_Quartermaster.title>quartier-maître du SGC</SG1_TauriSGC_Quartermaster.title>
+    <SG1_TauriSGC_Quartermaster.titleShort>quartier-maître</SG1_TauriSGC_Quartermaster.titleShort>
+    <SG1_TauriSGC_Quartermaster.description>Ce quartier-maître maintenait les équipes SG approvisionnées en armes, pièces de rechange et matériel de terrain, alors que chaque kilogramme envoyé à travers la Porte comptait. Il a appris à réparer l'équipement endommagé, improviser des réserves et négocier les priorités entre les missions.</SG1_TauriSGC_Quartermaster.description>
+
+    <SG1_Jaffa_NaquadahMineChild.title>enfant des mines de naquadah</SG1_Jaffa_NaquadahMineChild.title>
+    <SG1_Jaffa_NaquadahMineChild.titleShort>enfant des mines</SG1_Jaffa_NaquadahMineChild.titleShort>
+    <SG1_Jaffa_NaquadahMineChild.description>Élevé près d'une mine de naquadah, cet enfant transportait des outils, triait le minerai et apprenait quels tunnels étaient assez sûrs pour être empruntés. La poussière, les soutènements instables et les quotas stricts lui ont très tôt enseigné le respect de la roche et des constructions solides.</SG1_Jaffa_NaquadahMineChild.description>
+
+    <SG1_Jaffa_GateSettlementRunner.title>messager d'une colonie du Chappa'ai</SG1_Jaffa_GateSettlementRunner.title>
+    <SG1_Jaffa_GateSettlementRunner.titleShort>messager du Chappa'ai</SG1_Jaffa_GateSettlementRunner.titleShort>
+    <SG1_Jaffa_GateSettlementRunner.description>Cet enfant transportait messages et petites fournitures dans une colonie bâtie autour du Chappa'ai. Les gardes, marchands et voyageurs lui ont appris à comprendre rapidement les étrangers, mener les animaux de bât et retenir les récits attachés aux mondes lointains.</SG1_Jaffa_GateSettlementRunner.description>
+
+    <SG1_GoauldJaffa_HatakBoardingWarrior.title>guerrier d'abordage de Ha'tak</SG1_GoauldJaffa_HatakBoardingWarrior.title>
+    <SG1_GoauldJaffa_HatakBoardingWarrior.titleShort>guerrier d'abordage</SG1_GoauldJaffa_HatakBoardingWarrior.titleShort>
+    <SG1_GoauldJaffa_HatakBoardingWarrior.description>Ce Jaffa a combattu dans les couloirs étroits des Ha'tak lors d'abordages et de brèches de sécurité internes. Les espaces confinés exigeaient un corps à corps décisif, des tirs maîtrisés et assez de sens technique pour forcer une porte ou sécuriser un compartiment endommagé.</SG1_GoauldJaffa_HatakBoardingWarrior.description>
+
+    <SG1_GoauldJaffa_TributeCollector.title>collecteur de tribut Goa'uld</SG1_GoauldJaffa_TributeCollector.title>
+    <SG1_GoauldJaffa_TributeCollector.titleShort>collecteur de tribut</SG1_GoauldJaffa_TributeCollector.titleShort>
+    <SG1_GoauldJaffa_TributeCollector.description>Ce Jaffa accompagnait les dignitaires chargés de recueillir le tribut dans les villages et les colonies éloignées. Faire respecter les quotas sans provoquer de révolte ouverte exigeait intimidation, violence mesurée et mémoire attentive des promesses, pénuries et résistances dissimulées.</SG1_GoauldJaffa_TributeCollector.description>
+
+    <SG1_FreeJaffa_SettlementEnvoy.title>émissaire d'une colonie Jaffa libre</SG1_FreeJaffa_SettlementEnvoy.title>
+    <SG1_FreeJaffa_SettlementEnvoy.titleShort>émissaire Jaffa libre</SG1_FreeJaffa_SettlementEnvoy.titleShort>
+    <SG1_FreeJaffa_SettlementEnvoy.description>Ce Jaffa voyageait entre les colonies libres pour porter des propositions, régler les différends et préserver des alliances fragiles. Il a appris à parler avec d'anciens rivaux, reconnaître les compromis utiles et rester dangereux lorsque les négociations échouaient.</SG1_FreeJaffa_SettlementEnvoy.description>
+
+    <SG1_FreeJaffa_Armorer.title>armurier Jaffa libre</SG1_FreeJaffa_Armorer.title>
+    <SG1_FreeJaffa_Armorer.titleShort>armurier Jaffa libre</SG1_FreeJaffa_Armorer.titleShort>
+    <SG1_FreeJaffa_Armorer.description>Ce Jaffa entretenait les armures capturées, les bâtons Ma'Tok et les outils civils d'une communauté qui ne pouvait plus compter sur les lignes de ravitaillement Goa'uld. Les pièces rares lui ont appris à reconstruire soigneusement le matériel et à adapter d'anciennes compétences militaires à la vie de la colonie.</SG1_FreeJaffa_Armorer.description>
+
+    <SG1_GoauldHost_NaquadahOverseer.title>contremaître Goa'uld du naquadah</SG1_GoauldHost_NaquadahOverseer.title>
+    <SG1_GoauldHost_NaquadahOverseer.titleShort>contremaître du naquadah</SG1_GoauldHost_NaquadahOverseer.titleShort>
+    <SG1_GoauldHost_NaquadahOverseer.description>Ce Goa'uld supervisait l'extraction du naquadah, les quotas de travail et le transport du minerai depuis des galeries dangereuses. Il a appris à estimer la valeur d'une mine, contrôler des ouvriers épuisés et dissimuler les pénuries avant qu'un supérieur ne les découvre.</SG1_GoauldHost_NaquadahOverseer.description>
+
+    <SG1_GoauldHost_ShipSystemsCustodian.title>gardien des systèmes de vaisseau Goa'uld</SG1_GoauldHost_ShipSystemsCustodian.title>
+    <SG1_GoauldHost_ShipSystemsCustodian.titleShort>gardien de systèmes</SG1_GoauldHost_ShipSystemsCustodian.titleShort>
+    <SG1_GoauldHost_ShipSystemsCustodian.description>Ce Goa'uld entretenait des systèmes de vaisseau dont les principes n'étaient que partiellement compris par les serviteurs chargés de les utiliser. Des années de réparations, de procédures recopiées et d'improvisations dangereuses l'ont rendu techniquement compétent et farouchement protecteur des connaissances réservées.</SG1_GoauldHost_ShipSystemsCustodian.description>
+
+    <SG1_Tokra_Sapper.title>sapeur Tok'ra</SG1_Tokra_Sapper.title>
+    <SG1_Tokra_Sapper.titleShort>sapeur Tok'ra</SG1_Tokra_Sapper.titleShort>
+    <SG1_Tokra_Sapper.description>Ce Tok'ra préparait des approches dissimulées, fragilisait des positions fortifiées et sabotait des infrastructures sans exposer le reste de la résistance. Son travail combinait construction patiente, connaissance des tunnels et maîtrise suffisante des armes pour fuir une opération compromise.</SG1_Tokra_Sapper.description>
+
+    <SG1_Tokra_SafehouseCoordinator.title>coordinateur de refuge Tok'ra</SG1_Tokra_SafehouseCoordinator.title>
+    <SG1_Tokra_SafehouseCoordinator.titleShort>coordinateur de refuge</SG1_Tokra_SafehouseCoordinator.titleShort>
+    <SG1_Tokra_SafehouseCoordinator.description>Ce Tok'ra approvisionnait les cellules dissimulées, organisait les identités de couverture et décidait quand un refuge était devenu trop dangereux. Concilier les personnes, le renseignement et les soins d'urgence exigeait discrétion, planification et calme autorité.</SG1_Tokra_SafehouseCoordinator.description>
+</LanguageData>

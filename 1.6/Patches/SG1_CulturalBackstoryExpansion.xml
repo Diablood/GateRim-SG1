@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterJaffa"]/starterRules/li/childhoods</xpath>
+        <value>
+            <li>SG1_Jaffa_NaquadahMineChild</li>
+            <li>SG1_Jaffa_GateSettlementRunner</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterJaffa"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_GoauldJaffa_HatakBoardingWarrior</li>
+            <li>SG1_GoauldJaffa_TributeCollector</li>
+            <li>SG1_FreeJaffa_SettlementEnvoy</li>
+            <li>SG1_FreeJaffa_Armorer</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterJaffa"]/nameRules/li[nameGroup="GoauldJaffa"]/adulthoods</xpath>
+        <value>
+            <li>SG1_GoauldJaffa_HatakBoardingWarrior</li>
+            <li>SG1_GoauldJaffa_TributeCollector</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterJaffa"]/nameRules/li[nameGroup="FreeJaffa"]/adulthoods</xpath>
+        <value>
+            <li>SG1_FreeJaffa_SettlementEnvoy</li>
+            <li>SG1_FreeJaffa_Armorer</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterGoauldHost"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_GoauldHost_NaquadahOverseer</li>
+            <li>SG1_GoauldHost_ShipSystemsCustodian</li>
+            <li>SG1_Tokra_Sapper</li>
+            <li>SG1_Tokra_SafehouseCoordinator</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterGoauldHost"]/nameRules/li[nameGroup="Goauld"]/adulthoods</xpath>
+        <value>
+            <li>SG1_GoauldHost_NaquadahOverseer</li>
+            <li>SG1_GoauldHost_ShipSystemsCustodian</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterGoauldHost"]/nameRules/li[nameGroup="Tokra"]/adulthoods</xpath>
+        <value>
+            <li>SG1_Tokra_Sapper</li>
+            <li>SG1_Tokra_SafehouseCoordinator</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterHumanTauri"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_TauriSGC_SurvivalSpecialist</li>
+            <li>SG1_TauriSGC_Quartermaster</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_TauriSGC"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_TauriSGC_SurvivalSpecialist</li>
+            <li>SG1_TauriSGC_Quartermaster</li>
+        </value>
+    </Operation>
+</Patch>

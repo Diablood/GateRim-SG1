@@ -13,7 +13,29 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Diagnostic unifié de l'identité culturelle (`0.3.15-dev`)
+### Extension mesurée des backstories culturelles (`0.3.16-dev`)
+
+- [x] Partir du tag publié `v0.3.15-dev` sur la branche dédiée `feature/cultural-backstory-expansion`.
+- [x] Limiter l'extension à douze backstories afin de préserver la lisibilité et la cohérence culturelle.
+- [x] Ajouter deux carrières SGC, deux enfances Jaffa, deux carrières Jaffa Goa'uld, deux carrières Jaffa libres, deux carrières d'hôte Goa'uld et deux carrières Tok'ra.
+- [x] Conserver des bonus de compétences modérés sans traits, passions, incapacités ni multiplicateurs directs.
+- [x] Intégrer les nouvelles entrées aux profils de départ et aux règles de noms existants uniquement par XML.
+- [x] Mettre à jour le catalogue wiki complet dans le même jalon.
+- [x] Valider le rebuild `0.3.16.0` et le chargement XML sans erreur.
+- [x] Valider les douze textes français, les bonus, les catégories et les profils culturels.
+- [x] Valider la randomisation des starters Jaffa, hôtes Goa'uld, humains ordinaires et du scénario Équipe SG isolée.
+- [x] Valider la génération normale du monde, la sauvegarde/recharge et un `Player.log` propre.
+- [x] Publier la branche, le tag final unique `v0.3.16-dev` et synchroniser le wiki séparé.
+
+Ce jalon ne crée aucune race, faction ou nouvelle branche C#. Il exploite le framework culturel existant et conserve les futures backstories Asgard, Nox et Unas pour leurs propres jalons de contenu.
+
+La matrice complète a été validée sur la révision locale `r1` : les douze entrées sont chargées et traduites, les profils mixtes conservent les groupes de noms attendus, les humains ordinaires gardent une majorité de carrières vanilla, la génération normale et la sauvegarde restent stables, et `Player.log` est propre. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
+
+Le catalogue wiki contient désormais les `70` backstories et doit être synchronisé avec le dépôt wiki séparé lors de la publication finale.
+
+Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.16-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
+
+### Jalon précédent — diagnostic unifié de l'identité culturelle (`0.3.15-dev`)
 
 - [x] Partir du tag publié `v0.3.14-dev` sur la branche dédiée `feature/cultural-identity-diagnostics`.
 - [x] Auditer les services existants avant d'ajouter un nouvel outil.
@@ -32,7 +54,6 @@ Le rapport central a reproduit fidèlement les valeurs des services existants po
 
 Ce jalon clôt le point durable de cohérence entre noms, backstories, factions, marques Jaffa et identités sociales. Les futurs systèmes culturels pourront ajouter une section concise au rapport uniquement lorsqu'ils disposent d'un service autoritatif réel à auditer.
 
-Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.15-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
 
 ### Jalon précédent — mort, cadavre, tombe et résurrection des Tok'ra (`0.3.14-dev`)
 
@@ -80,7 +101,7 @@ Le cycle complet a été validé sur la révision locale `r1` sans correctif C# 
 ### Après validation
 
 - [ ] Tester les interfaces de mods de préparation ou de gestion de pawns lorsqu'une incompatibilité concrète est signalée.
-- [ ] Reprendre l'extension générale du catalogue de backstories dans une discussion dédiée, avec une quantité raisonnable et culturellement cohérente.
+- [x] Reprendre l'extension générale du catalogue de backstories dans un jalon dédié, avec une première vague raisonnable et culturellement cohérente (`0.3.16-dev`).
 
 ## Présentation du mod et métadonnées
 

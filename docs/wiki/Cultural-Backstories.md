@@ -2,11 +2,11 @@
 
 > Statut : Base culturelle enrichie
 >
-> Version documentée : `0.3.13-dev`
+> Version documentée : `0.3.16-dev`
 
 GateRim SG-1 utilise des histoires culturelles natives de RimWorld sans dépendre de Humanoid Alien Races.
 
-Le catalogue compte désormais `58` histoires. Les `52` histoires enrichies en `0.3.8-dev` restent inchangées ; six carrières adultes humaines hors-monde ont été ajoutées en `0.3.13-dev` afin de créer une identité d'hôte complète pour les Tok'ra générés déjà fusionnés. Chacune explique à la fois l'origine du personnage et les habitudes pratiques acquises au cours de sa vie.
+Le catalogue compte désormais `70` histoires. Aux `58` parcours déjà présents s'ajoutent douze histoires réparties entre le SGC, les enfances Jaffa, les Jaffa au service des Goa'uld, les Jaffa libres, les hôtes Goa'uld et les Tok'ra. Cette extension reste volontairement mesurée afin de renforcer la variété sans diluer l'identité de chaque culture.
 
 ## Effets en jeu
 
@@ -24,8 +24,8 @@ Le bouton de randomisation vanilla applique désormais des profils culturels uni
 
 - un starter **Jaffa** reçoit une enfance Jaffa et une carrière adulte Jaffa Goa'uld ou Jaffa libre ;
 - un starter **hôte Goa'uld** reçoit une enfance humaine hors-monde et une carrière adulte Goa'uld ou Tok'ra ;
-- dans un scénario normal, un starter humain conserve l'accès aux enfances et carrières vanilla, tandis que les six parcours Tau'ri / SGC rejoignent le même ensemble pondéré de carrières adultes compatibles ;
-- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux six parcours SGC actuels. Les enfances restent vanilla tant qu'un ensemble Tau'ri dédié n'a pas été conçu.
+- dans un scénario normal, un starter humain conserve l'accès aux enfances et carrières vanilla, tandis que les huit parcours Tau'ri / SGC rejoignent le même ensemble pondéré de carrières adultes compatibles ;
+- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux huit parcours SGC actuels. Les enfances restent vanilla tant qu'un ensemble Tau'ri dédié n'a pas été conçu.
 
 Les pawns générés par les raids, visiteurs, colonies, incidents et quêtes conservent leurs filtres habituels. Une sélection manuelle réalisée après la génération par un éditeur de pawns compatible reste libre.
 
@@ -46,6 +46,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | linguiste du SGC | Ce spécialiste a étudié les langues, les mythes et les inscriptions anciennes avant de rejoindre des missions où une mauvaise traduction pouvait mettre en danger toute une équipe. Il a appris à obtenir la coopération par une observation patiente, des questions respectueuses et une mémoire précise des détails culturels. | Social +4, Intellectuel +3 |
 | Âge adulte | ingénieur de terrain du SGC | Formé pour maintenir le matériel en état dans des conditions difficiles, cet ingénieur accompagnait les équipes SG lorsque les missions lointaines exigeaient des solutions pratiques. Lorsque les pièces standard manquaient, il a appris à reconstruire des appareils avec de la récupération et à expliquer les réparations au reste de l'équipe. | Construction +4, Artisanat +4, Intellectuel +1 |
 | Âge adulte | officier de liaison du SGC | Cet officier a appris à concilier les priorités militaires, la prudence scientifique et les besoins des communautés rencontrées au-delà de la Porte des étoiles. Sa réussite dépendait de sa capacité à lire une assemblée, traduire des objectifs opposés et donner aux alliés une raison de poursuivre le dialogue. | Social +5, Intellectuel +2 |
+| Âge adulte | spécialiste de survie du SGC | Après avoir rejoint le SGC, ce spécialiste a préparé les équipes d'expédition aux climats hostiles, aux ruptures de ravitaillement et aux longues attentes avant extraction. Lire un terrain inconnu, gérer les animaux disponibles et défendre un camp isolé relevaient d'une même discipline de survie. | Plantes +4, Animaux +2, Tir +1 |
+| Âge adulte | quartier-maître du SGC | Ce quartier-maître maintenait les équipes SG approvisionnées en armes, pièces de rechange et matériel de terrain, alors que chaque kilogramme envoyé à travers la Porte comptait. Il a appris à réparer l'équipement endommagé, improviser des réserves et négocier les priorités entre les missions. | Artisanat +3, Construction +3, Social +1 |
 
 ### Jaffa — enfances communes
 
@@ -59,6 +61,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Enfance | enfant d'une forteresse Jaffa | Cet enfant a grandi dans une garnison Jaffa fortifiée, où les alarmes, les patrouilles et les bandes de guerre faisaient partie du quotidien. Il a appris où se mettre à couvert, comment transporter les fournitures et quand une alarme annonçait un danger réel. | Tir +2, Mêlée +2 |
 | Enfance | pupille d'un sanctuaire Jaffa | Recueilli par une communauté sanctuaire, cet enfant a appris la prudence, l'entraide et la valeur de l'écoute avant la parole. Aider les blessés et rassurer les nouveaux arrivants apeurés a fait de la compassion une compétence pratique de survie. | Médecine +2, Social +2 |
 | Enfance | jeune d'un camp d'entraînement Jaffa | Cet enfant a passé ses années de formation autour d'un camp d'entraînement Jaffa, aidant aux tâches simples pendant que les vétérans préparaient la génération suivante. Les exercices, les corvées et les combats observés lui ont donné une familiarité précoce avec les armes et la discipline. | Mêlée +2, Tir +2 |
+| Enfance | enfant des mines de naquadah | Élevé près d'une mine de naquadah, cet enfant transportait des outils, triait le minerai et apprenait quels tunnels étaient assez sûrs pour être empruntés. La poussière, les soutènements instables et les quotas stricts lui ont très tôt enseigné le respect de la roche et des constructions solides. | Minage +3, Construction +1 |
+| Enfance | messager d'une colonie du Chappa'ai | Cet enfant transportait messages et petites fournitures dans une colonie bâtie autour du Chappa'ai. Les gardes, marchands et voyageurs lui ont appris à comprendre rapidement les étrangers, mener les animaux de bât et retenir les récits attachés aux mondes lointains. | Social +2, Animaux +1, Intellectuel +1 |
 
 ### Jaffa au service des Goa'uld
 
@@ -72,6 +76,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | escorte de procession Goa'uld | Ce Jaffa a escorté dignitaires, prêtres et caravanes de tribut, restant vigilant lorsque les démonstrations de pouvoir attiraient le ressentiment. Les routes encombrées exigeaient des tirs précis, une force maîtrisée et une attention constante à l'humeur du cortège. | Tir +3, Mêlée +2, Social +2 |
 | Âge adulte | officier de garnison Jaffa | Promu dans une garnison de domaine, ce Jaffa a coordonné les sentinelles, les fournitures et la discipline. Le commandement exigeait plus que de la force : il devait équilibrer la logistique, l'obéissance et les ambitions des guerriers subordonnés. | Tir +3, Social +3, Intellectuel +1 |
 | Âge adulte | sentinelle de Chappa'ai | Ce Jaffa a gardé un Chappa'ai et considéré chaque activation comme l'arrivée possible d'alliés, de pillards ou de supérieurs mécontents. Des années auprès de la porte ont affûté ses réflexes et sa connaissance des signes annonçant une arrivée dangereuse. | Tir +4, Mêlée +2, Intellectuel +1 |
+| Âge adulte | guerrier d'abordage de Ha'tak | Ce Jaffa a combattu dans les couloirs étroits des Ha'tak lors d'abordages et de brèches de sécurité internes. Les espaces confinés exigeaient un corps à corps décisif, des tirs maîtrisés et assez de sens technique pour forcer une porte ou sécuriser un compartiment endommagé. | Mêlée +4, Tir +3, Construction +1 |
+| Âge adulte | collecteur de tribut Goa'uld | Ce Jaffa accompagnait les dignitaires chargés de recueillir le tribut dans les villages et les colonies éloignées. Faire respecter les quotas sans provoquer de révolte ouverte exigeait intimidation, violence mesurée et mémoire attentive des promesses, pénuries et résistances dissimulées. | Social +4, Mêlée +2, Intellectuel +1 |
 
 ### Jaffa libres
 
@@ -85,6 +91,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | agriculteur Jaffa libre | Ce Jaffa a cultivé les terres d'un village indépendant et préparé soigneusement la saison suivante. Les années difficiles lui ont appris la patience envers le sol, les animaux et les réserves communes qui séparaient la liberté de la famine. | Plantes +5, Animaux +2, Cuisine +1 |
 | Âge adulte | guérisseur Jaffa libre | Ce Jaffa a soigné ses voisins avec des ressources limitées, combinant les connaissances héritées et les remèdes disponibles localement. Il a appris à nettoyer les blessures, identifier les plantes utiles et rassurer les patients effrayés. | Médecine +4, Plantes +2, Intellectuel +1 |
 | Âge adulte | ancien déserteur Goa'uld | Ce Jaffa a déserté une force Goa'uld et passé des années à prouver que quitter un ancien maître n'était que la première étape vers la liberté. Une vie sous le soupçon lui a appris à rester vigilant, combattre lorsqu'il était acculé et gagner la confiance par des actes utiles. | Tir +3, Mêlée +2, Social +2 |
+| Âge adulte | émissaire d'une colonie Jaffa libre | Ce Jaffa voyageait entre les colonies libres pour porter des propositions, régler les différends et préserver des alliances fragiles. Il a appris à parler avec d'anciens rivaux, reconnaître les compromis utiles et rester dangereux lorsque les négociations échouaient. | Social +4, Intellectuel +2, Tir +1 |
+| Âge adulte | armurier Jaffa libre | Ce Jaffa entretenait les armures capturées, les bâtons Ma'Tok et les outils civils d'une communauté qui ne pouvait plus compter sur les lignes de ravitaillement Goa'uld. Les pièces rares lui ont appris à reconstruire soigneusement le matériel et à adapter d'anciennes compétences militaires à la vie de la colonie. | Artisanat +4, Construction +2, Mêlée +1 |
 
 ### Humains hors-monde — enfances
 
@@ -118,6 +126,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | prêtre d'un culte Goa'uld | Ce Goa'uld a cultivé l'autorité rituelle, encourageant les fidèles à confondre peur, émerveillement et loyauté. Il a maîtrisé la voix, les symboles et les prodiges mis en scène qui transformaient la peur en obéissance. | Social +5, Art +2 |
 | Âge adulte | gardien d'archives Goa'uld | Ce Goa'uld a entretenu des archives, des artefacts et des récits remaniés afin de renforcer un domaine. Le classement des anciennes technologies récompensait la patience, la curiosité technique et la capacité à décider quelle vérité devait disparaître. | Intellectuel +5, Art +1, Artisanat +1 |
 | Âge adulte | stratège de cour Goa'uld | Ce Goa'uld a conseillé une cour où chaque alliance était temporaire et chaque concession apparente dissimulait un autre calcul. Il a survécu en reliant des fragments de renseignement, en lisant les motivations et en présentant ses conseils comme les propres idées de son souverain. | Intellectuel +4, Social +4 |
+| Âge adulte | contremaître Goa'uld du naquadah | Ce Goa'uld supervisait l'extraction du naquadah, les quotas de travail et le transport du minerai depuis des galeries dangereuses. Il a appris à estimer la valeur d'une mine, contrôler des ouvriers épuisés et dissimuler les pénuries avant qu'un supérieur ne les découvre. | Minage +4, Social +3, Intellectuel +1 |
+| Âge adulte | gardien des systèmes de vaisseau Goa'uld | Ce Goa'uld entretenait des systèmes de vaisseau dont les principes n'étaient que partiellement compris par les serviteurs chargés de les utiliser. Des années de réparations, de procédures recopiées et d'improvisations dangereuses l'ont rendu techniquement compétent et farouchement protecteur des connaissances réservées. | Intellectuel +4, Artisanat +3, Construction +1 |
 
 ### Grands Maîtres Goa'uld
 
@@ -138,27 +148,30 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | éclaireur Tok'ra | Ce Tok'ra a cartographié les routes sûres, les sites abandonnés et les mouvements ennemis, voyageant souvent avec pour seul outil une couverture. Les déplacements lointains en ont fait un tireur compétent, un pisteur et un conducteur capable de s'adapter au moyen de transport exigé par son identité. | Tir +3, Plantes +2, Animaux +2 |
 | Âge adulte | analyste du renseignement Tok'ra | Ce Tok'ra a assemblé des rapports dispersés pour produire du renseignement exploitable et appris à se méfier des explications trop simples. Il a comparé les témoignages, la logistique et les habitudes ennemies jusqu'à transformer un motif caché en avertissement utilisable. | Intellectuel +5, Social +2 |
 | Âge adulte | messager Tok'ra | Ce Tok'ra a transporté messages et fournitures entre des cellules dissimulées, considérant chaque trajet comme une épreuve de discrétion. Un passage sûr dépendait d'une maîtrise correcte des armes, d'un savoir-faire de terrain adaptable et de la capacité à paraître ordinaire parmi les étrangers. | Tir +2, Animaux +2, Social +2, Plantes +1 |
+| Âge adulte | sapeur Tok'ra | Ce Tok'ra préparait des approches dissimulées, fragilisait des positions fortifiées et sabotait des infrastructures sans exposer le reste de la résistance. Son travail combinait construction patiente, connaissance des tunnels et maîtrise suffisante des armes pour fuir une opération compromise. | Construction +4, Minage +3, Tir +1 |
+| Âge adulte | coordinateur de refuge Tok'ra | Ce Tok'ra approvisionnait les cellules dissimulées, organisait les identités de couverture et décidait quand un refuge était devenu trop dangereux. Concilier les personnes, le renseignement et les soins d'urgence exigeait discrétion, planification et calme autorité. | Social +4, Intellectuel +3, Médecine +1 |
+
 <!-- BACKSTORY_TABLES_END -->
 
 ## Humains Tau'ri
 
-Dans un scénario normal, les starters humains conservent les histoires vanilla compatibles avec une origine terrienne. Les six parcours adultes SGC — forces spéciales, médecine de terrain, recherche, linguistique, ingénierie ou liaison — sont ajoutés au même ensemble pondéré que les carrières vanilla compatibles. Ils apparaissent donc occasionnellement, sans pourcentage de remplacement fixe. Le scénario **Équipe SG isolée** impose toujours l'un de ces six parcours adultes.
+Dans un scénario normal, les starters humains conservent les histoires vanilla compatibles avec une origine terrienne. Les huit parcours adultes SGC — forces spéciales, médecine de terrain, recherche, linguistique, ingénierie, liaison, survie ou logistique — sont ajoutés au même ensemble pondéré que les carrières vanilla compatibles. Ils apparaissent donc occasionnellement, sans pourcentage de remplacement fixe. Le scénario **Équipe SG isolée** impose toujours l'un de ces huit parcours adultes.
 
 ## Jaffa
 
 Les Jaffa générés normalement reçoivent des enfances dédiées, puis un parcours adulte différent selon leur faction.
 
-Les serviteurs des Goa'uld peuvent devenir guerriers de domaine, gardes de temple, vétérans, instructeurs, officiers ou sentinelles de Chappa'ai.
+Les serviteurs des Goa'uld peuvent devenir guerriers de domaine, gardes de temple, vétérans, instructeurs, officiers, sentinelles de Chappa'ai, guerriers d'abordage ou collecteurs de tribut.
 
-Les Jaffa libres peuvent devenir combattants affranchis, protecteurs, éclaireurs, artisans, agriculteurs, guérisseurs ou anciens déserteurs.
+Les Jaffa libres peuvent devenir combattants affranchis, protecteurs, éclaireurs, artisans, agriculteurs, guérisseurs, anciens déserteurs, émissaires ou armuriers.
 
 ## Hôtes Goa'uld
 
-Les Goa'uld ordinaires et les Grands Maîtres utilisent une enfance humaine hors-monde et des carrières adaptées à leur caste. Les administrateurs, prêtres, stratèges et souverains se distinguent désormais aussi par leurs compétences sociales, intellectuelles ou militaires.
+Les Goa'uld ordinaires et les Grands Maîtres utilisent une enfance humaine hors-monde et des carrières adaptées à leur caste. Les administrateurs, prêtres, stratèges, contremaîtres, techniciens et souverains se distinguent par leurs compétences sociales, intellectuelles, industrielles ou militaires.
 
 ## Tok'ra
 
-Les agents Tok'ra générés reçoivent des parcours d'infiltrateur, médecin, diplomate, éclaireur, analyste ou messager.
+Les agents Tok'ra générés reçoivent des parcours d'infiltrateur, médecin, diplomate, éclaireur, analyste, messager, sapeur ou coordinateur de refuge.
 
 Un colon existant qui accepte volontairement un symbiote Tok'ra conserve son histoire passée. Un Tok'ra généré directement déjà fusionné reçoit désormais une identité d'hôte humaine hors-monde distincte, choisie dans les enfances et carrières dédiées ci-dessus.
 
@@ -168,4 +181,4 @@ Les filtres garantissent une génération cohérente par défaut. Un outil exter
 
 Les identifiants, catégories et silhouettes des histoires existantes sont conservés. Les anciennes sauvegardes ne nécessitent aucune migration et aucun personnage n'est renommé ou régénéré.
 
-Les six nouvelles carrières humaines hors-monde répondent à un besoin précis du système d'identité Tok'ra. Une extension plus générale du catalogue restera discutée séparément afin de conserver une quantité raisonnable. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.
+Les six carrières humaines hors-monde restent dédiées au système d'identité Tok'ra. La première extension générale ajoute douze parcours aux cultures déjà jouables sans introduire de nouvelles races. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.

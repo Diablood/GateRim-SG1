@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.15-dev`
+Version: `0.3.16-dev`
 
 ## Purpose
 
@@ -68,10 +68,10 @@ The callback occurs while the pawn is still being generated, before the player c
 | Free Jaffa | Current Free Jaffa PawnKinds or faction | None | Free Jaffa generator |
 | Goa'uld | Current Goa'uld host, System Lord, queen and symbiote PawnKinds | None | Goa'uld generator |
 | Tok'ra | Current Tok'ra host or symbiote PawnKinds, or Tok'ra faction | None | Tok'ra generator |
-| Ordinary human starter | Human race + player starter | Keeps vanilla generation and adds the six SGC careers to the same effective weighted adulthood pool as compatible vanilla careers | Keeps the generated vanilla name |
-| Tau'ri / SGC | Player SGC expedition faction | Six SGC adult careers only when the SG-team scenario part is present | Tau'ri generator |
+| Ordinary human starter | Human race + player starter | Keeps vanilla generation and adds the eight SGC careers to the same effective weighted adulthood pool as compatible vanilla careers | Keeps the generated vanilla name |
+| Tau'ri / SGC | Player SGC expedition faction | Eight SGC adult careers only when the SG-team scenario part is present | Tau'ri generator |
 
-The ordinary-human profile is deliberately lower priority than the Jaffa, Goa'uld-host and SG-team profiles. It preserves the vanilla childhood and uses the already generated vanilla adulthood as the vanilla side of a merged weighted pool. The six Tau'ri / SGC careers each contribute their normal backstory weight, so their frequency automatically scales against the number and weight of compatible vanilla careers instead of relying on a hard-coded percentage.
+The ordinary-human profile is deliberately lower priority than the Jaffa, Goa'uld-host and SG-team profiles. It preserves the vanilla childhood and uses the already generated vanilla adulthood as the vanilla side of a merged weighted pool. The eight Tau'ri / SGC careers each contribute their normal backstory weight, so their frequency automatically scales against the number and weight of compatible vanilla careers instead of relying on a hard-coded percentage.
 
 The SG-team profile intentionally preserves the existing vanilla childhood until a dedicated Tau'ri childhood set is designed. This milestone does not increase the number of backstories.
 
@@ -104,6 +104,22 @@ The framework does not replace the pawn's active backstories or apply skill chan
 The report is deliberately evaluated at the time it is opened. It does not cache, assign, normalize or repair culture data. Its purpose is to reveal disagreements between existing consumers so a real defect can be reproduced before any shared framework rule is changed.
 
 The complete `0.3.15-dev` matrix was validated for ordinary humans, Free Jaffa, Goa'uld-aligned Jaffa, Goa'uld hosts and pre-joined Tok'ra, including active-personality switching, save/load, both access paths and hidden-state behavior. Repeated inspection produced no pawn mutation or new log error.
+
+### Measured backstory expansion
+
+`0.3.16-dev` demonstrates that an existing cultural catalogue can be expanded without modifying the generic resolver. Twelve new `BackstoryDef` entries are added as passive data, while one XML patch appends them to the explicit starter lists and mixed-profile name rules already exposed by `CulturalPawnProfileDef`.
+
+The patch preserves the existing semantics:
+
+- ordinary human starters merge eight SGC careers with compatible vanilla adulthoods;
+- the stranded SG-team scenario restricts adulthood to those eight SGC careers;
+- starter Jaffa use ten shared childhoods and the expanded aligned adulthood pools;
+- starter Goa'uld hosts use the existing off-world childhoods and the expanded Goa'uld or Tok'ra adulthood pools;
+- normal world generation continues to rely on each BackstoryDef's spawn category.
+
+No new matcher, resolver branch or skill-offset rule is introduced. This is the preferred extension pattern while the existing Def schema expresses the content accurately.
+
+The complete `0.3.16-dev` matrix validated the expanded starter pools, mixed cultural name rules, additive ordinary-human behavior, normal world generation, save/load and Tok'ra switching without a post-test C# or Def correction.
 
 ## Boundaries
 

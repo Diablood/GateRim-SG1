@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_SurvivalSpecialist</defName>
+        <title>SGC survival specialist</title>
+        <titleShort>SGC survival specialist</titleShort>
+        <description>After joining the SGC, this specialist trained expedition teams to endure hostile climates, broken supply lines and long delays before extraction. Reading unfamiliar terrain, managing local animals and defending isolated camps became part of the same survival discipline.</description>
+        <skillGains>
+            <Plants>4</Plants>
+            <Animals>2</Animals>
+            <Shooting>1</Shooting>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_Quartermaster</defName>
+        <title>SGC quartermaster</title>
+        <titleShort>SGC quartermaster</titleShort>
+        <description>This quartermaster kept SG teams supplied with weapons, replacement parts and field equipment when every kilogram sent through the Stargate mattered. They learned to repair damaged gear, improvise storage and negotiate priorities between missions.</description>
+        <skillGains>
+            <Crafting>3</Crafting>
+            <Construction>3</Construction>
+            <Social>1</Social>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Jaffa_NaquadahMineChild</defName>
+        <title>naquadah-mine child</title>
+        <titleShort>mine child</titleShort>
+        <description>Raised beside a naquadah mine, this child carried tools, sorted ore and learned which tunnels were safe enough to enter. Dust, unstable supports and strict quotas gave them an early respect for stonework and careful construction.</description>
+        <skillGains>
+            <Mining>3</Mining>
+            <Construction>1</Construction>
+        </skillGains>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Jaffa_GateSettlementRunner</defName>
+        <title>Chappa'ai settlement runner</title>
+        <titleShort>Chappa'ai runner</titleShort>
+        <description>This child carried messages and small supplies through a settlement built around the Chappa'ai. Meeting guards, traders and travellers taught them to read strangers quickly, handle pack animals and remember the stories attached to distant worlds.</description>
+        <skillGains>
+            <Social>2</Social>
+            <Animals>1</Animals>
+            <Intellectual>1</Intellectual>
+        </skillGains>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_JaffaChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_HatakBoardingWarrior</defName>
+        <title>Ha'tak boarding warrior</title>
+        <titleShort>boarding warrior</titleShort>
+        <description>This Jaffa fought through the narrow corridors of Ha'tak vessels during boarding actions and internal security breaches. Close quarters demanded decisive melee, controlled fire and enough technical sense to force doors or secure damaged compartments.</description>
+        <skillGains>
+            <Melee>4</Melee>
+            <Shooting>3</Shooting>
+            <Construction>1</Construction>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_GoauldJaffa_TributeCollector</defName>
+        <title>Goa'uld tribute collector</title>
+        <titleShort>tribute collector</titleShort>
+        <description>This Jaffa accompanied officials who gathered tribute from villages and outlying settlements. Enforcing quotas without provoking open revolt required intimidation, measured violence and a careful memory for promises, shortages and hidden resistance.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Melee>2</Melee>
+            <Intellectual>1</Intellectual>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_SettlementEnvoy</defName>
+        <title>Free Jaffa settlement envoy</title>
+        <titleShort>Free Jaffa envoy</titleShort>
+        <description>This Jaffa travelled between free settlements to carry proposals, settle disputes and keep fragile alliances intact. They learned to speak with former rivals, recognize practical compromises and remain dangerous when negotiations failed.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Intellectual>2</Intellectual>
+            <Shooting>1</Shooting>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_FreeJaffa_Armorer</defName>
+        <title>Free Jaffa armorer</title>
+        <titleShort>Free Jaffa armorer</titleShort>
+        <description>This Jaffa maintained captured armor, staff weapons and civilian tools for a community that could no longer rely on Goa'uld supply lines. Scarce parts taught them to rebuild equipment carefully and adapt old military skills to settlement life.</description>
+        <skillGains>
+            <Crafting>4</Crafting>
+            <Construction>2</Construction>
+            <Melee>1</Melee>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_FreeJaffaAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_NaquadahOverseer</defName>
+        <title>Goa'uld naquadah overseer</title>
+        <titleShort>naquadah overseer</titleShort>
+        <description>This Goa'uld supervised naquadah extraction, labor quotas and the transport of ore from dangerous workings. They learned to judge a mine's value, control exhausted workers and conceal shortages before a superior noticed them.</description>
+        <skillGains>
+            <Mining>4</Mining>
+            <Social>3</Social>
+            <Intellectual>1</Intellectual>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_ShipSystemsCustodian</defName>
+        <title>Goa'uld ship-systems custodian</title>
+        <titleShort>systems custodian</titleShort>
+        <description>This Goa'uld maintained shipboard systems whose principles were only partly understood by the servants ordered to operate them. Years of repairs, copied procedures and dangerous improvisation made them technically capable and fiercely protective of restricted knowledge.</description>
+        <skillGains>
+            <Intellectual>4</Intellectual>
+            <Crafting>3</Crafting>
+            <Construction>1</Construction>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Tokra_Sapper</defName>
+        <title>Tok'ra sapper</title>
+        <titleShort>Tok'ra sapper</titleShort>
+        <description>This Tok'ra prepared concealed approaches, weakened fortified positions and sabotaged infrastructure without exposing the wider resistance. Their work combined patient construction, tunnel knowledge and enough weapons training to escape a compromised operation.</description>
+        <skillGains>
+            <Construction>4</Construction>
+            <Mining>3</Mining>
+            <Shooting>1</Shooting>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Tokra_SafehouseCoordinator</defName>
+        <title>Tok'ra safehouse coordinator</title>
+        <titleShort>safehouse coordinator</titleShort>
+        <description>This Tok'ra kept hidden cells supplied, arranged cover identities and decided when a refuge had become too dangerous to use. Balancing people, intelligence and emergency treatment demanded discretion, planning and calm authority.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Intellectual>3</Intellectual>
+            <Medicine>1</Medicine>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+</Defs>
