@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_Tauri_ScienceFairStudentChild.title>élève de concours scientifique</SG1_Tauri_ScienceFairStudentChild.title>
+    <SG1_Tauri_ScienceFairStudentChild.titleShort>élève scientifique</SG1_Tauri_ScienceFairStudentChild.titleShort>
+    <SG1_Tauri_ScienceFairStudentChild.description>Élevé sur la Terre moderne, cet enfant a passé ses années d'école à construire des expériences, démonter des appareils et expliquer des idées difficiles à des camarades impatients. Les concours scientifiques et les projets extrascolaires ont récompensé sa curiosité, son habileté et sa capacité à communiquer clairement.</SG1_Tauri_ScienceFairStudentChild.description>
+
+    <SG1_Tauri_MilitaryFamilyChild.title>enfant de famille militaire</SG1_Tauri_MilitaryFamilyChild.title>
+    <SG1_Tauri_MilitaryFamilyChild.titleShort>enfant de militaire</SG1_Tauri_MilitaryFamilyChild.titleShort>
+    <SG1_Tauri_MilitaryFamilyChild.description>Cet enfant a grandi entre des bases et des communautés marquées par le service militaire, apprenant à s'adapter chaque fois que de nouveaux ordres déplaçaient sa famille. Les changements d'école, les routines strictes et les responsabilités domestiques lui ont enseigné la discipline, l'aisance sociale et le respect du matériel fiable.</SG1_Tauri_MilitaryFamilyChild.description>
+</LanguageData>

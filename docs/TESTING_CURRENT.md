@@ -1,33 +1,35 @@
 # Tests du jalon actif
 
-Jalon : `0.3.17-dev - Refresh project and wiki presentation`
+Jalon : `0.3.18-dev - Add a Tau'ri origin for generated Tok'ra hosts`
 
-Branche attendue : `feature/project-presentation-refresh`
+Branche attendue : `feature/tokra-generated-host-tauri-origin`
 
-Base attendue : `v0.3.16-dev`
+Base attendue : `v0.3.17-dev`
 
-Révision locale validée : `0.3.17-dev-r2`
+Révision locale validée : `0.3.18-dev-r1`
 
-Version de DLL attendue : `0.3.17.0`
+Version de DLL attendue : `0.3.18.0`
 
-Statut : validation terminée sur `0.3.17-dev-r2` ; jalon clôturé et publié sous `v0.3.17-dev`.
+Statut : validation fonctionnelle terminée sur `0.3.18-dev-r1` ; jalon clôturé et publié sous `v0.3.18-dev`.
 
 ## Résultat final validé
 
-- Rebuild forcé validé avec la DLL `0.3.17.0`.
-- Chargement jusqu'au menu principal validé sans nouvelle erreur GateRim SG-1.
-- Version du mod `0.3.17-dev` et description About immersive validées.
-- README, accueil du wiki et état du contenu relus sans ancien jalon présenté comme actif.
-- Les liens testés du README et du wiki ouvrent les destinations prévues.
-- La sidebar catégorisée reste lisible dans sa largeur réelle.
-- Toutes les cibles internes de l'ancienne sidebar sont conservées sans doublon.
-- `Tokra-Dual-Identity` et `Tokra-Tactical-Threat-Assessment` sont désormais présents.
-- La distinction entre contenu jouable et contenu futur est cohérente.
-- Aucun fichier de gameplay, Def, traduction, texture ou `About/ModIcon.png` n'est modifié.
-- `Player.log` est propre pour le chargement testé.
-- Décision finale : conserver la révision `r2` sans correctif supplémentaire.
+- Rebuild forcé validé avec la DLL `0.3.18.0`.
+- Chargement validé sans nouvelle erreur de `GeneratedHostOriginDef`, `BackstoryDef`, `skillGains`, patch ou traduction.
+- Les origines `SG1_GeneratedHost_OffworldHuman` et `SG1_GeneratedHost_TauriSGCVolunteer` apparaissent toutes les deux.
+- L'origine humaine hors-monde reste clairement majoritaire avec les poids relatifs `1` et `0.2`.
+- Les hôtes Tau'ri utilisent le générateur de noms Tau'ri, l'une des deux nouvelles enfances et l'une des huit carrières SGC.
+- Les hôtes humains hors-monde conservent leurs noms et pools de backstories précédents.
+- Les noms de l'hôte et du symbiote restent distincts et l'hôte est actif par défaut.
+- Dix basculements successifs ne provoquent aucun cumul, perte ou duplication de compétences.
+- Sauvegarde et rechargement validés avec l'hôte actif et le symbiote actif.
+- Une identité pré-fusionnée sauvegardée en `0.3.17-dev` reste inchangée et n'est pas reroulée.
+- Après extraction puis implantation réelle, `hostIdentitySource=ImplantedExistingHost` et l'origine générée est effacée.
+- Les deux nouvelles enfances n'apparaissent ni chez les starters humains ordinaires ni dans le scénario Équipe SG isolée.
+- `Player.log` est propre pour le périmètre testé.
+- Décision finale : conserver la révision fonctionnelle `r1` sans correctif C# ou Def supplémentaire.
 
-## 1. Extraction et contrôle Git
+## 1. Branche et extraction propre
 
 ```powershell
 git branch --show-current
@@ -35,11 +37,15 @@ git status --short
 git diff --check
 ```
 
-La branche doit être `feature/project-presentation-refresh` et aucun fichier non prévu ne doit être modifié.
+Branche attendue :
 
-## 2. Rebuild et chargement minimal
+```text
+feature/tokra-generated-host-tauri-origin
+```
 
-Effectuer un rebuild forcé :
+Le ZIP à la racine peut rester non suivi ou ignoré. Aucun fichier suivi sans rapport avec le jalon ne doit être modifié.
+
+## 2. Rebuild forcé
 
 ```powershell
 dotnet build .\Source\GateRimSG1\GateRimSG1.csproj `
@@ -47,81 +53,111 @@ dotnet build .\Source\GateRimSG1\GateRimSG1.csproj `
     -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
 ```
 
-Vérifier :
+Résultat validé :
 
-- build réussi ;
-- `1.6/Assemblies/GateRimSG1.dll` en version `0.3.17.0` ;
-- chargement jusqu'au menu principal avec GateRim SG-1 et Biotech ;
-- version du mod `0.3.17-dev` ;
-- description About toujours lisible et immersive ;
-- aucune nouvelle erreur rouge ni erreur GateRim SG-1 dans `Player.log`.
+- build réussi sans avertissement nouveau attribuable au jalon ;
+- `1.6/Assemblies/GateRimSG1.dll` reconstruite ;
+- version de fichier `0.3.18.0` ;
+- version du mod `0.3.18-dev`.
 
-Aucun test de partie complète n'est requis : ce jalon ne modifie aucun code de gameplay, Def, traduction ou texture.
+## 3. Chargement XML et traductions
 
-## 3. README du dépôt
+Le menu principal a été atteint avec la liste de test habituelle.
 
-Vérifier `README.md` dans l'aperçu GitHub ou Markdown :
+Résultat validé :
 
-- aucune présentation de `0.2.18-dev` comme jalon actif ;
-- statut `0.3.17-dev`, RimWorld 1.6 et Biotech clairement indiqués ;
-- contenu jouable résumé sans inventaire historique de micro-jalons ;
-- Porte fonctionnelle explicitement indiquée comme non disponible ;
-- liens vers le wiki, l'état du contenu, la roadmap, le changelog, le build et les tests ;
-- aucun chemin local Windows ni instruction de publication destinée au joueur.
+- aucune erreur rouge liée aux origines générées, aux backstories, aux catégories, au profil Tok'ra ou au patch ;
+- titres et descriptions français des deux nouvelles enfances présents ;
+- aucune Def dupliquée ou référence non résolue.
 
-## 4. Accueil du wiki
+## 4. Génération des deux origines historiques
 
-Vérifier `docs/wiki/Home.md` :
+Chemin utilisé :
 
-- version documentée `0.3.17-dev` ;
-- résumé cohérent avec `About/About.xml` ;
-- mention des 70 backstories et de la double identité Tok'ra ;
-- aucune future extension des backstories existantes présentée comme encore nécessaire ;
-- futures races, storyteller, monde GateRim SG-1 et Porte fonctionnelle clairement séparés du contenu jouable ;
-- tous les noms de pages liés correspondent à des pages existantes du wiki.
+```text
+Debug actions menu
+→ Spawn pawn
+→ SG1_TokraVoluntaryHost
+```
 
-## 5. Sidebar du wiki
+Diagnostic utilisé :
 
-Vérifier `docs/wiki/_Sidebar.md` dans le wiki synchronisé ou dans un aperçu Markdown :
+```text
+Debug actions menu
+→ GateRim SG-1
+→ Cultural identity: inspect selected pawn
+```
 
-- la navigation n'est plus une liste linéaire unique ;
-- les catégories Démarrer, Cultures et factions, Équipement et recherche, Symbiotes et implantation, Prim'ta et trétonine, Goa'uld, Tok'ra et Assistance sont clairement séparées ;
-- tous les liens internes ouvrent une page existante ;
-- aucun lien interne n'apparaît deux fois ;
-- les anciennes pages restent accessibles, sans perte par rapport à la sidebar précédente ;
-- `Tokra-Dual-Identity` et `Tokra-Tactical-Threat-Assessment` sont désormais présents ;
-- le lien externe vers le dépôt principal fonctionne ;
-- les intitulés restent assez courts pour une sidebar étroite.
+Résultat validé :
 
-## 6. État du contenu
+- les deux valeurs `generatedHostOrigin` sont observées ;
+- l'origine humaine hors-monde reste prédominante ;
+- aucun pourcentage exact n'est imposé à un petit échantillon.
 
-Vérifier `docs/wiki/Content-Status.md` :
+## 5. Origine Tau'ri
 
-- dernière révision `0.3.17-dev` ;
-- lignes ajoutées pour la refonte des backstories, les profils culturels de départ, la double identité Tok'ra, le diagnostic culturel et l'extension à 70 backstories ;
-- suppression des lignes futures devenues fausses ou terminées, notamment l'enrichissement générique des histoires et l'extraction Tok'ra annoncée comme absente ;
-- aucune fonctionnalité future présentée comme déjà jouable ;
-- aucune fonctionnalité validée depuis `0.3.5-dev` laissée uniquement dans la section « Prévu ».
+Résultat validé :
 
-## 7. Contrôle des fichiers non concernés
+- nom d'hôte Tau'ri distinct du nom du symbiote ;
+- enfance `SG1_Tauri_ScienceFairStudentChild` ou `SG1_Tauri_MilitaryFamilyChild` ;
+- carrière adulte appartenant aux huit `SG1_TauriSGC_*` ;
+- `hostIdentitySource=GeneratedPreJoined` ;
+- hôte actif par défaut ;
+- textes Bio français corrects.
+
+## 6. Régression de l'origine humaine hors-monde
+
+Résultat validé :
+
+- groupe de noms humain hors-monde conservé ;
+- enfance et carrière toujours limitées aux pools existants ;
+- deux identités distinctes ;
+- comportement identique à `0.3.17-dev`.
+
+## 7. Basculement et progression commune
+
+Résultat validé pour les deux origines :
+
+- mêmes identités après chaque basculement ;
+- aucun cumul des écarts de backstories ;
+- aucune perte ou duplication de niveau ou d'expérience ;
+- origine générée stable.
+
+## 8. Sauvegarde, rechargement et ancienne identité
+
+Résultat validé :
+
+- restauration correcte des personnalités actives ;
+- noms, enfances, carrières et origines inchangés ;
+- aucun reroll après reprise du temps ou nouveau basculement ;
+- ancienne identité `0.3.17-dev` conservée intacte.
+
+## 9. Extraction et réimplantation réelle
+
+Résultat validé après implantation dans un autre pawn :
+
+```text
+hostIdentitySource=ImplantedExistingHost
+generatedHostOrigin=
+```
+
+Le nom et les backstories d'origine du nouvel hôte sont conservés. Aucune identité Tau'ri ou hors-monde générée ne les remplace.
+
+## 10. Isolation des starters
+
+Résultat validé :
+
+- les deux nouvelles enfances ne rejoignent pas les pools de starters humains ordinaires ;
+- elles ne remplacent pas les enfances du scénario Équipe SG isolée ;
+- les humains ordinaires conservent leur majorité vanilla ;
+- les adultes de l'équipe SG restent limités aux huit carrières SGC ;
+- aucun pawn existant n'est renommé ou reroulé.
+
+## 11. Contrôle final
 
 ```powershell
 git status --short
-git diff --name-only
+git diff --check
 ```
 
-La liste ne doit contenir que les onze fichiers annoncés dans `docs/PROJECT_STATE.md`.
-
-Vérifier en particulier que les fichiers suivants ne sont pas modifiés :
-
-- `About/ModIcon.png` ;
-- `1.6/Defs/**` ;
-- `1.6/Patches/**` ;
-- `Languages/**` ;
-- `Source/GateRimSG1/**/*.cs` ;
-- `Textures/**`.
-
-## Résultat à communiquer
-
-- `Tests OK` si le rebuild, le menu principal, les trois pages de présentation et la sidebar catégorisée sont validés ;
-- sinon, indiquer le fichier, le lien ou la formulation incorrecte observée.
+Le journal final ne contient aucune nouvelle erreur ou répétition attribuable à GateRim SG-1.

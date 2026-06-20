@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <BackstoryDef>
+        <defName>SG1_Tauri_ScienceFairStudentChild</defName>
+        <title>science-fair student</title>
+        <titleShort>science-fair student</titleShort>
+        <description>Raised on modern Earth, this child spent school years building experiments, taking devices apart and learning how to explain difficult ideas to impatient classmates. Science fairs and after-school projects rewarded curiosity, careful hands and clear communication.</description>
+        <skillGains>
+            <Intellectual>3</Intellectual>
+            <Crafting>1</Crafting>
+        </skillGains>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_TauriChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Tauri_MilitaryFamilyChild</defName>
+        <title>military-family child</title>
+        <titleShort>military-family child</titleShort>
+        <description>This child grew up moving between bases and communities shaped by military service, learning to adapt whenever new orders changed the family's home. New schools, strict routines and practical household responsibilities taught discipline, social awareness and respect for reliable equipment.</description>
+        <skillGains>
+            <Social>2</Social>
+            <Intellectual>1</Intellectual>
+            <Crafting>1</Crafting>
+        </skillGains>
+        <slot>Childhood</slot>
+        <spawnCategories>
+            <li>SG1_TauriChildhood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+</Defs>

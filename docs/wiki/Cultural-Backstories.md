@@ -2,11 +2,11 @@
 
 > Statut : Base culturelle enrichie
 >
-> Version documentée : `0.3.16-dev`
+> Version documentée : `0.3.18-dev`
 
 GateRim SG-1 utilise des histoires culturelles natives de RimWorld sans dépendre de Humanoid Alien Races.
 
-Le catalogue compte désormais `70` histoires. Aux `58` parcours déjà présents s'ajoutent douze histoires réparties entre le SGC, les enfances Jaffa, les Jaffa au service des Goa'uld, les Jaffa libres, les hôtes Goa'uld et les Tok'ra. Cette extension reste volontairement mesurée afin de renforcer la variété sans diluer l'identité de chaque culture.
+Le catalogue compte désormais `72` histoires. Deux enfances Tau'ri modernes complètent les `70` parcours précédents afin de donner une origine terrestre cohérente aux rares hôtes historiques générés déjà unis à un Tok'ra. Elles ne modifient pas la randomisation ordinaire des pawns de départ.
 
 ## Effets en jeu
 
@@ -25,7 +25,7 @@ Le bouton de randomisation vanilla applique désormais des profils culturels uni
 - un starter **Jaffa** reçoit une enfance Jaffa et une carrière adulte Jaffa Goa'uld ou Jaffa libre ;
 - un starter **hôte Goa'uld** reçoit une enfance humaine hors-monde et une carrière adulte Goa'uld ou Tok'ra ;
 - dans un scénario normal, un starter humain conserve l'accès aux enfances et carrières vanilla, tandis que les huit parcours Tau'ri / SGC rejoignent le même ensemble pondéré de carrières adultes compatibles ;
-- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux huit parcours SGC actuels. Les enfances restent vanilla tant qu'un ensemble Tau'ri dédié n'a pas été conçu.
+- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux huit parcours SGC actuels. Les deux enfances Tau'ri de ce jalon restent réservées aux hôtes historiques Tok'ra générés et ne remplacent pas les enfances vanilla du scénario.
 
 Les pawns générés par les raids, visiteurs, colonies, incidents et quêtes conservent leurs filtres habituels. Une sélection manuelle réalisée après la génération par un éditeur de pawns compatible reste libre.
 
@@ -40,6 +40,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 
 | Étape | Nom | Description | Compétences |
 |---|---|---|---|
+| Enfance | élève de concours scientifique | Élevé sur la Terre moderne, cet enfant a passé ses années d'école à construire des expériences, démonter des appareils et expliquer des idées difficiles à des camarades impatients. Les concours scientifiques et les projets extrascolaires ont récompensé sa curiosité, son habileté et sa capacité à communiquer clairement. | Intellectuel +3, Artisanat +1 |
+| Enfance | enfant de famille militaire | Cet enfant a grandi entre des bases et des communautés marquées par le service militaire, apprenant à s'adapter chaque fois que de nouveaux ordres déplaçaient sa famille. Les changements d'école, les routines strictes et les responsabilités domestiques lui ont enseigné la discipline, l'aisance sociale et le respect du matériel fiable. | Social +2, Intellectuel +1, Artisanat +1 |
 | Âge adulte | soldat des forces spéciales du SGC | Affecté au programme Porte des étoiles après une carrière militaire exigeante, ce soldat a appris à improviser sous le feu et protéger son équipe loin de la Terre. Les déploiements répétés lui ont appris à comprendre rapidement un terrain inconnu et à maintenir les spécialistes moins expérimentés en mouvement. | Tir +4, Mêlée +2, Social +1 |
 | Âge adulte | médecin de terrain du SGC | Ce médecin a rejoint les équipes hors-monde afin de maintenir les explorateurs en vie lorsque l'évacuation par la Porte des étoiles ne pouvait pas être garantie. Le triage de terrain, les cliniques improvisées et les agents pathogènes extraterrestres ont rendu le sang-froid aussi important que la technique médicale. | Médecine +5, Intellectuel +2, Social +1 |
 | Âge adulte | scientifique du SGC | Recruté pour étudier les technologies extraterrestres et les biologies inconnues, ce scientifique s'est habitué à prendre des décisions prudentes avec des informations incomplètes. Des années de laboratoires sécurisés et d'expéditions lui ont appris à transformer des découvertes impossibles en réponses pratiques. | Intellectuel +5, Artisanat +2 |
@@ -173,7 +175,7 @@ Les Goa'uld ordinaires et les Grands Maîtres utilisent une enfance humaine hors
 
 Les agents Tok'ra générés reçoivent des parcours d'infiltrateur, médecin, diplomate, éclaireur, analyste, messager, sapeur ou coordinateur de refuge.
 
-Un colon existant qui accepte volontairement un symbiote Tok'ra conserve son histoire passée. Un Tok'ra généré directement déjà fusionné reçoit désormais une identité d'hôte humaine hors-monde distincte, choisie dans les enfances et carrières dédiées ci-dessus.
+Un colon existant qui accepte volontairement un symbiote Tok'ra conserve son histoire passée. Un Tok'ra généré directement déjà fusionné reçoit une identité d'hôte distincte : le plus souvent un humain hors-monde, ou plus rarement un volontaire Tau'ri lié au SGC utilisant l'une des deux enfances modernes et l'une des huit carrières SGC ci-dessus.
 
 ## Création manuelle et compatibilité
 
@@ -181,4 +183,4 @@ Les filtres garantissent une génération cohérente par défaut. Un outil exter
 
 Les identifiants, catégories et silhouettes des histoires existantes sont conservés. Les anciennes sauvegardes ne nécessitent aucune migration et aucun personnage n'est renommé ou régénéré.
 
-Les six carrières humaines hors-monde restent dédiées au système d'identité Tok'ra. La première extension générale ajoute douze parcours aux cultures déjà jouables sans introduire de nouvelles races. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.
+Les six carrières humaines hors-monde et les deux enfances Tau'ri modernes restent dédiées au système d'identité historique des Tok'ra générés déjà fusionnés. La première extension générale ajoute douze parcours aux cultures déjà jouables sans introduire de nouvelles races. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.

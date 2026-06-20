@@ -25,4 +25,28 @@
             <li>SG1_OffworldHuman_KeeperOfRecords</li>
         </adulthoods>
     </GateRimSG1.Culture.GeneratedHostOriginDef>
+
+    <GateRimSG1.Culture.GeneratedHostOriginDef>
+        <defName>SG1_GeneratedHost_TauriSGCVolunteer</defName>
+        <label>Tau'ri SGC volunteer host</label>
+        <weight>0.2</weight>
+        <nameGroup>Tauri</nameGroup>
+        <races>
+            <li>Human</li>
+        </races>
+        <childhoods>
+            <li>SG1_Tauri_ScienceFairStudentChild</li>
+            <li>SG1_Tauri_MilitaryFamilyChild</li>
+        </childhoods>
+        <adulthoods>
+            <li>SG1_TauriSGC_SpecialForcesOperator</li>
+            <li>SG1_TauriSGC_FieldMedic</li>
+            <li>SG1_TauriSGC_Researcher</li>
+            <li>SG1_TauriSGC_Linguist</li>
+            <li>SG1_TauriSGC_FieldEngineer</li>
+            <li>SG1_TauriSGC_LiaisonOfficer</li>
+            <li>SG1_TauriSGC_SurvivalSpecialist</li>
+            <li>SG1_TauriSGC_Quartermaster</li>
+        </adulthoods>
+    </GateRimSG1.Culture.GeneratedHostOriginDef>
 </Defs>

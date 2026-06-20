@@ -205,5 +205,9 @@ Migration never infers the source by comparing display names. A real implantatio
 
 The cultural name manager cooperates with this consumer: it may assign a proper Tok'ra name to the symbiote identity, but it leaves the generated historical host visible while the host personality is active.
 
-Future Tau'ri, Jaffa, Unas or other compatible origins can be added mainly in XML once their races, backstories and name generators exist. No additional branch is required while the current origin schema is sufficient.
+`0.3.18-dev` adds and validates the first additional origin, `SG1_GeneratedHost_TauriSGCVolunteer`, entirely through XML. It uses the existing Human race and Tau'ri name generator, two dedicated modern-Earth childhoods and the eight current SGC adult careers. Relative weights of `1` for the off-world origin and `0.2` for the Tau'ri origin keep off-world humans dominant without introducing a hard percentage.
+
+The new Tau'ri childhoods remain restricted to their own spawn category and are not injected into ordinary starter pools. Existing saved generated identities retain their stored Def references and are not rerolled when the list of available origins grows. The complete `r1` matrix validated both weighted origins, personality switching, shared progression, save/load, legacy identity stability and the real-reimplantation boundary without a C# correction.
+
+Future Jaffa, Unas or other compatible origins can be added mainly in XML once their biological compatibility, backstories and name generators are genuinely available. No additional C# branch is required while the current origin schema remains sufficient.
 

@@ -1,5 +1,37 @@
 # Tests
 
+## 0.3.18-dev - Origine Tau'ri des hôtes Tok'ra générés
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.18-dev`. Aucun correctif C# ou Def supplémentaire n'a été nécessaire après la matrice complète.
+
+Couverture validée :
+
+- rebuild forcé et DLL `0.3.18.0` ;
+- chargement sans nouvelle erreur de Def, backstory, patch ou traduction ;
+- génération des origines `SG1_GeneratedHost_OffworldHuman` et `SG1_GeneratedHost_TauriSGCVolunteer` ;
+- origine humaine hors-monde restant clairement majoritaire avec des poids relatifs `1` et `0.2` ;
+- noms Tau'ri, deux enfances modernes et huit carrières SGC cohérents pour la nouvelle origine ;
+- pools de noms et de backstories humains hors-monde inchangés ;
+- host/symbiote distincts, hôte actif par défaut et marqueur `GeneratedPreJoined` ;
+- dix basculements successifs sans dérive de compétences ;
+- sauvegarde/recharge avec chaque personnalité active ;
+- ancienne identité `0.3.17-dev` conservée sans reroll ;
+- extraction puis vraie réimplantation utilisant `ImplantedExistingHost` et effaçant l'origine générée ;
+- absence des deux nouvelles enfances dans les pools de starters ordinaires et de l'équipe SG ;
+- catalogue wiki complet de `72` backstories ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- traiter les poids d'origine comme des poids relatifs, jamais comme un pourcentage garanti sur un petit échantillon ;
+- conserver la sélection d'origine, du nom et des backstories stable à partir de l'identité persistante ;
+- ne jamais rerouler une identité déjà sauvegardée lorsqu'une nouvelle origine est ajoutée ;
+- conserver les implantations réelles prioritaires sur toute origine historique générée ;
+- limiter les enfances dédiées à leur catégorie de génération prévue ;
+- ajouter les futures origines principalement par XML tant que le schéma actuel reste suffisant ;
+- mettre à jour le catalogue wiki dans le même jalon que toute modification de backstory.
+
+
 ## 0.3.17-dev - Harmonisation de la présentation du projet et du wiki
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.17-dev`. Aucun correctif de gameplay n'a été nécessaire.

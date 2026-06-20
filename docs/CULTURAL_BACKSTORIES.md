@@ -1,18 +1,19 @@
 # Cultural backstories
 
-Version: `0.3.16-dev`
+Version: `0.3.18-dev`
 
-Status: functionally validated and published in `v0.3.16-dev`.
+Status: `72` cultural backstories validated and published through `0.3.18-dev`.
 
 ## Scope
 
-GateRim SG-1 now defines `70` native RimWorld `BackstoryDef` entries.
+GateRim SG-1 now prepares `72` native RimWorld `BackstoryDef` entries.
 
 The catalogue consists of:
 
 - the `52` entries reworked in `0.3.8-dev`;
 - six adult off-world-human careers added in `0.3.13-dev` for generated historical Tok'ra hosts;
-- twelve measured additions in `0.3.16-dev` for cultures already implemented in game.
+- twelve measured additions in `0.3.16-dev` for cultures already implemented in game;
+- two modern-Earth Tau'ri childhoods in `0.3.18-dev` for generated historical Tok'ra hosts.
 
 The `0.3.16-dev` expansion adds exactly two entries to each targeted area:
 
@@ -56,7 +57,9 @@ Descriptions remain player-facing and avoid debug terminology, implementation de
 
 ### Tau'ri / SGC
 
-Eight optional adult careers now cover special operations, medicine, research, linguistics, engineering, liaison work, survival preparation and expedition logistics.
+Two dedicated childhoods now cover a modern-Earth science-fair upbringing and life in a military family. They are used only by the minority Tau'ri origin for historical hosts generated already joined with a Tok'ra.
+
+Eight optional adult careers cover special operations, medicine, research, linguistics, engineering, liaison work, survival preparation and expedition logistics.
 
 ### Jaffa
 
@@ -94,6 +97,7 @@ This keeps the framework generic and allows future content additions to remain d
 - Manual editor choices made after generation remain untouched.
 - The `0.3.0-dev` framework remains the save-compatibility baseline.
 - The six off-world-human adult careers from `0.3.13-dev` remain outside ordinary Tau'ri starter randomization.
+- The two Tau'ri childhoods from `0.3.18-dev` are likewise reserved for generated historical hosts and do not alter ordinary or SG-team starter childhoods.
 
 ## Wiki catalogue maintenance
 
@@ -101,7 +105,20 @@ This keeps the framework generic and allows future content additions to remain d
 
 Any future backstory addition, removal, presentation change or skill change must update the corresponding wiki table in the same milestone.
 
-## Validated coverage
+## Validated `0.3.18-dev` coverage
+
+The final `0.3.18-dev` matrix confirmed:
+
+- both weighted historical-host origins generate correctly, with the off-world origin remaining predominant;
+- the two Tau'ri childhoods load in English and French and are selected only by `SG1_GeneratedHost_TauriSGCVolunteer`;
+- ordinary human and stranded-SG-team starter childhood pools remain unchanged;
+- host and symbiote identities, backstories and shared progression remain stable through switching and save/load;
+- identities saved before the new origin remain unchanged;
+- extraction followed by real reimplantation clears the generated origin and preserves the actual new host;
+- the player wiki contains all `72` entries with matching descriptions and bonuses;
+- no additional C# or Def correction was required after local revision `r1`.
+
+## Previously validated coverage
 
 The final `0.3.16-dev` matrix confirmed:
 
@@ -111,8 +128,12 @@ The final `0.3.16-dev` matrix confirmed:
 - the ordinary-human additive profile keeps vanilla adulthoods clearly predominant;
 - normal pawn, raid and world generation continue to use compatible spawn categories;
 - assigned backstories, manual names and Tok'ra shared progression persist through save/load;
-- the player wiki contains all `70` entries with matching descriptions and bonuses;
+- the player wiki contained all `70` entries then present, with matching descriptions and bonuses;
 - no additional C# or Def correction was required after local revision `r1`.
+
+## Future skill-coverage audit
+
+A later dedicated milestone must compare the skill coverage of each cultural catalogue rather than expanding it by volume alone. The audit must identify absent or under-represented RimWorld skills for existing cultures, then add only the backstories needed to close culturally credible gaps. The same rule will apply when Asgard, Nox, Unas and other future cultures receive their own catalogues.
 
 ## Manual validation
 

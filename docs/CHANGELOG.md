@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.18-dev - Add a Tau'ri origin for generated Tok'ra hosts
+
+- Add a minority `SG1_GeneratedHost_TauriSGCVolunteer` origin to the existing weighted generated-host framework.
+- Keep the off-world-human origin dominant with relative weights `1` and `0.2`.
+- Reuse the existing Tau'ri name generator and eight validated SGC adult careers.
+- Add two dedicated modern-Earth childhoods for science-fair and military-family backgrounds.
+- Restrict the new childhoods to their own spawn category so they do not leak into ordinary starter pools.
+- Expose both origins to the Tok'ra cultural profile through XML only, without changing the generic C# resolver.
+- Preserve stored generated identities, real implantation behavior, extraction and reimplantation boundaries.
+- Expand the cultural-backstory catalogue from `70` to `72` entries and update the French wiki table.
+- Raise the assembly version to `0.3.18.0` and the mod metadata version to `0.3.18-dev`.
+- Validate weighted generation, identity switching, shared progression, save/load stability, legacy-identity preservation, real reimplantation boundaries, starter isolation and a clean `Player.log` on local revision `r1`.
+- Record a future culture-by-culture audit of RimWorld skill coverage without expanding the `0.3.18-dev` functional scope.
+
 ## 0.3.17-dev - Refresh project and wiki presentation
 
 - Replace the root README's obsolete `0.2.18-dev` milestone log with a durable project overview.

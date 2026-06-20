@@ -5,6 +5,7 @@
         <value>
             <generatedHostOrigins>
                 <li>SG1_GeneratedHost_OffworldHuman</li>
+                <li>SG1_GeneratedHost_TauriSGCVolunteer</li>
             </generatedHostOrigins>
         </value>
     </Operation>

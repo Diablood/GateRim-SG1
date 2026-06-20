@@ -1,68 +1,83 @@
 # Project state
 
-Current milestone: `0.3.17-dev - Refresh project and wiki presentation` — validated, closed and published.
+Current milestone: `0.3.18-dev - Add a Tau'ri origin for generated Tok'ra hosts` — functionally validated, closed and published.
 
 ## Published milestone
 
-- Development base tag: `v0.3.16-dev`.
-- Dedicated branch: `feature/project-presentation-refresh`.
-- Validated local archive revision: `0.3.17-dev-r2`.
-- Final published tag: `v0.3.17-dev`.
-- Final commit: `0.3.17-dev - refresh project and wiki presentation`.
+- Development base tag: `v0.3.17-dev`.
+- Dedicated branch: `feature/tokra-generated-host-tauri-origin`.
+- Validated local archive revision: `0.3.18-dev-r1`.
+- Final published tag: `v0.3.18-dev`.
+- Final commit: `0.3.18-dev - add a Tau'ri origin for generated Tok'ra hosts`.
 
-The local `r2` suffix identifies only the tested archive revision. It does not appear in the published commit or tag.
+The local `r1` suffix identifies only the tested archive revision. It does not appear in the published commit or tag.
 
 ## Milestone result
 
-The public presentation now reflects the actual `0.3.x` project state instead of older milestone snapshots:
+The configurable generated-host system now supports two historical origins for Tok'ra created already joined with a host:
 
-- the root README is a durable English overview of the mod and its current playable systems;
-- the French wiki home documents the project through `0.3.17-dev`;
-- `Content-Status.md` distinguishes playable content from future work and includes the cultural framework, the 70-backstory catalogue and persistent Tok'ra dual identity;
-- the wiki sidebar is organized into stable thematic categories rather than one long linear list;
-- the existing Tok'ra dual-identity and tactical-assessment pages are now present in the navigation;
-- the publication procedure now requires every new or renamed wiki page to be assigned to an appropriate sidebar category and checked for missing, obsolete or duplicate links.
+- `SG1_GeneratedHost_OffworldHuman`, with relative weight `1`;
+- `SG1_GeneratedHost_TauriSGCVolunteer`, with relative weight `0.2`.
 
-No gameplay code, Def, translation, texture or balance value changed in this milestone.
+The Tau'ri origin remains deliberately uncommon. It uses the existing Tau'ri name generator, two dedicated modern-Earth childhoods and the eight validated SGC adult careers. The off-world-human origin remains the clear majority without relying on a hard-coded percentage.
 
-## Validation
+The implementation remains fully data-driven:
 
-The complete focused matrix was validated on local revision `r2`:
+- the existing generic C# resolver is unchanged;
+- both origins are exposed through XML;
+- saved generated identities retain their stored origin and are never rerolled merely because the available-origin list grows;
+- real implantations continue to capture the actual pawn and clear any generated historical origin;
+- the two new childhoods remain isolated from ordinary human and stranded-SG-team starter childhood pools.
 
-- forced rebuild and DLL version `0.3.17.0`;
-- RimWorld loading to the main menu without a new GateRim SG-1 error;
-- mod metadata version `0.3.17-dev` and unchanged immersive About description;
-- removal of stale active-version claims from the README and wiki presentation pages;
-- valid repository and wiki links for the tested scope;
-- readable thematic sidebar categories in the narrow wiki layout;
-- preservation of all previous internal navigation targets without duplication;
-- addition of `Tokra-Dual-Identity` and `Tokra-Tactical-Threat-Assessment` to the sidebar;
-- accurate separation between current playable systems and future content;
-- confirmation that `About/ModIcon.png`, gameplay C#, Defs, translations and textures are unchanged;
-- clean `Player.log` for the main-menu smoke test.
+The cultural-backstory catalogue now contains `72` entries.
 
-No corrective gameplay revision was required after `r2`.
+## Functional validation
+
+The complete focused matrix was validated on local revision `r1`:
+
+- forced rebuild and DLL version `0.3.18.0`;
+- clean loading of the origin Defs, backstories, XML patch and French translations;
+- generation of both historical origins through `Spawn pawn` → `SG1_TokraVoluntaryHost`;
+- off-world-human origins remaining visibly predominant under relative weights `1` and `0.2`;
+- correct Tau'ri names, dedicated childhoods and SGC adult careers;
+- unchanged off-world-human names and backstory pools;
+- stable host/symbiote switching and shared progression without skill drift;
+- save/load stability with either personality active;
+- preservation of an existing `0.3.17-dev` generated identity without reroll;
+- extraction followed by real reimplantation switching to `ImplantedExistingHost` and clearing the generated origin;
+- isolation of the two new childhoods from ordinary and stranded-SG-team starter pools;
+- clean `Player.log` for the tested scope.
+
+No corrective C# or Def revision was required after `r1`.
+
+## Deferred work recorded
+
+A future dedicated audit must verify skill coverage by culture or race rather than expanding catalogues blindly. It must identify absent or under-represented RimWorld skills for Tau'ri / SGC, Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld hosts, Tok'ra and future cultures such as Asgard, Nox and Unas, then add only culturally coherent backstories where a real gap exists.
+
+This audit is recorded in `docs/ROADMAP.md` and is not part of the functional scope of `0.3.18-dev`.
 
 ## Files published
 
-- `README.md`;
 - `About/About.xml`;
 - `Source/GateRimSG1/GateRimSG1.csproj`;
+- `1.6/Defs/GeneratedHostOriginDefs/SG1_GeneratedHostOrigins.xml`;
+- `1.6/Patches/SG1_TokraGeneratedHostOrigins.xml`;
+- `1.6/Defs/BackstoryDefs/SG1_TauriChildhoodBackstories.xml`;
+- `Languages/French/DefInjected/BackstoryDef/SG1_TauriChildhoodBackstories.xml`;
 - `docs/PROJECT_STATE.md`;
 - `docs/ROADMAP.md`;
 - `docs/TESTING_CURRENT.md`;
 - `docs/TESTING.md`;
 - `docs/CHANGELOG.md`;
-- `docs/MILESTONE_PUBLICATION.md`;
-- `docs/wiki/Home.md`;
-- `docs/wiki/Content-Status.md`;
-- `docs/wiki/_Sidebar.md`.
+- `docs/CULTURAL_FRAMEWORK.md`;
+- `docs/CULTURAL_BACKSTORIES.md`;
+- `docs/wiki/Cultural-Backstories.md`.
 
-Because `docs/wiki/*.md` changed, the separate wiki repository must be synchronized as part of the final publication.
+Because `docs/wiki/Cultural-Backstories.md` changed, the separate wiki repository must be synchronized as part of the final publication.
 
 ## Next development base
 
-The next milestone must start from the published tag `v0.3.17-dev` on a new dedicated `feature/...` branch.
+The next milestone must start from the published tag `v0.3.18-dev` on a new dedicated `feature/...` branch.
 
 Before selecting it, reread:
 

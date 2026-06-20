@@ -13,7 +13,32 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Harmonisation de la présentation du projet et du wiki (`0.3.17-dev`)
+### Origine Tau'ri minoritaire des hôtes Tok'ra générés (`0.3.18-dev`)
+
+- [x] Partir du tag publié `v0.3.17-dev` sur la branche dédiée `feature/tokra-generated-host-tauri-origin`.
+- [x] Ajouter une origine pondérée `SG1_GeneratedHost_TauriSGCVolunteer` sans modifier le moteur C#.
+- [x] Conserver l'origine humaine hors-monde comme origine dominante avec un poids `1` contre `0.2` pour l'origine Tau'ri.
+- [x] Réutiliser le générateur de noms Tau'ri et les huit carrières adultes SGC existantes.
+- [x] Ajouter deux enfances Tau'ri modernes dédiées aux identités historiques générées.
+- [x] Empêcher ces nouvelles enfances d'entrer dans les pools ordinaires des starters humains ou du scénario Équipe SG isolée.
+- [x] Exposer les deux origines au profil Tok'ra par le patch XML existant.
+- [x] Mettre à jour le framework culturel, le catalogue technique et le tableau wiki des backstories.
+- [x] Valider le rebuild `0.3.18.0` et le chargement sans erreur de Def, patch ou traduction.
+- [x] Observer les deux origines sur des `SG1_TokraVoluntaryHost` générés, avec une majorité hors-monde.
+- [x] Valider les noms, enfances, carrières, basculements et compétences partagées pour les deux origines.
+- [x] Valider la sauvegarde/recharge, la stabilité d'une ancienne identité `0.3.17-dev` et l'absence de reroll.
+- [x] Valider l'extraction puis la réimplantation réelle sans origine générée résiduelle.
+- [x] Valider l'isolation des starters, les régressions essentielles et un `Player.log` propre.
+- [x] Publier la branche, le tag final unique `v0.3.18-dev` et synchroniser le wiki séparé.
+
+La matrice complète a été validée sur la révision locale `r1`. Les deux origines sont générées, l'origine humaine hors-monde reste clairement majoritaire, les identités persistantes ne sont pas reroulées et une vraie réimplantation remplace correctement l'origine historique générée par l'hôte réel. Aucun correctif C# ou Def supplémentaire n'a été nécessaire.
+
+Ce jalon constitue la première extension réelle des origines d'hôte pondérées prévues en `0.3.13-dev`. Les origines Jaffa et Unas restent différées jusqu'à ce que leur compatibilité biologique et leurs pools d'identité puissent être traités sans approximation.
+
+Le catalogue wiki contient désormais les `72` backstories et doit être synchronisé avec le dépôt wiki séparé lors de la publication finale.
+
+
+### Jalon précédent — harmonisation de la présentation du projet et du wiki (`0.3.17-dev`)
 
 - [x] Partir du tag publié `v0.3.16-dev` sur la branche dédiée `feature/project-presentation-refresh`.
 - [x] Remplacer le README historique centré sur `0.2.18-dev` par une présentation durable du projet.
@@ -33,7 +58,7 @@ La validation locale de `r2` confirme que la présentation publique est cohéren
 
 Ce jalon ne modifie aucun comportement de jeu. Il transforme les pages publiques et leur navigation en documents durables afin qu'elles ne redeviennent pas obsolètes à chaque micro-jalon. La description Workshop proprement dite restera à publier lors de la préparation de la première version publique ; `About/About.xml`, le README et l'accueil du wiki en constituent désormais la base éditoriale commune.
 
-Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.17-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
+Le jalon suivant a démarré explicitement depuis `v0.3.17-dev`, conformément à cette procédure.
 
 ### Jalon précédent — extension mesurée des backstories culturelles (`0.3.16-dev`)
 
@@ -104,7 +129,8 @@ Le cycle complet a été validé sur la révision locale `r1` sans correctif C# 
 
 ### Extensions futures des origines d'hôte
 
-- [ ] Ajouter des profils pondérés Tau'ri, Jaffa, Unas ou autres uniquement lorsque ces origines sont réellement disponibles et cohérentes en jeu.
+- [x] Ajouter dans `0.3.18-dev` une première origine Tau'ri minoritaire entièrement pilotée par XML.
+- [ ] Ajouter des profils pondérés Jaffa, Unas ou autres uniquement lorsque ces origines sont réellement disponibles et cohérentes en jeu.
 - [ ] Garder le moteur C# générique : les nouvelles origines doivent être ajoutées principalement par XML.
 - [ ] Vérifier les compatibilités biologiques, les générateurs de noms et les pools de backstories avant d'activer une nouvelle origine.
 - [ ] Ne jamais appliquer une origine générée aux implantations réelles, qui doivent conserver l'identité existante du pawn.
@@ -180,8 +206,12 @@ La série `0.3.x` doit construire un framework interne global et réutilisable, 
 - [x] Valider dans `0.3.10-dev` la persistance et l'affichage séparés des identités de l'hôte et du symbiote, selon `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
 - [x] Valider en jeu la refonte `0.3.8-dev` des `52` backstories existantes et de leurs descriptions anglaises et françaises.
 - [x] Valider en jeu les bonus de compétences modérés ajoutés aux backstories dans `0.3.8-dev`.
-- [ ] Organiser une discussion dédiée avant d'étendre le nombre de backstories ; conserver une quantité raisonnable, lisible et maintenable plutôt qu'un catalogue massif.
-- [ ] Vérifier la cohérence entre noms, backstories, factions, marques Jaffa et identités sociales.
+- [x] Organiser une discussion dédiée avant d'étendre le nombre de backstories ; première extension mesurée validée dans `0.3.16-dev`.
+- [ ] Réaliser dans un jalon dédié un audit de couverture des compétences par culture ou race : vérifier que chaque catalogue couvre suffisamment les compétences RimWorld pertinentes, identifier les compétences absentes ou sous-représentées et compléter uniquement les lacunes réelles avec des backstories culturellement cohérentes.
+  - Auditer au minimum les Tau'ri / SGC, Jaffa Goa'uld, Jaffa libres, hôtes Goa'uld et Tok'ra.
+  - Appliquer le même contrôle aux futures cultures Asgard, Nox, Unas et à toute nouvelle race ou faction disposant de backstories.
+  - Éviter de gonfler artificiellement le catalogue : une compétence peut être couverte par plusieurs parcours complémentaires sans exiger une backstory dédiée à chaque combinaison.
+- [x] Vérifier la cohérence entre noms, backstories, factions, marques Jaffa et identités sociales avec le diagnostic unifié de `0.3.15-dev`.
 - [x] Migrer les générateurs de noms existants vers la consommation des profils culturels communs sans renommer les pawns déjà traités.
 - [x] Valider les pools d'identité hôte / symbiote dans les profils sans imposer leur affichage aux pawns gérés par l'IA.
 - [x] Maintenir dans le wiki les tableaux de backstories par culture avec nom, description et bonus de compétences ; toute future backstory doit y être ajoutée dans le même jalon.
