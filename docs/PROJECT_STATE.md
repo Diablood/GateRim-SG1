@@ -1,80 +1,84 @@
 # Project state
 
-Current milestone: `0.3.14-dev - Audit Tok'ra identity through death and resurrection` — functionally validated, closed and published.
+Current milestone: `0.3.15-dev - Add unified cultural identity diagnostics` — functionally validated, closed and published.
 
 ## Published milestone
 
-- Development base tag: `v0.3.13-dev`.
-- Dedicated branch: `feature/tokra-death-resurrection-audit`.
-- Validated local archive revision: `0.3.14-dev-r1`.
-- Final published tag: `v0.3.14-dev`.
-- Final commit: `0.3.14-dev - audit Tok'ra identity through death and resurrection`.
+- Development base tag: `v0.3.14-dev`.
+- Dedicated branch: `feature/cultural-identity-diagnostics`.
+- Validated local archive revision: `0.3.15-dev-r1`.
+- Final published tag: `v0.3.15-dev`.
+- Final commit: `0.3.15-dev - add unified cultural identity diagnostics`.
 
 The local `r1` suffix identifies only the tested archive revision. It does not appear in the published commit or tag.
 
 ## Milestone result
 
-The existing Tok'ra dual-identity architecture remains coherent when a directly player-controlled host dies, becomes a corpse, is buried, is saved and reloaded while dead or buried, and is resurrected.
+GateRim SG-1 now provides one unified, read-only cultural identity report for the selected pawn.
 
-Both complete test matrices were validated:
+The same report is available through:
 
-- death with the host personality active;
-- death with the symbiote personality active;
-- corpse save/load;
-- vanilla burial and grave save/load;
-- corpse recovery and resurrection;
-- preservation of both identities, both backstory records, the active personality and shared skill progression;
-- absence of a personality gizmo while dead or buried;
-- return of exactly one gizmo after resurrection;
-- ten repeated post-resurrection switches without skill loss, duplication or stacking;
-- post-resurrection save/load;
-- Tok'ra extraction and reimplantation after resurrection;
-- Goa'uld and ordinary-human death/resurrection regressions;
-- clean `Player.log`.
+- one grouped RimWorld developer action;
+- one button in the existing advanced GateRim SG-1 settings section.
 
-## Implementation decision
+The report exposes the current state supplied by the existing authoritative systems:
 
-No C# behavior correction was required.
+- name, `ThingID`, race, xenotype, `PawnKindDef`, faction and active backstories;
+- every matching cultural profile, the selected profile and the resolved name group in `NonPlayer` and `PlayerStarter` contexts;
+- Jaffa physiology, Prim'ta state and intrinsic forehead mark;
+- contextual Free Jaffa, Goa'uld-domain Jaffa, marked-Jaffa, Goa'uld-host, Tok'ra-host, nearby-System-Lord and System-Lord-host flags;
+- persistent adult-symbiote data, including the distinct Tok'ra host and symbiote identities when present.
 
-The validated architecture already provides the complete lifecycle persistence path:
+## Functional validation
 
-- `GoauldSymbioteData` remains deep-saved by the symbiote Hediff component;
-- the pawn stored inside its corpse retains both names, both backstory records, the active-personality state and shared progression;
-- dead pawns fail the direct-player-control eligibility check, so no switch gizmo is exposed;
-- post-load initialization reconnects the saved symbiote data correctly;
-- ordinary death does not trigger extraction or ordinary-Hediff-removal restoration;
-- resurrection restores normal player control without rerolling or rebuilding either identity.
+The complete focused matrix was validated on local revision `r1`:
 
-The corpse and grave may follow the vanilla label generated from the personality active at death. No parallel corpse identity, grave identity or resurrection identity system is needed.
+- forced rebuild and DLL version `0.3.15.0`;
+- main-menu loading without new red errors;
+- translated rejection when no pawn is selected;
+- ordinary human;
+- Free Jaffa;
+- Goa'uld-aligned Jaffa;
+- active Goa'uld host;
+- pre-joined Tok'ra before and after personality switching;
+- identical report access through developer actions and advanced mod settings;
+- correct hiding when both developer mode and the advanced option are disabled;
+- repeated inspection, save/load and manual-name preservation;
+- no change to names, backstories, factions, marks, Prim'ta, symbiote data or active personality merely from opening the report;
+- clean `Player.log` for the tested scope.
 
-## Documentary result
+No corrective `r2` code revision was required.
 
-This milestone also corrected stale `0.3.13-dev` validation and publication wording that remained in the previously published tracking files.
+## Architecture decision
 
-`docs/MILESTONE_PUBLICATION.md` now requires:
+The diagnostic remains a consumer of existing services rather than a new identity source.
 
-- a final consistency review of `PROJECT_STATE.md`, `ROADMAP.md`, `TESTING_CURRENT.md`, `TESTING.md` and `CHANGELOG.md` before the release commit;
-- matching metadata and assembly versions;
-- a search for obsolete active-milestone wording;
-- a review of the files actually stored in `HEAD` after tagging.
+It evaluates the pawn when opened and does not cache, reserve, normalize, repair or migrate cultural data. A discrepancy found later must therefore be reproduced and corrected in the authoritative subsystem that owns the value, not hidden by synchronization inside the report.
+
+This completes the roadmap point requiring a cross-system check between cultural names, backstories, factions, Jaffa marks and social identities.
 
 ## Files published
 
 - `About/About.xml`;
 - `Source/GateRimSG1/GateRimSG1.csproj`;
+- `Source/GateRimSG1/GateRimSG1Mod.cs`;
+- `Source/GateRimSG1/Culture/CulturalIdentityDebugActions.cs`;
+- `Source/GateRimSG1/Culture/CulturalIdentityDebugUtility.cs`;
+- `Languages/English/Keyed/SG1_CulturalIdentityDiagnostics.xml`;
+- `Languages/French/Keyed/SG1_CulturalIdentityDiagnostics.xml`;
 - `docs/PROJECT_STATE.md`;
 - `docs/ROADMAP.md`;
-- `docs/MILESTONE_PUBLICATION.md`;
-- `docs/TESTING.md`;
 - `docs/TESTING_CURRENT.md`;
+- `docs/TESTING.md`;
 - `docs/CHANGELOG.md`;
-- `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
+- `docs/CULTURAL_FRAMEWORK.md`;
+- `docs/CULTURAL_IDENTITY_DIAGNOSTICS.md`.
 
-No C# source, Def, translation or `docs/wiki/*.md` page was modified. No separate wiki synchronization was required for this milestone.
+No `docs/wiki/*.md` page was modified. No separate wiki synchronization is required for this milestone.
 
 ## Next development base
 
-The next milestone must start from the published tag `v0.3.14-dev` on a new dedicated `feature/...` branch.
+The next milestone must start from the published tag `v0.3.15-dev` on a new dedicated `feature/...` branch.
 
 Before selecting it, reread:
 

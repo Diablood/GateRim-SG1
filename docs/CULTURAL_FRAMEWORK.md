@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.13-dev`
+Version: `0.3.15-dev`
 
 ## Purpose
 
@@ -90,6 +90,20 @@ The first configured use is the Tok'ra symbiote identity:
 - only a directly player-controlled Tok'ra exposes the new RP summary.
 
 The framework does not replace the pawn's active backstories or apply skill changes in this phase. Future cultures may configure identity pools without C# changes while the existing slots are sufficient.
+
+### Unified cultural identity diagnostics
+
+`0.3.15-dev` adds a development-only consumer that reads the existing framework without creating another source of truth. For one selected pawn it reports:
+
+- current race, xenotype, `PawnKindDef`, faction and active backstories;
+- matching profiles, the selected profile and the name group in both normal and player-starter contexts;
+- Jaffa physiology, Prim'ta and forehead mark;
+- contextual social identities already used by thoughts and faction logic;
+- persistent adult-symbiote data when present.
+
+The report is deliberately evaluated at the time it is opened. It does not cache, assign, normalize or repair culture data. Its purpose is to reveal disagreements between existing consumers so a real defect can be reproduced before any shared framework rule is changed.
+
+The complete `0.3.15-dev` matrix was validated for ordinary humans, Free Jaffa, Goa'uld-aligned Jaffa, Goa'uld hosts and pre-joined Tok'ra, including active-personality switching, save/load, both access paths and hidden-state behavior. Repeated inspection produced no pawn mutation or new log error.
 
 ## Boundaries
 

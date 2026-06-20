@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.15-dev - Add unified cultural identity diagnostics
+
+- Add one read-only technical report for the currently selected pawn.
+- Display current race, xenotype, `PawnKindDef`, faction and active backstories.
+- Display every matching cultural profile, the selected profile and the resolved cultural name group for normal and player-starter generation contexts.
+- Display Jaffa physiology, Prim'ta state, intrinsic forehead mark and existing contextual social-identity flags.
+- Display persistent Goa'uld or Tok'ra symbiote data when the pawn carries an adult host symbiote.
+- Expose the same report through one grouped developer action and the existing advanced GateRim SG-1 settings section.
+- Add English and French labels while keeping the report itself technical.
+- Keep the diagnostic strictly read-only and hidden outside developer mode or explicit advanced-debug opt-in.
+- Raise the assembly version to `0.3.15.0` and the mod metadata version to `0.3.15-dev`.
+- Validate ordinary humans, Free Jaffa, Goa'uld-aligned Jaffa, Goa'uld hosts and Tok'ra dual identities, including personality switching, save/load and debug visibility.
+- Confirm through repeated inspection that the report does not modify names, backstories, factions, marks, Prim'ta or persistent symbiote data.
+- Validate both access paths, hidden-state behavior and a clean `Player.log` without requiring a post-test code correction.
+
 ## 0.3.14-dev - Audit Tok'ra identity through death and resurrection
 
 - Validate the complete death, corpse, burial, grave save/load and resurrection lifecycle with either the host or symbiote personality active.

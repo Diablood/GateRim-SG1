@@ -1,3 +1,4 @@
+using GateRimSG1.Culture;
 using GateRimSG1.Names;
 using UnityEngine;
 using Verse;
@@ -70,6 +71,17 @@ namespace GateRimSG1
                     "GR_CulturalNames_OpenSamplesButton".Translate()))
                 {
                     CulturalPawnNameDebugActions.OpenSampleReport();
+                }
+
+                listing.Gap();
+                listing.Label(
+                    "GR_CulturalIdentity_SettingsDebugLabel".Translate());
+
+                if (listing.ButtonText(
+                    "GR_CulturalIdentity_InspectSelectedButton".Translate()))
+                {
+                    CulturalIdentityDebugActions
+                        .OpenSelectedPawnReport();
                 }
             }
 

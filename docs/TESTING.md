@@ -1,5 +1,30 @@
 # Tests
 
+## 0.3.15-dev - Diagnostic unifié de l'identité culturelle
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.15-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire après la matrice complète.
+
+Couverture validée :
+
+- rebuild forcé et DLL `0.3.15.0` ;
+- chargement sans nouvelle erreur rouge et message propre lorsqu'aucun pawn n'est sélectionné ;
+- cohérence du rapport pour un humain ordinaire, un Jaffa libre, un Jaffa Goa'uld, un hôte Goa'uld et un Tok'ra pré-fusionné ;
+- séparation correcte des contextes `NonPlayer` et `PlayerStarter` ;
+- cohérence entre profils, groupe de noms, backstories, faction, physiologie Jaffa, Prim'ta, marque frontale et identité sociale ;
+- conservation du même enregistrement persistant lors d'un basculement de personnalité Tok'ra ;
+- accès identique depuis l'action développeur et les options avancées ;
+- masquage complet lorsque le mode développeur et l'option avancée sont désactivés ;
+- ouverture répétée, sauvegarde/recharge, conservation des noms manuels et absence de modification du pawn ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- conserver un seul rapport central qui interroge les services autoritatifs existants ;
+- ne jamais réserver un nom, remplacer une backstory, corriger une faction ou initialiser une identité pendant l'inspection ;
+- afficher séparément `NonPlayer` et `PlayerStarter`, car leurs profils peuvent légitimement différer ;
+- garder les accès cachés hors mode développeur ou option avancée explicite ;
+- corriger toute incohérence future dans le sous-système propriétaire de la donnée, pas par une synchronisation propre au rapport.
+
 > Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
 
 ## 0.3.14-dev - Mort, cadavre, tombe et résurrection de l'identité Tok'ra

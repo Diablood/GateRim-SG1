@@ -13,7 +13,28 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Mort, cadavre, tombe et résurrection des Tok'ra (`0.3.14-dev`)
+### Diagnostic unifié de l'identité culturelle (`0.3.15-dev`)
+
+- [x] Partir du tag publié `v0.3.14-dev` sur la branche dédiée `feature/cultural-identity-diagnostics`.
+- [x] Auditer les services existants avant d'ajouter un nouvel outil.
+- [x] Ajouter un rapport central en lecture seule pour le pawn sélectionné.
+- [x] Afficher les profils correspondants, le profil choisi et le groupe de noms dans les contextes `NonPlayer` et `PlayerStarter`.
+- [x] Regrouper l'état Jaffa, les marques, l'identité sociale et les données persistantes du symbiote dans le même rapport.
+- [x] Exposer un seul accès développeur et un seul bouton dans la section avancée existante.
+- [x] Garder tous les diagnostics masqués lorsque le mode développeur et l'option avancée sont désactivés.
+- [x] Garantir par conception et par test que l'outil ne renomme pas, ne reroll pas et ne modifie aucune identité.
+- [x] Valider le rebuild `0.3.15.0` et le chargement sans erreur.
+- [x] Valider les cas humain, Jaffa libre, Jaffa Goa'uld, hôte Goa'uld et Tok'ra pré-fusionné.
+- [x] Valider l'accès par les options, la sauvegarde/recharge et un `Player.log` propre.
+- [x] Publier la branche et le tag final unique `v0.3.15-dev` après validation locale.
+
+Le rapport central a reproduit fidèlement les valeurs des services existants pour toute la matrice ciblée, y compris le basculement d'identité Tok'ra, sans mutation du pawn. Aucun correctif fonctionnel supplémentaire n'a été nécessaire après la révision locale `r1`.
+
+Ce jalon clôt le point durable de cohérence entre noms, backstories, factions, marques Jaffa et identités sociales. Les futurs systèmes culturels pourront ajouter une section concise au rapport uniquement lorsqu'ils disposent d'un service autoritatif réel à auditer.
+
+Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.15-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
+
+### Jalon précédent — mort, cadavre, tombe et résurrection des Tok'ra (`0.3.14-dev`)
 
 - [x] Partir du tag publié `v0.3.13-dev` sur la branche dédiée `feature/tokra-death-resurrection-audit`.
 - [x] Auditer statiquement la persistance existante avant d'ajouter du code.
@@ -29,8 +50,6 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 - [x] Publier la branche et le tag final unique `v0.3.14-dev`.
 
 Le cycle complet a été validé sur la révision locale `r1` sans correctif C# : les données persistantes existantes couvrent correctement le cadavre, la tombe, la résurrection, le basculement post-résurrection et l'extraction ultérieure. Aucun fichier wiki n'a été modifié.
-
-Le prochain jalon n'est pas encore arrêté. Il doit partir de `v0.3.14-dev` sur une nouvelle branche dédiée après relecture de `docs/PROJECT_STATE.md`, de cette roadmap et de `docs/MILESTONE_PUBLICATION.md`.
 
 ### Jalon précédent — identités distinctes des Tok'ra pré-fusionnés (`0.3.13-dev`)
 

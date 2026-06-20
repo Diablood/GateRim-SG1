@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <GR_CulturalIdentity_SettingsDebugLabel>Cultural identity diagnostics</GR_CulturalIdentity_SettingsDebugLabel>
+  <GR_CulturalIdentity_InspectSelectedButton>Inspect selected pawn</GR_CulturalIdentity_InspectSelectedButton>
+  <GR_CulturalIdentity_NoPawnSelected>Select one pawn before opening the cultural identity report.</GR_CulturalIdentity_NoPawnSelected>
+  <GR_CulturalIdentity_ReportTitle>Cultural identity report — {0}</GR_CulturalIdentity_ReportTitle>
+</LanguageData>
