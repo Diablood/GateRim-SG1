@@ -1,3 +1,129 @@
+# Tests
+
+> Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
+
+
+## 0.3.8-dev - Refonte des backstories culturelles
+
+Cette série vérifie les `52` histoires existantes, leurs descriptions enrichies, leurs bonus de compétences et l'absence de régression sur la génération culturelle.
+
+### Préconditions
+
+- Créer la branche `feature/cultural-backstory-rework` depuis `v0.3.7-dev`.
+- Extraire l'archive à la racine du dépôt.
+- Effectuer un rebuild complet de `GateRimSG1.dll`.
+- Utiliser le français pour contrôler les traductions, puis effectuer au moins un chargement en anglais si possible.
+
+### Test 1 — Chargement des Defs
+
+1. Démarrer RimWorld avec GateRim SG-1 et Biotech.
+2. Attendre l'arrivée au menu principal.
+3. Vérifier l'absence de fenêtre d'erreur XML.
+4. Ouvrir le journal développeur et rechercher `BackstoryDef`, `skillGains`, `SG1_CulturalBackstories` et `translation`.
+
+Résultat attendu : les `52` histoires et leurs traductions se chargent sans erreur ni clé dupliquée.
+
+### Test 2 — Équipe SG isolée
+
+1. Créer une nouvelle partie avec le scénario `Équipe SG isolée`.
+2. Sur l'écran de sélection, inspecter les quatre candidats Tau'ri.
+3. Régénérer plusieurs fois les candidats afin d'obtenir plusieurs carrières SGC.
+4. Lire les descriptions et vérifier qu'elles sont composées de deux idées cohérentes, sans formulation technique.
+5. Comparer les compétences visibles au parcours affiché : forces spéciales, médecine, recherche, linguistique, ingénierie ou liaison.
+6. Modifier manuellement un nom, lancer la partie et vérifier qu'il reste inchangé.
+
+Résultat attendu : les carrières SGC restent optionnelles, lisibles et cohérentes avec les compétences, sans régression sur les noms du scénario.
+
+### Test 3 — Génération développeur immédiate
+
+1. Mettre le jeu en pause.
+2. Utiliser `Debug actions menu` → `Spawn pawn` sur les PawnKinds `SG1_...` disponibles.
+3. Tester au minimum les quatre Jaffa suivants :
+   - `SG1_GoauldJaffaWarrior` ;
+   - `SG1_GoauldJaffaGuard` ;
+   - `SG1_GoauldSettlementJaffaWarrior` ;
+   - `SG1_GoauldSettlementJaffaGuard`.
+4. Tester aussi les PawnKinds disponibles pour les Jaffa libres, les hôtes Goa'uld, les Grands Maîtres et les hôtes Tok'ra.
+5. Inspecter immédiatement l'enfance, l'âge adulte, la description et les compétences sans reprendre le temps.
+6. Reprendre le temps et vérifier qu'aucune histoire, compétence ou identité n'est remplacée une seconde fois.
+
+Résultat attendu : les filtres culturels continuent de sélectionner les mêmes catégories et les nouveaux bonus sont appliqués dès la génération.
+
+### Test 4 — Échantillon de chaque famille
+
+Obtenir et inspecter au moins un personnage de chacune des familles suivantes :
+
+- enfance Jaffa ;
+- âge adulte Jaffa Goa'uld ;
+- âge adulte Jaffa libre ;
+- enfance humaine hors-monde ;
+- hôte Goa'uld ordinaire ;
+- Grand Maître Goa'uld ;
+- agent Tok'ra ;
+- adulte Tau'ri / SGC.
+
+Pour chaque personnage, vérifier :
+
+1. la cohérence du texte français ;
+2. l'absence de texte tronqué ou de clé XML visible ;
+3. la présence de bonus de compétences modestes et thématiques ;
+4. l'absence de nouvelle incapacité de travail, passion forcée ou trait imposé.
+
+### Test 5 — Génération naturelle
+
+1. Déclencher un raid Goa'uld et inspecter plusieurs Jaffa.
+2. Visiter ou générer une colonie Goa'uld et inspecter les gardes, hôtes ordinaires et le Grand Maître lorsqu'ils sont disponibles.
+3. Visiter ou générer une colonie Jaffa libre.
+4. Déclencher des visiteurs ou contacts Tok'ra générés naturellement.
+5. Vérifier que les backstories correspondent toujours à la faction et au rôle du pawn.
+
+Résultat attendu : la refonte des Defs n'altère pas les filtres de génération existants.
+
+### Test 6 — Colon existant et implantation Tok'ra
+
+1. Choisir un colon possédant des histoires vanilla ou GateRim SG-1.
+2. Effectuer une implantation Tok'ra volontaire.
+3. Vérifier que son enfance et son âge adulte d'origine restent inchangés.
+4. Vérifier que le nom visible reste inchangé.
+
+Résultat attendu : l'implantation n'attribue pas rétroactivement une carrière Tok'ra.
+
+### Test 7 — Sauvegarde et rechargement
+
+1. Sauvegarder une partie contenant plusieurs cultures et parcours.
+2. Quitter complètement RimWorld.
+3. Recharger la sauvegarde.
+4. Comparer les histoires, descriptions, compétences et noms.
+
+Résultat attendu : aucun parcours n'est reroulé et aucune compétence n'est ajoutée une seconde fois.
+
+### Test 8 — Catalogue wiki des backstories
+
+1. Ouvrir `docs/wiki/Cultural-Backstories.md`.
+2. Vérifier la présence des huit tableaux culturels : Tau'ri / SGC, enfances Jaffa, Jaffa Goa'uld, Jaffa libres, humains hors-monde, hôtes Goa'uld, Grands Maîtres Goa'uld et Tok'ra.
+3. Compter les lignes de backstories et confirmer que les `52` entrées sont présentes une seule fois.
+4. Comparer plusieurs lignes de chaque tableau aux Defs et aux traductions françaises : nom, description et bonus de compétences doivent correspondre exactement.
+5. Vérifier que la page précise que toute future backstory doit mettre à jour le tableau de sa culture dans le même jalon.
+
+Résultat attendu : le wiki constitue un catalogue joueur complet, cohérent avec les Defs et durable pour les futures cultures.
+
+### Test 9 — Frontière du jalon
+
+1. Sur l'écran de sélection des pawns de départ, utiliser plusieurs fois la randomisation avec les configurations actuellement disponibles.
+2. Vérifier que `0.3.8-dev` n'introduit pas encore de nouveau filtrage culturel propre aux starters.
+3. Générer ensuite des pawns par raid, colonie, visiteur ou outil debug et confirmer que leurs filtres habituels restent inchangés.
+4. Vérifier dans `docs/PROJECT_STATE.md` et `docs/ROADMAP.md` que le futur filtrage est décrit comme un jalon séparé, piloté par les profils culturels du framework global.
+
+Résultat attendu : la refonte actuelle reste un changement de données compatible ; aucun comportement futur n'est activé par anticipation.
+
+### Contrôle final
+
+- Vérifier la version d'assembly `0.3.8.0`.
+- Vérifier la version affichée `0.3.8-dev`.
+- Rejouer un raid Goa'uld pour confirmer l'absence de régression générale.
+- Contrôler `Player.log` et vérifier l'absence d'erreurs XML, `BackstoryDef`, `skillGains`, traduction, génération, Scribe ou ancienne DLL.
+- Confirmer qu'aucune nouvelle backstory n'a été ajoutée : le total reste `52`.
+
 # Testing workflow
 
 ## 0.3.7-dev - Présentation courte du mod

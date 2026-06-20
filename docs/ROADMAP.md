@@ -13,14 +13,24 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Réécrire la présentation du mod (`0.3.7-dev`)
+### Refonte des backstories culturelles (`0.3.8-dev`)
 
-- [x] Remplacer l'inventaire exhaustif de `About/About.xml` par une présentation courte et immersive.
-- [x] Centrer le texte sur la promesse GateRim SG-1, les factions, les principales expériences de jeu et l'état réel du développement.
-- [x] Conserver une mention claire de la dépendance Biotech.
-- [x] Préciser que la Porte des étoiles fonctionnelle et la progression hors monde complète ne sont pas encore incluses.
-- [ ] Valider l'affichage dans le gestionnaire de mods, la compilation `0.3.7.0` et `Player.log`.
-- [ ] Publier la branche `feature/about-description-rewrite` et le tag final `v0.3.7-dev`.
+- [x] Valider en jeu les `52` descriptions anglaises et françaises enrichies.
+- [x] Valider les bonus de compétences modérés et l'absence de régression sur les filtres culturels existants.
+- [x] Vérifier le catalogue wiki complet par culture.
+- [ ] Synchroniser le wiki lors de la publication.
+- [ ] Publier la branche `feature/cultural-backstory-rework` et le tag final `v0.3.8-dev`.
+
+### Étape suivante : profils culturels de départ (`0.3.9-dev`)
+
+- [ ] Créer un résolveur culturel commun piloté par des Defs XML, plutôt que des règles C# spécifiques à chaque culture.
+- [ ] Appliquer le filtrage uniquement à la génération et à la régénération des pawns de départ.
+- [ ] Pour un starter Jaffa, autoriser les parcours Jaffa Goa'uld et Jaffa libres compatibles.
+- [ ] Pour un starter hôte, autoriser les parcours Goa'uld et Tok'ra compatibles.
+- [ ] Dans le scénario `Équipe SG isolée`, limiter par défaut les humains aux parcours Tau'ri / SGC configurés.
+- [ ] Dans un scénario normal, conserver le mélange vanilla et GateRim SG-1 prévu par les filtres ordinaires.
+- [ ] Ne jamais rejeter une backstory choisie manuellement par un éditeur de pawns compatible.
+- [ ] Ne pas modifier les raids, visiteurs, colonies, quêtes, incidents ou autres pawns générés dans le monde.
 
 ## Présentation du mod et métadonnées
 
@@ -60,15 +70,44 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 - [ ] Vérifier qu'aucun outil debug n'est visible lorsque le mode développeur et l'option avancée du mod sont désactivés.
 - [ ] Effectuer avant stabilisation publique une passe globale sur les textes visibles : ton RP, formulations naturelles, boutons courts et absence d'informations techniques inutiles.
 
+## Framework culturel interne `0.3.x`
+
+La série `0.3.x` doit construire un framework interne global et réutilisable, pas une collection de correctifs isolés.
+
+- [ ] Centraliser l'identification culturelle, identitaire et factionnelle dans un service commun avec profils configurables en XML.
+- [ ] Permettre à un profil de déclarer ses critères d'identification, générateurs de noms, backstories autorisées, priorités et restrictions de scénario.
+- [ ] Raisonner en profils culturels plutôt qu'en simples races biologiques afin de couvrir Jaffa soumis ou libres, hôtes Goa'uld ou Tok'ra, Tau'ri / SGC et futurs cas hybrides.
+- [ ] Réutiliser ces profils, lorsque pertinent, pour les noms, backstories, pawns de départ, scénarios, génération de pawns, incidents, quêtes, équipements culturels et outils debug.
+- [ ] Garder des interfaces C# stables et étendre le moteur seulement lorsqu'un nouveau besoin réel n'est pas exprimable par les Defs existantes.
+- [ ] Éviter la sur-généralisation : une abstraction doit répondre à plusieurs usages réels avant d'être intégrée au noyau commun.
+- [ ] Ajouter des diagnostics debug pour les profils absents, ambigus, contradictoires ou mal configurés.
+
 ## Noms, cultures et backstories
 
 - [x] Premier générateur de noms culturels publié dans `0.3.5-dev` pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
-- [ ] Étendre plus tard les générateurs aux Asgard, Nox, Unas et autres cultures ajoutées au mod.
-- [ ] Déterminer dans quelles interfaces normales afficher séparément le nom de l'hôte et celui du symbiote.
-- [ ] Revoir toutes les backstories existantes pour enrichir leur texte descriptif.
-- [ ] Ajouter des modificateurs de statistiques cohérents aux backstories qui n'en possèdent pas encore.
-- [ ] Créer davantage de backstories afin d'améliorer la variété culturelle et le renouvellement des pawns.
+- [ ] Ajouter les générateurs de noms et les backstories propres aux Asgard, Nox, Unas et autres cultures lors de leur création ou dans un jalon immédiatement suivant.
+- [ ] Implémenter dans un jalon dédié la persistance et l'affichage séparés des identités de l'hôte et du symbiote, selon `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
+- [ ] Valider en jeu la refonte `0.3.8-dev` des `52` backstories existantes et de leurs descriptions anglaises et françaises.
+- [ ] Valider en jeu les bonus de compétences modérés ajoutés aux backstories dans `0.3.8-dev`.
+- [ ] Organiser une discussion dédiée avant d'étendre le nombre de backstories ; conserver une quantité raisonnable, lisible et maintenable plutôt qu'un catalogue massif.
 - [ ] Vérifier la cohérence entre noms, backstories, factions, marques Jaffa et identités sociales.
+- [ ] Migrer progressivement les générateurs de noms existants vers la consommation des profils culturels communs sans renommer les pawns déjà traités.
+- [ ] Préparer la distinction hôte / symbiote dans les profils sans imposer prématurément son affichage dans toutes les interfaces.
+- [ ] Maintenir dans le wiki les tableaux de backstories par culture avec nom, description et bonus de compétences ; toute future backstory doit y être ajoutée dans le même jalon.
+
+## Identité Tok'ra contrôlée par le joueur
+
+La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`. Elle doit être reprise dans un jalon dédié après audit des mécanismes vanilla et prototype.
+
+- [ ] Conserver durablement le nom et les backstories propres du symbiote après implantation.
+- [ ] Conserver l'identité originale de l'hôte sans renommer ni réécrire rétroactivement son histoire.
+- [ ] Réserver le gizmo de basculement aux Tok'ra appartenant au joueur et directement contrôlables.
+- [ ] Laisser les Tok'ra gérés par le jeu dans leur fonctionnement classique, sans gizmo ni changement manuel de personnalité.
+- [ ] Basculer le nom, les backstories affichées et seulement les écarts de compétences dus aux backstories actives.
+- [ ] Garder communs les niveaux et l'expérience acquis pendant la partie, sans perte, duplication ni cumul à chaque basculement.
+- [ ] Afficher en permanence les deux identités dans l'inspection, quelle que soit la personnalité active.
+- [ ] Vérifier sauvegarde, rechargement, mort, extraction, réimplantation, relations, lettres, quêtes et interfaces compatibles.
+- [ ] Décider explicitement du cas des invités ou pawns de quête temporairement contrôlables ; les exclure par défaut tant qu'ils ne rejoignent pas la colonie.
 
 ## Futures races et factions
 

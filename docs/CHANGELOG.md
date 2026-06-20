@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.8-dev - Rework existing cultural backstories
+
+- Preserve all `52` existing cultural `BackstoryDef` identifiers, slots, categories and adulthood body-type defaults.
+- Enrich every English and French description with a second sentence connecting cultural origin to practical experience.
+- Add modest, coherent `skillGains` to every dedicated childhood and adulthood.
+- Differentiate military, civilian, medical, technical, administrative, diplomatic and covert careers without forcing traits, passions or work incapabilities.
+- Keep Tau'ri / SGC, Jaffa, Free Jaffa, off-world human, Goa'uld host, System Lord and Tok'ra generation filters unchanged.
+- Preserve existing save assignments, pawn names and voluntarily implanted colon histories.
+- Defer any increase in the number of backstories to a later dedicated discussion focused on a reasonable and maintainable volume.
+- Record that future Asgard, Nox, Unas and other cultures require both names and backstories when introduced or immediately afterward.
+- Refresh the cultural-backstory technical document and player wiki page, and update the wiki home page from the outdated documented version.
+- Add culture-grouped wiki tables covering all `52` backstories with their French names, descriptions and exact skill bonuses, and establish the same documentation rule for future entries.
+- Record the `0.3.x` direction toward a shared Def-driven cultural framework reusable by names, backstories, starter generation, scenarios and future culture-dependent systems.
+- Defer culture-aware starting-pawn backstory filtering to a separate milestone, while explicitly preserving ordinary world generation and manual editor selections in this rework.
+- Raise the assembly version to `0.3.8.0` and the mod metadata version to `0.3.8-dev`.
+- Add `docs/TESTING_CURRENT.md` as the concise active-milestone test record while preserving the complete historical regression archive.
+- Preserve the complete deferred design for player-controlled Tok'ra host / symbiote dual identity in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`; no dual-identity gameplay is added in this milestone.
+
 ## 0.3.7-dev - Rewrite mod presentation
 
 - Replace the oversized `About/About.xml` development inventory with a concise, immersive presentation.

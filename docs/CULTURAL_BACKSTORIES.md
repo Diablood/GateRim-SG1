@@ -1,66 +1,102 @@
-# Cultural backstory baseline
+# Cultural backstories
 
-Version: `0.2.4-dev-r1`
+Version: `0.3.8-dev-r3`
 
 ## Scope
 
-This milestone adds `52` native RimWorld `BackstoryDef` entries.
+GateRim SG-1 currently defines `52` native RimWorld `BackstoryDef` entries. This milestone reworks the existing set without adding or deleting any backstory.
 
-Dedicated histories use:
+The stable structure remains:
 
 ```text
 spawnCategories
 requiresSpawnCategory = true
 ```
 
-Off-world PawnKindDefs use:
+Off-world `PawnKindDef` filters continue to select the appropriate childhood and adulthood categories. Existing `defName` values, slots and categories are preserved for compatibility.
 
-```text
-backstoryFiltersOverride
-categoriesChildhood
-categoriesAdulthood
-```
+## Editorial pass
 
-## Tau'ri
+Every English and French description now contains two complementary ideas:
 
-The SGC expedition keeps broad vanilla-compatible Earth histories. A smaller
-filter adds optional SGC adult careers.
+- the cultural or professional origin of the pawn;
+- the practical habits and skills produced by that life.
 
-## Jaffa
+Descriptions remain player-facing and avoid debug terminology, implementation details or claims that exceed the pawn's actual background.
 
-Goa'uld-domain and Free Jaffa share Jaffa childhoods but use separate adult
-categories.
+## Skill bonuses
 
-## Goa'uld hosts
+Every dedicated backstory now grants a small set of coherent `skillGains`.
 
-Generated ordinary hosts and System Lords use off-world human childhoods and
-separate Goa'uld adult categories.
+Design rules:
 
-## Tok'ra
+- childhoods provide modest foundations, generally `+1` to `+3`;
+- adult careers provide clearer specialization, generally `+1` to `+5`;
+- no backstory adds passions, forced traits, work incapabilities or direct stat multipliers;
+- military histories do not all use the same distribution;
+- civilian Jaffa, off-world humans, Goa'uld administrators and Tok'ra support roles retain distinct gameplay identities;
+- combined childhood and adulthood bonuses remain useful without defining an entire pawn by themselves.
 
-Generated prototype agents use off-world childhoods and Tok'ra agent careers.
-Existing colonists who voluntarily accept implantation keep their original
-histories.
+## Cultural groups
 
-## Standard adulthood body types
+### Tau'ri / SGC
 
-Every dedicated adulthood story explicitly defines:
+Six optional adult careers cover special operations, medicine, research, linguistics, engineering and liaison work. The stranded SG-team scenario remains compatible with broader vanilla Earth childhoods.
 
-```text
-bodyTypeMale: Male
-bodyTypeFemale: Female
-```
+### Jaffa
 
-RimWorld returns the selected adulthood backstory's body type directly during
-pawn generation. Explicit defaults are therefore required to prevent
-undefined body types and rendering failures.
+Eight shared Jaffa childhoods establish village, temple, warrior-household, pastoral, artisan, fortress, sanctuary and training-camp origins.
 
-## Manual tests
+Eight Goa'uld-aligned adult careers emphasize military service, ritual security, garrison command and Chappa'ai defense. Eight Free Jaffa careers distinguish liberated fighters, community defenders, scouts, civilians, healers and former deserters.
 
-1. Start several `Équipe SG isolée` games and inspect Tau'ri stories.
-2. Visit a Goa'uld city and inspect Jaffa, ordinary Goa'uld and the System Lord.
-3. Visit a Free Jaffa settlement.
-4. Trigger generated Tok'ra visitors or a generated test host.
-5. Implant a pre-existing colonist voluntarily and confirm the original
-   childhood and adulthood remain unchanged.
-6. Check `Player.log` for shuffled-backstory fallback errors.
+### Off-world humans and Goa'uld hosts
+
+Six off-world childhoods represent tributary villages, palaces, markets, temples, caravans and isolated farms.
+
+Ordinary Goa'uld hosts use six administrative or court careers. System Lords retain four dedicated rulership profiles with stronger social, intellectual or military emphasis.
+
+### Tok'ra
+
+Six agent careers cover infiltration, medicine, diplomacy, scouting, intelligence analysis and covert delivery. Existing colonists who later accept a Tok'ra symbiote keep their original childhood and adulthood.
+
+## Compatibility
+
+- No `defName`, slot, category or body-type default is changed.
+- No pawn is rerolled or renamed.
+- Existing saves keep their assigned backstories; the newly defined skill bonuses are read from those same Defs when the pawn's skill offsets are evaluated.
+- The `0.3.0-dev` framework remains the save-compatibility baseline.
+
+## Integration with the cultural framework
+
+These `BackstoryDef` entries remain stable content data. They are intended to be consumed later by the shared GateRim SG-1 cultural framework rather than by culture-specific hardcoded branches.
+
+A configurable cultural profile should eventually be able to reference:
+
+- compatible childhood and adulthood categories or explicit Defs;
+- the associated cultural name generator;
+- identification criteria and profile priority;
+- scenario-specific starting-pawn restrictions;
+- optional data used by other culture-aware systems.
+
+The first planned consumer is culture-aware starting-pawn randomization. That behavior is deliberately not implemented in `0.3.8-dev`: ordinary starter selection, world pawn generation and manual editor assignments remain unchanged.
+
+## Deferred expansion
+
+The number of backstories is not increased in this milestone. A later discussion will decide whether additional entries are useful, while keeping the set readable and maintainable.
+
+Future cultures such as Asgard, Nox and Unas must receive coherent name generators and backstories when the race or faction is introduced, or in an immediately following milestone.
+
+The separate question of preserving and switching a player-controlled Tok'ra host / symbiote identity is intentionally deferred. Its complete design record is maintained in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`; it must not be implemented as a hidden side effect of backstory data.
+
+## Wiki catalogue maintenance
+
+`docs/wiki/Cultural-Backstories.md` contains a player-facing table for every current backstory, grouped by culture and showing the localized name, description and skill bonuses. Any future backstory addition, removal, renamed presentation or skill change must update the corresponding wiki table in the same milestone.
+
+## Manual validation
+
+1. Start several `Équipe SG isolée` games and inspect the four candidates before launch.
+2. Use `Debug actions menu` → `Spawn pawn` with representative GateRim SG-1 PawnKinds.
+3. Inspect childhood and adulthood descriptions and compare the visible skill bonuses with the selected histories.
+4. Generate Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld hosts, a System Lord and Tok'ra agents through their normal contexts when available.
+5. Save, quit completely and reload; confirm histories and skill levels remain stable.
+6. Check `Player.log` for XML, translation, BackstoryDef, skill or shuffled-backstory errors.

@@ -4,7 +4,12 @@
         <defName>SG1_TauriSGC_SpecialForcesOperator</defName>
         <title>SGC special-forces operator</title>
         <titleShort>SGC operator</titleShort>
-        <description>Assigned to the Stargate program after an exacting military career, this operator learned to improvise under fire and protect a team far from Earth.</description>
+        <description>Assigned to the Stargate program after an exacting military career, this operator learned to improvise under fire and protect a team far from Earth. Repeated deployments taught them to read unfamiliar battlefields quickly and keep less experienced specialists moving.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Melee>2</Melee>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -17,7 +22,12 @@
         <defName>SG1_TauriSGC_FieldMedic</defName>
         <title>SGC field medic</title>
         <titleShort>SGC medic</titleShort>
-        <description>This medic joined off-world teams to keep explorers alive when evacuation through the Stargate could not be taken for granted.</description>
+        <description>This medic joined off-world teams to keep explorers alive when evacuation through the Stargate could not be taken for granted. Field triage, improvised clinics and alien pathogens made calm judgment as important as surgical skill.</description>
+        <skillGains>
+            <Medicine>5</Medicine>
+            <Intellectual>2</Intellectual>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -30,7 +40,11 @@
         <defName>SG1_TauriSGC_Researcher</defName>
         <title>SGC researcher</title>
         <titleShort>SGC researcher</titleShort>
-        <description>Recruited for work on alien technology and unfamiliar biology, this researcher became accustomed to making careful decisions with incomplete information.</description>
+        <description>Recruited for work on alien technology and unfamiliar biology, this researcher became accustomed to making careful decisions with incomplete information. Years in secure laboratories and field expeditions taught them to turn impossible discoveries into practical answers.</description>
+        <skillGains>
+            <Intellectual>5</Intellectual>
+            <Crafting>2</Crafting>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -43,7 +57,11 @@
         <defName>SG1_TauriSGC_Linguist</defName>
         <title>SGC linguist</title>
         <titleShort>SGC linguist</titleShort>
-        <description>This specialist studied languages, myths and ancient inscriptions before joining missions where a mistranslated warning could endanger an entire team.</description>
+        <description>This specialist studied languages, myths and ancient inscriptions before joining missions where a mistranslated warning could endanger an entire team. They learned to win cooperation through patient observation, respectful questions and a sharp memory for cultural detail.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Intellectual>3</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -56,7 +74,12 @@
         <defName>SG1_TauriSGC_FieldEngineer</defName>
         <title>SGC field engineer</title>
         <titleShort>SGC engineer</titleShort>
-        <description>Trained to keep equipment running under difficult conditions, this engineer accompanied SG teams whenever a remote mission needed practical solutions.</description>
+        <description>Trained to keep equipment running under difficult conditions, this engineer accompanied SG teams whenever a remote mission needed practical solutions. When standard parts ran out, they learned to rebuild devices from salvage and explain repairs to the rest of the team.</description>
+        <skillGains>
+            <Construction>4</Construction>
+            <Crafting>4</Crafting>
+            <Intellectual>1</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -69,7 +92,11 @@
         <defName>SG1_TauriSGC_LiaisonOfficer</defName>
         <title>SGC liaison officer</title>
         <titleShort>SGC liaison</titleShort>
-        <description>This officer learned to negotiate between military priorities, scientific caution and the needs of communities encountered beyond the Stargate.</description>
+        <description>This officer learned to negotiate between military priorities, scientific caution and the needs of communities encountered beyond the Stargate. Success depended on reading a room, translating competing goals and leaving allies with reasons to keep talking.</description>
+        <skillGains>
+            <Social>5</Social>
+            <Intellectual>2</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -82,7 +109,12 @@
         <defName>SG1_Jaffa_VillageChild</defName>
         <title>Jaffa village child</title>
         <titleShort>village child</titleShort>
-        <description>Raised in a Jaffa village under distant stars, this child learned communal duties, old stories and household discipline.</description>
+        <description>Raised in a Jaffa village under distant stars, this child learned communal duties, old stories and household discipline. Daily work in fields and kitchens built practical habits and a strong sense of duty to neighbors.</description>
+        <skillGains>
+            <Plants>2</Plants>
+            <Cooking>1</Cooking>
+            <Social>1</Social>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -93,7 +125,12 @@
         <defName>SG1_Jaffa_TempleAttendant</defName>
         <title>temple attendant</title>
         <titleShort>temple attendant</titleShort>
-        <description>This child served around a Goa'uld temple, carrying messages and observing ceremonies long before understanding the powers behind them.</description>
+        <description>This child served around a Goa'uld temple, carrying messages and observing ceremonies long before understanding the powers behind them. Silent corridors taught them to notice rank, ritual and danger in the smallest gestures.</description>
+        <skillGains>
+            <Social>2</Social>
+            <Intellectual>1</Intellectual>
+            <Artistic>1</Artistic>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -104,7 +141,12 @@
         <defName>SG1_Jaffa_WarriorHousehold</defName>
         <title>warrior-household child</title>
         <titleShort>warrior household</titleShort>
-        <description>Born into a household of Jaffa fighters, this child grew up around drills, armor maintenance and the expectation of service.</description>
+        <description>Born into a household of Jaffa fighters, this child grew up around drills, armor maintenance and the expectation of service. Even before formal training, they could strip simple weapons and recognize the rhythms of a patrol.</description>
+        <skillGains>
+            <Melee>2</Melee>
+            <Shooting>1</Shooting>
+            <Crafting>1</Crafting>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -115,7 +157,11 @@
         <defName>SG1_Jaffa_TributeWorldShepherd</defName>
         <title>tribute-world shepherd</title>
         <titleShort>young shepherd</titleShort>
-        <description>This child watched herds on a tributary world and learned to survive far from fortified settlements.</description>
+        <description>This child watched herds on a tributary world and learned to survive far from fortified settlements. Long days beyond the walls sharpened their way with animals and their knowledge of useful plants.</description>
+        <skillGains>
+            <Animals>3</Animals>
+            <Plants>1</Plants>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -126,7 +172,11 @@
         <defName>SG1_Jaffa_ArtisanApprentice</defName>
         <title>Jaffa artisan apprentice</title>
         <titleShort>artisan apprentice</titleShort>
-        <description>Apprenticed to local craftspeople, this child learned the patient routines that kept a Jaffa community equipped and fed.</description>
+        <description>Apprenticed to local craftspeople, this child learned the patient routines that kept a Jaffa community equipped and fed. Small repairs and measured cuts rewarded patience, steady hands and respect for scarce materials.</description>
+        <skillGains>
+            <Crafting>3</Crafting>
+            <Construction>1</Construction>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -137,7 +187,11 @@
         <defName>SG1_Jaffa_FortressChild</defName>
         <title>fortress child</title>
         <titleShort>fortress child</titleShort>
-        <description>This child grew up inside a fortified Jaffa garrison, where alarms, patrols and passing war bands were ordinary parts of life.</description>
+        <description>This child grew up inside a fortified Jaffa garrison, where alarms, patrols and passing war bands were ordinary parts of life. They learned where to take cover, how to carry supplies and when an alarm meant real danger.</description>
+        <skillGains>
+            <Shooting>2</Shooting>
+            <Melee>2</Melee>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -148,7 +202,11 @@
         <defName>SG1_Jaffa_SanctuaryWard</defName>
         <title>sanctuary ward</title>
         <titleShort>sanctuary ward</titleShort>
-        <description>Taken in by a sanctuary community, this child learned caution, mutual aid and the value of listening before speaking.</description>
+        <description>Taken in by a sanctuary community, this child learned caution, mutual aid and the value of listening before speaking. Helping the injured and calming frightened newcomers made compassion a practical survival skill.</description>
+        <skillGains>
+            <Medicine>2</Medicine>
+            <Social>2</Social>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -159,7 +217,11 @@
         <defName>SG1_Jaffa_TrainingCampYouth</defName>
         <title>training-camp youth</title>
         <titleShort>camp youth</titleShort>
-        <description>This child spent formative years around a Jaffa training camp, helping with simple duties while veterans prepared the next generation.</description>
+        <description>This child spent formative years around a Jaffa training camp, helping with simple duties while veterans prepared the next generation. Drills, errands and observed sparring gave them an early familiarity with weapons and discipline.</description>
+        <skillGains>
+            <Melee>2</Melee>
+            <Shooting>2</Shooting>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_JaffaChildhood</li>
@@ -170,7 +232,11 @@
         <defName>SG1_GoauldJaffa_DomainWarrior</defName>
         <title>domain Jaffa warrior</title>
         <titleShort>domain warrior</titleShort>
-        <description>This Jaffa fought for a Goa'uld domain, enforcing its borders and obeying commands delivered in the name of a distant master.</description>
+        <description>This Jaffa fought for a Goa'uld domain, enforcing its borders and obeying commands delivered in the name of a distant master. Campaign life left them skilled with staff weapon and blade, but accustomed to orders backed by fear.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Melee>3</Melee>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -183,7 +249,12 @@
         <defName>SG1_GoauldJaffa_TempleGuard</defName>
         <title>Goa'uld temple guard</title>
         <titleShort>temple guard</titleShort>
-        <description>Stationed at a Goa'uld temple, this Jaffa guarded sacred spaces and learned the rituals of rigid hierarchy.</description>
+        <description>Stationed at a Goa'uld temple, this Jaffa guarded sacred spaces and learned the rituals of rigid hierarchy. Ceremonial duty blended close combat, vigilance and the ability to control worshippers without open chaos.</description>
+        <skillGains>
+            <Melee>4</Melee>
+            <Shooting>2</Shooting>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -196,7 +267,12 @@
         <defName>SG1_GoauldJaffa_FortressGuard</defName>
         <title>domain fortress guard</title>
         <titleShort>fortress guard</titleShort>
-        <description>This Jaffa spent years on fortress duty, maintaining weapons, drilling patrols and reacting quickly whenever alarms sounded.</description>
+        <description>This Jaffa spent years on fortress duty, maintaining weapons, drilling patrols and reacting quickly whenever alarms sounded. They could hold a firing line, reinforce a damaged position and keep equipment serviceable through a siege.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Construction>2</Construction>
+            <Crafting>1</Crafting>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -209,7 +285,12 @@
         <defName>SG1_GoauldJaffa_CampaignVeteran</defName>
         <title>System Lord war veteran</title>
         <titleShort>war veteran</titleShort>
-        <description>This Jaffa survived campaigns between rival System Lords and learned that battlefield discipline mattered more than promises.</description>
+        <description>This Jaffa survived campaigns between rival System Lords and learned that battlefield discipline mattered more than promises. Scars and lost comrades taught them to shoot steadily, fight at close quarters and keep wounded warriors alive.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Melee>3</Melee>
+            <Medicine>1</Medicine>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -222,7 +303,12 @@
         <defName>SG1_GoauldJaffa_Instructor</defName>
         <title>Jaffa drill instructor</title>
         <titleShort>drill instructor</titleShort>
-        <description>Charged with preparing younger warriors, this Jaffa repeated old lessons until recruits could act without hesitation.</description>
+        <description>Charged with preparing younger warriors, this Jaffa repeated old lessons until recruits could act without hesitation. They learned to demonstrate every motion clearly, correct hesitation and command respect from reluctant recruits.</description>
+        <skillGains>
+            <Melee>3</Melee>
+            <Shooting>3</Shooting>
+            <Social>2</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -235,7 +321,12 @@
         <defName>SG1_GoauldJaffa_ProcessionEscort</defName>
         <title>Goa'uld procession escort</title>
         <titleShort>procession escort</titleShort>
-        <description>This Jaffa escorted officials, priests and tribute caravans, remaining alert whenever displays of power invited resentment.</description>
+        <description>This Jaffa escorted officials, priests and tribute caravans, remaining alert whenever displays of power invited resentment. Crowded roads demanded accurate shooting, controlled force and constant attention to the moods of a procession.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Melee>2</Melee>
+            <Social>2</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -248,7 +339,12 @@
         <defName>SG1_GoauldJaffa_GarrisonOfficer</defName>
         <title>Jaffa garrison officer</title>
         <titleShort>garrison officer</titleShort>
-        <description>Promoted within a domain garrison, this Jaffa coordinated sentries, supplies and discipline.</description>
+        <description>Promoted within a domain garrison, this Jaffa coordinated sentries, supplies and discipline. Command required more than strength: they balanced logistics, obedience and the ambitions of subordinate warriors.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Social>3</Social>
+            <Intellectual>1</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -261,7 +357,12 @@
         <defName>SG1_GoauldJaffa_ChappaaiSentinel</defName>
         <title>Chappa'ai sentinel</title>
         <titleShort>Chappa'ai sentinel</titleShort>
-        <description>This Jaffa guarded a Chappa'ai and treated every activation as a possible arrival of allies, raiders or displeased superiors.</description>
+        <description>This Jaffa guarded a Chappa'ai and treated every activation as a possible arrival of allies, raiders or displeased superiors. Years beside the gate honed their reflexes and their knowledge of the signs that preceded a dangerous arrival.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Melee>2</Melee>
+            <Intellectual>1</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -274,7 +375,12 @@
         <defName>SG1_FreeJaffa_LiberatedWarrior</defName>
         <title>liberated Jaffa warrior</title>
         <titleShort>liberated warrior</titleShort>
-        <description>This Jaffa broke from Goa'uld service and learned to fight for a community rather than for the pride of a System Lord.</description>
+        <description>This Jaffa broke from Goa'uld service and learned to fight for a community rather than for the pride of a System Lord. Freedom did not erase military habits, but it gave them reason to protect companions rather than impress a god.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Melee>3</Melee>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -287,7 +393,13 @@
         <defName>SG1_FreeJaffa_CommunityProtector</defName>
         <title>Free Jaffa community protector</title>
         <titleShort>community protector</titleShort>
-        <description>This Jaffa defended an independent settlement where every patrol protected families, fields and the fragile idea of freedom.</description>
+        <description>This Jaffa defended an independent settlement where every patrol protected families, fields and the fragile idea of freedom. They learned to defend homes without neglecting harvests, disputes or the trust of the people behind them.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Melee>2</Melee>
+            <Plants>1</Plants>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -300,7 +412,12 @@
         <defName>SG1_FreeJaffa_RebellionVeteran</defName>
         <title>Jaffa rebellion veteran</title>
         <titleShort>rebellion veteran</titleShort>
-        <description>This Jaffa fought in an uprising against Goa'uld rule and carried forward lessons learned from victories and losses.</description>
+        <description>This Jaffa fought in an uprising against Goa'uld rule and carried forward lessons learned from victories and losses. Ambushes and retreats made them a dangerous fighter and a steady voice among those still learning to resist.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Melee>3</Melee>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -313,7 +430,12 @@
         <defName>SG1_FreeJaffa_Scout</defName>
         <title>Free Jaffa scout</title>
         <titleShort>Free Jaffa scout</titleShort>
-        <description>This Jaffa travelled between liberated communities, watching roads, ruins and Stargates for signs of returning enemies.</description>
+        <description>This Jaffa travelled between liberated communities, watching roads, ruins and Stargates for signs of returning enemies. Travel between settlements taught them to read tracks, handle pack animals and choose ground before a fight.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Animals>2</Animals>
+            <Plants>2</Plants>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -326,7 +448,11 @@
         <defName>SG1_FreeJaffa_Artisan</defName>
         <title>Free Jaffa artisan</title>
         <titleShort>Free Jaffa artisan</titleShort>
-        <description>This Jaffa built a civilian life after generations of imposed service, repairing tools and teaching practical crafts.</description>
+        <description>This Jaffa built a civilian life after generations of imposed service, repairing tools and teaching practical crafts. They turned former military maintenance skills toward homes, tools and structures meant to last.</description>
+        <skillGains>
+            <Crafting>4</Crafting>
+            <Construction>3</Construction>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -339,7 +465,12 @@
         <defName>SG1_FreeJaffa_Farmer</defName>
         <title>Free Jaffa farmer</title>
         <titleShort>Free Jaffa farmer</titleShort>
-        <description>This Jaffa worked the soil of an independent village and prepared carefully for the next season.</description>
+        <description>This Jaffa worked the soil of an independent village and prepared carefully for the next season. Hard years made them patient with soil, animals and the communal stores that stood between freedom and famine.</description>
+        <skillGains>
+            <Plants>5</Plants>
+            <Animals>2</Animals>
+            <Cooking>1</Cooking>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -352,7 +483,12 @@
         <defName>SG1_FreeJaffa_Healer</defName>
         <title>Free Jaffa healer</title>
         <titleShort>Free Jaffa healer</titleShort>
-        <description>This Jaffa cared for neighbors with limited supplies, combining inherited knowledge with locally available remedies.</description>
+        <description>This Jaffa cared for neighbors with limited supplies, combining inherited knowledge with locally available remedies. They became skilled at cleaning wounds, identifying useful plants and keeping frightened patients cooperative.</description>
+        <skillGains>
+            <Medicine>4</Medicine>
+            <Plants>2</Plants>
+            <Intellectual>1</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -365,7 +501,12 @@
         <defName>SG1_FreeJaffa_FormerDeserter</defName>
         <title>former Goa'uld deserter</title>
         <titleShort>former deserter</titleShort>
-        <description>This Jaffa deserted a Goa'uld force and spent years proving that leaving an old master was only the first step toward becoming free.</description>
+        <description>This Jaffa deserted a Goa'uld force and spent years proving that leaving an old master was only the first step toward becoming free. Life under suspicion taught them to stay alert, fight when cornered and earn trust through useful action.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Melee>2</Melee>
+            <Social>2</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -378,7 +519,12 @@
         <defName>SG1_OffworldHuman_TributaryVillageChild</defName>
         <title>tributary-village child</title>
         <titleShort>tributary child</titleShort>
-        <description>Raised in a remote human settlement under distant rulers, this child learned that survival often depended on caution and cooperation.</description>
+        <description>Raised in a remote human settlement under distant rulers, this child learned that survival often depended on caution and cooperation. Work shared among families gave them practical knowledge of crops, food and the moods of the settlement.</description>
+        <skillGains>
+            <Plants>2</Plants>
+            <Social>1</Social>
+            <Cooking>1</Cooking>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_OffworldHumanChildhood</li>
@@ -389,7 +535,11 @@
         <defName>SG1_OffworldHuman_PalaceServantChild</defName>
         <title>palace-servant child</title>
         <titleShort>palace servant</titleShort>
-        <description>This child grew up among servants attached to a great household, learning to observe rank, mood and danger before speaking.</description>
+        <description>This child grew up among servants attached to a great household, learning to observe rank, mood and danger before speaking. They became adept at anticipating requests and hiding their own reactions from dangerous adults.</description>
+        <skillGains>
+            <Social>3</Social>
+            <Cooking>1</Cooking>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_OffworldHumanChildhood</li>
@@ -400,7 +550,11 @@
         <defName>SG1_OffworldHuman_MarketSettlementChild</defName>
         <title>off-world market child</title>
         <titleShort>market child</titleShort>
-        <description>This child grew up around a busy off-world market where travelers, rumors and unfamiliar goods arrived from distant settlements.</description>
+        <description>This child grew up around a busy off-world market where travelers, rumors and unfamiliar goods arrived from distant settlements. Bargaining voices and foreign customs sharpened their social instincts and curiosity about the wider world.</description>
+        <skillGains>
+            <Social>3</Social>
+            <Intellectual>1</Intellectual>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_OffworldHumanChildhood</li>
@@ -411,7 +565,12 @@
         <defName>SG1_OffworldHuman_TempleWard</defName>
         <title>temple ward</title>
         <titleShort>temple ward</titleShort>
-        <description>Raised near a temple complex, this child learned ceremonies, taboos and the uneasy silence expected around powerful visitors.</description>
+        <description>Raised near a temple complex, this child learned ceremonies, taboos and the uneasy silence expected around powerful visitors. Ritual work developed a careful memory, practiced manners and an eye for symbols.</description>
+        <skillGains>
+            <Social>2</Social>
+            <Artistic>1</Artistic>
+            <Intellectual>1</Intellectual>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_OffworldHumanChildhood</li>
@@ -422,7 +581,12 @@
         <defName>SG1_OffworldHuman_CaravanChild</defName>
         <title>off-world caravan child</title>
         <titleShort>caravan child</titleShort>
-        <description>This child travelled with a caravan between scattered communities and learned to adapt quickly whenever the road changed.</description>
+        <description>This child travelled with a caravan between scattered communities and learned to adapt quickly whenever the road changed. They learned to calm animals, judge strangers and find food or shelter along uncertain routes.</description>
+        <skillGains>
+            <Animals>2</Animals>
+            <Social>2</Social>
+            <Plants>1</Plants>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_OffworldHumanChildhood</li>
@@ -433,7 +597,11 @@
         <defName>SG1_OffworldHuman_RemoteFarmChild</defName>
         <title>remote-farm child</title>
         <titleShort>farm child</titleShort>
-        <description>This child grew up on an isolated farm where weather, harvests and armed strangers shaped everyday life.</description>
+        <description>This child grew up on an isolated farm where weather, harvests and armed strangers shaped everyday life. Isolation made them comfortable with livestock, crops and problems that had to be solved without outside help.</description>
+        <skillGains>
+            <Plants>3</Plants>
+            <Animals>2</Animals>
+        </skillGains>
         <slot>Childhood</slot>
         <spawnCategories>
             <li>SG1_OffworldHumanChildhood</li>
@@ -444,7 +612,11 @@
         <defName>SG1_GoauldHost_DomainAdministrator</defName>
         <title>Goa'uld domain administrator</title>
         <titleShort>domain administrator</titleShort>
-        <description>This Goa'uld managed tribute, labor and local disputes from the safety of a domain settlement.</description>
+        <description>This Goa'uld managed tribute, labor and local disputes from the safety of a domain settlement. Efficient rule demanded precise records, persuasive orders and a clear understanding of which rival could be bought.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Intellectual>3</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -457,7 +629,11 @@
         <defName>SG1_GoauldHost_PalaceEmissary</defName>
         <title>Goa'uld palace emissary</title>
         <titleShort>palace emissary</titleShort>
-        <description>This Goa'uld carried demands and promises between courts, treating every conversation as a test of influence.</description>
+        <description>This Goa'uld carried demands and promises between courts, treating every conversation as a test of influence. They learned to flatter, threaten and bargain without revealing how little certainty lay behind their master's message.</description>
+        <skillGains>
+            <Social>5</Social>
+            <Intellectual>2</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -470,7 +646,12 @@
         <defName>SG1_GoauldHost_TributaryGovernor</defName>
         <title>Goa'uld tributary governor</title>
         <titleShort>tributary governor</titleShort>
-        <description>This Goa'uld supervised a tributary community and learned to extract obedience without provoking rebellion.</description>
+        <description>This Goa'uld supervised a tributary community and learned to extract obedience without provoking rebellion. Keeping tribute flowing required calculation, public authority and enough martial confidence to survive unrest.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Intellectual>2</Intellectual>
+            <Shooting>1</Shooting>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -483,7 +664,11 @@
         <defName>SG1_GoauldHost_CultPriest</defName>
         <title>Goa'uld cult priest</title>
         <titleShort>cult priest</titleShort>
-        <description>This Goa'uld cultivated ritual authority, encouraging worshippers to confuse fear, awe and loyalty.</description>
+        <description>This Goa'uld cultivated ritual authority, encouraging worshippers to confuse fear, awe and loyalty. They mastered the voice, symbols and staged wonders that turned fear into obedience.</description>
+        <skillGains>
+            <Social>5</Social>
+            <Artistic>2</Artistic>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -496,7 +681,12 @@
         <defName>SG1_GoauldHost_ArchiveKeeper</defName>
         <title>Goa'uld archive keeper</title>
         <titleShort>archive keeper</titleShort>
-        <description>This Goa'uld maintained records, artifacts and carefully edited histories intended to strengthen a domain.</description>
+        <description>This Goa'uld maintained records, artifacts and carefully edited histories intended to strengthen a domain. Cataloguing old technology rewarded patience, technical curiosity and the ability to decide which truth should disappear.</description>
+        <skillGains>
+            <Intellectual>5</Intellectual>
+            <Artistic>1</Artistic>
+            <Crafting>1</Crafting>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -509,7 +699,11 @@
         <defName>SG1_GoauldHost_CourtStrategist</defName>
         <title>Goa'uld court strategist</title>
         <titleShort>court strategist</titleShort>
-        <description>This Goa'uld advised a court where every alliance was temporary and every apparent concession concealed another calculation.</description>
+        <description>This Goa'uld advised a court where every alliance was temporary and every apparent concession concealed another calculation. They survived by connecting fragments of intelligence, reading motives and presenting advice as their ruler's own insight.</description>
+        <skillGains>
+            <Intellectual>4</Intellectual>
+            <Social>4</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -522,7 +716,12 @@
         <defName>SG1_SystemLord_Conqueror</defName>
         <title>Goa'uld System Lord conqueror</title>
         <titleShort>System Lord conqueror</titleShort>
-        <description>This System Lord built a domain through conquest, tribute and carefully displayed cruelty.</description>
+        <description>This System Lord built a domain through conquest, tribute and carefully displayed cruelty. They cultivated commanding presence and personal violence, stepping into battle whenever spectacle served domination.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Shooting>3</Shooting>
+            <Melee>2</Melee>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -535,7 +734,11 @@
         <defName>SG1_SystemLord_Dynast</defName>
         <title>Goa'uld System Lord dynast</title>
         <titleShort>System Lord dynast</titleShort>
-        <description>This System Lord inherited an old domain and spent years preserving its image of permanence while rivals tested every border.</description>
+        <description>This System Lord inherited an old domain and spent years preserving its image of permanence while rivals tested every border. Courtly authority, inherited archives and constant intrigue made them skilled at persuasion and long calculation.</description>
+        <skillGains>
+            <Social>5</Social>
+            <Intellectual>3</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -548,7 +751,11 @@
         <defName>SG1_SystemLord_Schemer</defName>
         <title>Goa'uld System Lord schemer</title>
         <titleShort>System Lord schemer</titleShort>
-        <description>This System Lord preferred manipulation to open war, using emissaries, hostages and selective generosity to weaken rivals.</description>
+        <description>This System Lord preferred manipulation to open war, using emissaries, hostages and selective generosity to weaken rivals. They collected secrets, mapped loyalties and preferred a useful conversation to a costly battle.</description>
+        <skillGains>
+            <Social>5</Social>
+            <Intellectual>4</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -561,7 +768,12 @@
         <defName>SG1_SystemLord_Warlord</defName>
         <title>Goa'uld System Lord warlord</title>
         <titleShort>System Lord warlord</titleShort>
-        <description>This System Lord ruled through military spectacle and expected Jaffa commanders to answer every setback with a harsher campaign.</description>
+        <description>This System Lord ruled through military spectacle and expected Jaffa commanders to answer every setback with a harsher campaign. They understood weapons, intimidation and the politics of rewarding victory before demanding the next campaign.</description>
+        <skillGains>
+            <Shooting>4</Shooting>
+            <Melee>3</Melee>
+            <Social>3</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -574,7 +786,12 @@
         <defName>SG1_Tokra_Infiltrator</defName>
         <title>Tok'ra infiltrator</title>
         <titleShort>Tok'ra infiltrator</titleShort>
-        <description>This Tok'ra spent years behind hostile lines, cultivating patience and habits that made a false identity believable.</description>
+        <description>This Tok'ra spent years behind hostile lines, cultivating patience and habits that made a false identity believable. Maintaining a cover required persuasive speech, careful observation and enough combat skill to escape when deception failed.</description>
+        <skillGains>
+            <Social>4</Social>
+            <Shooting>2</Shooting>
+            <Intellectual>2</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -587,7 +804,12 @@
         <defName>SG1_Tokra_Medic</defName>
         <title>Tok'ra medic</title>
         <titleShort>Tok'ra medic</titleShort>
-        <description>This Tok'ra treated hosts, agents and allies with limited resources while weighing medical need against operational secrecy.</description>
+        <description>This Tok'ra treated hosts, agents and allies with limited resources while weighing medical need against operational secrecy. Their practice combined precise treatment with the discretion needed to protect both patient and cell.</description>
+        <skillGains>
+            <Medicine>5</Medicine>
+            <Intellectual>2</Intellectual>
+            <Social>1</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -600,7 +822,11 @@
         <defName>SG1_Tokra_Diplomat</defName>
         <title>Tok'ra diplomat</title>
         <titleShort>Tok'ra diplomat</titleShort>
-        <description>This Tok'ra negotiated fragile cooperation with suspicious communities and learned that trust was earned gradually.</description>
+        <description>This Tok'ra negotiated fragile cooperation with suspicious communities and learned that trust was earned gradually. They learned to hear the fear behind hostile words and build agreements that could survive imperfect trust.</description>
+        <skillGains>
+            <Social>5</Social>
+            <Intellectual>2</Intellectual>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -613,7 +839,12 @@
         <defName>SG1_Tokra_Scout</defName>
         <title>Tok'ra scout</title>
         <titleShort>Tok'ra scout</titleShort>
-        <description>This Tok'ra mapped safe routes, abandoned sites and enemy movements, often travelling with little more than a cover story.</description>
+        <description>This Tok'ra mapped safe routes, abandoned sites and enemy movements, often travelling with little more than a cover story. Remote travel made them a capable marksman, tracker and handler of whatever transport a cover identity required.</description>
+        <skillGains>
+            <Shooting>3</Shooting>
+            <Plants>2</Plants>
+            <Animals>2</Animals>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -626,7 +857,11 @@
         <defName>SG1_Tokra_Analyst</defName>
         <title>Tok'ra intelligence analyst</title>
         <titleShort>Tok'ra analyst</titleShort>
-        <description>This Tok'ra assembled scattered reports into useful intelligence and learned to distrust simple explanations.</description>
+        <description>This Tok'ra assembled scattered reports into useful intelligence and learned to distrust simple explanations. They compared testimony, logistics and enemy habits until a hidden pattern became an actionable warning.</description>
+        <skillGains>
+            <Intellectual>5</Intellectual>
+            <Social>2</Social>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>
@@ -639,7 +874,13 @@
         <defName>SG1_Tokra_Courier</defName>
         <title>Tok'ra courier</title>
         <titleShort>Tok'ra courier</titleShort>
-        <description>This Tok'ra carried messages and supplies between hidden cells, treating every journey as a test of discretion.</description>
+        <description>This Tok'ra carried messages and supplies between hidden cells, treating every journey as a test of discretion. Safe passage depended on modest weapons skill, adaptable fieldcraft and the ability to appear unremarkable among strangers.</description>
+        <skillGains>
+            <Shooting>2</Shooting>
+            <Animals>2</Animals>
+            <Social>2</Social>
+            <Plants>1</Plants>
+        </skillGains>
         <bodyTypeMale>Male</bodyTypeMale>
         <bodyTypeFemale>Female</bodyTypeFemale>
         <slot>Adulthood</slot>

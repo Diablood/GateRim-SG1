@@ -1,159 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <LanguageData>
     <SG1_TauriSGC_SpecialForcesOperator.title>soldat des forces spéciales du SGC</SG1_TauriSGC_SpecialForcesOperator.title>
     <SG1_TauriSGC_SpecialForcesOperator.titleShort>soldat du SGC</SG1_TauriSGC_SpecialForcesOperator.titleShort>
-    <SG1_TauriSGC_SpecialForcesOperator.description>Affecté au programme Porte des étoiles après une carrière militaire exigeante, ce soldat a appris à improviser sous le feu et protéger son équipe loin de la Terre.</SG1_TauriSGC_SpecialForcesOperator.description>
+    <SG1_TauriSGC_SpecialForcesOperator.description>Affecté au programme Porte des étoiles après une carrière militaire exigeante, ce soldat a appris à improviser sous le feu et protéger son équipe loin de la Terre. Les déploiements répétés lui ont appris à comprendre rapidement un terrain inconnu et à maintenir les spécialistes moins expérimentés en mouvement.</SG1_TauriSGC_SpecialForcesOperator.description>
     <SG1_TauriSGC_FieldMedic.title>médecin de terrain du SGC</SG1_TauriSGC_FieldMedic.title>
     <SG1_TauriSGC_FieldMedic.titleShort>médecin du SGC</SG1_TauriSGC_FieldMedic.titleShort>
-    <SG1_TauriSGC_FieldMedic.description>Ce médecin a rejoint les équipes hors-monde afin de maintenir les explorateurs en vie lorsque l'évacuation par la Porte des étoiles ne pouvait pas être garantie.</SG1_TauriSGC_FieldMedic.description>
+    <SG1_TauriSGC_FieldMedic.description>Ce médecin a rejoint les équipes hors-monde afin de maintenir les explorateurs en vie lorsque l'évacuation par la Porte des étoiles ne pouvait pas être garantie. Le triage de terrain, les cliniques improvisées et les agents pathogènes extraterrestres ont rendu le sang-froid aussi important que la technique médicale.</SG1_TauriSGC_FieldMedic.description>
     <SG1_TauriSGC_Researcher.title>scientifique du SGC</SG1_TauriSGC_Researcher.title>
     <SG1_TauriSGC_Researcher.titleShort>scientifique du SGC</SG1_TauriSGC_Researcher.titleShort>
-    <SG1_TauriSGC_Researcher.description>Recruté pour étudier les technologies extraterrestres et les biologies inconnues, ce scientifique s'est habitué à prendre des décisions prudentes avec des informations incomplètes.</SG1_TauriSGC_Researcher.description>
+    <SG1_TauriSGC_Researcher.description>Recruté pour étudier les technologies extraterrestres et les biologies inconnues, ce scientifique s'est habitué à prendre des décisions prudentes avec des informations incomplètes. Des années de laboratoires sécurisés et d'expéditions lui ont appris à transformer des découvertes impossibles en réponses pratiques.</SG1_TauriSGC_Researcher.description>
     <SG1_TauriSGC_Linguist.title>linguiste du SGC</SG1_TauriSGC_Linguist.title>
     <SG1_TauriSGC_Linguist.titleShort>linguiste du SGC</SG1_TauriSGC_Linguist.titleShort>
-    <SG1_TauriSGC_Linguist.description>Ce spécialiste a étudié les langues, les mythes et les inscriptions anciennes avant de rejoindre des missions où une mauvaise traduction pouvait mettre en danger toute une équipe.</SG1_TauriSGC_Linguist.description>
+    <SG1_TauriSGC_Linguist.description>Ce spécialiste a étudié les langues, les mythes et les inscriptions anciennes avant de rejoindre des missions où une mauvaise traduction pouvait mettre en danger toute une équipe. Il a appris à obtenir la coopération par une observation patiente, des questions respectueuses et une mémoire précise des détails culturels.</SG1_TauriSGC_Linguist.description>
     <SG1_TauriSGC_FieldEngineer.title>ingénieur de terrain du SGC</SG1_TauriSGC_FieldEngineer.title>
     <SG1_TauriSGC_FieldEngineer.titleShort>ingénieur du SGC</SG1_TauriSGC_FieldEngineer.titleShort>
-    <SG1_TauriSGC_FieldEngineer.description>Formé pour maintenir le matériel en état dans des conditions difficiles, cet ingénieur accompagnait les équipes SG lorsque les missions lointaines exigeaient des solutions pratiques.</SG1_TauriSGC_FieldEngineer.description>
+    <SG1_TauriSGC_FieldEngineer.description>Formé pour maintenir le matériel en état dans des conditions difficiles, cet ingénieur accompagnait les équipes SG lorsque les missions lointaines exigeaient des solutions pratiques. Lorsque les pièces standard manquaient, il a appris à reconstruire des appareils avec de la récupération et à expliquer les réparations au reste de l'équipe.</SG1_TauriSGC_FieldEngineer.description>
     <SG1_TauriSGC_LiaisonOfficer.title>officier de liaison du SGC</SG1_TauriSGC_LiaisonOfficer.title>
     <SG1_TauriSGC_LiaisonOfficer.titleShort>liaison du SGC</SG1_TauriSGC_LiaisonOfficer.titleShort>
-    <SG1_TauriSGC_LiaisonOfficer.description>Cet officier a appris à concilier les priorités militaires, la prudence scientifique et les besoins des communautés rencontrées au-delà de la Porte des étoiles.</SG1_TauriSGC_LiaisonOfficer.description>
+    <SG1_TauriSGC_LiaisonOfficer.description>Cet officier a appris à concilier les priorités militaires, la prudence scientifique et les besoins des communautés rencontrées au-delà de la Porte des étoiles. Sa réussite dépendait de sa capacité à lire une assemblée, traduire des objectifs opposés et donner aux alliés une raison de poursuivre le dialogue.</SG1_TauriSGC_LiaisonOfficer.description>
     <SG1_Jaffa_VillageChild.title>enfant d'un village Jaffa</SG1_Jaffa_VillageChild.title>
     <SG1_Jaffa_VillageChild.titleShort>enfant de village</SG1_Jaffa_VillageChild.titleShort>
-    <SG1_Jaffa_VillageChild.description>Élevé dans un village Jaffa sous des étoiles lointaines, cet enfant a appris les devoirs communautaires, les anciens récits et la discipline du foyer.</SG1_Jaffa_VillageChild.description>
+    <SG1_Jaffa_VillageChild.description>Élevé dans un village Jaffa sous des étoiles lointaines, cet enfant a appris les devoirs communautaires, les anciens récits et la discipline du foyer. Le travail quotidien dans les champs et les cuisines lui a donné des habitudes pratiques et un profond sens du devoir envers ses voisins.</SG1_Jaffa_VillageChild.description>
     <SG1_Jaffa_TempleAttendant.title>jeune serviteur de temple</SG1_Jaffa_TempleAttendant.title>
     <SG1_Jaffa_TempleAttendant.titleShort>serviteur de temple</SG1_Jaffa_TempleAttendant.titleShort>
-    <SG1_Jaffa_TempleAttendant.description>Cet enfant a servi autour d'un temple Goa'uld, portant des messages et observant les cérémonies bien avant d'en comprendre les pouvoirs.</SG1_Jaffa_TempleAttendant.description>
+    <SG1_Jaffa_TempleAttendant.description>Cet enfant a servi autour d'un temple Goa'uld, portant des messages et observant les cérémonies bien avant d'en comprendre les pouvoirs. Les couloirs silencieux lui ont appris à reconnaître le rang, le rituel et le danger dans les gestes les plus discrets.</SG1_Jaffa_TempleAttendant.description>
     <SG1_Jaffa_WarriorHousehold.title>enfant d'une famille de guerriers</SG1_Jaffa_WarriorHousehold.title>
     <SG1_Jaffa_WarriorHousehold.titleShort>famille de guerriers</SG1_Jaffa_WarriorHousehold.titleShort>
-    <SG1_Jaffa_WarriorHousehold.description>Né dans une famille de combattants Jaffa, cet enfant a grandi parmi les exercices, l'entretien des armures et l'attente du service.</SG1_Jaffa_WarriorHousehold.description>
+    <SG1_Jaffa_WarriorHousehold.description>Né dans une famille de combattants Jaffa, cet enfant a grandi parmi les exercices, l'entretien des armures et l'attente du service. Avant même son entraînement officiel, il savait démonter des armes simples et reconnaître le rythme d'une patrouille.</SG1_Jaffa_WarriorHousehold.description>
     <SG1_Jaffa_TributeWorldShepherd.title>jeune berger d'un monde soumis</SG1_Jaffa_TributeWorldShepherd.title>
     <SG1_Jaffa_TributeWorldShepherd.titleShort>jeune berger</SG1_Jaffa_TributeWorldShepherd.titleShort>
-    <SG1_Jaffa_TributeWorldShepherd.description>Cet enfant gardait les troupeaux d'un monde tributaire et a appris à survivre loin des colonies fortifiées.</SG1_Jaffa_TributeWorldShepherd.description>
+    <SG1_Jaffa_TributeWorldShepherd.description>Cet enfant gardait les troupeaux d'un monde tributaire et a appris à survivre loin des colonies fortifiées. De longues journées au-delà des murs ont développé son aisance avec les animaux et sa connaissance des plantes utiles.</SG1_Jaffa_TributeWorldShepherd.description>
     <SG1_Jaffa_ArtisanApprentice.title>apprenti artisan Jaffa</SG1_Jaffa_ArtisanApprentice.title>
     <SG1_Jaffa_ArtisanApprentice.titleShort>apprenti artisan</SG1_Jaffa_ArtisanApprentice.titleShort>
-    <SG1_Jaffa_ArtisanApprentice.description>Placé auprès d'artisans locaux, cet enfant a appris les gestes patients qui permettaient à une communauté Jaffa de rester équipée et nourrie.</SG1_Jaffa_ArtisanApprentice.description>
+    <SG1_Jaffa_ArtisanApprentice.description>Placé auprès d'artisans locaux, cet enfant a appris les gestes patients qui permettaient à une communauté Jaffa de rester équipée et nourrie. Les petites réparations et les découpes mesurées récompensaient la patience, la précision et le respect des matériaux rares.</SG1_Jaffa_ArtisanApprentice.description>
     <SG1_Jaffa_FortressChild.title>enfant d'une forteresse Jaffa</SG1_Jaffa_FortressChild.title>
     <SG1_Jaffa_FortressChild.titleShort>enfant de forteresse</SG1_Jaffa_FortressChild.titleShort>
-    <SG1_Jaffa_FortressChild.description>Cet enfant a grandi dans une garnison Jaffa fortifiée, où les alarmes, les patrouilles et les bandes de guerre faisaient partie du quotidien.</SG1_Jaffa_FortressChild.description>
+    <SG1_Jaffa_FortressChild.description>Cet enfant a grandi dans une garnison Jaffa fortifiée, où les alarmes, les patrouilles et les bandes de guerre faisaient partie du quotidien. Il a appris où se mettre à couvert, comment transporter les fournitures et quand une alarme annonçait un danger réel.</SG1_Jaffa_FortressChild.description>
     <SG1_Jaffa_SanctuaryWard.title>pupille d'un sanctuaire Jaffa</SG1_Jaffa_SanctuaryWard.title>
     <SG1_Jaffa_SanctuaryWard.titleShort>pupille de sanctuaire</SG1_Jaffa_SanctuaryWard.titleShort>
-    <SG1_Jaffa_SanctuaryWard.description>Recueilli par une communauté sanctuaire, cet enfant a appris la prudence, l'entraide et la valeur de l'écoute avant la parole.</SG1_Jaffa_SanctuaryWard.description>
+    <SG1_Jaffa_SanctuaryWard.description>Recueilli par une communauté sanctuaire, cet enfant a appris la prudence, l'entraide et la valeur de l'écoute avant la parole. Aider les blessés et rassurer les nouveaux arrivants apeurés a fait de la compassion une compétence pratique de survie.</SG1_Jaffa_SanctuaryWard.description>
     <SG1_Jaffa_TrainingCampYouth.title>jeune d'un camp d'entraînement Jaffa</SG1_Jaffa_TrainingCampYouth.title>
     <SG1_Jaffa_TrainingCampYouth.titleShort>jeune du camp</SG1_Jaffa_TrainingCampYouth.titleShort>
-    <SG1_Jaffa_TrainingCampYouth.description>Cet enfant a passé ses années de formation autour d'un camp d'entraînement Jaffa, aidant aux tâches simples pendant que les vétérans préparaient la génération suivante.</SG1_Jaffa_TrainingCampYouth.description>
+    <SG1_Jaffa_TrainingCampYouth.description>Cet enfant a passé ses années de formation autour d'un camp d'entraînement Jaffa, aidant aux tâches simples pendant que les vétérans préparaient la génération suivante. Les exercices, les corvées et les combats observés lui ont donné une familiarité précoce avec les armes et la discipline.</SG1_Jaffa_TrainingCampYouth.description>
     <SG1_GoauldJaffa_DomainWarrior.title>guerrier Jaffa de domaine</SG1_GoauldJaffa_DomainWarrior.title>
     <SG1_GoauldJaffa_DomainWarrior.titleShort>guerrier de domaine</SG1_GoauldJaffa_DomainWarrior.titleShort>
-    <SG1_GoauldJaffa_DomainWarrior.description>Ce Jaffa a combattu pour un domaine Goa'uld, défendant ses frontières et obéissant aux ordres transmis au nom d'un maître lointain.</SG1_GoauldJaffa_DomainWarrior.description>
+    <SG1_GoauldJaffa_DomainWarrior.description>Ce Jaffa a combattu pour un domaine Goa'uld, défendant ses frontières et obéissant aux ordres transmis au nom d'un maître lointain. La vie de campagne lui a donné une solide maîtrise du bâton et de la lame, mais aussi l'habitude des ordres soutenus par la peur.</SG1_GoauldJaffa_DomainWarrior.description>
     <SG1_GoauldJaffa_TempleGuard.title>garde de temple Goa'uld</SG1_GoauldJaffa_TempleGuard.title>
     <SG1_GoauldJaffa_TempleGuard.titleShort>garde de temple</SG1_GoauldJaffa_TempleGuard.titleShort>
-    <SG1_GoauldJaffa_TempleGuard.description>Affecté à un temple Goa'uld, ce Jaffa a protégé les lieux sacrés et appris les rites d'une hiérarchie rigide.</SG1_GoauldJaffa_TempleGuard.description>
+    <SG1_GoauldJaffa_TempleGuard.description>Affecté à un temple Goa'uld, ce Jaffa a protégé les lieux sacrés et appris les rites d'une hiérarchie rigide. Le devoir cérémoniel mêlait combat rapproché, vigilance et capacité à contenir les fidèles sans provoquer de désordre ouvert.</SG1_GoauldJaffa_TempleGuard.description>
     <SG1_GoauldJaffa_FortressGuard.title>garde de forteresse Goa'uld</SG1_GoauldJaffa_FortressGuard.title>
     <SG1_GoauldJaffa_FortressGuard.titleShort>garde de forteresse</SG1_GoauldJaffa_FortressGuard.titleShort>
-    <SG1_GoauldJaffa_FortressGuard.description>Ce Jaffa a servi durant des années dans une forteresse, entretenant les armes, entraînant les patrouilles et réagissant rapidement aux alarmes.</SG1_GoauldJaffa_FortressGuard.description>
+    <SG1_GoauldJaffa_FortressGuard.description>Ce Jaffa a servi durant des années dans une forteresse, entretenant les armes, entraînant les patrouilles et réagissant rapidement aux alarmes. Il savait tenir une ligne de tir, renforcer une position endommagée et maintenir le matériel en état pendant un siège.</SG1_GoauldJaffa_FortressGuard.description>
     <SG1_GoauldJaffa_CampaignVeteran.title>vétéran des guerres entre Grands Maîtres</SG1_GoauldJaffa_CampaignVeteran.title>
     <SG1_GoauldJaffa_CampaignVeteran.titleShort>vétéran de guerre</SG1_GoauldJaffa_CampaignVeteran.titleShort>
-    <SG1_GoauldJaffa_CampaignVeteran.description>Ce Jaffa a survécu aux campagnes entre Grands Maîtres rivaux et appris que la discipline au combat comptait davantage que les promesses.</SG1_GoauldJaffa_CampaignVeteran.description>
+    <SG1_GoauldJaffa_CampaignVeteran.description>Ce Jaffa a survécu aux campagnes entre Grands Maîtres rivaux et appris que la discipline au combat comptait davantage que les promesses. Les cicatrices et les camarades perdus lui ont appris à tirer avec constance, combattre au corps à corps et maintenir les blessés en vie.</SG1_GoauldJaffa_CampaignVeteran.description>
     <SG1_GoauldJaffa_Instructor.title>instructeur Jaffa</SG1_GoauldJaffa_Instructor.title>
     <SG1_GoauldJaffa_Instructor.titleShort>instructeur</SG1_GoauldJaffa_Instructor.titleShort>
-    <SG1_GoauldJaffa_Instructor.description>Chargé de préparer les jeunes guerriers, ce Jaffa a répété les anciennes leçons jusqu'à ce que les recrues puissent agir sans hésiter.</SG1_GoauldJaffa_Instructor.description>
+    <SG1_GoauldJaffa_Instructor.description>Chargé de préparer les jeunes guerriers, ce Jaffa a répété les anciennes leçons jusqu'à ce que les recrues puissent agir sans hésiter. Il a appris à démontrer chaque mouvement clairement, corriger les hésitations et imposer le respect aux recrues réticentes.</SG1_GoauldJaffa_Instructor.description>
     <SG1_GoauldJaffa_ProcessionEscort.title>escorte de procession Goa'uld</SG1_GoauldJaffa_ProcessionEscort.title>
     <SG1_GoauldJaffa_ProcessionEscort.titleShort>escorte de procession</SG1_GoauldJaffa_ProcessionEscort.titleShort>
-    <SG1_GoauldJaffa_ProcessionEscort.description>Ce Jaffa a escorté dignitaires, prêtres et caravanes de tribut, restant vigilant lorsque les démonstrations de pouvoir attiraient le ressentiment.</SG1_GoauldJaffa_ProcessionEscort.description>
+    <SG1_GoauldJaffa_ProcessionEscort.description>Ce Jaffa a escorté dignitaires, prêtres et caravanes de tribut, restant vigilant lorsque les démonstrations de pouvoir attiraient le ressentiment. Les routes encombrées exigeaient des tirs précis, une force maîtrisée et une attention constante à l'humeur du cortège.</SG1_GoauldJaffa_ProcessionEscort.description>
     <SG1_GoauldJaffa_GarrisonOfficer.title>officier de garnison Jaffa</SG1_GoauldJaffa_GarrisonOfficer.title>
     <SG1_GoauldJaffa_GarrisonOfficer.titleShort>officier de garnison</SG1_GoauldJaffa_GarrisonOfficer.titleShort>
-    <SG1_GoauldJaffa_GarrisonOfficer.description>Promu dans une garnison de domaine, ce Jaffa a coordonné les sentinelles, les fournitures et la discipline.</SG1_GoauldJaffa_GarrisonOfficer.description>
+    <SG1_GoauldJaffa_GarrisonOfficer.description>Promu dans une garnison de domaine, ce Jaffa a coordonné les sentinelles, les fournitures et la discipline. Le commandement exigeait plus que de la force : il devait équilibrer la logistique, l'obéissance et les ambitions des guerriers subordonnés.</SG1_GoauldJaffa_GarrisonOfficer.description>
     <SG1_GoauldJaffa_ChappaaiSentinel.title>sentinelle de Chappa'ai</SG1_GoauldJaffa_ChappaaiSentinel.title>
     <SG1_GoauldJaffa_ChappaaiSentinel.titleShort>sentinelle de Chappa'ai</SG1_GoauldJaffa_ChappaaiSentinel.titleShort>
-    <SG1_GoauldJaffa_ChappaaiSentinel.description>Ce Jaffa a gardé un Chappa'ai et considéré chaque activation comme l'arrivée possible d'alliés, de pillards ou de supérieurs mécontents.</SG1_GoauldJaffa_ChappaaiSentinel.description>
+    <SG1_GoauldJaffa_ChappaaiSentinel.description>Ce Jaffa a gardé un Chappa'ai et considéré chaque activation comme l'arrivée possible d'alliés, de pillards ou de supérieurs mécontents. Des années auprès de la porte ont affûté ses réflexes et sa connaissance des signes annonçant une arrivée dangereuse.</SG1_GoauldJaffa_ChappaaiSentinel.description>
     <SG1_FreeJaffa_LiberatedWarrior.title>guerrier Jaffa affranchi</SG1_FreeJaffa_LiberatedWarrior.title>
     <SG1_FreeJaffa_LiberatedWarrior.titleShort>guerrier affranchi</SG1_FreeJaffa_LiberatedWarrior.titleShort>
-    <SG1_FreeJaffa_LiberatedWarrior.description>Ce Jaffa a rompu avec le service des Goa'uld et appris à combattre pour une communauté plutôt que pour l'orgueil d'un Grand Maître.</SG1_FreeJaffa_LiberatedWarrior.description>
+    <SG1_FreeJaffa_LiberatedWarrior.description>Ce Jaffa a rompu avec le service des Goa'uld et appris à combattre pour une communauté plutôt que pour l'orgueil d'un Grand Maître. La liberté n'a pas effacé ses habitudes militaires, mais lui a donné une raison de protéger ses compagnons plutôt que d'impressionner un dieu.</SG1_FreeJaffa_LiberatedWarrior.description>
     <SG1_FreeJaffa_CommunityProtector.title>protecteur d'une communauté Jaffa libre</SG1_FreeJaffa_CommunityProtector.title>
     <SG1_FreeJaffa_CommunityProtector.titleShort>protecteur communautaire</SG1_FreeJaffa_CommunityProtector.titleShort>
-    <SG1_FreeJaffa_CommunityProtector.description>Ce Jaffa a défendu une colonie indépendante où chaque patrouille protégeait les familles, les champs et la fragile idée de liberté.</SG1_FreeJaffa_CommunityProtector.description>
+    <SG1_FreeJaffa_CommunityProtector.description>Ce Jaffa a défendu une colonie indépendante où chaque patrouille protégeait les familles, les champs et la fragile idée de liberté. Il a appris à défendre les foyers sans négliger les récoltes, les conflits locaux ni la confiance des habitants.</SG1_FreeJaffa_CommunityProtector.description>
     <SG1_FreeJaffa_RebellionVeteran.title>vétéran de la rébellion Jaffa</SG1_FreeJaffa_RebellionVeteran.title>
     <SG1_FreeJaffa_RebellionVeteran.titleShort>vétéran de la rébellion</SG1_FreeJaffa_RebellionVeteran.titleShort>
-    <SG1_FreeJaffa_RebellionVeteran.description>Ce Jaffa a combattu lors d'un soulèvement contre la domination Goa'uld et conservé les leçons tirées des victoires et des pertes.</SG1_FreeJaffa_RebellionVeteran.description>
+    <SG1_FreeJaffa_RebellionVeteran.description>Ce Jaffa a combattu lors d'un soulèvement contre la domination Goa'uld et conservé les leçons tirées des victoires et des pertes. Les embuscades et les retraites en ont fait un combattant dangereux et une voix stable parmi ceux qui apprenaient encore à résister.</SG1_FreeJaffa_RebellionVeteran.description>
     <SG1_FreeJaffa_Scout.title>éclaireur Jaffa libre</SG1_FreeJaffa_Scout.title>
     <SG1_FreeJaffa_Scout.titleShort>éclaireur libre</SG1_FreeJaffa_Scout.titleShort>
-    <SG1_FreeJaffa_Scout.description>Ce Jaffa a voyagé entre les communautés libérées, surveillant les routes, les ruines et les Portes des étoiles à la recherche d'ennemis de retour.</SG1_FreeJaffa_Scout.description>
+    <SG1_FreeJaffa_Scout.description>Ce Jaffa a voyagé entre les communautés libérées, surveillant les routes, les ruines et les Portes des étoiles à la recherche d'ennemis de retour. Les trajets entre colonies lui ont appris à lire les traces, conduire les animaux de bât et choisir le terrain avant un combat.</SG1_FreeJaffa_Scout.description>
     <SG1_FreeJaffa_Artisan.title>artisan Jaffa libre</SG1_FreeJaffa_Artisan.title>
     <SG1_FreeJaffa_Artisan.titleShort>artisan libre</SG1_FreeJaffa_Artisan.titleShort>
-    <SG1_FreeJaffa_Artisan.description>Ce Jaffa a construit une vie civile après des générations de service imposé, réparant les outils et transmettant des savoir-faire pratiques.</SG1_FreeJaffa_Artisan.description>
+    <SG1_FreeJaffa_Artisan.description>Ce Jaffa a construit une vie civile après des générations de service imposé, réparant les outils et transmettant des savoir-faire pratiques. Il a réorienté ses anciennes compétences d'entretien militaire vers des foyers, des outils et des structures conçus pour durer.</SG1_FreeJaffa_Artisan.description>
     <SG1_FreeJaffa_Farmer.title>agriculteur Jaffa libre</SG1_FreeJaffa_Farmer.title>
     <SG1_FreeJaffa_Farmer.titleShort>agriculteur libre</SG1_FreeJaffa_Farmer.titleShort>
-    <SG1_FreeJaffa_Farmer.description>Ce Jaffa a cultivé les terres d'un village indépendant et préparé soigneusement la saison suivante.</SG1_FreeJaffa_Farmer.description>
+    <SG1_FreeJaffa_Farmer.description>Ce Jaffa a cultivé les terres d'un village indépendant et préparé soigneusement la saison suivante. Les années difficiles lui ont appris la patience envers le sol, les animaux et les réserves communes qui séparaient la liberté de la famine.</SG1_FreeJaffa_Farmer.description>
     <SG1_FreeJaffa_Healer.title>guérisseur Jaffa libre</SG1_FreeJaffa_Healer.title>
     <SG1_FreeJaffa_Healer.titleShort>guérisseur libre</SG1_FreeJaffa_Healer.titleShort>
-    <SG1_FreeJaffa_Healer.description>Ce Jaffa a soigné ses voisins avec des ressources limitées, combinant les connaissances héritées et les remèdes disponibles localement.</SG1_FreeJaffa_Healer.description>
+    <SG1_FreeJaffa_Healer.description>Ce Jaffa a soigné ses voisins avec des ressources limitées, combinant les connaissances héritées et les remèdes disponibles localement. Il a appris à nettoyer les blessures, identifier les plantes utiles et rassurer les patients effrayés.</SG1_FreeJaffa_Healer.description>
     <SG1_FreeJaffa_FormerDeserter.title>ancien déserteur Goa'uld</SG1_FreeJaffa_FormerDeserter.title>
     <SG1_FreeJaffa_FormerDeserter.titleShort>ancien déserteur</SG1_FreeJaffa_FormerDeserter.titleShort>
-    <SG1_FreeJaffa_FormerDeserter.description>Ce Jaffa a déserté une force Goa'uld et passé des années à prouver que quitter un ancien maître n'était que la première étape vers la liberté.</SG1_FreeJaffa_FormerDeserter.description>
+    <SG1_FreeJaffa_FormerDeserter.description>Ce Jaffa a déserté une force Goa'uld et passé des années à prouver que quitter un ancien maître n'était que la première étape vers la liberté. Une vie sous le soupçon lui a appris à rester vigilant, combattre lorsqu'il était acculé et gagner la confiance par des actes utiles.</SG1_FreeJaffa_FormerDeserter.description>
     <SG1_OffworldHuman_TributaryVillageChild.title>enfant d'un village tributaire</SG1_OffworldHuman_TributaryVillageChild.title>
     <SG1_OffworldHuman_TributaryVillageChild.titleShort>enfant tributaire</SG1_OffworldHuman_TributaryVillageChild.titleShort>
-    <SG1_OffworldHuman_TributaryVillageChild.description>Élevé dans une colonie humaine isolée sous des souverains lointains, cet enfant a appris que la survie dépendait souvent de la prudence et de la coopération.</SG1_OffworldHuman_TributaryVillageChild.description>
+    <SG1_OffworldHuman_TributaryVillageChild.description>Élevé dans une colonie humaine isolée sous des souverains lointains, cet enfant a appris que la survie dépendait souvent de la prudence et de la coopération. Le travail partagé entre les familles lui a donné une connaissance pratique des cultures, de la nourriture et de l'humeur de la communauté.</SG1_OffworldHuman_TributaryVillageChild.description>
     <SG1_OffworldHuman_PalaceServantChild.title>enfant de serviteurs de palais</SG1_OffworldHuman_PalaceServantChild.title>
     <SG1_OffworldHuman_PalaceServantChild.titleShort>serviteur de palais</SG1_OffworldHuman_PalaceServantChild.titleShort>
-    <SG1_OffworldHuman_PalaceServantChild.description>Cet enfant a grandi parmi les serviteurs attachés à une grande demeure, apprenant à observer le rang, l'humeur et le danger avant de parler.</SG1_OffworldHuman_PalaceServantChild.description>
+    <SG1_OffworldHuman_PalaceServantChild.description>Cet enfant a grandi parmi les serviteurs attachés à une grande demeure, apprenant à observer le rang, l'humeur et le danger avant de parler. Il est devenu habile à anticiper les demandes et à dissimuler ses réactions devant des adultes dangereux.</SG1_OffworldHuman_PalaceServantChild.description>
     <SG1_OffworldHuman_MarketSettlementChild.title>enfant d'un marché hors-monde</SG1_OffworldHuman_MarketSettlementChild.title>
     <SG1_OffworldHuman_MarketSettlementChild.titleShort>enfant du marché</SG1_OffworldHuman_MarketSettlementChild.titleShort>
-    <SG1_OffworldHuman_MarketSettlementChild.description>Cet enfant a grandi autour d'un marché hors-monde animé où voyageurs, rumeurs et marchandises inconnues arrivaient de colonies lointaines.</SG1_OffworldHuman_MarketSettlementChild.description>
+    <SG1_OffworldHuman_MarketSettlementChild.description>Cet enfant a grandi autour d'un marché hors-monde animé où voyageurs, rumeurs et marchandises inconnues arrivaient de colonies lointaines. Les négociations et les coutumes étrangères ont affûté son instinct social et sa curiosité pour le monde extérieur.</SG1_OffworldHuman_MarketSettlementChild.description>
     <SG1_OffworldHuman_TempleWard.title>pupille de temple</SG1_OffworldHuman_TempleWard.title>
     <SG1_OffworldHuman_TempleWard.titleShort>pupille de temple</SG1_OffworldHuman_TempleWard.titleShort>
-    <SG1_OffworldHuman_TempleWard.description>Élevé près d'un complexe religieux, cet enfant a appris les cérémonies, les tabous et le silence inquiet attendu autour des visiteurs puissants.</SG1_OffworldHuman_TempleWard.description>
+    <SG1_OffworldHuman_TempleWard.description>Élevé près d'un complexe religieux, cet enfant a appris les cérémonies, les tabous et le silence inquiet attendu autour des visiteurs puissants. Les tâches rituelles ont développé sa mémoire, ses manières et son attention aux symboles.</SG1_OffworldHuman_TempleWard.description>
     <SG1_OffworldHuman_CaravanChild.title>enfant de caravane hors-monde</SG1_OffworldHuman_CaravanChild.title>
     <SG1_OffworldHuman_CaravanChild.titleShort>enfant de caravane</SG1_OffworldHuman_CaravanChild.titleShort>
-    <SG1_OffworldHuman_CaravanChild.description>Cet enfant a voyagé avec une caravane entre des communautés dispersées et appris à s'adapter rapidement lorsque la route changeait.</SG1_OffworldHuman_CaravanChild.description>
+    <SG1_OffworldHuman_CaravanChild.description>Cet enfant a voyagé avec une caravane entre des communautés dispersées et appris à s'adapter rapidement lorsque la route changeait. Il a appris à calmer les animaux, juger les étrangers et trouver de la nourriture ou un abri sur des itinéraires incertains.</SG1_OffworldHuman_CaravanChild.description>
     <SG1_OffworldHuman_RemoteFarmChild.title>enfant d'une ferme isolée</SG1_OffworldHuman_RemoteFarmChild.title>
     <SG1_OffworldHuman_RemoteFarmChild.titleShort>enfant de ferme</SG1_OffworldHuman_RemoteFarmChild.titleShort>
-    <SG1_OffworldHuman_RemoteFarmChild.description>Cet enfant a grandi dans une ferme isolée où la météo, les récoltes et les étrangers armés façonnaient le quotidien.</SG1_OffworldHuman_RemoteFarmChild.description>
+    <SG1_OffworldHuman_RemoteFarmChild.description>Cet enfant a grandi dans une ferme isolée où la météo, les récoltes et les étrangers armés façonnaient le quotidien. L'isolement l'a rendu à l'aise avec le bétail, les cultures et les problèmes qu'il fallait résoudre sans aide extérieure.</SG1_OffworldHuman_RemoteFarmChild.description>
     <SG1_GoauldHost_DomainAdministrator.title>administrateur Goa'uld de domaine</SG1_GoauldHost_DomainAdministrator.title>
     <SG1_GoauldHost_DomainAdministrator.titleShort>administrateur de domaine</SG1_GoauldHost_DomainAdministrator.titleShort>
-    <SG1_GoauldHost_DomainAdministrator.description>Ce Goa'uld a géré les tributs, le travail et les conflits locaux depuis la sécurité d'une colonie de domaine.</SG1_GoauldHost_DomainAdministrator.description>
+    <SG1_GoauldHost_DomainAdministrator.description>Ce Goa'uld a géré les tributs, le travail et les conflits locaux depuis la sécurité d'une colonie de domaine. Une administration efficace exigeait des registres précis, des ordres persuasifs et une bonne compréhension des rivaux qui pouvaient être achetés.</SG1_GoauldHost_DomainAdministrator.description>
     <SG1_GoauldHost_PalaceEmissary.title>émissaire Goa'uld de palais</SG1_GoauldHost_PalaceEmissary.title>
     <SG1_GoauldHost_PalaceEmissary.titleShort>émissaire de palais</SG1_GoauldHost_PalaceEmissary.titleShort>
-    <SG1_GoauldHost_PalaceEmissary.description>Ce Goa'uld a porté exigences et promesses entre les cours, considérant chaque conversation comme une épreuve d'influence.</SG1_GoauldHost_PalaceEmissary.description>
+    <SG1_GoauldHost_PalaceEmissary.description>Ce Goa'uld a porté exigences et promesses entre les cours, considérant chaque conversation comme une épreuve d'influence. Il a appris à flatter, menacer et négocier sans révéler le peu de certitude qui soutenait le message de son maître.</SG1_GoauldHost_PalaceEmissary.description>
     <SG1_GoauldHost_TributaryGovernor.title>gouverneur Goa'uld tributaire</SG1_GoauldHost_TributaryGovernor.title>
     <SG1_GoauldHost_TributaryGovernor.titleShort>gouverneur tributaire</SG1_GoauldHost_TributaryGovernor.titleShort>
-    <SG1_GoauldHost_TributaryGovernor.description>Ce Goa'uld a supervisé une communauté tributaire et appris à obtenir l'obéissance sans provoquer de révolte.</SG1_GoauldHost_TributaryGovernor.description>
+    <SG1_GoauldHost_TributaryGovernor.description>Ce Goa'uld a supervisé une communauté tributaire et appris à obtenir l'obéissance sans provoquer de révolte. Maintenir le tribut exigeait du calcul, une autorité publique et assez d'assurance martiale pour survivre aux troubles.</SG1_GoauldHost_TributaryGovernor.description>
     <SG1_GoauldHost_CultPriest.title>prêtre d'un culte Goa'uld</SG1_GoauldHost_CultPriest.title>
     <SG1_GoauldHost_CultPriest.titleShort>prêtre de culte</SG1_GoauldHost_CultPriest.titleShort>
-    <SG1_GoauldHost_CultPriest.description>Ce Goa'uld a cultivé l'autorité rituelle, encourageant les fidèles à confondre peur, émerveillement et loyauté.</SG1_GoauldHost_CultPriest.description>
+    <SG1_GoauldHost_CultPriest.description>Ce Goa'uld a cultivé l'autorité rituelle, encourageant les fidèles à confondre peur, émerveillement et loyauté. Il a maîtrisé la voix, les symboles et les prodiges mis en scène qui transformaient la peur en obéissance.</SG1_GoauldHost_CultPriest.description>
     <SG1_GoauldHost_ArchiveKeeper.title>gardien d'archives Goa'uld</SG1_GoauldHost_ArchiveKeeper.title>
     <SG1_GoauldHost_ArchiveKeeper.titleShort>gardien d'archives</SG1_GoauldHost_ArchiveKeeper.titleShort>
-    <SG1_GoauldHost_ArchiveKeeper.description>Ce Goa'uld a entretenu des archives, des artefacts et des récits remaniés afin de renforcer un domaine.</SG1_GoauldHost_ArchiveKeeper.description>
+    <SG1_GoauldHost_ArchiveKeeper.description>Ce Goa'uld a entretenu des archives, des artefacts et des récits remaniés afin de renforcer un domaine. Le classement des anciennes technologies récompensait la patience, la curiosité technique et la capacité à décider quelle vérité devait disparaître.</SG1_GoauldHost_ArchiveKeeper.description>
     <SG1_GoauldHost_CourtStrategist.title>stratège de cour Goa'uld</SG1_GoauldHost_CourtStrategist.title>
     <SG1_GoauldHost_CourtStrategist.titleShort>stratège de cour</SG1_GoauldHost_CourtStrategist.titleShort>
-    <SG1_GoauldHost_CourtStrategist.description>Ce Goa'uld a conseillé une cour où chaque alliance était temporaire et chaque concession apparente dissimulait un autre calcul.</SG1_GoauldHost_CourtStrategist.description>
+    <SG1_GoauldHost_CourtStrategist.description>Ce Goa'uld a conseillé une cour où chaque alliance était temporaire et chaque concession apparente dissimulait un autre calcul. Il a survécu en reliant des fragments de renseignement, en lisant les motivations et en présentant ses conseils comme les propres idées de son souverain.</SG1_GoauldHost_CourtStrategist.description>
     <SG1_SystemLord_Conqueror.title>Grand Maître Goa'uld conquérant</SG1_SystemLord_Conqueror.title>
     <SG1_SystemLord_Conqueror.titleShort>Grand Maître conquérant</SG1_SystemLord_Conqueror.titleShort>
-    <SG1_SystemLord_Conqueror.description>Ce Grand Maître a bâti un domaine par la conquête, les tributs et une cruauté soigneusement mise en scène.</SG1_SystemLord_Conqueror.description>
+    <SG1_SystemLord_Conqueror.description>Ce Grand Maître a bâti un domaine par la conquête, les tributs et une cruauté soigneusement mise en scène. Il a cultivé une présence autoritaire et une violence personnelle, entrant lui-même au combat lorsque le spectacle renforçait sa domination.</SG1_SystemLord_Conqueror.description>
     <SG1_SystemLord_Dynast.title>Grand Maître Goa'uld dynaste</SG1_SystemLord_Dynast.title>
     <SG1_SystemLord_Dynast.titleShort>Grand Maître dynaste</SG1_SystemLord_Dynast.titleShort>
-    <SG1_SystemLord_Dynast.description>Ce Grand Maître a hérité d'un ancien domaine et préservé son apparence de permanence pendant que ses rivaux éprouvaient chaque frontière.</SG1_SystemLord_Dynast.description>
+    <SG1_SystemLord_Dynast.description>Ce Grand Maître a hérité d'un ancien domaine et préservé son apparence de permanence pendant que ses rivaux éprouvaient chaque frontière. L'autorité de cour, les archives héritées et les intrigues constantes lui ont donné le goût de la persuasion et des calculs à long terme.</SG1_SystemLord_Dynast.description>
     <SG1_SystemLord_Schemer.title>Grand Maître Goa'uld intrigant</SG1_SystemLord_Schemer.title>
     <SG1_SystemLord_Schemer.titleShort>Grand Maître intrigant</SG1_SystemLord_Schemer.titleShort>
-    <SG1_SystemLord_Schemer.description>Ce Grand Maître a préféré la manipulation à la guerre ouverte, employant émissaires, otages et générosité sélective pour affaiblir ses rivaux.</SG1_SystemLord_Schemer.description>
+    <SG1_SystemLord_Schemer.description>Ce Grand Maître a préféré la manipulation à la guerre ouverte, employant émissaires, otages et générosité sélective pour affaiblir ses rivaux. Il a accumulé les secrets, cartographié les loyautés et préféré une conversation utile à une bataille coûteuse.</SG1_SystemLord_Schemer.description>
     <SG1_SystemLord_Warlord.title>Grand Maître Goa'uld guerrier</SG1_SystemLord_Warlord.title>
     <SG1_SystemLord_Warlord.titleShort>Grand Maître guerrier</SG1_SystemLord_Warlord.titleShort>
-    <SG1_SystemLord_Warlord.description>Ce Grand Maître a gouverné par le spectacle militaire et attendu de ses commandants Jaffa qu'ils répondent à chaque revers par une campagne plus dure.</SG1_SystemLord_Warlord.description>
+    <SG1_SystemLord_Warlord.description>Ce Grand Maître a gouverné par le spectacle militaire et attendu de ses commandants Jaffa qu'ils répondent à chaque revers par une campagne plus dure. Il comprenait les armes, l'intimidation et l'art politique de récompenser une victoire avant d'exiger la campagne suivante.</SG1_SystemLord_Warlord.description>
     <SG1_Tokra_Infiltrator.title>agent infiltré Tok'ra</SG1_Tokra_Infiltrator.title>
     <SG1_Tokra_Infiltrator.titleShort>infiltré Tok'ra</SG1_Tokra_Infiltrator.titleShort>
-    <SG1_Tokra_Infiltrator.description>Ce Tok'ra a passé des années derrière les lignes ennemies, cultivant la patience et les habitudes qui rendaient crédible une fausse identité.</SG1_Tokra_Infiltrator.description>
+    <SG1_Tokra_Infiltrator.description>Ce Tok'ra a passé des années derrière les lignes ennemies, cultivant la patience et les habitudes qui rendaient crédible une fausse identité. Maintenir une couverture exigeait une parole persuasive, une observation attentive et assez d'expérience du combat pour s'échapper lorsque la tromperie échouait.</SG1_Tokra_Infiltrator.description>
     <SG1_Tokra_Medic.title>médecin Tok'ra</SG1_Tokra_Medic.title>
     <SG1_Tokra_Medic.titleShort>médecin Tok'ra</SG1_Tokra_Medic.titleShort>
-    <SG1_Tokra_Medic.description>Ce Tok'ra a soigné des hôtes, des agents et des alliés avec des ressources limitées, arbitrant entre le besoin médical et le secret opérationnel.</SG1_Tokra_Medic.description>
+    <SG1_Tokra_Medic.description>Ce Tok'ra a soigné des hôtes, des agents et des alliés avec des ressources limitées, arbitrant entre le besoin médical et le secret opérationnel. Sa pratique associait des soins précis à la discrétion nécessaire pour protéger le patient comme la cellule.</SG1_Tokra_Medic.description>
     <SG1_Tokra_Diplomat.title>diplomate Tok'ra</SG1_Tokra_Diplomat.title>
     <SG1_Tokra_Diplomat.titleShort>diplomate Tok'ra</SG1_Tokra_Diplomat.titleShort>
-    <SG1_Tokra_Diplomat.description>Ce Tok'ra a négocié une coopération fragile avec des communautés méfiantes et appris que la confiance se gagnait progressivement.</SG1_Tokra_Diplomat.description>
+    <SG1_Tokra_Diplomat.description>Ce Tok'ra a négocié une coopération fragile avec des communautés méfiantes et appris que la confiance se gagnait progressivement. Il a appris à entendre la peur derrière les paroles hostiles et à bâtir des accords capables de survivre à une confiance imparfaite.</SG1_Tokra_Diplomat.description>
     <SG1_Tokra_Scout.title>éclaireur Tok'ra</SG1_Tokra_Scout.title>
     <SG1_Tokra_Scout.titleShort>éclaireur Tok'ra</SG1_Tokra_Scout.titleShort>
-    <SG1_Tokra_Scout.description>Ce Tok'ra a cartographié les routes sûres, les sites abandonnés et les mouvements ennemis, voyageant souvent avec pour seul outil une couverture.</SG1_Tokra_Scout.description>
+    <SG1_Tokra_Scout.description>Ce Tok'ra a cartographié les routes sûres, les sites abandonnés et les mouvements ennemis, voyageant souvent avec pour seul outil une couverture. Les déplacements lointains en ont fait un tireur compétent, un pisteur et un conducteur capable de s'adapter au moyen de transport exigé par son identité.</SG1_Tokra_Scout.description>
     <SG1_Tokra_Analyst.title>analyste du renseignement Tok'ra</SG1_Tokra_Analyst.title>
     <SG1_Tokra_Analyst.titleShort>analyste Tok'ra</SG1_Tokra_Analyst.titleShort>
-    <SG1_Tokra_Analyst.description>Ce Tok'ra a assemblé des rapports dispersés pour produire du renseignement exploitable et appris à se méfier des explications trop simples.</SG1_Tokra_Analyst.description>
+    <SG1_Tokra_Analyst.description>Ce Tok'ra a assemblé des rapports dispersés pour produire du renseignement exploitable et appris à se méfier des explications trop simples. Il a comparé les témoignages, la logistique et les habitudes ennemies jusqu'à transformer un motif caché en avertissement utilisable.</SG1_Tokra_Analyst.description>
     <SG1_Tokra_Courier.title>messager Tok'ra</SG1_Tokra_Courier.title>
     <SG1_Tokra_Courier.titleShort>messager Tok'ra</SG1_Tokra_Courier.titleShort>
-    <SG1_Tokra_Courier.description>Ce Tok'ra a transporté messages et fournitures entre des cellules dissimulées, considérant chaque trajet comme une épreuve de discrétion.</SG1_Tokra_Courier.description>
+    <SG1_Tokra_Courier.description>Ce Tok'ra a transporté messages et fournitures entre des cellules dissimulées, considérant chaque trajet comme une épreuve de discrétion. Un passage sûr dépendait d'une maîtrise correcte des armes, d'un savoir-faire de terrain adaptable et de la capacité à paraître ordinaire parmi les étrangers.</SG1_Tokra_Courier.description>
 </LanguageData>
