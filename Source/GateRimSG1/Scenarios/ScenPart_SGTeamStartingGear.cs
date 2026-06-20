@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using GateRimSG1.Names;
 using RimWorld;
 using Verse;
 
@@ -15,11 +14,6 @@ namespace GateRimSG1.Scenarios
     public class ScenPart_SGTeamStartingGear : ScenPart
     {
         private const int MinimumStartingAge = 20;
-        private const int MaxStarterNameAttempts = 100;
-
-        private readonly HashSet<string> generatedStarterNameKeys
-            = new HashSet<string>();
-
         public ThingDef uniform;
         public ThingDef boots;
         public ThingDef gloves;
@@ -59,11 +53,6 @@ namespace GateRimSG1.Scenarios
                 || pawn == null)
             {
                 return;
-            }
-
-            if (!redressed)
-            {
-                AssignTauriStarterName(pawn);
             }
 
             if (pawn.apparel == null)
@@ -110,41 +99,6 @@ namespace GateRimSG1.Scenarios
         public override bool CanCoexistWith(ScenPart other)
         {
             return !(other is ScenPart_SGTeamStartingGear);
-        }
-
-        private void AssignTauriStarterName(Pawn pawn)
-        {
-            Name generatedName = GameComponent_CulturalPawnNameManager.Current
-                ?.GenerateUniqueName(
-                    CulturalPawnNameGroup.Tauri,
-                    pawn.gender);
-
-            if (generatedName == null)
-            {
-                for (int attempt = 0;
-                    attempt < MaxStarterNameAttempts;
-                    attempt++)
-                {
-                    Name candidate = CulturalPawnNameUtility.GenerateName(
-                        CulturalPawnNameGroup.Tauri,
-                        pawn.gender);
-                    string candidateKey = candidate?.ToStringFull;
-
-                    if (candidateKey.NullOrEmpty()
-                        || !generatedStarterNameKeys.Add(candidateKey))
-                    {
-                        continue;
-                    }
-
-                    generatedName = candidate;
-                    break;
-                }
-            }
-
-            if (generatedName != null)
-            {
-                pawn.Name = generatedName;
-            }
         }
 
         private static void Wear(Pawn pawn, ThingDef apparelDef)

@@ -1,33 +1,31 @@
 # Current milestone testing
 
-Current milestone: `0.3.8-dev - Rework existing cultural backstories`.
+Current milestone: `0.3.9-dev - Add configurable starter cultural profiles`.
 
-Status: local functional validation complete. Publication remains.
+Status: local functional validation complete on `r3`. Publication remains.
 
 ## Validated
 
-- RimWorld loads without XML, translation or `BackstoryDef` errors.
-- All `52` existing cultural backstories remain available.
-- English and French descriptions display correctly.
-- Every backstory has coherent, moderate skill gains.
-- No passion, trait or work incapability is added.
-- SG-team starting candidates retain expected names and histories.
-- Representative Jaffa, Free Jaffa, Goa'uld host, System Lord and Tok'ra pawns generate with coherent histories.
-- Goa'uld raids and natural pawn generation show no regression.
-- Existing colon names and backstories remain unchanged after voluntary Tok'ra implantation.
-- Saving, fully quitting and reloading preserve names, histories and skills.
-- The wiki catalogue contains `52` entries grouped into eight cultural tables.
+- RimWorld loads the eight `CulturalPawnProfileDef` profiles and hidden scenario part without relevant XML, cross-reference or patch errors.
+- No Harmony dependency was added.
+- The project rebuild succeeds and `GateRimSG1.dll` reports version `0.3.9.0`.
+- The `Équipe SG isolée` scenario always assigns one of the six configured SGC adult careers while preserving compatible ordinary childhoods.
+- Jaffa starters use only configured Jaffa childhoods and Goa'uld-aligned or Free Jaffa adult careers.
+- Goa'uld-host starters use only configured off-world-human childhoods and Goa'uld-host or Tok'ra adult careers.
+- Mixed Jaffa and host profiles select a cultural name matching the final adulthood.
+- Backstory changes apply only the expected skill-bonus difference and do not reroll the pawn's random baseline, passions or gene aptitudes.
+- Ordinary human starters retain vanilla childhoods and a clear majority of vanilla adult careers.
+- Tau'ri / SGC careers appear occasionally for ordinary humans through the compatible vanilla-weighted pool, without a fixed replacement percentage.
+- Jaffa, Goa'uld-host and SG-team profiles remain higher priority than the ordinary-human additive profile.
+- Manual name or backstory changes made after generation remain untouched in the tested flow.
+- Developer-spawned pawns, raids, settlements, visitors and other world-generated pawns retain their previous cultural behavior.
+- Saving, fully quitting and reloading does not reapply profile selection, names or skill adjustments.
 - `Player.log` is clean for the tested scope.
-
-## Deferred observations
-
-- Starter-only culture filtering is not implemented in `0.3.8-dev`; it belongs to the next dedicated cultural-profile milestone.
-- Tok'ra implantation currently loses the visible reference to the symbiote name after fusion. The preserved design for a future player-controlled dual-identity system is in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
 
 ## Publication identifiers
 
-- branch: `feature/cultural-backstory-rework`;
-- commit: `0.3.8-dev - rework cultural backstories`;
-- final annotated tag: `v0.3.8-dev`.
+- branch: `feature/cultural-starter-profiles`;
+- commit: `0.3.9-dev - add configurable starter cultural profiles`;
+- final annotated tag: `v0.3.9-dev`.
 
-`docs/TESTING.md` remains the complete historical regression archive. Future active milestones should update this file with only their current targeted checks and results.
+The separate wiki must be synchronized because `docs/wiki/*.md` changed. `docs/TESTING.md` remains the complete historical regression archive.

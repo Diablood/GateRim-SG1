@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.9-dev - Add configurable starter cultural profiles
+
+- Add reusable `CulturalPawnProfileDef` profiles configured in XML and resolved generically by priority.
+- Support race, xenotype, `PawnKindDef`, faction and player-starter matching without culture-specific branches in the resolver.
+- Add a low-priority ordinary-human starter profile that preserves vanilla generation while inserting the six Tau'ri / SGC adult careers into the same effective weighted pool as compatible vanilla adult backstories, without a fixed replacement chance.
+- Migrate the existing cultural pawn-name manager to the shared resolver while preserving processed-name save data and current world-pawn behavior.
+- Add a hidden scenario part to Def-based scenarios without adding Harmony as a dependency.
+- Restrict newly randomized Jaffa starters to the current Jaffa childhoods and Goa'uld-aligned or Free Jaffa adult careers.
+- Restrict newly randomized Goa'uld-host starters to off-world-human childhoods and Goa'uld-host or Tok'ra adult careers.
+- Restrict adults in the stranded SG-team scenario to the six current SGC careers while preserving ordinary childhood generation.
+- Select Jaffa, Goa'uld or Tok'ra starter names from the adulthood actually chosen by mixed profiles.
+- Preserve each starter's randomized skill baseline, passions and gene aptitudes while applying the exact difference between the replaced and selected backstory bonuses.
+- Preserve manual post-generation edits and leave raids, visitors, settlements, quests, incidents, developer spawns and ordinary world pawn generation unchanged.
+- Add `docs/CULTURAL_FRAMEWORK.md` and document the starter rules in the player wiki.
+- Raise the assembly version to `0.3.9.0` and the mod metadata version to `0.3.9-dev`.
+- Validate starter profiles, vanilla-weighted Tau'ri career integration, world-generation isolation, persistence and clean logs in game.
+
 ## 0.3.8-dev - Rework existing cultural backstories
 
 - Preserve all `52` existing cultural `BackstoryDef` identifiers, slots, categories and adulthood body-type defaults.

@@ -1,0 +1,106 @@
+# Cultural framework
+
+Version: `0.3.9-dev`
+
+## Purpose
+
+The `0.3.x` series builds one internal cultural framework that can be reused by names, backstories, starting scenarios and later culture-dependent systems. It is not a separate mod dependency.
+
+The framework separates:
+
+- a generic C# resolver;
+- culture and identity profiles configured in XML;
+- consumers that request only the data they need.
+
+## Profile resolution
+
+`CulturalPawnProfileDef` profiles declare:
+
+- a priority;
+- one or more matchers;
+- an optional default cultural name group;
+- optional name rules based on selected childhood or adulthood;
+- optional starting-pawn backstory rules;
+- configurable exclusive replacement rules and additive weighted-pool rules for childhoods and adulthoods;
+- optional scenario-part requirements.
+
+Each matcher can identify a pawn through one or more of:
+
+- race `ThingDef`;
+- xenotype;
+- `PawnKindDef`;
+- faction;
+- the `PlayerStarter` generation context.
+
+A profile matches when one matcher succeeds. Inside a matcher, every configured criterion must succeed. The highest-priority matching profile wins. Equal-priority ambiguities produce a technical warning and resolve deterministically by `defName`.
+
+## Initial consumers
+
+### Cultural names
+
+`GameComponent_CulturalPawnNameManager` no longer contains its own hard-coded culture switch. It asks `CulturalProfileResolver` for the resolved cultural name group.
+
+This preserves the existing behavior for Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld, Tok'ra and Tau'ri / SGC pawns while moving the mapping into XML.
+
+### Starting-pawn randomization
+
+A hidden `ScenPart_CulturalStarterProfiles` is added to Def-based scenarios. It acts only during `PawnGenerationContext.PlayerStarter` generation.
+
+The part:
+
+1. resolves the starter profile;
+2. selects configured compatible childhood and adulthood Defs;
+3. replaces only the newly generated pawn's initial backstories;
+4. preserves the randomized skill baseline, passions and gene aptitudes;
+5. applies only the exact difference between the old and new backstory skill bonuses;
+6. assigns a cultural name from the final adulthood where a mixed profile defines name rules.
+
+The callback occurs while the pawn is still being generated, before the player can make manual edits. It never validates or rejects the final pawn later.
+
+## Initial profiles
+
+| Profile | Main criterion | Starter behavior | Name behavior |
+|---|---|---|---|
+| Starter Jaffa | `SG1_Jaffa` xenotype + player starter | Jaffa childhood; Goa'uld-aligned or Free Jaffa adulthood | Follows the selected adulthood |
+| Starter Goa'uld host | `SG1_GoauldHost` xenotype + player starter | Off-world-human childhood; Goa'uld-host or Tok'ra adulthood | Follows the selected adulthood |
+| Goa'uld-aligned Jaffa | Current Goa'uld Jaffa PawnKinds | None | Goa'uld Jaffa generator |
+| Free Jaffa | Current Free Jaffa PawnKinds or faction | None | Free Jaffa generator |
+| Goa'uld | Current Goa'uld host, System Lord, queen and symbiote PawnKinds | None | Goa'uld generator |
+| Tok'ra | Current Tok'ra host or symbiote PawnKinds, or Tok'ra faction | None | Tok'ra generator |
+| Ordinary human starter | Human race + player starter | Keeps vanilla generation and adds the six SGC careers to the same effective weighted adulthood pool as compatible vanilla careers | Keeps the generated vanilla name |
+| Tau'ri / SGC | Player SGC expedition faction | Six SGC adult careers only when the SG-team scenario part is present | Tau'ri generator |
+
+The ordinary-human profile is deliberately lower priority than the Jaffa, Goa'uld-host and SG-team profiles. It preserves the vanilla childhood and uses the already generated vanilla adulthood as the vanilla side of a merged weighted pool. The six Tau'ri / SGC careers each contribute their normal backstory weight, so their frequency automatically scales against the number and weight of compatible vanilla careers instead of relying on a hard-coded percentage.
+
+The SG-team profile intentionally preserves the existing vanilla childhood until a dedicated Tau'ri childhood set is designed. This milestone does not increase the number of backstories.
+
+## Boundaries
+
+The framework does not modify:
+
+- raids;
+- visitors;
+- settlement inhabitants;
+- incident or quest pawns;
+- developer `Spawn pawn` generation;
+- existing saves or already generated pawns;
+- manual edits made by a compatible pawn editor after generation.
+
+The XML patch adds the hidden part to scenarios defined through `ScenarioDef`. Custom scenario files that bypass Def loading remain a compatibility case for later testing.
+
+## Adding a future culture
+
+For a future Asgard, Nox, Unas or other culture:
+
+1. create the required xenotype, PawnKinds or faction identifiers;
+2. create its cultural name generator and backstories;
+3. add a `CulturalPawnProfileDef` with appropriate matchers and priority;
+4. add starter rules only if that culture needs restricted or additive starter randomization;
+5. add name rules only when multiple cultural identities share one biological profile;
+6. validate that no equal-priority ambiguity is introduced.
+
+No C# change should be required while the existing matcher and rule types express the new culture accurately.
+
+## Future extensions
+
+The same resolved profile may later expose data for scenarios, equipment preferences, incidents, quests, dialogue, debug tools and other systems. Those fields should be added only when at least one real consumer requires them.

@@ -3,6 +3,33 @@
 > Current milestone tests and validation status: `docs/TESTING_CURRENT.md`. This file remains the complete historical regression archive.
 
 
+## 0.3.9-dev - Profils culturels configurables pour les starters
+
+Validation locale terminée sur `r3`.
+
+Couverture validée :
+
+- chargement des huit profils culturels et du ScenPart caché sans erreur XML ou dépendance Harmony ;
+- scénario `Équipe SG isolée` limité aux six carrières adultes SGC configurées ;
+- starters Jaffa limités aux enfances Jaffa et aux carrières Jaffa Goa'uld ou Jaffa libres ;
+- starters hôtes Goa'uld limités aux enfances humaines hors-monde et aux carrières Goa'uld ou Tok'ra ;
+- cohérence entre la carrière finale, le groupe de noms et les écarts de compétences appliqués ;
+- profil humain ordinaire conservant une nette majorité de carrières vanilla, avec apparition occasionnelle des carrières Tau'ri / SGC selon leur poids relatif dans le pool vanilla compatible ;
+- absence de pourcentage fixe pour le profil humain additif ;
+- priorité conservée pour les profils exclusifs Jaffa, hôte Goa'uld et scénario SG-1 ;
+- modifications manuelles réalisées après génération conservées au démarrage ;
+- aucune application du filtrage starter aux PawnKinds debug, raids, colonies, visiteurs, incidents, quêtes ou autres pawns du monde ;
+- sauvegarde et rechargement sans second renommage, reroll de backstory ou réapplication de compétence ;
+- `Player.log` propre pour le périmètre testé.
+
+Points de régression durables :
+
+- conserver la frontière stricte entre `PlayerStarter` et génération du monde ;
+- conserver la pondération relative au pool vanilla plutôt qu'un taux fixe pour les humains ordinaires ;
+- vérifier les priorités lorsqu'un nouveau profil culturel est ajouté ;
+- vérifier la compatibilité des sélections manuelles lorsqu'un éditeur de pawns est mis à jour ;
+- vérifier l'absence de cumul des écarts de compétences après sauvegarde et rechargement.
+
 ## 0.3.8-dev - Refonte des backstories culturelles
 
 Cette série vérifie les `52` histoires existantes, leurs descriptions enrichies, leurs bonus de compétences et l'absence de régression sur la génération culturelle.

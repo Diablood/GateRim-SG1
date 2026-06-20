@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.8-dev`
+> Version du mod documentée : `0.3.9-dev`
 
 ## Le mod en bref
 
@@ -48,8 +48,9 @@ premières opérations de terrain.
 
 - [Scénario Équipe SG isolée](Stranded-SG-Team-Scenario).
 - [Histoires culturelles](Cultural-Backstories) enrichies avec des bonus de
-  compétences cohérents, noms culturels persistants pour les groupes
-  GateRim SG-1 et
+  compétences cohérents, profils culturels de randomisation des pawns de
+  départ — avec carrières Tau'ri optionnelles pour les humains ordinaires —,
+  noms persistants pour les groupes GateRim SG-1 et
   [réactions sociales contextuelles](Contextual-Social-Baseline).
 - [Recherches de fabrication Stargate](Stargate-Crafting-Research).
 - [État détaillé du contenu](Content-Status) pour distinguer les éléments

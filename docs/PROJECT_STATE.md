@@ -1,38 +1,82 @@
 # Project state
 
-Current milestone: `0.3.8-dev - Rework existing cultural backstories`.
+Current milestone: `0.3.9-dev - Add configurable starter cultural profiles`.
 
 ## Active development base
 
-- Functional base tag: `v0.3.7-dev`.
-- Dedicated branch: `feature/cultural-backstory-rework`.
-- Planned final tag: `v0.3.8-dev`.
-- Current local archive revision: `0.3.8-dev-r4`.
+- Functional base tag: `v0.3.8-dev`.
+- Dedicated branch: `feature/cultural-starter-profiles`.
+- Planned final tag: `v0.3.9-dev`.
+- Final local archive revision: `0.3.9-dev-r4`.
 
 ## Milestone goal
 
-Improve the existing cultural backstory set without expanding its size.
+Introduce the first reusable Def-driven cultural profiles and consume them from two real systems: cultural names and starting-pawn backstory randomization.
 
-The milestone must:
+The milestone:
 
-- preserve all `52` existing `BackstoryDef` identifiers, slots and spawn categories;
-- enrich every English and French description with a clearer cultural and practical identity;
-- add modest, coherent `skillGains` to every dedicated childhood and adulthood;
-- keep military, civilian, administrative, medical and covert backgrounds distinct;
-- avoid passions, forced traits, work incapabilities and direct stat multipliers;
-- preserve normal generation filters, existing saves and voluntarily implanted colon histories;
-- defer any increase in the number of backstories to a later dedicated discussion;
-- record that future Asgard, Nox, Unas and other cultures require names and backstories when introduced or immediately afterward;
-- document every current backstory in culture-grouped wiki tables with localized name, description and skill bonuses, and require future entries to update those tables;
-- record the `0.3.x` direction toward a shared Def-driven cultural framework reused by names, backstories, starter generation, scenarios and future culture-dependent systems;
-- defer culture-aware starter backstory randomization to the next dedicated milestone instead of adding hidden generation behavior to this data-only rework.
+- centralizes current cultural identification in `CulturalPawnProfileDef` XML profiles;
+- resolves profiles generically by priority from race, xenotype, `PawnKindDef`, faction and generation-context criteria;
+- keeps the existing cultural name pools while removing the hard-coded culture switch from the world-pawn name manager;
+- adds the hidden `ScenPart_CulturalStarterProfiles` to Def-based scenarios without adding Harmony as a dependency;
+- affects only newly generated `PlayerStarter` pawns;
+- gives Jaffa starters a Jaffa childhood and an adulthood drawn from either Goa'uld-aligned or Free Jaffa careers;
+- gives Goa'uld-host starters an off-world-human childhood and an adulthood drawn from either Goa'uld-host or Tok'ra careers;
+- allows ordinary human starters in normal scenarios to keep vanilla backstories while adding the six current Tau'ri / SGC adult careers to the same effective weighted pool as compatible vanilla adult backstories;
+- restricts adults in the `Équipe SG isolée` scenario to the six current Tau'ri / SGC careers while preserving ordinary childhood generation because no dedicated Tau'ri childhood set exists yet;
+- chooses a cultural starter name from the adulthood actually selected for mixed Jaffa and host profiles;
+- adjusts starter skills once by the exact difference between the old and new backstory bonuses;
+- leaves manual edits made after generation untouched;
+- leaves raids, visitors, settlements, incidents, quests, developer-spawned pawns and ordinary world generation unchanged;
+- retains `docs/TESTING_CURRENT.md` as the concise active test record and `docs/TESTING.md` as the historical archive.
+
+## Framework implementation
+
+New framework files:
+
+- `Source/GateRimSG1/Culture/CulturalPawnProfileDef.cs`;
+- `Source/GateRimSG1/Culture/CulturalProfileResolver.cs`;
+- `Source/GateRimSG1/Culture/ScenPart_CulturalStarterProfiles.cs`;
+- `1.6/Defs/CulturalProfileDefs/SG1_CulturalProfiles.xml`;
+- `1.6/Defs/ScenPartDefs/SG1_CulturalStarterProfiles.xml`;
+- `1.6/Patches/SG1_CulturalStarterProfiles.xml`;
+- `docs/CULTURAL_FRAMEWORK.md`.
+
+Migrated consumers:
+
+- `GameComponent_CulturalPawnNameManager` now asks the shared resolver for a name group instead of carrying its own culture-specific condition tree;
+- `ScenPart_SGTeamStartingGear` remains responsible only for equipment; Tau'ri starter naming moves to the shared cultural starter part.
+
+Initial XML profiles:
+
+- starter Jaffa;
+- starter Goa'uld host;
+- Goa'uld-aligned Jaffa;
+- Free Jaffa;
+- Goa'uld;
+- Tok'ra;
+- ordinary human / optional Tau'ri career;
+- Tau'ri / SGC.
+
+## Compatibility boundary
+
+- No save migration is required.
+- Existing processed-name state is preserved.
+- No existing pawn is renamed or assigned a new backstory.
+- Starter filtering runs only during `PawnGenerationContext.PlayerStarter` generation callbacks.
+- Compatible pawn editors can still replace names and backstories manually after generation because the framework does not validate or reject the final selection.
+- Raids, visitors, settlements, incidents, quests, developer `Spawn pawn` generation and ordinary world pawn generation retain their previous behavior.
+- Custom local or external scenarios that do not originate from a patched `ScenarioDef` may not contain the hidden scenario part; this remains an explicit compatibility boundary for later testing.
+- `0.3.0-dev` remains the save-compatibility baseline.
 
 ## Files changed
 
-- `1.6/Defs/BackstoryDefs/SG1_CulturalBackstories.xml`;
-- `Languages/French/DefInjected/BackstoryDef/SG1_CulturalBackstories.xml`;
-- `About/About.xml`: version `0.3.8-dev`;
-- `Source/GateRimSG1/GateRimSG1.csproj`: assembly metadata `0.3.8.0`;
+- `About/About.xml`;
+- `Source/GateRimSG1/GateRimSG1.csproj`;
+- the new culture framework source and Def files listed above;
+- `Source/GateRimSG1/Names/GameComponent_CulturalPawnNameManager.cs`;
+- `Source/GateRimSG1/Scenarios/ScenPart_SGTeamStartingGear.cs`;
+- `docs/CULTURAL_FRAMEWORK.md`;
 - `docs/CULTURAL_BACKSTORIES.md`;
 - `docs/wiki/Cultural-Backstories.md`;
 - `docs/wiki/Home.md`;
@@ -40,66 +84,46 @@ The milestone must:
 - `docs/ROADMAP.md`;
 - `docs/TESTING.md`;
 - `docs/TESTING_CURRENT.md`;
-- `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`;
 - `docs/CHANGELOG.md`.
 
 The separate wiki must be synchronized when the milestone is published.
 
-## Gameplay and save compatibility
-
-- Existing backstory `defName` values, categories, slots and adulthood body types are unchanged.
-- No pawn, name, trait, passion, work restriction or saved assignment is rerolled.
-- Existing saves retain their assigned histories and require no migration.
-- `0.3.0-dev` remains the save-compatibility baseline.
-
-## Framework boundary and next step
-
-`0.3.8-dev` does not change starting-pawn randomization or normal world generation. It prepares stable backstory data for the shared cultural framework.
-
-The next dedicated milestone should introduce configurable cultural profiles consumed by a generic C# resolver. Initial real uses are:
-
-- culture-aware randomization of player starting pawns;
-- reuse of the existing cultural name generators;
-- scenario-specific Tau'ri / SGC restrictions;
-- extensible profiles for Jaffa, Goa'uld hosts, Tok'ra and future Asgard, Nox, Unas or other cultures.
-
-Manual selections made through compatible pawn editors must remain valid, and raids, visitors, settlements, incidents, quests and ordinary world pawn generation must retain their current behavior unless a later milestone explicitly migrates them to the shared framework.
-
-## Validation completed for r4
+## Validation completed
 
 Static validation:
 
-- both backstory XML files parse successfully;
-- exactly `52` `BackstoryDef` entries are present;
-- exactly `52` French title, short-title and description sets are present;
-- every backstory has a non-empty `skillGains` block;
-- all `defName`, slot and spawn-category combinations remain unique;
-- no skill bonus is negative or greater than `5`;
-- metadata versions are `0.3.8-dev` and `0.3.8.0`;
-- the player wiki catalogue contains all `52` backstories, grouped into eight cultural tables with their French names, descriptions and exact skill bonuses;
-- the durable documentation records the shared cultural-framework direction and the separate starter-filtering milestone without claiming that either behavior is already implemented;
-- `docs/TOKRA_DUAL_IDENTITY_DESIGN.md` preserves the full deferred player-controlled Tok'ra host / symbiote design;
-- `docs/TESTING_CURRENT.md` provides a concise current-milestone test status while `docs/TESTING.md` remains the historical regression archive;
-- the ZIP contains complete files at repository-relative paths and preserves `About/ModIcon.png` by omission.
+- all new XML files parse successfully;
+- all referenced xenotypes, pawn kinds, factions, scenario parts and backstories resolve;
+- eight cultural profiles load without unintended priority ties in the tested cases;
+- metadata versions are `0.3.9-dev` and `0.3.9.0`;
+- no Harmony reference or dependency was added;
+- the archive contains complete files at repository-relative paths and omits `About/ModIcon.png`.
 
 Local functional validation:
 
-- build succeeded and the assembly reports version `0.3.8.0`;
-- RimWorld loaded without relevant XML or translation errors;
-- the SG-team scenario, representative cultural PawnKinds, Goa'uld raids and natural generation were tested;
-- descriptions and skill gains were coherent across the tested cultural groups;
-- names, histories and skills remained stable after time resumed and after save / full reload;
-- voluntary Tok'ra implantation preserved the host name and backstories;
-- the missing visible reference to the implanted symbiote identity is documented for a separate future milestone;
-- `Player.log` was clean for the tested scope.
+- the project rebuild succeeded and `GateRimSG1.dll` reports version `0.3.9.0`;
+- the stranded SG-team scenario consistently assigns one of the six configured SGC adult careers and preserves compatible ordinary childhoods;
+- Jaffa starters use only configured Jaffa childhoods and Goa'uld-aligned or Free Jaffa adult careers;
+- Goa'uld-host starters use only configured off-world-human childhoods and Goa'uld-host or Tok'ra adult careers;
+- mixed profiles select names matching the final adulthood and apply only the expected backstory skill differences;
+- ordinary human starters keep vanilla childhoods and a clear majority of vanilla adult careers, while Tau'ri / SGC careers appear occasionally through the compatible vanilla-weighted pool rather than a fixed percentage;
+- exclusive profiles remain higher priority than the ordinary-human additive profile;
+- manual post-generation name and backstory changes remain untouched in the tested flow;
+- developer-spawned and naturally generated world pawns retain the `0.3.8-dev` behavior;
+- saving, fully quitting and reloading does not reapply naming, backstory selection or skill adjustments;
+- `Player.log` is clean for the tested scope.
 
 The milestone is ready for commit, branch publication, final annotated tag and wiki synchronization.
 
 ## Publication identifiers
 
-- commit: `0.3.8-dev - rework cultural backstories`;
-- branch: `feature/cultural-backstory-rework`;
-- annotated tag: `v0.3.8-dev`.
+- commit: `0.3.9-dev - add configurable starter cultural profiles`;
+- branch: `feature/cultural-starter-profiles`;
+- annotated tag: `v0.3.9-dev`.
+
+## Next step
+
+After publication, select the next real consumer of the shared cultural framework before extending its schema. The player-controlled Tok'ra dual-identity design remains a separate future milestone in `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
 
 ## Files intentionally removed
 

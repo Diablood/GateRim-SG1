@@ -2,7 +2,7 @@
 
 > Statut : Base culturelle enrichie
 >
-> Version documentée : `0.3.8-dev`
+> Version documentée : `0.3.9-dev`
 
 GateRim SG-1 utilise des histoires culturelles natives de RimWorld sans dépendre de Humanoid Alien Races.
 
@@ -16,6 +16,18 @@ Chaque histoire culturelle apporte désormais de petits bonus de compétences co
 - Les carrières adultes proposent une spécialisation plus visible.
 - Aucune histoire n'impose de trait, de passion ou d'incapacité de travail.
 - Les bonus complètent la génération du personnage sans décider seuls de tout son profil.
+
+
+## Randomisation des pawns de départ
+
+Le bouton de randomisation vanilla applique désormais des profils culturels uniquement aux pawns de départ concernés :
+
+- un starter **Jaffa** reçoit une enfance Jaffa et une carrière adulte Jaffa Goa'uld ou Jaffa libre ;
+- un starter **hôte Goa'uld** reçoit une enfance humaine hors-monde et une carrière adulte Goa'uld ou Tok'ra ;
+- dans un scénario normal, un starter humain conserve l'accès aux enfances et carrières vanilla, tandis que les six parcours Tau'ri / SGC rejoignent le même ensemble pondéré de carrières adultes compatibles ;
+- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux six parcours SGC actuels. Les enfances restent vanilla tant qu'un ensemble Tau'ri dédié n'a pas été conçu.
+
+Les pawns générés par les raids, visiteurs, colonies, incidents et quêtes conservent leurs filtres habituels. Une sélection manuelle réalisée après la génération par un éditeur de pawns compatible reste libre.
 
 <!-- BACKSTORY_TABLES_START -->
 ## Catalogue détaillé
@@ -119,7 +131,7 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 
 ## Humains Tau'ri
 
-Les membres de l'expédition du SGC conservent les histoires vanilla compatibles avec une origine terrienne. Certains reçoivent un parcours adulte SGC : forces spéciales, médecine de terrain, recherche, linguistique, ingénierie ou liaison.
+Dans un scénario normal, les starters humains conservent les histoires vanilla compatibles avec une origine terrienne. Les six parcours adultes SGC — forces spéciales, médecine de terrain, recherche, linguistique, ingénierie ou liaison — sont ajoutés au même ensemble pondéré que les carrières vanilla compatibles. Ils apparaissent donc occasionnellement, sans pourcentage de remplacement fixe. Le scénario **Équipe SG isolée** impose toujours l'un de ces six parcours adultes.
 
 ## Jaffa
 

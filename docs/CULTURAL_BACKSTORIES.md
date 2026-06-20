@@ -1,6 +1,6 @@
 # Cultural backstories
 
-Version: `0.3.8-dev-r3`
+Version: `0.3.9-dev-r2`
 
 ## Scope
 
@@ -68,9 +68,9 @@ Six agent careers cover infiltration, medicine, diplomacy, scouting, intelligenc
 
 ## Integration with the cultural framework
 
-These `BackstoryDef` entries remain stable content data. They are intended to be consumed later by the shared GateRim SG-1 cultural framework rather than by culture-specific hardcoded branches.
+These `BackstoryDef` entries remain stable content data. Starting with `0.3.9-dev`, the shared GateRim SG-1 cultural framework consumes them for configurable starter profiles instead of adding culture-specific hardcoded branches.
 
-A configurable cultural profile should eventually be able to reference:
+A configurable cultural profile can reference:
 
 - compatible childhood and adulthood categories or explicit Defs;
 - the associated cultural name generator;
@@ -78,7 +78,7 @@ A configurable cultural profile should eventually be able to reference:
 - scenario-specific starting-pawn restrictions;
 - optional data used by other culture-aware systems.
 
-The first planned consumer is culture-aware starting-pawn randomization. That behavior is deliberately not implemented in `0.3.8-dev`: ordinary starter selection, world pawn generation and manual editor assignments remain unchanged.
+The first consumers are cultural name resolution and culture-aware starting-pawn randomization. The starter behavior remains restricted to newly generated player starters; world pawn generation and manual editor assignments remain unchanged.
 
 ## Deferred expansion
 
@@ -100,3 +100,15 @@ The separate question of preserving and switching a player-controlled Tok'ra hos
 4. Generate Goa'uld-aligned Jaffa, Free Jaffa, Goa'uld hosts, a System Lord and Tok'ra agents through their normal contexts when available.
 5. Save, quit completely and reload; confirm histories and skill levels remain stable.
 6. Check `Player.log` for XML, translation, BackstoryDef, skill or shuffled-backstory errors.
+
+## Starter cultural profiles
+
+Starting-pawn restrictions are now configured by `CulturalPawnProfileDef` rather than by changing the global backstory categories. This keeps normal world generation on the existing PawnKind and faction filters.
+
+- Jaffa starters use the Jaffa childhood set and either Goa'uld-aligned or Free Jaffa adulthoods.
+- Goa'uld-host starters use off-world-human childhoods and either Goa'uld-host or Tok'ra adulthoods.
+- Ordinary human starters in normal scenarios retain vanilla childhoods and adult careers, while the six Tau'ri / SGC careers participate as additional weighted adult choices instead of using a fixed replacement chance.
+- The stranded SG-team scenario restricts only adulthood to the current six SGC careers; a dedicated Tau'ri childhood set remains deferred.
+- Manual editor choices made after generation are not validated or replaced.
+
+The profile schema and extension rules are documented in `docs/CULTURAL_FRAMEWORK.md`.

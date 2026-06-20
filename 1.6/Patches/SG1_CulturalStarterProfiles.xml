@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/ScenarioDef/scenario/parts</xpath>
+        <value>
+            <li Class="GateRimSG1.Culture.ScenPart_CulturalStarterProfiles">
+                <def>SG1_CulturalStarterProfiles</def>
+                <visible>false</visible>
+            </li>
+        </value>
+    </Operation>
+</Patch>

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using GateRimSG1.Culture;
 using GateRimSG1.Goauld;
 using RimWorld;
 using Verse;
@@ -290,7 +291,9 @@ namespace GateRimSG1.Names
                 return;
             }
 
-            CulturalPawnNameGroup group = ResolveNameGroup(pawn);
+            CulturalPawnNameGroup group = CulturalProfileResolver.ResolveNameGroup(
+                pawn,
+                PawnGenerationContext.NonPlayer);
 
             if (group == CulturalPawnNameGroup.None)
             {
@@ -401,58 +404,6 @@ namespace GateRimSG1.Names
                 processedPawnThingIds ?? new List<string>());
             reservedNameKeySet = new HashSet<string>(
                 reservedNameKeys ?? new List<string>());
-        }
-
-        private static CulturalPawnNameGroup ResolveNameGroup(Pawn pawn)
-        {
-            PawnKindDef kindDef = pawn?.kindDef;
-
-            if (kindDef == GR_DefOf.SG1_GoauldHostCaste
-                || kindDef == GR_DefOf.SG1_GoauldSystemLordHost
-                || kindDef == GR_DefOf.SG1_GoauldQueen
-                || kindDef == GR_DefOf.SG1_GoauldSymbiote)
-            {
-                return CulturalPawnNameGroup.Goauld;
-            }
-
-            if (kindDef == GR_DefOf.SG1_TokraVoluntaryHost
-                || kindDef == GR_DefOf.SG1_TokraSymbiote)
-            {
-                return CulturalPawnNameGroup.Tokra;
-            }
-
-            if (kindDef == GR_DefOf.SG1_GoauldJaffaWarrior
-                || kindDef == GR_DefOf.SG1_GoauldJaffaGuard
-                || kindDef == GR_DefOf.SG1_GoauldSettlementJaffaWarrior
-                || kindDef == GR_DefOf.SG1_GoauldSettlementJaffaGuard)
-            {
-                return CulturalPawnNameGroup.GoauldJaffa;
-            }
-
-            if (kindDef == GR_DefOf.SG1_FreeJaffaWarrior
-                || kindDef == GR_DefOf.SG1_FreeJaffaGuard)
-            {
-                return CulturalPawnNameGroup.FreeJaffa;
-            }
-
-            FactionDef factionDef = pawn.Faction?.def;
-
-            if (factionDef == GR_DefOf.SG1_Tokra)
-            {
-                return CulturalPawnNameGroup.Tokra;
-            }
-
-            if (factionDef == GR_DefOf.SG1_FreeJaffa)
-            {
-                return CulturalPawnNameGroup.FreeJaffa;
-            }
-
-            if (factionDef == GR_DefOf.SG1_PlayerSGCExpedition)
-            {
-                return CulturalPawnNameGroup.Tauri;
-            }
-
-            return CulturalPawnNameGroup.None;
         }
 
         private static bool IsAdultSymbioteHostKind(PawnKindDef pawnKindDef)

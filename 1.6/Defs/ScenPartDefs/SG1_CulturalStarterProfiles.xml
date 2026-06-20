@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ScenPartDef>
+        <defName>SG1_CulturalStarterProfiles</defName>
+        <label>GateRim cultural starter profiles</label>
+        <description>Applies GateRim SG-1 cultural profiles while player starting pawns are randomized.</description>
+        <category>StartingImportant</category>
+        <scenPartClass>GateRimSG1.Culture.ScenPart_CulturalStarterProfiles</scenPartClass>
+        <summaryPriority>0</summaryPriority>
+        <canBeRandomlyAdded>false</canBeRandomlyAdded>
+        <canBePlayerAddedRemoved>false</canBePlayerAddedRemoved>
+    </ScenPartDef>
+</Defs>
