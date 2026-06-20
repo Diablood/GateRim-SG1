@@ -1,68 +1,75 @@
 # Double identité Tok'ra
 
-> Statut : première phase jouable dans `0.3.10-dev`
+> Statut : basculement de personnalité validé dans `0.3.11-dev`
 
 Un Tok'ra réunit deux personnes conscientes dans un même corps : l'hôte et le
-symbiote. L'implantation ne doit donc pas effacer le nom ou le parcours de l'un
-au profit de l'autre.
+symbiote. GateRim SG-1 conserve donc leurs deux identités au lieu d'effacer le
+nom ou le parcours de l'une après l'implantation.
 
-## Ce qui est conservé
+## Identités conservées
 
-Lorsqu'un symbiote Tok'ra rejoint un hôte, GateRim SG-1 enregistre séparément :
+Lorsqu'un symbiote Tok'ra rejoint un hôte, le mod enregistre séparément :
 
-- le nom de l'hôte ;
+- le nom exact de l'hôte ;
 - l'enfance et la carrière de l'hôte ;
 - le nom propre du symbiote ;
-- une carrière Tok'ra propre au symbiote ;
+- le parcours culturel du symbiote ;
+- la personnalité actuellement active ;
 - l'hôte actuel et l'hôte précédent dans les données techniques de transfert.
 
-Le symbiote conserve la même identité lorsqu'il passe de l'implantation récente
-à la symbiose active. Cette identité suit également le symbiote lors d'une
-extraction puis d'une nouvelle implantation.
+Le symbiote conserve la même identité lors de la conversion en symbiose active,
+d'une sauvegarde, d'une extraction et d'une nouvelle implantation.
 
-## Affichage pour le joueur
+## Basculement de personnalité
 
-Sur un Tok'ra appartenant réellement à la colonie et directement contrôlé par le
-joueur, la description de l'état de santé présente :
+Un Tok'ra appartenant réellement à la colonie et directement contrôlé par le
+joueur dispose d'un gizmo unique. Il permet :
 
-- l'identité de l'hôte ;
-- l'identité du symbiote ;
-- le parcours de l'hôte ;
-- le parcours du symbiote.
+- de laisser le symbiote prendre le contrôle lorsque l'hôte est actif ;
+- de rendre le contrôle à l'hôte lorsque le symbiote est actif.
 
-L'affichage ne remplace pas le nom principal du pawn et ne modifie pas ses
-backstories actives. Les compétences, relations, traits, faction, équipement et
-état physique restent inchangés.
+Le basculement change :
 
-Les visiteurs, alliés, ennemis et autres Tok'ra gérés par le jeu conservent leur
-fonctionnement classique. Leurs données peuvent rester enregistrées pour les
-transferts, mais aucune interface supplémentaire ne leur est exposée.
+- le nom principal affiché ;
+- la carrière affichée ; l'enfance reste celle de l'hôte tant qu'aucune enfance Tok'ra dédiée n'est disponible ;
+- le titre associé ;
+- uniquement les écarts de compétences accordés par les parcours actifs.
 
-## Carrières actuelles du symbiote
+Il ne change pas :
 
-La carrière persistante est choisie parmi les six parcours Tok'ra déjà présents :
+- le corps, les gènes ou le xénotype ;
+- la faction ou les relations ;
+- les traits et passions ;
+- l'équipement ou l'inventaire ;
+- la santé, les blessures ou les implants.
 
-- infiltrateur ;
-- médecin ;
-- diplomate ;
-- éclaireur ;
-- analyste ;
-- courrier.
+La description de santé continue d'afficher les deux noms, les deux parcours et
+la personnalité active, afin que l'identité inactive ne disparaisse jamais.
 
-Le choix est lié à l'identité persistante du symbiote. Une sauvegarde ou un
-rechargement ne doit donc pas tirer une nouvelle carrière.
+## Progression commune
 
-Aucune enfance Tok'ra distincte n'est encore configurée. Le format de données la
-prévoit cependant pour une extension future raisonnable des backstories.
+Les deux personnalités partagent la progression réellement acquise pendant la
+partie. Le mod conserve une base commune d'expérience et applique seulement les
+bonus de compétences fournis par les backstories actuellement actives.
 
-## Limite de cette première phase
+L'expérience gagnée sous une personnalité reste disponible sous l'autre. Les
+tests de `0.3.11-dev` confirment que des basculements répétés n'empilent pas les
+bonus, ne dupliquent pas les niveaux et n'effacent pas la progression.
 
-`0.3.10-dev` ne permet pas encore de choisir quelle personnalité prend le
-contrôle. Aucun gizmo de basculement n'est ajouté dans cette version.
+## Extraction et nouvel hôte
 
-Un futur jalon devra prototyper séparément :
+Avant une extraction ou un transfert, l'identité de l'hôte est automatiquement
+restaurée. L'ancien hôte conserve ainsi son nom, ses backstories et sa
+progression propre.
 
-- le changement du nom affiché ;
-- le changement des backstories présentées ;
-- l'application sûre des seuls écarts de compétences associés aux backstories ;
-- la conservation d'une progression commune sans cumul ni perte d'expérience.
+Lorsqu'il rejoint un nouvel hôte, le symbiote conserve son nom et son parcours,
+mais les données propres à l'ancien hôte ne sont pas appliquées au nouveau.
+
+## Limite aux Tok'ra du joueur
+
+Les visiteurs, alliés, ennemis, membres de faction et pawns de quête non
+contrôlés gardent le fonctionnement classique. Ils ne reçoivent aucun gizmo et
+ne changent pas manuellement de personnalité.
+
+Le gizmo disparaît également lorsqu'un colon n'est plus directement contrôlable,
+par exemple pendant un état mental, puis réapparaît lorsque le contrôle revient.

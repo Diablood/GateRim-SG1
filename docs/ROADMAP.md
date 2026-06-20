@@ -13,22 +13,24 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Priorité immédiate
 
-### Persistance de l'identité Tok'ra implantée (`0.3.10-dev`)
+### Basculement de personnalité Tok'ra contrôlé par le joueur (`0.3.11-dev`)
 
-- [x] Étendre les profils culturels avec des pools d'identité persistante configurables en XML.
-- [x] Configurer les six carrières Tok'ra existantes comme parcours possibles du symbiote.
-- [x] Conserver le nom, le parcours et l'historique d'hôtes dans les données déjà transférées avec le symbiote.
-- [x] Capturer le nom et les backstories de l'hôte sans modifier son identité active.
-- [x] Afficher les deux identités uniquement sur les Tok'ra directement contrôlés par le joueur.
-- [x] Conserver le comportement et l'interface classiques pour les Tok'ra gérés par l'IA.
-- [x] Vérifier la migration des sauvegardes, la conversion en hôte actif, l'extraction et la réimplantation.
-- [x] Vérifier qu'aucun nom, aucune backstory active et aucune compétence ne sont modifiés.
-- [ ] Publier la branche `feature/tokra-identity-persistence`, le tag `v0.3.10-dev` et synchroniser le wiki.
+- [x] Partir du système d'identité persistante publié dans `v0.3.10-dev`.
+- [x] Ajouter un gizmo uniquement aux Tok'ra appartenant au joueur et directement contrôlables.
+- [x] Basculer le nom actif entre le nom exact de l'hôte et le nom du symbiote.
+- [x] Basculer l'enfance, l'âge adulte et le titre affichés entre les deux identités persistantes.
+- [x] Ajouter un service culturel réutilisable qui applique uniquement les écarts de compétences dus aux backstories.
+- [x] Conserver une progression d'XP commune sans cumuler ni perdre les bonus lors des basculements.
+- [x] Persister la personnalité active et les données de progression partagée.
+- [x] Restaurer automatiquement l'identité de l'hôte avant extraction, transfert ou retrait du Hediff.
+- [x] Conserver le comportement classique sans gizmo pour les Tok'ra gérés par l'IA.
+- [x] Valider en jeu les basculements répétés, l'XP commune, les sauvegardes, l'extraction et la frontière joueur/IA.
+- [ ] Publier la branche `feature/tokra-personality-switching`, le tag `v0.3.11-dev` et synchroniser le wiki.
 
-### Étape suivante
+### Après validation
 
-- [ ] Prototyper dans un jalon séparé le gizmo de personnalité réservé aux Tok'ra contrôlés par le joueur.
-- [ ] Avant tout basculement, valider une méthode sûre pour appliquer uniquement les écarts de compétences dus aux backstories sans cumul ni perte d'expérience.
+- [ ] Auditer les éventuelles incohérences restantes dans les lettres, quêtes, relations sociales et interfaces tierces lorsque la personnalité du symbiote est active.
+- [ ] Décider si les invités ou pawns de quête temporairement contrôlables doivent rester exclus ou recevoir une règle dédiée.
 
 ## Présentation du mod et métadonnées
 
@@ -99,12 +101,13 @@ La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.m
 
 - [x] Valider dans `0.3.10-dev` la conservation durable du nom et des backstories propres du symbiote après implantation.
 - [x] Valider dans `0.3.10-dev` la conservation de l'identité originale de l'hôte sans renommer ni réécrire rétroactivement son histoire.
-- [ ] Réserver le gizmo de basculement aux Tok'ra appartenant au joueur et directement contrôlables.
-- [ ] Laisser les Tok'ra gérés par le jeu dans leur fonctionnement classique, sans gizmo ni changement manuel de personnalité.
-- [ ] Basculer le nom, les backstories affichées et seulement les écarts de compétences dus aux backstories actives.
-- [ ] Garder communs les niveaux et l'expérience acquis pendant la partie, sans perte, duplication ni cumul à chaque basculement.
+- [x] Implémenter dans `0.3.11-dev` le gizmo de basculement réservé aux Tok'ra appartenant au joueur et directement contrôlables.
+- [x] Laisser dans `0.3.11-dev` les Tok'ra gérés par le jeu dans leur fonctionnement classique, sans gizmo ni changement manuel de personnalité.
+- [x] Implémenter dans `0.3.11-dev` le basculement du nom, des backstories affichées et des seuls écarts de compétences dus aux backstories actives.
+- [x] Implémenter dans `0.3.11-dev` une progression commune des niveaux et de l'expérience, à valider contre toute perte, duplication ou cumul lors des tests ciblés.
 - [x] Afficher dès `0.3.10-dev` les deux identités dans l'inspection des Tok'ra contrôlés par le joueur, puis conserver cet affichage quelle que soit la personnalité active dans le futur jalon de basculement.
-- [ ] Vérifier sauvegarde, rechargement, mort, extraction, réimplantation, relations, lettres, quêtes et interfaces compatibles.
+- [x] Vérifier sauvegarde, rechargement, extraction et réimplantation.
+- [ ] Vérifier plus tard la mort, la résurrection éventuelle, les relations, lettres, quêtes et interfaces tierces lorsque la personnalité du symbiote est active.
 - [ ] Décider explicitement du cas des invités ou pawns de quête temporairement contrôlables ; les exclure par défaut tant qu'ils ne rejoignent pas la colonie.
 
 ## Futures races et factions

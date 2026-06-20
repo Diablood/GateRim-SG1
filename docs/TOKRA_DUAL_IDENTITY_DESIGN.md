@@ -1,6 +1,6 @@
 # Tok'ra host / symbiote dual identity — phased design
 
-Status: phase 1 implemented and validated in `0.3.10-dev`. Persistence and player-facing inspection are complete; the personality-switch gizmo and skill-offset logic remain deferred to a later dedicated milestone.
+Status: phases 1 and 2 are implemented and functionally validated. `0.3.10-dev` preserves both identities; `0.3.11-dev-r2` adds player-only personality switching, active identity persistence and shared skill progression. The `r2` correction preserves the host childhood when no dedicated symbiote childhood exists.
 
 ## Phased implementation
 
@@ -18,15 +18,29 @@ Implemented and validated:
 
 No dedicated Tok'ra childhood set currently exists. Phase 1 therefore stores an optional symbiote childhood field for future use but configures only the six existing adult Tok'ra careers.
 
-### Later phase — personality switching
+### Phase 2 — `0.3.11-dev`
 
-Still deferred:
+Implemented and validated:
 
-- player-only gizmo;
-- active name and displayed-backstory switching;
-- safe shared skill baseline and backstory-only offsets;
-- active-personality persistence;
-- detailed compatibility tests with social, quest and editor interfaces.
+- one gizmo exposed only to directly player-controlled Tok'ra colonists;
+- reversible switching of the active name and adulthood, plus the childhood when a dedicated symbiote childhood is available; otherwise the host childhood remains active;
+- exact preservation of the host's `NameSingle` or `NameTriple` structure;
+- persistent active-personality state;
+- one shared XP progression with only the active backstory offsets applied;
+- automatic host restoration before extraction, transfer or ordinary Hediff removal;
+- save migration from `0.3.10-dev`, which defaults safely to the host identity;
+- no interface or manual switch for AI-managed Tok'ra.
+
+Validated before publication:
+
+- repeated-switch anti-stacking across ten cycles;
+- XP gain under both identities with one shared progression;
+- save/load with each personality active;
+- extraction while the symbiote identity is active and reimplantation into a new host;
+- player / AI gizmo boundaries and Goa'uld non-regression;
+- clean `Player.log`.
+
+Deferred compatibility audits remain for death or resurrection flows, social presentation, letters, quests and third-party pawn interfaces.
 
 ## Purpose
 
@@ -44,7 +58,7 @@ A player-controlled Tok'ra pawn may receive one gizmo that switches the active p
 The active personality may change:
 
 - the displayed primary name;
-- the displayed childhood and adulthood;
+- the displayed adulthood and, when configured, the childhood; otherwise the host childhood remains displayed;
 - the title derived from those backstories;
 - only the skill offsets attributable to the active backstories.
 
@@ -63,7 +77,7 @@ The inspection interface must always expose both identities, even when one is in
 
 ## Persistent data
 
-Use one pawn with a dedicated persistent component or equivalent save data containing at least:
+Use one pawn with the existing persistent symbiote data containing at least:
 
 - host name;
 - host childhood and adulthood;
@@ -80,7 +94,7 @@ The symbiote identity may still be stored for AI-managed Tok'ra when useful for 
 
 The difficult part is not the gizmo or the displayed name. RimWorld does not automatically regenerate a pawn's skills when its `BackstoryDef` references are replaced.
 
-The implementation must therefore preserve a shared progression baseline and apply only the difference produced by the active personality's backstories. Repeated switches must never duplicate, erase or permanently stack skill gains.
+The implementation preserves a shared raw-XP progression per skill and applies only the difference produced by the active personality's backstories. Before every switch, XP gained or lost since the last application is merged back into the common progression. Repeated switches must never duplicate, erase or permanently stack skill gains.
 
 Conceptually:
 
@@ -143,4 +157,4 @@ Potential reusable data includes:
 - player-control eligibility;
 - debug reports for ambiguous or incomplete identity data.
 
-The dedicated milestone must remain free to revise this design after the vanilla API audit and prototype results.
+`0.3.11-dev` implements this design through a reusable `BackstorySkillOffsetUtility`, the existing `GoauldSymbioteData` save object and the existing Hediff component. The design remains open to revision if focused tests expose a compatibility or progression problem.

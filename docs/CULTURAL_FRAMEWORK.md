@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.10-dev`
+Version: `0.3.11-dev`
 
 ## Purpose
 
@@ -103,6 +103,21 @@ The framework does not modify:
 - manual edits made by a compatible pawn editor after generation.
 
 The XML patch adds the hidden part to scenarios defined through `ScenarioDef`. Custom scenario files that bypass Def loading remain a compatibility case for later testing.
+
+
+### Reversible active identity and skill offsets
+
+`BackstorySkillOffsetUtility` is the first reusable framework service for an identity that changes after pawn generation. It:
+
+- derives skill-level offsets from any configured childhood and adulthood pair;
+- stores one shared raw-XP progression per skill;
+- synchronizes XP gained or lost under the current identity before a switch;
+- applies only the target backstory offsets;
+- leaves passions, gene aptitudes and the pawn's randomized baseline untouched.
+
+The first consumer is the player-controlled Tok'ra personality switch. The utility is not Tok'ra-specific and can support a future culture or identity mechanic that needs reversible backstory-derived skill differences without duplicating progression logic.
+
+The `0.3.11-dev` implementation is functionally validated for repeated switching, shared XP, save/load under both identities, extraction, reimplantation and player / AI boundaries.
 
 ## Adding a future culture
 

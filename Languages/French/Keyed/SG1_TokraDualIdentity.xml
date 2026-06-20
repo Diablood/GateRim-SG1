@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <GR_TokraDualIdentity_Summary>Hôte : {0}\nSymbiote Tok'ra : {1}\nParcours de l'hôte : {2}\nParcours du symbiote : {3}</GR_TokraDualIdentity_Summary>
+    <GR_TokraDualIdentity_Summary>Hôte : {0}\nSymbiote Tok'ra : {1}\nParcours de l'hôte : {2}\nParcours du symbiote : {3}\nPersonnalité active : {4}</GR_TokraDualIdentity_Summary>
     <GR_TokraDualIdentity_BackstoryPair>{0} ; {1}</GR_TokraDualIdentity_BackstoryPair>
     <GR_TokraDualIdentity_NotRecorded>non consigné</GR_TokraDualIdentity_NotRecorded>
+
+    <GR_TokraPersonalitySwitch_Label>Activer {0}</GR_TokraPersonalitySwitch_Label>
+    <GR_TokraPersonalitySwitch_ToSymbiote_Desc>Laisser {0} prendre le contrôle à travers {1}. Le nom et le parcours affichés changeront, ainsi que les seuls écarts de compétences accordés par ces parcours. L'hôte et le symbiote restent une même personne.</GR_TokraPersonalitySwitch_ToSymbiote_Desc>
+    <GR_TokraPersonalitySwitch_ToHost_Desc>Rendre le contrôle à {0}, tandis que {1} reste présent. Le nom et le parcours affichés changeront, ainsi que les seuls écarts de compétences accordés par ces parcours.</GR_TokraPersonalitySwitch_ToHost_Desc>
+    <GR_TokraPersonalitySwitch_SymbioteActive>{1} s'exprime désormais à travers {0}.</GR_TokraPersonalitySwitch_SymbioteActive>
+    <GR_TokraPersonalitySwitch_HostActive>{0} reprend le contrôle ; {1} reste présent.</GR_TokraPersonalitySwitch_HostActive>
 </LanguageData>

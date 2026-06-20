@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.10-dev`
+> Version du mod documentée : `0.3.11-dev`
 
 ## Le mod en bref
 
@@ -33,7 +33,8 @@ premières opérations de terrain.
 ### Tok'ra
 
 - Faction mondiale masquée, visiteurs pacifiques, implantation thérapeutique,
-  [double identité hôte / symbiote](Tokra-Dual-Identity) et
+  [double identité hôte / symbiote](Tokra-Dual-Identity) avec basculement de la
+  personnalité active pour les Tok'ra contrôlés par le joueur, et
   [confiance Tok'ra](Tokra-Trust).
 - Réseau de planques, caches médicaux, contact de terrain et
   [communicateur sécurisé](Tokra-Secure-Communicator).

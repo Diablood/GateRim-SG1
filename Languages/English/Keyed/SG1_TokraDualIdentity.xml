@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <GR_TokraDualIdentity_Summary>Host: {0}\nTok'ra symbiote: {1}\nHost background: {2}\nSymbiote background: {3}</GR_TokraDualIdentity_Summary>
+    <GR_TokraDualIdentity_Summary>Host: {0}\nTok'ra symbiote: {1}\nHost background: {2}\nSymbiote background: {3}\nActive personality: {4}</GR_TokraDualIdentity_Summary>
     <GR_TokraDualIdentity_BackstoryPair>{0}; {1}</GR_TokraDualIdentity_BackstoryPair>
     <GR_TokraDualIdentity_NotRecorded>not recorded</GR_TokraDualIdentity_NotRecorded>
+
+    <GR_TokraPersonalitySwitch_Label>Activate {0}</GR_TokraPersonalitySwitch_Label>
+    <GR_TokraPersonalitySwitch_ToSymbiote_Desc>Let {0} take the lead through {1}. The displayed name and background will change, together with only the skill differences granted by those backgrounds. The host and symbiote remain the same individual.</GR_TokraPersonalitySwitch_ToSymbiote_Desc>
+    <GR_TokraPersonalitySwitch_ToHost_Desc>Return control to {0} while {1} remains present. The displayed name and background will change, together with only the skill differences granted by those backgrounds.</GR_TokraPersonalitySwitch_ToHost_Desc>
+    <GR_TokraPersonalitySwitch_SymbioteActive>{1} now speaks through {0}.</GR_TokraPersonalitySwitch_SymbioteActive>
+    <GR_TokraPersonalitySwitch_HostActive>{0} resumes control; {1} remains present.</GR_TokraPersonalitySwitch_HostActive>
 </LanguageData>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using GateRimSG1.Culture;
 using GateRimSG1.Names;
 using RimWorld;
@@ -28,6 +29,16 @@ namespace GateRimSG1.Goauld
         private string currentHostThingId = string.Empty;
         private string previousHostThingId = string.Empty;
 
+        private TokraActivePersonality activePersonality = TokraActivePersonality.Host;
+        private StoredPawnNameKind hostNameKind = StoredPawnNameKind.Unknown;
+        private string hostFirstName = string.Empty;
+        private string hostNickName = string.Empty;
+        private string hostLastName = string.Empty;
+        private string hostSingleName = string.Empty;
+        private bool hostSingleNameNumerical;
+        private List<BackstorySkillProgressState> sharedSkillProgress
+            = new List<BackstorySkillProgressState>();
+
         public string SymbioteId => symbioteId;
         public string SymbioteName => symbioteName;
         public string HostName => hostName;
@@ -42,6 +53,9 @@ namespace GateRimSG1.Goauld
         public int LastDetachTick => lastDetachTick;
         public string CurrentHostThingId => currentHostThingId;
         public string PreviousHostThingId => previousHostThingId;
+        public TokraActivePersonality ActivePersonality => activePersonality;
+        public bool IsSymbiotePersonalityActive
+            => activePersonality == TokraActivePersonality.Symbiote;
 
         public static GoauldSymbioteData CreateFree(
             int currentTick,
@@ -87,13 +101,14 @@ namespace GateRimSG1.Goauld
 
         public void CaptureHostName(Pawn host)
         {
-            if (!string.IsNullOrEmpty(hostName)
-                || host?.Name == null)
+            if (host?.Name == null)
             {
                 return;
             }
 
-            hostName = host.Name.ToStringFull;
+            CaptureHostNameDetails(
+                host,
+                overwriteExisting: hostNameKind == StoredPawnNameKind.Unknown);
             CaptureHostBackstories(host, overwriteExisting: false);
         }
 
@@ -118,19 +133,71 @@ namespace GateRimSG1.Goauld
                 previousHostThingId = currentHostThingId;
             }
 
-            if (host?.Name != null
-                && (string.IsNullOrEmpty(hostName) || hostChanged))
+            if (hostChanged)
             {
-                hostName = host.Name.ToStringFull;
+                activePersonality = TokraActivePersonality.Host;
+                BackstorySkillOffsetUtility.Reset(ref sharedSkillProgress);
+                CaptureHostNameDetails(host, overwriteExisting: true);
+                CaptureHostBackstories(host, overwriteExisting: true);
+            }
+            else if (activePersonality == TokraActivePersonality.Host)
+            {
+                CaptureHostNameDetails(
+                    host,
+                    overwriteExisting: hostNameKind == StoredPawnNameKind.Unknown);
+                CaptureHostBackstories(host, overwriteExisting: false);
             }
 
-            CaptureHostBackstories(host, overwriteExisting: hostChanged);
             currentHostThingId = nextHostThingId;
 
             if (recordImplantationTick && implantationTick < 0)
             {
                 implantationTick = currentTick;
             }
+        }
+
+        public bool CanSwitchPersonality(Pawn host)
+        {
+            return origin == GoauldSymbioteOrigin.Tokra
+                && host?.story != null
+                && host.skills != null
+                && hostAdulthood != null
+                && symbioteAdulthood != null
+                && !hostName.NullOrEmpty()
+                && !symbioteName.NullOrEmpty();
+        }
+
+        public bool ToggleActivePersonality(Pawn host)
+        {
+            if (!CanSwitchPersonality(host))
+            {
+                return false;
+            }
+
+            if (activePersonality == TokraActivePersonality.Host)
+            {
+                CaptureCurrentHostIdentity(host);
+                return ApplyPersonality(host, TokraActivePersonality.Symbiote);
+            }
+
+            return ApplyPersonality(host, TokraActivePersonality.Host);
+        }
+
+        public bool RestoreHostPersonality(Pawn host)
+        {
+            if (activePersonality != TokraActivePersonality.Symbiote)
+            {
+                return false;
+            }
+
+            return ApplyPersonality(host, TokraActivePersonality.Host);
+        }
+
+        public string ActivePersonalityName()
+        {
+            return activePersonality == TokraActivePersonality.Symbiote
+                ? symbioteName
+                : hostName;
         }
 
         public void DetachFromHost(Pawn host, int currentTick)
@@ -162,10 +229,12 @@ namespace GateRimSG1.Goauld
         {
             return $"id={symbioteId}, symbioteName={symbioteName}, "
                 + $"hostName={hostName}, origin={origin}, "
+                + $"activePersonality={activePersonality}, "
                 + $"hostChildhood={hostChildhood?.defName ?? "<none>"}, "
                 + $"hostAdulthood={hostAdulthood?.defName ?? "<none>"}, "
                 + $"symbioteChildhood={symbioteChildhood?.defName ?? "<none>"}, "
                 + $"symbioteAdulthood={symbioteAdulthood?.defName ?? "<none>"}, "
+                + $"sharedSkillStates={sharedSkillProgress?.Count ?? 0}, "
                 + $"ageTicks={biologicalAgeTicks}, createdAt={createdAtTick}, "
                 + $"implantedAt={implantationTick}, "
                 + $"currentHost={currentHostThingId}, "
@@ -189,6 +258,136 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(ref lastDetachTick, "lastDetachTick", -1);
             Scribe_Values.Look(ref currentHostThingId, "currentHostThingId", string.Empty);
             Scribe_Values.Look(ref previousHostThingId, "previousHostThingId", string.Empty);
+            Scribe_Values.Look(
+                ref activePersonality,
+                "activePersonality",
+                TokraActivePersonality.Host);
+            Scribe_Values.Look(
+                ref hostNameKind,
+                "hostNameKind",
+                StoredPawnNameKind.Unknown);
+            Scribe_Values.Look(ref hostFirstName, "hostFirstName", string.Empty);
+            Scribe_Values.Look(ref hostNickName, "hostNickName", string.Empty);
+            Scribe_Values.Look(ref hostLastName, "hostLastName", string.Empty);
+            Scribe_Values.Look(ref hostSingleName, "hostSingleName", string.Empty);
+            Scribe_Values.Look(
+                ref hostSingleNameNumerical,
+                "hostSingleNameNumerical",
+                false);
+            Scribe_Collections.Look(
+                ref sharedSkillProgress,
+                "sharedSkillProgress",
+                LookMode.Deep);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit
+                && sharedSkillProgress == null)
+            {
+                sharedSkillProgress = new List<BackstorySkillProgressState>();
+            }
+        }
+
+        private bool ApplyPersonality(
+            Pawn host,
+            TokraActivePersonality targetPersonality)
+        {
+            if (host?.story == null || host.skills == null)
+            {
+                return false;
+            }
+
+            BackstoryDef targetChildhood = targetPersonality
+                == TokraActivePersonality.Symbiote
+                ? symbioteChildhood
+                : hostChildhood;
+            BackstoryDef targetAdulthood = targetPersonality
+                == TokraActivePersonality.Symbiote
+                ? symbioteAdulthood
+                : hostAdulthood;
+
+            BackstorySkillOffsetUtility.SwitchBackstories(
+                host,
+                host.story.Childhood,
+                host.story.Adulthood,
+                targetChildhood,
+                targetAdulthood,
+                ref sharedSkillProgress);
+
+            host.Name = targetPersonality == TokraActivePersonality.Symbiote
+                ? (Name)new NameSingle(symbioteName)
+                : CreateStoredHostName();
+            activePersonality = targetPersonality;
+            return true;
+        }
+
+        private void CaptureCurrentHostIdentity(Pawn host)
+        {
+            bool backstoriesChanged = hostChildhood != host.story.Childhood
+                || hostAdulthood != host.story.Adulthood;
+
+            CaptureHostNameDetails(host, overwriteExisting: true);
+            CaptureHostBackstories(host, overwriteExisting: true);
+
+            if (backstoriesChanged)
+            {
+                BackstorySkillOffsetUtility.Reset(ref sharedSkillProgress);
+            }
+        }
+
+        private void CaptureHostNameDetails(Pawn host, bool overwriteExisting)
+        {
+            if (host?.Name == null
+                || (!overwriteExisting
+                    && hostNameKind != StoredPawnNameKind.Unknown))
+            {
+                return;
+            }
+
+            hostName = host.Name.ToStringFull;
+            hostFirstName = string.Empty;
+            hostNickName = string.Empty;
+            hostLastName = string.Empty;
+            hostSingleName = string.Empty;
+            hostSingleNameNumerical = false;
+
+            if (host.Name is NameTriple triple)
+            {
+                hostNameKind = StoredPawnNameKind.Triple;
+                hostFirstName = triple.First;
+                hostNickName = triple.NickSet ? triple.Nick : string.Empty;
+                hostLastName = triple.Last;
+                return;
+            }
+
+            if (host.Name is NameSingle single)
+            {
+                hostNameKind = StoredPawnNameKind.Single;
+                hostSingleName = single.Name;
+                hostSingleNameNumerical = single.Numerical;
+                return;
+            }
+
+            hostNameKind = StoredPawnNameKind.Single;
+            hostSingleName = host.Name.ToStringFull;
+        }
+
+        private Name CreateStoredHostName()
+        {
+            switch (hostNameKind)
+            {
+                case StoredPawnNameKind.Triple:
+                    return new NameTriple(
+                        hostFirstName ?? string.Empty,
+                        hostNickName.NullOrEmpty() ? null : hostNickName,
+                        hostLastName ?? string.Empty);
+
+                case StoredPawnNameKind.Single:
+                    return new NameSingle(
+                        hostSingleName.NullOrEmpty() ? hostName : hostSingleName,
+                        hostSingleNameNumerical);
+
+                default:
+                    return new NameSingle(hostName);
+            }
         }
 
         private void EnsureCulturalIdentity()
@@ -235,5 +434,18 @@ namespace GateRimSG1.Goauld
     {
         Goauld,
         Tokra
+    }
+
+    public enum TokraActivePersonality
+    {
+        Host,
+        Symbiote
+    }
+
+    public enum StoredPawnNameKind
+    {
+        Unknown,
+        Single,
+        Triple
     }
 }

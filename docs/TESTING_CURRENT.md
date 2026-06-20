@@ -1,112 +1,192 @@
 # Tests du jalon actif
 
-Jalon : `0.3.10-dev - Preserve implanted Tok'ra identity`
+Jalon : `0.3.11-dev - Add player-controlled Tok'ra personality switching`
 
-Branche : `feature/tokra-identity-persistence`
+Branche : `feature/tokra-personality-switching`
 
-Statut : validation locale terminée avec succès sur `0.3.10-dev-r1`.
+Statut : validation fonctionnelle terminée sur `0.3.11-dev-r2`; jalon prêt à publier.
 
 ## Préconditions
 
-- Extraire l'archive à la racine du dépôt depuis `v0.3.9-dev`.
+- Extraire l'archive à la racine du dépôt depuis `v0.3.10-dev`.
 - Effectuer un rebuild complet.
-- Vérifier `GateRimSG1.dll` en version `0.3.10.0`.
-- Tester principalement en français, puis effectuer au moins un chargement en anglais.
+- Vérifier `GateRimSG1.dll` en version `0.3.11.0`.
+- Tester principalement en français.
+- Préparer un colon avec un nom, des backstories et plusieurs niveaux de compétences faciles à noter.
 
-## 1. Chargement et configuration
+## 1. Chargement et migration
 
 1. Lancer RimWorld avec Biotech et GateRim SG-1.
-2. Vérifier l'absence d'erreur XML ou de cross-reference.
-3. Rechercher dans le journal :
-   - `identityAdulthoods` ;
-   - `CulturalIdentityUtility` ;
-   - `CulturalPawnProfileDef` ;
-   - `SG1_TokraIdentityProfiles`.
+2. Charger une sauvegarde `0.3.10-dev` contenant un Tok'ra contrôlé par le joueur.
+3. Vérifier l'absence d'erreur XML, C# ou de chargement.
+4. Sélectionner le Tok'ra.
 
-Résultat attendu : le profil Tok'ra charge les six carrières d'identité sans erreur ni ambiguïté.
+Résultat attendu :
 
-## 2. Implantation volontaire sur un colon
+- le nom et les backstories de l'hôte restent actifs ;
+- la description de santé affiche toujours les deux identités ;
+- une ligne indique la personnalité active ;
+- un seul gizmo permet d'activer le symbiote ;
+- aucune compétence ne change avant l'utilisation du gizmo.
 
-1. Générer un symbiote Tok'ra libre.
-2. Noter son nom.
-3. Choisir un colon du joueur avec un nom, une enfance et une carrière clairement identifiables.
-4. Effectuer l'implantation volontaire.
-5. Vérifier immédiatement que le nom principal et les backstories actives du colon ne changent pas.
-6. Ouvrir l'état de santé du pawn et sélectionner l'état d'implantation ou de symbiose.
+## 2. Régression du premier clic corrigée dans `r2`
 
-Résultat attendu : la description affiche le nom de l'hôte, le même nom de symbiote Tok'ra, le parcours de l'hôte et une des six carrières Tok'ra configurées.
+1. Utiliser un Tok'ra dont le symbiote possède une carrière adulte mais aucune enfance dédiée.
+2. Cliquer une première fois sur le gizmo d'activation du symbiote.
+3. Ouvrir immédiatement la fiche du pawn et `Player.log`.
 
-Aucun gizmo de basculement n'est attendu dans `0.3.10-dev`.
+Résultat attendu :
 
-## 3. Conversion en hôte actif
+- aucune `NullReferenceException` dans `Pawn_StoryTracker.set_Childhood` ;
+- l'enfance de l'hôte reste affichée, puisqu'aucune enfance Tok'ra n'est actuellement configurée ;
+- la carrière adulte devient celle du symbiote ;
+- les bonus de compétences tiennent compte de l'enfance conservée et de la carrière Tok'ra active ;
+- le nom devient celui du symbiote.
 
-1. Laisser la phase d'implantation récente se convertir normalement en hôte actif.
-2. Vérifier à nouveau l'état de santé.
-3. Comparer les deux noms et les deux parcours avec ceux affichés avant la conversion.
+## 3. Basculement vers le symbiote
 
-Résultat attendu : les quatre informations sont strictement identiques ; la conversion transfère le même objet persistant.
+1. Noter le nom, l'enfance, l'âge adulte et les niveaux bruts de toutes les compétences modifiées par les deux profils.
+2. Cliquer sur le gizmo d'activation du symbiote.
+3. Ouvrir immédiatement la fiche du pawn.
 
-## 4. Sauvegarde et rechargement
+Résultat attendu :
 
-1. Sauvegarder avec le Tok'ra implanté.
+- le nom principal devient le nom du symbiote ;
+- la carrière adulte devient celle du symbiote ; l'enfance reste celle de l'hôte tant qu'aucune enfance Tok'ra dédiée n'est configurée ;
+- le titre affiché suit les backstories du symbiote ;
+- seules les différences de niveaux prévues par les `skillGains` changent ;
+- les passions, aptitudes génétiques, traits, faction, relations, équipement, inventaire et santé restent identiques ;
+- la description de santé conserve les deux noms et indique le symbiote comme personnalité active ;
+- le gizmo propose maintenant de réactiver l'hôte.
+
+## 4. Retour vers l'hôte et anti-cumul
+
+1. Réactiver l'hôte.
+2. Comparer le nom, les backstories et les compétences avec les valeurs initiales.
+3. Effectuer au moins dix allers-retours rapides.
+
+Résultat attendu :
+
+- le nom et les backstories exacts de l'hôte sont restaurés ;
+- les niveaux retrouvent exactement leurs valeurs attendues ;
+- aucun bonus ne s'empile ;
+- aucune compétence ne dérive progressivement ;
+- aucun nouveau trait, passion ou travail interdit n'apparaît en dehors des effets normaux des backstories actives.
+
+## 5. Progression commune des compétences
+
+1. Activer le symbiote.
+2. Faire gagner assez d'expérience à une compétence pour que sa progression soit visible, idéalement jusqu'au niveau suivant.
+3. Revenir à l'hôte.
+4. Comparer la compétence.
+5. Gagner ensuite de l'expérience avec l'hôte et revenir au symbiote.
+
+Résultat attendu :
+
+- l'expérience gagnée sous le symbiote reste présente sous l'hôte ;
+- l'expérience gagnée sous l'hôte reste présente sous le symbiote ;
+- seul l'écart de niveau provenant des backstories change ;
+- aucun niveau ou XP n'est dupliqué ou perdu.
+
+## 6. Sauvegarde avec chaque personnalité active
+
+### Hôte actif
+
+1. Sauvegarder avec l'hôte actif.
 2. Quitter complètement RimWorld.
-3. Recharger la sauvegarde.
-4. Vérifier les noms et parcours stockés.
-5. Reprendre le temps plusieurs secondes.
+3. Recharger.
 
-Résultat attendu : aucune identité n'est reroulée, aucun nom ou backstory actif n'est remplacé et aucune compétence n'est modifiée.
+Résultat attendu : l'hôte, ses backstories et ses niveaux attendus restent actifs.
 
-## 5. Migration d'une sauvegarde antérieure
+### Symbiote actif
 
-1. Charger une sauvegarde `0.3.9-dev` contenant déjà un hôte Tok'ra.
-2. Inspecter son état de santé.
-3. Sauvegarder sous un nouveau nom, quitter et recharger.
+1. Activer le symbiote.
+2. Sauvegarder sous un autre nom.
+3. Quitter complètement RimWorld.
+4. Recharger.
 
-Résultat attendu : le nom existant du symbiote est conservé, le parcours Tok'ra manquant est créé une seule fois à partir de son identité persistante, et les histoires actives de l'hôte restent intactes.
+Résultat attendu :
 
-## 6. Extraction et réimplantation
+- le symbiote reste actif ;
+- son nom et ses backstories restent affichés ;
+- les niveaux restent cohérents ;
+- le gizmo permet toujours de revenir à l'hôte sans cumul.
 
-1. Extraire le symbiote pendant une phase où l'extraction existante est autorisée.
-2. Réimplanter le même symbiote dans un autre colon compatible.
-3. Comparer son nom et son parcours Tok'ra avant et après transfert.
-4. Vérifier que le nouveau nom et les nouvelles backstories d'hôte correspondent au second colon.
+## 7. Extraction et réimplantation
 
-Résultat attendu : le symbiote conserve sa propre identité ; seules les informations d'hôte sont remplacées pour le nouveau corps, avec l'ancien `ThingID` conservé dans l'historique technique.
+1. Activer le symbiote.
+2. Lancer une extraction autorisée.
+3. Vérifier le pawn immédiatement après le retrait.
+4. Réimplanter le même symbiote dans un autre colon.
 
-## 7. Frontière joueur / IA
+Résultat attendu :
 
-1. Générer un hôte Tok'ra volontaire appartenant à la faction Tok'ra ou déclencher des visiteurs Tok'ra.
-2. Inspecter leur état de santé.
-3. Vérifier l'absence de gizmo et du nouveau résumé joueur.
-4. Recruter réellement un Tok'ra lorsque le flux testé le permet, puis réinspecter.
+- l'ancien hôte retrouve automatiquement son nom, ses backstories et ses compétences d'hôte avant la fin de l'extraction ;
+- le symbiote conserve son nom et son parcours ;
+- le nouvel hôte conserve son propre nom et ses propres backstories ;
+- le gizmo du nouvel hôte bascule entre sa propre identité et celle du même symbiote ;
+- aucun état de compétence de l'ancien hôte n'est appliqué au nouveau.
 
-Résultat attendu : les Tok'ra gérés par l'IA gardent l'affichage classique. Le résumé double identité n'apparaît que pour un colon directement contrôlé par le joueur.
+## 8. Frontière joueur / IA
 
-## 8. Régressions Goa'uld
+1. Générer ou rencontrer un Tok'ra visiteur, allié ou membre de la faction Tok'ra non contrôlé.
+2. L'inspecter et sélectionner son Hediff.
+3. Tester également un pawn de quête temporaire si disponible.
+
+Résultat attendu :
+
+- aucun gizmo de personnalité n'est visible ;
+- le comportement classique est conservé ;
+- aucune bascule automatique de nom, backstories ou compétences ne se produit.
+
+## 9. État mental et contrôle direct
+
+1. Sur un Tok'ra colon, déclencher temporairement un état mental via le mode développeur.
+2. Vérifier les gizmos pendant l'état mental.
+3. Mettre fin à l'état mental.
+
+Résultat attendu : le gizmo disparaît lorsque le pawn n'est plus directement contrôlable et réapparaît ensuite sans changer la personnalité active.
+
+## 10. Régression Goa'uld
 
 1. Effectuer une implantation Goa'uld forcée.
 2. Laisser la conversion en hôte actif se produire.
-3. Tester rapidement une extraction d'urgence.
+3. Tester une extraction d'urgence.
 
-Résultat attendu : le flux Goa'uld, les noms, les messages et l'affichage existants ne changent pas.
+Résultat attendu :
 
-## Résultats validés
+- aucun gizmo Tok'ra n'apparaît ;
+- le nom, les backstories, les compétences et le flux Goa'uld restent identiques à `0.3.10-dev`.
 
-- [x] Chargement des profils et des champs persistants sans erreur XML ou cross-reference.
-- [x] Implantation volontaire sans changement du nom principal, des backstories actives ou des compétences de l'hôte.
-- [x] Conservation du même nom et du même parcours Tok'ra lors de la conversion en hôte actif.
-- [x] Sauvegarde, arrêt complet et rechargement sans reroll ni second traitement.
-- [x] Migration d'une sauvegarde antérieure avec initialisation unique des données manquantes.
-- [x] Extraction et réimplantation du même symbiote avec conservation de son identité propre.
-- [x] Affichage détaillé limité aux Tok'ra directement contrôlés par le joueur.
-- [x] Comportement classique conservé pour les Tok'ra gérés par l'IA.
-- [x] Implantation, conversion et extraction Goa'uld sans régression.
+## 11. Contrôle final
+
+Vérifier `Player.log`, notamment pour :
+
+- `BackstorySkillOffsetUtility` ;
+- `BackstorySkillProgressState` ;
+- `Scribe_Collections` ;
+- `NameTriple` ou `NameSingle` ;
+- `CompGetGizmos` ;
+- `TokraActivePersonality` ;
+- erreurs de traduction ou anciennes DLL.
+
+## Résultats
+
+- [x] Premier clic sans exception, avec conservation de l'enfance de l'hôte.
+- [x] Chargement et migration depuis `0.3.10-dev`.
+- [x] Basculement correct vers le symbiote.
+- [x] Retour exact vers l'hôte et dix cycles sans cumul.
+- [x] XP et niveaux acquis partagés entre les deux personnalités.
+- [x] Sauvegarde/rechargement avec l'hôte actif.
+- [x] Sauvegarde/rechargement avec le symbiote actif.
+- [x] Extraction depuis l'état symbiote et restauration automatique de l'hôte.
+- [x] Réimplantation dans un nouvel hôte sans transfert de ses compétences.
+- [x] Aucun gizmo pour les Tok'ra gérés par l'IA.
+- [x] Gizmo correctement masqué pendant un état mental.
+- [x] Aucune régression Goa'uld.
 - [x] `Player.log` propre.
 
-## Contrôle final
 
-- Version du mod : `0.3.10-dev`.
-- Version de la DLL : `0.3.10.0`.
-- Aucun changement du nom principal, des backstories actives ou des compétences de l'hôte.
-- Aucun gizmo de personnalité dans ce jalon.
-- `Player.log` propre, sans erreur `Scribe_Defs`, `BackstoryDef`, traduction, transfert, chargement ou ancienne DLL.
+## Validation finale
+
+Tous les tests ciblés ont été validés après le correctif `r2`. Le premier clic ne provoque plus d'exception, les basculements restent réversibles sans cumul, la progression est commune, les deux états de sauvegarde sont stables, l'extraction et la réimplantation conservent les identités attendues, la frontière joueur / IA est respectée et `Player.log` est propre.

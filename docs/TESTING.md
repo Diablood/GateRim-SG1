@@ -2069,3 +2069,34 @@ These tests require preserved saves created with the stated published version. T
 8. Close or pause the game and inspect `Player.log`.
 
 **Expected result:** no red errors related to operation loading, Scribe references, pawn or lord persistence, meeting-point pathing, dialogue jobs, stock counting, medicine consumption, legacy-container cleanup, departure monitoring or duplicate resolution appear.
+
+
+# 0.3.11-dev - Player-controlled Tok'ra personality switching
+
+The concise active checklist is maintained in `docs/TESTING_CURRENT.md`. The milestone must validate:
+
+- migration from a `0.3.10-dev` player-controlled Tok'ra with the host active by default;
+- one gizmo only for directly controlled player Tok'ra;
+- reversible host/symbiote name and backstory switching, preserving the host childhood whenever the symbiote has no dedicated childhood;
+- exact restoration of `NameSingle` and `NameTriple` host names;
+- backstory-derived skill differences applied once without cumulative stacking;
+- shared XP and level progression earned under either personality;
+- save/load with both host and symbiote active;
+- automatic host restoration before extraction or Hediff removal;
+- clean reimplantation into a different host without transferring the previous host's skill state;
+- no gizmo or manual switching for AI-managed Tok'ra;
+- gizmo hiding while the pawn is not directly controllable;
+- unchanged Goa'uld implantation and extraction behavior;
+- clean `Player.log`;
+- first-click regression: never pass a missing Tok'ra childhood to `Pawn_StoryTracker.Childhood`; preserve the current host childhood instead.
+
+Validation completed after `0.3.11-dev-r2`:
+
+- first-click regression fixed and confirmed;
+- ten repeated switches completed without stacking or skill drift;
+- shared XP progression validated under both identities;
+- save/load validated with host active and symbiote active;
+- extraction from the symbiote-active state and reimplantation into a new host validated;
+- no gizmo exposed to AI-managed Tok'ra or Goa'uld;
+- Goa'uld flows unchanged;
+- `Player.log` clean.

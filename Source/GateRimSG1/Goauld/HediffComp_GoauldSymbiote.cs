@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -33,6 +34,7 @@ namespace GateRimSG1.Goauld
         public GoauldSymbioteData TakeDataForTransfer()
         {
             EnsureDataInitialized();
+            symbioteData.RestoreHostPersonality(Pawn);
             transferredOut = true;
 
             GR_Log.Message(
@@ -73,7 +75,8 @@ namespace GateRimSG1.Goauld
                             symbioteData.HostAdulthood),
                         DisplayBackstories(
                             symbioteData.SymbioteChildhood,
-                            symbioteData.SymbioteAdulthood)).ToString();
+                            symbioteData.SymbioteAdulthood),
+                        DisplayActivePersonality()).ToString();
 
                     if (!GR_Debug.ShowAdvancedInformation)
                     {
@@ -87,6 +90,36 @@ namespace GateRimSG1.Goauld
 
                 return TechnicalSummary();
             }
+        }
+
+        public override IEnumerable<Gizmo> CompGetGizmos()
+        {
+            if (!CanShowPlayerTokraIdentity()
+                || !symbioteData.CanSwitchPersonality(Pawn))
+            {
+                yield break;
+            }
+
+            string targetName = symbioteData.IsSymbiotePersonalityActive
+                ? DisplayHostName()
+                : DisplaySymbioteName();
+            string descriptionKey = symbioteData.IsSymbiotePersonalityActive
+                ? "GR_TokraPersonalitySwitch_ToHost_Desc"
+                : "GR_TokraPersonalitySwitch_ToSymbiote_Desc";
+
+            yield return new Command_Action
+            {
+                defaultLabel = "GR_TokraPersonalitySwitch_Label"
+                    .Translate(targetName)
+                    .ToString(),
+                defaultDesc = descriptionKey.Translate(
+                    targetName,
+                    symbioteData.IsSymbiotePersonalityActive
+                        ? DisplaySymbioteName()
+                        : DisplayHostName()).ToString(),
+                icon = TexCommand.GatherSpotActive,
+                action = TogglePersonality
+            };
         }
 
         public override void CompPostPostAdd(DamageInfo? dinfo)
@@ -136,6 +169,8 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            symbioteData.RestoreHostPersonality(Pawn);
+
             if (transferredOut)
             {
                 GR_Log.Message(
@@ -156,6 +191,29 @@ namespace GateRimSG1.Goauld
         public override string CompDebugString()
         {
             return symbioteData?.ToDebugString() ?? "No Goa'uld symbiote data.";
+        }
+
+        private void TogglePersonality()
+        {
+            if (!CanShowPlayerTokraIdentity()
+                || !symbioteData.ToggleActivePersonality(Pawn))
+            {
+                return;
+            }
+
+            Find.ColonistBar.MarkColonistsDirty();
+            MainTabWindowUtility.NotifyAllPawnTables_PawnsChanged();
+
+            string messageKey = symbioteData.IsSymbiotePersonalityActive
+                ? "GR_TokraPersonalitySwitch_SymbioteActive"
+                : "GR_TokraPersonalitySwitch_HostActive";
+            Messages.Message(
+                messageKey.Translate(
+                    DisplayHostName(),
+                    DisplaySymbioteName()).ToString(),
+                Pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
         }
 
         private bool CanShowPlayerTokraIdentity()
@@ -191,6 +249,14 @@ namespace GateRimSG1.Goauld
             return symbioteData.SymbioteName.NullOrEmpty()
                 ? "GR_TokraDualIdentity_NotRecorded".Translate().ToString()
                 : symbioteData.SymbioteName;
+        }
+
+        private string DisplayActivePersonality()
+        {
+            string activeName = symbioteData.ActivePersonalityName();
+            return activeName.NullOrEmpty()
+                ? "GR_TokraDualIdentity_NotRecorded".Translate().ToString()
+                : activeName;
         }
 
         private string DisplayBackstories(

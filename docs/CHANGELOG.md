@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.11-dev - Add player-controlled Tok'ra personality switching
+
+- Add one personality-switch gizmo to directly player-controlled Tok'ra colonists only.
+- Switch the active displayed name, adulthood and derived title between the stored host and symbiote identities; preserve the host childhood when no dedicated symbiote childhood exists.
+- Preserve exact `NameSingle` and `NameTriple` host-name structures for reversible switching.
+- Add the reusable `BackstorySkillOffsetUtility` cultural-framework service.
+- Store one shared raw-XP progression per skill and apply only the active backstory offsets.
+- Preserve passions, gene aptitudes, randomized skill baselines and XP earned during play.
+- Persist the active personality and shared skill state through save/load.
+- Restore the host identity automatically before symbiote extraction, transfer or ordinary Hediff removal.
+- Keep AI-managed Tok'ra on the classic behavior with no gizmo or manual personality change.
+- Extend the dual-identity health summary with the currently active personality.
+- Raise the assembly version to `0.3.11.0` and the mod metadata version to `0.3.11-dev`.
+- Fix the first-click `NullReferenceException` caused by assigning a missing Tok'ra childhood to the vanilla story tracker.
+- Prepare focused tests for repeated switching, shared XP, migration, save/load, extraction, reimplantation and Goa'uld regressions.
+- Validate repeated switching without stacking, shared XP progression, save/load under both active identities, extraction, reimplantation, player/AI boundaries, Goa'uld regressions and a clean `Player.log`.
+
 ## 0.3.10-dev - Preserve implanted Tok'ra identity
 
 - Extend the shared cultural profile schema with configurable persistent-identity childhood and adulthood pools.
