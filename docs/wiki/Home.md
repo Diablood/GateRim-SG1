@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active  
-> Version du mod documentée : `0.3.17-dev`
+> Version du mod documentée : `0.3.20-dev`
 
 ## Le mod en bref
 
@@ -53,7 +53,7 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 ### Colonie et progression
 
 - [Scénario Équipe SG isolée](Stranded-SG-Team-Scenario).
-- [Histoires culturelles](Cultural-Backstories) : 70 enfances et carrières
+- [Histoires culturelles](Cultural-Backstories) : 83 enfances et carrières
   culturelles avec descriptions et bonus de compétences modérés.
 - Profils configurables pour les pawns de départ, noms culturels persistants et
   [réactions sociales contextuelles](Contextual-Social-Baseline).

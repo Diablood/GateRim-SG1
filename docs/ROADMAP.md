@@ -13,7 +13,26 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Audit de couverture des compétences culturelles (`0.3.19-dev`)
+### Contrôle automatisé de cohérence du projet (`0.3.20-dev`)
+
+- [x] Partir du tag publié `v0.3.19-dev` sur la branche dédiée `feature/project-consistency-checks`.
+- [x] Reproduire la dérive publique : README et accueil du wiki restés en `0.3.17-dev` et à `70` backstories après la publication de `0.3.19-dev` et de `83` entrées.
+- [x] Ajouter un contrôle PowerShell en lecture seule et un lanceur Windows dans `tools/`.
+- [x] Corriger la compatibilité du parseur Windows PowerShell 5.1 après l’erreur détectée sur la révision locale `r1`.
+- [x] Vérifier automatiquement les versions About, projet, README, wiki, état du projet, tests courants et changelog.
+- [x] Dériver la version d'assembly attendue depuis la version `x.y.z-dev`.
+- [x] Compter les `BackstoryDef`, détecter les `defName` manquants ou dupliqués et comparer le total aux résumés et au catalogue wiki.
+- [x] Ajouter des attentes optionnelles de version et de nombre afin de tester un échec sans modifier les fichiers.
+- [x] Corriger le README, l'accueil du wiki et l'état détaillé du contenu jusqu'à `0.3.20-dev` et `83` backstories.
+- [x] Intégrer le contrôle à `docs/MILESTONE_PUBLICATION.md` avant le commit final.
+- [x] Valider le chemin heureux sur le dépôt complet avec `0.3.20-dev`, `0.3.20.0` et `83` backstories.
+- [x] Valider un échec volontaire puis un nouveau passage vert sans mutation du dépôt.
+- [x] Valider le rebuild forcé, le chargement du menu principal, la version About et un `Player.log` propre.
+- [x] Publier la branche, le tag final unique `v0.3.20-dev` et synchroniser le wiki séparé.
+
+Ce jalon ne modifie ni gameplay, ni Def, ni traduction, ni texture. La révision locale `r2` a validé le chemin positif, l'échec volontaire, le nouveau passage vert, l'absence de mutation du dépôt, le rebuild `0.3.20.0`, le chargement du menu principal et un `Player.log` propre. Le contrôle documentaire manuel dispose désormais d'un garde-fou exécutable avant chaque publication. Les futurs jalons qui modifient la version ou le catalogue des backstories doivent maintenir les motifs publics contrôlés par l'outil, ou mettre à jour l'outil et sa documentation dans le même jalon.
+
+### Jalon précédent — Audit de couverture des compétences culturelles (`0.3.19-dev`)
 
 - [x] Partir du tag publié `v0.3.18-dev` sur la branche dédiée `feature/cultural-backstory-skill-coverage`.
 - [x] Auditer les douze compétences RimWorld à partir des véritables combinaisons enfance/adulte de chaque profil.

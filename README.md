@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.17-dev`
+- Development version: `0.3.20-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -28,7 +28,7 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and SGC field equipment.
 - Tok'ra trust, safehouses, medical support, secure communications, recurring
   organic operations and a sabotage mission on a temporary map.
-- Configurable cultural profiles, persistent cultural names and 70 cultural
+- Configurable cultural profiles, persistent cultural names and 83 cultural
   backstories integrated with starting pawns and world generation.
 
 GateRim SG-1 content remains compatible with normal colonies and compatible

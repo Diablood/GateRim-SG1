@@ -1,104 +1,104 @@
 # Tests du jalon actif
 
-Jalon : `0.3.19-dev - Audit cultural backstory skill coverage`
+Jalon : `0.3.20-dev - Add automated project consistency checks`
 
-Branche attendue : `feature/cultural-backstory-skill-coverage`
+Branche attendue : `feature/project-consistency-checks`
 
-Base attendue : `v0.3.18-dev`
+Base attendue : `v0.3.19-dev`
 
-Révision locale validée : `0.3.19-dev-r1`
+Révision locale validée : `0.3.20-dev-r2`
 
-Version de DLL attendue : `0.3.19.0`
+Version de DLL attendue : `0.3.20.0`
 
-Statut : validation fonctionnelle terminée sur `0.3.19-dev-r1` ; jalon clôturé et publié sous `v0.3.19-dev`.
+Statut : validation fonctionnelle terminée sur `0.3.20-dev-r2` ; jalon clôturé et publié sous `v0.3.20-dev`.
 
 ## Résultat final validé
 
-- Rebuild forcé validé avec la DLL `0.3.19.0`.
-- Chargement validé sans nouvelle erreur de `BackstoryDef`, `skillGains`, patch, catégorie ou traduction.
-- Les onze nouvelles carrières apparaissent dans les cinq pools culturels modifiés.
-- Les trois nouvelles carrières SGC apparaissent dans le scénario Équipe SG isolée sans carrière adulte vanilla.
-- Les carrières Goa'uld ordinaires, Grands Maîtres et Tok'ra conservent les groupes de noms attendus.
-- L'origine humaine hors-monde peut sélectionner `SG1_OffworldHuman_QuarryWorker`.
-- L'origine Tau'ri peut sélectionner les trois nouvelles carrières SGC.
-- Les poids des origines générées restent inchangés à `1` et `0.2`, avec une majorité hors-monde.
-- Les pools Jaffa Goa'uld et Jaffa libres restent inchangés et sans fuite d'une nouvelle carrière.
-- Les starters humains ordinaires conservent une majorité nette de carrières vanilla.
-- Les noms, backstories et bonus persistent après sauvegarde et rechargement.
-- Une sauvegarde `0.3.18-dev` conserve les histoires déjà attribuées sans reroll.
-- Dix basculements Tok'ra successifs ne provoquent aucun cumul, perte ou duplication de compétences.
-- Le diagnostic culturel reste en lecture seule et affiche le profil correspondant.
+- Le contrôleur s'exécute correctement avec Windows PowerShell 5.1 après le correctif de syntaxe `r2`.
+- Le chemin positif valide `0.3.20-dev`, `0.3.20.0` et `83` backstories.
+- Tous les contrôles attendus affichent `[PASS]` et le code de sortie final vaut `0`.
+- Une version volontairement incorrecte produit au moins un `[FAIL]` explicite et un code de sortie non nul.
+- Le chemin positif repasse au vert immédiatement après le test négatif.
+- Les exécutions positives et négatives ne modifient aucun fichier du dépôt.
+- Le rebuild forcé produit la DLL `0.3.20.0` sans nouvelle erreur attribuable au jalon.
+- RimWorld atteint le menu principal et affiche la version `0.3.20-dev` du mod.
+- Le README, l'accueil du wiki et l'état du contenu affichent `83` backstories.
+- Aucun fichier C#, Def, traduction, texture ou `About/ModIcon.png` n'est modifié.
 - `Player.log` est propre pour le périmètre testé.
-- Décision finale : conserver la révision fonctionnelle `r1` sans correctif C# ou Def supplémentaire.
+- Décision finale : conserver la révision fonctionnelle `r2` sans correctif supplémentaire.
 
-## 1. Couverture culturelle validée
+## 1. Contrôle de cohérence positif
 
-Les sept ensembles audités disposent désormais d'au moins une voie vers chacune des douze compétences standards :
+Commande validée :
 
-- Tau'ri / SGC ;
-- Jaffa Goa'uld ;
-- Jaffa libres ;
-- humains hors-monde ;
-- hôtes Goa'uld ordinaires ;
-- Grands Maîtres Goa'uld ;
-- carrières Tok'ra.
+```powershell
+.	ools\check-project-consistency.cmd `
+    -ExpectedVersion 0.3.20-dev `
+    -ExpectedBackstoryCount 83
+```
 
-Les compétences faiblement représentées restent documentées dans `docs/CULTURAL_SKILL_COVERAGE.md`. Elles ne justifient pas automatiquement de nouvelles backstories.
+Résumé validé :
 
-## 2. Scénario Équipe SG isolée
+```text
+Project consistency check passed.
+Version: 0.3.20-dev
+Assembly: 0.3.20.0
+Backstories: 83
+```
 
-Résultat validé :
+Le code de sortie est `0` et le dépôt reste inchangé.
 
-- `géologue planétaire du SGC` apparaît ;
-- `cuisinier d'expédition du SGC` apparaît ;
-- `archéologue de terrain du SGC` apparaît ;
-- aucune carrière adulte vanilla ne remplace le pool SGC exclusif ;
-- les noms restent Tau'ri.
+## 2. Détection d'une attente incorrecte
 
-## 3. Profils Goa'uld et Tok'ra
+Commande validée :
 
-Résultat validé :
-
-- `médecin de palais Goa'uld` et `duelliste de palais Goa'uld` apparaissent avec le groupe de noms Goa'uld ;
-- `Grand Maître Goa'uld architecte de domaine` et `Grand Maître Goa'uld expérimentateur biomédical` apparaissent sur les hôtes Grands Maîtres ;
-- les trois nouvelles carrières Tok'ra apparaissent avec le groupe de noms Tok'ra ;
-- le rapport culturel affiche le profil attendu sans modifier le pawn.
-
-## 4. Hôtes historiques Tok'ra générés
+```powershell
+.	ools\check-project-consistency.cmd -ExpectedVersion 0.0.0-dev
+```
 
 Résultat validé :
 
-- `SG1_GeneratedHost_OffworldHuman` peut utiliser la nouvelle carrière de carrier ;
-- `SG1_GeneratedHost_TauriSGCVolunteer` peut utiliser les trois nouvelles carrières SGC ;
-- les poids relatifs restent inchangés ;
-- l'origine hors-monde reste majoritaire ;
-- les noms de l'hôte et du symbiote restent distincts ;
-- aucun reroll n'est déclenché par la nouvelle liste de carrières.
+- message `[FAIL]` explicite ;
+- code de sortie non nul ;
+- aucune réécriture de fichier ;
+- nouveau passage positif réussi ensuite.
 
-## 5. Régressions culturelles
+## 3. Versions et pages publiques
 
 Résultat validé :
 
-- aucun ajout ne fuit dans les pools Jaffa ;
-- les humains ordinaires conservent leur fonctionnement additif et leur majorité vanilla ;
-- les groupes de noms restent cohérents avec la carrière sélectionnée ;
-- les backstories déjà enregistrées restent inchangées après chargement d'une sauvegarde `0.3.18-dev`.
+- `About/About.xml` : `0.3.20-dev` ;
+- projet et DLL : `0.3.20.0` ;
+- `README.md` : `0.3.20-dev` et `83 cultural backstories` ;
+- `docs/wiki/Home.md` : `0.3.20-dev` et `83` histoires ;
+- `docs/wiki/Content-Status.md` : révision `0.3.20-dev` et catalogue de `83` entrées ;
+- `docs/wiki/Cultural-Backstories.md` : `83` lignes entre les marqueurs contrôlés.
 
-## 6. Sauvegarde et identité Tok'ra
+## 4. Rebuild et chargement
 
 Résultat validé :
 
-- sauvegarde et rechargement stables avec l'hôte actif ;
-- sauvegarde et rechargement stables avec le symbiote actif ;
-- dix basculements sans dérive des niveaux ou de l'expérience ;
-- progression commune conservée ;
-- aucune duplication des bonus de backstories.
+- rebuild forcé réussi ;
+- DLL `0.3.20.0` ;
+- menu principal atteint ;
+- version du mod affichée correctement ;
+- aucune nouvelle erreur GateRim SG-1 dans `Player.log`.
 
-## 7. Contrôle final
+## 5. Périmètre et caractère en lecture seule
+
+Résultat validé :
+
+- aucun changement de gameplay ;
+- aucun changement de Def, traduction ou texture ;
+- aucun changement de `About/ModIcon.png` ;
+- aucun fichier temporaire ajouté ;
+- le contrôleur ne modifie jamais l'arbre de travail.
+
+## 6. Contrôle final
 
 ```powershell
 git status --short
 git diff --check
 ```
 
-Le journal final ne contient aucune nouvelle erreur ou répétition attribuable à GateRim SG-1.
+Le dépôt ne contient que les fichiers attendus du jalon et aucune erreur d'espacement.

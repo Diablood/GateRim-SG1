@@ -1,5 +1,32 @@
 # Tests
 
+## 0.3.20-dev - Contrôle automatisé de cohérence du projet
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.20-dev`. La révision `r1` a révélé une incompatibilité de syntaxe avec Windows PowerShell 5.1, corrigée et validée dans `r2`.
+
+Couverture validée :
+
+- contrôle positif de la version `0.3.20-dev`, de l'assembly `0.3.20.0` et des `83` backstories ;
+- comparaison des versions About, projet, README, wiki, état du projet, tests courants et changelog ;
+- comptage réel des `BackstoryDef`, unicité des `defName` et comparaison avec les résumés publics et techniques ;
+- comparaison des 83 lignes du catalogue wiki avec les Defs chargés ;
+- test négatif par version volontairement incorrecte, avec message `[FAIL]` et code de sortie non nul ;
+- nouveau passage positif immédiatement après le test négatif ;
+- absence de mutation de l'arbre de travail pendant toutes les exécutions ;
+- rebuild forcé et DLL `0.3.20.0` ;
+- chargement du menu principal, version About correcte et `Player.log` propre ;
+- README et pages wiki alignés sur `0.3.20-dev` et `83` backstories.
+
+Points de régression durables :
+
+- exécuter `tools/check-project-consistency.cmd` après la passe documentaire finale et avant `git add -A` ;
+- conserver `About/About.xml` comme version de développement autoritative ;
+- mettre à jour ensemble l'outil et `docs/PROJECT_CONSISTENCY_CHECKS.md` lorsqu'un format contrôlé évolue ;
+- tester périodiquement un échec volontaire sans éditer le dépôt ;
+- vérifier que le contrôleur reste strictement en lecture seule ;
+- ne pas substituer ce contrôle au rebuild, au chargement RimWorld, à la relecture RP ou à l'audit du wiki.
+
+
 ## 0.3.19-dev - Audit de couverture des compétences culturelles
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.19-dev`. Aucun correctif C# ou Def supplémentaire n'a été nécessaire après la matrice complète.

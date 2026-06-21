@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.20-dev - Add automated project consistency checks
+
+- Add a read-only PowerShell consistency checker and Windows wrapper under `tools/`.
+- Fix Windows PowerShell 5.1 parser compatibility by avoiding a colon immediately after an interpolated variable in the read-error message.
+- Treat `About/About.xml` as the authoritative development version and compare it with the project, README, wiki and active tracking documents.
+- Derive the required four-part assembly version from the `x.y.z-dev` milestone version.
+- Count every cultural `BackstoryDef`, report missing or duplicate `defName` values and compare the real total with public and technical summaries.
+- Compare the wiki backstory table-row count with the loaded Def count.
+- Add optional explicit version and backstory-count expectations so failure handling can be tested without editing repository files.
+- Correct the README, wiki home and content-status page from the stale `0.3.17-dev` / `70` state to `0.3.20-dev` / `83`.
+- Require the consistency command in the milestone publication procedure before the final commit.
+- Raise the assembly version to `0.3.20.0` and the mod metadata version to `0.3.20-dev` without changing gameplay code or Defs.
+- Validate the complete checker on local revision `r2`, including the Windows PowerShell 5.1 parser fix, the positive path and an intentional negative expectation.
+- Confirm non-zero failure handling, a successful positive rerun, a read-only working tree, the forced rebuild, main-menu loading and a clean `Player.log`.
+- Publish the corrected public presentation with `83` backstories and make the checker a mandatory pre-commit publication gate.
+
 ## 0.3.19-dev - Audit cultural backstory skill coverage
 
 - Audit the actual childhood-and-adulthood pools of every implemented culture against RimWorld's twelve standard skills.

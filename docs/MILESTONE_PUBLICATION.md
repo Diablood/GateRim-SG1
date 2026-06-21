@@ -65,6 +65,14 @@ git grep -n -E "Validation en cours|focused validation is in progress|remain req
 
 Une occurrence peut être légitime dans l’historique d’un jalon plus ancien, mais toute occurrence décrivant le jalon en cours doit être corrigée avant le commit.
 
+Exécuter ensuite le contrôle automatisé de cohérence depuis la racine du dépôt :
+
+```powershell
+.\tools\check-project-consistency.cmd
+```
+
+La commande doit terminer avec un code de sortie `0`. Elle vérifie notamment les versions publiques et techniques, le nombre réel de `BackstoryDef`, les nombres annoncés dans le README et le wiki, ainsi que le nombre de lignes du catalogue culturel. Si le jalon modifie l’un de ces formats contrôlés, mettre à jour l’outil et `docs/PROJECT_CONSISTENCY_CHECKS.md` dans le même jalon plutôt que de contourner le contrôle.
+
 Le commit final est l’état qui recevra le tag. Les documents doivent donc déjà décrire le jalon comme clôturé et sa publication comme effectuée. Les commandes de push et de tag sont exécutées immédiatement après ce commit. Si la publication échoue, ne pas commencer le jalon suivant tant que l’échec n’est pas résolu ; ne pas créer un second commit uniquement pour changer « prêt à publier » en « publié ».
 
 Si cette vérification révèle une faiblesse récurrente de la procédure, modifier ce fichier dans le même jalon afin que la correction ne dépende pas de la mémoire d’une conversation.
