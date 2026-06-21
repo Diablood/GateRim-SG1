@@ -1,0 +1,506 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using RimWorld;
+using Verse;
+
+namespace GateRimSG1.Missions
+{
+    public enum GateRimMissionDifficultyMode
+    {
+        None = 0,
+        ThreatPointsSnapshot = 1,
+        ThreatPointsScaled = 2
+    }
+
+    public sealed class GateRimMissionContextWeight
+    {
+        public string contextKey;
+        public float weight = 1f;
+    }
+
+    public sealed class GateRimMissionTimingDef
+    {
+        public int offerDurationTicks;
+        public int readyDelayTicks;
+        public int deadlineTicks;
+    }
+
+    public sealed class GateRimMissionRecurrenceDef
+    {
+        public float repeatedMissionWeightFactor = 0.25f;
+        public int minimumDelayTicks;
+        public int maximumDelayTicks;
+        public List<GateRimMissionContextWeight> contextWeights
+            = new List<GateRimMissionContextWeight>();
+
+        public float GetWeight(string contextKey)
+        {
+            float weight;
+            return TryGetWeight(contextKey, out weight) ? weight : 0f;
+        }
+
+        public bool TryGetWeight(string contextKey, out float weight)
+        {
+            GateRimMissionContextWeight match = contextWeights?
+                .FirstOrDefault(item => item != null
+                    && string.Equals(
+                        item.contextKey,
+                        contextKey,
+                        StringComparison.OrdinalIgnoreCase));
+
+            if (match == null)
+            {
+                weight = 0f;
+                return false;
+            }
+
+            weight = match.weight;
+            return true;
+        }
+    }
+
+    public sealed class GateRimMissionDifficultyDef
+    {
+        public GateRimMissionDifficultyMode mode
+            = GateRimMissionDifficultyMode.None;
+        public float pointsFactor = 1f;
+        public float minimumPoints;
+        public float maximumPoints = 100000f;
+    }
+
+    public sealed class GateRimMissionTextVariantDef
+    {
+        public string key;
+        public float weight = 1f;
+    }
+
+    public sealed class GateRimMissionTextBankDef
+    {
+        public string offerLetterLabelKey;
+        public List<GateRimMissionTextVariantDef> offerLetterTexts
+            = new List<GateRimMissionTextVariantDef>();
+        public string offerExpiredMessageKey;
+        public string acceptedMessageKey;
+        public string successMessageKey;
+        public string failureMessageKey;
+    }
+
+    public sealed class GateRimMissionActionDef
+    {
+        public string acceptActionKey;
+        public string completeActionKey;
+        public string offeredStatusKey;
+        public string activeStatusKey;
+        public string readyStatusKey;
+        public string successTrustMessageKey;
+        public string failureTrustMessageKey;
+    }
+
+    public sealed class GateRimMissionRewardDef
+    {
+        public int intellectualXp;
+        public int medicineXp;
+        public int socialXp;
+        public int successTrustChange;
+        public int failureTrustChange;
+    }
+
+    public sealed class GateRimMissionObjectiveDef
+    {
+        public string objectiveType;
+        public string targetDefName;
+        public int requiredCount = 1;
+        public int workTicks;
+        public bool optional;
+    }
+
+    public sealed class GateRimMissionConditionDef
+    {
+        public string conditionType;
+        public string targetDefName;
+        public float value;
+        public bool invert;
+    }
+
+    public sealed class GateRimMissionConsequenceDef
+    {
+        public string consequenceType;
+        public string targetDefName;
+        public float value;
+        public string textKey;
+    }
+
+    public sealed class GateRimMissionTransitionDef
+    {
+        public string targetPhaseId;
+        public int priority;
+        public List<GateRimMissionConditionDef> conditions
+            = new List<GateRimMissionConditionDef>();
+        public List<GateRimMissionConsequenceDef> consequences
+            = new List<GateRimMissionConsequenceDef>();
+    }
+
+    public sealed class GateRimMissionPhaseDef
+    {
+        public string id;
+        public string labelKey;
+        public bool terminal;
+        public List<GateRimMissionObjectiveDef> objectives
+            = new List<GateRimMissionObjectiveDef>();
+        public List<GateRimMissionConsequenceDef> onEnterConsequences
+            = new List<GateRimMissionConsequenceDef>();
+        public List<GateRimMissionTransitionDef> transitions
+            = new List<GateRimMissionTransitionDef>();
+    }
+
+    /// <summary>
+    /// Data-driven mission description shared by recurring operations and
+    /// longer questlines. Specialized workers remain available for mechanics
+    /// that do not fit the common phase and objective vocabulary.
+    /// </summary>
+    public sealed class GateRimMissionDef : Def
+    {
+        public string debugLabel;
+        public string legacyAdapterKey;
+        public Type workerClass;
+        public ThingDef objectiveThingDef;
+        public GateRimMissionTimingDef timing = new GateRimMissionTimingDef();
+        public GateRimMissionRecurrenceDef recurrence
+            = new GateRimMissionRecurrenceDef();
+        public GateRimMissionDifficultyDef difficulty
+            = new GateRimMissionDifficultyDef();
+        public GateRimMissionTextBankDef texts
+            = new GateRimMissionTextBankDef();
+        public GateRimMissionActionDef actions
+            = new GateRimMissionActionDef();
+        public GateRimMissionRewardDef rewards
+            = new GateRimMissionRewardDef();
+        public List<GateRimMissionPhaseDef> phases
+            = new List<GateRimMissionPhaseDef>();
+
+        private GateRimMissionWorker workerInt;
+
+        public GateRimMissionWorker Worker
+        {
+            get
+            {
+                if (workerInt == null && workerClass != null)
+                {
+                    workerInt = (GateRimMissionWorker)Activator.CreateInstance(
+                        workerClass);
+                    workerInt.def = this;
+                }
+
+                return workerInt;
+            }
+        }
+
+        public GateRimMissionPhaseDef GetPhase(string phaseId)
+        {
+            if (string.IsNullOrWhiteSpace(phaseId) || phases == null)
+            {
+                return null;
+            }
+
+            return phases.FirstOrDefault(phase => phase != null
+                && string.Equals(
+                    phase.id,
+                    phaseId,
+                    StringComparison.OrdinalIgnoreCase));
+        }
+
+        public GateRimMissionObjectiveDef GetObjective(
+            string phaseId,
+            string objectiveType)
+        {
+            if (string.IsNullOrWhiteSpace(objectiveType))
+            {
+                return null;
+            }
+
+            GateRimMissionPhaseDef phase = GetPhase(phaseId);
+
+            return phase?.objectives?.FirstOrDefault(objective =>
+                objective != null
+                && string.Equals(
+                    objective.objectiveType,
+                    objectiveType,
+                    StringComparison.OrdinalIgnoreCase));
+        }
+
+        public int GetObjectiveWorkTicks(
+            string phaseId,
+            string objectiveType,
+            int fallbackTicks)
+        {
+            int configuredTicks
+                = GetObjective(phaseId, objectiveType)?.workTicks ?? 0;
+
+            return configuredTicks > 0
+                ? configuredTicks
+                : fallbackTicks;
+        }
+
+        public override IEnumerable<string> ConfigErrors()
+        {
+            foreach (string error in base.ConfigErrors())
+            {
+                yield return error;
+            }
+
+            if (string.IsNullOrWhiteSpace(debugLabel))
+            {
+                yield return "debugLabel is required";
+            }
+
+            if (workerClass != null
+                && !typeof(GateRimMissionWorker).IsAssignableFrom(workerClass))
+            {
+                yield return $"workerClass {workerClass} does not derive from "
+                    + nameof(GateRimMissionWorker);
+            }
+            else if (workerClass != null && workerClass.IsAbstract)
+            {
+                yield return $"workerClass {workerClass} cannot be abstract";
+            }
+            else if (workerClass != null
+                && workerClass.GetConstructor(Type.EmptyTypes) == null)
+            {
+                yield return $"workerClass {workerClass} requires a public "
+                    + "parameterless constructor";
+            }
+
+            if (timing == null)
+            {
+                yield return "timing is required";
+            }
+            else
+            {
+                if (timing.offerDurationTicks <= 0)
+                {
+                    yield return "offerDurationTicks must be positive";
+                }
+
+                if (timing.deadlineTicks < 0 || timing.readyDelayTicks < 0)
+                {
+                    yield return "mission timing values cannot be negative";
+                }
+            }
+
+            if (recurrence == null)
+            {
+                yield return "recurrence is required";
+            }
+            else
+            {
+                if (recurrence.repeatedMissionWeightFactor < 0f
+                    || recurrence.repeatedMissionWeightFactor > 1f)
+                {
+                    yield return "repeatedMissionWeightFactor must be between 0 and 1";
+                }
+
+                if (recurrence.minimumDelayTicks < 0
+                    || recurrence.maximumDelayTicks < recurrence.minimumDelayTicks)
+                {
+                    yield return "recurrence delay range is invalid";
+                }
+
+                if (recurrence.contextWeights == null
+                    || recurrence.contextWeights.Count == 0)
+                {
+                    yield return "at least one recurrence context weight is required";
+                }
+                else
+                {
+                    foreach (GateRimMissionContextWeight contextWeight
+                        in recurrence.contextWeights)
+                    {
+                        if (contextWeight == null
+                            || string.IsNullOrWhiteSpace(contextWeight.contextKey))
+                        {
+                            yield return "recurrence context weights require a contextKey";
+                        }
+                        else if (contextWeight.weight < 0f)
+                        {
+                            yield return $"recurrence weight for {contextWeight.contextKey} cannot be negative";
+                        }
+                    }
+                }
+            }
+
+            if (difficulty == null)
+            {
+                yield return "difficulty is required";
+            }
+            else if (difficulty.mode != GateRimMissionDifficultyMode.None)
+            {
+                if (difficulty.pointsFactor <= 0f)
+                {
+                    yield return "difficulty pointsFactor must be positive";
+                }
+
+                if (difficulty.minimumPoints < 0f
+                    || difficulty.maximumPoints < difficulty.minimumPoints)
+                {
+                    yield return "difficulty point bounds are invalid";
+                }
+            }
+
+            if (texts == null)
+            {
+                yield return "texts is required";
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(texts.offerLetterLabelKey))
+                {
+                    yield return "offerLetterLabelKey is required";
+                }
+
+                if (texts.offerLetterTexts == null
+                    || texts.offerLetterTexts.Count == 0)
+                {
+                    yield return "at least one offer letter text variant is required";
+                }
+                else
+                {
+                    foreach (GateRimMissionTextVariantDef variant
+                        in texts.offerLetterTexts)
+                    {
+                        if (variant == null || string.IsNullOrWhiteSpace(variant.key))
+                        {
+                            yield return "offer letter text variants require a key";
+                        }
+                        else if (variant.weight <= 0f)
+                        {
+                            yield return $"offer text variant {variant.key} requires a positive weight";
+                        }
+                    }
+                }
+            }
+
+            if (actions == null)
+            {
+                yield return "actions is required";
+            }
+
+            if (rewards == null)
+            {
+                yield return "rewards is required";
+            }
+
+            if (phases == null || phases.Count == 0)
+            {
+                yield return "at least one phase is required";
+            }
+            else
+            {
+                HashSet<string> phaseIds = new HashSet<string>(
+                    StringComparer.OrdinalIgnoreCase);
+
+                foreach (GateRimMissionPhaseDef phase in phases)
+                {
+                    if (phase == null || string.IsNullOrWhiteSpace(phase.id))
+                    {
+                        yield return "mission phases require an id";
+                        continue;
+                    }
+
+                    if (!phaseIds.Add(phase.id))
+                    {
+                        yield return $"duplicate mission phase id: {phase.id}";
+                    }
+                }
+
+                foreach (GateRimMissionPhaseDef phase in phases
+                    .Where(item => item != null
+                        && !string.IsNullOrWhiteSpace(item.id)))
+                {
+                    foreach (GateRimMissionObjectiveDef objective
+                        in phase.objectives
+                            ?? Enumerable.Empty<GateRimMissionObjectiveDef>())
+                    {
+                        if (objective == null
+                            || string.IsNullOrWhiteSpace(
+                                objective.objectiveType))
+                        {
+                            yield return $"phase {phase.id} contains an "
+                                + "objective without objectiveType";
+                        }
+                        else if (objective.workTicks < 0)
+                        {
+                            yield return $"phase {phase.id} objective "
+                                + $"{objective.objectiveType} cannot use "
+                                + "negative workTicks";
+                        }
+                    }
+
+                    foreach (GateRimMissionTransitionDef transition
+                        in phase.transitions
+                            ?? Enumerable.Empty<GateRimMissionTransitionDef>())
+                    {
+                        if (transition == null
+                            || string.IsNullOrWhiteSpace(
+                                transition.targetPhaseId))
+                        {
+                            yield return $"phase {phase.id} contains a "
+                                + "transition without targetPhaseId";
+                            continue;
+                        }
+
+                        if (!phaseIds.Contains(transition.targetPhaseId))
+                        {
+                            yield return $"phase {phase.id} targets unknown "
+                                + $"phase {transition.targetPhaseId}";
+                        }
+
+                        foreach (GateRimMissionConditionDef condition
+                            in transition.conditions
+                                ?? Enumerable.Empty<
+                                    GateRimMissionConditionDef>())
+                        {
+                            if (condition == null
+                                || string.IsNullOrWhiteSpace(
+                                    condition.conditionType))
+                            {
+                                yield return $"transition {phase.id} -> "
+                                    + $"{transition.targetPhaseId} contains "
+                                    + "a condition without conditionType";
+                            }
+                        }
+
+                        foreach (GateRimMissionConsequenceDef consequence
+                            in transition.consequences
+                                ?? Enumerable.Empty<
+                                    GateRimMissionConsequenceDef>())
+                        {
+                            if (consequence == null
+                                || string.IsNullOrWhiteSpace(
+                                    consequence.consequenceType))
+                            {
+                                yield return $"transition {phase.id} -> "
+                                    + $"{transition.targetPhaseId} contains "
+                                    + "a consequence without consequenceType";
+                            }
+                        }
+                    }
+
+                    foreach (GateRimMissionConsequenceDef consequence
+                        in phase.onEnterConsequences
+                            ?? Enumerable.Empty<
+                                GateRimMissionConsequenceDef>())
+                    {
+                        if (consequence == null
+                            || string.IsNullOrWhiteSpace(
+                                consequence.consequenceType))
+                        {
+                            yield return $"phase {phase.id} contains an "
+                                + "entry consequence without consequenceType";
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

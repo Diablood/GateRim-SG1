@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GateRimSG1.Missions;
 using RimWorld;
 using Verse;
 
@@ -33,7 +34,8 @@ namespace GateRimSG1.Goauld
             string readyStatusKey,
             string successTrustMessageKey,
             string failureTrustMessageKey,
-            string debugLabel)
+            string debugLabel,
+            int observationWorkTicks = 0)
         {
             Archetype = archetype;
             OfferDurationTicks = offerDurationTicks;
@@ -60,6 +62,95 @@ namespace GateRimSG1.Goauld
             SuccessTrustMessageKey = successTrustMessageKey;
             FailureTrustMessageKey = failureTrustMessageKey;
             DebugLabel = debugLabel;
+            ObservationWorkTicks = observationWorkTicks;
+            RepeatedArchetypeWeightFactor
+                = TokraOrganicOperationFramework
+                    .LegacyRepeatedArchetypeWeightFactor;
+        }
+
+        public TokraOrganicOperationDefinition(
+            TokraOrganicOperationArchetype archetype,
+            GateRimMissionDef missionDef,
+            TokraOrganicOperationDefinition fallback)
+        {
+            if (missionDef == null)
+            {
+                throw new ArgumentNullException(nameof(missionDef));
+            }
+
+            if (fallback == null)
+            {
+                throw new ArgumentNullException(nameof(fallback));
+            }
+
+            MissionDef = missionDef;
+            Archetype = archetype;
+            OfferDurationTicks = missionDef.timing?.offerDurationTicks
+                ?? fallback.OfferDurationTicks;
+            ReadyDelayTicks = missionDef.timing?.readyDelayTicks
+                ?? fallback.ReadyDelayTicks;
+            DeadlineTicks = missionDef.timing?.deadlineTicks
+                ?? fallback.DeadlineTicks;
+            IntellectualXp = missionDef.rewards?.intellectualXp
+                ?? fallback.IntellectualXp;
+            MedicineXp = missionDef.rewards?.medicineXp
+                ?? fallback.MedicineXp;
+            SocialXp = missionDef.rewards?.socialXp
+                ?? fallback.SocialXp;
+            SuccessTrustChange = missionDef.rewards?.successTrustChange
+                ?? fallback.SuccessTrustChange;
+            FailureTrustChange = missionDef.rewards?.failureTrustChange
+                ?? fallback.FailureTrustChange;
+            WaryWeight = GetMissionWeight(
+                missionDef,
+                "TokraTrust.Wary",
+                fallback.WaryWeight);
+            NeutralWeight = GetMissionWeight(
+                missionDef,
+                "TokraTrust.Neutral",
+                fallback.NeutralWeight);
+            CooperativeWeight = GetMissionWeight(
+                missionDef,
+                "TokraTrust.Cooperative",
+                fallback.CooperativeWeight);
+            TrustedWeight = GetMissionWeight(
+                missionDef,
+                "TokraTrust.Trusted",
+                fallback.TrustedWeight);
+            ObjectiveThingDefName = missionDef.objectiveThingDef?.defName
+                ?? fallback.ObjectiveThingDefName;
+            AcceptActionKey = missionDef.actions?.acceptActionKey
+                ?? fallback.AcceptActionKey;
+            CompleteActionKey = missionDef.actions?.completeActionKey
+                ?? fallback.CompleteActionKey;
+            OfferLetterLabelKey = missionDef.texts?.offerLetterLabelKey
+                ?? fallback.OfferLetterLabelKey;
+            OfferLetterTextKey = missionDef.texts?.offerLetterTexts?
+                .FirstOrDefault(item => item != null
+                    && !string.IsNullOrWhiteSpace(item.key))?.key
+                ?? fallback.OfferLetterTextKey;
+            OfferExpiredMessageKey = missionDef.texts?.offerExpiredMessageKey
+                ?? fallback.OfferExpiredMessageKey;
+            OfferedStatusKey = missionDef.actions?.offeredStatusKey
+                ?? fallback.OfferedStatusKey;
+            ActiveStatusKey = missionDef.actions?.activeStatusKey
+                ?? fallback.ActiveStatusKey;
+            ReadyStatusKey = missionDef.actions?.readyStatusKey
+                ?? fallback.ReadyStatusKey;
+            SuccessTrustMessageKey
+                = missionDef.actions?.successTrustMessageKey
+                    ?? fallback.SuccessTrustMessageKey;
+            FailureTrustMessageKey
+                = missionDef.actions?.failureTrustMessageKey
+                    ?? fallback.FailureTrustMessageKey;
+            DebugLabel = missionDef.debugLabel ?? fallback.DebugLabel;
+            ObservationWorkTicks = missionDef.GetObjectiveWorkTicks(
+                "observing",
+                "MaintainOperator",
+                fallback.ObservationWorkTicks);
+            RepeatedArchetypeWeightFactor
+                = missionDef.recurrence?.repeatedMissionWeightFactor
+                    ?? fallback.RepeatedArchetypeWeightFactor;
         }
 
         public TokraOrganicOperationArchetype Archetype { get; }
@@ -104,6 +195,16 @@ namespace GateRimSG1.Goauld
 
         public string DebugLabel { get; }
 
+        public int ObservationWorkTicks { get; }
+
+        public GateRimMissionDef MissionDef { get; }
+
+        public string MissionDefName => MissionDef?.defName;
+
+        public bool UsesMissionFrameworkDef => MissionDef != null;
+
+        public float RepeatedArchetypeWeightFactor { get; }
+
         public bool HasPhysicalObjective => !string.IsNullOrEmpty(
             ObjectiveThingDefName);
 
@@ -117,6 +218,27 @@ namespace GateRimSG1.Goauld
         private float CooperativeWeight { get; }
 
         private float TrustedWeight { get; }
+
+        public string SelectOfferLetterTextKey(
+            int previousIndex,
+            out int selectedIndex)
+        {
+            if (MissionDef?.texts?.offerLetterTexts != null)
+            {
+                string selectedKey = GateRimMissionFramework.SelectTextKey(
+                    MissionDef.texts.offerLetterTexts,
+                    previousIndex,
+                    out selectedIndex);
+
+                if (!string.IsNullOrEmpty(selectedKey))
+                {
+                    return selectedKey;
+                }
+            }
+
+            selectedIndex = -1;
+            return OfferLetterTextKey;
+        }
 
         public float GetWeight(TokraTrustTier tier)
         {
@@ -134,11 +256,33 @@ namespace GateRimSG1.Goauld
                     return 0f;
             }
         }
+
+        private static float GetMissionWeight(
+            GateRimMissionDef missionDef,
+            string contextKey,
+            float fallback)
+        {
+            float weight;
+
+            return missionDef.recurrence != null
+                && missionDef.recurrence.TryGetWeight(
+                    contextKey,
+                    out weight)
+                ? weight
+                : fallback;
+        }
     }
 
     internal static class TokraOrganicOperationFramework
     {
-        public const float RepeatedArchetypeWeightFactor = 0.25f;
+        public const float LegacyRepeatedArchetypeWeightFactor = 0.25f;
+        private const string ObservationMissionDefName
+            = "SG1_TokraOrganic_GoauldObservation";
+
+        private static GateRimMissionDef cachedObservationMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedObservationDefinition;
+        private static bool observationFallbackWarningLogged;
 
         private static readonly IReadOnlyDictionary<
             TokraOrganicOperationArchetype,
@@ -189,7 +333,8 @@ namespace GateRimSG1.Goauld
                                 "GR_TokraTrust_OrganicObservationSucceeded",
                             failureTrustMessageKey:
                                 "GR_TokraTrust_OrganicObservationFailed",
-                            debugLabel: "Goa'uldObservation")
+                            debugLabel: "Goa'uldObservation",
+                            observationWorkTicks: 5000)
                     },
                     {
                         TokraOrganicOperationArchetype.DeadDropRecovery,
@@ -322,13 +467,22 @@ namespace GateRimSG1.Goauld
                 };
 
         public static IEnumerable<TokraOrganicOperationDefinition>
-            AllDefinitions => Definitions.Values;
+            AllDefinitions => Definitions.Values.Select(ResolveDefinition);
 
         public static bool TryGetDefinition(
             TokraOrganicOperationArchetype archetype,
             out TokraOrganicOperationDefinition definition)
         {
-            return Definitions.TryGetValue(archetype, out definition);
+            TokraOrganicOperationDefinition fallback;
+
+            if (!Definitions.TryGetValue(archetype, out fallback))
+            {
+                definition = null;
+                return false;
+            }
+
+            definition = ResolveDefinition(fallback);
+            return definition != null;
         }
 
         public static TokraOrganicOperationDefinition GetDefinition(
@@ -339,6 +493,49 @@ namespace GateRimSG1.Goauld
             return TryGetDefinition(archetype, out definition)
                 ? definition
                 : null;
+        }
+
+        private static TokraOrganicOperationDefinition ResolveDefinition(
+            TokraOrganicOperationDefinition fallback)
+        {
+            if (fallback == null
+                || fallback.Archetype
+                    != TokraOrganicOperationArchetype.GoauldObservation)
+            {
+                return fallback;
+            }
+
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    ObservationMissionDefName);
+
+            if (missionDef == null)
+            {
+                if (!observationFallbackWarningLogged)
+                {
+                    observationFallbackWarningLogged = true;
+                    Log.Warning(
+                        "[GateRim SG-1] Mission Def "
+                        + ObservationMissionDefName
+                        + " is missing; the Tok'ra observation operation "
+                        + "will use its legacy definition.");
+                }
+
+                return fallback;
+            }
+
+            if (cachedObservationDefinition == null
+                || cachedObservationMissionDef != missionDef)
+            {
+                cachedObservationMissionDef = missionDef;
+                cachedObservationDefinition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype.GoauldObservation,
+                        missionDef,
+                        fallback);
+            }
+
+            return cachedObservationDefinition;
         }
 
         public static void GetDelayRange(

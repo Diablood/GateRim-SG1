@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.22-dev`
+- Development version: `0.3.23-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -28,6 +28,8 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.
 - Tok'ra trust, safehouses, medical support, secure communications, recurring
   organic operations and a sabotage mission on a temporary map.
+- A reusable, Def-driven mission framework foundation with persistent runtime
+  state, RP text variants, recurrence controls and RimWorld threat snapshots.
 - Configurable cultural profiles, persistent cultural names and 83 cultural
   backstories integrated with starting pawns and world generation.
 

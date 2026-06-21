@@ -122,6 +122,22 @@ git tag -a v0.2.51-dev -m "0.2.51-dev - add organic Tok'ra wounded agent care"
 git push origin v0.2.51-dev
 ```
 
+## Contrôle spécifique aux missions et questlines
+
+Lorsqu'un jalon ajoute, migre ou refond une mission récurrente ou une questline, `docs/TESTING_CURRENT.md` doit vérifier explicitement :
+
+- la rééligibilité après réussite, échec et offre ignorée lorsque l'archétype est récurrent ;
+- les délais cachés variables et l'anti-répétition du dernier archétype ;
+- les variantes de textes RP visibles, ou la justification d'un texte unique conçu pour rester naturel après répétition ;
+- l'absence de répétition immédiate d'une même variante lorsque plusieurs variantes sont disponibles ;
+- la sauvegarde/recharge à plusieurs phases et la migration prudente des anciennes sauvegardes ;
+- les outils debug permettant d'inspecter ou de forcer les phases sans être visibles en jeu normal ;
+- le dimensionnement des menaces à partir des points de menace, de la difficulté active et de la puissance de la colonie plutôt qu'avec des effectifs fixes ;
+- au moins un test sur une colonie faible et une colonie avancée lorsqu'une menace adaptative est consommée ;
+- les régressions des missions encore héritées lorsque la migration est progressive.
+
+Un framework générique ne doit pas être étendu pour un seul cas théorique. Ajouter une nouvelle abstraction uniquement lorsqu'elle répond à plusieurs usages réels ou qu'elle constitue un point d'extension clairement nécessaire.
+
 ## 6. Synchroniser le wiki séparé uniquement si nécessaire
 
 Synchroniser le wiki lorsque le jalon modifie réellement un fichier `docs/wiki/*.md`. En l’absence de modification dans ce dossier, noter explicitement qu’aucune synchronisation n’est nécessaire et ne pas créer de commit wiki vide.

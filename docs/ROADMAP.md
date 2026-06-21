@@ -11,7 +11,41 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
-## Dernier jalon clôturé
+## Dernier jalon clôturé — Fondation du framework de missions (`0.3.23-dev`)
+
+- [x] Repartir du tag publié `v0.3.22-dev` sur la branche dédiée `feature/mission-framework-foundation`.
+- [x] Abandonner le jalon visuel isolé du dispositif d'observation sans commit ni tag.
+- [x] Définir une boîte à outils couvrant environ 70 à 90 % des missions et questlines courantes, avec extensions C# pour les cas atypiques.
+- [x] Ajouter des Defs XML pour les phases, objectifs, textes, récompenses, conséquences, récurrence et difficulté.
+- [x] Ajouter un état générique persistant compatible avec les champs spécialisés déjà sauvegardés.
+- [x] Ajouter des variantes de textes RP pondérées avec anti-répétition locale.
+- [x] Ajouter une capture de difficulté fondée sur les points de menace RimWorld.
+- [x] Rendre le facteur d'anti-répétition configurable par mission.
+- [x] Ajouter un rapport développeur commun pour les définitions chargées.
+- [x] Migrer l'observation Goa'uld Tok'ra comme premier pilote XML sans modifier son flux joueur.
+- [x] Piloter sa durée de travail réelle depuis le Def et la porter à `10000` ticks, soit quatre heures en jeu.
+- [x] Conserver les trois autres opérations organiques sur leur implémentation C# pendant cette première validation.
+- [x] Valider le build, les Defs, les trois variantes RP et l'anti-répétition immédiate.
+- [x] Valider le flux complet de l'observation, la sauvegarde/recharge et la migration d'une ancienne occurrence.
+- [x] Valider la capture de menace sur des colonies de puissance différente.
+- [x] Valider les trois opérations héritées et `Player.log`.
+- [x] Clôturer le jalon, publier le tag final unique `v0.3.23-dev` et synchroniser le wiki.
+
+La validation locale de la révision `r2` confirme le chargement du framework, les trois variantes RP, l'anti-répétition immédiate, le flux complet de l'observation, la durée de quatre heures, la persistance, les captures de menace différenciées, les trois opérations héritées et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.23-dev`.
+
+La prochaine évolution doit migrer un second cas réel afin d'éprouver une nouvelle capacité commune, de préférence la consommation de difficulté adaptative lorsqu'elle correspond naturellement à la mission, sans ajouter d'abstraction purement théorique.
+
+### Règles durables pour les missions et questlines
+
+- Chaque archétype récurrent doit pouvoir revenir après réussite, échec ou offre ignorée.
+- Les délais doivent rester cachés et variables, avec anti-répétition locale.
+- Les menaces, effectifs, équipements et contraintes doivent partir de la difficulté active et des points de menace/valeur de colonie de RimWorld plutôt que de valeurs fixes.
+- Les lettres, dialogues, messages et descriptions visibles doivent proposer des variantes solides lorsque la répétition serait perceptible.
+- Un texte unique reste acceptable s'il est suffisamment contextuel et naturel pour être répété.
+- Les détails techniques restent réservés aux rapports développeur, logs et documents internes.
+- Le moteur générique doit évoluer à partir de besoins communs observés dans plusieurs missions, sans sur-généralisation prématurée.
+
+## Jalon précédent
 
 ### Casquette de terrain SG (`0.3.22-dev`)
 
@@ -240,6 +274,8 @@ Le cycle complet a été validé sur la révision locale `r1` sans correctif C# 
 - [ ] Publier et maintenir la description Workshop lors de la préparation de la première version publique, en réutilisant la base harmonisée par `0.3.17-dev`.
 
 ## Passe visuelle globale des objets
+
+Cette passe est volontairement différée jusqu'à la stabilisation des mécaniques, races, factions et scénarios. Elle devra précéder le développement de la Porte des étoiles et de ses équipements, avec des concept arts validés par famille d'assets avant la production des textures finales.
 
 Cette passe doit être réalisée lorsque les mécaniques concernées sont suffisamment stables pour arrêter des designs définitifs.
 

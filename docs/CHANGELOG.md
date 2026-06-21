@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.23-dev - Introduce reusable mission framework foundations
+
+- Add a Def-driven mission and questline toolbox for common timing, recurrence, difficulty, RP texts, rewards, phases and objectives.
+- Add persistent generic runtime data that can coexist with specialized legacy mission fields.
+- Add weighted RP offer variants with local anti-repetition across occurrences.
+- Add RimWorld threat-point snapshots and configurable per-mission repeat penalties.
+- Add a developer report for loaded mission definitions and current threat snapshots.
+- Migrate the recurring Tok'ra Goa'uld-observation operation as the first XML-backed pilot while preserving its existing player flow and C# fallback.
+- Read the pilot's active observation duration from its XML objective and rebalance it to `10000` ticks, or four in-game hours.
+- Keep intelligence recovery, wounded-agent care and medical handoff on their existing implementation during the gradual migration.
+- Record the global visual overhaul as a later concept-art-driven pass rather than a sequence of isolated texture milestones.
+- Raise the assembly version to `0.3.23.0` and the mod metadata version to `0.3.23-dev`.
+- Validate the complete framework pilot on local revision `r2`, including the four-hour observation duration, three RP variants, immediate anti-repetition, save/load persistence, differentiated threat snapshots, legacy-operation regressions and a clean `Player.log`.
+
 ## 0.3.22-dev - Add an SG-team field cap
 
 - Add a lightweight black SG-team field cap with dedicated ground and four-direction worn graphics.

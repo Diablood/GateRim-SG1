@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_MissionFramework_ObservationOfferText2>Une cellule Tok'ra a repéré une régularité dans les déplacements Goa'uld alentour, mais ses propres agents ne peuvent pas rester dans la zone sans attirer l'attention. Elle propose une surveillance discrète depuis la périphérie de la colonie. Si la demande est acceptée, un capteur compact sera livré et une position d'observation indiquée. Un colon capable de travail Intellectuel devra déployer le dispositif, rester auprès de lui pendant la veille, puis le récupérer et revenir au communicateur sécurisé Tok'ra alimenté. Le canal restera ouvert pendant environ {0} heures. Garder le silence n'entraîne aucune perte de confiance.</GR_MissionFramework_ObservationOfferText2>
+    <GR_MissionFramework_ObservationOfferText3>Une brève transmission Tok'ra signale des mouvements Goa'uld irréguliers sur une route assez proche pour menacer de futurs contacts. La cellule a besoin d'un relevé fiable avant de déterminer s'il s'agit d'une patrouille, d'un courrier ou d'une force plus importante. Accepter autorisera la livraison d'une lunette portable et révélera une position discrète près de la colonie. Un colon capable de travail Intellectuel devra mener la veille puis rapporter les données enregistrées au communicateur sécurisé alimenté. L'offre expirera dans environ {0} heures. La cellule ne perdra pas confiance si la colonie ne répond pas.</GR_MissionFramework_ObservationOfferText3>
+    <GR_MissionFramework_PhaseOffered>offre en attente de réponse</GR_MissionFramework_PhaseOffered>
+    <GR_MissionFramework_PhaseAccepted>opération acceptée</GR_MissionFramework_PhaseAccepted>
+    <GR_MissionFramework_PhaseDeployed>dispositif déployé</GR_MissionFramework_PhaseDeployed>
+    <GR_MissionFramework_PhaseObserving>observation de terrain en cours</GR_MissionFramework_PhaseObserving>
+    <GR_MissionFramework_PhaseReady>données prêtes à être récupérées</GR_MissionFramework_PhaseReady>
+    <GR_MissionFramework_PhaseSucceeded>opération accomplie</GR_MissionFramework_PhaseSucceeded>
+    <GR_MissionFramework_PhaseFailed>opération échouée</GR_MissionFramework_PhaseFailed>
+</LanguageData>

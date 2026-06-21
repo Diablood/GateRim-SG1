@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.22-dev`
+> Version du mod documentée : `0.3.23-dev`
 
 ## Le mod en bref
 
@@ -66,8 +66,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 La série `0.3.x` consolide les systèmes réutilisables et la stabilité avant les
 grands chapitres de contenu suivants. Les directions durables sont notamment :
 
+- un framework réutilisable de missions et questlines, avec rejouabilité, variantes RP et difficulté adaptative ;
 - de nouveaux archétypes d'opérations Tok'ra réellement distincts ;
-- une passe visuelle sur les objets et dispositifs encore provisoires ;
+- une refonte visuelle globale, préparée par des concept arts, après la stabilisation des mécaniques et avant la Porte des étoiles ;
 - les futures cultures Asgard, Nox et Unas avec leurs noms et parcours propres ;
 - un storyteller GateRim SG-1 qui orchestre le mod sans rendre ses événements
   dépendants de ce storyteller ;

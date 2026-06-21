@@ -1,5 +1,39 @@
 # Tests
 
+## 0.3.23-dev - Fondation réutilisable du framework de missions
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.23-dev`. La révision `r2` a remplacé la plage C# codée en dur de l'observation par la durée `workTicks` réellement lue depuis le Def et fixée à `10000` ticks, soit quatre heures en jeu.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.23-dev`, `0.3.23.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.23.0` ;
+- chargement de `GateRimMissionDef`, des phases, objectifs, textes, récompenses et traductions sans nouvelle erreur ;
+- rapport développeur commun listant la définition pilote, ses sept phases, ses trois variantes, son facteur de répétition et sa capture de menace ;
+- apparition des trois variantes d'offre RP et exclusion de la dernière variante utilisée lors du tirage suivant ;
+- absence de poids, index, points de menace ou autres détails techniques dans les textes joueur ;
+- flux complet de l'observation Tok'ra conservé : offre, acceptation, livraison, déploiement, observation, repli, retour, transmission et résolution ;
+- nouvelle durée de `10000` ticks annoncée comme quatre heures et restant perceptible en vitesse maximale ;
+- sauvegarde/recharge pendant l'offre, après acceptation et pendant l'observation sans reroll, redémarrage ni perte de progression ;
+- conservation du total déjà enregistré pour une observation commencée avant le correctif de durée ;
+- migration prudente d'une ancienne occurrence vers les données génériques sans recréer la mission ;
+- capture de menace positive sur une carte active et sensiblement supérieure sur une colonie matériellement plus puissante ;
+- régressions validées pour les opérations de renseignements, d'agent blessé et de remise médicale encore exécutées par leur code C# historique ;
+- scénario SG, scénario vanilla, frontières des outils debug et `Player.log` propres pour le périmètre testé.
+
+Points de régression durables :
+
+- conserver les Defs comme source réelle des paramètres migrés ; un champ XML documenté ne doit pas rester doublé par une constante C# active ;
+- ne pas modifier rétroactivement le total ou la progression d'une occurrence déjà commencée lors d'un rééquilibrage ;
+- tester l'anti-répétition sur plusieurs occurrences et non seulement la présence des variantes dans le Def ;
+- vérifier la rééligibilité après résolution, échec et offre ignorée pour tout archétype déclaré récurrent ;
+- comparer les points de menace sur des colonies de puissances différentes avant de considérer la capture adaptative comme valide ;
+- valider leur consommation réelle sur une mission comportant naturellement une menace avant d'étendre davantage l'abstraction ;
+- conserver les opérations non migrées sur leur flux éprouvé et vérifier qu'aucune donnée générique d'une autre mission ne fuit vers elles ;
+- ajouter une abstraction commune uniquement lorsqu'un second usage réel la justifie ;
+- maintenir les diagnostics et actions de phase hors du jeu normal ;
+- vérifier la persistance et la migration à chaque nouvelle phase ou donnée générique.
+
 ## 0.3.22-dev - Casquette de terrain SG
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.22-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.

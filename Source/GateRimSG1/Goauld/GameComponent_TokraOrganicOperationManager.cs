@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GateRimSG1.Missions;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -18,9 +19,8 @@ namespace GateRimSG1.Goauld
         internal const int ObservationStateCheckIntervalTicks = 250;
         internal const int MedicalSupplyStateCheckIntervalTicks = 250;
         internal const int ObservationDeploymentWorkTicks = 500;
-        internal const int ObservationWorkMinimumTicks = 2500;
-        internal const int ObservationWorkMaximumTicks = 5000;
-        internal const int ObservationDurationTicks = ObservationWorkMaximumTicks;
+        internal const int LegacyObservationWorkTicks = 5000;
+        internal const int ObservationDurationTicks = LegacyObservationWorkTicks;
         internal const int ObservationRecoveryWorkTicks = 500;
         internal const int ObservationTransmissionWorkTicks = 1000;
         private const string ObservationDeploymentJobDefName
@@ -60,6 +60,8 @@ namespace GateRimSG1.Goauld
         private int expiredOfferCount;
         private int lastObservationResultVariant = -1;
         private int lastIntelligenceResultVariant = -1;
+        private Dictionary<string, int> lastMissionTextVariantIndexes
+            = new Dictionary<string, int>();
 
         private TokraOrganicOperationArchetype activeArchetype
         {
@@ -70,7 +72,18 @@ namespace GateRimSG1.Goauld
         private TokraOrganicOperationState activeState
         {
             get => activeOperation.state;
-            set => activeOperation.state = value;
+            set
+            {
+                activeOperation.state = value;
+
+                if (activeOperation.frameworkRuntime != null
+                    && !string.IsNullOrEmpty(
+                        activeOperation.frameworkRuntime.missionDefName))
+                {
+                    activeOperation.frameworkRuntime.phaseId
+                        = value.ToString().ToLowerInvariant();
+                }
+            }
         }
 
         private int activeMapId
@@ -354,6 +367,11 @@ namespace GateRimSG1.Goauld
                 ref lastIntelligenceResultVariant,
                 "tokraOrganicLastIntelligenceResultVariant",
                 -1);
+            Scribe_Collections.Look(
+                ref lastMissionTextVariantIndexes,
+                "tokraOrganicLastMissionTextVariantIndexes",
+                LookMode.Value,
+                LookMode.Value);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -1345,6 +1363,25 @@ namespace GateRimSG1.Goauld
                 + (manager.activeWoundedAgent?.LabelShortCap ?? "none")
                 + "\nMedical liaison: "
                 + (manager.activeMedicalSupplyLiaison?.LabelShortCap ?? "none")
+                + "\nMission Def: "
+                + (manager.activeOperation.frameworkRuntime?.missionDefName
+                    ?? "legacy C#")
+                + " | phase: "
+                + (manager.activeOperation.frameworkRuntime?.phaseId
+                    ?? "none")
+                + " | offer variant: "
+                + (manager.activeOperation.frameworkRuntime?.GetTextVariant(GateRimMissionFramework.OfferTextBankKey)
+                    ?? -1)
+                + "\nThreat snapshot: "
+                + (manager.activeOperation.frameworkRuntime?.baseThreatPoints.ToString("0")
+                    ?? "0")
+                + " -> "
+                + (manager.activeOperation.frameworkRuntime?.scaledThreatPoints.ToString("0")
+                    ?? "0")
+                + " (x"
+                + (manager.activeOperation.frameworkRuntime?.difficultyFactor.ToString("0.00")
+                    ?? "1.00")
+                + ")"
                 + "\nResolution applied: " + manager.resolutionApplied
                 + "\nPost-resolution penalty pending: "
                 + manager.departingMedicalSupplyDeathPenaltyPending;
@@ -1402,10 +1439,10 @@ namespace GateRimSG1.Goauld
                     manager.activeDeadDrop = station;
                     manager.observationDeviceDeployed = true;
                     manager.observationReadyTick = 0;
-                    manager.observationWorkTotalTicks
-                        = ObservationWorkMaximumTicks;
-                    manager.observationWorkRemainingTicks
-                        = ObservationWorkMaximumTicks;
+                    int workTicks
+                        = manager.GetConfiguredObservationWorkTicks();
+                    manager.observationWorkTotalTicks = workTicks;
+                    manager.observationWorkRemainingTicks = workTicks;
                     manager.reportReadyTick = 0;
                     return true;
                 }
@@ -1767,6 +1804,10 @@ namespace GateRimSG1.Goauld
 
                 return;
             }
+
+            definition.MissionDef?.Worker?.Tick(
+                activeOperation.frameworkRuntime,
+                activeMap);
 
             if (activeState == TokraOrganicOperationState.Offered)
             {
@@ -2289,6 +2330,14 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            GateRimMissionWorker missionWorker
+                = definition.MissionDef?.Worker;
+
+            if (missionWorker != null && !missionWorker.CanOffer(map))
+            {
+                return false;
+            }
+
             ThingWithComps communicator = FindPoweredCommunicator(map);
 
             if (communicator == null)
@@ -2347,9 +2396,21 @@ namespace GateRimSG1.Goauld
             lastOfferedArchetype = archetype;
             nextOpportunityTick = 0;
 
+            InitializeFrameworkRuntime(definition, map);
+            missionWorker?.OnOffered(
+                activeOperation.frameworkRuntime,
+                map);
+            int offerTextVariantIndex;
+            string offerLetterTextKey = SelectOfferLetterTextKey(
+                definition,
+                out offerTextVariantIndex);
+            activeOperation.frameworkRuntime.SetTextVariant(
+                GateRimMissionFramework.OfferTextBankKey,
+                offerTextVariantIndex);
+
             Find.LetterStack?.ReceiveLetter(
                 definition.OfferLetterLabelKey.Translate(),
-                definition.OfferLetterTextKey.Translate(
+                offerLetterTextKey.Translate(
                     GetRoundedUpHours(
                         definition.OfferDurationTicks).ToString()),
                 LetterDefOf.NeutralEvent,
@@ -2530,9 +2591,7 @@ namespace GateRimSG1.Goauld
             observationReadyTick = 0;
             reportReadyTick = 0;
             readyNotificationSent = false;
-            observationWorkTotalTicks = Rand.RangeInclusive(
-                ObservationWorkMinimumTicks,
-                ObservationWorkMaximumTicks);
+            observationWorkTotalTicks = GetConfiguredObservationWorkTicks();
             observationWorkRemainingTicks = observationWorkTotalTicks;
             observationTransmissionTotalTicks = 0;
             observationTransmissionRemainingTicks = 0;
@@ -2580,9 +2639,8 @@ namespace GateRimSG1.Goauld
 
             if (observationWorkTotalTicks <= 0)
             {
-                observationWorkTotalTicks = Rand.RangeInclusive(
-                    ObservationWorkMinimumTicks,
-                    ObservationWorkMaximumTicks);
+                observationWorkTotalTicks
+                    = GetConfiguredObservationWorkTicks();
                 observationWorkRemainingTicks = observationWorkTotalTicks;
             }
 
@@ -3244,6 +3302,8 @@ namespace GateRimSG1.Goauld
             nextStateCheckTick
                 = currentTick + MedicalSupplyStateCheckIntervalTicks;
 
+            NotifyMissionAccepted(map, operatorPawn);
+
             Messages.Message(
                 "GR_TokraMedicalSupply_Accepted".Translate(
                     operatorPawn?.LabelShortCap ?? "?",
@@ -3300,6 +3360,8 @@ namespace GateRimSG1.Goauld
             woundedAgentStableSinceTick = 0;
             woundedAgentDepartureOrdered = false;
             woundedAgentDepartureDeadlineTick = 0;
+
+            NotifyMissionAccepted(map, operatorPawn);
 
             Messages.Message(
                 "GR_TokraWoundedAgent_AcceptedMessage".Translate(
@@ -3368,6 +3430,8 @@ namespace GateRimSG1.Goauld
             observationTransmissionRemainingTicks = 0;
             observationResultVariant = -1;
 
+            NotifyMissionAccepted(map, operatorPawn);
+
             Messages.Message(
                 "GR_TokraObservation_Accepted".Translate(
                     operatorPawn?.LabelShortCap ?? "?",
@@ -3430,6 +3494,8 @@ namespace GateRimSG1.Goauld
             intelligencePatrolQueued = false;
             intelligenceResultVariant = -1;
 
+            NotifyMissionAccepted(map, operatorPawn);
+
             string acceptedKey
                 = "GR_TokraOrganicOperation_DeadDropAccepted";
             string locatedLabelKey
@@ -3463,6 +3529,50 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+
+        private void NotifyMissionAccepted(Map map, Pawn operatorPawn)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            GateRimMissionWorker missionWorker
+                = definition?.MissionDef?.Worker;
+
+            missionWorker?.OnAccepted(
+                activeOperation.frameworkRuntime,
+                map,
+                operatorPawn);
+        }
+
+        private void NotifyMissionResolved(
+            TokraOrganicOperationDefinition definition,
+            Map map,
+            Pawn operatorPawn,
+            TokraOrganicOperationOutcome outcome)
+        {
+            GateRimMissionOutcome frameworkOutcome
+                = outcome == TokraOrganicOperationOutcome.Succeeded
+                    ? GateRimMissionOutcome.Succeeded
+                    : GateRimMissionOutcome.Failed;
+
+            if (activeOperation.frameworkRuntime != null
+                && !string.IsNullOrEmpty(
+                    activeOperation.frameworkRuntime.missionDefName))
+            {
+                activeOperation.frameworkRuntime.phaseId
+                    = frameworkOutcome == GateRimMissionOutcome.Succeeded
+                        ? "succeeded"
+                        : "failed";
+            }
+
+            GateRimMissionWorker missionWorker
+                = definition?.MissionDef?.Worker;
+
+            missionWorker?.OnResolved(
+                activeOperation.frameworkRuntime,
+                map,
+                operatorPawn,
+                frameworkOutcome);
+        }
 
         internal bool TryResolveActiveOperation(
             TokraOrganicOperationOutcome outcome,
@@ -3501,7 +3611,8 @@ namespace GateRimSG1.Goauld
             {
                 observationDeviceDeployed = true;
                 observationReadyTick = currentTick;
-                observationWorkTotalTicks = ObservationWorkMaximumTicks;
+                observationWorkTotalTicks
+                    = GetConfiguredObservationWorkTicks();
                 observationWorkRemainingTicks = 0;
                 observationTransmissionTotalTicks
                     = ObservationTransmissionWorkTicks;
@@ -3667,6 +3778,12 @@ namespace GateRimSG1.Goauld
                 + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.MedicineXp : 0)}; "
                 + $"Social XP "
                 + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.SocialXp : 0)}.");
+
+            NotifyMissionResolved(
+                definition,
+                GetActiveMap(),
+                operatorPawn,
+                outcome);
 
             bool preservePatientAfterFailure = patient != null
                 && (patient.Dead
@@ -3951,6 +4068,70 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+        private void InitializeFrameworkRuntime(
+            TokraOrganicOperationDefinition definition,
+            Map map)
+        {
+            if (activeOperation.frameworkRuntime == null)
+            {
+                activeOperation.frameworkRuntime
+                    = new GateRimMissionRuntimeData();
+            }
+
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+            runtime.Reset();
+            runtime.missionDefName = definition.MissionDefName;
+            runtime.phaseId = definition.UsesMissionFrameworkDef
+                ? "offered"
+                : null;
+
+            GateRimMissionDifficultySnapshot snapshot
+                = GateRimMissionFramework.CaptureDifficulty(
+                    map,
+                    definition.MissionDef?.difficulty);
+            runtime.baseThreatPoints = snapshot.BaseThreatPoints;
+            runtime.scaledThreatPoints = snapshot.ScaledThreatPoints;
+            runtime.difficultyFactor = snapshot.Factor;
+        }
+
+        private string SelectOfferLetterTextKey(
+            TokraOrganicOperationDefinition definition,
+            out int selectedIndex)
+        {
+            string bankId = (definition.MissionDefName
+                ?? definition.Archetype.ToString())
+                + ":"
+                + GateRimMissionFramework.OfferTextBankKey;
+            int previousIndex = -1;
+
+            if (definition.UsesMissionFrameworkDef
+                && lastMissionTextVariantIndexes != null)
+            {
+                int storedIndex;
+
+                if (lastMissionTextVariantIndexes.TryGetValue(
+                    bankId,
+                    out storedIndex))
+                {
+                    previousIndex = storedIndex;
+                }
+            }
+
+            string selectedKey = definition.SelectOfferLetterTextKey(
+                previousIndex,
+                out selectedIndex);
+
+            if (definition.UsesMissionFrameworkDef
+                && selectedIndex >= 0
+                && lastMissionTextVariantIndexes != null)
+            {
+                lastMissionTextVariantIndexes[bankId] = selectedIndex;
+            }
+
+            return selectedKey ?? definition.OfferLetterTextKey;
+        }
+
         private void ScheduleNextOpportunity(int currentTick)
         {
             int minimumDelay;
@@ -3973,7 +4154,8 @@ namespace GateRimSG1.Goauld
                 = TokraOrganicOperationFramework.AllDefinitions
                     .Select(definition => new OrganicOperationCandidate(
                         definition.Archetype,
-                        definition.GetWeight(tier)))
+                        definition.GetWeight(tier),
+                        definition.RepeatedArchetypeWeightFactor))
                     .Where(candidate => candidate.Weight > 0f)
                     .ToList();
 
@@ -3991,7 +4173,7 @@ namespace GateRimSG1.Goauld
 
                     if (candidate.Archetype == lastOfferedArchetype)
                     {
-                        candidate.Weight *= TokraOrganicOperationFramework
+                        candidate.Weight *= candidate
                             .RepeatedArchetypeWeightFactor;
                         candidates[i] = candidate;
                     }
@@ -4178,6 +4360,15 @@ namespace GateRimSG1.Goauld
             return false;
         }
 
+        private int GetConfiguredObservationWorkTicks()
+        {
+            int configuredTicks
+                = GetActiveDefinition()?.ObservationWorkTicks
+                    ?? LegacyObservationWorkTicks;
+
+            return Math.Max(1, configuredTicks);
+        }
+
         private bool TryRepairLegacyObservationState(int currentTick)
         {
             if (activeArchetype
@@ -4191,7 +4382,9 @@ namespace GateRimSG1.Goauld
             if (observationDeviceDeployed
                 && observationWorkTotalTicks <= 0)
             {
-                observationWorkTotalTicks = ObservationWorkMaximumTicks;
+                int configuredWorkTicks
+                    = GetConfiguredObservationWorkTicks();
+                observationWorkTotalTicks = configuredWorkTicks;
 
                 if (activeState == TokraOrganicOperationState.Ready)
                 {
@@ -4201,11 +4394,11 @@ namespace GateRimSG1.Goauld
                 {
                     int legacyRemaining = observationReadyTick > currentTick
                         ? observationReadyTick - currentTick
-                        : ObservationWorkMaximumTicks;
+                        : configuredWorkTicks;
                     observationWorkRemainingTicks = Math.Max(
                         1,
                         Math.Min(
-                            ObservationWorkMaximumTicks,
+                            configuredWorkTicks,
                             legacyRemaining));
                 }
 
@@ -4720,6 +4913,18 @@ namespace GateRimSG1.Goauld
                 followUp = new TokraOrganicOperationFollowUp();
             }
 
+            if (lastMissionTextVariantIndexes == null)
+            {
+                lastMissionTextVariantIndexes
+                    = new Dictionary<string, int>();
+            }
+
+            if (activeOperation.frameworkRuntime == null)
+            {
+                activeOperation.frameworkRuntime
+                    = new GateRimMissionRuntimeData();
+            }
+
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             TokraOrganicOperationDefinition definition = GetActiveDefinition();
 
@@ -4729,6 +4934,27 @@ namespace GateRimSG1.Goauld
             }
             else
             {
+                if (definition.UsesMissionFrameworkDef
+                    && string.IsNullOrEmpty(
+                        activeOperation.frameworkRuntime.missionDefName))
+                {
+                    activeOperation.frameworkRuntime.missionDefName
+                        = definition.MissionDefName;
+                    activeOperation.frameworkRuntime.phaseId
+                        = activeState.ToString().ToLowerInvariant();
+
+                    GateRimMissionDifficultySnapshot snapshot
+                        = GateRimMissionFramework.CaptureDifficulty(
+                            GetActiveMap(),
+                            definition.MissionDef?.difficulty);
+                    activeOperation.frameworkRuntime.baseThreatPoints
+                        = snapshot.BaseThreatPoints;
+                    activeOperation.frameworkRuntime.scaledThreatPoints
+                        = snapshot.ScaledThreatPoints;
+                    activeOperation.frameworkRuntime.difficultyFactor
+                        = snapshot.Factor;
+                }
+
                 if (activeState == TokraOrganicOperationState.Offered
                     && offerExpiryTick <= 0)
                 {
@@ -4843,14 +5069,18 @@ namespace GateRimSG1.Goauld
         {
             public OrganicOperationCandidate(
                 TokraOrganicOperationArchetype archetype,
-                float weight)
+                float weight,
+                float repeatedArchetypeWeightFactor)
             {
                 Archetype = archetype;
                 Weight = weight;
+                RepeatedArchetypeWeightFactor
+                    = repeatedArchetypeWeightFactor;
             }
 
             public TokraOrganicOperationArchetype Archetype;
             public float Weight;
+            public float RepeatedArchetypeWeightFactor;
         }
     }
 

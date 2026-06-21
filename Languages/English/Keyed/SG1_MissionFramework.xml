@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_MissionFramework_ObservationOfferText2>A Tok'ra cell has detected a pattern in nearby Goa'uld traffic, but its own agents cannot remain in the area without drawing attention. The cell proposes a discreet field watch from the colony's perimeter. If the request is accepted, a compact sensor and a marked observation position will be provided. An Intellectual-capable colonist must deploy the device, remain with it while the watch is conducted, then recover it and return to the powered Tok'ra secure communicator. The channel will remain open for about {0} hours. Declining by silence carries no trust penalty.</GR_MissionFramework_ObservationOfferText2>
+    <GR_MissionFramework_ObservationOfferText3>A short Tok'ra transmission reports irregular Goa'uld movement along a route close enough to threaten future contacts. The cell needs a clean observation record before it can decide whether the activity is a patrol, a courier or something larger. Accepting will authorize delivery of a portable scope and reveal a quiet position near the colony. A colonist capable of Intellectual work must carry out the watch and bring the recorded data back to the powered secure communicator. The offer will expire in roughly {0} hours. No confidence will be lost if the colony does not answer.</GR_MissionFramework_ObservationOfferText3>
+    <GR_MissionFramework_PhaseOffered>offer awaiting response</GR_MissionFramework_PhaseOffered>
+    <GR_MissionFramework_PhaseAccepted>operation accepted</GR_MissionFramework_PhaseAccepted>
+    <GR_MissionFramework_PhaseDeployed>device deployed</GR_MissionFramework_PhaseDeployed>
+    <GR_MissionFramework_PhaseObserving>field observation underway</GR_MissionFramework_PhaseObserving>
+    <GR_MissionFramework_PhaseReady>data ready for recovery</GR_MissionFramework_PhaseReady>
+    <GR_MissionFramework_PhaseSucceeded>operation completed</GR_MissionFramework_PhaseSucceeded>
+    <GR_MissionFramework_PhaseFailed>operation failed</GR_MissionFramework_PhaseFailed>
+</LanguageData>

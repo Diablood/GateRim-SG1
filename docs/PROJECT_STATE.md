@@ -1,94 +1,91 @@
 # Project state
 
-Current milestone: `0.3.22-dev - Add an SG-team field cap` — functionally validated, closed and published.
+Current milestone: `0.3.23-dev - Introduce reusable mission framework foundations` — validated locally on revision `r2` and published under the final tag `v0.3.23-dev`.
 
-## Published milestone
+## Last completed milestone
 
-- Development base tag: `v0.3.21-dev`.
-- Dedicated branch: `feature/sg-team-field-cap`.
-- Validated functional archive revision: `0.3.22-dev-r1`.
-- Final published tag: `v0.3.22-dev`.
-- Final commit: `0.3.22-dev - add an SG-team field cap`.
+- Development base tag: `v0.3.22-dev`.
+- Dedicated branch: `feature/mission-framework-foundation`.
+- Validated local archive revision: `0.3.23-dev-r2`.
+- Published final tag: `v0.3.23-dev`.
+- Validated assembly version: `0.3.23.0`.
+- Cultural backstory count remains `83`.
 
-The local `r1` suffix identifies only the tested archive revision. It does not appear in the published commit or tag.
+The abandoned visual-only observation-device milestone was not committed or tagged. Its branch was cleaned, and this functional milestone started again from `v0.3.22-dev`.
 
-## Milestone result
+## Milestone objective
 
-The existing weighted cultural starter loadout now includes a second headgear option without scenario-specific C#:
+Introduce the first reusable mission and questline toolbox without attempting to generalize every existing operation at once.
 
-- lightweight black SG-team field cap;
-- dedicated ground graphic and north, south, east and west worn graphics;
-- English Def text and French translation;
-- discreet SGC insignia;
-- crafting after SGC field-equipment research for `20` cloth with Crafting `2`;
-- negligible protection compared with the SG field helmet;
-- corrected field-helmet description, which no longer refers to four loose helmets supplied by the scenario.
+The foundation provides:
 
-The cultural headgear slot keeps its `0.6` selection chance and equal option weights. Each starter therefore has the following theoretical outcomes:
+- `GateRimMissionDef` entries driven by XML;
+- reusable timing, recurrence, difficulty, text-bank, reward, phase, objective, condition, transition and consequence data;
+- persistent generic runtime data stored beside specialized operation state;
+- RP offer variants with local anti-repetition across occurrences;
+- RimWorld threat-point snapshots captured when a configured mission is offered;
+- per-mission repeated-archetype penalties;
+- generic debug inspection of all loaded mission definitions;
+- an abstract C# worker extension point for eligibility, offer, acceptance, periodic updates and mechanics that do not fit the common vocabulary.
 
-```text
-30% field helmet
-30% field cap
-40% no headgear
-```
+## Pilot migration
 
-The helmet and cap share the same head layer and cannot be worn together. The rest of the validated SG-team loadout remains unchanged.
+The recurring Tok'ra Goa'uld-observation operation is the first XML-backed pilot:
 
-## Functional validation
+- its existing player flow and specialized worker remain unchanged;
+- timing, trust-tier weights, repeat penalty, objective, action keys, rewards and three offer texts come from `SG1_TokraOrganic_GoauldObservation`;
+- the most recently used offer variant is persisted and excluded from the next draw when alternatives exist;
+- its current RimWorld threat points are captured in the generic occurrence data for future adaptive mechanics;
+- an old-save observation occurrence receives generic runtime data during load without rerolling or restarting the operation;
+- the observation work duration is read from the `observing` phase's `MaintainOperator` objective and is set to `10000` ticks, or four in-game hours;
+- the previous hard-coded observation definition remains as a safety fallback if the Def is unavailable.
 
-The complete focused protocol was validated on local revision `r1`:
+The detailed observation sequence is still executed by its proven specialized C# code; the XML phase graph is validated data and is not yet interpreted by a universal transition engine. The intelligence recovery, wounded-agent care and medical handoff operations remain on their existing C# definitions during this milestone. This deliberate mixed mode validates gradual migration and save compatibility without over-generalizing from one operation.
 
-- project consistency checker passed for `0.3.22-dev`, assembly `0.3.22.0` and `83` backstories;
-- forced rebuild produced DLL version `0.3.22.0`;
-- RimWorld reached the main menu without new Def, translation or texture errors;
-- starters with a field helmet, field cap and no headgear were all observed;
-- the cap rendered correctly from north, south, east and west on the tested body types;
-- helmet and cap remained mutually exclusive;
-- mandatory shirt, pants, boots, gloves and vest, plus the optional matching jacket, remained unchanged;
-- the balanced vanilla firearm set and normal scenario supplies remained unchanged;
-- save/reload preserved the selected cap and the rest of the starter equipment;
-- a vanilla scenario received no SG-team headgear or starter rules;
-- `Player.log` was clean for the validated scope.
+## Validation completed
 
-No further functional correction is required after `r1`.
+The complete protocol in `docs/TESTING_CURRENT.md` was validated on local revision `r2`:
 
-## Durable outcome
+- project consistency and forced rebuild passed with assembly `0.3.23.0`;
+- mission Defs, translations and the generic debug report loaded without error;
+- all three observation offer variants appeared and immediate text repetition was prevented;
+- the complete observation flow succeeded with the new four-hour duration remaining visible at maximum speed;
+- save/reload preserved offered, accepted and active observation occurrences without rerolling or extending existing progress;
+- threat snapshots were positive and increased on the materially stronger test colony;
+- intelligence recovery, wounded-agent care and medical handoff retained their legacy C# flows;
+- no technical data leaked into player-facing texts or tools outside the intended debug boundary;
+- `Player.log` remained clean for the tested scope.
 
-The SG-team headgear slot now demonstrates the intended XML-only extension path for future cultural starter equipment. Additional compatible headgear options can be added through weighted Def entries without introducing scenario-specific code.
+## Next development step
 
-Weighted outcomes remain probabilities rather than guaranteed ratios on a small sample. Future visual additions must still be checked in all four directions, on several body types and through save/reload.
+Start the next milestone explicitly from `v0.3.23-dev` on a new dedicated branch.
 
-## Files published
+The next framework evolution should migrate a second real mission or operation rather than adding theoretical abstractions. Prefer a candidate that exercises another shared capability—especially adaptive threat consumption—when that capability belongs naturally to its gameplay. The exact candidate and milestone scope should be selected before creating the branch.
+
+## Durable direction
+
+The mission framework is a toolbox intended to cover roughly 70 to 90 percent of recurring missions and questlines. Specialized workers remain the normal solution for unique mechanics. Existing missions will be migrated progressively only when the common abstractions are proven by multiple real uses.
+
+Every future recurring mission must consider:
+
+- long-game replayability and re-eligibility after success or failure;
+- hidden variable delays and local anti-repetition;
+- difficulty derived from RimWorld storyteller threat points, active difficulty and colony wealth rather than fixed enemy counts;
+- RP text variants, or deliberately repeatable prose when variants would not improve quality;
+- persistent state, debug phase forcing and save/load migration.
+
+## Published files
 
 - `About/About.xml`;
 - `Source/GateRimSG1/GateRimSG1.csproj`;
-- `1.6/Defs/ThingDefs_Apparel/SG1_SGTeamFieldCap.xml`;
-- `1.6/Defs/ThingDefs_Apparel/SG1_SGTeamFieldHelmet.xml`;
-- `1.6/Patches/SG1_CulturalStarterLoadouts.xml`;
-- French ThingDef translations for the cap and helmet;
-- five cap textures under `Textures/Things/Pawn/Humanlike/Apparel/SGTeamFieldCap/`;
+- `Source/GateRimSG1/Missions/*.cs`;
+- adapted Tok'ra organic-operation framework, manager and instance files;
+- `1.6/Defs/MissionDefs/SG1_MissionFramework.xml`;
+- English and French keyed mission-framework texts;
 - `README.md`;
-- `docs/PROJECT_STATE.md`;
-- `docs/ROADMAP.md`;
-- `docs/TESTING_CURRENT.md`;
-- `docs/TESTING.md`;
-- `docs/CHANGELOG.md`;
-- `docs/CULTURAL_STARTER_LOADOUTS.md`;
-- updated SG equipment and scenario pages under `docs/wiki/`.
-
-Because files under `docs/wiki/` changed, the separate wiki repository must be synchronized as part of the final publication.
-
-## Next development base
-
-The next milestone must start from the published tag `v0.3.22-dev` on a new dedicated `feature/...` branch.
-
-Before selecting it, reread:
-
-- `AGENTS.md`;
-- `docs/PROJECT_STATE.md`;
-- `docs/ROADMAP.md`;
-- `docs/MILESTONE_PUBLICATION.md`;
-- `docs/TESTING_CURRENT.md`.
+- `docs/MISSION_FRAMEWORK.md`;
+- project state, roadmap, current and durable tests, changelog and publication procedure;
+- wiki home and content-status revisions.
 
 ## Repository rules reminder
 

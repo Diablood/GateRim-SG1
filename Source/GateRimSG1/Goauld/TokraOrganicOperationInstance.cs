@@ -1,3 +1,4 @@
+using GateRimSG1.Missions;
 using Verse;
 
 namespace GateRimSG1.Goauld
@@ -52,6 +53,9 @@ namespace GateRimSG1.Goauld
         public int medicalSupplyArrivalTick;
         public bool medicalSupplyArrivalNotified;
         public bool medicalSupplyDepartureOrdered;
+
+        public GateRimMissionRuntimeData frameworkRuntime
+            = new GateRimMissionRuntimeData();
 
         public bool IsActive => archetype != TokraOrganicOperationArchetype.None
             && state != TokraOrganicOperationState.None;
@@ -189,6 +193,13 @@ namespace GateRimSG1.Goauld
                 ref medicalSupplyDepartureOrdered,
                 "medicalSupplyDepartureOrdered",
                 false);
+            Scribe_Deep.Look(ref frameworkRuntime, "frameworkRuntime");
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit
+                && frameworkRuntime == null)
+            {
+                frameworkRuntime = new GateRimMissionRuntimeData();
+            }
         }
 
         public void Reset()
@@ -231,6 +242,13 @@ namespace GateRimSG1.Goauld
             medicalSupplyArrivalTick = 0;
             medicalSupplyArrivalNotified = false;
             medicalSupplyDepartureOrdered = false;
+
+            if (frameworkRuntime == null)
+            {
+                frameworkRuntime = new GateRimMissionRuntimeData();
+            }
+
+            frameworkRuntime.Reset();
         }
     }
 
