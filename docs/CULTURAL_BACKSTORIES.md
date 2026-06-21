@@ -1,28 +1,20 @@
 # Cultural backstories
 
-Version: `0.3.18-dev`
+Version: `0.3.19-dev`
 
-Status: `72` cultural backstories validated and published through `0.3.18-dev`.
+Status: `83` cultural backstories validated and published through `0.3.19-dev`.
 
 ## Scope
 
-GateRim SG-1 now prepares `72` native RimWorld `BackstoryDef` entries.
+GateRim SG-1 now prepares `83` native RimWorld `BackstoryDef` entries.
 
 The catalogue consists of:
 
 - the `52` entries reworked in `0.3.8-dev`;
 - six adult off-world-human careers added in `0.3.13-dev` for generated historical Tok'ra hosts;
 - twelve measured additions in `0.3.16-dev` for cultures already implemented in game;
-- two modern-Earth Tau'ri childhoods in `0.3.18-dev` for generated historical Tok'ra hosts.
-
-The `0.3.16-dev` expansion adds exactly two entries to each targeted area:
-
-- Tau'ri / SGC adult careers;
-- shared Jaffa childhoods;
-- Goa'uld-aligned Jaffa adult careers;
-- Free Jaffa adult careers;
-- ordinary Goa'uld-host adult careers;
-- Tok'ra adult careers.
+- two modern-Earth Tau'ri childhoods in `0.3.18-dev` for generated historical Tok'ra hosts;
+- eleven targeted adult careers in `0.3.19-dev` to close demonstrated zero-coverage skill gaps.
 
 No Asgard, Nox or Unas backstory is added before those cultures exist as playable or generated content.
 
@@ -49,46 +41,59 @@ Descriptions remain player-facing and avoid debug terminology, implementation de
 ## Skill bonuses
 
 - childhoods provide modest foundations, generally `+1` to `+3`;
-- adult careers provide clearer specialization, generally `+1` to `+4` in this expansion;
+- adult careers provide clear but bounded specialization, generally `+1` to `+4`;
 - no backstory adds passions, forced traits, work incapabilities or direct stat multipliers;
 - combined childhood and adulthood bonuses remain useful without defining an entire pawn by themselves.
 
-## Cultural groups after `0.3.16-dev`
+## Cultural groups after `0.3.19-dev`
 
 ### Tau'ri / SGC
 
-Two dedicated childhoods now cover a modern-Earth science-fair upbringing and life in a military family. They are used only by the minority Tau'ri origin for historical hosts generated already joined with a Tok'ra.
+Two dedicated childhoods cover a modern-Earth science-fair upbringing and life in a military family for historical hosts generated already joined with a Tok'ra.
 
-Eight optional adult careers cover special operations, medicine, research, linguistics, engineering, liaison work, survival preparation and expedition logistics.
+Eleven adult careers now include special operations, medicine, research, linguistics, engineering, liaison work, survival preparation, expedition logistics, planetary geology, expedition cooking and field archaeology.
 
 ### Jaffa
 
-Ten shared childhoods cover village, temple, warrior-household, pastoral, artisan, fortress, sanctuary, training-camp, naquadah-mine and Chappa'ai-settlement origins.
-
-Ten Goa'uld-aligned adult careers and ten Free Jaffa careers now provide equivalent catalogue depth while retaining distinct military, political and civilian identities.
+Ten shared childhoods combine with ten Goa'uld-aligned adult careers or ten Free Jaffa careers. The `0.3.19-dev` audit confirmed that both Jaffa profiles already covered all twelve skills, so no artificial entry was added.
 
 ### Off-world humans and Goa'uld hosts
 
-Six off-world childhoods and six civilian off-world adult careers remain dedicated to generated historical hosts. Ordinary Goa'uld hosts now have eight administrative, technical or court careers.
+Six off-world childhoods now combine with seven civilian off-world adult careers, including quarry work for Mining and Melee coverage.
 
-System Lords retain four dedicated rulership profiles; this measured expansion does not broaden that exceptional caste.
+Ordinary Goa'uld hosts now have ten administrative, technical, medical or court careers. System Lords now have six dedicated rulership profiles, including domain architecture and biomedical experimentation.
 
 ### Tok'ra
 
-Eight agent careers now cover infiltration, medicine, diplomacy, scouting, analysis, covert delivery, sabotage engineering and safehouse coordination.
+Eleven agent careers now cover infiltration, medicine, diplomacy, scouting, analysis, covert delivery, sabotage engineering, safehouse coordination, field technology, close-quarters operations and cultural adaptation.
 
 Existing colonists who later accept a Tok'ra symbiote keep their original childhood and adulthood.
 
+## Skill-coverage rule
+
+`docs/CULTURAL_SKILL_COVERAGE.md` audits RimWorld's twelve standard skills against the actual childhood-and-adulthood pools available to each profile.
+
+A profile is considered covered when at least one credible path grants each skill. Low redundancy is documented, but it is not an automatic reason to add content. This keeps the catalogue culturally coherent instead of numerically symmetrical.
+
+The `0.3.19-dev` audit confirms complete coverage for:
+
+- Tau'ri / SGC;
+- Goa'uld-aligned Jaffa;
+- Free Jaffa;
+- off-world humans;
+- ordinary Goa'uld hosts;
+- Goa'uld System Lords;
+- Tok'ra adulthood independently of host origin.
+
 ## Cultural-profile integration
 
-The new Defs are integrated without a C# change:
+The new Defs remain integrated without a C# change:
 
 - spawn categories preserve normal world-generation filtering;
-- an XML patch appends the two new SGC careers to the additive ordinary-human starter pool and the SG-team scenario pool;
-- the same patch appends the new Jaffa and Goa'uld-host careers to the explicit starter lists;
-- mixed starter profiles receive matching name-rule additions so a selected adulthood still determines the correct cultural name group.
-
-This keeps the framework generic and allows future content additions to remain data-driven while the current rule schema is sufficient.
+- XML patches extend the explicit starter and generated-host pools;
+- mixed starter profiles receive matching name-rule additions where required;
+- generated-host origin weights remain unchanged;
+- existing pawns are not rerolled when new entries become available.
 
 ## Compatibility
 
@@ -96,8 +101,8 @@ This keeps the framework generic and allows future content additions to remain d
 - Existing saves keep their assigned backstories.
 - Manual editor choices made after generation remain untouched.
 - The `0.3.0-dev` framework remains the save-compatibility baseline.
-- The six off-world-human adult careers from `0.3.13-dev` remain outside ordinary Tau'ri starter randomization.
-- The two Tau'ri childhoods from `0.3.18-dev` are likewise reserved for generated historical hosts and do not alter ordinary or SG-team starter childhoods.
+- Dedicated generated-host childhoods and adult careers remain limited to their intended categories.
+- Tok'ra active-identity switching continues to apply only the difference between stored histories without duplicating progression.
 
 ## Wiki catalogue maintenance
 
@@ -105,35 +110,25 @@ This keeps the framework generic and allows future content additions to remain d
 
 Any future backstory addition, removal, presentation change or skill change must update the corresponding wiki table in the same milestone.
 
-## Validated `0.3.18-dev` coverage
+## Validated `0.3.19-dev` coverage
 
-The final `0.3.18-dev` matrix confirmed:
+The final matrix confirmed:
 
-- both weighted historical-host origins generate correctly, with the off-world origin remaining predominant;
-- the two Tau'ri childhoods load in English and French and are selected only by `SG1_GeneratedHost_TauriSGCVolunteer`;
-- ordinary human and stranded-SG-team starter childhood pools remain unchanged;
-- host and symbiote identities, backstories and shared progression remain stable through switching and save/load;
-- identities saved before the new origin remain unchanged;
-- extraction followed by real reimplantation clears the generated origin and preserves the actual new host;
-- the player wiki contains all `72` entries with matching descriptions and bonuses;
-- no additional C# or Def correction was required after local revision `r1`.
+- all eleven new Defs and French texts load without XML, patch or translation errors;
+- each modified cultural pool produces representative new entries;
+- the stranded SG-team scenario remains exclusive to SGC adult careers;
+- ordinary-human starters remain vanilla-majority;
+- Jaffa pools remain unchanged;
+- Goa'uld, System Lord and Tok'ra name groups remain coherent;
+- both generated-host origins retain their weights and persistent identities;
+- assigned histories and skill effects persist through save/load;
+- ten Tok'ra personality switches produce no skill drift;
+- the player wiki contains all `83` entries with matching descriptions and bonuses;
+- no corrective C# or Def revision was required after local revision `r1`.
 
-## Previously validated coverage
+## Future cultures
 
-The final `0.3.16-dev` matrix confirmed:
-
-- all twelve Defs and their French presentation load without XML, patch or translation errors;
-- Jaffa and Goa'uld-host starter pools select the expected cultural name groups;
-- the stranded SG-team scenario remains exclusive to the eight SGC adult careers;
-- the ordinary-human additive profile keeps vanilla adulthoods clearly predominant;
-- normal pawn, raid and world generation continue to use compatible spawn categories;
-- assigned backstories, manual names and Tok'ra shared progression persist through save/load;
-- the player wiki contained all `70` entries then present, with matching descriptions and bonuses;
-- no additional C# or Def correction was required after local revision `r1`.
-
-## Future skill-coverage audit
-
-A later dedicated milestone must compare the skill coverage of each cultural catalogue rather than expanding it by volume alone. The audit must identify absent or under-represented RimWorld skills for existing cultures, then add only the backstories needed to close culturally credible gaps. The same rule will apply when Asgard, Nox, Unas and other future cultures receive their own catalogues.
+Asgard, Nox, Unas and every later culture must receive the same coverage audit when their first meaningful childhood and adulthood pools exist. Missing skills should be closed with credible cultural lives rather than generic filler.
 
 ## Manual validation
 

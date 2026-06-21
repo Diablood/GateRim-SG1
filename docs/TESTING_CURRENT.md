@@ -1,159 +1,100 @@
 # Tests du jalon actif
 
-Jalon : `0.3.18-dev - Add a Tau'ri origin for generated Tok'ra hosts`
+Jalon : `0.3.19-dev - Audit cultural backstory skill coverage`
 
-Branche attendue : `feature/tokra-generated-host-tauri-origin`
+Branche attendue : `feature/cultural-backstory-skill-coverage`
 
-Base attendue : `v0.3.17-dev`
+Base attendue : `v0.3.18-dev`
 
-Révision locale validée : `0.3.18-dev-r1`
+Révision locale validée : `0.3.19-dev-r1`
 
-Version de DLL attendue : `0.3.18.0`
+Version de DLL attendue : `0.3.19.0`
 
-Statut : validation fonctionnelle terminée sur `0.3.18-dev-r1` ; jalon clôturé et publié sous `v0.3.18-dev`.
+Statut : validation fonctionnelle terminée sur `0.3.19-dev-r1` ; jalon clôturé et publié sous `v0.3.19-dev`.
 
 ## Résultat final validé
 
-- Rebuild forcé validé avec la DLL `0.3.18.0`.
-- Chargement validé sans nouvelle erreur de `GeneratedHostOriginDef`, `BackstoryDef`, `skillGains`, patch ou traduction.
-- Les origines `SG1_GeneratedHost_OffworldHuman` et `SG1_GeneratedHost_TauriSGCVolunteer` apparaissent toutes les deux.
-- L'origine humaine hors-monde reste clairement majoritaire avec les poids relatifs `1` et `0.2`.
-- Les hôtes Tau'ri utilisent le générateur de noms Tau'ri, l'une des deux nouvelles enfances et l'une des huit carrières SGC.
-- Les hôtes humains hors-monde conservent leurs noms et pools de backstories précédents.
-- Les noms de l'hôte et du symbiote restent distincts et l'hôte est actif par défaut.
-- Dix basculements successifs ne provoquent aucun cumul, perte ou duplication de compétences.
-- Sauvegarde et rechargement validés avec l'hôte actif et le symbiote actif.
-- Une identité pré-fusionnée sauvegardée en `0.3.17-dev` reste inchangée et n'est pas reroulée.
-- Après extraction puis implantation réelle, `hostIdentitySource=ImplantedExistingHost` et l'origine générée est effacée.
-- Les deux nouvelles enfances n'apparaissent ni chez les starters humains ordinaires ni dans le scénario Équipe SG isolée.
+- Rebuild forcé validé avec la DLL `0.3.19.0`.
+- Chargement validé sans nouvelle erreur de `BackstoryDef`, `skillGains`, patch, catégorie ou traduction.
+- Les onze nouvelles carrières apparaissent dans les cinq pools culturels modifiés.
+- Les trois nouvelles carrières SGC apparaissent dans le scénario Équipe SG isolée sans carrière adulte vanilla.
+- Les carrières Goa'uld ordinaires, Grands Maîtres et Tok'ra conservent les groupes de noms attendus.
+- L'origine humaine hors-monde peut sélectionner `SG1_OffworldHuman_QuarryWorker`.
+- L'origine Tau'ri peut sélectionner les trois nouvelles carrières SGC.
+- Les poids des origines générées restent inchangés à `1` et `0.2`, avec une majorité hors-monde.
+- Les pools Jaffa Goa'uld et Jaffa libres restent inchangés et sans fuite d'une nouvelle carrière.
+- Les starters humains ordinaires conservent une majorité nette de carrières vanilla.
+- Les noms, backstories et bonus persistent après sauvegarde et rechargement.
+- Une sauvegarde `0.3.18-dev` conserve les histoires déjà attribuées sans reroll.
+- Dix basculements Tok'ra successifs ne provoquent aucun cumul, perte ou duplication de compétences.
+- Le diagnostic culturel reste en lecture seule et affiche le profil correspondant.
 - `Player.log` est propre pour le périmètre testé.
 - Décision finale : conserver la révision fonctionnelle `r1` sans correctif C# ou Def supplémentaire.
 
-## 1. Branche et extraction propre
+## 1. Couverture culturelle validée
 
-```powershell
-git branch --show-current
-git status --short
-git diff --check
-```
+Les sept ensembles audités disposent désormais d'au moins une voie vers chacune des douze compétences standards :
 
-Branche attendue :
+- Tau'ri / SGC ;
+- Jaffa Goa'uld ;
+- Jaffa libres ;
+- humains hors-monde ;
+- hôtes Goa'uld ordinaires ;
+- Grands Maîtres Goa'uld ;
+- carrières Tok'ra.
 
-```text
-feature/tokra-generated-host-tauri-origin
-```
+Les compétences faiblement représentées restent documentées dans `docs/CULTURAL_SKILL_COVERAGE.md`. Elles ne justifient pas automatiquement de nouvelles backstories.
 
-Le ZIP à la racine peut rester non suivi ou ignoré. Aucun fichier suivi sans rapport avec le jalon ne doit être modifié.
-
-## 2. Rebuild forcé
-
-```powershell
-dotnet build .\Source\GateRimSG1\GateRimSG1.csproj `
-    -t:Rebuild `
-    -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
-```
+## 2. Scénario Équipe SG isolée
 
 Résultat validé :
 
-- build réussi sans avertissement nouveau attribuable au jalon ;
-- `1.6/Assemblies/GateRimSG1.dll` reconstruite ;
-- version de fichier `0.3.18.0` ;
-- version du mod `0.3.18-dev`.
+- `géologue planétaire du SGC` apparaît ;
+- `cuisinier d'expédition du SGC` apparaît ;
+- `archéologue de terrain du SGC` apparaît ;
+- aucune carrière adulte vanilla ne remplace le pool SGC exclusif ;
+- les noms restent Tau'ri.
 
-## 3. Chargement XML et traductions
-
-Le menu principal a été atteint avec la liste de test habituelle.
-
-Résultat validé :
-
-- aucune erreur rouge liée aux origines générées, aux backstories, aux catégories, au profil Tok'ra ou au patch ;
-- titres et descriptions français des deux nouvelles enfances présents ;
-- aucune Def dupliquée ou référence non résolue.
-
-## 4. Génération des deux origines historiques
-
-Chemin utilisé :
-
-```text
-Debug actions menu
-→ Spawn pawn
-→ SG1_TokraVoluntaryHost
-```
-
-Diagnostic utilisé :
-
-```text
-Debug actions menu
-→ GateRim SG-1
-→ Cultural identity: inspect selected pawn
-```
+## 3. Profils Goa'uld et Tok'ra
 
 Résultat validé :
 
-- les deux valeurs `generatedHostOrigin` sont observées ;
-- l'origine humaine hors-monde reste prédominante ;
-- aucun pourcentage exact n'est imposé à un petit échantillon.
+- `médecin de palais Goa'uld` et `duelliste de palais Goa'uld` apparaissent avec le groupe de noms Goa'uld ;
+- `Grand Maître Goa'uld architecte de domaine` et `Grand Maître Goa'uld expérimentateur biomédical` apparaissent sur les hôtes Grands Maîtres ;
+- les trois nouvelles carrières Tok'ra apparaissent avec le groupe de noms Tok'ra ;
+- le rapport culturel affiche le profil attendu sans modifier le pawn.
 
-## 5. Origine Tau'ri
-
-Résultat validé :
-
-- nom d'hôte Tau'ri distinct du nom du symbiote ;
-- enfance `SG1_Tauri_ScienceFairStudentChild` ou `SG1_Tauri_MilitaryFamilyChild` ;
-- carrière adulte appartenant aux huit `SG1_TauriSGC_*` ;
-- `hostIdentitySource=GeneratedPreJoined` ;
-- hôte actif par défaut ;
-- textes Bio français corrects.
-
-## 6. Régression de l'origine humaine hors-monde
+## 4. Hôtes historiques Tok'ra générés
 
 Résultat validé :
 
-- groupe de noms humain hors-monde conservé ;
-- enfance et carrière toujours limitées aux pools existants ;
-- deux identités distinctes ;
-- comportement identique à `0.3.17-dev`.
+- `SG1_GeneratedHost_OffworldHuman` peut utiliser la nouvelle carrière de carrier ;
+- `SG1_GeneratedHost_TauriSGCVolunteer` peut utiliser les trois nouvelles carrières SGC ;
+- les poids relatifs restent inchangés ;
+- l'origine hors-monde reste majoritaire ;
+- les noms de l'hôte et du symbiote restent distincts ;
+- aucun reroll n'est déclenché par la nouvelle liste de carrières.
 
-## 7. Basculement et progression commune
-
-Résultat validé pour les deux origines :
-
-- mêmes identités après chaque basculement ;
-- aucun cumul des écarts de backstories ;
-- aucune perte ou duplication de niveau ou d'expérience ;
-- origine générée stable.
-
-## 8. Sauvegarde, rechargement et ancienne identité
+## 5. Régressions culturelles
 
 Résultat validé :
 
-- restauration correcte des personnalités actives ;
-- noms, enfances, carrières et origines inchangés ;
-- aucun reroll après reprise du temps ou nouveau basculement ;
-- ancienne identité `0.3.17-dev` conservée intacte.
+- aucun ajout ne fuit dans les pools Jaffa ;
+- les humains ordinaires conservent leur fonctionnement additif et leur majorité vanilla ;
+- les groupes de noms restent cohérents avec la carrière sélectionnée ;
+- les backstories déjà enregistrées restent inchangées après chargement d'une sauvegarde `0.3.18-dev`.
 
-## 9. Extraction et réimplantation réelle
-
-Résultat validé après implantation dans un autre pawn :
-
-```text
-hostIdentitySource=ImplantedExistingHost
-generatedHostOrigin=
-```
-
-Le nom et les backstories d'origine du nouvel hôte sont conservés. Aucune identité Tau'ri ou hors-monde générée ne les remplace.
-
-## 10. Isolation des starters
+## 6. Sauvegarde et identité Tok'ra
 
 Résultat validé :
 
-- les deux nouvelles enfances ne rejoignent pas les pools de starters humains ordinaires ;
-- elles ne remplacent pas les enfances du scénario Équipe SG isolée ;
-- les humains ordinaires conservent leur majorité vanilla ;
-- les adultes de l'équipe SG restent limités aux huit carrières SGC ;
-- aucun pawn existant n'est renommé ou reroulé.
+- sauvegarde et rechargement stables avec l'hôte actif ;
+- sauvegarde et rechargement stables avec le symbiote actif ;
+- dix basculements sans dérive des niveaux ou de l'expérience ;
+- progression commune conservée ;
+- aucune duplication des bonus de backstories.
 
-## 11. Contrôle final
+## 7. Contrôle final
 
 ```powershell
 git status --short

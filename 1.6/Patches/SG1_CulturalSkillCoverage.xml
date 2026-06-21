@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterHumanTauri"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_TauriSGC_PlanetaryGeologist</li>
+            <li>SG1_TauriSGC_ExpeditionCook</li>
+            <li>SG1_TauriSGC_FieldArchaeologist</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_TauriSGC"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_TauriSGC_PlanetaryGeologist</li>
+            <li>SG1_TauriSGC_ExpeditionCook</li>
+            <li>SG1_TauriSGC_FieldArchaeologist</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterGoauldHost"]/starterRules/li/adulthoods</xpath>
+        <value>
+            <li>SG1_GoauldHost_PalacePhysician</li>
+            <li>SG1_GoauldHost_PalaceDuelist</li>
+            <li>SG1_Tokra_FieldTechnician</li>
+            <li>SG1_Tokra_CloseQuartersOperative</li>
+            <li>SG1_Tokra_CulturalAdaptationSpecialist</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterGoauldHost"]/nameRules/li[nameGroup="Goauld"]/adulthoods</xpath>
+        <value>
+            <li>SG1_GoauldHost_PalacePhysician</li>
+            <li>SG1_GoauldHost_PalaceDuelist</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/GateRimSG1.Culture.CulturalPawnProfileDef[defName="SG1_Culture_StarterGoauldHost"]/nameRules/li[nameGroup="Tokra"]/adulthoods</xpath>
+        <value>
+            <li>SG1_Tokra_FieldTechnician</li>
+            <li>SG1_Tokra_CloseQuartersOperative</li>
+            <li>SG1_Tokra_CulturalAdaptationSpecialist</li>
+        </value>
+    </Operation>
+</Patch>

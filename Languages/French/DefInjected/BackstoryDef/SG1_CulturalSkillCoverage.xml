@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TauriSGC_PlanetaryGeologist.title>géologue planétaire du SGC</SG1_TauriSGC_PlanetaryGeologist.title>
+    <SG1_TauriSGC_PlanetaryGeologist.titleShort>géologue planétaire</SG1_TauriSGC_PlanetaryGeologist.titleShort>
+    <SG1_TauriSGC_PlanetaryGeologist.description>Ce spécialiste a rejoint les équipes hors-monde pour évaluer les roches inconnues, les gisements minéraux et les terrains instables avant qu'une mission n'y engage du personnel ou du matériel. Les relevés de terrain lui ont appris à lire les strates, reconnaître les minerais utiles et conseiller les ingénieurs loin de la Terre.</SG1_TauriSGC_PlanetaryGeologist.description>
+
+    <SG1_TauriSGC_ExpeditionCook.title>cuisinier d'expédition du SGC</SG1_TauriSGC_ExpeditionCook.title>
+    <SG1_TauriSGC_ExpeditionCook.titleShort>cuisinier d'expédition</SG1_TauriSGC_ExpeditionCook.titleShort>
+    <SG1_TauriSGC_ExpeditionCook.description>Ce spécialiste a nourri des équipes isolées lorsque les rations scellées venaient à manquer et que les ingrédients locaux restaient mal connus. Adapter les repas aux plantes inconnues, aux contraintes médicales et au personnel épuisé a fait de la cuisine un élément pratique de la survie en expédition.</SG1_TauriSGC_ExpeditionCook.description>
+
+    <SG1_TauriSGC_FieldArchaeologist.title>archéologue de terrain du SGC</SG1_TauriSGC_FieldArchaeologist.title>
+    <SG1_TauriSGC_FieldArchaeologist.titleShort>archéologue de terrain</SG1_TauriSGC_FieldArchaeologist.titleShort>
+    <SG1_TauriSGC_FieldArchaeologist.description>Cet archéologue a documenté des ruines, des objets rituels et des traditions visuelles avant que des expéditions pressées ne les perturbent. Retrouver le sens de sites endommagés exigeait un œil exercé, une recherche rigoureuse et assez de diplomatie pour évoquer les objets sacrés avec les communautés vivantes.</SG1_TauriSGC_FieldArchaeologist.description>
+
+    <SG1_OffworldHuman_QuarryWorker.title>carrier humain hors-monde</SG1_OffworldHuman_QuarryWorker.title>
+    <SG1_OffworldHuman_QuarryWorker.titleShort>carrier hors-monde</SG1_OffworldHuman_QuarryWorker.titleShort>
+    <SG1_OffworldHuman_QuarryWorker.description>Cette personne extrayait la pierre d'une colonie isolée dont chaque mur et fondation dépendait du travail local. Les fronts de taille dangereux, les outils rudimentaires et les conflits pour les matériaux rares lui ont appris à lire la roche, consolider un chantier et se défendre au corps à corps.</SG1_OffworldHuman_QuarryWorker.description>
+
+    <SG1_GoauldHost_PalacePhysician.title>médecin de palais Goa'uld</SG1_GoauldHost_PalacePhysician.title>
+    <SG1_GoauldHost_PalacePhysician.titleShort>médecin de palais</SG1_GoauldHost_PalacePhysician.titleShort>
+    <SG1_GoauldHost_PalacePhysician.description>Ce Goa'uld supervisait les soins apportés aux serviteurs favoris, aux hôtes précieux et aux dignitaires blessés d'une cour dangereuse. Les réussites médicales apportaient de l'influence, tandis que les échecs lui ont appris à diagnostiquer vite et dissimuler ses incertitudes aux supérieurs impatients.</SG1_GoauldHost_PalacePhysician.description>
+
+    <SG1_GoauldHost_PalaceDuelist.title>duelliste de palais Goa'uld</SG1_GoauldHost_PalaceDuelist.title>
+    <SG1_GoauldHost_PalaceDuelist.titleShort>duelliste de palais</SG1_GoauldHost_PalaceDuelist.titleShort>
+    <SG1_GoauldHost_PalaceDuelist.description>Ce Goa'uld cultivait le combat personnel comme protection et spectacle, répondant aux insultes et aux défis de cour devant des témoins assemblés. Des années de violence ritualisée ont affûté son habileté au corps à corps et lui ont appris à transformer la victoire en autorité sociale.</SG1_GoauldHost_PalaceDuelist.description>
+
+    <SG1_SystemLord_DomainArchitect.title>Grand Maître Goa'uld architecte de domaine</SG1_SystemLord_DomainArchitect.title>
+    <SG1_SystemLord_DomainArchitect.titleShort>architecte de domaine</SG1_SystemLord_DomainArchitect.titleShort>
+    <SG1_SystemLord_DomainArchitect.description>Ce Grand Maître a façonné son domaine par des mines, des forteresses et des ouvrages monumentaux destinés à survivre à ses rivaux. Diriger l'extraction et la construction lui a appris à juger la pierre, exiger un artisanat précis et reconnaître les murs impressionnants bâtis sur de faibles fondations.</SG1_SystemLord_DomainArchitect.description>
+
+    <SG1_SystemLord_BiomedicalExperimenter.title>Grand Maître Goa'uld expérimentateur biomédical</SG1_SystemLord_BiomedicalExperimenter.title>
+    <SG1_SystemLord_BiomedicalExperimenter.titleShort>expérimentateur biomédical</SG1_SystemLord_BiomedicalExperimenter.titleShort>
+    <SG1_SystemLord_BiomedicalExperimenter.description>Ce Grand Maître recherchait le contrôle biologique dans des laboratoires gardés, sur des sujets captifs et à l'aide de techniques réservées aux serviteurs indispensables. Son ambition en a fait un médecin et un chercheur compétent, même si chaque traitement restait subordonné au pouvoir.</SG1_SystemLord_BiomedicalExperimenter.description>
+
+    <SG1_Tokra_FieldTechnician.title>technicien de terrain Tok'ra</SG1_Tokra_FieldTechnician.title>
+    <SG1_Tokra_FieldTechnician.titleShort>technicien Tok'ra</SG1_Tokra_FieldTechnician.titleShort>
+    <SG1_Tokra_FieldTechnician.description>Ce Tok'ra entretenait du matériel dissimulé et adaptait des dispositifs capturés sans révéler l'emplacement ni le réseau d'approvisionnement d'une cellule. Les réparations sous pression récompensaient des gestes précis, une compréhension technique et des structures pouvant être démontées avant leur découverte.</SG1_Tokra_FieldTechnician.description>
+
+    <SG1_Tokra_CloseQuartersOperative.title>agent Tok'ra de combat rapproché</SG1_Tokra_CloseQuartersOperative.title>
+    <SG1_Tokra_CloseQuartersOperative.titleShort>agent de combat rapproché</SG1_Tokra_CloseQuartersOperative.titleShort>
+    <SG1_Tokra_CloseQuartersOperative.description>Ce Tok'ra pénétrait dans des installations confinées où des armes bruyantes ou un affrontement prolongé auraient compromis l'opération. Les neutralisations silencieuses, les tirs maîtrisés et les premiers soins aux agents blessés ont fait du combat rapproché un outil discipliné plutôt qu'un spectacle.</SG1_Tokra_CloseQuartersOperative.description>
+
+    <SG1_Tokra_CulturalAdaptationSpecialist.title>spécialiste Tok'ra de l'adaptation culturelle</SG1_Tokra_CulturalAdaptationSpecialist.title>
+    <SG1_Tokra_CulturalAdaptationSpecialist.titleShort>spécialiste de l'adaptation</SG1_Tokra_CulturalAdaptationSpecialist.titleShort>
+    <SG1_Tokra_CulturalAdaptationSpecialist.description>Ce Tok'ra préparait les agents à vivre de manière crédible parmi des communautés inconnues en étudiant leur cuisine, leurs ornements, leurs cérémonies et leurs usages quotidiens. Une couverture durable exigeait plus que la langue : elle devait reproduire les petites habitudes créatives par lesquelles les gens se reconnaissaient.</SG1_Tokra_CulturalAdaptationSpecialist.description>
+</LanguageData>

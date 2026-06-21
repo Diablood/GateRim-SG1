@@ -13,7 +13,29 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Origine Tau'ri minoritaire des hôtes Tok'ra générés (`0.3.18-dev`)
+### Audit de couverture des compétences culturelles (`0.3.19-dev`)
+
+- [x] Partir du tag publié `v0.3.18-dev` sur la branche dédiée `feature/cultural-backstory-skill-coverage`.
+- [x] Auditer les douze compétences RimWorld à partir des véritables combinaisons enfance/adulte de chaque profil.
+- [x] Distinguer une absence réelle d'une simple faible redondance afin d'éviter de gonfler artificiellement le catalogue.
+- [x] Confirmer que les profils Jaffa Goa'uld et Jaffa libres couvrent déjà toutes les compétences sans ajout.
+- [x] Ajouter onze carrières ciblées pour les Tau'ri / SGC, humains hors-monde, hôtes Goa'uld, Grands Maîtres et Tok'ra.
+- [x] Conserver le moteur culturel C# inchangé et intégrer les nouvelles listes uniquement par Defs et patchs XML.
+- [x] Étendre les origines d'hôtes Tok'ra générés sans modifier leurs poids ni rerouler les identités existantes.
+- [x] Porter le catalogue technique et wiki de `72` à `83` backstories.
+- [x] Valider le rebuild `0.3.19.0`, le chargement XML et les traductions françaises.
+- [x] Valider les pools SGC, Goa'uld, Grands Maîtres, Tok'ra et hôtes historiques générés.
+- [x] Valider les noms culturels, la sauvegarde/recharge, le basculement Tok'ra et un `Player.log` propre.
+- [x] Publier la branche, le tag final unique `v0.3.19-dev` et synchroniser le wiki séparé.
+
+La matrice complète a été validée sur la révision locale `r1`. Les sept profils audités couvrent désormais les douze compétences, sans ajout artificiel pour les Jaffa dont la couverture était déjà complète. Les noms culturels, les pools de départ, les deux origines d'hôtes générés, la sauvegarde/recharge et le basculement Tok'ra restent stables. Aucun correctif C# ou Def supplémentaire n'a été nécessaire.
+
+Le critère durable reste la présence d'au moins une voie culturellement crédible par compétence, et non l'égalité numérique entre compétences ou cultures. Les futures cultures Asgard, Nox, Unas et autres devront recevoir le même audit lorsque leurs pools réels existeront.
+
+Le catalogue wiki contient désormais les `83` backstories et doit être synchronisé avec le dépôt wiki séparé lors de la publication finale.
+
+
+### Jalon précédent — Origine Tau'ri minoritaire des hôtes Tok'ra générés (`0.3.18-dev`)
 
 - [x] Partir du tag publié `v0.3.17-dev` sur la branche dédiée `feature/tokra-generated-host-tauri-origin`.
 - [x] Ajouter une origine pondérée `SG1_GeneratedHost_TauriSGCVolunteer` sans modifier le moteur C#.
@@ -207,7 +229,7 @@ La série `0.3.x` doit construire un framework interne global et réutilisable, 
 - [x] Valider en jeu la refonte `0.3.8-dev` des `52` backstories existantes et de leurs descriptions anglaises et françaises.
 - [x] Valider en jeu les bonus de compétences modérés ajoutés aux backstories dans `0.3.8-dev`.
 - [x] Organiser une discussion dédiée avant d'étendre le nombre de backstories ; première extension mesurée validée dans `0.3.16-dev`.
-- [ ] Réaliser dans un jalon dédié un audit de couverture des compétences par culture ou race : vérifier que chaque catalogue couvre suffisamment les compétences RimWorld pertinentes, identifier les compétences absentes ou sous-représentées et compléter uniquement les lacunes réelles avec des backstories culturellement cohérentes.
+- [x] Clôturer dans `0.3.19-dev` l’audit de couverture des compétences par culture ou race : vérifier que chaque catalogue couvre suffisamment les compétences RimWorld pertinentes, identifier les compétences absentes ou sous-représentées et compléter uniquement les lacunes réelles avec des backstories culturellement cohérentes.
   - Auditer au minimum les Tau'ri / SGC, Jaffa Goa'uld, Jaffa libres, hôtes Goa'uld et Tok'ra.
   - Appliquer le même contrôle aux futures cultures Asgard, Nox, Unas et à toute nouvelle race ou faction disposant de backstories.
   - Éviter de gonfler artificiellement le catalogue : une compétence peut être couverte par plusieurs parcours complémentaires sans exiger une backstory dédiée à chaque combinaison.

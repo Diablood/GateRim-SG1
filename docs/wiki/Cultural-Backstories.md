@@ -2,11 +2,11 @@
 
 > Statut : Base culturelle enrichie
 >
-> Version documentée : `0.3.18-dev`
+> Version documentée : `0.3.19-dev`
 
 GateRim SG-1 utilise des histoires culturelles natives de RimWorld sans dépendre de Humanoid Alien Races.
 
-Le catalogue compte désormais `72` histoires. Deux enfances Tau'ri modernes complètent les `70` parcours précédents afin de donner une origine terrestre cohérente aux rares hôtes historiques générés déjà unis à un Tok'ra. Elles ne modifient pas la randomisation ordinaire des pawns de départ.
+Le catalogue compte désormais `83` histoires. Onze carrières ciblées ferment les lacunes réelles révélées par l'audit des douze compétences RimWorld, sans ajouter de parcours aux cultures déjà complètes.
 
 ## Effets en jeu
 
@@ -24,8 +24,8 @@ Le bouton de randomisation vanilla applique désormais des profils culturels uni
 
 - un starter **Jaffa** reçoit une enfance Jaffa et une carrière adulte Jaffa Goa'uld ou Jaffa libre ;
 - un starter **hôte Goa'uld** reçoit une enfance humaine hors-monde et une carrière adulte Goa'uld ou Tok'ra ;
-- dans un scénario normal, un starter humain conserve l'accès aux enfances et carrières vanilla, tandis que les huit parcours Tau'ri / SGC rejoignent le même ensemble pondéré de carrières adultes compatibles ;
-- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux huit parcours SGC actuels. Les deux enfances Tau'ri de ce jalon restent réservées aux hôtes historiques Tok'ra générés et ne remplacent pas les enfances vanilla du scénario.
+- dans un scénario normal, un starter humain conserve l'accès aux enfances et carrières vanilla, tandis que les onze parcours Tau'ri / SGC rejoignent le même ensemble pondéré de carrières adultes compatibles ;
+- dans le scénario **Équipe SG isolée**, les carrières adultes sont limitées aux onze parcours SGC actuels. Les deux enfances Tau'ri de ce jalon restent réservées aux hôtes historiques Tok'ra générés et ne remplacent pas les enfances vanilla du scénario.
 
 Les pawns générés par les raids, visiteurs, colonies, incidents et quêtes conservent leurs filtres habituels. Une sélection manuelle réalisée après la génération par un éditeur de pawns compatible reste libre.
 
@@ -50,6 +50,10 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | officier de liaison du SGC | Cet officier a appris à concilier les priorités militaires, la prudence scientifique et les besoins des communautés rencontrées au-delà de la Porte des étoiles. Sa réussite dépendait de sa capacité à lire une assemblée, traduire des objectifs opposés et donner aux alliés une raison de poursuivre le dialogue. | Social +5, Intellectuel +2 |
 | Âge adulte | spécialiste de survie du SGC | Après avoir rejoint le SGC, ce spécialiste a préparé les équipes d'expédition aux climats hostiles, aux ruptures de ravitaillement et aux longues attentes avant extraction. Lire un terrain inconnu, gérer les animaux disponibles et défendre un camp isolé relevaient d'une même discipline de survie. | Plantes +4, Animaux +2, Tir +1 |
 | Âge adulte | quartier-maître du SGC | Ce quartier-maître maintenait les équipes SG approvisionnées en armes, pièces de rechange et matériel de terrain, alors que chaque kilogramme envoyé à travers la Porte comptait. Il a appris à réparer l'équipement endommagé, improviser des réserves et négocier les priorités entre les missions. | Artisanat +3, Construction +3, Social +1 |
+| Âge adulte | géologue planétaire du SGC | Ce spécialiste a rejoint les équipes hors-monde pour évaluer les roches inconnues, les gisements minéraux et les terrains instables avant qu'une mission n'y engage du personnel ou du matériel. Les relevés de terrain lui ont appris à lire les strates, reconnaître les minerais utiles et conseiller les ingénieurs loin de la Terre. | Minage +4, Intellectuel +2, Construction +1 |
+| Âge adulte | cuisinier d'expédition du SGC | Ce spécialiste a nourri des équipes isolées lorsque les rations scellées venaient à manquer et que les ingrédients locaux restaient mal connus. Adapter les repas aux plantes inconnues, aux contraintes médicales et au personnel épuisé a fait de la cuisine un élément pratique de la survie en expédition. | Cuisine +4, Social +2, Plantes +1 |
+| Âge adulte | archéologue de terrain du SGC | Cet archéologue a documenté des ruines, des objets rituels et des traditions visuelles avant que des expéditions pressées ne les perturbent. Retrouver le sens de sites endommagés exigeait un œil exercé, une recherche rigoureuse et assez de diplomatie pour évoquer les objets sacrés avec les communautés vivantes. | Art +4, Intellectuel +3, Social +1 |
+
 
 ### Jaffa — enfances communes
 
@@ -117,6 +121,8 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | chasseur des frontières hors-monde | Cette personne chassait au-delà des terres sûres et surveillait les pillards, les prédateurs et les signes de patrouilles en approche. Les longues absences ont renforcé sa précision, son sens du terrain et sa capacité à vivre d'une terre difficile. | Tir +3, Animaux +2, Plantes +1 |
 | Âge adulte | artisan de colonie hors-monde | Cette personne réparait les outils, les maisons et les machines simples d'une communauté incapable de remplacer facilement ce qui cassait. La nécessité en a fait un bâtisseur patient et un artisan polyvalent. | Artisanat +3, Construction +3 |
 | Âge adulte | gardien des archives hors-monde | Cette personne préservait l'histoire locale, les accords et les connaissances pratiques dans une communauté où les documents écrits étaient rares. Son travail exigeait mémoire, discrétion et capacité à transmettre les anciennes leçons. | Intellectuel +3, Social +2, Art +1 |
+| Âge adulte | carrier humain hors-monde | Cette personne extrayait la pierre d'une colonie isolée dont chaque mur et fondation dépendait du travail local. Les fronts de taille dangereux, les outils rudimentaires et les conflits pour les matériaux rares lui ont appris à lire la roche, consolider un chantier et se défendre au corps à corps. | Minage +4, Mêlée +2, Construction +1 |
+
 
 ### Hôtes Goa'uld
 
@@ -130,6 +136,9 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | stratège de cour Goa'uld | Ce Goa'uld a conseillé une cour où chaque alliance était temporaire et chaque concession apparente dissimulait un autre calcul. Il a survécu en reliant des fragments de renseignement, en lisant les motivations et en présentant ses conseils comme les propres idées de son souverain. | Intellectuel +4, Social +4 |
 | Âge adulte | contremaître Goa'uld du naquadah | Ce Goa'uld supervisait l'extraction du naquadah, les quotas de travail et le transport du minerai depuis des galeries dangereuses. Il a appris à estimer la valeur d'une mine, contrôler des ouvriers épuisés et dissimuler les pénuries avant qu'un supérieur ne les découvre. | Minage +4, Social +3, Intellectuel +1 |
 | Âge adulte | gardien des systèmes de vaisseau Goa'uld | Ce Goa'uld entretenait des systèmes de vaisseau dont les principes n'étaient que partiellement compris par les serviteurs chargés de les utiliser. Des années de réparations, de procédures recopiées et d'improvisations dangereuses l'ont rendu techniquement compétent et farouchement protecteur des connaissances réservées. | Intellectuel +4, Artisanat +3, Construction +1 |
+| Âge adulte | médecin de palais Goa'uld | Ce Goa'uld supervisait les soins apportés aux serviteurs favoris, aux hôtes précieux et aux dignitaires blessés d'une cour dangereuse. Les réussites médicales apportaient de l'influence, tandis que les échecs lui ont appris à diagnostiquer vite et dissimuler ses incertitudes aux supérieurs impatients. | Médecine +4, Intellectuel +2, Social +1 |
+| Âge adulte | duelliste de palais Goa'uld | Ce Goa'uld cultivait le combat personnel comme protection et spectacle, répondant aux insultes et aux défis de cour devant des témoins assemblés. Des années de violence ritualisée ont affûté son habileté au corps à corps et lui ont appris à transformer la victoire en autorité sociale. | Mêlée +4, Social +2, Tir +1 |
+
 
 ### Grands Maîtres Goa'uld
 
@@ -139,6 +148,9 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | Grand Maître Goa'uld dynaste | Ce Grand Maître a hérité d'un ancien domaine et préservé son apparence de permanence pendant que ses rivaux éprouvaient chaque frontière. L'autorité de cour, les archives héritées et les intrigues constantes lui ont donné le goût de la persuasion et des calculs à long terme. | Social +5, Intellectuel +3 |
 | Âge adulte | Grand Maître Goa'uld intrigant | Ce Grand Maître a préféré la manipulation à la guerre ouverte, employant émissaires, otages et générosité sélective pour affaiblir ses rivaux. Il a accumulé les secrets, cartographié les loyautés et préféré une conversation utile à une bataille coûteuse. | Social +5, Intellectuel +4 |
 | Âge adulte | Grand Maître Goa'uld guerrier | Ce Grand Maître a gouverné par le spectacle militaire et attendu de ses commandants Jaffa qu'ils répondent à chaque revers par une campagne plus dure. Il comprenait les armes, l'intimidation et l'art politique de récompenser une victoire avant d'exiger la campagne suivante. | Tir +4, Mêlée +3, Social +3 |
+| Âge adulte | Grand Maître Goa'uld architecte de domaine | Ce Grand Maître a façonné son domaine par des mines, des forteresses et des ouvrages monumentaux destinés à survivre à ses rivaux. Diriger l'extraction et la construction lui a appris à juger la pierre, exiger un artisanat précis et reconnaître les murs impressionnants bâtis sur de faibles fondations. | Construction +4, Minage +2, Artisanat +2 |
+| Âge adulte | Grand Maître Goa'uld expérimentateur biomédical | Ce Grand Maître recherchait le contrôle biologique dans des laboratoires gardés, sur des sujets captifs et à l'aide de techniques réservées aux serviteurs indispensables. Son ambition en a fait un médecin et un chercheur compétent, même si chaque traitement restait subordonné au pouvoir. | Médecine +4, Intellectuel +3, Artisanat +1 |
+
 
 ### Tok'ra
 
@@ -152,12 +164,21 @@ Les tableaux suivants reprennent toutes les backstories actuellement intégrées
 | Âge adulte | messager Tok'ra | Ce Tok'ra a transporté messages et fournitures entre des cellules dissimulées, considérant chaque trajet comme une épreuve de discrétion. Un passage sûr dépendait d'une maîtrise correcte des armes, d'un savoir-faire de terrain adaptable et de la capacité à paraître ordinaire parmi les étrangers. | Tir +2, Animaux +2, Social +2, Plantes +1 |
 | Âge adulte | sapeur Tok'ra | Ce Tok'ra préparait des approches dissimulées, fragilisait des positions fortifiées et sabotait des infrastructures sans exposer le reste de la résistance. Son travail combinait construction patiente, connaissance des tunnels et maîtrise suffisante des armes pour fuir une opération compromise. | Construction +4, Minage +3, Tir +1 |
 | Âge adulte | coordinateur de refuge Tok'ra | Ce Tok'ra approvisionnait les cellules dissimulées, organisait les identités de couverture et décidait quand un refuge était devenu trop dangereux. Concilier les personnes, le renseignement et les soins d'urgence exigeait discrétion, planification et calme autorité. | Social +4, Intellectuel +3, Médecine +1 |
+| Âge adulte | technicien de terrain Tok'ra | Ce Tok'ra entretenait du matériel dissimulé et adaptait des dispositifs capturés sans révéler l'emplacement ni le réseau d'approvisionnement d'une cellule. Les réparations sous pression récompensaient des gestes précis, une compréhension technique et des structures pouvant être démontées avant leur découverte. | Artisanat +4, Intellectuel +2, Construction +1 |
+| Âge adulte | agent Tok'ra de combat rapproché | Ce Tok'ra pénétrait dans des installations confinées où des armes bruyantes ou un affrontement prolongé auraient compromis l'opération. Les neutralisations silencieuses, les tirs maîtrisés et les premiers soins aux agents blessés ont fait du combat rapproché un outil discipliné plutôt qu'un spectacle. | Mêlée +4, Tir +2, Médecine +1 |
+| Âge adulte | spécialiste Tok'ra de l'adaptation culturelle | Ce Tok'ra préparait les agents à vivre de manière crédible parmi des communautés inconnues en étudiant leur cuisine, leurs ornements, leurs cérémonies et leurs usages quotidiens. Une couverture durable exigeait plus que la langue : elle devait reproduire les petites habitudes créatives par lesquelles les gens se reconnaissaient. | Art +3, Cuisine +3, Social +2 |
 
 <!-- BACKSTORY_TABLES_END -->
 
+## Couverture des compétences
+
+L'audit `0.3.19-dev` compare chaque véritable combinaison culturelle aux douze compétences de RimWorld. Les profils Tau'ri / SGC, Jaffa Goa'uld, Jaffa libres, humains hors-monde, hôtes Goa'uld, Grands Maîtres et Tok'ra disposent désormais d'au moins un parcours cohérent pour chacune d'elles.
+
+Une compétence peu représentée n'entraîne pas automatiquement l'ajout d'une nouvelle histoire. Le catalogue doit rester varié et crédible plutôt que rechercher une symétrie artificielle.
+
 ## Humains Tau'ri
 
-Dans un scénario normal, les starters humains conservent les histoires vanilla compatibles avec une origine terrienne. Les huit parcours adultes SGC — forces spéciales, médecine de terrain, recherche, linguistique, ingénierie, liaison, survie ou logistique — sont ajoutés au même ensemble pondéré que les carrières vanilla compatibles. Ils apparaissent donc occasionnellement, sans pourcentage de remplacement fixe. Le scénario **Équipe SG isolée** impose toujours l'un de ces huit parcours adultes.
+Dans un scénario normal, les starters humains conservent les histoires vanilla compatibles avec une origine terrienne. Les onze parcours adultes SGC — forces spéciales, médecine de terrain, recherche, linguistique, ingénierie, liaison, survie ou logistique — sont ajoutés au même ensemble pondéré que les carrières vanilla compatibles. Ils apparaissent donc occasionnellement, sans pourcentage de remplacement fixe. Le scénario **Équipe SG isolée** impose toujours l'un de ces huit parcours adultes.
 
 ## Jaffa
 
@@ -169,11 +190,11 @@ Les Jaffa libres peuvent devenir combattants affranchis, protecteurs, éclaireur
 
 ## Hôtes Goa'uld
 
-Les Goa'uld ordinaires et les Grands Maîtres utilisent une enfance humaine hors-monde et des carrières adaptées à leur caste. Les administrateurs, prêtres, stratèges, contremaîtres, techniciens et souverains se distinguent par leurs compétences sociales, intellectuelles, industrielles ou militaires.
+Les Goa'uld ordinaires et les Grands Maîtres utilisent une enfance humaine hors-monde et des carrières adaptées à leur caste. Les administrateurs, prêtres, stratèges, médecins, duellistes, contremaîtres, techniciens et souverains se distinguent par leurs compétences sociales, intellectuelles, industrielles ou militaires.
 
 ## Tok'ra
 
-Les agents Tok'ra générés reçoivent des parcours d'infiltrateur, médecin, diplomate, éclaireur, analyste, messager, sapeur ou coordinateur de refuge.
+Les agents Tok'ra générés reçoivent aussi des parcours de technicien, spécialiste du combat rapproché et spécialiste de l'adaptation culturelle.
 
 Un colon existant qui accepte volontairement un symbiote Tok'ra conserve son histoire passée. Un Tok'ra généré directement déjà fusionné reçoit une identité d'hôte distincte : le plus souvent un humain hors-monde, ou plus rarement un volontaire Tau'ri lié au SGC utilisant l'une des deux enfances modernes et l'une des huit carrières SGC ci-dessus.
 
@@ -183,4 +204,4 @@ Les filtres garantissent une génération cohérente par défaut. Un outil exter
 
 Les identifiants, catégories et silhouettes des histoires existantes sont conservés. Les anciennes sauvegardes ne nécessitent aucune migration et aucun personnage n'est renommé ou régénéré.
 
-Les six carrières humaines hors-monde et les deux enfances Tau'ri modernes restent dédiées au système d'identité historique des Tok'ra générés déjà fusionnés. La première extension générale ajoute douze parcours aux cultures déjà jouables sans introduire de nouvelles races. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.
+Les six carrières humaines hors-monde et les deux enfances Tau'ri modernes restent dédiées au système d'identité historique des Tok'ra générés déjà fusionnés. La première extension générale ajoute douze parcours aux cultures déjà jouables sans introduire de nouvelles races. Les onze ajouts de `0.3.19-dev` ferment uniquement les lacunes démontrées de couverture des compétences. Les futures cultures, notamment Asgard, Nox et Unas, recevront leurs propres noms et histoires lors de leur intégration ou dans un jalon immédiatement suivant.

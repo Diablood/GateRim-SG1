@@ -1,5 +1,34 @@
 # Tests
 
+## 0.3.19-dev - Audit de couverture des compétences culturelles
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.19-dev`. Aucun correctif C# ou Def supplémentaire n'a été nécessaire après la matrice complète.
+
+Couverture validée :
+
+- audit des douze compétences sur les véritables combinaisons enfance/adulte de sept profils culturels ;
+- couverture Jaffa Goa'uld et Jaffa libres déjà complète, sans ajout artificiel ;
+- onze carrières ciblées ajoutées aux seuls profils présentant une absence réelle ;
+- trois carrières SGC validées dans le scénario exclusif et les listes additives prévues ;
+- carrières ordinaires Goa'uld, Grands Maîtres et Tok'ra validées avec leurs groupes de noms ;
+- deux origines d'hôtes historiques conservant leurs poids et identités persistantes ;
+- humains ordinaires restant majoritairement vanilla ;
+- sauvegarde/recharge et ancienne sauvegarde `0.3.18-dev` sans reroll ;
+- dix basculements Tok'ra sans dérive des compétences ;
+- catalogue wiki complet de `83` backstories ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- mesurer la couverture à partir des pools réellement combinables, pas à partir de chaque fichier isolé ;
+- distinguer une compétence absente d'une compétence seulement peu redondante ;
+- ne pas ajouter de backstory uniquement pour équilibrer des volumes entre cultures ;
+- vérifier les groupes de noms lors de tout ajout à un profil mixte ;
+- conserver les poids et identités persistantes des hôtes générés lors de l'extension des listes ;
+- appliquer le même audit aux futures cultures dès qu'elles disposent de pools réels ;
+- mettre à jour simultanément la matrice technique et le catalogue wiki.
+
+
 ## 0.3.18-dev - Origine Tau'ri des hôtes Tok'ra générés
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.18-dev`. Aucun correctif C# ou Def supplémentaire n'a été nécessaire après la matrice complète.

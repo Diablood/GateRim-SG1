@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.19-dev - Audit cultural backstory skill coverage
+
+- Audit the actual childhood-and-adulthood pools of every implemented culture against RimWorld's twelve standard skills.
+- Record low redundancy without treating it as an automatic reason to add content.
+- Confirm that Goa'uld-aligned and Free Jaffa already cover every skill and require no new entry.
+- Add eleven targeted adult backstories for demonstrated gaps in the SGC, off-world-human, Goa'uld-host, System Lord and Tok'ra pools.
+- Expand the catalogue from `72` to `83` entries.
+- Extend explicit starter and generated-host lists through XML while keeping the generic C# cultural framework unchanged.
+- Add a durable technical coverage matrix for current and future cultures.
+- Update the French player-facing catalogue with every new title, description and skill bonus.
+- Raise the assembly version to `0.3.19.0` and the mod metadata version to `0.3.19-dev`.
+- Validate the complete matrix on local revision `r1`: all five modified cultural pools, cultural name groups, both generated-host origins, save/load stability, legacy-history preservation and Tok'ra personality switching.
+- Confirm that ordinary-human starters remain vanilla-majority, Jaffa pools remain unchanged and `Player.log` is clean.
+- Publish the final catalogue with `83` backstories without requiring any corrective C# or Def revision.
+
 ## 0.3.18-dev - Add a Tau'ri origin for generated Tok'ra hosts
 
 - Add a minority `SG1_GeneratedHost_TauriSGCVolunteer` origin to the existing weighted generated-host framework.

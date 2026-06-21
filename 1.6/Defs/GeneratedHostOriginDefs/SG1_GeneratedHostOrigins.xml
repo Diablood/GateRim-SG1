@@ -23,6 +23,7 @@
             <li>SG1_OffworldHuman_FrontierHunter</li>
             <li>SG1_OffworldHuman_SettlementArtisan</li>
             <li>SG1_OffworldHuman_KeeperOfRecords</li>
+            <li>SG1_OffworldHuman_QuarryWorker</li>
         </adulthoods>
     </GateRimSG1.Culture.GeneratedHostOriginDef>
 
@@ -47,6 +48,9 @@
             <li>SG1_TauriSGC_LiaisonOfficer</li>
             <li>SG1_TauriSGC_SurvivalSpecialist</li>
             <li>SG1_TauriSGC_Quartermaster</li>
+            <li>SG1_TauriSGC_PlanetaryGeologist</li>
+            <li>SG1_TauriSGC_ExpeditionCook</li>
+            <li>SG1_TauriSGC_FieldArchaeologist</li>
         </adulthoods>
     </GateRimSG1.Culture.GeneratedHostOriginDef>
 </Defs>

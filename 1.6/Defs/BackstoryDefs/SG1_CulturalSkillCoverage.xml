@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_PlanetaryGeologist</defName>
+        <title>SGC planetary geologist</title>
+        <titleShort>planetary geologist</titleShort>
+        <description>This specialist joined off-world teams to assess unfamiliar stone, mineral deposits and unstable terrain before a mission committed people or equipment. Field surveys taught them to read exposed strata, identify useful ore and advise engineers working far from Earth.</description>
+        <skillGains>
+            <Mining>4</Mining>
+            <Intellectual>2</Intellectual>
+            <Construction>1</Construction>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_ExpeditionCook</defName>
+        <title>SGC expedition cook</title>
+        <titleShort>expedition cook</titleShort>
+        <description>This specialist kept isolated teams fed when sealed rations ran short and local ingredients were poorly documented. Adapting meals to unfamiliar plants, medical restrictions and exhausted personnel made practical cooking part of expedition survival.</description>
+        <skillGains>
+            <Cooking>4</Cooking>
+            <Social>2</Social>
+            <Plants>1</Plants>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_TauriSGC_FieldArchaeologist</defName>
+        <title>SGC field archaeologist</title>
+        <titleShort>field archaeologist</titleShort>
+        <description>This archaeologist documented ruins, ritual objects and visual traditions before hurried expeditions disturbed them. Reconstructing meaning from damaged sites required a trained eye, careful scholarship and enough diplomacy to discuss sacred objects with living communities.</description>
+        <skillGains>
+            <Artistic>4</Artistic>
+            <Intellectual>3</Intellectual>
+            <Social>1</Social>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TauriSGCAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_OffworldHuman_QuarryWorker</defName>
+        <title>off-world quarry worker</title>
+        <titleShort>quarry worker</titleShort>
+        <description>This person cut stone for an isolated settlement where every wall and foundation depended on local labor. Dangerous faces, crude tools and disputes over scarce material taught them to read rock, brace a work site and defend themselves at close range.</description>
+        <skillGains>
+            <Mining>4</Mining>
+            <Melee>2</Melee>
+            <Construction>1</Construction>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_OffworldHumanAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_PalacePhysician</defName>
+        <title>Goa'uld palace physician</title>
+        <titleShort>palace physician</titleShort>
+        <description>This Goa'uld supervised the treatment of favored servants, valuable hosts and wounded retainers inside a dangerous court. Medical success brought influence, while failure taught them to diagnose quickly and conceal uncertainty from impatient superiors.</description>
+        <skillGains>
+            <Medicine>4</Medicine>
+            <Intellectual>2</Intellectual>
+            <Social>1</Social>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_GoauldHost_PalaceDuelist</defName>
+        <title>Goa'uld palace duelist</title>
+        <titleShort>palace duelist</titleShort>
+        <description>This Goa'uld cultivated personal combat as both protection and spectacle, answering insults and court challenges before assembled witnesses. Years of ritualized violence sharpened their close-quarters skill and taught them how to turn victory into social authority.</description>
+        <skillGains>
+            <Melee>4</Melee>
+            <Social>2</Social>
+            <Shooting>1</Shooting>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldHostAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_SystemLord_DomainArchitect</defName>
+        <title>Goa'uld System Lord domain architect</title>
+        <titleShort>domain architect</titleShort>
+        <description>This System Lord shaped a domain through mines, fortresses and monumental works intended to outlast rivals. Directing extraction and construction taught them to judge stone, demand precise craftsmanship and recognize when impressive walls concealed weak foundations.</description>
+        <skillGains>
+            <Construction>4</Construction>
+            <Mining>2</Mining>
+            <Crafting>2</Crafting>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldSystemLordAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_SystemLord_BiomedicalExperimenter</defName>
+        <title>Goa'uld System Lord biomedical experimenter</title>
+        <titleShort>biomedical experimenter</titleShort>
+        <description>This System Lord pursued biological control through guarded laboratories, captive subjects and techniques shared only with indispensable servants. Ambition made them a capable physician and researcher, though every treatment remained subordinate to power.</description>
+        <skillGains>
+            <Medicine>4</Medicine>
+            <Intellectual>3</Intellectual>
+            <Crafting>1</Crafting>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_GoauldSystemLordAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Tokra_FieldTechnician</defName>
+        <title>Tok'ra field technician</title>
+        <titleShort>Tok'ra technician</titleShort>
+        <description>This Tok'ra maintained concealed equipment and adapted captured devices without exposing a cell's location or supply network. Repairs made under pressure rewarded careful hands, technical understanding and structures that could be dismantled before discovery.</description>
+        <skillGains>
+            <Crafting>4</Crafting>
+            <Intellectual>2</Intellectual>
+            <Construction>1</Construction>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Tokra_CloseQuartersOperative</defName>
+        <title>Tok'ra close-quarters operative</title>
+        <titleShort>close-quarters operative</titleShort>
+        <description>This Tok'ra entered confined facilities where loud weapons or prolonged fighting would compromise an operation. Silent takedowns, controlled fire and immediate care for injured agents made close combat a disciplined tool rather than a display.</description>
+        <skillGains>
+            <Melee>4</Melee>
+            <Shooting>2</Shooting>
+            <Medicine>1</Medicine>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+
+    <BackstoryDef>
+        <defName>SG1_Tokra_CulturalAdaptationSpecialist</defName>
+        <title>Tok'ra cultural adaptation specialist</title>
+        <titleShort>adaptation specialist</titleShort>
+        <description>This Tok'ra prepared agents to live convincingly among unfamiliar communities by studying their food, ornament, ceremonies and everyday manners. A durable cover required more than language: it required reproducing the small creative habits by which people recognized one another.</description>
+        <skillGains>
+            <Artistic>3</Artistic>
+            <Cooking>3</Cooking>
+            <Social>2</Social>
+        </skillGains>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
+        <slot>Adulthood</slot>
+        <spawnCategories>
+            <li>SG1_TokraAgentAdulthood</li>
+        </spawnCategories>
+        <requiresSpawnCategory>true</requiresSpawnCategory>
+    </BackstoryDef>
+</Defs>
