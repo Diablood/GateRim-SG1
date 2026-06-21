@@ -21,12 +21,16 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            string label = (GameComponent_TokraOrganicOperationManager
-                    .IsObservationPointReady(parent)
-                ? "GR_TokraObservation_RecoverAction"
-                : "GR_TokraObservation_ContinueAction")
-                .Translate()
-                .ToString();
+            string label
+                = GameComponent_TokraOrganicOperationManager
+                    .GetObservationRecoveryActionLabel(
+                        GameComponent_TokraOrganicOperationManager
+                            .IsObservationPointReady(parent));
+            if (string.IsNullOrEmpty(label))
+            {
+                yield break;
+            }
+
             string disabledReason
                 = GameComponent_TokraOrganicOperationManager
                     .GetObservationRecoveryDisabledReason(parent, selPawn);

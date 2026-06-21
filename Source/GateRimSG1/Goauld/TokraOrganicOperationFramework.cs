@@ -34,8 +34,7 @@ namespace GateRimSG1.Goauld
             string readyStatusKey,
             string successTrustMessageKey,
             string failureTrustMessageKey,
-            string debugLabel,
-            int observationWorkTicks = 0)
+            string debugLabel)
         {
             Archetype = archetype;
             OfferDurationTicks = offerDurationTicks;
@@ -62,7 +61,6 @@ namespace GateRimSG1.Goauld
             SuccessTrustMessageKey = successTrustMessageKey;
             FailureTrustMessageKey = failureTrustMessageKey;
             DebugLabel = debugLabel;
-            ObservationWorkTicks = observationWorkTicks;
             RepeatedArchetypeWeightFactor
                 = TokraOrganicOperationFramework
                     .LegacyRepeatedArchetypeWeightFactor;
@@ -70,140 +68,139 @@ namespace GateRimSG1.Goauld
 
         public TokraOrganicOperationDefinition(
             TokraOrganicOperationArchetype archetype,
-            GateRimMissionDef missionDef,
-            TokraOrganicOperationDefinition fallback)
+            GateRimMissionDef missionDef)
         {
             if (missionDef == null)
             {
                 throw new ArgumentNullException(nameof(missionDef));
             }
 
-            if (fallback == null)
-            {
-                throw new ArgumentNullException(nameof(fallback));
-            }
+            GateRimMissionObjectiveDef deployment = missionDef.GetObjective(
+                "accepted",
+                "DeployThing");
+            GateRimMissionObjectiveDef observation = missionDef.GetObjective(
+                "observing",
+                "MaintainOperator");
+            GateRimMissionObjectiveDef recovery = missionDef.GetObjective(
+                "ready",
+                "RecoverAndTransmit");
+            GateRimMissionSkillXpRewardDef skillReward
+                = missionDef.rewards?.skillXpRewards?.FirstOrDefault(
+                    item => item != null
+                        && !string.IsNullOrWhiteSpace(item.skillDefName)
+                        && item.xp > 0);
 
             MissionDef = missionDef;
             Archetype = archetype;
-            OfferDurationTicks = missionDef.timing?.offerDurationTicks
-                ?? fallback.OfferDurationTicks;
-            ReadyDelayTicks = missionDef.timing?.readyDelayTicks
-                ?? fallback.ReadyDelayTicks;
-            DeadlineTicks = missionDef.timing?.deadlineTicks
-                ?? fallback.DeadlineTicks;
-            IntellectualXp = missionDef.rewards?.intellectualXp
-                ?? fallback.IntellectualXp;
-            MedicineXp = missionDef.rewards?.medicineXp
-                ?? fallback.MedicineXp;
-            SocialXp = missionDef.rewards?.socialXp
-                ?? fallback.SocialXp;
-            SuccessTrustChange = missionDef.rewards?.successTrustChange
-                ?? fallback.SuccessTrustChange;
-            FailureTrustChange = missionDef.rewards?.failureTrustChange
-                ?? fallback.FailureTrustChange;
-            WaryWeight = GetMissionWeight(
-                missionDef,
-                "TokraTrust.Wary",
-                fallback.WaryWeight);
-            NeutralWeight = GetMissionWeight(
-                missionDef,
-                "TokraTrust.Neutral",
-                fallback.NeutralWeight);
+            OfferDurationTicks = missionDef.timing?.offerDurationTicks ?? 0;
+            ReadyDelayTicks = missionDef.timing?.readyDelayTicks ?? 0;
+            DeadlineTicks = missionDef.timing?.deadlineTicks ?? 0;
+            IntellectualXp = missionDef.rewards?.intellectualXp ?? 0;
+            MedicineXp = missionDef.rewards?.medicineXp ?? 0;
+            SocialXp = missionDef.rewards?.socialXp ?? 0;
+            SuccessTrustChange = missionDef.rewards?.successTrustChange ?? 0;
+            FailureTrustChange = missionDef.rewards?.failureTrustChange ?? 0;
+            SkillXpRewardDefName = skillReward?.skillDefName;
+            SkillXpRewardAmount = skillReward?.xp ?? 0;
+            WaryWeight = GetMissionWeight(missionDef, "TokraTrust.Wary");
+            NeutralWeight = GetMissionWeight(missionDef, "TokraTrust.Neutral");
             CooperativeWeight = GetMissionWeight(
                 missionDef,
-                "TokraTrust.Cooperative",
-                fallback.CooperativeWeight);
+                "TokraTrust.Cooperative");
             TrustedWeight = GetMissionWeight(
                 missionDef,
-                "TokraTrust.Trusted",
-                fallback.TrustedWeight);
-            ObjectiveThingDefName = missionDef.objectiveThingDef?.defName
-                ?? fallback.ObjectiveThingDefName;
-            AcceptActionKey = missionDef.actions?.acceptActionKey
-                ?? fallback.AcceptActionKey;
-            CompleteActionKey = missionDef.actions?.completeActionKey
-                ?? fallback.CompleteActionKey;
-            OfferLetterLabelKey = missionDef.texts?.offerLetterLabelKey
-                ?? fallback.OfferLetterLabelKey;
+                "TokraTrust.Trusted");
+            ObjectiveThingDefName = missionDef.objectiveThingDef?.defName;
+            AcceptActionKey = missionDef.actions?.acceptActionKey;
+            CompleteActionKey = missionDef.actions?.completeActionKey;
+            DeployActionKey = missionDef.actions?.deployActionKey;
+            ContinueActionKey = missionDef.actions?.continueActionKey;
+            RecoverActionKey = missionDef.actions?.recoverActionKey;
+            ResumeActionKey = missionDef.actions?.resumeActionKey;
+            OfferLetterLabelKey = missionDef.texts?.offerLetterLabelKey;
             OfferLetterTextKey = missionDef.texts?.offerLetterTexts?
                 .FirstOrDefault(item => item != null
-                    && !string.IsNullOrWhiteSpace(item.key))?.key
-                ?? fallback.OfferLetterTextKey;
-            OfferExpiredMessageKey = missionDef.texts?.offerExpiredMessageKey
-                ?? fallback.OfferExpiredMessageKey;
-            OfferedStatusKey = missionDef.actions?.offeredStatusKey
-                ?? fallback.OfferedStatusKey;
-            ActiveStatusKey = missionDef.actions?.activeStatusKey
-                ?? fallback.ActiveStatusKey;
-            ReadyStatusKey = missionDef.actions?.readyStatusKey
-                ?? fallback.ReadyStatusKey;
+                    && !string.IsNullOrWhiteSpace(item.key))?.key;
+            OfferExpiredMessageKey = missionDef.texts?.offerExpiredMessageKey;
+            AcceptedMessageKey = missionDef.texts?.acceptedMessageKey;
+            SuccessLetterLabelKey = missionDef.texts?.successLetterLabelKey;
+            FailureLetterLabelKey = missionDef.texts?.failureLetterLabelKey;
+            OfferedStatusKey = missionDef.actions?.offeredStatusKey;
+            ActiveStatusKey = missionDef.actions?.activeStatusKey;
+            ReadyStatusKey = missionDef.actions?.readyStatusKey;
             SuccessTrustMessageKey
-                = missionDef.actions?.successTrustMessageKey
-                    ?? fallback.SuccessTrustMessageKey;
+                = missionDef.actions?.successTrustMessageKey;
             FailureTrustMessageKey
-                = missionDef.actions?.failureTrustMessageKey
-                    ?? fallback.FailureTrustMessageKey;
-            DebugLabel = missionDef.debugLabel ?? fallback.DebugLabel;
-            ObservationWorkTicks = missionDef.GetObjectiveWorkTicks(
-                "observing",
-                "MaintainOperator",
-                fallback.ObservationWorkTicks);
+                = missionDef.actions?.failureTrustMessageKey;
+            DebugLabel = missionDef.debugLabel;
             RepeatedArchetypeWeightFactor
-                = missionDef.recurrence?.repeatedMissionWeightFactor
-                    ?? fallback.RepeatedArchetypeWeightFactor;
+                = missionDef.recurrence?.repeatedMissionWeightFactor ?? 0f;
+            MinimumRecurrenceDelayTicks
+                = missionDef.recurrence?.minimumDelayTicks ?? 0;
+            MaximumRecurrenceDelayTicks
+                = missionDef.recurrence?.maximumDelayTicks ?? 0;
+            ObservationDeviceDefName = deployment?.targetDefName;
+            ObservationPointDefName = deployment?.secondaryTargetDefName;
+            ObservationDeploymentJobDefName = deployment?.jobDefName;
+            ObservationDeploymentWorkTicks = deployment?.workTicks ?? 0;
+            ObservationWorkTargetDefName = observation?.targetDefName;
+            ObservationWorkTicks = observation?.workTicks ?? 0;
+            ObservationSkillDefName = observation?.skillDefName;
+            ObservationXpPerTick = observation?.xpPerTick ?? 0f;
+            ObservationRecoveryTargetDefName = recovery?.targetDefName;
+            ObservationTransmissionJobDefName = recovery?.jobDefName;
+            ObservationRecoveryWorkTicks = recovery?.workTicks ?? 0;
+            ObservationTransmissionWorkTicks = recovery?.secondaryWorkTicks ?? 0;
         }
 
         public TokraOrganicOperationArchetype Archetype { get; }
-
         public int OfferDurationTicks { get; }
-
         public int ReadyDelayTicks { get; }
-
         public int DeadlineTicks { get; }
-
         public int IntellectualXp { get; }
-
         public int MedicineXp { get; }
-
         public int SocialXp { get; }
-
         public int SuccessTrustChange { get; }
-
         public int FailureTrustChange { get; }
-
+        public string SkillXpRewardDefName { get; }
+        public int SkillXpRewardAmount { get; }
         public string ObjectiveThingDefName { get; }
-
         public string AcceptActionKey { get; }
-
         public string CompleteActionKey { get; }
-
+        public string DeployActionKey { get; }
+        public string ContinueActionKey { get; }
+        public string RecoverActionKey { get; }
+        public string ResumeActionKey { get; }
         public string OfferLetterLabelKey { get; }
-
         public string OfferLetterTextKey { get; }
-
         public string OfferExpiredMessageKey { get; }
-
+        public string AcceptedMessageKey { get; }
+        public string SuccessLetterLabelKey { get; }
+        public string FailureLetterLabelKey { get; }
         public string OfferedStatusKey { get; }
-
         public string ActiveStatusKey { get; }
-
         public string ReadyStatusKey { get; }
-
         public string SuccessTrustMessageKey { get; }
-
         public string FailureTrustMessageKey { get; }
-
         public string DebugLabel { get; }
-
-        public int ObservationWorkTicks { get; }
-
         public GateRimMissionDef MissionDef { get; }
-
         public string MissionDefName => MissionDef?.defName;
-
         public bool UsesMissionFrameworkDef => MissionDef != null;
-
         public float RepeatedArchetypeWeightFactor { get; }
+        public int MinimumRecurrenceDelayTicks { get; }
+        public int MaximumRecurrenceDelayTicks { get; }
+        public string ObservationDeviceDefName { get; }
+        public string ObservationPointDefName { get; }
+        public string ObservationDeploymentJobDefName { get; }
+        public string ObservationTransmissionJobDefName { get; }
+        public string ObservationRecoveryTargetDefName { get; }
+        public int ObservationDeploymentWorkTicks { get; }
+        public string ObservationWorkTargetDefName { get; }
+        public int ObservationWorkTicks { get; }
+        public int ObservationRecoveryWorkTicks { get; }
+        public int ObservationTransmissionWorkTicks { get; }
+        public string ObservationSkillDefName { get; }
+        public float ObservationXpPerTick { get; }
 
         public bool HasPhysicalObjective => !string.IsNullOrEmpty(
             ObjectiveThingDefName);
@@ -212,11 +209,8 @@ namespace GateRimSG1.Goauld
             CompleteActionKey);
 
         private float WaryWeight { get; }
-
         private float NeutralWeight { get; }
-
         private float CooperativeWeight { get; }
-
         private float TrustedWeight { get; }
 
         public string SelectOfferLetterTextKey(
@@ -240,6 +234,21 @@ namespace GateRimSG1.Goauld
             return OfferLetterTextKey;
         }
 
+        public string SelectSuccessLetterTextKey(
+            int previousIndex,
+            out int selectedIndex)
+        {
+            return GateRimMissionFramework.SelectTextKey(
+                MissionDef?.texts?.successLetterTexts,
+                previousIndex,
+                out selectedIndex);
+        }
+
+        public string GetRuntimeTextKey(string id)
+        {
+            return MissionDef?.GetRuntimeTextKey(id);
+        }
+
         public float GetWeight(TokraTrustTier tier)
         {
             switch (tier)
@@ -257,19 +266,253 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        public bool HasCompleteObservationConfiguration(out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(CompleteActionKey, "complete action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+            Require(ObjectiveThingDefName, "objectiveThingDef", missing);
+            Require(ObservationDeviceDefName, "deployment target", missing);
+            Require(ObservationPointDefName, "observation point", missing);
+            Require(
+                ObservationWorkTargetDefName,
+                "observation work target",
+                missing);
+            Require(
+                ObservationRecoveryTargetDefName,
+                "recovery target",
+                missing);
+            Require(ObservationDeploymentJobDefName, "deployment job", missing);
+            Require(ObservationTransmissionJobDefName, "transmission job", missing);
+            Require(ObservationSkillDefName, "work skill", missing);
+            Require(SkillXpRewardDefName, "skill XP reward", missing);
+            Require(DeployActionKey, "deploy action", missing);
+            Require(ContinueActionKey, "continue action", missing);
+            Require(RecoverActionKey, "recover action", missing);
+            Require(ResumeActionKey, "resume action", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+
+            string[] runtimeTextIds =
+            {
+                "spawnFailed",
+                "targetLetterLabel",
+                "targetLetterText",
+                "deployed",
+                "dataReady",
+                "observationStarted",
+                "recoveryStarted",
+                "transmissionStarted",
+                "failureTimeout",
+                "failureDeviceLost",
+                "noActiveDeployment",
+                "alreadyDeployed",
+                "deviceLost",
+                "dataNotReady",
+                "noReadyRecovery",
+                "cannotReachDevice",
+                "cannotReachPoint",
+                "cannotReachCommunicator",
+                "jobUnavailable",
+                "operatorIncapable",
+                "communicatorUnpowered",
+                "expired",
+                "statusAwaitingDeployment",
+                "statusRecording",
+                "statusTransmissionInterrupted",
+                "statusDataReady"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            if (ObservationDeploymentWorkTicks <= 0)
+            {
+                missing.Add("deployment work ticks");
+            }
+
+            if (ObservationWorkTicks <= 0)
+            {
+                missing.Add("observation work ticks");
+            }
+
+            if (ObservationRecoveryWorkTicks <= 0)
+            {
+                missing.Add("recovery work ticks");
+            }
+
+            if (ObservationTransmissionWorkTicks <= 0)
+            {
+                missing.Add("transmission work ticks");
+            }
+
+            if (ObservationXpPerTick <= 0f)
+            {
+                missing.Add("positive work XP per tick");
+            }
+
+            if (SkillXpRewardAmount <= 0)
+            {
+                missing.Add("positive skill XP reward amount");
+            }
+
+            ValidateObservationTargetConsistency(missing);
+            ValidateObservationDefReferences(missing);
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            if (MissionDef?.texts?.successLetterTexts == null
+                || MissionDef.texts.successLetterTexts.Count == 0)
+            {
+                missing.Add("success letter text variants");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
+        private void ValidateObservationTargetConsistency(
+            ICollection<string> missing)
+        {
+            if (!string.IsNullOrWhiteSpace(ObjectiveThingDefName)
+                && !string.Equals(
+                    ObjectiveThingDefName,
+                    ObservationDeviceDefName,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                missing.Add(
+                    "objectiveThingDef must match deployment target");
+            }
+
+            if (!string.IsNullOrWhiteSpace(ObservationWorkTargetDefName)
+                && !string.Equals(
+                    ObservationWorkTargetDefName,
+                    ObservationPointDefName,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                missing.Add(
+                    "observation work target must match observation point");
+            }
+
+            if (!string.IsNullOrWhiteSpace(ObservationRecoveryTargetDefName)
+                && !string.Equals(
+                    ObservationRecoveryTargetDefName,
+                    ObservationDeviceDefName,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                missing.Add(
+                    "recovery target must match observation device");
+            }
+        }
+
+        private void ValidateObservationDefReferences(
+            ICollection<string> missing)
+        {
+            if (!string.IsNullOrWhiteSpace(ObservationDeviceDefName)
+                && DefDatabase<ThingDef>.GetNamedSilentFail(
+                    ObservationDeviceDefName) == null)
+            {
+                missing.Add(
+                    "unknown device ThingDef " + ObservationDeviceDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(ObservationPointDefName)
+                && DefDatabase<ThingDef>.GetNamedSilentFail(
+                    ObservationPointDefName) == null)
+            {
+                missing.Add(
+                    "unknown observation point ThingDef "
+                    + ObservationPointDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(
+                    ObservationDeploymentJobDefName)
+                && DefDatabase<JobDef>.GetNamedSilentFail(
+                    ObservationDeploymentJobDefName) == null)
+            {
+                missing.Add(
+                    "unknown deployment JobDef "
+                    + ObservationDeploymentJobDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(
+                    ObservationTransmissionJobDefName)
+                && DefDatabase<JobDef>.GetNamedSilentFail(
+                    ObservationTransmissionJobDefName) == null)
+            {
+                missing.Add(
+                    "unknown transmission JobDef "
+                    + ObservationTransmissionJobDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(ObservationSkillDefName)
+                && DefDatabase<SkillDef>.GetNamedSilentFail(
+                    ObservationSkillDefName) == null)
+            {
+                missing.Add(
+                    "unknown work SkillDef " + ObservationSkillDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(SkillXpRewardDefName)
+                && DefDatabase<SkillDef>.GetNamedSilentFail(
+                    SkillXpRewardDefName) == null)
+            {
+                missing.Add(
+                    "unknown reward SkillDef " + SkillXpRewardDefName);
+            }
+        }
+
+        private static void Require(
+            string value,
+            string label,
+            ICollection<string> missing)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                missing.Add(label);
+            }
+        }
+
         private static float GetMissionWeight(
             GateRimMissionDef missionDef,
-            string contextKey,
-            float fallback)
+            string contextKey)
         {
             float weight;
-
             return missionDef.recurrence != null
-                && missionDef.recurrence.TryGetWeight(
-                    contextKey,
-                    out weight)
+                && missionDef.recurrence.TryGetWeight(contextKey, out weight)
                 ? weight
-                : fallback;
+                : 0f;
         }
     }
 
@@ -282,60 +525,15 @@ namespace GateRimSG1.Goauld
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
             cachedObservationDefinition;
-        private static bool observationFallbackWarningLogged;
+        private static bool observationConfigurationErrorLogged;
 
         private static readonly IReadOnlyDictionary<
             TokraOrganicOperationArchetype,
-            TokraOrganicOperationDefinition> Definitions
+            TokraOrganicOperationDefinition> LegacyDefinitions
                 = new Dictionary<
                     TokraOrganicOperationArchetype,
                     TokraOrganicOperationDefinition>
                 {
-                    {
-                        TokraOrganicOperationArchetype.GoauldObservation,
-                        new TokraOrganicOperationDefinition(
-                            TokraOrganicOperationArchetype.GoauldObservation,
-                            offerDurationTicks: 120000,
-                            readyDelayTicks: 0,
-                            deadlineTicks: 120000,
-                            intellectualXp: 250,
-                            medicineXp: 0,
-                            socialXp: 0,
-                            successTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicObservationSuccessTrustChange,
-                            failureTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicObservationFailureTrustChange,
-                            waryWeight: 0.60f,
-                            neutralWeight: 1.00f,
-                            cooperativeWeight: 0.85f,
-                            trustedWeight: 0.35f,
-                            objectiveThingDefName:
-                                "SG1_TokraObservationDevice",
-                            acceptActionKey:
-                                "GR_TokraOrganicOperation_FloatMenuAcceptObservation",
-                            completeActionKey:
-                                "GR_TokraOrganicOperation_FloatMenuTransmitObservation",
-                            offerLetterLabelKey:
-                                "GR_TokraOrganicOperation_OfferLetterLabel",
-                            offerLetterTextKey:
-                                "GR_TokraOrganicOperation_OfferLetterText",
-                            offerExpiredMessageKey:
-                                "GR_TokraOrganicOperation_OfferExpired",
-                            offeredStatusKey:
-                                "GR_TokraOrganicOperation_StatusOffered",
-                            activeStatusKey:
-                                "GR_TokraOrganicOperation_StatusObserving",
-                            readyStatusKey:
-                                "GR_TokraOrganicOperation_StatusReady",
-                            successTrustMessageKey:
-                                "GR_TokraTrust_OrganicObservationSucceeded",
-                            failureTrustMessageKey:
-                                "GR_TokraTrust_OrganicObservationFailed",
-                            debugLabel: "Goa'uldObservation",
-                            observationWorkTicks: 5000)
-                    },
                     {
                         TokraOrganicOperationArchetype.DeadDropRecovery,
                         new TokraOrganicOperationDefinition(
@@ -467,22 +665,38 @@ namespace GateRimSG1.Goauld
                 };
 
         public static IEnumerable<TokraOrganicOperationDefinition>
-            AllDefinitions => Definitions.Values.Select(ResolveDefinition);
+            AllDefinitions
+        {
+            get
+            {
+                TokraOrganicOperationDefinition observation
+                    = ResolveObservationDefinition();
+
+                if (observation != null)
+                {
+                    yield return observation;
+                }
+
+                foreach (TokraOrganicOperationDefinition definition
+                    in LegacyDefinitions.Values)
+                {
+                    yield return definition;
+                }
+            }
+        }
 
         public static bool TryGetDefinition(
             TokraOrganicOperationArchetype archetype,
             out TokraOrganicOperationDefinition definition)
         {
-            TokraOrganicOperationDefinition fallback;
-
-            if (!Definitions.TryGetValue(archetype, out fallback))
+            if (archetype
+                == TokraOrganicOperationArchetype.GoauldObservation)
             {
-                definition = null;
-                return false;
+                definition = ResolveObservationDefinition();
+                return definition != null;
             }
 
-            definition = ResolveDefinition(fallback);
-            return definition != null;
+            return LegacyDefinitions.TryGetValue(archetype, out definition);
         }
 
         public static TokraOrganicOperationDefinition GetDefinition(
@@ -495,54 +709,80 @@ namespace GateRimSG1.Goauld
                 : null;
         }
 
-        private static TokraOrganicOperationDefinition ResolveDefinition(
-            TokraOrganicOperationDefinition fallback)
+        private static TokraOrganicOperationDefinition
+            ResolveObservationDefinition()
         {
-            if (fallback == null
-                || fallback.Archetype
-                    != TokraOrganicOperationArchetype.GoauldObservation)
-            {
-                return fallback;
-            }
-
             GateRimMissionDef missionDef
                 = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
                     ObservationMissionDefName);
 
             if (missionDef == null)
             {
-                if (!observationFallbackWarningLogged)
-                {
-                    observationFallbackWarningLogged = true;
-                    Log.Warning(
-                        "[GateRim SG-1] Mission Def "
-                        + ObservationMissionDefName
-                        + " is missing; the Tok'ra observation operation "
-                        + "will use its legacy definition.");
-                }
-
-                return fallback;
+                LogObservationConfigurationError(
+                    "required MissionDef " + ObservationMissionDefName
+                    + " is missing");
+                return null;
             }
 
             if (cachedObservationDefinition == null
                 || cachedObservationMissionDef != missionDef)
             {
-                cachedObservationMissionDef = missionDef;
-                cachedObservationDefinition
+                TokraOrganicOperationDefinition definition
                     = new TokraOrganicOperationDefinition(
                         TokraOrganicOperationArchetype.GoauldObservation,
-                        missionDef,
-                        fallback);
+                        missionDef);
+                string error;
+
+                if (!definition.HasCompleteObservationConfiguration(
+                        out error))
+                {
+                    LogObservationConfigurationError(
+                        ObservationMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedObservationMissionDef = missionDef;
+                cachedObservationDefinition = definition;
             }
 
             return cachedObservationDefinition;
         }
 
+        private static void LogObservationConfigurationError(string detail)
+        {
+            if (observationConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            observationConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra observation operation disabled: "
+                + detail + ".");
+        }
+
         public static void GetDelayRange(
+            TokraOrganicOperationArchetype previousArchetype,
             TokraTrustTier tier,
             out int minimumDelay,
             out int maximumDelay)
         {
+            TokraOrganicOperationDefinition previousDefinition
+                = GetDefinition(previousArchetype);
+
+            if (previousDefinition?.UsesMissionFrameworkDef == true
+                && previousDefinition.MinimumRecurrenceDelayTicks > 0
+                && previousDefinition.MaximumRecurrenceDelayTicks
+                    >= previousDefinition.MinimumRecurrenceDelayTicks)
+            {
+                minimumDelay
+                    = previousDefinition.MinimumRecurrenceDelayTicks;
+                maximumDelay
+                    = previousDefinition.MaximumRecurrenceDelayTicks;
+                return;
+            }
+
             switch (tier)
             {
                 case TokraTrustTier.Wary:

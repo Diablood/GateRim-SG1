@@ -57,10 +57,50 @@
                 </li>
             </offerLetterTexts>
             <offerExpiredMessageKey>GR_TokraOrganicOperation_OfferExpired</offerExpiredMessageKey>
+            <acceptedMessageKey>GR_TokraObservation_Accepted</acceptedMessageKey>
+            <successLetterLabelKey>GR_TokraOrganicOperation_SuccessLetterLabel</successLetterLabelKey>
+            <failureLetterLabelKey>GR_TokraOrganicOperation_FailedLetterLabel</failureLetterLabelKey>
+            <successLetterTexts>
+                <li><key>GR_TokraObservation_SuccessText1</key><weight>1</weight></li>
+                <li><key>GR_TokraObservation_SuccessText2</key><weight>1</weight></li>
+                <li><key>GR_TokraObservation_SuccessText3</key><weight>1</weight></li>
+            </successLetterTexts>
+            <runtimeTexts>
+                <li><id>spawnFailed</id><key>GR_TokraObservation_SpawnFailed</key></li>
+                <li><id>targetLetterLabel</id><key>GR_TokraObservation_TargetLetterLabel</key></li>
+                <li><id>targetLetterText</id><key>GR_TokraObservation_TargetLetterText</key></li>
+                <li><id>deployed</id><key>GR_TokraObservation_Deployed</key></li>
+                <li><id>dataReady</id><key>GR_TokraObservation_DataReady</key></li>
+                <li><id>observationStarted</id><key>GR_TokraObservation_ObservationStarted</key></li>
+                <li><id>recoveryStarted</id><key>GR_TokraObservation_RecoveryStarted</key></li>
+                <li><id>transmissionStarted</id><key>GR_TokraObservation_TransmissionStarted</key></li>
+                <li><id>failureTimeout</id><key>GR_TokraObservation_FailedTimeoutText</key></li>
+                <li><id>failureDeviceLost</id><key>GR_TokraObservation_FailedDeviceLostText</key></li>
+                <li><id>noActiveDeployment</id><key>GR_TokraObservation_NoActiveDeployment</key></li>
+                <li><id>alreadyDeployed</id><key>GR_TokraObservation_AlreadyDeployed</key></li>
+                <li><id>deviceLost</id><key>GR_TokraObservation_DeviceLost</key></li>
+                <li><id>dataNotReady</id><key>GR_TokraObservation_DataNotReady</key></li>
+                <li><id>noReadyRecovery</id><key>GR_TokraObservation_NoReadyRecovery</key></li>
+                <li><id>cannotReachDevice</id><key>GR_TokraObservation_CannotReachDevice</key></li>
+                <li><id>cannotReachPoint</id><key>GR_TokraObservation_CannotReachPoint</key></li>
+                <li><id>cannotReachCommunicator</id><key>GR_TokraObservation_CannotReachCommunicator</key></li>
+                <li><id>jobUnavailable</id><key>GR_TokraObservation_JobUnavailable</key></li>
+                <li><id>operatorIncapable</id><key>GR_TokraOrganicOperation_OperatorIncapable</key></li>
+                <li><id>communicatorUnpowered</id><key>GR_TokraSecureCommunicator_Unpowered</key></li>
+                <li><id>expired</id><key>GR_TokraOrganicOperation_ObservationExpired</key></li>
+                <li><id>statusAwaitingDeployment</id><key>GR_TokraObservation_StatusAwaitingDeployment</key></li>
+                <li><id>statusRecording</id><key>GR_TokraObservation_StatusRecording</key></li>
+                <li><id>statusTransmissionInterrupted</id><key>GR_TokraObservation_StatusTransmissionInterrupted</key></li>
+                <li><id>statusDataReady</id><key>GR_TokraObservation_StatusDataReady</key></li>
+            </runtimeTexts>
         </texts>
         <actions>
             <acceptActionKey>GR_TokraOrganicOperation_FloatMenuAcceptObservation</acceptActionKey>
             <completeActionKey>GR_TokraOrganicOperation_FloatMenuTransmitObservation</completeActionKey>
+            <deployActionKey>GR_TokraObservation_DeployAction</deployActionKey>
+            <continueActionKey>GR_TokraObservation_ContinueAction</continueActionKey>
+            <recoverActionKey>GR_TokraObservation_RecoverAction</recoverActionKey>
+            <resumeActionKey>GR_TokraObservation_ResumeTransmissionAction</resumeActionKey>
             <offeredStatusKey>GR_TokraOrganicOperation_StatusOffered</offeredStatusKey>
             <activeStatusKey>GR_TokraOrganicOperation_StatusObserving</activeStatusKey>
             <readyStatusKey>GR_TokraOrganicOperation_StatusReady</readyStatusKey>
@@ -68,11 +108,16 @@
             <failureTrustMessageKey>GR_TokraTrust_OrganicObservationFailed</failureTrustMessageKey>
         </actions>
         <rewards>
-            <intellectualXp>250</intellectualXp>
             <medicineXp>0</medicineXp>
             <socialXp>0</socialXp>
             <successTrustChange>3</successTrustChange>
             <failureTrustChange>-1</failureTrustChange>
+            <skillXpRewards>
+                <li>
+                    <skillDefName>Intellectual</skillDefName>
+                    <xp>250</xp>
+                </li>
+            </skillXpRewards>
         </rewards>
         <phases>
             <li>
@@ -96,7 +141,10 @@
                     <li>
                         <objectiveType>DeployThing</objectiveType>
                         <targetDefName>SG1_TokraObservationDevice</targetDefName>
+                        <secondaryTargetDefName>SG1_TokraObservationPoint</secondaryTargetDefName>
+                        <jobDefName>SG1_DeployTokraObservationDevice</jobDefName>
                         <requiredCount>1</requiredCount>
+                        <workTicks>500</workTicks>
                     </li>
                 </objectives>
                 <transitions>
@@ -136,7 +184,10 @@
                 <objectives>
                     <li>
                         <objectiveType>MaintainOperator</objectiveType>
+                        <targetDefName>SG1_TokraObservationPoint</targetDefName>
+                        <skillDefName>Intellectual</skillDefName>
                         <workTicks>10000</workTicks>
+                        <xpPerTick>0.04</xpPerTick>
                     </li>
                 </objectives>
                 <transitions>
@@ -157,7 +208,10 @@
                     <li>
                         <objectiveType>RecoverAndTransmit</objectiveType>
                         <targetDefName>SG1_TokraObservationDevice</targetDefName>
+                        <jobDefName>SG1_TransmitTokraObservationData</jobDefName>
                         <requiredCount>1</requiredCount>
+                        <workTicks>500</workTicks>
+                        <secondaryWorkTicks>1000</secondaryWorkTicks>
                     </li>
                 </objectives>
                 <transitions>
@@ -190,7 +244,8 @@
                         <value>3</value>
                     </li>
                     <li>
-                        <consequenceType>GrantIntellectualXp</consequenceType>
+                        <consequenceType>GrantSkillXp</consequenceType>
+                        <targetDefName>Intellectual</targetDefName>
                         <value>250</value>
                     </li>
                 </onEnterConsequences>

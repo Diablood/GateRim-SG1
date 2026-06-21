@@ -7,9 +7,6 @@ namespace GateRimSG1.Goauld
 {
     public class Comp_TokraObservationDevice : ThingComp
     {
-        private const string DeployJobDefName
-            = "SG1_DeployTokraObservationDevice";
-
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(
             Pawn selPawn)
         {
@@ -23,20 +20,26 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            string label = "GR_TokraObservation_DeployAction"
-                .Translate()
-                .ToString();
+            string label
+                = GameComponent_TokraOrganicOperationManager
+                    .GetObservationDeploymentActionLabel();
+            if (string.IsNullOrEmpty(label))
+            {
+                yield break;
+            }
+
             string disabledReason
                 = GameComponent_TokraOrganicOperationManager
                     .GetObservationDeploymentDisabledReason(parent, selPawn);
-            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
-                DeployJobDefName);
+            JobDef jobDef
+                = GameComponent_TokraOrganicOperationManager
+                    .GetObservationDeploymentJobDef();
 
             if (jobDef == null && string.IsNullOrEmpty(disabledReason))
             {
-                disabledReason = "GR_TokraObservation_JobUnavailable"
-                    .Translate()
-                    .ToString();
+                disabledReason
+                    = GameComponent_TokraOrganicOperationManager
+                        .GetObservationJobUnavailableText();
             }
 
             if (!string.IsNullOrEmpty(disabledReason))

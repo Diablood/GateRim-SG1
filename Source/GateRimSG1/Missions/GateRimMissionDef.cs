@@ -75,6 +75,12 @@ namespace GateRimSG1.Missions
         public float weight = 1f;
     }
 
+    public sealed class GateRimMissionNamedTextDef
+    {
+        public string id;
+        public string key;
+    }
+
     public sealed class GateRimMissionTextBankDef
     {
         public string offerLetterLabelKey;
@@ -84,17 +90,47 @@ namespace GateRimSG1.Missions
         public string acceptedMessageKey;
         public string successMessageKey;
         public string failureMessageKey;
+        public string successLetterLabelKey;
+        public string failureLetterLabelKey;
+        public List<GateRimMissionTextVariantDef> successLetterTexts
+            = new List<GateRimMissionTextVariantDef>();
+        public List<GateRimMissionNamedTextDef> runtimeTexts
+            = new List<GateRimMissionNamedTextDef>();
+
+        public string GetRuntimeTextKey(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id) || runtimeTexts == null)
+            {
+                return null;
+            }
+
+            return runtimeTexts.FirstOrDefault(item => item != null
+                && string.Equals(
+                    item.id,
+                    id,
+                    StringComparison.OrdinalIgnoreCase))?.key;
+        }
     }
 
     public sealed class GateRimMissionActionDef
     {
         public string acceptActionKey;
         public string completeActionKey;
+        public string deployActionKey;
+        public string continueActionKey;
+        public string recoverActionKey;
+        public string resumeActionKey;
         public string offeredStatusKey;
         public string activeStatusKey;
         public string readyStatusKey;
         public string successTrustMessageKey;
         public string failureTrustMessageKey;
+    }
+
+    public sealed class GateRimMissionSkillXpRewardDef
+    {
+        public string skillDefName;
+        public int xp;
     }
 
     public sealed class GateRimMissionRewardDef
@@ -104,14 +140,21 @@ namespace GateRimSG1.Missions
         public int socialXp;
         public int successTrustChange;
         public int failureTrustChange;
+        public List<GateRimMissionSkillXpRewardDef> skillXpRewards
+            = new List<GateRimMissionSkillXpRewardDef>();
     }
 
     public sealed class GateRimMissionObjectiveDef
     {
         public string objectiveType;
         public string targetDefName;
+        public string secondaryTargetDefName;
+        public string jobDefName;
+        public string skillDefName;
         public int requiredCount = 1;
         public int workTicks;
+        public int secondaryWorkTicks;
+        public float xpPerTick;
         public bool optional;
     }
 
@@ -240,6 +283,11 @@ namespace GateRimSG1.Missions
             return configuredTicks > 0
                 ? configuredTicks
                 : fallbackTicks;
+        }
+
+        public string GetRuntimeTextKey(string id)
+        {
+            return texts?.GetRuntimeTextKey(id);
         }
 
         public override IEnumerable<string> ConfigErrors()
@@ -380,6 +428,45 @@ namespace GateRimSG1.Missions
                 }
             }
 
+            if (texts?.successLetterTexts != null)
+            {
+                foreach (GateRimMissionTextVariantDef variant
+                    in texts.successLetterTexts)
+                {
+                    if (variant == null || string.IsNullOrWhiteSpace(variant.key))
+                    {
+                        yield return "success letter text variants require a key";
+                    }
+                    else if (variant.weight <= 0f)
+                    {
+                        yield return $"success text variant {variant.key} requires a positive weight";
+                    }
+                }
+            }
+
+            if (texts?.runtimeTexts != null)
+            {
+                HashSet<string> runtimeTextIds = new HashSet<string>(
+                    StringComparer.OrdinalIgnoreCase);
+
+                foreach (GateRimMissionNamedTextDef runtimeText
+                    in texts.runtimeTexts)
+                {
+                    if (runtimeText == null
+                        || string.IsNullOrWhiteSpace(runtimeText.id)
+                        || string.IsNullOrWhiteSpace(runtimeText.key))
+                    {
+                        yield return "runtime text entries require an id and key";
+                        continue;
+                    }
+
+                    if (!runtimeTextIds.Add(runtimeText.id))
+                    {
+                        yield return $"duplicate runtime text id: {runtimeText.id}";
+                    }
+                }
+            }
+
             if (actions == null)
             {
                 yield return "actions is required";
@@ -388,6 +475,35 @@ namespace GateRimSG1.Missions
             if (rewards == null)
             {
                 yield return "rewards is required";
+            }
+            else if (rewards.skillXpRewards != null)
+            {
+                HashSet<string> rewardSkillDefNames = new HashSet<string>(
+                    StringComparer.OrdinalIgnoreCase);
+
+                foreach (GateRimMissionSkillXpRewardDef skillReward
+                    in rewards.skillXpRewards)
+                {
+                    if (skillReward == null
+                        || string.IsNullOrWhiteSpace(
+                            skillReward.skillDefName))
+                    {
+                        yield return "skill XP rewards require a skillDefName";
+                        continue;
+                    }
+
+                    if (!rewardSkillDefNames.Add(skillReward.skillDefName))
+                    {
+                        yield return "duplicate skill XP reward for "
+                            + skillReward.skillDefName;
+                    }
+
+                    if (skillReward.xp <= 0)
+                    {
+                        yield return $"skill XP reward for "
+                            + $"{skillReward.skillDefName} must be positive";
+                    }
+                }
             }
 
             if (phases == null || phases.Count == 0)
@@ -428,11 +544,18 @@ namespace GateRimSG1.Missions
                             yield return $"phase {phase.id} contains an "
                                 + "objective without objectiveType";
                         }
-                        else if (objective.workTicks < 0)
+                        else if (objective.workTicks < 0
+                            || objective.secondaryWorkTicks < 0)
                         {
                             yield return $"phase {phase.id} objective "
                                 + $"{objective.objectiveType} cannot use "
-                                + "negative workTicks";
+                                + "negative work ticks";
+                        }
+                        else if (objective.xpPerTick < 0f)
+                        {
+                            yield return $"phase {phase.id} objective "
+                                + $"{objective.objectiveType} cannot use "
+                                + "negative XP per tick";
                         }
                     }
 

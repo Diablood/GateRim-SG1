@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.24-dev - Complete observation mission Def migration
+
+- Extend mission objectives with secondary targets, job Defs, configured skills, active XP rates and secondary work durations.
+- Move the Tok'ra observation device, site marker, deployment job and transmission job references into `SG1_TokraOrganic_GoauldObservation`.
+- Move deployment, observation, recovery and transmission work durations into the phase objectives.
+- Move all observation actions, runtime messages, status texts and success-result variants into the MissionDef.
+- Use the configured skill and XP-per-tick values while an operator records the site.
+- Replace the observation-specific final Intellectual reward path with a generic configured skill XP reward (`Intellectual +250`).
+- Use the MissionDef recurrence range after an observation resolves.
+- Remove the complete legacy C# observation fallback; disable the archetype with an explicit error when required data is missing, duplicated or references an unknown `ThingDef`, `JobDef` or `SkillDef`.
+- Expand the developer definition report with recurrence, text-bank and objective configuration details.
+- Preserve the specialized RimWorld hauling, reservations, pathfinding, Toils, persistence and old-save migration adapter.
+- Raise the assembly version to `0.3.24.0` and the mod metadata version to `0.3.24-dev`.
+- Validate the complete migration on local revision `r1`, including configured Def references, all four work durations, active and final skill XP, success variants, failure paths, save/load compatibility, XML recurrence, legacy-operation regressions and a clean `Player.log`.
+
 ## 0.3.23-dev - Introduce reusable mission framework foundations
 
 - Add a Def-driven mission and questline toolbox for common timing, recurrence, difficulty, RP texts, rewards, phases and objectives.

@@ -126,11 +126,37 @@ namespace GateRimSG1.Missions
                     + (definition.phases?.Count ?? 0));
                 builder.AppendLine("  Offer variants: "
                     + (definition.texts?.offerLetterTexts?.Count ?? 0));
+                builder.AppendLine("  Success variants: "
+                    + (definition.texts?.successLetterTexts?.Count ?? 0));
+                builder.AppendLine("  Runtime texts: "
+                    + (definition.texts?.runtimeTexts?.Count ?? 0));
                 builder.AppendLine("  Repeat factor: "
                     + (definition.recurrence?.repeatedMissionWeightFactor
                         ?? 0f).ToString("0.00"));
+                builder.AppendLine("  Recurrence delay: "
+                    + (definition.recurrence?.minimumDelayTicks ?? 0)
+                    + "-"
+                    + (definition.recurrence?.maximumDelayTicks ?? 0)
+                    + " ticks");
                 builder.AppendLine("  Difficulty: "
                     + (definition.difficulty?.mode.ToString() ?? "None"));
+
+                foreach (GateRimMissionSkillXpRewardDef skillReward
+                    in definition.rewards?.skillXpRewards
+                        ?? Enumerable.Empty<
+                            GateRimMissionSkillXpRewardDef>())
+                {
+                    if (skillReward == null)
+                    {
+                        continue;
+                    }
+
+                    builder.AppendLine(
+                        "  Skill XP reward: "
+                        + (skillReward.skillDefName ?? "none")
+                        + " +"
+                        + skillReward.xp);
+                }
 
                 if (definition.difficulty != null
                     && definition.difficulty.mode
@@ -144,6 +170,47 @@ namespace GateRimSG1.Missions
                         + " (x"
                         + snapshot.Factor.ToString("0.00")
                         + ")");
+                }
+
+                foreach (GateRimMissionPhaseDef phase
+                    in definition.phases
+                        ?? Enumerable.Empty<GateRimMissionPhaseDef>())
+                {
+                    if (phase == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (GateRimMissionObjectiveDef objective
+                        in phase.objectives
+                            ?? Enumerable.Empty<
+                                GateRimMissionObjectiveDef>())
+                    {
+                        if (objective == null)
+                        {
+                            continue;
+                        }
+
+                        builder.AppendLine(
+                            "  Objective "
+                            + phase.id
+                            + "/"
+                            + objective.objectiveType
+                            + ": target="
+                            + (objective.targetDefName ?? "none")
+                            + ", secondary="
+                            + (objective.secondaryTargetDefName ?? "none")
+                            + ", job="
+                            + (objective.jobDefName ?? "none")
+                            + ", work="
+                            + objective.workTicks
+                            + ", secondaryWork="
+                            + objective.secondaryWorkTicks
+                            + ", skill="
+                            + (objective.skillDefName ?? "none")
+                            + ", xp/tick="
+                            + objective.xpPerTick.ToString("0.###"));
+                    }
                 }
             }
 

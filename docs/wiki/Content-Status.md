@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.23-dev`
+> Dernière révision : `0.3.24-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -46,7 +46,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
 | Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation de terrain via un site visuellement explicite, analyse d'un module de renseignement au communicateur avec choix prudent ou accéléré, accueil prolongé d'un agent blessé à la récupération symbiotique affaiblie et remise de deux médicaments à un agent Tok'ra en visite ; refus sans pénalité, conséquence après engagement accepté | 0.2.48-dev à 0.3.4-dev |
-| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, variantes RP, récurrence, difficulté et persistance ; observation Tok'ra utilisée comme premier pilote, autres opérations migrées progressivement | 0.3.23-dev |
+| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, variantes RP, récurrence, difficulté et persistance ; le pilote d'observation lit ses références, durées, compétences, récompenses, textes et délais depuis XML, tandis que ses jobs de terrain spécialisés restent en C# | 0.3.23-dev à 0.3.24-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |

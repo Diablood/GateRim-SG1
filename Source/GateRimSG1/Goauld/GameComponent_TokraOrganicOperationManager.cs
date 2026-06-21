@@ -16,17 +16,20 @@ namespace GateRimSG1.Goauld
     public class GameComponent_TokraOrganicOperationManager : GameComponent
     {
         internal const int StateCheckIntervalTicks = 2500;
-        internal const int ObservationStateCheckIntervalTicks = 250;
+        internal const int ActiveWorkStateCheckIntervalTicks = 250;
         internal const int MedicalSupplyStateCheckIntervalTicks = 250;
-        internal const int ObservationDeploymentWorkTicks = 500;
-        internal const int LegacyObservationWorkTicks = 5000;
-        internal const int ObservationDurationTicks = LegacyObservationWorkTicks;
-        internal const int ObservationRecoveryWorkTicks = 500;
-        internal const int ObservationTransmissionWorkTicks = 1000;
-        private const string ObservationDeploymentJobDefName
-            = "SG1_DeployTokraObservationDevice";
-        private const string ObservationTransmissionJobDefName
-            = "SG1_TransmitTokraObservationData";
+        internal static int ObservationDeploymentWorkTicks
+            => Math.Max(
+                1,
+                GetObservationDefinition()?.ObservationDeploymentWorkTicks ?? 1);
+        internal static int ObservationRecoveryWorkTicks
+            => Math.Max(
+                1,
+                GetObservationDefinition()?.ObservationRecoveryWorkTicks ?? 1);
+        internal static int ObservationTransmissionWorkTicks
+            => Math.Max(
+                1,
+                GetObservationDefinition()?.ObservationTransmissionWorkTicks ?? 1);
         private const int InitialMinimumDelayTicks = 180000;
         private const int InitialMaximumDelayTicks = 360000;
         private const int WoundedAgentStableDurationTicks = 5000;
@@ -398,7 +401,7 @@ namespace GateRimSG1.Goauld
             int stateCheckInterval = IsMedicalSupplyStateActive()
                 ? MedicalSupplyStateCheckIntervalTicks
                 : IsObservationStateActive()
-                    ? ObservationStateCheckIntervalTicks
+                    ? ActiveWorkStateCheckIntervalTicks
                     : StateCheckIntervalTicks;
             nextStateCheckTick = currentTick + stateCheckInterval;
             TickDepartingMedicalSupplyLiaison();
@@ -471,7 +474,7 @@ namespace GateRimSG1.Goauld
                 && manager.observationTransmissionTotalTicks > 0
                 && manager.observationTransmissionRemainingTicks > 0)
             {
-                key = "GR_TokraObservation_ResumeTransmissionAction";
+                key = definition.ResumeActionKey;
             }
             else if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.DeadDropRecovery
@@ -523,7 +526,7 @@ namespace GateRimSG1.Goauld
             {
                 if (!manager.HasValidObservationDevice())
                 {
-                    return "GR_TokraObservation_DeviceLost"
+                    return manager.GetObservationTextKey("deviceLost")
                         .Translate()
                         .ToString();
                 }
@@ -531,14 +534,14 @@ namespace GateRimSG1.Goauld
                 if (manager.operationDeadlineTick > 0
                     && currentTick >= manager.operationDeadlineTick)
                 {
-                    return "GR_TokraOrganicOperation_ObservationExpired"
+                    return manager.GetObservationTextKey("expired")
                         .Translate()
                         .ToString();
                 }
 
                 return manager.activeState == TokraOrganicOperationState.Ready
                     ? null
-                    : "GR_TokraObservation_DataNotReady"
+                    : manager.GetObservationTextKey("dataNotReady")
                         .Translate()
                         .ToString();
             }
@@ -628,6 +631,63 @@ namespace GateRimSG1.Goauld
             return manager != null
                 && manager.HasCommunicatorInteractionForMap(map)
                 && manager.TryHandleInteraction(map, operatorPawn);
+        }
+
+        private static TokraOrganicOperationDefinition
+            GetObservationDefinition()
+        {
+            return TokraOrganicOperationFramework.GetDefinition(
+                TokraOrganicOperationArchetype.GoauldObservation);
+        }
+
+        public static JobDef GetObservationDeploymentJobDef()
+        {
+            TokraOrganicOperationDefinition definition
+                = GetObservationDefinition();
+            string defName = definition?.ObservationDeploymentJobDefName;
+            return string.IsNullOrEmpty(defName)
+                ? null
+                : DefDatabase<JobDef>.GetNamedSilentFail(defName);
+        }
+
+        public static JobDef GetObservationTransmissionJobDef()
+        {
+            TokraOrganicOperationDefinition definition
+                = GetObservationDefinition();
+            string defName = definition?.ObservationTransmissionJobDefName;
+            return string.IsNullOrEmpty(defName)
+                ? null
+                : DefDatabase<JobDef>.GetNamedSilentFail(defName);
+        }
+
+        public static string GetObservationDeploymentActionLabel()
+        {
+            string key = GetObservationDefinition()?.DeployActionKey;
+            return string.IsNullOrEmpty(key)
+                ? null
+                : key.Translate().ToString();
+        }
+
+        public static string GetObservationRecoveryActionLabel(bool ready)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetObservationDefinition();
+            string key = ready
+                ? definition?.RecoverActionKey
+                : definition?.ContinueActionKey;
+            return string.IsNullOrEmpty(key)
+                ? null
+                : key.Translate().ToString();
+        }
+
+        public static string GetObservationJobUnavailableText()
+        {
+            TokraOrganicOperationDefinition definition
+                = GetObservationDefinition();
+            string key = definition?.GetRuntimeTextKey("jobUnavailable");
+            return string.IsNullOrEmpty(key)
+                ? null
+                : key.Translate().ToString();
         }
 
         public static IntVec3 GetObservationTargetCell(Map map)
@@ -1786,7 +1846,8 @@ namespace GateRimSG1.Goauld
                             : definition.Archetype
                                 == TokraOrganicOperationArchetype
                                     .GoauldObservation
-                                ? "GR_TokraObservation_FailedDeviceLostText"
+                                ? definition.GetRuntimeTextKey(
+                                    "failureDeviceLost")
                                 : definition.HasPhysicalObjective
                                     ? "GR_TokraOrganicOperation_DeadDropLostLetterText"
                                     : null;
@@ -2221,7 +2282,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     null,
-                    "GR_TokraObservation_FailedDeviceLostText");
+                    GetObservationTextKey("failureDeviceLost"));
                 return;
             }
 
@@ -2231,7 +2292,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     null,
-                    "GR_TokraObservation_FailedTimeoutText");
+                    GetObservationTextKey("failureTimeout"));
             }
         }
 
@@ -2263,7 +2324,7 @@ namespace GateRimSG1.Goauld
             if (notifyPlayer)
             {
                 Messages.Message(
-                    "GR_TokraObservation_DataReady".Translate(),
+                    GetObservationTextKey("dataReady").Translate(),
                     activeDeadDrop,
                     MessageTypeDefOf.PositiveEvent,
                     historical: true);
@@ -2464,28 +2525,28 @@ namespace GateRimSG1.Goauld
                 || activeState != TokraOrganicOperationState.Accepted
                 || activeDeadDrop != device)
             {
-                return "GR_TokraObservation_NoActiveDeployment"
+                return GetObservationTextKey("noActiveDeployment")
                     .Translate()
                     .ToString();
             }
 
             if (observationDeviceDeployed)
             {
-                return "GR_TokraObservation_AlreadyDeployed"
+                return GetObservationTextKey("alreadyDeployed")
                     .Translate()
                     .ToString();
             }
 
             if (IsOperationDeadlineExpired())
             {
-                return "GR_TokraOrganicOperation_ObservationExpired"
+                return GetObservationTextKey("expired")
                     .Translate()
                     .ToString();
             }
 
-            if (!CanUseIntellectualOperator(operatorPawn))
+            if (!CanUseObservationOperator(operatorPawn))
             {
-                return "GR_TokraOrganicOperation_OperatorIncapable"
+                return GetObservationTextKey("operatorIncapable")
                     .Translate()
                     .ToString();
             }
@@ -2503,14 +2564,14 @@ namespace GateRimSG1.Goauld
                 || observationPoint.Destroyed
                 || !observationPoint.Spawned)
             {
-                return "GR_TokraObservation_DeviceLost"
+                return GetObservationTextKey("deviceLost")
                     .Translate()
                     .ToString();
             }
 
             if (communicator == null)
             {
-                return "GR_TokraSecureCommunicator_Unpowered"
+                return GetObservationTextKey("communicatorUnpowered")
                     .Translate()
                     .ToString();
             }
@@ -2521,7 +2582,7 @@ namespace GateRimSG1.Goauld
                     PathEndMode.ClosestTouch,
                     Danger.Some))
             {
-                return "GR_TokraObservation_CannotReachDevice"
+                return GetObservationTextKey("cannotReachDevice")
                     .Translate()
                     .ToString();
             }
@@ -2531,7 +2592,7 @@ namespace GateRimSG1.Goauld
                     PathEndMode.Touch,
                     Danger.Some))
             {
-                return "GR_TokraObservation_CannotReachPoint"
+                return GetObservationTextKey("cannotReachPoint")
                     .Translate()
                     .ToString();
             }
@@ -2541,7 +2602,7 @@ namespace GateRimSG1.Goauld
                     PathEndMode.Touch,
                     Danger.Some))
             {
-                return "GR_TokraObservation_CannotReachCommunicator"
+                return GetObservationTextKey("cannotReachCommunicator")
                     .Translate()
                     .ToString();
             }
@@ -2565,7 +2626,7 @@ namespace GateRimSG1.Goauld
         {
             Thing observationPoint = observationPointMarker;
 
-            if (!CanUseIntellectualOperator(operatorPawn)
+            if (!CanUseObservationOperator(operatorPawn)
                 || activeArchetype
                     != TokraOrganicOperationArchetype.GoauldObservation
                 || activeState != TokraOrganicOperationState.Accepted
@@ -2597,7 +2658,7 @@ namespace GateRimSG1.Goauld
             observationTransmissionRemainingTicks = 0;
 
             Messages.Message(
-                "GR_TokraObservation_Deployed".Translate(
+                GetObservationTextKey("deployed").Translate(
                     operatorPawn.LabelShortCap,
                     GetRoundedUpHours(observationWorkTotalTicks).ToString()),
                 observationPoint,
@@ -2632,7 +2693,7 @@ namespace GateRimSG1.Goauld
                 || observationPoint.Destroyed
                 || !observationPoint.Spawned
                 || IsOperationDeadlineExpired()
-                || !CanUseIntellectualOperator(operatorPawn))
+                || !CanUseObservationOperator(operatorPawn))
             {
                 return false;
             }
@@ -2647,9 +2708,14 @@ namespace GateRimSG1.Goauld
             if (observationWorkRemainingTicks > 0)
             {
                 observationWorkRemainingTicks--;
-                operatorPawn.skills?.Learn(
-                    SkillDefOf.Intellectual,
-                    0.04f);
+                SkillDef workSkill = GetObservationSkillDef();
+                float xpPerTick
+                    = GetActiveDefinition()?.ObservationXpPerTick ?? 0f;
+
+                if (workSkill != null && xpPerTick > 0f)
+                {
+                    operatorPawn.skills?.Learn(workSkill, xpPerTick);
+                }
             }
 
             if (observationWorkRemainingTicks > 0)
@@ -2663,7 +2729,7 @@ namespace GateRimSG1.Goauld
             readyNotificationSent = true;
 
             Messages.Message(
-                "GR_TokraObservation_DataReady".Translate(),
+                GetObservationTextKey("dataReady").Translate(),
                 observationPoint,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
@@ -2720,21 +2786,21 @@ namespace GateRimSG1.Goauld
                 || !TokraObservationUtility
                     .IsObservationPoint(observationPoint))
             {
-                return "GR_TokraObservation_NoReadyRecovery"
+                return GetObservationTextKey("noReadyRecovery")
                     .Translate()
                     .ToString();
             }
 
             if (IsOperationDeadlineExpired())
             {
-                return "GR_TokraOrganicOperation_ObservationExpired"
+                return GetObservationTextKey("expired")
                     .Translate()
                     .ToString();
             }
 
-            if (!CanUseIntellectualOperator(operatorPawn))
+            if (!CanUseObservationOperator(operatorPawn))
             {
-                return "GR_TokraOrganicOperation_OperatorIncapable"
+                return GetObservationTextKey("operatorIncapable")
                     .Translate()
                     .ToString();
             }
@@ -2744,7 +2810,7 @@ namespace GateRimSG1.Goauld
 
             if (communicator == null)
             {
-                return "GR_TokraSecureCommunicator_Unpowered"
+                return GetObservationTextKey("communicatorUnpowered")
                     .Translate()
                     .ToString();
             }
@@ -2754,7 +2820,7 @@ namespace GateRimSG1.Goauld
                     PathEndMode.Touch,
                     Danger.Some))
             {
-                return "GR_TokraObservation_CannotReachPoint"
+                return GetObservationTextKey("cannotReachPoint")
                     .Translate()
                     .ToString();
             }
@@ -2764,7 +2830,7 @@ namespace GateRimSG1.Goauld
                     PathEndMode.Touch,
                     Danger.Some))
             {
-                return "GR_TokraObservation_CannotReachCommunicator"
+                return GetObservationTextKey("cannotReachCommunicator")
                     .Translate()
                     .ToString();
             }
@@ -2787,7 +2853,7 @@ namespace GateRimSG1.Goauld
                 && !observationPoint.Destroyed
                 && observationPoint.Spawned
                 && !IsOperationDeadlineExpired()
-                && CanUseIntellectualOperator(operatorPawn);
+                && CanUseObservationOperator(operatorPawn);
         }
 
         private bool TryStartObservationRecoveryInternal(
@@ -2811,8 +2877,7 @@ namespace GateRimSG1.Goauld
 
             ThingWithComps communicator = FindPoweredCommunicator(
                 GetActiveMap());
-            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
-                ObservationTransmissionJobDefName);
+            JobDef jobDef = GetObservationTransmissionJobDef();
 
             if (communicator == null || jobDef == null)
             {
@@ -2832,8 +2897,8 @@ namespace GateRimSG1.Goauld
 
             string messageKey = activeState
                     == TokraOrganicOperationState.Ready
-                ? "GR_TokraObservation_RecoveryStarted"
-                : "GR_TokraObservation_ObservationStarted";
+                ? GetObservationTextKey("recoveryStarted")
+                : GetObservationTextKey("observationStarted");
 
             Messages.Message(
                 messageKey.Translate(operatorPawn.LabelShortCap),
@@ -2912,8 +2977,7 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
-                ObservationTransmissionJobDefName);
+            JobDef jobDef = GetObservationTransmissionJobDef();
 
             if (jobDef == null)
             {
@@ -2953,7 +3017,7 @@ namespace GateRimSG1.Goauld
             }
 
             Messages.Message(
-                "GR_TokraObservation_TransmissionStarted".Translate(
+                GetObservationTextKey("transmissionStarted").Translate(
                     operatorPawn.LabelShortCap),
                 communicator,
                 MessageTypeDefOf.NeutralEvent,
@@ -2973,7 +3037,7 @@ namespace GateRimSG1.Goauld
                 && !IsOperationDeadlineExpired()
                 && IsPoweredSecureCommunicator(communicator)
                 && communicator.Map?.uniqueID == activeMapId
-                && CanUseIntellectualOperator(operatorPawn);
+                && CanUseObservationOperator(operatorPawn);
         }
 
         private bool PerformObservationTransmissionWorkInternal(
@@ -3397,8 +3461,12 @@ namespace GateRimSG1.Goauld
             Thing marker;
             IntVec3 targetCell;
 
-            if (definition == null
-                || !CanUseIntellectualOperator(operatorPawn)
+            if (definition == null)
+            {
+                return false;
+            }
+
+            if (!CanUseObservationOperator(operatorPawn)
                 || !TokraObservationUtility.TryCreateOperationTargets(
                     map,
                     out device,
@@ -3406,7 +3474,7 @@ namespace GateRimSG1.Goauld
                     out targetCell))
             {
                 Messages.Message(
-                    "GR_TokraObservation_SpawnFailed".Translate(),
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
                     MessageTypeDefOf.RejectInput,
                     historical: false);
                 return false;
@@ -3433,7 +3501,7 @@ namespace GateRimSG1.Goauld
             NotifyMissionAccepted(map, operatorPawn);
 
             Messages.Message(
-                "GR_TokraObservation_Accepted".Translate(
+                definition.AcceptedMessageKey.Translate(
                     operatorPawn?.LabelShortCap ?? "?",
                     GetRoundedUpHours(definition.DeadlineTicks).ToString()),
                 marker,
@@ -3441,8 +3509,8 @@ namespace GateRimSG1.Goauld
                 historical: true);
 
             Find.LetterStack?.ReceiveLetter(
-                "GR_TokraObservation_TargetLetterLabel".Translate(),
-                "GR_TokraObservation_TargetLetterText".Translate(
+                definition.GetRuntimeTextKey("targetLetterLabel").Translate(),
+                definition.GetRuntimeTextKey("targetLetterText").Translate(
                     GetRoundedUpHours(definition.DeadlineTicks).ToString()),
                 LetterDefOf.NeutralEvent,
                 marker);
@@ -3708,6 +3776,9 @@ namespace GateRimSG1.Goauld
             }
 
             int intellectualXp = definition.IntellectualXp;
+            int configuredSkillXp = isObservation
+                ? definition.SkillXpRewardAmount
+                : 0;
 
             if (isIntelligence
                 && intelligenceAnalysisMethod
@@ -3733,9 +3804,19 @@ namespace GateRimSG1.Goauld
 
             if (outcome == TokraOrganicOperationOutcome.Succeeded)
             {
-                GrantIntellectualExperience(
-                    operatorPawn,
-                    intellectualXp);
+                if (isObservation)
+                {
+                    GrantSkillExperience(
+                        operatorPawn,
+                        definition.SkillXpRewardDefName,
+                        configuredSkillXp);
+                }
+                else
+                {
+                    GrantIntellectualExperience(
+                        operatorPawn,
+                        intellectualXp);
+                }
                 GrantMedicineExperience(
                     operatorPawn,
                     definition.MedicineXp);
@@ -3766,14 +3847,19 @@ namespace GateRimSG1.Goauld
             TokraOrganicWoundedAgentUtility
                 .ClearOperationHealthConditions(patient);
 
+            string skillXpReport = isObservation
+                ? $"{definition.SkillXpRewardDefName ?? "none"} XP "
+                    + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? configuredSkillXp : 0)}"
+                : "Intellectual XP "
+                    + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? intellectualXp : 0)}";
+
             GR_Log.Message(
                 "Resolved Tok'ra organic operation "
                 + $"{definition.DebugLabel} with outcome {outcome}; "
                 + $"map {activeMapId}; operator "
                 + $"{operatorPawn?.LabelShortCap ?? "none"}; "
                 + $"patient {patient?.LabelShortCap ?? "none"}; "
-                + $"Intellectual XP "
-                + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? intellectualXp : 0)}; "
+                + skillXpReport + "; "
                 + $"Medicine XP "
                 + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? definition.MedicineXp : 0)}; "
                 + $"Social XP "
@@ -3847,11 +3933,10 @@ namespace GateRimSG1.Goauld
                 if (outcome == TokraOrganicOperationOutcome.Succeeded)
                 {
                     Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraOrganicOperation_SuccessLetterLabel"
-                            .Translate(),
-                        GetObservationSuccessTextKey().Translate(
+                        definition.SuccessLetterLabelKey.Translate(),
+                        GetObservationSuccessTextKey(definition).Translate(
                             operatorPawn?.LabelShortCap ?? "?",
-                            definition.IntellectualXp.ToString()),
+                            definition.SkillXpRewardAmount.ToString()),
                         LetterDefOf.PositiveEvent,
                         letterTarget);
                 }
@@ -3859,12 +3944,11 @@ namespace GateRimSG1.Goauld
                 {
                     string observationFailureKey
                         = string.IsNullOrEmpty(failureTextKey)
-                            ? "GR_TokraObservation_FailedTimeoutText"
+                            ? definition.GetRuntimeTextKey("failureTimeout")
                             : failureTextKey;
 
                     Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraOrganicOperation_FailedLetterLabel"
-                            .Translate(),
+                        definition.FailureLetterLabelKey.Translate(),
                         observationFailureKey.Translate(),
                         LetterDefOf.NegativeEvent,
                         letterTarget);
@@ -3935,23 +4019,38 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            int variant = Rand.Range(0, 3);
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            int selectedIndex = -1;
+            string selectedKey = definition?.SelectSuccessLetterTextKey(
+                lastObservationResultVariant,
+                out selectedIndex);
 
-            if (variant == lastObservationResultVariant)
+            if (string.IsNullOrEmpty(selectedKey))
             {
-                variant = (variant + Rand.RangeInclusive(1, 2)) % 3;
+                observationResultVariant = -1;
+                return;
             }
 
-            observationResultVariant = variant;
-            lastObservationResultVariant = variant;
+            observationResultVariant = selectedIndex;
+            lastObservationResultVariant = selectedIndex;
         }
 
-        private string GetObservationSuccessTextKey()
+        private string GetObservationSuccessTextKey(
+            TokraOrganicOperationDefinition definition)
         {
-            int variant = Math.Max(0, Math.Min(2, observationResultVariant))
-                + 1;
+            List<GateRimMissionTextVariantDef> variants
+                = definition?.MissionDef?.texts?.successLetterTexts;
 
-            return "GR_TokraObservation_SuccessText" + variant;
+            if (variants == null || variants.Count == 0)
+            {
+                return null;
+            }
+
+            int variant = Math.Max(
+                0,
+                Math.Min(variants.Count - 1, observationResultVariant));
+            return variants[variant].key;
         }
 
         private void PrepareIntelligenceOutcome()
@@ -4138,6 +4237,7 @@ namespace GateRimSG1.Goauld
             int maximumDelay;
 
             TokraOrganicOperationFramework.GetDelayRange(
+                lastOfferedArchetype,
                 GameComponent_TokraTrustTracker.GetCurrentTier(),
                 out minimumDelay,
                 out maximumDelay);
@@ -4324,6 +4424,39 @@ namespace GateRimSG1.Goauld
             return null;
         }
 
+        private string GetObservationTextKey(string id)
+        {
+            return GetActiveDefinition()?.GetRuntimeTextKey(id);
+        }
+
+        private SkillDef GetObservationSkillDef()
+        {
+            string defName = GetActiveDefinition()?.ObservationSkillDefName;
+            return string.IsNullOrEmpty(defName)
+                ? null
+                : DefDatabase<SkillDef>.GetNamedSilentFail(defName);
+        }
+
+        private bool CanUseObservationOperator(Pawn pawn)
+        {
+            SkillDef skillDef = GetObservationSkillDef();
+
+            if (pawn == null
+                || pawn.Dead
+                || pawn.Downed
+                || pawn.Faction != Faction.OfPlayer
+                || pawn.RaceProps?.Humanlike != true
+                || skillDef == null
+                || pawn.skills == null
+                || pawn.jobs == null)
+            {
+                return false;
+            }
+
+            SkillRecord skill = pawn.skills.GetSkill(skillDef);
+            return skill != null && !skill.TotallyDisabled;
+        }
+
         private bool HasValidObservationDevice()
         {
             if (activeArchetype
@@ -4363,8 +4496,7 @@ namespace GateRimSG1.Goauld
         private int GetConfiguredObservationWorkTicks()
         {
             int configuredTicks
-                = GetActiveDefinition()?.ObservationWorkTicks
-                    ?? LegacyObservationWorkTicks;
+                = GetActiveDefinition()?.ObservationWorkTicks ?? 0;
 
             return Math.Max(1, configuredTicks);
         }
@@ -4493,9 +4625,9 @@ namespace GateRimSG1.Goauld
             readyNotificationSent = false;
             TokraOrganicOperationDefinition definition
                 = GetActiveDefinition();
-            int restoredDeadline = definition != null
-                ? definition.DeadlineTicks
-                : ObservationDurationTicks + ObservationTransmissionWorkTicks;
+            int restoredDeadline = Math.Max(
+                1,
+                definition?.DeadlineTicks ?? 1);
             operationDeadlineTick = Math.Max(
                 operationDeadlineTick,
                 currentTick + restoredDeadline);
@@ -4658,7 +4790,7 @@ namespace GateRimSG1.Goauld
             {
                 if (!observationDeviceDeployed)
                 {
-                    status = "GR_TokraObservation_StatusAwaitingDeployment"
+                    status = definition.GetRuntimeTextKey("statusAwaitingDeployment")
                         .Translate(
                             GetRoundedUpHours(
                                 operationDeadlineTick - currentTick)
@@ -4667,7 +4799,7 @@ namespace GateRimSG1.Goauld
                 }
                 else if (activeState == TokraOrganicOperationState.Accepted)
                 {
-                    status = "GR_TokraObservation_StatusRecording"
+                    status = definition.GetRuntimeTextKey("statusRecording")
                         .Translate(
                             GetRoundedUpHours(
                                 observationWorkRemainingTicks)
@@ -4677,7 +4809,7 @@ namespace GateRimSG1.Goauld
                 else if (observationTransmissionTotalTicks > 0
                     && observationTransmissionRemainingTicks > 0)
                 {
-                    status = "GR_TokraObservation_StatusTransmissionInterrupted"
+                    status = definition.GetRuntimeTextKey("statusTransmissionInterrupted")
                         .Translate(
                             GetRoundedUpHours(
                                 operationDeadlineTick - currentTick)
@@ -4686,7 +4818,7 @@ namespace GateRimSG1.Goauld
                 }
                 else
                 {
-                    status = "GR_TokraObservation_StatusDataReady"
+                    status = definition.GetRuntimeTextKey("statusDataReady")
                         .Translate(
                             GetRoundedUpHours(
                                 operationDeadlineTick - currentTick)
@@ -4807,6 +4939,30 @@ namespace GateRimSG1.Goauld
                     .Translate(status)
                     .ToString()
                 : status;
+        }
+
+        private static void GrantSkillExperience(
+            Pawn pawn,
+            string skillDefName,
+            int amount)
+        {
+            if (pawn == null
+                || string.IsNullOrEmpty(skillDefName)
+                || amount <= 0)
+            {
+                return;
+            }
+
+            SkillDef skillDef = DefDatabase<SkillDef>.GetNamedSilentFail(
+                skillDefName);
+            SkillRecord skill = skillDef != null
+                ? pawn.skills?.GetSkill(skillDef)
+                : null;
+
+            if (skill != null && !skill.TotallyDisabled)
+            {
+                skill.Learn(amount, true);
+            }
         }
 
         private static void GrantIntellectualExperience(Pawn pawn, int amount)

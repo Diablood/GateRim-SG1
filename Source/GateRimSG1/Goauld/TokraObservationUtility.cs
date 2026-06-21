@@ -8,8 +8,13 @@ namespace GateRimSG1.Goauld
 {
     internal static class TokraObservationUtility
     {
-        public const string DeviceDefName = "SG1_TokraObservationDevice";
-        public const string MarkerDefName = "SG1_TokraObservationPoint";
+        public static string DeviceDefName
+            => TokraOrganicOperationFramework.GetDefinition(
+                TokraOrganicOperationArchetype.GoauldObservation)?.ObservationDeviceDefName;
+
+        public static string MarkerDefName
+            => TokraOrganicOperationFramework.GetDefinition(
+                TokraOrganicOperationArchetype.GoauldObservation)?.ObservationPointDefName;
 
         public static bool TryCreateOperationTargets(
             Map map,
@@ -28,10 +33,19 @@ namespace GateRimSG1.Goauld
 
             DestroyAllTargets(map, null, null);
 
+            string deviceDefName = DeviceDefName;
+            string markerDefName = MarkerDefName;
+
+            if (string.IsNullOrEmpty(deviceDefName)
+                || string.IsNullOrEmpty(markerDefName))
+            {
+                return false;
+            }
+
             ThingDef deviceDef = DefDatabase<ThingDef>.GetNamedSilentFail(
-                DeviceDefName);
+                deviceDefName);
             ThingDef markerDef = DefDatabase<ThingDef>.GetNamedSilentFail(
-                MarkerDefName);
+                markerDefName);
 
             if (deviceDef == null
                 || markerDef == null
@@ -86,7 +100,7 @@ namespace GateRimSG1.Goauld
 
             GR_Log.Message(
                 "Created Tok'ra observation operation targets; device at "
-                + $"{device.Position}, observation point at {observationCell}." );
+                + $"{device.Position}, observation point at {observationCell}.");
             return true;
         }
 

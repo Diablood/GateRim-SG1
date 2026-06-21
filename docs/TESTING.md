@@ -1,5 +1,38 @@
 # Tests
 
+## 0.3.24-dev - Complete observation mission Def migration
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.24-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.24-dev`, `0.3.24.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.24.0` ;
+- chargement de `SG1_TokraOrganic_GoauldObservation` avec toutes ses références `ThingDef`, `JobDef` et `SkillDef` valides ;
+- rapport développeur conforme avec `26` textes d'exécution, la plage de récurrence `240000–480000`, les quatre durées et la récompense `Intellectual +250` ;
+- flux complet validé : livraison, déploiement `500`, observation `10000`, récupération `500` et transmission `1000` ticks ;
+- XP active appliquée depuis la compétence et le taux configurés, puis récompense finale générique accordée une seule fois ;
+- aucune utilisation de l'ancienne définition C# complète de secours ;
+- désactivation explicite et diagnostic clair prévus pour toute définition requise absente, incomplète, dupliquée ou invalide ;
+- sauvegarde/recharge validée pendant l'offre, l'observation partielle et la transmission interrompue ;
+- migration prudente d'une occurrence active créée sous `v0.3.23-dev` ;
+- variantes de réussite pondérées et anti-répétition immédiate validées ;
+- échec par expiration et par perte du dispositif ou du point d'observation, sans XP final ;
+- prochaine opportunité planifiée depuis la plage XML du MissionDef ;
+- opérations de renseignements, d'agent blessé et de remise médicale inchangées sur leurs flux C# hérités ;
+- scénario SG, scénario vanilla, limites des outils debug et `Player.log` propres pour le périmètre testé.
+
+Points de régression durables :
+
+- toute donnée déclarative migrée doit avoir le MissionDef comme source unique, sans fallback silencieux ni duplication C# active ;
+- valider les références de Defs au chargement avant de rendre un archétype éligible ;
+- conserver en C# les mécaniques RimWorld spécialisées tant qu'un second usage réel ne justifie pas leur généralisation ;
+- préserver le total, la progression et les objets persistants des occurrences commencées avant un changement de configuration ;
+- tester séparément XP active, récompense finale et absence de récompense en cas d'échec ;
+- couvrir les variantes, l'anti-répétition, les échecs, la récurrence et plusieurs points de sauvegarde/recharge ;
+- vérifier les opérations encore héritées après chaque migration progressive ;
+- maintenir les données techniques hors des interfaces joueur et réserver les rapports détaillés au debug.
+
 ## 0.3.23-dev - Fondation réutilisable du framework de missions
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.23-dev`. La révision `r2` a remplacé la plage C# codée en dur de l'observation par la durée `workTicks` réellement lue depuis le Def et fixée à `10000` ticks, soit quatre heures en jeu.

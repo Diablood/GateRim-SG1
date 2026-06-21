@@ -11,6 +11,29 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
+## Dernier jalon clôturé — Migration Def complète de l'observation (`0.3.24-dev`)
+
+- [x] Partir explicitement de `v0.3.23-dev` sur `feature/observation-mission-def-cleanup`.
+- [x] Étendre le vocabulaire des objectifs avec cible secondaire, job, compétence, XP par tick et durée secondaire.
+- [x] Déplacer dans le MissionDef les Defs du dispositif, du marqueur, du job de déploiement et du job de transmission.
+- [x] Déplacer dans le MissionDef les durées de déploiement, observation, récupération et transmission.
+- [x] Déplacer dans le MissionDef la compétence active, son gain d'expérience par tick et la récompense finale générique de compétence.
+- [x] Déplacer dans le MissionDef toutes les actions et clés de textes spécifiques au flux d'observation.
+- [x] Déplacer les variantes de lettre de réussite dans une banque pondérée avec anti-répétition.
+- [x] Faire consommer au planificateur la plage de récurrence du MissionDef après une observation résolue.
+- [x] Supprimer la définition C# complète de secours de l'observation.
+- [x] Désactiver explicitement l'archétype et journaliser une erreur si sa définition requise est absente, incomplète ou référence un Def inconnu.
+- [x] Étendre le rapport développeur pour exposer les valeurs réellement chargées.
+- [x] Valider le contrôle de cohérence et le rebuild `0.3.24.0`.
+- [x] Valider le flux complet avec les quatre durées `500 / 10000 / 500 / 1000`.
+- [x] Valider compétence, XP, textes, variantes, échecs, récurrence et sauvegarde/recharge.
+- [x] Valider les trois opérations organiques encore héritées et `Player.log`.
+- [x] Clôturer le jalon, publier le tag final unique `v0.3.24-dev` et synchroniser le wiki.
+
+Le code spécialisé reste responsable des mécaniques RimWorld de terrain, mais il ne doit plus dupliquer les données d'équilibrage, les références de Defs ou les textes qui définissent cette mission. Une généralisation supplémentaire des Toils, réservations ou règles de placement n'est justifiée que lorsqu'une seconde mission présente le même besoin.
+
+La validation locale de la révision `r1` confirme le chargement de toutes les références configurées, le flux complet avec les quatre durées XML, les XP actifs et finaux, les variantes et échecs, la persistance, la récurrence configurée, les trois opérations héritées et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.24-dev`.
+
 ## Dernier jalon clôturé — Fondation du framework de missions (`0.3.23-dev`)
 
 - [x] Repartir du tag publié `v0.3.22-dev` sur la branche dédiée `feature/mission-framework-foundation`.

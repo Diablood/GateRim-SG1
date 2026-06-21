@@ -1,94 +1,108 @@
 # GateRim SG-1 mission framework
 
-Status: foundation introduced in `0.3.23-dev`; focused validation required.
+Status: foundation published in `0.3.23-dev`; complete observation data migration validated and published in `0.3.24-dev`.
 
 ## Purpose
 
-The mission framework is a reusable toolbox for recurring operations and longer questlines. It is intended to cover roughly 70 to 90 percent of common mission structures while keeping explicit C# extension points for unique mechanics.
+The framework is a reusable toolbox for recurring missions and longer questlines. It is intended to cover roughly 70 to 90 percent of common mission structure while preserving explicit C# extension points for mechanics that are genuinely unique.
 
-It is not intended to replace RimWorld's Quest system or to force every mission into one universal abstraction.
+It must not become a universal scripting language for RimWorld. XML owns declarative mission content and balance. Specialized workers and adapters own engine-facing mechanics such as spawning, reservations, pathfinding, Toils, map transitions and unusual objectives.
 
-## Architecture
+## Shared definition vocabulary
 
-### `GateRimMissionDef`
-
-XML definitions may describe:
+`GateRimMissionDef` currently supports:
 
 - offer, ready and deadline timing;
-- recurrence delays, context weights and repeated-mission penalties;
-- RimWorld threat-point capture and scaling profiles;
-- RP text banks with weighted variants;
-- action, status and trust-message keys;
-- skill rewards and trust consequences;
-- ordered phases, reusable objectives, conditions, transitions and consequences;
-- an optional specialized worker class.
+- hidden recurrence delay ranges;
+- per-context weights and local repeated-mission penalties;
+- difficulty snapshots based on RimWorld threat points;
+- weighted offer and success text banks;
+- named runtime text keys used by specialized adapters;
+- common actions and status keys;
+- generic per-skill XP rewards and trust consequences;
+- phases, objectives, conditions, transitions and consequences;
+- objective target and secondary-target Def names;
+- objective JobDef and SkillDef names;
+- primary and secondary work durations;
+- active XP gained per work tick;
+- persistent generic runtime data;
+- optional C# mission workers.
 
-### `GateRimMissionRuntimeData`
+The named runtime text collection exists for adapter messages that do not yet justify a universal phase executor. Entries use stable semantic IDs such as `deviceLost` or `transmissionStarted`; the C# adapter knows the semantic event, while the MissionDef selects the player-facing translation key.
 
-Each active occurrence may persist:
+## Persistent occurrence data
 
-- its mission Def and current generic phase;
-- the captured base and scaled threat points;
-- selected text-variant indexes;
+`GateRimMissionRuntimeData` stores:
+
+- MissionDef identity;
+- current common phase identifier;
+- base and scaled threat-point snapshots;
+- difficulty factor;
+- text-bank indexes;
 - generic counters and scalar values.
 
-Specialized systems may keep strongly typed fields beside this record during gradual migration. Existing saves therefore do not need to be converted into a completely new object graph at once.
+A specialized mission can keep typed save fields beside this generic state while it is migrated. Existing save data must never be rerolled merely because more fields become Def-driven.
 
-### `GateRimMissionWorker`
+## Observation reference implementation
 
-A specialized worker remains available when a mission requires behavior outside the common vocabulary. Examples include custom map generation, unusual medical logic, faction-specific AI or a unique interaction sequence.
+`SG1_TokraOrganic_GoauldObservation` is the first complete data-backed adapter reference.
 
-The framework should expand only after several real missions need the same new concept.
+The MissionDef now owns:
 
-## Replayability rules
+- the observation device and field-marker Def names;
+- the deployment and transmission JobDef names;
+- `500` deployment ticks;
+- `10000` active observation ticks;
+- `500` recovery ticks;
+- `1000` transmission ticks;
+- the `Intellectual` work skill and `0.04` XP per active tick;
+- offer duration and accepted-operation deadline;
+- hidden recurrence range `240000–480000` ticks;
+- trust-tier weights and repeated-archetype factor;
+- all observation action keys;
+- all observation-specific messages, disabled reasons and status keys;
+- three weighted success-letter variants with immediate anti-repetition;
+- trust and a generic final `Intellectual +250` skill XP reward.
 
-Recurring missions must normally:
+The previous complete C# fallback definition has been removed. If the required MissionDef is absent, incomplete or references an unknown required `ThingDef`, `JobDef` or `SkillDef`, the observation archetype is omitted and one explicit error is written to the log. Silent recovery to old balance or text values is forbidden because it would conceal a broken configuration.
 
-- become eligible again after success, failure or ignored offers;
-- use hidden variable delays;
-- penalize the most recently offered archetype;
-- avoid immediate reuse of the same visible RP text when alternatives exist;
-- keep technical weights, indexes and timing logic out of player-facing text.
+## Specialized observation adapter
 
-Text variants are not mandatory when a single carefully written contextual text remains natural after repetition. Quality takes priority over the number of variants.
+The observation adapter still owns:
 
-## Difficulty rules
+- creation and validation of a suitable peripheral map cell;
+- physical delivery and placement;
+- reservations and reachability checks;
+- hauling and carrying the device;
+- ordered deployment, operation, recovery and transmission Toils;
+- interruption and resumption behavior;
+- powered-communicator validation;
+- persistent references to the physical objects;
+- migration of older active occurrences.
 
-Mission difficulty profiles use RimWorld's current storyteller threat points as their shared baseline. Those points already reflect the active storyteller context and colony strength.
+These are implementation mechanics rather than duplicated mission content. They should only move into shared code when another real mission needs the same behavior.
 
-A mission may store:
+## Recurrence behavior
 
-- base threat points at the relevant phase;
-- a mission-specific scaling factor;
-- minimum and maximum bounds;
-- the final scaled value used by specialized mechanics.
+After a MissionDef-backed operation resolves, the scheduler uses that definition's configured minimum and maximum hidden delay. Legacy operations continue to use their historical trust-tier delay ranges until they are migrated.
 
-Fixed enemy counts should be avoided when a threat-point budget can provide equivalent behavior. Non-combat missions may still capture a snapshot without consuming it immediately, as demonstrated by the first observation pilot.
+The player must never see these internal ranges in normal play. They are visible only in developer reports and internal documentation.
 
-## First pilot
+## Difficulty behavior
 
-`SG1_TokraOrganic_GoauldObservation` migrates the recurring Tok'ra observation operation to an XML-backed definition while retaining its existing specialized execution code.
+A MissionDef can capture current RimWorld threat points when offered. The observation operation records this snapshot but does not fabricate a combat encounter merely to consume it.
 
-The pilot validates:
+A future migrated mission with a natural threat should use the captured budget to size enemies, equipment, timing or constraints. Fixed enemy counts should be avoided when a storyteller threat budget can express equivalent behavior.
 
-- Def loading and adapter fallback;
-- specialized-worker hooks for eligibility, offer, acceptance, periodic updates and resolution;
-- per-tier selection weights;
-- per-mission repeat penalty;
-- three RP offer variants with local anti-repetition;
-- persistent generic runtime data;
-- the real observation work duration read from the `MaintainOperator` objective instead of a mission-specific random C# range;
-- threat-point snapshot capture;
-- old-save initialization;
-- coexistence with three still-legacy organic operations.
+## Text variation
 
-The XML phases, conditions, transitions and consequences are validated as reusable data in this first foundation. The existing observation code remains authoritative for executing its detailed field sequence; a generic transition evaluator will be introduced only when a second migrated mission demonstrates the common execution rules.
+Offer and success banks use weighted entries. When more than one valid entry exists, the immediately previous index is removed from the candidate set before drawing. This prevents obvious back-to-back repetition without imposing a predictable cycle.
 
-The intelligence recovery, wounded-agent care and medical handoff operations remain intentionally unmigrated in this milestone. A later combat-capable pilot should validate actual threat-budget consumption before the framework is expanded further.
+A single text remains acceptable when it is deliberately written to survive repetition. Quantity must not replace RP quality.
 
-## Debug contract
+## Developer inspection
 
-The common inspection action is available only in developer mode:
+With developer mode enabled:
 
 ```text
 Debug actions menu
@@ -96,6 +110,27 @@ Debug actions menu
 → Mission framework: inspect definitions
 ```
 
-It reports loaded Defs, phase and text counts, recurrence penalties and the current map's threat snapshot. Per-occurrence technical data remains in the existing Tok'ra operation report.
+The report lists:
 
-Future generic phase-forcing tools should remain grouped under one mission debug entry rather than adding many top-level gizmos.
+- loaded definitions;
+- phase and text-bank counts;
+- recurrence factor and hidden delay range;
+- difficulty mode and current threat snapshot;
+- generic skill XP rewards;
+- every objective's target, secondary target, job, primary and secondary work duration, skill and XP rate.
+
+Player-facing interfaces must not expose this technical configuration.
+
+## Validation rule for future migrations
+
+Before treating a migrated mission as a framework reference:
+
+1. remove complete C# duplicates of its declarative data;
+2. reject missing, invalid or duplicated required configuration explicitly;
+3. preserve specialized mechanics that are not shared yet;
+4. validate normal completion, every meaningful failure, interruption and save/reload;
+5. validate recurrence and text anti-repetition across several occurrences;
+6. verify that no technical details leak into player-facing texts;
+7. test all still-legacy operations for regression.
+
+The next mission migration should exercise a genuinely new shared requirement—preferably adaptive threat consumption—rather than extending the framework speculatively.

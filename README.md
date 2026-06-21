@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.23-dev`
+- Development version: `0.3.24-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -29,7 +29,8 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Tok'ra trust, safehouses, medical support, secure communications, recurring
   organic operations and a sabotage mission on a temporary map.
 - A reusable, Def-driven mission framework foundation with persistent runtime
-  state, RP text variants, recurrence controls and RimWorld threat snapshots.
+  state, RP text variants, recurrence controls and RimWorld threat snapshots;
+  the Tok'ra observation pilot now reads its mission data and balance from XML.
 - Configurable cultural profiles, persistent cultural names and 83 cultural
   backstories integrated with starting pawns and world generation.
 
