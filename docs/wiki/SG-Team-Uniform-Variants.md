@@ -44,7 +44,7 @@ Toutes les variantes restent compatibles avec :
 - les [bottes tactiques SG](SG-Tactical-Boots) ;
 - les [gants tactiques SG](SG-Tactical-Gloves) ;
 - le [gilet tactique SG](SG-Tactical-Vest) ;
-- le [casque de terrain SG](SG-Team-Field-Helmet).
+- les [couvre-chefs de terrain SG](SG-Team-Field-Helmet).
 
 ## Évolutions visuelles
 

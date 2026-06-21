@@ -1,47 +1,66 @@
-# Casque de terrain SG
+# Couvre-chefs de terrain SG
 
-> Statut : prototype jouable
-> Première version : `0.2.0-dev-r2`
-> Intégration variable au scénario : `0.3.21-dev`
+> Casque introduit : `0.2.0-dev-r2`
+> Loadout variable : `0.3.21-dev`
+> Casquette ajoutée : `0.3.22-dev`
 
 ## Présentation
 
-Le **casque de terrain SG** est un casque ouvert facultatif destiné aux missions dangereuses.
+Les équipes SG peuvent maintenant commencer avec l'un de deux couvre-chefs, ou sans couvre-chef.
+
+### Casque de terrain SG
 
 ```text
 casque de terrain SG
 ```
 
-Il protège le haut de la tête sans masquer entièrement le visage et sans devenir une armure lourde.
+Le casque ouvert protège utilement le haut de la tête sans devenir une armure lourde. Il reste l'option adaptée aux missions les plus dangereuses.
 
-## Fabrication
-
-Le casque peut être fabriqué après la recherche **Armurerie** avec :
+Fabrication après la recherche **Équipement de terrain du SGC** :
 
 ```text
 25 acier
 15 tissu
+Artisanat 4
 ```
 
-Il demande une compétence **Artisanat 4**.
+### Casquette de terrain SG
+
+```text
+casquette de terrain SG
+```
+
+La casquette noire légère porte un insigne discret du SGC. Elle offre presque aucune protection, mais donne aux équipes SG une silhouette immédiatement reconnaissable et moins militarisée que le casque.
+
+Fabrication après la recherche **Équipement de terrain du SGC** :
+
+```text
+20 tissu
+Artisanat 2
+```
 
 ## Intégration au scénario
 
-Dans le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario), le casque n'est plus fourni en quatre exemplaires au sol. Chaque membre possède une chance indépendante de commencer directement équipé du casque, tandis que d'autres peuvent partir sans couvre-chef.
+Dans le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario), chaque pawn effectue un tirage indépendant :
 
-Le même emplacement pondéré accueillera plus tard la casquette SG. Il pourra alors sélectionner :
+```text
+30 % casque
+30 % casquette
+40 % aucun couvre-chef
+```
 
-- le casque de terrain ;
-- la casquette SG ;
-- aucun couvre-chef.
+Ces valeurs proviennent d'une chance globale de `0,6` pour le slot, puis d'un choix de poids égal entre le casque et la casquette.
 
-La casquette n'est pas encore incluse dans `0.3.21-dev`.
+Le casque et la casquette occupent le même emplacement et ne peuvent pas être portés simultanément.
 
 ## Compatibilité
 
-Le casque peut compléter :
+Les deux couvre-chefs complètent :
 
 - la [tenue de terrain SG](SG-Team-Uniform) ;
+- les [variantes du treillis SG](SG-Team-Uniform-Variants) ;
 - les [bottes tactiques SG](SG-Tactical-Boots) ;
 - les [gants tactiques SG](SG-Tactical-Gloves) ;
 - le [gilet tactique SG](SG-Tactical-Vest).
+
+Leur sélection reste limitée au scénario culturel prévu. Les scénarios vanilla ne reçoivent aucun couvre-chef SG automatiquement.

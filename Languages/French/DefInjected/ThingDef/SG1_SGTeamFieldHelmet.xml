@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_SGTeamFieldHelmet.label>casque de terrain SG</SG1_SGTeamFieldHelmet.label>
-    <SG1_SGTeamFieldHelmet.description>Casque ouvert de terrain destiné aux missions dangereuses des équipes SG. Il offre une protection utile du haut de la tête sans devenir une armure lourde. Le loadout du scénario Équipe SG isolée l'équipe aléatoirement sur certains membres, tandis que d'autres commencent sans couvre-chef.</SG1_SGTeamFieldHelmet.description>
+    <SG1_SGTeamFieldHelmet.description>Casque ouvert de terrain destiné aux missions dangereuses des équipes SG. Il offre une protection utile du haut de la tête sans devenir une armure lourde. Dans le scénario Équipe SG isolée, il constitue l'un des couvre-chefs facultatifs possibles.</SG1_SGTeamFieldHelmet.description>
 </LanguageData>

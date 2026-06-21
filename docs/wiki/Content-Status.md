@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.21-dev`
+> Dernière révision : `0.3.22-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -68,11 +68,11 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
 | Treillis d'équipe SG | Les anciens treillis combinés restent disponibles pour compatibilité ; le scénario utilise désormais des pantalons obligatoires et des vestes facultatives séparées, compatibles avec un tee-shirt vanilla | 0.1.78-dev / séparation 0.3.21-dev |
 | Variantes du treillis SG | Pantalons et vestes modulaires disponibles en olive, noir et désert ; couleur aléatoire par starter et coordonnée entre les deux pièces | 0.1.82-dev / loadout 0.3.21-dev |
-| Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, tee-shirt obligatoire, pantalon SG varié, veste et casque facultatifs, équipement tactique et assortiment de quatre armes humaines vanilla moins puissant | 0.2.0-dev-r1 / loadout 0.3.21-dev |
+| Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, tee-shirt obligatoire, pantalon SG varié, veste facultative, casque, casquette ou aucun couvre-chef, équipement tactique et assortiment de quatre armes humaines vanilla équilibré | 0.2.0-dev-r1 / loadout 0.3.21-dev / casquette 0.3.22-dev |
 | Bottes tactiques SG | Chaussures de terrain modulaires noires : protection légère des pieds, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.79-dev |
 | Gants tactiques SG | Gants de terrain modulaires noirs : protection légère des mains, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.80-dev |
 | Gilet tactique SG | Gilet noir de portage modulaire : protection modérée du torse et des épaules, désormais porté sur la couche extérieure afin de rester compatible avec le tee-shirt et la veste séparée | 0.1.81-dev / couche 0.3.21-dev |
-| Casque de terrain SG | Casque ouvert facultatif : protection modérée du haut de la tête, fabrication après Équipement de terrain du SGC et équipement aléatoire direct sur certains starters ; aucun lot fixe de quatre casques au sol | 0.2.0-dev-r2 / loadout 0.3.21-dev |
+| Couvre-chefs de terrain SG | Casque ouvert protecteur ou casquette noire légère, sélectionnés comme options facultatives du scénario avec possibilité de ne porter aucun couvre-chef | casque 0.2.0-dev-r2 / loadout 0.3.21-dev / casquette 0.3.22-dev |
 | Équipement des serviteurs Jaffa Goa'uld | Attribution automatique vanilla via `weaponTags` : Ma'Tok pour les guerriers, Ma'Tok ou Zat'nik'tel pour les gardes | 0.1.65-dev / diversification 0.2.9-dev |
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |

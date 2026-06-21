@@ -13,7 +13,23 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Règles culturelles d'équipement des starters (`0.3.21-dev`)
+### Casquette de terrain SG (`0.3.22-dev`)
+
+- [x] Partir du tag publié `v0.3.21-dev` sur la branche dédiée `feature/sg-team-field-cap`.
+- [x] Ajouter une casquette noire légère avec textures au sol et dans les quatre directions.
+- [x] Ajouter le Def anglais, les traductions françaises et la fabrication après la recherche d'équipement de terrain du SGC.
+- [x] Corriger la description obsolète du casque qui évoquait encore quatre exemplaires fournis au sol.
+- [x] Ajouter la casquette comme option de poids égal au casque dans le slot de couvre-chef existant.
+- [x] Conserver la chance globale `0.6`, soit `30 %` casque, `30 %` casquette et `40 %` aucun couvre-chef.
+- [x] Conserver le moteur C# et le scénario inchangés : l'intégration reste entièrement pilotée par XML.
+- [x] Valider le contrôle de cohérence, le rebuild `0.3.22.0` et le chargement sans erreur.
+- [x] Valider les trois résultats de couvre-chef et le rendu de la casquette dans les quatre directions.
+- [x] Valider la persistance après sauvegarde/rechargement et l'absence d'impact sur un scénario vanilla.
+- [x] Valider `Player.log`, clôturer le jalon, publier le tag final unique `v0.3.22-dev` et synchroniser le wiki.
+
+La révision locale `r1` est la version fonctionnelle validée. Le slot de couvre-chef culturel reste générique et piloté par XML : les poids représentent des probabilités, non des ratios garantis sur un petit échantillon. La casquette constitue l'option légère et visuelle, tandis que le casque reste l'option protectrice.
+
+### Jalon précédent — Règles culturelles d'équipement des starters (`0.3.21-dev`)
 
 - [x] Partir du tag publié `v0.3.20-dev` sur la branche dédiée `feature/cultural-starter-loadouts`.
 - [x] Auditer le composant spécifique `ScenPart_SGTeamStartingGear` et le consommateur culturel commun.
@@ -256,7 +272,7 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 
 ## Équipement Tau'ri / SGC
 
-- [ ] Créer une casquette SG dédiée puis l'ajouter comme option pondérée au slot de couvre-chef existant : casque, casquette ou aucun.
+- [ ] Valider et publier dans `0.3.22-dev` la casquette SG dédiée ajoutée comme option pondérée au slot de couvre-chef existant : casque, casquette ou aucun.
 - [ ] Ajouter de futures variantes de pantalons et de vestes comme contenu XML pondéré, en conservant la cohérence de variante entre les deux pièces.
 - [ ] Conserver les armes humaines vanilla comme base du scénario ; envisager uniquement des patchs de compatibilité facultatifs pour substituer des armes équivalentes provenant d'autres mods.
 

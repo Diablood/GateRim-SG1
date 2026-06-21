@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.21-dev`
+> Version du mod documentée : `0.3.22-dev`
 
 ## Le mod en bref
 
@@ -32,7 +32,7 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
   [Jaffa libres](Free-Jaffa-Faction), colonies mondiales et incidents associés.
 - Armes et équipements : [Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel),
-  [armures Jaffa](Jaffa-Armor) et tenue de terrain du SGC.
+  [armures Jaffa](Jaffa-Armor), tenue de terrain et couvre-chefs variés du SGC.
 
 ### Tok'ra
 

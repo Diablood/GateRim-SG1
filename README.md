@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.21-dev`
+- Development version: `0.3.22-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -25,7 +25,7 @@ people, factions, technologies, biology and conflicts surrounding it.
   and player-controlled Tok'ra host/symbiote personality switching.
 - Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin
   dependency and formal ceremonies.
-- Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and SGC field equipment.
+- Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.
 - Tok'ra trust, safehouses, medical support, secure communications, recurring
   organic operations and a sabotage mission on a temporary map.
 - Configurable cultural profiles, persistent cultural names and 83 cultural

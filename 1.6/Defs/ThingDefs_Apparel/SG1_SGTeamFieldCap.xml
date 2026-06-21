@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ArmorHelmetMakeableBase">
+        <defName>SG1_SGTeamFieldCap</defName>
+        <label>SG-team field cap</label>
+        <description>A lightweight black field cap bearing a subdued SGC insignia. It offers almost no protection, but gives SG teams a recognizable alternative to the field helmet.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamFieldCap/SGTeamFieldCap</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.08</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>20</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>1200</WorkToMake>
+            <MaxHitPoints>70</MaxHitPoints>
+            <Mass>0.15</Mass>
+            <Flammability>1.0</Flammability>
+            <ArmorRating_Sharp>0.02</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.01</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.01</ArmorRating_Heat>
+            <EquipDelay>0.6</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_SGFieldEquipment</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>2</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>UpperHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamFieldCap/SGTeamFieldCap</wornGraphicPath>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SG1_SGTeamFieldCap</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>

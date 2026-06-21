@@ -90,12 +90,16 @@
                         </li>
                     </options>
                 </li>
-                <!-- Future SG caps can be appended here beside the helmet. -->
+                <!-- Optional headgear: helmet or cap; the slot may also produce nothing. -->
                 <li>
                     <selectionChance>0.6</selectionChance>
                     <options>
                         <li>
                             <apparel>SG1_SGTeamFieldHelmet</apparel>
+                            <weight>1</weight>
+                        </li>
+                        <li>
+                            <apparel>SG1_SGTeamFieldCap</apparel>
                             <weight>1</weight>
                         </li>
                     </options>

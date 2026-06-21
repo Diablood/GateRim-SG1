@@ -1,6 +1,6 @@
 # Cultural starter loadouts
 
-Version: `0.3.21-dev`
+Version: `0.3.22-dev`
 
 ## Purpose
 
@@ -143,7 +143,8 @@ Rules may retain `requiredScenarioParts`. The stranded SG-team scenario uses the
 - mandatory field pants chosen equally from olive, black and desert variants;
 - optional field jacket with a `0.75` chance, reusing the pants variant;
 - mandatory tactical boots, gloves and vest;
-- optional field helmet with a `0.6` chance.
+- optional headgear slot with a `0.6` chance;
+- equal relative weights for `SG1_SGTeamFieldHelmet` and `SG1_SGTeamFieldCap`.
 
 The field uniform is split into two real apparel pieces:
 
@@ -152,7 +153,7 @@ The field uniform is split into two real apparel pieces:
 - tactical vest: patched to `Shell` so it can remain above the jacket;
 - T-shirt: vanilla `OnSkin`, torso.
 
-The future SG-team cap should be appended as another weighted option in the existing headgear slot. No C# change should be needed.
+The SG-team cap is now the second weighted option in the existing headgear slot. With a slot chance of `0.6` and equal option weights, the theoretical distribution is `30 %` helmet, `30 %` cap and `40 %` no headgear. No scenario-specific C# is involved.
 
 ## Vanilla weapon balance
 

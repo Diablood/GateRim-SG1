@@ -1,5 +1,31 @@
 # Tests
 
+## 0.3.22-dev - Casquette de terrain SG
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.22-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.22-dev`, `0.3.22.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.22.0` ;
+- chargement sans nouvelle erreur de Def, traduction ou texture ;
+- observation des trois résultats pondérés : casque, casquette et aucun couvre-chef ;
+- rendu de la casquette validé au nord, au sud, à l'est et à l'ouest sur les morphologies testées ;
+- casque et casquette mutuellement exclusifs ;
+- tee-shirt, pantalon, bottes, gants, gilet et veste facultative assortie inchangés ;
+- assortiment d'armes vanilla et fournitures du scénario inchangés ;
+- sauvegarde/recharge avec casquette équipée ;
+- scénario vanilla non affecté ;
+- `Player.log` propre.
+
+Points de régression durables :
+
+- interpréter les poids comme des probabilités et non comme des pourcentages garantis sur un petit échantillon ;
+- vérifier toute nouvelle pièce portée dans les quatre directions, sur plusieurs morphologies et après sauvegarde/recharge ;
+- conserver les couvre-chefs concurrents sur un emplacement mutuellement exclusif ;
+- ajouter les futures options de loadout principalement par XML sans réintroduire de logique spécifique au scénario ;
+- maintenir ensemble les Defs, traductions, textures, documentation technique et pages wiki.
+
 ## 0.3.21-dev - Règles culturelles d'équipement des starters
 
 Validation locale terminée sur la révision `r4`, puis jalon publié sous `v0.3.21-dev`. La révision `r3` a révélé une référence vanilla incorrecte `Apparel_Tshirt`, corrigée vers `Apparel_BasicShirt` dans `r4`.

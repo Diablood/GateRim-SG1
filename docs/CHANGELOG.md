@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.22-dev - Add an SG-team field cap
+
+- Add a lightweight black SG-team field cap with dedicated ground and four-direction worn graphics.
+- Add English Def text and French translations while correcting the field helmet's obsolete scenario description.
+- Add the cap to the existing optional cultural headgear slot beside the field helmet with equal relative weight.
+- Preserve the slot's `0.6` selection chance, producing helmet, cap or no-headgear outcomes without scenario-specific C#.
+- Keep the cap deliberately lighter and far less protective than the field helmet.
+- Update the SG-team scenario, starter-loadout documentation, wiki equipment page and public metadata to `0.3.22-dev`.
+- Validate loading, all three headgear outcomes, four-direction rendering, mutual exclusivity, save/reload persistence, vanilla-scenario isolation and a clean `Player.log` on local revision `r1`.
+
 ## 0.3.21-dev - Add cultural starter loadout rules
 
 - Fix the final consistency check so it accepts both `Version de DLL attendue` and `Version de DLL validée`, while avoiding duplicate failures for a missing captured value.

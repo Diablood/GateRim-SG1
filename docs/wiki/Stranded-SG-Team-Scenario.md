@@ -3,6 +3,7 @@
 > Statut : prototype jouable
 > Première version : `0.2.0-dev`
 > Loadout culturel modulaire : `0.3.21-dev`
+> Casquette de terrain : `0.3.22-dev`
 
 ## Présentation
 
@@ -43,9 +44,15 @@ Le gilet se porte au-dessus de la veste lorsqu'elle est présente.
 
 ## Couvre-chef
 
-Le [casque de terrain SG](SG-Team-Field-Helmet) est désormais directement équipé sur une partie des membres de l'équipe, mais il n'est pas obligatoire. Certains starters commencent donc sans couvre-chef.
+Le choix de [couvre-chef de terrain SG](SG-Team-Field-Helmet) est facultatif et indépendant pour chaque membre :
 
-Une future casquette d'équipe SG rejoindra le même choix aléatoire : casque, casquette ou rien.
+```text
+30 % casque de terrain
+30 % casquette de terrain
+40 % aucun couvre-chef
+```
+
+Le casque reste l'option protectrice. La casquette noire offre une alternative légère et visuelle. Les deux pièces utilisent le même emplacement et ne peuvent pas être portées ensemble.
 
 Les quatre casques autrefois déposés au sol ne font plus partie des fournitures du scénario.
 
@@ -94,4 +101,4 @@ Aucun établi préconstruit n'est fourni.
 
 ## Limites actuelles
 
-La Porte des étoiles fonctionnelle n’est pas encore disponible. La casquette SG complétera plus tard les variantes de couvre-chef. Des patchs de compatibilité pourront éventuellement remplacer l’assortiment vanilla par des armes humaines équivalentes provenant d’autres mods.
+La Porte des étoiles fonctionnelle n’est pas encore disponible. Des patchs de compatibilité pourront éventuellement remplacer l’assortiment vanilla par des armes humaines équivalentes provenant d’autres mods.

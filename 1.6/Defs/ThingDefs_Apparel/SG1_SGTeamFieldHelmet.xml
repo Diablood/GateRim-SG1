@@ -1,9 +1,9 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <ThingDef ParentName="ArmorHelmetMakeableBase">
         <defName>SG1_SGTeamFieldHelmet</defName>
         <label>SG-team field helmet</label>
-        <description>An open-face SG-team field helmet intended for hazardous missions. It offers useful upper-head protection without becoming heavy armor. The stranded SG-team scenario supplies four helmets as optional equipment rather than forcing them onto every team member.</description>
+        <description>An open-face SG-team field helmet intended for hazardous missions. It offers useful upper-head protection without becoming heavy armor. In the stranded SG-team scenario, it is one of several optional headgear choices.</description>
         <graphicData>
             <texPath>Things/Pawn/Humanlike/Apparel/SGTeamFieldHelmet/SGTeamFieldHelmet</texPath>
             <graphicClass>Graphic_Single</graphicClass>
