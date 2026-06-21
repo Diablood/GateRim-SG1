@@ -43,13 +43,13 @@ Contrôle recommandé :
 
 ```powershell
 git diff -- `
-    .\About\About.xml `
-    .\Source\GateRimSG1\GateRimSG1.csproj `
-    .\docs\PROJECT_STATE.md `
-    .\docs\ROADMAP.md `
-    .\docs\TESTING_CURRENT.md `
-    .\docs\TESTING.md `
-    .\docs\CHANGELOG.md
+    ./About/About.xml `
+    ./Source/GateRimSG1/GateRimSG1.csproj `
+    ./docs/PROJECT_STATE.md `
+    ./docs/ROADMAP.md `
+    ./docs/TESTING_CURRENT.md `
+    ./docs/TESTING.md `
+    ./docs/CHANGELOG.md
 ```
 
 Rechercher ensuite les marqueurs susceptibles d’être devenus obsolètes :
@@ -68,14 +68,18 @@ Une occurrence peut être légitime dans l’historique d’un jalon plus ancien
 Exécuter ensuite le contrôle automatisé de cohérence depuis la racine du dépôt :
 
 ```powershell
-.\tools\check-project-consistency.cmd
+./tools/check-project-consistency.cmd
 ```
 
 La commande doit terminer avec un code de sortie `0`. Elle vérifie notamment les versions publiques et techniques, le nombre réel de `BackstoryDef`, les nombres annoncés dans le README et le wiki, ainsi que le nombre de lignes du catalogue culturel. Si le jalon modifie l’un de ces formats contrôlés, mettre à jour l’outil et `docs/PROJECT_CONSISTENCY_CHECKS.md` dans le même jalon plutôt que de contourner le contrôle.
 
+Dans les fichiers Markdown, utiliser des `/` pour les chemins relatifs des commandes PowerShell, par exemple `./tools/check-project-consistency.cmd`. Cela évite qu’une séquence comme `\t` soit transformée en tabulation par un générateur ou une étape de copie. Le contrôle automatisé doit échouer si une tabulation littérale subsiste dans `README.md` ou sous `docs/`.
+
 Le commit final est l’état qui recevra le tag. Les documents doivent donc déjà décrire le jalon comme clôturé et sa publication comme effectuée. Les commandes de push et de tag sont exécutées immédiatement après ce commit. Si la publication échoue, ne pas commencer le jalon suivant tant que l’échec n’est pas résolu ; ne pas créer un second commit uniquement pour changer « prêt à publier » en « publié ».
 
 Si cette vérification révèle une faiblesse récurrente de la procédure, modifier ce fichier dans le même jalon afin que la correction ne dépende pas de la mémoire d’une conversation.
+
+Lorsqu’un contrôle automatisé lit un document dont le libellé change légitimement entre la phase de test et l’état final publié, le contrôle doit accepter explicitement les deux formulations prévues tout en vérifiant la même valeur. Éviter les expressions régulières liées à un seul état documentaire si la procédure impose ensuite de renommer ce libellé. Un champ absent ne doit produire qu’un seul diagnostic clair, sans second échec redondant dû à une chaîne vide.
 
 ## 4. Vérifier, committer et publier le dépôt principal
 
@@ -133,8 +137,8 @@ Avant la synchronisation, vérifier la cohérence de la navigation :
 Contrôle rapide des pages et de la sidebar :
 
 ```powershell
-Get-ChildItem .\docs\wiki -Filter *.md | Select-Object -ExpandProperty BaseName | Sort-Object
-Get-Content .\docs\wiki\_Sidebar.md
+Get-ChildItem ./docs/wiki -Filter *.md | Select-Object -ExpandProperty BaseName | Sort-Object
+Get-Content ./docs/wiki/_Sidebar.md
 ```
 
 Chemins locaux habituels :
@@ -156,7 +160,7 @@ Copier ensuite les pages depuis le dépôt principal :
 
 ```powershell
 Push-Location $modRepo
-.\tools\sync-wiki.cmd
+./tools/sync-wiki.cmd
 Pop-Location
 ```
 
@@ -226,6 +230,7 @@ nothing to commit, working tree clean
 
 - partir du dernier tag publié sur une branche `feature/...` dédiée ;
 - fournir un ZIP prêt à extraire à la racine du dépôt lorsque des fichiers sont modifiés ;
+- lorsqu’un jalon supprime un fichier, annoncer explicitement la suppression avant l’extraction, fournir la commande `Remove-Item` correspondante et vérifier que `git status --short` affiche bien l’état `D` ;
 - inclure tous les fichiers C# concernés sous `Source/GateRimSG1/**/*.cs` ;
 - inclure les Defs, traductions, documents et brouillons wiki utiles ;
 - utiliser uniquement `About/About.xml` et `docs/CHANGELOG.md` ;

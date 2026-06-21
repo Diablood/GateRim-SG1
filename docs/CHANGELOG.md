@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.21-dev - Add cultural starter loadout rules
+
+- Fix the final consistency check so it accepts both `Version de DLL attendue` and `Version de DLL validée`, while avoiding duplicate failures for a missing captured value.
+
+- Extend `CulturalStarterRule` with Def-driven candidate restrictions and starter apparel.
+- Keep legacy ordered apparel lists and add weighted slots with selection chances, weighted options, optional stuff and reusable shared variant groups.
+- Move the stranded SG-team minimum age and violence-capability rules into the Tau'ri / SGC cultural profile.
+- Replace the scenario-specific starting-gear implementation with a reusable hidden cultural marker.
+- Split the SG field uniform into mandatory pants and an optional jacket, each with olive, black and desert variants, while linking both pieces to the same per-pawn color selection.
+- Add a mandatory vanilla cloth T-shirt beneath the modular field uniform and correct its Def reference to `Apparel_BasicShirt` after the `r3` startup error.
+- Move the tactical vest to the `Shell` layer so the T-shirt, jacket and vest can coexist.
+- Equip the field helmet through an optional weighted headgear slot instead of supplying four loose helmets.
+- Prepare the same headgear slot for a future SG-team cap without scenario-specific C#.
+- Rebalance the vanilla human weapon set from three assault rifles and one pump shotgun to one assault rifle, one machine pistol, one autopistol and one pump shotgun.
+- Preserve existing combined-uniform Defs for save compatibility while removing them from the stranded-team starter loadout.
+- Replace backslash-based repository-relative command paths in Markdown with forward slashes and make the consistency checker reject literal tab characters in Markdown files.
+- Validate local revision `r4`: consistency and Markdown-tab checks, rebuild `0.3.21.0`, SG-team candidate restrictions, mandatory and optional apparel layers, all three linked uniform variants, optional helmets, the mixed vanilla firearm set, vanilla-scenario isolation, save/reload stability and a clean `Player.log`.
+- Publish the reusable starter-loadout framework while keeping future SG caps and uniform variants expressible through XML rather than scenario-specific C#.
+
 ## 0.3.20-dev - Add automated project consistency checks
 
 - Add a read-only PowerShell consistency checker and Windows wrapper under `tools/`.

@@ -33,6 +33,18 @@ namespace GateRimSG1.Culture
             return !(other is ScenPart_CulturalStarterProfiles);
         }
 
+        public override bool AllowPlayerStartingPawn(
+            Pawn pawn,
+            bool tryingToRedress,
+            PawnGenerationRequest request)
+        {
+            return !CulturalProfileResolver.TryResolveStarterRule(
+                    pawn,
+                    out CulturalPawnProfileDef _,
+                    out CulturalStarterRule rule)
+                || rule.AllowsPawn(pawn);
+        }
+
         public override void Notify_NewPawnGenerating(
             Pawn pawn,
             PawnGenerationContext context)
@@ -84,6 +96,88 @@ namespace GateRimSG1.Culture
 
             CulturalPawnNameGroup nameGroup = profile.NameGroupFor(pawn);
             AssignCulturalName(pawn, nameGroup);
+        }
+
+        public override void Notify_PawnGenerated(
+            Pawn pawn,
+            PawnGenerationContext context,
+            bool redressed)
+        {
+            if (context != PawnGenerationContext.PlayerStarter
+                || pawn?.apparel == null
+                || !CulturalProfileResolver.TryResolveStarterRule(
+                    pawn,
+                    out CulturalPawnProfileDef _,
+                    out CulturalStarterRule rule)
+                || !rule.HasStarterApparel)
+            {
+                return;
+            }
+
+            if (rule.replaceStartingApparel)
+            {
+                pawn.apparel.DestroyAll();
+            }
+
+            for (int index = 0; index < rule.apparel.Count; index++)
+            {
+                WearStarterApparel(
+                    pawn,
+                    rule.apparel[index],
+                    null,
+                    rule.apparelQuality);
+            }
+
+            Dictionary<string, string> selectedVariantKeys
+                = new Dictionary<string, string>();
+
+            for (int index = 0;
+                index < rule.apparelSlots.Count;
+                index++)
+            {
+                CulturalStarterApparelSlot slot = rule.apparelSlots[index];
+                if (slot != null
+                    && slot.TrySelect(
+                        selectedVariantKeys,
+                        out CulturalStarterApparelOption option))
+                {
+                    WearStarterApparel(
+                        pawn,
+                        option.apparel,
+                        option.stuff,
+                        rule.apparelQuality);
+                }
+            }
+        }
+
+        private static void WearStarterApparel(
+            Pawn pawn,
+            ThingDef apparelDef,
+            ThingDef stuffDef,
+            QualityCategory qualityCategory)
+        {
+            if (apparelDef == null)
+            {
+                return;
+            }
+
+            Apparel apparel = ThingMaker.MakeThing(
+                apparelDef,
+                stuffDef) as Apparel;
+            if (apparel == null)
+            {
+                GR_Log.Warning(
+                    $"Cannot equip cultural starter apparel: "
+                    + $"{apparelDef.defName} is not an Apparel ThingDef.");
+                return;
+            }
+
+            apparel.TryGetComp<CompQuality>()?.SetQuality(
+                qualityCategory,
+                ArtGenerationContext.Outsider);
+            pawn.apparel.Wear(
+                apparel,
+                dropReplacedApparel: false);
         }
 
         private static BackstoryDef SelectChildhood(

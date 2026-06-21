@@ -1,19 +1,18 @@
 # Casque de terrain SG
 
-> Statut : Prototype jouable  
-> Première version : 0.2.0-dev-r2
+> Statut : prototype jouable
+> Première version : `0.2.0-dev-r2`
+> Intégration variable au scénario : `0.3.21-dev`
 
 ## Présentation
 
-Le **casque de terrain SG** est un casque ouvert facultatif destiné aux
-missions dangereuses.
+Le **casque de terrain SG** est un casque ouvert facultatif destiné aux missions dangereuses.
 
 ```text
 casque de terrain SG
 ```
 
-Il protège le haut de la tête sans masquer entièrement le visage et sans
-devenir une armure lourde.
+Il protège le haut de la tête sans masquer entièrement le visage et sans devenir une armure lourde.
 
 ## Fabrication
 
@@ -28,23 +27,21 @@ Il demande une compétence **Artisanat 4**.
 
 ## Intégration au scénario
 
-Le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario) fournit :
+Dans le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario), le casque n'est plus fourni en quatre exemplaires au sol. Chaque membre possède une chance indépendante de commencer directement équipé du casque, tandis que d'autres peuvent partir sans couvre-chef.
 
-```text
-4 casques de terrain SG
-```
+Le même emplacement pondéré accueillera plus tard la casquette SG. Il pourra alors sélectionner :
 
-Ils restent dans les caisses de matériel initiales. Aucun membre de l'équipe
-ne les porte automatiquement : le joueur choisit quand les utiliser.
+- le casque de terrain ;
+- la casquette SG ;
+- aucun couvre-chef.
+
+La casquette n'est pas encore incluse dans `0.3.21-dev`.
 
 ## Compatibilité
 
 Le casque peut compléter :
 
-- le [treillis d'équipe SG](SG-Team-Uniform) ;
+- la [tenue de terrain SG](SG-Team-Uniform) ;
 - les [bottes tactiques SG](SG-Tactical-Boots) ;
 - les [gants tactiques SG](SG-Tactical-Gloves) ;
 - le [gilet tactique SG](SG-Tactical-Vest).
-
-Les textures définitives et les concept arts semi-réalistes destinés au wiki
-seront produits lors d'une future passe graphique dédiée.

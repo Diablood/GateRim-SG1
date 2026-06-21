@@ -3,8 +3,8 @@
 Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
-> Statut du wiki : documentation française active  
-> Version du mod documentée : `0.3.20-dev`
+> Statut du wiki : documentation française active
+> Version du mod documentée : `0.3.21-dev`
 
 ## Le mod en bref
 

@@ -13,7 +13,33 @@ Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit
 
 ## Dernier jalon clôturé
 
-### Contrôle automatisé de cohérence du projet (`0.3.20-dev`)
+### Règles culturelles d'équipement des starters (`0.3.21-dev`)
+
+- [x] Partir du tag publié `v0.3.20-dev` sur la branche dédiée `feature/cultural-starter-loadouts`.
+- [x] Auditer le composant spécifique `ScenPart_SGTeamStartingGear` et le consommateur culturel commun.
+- [x] Étendre `CulturalStarterRule` avec des restrictions de candidat et des listes d'équipement XML.
+- [x] Remplacer le composant spécifique par un marqueur de scénario culturel générique.
+- [x] Corriger les chemins de commandes Markdown susceptibles de transformer `\t` en tabulation et étendre le contrôle automatique aux tabulations littérales.
+- [x] Étendre le framework avec des emplacements d'habillement pondérés, une chance de sélection, un matériau optionnel et des groupes de variantes partagés.
+- [x] Rendre le tee-shirt vanilla obligatoire pour chaque membre de l'équipe et corriger la référence vers `Apparel_BasicShirt` après l'erreur de chargement de `r3`.
+- [x] Scinder le treillis SG en pantalon obligatoire et veste facultative.
+- [x] Ajouter trois variantes visuelles pondérées pour les pantalons et les vestes : olive, noire et désert.
+- [x] Relier pantalon et veste afin qu'une veste éventuelle reprenne toujours la variante du pantalon du même pawn.
+- [x] Déplacer le gilet tactique sur la couche `Shell` afin de permettre le cumul tee-shirt, veste et gilet.
+- [x] Rendre le casque de terrain aléatoire et directement équipé, tout en préparant le même emplacement pour une future casquette SG ou l'absence de couvre-chef.
+- [x] Rééquilibrer l'assortiment d'armes humaines vanilla vers un fusil d'assaut, un pistolet-mitrailleur, un pistolet automatique et un fusil à pompe.
+- [x] Valider le contrôle de cohérence, le test négatif des tabulations, le rebuild `0.3.21.0` et le chargement XML.
+- [x] Corriger le contrôle final pour accepter les formulations `Version de DLL attendue` et `Version de DLL validée` sans double diagnostic en cas de valeur absente.
+- [x] Valider la sélection des starters, les restrictions d'âge et de violence, les couches vestimentaires et la diversité pondérée.
+- [x] Valider les trois couleurs, la cohérence pantalon/veste, les cas avec et sans veste et les cas avec et sans casque.
+- [x] Valider le nouvel assortiment d'armes, les fournitures et l'absence des quatre casques laissés au sol.
+- [x] Valider qu'un scénario vanilla ne reçoit ni restrictions ni équipement SG-team.
+- [x] Valider sauvegarde/recharge et un `Player.log` propre.
+- [x] Publier la branche, le tag final unique `v0.3.21-dev` et synchroniser le wiki séparé.
+
+La révision locale `r4` est la version fonctionnelle validée. Le système reste générique : une future culture peut configurer ses propres emplacements obligatoires, facultatifs, pondérés et liés par variante principalement en XML. Les anciens treillis combinés restent définis pour les sauvegardes existantes, mais ne sont plus utilisés par le scénario. Les armes Tau'ri restent volontairement des armes humaines vanilla ; des patchs de compatibilité pourront éventuellement substituer des armes provenant d'autres mods sans imposer une gamme d'armes SGC propre à GateRim SG-1.
+
+### Jalon précédent — Contrôle automatisé de cohérence du projet (`0.3.20-dev`)
 
 - [x] Partir du tag publié `v0.3.19-dev` sur la branche dédiée `feature/project-consistency-checks`.
 - [x] Reproduire la dérive publique : README et accueil du wiki restés en `0.3.17-dev` et à `70` backstories après la publication de `0.3.19-dev` et de `83` entrées.
@@ -227,6 +253,12 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 - [ ] Garder les détails techniques dans les rapports debug, les messages développeur ou les logs.
 - [ ] Vérifier qu'aucun outil debug n'est visible lorsque le mode développeur et l'option avancée du mod sont désactivés.
 - [ ] Effectuer avant stabilisation publique une passe globale sur les textes visibles : ton RP, formulations naturelles, boutons courts et absence d'informations techniques inutiles.
+
+## Équipement Tau'ri / SGC
+
+- [ ] Créer une casquette SG dédiée puis l'ajouter comme option pondérée au slot de couvre-chef existant : casque, casquette ou aucun.
+- [ ] Ajouter de futures variantes de pantalons et de vestes comme contenu XML pondéré, en conservant la cohérence de variante entre les deux pièces.
+- [ ] Conserver les armes humaines vanilla comme base du scénario ; envisager uniquement des patchs de compatibilité facultatifs pour substituer des armes équivalentes provenant d'autres mods.
 
 ## Framework culturel interne `0.3.x`
 

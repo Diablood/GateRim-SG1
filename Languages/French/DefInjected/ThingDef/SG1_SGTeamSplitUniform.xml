@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_OliveSGTeamPants.label>pantalon de treillis d'équipe SG olive</SG1_OliveSGTeamPants.label>
+    <SG1_OliveSGTeamPants.description>Un pantalon de terrain vert olive utilisé par les équipes SG. Il constitue la partie basse obligatoire de la tenue modulaire et peut être combiné avec un tee-shirt, une veste de treillis et un gilet tactique.</SG1_OliveSGTeamPants.description>
+    <SG1_BlackSGTeamPants.label>pantalon de treillis d'équipe SG noir</SG1_BlackSGTeamPants.label>
+    <SG1_BlackSGTeamPants.description>Un pantalon de terrain noir adapté aux opérations discrètes des équipes SG. Ses caractéristiques sont identiques à celles des autres variantes.</SG1_BlackSGTeamPants.description>
+    <SG1_DesertSGTeamPants.label>pantalon de treillis d'équipe SG désert</SG1_DesertSGTeamPants.label>
+    <SG1_DesertSGTeamPants.description>Un pantalon de terrain couleur sable destiné aux missions hors-monde en environnement aride. Ses caractéristiques sont identiques à celles des autres variantes.</SG1_DesertSGTeamPants.description>
+    <SG1_OliveSGTeamJacket.label>veste de treillis d'équipe SG olive</SG1_OliveSGTeamJacket.label>
+    <SG1_OliveSGTeamJacket.description>Une veste de terrain vert olive portée au-dessus d'un tee-shirt. Elle est facultative dans l'équipement de départ de l'équipe isolée et reste compatible avec le gilet tactique.</SG1_OliveSGTeamJacket.description>
+    <SG1_BlackSGTeamJacket.label>veste de treillis d'équipe SG noire</SG1_BlackSGTeamJacket.label>
+    <SG1_BlackSGTeamJacket.description>Une veste de terrain noire adaptée aux missions tactiques et discrètes. Ses caractéristiques sont identiques à celles des autres variantes.</SG1_BlackSGTeamJacket.description>
+    <SG1_DesertSGTeamJacket.label>veste de treillis d'équipe SG désert</SG1_DesertSGTeamJacket.label>
+    <SG1_DesertSGTeamJacket.description>Une veste de terrain couleur sable adaptée aux missions en environnement aride. Ses caractéristiques sont identiques à celles des autres variantes.</SG1_DesertSGTeamJacket.description>
+</LanguageData>

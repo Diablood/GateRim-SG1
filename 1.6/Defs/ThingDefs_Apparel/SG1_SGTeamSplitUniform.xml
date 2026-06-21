@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef Name="SG1_SGTeamPantsBase" ParentName="ApparelMakeableBase" Abstract="True">
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.08</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>40</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Mass>0.8</Mass>
+            <Flammability>1</Flammability>
+            <ArmorRating_Sharp>0.04</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.02</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.05</ArmorRating_Heat>
+            <EquipDelay>1</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_SGFieldEquipment</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Legs</li>
+            </bodyPartGroups>
+            <layers>
+                <li>OnSkin</li>
+            </layers>
+            <tags>
+                <li>IndustrialAdvanced</li>
+                <li>SG1_SGTeamUniform</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Worker</li>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef Name="SG1_SGTeamJacketBase" ParentName="ApparelMakeableBase" Abstract="True">
+        <techLevel>Industrial</techLevel>
+        <tradeability>Sellable</tradeability>
+        <generateCommonality>0.08</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_SGTeamApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>40</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Mass>0.8</Mass>
+            <Flammability>1</Flammability>
+            <ArmorRating_Sharp>0.04</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.02</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.05</ArmorRating_Heat>
+            <EquipDelay>1</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_SGFieldEquipment</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>3</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Shoulders</li>
+                <li>Arms</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <tags>
+                <li>IndustrialAdvanced</li>
+                <li>SG1_SGTeamUniform</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Worker</li>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_SGTeamPantsBase">
+        <defName>SG1_OliveSGTeamPants</defName>
+        <label>olive SG-team field pants</label>
+        <description>Olive-drab field trousers used by SG teams. They form the mandatory lower half of the modular field uniform and can be combined with a T-shirt, field jacket and tactical vest.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamPantsOlive/SGTeamPantsOlive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamPantsOlive/SGTeamPantsOlive</wornGraphicPath>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_SGTeamPantsBase">
+        <defName>SG1_BlackSGTeamPants</defName>
+        <label>black SG-team field pants</label>
+        <description>Black field trousers used for low-visibility SG-team operations. They are mechanically equivalent to the other field-pants variants.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamPantsBlack/SGTeamPantsBlack</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamPantsBlack/SGTeamPantsBlack</wornGraphicPath>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_SGTeamPantsBase">
+        <defName>SG1_DesertSGTeamPants</defName>
+        <label>desert SG-team field pants</label>
+        <description>Sand-colored field trousers intended for arid off-world missions. They are mechanically equivalent to the other field-pants variants.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamPantsDesert/SGTeamPantsDesert</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamPantsDesert/SGTeamPantsDesert</wornGraphicPath>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_SGTeamJacketBase">
+        <defName>SG1_OliveSGTeamJacket</defName>
+        <label>olive SG-team field jacket</label>
+        <description>An olive-drab SG-team field jacket worn over a T-shirt. It is optional in the stranded-team starter loadout and remains compatible with the tactical vest.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamJacketOlive/SGTeamJacketOlive</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamJacketOlive/SGTeamJacketOlive</wornGraphicPath>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_SGTeamJacketBase">
+        <defName>SG1_BlackSGTeamJacket</defName>
+        <label>black SG-team field jacket</label>
+        <description>A black SG-team field jacket suited to tactical and low-visibility missions. It is mechanically equivalent to the other field-jacket variants.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamJacketBlack/SGTeamJacketBlack</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamJacketBlack/SGTeamJacketBlack</wornGraphicPath>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_SGTeamJacketBase">
+        <defName>SG1_DesertSGTeamJacket</defName>
+        <label>desert SG-team field jacket</label>
+        <description>A sand-colored SG-team field jacket suited to arid missions. It is mechanically equivalent to the other field-jacket variants.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/SGTeamJacketDesert/SGTeamJacketDesert</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/SGTeamJacketDesert/SGTeamJacketDesert</wornGraphicPath>
+        </apparel>
+    </ThingDef>
+</Defs>

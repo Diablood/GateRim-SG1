@@ -1,5 +1,40 @@
 # Tests
 
+## 0.3.21-dev - Règles culturelles d'équipement des starters
+
+Validation locale terminée sur la révision `r4`, puis jalon publié sous `v0.3.21-dev`. La révision `r3` a révélé une référence vanilla incorrecte `Apparel_Tshirt`, corrigée vers `Apparel_BasicShirt` dans `r4`.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.21-dev`, `0.3.21.0` et `83` backstories ;
+- contrôle final compatible avec les libellés `Version de DLL attendue` et `Version de DLL validée`, sans second diagnostic redondant si le champ est absent ;
+- détection d'une tabulation Markdown volontaire, nettoyage de la sonde puis nouveau passage positif ;
+- rebuild forcé et DLL `0.3.21.0` ;
+- restrictions SG-team d'âge biologique minimum et de capacité de violence ;
+- noms Tau'ri et carrières SGC conservés ;
+- tee-shirt vanilla, pantalon SG, bottes, gants et gilet toujours équipés à qualité normale ;
+- pantalons olive, noirs et désert observés ;
+- veste facultative conservant toujours la même variante que le pantalon du pawn ;
+- cas avec et sans veste, puis avec et sans casque ;
+- coexistence correcte des couches tee-shirt, veste et gilet ;
+- vérification visuelle des pièces séparées dans les orientations et morphologies testées ;
+- assortiment d'un fusil d'assaut, d'un pistolet-mitrailleur, d'un pistolet automatique et d'un fusil à pompe ;
+- fournitures habituelles présentes et absence des quatre casques anciennement déposés au sol ;
+- scénario vanilla non affecté ;
+- sauvegarde/recharge stable et `Player.log` propre.
+
+Points de régression durables :
+
+- garder les règles de starter limitées au contexte `PlayerStarter` et au profil culturel réellement sélectionné ;
+- conserver le marqueur de scénario comme identifiant sans réintroduire de logique spécifique dans son `ScenPart` ;
+- vérifier les conflits de couches à chaque ajout d'un vêtement obligatoire ou facultatif ;
+- maintenir des ensembles de `variantKey` identiques entre les slots d'un même `variantGroup` ;
+- tester les options pondérées sur un échantillon suffisant sans transformer leur poids en pourcentage garanti ;
+- conserver les anciens Defs de treillis combinés pour les sauvegardes sans les réutiliser dans le scénario ;
+- ajouter la future casquette SG dans le slot de couvre-chef existant ;
+- conserver les armes humaines vanilla comme base et réserver les armes de mods à des patchs de compatibilité facultatifs ;
+- utiliser `/` dans les chemins relatifs PowerShell documentés et conserver l'audit des tabulations Markdown.
+
 ## 0.3.20-dev - Contrôle automatisé de cohérence du projet
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.20-dev`. La révision `r1` a révélé une incompatibilité de syntaxe avec Windows PowerShell 5.1, corrigée et validée dans `r2`.

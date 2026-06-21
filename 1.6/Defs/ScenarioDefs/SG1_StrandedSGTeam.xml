@@ -26,30 +26,35 @@
                     <pawnChoiceCount>4</pawnChoiceCount>
                     <allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
                 </li>
-                <li Class="GateRimSG1.Scenarios.ScenPart_SGTeamStartingGear">
+                <li Class="GateRimSG1.Culture.ScenPart_CulturalMarker">
                     <def>SG1_StrandedSGTeamStartingGear</def>
-                    <uniform>SG1_GenericSGTeamUniform</uniform>
-                    <boots>SG1_SGTacticalBoots</boots>
-                    <gloves>SG1_SGTacticalGloves</gloves>
-                    <vest>SG1_SGTacticalVest</vest>
+                    <visible>false</visible>
                 </li>
                 <li Class="ScenPart_PlayerPawnsArriveMethod">
                     <def>PlayerPawnsArriveMethod</def>
                     <method>Standing</method>
                 </li>
-
-                <!-- Temporary Tau'ri weapons until dedicated SGC firearms exist. -->
+                <!-- Mixed vanilla human firearms for the stranded SG-team start. -->
                 <li Class="ScenPart_StartingThing_Defined">
                     <def>StartingThing_Defined</def>
                     <thingDef>Gun_AssaultRifle</thingDef>
-                    <count>3</count>
+                    <count>1</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Gun_MachinePistol</thingDef>
+                    <count>1</count>
+                </li>
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>Gun_Autopistol</thingDef>
+                    <count>1</count>
                 </li>
                 <li Class="ScenPart_StartingThing_Defined">
                     <def>StartingThing_Defined</def>
                     <thingDef>Gun_PumpShotgun</thingDef>
                     <count>1</count>
                 </li>
-
                 <!-- Bivouac equipment. -->
                 <li Class="ScenPart_StartingThing_Defined">
                     <def>StartingThing_Defined</def>
@@ -57,14 +62,6 @@
                     <stuff>Cloth</stuff>
                     <count>4</count>
                 </li>
-
-                <!-- Optional field helmets: supplied, never auto-equipped. -->
-                <li Class="ScenPart_StartingThing_Defined">
-                    <def>StartingThing_Defined</def>
-                    <thingDef>SG1_SGTeamFieldHelmet</thingDef>
-                    <count>4</count>
-                </li>
-
                 <!-- Recovered emergency-supply crates. -->
                 <li Class="ScenPart_StartingThing_Defined">
                     <def>StartingThing_Defined</def>
@@ -101,7 +98,6 @@
                     <thingDef>Leather_Plain</thingDef>
                     <count>80</count>
                 </li>
-
                 <li Class="GateRimSG1.Scenarios.ScenPart_TranslatedGameStartDialog">
                     <def>GameStartDialog</def>
                     <textKey>GR_StrandedSGTeam_GameStartDialog</textKey>

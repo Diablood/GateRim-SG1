@@ -1,6 +1,6 @@
 # Cultural framework
 
-Version: `0.3.16-dev`
+Version: `0.3.21-dev`
 
 ## Purpose
 
@@ -120,6 +120,42 @@ The patch preserves the existing semantics:
 No new matcher, resolver branch or skill-offset rule is introduced. This is the preferred extension pattern while the existing Def schema expresses the content accurately.
 
 The complete `0.3.16-dev` matrix validated the expanded starter pools, mixed cultural name rules, additive ordinary-human behavior, normal world generation, save/load and Tok'ra switching without a post-test C# or Def correction.
+
+### Cultural starter restrictions and loadouts (`0.3.21-dev`)
+
+The starter-rule consumer reads candidate restrictions and equipment data from the same `CulturalStarterRule`:
+
+- minimum biological age;
+- requirement to remain capable of violence;
+- optional replacement of generated clothing;
+- legacy ordered apparel lists;
+- weighted apparel slots with optional shared variant groups;
+- per-slot selection chance;
+- weighted apparel options;
+- optional material for stuffable apparel;
+- requested quality category.
+
+Restrictions are evaluated while the player randomizes starters. Apparel is applied only after a `PlayerStarter` pawn is generated. Profiles without these fields preserve their existing candidate selection and clothing.
+
+Weighted slots are the preferred schema for variable loadouts. A mandatory slot uses a chance of `1`; an optional slot uses a lower chance and therefore needs no placeholder Def for the `nothing` result. Multiple options can share one slot with relative weights. This is suitable for visual variants, headgear alternatives and future culture-specific equipment.
+
+The stranded SG-team scenario is the first consumer. Its Tau'ri / SGC rule configures:
+
+- age 20 or older;
+- violence-capable starters;
+- mandatory cloth T-shirt;
+- mandatory olive, black or desert SG field pants;
+- optional olive, black or desert SG field jacket;
+- mandatory tactical boots, gloves and vest;
+- optional SG field helmet.
+
+The SG field uniform is split into independent apparel pieces. Pants cover the legs on `OnSkin`; the T-shirt covers the torso on `OnSkin`; the jacket uses `Middle`; and the tactical vest uses `Shell`. This permits all four layers to coexist and allows a pawn to remain in a T-shirt when the optional jacket is not selected.
+
+The headgear slot is intentionally extensible. A future SG-team cap can be appended beside the helmet in XML, while the slot's selection chance continues to allow no headgear.
+
+The scenario keeps `SG1_StrandedSGTeamStartingGear` only as a hidden marker implemented by the generic `ScenPart_CulturalMarker`; the old scenario-specific C# dresser is removed. Temporary vanilla firearms remain loose scenario things, but their set is rebalanced to one assault rifle, one machine pistol, one autopistol and one pump shotgun.
+
+Configuration validation rejects negative ages, replacement without apparel, invalid chances, empty slots, non-positive option weights, null or non-apparel Defs and invalid material declarations. This schema concerns player starters only; equipment preferences for raids, visitors or normal world pawns remain a separate future consumer.
 
 ## Boundaries
 

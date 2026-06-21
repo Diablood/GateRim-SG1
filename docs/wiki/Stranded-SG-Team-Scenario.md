@@ -1,72 +1,76 @@
 # Scénario : Équipe SG isolée
 
-> Statut : Prototype jouable  
-> Première version : 0.2.0-dev
-> Correction des candidats mineurs : 0.2.8-dev-r1
+> Statut : prototype jouable
+> Première version : `0.2.0-dev`
+> Loadout culturel modulaire : `0.3.21-dev`
 
 ## Présentation
 
-Le premier scénario jouable sans Porte fonctionnelle est disponible depuis
-`0.2.0-dev` :
-
-```text
-Équipe SG isolée
-```
-
-Une mission de reconnaissance a mal tourné. La Porte des étoiles locale est
-devenue inutilisable avant l'extraction et tout contact avec le SGC est
-impossible. L'équipe doit établir un camp avec le matériel récupéré sur place.
+Une mission de reconnaissance a mal tourné. La Porte des étoiles locale est devenue inutilisable avant l'extraction et tout contact avec le SGC est impossible. Les quatre membres de l'équipe doivent établir un camp avec le matériel récupéré sur place.
 
 ## Équipe de départ
 
-Le scénario génère exactement quatre membres d'équipe SG âgés d'au moins `20`
-ans biologiques afin que chacun dispose d'une histoire adulte. Les quatre
-candidats affichés sont les quatre membres de
-départ : il n'ajoute pas de sélection élargie inutile. Chaque emplacement peut
-toujours être régénéré, et le nouveau candidat doit respecter le même seuil
-d'âge.
+Le scénario génère exactement quatre membres d'équipe SG :
 
-Les humains Tau'ri conservent temporairement un accès large aux histoires
-vanilla cohérentes avec une origine terrienne. Des parcours SGC dédiés seront
-ajoutés plus tard en complément.
+- âgés d'au moins `20` ans biologiques ;
+- capables de violence ;
+- dotés d'un nom Tau'ri ;
+- issus des carrières culturelles du SGC prévues pour le scénario.
 
-Les candidats incapables de violence sont exclus afin que l'équipe de départ reste crédible pour une mission militaire. Des profils scientifiques restent possibles tant que leur parcours ne leur interdit pas totalement le combat.
+Chaque emplacement peut être régénéré. Les mêmes restrictions et le même profil culturel sont réappliqués au nouveau candidat.
 
-Chaque soldat porte automatiquement :
+## Tenue modulaire
 
-- un [treillis d'équipe SG](SG-Team-Uniform) vert olive ;
+Les membres de l'équipe ne portent plus tous une tenue strictement identique.
+
+Chaque pawn reçoit obligatoirement :
+
+- un tee-shirt vanilla en tissu ;
+- un pantalon de treillis SG ;
 - des [bottes tactiques SG](SG-Tactical-Boots) ;
 - des [gants tactiques SG](SG-Tactical-Gloves) ;
 - un [gilet tactique SG](SG-Tactical-Vest).
 
+Le pantalon est choisi aléatoirement parmi trois variantes :
+
+- olive ;
+- noire ;
+- désert.
+
+Une veste de treillis SG peut être ajoutée par-dessus le tee-shirt. Elle reste facultative et utilise les mêmes trois variantes visuelles. Lorsqu’elle est présente, sa couleur reprend toujours celle du pantalon du même membre. Chaque pawn conserve toutefois son propre tirage aléatoire, ce qui permet à l’équipe de mélanger les tenues olive, noires et désert.
+
+Le gilet se porte au-dessus de la veste lorsqu'elle est présente.
+
+## Couvre-chef
+
+Le [casque de terrain SG](SG-Team-Field-Helmet) est désormais directement équipé sur une partie des membres de l'équipe, mais il n'est pas obligatoire. Certains starters commencent donc sans couvre-chef.
+
+Une future casquette d'équipe SG rejoindra le même choix aléatoire : casque, casquette ou rien.
+
+Les quatre casques autrefois déposés au sol ne font plus partie des fournitures du scénario.
+
 ## Faction joueur
 
-Le scénario utilise une identité dédiée :
+Le scénario utilise l'identité dédiée :
 
 ```text
 expédition du SGC
 ```
 
-Elle remplace la faction vanilla **Nouveaux arrivants** pour ce départ de
-partie.
+Elle remplace la faction vanilla **Nouveaux arrivants** pour ce départ de partie.
 
-## Introduction narrative
+## Armes de départ
 
-Le texte d'introduction est affiché dans l'éditeur de scénario et doit
-également s'ouvrir automatiquement lorsque la carte démarre.
-
-## Armes temporaires
-
-Les armes Tau'ri propres au mod ne sont pas encore disponibles. Le matériel
-initial utilise donc temporairement des armes vanilla :
+Les armes Tau’ri étant des armes humaines, le scénario utilise volontairement un assortiment vanilla moderne moins puissant que l’ancien lot de trois fusils d’assaut :
 
 ```text
-3 fusils d'assaut
+1 fusil d'assaut
+1 pistolet-mitrailleur
+1 pistolet automatique
 1 fusil à pompe
 ```
 
-Les armes sont laissées dans les fournitures de départ afin que le joueur
-choisisse leur répartition.
+Les armes sont laissées dans les fournitures de départ afin que le joueur choisisse leur répartition.
 
 ## Matériel de bivouac
 
@@ -75,17 +79,6 @@ choisisse leur répartition.
 ```
 
 Aucun établi préconstruit n'est fourni.
-
-## Casques de terrain facultatifs
-
-```text
-4 casques de terrain SG
-```
-
-Les casques arrivent dans les fournitures de départ. Ils ne sont pas équipés
-automatiquement : le joueur choisit quand les utiliser.
-
-Consulte [Casque de terrain SG](SG-Team-Field-Helmet).
 
 ## Caisses de ravitaillement récupérées
 
@@ -101,16 +94,4 @@ Consulte [Casque de terrain SG](SG-Team-Field-Helmet).
 
 ## Limites actuelles
 
-Cette première étape rend le départ de partie jouable.
-
-Depuis les jalons suivants, les factions mondiales Goa'uld et
-[Jaffa libres](Free-Jaffa-Faction) sont actives, ainsi que de rares assauts
-directs naturels Goa'uld.
-
-Les prochains jalons `0.2.x` introduiront progressivement :
-
-- les rencontres pacifiques avec les Jaffa libres ;
-- la présence Tok'ra ;
-- l'acquisition naturelle des armes et ressources Stargate.
-
-La Porte des étoiles fonctionnelle appartiendra à la future phase `0.3.x`.
+La Porte des étoiles fonctionnelle n’est pas encore disponible. La casquette SG complétera plus tard les variantes de couvre-chef. Des patchs de compatibilité pourront éventuellement remplacer l’assortiment vanilla par des armes humaines équivalentes provenant d’autres mods.

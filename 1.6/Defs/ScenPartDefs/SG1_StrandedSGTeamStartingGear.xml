@@ -3,9 +3,9 @@
     <ScenPartDef>
         <defName>SG1_StrandedSGTeamStartingGear</defName>
         <label>SG-team field equipment</label>
-        <description>Dress each generated starting pawn with the standard olive-drab SG-team field uniform, tactical boots, tactical gloves and tactical vest.</description>
+        <description>Apply the SG-team cultural starter rules, including candidate restrictions and standard field equipment.</description>
         <category>StartingImportant</category>
-        <scenPartClass>GateRimSG1.Scenarios.ScenPart_SGTeamStartingGear</scenPartClass>
+        <scenPartClass>GateRimSG1.Culture.ScenPart_CulturalMarker</scenPartClass>
         <summaryPriority>95</summaryPriority>
         <canBeRandomlyAdded>false</canBeRandomlyAdded>
         <canBePlayerAddedRemoved>false</canBePlayerAddedRemoved>

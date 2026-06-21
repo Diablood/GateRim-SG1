@@ -1,59 +1,51 @@
-# Variantes du treillis d'équipe SG
+# Variantes de la tenue de terrain SG
 
-> Statut : Prototypes jouables  
-> Première version : 0.1.82-dev
+> Statut : variantes modulaires jouables
+> Première version des variantes combinées : `0.1.82-dev`
+> Variantes séparées pantalon/veste : `0.3.21-dev`
 
-## Présentation
+## Variantes disponibles
 
-Deux variantes visuelles complètent désormais le
-[treillis d'équipe SG](SG-Team-Uniform) vert olive standard :
-
-```text
-treillis noir d'équipe SG
-treillis désert d'équipe SG
-```
-
-Les trois treillis partagent les mêmes caractéristiques. Le choix est
-esthétique et narratif, pas mécanique.
-
-## Liste des variantes
+Les pantalons et vestes de terrain SG existent en trois couleurs :
 
 | Variante | Usage visuel |
 |---|---|
-| treillis d'équipe SG | tenue vert olive standard polyvalente |
-| treillis noir d'équipe SG | missions tactiques et opérations à faible visibilité |
-| treillis désert d'équipe SG | missions en environnement aride |
+| vert olive | tenue polyvalente standard |
+| noire | missions tactiques et opérations à faible visibilité |
+| désert | environnements arides |
 
-## Fabrication commune
+Les variantes partagent les mêmes caractéristiques. Leur différence est visuelle et narrative.
 
-Les variantes noire et désert peuvent être fabriquées aux établis de couture
-manuel et électrique vanilla avec :
+## Combinaisons dans le scénario
+
+Dans le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario) :
+
+- chaque pawn reçoit obligatoirement un pantalon choisi aléatoirement parmi les trois variantes ;
+- la veste est facultative ;
+- lorsqu’une veste est attribuée, elle reprend la variante du pantalon ;
+- le tee-shirt vanilla reste obligatoire sous la tenue.
+
+Une équipe peut donc commencer avec plusieurs silhouettes et plusieurs couleurs, tandis que chaque pawn conserve un ensemble veste-pantalon cohérent.
+
+## Fabrication
+
+Chaque pièce peut être fabriquée séparément avec :
 
 ```text
-80 tissu
+40 tissu
 ```
 
-Elles demandent une compétence **Artisanat 3**.
+La fabrication demande une compétence **Artisanat 3** et la recherche d'équipement de terrain SG.
 
-## Équipement modulaire partagé
+## Éléments communs
 
-Chaque variante reste compatible avec :
+Toutes les variantes restent compatibles avec :
 
 - les [bottes tactiques SG](SG-Tactical-Boots) ;
 - les [gants tactiques SG](SG-Tactical-Gloves) ;
-- le [gilet tactique SG](SG-Tactical-Vest).
+- le [gilet tactique SG](SG-Tactical-Vest) ;
+- le [casque de terrain SG](SG-Team-Field-Helmet).
 
-## Variante forêt volontairement omise
+## Évolutions visuelles
 
-Une variante camouflage forêt n'est pas ajoutée pour le moment : à l'échelle
-des sprites RimWorld, elle resterait trop proche du treillis vert olive
-standard.
-
-## Question visuelle restante
-
-Le gilet tactique noir reste commun aux trois treillis. Une variante sable ne
-sera ajoutée que si le contraste avec le treillis désert paraît réellement
-gênant en jeu.
-
-Les textures définitives et les concept arts semi-réalistes destinés au wiki
-seront produits lors d'une future passe graphique dédiée.
+Une variante forêt n'est pas prévue tant qu'elle reste trop proche du vert olive à l'échelle des sprites RimWorld. Les futures tenues spécialisées seront ajoutées uniquement lorsqu'elles correspondent à un rôle de jeu identifiable.

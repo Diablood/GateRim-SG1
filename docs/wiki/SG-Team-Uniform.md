@@ -1,56 +1,56 @@
-# Treillis d'équipe SG
+# Tenue de terrain des équipes SG
 
-> Statut : Prototype jouable  
-> Première version : 0.1.78-dev
+> Statut : système modulaire jouable
+> Première version du treillis combiné : `0.1.78-dev`
+> Découpage modulaire : `0.3.21-dev`
 
 ## Présentation
 
-Le premier équipement des équipes SG est un treillis de terrain vert
-olive :
+La tenue de terrain SG est désormais composée de couches indépendantes :
 
-```text
-treillis d'équipe SG
-```
+- un tee-shirt vanilla porté au contact de la peau ;
+- un pantalon de terrain SG ;
+- une veste de terrain SG facultative ;
+- des bottes et des gants tactiques ;
+- un gilet tactique porté par-dessus la veste.
 
-Ce prototype représente une veste et un pantalon BDU réunis dans une seule
-couche textile légère.
+Ce découpage permet aux membres d'une même équipe d'utiliser des variantes différentes sans perdre la silhouette commune des équipes SG.
+
+## Pantalon de terrain
+
+Le pantalon constitue la partie obligatoire du treillis dans le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario). Il couvre les jambes sur la couche textile de base.
+
+Trois couleurs sont disponibles :
+
+- vert olive ;
+- noir ;
+- désert.
+
+## Veste de terrain
+
+La veste couvre le torse, les épaules et les bras. Elle est portée au-dessus du tee-shirt et reste facultative dans le scénario de départ : certains membres peuvent commencer uniquement en tee-shirt sous leur gilet tactique.
+
+La veste existe dans les mêmes variantes olive, noire et désert que le pantalon. Chaque pawn reçoit une couleur de tenue aléatoire ; lorsqu’une veste est attribuée, elle reprend toujours la variante de son pantalon. Les membres d’une même équipe peuvent donc porter des couleurs différentes sans créer d’ensemble dépareillé sur un même pawn.
 
 ## Fabrication
 
-Le treillis peut être fabriqué aux établis de couture manuel et électrique vanilla avec :
+Chaque pantalon ou veste demande :
 
 ```text
-80 tissu
+40 tissu
 ```
 
-Il demande une compétence **Artisanat 3**.
+La fabrication est disponible aux établis de couture manuel et électrique après la recherche d'équipement de terrain SG, avec une compétence **Artisanat 3**.
 
-## Couverture et rôle
+## Ancien treillis combiné
 
-Le treillis couvre :
+Les anciens treillis réunissant veste et pantalon dans un seul objet restent définis pour préserver les sauvegardes et objets existants. Ils ne sont plus utilisés par le loadout du scénario Équipe SG isolée.
 
-- le torse ;
-- les épaules ;
-- les bras ;
-- les jambes.
+## Équipement complémentaire
 
-Il s'agit d'un vêtement de terrain léger, pas d'une armure lourde. Son objectif
-est de fournir une base visuelle et fonctionnelle aux futures équipes SG.
+La tenue modulaire est compatible avec :
 
-## Éléments séparés prévus
-
-Les ajouts suivants resteront modulaires :
-
-- [bottes tactiques SG](SG-Tactical-Boots) ;
-- [gants tactiques SG](SG-Tactical-Gloves) ;
-- [gilet tactique SG](SG-Tactical-Vest).
-
-Deux variantes visuelles sont disponibles depuis `0.1.82-dev` :
-
-- [treillis noir d'équipe SG](SG-Team-Uniform-Variants) ;
-- [treillis désert d'équipe SG](SG-Team-Uniform-Variants).
-
-Le camouflage forêt est volontairement omis pour le moment : à l'échelle des
-sprites RimWorld, il resterait trop proche du vert olive standard. Les futures
-variantes médicales, scientifiques ou tactiques lourdes ne seront ajoutées
-qu'avec un besoin clair.
+- les [bottes tactiques SG](SG-Tactical-Boots) ;
+- les [gants tactiques SG](SG-Tactical-Gloves) ;
+- le [gilet tactique SG](SG-Tactical-Vest) ;
+- le [casque de terrain SG](SG-Team-Field-Helmet).

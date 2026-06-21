@@ -87,7 +87,7 @@ function Assert-Equal {
         [string]$Description
     )
 
-    if ($null -eq $Actual) {
+    if ([string]::IsNullOrWhiteSpace($Actual)) {
         return
     }
 
@@ -117,6 +117,37 @@ function Assert-Count {
 Write-Host "GateRim SG-1 project consistency check"
 Write-Host "Repository: $RepositoryRoot"
 Write-Host ""
+
+$markdownFiles = @()
+$readmePath = Get-RepositoryPath "README.md"
+if (Test-Path -LiteralPath $readmePath -PathType Leaf) {
+    $markdownFiles += Get-Item -LiteralPath $readmePath
+}
+
+$docsPath = Get-RepositoryPath "docs"
+if (Test-Path -LiteralPath $docsPath -PathType Container) {
+    $markdownFiles += Get-ChildItem -LiteralPath $docsPath -Filter "*.md" -File -Recurse
+}
+
+$markdownTabLocations = @()
+foreach ($file in $markdownFiles) {
+    $lineNumber = 0
+    foreach ($line in Get-Content -LiteralPath $file.FullName -Encoding UTF8) {
+        $lineNumber++
+        if ($line.Contains("`t")) {
+            $markdownTabLocations += ("{0}:{1}" -f $file.FullName, $lineNumber)
+        }
+    }
+}
+
+if ($markdownTabLocations.Count -gt 0) {
+    Add-Failure ("Literal tab character(s) found in Markdown files: {0}" -f ($markdownTabLocations -join ", "))
+}
+else {
+    Add-Pass "Markdown files contain no literal tab characters."
+}
+
+
 
 $aboutPath = Get-RepositoryPath "About/About.xml"
 $aboutText = Read-RequiredText "About/About.xml"
@@ -195,8 +226,8 @@ if ($null -ne $modVersion) {
 }
 
 if ($null -ne $assemblyVersion) {
-    $testingAssemblyVersion = Get-CapturedValue $testingCurrentText '(?m)^Version de DLL attendue\s*:\s*`(?<value>[^`]+)`\s*$' "the expected DLL version"
-    Assert-Equal $testingAssemblyVersion $assemblyVersion "Expected DLL version"
+    $testingAssemblyVersion = Get-CapturedValue $testingCurrentText '(?m)^Version de DLL (?:attendue|validée)\s*:\s*`(?<value>[^`]+)`\s*$' "the documented DLL version"
+    Assert-Equal $testingAssemblyVersion $assemblyVersion "Documented DLL version"
 }
 
 $backstoryDirectory = Get-RepositoryPath "1.6/Defs/BackstoryDefs"

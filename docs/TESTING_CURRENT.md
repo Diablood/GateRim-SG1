@@ -1,39 +1,47 @@
 # Tests du jalon actif
 
-Jalon : `0.3.20-dev - Add automated project consistency checks`
+Jalon : `0.3.21-dev - Add cultural starter loadout rules`
 
-Branche attendue : `feature/project-consistency-checks`
+Branche validée : `feature/cultural-starter-loadouts`
 
-Base attendue : `v0.3.19-dev`
+Base : `v0.3.20-dev`
 
-Révision locale validée : `0.3.20-dev-r2`
+Révision fonctionnelle validée : `0.3.21-dev-r4`
 
-Version de DLL attendue : `0.3.20.0`
+Révision documentaire corrective : `0.3.21-dev-r6`
 
-Statut : validation fonctionnelle terminée sur `0.3.20-dev-r2` ; jalon clôturé et publié sous `v0.3.20-dev`.
+Version de DLL validée : `0.3.21.0`
+
+Statut : validation fonctionnelle terminée sur `0.3.21-dev-r4` ; jalon clôturé et publié sous `v0.3.21-dev`.
 
 ## Résultat final validé
 
-- Le contrôleur s'exécute correctement avec Windows PowerShell 5.1 après le correctif de syntaxe `r2`.
-- Le chemin positif valide `0.3.20-dev`, `0.3.20.0` et `83` backstories.
-- Tous les contrôles attendus affichent `[PASS]` et le code de sortie final vaut `0`.
-- Une version volontairement incorrecte produit au moins un `[FAIL]` explicite et un code de sortie non nul.
-- Le chemin positif repasse au vert immédiatement après le test négatif.
-- Les exécutions positives et négatives ne modifient aucun fichier du dépôt.
-- Le rebuild forcé produit la DLL `0.3.20.0` sans nouvelle erreur attribuable au jalon.
-- RimWorld atteint le menu principal et affiche la version `0.3.20-dev` du mod.
-- Le README, l'accueil du wiki et l'état du contenu affichent `83` backstories.
-- Aucun fichier C#, Def, traduction, texture ou `About/ModIcon.png` n'est modifié.
-- `Player.log` est propre pour le périmètre testé.
-- Décision finale : conserver la révision fonctionnelle `r2` sans correctif supplémentaire.
+- Le composant spécifique `ScenPart_SGTeamStartingGear.cs` reste supprimé.
+- Le contrôle de cohérence valide `0.3.21-dev`, `0.3.21.0` et `83` backstories.
+- Le parseur accepte aussi bien la formulation préparatoire `Version de DLL attendue` que la formulation finale `Version de DLL validée`, sans produire un second échec redondant lorsqu’une valeur est absente.
+- Le test négatif avec une tabulation Markdown volontaire échoue correctement, puis le contrôle positif repasse au vert après suppression de la sonde.
+- Le rebuild forcé produit la DLL `0.3.21.0`.
+- Le chargement ne signale plus `Apparel_Tshirt`, de slot d'habillement nul, de Def manquant, de patch invalide ni de texture absente.
+- Les starters SG-team acceptés ont au moins 20 ans biologiques et sont capables de violence.
+- Les noms Tau'ri et les carrières SGC restent appliqués.
+- Chaque starter porte un tee-shirt vanilla en tissu, un pantalon SG, les bottes, les gants et le gilet tactique, tous à qualité normale.
+- Les pantalons olive, noirs et désert sont générés.
+- La veste reste facultative et, lorsqu'elle est présente, reprend toujours la variante du pantalon du même pawn.
+- Des starters avec et sans veste, ainsi qu'avec et sans casque, sont générés.
+- Le tee-shirt, la veste et le gilet coexistent sans remplacement silencieux ni conflit de couche visible dans le périmètre testé.
+- Les nouvelles pièces sont correctes dans les orientations et morphologies testées.
+- Le scénario fournit un fusil d'assaut, un pistolet-mitrailleur, un pistolet automatique et un fusil à pompe, ainsi que les fournitures habituelles.
+- Aucun lot de quatre casques n'est laissé au sol.
+- Un scénario vanilla conserve ses règles de sélection et ses vêtements habituels.
+- Sauvegarde et rechargement conservent les vêtements et identités générés.
+- `Player.log` est propre pour le périmètre validé.
+- Décision finale : conserver la révision fonctionnelle `r4` sans correctif supplémentaire.
 
-## 1. Contrôle de cohérence positif
-
-Commande validée :
+## Contrôle de cohérence validé
 
 ```powershell
-.	ools\check-project-consistency.cmd `
-    -ExpectedVersion 0.3.20-dev `
+./tools/check-project-consistency.cmd `
+    -ExpectedVersion 0.3.21-dev `
     -ExpectedBackstoryCount 83
 ```
 
@@ -41,64 +49,59 @@ Résumé validé :
 
 ```text
 Project consistency check passed.
-Version: 0.3.20-dev
-Assembly: 0.3.20.0
+Version: 0.3.21-dev
+Assembly: 0.3.21.0
 Backstories: 83
 ```
 
-Le code de sortie est `0` et le dépôt reste inchangé.
+Le code de sortie est `0` et aucun fichier Markdown ne contient de tabulation littérale.
 
-## 2. Détection d'une attente incorrecte
+## Loadout SG-team validé
 
-Commande validée :
+Équipement obligatoire par starter :
 
-```powershell
-.	ools\check-project-consistency.cmd -ExpectedVersion 0.0.0-dev
+```text
+1 tee-shirt vanilla en tissu
+1 pantalon SG olive, noir ou désert
+1 paire de bottes tactiques SG
+1 paire de gants tactiques SG
+1 gilet tactique SG
 ```
 
-Résultat validé :
+Équipement facultatif :
 
-- message `[FAIL]` explicite ;
-- code de sortie non nul ;
-- aucune réécriture de fichier ;
-- nouveau passage positif réussi ensuite.
-
-## 3. Versions et pages publiques
-
-Résultat validé :
-
-- `About/About.xml` : `0.3.20-dev` ;
-- projet et DLL : `0.3.20.0` ;
-- `README.md` : `0.3.20-dev` et `83 cultural backstories` ;
-- `docs/wiki/Home.md` : `0.3.20-dev` et `83` histoires ;
-- `docs/wiki/Content-Status.md` : révision `0.3.20-dev` et catalogue de `83` entrées ;
-- `docs/wiki/Cultural-Backstories.md` : `83` lignes entre les marqueurs contrôlés.
-
-## 4. Rebuild et chargement
-
-Résultat validé :
-
-- rebuild forcé réussi ;
-- DLL `0.3.20.0` ;
-- menu principal atteint ;
-- version du mod affichée correctement ;
-- aucune nouvelle erreur GateRim SG-1 dans `Player.log`.
-
-## 5. Périmètre et caractère en lecture seule
-
-Résultat validé :
-
-- aucun changement de gameplay ;
-- aucun changement de Def, traduction ou texture ;
-- aucun changement de `About/ModIcon.png` ;
-- aucun fichier temporaire ajouté ;
-- le contrôleur ne modifie jamais l'arbre de travail.
-
-## 6. Contrôle final
-
-```powershell
-git status --short
-git diff --check
+```text
+veste SG correspondant à la variante du pantalon
+casque de terrain SG
 ```
 
-Le dépôt ne contient que les fichiers attendus du jalon et aucune erreur d'espacement.
+La future casquette SG doit être ajoutée au slot de couvre-chef existant, sans nouvelle branche C# spécifique au scénario.
+
+## Armes et fournitures validées
+
+```text
+1 fusil d'assaut
+1 pistolet-mitrailleur
+1 pistolet automatique
+1 fusil à pompe
+4 sacs de couchage
+30 repas de survie
+20 médicaments industriels
+300 acier
+150 bois
+20 composants industriels
+120 tissu
+80 cuir ordinaire
+```
+
+Les armes humaines vanilla constituent le choix normal du scénario. Une future compatibilité avec des mods d'armes devra prendre la forme de patchs facultatifs, pas d'une gamme humaine dupliquée uniquement pour GateRim SG-1.
+
+## Régressions durables
+
+- Conserver le loadout limité à `PawnGenerationContext.PlayerStarter` et au marqueur de scénario prévu.
+- Vérifier qu'un nouveau slot obligatoire ou facultatif n'entre pas en conflit avec les couches déjà portées.
+- Vérifier tous les `variantKey` lorsqu'une variante est ajoutée à un groupe partagé.
+- Rejouer un échantillon suffisant pour observer les options facultatives sans exiger un ratio exact sur un petit nombre de pawns.
+- Conserver les anciens treillis combinés pour les sauvegardes, mais ne pas les réintroduire dans le starter.
+- Rejouer un scénario vanilla à chaque évolution des restrictions ou du loadout culturel.
+- Utiliser `/` dans les chemins PowerShell relatifs écrits en Markdown et conserver le test des tabulations littérales.

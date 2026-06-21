@@ -1,8 +1,8 @@
 # Project consistency checks
 
-Version: `0.3.20-dev`
+Version: `0.3.21-dev`
 
-Status: validated and published in `0.3.20-dev`.
+Status: validated through `0.3.21-dev`, including Markdown-tab detection and final-state DLL-version wording.
 
 ## Purpose
 
@@ -11,20 +11,26 @@ Status: validated and published in `0.3.20-dev`.
 The Windows entry point is:
 
 ```powershell
-.\tools\check-project-consistency.cmd
+./tools/check-project-consistency.cmd
 ```
 
 The script is compatible with the Windows PowerShell 5.1 parser used by the `.cmd` wrapper. Error messages use explicit formatting where punctuation would otherwise be parsed as part of a variable reference.
 
-## Validated behavior
+## Markdown command-path checks
 
-The complete local validation confirms that:
+The checker scans `README.md` and every Markdown file under `docs/` for literal tab characters. A tab causes a non-zero exit code and reports the affected file and line.
+
+Repository-relative PowerShell command paths in Markdown must use forward slashes, for example `./tools/check-project-consistency.cmd`. This prevents a generated or copied `\t` sequence from becoming a tab and corrupting commands such as `./tools/...`.
+
+## Previously validated behavior
+
+The `0.3.20-dev` local validation confirmed that:
 
 - a correct repository state returns exit code `0` and reports the expected version, assembly and backstory count;
 - an intentionally wrong expected version returns a non-zero exit code with an explicit `[FAIL]` message;
 - a positive rerun succeeds immediately after the negative test;
 - no positive or negative execution modifies repository files;
-- the Windows PowerShell 5.1 parser accepts the final `r2` implementation.
+- the Windows PowerShell 5.1 parser accepts the final `0.3.20-dev-r2` implementation.
 
 ## Version checks
 
@@ -38,7 +44,19 @@ The command reads `About/About.xml` as the authoritative development version and
 - the active test milestone and expected DLL in `docs/TESTING_CURRENT.md`;
 - the newest heading in `docs/CHANGELOG.md`.
 
-The assembly version is derived from the development version. For example, `0.3.20-dev` requires `0.3.20.0` in the project and test plan.
+The assembly version is derived from the development version. For example, `0.3.21-dev` requires `0.3.21.0` in the project and test plan.
+
+
+## Preparatory and final wording
+
+A controlled document can legitimately change wording between the testing state and the final tagged state. The DLL-version check therefore accepts both:
+
+```text
+Version de DLL attendue : `x.y.z.0`
+Version de DLL validée : `x.y.z.0`
+```
+
+Both forms must still contain the exact assembly version derived from `About/About.xml`. Missing values produce one explicit failure rather than a second redundant empty-value mismatch.
 
 ## Backstory checks
 
@@ -56,8 +74,8 @@ This makes a future backstory addition fail the publication check until all requ
 The normal command derives its expectations from repository files. A milestone can additionally require exact values:
 
 ```powershell
-.\tools\check-project-consistency.cmd `
-    -ExpectedVersion 0.3.20-dev `
+./tools/check-project-consistency.cmd `
+    -ExpectedVersion 0.3.21-dev `
     -ExpectedBackstoryCount 83
 ```
 

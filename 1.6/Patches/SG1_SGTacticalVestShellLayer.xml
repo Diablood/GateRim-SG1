@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="SG1_SGTacticalVest"]/apparel/layers</xpath>
+        <value>
+            <layers>
+                <li>Shell</li>
+            </layers>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="SG1_SGTeamFieldHelmet"]/description</xpath>
+        <value>
+            <description>An open-face SG-team field helmet intended for hazardous missions. It offers useful upper-head protection without becoming heavy armor. The stranded SG-team starter loadout equips it on some team members while allowing others to begin without headgear.</description>
+        </value>
+    </Operation>
+</Patch>

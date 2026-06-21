@@ -1,25 +1,20 @@
 # Gilet tactique SG
 
-> Statut : Prototype jouable  
-> Première version : 0.1.81-dev
+> Statut : prototype jouable
+> Première version : `0.1.81-dev`
+> Couche extérieure : `0.3.21-dev`
 
 ## Présentation
 
-Le **gilet tactique SG** complète le treillis, les bottes et les gants
-tactiques SG sans être fusionné avec eux.
+Le **gilet tactique SG** est un gilet noir de portage destiné aux opérations de terrain. Il ajoute une protection modérée du torse et des épaules tout en conservant assez de mobilité pour l'exploration et les missions prolongées.
 
 ```text
 gilet tactique SG
 ```
 
-Il représente un gilet noir de portage destiné aux opérations de terrain. Il
-ajoute une protection modérée du torse et des épaules tout en conservant assez
-de mobilité pour l'exploration et les missions prolongées.
-
 ## Fabrication
 
-Le gilet peut être fabriqué aux établis de couture manuel et électrique
-vanilla avec :
+Le gilet peut être fabriqué aux établis de couture manuel et électrique vanilla avec :
 
 ```text
 30 cuir ordinaire
@@ -28,33 +23,22 @@ vanilla avec :
 
 Il demande une compétence **Artisanat 4**.
 
-## Couverture et rôle
+## Couverture et couches
 
 Le gilet protège :
 
 - le torse ;
 - les épaules.
 
-Il peut être porté simultanément avec :
+Depuis `0.3.21-dev`, il utilise une couche extérieure. Il peut ainsi être porté au-dessus :
 
-- le [treillis d'équipe SG](SG-Team-Uniform) ;
-- les [bottes tactiques SG](SG-Tactical-Boots) ;
-- les [gants tactiques SG](SG-Tactical-Gloves).
+- du tee-shirt vanilla ;
+- d'une veste de terrain SG facultative ;
+- d'un pantalon de terrain SG ;
+- des bottes et gants tactiques SG.
 
-Il s'agit d'un équipement de terrain modérément protecteur, pas d'une armure
-lourde.
+Cette organisation évite que le gilet entre en conflit avec la veste modulaire.
 
-## Base générique complète
+## Rôle
 
-Le premier ensemble modulaire SG comprend désormais :
-
-```text
-treillis d'équipe SG
-bottes tactiques SG
-gants tactiques SG
-gilet tactique SG
-```
-
-Les variantes environnementales ou spécialisées, les textures définitives et
-les concept arts semi-réalistes destinés au wiki seront traités lors de
-futures passes dédiées.
+Il s'agit d'un équipement de terrain modérément protecteur, pas d'une armure lourde. Dans le scénario [Équipe SG isolée](Stranded-SG-Team-Scenario), il reste obligatoire pour chacun des quatre membres.

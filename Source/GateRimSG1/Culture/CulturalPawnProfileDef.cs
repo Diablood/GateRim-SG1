@@ -152,10 +152,13 @@ namespace GateRimSG1.Culture
                     }
 
                     if (rule.childhoods.NullOrEmpty()
-                        && rule.adulthoods.NullOrEmpty())
+                        && rule.adulthoods.NullOrEmpty()
+                        && rule.minimumBiologicalAge <= 0
+                        && !rule.requireViolenceCapable
+                        && !rule.HasStarterApparel)
                     {
                         yield return $"{defName} starter rule {index} has no "
-                            + "configured backstory.";
+                            + "configured behavior.";
                     }
 
                     if (rule.childhoodReplacementChance < 0f
@@ -170,6 +173,154 @@ namespace GateRimSG1.Culture
                     {
                         yield return $"{defName} starter rule {index} has an "
                             + "invalid adulthood replacement chance.";
+                    }
+
+                    if (rule.minimumBiologicalAge < 0)
+                    {
+                        yield return $"{defName} starter rule {index} has a "
+                            + "negative minimum biological age.";
+                    }
+
+                    if (rule.replaceStartingApparel
+                        && !rule.HasStarterApparel)
+                    {
+                        yield return $"{defName} starter rule {index} replaces "
+                            + "starting apparel without configured apparel.";
+                    }
+
+                    HashSet<ThingDef> configuredApparel
+                        = new HashSet<ThingDef>();
+                    foreach (ThingDef apparelDef in
+                        rule.apparel ?? new List<ThingDef>())
+                    {
+                        foreach (string error in ValidateStarterApparel(
+                            apparelDef,
+                            null,
+                            $"{defName} starter rule {index}",
+                            configuredApparel))
+                        {
+                            yield return error;
+                        }
+                    }
+
+                    for (int slotIndex = 0;
+                        slotIndex < (rule.apparelSlots?.Count ?? 0);
+                        slotIndex++)
+                    {
+                        CulturalStarterApparelSlot slot
+                            = rule.apparelSlots[slotIndex];
+                        string slotLabel = $"{defName} starter rule {index} "
+                            + $"apparel slot {slotIndex}";
+
+                        if (slot == null)
+                        {
+                            yield return $"{slotLabel} is null.";
+                            continue;
+                        }
+
+                        if (slot.selectionChance < 0f
+                            || slot.selectionChance > 1f)
+                        {
+                            yield return $"{slotLabel} has an invalid "
+                                + "selection chance.";
+                        }
+
+                        if (slot.options.NullOrEmpty())
+                        {
+                            yield return $"{slotLabel} has no options.";
+                            continue;
+                        }
+
+                        HashSet<string> slotVariantKeys
+                            = new HashSet<string>();
+                        for (int optionIndex = 0;
+                            optionIndex < slot.options.Count;
+                            optionIndex++)
+                        {
+                            CulturalStarterApparelOption option
+                                = slot.options[optionIndex];
+                            string optionLabel = $"{slotLabel} option "
+                                + optionIndex;
+
+                            if (option == null)
+                            {
+                                yield return $"{optionLabel} is null.";
+                                continue;
+                            }
+
+                            if (option.weight <= 0f)
+                            {
+                                yield return $"{optionLabel} has a "
+                                    + "non-positive weight.";
+                            }
+
+                            bool hasVariantGroup
+                                = !string.IsNullOrEmpty(slot.variantGroup);
+                            bool hasVariantKey
+                                = !string.IsNullOrEmpty(option.variantKey);
+
+                            if (hasVariantGroup && !hasVariantKey)
+                            {
+                                yield return $"{optionLabel} has no variant "
+                                    + $"key for group {slot.variantGroup}.";
+                            }
+                            else if (!hasVariantGroup && hasVariantKey)
+                            {
+                                yield return $"{optionLabel} defines variant "
+                                    + "key without a slot variant group.";
+                            }
+                            else if (hasVariantKey
+                                && !slotVariantKeys.Add(option.variantKey))
+                            {
+                                yield return $"{slotLabel} has duplicate "
+                                    + $"variant key {option.variantKey}.";
+                            }
+
+                            foreach (string error in ValidateStarterApparel(
+                                option.apparel,
+                                option.stuff,
+                                optionLabel,
+                                null))
+                            {
+                                yield return error;
+                            }
+                        }
+                    }
+
+                    Dictionary<string, HashSet<string>> variantGroups
+                        = new Dictionary<string, HashSet<string>>();
+                    for (int slotIndex = 0;
+                        slotIndex < (rule.apparelSlots?.Count ?? 0);
+                        slotIndex++)
+                    {
+                        CulturalStarterApparelSlot slot
+                            = rule.apparelSlots[slotIndex];
+                        if (slot == null
+                            || string.IsNullOrEmpty(slot.variantGroup)
+                            || slot.options.NullOrEmpty())
+                        {
+                            continue;
+                        }
+
+                        HashSet<string> keys = new HashSet<string>(
+                            slot.options
+                                .Where(option => option != null
+                                    && !string.IsNullOrEmpty(
+                                        option.variantKey))
+                                .Select(option => option.variantKey));
+
+                        if (!variantGroups.TryGetValue(
+                            slot.variantGroup,
+                            out HashSet<string> expectedKeys))
+                        {
+                            variantGroups.Add(slot.variantGroup, keys);
+                        }
+                        else if (!expectedKeys.SetEquals(keys))
+                        {
+                            yield return $"{defName} starter rule {index} "
+                                + $"variant group {slot.variantGroup} does not "
+                                + "use the same keys in every apparel slot.";
+                        }
                     }
 
                     foreach (BackstoryDef childhood in
@@ -247,6 +398,51 @@ namespace GateRimSG1.Culture
                 }
             }
         }
+
+        private static IEnumerable<string> ValidateStarterApparel(
+            ThingDef apparelDef,
+            ThingDef stuffDef,
+            string label,
+            HashSet<ThingDef> configuredApparel)
+        {
+            if (apparelDef == null)
+            {
+                yield return $"{label} has a null apparel entry.";
+                yield break;
+            }
+
+            if (apparelDef.thingClass == null
+                || !typeof(Apparel).IsAssignableFrom(apparelDef.thingClass))
+            {
+                yield return $"{label} uses non-apparel ThingDef "
+                    + $"{apparelDef.defName}.";
+                yield break;
+            }
+
+            if (configuredApparel != null
+                && !configuredApparel.Add(apparelDef))
+            {
+                yield return $"{label} duplicates apparel "
+                    + $"{apparelDef.defName}.";
+            }
+
+            if (apparelDef.MadeFromStuff && stuffDef == null)
+            {
+                yield return $"{label} uses stuffable apparel "
+                    + $"{apparelDef.defName} without configured stuff.";
+            }
+            else if (!apparelDef.MadeFromStuff && stuffDef != null)
+            {
+                yield return $"{label} configures stuff "
+                    + $"{stuffDef.defName} for non-stuffable apparel "
+                    + $"{apparelDef.defName}.";
+            }
+            else if (stuffDef != null && !stuffDef.IsStuff)
+            {
+                yield return $"{label} uses non-stuff ThingDef "
+                    + $"{stuffDef.defName}.";
+            }
+        }
     }
 
     public class CulturalProfileMatcher
@@ -316,8 +512,50 @@ namespace GateRimSG1.Culture
         public float childhoodReplacementChance = 1f;
         public float adulthoodReplacementChance = 1f;
         public bool mergeWithVanillaAdulthoodPool;
+        public int minimumBiologicalAge;
+        public bool requireViolenceCapable;
+        public bool replaceStartingApparel;
+        public QualityCategory apparelQuality = QualityCategory.Normal;
+        public List<ThingDef> apparel = new List<ThingDef>();
+        public List<CulturalStarterApparelSlot> apparelSlots
+            = new List<CulturalStarterApparelSlot>();
         public List<BackstoryDef> childhoods = new List<BackstoryDef>();
         public List<BackstoryDef> adulthoods = new List<BackstoryDef>();
+
+        public bool HasStarterApparel
+        {
+            get
+            {
+                return !apparel.NullOrEmpty()
+                    || (!apparelSlots.NullOrEmpty()
+                        && apparelSlots.Any(slot => slot != null
+                            && !slot.options.NullOrEmpty()));
+            }
+        }
+
+        public bool AllowsPawn(Pawn pawn)
+        {
+            if (pawn == null)
+            {
+                return false;
+            }
+
+            if (minimumBiologicalAge > 0
+                && (pawn.ageTracker == null
+                    || pawn.ageTracker.AgeBiologicalYears
+                        < minimumBiologicalAge))
+            {
+                return false;
+            }
+
+            if (requireViolenceCapable
+                && pawn.WorkTagIsDisabled(WorkTags.Violent))
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public bool MatchesScenario(Scenario scenario)
         {
@@ -345,6 +583,65 @@ namespace GateRimSG1.Culture
 
             return true;
         }
+    }
+
+    public class CulturalStarterApparelSlot
+    {
+        public float selectionChance = 1f;
+        public string variantGroup;
+        public List<CulturalStarterApparelOption> options
+            = new List<CulturalStarterApparelOption>();
+
+        public bool TrySelect(
+            IDictionary<string, string> selectedVariantKeys,
+            out CulturalStarterApparelOption selectedOption)
+        {
+            selectedOption = null;
+            if (options.NullOrEmpty()
+                || !Rand.Chance(selectionChance))
+            {
+                return false;
+            }
+
+            List<CulturalStarterApparelOption> candidates = options;
+            if (!string.IsNullOrEmpty(variantGroup)
+                && selectedVariantKeys != null
+                && selectedVariantKeys.TryGetValue(
+                    variantGroup,
+                    out string selectedVariantKey))
+            {
+                candidates = options
+                    .Where(option => option != null
+                        && option.variantKey == selectedVariantKey)
+                    .ToList();
+            }
+
+            if (!candidates.TryRandomElementByWeight(
+                    option => option?.weight ?? 0f,
+                    out selectedOption)
+                || selectedOption == null)
+            {
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(variantGroup)
+                && !string.IsNullOrEmpty(selectedOption.variantKey)
+                && selectedVariantKeys != null)
+            {
+                selectedVariantKeys[variantGroup]
+                    = selectedOption.variantKey;
+            }
+
+            return true;
+        }
+    }
+
+    public class CulturalStarterApparelOption
+    {
+        public ThingDef apparel;
+        public ThingDef stuff;
+        public float weight = 1f;
+        public string variantKey;
     }
 
     public class CulturalNameRule
