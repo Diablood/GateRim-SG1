@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using GateRimSG1.Missions;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
@@ -7,26 +9,18 @@ namespace GateRimSG1.Goauld
 {
     internal static class TokraOrganicWoundedAgentUtility
     {
-        private const string SymbioteShockDefName
-            = "SG1_TokraWoundedAgentSymbioteShock";
-        private const string PostShockRecoveryDefName
-            = "SG1_TokraWoundedAgentPostShockRecovery";
-        private const float MinimumMovingCapacity = 0.50f;
-        private const float MinimumConsciousnessCapacity = 0.50f;
-        private const float MinimumSummaryHealth = 0.55f;
-        private const float MaximumBleedRate = 0.001f;
-        private const float SeriousIllnessChance = 0.35f;
-        private const float SeriousIllnessSeverity = 0.35f;
-
         public static bool TrySpawnPatient(
             Map map,
+            TokraOrganicOperationDefinition definition,
+            float scaledThreatPoints,
             int careDurationTicks,
             out Pawn patient)
         {
             patient = null;
+            GateRimMissionPawnCareDef profile = definition?.PawnCare;
+            PawnKindDef pawnKind = GetPawnKindDef(profile);
 
-            if (map == null
-                || GR_DefOf.SG1_TokraVoluntaryHost == null)
+            if (map == null || profile == null || pawnKind == null)
             {
                 return false;
             }
@@ -48,7 +42,7 @@ namespace GateRimSG1.Goauld
             }
 
             Pawn generatedPatient = PawnGenerator.GeneratePawn(
-                GR_DefOf.SG1_TokraVoluntaryHost,
+                pawnKind,
                 tokraFaction);
 
             if (generatedPatient == null)
@@ -60,7 +54,14 @@ namespace GateRimSG1.Goauld
             HealthUtility.DamageUntilDowned(
                 generatedPatient,
                 allowBleedingWounds: true);
-            TryAddSeriousIllness(generatedPatient);
+            float illnessChance;
+            float illnessSeverity;
+            bool illnessApplied = TryAddSeriousIllness(
+                generatedPatient,
+                definition,
+                scaledThreatPoints,
+                out illnessChance,
+                out illnessSeverity);
             EnsureSymbioteShock(generatedPatient);
 
             if (generatedPatient.Dead || generatedPatient.Destroyed)
@@ -98,7 +99,10 @@ namespace GateRimSG1.Goauld
                 + $"{PawnDebugLabel(patient)} at {entryCell}; "
                 + $"downed={patient.Downed}; symbioteShock="
                 + $"{HasSymbioteShock(patient)}; care window "
-                + $"{careDurationTicks} ticks.");
+                + $"{careDurationTicks} ticks; scaled threat "
+                + $"{scaledThreatPoints:0}; optional illness chance "
+                + $"{illnessChance:0.000}; severity "
+                + $"{illnessSeverity:0.000}; applied={illnessApplied}.");
 
             return true;
         }
@@ -286,7 +290,10 @@ namespace GateRimSG1.Goauld
 
         public static bool IsFitForDeparture(Pawn patient)
         {
-            if (patient == null
+            GateRimMissionPawnCareDef profile = GetPawnCareProfile();
+
+            if (profile == null
+                || patient == null
                 || patient.Destroyed
                 || patient.Dead
                 || !patient.Spawned
@@ -302,19 +309,21 @@ namespace GateRimSG1.Goauld
             }
 
             if (patient.health.capacities.GetLevel(
-                    PawnCapacityDefOf.Moving) < MinimumMovingCapacity
+                    PawnCapacityDefOf.Moving)
+                    < profile.minimumMovingCapacity
                 || patient.health.capacities.GetLevel(
                     PawnCapacityDefOf.Consciousness)
-                    < MinimumConsciousnessCapacity
-                || patient.health.hediffSet.BleedRateTotal > MaximumBleedRate
+                    < profile.minimumConsciousnessCapacity
+                || patient.health.hediffSet.BleedRateTotal
+                    > profile.maximumBleedRate
                 || patient.health.summaryHealth.SummaryHealthPercent
-                    < MinimumSummaryHealth
+                    < profile.minimumSummaryHealth
                 || HealthAIUtility.ShouldSeekMedicalRestUrgent(patient))
             {
                 return false;
             }
 
-            return !HasCriticalHealthCondition(patient);
+            return !HasCriticalHealthCondition(patient, profile);
         }
 
         public static bool TryOrderDeparture(Pawn patient)
@@ -351,7 +360,9 @@ namespace GateRimSG1.Goauld
             patient.Destroy(DestroyMode.Vanish);
         }
 
-        private static bool HasCriticalHealthCondition(Pawn patient)
+        private static bool HasCriticalHealthCondition(
+            Pawn patient,
+            GateRimMissionPawnCareDef profile)
         {
             List<Hediff> hediffs = patient.health.hediffSet.hediffs;
 
@@ -367,7 +378,8 @@ namespace GateRimSG1.Goauld
                 float lethalSeverity = hediff.def.lethalSeverity;
 
                 if (lethalSeverity > 0f
-                    && hediff.Severity >= lethalSeverity * 0.70f)
+                    && hediff.Severity >= lethalSeverity
+                        * profile.criticalHediffSeverityFraction)
                 {
                     return true;
                 }
@@ -376,37 +388,104 @@ namespace GateRimSG1.Goauld
             return false;
         }
 
-        private static void TryAddSeriousIllness(Pawn patient)
+        private static bool TryAddSeriousIllness(
+            Pawn patient,
+            TokraOrganicOperationDefinition definition,
+            float scaledThreatPoints,
+            out float chance,
+            out float severity)
         {
-            if (patient?.health == null
-                || !Rand.Chance(SeriousIllnessChance))
+            chance = 0f;
+            severity = 0f;
+            GateRimMissionPawnCareDef profile = definition?.PawnCare;
+
+            if (patient?.health == null || profile == null)
             {
-                return;
+                return false;
             }
 
-            HediffDef fluDef = DefDatabase<HediffDef>.GetNamedSilentFail(
-                "Flu");
+            float difficultyFactor = GetDifficultyFactor(
+                definition.MissionDef?.difficulty,
+                scaledThreatPoints);
+            chance = Lerp(
+                profile.optionalIllnessChanceMinimum,
+                profile.optionalIllnessChanceMaximum,
+                difficultyFactor);
+            severity = Lerp(
+                profile.optionalIllnessSeverityMinimum,
+                profile.optionalIllnessSeverityMaximum,
+                difficultyFactor);
 
-            if (fluDef == null)
+            if (!Rand.Chance(chance))
             {
-                return;
+                return false;
             }
 
-            Hediff flu = HediffMaker.MakeHediff(fluDef, patient);
-            flu.Severity = SeriousIllnessSeverity;
-            patient.health.AddHediff(flu);
+            HediffDef illnessDef = DefDatabase<HediffDef>.GetNamedSilentFail(
+                profile.optionalIllnessHediffDefName);
+
+            if (illnessDef == null)
+            {
+                return false;
+            }
+
+            Hediff illness = HediffMaker.MakeHediff(illnessDef, patient);
+            illness.Severity = severity;
+            patient.health.AddHediff(illness);
+            return true;
+        }
+
+        private static float GetDifficultyFactor(
+            GateRimMissionDifficultyDef difficulty,
+            float scaledThreatPoints)
+        {
+            if (difficulty == null
+                || difficulty.maximumPoints <= difficulty.minimumPoints)
+            {
+                return 0.5f;
+            }
+
+            float normalized = (scaledThreatPoints - difficulty.minimumPoints)
+                / (difficulty.maximumPoints - difficulty.minimumPoints);
+            return Math.Max(0f, Math.Min(1f, normalized));
+        }
+
+        private static float Lerp(float minimum, float maximum, float factor)
+        {
+            return minimum + ((maximum - minimum) * factor);
+        }
+
+        private static GateRimMissionPawnCareDef GetPawnCareProfile()
+        {
+            return TokraOrganicOperationFramework.GetDefinition(
+                TokraOrganicOperationArchetype.WoundedAgentCare)?.PawnCare;
+        }
+
+        private static PawnKindDef GetPawnKindDef(
+            GateRimMissionPawnCareDef profile)
+        {
+            return string.IsNullOrWhiteSpace(profile?.pawnKindDefName)
+                ? null
+                : DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                    profile.pawnKindDefName);
         }
 
         private static HediffDef GetSymbioteShockDef()
         {
-            return DefDatabase<HediffDef>.GetNamedSilentFail(
-                SymbioteShockDefName);
+            GateRimMissionPawnCareDef profile = GetPawnCareProfile();
+            return string.IsNullOrWhiteSpace(profile?.initialHediffDefName)
+                ? null
+                : DefDatabase<HediffDef>.GetNamedSilentFail(
+                    profile.initialHediffDefName);
         }
 
         private static HediffDef GetPostShockRecoveryDef()
         {
-            return DefDatabase<HediffDef>.GetNamedSilentFail(
-                PostShockRecoveryDefName);
+            GateRimMissionPawnCareDef profile = GetPawnCareProfile();
+            return string.IsNullOrWhiteSpace(profile?.recoveryHediffDefName)
+                ? null
+                : DefDatabase<HediffDef>.GetNamedSilentFail(
+                    profile.recoveryHediffDefName);
         }
 
         private static bool TryFindEntryCell(Map map, out IntVec3 entryCell)

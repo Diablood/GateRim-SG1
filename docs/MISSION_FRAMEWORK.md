@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; observation completed in `0.3.24-dev`; intelligence recovery completed and published in `0.3.25-dev`.
+Status: foundation published in `0.3.23-dev`; observation completed in `0.3.24-dev`; intelligence recovery completed in `0.3.25-dev`; wounded-agent care completed in `0.3.26-dev`.
 
 ## Purpose
 
@@ -90,6 +90,8 @@ The operation captures base and scaled threat points when the offer is created. 
 
 Validation on local revision `r2` confirmed the final `10000 / 5000` tick pacing, progress persistence and adaptive patrol budgets on both a weak colony and an advanced colony.
 
+The `0.3.26-dev-r1` archive accidentally omitted the accelerated objective's `5000`-tick XML field. The existing validator disabled intelligence recovery explicitly at load, proving that no hidden C# balance fallback remained. Validated revision `r2` restores the XML field only, without changing C# or intelligence-recovery balance.
+
 ## Specialized observation adapter
 
 The observation adapter still owns:
@@ -106,6 +108,45 @@ The observation adapter still owns:
 
 These are implementation mechanics rather than duplicated mission content. They should only move into shared code when another real mission needs the same behavior.
 
+## Wounded-agent care migration (`0.3.26-dev`)
+
+`SG1_TokraOrganic_WoundedAgentCare` is the third complete data-backed adapter and the first one centered on a persistent pawn objective.
+
+The MissionDef owns:
+
+- the generated pawn kind and operation-specific Hediffs;
+- stable-health and departure-grace durations;
+- Moving, Consciousness, summary-health, bleeding and critical-Hediff thresholds;
+- adaptive optional-illness chance and severity ranges;
+- trust-tier weights, repeat penalty and trust-tier-specific hidden delays;
+- all offer, arrival, progress, status, failure and success text keys;
+- three offer variants and three success variants with local anti-repetition;
+- trust consequences and the declarative phase graph.
+
+The adapter still performs the actual RimWorld work: pawn generation, wounds, medical-bed checks, tending detection, live health evaluation, Lord behavior, departure and save/load references. The framework does not pretend that those engine mechanics are already generic.
+
+Optional illness uses the scaled threat snapshot captured at offer time. Chance and severity are interpolated between configured minimum and maximum values, so an advanced colony can receive a more demanding patient without changing the rescue flow or fabricating a combat encounter.
+
+A missing or invalid required PawnKind, Hediff, medical threshold, recurrence context or runtime text disables this archetype with an explicit configuration error. There is no complete C# fallback definition.
+
+Validation used the exact developer actions:
+
+```text
+Debug actions menu
+→ GateRim SG-1
+→ Mission framework: inspect definitions
+```
+
+and:
+
+```text
+Debug actions menu
+→ GateRim SG-1
+→ Tok'ra ops: force wounded agent offer
+```
+
+The validated happy path accepts through the powered communicator, rescues the downed agent into a colony medical bed, tends the symbiote shock, keeps the pawn above the configured thresholds for `5000` ticks and confirms success only after the agent leaves the map alive. Failure, adaptive difficulty on weak and advanced colonies, save/load, recurrence, text variation and regression coverage were also validated and remain documented in `docs/TESTING_CURRENT.md` and `docs/TESTING.md`.
+
 ## Recurrence behavior
 
 After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Legacy operations continue to use their historical trust-tier delay ranges until they are migrated.
@@ -114,7 +155,7 @@ The player must never see these internal ranges in normal play. They are visible
 
 ## Difficulty behavior
 
-A MissionDef can capture current RimWorld threat points when offered. Observation records the snapshot without fabricating a combat encounter. Intelligence recovery now provides the first real consumer: accelerated analysis can queue a Goa'uld patrol whose points are the stored scaled snapshot.
+A MissionDef can capture current RimWorld threat points when offered. Observation records the snapshot without fabricating a combat encounter. Intelligence recovery can queue a Goa'uld patrol from the stored scaled snapshot. Wounded-agent care uses the same captured scale to interpolate optional illness chance and severity.
 
 The budget is captured at offer time and remains stable for that occurrence. Consequences must not recalculate a more convenient value later. Fixed enemy counts should be avoided when a storyteller threat budget can express equivalent behavior.
 
@@ -158,4 +199,4 @@ Before treating a migrated mission as a framework reference:
 6. verify that no technical details leak into player-facing texts;
 7. test all still-legacy operations for regression.
 
-The intelligence-recovery migration exercises adaptive threat consumption. Future migrations should likewise add shared vocabulary only when a concrete operation proves the need.
+The intelligence-recovery and wounded-agent migrations exercise two different forms of adaptive threat consumption. Future migrations should likewise add shared vocabulary only when a concrete operation proves the need.

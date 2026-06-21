@@ -1,116 +1,90 @@
 # Project state
 
-Current milestone: `0.3.25-dev - Migrate intelligence recovery to mission framework` — validated locally on revision `r2` and published under the final tag `v0.3.25-dev`.
+Current milestone: `0.3.26-dev - Migrate wounded-agent care to mission framework` — completed and published under the final tag `v0.3.26-dev`.
 
-## Last completed milestone
+## Development base
 
-- Development base tag: `v0.3.24-dev`.
-- Dedicated branch: `feature/intelligence-recovery-mission-migration`.
-- Validated local archive revision: `0.3.25-dev-r2`.
-- Published final tag: `v0.3.25-dev`.
-- Validated assembly version: `0.3.25.0`.
+- Starting tag: `v0.3.25-dev`.
+- Dedicated branch: `feature/wounded-agent-mission-migration`.
+- Validated local revision: `0.3.26-dev-r2`.
+- Published assembly version: `0.3.26.0`.
+- Final publication tag: `v0.3.26-dev`.
 - Cultural backstory count remains `83`.
 
-## Milestone objective
+## Milestone outcome
 
-Migrate Tok'ra intelligence recovery as the second real MissionDef-backed organic operation and use it to validate adaptive threat consumption.
+Tok'ra wounded-agent care is the third complete MissionDef-backed organic operation. The player flow remains recognizable: accept the request through the powered communicator, rescue the collapsed Tok'ra agent, place them in a colony medical bed, tend the acute symbiote shock, continue ordinary treatment until the agent is fit to travel, then let the agent leave the map alive.
 
-The existing player flow remains recognizable: accept the recovered module, choose cautious or accelerated analysis at the powered communicator, complete the intellectual work and receive the appropriate result. The migration moves the mission's declarative data and balance out of its legacy C# definition while preserving specialized RimWorld interactions in the adapter.
-
-## Completed migration
-
-`SG1_TokraOrganic_IntelligenceRecovery` now controls:
+`SG1_TokraOrganic_WoundedAgentCare` controls:
 
 - offer duration, accepted-operation deadline, trust-tier weights and repeat penalty;
-- generic and trust-tier-specific hidden recurrence delay ranges;
-- the intelligence module, analysis job and Intellectual skill Def references;
-- cautious and accelerated analysis durations of `10000` and `5000` ticks;
-- the generic `Intellectual +350` success reward and the accelerated `+150` XP bonus;
-- the `35%` accelerated interference chance;
-- the Goa'uld patrol IncidentDef, its `5000–12500` tick delay and `2500` tick retry delay;
-- a scaled difficulty profile using `35%` of the captured storyteller threat points, clamped to `180–700` points;
-- all offer, acceptance, objective, status, method, failure and result text keys;
-- three named three-entry result banks for cautious, accelerated and interference outcomes;
-- trust changes and phase consequences.
+- generic and trust-tier-specific hidden recurrence ranges;
+- the generated `PawnKindDef`, acute shock Hediff, recovery Hediff and optional illness Hediff;
+- the stable-health duration and post-departure grace duration;
+- minimum Moving, Consciousness and summary-health thresholds, maximum bleed rate and critical-Hediff threshold;
+- adaptive optional-illness chance and severity ranges driven by the scaled threat snapshot captured at the offer;
+- all offer, acceptance, arrival, progress, status, failure and success text keys;
+- three offer variants and three success variants with local anti-repetition;
+- success and failure trust changes;
+- the declarative offered, accepted, recovering, ready, succeeded and failed phases.
 
-The complete C# intelligence-recovery definition has been removed. A missing or incomplete MissionDef, an invalid required Def reference, a missing threat-scaling profile or an incomplete trust-tier recurrence table disables the archetype and writes one explicit configuration error.
+The complete C# wounded-agent definition has been removed. A missing or incomplete MissionDef, an invalid required `PawnKindDef` or `HediffDef`, an invalid health profile, an incomplete recurrence table or a missing required text disables the archetype and writes one explicit configuration error.
 
-The scheduler consumes the MissionDef's trust-tier-specific recurrence ranges after intelligence recovery. The accelerated Goa'uld patrol receives the scaled threat snapshot captured when the operation was offered; it does not recalculate points from the colony's later state.
+## Shared framework addition
 
-## Shared framework additions
-
-This second consumer adds only capabilities required by the real operation:
-
-- context-specific recurrence delay ranges;
-- named weighted text banks selected by semantic ID;
-- consequence chance, minimum/maximum delay and retry fields;
-- developer-report output for those values.
-
-These additions remain generic and reusable by future missions without attempting to execute every phase or consequence automatically.
+The framework gains one bounded reusable block, `pawnCare`, containing only declarative pawn-care data. It does not attempt to execute tending or health AI generically. This block can support future rescue, escort or medical-refuge missions when they share the same real needs.
 
 ## Deliberately retained in C#
 
 The specialized adapter remains responsible for:
 
-- placing and tracking the recovered physical module;
-- the powered-communicator interaction and method-selection dialog;
-- RimWorld job creation, reservations, reachability and Toils;
-- active work progress, interruptions and save/load migration;
-- queuing the storyteller incident with the configured IncidentDef and captured points;
-- compatibility fields for saves created before the MissionDef migration;
-- debug actions that force method selection, completion or interference.
+- generating and spawning the pawn at a reachable map edge;
+- creating wounds through RimWorld health utilities;
+- creating the vanilla-compatible Lord and departure behavior;
+- checking the medical bed and actual tending of the shock Hediff;
+- evaluating live RimWorld capacities, bleeding, urgent medical rest and lethal Hediffs;
+- managing pawn references, save/load migration and map-loss, capture, death and departure outcomes;
+- developer actions for forcing offers, completion and failures.
 
-These are engine-facing mechanics rather than duplicated mission content. They should only move into shared code when another real mission needs the same implementation.
+These are engine-facing mechanics. They should move into shared code only after another concrete mission proves that the implementation itself is reusable.
 
 ## Validation completed
 
-The complete protocol in `docs/TESTING_CURRENT.md` was validated on local revision `r2`:
+Local revision `r1` validated the complete wounded-agent flow. The same startup exposed one unrelated regression in the already migrated intelligence operation: the accelerated objective had lost its XML `<workTicks>5000</workTicks>` entry while the archive was assembled. The MissionDef validator correctly disabled only that archetype instead of applying a hidden fallback.
 
-- project consistency and forced rebuild passed with assembly `0.3.25.0`;
-- both MissionDefs and every configured `ThingDef`, `JobDef`, `SkillDef` and `IncidentDef` loaded without error;
-- cautious analysis completed at `10000` ticks with `Intellectual +350` and no patrol;
-- accelerated analysis completed at `5000` ticks with `Intellectual +500` total and retained a clear speed advantage at maximum game speed;
-- interruption, resumption and save/reload preserved the configured total and current progress for both methods;
-- the adaptive Goa'uld patrol was validated on a weak colony and an advanced colony, using `clamp(base threat × 0.35, 180, 700)`;
-- the incident consumed the scaled snapshot captured at offer time even after the colony state changed before interference;
-- the three independent result banks, immediate anti-repetition, failure cases and trust-tier recurrence ranges were validated;
-- observation, wounded-agent care and medical handoff retained their expected flows;
-- developer tools remained within the intended debug boundary and `Player.log` remained clean for the tested scope.
+Local revision `r2` restored that XML field without changing C# or wounded-agent gameplay. Final validation confirmed:
 
-## Next development step
+- project consistency, forced rebuild and assembly `0.3.26.0`;
+- three valid MissionDefs and a clean framework report;
+- normal rescue, emergency tending, recovery, `5000` stable ticks and departure;
+- success only after the recovered agent actually leaves the map;
+- death, capture, disappearance, timeout and failed-departure outcomes;
+- persistence during offer, care, recovery and departure;
+- adaptive illness parameters on weak and advanced colonies using the snapshot captured at offer;
+- text variants, local anti-repetition and recurrence across repeated occurrences;
+- observation, intelligence recovery and medical-handoff regressions;
+- accelerated intelligence analysis restored to `5000` ticks;
+- a clean final `Player.log`.
 
-Start the next milestone explicitly from `v0.3.25-dev` on a new dedicated branch. Audit the remaining inherited organic operations and select the next real migration according to the shared capability it can prove. Do not generalize Toils, placement or medical mechanics without a second concrete consumer.
+## Publication state
 
-## Durable direction
+- Branch `feature/wounded-agent-mission-migration` published.
+- Final annotated tag `v0.3.26-dev` published.
+- Main GitHub repository updated.
+- Separate wiki synchronized and published.
 
-The mission framework is a toolbox intended to cover roughly 70 to 90 percent of recurring missions and questlines. Specialized workers remain the normal solution for unique mechanics. Existing missions will be migrated progressively only when the common abstractions are proven by multiple real uses.
+## Next milestone
 
-Every future recurring mission must consider:
+The next milestone must start explicitly from `v0.3.26-dev` on a new dedicated branch. Medical handoff is the remaining legacy organic operation and the next logical migration candidate, but its exact scope must be confirmed against the authoritative repository files before implementation.
 
-- long-game replayability and re-eligibility after success or failure;
-- hidden variable delays and local anti-repetition;
-- difficulty derived from RimWorld storyteller threat points, active difficulty and colony wealth rather than fixed enemy counts;
-- RP text variants, or deliberately repeatable prose when variants would not improve quality;
-- persistent state, debug phase forcing and save/load migration.
+## Main files changed
 
-## Published files
-
-- `About/About.xml`;
-- `Source/GateRimSG1/GateRimSG1.csproj`;
-- extended mission definition and framework classes;
-- adapted Tok'ra organic-operation framework and manager files;
 - `1.6/Defs/MissionDefs/SG1_MissionFramework.xml`;
-- `README.md`;
-- `docs/MISSION_FRAMEWORK.md`;
-- project state, roadmap, current and durable tests, and changelog;
-- wiki home and content-status revisions.
-
-## Repository rules reminder
-
-- Preserve `About/ModIcon.png`.
-- Do not commit root ZIP archives.
-- Publish only one final tag per milestone, without an `-rN` suffix.
-- Use `/` in repository-relative PowerShell paths written in Markdown.
-- Run the project consistency checker before every final commit.
-- Synchronize the separate wiki only when at least one `docs/wiki/*.md` file changed.
-- Follow `docs/MILESTONE_PUBLICATION.md` for commit, tag, push and wiki publication.
+- `Languages/English/Keyed/SG1_TokraOrganicWoundedAgentCare.xml`;
+- `Languages/French/Keyed/SG1_TokraOrganicWoundedAgentCare.xml`;
+- `Source/GateRimSG1/Missions/GateRimMissionDef.cs`;
+- `Source/GateRimSG1/Missions/GateRimMissionFramework.cs`;
+- `Source/GateRimSG1/Goauld/TokraOrganicOperationFramework.cs`;
+- `Source/GateRimSG1/Goauld/TokraOrganicWoundedAgentUtility.cs`;
+- `Source/GateRimSG1/Goauld/GameComponent_TokraOrganicOperationManager.cs`;
+- project, test, roadmap, changelog and wiki tracking files.

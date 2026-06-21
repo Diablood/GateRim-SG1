@@ -32,8 +32,6 @@ namespace GateRimSG1.Goauld
                 GetObservationDefinition()?.ObservationTransmissionWorkTicks ?? 1);
         private const int InitialMinimumDelayTicks = 180000;
         private const int InitialMaximumDelayTicks = 360000;
-        private const int WoundedAgentStableDurationTicks = 5000;
-        private const int WoundedAgentDepartureGraceTicks = 60000;
         private const int MedicalSupplyArrivalMinimumDelayTicks = 2500;
         private const int MedicalSupplyArrivalMaximumDelayTicks = 5000;
         private const int MedicalSupplyDepartureGraceTicks = 60000;
@@ -1561,7 +1559,9 @@ namespace GateRimSG1.Goauld
                 TokraOrganicWoundedAgentUtility
                     .BeginPostShockRecovery(patient);
                 manager.woundedAgentStableSinceTick
-                    = currentTick - WoundedAgentStableDurationTicks;
+                    = currentTick - Math.Max(
+                        1,
+                        definition.PawnCare?.stableDurationTicks ?? 1);
                 manager.TickAcceptedWoundedAgent(currentTick);
                 return true;
             }
@@ -1748,7 +1748,8 @@ namespace GateRimSG1.Goauld
             else if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare)
             {
-                failureTextKey = "GR_TokraWoundedAgent_FailedTimeoutText";
+                failureTextKey
+                    = manager.GetWoundedAgentTextKey("failureTimeout");
             }
             else if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
@@ -1858,7 +1859,7 @@ namespace GateRimSG1.Goauld
                 {
                     string lostTextKey = definition.Archetype
                         == TokraOrganicOperationArchetype.WoundedAgentCare
-                        ? "GR_TokraWoundedAgent_FailedLostText"
+                        ? definition.GetRuntimeTextKey("failureLost")
                         : definition.Archetype
                             == TokraOrganicOperationArchetype
                                 .MedicalSupplyHandoff
@@ -2111,14 +2112,22 @@ namespace GateRimSG1.Goauld
 
         internal void TickAcceptedWoundedAgent(int currentTick)
         {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            GateRimMissionPawnCareDef profile = definition?.PawnCare;
             Pawn patient = activeWoundedAgent;
+
+            if (definition == null || profile == null)
+            {
+                return;
+            }
 
             if (patient == null)
             {
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     null,
-                    "GR_TokraWoundedAgent_FailedLostText");
+                    definition.GetRuntimeTextKey("failureLost"));
                 return;
             }
 
@@ -2127,7 +2136,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     patient,
-                    "GR_TokraWoundedAgent_FailedDeathText");
+                    definition.GetRuntimeTextKey("failureDeath"));
                 return;
             }
 
@@ -2140,7 +2149,7 @@ namespace GateRimSG1.Goauld
                     TryResolveActiveOperation(
                         TokraOrganicOperationOutcome.Failed,
                         patient,
-                        "GR_TokraWoundedAgent_FailedCapturedText");
+                        definition.GetRuntimeTextKey("failureCaptured"));
                     return;
                 }
 
@@ -2160,7 +2169,7 @@ namespace GateRimSG1.Goauld
                     TryResolveActiveOperation(
                         TokraOrganicOperationOutcome.Failed,
                         patient,
-                        "GR_TokraWoundedAgent_FailedLostText");
+                        definition.GetRuntimeTextKey("failureLost"));
                     return;
                 }
 
@@ -2170,7 +2179,7 @@ namespace GateRimSG1.Goauld
                     TryResolveActiveOperation(
                         TokraOrganicOperationOutcome.Failed,
                         patient,
-                        "GR_TokraWoundedAgent_FailedTimeoutText");
+                        definition.GetRuntimeTextKey("failureTimeout"));
                 }
 
                 return;
@@ -2187,7 +2196,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     patient,
-                    "GR_TokraWoundedAgent_FailedLostText");
+                    definition.GetRuntimeTextKey("failureLost"));
                 return;
             }
 
@@ -2196,7 +2205,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     patient,
-                    "GR_TokraWoundedAgent_FailedCapturedText");
+                    definition.GetRuntimeTextKey("failureCaptured"));
                 return;
             }
 
@@ -2206,7 +2215,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     patient,
-                    "GR_TokraWoundedAgent_FailedTimeoutText");
+                    definition.GetRuntimeTextKey("failureTimeout"));
                 return;
             }
 
@@ -2226,9 +2235,10 @@ namespace GateRimSG1.Goauld
                 woundedAgentInitialCareReceived = true;
                 TokraOrganicWoundedAgentUtility
                     .BeginPostShockRecovery(patient);
+                SetWoundedAgentFrameworkPhase("recovering");
 
                 Messages.Message(
-                    "GR_TokraWoundedAgent_InitialCareMessage".Translate(
+                    definition.GetRuntimeTextKey("initialCareMessage").Translate(
                         patient.LabelShortCap),
                     patient,
                     MessageTypeDefOf.PositiveEvent,
@@ -2244,6 +2254,7 @@ namespace GateRimSG1.Goauld
                 TokraOrganicWoundedAgentUtility.RemoveSymbioteShock(patient);
                 TokraOrganicWoundedAgentUtility
                     .EnsurePostShockRecovery(patient);
+                SetWoundedAgentFrameworkPhase("recovering");
             }
 
             if (!TokraOrganicWoundedAgentUtility.IsFitForDeparture(patient))
@@ -2256,7 +2267,7 @@ namespace GateRimSG1.Goauld
             {
                 woundedAgentStableSinceTick = currentTick;
                 Messages.Message(
-                    "GR_TokraWoundedAgent_StableMessage".Translate(
+                    definition.GetRuntimeTextKey("stableMessage").Translate(
                         patient.LabelShortCap),
                     patient,
                     MessageTypeDefOf.PositiveEvent,
@@ -2265,7 +2276,7 @@ namespace GateRimSG1.Goauld
             }
 
             if (currentTick - woundedAgentStableSinceTick
-                < WoundedAgentStableDurationTicks)
+                < profile.stableDurationTicks)
             {
                 return;
             }
@@ -2277,12 +2288,12 @@ namespace GateRimSG1.Goauld
 
             woundedAgentDepartureOrdered = true;
             woundedAgentDepartureDeadlineTick
-                = currentTick + WoundedAgentDepartureGraceTicks;
+                = currentTick + profile.departureGraceTicks;
             activeState = TokraOrganicOperationState.Ready;
             readyNotificationSent = true;
 
             Messages.Message(
-                "GR_TokraWoundedAgent_DepartingMessage".Translate(
+                definition.GetRuntimeTextKey("departingMessage").Translate(
                     patient.LabelShortCap),
                 patient,
                 MessageTypeDefOf.PositiveEvent,
@@ -3412,15 +3423,21 @@ namespace GateRimSG1.Goauld
                 = GetActiveDefinition();
             Pawn patient;
 
-            if (definition == null
-                || !TokraOrganicWoundedAgentUtility.TrySpawnPatient(
+            if (definition == null || definition.PawnCare == null)
+            {
+                return false;
+            }
+
+            if (!TokraOrganicWoundedAgentUtility.TrySpawnPatient(
                     map,
+                    definition,
+                    activeOperation.frameworkRuntime?.scaledThreatPoints ?? 0f,
                     definition.DeadlineTicks
-                        + WoundedAgentDepartureGraceTicks,
+                        + definition.PawnCare.departureGraceTicks,
                     out patient))
             {
                 Messages.Message(
-                    "GR_TokraWoundedAgent_SpawnFailed".Translate(),
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
                     MessageTypeDefOf.RejectInput,
                     historical: false);
                 return false;
@@ -3446,7 +3463,7 @@ namespace GateRimSG1.Goauld
             NotifyMissionAccepted(map, operatorPawn);
 
             Messages.Message(
-                "GR_TokraWoundedAgent_AcceptedMessage".Translate(
+                definition.AcceptedMessageKey.Translate(
                     operatorPawn?.LabelShortCap ?? "?",
                     patient.LabelShortCap),
                 patient,
@@ -3454,8 +3471,8 @@ namespace GateRimSG1.Goauld
                 historical: true);
 
             Find.LetterStack?.ReceiveLetter(
-                "GR_TokraWoundedAgent_ArrivalLabel".Translate(),
-                "GR_TokraWoundedAgent_ArrivalText".Translate(
+                definition.GetRuntimeTextKey("arrivalLabel").Translate(),
+                definition.GetRuntimeTextKey("arrivalText").Translate(
                     patient.LabelShortCap,
                     GetRoundedUpHours(definition.DeadlineTicks).ToString()),
                 LetterDefOf.NeutralEvent,
@@ -3899,7 +3916,7 @@ namespace GateRimSG1.Goauld
             bool preservePatientAfterFailure = patient != null
                 && (patient.Dead
                     || failureTextKey
-                        == "GR_TokraWoundedAgent_FailedCapturedText");
+                        == definition.GetRuntimeTextKey("failureCaptured"));
 
             if (outcome == TokraOrganicOperationOutcome.Failed
                 && !preservePatientAfterFailure)
@@ -3930,8 +3947,8 @@ namespace GateRimSG1.Goauld
                 if (outcome == TokraOrganicOperationOutcome.Succeeded)
                 {
                     Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraWoundedAgent_SuccessLabel".Translate(),
-                        "GR_TokraWoundedAgent_SuccessText".Translate(
+                        definition.SuccessLetterLabelKey.Translate(),
+                        GetMissionSuccessTextKey(definition).Translate(
                             patient?.LabelShortCap ?? "?"),
                         LetterDefOf.PositiveEvent,
                         letterTarget);
@@ -3939,11 +3956,11 @@ namespace GateRimSG1.Goauld
                 else
                 {
                     string textKey = string.IsNullOrEmpty(failureTextKey)
-                        ? "GR_TokraWoundedAgent_FailedTimeoutText"
+                        ? definition.GetRuntimeTextKey("failureTimeout")
                         : failureTextKey;
 
                     Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraWoundedAgent_FailedLabel".Translate(),
+                        definition.FailureLetterLabelKey.Translate(),
                         textKey.Translate(patient?.LabelShortCap ?? "?"),
                         LetterDefOf.NegativeEvent,
                         letterTarget);
@@ -4510,6 +4527,66 @@ namespace GateRimSG1.Goauld
             return GetActiveDefinition()?.GetRuntimeTextKey(id);
         }
 
+        private string GetWoundedAgentTextKey(string id)
+        {
+            return GetActiveDefinition()?.GetRuntimeTextKey(id)
+                ?? TokraOrganicOperationFramework.GetDefinition(
+                    TokraOrganicOperationArchetype.WoundedAgentCare)
+                    ?.GetRuntimeTextKey(id);
+        }
+
+        private string GetMissionSuccessTextKey(
+            TokraOrganicOperationDefinition definition)
+        {
+            if (definition == null)
+            {
+                return null;
+            }
+
+            string storageKey = definition.MissionDefName + ":success";
+            int previousIndex = -1;
+            int storedIndex;
+
+            if (lastMissionTextVariantIndexes != null
+                && lastMissionTextVariantIndexes.TryGetValue(
+                    storageKey,
+                    out storedIndex))
+            {
+                previousIndex = storedIndex;
+            }
+
+            int selectedIndex;
+            string selectedKey = definition.SelectSuccessLetterTextKey(
+                previousIndex,
+                out selectedIndex);
+
+            if (!string.IsNullOrEmpty(selectedKey) && selectedIndex >= 0)
+            {
+                if (lastMissionTextVariantIndexes == null)
+                {
+                    lastMissionTextVariantIndexes
+                        = new Dictionary<string, int>();
+                }
+
+                lastMissionTextVariantIndexes[storageKey] = selectedIndex;
+            }
+
+            return selectedKey;
+        }
+
+        private void SetWoundedAgentFrameworkPhase(string phaseId)
+        {
+            if (activeOperation.frameworkRuntime == null
+                || string.IsNullOrEmpty(
+                    activeOperation.frameworkRuntime.missionDefName)
+                || string.IsNullOrEmpty(phaseId))
+            {
+                return;
+            }
+
+            activeOperation.frameworkRuntime.phaseId = phaseId;
+        }
+
         private void SetIntelligenceFrameworkPhase(
             TokraIntelligenceAnalysisMethod method)
         {
@@ -4941,7 +5018,7 @@ namespace GateRimSG1.Goauld
                 }
                 else if (!woundedAgentInitialCareReceived)
                 {
-                    status = "GR_TokraWoundedAgent_StatusAwaitingCare"
+                    status = definition.GetRuntimeTextKey("statusAwaitingCare")
                         .Translate(
                             activeWoundedAgent?.LabelShortCap ?? "?",
                             GetRoundedUpHours(

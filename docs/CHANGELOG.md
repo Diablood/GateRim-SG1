@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.26-dev - Migrate wounded-agent care to mission framework
+
+- Restore the intelligence accelerated-analysis `<workTicks>5000</workTicks>` entry in local revision `r2`; its omission from the `r1` archive was correctly rejected by the MissionDef validator at load time.
+- Keep all C# and wounded-agent gameplay unchanged from the functionally validated `r1` revision.
+- Add `SG1_TokraOrganic_WoundedAgentCare` as the third complete MissionDef-backed organic operation.
+- Add a bounded reusable `pawnCare` profile for pawn kind, health Hediffs, stable duration, departure grace and medical thresholds.
+- Drive optional illness chance and severity from the scaled threat snapshot captured when the offer is created.
+- Move wounded-agent weights, context delays, text variants, runtime messages and trust consequences into XML.
+- Add three offer variants and three success variants with local anti-repetition.
+- Remove the complete C# fallback definition and reject missing, incomplete or invalid required configuration explicitly.
+- Keep pawn spawning, vanilla tending, health evaluation, Lord behavior, departure and save references in the specialized adapter.
+- Raise the assembly version to `0.3.26.0` and the mod metadata version to `0.3.26-dev`.
+
+- Validate the complete wounded-agent flow on local revision `r1`, including rescue, real shock tending, medical recovery, stable duration, departure, failures, persistence, recurrence, RP variants and regressions.
+- Validate adaptive illness parameters on weak and advanced colonies from the threat snapshot captured at offer time.
+- Validate local revision `r2` after a full restart: three MissionDefs load, accelerated intelligence analysis uses `5000` ticks again and the final `Player.log` is clean.
+- Publish branch `feature/wounded-agent-mission-migration`, final tag `v0.3.26-dev` and the synchronized wiki.
+
 ## 0.3.25-dev - Migrate intelligence recovery to mission framework
 
 - Add `SG1_TokraOrganic_IntelligenceRecovery` as the second complete MissionDef-backed organic operation.

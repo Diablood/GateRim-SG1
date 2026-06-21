@@ -1,5 +1,42 @@
 # Tests
 
+## 0.3.26-dev - Migration des soins de l'agent blessé vers le framework de missions
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.26-dev`. La révision `r1` a validé le flux complet de l'agent blessé. La révision `r2` a restauré le champ XML `workTicks=5000` de l'analyse accélérée des renseignements, omis lors de l'assemblage de `r1`, sans modifier le C# ni le gameplay de l'agent blessé.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.26-dev`, `0.3.26.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.26.0` ;
+- chargement des trois MissionDefs, y compris l'analyse accélérée des renseignements à `5000` ticks ;
+- définition `SG1_TokraOrganic_WoundedAgentCare` exposant six phases, le profil `pawnCare`, les références de pawn et de Hediffs, les seuils médicaux, les durées, les textes, les variantes et les plages de récurrence ;
+- flux complet validé : offre, arrivée, sauvetage, lit médical, soin réel du choc de symbiote, récupération post-choc, soins vanilla, `5000` ticks de stabilité, départ et réussite uniquement après sortie de carte ;
+- confiance `+3` accordée une seule fois après sortie réussie ;
+- difficulté adaptative validée sur colonie faible et avancée à partir du snapshot mis à l'échelle capturé lors de l'offre ;
+- chance et sévérité de l'affection optionnelle persistantes, sans reroll après modification de richesse ou sauvegarde/rechargement ;
+- mort, capture, disparition, expiration des soins et échec de départ après la grâce de `60000` ticks ;
+- pénalité de confiance `-2` et nettoyage correct de l'objectif pour chaque échec ;
+- sauvegarde/rechargement pendant l'offre, avant le premier soin, pendant la récupération, pendant la stabilité et pendant le départ ;
+- migration prudente d'une occurrence créée avant la migration sans perte du pawn ni duplication de résultat ;
+- trois variantes d'offre et trois variantes de réussite avec anti-répétition immédiate ;
+- rééligibilité et délais cachés contextuels après résolution ;
+- observation, récupération de renseignements et remise médicale validées sans régression ;
+- outils techniques limités au debug et `Player.log` final propre.
+
+Points de régression durables :
+
+- conserver le MissionDef comme source unique du PawnKind, des Hediffs, seuils, durées, paramètres d'affection, textes, récurrence et conséquences migrés ;
+- désactiver explicitement l'archétype lorsqu'une configuration requise est absente ou invalide, sans fallback C# complet silencieux ;
+- préserver les soins vanilla, l'évaluation de santé, le Lord et le départ dans l'adaptateur tant qu'un second usage réel ne justifie pas leur mutualisation ;
+- capturer la difficulté à l'offre et conserver les paramètres médicaux de l'occurrence après sauvegarde/rechargement ;
+- exiger un soin réel du choc de symbiote et ne jamais valider la mission sur la seule stabilisation médicale ;
+- accorder la réussite uniquement après la sortie vivante du pawn ;
+- couvrir mort, capture, perte, expiration et incapacité durable à quitter la carte ;
+- tester les menaces ou contraintes adaptatives sur une colonie faible et une colonie avancée ;
+- vérifier variantes, anti-répétition, récurrence, plusieurs points de sauvegarde/recharge et anciennes sauvegardes ;
+- revalider toutes les opérations déjà migrées après toute modification du XML partagé ;
+- conserver un validateur strict : l'omission de `workTicks` en `r1` doit continuer à désactiver explicitement l'opération concernée plutôt qu'à masquer l'erreur.
+
 ## 0.3.25-dev - Migration de la récupération de renseignements vers le framework de missions
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.25-dev`. La révision `r2` a porté les durées finales à `10000` ticks pour l'analyse prudente et `5000` ticks pour l'analyse accélérée.

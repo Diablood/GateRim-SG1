@@ -162,6 +162,44 @@ namespace GateRimSG1.Missions
                 builder.AppendLine("  Difficulty: "
                     + (definition.difficulty?.mode.ToString() ?? "None"));
 
+                if (definition.pawnCare != null)
+                {
+                    GateRimMissionPawnCareDef pawnCare = definition.pawnCare;
+                    builder.AppendLine(
+                        "  Pawn care: kind="
+                        + (pawnCare.pawnKindDefName ?? "none")
+                        + ", initialHediff="
+                        + (pawnCare.initialHediffDefName ?? "none")
+                        + ", recoveryHediff="
+                        + (pawnCare.recoveryHediffDefName ?? "none"));
+                    builder.AppendLine(
+                        "  Pawn care timing: stable="
+                        + pawnCare.stableDurationTicks
+                        + ", departureGrace="
+                        + pawnCare.departureGraceTicks
+                        + " ticks");
+                    builder.AppendLine(
+                        "  Pawn care thresholds: moving="
+                        + pawnCare.minimumMovingCapacity.ToString("0.###")
+                        + ", consciousness="
+                        + pawnCare.minimumConsciousnessCapacity.ToString("0.###")
+                        + ", health="
+                        + pawnCare.minimumSummaryHealth.ToString("0.###")
+                        + ", bleed="
+                        + pawnCare.maximumBleedRate.ToString("0.###"));
+                    builder.AppendLine(
+                        "  Pawn care illness: def="
+                        + (pawnCare.optionalIllnessHediffDefName ?? "none")
+                        + ", chance="
+                        + pawnCare.optionalIllnessChanceMinimum.ToString("0.###")
+                        + "-"
+                        + pawnCare.optionalIllnessChanceMaximum.ToString("0.###")
+                        + ", severity="
+                        + pawnCare.optionalIllnessSeverityMinimum.ToString("0.###")
+                        + "-"
+                        + pawnCare.optionalIllnessSeverityMaximum.ToString("0.###"));
+                }
+
                 foreach (GateRimMissionNamedTextBankDef bank
                     in definition.texts?.namedTextBanks
                         ?? Enumerable.Empty<GateRimMissionNamedTextBankDef>())

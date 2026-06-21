@@ -11,6 +11,33 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
+## Dernier jalon clôturé — Migration des soins de l'agent blessé (`0.3.26-dev`)
+
+- [x] Partir explicitement de `v0.3.25-dev` sur `feature/wounded-agent-mission-migration`.
+- [x] Ajouter `SG1_TokraOrganic_WoundedAgentCare` comme troisième opération complète pilotée par MissionDef.
+- [x] Ajouter un profil générique `pawnCare` limité aux données déclaratives réellement partagées.
+- [x] Déplacer dans XML le PawnKind, les Hediffs de choc et de récupération et l'affection optionnelle.
+- [x] Déplacer dans XML les seuils médicaux, la durée de stabilité et la grâce de départ.
+- [x] Faire varier la chance et la sévérité de l'affection optionnelle à partir du snapshot de menace capturé à l'offre.
+- [x] Déplacer dans XML les poids, délais contextuels, textes, variantes et conséquences de confiance.
+- [x] Supprimer la définition C# complète de secours et valider explicitement toutes les références requises.
+- [x] Conserver en C# la génération, les soins vanilla, le Lord, l'évaluation de santé et le départ.
+- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.26.0`.
+- [x] Valider le flux normal, la stabilité de `5000` ticks et la réussite uniquement après sortie de carte.
+- [x] Valider la difficulté adaptative sur colonie faible et avancée.
+- [x] Valider mort, capture, perte, expiration et échec de départ.
+- [x] Valider sauvegarde/recharge, variantes RP, anti-répétition et récurrence.
+- [x] Valider les trois autres opérations organiques et `Player.log`.
+- [x] Corriger en `r2` la durée XML accélérée de `5000` ticks omise lors de l’assemblage de `r1`.
+- [x] Revalider au chargement les trois MissionDefs et la récupération de renseignements accélérée après redémarrage complet.
+- [x] Clôturer le jalon, publier le tag final unique `v0.3.26-dev` et synchroniser le wiki.
+
+Le jalon ne généralise pas les soins RimWorld. Le bloc `pawnCare` contient uniquement des références et seuils configurables ; les interactions médicales concrètes restent dans un adaptateur spécialisé tant qu'un second cas réel ne justifie pas leur mutualisation.
+
+La révision `r1` a validé le flux complet de l'agent blessé. Elle a également révélé l'omission accidentelle du champ XML `workTicks=5000` de l'analyse accélérée des renseignements ; le validateur a correctement désactivé cet archétype sans fallback caché. La révision `r2` restaure uniquement cette valeur et valide le chargement des trois MissionDefs, la régression des renseignements et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.26-dev`.
+
+Prochaine migration logique : la remise médicale, dernière opération organique encore héritée. Son périmètre exact doit être confirmé au début du prochain jalon à partir de `v0.3.26-dev`.
+
 ## Dernier jalon clôturé — Migration de la récupération de renseignements (`0.3.25-dev`)
 
 - [x] Partir explicitement de `v0.3.24-dev` sur `feature/intelligence-recovery-mission-migration`.

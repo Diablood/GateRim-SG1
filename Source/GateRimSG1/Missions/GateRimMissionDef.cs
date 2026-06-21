@@ -102,6 +102,25 @@ namespace GateRimSG1.Missions
         public float maximumPoints = 100000f;
     }
 
+    public sealed class GateRimMissionPawnCareDef
+    {
+        public string pawnKindDefName;
+        public string initialHediffDefName;
+        public string recoveryHediffDefName;
+        public string optionalIllnessHediffDefName;
+        public int stableDurationTicks;
+        public int departureGraceTicks;
+        public float minimumMovingCapacity;
+        public float minimumConsciousnessCapacity;
+        public float minimumSummaryHealth;
+        public float maximumBleedRate;
+        public float criticalHediffSeverityFraction = 0.70f;
+        public float optionalIllnessChanceMinimum;
+        public float optionalIllnessChanceMaximum;
+        public float optionalIllnessSeverityMinimum;
+        public float optionalIllnessSeverityMaximum;
+    }
+
     public sealed class GateRimMissionTextVariantDef
     {
         public string key;
@@ -273,6 +292,7 @@ namespace GateRimSG1.Missions
             = new GateRimMissionRecurrenceDef();
         public GateRimMissionDifficultyDef difficulty
             = new GateRimMissionDifficultyDef();
+        public GateRimMissionPawnCareDef pawnCare;
         public GateRimMissionTextBankDef texts
             = new GateRimMissionTextBankDef();
         public GateRimMissionActionDef actions
@@ -531,6 +551,67 @@ namespace GateRimSG1.Missions
                     || difficulty.maximumPoints < difficulty.minimumPoints)
                 {
                     yield return "difficulty point bounds are invalid";
+                }
+            }
+
+            if (pawnCare != null)
+            {
+                if (string.IsNullOrWhiteSpace(pawnCare.pawnKindDefName))
+                {
+                    yield return "pawnCare pawnKindDefName is required";
+                }
+
+                if (string.IsNullOrWhiteSpace(pawnCare.initialHediffDefName))
+                {
+                    yield return "pawnCare initialHediffDefName is required";
+                }
+
+                if (string.IsNullOrWhiteSpace(pawnCare.recoveryHediffDefName))
+                {
+                    yield return "pawnCare recoveryHediffDefName is required";
+                }
+
+                if (pawnCare.stableDurationTicks <= 0
+                    || pawnCare.departureGraceTicks <= 0)
+                {
+                    yield return "pawnCare durations must be positive";
+                }
+
+                if (pawnCare.minimumMovingCapacity < 0f
+                    || pawnCare.minimumMovingCapacity > 1f
+                    || pawnCare.minimumConsciousnessCapacity < 0f
+                    || pawnCare.minimumConsciousnessCapacity > 1f
+                    || pawnCare.minimumSummaryHealth < 0f
+                    || pawnCare.minimumSummaryHealth > 1f)
+                {
+                    yield return "pawnCare health capacity thresholds must be between 0 and 1";
+                }
+
+                if (pawnCare.maximumBleedRate < 0f)
+                {
+                    yield return "pawnCare maximumBleedRate cannot be negative";
+                }
+
+                if (pawnCare.criticalHediffSeverityFraction <= 0f
+                    || pawnCare.criticalHediffSeverityFraction > 1f)
+                {
+                    yield return "pawnCare criticalHediffSeverityFraction must be between 0 and 1";
+                }
+
+                if (pawnCare.optionalIllnessChanceMinimum < 0f
+                    || pawnCare.optionalIllnessChanceMaximum
+                        < pawnCare.optionalIllnessChanceMinimum
+                    || pawnCare.optionalIllnessChanceMaximum > 1f)
+                {
+                    yield return "pawnCare optional illness chance range is invalid";
+                }
+
+                if (pawnCare.optionalIllnessSeverityMinimum < 0f
+                    || pawnCare.optionalIllnessSeverityMaximum
+                        < pawnCare.optionalIllnessSeverityMinimum
+                    || pawnCare.optionalIllnessSeverityMaximum > 1f)
+                {
+                    yield return "pawnCare optional illness severity range is invalid";
                 }
             }
 

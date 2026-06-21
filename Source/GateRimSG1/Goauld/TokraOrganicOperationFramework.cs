@@ -219,6 +219,7 @@ namespace GateRimSG1.Goauld
         public string FailureTrustMessageKey { get; }
         public string DebugLabel { get; }
         public GateRimMissionDef MissionDef { get; }
+        public GateRimMissionPawnCareDef PawnCare => MissionDef?.pawnCare;
         public string MissionDefName => MissionDef?.defName;
         public bool UsesMissionFrameworkDef => MissionDef != null;
         public float RepeatedArchetypeWeightFactor { get; }
@@ -473,6 +474,214 @@ namespace GateRimSG1.Goauld
                 ? null
                 : string.Join(", ", missing);
             return missing.Count == 0;
+        }
+
+        public bool HasCompleteWoundedAgentConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+
+            string[] runtimeTextIds =
+            {
+                "spawnFailed",
+                "arrivalLabel",
+                "arrivalText",
+                "initialCareMessage",
+                "stableMessage",
+                "departingMessage",
+                "statusAwaitingCare",
+                "failureLost",
+                "failureDeath",
+                "failureCaptured",
+                "failureTimeout"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            GateRimMissionPawnCareDef pawnCare = PawnCare;
+
+            if (pawnCare == null)
+            {
+                missing.Add("pawn care profile");
+            }
+            else
+            {
+                Require(pawnCare.pawnKindDefName, "pawn kind", missing);
+                Require(
+                    pawnCare.initialHediffDefName,
+                    "initial health condition",
+                    missing);
+                Require(
+                    pawnCare.recoveryHediffDefName,
+                    "recovery health condition",
+                    missing);
+                Require(
+                    pawnCare.optionalIllnessHediffDefName,
+                    "optional illness",
+                    missing);
+
+                if (pawnCare.stableDurationTicks <= 0)
+                {
+                    missing.Add("positive stable duration");
+                }
+
+                if (pawnCare.departureGraceTicks <= 0)
+                {
+                    missing.Add("positive departure grace duration");
+                }
+
+                if (pawnCare.minimumMovingCapacity <= 0f
+                    || pawnCare.minimumConsciousnessCapacity <= 0f
+                    || pawnCare.minimumSummaryHealth <= 0f)
+                {
+                    missing.Add("positive medical departure thresholds");
+                }
+
+                if (pawnCare.maximumBleedRate < 0f)
+                {
+                    missing.Add("non-negative maximum bleed rate");
+                }
+
+                if (pawnCare.criticalHediffSeverityFraction <= 0f
+                    || pawnCare.criticalHediffSeverityFraction > 1f)
+                {
+                    missing.Add("critical hediff severity fraction");
+                }
+
+                if (pawnCare.optionalIllnessChanceMinimum < 0f
+                    || pawnCare.optionalIllnessChanceMaximum
+                        < pawnCare.optionalIllnessChanceMinimum
+                    || pawnCare.optionalIllnessChanceMaximum > 1f)
+                {
+                    missing.Add("optional illness chance range");
+                }
+
+                if (pawnCare.optionalIllnessSeverityMinimum < 0f
+                    || pawnCare.optionalIllnessSeverityMaximum
+                        < pawnCare.optionalIllnessSeverityMinimum
+                    || pawnCare.optionalIllnessSeverityMaximum > 1f)
+                {
+                    missing.Add("optional illness severity range");
+                }
+
+                ValidateWoundedAgentDefReferences(pawnCare, missing);
+            }
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            if (MissionDef?.difficulty?.mode
+                != GateRimMissionDifficultyMode.ThreatPointsScaled)
+            {
+                missing.Add("ThreatPointsScaled difficulty profile");
+            }
+
+            string[] recurrenceContextKeys =
+            {
+                "TokraTrust.Wary",
+                "TokraTrust.Neutral",
+                "TokraTrust.Cooperative",
+                "TokraTrust.Trusted"
+            };
+
+            foreach (string contextKey in recurrenceContextKeys)
+            {
+                int contextMinimumDelay;
+                int contextMaximumDelay;
+
+                if (MissionDef?.recurrence == null
+                    || !MissionDef.recurrence.TryGetDelayRange(
+                        contextKey,
+                        out contextMinimumDelay,
+                        out contextMaximumDelay)
+                    || contextMinimumDelay <= 0
+                    || contextMaximumDelay < contextMinimumDelay)
+                {
+                    missing.Add(
+                        "recurrence delay range for " + contextKey);
+                }
+            }
+
+            if (MissionDef?.texts?.successLetterTexts == null
+                || MissionDef.texts.successLetterTexts.Count == 0)
+            {
+                missing.Add("success letter text variants");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
+        private static void ValidateWoundedAgentDefReferences(
+            GateRimMissionPawnCareDef pawnCare,
+            ICollection<string> missing)
+        {
+            if (!string.IsNullOrWhiteSpace(pawnCare.pawnKindDefName)
+                && DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                    pawnCare.pawnKindDefName) == null)
+            {
+                missing.Add(
+                    "unknown PawnKindDef " + pawnCare.pawnKindDefName);
+            }
+
+            ValidateHediffDefReference(
+                pawnCare.initialHediffDefName,
+                "initial",
+                missing);
+            ValidateHediffDefReference(
+                pawnCare.recoveryHediffDefName,
+                "recovery",
+                missing);
+            ValidateHediffDefReference(
+                pawnCare.optionalIllnessHediffDefName,
+                "optional illness",
+                missing);
+        }
+
+        private static void ValidateHediffDefReference(
+            string defName,
+            string label,
+            ICollection<string> missing)
+        {
+            if (!string.IsNullOrWhiteSpace(defName)
+                && DefDatabase<HediffDef>.GetNamedSilentFail(defName) == null)
+            {
+                missing.Add("unknown " + label + " HediffDef " + defName);
+            }
         }
 
         public bool HasCompleteIntelligenceConfiguration(
@@ -868,6 +1077,8 @@ namespace GateRimSG1.Goauld
             = "SG1_TokraOrganic_GoauldObservation";
         private const string IntelligenceMissionDefName
             = "SG1_TokraOrganic_IntelligenceRecovery";
+        private const string WoundedAgentMissionDefName
+            = "SG1_TokraOrganic_WoundedAgentCare";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
@@ -877,6 +1088,10 @@ namespace GateRimSG1.Goauld
         private static TokraOrganicOperationDefinition
             cachedIntelligenceDefinition;
         private static bool intelligenceConfigurationErrorLogged;
+        private static GateRimMissionDef cachedWoundedAgentMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedWoundedAgentDefinition;
+        private static bool woundedAgentConfigurationErrorLogged;
 
         private static readonly IReadOnlyDictionary<
             TokraOrganicOperationArchetype,
@@ -885,48 +1100,6 @@ namespace GateRimSG1.Goauld
                     TokraOrganicOperationArchetype,
                     TokraOrganicOperationDefinition>
                 {
-                    {
-                        TokraOrganicOperationArchetype.WoundedAgentCare,
-                        new TokraOrganicOperationDefinition(
-                            TokraOrganicOperationArchetype.WoundedAgentCare,
-                            offerDurationTicks: 120000,
-                            readyDelayTicks: 0,
-                            deadlineTicks: 300000,
-                            intellectualXp: 0,
-                            medicineXp: 0,
-                            socialXp: 0,
-                            successTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicWoundedAgentSuccessTrustChange,
-                            failureTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicWoundedAgentFailureTrustChange,
-                            waryWeight: 0.10f,
-                            neutralWeight: 0.55f,
-                            cooperativeWeight: 1.00f,
-                            trustedWeight: 0.85f,
-                            objectiveThingDefName: null,
-                            acceptActionKey:
-                                "GR_TokraWoundedAgent_Accept",
-                            completeActionKey: null,
-                            offerLetterLabelKey:
-                                "GR_TokraWoundedAgent_OfferLabel",
-                            offerLetterTextKey:
-                                "GR_TokraWoundedAgent_OfferText",
-                            offerExpiredMessageKey:
-                                "GR_TokraWoundedAgent_OfferExpired",
-                            offeredStatusKey:
-                                "GR_TokraWoundedAgent_StatusOffered",
-                            activeStatusKey:
-                                "GR_TokraWoundedAgent_StatusCare",
-                            readyStatusKey:
-                                "GR_TokraWoundedAgent_StatusDeparting",
-                            successTrustMessageKey:
-                                "GR_TokraTrust_WoundedAgentSucceeded",
-                            failureTrustMessageKey:
-                                "GR_TokraTrust_WoundedAgentFailed",
-                            debugLabel: "WoundedAgentCare")
-                    },
                     {
                         TokraOrganicOperationArchetype.MedicalSupplyHandoff,
                         new TokraOrganicOperationDefinition(
@@ -992,6 +1165,14 @@ namespace GateRimSG1.Goauld
                     yield return intelligence;
                 }
 
+                TokraOrganicOperationDefinition woundedAgent
+                    = ResolveWoundedAgentDefinition();
+
+                if (woundedAgent != null)
+                {
+                    yield return woundedAgent;
+                }
+
                 foreach (TokraOrganicOperationDefinition definition
                     in LegacyDefinitions.Values)
                 {
@@ -1015,6 +1196,13 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.DeadDropRecovery)
             {
                 definition = ResolveIntelligenceDefinition();
+                return definition != null;
+            }
+
+            if (archetype
+                == TokraOrganicOperationArchetype.WoundedAgentCare)
+            {
+                definition = ResolveWoundedAgentDefinition();
                 return definition != null;
             }
 
@@ -1109,6 +1297,59 @@ namespace GateRimSG1.Goauld
             }
 
             return cachedIntelligenceDefinition;
+        }
+
+        private static TokraOrganicOperationDefinition
+            ResolveWoundedAgentDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    WoundedAgentMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogWoundedAgentConfigurationError(
+                    "required MissionDef " + WoundedAgentMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedWoundedAgentDefinition == null
+                || cachedWoundedAgentMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype.WoundedAgentCare,
+                        missionDef);
+                string error;
+
+                if (!definition.HasCompleteWoundedAgentConfiguration(
+                        out error))
+                {
+                    LogWoundedAgentConfigurationError(
+                        WoundedAgentMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedWoundedAgentMissionDef = missionDef;
+                cachedWoundedAgentDefinition = definition;
+            }
+
+            return cachedWoundedAgentDefinition;
+        }
+
+        private static void LogWoundedAgentConfigurationError(string detail)
+        {
+            if (woundedAgentConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            woundedAgentConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra wounded-agent care operation "
+                + "disabled: " + detail + ".");
         }
 
         private static void LogIntelligenceConfigurationError(string detail)
