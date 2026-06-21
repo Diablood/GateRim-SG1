@@ -1,5 +1,38 @@
 # Tests
 
+## 0.3.28-dev - Audit de l'orchestration et de la récurrence Tok'ra
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.28-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.28-dev`, `0.3.28.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.28.0` ;
+- chargement des quatre MissionDefs et conservation de leurs données finales ;
+- audit déterministe de `5000` tirages par palier de confiance terminé avec `PASS` ;
+- atteignabilité de chaque archétype de poids positif et pénalité locale du dernier archétype ;
+- filtrage des workers non proposables avant le tirage pondéré ;
+- tirage naturel réel, refus de remplacer une offre active et slot global unique ;
+- nouveau délai caché après réussite, échec et offre ignorée ;
+- rééligibilité de chaque archétype sans cycle fixe ni exclusion permanente ;
+- sauvegarde/rechargement pendant un délai caché, une offre et une opération active ;
+- observation, renseignements, agent blessé et remise médicale sans régression ;
+- communicateur limité à l'opération courante et diagnostics réservés au debug ;
+- compatibilité avec un storyteller compatible différent ;
+- `Player.log` final propre.
+
+Points de régression durables :
+
+- appeler `CanOffer(map)` et retirer les candidats indisponibles avant chaque tirage naturel ;
+- conserver un seul slot global et ne jamais écraser une occurrence active ;
+- distinguer l'absence de poids configuré de l'indisponibilité temporaire de tous les candidats ;
+- programmer la prochaine opportunité après tous les résultats, y compris l'offre ignorée ;
+- préserver l'historique, les compteurs, le dernier archétype et le prochain tick après sauvegarde/rechargement ;
+- vérifier la récurrence et l'anti-répétition sur plusieurs occurrences, pas uniquement par lecture des Defs ;
+- revalider les quatre opérations lors de toute extension aux sites mondiaux, caravanes ou interceptions ;
+- maintenir les futurs pools de faction séparés au niveau RP tout en partageant le moteur technique ;
+- ne pas confondre l'arc d'introduction Tok'ra unique avec les missions récurrentes qu'il débloquera ultérieurement.
+
 ## 0.3.27-dev - Migration de la remise médicale vers le framework de missions
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.27-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.

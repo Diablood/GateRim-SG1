@@ -196,6 +196,19 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Tok'ra ops: roll next natural offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void RollNextNaturalOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugRollNextNaturalOpportunity(Find.CurrentMap),
+                "GR_TokraOrganicOperation_DebugForced");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Tok'ra ops: show framework state",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]
@@ -205,6 +218,19 @@ namespace GateRimSG1.Goauld
                 new Dialog_MessageBox(
                     GameComponent_TokraOrganicOperationManager
                         .GetDebugStateReport(Find.CurrentMap)));
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: audit long-term orchestration",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void AuditLongTermOrchestration()
+        {
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(
+                    GameComponent_TokraOrganicOperationManager
+                        .GetOrchestrationAuditReport(Find.CurrentMap)));
         }
 
         [DebugAction(

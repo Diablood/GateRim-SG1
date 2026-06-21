@@ -11,6 +11,71 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
+## Dernier jalon clôturé — Audit de l'orchestration Tok'ra (`0.3.28-dev`)
+
+- [x] Partir explicitement de `v0.3.27-dev` sur `feature/tokra-operation-orchestration-audit`.
+- [x] Reporter dans les fichiers autoritatifs la séquence verrouillée `0.3.28-dev` à `0.3.30-dev`.
+- [x] Auditer le slot global, la sélection pondérée, les délais cachés, la persistance et l'anti-répétition.
+- [x] Filtrer les MissionDefs temporairement indisponibles avant le tirage pondéré.
+- [x] Conserver le même délai court de nouvelle vérification lorsque tous les candidats configurés sont temporairement indisponibles.
+- [x] Ajouter un outil debug lançant le véritable tirage naturel sans forcer un archétype.
+- [x] Ajouter un rapport d'audit déterministe sur `5000` tirages pour chaque palier de confiance.
+- [x] Conserver inchangés les poids, délais, récompenses et conséquences des quatre missions actuelles.
+- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.28.0`.
+- [x] Valider réussite, échec, offre ignorée, récurrence, slot unique et sauvegarde/recharge.
+- [x] Valider les quatre opérations existantes, les limites d'interface et `Player.log`.
+- [x] Préparer le verrou documentaire final, publier le tag unique `v0.3.28-dev` et synchroniser le wiki.
+
+Ce jalon ne cherche pas à figer l'équilibrage statistique définitif. Il sécurise l'orchestration avant les sites mondiaux et les caravanes, tout en conservant la possibilité de réajuster fréquences, poids, récompenses, variantes et mécaniques après des tests prolongés, y compris après `1.0.0`.
+
+La révision locale `r1` valide le rapport d'audit déterministe, le tirage naturel réel, le slot unique, les délais cachés après réussite, échec et offre ignorée, la récurrence, l'anti-répétition locale, la persistance, les quatre opérations existantes, les limites d'interface, la compatibilité storyteller et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.28-dev`.
+
+## Séquence Tok'ra verrouillée après `v0.3.27-dev`
+
+### `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence`
+
+Consolider le planificateur persistant des quatre opérations actuelles : slot actif unique, éligibilité avant tirage, récurrence après tous les résultats, délais cachés, anti-répétition, persistance et diagnostics de longue durée.
+
+### `0.3.29-dev - Add Tok'ra distress call world-site mission`
+
+Créer un site mondial temporaire avec délai d'échec et situation cachée jusqu'à l'arrivée :
+
+- secours réel de survivants Tok'ra ;
+- signal compromis ou piège Goa'uld/Jaffa ;
+- arrivée trop tardive, sans survivants alliés, avec les derniers ennemis encore sur place ou en cours d'évacuation.
+
+Prévoir des raisons RP crédibles, une difficulté adaptative, des résultats faisant évoluer la confiance, plusieurs variantes de textes et une récurrence sans répétition immédiate.
+
+### `0.3.30-dev - Add Tok'ra temporary-base delivery mission`
+
+Créer une destination Tok'ra temporaire et une cargaison configurable : objet, renseignements, médicaments ou autre ressource compatible.
+
+Gérer la livraison normale, l'interception ou l'embuscade, la perte de cargaison, le retard, l'abandon et une destination compromise. Une victoire militaire ne doit pas suffire si la cargaison est perdue. Les mécaniques de caravane, site mondial et combat restent dans des adaptateurs spécialisés ; les données de mission restent pilotées par Defs lorsque cela est raisonnable.
+
+
+## Arc futur d'introduction Tok'ra et accès au communicateur
+
+- Les opérations Tok'ra récurrentes devront devenir inéligibles tant qu'aucun communicateur Tok'ra construit et alimenté n'est disponible.
+- Le communicateur devra dépendre d'une recherche GateRim SG-1 dédiée, distincte des recherches vanilla, avec `Electricity` comme prérequis.
+- Cette recherche devra elle-même exiger un objet-clé Tok'ra ou un artefact d'analyse persistant, selon une logique comparable aux prérequis d'étude du mécaniteur.
+- L'objet sera obtenu lors d'une première rencontre ou mission Tok'ra unique comportant un véritable enjeu de combat.
+- La récompense minimale sera l'objet permettant d'ouvrir la recherche ; d'autres récompenses RP ou matérielles pourront s'y ajouter.
+- Après étude, recherche et construction du communicateur, le pool récurrent Tok'ra deviendra accessible.
+- La mission d'introduction restera unique et séparée des archétypes rejouables.
+- Définir ultérieurement la nature exacte de l'objet, son origine RP, la faction ennemie, le type de site, les conséquences et une solution de récupération qui évite un verrou permanent en cas d'échec.
+- Ce travail est différé et ne modifie pas la séquence verrouillée `0.3.29-dev` puis `0.3.30-dev`, sauf décision explicite ultérieure.
+
+## Direction durable des pools de missions
+
+- Enrichir progressivement le pool global afin de préserver la variété et le plaisir sur les longues parties.
+- Privilégier plusieurs archétypes distincts et rejouables plutôt qu'un petit nombre de scénarios surchargés.
+- Considérer les missions comme évolutives : fréquence, difficulté, récompenses, textes, variantes et mécaniques pourront être réajustés après des tests prolongés, y compris après `1.0.0`.
+- Terminer et enrichir d'abord le pool Tok'ra.
+- Prévoir ensuite des missions Goa'uld autonomes, sans lien obligatoire avec les Tok'ra.
+- Étendre ensuite des pools distincts aux Jaffa libres, Asgard, Nox, Unas et futures factions.
+- Garder un framework techniquement générique, mais séparer clairement identité RP, conditions d'apparition, récompenses et conséquences de chaque faction.
+- N'ajouter au framework partagé que les capacités justifiées par plusieurs besoins réels ; conserver des adaptateurs C# pour les mécaniques propres aux sites mondiaux, caravanes, interceptions et combats.
+
 ## Dernier jalon clôturé — Migration de la remise médicale (`0.3.27-dev`)
 
 - [x] Partir explicitement de `v0.3.26-dev` sur `feature/medical-handoff-mission-migration`.

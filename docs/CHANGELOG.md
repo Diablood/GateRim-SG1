@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence
+
+- Filter positively weighted MissionDefs through their mission worker `CanOffer(map)` before the natural weighted draw.
+- Prevent a temporarily unavailable mission from suppressing another eligible operation.
+- Retry after the normal internal state-check interval when configured candidates exist but all are temporarily unavailable, instead of consuming a full hidden recurrence delay.
+- Preserve the stable no-weight state and all existing MissionDef weights, delays, rewards and trust consequences.
+- Add `Tok'ra ops: roll next natural offer` to exercise the real scheduler without forcing an archetype.
+- Add `Tok'ra ops: audit long-term orchestration` with global-slot state, outcome counters, current offerability, trust-tier configuration and deterministic `5000`-draw simulations.
+- Record the locked sequence for the Tok'ra distress-call world site and temporary-base delivery missions.
+- Record the long-term mission-pool strategy: progressive variety, post-`1.0.0` rebalancing where useful, Tok'ra first, then separate Goa'uld and other-faction pools.
+- Record a deferred Tok'ra introduction arc: unique combat mission, key artifact, dedicated research requiring Electricity, communicator construction, then access to recurrent operations.
+- Raise the assembly version to `0.3.28.0` and the mod metadata version to `0.3.28-dev`.
+- Validate local revision `r1`, including deterministic audit, natural rolls, success/failure/ignored recurrence, persistence, all four operation regressions, storyteller compatibility and a clean `Player.log`.
+- Publish branch `feature/tokra-operation-orchestration-audit`, final tag `v0.3.28-dev` and the synchronized wiki.
+
 ## 0.3.27-dev - Migrate medical handoff to mission framework
 
 - Add `SG1_TokraOrganic_MedicalSupplyHandoff` as the fourth complete MissionDef-backed organic operation.

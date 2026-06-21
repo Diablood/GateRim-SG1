@@ -1,92 +1,106 @@
 # Project state
 
-Current milestone: `0.3.27-dev - Migrate medical handoff to mission framework` — completed and published under the final tag `v0.3.27-dev`.
+Current milestone: `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence` — validated locally and published under `v0.3.28-dev`.
 
 ## Development base
 
-- Starting tag: `v0.3.26-dev`.
-- Dedicated branch: `feature/medical-handoff-mission-migration`.
-- Validated local revision: `0.3.27-dev-r1`.
-- Published assembly version: `0.3.27.0`.
-- Final publication tag: `v0.3.27-dev`.
+- Starting tag: `v0.3.27-dev`.
+- Dedicated branch: `feature/tokra-operation-orchestration-audit`.
+- Final validated local revision: `0.3.28-dev-r1`.
+- Published assembly version: `0.3.28.0`.
+- Final unique tag: `v0.3.28-dev`.
 - Cultural backstory count remains `83`.
 
-## Milestone outcome
+## Milestone purpose
 
-The Tok'ra medical-supply handoff is the fourth complete MissionDef-backed organic operation and the last legacy organic operation in the current set. The player flow remains recognizable: accept the request through the powered communicator, wait for a liaison, send a socially capable colonist to the meeting, transfer the requested medicine and let the liaison leave the map.
+All four existing Tok'ra organic operations are now MissionDef-backed. This milestone audits the shared persistent scheduler before adding world-site and caravan missions. It does not add a new player-facing mission and does not change current weights, hidden delay ranges, rewards or trust consequences.
 
-## MissionDef ownership
+The goal is to confirm that long games can repeatedly receive varied operations without concurrent offers, predictable cycles or a temporarily unavailable archetype suppressing another eligible one.
 
-`SG1_TokraOrganic_MedicalSupplyHandoff` controls:
+## Orchestration correction
 
-- offer duration and the accepted handoff deadline;
-- trust-tier weights, repeated-archetype penalty and hidden recurrence ranges;
-- liaison PawnKind, arrival delay range, post-handoff departure grace and the trust penalty if the departing liaison dies;
-- delivered ThingDef, required count, dialogue JobDef and negotiation SkillDef;
-- generic `Social +350` XP reward and success/failure trust changes;
-- all offer, acceptance, arrival, dialogue, status, failure, success and post-handoff text keys;
-- three offer variants and three success variants with local anti-repetition;
-- offered, accepted, ready, succeeded and failed phases.
+The natural scheduler now:
 
-The complete C# fallback definition is removed. Missing or invalid required MissionDef data disables only this archetype and writes one explicit configuration error.
+1. finds the eligible colony map and current Tok'ra trust tier;
+2. builds the set of MissionDef-backed archetypes with a positive configured weight;
+3. calls each mission worker's `CanOffer(map)` before the weighted draw;
+4. removes temporarily unavailable candidates;
+5. applies the configured repeated-archetype penalty to the previous offer;
+6. performs the weighted draw only among remaining eligible candidates.
 
-## Shared framework addition
+Previously, the scheduler selected an archetype before checking `CanOffer`. A temporarily unavailable future world-site or caravan mission could therefore consume a scheduler attempt while another operation was eligible. The filtered draw prevents that failure mode.
 
-The framework gains one bounded `handoff` profile for visitor identity, arrival timing, departure grace and a post-completion death consequence. The resource, quantity, job and skill remain expressed through the existing `DeliverThing` objective vocabulary.
+If configured candidates exist but all are temporarily unavailable, the manager keeps its global slot empty and retries on the normal internal state-check interval. It does not consume a full hidden recurrence delay. If no archetype has a positive weight for the current context, the stable no-candidate state schedules the normal recurrence delay.
 
-## Deliberately retained in C#
+## Developer diagnostics
 
-The specialized adapter remains responsible for:
+Two developer-only actions are added:
 
-- finding entry and meeting cells;
-- spawning the liaison and creating its Lord behavior;
-- pathfinding, reservation and dialogue-job execution;
-- consuming accessible map resources through RimWorld Thing stacks;
-- tracking the liaison before and after completion;
-- detecting death, capture, loss, timeout and departure;
-- persistent pawn references and old-save migration.
+- `Tok'ra ops: roll next natural offer` runs the real natural weighted selection without forcing a particular archetype. It requires an empty active slot and a powered Tok'ra communicator.
+- `Tok'ra ops: audit long-term orchestration` reports the global active slot, next hidden opportunity, outcome counters, current offerability, trust-tier weights and delays, text-bank counts and a deterministic `5000`-draw simulation for every trust tier.
 
-The meeting radius, arrival-distance check and periodic state-check interval remain technical adapter constants rather than mission balance.
+The simulation checks that every positively weighted current archetype remains reachable and reports the immediate-repeat rate after applying each definition's repeat factor. It is diagnostic only and does not modify the save.
 
-## Validation completed
+## Validated invariants
 
-Local revision `r1` validated:
+- one persistent global active operation slot;
+- no new natural offer while another operation is offered, accepted, active or ready;
+- every success, failure and ignored/expired offer schedules another hidden delay;
+- the last offered archetype remains penalized locally but is never permanently excluded;
+- all four existing archetypes remain recurrent after success or failure;
+- save/load preserves the active state, last archetypes, counters and next hidden opportunity;
+- player-facing communicator output exposes only the current operation or a generic channel state;
+- weights, delays, outcomes and text variants remain MissionDef-driven;
+- current operations remain compatible with compatible vanilla or modded storytellers.
 
-- project consistency, forced rebuild and assembly `0.3.27.0`;
-- four valid MissionDefs and a clean framework report;
-- delayed liaison arrival, meeting, dialogue and exact delivery of two accessible industrial medicines;
-- disabled interaction reasons for missing resources, incapability, reservation and reachability;
-- `Social +350` and `+2` trust on successful delivery;
-- `-1` trust for accepted-operation failures and the additional `-2` consequence if the liaison dies after completion but before leaving;
-- death, capture, disappearance and timeout before delivery;
-- save/load during offer, arrival, meeting and monitored departure;
-- three offer and three success variants with immediate anti-repetition;
-- recurrence after resolution and the configured last-archetype weight penalty;
-- observation, intelligence recovery and wounded-agent care without regression;
-- debug visibility boundaries and a clean final `Player.log`.
+## Locked mission sequence
+
+The following sequence is now authoritative:
+
+1. `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence`;
+2. `0.3.29-dev - Add Tok'ra distress call world-site mission`;
+3. `0.3.30-dev - Add Tok'ra temporary-base delivery mission`.
+
+### `0.3.29-dev` direction
+
+The distress call will create a temporary world site with a failure timer and a hidden situation revealed on arrival:
+
+- genuine rescue with Tok'ra survivors needing assistance;
+- compromised signal or Goa'uld/Jaffa trap;
+- arrival too late, with no allied survivors and remaining enemies guarding, searching or preparing to leave the site.
+
+The mission must be recurrent, adapt threat to RimWorld difficulty and colony strength, vary RP texts, avoid immediate repetition and allow Tok'ra trust to rise or fall according to the result and player decisions.
+
+### `0.3.30-dev` direction
+
+The temporary-base delivery will create a world destination and configurable cargo such as an object, intelligence or medicine. It must account for normal delivery, interception or ambush, loss of cargo, delay, abandonment and a compromised destination.
+
+World-site generation, caravans, interception and combat will use specialized C# adapters. Mission identity, phases, configurable cargo, timing, text, recurrence, difficulty, rewards and consequences should remain Def-driven where practical.
+
+## Long-term mission direction
+
+The mission pool is intended to grow progressively so long games remain varied and enjoyable. Before `1.0.0`, the priority is a functional, coherent and sufficiently rich base rather than permanently final balance. Frequency, rewards, difficulty, text variants and mechanics may be revised after prolonged real-play testing, including after `1.0.0`.
+
+The framework remains technically faction-neutral. The Tok'ra pool is completed and enriched first. Separate Goa'uld mission pools, followed by missions for other races and factions, will retain their own RP identity, appearance conditions, rewards and consequences instead of being treated as Tok'ra variants.
+
+## Validation result
+
+Local revision `r1` passed the consistency check, forced rebuild and complete in-game checklist. The deterministic audit returned `PASS`; natural rolls preserved the single global slot; success, failure and ignored offers all scheduled new hidden delays; recurrence and local anti-repetition remained functional; save/load preserved hidden and active states; all four existing operations passed regression checks; normal player UI boundaries and `Player.log` were clean.
+
+## Deferred Tok'ra introduction arc
+
+A future milestone will gate recurrent Tok'ra operations behind an introductory progression:
+
+1. a unique first-contact or recovery mission with a real combat objective awards a Tok'ra key object or analysis artifact;
+2. that object unlocks a dedicated GateRim SG-1 research project with vanilla `Electricity` as prerequisite;
+3. completing the research permits construction of the Tok'ra communicator;
+4. only a constructed and powered communicator makes the recurrent Tok'ra pool eligible.
+
+The exact artifact, enemy force, site type and failure recovery remain to be designed. The unique introduction must not create a permanent campaign lock if the first attempt fails. This arc is recorded for later and is not part of `0.3.28-dev`, `0.3.29-dev` or `0.3.30-dev` unless explicitly rescheduled.
 
 ## Publication state
 
-- Branch `feature/medical-handoff-mission-migration` published.
-- Final annotated tag `v0.3.27-dev` published.
-- Main GitHub repository updated.
-- Separate wiki synchronized and published.
-
-## Next milestone
-
-All four current Tok'ra organic operations are now MissionDef-backed. The next milestone must start explicitly from `v0.3.27-dev` on a new dedicated branch and should be selected after auditing the remaining roadmap rather than extending the framework for a theoretical case.
-
-## Main files changed
-
-- `1.6/Defs/MissionDefs/SG1_MissionFramework.xml`;
-- `Languages/English/Keyed/SG1_TokraOrganicMedicalSupplyHandoff.xml`;
-- `Languages/French/Keyed/SG1_TokraOrganicMedicalSupplyHandoff.xml`;
-- `Source/GateRimSG1/Missions/GateRimMissionDef.cs`;
-- `Source/GateRimSG1/Missions/GateRimMissionFramework.cs`;
-- `Source/GateRimSG1/Goauld/TokraOrganicOperationFramework.cs`;
-- `Source/GateRimSG1/Goauld/GameComponent_TokraOrganicOperationManager.cs`;
-- `Source/GateRimSG1/Goauld/GameComponent_TokraTrustTracker.cs`;
-- `Source/GateRimSG1/Goauld/TokraOrganicMedicalSupplyUtility.cs`;
-- `Source/GateRimSG1/Goauld/Dialog_TokraMedicalSupplyHandoff.cs`;
-- `Source/GateRimSG1/Goauld/Comp_TokraMedicalSupplyLiaisonFloatMenu.cs`;
-- project, test, roadmap, changelog and wiki tracking files.
+- Branch: `feature/tokra-operation-orchestration-audit`.
+- Final tag: `v0.3.28-dev`.
+- Main repository and separate wiki synchronized.
+- Next milestone: `0.3.29-dev - Add Tok'ra distress call world-site mission`, starting explicitly from `v0.3.28-dev` on a new dedicated branch.

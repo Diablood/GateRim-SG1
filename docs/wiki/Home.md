@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.27-dev`
+> Version du mod documentée : `0.3.28-dev`
 
 ## Le mod en bref
 
@@ -72,6 +72,7 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 
 - un framework réutilisable de missions et questlines, avec rejouabilité, variantes RP et difficulté adaptative ;
 - de nouveaux archétypes d'opérations Tok'ra réellement distincts ;
+- une progression d'introduction Tok'ra prévue à terme : première mission à enjeu, objet-clé, recherche dédiée puis construction du communicateur avant l'accès aux opérations récurrentes ;
 - une refonte visuelle globale, préparée par des concept arts, après la stabilisation des mécaniques et avant la Porte des étoiles ;
 - les futures cultures Asgard, Nox et Unas avec leurs noms et parcours propres ;
 - un storyteller GateRim SG-1 qui orchestre le mod sans rendre ses événements
@@ -80,9 +81,22 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 - une phase ultérieure consacrée à la Porte des étoiles fonctionnelle et aux
   expéditions hors monde.
 
-Aucun ordre ni numéro de version intermédiaire n'est promis pour ces éléments.
-Leur planification dépend des tests, des dépendances techniques et de la
+La séquence immédiate est fixée : audit de l'orchestration, appel à l'aide sur
+site mondial, puis livraison vers une base Tok'ra temporaire. Les autres
+éléments restent planifiés selon les tests, les dépendances techniques et la
 stabilité des systèmes existants.
+
+## Orchestration des opérations Tok'ra
+
+La version `0.3.28-dev` consolide le planificateur partagé des quatre opérations
+actuelles : une seule occurrence active, filtrage des missions temporairement
+indisponibles avant le tirage pondéré, délais cachés après chaque résultat et
+persistance complète après sauvegarde.
+
+Les prochains ajouts prévus sont un appel à l'aide sur un site mondial
+temporaire, puis une livraison vers une base Tok'ra temporaire avec risques
+d'interception. Ces missions resteront rejouables et pourront être rééquilibrées
+après des tests prolongés.
 
 ## Liens utiles
 
@@ -92,3 +106,4 @@ stabilité des systèmes existants.
 - [Histoires culturelles](Cultural-Backstories)
 - [FAQ](FAQ)
 - [Dépôt GitHub principal](https://github.com/Diablood/GateRim-SG1)
+

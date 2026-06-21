@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; observation completed in `0.3.24-dev`; intelligence recovery completed in `0.3.25-dev`; wounded-agent care completed in `0.3.26-dev`; medical handoff completed in `0.3.27-dev`.
+Status: foundation published in `0.3.23-dev`; four legacy Tok'ra operations migrated through `0.3.27-dev`; shared orchestration audit validated and published in `0.3.28-dev`.
 
 ## Purpose
 
@@ -168,11 +168,78 @@ A missing PawnKindDef, ThingDef, JobDef, SkillDef, count, recurrence range, rewa
 
 Local revision `r1` validated the complete handoff flow, exact resource consumption, interaction restrictions, failure paths, post-handoff death consequence, save/load persistence, recurrence, text variation and regressions. The detailed coverage remains recorded in `docs/TESTING_CURRENT.md` and `docs/TESTING.md`.
 
-## Recurrence behavior
+## Recurrence and orchestration behavior
 
-After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. All four current Tok'ra organic operations now consume their configured recurrence data through the framework.
+After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Success, failure and ignored or expired offers all return to the same persistent scheduler. All four current Tok'ra organic operations consume their configured recurrence data through the framework.
 
-The player must never see these internal ranges in normal play. They are visible only in developer reports and internal documentation.
+Natural selection follows this order:
+
+1. gather definitions with a positive weight for the current context;
+2. call the optional mission worker's `CanOffer(map)` condition;
+3. remove temporarily unavailable definitions;
+4. apply the local repeat factor to the previously offered archetype;
+5. draw from the remaining weights.
+
+Filtering before the draw is important for future world-site and caravan missions. A temporarily impossible site must not consume a selection attempt while another operation is valid. If weighted candidates exist but all are unavailable, the manager retries on its normal internal check interval. It does not pretend that a mission occurred and does not consume a full recurrence delay.
+
+One manager owns one global active slot. No second organic operation may be offered while the current one is offered, accepted, active or ready. The save stores the active occurrence, last offered and completed archetypes, outcome counters, text history and next hidden opportunity.
+
+The player must never see internal ranges, weights, histories or future archetypes in normal play. They are visible only in developer reports and internal documentation.
+
+### Orchestration diagnostics (`0.3.28-dev`)
+
+Two developer-only actions support long-run validation:
+
+```text
+Debug actions menu
+→ GateRim SG-1
+→ Tok'ra ops: roll next natural offer
+```
+
+This action uses the real natural filter, repeat penalty and weighted draw. It does not force a particular archetype and refuses to replace an active occurrence.
+
+```text
+Debug actions menu
+→ GateRim SG-1
+→ Tok'ra ops: audit long-term orchestration
+```
+
+The audit report shows the global active slot, hidden scheduling state, outcome counters, current offerability, every trust-tier weight and delay, text-bank counts and a deterministic `5000`-draw simulation per tier. The simulation verifies reachability and reports immediate-repeat frequency without mutating the save.
+
+Local revision `r1` validated the audit as `PASS`, the real natural draw, success/failure/ignored rescheduling, recurrence, local anti-repetition, save/load persistence, storyteller independence, all four existing operation regressions and a clean `Player.log`.
+
+## Locked Tok'ra mission expansion
+
+The next mission sequence is:
+
+1. `0.3.28-dev` — audit orchestration and long-term recurrence;
+2. `0.3.29-dev` — add a Tok'ra distress-call world-site mission;
+3. `0.3.30-dev` — add a Tok'ra temporary-base delivery mission.
+
+The distress call will create a temporary world site with a failure timer and a hidden state revealed on arrival: genuine survivors, a compromised signal or trap, or a late arrival with no allied survivors and enemy forces still searching, guarding or leaving.
+
+The delivery mission will create a temporary Tok'ra destination and configurable cargo. It must handle normal delivery, interception, cargo loss, delay, abandonment and a compromised destination.
+
+The common framework should own declarative phases, timing, cargo or objectives, texts, recurrence, difficulty, rewards and consequences. World-site generation, caravan movement, interception and combat remain specialized adapters until several real missions justify additional shared vocabulary.
+
+
+
+## Deferred Tok'ra access progression
+
+A future introduction arc will separate first contact from the recurrent mission pool:
+
+1. a unique combat-bearing Tok'ra encounter or recovery mission awards a persistent key artifact;
+2. that artifact enables a dedicated GateRim SG-1 research project with vanilla `Electricity` as prerequisite;
+3. the completed research unlocks construction of the Tok'ra communicator;
+4. recurrent Tok'ra operations become eligible only while a built, powered communicator is available.
+
+The artifact identity, enemy force, site structure and failure recovery are deliberately unresolved. The introduction must remain unique and narratively meaningful, but a failed first attempt must not permanently lock a campaign. This progression is deferred and remains separate from the recurrent distress-call and delivery archetypes.
+
+## Long-term faction pools
+
+The mission system is technically faction-neutral, not Tok'ra-only. Development completes and enriches the Tok'ra pool first. Later milestones may add independent Goa'uld mission pools and then missions for Jaffa, Asgard, Nox, Unas and other factions.
+
+Each pool must retain its own RP identity, appearance conditions, rewards and consequences. Mission balance is intentionally evolvable: frequencies, rewards, variants and mechanics may be adjusted after prolonged play, including after `1.0.0`, without rewriting the scheduler or persistent runtime model.
 
 ## Difficulty behavior
 

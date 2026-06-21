@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.27-dev`
+- Development version: `0.3.28-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -31,8 +31,9 @@ people, factions, technologies, biology and conflicts surrounding it.
 - A reusable, Def-driven mission framework foundation with persistent runtime
   state, RP text variants, recurrence controls and RimWorld threat snapshots;
   the Tok'ra observation, intelligence-recovery, wounded-agent care and
-  medical-handoff operations now read their mission data and balance from XML,
-  including adaptive threat use for intelligence and medical severity.
+  medical-handoff operations now read their mission data and balance from XML.
+  Their shared persistent scheduler filters temporarily unavailable missions
+  before weighted selection and exposes long-term recurrence diagnostics.
 - Configurable cultural profiles, persistent cultural names and 83 cultural
   backstories integrated with starting pawns and world generation.
 

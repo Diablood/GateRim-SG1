@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using GateRimSG1.Missions;
 using RimWorld;
 using Verse;
@@ -1518,6 +1519,185 @@ namespace GateRimSG1.Goauld
                 + manager.departingMedicalSupplyDeathPenaltyPending;
         }
 
+        public static string GetOrchestrationAuditReport(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null)
+            {
+                return "Tok'ra organic operation manager unavailable.";
+            }
+
+            List<TokraOrganicOperationDefinition> definitions
+                = TokraOrganicOperationFramework.AllDefinitions.ToList();
+            TokraTrustTier currentTier
+                = GameComponent_TokraTrustTracker.GetCurrentTier();
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            StringBuilder report = new StringBuilder();
+            bool passed = definitions.Count >= 4;
+
+            report.AppendLine("Tok'ra long-term orchestration audit");
+            report.AppendLine("Definitions: " + definitions.Count);
+            report.AppendLine(
+                "Single global active slot: "
+                + (manager.activeOperation.IsActive
+                    ? manager.activeArchetype + " / " + manager.activeState
+                    : "empty"));
+            report.AppendLine(
+                "Current map: " + (map?.uniqueID.ToString() ?? "none")
+                + " | trust: " + currentTier);
+            report.AppendLine(
+                "Next opportunity: " + manager.nextOpportunityTick
+                + " | remaining: "
+                + Math.Max(0, manager.nextOpportunityTick - currentTick));
+            report.AppendLine(
+                "Last offered: " + manager.lastOfferedArchetype
+                + " | last completed: " + manager.lastCompletedArchetype);
+            report.AppendLine(
+                "Resolved: " + manager.completedOperationCount
+                + " succeeded / " + manager.failedOperationCount
+                + " failed / " + manager.expiredOfferCount
+                + " ignored");
+
+            TokraTrustTier[] tiers =
+            {
+                TokraTrustTier.Wary,
+                TokraTrustTier.Neutral,
+                TokraTrustTier.Cooperative,
+                TokraTrustTier.Trusted
+            };
+
+            foreach (TokraTrustTier tier in tiers)
+            {
+                report.AppendLine();
+                report.AppendLine("[" + tier + "]");
+
+                int configuredCandidateCount;
+                List<OrganicOperationCandidate> currentlyEligible
+                    = manager.BuildCandidates(
+                        tier,
+                        map,
+                        manager.lastOfferedArchetype,
+                        filterOfferability: true,
+                        out configuredCandidateCount);
+                report.AppendLine(
+                    "Eligible now: " + currentlyEligible.Count + "/"
+                    + configuredCandidateCount);
+
+                foreach (TokraOrganicOperationDefinition definition
+                    in definitions)
+                {
+                    int minimumDelay;
+                    int maximumDelay;
+                    TokraOrganicOperationFramework.GetDelayRange(
+                        definition.Archetype,
+                        tier,
+                        out minimumDelay,
+                        out maximumDelay);
+                    bool delayValid = minimumDelay > 0
+                        && maximumDelay >= minimumDelay;
+                    bool offerable = IsDefinitionOfferable(definition, map);
+                    passed &= delayValid;
+
+                    report.AppendLine(
+                        "- " + definition.Archetype
+                        + ": weight=" + definition.GetWeight(tier).ToString("0.00")
+                        + ", repeat="
+                        + definition.RepeatedArchetypeWeightFactor.ToString("0.00")
+                        + ", delay=" + minimumDelay + "-" + maximumDelay
+                        + ", offerable=" + offerable
+                        + ", offerTexts="
+                        + (definition.MissionDef?.texts?.offerLetterTexts?.Count
+                            ?? 0)
+                        + ", successTexts="
+                        + (definition.MissionDef?.texts?.successLetterTexts?.Count
+                            ?? 0));
+                }
+
+                const int simulationCount = 5000;
+                Dictionary<TokraOrganicOperationArchetype, int> counts
+                    = definitions.ToDictionary(
+                        definition => definition.Archetype,
+                        definition => 0);
+                Random random = new Random(32800 + (int)tier);
+                TokraOrganicOperationArchetype previous
+                    = TokraOrganicOperationArchetype.None;
+                int immediateRepeats = 0;
+                int completedDraws = 0;
+
+                for (int i = 0; i < simulationCount; i++)
+                {
+                    List<OrganicOperationCandidate> candidates
+                        = manager.BuildCandidates(
+                            tier,
+                            map,
+                            previous,
+                            filterOfferability: false,
+                            out _);
+
+                    if (candidates.Count == 0)
+                    {
+                        break;
+                    }
+
+                    TokraOrganicOperationArchetype selected
+                        = SelectCandidate(
+                            candidates,
+                            (float)random.NextDouble());
+
+                    if (selected == TokraOrganicOperationArchetype.None)
+                    {
+                        break;
+                    }
+
+                    if (selected == previous)
+                    {
+                        immediateRepeats++;
+                    }
+
+                    counts[selected]++;
+                    previous = selected;
+                    completedDraws++;
+                }
+
+                IEnumerable<TokraOrganicOperationDefinition> weighted
+                    = definitions.Where(definition
+                        => definition.GetWeight(tier) > 0f);
+                bool allReached = weighted.All(definition
+                    => counts[definition.Archetype] > 0);
+                passed &= allReached && completedDraws == simulationCount;
+
+                string repeatPercentage = completedDraws > 0
+                    ? (100f * immediateRepeats / completedDraws).ToString("0.0")
+                    : "0.0";
+                report.AppendLine(
+                    "Simulation: " + completedDraws + " draws, repeats="
+                    + immediateRepeats + " (" + repeatPercentage
+                    + "%), all weighted archetypes reached=" + allReached);
+
+                foreach (TokraOrganicOperationDefinition definition
+                    in definitions)
+                {
+                    report.AppendLine(
+                        "  " + definition.Archetype + "="
+                        + counts[definition.Archetype]);
+                }
+            }
+
+            report.AppendLine();
+            report.AppendLine(
+                "Audit result: " + (passed ? "PASS" : "CHECK REQUIRED"));
+            report.AppendLine(
+                "Runtime selection filters CanOffer before the weighted draw; "
+                + "temporarily unavailable missions do not suppress eligible ones.");
+            report.AppendLine(
+                "Success, failure and ignored offers all schedule another hidden "
+                + "delay through the same persistent manager.");
+
+            return report.ToString().TrimEnd();
+        }
+
         public static bool DebugMakeActiveReady(Map map)
         {
             GameComponent_TokraOrganicOperationManager manager
@@ -1862,6 +2042,26 @@ namespace GateRimSG1.Goauld
                 InitialMinimumDelayTicks,
                 InitialMaximumDelayTicks);
             return true;
+        }
+
+        public static bool DebugRollNextNaturalOpportunity(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || map == null
+                || manager.activeOperation.IsActive
+                || FindPoweredCommunicator(map) == null)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            manager.nextOpportunityTick = currentTick;
+
+            return manager.TryCreateNextOpportunity(currentTick)
+                && manager.activeState == TokraOrganicOperationState.Offered;
         }
 
         private static bool DebugForceSpecificOpportunity(
@@ -2468,8 +2668,15 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            TokraOrganicOperationArchetype archetype = SelectArchetype(
-                GameComponent_TokraTrustTracker.GetCurrentTier());
+            TokraOrganicOperationArchetype archetype;
+
+            if (!TrySelectArchetype(
+                    GameComponent_TokraTrustTracker.GetCurrentTier(),
+                    map,
+                    out archetype))
+            {
+                return false;
+            }
 
             if (archetype == TokraOrganicOperationArchetype.None)
             {
@@ -4427,31 +4634,77 @@ namespace GateRimSG1.Goauld
                 maximumDelay);
         }
 
-        private TokraOrganicOperationArchetype SelectArchetype(
-            TokraTrustTier tier)
+        private bool TrySelectArchetype(
+            TokraTrustTier tier,
+            Map map,
+            out TokraOrganicOperationArchetype archetype)
         {
-            List<OrganicOperationCandidate> candidates
-                = TokraOrganicOperationFramework.AllDefinitions
-                    .Select(definition => new OrganicOperationCandidate(
-                        definition.Archetype,
-                        definition.GetWeight(tier),
-                        definition.RepeatedArchetypeWeightFactor))
-                    .Where(candidate => candidate.Weight > 0f)
-                    .ToList();
+            int configuredCandidateCount;
+            List<OrganicOperationCandidate> candidates = BuildCandidates(
+                tier,
+                map,
+                lastOfferedArchetype,
+                filterOfferability: true,
+                out configuredCandidateCount);
 
             if (candidates.Count == 0)
             {
-                return TokraOrganicOperationArchetype.None;
+                archetype = TokraOrganicOperationArchetype.None;
+
+                // No configured weight is a stable state. Temporarily
+                // unavailable missions are retried on the normal state-check
+                // interval instead of consuming a full recurrence delay.
+                return configuredCandidateCount == 0;
+            }
+
+            archetype = SelectCandidate(candidates, Rand.Value);
+            return archetype != TokraOrganicOperationArchetype.None;
+        }
+
+        private List<OrganicOperationCandidate> BuildCandidates(
+            TokraTrustTier tier,
+            Map map,
+            TokraOrganicOperationArchetype previousArchetype,
+            bool filterOfferability,
+            out int configuredCandidateCount)
+        {
+            List<OrganicOperationCandidate> candidates
+                = new List<OrganicOperationCandidate>();
+            configuredCandidateCount = 0;
+
+            foreach (TokraOrganicOperationDefinition definition
+                in TokraOrganicOperationFramework.AllDefinitions)
+            {
+                float weight = definition.GetWeight(tier);
+
+                if (weight <= 0f)
+                {
+                    continue;
+                }
+
+                configuredCandidateCount++;
+
+                if (filterOfferability
+                    && !IsDefinitionOfferable(definition, map))
+                {
+                    continue;
+                }
+
+                candidates.Add(new OrganicOperationCandidate(
+                    definition.Archetype,
+                    weight,
+                    definition.RepeatedArchetypeWeightFactor));
             }
 
             if (candidates.Count > 1
-                && lastOfferedArchetype != TokraOrganicOperationArchetype.None)
+                && previousArchetype
+                    != TokraOrganicOperationArchetype.None)
             {
                 for (int i = 0; i < candidates.Count; i++)
                 {
                     OrganicOperationCandidate candidate = candidates[i];
 
-                    if (candidate.Archetype == lastOfferedArchetype)
+                    if (candidate.Archetype == previousArchetype)
                     {
                         candidate.Weight *= candidate
                             .RepeatedArchetypeWeightFactor;
@@ -4460,6 +4713,26 @@ namespace GateRimSG1.Goauld
                 }
             }
 
+            return candidates;
+        }
+
+        private static bool IsDefinitionOfferable(
+            TokraOrganicOperationDefinition definition,
+            Map map)
+        {
+            if (definition == null || map == null)
+            {
+                return false;
+            }
+
+            GateRimMissionWorker worker = definition.MissionDef?.Worker;
+            return worker == null || worker.CanOffer(map);
+        }
+
+        private static TokraOrganicOperationArchetype SelectCandidate(
+            IReadOnlyList<OrganicOperationCandidate> candidates,
+            float roll)
+        {
             float totalWeight = candidates.Sum(candidate => candidate.Weight);
 
             if (totalWeight <= 0f)
@@ -4467,7 +4740,8 @@ namespace GateRimSG1.Goauld
                 return TokraOrganicOperationArchetype.None;
             }
 
-            float selection = Rand.Value * totalWeight;
+            float boundedRoll = Math.Max(0f, Math.Min(0.999999f, roll));
+            float selection = boundedRoll * totalWeight;
 
             for (int i = 0; i < candidates.Count; i++)
             {

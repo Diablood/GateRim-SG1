@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.27-dev`
+> Dernière révision : `0.3.28-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -46,7 +46,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
 | Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation de terrain via un site visuellement explicite, analyse d'un module de renseignement au communicateur avec choix prudent ou accéléré, accueil prolongé d'un agent blessé à la récupération symbiotique affaiblie et remise de deux médicaments à un agent Tok'ra en visite ; refus sans pénalité, conséquence après engagement accepté | 0.2.48-dev à 0.3.4-dev |
-| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; l'observation, la récupération de renseignements, l'accueil de l'agent blessé et la remise médicale lisent leurs données depuis XML, tandis que leurs interactions RimWorld spécialisées restent en C# | 0.3.23-dev à 0.3.27-dev |
+| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; quatre opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant audité pour le slot unique, l'éligibilité avant tirage, les délais cachés et l'anti-répétition | 0.3.23-dev à 0.3.28-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
@@ -106,7 +106,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | Direction actuelle |
 |---|---|
-| Diversification des opérations Tok'ra | Ajouter de nouveaux archétypes récurrents, des variantes et d'autres missions de terrain sans cycle visible ni répétition immédiate |
+| Diversification des opérations Tok'ra | Prochains jalons : appel à l'aide sur site mondial temporaire avec variantes cachées, puis livraison vers une base temporaire avec cargaison configurable et risques d'interception ; missions évolutives et rééquilibrables après tests prolongés |
+| Introduction et déblocage des opérations Tok'ra | Mission unique avec combat donnant un objet-clé, recherche GateRim SG-1 dédiée avec prérequis Électricité, puis construction du communicateur avant l'accès au pool récurrent ; détails et positionnement de jalon à définir |
+| Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
