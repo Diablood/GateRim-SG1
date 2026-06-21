@@ -200,6 +200,24 @@ namespace GateRimSG1.Missions
                         + pawnCare.optionalIllnessSeverityMaximum.ToString("0.###"));
                 }
 
+                if (definition.handoff != null)
+                {
+                    GateRimMissionHandoffDef handoff = definition.handoff;
+                    builder.AppendLine(
+                        "  Handoff: liaison="
+                        + (handoff.liaisonPawnKindDefName ?? "none")
+                        + ", arrival="
+                        + handoff.arrivalMinimumDelayTicks
+                        + "-"
+                        + handoff.arrivalMaximumDelayTicks
+                        + " ticks, departureGrace="
+                        + handoff.departureGraceTicks
+                        + " ticks");
+                    builder.AppendLine(
+                        "  Handoff post-death trust: "
+                        + handoff.postHandoffDeathTrustChange);
+                }
+
                 foreach (GateRimMissionNamedTextBankDef bank
                     in definition.texts?.namedTextBanks
                         ?? Enumerable.Empty<GateRimMissionNamedTextBankDef>())
@@ -278,6 +296,8 @@ namespace GateRimSG1.Missions
                             + (objective.secondaryTargetDefName ?? "none")
                             + ", job="
                             + (objective.jobDefName ?? "none")
+                            + ", count="
+                            + objective.requiredCount
                             + ", work="
                             + objective.workTicks
                             + ", secondaryWork="

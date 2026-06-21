@@ -1,5 +1,40 @@
 # Tests
 
+## 0.3.27-dev - Migration de la remise médicale vers le framework de missions
+
+Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.27-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.27-dev`, `0.3.27.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.27.0` ;
+- chargement de quatre MissionDefs et du profil `handoff` sans erreur de configuration ;
+- définition `SG1_TokraOrganic_MedicalSupplyHandoff` exposant cinq phases, les références du pawn, de la ressource, du job et de la compétence, les délais, les textes, les variantes et les conséquences ;
+- flux complet validé : offre, arrivée différée, rencontre, dialogue, consommation exacte de deux médicaments industriels accessibles, réussite et départ ;
+- consommation correcte à travers plusieurs piles sans détruire le surplus ;
+- options désactivées pour ressource insuffisante ou inaccessible, incapacité sociale, réservation et absence de chemin ;
+- récompense `Social +350` et confiance `+2` accordées une seule fois après remise ;
+- mort, capture, disparition et expiration avant remise avec conséquence de confiance `-1` ;
+- mort après remise mais avant sortie avec conséquence supplémentaire `-2`, sans annuler la réussite ni rendre les médicaments ;
+- sauvegarde/rechargement pendant l'offre, avant l'arrivée, pendant l'approche, au point de rencontre et pendant le départ surveillé ;
+- migration prudente d'une occurrence créée sous `v0.3.26-dev` sans perte du pawn, de l'état ou de l'échéance ;
+- trois variantes d'offre et trois variantes de réussite avec anti-répétition immédiate ;
+- rééligibilité, délais cachés contextuels et pénalité de poids `0.25` pour le dernier archétype ;
+- observation, récupération de renseignements et agent blessé validés sans régression ;
+- outils techniques limités au debug et `Player.log` final propre.
+
+Points de régression durables :
+
+- conserver le MissionDef comme source unique du PawnKind, de la ressource, de la quantité, du JobDef, du SkillDef, des délais, textes, récompenses et conséquences migrés ;
+- désactiver explicitement l'archétype lorsqu'une configuration requise est absente ou invalide, sans fallback C# complet silencieux ;
+- conserver le spawn, le Lord, le déplacement, les réservations, le dialogue et la consommation réelle des piles dans l'adaptateur tant qu'un second usage réel ne justifie pas leur mutualisation ;
+- consommer exactement la quantité configurée parmi les ressources accessibles et ne jamais compter les piles interdites ou inatteignables ;
+- distinguer les échecs avant remise de la conséquence post-remise sans annuler ni dupliquer la réussite ;
+- préserver le pawn, les échéances et la conséquence post-remise en attente après sauvegarde/rechargement ;
+- couvrir variantes, anti-répétition, récurrence, offre ignorée, réussite et échecs sur plusieurs occurrences ;
+- revalider les trois autres opérations après toute modification du XML ou du moteur partagé ;
+- ajouter de nouvelles abstractions uniquement lorsqu'un autre cas réel démontre un besoin commun.
+
 ## 0.3.26-dev - Migration des soins de l'agent blessé vers le framework de missions
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.26-dev`. La révision `r1` a validé le flux complet de l'agent blessé. La révision `r2` a restauré le champ XML `workTicks=5000` de l'analyse accélérée des renseignements, omis lors de l'assemblage de `r1`, sans modifier le C# ni le gameplay de l'agent blessé.

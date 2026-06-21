@@ -24,10 +24,26 @@ namespace GateRimSG1.Goauld
 
         public override void DoWindowContents(Rect inRect)
         {
+            int requiredCount
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyRequiredCount();
+            string titleKey
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyRuntimeTextKey("dialogTitle");
+            string bodyKey
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyRuntimeTextKey("dialogText");
+            string giveKey
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyRuntimeTextKey("giveMedicine");
+            string cancelKey
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyRuntimeTextKey("cancelDialogue");
+
             Text.Font = GameFont.Medium;
             Widgets.Label(
                 new Rect(0f, 0f, inRect.width, 35f),
-                "GR_TokraMedicalSupply_DialogTitle".Translate(
+                titleKey.Translate(
                     liaison?.LabelShortCap ?? "?"));
 
             Text.Font = GameFont.Small;
@@ -38,10 +54,9 @@ namespace GateRimSG1.Goauld
                 inRect.height - 120f);
             Widgets.Label(
                 bodyRect,
-                "GR_TokraMedicalSupply_DialogText".Translate(
+                bodyKey.Translate(
                     liaison?.LabelShortCap ?? "?",
-                    TokraOrganicMedicalSupplyUtility
-                        .RequiredMedicineCount.ToString()));
+                    requiredCount.ToString()));
 
             float buttonWidth = (inRect.width - 12f) / 2f;
             Rect giveButtonRect = new Rect(
@@ -57,7 +72,7 @@ namespace GateRimSG1.Goauld
 
             if (Widgets.ButtonText(
                     giveButtonRect,
-                    "GR_TokraMedicalSupply_GiveMedicine".Translate()))
+                    giveKey.Translate(requiredCount.ToString())))
             {
                 if (GameComponent_TokraOrganicOperationManager
                     .TryCompleteMedicalSupplyHandoff(
@@ -70,7 +85,7 @@ namespace GateRimSG1.Goauld
 
             if (Widgets.ButtonText(
                     cancelButtonRect,
-                    "GR_TokraMedicalSupply_CancelDialogue".Translate()))
+                    cancelKey.Translate()))
             {
                 Close();
             }

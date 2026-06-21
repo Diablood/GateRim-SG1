@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_TokraMedicalSupply_Accept>Accept Tok'ra medical resupply request</GR_TokraMedicalSupply_Accept>
-    <GR_TokraMedicalSupply_OfferLabel>Tok'ra medical resupply request</GR_TokraMedicalSupply_OfferLabel>
-    <GR_TokraMedicalSupply_OfferText>A Tok'ra cell has opened a discreet channel to request two units of industrial medicine. If the colony accepts, a liaison will come to the base and collect the supplies in person.
 
+    <GR_TokraMedicalSupply_OfferLabel>Tok'ra medical resupply request</GR_TokraMedicalSupply_OfferLabel>
+    <GR_TokraMedicalSupply_OfferText>A Tok'ra cell has opened a discreet channel to request industrial medicine. If the colony accepts, a liaison will come to the base and collect the supplies in person.
 Select a colonist, then right-click the powered Tok'ra secure communicator to respond. The offer will remain available for about {0} hours. The cell has no knowledge of the colony's current stocks. Ignoring the request carries no consequence.</GR_TokraMedicalSupply_OfferText>
+    <GR_TokraMedicalSupply_OfferText2>A brief Tok'ra transmission asks whether the colony can spare medical supplies for a hidden cell. A liaison will approach openly only after the request is accepted.
+Select a colonist, then right-click the powered Tok'ra secure communicator to answer. The channel will remain open for about {0} hours. Refusing by silence will not damage relations.</GR_TokraMedicalSupply_OfferText2>
+    <GR_TokraMedicalSupply_OfferText3>A Tok'ra field group is running short of medicine and has chosen the colony as a possible source. They propose a direct handoff at the settlement rather than risk exposing their own position.
+Select a colonist, then right-click the powered Tok'ra secure communicator to respond. The request expires in about {0} hours. No commitment is assumed until the colony answers.</GR_TokraMedicalSupply_OfferText3>
     <GR_TokraMedicalSupply_OfferExpired>The Tok'ra medical resupply channel has closed without a response.</GR_TokraMedicalSupply_OfferExpired>
     <GR_TokraMedicalSupply_Accepted>{0} has accepted the Tok'ra medical resupply request. A liaison should reach the colony in about {1} hours.</GR_TokraMedicalSupply_Accepted>
 
@@ -24,22 +28,24 @@ Select a colonist, then right-click the powered Tok'ra secure communicator to re
 
     <GR_TokraMedicalSupply_DialogTitle>Meeting with {0}</GR_TokraMedicalSupply_DialogTitle>
     <GR_TokraMedicalSupply_DialogText>{0} confirms that the cell needs {1} units of industrial medicine. The supplies will be removed directly from the colony's accessible stocks when the handoff is confirmed.</GR_TokraMedicalSupply_DialogText>
-    <GR_TokraMedicalSupply_GiveMedicine>Give 2 medicine</GR_TokraMedicalSupply_GiveMedicine>
+    <GR_TokraMedicalSupply_GiveMedicine>Give {0} medicine</GR_TokraMedicalSupply_GiveMedicine>
     <GR_TokraMedicalSupply_CancelDialogue>Cancel</GR_TokraMedicalSupply_CancelDialogue>
 
     <GR_TokraMedicalSupply_StatusOffered>medical resupply request awaiting a response ({0} h remaining)</GR_TokraMedicalSupply_StatusOffered>
     <GR_TokraMedicalSupply_StatusAwaitingArrival>medical liaison expected in about {0} h</GR_TokraMedicalSupply_StatusAwaitingArrival>
     <GR_TokraMedicalSupply_StatusApproaching>{0} is approaching the meeting point ({1} h before departure)</GR_TokraMedicalSupply_StatusApproaching>
-    <GR_TokraMedicalSupply_StatusReady>{0} is waiting for two units of industrial medicine ({1} h remaining)</GR_TokraMedicalSupply_StatusReady>
+    <GR_TokraMedicalSupply_StatusReady>{0} is waiting for the requested industrial medicine ({1} h remaining)</GR_TokraMedicalSupply_StatusReady>
 
     <GR_TokraMedicalSupply_SuccessLabel>Tok'ra medical resupply delivered</GR_TokraMedicalSupply_SuccessLabel>
-    <GR_TokraMedicalSupply_SuccessText>{0} handed two units of industrial medicine to the Tok'ra liaison. The exchange is immediately considered successful. The negotiator gains {1} Social XP and the cell's trust in the colony improves.</GR_TokraMedicalSupply_SuccessText>
+    <GR_TokraMedicalSupply_SuccessText>{0} handed the requested medicine to the Tok'ra liaison. The exchange is immediately considered successful. The negotiator gains {1} Social XP and the cell's trust in the colony improves.</GR_TokraMedicalSupply_SuccessText>
+    <GR_TokraMedicalSupply_SuccessText2>The Tok'ra liaison accepts the supplies from {0} and confirms that the hidden cell can continue treating its wounded. The negotiator gains {1} Social XP, and Tok'ra trust improves.</GR_TokraMedicalSupply_SuccessText2>
+    <GR_TokraMedicalSupply_SuccessText3>{0} completes the discreet medical handoff without incident. The liaison departs with the supplies, leaving the colony with {1} Social XP and a stronger reputation among the Tok'ra.</GR_TokraMedicalSupply_SuccessText3>
+
     <GR_TokraMedicalSupply_FailedLabel>Tok'ra medical resupply failed</GR_TokraMedicalSupply_FailedLabel>
     <GR_TokraMedicalSupply_TimedOutText>The Tok'ra liaison waited several hours without receiving the requested medicine. The agent is leaving, and the cell will be more hesitant to rely on the colony.</GR_TokraMedicalSupply_TimedOutText>
     <GR_TokraMedicalSupply_LiaisonDeathText>The Tok'ra liaison died before the supplies could be handed over. The request has failed, and the cell considers the colony unable to secure the meeting.</GR_TokraMedicalSupply_LiaisonDeathText>
     <GR_TokraMedicalSupply_LiaisonLostText>The Tok'ra liaison disappeared or left the map before the supplies were handed over. The request has failed.</GR_TokraMedicalSupply_LiaisonLostText>
     <GR_TokraMedicalSupply_LiaisonCapturedText>The Tok'ra liaison was captured before the supplies were handed over. The request has failed, and the cell reacts with distrust.</GR_TokraMedicalSupply_LiaisonCapturedText>
-
     <GR_TokraMedicalSupply_PostHandoffDeathLabel>Tok'ra liaison killed</GR_TokraMedicalSupply_PostHandoffDeathLabel>
     <GR_TokraMedicalSupply_PostHandoffDeathText>{0} died before leaving the map. The medical handoff remains completed, but the loss of the liaison damages relations with the cell.</GR_TokraMedicalSupply_PostHandoffDeathText>
 

@@ -16,9 +16,6 @@ namespace GateRimSG1.Goauld
 
     public class Comp_TokraMedicalSupplyLiaisonFloatMenu : ThingComp
     {
-        private const string DialogueJobDefName
-            = "SG1_TalkToTokraMedicalSupplyLiaison";
-
         public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(
             Pawn selPawn)
         {
@@ -28,15 +25,16 @@ namespace GateRimSG1.Goauld
             }
 
             Pawn liaison = parent as Pawn;
-
             if (!GameComponent_TokraOrganicOperationManager
                 .IsMedicalSupplyLiaison(liaison))
             {
                 yield break;
             }
 
-            string label = "GR_TokraMedicalSupply_TalkToLiaison"
-                .Translate(liaison.LabelShortCap);
+            string talkKey
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyRuntimeTextKey("talkToLiaison");
+            string label = talkKey.Translate(liaison.LabelShortCap);
             string disabledReason
                 = GameComponent_TokraOrganicOperationManager
                     .GetMedicalSupplyLiaisonDisabledReason(
@@ -51,15 +49,17 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
-                DialogueJobDefName);
+            JobDef jobDef
+                = GameComponent_TokraOrganicOperationManager
+                    .GetMedicalSupplyDialogueJobDef();
 
             if (jobDef == null)
             {
+                string unavailableKey
+                    = GameComponent_TokraOrganicOperationManager
+                        .GetMedicalSupplyRuntimeTextKey("jobUnavailable");
                 yield return new FloatMenuOption(
-                    label + ": "
-                    + "GR_TokraMedicalSupply_JobUnavailable"
-                        .Translate(),
+                    label + ": " + unavailableKey.Translate(),
                     null);
                 yield break;
             }

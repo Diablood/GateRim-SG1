@@ -121,6 +121,15 @@ namespace GateRimSG1.Missions
         public float optionalIllnessSeverityMaximum;
     }
 
+    public sealed class GateRimMissionHandoffDef
+    {
+        public string liaisonPawnKindDefName;
+        public int arrivalMinimumDelayTicks;
+        public int arrivalMaximumDelayTicks;
+        public int departureGraceTicks;
+        public int postHandoffDeathTrustChange;
+    }
+
     public sealed class GateRimMissionTextVariantDef
     {
         public string key;
@@ -293,6 +302,7 @@ namespace GateRimSG1.Missions
         public GateRimMissionDifficultyDef difficulty
             = new GateRimMissionDifficultyDef();
         public GateRimMissionPawnCareDef pawnCare;
+        public GateRimMissionHandoffDef handoff;
         public GateRimMissionTextBankDef texts
             = new GateRimMissionTextBankDef();
         public GateRimMissionActionDef actions
@@ -612,6 +622,32 @@ namespace GateRimSG1.Missions
                     || pawnCare.optionalIllnessSeverityMaximum > 1f)
                 {
                     yield return "pawnCare optional illness severity range is invalid";
+                }
+            }
+
+            if (handoff != null)
+            {
+                if (string.IsNullOrWhiteSpace(
+                        handoff.liaisonPawnKindDefName))
+                {
+                    yield return "handoff liaisonPawnKindDefName is required";
+                }
+
+                if (handoff.arrivalMinimumDelayTicks <= 0
+                    || handoff.arrivalMaximumDelayTicks
+                        < handoff.arrivalMinimumDelayTicks)
+                {
+                    yield return "handoff arrival delay range is invalid";
+                }
+
+                if (handoff.departureGraceTicks <= 0)
+                {
+                    yield return "handoff departureGraceTicks must be positive";
+                }
+
+                if (handoff.postHandoffDeathTrustChange >= 0)
+                {
+                    yield return "handoff postHandoffDeathTrustChange must be negative";
                 }
             }
 

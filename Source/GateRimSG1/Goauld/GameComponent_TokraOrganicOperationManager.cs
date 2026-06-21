@@ -32,9 +32,6 @@ namespace GateRimSG1.Goauld
                 GetObservationDefinition()?.ObservationTransmissionWorkTicks ?? 1);
         private const int InitialMinimumDelayTicks = 180000;
         private const int InitialMaximumDelayTicks = 360000;
-        private const int MedicalSupplyArrivalMinimumDelayTicks = 2500;
-        private const int MedicalSupplyArrivalMaximumDelayTicks = 5000;
-        private const int MedicalSupplyDepartureGraceTicks = 60000;
 
         private int nextStateCheckTick;
         private int nextOpportunityTick;
@@ -1084,6 +1081,32 @@ namespace GateRimSG1.Goauld
                     null);
         }
 
+        internal static string GetMedicalSupplyRuntimeTextKey(
+            string id)
+        {
+            return TokraOrganicOperationFramework.GetDefinition(
+                    TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+                ?.GetRuntimeTextKey(id);
+        }
+
+        internal static int GetMedicalSupplyRequiredCount()
+        {
+            return TokraOrganicOperationFramework.GetDefinition(
+                    TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+                ?.MedicalSupplyRequiredCount ?? 0;
+        }
+
+        internal static JobDef GetMedicalSupplyDialogueJobDef()
+        {
+            string defName = TokraOrganicOperationFramework.GetDefinition(
+                    TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+                ?.MedicalSupplyDialogueJobDefName;
+
+            return string.IsNullOrWhiteSpace(defName)
+                ? null
+                : DefDatabase<JobDef>.GetNamedSilentFail(defName);
+        }
+
         public static bool IsMedicalSupplyLiaison(Pawn liaison)
         {
             GameComponent_TokraOrganicOperationManager manager
@@ -1118,23 +1141,33 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
+            TokraOrganicOperationDefinition definition
+                = manager.GetActiveDefinition();
+
+            if (definition == null)
+            {
+                return "GR_TokraOrganicOperation_ManagerUnavailable"
+                    .Translate()
+                    .ToString();
+            }
+
             if (!manager.IsExactMedicalSupplyLiaison(liaison))
             {
-                return "GR_TokraMedicalSupply_NoLongerActive"
+                return definition.GetRuntimeTextKey("noLongerActive")
                     .Translate()
                     .ToString();
             }
 
             if (manager.activeState != TokraOrganicOperationState.Ready)
             {
-                return "GR_TokraMedicalSupply_LiaisonEnRoute"
+                return definition.GetRuntimeTextKey("liaisonEnRoute")
                     .Translate()
                     .ToString();
             }
 
             if (manager.IsOperationDeadlineExpired())
             {
-                return "GR_TokraMedicalSupply_WindowExpired"
+                return definition.GetRuntimeTextKey("windowExpired")
                     .Translate()
                     .ToString();
             }
@@ -1151,12 +1184,16 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
 
-            SkillRecord social = negotiator.skills?.GetSkill(
-                SkillDefOf.Social);
+            SkillDef negotiationSkill
+                = DefDatabase<SkillDef>.GetNamedSilentFail(
+                    definition.MedicalSupplySkillDefName);
+            SkillRecord skill = negotiationSkill == null
+                ? null
+                : negotiator.skills?.GetSkill(negotiationSkill);
 
-            if (social == null || social.TotallyDisabled)
+            if (skill == null || skill.TotallyDisabled)
             {
-                return "GR_TokraMedicalSupply_OperatorIncapable"
+                return definition.GetRuntimeTextKey("operatorIncapable")
                     .Translate()
                     .ToString();
             }
@@ -1166,7 +1203,14 @@ namespace GateRimSG1.Goauld
                     Verse.AI.PathEndMode.Touch,
                     Danger.Some))
             {
-                return "GR_TokraMedicalSupply_CannotReachLiaison"
+                return definition.GetRuntimeTextKey("cannotReachLiaison")
+                    .Translate()
+                    .ToString();
+            }
+
+            if (!negotiator.CanReserve(liaison))
+            {
+                return definition.GetRuntimeTextKey("liaisonReserved")
                     .Translate()
                     .ToString();
             }
@@ -1223,25 +1267,37 @@ namespace GateRimSG1.Goauld
 
             Map map = liaison.Map;
 
-            if (!TokraOrganicMedicalSupplyUtility
-                .HasEnoughIndustrialMedicine(map, negotiator))
+            TokraOrganicOperationDefinition definition
+                = manager.GetActiveDefinition();
+
+            if (definition == null)
+            {
+                return false;
+            }
+
+            if (!TokraOrganicMedicalSupplyUtility.HasEnoughResource(
+                    map,
+                    negotiator,
+                    definition.MedicalSupplyThingDefName,
+                    definition.MedicalSupplyRequiredCount))
             {
                 Messages.Message(
-                    "GR_TokraMedicalSupply_NeedMedicine".Translate(
-                        TokraOrganicMedicalSupplyUtility
-                            .RequiredMedicineCount.ToString()),
+                    definition.GetRuntimeTextKey("needMedicine").Translate(
+                        definition.MedicalSupplyRequiredCount.ToString()),
                     MessageTypeDefOf.RejectInput,
                     historical: false);
                 return false;
             }
 
-            if (!TokraOrganicMedicalSupplyUtility
-                .TryConsumeIndustrialMedicine(map, negotiator))
+            if (!TokraOrganicMedicalSupplyUtility.TryConsumeResource(
+                    map,
+                    negotiator,
+                    definition.MedicalSupplyThingDefName,
+                    definition.MedicalSupplyRequiredCount))
             {
                 Messages.Message(
-                    "GR_TokraMedicalSupply_NeedMedicine".Translate(
-                        TokraOrganicMedicalSupplyUtility
-                            .RequiredMedicineCount.ToString()),
+                    definition.GetRuntimeTextKey("needMedicine").Translate(
+                        definition.MedicalSupplyRequiredCount.ToString()),
                     MessageTypeDefOf.RejectInput,
                     historical: false);
                 return false;
@@ -1754,7 +1810,9 @@ namespace GateRimSG1.Goauld
             else if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
             {
-                failureTextKey = "GR_TokraMedicalSupply_TimedOutText";
+                failureTextKey
+                    = manager.GetActiveDefinition()
+                        ?.GetRuntimeTextKey("failureTimeout");
             }
 
             return manager.TryResolveActiveOperation(
@@ -1782,15 +1840,7 @@ namespace GateRimSG1.Goauld
             Pawn liaison = manager.departingMedicalSupplyLiaison;
             manager.departingMedicalSupplyDeathPenaltyPending = false;
             manager.departingMedicalSupplyLiaison = null;
-            GameComponent_TokraTrustTracker
-                .NotifyOrganicMedicalSupplyLiaisonDeath();
-
-            Find.LetterStack?.ReceiveLetter(
-                "GR_TokraMedicalSupply_PostHandoffDeathLabel".Translate(),
-                "GR_TokraMedicalSupply_PostHandoffDeathText".Translate(
-                    liaison?.LabelShortCap ?? "?"),
-                LetterDefOf.NegativeEvent,
-                liaison);
+            manager.ApplyMedicalSupplyLiaisonDeathConsequence(liaison);
 
             return true;
         }
@@ -1863,7 +1913,7 @@ namespace GateRimSG1.Goauld
                         : definition.Archetype
                             == TokraOrganicOperationArchetype
                                 .MedicalSupplyHandoff
-                            ? "GR_TokraMedicalSupply_LiaisonLostText"
+                            ? definition.GetRuntimeTextKey("failureLost")
                             : definition.Archetype
                                 == TokraOrganicOperationArchetype
                                     .GoauldObservation
@@ -1946,7 +1996,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     activeMedicalSupplyLiaison,
-                    "GR_TokraMedicalSupply_TimedOutText");
+                    definition.GetRuntimeTextKey("failureTimeout"));
                 return;
             }
 
@@ -1960,10 +2010,14 @@ namespace GateRimSG1.Goauld
                 Pawn liaison;
                 IntVec3 meetingCell;
 
-                if (!TokraOrganicMedicalSupplyUtility.TrySpawnLiaison(
+                GateRimMissionHandoffDef handoff = definition.Handoff;
+
+                if (handoff == null
+                    || !TokraOrganicMedicalSupplyUtility.TrySpawnLiaison(
                         GetActiveMap(),
+                        handoff.liaisonPawnKindDefName,
                         definition.DeadlineTicks
-                            + MedicalSupplyDepartureGraceTicks,
+                            + handoff.departureGraceTicks,
                         out liaison,
                         out meetingCell))
                 {
@@ -1983,8 +2037,8 @@ namespace GateRimSG1.Goauld
                 medicalSupplyDepartureOrdered = false;
 
                 Find.LetterStack?.ReceiveLetter(
-                    "GR_TokraMedicalSupply_ArrivalLabel".Translate(),
-                    "GR_TokraMedicalSupply_ArrivalText".Translate(
+                    definition.GetRuntimeTextKey("arrivalLabel").Translate(),
+                    definition.GetRuntimeTextKey("arrivalText").Translate(
                         liaison.LabelShortCap,
                         GetRoundedUpHours(
                             operationDeadlineTick - currentTick).ToString()),
@@ -2006,7 +2060,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     activeLiaison,
-                    "GR_TokraMedicalSupply_LiaisonDeathText");
+                    definition.GetRuntimeTextKey("failureDeath"));
                 return;
             }
 
@@ -2017,7 +2071,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     activeLiaison,
-                    "GR_TokraMedicalSupply_LiaisonLostText");
+                    definition.GetRuntimeTextKey("failureLost"));
                 return;
             }
 
@@ -2026,7 +2080,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     activeLiaison,
-                    "GR_TokraMedicalSupply_LiaisonCapturedText");
+                    definition.GetRuntimeTextKey("failureCaptured"));
                 return;
             }
 
@@ -2049,7 +2103,7 @@ namespace GateRimSG1.Goauld
             {
                 medicalSupplyArrivalNotified = true;
                 Messages.Message(
-                    "GR_TokraMedicalSupply_LiaisonReady".Translate(
+                    definition.GetRuntimeTextKey("liaisonReady").Translate(
                         activeLiaison.LabelShortCap),
                     activeLiaison,
                     MessageTypeDefOf.NeutralEvent,
@@ -2072,16 +2126,8 @@ namespace GateRimSG1.Goauld
                 if (departingMedicalSupplyDeathPenaltyPending)
                 {
                     departingMedicalSupplyDeathPenaltyPending = false;
-                    GameComponent_TokraTrustTracker
-                        .NotifyOrganicMedicalSupplyLiaisonDeath();
+                    ApplyMedicalSupplyLiaisonDeathConsequence(liaison);
 
-                    Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraMedicalSupply_PostHandoffDeathLabel"
-                            .Translate(),
-                        "GR_TokraMedicalSupply_PostHandoffDeathText"
-                            .Translate(liaison.LabelShortCap),
-                        LetterDefOf.NegativeEvent,
-                        liaison);
                 }
 
                 departingMedicalSupplyLiaison = null;
@@ -2093,6 +2139,35 @@ namespace GateRimSG1.Goauld
                 departingMedicalSupplyLiaison = null;
                 departingMedicalSupplyDeathPenaltyPending = false;
             }
+        }
+
+        private void ApplyMedicalSupplyLiaisonDeathConsequence(
+            Pawn liaison)
+        {
+            TokraOrganicOperationDefinition definition
+                = TokraOrganicOperationFramework.GetDefinition(
+                    TokraOrganicOperationArchetype.MedicalSupplyHandoff);
+            GateRimMissionHandoffDef handoff = definition?.Handoff;
+
+            if (definition == null || handoff == null)
+            {
+                return;
+            }
+
+            GameComponent_TokraTrustTracker
+                .NotifyOrganicMedicalSupplyLiaisonDeath(
+                    handoff.postHandoffDeathTrustChange,
+                    definition.GetRuntimeTextKey(
+                        "postHandoffDeathTrust"));
+
+            Find.LetterStack?.ReceiveLetter(
+                definition.GetRuntimeTextKey(
+                    "postHandoffDeathLabel").Translate(),
+                definition.GetRuntimeTextKey(
+                    "postHandoffDeathText").Translate(
+                        liaison?.LabelShortCap ?? "?"),
+                LetterDefOf.NegativeEvent,
+                liaison);
         }
 
         private void BeginMedicalSupplyDeparture(
@@ -3375,10 +3450,17 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            GateRimMissionHandoffDef handoff = definition.Handoff;
+
+            if (handoff == null)
+            {
+                return false;
+            }
+
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             int arrivalDelay = Rand.RangeInclusive(
-                MedicalSupplyArrivalMinimumDelayTicks,
-                MedicalSupplyArrivalMaximumDelayTicks);
+                handoff.arrivalMinimumDelayTicks,
+                handoff.arrivalMaximumDelayTicks);
 
             activeState = TokraOrganicOperationState.Accepted;
             acceptedTick = currentTick;
@@ -3398,7 +3480,7 @@ namespace GateRimSG1.Goauld
             NotifyMissionAccepted(map, operatorPawn);
 
             Messages.Message(
-                "GR_TokraMedicalSupply_Accepted".Translate(
+                definition.AcceptedMessageKey.Translate(
                     operatorPawn?.LabelShortCap ?? "?",
                     GetRoundedUpHours(arrivalDelay).ToString()),
                 MessageTypeDefOf.NeutralEvent,
@@ -4005,21 +4087,21 @@ namespace GateRimSG1.Goauld
                 if (outcome == TokraOrganicOperationOutcome.Succeeded)
                 {
                     Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraMedicalSupply_SuccessLabel".Translate(),
-                        "GR_TokraMedicalSupply_SuccessText".Translate(
+                        definition.SuccessLetterLabelKey.Translate(),
+                        GetMissionSuccessTextKey(definition).Translate(
                             operatorPawn?.LabelShortCap ?? "?",
-                            definition.SocialXp.ToString()),
+                            definition.SkillXpRewardAmount.ToString()),
                         LetterDefOf.PositiveEvent,
                         letterTarget);
                 }
                 else
                 {
                     string textKey = string.IsNullOrEmpty(failureTextKey)
-                        ? "GR_TokraMedicalSupply_TimedOutText"
+                        ? definition.GetRuntimeTextKey("failureTimeout")
                         : failureTextKey;
 
                     Find.LetterStack?.ReceiveLetter(
-                        "GR_TokraMedicalSupply_FailedLabel".Translate(),
+                        definition.FailureLetterLabelKey.Translate(),
                         textKey.Translate(),
                         LetterDefOf.NegativeEvent,
                         letterTarget);
@@ -5055,7 +5137,8 @@ namespace GateRimSG1.Goauld
                 }
                 else
                 {
-                    status = "GR_TokraMedicalSupply_StatusApproaching"
+                    status = definition.GetRuntimeTextKey(
+                            "statusApproaching")
                         .Translate(
                             activeMedicalSupplyLiaison.LabelShortCap,
                             GetRoundedUpHours(

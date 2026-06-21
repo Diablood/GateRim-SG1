@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.27-dev - Migrate medical handoff to mission framework
+
+- Add `SG1_TokraOrganic_MedicalSupplyHandoff` as the fourth complete MissionDef-backed organic operation.
+- Add a bounded reusable `handoff` profile for liaison PawnKind, arrival timing, departure grace and post-handoff death trust change.
+- Reuse the generic `DeliverThing` objective for the requested ThingDef, count, dialogue JobDef and Social skill.
+- Move offer timing, handoff deadline, recurrence weights and trust-tier delay ranges into XML.
+- Move all medical-handoff actions, statuses, dialogue keys, failure texts, trust messages and post-handoff consequence texts into XML.
+- Add three offer variants and three success variants with local anti-repetition.
+- Replace hardcoded industrial-medicine and liaison references in C# with validated MissionDef data.
+- Replace the fixed medical-supply trust constants with configured success, failure and post-handoff consequences.
+- Remove the complete legacy C# medical-handoff definition and disable the archetype explicitly when required configuration is incomplete or invalid.
+- Keep entry-cell selection, meeting geometry, RimWorld Lord behavior, reservations, dialogue execution, stack consumption and save references in the specialized adapter.
+- Raise the assembly version to `0.3.27.0` and the mod metadata version to `0.3.27-dev`.
+- Validate local revision `r1`, including delayed arrival, exact resource consumption, interaction restrictions, failures, post-handoff death consequence, persistence, RP variants, recurrence, regressions and a clean `Player.log`.
+- Publish branch `feature/medical-handoff-mission-migration`, final tag `v0.3.27-dev` and the synchronized wiki.
+
 ## 0.3.26-dev - Migrate wounded-agent care to mission framework
 
 - Restore the intelligence accelerated-analysis `<workTicks>5000</workTicks>` entry in local revision `r2`; its omission from the `r1` archive was correctly rejected by the MissionDef validator at load time.

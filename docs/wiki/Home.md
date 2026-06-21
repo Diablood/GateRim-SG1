@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.26-dev`
+> Version du mod documentée : `0.3.27-dev`
 
 ## Le mod en bref
 
@@ -47,9 +47,8 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
   observation discrète, analyse de renseignements, accueil médical prolongé
   d'un agent blessé et remise de médicaments à un agent de liaison.
-  L'observation, la récupération de renseignements et l'accueil médical de
-  l'agent blessé lisent désormais leurs données de mission depuis XML, tandis
-  que leurs interactions RimWorld spécialisées restent en C#. La difficulté
+  Les quatre opérations lisent désormais leurs données de mission depuis XML,
+  tandis que leurs interactions RimWorld spécialisées restent en C#. La difficulté
   capturée lors de l'offre dimensionne la patrouille éventuelle de l'analyse
   accélérée et la gravité médicale possible de l'agent accueilli.
 - Première mission sur carte temporaire : infiltration et sabotage d'un relais

@@ -8,9 +8,6 @@ namespace GateRimSG1.Goauld
 {
     internal static class TokraOrganicMedicalSupplyUtility
     {
-        internal const int RequiredMedicineCount = 2;
-
-        private const string MedicineDefName = "MedicineIndustrial";
         private const string SecureCommunicatorDefName
             = "SG1_TokraSecureCommunicator";
         private const int MeetingRadius = 10;
@@ -18,6 +15,7 @@ namespace GateRimSG1.Goauld
 
         internal static bool TrySpawnLiaison(
             Map map,
+            string liaisonPawnKindDefName,
             int visitDurationTicks,
             out Pawn liaison,
             out IntVec3 meetingCell)
@@ -25,7 +23,13 @@ namespace GateRimSG1.Goauld
             liaison = null;
             meetingCell = IntVec3.Invalid;
 
-            if (map == null || GR_DefOf.SG1_TokraVoluntaryHost == null)
+            PawnKindDef liaisonKind = string.IsNullOrWhiteSpace(
+                    liaisonPawnKindDefName)
+                ? null
+                : DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                    liaisonPawnKindDefName);
+
+            if (map == null || liaisonKind == null)
             {
                 return false;
             }
@@ -42,7 +46,7 @@ namespace GateRimSG1.Goauld
             }
 
             Pawn generatedLiaison = PawnGenerator.GeneratePawn(
-                GR_DefOf.SG1_TokraVoluntaryHost,
+                liaisonKind,
                 tokraFaction);
 
             if (generatedLiaison == null)
@@ -107,51 +111,64 @@ namespace GateRimSG1.Goauld
             return lord?.LordJob is LordJob_TravelAndExit;
         }
 
-        internal static bool HasEnoughIndustrialMedicine(
+        internal static bool HasEnoughResource(
             Map map,
-            Pawn negotiator)
+            Pawn negotiator,
+            string thingDefName,
+            int requiredCount)
         {
-            return CountAvailableIndustrialMedicine(map, negotiator)
-                >= RequiredMedicineCount;
+            return requiredCount > 0
+                && CountAvailableResource(
+                    map,
+                    negotiator,
+                    thingDefName) >= requiredCount;
         }
 
-        internal static bool TryConsumeIndustrialMedicine(
+        internal static bool TryConsumeResource(
             Map map,
-            Pawn negotiator)
+            Pawn negotiator,
+            string thingDefName,
+            int requiredCount)
         {
-            List<Thing> availableMedicine = GetAvailableIndustrialMedicine(
-                map,
-                negotiator);
-            int totalCount = 0;
-
-            for (int index = 0; index < availableMedicine.Count; index++)
-            {
-                totalCount += availableMedicine[index].stackCount;
-            }
-
-            if (totalCount < RequiredMedicineCount)
+            if (requiredCount <= 0)
             {
                 return false;
             }
 
-            int remaining = RequiredMedicineCount;
+            List<Thing> availableResources = GetAvailableResource(
+                map,
+                negotiator,
+                thingDefName);
+            int totalCount = 0;
+
+            for (int index = 0; index < availableResources.Count; index++)
+            {
+                totalCount += availableResources[index].stackCount;
+            }
+
+            if (totalCount < requiredCount)
+            {
+                return false;
+            }
+
+            int remaining = requiredCount;
 
             for (int index = 0;
-                index < availableMedicine.Count && remaining > 0;
+                index < availableResources.Count && remaining > 0;
                 index++)
             {
-                Thing medicine = availableMedicine[index];
+                Thing resource = availableResources[index];
                 int consumedCount = System.Math.Min(
                     remaining,
-                    medicine.stackCount);
+                    resource.stackCount);
 
-                if (consumedCount == medicine.stackCount)
+                if (consumedCount == resource.stackCount)
                 {
-                    medicine.Destroy(DestroyMode.Vanish);
+                    resource.Destroy(DestroyMode.Vanish);
                 }
                 else
                 {
-                    Thing consumed = medicine.SplitOff(consumedCount);
+                    Thing consumed = resource.SplitOff(consumedCount);
                     consumed.Destroy(DestroyMode.Vanish);
                 }
 
@@ -161,57 +178,61 @@ namespace GateRimSG1.Goauld
             return remaining == 0;
         }
 
-        private static int CountAvailableIndustrialMedicine(
+        private static int CountAvailableResource(
             Map map,
-            Pawn negotiator)
+            Pawn negotiator,
+            string thingDefName)
         {
-            List<Thing> availableMedicine = GetAvailableIndustrialMedicine(
+            List<Thing> availableResources = GetAvailableResource(
                 map,
-                negotiator);
+                negotiator,
+                thingDefName);
             int totalCount = 0;
 
-            for (int index = 0; index < availableMedicine.Count; index++)
+            for (int index = 0; index < availableResources.Count; index++)
             {
-                totalCount += availableMedicine[index].stackCount;
+                totalCount += availableResources[index].stackCount;
             }
 
             return totalCount;
         }
 
-        private static List<Thing> GetAvailableIndustrialMedicine(
+        private static List<Thing> GetAvailableResource(
             Map map,
-            Pawn negotiator)
+            Pawn negotiator,
+            string thingDefName)
         {
             List<Thing> result = new List<Thing>();
-            ThingDef medicineDef = DefDatabase<ThingDef>.GetNamedSilentFail(
-                MedicineDefName);
+            ThingDef resourceDef = string.IsNullOrWhiteSpace(thingDefName)
+                ? null
+                : DefDatabase<ThingDef>.GetNamedSilentFail(thingDefName);
 
-            if (map?.listerThings == null || medicineDef == null)
+            if (map?.listerThings == null || resourceDef == null)
             {
                 return result;
             }
 
-            List<Thing> medicines = map.listerThings.ThingsOfDef(medicineDef);
+            List<Thing> resources = map.listerThings.ThingsOfDef(resourceDef);
 
-            for (int index = 0; index < medicines.Count; index++)
+            for (int index = 0; index < resources.Count; index++)
             {
-                Thing medicine = medicines[index];
+                Thing resource = resources[index];
 
-                if (medicine == null
-                    || medicine.Destroyed
-                    || !medicine.Spawned
-                    || medicine.stackCount <= 0
-                    || medicine.IsForbidden(negotiator)
+                if (resource == null
+                    || resource.Destroyed
+                    || !resource.Spawned
+                    || resource.stackCount <= 0
+                    || resource.IsForbidden(negotiator)
                     || (negotiator != null
                         && !negotiator.CanReach(
-                            medicine,
+                            resource,
                             PathEndMode.ClosestTouch,
                             Danger.Some)))
                 {
                     continue;
                 }
 
-                result.Add(medicine);
+                result.Add(resource);
             }
 
             return result;

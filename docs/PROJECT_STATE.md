@@ -1,90 +1,92 @@
 # Project state
 
-Current milestone: `0.3.26-dev - Migrate wounded-agent care to mission framework` — completed and published under the final tag `v0.3.26-dev`.
+Current milestone: `0.3.27-dev - Migrate medical handoff to mission framework` — completed and published under the final tag `v0.3.27-dev`.
 
 ## Development base
 
-- Starting tag: `v0.3.25-dev`.
-- Dedicated branch: `feature/wounded-agent-mission-migration`.
-- Validated local revision: `0.3.26-dev-r2`.
-- Published assembly version: `0.3.26.0`.
-- Final publication tag: `v0.3.26-dev`.
+- Starting tag: `v0.3.26-dev`.
+- Dedicated branch: `feature/medical-handoff-mission-migration`.
+- Validated local revision: `0.3.27-dev-r1`.
+- Published assembly version: `0.3.27.0`.
+- Final publication tag: `v0.3.27-dev`.
 - Cultural backstory count remains `83`.
 
 ## Milestone outcome
 
-Tok'ra wounded-agent care is the third complete MissionDef-backed organic operation. The player flow remains recognizable: accept the request through the powered communicator, rescue the collapsed Tok'ra agent, place them in a colony medical bed, tend the acute symbiote shock, continue ordinary treatment until the agent is fit to travel, then let the agent leave the map alive.
+The Tok'ra medical-supply handoff is the fourth complete MissionDef-backed organic operation and the last legacy organic operation in the current set. The player flow remains recognizable: accept the request through the powered communicator, wait for a liaison, send a socially capable colonist to the meeting, transfer the requested medicine and let the liaison leave the map.
 
-`SG1_TokraOrganic_WoundedAgentCare` controls:
+## MissionDef ownership
 
-- offer duration, accepted-operation deadline, trust-tier weights and repeat penalty;
-- generic and trust-tier-specific hidden recurrence ranges;
-- the generated `PawnKindDef`, acute shock Hediff, recovery Hediff and optional illness Hediff;
-- the stable-health duration and post-departure grace duration;
-- minimum Moving, Consciousness and summary-health thresholds, maximum bleed rate and critical-Hediff threshold;
-- adaptive optional-illness chance and severity ranges driven by the scaled threat snapshot captured at the offer;
-- all offer, acceptance, arrival, progress, status, failure and success text keys;
+`SG1_TokraOrganic_MedicalSupplyHandoff` controls:
+
+- offer duration and the accepted handoff deadline;
+- trust-tier weights, repeated-archetype penalty and hidden recurrence ranges;
+- liaison PawnKind, arrival delay range, post-handoff departure grace and the trust penalty if the departing liaison dies;
+- delivered ThingDef, required count, dialogue JobDef and negotiation SkillDef;
+- generic `Social +350` XP reward and success/failure trust changes;
+- all offer, acceptance, arrival, dialogue, status, failure, success and post-handoff text keys;
 - three offer variants and three success variants with local anti-repetition;
-- success and failure trust changes;
-- the declarative offered, accepted, recovering, ready, succeeded and failed phases.
+- offered, accepted, ready, succeeded and failed phases.
 
-The complete C# wounded-agent definition has been removed. A missing or incomplete MissionDef, an invalid required `PawnKindDef` or `HediffDef`, an invalid health profile, an incomplete recurrence table or a missing required text disables the archetype and writes one explicit configuration error.
+The complete C# fallback definition is removed. Missing or invalid required MissionDef data disables only this archetype and writes one explicit configuration error.
 
 ## Shared framework addition
 
-The framework gains one bounded reusable block, `pawnCare`, containing only declarative pawn-care data. It does not attempt to execute tending or health AI generically. This block can support future rescue, escort or medical-refuge missions when they share the same real needs.
+The framework gains one bounded `handoff` profile for visitor identity, arrival timing, departure grace and a post-completion death consequence. The resource, quantity, job and skill remain expressed through the existing `DeliverThing` objective vocabulary.
 
 ## Deliberately retained in C#
 
 The specialized adapter remains responsible for:
 
-- generating and spawning the pawn at a reachable map edge;
-- creating wounds through RimWorld health utilities;
-- creating the vanilla-compatible Lord and departure behavior;
-- checking the medical bed and actual tending of the shock Hediff;
-- evaluating live RimWorld capacities, bleeding, urgent medical rest and lethal Hediffs;
-- managing pawn references, save/load migration and map-loss, capture, death and departure outcomes;
-- developer actions for forcing offers, completion and failures.
+- finding entry and meeting cells;
+- spawning the liaison and creating its Lord behavior;
+- pathfinding, reservation and dialogue-job execution;
+- consuming accessible map resources through RimWorld Thing stacks;
+- tracking the liaison before and after completion;
+- detecting death, capture, loss, timeout and departure;
+- persistent pawn references and old-save migration.
 
-These are engine-facing mechanics. They should move into shared code only after another concrete mission proves that the implementation itself is reusable.
+The meeting radius, arrival-distance check and periodic state-check interval remain technical adapter constants rather than mission balance.
 
 ## Validation completed
 
-Local revision `r1` validated the complete wounded-agent flow. The same startup exposed one unrelated regression in the already migrated intelligence operation: the accelerated objective had lost its XML `<workTicks>5000</workTicks>` entry while the archive was assembled. The MissionDef validator correctly disabled only that archetype instead of applying a hidden fallback.
+Local revision `r1` validated:
 
-Local revision `r2` restored that XML field without changing C# or wounded-agent gameplay. Final validation confirmed:
-
-- project consistency, forced rebuild and assembly `0.3.26.0`;
-- three valid MissionDefs and a clean framework report;
-- normal rescue, emergency tending, recovery, `5000` stable ticks and departure;
-- success only after the recovered agent actually leaves the map;
-- death, capture, disappearance, timeout and failed-departure outcomes;
-- persistence during offer, care, recovery and departure;
-- adaptive illness parameters on weak and advanced colonies using the snapshot captured at offer;
-- text variants, local anti-repetition and recurrence across repeated occurrences;
-- observation, intelligence recovery and medical-handoff regressions;
-- accelerated intelligence analysis restored to `5000` ticks;
-- a clean final `Player.log`.
+- project consistency, forced rebuild and assembly `0.3.27.0`;
+- four valid MissionDefs and a clean framework report;
+- delayed liaison arrival, meeting, dialogue and exact delivery of two accessible industrial medicines;
+- disabled interaction reasons for missing resources, incapability, reservation and reachability;
+- `Social +350` and `+2` trust on successful delivery;
+- `-1` trust for accepted-operation failures and the additional `-2` consequence if the liaison dies after completion but before leaving;
+- death, capture, disappearance and timeout before delivery;
+- save/load during offer, arrival, meeting and monitored departure;
+- three offer and three success variants with immediate anti-repetition;
+- recurrence after resolution and the configured last-archetype weight penalty;
+- observation, intelligence recovery and wounded-agent care without regression;
+- debug visibility boundaries and a clean final `Player.log`.
 
 ## Publication state
 
-- Branch `feature/wounded-agent-mission-migration` published.
-- Final annotated tag `v0.3.26-dev` published.
+- Branch `feature/medical-handoff-mission-migration` published.
+- Final annotated tag `v0.3.27-dev` published.
 - Main GitHub repository updated.
 - Separate wiki synchronized and published.
 
 ## Next milestone
 
-The next milestone must start explicitly from `v0.3.26-dev` on a new dedicated branch. Medical handoff is the remaining legacy organic operation and the next logical migration candidate, but its exact scope must be confirmed against the authoritative repository files before implementation.
+All four current Tok'ra organic operations are now MissionDef-backed. The next milestone must start explicitly from `v0.3.27-dev` on a new dedicated branch and should be selected after auditing the remaining roadmap rather than extending the framework for a theoretical case.
 
 ## Main files changed
 
 - `1.6/Defs/MissionDefs/SG1_MissionFramework.xml`;
-- `Languages/English/Keyed/SG1_TokraOrganicWoundedAgentCare.xml`;
-- `Languages/French/Keyed/SG1_TokraOrganicWoundedAgentCare.xml`;
+- `Languages/English/Keyed/SG1_TokraOrganicMedicalSupplyHandoff.xml`;
+- `Languages/French/Keyed/SG1_TokraOrganicMedicalSupplyHandoff.xml`;
 - `Source/GateRimSG1/Missions/GateRimMissionDef.cs`;
 - `Source/GateRimSG1/Missions/GateRimMissionFramework.cs`;
 - `Source/GateRimSG1/Goauld/TokraOrganicOperationFramework.cs`;
-- `Source/GateRimSG1/Goauld/TokraOrganicWoundedAgentUtility.cs`;
 - `Source/GateRimSG1/Goauld/GameComponent_TokraOrganicOperationManager.cs`;
+- `Source/GateRimSG1/Goauld/GameComponent_TokraTrustTracker.cs`;
+- `Source/GateRimSG1/Goauld/TokraOrganicMedicalSupplyUtility.cs`;
+- `Source/GateRimSG1/Goauld/Dialog_TokraMedicalSupplyHandoff.cs`;
+- `Source/GateRimSG1/Goauld/Comp_TokraMedicalSupplyLiaisonFloatMenu.cs`;
 - project, test, roadmap, changelog and wiki tracking files.

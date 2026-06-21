@@ -1,38 +1,37 @@
 # Tests du dernier jalon clôturé
 
-Jalon : `0.3.26-dev - Migrate wounded-agent care to mission framework`
+Jalon : `0.3.27-dev - Migrate medical handoff to mission framework`
 
-Branche attendue : `feature/wounded-agent-mission-migration`
+Branche attendue : `feature/medical-handoff-mission-migration`
 
-Révision locale validée : `0.3.26-dev-r2`
+Révision locale validée : `0.3.27-dev-r1`
 
-Version de DLL validée : `0.3.26.0`
+Version de DLL validée : `0.3.27.0`
 
-Statut : validation complète terminée sur `r2`. Le flux de l'agent blessé, la difficulté adaptative, les échecs, la persistance, la récurrence, les variantes RP, les régressions et le chargement corrigé des trois MissionDefs sont validés. Jalon publié sous `v0.3.26-dev`.
+Statut : validation complète terminée sur `r1`. Flux normal, ressources, échecs, conséquence post-remise, persistance, variantes RP, récurrence, régressions et journal final validés.
+
+Jalon publié sous `v0.3.27-dev`.
 
 ## Résultat final
 
-La révision `r1` a validé le flux complet de l'agent blessé. Son chargement a également révélé que l'objectif accéléré de la récupération de renseignements avait perdu son champ XML `<workTicks>5000</workTicks>` pendant l'assemblage de l'archive. Le validateur a correctement désactivé cet archétype sans fallback C# silencieux.
+La validation finale confirme :
 
-La révision `r2` restaure uniquement ce champ XML. La validation finale confirme :
-
-- trois MissionDefs chargés sans erreur ;
-- récupération de renseignements accélérée à `5000/5000` ticks et récompense `Intellectual +500` inchangée ;
-- flux de l'agent blessé jusqu'à la sortie réelle de carte après `5000` ticks de stabilité ;
-- seuils médicaux, affection optionnelle et snapshot de menace persistants ;
-- difficulté adaptative contrôlée sur une colonie faible et une colonie avancée ;
-- mort, capture, perte, expiration et échec de départ correctement résolus ;
-- sauvegarde/recharge aux différentes phases sans reroll ni perte de référence ;
-- variantes RP, anti-répétition et récurrence validées ;
-- observation, renseignements et remise médicale sans régression ;
+- quatre MissionDefs chargés sans erreur ;
+- arrivée différée, rencontre, dialogue et remise exacte de deux médicaments industriels accessibles ;
+- restrictions correctes pour les ressources insuffisantes ou inaccessibles, l'incapacité sociale, la réservation et l'absence de chemin ;
+- récompense `Social +350` et confiance `+2` après remise ;
+- échec avec `-1` de confiance en cas de mort, capture, perte ou expiration avant remise ;
+- conséquence supplémentaire de `-2` si l'agent meurt après une remise réussie mais avant sa sortie ;
+- sauvegarde/rechargement aux différentes phases sans duplication de pawn, de délai, de ressource ou de conséquence ;
+- trois variantes d'offre et trois variantes de réussite avec anti-répétition immédiate ;
+- rééligibilité, délais cachés contextuels et pénalité du dernier archétype ;
+- observation, récupération de renseignements et agent blessé sans régression ;
 - aucun outil debug visible en jeu normal ;
 - `Player.log` final propre.
 
 Les sections suivantes conservent le protocole détaillé comme référence durable de régression.
 
-## 1. Contrôles de dépôt
-
-Le rebuild forcé de la DLL `0.3.26.0` a été validé avec `r1`. La révision `r2` ne modifie aucun fichier C# et a été validée après redémarrage complet de RimWorld.
+## 1. Contrôles de dépôt et rebuild
 
 Depuis la racine du dépôt :
 
@@ -41,7 +40,7 @@ git branch --show-current
 git status --short
 
 ./tools/check-project-consistency.cmd `
-    -ExpectedVersion 0.3.26-dev `
+    -ExpectedVersion 0.3.27-dev `
     -ExpectedBackstoryCount 83
 
 if ($LASTEXITCODE -ne 0) {
@@ -49,21 +48,17 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 git diff --check
+
+dotnet build ./Source/GateRimSG1/GateRimSG1.csproj `
+    -t:Rebuild `
+    -p:RimWorldManagedDir="D:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"
 ```
 
-Résultats validés : branche correcte et aucune erreur de cohérence. Aucun nouveau rebuild n’a été nécessaire pour `r2`.
+Vérifier la branche, la version `0.3.27.0` et l'absence d'erreur de cohérence ou de compilation.
 
-## 2. Correctif ciblé `r2` au chargement
+## 2. Chargement du framework
 
-Après extraction, fermer complètement RimWorld puis le relancer afin de recharger les Defs.
-
-Au chargement d’une partie, `Player.log` ne doit plus contenir :
-
-```text
-Tok'ra intelligence recovery operation disabled: SG1_TokraOrganic_IntelligenceRecovery is incomplete: accelerated analysis work ticks.
-```
-
-Ouvrir ensuite :
+Fermer complètement RimWorld avant le premier lancement afin de recharger les Defs. Ouvrir ensuite :
 
 ```text
 Debug actions menu
@@ -71,136 +66,112 @@ Debug actions menu
 → Mission framework: inspect definitions
 ```
 
-Résultats attendus :
+Le rapport doit notamment contenir :
 
 ```text
-Loaded definitions: 3
-SG1_TokraOrganic_IntelligenceRecovery
-Objective accelerated/AnalyzeThing: target=SG1_TokraOrganicDeadDrop, job=SG1_AnalyzeTokraOrganicIntelligence, work=5000, skill=Intellectual
-SG1_TokraOrganic_WoundedAgentCare
-```
-
-Forcer une nouvelle récupération de renseignements, choisir la méthode accélérée et confirmer :
-
-- progression `5000/5000` ticks ;
-- récompense totale `Intellectual +500` inchangée ;
-- interférence et patrouille adaptative toujours fonctionnelles ;
-- aucune désactivation d’archétype dans `Player.log`.
-
-Le flux complet de l’agent blessé n’a pas besoin d’être rejoué : son test fonctionnel `r1` reste valide, car aucun fichier C# ni aucune donnée de cette mission n’a changé en `r2`.
-
-## 3. Chargement du framework
-
-Démarrer RimWorld avec le mode développeur ou l'option avancée GateRim SG-1, puis lancer :
-
-```text
-Debug actions menu
-→ GateRim SG-1
-→ Mission framework: inspect definitions
-```
-
-Le rapport doit notamment afficher :
-
-```text
-Loaded definitions: 3
-SG1_TokraOrganic_WoundedAgentCare
-Phases: 6
+Loaded definitions: 4
+SG1_TokraOrganic_MedicalSupplyHandoff
+Phases: 5
 Offer variants: 3
 Success variants: 3
-Runtime texts: 11
+Runtime texts: 24
 Repeat factor: 0.25
-Difficulty: ThreatPointsScaled
-Pawn care: kind=SG1_TokraVoluntaryHost, initialHediff=SG1_TokraWoundedAgentSymbioteShock, recoveryHediff=SG1_TokraWoundedAgentPostShockRecovery
-Pawn care timing: stable=5000, departureGrace=60000 ticks
-Pawn care thresholds: moving=0.5, consciousness=0.5, health=0.55, bleed=0.001
-Pawn care illness: def=Flu, chance=0.25-0.45, severity=0.3-0.4
+Difficulty: None
+Skill XP reward: Social +350
+Handoff: liaison=SG1_TokraVoluntaryHost, arrival=2500-5000 ticks, departureGrace=60000 ticks
+Handoff post-death trust: -2
+Objective ready/DeliverThing: target=MedicineIndustrial, secondary=none, job=SG1_TalkToTokraMedicalSupplyLiaison, count=2, work=0, secondaryWork=0, skill=Social, xp/tick=0
 ```
 
-Vérifier aussi les quatre plages de récurrence par confiance et l'absence d'erreur de configuration dans `Player.log`.
+Vérifier également les quatre plages de récurrence par confiance et l'absence d'erreur de configuration dans `Player.log`.
 
-## 4. Flux normal complet
+## 3. Flux normal complet
 
 Préparer une carte avec :
 
 - un communicateur sécurisé Tok'ra alimenté et accessible ;
-- au moins un colon capable d'utiliser le communicateur ;
-- un lit médical appartenant à la colonie ;
-- un soigneur disponible.
+- un colon capable de Social ;
+- au moins deux unités accessibles de médicament industriel.
 
 Forcer l'offre :
 
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Tok'ra ops: force wounded agent offer
+→ Tok'ra ops: force medical handoff offer
 ```
 
-Vérifier :
+Valider :
 
-1. Une des trois lettres RP est affichée et le communicateur ne révèle que l'opération active.
-2. L'acceptation fait apparaître un hôte Tok'ra blessé et à terre près de la colonie.
-3. Le pawn possède le choc de symbiote configuré et la lettre demande explicitement un sauvetage, un lit médical et un véritable soin.
-4. Le rapport ou le log indique le snapshot de menace mis à l'échelle et les paramètres d'affection optionnelle utilisés.
-5. Sans lit médical et sans choc soigné, la mission ne progresse pas.
-6. Après sauvetage dans un lit médical du joueur et soin réel du choc, le choc disparaît et la récupération post-choc apparaît.
-7. Les soins vanilla ordinaires restent nécessaires si les blessures ou la maladie l'exigent.
-8. Lorsque tous les seuils médicaux sont satisfaits, le pawn reste stable pendant `5000` ticks avant de recevoir l'ordre de départ.
-9. La mission ne réussit pas au moment de la stabilisation : elle réussit uniquement lorsque le pawn quitte réellement la carte vivant.
-10. La confiance augmente de `3` et une des trois variantes de réussite est affichée.
+1. Une des trois lettres RP apparaît et ne révèle aucune logique interne.
+2. L'acceptation depuis le communicateur annonce une arrivée différée comprise entre `2500` et `5000` ticks.
+3. L'agent généré utilise `SG1_TokraVoluntaryHost` et rejoint le point de rencontre choisi par l'adaptateur.
+4. Avant son arrivée, l'interaction indique que l'agent est encore en route.
+5. À l'arrivée, la lettre et le statut annoncent la fenêtre de `15000` ticks.
+6. Un colon capable de Social peut ouvrir le dialogue par clic droit.
+7. Le dialogue affiche la quantité configurée et le bouton indique `2` médicaments.
+8. La confirmation retire exactement deux médicaments industriels accessibles, y compris à travers plusieurs piles.
+9. La mission réussit immédiatement après la remise, accorde `Social +350` au négociateur et `+2` de confiance.
+10. Une des trois variantes de réussite est affichée, puis l'agent reçoit l'ordre de quitter la carte.
 
-## 5. Difficulté adaptative
+## 4. Ressources et interaction
 
-Tester une nouvelle occurrence sur une colonie faible, puis sur une colonie avancée.
+Sur des occurrences ou sauvegardes séparées, vérifier :
 
-La définition utilise :
+- zéro ou une unité accessible : dialogue possible mais confirmation refusée avec le besoin de `2` unités ;
+- deux unités interdites ou inaccessibles : elles ne sont pas comptées ;
+- plusieurs piles totalisant au moins deux unités : consommation exacte sans détruire le surplus ;
+- colon incapable de Social : option désactivée avec le motif configuré ;
+- aucun chemin sûr : option désactivée ;
+- agent déjà réservé par un autre colon : option désactivée ;
+- JobDef de dialogue disponible et aucune option dupliquée.
 
-```text
-scaledPoints = clamp(baseThreatPoints × 0.35, 180, 700)
-```
+## 5. Échecs avant la remise
 
-L'affection optionnelle doit interpoler selon ce snapshot :
+Sur des occurrences distinctes, valider :
 
-- au minimum : chance proche de `0.25`, sévérité proche de `0.30` ;
-- au maximum : chance proche de `0.45`, sévérité proche de `0.40`.
+- expiration de la fenêtre : départ de l'agent, lettre d'échec et `-1` de confiance ;
+- mort avant la remise : échec et texte de mort ;
+- capture comme prisonnier : échec et texte de capture ;
+- disparition, destruction ou transfert hors de la carte attendue : échec et texte de perte.
 
-La maladie reste probabiliste : il n'est pas obligatoire qu'elle apparaisse à chaque occurrence. Vérifier dans le log que la chance et la sévérité calculées augmentent avec le snapshot et qu'elles utilisent la valeur capturée lors de l'offre, pas une valeur recalculée après modification de la richesse.
+Après chaque résolution, le communicateur doit revenir immédiatement à son état RP générique et aucune référence active ne doit rester bloquée.
 
-## 6. Sauvegarde et rechargement
+## 6. Mort après une remise réussie
+
+Après avoir remis les médicaments :
+
+1. confirmer que la réussite et le `+2` de confiance sont déjà appliqués ;
+2. tuer l'agent avant qu'il quitte la carte ;
+3. vérifier la lettre post-remise et une variation supplémentaire de `-2` de confiance ;
+4. confirmer que la mission elle-même ne repasse pas en échec et ne rend pas les médicaments.
+
+Laisser ensuite un autre agent quitter normalement la carte et vérifier qu'aucune pénalité post-remise n'est appliquée.
+
+## 7. Sauvegarde et rechargement
 
 Valider séparément une sauvegarde/recharge :
 
 - pendant l'offre non acceptée ;
-- après l'arrivée, avant le premier soin ;
-- pendant la récupération post-choc ;
-- pendant les `5000` ticks de stabilité ;
-- après l'ordre de départ, avant la sortie de carte.
+- après acceptation, avant l'arrivée ;
+- pendant l'approche de l'agent ;
+- lorsque l'agent attend au point de rencontre ;
+- après la remise, pendant le départ surveillé.
 
-Après rechargement, vérifier la même mission, le même pawn, les mêmes Hediffs, le même snapshot, la même phase et les mêmes échéances. Aucun reroll de maladie ou de paramètres ne doit se produire.
+Après rechargement, conserver le même MissionDef, la même phase, le même pawn, les mêmes échéances et la même pénalité post-remise en attente. Aucun nouvel agent ni nouveau délai ne doit être tiré.
 
-Lorsqu'une sauvegarde `v0.3.25-dev` contenant déjà cette opération est disponible, la charger comme test de migration : le runtime générique doit être créé sans perdre le pawn ni la progression spécialisée. Une occurrence déjà en récupération doit rejoindre la phase technique `recovering` au tick suivant. Le snapshot initialisé lors de cette migration est conservé ensuite ; il ne doit plus être recalculé.
-
-## 7. Échecs
-
-Sur des occurrences séparées, vérifier :
-
-- mort du pawn : échec et texte de mort ;
-- capture comme prisonnier : échec et texte de capture ;
-- disparition ou transfert hors de la carte attendue : échec et texte de perte ;
-- dépassement du délai de soins : échec et récupération RP par les Tok'ra ;
-- impossibilité de quitter la carte jusqu'à la fin de la grâce de `60000` ticks : échec de départ.
-
-Chaque échec doit appliquer `-2` de confiance. Un pawn encore vivant ne doit pas rester bloqué comme objectif de mission après résolution, sauf le prisonnier capturé volontairement conservé par le joueur.
+Lorsqu'une sauvegarde `v0.3.26-dev` contient déjà une remise médicale active, vérifier que le runtime générique est initialisé sans perdre l'agent, l'état ou l'échéance spécialisés.
 
 ## 8. Variantes et récurrence
 
-Forcer plusieurs offres et plusieurs réussites :
+Forcer plusieurs offres et réussites :
 
 - les trois variantes d'offre doivent pouvoir apparaître ;
 - les trois variantes de réussite doivent pouvoir apparaître ;
-- la même variante de réussite ne doit pas se répéter immédiatement lorsqu'une alternative existe ;
-- après résolution, le communicateur revient immédiatement à son état RP générique ;
-- l'archétype redevient éligible selon la plage cachée correspondant au palier de confiance ;
-- le dernier archétype joué conserve sa pénalité de poids `0.25`.
+- une variante de réussite ne doit pas se répéter immédiatement lorsqu'une alternative existe ;
+- l'archétype redevient éligible après réussite ou échec ;
+- les délais cachés utilisent le palier de confiance courant ;
+- le dernier archétype joué conserve la pénalité de poids `0.25`.
 
 ## 9. Régressions
 
@@ -208,16 +179,17 @@ Valider au minimum :
 
 - une mission d'observation complète ;
 - une récupération de renseignements prudente ou accélérée ;
-- une remise médicale complète ;
-- aucun changement de comportement visible sur les Tok'ra générés hors de cette opération ;
-- aucun outil debug visible en jeu normal.
+- un accueil complet de l'agent Tok'ra blessé ;
+- le communicateur n'affiche qu'une opération active ;
+- aucun outil debug visible en jeu normal ;
+- aucun changement sur les visiteurs Tok'ra ordinaires.
 
 ## 10. Journal final
 
 Fermer le jeu après les tests et vérifier `Player.log` :
 
 - aucune exception ;
-- aucune erreur de Def ;
-- aucune erreur de traduction ;
-- aucun fallback silencieux pour la mission de l'agent blessé ;
+- aucune erreur de Def ou de traduction ;
+- quatre MissionDefs chargés ;
+- aucun fallback médical silencieux ;
 - logs techniques uniquement lorsque le mode développeur ou l'option avancée l'autorise.

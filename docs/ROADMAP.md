@@ -11,6 +11,24 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
+## Dernier jalon clôturé — Migration de la remise médicale (`0.3.27-dev`)
+
+- [x] Partir explicitement de `v0.3.26-dev` sur `feature/medical-handoff-mission-migration`.
+- [x] Ajouter `SG1_TokraOrganic_MedicalSupplyHandoff` comme quatrième opération complète pilotée par MissionDef.
+- [x] Ajouter un profil générique `handoff` limité à l'identité du visiteur, l'arrivée, la grâce de départ et la conséquence post-remise.
+- [x] Réutiliser l'objectif générique `DeliverThing` pour la ressource, la quantité, le JobDef et la compétence.
+- [x] Déplacer dans XML les poids, délais contextuels, textes, variantes, XP et conséquences de confiance.
+- [x] Supprimer la définition C# complète de secours et valider explicitement les références requises.
+- [x] Conserver en C# le spawn, le Lord, le déplacement, les réservations, le dialogue et la consommation réelle des piles RimWorld.
+- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.27.0`.
+- [x] Valider le flux normal, les ressources, les échecs, la pénalité post-remise et la persistance.
+- [x] Valider les variantes RP, la récurrence, les trois autres opérations migrées et `Player.log`.
+- [x] Préparer le verrou documentaire final, publier le tag unique `v0.3.27-dev` et synchroniser le wiki.
+
+La révision locale `r1` valide le chargement des quatre MissionDefs, le flux complet de remise de deux médicaments, les restrictions d'interaction, les conséquences de confiance avant et après remise, les échecs, la persistance, les variantes RP, l'anti-répétition, la récurrence, les trois autres opérations migrées et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.27-dev`.
+
+Les quatre opérations organiques Tok'ra actuelles sont désormais pilotées par MissionDef pour leurs données déclaratives. Le prochain jalon doit partir explicitement de `v0.3.27-dev` et être choisi après audit de la roadmap, sans ajouter d'abstraction théorique au framework.
+
 ## Dernier jalon clôturé — Migration des soins de l'agent blessé (`0.3.26-dev`)
 
 - [x] Partir explicitement de `v0.3.25-dev` sur `feature/wounded-agent-mission-migration`.

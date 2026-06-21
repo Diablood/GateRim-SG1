@@ -91,6 +91,10 @@ namespace GateRimSG1.Goauld
                 = missionDef.GetObjective(
                     "accelerated",
                     "AnalyzeThing");
+            GateRimMissionObjectiveDef handoffDelivery
+                = missionDef.GetObjective(
+                    "ready",
+                    "DeliverThing");
             GateRimMissionConsequenceDef acceleratedXpBonus
                 = missionDef.GetTransitionConsequence(
                     "accelerated",
@@ -186,6 +190,14 @@ namespace GateRimSG1.Goauld
                 = patrolConsequence?.maximumDelayTicks ?? 0;
             IntelligencePatrolRetryTicks
                 = patrolConsequence?.retryTicks ?? 0;
+            MedicalSupplyThingDefName
+                = handoffDelivery?.targetDefName;
+            MedicalSupplyDialogueJobDefName
+                = handoffDelivery?.jobDefName;
+            MedicalSupplySkillDefName
+                = handoffDelivery?.skillDefName;
+            MedicalSupplyRequiredCount
+                = handoffDelivery?.requiredCount ?? 0;
         }
 
         public TokraOrganicOperationArchetype Archetype { get; }
@@ -220,6 +232,7 @@ namespace GateRimSG1.Goauld
         public string DebugLabel { get; }
         public GateRimMissionDef MissionDef { get; }
         public GateRimMissionPawnCareDef PawnCare => MissionDef?.pawnCare;
+        public GateRimMissionHandoffDef Handoff => MissionDef?.handoff;
         public string MissionDefName => MissionDef?.defName;
         public bool UsesMissionFrameworkDef => MissionDef != null;
         public float RepeatedArchetypeWeightFactor { get; }
@@ -248,6 +261,10 @@ namespace GateRimSG1.Goauld
         public int IntelligencePatrolDelayMinimumTicks { get; }
         public int IntelligencePatrolDelayMaximumTicks { get; }
         public int IntelligencePatrolRetryTicks { get; }
+        public string MedicalSupplyThingDefName { get; }
+        public string MedicalSupplyDialogueJobDefName { get; }
+        public string MedicalSupplySkillDefName { get; }
+        public int MedicalSupplyRequiredCount { get; }
 
         public bool HasPhysicalObjective => !string.IsNullOrEmpty(
             ObjectiveThingDefName);
@@ -684,6 +701,208 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        public bool HasCompleteMedicalSupplyConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+            Require(MedicalSupplyThingDefName, "handoff resource", missing);
+            Require(
+                MedicalSupplyDialogueJobDefName,
+                "handoff dialogue job",
+                missing);
+            Require(MedicalSupplySkillDefName, "negotiation skill", missing);
+            Require(SkillXpRewardDefName, "skill XP reward", missing);
+
+            string[] runtimeTextIds =
+            {
+                "arrivalLabel",
+                "arrivalText",
+                "liaisonReady",
+                "talkToLiaison",
+                "noLongerActive",
+                "liaisonEnRoute",
+                "windowExpired",
+                "operatorIncapable",
+                "cannotReachLiaison",
+                "liaisonReserved",
+                "needMedicine",
+                "jobUnavailable",
+                "dialogTitle",
+                "dialogText",
+                "giveMedicine",
+                "cancelDialogue",
+                "statusApproaching",
+                "failureTimeout",
+                "failureDeath",
+                "failureLost",
+                "failureCaptured",
+                "postHandoffDeathLabel",
+                "postHandoffDeathText",
+                "postHandoffDeathTrust"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            GateRimMissionHandoffDef handoff = Handoff;
+
+            if (handoff == null)
+            {
+                missing.Add("handoff profile");
+            }
+            else
+            {
+                Require(
+                    handoff.liaisonPawnKindDefName,
+                    "liaison pawn kind",
+                    missing);
+
+                if (handoff.arrivalMinimumDelayTicks <= 0
+                    || handoff.arrivalMaximumDelayTicks
+                        < handoff.arrivalMinimumDelayTicks)
+                {
+                    missing.Add("arrival delay range");
+                }
+
+                if (handoff.departureGraceTicks <= 0)
+                {
+                    missing.Add("departure grace duration");
+                }
+
+                if (handoff.postHandoffDeathTrustChange >= 0)
+                {
+                    missing.Add("negative post-handoff death trust change");
+                }
+
+                if (!string.IsNullOrWhiteSpace(
+                        handoff.liaisonPawnKindDefName)
+                    && DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                        handoff.liaisonPawnKindDefName) == null)
+                {
+                    missing.Add(
+                        "unknown PawnKindDef "
+                        + handoff.liaisonPawnKindDefName);
+                }
+            }
+
+            if (MedicalSupplyRequiredCount <= 0)
+            {
+                missing.Add("positive handoff resource count");
+            }
+
+            if (!string.Equals(
+                    MedicalSupplySkillDefName,
+                    SkillXpRewardDefName,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                missing.Add("handoff skill must match skill XP reward");
+            }
+
+            if (SkillXpRewardAmount <= 0)
+            {
+                missing.Add("positive skill XP reward amount");
+            }
+
+            if (!string.IsNullOrWhiteSpace(MedicalSupplyThingDefName)
+                && DefDatabase<ThingDef>.GetNamedSilentFail(
+                    MedicalSupplyThingDefName) == null)
+            {
+                missing.Add(
+                    "unknown handoff ThingDef "
+                    + MedicalSupplyThingDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(
+                    MedicalSupplyDialogueJobDefName)
+                && DefDatabase<JobDef>.GetNamedSilentFail(
+                    MedicalSupplyDialogueJobDefName) == null)
+            {
+                missing.Add(
+                    "unknown handoff JobDef "
+                    + MedicalSupplyDialogueJobDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(MedicalSupplySkillDefName)
+                && DefDatabase<SkillDef>.GetNamedSilentFail(
+                    MedicalSupplySkillDefName) == null)
+            {
+                missing.Add(
+                    "unknown handoff SkillDef "
+                    + MedicalSupplySkillDefName);
+            }
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            string[] recurrenceContextKeys =
+            {
+                "TokraTrust.Wary",
+                "TokraTrust.Neutral",
+                "TokraTrust.Cooperative",
+                "TokraTrust.Trusted"
+            };
+
+            foreach (string contextKey in recurrenceContextKeys)
+            {
+                int contextMinimumDelay;
+                int contextMaximumDelay;
+
+                if (MissionDef?.recurrence == null
+                    || !MissionDef.recurrence.TryGetDelayRange(
+                        contextKey,
+                        out contextMinimumDelay,
+                        out contextMaximumDelay)
+                    || contextMinimumDelay <= 0
+                    || contextMaximumDelay < contextMinimumDelay)
+                {
+                    missing.Add(
+                        "recurrence delay range for " + contextKey);
+                }
+            }
+
+            if (MissionDef?.texts?.successLetterTexts == null
+                || MissionDef.texts.successLetterTexts.Count == 0)
+            {
+                missing.Add("success letter text variants");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
         public bool HasCompleteIntelligenceConfiguration(
             out string error)
         {
@@ -1079,6 +1298,8 @@ namespace GateRimSG1.Goauld
             = "SG1_TokraOrganic_IntelligenceRecovery";
         private const string WoundedAgentMissionDefName
             = "SG1_TokraOrganic_WoundedAgentCare";
+        private const string MedicalSupplyMissionDefName
+            = "SG1_TokraOrganic_MedicalSupplyHandoff";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
@@ -1092,57 +1313,10 @@ namespace GateRimSG1.Goauld
         private static TokraOrganicOperationDefinition
             cachedWoundedAgentDefinition;
         private static bool woundedAgentConfigurationErrorLogged;
-
-        private static readonly IReadOnlyDictionary<
-            TokraOrganicOperationArchetype,
-            TokraOrganicOperationDefinition> LegacyDefinitions
-                = new Dictionary<
-                    TokraOrganicOperationArchetype,
-                    TokraOrganicOperationDefinition>
-                {
-                    {
-                        TokraOrganicOperationArchetype.MedicalSupplyHandoff,
-                        new TokraOrganicOperationDefinition(
-                            TokraOrganicOperationArchetype.MedicalSupplyHandoff,
-                            offerDurationTicks: 120000,
-                            readyDelayTicks: 0,
-                            deadlineTicks: 15000,
-                            intellectualXp: 0,
-                            medicineXp: 0,
-                            socialXp: 350,
-                            successTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicMedicalSupplySuccessTrustChange,
-                            failureTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicMedicalSupplyFailureTrustChange,
-                            waryWeight: 0.20f,
-                            neutralWeight: 0.70f,
-                            cooperativeWeight: 1.00f,
-                            trustedWeight: 0.65f,
-                            objectiveThingDefName: null,
-                            acceptActionKey:
-                                "GR_TokraMedicalSupply_Accept",
-                            completeActionKey: null,
-                            offerLetterLabelKey:
-                                "GR_TokraMedicalSupply_OfferLabel",
-                            offerLetterTextKey:
-                                "GR_TokraMedicalSupply_OfferText",
-                            offerExpiredMessageKey:
-                                "GR_TokraMedicalSupply_OfferExpired",
-                            offeredStatusKey:
-                                "GR_TokraMedicalSupply_StatusOffered",
-                            activeStatusKey:
-                                "GR_TokraMedicalSupply_StatusAwaitingArrival",
-                            readyStatusKey:
-                                "GR_TokraMedicalSupply_StatusReady",
-                            successTrustMessageKey:
-                                "GR_TokraTrust_MedicalSupplySucceeded",
-                            failureTrustMessageKey:
-                                "GR_TokraTrust_MedicalSupplyFailed",
-                            debugLabel: "MedicalSupplyHandoff")
-                    }
-                };
+        private static GateRimMissionDef cachedMedicalSupplyMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedMedicalSupplyDefinition;
+        private static bool medicalSupplyConfigurationErrorLogged;
 
         public static IEnumerable<TokraOrganicOperationDefinition>
             AllDefinitions
@@ -1173,10 +1347,12 @@ namespace GateRimSG1.Goauld
                     yield return woundedAgent;
                 }
 
-                foreach (TokraOrganicOperationDefinition definition
-                    in LegacyDefinitions.Values)
+                TokraOrganicOperationDefinition medicalSupply
+                    = ResolveMedicalSupplyDefinition();
+
+                if (medicalSupply != null)
                 {
-                    yield return definition;
+                    yield return medicalSupply;
                 }
             }
         }
@@ -1206,7 +1382,15 @@ namespace GateRimSG1.Goauld
                 return definition != null;
             }
 
-            return LegacyDefinitions.TryGetValue(archetype, out definition);
+            if (archetype
+                == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+            {
+                definition = ResolveMedicalSupplyDefinition();
+                return definition != null;
+            }
+
+            definition = null;
+            return false;
         }
 
         public static TokraOrganicOperationDefinition GetDefinition(
@@ -1337,6 +1521,59 @@ namespace GateRimSG1.Goauld
             }
 
             return cachedWoundedAgentDefinition;
+        }
+
+        private static TokraOrganicOperationDefinition
+            ResolveMedicalSupplyDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    MedicalSupplyMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogMedicalSupplyConfigurationError(
+                    "required MissionDef " + MedicalSupplyMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedMedicalSupplyDefinition == null
+                || cachedMedicalSupplyMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype.MedicalSupplyHandoff,
+                        missionDef);
+                string error;
+
+                if (!definition.HasCompleteMedicalSupplyConfiguration(
+                        out error))
+                {
+                    LogMedicalSupplyConfigurationError(
+                        MedicalSupplyMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedMedicalSupplyMissionDef = missionDef;
+                cachedMedicalSupplyDefinition = definition;
+            }
+
+            return cachedMedicalSupplyDefinition;
+        }
+
+        private static void LogMedicalSupplyConfigurationError(string detail)
+        {
+            if (medicalSupplyConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            medicalSupplyConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra medical supply handoff operation "
+                + "disabled: " + detail + ".");
         }
 
         private static void LogWoundedAgentConfigurationError(string detail)

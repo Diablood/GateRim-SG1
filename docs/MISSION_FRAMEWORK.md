@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; observation completed in `0.3.24-dev`; intelligence recovery completed in `0.3.25-dev`; wounded-agent care completed in `0.3.26-dev`.
+Status: foundation published in `0.3.23-dev`; observation completed in `0.3.24-dev`; intelligence recovery completed in `0.3.25-dev`; wounded-agent care completed in `0.3.26-dev`; medical handoff completed in `0.3.27-dev`.
 
 ## Purpose
 
@@ -147,9 +147,30 @@ Debug actions menu
 
 The validated happy path accepts through the powered communicator, rescues the downed agent into a colony medical bed, tends the symbiote shock, keeps the pawn above the configured thresholds for `5000` ticks and confirms success only after the agent leaves the map alive. Failure, adaptive difficulty on weak and advanced colonies, save/load, recurrence, text variation and regression coverage were also validated and remain documented in `docs/TESTING_CURRENT.md` and `docs/TESTING.md`.
 
+## Medical-supply handoff migration (`0.3.27-dev`)
+
+`SG1_TokraOrganic_MedicalSupplyHandoff` is the fourth data-backed adapter and the first one centered on a visiting liaison and a configured resource exchange.
+
+The MissionDef owns:
+
+- liaison PawnKind, arrival-delay range and departure-grace duration;
+- delivered ThingDef, required count, dialogue JobDef and Social SkillDef;
+- offer duration, accepted deadline, trust-tier weights and hidden recurrence ranges;
+- generic `Social +350` XP and success/failure trust changes;
+- the additional trust loss if a departing liaison dies after a completed handoff;
+- all offer, arrival, interaction, dialogue, status, failure, success and post-handoff text keys;
+- three offer variants and three success variants with local anti-repetition;
+- the declarative offered, accepted, ready, succeeded and failed phases.
+
+The shared `handoff` block is deliberately small. Resource requirements use the existing `DeliverThing` objective instead of duplicating fields. The adapter still owns map entry, meeting-cell selection, Lord behavior, pathfinding, reservations, dialogue execution, actual Thing-stack consumption, pawn references and departure monitoring.
+
+A missing PawnKindDef, ThingDef, JobDef, SkillDef, count, recurrence range, reward or required runtime text disables the archetype explicitly. There is no complete C# fallback definition.
+
+Local revision `r1` validated the complete handoff flow, exact resource consumption, interaction restrictions, failure paths, post-handoff death consequence, save/load persistence, recurrence, text variation and regressions. The detailed coverage remains recorded in `docs/TESTING_CURRENT.md` and `docs/TESTING.md`.
+
 ## Recurrence behavior
 
-After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Legacy operations continue to use their historical trust-tier delay ranges until they are migrated.
+After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. All four current Tok'ra organic operations now consume their configured recurrence data through the framework.
 
 The player must never see these internal ranges in normal play. They are visible only in developer reports and internal documentation.
 
@@ -197,6 +218,6 @@ Before treating a migrated mission as a framework reference:
 4. validate normal completion, every meaningful failure, interruption and save/reload;
 5. validate recurrence and text anti-repetition across several occurrences;
 6. verify that no technical details leak into player-facing texts;
-7. test all still-legacy operations for regression.
+7. test all other framework-backed operations for regression.
 
-The intelligence-recovery and wounded-agent migrations exercise two different forms of adaptive threat consumption. Future migrations should likewise add shared vocabulary only when a concrete operation proves the need.
+The intelligence-recovery and wounded-agent migrations exercise two different forms of adaptive threat consumption, while medical handoff proves a bounded visitor-and-resource exchange profile. Future missions should add shared vocabulary only when a concrete operation proves the need.
