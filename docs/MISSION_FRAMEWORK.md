@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; complete observation data migration validated and published in `0.3.24-dev`.
+Status: foundation published in `0.3.23-dev`; observation completed in `0.3.24-dev`; intelligence recovery completed and published in `0.3.25-dev`.
 
 ## Purpose
 
@@ -13,14 +13,16 @@ It must not become a universal scripting language for RimWorld. XML owns declara
 `GateRimMissionDef` currently supports:
 
 - offer, ready and deadline timing;
-- hidden recurrence delay ranges;
+- hidden recurrence delay ranges, including optional per-context ranges;
 - per-context weights and local repeated-mission penalties;
 - difficulty snapshots based on RimWorld threat points;
 - weighted offer and success text banks;
+- named weighted text banks used by specialized adapters;
 - named runtime text keys used by specialized adapters;
 - common actions and status keys;
 - generic per-skill XP rewards and trust consequences;
 - phases, objectives, conditions, transitions and consequences;
+- consequence chance, delay range and retry parameters;
 - objective target and secondary-target Def names;
 - objective JobDef and SkillDef names;
 - primary and secondary work durations;
@@ -66,6 +68,28 @@ The MissionDef now owns:
 
 The previous complete C# fallback definition has been removed. If the required MissionDef is absent, incomplete or references an unknown required `ThingDef`, `JobDef` or `SkillDef`, the observation archetype is omitted and one explicit error is written to the log. Silent recovery to old balance or text values is forbidden because it would conceal a broken configuration.
 
+## Intelligence-recovery reference implementation
+
+`SG1_TokraOrganic_IntelligenceRecovery` is the second complete data-backed adapter and the first one to consume adaptive difficulty.
+
+The MissionDef owns:
+
+- the recovered module, analysis JobDef and Intellectual SkillDef;
+- `10000` cautious-analysis ticks and `5000` accelerated-analysis ticks;
+- the generic `Intellectual +350` success reward and accelerated `+150` bonus;
+- all offer, acceptance, objective, method, status, failure and result text keys;
+- three independent named result banks with three weighted variants each;
+- trust-tier weights, repeat penalty and trust-tier-specific hidden delay ranges;
+- a `ThreatPointsScaled` profile using factor `0.35`, minimum `180` and maximum `700` points;
+- the accelerated `35%` interference chance;
+- the Goa'uld patrol IncidentDef, `5000–12500` tick queue delay and `2500` tick retry delay.
+
+The complete legacy C# definition has been removed. Required ThingDef, JobDef, SkillDef and IncidentDef references, the adaptive difficulty mode and all four trust-tier delay ranges are validated before the archetype becomes eligible.
+
+The operation captures base and scaled threat points when the offer is created. If accelerated analysis triggers interference, the queued incident receives that stored scaled budget even if colony wealth or current storyteller points have changed since the offer.
+
+Validation on local revision `r2` confirmed the final `10000 / 5000` tick pacing, progress persistence and adaptive patrol budgets on both a weak colony and an advanced colony.
+
 ## Specialized observation adapter
 
 The observation adapter still owns:
@@ -84,15 +108,15 @@ These are implementation mechanics rather than duplicated mission content. They 
 
 ## Recurrence behavior
 
-After a MissionDef-backed operation resolves, the scheduler uses that definition's configured minimum and maximum hidden delay. Legacy operations continue to use their historical trust-tier delay ranges until they are migrated.
+After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Legacy operations continue to use their historical trust-tier delay ranges until they are migrated.
 
 The player must never see these internal ranges in normal play. They are visible only in developer reports and internal documentation.
 
 ## Difficulty behavior
 
-A MissionDef can capture current RimWorld threat points when offered. The observation operation records this snapshot but does not fabricate a combat encounter merely to consume it.
+A MissionDef can capture current RimWorld threat points when offered. Observation records the snapshot without fabricating a combat encounter. Intelligence recovery now provides the first real consumer: accelerated analysis can queue a Goa'uld patrol whose points are the stored scaled snapshot.
 
-A future migrated mission with a natural threat should use the captured budget to size enemies, equipment, timing or constraints. Fixed enemy counts should be avoided when a storyteller threat budget can express equivalent behavior.
+The budget is captured at offer time and remains stable for that occurrence. Consequences must not recalculate a more convenient value later. Fixed enemy counts should be avoided when a storyteller threat budget can express equivalent behavior.
 
 ## Text variation
 
@@ -113,11 +137,12 @@ Debug actions menu
 The report lists:
 
 - loaded definitions;
-- phase and text-bank counts;
-- recurrence factor and hidden delay range;
+- phase, runtime-text and named-text-bank counts;
+- recurrence factor, generic hidden delay and per-context ranges;
 - difficulty mode and current threat snapshot;
 - generic skill XP rewards;
-- every objective's target, secondary target, job, primary and secondary work duration, skill and XP rate.
+- every objective's target, secondary target, job, primary and secondary work duration, skill and XP rate;
+- every configured consequence's target, value, chance, delay range and retry delay.
 
 Player-facing interfaces must not expose this technical configuration.
 
@@ -133,4 +158,4 @@ Before treating a migrated mission as a framework reference:
 6. verify that no technical details leak into player-facing texts;
 7. test all still-legacy operations for regression.
 
-The next mission migration should exercise a genuinely new shared requirement—preferably adaptive threat consumption—rather than extending the framework speculatively.
+The intelligence-recovery migration exercises adaptive threat consumption. Future migrations should likewise add shared vocabulary only when a concrete operation proves the need.

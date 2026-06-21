@@ -1,5 +1,40 @@
 # Tests
 
+## 0.3.25-dev - Migration de la récupération de renseignements vers le framework de missions
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.25-dev`. La révision `r2` a porté les durées finales à `10000` ticks pour l'analyse prudente et `5000` ticks pour l'analyse accélérée.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.25-dev`, `0.3.25.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.25.0` ;
+- chargement des deux MissionDefs et de toutes les références `ThingDef`, `JobDef`, `SkillDef` et `IncidentDef` requises ;
+- définition de récupération de renseignements exposant six phases, trois banques nommées, les délais contextuels, les conséquences et le profil `ThreatPointsScaled` ;
+- méthode prudente validée à `10000` ticks avec `Intellectual +350`, sans patrouille ;
+- méthode accélérée validée à `5000` ticks avec `Intellectual +500` au total ;
+- interruption, reprise et sauvegarde/rechargement sans remise à zéro ni modification du total configuré ;
+- trois banques de résultats indépendantes avec variantes pondérées et anti-répétition immédiate ;
+- expiration de l'offre, expiration après acceptation et perte du module sans récompense ni patrouille résiduelle ;
+- récurrence pilotée par les quatre plages de confiance configurées dans le MissionDef ;
+- interférence forcée utilisant `clamp(base threat × 0.35, 180, 700)` ;
+- consommation du snapshot mis à l'échelle capturé lors de l'offre, sans recalcul après changement de richesse ou de situation ;
+- menace adaptative testée sur une colonie faible et une colonie avancée ;
+- migration prudente des états créés avant la migration, sans module, résultat ou récompense dupliqués ;
+- observation, agent blessé et remise médicale validés sans régression ;
+- outils techniques limités au debug et `Player.log` propre.
+
+Points de régression durables :
+
+- conserver le MissionDef comme source unique des durées, récompenses, textes, délais, références de Defs et paramètres de conséquence migrés ;
+- désactiver explicitement l'archétype lorsqu'une configuration requise est absente ou invalide, sans fallback C# complet silencieux ;
+- figer le snapshot de menace à l'offre et vérifier que toute conséquence ultérieure consomme cette valeur ;
+- tester toute menace adaptative sur au moins une colonie faible et une colonie avancée ;
+- préserver le total et la progression des analyses déjà commencées lors d'un rééquilibrage XML ;
+- maintenir des historiques d'anti-répétition indépendants pour les banques nommées ;
+- couvrir réussite, échecs, récurrence, plusieurs points de sauvegarde/recharge et migration des anciennes sauvegardes ;
+- vérifier toutes les opérations encore héritées après chaque migration progressive ;
+- généraliser seulement les capacités démontrées par plusieurs cas réels.
+
 ## 0.3.24-dev - Complete observation mission Def migration
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.24-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.

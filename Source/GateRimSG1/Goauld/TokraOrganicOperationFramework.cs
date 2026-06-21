@@ -84,6 +84,23 @@ namespace GateRimSG1.Goauld
             GateRimMissionObjectiveDef recovery = missionDef.GetObjective(
                 "ready",
                 "RecoverAndTransmit");
+            GateRimMissionObjectiveDef cautiousAnalysis = missionDef.GetObjective(
+                "cautious",
+                "AnalyzeThing");
+            GateRimMissionObjectiveDef acceleratedAnalysis
+                = missionDef.GetObjective(
+                    "accelerated",
+                    "AnalyzeThing");
+            GateRimMissionConsequenceDef acceleratedXpBonus
+                = missionDef.GetTransitionConsequence(
+                    "accelerated",
+                    "succeeded",
+                    "GrantSkillXp");
+            GateRimMissionConsequenceDef patrolConsequence
+                = missionDef.GetTransitionConsequence(
+                    "accelerated",
+                    "succeeded",
+                    "QueueIncident");
             GateRimMissionSkillXpRewardDef skillReward
                 = missionDef.rewards?.skillXpRewards?.FirstOrDefault(
                     item => item != null
@@ -151,6 +168,24 @@ namespace GateRimSG1.Goauld
             ObservationTransmissionJobDefName = recovery?.jobDefName;
             ObservationRecoveryWorkTicks = recovery?.workTicks ?? 0;
             ObservationTransmissionWorkTicks = recovery?.secondaryWorkTicks ?? 0;
+            IntelligenceAnalysisJobDefName = cautiousAnalysis?.jobDefName;
+            IntelligenceAnalysisTargetDefName = cautiousAnalysis?.targetDefName;
+            IntelligenceSkillDefName = cautiousAnalysis?.skillDefName;
+            IntelligenceCautiousWorkTicks = cautiousAnalysis?.workTicks ?? 0;
+            IntelligenceAcceleratedWorkTicks
+                = acceleratedAnalysis?.workTicks ?? 0;
+            IntelligenceAcceleratedXpBonus
+                = (int)Math.Round(acceleratedXpBonus?.value ?? 0f);
+            IntelligencePatrolIncidentDefName
+                = patrolConsequence?.targetDefName;
+            IntelligenceInterferenceChance
+                = patrolConsequence?.chance ?? 0f;
+            IntelligencePatrolDelayMinimumTicks
+                = patrolConsequence?.minimumDelayTicks ?? 0;
+            IntelligencePatrolDelayMaximumTicks
+                = patrolConsequence?.maximumDelayTicks ?? 0;
+            IntelligencePatrolRetryTicks
+                = patrolConsequence?.retryTicks ?? 0;
         }
 
         public TokraOrganicOperationArchetype Archetype { get; }
@@ -201,6 +236,17 @@ namespace GateRimSG1.Goauld
         public int ObservationTransmissionWorkTicks { get; }
         public string ObservationSkillDefName { get; }
         public float ObservationXpPerTick { get; }
+        public string IntelligenceAnalysisJobDefName { get; }
+        public string IntelligenceAnalysisTargetDefName { get; }
+        public string IntelligenceSkillDefName { get; }
+        public int IntelligenceCautiousWorkTicks { get; }
+        public int IntelligenceAcceleratedWorkTicks { get; }
+        public int IntelligenceAcceleratedXpBonus { get; }
+        public string IntelligencePatrolIncidentDefName { get; }
+        public float IntelligenceInterferenceChance { get; }
+        public int IntelligencePatrolDelayMinimumTicks { get; }
+        public int IntelligencePatrolDelayMaximumTicks { get; }
+        public int IntelligencePatrolRetryTicks { get; }
 
         public bool HasPhysicalObjective => !string.IsNullOrEmpty(
             ObjectiveThingDefName);
@@ -242,6 +288,33 @@ namespace GateRimSG1.Goauld
                 MissionDef?.texts?.successLetterTexts,
                 previousIndex,
                 out selectedIndex);
+        }
+
+        public string SelectNamedTextKey(
+            string bankId,
+            int previousIndex,
+            out int selectedIndex)
+        {
+            return GateRimMissionFramework.SelectTextKey(
+                MissionDef?.GetNamedTextBank(bankId),
+                previousIndex,
+                out selectedIndex);
+        }
+
+        public string GetNamedTextKey(string bankId, int selectedIndex)
+        {
+            List<GateRimMissionTextVariantDef> variants
+                = MissionDef?.GetNamedTextBank(bankId);
+
+            if (variants == null || variants.Count == 0)
+            {
+                return null;
+            }
+
+            int index = Math.Max(
+                0,
+                Math.Min(variants.Count - 1, selectedIndex));
+            return variants[index]?.key;
         }
 
         public string GetRuntimeTextKey(string id)
@@ -402,6 +475,278 @@ namespace GateRimSG1.Goauld
             return missing.Count == 0;
         }
 
+        public bool HasCompleteIntelligenceConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(CompleteActionKey, "complete action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+            Require(ObjectiveThingDefName, "objectiveThingDef", missing);
+            Require(
+                IntelligenceAnalysisTargetDefName,
+                "analysis target",
+                missing);
+            Require(
+                IntelligenceAnalysisJobDefName,
+                "analysis job",
+                missing);
+            Require(IntelligenceSkillDefName, "analysis skill", missing);
+            Require(SkillXpRewardDefName, "skill XP reward", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(
+                IntelligencePatrolIncidentDefName,
+                "interference patrol incident",
+                missing);
+
+            string[] runtimeTextIds =
+            {
+                "spawnFailed",
+                "targetLetterLabel",
+                "targetLetterText",
+                "failureTimeout",
+                "failureObjectiveLost",
+                "noLongerActive",
+                "windowExpired",
+                "cautiousStarted",
+                "acceleratedStarted",
+                "methodLocked",
+                "jobUnavailable",
+                "statusAwaitingAnalysis",
+                "statusAnalyzing",
+                "methodCautious",
+                "methodAccelerated"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            string[] namedTextBanks =
+            {
+                "cautiousSuccess",
+                "acceleratedSuccess",
+                "interferenceSuccess"
+            };
+
+            foreach (string bankId in namedTextBanks)
+            {
+                List<GateRimMissionTextVariantDef> variants
+                    = MissionDef?.GetNamedTextBank(bankId);
+
+                if (variants == null || variants.Count == 0)
+                {
+                    missing.Add("named text bank " + bankId);
+                }
+            }
+
+            if (IntelligenceCautiousWorkTicks <= 0)
+            {
+                missing.Add("cautious analysis work ticks");
+            }
+
+            if (IntelligenceAcceleratedWorkTicks <= 0)
+            {
+                missing.Add("accelerated analysis work ticks");
+            }
+
+            GateRimMissionObjectiveDef acceleratedObjective
+                = MissionDef?.GetObjective("accelerated", "AnalyzeThing");
+
+            if (acceleratedObjective == null)
+            {
+                missing.Add("accelerated analysis objective");
+            }
+            else
+            {
+                if (!string.Equals(
+                        acceleratedObjective.targetDefName,
+                        IntelligenceAnalysisTargetDefName,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    missing.Add(
+                        "accelerated analysis target must match cautious target");
+                }
+
+                if (!string.Equals(
+                        acceleratedObjective.jobDefName,
+                        IntelligenceAnalysisJobDefName,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    missing.Add(
+                        "accelerated analysis job must match cautious job");
+                }
+
+                if (!string.Equals(
+                        acceleratedObjective.skillDefName,
+                        IntelligenceSkillDefName,
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    missing.Add(
+                        "accelerated analysis skill must match cautious skill");
+                }
+            }
+
+            if (IntelligenceAcceleratedXpBonus <= 0)
+            {
+                missing.Add("accelerated analysis XP bonus");
+            }
+
+            if (SkillXpRewardAmount <= 0)
+            {
+                missing.Add("positive skill XP reward amount");
+            }
+
+            if (IntelligenceInterferenceChance < 0f
+                || IntelligenceInterferenceChance > 1f)
+            {
+                missing.Add("interference chance between 0 and 1");
+            }
+
+            if (IntelligencePatrolDelayMinimumTicks <= 0
+                || IntelligencePatrolDelayMaximumTicks
+                    < IntelligencePatrolDelayMinimumTicks)
+            {
+                missing.Add("patrol delay range");
+            }
+
+            if (IntelligencePatrolRetryTicks <= 0)
+            {
+                missing.Add("positive patrol retry delay");
+            }
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            if (MissionDef?.difficulty?.mode
+                != GateRimMissionDifficultyMode.ThreatPointsScaled)
+            {
+                missing.Add("ThreatPointsScaled difficulty profile");
+            }
+
+            string[] recurrenceContextKeys =
+            {
+                "TokraTrust.Wary",
+                "TokraTrust.Neutral",
+                "TokraTrust.Cooperative",
+                "TokraTrust.Trusted"
+            };
+
+            foreach (string contextKey in recurrenceContextKeys)
+            {
+                int contextMinimumDelay;
+                int contextMaximumDelay;
+
+                if (MissionDef?.recurrence == null
+                    || !MissionDef.recurrence.TryGetDelayRange(
+                        contextKey,
+                        out contextMinimumDelay,
+                        out contextMaximumDelay)
+                    || contextMinimumDelay <= 0
+                    || contextMaximumDelay < contextMinimumDelay)
+                {
+                    missing.Add(
+                        "recurrence delay range for " + contextKey);
+                }
+            }
+
+            ValidateIntelligenceTargetConsistency(missing);
+            ValidateIntelligenceDefReferences(missing);
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
+        private void ValidateIntelligenceTargetConsistency(
+            ICollection<string> missing)
+        {
+            if (!string.IsNullOrWhiteSpace(ObjectiveThingDefName)
+                && !string.Equals(
+                    ObjectiveThingDefName,
+                    IntelligenceAnalysisTargetDefName,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                missing.Add("objectiveThingDef must match analysis target");
+            }
+        }
+
+        private void ValidateIntelligenceDefReferences(
+            ICollection<string> missing)
+        {
+            if (!string.IsNullOrWhiteSpace(ObjectiveThingDefName)
+                && DefDatabase<ThingDef>.GetNamedSilentFail(
+                    ObjectiveThingDefName) == null)
+            {
+                missing.Add(
+                    "unknown objective ThingDef " + ObjectiveThingDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(IntelligenceAnalysisJobDefName)
+                && DefDatabase<JobDef>.GetNamedSilentFail(
+                    IntelligenceAnalysisJobDefName) == null)
+            {
+                missing.Add(
+                    "unknown analysis JobDef "
+                    + IntelligenceAnalysisJobDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(IntelligenceSkillDefName)
+                && DefDatabase<SkillDef>.GetNamedSilentFail(
+                    IntelligenceSkillDefName) == null)
+            {
+                missing.Add(
+                    "unknown analysis SkillDef "
+                    + IntelligenceSkillDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(SkillXpRewardDefName)
+                && DefDatabase<SkillDef>.GetNamedSilentFail(
+                    SkillXpRewardDefName) == null)
+            {
+                missing.Add(
+                    "unknown reward SkillDef " + SkillXpRewardDefName);
+            }
+
+            if (!string.IsNullOrWhiteSpace(
+                    IntelligencePatrolIncidentDefName)
+                && DefDatabase<IncidentDef>.GetNamedSilentFail(
+                    IntelligencePatrolIncidentDefName) == null)
+            {
+                missing.Add(
+                    "unknown patrol IncidentDef "
+                    + IntelligencePatrolIncidentDefName);
+            }
+        }
+
         private void ValidateObservationTargetConsistency(
             ICollection<string> missing)
         {
@@ -521,11 +866,17 @@ namespace GateRimSG1.Goauld
         public const float LegacyRepeatedArchetypeWeightFactor = 0.25f;
         private const string ObservationMissionDefName
             = "SG1_TokraOrganic_GoauldObservation";
+        private const string IntelligenceMissionDefName
+            = "SG1_TokraOrganic_IntelligenceRecovery";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
             cachedObservationDefinition;
         private static bool observationConfigurationErrorLogged;
+        private static GateRimMissionDef cachedIntelligenceMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedIntelligenceDefinition;
+        private static bool intelligenceConfigurationErrorLogged;
 
         private static readonly IReadOnlyDictionary<
             TokraOrganicOperationArchetype,
@@ -534,50 +885,6 @@ namespace GateRimSG1.Goauld
                     TokraOrganicOperationArchetype,
                     TokraOrganicOperationDefinition>
                 {
-                    {
-                        TokraOrganicOperationArchetype.DeadDropRecovery,
-                        new TokraOrganicOperationDefinition(
-                            TokraOrganicOperationArchetype.DeadDropRecovery,
-                            offerDurationTicks: 120000,
-                            readyDelayTicks: 0,
-                            deadlineTicks: 90000,
-                            intellectualXp: 350,
-                            medicineXp: 0,
-                            socialXp: 0,
-                            successTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicDeadDropSuccessTrustChange,
-                            failureTrustChange:
-                                GameComponent_TokraTrustTracker
-                                    .OrganicDeadDropFailureTrustChange,
-                            waryWeight: 0.35f,
-                            neutralWeight: 0.85f,
-                            cooperativeWeight: 1.00f,
-                            trustedWeight: 0.55f,
-                            objectiveThingDefName:
-                                "SG1_TokraOrganicDeadDrop",
-                            acceptActionKey:
-                                "GR_TokraOrganicOperation_FloatMenuAcceptDeadDrop",
-                            completeActionKey:
-                                "GR_TokraOrganicOperation_FloatMenuAnalyzeIntelligence",
-                            offerLetterLabelKey:
-                                "GR_TokraOrganicOperation_DeadDropOfferLetterLabel",
-                            offerLetterTextKey:
-                                "GR_TokraOrganicOperation_DeadDropOfferLetterText",
-                            offerExpiredMessageKey:
-                                "GR_TokraOrganicOperation_DeadDropOfferExpired",
-                            offeredStatusKey:
-                                "GR_TokraOrganicOperation_StatusDeadDropOffered",
-                            activeStatusKey:
-                                "GR_TokraOrganicOperation_StatusDeadDropActive",
-                            readyStatusKey:
-                                "GR_TokraOrganicOperation_StatusDeadDropActive",
-                            successTrustMessageKey:
-                                "GR_TokraTrust_OrganicDeadDropSucceeded",
-                            failureTrustMessageKey:
-                                "GR_TokraTrust_OrganicDeadDropFailed",
-                            debugLabel: "IntelligenceRecovery")
-                    },
                     {
                         TokraOrganicOperationArchetype.WoundedAgentCare,
                         new TokraOrganicOperationDefinition(
@@ -677,6 +984,14 @@ namespace GateRimSG1.Goauld
                     yield return observation;
                 }
 
+                TokraOrganicOperationDefinition intelligence
+                    = ResolveIntelligenceDefinition();
+
+                if (intelligence != null)
+                {
+                    yield return intelligence;
+                }
+
                 foreach (TokraOrganicOperationDefinition definition
                     in LegacyDefinitions.Values)
                 {
@@ -693,6 +1008,13 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.GoauldObservation)
             {
                 definition = ResolveObservationDefinition();
+                return definition != null;
+            }
+
+            if (archetype
+                == TokraOrganicOperationArchetype.DeadDropRecovery)
+            {
+                definition = ResolveIntelligenceDefinition();
                 return definition != null;
             }
 
@@ -749,6 +1071,59 @@ namespace GateRimSG1.Goauld
             return cachedObservationDefinition;
         }
 
+        private static TokraOrganicOperationDefinition
+            ResolveIntelligenceDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    IntelligenceMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogIntelligenceConfigurationError(
+                    "required MissionDef " + IntelligenceMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedIntelligenceDefinition == null
+                || cachedIntelligenceMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype.DeadDropRecovery,
+                        missionDef);
+                string error;
+
+                if (!definition.HasCompleteIntelligenceConfiguration(
+                        out error))
+                {
+                    LogIntelligenceConfigurationError(
+                        IntelligenceMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedIntelligenceMissionDef = missionDef;
+                cachedIntelligenceDefinition = definition;
+            }
+
+            return cachedIntelligenceDefinition;
+        }
+
+        private static void LogIntelligenceConfigurationError(string detail)
+        {
+            if (intelligenceConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            intelligenceConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra intelligence recovery operation "
+                + "disabled: " + detail + ".");
+        }
+
         private static void LogObservationConfigurationError(string detail)
         {
             if (observationConfigurationErrorLogged)
@@ -771,16 +1146,34 @@ namespace GateRimSG1.Goauld
             TokraOrganicOperationDefinition previousDefinition
                 = GetDefinition(previousArchetype);
 
-            if (previousDefinition?.UsesMissionFrameworkDef == true
-                && previousDefinition.MinimumRecurrenceDelayTicks > 0
-                && previousDefinition.MaximumRecurrenceDelayTicks
-                    >= previousDefinition.MinimumRecurrenceDelayTicks)
+            if (previousDefinition?.UsesMissionFrameworkDef == true)
             {
-                minimumDelay
-                    = previousDefinition.MinimumRecurrenceDelayTicks;
-                maximumDelay
-                    = previousDefinition.MaximumRecurrenceDelayTicks;
-                return;
+                string contextKey = "TokraTrust." + tier;
+
+                GateRimMissionRecurrenceDef recurrence
+                    = previousDefinition.MissionDef?.recurrence;
+
+                if (recurrence != null
+                    && recurrence.TryGetDelayRange(
+                        contextKey,
+                        out minimumDelay,
+                        out maximumDelay)
+                    && minimumDelay > 0
+                    && maximumDelay >= minimumDelay)
+                {
+                    return;
+                }
+
+                if (previousDefinition.MinimumRecurrenceDelayTicks > 0
+                    && previousDefinition.MaximumRecurrenceDelayTicks
+                        >= previousDefinition.MinimumRecurrenceDelayTicks)
+                {
+                    minimumDelay
+                        = previousDefinition.MinimumRecurrenceDelayTicks;
+                    maximumDelay
+                        = previousDefinition.MaximumRecurrenceDelayTicks;
+                    return;
+                }
             }
 
             switch (tier)

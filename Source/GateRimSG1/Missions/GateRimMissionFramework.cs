@@ -130,6 +130,8 @@ namespace GateRimSG1.Missions
                     + (definition.texts?.successLetterTexts?.Count ?? 0));
                 builder.AppendLine("  Runtime texts: "
                     + (definition.texts?.runtimeTexts?.Count ?? 0));
+                builder.AppendLine("  Named text banks: "
+                    + (definition.texts?.namedTextBanks?.Count ?? 0));
                 builder.AppendLine("  Repeat factor: "
                     + (definition.recurrence?.repeatedMissionWeightFactor
                         ?? 0f).ToString("0.00"));
@@ -138,8 +140,44 @@ namespace GateRimSG1.Missions
                     + "-"
                     + (definition.recurrence?.maximumDelayTicks ?? 0)
                     + " ticks");
+                foreach (GateRimMissionContextDelayDef contextDelay
+                    in definition.recurrence?.contextDelays
+                        ?? Enumerable.Empty<GateRimMissionContextDelayDef>())
+                {
+                    if (contextDelay == null)
+                    {
+                        continue;
+                    }
+
+                    builder.AppendLine(
+                        "  Recurrence context "
+                        + (contextDelay.contextKey ?? "none")
+                        + ": "
+                        + contextDelay.minimumDelayTicks
+                        + "-"
+                        + contextDelay.maximumDelayTicks
+                        + " ticks");
+                }
+
                 builder.AppendLine("  Difficulty: "
                     + (definition.difficulty?.mode.ToString() ?? "None"));
+
+                foreach (GateRimMissionNamedTextBankDef bank
+                    in definition.texts?.namedTextBanks
+                        ?? Enumerable.Empty<GateRimMissionNamedTextBankDef>())
+                {
+                    if (bank == null)
+                    {
+                        continue;
+                    }
+
+                    builder.AppendLine(
+                        "  Text bank "
+                        + (bank.id ?? "none")
+                        + ": "
+                        + (bank.texts?.Count ?? 0)
+                        + " variants");
+                }
 
                 foreach (GateRimMissionSkillXpRewardDef skillReward
                     in definition.rewards?.skillXpRewards
@@ -210,6 +248,77 @@ namespace GateRimSG1.Missions
                             + (objective.skillDefName ?? "none")
                             + ", xp/tick="
                             + objective.xpPerTick.ToString("0.###"));
+                    }
+
+                    foreach (GateRimMissionTransitionDef transition
+                        in phase.transitions
+                            ?? Enumerable.Empty<
+                                GateRimMissionTransitionDef>())
+                    {
+                        if (transition == null)
+                        {
+                            continue;
+                        }
+
+                        foreach (GateRimMissionConsequenceDef consequence
+                            in transition.consequences
+                                ?? Enumerable.Empty<
+                                    GateRimMissionConsequenceDef>())
+                        {
+                            if (consequence == null)
+                            {
+                                continue;
+                            }
+
+                            builder.AppendLine(
+                                "  Consequence "
+                                + phase.id
+                                + " -> "
+                                + (transition.targetPhaseId ?? "none")
+                                + "/"
+                                + consequence.consequenceType
+                                + ": target="
+                                + (consequence.targetDefName ?? "none")
+                                + ", value="
+                                + consequence.value.ToString("0.###")
+                                + ", chance="
+                                + consequence.chance.ToString("0.###")
+                                + ", delay="
+                                + consequence.minimumDelayTicks
+                                + "-"
+                                + consequence.maximumDelayTicks
+                                + ", retry="
+                                + consequence.retryTicks);
+                        }
+                    }
+
+                    foreach (GateRimMissionConsequenceDef consequence
+                        in phase.onEnterConsequences
+                            ?? Enumerable.Empty<
+                                GateRimMissionConsequenceDef>())
+                    {
+                        if (consequence == null)
+                        {
+                            continue;
+                        }
+
+                        builder.AppendLine(
+                            "  Consequence "
+                            + phase.id
+                            + "/"
+                            + consequence.consequenceType
+                            + ": target="
+                            + (consequence.targetDefName ?? "none")
+                            + ", value="
+                            + consequence.value.ToString("0.###")
+                            + ", chance="
+                            + consequence.chance.ToString("0.###")
+                            + ", delay="
+                            + consequence.minimumDelayTicks
+                            + "-"
+                            + consequence.maximumDelayTicks
+                            + ", retry="
+                            + consequence.retryTicks);
                     }
                 }
             }

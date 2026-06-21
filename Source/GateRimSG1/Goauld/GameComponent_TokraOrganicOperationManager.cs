@@ -37,18 +37,6 @@ namespace GateRimSG1.Goauld
         private const int MedicalSupplyArrivalMinimumDelayTicks = 2500;
         private const int MedicalSupplyArrivalMaximumDelayTicks = 5000;
         private const int MedicalSupplyDepartureGraceTicks = 60000;
-        private const string IntelligenceAnalysisJobDefName
-            = "SG1_AnalyzeTokraOrganicIntelligence";
-        private const int IntelligenceCautiousWorkTicks = 5000;
-        private const int IntelligenceAcceleratedWorkTicks = 2000;
-        private const int IntelligenceAcceleratedXpBonus = 150;
-        private const float IntelligenceInterferenceChance = 0.35f;
-        private const int IntelligencePatrolDelayMinimumTicks = 5000;
-        private const int IntelligencePatrolDelayMaximumTicks = 12500;
-        private const int IntelligencePatrolRetryTicks = 2500;
-        private const float IntelligencePatrolThreatFactor = 0.35f;
-        private const float IntelligencePatrolMinimumPoints = 180f;
-        private const float IntelligencePatrolMaximumPoints = 700f;
 
         private int nextStateCheckTick;
         private int nextOpportunityTick;
@@ -551,7 +539,7 @@ namespace GateRimSG1.Goauld
             {
                 if (!manager.HasValidIntelligenceObjective())
                 {
-                    return "GR_TokraOrganicOperation_DeadDropNoLongerActive"
+                    return manager.GetIntelligenceTextKey("noLongerActive")
                         .Translate()
                         .ToString();
                 }
@@ -559,7 +547,7 @@ namespace GateRimSG1.Goauld
                 if (manager.operationDeadlineTick > 0
                     && currentTick >= manager.operationDeadlineTick)
                 {
-                    return "GR_TokraOrganicOperation_DeadDropWindowExpired"
+                    return manager.GetIntelligenceTextKey("windowExpired")
                         .Translate()
                         .ToString();
                 }
@@ -638,6 +626,35 @@ namespace GateRimSG1.Goauld
         {
             return TokraOrganicOperationFramework.GetDefinition(
                 TokraOrganicOperationArchetype.GoauldObservation);
+        }
+
+        private static TokraOrganicOperationDefinition
+            GetIntelligenceDefinition()
+        {
+            return TokraOrganicOperationFramework.GetDefinition(
+                TokraOrganicOperationArchetype.DeadDropRecovery);
+        }
+
+        private static int GetConfiguredIntelligenceWorkTicks(
+            TokraIntelligenceAnalysisMethod method)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetIntelligenceDefinition();
+
+            return Math.Max(
+                1,
+                method == TokraIntelligenceAnalysisMethod.Cautious
+                    ? definition?.IntelligenceCautiousWorkTicks ?? 1
+                    : definition?.IntelligenceAcceleratedWorkTicks ?? 1);
+        }
+
+        private static JobDef GetIntelligenceAnalysisJobDef()
+        {
+            string defName
+                = GetIntelligenceDefinition()?.IntelligenceAnalysisJobDefName;
+            return string.IsNullOrEmpty(defName)
+                ? null
+                : DefDatabase<JobDef>.GetNamedSilentFail(defName);
         }
 
         public static JobDef GetObservationDeploymentJobDef()
@@ -1038,14 +1055,14 @@ namespace GateRimSG1.Goauld
 
             if (!manager.IsExactActiveDeadDrop(deadDrop))
             {
-                return "GR_TokraOrganicOperation_DeadDropNoLongerActive"
+                return manager.GetIntelligenceTextKey("noLongerActive")
                     .Translate()
                     .ToString();
             }
 
             if (manager.IsOperationDeadlineExpired())
             {
-                return "GR_TokraOrganicOperation_DeadDropWindowExpired"
+                return manager.GetIntelligenceTextKey("windowExpired")
                     .Translate()
                     .ToString();
             }
@@ -1563,7 +1580,8 @@ namespace GateRimSG1.Goauld
                     manager.intelligenceAnalysisMethod
                         = TokraIntelligenceAnalysisMethod.Cautious;
                     manager.intelligenceWorkTotalTicks
-                        = IntelligenceCautiousWorkTicks;
+                        = GetConfiguredIntelligenceWorkTicks(
+                            TokraIntelligenceAnalysisMethod.Cautious);
                 }
 
                 manager.intelligenceWorkRemainingTicks = 0;
@@ -1623,8 +1641,11 @@ namespace GateRimSG1.Goauld
 
             manager.intelligenceAnalysisMethod
                 = TokraIntelligenceAnalysisMethod.Accelerated;
+            manager.SetIntelligenceFrameworkPhase(
+                TokraIntelligenceAnalysisMethod.Accelerated);
             manager.intelligenceWorkTotalTicks
-                = IntelligenceAcceleratedWorkTicks;
+                = GetConfiguredIntelligenceWorkTicks(
+                    TokraIntelligenceAnalysisMethod.Accelerated);
             manager.intelligenceInterferenceRollResolved = true;
             manager.intelligencePatrolQueued
                 = manager.TryQueueIntelligencePatrol(map);
@@ -1651,10 +1672,9 @@ namespace GateRimSG1.Goauld
             }
 
             manager.intelligenceAnalysisMethod = method;
-            manager.intelligenceWorkTotalTicks = method
-                == TokraIntelligenceAnalysisMethod.Cautious
-                ? IntelligenceCautiousWorkTicks
-                : IntelligenceAcceleratedWorkTicks;
+            manager.SetIntelligenceFrameworkPhase(method);
+            manager.intelligenceWorkTotalTicks
+                = GetConfiguredIntelligenceWorkTicks(method);
             manager.intelligenceWorkRemainingTicks
                 = manager.intelligenceWorkTotalTicks;
             manager.intelligenceInterferenceRollResolved = false;
@@ -1723,7 +1743,7 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.DeadDropRecovery)
             {
                 failureTextKey
-                    = "GR_TokraOrganicOperation_DeadDropTimedOutLetterText";
+                    = manager.GetIntelligenceTextKey("failureTimeout");
             }
             else if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare)
@@ -1849,7 +1869,8 @@ namespace GateRimSG1.Goauld
                                 ? definition.GetRuntimeTextKey(
                                     "failureDeviceLost")
                                 : definition.HasPhysicalObjective
-                                    ? "GR_TokraOrganicOperation_DeadDropLostLetterText"
+                                    ? definition.GetRuntimeTextKey(
+                                        "failureObjectiveLost")
                                     : null;
 
                     TryResolveActiveOperation(
@@ -2338,7 +2359,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     null,
-                    "GR_TokraOrganicOperation_DeadDropLostLetterText");
+                    GetIntelligenceTextKey("failureObjectiveLost"));
                 return;
             }
 
@@ -2348,7 +2369,7 @@ namespace GateRimSG1.Goauld
                 TryResolveActiveOperation(
                     TokraOrganicOperationOutcome.Failed,
                     null,
-                    "GR_TokraOrganicOperation_DeadDropTimedOutLetterText");
+                    GetIntelligenceTextKey("failureTimeout"));
             }
         }
 
@@ -3162,10 +3183,9 @@ namespace GateRimSG1.Goauld
                 == TokraIntelligenceAnalysisMethod.None)
             {
                 intelligenceAnalysisMethod = method;
-                intelligenceWorkTotalTicks = method
-                    == TokraIntelligenceAnalysisMethod.Cautious
-                    ? IntelligenceCautiousWorkTicks
-                    : IntelligenceAcceleratedWorkTicks;
+                SetIntelligenceFrameworkPhase(method);
+                intelligenceWorkTotalTicks
+                    = GetConfiguredIntelligenceWorkTicks(method);
                 intelligenceWorkRemainingTicks
                     = intelligenceWorkTotalTicks;
                 intelligenceInterferenceRollResolved = false;
@@ -3174,9 +3194,10 @@ namespace GateRimSG1.Goauld
                 intelligenceResultVariant = -1;
 
                 Messages.Message(
-                    (method == TokraIntelligenceAnalysisMethod.Cautious
-                        ? "GR_TokraOrganicOperation_IntelligenceCautiousStarted"
-                        : "GR_TokraOrganicOperation_IntelligenceAcceleratedStarted")
+                    GetIntelligenceTextKey(
+                        method == TokraIntelligenceAnalysisMethod.Cautious
+                            ? "cautiousStarted"
+                            : "acceleratedStarted")
                         .Translate(operatorPawn.LabelShortCap),
                     communicator,
                     MessageTypeDefOf.NeutralEvent,
@@ -3185,8 +3206,7 @@ namespace GateRimSG1.Goauld
             else if (intelligenceAnalysisMethod != method)
             {
                 Messages.Message(
-                    "GR_TokraOrganicOperation_IntelligenceMethodLocked"
-                        .Translate(),
+                    GetIntelligenceTextKey("methodLocked").Translate(),
                     communicator,
                     MessageTypeDefOf.RejectInput,
                     historical: false);
@@ -3202,8 +3222,7 @@ namespace GateRimSG1.Goauld
             Thing communicator,
             Pawn operatorPawn)
         {
-            JobDef jobDef = DefDatabase<JobDef>.GetNamedSilentFail(
-                IntelligenceAnalysisJobDefName);
+            JobDef jobDef = GetIntelligenceAnalysisJobDef();
             Thing intelligenceModule = activeDeadDrop;
 
             bool moduleAlreadyCarried
@@ -3228,8 +3247,7 @@ namespace GateRimSG1.Goauld
                 || !operatorPawn.CanReserve(communicator))
             {
                 Messages.Message(
-                    "GR_TokraOrganicOperation_IntelligenceJobUnavailable"
-                        .Translate(),
+                    GetIntelligenceTextKey("jobUnavailable").Translate(),
                     communicator,
                     MessageTypeDefOf.RejectInput,
                     historical: false);
@@ -3539,7 +3557,7 @@ namespace GateRimSG1.Goauld
                     out objective))
             {
                 Messages.Message(
-                    "GR_TokraOrganicOperation_DeadDropSpawnFailed".Translate(),
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
                     MessageTypeDefOf.RejectInput,
                     historical: false);
                 return false;
@@ -3564,12 +3582,11 @@ namespace GateRimSG1.Goauld
 
             NotifyMissionAccepted(map, operatorPawn);
 
-            string acceptedKey
-                = "GR_TokraOrganicOperation_DeadDropAccepted";
+            string acceptedKey = definition.AcceptedMessageKey;
             string locatedLabelKey
-                = "GR_TokraOrganicOperation_DeadDropLocatedLetterLabel";
+                = definition.GetRuntimeTextKey("targetLetterLabel");
             string locatedTextKey
-                = "GR_TokraOrganicOperation_DeadDropLocatedLetterText";
+                = definition.GetRuntimeTextKey("targetLetterText");
             string remainingHours = GetRoundedUpHours(
                 definition.DeadlineTicks).ToString();
 
@@ -3696,7 +3713,9 @@ namespace GateRimSG1.Goauld
             {
                 intelligenceAnalysisMethod
                     = TokraIntelligenceAnalysisMethod.Cautious;
-                intelligenceWorkTotalTicks = IntelligenceCautiousWorkTicks;
+                intelligenceWorkTotalTicks
+                    = GetConfiguredIntelligenceWorkTicks(
+                        TokraIntelligenceAnalysisMethod.Cautious);
                 intelligenceWorkRemainingTicks = 0;
                 activeState = TokraOrganicOperationState.Ready;
             }
@@ -3776,7 +3795,7 @@ namespace GateRimSG1.Goauld
             }
 
             int intellectualXp = definition.IntellectualXp;
-            int configuredSkillXp = isObservation
+            int configuredSkillXp = definition.UsesMissionFrameworkDef
                 ? definition.SkillXpRewardAmount
                 : 0;
 
@@ -3784,7 +3803,13 @@ namespace GateRimSG1.Goauld
                 && intelligenceAnalysisMethod
                     == TokraIntelligenceAnalysisMethod.Accelerated)
             {
-                intellectualXp += IntelligenceAcceleratedXpBonus;
+                configuredSkillXp
+                    += definition.IntelligenceAcceleratedXpBonus;
+            }
+
+            if (isIntelligence && definition.UsesMissionFrameworkDef)
+            {
+                intellectualXp = configuredSkillXp;
             }
 
             resolutionApplied = true;
@@ -3804,7 +3829,7 @@ namespace GateRimSG1.Goauld
 
             if (outcome == TokraOrganicOperationOutcome.Succeeded)
             {
-                if (isObservation)
+                if (definition.UsesMissionFrameworkDef)
                 {
                     GrantSkillExperience(
                         operatorPawn,
@@ -3847,7 +3872,7 @@ namespace GateRimSG1.Goauld
             TokraOrganicWoundedAgentUtility
                 .ClearOperationHealthConditions(patient);
 
-            string skillXpReport = isObservation
+            string skillXpReport = definition.UsesMissionFrameworkDef
                 ? $"{definition.SkillXpRewardDefName ?? "none"} XP "
                     + $"{(outcome == TokraOrganicOperationOutcome.Succeeded ? configuredSkillXp : 0)}"
                 : "Intellectual XP "
@@ -3989,9 +4014,8 @@ namespace GateRimSG1.Goauld
             if (outcome == TokraOrganicOperationOutcome.Succeeded)
             {
                 Find.LetterStack?.ReceiveLetter(
-                    "GR_TokraOrganicOperation_DeadDropSuccessLetterLabel"
-                        .Translate(),
-                    GetIntelligenceSuccessTextKey().Translate(
+                    definition.SuccessLetterLabelKey.Translate(),
+                    GetIntelligenceSuccessTextKey(definition).Translate(
                         operatorPawn?.LabelShortCap ?? "?",
                         intellectualXp.ToString()),
                     intelligencePatrolQueued
@@ -4002,12 +4026,11 @@ namespace GateRimSG1.Goauld
             }
 
             string deadDropTextKey = string.IsNullOrEmpty(failureTextKey)
-                ? "GR_TokraOrganicOperation_DeadDropTimedOutLetterText"
+                ? definition.GetRuntimeTextKey("failureTimeout")
                 : failureTextKey;
 
             Find.LetterStack?.ReceiveLetter(
-                "GR_TokraOrganicOperation_DeadDropFailedLetterLabel"
-                    .Translate(),
+                definition.FailureLetterLabelKey.Translate(),
                 deadDropTextKey.Translate(),
                 LetterDefOf.NegativeEvent);
         }
@@ -4055,113 +4078,171 @@ namespace GateRimSG1.Goauld
 
         private void PrepareIntelligenceOutcome()
         {
-            if (intelligenceResultVariant < 0)
-            {
-                intelligenceResultVariant = SelectIntelligenceResultVariant();
-                lastIntelligenceResultVariant = intelligenceResultVariant;
-            }
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
 
-            if (intelligenceInterferenceRollResolved)
+            if (definition == null)
             {
                 return;
             }
 
-            intelligenceInterferenceRollResolved = true;
-
-            if (intelligenceAnalysisMethod
-                    != TokraIntelligenceAnalysisMethod.Accelerated
-                || !Rand.Chance(IntelligenceInterferenceChance))
+            if (!intelligenceInterferenceRollResolved)
             {
-                intelligenceInterferenceTriggered = false;
-                intelligencePatrolQueued = false;
+                intelligenceInterferenceRollResolved = true;
+
+                if (intelligenceAnalysisMethod
+                        == TokraIntelligenceAnalysisMethod.Accelerated
+                    && Rand.Chance(
+                        definition.IntelligenceInterferenceChance))
+                {
+                    intelligencePatrolQueued = TryQueueIntelligencePatrol(
+                        GetActiveMap());
+                    intelligenceInterferenceTriggered
+                        = intelligencePatrolQueued;
+                }
+                else
+                {
+                    intelligenceInterferenceTriggered = false;
+                    intelligencePatrolQueued = false;
+                }
+            }
+
+            if (intelligenceResultVariant >= 0)
+            {
                 return;
             }
 
-            intelligencePatrolQueued = TryQueueIntelligencePatrol(
-                GetActiveMap());
-            intelligenceInterferenceTriggered = intelligencePatrolQueued;
-        }
+            string bankId = GetIntelligenceSuccessBankId();
+            string storageKey = definition.MissionDefName + ":" + bankId;
+            int previousIndex = -1;
+            int storedIndex;
 
-        private int SelectIntelligenceResultVariant()
-        {
-            int variant = Rand.Range(0, 3);
-
-            if (variant == lastIntelligenceResultVariant)
+            if (lastMissionTextVariantIndexes != null
+                && lastMissionTextVariantIndexes.TryGetValue(
+                    storageKey,
+                    out storedIndex))
             {
-                variant = (variant + Rand.RangeInclusive(1, 2)) % 3;
+                previousIndex = storedIndex;
             }
 
-            return variant;
+            int selectedIndex;
+            string selectedKey = definition.SelectNamedTextKey(
+                bankId,
+                previousIndex,
+                out selectedIndex);
+
+            if (string.IsNullOrEmpty(selectedKey) || selectedIndex < 0)
+            {
+                intelligenceResultVariant = -1;
+                return;
+            }
+
+            intelligenceResultVariant = selectedIndex;
+            lastIntelligenceResultVariant = selectedIndex;
+
+            if (lastMissionTextVariantIndexes != null)
+            {
+                lastMissionTextVariantIndexes[storageKey] = selectedIndex;
+            }
         }
 
-        private string GetIntelligenceSuccessTextKey()
+        private string GetIntelligenceSuccessTextKey(
+            TokraOrganicOperationDefinition definition)
         {
-            int variant = Math.Max(0, Math.Min(2, intelligenceResultVariant))
-                + 1;
+            return definition?.GetNamedTextKey(
+                GetIntelligenceSuccessBankId(),
+                intelligenceResultVariant);
+        }
 
+        private string GetIntelligenceSuccessBankId()
+        {
             if (intelligenceAnalysisMethod
                 == TokraIntelligenceAnalysisMethod.Cautious)
             {
-                return "GR_TokraOrganicOperation_IntelligenceCautiousSuccess"
-                    + variant;
+                return "cautiousSuccess";
             }
 
-            if (intelligencePatrolQueued)
-            {
-                return "GR_TokraOrganicOperation_IntelligenceInterferenceSuccess"
-                    + variant;
-            }
-
-            return "GR_TokraOrganicOperation_IntelligenceAcceleratedSuccess"
-                + variant;
+            return intelligencePatrolQueued
+                ? "interferenceSuccess"
+                : "acceleratedSuccess";
         }
 
         private bool TryQueueIntelligencePatrol(Map map)
         {
-            IncidentDef patrolDef = GR_DefOf.SG1_GoauldJaffaSignalPatrol;
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition()
+                    ?? GetIntelligenceDefinition();
+            IncidentDef patrolDef = string.IsNullOrEmpty(
+                    definition?.IntelligencePatrolIncidentDefName)
+                ? null
+                : DefDatabase<IncidentDef>.GetNamedSilentFail(
+                    definition.IntelligencePatrolIncidentDefName);
 
             if (map == null
+                || definition == null
                 || patrolDef == null
                 || patrolDef.category == null
                 || Find.Storyteller?.incidentQueue == null)
             {
                 GR_Log.Warning(
                     "Could not queue Goa'uld patrol after accelerated Tok'ra "
-                    + "intelligence analysis: incident definition, map or "
+                    + "intelligence analysis: mission configuration, map or "
                     + "storyteller queue is unavailable.");
+                return false;
+            }
+
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+
+            if (runtime == null)
+            {
+                runtime = new GateRimMissionRuntimeData();
+                activeOperation.frameworkRuntime = runtime;
+            }
+
+            if (runtime.scaledThreatPoints <= 0f)
+            {
+                GateRimMissionDifficultySnapshot snapshot
+                    = GateRimMissionFramework.CaptureDifficulty(
+                        map,
+                        definition.MissionDef?.difficulty);
+                runtime.baseThreatPoints = snapshot.BaseThreatPoints;
+                runtime.scaledThreatPoints = snapshot.ScaledThreatPoints;
+                runtime.difficultyFactor = snapshot.Factor;
+            }
+
+            if (runtime.scaledThreatPoints <= 0f)
+            {
+                GR_Log.Warning(
+                    "Could not queue Goa'uld patrol after accelerated Tok'ra "
+                    + "intelligence analysis: the captured threat snapshot "
+                    + "contains no usable points.");
                 return false;
             }
 
             IncidentParms parms = StorytellerUtility.DefaultParmsNow(
                 patrolDef.category,
                 map);
-            float basePoints = parms.points > 0f
-                ? parms.points
-                : StorytellerUtility.DefaultThreatPointsNow(map);
-
             parms.forced = true;
             parms.faction = GoauldSystemLordFactionUtility.GetOrCreateFaction(
                 "Tok'ra accelerated intelligence interference patrol");
-            parms.points = Math.Max(
-                IntelligencePatrolMinimumPoints,
-                Math.Min(
-                    IntelligencePatrolMaximumPoints,
-                    basePoints * IntelligencePatrolThreatFactor));
+            parms.points = runtime.scaledThreatPoints;
 
             int fireTick = (Find.TickManager?.TicksGame ?? 0)
                 + Rand.RangeInclusive(
-                    IntelligencePatrolDelayMinimumTicks,
-                    IntelligencePatrolDelayMaximumTicks);
+                    definition.IntelligencePatrolDelayMinimumTicks,
+                    definition.IntelligencePatrolDelayMaximumTicks);
 
             Find.Storyteller.incidentQueue.Add(
                 patrolDef,
                 fireTick,
                 parms,
-                IntelligencePatrolRetryTicks);
+                definition.IntelligencePatrolRetryTicks);
 
             GR_Log.Message(
                 "Queued a small Goa'uld patrol after accelerated Tok'ra "
                 + $"intelligence analysis; map={map.uniqueID}; "
+                + $"snapshot={runtime.baseThreatPoints:0}; "
                 + $"points={parms.points:0}; fireTick={fireTick}.");
 
             return true;
@@ -4427,6 +4508,28 @@ namespace GateRimSG1.Goauld
         private string GetObservationTextKey(string id)
         {
             return GetActiveDefinition()?.GetRuntimeTextKey(id);
+        }
+
+        private void SetIntelligenceFrameworkPhase(
+            TokraIntelligenceAnalysisMethod method)
+        {
+            if (activeOperation.frameworkRuntime == null
+                || string.IsNullOrEmpty(
+                    activeOperation.frameworkRuntime.missionDefName))
+            {
+                return;
+            }
+
+            activeOperation.frameworkRuntime.phaseId = method
+                == TokraIntelligenceAnalysisMethod.Cautious
+                ? "cautious"
+                : "accelerated";
+        }
+
+        private string GetIntelligenceTextKey(string id)
+        {
+            return GetActiveDefinition()?.GetRuntimeTextKey(id)
+                ?? GetIntelligenceDefinition()?.GetRuntimeTextKey(id);
         }
 
         private SkillDef GetObservationSkillDef()
@@ -4889,7 +4992,8 @@ namespace GateRimSG1.Goauld
                 if (intelligenceAnalysisMethod
                     == TokraIntelligenceAnalysisMethod.None)
                 {
-                    status = "GR_TokraOrganicOperation_StatusIntelligenceAwaitingAnalysis"
+                    status = definition.GetRuntimeTextKey(
+                            "statusAwaitingAnalysis")
                         .Translate(
                             GetRoundedUpHours(
                                 operationDeadlineTick - currentTick)
@@ -4898,11 +5002,12 @@ namespace GateRimSG1.Goauld
                 }
                 else
                 {
-                    string methodKey = intelligenceAnalysisMethod
-                        == TokraIntelligenceAnalysisMethod.Cautious
-                        ? "GR_TokraOrganicOperation_IntelligenceMethodCautious"
-                        : "GR_TokraOrganicOperation_IntelligenceMethodAccelerated";
-                    status = "GR_TokraOrganicOperation_StatusIntelligenceAnalyzing"
+                    string methodKey = definition.GetRuntimeTextKey(
+                        intelligenceAnalysisMethod
+                            == TokraIntelligenceAnalysisMethod.Cautious
+                            ? "methodCautious"
+                            : "methodAccelerated");
+                    status = definition.GetRuntimeTextKey("statusAnalyzing")
                         .Translate(
                             methodKey.Translate(),
                             GetRoundedUpHours(
@@ -5157,10 +5262,16 @@ namespace GateRimSG1.Goauld
                     && intelligenceAnalysisMethod
                         != TokraIntelligenceAnalysisMethod.None)
                 {
-                    int expectedTotal = intelligenceAnalysisMethod
-                        == TokraIntelligenceAnalysisMethod.Cautious
-                        ? IntelligenceCautiousWorkTicks
-                        : IntelligenceAcceleratedWorkTicks;
+                    int expectedTotal
+                        = GetConfiguredIntelligenceWorkTicks(
+                            intelligenceAnalysisMethod);
+
+                    if (activeState
+                        == TokraOrganicOperationState.Accepted)
+                    {
+                        SetIntelligenceFrameworkPhase(
+                            intelligenceAnalysisMethod);
+                    }
 
                     if (intelligenceWorkTotalTicks <= 0)
                     {

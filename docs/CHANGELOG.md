@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.25-dev - Migrate intelligence recovery to mission framework
+
+- Add `SG1_TokraOrganic_IntelligenceRecovery` as the second complete MissionDef-backed organic operation.
+- Add context-specific hidden recurrence delay ranges and make intelligence recovery consume its trust-tier range.
+- Add named weighted text banks for cautious, accelerated and interference results with independent immediate anti-repetition.
+- Add configurable consequence chance, delay range and retry fields for real mission side effects.
+- Move the intelligence module, analysis job, skill, cautious and accelerated work durations, XP rewards, trust changes, actions, statuses and player texts into XML.
+- Rebalance the XML analysis durations after `r1` validation from `5000` to `10000` ticks for cautious analysis and from `2000` to `5000` ticks for accelerated analysis, preserving the validated reward and consequence behavior.
+- Move the accelerated interference chance, Goa'uld patrol IncidentDef and queue timing into XML.
+- Scale the interference patrol from the threat snapshot captured when the offer is created, using the configured `0.35` factor and `180–700` point bounds.
+- Preserve existing active-work progress and compatibility fields when loading operations created before this migration.
+- Remove the complete legacy C# intelligence-recovery definition and disable the archetype explicitly when required configuration is incomplete or invalid.
+- Extend the developer report with named text banks, context delay ranges and consequence parameters.
+- Keep physical-object placement, communicator interactions, RimWorld jobs, Toils, persistence and incident queuing in the specialized adapter.
+- Raise the assembly version to `0.3.25.0` and the mod metadata version to `0.3.25-dev`.
+- Validate local revision `r2`, including final `10000 / 5000` analysis pacing, progress persistence, threat consumption on weak and advanced colonies, captured-budget stability, mission regressions and a clean `Player.log`.
+
 ## 0.3.24-dev - Complete observation mission Def migration
 
 - Extend mission objectives with secondary targets, job Defs, configured skills, active XP rates and secondary work durations.

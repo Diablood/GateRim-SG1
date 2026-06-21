@@ -1,41 +1,43 @@
-# Tests du jalon actif
+# Tests du dernier jalon clôturé
 
-Jalon : `0.3.24-dev - Complete observation mission Def migration`
+Jalon : `0.3.25-dev - Migrate intelligence recovery to mission framework`
 
-Branche attendue : `feature/observation-mission-def-cleanup`
+Branche attendue : `feature/intelligence-recovery-mission-migration`
 
-Révision locale validée : `0.3.24-dev-r1`
+Révision locale validée : `0.3.25-dev-r2`
 
-Version de DLL attendue : `0.3.24.0`
+Version de DLL validée : `0.3.25.0`
 
-Statut : validation fonctionnelle terminée ; jalon clôturé et publié sous `v0.3.24-dev`.
+Statut : validation complète terminée sur `r2`, y compris les durées finales, la persistance et la consommation de menace adaptative sur une colonie faible et une colonie avancée. Jalon publié sous `v0.3.25-dev`.
 
-## Résultat final validé
+## Résultat final
 
-- contrôle de cohérence et rebuild `0.3.24.0` réussis ;
-- chargement propre du MissionDef et de toutes ses références `ThingDef`, `JobDef` et `SkillDef` ;
-- rapport développeur conforme, dont `26` textes d'exécution, la plage `240000–480000`, les quatre durées et `Intellectual +250` ;
-- flux complet validé avec `500 / 10000 / 500 / 1000` ticks ;
-- XP active, récompense finale, variantes de réussite et anti-répétition validées ;
-- sauvegarde/recharge, reprise d'interruption et migration depuis `v0.3.23-dev` validées ;
-- échec par expiration et perte de l'objectif physique validé sans récompense finale ;
-- récurrence lue depuis le MissionDef ;
-- trois opérations organiques encore héritées sans régression ;
-- interfaces joueur et frontière debug conformes ;
-- `Player.log` propre.
+La révision `r1` a validé le flux complet. La révision `r2` a uniquement rééquilibré les analyses puis validé leur rythme et leur persistance :
 
-Le protocole ci-dessous est conservé comme référence détaillée de régression.
+- méthode prudente : `10000` ticks, `Intellectual +350`, sans patrouille ;
+- méthode accélérée : `5000` ticks, `Intellectual +500` au total ;
+- interruption, reprise et sauvegarde/rechargement sans modification du total ni perte de progression ;
+- interférence adaptative validée sur une colonie faible et une colonie avancée ;
+- budget consommé égal au snapshot mis à l'échelle capturé lors de l'offre, même après modification de la colonie ;
+- variantes RP, anti-répétition, échecs, récurrence, migrations, régressions et `Player.log` validés.
+
+Les sections suivantes conservent le protocole détaillé comme référence durable de régression.
 
 ## 1. Contrôle du dépôt
 
-Depuis la racine du dépôt :
+Créer la branche depuis le dernier tag publié avant d'extraire le correctif :
 
 ```powershell
-git branch --show-current
-git describe --tags --exact-match v0.3.23-dev
+git status --short
+git switch --detach v0.3.24-dev
+git switch -c feature/intelligence-recovery-mission-migration
+```
 
+Après extraction :
+
+```powershell
 ./tools/check-project-consistency.cmd `
-    -ExpectedVersion 0.3.24-dev `
+    -ExpectedVersion 0.3.25-dev `
     -ExpectedBackstoryCount 83
 
 if ($LASTEXITCODE -ne 0) {
@@ -47,18 +49,12 @@ git diff --check
 
 Résultats attendus :
 
-- branche `feature/observation-mission-def-cleanup` ;
-- base créée depuis `v0.3.23-dev` ;
-- version documentaire `0.3.24-dev` ;
-- version d'assembly `0.3.24.0` ;
+- branche `feature/intelligence-recovery-mission-migration` ;
+- base issue de `v0.3.24-dev` ;
+- version documentaire `0.3.25-dev` ;
+- version d'assembly `0.3.25.0` ;
 - `83` backstories ;
-- aucune tabulation littérale ou erreur de fin de ligne.
-
-La commande `git describe --tags --exact-match v0.3.23-dev` ne réussit que tant qu'aucun commit de travail n'a encore été créé. Après un commit local, utiliser plutôt :
-
-```powershell
-git merge-base --is-ancestor v0.3.23-dev HEAD
-```
+- aucune tabulation littérale ni erreur de fin de ligne.
 
 ## 2. Rebuild forcé
 
@@ -72,22 +68,25 @@ Résultats attendus :
 
 - build réussi ;
 - DLL régénérée dans `1.6/Assemblies/` ;
-- version `0.3.24.0` ;
-- aucune erreur ou alerte nouvelle liée au framework de missions.
+- version `0.3.25.0` ;
+- aucune nouvelle alerte liée au framework ou aux opérations Tok'ra.
 
 ## 3. Chargement des Defs
 
-Lancer RimWorld jusqu'au menu principal, puis charger une carte de test disposant d'un communicateur sécurisé Tok'ra alimenté.
+Lancer RimWorld jusqu'au menu principal, puis charger une carte disposant d'un communicateur sécurisé Tok'ra alimenté.
 
 Vérifier l'absence d'erreur rouge concernant :
 
 - `SG1_TokraOrganic_GoauldObservation` ;
+- `SG1_TokraOrganic_IntelligenceRecovery` ;
 - `GateRimSG1.Missions.GateRimMissionDef` ;
-- les références `ThingDef`, `JobDef` et `SkillDef` de l'observation, y compris la compétence de récompense finale ;
-- les textes d'exécution et variantes de résultat ;
-- les traductions anglaises et françaises.
+- `SG1_TokraOrganicDeadDrop` ;
+- `SG1_AnalyzeTokraOrganicIntelligence` ;
+- `Intellectual` ;
+- `SG1_GoauldJaffaSignalPatrol` ;
+- les banques de textes nommées et les délais de récurrence contextuels.
 
-## 4. Rapport développeur de la définition
+## 4. Rapport développeur
 
 Activer le mode développeur et ouvrir :
 
@@ -97,134 +96,177 @@ Debug actions menu
 → Mission framework: inspect definitions
 ```
 
-Le rapport doit afficher au minimum :
+Le rapport doit annoncer `Loaded definitions: 2` et conserver la définition d'observation validée en `0.3.24-dev`.
+
+Pour `SG1_TokraOrganic_IntelligenceRecovery`, vérifier au minimum :
 
 ```text
-Loaded definitions: 1
-SG1_TokraOrganic_GoauldObservation
-Phases: 7
-Offer variants: 3
-Success variants: 3
-Runtime texts: 26
+Phases: 6
+Offer variants: 1
+Runtime texts: 15
+Named text banks: 3
 Repeat factor: 0.25
 Recurrence delay: 240000-480000 ticks
-Skill XP reward: Intellectual +250
-Difficulty: ThreatPointsSnapshot
-Objective accepted/DeployThing: target=SG1_TokraObservationDevice, secondary=SG1_TokraObservationPoint, job=SG1_DeployTokraObservationDevice, work=500
-Objective observing/MaintainOperator: target=SG1_TokraObservationPoint, work=10000, skill=Intellectual, xp/tick=0.04
-Objective ready/RecoverAndTransmit: target=SG1_TokraObservationDevice, job=SG1_TransmitTokraObservationData, work=500, secondaryWork=1000
+Recurrence context TokraTrust.Wary: 360000-720000 ticks
+Recurrence context TokraTrust.Neutral: 240000-480000 ticks
+Recurrence context TokraTrust.Cooperative: 180000-420000 ticks
+Recurrence context TokraTrust.Trusted: 360000-720000 ticks
+Difficulty: ThreatPointsScaled
+Skill XP reward: Intellectual +350
+Text bank cautiousSuccess: 3 variants
+Text bank acceleratedSuccess: 3 variants
+Text bank interferenceSuccess: 3 variants
+Objective cautious/AnalyzeThing: target=SG1_TokraOrganicDeadDrop, job=SG1_AnalyzeTokraOrganicIntelligence, work=10000, skill=Intellectual
+Objective accelerated/AnalyzeThing: target=SG1_TokraOrganicDeadDrop, job=SG1_AnalyzeTokraOrganicIntelligence, work=5000, skill=Intellectual
+Consequence accelerated -> succeeded/GrantSkillXp: target=Intellectual, value=150
+Consequence accelerated -> succeeded/QueueIncident: target=SG1_GoauldJaffaSignalPatrol, chance=0.35, delay=5000-12500, retry=2500
 ```
 
-Les lignes peuvent contenir des champs supplémentaires, mais aucune valeur observation ne doit provenir d'une définition C# de secours.
+La ligne de snapshot doit montrer un facteur `x0.35` et une valeur mise à l'échelle comprise entre `180` et `700` points.
 
-## 5. Offre et acceptation
+## 5. Offre et récupération du module
 
 Forcer :
 
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Tok'ra ops: force observation offer
+→ Tok'ra ops: force intelligence offer
 ```
 
 Vérifier :
 
-- offre reçue normalement au communicateur ;
-- action d'acceptation présente ;
-- acceptation réussie avec un colon capable en Travail intellectuel ;
-- dispositif livré et point d'observation créé ;
-- lettre de cible et message d'acceptation corrects ;
-- rapport technique associé à `SG1_TokraOrganic_GoauldObservation`.
+- offre et statut RP corrects au communicateur ;
+- acceptation possible avec un colon valide ;
+- apparition du module `SG1_TokraOrganicDeadDrop` ;
+- lettre de localisation et délai corrects ;
+- rapport technique associé à `SG1_TokraOrganic_IntelligenceRecovery` ;
+- snapshot de menace enregistré dès l'offre et stable après sauvegarde/rechargement.
 
-## 6. Flux complet et durées configurées
+## 6. Méthode prudente
 
-Suivre le flux normal sans forcer la résolution :
+Accepter une nouvelle occurrence, récupérer le module et choisir normalement la méthode prudente au communicateur.
 
-1. récupérer le dispositif ;
-2. choisir l'action de déploiement ;
-3. vérifier un travail de déploiement de `500` ticks ;
-4. maintenir le même opérateur au point d'observation ;
-5. vérifier `10000/10000` ticks au début de l'observation ;
-6. confirmer que le message annonce quatre heures ;
-7. vérifier la progression du Travail intellectuel pendant cette phase ;
-8. replier le dispositif après `500` ticks ;
-9. retourner au communicateur ;
-10. transmettre pendant `1000` ticks ;
-11. recevoir la lettre de réussite et la récompense attendue.
+Vérifier :
 
-Résultats attendus :
+- travail total `10000/10000` ticks ; la phase doit rester clairement perceptible à vitesse maximale ;
+- job `SG1_AnalyzeTokraOrganicIntelligence` ;
+- compétence `Intellectual` ;
+- méthode verrouillée une fois commencée ;
+- interruption puis reprise sans réinitialisation ;
+- réussite avec `350` XP intellectuels accordés une seule fois ;
+- variation de confiance identique à l'ancien flux ;
+- aucun incident Goa'uld mis en file par la méthode prudente ;
+- texte choisi dans `cautiousSuccess`.
 
-- aucune phase ne reprend les anciennes constantes `2500–5000` ticks ;
-- les quatre durées correspondent au rapport développeur ;
-- le dispositif, le marqueur et les deux jobs correspondent aux Defs indiqués ;
-- l'opérateur gagne de l'expérience dans la compétence active configurée, sans gain si cette compétence est désactivée ;
-- les `250` XP finaux sont accordés une seule fois à la compétence déclarée dans `skillXpRewards` ;
-- la conséquence de confiance reste inchangée ;
-- l'occurrence est nettoyée après résolution.
+## 7. Méthode accélérée sans interférence
 
-## 7. Interruption, sauvegarde et reprise
+Accepter une autre occurrence et choisir la méthode accélérée.
 
-Tester séparément :
+Vérifier :
 
-- sauvegarde/rechargement pendant l'offre ;
-- sauvegarde/rechargement après déploiement avec observation partiellement avancée ;
-- interruption du travail puis reprise depuis le point d'observation ;
-- sauvegarde/rechargement pendant la transmission ;
-- reprise de la transmission depuis le communicateur.
+- travail total `5000/5000` ticks ; la phase doit rester perceptible à vitesse maximale tout en étant nettement plus rapide que la méthode prudente ;
+- même module, job et compétence que la méthode prudente ;
+- `350 + 150 = 500` XP intellectuels au total, sans double attribution ;
+- résultat provenant de `acceleratedSuccess` lorsque l'interférence ne se déclenche pas ;
+- aucun nombre fixe d'ennemis ou de points de menace recalculé dans le flux joueur.
 
-Résultats attendus :
+Le tirage naturel étant aléatoire, ce test peut être répété ou complété par le test forcé suivant.
 
-- aucun reroll de texte ou d'objectif au chargement ;
-- total et progression déjà enregistrés conservés ;
-- aucune prolongation artificielle d'une occurrence existante ;
-- reprise avec les mêmes Defs, jobs et durées ;
-- résolution normale après la reprise.
+## 8. Interférence forcée et difficulté adaptative
 
-Une sauvegarde active créée sous `v0.3.23-dev` est recommandée pour vérifier que la migration prudente fonctionne encore sans définition C# de secours.
-
-## 8. Variantes de résultat et anti-répétition
-
-Réaliser plusieurs réussites, en utilisant les outils debug uniquement pour accélérer les phases lorsque nécessaire.
-
-Résultats attendus :
-
-- les trois textes `GR_TokraObservation_SuccessText1`, `2` et `3` peuvent apparaître ;
-- une variante ne se répète pas immédiatement lorsqu'au moins une alternative existe ;
-- le choix vient de `successLetterTexts` dans le MissionDef ;
-- sauvegarder puis recharger ne reroule pas une variante déjà sélectionnée.
-
-## 9. Échecs
-
-Tester deux cas :
-
-- laisser expirer le délai après acceptation ;
-- détruire le dispositif ou le point d'observation avant la transmission.
-
-Résultats attendus :
-
-- lettre d'échec correcte pour le délai ou la perte du dispositif ;
-- conséquence de confiance inchangée ;
-- nettoyage complet de l'occurrence ;
-- aucune ancienne clé ou valeur de secours utilisée ;
-- aucun XP final accordé sur un échec.
-
-## 10. Récurrence après observation
-
-Après une réussite ou un échec, consulter le rapport technique Tok'ra.
-
-Résultat attendu : le prochain délai est tiré dans la plage XML `240000–480000` ticks. Le joueur ne voit pas cette plage en jeu normal.
-
-Il n'est pas nécessaire d'attendre naturellement toute la durée. Le rapport technique ou une inspection de sauvegarde peut servir de preuve.
-
-## 11. Régression des opérations encore héritées
-
-Forcer successivement :
+Sur une occurrence accélérée active, utiliser :
 
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Tok'ra ops: force intelligence offer
+→ Tok'ra ops: force intelligence interference
+```
 
+Vérifier :
+
+- mise en file de `SG1_GoauldJaffaSignalPatrol` ;
+- délai de déclenchement compris entre `5000` et `12500` ticks ;
+- nouvelle tentative configurée à `2500` ticks si l'incident ne peut pas partir immédiatement ;
+- points de l'incident égaux au `scaled threat snapshot` de l'occurrence ;
+- résultat provenant de `interferenceSuccess` ;
+- le journal contient une ligne de la forme :
+
+```text
+Queued a small Goa'uld patrol after accelerated Tok'ra intelligence analysis; ... snapshot=<base>; points=<scaled>; fireTick=<tick>.
+```
+
+Pour confirmer l'absence de recalcul, noter le snapshot après l'offre, modifier sensiblement la richesse ou la situation de la colonie avant de forcer l'interférence, puis vérifier que `points=<scaled>` reste la valeur capturée à l'offre.
+
+Répéter ce contrôle sur :
+
+- une colonie faible, où la borne minimale de `180` points peut s'appliquer ;
+- une colonie avancée, dont le snapshot de base doit être supérieur et dont la valeur finale reste plafonnée à `700` points.
+
+Validation finale : les deux niveaux de colonie produisent des budgets adaptés et la patrouille consomme dans chaque cas la valeur capturée lors de l'offre.
+
+## 9. Variantes et anti-répétition
+
+Réaliser plusieurs réussites prudentes, accélérées simples et accélérées avec interférence.
+
+Résultats attendus :
+
+- chaque banque peut produire ses trois variantes ;
+- une même variante ne se répète pas immédiatement dans la même banque lorsqu'une alternative existe ;
+- les trois banques conservent des historiques indépendants ;
+- sauvegarder puis recharger ne reroule pas un résultat déjà sélectionné ;
+- aucun texte technique du MissionDef n'est visible en jeu normal.
+
+## 10. Échecs
+
+Tester séparément :
+
+- expiration de l'offre ;
+- expiration du délai après acceptation ;
+- destruction ou disparition du module avant la fin de l'analyse.
+
+Résultats attendus :
+
+- texte d'échec correspondant au cas réel ;
+- pénalité de confiance inchangée ;
+- aucun XP de réussite ;
+- aucune patrouille mise en file après l'échec ;
+- nettoyage complet de l'occurrence.
+
+## 11. Récurrence contextuelle
+
+Après résolution, vérifier le prochain délai selon le palier de confiance actif :
+
+- méfiante : `360000–720000` ticks ;
+- neutre : `240000–480000` ticks ;
+- coopérative : `180000–420000` ticks ;
+- fiable : `360000–720000` ticks.
+
+Le rapport technique ou l'inspection d'une sauvegarde suffit ; il n'est pas nécessaire d'attendre naturellement chaque délai. Ces valeurs ne doivent jamais être révélées dans l'interface joueur normale.
+
+## 12. Sauvegarde, rechargement et migration
+
+Tester :
+
+- sauvegarde/rechargement pendant l'offre ;
+- sauvegarde/rechargement après acceptation avant le choix de méthode ;
+- sauvegarde/rechargement à mi-analyse prudente avec total conservé à `10000` ;
+- sauvegarde/rechargement à mi-analyse accélérée avec total conservé à `5000` ;
+- sauvegarde/rechargement après mise en file de la patrouille ;
+- chargement d'une sauvegarde `v0.3.24-dev` avec une récupération de renseignements déjà offerte ou active.
+
+Résultats attendus :
+
+- même MissionDef, phase, méthode, total, progression et snapshot ;
+- aucune prolongation, réduction ou réinitialisation d'une analyse déjà commencée ;
+- aucun reroll de résultat ou d'interférence déjà résolu ;
+- migration prudente sans recréer le module ni dupliquer les récompenses.
+
+## 13. Régressions
+
+Pour les deux opérations encore héritées, utiliser :
+
+```text
 Debug actions menu
 → GateRim SG-1
 → Tok'ra ops: force wounded agent offer
@@ -234,19 +276,14 @@ Debug actions menu
 → Tok'ra ops: force medical handoff offer
 ```
 
-Vérifier pour chacune :
+Valider au minimum :
 
-- offre, acceptation et phase principale toujours accessibles ;
-- textes, objectifs et récompenses inchangés ;
-- définition toujours signalée comme `legacy C#` dans le rapport technique ;
-- leur planification continue d'utiliser la logique historique par niveau de confiance ;
-- aucune donnée de l'observation ne fuit vers ces opérations.
-
-## 12. Vérification finale
-
-- scénario SG et scénario vanilla chargés sans régression ;
+- mission d'observation complète, toujours pilotée par son MissionDef ;
+- offre et phase principale de l'agent Tok'ra blessé ;
+- offre et phase principale de la remise médicale ;
+- sélection organique et anti-répétition entre les quatre archétypes ;
+- scénario Équipe SG isolée et scénario vanilla ;
 - aucun outil technique visible hors mode développeur ou option avancée GateRim SG-1 ;
-- textes joueur naturels et non techniques ;
-- `Player.log` propre pour tout le périmètre testé.
+- `Player.log` propre.
 
-Validation fonctionnelle terminée sur `r1`. Le tag final publié est `v0.3.24-dev`.
+Validation complète terminée sur `r2`. Branche, tag final unique `v0.3.25-dev` et wiki publiés selon `docs/MILESTONE_PUBLICATION.md`.

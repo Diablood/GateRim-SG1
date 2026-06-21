@@ -11,6 +11,29 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
+## Dernier jalon clôturé — Migration de la récupération de renseignements (`0.3.25-dev`)
+
+- [x] Partir explicitement de `v0.3.24-dev` sur `feature/intelligence-recovery-mission-migration`.
+- [x] Ajouter un MissionDef complet pour la récupération de renseignements Tok'ra.
+- [x] Déplacer dans XML le module, le job, la compétence, les durées prudente et accélérée et les récompenses d'XP.
+- [x] Déplacer dans XML tous les textes du flux et trois banques nommées de résultats avec anti-répétition locale.
+- [x] Ajouter des plages de récurrence configurables par palier de confiance et les faire consommer par le planificateur.
+- [x] Déplacer dans XML la chance d'interférence, l'IncidentDef de patrouille, son délai et son délai de nouvelle tentative.
+- [x] Dimensionner la patrouille à partir du snapshot de menace capturé à l'offre, avec facteur et bornes configurés.
+- [x] Supprimer la définition C# complète de secours de cette opération.
+- [x] Valider explicitement les Defs requis, le profil de difficulté et les quatre plages de récurrence contextuelles.
+- [x] Étendre le rapport développeur aux banques nommées, délais contextuels et paramètres des conséquences.
+- [x] Valider le contrôle de cohérence et le rebuild `0.3.25.0`.
+- [x] Valider sur `r2` les durées rééquilibrées à `10000` ticks en méthode prudente et `5000` ticks en méthode accélérée.
+- [x] Valider l'interférence forcée et l'utilisation du budget de menace capturé sur une colonie faible et une colonie avancée.
+- [x] Valider les variantes RP, l'anti-répétition, les échecs, la récurrence et la sauvegarde/recharge, puis recontrôler la persistance des nouveaux totaux sur `r2`.
+- [x] Valider les régressions des trois autres opérations organiques et `Player.log`.
+- [x] Clôturer le jalon, publier le tag final unique `v0.3.25-dev` et synchroniser le wiki.
+
+Le jalon doit prouver une nouvelle capacité avec un cas réel : la difficulté adaptative ne doit plus rester une simple donnée enregistrée. La patrouille de la méthode accélérée doit utiliser les points de menace capturés au moment de l'offre, sans recalcul opportuniste au moment de la conséquence.
+
+La révision `r2` valide les durées finales de `10000` et `5000` ticks, leur persistance, les récompenses, les conséquences et l'ensemble du flux migré. La menace adaptative a été contrôlée sur une colonie faible et une colonie avancée : la patrouille consomme le snapshot mis à l'échelle capturé lors de l'offre, borné entre `180` et `700` points, sans recalcul lors du déclenchement. Le jalon est publié sous le tag final unique `v0.3.25-dev`.
+
 ## Dernier jalon clôturé — Migration Def complète de l'observation (`0.3.24-dev`)
 
 - [x] Partir explicitement de `v0.3.23-dev` sur `feature/observation-mission-def-cleanup`.

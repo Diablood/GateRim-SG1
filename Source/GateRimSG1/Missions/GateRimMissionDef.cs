@@ -19,6 +19,13 @@ namespace GateRimSG1.Missions
         public float weight = 1f;
     }
 
+    public sealed class GateRimMissionContextDelayDef
+    {
+        public string contextKey;
+        public int minimumDelayTicks;
+        public int maximumDelayTicks;
+    }
+
     public sealed class GateRimMissionTimingDef
     {
         public int offerDurationTicks;
@@ -33,6 +40,8 @@ namespace GateRimSG1.Missions
         public int maximumDelayTicks;
         public List<GateRimMissionContextWeight> contextWeights
             = new List<GateRimMissionContextWeight>();
+        public List<GateRimMissionContextDelayDef> contextDelays
+            = new List<GateRimMissionContextDelayDef>();
 
         public float GetWeight(string contextKey)
         {
@@ -58,6 +67,30 @@ namespace GateRimSG1.Missions
             weight = match.weight;
             return true;
         }
+
+        public bool TryGetDelayRange(
+            string contextKey,
+            out int minimumDelay,
+            out int maximumDelay)
+        {
+            GateRimMissionContextDelayDef match = contextDelays?
+                .FirstOrDefault(item => item != null
+                    && string.Equals(
+                        item.contextKey,
+                        contextKey,
+                        StringComparison.OrdinalIgnoreCase));
+
+            if (match == null)
+            {
+                minimumDelay = 0;
+                maximumDelay = 0;
+                return false;
+            }
+
+            minimumDelay = match.minimumDelayTicks;
+            maximumDelay = match.maximumDelayTicks;
+            return true;
+        }
     }
 
     public sealed class GateRimMissionDifficultyDef
@@ -81,6 +114,13 @@ namespace GateRimSG1.Missions
         public string key;
     }
 
+    public sealed class GateRimMissionNamedTextBankDef
+    {
+        public string id;
+        public List<GateRimMissionTextVariantDef> texts
+            = new List<GateRimMissionTextVariantDef>();
+    }
+
     public sealed class GateRimMissionTextBankDef
     {
         public string offerLetterLabelKey;
@@ -96,6 +136,8 @@ namespace GateRimSG1.Missions
             = new List<GateRimMissionTextVariantDef>();
         public List<GateRimMissionNamedTextDef> runtimeTexts
             = new List<GateRimMissionNamedTextDef>();
+        public List<GateRimMissionNamedTextBankDef> namedTextBanks
+            = new List<GateRimMissionNamedTextBankDef>();
 
         public string GetRuntimeTextKey(string id)
         {
@@ -109,6 +151,20 @@ namespace GateRimSG1.Missions
                     item.id,
                     id,
                     StringComparison.OrdinalIgnoreCase))?.key;
+        }
+
+        public List<GateRimMissionTextVariantDef> GetNamedTextBank(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id) || namedTextBanks == null)
+            {
+                return null;
+            }
+
+            return namedTextBanks.FirstOrDefault(item => item != null
+                && string.Equals(
+                    item.id,
+                    id,
+                    StringComparison.OrdinalIgnoreCase))?.texts;
         }
     }
 
@@ -172,6 +228,10 @@ namespace GateRimSG1.Missions
         public string targetDefName;
         public float value;
         public string textKey;
+        public float chance = 1f;
+        public int minimumDelayTicks;
+        public int maximumDelayTicks;
+        public int retryTicks;
     }
 
     public sealed class GateRimMissionTransitionDef
@@ -290,6 +350,54 @@ namespace GateRimSG1.Missions
             return texts?.GetRuntimeTextKey(id);
         }
 
+        public List<GateRimMissionTextVariantDef> GetNamedTextBank(string id)
+        {
+            return texts?.GetNamedTextBank(id);
+        }
+
+        public GateRimMissionConsequenceDef GetPhaseConsequence(
+            string phaseId,
+            string consequenceType)
+        {
+            if (string.IsNullOrWhiteSpace(consequenceType))
+            {
+                return null;
+            }
+
+            return GetPhase(phaseId)?.onEnterConsequences?.FirstOrDefault(
+                consequence => consequence != null
+                    && string.Equals(
+                        consequence.consequenceType,
+                        consequenceType,
+                        StringComparison.OrdinalIgnoreCase));
+        }
+
+        public GateRimMissionConsequenceDef GetTransitionConsequence(
+            string phaseId,
+            string targetPhaseId,
+            string consequenceType)
+        {
+            if (string.IsNullOrWhiteSpace(targetPhaseId)
+                || string.IsNullOrWhiteSpace(consequenceType))
+            {
+                return null;
+            }
+
+            GateRimMissionTransitionDef transition = GetPhase(phaseId)?
+                .transitions?.FirstOrDefault(item => item != null
+                    && string.Equals(
+                        item.targetPhaseId,
+                        targetPhaseId,
+                        StringComparison.OrdinalIgnoreCase));
+
+            return transition?.consequences?.FirstOrDefault(
+                consequence => consequence != null
+                    && string.Equals(
+                        consequence.consequenceType,
+                        consequenceType,
+                        StringComparison.OrdinalIgnoreCase));
+        }
+
         public override IEnumerable<string> ConfigErrors()
         {
             foreach (string error in base.ConfigErrors())
@@ -372,6 +480,37 @@ namespace GateRimSG1.Missions
                         else if (contextWeight.weight < 0f)
                         {
                             yield return $"recurrence weight for {contextWeight.contextKey} cannot be negative";
+                        }
+                    }
+                }
+
+                if (recurrence.contextDelays != null)
+                {
+                    HashSet<string> delayContextKeys = new HashSet<string>(
+                        StringComparer.OrdinalIgnoreCase);
+
+                    foreach (GateRimMissionContextDelayDef contextDelay
+                        in recurrence.contextDelays)
+                    {
+                        if (contextDelay == null
+                            || string.IsNullOrWhiteSpace(contextDelay.contextKey))
+                        {
+                            yield return "recurrence context delays require a contextKey";
+                            continue;
+                        }
+
+                        if (!delayContextKeys.Add(contextDelay.contextKey))
+                        {
+                            yield return "duplicate recurrence delay context: "
+                                + contextDelay.contextKey;
+                        }
+
+                        if (contextDelay.minimumDelayTicks < 0
+                            || contextDelay.maximumDelayTicks
+                                < contextDelay.minimumDelayTicks)
+                        {
+                            yield return "recurrence delay range for "
+                                + contextDelay.contextKey + " is invalid";
                         }
                     }
                 }
@@ -463,6 +602,49 @@ namespace GateRimSG1.Missions
                     if (!runtimeTextIds.Add(runtimeText.id))
                     {
                         yield return $"duplicate runtime text id: {runtimeText.id}";
+                    }
+                }
+            }
+
+            if (texts?.namedTextBanks != null)
+            {
+                HashSet<string> bankIds = new HashSet<string>(
+                    StringComparer.OrdinalIgnoreCase);
+
+                foreach (GateRimMissionNamedTextBankDef bank
+                    in texts.namedTextBanks)
+                {
+                    if (bank == null || string.IsNullOrWhiteSpace(bank.id))
+                    {
+                        yield return "named text banks require an id";
+                        continue;
+                    }
+
+                    if (!bankIds.Add(bank.id))
+                    {
+                        yield return "duplicate named text bank id: " + bank.id;
+                    }
+
+                    if (bank.texts == null || bank.texts.Count == 0)
+                    {
+                        yield return "named text bank " + bank.id
+                            + " requires at least one text variant";
+                        continue;
+                    }
+
+                    foreach (GateRimMissionTextVariantDef variant in bank.texts)
+                    {
+                        if (variant == null
+                            || string.IsNullOrWhiteSpace(variant.key))
+                        {
+                            yield return "named text bank " + bank.id
+                                + " contains a variant without a key";
+                        }
+                        else if (variant.weight <= 0f)
+                        {
+                            yield return "named text bank " + bank.id
+                                + " contains a non-positive variant weight";
+                        }
                     }
                 }
             }
@@ -606,6 +788,16 @@ namespace GateRimSG1.Missions
                                     + $"{transition.targetPhaseId} contains "
                                     + "a consequence without consequenceType";
                             }
+                            else
+                            {
+                                foreach (string error in ValidateConsequence(
+                                    consequence,
+                                    $"transition {phase.id} -> "
+                                        + transition.targetPhaseId))
+                                {
+                                    yield return error;
+                                }
+                            }
                         }
                     }
 
@@ -621,8 +813,45 @@ namespace GateRimSG1.Missions
                             yield return $"phase {phase.id} contains an "
                                 + "entry consequence without consequenceType";
                         }
+                        else
+                        {
+                            foreach (string error in ValidateConsequence(
+                                consequence,
+                                "phase " + phase.id))
+                            {
+                                yield return error;
+                            }
+                        }
                     }
                 }
+            }
+        }
+
+        private static IEnumerable<string> ValidateConsequence(
+            GateRimMissionConsequenceDef consequence,
+            string owner)
+        {
+            if (consequence.chance < 0f || consequence.chance > 1f)
+            {
+                yield return owner + " consequence "
+                    + consequence.consequenceType
+                    + " must use a chance between 0 and 1";
+            }
+
+            if (consequence.minimumDelayTicks < 0
+                || consequence.maximumDelayTicks
+                    < consequence.minimumDelayTicks)
+            {
+                yield return owner + " consequence "
+                    + consequence.consequenceType
+                    + " has an invalid delay range";
+            }
+
+            if (consequence.retryTicks < 0)
+            {
+                yield return owner + " consequence "
+                    + consequence.consequenceType
+                    + " cannot use a negative retry delay";
             }
         }
     }
