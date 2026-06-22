@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraDistressCall_OfferLabel>Broken Tok'ra distress signal</GR_TokraDistressCall_OfferLabel>
+    <GR_TokraDistressCall_OfferText1>A Tok'ra emergency transmission has reached the secure channel. The signal is weak, incomplete and already fading. A cell may have been attacked beyond the colony's immediate reach. Accepting the request will reveal the source for about {0} hours. The Tok'ra cannot confirm who, or what, is still there.</GR_TokraDistressCall_OfferText1>
+    <GR_TokraDistressCall_OfferText2>The communicator has isolated a short Tok'ra distress burst from a nearby region. No reply follows the first call, and several parts of the authentication sequence are missing. The cell asks the colony to investigate before the trail goes cold. The source can be fixed for about {0} hours.</GR_TokraDistressCall_OfferText2>
+    <GR_TokraDistressCall_OfferText3>A damaged Tok'ra beacon is repeating a narrow-band request for aid. The message names no survivors and gives no account of the attack. The cell can expose the location for about {0} hours, but warns that Goa'uld forces may still be close.</GR_TokraDistressCall_OfferText3>
+    <GR_TokraDistressCall_OfferExpired>The broken Tok'ra signal has vanished before the colony committed to an expedition.</GR_TokraDistressCall_OfferExpired>
+    <GR_TokraDistressCall_Accepted>{0} has accepted the Tok'ra distress call. The signal source will remain traceable for about {1} hours.</GR_TokraDistressCall_Accepted>
+    <GR_TokraDistressCall_SuccessLabel>Tok'ra distress site secured</GR_TokraDistressCall_SuccessLabel>
+    <GR_TokraDistressCall_FailureLabel>Tok'ra distress call lost</GR_TokraDistressCall_FailureLabel>
+    <GR_TokraDistressCall_SuccessText1>The expedition has broken the Goa'uld presence around the signal source and denied the enemy control of the site. The Tok'ra acknowledge the colony's intervention.</GR_TokraDistressCall_SuccessText1>
+    <GR_TokraDistressCall_SuccessText2>The distress site is no longer in Goa'uld hands. Whatever remained there has been secured, and the Tok'ra cell records the colony as an ally willing to answer an uncertain call.</GR_TokraDistressCall_SuccessText2>
+    <GR_TokraDistressCall_SuccessText3>The operation at the signal source is complete. The Tok'ra confirm that the colony's response prevented the situation from becoming a further advantage for the Goa'uld.</GR_TokraDistressCall_SuccessText3>
+    <GR_TokraDistressCall_SpawnFailed>The Tok'ra cannot isolate a viable route to the distress signal. The request remains open.</GR_TokraDistressCall_SpawnFailed>
+    <GR_TokraDistressCall_TargetLetterLabel>Tok'ra distress source located</GR_TokraDistressCall_TargetLetterLabel>
+    <GR_TokraDistressCall_TargetLetterText>The Tok'ra have marked the signal source on the world map. A caravan must reach and enter the site within about {0} hours. The situation will remain unknown until arrival.</GR_TokraDistressCall_TargetLetterText>
+    <GR_TokraDistressCall_FailureTimeout>The expedition did not resolve the distress call before the signal window closed. The site is lost, and the Tok'ra have no further contact from those who sent the transmission.</GR_TokraDistressCall_FailureTimeout>
+    <GR_TokraDistressCall_FailureSiteLost>The marked distress site can no longer be reached. The Tok'ra channel closes without an answer.</GR_TokraDistressCall_FailureSiteLost>
+    <GR_TokraDistressCall_FailureSurvivorsLost>No Tok'ra survivor escaped the site. The cell records the operation as a failed rescue.</GR_TokraDistressCall_FailureSurvivorsLost>
+    <GR_TokraDistressCall_Accept>Answer the Tok'ra distress call</GR_TokraDistressCall_Accept>
+    <GR_TokraDistressCall_StatusOffered>Unanswered Tok'ra distress call</GR_TokraDistressCall_StatusOffered>
+    <GR_TokraDistressCall_StatusActive>Distress site available ({0} h remaining)</GR_TokraDistressCall_StatusActive>
+    <GR_TokraDistressCall_StatusReady>Distress expedition underway</GR_TokraDistressCall_StatusReady>
+    <GR_TokraDistressCall_TrustSucceeded>The Tok'ra remember that the colony answered a call whose outcome was uncertain.</GR_TokraDistressCall_TrustSucceeded>
+    <GR_TokraDistressCall_TrustFailed>The Tok'ra cell becomes more reluctant to entrust the colony with lives in immediate danger.</GR_TokraDistressCall_TrustFailed>
+    <GR_TokraDistressCall_TravelCommandLabel>Travel to the Tok'ra distress signal</GR_TokraDistressCall_TravelCommandLabel>
+    <GR_TokraDistressCall_EnterCommandLabel>Enter the distress site</GR_TokraDistressCall_EnterCommandLabel>
+    <GR_TokraDistressCall_AlreadyEntered>operation already entered</GR_TokraDistressCall_AlreadyEntered>
+    <GR_TokraDistressCall_EnterRequiresCaravan>A player caravan must be present at the signal source.</GR_TokraDistressCall_EnterRequiresCaravan>
+    <GR_TokraDistressCall_InspectResolvedSuccess>The distress operation has been resolved.</GR_TokraDistressCall_InspectResolvedSuccess>
+    <GR_TokraDistressCall_InspectResolvedFailure>The distress operation has failed.</GR_TokraDistressCall_InspectResolvedFailure>
+    <GR_TokraDistressCall_InspectActive>The true situation has been revealed. The expedition is active.</GR_TokraDistressCall_InspectActive>
+    <GR_TokraDistressCall_InspectPending>The source remains uncertain. About {0} hours remain.</GR_TokraDistressCall_InspectPending>
+    <GR_TokraDistressCall_ArrivalLabel>Distress signal revealed</GR_TokraDistressCall_ArrivalLabel>
+    <GR_TokraDistressCall_ArrivalRescueText>The transmission was genuine. {0} Tok'ra survivor(s) lie within an attacked position, while {1} Goa'uld-aligned fighter(s) still control the area. Break the enemy presence and tend the symbiote shock in the field. Once the site is secure, a Tok'ra recovery team can extract stabilized survivors.</GR_TokraDistressCall_ArrivalRescueText>
+    <GR_TokraDistressCall_ArrivalTrapText>The authentication was compromised. No Tok'ra survivors are waiting here; the signal was used to draw the expedition into an ambush. {1} Goa'uld-aligned fighter(s) are moving to close the trap.</GR_TokraDistressCall_ArrivalTrapText>
+    <GR_TokraDistressCall_ArrivalLateText>The expedition has arrived after the Tok'ra position collapsed. No allied survivor remains. {1} Goa'uld-aligned fighter(s) are still searching the site, and a small cache may yet be recovered.</GR_TokraDistressCall_ArrivalLateText>
+    <GR_TokraDistressCall_CareReceived>{0} has received the essential field treatment for the symbiote shock.</GR_TokraDistressCall_CareReceived>
+    <GR_TokraDistressCall_ApproachingReport>Approaching the Tok'ra distress signal.</GR_TokraDistressCall_ApproachingReport>
+    <GR_TokraDistressCall_EvacuationInbound>{0} is stabilized. A Tok'ra recovery team is moving toward the site.</GR_TokraDistressCall_EvacuationInbound>
+    <GR_TokraDistressCall_RecoveryTeamArrived>A Tok'ra recovery team has entered the area. Its members will carry downed survivors out of the area and escort anyone able to walk.</GR_TokraDistressCall_RecoveryTeamArrived>
+    <GR_TokraDistressCall_SurvivorEvacuated>{0} has been recovered from the site.</GR_TokraDistressCall_SurvivorEvacuated>
+    <GR_TokraDistressCall_SurvivorDeparting>{0} is stable enough to withdraw from the site.</GR_TokraDistressCall_SurvivorDeparting>
+    <GR_TokraDistressCall_DebugForcedRescue>Forced a genuine Tok'ra rescue offer.</GR_TokraDistressCall_DebugForcedRescue>
+    <GR_TokraDistressCall_DebugForcedTrap>Forced a compromised Tok'ra distress signal.</GR_TokraDistressCall_DebugForcedTrap>
+    <GR_TokraDistressCall_DebugForcedLate>Forced a late-arrival Tok'ra distress site.</GR_TokraDistressCall_DebugForcedLate>
+</LanguageData>

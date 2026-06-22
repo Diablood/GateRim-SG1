@@ -121,6 +121,51 @@ namespace GateRimSG1.Missions
         public float optionalIllnessSeverityMaximum;
     }
 
+    public sealed class GateRimMissionDistressCallDef
+    {
+        public string worldObjectDefName;
+        public string survivorPawnKindDefName;
+        public string salvageThingDefName;
+        public string salvageContainerDefName = "Shelf";
+        public int minimumTileDistance = 6;
+        public int maximumTileDistance = 18;
+        public int mapSize = 120;
+        public int lateArrivalTicks = 120000;
+        public int survivorMinimumCount = 1;
+        public int survivorMaximumCount = 3;
+        public int defenderMinimumCount = 2;
+        public int defenderMaximumCount = 8;
+        public int salvageMinimumCount = 4;
+        public int salvageMaximumCount = 10;
+        public float genuineRescueWeight = 0.50f;
+        public float compromisedSignalWeight = 0.30f;
+        public float lateArrivalWeight = 0.20f;
+        public float genuineRescueThreatFactor = 0.65f;
+        public float compromisedSignalThreatFactor = 1.00f;
+        public float lateArrivalThreatFactor = 0.75f;
+        public int evacuationDelayTicks = 1200;
+        public string recoveryPawnKindDefName;
+        public int recoveryTeamDelayTicks = 600;
+        public int recoveryTeamRetryTicks = 1200;
+        public int recoveryTeamMinimumCount = 2;
+        public int recoveryTeamMaximumCount = 3;
+        public int preferredEntryRadius = 18;
+        public float genuineRescueTemporaryCampChance = 0.55f;
+        public float lateArrivalOverrunCampChance = 0.70f;
+        public int rescueTokraCorpseMinimumCount;
+        public int rescueTokraCorpseMaximumCount = 1;
+        public int rescueJaffaCorpseMinimumCount;
+        public int rescueJaffaCorpseMaximumCount = 2;
+        public int trapTokraCorpseMinimumCount;
+        public int trapTokraCorpseMaximumCount = 1;
+        public int trapJaffaCorpseMinimumCount;
+        public int trapJaffaCorpseMaximumCount = 1;
+        public int lateTokraCorpseMinimumCount = 1;
+        public int lateTokraCorpseMaximumCount = 3;
+        public int lateJaffaCorpseMinimumCount;
+        public int lateJaffaCorpseMaximumCount = 2;
+    }
+
     public sealed class GateRimMissionHandoffDef
     {
         public string liaisonPawnKindDefName;
@@ -302,6 +347,7 @@ namespace GateRimSG1.Missions
         public GateRimMissionDifficultyDef difficulty
             = new GateRimMissionDifficultyDef();
         public GateRimMissionPawnCareDef pawnCare;
+        public GateRimMissionDistressCallDef distressCall;
         public GateRimMissionHandoffDef handoff;
         public GateRimMissionTextBankDef texts
             = new GateRimMissionTextBankDef();

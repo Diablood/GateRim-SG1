@@ -1342,6 +1342,72 @@ namespace GateRimSG1.Goauld
                 TokraOrganicOperationArchetype.MedicalSupplyHandoff);
         }
 
+        public static bool DebugForceDistressCallOpportunity(
+            Map map,
+            TokraDistressCallVariant variant)
+        {
+            if (!DebugForceSpecificOpportunity(
+                    map,
+                    TokraOrganicOperationArchetype.DistressCall))
+            {
+                return false;
+            }
+
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            TokraDistressCallMissionUtility.SetRuntimeCounter(
+                manager?.activeOperation?.frameworkRuntime,
+                TokraDistressCallMissionUtility.ForcedVariantCounterKey,
+                (int)variant);
+            return manager != null;
+        }
+
+        public static bool NotifyDistressCallSiteResolved(
+            WorldObject_TokraDistressCallSite site,
+            bool succeeded,
+            string failureTextId)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || site == null
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.DistressCall
+                || (manager.activeState
+                        != TokraOrganicOperationState.Accepted
+                    && manager.activeState
+                        != TokraOrganicOperationState.Ready))
+            {
+                return false;
+            }
+
+            WorldObject_TokraDistressCallSite activeSite
+                = TokraDistressCallMissionUtility.FindWorldSite(
+                    manager.activeOperation.frameworkRuntime);
+
+            if (activeSite == null || activeSite.ID != site.ID)
+            {
+                return false;
+            }
+
+            TokraOrganicOperationDefinition definition
+                = manager.GetActiveDefinition();
+            string failureTextKey = succeeded
+                || string.IsNullOrWhiteSpace(failureTextId)
+                    ? null
+                    : definition?.GetRuntimeTextKey(failureTextId);
+
+            return manager.TryResolveActiveOperation(
+                succeeded
+                    ? TokraOrganicOperationOutcome.Succeeded
+                    : TokraOrganicOperationOutcome.Failed,
+                null,
+                failureTextKey,
+                bypassSuccessValidation: true);
+        }
+
         public static bool DebugAcceptActiveOffer(Map map)
         {
             GameComponent_TokraOrganicOperationManager manager
@@ -1495,6 +1561,16 @@ namespace GateRimSG1.Goauld
                 + (manager.activeWoundedAgent?.LabelShortCap ?? "none")
                 + "\nMedical liaison: "
                 + (manager.activeMedicalSupplyLiaison?.LabelShortCap ?? "none")
+                + "\nDistress site: "
+                + (TokraDistressCallMissionUtility.FindWorldSite(
+                        manager.activeOperation.frameworkRuntime)?.ID.ToString()
+                    ?? "none")
+                + " | planned variant: "
+                + ((TokraDistressCallVariant)TokraDistressCallMissionUtility
+                    .GetRuntimeCounter(
+                        manager.activeOperation.frameworkRuntime,
+                        TokraDistressCallMissionUtility.VariantCounterKey,
+                        0))
                 + "\nMission Def: "
                 + (manager.activeOperation.frameworkRuntime?.missionDefName
                     ?? "legacy C#")
@@ -1535,7 +1611,7 @@ namespace GateRimSG1.Goauld
                 = GameComponent_TokraTrustTracker.GetCurrentTier();
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             StringBuilder report = new StringBuilder();
-            bool passed = definitions.Count >= 4;
+            bool passed = definitions.Count >= 5;
 
             report.AppendLine("Tok'ra long-term orchestration audit");
             report.AppendLine("Definitions: " + definitions.Count);
@@ -1994,6 +2070,13 @@ namespace GateRimSG1.Goauld
                     = manager.GetActiveDefinition()
                         ?.GetRuntimeTextKey("failureTimeout");
             }
+            else if (manager.activeArchetype
+                == TokraOrganicOperationArchetype.DistressCall)
+            {
+                failureTextKey
+                    = manager.GetActiveDefinition()
+                        ?.GetRuntimeTextKey("failureTimeout");
+            }
 
             return manager.TryResolveActiveOperation(
                 TokraOrganicOperationOutcome.Failed,
@@ -2116,10 +2199,15 @@ namespace GateRimSG1.Goauld
                             ? definition.GetRuntimeTextKey("failureLost")
                             : definition.Archetype
                                 == TokraOrganicOperationArchetype
-                                    .GoauldObservation
+                                    .DistressCall
                                 ? definition.GetRuntimeTextKey(
-                                    "failureDeviceLost")
-                                : definition.HasPhysicalObjective
+                                    "failureSiteLost")
+                                : definition.Archetype
+                                    == TokraOrganicOperationArchetype
+                                        .GoauldObservation
+                                    ? definition.GetRuntimeTextKey(
+                                        "failureDeviceLost")
+                                    : definition.HasPhysicalObjective
                                     ? definition.GetRuntimeTextKey(
                                         "failureObjectiveLost")
                                     : null;
@@ -2175,6 +2263,41 @@ namespace GateRimSG1.Goauld
             }
 
             worker.Tick(this, currentTick);
+        }
+
+        internal void TickAcceptedDistressCall(int currentTick)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            if (definition == null)
+            {
+                return;
+            }
+
+            WorldObject_TokraDistressCallSite site
+                = TokraDistressCallMissionUtility.FindWorldSite(
+                    activeOperation.frameworkRuntime);
+
+            if (site == null)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureSiteLost"),
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            if (operationDeadlineTick > 0
+                && currentTick >= operationDeadlineTick)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureTimeout"),
+                    bypassSuccessValidation: true);
+            }
         }
 
         internal void TickAcceptedMedicalSupply(int currentTick)
@@ -3645,6 +3768,72 @@ namespace GateRimSG1.Goauld
                 null);
         }
 
+        internal bool TryAcceptDistressCall(
+            Map map,
+            Pawn operatorPawn)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+            WorldObject_TokraDistressCallSite site;
+
+            if (definition == null
+                || definition.DistressCall == null
+                || map == null
+                || runtime == null)
+            {
+                return false;
+            }
+
+            if (!TokraDistressCallMissionUtility.TryCreateWorldSite(
+                    map,
+                    definition,
+                    runtime,
+                    out site))
+            {
+                Messages.Message(
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            reportReadyTick = currentTick;
+            operationDeadlineTick = currentTick + definition.DeadlineTicks;
+            readyNotificationSent = false;
+            resolutionApplied = false;
+            activeDeadDrop = null;
+
+            NotifyMissionAccepted(map, operatorPawn);
+
+            Messages.Message(
+                definition.AcceptedMessageKey.Translate(
+                    operatorPawn?.LabelShortCap ?? "?",
+                    GetRoundedUpHours(definition.DeadlineTicks).ToString()),
+                site,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.LetterStack?.ReceiveLetter(
+                definition.GetRuntimeTextKey("targetLetterLabel").Translate(),
+                definition.GetRuntimeTextKey("targetLetterText").Translate(
+                    GetRoundedUpHours(definition.DeadlineTicks).ToString()),
+                LetterDefOf.NeutralEvent,
+                site);
+
+            GR_Log.Message(
+                "Accepted Tok'ra distress-call operation on map "
+                + $"{map.uniqueID}; world site {site.ID} at tile "
+                + $"{site.Tile}; deadline {operationDeadlineTick}; "
+                + $"operator {operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
         internal bool TryAcceptMedicalSupplyHandoff(
             Map map,
             Pawn operatorPawn)
@@ -4230,6 +4419,33 @@ namespace GateRimSG1.Goauld
             Pawn patient,
             int intellectualXp)
         {
+            if (definition.Archetype
+                == TokraOrganicOperationArchetype.DistressCall)
+            {
+                if (outcome == TokraOrganicOperationOutcome.Succeeded)
+                {
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.SuccessLetterLabelKey.Translate(),
+                        GetMissionSuccessTextKey(definition).Translate(),
+                        LetterDefOf.PositiveEvent,
+                        letterTarget);
+                }
+                else
+                {
+                    string textKey = string.IsNullOrEmpty(failureTextKey)
+                        ? definition.GetRuntimeTextKey("failureTimeout")
+                        : failureTextKey;
+
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.FailureLetterLabelKey.Translate(),
+                        textKey.Translate(),
+                        LetterDefOf.NegativeEvent,
+                        letterTarget);
+                }
+
+                return;
+            }
+
             if (definition.Archetype
                 == TokraOrganicOperationArchetype.WoundedAgentCare)
             {
@@ -5322,6 +5538,14 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
             else if (definition.Archetype
+                == TokraOrganicOperationArchetype.DistressCall)
+            {
+                status = definition.ActiveStatusKey.Translate(
+                    GetRoundedUpHours(
+                        operationDeadlineTick - currentTick).ToString())
+                    .ToString();
+            }
+            else if (definition.Archetype
                 == TokraOrganicOperationArchetype.GoauldObservation)
             {
                 if (!observationDeviceDeployed)
@@ -5574,6 +5798,14 @@ namespace GateRimSG1.Goauld
             bool destroyObjective = true,
             bool removeLivingPatient = true)
         {
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.DistressCall)
+            {
+                TokraDistressCallMissionUtility.FindWorldSite(
+                        activeOperation.frameworkRuntime)
+                    ?.NotifyManagerResolved(false);
+            }
+
             if (destroyObjective)
             {
                 DestroyActiveObjective();

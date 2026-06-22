@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.28-dev`
+> Dernière révision : `0.3.29-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -45,8 +45,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
-| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation de terrain via un site visuellement explicite, analyse d'un module de renseignement au communicateur avec choix prudent ou accéléré, accueil prolongé d'un agent blessé à la récupération symbiotique affaiblie et remise de deux médicaments à un agent Tok'ra en visite ; refus sans pénalité, conséquence après engagement accepté | 0.2.48-dev à 0.3.4-dev |
-| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; quatre opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant audité pour le slot unique, l'éligibilité avant tirage, les délais cachés et l'anti-répétition | 0.3.23-dev à 0.3.28-dev |
+| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation de terrain, analyse d'un module de renseignement, accueil prolongé d'un agent blessé, remise de médicaments et appel de détresse vers un site mondial temporaire ; refus sans pénalité avant engagement, conséquences après acceptation | 0.2.48-dev à 0.3.29-dev |
+| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; cinq opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant avec slot unique, éligibilité avant tirage, délais cachés et anti-répétition | 0.3.23-dev à 0.3.29-dev |
+| Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
@@ -100,13 +101,13 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
-| Opérations Tok'ra organiques | Framework récurrent avec observation de terrain, analyse de renseignements, accueil médical prolongé d'un agent blessé et remise médicale | 0.2.48-dev à 0.3.4-dev |
+| Opérations Tok'ra organiques | Framework récurrent avec observation de terrain, analyse de renseignements, accueil médical prolongé d'un agent blessé, remise médicale et appel de détresse sur site mondial | 0.2.48-dev à 0.3.29-dev |
 
 ## Prévu
 
 | Élément | Direction actuelle |
 |---|---|
-| Diversification des opérations Tok'ra | Prochains jalons : appel à l'aide sur site mondial temporaire avec variantes cachées, puis livraison vers une base temporaire avec cargaison configurable et risques d'interception ; missions évolutives et rééquilibrables après tests prolongés |
+| Diversification des opérations Tok'ra | Prochain jalon : livraison vers une base temporaire avec cargaison configurable et risques d'interception ; missions évolutives et rééquilibrables après tests prolongés |
 | Introduction et déblocage des opérations Tok'ra | Mission unique avec combat donnant un objet-clé, recherche GateRim SG-1 dédiée avec prérequis Électricité, puis construction du communicateur avant l'accès au pool récurrent ; détails et positionnement de jalon à définir |
 | Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |

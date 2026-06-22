@@ -1,5 +1,40 @@
 # Tests
 
+## 0.3.29-dev - Appel de détresse Tok'ra sur site mondial
+
+Validation locale terminée sur la révision `r7`, puis jalon publié sous `v0.3.29-dev`. Les révisions intermédiaires ont corrigé l'entrée de caravane, la cohérence de la scène, l'extraction visible, le rebuild non incrémentiel et la présentation physique de la récompense.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.29-dev`, `0.3.29.0` et `83` backstories ;
+- rebuild forcé non incrémentiel et DLL `0.3.29.0` ;
+- chargement de cinq MissionDefs organiques et du profil de site mondial sans erreur XML ou traduction ;
+- offre, acceptation, création du site, action d'arrivée persistante, chargement automatique de la carte, pause hostile vanilla et colons enrôlés ;
+- situations cachées secours réel, signal compromis et arrivée trop tardive, avec dégradation temporelle du secours ;
+- scène ancrée cohérente sur plusieurs générations : survivants, Jaffa, camp ou caravane attaquée, débris, corps optionnels et entrée raisonnablement proche ;
+- menace Goa'uld/Jaffa dimensionnée depuis le snapshot capturé à l'offre, testée sur des colonies de puissance différente ;
+- traitement réel du choc du symbiote directement au sol, sans lit, chauffage ni guérison complète imposés ;
+- arrivée visible d'une équipe Tok'ra, portage vanilla des survivants incapables de marcher et sortie physique de la carte avant comptabilisation de l'évacuation ;
+- échec lorsque tous les survivants meurent, réussite avec au moins une évacuation vivante et absence de double résultat ;
+- récompense matérielle de l'arrivée tardive déjà présente sur une étagère vanilla lors de la génération, sans apparition finale au sol ni duplication après sauvegarde/rechargement ;
+- expiration de l'offre et du site, nettoyage différé de la carte et conservation des bloqueurs RimWorld normaux ;
+- sauvegarde/rechargement pendant le trajet, sur la carte, après traitement, pendant l'arrivée ou le portage de l'équipe et après résolution ;
+- récurrence après réussite, échec et offre ignorée, slot global unique, délai caché et anti-répétition locale ;
+- observation, renseignements, agent blessé et remise médicale validés sans régression ;
+- textes anglais et français, limites des outils debug et `Player.log` final propres.
+
+Points de régression durables :
+
+- privilégier les actions vanilla de caravane, de génération/entrée de carte, de pause hostile, d'enrôlement, de portage et de sortie lorsqu'elles couvrent le besoin ;
+- calculer un ancrage de scène unique avant de placer acteurs, structures, corps, débris et butin afin d'éviter les spawns indépendants incohérents ;
+- ne pas générer les survivants alliés au bord de la carte et conserver une distance d'intervention raisonnable sur les grandes cartes ;
+- exiger un soin réel du choc sans transformer la mission en construction obligatoire d'un hôpital temporaire ;
+- ne comptabiliser une évacuation qu'après la sortie réelle du survivant, sans destruction ou disparition directe ;
+- représenter les récompenses matérielles liées au site dans la scène dès sa génération, puis réserver les gains abstraits à la résolution ;
+- conserver variante, menace, acteurs, équipe de récupération, affectations, butin et résultat à travers la sauvegarde/recharge ;
+- forcer les builds de test après extraction d'un overlay afin que les dates archivées ne laissent pas une DLL précédente active ;
+- revalider les cinq opérations organiques, leur récurrence et le slot global lors de toute extension aux caravanes, sites mondiaux ou interceptions.
+
 ## 0.3.28-dev - Audit de l'orchestration et de la récurrence Tok'ra
 
 Validation locale terminée sur la révision `r1`, puis jalon publié sous `v0.3.28-dev`. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.

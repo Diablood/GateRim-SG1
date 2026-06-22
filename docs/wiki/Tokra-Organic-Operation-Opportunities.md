@@ -65,6 +65,37 @@ avant le départ de l'agent, l'engagement accepté échoue. La mort de l'agent
 après une remise réussie n'annule pas le succès, mais détériore séparément les
 relations avec la cellule.
 
+## Appel de détresse sur site mondial
+
+Une cellule peut transmettre un appel fragmentaire et demander une intervention
+rapide hors de la colonie. Après acceptation, un site temporaire apparaît sur
+la carte du monde et peut être rejoint par une caravane avec les interactions
+habituelles de RimWorld. À l'arrivée, le jeu charge automatiquement la carte,
+se met en pause comme pour un site hostile et place les colons sous contrôle du
+joueur.
+
+La situation réelle reste inconnue jusqu'à l'entrée. La scène peut représenter
+une caravane attaquée, un petit camp Tok'ra, une position préparée par les
+Goa'uld ou un camp déjà submergé. Les survivants, les défenseurs, les débris,
+les ressources et d'éventuels morts Tok'ra ou Jaffa sont regroupés autour d'un
+même lieu cohérent ; les survivants vivants ne sont pas générés au bord de la
+carte.
+
+Lorsqu'un secours reste possible, la seule élimination des ennemis ne suffit
+pas. Un colon doit réellement traiter le choc du symbiote, y compris directement
+au sol. Une fois le site sécurisé et le choc traité, une cellule Tok'ra récupère
+rapidement le survivant : il n'est pas nécessaire de construire un hôpital, de
+chauffer un camp, d'attendre une guérison naturelle complète ou un départ à
+pied. Au moins un survivant doit néanmoins être évacué vivant. Après les soins de terrain et la sécurisation du site, une équipe Tok'ra visible arrive par le bord de la carte, porte les blessés incapables de marcher et repart physiquement avec eux.
+
+Lors d'une arrivée trop tardive, les composants récupérables font déjà partie de la scène : ils sont stockés sur une étagère près des vestiges et ne surgissent pas au sol après la victoire.
+
+Le site possède un délai propre après l'acceptation. Une intervention trop
+lente peut transformer un secours en arrivée tardive, et l'expiration complète
+clôt l'opération en échec. La difficulté est capturée lors de l'offre afin que
+la force rencontrée reste cohérente même si la richesse de la colonie change
+pendant le trajet.
+
 ## Conséquences et récurrence
 
 Ignorer une offre non sollicitée ne réduit pas la confiance. Après acceptation,

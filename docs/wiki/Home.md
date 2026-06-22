@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.28-dev`
+> Version du mod documentée : `0.3.29-dev`
 
 ## Le mod en bref
 
@@ -46,13 +46,14 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   livraisons clandestines.
 - [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
   observation discrète, analyse de renseignements, accueil médical prolongé
-  d'un agent blessé et remise de médicaments à un agent de liaison.
-  Les quatre opérations lisent désormais leurs données de mission depuis XML,
-  tandis que leurs interactions RimWorld spécialisées restent en C#. La difficulté
-  capturée lors de l'offre dimensionne la patrouille éventuelle de l'analyse
-  accélérée et la gravité médicale possible de l'agent accueilli.
-- Première mission sur carte temporaire : infiltration et sabotage d'un relais
-  Goa'uld, renforts différés, évacuation et débriefing Tok'ra.
+  d'un agent blessé, remise de médicaments à un agent de liaison et appel de
+  détresse vers un site mondial temporaire. Les cinq opérations lisent leurs
+  données de mission depuis XML, tandis que leurs interactions RimWorld
+  spécialisées restent en C#. La difficulté capturée lors de l'offre dimensionne
+  les patrouilles, les défenseurs du site et certains paramètres médicaux.
+- Missions sur cartes temporaires : appel de détresse à la situation incertaine,
+  ainsi qu'infiltration et sabotage d'un relais Goa'uld avec renforts différés,
+  évacuation et débriefing Tok'ra.
 
 ### Colonie et progression
 
@@ -81,22 +82,24 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 - une phase ultérieure consacrée à la Porte des étoiles fonctionnelle et aux
   expéditions hors monde.
 
-La séquence immédiate est fixée : audit de l'orchestration, appel à l'aide sur
-site mondial, puis livraison vers une base Tok'ra temporaire. Les autres
-éléments restent planifiés selon les tests, les dépendances techniques et la
-stabilité des systèmes existants.
+L'audit de l'orchestration et l'appel à l'aide sur site mondial sont désormais
+intégrés. La prochaine étape est la livraison vers une base Tok'ra temporaire.
+Les autres éléments restent planifiés selon les tests, les dépendances
+techniques et la stabilité des systèmes existants.
 
 ## Orchestration des opérations Tok'ra
 
-La version `0.3.28-dev` consolide le planificateur partagé des quatre opérations
-actuelles : une seule occurrence active, filtrage des missions temporairement
-indisponibles avant le tirage pondéré, délais cachés après chaque résultat et
-persistance complète après sauvegarde.
+La version `0.3.29-dev` étend le planificateur partagé à cinq opérations tout
+en conservant une seule occurrence active, le filtrage avant tirage pondéré,
+les délais cachés après chaque résultat et la persistance après sauvegarde.
 
-Les prochains ajouts prévus sont un appel à l'aide sur un site mondial
-temporaire, puis une livraison vers une base Tok'ra temporaire avec risques
-d'interception. Ces missions resteront rejouables et pourront être rééquilibrées
-après des tests prolongés.
+L'appel de détresse crée un site mondial temporaire dont la situation réelle
+n'est révélée qu'à l'arrivée de la caravane. RimWorld gère l'entrée, la pause et
+l'enrôlement, tandis que le mod compose une scène cohérente et une extraction
+rapide après les soins. Le prochain ajout prévu est une livraison vers une base
+Tok'ra temporaire avec risques d'interception. Ces
+missions resteront rejouables et pourront être rééquilibrées après des tests
+prolongés.
 
 ## Liens utiles
 

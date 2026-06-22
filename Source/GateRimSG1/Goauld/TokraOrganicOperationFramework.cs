@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GateRimSG1.Missions;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GateRimSG1.Goauld
@@ -233,6 +234,8 @@ namespace GateRimSG1.Goauld
         public GateRimMissionDef MissionDef { get; }
         public GateRimMissionPawnCareDef PawnCare => MissionDef?.pawnCare;
         public GateRimMissionHandoffDef Handoff => MissionDef?.handoff;
+        public GateRimMissionDistressCallDef DistressCall
+            => MissionDef?.distressCall;
         public string MissionDefName => MissionDef?.defName;
         public bool UsesMissionFrameworkDef => MissionDef != null;
         public float RepeatedArchetypeWeightFactor { get; }
@@ -649,6 +652,259 @@ namespace GateRimSG1.Goauld
                     missing.Add(
                         "recurrence delay range for " + contextKey);
                 }
+            }
+
+            if (MissionDef?.texts?.successLetterTexts == null
+                || MissionDef.texts.successLetterTexts.Count == 0)
+            {
+                missing.Add("success letter text variants");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
+        public bool HasCompleteDistressCallConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+
+            string[] runtimeTextIds =
+            {
+                "spawnFailed",
+                "targetLetterLabel",
+                "targetLetterText",
+                "failureTimeout",
+                "failureSiteLost",
+                "failureSurvivorsLost"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            GateRimMissionDistressCallDef profile = DistressCall;
+
+            if (profile == null)
+            {
+                missing.Add("distress-call profile");
+            }
+            else
+            {
+                Require(
+                    profile.worldObjectDefName,
+                    "world object Def",
+                    missing);
+                Require(
+                    profile.survivorPawnKindDefName,
+                    "survivor PawnKindDef",
+                    missing);
+                Require(
+                    profile.recoveryPawnKindDefName,
+                    "recovery-team PawnKindDef",
+                    missing);
+
+                if (profile.minimumTileDistance <= 0
+                    || profile.maximumTileDistance
+                        < profile.minimumTileDistance)
+                {
+                    missing.Add("world-site distance range");
+                }
+
+                if (profile.mapSize < 80)
+                {
+                    missing.Add("world-site map size");
+                }
+
+                if (profile.lateArrivalTicks <= 0
+                    || profile.lateArrivalTicks >= DeadlineTicks)
+                {
+                    missing.Add("late-arrival threshold");
+                }
+
+                if (profile.survivorMinimumCount <= 0
+                    || profile.survivorMaximumCount
+                        < profile.survivorMinimumCount)
+                {
+                    missing.Add("survivor count range");
+                }
+
+                if (profile.defenderMinimumCount <= 0
+                    || profile.defenderMaximumCount
+                        < profile.defenderMinimumCount)
+                {
+                    missing.Add("defender count range");
+                }
+
+                if (profile.genuineRescueWeight < 0f
+                    || profile.compromisedSignalWeight < 0f
+                    || profile.lateArrivalWeight < 0f
+                    || profile.genuineRescueWeight
+                        + profile.compromisedSignalWeight
+                        + profile.lateArrivalWeight <= 0f)
+                {
+                    missing.Add("positive variant weights");
+                }
+
+                if (profile.genuineRescueThreatFactor <= 0f
+                    || profile.compromisedSignalThreatFactor <= 0f
+                    || profile.lateArrivalThreatFactor <= 0f)
+                {
+                    missing.Add("positive threat factors");
+                }
+
+                if (profile.recoveryTeamDelayTicks <= 0
+                    || profile.recoveryTeamRetryTicks <= 0)
+                {
+                    missing.Add("positive recovery-team timing");
+                }
+
+                if (profile.recoveryTeamMinimumCount <= 0
+                    || profile.recoveryTeamMaximumCount
+                        < profile.recoveryTeamMinimumCount)
+                {
+                    missing.Add("recovery-team count range");
+                }
+
+                if (!string.IsNullOrWhiteSpace(profile.worldObjectDefName)
+                    && DefDatabase<WorldObjectDef>.GetNamedSilentFail(
+                        profile.worldObjectDefName) == null)
+                {
+                    missing.Add(
+                        "unknown WorldObjectDef "
+                        + profile.worldObjectDefName);
+                }
+
+                if (!string.IsNullOrWhiteSpace(
+                        profile.survivorPawnKindDefName)
+                    && DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                        profile.survivorPawnKindDefName) == null)
+                {
+                    missing.Add(
+                        "unknown PawnKindDef "
+                        + profile.survivorPawnKindDefName);
+                }
+
+                if (!string.IsNullOrWhiteSpace(
+                        profile.recoveryPawnKindDefName)
+                    && DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                        profile.recoveryPawnKindDefName) == null)
+                {
+                    missing.Add(
+                        "unknown recovery-team PawnKindDef "
+                        + profile.recoveryPawnKindDefName);
+                }
+
+                if (!string.IsNullOrWhiteSpace(profile.salvageThingDefName)
+                    && DefDatabase<ThingDef>.GetNamedSilentFail(
+                        profile.salvageThingDefName) == null)
+                {
+                    missing.Add(
+                        "unknown salvage ThingDef "
+                        + profile.salvageThingDefName);
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                        profile.salvageContainerDefName))
+                {
+                    missing.Add("salvage container ThingDef");
+                }
+                else
+                {
+                    ThingDef salvageContainerDef
+                        = DefDatabase<ThingDef>.GetNamedSilentFail(
+                            profile.salvageContainerDefName);
+
+                    if (salvageContainerDef == null)
+                    {
+                        missing.Add(
+                            "unknown salvage container ThingDef "
+                            + profile.salvageContainerDefName);
+                    }
+                    else if (salvageContainerDef.thingClass == null
+                        || !typeof(Building_Storage).IsAssignableFrom(
+                            salvageContainerDef.thingClass))
+                    {
+                        missing.Add(
+                            "salvage container is not Building_Storage "
+                            + profile.salvageContainerDefName);
+                    }
+                }
+
+                if (DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                        "SG1_GoauldJaffaWarrior") == null
+                    && DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                        "SG1_GoauldJaffaGuard") == null)
+                {
+                    missing.Add("Goa'uld Jaffa PawnKindDefs");
+                }
+            }
+
+            GateRimMissionPawnCareDef pawnCare = PawnCare;
+
+            if (pawnCare == null)
+            {
+                missing.Add("pawn care profile");
+            }
+            else
+            {
+                Require(
+                    pawnCare.initialHediffDefName,
+                    "initial health condition",
+                    missing);
+                Require(
+                    pawnCare.recoveryHediffDefName,
+                    "recovery health condition",
+                    missing);
+
+                if (pawnCare.stableDurationTicks <= 0
+                    || pawnCare.departureGraceTicks <= 0)
+                {
+                    missing.Add("survivor recovery durations");
+                }
+
+                ValidateWoundedAgentDefReferences(pawnCare, missing);
+            }
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            if (MissionDef?.difficulty?.mode
+                != GateRimMissionDifficultyMode.ThreatPointsScaled)
+            {
+                missing.Add("ThreatPointsScaled difficulty profile");
             }
 
             if (MissionDef?.texts?.successLetterTexts == null
@@ -1300,6 +1556,8 @@ namespace GateRimSG1.Goauld
             = "SG1_TokraOrganic_WoundedAgentCare";
         private const string MedicalSupplyMissionDefName
             = "SG1_TokraOrganic_MedicalSupplyHandoff";
+        private const string DistressCallMissionDefName
+            = "SG1_TokraOrganic_DistressCall";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
@@ -1317,6 +1575,10 @@ namespace GateRimSG1.Goauld
         private static TokraOrganicOperationDefinition
             cachedMedicalSupplyDefinition;
         private static bool medicalSupplyConfigurationErrorLogged;
+        private static GateRimMissionDef cachedDistressCallMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedDistressCallDefinition;
+        private static bool distressCallConfigurationErrorLogged;
 
         public static IEnumerable<TokraOrganicOperationDefinition>
             AllDefinitions
@@ -1354,6 +1616,14 @@ namespace GateRimSG1.Goauld
                 {
                     yield return medicalSupply;
                 }
+
+                TokraOrganicOperationDefinition distressCall
+                    = ResolveDistressCallDefinition();
+
+                if (distressCall != null)
+                {
+                    yield return distressCall;
+                }
             }
         }
 
@@ -1386,6 +1656,13 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.MedicalSupplyHandoff)
             {
                 definition = ResolveMedicalSupplyDefinition();
+                return definition != null;
+            }
+
+            if (archetype
+                == TokraOrganicOperationArchetype.DistressCall)
+            {
+                definition = ResolveDistressCallDefinition();
                 return definition != null;
             }
 
@@ -1561,6 +1838,59 @@ namespace GateRimSG1.Goauld
             }
 
             return cachedMedicalSupplyDefinition;
+        }
+
+        private static TokraOrganicOperationDefinition
+            ResolveDistressCallDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    DistressCallMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogDistressCallConfigurationError(
+                    "required MissionDef " + DistressCallMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedDistressCallDefinition == null
+                || cachedDistressCallMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype.DistressCall,
+                        missionDef);
+                string error;
+
+                if (!definition.HasCompleteDistressCallConfiguration(
+                        out error))
+                {
+                    LogDistressCallConfigurationError(
+                        DistressCallMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedDistressCallMissionDef = missionDef;
+                cachedDistressCallDefinition = definition;
+            }
+
+            return cachedDistressCallDefinition;
+        }
+
+        private static void LogDistressCallConfigurationError(string detail)
+        {
+            if (distressCallConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            distressCallConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra distress-call operation disabled: "
+                + detail + ".");
         }
 
         private static void LogMedicalSupplyConfigurationError(string detail)

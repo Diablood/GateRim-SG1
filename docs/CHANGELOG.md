@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.29-dev - Add Tok'ra distress call world-site mission
+
+- Add `SG1_TokraOrganic_DistressCall` as the fifth MissionDef-backed recurrent Tok'ra operation.
+- Create a temporary world site after acceptance, targetable through RimWorld's normal caravan-arrival flow and persistent through save/load.
+- Keep the situation hidden until map entry, with genuine rescue, compromised signal and late-arrival outcomes.
+- Allow a genuine rescue to degrade into late arrival when the expedition takes too long, without changing a preselected trap.
+- Capture the threat snapshot at offer time and scale Goa'uld/Jaffa defenders from configurable bounds and per-variant factors.
+- Generate one coherent encounter scene around a shared anchor, with context-specific camp or caravan remains, defenders, survivors, debris and optional Tok'ra/Jaffa corpses.
+- Use vanilla automatic map loading, hostile-map pause, drafted caravan entry and a nearby valid edge instead of a parallel custom arrival flow.
+- Require real field treatment of the symbiote shock without forcing a medical bed, heating, full healing or a walking departure.
+- Add a visible Tok'ra recovery team using vanilla edge arrival, non-hostile carrying and normal map exits; count evacuation only after survivors physically leave the map.
+- Place the late-arrival component reward on a configured vanilla storage shelf when the encounter is generated, with no outcome-time material spawn or save/load duplication.
+- Add deadlines, cleanup, trust consequences, Medicine XP, recurrence and local anti-repetition through the shared organic-operation manager.
+- Add developer actions for each hidden situation and extend framework diagnostics to five organic definitions.
+- Force non-incremental local builds so extracted source timestamps cannot leave an older DLL active.
+- Add English and French player texts, durable validation coverage and synchronized player documentation.
+- Raise the assembly version to `0.3.29.0` and the mod metadata version to `0.3.29-dev`.
+- Validate local revision `r7`, including all three variants, adaptive difficulty, expiration, persistence during recovery, recurrence, previous-operation regressions, the physical shelf reward and a clean `Player.log`.
+- Publish branch `feature/tokra-distress-call-world-site`, final tag `v0.3.29-dev` and the synchronized wiki.
+
 ## 0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence
 
 - Filter positively weighted MissionDefs through their mission worker `CanOffer(map)` before the natural weighted draw.

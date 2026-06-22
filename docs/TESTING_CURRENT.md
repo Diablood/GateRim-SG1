@@ -1,50 +1,184 @@
-# Tests du jalon courant
+# Tests du jalon clôturé
 
-Jalon : `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence`
+Jalon : `0.3.29-dev - Add Tok'ra distress call world-site mission`
 
-Branche publiée : `feature/tokra-operation-orchestration-audit`
+Branche : `feature/tokra-distress-call-world-site`
 
-Révision locale validée : `0.3.28-dev-r1`
+Révision locale finale validée : `0.3.29-dev-r7`
 
-Version de DLL validée : `0.3.28.0`
+Version de DLL validée : `0.3.29.0`
 
-Tag final : `v0.3.28-dev`
+Tag de départ : `v0.3.28-dev`
 
-Statut : validation locale terminée ; dépôt principal et wiki publiés.
+Tag final : `v0.3.29-dev`
 
-## Résultat final
+Statut : validation locale terminée. Le flux complet et la correction de présentation `r7` ont été validés en jeu ; le contrôle de cohérence, le rebuild forcé, les trois variantes, la persistance, la récurrence, les quatre anciennes opérations, les textes anglais/français et `Player.log` sont validés.
 
-- contrôle de cohérence réussi pour `0.3.28-dev`, `0.3.28.0` et `83` backstories ;
-- rebuild forcé réussi et DLL `0.3.28.0` chargée ;
-- quatre MissionDefs chargés avec leurs durées et données finales ;
-- rapport `Tok'ra ops: audit long-term orchestration` terminé avec `Audit result: PASS` ;
-- simulations déterministes de `5000` tirages validées pour les quatre paliers de confiance ;
-- chaque archétype de poids positif reste atteignable ;
-- filtrage `CanOffer(map)` appliqué avant le tirage pondéré ;
-- véritable tirage naturel validé sans remplacement d'une opération active ;
-- slot global unique conservé ;
-- réussite, échec et offre ignorée planifient chacun un nouveau délai caché ;
-- archétypes rééligibles et dernier archétype pénalisé localement sans exclusion permanente ;
-- séquence non cyclique et variantes RP sans répétition immédiate visible ;
-- sauvegarde/rechargement validés pendant un délai caché, une offre et une opération active ;
-- observation, renseignements, agent blessé et remise médicale validés sans régression ;
-- communicateur limité à l'état joueur courant et outils techniques réservés au mode développeur ;
-- fonctionnement validé avec un storyteller compatible différent ;
-- `Player.log` final propre.
+## 1. Préparation validée
 
-## Points de régression durables
+1. Extraire le ZIP `r7` à la racine de la branche active.
+2. Exécuter `git status --short`.
+3. Exécuter `./tools/check-project-consistency.cmd`.
+4. Exécuter le rebuild non incrémentiel avec `./build.cmd "D:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"`.
+5. Démarrer RimWorld avec le mode développeur et le debug avancé GateRim SG-1.
+6. Lancer `Mission framework: inspect definitions`.
 
-- filtrer tous les candidats temporairement indisponibles avant tout tirage naturel ;
-- conserver un unique slot actif global pour les opérations organiques Tok'ra ;
-- programmer un délai caché après réussite, échec et offre ignorée ;
-- ne pas consommer un délai complet lorsque des candidats configurés existent mais sont momentanément indisponibles ;
-- conserver la pénalité locale du dernier archétype sans créer d'exclusion définitive ni de cycle prévisible ;
-- préserver après sauvegarde/rechargement l'état actif, les compteurs, les historiques de textes et la prochaine opportunité ;
-- maintenir les poids, délais, récompenses, conséquences et textes dans les MissionDefs ;
-- garder les diagnostics complets hors de l'interface normale du joueur ;
-- revalider l'orchestration sur toutes les opérations existantes lors de l'ajout d'un site mondial ou d'une mission de caravane ;
-- conserver le futur arc d'introduction Tok'ra comme verrou distinct : mission unique avec combat, objet-clé, recherche dédiée, communicateur construit, puis accès au pool récurrent.
+Résultat attendu :
 
-## Prochaine étape
+- cinq MissionDefs organiques chargés ;
+- DLL `0.3.29.0` ;
+- aucun défaut XML, traduction ou type dans `Player.log` ;
+- aucune erreur concernant `recoveryPawnKindDefName`, `recoveryTeamDelayTicks`, `recoveryTeamRetryTicks`, `recoveryTeamMinimumCount` ou `recoveryTeamMaximumCount`.
 
-Démarrer `0.3.29-dev - Add Tok'ra distress call world-site mission` depuis le tag `v0.3.28-dev` sur une nouvelle branche dédiée.
+## 2. Test obligatoire court — secours réel
+
+1. Lancer `Tok'ra ops: force distress rescue offer`.
+2. Accepter normalement depuis le communicateur.
+3. Former une caravane et sélectionner `Voyager vers le signal de détresse Tok'ra`.
+4. Laisser la caravane atteindre le site sans utiliser une seconde commande d'entrée.
+5. Observer l'état du jeu lors du chargement de la carte.
+6. Vérifier la disposition générale avant de reprendre le temps.
+7. Éliminer les Jaffa.
+8. Soigner le choc du symbiote d'au moins un survivant directement au sol, sans construire de lit.
+9. Attendre la récupération Tok'ra courte.
+
+Résultat attendu :
+
+- la carte se génère et se charge automatiquement à l'arrivée ;
+- le jeu est en pause ;
+- les colons de la caravane sont enrôlés et contrôlables ;
+- l'entrée utilise le bord de carte le plus proche de la scène tout en restant gérée par `CaravanEnterMapUtility` ;
+- survivants, décor et Jaffa forment une seule scène cohérente à l'intérieur de la carte ;
+- aucun survivant vivant n'est généré au bord comme un visiteur entrant ;
+- un camp temporaire ou une caravane attaquée est visible ;
+- les corps Tok'ra/Jaffa éventuels restent optionnels et en faible nombre ;
+- soigner le choc au sol est reconnu, sans lit médical ;
+- le combat seul ne valide pas la mission ;
+- une fois le choc traité et la menace éliminée, un message annonce l'équipe de récupération ;
+- après environ `600` ticks, une équipe Tok'ra entre sur la carte par le bord ;
+- un membre de cette équipe rejoint chaque survivant à terre, le porte jusqu'au bord et quitte réellement la carte avec lui ;
+- un survivant capable de marcher quitte la carte par le comportement de départ existant ;
+- aucun survivant ne disparaît instantanément au terme d'un simple compteur ;
+- aucune attente de guérison naturelle, récolte de nourriture ou construction de chauffage n'est requise ;
+- au moins un survivant évacué permet la réussite lorsque les autres cas sont résolus ;
+- confiance `+3`, Medicine XP `+300`, lettre unique et absence d'erreur dans `Player.log`.
+
+## 3. Placement et carte de grande taille
+
+Répéter le secours réel plusieurs fois, et si possible avec une taille de carte de test supérieure.
+
+Vérifier :
+
+- ancrage de scène à une distance sûre du bord ;
+- survivants à quelques cellules du camp ou des débris ;
+- Jaffa dans un rayon cohérent autour de la position, pas au centre sans lien avec des survivants au bord ;
+- entrée de la caravane depuis le côté le plus proche ;
+- trajet raisonnable entre l'entrée et la scène ;
+- aucun survivant ne meurt systématiquement avant que les colons puissent atteindre la zone.
+
+## 4. Variante « signal compromis »
+
+1. Lancer `Tok'ra ops: force distress trap offer`.
+2. Accepter et laisser la caravane entrer automatiquement.
+3. Vérifier l'absence de survivants vivants.
+4. Vérifier une position compromise ou préparée autour du signal.
+5. Neutraliser les hostiles.
+
+Résultat attendu :
+
+- pause et enrôlement identiques au secours réel ;
+- Jaffa regroupés autour de la scène ;
+- corps éventuels cohérents mais non obligatoires ;
+- réussite après élimination de la menace ;
+- aucune pénalité liée au seul fait que le signal était un piège.
+
+## 5. Variante « arrivée trop tard »
+
+Tester :
+
+- `Tok'ra ops: force distress late offer` ;
+- puis une offre de secours réel dépassant `120000` ticks sans atteindre l'expiration finale.
+
+Résultat attendu :
+
+- aucun survivant vivant ;
+- camp temporaire ravagé ou caravane attaquée ;
+- `1` à `3` corps Tok'ra configurés, avec corps Jaffa optionnels ;
+- Jaffa encore présents près des vestiges ;
+- étagère vanilla déjà présente près de la scène dès le chargement de la carte ;
+- pile de `4` à `10` composants stockée sur l'une des cases de cette étagère ;
+- aucun nouveau composant n'apparaît au sol lors de la réussite ;
+- réussite après neutralisation de la menace.
+
+## 6. Soins et extraction
+
+Tester séparément :
+
+- choc non traité après élimination des ennemis ;
+- choc traité au sol ;
+- choc traité avant la fin du combat ;
+- survivant toujours inconscient après traitement ;
+- survivant mourant pendant le délai d'extraction ;
+- deux survivants évacués et un survivant mort ;
+- mort de tous les survivants avant toute extraction.
+
+Résultat attendu :
+
+- aucune extraction sans traitement réel du choc ;
+- aucune exigence de lit ou de capacité à marcher ;
+- le délai ne démarre que lorsque la présence hostile active est éliminée ;
+- l'équipe de récupération entre par un bord de carte avec le mode vanilla `EdgeWalkIn` ;
+- un porteur rejoint physiquement chaque survivant inconscient et le transporte vers une cellule de sortie ;
+- un survivant mobile quitte la carte à pied ;
+- aucun survivant ne disparaît instantanément sur place ;
+- chaque survivant traité peut être récupéré indépendamment ;
+- si un porteur est interrompu, un autre membre disponible peut reprendre le transport ;
+- une mort reste une perte réelle ;
+- réussite avec au moins une sortie vivante et aucun survivant vivant non résolu ;
+- échec si aucune extraction n'est obtenue.
+
+## 7. Persistance
+
+Sauvegarder et recharger :
+
+- caravane en route avec l'action d'arrivée stockée ;
+- carte active avant traitement ;
+- choc traité pendant que des Jaffa restent présents ;
+- délai de récupération en cours ;
+- un survivant déjà évacué et un autre encore présent ;
+- opération résolue avant la reformation de la caravane.
+
+Résultat attendu :
+
+- même site, variante et menace ;
+- aucune seconde génération de scène, corps, survivants, ennemis, étagère ou butin ;
+- soins, délai, arrivée de l'équipe, affectation des porteurs et évacuations conservés ;
+- aucune double résolution.
+
+## 8. Contrôles globaux reconfirmés
+
+- délai et expiration ;
+- difficulté faible et avancée ;
+- récurrence et anti-répétition ;
+- sauvegarde/recharge des phases mondiales ;
+- quatre opérations Tok'ra précédentes ;
+- textes anglais et français ;
+- absence d'outils debug en jeu normal ;
+- `Player.log` propre.
+
+## État de validation
+
+- [x] contrôle de cohérence ;
+- [x] rebuild forcé ;
+- [x] arrivée automatique, pause et enrôlement ;
+- [x] secours réel avec soins au sol et récupération visible ;
+- [x] placement cohérent sur plusieurs générations ;
+- [x] signal compromis contextualisé ;
+- [x] arrivée trop tard contextualisée avec composants présents sur étagère ;
+- [x] persistance pendant l'extraction ;
+- [x] difficulté adaptative, expiration, récurrence et anti-répétition ;
+- [x] régressions des quatre opérations précédentes ;
+- [x] textes EN/FR ;
+- [x] `Player.log` propre.
+
+Validation locale finale : `0.3.29-dev-r7`. Le jalon est publié sous le tag final unique `v0.3.29-dev`.

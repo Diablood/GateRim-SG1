@@ -6,7 +6,8 @@ namespace GateRimSG1.Goauld
         GoauldObservation = 1,
         DeadDropRecovery = 2,
         WoundedAgentCare = 3,
-        MedicalSupplyHandoff = 4
+        MedicalSupplyHandoff = 4,
+        DistressCall = 5
     }
 
     public enum TokraOrganicOperationState
@@ -15,6 +16,23 @@ namespace GateRimSG1.Goauld
         Offered = 1,
         Accepted = 2,
         Ready = 3
+    }
+
+    public enum TokraDistressCallVariant
+    {
+        None = 0,
+        GenuineRescue = 1,
+        CompromisedSignal = 2,
+        LateArrival = 3
+    }
+
+    public enum TokraDistressCallSceneType
+    {
+        None = 0,
+        AmbushedCaravan = 1,
+        TemporaryCamp = 2,
+        CompromisedPosition = 3,
+        OverrunCamp = 4
     }
 
     public enum TokraIntelligenceAnalysisMethod

@@ -131,6 +131,51 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Tok'ra ops: force distress rescue offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceDistressRescueOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceDistressCallOpportunity(
+                        Find.CurrentMap,
+                        TokraDistressCallVariant.GenuineRescue),
+                "GR_TokraDistressCall_DebugForcedRescue");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: force distress trap offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceDistressTrapOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceDistressCallOpportunity(
+                        Find.CurrentMap,
+                        TokraDistressCallVariant.CompromisedSignal),
+                "GR_TokraDistressCall_DebugForcedTrap");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: force distress late offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceDistressLateOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceDistressCallOpportunity(
+                        Find.CurrentMap,
+                        TokraDistressCallVariant.LateArrival),
+                "GR_TokraDistressCall_DebugForcedLate");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Tok'ra ops: accept current offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

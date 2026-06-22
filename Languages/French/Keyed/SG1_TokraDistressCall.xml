@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraDistressCall_OfferLabel>Appel de détresse Tok'ra fragmentaire</GR_TokraDistressCall_OfferLabel>
+    <GR_TokraDistressCall_OfferText1>Une transmission d'urgence Tok'ra vient d'atteindre le canal sécurisé. Le signal est faible, incomplet et s'efface déjà. Une cellule a peut-être été attaquée au-delà des environs immédiats de la colonie. Accepter la demande révélera la source pendant environ {0} heures. Les Tok'ra ignorent qui, ou quoi, s'y trouve encore.</GR_TokraDistressCall_OfferText1>
+    <GR_TokraDistressCall_OfferText2>Le communicateur a isolé un bref appel de détresse Tok'ra provenant d'une région proche. Aucun message ne suit le premier appel, et plusieurs éléments de l'authentification manquent. La cellule demande à la colonie d'enquêter avant que la piste ne disparaisse. La source peut être localisée pendant environ {0} heures.</GR_TokraDistressCall_OfferText2>
+    <GR_TokraDistressCall_OfferText3>Une balise Tok'ra endommagée répète une demande d'aide sur une fréquence étroite. Le message ne nomme aucun survivant et ne décrit pas l'attaque. La cellule peut révéler la position pendant environ {0} heures, mais prévient que des forces Goa'uld peuvent encore se trouver à proximité.</GR_TokraDistressCall_OfferText3>
+    <GR_TokraDistressCall_OfferExpired>Le signal Tok'ra fragmentaire a disparu avant que la colonie ne s'engage dans une expédition.</GR_TokraDistressCall_OfferExpired>
+    <GR_TokraDistressCall_Accepted>{0} a répondu à l'appel de détresse Tok'ra. La source restera localisable pendant environ {1} heures.</GR_TokraDistressCall_Accepted>
+    <GR_TokraDistressCall_SuccessLabel>Site de détresse Tok'ra sécurisé</GR_TokraDistressCall_SuccessLabel>
+    <GR_TokraDistressCall_FailureLabel>Appel de détresse Tok'ra perdu</GR_TokraDistressCall_FailureLabel>
+    <GR_TokraDistressCall_SuccessText1>L'expédition a brisé la présence Goa'uld autour de la source et empêché l'ennemi de conserver le contrôle du site. Les Tok'ra reconnaissent l'intervention de la colonie.</GR_TokraDistressCall_SuccessText1>
+    <GR_TokraDistressCall_SuccessText2>Le site de détresse n'est plus aux mains des Goa'uld. Ce qui pouvait encore l'être a été sécurisé, et la cellule Tok'ra retient que la colonie accepte de répondre même lorsque l'issue reste incertaine.</GR_TokraDistressCall_SuccessText2>
+    <GR_TokraDistressCall_SuccessText3>L'opération à la source du signal est terminée. Les Tok'ra confirment que la réponse de la colonie a empêché la situation de devenir un nouvel avantage pour les Goa'uld.</GR_TokraDistressCall_SuccessText3>
+    <GR_TokraDistressCall_SpawnFailed>Les Tok'ra ne parviennent pas à isoler une route exploitable vers le signal. La demande reste ouverte.</GR_TokraDistressCall_SpawnFailed>
+    <GR_TokraDistressCall_TargetLetterLabel>Source de l'appel Tok'ra localisée</GR_TokraDistressCall_TargetLetterLabel>
+    <GR_TokraDistressCall_TargetLetterText>Les Tok'ra ont marqué la source du signal sur la carte du monde. Une caravane doit atteindre et pénétrer sur le site dans un délai d'environ {0} heures. La situation réelle ne sera connue qu'à l'arrivée.</GR_TokraDistressCall_TargetLetterText>
+    <GR_TokraDistressCall_FailureTimeout>L'expédition n'a pas résolu l'appel avant la fermeture de la fenêtre du signal. Le site est perdu, et les Tok'ra n'ont reçu aucun autre contact de ceux qui avaient transmis le message.</GR_TokraDistressCall_FailureTimeout>
+    <GR_TokraDistressCall_FailureSiteLost>Le site de détresse marqué n'est plus accessible. Le canal Tok'ra se referme sans réponse.</GR_TokraDistressCall_FailureSiteLost>
+    <GR_TokraDistressCall_FailureSurvivorsLost>Aucun survivant Tok'ra n'a pu quitter le site. La cellule considère l'opération comme un sauvetage manqué.</GR_TokraDistressCall_FailureSurvivorsLost>
+    <GR_TokraDistressCall_Accept>Répondre à l'appel de détresse Tok'ra</GR_TokraDistressCall_Accept>
+    <GR_TokraDistressCall_StatusOffered>Appel de détresse Tok'ra sans réponse</GR_TokraDistressCall_StatusOffered>
+    <GR_TokraDistressCall_StatusActive>Site de détresse accessible ({0} h restantes)</GR_TokraDistressCall_StatusActive>
+    <GR_TokraDistressCall_StatusReady>Expédition de secours en cours</GR_TokraDistressCall_StatusReady>
+    <GR_TokraDistressCall_TrustSucceeded>Les Tok'ra se souviennent que la colonie a répondu à un appel dont l'issue était incertaine.</GR_TokraDistressCall_TrustSucceeded>
+    <GR_TokraDistressCall_TrustFailed>La cellule Tok'ra hésitera davantage à confier des vies en danger immédiat à la colonie.</GR_TokraDistressCall_TrustFailed>
+    <GR_TokraDistressCall_TravelCommandLabel>Voyager vers le signal de détresse Tok'ra</GR_TokraDistressCall_TravelCommandLabel>
+    <GR_TokraDistressCall_EnterCommandLabel>Entrer sur le site de détresse</GR_TokraDistressCall_EnterCommandLabel>
+    <GR_TokraDistressCall_AlreadyEntered>opération déjà engagée</GR_TokraDistressCall_AlreadyEntered>
+    <GR_TokraDistressCall_EnterRequiresCaravan>Une caravane du joueur doit se trouver à la source du signal.</GR_TokraDistressCall_EnterRequiresCaravan>
+    <GR_TokraDistressCall_InspectResolvedSuccess>L'opération de détresse a été résolue.</GR_TokraDistressCall_InspectResolvedSuccess>
+    <GR_TokraDistressCall_InspectResolvedFailure>L'opération de détresse a échoué.</GR_TokraDistressCall_InspectResolvedFailure>
+    <GR_TokraDistressCall_InspectActive>La situation réelle a été révélée. L'expédition est en cours.</GR_TokraDistressCall_InspectActive>
+    <GR_TokraDistressCall_InspectPending>La source reste incertaine. Environ {0} heures restent disponibles.</GR_TokraDistressCall_InspectPending>
+    <GR_TokraDistressCall_ArrivalLabel>Origine du signal révélée</GR_TokraDistressCall_ArrivalLabel>
+    <GR_TokraDistressCall_ArrivalRescueText>La transmission était authentique. {0} survivant(s) Tok'ra gisent au cœur d'une position attaquée, tandis que {1} combattant(s) alliés aux Goa'uld contrôlent encore les lieux. Brisez la présence ennemie et traitez le choc du symbiote sur le terrain. Une fois le site sécurisé, une équipe Tok'ra pourra extraire les survivants stabilisés.</GR_TokraDistressCall_ArrivalRescueText>
+    <GR_TokraDistressCall_ArrivalTrapText>L'authentification était compromise. Aucun survivant Tok'ra n'attend ici : le signal a servi à attirer l'expédition dans une embuscade. {1} combattant(s) alliés aux Goa'uld resserrent le piège.</GR_TokraDistressCall_ArrivalTrapText>
+    <GR_TokraDistressCall_ArrivalLateText>L'expédition arrive après l'effondrement de la position Tok'ra. Aucun survivant allié ne demeure sur place. {1} combattant(s) alliés aux Goa'uld fouillent encore le site, où une petite réserve peut peut-être être récupérée.</GR_TokraDistressCall_ArrivalLateText>
+    <GR_TokraDistressCall_CareReceived>{0} a reçu le traitement de terrain essentiel contre le choc du symbiote.</GR_TokraDistressCall_CareReceived>
+    <GR_TokraDistressCall_ApproachingReport>Approche du signal de détresse Tok'ra.</GR_TokraDistressCall_ApproachingReport>
+    <GR_TokraDistressCall_EvacuationInbound>{0} est stabilisé. Une équipe de récupération Tok'ra se dirige vers le site.</GR_TokraDistressCall_EvacuationInbound>
+    <GR_TokraDistressCall_RecoveryTeamArrived>Une équipe de récupération Tok'ra vient d'entrer dans la zone. Ses membres porteront les survivants à terre hors de la zone et escorteront ceux capables de marcher.</GR_TokraDistressCall_RecoveryTeamArrived>
+    <GR_TokraDistressCall_SurvivorEvacuated>{0} a été évacué du site.</GR_TokraDistressCall_SurvivorEvacuated>
+    <GR_TokraDistressCall_SurvivorDeparting>{0} est suffisamment stable pour évacuer le site.</GR_TokraDistressCall_SurvivorDeparting>
+    <GR_TokraDistressCall_DebugForcedRescue>Une véritable offre de sauvetage Tok'ra a été forcée.</GR_TokraDistressCall_DebugForcedRescue>
+    <GR_TokraDistressCall_DebugForcedTrap>Un signal de détresse Tok'ra compromis a été forcé.</GR_TokraDistressCall_DebugForcedTrap>
+    <GR_TokraDistressCall_DebugForcedLate>Un site Tok'ra atteint trop tard a été forcé.</GR_TokraDistressCall_DebugForcedLate>
+</LanguageData>

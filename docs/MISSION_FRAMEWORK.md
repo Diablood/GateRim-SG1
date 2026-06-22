@@ -168,9 +168,45 @@ A missing PawnKindDef, ThingDef, JobDef, SkillDef, count, recurrence range, rewa
 
 Local revision `r1` validated the complete handoff flow, exact resource consumption, interaction restrictions, failure paths, post-handoff death consequence, save/load persistence, recurrence, text variation and regressions. The detailed coverage remains recorded in `docs/TESTING_CURRENT.md` and `docs/TESTING.md`.
 
+## Distress-call world-site adapter (`0.3.29-dev`)
+
+`SG1_TokraOrganic_DistressCall` is the fifth MissionDef-backed Tok'ra operation and the first recurrent mission whose primary objective exists on a generated world site.
+
+The MissionDef owns:
+
+- offer duration, accepted-site deadline and late-arrival threshold;
+- trust-tier weights, repeat penalty and trust-tier-specific hidden delays;
+- scaled threat factor and minimum/maximum captured points;
+- WorldObjectDef, survivor PawnKindDef, salvage ThingDef and vanilla storage ThingDef references;
+- world-site distance, generated-map size and survivor/defender/salvage ranges;
+- hidden-variant weights and per-variant threat multipliers;
+- emergency-extraction delay and preferred caravan-entry radius;
+- scene-selection chances and optional Tok'ra/Jaffa corpse ranges for each variant;
+- all offer, target, arrival, status, failure, success and trust text keys;
+- three offer variants and three success variants with local anti-repetition;
+- Medicine XP and trust consequences.
+
+The adapter deliberately reuses RimWorld's caravan systems when they already provide the desired behavior. The world-object float menu creates a normal `CaravanArrivalAction`; reaching the tile automatically generates the map, calls the vanilla potentially-hostile-map notification to pause the game and enters through `CaravanEnterMapUtility` with player colonists drafted. GateRim adds only a preferred edge-cell filter so the vanilla entry remains reasonably close to the encounter.
+
+Physical mission rewards tied to a generated map should normally exist in that map from the moment the scene is created. They should use contextual vanilla storage or structures where appropriate, rather than appearing beside the player only when the success state is applied. Abstract rewards such as trust or skill experience remain outcome-based.
+
+The mission-specific scene generator owns the behavior that vanilla does not provide: a single narrative anchor coordinates survivors, defenders, salvage, debris, context structures and optional pre-existing corpses. A genuine rescue may show an attacked caravan or a small Tok'ra temporary camp; a compromised signal uses a prepared hostile position; a late arrival may show an overrun camp or the remains of an ambushed caravan. Its component cache is created with the scene on a configured vanilla `Building_Storage`, currently `Shelf`; mission resolution does not spawn a second material reward. All structures, terrain, roofs, items and pawns use vanilla Defs and spawning systems.
+
+The planned variant is selected once at acceptance and stored in generic mission runtime counters. A genuine rescue may degrade into the late-arrival state when the caravan reaches the site after the configured threshold. A compromised signal and a preselected late-arrival state do not change according to travel speed.
+
+The scaled threat snapshot is captured when the offer is created and reused when the site map is initialized. Per-variant factors modify that stored value; the adapter does not recalculate colony wealth or storyteller threat at arrival. Defender counts remain bounded by the MissionDef.
+
+For a genuine rescue, vanilla tending remains the actual player action. The special symbiote-shock Hediff can be treated while the survivor is downed on the ground; a player medical bed is not required. Once the shock has been tended and no active hostile remains, the map component starts a short configured delay and brings in a visible Tok'ra recovery team through the vanilla `EdgeWalkIn` arrival worker. Downed survivors are assigned the vanilla non-hostile `Kidnap` job path, whose report is presented as a rescue and whose base driver physically carries the pawn to an exit cell. Survivors able to walk use the existing Tok'ra departure lord. The mission therefore does not wait for complete natural healing, hunger management or temperature-safe housing, but it resolves only after a survivor actually leaves the map alive.
+
+The local map component persists survivor references, treatment state, recovery-team references, arrival and retry timing, assigned and extracted-survivor IDs, the preferred entry cell and resolution state. The global operation manager remains the sole owner of trust, recurrence, active-slot and outcome accounting. This separation prevents a generated map from becoming a second independent mission scheduler. Existing save-field names are retained where possible so `r2` test saves can load into the revised flow.
+
+A missing WorldObjectDef, PawnKindDef, HediffDef, required text, timing value, threat profile or recurrence range disables the distress-call archetype explicitly. There is no hidden complete C# fallback.
+
+Developer validation uses three separate actions to force genuine rescue, compromised signal and late arrival. The normal player interface never lists these possible variants before entry.
+
 ## Recurrence and orchestration behavior
 
-After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Success, failure and ignored or expired offers all return to the same persistent scheduler. All four current Tok'ra organic operations consume their configured recurrence data through the framework.
+After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Success, failure and ignored or expired offers all return to the same persistent scheduler. All five current Tok'ra organic operations consume their configured recurrence data through the framework.
 
 Natural selection follows this order:
 
@@ -206,7 +242,7 @@ Debug actions menu
 
 The audit report shows the global active slot, hidden scheduling state, outcome counters, current offerability, every trust-tier weight and delay, text-bank counts and a deterministic `5000`-draw simulation per tier. The simulation verifies reachability and reports immediate-repeat frequency without mutating the save.
 
-Local revision `r1` validated the audit as `PASS`, the real natural draw, success/failure/ignored rescheduling, recurrence, local anti-repetition, save/load persistence, storyteller independence, all four existing operation regressions and a clean `Player.log`.
+Local revision `r1` validated the audit as `PASS`, the real natural draw, success/failure/ignored rescheduling, recurrence, local anti-repetition, save/load persistence, storyteller independence, all four previously existing operation regressions and a clean `Player.log`.
 
 ## Locked Tok'ra mission expansion
 

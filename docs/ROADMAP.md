@@ -1,5 +1,34 @@
 # GateRim SG-1 — Roadmap durable
 
+## Dernier jalon clôturé — Appel de détresse Tok'ra (`0.3.29-dev`)
+
+- [x] Partir explicitement de `v0.3.28-dev` sur `feature/tokra-distress-call-world-site`.
+- [x] Ajouter un cinquième MissionDef organique Tok'ra et conserver le slot global unique.
+- [x] Créer un site mondial temporaire ciblable par caravane avec situation cachée jusqu'à l'entrée.
+- [x] Implémenter les variantes secours réel, signal compromis et arrivée trop tardive.
+- [x] Permettre à un secours réel de se dégrader en arrivée tardive selon le temps de trajet.
+- [x] Capturer la difficulté à l'offre et dimensionner les groupes Goa'uld/Jaffa depuis ce snapshot.
+- [x] Conserver en Defs les poids, délais, textes, plages, récompenses et conséquences.
+- [x] Ajouter les outils debug permettant de forcer chaque variante.
+- [x] Remplacer l'entrée manuelle par l'action d'arrivée de caravane vanilla, avec chargement automatique, pause de carte hostile et colons enrôlés.
+- [x] Générer une scène cohérente autour d'un ancrage unique : camp, caravane attaquée, position compromise ou camp submergé, avec débris et corps optionnels.
+- [x] Placer survivants et défenseurs près de cette scène et faire entrer la caravane par le bord vanilla le plus proche.
+- [x] Reconnaître les soins du choc au sol puis évacuer rapidement les survivants traités sans exiger lit, chauffage, guérison complète ou départ à pied.
+- [x] Préparer les textes anglais/français et le protocole de test complet.
+- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.29.0`.
+- [x] Valider les trois variantes, la difficulté adaptative, l'expiration et la persistance.
+- [x] Valider la récurrence, l'anti-répétition, les quatre anciennes opérations et `Player.log`.
+- [x] Clôturer le jalon, publier le tag final unique `v0.3.29-dev` et synchroniser le wiki.
+
+Le site mondial et les mécaniques narratives propres à la mission restent dans un adaptateur spécialisé. L'arrivée, la pause, l'entrée de carte, l'enrôlement et les soins utilisent les mécanismes vanilla lorsque ceux-ci couvrent le besoin. Le gestionnaire organique demeure l'unique propriétaire du slot, de la confiance, des résultats et des délais cachés. L'équilibrage des poids, effectifs, délais et récompenses reste évolutif après des tests prolongés.
+
+La révision locale finale `r7` valide les trois situations cachées, l'arrivée de caravane vanilla, la scène ancrée, les soins de terrain, l'équipe Tok'ra visible, le portage et la sortie réels des blessés, la cache de composants déjà présente sur étagère, la difficulté adaptative, l'expiration, la persistance, la récurrence, les anciennes opérations et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.29-dev`.
+
+## Prochain jalon verrouillé — Livraison vers une base Tok'ra temporaire (`0.3.30-dev`)
+
+Le prochain travail doit partir explicitement de `v0.3.29-dev` sur une nouvelle branche dédiée. Il ajoutera une destination mondiale Tok'ra temporaire, une cargaison configurable et les résultats liés à la livraison, au retard, à l'abandon, à la perte ou à l'interception.
+
+
 Ce fichier est la référence centrale pour les ajouts, refontes et actions futures du projet.
 
 Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvelle discussion, après une perte de contexte ou avant de choisir un nouveau jalon.
@@ -11,7 +40,7 @@ Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvell
 
 Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
 
-## Dernier jalon clôturé — Audit de l'orchestration Tok'ra (`0.3.28-dev`)
+## Jalon précédent clôturé — Audit de l'orchestration Tok'ra (`0.3.28-dev`)
 
 - [x] Partir explicitement de `v0.3.27-dev` sur `feature/tokra-operation-orchestration-audit`.
 - [x] Reporter dans les fichiers autoritatifs la séquence verrouillée `0.3.28-dev` à `0.3.30-dev`.

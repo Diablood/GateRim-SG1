@@ -1,106 +1,106 @@
 # Project state
 
-Current milestone: `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence` — validated locally and published under `v0.3.28-dev`.
+Current milestone: `0.3.29-dev - Add Tok'ra distress call world-site mission` — validated locally on revision `r7` and published under `v0.3.29-dev`.
 
 ## Development base
 
-- Starting tag: `v0.3.27-dev`.
-- Dedicated branch: `feature/tokra-operation-orchestration-audit`.
-- Final validated local revision: `0.3.28-dev-r1`.
-- Published assembly version: `0.3.28.0`.
-- Final unique tag: `v0.3.28-dev`.
+- Starting tag: `v0.3.28-dev`.
+- Dedicated branch: `feature/tokra-distress-call-world-site`.
+- Final validated local revision: `0.3.29-dev-r7`.
+- Published assembly version: `0.3.29.0`.
+- Final unique tag: `v0.3.29-dev`.
 - Cultural backstory count remains `83`.
 
 ## Milestone purpose
 
-All four existing Tok'ra organic operations are now MissionDef-backed. This milestone audits the shared persistent scheduler before adding world-site and caravan missions. It does not add a new player-facing mission and does not change current weights, hidden delay ranges, rewards or trust consequences.
+This milestone adds a fifth recurrent Tok'ra organic operation. After accepting a fragmentary distress call through the powered communicator, the colony receives a temporary world site. A player caravan must reach it before the signal window closes. The true situation remains hidden until the encounter map is generated.
 
-The goal is to confirm that long games can repeatedly receive varied operations without concurrent offers, predictable cycles or a temporarily unavailable archetype suppressing another eligible one.
+The implementation reuses the persistent operation slot, MissionDef recurrence, anti-repetition, RP text banks and captured threat snapshot. World-site generation, caravan arrival, encounter layout, combat, field treatment and extraction remain in a specialized adapter because they are concrete RimWorld mechanics.
 
-## Orchestration correction
+## Implemented flow
 
-The natural scheduler now:
+1. the scheduler or a developer action creates a normal offered operation;
+2. acceptance captures the scaled threat budget and creates one temporary site between `6` and `18` tiles from the colony;
+3. the world-map interaction stores a vanilla `CaravanArrivalAction` on the caravan;
+4. reaching the tile automatically generates and loads the map, invokes RimWorld's hostile-map pause and enters the player pawns drafted;
+5. a single narrative anchor places the scene, survivors, corpses, a pre-existing salvage cache and defenders in one coherent area rather than using independent edge and centre spawns;
+6. success or failure resolves through the global manager and schedules a new hidden recurrence delay;
+7. the site and map are removed after resolution once normal RimWorld blockers are gone.
 
-1. finds the eligible colony map and current Tok'ra trust tier;
-2. builds the set of MissionDef-backed archetypes with a positive configured weight;
-3. calls each mission worker's `CanOffer(map)` before the weighted draw;
-4. removes temporarily unavailable candidates;
-5. applies the configured repeated-archetype penalty to the previous offer;
-6. performs the weighted draw only among remaining eligible candidates.
+The offer lasts `120000` ticks. The accepted site lasts `300000` ticks. A genuine rescue degrades into late arrival after `120000` ticks. A trap or preselected late-arrival occurrence does not change according to travel speed.
 
-Previously, the scheduler selected an archetype before checking `CanOffer`. A temporarily unavailable future world-site or caravan mission could therefore consume a scheduler attempt while another operation was eligible. The filtered draw prevents that failure mode.
+## Hidden variants and scene context
 
-If configured candidates exist but all are temporarily unavailable, the manager keeps its global slot empty and retries on the normal internal state-check interval. It does not consume a full hidden recurrence delay. If no archetype has a positive weight for the current context, the stable no-candidate state schedules the normal recurrence delay.
+### Genuine rescue
 
-## Developer diagnostics
+- generates `1` to `3` wounded Tok'ra near the scene anchor, never as unrelated edge entrants;
+- generates a Goa'uld/Jaffa group close to the same attacked position;
+- uses either a small temporary Tok'ra camp or an ambushed-caravan scene;
+- may include a limited number of Tok'ra or Jaffa corpses from the preceding fight;
+- requires the hostile presence to be broken and the symbiote shock to be tended;
+- accepts normal field tending while the survivor lies on the ground; no player medical bed or improvised heated structure is required;
+- starts a configured `600`-tick delay once at least one survivor has been treated and the site is secure;
+- brings a visible Tok'ra recovery team through RimWorld's vanilla edge-walk-in arrival mode;
+- uses the vanilla non-hostile carry-and-exit job path for downed survivors, while mobile survivors leave through their existing departure behavior;
+- succeeds only after at least one survivor has physically left the map alive and all remaining survivors are resolved.
 
-Two developer-only actions are added:
+### Compromised signal
 
-- `Tok'ra ops: roll next natural offer` runs the real natural weighted selection without forcing a particular archetype. It requires an empty active slot and a powered Tok'ra communicator.
-- `Tok'ra ops: audit long-term orchestration` reports the global active slot, next hidden opportunity, outcome counters, current offerability, trust-tier weights and delays, text-bank counts and a deterministic `5000`-draw simulation for every trust tier.
+- generates no living Tok'ra survivor;
+- creates a prepared or damaged defensive position around the false signal;
+- may include bodies that make the trap or previous clash credible;
+- uses the full configured threat factor;
+- succeeds when the active Goa'uld/Jaffa presence is neutralized.
 
-The simulation checks that every positively weighted current archetype remains reachable and reports the immediate-repeat rate after applying each definition's repeat factor. It is diagnostic only and does not modify the save.
+### Late arrival
 
-## Validated invariants
+- generates no living allied survivor;
+- creates either an overrun temporary camp or the remains of an ambushed caravan;
+- normally includes dead Tok'ra and may include dead Jaffa;
+- leaves Goa'uld/Jaffa forces near the scene and a configurable component cache already stored on a vanilla shelf when the map is generated;
+- succeeds when the hostile presence is neutralized.
 
-- one persistent global active operation slot;
-- no new natural offer while another operation is offered, accepted, active or ready;
-- every success, failure and ignored/expired offer schedules another hidden delay;
-- the last offered archetype remains penalized locally but is never permanently excluded;
-- all four existing archetypes remain recurrent after success or failure;
-- save/load preserves the active state, last archetypes, counters and next hidden opportunity;
-- player-facing communicator output exposes only the current operation or a generic channel state;
-- weights, delays, outcomes and text variants remain MissionDef-driven;
-- current operations remain compatible with compatible vanilla or modded storytellers.
+## Vanilla-first implementation rule
 
-## Locked mission sequence
+Revision `r3` replaces the manual travel/entry sequence with RimWorld's normal `CaravanArrivalAction` and `CaravanEnterMapUtility` flow. The standard hostile-map notification supplies the pause, and the vanilla entry utility drafts the player's colonists. Its existing entry-cell predicate is used only to select the map edge nearest the generated scene.
 
-The following sequence is now authoritative:
+Custom code is limited to behavior not supplied by the base game for this mission: hidden variant selection, coherent scene placement, wounded Tok'ra generation, treatment recognition and coordination of the visible Tok'ra recovery team.
 
-1. `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence`;
-2. `0.3.29-dev - Add Tok'ra distress call world-site mission`;
-3. `0.3.30-dev - Add Tok'ra temporary-base delivery mission`.
+## Data ownership
 
-### `0.3.29-dev` direction
+`SG1_TokraOrganic_DistressCall` owns:
 
-The distress call will create a temporary world site with a failure timer and a hidden situation revealed on arrival:
+- offer, accepted-site, late-arrival and recovery-team timings;
+- trust-tier weights, context delays and repeat penalty;
+- threat scaling and bounds;
+- world-object, survivor, recovery-team, salvage-item and salvage-storage Def references;
+- distance, map size, actor counts and per-variant threat factors;
+- scene-type chances, entry radius and corpse-count ranges;
+- offer and success text banks, runtime messages, trust changes and Medicine XP.
 
-- genuine rescue with Tok'ra survivors needing assistance;
-- compromised signal or Goa'uld/Jaffa trap;
-- arrival too late, with no allied survivors and remaining enemies guarding, searching or preparing to leave the site.
+The C# adapter owns world-tile selection, the vanilla caravan arrival action, scene geometry, pawn placement, combat observation, field-treatment recognition, recovery-team job assignment and map cleanup.
 
-The mission must be recurrent, adapt threat to RimWorld difficulty and colony strength, vary RP texts, avoid immediate repetition and allow Tok'ra trust to rise or fall according to the result and player decisions.
+## Validation history and current status
 
-### `0.3.30-dev` direction
+Revision `r2` was reported globally functional in game. The focused rescue test revealed three design problems:
 
-The temporary-base delivery will create a world destination and configurable cargo such as an object, intelligence or medicine. It must account for normal delivery, interception or ambush, loss of cargo, delay, abandonment and a compromised destination.
+- arrival did not yet reproduce the expected automatic vanilla hostile-site entry, pause and drafted control;
+- survivors and Jaffa could be generated in unrelated areas, including survivors at a map edge;
+- the original requirement for a player medical bed, natural recovery and walking departure made cold, hunger and long healing dominate the mission.
 
-World-site generation, caravans, interception and combat will use specialized C# adapters. Mission identity, phases, configurable cargo, timing, text, recurrence, difficulty, rewards and consequences should remain Def-driven where practical.
+Revision `r3` addressed these points and added variant-specific scene context. Revision `r4` added the missing `RimWorld` namespace import required to compile the new caravan arrival action. Revision `r5` kept the vanilla arrival and scene flow, but replaced the abrupt pawn removal with a visible Tok'ra recovery team using vanilla arrival, carrying and map-exit behavior. The `r5` startup log then showed five unknown XML fields because extracted source timestamps allowed the incremental build to retain the older `r4` DLL. Revision `r6` changed `build.cmd` to use `--no-incremental`, ensuring that local overlay tests compile the current source. Revision `r7` kept that validated gameplay unchanged and moved the late-arrival components onto a vanilla storage shelf created with the scene, so the material reward is present before resolution instead of appearing as loose ground loot. The final consistency check, forced rebuild, complete in-game flow, focused shelf test, persistence, recurrence, previous-operation regressions, English/French texts and `Player.log` were reported valid. The durable coverage is recorded in `docs/TESTING.md`.
 
-## Long-term mission direction
+## Locked next milestone
 
-The mission pool is intended to grow progressively so long games remain varied and enjoyable. Before `1.0.0`, the priority is a functional, coherent and sufficiently rich base rather than permanently final balance. Frequency, rewards, difficulty, text variants and mechanics may be revised after prolonged real-play testing, including after `1.0.0`.
+The next milestone is:
 
-The framework remains technically faction-neutral. The Tok'ra pool is completed and enriched first. Separate Goa'uld mission pools, followed by missions for other races and factions, will retain their own RP identity, appearance conditions, rewards and consequences instead of being treated as Tok'ra variants.
+`0.3.30-dev - Add Tok'ra temporary-base delivery mission`
 
-## Validation result
-
-Local revision `r1` passed the consistency check, forced rebuild and complete in-game checklist. The deterministic audit returned `PASS`; natural rolls preserved the single global slot; success, failure and ignored offers all scheduled new hidden delays; recurrence and local anti-repetition remained functional; save/load preserved hidden and active states; all four existing operations passed regression checks; normal player UI boundaries and `Player.log` were clean.
-
-## Deferred Tok'ra introduction arc
-
-A future milestone will gate recurrent Tok'ra operations behind an introductory progression:
-
-1. a unique first-contact or recovery mission with a real combat objective awards a Tok'ra key object or analysis artifact;
-2. that object unlocks a dedicated GateRim SG-1 research project with vanilla `Electricity` as prerequisite;
-3. completing the research permits construction of the Tok'ra communicator;
-4. only a constructed and powered communicator makes the recurrent Tok'ra pool eligible.
-
-The exact artifact, enemy force, site type and failure recovery remain to be designed. The unique introduction must not create a permanent campaign lock if the first attempt fails. This arc is recorded for later and is not part of `0.3.28-dev`, `0.3.29-dev` or `0.3.30-dev` unless explicitly rescheduled.
+It must start explicitly from `v0.3.29-dev` on a new dedicated branch.
 
 ## Publication state
 
-- Branch: `feature/tokra-operation-orchestration-audit`.
-- Final tag: `v0.3.28-dev`.
+- Published branch: `feature/tokra-distress-call-world-site`.
+- Final tag: `v0.3.29-dev`.
 - Main repository and separate wiki synchronized.
-- Next milestone: `0.3.29-dev - Add Tok'ra distress call world-site mission`, starting explicitly from `v0.3.28-dev` on a new dedicated branch.
+- Next milestone: `0.3.30-dev - Add Tok'ra temporary-base delivery mission`, starting explicitly from `v0.3.29-dev` on a new dedicated branch.

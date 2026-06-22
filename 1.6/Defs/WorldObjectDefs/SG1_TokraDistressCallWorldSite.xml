@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_TokraDistressCallWorldSite</defName>
+        <label>Tok'ra distress signal</label>
+        <description>A temporary world site identified from a fragmentary Tok'ra distress signal. The true situation will only become clear when a caravan reaches the source.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraDistressCallSite</worldObjectClass>
+        <texture>World/WorldObjects/Sites/GenericSite</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconPriority>36</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>true</canHaveFaction>
+        <useDynamicDrawer>true</useDynamicDrawer>
+        <comps>
+            <li Class="GateRimSG1.Goauld.WorldObjectCompProperties_TokraRelayFormCaravan" />
+        </comps>
+    </WorldObjectDef>
+</Defs>

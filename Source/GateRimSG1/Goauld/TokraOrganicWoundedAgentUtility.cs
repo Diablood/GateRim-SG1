@@ -16,6 +16,23 @@ namespace GateRimSG1.Goauld
             int careDurationTicks,
             out Pawn patient)
         {
+            return TrySpawnPatient(
+                map,
+                definition,
+                scaledThreatPoints,
+                careDurationTicks,
+                IntVec3.Invalid,
+                out patient);
+        }
+
+        public static bool TrySpawnPatient(
+            Map map,
+            TokraOrganicOperationDefinition definition,
+            float scaledThreatPoints,
+            int careDurationTicks,
+            IntVec3 preferredSpawnAnchor,
+            out Pawn patient)
+        {
             patient = null;
             GateRimMissionPawnCareDef profile = definition?.PawnCare;
             PawnKindDef pawnKind = GetPawnKindDef(profile);
@@ -36,7 +53,11 @@ namespace GateRimSG1.Goauld
 
             IntVec3 entryCell;
 
-            if (!TryFindEntryCell(map, out entryCell))
+            if (!TryFindPreferredSpawnCell(
+                    map,
+                    preferredSpawnAnchor,
+                    out entryCell)
+                && !TryFindEntryCell(map, out entryCell))
             {
                 return false;
             }
@@ -74,9 +95,12 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            IntVec3 careSpot;
+            IntVec3 careSpot = preferredSpawnAnchor.IsValid
+                ? entryCell
+                : IntVec3.Invalid;
 
-            if (!RCellFinder.TryFindRandomSpotJustOutsideColony(
+            if (!careSpot.IsValid
+                && !RCellFinder.TryFindRandomSpotJustOutsideColony(
                     generatedPatient,
                     out careSpot))
             {
@@ -486,6 +510,29 @@ namespace GateRimSG1.Goauld
                 ? null
                 : DefDatabase<HediffDef>.GetNamedSilentFail(
                     profile.recoveryHediffDefName);
+        }
+
+        private static bool TryFindPreferredSpawnCell(
+            Map map,
+            IntVec3 preferredSpawnAnchor,
+            out IntVec3 spawnCell)
+        {
+            spawnCell = IntVec3.Invalid;
+
+            if (map == null || !preferredSpawnAnchor.IsValid)
+            {
+                return false;
+            }
+
+            return CellFinder.TryFindRandomCellNear(
+                preferredSpawnAnchor,
+                map,
+                5,
+                cell => cell.InBounds(map)
+                    && cell.Standable(map)
+                    && cell.GetFirstBuilding(map) == null
+                    && cell.GetFirstPawn(map) == null,
+                out spawnCell);
         }
 
         private static bool TryFindEntryCell(Map map, out IntVec3 entryCell)
