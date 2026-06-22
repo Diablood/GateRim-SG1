@@ -21,6 +21,8 @@ namespace GateRimSG1.Missions
             = new Dictionary<string, int>();
         public Dictionary<string, float> scalars
             = new Dictionary<string, float>();
+        public Dictionary<string, string> strings
+            = new Dictionary<string, string>();
 
         public void ExposeData()
         {
@@ -42,6 +44,11 @@ namespace GateRimSG1.Missions
             Scribe_Collections.Look(
                 ref scalars,
                 "scalars",
+                LookMode.Value,
+                LookMode.Value);
+            Scribe_Collections.Look(
+                ref strings,
+                "strings",
                 LookMode.Value,
                 LookMode.Value);
 
@@ -70,6 +77,35 @@ namespace GateRimSG1.Missions
             }
         }
 
+        public string GetString(string key, string fallback = null)
+        {
+            EnsureCollections();
+            string value;
+
+            return !string.IsNullOrEmpty(key)
+                    && strings.TryGetValue(key, out value)
+                ? value
+                : fallback;
+        }
+
+        public void SetString(string key, string value)
+        {
+            EnsureCollections();
+
+            if (string.IsNullOrEmpty(key))
+            {
+                return;
+            }
+
+            if (value == null)
+            {
+                strings.Remove(key);
+                return;
+            }
+
+            strings[key] = value;
+        }
+
         public void Reset()
         {
             missionDefName = null;
@@ -81,6 +117,7 @@ namespace GateRimSG1.Missions
             textVariantIndexes.Clear();
             counters.Clear();
             scalars.Clear();
+            strings.Clear();
         }
 
         private void EnsureCollections()
@@ -98,6 +135,11 @@ namespace GateRimSG1.Missions
             if (scalars == null)
             {
                 scalars = new Dictionary<string, float>();
+            }
+
+            if (strings == null)
+            {
+                strings = new Dictionary<string, string>();
             }
         }
     }

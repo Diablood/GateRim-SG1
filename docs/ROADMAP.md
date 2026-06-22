@@ -1,6 +1,29 @@
 # GateRim SG-1 — Roadmap durable
 
-## Dernier jalon clôturé — Appel de détresse Tok'ra (`0.3.29-dev`)
+## Dernier jalon clôturé — Livraison vers une base Tok'ra temporaire (`0.3.30-dev`)
+
+- [x] Partir explicitement de `v0.3.29-dev` sur `feature/tokra-temporary-base-delivery`.
+- [x] Sélectionner uniquement des contrats réellement fabricables selon recettes, recherches, poste de travail et compétences disponibles.
+- [x] Créer un rendez-vous mondial temporaire et conserver le voyage libre par le flux de caravane vanilla.
+- [x] Remettre explicitement la cargaison avec un gizmo de caravane sur la tuile du site.
+- [x] Valider la quantité, la qualité et l'état réels des objets, puis consommer exactement la commande.
+- [x] Ajouter une période de grâce après l'échéance, avec récompense de confiance réduite en cas de livraison tardive.
+- [x] Ajouter une interception Goa'uld unique pendant le trajet, limitée à une cargaison complète allant vers le site exact.
+- [x] Dimensionner les interceptions depuis le snapshot de menace capturé à l'offre et préserver ce budget après sauvegarde/rechargement.
+- [x] Ajouter une embuscade mutuellement exclusive sur la dernière tuile d'approche plutôt que directement sur le rendez-vous.
+- [x] Conserver l'inventaire réel, la récupération complète du butin et la reformation vanilla avant la dernière case.
+- [x] Ne jamais remplacer la livraison par une victoire militaire ; exiger la quantité conforme survivante.
+- [x] Corriger en `r9` le suivi différé de la carte d'embuscade, l'absence de sécurisation prématurée et l'erreur de journal associée.
+- [x] Valider le déclenchement naturel d'une complication sans action développeur.
+- [x] Revalider retard, expiration, persistance, récurrence, anti-répétition, textes RP et anciennes opérations.
+- [x] Clôturer le jalon, publier la branche et le tag final unique `v0.3.30-dev`.
+- [x] Mettre à jour les pages `docs/wiki/` décrivant le contrat, puis synchroniser le dépôt wiki séparé.
+
+La révision locale finale `r9` valide la production accessible, la remise explicite depuis l'inventaire réel, la période de grâce, l'interception de trajet, l'embuscade sur l'approche finale, la perte possible de cargaison, la récupération de tout le butin vanilla, la reformation sans détour artificiel, la difficulté adaptative, la persistance et un `Player.log` propre. Une interception a également été obtenue naturellement sans forçage développeur. Le jalon est publié sous le tag final unique `v0.3.30-dev`.
+
+La victoire militaire ne remplace jamais la livraison : la mission ne réussit que si la quantité conforme atteint réellement les Tok'ra. Les données de contrat, délais, récompenses et difficulté restent pilotées par Defs ; les flux de caravane et de carte temporaire restent dans des adaptateurs spécialisés.
+
+## Jalon précédent clôturé — Appel de détresse Tok'ra (`0.3.29-dev`)
 
 - [x] Partir explicitement de `v0.3.28-dev` sur `feature/tokra-distress-call-world-site`.
 - [x] Ajouter un cinquième MissionDef organique Tok'ra et conserver le slot global unique.
@@ -24,16 +47,19 @@ Le site mondial et les mécaniques narratives propres à la mission restent dans
 
 La révision locale finale `r7` valide les trois situations cachées, l'arrivée de caravane vanilla, la scène ancrée, les soins de terrain, l'équipe Tok'ra visible, le portage et la sortie réels des blessés, la cache de composants déjà présente sur étagère, la difficulté adaptative, l'expiration, la persistance, la récurrence, les anciennes opérations et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.29-dev`.
 
-## Prochain jalon verrouillé — Livraison vers une base Tok'ra temporaire (`0.3.30-dev`)
+## Sélection du prochain jalon après `v0.3.30-dev`
 
-Le prochain travail doit partir explicitement de `v0.3.29-dev` sur une nouvelle branche dédiée. Il ajoutera une destination mondiale Tok'ra temporaire, une cargaison configurable et les résultats liés à la livraison, au retard, à l'abandon, à la perte ou à l'interception.
+- [ ] Relire cette roadmap depuis le tag publié `v0.3.30-dev` avant d'ouvrir une nouvelle branche.
+- [ ] Choisir un périmètre fonctionnel unique et testable, sans prolonger automatiquement la séquence précédente.
+- [ ] Créer la future branche depuis `v0.3.30-dev` et enregistrer le nouveau jalon dans `docs/PROJECT_STATE.md`.
 
+L'arc d'introduction Tok'ra avec mission unique, objet-clé, recherche dédiée et communicateur comme condition d'accès au pool récurrent reste un candidat important. Il n'est pas sélectionné automatiquement par la clôture de `0.3.30-dev`.
 
 Ce fichier est la référence centrale pour les ajouts, refontes et actions futures du projet.
 
 Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvelle discussion, après une perte de contexte ou avant de choisir un nouveau jalon.
 
-- `docs/PROJECT_STATE.md` décrit le jalon actuellement actif et ses tests.
+- `docs/PROJECT_STATE.md` décrit l’état de passation courant, le jalon actif ou le dernier jalon clôturé.
 - `docs/ROADMAP.md` conserve les travaux futurs qui ne doivent pas être oubliés.
 - `docs/CHANGELOG.md` conserve l'historique des jalons terminés.
 - `docs/MILESTONE_PUBLICATION.md` conserve la procédure de validation et de publication.
@@ -75,11 +101,11 @@ Créer un site mondial temporaire avec délai d'échec et situation cachée jusq
 
 Prévoir des raisons RP crédibles, une difficulté adaptative, des résultats faisant évoluer la confiance, plusieurs variantes de textes et une récurrence sans répétition immédiate.
 
-### `0.3.30-dev - Add Tok'ra temporary-base delivery mission`
+### `0.3.30-dev - Add Tok'ra temporary-base delivery mission` — clôturé
 
-Créer une destination Tok'ra temporaire et une cargaison configurable : objet, renseignements, médicaments ou autre ressource compatible.
+Le jalon livre une destination Tok'ra temporaire et une cargaison configurable limitée aux productions réellement accessibles. Il couvre la livraison normale, le retard, l'expiration, une interception de trajet et une embuscade sur l'approche finale avec perte possible de cargaison, butin vanilla et reformation complète.
 
-Gérer la livraison normale, l'interception ou l'embuscade, la perte de cargaison, le retard, l'abandon et une destination compromise. Une victoire militaire ne doit pas suffire si la cargaison est perdue. Les mécaniques de caravane, site mondial et combat restent dans des adaptateurs spécialisés ; les données de mission restent pilotées par Defs lorsque cela est raisonnable.
+Une victoire militaire ne suffit jamais si la cargaison est perdue. Les mécaniques de caravane, site mondial et combat restent dans des adaptateurs spécialisés ; les données de mission restent pilotées par Defs lorsque cela est raisonnable.
 
 
 ## Arc futur d'introduction Tok'ra et accès au communicateur
@@ -92,7 +118,7 @@ Gérer la livraison normale, l'interception ou l'embuscade, la perte de cargaiso
 - Après étude, recherche et construction du communicateur, le pool récurrent Tok'ra deviendra accessible.
 - La mission d'introduction restera unique et séparée des archétypes rejouables.
 - Définir ultérieurement la nature exacte de l'objet, son origine RP, la faction ennemie, le type de site, les conséquences et une solution de récupération qui évite un verrou permanent en cas d'échec.
-- Ce travail est différé et ne modifie pas la séquence verrouillée `0.3.29-dev` puis `0.3.30-dev`, sauf décision explicite ultérieure.
+- Ce travail reste différé après `v0.3.30-dev` et doit être ouvert dans un jalon dédié après audit de la roadmap.
 
 ## Direction durable des pools de missions
 

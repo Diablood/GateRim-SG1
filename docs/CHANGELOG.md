@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.30-dev - Add Tok'ra temporary-base delivery mission
+
+- Add `SG1_TokraOrganic_TemporaryBaseDelivery` as the sixth recurrent MissionDef-backed Tok'ra organic operation.
+- Generate only contracts the colony can reasonably manufacture from available recipes, completed research, required content, worktables and capable colonists.
+- Persist the selected product, quantity, minimum quality, minimum condition, deadlines, offer-time threat snapshot and complication state.
+- Create a concealed temporary Tok'ra rendezvous `6–16` tiles away and preserve normal RimWorld caravan routing.
+- Expose `Hand over the requested goods` / `Remettre la commande` on a stationary caravan at the rendezvous, report the exact missing amount and consume only the requested conforming quantity.
+- Preserve unrelated cargo, excess conforming goods and any battlefield loot carried by the caravan.
+- Add a configurable two-day late-delivery grace period: on-time delivery grants `+2` trust, late delivery grants `+1`, and final expiry applies `-1`.
+- Add one optional Goa'uld interception during the journey for a complete shipment travelling to the exact site.
+- Add a mutually exclusive Goa'uld ambush on the last approach tile when the caravan's next path tile is the rendezvous.
+- Reuse RimWorld's temporary caravan-ambush map, real inventory transfer and complete vanilla reformation dialog so surviving cargo, enemy equipment and other recoverable map items remain selectable.
+- Return the reformed caravan to the adjacent tile and allow the final one-tile journey without an artificial detour.
+- Keep military victory separate from mission success: trust changes only after the physical cargo handoff or final expiry.
+- Scale both hostile complications from the threat snapshot captured at offer time with XML-configured factors and bounds.
+- Track queued ambush-map creation asynchronously, preventing premature route clearance and the false unidentified-world-object error.
+- Persist all trigger, retry, encounter, cargo, deadline and anti-duplication state through save/reload without retroactive complication rerolls.
+- Add developer actions for forcing the contract, late window, ordinary interception and final-approach ambush while keeping technical state outside normal player interfaces.
+- Add and align English/French offer, status, warning, combat and result texts.
+- Validate final local revision `r9`, including a naturally selected interception, complete battlefield-loot recovery, vanilla reformation, final-tile handoff, persistence, recurrence, anti-repetition, previous-operation regressions and a clean `Player.log`.
+- Publish branch `feature/tokra-temporary-base-delivery`, final tag `v0.3.30-dev` and the synchronized wiki.
+
 ## 0.3.29-dev - Add Tok'ra distress call world-site mission
 
 - Add `SG1_TokraOrganic_DistressCall` as the fifth MissionDef-backed recurrent Tok'ra operation.

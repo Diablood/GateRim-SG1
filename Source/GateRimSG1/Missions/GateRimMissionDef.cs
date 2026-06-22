@@ -166,6 +166,46 @@ namespace GateRimSG1.Missions
         public int lateJaffaCorpseMaximumCount = 2;
     }
 
+
+    public sealed class GateRimMissionDeliveryCandidateDef
+    {
+        public string thingDefName;
+        public int minimumCount = 3;
+        public int maximumCount = 8;
+        public bool requireQuality;
+        public QualityCategory minimumQuality = QualityCategory.Normal;
+        public float minimumHitPointsPercent = 0.80f;
+        public float weight = 1f;
+    }
+
+    public sealed class GateRimMissionDeliveryDef
+    {
+        public string worldObjectDefName;
+        public int minimumTileDistance = 6;
+        public int maximumTileDistance = 18;
+        public TechLevel maximumTechLevel = TechLevel.Industrial;
+        public int minimumCrafterSkill = 4;
+        public bool requireExistingWorkTable = true;
+        public int lateGraceTicks = 120000;
+        public int lateSuccessTrustChange = 1;
+        public string interceptionIncidentDefName;
+        public float interceptionChance;
+        public int interceptionMinimumDelayTicks;
+        public int interceptionMaximumDelayTicks;
+        public int interceptionRetryTicks = 2500;
+        public float interceptionThreatFactor = 0.65f;
+        public float interceptionMinimumPoints = 120f;
+        public float interceptionMaximumPoints = 2500f;
+        public string destinationCompromiseIncidentDefName;
+        public float destinationCompromiseChance;
+        public int destinationCompromiseRetryTicks = 2500;
+        public float destinationCompromiseThreatFactor = 0.80f;
+        public float destinationCompromiseMinimumPoints = 150f;
+        public float destinationCompromiseMaximumPoints = 2800f;
+        public List<GateRimMissionDeliveryCandidateDef> candidates
+            = new List<GateRimMissionDeliveryCandidateDef>();
+    }
+
     public sealed class GateRimMissionHandoffDef
     {
         public string liaisonPawnKindDefName;
@@ -348,6 +388,7 @@ namespace GateRimSG1.Missions
             = new GateRimMissionDifficultyDef();
         public GateRimMissionPawnCareDef pawnCare;
         public GateRimMissionDistressCallDef distressCall;
+        public GateRimMissionDeliveryDef delivery;
         public GateRimMissionHandoffDef handoff;
         public GateRimMissionTextBankDef texts
             = new GateRimMissionTextBankDef();

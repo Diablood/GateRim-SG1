@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraTemporaryBaseDeliveryDestinationCompromise.label>embuscade sur l'approche Tok'ra</SG1_TokraTemporaryBaseDeliveryDestinationCompromise.label>
+    <SG1_TokraTemporaryBaseDeliveryDestinationCompromise.letterLabel>Approche du rendez-vous Tok'ra prise en embuscade</SG1_TokraTemporaryBaseDeliveryDestinationCompromise.letterLabel>
+    <SG1_TokraTemporaryBaseDeliveryDestinationCompromise.letterText>{0} effectue sa dernière approche vers le rendez-vous Tok'ra lorsque des {1} au service de {2} coupent la route. Frayez-vous un passage, reformez la caravane avec les ressources récupérées puis poursuivez jusqu'à la remise.</SG1_TokraTemporaryBaseDeliveryDestinationCompromise.letterText>
+</LanguageData>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_TokraTemporaryBaseDeliveryInterception.label>interception de ravitaillement goa'uld</SG1_TokraTemporaryBaseDeliveryInterception.label>
+    <SG1_TokraTemporaryBaseDeliveryInterception.letterLabel>Cargaison Tok'ra interceptée</SG1_TokraTemporaryBaseDeliveryInterception.letterLabel>
+    <SG1_TokraTemporaryBaseDeliveryInterception.letterText>{0} a été interceptée par des {1} au service de {2}. Les assaillants se dirigent directement vers la cargaison destinée aux Tok'ra.</SG1_TokraTemporaryBaseDeliveryInterception.letterText>
+</LanguageData>

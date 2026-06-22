@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GateRimSG1.Missions;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 using Verse.AI;
 
@@ -1342,6 +1343,14 @@ namespace GateRimSG1.Goauld
                 TokraOrganicOperationArchetype.MedicalSupplyHandoff);
         }
 
+        public static bool DebugForceTemporaryBaseDeliveryOpportunity(
+            Map map)
+        {
+            return DebugForceSpecificOpportunity(
+                map,
+                TokraOrganicOperationArchetype.TemporaryBaseDelivery);
+        }
+
         public static bool DebugForceDistressCallOpportunity(
             Map map,
             TokraDistressCallVariant variant)
@@ -1406,6 +1415,218 @@ namespace GateRimSG1.Goauld
                 null,
                 failureTextKey,
                 bypassSuccessValidation: true);
+        }
+
+
+        public static bool NotifyTemporaryBaseDeliverySiteResolved(
+            WorldObject_TokraTemporaryBaseDeliverySite site,
+            bool succeeded,
+            string failureTextId,
+            bool deliveredLate = false)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || site == null
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.TemporaryBaseDelivery
+                || (manager.activeState
+                        != TokraOrganicOperationState.Accepted
+                    && manager.activeState
+                        != TokraOrganicOperationState.Ready))
+            {
+                return false;
+            }
+
+            WorldObject_TokraTemporaryBaseDeliverySite activeSite
+                = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                    manager.activeOperation.frameworkRuntime);
+
+            if (activeSite == null || activeSite.ID != site.ID)
+            {
+                return false;
+            }
+
+            TokraOrganicOperationDefinition definition
+                = manager.GetActiveDefinition();
+            string failureTextKey = succeeded
+                || string.IsNullOrWhiteSpace(failureTextId)
+                    ? null
+                    : definition?.GetRuntimeTextKey(failureTextId);
+            int? trustChangeOverride = null;
+            string trustMessageKeyOverride = null;
+
+            if (succeeded && deliveredLate)
+            {
+                TokraTemporaryBaseDeliveryMissionUtility.SetDeliveredLate(
+                    manager.activeOperation.frameworkRuntime,
+                    true);
+                trustChangeOverride
+                    = definition?.Delivery?.lateSuccessTrustChange;
+                trustMessageKeyOverride
+                    = definition?.GetRuntimeTextKey("lateTrustMessage");
+            }
+
+            return manager.TryResolveActiveOperation(
+                succeeded
+                    ? TokraOrganicOperationOutcome.Succeeded
+                    : TokraOrganicOperationOutcome.Failed,
+                null,
+                failureTextKey,
+                bypassSuccessValidation: true,
+                trustChangeOverride: trustChangeOverride,
+                trustMessageKeyOverride: trustMessageKeyOverride);
+        }
+
+        public static bool NotifyTemporaryBaseDeliveryLateWindowStarted(
+            WorldObject_TokraTemporaryBaseDeliverySite site)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || !manager.TryGetActiveTemporaryBaseDeliverySite(
+                    site,
+                    out TokraOrganicOperationDefinition definition))
+            {
+                return false;
+            }
+
+            GateRimMissionRuntimeData runtime
+                = manager.activeOperation.frameworkRuntime;
+
+            if (TokraTemporaryBaseDeliveryMissionUtility
+                .IsLateWindowStarted(runtime))
+            {
+                return true;
+            }
+
+            TokraTemporaryBaseDeliveryMissionUtility.SetLateWindowStarted(
+                runtime,
+                true);
+
+            string requiredCount = TokraTemporaryBaseDeliveryMissionUtility
+                .GetRequiredCount(runtime).ToString();
+            string itemLabel = TokraTemporaryBaseDeliveryMissionUtility
+                .GetContractLabel(runtime);
+            string remainingHours = site.GetRemainingHoursString();
+
+            Find.LetterStack?.ReceiveLetter(
+                definition.GetRuntimeTextKey("lateWarningLabel").Translate(),
+                definition.GetRuntimeTextKey("lateWarningText").Translate(
+                    requiredCount,
+                    itemLabel,
+                    remainingHours),
+                LetterDefOf.NeutralEvent,
+                site);
+
+            GR_Log.Message(
+                "Tok'ra temporary-base delivery entered its late window: "
+                + $"site={site.ID}; remainingHours={remainingHours}.");
+            return true;
+        }
+
+        public static void NotifyTemporaryBaseDeliveryInterceptionTriggered(
+            WorldObject_TokraTemporaryBaseDeliverySite site,
+            Caravan caravan,
+            float threatPoints)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || !manager.TryGetActiveTemporaryBaseDeliverySite(
+                    site,
+                    out _))
+            {
+                return;
+            }
+
+            GR_Log.Message(
+                "Tok'ra temporary-base delivery interception triggered: "
+                + $"site={site.ID}; caravan={caravan?.ID ?? -1}; "
+                + $"points={threatPoints:0}.");
+        }
+
+        private bool TryGetActiveTemporaryBaseDeliverySite(
+            WorldObject_TokraTemporaryBaseDeliverySite site,
+            out TokraOrganicOperationDefinition definition)
+        {
+            definition = GetActiveDefinition();
+
+            if (site == null
+                || definition == null
+                || activeArchetype
+                    != TokraOrganicOperationArchetype.TemporaryBaseDelivery
+                || (activeState != TokraOrganicOperationState.Accepted
+                    && activeState != TokraOrganicOperationState.Ready))
+            {
+                return false;
+            }
+
+            WorldObject_TokraTemporaryBaseDeliverySite activeSite
+                = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                    activeOperation.frameworkRuntime);
+            return activeSite != null && activeSite.ID == site.ID;
+        }
+
+        public static bool DebugForceTemporaryBaseDeliveryLateWindow(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || !manager.IsActiveForMap(map)
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                return false;
+            }
+
+            WorldObject_TokraTemporaryBaseDeliverySite site
+                = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                    manager.activeOperation.frameworkRuntime);
+            return site?.DebugEnterLateWindow() == true;
+        }
+
+        public static bool DebugForceTemporaryBaseDeliveryInterception(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || !manager.IsActiveForMap(map)
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                return false;
+            }
+
+            WorldObject_TokraTemporaryBaseDeliverySite site
+                = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                    manager.activeOperation.frameworkRuntime);
+            return site?.DebugForceInterception() == true;
+        }
+
+        public static bool DebugForceTemporaryBaseDeliveryDestinationCompromise(
+            Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || !manager.IsActiveForMap(map)
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                return false;
+            }
+
+            WorldObject_TokraTemporaryBaseDeliverySite site
+                = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                    manager.activeOperation.frameworkRuntime);
+            return site?.DebugForceDestinationCompromise() == true;
         }
 
         public static bool DebugAcceptActiveOffer(Map map)
@@ -1474,6 +1695,15 @@ namespace GateRimSG1.Goauld
                 manager.offerExpiryTick = currentTick;
                 manager.TickActiveOpportunity(currentTick);
                 return true;
+            }
+
+            if (manager.activeArchetype
+                == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                WorldObject_TokraTemporaryBaseDeliverySite site
+                    = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                        manager.activeOperation.frameworkRuntime);
+                return site?.DebugExpireContract() == true;
             }
 
             manager.operationDeadlineTick = currentTick;
@@ -2300,6 +2530,39 @@ namespace GateRimSG1.Goauld
             }
         }
 
+
+        internal void TickAcceptedTemporaryBaseDelivery(int currentTick)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            if (definition == null)
+            {
+                return;
+            }
+
+            WorldObject_TokraTemporaryBaseDeliverySite site
+                = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                    activeOperation.frameworkRuntime);
+
+            if (site == null)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureSiteLost"),
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            if (site.IsLate)
+            {
+                TokraTemporaryBaseDeliveryMissionUtility.SetLateWindowStarted(
+                    activeOperation.frameworkRuntime,
+                    true);
+            }
+        }
+
         internal void TickAcceptedMedicalSupply(int currentTick)
         {
             TokraOrganicOperationDefinition definition
@@ -2908,9 +3171,7 @@ namespace GateRimSG1.Goauld
 
             Find.LetterStack?.ReceiveLetter(
                 definition.OfferLetterLabelKey.Translate(),
-                offerLetterTextKey.Translate(
-                    GetRoundedUpHours(
-                        definition.OfferDurationTicks).ToString()),
+                GetOfferLetterText(definition, offerLetterTextKey),
                 LetterDefOf.NeutralEvent,
                 communicator);
 
@@ -3834,6 +4095,91 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+
+        internal bool TryAcceptTemporaryBaseDelivery(
+            Map map,
+            Pawn operatorPawn)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+            WorldObject_TokraTemporaryBaseDeliverySite site;
+
+            if (definition == null
+                || definition.Delivery == null
+                || map == null
+                || runtime == null
+                || !TokraTemporaryBaseDeliveryMissionUtility
+                    .HasStoredContract(runtime))
+            {
+                return false;
+            }
+
+            if (!TokraTemporaryBaseDeliveryMissionUtility.TryCreateWorldSite(
+                    map,
+                    definition,
+                    runtime,
+                    out site))
+            {
+                Messages.Message(
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            reportReadyTick = currentTick;
+            operationDeadlineTick = currentTick + definition.DeadlineTicks;
+            readyNotificationSent = true;
+            resolutionApplied = false;
+            activeDeadDrop = null;
+
+            NotifyMissionAccepted(map, operatorPawn);
+
+            int requiredCount = TokraTemporaryBaseDeliveryMissionUtility
+                .GetRequiredCount(runtime);
+            string itemLabel = TokraTemporaryBaseDeliveryMissionUtility
+                .GetContractLabel(runtime);
+            string qualityLabel = TokraTemporaryBaseDeliveryMissionUtility
+                .GetQualityLabel(runtime);
+            string remainingHours = GetRoundedUpHours(
+                definition.DeadlineTicks).ToString();
+
+            Messages.Message(
+                definition.AcceptedMessageKey.Translate(
+                    operatorPawn?.LabelShortCap ?? "?",
+                    requiredCount.ToString(),
+                    itemLabel,
+                    qualityLabel,
+                    remainingHours),
+                site,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.LetterStack?.ReceiveLetter(
+                definition.GetRuntimeTextKey("targetLetterLabel").Translate(),
+                definition.GetRuntimeTextKey("targetLetterText").Translate(
+                    requiredCount.ToString(),
+                    itemLabel,
+                    qualityLabel,
+                    remainingHours),
+                LetterDefOf.NeutralEvent,
+                site);
+
+            GR_Log.Message(
+                "Accepted Tok'ra temporary-base delivery operation on map "
+                + $"{map.uniqueID}; world site {site.ID} at tile "
+                + $"{site.Tile}; contract {requiredCount}x {itemLabel}; "
+                + $"deadline {operationDeadlineTick}; operator "
+                + $"{operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
         internal bool TryAcceptMedicalSupplyHandoff(
             Map map,
             Pawn operatorPawn)
@@ -4158,7 +4504,9 @@ namespace GateRimSG1.Goauld
             TokraOrganicOperationOutcome outcome,
             Pawn operatorPawn,
             string failureTextKey,
-            bool bypassSuccessValidation = false)
+            bool bypassSuccessValidation = false,
+            int? trustChangeOverride = null,
+            string trustMessageKeyOverride = null)
         {
             if ((activeState != TokraOrganicOperationState.Accepted
                     && activeState != TokraOrganicOperationState.Ready)
@@ -4353,7 +4701,9 @@ namespace GateRimSG1.Goauld
 
             GameComponent_TokraTrustTracker.NotifyOrganicOperationOutcome(
                 activeArchetype,
-                outcome);
+                outcome,
+                trustChangeOverride,
+                trustMessageKeyOverride);
 
             SendResolutionLetter(
                 definition,
@@ -4419,6 +4769,54 @@ namespace GateRimSG1.Goauld
             Pawn patient,
             int intellectualXp)
         {
+            if (definition.Archetype
+                == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                GateRimMissionRuntimeData runtime
+                    = activeOperation.frameworkRuntime;
+                string requiredCount
+                    = TokraTemporaryBaseDeliveryMissionUtility
+                        .GetRequiredCount(runtime).ToString();
+                string itemLabel
+                    = TokraTemporaryBaseDeliveryMissionUtility
+                        .GetContractLabel(runtime);
+
+                if (outcome == TokraOrganicOperationOutcome.Succeeded)
+                {
+                    bool deliveredLate
+                        = TokraTemporaryBaseDeliveryMissionUtility
+                            .WasDeliveredLate(runtime);
+                    string labelKey = deliveredLate
+                        ? definition.GetRuntimeTextKey(
+                            "lateSuccessLetterLabel")
+                        : definition.SuccessLetterLabelKey;
+                    string textKey = deliveredLate
+                        ? definition.GetRuntimeTextKey(
+                            "lateSuccessLetterText")
+                        : GetMissionSuccessTextKey(definition);
+
+                    Find.LetterStack?.ReceiveLetter(
+                        labelKey.Translate(),
+                        textKey.Translate(requiredCount, itemLabel),
+                        LetterDefOf.PositiveEvent,
+                        letterTarget);
+                }
+                else
+                {
+                    string textKey = string.IsNullOrEmpty(failureTextKey)
+                        ? definition.GetRuntimeTextKey("failureTimeout")
+                        : failureTextKey;
+
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.FailureLetterLabelKey.Translate(),
+                        textKey.Translate(requiredCount, itemLabel),
+                        LetterDefOf.NegativeEvent,
+                        letterTarget);
+                }
+
+                return;
+            }
+
             if (definition.Archetype
                 == TokraOrganicOperationArchetype.DistressCall)
             {
@@ -4795,6 +5193,33 @@ namespace GateRimSG1.Goauld
             runtime.baseThreatPoints = snapshot.BaseThreatPoints;
             runtime.scaledThreatPoints = snapshot.ScaledThreatPoints;
             runtime.difficultyFactor = snapshot.Factor;
+        }
+
+
+        private TaggedString GetOfferLetterText(
+            TokraOrganicOperationDefinition definition,
+            string offerLetterTextKey)
+        {
+            string remainingHours = GetRoundedUpHours(
+                definition.OfferDurationTicks).ToString();
+
+            if (definition.Archetype
+                != TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                return offerLetterTextKey.Translate(remainingHours);
+            }
+
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+
+            return offerLetterTextKey.Translate(
+                TokraTemporaryBaseDeliveryMissionUtility
+                    .GetRequiredCount(runtime).ToString(),
+                TokraTemporaryBaseDeliveryMissionUtility
+                    .GetContractLabel(runtime),
+                TokraTemporaryBaseDeliveryMissionUtility
+                    .GetQualityLabel(runtime),
+                remainingHours);
         }
 
         private string SelectOfferLetterTextKey(
@@ -5532,9 +5957,57 @@ namespace GateRimSG1.Goauld
 
             if (activeState == TokraOrganicOperationState.Offered)
             {
-                status = definition.OfferedStatusKey.Translate(
-                    GetRoundedUpHours(
-                        offerExpiryTick - currentTick).ToString())
+                if (definition.Archetype
+                    == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+                {
+                    GateRimMissionRuntimeData runtime
+                        = activeOperation.frameworkRuntime;
+                    status = definition.OfferedStatusKey.Translate(
+                        TokraTemporaryBaseDeliveryMissionUtility
+                            .GetRequiredCount(runtime).ToString(),
+                        TokraTemporaryBaseDeliveryMissionUtility
+                            .GetContractLabel(runtime),
+                        TokraTemporaryBaseDeliveryMissionUtility
+                            .GetQualityLabel(runtime),
+                        GetRoundedUpHours(
+                            offerExpiryTick - currentTick).ToString())
+                        .ToString();
+                }
+                else
+                {
+                    status = definition.OfferedStatusKey.Translate(
+                        GetRoundedUpHours(
+                            offerExpiryTick - currentTick).ToString())
+                        .ToString();
+                }
+            }
+            else if (definition.Archetype
+                == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                GateRimMissionRuntimeData runtime
+                    = activeOperation.frameworkRuntime;
+                WorldObject_TokraTemporaryBaseDeliverySite site
+                    = TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
+                        runtime);
+                bool isLate = site?.IsLate == true
+                    || TokraTemporaryBaseDeliveryMissionUtility
+                        .IsLateWindowStarted(runtime);
+                string statusKey = isLate
+                    ? definition.GetRuntimeTextKey("lateStatus")
+                    : definition.ActiveStatusKey;
+                string remainingHours = site != null
+                    ? site.GetRemainingHoursString()
+                    : GetRoundedUpHours(
+                        operationDeadlineTick - currentTick).ToString();
+
+                status = statusKey.Translate(
+                    TokraTemporaryBaseDeliveryMissionUtility
+                        .GetRequiredCount(runtime).ToString(),
+                    TokraTemporaryBaseDeliveryMissionUtility
+                        .GetContractLabel(runtime),
+                    TokraTemporaryBaseDeliveryMissionUtility
+                        .GetQualityLabel(runtime),
+                    remainingHours)
                     .ToString();
             }
             else if (definition.Archetype
@@ -5802,6 +6275,14 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.DistressCall)
             {
                 TokraDistressCallMissionUtility.FindWorldSite(
+                        activeOperation.frameworkRuntime)
+                    ?.NotifyManagerResolved(false);
+            }
+
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                TokraTemporaryBaseDeliveryMissionUtility.FindWorldSite(
                         activeOperation.frameworkRuntime)
                     ?.NotifyManagerResolved(false);
             }

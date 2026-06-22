@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; four legacy Tok'ra operations migrated through `0.3.27-dev`; shared orchestration audit validated and published in `0.3.28-dev`.
+Status: foundation published in `0.3.23-dev`; five legacy Tok'ra operations integrated through `0.3.29-dev`; sixth craft-and-deliver adapter under validation in `0.3.30-dev-r1`.
 
 ## Purpose
 
@@ -41,7 +41,8 @@ The named runtime text collection exists for adapter messages that do not yet ju
 - base and scaled threat-point snapshots;
 - difficulty factor;
 - text-bank indexes;
-- generic counters and scalar values.
+- generic counters and scalar values;
+- generic persistent string values for selected Def identities and other occurrence data.
 
 A specialized mission can keep typed save fields beside this generic state while it is migrated. Existing save data must never be rerolled merely because more fields become Def-driven.
 
@@ -324,3 +325,14 @@ Before treating a migrated mission as a framework reference:
 7. test all other framework-backed operations for regression.
 
 The intelligence-recovery and wounded-agent migrations exercise two different forms of adaptive threat consumption, while medical handoff proves a bounded visitor-and-resource exchange profile. Future missions should add shared vocabulary only when a concrete operation proves the need.
+
+
+## Temporary-base delivery reference implementation
+
+`SG1_TokraOrganic_TemporaryBaseDelivery` demonstrates a configurable manufacturing contract without exposing a permanent settlement for a hidden faction. XML owns the candidate ThingDefs, quantity ranges, minimum quality, minimum condition, maximum technology, distance, timing, recurrence, texts and trust consequences.
+
+The worker filters candidates against real colony capability before the offer is generated. It requires an available recipe, completed prerequisites, an existing compatible worktable and a capable free colon. The selected contract is persisted in generic runtime strings, counters and scalars. A specialized world-object adapter then uses RimWorld's caravan arrival flow and its `GetCaravanGizmos` extension point: arrival only stations the caravan on the rendezvous tile, while an explicit handoff gizmo validates real inventory and consumes exactly the conforming quantity. The GateRim mission runtime remains authoritative; a mirrored vanilla `Quest` should only be introduced later through a generic presentation adapter, not as a second independent lifecycle for one mission.
+
+The delivery profile also owns the late grace duration, reduced late trust reward and the interception chance, delay, retry and threat-scaling bounds. The specialized world object persists the normal deadline, final grace expiry and a pre-rolled interception state. Its dedicated incident worker reuses RimWorld's caravan-ambush map and inventory flow while fixing the attackers to the Goa'uld faction. Combat never resolves the contract: the cargo handoff remains the sole success condition.
+
+The compromised-destination mechanic remains a separate specialized extension because it requires a generated destination map and encounter resolution rather than the travelling-caravan interception path.

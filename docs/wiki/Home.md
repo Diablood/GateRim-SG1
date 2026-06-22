@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.29-dev`
+> Version du mod documentée : `0.3.30-dev`
 
 ## Le mod en bref
 
@@ -46,8 +46,8 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   livraisons clandestines.
 - [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
   observation discrète, analyse de renseignements, accueil médical prolongé
-  d'un agent blessé, remise de médicaments à un agent de liaison et appel de
-  détresse vers un site mondial temporaire. Les cinq opérations lisent leurs
+  d'un agent blessé, remise de médicaments à un agent de liaison, appel de
+  détresse et contrat de production livré à un rendez-vous temporaire. Les six opérations lisent leurs
   données de mission depuis XML, tandis que leurs interactions RimWorld
   spécialisées restent en C#. La difficulté capturée lors de l'offre dimensionne
   les patrouilles, les défenseurs du site et certains paramètres médicaux.
@@ -82,24 +82,31 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 - une phase ultérieure consacrée à la Porte des étoiles fonctionnelle et aux
   expéditions hors monde.
 
-L'audit de l'orchestration et l'appel à l'aide sur site mondial sont désormais
-intégrés. La prochaine étape est la livraison vers une base Tok'ra temporaire.
+L'audit de l'orchestration, l'appel à l'aide sur site mondial et le contrat de
+production livré à un rendez-vous temporaire sont intégrés. La livraison
+utilise l'inventaire réel de la caravane, accepte un retard limité et peut être
+perturbée par une interception Goa'uld ou une embuscade sur l'approche finale.
 Les autres éléments restent planifiés selon les tests, les dépendances
 techniques et la stabilité des systèmes existants.
 
 ## Orchestration des opérations Tok'ra
 
-La version `0.3.29-dev` étend le planificateur partagé à cinq opérations tout
+La version `0.3.30-dev` étend le planificateur partagé à six opérations tout
 en conservant une seule occurrence active, le filtrage avant tirage pondéré,
 les délais cachés après chaque résultat et la persistance après sauvegarde.
 
 L'appel de détresse crée un site mondial temporaire dont la situation réelle
 n'est révélée qu'à l'arrivée de la caravane. RimWorld gère l'entrée, la pause et
 l'enrôlement, tandis que le mod compose une scène cohérente et une extraction
-rapide après les soins. Le prochain ajout prévu est une livraison vers une base
-Tok'ra temporaire avec risques d'interception. Ces
-missions resteront rejouables et pourront être rééquilibrées après des tests
-prolongés.
+rapide après les soins. Le contrat de production crée un rendez-vous Tok'ra
+temporaire et ne retient que des objets réellement fabricables par la colonie.
+La remise vérifie la cargaison réelle, une période de grâce autorise une
+livraison tardive moins rémunératrice et des forces Goa'uld peuvent intercepter
+la caravane pendant le trajet ou sur la dernière tuile d'approche. Après un
+combat, RimWorld conserve sa reformation complète afin que le joueur puisse
+emporter la cargaison survivante et le butin avant de parcourir la dernière
+case. Ces missions restent rejouables et pourront être rééquilibrées après des
+tests prolongés.
 
 ## Liens utiles
 

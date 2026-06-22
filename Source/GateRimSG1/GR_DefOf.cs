@@ -36,6 +36,7 @@ namespace GateRimSG1
         public static WorldObjectDef SG1_TokraHiddenSafehouseMarker;
         public static WorldObjectDef SG1_TokraHiddenSafehouseSite;
         public static WorldObjectDef SG1_TokraDistressCallWorldSite;
+        public static WorldObjectDef SG1_TokraTemporaryBaseDeliverySite;
         public static SitePartDef SG1_TokraHiddenSafehouseSitePart;
         public static IncidentDef SG1_FreeJaffaPeacefulVisitors;
         public static IncidentDef SG1_GoauldJaffaNaturalRaid;

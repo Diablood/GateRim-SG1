@@ -131,6 +131,62 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Tok'ra ops: force delivery contract",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceTemporaryBaseDeliveryOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceTemporaryBaseDeliveryOpportunity(
+                        Find.CurrentMap),
+                "GR_TokraTemporaryBaseDelivery_DebugForced");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: delivery late window",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceTemporaryBaseDeliveryLateWindow()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceTemporaryBaseDeliveryLateWindow(
+                        Find.CurrentMap),
+                "GR_TokraTemporaryBaseDelivery_DebugLateWindow");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: delivery interception",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceTemporaryBaseDeliveryInterception()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceTemporaryBaseDeliveryInterception(
+                        Find.CurrentMap),
+                "GR_TokraTemporaryBaseDelivery_DebugInterception");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: delivery approach ambush",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceTemporaryBaseDeliveryDestinationCompromise()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceTemporaryBaseDeliveryDestinationCompromise(
+                        Find.CurrentMap),
+                "GR_TokraTemporaryBaseDelivery_DebugDestinationCompromise");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Tok'ra ops: force distress rescue offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

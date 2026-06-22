@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_TokraTemporaryBaseDeliverySite</defName>
+        <label>temporary Tok'ra rendezvous</label>
+        <description>A concealed Tok'ra logistics position exposed only long enough to receive a requested shipment.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraTemporaryBaseDeliverySite</worldObjectClass>
+        <texture>World/WorldObjects/Sites/GenericSite</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconPriority>35</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>true</canHaveFaction>
+        <useDynamicDrawer>true</useDynamicDrawer>
+    </WorldObjectDef>
+</Defs>

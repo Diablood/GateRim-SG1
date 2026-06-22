@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraTemporaryBaseDelivery_OfferLabel>Demande de production Tok'ra</GR_TokraTemporaryBaseDelivery_OfferLabel>
+    <GR_TokraTemporaryBaseDelivery_OfferText1>Une cellule Tok'ra a besoin de {0} {1} de qualité {2} ou supérieure. La demande a été choisie parmi les productions actuellement accessibles à la colonie. En cas d'acceptation, un rendez-vous dissimulé sera révélé. L'offre reste ouverte environ {3} heures.</GR_TokraTemporaryBaseDelivery_OfferText1>
+    <GR_TokraTemporaryBaseDelivery_OfferText2>Le canal sécurisé transmet une demande pratique plutôt qu'un rapport de renseignement : produire {0} {1}, chacun de qualité {2} au minimum, puis les livrer à une base Tok'ra temporaire. La cellule attendra une réponse pendant environ {3} heures.</GR_TokraTemporaryBaseDelivery_OfferText2>
+    <GR_TokraTemporaryBaseDelivery_OfferText3>Un groupe Tok'ra proche a épuisé une partie de ses réserves de terrain. Il demande à la colonie de fabriquer {0} {1} de qualité {2} ou supérieure. Accepter révélera un point de livraison de courte durée. L'offre expire dans environ {3} heures.</GR_TokraTemporaryBaseDelivery_OfferText3>
+    <GR_TokraTemporaryBaseDelivery_OfferExpired>La demande de production Tok'ra a été retirée avant que la colonie ne s'engage.</GR_TokraTemporaryBaseDelivery_OfferExpired>
+    <GR_TokraTemporaryBaseDelivery_Accepted>{0} a accepté la demande de {1} {2} de qualité {3} ou supérieure. Le rendez-vous temporaire restera accessible pendant environ {4} heures.</GR_TokraTemporaryBaseDelivery_Accepted>
+    <GR_TokraTemporaryBaseDelivery_SuccessLabel>Livraison Tok'ra terminée</GR_TokraTemporaryBaseDelivery_SuccessLabel>
+    <GR_TokraTemporaryBaseDelivery_FailureLabel>Échec de la livraison Tok'ra</GR_TokraTemporaryBaseDelivery_FailureLabel>
+    <GR_TokraTemporaryBaseDelivery_SuccessText1>La caravane a livré {0} {1} à la position Tok'ra dissimulée. La cellule referme la route et reconnaît la fiabilité de la colonie.</GR_TokraTemporaryBaseDelivery_SuccessText1>
+    <GR_TokraTemporaryBaseDelivery_SuccessText2>La cargaison demandée de {0} {1} a atteint la base temporaire. Les Tok'ra démontent le rendez-vous après avoir enregistré la remise réussie.</GR_TokraTemporaryBaseDelivery_SuccessText2>
+    <GR_TokraTemporaryBaseDelivery_SuccessText3>L'équipe de terrain a reçu les {0} {1}. La voie logistique cachée disparaît de nouveau, mais ce contrat achevé renforce la confiance Tok'ra envers la colonie.</GR_TokraTemporaryBaseDelivery_SuccessText3>
+    <GR_TokraTemporaryBaseDelivery_SpawnFailed>Les Tok'ra ne parviennent pas à établir un rendez-vous temporaire sûr. La demande reste ouverte.</GR_TokraTemporaryBaseDelivery_SpawnFailed>
+    <GR_TokraTemporaryBaseDelivery_TargetLetterLabel>Rendez-vous Tok'ra établi</GR_TokraTemporaryBaseDelivery_TargetLetterLabel>
+    <GR_TokraTemporaryBaseDelivery_TargetLetterText>Un point de livraison Tok'ra dissimulé est apparu sur la carte du monde. Apportez {0} {1} de qualité {2} ou supérieure avant la fermeture de la route dans environ {3} heures.</GR_TokraTemporaryBaseDelivery_TargetLetterText>
+    <GR_TokraTemporaryBaseDelivery_FailureTimeout>La route Tok'ra s'est refermée avant l'arrivée des {0} {1}. La cellule abandonne le contrat.</GR_TokraTemporaryBaseDelivery_FailureTimeout>
+    <GR_TokraTemporaryBaseDelivery_FailureSiteLost>La position Tok'ra temporaire qui devait recevoir les {0} {1} n'est plus accessible. La livraison est perdue.</GR_TokraTemporaryBaseDelivery_FailureSiteLost>
+    <GR_TokraTemporaryBaseDelivery_Accept>Accepter la demande de production Tok'ra</GR_TokraTemporaryBaseDelivery_Accept>
+    <GR_TokraTemporaryBaseDelivery_StatusOffered>Demande : {0} {1}, qualité {2}+ ({3} h pour répondre)</GR_TokraTemporaryBaseDelivery_StatusOffered>
+    <GR_TokraTemporaryBaseDelivery_StatusActive>Livraison : {0} {1}, qualité {2}+ ({3} h restantes)</GR_TokraTemporaryBaseDelivery_StatusActive>
+    <GR_TokraTemporaryBaseDelivery_StatusReady>Livraison Tok'ra prête</GR_TokraTemporaryBaseDelivery_StatusReady>
+    <GR_TokraTemporaryBaseDelivery_TrustSucceeded>Les Tok'ra considèrent désormais la colonie comme une source fiable de ravitaillement de terrain.</GR_TokraTemporaryBaseDelivery_TrustSucceeded>
+    <GR_TokraTemporaryBaseDelivery_TrustFailed>Les Tok'ra deviennent plus prudents avant de compter sur les engagements de production de la colonie.</GR_TokraTemporaryBaseDelivery_TrustFailed>
+    <GR_TokraTemporaryBaseDelivery_TravelCommandLabel>Rejoindre le rendez-vous Tok'ra</GR_TokraTemporaryBaseDelivery_TravelCommandLabel>
+    <GR_TokraTemporaryBaseDelivery_ApproachingReport>Approche du rendez-vous Tok'ra temporaire.</GR_TokraTemporaryBaseDelivery_ApproachingReport>
+    <GR_TokraTemporaryBaseDelivery_InspectPending>Cargaison demandée : {0} {1}, qualité {2} ou supérieure. Environ {3} heures restantes.</GR_TokraTemporaryBaseDelivery_InspectPending>
+    <GR_TokraTemporaryBaseDelivery_InspectSucceeded>La cargaison demandée a été livrée.</GR_TokraTemporaryBaseDelivery_InspectSucceeded>
+    <GR_TokraTemporaryBaseDelivery_InspectFailed>Le contrat de livraison temporaire a échoué.</GR_TokraTemporaryBaseDelivery_InspectFailed>
+    <GR_TokraTemporaryBaseDelivery_AlreadyResolved>Ce contrat de livraison n'est plus actif.</GR_TokraTemporaryBaseDelivery_AlreadyResolved>
+    <GR_TokraTemporaryBaseDelivery_InvalidContract>La cargaison demandée ne peut plus être identifiée.</GR_TokraTemporaryBaseDelivery_InvalidContract>
+    <GR_TokraTemporaryBaseDelivery_NotEnoughCargo>La caravane ne transporte que {0} des {1} {2} conformes au contrat.</GR_TokraTemporaryBaseDelivery_NotEnoughCargo>
+    <GR_TokraTemporaryBaseDelivery_RequiresCaravan>Une caravane du joueur doit être présente au rendez-vous Tok'ra.</GR_TokraTemporaryBaseDelivery_RequiresCaravan>
+    <GR_TokraTemporaryBaseDelivery_TransferFailed>La cargaison n'a pas pu être transférée depuis la caravane.</GR_TokraTemporaryBaseDelivery_TransferFailed>
+    <GR_TokraTemporaryBaseDelivery_AnyQuality>quelconque</GR_TokraTemporaryBaseDelivery_AnyQuality>
+    <GR_TokraTemporaryBaseDelivery_DebugForced>Une demande de production et de livraison Tok'ra a été forcée.</GR_TokraTemporaryBaseDelivery_DebugForced>
+    <GR_TokraTemporaryBaseDelivery_ArrivedAtRendezvous>La caravane a atteint le rendez-vous dissimulé. Sélectionnez-la puis utilisez la commande de remise lorsque la cargaison demandée est prête.</GR_TokraTemporaryBaseDelivery_ArrivedAtRendezvous>
+    <GR_TokraTemporaryBaseDelivery_DeliverCommandLabel>Remettre la commande</GR_TokraTemporaryBaseDelivery_DeliverCommandLabel>
+    <GR_TokraTemporaryBaseDelivery_DeliverCommandDesc>Transférer au contact Tok'ra {0} {1} de qualité {2} ou supérieure. Seuls les objets conformes seront pris.</GR_TokraTemporaryBaseDelivery_DeliverCommandDesc>
+    <GR_TokraTemporaryBaseDelivery_StatusLate>Livraison en retard : {0} {1}, qualité {2}+ ({3} h avant fermeture de la route)</GR_TokraTemporaryBaseDelivery_StatusLate>
+    <GR_TokraTemporaryBaseDelivery_LateWarningLabel>Rendez-vous Tok'ra maintenu</GR_TokraTemporaryBaseDelivery_LateWarningLabel>
+    <GR_TokraTemporaryBaseDelivery_LateWarningText>Le délai convenu pour livrer les {0} {1} est dépassé. Les Tok'ra maintiennent la route dissimulée pendant encore environ {2} heures, mais une remise tardive rapportera moins de confiance.</GR_TokraTemporaryBaseDelivery_LateWarningText>
+    <GR_TokraTemporaryBaseDelivery_LateSuccessLabel>Livraison Tok'ra tardive terminée</GR_TokraTemporaryBaseDelivery_LateSuccessLabel>
+    <GR_TokraTemporaryBaseDelivery_LateSuccessText>La caravane a livré les {0} {1} après l'échéance convenue. Les Tok'ra acceptent la cargaison, mais ce retard ne renforce que faiblement leur confiance.</GR_TokraTemporaryBaseDelivery_LateSuccessText>
+    <GR_TokraTemporaryBaseDelivery_TrustSucceededLate>Les Tok'ra acceptent la cargaison tardive tout en retenant que la colonie n'a pas respecté le délai convenu.</GR_TokraTemporaryBaseDelivery_TrustSucceededLate>
+    <GR_TokraTemporaryBaseDelivery_FailureGraceExpired>Les Tok'ra ont maintenu la route ouverte au-delà du délai convenu, mais les {0} {1} ne sont toujours pas arrivés. La cellule abandonne le contrat.</GR_TokraTemporaryBaseDelivery_FailureGraceExpired>
+    <GR_TokraTemporaryBaseDelivery_InspectLate>Cargaison demandée : {0} {1}, qualité {2} ou supérieure. La livraison est en retard ; environ {3} heures d'accès d'urgence restent disponibles.</GR_TokraTemporaryBaseDelivery_InspectLate>
+    <GR_TokraTemporaryBaseDelivery_DebugLateWindow>La livraison Tok'ra active a été placée dans sa période de grâce.</GR_TokraTemporaryBaseDelivery_DebugLateWindow>
+    <GR_TokraTemporaryBaseDelivery_DebugInterception>L'interception de la livraison Tok'ra active est armée. Elle se déclenchera lorsqu'une caravane chargée se dirigera vers le rendez-vous.</GR_TokraTemporaryBaseDelivery_DebugInterception>
+    <GR_TokraTemporaryBaseDelivery_DebugDestinationCompromise>La dernière approche vers le point de livraison Tok'ra actif est désormais compromise. La première caravane chargée qui entamera la dernière case du trajet sera attaquée.</GR_TokraTemporaryBaseDelivery_DebugDestinationCompromise>
+    <GR_TokraTemporaryBaseDelivery_DestinationContested>Des mouvements hostiles bloquent la dernière approche vers le rendez-vous Tok'ra. La cargaison ne peut pas poursuivre tant que la route n'est pas sécurisée.</GR_TokraTemporaryBaseDelivery_DestinationContested>
+    <GR_TokraTemporaryBaseDelivery_DestinationNotSecure>L'approche du rendez-vous Tok'ra n'est pas sécurisée. Résolvez l'affrontement puis reformez la caravane avant de poursuivre jusqu'à la remise.</GR_TokraTemporaryBaseDelivery_DestinationNotSecure>
+    <GR_TokraTemporaryBaseDelivery_DestinationCleared>L'approche compromise est de nouveau sécurisée. Reformez la caravane avec tout l'équipement récupéré, puis poursuivez jusqu'au rendez-vous Tok'ra.</GR_TokraTemporaryBaseDelivery_DestinationCleared>
+    <GR_TokraTemporaryBaseDelivery_InspectCompromised>La dernière approche vers le rendez-vous a été compromise. Éliminez la menace, reformez la caravane puis poursuivez jusqu'au point de livraison.</GR_TokraTemporaryBaseDelivery_InspectCompromised>
+</LanguageData>

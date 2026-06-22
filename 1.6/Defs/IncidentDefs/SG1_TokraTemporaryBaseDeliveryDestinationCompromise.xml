@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <IncidentDef>
+        <defName>SG1_TokraTemporaryBaseDeliveryDestinationCompromise</defName>
+        <label>Tok'ra approach ambush</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Caravan</li>
+            <li>Map_TempIncident</li>
+        </targetTags>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraDeliveryDestinationCompromise</workerClass>
+        <pointsScaleable>true</pointsScaleable>
+        <letterText>{0} is making its final approach to the Tok'ra rendezvous when {1} serving {2} cut off the route. Break through, reform the caravan with any recovered supplies and continue to the handoff.</letterText>
+        <letterLabel>Tok'ra approach ambushed</letterLabel>
+        <letterDef>ThreatBig</letterDef>
+        <tale>CaravanAmbushedByHumanlike</tale>
+    </IncidentDef>
+</Defs>

@@ -970,7 +970,9 @@ namespace GateRimSG1.Goauld
 
         public static void NotifyOrganicOperationOutcome(
             TokraOrganicOperationArchetype archetype,
-            TokraOrganicOperationOutcome outcome)
+            TokraOrganicOperationOutcome outcome,
+            int? trustChangeOverride = null,
+            string messageKeyOverride = null)
         {
             GameComponent_TokraTrustTracker tracker = GetCurrentTracker();
 
@@ -995,12 +997,15 @@ namespace GateRimSG1.Goauld
 
             bool succeeded = outcome
                 == TokraOrganicOperationOutcome.Succeeded;
-            int trustChange = succeeded
-                ? definition.SuccessTrustChange
-                : definition.FailureTrustChange;
-            string messageKey = succeeded
-                ? definition.SuccessTrustMessageKey
-                : definition.FailureTrustMessageKey;
+            int trustChange = trustChangeOverride
+                ?? (succeeded
+                    ? definition.SuccessTrustChange
+                    : definition.FailureTrustChange);
+            string messageKey = string.IsNullOrWhiteSpace(messageKeyOverride)
+                ? (succeeded
+                    ? definition.SuccessTrustMessageKey
+                    : definition.FailureTrustMessageKey)
+                : messageKeyOverride;
 
             tracker.ApplyFlatTrustChange(
                 trustChange,

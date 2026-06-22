@@ -159,6 +159,31 @@ namespace GateRimSG1.Goauld
         }
     }
 
+
+    internal sealed class TokraOrganicOperationWorker_TemporaryBaseDelivery
+        : TokraOrganicOperationWorker
+    {
+        public override TokraOrganicOperationArchetype Archetype
+            => TokraOrganicOperationArchetype.TemporaryBaseDelivery;
+
+        public override void Tick(
+            GameComponent_TokraOrganicOperationManager manager,
+            int currentTick)
+        {
+            manager.TickAcceptedTemporaryBaseDelivery(currentTick);
+        }
+
+        public override bool TryAccept(
+            GameComponent_TokraOrganicOperationManager manager,
+            Map map,
+            Pawn operatorPawn)
+        {
+            return manager.TryAcceptTemporaryBaseDelivery(
+                map,
+                operatorPawn);
+        }
+    }
+
     internal static class TokraOrganicOperationWorkerRegistry
     {
         private static readonly IReadOnlyDictionary<
@@ -187,6 +212,10 @@ namespace GateRimSG1.Goauld
                     {
                         TokraOrganicOperationArchetype.DistressCall,
                         new TokraOrganicOperationWorker_DistressCall()
+                    },
+                    {
+                        TokraOrganicOperationArchetype.TemporaryBaseDelivery,
+                        new TokraOrganicOperationWorker_TemporaryBaseDelivery()
                     }
                 };
 

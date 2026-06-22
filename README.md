@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.29-dev`
+- Development version: `0.3.30-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -27,13 +27,13 @@ people, factions, technologies, biology and conflicts surrounding it.
   dependency and formal ceremonies.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.
 - Tok'ra trust, safehouses, medical support, secure communications, recurring
-  organic operations, a distress-call world site and a sabotage mission on a
-  temporary map.
+  organic operations, a distress-call world site, craft-and-deliver contracts
+  to temporary Tok'ra rendezvous and a sabotage mission on a temporary map.
 - A reusable, Def-driven mission framework foundation with persistent runtime
   state, RP text variants, recurrence controls and RimWorld threat snapshots;
   the Tok'ra observation, intelligence-recovery, wounded-agent care,
-  medical-handoff and distress-call operations now read their mission data and
-  balance from XML. Their shared persistent scheduler filters temporarily
+  medical-handoff, distress-call and temporary-base delivery operations now
+  read their mission data and balance from XML. Their shared persistent scheduler filters temporarily
   unavailable missions before weighted selection and exposes long-term
   recurrence diagnostics.
 - Configurable cultural profiles, persistent cultural names and 83 cultural

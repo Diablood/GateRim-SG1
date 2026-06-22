@@ -1,5 +1,49 @@
 # Tests
 
+## 0.3.30-dev - Livraison vers une base Tok'ra temporaire
+
+Validation locale terminée sur la révision `r9`, puis jalon publié sous `v0.3.30-dev`. Les révisions intermédiaires ont séparé le voyage de la remise, ajouté la période de grâce et les deux complications de combat, déplacé l'embuscade finale sur la tuile d'approche et corrigé le suivi différé de la carte temporaire.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.30-dev`, `0.3.30.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.30.0` ;
+- chargement de six MissionDefs organiques, du WorldObject de rendez-vous et des deux IncidentDefs d'interception sans erreur XML, traduction ou initialisation ;
+- sélection limitée aux objets réellement fabricables selon recette, recherches, contenu requis, poste de travail et colon capable ;
+- quantité, qualité minimale, état minimal, échéances, menace et complication persistants ;
+- création d'un rendez-vous temporaire `6–16` tuiles plus loin et voyage libre par le pathfinding vanilla ;
+- arrivée sans consommation automatique, gizmo explicite de remise, décompte réel du manque et retrait exact de la quantité conforme ;
+- conservation du surplus, des autres objets de caravane et du butin récupéré ;
+- livraison ponctuelle à `+2`, période de grâce de `120000` ticks à `+1`, puis expiration finale à `-1` ;
+- interception Goa'uld unique pendant le trajet, seulement pour une cargaison complète allant vers le site exact ;
+- embuscade mutuellement exclusive sur la dernière tuile d'approche, jamais directement sur le rendez-vous ;
+- transfert réel des colons, animaux et inventaire sur la carte temporaire ;
+- récupération des armes, armures et autres objets autorisés par la fenêtre vanilla de reformation ;
+- reformation sur la tuile adjacente puis sélection directe du rendez-vous pour la dernière case ;
+- victoire militaire sans confiance ni réussite tant que la cargaison conforme n'est pas remise ;
+- perte, destruction ou dégradation des objets réellement prise en compte ;
+- menace adaptative consommant le snapshot capturé à l'offre, avec couverture sur colonie faible et avancée ;
+- suivi différé de la carte créée par long event, sans erreur d'objet mondial non identifié ni sécurisation prématurée ;
+- sauvegarde/rechargement avant l'incident, sur la carte hostile, après combat, après reformation, sur la tuile du site et avant remise ;
+- absence de carte, lettre, message, résultat ou confiance dupliqués ;
+- déclenchement naturel observé sans forçage développeur ;
+- rééligibilité après réussite, échec et offre ignorée, délais cachés variables, pénalité du dernier archétype et slot global unique ;
+- variantes RP et anti-répétition locale conservées ;
+- observation, renseignements, agent blessé, remise médicale et appel de détresse sans régression ;
+- `Player.log` final propre.
+
+Points de régression durables :
+
+- ne proposer que des contrats réellement réalisables au moment de l'offre et ne jamais recalculer opportunément leur contenu après acceptation ;
+- conserver le voyage et la reformation vanilla, mais laisser le gestionnaire GateRim propriétaire du contrat, des délais, de la confiance et de la récurrence ;
+- ne jamais réussir sur la seule victoire militaire : exiger la remise physique de la quantité conforme survivante ;
+- consommer exactement la commande sans toucher au surplus, aux objets non conformes ou au butin ;
+- déclencher l'embuscade finale sur la tuile d'approche afin que la caravane puisse être reformée avec tout le butin puis rejoindre directement la cible ;
+- observer les cartes de caravane créées par long event après leur apparition effective, sans supposer que l'objet mondial existe au retour de `TryExecute` ;
+- figer la menace à l'offre et couvrir les colonies de puissances différentes ;
+- préserver le tirage unique, les retries, les échéances, les messages et les résultats à travers la sauvegarde/rechargement ;
+- revalider retard, interception, approche finale, récurrence, anti-répétition et les cinq autres opérations lors de toute modification du moteur partagé.
+
 ## 0.3.29-dev - Appel de détresse Tok'ra sur site mondial
 
 Validation locale terminée sur la révision `r7`, puis jalon publié sous `v0.3.29-dev`. Les révisions intermédiaires ont corrigé l'entrée de caravane, la cohérence de la scène, l'extraction visible, le rebuild non incrémentiel et la présentation physique de la récompense.

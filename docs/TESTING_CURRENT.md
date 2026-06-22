@@ -1,184 +1,120 @@
-# Tests du jalon clôturé
+# Current validation — 0.3.30-dev
 
-Jalon : `0.3.29-dev - Add Tok'ra distress call world-site mission`
+Jalon : `0.3.30-dev - Add Tok'ra temporary-base delivery mission`
+Version de DLL validée : `0.3.30.0`
+Branch: `feature/tokra-temporary-base-delivery`
+Base: `v0.3.29-dev`
+Final local revision: `r9`
+Published tag: `v0.3.30-dev`
 
-Branche : `feature/tokra-distress-call-world-site`
+## Final result
 
-Révision locale finale validée : `0.3.29-dev-r7`
+The milestone is locally validated and published. Revision `r9` is the final local test revision; the suffix is not part of the commit message or tag.
 
-Version de DLL validée : `0.3.29.0`
+The final correction preserves the gameplay validated in `r8` while observing RimWorld's queued ambush-map creation asynchronously. The final approach remains blocked until the temporary map has actually appeared and disappeared, eliminating the false unidentified-world-object error and preventing premature route-secure messages.
 
-Tag de départ : `v0.3.28-dev`
+A naturally selected interception was also observed without developer forcing, confirming that the organic complication path is reachable during normal play.
 
-Tag final : `v0.3.29-dev`
+## Build and startup
 
-Statut : validation locale terminée. Le flux complet et la correction de présentation `r7` ont été validés en jeu ; le contrôle de cohérence, le rebuild forcé, les trois variantes, la persistance, la récurrence, les quatre anciennes opérations, les textes anglais/français et `Player.log` sont validés.
+Validated publication expectations:
 
-## 1. Préparation validée
+```powershell
+./tools/check-project-consistency.cmd
+./build.cmd "D:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"
+```
 
-1. Extraire le ZIP `r7` à la racine de la branche active.
-2. Exécuter `git status --short`.
-3. Exécuter `./tools/check-project-consistency.cmd`.
-4. Exécuter le rebuild non incrémentiel avec `./build.cmd "D:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"`.
-5. Démarrer RimWorld avec le mode développeur et le debug avancé GateRim SG-1.
-6. Lancer `Mission framework: inspect definitions`.
+Validated results:
 
-Résultat attendu :
+- assembly version `0.3.30.0`;
+- six organic MissionDefs loaded;
+- no XML, Def, translation or C# initialization error;
+- no incomplete or unknown warning for the delivery MissionDef or its two encounter IncidentDefs;
+- final `Player.log` clean for the tested flow.
 
-- cinq MissionDefs organiques chargés ;
-- DLL `0.3.29.0` ;
-- aucun défaut XML, traduction ou type dans `Player.log` ;
-- aucune erreur concernant `recoveryPawnKindDefName`, `recoveryTeamDelayTicks`, `recoveryTeamRetryTicks`, `recoveryTeamMinimumCount` ou `recoveryTeamMaximumCount`.
+## Contract generation and normal delivery
 
-## 2. Test obligatoire court — secours réel
+Validated coverage:
 
-1. Lancer `Tok'ra ops: force distress rescue offer`.
-2. Accepter normalement depuis le communicateur.
-3. Former une caravane et sélectionner `Voyager vers le signal de détresse Tok'ra`.
-4. Laisser la caravane atteindre le site sans utiliser une seconde commande d'entrée.
-5. Observer l'état du jeu lors du chargement de la carte.
-6. Vérifier la disposition générale avant de reprendre le temps.
-7. Éliminer les Jaffa.
-8. Soigner le choc du symbiote d'au moins un survivant directement au sol, sans construire de lit.
-9. Attendre la récupération Tok'ra courte.
+- a contract is offered only when its product can reasonably be manufactured with the colony's current recipes, research, worktable and capable colonists;
+- selected product, quantity, quality and condition remain stable after save/reload;
+- the rendezvous appears `6–16` tiles away and remains reachable through normal caravan routing;
+- incomplete cargo may travel but cannot be handed over;
+- `Hand over the requested goods` / `Remettre la commande` reports the real missing amount;
+- exactly the requested conforming quantity is consumed;
+- unrelated cargo, excess conforming goods and recovered battlefield loot remain in the caravan;
+- an on-time delivery grants `+2` trust exactly once.
 
-Résultat attendu :
+## Delay and expiry
 
-- la carte se génère et se charge automatiquement à l'arrivée ;
-- le jeu est en pause ;
-- les colons de la caravane sont enrôlés et contrôlables ;
-- l'entrée utilise le bord de carte le plus proche de la scène tout en restant gérée par `CaravanEnterMapUtility` ;
-- survivants, décor et Jaffa forment une seule scène cohérente à l'intérieur de la carte ;
-- aucun survivant vivant n'est généré au bord comme un visiteur entrant ;
-- un camp temporaire ou une caravane attaquée est visible ;
-- les corps Tok'ra/Jaffa éventuels restent optionnels et en faible nombre ;
-- soigner le choc au sol est reconnu, sans lit médical ;
-- le combat seul ne valide pas la mission ;
-- une fois le choc traité et la menace éliminée, un message annonce l'équipe de récupération ;
-- après environ `600` ticks, une équipe Tok'ra entre sur la carte par le bord ;
-- un membre de cette équipe rejoint chaque survivant à terre, le porte jusqu'au bord et quitte réellement la carte avec lui ;
-- un survivant capable de marcher quitte la carte par le comportement de départ existant ;
-- aucun survivant ne disparaît instantanément au terme d'un simple compteur ;
-- aucune attente de guérison naturelle, récolte de nourriture ou construction de chauffage n'est requise ;
-- au moins un survivant évacué permet la réussite lorsque les autres cas sont résolus ;
-- confiance `+3`, Medicine XP `+300`, lettre unique et absence d'erreur dans `Player.log`.
+Validated coverage:
 
-## 3. Placement et carte de grande taille
+- the normal deadline opens one `120000`-tick grace window rather than failing immediately;
+- the warning appears once and survives save/reload;
+- delivery during the grace period grants `+1` trust;
+- final expiry applies failure and `-1` trust exactly once;
+- no late warning, result or trust change is duplicated after reload.
 
-Répéter le secours réel plusieurs fois, et si possible avec une taille de carte de test supérieure.
+## Ordinary journey interception
 
-Vérifier :
+Validated coverage:
 
-- ancrage de scène à une distance sûre du bord ;
-- survivants à quelques cellules du camp ou des débris ;
-- Jaffa dans un rayon cohérent autour de la position, pas au centre sans lien avec des survivants au bord ;
-- entrée de la caravane depuis le côté le plus proche ;
-- trajet raisonnable entre l'entrée et la scène ;
-- aucun survivant ne meurt systématiquement avant que les colons puissent atteindre la zone.
+- `Debug actions menu → GateRim SG-1 → Tok'ra ops: delivery interception` arms exactly one ordinary Goa'uld ambush;
+- the ambush triggers only for a complete conforming shipment actively travelling to the exact rendezvous;
+- the encounter consumes the offer-time threat snapshot within configured bounds;
+- military victory grants no trust and does not complete the operation;
+- cargo lost or damaged in combat no longer counts;
+- the surviving shipment must still reach the Tok'ra;
+- the trigger, retry state and single-occurrence guarantee persist after save/reload.
 
-## 4. Variante « signal compromis »
+## Final-approach ambush
 
-1. Lancer `Tok'ra ops: force distress trap offer`.
-2. Accepter et laisser la caravane entrer automatiquement.
-3. Vérifier l'absence de survivants vivants.
-4. Vérifier une position compromise ou préparée autour du signal.
-5. Neutraliser les hostiles.
+Validated coverage:
 
-Résultat attendu :
+- `Debug actions menu → GateRim SG-1 → Tok'ra ops: delivery approach ambush` compromises the last approach without attacking while the caravan remains farther away;
+- the temporary map opens on the caravan's adjacent tile when its next path tile is the rendezvous;
+- the rendezvous remains visible one tile away and never hosts the combat map;
+- caravan pawns, animals and real inventory enter through the vanilla flow;
+- the player may recover surviving cargo, enemy weapons, apparel and all other vanilla-selectable map items;
+- the complete vanilla reformation dialog creates the caravan on the approach tile;
+- the rendezvous can be selected directly as the next destination without an artificial detour;
+- the queued encounter is bound after map creation, with no unidentified-world-object error;
+- the route-secure message appears exactly once only after the hostile map is gone;
+- the final one-tile journey and explicit handoff remain required.
 
-- pause et enrôlement identiques au secours réel ;
-- Jaffa regroupés autour de la scène ;
-- corps éventuels cohérents mais non obligatoires ;
-- réussite après élimination de la menace ;
-- aucune pénalité liée au seul fait que le signal était un piège.
+## Persistence and anti-duplication
 
-## 5. Variante « arrivée trop tard »
+Save/reload coverage includes the offer, accepted contract, travel, late window, pending encounter, hostile map, post-combat reformation, final tile and pre-handoff state.
 
-Tester :
+Validated results:
 
-- `Tok'ra ops: force distress late offer` ;
-- puis une offre de secours réel dépassant `120000` ticks sans atteindre l'expiration finale.
+- contract, deadlines, threat snapshot and complication do not reroll;
+- no duplicate map, letter, secure message, handoff, result or trust change appears;
+- an encounter triggers at most once per contract;
+- local pre-publication saves without a selected new complication do not receive a retroactive reroll;
+- cargo requirements and real inventory checks remain authoritative after reload.
 
-Résultat attendu :
+## Recurrence, text variation and regressions
 
-- aucun survivant vivant ;
-- camp temporaire ravagé ou caravane attaquée ;
-- `1` à `3` corps Tok'ra configurés, avec corps Jaffa optionnels ;
-- Jaffa encore présents près des vestiges ;
-- étagère vanilla déjà présente près de la scène dès le chargement de la carte ;
-- pile de `4` à `10` composants stockée sur l'une des cases de cette étagère ;
-- aucun nouveau composant n'apparaît au sol lors de la réussite ;
-- réussite après neutralisation de la menace.
+Validated milestone-wide coverage:
 
-## 6. Soins et extraction
+- the delivery operation becomes eligible again after success, failure and ignored offer only after its hidden variable delay;
+- the previous-archetype penalty and single active-operation slot remain intact;
+- weighted offer and result variants retain local anti-repetition when alternatives exist;
+- technical weights, delays and internal state remain absent from player-facing texts;
+- observation, intelligence recovery, wounded-agent care, medical handoff and distress call continue to resolve normally;
+- developer actions and reports remain limited to developer mode or the advanced GateRim option;
+- adaptive combat uses captured RimWorld threat points rather than fixed enemy counts, with weak and advanced colony coverage retained in the milestone regression record.
 
-Tester séparément :
+## Durable regression points
 
-- choc non traité après élimination des ennemis ;
-- choc traité au sol ;
-- choc traité avant la fin du combat ;
-- survivant toujours inconscient après traitement ;
-- survivant mourant pendant le délai d'extraction ;
-- deux survivants évacués et un survivant mort ;
-- mort de tous les survivants avant toute extraction.
+Future changes to caravan, world-site or mission orchestration code must preserve:
 
-Résultat attendu :
-
-- aucune extraction sans traitement réel du choc ;
-- aucune exigence de lit ou de capacité à marcher ;
-- le délai ne démarre que lorsque la présence hostile active est éliminée ;
-- l'équipe de récupération entre par un bord de carte avec le mode vanilla `EdgeWalkIn` ;
-- un porteur rejoint physiquement chaque survivant inconscient et le transporte vers une cellule de sortie ;
-- un survivant mobile quitte la carte à pied ;
-- aucun survivant ne disparaît instantanément sur place ;
-- chaque survivant traité peut être récupéré indépendamment ;
-- si un porteur est interrompu, un autre membre disponible peut reprendre le transport ;
-- une mort reste une perte réelle ;
-- réussite avec au moins une sortie vivante et aucun survivant vivant non résolu ;
-- échec si aucune extraction n'est obtenue.
-
-## 7. Persistance
-
-Sauvegarder et recharger :
-
-- caravane en route avec l'action d'arrivée stockée ;
-- carte active avant traitement ;
-- choc traité pendant que des Jaffa restent présents ;
-- délai de récupération en cours ;
-- un survivant déjà évacué et un autre encore présent ;
-- opération résolue avant la reformation de la caravane.
-
-Résultat attendu :
-
-- même site, variante et menace ;
-- aucune seconde génération de scène, corps, survivants, ennemis, étagère ou butin ;
-- soins, délai, arrivée de l'équipe, affectation des porteurs et évacuations conservés ;
-- aucune double résolution.
-
-## 8. Contrôles globaux reconfirmés
-
-- délai et expiration ;
-- difficulté faible et avancée ;
-- récurrence et anti-répétition ;
-- sauvegarde/recharge des phases mondiales ;
-- quatre opérations Tok'ra précédentes ;
-- textes anglais et français ;
-- absence d'outils debug en jeu normal ;
-- `Player.log` propre.
-
-## État de validation
-
-- [x] contrôle de cohérence ;
-- [x] rebuild forcé ;
-- [x] arrivée automatique, pause et enrôlement ;
-- [x] secours réel avec soins au sol et récupération visible ;
-- [x] placement cohérent sur plusieurs générations ;
-- [x] signal compromis contextualisé ;
-- [x] arrivée trop tard contextualisée avec composants présents sur étagère ;
-- [x] persistance pendant l'extraction ;
-- [x] difficulté adaptative, expiration, récurrence et anti-répétition ;
-- [x] régressions des quatre opérations précédentes ;
-- [x] textes EN/FR ;
-- [x] `Player.log` propre.
-
-Validation locale finale : `0.3.29-dev-r7`. Le jalon est publié sous le tag final unique `v0.3.29-dev`.
+- physical cargo handoff as the only success condition;
+- exact cargo consumption without taking unrelated inventory;
+- complete vanilla loot selection and caravan reformation after hostile maps;
+- no forced detour when the final approach encounter ends;
+- one complication at most per contract and no save-scumming reroll;
+- delayed map-parent observation for queued caravan incidents;
+- on-time `+2`, late `+1` and final-expiry `-1` trust consequences;
+- recurrence, hidden delays, anti-repetition and the global single-operation slot.

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <IncidentDef>
+        <defName>SG1_TokraTemporaryBaseDeliveryInterception</defName>
+        <label>Goa'uld supply interception</label>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Caravan</li>
+            <li>Map_TempIncident</li>
+        </targetTags>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_TokraDeliveryInterception</workerClass>
+        <pointsScaleable>true</pointsScaleable>
+        <letterText>{0} has been intercepted by {1} serving {2}. The attackers are moving directly for the Tok'ra shipment.</letterText>
+        <letterLabel>Tok'ra shipment intercepted</letterLabel>
+        <letterDef>ThreatBig</letterDef>
+        <tale>CaravanAmbushedByHumanlike</tale>
+    </IncidentDef>
+</Defs>

@@ -96,6 +96,16 @@ clôt l'opération en échec. La difficulté est capturée lors de l'offre afin 
 la force rencontrée reste cohérente même si la richesse de la colonie change
 pendant le trajet.
 
+## Contrat de production pour une base temporaire
+
+Une cellule peut demander à la colonie de fabriquer une petite série d'objets courants, par exemple des vêtements de qualité normale ou supérieure. Le contrat n'est proposé que si la colonie dispose déjà de la recherche, d'un poste de travail compatible et d'au moins un colon capable de produire l'objet. Les demandes spatiales ou ultratechnologiques ne sont pas utilisées.
+
+Après acceptation, un rendez-vous Tok'ra temporaire apparaît sur la carte du monde sans révéler de colonie permanente. Le joueur fabrique les objets avec les factures normales de RimWorld, charge les exemplaires conformes dans une caravane et rejoint le site avant sa fermeture. L'arrivée ne remet rien automatiquement : la caravane reste sur la tuile et reçoit une commande de remise comparable aux interactions vanilla des caravanes en visite. Le type, la quantité, la qualité minimale et l'état requis sont alors vérifiés dans l'inventaire réel. Les objets supplémentaires ou non conformes ne sont pas pris ; le reste de la cargaison et du butin demeure dans la caravane.
+
+La première échéance ouvre une courte période de grâce plutôt que de fermer immédiatement le rendez-vous. Une livraison ponctuelle apporte le gain de confiance complet ; une livraison tardive reste acceptée mais rapporte moins. L'expiration finale clôt l'opération en échec.
+
+Selon le tirage caché de l'occurrence, une cargaison complète peut être interceptée par les Goa'uld pendant le trajet ou sur la dernière tuile d'approche. Le combat utilise une carte temporaire et l'inventaire réel de la caravane. La victoire ne termine pas le contrat : les objets demandés doivent survivre et être réellement remis. Lors de l'embuscade finale, le joueur reforme normalement la caravane avec les colons, animaux, cargaison, armes, armures et autres objets récupérables de son choix, puis parcourt directement la dernière case vers le rendez-vous.
+
 ## Conséquences et récurrence
 
 Ignorer une offre non sollicitée ne réduit pas la confiance. Après acceptation,

@@ -236,6 +236,8 @@ namespace GateRimSG1.Goauld
         public GateRimMissionHandoffDef Handoff => MissionDef?.handoff;
         public GateRimMissionDistressCallDef DistressCall
             => MissionDef?.distressCall;
+        public GateRimMissionDeliveryDef Delivery
+            => MissionDef?.delivery;
         public string MissionDefName => MissionDef?.defName;
         public bool UsesMissionFrameworkDef => MissionDef != null;
         public float RepeatedArchetypeWeightFactor { get; }
@@ -919,6 +921,297 @@ namespace GateRimSG1.Goauld
             return missing.Count == 0;
         }
 
+
+        public bool HasCompleteTemporaryBaseDeliveryConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+
+            string[] runtimeTextIds =
+            {
+                "spawnFailed",
+                "targetLetterLabel",
+                "targetLetterText",
+                "lateStatus",
+                "lateWarningLabel",
+                "lateWarningText",
+                "lateSuccessLetterLabel",
+                "lateSuccessLetterText",
+                "lateTrustMessage",
+                "failureTimeout",
+                "failureGraceExpired",
+                "failureSiteLost"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            GateRimMissionDeliveryDef profile = Delivery;
+
+            if (profile == null)
+            {
+                missing.Add("temporary-base delivery profile");
+            }
+            else
+            {
+                Require(
+                    profile.worldObjectDefName,
+                    "world object Def",
+                    missing);
+
+                if (profile.minimumTileDistance <= 0
+                    || profile.maximumTileDistance
+                        < profile.minimumTileDistance)
+                {
+                    missing.Add("world-site distance range");
+                }
+
+                if (profile.minimumCrafterSkill < 0
+                    || profile.minimumCrafterSkill > 20)
+                {
+                    missing.Add("minimum crafter skill");
+                }
+
+                if (profile.lateGraceTicks <= 0)
+                {
+                    missing.Add("late delivery grace duration");
+                }
+
+                if (profile.lateSuccessTrustChange < 0
+                    || profile.lateSuccessTrustChange
+                        > SuccessTrustChange)
+                {
+                    missing.Add("late delivery trust reward");
+                }
+
+                if (profile.interceptionChance < 0f
+                    || profile.interceptionChance > 1f)
+                {
+                    missing.Add("interception chance");
+                }
+
+                if (profile.interceptionMinimumDelayTicks <= 0
+                    || profile.interceptionMaximumDelayTicks
+                        < profile.interceptionMinimumDelayTicks)
+                {
+                    missing.Add("interception delay range");
+                }
+
+                if (profile.interceptionRetryTicks <= 0)
+                {
+                    missing.Add("interception retry delay");
+                }
+
+                if (profile.interceptionThreatFactor <= 0f
+                    || profile.interceptionMinimumPoints <= 0f
+                    || profile.interceptionMaximumPoints
+                        < profile.interceptionMinimumPoints)
+                {
+                    missing.Add("interception threat scaling");
+                }
+
+                IncidentDef interceptionIncidentDef
+                    = string.IsNullOrWhiteSpace(
+                        profile.interceptionIncidentDefName)
+                        ? null
+                        : DefDatabase<IncidentDef>.GetNamedSilentFail(
+                            profile.interceptionIncidentDefName);
+
+                if (interceptionIncidentDef == null)
+                {
+                    missing.Add(
+                        "unknown interception IncidentDef "
+                        + profile.interceptionIncidentDefName);
+                }
+                else if (!(interceptionIncidentDef.Worker
+                    is IncidentWorker_TokraDeliveryInterception))
+                {
+                    missing.Add(
+                        "interception IncidentDef has incompatible worker");
+                }
+
+                if (profile.destinationCompromiseChance < 0f
+                    || profile.destinationCompromiseChance > 1f)
+                {
+                    missing.Add("destination compromise chance");
+                }
+
+                if (profile.destinationCompromiseRetryTicks <= 0)
+                {
+                    missing.Add("destination compromise retry delay");
+                }
+
+                if (profile.destinationCompromiseThreatFactor <= 0f
+                    || profile.destinationCompromiseMinimumPoints <= 0f
+                    || profile.destinationCompromiseMaximumPoints
+                        < profile.destinationCompromiseMinimumPoints)
+                {
+                    missing.Add("destination compromise threat scaling");
+                }
+
+                IncidentDef destinationCompromiseIncidentDef
+                    = string.IsNullOrWhiteSpace(
+                        profile.destinationCompromiseIncidentDefName)
+                        ? null
+                        : DefDatabase<IncidentDef>.GetNamedSilentFail(
+                            profile.destinationCompromiseIncidentDefName);
+
+                if (destinationCompromiseIncidentDef == null)
+                {
+                    missing.Add(
+                        "unknown destination compromise IncidentDef "
+                        + profile.destinationCompromiseIncidentDefName);
+                }
+                else if (!(destinationCompromiseIncidentDef.Worker
+                    is IncidentWorker_TokraDeliveryDestinationCompromise))
+                {
+                    missing.Add(
+                        "destination compromise IncidentDef has "
+                        + "incompatible worker");
+                }
+
+                WorldObjectDef worldObjectDef
+                    = string.IsNullOrWhiteSpace(profile.worldObjectDefName)
+                        ? null
+                        : DefDatabase<WorldObjectDef>.GetNamedSilentFail(
+                            profile.worldObjectDefName);
+
+                if (worldObjectDef == null)
+                {
+                    missing.Add(
+                        "unknown WorldObjectDef "
+                        + profile.worldObjectDefName);
+                }
+                else if (worldObjectDef.worldObjectClass == null
+                    || !typeof(WorldObject_TokraTemporaryBaseDeliverySite)
+                        .IsAssignableFrom(
+                            worldObjectDef.worldObjectClass))
+                {
+                    missing.Add(
+                        "delivery WorldObjectDef has incompatible class");
+                }
+
+                if (profile.candidates == null
+                    || profile.candidates.Count == 0)
+                {
+                    missing.Add("delivery candidate list");
+                }
+                else
+                {
+                    foreach (GateRimMissionDeliveryCandidateDef candidate
+                        in profile.candidates)
+                    {
+                        if (candidate == null
+                            || string.IsNullOrWhiteSpace(
+                                candidate.thingDefName))
+                        {
+                            missing.Add("delivery candidate ThingDef");
+                            continue;
+                        }
+
+                        ThingDef thingDef
+                            = DefDatabase<ThingDef>.GetNamedSilentFail(
+                                candidate.thingDefName);
+
+                        if (thingDef == null)
+                        {
+                            missing.Add(
+                                "unknown delivery ThingDef "
+                                + candidate.thingDefName);
+                        }
+                        else
+                        {
+                            if (thingDef.category != ThingCategory.Item)
+                            {
+                                missing.Add(
+                                    "delivery candidate is not an item "
+                                    + candidate.thingDefName);
+                            }
+
+                            if (thingDef.techLevel > profile.maximumTechLevel)
+                            {
+                                missing.Add(
+                                    "delivery candidate exceeds tech ceiling "
+                                    + candidate.thingDefName);
+                            }
+
+                            if (candidate.requireQuality
+                                && !thingDef.HasComp(
+                                    typeof(CompQuality)))
+                            {
+                                missing.Add(
+                                    "delivery candidate has no quality comp "
+                                    + candidate.thingDefName);
+                            }
+                        }
+
+                        if (candidate.minimumCount <= 0
+                            || candidate.maximumCount
+                                < candidate.minimumCount)
+                        {
+                            missing.Add(
+                                "invalid delivery count range for "
+                                + candidate.thingDefName);
+                        }
+
+                        if (candidate.minimumHitPointsPercent < 0f
+                            || candidate.minimumHitPointsPercent > 1f)
+                        {
+                            missing.Add(
+                                "invalid minimum hit points for "
+                                + candidate.thingDefName);
+                        }
+
+                        if (candidate.weight <= 0f)
+                        {
+                            missing.Add(
+                                "invalid delivery weight for "
+                                + candidate.thingDefName);
+                        }
+                    }
+                }
+            }
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
         private static void ValidateWoundedAgentDefReferences(
             GateRimMissionPawnCareDef pawnCare,
             ICollection<string> missing)
@@ -1558,6 +1851,8 @@ namespace GateRimSG1.Goauld
             = "SG1_TokraOrganic_MedicalSupplyHandoff";
         private const string DistressCallMissionDefName
             = "SG1_TokraOrganic_DistressCall";
+        private const string TemporaryBaseDeliveryMissionDefName
+            = "SG1_TokraOrganic_TemporaryBaseDelivery";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
@@ -1579,6 +1874,10 @@ namespace GateRimSG1.Goauld
         private static TokraOrganicOperationDefinition
             cachedDistressCallDefinition;
         private static bool distressCallConfigurationErrorLogged;
+        private static GateRimMissionDef cachedTemporaryBaseDeliveryMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedTemporaryBaseDeliveryDefinition;
+        private static bool temporaryBaseDeliveryConfigurationErrorLogged;
 
         public static IEnumerable<TokraOrganicOperationDefinition>
             AllDefinitions
@@ -1624,6 +1923,14 @@ namespace GateRimSG1.Goauld
                 {
                     yield return distressCall;
                 }
+
+                TokraOrganicOperationDefinition temporaryBaseDelivery
+                    = ResolveTemporaryBaseDeliveryDefinition();
+
+                if (temporaryBaseDelivery != null)
+                {
+                    yield return temporaryBaseDelivery;
+                }
             }
         }
 
@@ -1663,6 +1970,13 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.DistressCall)
             {
                 definition = ResolveDistressCallDefinition();
+                return definition != null;
+            }
+
+            if (archetype
+                == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
+            {
+                definition = ResolveTemporaryBaseDeliveryDefinition();
                 return definition != null;
             }
 
@@ -1878,6 +2192,64 @@ namespace GateRimSG1.Goauld
             }
 
             return cachedDistressCallDefinition;
+        }
+
+
+        private static TokraOrganicOperationDefinition
+            ResolveTemporaryBaseDeliveryDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    TemporaryBaseDeliveryMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogTemporaryBaseDeliveryConfigurationError(
+                    "required MissionDef "
+                    + TemporaryBaseDeliveryMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedTemporaryBaseDeliveryDefinition == null
+                || cachedTemporaryBaseDeliveryMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype
+                            .TemporaryBaseDelivery,
+                        missionDef);
+                string error;
+
+                if (!definition
+                    .HasCompleteTemporaryBaseDeliveryConfiguration(
+                        out error))
+                {
+                    LogTemporaryBaseDeliveryConfigurationError(
+                        TemporaryBaseDeliveryMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedTemporaryBaseDeliveryMissionDef = missionDef;
+                cachedTemporaryBaseDeliveryDefinition = definition;
+            }
+
+            return cachedTemporaryBaseDeliveryDefinition;
+        }
+
+        private static void LogTemporaryBaseDeliveryConfigurationError(
+            string detail)
+        {
+            if (temporaryBaseDeliveryConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            temporaryBaseDeliveryConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra temporary-base delivery operation "
+                + "disabled: " + detail + ".");
         }
 
         private static void LogDistressCallConfigurationError(string detail)
