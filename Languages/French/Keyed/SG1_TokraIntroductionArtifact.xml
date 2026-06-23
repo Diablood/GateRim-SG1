@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraIntroduction_OfferLabel>Transmission chiffrée non identifiée</GR_TokraIntroduction_OfferLabel>
+    <GR_TokraIntroduction_OfferText1>Une transmission à bande étroite atteint la colonie par une chaîne de relais Goa'uld compromis. L'émetteur refuse de révéler sa position, mais avertit qu'un module de chiffrement scellé est sur le point de tomber entre les mains d'un Grand Maître.
+
+Le récupérer prouverait que la colonie sait agir discrètement et pourrait fournir la base d'un futur contact sécurisé.</GR_TokraIntroduction_OfferText1>
+    <GR_TokraIntroduction_OfferText2>Un message fragmenté se répète sur plusieurs fréquences avant de disparaître. Une cellule de résistance inconnue demande à la colonie de reprendre un module de chiffrement compact aux forces Goa'uld avant qu'il ne soit déplacé hors d'atteinte.
+
+L'émetteur ne promet aucune alliance immédiate. Le module est présenté comme la seule voie vers un échange plus sûr.</GR_TokraIntroduction_OfferText2>
+    <GR_TokraIntroduction_OfferText3>Une impulsion codée traverse les récepteurs de la colonie. Quelqu'un qui maîtrise les communications Goa'uld signale une brève occasion de récupérer un module de données protégé actuellement sous garde ennemie.
+
+Le message se termine par un avertissement : un échec réduira le canal au silence pour une durée imprévisible, mais pas définitive.</GR_TokraIntroduction_OfferText3>
+    <GR_TokraIntroduction_OfferExpired>Le canal chiffré se referme avant que la colonie ne s'engage. Aucun second signal ne suit.</GR_TokraIntroduction_OfferExpired>
+    <GR_TokraIntroduction_Accepted>La colonie s'engage à récupérer le module de chiffrement non identifié.</GR_TokraIntroduction_Accepted>
+    <GR_TokraIntroduction_AttemptFailed>La tentative de récupération a échoué. Le contact dissimulé se retire et le canal retombe dans le silence.</GR_TokraIntroduction_AttemptFailed>
+    <GR_TokraIntroduction_CompletedLabel>Module de chiffrement Tok'ra sécurisé</GR_TokraIntroduction_CompletedLabel>
+    <GR_TokraIntroduction_CompletedText1>Le module récupéré porte des signatures de reconnaissance indéniablement Tok'ra. Son contenu reste scellé, mais l'appareil est intact et peut être préservé pour une future étude.
+
+Le contact dissimulé n'aura pas besoin de renouveler cette épreuve.</GR_TokraIntroduction_CompletedText1>
+    <GR_TokraIntroduction_CompletedText2>Le module de chiffrement est désormais entre les mains de la colonie. Sous son boîtier endommagé, une mémoire protégée Tok'ra fonctionne encore.
+
+Le premier contact est assuré. La suite dépendra de la capacité de la colonie à étudier l'appareil sans le compromettre.</GR_TokraIntroduction_CompletedText2>
+    <GR_TokraIntroduction_AcceptAction>Accepter la mission de récupération</GR_TokraIntroduction_AcceptAction>
+    <GR_TokraIntroduction_StatusWaiting>En attente d'une occasion dissimulée</GR_TokraIntroduction_StatusWaiting>
+    <GR_TokraIntroduction_StatusOffered>Occasion de récupération reçue</GR_TokraIntroduction_StatusOffered>
+    <GR_TokraIntroduction_StatusActive>Tentative de récupération active</GR_TokraIntroduction_StatusActive>
+    <GR_TokraIntroduction_StatusRetry>Canal dissimulé silencieux</GR_TokraIntroduction_StatusRetry>
+    <GR_TokraIntroduction_StatusCompleted>Introduction terminée</GR_TokraIntroduction_StatusCompleted>
+    <GR_TokraIntroduction_DebugOpportunityDue>L'occasion d'introduction Tok'ra est maintenant disponible.</GR_TokraIntroduction_DebugOpportunityDue>
+    <GR_TokraIntroduction_DebugOfferForced>Offre d'introduction Tok'ra forcée.</GR_TokraIntroduction_DebugOfferForced>
+    <GR_TokraIntroduction_DebugOfferAccepted>Offre d'introduction Tok'ra acceptée.</GR_TokraIntroduction_DebugOfferAccepted>
+    <GR_TokraIntroduction_DebugAttemptFailed>Tentative d'introduction Tok'ra échouée et reprogrammée.</GR_TokraIntroduction_DebugAttemptFailed>
+    <GR_TokraIntroduction_DebugOfferExpired>Offre d'introduction Tok'ra expirée et reprogrammée.</GR_TokraIntroduction_DebugOfferExpired>
+    <GR_TokraIntroduction_DebugArtifactRecovered>Objet-clé Tok'ra récupéré ; l'arc d'introduction est définitivement terminé.</GR_TokraIntroduction_DebugArtifactRecovered>
+    <GR_TokraIntroduction_DebugReset>Arc d'introduction Tok'ra réinitialisé.</GR_TokraIntroduction_DebugReset>
+    <GR_TokraIntroduction_DebugUnavailable>L'action d'introduction Tok'ra est indisponible dans l'état actuel.</GR_TokraIntroduction_DebugUnavailable>
+    <GR_TokraIntroduction_DeclineAction>Laisser passer le signal</GR_TokraIntroduction_DeclineAction>
+    <GR_TokraIntroduction_Declined>La colonie ne répond pas à la transmission chiffrée. Le canal dissimulé se referme et pourrait rester silencieux pendant longtemps.</GR_TokraIntroduction_Declined>
+    <GR_TokraIntroduction_TargetLabel>Coordonnées de récupération chiffrées</GR_TokraIntroduction_TargetLabel>
+    <GR_TokraIntroduction_TargetText>L'émetteur anonyme a transmis une zone de localisation étroite. Des forces Goa'uld y détiennent le module de chiffrement et le signal ne restera pas exploitable indéfiniment.</GR_TokraIntroduction_TargetText>
+    <GR_TokraIntroduction_ArrivalLabel>Garde de récupération Goa'uld</GR_TokraIntroduction_ArrivalLabel>
+    <GR_TokraIntroduction_ArrivalText>La caravane a atteint la position signalée. {0} gardes armés protègent le module de chiffrement. Éliminez la résistance, sécurisez l'appareil puis reformez la caravane en l'emportant.</GR_TokraIntroduction_ArrivalText>
+    <GR_TokraIntroduction_SiteCreationFailed>Les coordonnées chiffrées ne permettent pas d'identifier un site accessible. L'offre reste ouverte pour le moment.</GR_TokraIntroduction_SiteCreationFailed>
+    <GR_TokraIntroduction_InspectPending>La fenêtre du signal se refermera dans environ {0} heure(s).</GR_TokraIntroduction_InspectPending>
+    <GR_TokraIntroduction_InspectActive>Des gardes Goa'uld contrôlent encore le site de récupération.</GR_TokraIntroduction_InspectActive>
+    <GR_TokraIntroduction_InspectSecured>Le site est sécurisé. Récupérez le module de chiffrement et reformez la caravane en l’emportant.</GR_TokraIntroduction_InspectSecured>
+    <GR_TokraIntroduction_InspectCompleted>Module de chiffrement récupéré.</GR_TokraIntroduction_InspectCompleted>
+    <GR_TokraIntroduction_InspectFailed>Tentative de récupération échouée.</GR_TokraIntroduction_InspectFailed>
+    <GR_TokraIntroduction_SiteResolved>Ce site de récupération est déjà résolu.</GR_TokraIntroduction_SiteResolved>
+    <GR_TokraIntroduction_EnterRequiresCaravan>Une caravane du joueur doit être présente sur le site de récupération.</GR_TokraIntroduction_EnterRequiresCaravan>
+    <GR_TokraIntroduction_TravelCommandLabel>Entrer sur le site de récupération chiffré</GR_TokraIntroduction_TravelCommandLabel>
+    <GR_TokraIntroduction_ApproachingReport>Approche du site de récupération chiffré</GR_TokraIntroduction_ApproachingReport>
+    <GR_TokraIntroduction_SiteSecured>La garde Goa'uld a été brisée. Le module de chiffrement peut maintenant être récupéré avant le départ de la caravane.</GR_TokraIntroduction_SiteSecured>
+    <GR_TokraIntroduction_FailureArtifactLost>Le module de chiffrement a été détruit. Le contact dissimulé se retire et la tentative de récupération est perdue.</GR_TokraIntroduction_FailureArtifactLost>
+    <GR_TokraIntroduction_FailureTimeout>La fenêtre de localisation chiffrée s'est refermée avant la récupération du module.</GR_TokraIntroduction_FailureTimeout>
+    <GR_TokraIntroduction_FailureSiteLost>Le site de récupération n'est plus accessible. Le contact dissimulé coupe la transmission et disparaît.</GR_TokraIntroduction_FailureSiteLost>
+    <GR_TokraIntroduction_DebugOfferDeclined>Offre d'introduction Tok'ra refusée et reprogrammée.</GR_TokraIntroduction_DebugOfferDeclined>
+
+    <GR_TokraIntroduction_DeadlineWarning>Les coordonnées chiffrées se dégradent. Le site de récupération deviendra inutilisable dans environ {0} heure(s).</GR_TokraIntroduction_DeadlineWarning>
+    <GR_TokraIntroduction_DebugDeadlineWarningWindow>Le site de récupération actif est entré dans sa dernière fenêtre d’alerte.</GR_TokraIntroduction_DebugDeadlineWarningWindow>
+    <GR_TokraIntroduction_DebugSiteExpired>L’expiration du site de récupération actif a été forcée.</GR_TokraIntroduction_DebugSiteExpired>
+    <GR_TokraIntroduction_DebugArtifactDestroyed>Le module de chiffrement suivi a été détruit. Le contrôle normal d’échec va résoudre la tentative.</GR_TokraIntroduction_DebugArtifactDestroyed>
+</LanguageData>

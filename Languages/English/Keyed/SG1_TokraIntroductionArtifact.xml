@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraIntroduction_OfferLabel>Unidentified encrypted transmission</GR_TokraIntroduction_OfferLabel>
+    <GR_TokraIntroduction_OfferText1>A narrow-band transmission reaches the colony through a chain of compromised Goa'uld relays. The sender refuses to identify their position, but warns that a sealed cipher module is about to fall into the hands of a System Lord.
+
+Recovering it would prove that the colony can act discreetly and may provide the basis for a secure future contact.</GR_TokraIntroduction_OfferText1>
+    <GR_TokraIntroduction_OfferText2>A broken message repeats across several frequencies before vanishing. An unknown resistance cell asks the colony to seize a compact cipher module from Goa'uld forces before it is moved beyond reach.
+
+The sender promises no immediate alliance. The module itself is presented as the only path toward a safer exchange.</GR_TokraIntroduction_OfferText2>
+    <GR_TokraIntroduction_OfferText3>A coded burst cuts through the colony's receivers. Someone familiar with Goa'uld communications has marked a brief opportunity to recover a protected data module now under hostile guard.
+
+The message ends with a warning: failure will silence the channel for an unpredictable length of time, but not forever.</GR_TokraIntroduction_OfferText3>
+    <GR_TokraIntroduction_OfferExpired>The encrypted channel closes before the colony commits. No second signal follows.</GR_TokraIntroduction_OfferExpired>
+    <GR_TokraIntroduction_Accepted>The colony commits to recovering the unidentified cipher module.</GR_TokraIntroduction_Accepted>
+    <GR_TokraIntroduction_AttemptFailed>The recovery attempt has failed. The hidden contact withdraws and the channel falls silent.</GR_TokraIntroduction_AttemptFailed>
+    <GR_TokraIntroduction_CompletedLabel>Tok'ra cipher module secured</GR_TokraIntroduction_CompletedLabel>
+    <GR_TokraIntroduction_CompletedText1>The recovered module carries unmistakable Tok'ra recognition patterns. Its contents remain sealed, but the device is intact and can be preserved for study.
+
+The hidden contact will not need to repeat this test.</GR_TokraIntroduction_CompletedText1>
+    <GR_TokraIntroduction_CompletedText2>The cipher module is now in colonial hands. Beneath its damaged outer casing, a protected Tok'ra memory lattice is still active.
+
+The first contact has been secured. Further progress will depend on learning how to study the device safely.</GR_TokraIntroduction_CompletedText2>
+    <GR_TokraIntroduction_AcceptAction>Accept the recovery mission</GR_TokraIntroduction_AcceptAction>
+    <GR_TokraIntroduction_StatusWaiting>Waiting for a hidden opportunity</GR_TokraIntroduction_StatusWaiting>
+    <GR_TokraIntroduction_StatusOffered>Recovery opportunity received</GR_TokraIntroduction_StatusOffered>
+    <GR_TokraIntroduction_StatusActive>Recovery attempt active</GR_TokraIntroduction_StatusActive>
+    <GR_TokraIntroduction_StatusRetry>Hidden channel silent</GR_TokraIntroduction_StatusRetry>
+    <GR_TokraIntroduction_StatusCompleted>Introduction completed</GR_TokraIntroduction_StatusCompleted>
+    <GR_TokraIntroduction_DebugOpportunityDue>Tok'ra introduction opportunity is now due.</GR_TokraIntroduction_DebugOpportunityDue>
+    <GR_TokraIntroduction_DebugOfferForced>Tok'ra introduction offer forced.</GR_TokraIntroduction_DebugOfferForced>
+    <GR_TokraIntroduction_DebugOfferAccepted>Tok'ra introduction offer accepted.</GR_TokraIntroduction_DebugOfferAccepted>
+    <GR_TokraIntroduction_DebugAttemptFailed>Tok'ra introduction attempt failed and rescheduled.</GR_TokraIntroduction_DebugAttemptFailed>
+    <GR_TokraIntroduction_DebugOfferExpired>Tok'ra introduction offer expired and rescheduled.</GR_TokraIntroduction_DebugOfferExpired>
+    <GR_TokraIntroduction_DebugArtifactRecovered>Tok'ra key artifact recovered; the introduction arc is permanently completed.</GR_TokraIntroduction_DebugArtifactRecovered>
+    <GR_TokraIntroduction_DebugReset>Tok'ra introduction arc reset.</GR_TokraIntroduction_DebugReset>
+    <GR_TokraIntroduction_DebugUnavailable>The Tok'ra introduction action is unavailable in the current state.</GR_TokraIntroduction_DebugUnavailable>
+    <GR_TokraIntroduction_DeclineAction>Let the signal pass</GR_TokraIntroduction_DeclineAction>
+    <GR_TokraIntroduction_Declined>The colony does not answer the encrypted transmission. The hidden channel closes and may not reopen for a long time.</GR_TokraIntroduction_Declined>
+    <GR_TokraIntroduction_TargetLabel>Encrypted recovery coordinates</GR_TokraIntroduction_TargetLabel>
+    <GR_TokraIntroduction_TargetText>The anonymous sender has transmitted a narrow location window. Goa'uld forces are holding the cipher module there, and the signal will not remain useful indefinitely.</GR_TokraIntroduction_TargetText>
+    <GR_TokraIntroduction_ArrivalLabel>Goa'uld recovery guard</GR_TokraIntroduction_ArrivalLabel>
+    <GR_TokraIntroduction_ArrivalText>The caravan has reached the marked position. {0} armed guards protect the cipher module. Eliminate the resistance, secure the device and reform the caravan with it.</GR_TokraIntroduction_ArrivalText>
+    <GR_TokraIntroduction_SiteCreationFailed>The encrypted coordinates cannot be resolved into a reachable site. The offer remains open for now.</GR_TokraIntroduction_SiteCreationFailed>
+    <GR_TokraIntroduction_InspectPending>Signal window closes in about {0} hour(s).</GR_TokraIntroduction_InspectPending>
+    <GR_TokraIntroduction_InspectActive>Goa'uld guards still control the recovery site.</GR_TokraIntroduction_InspectActive>
+    <GR_TokraIntroduction_InspectSecured>The site is secure. Recover the cipher module and reform the caravan with it.</GR_TokraIntroduction_InspectSecured>
+    <GR_TokraIntroduction_InspectCompleted>Cipher module recovered.</GR_TokraIntroduction_InspectCompleted>
+    <GR_TokraIntroduction_InspectFailed>Recovery attempt failed.</GR_TokraIntroduction_InspectFailed>
+    <GR_TokraIntroduction_SiteResolved>This recovery site has already been resolved.</GR_TokraIntroduction_SiteResolved>
+    <GR_TokraIntroduction_EnterRequiresCaravan>A player caravan must be present on the recovery site.</GR_TokraIntroduction_EnterRequiresCaravan>
+    <GR_TokraIntroduction_TravelCommandLabel>Enter the encrypted recovery site</GR_TokraIntroduction_TravelCommandLabel>
+    <GR_TokraIntroduction_ApproachingReport>Approaching the encrypted recovery site</GR_TokraIntroduction_ApproachingReport>
+    <GR_TokraIntroduction_SiteSecured>The Goa'uld guard has been broken. The cipher module can now be recovered before the caravan leaves.</GR_TokraIntroduction_SiteSecured>
+    <GR_TokraIntroduction_FailureArtifactLost>The cipher module has been destroyed. The hidden contact withdraws and the recovery attempt is lost.</GR_TokraIntroduction_FailureArtifactLost>
+    <GR_TokraIntroduction_FailureTimeout>The encrypted location window has closed before the cipher module could be recovered.</GR_TokraIntroduction_FailureTimeout>
+    <GR_TokraIntroduction_FailureSiteLost>The recovery site can no longer be reached. The hidden contact breaks transmission and disappears.</GR_TokraIntroduction_FailureSiteLost>
+    <GR_TokraIntroduction_DebugOfferDeclined>Tok'ra introduction offer declined and rescheduled.</GR_TokraIntroduction_DebugOfferDeclined>
+
+    <GR_TokraIntroduction_DeadlineWarning>The encrypted coordinates are degrading. The recovery site will become unusable in about {0} hour(s).</GR_TokraIntroduction_DeadlineWarning>
+    <GR_TokraIntroduction_DebugDeadlineWarningWindow>The active recovery site has entered its final warning window.</GR_TokraIntroduction_DebugDeadlineWarningWindow>
+    <GR_TokraIntroduction_DebugSiteExpired>The active recovery site has been forced to expire.</GR_TokraIntroduction_DebugSiteExpired>
+    <GR_TokraIntroduction_DebugArtifactDestroyed>The tracked cipher module has been destroyed. The normal failure check will resolve the attempt.</GR_TokraIntroduction_DebugArtifactDestroyed>
+</LanguageData>

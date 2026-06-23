@@ -114,6 +114,7 @@
 
 ## Tok'ra : missions et opérations
 
+- [Mission d'introduction Tok'ra](Tokra-Introduction-Artifact-Mission)
 - [Opérations Tok'ra organiques](Tokra-Organic-Operation-Opportunities)
 - [Récupération d'un module Tok'ra](Tokra-Organic-Dead-Drop-Recovery)
 - [Accueil d'un agent Tok'ra blessé](Tokra-Organic-Wounded-Agent-Care)

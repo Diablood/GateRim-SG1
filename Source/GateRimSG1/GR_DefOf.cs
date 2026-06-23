@@ -1,5 +1,6 @@
 using GateRimSG1.Goauld;
 using GateRimSG1.Jaffa;
+using GateRimSG1.Missions;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -36,7 +37,9 @@ namespace GateRimSG1
         public static WorldObjectDef SG1_TokraHiddenSafehouseMarker;
         public static WorldObjectDef SG1_TokraHiddenSafehouseSite;
         public static WorldObjectDef SG1_TokraDistressCallWorldSite;
+        public static WorldObjectDef SG1_TokraIntroductionArtifactWorldSite;
         public static WorldObjectDef SG1_TokraTemporaryBaseDeliverySite;
+        public static GateRimMissionDef SG1_TokraIntroductionArtifactMission;
         public static SitePartDef SG1_TokraHiddenSafehouseSitePart;
         public static IncidentDef SG1_FreeJaffaPeacefulVisitors;
         public static IncidentDef SG1_GoauldJaffaNaturalRaid;
@@ -50,6 +53,7 @@ namespace GateRimSG1
         public static RaidStrategyDef SG1_GoauldJaffaDestructionAssault;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
+        public static ThingDef SG1_TokraIntroductionArtifact;
         public static ThingDef SG1_TokraRelaySabotageDevice;
         public static ThingDef SG1_TokraRelaySiteWall;
         public static ThingDef SG1_TokraRelaySiteDoor;

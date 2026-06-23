@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_TokraIntroductionArtifactWorldSite</defName>
+        <label>encrypted recovery site</label>
+        <description>A temporary target identified through an anonymous encrypted transmission. Goa'uld forces are holding a sealed cipher module somewhere on the site.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraIntroductionArtifactSite</worldObjectClass>
+        <texture>World/WorldObjects/Sites/GenericSite</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconPriority>37</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>true</canHaveFaction>
+        <useDynamicDrawer>true</useDynamicDrawer>
+        <comps>
+            <li Class="GateRimSG1.Goauld.WorldObjectCompProperties_TokraIntroductionFormCaravan" />
+        </comps>
+    </WorldObjectDef>
+</Defs>

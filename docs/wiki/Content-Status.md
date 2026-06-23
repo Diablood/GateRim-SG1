@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.30-dev`
+> Dernière révision : `0.3.31-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -49,6 +49,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; six opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant avec slot unique, éligibilité avant tirage, délais cachés et anti-répétition | 0.3.23-dev à 0.3.30-dev |
 | Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev |
 | Contrat de production Tok'ra | Demande limitée aux objets réellement fabricables, rendez-vous mondial temporaire, remise depuis l'inventaire réel, période de grâce, interception de trajet et embuscade sur l'approche finale avec butin et reformation vanilla | 0.3.30-dev |
+| Mission d'introduction Tok'ra | Jouable et validée : transmission chiffrée avant le communicateur, choix d'engagement, site mondial, garde Goa'uld/Jaffa adaptative modérée, module physique suivi individuellement et nouvelles tentatives jusqu'à la première récupération réussie | 0.3.31-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |
@@ -109,7 +110,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Élément | Direction actuelle |
 |---|---|
 | Diversification des opérations Tok'ra | Les six archétypes actuels sont jouables ; poursuivre plus tard avec de nouvelles opérations distinctes plutôt qu'en surchargeant les missions existantes |
-| Introduction et déblocage des opérations Tok'ra | Mission unique avec combat donnant un objet-clé, recherche GateRim SG-1 dédiée avec prérequis Électricité, puis construction du communicateur avant l'accès au pool récurrent ; détails et positionnement de jalon à définir |
+| Étude et déblocage des opérations Tok'ra | La mission de récupération de l'objet-clé est testable ; ajouter ensuite son étude, une recherche GateRim SG-1 dédiée avec prérequis Électricité, puis la construction du communicateur avant l'accès au pool récurrent |
 | Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |

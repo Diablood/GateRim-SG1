@@ -167,6 +167,19 @@ namespace GateRimSG1.Missions
     }
 
 
+
+    public sealed class GateRimMissionIntroductionDef
+    {
+        public string worldObjectDefName;
+        public int minimumTileDistance = 6;
+        public int maximumTileDistance = 18;
+        public int mapSize = 120;
+        public int defenderMinimumCount = 3;
+        public int defenderMaximumCount = 12;
+        public int preferredEntryRadius = 18;
+        public int deadlineWarningTicks = 60000;
+    }
+
     public sealed class GateRimMissionDeliveryCandidateDef
     {
         public string thingDefName;
@@ -388,6 +401,7 @@ namespace GateRimSG1.Missions
             = new GateRimMissionDifficultyDef();
         public GateRimMissionPawnCareDef pawnCare;
         public GateRimMissionDistressCallDef distressCall;
+        public GateRimMissionIntroductionDef introduction;
         public GateRimMissionDeliveryDef delivery;
         public GateRimMissionHandoffDef handoff;
         public GateRimMissionTextBankDef texts
@@ -648,6 +662,51 @@ namespace GateRimSG1.Missions
                     || difficulty.maximumPoints < difficulty.minimumPoints)
                 {
                     yield return "difficulty point bounds are invalid";
+                }
+            }
+
+            if (introduction != null)
+            {
+                if (string.IsNullOrWhiteSpace(
+                        introduction.worldObjectDefName))
+                {
+                    yield return "introduction worldObjectDefName is required";
+                }
+
+                if (introduction.minimumTileDistance <= 0
+                    || introduction.maximumTileDistance
+                        < introduction.minimumTileDistance)
+                {
+                    yield return "introduction tile distance range is invalid";
+                }
+
+                if (introduction.mapSize < 80)
+                {
+                    yield return "introduction mapSize must be at least 80";
+                }
+
+                if (introduction.defenderMinimumCount <= 0
+                    || introduction.defenderMaximumCount
+                        < introduction.defenderMinimumCount)
+                {
+                    yield return "introduction defender count range is invalid";
+                }
+
+                if (introduction.preferredEntryRadius <= 0)
+                {
+                    yield return "introduction preferredEntryRadius must be positive";
+                }
+
+                if (introduction.deadlineWarningTicks <= 0)
+                {
+                    yield return "introduction deadlineWarningTicks must be positive";
+                }
+                else if (timing != null
+                    && timing.deadlineTicks > 0
+                    && introduction.deadlineWarningTicks
+                        >= timing.deadlineTicks)
+                {
+                    yield return "introduction deadlineWarningTicks must be shorter than the mission deadline";
                 }
             }
 

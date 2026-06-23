@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ResourceBase">
+        <defName>SG1_TokraIntroductionArtifact</defName>
+        <label>Tok'ra cipher module</label>
+        <thingClass>ThingWithComps</thingClass>
+        <description>A compact Tok'ra cipher module recovered from hostile hands. Its sealed memory lattice contains fragments of recognition protocols and research data, but the colony cannot yet interpret or reproduce them. Preserving this module may open a secure line of contact with the Tok'ra.</description>
+        <graphicData>
+            <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.65,0.65)</drawSize>
+        </graphicData>
+        <stackLimit>1</stackLimit>
+        <drawGUIOverlay>false</drawGUIOverlay>
+        <thingCategories>
+            <li>Manufactured</li>
+        </thingCategories>
+        <statBases>
+            <MarketValue>1</MarketValue>
+            <Mass>0.15</Mass>
+        </statBases>
+        <tradeability>None</tradeability>
+    </ThingDef>
+</Defs>

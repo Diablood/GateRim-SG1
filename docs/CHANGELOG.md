@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.3.31-dev - Add Tok'ra introduction artifact mission
+
+- Start the milestone from final tag `v0.3.30-dev` on `feature/tokra-introduction-artifact-mission`.
+- Add a standalone pre-communicator introduction arc outside the six recurrent Tok'ra operations.
+- Persist waiting, offered, active, retry and permanently completed states.
+- Open the first encrypted opportunity after a hidden `4–12` day delay.
+- Present a persistent choice letter with explicit accept and decline actions.
+- Return declined, ignored or expired offers after a hidden `10–60` day delay.
+- Create a hostile world site only after acceptance and preserve RimWorld caravan travel, combat, loot selection and reformation.
+- Capture the threat snapshot at offer time and use a deliberately moderate profile: factor `0.35`, `180–650` scaled points and `2–6` defenders.
+- Place one exact tracked Tok'ra cipher module and complete the arc only when that object reaches a player caravan, pawn inventory or home map.
+- Reject separately spawned copies of the same ThingDef as mission completion objectives.
+- Add a configurable one-day final warning before the six-day site deadline and persist its anti-duplication state.
+- Fail and reschedule accepted attempts after artifact destruction, site timeout or unexpected site loss, using a hidden `7–45` day retry.
+- Recalculate a new hidden delay after each failed attempt and close the arc permanently only after successful recovery.
+- Preserve the offer, site, combat map, exact artifact identity, warning, retry timing and result through save/reload.
+- Add dedicated developer actions for every state transition and real failure path while keeping technical details outside normal player interfaces.
+- Add English and French RP variants, a dedicated player-wiki page and durable validation coverage.
+- Keep artifact study, dedicated research, communicator prerequisites and recurrent-operation gating for later milestones.
+- Retain assembly version `0.3.31.0` and mod metadata version `0.3.31-dev`.
+- Validate final local revision `r3`, including warning persistence, real timeout, real artifact loss, repeated retry eligibility, physical recovery, vanilla loot/reformation and permanent completion.
+- Publish branch `feature/tokra-introduction-artifact-mission`, final tag `v0.3.31-dev` and the synchronized wiki.
+
 ## 0.3.30-dev - Add Tok'ra temporary-base delivery mission
 
 - Add `SG1_TokraOrganic_TemporaryBaseDelivery` as the sixth recurrent MissionDef-backed Tok'ra organic operation.

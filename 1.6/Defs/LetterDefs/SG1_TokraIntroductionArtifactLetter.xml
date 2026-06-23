@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <LetterDef>
+        <defName>SG1_TokraIntroductionArtifactOffer</defName>
+        <letterClass>GateRimSG1.Goauld.ChoiceLetter_TokraIntroductionArtifactOffer</letterClass>
+        <bounce>true</bounce>
+    </LetterDef>
+</Defs>

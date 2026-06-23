@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.30-dev`
+> Version du mod documentée : `0.3.31-dev`
 
 ## Le mod en bref
 
@@ -44,6 +44,10 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   contact de terrain et [communicateur sécurisé](Tokra-Secure-Communicator).
 - [Zone de livraison Tok'ra](Tokra-Delivery-Drop-Zone) pour les caches et
   livraisons clandestines.
+- [Mission d'introduction Tok'ra](Tokra-Introduction-Artifact-Mission) :
+  transmission chiffrée accessible avant le communicateur, site Goa'uld à
+  sécuriser et module physique à rapporter ; la mission peut revenir après un
+  refus ou un échec, mais disparaît définitivement après la première réussite.
 - [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
   observation discrète, analyse de renseignements, accueil médical prolongé
   d'un agent blessé, remise de médicaments à un agent de liaison, appel de
@@ -73,7 +77,7 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 
 - un framework réutilisable de missions et questlines, avec rejouabilité, variantes RP et difficulté adaptative ;
 - de nouveaux archétypes d'opérations Tok'ra réellement distincts ;
-- une progression d'introduction Tok'ra prévue à terme : première mission à enjeu, objet-clé, recherche dédiée puis construction du communicateur avant l'accès aux opérations récurrentes ;
+- la suite de la progression d'introduction Tok'ra : étude du module, recherche dédiée puis construction du communicateur avant l'accès aux opérations récurrentes ;
 - une refonte visuelle globale, préparée par des concept arts, après la stabilisation des mécaniques et avant la Porte des étoiles ;
 - les futures cultures Asgard, Nox et Unas avec leurs noms et parcours propres ;
 - un storyteller GateRim SG-1 qui orchestre le mod sans rendre ses événements
@@ -86,8 +90,14 @@ L'audit de l'orchestration, l'appel à l'aide sur site mondial et le contrat de
 production livré à un rendez-vous temporaire sont intégrés. La livraison
 utilise l'inventaire réel de la caravane, accepte un retard limité et peut être
 perturbée par une interception Goa'uld ou une embuscade sur l'approche finale.
-Les autres éléments restent planifiés selon les tests, les dépendances
-techniques et la stabilité des systèmes existants.
+La première mission d'introduction Tok'ra est désormais jouable : une
+transmission chiffrée peut révéler un site défendu par des Jaffa Goa'uld, puis
+la récupération réelle du module clôt définitivement cette rencontre. Un refus,
+une expiration ou un échec laisse la possibilité d'un nouveau signal après un
+délai caché. Les
+étapes d'étude, de recherche et de verrouillage du communicateur restent
+planifiées selon les tests, les dépendances techniques et la stabilité des
+systèmes existants.
 
 ## Orchestration des opérations Tok'ra
 

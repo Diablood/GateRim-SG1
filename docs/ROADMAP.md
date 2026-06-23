@@ -1,5 +1,33 @@
 # GateRim SG-1 — Roadmap durable
 
+## Dernier jalon clôturé — Mission d'introduction et objet-clé Tok'ra (`0.3.31-dev`)
+
+- [x] Partir explicitement de `v0.3.30-dev` sur `feature/tokra-introduction-artifact-mission`.
+- [x] Séparer cet arc unique des six opérations récurrentes dépendantes du communicateur.
+- [x] Définir la mission comme unique uniquement après récupération réussie de l'objet-clé.
+- [x] Conserver une nouvelle tentative possible après offre ignorée, refus, expiration ou échec.
+- [x] Ajouter des délais cachés longs et variables : `4–12` jours au premier contact, `10–60` jours après une offre non engagée et `7–45` jours après une tentative acceptée échouée.
+- [x] Ajouter un état persistant couvrant attente, offre, tentative active, nouveau délai et réussite définitive.
+- [x] Ajouter une lettre à choix persistante avec acceptation et refus explicites.
+- [x] Créer un site mondial hostile seulement après acceptation et conserver le voyage vanilla.
+- [x] Capturer à l'offre un snapshot de menace et dimensionner une garde introductive volontairement modérée : facteur `0,35`, `180–650` points et `2–6` défenseurs.
+- [x] Ajouter un module de chiffrement physique suivi individuellement et refuser les copies créées séparément comme objectif valide.
+- [x] Conserver le combat, le butin et la reformation vanilla de la caravane.
+- [x] Ajouter un avertissement persistant environ un jour avant l'expiration du site.
+- [x] Gérer l'expiration réelle du site, la destruction réelle du module et la perte inattendue du site sans verrou permanent.
+- [x] Préserver l'offre, le site, la carte, l'identité exacte du module, les délais, l'avertissement et le résultat après sauvegarde/rechargement.
+- [x] Valider localement les fondations `r1`, le flux jouable `r2` et les échecs réels `r3`.
+- [x] Revalider plusieurs chemins d'échec, les nouveaux délais cachés et la fermeture définitive après récupération réussie.
+- [x] Effectuer la passe finale des textes joueur ; aucune réécriture fonctionnelle supplémentaire n'a été nécessaire.
+- [x] Compléter la documentation durable et le wiki.
+- [x] Clôturer le jalon, publier la branche et le tag final unique `v0.3.31-dev`, puis synchroniser le wiki séparé.
+
+La révision locale finale `r3` valide l'offre naturelle, la lettre à choix, le site mondial, la garde adaptative modérée, le module exact, le combat, le butin, la reformation vanilla, l'avertissement final, l'expiration réelle, la destruction du module, les sauvegardes intermédiaires, les délais de retour et la réussite définitive. Le jalon est publié sous le tag final unique `v0.3.31-dev`.
+
+Cette mission reste accessible avant le communicateur et indépendante du slot des opérations organiques. Une offre ignorée ou une tentative ratée ne ferme jamais l'arc : seule la récupération réelle du module Tok'ra active le verrou permanent.
+
+Le profil de combat introductif reste volontairement borné à `2–6` défenseurs. Une comparaison prolongée sur davantage de niveaux de richesse et de storytellers reste un travail d'équilibrage, sans remettre en cause le flux fonctionnel validé.
+
 ## Dernier jalon clôturé — Livraison vers une base Tok'ra temporaire (`0.3.30-dev`)
 
 - [x] Partir explicitement de `v0.3.29-dev` sur `feature/tokra-temporary-base-delivery`.
@@ -47,19 +75,19 @@ Le site mondial et les mécaniques narratives propres à la mission restent dans
 
 La révision locale finale `r7` valide les trois situations cachées, l'arrivée de caravane vanilla, la scène ancrée, les soins de terrain, l'équipe Tok'ra visible, le portage et la sortie réels des blessés, la cache de composants déjà présente sur étagère, la difficulté adaptative, l'expiration, la persistance, la récurrence, les anciennes opérations et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.29-dev`.
 
-## Sélection du prochain jalon après `v0.3.30-dev`
+## Sélection du jalon après `v0.3.30-dev` — terminée
 
-- [ ] Relire cette roadmap depuis le tag publié `v0.3.30-dev` avant d'ouvrir une nouvelle branche.
-- [ ] Choisir un périmètre fonctionnel unique et testable, sans prolonger automatiquement la séquence précédente.
-- [ ] Créer la future branche depuis `v0.3.30-dev` et enregistrer le nouveau jalon dans `docs/PROJECT_STATE.md`.
+- [x] Relire cette roadmap depuis le tag publié `v0.3.30-dev` avant d'ouvrir une nouvelle branche.
+- [x] Choisir la fondation persistante de la mission d'introduction comme périmètre fonctionnel unique et testable.
+- [x] Créer `feature/tokra-introduction-artifact-mission` depuis `v0.3.30-dev` et enregistrer `0.3.31-dev` dans `docs/PROJECT_STATE.md`.
 
-L'arc d'introduction Tok'ra avec mission unique, objet-clé, recherche dédiée et communicateur comme condition d'accès au pool récurrent reste un candidat important. Il n'est pas sélectionné automatiquement par la clôture de `0.3.30-dev`.
+L'arc d'introduction Tok'ra est sélectionné pour `0.3.31-dev`. Ce jalon couvre la mission et l'objet-clé ; l'étude, la recherche dédiée et le verrouillage du pool récurrent restent répartis dans des jalons ultérieurs.
 
 Ce fichier est la référence centrale pour les ajouts, refontes et actions futures du projet.
 
 Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvelle discussion, après une perte de contexte ou avant de choisir un nouveau jalon.
 
-- `docs/PROJECT_STATE.md` décrit l’état de passation courant, le jalon actif ou le dernier jalon clôturé.
+- `docs/PROJECT_STATE.md` décrit le jalon actuellement actif et ses tests.
 - `docs/ROADMAP.md` conserve les travaux futurs qui ne doivent pas être oubliés.
 - `docs/CHANGELOG.md` conserve l'historique des jalons terminés.
 - `docs/MILESTONE_PUBLICATION.md` conserve la procédure de validation et de publication.
@@ -108,17 +136,20 @@ Le jalon livre une destination Tok'ra temporaire et une cargaison configurable l
 Une victoire militaire ne suffit jamais si la cargaison est perdue. Les mécaniques de caravane, site mondial et combat restent dans des adaptateurs spécialisés ; les données de mission restent pilotées par Defs lorsque cela est raisonnable.
 
 
-## Arc futur d'introduction Tok'ra et accès au communicateur
+## Suite de l'arc d'introduction Tok'ra et accès au communicateur
 
-- Les opérations Tok'ra récurrentes devront devenir inéligibles tant qu'aucun communicateur Tok'ra construit et alimenté n'est disponible.
-- Le communicateur devra dépendre d'une recherche GateRim SG-1 dédiée, distincte des recherches vanilla, avec `Electricity` comme prérequis.
-- Cette recherche devra elle-même exiger un objet-clé Tok'ra ou un artefact d'analyse persistant, selon une logique comparable aux prérequis d'étude du mécaniteur.
-- L'objet sera obtenu lors d'une première rencontre ou mission Tok'ra unique comportant un véritable enjeu de combat.
-- La récompense minimale sera l'objet permettant d'ouvrir la recherche ; d'autres récompenses RP ou matérielles pourront s'y ajouter.
-- Après étude, recherche et construction du communicateur, le pool récurrent Tok'ra deviendra accessible.
-- La mission d'introduction restera unique et séparée des archétypes rejouables.
-- Définir ultérieurement la nature exacte de l'objet, son origine RP, la faction ennemie, le type de site, les conséquences et une solution de récupération qui évite un verrou permanent en cas d'échec.
-- Ce travail reste différé après `v0.3.30-dev` et doit être ouvert dans un jalon dédié après audit de la roadmap.
+La mission d'introduction et le module de chiffrement physique sont intégrés dans `0.3.31-dev`. Les étapes suivantes restent séparées afin de conserver des jalons testables :
+
+- ajouter une étude ou analyse persistante du module récupéré ;
+- ouvrir une recherche GateRim SG-1 dédiée, distincte des recherches vanilla, avec `Electricity` comme prérequis ;
+- faire du module récupéré le prérequis durable de cette progression, selon une logique comparable aux objets d'étude du mécaniteur ;
+- exiger ensuite la recherche terminée pour construire le communicateur Tok'ra ;
+- rendre les opérations Tok'ra récurrentes inéligibles tant qu'aucun communicateur construit et alimenté n'est disponible ;
+- préserver les opérations avec les storytellers vanilla ou moddés compatibles : seul leur accès doit dépendre du communicateur, pas d'un storyteller GateRim SG-1 ;
+- revalider les sauvegardes où l'arc est terminé, en attente, échoué ou encore jamais proposé lorsque ces nouveaux prérequis seront ajoutés ;
+- conserver la mission d'introduction unique et séparée des archétypes rejouables.
+
+Le prochain jalon doit être choisi après publication de `v0.3.31-dev`. L'étude du module et la recherche dédiée constituent la prochaine étape logique ; la construction du communicateur et le verrouillage du pool récurrent peuvent rester un jalon distinct.
 
 ## Direction durable des pools de missions
 

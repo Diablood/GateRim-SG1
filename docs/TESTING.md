@@ -1,5 +1,45 @@
 # Tests
 
+## 0.3.31-dev - Mission d'introduction et objet-clé Tok'ra
+
+Validation locale terminée sur la révision `r3`, puis jalon publié sous `v0.3.31-dev`. Les révisions intermédiaires ont ajouté la fondation persistante, le flux jouable, la véritable lettre à choix et les chemins d'échec réels.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.31-dev`, `0.3.31.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.31.0` après restauration des champs MissionDef de la livraison et de l'import `RimWorld` requis par la reformation ;
+- chargement de la mission d'introduction, de sa lettre, du WorldObject, du module et de ses traductions sans erreur bloquante ;
+- arc indépendant des six opérations organiques et disponible avant le communicateur ;
+- première opportunité cachée `4–12` jours et persistance de tous les états ;
+- trois variantes d'offre RP et deux variantes de réussite ;
+- vraie lettre à choix persistante avec acceptation et refus intégrés ;
+- refus, expiration ou absence de réponse suivis d'un délai caché `10–60` jours ;
+- site mondial créé seulement après acceptation, à distance configurable, avec trajet vanilla ;
+- menace capturée lors de l'offre, facteur `0,35`, budget `180–650` et garde bornée à `2–6` défenseurs ;
+- un seul module physique suivi par son identité exacte, sans validation par une copie créée séparément ;
+- combat, inventaire réel, récupération d'équipement ennemi et reformation vanilla ;
+- réussite seulement lorsque le module suivi atteint une caravane, un pawn ou une carte de colonie du joueur ;
+- avertissement final unique environ un jour avant la fermeture du site ;
+- expiration réelle du site, destruction réelle du module et perte inattendue du site ;
+- nouveau délai caché `7–45` jours après chaque tentative acceptée échouée ;
+- répétition des tentatives possible jusqu'à réussite, puis fermeture définitive de l'arc ;
+- sauvegarde/rechargement dans les états attente, offre, actif, carte hostile, avertissement, délai de retour et réussite ;
+- absence de lettre, site, module, échec, réussite ou délai dupliqué ;
+- passe finale des textes joueur sans formulation technique opaque nécessitant une correction.
+
+Points de régression durables :
+
+- ne jamais fermer l'arc après un refus, une expiration ou un échec ;
+- conserver un délai caché nouvellement tiré et persisté après chaque résolution non réussie ;
+- suivre l'identité exacte du module, pas seulement son `ThingDef` ;
+- ne jamais réussir sur la seule victoire militaire ou sur la présence d'une copie du module ;
+- préserver le butin et la reformation vanilla au lieu de reconstruire artificiellement la caravane ;
+- capturer la difficulté à l'offre et maintenir l'introduction sous le niveau des futurs affrontements Tok'ra ;
+- conserver l'arc hors du slot et du catalogue des opérations récurrentes ;
+- vérifier sauvegarde/rechargement avant le choix, pendant le site, après l'avertissement, après un échec et après la réussite ;
+- empêcher toute nouvelle offre, tout second site et tout second module après réussite ;
+- revalider ce flux lorsque l'étude du module, la recherche ou le verrouillage du communicateur seront ajoutés.
+
 ## 0.3.30-dev - Livraison vers une base Tok'ra temporaire
 
 Validation locale terminée sur la révision `r9`, puis jalon publié sous `v0.3.30-dev`. Les révisions intermédiaires ont séparé le voyage de la remise, ajouté la période de grâce et les deux complications de combat, déplacé l'embuscade finale sur la tuile d'approche et corrigé le suivi différé de la carte temporaire.

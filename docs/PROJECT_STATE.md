@@ -1,57 +1,57 @@
 # Project state
 
-Current milestone: `0.3.30-dev - Add Tok'ra temporary-base delivery mission` — validated locally on final revision `r9` and published under the final tag `v0.3.30-dev`.
+Current milestone: `0.3.31-dev - Add Tok'ra introduction artifact mission` — validated locally on final revision `r3` and published under the final tag `v0.3.31-dev`.
 
 ## Published base
 
-- Starting tag: `v0.3.29-dev`.
-- Dedicated branch: `feature/tokra-temporary-base-delivery`.
-- Final local revision: `0.3.30-dev-r9`.
-- Final published tag: `v0.3.30-dev`.
-- Assembly version: `0.3.30.0`.
+- Starting tag: `v0.3.30-dev`.
+- Dedicated branch: `feature/tokra-introduction-artifact-mission`.
+- Final local revision: `0.3.31-dev-r3`.
+- Final published tag: `v0.3.31-dev`.
+- Assembly version: `0.3.31.0`.
 - Cultural backstory count remains `83`.
 
 ## Final milestone outcome
 
-This milestone adds a sixth recurrent Tok'ra organic operation. The colony receives a production contract limited to ordinary goods it can reasonably manufacture, loads conforming items into a caravan and delivers them to a concealed temporary rendezvous through RimWorld's normal world-travel interactions.
+This milestone adds a standalone Tok'ra introduction arc available before the secure communicator exists. A hidden contact can reveal a temporary Goa'uld-held recovery site containing a physical Tok'ra cipher module. The arc remains retryable after refusal, expiration or failure and becomes permanently closed only when the exact tracked module is recovered by the player.
 
-The shared GateRim mission manager remains authoritative for selection, timing, persistence, trust, recurrence and text variation. Specialized adapters handle the temporary WorldObject, cargo inspection, caravan handoff and hostile temporary maps without duplicating the operation as a second vanilla Quest lifecycle.
+The introduction arc remains independent from the six recurrent communicator operations. It owns its own persistent state, hidden retry timing, choice letter, world site, adaptive encounter and permanent completion flag without consuming the recurrent-operation slot.
 
-## Validated delivery flow
+## Validated introduction flow
 
-- Select only contracts supported by an available recipe, completed research, required DLC or mod content, an existing or usable worktable and at least one capable colon.
-- Persist the selected ThingDef, quantity, minimum quality, minimum condition, deadlines, threat snapshot and complication state.
-- Create a temporary Tok'ra rendezvous `6–16` tiles away and preserve free caravan routing.
-- Leave arrival non-destructive: the stationary caravan exposes `Hand over the requested goods` / `Remettre la commande` and consumes exactly the conforming quantity.
-- Keep additional cargo and battlefield loot untouched.
-- Grant `+2` trust for an on-time delivery, `+1` during the configurable two-day grace period and `-1` only after final expiry.
-- Allow one optional ordinary Goa'uld interception during travel for a complete shipment moving to the exact rendezvous.
-- Allow one mutually exclusive Goa'uld ambush on the final approach when the caravan's next tile is the rendezvous.
-- Reuse RimWorld's temporary ambush map, real caravan inventory and complete vanilla reformation dialog so the player may recover enemy weapons, apparel and other map items.
-- Return the reformed caravan to the adjacent approach tile, then allow the final one-tile journey and normal handoff.
-- Never grant trust or complete the operation for military victory alone; the surviving conforming shipment must physically reach the Tok'ra.
-- Track queued map creation asynchronously and mark the route secure only after the hostile temporary map has appeared and then disappeared.
-- Preserve all active-state and anti-duplication data through save/reload.
+- Schedule the first hidden opportunity after `4–12` days and retain it through save/reload.
+- Present a persistent choice letter with explicit accept and decline actions.
+- Return declined, ignored or expired offers after a hidden `10–60` day delay.
+- Create the hostile recovery site only after acceptance and preserve normal RimWorld caravan travel and arrival.
+- Capture the threat snapshot at offer time and use a deliberately moderate profile: factor `0.35`, `180–650` points and `2–6` defenders.
+- Generate one exact tracked Tok'ra cipher module and reject separately spawned copies as completion objectives.
+- Preserve vanilla combat, loot selection and caravan reformation so the player may recover survivors, animals, enemy equipment and other allowed map items.
+- Complete the arc only after the tracked module actually reaches a player caravan, pawn inventory or home map.
+- Warn once approximately one day before the six-day site deadline and persist that warning through save/reload.
+- Fail and reschedule accepted attempts after artifact destruction, site timeout or unexpected site loss, using a hidden `7–45` day delay.
+- Recalculate and persist a new delay after each failed attempt without permanently locking the arc.
+- Close the arc permanently after the first successful recovery and prevent duplicate offers, sites, modules or completion rewards.
 
 ## Validation status
 
-- Local revision `r9` compiled and loaded successfully.
-- The complete normal, late, ordinary-interception and final-approach flows were validated in game.
-- A naturally selected interception occurred without developer forcing, confirming that the configured organic complication path is reachable in normal play.
-- Combat, cargo loss, complete battlefield-loot selection, vanilla caravan reformation and the final-tile delivery were validated.
-- The queued encounter no longer emits the unidentified-world-object error and no premature route-secure message occurs.
-- Save/reload, single-result guarantees, trust consequences, adaptive threat consumption, recurrence, anti-repetition and previous Tok'ra-operation regressions are covered by the final milestone test record.
-- Final `Player.log` was reported clean for the validated flow.
+- Revision `r1` persistent-state, retry and permanent-completion foundations were validated.
+- Revision `r2` compiled after the consolidated API and MissionDef fixes; the natural offer, persistent choice letter, site creation, adaptive combat, physical module recovery, loot and vanilla reformation flow were validated.
+- Revision `r3` warning, real site expiration, real tracked-module destruction, intermediate save/reload and final successful recovery were reported valid in game.
+- Multiple failure paths preserve retry eligibility and do not close the arc before success.
+- The final player-text review found no opaque debug-style wording requiring a gameplay-text rewrite.
+- No blocking loading or runtime error was reported during the final validated pass.
 
 ## Deferred work
 
-- A visible Tok'ra handoff scene on a dedicated generated map remains optional and should only be added if longer playtests show that the current world-map handoff is too abstract.
-- Additional product families remain deferred until the accessibility filter has been exercised across more colony progress levels.
-- The unique Tok'ra introduction mission, key artifact, dedicated research and communicator-gated recurrent pool remain a separate future arc.
+- Add a dedicated final texture for the cipher module during the later global visual pass.
+- Continue long-duration balancing of the `2–6` defender profile across a wider range of colony wealth and storyteller settings; the introduction must remain easier than later Tok'ra combat arcs.
+- Add artifact study and dedicated Tok'ra research with `Electricity` as a prerequisite.
+- Require the completed research for communicator construction.
+- Gate recurrent Tok'ra operations behind an available powered communicator without making them storyteller-dependent.
 
 ## Next development step
 
-No new milestone or branch is opened by this publication. The next milestone must start explicitly from `v0.3.30-dev` on a dedicated branch after reviewing `docs/ROADMAP.md`. The Tok'ra introduction arc is a documented candidate, not an automatically selected next task.
+No new milestone or branch is opened by this publication. The next milestone must start explicitly from `v0.3.31-dev` on a dedicated branch after reviewing `docs/ROADMAP.md`. The next documented part of the arc is the cipher-module study and dedicated Tok'ra research; communicator construction and recurrent-operation gating remain separate follow-up work.
 
 ## Publication
 
