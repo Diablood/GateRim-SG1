@@ -112,6 +112,16 @@ La première échéance ouvre une courte période de grâce plutôt que de ferme
 
 Selon le tirage caché de l'occurrence, une cargaison complète peut être interceptée par les Goa'uld pendant le trajet ou sur la dernière tuile d'approche. Le combat utilise une carte temporaire et l'inventaire réel de la caravane. La victoire ne termine pas le contrat : les objets demandés doivent survivre et être réellement remis. Lors de l'embuscade finale, le joueur reforme normalement la caravane avec les colons, animaux, cargaison, armes, armures et autres objets récupérables de son choix, puis parcourt directement la dernière case vers le rendez-vous.
 
+## Assaut de diversion Tok'ra
+
+Une cellule Tok'ra peut demander à la colonie de relayer un faux signal afin d'attirer ailleurs une force lancée sur sa véritable piste. L'acceptation n'ajoute aucun appareil : la transmission part du communicateur sécurisé, puis une force Jaffa au service des Goa'uld arrive et attaque la colonie.
+
+La menace est dimensionnée depuis les points de menace capturés au moment de l'offre. L'équipe comprend des sapeurs Jaffa équipés de Ma'Tok et utilise une stratégie de brèche afin de forcer un passage à travers les fortifications plutôt que d'attendre devant une base fermée. Ces sapeurs restent propres à cette opération et ne modifient pas les raids Goa'uld ordinaires.
+
+La victoire exige de neutraliser la force ou de la faire fuir les mains vides. L'opération échoue si un assaillant quitte la carte avec un colon capturé ou du butin, ou si la colonie perd la carte.
+
+Voir [Assaut de diversion Tok'ra](Tokra-Diversion-Assault).
+
 ## Conséquences et récurrence
 
 Ignorer une offre non sollicitée ne réduit pas la confiance. Après acceptation,

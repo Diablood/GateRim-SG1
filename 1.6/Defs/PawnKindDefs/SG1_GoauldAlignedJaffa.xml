@@ -94,6 +94,22 @@
     </PawnKindDef>
 
     <!--
+        Mission-only wall breacher used by the Tok'ra diversion assault.
+
+        The dedicated pawn-group kind isolates this profile from ordinary
+        Goa'uld/Jaffa raids. The inherited Ma'Tok-only weapon tag guarantees a
+        ranged weapon whose existing projectile applies structural damage.
+    -->
+    <PawnKindDef ParentName="SG1_GoauldJaffaWarriorBase">
+        <defName>SG1_GoauldJaffaBreacher</defName>
+        <label>Goa'uld Jaffa breacher</label>
+        <combatPower>115</combatPower>
+        <canBeSapper>true</canBeSapper>
+        <isGoodBreacher>true</isGoodBreacher>
+        <maxPerGroup>4</maxPerGroup>
+    </PawnKindDef>
+
+    <!--
         Settlement-only profiles.
 
         Vanilla settlement map generation uses weighted point budgets. These

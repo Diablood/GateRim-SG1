@@ -20,6 +20,7 @@ namespace GateRimSG1.Goauld
         internal const int StateCheckIntervalTicks = 2500;
         internal const int ActiveWorkStateCheckIntervalTicks = 250;
         internal const int MedicalSupplyStateCheckIntervalTicks = 250;
+        internal const int DiversionAssaultStateCheckIntervalTicks = 15;
         internal static int ObservationDeploymentWorkTicks
             => Math.Max(
                 1,
@@ -393,11 +394,13 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            int stateCheckInterval = IsMedicalSupplyStateActive()
-                ? MedicalSupplyStateCheckIntervalTicks
-                : IsObservationStateActive()
-                    ? ActiveWorkStateCheckIntervalTicks
-                    : StateCheckIntervalTicks;
+            int stateCheckInterval = IsDiversionAssaultStateActive()
+                ? DiversionAssaultStateCheckIntervalTicks
+                : IsMedicalSupplyStateActive()
+                    ? MedicalSupplyStateCheckIntervalTicks
+                    : IsObservationStateActive()
+                        ? ActiveWorkStateCheckIntervalTicks
+                        : StateCheckIntervalTicks;
             nextStateCheckTick = currentTick + stateCheckInterval;
             TickDepartingMedicalSupplyLiaison();
 
@@ -1384,6 +1387,97 @@ namespace GateRimSG1.Goauld
                 TokraOrganicOperationArchetype.TemporaryBaseDelivery);
         }
 
+        public static bool DebugForceDiversionAssaultOpportunity(
+            Map map)
+        {
+            return DebugForceSpecificOpportunity(
+                map,
+                TokraOrganicOperationArchetype.DecoyTransmissionDefense);
+        }
+
+        public static bool DebugForceDiversionAssaultRaid(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.IsActiveForMap(map)
+                && manager.activeArchetype
+                    == TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense
+                && manager.activeState
+                    == TokraOrganicOperationState.Accepted
+                && manager.TryTriggerDiversionAssaultRaid(
+                    Find.TickManager?.TicksGame ?? 0);
+        }
+
+        public static bool DebugResolveDiversionAssaultVictory(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            return manager != null
+                && manager.IsActiveForMap(map)
+                && manager.activeArchetype
+                    == TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense
+                && manager.activeState
+                    == TokraOrganicOperationState.Accepted
+                && TokraDiversionAssaultUtility.IsRaidTriggered(
+                    manager.activeOperation.frameworkRuntime)
+                && manager.TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Succeeded,
+                    null,
+                    null,
+                    bypassSuccessValidation: true);
+        }
+
+        public static bool DebugResolveDiversionAssaultHostageLoss(Map map)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+            TokraOrganicOperationDefinition definition
+                = manager?.GetActiveDefinition();
+
+            return manager != null
+                && definition != null
+                && manager.IsActiveForMap(map)
+                && manager.activeArchetype
+                    == TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense
+                && manager.activeState
+                    == TokraOrganicOperationState.Accepted
+                && manager.TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureHostage"),
+                    bypassSuccessValidation: true);
+        }
+
+        internal static void RegisterDiversionAssaultRaidPawns(
+            Map map,
+            IEnumerable<Pawn> pawns)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || map == null
+                || !manager.IsActiveForMap(map)
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense
+                || manager.activeState
+                    != TokraOrganicOperationState.Accepted)
+            {
+                return;
+            }
+
+            TokraDiversionAssaultUtility.RegisterRaidPawns(
+                manager.activeOperation.frameworkRuntime,
+                pawns);
+        }
+
         public static bool DebugForceDistressCallOpportunity(
             Map map,
             TokraDistressCallVariant variant)
@@ -1847,6 +1941,23 @@ namespace GateRimSG1.Goauld
                         manager.activeOperation.frameworkRuntime,
                         TokraDistressCallMissionUtility.VariantCounterKey,
                         0))
+                + "\nDiversion raid due: "
+                + TokraDiversionAssaultUtility.GetRaidDueTick(
+                    manager.activeOperation.frameworkRuntime)
+                + " | raid triggered: "
+                + TokraDiversionAssaultUtility.IsRaidTriggered(
+                    manager.activeOperation.frameworkRuntime)
+                + " | registered raiders: "
+                + TokraDiversionAssaultUtility.GetRegisteredRaidPawnCount(
+                    manager.activeOperation.frameworkRuntime)
+                + " | registered breachers: "
+                + manager.GetRegisteredDiversionAssaultBreacherCount()
+                + " | active raiders: "
+                + manager.GetActiveDiversionAssaultRaiderCount()
+                + " | extracted cargo: "
+                + (TokraDiversionAssaultUtility.GetExtractedCargoKind(
+                        manager.activeOperation.frameworkRuntime)
+                    ?? "none")
                 + "\nMission Def: "
                 + (manager.activeOperation.frameworkRuntime?.missionDefName
                     ?? "legacy C#")
@@ -1887,7 +1998,7 @@ namespace GateRimSG1.Goauld
                 = GameComponent_TokraTrustTracker.GetCurrentTier();
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             StringBuilder report = new StringBuilder();
-            bool passed = definitions.Count >= 5;
+            bool passed = definitions.Count >= 7;
 
             report.AppendLine("Tok'ra long-term orchestration audit");
             report.AppendLine("Definitions: " + definitions.Count);
@@ -2358,7 +2469,10 @@ namespace GateRimSG1.Goauld
                         ?.GetRuntimeTextKey("failureTimeout");
             }
             else if (manager.activeArchetype
-                == TokraOrganicOperationArchetype.DistressCall)
+                == TokraOrganicOperationArchetype.DistressCall
+                || manager.activeArchetype
+                    == TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense)
             {
                 failureTextKey
                     = manager.GetActiveDefinition()
@@ -2522,6 +2636,11 @@ namespace GateRimSG1.Goauld
                                         .GoauldObservation
                                     ? definition.GetRuntimeTextKey(
                                         "failureDeviceLost")
+                                    : definition.Archetype
+                                        == TokraOrganicOperationArchetype
+                                            .DecoyTransmissionDefense
+                                        ? definition.GetRuntimeTextKey(
+                                            "failureMapLost")
                                     : definition.HasPhysicalObjective
                                     ? definition.GetRuntimeTextKey(
                                         "failureObjectiveLost")
@@ -2578,6 +2697,328 @@ namespace GateRimSG1.Goauld
             }
 
             worker.Tick(this, currentTick);
+        }
+
+
+        internal void TickAcceptedDiversionAssault(int currentTick)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            Map map = GetActiveMap();
+
+            if (definition == null || map == null)
+            {
+                return;
+            }
+
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+            TokraDiversionAssaultUtility.Normalize(
+                runtime,
+                definition,
+                acceptedTick,
+                currentTick);
+
+            if (!TokraDiversionAssaultUtility.IsRaidTriggered(runtime))
+            {
+                if (currentTick
+                    >= TokraDiversionAssaultUtility.GetRaidDueTick(runtime))
+                {
+                    TryTriggerDiversionAssaultRaid(currentTick);
+                }
+
+                return;
+            }
+
+            operationDeadlineTick = 0;
+
+            string extractionFailureTextKey;
+
+            if (TryDetectDiversionAssaultExtraction(
+                    map,
+                    runtime,
+                    definition,
+                    out extractionFailureTextKey))
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    extractionFailureTextKey,
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            if (TokraDiversionAssaultUtility
+                    .GetRegisteredRaidPawnCount(runtime) > 0
+                && GetActiveDiversionAssaultRaiderCount() <= 0)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Succeeded,
+                    null,
+                    null);
+            }
+        }
+
+        private bool TryTriggerDiversionAssaultRaid(int currentTick)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            Map map = GetActiveMap();
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+
+            if (definition == null
+                || definition.Archetype
+                    != TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense
+                || map == null
+                || activeState != TokraOrganicOperationState.Accepted
+                || TokraDiversionAssaultUtility.IsRaidTriggered(runtime))
+            {
+                return false;
+            }
+
+            IncidentDef incidentDef = string.IsNullOrWhiteSpace(
+                    definition.DecoyRaidIncidentDefName)
+                ? null
+                : DefDatabase<IncidentDef>.GetNamedSilentFail(
+                    definition.DecoyRaidIncidentDefName);
+            Faction goauldFaction = GoauldSystemLordFactionUtility
+                .GetOrCreateFaction("Tok'ra diversion assault operation");
+
+            if (incidentDef == null
+                || incidentDef.category == null
+                || incidentDef.Worker == null
+                || goauldFaction == null)
+            {
+                TokraDiversionAssaultUtility.ScheduleRaidRetry(
+                    runtime,
+                    definition,
+                    currentTick);
+                GR_Log.Warning(
+                    "Could not trigger the Goa'uld force drawn by the Tok'ra "
+                    + "diversion; the incident or faction is unavailable "
+                    + "and the operation will retry.");
+                return false;
+            }
+
+            if (runtime.scaledThreatPoints <= 0f)
+            {
+                GateRimMissionDifficultySnapshot snapshot
+                    = GateRimMissionFramework.CaptureDifficulty(
+                        map,
+                        definition.MissionDef?.difficulty);
+                runtime.baseThreatPoints = snapshot.BaseThreatPoints;
+                runtime.scaledThreatPoints = snapshot.ScaledThreatPoints;
+                runtime.difficultyFactor = snapshot.Factor;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+                incidentDef.category,
+                map);
+            parms.forced = true;
+            parms.faction = goauldFaction;
+            parms.points = runtime.scaledThreatPoints;
+
+            if (!incidentDef.Worker.TryExecute(parms))
+            {
+                TokraDiversionAssaultUtility.ScheduleRaidRetry(
+                    runtime,
+                    definition,
+                    currentTick);
+                GR_Log.Warning(
+                    "The Goa'uld force drawn by the Tok'ra diversion could "
+                    + "not enter the map and will retry; "
+                    + $"map={map.uniqueID}; points={parms.points:0}.");
+                return false;
+            }
+
+            if (TokraDiversionAssaultUtility
+                    .GetRegisteredRaidPawnCount(runtime) <= 0)
+            {
+                TokraDiversionAssaultUtility.RegisterRaidPawns(
+                    runtime,
+                    map.mapPawns.AllPawnsSpawned.Where(
+                        pawn => pawn != null
+                            && pawn.Faction == goauldFaction));
+            }
+
+            TokraDiversionAssaultUtility.MarkRaidTriggered(runtime);
+            operationDeadlineTick = 0;
+
+            GR_Log.Message(
+                "Triggered the Goa'uld force drawn by the Tok'ra diversion; "
+                + $"map={map.uniqueID}; snapshot="
+                + $"{runtime.baseThreatPoints:0}; points={parms.points:0}; "
+                + "registered="
+                + TokraDiversionAssaultUtility
+                    .GetRegisteredRaidPawnCount(runtime)
+                + ".");
+            return true;
+        }
+
+        private bool TryDetectDiversionAssaultExtraction(
+            Map map,
+            GateRimMissionRuntimeData runtime,
+            TokraOrganicOperationDefinition definition,
+            out string failureTextKey)
+        {
+            failureTextKey = null;
+
+            if (map == null || runtime == null || definition == null)
+            {
+                return false;
+            }
+
+            Dictionary<string, Pawn> spawnedById
+                = map.mapPawns.AllPawnsSpawned
+                    .Where(pawn => pawn != null)
+                    .GroupBy(pawn => pawn.ThingID)
+                    .ToDictionary(group => group.Key, group => group.First());
+
+            foreach (string pawnId in TokraDiversionAssaultUtility
+                .GetRegisteredRaidPawnIds(runtime))
+            {
+                Pawn pawn;
+
+                if (!spawnedById.TryGetValue(pawnId, out pawn)
+                    || pawn == null
+                    || pawn.Dead)
+                {
+                    continue;
+                }
+
+                string cargoKind;
+                bool carriesMissionCargo = TryGetDiversionAssaultCargoKind(
+                    pawn,
+                    out cargoKind);
+
+                TokraDiversionAssaultUtility.SetCargoCarrierState(
+                    runtime,
+                    pawn,
+                    carriesMissionCargo);
+
+                if (!carriesMissionCargo || !pawn.Position.OnEdge(map))
+                {
+                    continue;
+                }
+
+                TokraDiversionAssaultUtility.SetExtractedCargoKind(
+                    runtime,
+                    cargoKind);
+                failureTextKey = cargoKind == "hostage"
+                    ? definition.GetRuntimeTextKey("failureHostage")
+                    : definition.GetRuntimeTextKey("failureLoot");
+                return true;
+            }
+
+            return false;
+        }
+
+        private int GetRegisteredDiversionAssaultBreacherCount()
+        {
+            Map map = GetActiveMap();
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+
+            if (map == null || runtime == null)
+            {
+                return 0;
+            }
+
+            HashSet<string> registeredIds = new HashSet<string>(
+                TokraDiversionAssaultUtility
+                    .GetRegisteredRaidPawnIds(runtime));
+
+            return map.mapPawns.AllPawnsSpawned.Count(
+                pawn => pawn != null
+                    && registeredIds.Contains(pawn.ThingID)
+                    && pawn.kindDef?.isGoodBreacher == true);
+        }
+
+        private int GetActiveDiversionAssaultRaiderCount()
+        {
+            Map map = GetActiveMap();
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+
+            if (map == null || runtime == null)
+            {
+                return 0;
+            }
+
+            HashSet<string> registeredIds = new HashSet<string>(
+                TokraDiversionAssaultUtility
+                    .GetRegisteredRaidPawnIds(runtime));
+
+            return map.mapPawns.AllPawnsSpawned.Count(
+                pawn => pawn != null
+                    && registeredIds.Contains(pawn.ThingID)
+                    && IsActiveDiversionAssaultRaider(pawn));
+        }
+
+        private static bool IsActiveDiversionAssaultRaider(Pawn pawn)
+        {
+            if (pawn == null
+                || pawn.Dead
+                || pawn.Downed
+                || !pawn.Spawned
+                || !pawn.HostileTo(Faction.OfPlayer))
+            {
+                return false;
+            }
+
+            string cargoKind;
+
+            if (TryGetDiversionAssaultCargoKind(pawn, out cargoKind))
+            {
+                return true;
+            }
+
+            string dutyDefName = pawn.mindState?.duty?.def?.defName;
+            string jobDefName = pawn.CurJob?.def?.defName;
+
+            return !IsExitOrFleeDefName(dutyDefName)
+                && !IsExitOrFleeDefName(jobDefName);
+        }
+
+        private static bool TryGetDiversionAssaultCargoKind(
+            Pawn pawn,
+            out string cargoKind)
+        {
+            cargoKind = null;
+            Thing carriedThing = pawn?.carryTracker?.CarriedThing;
+
+            if (carriedThing is Pawn carriedPawn
+                && (carriedPawn.IsColonist
+                    || carriedPawn.Faction == Faction.OfPlayer))
+            {
+                cargoKind = "hostage";
+                return true;
+            }
+
+            if (carriedThing == null || carriedThing is Pawn)
+            {
+                return false;
+            }
+
+            // A hostile raid pawn only uses carryTracker for a hauled object.
+            // Once the object has been picked up, vanilla can immediately
+            // replace the Steal job with an exit job, so the carried object
+            // itself is the reliable indication that plunder is leaving.
+            cargoKind = "loot";
+            return true;
+        }
+
+        private static bool IsExitOrFleeDefName(string defName)
+        {
+            return !string.IsNullOrEmpty(defName)
+                && (defName.IndexOf(
+                        "ExitMap",
+                        StringComparison.OrdinalIgnoreCase) >= 0
+                    || defName.IndexOf(
+                        "Flee",
+                        StringComparison.OrdinalIgnoreCase) >= 0);
         }
 
         internal void TickAcceptedDistressCall(int currentTick)
@@ -4150,7 +4591,7 @@ namespace GateRimSG1.Goauld
             activeState = TokraOrganicOperationState.Accepted;
             acceptedTick = currentTick;
             reportReadyTick = currentTick;
-            operationDeadlineTick = currentTick + definition.DeadlineTicks;
+            operationDeadlineTick = 0;
             readyNotificationSent = false;
             resolutionApplied = false;
             activeDeadDrop = null;
@@ -4219,7 +4660,7 @@ namespace GateRimSG1.Goauld
             activeState = TokraOrganicOperationState.Accepted;
             acceptedTick = currentTick;
             reportReadyTick = currentTick;
-            operationDeadlineTick = currentTick + definition.DeadlineTicks;
+            operationDeadlineTick = 0;
             readyNotificationSent = true;
             resolutionApplied = false;
             activeDeadDrop = null;
@@ -4466,6 +4907,63 @@ namespace GateRimSG1.Goauld
                 + $"target {targetCell}; deadline "
                 + $"{operationDeadlineTick}; operator "
                 + $"{operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
+
+        internal bool TryAcceptDiversionAssault(
+            Map map,
+            Pawn operatorPawn)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            if (definition == null
+                || definition.Archetype
+                    != TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense)
+            {
+                Messages.Message(
+                    "GR_TokraOrganicOperation_FloatMenuUnavailable"
+                        .Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            reportReadyTick = currentTick;
+            operationDeadlineTick = currentTick + definition.DeadlineTicks;
+            readyNotificationSent = true;
+            resolutionApplied = false;
+            activeDeadDrop = null;
+            TokraDiversionAssaultUtility.Initialize(
+                activeOperation.frameworkRuntime,
+                definition,
+                currentTick);
+
+            NotifyMissionAccepted(map, operatorPawn);
+
+            Thing letterTarget = operatorPawn
+                ?? FindPoweredCommunicator(map);
+
+            Messages.Message(
+                definition.AcceptedMessageKey.Translate(
+                    operatorPawn?.LabelShortCap ?? "?"),
+                letterTarget,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            GR_Log.Message(
+                "Accepted Tok'ra diversion assault operation on map "
+                + map.uniqueID + "; raid due "
+                + TokraDiversionAssaultUtility.GetRaidDueTick(
+                    activeOperation.frameworkRuntime)
+                + "; operator "
+                + (operatorPawn?.LabelShortCap ?? "unknown") + ".");
 
             return true;
         }
@@ -4896,6 +5394,34 @@ namespace GateRimSG1.Goauld
                     Find.LetterStack?.ReceiveLetter(
                         definition.FailureLetterLabelKey.Translate(),
                         textKey.Translate(requiredCount, itemLabel),
+                        LetterDefOf.NegativeEvent,
+                        letterTarget);
+                }
+
+                return;
+            }
+
+
+            if (definition.Archetype
+                == TokraOrganicOperationArchetype.DecoyTransmissionDefense)
+            {
+                if (outcome == TokraOrganicOperationOutcome.Succeeded)
+                {
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.SuccessLetterLabelKey.Translate(),
+                        GetMissionSuccessTextKey(definition).Translate(),
+                        LetterDefOf.PositiveEvent,
+                        letterTarget);
+                }
+                else
+                {
+                    string textKey = string.IsNullOrEmpty(failureTextKey)
+                        ? definition.GetRuntimeTextKey("failureTimeout")
+                        : failureTextKey;
+
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.FailureLetterLabelKey.Translate(),
+                        textKey.Translate(),
                         LetterDefOf.NegativeEvent,
                         letterTarget);
                 }
@@ -6084,6 +6610,19 @@ namespace GateRimSG1.Goauld
                         operationDeadlineTick - currentTick).ToString())
                     .ToString();
             }
+
+            else if (definition.Archetype
+                == TokraOrganicOperationArchetype.DecoyTransmissionDefense)
+            {
+                GateRimMissionRuntimeData runtime
+                    = activeOperation.frameworkRuntime;
+                string statusKey
+                    = TokraDiversionAssaultUtility.IsRaidTriggered(runtime)
+                        ? definition.GetRuntimeTextKey("statusAssault")
+                        : definition.GetRuntimeTextKey("statusWaiting");
+
+                status = statusKey.Translate().ToString();
+            }
             else if (definition.Archetype
                 == TokraOrganicOperationArchetype.GoauldObservation)
             {
@@ -6456,12 +6995,34 @@ namespace GateRimSG1.Goauld
                         || activeState == TokraOrganicOperationState.Ready)
                     && operationDeadlineTick <= 0
                     && activeArchetype
-                        != TokraOrganicOperationArchetype.MedicalSupplyHandoff)
+                        != TokraOrganicOperationArchetype.MedicalSupplyHandoff
+                    && activeArchetype
+                        != TokraOrganicOperationArchetype
+                            .DecoyTransmissionDefense)
                 {
                     operationDeadlineTick = Math.Max(currentTick, acceptedTick)
                         + definition.DeadlineTicks;
                 }
 
+
+
+                if (activeArchetype
+                        == TokraOrganicOperationArchetype
+                            .DecoyTransmissionDefense
+                    && activeState == TokraOrganicOperationState.Accepted)
+                {
+                    TokraDiversionAssaultUtility.Normalize(
+                        activeOperation.frameworkRuntime,
+                        definition,
+                        acceptedTick,
+                        currentTick);
+
+                    if (TokraDiversionAssaultUtility.IsRaidTriggered(
+                            activeOperation.frameworkRuntime))
+                    {
+                        operationDeadlineTick = 0;
+                    }
+                }
                 if (activeArchetype
                         == TokraOrganicOperationArchetype.GoauldObservation
                     && (activeState == TokraOrganicOperationState.Accepted
@@ -6529,6 +7090,16 @@ namespace GateRimSG1.Goauld
                     ? activeDeadDrop
                     : null,
                 observationPointMarker);
+        }
+
+        private bool IsDiversionAssaultStateActive()
+        {
+            return activeArchetype
+                    == TokraOrganicOperationArchetype
+                        .DecoyTransmissionDefense
+                && activeState == TokraOrganicOperationState.Accepted
+                && TokraDiversionAssaultUtility.IsRaidTriggered(
+                    activeOperation.frameworkRuntime);
         }
 
         private bool IsObservationStateActive()

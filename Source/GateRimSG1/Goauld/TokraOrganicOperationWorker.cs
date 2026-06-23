@@ -184,6 +184,31 @@ namespace GateRimSG1.Goauld
         }
     }
 
+
+    internal sealed class TokraOrganicOperationWorker_DiversionAssault
+        : TokraOrganicOperationWorker
+    {
+        public override TokraOrganicOperationArchetype Archetype
+            => TokraOrganicOperationArchetype.DecoyTransmissionDefense;
+
+        public override void Tick(
+            GameComponent_TokraOrganicOperationManager manager,
+            int currentTick)
+        {
+            manager.TickAcceptedDiversionAssault(currentTick);
+        }
+
+        public override bool TryAccept(
+            GameComponent_TokraOrganicOperationManager manager,
+            Map map,
+            Pawn operatorPawn)
+        {
+            return manager.TryAcceptDiversionAssault(
+                map,
+                operatorPawn);
+        }
+    }
+
     internal static class TokraOrganicOperationWorkerRegistry
     {
         private static readonly IReadOnlyDictionary<
@@ -216,6 +241,10 @@ namespace GateRimSG1.Goauld
                     {
                         TokraOrganicOperationArchetype.TemporaryBaseDelivery,
                         new TokraOrganicOperationWorker_TemporaryBaseDelivery()
+                    },
+                    {
+                        TokraOrganicOperationArchetype.DecoyTransmissionDefense,
+                        new TokraOrganicOperationWorker_DiversionAssault()
                     }
                 };
 

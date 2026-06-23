@@ -185,6 +185,63 @@ namespace GateRimSG1.Goauld
                 "GR_TokraTemporaryBaseDelivery_DebugDestinationCompromise");
         }
 
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: force diversion offer",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceDiversionAssaultOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceDiversionAssaultOpportunity(
+                        Find.CurrentMap),
+                "GR_TokraDecoyDefense_DebugForced");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: force diversion assault",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ForceDiversionAssaultRaid()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceDiversionAssaultRaid(
+                        Find.CurrentMap),
+                "GR_TokraDecoyDefense_DebugRaidForced");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: resolve diversion victory",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void ResolveDiversionAssaultVictory()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugResolveDiversionAssaultVictory(
+                        Find.CurrentMap),
+                "GR_TokraDecoyDefense_DebugVictory");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
+            "Tok'ra ops: simulate diversion hostage loss",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void SimulateDiversionAssaultHostageLoss()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugResolveDiversionAssaultHostageLoss(
+                        Find.CurrentMap),
+                "GR_TokraDecoyDefense_DebugHostageLoss");
+        }
+
         [DebugAction(
             "GateRim SG-1",
             "Tok'ra ops: force distress rescue offer",

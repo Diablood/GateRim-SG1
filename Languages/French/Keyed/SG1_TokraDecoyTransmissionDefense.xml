@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraDecoyDefense_OfferLabel>Diversion Tok'ra</GR_TokraDecoyDefense_OfferLabel>
+    <GR_TokraDecoyDefense_OfferText1>Une cellule Tok'ra doit traverser un secteur surveillé par les Goa'uld. Elle demande à la colonie de relayer une fausse piste par le canal sécurisé et d'apparaître comme l'origine de son déplacement. La réaction ennemie se dirigera ici au lieu de suivre la véritable route. Accepter signifie se préparer à un assaut direct. L'offre reste ouverte environ {0} heures. L'ignorer n'entraîne aucune perte de confiance.</GR_TokraDecoyDefense_OfferText1>
+    <GR_TokraDecoyDefense_OfferText2>Le canal sécurisé relaie une proposition dangereuse. Une brève émission factice depuis la colonie peut détourner une force Jaffa d'une extraction Tok'ra, mais les poursuivants arriveront prêts à forcer une position défendue. L'offre reste ouverte environ {0} heures.</GR_TokraDecoyDefense_OfferText2>
+    <GR_TokraDecoyDefense_OfferText3>Un contact Tok'ra demande à la colonie de devenir l'aboutissement d'une fausse piste. Une fois le signal émis, une force au service des Goa'uld le suivra jusqu'ici et attaquera. La retenir donnerait à une autre cellule l'ouverture dont elle a besoin. L'offre reste ouverte environ {0} heures.</GR_TokraDecoyDefense_OfferText3>
+    <GR_TokraDecoyDefense_OfferExpired>La cellule Tok'ra a refermé le canal de diversion et choisi une autre route.</GR_TokraDecoyDefense_OfferExpired>
+    <GR_TokraDecoyDefense_AcceptAction>Accepter la diversion Tok'ra</GR_TokraDecoyDefense_AcceptAction>
+    <GR_TokraDecoyDefense_Accepted>{0} a autorisé l'émission du faux signal. La colonie est désormais au bout de la piste ; préparez-vous à un assaut Goa'uld.</GR_TokraDecoyDefense_Accepted>
+    <GR_TokraDecoyDefense_StatusOffered>diversion dangereuse en attente d'une réponse</GR_TokraDecoyDefense_StatusOffered>
+    <GR_TokraDecoyDefense_StatusWaiting>fausse piste active ; une force Goa'uld peut arriver à tout moment</GR_TokraDecoyDefense_StatusWaiting>
+    <GR_TokraDecoyDefense_StatusAssault>assaut Goa'uld en cours ; empêchez toute fuite avec des captifs ou du butin</GR_TokraDecoyDefense_StatusAssault>
+    <GR_TokraDecoyDefense_PhaseAssault>repousser l'assaut Goa'uld détourné</GR_TokraDecoyDefense_PhaseAssault>
+    <GR_TokraDecoyDefense_SuccessLabel>Diversion Tok'ra réussie</GR_TokraDecoyDefense_SuccessLabel>
+    <GR_TokraDecoyDefense_SuccessText1>La force Goa'uld a été brisée ou chassée de la colonie sans emporter de captif ni de butin. Pendant que les Jaffa suivaient la fausse piste, la cellule Tok'ra a traversé le secteur surveillé sans être repérée.</GR_TokraDecoyDefense_SuccessText1>
+    <GR_TokraDecoyDefense_SuccessText2>Les assaillants ont abandonné la colonie les mains vides. Leur poursuite est restée fixée sur le faux signal assez longtemps pour que l'extraction Tok'ra franchisse le réseau de patrouilles.</GR_TokraDecoyDefense_SuccessText2>
+    <GR_TokraDecoyDefense_SuccessText3>La force Jaffa détournée ne menace plus la colonie. Les Tok'ra confirment que leur véritable déplacement est terminé et que la piste s'est refroidie.</GR_TokraDecoyDefense_SuccessText3>
+    <GR_TokraDecoyDefense_FailureLabel>Diversion Tok'ra compromise</GR_TokraDecoyDefense_FailureLabel>
+    <GR_TokraDecoyDefense_FailureTimeout>La fausse piste n'a pas attiré la réaction Goa'uld avant la fermeture de la fenêtre de passage. La cellule Tok'ra a dû abandonner sa route.</GR_TokraDecoyDefense_FailureTimeout>
+    <GR_TokraDecoyDefense_FailureMapLost>La colonie n'a plus pu tenir l'extrémité de la fausse piste. La cellule Tok'ra a rompu le contact et abandonné son déplacement.</GR_TokraDecoyDefense_FailureMapLost>
+    <GR_TokraDecoyDefense_FailureHostage>La force Goa'uld s'est retirée avec un captif de la colonie. La diversion a offert du temps aux Tok'ra, mais à un prix qu'ils ne considéreront pas comme une victoire.</GR_TokraDecoyDefense_FailureHostage>
+    <GR_TokraDecoyDefense_FailureLoot>La force Goa'uld s'est échappée avec du butin pris à la colonie. Le déplacement Tok'ra a réussi ailleurs, mais la diversion s'est achevée ici par une défaite.</GR_TokraDecoyDefense_FailureLoot>
+    <GR_TokraDecoyDefense_TrustSucceeded>Repousser l'assaut détourné renforce la confiance des Tok'ra envers la colonie.</GR_TokraDecoyDefense_TrustSucceeded>
+    <GR_TokraDecoyDefense_TrustFailed>L'échec de la diversion rend la cellule Tok'ra plus prudente.</GR_TokraDecoyDefense_TrustFailed>
+    <GR_TokraDecoyDefense_DebugForced>Une offre de diversion Tok'ra a été forcée.</GR_TokraDecoyDefense_DebugForced>
+    <GR_TokraDecoyDefense_DebugRaidForced>L'assaut Goa'uld attiré par la diversion active a été forcé.</GR_TokraDecoyDefense_DebugRaidForced>
+    <GR_TokraDecoyDefense_DebugVictory>La diversion Tok'ra active a été résolue comme une victoire de la colonie.</GR_TokraDecoyDefense_DebugVictory>
+    <GR_TokraDecoyDefense_DebugHostageLoss>La diversion Tok'ra active a été résolue comme une perte d'otage.</GR_TokraDecoyDefense_DebugHostageLoss>
+</LanguageData>

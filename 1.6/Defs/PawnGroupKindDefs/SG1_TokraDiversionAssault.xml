@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Mission-only pawn group for the Tok'ra diversion assault.
+    Keeping this group separate from Combat prevents the dedicated breacher
+    profile from changing ordinary Goa'uld/Jaffa raids.
+    -->
+    <PawnGroupKindDef>
+        <defName>SG1_TokraDiversionAssault</defName>
+        <workerClass>RimWorld.PawnGroupKindWorker_Normal</workerClass>
+    </PawnGroupKindDef>
+</Defs>

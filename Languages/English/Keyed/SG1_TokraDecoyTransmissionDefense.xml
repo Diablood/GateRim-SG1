@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraDecoyDefense_OfferLabel>Tok'ra diversion request</GR_TokraDecoyDefense_OfferLabel>
+    <GR_TokraDecoyDefense_OfferText1>A Tok'ra cell must cross a sector watched by Goa'uld forces. They ask the colony to relay a false trace through the secure channel and become the apparent source of their movement. The response will come here instead of following the real route. Anyone who accepts should expect a direct assault. The offer remains open for about {0} hours. Ignoring it carries no trust penalty.</GR_TokraDecoyDefense_OfferText1>
+    <GR_TokraDecoyDefense_OfferText2>The secure channel carries a dangerous proposal. A brief false transmission from the colony can draw a nearby Jaffa force away from a Tok'ra extraction, but the pursuers will arrive prepared to break into a defended position. The offer remains open for about {0} hours.</GR_TokraDecoyDefense_OfferText2>
+    <GR_TokraDecoyDefense_OfferText3>A Tok'ra contact asks the colony to serve as the end of a false trail. Once the signal is sent, a Goa'uld-aligned force will follow it here and attack. Holding them at the colony would give another cell the opening it needs. The offer remains open for about {0} hours.</GR_TokraDecoyDefense_OfferText3>
+    <GR_TokraDecoyDefense_OfferExpired>The Tok'ra cell has closed the diversion channel and chosen another route.</GR_TokraDecoyDefense_OfferExpired>
+    <GR_TokraDecoyDefense_AcceptAction>Accept the Tok'ra diversion</GR_TokraDecoyDefense_AcceptAction>
+    <GR_TokraDecoyDefense_Accepted>{0} has authorized the false signal. The colony is now the end of the trail; prepare for a Goa'uld assault.</GR_TokraDecoyDefense_Accepted>
+    <GR_TokraDecoyDefense_StatusOffered>dangerous diversion awaiting a response</GR_TokraDecoyDefense_StatusOffered>
+    <GR_TokraDecoyDefense_StatusWaiting>false trail active; Goa'uld forces may arrive at any time</GR_TokraDecoyDefense_StatusWaiting>
+    <GR_TokraDecoyDefense_StatusAssault>Goa'uld assault in progress; prevent any captives or plunder from escaping</GR_TokraDecoyDefense_StatusAssault>
+    <GR_TokraDecoyDefense_PhaseAssault>repelling the diverted Goa'uld assault</GR_TokraDecoyDefense_PhaseAssault>
+    <GR_TokraDecoyDefense_SuccessLabel>Tok'ra diversion succeeded</GR_TokraDecoyDefense_SuccessLabel>
+    <GR_TokraDecoyDefense_SuccessText1>The Goa'uld force has been broken or driven from the colony without taking captives or plunder. While the Jaffa followed the false trail, the Tok'ra cell crossed the watched sector unseen.</GR_TokraDecoyDefense_SuccessText1>
+    <GR_TokraDecoyDefense_SuccessText2>The attackers have abandoned the colony empty-handed. Their pursuit remained fixed on the false signal long enough for the Tok'ra extraction to pass beyond the patrol net.</GR_TokraDecoyDefense_SuccessText2>
+    <GR_TokraDecoyDefense_SuccessText3>The diverted Jaffa force can no longer threaten the colony. The Tok'ra report that the real movement is complete and the trail has gone cold.</GR_TokraDecoyDefense_SuccessText3>
+    <GR_TokraDecoyDefense_FailureLabel>Tok'ra diversion compromised</GR_TokraDecoyDefense_FailureLabel>
+    <GR_TokraDecoyDefense_FailureTimeout>The false trail failed to draw the Goa'uld response before the Tok'ra movement window closed. The cell had to abandon its route.</GR_TokraDecoyDefense_FailureTimeout>
+    <GR_TokraDecoyDefense_FailureMapLost>The colony could no longer hold the end of the false trail. The Tok'ra cell broke contact and abandoned the movement.</GR_TokraDecoyDefense_FailureMapLost>
+    <GR_TokraDecoyDefense_FailureHostage>The Goa'uld assault withdrew with a captive from the colony. The diversion bought time for the Tok'ra, but at a cost they will not mistake for a victory.</GR_TokraDecoyDefense_FailureHostage>
+    <GR_TokraDecoyDefense_FailureLoot>The Goa'uld assault escaped with plunder from the colony. The Tok'ra movement succeeded elsewhere, but the diversion ended in a defeat here.</GR_TokraDecoyDefense_FailureLoot>
+    <GR_TokraDecoyDefense_TrustSucceeded>Repelling the diverted assault strengthens Tok'ra confidence in the colony.</GR_TokraDecoyDefense_TrustSucceeded>
+    <GR_TokraDecoyDefense_TrustFailed>The failed diversion makes the Tok'ra cell more cautious.</GR_TokraDecoyDefense_TrustFailed>
+    <GR_TokraDecoyDefense_DebugForced>A Tok'ra diversion offer has been forced.</GR_TokraDecoyDefense_DebugForced>
+    <GR_TokraDecoyDefense_DebugRaidForced>The Goa'uld assault drawn by the active diversion has been forced.</GR_TokraDecoyDefense_DebugRaidForced>
+    <GR_TokraDecoyDefense_DebugVictory>The active Tok'ra diversion has been resolved as a colonial victory.</GR_TokraDecoyDefense_DebugVictory>
+    <GR_TokraDecoyDefense_DebugHostageLoss>The active Tok'ra diversion has been resolved as a hostage loss.</GR_TokraDecoyDefense_DebugHostageLoss>
+</LanguageData>

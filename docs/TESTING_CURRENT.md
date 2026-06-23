@@ -1,89 +1,69 @@
-# Validation finale — 0.3.33-dev-r2
+# Validation finale — 0.3.34-dev
 
-Jalon : `0.3.33-dev - Gate Tok'ra operations behind the communicator`
+Jalon : `0.3.34-dev - Add Tok'ra diversion assault operation`
 
-Version de DLL validée : `0.3.33.0`
+Branche publiée : `feature/tokra-decoy-transmission-defense`
 
-Branche : `feature/tokra-communicator-operation-gating`
+Tag de départ : `v0.3.33-dev`
 
-Tag final : `v0.3.33-dev`
+Tag final : `v0.3.34-dev`
 
-## Résultat r1 — construction et disponibilité
+Dernière révision locale validée : `0.3.34-dev-r3`
 
-- `SG1_TokraSecureCommunications` verrouille les nouvelles constructions du communicateur.
-- Les communicateurs construits avant ce changement restent utilisables.
-- Le service commun reconnaît correctement une carte de colonie joueur, la propriété, les composants requis et l'alimentation active.
-- La coupure et le retour du courant sont reflétés par `Tok'ra communicator: show availability`.
-- Sauvegarde et rechargement ne modifient pas l'état physique du canal.
+Version de DLL validée : `0.3.34.0`
 
-## Résultat r2 — blocage d'une nouvelle offre
+## 1. Suppressions validées
 
-Validation effectuée avec :
+Les cinq fichiers obsolètes du transmetteur r1 sont absents de l'état final :
 
-```text
-Debug actions menu
--> GateRim SG-1
--> Tok'ra ops: make natural offer due
-```
+- `1.6/Defs/ThingDefs_Buildings/SG1_TokraDecoyTransmitter.xml` ;
+- `Languages/French/DefInjected/ThingDef/SG1_TokraDecoyTransmitter.xml` ;
+- `Source/GateRimSG1/Goauld/TokraDecoyTransmissionDefenseUtility.cs` ;
+- `docs/TOKRA_DECOY_TRANSMISSION_DEFENSE.md` ;
+- `docs/wiki/Tokra-Decoy-Transmission-Defense.md`.
 
-Puis :
+Aucune texture n'a été ajoutée ou supprimée pour le prototype rejeté. La r3 n'exigeait aucune suppression supplémentaire.
 
-```text
-Debug actions menu
--> GateRim SG-1
--> Tok'ra ops: show framework state
-```
+## 2. Contrôles et build validés
 
-Résultats validés sans communicateur alimenté :
+- branche `feature/tokra-decoy-transmission-defense` ;
+- version publique `0.3.34-dev` ;
+- versions projet, assemblage et fichier `0.3.34.0` ;
+- `83` BackstoryDef uniques ;
+- contrôle de cohérence positif ;
+- rebuild forcé réussi ;
+- chargement sans erreur de configuration du groupe `SG1_TokraDiversionAssault` ou du sapeur Ma'Tok requis.
 
-- `Communicator gate blocked: True` ;
-- `Communicator available: False` ;
-- aucune lettre d'offre ;
-- aucun archétype actif ;
-- aucun échec, refus ou changement de confiance ;
-- aucune relance horaire créant une offre ;
-- sauvegarde/rechargement conservant le verrou et le slot vide.
+## 3. Validation fonctionnelle r3
 
-## Résultat r2 — reprise organique du canal
+Le correctif ciblé a été validé après redémarrage complet de RimWorld :
 
-Après construction, rallumage ou réalimentation d'un communicateur valide :
+- l'offre de diversion peut être forcée et acceptée sans objet physique ni transmetteur ;
+- `Tok'ra ops: force diversion assault` produit un seul raid Goa'uld/Jaffa ;
+- le budget reste dans les bornes de mission `180–3000` et ne monte plus artificiellement vers `104999` ;
+- le rapport `Tok'ra ops: show framework state` indique des assaillants enregistrés et au moins un sapeur enregistré ;
+- au moins un `Goa'uld Jaffa breacher` / `sapeur Jaffa au service des Goa'uld` apparaît avec un Ma'Tok ;
+- le groupe attaque les murs ou les accès fermés avec le comportement vanilla de brèche ;
+- une sauvegarde/recharge pendant l'assaut conserve la même force et ne crée pas de second raid ;
+- la neutralisation de tous les assaillants résout une seule réussite ;
+- la réussite accorde `+3` de confiance une seule fois et libère le slot organique ;
+- aucune seconde lettre ou modification de confiance n'apparaît après rechargement ;
+- `Player.log` ne contient plus les erreurs de `MinimumPoints`, de pawn requis absent, de `PawnGroupMaker` inutilisable ou d'échec de démarrage de l'assaut.
 
-- `Communicator gate blocked: False` ;
-- `Communicator available: True` ;
-- `Next opportunity tick` est recalculé dans le futur ;
-- aucune lettre n'apparaît immédiatement au retour du courant ;
-- sauvegarde/rechargement conserve la nouvelle échéance sans nouveau tirage.
+## 4. Couverture durable non rejouée pendant la passe finale
 
-L'action suivante a ensuite produit une seule offre normale par le véritable tirage pondéré :
+Les chemins suivants restent documentés dans `docs/TESTING.md` mais n'ont pas été présentés comme rejoués lors de la validation ciblée r3 :
 
-```text
-Debug actions menu
--> GateRim SG-1
--> Tok'ra ops: roll next natural offer
-```
+- fuite ennemie les mains vides ;
+- sortie réelle avec un otage ;
+- sortie réelle avec du butin ;
+- perte de carte ;
+- comparaison entre colonie faible et colonie avancée ;
+- récurrence, anti-répétition et verrou du communicateur ;
+- régression complète des six opérations Tok'ra précédentes.
 
-## Résultat r2 — opération existante préservée
+Ils doivent être repris lors de toute modification future de cette opération, de la stratégie de raid, du runtime de mission ou du planificateur partagé.
 
-- Une offre déjà visible reste dans le slot actif lorsque le communicateur perd son alimentation ou est détruit.
-- Sauvegarde/rechargement ne supprime ni ne remplace cette offre.
-- Le retour du canal permet de reprendre le flux normal.
-- La coupure ne modifie pas l'archétype, ne crée pas une seconde opération, n'ajoute pas de conséquence de confiance et ne duplique pas la lettre.
-- Les délais propres à l'opération continuent à suivre leurs règles existantes.
-- Les actions `Tok'ra ops: force ... offer` ne contournent pas le verrou en l'absence de communicateur valide.
+## 5. Publication
 
-## Contrôles finaux
-
-- contrôle de cohérence du projet réussi pour `0.3.33-dev`, `0.3.33.0` et `83` backstories ;
-- rebuild forcé validé ;
-- aucune nouvelle erreur GateRim SG-1 signalée dans `Player.log` ;
-- mission d'introduction conservée hors du verrou récurrent ;
-- demandes manuelles du communicateur conservées hors du planificateur organique ;
-- passe finale des textes joueur terminée sans correction supplémentaire nécessaire ;
-- diagnostic technique réservé au mode développeur ou aux informations avancées ;
-- page wiki des opérations organiques mise à jour avec l'accès au canal et la reprise différée.
-
-## Limites conservées
-
-- Une panne ne met pas en pause les échéances d'une opération déjà proposée ou acceptée.
-- Le jalon ne modifie pas les poids, récompenses, conséquences ou difficultés propres aux six archétypes existants.
-- L'équilibrage statistique sur de très longues parties reste évolutif et ne remet pas en cause la validation fonctionnelle du verrou.
+Le jalon est clôturé sur la révision locale `r3`, publié sur la branche `feature/tokra-decoy-transmission-defense`, tagué `v0.3.34-dev` et synchronisé avec le wiki séparé.

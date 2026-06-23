@@ -1,5 +1,33 @@
 # GateRim SG-1 — Roadmap durable
 
+## Dernier jalon clôturé — Assaut de diversion Tok'ra (`0.3.34-dev`)
+
+- [x] Partir explicitement de `v0.3.33-dev` sur `feature/tokra-decoy-transmission-defense`.
+- [x] Ajouter un septième archétype récurrent sans renuméroter les valeurs persistées existantes.
+- [x] Valider en r1 la fondation technique, puis abandonner avant publication le concept de transmetteur physique jugé inadapté.
+- [x] Refondre l'opération en faux signal émis depuis le communicateur, sans objet livré ni objectif physique.
+- [x] Décrire l'offre, les poids de confiance, les délais, les variantes RP, la menace et les conséquences dans un MissionDef XML.
+- [x] Déclencher une force Goa'uld/Jaffa dédiée avec un snapshot de menace capturé à l'offre, facteur `0,75` et bornes `180–3000`.
+- [x] Autoriser enlèvement et vol, empêcher l'abandon par simple expiration du raid et enregistrer les assaillants exacts de l'opération.
+- [x] Faire réussir l'opération lorsque les assaillants sont neutralisés ou fuient les mains vides.
+- [x] Faire échouer une seule fois l'opération lorsqu'un assaillant quitte la carte avec un colon ou du butin, ou si la carte est perdue.
+- [x] Persister l'échéance de l'assaut, son déclenchement, les identifiants des assaillants et le diagnostic d'extraction dans le runtime générique.
+- [x] Ajouter trois variantes d'offre, trois variantes de réussite et les traductions anglaises/françaises.
+- [x] Ajouter des actions développeur ciblées et étendre le rapport d'état sans exposer les délais cachés en jeu normal.
+- [x] Retirer les cinq fichiers obsolètes du prototype r1 ; aucune texture n'était à supprimer.
+- [x] Identifier en r2 l'incompatibilité entre la stratégie vanilla de brèche et le groupe Goa'uld `Combat` dépourvu de pawn `isGoodBreacher`.
+- [x] Ajouter en r3 un `PawnGroupKindDef` réservé à l'opération et un sapeur Jaffa Ma'Tok compatible, sans modifier les raids Goa'uld ordinaires.
+- [x] Ajouter une validation de configuration empêchant le fallback vanilla à environ `99999` points si le groupe de brèche devient invalide.
+- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.34.0`.
+- [x] Valider en jeu la génération unique du raid, la présence d'au moins un sapeur Ma'Tok et la percée d'une colonie fermée.
+- [x] Valider la victoire par combat et la sauvegarde/recharge pendant l'assaut sans duplication.
+- [x] Effectuer la passe finale des textes joueur et des diagnostics développeur.
+- [x] Publier la branche, le tag final unique `v0.3.34-dev` et le wiki séparé.
+
+La révision finale `r3` remplace le groupe `Combat` incompatible par un groupe de mission explicitement sélectionné. Le sapeur dédié hérite du Ma'Tok, déjà capable d'endommager les structures, et n'entre dans aucun raid Goa'uld ordinaire. Le raid, la brèche, la persistance et la victoire par combat sont validés. Les voies de fuite, otage, butin, perte de carte, comparaison faible/avancée et régressions complètes des six opérations précédentes restent conservées comme couverture durable dans `docs/TESTING.md`, sans être présentées comme rejouées lors de la passe ciblée finale.
+
+Le jalon est publié sous le tag final unique `v0.3.34-dev`. Le prochain jalon doit partir explicitement de ce tag sur une nouvelle branche dédiée après relecture du backlog durable.
+
 ## Dernier jalon clôturé — Accès aux opérations par communicateur (`0.3.33-dev`)
 
 - [x] Partir explicitement de `v0.3.32-dev` sur `feature/tokra-communicator-operation-gating`.
@@ -585,8 +613,9 @@ Cette passe doit être réalisée lorsque les mécaniques concernées sont suffi
 
 Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations existantes doivent rester récurrentes, anti-répétitives et compatibles avec les sauvegardes créées à partir de cette base.
 
-- [ ] Continuer à tester les quatre archétypes existants sur les parties longues : observation, renseignements, agent blessé et remise médicale.
-- [ ] Ajouter ultérieurement de nouveaux archétypes réellement distincts, sans dupliquer les mêmes actions sous un autre texte.
+- [ ] Continuer à tester les sept archétypes récurrents sur les parties longues : observation, renseignements, agent blessé, remise médicale, appel de détresse, livraison à une base temporaire et assaut de diversion Goa'uld/Jaffa.
+- [x] Ajouter un premier nouvel archétype réellement distinct après les six opérations publiées : assaut de diversion Goa’uld/Jaffa (`0.3.34-dev`, publié sous `v0.3.34-dev`).
+- [ ] Continuer ensuite à enrichir le pool avec des archétypes réellement distincts, sans dupliquer les mêmes actions sous un autre texte.
 - [ ] Conserver une seule opération organique visible à la fois sur le communicateur.
 - [ ] Ne jamais révéler en jeu normal le catalogue des opérations, les pondérations, les délais cachés ou l'historique technique.
 - [ ] Réserver les diagnostics complets au mode développeur RimWorld ou à l'option avancée GateRim SG-1.

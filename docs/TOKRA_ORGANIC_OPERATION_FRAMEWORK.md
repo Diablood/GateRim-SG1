@@ -54,7 +54,8 @@ The common record contains:
 - optional physical objective;
 - optional wounded-agent pawn and medical-care state;
 - optional medical liaison, meeting cell and arrival state;
-- intelligence-analysis method, total/remaining work, interference state, patrol queue state and RP result variant.
+- intelligence-analysis method, total/remaining work, interference state, patrol queue state and RP result variant;
+- generic keyed counters and strings used by specialized Def-driven adapters such as the diversion assault due tick, raid state and exact raider identifiers.
 
 A future archetype should extend the shared instance only when a field is genuinely reusable. Operation-specific behavior belongs in a worker.
 
@@ -67,7 +68,8 @@ Each archetype is selected through a worker registry:
 - `TokraOrganicOperationWorker_WoundedAgentCare`;
 - `TokraOrganicOperationWorker_MedicalSupplyHandoff`;
 - `TokraOrganicOperationWorker_DistressCall`;
-- `TokraOrganicOperationWorker_TemporaryBaseDelivery`.
+- `TokraOrganicOperationWorker_TemporaryBaseDelivery`;
+- `TokraOrganicOperationWorker_DiversionAssault` (stable archetype value `DecoyTransmissionDefense`).
 
 A worker owns the routing for:
 

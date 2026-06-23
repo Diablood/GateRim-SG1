@@ -1,5 +1,45 @@
 # Tests
 
+## 0.3.34-dev - Assaut de diversion Tok'ra
+
+Validation locale terminée sur la révision `r3`, puis jalon publié sous `v0.3.34-dev`. La r1 a validé la fondation technique mais son objectif physique a été supprimé. La r2 a chargé le flux sans objet, puis son raid a échoué parce que la stratégie vanilla de brèche recevait le groupe `Combat`, dépourvu de pawn marqué `isGoodBreacher`. La r3 a ajouté un groupe de mission dédié et un sapeur Jaffa Ma'Tok compatible.
+
+Couverture validée pendant la passe finale :
+
+- contrôle de cohérence positif pour `0.3.34-dev`, `0.3.34.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.34.0` ;
+- chargement du septième MissionDef, du nouvel IncidentDef, de la stratégie de brèche, du `PawnGroupKindDef` de mission, du sapeur Jaffa et des clés anglaises/françaises sans erreur de configuration ;
+- absence complète du ThingDef de transmetteur, de son utilitaire r1 et de tout objet physique à l'acceptation ;
+- sélection explicite du groupe `SG1_TokraDiversionAssault`, sans modification des groupes Goa'uld `Combat` et `Settlement` ordinaires ;
+- présence d'au moins un `SG1_GoauldJaffaBreacher` marqué `isGoodBreacher`, équipé d'un Ma'Tok et visible dans le rapport développeur ;
+- raid Goa'uld/Jaffa unique utilisant le budget de mission `180–3000`, sans fallback proche de `99999` points ;
+- stratégie de brèche attaquant les murs ou accès d'une colonie fermée ;
+- sauvegarde/recharge pendant l'assaut sans duplication du raid ;
+- réussite unique après neutralisation des assaillants, avec `+3` de confiance appliqué une seule fois et libération du slot ;
+- absence des erreurs `MinimumPoints`, pawn requis absent, `no usable PawnGroupMakers` et démarrage d'assaut dans `Player.log`.
+
+Couverture durable conservée, non rejouée pendant la passe ciblée finale :
+
+- persistance exacte du délai d'assaut, de l'état déclenché, des ThingIDs et du snapshot de menace sur les phases non couvertes par le test ciblé ;
+- absence d'abandon par timeout ordinaire après une durée prolongée ;
+- réussite lorsque les assaillants battent en retraite les mains vides ;
+- échec unique lorsqu'un assaillant atteint le bord avec un colon ou un objet porté, sans réussite prématurée pendant l'extraction ;
+- échec unique en cas de perte de la carte ;
+- offre ignorée sans perte de confiance ;
+- rééligibilité après réussite, échec et ignorance, délai caché variable et facteur local de répétition `0.20` ;
+- trois variantes d'offre et trois variantes de réussite avec anti-répétition locale ;
+- comparaison du dimensionnement sur une colonie faible et une colonie avancée ;
+- audit d'orchestration à sept définitions et régression complète des six opérations précédentes ;
+- outils debug limités au mode développeur ou à l'option avancée.
+
+Points de régression durables :
+
+- toute stratégie dérivée de `RaidStrategyWorker_WithRequiredPawnKinds` doit recevoir un groupe contenant les PawnKinds requis ;
+- le groupe de mission doit rester isolé des raids ordinaires afin de ne pas modifier silencieusement leur composition ;
+- le sapeur doit conserver un Ma'Tok ou un autre équipement explicitement compatible avec le comportement de brèche avant tout changement futur ;
+- une configuration invalide doit désactiver proprement l'opération avant le tirage plutôt que laisser RimWorld relever artificiellement les points du raid ;
+- revalider la génération sur les budgets minimum et maximum après toute modification du coût de combat ou du nombre maximal de sapeurs.
+
 ## 0.3.33-dev - Accès aux opérations Tok'ra par communicateur
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.33-dev`. La révision `r1` a validé le prérequis de construction et le service de disponibilité ; la révision `r2` a branché ce service sur le planificateur persistant des opérations récurrentes.

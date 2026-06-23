@@ -115,7 +115,7 @@ Developer completion follows the same rules. `Tok'ra intro: recover key artifact
 
 ## Separation from recurrent operations
 
-The recurrent Tok'ra orchestrator resolves six named MissionDefs through `TokraOrganicOperationFramework`. The introduction MissionDef is not added to that registry or to `TokraOrganicOperationArchetype`.
+The recurrent Tok'ra orchestrator resolves seven named MissionDefs through `TokraOrganicOperationFramework`. The introduction MissionDef is not added to that registry or to `TokraOrganicOperationArchetype`.
 
 It therefore does not occupy the recurrent-operation slot, expose their catalogue, modify Tok'ra trust or depend on the communicator.
 

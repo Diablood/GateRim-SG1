@@ -8,7 +8,8 @@ namespace GateRimSG1.Goauld
         WoundedAgentCare = 3,
         MedicalSupplyHandoff = 4,
         DistressCall = 5,
-        TemporaryBaseDelivery = 6
+        TemporaryBaseDelivery = 6,
+        DecoyTransmissionDefense = 7
     }
 
     public enum TokraOrganicOperationState

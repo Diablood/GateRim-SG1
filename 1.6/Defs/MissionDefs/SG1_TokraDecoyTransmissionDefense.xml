@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    The stable defName and adapter key avoid renumbering the persisted archetype.
+    Active r1 transmitter test saves are intentionally unsupported.
+    Player-facing behavior is a diversion assault with no physical objective.
+    -->
+    <GateRimSG1.Missions.GateRimMissionDef>
+        <defName>SG1_TokraOrganic_DecoyTransmissionDefense</defName>
+        <label>Tok'ra diversion assault</label>
+        <description>A recurring Tok'ra operation in which the colony relays a false signal, draws a Goa'uld-aligned Jaffa force to itself and must defeat or drive off the attackers before they escape with captives or plunder.</description>
+        <debugLabel>diversion assault</debugLabel>
+        <legacyAdapterKey>DecoyTransmissionDefense</legacyAdapterKey>
+        <timing>
+            <offerDurationTicks>120000</offerDurationTicks>
+            <readyDelayTicks>0</readyDelayTicks>
+            <!-- No accepted-state timeout: the hostile response retries until it starts. -->
+            <deadlineTicks>0</deadlineTicks>
+        </timing>
+        <recurrence>
+            <repeatedMissionWeightFactor>0.20</repeatedMissionWeightFactor>
+            <minimumDelayTicks>300000</minimumDelayTicks>
+            <maximumDelayTicks>600000</maximumDelayTicks>
+            <contextWeights>
+                <li><contextKey>TokraTrust.Wary</contextKey><weight>0.15</weight></li>
+                <li><contextKey>TokraTrust.Neutral</contextKey><weight>0.55</weight></li>
+                <li><contextKey>TokraTrust.Cooperative</contextKey><weight>0.85</weight></li>
+                <li><contextKey>TokraTrust.Trusted</contextKey><weight>1.00</weight></li>
+            </contextWeights>
+            <contextDelays>
+                <li><contextKey>TokraTrust.Wary</contextKey><minimumDelayTicks>480000</minimumDelayTicks><maximumDelayTicks>900000</maximumDelayTicks></li>
+                <li><contextKey>TokraTrust.Neutral</contextKey><minimumDelayTicks>360000</minimumDelayTicks><maximumDelayTicks>720000</maximumDelayTicks></li>
+                <li><contextKey>TokraTrust.Cooperative</contextKey><minimumDelayTicks>300000</minimumDelayTicks><maximumDelayTicks>600000</maximumDelayTicks></li>
+                <li><contextKey>TokraTrust.Trusted</contextKey><minimumDelayTicks>240000</minimumDelayTicks><maximumDelayTicks>540000</maximumDelayTicks></li>
+            </contextDelays>
+        </recurrence>
+        <difficulty>
+            <mode>ThreatPointsScaled</mode>
+            <pointsFactor>0.75</pointsFactor>
+            <minimumPoints>180</minimumPoints>
+            <maximumPoints>3000</maximumPoints>
+        </difficulty>
+        <texts>
+            <offerLetterLabelKey>GR_TokraDecoyDefense_OfferLabel</offerLetterLabelKey>
+            <offerLetterTexts>
+                <li><key>GR_TokraDecoyDefense_OfferText1</key><weight>1</weight></li>
+                <li><key>GR_TokraDecoyDefense_OfferText2</key><weight>1</weight></li>
+                <li><key>GR_TokraDecoyDefense_OfferText3</key><weight>1</weight></li>
+            </offerLetterTexts>
+            <offerExpiredMessageKey>GR_TokraDecoyDefense_OfferExpired</offerExpiredMessageKey>
+            <acceptedMessageKey>GR_TokraDecoyDefense_Accepted</acceptedMessageKey>
+            <successLetterLabelKey>GR_TokraDecoyDefense_SuccessLabel</successLetterLabelKey>
+            <failureLetterLabelKey>GR_TokraDecoyDefense_FailureLabel</failureLetterLabelKey>
+            <successLetterTexts>
+                <li><key>GR_TokraDecoyDefense_SuccessText1</key><weight>1</weight></li>
+                <li><key>GR_TokraDecoyDefense_SuccessText2</key><weight>1</weight></li>
+                <li><key>GR_TokraDecoyDefense_SuccessText3</key><weight>1</weight></li>
+            </successLetterTexts>
+            <runtimeTexts>
+                <li><id>failureTimeout</id><key>GR_TokraDecoyDefense_FailureTimeout</key></li>
+                <li><id>failureMapLost</id><key>GR_TokraDecoyDefense_FailureMapLost</key></li>
+                <li><id>failureHostage</id><key>GR_TokraDecoyDefense_FailureHostage</key></li>
+                <li><id>failureLoot</id><key>GR_TokraDecoyDefense_FailureLoot</key></li>
+                <li><id>statusWaiting</id><key>GR_TokraDecoyDefense_StatusWaiting</key></li>
+                <li><id>statusAssault</id><key>GR_TokraDecoyDefense_StatusAssault</key></li>
+            </runtimeTexts>
+        </texts>
+        <actions>
+            <acceptActionKey>GR_TokraDecoyDefense_AcceptAction</acceptActionKey>
+            <offeredStatusKey>GR_TokraDecoyDefense_StatusOffered</offeredStatusKey>
+            <activeStatusKey>GR_TokraDecoyDefense_StatusWaiting</activeStatusKey>
+            <readyStatusKey>GR_TokraDecoyDefense_StatusAssault</readyStatusKey>
+            <successTrustMessageKey>GR_TokraDecoyDefense_TrustSucceeded</successTrustMessageKey>
+            <failureTrustMessageKey>GR_TokraDecoyDefense_TrustFailed</failureTrustMessageKey>
+        </actions>
+        <rewards>
+            <successTrustChange>3</successTrustChange>
+            <failureTrustChange>-2</failureTrustChange>
+        </rewards>
+        <phases>
+            <li>
+                <id>offered</id>
+                <labelKey>GR_MissionFramework_PhaseOffered</labelKey>
+                <transitions>
+                    <li>
+                        <targetPhaseId>accepted</targetPhaseId>
+                        <conditions>
+                            <li><conditionType>OfferAccepted</conditionType></li>
+                        </conditions>
+                    </li>
+                </transitions>
+            </li>
+            <li>
+                <id>accepted</id>
+                <labelKey>GR_MissionFramework_PhaseAccepted</labelKey>
+                <onEnterConsequences>
+                    <li>
+                        <consequenceType>QueueIncident</consequenceType>
+                        <targetDefName>SG1_GoauldJaffaLuredAssault</targetDefName>
+                        <minimumDelayTicks>15000</minimumDelayTicks>
+                        <maximumDelayTicks>30000</maximumDelayTicks>
+                        <retryTicks>2500</retryTicks>
+                    </li>
+                </onEnterConsequences>
+            </li>
+            <li><id>assault</id><labelKey>GR_TokraDecoyDefense_PhaseAssault</labelKey></li>
+            <li><id>succeeded</id><labelKey>GR_MissionFramework_PhaseSucceeded</labelKey><terminal>true</terminal></li>
+            <li><id>failed</id><labelKey>GR_MissionFramework_PhaseFailed</labelKey><terminal>true</terminal></li>
+        </phases>
+    </GateRimSG1.Missions.GateRimMissionDef>
+</Defs>

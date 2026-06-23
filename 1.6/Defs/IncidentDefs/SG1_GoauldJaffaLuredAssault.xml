@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Mission-only Goa'uld/Jaffa response to a Tok'ra diversion signal.
+    A zero storyteller chance prevents natural selection outside the active
+    recurring operation.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldJaffaLuredAssault</defName>
+        <label>Goa'uld force drawn by a Tok'ra diversion</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldJaffaLuredAssault</workerClass>
+        <category>ThreatBig</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0</baseChance>
+        <earliestDay>0</earliestDay>
+        <minRefireDays>0</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+    </IncidentDef>
+</Defs>

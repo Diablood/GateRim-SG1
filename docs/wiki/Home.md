@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.33-dev`
+> Version du mod documentée : `0.3.34-dev`
 
 ## Le mod en bref
 
@@ -55,7 +55,8 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   les nouvelles offres exigent un communicateur joueur alimenté, sans effacer
   les opérations déjà engagées en cas de panne ; observation discrète, analyse de renseignements, accueil médical prolongé
   d'un agent blessé, remise de médicaments à un agent de liaison, appel de
-  détresse et contrat de production livré à un rendez-vous temporaire. Les six opérations lisent leurs
+  détresse, contrat de production livré à un rendez-vous temporaire et assaut
+  de diversion Goa'uld/Jaffa sur la colonie. Les sept opérations lisent leurs
   données de mission depuis XML, tandis que leurs interactions RimWorld
   spécialisées restent en C#. La difficulté capturée lors de l'offre dimensionne
   les patrouilles, les défenseurs du site et certains paramètres médicaux.
@@ -81,7 +82,7 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 
 - un framework réutilisable de missions et questlines, avec rejouabilité, variantes RP et difficulté adaptative ;
 - de nouveaux archétypes d'opérations Tok'ra réellement distincts ;
-- la suite de la progression d'introduction Tok'ra : exiger la recherche dédiée pour construire le communicateur, puis conditionner les opérations récurrentes à un appareil disponible et alimenté ;
+- l'enrichissement progressif du pool d'opérations Tok'ra après l'intégration de la recherche, du communicateur et de leur verrou d'accès ;
 - une refonte visuelle globale, préparée par des concept arts, après la stabilisation des mécaniques et avant la Porte des étoiles ;
 - les futures cultures Asgard, Nox et Unas avec leurs noms et parcours propres ;
 - un storyteller GateRim SG-1 qui orchestre le mod sans rendre ses événements
@@ -102,14 +103,21 @@ délai caché. Le module récupéré peut désormais être analysé en trois ses
 il est non vendable avant décodage, démantelé à la dernière session et remplacé
 automatiquement après un délai caché s'il disparaît prématurément. Cette analyse
 ouvre la recherche **Communications sécurisées Tok'ra** après **Électricité**.
-Seuls le prérequis de construction du communicateur et le verrouillage des
-opérations récurrentes restent à ajouter.
+Depuis `0.3.33-dev`, cette recherche est le prérequis direct de construction
+du communicateur et les nouvelles opérations récurrentes exigent un appareil
+joueur alimenté. Une opération déjà engagée reste toutefois préservée pendant
+une panne, et le retour du canal déclenche un nouveau délai caché plutôt qu'une
+offre immédiate.
 
 ## Orchestration des opérations Tok'ra
 
-La version `0.3.30-dev` étend le planificateur partagé à six opérations tout
+La version `0.3.34-dev` étend le planificateur partagé à sept opérations tout
 en conservant une seule occurrence active, le filtrage avant tirage pondéré,
 les délais cachés après chaque résultat et la persistance après sauvegarde.
+Le nouvel assaut de diversion relaie un faux signal sans placer d'objet sur la
+carte, puis attire une force Goa'uld/Jaffa dimensionnée par les points de menace
+capturés lors de l'offre. Les assaillants cherchent à percer les fortifications ;
+la colonie doit les neutraliser ou les chasser sans perdre de captif ni de butin.
 
 L'appel de détresse crée un site mondial temporaire dont la situation réelle
 n'est révélée qu'à l'arrivée de la caravane. RimWorld gère l'entrée, la pause et

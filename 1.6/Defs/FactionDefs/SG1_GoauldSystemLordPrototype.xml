@@ -124,6 +124,21 @@
                     <SG1_GoauldJaffaGuard>1</SG1_GoauldJaffaGuard>
                 </options>
             </li>
+            <!--
+            Mission-only group selected explicitly by the Tok'ra diversion
+            assault. The vanilla breaching strategy requires at least one
+            PawnKindDef marked isGoodBreacher and increases that requirement
+            with raid points.
+            -->
+            <li>
+                <kindDef>SG1_TokraDiversionAssault</kindDef>
+                <commonality>1</commonality>
+                <options>
+                    <SG1_GoauldJaffaWarrior>4</SG1_GoauldJaffaWarrior>
+                    <SG1_GoauldJaffaGuard>1</SG1_GoauldJaffaGuard>
+                    <SG1_GoauldJaffaBreacher>1</SG1_GoauldJaffaBreacher>
+                </options>
+            </li>
             <li>
                 <kindDef>Settlement</kindDef>
                 <commonality>1</commonality>

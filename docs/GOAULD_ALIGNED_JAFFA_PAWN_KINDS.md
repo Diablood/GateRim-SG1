@@ -30,6 +30,18 @@ automatic Goa'uld-domain forehead mark
 Free Jaffa use separate PawnKindDefs since `0.2.2-dev` and intentionally
 remain without an automatic forehead mark.
 
+## Mission-only breacher (`0.3.34-dev`)
+
+The Tok'ra diversion assault adds `SG1_GoauldJaffaBreacher` as a specialized
+child of `SG1_GoauldJaffaWarriorBase`. It is marked `canBeSapper` and
+`isGoodBreacher`, keeps the inherited Ma'Tok-only weapon tag and is limited to
+four pawns per generated group.
+
+This pawn kind appears only in the explicit `SG1_TokraDiversionAssault`
+pawn-group kind. The normal `Combat` and `Settlement` profiles remain
+unchanged, so ordinary Goa'uld raids and domain populations do not gain the
+specialized breacher.
+
 ## Manual test checklist
 
 1. Start RimWorld with developer mode enabled and verify that no new XML

@@ -106,6 +106,10 @@ namespace GateRimSG1.Goauld
                     "accelerated",
                     "succeeded",
                     "QueueIncident");
+            GateRimMissionConsequenceDef decoyRaidConsequence
+                = missionDef.GetPhaseConsequence(
+                    "accepted",
+                    "QueueIncident");
             GateRimMissionSkillXpRewardDef skillReward
                 = missionDef.rewards?.skillXpRewards?.FirstOrDefault(
                     item => item != null
@@ -199,6 +203,14 @@ namespace GateRimSG1.Goauld
                 = handoffDelivery?.skillDefName;
             MedicalSupplyRequiredCount
                 = handoffDelivery?.requiredCount ?? 0;
+            DecoyRaidIncidentDefName
+                = decoyRaidConsequence?.targetDefName;
+            DecoyRaidDelayMinimumTicks
+                = decoyRaidConsequence?.minimumDelayTicks ?? 0;
+            DecoyRaidDelayMaximumTicks
+                = decoyRaidConsequence?.maximumDelayTicks ?? 0;
+            DecoyRaidRetryTicks
+                = decoyRaidConsequence?.retryTicks ?? 0;
         }
 
         public TokraOrganicOperationArchetype Archetype { get; }
@@ -270,6 +282,10 @@ namespace GateRimSG1.Goauld
         public string MedicalSupplyDialogueJobDefName { get; }
         public string MedicalSupplySkillDefName { get; }
         public int MedicalSupplyRequiredCount { get; }
+        public string DecoyRaidIncidentDefName { get; }
+        public int DecoyRaidDelayMinimumTicks { get; }
+        public int DecoyRaidDelayMaximumTicks { get; }
+        public int DecoyRaidRetryTicks { get; }
 
         public bool HasPhysicalObjective => !string.IsNullOrEmpty(
             ObjectiveThingDefName);
@@ -1452,6 +1468,154 @@ namespace GateRimSG1.Goauld
             return missing.Count == 0;
         }
 
+
+        public bool HasCompleteDecoyTransmissionDefenseConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks != 0)
+            {
+                missing.Add("zero accepted-state deadline");
+            }
+
+            if (DecoyRaidDelayMinimumTicks <= 0
+                || DecoyRaidDelayMaximumTicks
+                    < DecoyRaidDelayMinimumTicks)
+            {
+                missing.Add("valid raid delay range");
+            }
+
+            if (DecoyRaidRetryTicks <= 0)
+            {
+                missing.Add("raid retry delay");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "waiting status", missing);
+            Require(ReadyStatusKey, "assault status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(
+                DecoyRaidIncidentDefName,
+                "Goa'uld assault incident",
+                missing);
+
+            if (!string.IsNullOrWhiteSpace(ObjectiveThingDefName))
+            {
+                missing.Add("no physical objectiveThingDef");
+            }
+
+            string[] runtimeTextIds =
+            {
+                "failureTimeout",
+                "failureMapLost",
+                "failureHostage",
+                "failureLoot",
+                "statusWaiting",
+                "statusAssault"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            if (MissionDef?.texts?.successLetterTexts == null
+                || MissionDef.texts.successLetterTexts.Count < 2)
+            {
+                missing.Add("success letter text variants");
+            }
+
+            if (MissionDef?.texts?.offerLetterTexts == null
+                || MissionDef.texts.offerLetterTexts.Count < 2)
+            {
+                missing.Add("offer letter text variants");
+            }
+
+            IncidentDef incidentDef = string.IsNullOrWhiteSpace(
+                    DecoyRaidIncidentDefName)
+                ? null
+                : DefDatabase<IncidentDef>.GetNamedSilentFail(
+                    DecoyRaidIncidentDefName);
+
+            if (incidentDef == null || incidentDef.category == null)
+            {
+                missing.Add("known categorized assault IncidentDef");
+            }
+
+            RaidStrategyDef breachStrategy
+                = DefDatabase<RaidStrategyDef>.GetNamedSilentFail(
+                    "SG1_GoauldJaffaLuredBreachingAssault");
+
+            if (breachStrategy == null || breachStrategy.Worker == null)
+            {
+                missing.Add("known breaching RaidStrategyDef");
+            }
+
+            PawnGroupKindDef assaultGroupKind
+                = DefDatabase<PawnGroupKindDef>.GetNamedSilentFail(
+                    "SG1_TokraDiversionAssault");
+            FactionDef factionDef
+                = GR_DefOf.SG1_GoauldSystemLordPrototype;
+            PawnGroupMaker assaultGroupMaker
+                = factionDef?.pawnGroupMakers?.FirstOrDefault(
+                    groupMaker => groupMaker != null
+                        && groupMaker.kindDef == assaultGroupKind);
+
+            if (assaultGroupKind == null
+                || assaultGroupKind.Worker == null)
+            {
+                missing.Add("known diversion assault PawnGroupKindDef");
+            }
+            else if (assaultGroupMaker == null)
+            {
+                missing.Add("Goa'uld diversion assault pawn group maker");
+            }
+            else if (assaultGroupMaker.options == null
+                || !assaultGroupMaker.options.Any(
+                    option => option != null
+                        && option.kind != null
+                        && option.kind.isGoodBreacher
+                        && option.kind.weaponTags != null
+                        && option.kind.weaponTags.Contains(
+                            "SG1_MatokStaff")))
+            {
+                missing.Add("Ma'Tok-equipped Jaffa breacher PawnKindDef");
+            }
+
+            if (MissionDef?.difficulty == null
+                || MissionDef.difficulty.mode
+                    != GateRimMissionDifficultyMode.ThreatPointsScaled
+                || MissionDef.difficulty.pointsFactor <= 0f
+                || MissionDef.difficulty.minimumPoints <= 0f
+                || MissionDef.difficulty.maximumPoints
+                    < MissionDef.difficulty.minimumPoints)
+            {
+                missing.Add("scaled threat-point difficulty bounds");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
         public bool HasCompleteIntelligenceConfiguration(
             out string error)
         {
@@ -1853,6 +2017,8 @@ namespace GateRimSG1.Goauld
             = "SG1_TokraOrganic_DistressCall";
         private const string TemporaryBaseDeliveryMissionDefName
             = "SG1_TokraOrganic_TemporaryBaseDelivery";
+        private const string DecoyTransmissionDefenseMissionDefName
+            = "SG1_TokraOrganic_DecoyTransmissionDefense";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
@@ -1878,6 +2044,12 @@ namespace GateRimSG1.Goauld
         private static TokraOrganicOperationDefinition
             cachedTemporaryBaseDeliveryDefinition;
         private static bool temporaryBaseDeliveryConfigurationErrorLogged;
+        private static GateRimMissionDef
+            cachedDecoyTransmissionDefenseMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedDecoyTransmissionDefenseDefinition;
+        private static bool
+            decoyTransmissionDefenseConfigurationErrorLogged;
 
         public static IEnumerable<TokraOrganicOperationDefinition>
             AllDefinitions
@@ -1931,6 +2103,14 @@ namespace GateRimSG1.Goauld
                 {
                     yield return temporaryBaseDelivery;
                 }
+
+                TokraOrganicOperationDefinition decoyTransmissionDefense
+                    = ResolveDecoyTransmissionDefenseDefinition();
+
+                if (decoyTransmissionDefense != null)
+                {
+                    yield return decoyTransmissionDefense;
+                }
             }
         }
 
@@ -1977,6 +2157,13 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.TemporaryBaseDelivery)
             {
                 definition = ResolveTemporaryBaseDeliveryDefinition();
+                return definition != null;
+            }
+
+            if (archetype
+                == TokraOrganicOperationArchetype.DecoyTransmissionDefense)
+            {
+                definition = ResolveDecoyTransmissionDefenseDefinition();
                 return definition != null;
             }
 
@@ -2236,6 +2423,64 @@ namespace GateRimSG1.Goauld
             }
 
             return cachedTemporaryBaseDeliveryDefinition;
+        }
+
+
+        private static TokraOrganicOperationDefinition
+            ResolveDecoyTransmissionDefenseDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    DecoyTransmissionDefenseMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogDecoyTransmissionDefenseConfigurationError(
+                    "required MissionDef "
+                    + DecoyTransmissionDefenseMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedDecoyTransmissionDefenseDefinition == null
+                || cachedDecoyTransmissionDefenseMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype
+                            .DecoyTransmissionDefense,
+                        missionDef);
+                string error;
+
+                if (!definition
+                    .HasCompleteDecoyTransmissionDefenseConfiguration(
+                        out error))
+                {
+                    LogDecoyTransmissionDefenseConfigurationError(
+                        DecoyTransmissionDefenseMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedDecoyTransmissionDefenseMissionDef = missionDef;
+                cachedDecoyTransmissionDefenseDefinition = definition;
+            }
+
+            return cachedDecoyTransmissionDefenseDefinition;
+        }
+
+        private static void LogDecoyTransmissionDefenseConfigurationError(
+            string detail)
+        {
+            if (decoyTransmissionDefenseConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            decoyTransmissionDefenseConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra diversion assault "
+                + "operation disabled: " + detail + ".");
         }
 
         private static void LogTemporaryBaseDeliveryConfigurationError(

@@ -1,49 +1,66 @@
 # Project state
 
-Current milestone: `0.3.33-dev - Gate Tok'ra operations behind the communicator` — validated locally after revision `r2` and published under the unique tag `v0.3.33-dev`.
+Current milestone: `0.3.34-dev - Add Tok'ra diversion assault operation` — completed and published under final tag `v0.3.34-dev` after local revision `r3` validation.
 
 ## Published state
 
-- Starting tag: `v0.3.32-dev`.
-- Dedicated branch: `feature/tokra-communicator-operation-gating`.
-- Final local revision: `0.3.33-dev-r2`.
-- Assembly version: `0.3.33.0`.
-- Mod metadata version: `0.3.33-dev`.
+- Starting tag: `v0.3.33-dev`.
+- Dedicated branch: `feature/tokra-decoy-transmission-defense`.
+- Final local revision: `0.3.34-dev-r3`.
+- Published tag: `v0.3.34-dev`.
+- Assembly version validated: `0.3.34.0`.
+- Mod metadata version: `0.3.34-dev`.
 - Cultural backstory count remains `83`.
+- Main GitHub repository and separate wiki are published from the final milestone state.
 
-## Delivered behavior
+## Implemented scope
 
-- `SG1_TokraSecureCommunications` replaces vanilla `MicroelectronicsBasics` as the direct construction prerequisite of the Tok'ra secure communicator.
-- Existing communicators remain compatible with older saves; research completion gates new construction only.
-- `TokraSecureCommunicatorAvailabilityUtility` is the common service for detecting a player-controlled, correctly configured and powered communicator on a player home map.
-- Every new recurrent Tok'ra offer requires at least one available communicator.
-- The unique introduction-artifact mission remains independent and can still begin before the communicator exists.
-- Losing power or destroying the building never clears an operation already offered, accepted, ready or active.
-- The blocked planner state persists through save/reload.
-- When a valid channel returns, an overdue check is replaced with a fresh hidden recurrence delay based on the current trust tier and previous archetype, preventing an immediate guaranteed offer.
-- Natural selection, specific force-offer actions and map selection use the same availability service.
-- Developer reports expose communicator availability, gate state and the next hidden opportunity tick without revealing those values in normal play.
+- Keep `SG1_TokraOrganic_DecoyTransmissionDefense` and the stable `DecoyTransmissionDefense` archetype value to avoid renumbering persisted development data.
+- Present the operation as a false Tok'ra signal followed by an unavoidable Goa'uld/Jaffa assault, with no delivered device or map objective.
+- Use the mission-only raid strategy `SG1_GoauldJaffaLuredBreachingAssault`.
+- Add the mission-only pawn-group kind `SG1_TokraDiversionAssault` and select it explicitly through `IncidentParms.pawnGroupKind`.
+- Add `SG1_GoauldJaffaBreacher`, marked as a valid sapper and good breacher, restricted to this mission group and equipped through the inherited Ma'Tok-only weapon tag.
+- Keep ordinary Goa'uld `Combat` and `Settlement` groups unchanged.
+- Validate at configuration time that the mission group exists and contains a Ma'Tok-equipped good breacher; disable the operation cleanly if that contract is broken.
+- Register the exact spawned mission raiders and expose the number of registered breachers in the shared framework-state report.
+- Resolve success after neutralization or empty-handed retreat; resolve failure when an attacker exits with a hostage or loot, or when the player map is lost.
+- Preserve the offer-time threat snapshot with factor `0.75` and bounds `180–3000`.
+- Keep the operation recurrent, communicator-gated and integrated into the shared seven-archetype planner.
 
 ## Validation completed
 
-- Revision `r1` validated the research prerequisite, compatibility of existing buildings, powered and unpowered states, the shared availability report and save/reload.
-- Revision `r2` validated that no new recurrent offer appears without a powered communicator and that this blocked state survives save/reload.
-- Restoring a valid communicator schedules one fresh hidden delay in the future instead of immediately releasing an overdue offer.
-- `Tok'ra ops: roll next natural offer` still produces one normal weighted offer after the channel returns.
-- An offer already occupying the active slot remains unchanged through power loss or building destruction, including save/reload.
-- Specific force-offer actions do not bypass the communicator gate.
-- No additional failure, refusal, trust consequence, duplicate letter or active-slot replacement was observed during the focused tests.
-- The final RP pass found no new player-facing wording requiring correction; the new diagnostic labels remain restricted to developer tools.
-- Project consistency, forced rebuild and focused in-game validation completed without a new GateRim SG-1 error being reported.
+- Project consistency check passed for `0.3.34-dev`, assembly `0.3.34.0` and `83` unique backstories.
+- Forced rebuild `0.3.34.0` completed successfully.
+- The operation remained enabled with no missing-group or missing-breacher configuration error.
+- The dedicated raid generated once at its configured threat budget instead of falling back near `104999` points.
+- The framework report showed registered raiders and at least one registered breacher.
+- A spawned `Goa'uld Jaffa breacher` / `sapeur Jaffa au service des Goa'uld` carried a Ma'Tok.
+- The breach group attacked walls or closed access routes on a sealed colony.
+- Save/reload during the assault preserved the registered force without creating a second raid.
+- Victory by combat resolved once, granted `+3` Tok'ra trust once and released the organic-operation slot.
+- The former `MinimumPoints`, missing required pawn-kind and unusable `PawnGroupMaker` errors no longer appeared in `Player.log`.
 
-## Durable boundaries
+The optional hostage, loot, map-loss, empty-handed retreat, weak/advanced-colony scaling and full previous-operation regression paths were not rerun during the final focused r3 pass. They remain explicit durable regression coverage in `docs/TESTING.md` and must be revisited when this operation or the shared raid framework changes.
 
-- Research completion does not disable an already-built communicator.
-- A temporary outage does not pause or rewrite deadlines already owned by an active operation.
-- Any valid powered communicator on any player home map can reopen the recurrent channel.
-- Manual communicator requests keep their own trust and cooldown rules and remain outside the recurrent planner.
-- The storyteller remains interchangeable: the communicator gates access to recurrent Tok'ra operations, not their compatibility with vanilla or modded storytellers.
+## Files removed from r1
 
-## Next milestone
+The five rejected transmitter-prototype files were removed before r2 and remain absent from the published state:
 
-Do not continue development on the published `0.3.33-dev` branch. Before opening the next milestone, read `docs/ROADMAP.md`, select one focused and testable backlog item, then create a dedicated branch from `v0.3.33-dev`. No `0.3.34-dev` scope has been selected by this closure document.
+- `1.6/Defs/ThingDefs_Buildings/SG1_TokraDecoyTransmitter.xml`;
+- `Languages/French/DefInjected/ThingDef/SG1_TokraDecoyTransmitter.xml`;
+- `Source/GateRimSG1/Goauld/TokraDecoyTransmissionDefenseUtility.cs`;
+- `docs/TOKRA_DECOY_TRANSMISSION_DEFENSE.md`;
+- `docs/wiki/Tokra-Decoy-Transmission-Defense.md`.
+
+No texture file was added or removed for the abandoned transmitter prototype. Revision r3 required no additional file deletion.
+
+## Deliberate limits
+
+- No definitive texture, explosive item or new mission object is added.
+- The existing Ma'Tok structural-impact behavior supplies the breacher's wall-damaging weapon.
+- The dedicated breacher is not added to normal storyteller Goa'uld raids.
+- Accepted r1 transmitter development saves remain intentionally unsupported; r2 assault saves remain compatible with r3.
+
+## Next step
+
+Choose the next milestone after re-reading `docs/ROADMAP.md`, then create a dedicated branch explicitly from `v0.3.34-dev`. Re-read `docs/MILESTONE_PUBLICATION.md` before the next publication sequence.

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Mission-only breaching assault. The zero selection curve prevents this
+    strategy from entering normal storyteller raid selection. The dedicated
+    pawn group supplies Ma'Tok breachers while the vanilla worker supplies
+    breach targeting and assault behavior.
+    -->
+    <RaidStrategyDef>
+        <defName>SG1_GoauldJaffaLuredBreachingAssault</defName>
+        <workerClass>RimWorld.RaidStrategyWorker_ImmediateAttackBreaching</workerClass>
+        <selectionWeightPerPointsCurve>
+            <points>
+                <li>(0, 0)</li>
+                <li>(10000, 0)</li>
+            </points>
+        </selectionWeightPerPointsCurve>
+        <arriveModes>
+            <li>EdgeWalkIn</li>
+        </arriveModes>
+        <arrivalTextEnemy>A Goa'uld-aligned Jaffa force has followed the false Tok'ra signal to your colony. Their breach team is advancing with the assault and will force a path through fortifications rather than wait outside.</arrivalTextEnemy>
+        <arrivalTextFriendly>A Goa'uld-aligned Jaffa force has followed the false Tok'ra signal.</arrivalTextFriendly>
+        <letterLabelEnemy>Goa'uld force drawn to the colony</letterLabelEnemy>
+        <letterLabelFriendly>Goa'uld force drawn to the colony</letterLabelFriendly>
+    </RaidStrategyDef>
+</Defs>

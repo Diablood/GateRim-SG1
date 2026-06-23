@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; five legacy Tok'ra operations integrated through `0.3.29-dev`; sixth craft-and-deliver adapter under validation in `0.3.30-dev-r1`.
+Status: foundation published in `0.3.23-dev`; six recurrent Tok'ra operations integrated through `0.3.30-dev`; seventh diversion-assault adapter refactored without a physical objective and supplied with a dedicated breaching pawn group for validation in `0.3.34-dev-r3`.
 
 ## Purpose
 

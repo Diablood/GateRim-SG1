@@ -66,6 +66,7 @@ were removed in `0.2.1-dev-r1`. Their valid RimWorld 1.6 replacements,
 ```text
 Combat
 Settlement
+SG1_TokraDiversionAssault (mission-only)
 ```
 
 The `Combat` profile remains Jaffa-only:
@@ -89,6 +90,12 @@ hosts while keeping the caste minoritarian.
 
 Direct raids therefore remain Jaffa-only while visited domains reliably
 contain persistent Goa'uld hosts.
+
+Since `0.3.34-dev`, the mission-only `SG1_TokraDiversionAssault` profile adds
+`SG1_GoauldJaffaBreacher` beside the standard warrior and guard. The diversion
+incident selects this group explicitly because RimWorld's immediate-breaching
+strategy requires a pawn kind marked `isGoodBreacher`. Normal incidents still
+request `Combat`, so this profile does not alter ordinary raid composition.
 
 ## Goa'uld System Lord leader
 

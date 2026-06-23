@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.34-dev - Add Tok'ra diversion assault operation
+
+- Add `SG1_TokraOrganic_DecoyTransmissionDefense` as the seventh recurrent MissionDef-backed Tok'ra operation while retaining its stable internal r1 identifier for save compatibility.
+- Replace the rejected physical-transmitter prototype with a false signal emitted through the secure communicator; no mission object is delivered or placed.
+- Queue one dedicated Goa'uld/Jaffa assault after a hidden XML-configured delay.
+- Use a mission-only immediate breaching strategy so the attackers force paths through fortifications instead of waiting outside a sealed colony.
+- Add the mission-only pawn-group kind `SG1_TokraDiversionAssault` and select it explicitly instead of passing the normal Goa'uld `Combat` group to the breaching strategy.
+- Add `SG1_GoauldJaffaBreacher`, a Ma'Tok-equipped good breacher and sapper isolated from ordinary Goa'uld raids.
+- Validate the custom group and required breacher at configuration time so an invalid future setup disables the operation instead of producing the vanilla `99999`-point fallback.
+- Allow kidnapping and stealing, disable ordinary raid-timeout withdrawal and resolve victory when the registered force is dead, downed or retreating empty-handed.
+- Resolve failure when a registered attacker reaches the map edge with a player pawn or stolen item, or when the player map is lost.
+- Capture threat points when the offer is created, scale them by `0.75` and clamp the assault between `180` and `3000` points.
+- Persist the assault due tick, triggered state, exact raider ThingIDs and extraction diagnostics in the generic mission runtime without new game-component fields.
+- Add three offer variants, three success variants and complete English/French runtime text.
+- Add targeted debug actions and expose assault state, registered raiders, registered breachers, active raiders and extracted cargo in the shared framework-state report.
+- Remove the obsolete r1 transmitter ThingDef, its French DefInjected translation, its specialized utility and the superseded technical/wiki pages. No texture file requires deletion.
+- Raise the orchestration audit requirement to seven resolved definitions.
+- Keep assembly version `0.3.34.0` and mod metadata version `0.3.34-dev`.
+- Load local revision `r2`, identify the failed raid-generation contract caused by the absence of an `isGoodBreacher` pawn in the selected group, and preserve the active operation for retry.
+- Validate final local revision `r3`, including the dedicated breach group, Ma'Tok-equipped sapper, sealed-colony wall attack, save/reload anti-duplication, combat victory and a clean final `Player.log`.
+- Publish branch `feature/tokra-decoy-transmission-defense`, final tag `v0.3.34-dev` and the synchronized wiki.
+
 ## 0.3.33-dev - Gate Tok'ra operations behind the communicator
 
 - Require `SG1_TokraSecureCommunications` instead of vanilla `MicroelectronicsBasics` to construct the Tok'ra secure communicator.
