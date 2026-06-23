@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.32-dev - Add Tok'ra cipher-module study and research
+
+- Start the milestone from final tag `v0.3.31-dev` on `feature/tokra-artifact-study-research`.
+- Add a three-session analysis interaction to the exact cipher module recovered by the introduction mission.
+- Reuse RimWorld Biotech's analyzable-item, research-bench hauling and persistent `AnalysisManager` systems.
+- Reject separately spawned copies and require the genuine module to be on a player home map.
+- Keep the physical module non-tradeable, preserve it through the first two sessions and dismantle it during the final analysis pass.
+- Add `SG1_TokraSecureCommunications` to the GateRim SG-1 research tab.
+- Require both completed module analysis and vanilla `Electricity` before formal research can start.
+- Add bilingual inspection, progress letters, completion text and developer diagnostics.
+- Replace a lost tracked module after a hidden `2–8` day delay without resetting analysis progress.
+- Reconcile custom starters, edited saves and developer actions where secure-communications research is already complete, closing the introduction arc without generating an obsolete object.
+- Make the introduction recovery debug action complete the arc and provide the genuine module whenever analysis is still required.
+- Keep communicator construction and recurrent-operation gating for later milestones.
+- Raise assembly version to `0.3.32.0` and mod metadata version to `0.3.32-dev`.
+- Validate local revision `r1` for the normal study flow, exact-object identity, persistence and research lock.
+- Validate local revision `r2` for final dismantling, non-tradeability, automatic delayed replacement, preserved progress and advanced-state reconciliation.
+- Publish branch `feature/tokra-artifact-study-research`, final tag `v0.3.32-dev` and the synchronized wiki.
+
 ## 0.3.31-dev - Add Tok'ra introduction artifact mission
 
 - Start the milestone from final tag `v0.3.30-dev` on `feature/tokra-introduction-artifact-mission`.

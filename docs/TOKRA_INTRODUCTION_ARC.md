@@ -4,7 +4,7 @@
 
 The introduction arc establishes first contact before the Tok'ra communicator exists. It is not one of the recurrent organic operations and does not use their single active slot.
 
-The arc provides a physical Tok'ra cipher module. Later milestones may require that artifact for a dedicated study or research step, then require that research to construct the communicator and unlock recurrent Tok'ra operations.
+The arc provides a physical Tok'ra cipher module. Milestone `0.3.32-dev` adds direct study of that exact artifact and a dedicated secure-communications research project. Later milestones will require that research to construct the communicator and unlock recurrent Tok'ra operations.
 
 ## Uniqueness rule
 
@@ -93,6 +93,26 @@ Accepted-attempt failures use the hidden `7–45` day retry range. The final war
 
 A save created with revision `r1` in its synthetic `Active` state has no real world site. Revision `r2` migrates that state into a failed-attempt retry so the arc cannot remain permanently blocked.
 
+## Cipher-module study and research
+
+After permanent introduction success, the exact tracked module can be analyzed on a player home map. The implementation reuses Biotech's vanilla analyzable-item flow:
+
+- a selected colon carries the module to a reachable usable research bench;
+- three analysis sessions are required, each configured for `1.2` work hours before Research Speed modifiers;
+- progress is stored in RimWorld's `AnalysisManager` and survives save/reload;
+- the first two sessions preserve the device, while the final pass dismantles it after the recognition lattice has been decoded;
+- the module is never tradeable, so the player cannot accidentally sell the only progression object;
+- the `ThingID` stored by the introduction arc is checked before every interaction and completion;
+- another `SG1_TokraIntroductionArtifact` created through debug or another source cannot satisfy the requirement.
+
+The research project `SG1_TokraSecureCommunications` appears in the GateRim SG-1 tab. It requires both vanilla `Electricity` and completed analysis of the module. Research progress then uses the normal RimWorld research manager. Communicator construction and recurrent-operation gating remain separate follow-up milestones.
+
+A completed introduction arc must never become a dead end. If the tracked module disappears before analysis is complete, the component records a hidden `2–8` day replacement delay. Once due and a player home map exists, a concealed Tok'ra courier deposits one new tracked module and sends one RP letter. If the original module reappears before the delay ends, the replacement is cancelled. Analysis progress is preserved.
+
+Research completion is authoritative. At load and during periodic reconciliation, an already completed `SG1_TokraSecureCommunications` project automatically satisfies the analysis requirement, closes any pending introduction offer or site, consumes any tracked module and prevents all future introduction offers or replacement objects. This covers custom starters, edited scenarios and developer-mode research completion.
+
+Developer completion follows the same rules. `Tok'ra intro: recover key artifact` can close the introduction arc and create the genuine analyzable module even when no active attempt exists; if analysis or research is already satisfied, it closes the arc without creating an obsolete object.
+
 ## Separation from recurrent operations
 
 The recurrent Tok'ra orchestrator resolves six named MissionDefs through `TokraOrganicOperationFramework`. The introduction MissionDef is not added to that registry or to `TokraOrganicOperationArchetype`.
@@ -115,17 +135,23 @@ All actions are under `Debug actions menu → GateRim SG-1`:
 - `Tok'ra intro: recover key artifact`
 - `Tok'ra intro: show state`
 - `Tok'ra intro: reset arc`
+- `Tok'ra study: show state`
+- `Tok'ra study: finish module analysis`
+- `Tok'ra study: destroy tracked module`
+- `Tok'ra study: make replacement due`
+- `Tok'ra study: reset module analysis`
 
 The exact focused protocol is maintained in `docs/TESTING_CURRENT.md`.
 
 ## Validation and deferred implementation
 
-Final local revision `r3` validates the persistent arc, natural choice letter, world site, moderate adaptive guard, exact artifact identity, vanilla loot and reformation, final warning, real failure paths, retries and permanent completion. The final player-text review required no additional functional rewrite.
+Final local revision `r3` of `0.3.31-dev` validates the persistent introduction arc, natural choice letter, world site, moderate adaptive guard, exact artifact identity, vanilla loot and reformation, final warning, real failure paths, retries and permanent completion.
+
+Final local revision `r2` of `0.3.32-dev` validates the normal three-session study flow, exact-object identity, persistence, research lock, final dismantling, automatic delayed replacement after loss, preserved progress, developer-state reconciliation and automatic satisfaction when secure-communications research is already complete. The milestone is published under final tag `v0.3.32-dev`.
 
 The following remain later work:
 
 - final scene dressing and a dedicated artifact texture;
 - broader balance passes across more colony wealth and storyteller combinations;
-- artifact study and dedicated Tok'ra research;
 - communicator construction prerequisites;
 - gating recurrent operations behind an available powered communicator.

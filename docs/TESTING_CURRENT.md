@@ -1,54 +1,56 @@
-# Current validation — 0.3.31-dev
+# Current validation — 0.3.32-dev
 
-Jalon : `0.3.31-dev - Add Tok'ra introduction artifact mission`
-Version de DLL validée : `0.3.31.0`
-Dernière révision locale validée : `r3`
-Branche publiée : `feature/tokra-introduction-artifact-mission`
-Tag final : `v0.3.31-dev`
-Base : `v0.3.30-dev`
+Jalon : `0.3.32-dev - Add Tok'ra cipher-module study and research`
+Version de DLL validée : `0.3.32.0`
+Dernière révision locale validée : `r2`
+Branche publiée : `feature/tokra-artifact-study-research`
+Tag final : `v0.3.32-dev`
+Base : `v0.3.31-dev`
 
 ## Résultat final
 
-Le jalon est validé localement et prêt pour son état publié définitif. Les correctifs consolidés de `r2` font partie de la base finale ; aucun suffixe `-rN` ne doit apparaître dans le commit ou le tag.
+Le contrôle de cohérence, le build local et les tests ciblés en jeu sont validés. Le jalon est clôturé et publié sous le tag final unique `v0.3.32-dev`.
 
-Couverture confirmée :
+## Couverture validée
 
-- état persistant de l'arc et première opportunité cachée `4–12` jours ;
-- lettre à choix persistante avec acceptation et refus ;
-- retour après refus, offre ignorée ou expiration dans `10–60` jours ;
-- création du site uniquement après acceptation ;
-- trajet et arrivée de caravane vanilla ;
-- menace capturée à l'offre et garde introductive bornée à `2–6` défenseurs ;
-- module physique exact suivi par son identité persistante ;
-- combat, sélection du butin et reformation vanilla ;
-- réussite uniquement lorsque le vrai module rejoint le joueur ;
-- avertissement unique environ un jour avant l'échéance ;
-- expiration réelle du site et destruction réelle du module ;
-- nouveau délai `7–45` jours après une tentative acceptée échouée ;
-- sauvegarde/rechargement pendant l'attente, l'offre, le site actif, la carte hostile, l'avertissement, l'échec et la réussite ;
-- absence de second module, seconde offre, second résultat ou verrou prématuré ;
-- fermeture permanente uniquement après la première récupération réussie ;
-- séparation complète avec les six opérations récurrentes du communicateur.
+- trois sessions d'analyse au banc de recherche sur le véritable module suivi ;
+- progression `0/3` à `3/3` conservée après sauvegarde/rechargement ;
+- refus d'une copie créée séparément avec le même `ThingDef` ;
+- module absent des dialogues de commerce tant que l'analyse est incomplète ;
+- conservation du module pendant les deux premières sessions ;
+- démantèlement physique pendant la troisième session ;
+- état d'analyse conservé après disparition de l'objet ;
+- recherche `Communications sécurisées Tok'ra` verrouillée par l'analyse et par `Électricité` ;
+- remplacement automatique d'un module perdu après un délai caché de `2–8` jours ;
+- progression déjà acquise conservée par le module de remplacement ;
+- un seul remplacement et une seule lettre après sauvegarde/rechargement ;
+- annulation du remplacement si le module original réapparaît avant l'échéance ;
+- validation développeur cohérente de la mission d'introduction avec création du véritable module lorsque nécessaire ;
+- recherche déjà terminée considérée comme autoritaire pour les scénarios personnalisés, starters, sauvegardes modifiées et outils développeur ;
+- fermeture automatique de l'arc, analyse satisfaite et absence d'objet inutile dans ces états avancés ;
+- communicateur existant et six opérations Tok'ra récurrentes inchangés ;
+- absence de nouvelle erreur de chargement, recherche, travail ou traduction constatée pendant les tests.
 
-## Passe éditoriale finale
+## Précision sur le remplacement
 
-Les lettres, actions, messages, statuts et descriptions visibles ont été relus. Leur formulation reste narrative et compréhensible ; les informations techniques demeurent dans les outils développeur et les documents internes. Aucun changement fonctionnel de texte n'a été nécessaire après la validation `r3`.
+La récupération après perte fonctionne automatiquement. Après détection de l'absence du module, le système programme et persiste une échéance aléatoire de `2–8` jours en jeu. L'action développeur `Tok'ra study: make replacement due` sert uniquement à accélérer ce délai pendant les tests.
 
-## Limites connues et suivi futur
+## Régressions durables
 
-- La texture du module reste provisoire jusqu'à la passe visuelle globale.
-- Le profil `0,35`, `180–650` points et `2–6` défenseurs est fonctionnel et volontairement modéré. Un équilibrage prolongé sur davantage de richesses et de storytellers pourra encore ajuster ces valeurs.
-- L'étude du module, la recherche Tok'ra dédiée, les prérequis du communicateur et le verrouillage des opérations récurrentes appartiennent aux jalons suivants.
+- toujours vérifier le `ThingID` suivi plutôt que le seul `ThingDef` ;
+- ne jamais rendre le module vendable avant la fin de l'analyse ;
+- ne pas laisser le module physique survivre à la troisième session ;
+- ne jamais réinitialiser les sessions déjà terminées lors d'un remplacement ;
+- ne générer qu'un seul module de remplacement et annuler son échéance si l'original réapparaît ;
+- ne jamais générer d'offre, de site ou de module lorsque `SG1_TokraSecureCommunications` est déjà terminée ;
+- conserver la réconciliation au chargement pour les starters, scénarios personnalisés et sauvegardes modifiées ;
+- revalider tout ce flux lors de l'ajout du prérequis de construction du communicateur et du verrouillage des opérations récurrentes.
 
-## Contrôle final de publication
+## Outils développeur conservés
 
-Depuis la racine du dépôt :
-
-```powershell
-./tools/check-project-consistency.cmd
-
-./build.cmd `
-    "D:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed"
-```
-
-Après le rebuild final, vérifier une dernière fois l'absence d'erreur nouvelle dans `Player.log`, puis suivre `docs/MILESTONE_PUBLICATION.md` pour le commit, le tag et la synchronisation du wiki.
+- `Tok'ra study: show state`
+- `Tok'ra study: finish module analysis`
+- `Tok'ra study: destroy tracked module`
+- `Tok'ra study: make replacement due`
+- `Tok'ra study: reset module analysis`
+- `Tok'ra intro: recover key artifact`

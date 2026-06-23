@@ -11,4 +11,7 @@
 
     <SG1_GoauldBiotechnology.label>Biotechnologies Goa'uld</SG1_GoauldBiotechnology.label>
     <SG1_GoauldBiotechnology.description>Adapter les techniques pharmaceutiques et biologiques à l'exploitation des matières symbiotiques Goa'uld, à la préparation de trétonine et à la construction de bassins spécialisés pour les Prim'ta. Les doses et larves déjà obtenues restent utilisables avant la fin de cette recherche.</SG1_GoauldBiotechnology.description>
+
+    <SG1_TokraSecureCommunications.label>Communications sécurisées Tok'ra</SG1_TokraSecureCommunications.label>
+    <SG1_TokraSecureCommunications.description>Décoder la matrice de reconnaissance révélée par le module de chiffrement Tok'ra récupéré et adapter ses protocoles à une architecture de communication sécurisée. Le module physique doit d'abord être analysé sur un banc de recherche, et les systèmes électriques locaux doivent être maîtrisés avant de pouvoir lancer la recherche formelle.</SG1_TokraSecureCommunications.description>
 </LanguageData>

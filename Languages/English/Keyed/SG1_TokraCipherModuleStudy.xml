@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraCipherStudy_CommandLabel>Analyze cipher module...</GR_TokraCipherStudy_CommandLabel>
+    <GR_TokraCipherStudy_CommandDescription>Assign a colonist to carry the recovered Tok'ra cipher module to a research bench and examine its protected memory lattice. Three careful analysis sessions are required.</GR_TokraCipherStudy_CommandDescription>
+    <GR_TokraCipherStudy_TargetingLabel>Choose a colonist to analyze the cipher module</GR_TokraCipherStudy_TargetingLabel>
+    <GR_TokraCipherStudy_JobString>analyzing Tok'ra cipher module</GR_TokraCipherStudy_JobString>
+    <GR_TokraCipherStudy_NotRecoveredModule>This is not the cipher module recovered during first contact.</GR_TokraCipherStudy_NotRecoveredModule>
+    <GR_TokraCipherStudy_HomeMapRequired>Bring the recovered module to a player colony before analyzing it.</GR_TokraCipherStudy_HomeMapRequired>
+    <GR_TokraCipherStudy_InvalidModule>The selected device is no longer the recovered Tok'ra cipher module.</GR_TokraCipherStudy_InvalidModule>
+    <GR_TokraCipherStudy_CopyInspect>This device does not carry the identity of the cipher module recovered during first contact.</GR_TokraCipherStudy_CopyInspect>
+    <GR_TokraCipherStudy_BringHomeInspect>Recovered Tok'ra cipher module. Bring it to a player colony for analysis.</GR_TokraCipherStudy_BringHomeInspect>
+    <GR_TokraCipherStudy_ReadyInspect>Recovered Tok'ra cipher module: ready for analysis at a research bench.</GR_TokraCipherStudy_ReadyInspect>
+    <GR_TokraCipherStudy_ProgressInspect>Cipher-module analysis: {0}/{1} sessions completed.</GR_TokraCipherStudy_ProgressInspect>
+    <GR_TokraCipherStudy_CompletedInspect>Cipher-module analysis complete. Tok'ra secure communications research is unlocked once its normal prerequisites are met.</GR_TokraCipherStudy_CompletedInspect>
+    <GR_TokraCipherStudy_ProgressLabel>Cipher analysis {0}/{1}</GR_TokraCipherStudy_ProgressLabel>
+    <GR_TokraCipherStudy_ProgressText>{0} has isolated another stable layer of the Tok'ra memory lattice. The module remains intact, but further careful study is required before its recognition protocols can be reproduced.</GR_TokraCipherStudy_ProgressText>
+    <GR_TokraCipherStudy_CompletedLabel>Tok'ra cipher lattice decoded</GR_TokraCipherStudy_CompletedLabel>
+    <GR_TokraCipherStudy_CompletedText>{0} has completed the direct analysis of the recovered cipher module. The final pass dismantled the sealed device, but its decoded recognition lattice now provides everything needed for {1}.</GR_TokraCipherStudy_CompletedText>
+    <GR_TokraCipherStudy_ReplacementLabel>Tok'ra cipher module recovered</GR_TokraCipherStudy_ReplacementLabel>
+    <GR_TokraCipherStudy_ReplacementText>A concealed Tok'ra courier has left a replacement cipher module inside the colony perimeter. The contact offers no explanation, but the device carries the same recognition lattice as the one lost before analysis could be completed.</GR_TokraCipherStudy_ReplacementText>
+    <GR_TokraCipherStudy_DebugDestroyed>The tracked Tok'ra cipher module was destroyed.</GR_TokraCipherStudy_DebugDestroyed>
+    <GR_TokraCipherStudy_DebugReplacementDue>The replacement cipher module is now due.</GR_TokraCipherStudy_DebugReplacementDue>
+    <GR_TokraCipherStudy_DebugFinished>Tok'ra cipher-module analysis completed.</GR_TokraCipherStudy_DebugFinished>
+    <GR_TokraCipherStudy_DebugReset>Tok'ra cipher-module analysis reset.</GR_TokraCipherStudy_DebugReset>
+    <GR_TokraCipherStudy_DebugUnavailable>The Tok'ra cipher-module study action is unavailable in the current state.</GR_TokraCipherStudy_DebugUnavailable>
+</LanguageData>

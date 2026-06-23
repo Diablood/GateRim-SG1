@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.31-dev`
+> Dernière révision : `0.3.32-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -50,6 +50,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev |
 | Contrat de production Tok'ra | Demande limitée aux objets réellement fabricables, rendez-vous mondial temporaire, remise depuis l'inventaire réel, période de grâce, interception de trajet et embuscade sur l'approche finale avec butin et reformation vanilla | 0.3.30-dev |
 | Mission d'introduction Tok'ra | Jouable et validée : transmission chiffrée avant le communicateur, choix d'engagement, site mondial, garde Goa'uld/Jaffa adaptative modérée, module physique suivi individuellement et nouvelles tentatives jusqu'à la première récupération réussie | 0.3.31-dev |
+| Étude du module de chiffrement Tok'ra | Jouable et validée : trois analyses au banc sur le véritable module suivi, objet non vendable puis démantelé à la dernière session, remplacement automatique anti-blocage en cas de perte et réconciliation des recherches déjà terminées | 0.3.32-dev |
 | Soutien médical Tok'ra | Cadeau léger de `1` dose de trétonine au palier coopérative et de `2` doses au palier fiable | 0.1.52-dev |
 | Livraisons médicales Tok'ra | Incident naturel rare débloqué au palier coopérative : 2 doses de trétonine avec 1 visiteur, puis 4 doses avec 2 visiteurs au palier fiable | 0.1.53-dev |
 | Pondération storyteller Tok'ra | Multiplicateurs de fréquence selon la confiance pour les opportunités thérapeutiques et les livraisons médicales indépendantes | 0.1.54-dev |

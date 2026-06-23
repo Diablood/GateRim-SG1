@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.31-dev`
+> Version du mod documentée : `0.3.32-dev`
 
 ## Le mod en bref
 
@@ -48,6 +48,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   transmission chiffrée accessible avant le communicateur, site Goa'uld à
   sécuriser et module physique à rapporter ; la mission peut revenir après un
   refus ou un échec, mais disparaît définitivement après la première réussite.
+  Le véritable module récupéré peut ensuite être analysé au banc de recherche
+  afin d'ouvrir la recherche `Communications sécurisées Tok'ra`, qui exige aussi
+  la recherche vanilla `Électricité`.
 - [Opérations organiques récurrentes](Tokra-Organic-Operation-Opportunities) :
   observation discrète, analyse de renseignements, accueil médical prolongé
   d'un agent blessé, remise de médicaments à un agent de liaison, appel de
@@ -77,7 +80,7 @@ grands chapitres de contenu suivants. Les directions durables sont notamment :
 
 - un framework réutilisable de missions et questlines, avec rejouabilité, variantes RP et difficulté adaptative ;
 - de nouveaux archétypes d'opérations Tok'ra réellement distincts ;
-- la suite de la progression d'introduction Tok'ra : étude du module, recherche dédiée puis construction du communicateur avant l'accès aux opérations récurrentes ;
+- la suite de la progression d'introduction Tok'ra : exiger la recherche dédiée pour construire le communicateur, puis conditionner les opérations récurrentes à un appareil disponible et alimenté ;
 - une refonte visuelle globale, préparée par des concept arts, après la stabilisation des mécaniques et avant la Porte des étoiles ;
 - les futures cultures Asgard, Nox et Unas avec leurs noms et parcours propres ;
 - un storyteller GateRim SG-1 qui orchestre le mod sans rendre ses événements
@@ -94,10 +97,12 @@ La première mission d'introduction Tok'ra est désormais jouable : une
 transmission chiffrée peut révéler un site défendu par des Jaffa Goa'uld, puis
 la récupération réelle du module clôt définitivement cette rencontre. Un refus,
 une expiration ou un échec laisse la possibilité d'un nouveau signal après un
-délai caché. Les
-étapes d'étude, de recherche et de verrouillage du communicateur restent
-planifiées selon les tests, les dépendances techniques et la stabilité des
-systèmes existants.
+délai caché. Le module récupéré peut désormais être analysé en trois sessions :
+il est non vendable avant décodage, démantelé à la dernière session et remplacé
+automatiquement après un délai caché s'il disparaît prématurément. Cette analyse
+ouvre la recherche **Communications sécurisées Tok'ra** après **Électricité**.
+Seuls le prérequis de construction du communicateur et le verrouillage des
+opérations récurrentes restent à ajouter.
 
 ## Orchestration des opérations Tok'ra
 

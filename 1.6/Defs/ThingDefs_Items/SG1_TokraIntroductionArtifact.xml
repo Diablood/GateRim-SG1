@@ -4,7 +4,7 @@
         <defName>SG1_TokraIntroductionArtifact</defName>
         <label>Tok'ra cipher module</label>
         <thingClass>ThingWithComps</thingClass>
-        <description>A compact Tok'ra cipher module recovered from hostile hands. Its sealed memory lattice contains fragments of recognition protocols and research data, but the colony cannot yet interpret or reproduce them. Preserving this module may open a secure line of contact with the Tok'ra.</description>
+        <description>A compact Tok'ra cipher module recovered from hostile hands. Its sealed memory lattice contains fragments of recognition protocols and research data. Careful analysis at a research bench may expose enough of the lattice to support a secure line of contact with the Tok'ra.</description>
         <graphicData>
             <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -20,5 +20,25 @@
             <Mass>0.15</Mass>
         </statBases>
         <tradeability>None</tradeability>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_TokraCipherModuleAnalysis">
+                <analysisRequiredRange>
+                    <min>3</min>
+                    <max>3</max>
+                </analysisRequiredRange>
+                <analysisDurationHours>1.2</analysisDurationHours>
+                <destroyedOnAnalyzed>true</destroyedOnAnalyzed>
+                <showProgress>true</showProgress>
+                <allowRepeatAnalysis>false</allowRepeatAnalysis>
+                <canStudyInPlace>false</canStudyInPlace>
+                <activateTexPath>UI/Icons/Study</activateTexPath>
+                <targetingParameters>
+                    <canTargetBuildings>false</canTargetBuildings>
+                    <canTargetAnimals>false</canTargetAnimals>
+                    <canTargetMechs>false</canTargetMechs>
+                    <onlyTargetControlledPawns>true</onlyTargetControlledPawns>
+                </targetingParameters>
+            </li>
+        </comps>
     </ThingDef>
 </Defs>

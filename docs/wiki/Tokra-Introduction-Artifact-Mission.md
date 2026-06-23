@@ -39,6 +39,22 @@ La tentative échoue notamment si :
 
 Après un échec, la mission pourra revenir après un nouveau délai caché, qui peut représenter plusieurs jours ou plusieurs mois en jeu. Après la première récupération réussie, elle est définitivement terminée et ne sera plus proposée.
 
-## Suite de la progression
+## Étude du module
 
-Le module n'ouvre pas encore directement le communicateur. Des jalons ultérieurs ajouteront son étude, une recherche Tok'ra dédiée puis les prérequis de construction et de déblocage des opérations récurrentes.
+Après la réussite définitive de la mission, le véritable module récupéré peut être étudié dans une colonie du joueur :
+
+- sélectionnez le module puis choisissez **Analyser le module de chiffrement...** ;
+- un colon capable de travail Intellectuel le transporte jusqu'à un banc de recherche utilisable ;
+- trois sessions d'analyse sont nécessaires et leur progression est conservée après sauvegarde/rechargement ;
+- les deux premières sessions préservent l'appareil ;
+- la troisième session démantèle le module après décodage complet, afin de ne pas laisser un objet sans usage dans le stockage ;
+- le module n'est jamais vendable avant cette étape ;
+- une copie créée séparément ne peut pas remplacer l'objet récupéré lors du premier contact.
+
+Si le véritable module est perdu avant la fin de l'analyse, la progression n'est pas bloquée. Après un délai caché automatique de `2–8` jours, un contact Tok'ra dépose un module de remplacement dans une colonie. Un seul remplacement suivi est créé et la progression déjà acquise est conservée.
+
+Une fois l'analyse terminée, la recherche **Communications sécurisées Tok'ra** peut être lancée dans l'onglet GateRim SG-1, à condition que la recherche vanilla **Électricité** soit également terminée.
+
+Une partie ou un scénario qui commence avec **Communications sécurisées Tok'ra** déjà terminée considère automatiquement la rencontre et l'analyse comme satisfaites. La mission d'introduction n'est alors jamais proposée et aucun module inutile n'est généré.
+
+Le communicateur n'utilise pas encore ce nouveau prérequis dans ce jalon. Sa construction et le verrouillage des opérations Tok'ra récurrentes seront ajoutés séparément.

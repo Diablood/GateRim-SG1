@@ -1,5 +1,40 @@
 # Tests
 
+## 0.3.32-dev - Étude du module et recherche Tok'ra
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.32-dev`. La révision `r1` a validé le flux normal d'analyse et la révision `r2` a supprimé les blocages de progression et l'objet de stockage devenu inutile.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.32-dev`, `0.3.32.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.32.0` ;
+- chargement du composant analysable, de la recherche, des traductions et des outils debug sans erreur bloquante ;
+- trois sessions d'analyse au banc sur le module exact récupéré lors de la mission d'introduction ;
+- progression persistante dans `AnalysisManager` après sauvegarde/rechargement ;
+- copie créée séparément refusée malgré un `ThingDef` identique ;
+- module non vendable tant que l'analyse est incomplète ;
+- conservation pendant les deux premières sessions et démantèlement pendant la troisième ;
+- recherche `SG1_TokraSecureCommunications` exigeant à la fois l'analyse complète et `Electricity` ;
+- disparition prématurée du module détectée avec remplacement automatique après un délai caché persistant de `2–8` jours ;
+- progression d'analyse conservée lors du remplacement ;
+- un seul objet et une seule lettre de remplacement après sauvegarde/rechargement ;
+- annulation du remplacement si le module original réapparaît avant l'échéance ;
+- validation développeur de l'introduction produisant un état complet et un véritable module lorsque nécessaire ;
+- recherche déjà terminée considérée comme autoritaire, avec fermeture de l'arc, analyse satisfaite et suppression des objets ou sites devenus inutiles ;
+- compatibilité avec les scénarios personnalisés, starters, sauvegardes modifiées et recherches terminées en mode développeur ;
+- communicateur et six opérations récurrentes laissés inchangés pour le jalon suivant.
+
+Points de régression durables :
+
+- identifier le module par son `ThingID` persistant et ne jamais accepter une copie générique ;
+- empêcher toute vente avant analyse et toute persistance de l'objet après la troisième session ;
+- conserver la progression dans `AnalysisManager` indépendamment de l'existence du module physique ;
+- ne jamais bloquer une partie après perte du module : programmer un remplacement unique, caché et persistant ;
+- ne pas réinitialiser les sessions déjà acquises lors du remplacement ;
+- traiter une recherche déjà terminée comme autoritaire avant toute offre, génération de site ou création de module ;
+- conserver la réconciliation au chargement et après les actions développeur ;
+- revalider analyse, remplacement et états avancés lorsque le communicateur et les opérations récurrentes recevront leurs nouveaux prérequis.
+
 ## 0.3.31-dev - Mission d'introduction et objet-clé Tok'ra
 
 Validation locale terminée sur la révision `r3`, puis jalon publié sous `v0.3.31-dev`. Les révisions intermédiaires ont ajouté la fondation persistante, le flux jouable, la véritable lettre à choix et les chemins d'échec réels.

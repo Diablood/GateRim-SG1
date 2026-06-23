@@ -36,6 +36,10 @@ namespace GateRimSG1.Goauld
         private const string FailedDelayContext = "TokraIntroduction.AttemptFailed";
         private const string OfferTextRuntimeKey = "introductionOfferTextKey";
         private const string OfferLetterDefName = "SG1_TokraIntroductionArtifactOffer";
+        private const string ReplacementDueTickCounterKey
+            = "cipherModuleReplacementDueTick";
+        private const string ReplacementCountCounterKey
+            = "cipherModuleReplacementCount";
 
         private TokraIntroductionArcState state
             = TokraIntroductionArcState.Uninitialized;
@@ -124,11 +128,7 @@ namespace GateRimSG1.Goauld
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 runtime = runtime ?? new GateRimMissionRuntimeData();
-
-                if (state == TokraIntroductionArcState.Offered)
-                {
-                    nextStateCheckTick = 0;
-                }
+                nextStateCheckTick = 0;
 
                 if (completedPermanently)
                 {
@@ -156,7 +156,19 @@ namespace GateRimSG1.Goauld
             }
 
             nextStateCheckTick = currentTick + StateCheckIntervalTicks;
+
+            if (ReconcileFinishedSecureCommunicationsResearch())
+            {
+                return;
+            }
+
             EnsureInitialized(currentTick);
+
+            if (completedPermanently)
+            {
+                ReconcileCompletedArcStudy(currentTick);
+                return;
+            }
 
             if (state == TokraIntroductionArcState.Offered)
             {
@@ -189,6 +201,11 @@ namespace GateRimSG1.Goauld
             GameComponent_TokraIntroductionArc tracker = GetCurrentTracker();
 
             if (tracker == null || map == null)
+            {
+                return false;
+            }
+
+            if (tracker.ReconcileFinishedSecureCommunicationsResearch())
             {
                 return false;
             }
@@ -372,6 +389,155 @@ namespace GateRimSG1.Goauld
             return tracker.CompleteInternal(artifact);
         }
 
+        public static bool IsCompletedPermanently
+        {
+            get
+            {
+                GameComponent_TokraIntroductionArc tracker
+                    = GetCurrentTracker();
+                return tracker != null && tracker.completedPermanently;
+            }
+        }
+
+        public static string TrackedArtifactThingId
+        {
+            get
+            {
+                GameComponent_TokraIntroductionArc tracker
+                    = GetCurrentTracker();
+                return tracker?.runtime?.GetString(
+                    TokraIntroductionArtifactMissionUtility
+                        .ArtifactThingIdKey);
+            }
+        }
+
+        public static bool IsTrackedRecoveredArtifact(Thing artifact)
+        {
+            if (artifact == null
+                || artifact.def != GR_DefOf.SG1_TokraIntroductionArtifact)
+            {
+                return false;
+            }
+
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+            string trackedThingId = tracker?.runtime?.GetString(
+                TokraIntroductionArtifactMissionUtility
+                    .ArtifactThingIdKey);
+
+            return tracker != null
+                && tracker.completedPermanently
+                && !trackedThingId.NullOrEmpty()
+                && artifact.ThingID == trackedThingId;
+        }
+
+        public static Thing FindTrackedRecoveredArtifact()
+        {
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+
+            if (tracker == null || !tracker.completedPermanently)
+            {
+                return null;
+            }
+
+            return tracker.FindTrackedArtifactInPlayerPossession();
+        }
+
+        public static int CipherModuleReplacementCount
+        {
+            get
+            {
+                GameComponent_TokraIntroductionArc tracker
+                    = GetCurrentTracker();
+                return tracker?.GetRuntimeCounter(
+                    ReplacementCountCounterKey) ?? 0;
+            }
+        }
+
+        public static string GetCipherModuleReplacementDebugText()
+        {
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+            int dueTick = tracker?.GetRuntimeCounter(
+                ReplacementDueTickCounterKey) ?? 0;
+
+            return FormatRemainingTicks(dueTick, GetCurrentTick());
+        }
+
+        public static bool DebugDestroyRecoveredCipherModule()
+        {
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+            Thing artifact = tracker?.FindTrackedArtifactInPlayerPossession();
+
+            if (tracker == null
+                || artifact == null
+                || TokraCipherModuleStudyUtility.IsAnalysisComplete
+                || GR_DefOf.SG1_TokraSecureCommunications?.IsFinished == true)
+            {
+                return false;
+            }
+
+            artifact.Destroy(DestroyMode.Vanish);
+            tracker.nextStateCheckTick = 0;
+            return true;
+        }
+
+        public static bool DebugMakeCipherModuleReplacementDue()
+        {
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+
+            if (tracker == null
+                || !tracker.completedPermanently
+                || TokraCipherModuleStudyUtility.IsAnalysisComplete
+                || GR_DefOf.SG1_TokraSecureCommunications?.IsFinished == true
+                || tracker.FindTrackedArtifactInPlayerPossession() != null)
+            {
+                return false;
+            }
+
+            tracker.SetRuntimeCounter(
+                ReplacementDueTickCounterKey,
+                System.Math.Max(1, GetCurrentTick()));
+            tracker.nextStateCheckTick = 0;
+            return true;
+        }
+
+        public static bool DebugPrepareForCompletedCipherAnalysis()
+        {
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+
+            if (tracker == null)
+            {
+                return false;
+            }
+
+            if (tracker.ReconcileFinishedSecureCommunicationsResearch())
+            {
+                return true;
+            }
+
+            if (!tracker.completedPermanently)
+            {
+                tracker.CompleteSilently("analysisCompleted");
+            }
+
+            return true;
+        }
+
+        public static bool NotifyCipherModuleAnalysisCompleted(
+            Thing artifact = null)
+        {
+            GameComponent_TokraIntroductionArc tracker
+                = GetCurrentTracker();
+
+            return tracker != null
+                && tracker.MarkCipherModuleAnalysisCompleted(artifact);
+        }
+
         public static bool NotifyArtifactCreated(
             WorldObject_TokraIntroductionArtifactSite site,
             Thing artifact)
@@ -520,6 +686,220 @@ namespace GateRimSG1.Goauld
             AppendDelayRange(builder, definition, FailedDelayContext);
 
             return builder.ToString().TrimEnd();
+        }
+
+        private bool ReconcileFinishedSecureCommunicationsResearch()
+        {
+            ResearchProjectDef project
+                = GR_DefOf.SG1_TokraSecureCommunications;
+
+            if (project?.IsFinished != true)
+            {
+                return false;
+            }
+
+            TokraCipherModuleStudyUtility
+                .ForceCompleteForFinishedResearch();
+            CompleteSilently("researchCompleted");
+            MarkCipherModuleAnalysisCompleted();
+            return true;
+        }
+
+        private void ReconcileCompletedArcStudy(int currentTick)
+        {
+            if (TokraCipherModuleStudyUtility.IsAnalysisComplete)
+            {
+                MarkCipherModuleAnalysisCompleted();
+                return;
+            }
+
+            Thing trackedArtifact = FindTrackedArtifactInPlayerPossession();
+
+            if (trackedArtifact != null)
+            {
+                SetRuntimeCounter(ReplacementDueTickCounterKey, 0);
+                runtime.phaseId = "completedAwaitingStudy";
+                return;
+            }
+
+            int replacementDueTick = GetRuntimeCounter(
+                ReplacementDueTickCounterKey);
+
+            if (replacementDueTick <= 0)
+            {
+                replacementDueTick = currentTick + Rand.RangeInclusive(
+                    TokraCipherModuleStudyUtility
+                        .ReplacementMinimumDelayTicks,
+                    TokraCipherModuleStudyUtility
+                        .ReplacementMaximumDelayTicks);
+                SetRuntimeCounter(
+                    ReplacementDueTickCounterKey,
+                    replacementDueTick);
+                runtime.phaseId = "replacementPending";
+
+                GR_Log.Message(
+                    "Scheduled a replacement Tok'ra cipher module for tick "
+                    + replacementDueTick
+                    + ".");
+                return;
+            }
+
+            if (currentTick >= replacementDueTick)
+            {
+                TryIssueReplacementCipherModule();
+            }
+        }
+
+        private bool TryIssueReplacementCipherModule()
+        {
+            Map map = FindOfferMap();
+
+            if (map == null
+                || GR_DefOf.SG1_TokraIntroductionArtifact == null
+                || TokraCipherModuleStudyUtility.IsAnalysisComplete
+                || GR_DefOf.SG1_TokraSecureCommunications?.IsFinished == true)
+            {
+                return false;
+            }
+
+            Thing created = ThingMaker.MakeThing(
+                GR_DefOf.SG1_TokraIntroductionArtifact);
+            Thing placed;
+
+            if (!GenPlace.TryPlaceThing(
+                    created,
+                    map.Center,
+                    map,
+                    ThingPlaceMode.Near,
+                    out placed))
+            {
+                if (!created.Destroyed)
+                {
+                    created.Destroy(DestroyMode.Vanish);
+                }
+
+                return false;
+            }
+
+            TrackRecoveredArtifact(placed);
+            SetRuntimeCounter(ReplacementDueTickCounterKey, 0);
+            SetRuntimeCounter(
+                ReplacementCountCounterKey,
+                GetRuntimeCounter(ReplacementCountCounterKey) + 1);
+            runtime.phaseId = "completedAwaitingStudy";
+
+            Find.LetterStack?.ReceiveLetter(
+                "GR_TokraCipherStudy_ReplacementLabel".Translate(),
+                "GR_TokraCipherStudy_ReplacementText".Translate(),
+                LetterDefOf.NeutralEvent,
+                placed);
+
+            GR_Log.Message(
+                "Issued replacement Tok'ra cipher module "
+                + placed.ThingID
+                + ".");
+            return true;
+        }
+
+        private void CompleteSilently(string phaseId)
+        {
+            runtime = runtime ?? new GateRimMissionRuntimeData();
+            WorldObject_TokraIntroductionArtifactSite site
+                = TokraIntroductionArtifactMissionUtility.FindWorldSite(
+                    runtime);
+
+            initialized = true;
+            completedPermanently = true;
+            state = TokraIntroductionArcState.Completed;
+            completionTick = completionTick > 0
+                ? completionTick
+                : GetCurrentTick();
+            nextOpportunityTick = 0;
+            offerExpiryTick = 0;
+            offerSourceMapId = -1;
+            runtime.missionDefName = GetDefinition()?.defName;
+            runtime.phaseId = phaseId;
+            RemoveOfferChoiceLetters();
+            site?.NotifyArcResolved(true);
+        }
+
+        private bool MarkCipherModuleAnalysisCompleted(Thing artifact = null)
+        {
+            if (!completedPermanently)
+            {
+                CompleteSilently("analysisCompleted");
+            }
+
+            Thing trackedArtifact = artifact;
+
+            if (trackedArtifact == null
+                || !IsTrackedRecoveredArtifact(trackedArtifact))
+            {
+                trackedArtifact = FindTrackedArtifactInPlayerPossession();
+            }
+
+            runtime.SetString(
+                TokraIntroductionArtifactMissionUtility.ArtifactThingIdKey,
+                null);
+            SetRuntimeCounter(ReplacementDueTickCounterKey, 0);
+            runtime.phaseId = GR_DefOf.SG1_TokraSecureCommunications
+                    ?.IsFinished == true
+                ? "researchCompleted"
+                : "analysisCompleted";
+            nextStateCheckTick = 0;
+
+            if (trackedArtifact != null && !trackedArtifact.Destroyed)
+            {
+                trackedArtifact.Destroy(DestroyMode.Vanish);
+            }
+
+            return true;
+        }
+
+        private void TrackRecoveredArtifact(Thing artifact)
+        {
+            if (artifact == null)
+            {
+                return;
+            }
+
+            runtime = runtime ?? new GateRimMissionRuntimeData();
+            runtime.SetString(
+                TokraIntroductionArtifactMissionUtility.ArtifactThingIdKey,
+                artifact.ThingID);
+        }
+
+        private int GetRuntimeCounter(string key)
+        {
+            runtime = runtime ?? new GateRimMissionRuntimeData();
+            runtime.counters = runtime.counters
+                ?? new Dictionary<string, int>();
+
+            int value;
+            return !key.NullOrEmpty()
+                    && runtime.counters.TryGetValue(key, out value)
+                ? value
+                : 0;
+        }
+
+        private void SetRuntimeCounter(string key, int value)
+        {
+            if (key.NullOrEmpty())
+            {
+                return;
+            }
+
+            runtime = runtime ?? new GateRimMissionRuntimeData();
+            runtime.counters = runtime.counters
+                ?? new Dictionary<string, int>();
+
+            if (value <= 0)
+            {
+                runtime.counters.Remove(key);
+                return;
+            }
+
+            runtime.counters[key] = value;
         }
 
         private void EnsureInitialized(int currentTick)
@@ -781,11 +1161,33 @@ namespace GateRimSG1.Goauld
         private bool RecoverArtifactInternal(Map map)
         {
             if (map == null
-                || state != TokraIntroductionArcState.Active
-                || completedPermanently
                 || GR_DefOf.SG1_TokraIntroductionArtifact == null)
             {
                 return false;
+            }
+
+            if (ReconcileFinishedSecureCommunicationsResearch())
+            {
+                return true;
+            }
+
+            if (TokraCipherModuleStudyUtility.IsAnalysisComplete)
+            {
+                CompleteSilently("analysisCompleted");
+                MarkCipherModuleAnalysisCompleted();
+                return true;
+            }
+
+            Thing existing = FindTrackedArtifactInPlayerPossession();
+
+            if (existing != null)
+            {
+                if (!completedPermanently)
+                {
+                    return CompleteInternal(existing);
+                }
+
+                return true;
             }
 
             Thing created = ThingMaker.MakeThing(
@@ -807,6 +1209,15 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            if (completedPermanently)
+            {
+                TrackRecoveredArtifact(placed);
+                runtime.phaseId = "completedAwaitingStudy";
+                SetRuntimeCounter(ReplacementDueTickCounterKey, 0);
+                nextStateCheckTick = 0;
+                return true;
+            }
+
             return CompleteInternal(placed);
         }
 
@@ -823,6 +1234,7 @@ namespace GateRimSG1.Goauld
             WorldObject_TokraIntroductionArtifactSite site
                 = TokraIntroductionArtifactMissionUtility.FindWorldSite(
                     runtime);
+            TrackRecoveredArtifact(artifact);
             completedPermanently = true;
             state = TokraIntroductionArcState.Completed;
             completionTick = GetCurrentTick();

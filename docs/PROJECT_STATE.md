@@ -1,58 +1,44 @@
 # Project state
 
-Current milestone: `0.3.31-dev - Add Tok'ra introduction artifact mission` — validated locally on final revision `r3` and published under the final tag `v0.3.31-dev`.
+Current milestone: `0.3.32-dev - Add Tok'ra cipher-module study and research` — validated locally on revision `r2`, closed and published under final tag `v0.3.32-dev`.
 
 ## Published base
 
-- Starting tag: `v0.3.30-dev`.
-- Dedicated branch: `feature/tokra-introduction-artifact-mission`.
-- Final local revision: `0.3.31-dev-r3`.
-- Final published tag: `v0.3.31-dev`.
-- Assembly version: `0.3.31.0`.
+- Starting tag: `v0.3.31-dev`.
+- Dedicated branch: `feature/tokra-artifact-study-research`.
+- Final local revision: `0.3.32-dev-r2`.
+- Final tag: `v0.3.32-dev`.
+- Assembly version: `0.3.32.0`.
 - Cultural backstory count remains `83`.
 
-## Final milestone outcome
+## Validated scope
 
-This milestone adds a standalone Tok'ra introduction arc available before the secure communicator exists. A hidden contact can reveal a temporary Goa'uld-held recovery site containing a physical Tok'ra cipher module. The arc remains retryable after refusal, expiration or failure and becomes permanently closed only when the exact tracked module is recovered by the player.
+- Analyze the exact cipher module recovered by the introduction mission through three research-bench sessions.
+- Persist analysis progress through RimWorld's `AnalysisManager` across save and reload.
+- Reject separately spawned copies by checking the tracked artifact identity.
+- Keep the recovered module non-tradeable while analysis is incomplete.
+- Preserve the module during the first two sessions, then dismantle it during the third session so no obsolete storage item remains.
+- Add `SG1_TokraSecureCommunications` to the GateRim SG-1 research tab.
+- Require both completed module analysis and vanilla `Electricity` before formal research can begin.
+- Detect a missing tracked module while analysis is unfinished and schedule one hidden replacement after `2–8` in-game days.
+- Preserve completed analysis sessions when a replacement module is issued.
+- Cancel the replacement if the tracked module reappears before the hidden delay expires.
+- Treat completed secure-communications research as authoritative during load and periodic reconciliation.
+- Close the introduction arc, satisfy analysis and remove obsolete offers, sites or modules when that research is already completed by a scenario, edited save or developer action.
+- Make `Tok'ra intro: recover key artifact` produce a coherent completed arc and genuine analyzable module when study is still required.
+- Keep communicator construction and recurrent-operation gating unchanged for the next milestone.
 
-The introduction arc remains independent from the six recurrent communicator operations. It owns its own persistent state, hidden retry timing, choice letter, world site, adaptive encounter and permanent completion flag without consuming the recurrent-operation slot.
+## Final validation
 
-## Validated introduction flow
+Local revision `r1` validated the normal three-session study flow, exact-object identity, persistence and research lock. Local revision `r2` validated final dismantling, non-tradeability, delayed automatic replacement after loss, preserved progress, developer-state reconciliation and automatic satisfaction when secure-communications research is already complete.
 
-- Schedule the first hidden opportunity after `4–12` days and retain it through save/reload.
-- Present a persistent choice letter with explicit accept and decline actions.
-- Return declined, ignored or expired offers after a hidden `10–60` day delay.
-- Create the hostile recovery site only after acceptance and preserve normal RimWorld caravan travel and arrival.
-- Capture the threat snapshot at offer time and use a deliberately moderate profile: factor `0.35`, `180–650` points and `2–6` defenders.
-- Generate one exact tracked Tok'ra cipher module and reject separately spawned copies as completion objectives.
-- Preserve vanilla combat, loot selection and caravan reformation so the player may recover survivors, animals, enemy equipment and other allowed map items.
-- Complete the arc only after the tracked module actually reaches a player caravan, pawn inventory or home map.
-- Warn once approximately one day before the six-day site deadline and persist that warning through save/reload.
-- Fail and reschedule accepted attempts after artifact destruction, site timeout or unexpected site loss, using a hidden `7–45` day delay.
-- Recalculate and persist a new delay after each failed attempt without permanently locking the arc.
-- Close the arc permanently after the first successful recovery and prevent duplicate offers, sites, modules or completion rewards.
+The replacement delay is automatic. `Tok'ra study: make replacement due` is only a developer acceleration tool; normal play waits the persisted hidden `2–8` day delay.
 
-## Validation status
-
-- Revision `r1` persistent-state, retry and permanent-completion foundations were validated.
-- Revision `r2` compiled after the consolidated API and MissionDef fixes; the natural offer, persistent choice letter, site creation, adaptive combat, physical module recovery, loot and vanilla reformation flow were validated.
-- Revision `r3` warning, real site expiration, real tracked-module destruction, intermediate save/reload and final successful recovery were reported valid in game.
-- Multiple failure paths preserve retry eligibility and do not close the arc before success.
-- The final player-text review found no opaque debug-style wording requiring a gameplay-text rewrite.
-- No blocking loading or runtime error was reported during the final validated pass.
+The final rebuild produced `GateRimSG1.dll` version `0.3.32.0`, the consistency check passed and the focused in-game tests were reported successful.
 
 ## Deferred work
 
-- Add a dedicated final texture for the cipher module during the later global visual pass.
-- Continue long-duration balancing of the `2–6` defender profile across a wider range of colony wealth and storyteller settings; the introduction must remain easier than later Tok'ra combat arcs.
-- Add artifact study and dedicated Tok'ra research with `Electricity` as a prerequisite.
-- Require the completed research for communicator construction.
-- Gate recurrent Tok'ra operations behind an available powered communicator without making them storyteller-dependent.
-
-## Next development step
-
-No new milestone or branch is opened by this publication. The next milestone must start explicitly from `v0.3.31-dev` on a dedicated branch after reviewing `docs/ROADMAP.md`. The next documented part of the arc is the cipher-module study and dedicated Tok'ra research; communicator construction and recurrent-operation gating remain separate follow-up work.
-
-## Publication
-
-The main repository branch and final annotated tag use the version without a local `-rN` suffix. The updated `docs/wiki/` pages must be synchronized to the separate `GateRim-SG1.wiki` repository as part of this publication.
+- Require `SG1_TokraSecureCommunications` for communicator construction.
+- Gate the six recurrent Tok'ra operations behind an available powered communicator.
+- Reconcile existing saves and custom starters when communicator construction or operation gating is introduced.
+- Add the final dedicated cipher-module texture during the later global visual pass.

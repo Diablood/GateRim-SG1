@@ -1,5 +1,31 @@
 # GateRim SG-1 — Roadmap durable
 
+## Dernier jalon clôturé — Étude du module et recherche Tok'ra (`0.3.32-dev`)
+
+- [x] Partir explicitement de `v0.3.31-dev` sur `feature/tokra-artifact-study-research`.
+- [x] Réutiliser le flux vanilla d'analyse d'objet de Biotech et le travail au banc de recherche.
+- [x] Ajouter trois sessions d'analyse persistantes sur le module physique.
+- [x] N'autoriser que le `ThingID` exact récupéré par la mission d'introduction.
+- [x] Refuser les copies créées séparément et l'analyse avant le retour dans une colonie du joueur.
+- [x] Rendre le module non vendable tant que son analyse reste nécessaire.
+- [x] Conserver le module pendant les deux premières sessions puis le démanteler pendant la troisième.
+- [x] Ajouter `SG1_TokraSecureCommunications` dans l'onglet de recherche GateRim SG-1.
+- [x] Exiger l'analyse du module et la recherche vanilla `Electricity` avant de commencer cette recherche.
+- [x] Remplacer automatiquement un module suivi perdu après un délai caché persistant de `2–8` jours.
+- [x] Conserver la progression d'analyse acquise lors de l'émission d'un module de remplacement.
+- [x] Réconcilier les scénarios, starters, sauvegardes modifiées et validations développeur où la recherche est déjà terminée.
+- [x] Ajouter l'inspection joueur et les diagnostics développeur bilingues.
+- [x] Valider le rebuild local `0.3.32.0`, le contrôle de cohérence et le chargement en jeu.
+- [x] Valider la progression `0/3` à `3/3`, la sauvegarde/recharge et le démantèlement final.
+- [x] Valider le verrou sans électricité, le refus d'une copie créée séparément et l'absence de vente avant analyse.
+- [x] Valider le remplacement automatique après perte, la conservation de progression et l'absence de duplication.
+- [x] Valider les migrations depuis les sauvegardes `0.3.31-dev` et les états déjà avancés par scénario ou mode développeur.
+- [x] Effectuer la passe finale des textes, compléter les tests durables et publier le tag unique `v0.3.32-dev`.
+
+La révision locale finale `r2` valide le flux complet d'étude et les protections anti-blocage. Le module n'occupe plus de stockage après décodage, ne peut pas être vendu avant l'analyse et revient automatiquement après un délai caché s'il disparaît prématurément. Une recherche déjà terminée ferme silencieusement les étapes devenues inutiles.
+
+Le prochain travail différé doit exiger `SG1_TokraSecureCommunications` pour construire le communicateur, puis empêcher les six opérations récurrentes d'apparaître tant qu'aucun communicateur disponible et alimenté n'existe. Ce travail devra partir explicitement de `v0.3.32-dev` sur une nouvelle branche dédiée.
+
 ## Dernier jalon clôturé — Mission d'introduction et objet-clé Tok'ra (`0.3.31-dev`)
 
 - [x] Partir explicitement de `v0.3.30-dev` sur `feature/tokra-introduction-artifact-mission`.
@@ -138,18 +164,23 @@ Une victoire militaire ne suffit jamais si la cargaison est perdue. Les mécaniq
 
 ## Suite de l'arc d'introduction Tok'ra et accès au communicateur
 
-La mission d'introduction et le module de chiffrement physique sont intégrés dans `0.3.31-dev`. Les étapes suivantes restent séparées afin de conserver des jalons testables :
+La mission d'introduction et le module physique sont intégrés dans `0.3.31-dev`. Le jalon `0.3.32-dev` ajoute l'étude persistante et la recherche dédiée tout en supprimant les risques de blocage :
 
-- ajouter une étude ou analyse persistante du module récupéré ;
-- ouvrir une recherche GateRim SG-1 dédiée, distincte des recherches vanilla, avec `Electricity` comme prérequis ;
-- faire du module récupéré le prérequis durable de cette progression, selon une logique comparable aux objets d'étude du mécaniteur ;
-- exiger ensuite la recherche terminée pour construire le communicateur Tok'ra ;
+- trois sessions d'analyse sur le véritable module suivi ;
+- module non vendable avant analyse puis démantelé à la dernière session ;
+- remplacement Tok'ra après un délai caché de `2–8` jours si le module est perdu avant la fin de l'analyse ;
+- progression d'analyse conservée lors du remplacement ;
+- réconciliation automatique lorsque `SG1_TokraSecureCommunications` est déjà terminée par scénario, starter, sauvegarde modifiée ou mode développeur ;
+- fermeture automatique de la mission d'introduction et absence de module inutile lorsque la recherche est déjà satisfaite ;
+- validation développeur cohérente : l'arc est terminé et un véritable module est créé uniquement si l'analyse reste nécessaire.
+
+Étapes encore séparées afin de conserver des jalons testables :
+
+- exiger `SG1_TokraSecureCommunications` pour construire le communicateur Tok'ra ;
 - rendre les opérations Tok'ra récurrentes inéligibles tant qu'aucun communicateur construit et alimenté n'est disponible ;
 - préserver les opérations avec les storytellers vanilla ou moddés compatibles : seul leur accès doit dépendre du communicateur, pas d'un storyteller GateRim SG-1 ;
-- revalider les sauvegardes où l'arc est terminé, en attente, échoué ou encore jamais proposé lorsque ces nouveaux prérequis seront ajoutés ;
+- revalider les sauvegardes où l'arc est terminé, en attente, échoué, jamais proposé ou déjà satisfait par une recherche de départ ;
 - conserver la mission d'introduction unique et séparée des archétypes rejouables.
-
-Le prochain jalon doit être choisi après publication de `v0.3.31-dev`. L'étude du module et la recherche dédiée constituent la prochaine étape logique ; la construction du communicateur et le verrouillage du pool récurrent peuvent rester un jalon distinct.
 
 ## Direction durable des pools de missions
 

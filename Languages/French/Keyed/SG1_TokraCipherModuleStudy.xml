@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_TokraCipherStudy_CommandLabel>Analyser le module de chiffrement...</GR_TokraCipherStudy_CommandLabel>
+    <GR_TokraCipherStudy_CommandDescription>Assigner un colon à transporter le module de chiffrement Tok'ra récupéré jusqu'à un banc de recherche afin d'examiner sa matrice mémoire protégée. Trois sessions d'analyse prudente sont nécessaires.</GR_TokraCipherStudy_CommandDescription>
+    <GR_TokraCipherStudy_TargetingLabel>Choisir un colon pour analyser le module de chiffrement</GR_TokraCipherStudy_TargetingLabel>
+    <GR_TokraCipherStudy_JobString>analyse le module de chiffrement Tok'ra</GR_TokraCipherStudy_JobString>
+    <GR_TokraCipherStudy_NotRecoveredModule>Ce dispositif n'est pas le module de chiffrement récupéré lors du premier contact.</GR_TokraCipherStudy_NotRecoveredModule>
+    <GR_TokraCipherStudy_HomeMapRequired>Rapportez le module récupéré dans une colonie du joueur avant de l'analyser.</GR_TokraCipherStudy_HomeMapRequired>
+    <GR_TokraCipherStudy_InvalidModule>Le dispositif sélectionné n'est plus le module de chiffrement Tok'ra récupéré.</GR_TokraCipherStudy_InvalidModule>
+    <GR_TokraCipherStudy_CopyInspect>Ce dispositif ne porte pas l'identité du module de chiffrement récupéré lors du premier contact.</GR_TokraCipherStudy_CopyInspect>
+    <GR_TokraCipherStudy_BringHomeInspect>Module de chiffrement Tok'ra récupéré. Rapportez-le dans une colonie du joueur pour l'analyser.</GR_TokraCipherStudy_BringHomeInspect>
+    <GR_TokraCipherStudy_ReadyInspect>Module de chiffrement Tok'ra récupéré : prêt à être analysé sur un banc de recherche.</GR_TokraCipherStudy_ReadyInspect>
+    <GR_TokraCipherStudy_ProgressInspect>Analyse du module de chiffrement : {0}/{1} sessions terminées.</GR_TokraCipherStudy_ProgressInspect>
+    <GR_TokraCipherStudy_CompletedInspect>Analyse du module de chiffrement terminée. La recherche sur les communications sécurisées Tok'ra est déverrouillée lorsque ses prérequis normaux sont remplis.</GR_TokraCipherStudy_CompletedInspect>
+    <GR_TokraCipherStudy_ProgressLabel>Analyse du module {0}/{1}</GR_TokraCipherStudy_ProgressLabel>
+    <GR_TokraCipherStudy_ProgressText>{0} a isolé une nouvelle couche stable de la matrice mémoire Tok'ra. Le module reste intact, mais une étude prudente supplémentaire est nécessaire avant de pouvoir reproduire ses protocoles de reconnaissance.</GR_TokraCipherStudy_ProgressText>
+    <GR_TokraCipherStudy_CompletedLabel>Matrice de chiffrement Tok'ra décodée</GR_TokraCipherStudy_CompletedLabel>
+    <GR_TokraCipherStudy_CompletedText>{0} a terminé l'analyse directe du module de chiffrement récupéré. La dernière passe a démantelé l'appareil scellé, mais sa matrice de reconnaissance décodée fournit désormais tout ce qui est nécessaire aux {1}.</GR_TokraCipherStudy_CompletedText>
+    <GR_TokraCipherStudy_ReplacementLabel>Module de chiffrement Tok'ra récupéré</GR_TokraCipherStudy_ReplacementLabel>
+    <GR_TokraCipherStudy_ReplacementText>Un messager Tok'ra dissimulé a déposé un module de chiffrement de remplacement à l'intérieur du périmètre de la colonie. Le contact ne fournit aucune explication, mais l'appareil porte la même matrice de reconnaissance que celui perdu avant la fin de son analyse.</GR_TokraCipherStudy_ReplacementText>
+    <GR_TokraCipherStudy_DebugDestroyed>Le module de chiffrement Tok'ra suivi a été détruit.</GR_TokraCipherStudy_DebugDestroyed>
+    <GR_TokraCipherStudy_DebugReplacementDue>Le module de chiffrement de remplacement est maintenant attendu.</GR_TokraCipherStudy_DebugReplacementDue>
+    <GR_TokraCipherStudy_DebugFinished>Analyse du module de chiffrement Tok'ra terminée.</GR_TokraCipherStudy_DebugFinished>
+    <GR_TokraCipherStudy_DebugReset>Analyse du module de chiffrement Tok'ra réinitialisée.</GR_TokraCipherStudy_DebugReset>
+    <GR_TokraCipherStudy_DebugUnavailable>L'action d'étude du module de chiffrement Tok'ra est indisponible dans l'état actuel.</GR_TokraCipherStudy_DebugUnavailable>
+</LanguageData>
