@@ -33,6 +33,14 @@ The game component owns only framework-wide responsibilities:
 
 Manual Tok'ra requests remain outside this manager.
 
+### Communicator eligibility gate (`0.3.33-dev`)
+
+The manager now uses `TokraSecureCommunicatorAvailabilityUtility` before creating any new recurrent offer. The gate requires at least one spawned, player-controlled, powered GateRim communicator on a player home map. It does not inspect trust, because trust remains part of archetype selection.
+
+When the channel is unavailable and no operation occupies the active slot, the manager persists a blocked flag instead of consuming or repeatedly retrying an opportunity every hour. An existing offered, accepted or ready operation bypasses this gate and continues under its own deadline rules.
+
+When a valid channel returns, the manager clears the blocked flag and schedules a fresh hidden recurrence delay through the same trust-tier and last-archetype rules used after an ordinary resolution. An offer that became overdue during the outage is therefore never emitted immediately on reconnection.
+
 ### `TokraOrganicOperationInstance`
 
 Only one organic operation can be visible at a time. Its persisted runtime data is stored in one `IExposable` instance rather than as new fields added to the game component for every archetype.
@@ -57,7 +65,9 @@ Each archetype is selected through a worker registry:
 - `TokraOrganicOperationWorker_GoauldObservation`;
 - `TokraOrganicOperationWorker_DeadDropRecovery`, which now routes analysis through the powered communicator;
 - `TokraOrganicOperationWorker_WoundedAgentCare`;
-- `TokraOrganicOperationWorker_MedicalSupplyHandoff`.
+- `TokraOrganicOperationWorker_MedicalSupplyHandoff`;
+- `TokraOrganicOperationWorker_DistressCall`;
+- `TokraOrganicOperationWorker_TemporaryBaseDelivery`.
 
 A worker owns the routing for:
 
@@ -119,6 +129,7 @@ RimWorld developer mode provides compact actions under `GateRim SG-1`:
 - resolve success;
 - resolve failure;
 - expire the current state;
+- make the natural opportunity timer due without bypassing channel eligibility;
 - display the full framework state;
 - apply a pending post-operation consequence;
 - reset the framework.

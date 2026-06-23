@@ -1,5 +1,26 @@
 # GateRim SG-1 — Roadmap durable
 
+## Dernier jalon clôturé — Accès aux opérations par communicateur (`0.3.33-dev`)
+
+- [x] Partir explicitement de `v0.3.32-dev` sur `feature/tokra-communicator-operation-gating`.
+- [x] Remplacer le prérequis de construction `MicroelectronicsBasics` par `SG1_TokraSecureCommunications`.
+- [x] Conserver `Electricity` comme prérequis indirect de la recherche dédiée.
+- [x] Préserver les communicateurs déjà construits dans les anciennes sauvegardes.
+- [x] Ajouter un service commun distinguant présence sur une colonie, contrôle joueur, configuration et alimentation.
+- [x] Ajouter le rapport développeur `Tok'ra communicator: show availability`.
+- [x] Valider le build `0.3.33.0`, le verrou de construction, les états alimenté/non alimenté et la sauvegarde/recharge de r1.
+- [x] Utiliser le service en r2 pour empêcher uniquement les nouvelles offres récurrentes sans communicateur disponible.
+- [x] Préserver les opérations déjà proposées, acceptées ou actives pendant une coupure ou une destruction.
+- [x] Persister l'attente du canal et la restaurer après sauvegarde/rechargement.
+- [x] Reprendre la planification avec un délai organique complet après restauration du canal, sans offre immédiate garantie.
+- [x] Ajouter une action développeur qui rend l'échéance naturelle immédiatement due sans contourner le verrou.
+- [x] Valider en jeu le blocage, la persistance, la reprise différée, les actions forcées et la préservation du slot actif en r2.
+- [x] Mettre à jour les tests durables, effectuer la passe finale des textes et publier le tag unique `v0.3.33-dev`.
+
+La révision `r1` valide la construction et le diagnostic physique. La révision finale `r2` valide le verrou persistant du planificateur, la reprise différée du canal et la conservation des opérations déjà actives. L'absence de canal bloque uniquement le tirage d'une nouvelle offre ; lors du retour d'un communicateur alimenté, une nouvelle échéance cachée est calculée depuis la confiance actuelle et le dernier archétype. Le jalon est publié sous le tag final unique `v0.3.33-dev`.
+
+Le prochain jalon doit être choisi après relecture du backlog durable ci-dessous, puis démarrer sur une branche dédiée créée explicitement depuis `v0.3.33-dev`. Aucun périmètre `0.3.34-dev` n'est imposé par cette clôture.
+
 ## Dernier jalon clôturé — Étude du module et recherche Tok'ra (`0.3.32-dev`)
 
 - [x] Partir explicitement de `v0.3.31-dev` sur `feature/tokra-artifact-study-research`.

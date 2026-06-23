@@ -1,5 +1,41 @@
 # Tests
 
+## 0.3.33-dev - Accès aux opérations Tok'ra par communicateur
+
+Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.33-dev`. La révision `r1` a validé le prérequis de construction et le service de disponibilité ; la révision `r2` a branché ce service sur le planificateur persistant des opérations récurrentes.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.33-dev`, `0.3.33.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.33.0` ;
+- remplacement du prérequis direct `MicroelectronicsBasics` par `SG1_TokraSecureCommunications` sans invalider les communicateurs déjà construits ;
+- diagnostic commun d'une carte de colonie joueur, de la propriété, de la configuration GateRim et de l'alimentation active ;
+- disponibilité correcte avec un ou plusieurs communicateurs, y compris après coupure, retour du courant et sauvegarde/rechargement ;
+- absence de nouvelle offre récurrente lorsque `Tok'ra ops: make natural offer due` arrive à échéance sans communicateur disponible ;
+- état bloqué persistant sans lettre, archétype actif, échec, refus, conséquence de confiance ou relance horaire indésirable ;
+- restauration du canal produisant une nouvelle échéance cachée persistante dans le futur plutôt qu'une offre immédiate ;
+- `Tok'ra ops: roll next natural offer` produisant ensuite une seule offre normale par le tirage pondéré existant ;
+- conservation d'une offre déjà active pendant une panne ou après destruction du bâtiment, y compris après sauvegarde/rechargement ;
+- refus des actions développeur de forçage lorsqu'elles tentent de créer une nouvelle opération sans canal valide ;
+- mission d'introduction indépendante du communicateur et demandes manuelles conservant leurs propres règles ;
+- absence de nouvelle formulation joueur opaque lors de la passe RP finale ;
+- diagnostics techniques limités au mode développeur ou aux informations avancées ;
+- `Player.log` final sans nouvelle erreur GateRim SG-1 signalée.
+
+Points de régression durables :
+
+- utiliser `TokraSecureCommunicatorAvailabilityUtility` comme source unique pour toute nouvelle éligibilité liée au canal ;
+- exiger au moins un communicateur contrôlé, correctement configuré et alimenté sur une carte de colonie joueur avant de créer une offre récurrente ;
+- ne jamais appliquer ce verrou à la mission d'introduction qui permet précisément d'obtenir la recherche du communicateur ;
+- ne jamais effacer, remplacer, résoudre ou pénaliser une opération déjà offerte, acceptée, prête ou active lors d'une panne ou d'une destruction ;
+- conserver les échéances propres aux opérations actives plutôt que de les mettre silencieusement en pause ;
+- persister l'état bloqué et la nouvelle échéance calculée après retour du canal ;
+- remplacer tout contrôle arrivé à échéance pendant la coupure par un délai organique complet, sans offre immédiate garantie ;
+- ne pas laisser une action développeur de forçage contourner le verrou, sauf outil explicitement conçu pour inspecter l'état sans créer d'offre ;
+- accepter qu'un communicateur valide sur n'importe quelle carte de colonie joueur rouvre le canal global ;
+- conserver les storytellers vanilla ou moddés compatibles : le bâtiment conditionne l'accès, pas le storyteller ;
+- revalider ce verrou lors de tout ajout d'un nouvel archétype récurrent ou de toute modification du planificateur partagé.
+
 ## 0.3.32-dev - Étude du module et recherche Tok'ra
 
 Validation locale terminée sur la révision `r2`, puis jalon publié sous `v0.3.32-dev`. La révision `r1` a validé le flux normal d'analyse et la révision `r2` a supprimé les blocages de progression et l'objet de stockage devenu inutile.

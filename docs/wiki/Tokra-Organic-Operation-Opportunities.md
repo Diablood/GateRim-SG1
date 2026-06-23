@@ -8,6 +8,12 @@ Ces demandes peuvent apparaître avant le palier de confiance fiable. Elles
 créent une progression naturelle entre le premier contact et une coopération
 plus sensible.
 
+## Accès au canal
+
+Une nouvelle opération récurrente ne peut être transmise que si la colonie possède au moins un communicateur Tok'ra contrôlé, installé sur une carte de colonie et alimenté. La mission d'introduction qui permet d'obtenir puis d'étudier le module de chiffrement reste indépendante et peut donc apparaître avant la construction du bâtiment.
+
+Une panne de courant ou la destruction du communicateur ne supprime pas une offre ou une opération déjà enregistrée. Lorsque le canal revient, le réseau Tok'ra recalcule un délai caché normal avant la prochaine offre au lieu d'envoyer immédiatement une mission arrivée à échéance pendant la coupure.
+
 ## Observation discrète
 
 Une cellule peut demander à la colonie de surveiller un secteur périphérique où une activité Goa'uld inhabituelle a été repérée.

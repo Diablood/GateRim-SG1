@@ -8,14 +8,22 @@ Organic Tok'ra opportunities provide recurring, hidden-schedule activities that 
 
 The `0.3.x` framework stores one active `TokraOrganicOperationInstance`, selects an eligible worker, persists its operation-specific payload and centralizes offer, acceptance, deadline, success, failure, cleanup and anti-repetition behavior.
 
-The four current workers are:
+The six current workers are:
 
 - Goa'uld observation;
 - intelligence-module recovery and analysis;
 - wounded-agent care;
-- medical-supply handoff.
+- medical-supply handoff;
+- distress-call world site;
+- temporary-base delivery contract.
 
 Only the current operation is shown in normal play. Full history, hidden scheduling and technical state are debug-only.
+
+## Communicator access (`0.3.33-dev`)
+
+A new recurrent opportunity is eligible only while at least one valid powered Tok'ra communicator exists on a player home map. The unique introduction-artifact mission remains outside this system and can still occur before the communicator is researched or built.
+
+Channel loss does not clear the single active slot. Offers and accepted operations already stored by the manager continue to use their existing mission deadlines and resolution rules. While the slot is empty, the planner persists a blocked state. Once power or a replacement communicator returns, it schedules a fresh hidden delay instead of replaying an overdue timer immediately.
 
 ## Goa'uld observation workflow (`0.3.2-dev`)
 

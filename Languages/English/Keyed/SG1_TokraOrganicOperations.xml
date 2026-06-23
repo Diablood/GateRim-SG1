@@ -145,4 +145,5 @@ Cautious analysis takes longer but keeps the transmission tightly contained. Acc
     <GR_TokraObservation_DebugMenuReady>Observation: finish recording</GR_TokraObservation_DebugMenuReady>
     <GR_TokraObservation_DebugDeployed>The observation device was deployed at the marked point.</GR_TokraObservation_DebugDeployed>
     <GR_TokraObservation_DebugReady>The observation recording is ready for recovery.</GR_TokraObservation_DebugReady>
+    <GR_TokraOrganicOperation_DebugNaturalDue>The next natural Tok'ra opportunity is now due.</GR_TokraOrganicOperation_DebugNaturalDue>
 </LanguageData>

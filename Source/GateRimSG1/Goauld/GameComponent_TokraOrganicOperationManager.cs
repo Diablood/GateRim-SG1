@@ -37,6 +37,8 @@ namespace GateRimSG1.Goauld
 
         private int nextStateCheckTick;
         private int nextOpportunityTick;
+        private bool communicatorGateBlocked;
+        private int communicatorGateBlockedSinceTick;
         private TokraOrganicOperationInstance activeOperation
             = new TokraOrganicOperationInstance();
         private TokraOrganicOperationFollowUp followUp
@@ -321,6 +323,14 @@ namespace GateRimSG1.Goauld
                 ref nextOpportunityTick,
                 "tokraOrganicNextOpportunityTick",
                 0);
+            Scribe_Values.Look(
+                ref communicatorGateBlocked,
+                "tokraOrganicCommunicatorGateBlocked",
+                false);
+            Scribe_Values.Look(
+                ref communicatorGateBlockedSinceTick,
+                "tokraOrganicCommunicatorGateBlockedSinceTick",
+                0);
             Scribe_Deep.Look(
                 ref activeOperation,
                 "tokraOrganicActiveOperation");
@@ -394,6 +404,29 @@ namespace GateRimSG1.Goauld
             if (activeState != TokraOrganicOperationState.None)
             {
                 TickActiveOpportunity(currentTick);
+                return;
+            }
+
+            ThingWithComps availableCommunicator;
+
+            if (!TokraSecureCommunicatorAvailabilityUtility
+                    .TryFindAvailableCommunicator(
+                        out availableCommunicator))
+            {
+                if (!communicatorGateBlocked)
+                {
+                    communicatorGateBlocked = true;
+                    communicatorGateBlockedSinceTick = currentTick;
+                }
+
+                return;
+            }
+
+            if (communicatorGateBlocked)
+            {
+                communicatorGateBlocked = false;
+                communicatorGateBlockedSinceTick = 0;
+                ScheduleNextOpportunity(currentTick);
                 return;
             }
 
@@ -1727,9 +1760,22 @@ namespace GateRimSG1.Goauld
 
             if (!manager.IsActiveForMap(map) || definition == null)
             {
+                TokraCommunicatorAvailabilitySnapshot availability
+                    = TokraSecureCommunicatorAvailabilityUtility.Inspect();
+
                 return "Tok'ra organic operation: none active on this map."
+                    + "\nCommunicator gate blocked: "
+                    + manager.communicatorGateBlocked
+                    + " | blocked since: "
+                    + manager.communicatorGateBlockedSinceTick
+                    + "\nCommunicator available: "
+                    + availability.IsAvailable
+                    + " | failure: "
+                    + availability.Failure
                     + "\nNext opportunity tick: "
                     + manager.nextOpportunityTick
+                    + " | remaining: "
+                    + Math.Max(0, manager.nextOpportunityTick - currentTick)
                     + "\nCompleted: "
                     + manager.completedOperationCount
                     + " | Failed: "
@@ -1857,6 +1903,17 @@ namespace GateRimSG1.Goauld
                 "Next opportunity: " + manager.nextOpportunityTick
                 + " | remaining: "
                 + Math.Max(0, manager.nextOpportunityTick - currentTick));
+            TokraCommunicatorAvailabilitySnapshot availability
+                = TokraSecureCommunicatorAvailabilityUtility.Inspect();
+            report.AppendLine(
+                "Communicator gate blocked: "
+                + manager.communicatorGateBlocked
+                + " | blocked since: "
+                + manager.communicatorGateBlockedSinceTick
+                + " | available: "
+                + availability.IsAvailable
+                + " | failure: "
+                + availability.Failure);
             report.AppendLine(
                 "Last offered: " + manager.lastOfferedArchetype
                 + " | last completed: " + manager.lastCompletedArchetype);
@@ -2350,10 +2407,28 @@ namespace GateRimSG1.Goauld
 
             manager.ClearActiveOpportunity();
             manager.followUp = new TokraOrganicOperationFollowUp();
+            manager.communicatorGateBlocked = false;
+            manager.communicatorGateBlockedSinceTick = 0;
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             manager.nextOpportunityTick = currentTick + Rand.RangeInclusive(
                 InitialMinimumDelayTicks,
                 InitialMaximumDelayTicks);
+            return true;
+        }
+
+        public static bool DebugMakeNextNaturalOpportunityDue()
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null || manager.activeOperation.IsActive)
+            {
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            manager.nextOpportunityTick = currentTick;
+            manager.nextStateCheckTick = currentTick;
             return true;
         }
 
@@ -2362,15 +2437,20 @@ namespace GateRimSG1.Goauld
             GameComponent_TokraOrganicOperationManager manager
                 = GetCurrentManager();
 
+            ThingWithComps communicator;
+
             if (manager == null
                 || map == null
                 || manager.activeOperation.IsActive
-                || FindPoweredCommunicator(map) == null)
+                || !TokraSecureCommunicatorAvailabilityUtility
+                    .TryFindAvailableCommunicator(map, out communicator))
             {
                 return false;
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
+            manager.communicatorGateBlocked = false;
+            manager.communicatorGateBlockedSinceTick = 0;
             manager.nextOpportunityTick = currentTick;
 
             return manager.TryCreateNextOpportunity(currentTick)
@@ -2384,14 +2464,19 @@ namespace GateRimSG1.Goauld
             GameComponent_TokraOrganicOperationManager manager
                 = GetCurrentManager();
 
+            ThingWithComps communicator;
+
             if (manager == null
                 || map == null
-                || FindPoweredCommunicator(map) == null)
+                || !TokraSecureCommunicatorAvailabilityUtility
+                    .TryFindAvailableCommunicator(map, out communicator))
             {
                 return false;
             }
 
             manager.ClearActiveOpportunity();
+            manager.communicatorGateBlocked = false;
+            manager.communicatorGateBlockedSinceTick = 0;
             manager.nextOpportunityTick = 0;
 
             return manager.TryCreateOpportunity(
@@ -3099,9 +3184,10 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            ThingWithComps communicator = FindPoweredCommunicator(map);
+            ThingWithComps communicator;
 
-            if (communicator == null)
+            if (!TokraSecureCommunicatorAvailabilityUtility
+                    .TryFindAvailableCommunicator(map, out communicator))
             {
                 return false;
             }
@@ -5508,9 +5594,10 @@ namespace GateRimSG1.Goauld
             {
                 Map map = Find.Maps[i];
 
-                if (map != null
-                    && map.IsPlayerHome
-                    && FindPoweredCommunicator(map) != null)
+                ThingWithComps communicator;
+
+                if (TokraSecureCommunicatorAvailabilityUtility
+                    .TryFindAvailableCommunicator(map, out communicator))
                 {
                     return map;
                 }
@@ -5913,33 +6000,12 @@ namespace GateRimSG1.Goauld
 
         private static ThingWithComps FindPoweredCommunicator(Map map)
         {
-            if (map?.listerThings?.AllThings == null)
-            {
-                return null;
-            }
+            ThingWithComps communicator;
 
-            List<Thing> things = map.listerThings.AllThings;
-
-            for (int i = 0; i < things.Count; i++)
-            {
-                ThingWithComps thing = things[i] as ThingWithComps;
-
-                if (thing == null
-                    || thing.Faction != Faction.OfPlayer
-                    || thing.GetComp<Comp_TokraSecureCommunicator>() == null)
-                {
-                    continue;
-                }
-
-                CompPowerTrader powerComp = thing.GetComp<CompPowerTrader>();
-
-                if (powerComp != null && powerComp.PowerOn)
-                {
-                    return thing;
-                }
-            }
-
-            return null;
+            return TokraSecureCommunicatorAvailabilityUtility
+                .TryFindAvailableCommunicator(map, out communicator)
+                ? communicator
+                : null;
         }
 
         private string GetActiveStatusLabel(bool includePrefix)
@@ -6335,6 +6401,22 @@ namespace GateRimSG1.Goauld
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             TokraOrganicOperationDefinition definition = GetActiveDefinition();
+
+            if (activeOperation.IsActive)
+            {
+                communicatorGateBlocked = false;
+                communicatorGateBlockedSinceTick = 0;
+            }
+            else if (!communicatorGateBlocked)
+            {
+                communicatorGateBlockedSinceTick = 0;
+            }
+            else
+            {
+                communicatorGateBlockedSinceTick = Math.Max(
+                    0,
+                    communicatorGateBlockedSinceTick);
+            }
 
             if (!activeOperation.IsActive || definition == null)
             {

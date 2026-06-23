@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.32-dev`
+> Dernière révision : `0.3.33-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -45,7 +45,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
-| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : observation de terrain, analyse d'un module de renseignement, accueil prolongé d'un agent blessé, remise de médicaments, appel de détresse et contrat de production livré à un rendez-vous temporaire ; refus sans pénalité avant engagement, conséquences après acceptation | 0.2.48-dev à 0.3.30-dev |
+| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : six archétypes, nouvelles offres limitées à un communicateur joueur alimenté, opérations déjà actives préservées pendant une panne et reprise différée du canal | 0.2.48-dev à 0.3.30-dev / accès 0.3.33-dev |
 | Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; six opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant avec slot unique, éligibilité avant tirage, délais cachés et anti-répétition | 0.3.23-dev à 0.3.30-dev |
 | Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev |
 | Contrat de production Tok'ra | Demande limitée aux objets réellement fabricables, rendez-vous mondial temporaire, remise depuis l'inventaire réel, période de grâce, interception de trajet et embuscade sur l'approche finale avec butin et reformation vanilla | 0.3.30-dev |
@@ -99,19 +99,19 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Noms culturels persistants | Générateurs dédiés aux Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC ; attribution unique aux nouvelles générations, protection des personnages existants et préparation de la distinction hôte/symbiote | 0.3.5-dev |
 | Réactions sociales contextuelles | Opinions et réactions selon l'identité Jaffa libre, Goa'uld, Tok'ra ou Grand Maître proche | 0.2.5-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement du SGC et biotechnologies Goa'uld | 0.2.8-dev |
-| Communicateur sécurisé Tok'ra | Bâtiment alimenté opéré par un colon : demandes fiables, évaluation tactique, état RP du canal et premiers déclencheurs de mission | 0.2.26-dev à 0.2.37-dev |
+| Communicateur sécurisé Tok'ra | Bâtiment alimenté opéré par un colon : construction liée à `Communications sécurisées Tok'ra`, compatibilité des bâtiments existants, diagnostic commun et accès aux nouvelles opérations récurrentes | 0.2.26-dev à 0.2.37-dev / construction et accès 0.3.33-dev |
 | Renseignement Tok'ra sur menace interceptée | Avertissement rare annonçant une attaque Goa'uld/Jaffa avant son arrivée, avec alerte persistante | 0.2.37-dev |
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
-| Opérations Tok'ra organiques | Framework récurrent avec observation de terrain, analyse de renseignements, accueil médical prolongé d'un agent blessé, remise médicale, appel de détresse sur site mondial et contrat de production vers un rendez-vous temporaire | 0.2.48-dev à 0.3.30-dev |
+| Opérations Tok'ra organiques | Framework récurrent avec six archétypes, slot unique, délais cachés, difficulté adaptative et nouvelles offres dépendantes d'un communicateur alimenté | 0.2.48-dev à 0.3.30-dev / accès 0.3.33-dev |
 
 ## Prévu
 
 | Élément | Direction actuelle |
 |---|---|
 | Diversification des opérations Tok'ra | Les six archétypes actuels sont jouables ; poursuivre plus tard avec de nouvelles opérations distinctes plutôt qu'en surchargeant les missions existantes |
-| Étude et déblocage des opérations Tok'ra | La mission de récupération de l'objet-clé est testable ; ajouter ensuite son étude, une recherche GateRim SG-1 dédiée avec prérequis Électricité, puis la construction du communicateur avant l'accès au pool récurrent |
+| Déblocage des opérations Tok'ra | L'introduction, l'étude et le prérequis de construction sont intégrés ; utiliser ensuite le communicateur disponible et alimenté pour autoriser les nouvelles offres du pool récurrent sans annuler les missions déjà engagées |
 | Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |

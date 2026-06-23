@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.33-dev - Gate Tok'ra operations behind the communicator
+
+- Require `SG1_TokraSecureCommunications` instead of vanilla `MicroelectronicsBasics` to construct the Tok'ra secure communicator.
+- Keep already-built communicators compatible with older saves; research completion gates new construction only.
+- Add a shared communicator-availability service for player home maps, ownership, GateRim configuration and active power.
+- Add `Tok'ra communicator: show availability` for technical diagnosis.
+- Gate every new recurrent Tok'ra offer behind at least one available powered communicator.
+- Keep the unique introduction mission independent from the communicator.
+- Preserve offered, accepted, ready and active operations when power or the building is lost.
+- Persist the blocked planner state through save/reload.
+- Replace an overdue offer check with a fresh hidden recurrence delay after the channel returns, preventing an immediate guaranteed offer.
+- Route natural selection, specific force-offer actions and map selection through the shared availability service.
+- Add `Tok'ra ops: make natural offer due` and extend framework diagnostics with gate and channel state.
+- Raise assembly version to `0.3.33.0` and mod metadata version to `0.3.33-dev`.
+
 ## 0.3.32-dev - Add Tok'ra cipher-module study and research
 
 - Start the milestone from final tag `v0.3.31-dev` on `feature/tokra-artifact-study-research`.

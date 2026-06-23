@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.32-dev`
+- Development version: `0.3.33-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -26,13 +26,14 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin
   dependency and formal ceremonies.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.
-- Tok'ra trust, safehouses, medical support, secure communications, recurring
-  organic operations, a distress-call world site, craft-and-deliver contracts
-  to temporary Tok'ra rendezvous and a sabotage mission on a temporary map.
+- Tok'ra trust, safehouses, medical support and secure communications; new
+  recurring organic operations require a powered player communicator, while
+  active operations survive channel loss. Distress-call sites, craft-and-deliver
+  contracts and a sabotage mission use temporary maps and world destinations.
 - A pre-communicator Tok'ra introduction mission with a natural encrypted
   offer, adaptive Goa'uld/Jaffa recovery site, physical cipher-module objective,
   long hidden retries until recovery and a three-session analysis that unlocks
-  the dedicated Tok'ra secure-communications research.
+  the dedicated research required for new communicator construction.
 - A reusable, Def-driven mission framework foundation with persistent runtime
   state, RP text variants, recurrence controls and RimWorld threat snapshots;
   the Tok'ra observation, intelligence-recovery, wounded-agent care,

@@ -1,56 +1,89 @@
-# Current validation — 0.3.32-dev
+# Validation finale — 0.3.33-dev-r2
 
-Jalon : `0.3.32-dev - Add Tok'ra cipher-module study and research`
-Version de DLL validée : `0.3.32.0`
-Dernière révision locale validée : `r2`
-Branche publiée : `feature/tokra-artifact-study-research`
-Tag final : `v0.3.32-dev`
-Base : `v0.3.31-dev`
+Jalon : `0.3.33-dev - Gate Tok'ra operations behind the communicator`
 
-## Résultat final
+Version de DLL validée : `0.3.33.0`
 
-Le contrôle de cohérence, le build local et les tests ciblés en jeu sont validés. Le jalon est clôturé et publié sous le tag final unique `v0.3.32-dev`.
+Branche : `feature/tokra-communicator-operation-gating`
 
-## Couverture validée
+Tag final : `v0.3.33-dev`
 
-- trois sessions d'analyse au banc de recherche sur le véritable module suivi ;
-- progression `0/3` à `3/3` conservée après sauvegarde/rechargement ;
-- refus d'une copie créée séparément avec le même `ThingDef` ;
-- module absent des dialogues de commerce tant que l'analyse est incomplète ;
-- conservation du module pendant les deux premières sessions ;
-- démantèlement physique pendant la troisième session ;
-- état d'analyse conservé après disparition de l'objet ;
-- recherche `Communications sécurisées Tok'ra` verrouillée par l'analyse et par `Électricité` ;
-- remplacement automatique d'un module perdu après un délai caché de `2–8` jours ;
-- progression déjà acquise conservée par le module de remplacement ;
-- un seul remplacement et une seule lettre après sauvegarde/rechargement ;
-- annulation du remplacement si le module original réapparaît avant l'échéance ;
-- validation développeur cohérente de la mission d'introduction avec création du véritable module lorsque nécessaire ;
-- recherche déjà terminée considérée comme autoritaire pour les scénarios personnalisés, starters, sauvegardes modifiées et outils développeur ;
-- fermeture automatique de l'arc, analyse satisfaite et absence d'objet inutile dans ces états avancés ;
-- communicateur existant et six opérations Tok'ra récurrentes inchangés ;
-- absence de nouvelle erreur de chargement, recherche, travail ou traduction constatée pendant les tests.
+## Résultat r1 — construction et disponibilité
 
-## Précision sur le remplacement
+- `SG1_TokraSecureCommunications` verrouille les nouvelles constructions du communicateur.
+- Les communicateurs construits avant ce changement restent utilisables.
+- Le service commun reconnaît correctement une carte de colonie joueur, la propriété, les composants requis et l'alimentation active.
+- La coupure et le retour du courant sont reflétés par `Tok'ra communicator: show availability`.
+- Sauvegarde et rechargement ne modifient pas l'état physique du canal.
 
-La récupération après perte fonctionne automatiquement. Après détection de l'absence du module, le système programme et persiste une échéance aléatoire de `2–8` jours en jeu. L'action développeur `Tok'ra study: make replacement due` sert uniquement à accélérer ce délai pendant les tests.
+## Résultat r2 — blocage d'une nouvelle offre
 
-## Régressions durables
+Validation effectuée avec :
 
-- toujours vérifier le `ThingID` suivi plutôt que le seul `ThingDef` ;
-- ne jamais rendre le module vendable avant la fin de l'analyse ;
-- ne pas laisser le module physique survivre à la troisième session ;
-- ne jamais réinitialiser les sessions déjà terminées lors d'un remplacement ;
-- ne générer qu'un seul module de remplacement et annuler son échéance si l'original réapparaît ;
-- ne jamais générer d'offre, de site ou de module lorsque `SG1_TokraSecureCommunications` est déjà terminée ;
-- conserver la réconciliation au chargement pour les starters, scénarios personnalisés et sauvegardes modifiées ;
-- revalider tout ce flux lors de l'ajout du prérequis de construction du communicateur et du verrouillage des opérations récurrentes.
+```text
+Debug actions menu
+-> GateRim SG-1
+-> Tok'ra ops: make natural offer due
+```
 
-## Outils développeur conservés
+Puis :
 
-- `Tok'ra study: show state`
-- `Tok'ra study: finish module analysis`
-- `Tok'ra study: destroy tracked module`
-- `Tok'ra study: make replacement due`
-- `Tok'ra study: reset module analysis`
-- `Tok'ra intro: recover key artifact`
+```text
+Debug actions menu
+-> GateRim SG-1
+-> Tok'ra ops: show framework state
+```
+
+Résultats validés sans communicateur alimenté :
+
+- `Communicator gate blocked: True` ;
+- `Communicator available: False` ;
+- aucune lettre d'offre ;
+- aucun archétype actif ;
+- aucun échec, refus ou changement de confiance ;
+- aucune relance horaire créant une offre ;
+- sauvegarde/rechargement conservant le verrou et le slot vide.
+
+## Résultat r2 — reprise organique du canal
+
+Après construction, rallumage ou réalimentation d'un communicateur valide :
+
+- `Communicator gate blocked: False` ;
+- `Communicator available: True` ;
+- `Next opportunity tick` est recalculé dans le futur ;
+- aucune lettre n'apparaît immédiatement au retour du courant ;
+- sauvegarde/rechargement conserve la nouvelle échéance sans nouveau tirage.
+
+L'action suivante a ensuite produit une seule offre normale par le véritable tirage pondéré :
+
+```text
+Debug actions menu
+-> GateRim SG-1
+-> Tok'ra ops: roll next natural offer
+```
+
+## Résultat r2 — opération existante préservée
+
+- Une offre déjà visible reste dans le slot actif lorsque le communicateur perd son alimentation ou est détruit.
+- Sauvegarde/rechargement ne supprime ni ne remplace cette offre.
+- Le retour du canal permet de reprendre le flux normal.
+- La coupure ne modifie pas l'archétype, ne crée pas une seconde opération, n'ajoute pas de conséquence de confiance et ne duplique pas la lettre.
+- Les délais propres à l'opération continuent à suivre leurs règles existantes.
+- Les actions `Tok'ra ops: force ... offer` ne contournent pas le verrou en l'absence de communicateur valide.
+
+## Contrôles finaux
+
+- contrôle de cohérence du projet réussi pour `0.3.33-dev`, `0.3.33.0` et `83` backstories ;
+- rebuild forcé validé ;
+- aucune nouvelle erreur GateRim SG-1 signalée dans `Player.log` ;
+- mission d'introduction conservée hors du verrou récurrent ;
+- demandes manuelles du communicateur conservées hors du planificateur organique ;
+- passe finale des textes joueur terminée sans correction supplémentaire nécessaire ;
+- diagnostic technique réservé au mode développeur ou aux informations avancées ;
+- page wiki des opérations organiques mise à jour avec l'accès au canal et la reprise différée.
+
+## Limites conservées
+
+- Une panne ne met pas en pause les échéances d'une opération déjà proposée ou acceptée.
+- Le jalon ne modifie pas les poids, récompenses, conséquences ou difficultés propres aux six archétypes existants.
+- L'équilibrage statistique sur de très longues parties reste évolutif et ne remet pas en cause la validation fonctionnelle du verrou.

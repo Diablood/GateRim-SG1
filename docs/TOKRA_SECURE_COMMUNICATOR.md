@@ -1,6 +1,6 @@
 # Tok'ra secure communicator
 
-Version: `0.2.36-dev`
+Current operation gate: `0.3.33-dev-r2`
 
 The Tok'ra secure communicator is the trusted-channel interaction point for
 advanced Tok'ra support. It is still deliberately limited: the Tok'ra remain
@@ -10,7 +10,7 @@ clandestine and do not become a normal allied faction.
 
 ```text
 buildable powered communicator
-requires Microelectronics
+requires `SG1_TokraSecureCommunications` for new construction
 operated by a selected player colonist
 right-click interaction on the communicator
 usable only at trusted Tok'ra confidence
@@ -70,6 +70,13 @@ no quest start yet
 The building uses `Comp_TokraSecureCommunicator`. The component checks player
 control, power, trusted Tok'ra tier, active hostile pawns and its stored
 defensive-diversion cooldown.
+
+Since `0.3.33-dev-r1`, new construction requires the dedicated
+`SG1_TokraSecureCommunications` research. Existing buildings remain usable in
+older saves. `TokraSecureCommunicatorAvailabilityUtility` provides the shared
+physical-channel test used by later orchestration: player home map, player
+ownership, valid GateRim communicator component and active power. Trust remains
+separate because different operations can use different diplomatic thresholds.
 
 This keeps the current Tok'ra design intact: support is useful in a crisis, but
 rare, defensive and non-repeatable in the short term.
@@ -134,3 +141,31 @@ persistent briefing-received state
 visible in the channel status report
 no site, raid or immediate reward
 ```
+
+
+## 0.3.33-dev-r2 recurrent-operation gate
+
+The shared service now owns eligibility for every new recurrent Tok'ra offer. If no powered player communicator exists on any player home map, the organic-operation manager records a persistent blocked state and does not create or consume an offer. The introduction-artifact mission remains separate.
+
+An operation already in the single active slot is never cleared merely because the channel loses power or the building is destroyed. Its own offer or mission deadlines continue to follow the rules that existed before this gate.
+
+When channel availability returns, an overdue planner check is not executed immediately. The manager schedules a fresh hidden recurrence delay using the current trust tier and the last offered archetype. This preserves long-game pacing and prevents predictable instant contact after reconnecting power.
+
+Focused developer checks:
+
+```text
+Debug actions menu
+-> GateRim SG-1
+-> Tok'ra communicator: show availability
+-> Tok'ra ops: make natural offer due
+-> Tok'ra ops: show framework state
+-> Tok'ra ops: roll next natural offer
+```
+
+Expected sequence:
+
+- no communicator: the natural timer becomes due, no offer appears and the framework report shows the gate blocked;
+- save/reload: the blocked state remains;
+- powered communicator restored: the gate clears and a new future opportunity tick is scheduled;
+- forced natural roll after restoration: exactly one normal weighted offer is created;
+- power loss with an existing offer or active operation: the same slot remains intact.

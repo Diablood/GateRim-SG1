@@ -30,7 +30,7 @@
         </costList>
         <designationCategory>Misc</designationCategory>
         <researchPrerequisites>
-            <li>MicroelectronicsBasics</li>
+            <li>SG1_TokraSecureCommunications</li>
         </researchPrerequisites>
         <comps>
             <li Class="CompProperties_Power">

@@ -297,6 +297,19 @@ namespace GateRimSG1.Goauld
 
         [DebugAction(
             "GateRim SG-1",
+            "Tok'ra ops: make natural offer due",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap)]
+        public static void MakeNaturalOfferDue()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugMakeNextNaturalOpportunityDue(),
+                "GR_TokraOrganicOperation_DebugNaturalDue");
+        }
+
+        [DebugAction(
+            "GateRim SG-1",
             "Tok'ra ops: roll next natural offer",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap)]

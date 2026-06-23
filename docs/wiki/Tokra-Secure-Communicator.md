@@ -10,7 +10,7 @@ faction alliée classique.
 ## Construction et utilisation
 
 - bâtiment alimenté ;
-- recherche Microélectronique requise ;
+- recherche dédiée `Communications sécurisées Tok'ra` requise pour toute nouvelle construction ;
 - interaction principale par un colon sélectionné puis clic droit ;
 - courte utilisation du bâtiment avant l'ouverture d'une fenêtre ou la
   transmission de la demande ;
@@ -18,6 +18,10 @@ faction alliée classique.
 
 Les demandes manuelles sensibles exigent généralement une confiance fiable.
 Certaines offres organiques initiées par les Tok'ra peuvent apparaître plus tôt.
+
+Depuis `0.3.33-dev`, la recherche dédiée remplace Microélectronique comme verrou direct de construction. Elle dépend elle-même d'Électricité et de l'analyse du module de chiffrement récupéré pendant la mission d'introduction. Un communicateur déjà construit dans une ancienne sauvegarde reste utilisable : le nouveau prérequis ne détruit ni ne désactive les bâtiments existants.
+
+Le canal doit aussi rester réellement disponible pour recevoir une nouvelle opération Tok'ra organique : au moins un communicateur contrôlé par le joueur doit être construit sur une carte de colonie et alimenté. Une coupure ou la destruction du bâtiment empêche seulement les nouvelles offres. Une opération déjà proposée ou engagée reste enregistrée. Après rétablissement du canal, les Tok'ra attendent un nouveau délai caché avant de reprendre contact ; aucune mission n'est garantie immédiatement.
 
 ## Fonctions actuelles
 

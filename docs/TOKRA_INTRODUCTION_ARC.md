@@ -4,7 +4,7 @@
 
 The introduction arc establishes first contact before the Tok'ra communicator exists. It is not one of the recurrent organic operations and does not use their single active slot.
 
-The arc provides a physical Tok'ra cipher module. Milestone `0.3.32-dev` adds direct study of that exact artifact and a dedicated secure-communications research project. Later milestones will require that research to construct the communicator and unlock recurrent Tok'ra operations.
+The arc provides a physical Tok'ra cipher module. Milestone `0.3.32-dev` adds direct study of that exact artifact and a dedicated secure-communications research project. Milestone `0.3.33-dev` requires that research for new communicator construction while preserving already-built communicators in older saves. Its r2 planner gate also requires an available powered communicator for every new recurrent operation, while this introduction mission remains independent.
 
 ## Uniqueness rule
 
@@ -105,7 +105,7 @@ After permanent introduction success, the exact tracked module can be analyzed o
 - the `ThingID` stored by the introduction arc is checked before every interaction and completion;
 - another `SG1_TokraIntroductionArtifact` created through debug or another source cannot satisfy the requirement.
 
-The research project `SG1_TokraSecureCommunications` appears in the GateRim SG-1 tab. It requires both vanilla `Electricity` and completed analysis of the module. Research progress then uses the normal RimWorld research manager. Communicator construction and recurrent-operation gating remain separate follow-up milestones.
+The research project `SG1_TokraSecureCommunications` appears in the GateRim SG-1 tab. It requires both vanilla `Electricity` and completed analysis of the module. Research progress then uses the normal RimWorld research manager. New communicator construction requires this project, and recurrent operations require a powered communicator after construction.
 
 A completed introduction arc must never become a dead end. If the tracked module disappears before analysis is complete, the component records a hidden `2–8` day replacement delay. Once due and a player home map exists, a concealed Tok'ra courier deposits one new tracked module and sends one RP letter. If the original module reappears before the delay ends, the replacement is cancelled. Analysis progress is preserved.
 
@@ -153,5 +153,5 @@ The following remain later work:
 
 - final scene dressing and a dedicated artifact texture;
 - broader balance passes across more colony wealth and storyteller combinations;
-- communicator construction prerequisites;
+- validation of the new communicator construction prerequisite and shared availability service;
 - gating recurrent operations behind an available powered communicator.
