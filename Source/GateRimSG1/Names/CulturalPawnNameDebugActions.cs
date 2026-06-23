@@ -1,4 +1,3 @@
-using LudeonTK;
 using Verse;
 
 namespace GateRimSG1.Names
@@ -9,11 +8,6 @@ namespace GateRimSG1.Names
     /// </summary>
     public static class CulturalPawnNameDebugActions
     {
-        [DebugAction(
-            "GateRim SG-1",
-            "Cultural names: show samples",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ShowSamples()
         {
             OpenSampleReport();

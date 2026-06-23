@@ -1,69 +1,56 @@
-# Validation finale — 0.3.34-dev
+# Validation finale — 0.3.35-dev
 
-Jalon : `0.3.34-dev - Add Tok'ra diversion assault operation`
+Jalon : `0.3.35-dev - Reorganize GateRim SG-1 debug actions into logical submenus`
 
-Branche publiée : `feature/tokra-decoy-transmission-defense`
+Branche : `feature/debug-action-menu-reorganization`
 
-Tag de départ : `v0.3.33-dev`
+Tag de départ : `v0.3.34-dev`
 
-Tag final : `v0.3.34-dev`
+Révision locale finale validée : `0.3.35-dev-r2`
 
-Dernière révision locale validée : `0.3.34-dev-r3`
+Version de DLL validée : `0.3.35.0`
 
-Version de DLL validée : `0.3.34.0`
+Tag final publié : `v0.3.35-dev`
 
-## 1. Suppressions validées
+## Validation locale terminée
 
-Les cinq fichiers obsolètes du transmetteur r1 sont absents de l'état final :
+- `./tools/check-project-consistency.cmd` termine sans erreur.
+- Le rebuild forcé produit la DLL `0.3.35.0`.
+- La catégorie native `GateRim SG-1` contient directement, dans cet ordre :
+  1. `Tok'ra...`
+  2. `Jaffa...`
+  3. `Culture...`
+  4. `Inspect mission definitions`
+- Aucun niveau intermédiaire `GateRim SG-1...` n'est présent.
+- Les anciennes entrées plates `Tok'ra ops: ...`, `Tok'ra intro: ...`, `Tok'ra study: ...`, `Jaffa mark: ...` et `Cultural names: ...` ne sont plus enregistrées séparément.
+- Le sous-menu Tok'ra conserve l'ordre communicateur, introduction, étude du module, opérations organiques, puis chaîne des planques et renseignements.
+- Les opérations organiques affichent d'abord le framework, puis les sept archétypes récurrents dans leur ordre établi.
+- Les rapports représentatifs du communicateur, de l'introduction, de l'étude, du framework organique et des MissionDefs s'ouvrent correctement.
+- Une offre d'observation peut toujours être forcée lorsque ses préconditions sont satisfaites.
+- Les outils de confiance, les échantillons de noms culturels et les autres actions testées conservent leur comportement antérieur.
+- `GateRim SG-1 → Jaffa... → Forehead marks...` active toujours l'outil de ciblage de pawn pour appliquer ou retirer une marque.
+- Les ouvertures répétées, la navigation et la sauvegarde/rechargement ne créent aucun doublon.
+- Aucune nouvelle erreur liée à `DebugActionNode`, `GateRimDebugActionMenu`, aux délégués ou aux méthodes déplacées n'a été signalée pendant la validation.
 
-- `1.6/Defs/ThingDefs_Buildings/SG1_TokraDecoyTransmitter.xml` ;
-- `Languages/French/DefInjected/ThingDef/SG1_TokraDecoyTransmitter.xml` ;
-- `Source/GateRimSG1/Goauld/TokraDecoyTransmissionDefenseUtility.cs` ;
-- `docs/TOKRA_DECOY_TRANSMISSION_DEFENSE.md` ;
-- `docs/wiki/Tokra-Decoy-Transmission-Defense.md`.
+## Limites confirmées
 
-Aucune texture n'a été ajoutée ou supprimée pour le prototype rejeté. La r3 n'exigeait aucune suppression supplémentaire.
+- Aucun gameplay, état de mission, format de sauvegarde, Def, traduction ou texte joueur n'est modifié.
+- Les gizmos contextuels et rapports avancés sur les objets sélectionnés restent inchangés.
+- Le jalon n'ajoute ni recherche, ni fenêtre personnalisée, ni texture.
+- Aucun fichier n'est supprimé.
 
-## 2. Contrôles et build validés
+## Couverture durable
 
-- branche `feature/tokra-decoy-transmission-defense` ;
-- version publique `0.3.34-dev` ;
-- versions projet, assemblage et fichier `0.3.34.0` ;
-- `83` BackstoryDef uniques ;
-- contrôle de cohérence positif ;
-- rebuild forcé réussi ;
-- chargement sans erreur de configuration du groupe `SG1_TokraDiversionAssault` ou du sapeur Ma'Tok requis.
+Les régressions à maintenir sont enregistrées dans `docs/TESTING.md`, notamment :
 
-## 3. Validation fonctionnelle r3
+- les quatre entrées directes et leur ordre ;
+- l'absence permanente d'un wrapper `GateRim SG-1...` ;
+- l'absence de retour des anciennes actions plates ;
+- l'ordre des branches Tok'ra et des sept opérations organiques ;
+- la conservation des outils `ToolMapForPawns` pour les marques Jaffa ;
+- l'absence d'exception après navigation répétée et sauvegarde/rechargement ;
+- l'invisibilité de ces outils hors du mode développeur.
 
-Le correctif ciblé a été validé après redémarrage complet de RimWorld :
+## Publication
 
-- l'offre de diversion peut être forcée et acceptée sans objet physique ni transmetteur ;
-- `Tok'ra ops: force diversion assault` produit un seul raid Goa'uld/Jaffa ;
-- le budget reste dans les bornes de mission `180–3000` et ne monte plus artificiellement vers `104999` ;
-- le rapport `Tok'ra ops: show framework state` indique des assaillants enregistrés et au moins un sapeur enregistré ;
-- au moins un `Goa'uld Jaffa breacher` / `sapeur Jaffa au service des Goa'uld` apparaît avec un Ma'Tok ;
-- le groupe attaque les murs ou les accès fermés avec le comportement vanilla de brèche ;
-- une sauvegarde/recharge pendant l'assaut conserve la même force et ne crée pas de second raid ;
-- la neutralisation de tous les assaillants résout une seule réussite ;
-- la réussite accorde `+3` de confiance une seule fois et libère le slot organique ;
-- aucune seconde lettre ou modification de confiance n'apparaît après rechargement ;
-- `Player.log` ne contient plus les erreurs de `MinimumPoints`, de pawn requis absent, de `PawnGroupMaker` inutilisable ou d'échec de démarrage de l'assaut.
-
-## 4. Couverture durable non rejouée pendant la passe finale
-
-Les chemins suivants restent documentés dans `docs/TESTING.md` mais n'ont pas été présentés comme rejoués lors de la validation ciblée r3 :
-
-- fuite ennemie les mains vides ;
-- sortie réelle avec un otage ;
-- sortie réelle avec du butin ;
-- perte de carte ;
-- comparaison entre colonie faible et colonie avancée ;
-- récurrence, anti-répétition et verrou du communicateur ;
-- régression complète des six opérations Tok'ra précédentes.
-
-Ils doivent être repris lors de toute modification future de cette opération, de la stratégie de raid, du runtime de mission ou du planificateur partagé.
-
-## 5. Publication
-
-Le jalon est clôturé sur la révision locale `r3`, publié sur la branche `feature/tokra-decoy-transmission-defense`, tagué `v0.3.34-dev` et synchronisé avec le wiki séparé.
+La branche `feature/debug-action-menu-reorganization`, le tag final unique `v0.3.35-dev` et les pages wiki modifiées sont publiés. Le prochain jalon doit partir explicitement de `v0.3.35-dev`.

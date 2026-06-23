@@ -1,5 +1,23 @@
 # GateRim SG-1 — Roadmap durable
 
+## Dernier jalon clôturé — Réorganisation du menu debug (`0.3.35-dev`)
+
+- [x] Partir explicitement de `v0.3.34-dev` sur `feature/debug-action-menu-reorganization`.
+- [x] Choisir un jalon de maintenance ciblé avant d'ajouter de nouvelles missions afin de ne pas prolonger la liste plate existante.
+- [x] Remplacer les soixante-dix entrées séparées par quatre entrées ordonnées directement dans la catégorie native `GateRim SG-1`.
+- [x] Regrouper les actions par système, mission et phase logique de test.
+- [x] Préserver les méthodes et comportements existants sans toucher aux états sauvegardés ni au gameplay.
+- [x] Mettre à jour les chemins développeur dans les documents de test durables.
+- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.35.0`.
+- [x] Valider en jeu l'ordre des menus, les rapports, les actions ordinaires et les outils ciblant les pawns.
+- [x] Vérifier l'absence de doublons, d'anciennes entrées plates et de nouvelles erreurs liées au menu debug.
+- [x] Effectuer le verrou documentaire final et publier le tag unique `v0.3.35-dev`.
+- [x] Synchroniser les pages wiki modifiées avec le dépôt wiki séparé.
+
+La révision finale `r2` utilise directement la catégorie native `GateRim SG-1` et évite le niveau intermédiaire redondant proposé en r1. Les quatre entrées principales, la hiérarchie Tok'ra, les sept opérations organiques, les rapports représentatifs et le ciblage des marques Jaffa sont validés. Aucun gameplay, état sauvegardé, Def, texte joueur, fichier source ou texture n'est supprimé.
+
+Le jalon est publié sous le tag final unique `v0.3.35-dev`. Le prochain jalon doit partir explicitement de ce tag sur une nouvelle branche dédiée après relecture des procédures du dépôt.
+
 ## Dernier jalon clôturé — Assaut de diversion Tok'ra (`0.3.34-dev`)
 
 - [x] Partir explicitement de `v0.3.33-dev` sur `feature/tokra-decoy-transmission-defense`.
@@ -26,7 +44,7 @@
 
 La révision finale `r3` remplace le groupe `Combat` incompatible par un groupe de mission explicitement sélectionné. Le sapeur dédié hérite du Ma'Tok, déjà capable d'endommager les structures, et n'entre dans aucun raid Goa'uld ordinaire. Le raid, la brèche, la persistance et la victoire par combat sont validés. Les voies de fuite, otage, butin, perte de carte, comparaison faible/avancée et régressions complètes des six opérations précédentes restent conservées comme couverture durable dans `docs/TESTING.md`, sans être présentées comme rejouées lors de la passe ciblée finale.
 
-Le jalon est publié sous le tag final unique `v0.3.34-dev`. Le prochain jalon doit partir explicitement de ce tag sur une nouvelle branche dédiée après relecture du backlog durable.
+Le jalon est publié sous le tag final unique `v0.3.34-dev`. Le jalon de maintenance `0.3.35-dev` part explicitement de ce tag sur la branche dédiée `feature/debug-action-menu-reorganization`.
 
 ## Dernier jalon clôturé — Accès aux opérations par communicateur (`0.3.33-dev`)
 
@@ -623,6 +641,7 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 
 ## Interface et outils de debug
 
+- [x] Remplacer la liste plate des actions développeur par des entrées ordonnées directement dans la catégorie native `GateRim SG-1`, avec des sous-menus par système, mission et phase logique (`0.3.35-dev`, publié sous `v0.3.35-dev`).
 - [ ] Continuer à regrouper les actions de debug d'un même appareil dans un gizmo unique ouvrant un menu.
 - [ ] Regrouper les actions par thème ou par phase avec des libellés courts et homogènes.
 - [ ] Garder les détails techniques dans les rapports debug, les messages développeur ou les logs.

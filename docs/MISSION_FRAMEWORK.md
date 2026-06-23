@@ -135,7 +135,7 @@ Validation used the exact developer actions:
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Mission framework: inspect definitions
+→ Inspect mission definitions
 ```
 
 and:
@@ -143,7 +143,10 @@ and:
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Tok'ra ops: force wounded agent offer
+→ Tok'ra...
+→ Organic operations...
+→ Wounded agent...
+→ Force offer
 ```
 
 The validated happy path accepts through the powered communicator, rescues the downed agent into a colony medical bed, tends the symbiote shock, keeps the pawn above the configured thresholds for `5000` ticks and confirms success only after the agent leaves the map alive. Failure, adaptive difficulty on weak and advanced colonies, save/load, recurrence, text variation and regression coverage were also validated and remain documented in `docs/TESTING_CURRENT.md` and `docs/TESTING.md`.
@@ -230,7 +233,10 @@ Two developer-only actions support long-run validation:
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Tok'ra ops: roll next natural offer
+→ Tok'ra...
+→ Organic operations...
+→ Framework...
+→ Roll next natural offer
 ```
 
 This action uses the real natural filter, repeat penalty and weighted draw. It does not force a particular archetype and refuses to replace an active occurrence.
@@ -238,7 +244,10 @@ This action uses the real natural filter, repeat penalty and weighted draw. It d
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Tok'ra ops: audit long-term orchestration
+→ Tok'ra...
+→ Organic operations...
+→ Framework...
+→ Audit long-term orchestration
 ```
 
 The audit report shows the global active slot, hidden scheduling state, outcome counters, current offerability, every trust-tier weight and delay, text-bank counts and a deterministic `5000`-draw simulation per tier. The simulation verifies reachability and reports immediate-repeat frequency without mutating the save.
@@ -297,7 +306,7 @@ With developer mode enabled:
 ```text
 Debug actions menu
 → GateRim SG-1
-→ Mission framework: inspect definitions
+→ Inspect mission definitions
 ```
 
 The report lists:

@@ -47,10 +47,10 @@ This milestone only prepares the distinction. It does not yet expose both names 
 
 ## Debug access
 
-One grouped debug action is available in RimWorld developer mode:
+The existing `GateRim SG-1` developer category exposes the grouped culture submenu:
 
 ```text
-Cultural names: show samples
+GateRim SG-1 → Culture... → Show cultural name samples
 ```
 
 The same sample report is available from the GateRim SG-1 settings page when advanced debug information is enabled.

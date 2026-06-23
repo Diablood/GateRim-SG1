@@ -111,7 +111,7 @@ A completed introduction arc must never become a dead end. If the tracked module
 
 Research completion is authoritative. At load and during periodic reconciliation, an already completed `SG1_TokraSecureCommunications` project automatically satisfies the analysis requirement, closes any pending introduction offer or site, consumes any tracked module and prevents all future introduction offers or replacement objects. This covers custom starters, edited scenarios and developer-mode research completion.
 
-Developer completion follows the same rules. `Tok'ra intro: recover key artifact` can close the introduction arc and create the genuine analyzable module even when no active attempt exists; if analysis or research is already satisfied, it closes the arc without creating an obsolete object.
+Developer completion follows the same rules. `GateRim SG-1 → Tok'ra... → Introduction arc... → Recover key artifact` can close the introduction arc and create the genuine analyzable module even when no active attempt exists; if analysis or research is already satisfied, it closes the arc without creating an obsolete object.
 
 ## Separation from recurrent operations
 
@@ -121,25 +121,25 @@ It therefore does not occupy the recurrent-operation slot, expose their catalogu
 
 ## Developer actions
 
-All actions are under `Debug actions menu → GateRim SG-1`:
+All actions are under `Debug actions menu → GateRim SG-1 → Tok'ra...`:
 
-- `Tok'ra intro: make opportunity due`
-- `Tok'ra intro: force offer`
-- `Tok'ra intro: accept offer`
-- `Tok'ra intro: decline offer`
-- `Tok'ra intro: fail attempt`
-- `Tok'ra intro: expire offer`
-- `Tok'ra intro: move site to deadline warning`
-- `Tok'ra intro: expire active site`
-- `Tok'ra intro: destroy tracked artifact`
-- `Tok'ra intro: recover key artifact`
-- `Tok'ra intro: show state`
-- `Tok'ra intro: reset arc`
-- `Tok'ra study: show state`
-- `Tok'ra study: finish module analysis`
-- `Tok'ra study: destroy tracked module`
-- `Tok'ra study: make replacement due`
-- `Tok'ra study: reset module analysis`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Make opportunity due`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Force offer`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Accept offer`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Decline offer`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Fail attempt`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Expire offer`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Move site to deadline warning`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Expire active site`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Destroy tracked artifact`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Recover key artifact`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Show state`
+- `GateRim SG-1 → Tok'ra... → Introduction arc... → Reset arc`
+- `GateRim SG-1 → Tok'ra... → Module study... → Show state`
+- `GateRim SG-1 → Tok'ra... → Module study... → Finish module analysis`
+- `GateRim SG-1 → Tok'ra... → Module study... → Destroy tracked module`
+- `GateRim SG-1 → Tok'ra... → Module study... → Make replacement due`
+- `GateRim SG-1 → Tok'ra... → Module study... → Reset module analysis`
 
 The exact focused protocol is maintained in `docs/TESTING_CURRENT.md`.
 

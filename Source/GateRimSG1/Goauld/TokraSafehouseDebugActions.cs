@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using LudeonTK;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -8,11 +7,6 @@ namespace GateRimSG1.Goauld
 {
     public static class TokraSafehouseDebugActions
     {
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra safehouse: prepare",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void PrepareSafehouseSiteTest()
         {
             List<WorldObject> safehouseObjects
@@ -61,11 +55,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra safehouse: create",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void CreateSafehouseTestSite()
         {
             Map map = Find.CurrentMap;
@@ -97,32 +86,16 @@ namespace GateRimSG1.Goauld
             }
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra trust: +5",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void IncreaseTokraTrustTestStep()
         {
             AdjustTokraTrustForDebug(5);
         }
 
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra trust: -5",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void DecreaseTokraTrustTestStep()
         {
             AdjustTokraTrustForDebug(-5);
         }
 
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra safehouse: verify",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void VerifySafehouseContactTest()
         {
             Map map = Find.CurrentMap;
@@ -187,12 +160,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra cache: deliver",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void DeliverTokraFirstMissionCacheTest()
         {
             Map map = Find.CurrentMap;
@@ -235,12 +202,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra cache: reset",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ResetTokraFirstMissionCacheTest()
         {
             if (!GameComponent_TokraTrustTracker
@@ -259,13 +220,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra lead: decode",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void DecodeTokraMissionLeadTest()
         {
             GameComponent_TokraTrustTracker.DebugSetTrustScore(
@@ -287,12 +241,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra site: reveal",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void RevealTokraDecodedMissionWorldSiteTest()
         {
             Map map = Find.CurrentMap;
@@ -325,12 +273,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra site: recon",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ReconTokraDecodedMissionWorldSiteTest()
         {
             GameComponent_TokraTrustTracker.DebugSetTrustScore(
@@ -353,12 +295,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra relay: prepare",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void PrepareTokraRelaySabotageObjectiveTest()
         {
             GameComponent_TokraTrustTracker.DebugSetTrustScore(
@@ -382,14 +318,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra relay: complete",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void CompleteTokraRelaySabotageTest()
         {
             GameComponent_TokraTrustTracker.DebugSetTrustScore(
@@ -412,12 +340,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra threat: create",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void CreateTokraInterceptedThreatTest()
         {
             Map map = Find.CurrentMap;
@@ -452,11 +374,6 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
-        [DebugAction(
-            "GateRim SG-1",
-            "Tok'ra threat: clear",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ClearTokraInterceptedThreatTest()
         {
             if (!GameComponent_TokraInterceptedThreatTracker

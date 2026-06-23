@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.35-dev - Reorganize GateRim SG-1 debug actions into logical submenus
+
+- Replace seventy separate GateRim SG-1 debug-action entries with four ordered entries directly inside the existing `GateRim SG-1` category.
+- Avoid an additional `GateRim SG-1...` wrapper that would add a redundant click.
+- Group Tok'ra tools into communicator, introduction, module-study, organic-operation and safehouse/intelligence branches.
+- Give the shared organic-operation framework and each of the seven recurrent archetypes a dedicated submenu.
+- Order actions by practical test flow: report, scheduling or offer, progression, outcome, then reset.
+- Group Jaffa forehead-mark pawn tools and cultural diagnostics in their own category-level submenus, with MissionDef inspection as a direct category action.
+- Preserve all existing debug method implementations while removing their individual menu attributes.
+- Keep the complete menu restricted to developer mode on an active map.
+- Update durable technical documentation and exact developer-menu paths.
+- Raise assembly version to `0.3.35.0` and mod metadata version to `0.3.35-dev`.
+- Validate final local revision `r2`, including direct category entries, logical submenu order, representative reports, Jaffa pawn targeting, save/reload and the absence of duplicate legacy actions.
+- Publish branch `feature/debug-action-menu-reorganization`, final tag `v0.3.35-dev` and the synchronized wiki.
+
 ## 0.3.34-dev - Add Tok'ra diversion assault operation
 
 - Add `SG1_TokraOrganic_DecoyTransmissionDefense` as the seventh recurrent MissionDef-backed Tok'ra operation while retaining its stable internal r1 identifier for save compatibility.

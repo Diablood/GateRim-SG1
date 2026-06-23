@@ -1,5 +1,38 @@
 # Tests
 
+## 0.3.35-dev - Nested debug-action menu
+
+Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.35-dev`. La r1 avait ajouté un wrapper `GateRim SG-1...` redondant sous la catégorie native ; la r2 l'a supprimé et expose directement les quatre entrées principales.
+
+Couverture validée :
+
+- contrôle de cohérence positif pour `0.3.35-dev`, `0.3.35.0` et `83` backstories ;
+- rebuild forcé et DLL `0.3.35.0` ;
+- présence directe de `Tok'ra...`, `Jaffa...`, `Culture...` et `Inspect mission definitions` dans la catégorie native `GateRim SG-1`, dans cet ordre ;
+- absence d'un niveau intermédiaire `GateRim SG-1...` ;
+- absence des anciennes entrées plates `Tok'ra ops:`, `Tok'ra intro:`, `Tok'ra study:`, `Jaffa mark:` et des diagnostics de noms culturels ;
+- ordre correct de la branche Tok'ra : communicateur, introduction, étude du module, opérations organiques, puis chaîne des planques et renseignements ;
+- ordre correct des opérations organiques : framework, observation, récupération de renseignements, agent blessé, remise médicale, appel de détresse, livraison à une base temporaire et assaut de diversion ;
+- ouverture correcte des rapports représentatifs et conservation du comportement des actions statiques existantes ;
+- forçage d'une offre d'observation lorsque les préconditions sont satisfaites ;
+- fonctionnement des outils de confiance et des échantillons de noms culturels ;
+- ouverture directe du rapport des MissionDefs sans sous-menu supplémentaire ;
+- conservation de `ToolMapForPawns` pour appliquer et retirer les marques frontales Jaffa ;
+- navigation répétée et sauvegarde/rechargement sans doublon ni nouvelle erreur de menu debug signalée ;
+- absence de modification du gameplay, des états sauvegardés, des Defs, des traductions, des textes joueur, des gizmos contextuels et des rapports avancés sur objets.
+
+Points de régression durables :
+
+- conserver exactement quatre entrées au niveau de la catégorie tant que de nouveaux systèmes majeurs ne justifient pas une nouvelle branche ;
+- ne jamais réintroduire un wrapper portant le même nom que la catégorie native ;
+- ajouter toute nouvelle mission récurrente dans `Organic operations...` selon un ordre durable plutôt que comme action plate ;
+- garder les rapports avant les actions de préparation, progression, résultat et nettoyage à l'intérieur de chaque sous-menu ;
+- préserver les méthodes d'action existantes comme source unique de comportement : le menu ne doit contenir que des délégués vers ces méthodes ;
+- vérifier toute action utilisant `ToolMapForPawns` après un déplacement ou un renommage ;
+- maintenir les outils dans le mode développeur RimWorld et ne pas les exposer en jeu normal ;
+- rouvrir plusieurs fois les menus et tester après sauvegarde/rechargement lors de toute modification de `GateRimDebugActionMenu`;
+- mettre à jour les chemins exacts dans `docs/TESTING_CURRENT.md`, `docs/TESTING.md` et les documents techniques concernés lorsqu'un niveau ou un libellé change.
+
 ## 0.3.34-dev - Assaut de diversion Tok'ra
 
 Validation locale terminée sur la révision `r3`, puis jalon publié sous `v0.3.34-dev`. La r1 a validé la fondation technique mais son objectif physique a été supprimé. La r2 a chargé le flux sans objet, puis son raid a échoué parce que la stratégie vanilla de brèche recevait le groupe `Combat`, dépourvu de pawn marqué `isGoodBreacher`. La r3 a ajouté un groupe de mission dédié et un sapeur Jaffa Ma'Tok compatible.
@@ -51,10 +84,10 @@ Couverture validée :
 - remplacement du prérequis direct `MicroelectronicsBasics` par `SG1_TokraSecureCommunications` sans invalider les communicateurs déjà construits ;
 - diagnostic commun d'une carte de colonie joueur, de la propriété, de la configuration GateRim et de l'alimentation active ;
 - disponibilité correcte avec un ou plusieurs communicateurs, y compris après coupure, retour du courant et sauvegarde/rechargement ;
-- absence de nouvelle offre récurrente lorsque `Tok'ra ops: make natural offer due` arrive à échéance sans communicateur disponible ;
+- absence de nouvelle offre récurrente lorsque `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Make natural offer due` arrive à échéance sans communicateur disponible ;
 - état bloqué persistant sans lettre, archétype actif, échec, refus, conséquence de confiance ou relance horaire indésirable ;
 - restauration du canal produisant une nouvelle échéance cachée persistante dans le futur plutôt qu'une offre immédiate ;
-- `Tok'ra ops: roll next natural offer` produisant ensuite une seule offre normale par le tirage pondéré existant ;
+- `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Roll next natural offer` produisant ensuite une seule offre normale par le tirage pondéré existant ;
 - conservation d'une offre déjà active pendant une panne ou après destruction du bâtiment, y compris après sauvegarde/rechargement ;
 - refus des actions développeur de forçage lorsqu'elles tentent de créer une nouvelle opération sans canal valide ;
 - mission d'introduction indépendante du communicateur et demandes manuelles conservant leurs propres règles ;
@@ -1055,7 +1088,7 @@ Cette série vérifie l'attribution unique de noms cohérents aux nouveaux perso
 
 ### Test 1 — Rapport debug regroupé
 
-1. En mode développeur, exécuter `Cultural names: show samples`.
+1. En mode développeur, exécuter `GateRim SG-1 → Culture... → Show cultural name samples`.
 2. Vérifier qu'un seul rapport contient des exemples pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
 3. Désactiver le mode développeur, activer l'option avancée GateRim SG-1 et ouvrir le même rapport depuis les réglages du mod.
 4. Désactiver les deux modes et vérifier qu'aucun contrôle de noms n'est visible en jeu normal.
@@ -1493,7 +1526,7 @@ Résultat attendu : la patrouille est une conséquence réelle du choix risqué,
 8. Ouvrir ce menu et vérifier les actions d'état, acceptation, avancement,
    réussite, échec, expiration, conséquence secondaire et réinitialisation.
 9. Désactiver l'option avancée, activer le mode développeur et confirmer que
-   les actions compactes `Tok'ra ops: ...` sont disponibles dans les outils
+   le menu compact `GateRim SG-1 → Tok'ra... → Organic operations...` est disponible dans les outils
    développeur.
 
 Résultat attendu : le système de test est accessible par les deux voies prévues,
@@ -2364,7 +2397,7 @@ The procedures below are arranged to minimize reloads. Keep developer mode enabl
    - developer mode enabled.
 2. Select the Intellectual-capable colon and record the current Intellectual XP.
 3. Open the Tok'ra channel report and note the current qualitative relationship state. Exact trust values are intentionally hidden from the normal player interface.
-4. Run `Tok'ra ops: reset framework`.
+4. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Reset framework`.
 5. Save the game as `GR_TokraOrganic_Base`.
 
 **Expected result:** no organic Tok'ra operation, intelligence module, visiting medical liaison, legacy handoff container or wounded patient is active. This save is the common checkpoint for later reload and failure tests.
@@ -2377,11 +2410,11 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 
 **Purpose:** verify the complete observation success path and its rewards.
 
-1. Run `Tok'ra ops: force observation offer`.
+1. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Observation... → Force offer`.
 2. Select the Intellectual-capable colon.
 3. Right-click the powered communicator and choose `Accept Tok'ra observation request`.
 4. Confirm that the communicator reports the observation as in progress.
-5. Run `Tok'ra ops: advance current phase`.
+5. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Advance current phase`.
 6. Right-click the communicator again. Confirm that `Transmit Tok'ra observation report` is now present and enabled, then choose it.
 7. Compare the transmitting colonist's Intellectual XP with the value recorded before step 1, then read the success message and the Tok'ra channel report.
 
@@ -2401,8 +2434,8 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 **Purpose:** verify the shared resolution guard immediately after A1.
 
 1. Record the current Intellectual XP and note the current qualitative Tok'ra relationship state in the channel report.
-2. Run `Tok'ra ops: advance current phase`.
-3. Run `Tok'ra ops: fail current operation`.
+2. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Advance current phase`.
+3. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Fail current operation`.
 4. Right-click the communicator and verify that `Transmit Tok'ra observation report` is absent.
 
 **Expected result:** both developer actions report that no suitable active operation exists. The qualitative trust state and XP remain unchanged, and no second success or failure letter appears.
@@ -2414,7 +2447,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 **Purpose:** verify preferred placement and the complete cautious-analysis path.
 
 1. Record the selected colon's Intellectual XP and note the current qualitative Tok'ra relationship state in the channel report.
-2. Run `Tok'ra ops: force intelligence offer`.
+2. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Intelligence recovery... → Force offer`.
 3. Right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
 4. Confirm that exactly one sealed intelligence module appears on or immediately beside the Tok'ra delivery drop zone.
 5. Confirm that the module has no direct completion action.
@@ -2441,7 +2474,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 
 1. Remove the Tok'ra delivery drop zone.
 2. Keep the secure communicator powered.
-3. Run `Tok'ra ops: force intelligence offer`.
+3. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Intelligence recovery... → Force offer`.
 4. Accept it through the communicator.
 5. Confirm that exactly one intelligence module appears beside the powered communicator rather than at the map edge.
 6. Start analysis from the communicator and choose `Accelerated decoding`.
@@ -2457,7 +2490,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 **Purpose:** verify that the patient cannot recover alone, requires real colony treatment, then resumes normal Tok'ra recovery and leaves once fit to travel.
 
 1. Recreate the Tok'ra delivery zone if it was removed; its presence is irrelevant to this pawn-arrival operation.
-2. Run `Tok'ra ops: force wounded agent offer`.
+2. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Wounded agent... → Force offer`.
 3. Read the offer and confirm that it asks for shelter and treatment, does not mention colony medicine stocks, and says that ignoring it has no consequence.
 4. Select a colon, right-click the powered communicator and choose `Accept the wounded Tok'ra agent` in English or `Accueillir l'agent Tok'ra blessé` in French.
 5. Confirm that exactly one injured Tok'ra agent appears at a reachable map edge, already downed, with the health condition `symbiote shock` or `choc du symbiote`.
@@ -2468,7 +2501,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 10. If ordinary injuries or illnesses are still present, let them heal or remove them through developer tools until `symbiote shock` / `choc du symbiote` is the patient's only remaining medical condition.
 11. Select a doctor, right-click the patient in the player medical bed and confirm that a normal tending action is still available for the shock itself. Complete that tending action.
 12. Wait for the shared operation check, then confirm that a message reports the emergency treatment, the shock hediff disappears and normal Tok'ra regeneration can resume.
-13. Continue ordinary medical care, feeding and rest. Do not use `Tok'ra ops: advance current phase`; that command is not intended to heal the patient.
+13. Continue ordinary medical care, feeding and rest. Do not use `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Advance current phase`; that command is not intended to heal the patient.
 14. Observe the health tab while recovery progresses. Complete healing is not required.
 15. When the agent becomes conscious, mobile and medically stable, confirm that a message announces preparation for departure.
 16. Let the agent walk off the map.
@@ -2497,7 +2530,7 @@ These tests may be executed consecutively without reloading `GR_TokraOrganic_Bas
 1. Load `GR_TokraOrganic_Base`.
 2. Record the Social XP of one player colon capable of Social.
 3. Temporarily forbid or move all industrial medicine so none is accessible to that colon.
-4. Run `Tok'ra ops: force medical handoff offer`.
+4. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Medical handoff... → Force offer`.
 5. Read the offer and confirm that it asks for two industrial medicines, does not claim to know the colony's reserves, and says that ignoring it has no consequence.
 6. Select any valid colon, right-click the powered communicator and choose `Accept Tok'ra medical resupply request` or `Accepter la demande de ravitaillement médical Tok'ra`.
 7. Confirm that acceptance succeeds despite the unavailable medicine and that no container is created.
@@ -2547,7 +2580,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 **Purpose:** verify persistence before an offer is accepted.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Run `Tok'ra ops: force observation offer`.
+2. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Observation... → Force offer`.
 3. Save as `GR_TokraOrganic_ObservationOffered`.
 4. Reload `GR_TokraOrganic_ObservationOffered`.
 5. Select the Intellectual-capable colon and right-click the powered communicator.
@@ -2561,7 +2594,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 1. From B1, accept the observation request.
 2. Save as `GR_TokraOrganic_ObservationAccepted` before advancing it.
 3. Reload that save.
-4. Run `Tok'ra ops: advance current phase`.
+4. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Advance current phase`.
 5. Right-click the communicator and confirm that `Transmit Tok'ra observation report` is present and enabled.
 6. Save as `GR_TokraOrganic_ObservationReady`.
 7. Reload that save.
@@ -2576,7 +2609,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 **Purpose:** verify restoration of the physical objective, selected method, remaining work and deadline.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Run `Tok'ra ops: force intelligence offer` and accept it through the communicator.
+2. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Intelligence recovery... → Force offer` and accept it through the communicator.
 3. Confirm that one module exists, then save as `GR_TokraOrganic_ModuleAccepted`.
 4. Reload that save and confirm that the same module remains active.
 5. Start cautious analysis from the communicator and save once while the colon is carrying the module toward the communicator.
@@ -2591,7 +2624,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 **Purpose:** verify persistence of the patient reference, initial-treatment flag, health progress and departure state.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Run `Tok'ra ops: force wounded agent offer`, accept through the communicator and save as `GR_TokraOrganic_PatientShock` before rescuing the downed patient.
+2. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Wounded agent... → Force offer`, accept through the communicator and save as `GR_TokraOrganic_PatientShock` before rescuing the downed patient.
 3. Reload that save and confirm that the same named patient remains downed with symbiote shock, no duplicate pawn appears and regeneration is still suppressed.
 4. Rescue the patient into a player medical bed. If necessary, let or force every ordinary injury and illness to heal so that only symbiote shock remains.
 5. Confirm that a doctor can still tend the shock itself, complete that tending action and wait until the shock is removed. Then save as `GR_TokraOrganic_PatientCare` while the patient is still recovering.
@@ -2606,7 +2639,7 @@ Start each test from `GR_TokraOrganic_Base` unless a test explicitly creates ano
 
 **Purpose:** verify restoration of delayed arrival, meeting state, dialogue cancellation, deadline, donation and post-success departure without duplicate effects.
 
-1. Load `GR_TokraOrganic_Base`, run `Tok'ra ops: force medical handoff offer` and accept through the communicator.
+1. Load `GR_TokraOrganic_Base`, run `GateRim SG-1 → Tok'ra... → Organic operations... → Medical handoff... → Force offer` and accept through the communicator.
 2. Save immediately as `GR_TokraOrganic_MedicalSupplyBeforeArrival`, reload it and confirm that the liaison still arrives once after the remaining delay.
 3. While the liaison is walking to the meeting point, save as `GR_TokraOrganic_MedicalSupplyApproaching` and reload it.
 4. Confirm that the same liaison continues toward the same meeting point and that no duplicate pawn appears.
@@ -2628,10 +2661,10 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run `Tok'ra ops: force observation offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra observation request`.
-4. Run `Tok'ra ops: fail current operation`.
+3. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Observation... → Force offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra observation request`.
+4. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Fail current operation`.
 5. Save as `GR_TokraOrganic_ObservationFailed` and reload it.
-6. Run `Tok'ra ops: fail current operation` again.
+6. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Fail current operation` again.
 
 **Expected result:** one player-facing message reports a deterioration of Tok'ra confidence, the failure letter appears once, the operation is cleared, and the second failure attempt does not change trust.
 
@@ -2641,7 +2674,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run `Tok'ra ops: force intelligence offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
+3. Run `GateRim SG-1 → Tok'ra... → Organic operations... → Intelligence recovery... → Force offer`, select an Intellectual-capable colon, right-click the powered communicator and choose `Accept Tok'ra intelligence recovery`.
 4. Destroy the spawned intelligence module through developer tools or damage.
 5. Let the game advance until the tracker processes the missing objective.
 6. Save and reload after the failure has been reported.
@@ -2666,7 +2699,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 
 1. Load `GR_TokraOrganic_Base`.
 2. Note the current qualitative Tok'ra relationship state in the channel report.
-3. Run any one of `Tok'ra ops: force observation offer`, `Tok'ra ops: force intelligence offer`, `Tok'ra ops: force wounded agent offer` or `Tok'ra ops: force medical handoff offer`.
+3. Run any one of `GateRim SG-1 → Tok'ra... → Organic operations... → Observation... → Force offer`, `GateRim SG-1 → Tok'ra... → Organic operations... → Intelligence recovery... → Force offer`, `GateRim SG-1 → Tok'ra... → Organic operations... → Wounded agent... → Force offer` or `GateRim SG-1 → Tok'ra... → Organic operations... → Medical handoff... → Force offer`.
 4. Do not accept it and advance game time until the offer closes.
 
 **Expected result:** the offer disappears, trust remains unchanged, no failure letter is issued and a future hidden opportunity can still be scheduled.
@@ -2676,7 +2709,7 @@ Use copies of `GR_TokraOrganic_Base` so each failure starts from a known state.
 **Purpose:** verify death failure while preserving the corpse and preventing duplicate consequences.
 
 1. Load `GR_TokraOrganic_Base`.
-2. Force and accept `Tok'ra ops: force wounded agent offer`.
+2. Force and accept `GateRim SG-1 → Tok'ra... → Organic operations... → Wounded agent... → Force offer`.
 3. After the patient arrives, allow the injuries or illness to cause death, or use a developer health action to kill the patient without deleting the pawn.
 4. Advance the game until the tracker processes the death, then save and reload.
 
@@ -2789,23 +2822,23 @@ These tests require preserved saves created with the stated published version. T
 ### Developer actions, presentation and final log review
 
 1. Confirm the four force actions create the explicitly named archetype:
-   - `Tok'ra ops: force observation offer`;
-   - `Tok'ra ops: force intelligence offer`;
-   - `Tok'ra ops: force wounded agent offer`;
-   - `Tok'ra ops: force medical handoff offer`.
-2. Confirm `Tok'ra ops: advance current phase` prepares an accepted observation report and does not invalidate an already placed intelligence module, wounded patient or visiting medical liaison.
-3. Confirm `Tok'ra ops: reset framework` clears the active state, intelligence objective, living patient or active liaison without changing trust. A dead patient's or liaison's corpse should remain.
+   - `GateRim SG-1 → Tok'ra... → Organic operations... → Observation... → Force offer`;
+   - `GateRim SG-1 → Tok'ra... → Organic operations... → Intelligence recovery... → Force offer`;
+   - `GateRim SG-1 → Tok'ra... → Organic operations... → Wounded agent... → Force offer`;
+   - `GateRim SG-1 → Tok'ra... → Organic operations... → Medical handoff... → Force offer`.
+2. Confirm `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Advance current phase` prepares an accepted observation report and does not invalidate an already placed intelligence module, wounded patient or visiting medical liaison.
+3. Confirm `GateRim SG-1 → Tok'ra... → Organic operations... → Framework... → Reset framework` clears the active state, intelligence objective, living patient or active liaison without changing trust. A dead patient's or liaison's corpse should remain.
 4. Review English and French player-facing letters, messages, dialogue and context actions for RP tone and understandable wording.
 5. Confirm communicator, module and liaison interaction labels remain short.
 6. Confirm the medical dialogue displays only the donation and cancel buttons, with no technical state or hidden timing details.
-7. Confirm developer-action labels remain technical, explicit and readable without meaningful truncation. In particular, verify these compact legacy labels:
-   - `Jaffa mark: black`, `Jaffa mark: silver`, `Jaffa mark: gold`, `Clear Jaffa mark`;
-   - `Tok'ra safehouse: prepare`, `Tok'ra safehouse: create`, `Tok'ra safehouse: verify`;
-   - `Tok'ra trust: +5`, `Tok'ra trust: -5`;
-   - `Tok'ra cache: deliver`, `Tok'ra cache: reset`;
-   - `Tok'ra lead: decode`, `Tok'ra site: reveal`, `Tok'ra site: recon`;
-   - `Tok'ra relay: prepare`, `Tok'ra relay: complete`;
-   - `Tok'ra threat: create`, `Tok'ra threat: clear`.
+7. Confirm developer-action labels remain technical, explicit and readable without meaningful truncation. In particular, verify these compact nested labels:
+   - `GateRim SG-1 → Jaffa... → Forehead marks... → Apply black mark`, `GateRim SG-1 → Jaffa... → Forehead marks... → Apply silver mark`, `GateRim SG-1 → Jaffa... → Forehead marks... → Apply gold mark`, `GateRim SG-1 → Jaffa... → Forehead marks... → Clear mark`;
+   - `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Safehouse contact... → Prepare site`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Safehouse contact... → Create site`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Safehouse contact... → Verify contact`;
+   - `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Trust... → Increase by 5`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Trust... → Decrease by 5`;
+   - `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → First mission cache... → Deliver cache`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → First mission cache... → Reset cache`;
+   - `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Decoded lead... → Decode lead`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Decoded lead... → Reveal site`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Decoded lead... → Recon site`;
+   - `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Relay sabotage... → Prepare objective`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Relay sabotage... → Complete objective`;
+   - `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Threat intelligence... → Create threat`, `GateRim SG-1 → Tok'ra... → Safehouse and intelligence chain... → Threat intelligence... → Clear threat`.
 8. Close or pause the game and inspect `Player.log`.
 
 **Expected result:** no red errors related to operation loading, Scribe references, pawn or lord persistence, meeting-point pathing, dialogue jobs, stock counting, medicine consumption, legacy-container cleanup, departure monitoring or duplicate resolution appear.

@@ -1,4 +1,3 @@
-using LudeonTK;
 using RimWorld;
 using Verse;
 
@@ -9,11 +8,6 @@ namespace GateRimSG1.Culture
     /// </summary>
     public static class CulturalIdentityDebugActions
     {
-        [DebugAction(
-            "GateRim SG-1",
-            "Cultural identity: inspect selected pawn",
-            actionType = DebugActionType.Action,
-            allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void InspectSelectedPawn()
         {
             OpenSelectedPawnReport();

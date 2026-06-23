@@ -151,16 +151,20 @@ An operation already in the single active slot is never cleared merely because t
 
 When channel availability returns, an overdue planner check is not executed immediately. The manager schedules a fresh hidden recurrence delay using the current trust tier and the last offered archetype. This preserves long-game pacing and prevents predictable instant contact after reconnecting power.
 
-Focused developer checks:
+Focused developer checks start from:
 
 ```text
 Debug actions menu
 -> GateRim SG-1
--> Tok'ra communicator: show availability
--> Tok'ra ops: make natural offer due
--> Tok'ra ops: show framework state
--> Tok'ra ops: roll next natural offer
+-> Tok'ra...
 ```
+
+Then use:
+
+- `Show communicator availability`;
+- `Organic operations... → Framework... → Make natural offer due`;
+- `Organic operations... → Framework... → Show state`;
+- `Organic operations... → Framework... → Roll next natural offer`.
 
 Expected sequence:
 
