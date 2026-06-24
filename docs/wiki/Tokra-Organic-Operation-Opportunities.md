@@ -129,7 +129,10 @@ perdre l'objectif ou dépasser le délai rend la cellule plus prudente.
 
 Les offres utilisent des délais cachés et une forte réduction de probabilité
 pour le dernier archétype joué. Elles peuvent revenir au cours d'une partie
-longue sans former un cycle fixe.
+longue sans former un cycle fixe. Les huit opérations actuelles possèdent
+plusieurs variantes d'offre et de conclusion ; l'analyse du module de
+renseignements dispose notamment de trois formulations d'appel distinctes afin
+d'éviter que chaque nouvelle occurrence commence par la même lettre.
 
 Le communicateur affiche uniquement l'offre ou l'opération actuellement active.
 Les opérations organiques terminées ne restent pas visibles sous forme de

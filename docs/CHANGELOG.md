@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.38-dev - Audit Tok'ra organic operation pool and long-term variety
+
+- Derive required recurrent-operation coverage from the persisted archetype enum instead of a hardcoded minimum.
+- Detect missing, duplicated or non-MissionDef-backed operation definitions in the developer audit.
+- Validate trust-tier weights, hidden-delay ranges, local repeat factors and narrative-bank coverage for all eight operations.
+- Compare deterministic penalized selection against a no-penalty baseline for every trust tier.
+- Add two English/French RP offer variants to intelligence recovery, bringing all current recurrent operations to multiple offer narratives.
+- Preserve scheduling weights, delays, rewards, active-slot behavior and save data.
+- Confirm the Windows build of `GateRimSG1.dll` version `0.3.38.0` succeeds.
+- Correct the current-test milestone and DLL metadata labels in local revision `r2` so `check-project-consistency.cmd` can detect them; no C#, XML, gameplay or save-data change is introduced.
+- Validate final local revision `r2`: eight persisted archetypes, exact definition coverage, MissionDef ownership, all four trust-tier simulations, measurable anti-repetition, three non-repeating intelligence offers and save/reload stability.
+- Publish branch `feature/tokra-operation-pool-audit`, final tag `v0.3.38-dev` and the synchronized wiki.
+
 ## 0.3.37-dev - Add Tok'ra Jaffa officer capture operation
 
 - Add an eighth recurrent Tok'ra organic-operation archetype without renumbering existing persisted values.

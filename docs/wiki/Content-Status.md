@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.37-dev`
+> Dernière révision : `0.3.38-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -45,8 +45,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
-| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : huit archétypes intégrés, dont diversion et capture vivante d'un officier Jaffa, nouvelles offres limitées à un communicateur joueur alimenté, opérations déjà actives préservées pendant une panne et reprise différée du canal | 0.2.48-dev à 0.3.37-dev / accès 0.3.33-dev |
-| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; huit opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant avec slot unique, éligibilité avant tirage, délais cachés et anti-répétition | 0.3.23-dev à 0.3.37-dev |
+| Opérations Tok'ra organiques | Huit archétypes récurrents à délai caché et anti-répétition ; l'audit `0.3.38-dev` vérifie leur couverture persistante, leurs variantes RP, les quatre paliers de confiance et l'efficacité mesurée de la pénalité du dernier archétype | 0.2.48-dev à 0.3.38-dev / accès 0.3.33-dev |
+| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, textes, récurrence, difficulté et persistance ; l'audit développeur dérive désormais la couverture attendue de l'enum persistant et compare l'anti-répétition au tirage sans pénalité | 0.3.23-dev à 0.3.38-dev |
 | Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev |
 | Contrat de production Tok'ra | Demande limitée aux objets réellement fabricables, rendez-vous mondial temporaire, remise depuis l'inventaire réel, période de grâce, interception de trajet et embuscade sur l'approche finale avec butin et reformation vanilla | 0.3.30-dev |
 | Mission d'introduction Tok'ra | Jouable et validée : transmission chiffrée avant le communicateur, choix d'engagement, site mondial, garde Goa'uld/Jaffa adaptative modérée, module physique suivi individuellement et nouvelles tentatives jusqu'à la première récupération réussie | 0.3.31-dev |
@@ -106,7 +106,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
-| Opérations Tok'ra organiques | Framework récurrent avec huit archétypes intégrés, dont diversion et capture vivante d'un officier Jaffa, slot unique, délais cachés, difficulté adaptative et nouvelles offres dépendantes d'un communicateur alimenté | 0.2.48-dev à 0.3.37-dev / accès 0.3.33-dev |
+| Opérations Tok'ra organiques | Framework récurrent avec huit archétypes intégrés, slot unique, délais cachés, difficulté adaptative et audit automatique de couverture, variantes et anti-répétition | 0.2.48-dev à 0.3.38-dev / accès 0.3.33-dev |
 
 ## Prévu
 

@@ -1,5 +1,24 @@
 # Roadmap
 
+## Dernier jalon clôturé — Audit du pool d'opérations Tok'ra (`0.3.38-dev`)
+
+- [x] Partir explicitement de `v0.3.37-dev` sur `feature/tokra-operation-pool-audit`.
+- [x] Auditer les huit identifiants persistants sans ajouter de neuvième archétype.
+- [x] Remplacer le minimum codé en dur par une couverture dérivée de l'enum persistant.
+- [x] Détecter les définitions absentes, dupliquées ou non pilotées par MissionDef.
+- [x] Vérifier les poids, délais cachés, facteurs anti-répétition et banques de textes de chaque opération.
+- [x] Comparer la simulation anti-répétition à une simulation équivalente sans pénalité locale.
+- [x] Ajouter deux variantes RP d'offre à la récupération de renseignements en anglais et en français.
+- [x] Valider le rebuild `0.3.38.0` et corriger en `r2` les libellés documentaires attendus par le contrôle de cohérence.
+- [x] Valider en jeu le rapport `PASS`, les huit archétypes, les quatre paliers et l'efficacité de l'anti-répétition.
+- [x] Valider trois offres successives de renseignements sans répétition immédiate du texte.
+- [x] Recontrôler sauvegarde/rechargement et `Player.log`.
+- [x] Clôturer la documentation, publier le tag final unique `v0.3.38-dev` et synchroniser le wiki séparé.
+
+La révision finale `r2` valide la couverture exacte des huit opérations, l'absence de définition manquante ou dupliquée, la propriété MissionDef, les quatre simulations de `5000` tirages et l'efficacité mesurée de la pénalité du dernier archétype. Les trois offres successives de récupération de renseignements ne répètent pas immédiatement leur texte, et l'audit reste valide après sauvegarde et rechargement.
+
+Le jalon est publié sous le tag final unique `v0.3.38-dev`. Aucun périmètre `0.3.39-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi après relecture du backlog durable, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
 ## Dernier jalon clôturé — Capture d'un officier Jaffa (`0.3.37-dev`)
 
 - [x] Partir explicitement de `v0.3.36-dev` sur `feature/tokra-jaffa-officer-capture-operation`.

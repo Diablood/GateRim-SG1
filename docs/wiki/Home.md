@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.37-dev`
+> Version du mod documentée : `0.3.38-dev`
 
 ## Le mod en bref
 
@@ -129,7 +129,7 @@ offre immédiate.
 
 ## Orchestration des opérations Tok'ra
 
-La version `0.3.37-dev` étend le planificateur partagé à huit opérations tout
+La version `0.3.38-dev` consolide le planificateur partagé de huit opérations tout
 en conservant une seule occurrence active, le filtrage avant tirage pondéré,
 les délais cachés après chaque résultat et la persistance après sauvegarde.
 Le nouvel assaut de diversion relaie un faux signal sans placer d'objet sur la

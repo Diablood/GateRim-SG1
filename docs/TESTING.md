@@ -1,3 +1,22 @@
+## 0.3.38-dev - Audit du pool d'opérations Tok'ra
+
+Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.38-dev`.
+
+Couverture validée pendant la passe fonctionnelle finale :
+
+- huit identifiants persistants et huit définitions résolues ;
+- aucune définition absente ou dupliquée ;
+- propriété MissionDef pour chaque opération récurrente ;
+- poids, délais cachés et facteurs de répétition valides sur les quatre paliers de confiance ;
+- simulations déterministes de `5000` tirages atteignant les huit archétypes dans chaque palier ;
+- répétitions immédiates inférieures au tirage équivalent sans pénalité ;
+- résultat final `Audit result: PASS` ;
+- trois offres successives de récupération de renseignements sans répétition immédiate ;
+- persistance de l'audit après sauvegarde/rechargement ;
+- contrôle de cohérence, build `0.3.38.0` et journal sans nouvelle erreur bloquante.
+
+Régressions durables : tirage naturel, slot unique, nouvelle échéance après chaque résultat, filtrage des opérations temporairement indisponibles, panne du communicateur et non-exposition des diagnostics techniques au joueur.
+
 ## 0.3.37-dev - Tok'ra Jaffa officer capture operation
 
 Validation locale terminée sur la révision finale `r6`, puis jalon publié sous `v0.3.37-dev`.

@@ -334,6 +334,14 @@
                     <key>GR_TokraOrganicOperation_DeadDropOfferLetterText</key>
                     <weight>1</weight>
                 </li>
+                <li>
+                    <key>GR_TokraOrganicOperation_DeadDropOfferLetterText2</key>
+                    <weight>1</weight>
+                </li>
+                <li>
+                    <key>GR_TokraOrganicOperation_DeadDropOfferLetterText3</key>
+                    <weight>1</weight>
+                </li>
             </offerLetterTexts>
             <offerExpiredMessageKey>GR_TokraOrganicOperation_DeadDropOfferExpired</offerExpiredMessageKey>
             <acceptedMessageKey>GR_TokraOrganicOperation_DeadDropAccepted</acceptedMessageKey>

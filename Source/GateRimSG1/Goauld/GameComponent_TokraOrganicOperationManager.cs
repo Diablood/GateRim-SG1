@@ -2189,14 +2189,50 @@ namespace GateRimSG1.Goauld
 
             List<TokraOrganicOperationDefinition> definitions
                 = TokraOrganicOperationFramework.AllDefinitions.ToList();
+            List<TokraOrganicOperationArchetype> expectedArchetypes
+                = Enum.GetValues(typeof(TokraOrganicOperationArchetype))
+                    .Cast<TokraOrganicOperationArchetype>()
+                    .Where(archetype
+                        => archetype != TokraOrganicOperationArchetype.None)
+                    .OrderBy(archetype => (int)archetype)
+                    .ToList();
+            Dictionary<TokraOrganicOperationArchetype, int> definitionCounts
+                = definitions
+                    .GroupBy(definition => definition.Archetype)
+                    .ToDictionary(group => group.Key, group => group.Count());
+            List<TokraOrganicOperationArchetype> missingArchetypes
+                = expectedArchetypes
+                    .Where(archetype
+                        => !definitionCounts.ContainsKey(archetype))
+                    .ToList();
+            List<TokraOrganicOperationArchetype> duplicateArchetypes
+                = definitionCounts
+                    .Where(pair => pair.Value != 1)
+                    .Select(pair => pair.Key)
+                    .OrderBy(archetype => (int)archetype)
+                    .ToList();
+            bool allMissionDefBacked = definitions.All(definition
+                => definition.UsesMissionFrameworkDef);
             TokraTrustTier currentTier
                 = GameComponent_TokraTrustTracker.GetCurrentTier();
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             StringBuilder report = new StringBuilder();
-            bool passed = definitions.Count >= 8;
+            bool passed = definitions.Count == expectedArchetypes.Count
+                && missingArchetypes.Count == 0
+                && duplicateArchetypes.Count == 0
+                && allMissionDefBacked;
 
-            report.AppendLine("Tok'ra long-term orchestration audit");
-            report.AppendLine("Definitions: " + definitions.Count);
+            report.AppendLine("Tok'ra organic-operation pool audit");
+            report.AppendLine(
+                "Persisted archetypes: " + expectedArchetypes.Count
+                + " | resolved definitions: " + definitions.Count);
+            report.AppendLine(
+                "Coverage: missing=" + FormatArchetypeList(missingArchetypes)
+                + " | duplicates="
+                + FormatArchetypeList(duplicateArchetypes));
+            report.AppendLine(
+                "All definitions MissionDef-backed: "
+                + allMissionDefBacked);
             report.AppendLine(
                 "Single global active slot: "
                 + (manager.activeOperation.IsActive
@@ -2229,6 +2265,40 @@ namespace GateRimSG1.Goauld
                 + " failed / " + manager.expiredOfferCount
                 + " ignored");
 
+            report.AppendLine();
+            report.AppendLine("[Definition invariants]");
+
+            foreach (TokraOrganicOperationDefinition definition
+                in definitions.OrderBy(item => (int)item.Archetype))
+            {
+                int offerTextCount
+                    = definition.MissionDef?.texts?.offerLetterTexts?.Count
+                        ?? 0;
+                int successTextCount
+                    = CountMissionSuccessNarrativeVariants(definition);
+                bool repeatFactorValid
+                    = definition.RepeatedArchetypeWeightFactor > 0f
+                        && definition.RepeatedArchetypeWeightFactor < 1f;
+                bool offerVariantsValid = offerTextCount >= 2;
+                bool successVariantsValid = successTextCount >= 2;
+                passed &= repeatFactorValid
+                    && offerVariantsValid
+                    && successVariantsValid;
+
+                report.AppendLine(
+                    "- " + definition.Archetype
+                    + ": enum=" + (int)definition.Archetype
+                    + ", def=" + (definition.MissionDefName ?? "none")
+                    + ", repeat="
+                    + definition.RepeatedArchetypeWeightFactor.ToString("0.00")
+                    + ", offerVariants=" + offerTextCount
+                    + ", successVariants=" + successTextCount
+                    + ", valid="
+                    + (repeatFactorValid
+                        && offerVariantsValid
+                        && successVariantsValid));
+            }
+
             TokraTrustTier[] tiers =
             {
                 TokraTrustTier.Wary,
@@ -2255,7 +2325,7 @@ namespace GateRimSG1.Goauld
                     + configuredCandidateCount);
 
                 foreach (TokraOrganicOperationDefinition definition
-                    in definitions)
+                    in definitions.OrderBy(item => (int)item.Archetype))
                 {
                     int minimumDelay;
                     int maximumDelay;
@@ -2264,36 +2334,36 @@ namespace GateRimSG1.Goauld
                         tier,
                         out minimumDelay,
                         out maximumDelay);
+                    float weight = definition.GetWeight(tier);
+                    bool weightValid = weight > 0f;
                     bool delayValid = minimumDelay > 0
                         && maximumDelay >= minimumDelay;
                     bool offerable = IsDefinitionOfferable(definition, map);
-                    passed &= delayValid;
+                    passed &= weightValid && delayValid;
 
                     report.AppendLine(
                         "- " + definition.Archetype
-                        + ": weight=" + definition.GetWeight(tier).ToString("0.00")
-                        + ", repeat="
-                        + definition.RepeatedArchetypeWeightFactor.ToString("0.00")
+                        + ": weight=" + weight.ToString("0.00")
                         + ", delay=" + minimumDelay + "-" + maximumDelay
                         + ", offerable=" + offerable
-                        + ", offerTexts="
-                        + (definition.MissionDef?.texts?.offerLetterTexts?.Count
-                            ?? 0)
-                        + ", successTexts="
-                        + (definition.MissionDef?.texts?.successLetterTexts?.Count
-                            ?? 0));
+                        + ", valid=" + (weightValid && delayValid));
                 }
 
                 const int simulationCount = 5000;
                 Dictionary<TokraOrganicOperationArchetype, int> counts
-                    = definitions.ToDictionary(
-                        definition => definition.Archetype,
-                        definition => 0);
-                Random random = new Random(32800 + (int)tier);
+                    = expectedArchetypes.ToDictionary(
+                        archetype => archetype,
+                        archetype => 0);
+                Random penalizedRandom = new Random(32800 + (int)tier);
+                Random baselineRandom = new Random(42800 + (int)tier);
                 TokraOrganicOperationArchetype previous
                     = TokraOrganicOperationArchetype.None;
+                TokraOrganicOperationArchetype baselinePrevious
+                    = TokraOrganicOperationArchetype.None;
                 int immediateRepeats = 0;
+                int baselineImmediateRepeats = 0;
                 int completedDraws = 0;
+                int baselineCompletedDraws = 0;
 
                 for (int i = 0; i < simulationCount; i++)
                 {
@@ -2304,8 +2374,16 @@ namespace GateRimSG1.Goauld
                             previous,
                             filterOfferability: false,
                             out _);
+                    List<OrganicOperationCandidate> baselineCandidates
+                        = manager.BuildCandidates(
+                            tier,
+                            map,
+                            TokraOrganicOperationArchetype.None,
+                            filterOfferability: false,
+                            out _);
 
-                    if (candidates.Count == 0)
+                    if (candidates.Count == 0
+                        || baselineCandidates.Count == 0)
                     {
                         break;
                     }
@@ -2313,9 +2391,15 @@ namespace GateRimSG1.Goauld
                     TokraOrganicOperationArchetype selected
                         = SelectCandidate(
                             candidates,
-                            (float)random.NextDouble());
+                            (float)penalizedRandom.NextDouble());
+                    TokraOrganicOperationArchetype baselineSelected
+                        = SelectCandidate(
+                            baselineCandidates,
+                            (float)baselineRandom.NextDouble());
 
-                    if (selected == TokraOrganicOperationArchetype.None)
+                    if (selected == TokraOrganicOperationArchetype.None
+                        || baselineSelected
+                            == TokraOrganicOperationArchetype.None)
                     {
                         break;
                     }
@@ -2325,32 +2409,59 @@ namespace GateRimSG1.Goauld
                         immediateRepeats++;
                     }
 
-                    counts[selected]++;
+                    if (baselineSelected == baselinePrevious)
+                    {
+                        baselineImmediateRepeats++;
+                    }
+
+                    if (counts.ContainsKey(selected))
+                    {
+                        counts[selected]++;
+                    }
+
                     previous = selected;
+                    baselinePrevious = baselineSelected;
                     completedDraws++;
+                    baselineCompletedDraws++;
                 }
 
-                IEnumerable<TokraOrganicOperationDefinition> weighted
-                    = definitions.Where(definition
-                        => definition.GetWeight(tier) > 0f);
-                bool allReached = weighted.All(definition
-                    => counts[definition.Archetype] > 0);
-                passed &= allReached && completedDraws == simulationCount;
+                List<TokraOrganicOperationArchetype> weightedArchetypes
+                    = definitions
+                        .Where(definition => definition.GetWeight(tier) > 0f)
+                        .Select(definition => definition.Archetype)
+                        .Distinct()
+                        .ToList();
+                bool allReached = weightedArchetypes.All(archetype
+                    => counts.ContainsKey(archetype)
+                        && counts[archetype] > 0);
+                bool repeatPenaltyEffective = completedDraws
+                        == simulationCount
+                    && baselineCompletedDraws == simulationCount
+                    && immediateRepeats < baselineImmediateRepeats;
+                passed &= allReached && repeatPenaltyEffective;
 
                 string repeatPercentage = completedDraws > 0
-                    ? (100f * immediateRepeats / completedDraws).ToString("0.0")
+                    ? (100f * immediateRepeats / completedDraws)
+                        .ToString("0.0")
+                    : "0.0";
+                string baselineRepeatPercentage = baselineCompletedDraws > 0
+                    ? (100f * baselineImmediateRepeats
+                        / baselineCompletedDraws).ToString("0.0")
                     : "0.0";
                 report.AppendLine(
                     "Simulation: " + completedDraws + " draws, repeats="
                     + immediateRepeats + " (" + repeatPercentage
-                    + "%), all weighted archetypes reached=" + allReached);
+                    + "%) versus no-penalty baseline="
+                    + baselineImmediateRepeats + " ("
+                    + baselineRepeatPercentage + "%), all reached="
+                    + allReached + ", penalty effective="
+                    + repeatPenaltyEffective);
 
-                foreach (TokraOrganicOperationDefinition definition
-                    in definitions)
+                foreach (TokraOrganicOperationArchetype archetype
+                    in expectedArchetypes)
                 {
                     report.AppendLine(
-                        "  " + definition.Archetype + "="
-                        + counts[definition.Archetype]);
+                        "  " + archetype + "=" + counts[archetype]);
                 }
             }
 
@@ -2365,6 +2476,44 @@ namespace GateRimSG1.Goauld
                 + "delay through the same persistent manager.");
 
             return report.ToString().TrimEnd();
+        }
+
+        private static int CountMissionSuccessNarrativeVariants(
+            TokraOrganicOperationDefinition definition)
+        {
+            int directCount
+                = definition?.MissionDef?.texts?.successLetterTexts?.Count
+                    ?? 0;
+            IEnumerable<GateRimMissionNamedTextBankDef> namedBanks
+                = definition?.MissionDef?.texts?.namedTextBanks;
+
+            if (namedBanks == null)
+            {
+                return directCount;
+            }
+
+            return directCount + namedBanks
+                .Where(bank => bank != null
+                    && !string.IsNullOrEmpty(bank.id)
+                    && bank.id.IndexOf(
+                        "success",
+                        StringComparison.OrdinalIgnoreCase) >= 0)
+                .Sum(bank => bank.texts?.Count ?? 0);
+        }
+
+        private static string FormatArchetypeList(
+            IEnumerable<TokraOrganicOperationArchetype> archetypes)
+        {
+            if (archetypes == null)
+            {
+                return "none";
+            }
+
+            List<TokraOrganicOperationArchetype> values
+                = archetypes.ToList();
+            return values.Count == 0
+                ? "none"
+                : string.Join(", ", values.Select(value => value.ToString()));
         }
 
         public static bool DebugMakeActiveReady(Map map)

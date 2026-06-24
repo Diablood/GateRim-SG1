@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; eight recurrent Tok'ra operations are integrated through published `0.3.37-dev`, including world-site, caravan-delivery, colony-assault and living-target capture adapters.
+Status: foundation published in `0.3.23-dev`; eight recurrent Tok'ra operations are integrated through `0.3.37-dev`, and `0.3.38-dev` audits their exact persisted coverage, narrative variation and long-term anti-repetition behavior.
 
 ## Purpose
 
@@ -240,7 +240,7 @@ One manager owns one global active slot. No second organic operation may be offe
 
 The player must never see internal ranges, weights, histories or future archetypes in normal play. They are visible only in developer reports and internal documentation.
 
-### Orchestration diagnostics (`0.3.28-dev`)
+### Orchestration diagnostics (`0.3.28-dev`, strengthened in `0.3.38-dev`)
 
 Two developer-only actions support long-run validation:
 
@@ -264,9 +264,9 @@ Debug actions menu
 → Audit long-term orchestration
 ```
 
-The audit report shows the global active slot, hidden scheduling state, outcome counters, current offerability, every trust-tier weight and delay, text-bank counts and a deterministic `5000`-draw simulation per tier. The simulation verifies reachability and reports immediate-repeat frequency without mutating the save.
+The audit report shows the global active slot, hidden scheduling state, outcome counters, current offerability, exact persisted-enum coverage, duplicate detection, MissionDef ownership, every trust-tier weight and delay and narrative-bank counts. For each tier it compares a deterministic `5000`-draw run using the real local repeat penalty with an equivalent no-penalty baseline. The simulation verifies reachability and measurable anti-repetition without mutating the save.
 
-Local revision `r1` validated the audit as `PASS`, the real natural draw, success/failure/ignored rescheduling, recurrence, local anti-repetition, save/load persistence, storyteller independence, all four previously existing operation regressions and a clean `Player.log`.
+The original `0.3.28-dev-r1` audit validated the then-current four-operation pool, natural draws, result rescheduling, recurrence, persistence and storyteller independence. The strengthened audit is published in `0.3.38-dev` after final local revision `r2`: all eight operations, all four trust tiers, exact MissionDef coverage, measurable anti-repetition, offer-text rotation and save/reload stability are validated.
 
 ## Locked Tok'ra mission expansion
 
