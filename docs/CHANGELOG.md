@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.36-dev - Add non-lethal capture tools
+
+- Add craftable single-use bolas with a distinct physical-leg-restraint health effect.
+- Add an experimental Tok'ra hypodermic rifle with five sealed charges.
+- Consume one charge per launch, including misses and resisted hits, and destroy the rifle after the final shot.
+- Show remaining charges in the selected-ground inspect pane and in hover tooltips while equipped or carried in inventory.
+- Keep separate weapon-accuracy and neutralization-resistance rolls, with body-size and armor modifiers configured through XML.
+- Keep light real blunt damage at `3` for bolas and `1` for the dart.
+- Apply temporary effects that leave Consciousness intact and set Moving to zero, allowing ordinary RimWorld downing and vanilla capture.
+- Refresh one existing Hediff instead of stacking multiple copies and preserve the remaining duration through save/reload.
+- Reject the Consciousness-zero prototype after live hostile deaths.
+- Reject the persistent-stun/custom-restraint prototype after live capture-flow failure.
+- Remove the obsolete custom restraint JobDef, float-menu patch, ThingComp, stun HediffComp and JobDriver while preserving all four provisional textures.
+- Validate final local revision `r9`, including distinct bolas wording, rifle operation, Moving-zero neutralization, vanilla capture, charge visibility, persistence and destruction after the last charge.
+- Publish branch `feature/non-lethal-capture-tools`, final tag `v0.3.36-dev` and the synchronized wiki.
+
 ## 0.3.35-dev - Reorganize GateRim SG-1 debug actions into logical submenus
 
 - Replace seventy separate GateRim SG-1 debug-action entries with four ordered entries directly inside the existing `GateRim SG-1` category.

@@ -6,6 +6,7 @@ using GateRimSG1.Goauld;
 using GateRimSG1.Jaffa;
 using GateRimSG1.Missions;
 using GateRimSG1.Names;
+using GateRimSG1.Weapons;
 
 namespace GateRimSG1.Debugging
 {
@@ -74,6 +75,36 @@ namespace GateRimSG1.Debugging
                     "Clear mark",
                     JaffaForeheadMarkDebugActions.Remove,
                     100)));
+
+            return root;
+        }
+
+        [DebugAction(
+            Category,
+            "Equipment...",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap,
+            displayPriority = 250)]
+        public static DebugActionNode OpenEquipment()
+        {
+            DebugActionNode root = new DebugActionNode();
+
+            root.AddChild(PawnToolNode(
+                "Show target neutralization chances",
+                NonLethalCaptureDebugActions.ShowNeutralizationChances,
+                400));
+            root.AddChild(PawnToolNode(
+                "Give bolas",
+                NonLethalCaptureDebugActions.GiveBolas,
+                300));
+            root.AddChild(PawnToolNode(
+                "Give Tok'ra hypodermic rifle",
+                NonLethalCaptureDebugActions.GiveTokraHypodermicRifle,
+                200));
+            root.AddChild(PawnToolNode(
+                "Clear temporary neutralization",
+                NonLethalCaptureDebugActions.ClearNeutralization,
+                100));
 
             return root;
         }

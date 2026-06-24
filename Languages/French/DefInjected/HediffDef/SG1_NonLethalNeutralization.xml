@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_NonLethalNeutralization.label>inhibition neuromusculaire temporaire</SG1_NonLethalNeutralization.label>
+    <SG1_NonLethalNeutralization.description>Une brève perte de contrôle moteur provoquée par un composé hypodermique expérimental Tok'ra. La cible reste consciente, mais ses jambes ne peuvent temporairement plus soutenir ses mouvements.</SG1_NonLethalNeutralization.description>
+    <SG1_NonLethalNeutralization.stages.0.label>jambes engourdies</SG1_NonLethalNeutralization.stages.0.label>
+    <SG1_BolasRestraint.label>entrave temporaire par bolas</SG1_BolasRestraint.label>
+    <SG1_BolasRestraint.description>Des cordes lestées sont enroulées autour des jambes de la cible et l'empêchent de se déplacer jusqu'à ce que l'entrave se desserre ou soit retirée.</SG1_BolasRestraint.description>
+    <SG1_BolasRestraint.stages.0.label>jambes entravées</SG1_BolasRestraint.stages.0.label>
+</LanguageData>

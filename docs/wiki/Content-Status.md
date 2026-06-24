@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.35-dev`
+> Dernière révision : `0.3.36-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -71,6 +71,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
+| Outils de capture non létaux | Bolas à usage unique fabricables et fondation d'un fusil hypodermique expérimental Tok'ra à cinq charges non rechargeables ; impact contondant très léger, neutralisation temporaire résistible et disparition du fusil après le dernier tir | 0.3.36-dev |
 | Treillis d'équipe SG | Les anciens treillis combinés restent disponibles pour compatibilité ; le scénario utilise désormais des pantalons obligatoires et des vestes facultatives séparées, compatibles avec un tee-shirt vanilla | 0.1.78-dev / séparation 0.3.21-dev |
 | Variantes du treillis SG | Pantalons et vestes modulaires disponibles en olive, noir et désert ; couleur aléatoire par starter et coordonnée entre les deux pièces | 0.1.82-dev / loadout 0.3.21-dev |
 | Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, tee-shirt obligatoire, pantalon SG varié, veste facultative, casque, casquette ou aucun couvre-chef, équipement tactique et assortiment de quatre armes humaines vanilla équilibré | 0.2.0-dev-r1 / loadout 0.3.21-dev / casquette 0.3.22-dev |
@@ -110,7 +111,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | Direction actuelle |
 |---|---|
-| Diversification des opérations Tok'ra | Un septième archétype de diversion combattue est intégré en 0.3.34-dev ; poursuivre avec de nouvelles opérations distinctes plutôt qu'en surchargeant les missions existantes |
+| Diversification des opérations Tok'ra | Un septième archétype de diversion combattue est intégré en 0.3.34-dev ; les outils non létaux sont validés en 0.3.36-dev et permettent désormais de concevoir la future capture récurrente d'un officier Jaffa |
 | Déblocage des opérations Tok'ra | L'introduction, l'étude, le prérequis de construction et le verrou du canal sont intégrés ; conserver ce comportement pour chaque nouvel archétype sans annuler les missions déjà engagées |
 | Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |

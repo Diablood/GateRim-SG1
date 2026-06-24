@@ -1,5 +1,40 @@
 # GateRim SG-1 — Roadmap durable
 
+## Prochain jalon prévu — Capture d'un officier Jaffa (`0.3.37-dev`)
+
+- [ ] Partir explicitement de `v0.3.36-dev` sur `feature/tokra-jaffa-officer-capture-operation`.
+- [ ] Ajouter une opération Tok'ra récurrente demandant de capturer vivant un officier Jaffa puis de le remettre selon un flux cohérent avec le framework de missions.
+- [ ] Fournir le fusil hypodermique Tok'ra comme ressource de mission limitée, tout en conservant les bolas comme solution générique de secours lorsque leur usage est raisonnable.
+- [ ] Ne jamais garantir la neutralisation ni remplacer le flux vanilla de capture et de détention.
+- [ ] Dimensionner l'escorte et les contraintes depuis la difficulté active et les points de menace.
+- [ ] Intégrer récurrence, délais cachés, anti-répétition, variantes RP, sauvegarde/rechargement et outils debug.
+- [ ] Tester explicitement la mort, la fuite, la résistance, la capture, la remise, la perte de la cible et l'usage des outils hors mission.
+
+Le périmètre précis de la remise, du site et des conséquences Tok'ra doit être arrêté dans ce jalon sans modifier rétroactivement les outils validés en `0.3.36-dev` sauf régression démontrée.
+
+## Dernier jalon clôturé — Outils de capture non létaux (`0.3.36-dev`)
+
+- [x] Partir explicitement de `v0.3.35-dev` sur `feature/non-lethal-capture-tools`.
+- [x] Ajouter des bolas génériques consommables.
+- [x] Ajouter un fusil hypodermique expérimental Tok'ra à cinq charges scellées.
+- [x] Séparer précision et résistance à la neutralisation.
+- [x] Conserver les impacts contondants légers.
+- [x] Rejeter la Conscience à zéro après les morts instantanées observées.
+- [x] Rejeter le stun debout et l'action `Maîtriser` après le test en jeu.
+- [x] Appliquer une inhibition neuromusculaire temporaire : Conscience intacte, Mouvement à zéro.
+- [x] Appliquer aux bolas une entrave physique distincte dans les textes RP et l'onglet Santé.
+- [x] Revenir au flux vanilla de mise à terre et de capture.
+- [x] Afficher les charges au sol, équipé et dans l'inventaire.
+- [x] Valider la persistance des charges et la disparition du fusil après le dernier tir.
+- [x] Retirer les cinq fichiers du prototype abandonné ; aucune texture supprimée.
+- [x] Valider le réveil à l'expiration, la sauvegarde/rechargement et l'absence de nouvelle erreur bloquante.
+- [x] Clôturer le jalon, publier la branche et le tag final unique `v0.3.36-dev`.
+- [x] Synchroniser les pages wiki modifiées avec le dépôt wiki séparé.
+
+La révision finale `r9` valide les bolas, le fusil hypodermique Tok'ra, la neutralisation par Mouvement à zéro sans baisse de Conscience, la capture vanilla, la visibilité et la persistance des charges, ainsi que la disparition du fusil après son dernier tir. Aucun fichier ni aucune texture supplémentaire ne doit être supprimé. Le fusil reste non fabricable et disponible uniquement via les outils développeur dans ce jalon.
+
+Le jalon est publié sous le tag final unique `v0.3.36-dev`. Le prochain jalon doit partir explicitement de ce tag sur une nouvelle branche dédiée après relecture des procédures du dépôt.
+
 ## Dernier jalon clôturé — Réorganisation du menu debug (`0.3.35-dev`)
 
 - [x] Partir explicitement de `v0.3.34-dev` sur `feature/debug-action-menu-reorganization`.

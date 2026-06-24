@@ -84,6 +84,12 @@ namespace GateRimSG1
         public static ThingDef SG1_TretoninDose;
         public static ThingDef SG1_MatokStaff;
         public static ThingDef SG1_ZatnikTel;
+        public static ThingDef SG1_Bolas;
+        public static ThingDef SG1_BolasProjectile;
+        public static ThingDef SG1_TokraHypodermicRifle;
+        public static ThingDef SG1_TokraHypodermicDart;
+        public static HediffDef SG1_NonLethalNeutralization;
+        public static HediffDef SG1_BolasRestraint;
         public static HediffDef SG1_TretoninSubstitution;
         public static ThingDef SG1_JaffaDeployedHelmet;
         public static ThingDef SG1_JaffaRetractedHelmet;

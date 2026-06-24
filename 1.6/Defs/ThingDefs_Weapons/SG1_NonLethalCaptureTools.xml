@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="BaseBullet">
+        <defName>SG1_BolasProjectile</defName>
+        <label>bolas</label>
+        <thingClass>GateRimSG1.Weapons.Projectile_NonLethalCapture</thingClass>
+        <graphicData>
+            <texPath>Things/Projectile/SG1_BolasProjectile</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.55</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Blunt</damageDef>
+            <damageAmountBase>3</damageAmountBase>
+            <armorPenetrationBase>0</armorPenetrationBase>
+            <speed>24</speed>
+        </projectile>
+        <modExtensions>
+            <li Class="GateRimSG1.Weapons.NonLethalCaptureProjectileExtension">
+                <neutralizationHediff>SG1_BolasRestraint</neutralizationHediff>
+                <baseNeutralizationChance>0.66</baseNeutralizationChance>
+                <minimumNeutralizationChance>0.08</minimumNeutralizationChance>
+                <maximumNeutralizationChance>0.82</maximumNeutralizationChance>
+                <bodySizePenaltyPerPoint>0.18</bodySizePenaltyPerPoint>
+                <armorStat>ArmorRating_Blunt</armorStat>
+                <armorResistanceFactor>0.32</armorResistanceFactor>
+                <neutralizationTicks>600~900</neutralizationTicks>
+            </li>
+        </modExtensions>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseHumanMakeableGun">
+        <defName>SG1_Bolas</defName>
+        <label>bolas</label>
+        <description>A weighted restraint thrown around a living target. A clean hit can briefly entangle a humanlike opponent's legs and bring them down without suppressing consciousness, but the target may resist through size, armor or simple bad luck. The bolas are consumed when thrown.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponRanged/SG1_Bolas</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.72</drawSize>
+        </graphicData>
+        <techLevel>Neolithic</techLevel>
+        <tradeability>Sellable</tradeability>
+        <statBases>
+            <WorkToMake>900</WorkToMake>
+            <Mass>0.8</Mass>
+            <AccuracyTouch>0.85</AccuracyTouch>
+            <AccuracyShort>0.74</AccuracyShort>
+            <AccuracyMedium>0.48</AccuracyMedium>
+            <AccuracyLong>0.12</AccuracyLong>
+            <RangedWeapon_Cooldown>2.6</RangedWeapon_Cooldown>
+        </statBases>
+        <costList>
+            <Cloth>15</Cloth>
+            <Steel>8</Steel>
+        </costList>
+        <recipeMaker>
+            <skillRequirements>
+                <Crafting>2</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>CraftingSpot</li>
+                <li>FueledSmithy</li>
+                <li>ElectricSmithy</li>
+            </recipeUsers>
+        </recipeMaker>
+        <verbs>
+            <li>
+                <verbClass>GateRimSG1.Weapons.Verb_Shoot_ConsumableCharges</verbClass>
+                <isPrimary>true</isPrimary>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>SG1_BolasProjectile</defaultProjectile>
+                <warmupTime>0.85</warmupTime>
+                <range>11.9</range>
+                <soundCast>Bow_Shot</soundCast>
+            </li>
+        </verbs>
+        <weaponTags>
+            <li>SG1_NonLethalCapture</li>
+        </weaponTags>
+        <comps>
+            <li Class="GateRimSG1.Weapons.CompProperties_ConsumableCharges">
+                <maxCharges>1</maxCharges>
+                <destroyOnEmpty>true</destroyOnEmpty>
+                <chargeNoun>charge</chargeNoun>
+            </li>
+        </comps>
+        <tools>
+            <li>
+                <label>weighted cord</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>3</power>
+                <cooldownTime>2.3</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+        <defName>SG1_TokraHypodermicDart</defName>
+        <label>Tok'ra hypodermic dart</label>
+        <thingClass>GateRimSG1.Weapons.Projectile_NonLethalCapture</thingClass>
+        <graphicData>
+            <texPath>Things/Projectile/SG1_TokraHypodermicDart</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.38</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Blunt</damageDef>
+            <damageAmountBase>1</damageAmountBase>
+            <armorPenetrationBase>0</armorPenetrationBase>
+            <speed>72</speed>
+        </projectile>
+        <modExtensions>
+            <li Class="GateRimSG1.Weapons.NonLethalCaptureProjectileExtension">
+                <neutralizationHediff>SG1_NonLethalNeutralization</neutralizationHediff>
+                <baseNeutralizationChance>0.82</baseNeutralizationChance>
+                <minimumNeutralizationChance>0.12</minimumNeutralizationChance>
+                <maximumNeutralizationChance>0.92</maximumNeutralizationChance>
+                <bodySizePenaltyPerPoint>0.12</bodySizePenaltyPerPoint>
+                <armorStat>ArmorRating_Sharp</armorStat>
+                <armorResistanceFactor>0.24</armorResistanceFactor>
+                <neutralizationTicks>720~1080</neutralizationTicks>
+            </li>
+        </modExtensions>
+    </ThingDef>
+
+    <ThingDef ParentName="BaseHumanMakeableGun">
+        <defName>SG1_TokraHypodermicRifle</defName>
+        <label>experimental Tok'ra hypodermic rifle</label>
+        <description>An experimental Tok'ra capture weapon carrying five sealed hypodermic charges. Each shot consumes one charge whether it hits or not. A successful dart can briefly numb the target's legs and bring them down without suppressing consciousness, but accuracy, armor and biological resistance still make every attempt uncertain. The weapon cannot be recharged and automatically neutralizes itself when its final charge is spent.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.05</drawSize>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>None</tradeability>
+        <smeltable>false</smeltable>
+        <recipeMaker IsNull="True" />
+        <statBases>
+            <MarketValue>650</MarketValue>
+            <Mass>2.1</Mass>
+            <AccuracyTouch>0.82</AccuracyTouch>
+            <AccuracyShort>0.88</AccuracyShort>
+            <AccuracyMedium>0.74</AccuracyMedium>
+            <AccuracyLong>0.48</AccuracyLong>
+            <RangedWeapon_Cooldown>2.1</RangedWeapon_Cooldown>
+        </statBases>
+        <verbs>
+            <li>
+                <verbClass>GateRimSG1.Weapons.Verb_Shoot_ConsumableCharges</verbClass>
+                <isPrimary>true</isPrimary>
+                <hasStandardCommand>true</hasStandardCommand>
+                <defaultProjectile>SG1_TokraHypodermicDart</defaultProjectile>
+                <warmupTime>0.7</warmupTime>
+                <range>24.9</range>
+                <soundCast>Shot_Revolver</soundCast>
+                <soundCastTail>GunTail_Light</soundCastTail>
+                <muzzleFlashScale>1</muzzleFlashScale>
+            </li>
+        </verbs>
+        <weaponTags>
+            <li>SG1_NonLethalCapture</li>
+            <li>SG1_TokraExperimental</li>
+        </weaponTags>
+        <comps>
+            <li Class="GateRimSG1.Weapons.CompProperties_ConsumableCharges">
+                <maxCharges>5</maxCharges>
+                <destroyOnEmpty>true</destroyOnEmpty>
+                <chargeNoun>charge</chargeNoun>
+            </li>
+        </comps>
+        <tools>
+            <li>
+                <label>stock</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>5</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+</Defs>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_NonLethalCapture_Neutralized>Neutralisé</GR_NonLethalCapture_Neutralized>
+    <GR_NonLethalCapture_Resisted>Résiste</GR_NonLethalCapture_Resisted>
+    <GR_NonLethalCapture_NoEffect>Sans effet</GR_NonLethalCapture_NoEffect>
+    <GR_NonLethalCapture_DebugChanceReport>Cible : {0}\n\nChance de neutralisation des bolas après un impact réussi : {1}\nChance de neutralisation du fusil expérimental Tok'ra après un impact réussi : {2}\n\nLa précision de l'arme est résolue séparément. La chance affichée ne garantit donc pas que le prochain tir neutralisera la cible.</GR_NonLethalCapture_DebugChanceReport>
+    <GR_NonLethalCapture_DebugNothingToClear>{0} n'est pas sous l'effet d'une neutralisation temporaire.</GR_NonLethalCapture_DebugNothingToClear>
+    <GR_NonLethalCapture_DebugCleared>Neutralisation temporaire retirée de {0}.</GR_NonLethalCapture_DebugCleared>
+    <GR_NonLethalCapture_DebugToolGiven>{0} remis à {1}.</GR_NonLethalCapture_DebugToolGiven>
+    <GR_NonLethalCapture_DebugToolGiveFailed>Impossible de remettre {0} à {1}.</GR_NonLethalCapture_DebugToolGiveFailed>
+</LanguageData>

@@ -1,5 +1,44 @@
 # Tests
 
+## 0.3.36-dev - Non-lethal capture tools
+
+Validation locale terminée sur la révision finale `r9`, puis jalon publié sous `v0.3.36-dev`.
+
+Couverture validée :
+
+- chargement des deux ThingDefs d'arme, des deux projectiles, des deux Hediffs et des profils XML sans erreur bloquante ;
+- bolas fabricables aux postes documentés, consommées après un lancer et causant seulement `3` dégâts contondants de base ;
+- bolas appliquant `entrave temporaire par bolas` / `jambes entravées`, sans reprendre le vocabulaire neuromusculaire du fusil Tok'ra ;
+- fusil Tok'ra non fabricable, non achetable et doté de cinq charges persistantes ;
+- charges visibles dans le panneau d'inspection au sol et dans les infobulles lorsque le fusil est équipé ou transporté ;
+- consommation d'une charge à chaque tir, y compris en cas de manque ou de résistance ;
+- absence de toute source normale de recharge ;
+- disparition immédiate du fusil après le cinquième tir, sans objet vide restant ;
+- précision résolue séparément du test de neutralisation ;
+- chance modifiée par la taille corporelle et l'armure, avec limites XML ;
+- neutralisation réussie mettant temporairement à terre un humanoïde vivant sans réduction de Conscience ni mort aléatoire de mise à terre ;
+- Mouvement à zéro pendant l'effet et Conscience intacte ;
+- interaction de capture RimWorld ordinaire disponible et fonctionnelle pendant la fenêtre ;
+- réveil normal après expiration lorsqu'aucune autre affection ne maintient la cible à terre ;
+- persistance exacte des charges et de la durée après sauvegarde/rechargement ;
+- renouvellement d'un seul Hediff lors de réussites répétées, sans empilement ;
+- animaux, mécanoïdes, pawns déjà à terre et profils `forceDeathOnDowned` exclus de l'effet ;
+- dégâts légers toujours réels sur une cible déjà fragilisée ;
+- actions développeur disponibles uniquement sous la branche directe `GateRim SG-1 → Equipment...` ;
+- traductions anglaises/françaises, inspections de charge et textes flottants cohérents ;
+- absence de nouvelle erreur bloquante liée aux Defs, au projectile, aux charges ou au suivi de santé ;
+- quatre textures provisoires présentes ; cinq fichiers du prototype abandonné supprimés et aucune texture supprimée.
+
+Points de régression durables :
+
+- toute mission demandant une cible vivante doit fournir au moins un outil de neutralisation raisonnable et ne jamais dépendre uniquement de la mort aléatoire à la mise à terre ;
+- la neutralisation doit rester résistible et conserver les risques de précision, d'armure, de taille et de dégâts physiques réels ;
+- le fusil Tok'ra doit conserver ses cinq charges scellées, sans recharge normale, avec disparition à zéro ;
+- les bolas doivent conserver leur identité d'entrave physique distincte de l'inhibition neuromusculaire Tok'ra ;
+- la capture doit continuer à utiliser l'ordre vanilla et le flux ordinaire de prisonnier ;
+- toute modification des effets doit revalider Conscience, Mouvement, réveil, sauvegarde/rechargement, empilement de Hediffs et comportement des cibles exclues ;
+- tester l'usage abusif des outils hors mission lors de l'intégration de la première opération de capture.
+
 ## 0.3.35-dev - Nested debug-action menu
 
 Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.35-dev`. La r1 avait ajouté un wrapper `GateRim SG-1...` redondant sous la catégorie native ; la r2 l'a supprimé et expose directement les quatre entrées principales.

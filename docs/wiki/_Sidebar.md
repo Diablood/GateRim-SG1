@@ -26,6 +26,7 @@
 
 - [Bâton Ma'Tok](Matok-Staff)
 - [Zat'nik'tel](ZatnikTel)
+- [Outils de capture non létaux](Non-Lethal-Capture-Tools)
 - [Treillis d'équipe SG](SG-Team-Uniform)
 - [Variantes du treillis SG](SG-Team-Uniform-Variants)
 - [Bottes tactiques SG](SG-Tactical-Boots)

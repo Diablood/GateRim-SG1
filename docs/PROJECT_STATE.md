@@ -1,51 +1,50 @@
 # Project state
 
-Current milestone: `0.3.35-dev - Reorganize GateRim SG-1 debug actions into logical submenus` — validated locally on final revision `r2` and published under `v0.3.35-dev`.
+Current milestone: `0.3.36-dev - Add non-lethal capture tools` — validated in final local revision `r9`, closed and published under `v0.3.36-dev`.
 
-## Working state
+## Repository state
 
-- Starting tag: `v0.3.34-dev`.
-- Dedicated branch: `feature/debug-action-menu-reorganization`.
-- Final local revision: `0.3.35-dev-r2`.
-- Assembly version: `0.3.35.0`.
-- Mod metadata version: `0.3.35-dev`.
-- Cultural backstory count remains `83`.
-- Main GitHub repository and separate wiki are current through published tag `v0.3.35-dev`.
+- Starting tag: `v0.3.35-dev`.
+- Dedicated branch: `feature/non-lethal-capture-tools`.
+- Published versions: `0.3.36-dev` and `0.3.36.0`.
+- Final commit: `0.3.36-dev - add non-lethal capture tools`.
+- Final annotated tag: `v0.3.36-dev`.
+- The separate wiki was synchronized because player-facing pages were updated.
 
 ## Published scope
 
-- Replace the flat GateRim SG-1 debug-action list with four ordered entries directly inside the existing `GateRim SG-1` category.
-- Reuse RimWorld's native `DebugActionNode` hierarchy instead of adding a custom debug window.
-- Group actions first by system, then by mission or feature.
-- Order each submenu according to the normal test flow: state report, scheduling or offer creation, acceptance or progression, success or failure, then reset or cleanup.
-- Add a compact Tok'ra hierarchy covering the communicator, introduction arc, module study, organic operations and the earlier safehouse/intelligence chain.
-- Split organic operations into one framework submenu and one submenu for each of the seven recurrent archetypes.
-- Group Jaffa forehead-mark tools and cultural diagnostics in category-level submenus, while keeping mission-definition inspection as a direct category action.
-- Remove the individual `DebugAction` attributes from the existing action methods while preserving their implementations as callable static methods.
-- Keep every entry and child action restricted to RimWorld developer mode and to an active map.
-- Update durable test documentation to use the new exact menu paths.
+- Craftable single-use bolas.
+- Experimental Tok'ra hypodermic rifle with five sealed charges.
+- One charge consumed per launch and weapon destruction at zero.
+- Separate weapon-accuracy and neutralization-resistance rolls.
+- Body-size and armor resistance with XML clamps.
+- Light real blunt impact: `3` for bolas and `1` for the dart.
+- Temporary Tok'ra neuromuscular inhibition and a distinct bolas restraint, both leaving Consciousness intact and setting Moving to zero.
+- Ordinary RimWorld downing and vanilla capture during the temporary window.
+- Ordinary recovery after expiration when no other condition prevents movement.
+- Charges shown in the ground inspect pane and in hover tooltips while equipped or carried in inventory.
+- English/French text, debug tools, documentation and four provisional textures.
 
-## Deliberate limits
+## Rejected prototypes
 
-- No gameplay rule, mission state, save data, Def, translation or player-facing text is changed.
-- Contextual gizmos and the advanced-debug reports exposed on selected GateRim objects remain unchanged.
-- This milestone does not redesign RimWorld's debug interface or add search, favorites or custom windows.
-- No source file or texture is removed.
+- Consciousness-zero neutralization was rejected after hostile targets died on downing.
+- Persistent stun plus custom standing-target restraint was rejected because the standing pawn did not integrate cleanly with ordinary capture.
 
-## Validation completed
+The final design removes the custom JobDef, float-menu patch, restraint ThingComp, stun HediffComp and custom carrying JobDriver introduced by the rejected prototype. No additional file or texture was removed in `r9`.
 
-- Project consistency check and forced `0.3.35.0` rebuild completed successfully.
-- The native `GateRim SG-1` category directly exposes `Tok'ra...`, `Jaffa...`, `Culture...` and `Inspect mission definitions` in the documented order.
-- No additional `GateRim SG-1...` wrapper or legacy flat action remains.
-- The Tok'ra hierarchy and the seven organic-operation submenus follow the documented logical order.
-- Representative communicator, introduction, study, organic-framework, organic-mission, safehouse, culture and MissionDef actions retain their previous behavior.
-- Jaffa forehead-mark entries still activate the pawn-targeting map tool.
-- Repeated menu navigation and save/reload produced no duplicate action or new debug-menu error reported during the focused validation.
+## Final validation
 
-## Final result
+Final local revision `r9` confirms:
 
-The native RimWorld category is now compact and extensible without adding a redundant first click. Existing debug implementations and gameplay behavior are preserved, while future systems can be added under stable thematic submenus.
+- bolas use a distinct physical-restraint presentation;
+- the Tok'ra hypodermic rifle operates with its intended limited charges;
+- successful neutralization sets Moving to zero without reducing Consciousness or introducing random downing deaths;
+- the ordinary RimWorld capture order works;
+- charges remain visible on the ground, while equipped and while carried in inventory;
+- charges and inhibition duration persist through save/reload;
+- the rifle disappears after its final charge;
+- no additional cleanup of files or textures is required.
 
 ## Next milestone
 
-Start the next dedicated branch explicitly from `v0.3.35-dev` after rereading `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/ROADMAP.md` and `docs/MILESTONE_PUBLICATION.md`. No later milestone scope is fixed by this handoff.
+The next planned milestone is `0.3.37-dev - Add Tok'ra Jaffa officer capture operation`. It must start explicitly from `v0.3.36-dev` on a dedicated branch after rereading the repository procedures. The operation should consume the validated non-lethal toolkit without making capture guaranteed or replacing the ordinary prisoner flow.

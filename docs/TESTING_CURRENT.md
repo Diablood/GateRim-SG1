@@ -1,56 +1,63 @@
-# Validation finale — 0.3.35-dev
+# Validation terminée — 0.3.36-dev
 
-Jalon : `0.3.35-dev - Reorganize GateRim SG-1 debug actions into logical submenus`
+Jalon : `0.3.36-dev - Add non-lethal capture tools`
 
-Branche : `feature/debug-action-menu-reorganization`
+Branche : `feature/non-lethal-capture-tools`
 
-Tag de départ : `v0.3.34-dev`
+Tag de départ : `v0.3.35-dev`
 
-Révision locale finale validée : `0.3.35-dev-r2`
+Révision locale validée : `0.3.36-dev-r9`
 
-Version de DLL validée : `0.3.35.0`
+Version de DLL validée : `0.3.36.0`
 
-Tag final publié : `v0.3.35-dev`
+## Résultat final
 
-## Validation locale terminée
+La révision finale `r9` est fonctionnellement validée :
 
-- `./tools/check-project-consistency.cmd` termine sans erreur.
-- Le rebuild forcé produit la DLL `0.3.35.0`.
-- La catégorie native `GateRim SG-1` contient directement, dans cet ordre :
-  1. `Tok'ra...`
-  2. `Jaffa...`
-  3. `Culture...`
-  4. `Inspect mission definitions`
-- Aucun niveau intermédiaire `GateRim SG-1...` n'est présent.
-- Les anciennes entrées plates `Tok'ra ops: ...`, `Tok'ra intro: ...`, `Tok'ra study: ...`, `Jaffa mark: ...` et `Cultural names: ...` ne sont plus enregistrées séparément.
-- Le sous-menu Tok'ra conserve l'ordre communicateur, introduction, étude du module, opérations organiques, puis chaîne des planques et renseignements.
-- Les opérations organiques affichent d'abord le framework, puis les sept archétypes récurrents dans leur ordre établi.
-- Les rapports représentatifs du communicateur, de l'introduction, de l'étude, du framework organique et des MissionDefs s'ouvrent correctement.
-- Une offre d'observation peut toujours être forcée lorsque ses préconditions sont satisfaites.
-- Les outils de confiance, les échantillons de noms culturels et les autres actions testées conservent leur comportement antérieur.
-- `GateRim SG-1 → Jaffa... → Forehead marks...` active toujours l'outil de ciblage de pawn pour appliquer ou retirer une marque.
-- Les ouvertures répétées, la navigation et la sauvegarde/rechargement ne créent aucun doublon.
-- Aucune nouvelle erreur liée à `DebugActionNode`, `GateRimDebugActionMenu`, aux délégués ou aux méthodes déplacées n'a été signalée pendant la validation.
+- les bolas sont opérationnelles et utilisent une entrave physique RP distincte ;
+- le fusil hypodermique expérimental Tok'ra est opérationnel ;
+- une réussite laisse la Conscience intacte et place temporairement le Mouvement à zéro ;
+- aucune mort aléatoire liée à une réduction artificielle de Conscience n'a été observée ;
+- la cible est mise à terre par le système de santé ordinaire ;
+- l'ordre vanilla `Capturer` est disponible et mène correctement la cible vers un lit de prisonnier ;
+- la cible se relève normalement après expiration si aucune autre affection ne la maintient à terre ;
+- les charges du fusil sont visibles dans l'inspection au sol, dans l'infobulle équipée et dans l'inventaire ;
+- une charge est consommée par tir, y compris après un manque ou une résistance ;
+- les charges et la durée de l'effet persistent après sauvegarde/rechargement ;
+- le fusil disparaît immédiatement après la dernière charge ;
+- les bolas sont consommées après leur lancer ;
+- les effets ne s'empilent pas en plusieurs Hediffs concurrents ;
+- aucune nouvelle erreur bloquante liée aux outils de capture n'a été signalée.
 
-## Limites confirmées
+## Suppressions finales
 
-- Aucun gameplay, état de mission, format de sauvegarde, Def, traduction ou texte joueur n'est modifié.
-- Les gizmos contextuels et rapports avancés sur les objets sélectionnés restent inchangés.
-- Le jalon n'ajoute ni recherche, ni fenêtre personnalisée, ni texture.
-- Aucun fichier n'est supprimé.
+Les cinq fichiers du prototype abandonné restent supprimés :
 
-## Couverture durable
+```text
+1.6/Defs/JobDefs/SG1_NonLethalCaptureJobs.xml
+1.6/Patches/SG1_NonLethalCaptureFloatMenu.xml
+Source/GateRimSG1/Weapons/Comp_NonLethalRestraintFloatMenu.cs
+Source/GateRimSG1/Weapons/HediffComp_NonLethalStun.cs
+Source/GateRimSG1/Weapons/JobDriver_RestrainNeutralizedPawn.cs
+```
 
-Les régressions à maintenir sont enregistrées dans `docs/TESTING.md`, notamment :
-
-- les quatre entrées directes et leur ordre ;
-- l'absence permanente d'un wrapper `GateRim SG-1...` ;
-- l'absence de retour des anciennes actions plates ;
-- l'ordre des branches Tok'ra et des sept opérations organiques ;
-- la conservation des outils `ToolMapForPawns` pour les marques Jaffa ;
-- l'absence d'exception après navigation répétée et sauvegarde/rechargement ;
-- l'invisibilité de ces outils hors du mode développeur.
+La révision `r9` n'ajoute aucune autre suppression. Les quatre textures provisoires sont conservées.
 
 ## Publication
 
-La branche `feature/debug-action-menu-reorganization`, le tag final unique `v0.3.35-dev` et les pages wiki modifiées sont publiés. Le prochain jalon doit partir explicitement de `v0.3.35-dev`.
+- Commit final : `0.3.36-dev - add non-lethal capture tools`.
+- Branche publiée : `feature/non-lethal-capture-tools`.
+- Tag annoté final unique : `v0.3.36-dev`.
+- Wiki séparé synchronisé, car plusieurs pages `docs/wiki/*.md` documentent le jalon.
+
+## Limites connues
+
+- Aucune mission de capture n'est encore incluse.
+- La neutralisation reste résistible et les tirs peuvent manquer.
+- Le fusil n'est ni fabricable, ni achetable, ni rechargeable en jeu normal.
+- Les dégâts physiques très faibles restent réels sur une cible déjà gravement blessée.
+- Les quatre textures restent provisoires jusqu'à la future passe visuelle globale.
+
+## Étape suivante
+
+Le jalon suivant prévu est `0.3.37-dev - Add Tok'ra Jaffa officer capture operation`, à créer depuis `v0.3.36-dev` sur une nouvelle branche dédiée après relecture des procédures du dépôt.

@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.35-dev`
+- Development version: `0.3.36-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -26,6 +26,8 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin
   dependency and formal ceremonies.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.
+- Early non-lethal capture tools: craftable single-use bolas and an experimental
+  five-charge Tok'ra hypodermic rifle foundation for future living-target missions.
 - Tok'ra trust, safehouses, medical support and secure communications; new
   recurring organic operations require a powered player communicator, while
   active operations survive channel loss. Distress-call sites, craft-and-deliver

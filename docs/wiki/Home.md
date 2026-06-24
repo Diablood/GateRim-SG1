@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.35-dev`
+> Version du mod documentée : `0.3.36-dev`
 
 ## Le mod en bref
 
@@ -32,6 +32,7 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
   [Jaffa libres](Free-Jaffa-Faction), colonies mondiales et incidents associés.
 - Armes et équipements : [Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel),
+  [outils de capture non létaux](Non-Lethal-Capture-Tools),
   [armures Jaffa](Jaffa-Armor), tenue de terrain et couvre-chefs variés du SGC.
 
 ### Tok'ra
@@ -74,6 +75,16 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Recherches de fabrication Stargate](Stargate-Crafting-Research).
 - [État détaillé du contenu](Content-Status) pour distinguer le contenu jouable,
   les prototypes et les développements encore prévus.
+
+## Outils de neutralisation non létale
+
+La version `0.3.36-dev` ajoute des bolas fabricables et un fusil
+hypodermique expérimental Tok'ra à cinq charges. Une réussite applique soit une
+entrave physique des jambes avec les bolas, soit une inhibition neuromusculaire
+avec le fusil : la Conscience reste intacte, mais la cible tombe au sol et
+devient capturable par le flux vanilla. La précision, l'armure, la taille et la
+résistance propre à la cible empêchent toute garantie. Le fusil n'est pas encore
+distribué en jeu normal.
 
 ## Développement à venir
 
