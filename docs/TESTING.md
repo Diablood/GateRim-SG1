@@ -1,3 +1,28 @@
+## 0.3.39-dev - Goa'uld free-symbiote incursion
+
+Validation locale terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.39-dev`.
+
+Couverture validée et régressions durables pour cette menace biologique récurrente :
+
+- load `SG1_GoauldFreeSymbioteIncursion` without XML or DefOf errors;
+- verify the natural incident remains unavailable before day `18`, without a visible Goa'uld System Lord faction, without a compatible player colonist or without a reachable map-edge entry cell;
+- force the weak-colony profile at `300` points and receive exactly one hostile free Goa'uld symbiote;
+- force the advanced-colony profile at `2600` points and receive exactly four hostile free Goa'uld symbiotes in one edge cluster;
+- verify each pawn reuses the established autonomous hunt and persistent implantation path rather than a second incident-specific infection system;
+- verify a successful contact creates one recent Goa'uld implantation, transfers the same persistent symbiote identity and removes only the contacting free pawn;
+- resolve three successive incursions without immediately repeating the warning text, then save/reload and verify the previous variant remains excluded;
+- confirm ordinary storyteller points select `1`, `2`, `3` or `4` symbiotes at the documented thresholds and never exceed the cap;
+- confirm Tok'ra symbiotes, manual Goa'uld implantation, ritual implantation, extraction and active-host behavior remain unchanged;
+- confirm the incident never changes Tok'ra trust, communicator state or organic-operation scheduling;
+- inspect `Player.log` after natural and forced tests.
+
+Durable boundaries:
+
+- host faction and player-control changes are outside this incident and require a separate system-wide design;
+- do not add Jaffa escorts, world sites, quest rewards or a dedicated storyteller dependency to this threat without a later explicit milestone;
+- preserve the visible-faction requirement so the biological attack remains tied to an actual Goa'uld presence in the generated world;
+- keep the group deliberately small because every successful contact can create a persistent implanted host.
+
 ## 0.3.38-dev - Audit du pool d'opérations Tok'ra
 
 Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.38-dev`.

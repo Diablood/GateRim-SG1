@@ -1,5 +1,23 @@
 # Roadmap
 
+## Dernier jalon clôturé — Incursion de symbiotes Goa'uld libres (`0.3.39-dev`)
+
+- [x] Partir explicitement de `v0.3.38-dev` sur `feature/goauld-free-symbiote-incursion`.
+- [x] Réutiliser le pawn, la chasse autonome et le transfert d'identité Goa'uld existants.
+- [x] Ajouter un incident naturel rare indépendant du pool d'opérations Tok'ra.
+- [x] Dimensionner le groupe de `1` à `4` symbiotes depuis les points de menace du storyteller.
+- [x] Exiger une faction visible de Grand Maître Goa'uld et au moins un colon compatible.
+- [x] Ajouter trois avertissements RP anglais/français avec anti-répétition persistante.
+- [x] Ajouter un sous-menu développeur Goa'uld compact avec tests faible et avancé.
+- [x] Valider le contrôle de cohérence et le build Windows `0.3.39.0`.
+- [x] Valider en jeu les groupes de `1` et `4`, la chasse, le contact, l'implantation et la persistance des variantes.
+- [x] Revalider les symbiotes Tok'ra, l'implantation manuelle, le rituel, l'extraction et l'absence d'effet sur les opérations Tok'ra.
+- [x] Clôturer le jalon, publier le tag final unique `v0.3.39-dev` et synchroniser le wiki.
+
+La révision finale `r1` valide le chargement avec la DLL `0.3.39.0`, les profils faible et avancé, la chasse autonome, le transfert d'identité lors du contact, les variantes RP persistantes et l'absence de régression sur les systèmes Tok'ra et les autres voies Goa'uld. Le premier chargement avec l'ancienne DLL `0.3.38.0` constituait uniquement un déploiement non reconstruit et a été résolu par le build attendu.
+
+Le jalon est publié sous le tag final unique `v0.3.39-dev`. Il constitue le premier contenu Goa'uld autonome récurrent après la consolidation du pool Tok'ra, sans modifier l'allégeance d'un hôte implanté, créer de site mondial ou ajouter d'escorte Jaffa. Aucun périmètre `0.3.40-dev` n'est imposé : le prochain jalon doit être choisi dans le backlog durable, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
 ## Dernier jalon clôturé — Audit du pool d'opérations Tok'ra (`0.3.38-dev`)
 
 - [x] Partir explicitement de `v0.3.37-dev` sur `feature/tokra-operation-pool-audit`.

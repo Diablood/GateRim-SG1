@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.39-dev - Add Goa'uld free-symbiote incursion incident
+
+- Add the first recurrent autonomous Goa'uld biological-hazard incident.
+- Spawn the existing free Goa'uld symbiote pawn from a reachable hostile map edge.
+- Scale the group from one to four symbiotes using storyteller threat points, with a deliberately low cap.
+- Require the visible Goa'uld System Lord faction and at least one compatible player colonist.
+- Reuse the established autonomous pursuit, persistent identity transfer and recent-implantation systems without a parallel infection path.
+- Add three English/French RP warning variants with persistent immediate-repeat prevention.
+- Add a compact Goa'uld developer submenu with current, weak-colony and advanced-colony scaling tests.
+- Preserve Tok'ra operations and all existing host, extraction and active-symbiote behavior.
+- Validate final local revision `r1`, including weak and advanced scaling, autonomous pursuit, persistent identity transfer, non-repeating warning text after save/reload and regressions of existing Goa'uld/Tok'ra systems.
+- Confirm the Windows build of `GateRimSG1.dll` version `0.3.39.0`; the initial missing-worker load error was caused only by the stale `0.3.38.0` assembly.
+- Publish branch `feature/goauld-free-symbiote-incursion`, final tag `v0.3.39-dev` and the synchronized wiki.
+
 ## 0.3.38-dev - Audit Tok'ra organic operation pool and long-term variety
 
 - Derive required recurrent-operation coverage from the persisted archetype enum instead of a hardcoded minimum.

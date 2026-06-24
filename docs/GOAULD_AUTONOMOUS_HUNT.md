@@ -72,7 +72,7 @@ implantation remains available as a regression tool.
 
 - target selection is nearest compatible reachable humanoid;
 - the symbiote does not yet prioritize downed targets or specific factions;
-- no incident or raid spawns free symbiotes yet;
+- `0.3.39-dev` adds a rare threat-scaled colony incident that spawns free symbiotes;
 - the prototype uses a dedicated pursuit job but not a full tactical AI tree;
 - Unas support remains future work.
 

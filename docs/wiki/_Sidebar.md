@@ -74,6 +74,7 @@
 - [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity)
 - [Identité visuelle Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity)
 - [Raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid)
+- [Incursion de symbiotes Goa'uld libres](Goauld-Free-Symbiote-Incursion)
 - [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid)
 - [Raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)
 - [Raid de destruction Jaffa contrôlé](Goauld-Jaffa-Controlled-Destruction-Raid)

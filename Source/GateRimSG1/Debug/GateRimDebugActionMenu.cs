@@ -48,6 +48,39 @@ namespace GateRimSG1.Debugging
 
         [DebugAction(
             Category,
+            "Goa'uld...",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap,
+            displayPriority = 350)]
+        public static DebugActionNode OpenGoauld()
+        {
+            DebugActionNode root = new DebugActionNode();
+
+            root.AddChild(MenuNode(
+                "Free-symbiote incursion...",
+                100,
+                ActionNode(
+                    "Show current scaling",
+                    GoauldFreeSymbioteIncursionDebugActions.ShowCurrentScaling,
+                    400),
+                ActionNode(
+                    "Force current scaling",
+                    GoauldFreeSymbioteIncursionDebugActions.ForceCurrentScaling,
+                    300),
+                ActionNode(
+                    "Force weak-colony scaling",
+                    GoauldFreeSymbioteIncursionDebugActions.ForceWeakColonyScaling,
+                    200),
+                ActionNode(
+                    "Force advanced-colony scaling",
+                    GoauldFreeSymbioteIncursionDebugActions.ForceAdvancedColonyScaling,
+                    100)));
+
+            return root;
+        }
+
+        [DebugAction(
+            Category,
             "Jaffa...",
             actionType = DebugActionType.Action,
             allowedGameStates = AllowedGameStates.PlayingOnMap,

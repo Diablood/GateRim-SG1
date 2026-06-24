@@ -99,3 +99,40 @@ No additional `GateRim SG-1...` action is inserted below the category. This avoi
 Within each submenu, reports appear first, followed by setup or offer actions, progression actions, outcome actions and destructive reset or cleanup actions. Short labels rely on the parent menu for context instead of repeating `Tok'ra ops:` or another technical prefix on every row.
 
 The hierarchy uses RimWorld's normal `DebugActionNode` children. It does not introduce a custom window, does not change contextual gizmos and does not expose any developer action in normal play.
+
+## Later top-level extensions
+
+The category remains compact while later validated systems add one branch only
+when they represent a distinct family of tests.
+
+`0.3.36-dev` added:
+
+```text
+Equipment...
+```
+
+for non-lethal capture tools. `0.3.39-dev` adds:
+
+```text
+Goa'uld...
+└─ Free-symbiote incursion...
+   ├─ Show current scaling
+   ├─ Force current scaling
+   ├─ Force weak-colony scaling
+   └─ Force advanced-colony scaling
+```
+
+The current intended root order is therefore:
+
+```text
+Tok'ra...
+Goa'uld...
+Jaffa...
+Equipment...
+Culture...
+Inspect mission definitions
+```
+
+The Goa'uld branch is developer-only, keeps scaling diagnostics inside its
+submenu and does not expose storyteller points or incident eligibility in
+normal play.

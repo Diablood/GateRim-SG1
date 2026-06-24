@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldFreeSymbioteIncursion_LetterLabel>Uncontained Goa'uld presence</GR_GoauldFreeSymbioteIncursion_LetterLabel>
+    <GR_GoauldFreeSymbioteIncursion_LetterText_0>Hostile life signs at the colony perimeter: {0}. They have been identified as adult Goa'uld symbiotes moving under their own direction and seeking living humanoid hosts. Keep them away from anyone you cannot afford to lose.</GR_GoauldFreeSymbioteIncursion_LetterText_0>
+    <GR_GoauldFreeSymbioteIncursion_LetterText_1>Movement at the edge of the colony has been identified as free Goa'uld symbiotes. Detected contacts: {0}. No Jaffa escort is visible. The creatures themselves are the assault, and each will attempt to reach and implant a compatible host.</GR_GoauldFreeSymbioteIncursion_LetterText_1>
+    <GR_GoauldFreeSymbioteIncursion_LetterText_2>An uncontained Goa'uld presence is closing on the settlement. Detected contacts: {0}. The approach is scattered but deliberate. Intercept the creatures before they can cross the last distance to a colonist.</GR_GoauldFreeSymbioteIncursion_LetterText_2>
+</LanguageData>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    First recurrent Goa'uld biological-hazard incident.
+
+    The worker reuses the existing autonomous free-symbiote pursuit and
+    identity-safe implantation path. Count scales from storyteller threat
+    points and remains deliberately capped because every successful contact
+    can permanently alter a colonist.
+    -->
+    <IncidentDef>
+        <defName>SG1_GoauldFreeSymbioteIncursion</defName>
+        <label>free Goa'uld symbiote incursion</label>
+        <workerClass>GateRimSG1.Goauld.IncidentWorker_GoauldFreeSymbioteIncursion</workerClass>
+        <category>ThreatSmall</category>
+        <targetTags>
+            <li>Map_PlayerHome</li>
+        </targetTags>
+        <baseChance>0.035</baseChance>
+        <earliestDay>18</earliestDay>
+        <minRefireDays>24</minRefireDays>
+        <requireColonistsPresent>true</requireColonistsPresent>
+    </IncidentDef>
+</Defs>

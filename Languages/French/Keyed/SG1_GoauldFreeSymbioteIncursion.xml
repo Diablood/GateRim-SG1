@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldFreeSymbioteIncursion_LetterLabel>Présence Goa'uld hors de contrôle</GR_GoauldFreeSymbioteIncursion_LetterLabel>
+    <GR_GoauldFreeSymbioteIncursion_LetterText_0>Signatures biologiques hostiles aux abords de la colonie : {0}. Elles correspondent à des symbiotes Goa'uld adultes qui se déplacent de leur propre initiative à la recherche d'hôtes humanoïdes vivants. Tenez-les éloignés de tous ceux que vous ne pouvez pas vous permettre de perdre.</GR_GoauldFreeSymbioteIncursion_LetterText_0>
+    <GR_GoauldFreeSymbioteIncursion_LetterText_1>Les mouvements détectés en bordure de la colonie proviennent de symbiotes Goa'uld libres. Contacts repérés : {0}. Aucune escorte Jaffa n'est visible. Les créatures constituent elles-mêmes l'assaut et chacune tentera d'atteindre puis d'implanter un hôte compatible.</GR_GoauldFreeSymbioteIncursion_LetterText_1>
+    <GR_GoauldFreeSymbioteIncursion_LetterText_2>Une présence Goa'uld hors de contrôle se rapproche de la colonie. Contacts repérés : {0}. Sa progression est dispersée, mais déterminée. Interceptez les créatures avant qu'elles ne franchissent la dernière distance jusqu'à un colon.</GR_GoauldFreeSymbioteIncursion_LetterText_2>
+</LanguageData>

@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.38-dev`
+> Version du mod documentée : `0.3.39-dev`
 
 ## Le mod en bref
 
@@ -29,6 +29,8 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   [congélation profonde](Primta-Deep-Freezing) des symbiotes immatures.
 - [Goa'uld](Goauld), implantation forcée ou rituelle, extraction d'urgence,
   hôtes actifs et [reine Goa'uld](Goauld-Queen).
+- [Incursions de symbiotes Goa'uld libres](Goauld-Free-Symbiote-Incursion) :
+  menace biologique rare et adaptative utilisant leur chasse autonome.
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
   [Jaffa libres](Free-Jaffa-Faction), colonies mondiales et incidents associés.
 - Armes et équipements : [Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel),

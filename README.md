@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.38-dev`
+- Development version: `0.3.39-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -21,6 +21,8 @@ people, factions, technologies, biology and conflicts surrounding it.
 - A stranded four-person SG-team starting scenario with dedicated field gear.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and a hidden
   Tok'ra world presence.
+- Rare Goa'uld free-symbiote incursions that scale from storyteller threat
+  points and reuse the autonomous implantation system as a biological hazard.
 - Persistent Goa'uld and Tok'ra symbiote identities, implantation, extraction
   and player-controlled Tok'ra host/symbiote personality switching.
 - Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin

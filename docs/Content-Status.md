@@ -18,6 +18,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Naquadah dans le sang | Marqueur prototype | 0.1.7-dev |
 | Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
+| Incursion de symbiotes Goa'uld libres | Menace biologique récurrente : 1 à 4 symbiotes selon les points de menace, chasse autonome existante et avertissements RP anti-répétition | 0.3.39-dev |
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
 | Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
 | Hôte Goa'uld actif | Conversion automatique après la phase critique | 0.1.18-dev |

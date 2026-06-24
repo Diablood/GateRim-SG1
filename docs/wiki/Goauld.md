@@ -106,6 +106,19 @@ immédiate.
 
 Consulte [Chasse autonome des symbiotes libres](Autonomous-Hunt).
 
+### Incursion de symbiotes libres
+
+Depuis `0.3.39-dev`, une menace rare peut faire entrer naturellement de un à
+quatre symbiotes Goa'uld libres par une bordure accessible de la colonie. Le
+nombre dépend des points de menace calculés par le storyteller.
+
+Chaque créature conserve la chasse autonome et l'implantation persistante déjà
+utilisées par les symbiotes libres générés manuellement. Trois avertissements
+RP alternent sans répétition immédiate, y compris après sauvegarde et
+rechargement.
+
+Consulte [Incursion de symbiotes Goa'uld libres](Goauld-Free-Symbiote-Incursion).
+
 ### Implantation rituelle
 
 Depuis `0.1.22-dev`, le symbiote libre peut déclencher une voie contrôlée :

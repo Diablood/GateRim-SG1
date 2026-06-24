@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.38-dev`
+> Dernière révision : `0.3.39-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -107,6 +107,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
 | Opérations Tok'ra organiques | Framework récurrent avec huit archétypes intégrés, slot unique, délais cachés, difficulté adaptative et audit automatique de couverture, variantes et anti-répétition | 0.2.48-dev à 0.3.38-dev / accès 0.3.33-dev |
+| Incursion de symbiotes Goa'uld libres | Incident Goa'uld autonome rare, 1 à 4 symbiotes selon les points de menace, chasse et implantation existantes, trois lettres RP avec anti-répétition locale | 0.3.39-dev |
 
 ## Prévu
 
