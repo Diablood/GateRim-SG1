@@ -293,6 +293,9 @@ namespace GateRimSG1.Goauld
             set => activeOperation.medicalSupplyDepartureOrdered = value;
         }
 
+        private TokraJaffaOfficerCaptureTransferState jaffaOfficerCapture
+            => activeOperation.jaffaOfficerCapture;
+
         private Pawn departingMedicalSupplyLiaison
         {
             get => followUp.departingMedicalSupplyLiaison;
@@ -541,6 +544,16 @@ namespace GateRimSG1.Goauld
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
+
+            if (manager.activeArchetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                manager.SyncJaffaOfficerCaptureStateFromWorldSite();
+                return TokraJaffaOfficerCaptureTransferController
+                    .GetExtractionRequestDisabledReason(
+                        manager.jaffaOfficerCapture,
+                        map);
+            }
 
             if (manager.activeArchetype
                 == TokraOrganicOperationArchetype.GoauldObservation)
@@ -1395,6 +1408,14 @@ namespace GateRimSG1.Goauld
                 TokraOrganicOperationArchetype.DecoyTransmissionDefense);
         }
 
+        public static bool DebugForceJaffaOfficerCaptureOpportunity(
+            Map map)
+        {
+            return DebugForceSpecificOpportunity(
+                map,
+                TokraOrganicOperationArchetype.JaffaOfficerCapture);
+        }
+
         public static bool DebugForceDiversionAssaultRaid(Map map)
         {
             GameComponent_TokraOrganicOperationManager manager
@@ -1498,6 +1519,136 @@ namespace GateRimSG1.Goauld
                 (int)variant);
             return manager != null;
         }
+
+        public static void RegisterJaffaOfficerCaptureTarget(
+            WorldObject_TokraJaffaOfficerCaptureSite site,
+            Pawn target)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.JaffaOfficerCapture
+                || target == null)
+            {
+                return;
+            }
+
+            manager.EnsureJaffaOfficerCaptureState();
+            manager.jaffaOfficerCapture.targetOfficer = target;
+            manager.SyncJaffaOfficerCaptureStateFromSite(site);
+        }
+
+        public static void NotifyJaffaOfficerCaptureSiteEvacuated(
+            WorldObject_TokraJaffaOfficerCaptureSite site)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                return;
+            }
+
+            manager.SyncJaffaOfficerCaptureStateFromSite(site);
+            manager.jaffaOfficerCapture.fieldSiteCleared = true;
+            TokraJaffaOfficerCaptureMissionUtility.SetRuntimeCounter(
+                manager.activeOperation?.frameworkRuntime,
+                TokraJaffaOfficerCaptureMissionUtility.WorldObjectIdCounterKey,
+                -1);
+
+            GR_Log.Message(
+                "Cleared Tok'ra Jaffa-officer field site after caravan "
+                + "extraction; prisoner tracking remains active in the "
+                + "operation instance.");
+        }
+
+        public static bool NotifyJaffaOfficerCaptured(
+            WorldObject_TokraJaffaOfficerCaptureSite site)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || manager.activeArchetype
+                    != TokraOrganicOperationArchetype.JaffaOfficerCapture
+                || (manager.activeState
+                        != TokraOrganicOperationState.Accepted
+                    && manager.activeState
+                        != TokraOrganicOperationState.Ready))
+            {
+                return false;
+            }
+
+            manager.SyncJaffaOfficerCaptureStateFromSite(site);
+
+            if (manager.jaffaOfficerCapture?.targetOfficer == null)
+            {
+                return false;
+            }
+
+            manager.activeState = TokraOrganicOperationState.Ready;
+            manager.reportReadyTick = Find.TickManager?.TicksGame ?? 0;
+            manager.readyNotificationSent = true;
+            return true;
+        }
+
+        public static bool NotifyJaffaOfficerCaptureSiteResolved(
+            WorldObject_TokraJaffaOfficerCaptureSite site,
+            bool succeeded,
+            string failureTextId)
+        {
+            GameComponent_TokraOrganicOperationManager manager
+                = GetCurrentManager();
+
+            if (manager == null
+                || !manager.TryGetActiveJaffaOfficerCaptureSite(
+                    site,
+                    out TokraOrganicOperationDefinition definition))
+            {
+                return false;
+            }
+
+            string failureTextKey = succeeded
+                || string.IsNullOrWhiteSpace(failureTextId)
+                    ? null
+                    : definition.GetRuntimeTextKey(failureTextId);
+
+            return manager.TryResolveActiveOperation(
+                succeeded
+                    ? TokraOrganicOperationOutcome.Succeeded
+                    : TokraOrganicOperationOutcome.Failed,
+                null,
+                failureTextKey,
+                bypassSuccessValidation: true);
+        }
+
+        private bool TryGetActiveJaffaOfficerCaptureSite(
+            WorldObject_TokraJaffaOfficerCaptureSite site,
+            out TokraOrganicOperationDefinition definition)
+        {
+            definition = GetActiveDefinition();
+
+            if (site == null
+                || definition == null
+                || activeArchetype
+                    != TokraOrganicOperationArchetype.JaffaOfficerCapture
+                || (activeState != TokraOrganicOperationState.Accepted
+                    && activeState != TokraOrganicOperationState.Ready))
+            {
+                return false;
+            }
+
+            WorldObject_TokraJaffaOfficerCaptureSite activeSite
+                = TokraJaffaOfficerCaptureMissionUtility.FindWorldSite(
+                    activeOperation.frameworkRuntime);
+
+            return activeSite != null && activeSite.ID == site.ID;
+        }
+
 
         public static bool NotifyDistressCallSiteResolved(
             WorldObject_TokraDistressCallSite site,
@@ -1833,6 +1984,27 @@ namespace GateRimSG1.Goauld
                 return site?.DebugExpireContract() == true;
             }
 
+            if (manager.activeArchetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                WorldObject_TokraJaffaOfficerCaptureSite site
+                    = TokraJaffaOfficerCaptureMissionUtility.FindWorldSite(
+                        manager.activeOperation.frameworkRuntime);
+
+                if (site != null)
+                {
+                    return site.DebugExpireOperation();
+                }
+
+                TokraOrganicOperationDefinition captureDefinition
+                    = manager.GetActiveDefinition();
+                return manager.TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    captureDefinition?.GetRuntimeTextKey("failureTimeout"),
+                    bypassSuccessValidation: true);
+            }
+
             manager.operationDeadlineTick = currentTick;
             manager.TickActiveOpportunity(currentTick);
             return true;
@@ -1882,6 +2054,15 @@ namespace GateRimSG1.Goauld
                     + (manager.departingMedicalSupplyLiaison?.LabelShortCap
                         ?? "none");
             }
+
+            WorldObject_TokraJaffaOfficerCaptureSite captureSite
+                = TokraJaffaOfficerCaptureMissionUtility.FindWorldSite(
+                    manager.activeOperation.frameworkRuntime);
+            manager.SyncJaffaOfficerCaptureStateFromSite(captureSite);
+            Pawn captureTarget = manager.jaffaOfficerCapture?.targetOfficer;
+            Caravan captureCaravan
+                = TokraJaffaOfficerCaptureMissionUtility
+                    .FindPlayerCaravanContaining(captureTarget);
 
             return "Tok'ra organic operation debug"
                 + "\nArchetype: " + definition.DebugLabel
@@ -1958,6 +2139,20 @@ namespace GateRimSG1.Goauld
                 + (TokraDiversionAssaultUtility.GetExtractedCargoKind(
                         manager.activeOperation.frameworkRuntime)
                     ?? "none")
+                + "\nCapture site: "
+                + (captureSite?.ID.ToString() ?? "none")
+                + " | map loaded: "
+                + (captureSite?.HasMap ?? false)
+                + " | target: "
+                + (captureTarget?.LabelShortCap ?? "none")
+                + " | prisoner: "
+                + (captureTarget?.IsPrisonerOfColony ?? false)
+                + " | caravan: "
+                + (captureCaravan?.ID.ToString() ?? "none")
+                + " | remaining: "
+                + Math.Max(
+                    0,
+                    manager.operationDeadlineTick - currentTick)
                 + "\nMission Def: "
                 + (manager.activeOperation.frameworkRuntime?.missionDefName
                     ?? "legacy C#")
@@ -1998,7 +2193,7 @@ namespace GateRimSG1.Goauld
                 = GameComponent_TokraTrustTracker.GetCurrentTier();
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             StringBuilder report = new StringBuilder();
-            bool passed = definitions.Count >= 7;
+            bool passed = definitions.Count >= 8;
 
             report.AppendLine("Tok'ra long-term orchestration audit");
             report.AppendLine("Definitions: " + definitions.Count);
@@ -2472,7 +2667,9 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.DistressCall
                 || manager.activeArchetype
                     == TokraOrganicOperationArchetype
-                        .DecoyTransmissionDefense)
+                        .DecoyTransmissionDefense
+                || manager.activeArchetype
+                    == TokraOrganicOperationArchetype.JaffaOfficerCapture)
             {
                 failureTextKey
                     = manager.GetActiveDefinition()
@@ -2631,6 +2828,11 @@ namespace GateRimSG1.Goauld
                                     .DistressCall
                                 ? definition.GetRuntimeTextKey(
                                     "failureSiteLost")
+                                : definition.Archetype
+                                    == TokraOrganicOperationArchetype
+                                        .JaffaOfficerCapture
+                                    ? definition.GetRuntimeTextKey(
+                                        "failureSiteLost")
                                 : definition.Archetype
                                     == TokraOrganicOperationArchetype
                                         .GoauldObservation
@@ -3041,6 +3243,99 @@ namespace GateRimSG1.Goauld
                     TokraOrganicOperationOutcome.Failed,
                     null,
                     definition.GetRuntimeTextKey("failureSiteLost"),
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            if (operationDeadlineTick > 0
+                && currentTick >= operationDeadlineTick)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureTimeout"),
+                    bypassSuccessValidation: true);
+            }
+        }
+
+
+        internal void TickAcceptedJaffaOfficerCapture(int currentTick)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+
+            if (definition == null)
+            {
+                return;
+            }
+
+            WorldObject_TokraJaffaOfficerCaptureSite site
+                = TokraJaffaOfficerCaptureMissionUtility.FindWorldSite(
+                    activeOperation.frameworkRuntime);
+
+            if (site != null)
+            {
+                SyncJaffaOfficerCaptureStateFromSite(site);
+            }
+            else if (jaffaOfficerCapture?.fieldSiteCleared != true)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureSiteLost"),
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            Pawn target = jaffaOfficerCapture?.targetOfficer;
+
+            if (target != null
+                && target.IsPrisonerOfColony
+                && (TokraJaffaOfficerCaptureMissionUtility
+                        .FindPlayerCaravanContaining(target) != null
+                    || TokraJaffaOfficerCaptureMissionUtility
+                        .FindPlayerHomeMapContaining(target) != null))
+            {
+                activeState = TokraOrganicOperationState.Ready;
+                readyNotificationSent = true;
+            }
+
+            TokraJaffaOfficerCaptureTransferTickResult result
+                = TokraJaffaOfficerCaptureTransferController.Tick(
+                    jaffaOfficerCapture,
+                    currentTick);
+
+            if (result
+                == TokraJaffaOfficerCaptureTransferTickResult.Succeeded)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Succeeded,
+                    null,
+                    null,
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            if (result
+                == TokraJaffaOfficerCaptureTransferTickResult
+                    .FailedTargetKilled)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureTargetKilled"),
+                    bypassSuccessValidation: true);
+                return;
+            }
+
+            if (result
+                == TokraJaffaOfficerCaptureTransferTickResult
+                    .FailedTargetLost)
+            {
+                TryResolveActiveOperation(
+                    TokraOrganicOperationOutcome.Failed,
+                    null,
+                    definition.GetRuntimeTextKey("failureTargetLost"),
                     bypassSuccessValidation: true);
                 return;
             }
@@ -4623,6 +4918,114 @@ namespace GateRimSG1.Goauld
         }
 
 
+        internal bool TryAcceptJaffaOfficerCapture(
+            Map map,
+            Pawn operatorPawn)
+        {
+            TokraOrganicOperationDefinition definition
+                = GetActiveDefinition();
+            GateRimMissionRuntimeData runtime
+                = activeOperation.frameworkRuntime;
+            WorldObject_TokraJaffaOfficerCaptureSite site;
+
+            if (definition == null
+                || definition.Capture == null
+                || map == null
+                || runtime == null)
+            {
+                return false;
+            }
+
+            if (!TokraJaffaOfficerCaptureMissionUtility.TryCreateWorldSite(
+                    map,
+                    definition,
+                    runtime,
+                    out site))
+            {
+                Messages.Message(
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            if (!TokraJaffaOfficerCaptureMissionUtility.TryIssueCaptureTool(
+                    map,
+                    operatorPawn,
+                    definition.Capture,
+                    runtime))
+            {
+                site.NotifyManagerResolved(false);
+                Messages.Message(
+                    definition.GetRuntimeTextKey("spawnFailed").Translate(),
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return false;
+            }
+
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
+            EnsureJaffaOfficerCaptureState();
+            jaffaOfficerCapture.Reset();
+            activeState = TokraOrganicOperationState.Accepted;
+            acceptedTick = currentTick;
+            reportReadyTick = 0;
+            operationDeadlineTick = currentTick
+                + Math.Max(1, definition.DeadlineTicks);
+            readyNotificationSent = false;
+            resolutionApplied = false;
+            activeDeadDrop = null;
+
+            NotifyMissionAccepted(map, operatorPawn);
+
+            string remainingHours = GetRoundedUpHours(
+                definition.DeadlineTicks).ToString();
+
+            Messages.Message(
+                definition.AcceptedMessageKey.Translate(
+                    operatorPawn?.LabelShortCap ?? "?",
+                    remainingHours),
+                site,
+                MessageTypeDefOf.NeutralEvent,
+                historical: true);
+
+            Find.LetterStack?.ReceiveLetter(
+                definition.GetRuntimeTextKey("targetLetterLabel").Translate(),
+                definition.GetRuntimeTextKey("targetLetterText").Translate(
+                    remainingHours),
+                LetterDefOf.NeutralEvent,
+                site);
+
+            GR_Log.Message(
+                "Accepted Tok'ra Jaffa-officer capture operation on map "
+                + $"{map.uniqueID}; world site {site.ID} at tile "
+                + $"{site.Tile}; operator "
+                + $"{operatorPawn?.LabelShortCap ?? "unknown"}.");
+
+            return true;
+        }
+
+
+        internal bool TryRequestJaffaOfficerExtraction(Pawn operatorPawn)
+        {
+            if (activeArchetype
+                    != TokraOrganicOperationArchetype.JaffaOfficerCapture
+                || (activeState != TokraOrganicOperationState.Accepted
+                    && activeState != TokraOrganicOperationState.Ready))
+            {
+                return false;
+            }
+
+            SyncJaffaOfficerCaptureStateFromWorldSite();
+            Map map = operatorPawn?.Map ?? GetActiveMap();
+
+            return TokraJaffaOfficerCaptureTransferController
+                .TryRequestHomeExtraction(
+                    jaffaOfficerCapture,
+                    map,
+                    operatorPawn);
+        }
+
+
         internal bool TryAcceptTemporaryBaseDelivery(
             Map map,
             Pawn operatorPawn)
@@ -5430,6 +5833,34 @@ namespace GateRimSG1.Goauld
             }
 
             if (definition.Archetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                if (outcome == TokraOrganicOperationOutcome.Succeeded)
+                {
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.SuccessLetterLabelKey.Translate(),
+                        GetMissionSuccessTextKey(definition).Translate(),
+                        LetterDefOf.PositiveEvent,
+                        letterTarget);
+                }
+                else
+                {
+                    string textKey = string.IsNullOrEmpty(failureTextKey)
+                        ? definition.GetRuntimeTextKey("failureTimeout")
+                        : failureTextKey;
+
+                    Find.LetterStack?.ReceiveLetter(
+                        definition.FailureLetterLabelKey.Translate(),
+                        textKey.Translate(),
+                        LetterDefOf.NegativeEvent,
+                        letterTarget);
+                }
+
+                return;
+            }
+
+
+            if (definition.Archetype
                 == TokraOrganicOperationArchetype.DistressCall)
             {
                 if (outcome == TokraOrganicOperationOutcome.Succeeded)
@@ -6011,21 +6442,54 @@ namespace GateRimSG1.Goauld
 
         private bool HasCommunicatorInteractionForMap(Map map)
         {
-            if (!IsActiveForMap(map))
+            if (map == null
+                || activeState == TokraOrganicOperationState.None
+                || activeArchetype == TokraOrganicOperationArchetype.None)
             {
                 return false;
-            }
-
-            if (activeState == TokraOrganicOperationState.Offered)
-            {
-                return true;
             }
 
             TokraOrganicOperationDefinition definition
                 = GetActiveDefinition();
 
-            if (definition == null
-                || !definition.UsesCommunicatorForCompletion)
+            if (definition == null)
+            {
+                return false;
+            }
+
+            if (IsActiveForMap(map)
+                && activeState == TokraOrganicOperationState.Offered)
+            {
+                return true;
+            }
+
+            if (!definition.UsesCommunicatorForCompletion)
+            {
+                return false;
+            }
+
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                SyncJaffaOfficerCaptureStateFromWorldSite();
+
+                if (jaffaOfficerCapture?.extractionRequested == true)
+                {
+                    return false;
+                }
+
+                Pawn target = jaffaOfficerCapture?.targetOfficer;
+                bool targetOnMap = target != null
+                    && map.IsPlayerHome
+                    && TokraJaffaOfficerCaptureMissionUtility
+                        .IsPawnPresentOnMapIncludingCarried(target, map);
+
+                return (IsActiveForMap(map) || targetOnMap)
+                    && (activeState == TokraOrganicOperationState.Accepted
+                        || activeState == TokraOrganicOperationState.Ready);
+            }
+
+            if (!IsActiveForMap(map))
             {
                 return false;
             }
@@ -6603,6 +7067,32 @@ namespace GateRimSG1.Goauld
                     .ToString();
             }
             else if (definition.Archetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                SyncJaffaOfficerCaptureStateFromWorldSite();
+                Pawn target = jaffaOfficerCapture?.targetOfficer;
+                string remainingHours = GetRoundedUpHours(
+                    operationDeadlineTick - currentTick).ToString();
+                bool targetSecured = target != null
+                    && (jaffaOfficerCapture.extractionRequested
+                        || TokraJaffaOfficerCaptureMissionUtility
+                            .FindPlayerCaravanContaining(target) != null
+                        || (target.IsPrisonerOfColony
+                            && TokraJaffaOfficerCaptureMissionUtility
+                                .FindPlayerHomeMapContaining(target) != null));
+                string statusKey = targetSecured
+                    ? definition.ReadyStatusKey
+                    : definition.ActiveStatusKey;
+                string targetLabel = target?.LabelShortCap
+                    ?? "GR_TokraJaffaOfficerCapture_TargetUnknown"
+                        .Translate()
+                        .ToString();
+
+                status = statusKey.Translate(
+                    targetLabel,
+                    remainingHours).ToString();
+            }
+            else if (definition.Archetype
                 == TokraOrganicOperationArchetype.DistressCall)
             {
                 status = definition.ActiveStatusKey.Translate(
@@ -6892,6 +7382,16 @@ namespace GateRimSG1.Goauld
                     ?.NotifyManagerResolved(false);
             }
 
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                TokraJaffaOfficerCaptureTransferController.Cleanup(
+                    jaffaOfficerCapture);
+                TokraJaffaOfficerCaptureMissionUtility.FindWorldSite(
+                        activeOperation.frameworkRuntime)
+                    ?.NotifyManagerResolved(false);
+            }
+
             if (destroyObjective)
             {
                 DestroyActiveObjective();
@@ -6912,6 +7412,41 @@ namespace GateRimSG1.Goauld
             }
 
             activeOperation.Reset();
+        }
+
+        private void EnsureJaffaOfficerCaptureState()
+        {
+            if (activeOperation.jaffaOfficerCapture == null)
+            {
+                activeOperation.jaffaOfficerCapture
+                    = new TokraJaffaOfficerCaptureTransferState();
+            }
+        }
+
+        private void SyncJaffaOfficerCaptureStateFromWorldSite()
+        {
+            WorldObject_TokraJaffaOfficerCaptureSite site
+                = TokraJaffaOfficerCaptureMissionUtility.FindWorldSite(
+                    activeOperation?.frameworkRuntime);
+            SyncJaffaOfficerCaptureStateFromSite(site);
+        }
+
+        private void SyncJaffaOfficerCaptureStateFromSite(
+            WorldObject_TokraJaffaOfficerCaptureSite site)
+        {
+            EnsureJaffaOfficerCaptureState();
+
+            if (site == null)
+            {
+                return;
+            }
+
+            site.MigrateTransferStateTo(jaffaOfficerCapture);
+
+            if (operationDeadlineTick <= 0 && site.ExpiryTick > 0)
+            {
+                operationDeadlineTick = site.ExpiryTick;
+            }
         }
 
         private void NormalizeLoadedState()
@@ -6936,6 +7471,14 @@ namespace GateRimSG1.Goauld
             {
                 activeOperation.frameworkRuntime
                     = new GateRimMissionRuntimeData();
+            }
+
+            EnsureJaffaOfficerCaptureState();
+
+            if (activeArchetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                SyncJaffaOfficerCaptureStateFromWorldSite();
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;

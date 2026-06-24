@@ -51,4 +51,24 @@
             </li>
         </stages>
     </HediffDef>
+
+    <HediffDef>
+        <defName>SG1_TokraJaffaOfficerTransferRestraint</defName>
+        <label>secured for Tok'ra transfer</label>
+        <description>The captured Jaffa officer has been bound and secured for transport. The restraints remain in place until the prisoner is handed over or the operation ends.</description>
+        <hediffClass>HediffWithComps</hediffClass>
+        <isBad>true</isBad>
+        <scenarioCanAdd>false</scenarioCanAdd>
+        <stages>
+            <li>
+                <label>bound for transfer</label>
+                <capMods>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <setMax>0</setMax>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
 </Defs>

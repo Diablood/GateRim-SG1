@@ -250,6 +250,8 @@ namespace GateRimSG1.Goauld
             => MissionDef?.distressCall;
         public GateRimMissionDeliveryDef Delivery
             => MissionDef?.delivery;
+        public GateRimMissionCaptureDef Capture
+            => MissionDef?.capture;
         public string MissionDefName => MissionDef?.defName;
         public bool UsesMissionFrameworkDef => MissionDef != null;
         public float RepeatedArchetypeWeightFactor { get; }
@@ -1469,6 +1471,205 @@ namespace GateRimSG1.Goauld
         }
 
 
+        public bool HasCompleteJaffaOfficerCaptureConfiguration(
+            out string error)
+        {
+            List<string> missing = new List<string>();
+
+            if (OfferDurationTicks <= 0)
+            {
+                missing.Add("offer duration");
+            }
+
+            if (DeadlineTicks <= 0)
+            {
+                missing.Add("deadline");
+            }
+
+            Require(AcceptActionKey, "accept action", missing);
+            Require(CompleteActionKey, "communicator completion action", missing);
+            Require(OfferLetterLabelKey, "offer letter label", missing);
+            Require(OfferLetterTextKey, "offer letter text", missing);
+            Require(OfferExpiredMessageKey, "offer expiry message", missing);
+            Require(AcceptedMessageKey, "accepted message", missing);
+            Require(SuccessLetterLabelKey, "success letter label", missing);
+            Require(FailureLetterLabelKey, "failure letter label", missing);
+            Require(OfferedStatusKey, "offered status", missing);
+            Require(ActiveStatusKey, "active status", missing);
+            Require(ReadyStatusKey, "ready status", missing);
+            Require(SuccessTrustMessageKey, "success trust message", missing);
+            Require(FailureTrustMessageKey, "failure trust message", missing);
+
+            string[] runtimeTextIds =
+            {
+                "spawnFailed",
+                "targetLetterLabel",
+                "targetLetterText",
+                "failureTimeout",
+                "failureSiteLost",
+                "failureTargetKilled",
+                "failureTargetLost"
+            };
+
+            foreach (string runtimeTextId in runtimeTextIds)
+            {
+                Require(
+                    GetRuntimeTextKey(runtimeTextId),
+                    "runtime text " + runtimeTextId,
+                    missing);
+            }
+
+            GateRimMissionCaptureDef profile = Capture;
+
+            if (profile == null)
+            {
+                missing.Add("capture profile");
+            }
+            else
+            {
+                Require(profile.worldObjectDefName, "world object Def", missing);
+                Require(
+                    profile.targetPawnKindDefName,
+                    "target PawnKindDef",
+                    missing);
+                Require(
+                    profile.captureToolThingDefName,
+                    "capture tool ThingDef",
+                    missing);
+                Require(
+                    profile.restraintHediffDefName,
+                    "transfer-restraint HediffDef",
+                    missing);
+                Require(
+                    profile.escortWarriorPawnKindDefName,
+                    "escort warrior PawnKindDef",
+                    missing);
+                Require(
+                    profile.extractionPawnKindDefName,
+                    "extraction PawnKindDef",
+                    missing);
+
+                if (profile.minimumTileDistance <= 0
+                    || profile.maximumTileDistance
+                        < profile.minimumTileDistance)
+                {
+                    missing.Add("world-site distance range");
+                }
+
+                if (profile.mapSize < 80)
+                {
+                    missing.Add("map size");
+                }
+
+                if (profile.escortMinimumCount <= 0
+                    || profile.escortMaximumCount
+                        < profile.escortMinimumCount
+                    || profile.escortThreatFactor <= 0f)
+                {
+                    missing.Add("adaptive escort profile");
+                }
+
+                if (profile.extractionMinimumDelayTicks <= 0
+                    || profile.extractionMaximumDelayTicks
+                        < profile.extractionMinimumDelayTicks)
+                {
+                    missing.Add("extraction arrival delay range");
+                }
+
+                if (profile.extractionRetryTicks <= 0)
+                {
+                    missing.Add("positive extraction retry delay");
+                }
+
+                if (profile.extractionTeamMinimumCount <= 0
+                    || profile.extractionTeamMaximumCount
+                        < profile.extractionTeamMinimumCount)
+                {
+                    missing.Add("extraction team count range");
+                }
+
+                WorldObjectDef worldObjectDef
+                    = string.IsNullOrWhiteSpace(profile.worldObjectDefName)
+                        ? null
+                        : DefDatabase<WorldObjectDef>.GetNamedSilentFail(
+                            profile.worldObjectDefName);
+
+                if (worldObjectDef?.worldObjectClass == null
+                    || !typeof(WorldObject_TokraJaffaOfficerCaptureSite)
+                        .IsAssignableFrom(worldObjectDef.worldObjectClass))
+                {
+                    missing.Add("capture WorldObjectDef class");
+                }
+
+                string[] pawnKindDefNames =
+                {
+                    profile.targetPawnKindDefName,
+                    profile.escortWarriorPawnKindDefName,
+                    profile.escortGuardPawnKindDefName,
+                    profile.extractionPawnKindDefName
+                };
+
+                foreach (string pawnKindDefName in pawnKindDefNames
+                    .Where(item => !string.IsNullOrWhiteSpace(item)))
+                {
+                    if (DefDatabase<PawnKindDef>.GetNamedSilentFail(
+                            pawnKindDefName) == null)
+                    {
+                        missing.Add(
+                            "unknown PawnKindDef " + pawnKindDefName);
+                    }
+                }
+
+                if (DefDatabase<ThingDef>.GetNamedSilentFail(
+                        profile.captureToolThingDefName) == null)
+                {
+                    missing.Add(
+                        "unknown capture tool ThingDef "
+                        + profile.captureToolThingDefName);
+                }
+
+
+                if (DefDatabase<HediffDef>.GetNamedSilentFail(
+                        profile.restraintHediffDefName) == null)
+                {
+                    missing.Add(
+                        "unknown transfer-restraint HediffDef "
+                        + profile.restraintHediffDefName);
+                }
+            }
+
+            if (MinimumRecurrenceDelayTicks <= 0
+                || MaximumRecurrenceDelayTicks
+                    < MinimumRecurrenceDelayTicks)
+            {
+                missing.Add("recurrence delay range");
+            }
+
+            if (MissionDef?.difficulty?.mode
+                != GateRimMissionDifficultyMode.ThreatPointsScaled)
+            {
+                missing.Add("ThreatPointsScaled difficulty profile");
+            }
+
+            if (MissionDef?.texts?.offerLetterTexts == null
+                || MissionDef.texts.offerLetterTexts.Count < 2)
+            {
+                missing.Add("offer letter text variants");
+            }
+
+            if (MissionDef?.texts?.successLetterTexts == null
+                || MissionDef.texts.successLetterTexts.Count < 2)
+            {
+                missing.Add("success letter text variants");
+            }
+
+            error = missing.Count == 0
+                ? null
+                : string.Join(", ", missing);
+            return missing.Count == 0;
+        }
+
+
         public bool HasCompleteDecoyTransmissionDefenseConfiguration(
             out string error)
         {
@@ -2019,6 +2220,8 @@ namespace GateRimSG1.Goauld
             = "SG1_TokraOrganic_TemporaryBaseDelivery";
         private const string DecoyTransmissionDefenseMissionDefName
             = "SG1_TokraOrganic_DecoyTransmissionDefense";
+        private const string JaffaOfficerCaptureMissionDefName
+            = "SG1_TokraOrganic_JaffaOfficerCapture";
 
         private static GateRimMissionDef cachedObservationMissionDef;
         private static TokraOrganicOperationDefinition
@@ -2050,6 +2253,10 @@ namespace GateRimSG1.Goauld
             cachedDecoyTransmissionDefenseDefinition;
         private static bool
             decoyTransmissionDefenseConfigurationErrorLogged;
+        private static GateRimMissionDef cachedJaffaOfficerCaptureMissionDef;
+        private static TokraOrganicOperationDefinition
+            cachedJaffaOfficerCaptureDefinition;
+        private static bool jaffaOfficerCaptureConfigurationErrorLogged;
 
         public static IEnumerable<TokraOrganicOperationDefinition>
             AllDefinitions
@@ -2111,6 +2318,14 @@ namespace GateRimSG1.Goauld
                 {
                     yield return decoyTransmissionDefense;
                 }
+
+                TokraOrganicOperationDefinition jaffaOfficerCapture
+                    = ResolveJaffaOfficerCaptureDefinition();
+
+                if (jaffaOfficerCapture != null)
+                {
+                    yield return jaffaOfficerCapture;
+                }
             }
         }
 
@@ -2164,6 +2379,13 @@ namespace GateRimSG1.Goauld
                 == TokraOrganicOperationArchetype.DecoyTransmissionDefense)
             {
                 definition = ResolveDecoyTransmissionDefenseDefinition();
+                return definition != null;
+            }
+
+            if (archetype
+                == TokraOrganicOperationArchetype.JaffaOfficerCapture)
+            {
+                definition = ResolveJaffaOfficerCaptureDefinition();
                 return definition != null;
             }
 
@@ -2468,6 +2690,62 @@ namespace GateRimSG1.Goauld
 
             return cachedDecoyTransmissionDefenseDefinition;
         }
+
+        private static TokraOrganicOperationDefinition
+            ResolveJaffaOfficerCaptureDefinition()
+        {
+            GateRimMissionDef missionDef
+                = DefDatabase<GateRimMissionDef>.GetNamedSilentFail(
+                    JaffaOfficerCaptureMissionDefName);
+
+            if (missionDef == null)
+            {
+                LogJaffaOfficerCaptureConfigurationError(
+                    "required MissionDef "
+                    + JaffaOfficerCaptureMissionDefName
+                    + " is missing");
+                return null;
+            }
+
+            if (cachedJaffaOfficerCaptureDefinition == null
+                || cachedJaffaOfficerCaptureMissionDef != missionDef)
+            {
+                TokraOrganicOperationDefinition definition
+                    = new TokraOrganicOperationDefinition(
+                        TokraOrganicOperationArchetype.JaffaOfficerCapture,
+                        missionDef);
+                string error;
+
+                if (!definition.HasCompleteJaffaOfficerCaptureConfiguration(
+                        out error))
+                {
+                    LogJaffaOfficerCaptureConfigurationError(
+                        JaffaOfficerCaptureMissionDefName
+                        + " is incomplete: " + error);
+                    return null;
+                }
+
+                cachedJaffaOfficerCaptureMissionDef = missionDef;
+                cachedJaffaOfficerCaptureDefinition = definition;
+            }
+
+            return cachedJaffaOfficerCaptureDefinition;
+        }
+
+        private static void LogJaffaOfficerCaptureConfigurationError(
+            string detail)
+        {
+            if (jaffaOfficerCaptureConfigurationErrorLogged)
+            {
+                return;
+            }
+
+            jaffaOfficerCaptureConfigurationErrorLogged = true;
+            Log.Error(
+                "[GateRim SG-1] Tok'ra Jaffa-officer capture operation "
+                + "disabled: " + detail + ".");
+        }
+
 
         private static void LogDecoyTransmissionDefenseConfigurationError(
             string detail)

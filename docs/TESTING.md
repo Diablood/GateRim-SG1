@@ -1,3 +1,39 @@
+## 0.3.37-dev - Tok'ra Jaffa officer capture operation
+
+Validation locale terminée sur la révision finale `r6`, puis jalon publié sous `v0.3.37-dev`.
+
+Couverture validée pendant la passe fonctionnelle finale :
+
+- chargement du huitième archétype récurrent sans renumérotation des valeurs persistantes existantes ;
+- création d'un site temporaire avec officier Jaffa vivant marqué d'argent et escorte proportionnelle aux points de menace ;
+- livraison d'un fusil hypodermique Tok'ra scellé à douze charges au point de livraison prioritaire ;
+- neutralisation vivante avec Conscience intacte et Mouvement à zéro ;
+- reformation vanilla disponible sans lit de prisonnier local après neutralisation de l'escorte active ;
+- sélection de l'officier à terre comme prisonnier dans la fenêtre vanilla de reformation ;
+- entrave de transfert pendant le portage et le trajet, sans prolonger artificiellement l'effet pharmacologique ;
+- arrivée sur une colonie et retour au comportement vanilla de détention ;
+- suppression réelle de la carte hostile et du marqueur mondial après évacuation ;
+- suivi persistant du prisonnier indépendant du WorldObject supprimé ;
+- appel disponible depuis un communicateur alimenté sur la colonie détenant la cible ;
+- délai caché avant l'arrivée d'une seule équipe Tok'ra visible ;
+- prise en charge physique du prisonnier et transport jusqu'au bord de la carte ;
+- absence de réussite avant le départ complet de l'équipe ;
+- réussite unique après l'extraction complète ;
+- absence de nouveau problème fonctionnel bloquant signalé pendant la validation `r6`.
+
+Points de régression durables :
+
+- conserver la compatibilité des sauvegardes actives et la migration prudente des anciens états de site ;
+- ne jamais exiger un lit de prisonnier sur une carte temporaire pour la reformation vanilla ;
+- ne jamais stocker la seconde moitié d'une mission dans un WorldObject destiné à être supprimé ;
+- conserver la cible vivante comme vrai pawn, prisonnier et contenu de caravane plutôt que comme objet ou identifiant abstrait ;
+- ne jamais valider une extraction par disparition immédiate : le porteur et l'équipe doivent réellement quitter la carte ;
+- préserver l'idempotence de l'appel, de l'équipe, du fusil, de la cible et du résultat après sauvegarde/rechargement ;
+- revalider interruption du porteur, perte de l'équipe, perte temporaire du statut de prisonnier, mort, fuite et expiration lors de toute modification du flux ;
+- conserver les douze charges visibles et persistantes, sans recharge et avec disparition du fusil à zéro ;
+- conserver l'escorte adaptative, la récurrence, le délai caché et l'anti-répétition ;
+- rejouer les sept opérations précédentes après toute modification du planificateur partagé ou du communicateur.
+
 # Tests
 
 ## 0.3.36-dev - Non-lethal capture tools
@@ -33,9 +69,9 @@ Points de régression durables :
 
 - toute mission demandant une cible vivante doit fournir au moins un outil de neutralisation raisonnable et ne jamais dépendre uniquement de la mort aléatoire à la mise à terre ;
 - la neutralisation doit rester résistible et conserver les risques de précision, d'armure, de taille et de dégâts physiques réels ;
-- le fusil Tok'ra doit conserver ses cinq charges scellées, sans recharge normale, avec disparition à zéro ;
+- `v0.3.36-dev` a validé cinq charges ; la version publiée `0.3.37-dev` porte la réserve de mission à douze, toujours sans recharge normale et avec disparition à zéro ;
 - les bolas doivent conserver leur identité d'entrave physique distincte de l'inhibition neuromusculaire Tok'ra ;
-- la capture doit continuer à utiliser l'ordre vanilla et le flux ordinaire de prisonnier ;
+- une mission sur carte temporaire doit laisser la reformation vanilla sélectionner une cible à terre comme prisonnier sans exiger un lit local ; l’ordre `Capturer` reste disponible seulement lorsque ses conditions vanilla sont réellement satisfaites ;
 - toute modification des effets doit revalider Conscience, Mouvement, réveil, sauvegarde/rechargement, empilement de Hediffs et comportement des cibles exclues ;
 - tester l'usage abusif des outils hors mission lors de l'intégration de la première opération de capture.
 

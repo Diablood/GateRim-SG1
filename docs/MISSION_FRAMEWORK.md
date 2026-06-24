@@ -1,6 +1,6 @@
 # GateRim SG-1 mission framework
 
-Status: foundation published in `0.3.23-dev`; six recurrent Tok'ra operations integrated through `0.3.30-dev`; seventh diversion-assault adapter refactored without a physical objective and supplied with a dedicated breaching pawn group for validation in `0.3.34-dev-r3`.
+Status: foundation published in `0.3.23-dev`; eight recurrent Tok'ra operations are integrated through published `0.3.37-dev`, including world-site, caravan-delivery, colony-assault and living-target capture adapters.
 
 ## Purpose
 
@@ -208,9 +208,23 @@ A missing WorldObjectDef, PawnKindDef, HediffDef, required text, timing value, t
 
 Developer validation uses three separate actions to force genuine rescue, compromised signal and late arrival. The normal player interface never lists these possible variants before entry.
 
+## Living-target capture adapter (`0.3.37-dev`)
+
+`SG1_TokraOrganic_JaffaOfficerCapture` is the eighth recurrent Tok'ra operation and the first adapter centered on the live capture and visible extraction of a hostile pawn.
+
+Its `capture` profile owns the WorldObjectDef, target and escort PawnKinds, mission-issued ThingDef, transfer-restraint HediffDef, site parameters, adaptive escort limits, extraction PawnKind, response-delay range, retry delay and team-size range. The specialized C# adapter owns pawn generation, intrinsic silver rank marking and vanilla caravan-prisoner selection. The persistent organic-operation instance owns the living-target reference and the visible home-map extraction sequence once the field site is evacuated.
+
+The temporary projectile Hediff and transfer restraint remain separate. The projectile may expire normally; the restraint protects caravan transport, is removed when the prisoner reaches a player home map and is reapplied only when the Tok'ra team begins pickup.
+
+The MissionDef `completeActionKey` reuses the shared communicator interaction. A valid call requires the living target to be physically present as a colony prisoner on the communicator map. After the configured delay, `EdgeWalkIn` creates the Tok'ra team, a vanilla carrier job removes the prisoner through the map edge, and the remaining agents receive an exit Lord. The operation resolves only when every extraction pawn has left.
+
+The old world-marker handoff fields remain loadable for r2/r3 saves but no longer provide a player action. Active r4/r5 site-owned extraction fields are migrated into the organic-operation instance. The hostile map and world marker are then removed once the officer is confirmed in a player caravan or home map and no player pawn remains on the site.
+
+The mission tool still uses the shared Tok'ra delivery utility and therefore prefers the player-placed delivery zone before the communicator and edge-cell fallbacks.
+
 ## Recurrence and orchestration behavior
 
-After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Success, failure and ignored or expired offers all return to the same persistent scheduler. All five current Tok'ra organic operations consume their configured recurrence data through the framework.
+After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Success, failure and ignored or expired offers all return to the same persistent scheduler. All eight current Tok'ra organic operations consume their configured recurrence data through the framework.
 
 Natural selection follows this order:
 

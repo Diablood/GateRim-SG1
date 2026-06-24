@@ -119,6 +119,15 @@ namespace GateRimSG1.Goauld
                 "GR_TokraTemporaryBaseDelivery_DebugDestinationCompromise");
         }
 
+        public static void ForceJaffaOfficerCaptureOffer()
+        {
+            Run(
+                GameComponent_TokraOrganicOperationManager
+                    .DebugForceJaffaOfficerCaptureOpportunity(
+                        Find.CurrentMap),
+                "GR_TokraJaffaOfficerCapture_DebugForced");
+        }
+
         public static void ForceDiversionAssaultOffer()
         {
             Run(

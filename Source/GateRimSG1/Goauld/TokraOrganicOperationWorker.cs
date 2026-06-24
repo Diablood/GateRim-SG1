@@ -209,6 +209,36 @@ namespace GateRimSG1.Goauld
         }
     }
 
+    internal sealed class TokraOrganicOperationWorker_JaffaOfficerCapture
+        : TokraOrganicOperationWorker
+    {
+        public override TokraOrganicOperationArchetype Archetype
+            => TokraOrganicOperationArchetype.JaffaOfficerCapture;
+
+        public override void Tick(
+            GameComponent_TokraOrganicOperationManager manager,
+            int currentTick)
+        {
+            manager.TickAcceptedJaffaOfficerCapture(currentTick);
+        }
+
+        public override bool TryAccept(
+            GameComponent_TokraOrganicOperationManager manager,
+            Map map,
+            Pawn operatorPawn)
+        {
+            return manager.TryAcceptJaffaOfficerCapture(map, operatorPawn);
+        }
+
+        public override bool TryHandleCommunicatorCompletion(
+            GameComponent_TokraOrganicOperationManager manager,
+            Pawn operatorPawn)
+        {
+            return manager.TryRequestJaffaOfficerExtraction(operatorPawn);
+        }
+    }
+
+
     internal static class TokraOrganicOperationWorkerRegistry
     {
         private static readonly IReadOnlyDictionary<
@@ -245,6 +275,10 @@ namespace GateRimSG1.Goauld
                     {
                         TokraOrganicOperationArchetype.DecoyTransmissionDefense,
                         new TokraOrganicOperationWorker_DiversionAssault()
+                    },
+                    {
+                        TokraOrganicOperationArchetype.JaffaOfficerCapture,
+                        new TokraOrganicOperationWorker_JaffaOfficerCapture()
                     }
                 };
 

@@ -228,6 +228,29 @@ namespace GateRimSG1.Missions
         public int postHandoffDeathTrustChange;
     }
 
+    public sealed class GateRimMissionCaptureDef
+    {
+        public string worldObjectDefName;
+        public string targetPawnKindDefName;
+        public string captureToolThingDefName;
+        public string restraintHediffDefName;
+        public string escortWarriorPawnKindDefName;
+        public string escortGuardPawnKindDefName;
+        public int minimumTileDistance = 6;
+        public int maximumTileDistance = 18;
+        public int mapSize = 120;
+        public int escortMinimumCount = 2;
+        public int escortMaximumCount = 10;
+        public float escortThreatFactor = 0.70f;
+        public int handoffDurationTicks = 2500;
+        public string extractionPawnKindDefName;
+        public int extractionMinimumDelayTicks = 10000;
+        public int extractionMaximumDelayTicks = 30000;
+        public int extractionRetryTicks = 1200;
+        public int extractionTeamMinimumCount = 2;
+        public int extractionTeamMaximumCount = 3;
+    }
+
     public sealed class GateRimMissionTextVariantDef
     {
         public string key;
@@ -404,6 +427,7 @@ namespace GateRimSG1.Missions
         public GateRimMissionIntroductionDef introduction;
         public GateRimMissionDeliveryDef delivery;
         public GateRimMissionHandoffDef handoff;
+        public GateRimMissionCaptureDef capture;
         public GateRimMissionTextBankDef texts
             = new GateRimMissionTextBankDef();
         public GateRimMissionActionDef actions
@@ -794,6 +818,84 @@ namespace GateRimSG1.Missions
                 if (handoff.postHandoffDeathTrustChange >= 0)
                 {
                     yield return "handoff postHandoffDeathTrustChange must be negative";
+                }
+            }
+
+            if (capture != null)
+            {
+                if (string.IsNullOrWhiteSpace(capture.worldObjectDefName))
+                {
+                    yield return "capture worldObjectDefName is required";
+                }
+
+                if (string.IsNullOrWhiteSpace(capture.targetPawnKindDefName))
+                {
+                    yield return "capture targetPawnKindDefName is required";
+                }
+
+                if (string.IsNullOrWhiteSpace(capture.captureToolThingDefName))
+                {
+                    yield return "capture captureToolThingDefName is required";
+                }
+
+                if (string.IsNullOrWhiteSpace(capture.restraintHediffDefName))
+                {
+                    yield return "capture restraintHediffDefName is required";
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                        capture.escortWarriorPawnKindDefName))
+                {
+                    yield return "capture escortWarriorPawnKindDefName is required";
+                }
+
+                if (capture.minimumTileDistance <= 0
+                    || capture.maximumTileDistance
+                        < capture.minimumTileDistance)
+                {
+                    yield return "capture tile distance range is invalid";
+                }
+
+                if (capture.mapSize < 80)
+                {
+                    yield return "capture mapSize must be at least 80";
+                }
+
+                if (capture.escortMinimumCount <= 0
+                    || capture.escortMaximumCount
+                        < capture.escortMinimumCount)
+                {
+                    yield return "capture escort count range is invalid";
+                }
+
+                if (capture.escortThreatFactor <= 0f)
+                {
+                    yield return "capture escortThreatFactor must be positive";
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                        capture.extractionPawnKindDefName))
+                {
+                    yield return "capture extractionPawnKindDefName is required";
+                }
+
+                if (capture.extractionMinimumDelayTicks <= 0
+                    || capture.extractionMaximumDelayTicks
+                        < capture.extractionMinimumDelayTicks)
+                {
+                    yield return "capture extraction delay range is invalid";
+                }
+
+                if (capture.extractionRetryTicks <= 0)
+                {
+                    yield return "capture extractionRetryTicks must be positive";
+                }
+
+                if (capture.extractionTeamMinimumCount <= 0
+                    || capture.extractionTeamMaximumCount
+                        < capture.extractionTeamMinimumCount)
+                {
+                    yield return "capture extraction team count range is invalid";
                 }
             }
 

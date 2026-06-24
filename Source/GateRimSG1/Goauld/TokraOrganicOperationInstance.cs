@@ -54,6 +54,9 @@ namespace GateRimSG1.Goauld
         public bool medicalSupplyArrivalNotified;
         public bool medicalSupplyDepartureOrdered;
 
+        public TokraJaffaOfficerCaptureTransferState jaffaOfficerCapture
+            = new TokraJaffaOfficerCaptureTransferState();
+
         public GateRimMissionRuntimeData frameworkRuntime
             = new GateRimMissionRuntimeData();
 
@@ -193,12 +196,17 @@ namespace GateRimSG1.Goauld
                 ref medicalSupplyDepartureOrdered,
                 "medicalSupplyDepartureOrdered",
                 false);
+            Scribe_Deep.Look(
+                ref jaffaOfficerCapture,
+                "jaffaOfficerCapture");
             Scribe_Deep.Look(ref frameworkRuntime, "frameworkRuntime");
 
-            if (Scribe.mode == LoadSaveMode.PostLoadInit
-                && frameworkRuntime == null)
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                frameworkRuntime = new GateRimMissionRuntimeData();
+                jaffaOfficerCapture = jaffaOfficerCapture
+                    ?? new TokraJaffaOfficerCaptureTransferState();
+                frameworkRuntime = frameworkRuntime
+                    ?? new GateRimMissionRuntimeData();
             }
         }
 
@@ -242,6 +250,16 @@ namespace GateRimSG1.Goauld
             medicalSupplyArrivalTick = 0;
             medicalSupplyArrivalNotified = false;
             medicalSupplyDepartureOrdered = false;
+
+            if (jaffaOfficerCapture == null)
+            {
+                jaffaOfficerCapture
+                    = new TokraJaffaOfficerCaptureTransferState();
+            }
+            else
+            {
+                jaffaOfficerCapture.Reset();
+            }
 
             if (frameworkRuntime == null)
             {

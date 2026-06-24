@@ -8,8 +8,6 @@ Branch: `feature/non-lethal-capture-tools`
 
 Starting tag: `v0.3.35-dev`
 
-Published tag: `v0.3.36-dev`
-
 ## Purpose
 
 Future objectives that require a living target must not depend only on ordinary
@@ -17,7 +15,7 @@ combat downing. This milestone adds two reusable tools before any capture
 mission is implemented:
 
 - craftable single-use bolas;
-- an experimental Tok'ra hypodermic rifle with five sealed charges;
+- an experimental Tok'ra hypodermic rifle published with five sealed charges;
 - XML-driven neutralization profiles shared by both tools;
 - distinct temporary effects for Tok'ra neuromuscular inhibition and bolas restraint;
 - ordinary RimWorld downing and capture after a successful effect.
@@ -41,16 +39,17 @@ modified by body size and armor.
 
 - Spacer technology level.
 - Not craftable, buyable or normally reloadable.
-- Five sealed charges.
+- Published `v0.3.36-dev`: five sealed charges.
+- Published `0.3.37-dev`: twelve sealed charges for the mission-issued weapon.
 - Every shot consumes one charge, including misses and resisted hits.
-- The weapon destroys itself after the fifth shot.
+- The weapon destroys itself when the final charge is consumed.
 - Range: `24.9` cells.
 - Successful hits inflict `1` blunt damage.
 - Base neutralization chance after a successful hit: `82%`.
 - Successful neutralization lasts `720–1080` ticks.
 
-For this milestone, the rifle is obtainable only through the developer menu.
-A later Tok'ra operation may provide it as a rare mission tool.
+In `v0.3.36-dev`, the rifle is obtainable only through the developer menu.
+The `0.3.37-dev` officer-capture operation now provides one as a limited mission tool.
 
 ## Temporary incapacitation effects
 
@@ -108,25 +107,32 @@ Give Tok'ra hypodermic rifle
 Clear temporary neutralization
 ```
 
-## Final validation — r9
+## Mandatory focused test — r9
 
-Final local validation confirms:
+1. Rebuild `0.3.36.0` and restart RimWorld.
+2. Use a healthy hostile humanlike target and an available prisoner bed.
+3. Confirm the displayed post-hit chances.
+4. Give the shooter the Tok'ra rifle and confirm `5 / 5` both when selected on the ground and when hovered while equipped or carried in inventory.
+5. Fire until `Neutralized` appears.
+6. Confirm that Consciousness remains normal, Moving is zero, the target is downed and alive, and the ordinary Capture order is available.
+7. Capture the pawn through the standard RimWorld command.
+8. On another target, let the effect expire and confirm ordinary recovery.
+9. Verify charge persistence and rifle destruction after the fifth shot.
+10. Test bolas consumption and the same downing/capture flow; the Health tab must show a bolas restraint with entangled legs rather than neuromuscular numbness.
+11. Save and reload during the Hediff.
+12. Inspect `Player.log`.
 
-- bolas are consumed after one throw and use the distinct `SG1_BolasRestraint` effect;
-- the Tok'ra rifle starts with five sealed charges and consumes one per shot;
-- charge counts are visible on the ground, while equipped and while carried in inventory;
-- charge counts persist through save/reload;
-- the rifle destroys itself immediately after its final shot;
-- successful effects leave Consciousness intact and set Moving to zero;
-- ordinary RimWorld downing exposes the standard Capture order;
-- captured targets follow the ordinary prisoner-bed flow;
-- uncaptured targets recover normally when the temporary effect expires;
-- repeated successes refresh one Hediff instead of stacking copies;
-- the final revision adds no further file or texture deletion.
+## 0.3.37-dev integration note
+
+Published `0.3.37-dev` keeps the twelve-charge reserve, preferred Tok'ra delivery point, vanilla temporary-site reformation and mission-only transfer restraint. The restraint protects the caravan journey, is removed on a player home map and returns only when the visible Tok'ra extraction team arrives to collect the detained officer. The pharmacological neutralization remains temporary and unchanged.
+
+- The original `0.3.36-dev` milestone contains no capture mission; mission integration begins in `0.3.37-dev`.
+- No automatic prisoner conversion is added.
+- The communicator call does not delete the pawn; a Tok'ra carrier physically removes the target from the colony map.
 
 ## Deliberate limits
 
-- No capture mission is included.
+- The original `0.3.36-dev` milestone contains no capture mission; the mission integration begins in `0.3.37-dev`.
 - Neutralization is not guaranteed.
 - No automatic prisoner conversion is added.
 - No normal rifle distribution or reloading source exists.

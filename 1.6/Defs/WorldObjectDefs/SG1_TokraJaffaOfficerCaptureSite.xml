@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_TokraJaffaOfficerCaptureSite</defName>
+        <label>Jaffa officer field position</label>
+        <description>A temporary Goa'uld field position identified by Tok'ra intelligence. A Jaffa officer is present under armed escort.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraJaffaOfficerCaptureSite</worldObjectClass>
+        <texture>World/WorldObjects/Sites/GenericSite</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconPriority>37</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>true</canHaveFaction>
+        <useDynamicDrawer>true</useDynamicDrawer>
+        <comps>
+            <li Class="GateRimSG1.Goauld.WorldObjectCompProperties_TokraJaffaOfficerCaptureFormCaravan" />
+        </comps>
+    </WorldObjectDef>
+</Defs>

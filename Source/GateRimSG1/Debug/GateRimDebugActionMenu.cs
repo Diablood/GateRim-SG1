@@ -236,6 +236,7 @@ namespace GateRimSG1.Debugging
                 BuildMedicalHandoffMenu(),
                 BuildDistressCallMenu(),
                 BuildTemporaryBaseDeliveryMenu(),
+                BuildJaffaOfficerCaptureMenu(),
                 BuildDiversionAssaultMenu());
         }
 
@@ -393,6 +394,18 @@ namespace GateRimSG1.Debugging
                 ActionNode(
                     "Force approach ambush",
                     TokraOrganicOperationDebugActions.ForceTemporaryBaseDeliveryDestinationCompromise,
+                    100));
+        }
+
+        private static DebugActionNode BuildJaffaOfficerCaptureMenu()
+        {
+            return MenuNode(
+                "Jaffa officer capture...",
+                150,
+                ActionNode(
+                    "Force offer",
+                    TokraOrganicOperationDebugActions
+                        .ForceJaffaOfficerCaptureOffer,
                     100));
         }
 

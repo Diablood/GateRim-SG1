@@ -128,7 +128,7 @@
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SG1_TokraHypodermicRifle</defName>
         <label>experimental Tok'ra hypodermic rifle</label>
-        <description>An experimental Tok'ra capture weapon carrying five sealed hypodermic charges. Each shot consumes one charge whether it hits or not. A successful dart can briefly numb the target's legs and bring them down without suppressing consciousness, but accuracy, armor and biological resistance still make every attempt uncertain. The weapon cannot be recharged and automatically neutralizes itself when its final charge is spent.</description>
+        <description>An experimental Tok'ra capture weapon carrying twelve sealed hypodermic charges. Each shot consumes one charge whether it hits or not. A successful dart can briefly numb the target's legs and bring them down without suppressing consciousness, but accuracy, armor and biological resistance still make every attempt uncertain. The weapon cannot be recharged and automatically neutralizes itself when its final charge is spent.</description>
         <graphicData>
             <texPath>Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -166,7 +166,7 @@
         </weaponTags>
         <comps>
             <li Class="GateRimSG1.Weapons.CompProperties_ConsumableCharges">
-                <maxCharges>5</maxCharges>
+                <maxCharges>12</maxCharges>
                 <destroyOnEmpty>true</destroyOnEmpty>
                 <chargeNoun>charge</chargeNoun>
             </li>

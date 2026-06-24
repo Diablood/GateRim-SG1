@@ -6,6 +6,6 @@
     <SG1_Bolas.tools.0.label>corde lestée</SG1_Bolas.tools.0.label>
     <SG1_TokraHypodermicDart.label>fléchette hypodermique Tok'ra</SG1_TokraHypodermicDart.label>
     <SG1_TokraHypodermicRifle.label>fusil hypodermique expérimental Tok'ra</SG1_TokraHypodermicRifle.label>
-    <SG1_TokraHypodermicRifle.description>Une arme de capture expérimentale Tok'ra dotée de cinq charges hypodermiques scellées. Chaque tir consomme une charge, qu'il atteigne sa cible ou non. Une fléchette réussie peut brièvement inhiber le contrôle neuromusculaire des jambes et mettre la cible à terre sans altérer sa conscience, mais la précision, l'armure et la résistance biologique rendent chaque tentative incertaine. L'arme ne peut pas être rechargée et s'auto-neutralise après sa dernière charge.</SG1_TokraHypodermicRifle.description>
+    <SG1_TokraHypodermicRifle.description>Une arme de capture expérimentale Tok'ra dotée de douze charges hypodermiques scellées. Chaque tir consomme une charge, qu'il atteigne sa cible ou non. Une fléchette réussie peut brièvement inhiber le contrôle neuromusculaire des jambes et mettre la cible à terre sans altérer sa conscience, mais la précision, l'armure et la résistance biologique rendent chaque tentative incertaine. L'arme ne peut pas être rechargée et s'auto-neutralise après sa dernière charge.</SG1_TokraHypodermicRifle.description>
     <SG1_TokraHypodermicRifle.tools.0.label>crosse</SG1_TokraHypodermicRifle.tools.0.label>
 </LanguageData>

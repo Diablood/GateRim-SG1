@@ -218,6 +218,36 @@ namespace GateRimSG1.Missions
                         + handoff.postHandoffDeathTrustChange);
                 }
 
+                if (definition.capture != null)
+                {
+                    GateRimMissionCaptureDef capture = definition.capture;
+                    builder.AppendLine(
+                        "  Capture: site="
+                        + (capture.worldObjectDefName ?? "none")
+                        + ", target="
+                        + (capture.targetPawnKindDefName ?? "none")
+                        + ", tool="
+                        + (capture.captureToolThingDefName ?? "none"));
+                    builder.AppendLine(
+                        "  Capture escort: warrior="
+                        + (capture.escortWarriorPawnKindDefName ?? "none")
+                        + ", guard="
+                        + (capture.escortGuardPawnKindDefName ?? "none")
+                        + ", count="
+                        + capture.escortMinimumCount
+                        + "-"
+                        + capture.escortMaximumCount
+                        + ", threatFactor="
+                        + capture.escortThreatFactor.ToString("0.00"));
+                    builder.AppendLine(
+                        "  Capture site range: "
+                        + capture.minimumTileDistance
+                        + "-"
+                        + capture.maximumTileDistance
+                        + " tiles, mapSize="
+                        + capture.mapSize);
+                }
+
                 foreach (GateRimMissionNamedTextBankDef bank
                     in definition.texts?.namedTextBanks
                         ?? Enumerable.Empty<GateRimMissionNamedTextBankDef>())

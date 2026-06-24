@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.36-dev`
+> Dernière révision : `0.3.37-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -45,8 +45,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation thérapeutique Tok'ra | Action volontaire dédiée avec ciblage d'un humanoïde malade compatible et confirmation explicite | 0.1.45-dev |
 | Opportunité thérapeutique Tok'ra | Incident naturel rare après le jour 30 : arrivée d'un symbiote libre escorté par 1 à 2 hôtes Tok'ra volontaires pour un colon atteint d'une affection biologique curable non traumatique ; offre temporaire avec refus explicite et départ coordonné | 0.1.47-dev / escorte 0.1.48-dev / cycle de vie 0.1.49-dev |
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
-| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : sept archétypes, dont un assaut de diversion Goa'uld/Jaffa sur la colonie, nouvelles offres limitées à un communicateur joueur alimenté, opérations déjà actives préservées pendant une panne et reprise différée du canal | 0.2.48-dev à 0.3.34-dev / accès 0.3.33-dev |
-| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; sept opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant avec slot unique, éligibilité avant tirage, délais cachés et anti-répétition | 0.3.23-dev à 0.3.30-dev |
+| Opérations Tok'ra organiques | Opportunités récurrentes à délai caché et anti-répétition : huit archétypes intégrés, dont diversion et capture vivante d'un officier Jaffa, nouvelles offres limitées à un communicateur joueur alimenté, opérations déjà actives préservées pendant une panne et reprise différée du canal | 0.2.48-dev à 0.3.37-dev / accès 0.3.33-dev |
+| Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, banques de textes nommées, récurrence contextuelle, difficulté et persistance ; huit opérations Tok'ra lisent leurs données depuis XML et partagent un planificateur persistant avec slot unique, éligibilité avant tirage, délais cachés et anti-répétition | 0.3.23-dev à 0.3.37-dev |
 | Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev |
 | Contrat de production Tok'ra | Demande limitée aux objets réellement fabricables, rendez-vous mondial temporaire, remise depuis l'inventaire réel, période de grâce, interception de trajet et embuscade sur l'approche finale avec butin et reformation vanilla | 0.3.30-dev |
 | Mission d'introduction Tok'ra | Jouable et validée : transmission chiffrée avant le communicateur, choix d'engagement, site mondial, garde Goa'uld/Jaffa adaptative modérée, module physique suivi individuellement et nouvelles tentatives jusqu'à la première récupération réussie | 0.3.31-dev |
@@ -71,7 +71,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
-| Outils de capture non létaux | Bolas à usage unique fabricables et fondation d'un fusil hypodermique expérimental Tok'ra à cinq charges non rechargeables ; impact contondant très léger, neutralisation temporaire résistible et disparition du fusil après le dernier tir | 0.3.36-dev |
+| Outils de capture non létaux | Bolas à usage unique fabricables et fusil hypodermique expérimental Tok'ra actuellement réglé à douze charges non rechargeables ; impact contondant très léger, neutralisation temporaire résistible et disparition du fusil après le dernier tir | 0.3.36-dev / réserve ajustée 0.3.37-dev |
+| Capture Tok'ra d'un officier Jaffa | Mission récurrente validée : site mondial, officier marqué d'argent, escorte adaptative, reformation vanilla sans lit local, retour en cellule, suppression du site, appel au communicateur et équipe Tok'ra visible qui emporte le prisonnier avant la réussite | 0.3.37-dev |
 | Treillis d'équipe SG | Les anciens treillis combinés restent disponibles pour compatibilité ; le scénario utilise désormais des pantalons obligatoires et des vestes facultatives séparées, compatibles avec un tee-shirt vanilla | 0.1.78-dev / séparation 0.3.21-dev |
 | Variantes du treillis SG | Pantalons et vestes modulaires disponibles en olive, noir et désert ; couleur aléatoire par starter et coordonnée entre les deux pièces | 0.1.82-dev / loadout 0.3.21-dev |
 | Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, tee-shirt obligatoire, pantalon SG varié, veste facultative, casque, casquette ou aucun couvre-chef, équipement tactique et assortiment de quatre armes humaines vanilla équilibré | 0.2.0-dev-r1 / loadout 0.3.21-dev / casquette 0.3.22-dev |
@@ -105,13 +106,13 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
 | Chaîne de renseignements Tok'ra | Briefing, paquet codé, analyse, piste décodée et révélation d'un relais Goa'uld isolé | 0.2.35-dev à 0.2.42-dev |
 | Mission jouable de sabotage du relais Tok'ra | Carte temporaire fortifiée, garnison Jaffa, sabotage progressif, renforts différés, évacuation et débriefing avec conséquence sur la confiance | 0.2.45-dev à 0.2.47-dev |
-| Opérations Tok'ra organiques | Framework récurrent avec sept archétypes, dont un assaut de diversion Goa'uld/Jaffa, slot unique, délais cachés, difficulté adaptative et nouvelles offres dépendantes d'un communicateur alimenté | 0.2.48-dev à 0.3.34-dev / accès 0.3.33-dev |
+| Opérations Tok'ra organiques | Framework récurrent avec huit archétypes intégrés, dont diversion et capture vivante d'un officier Jaffa, slot unique, délais cachés, difficulté adaptative et nouvelles offres dépendantes d'un communicateur alimenté | 0.2.48-dev à 0.3.37-dev / accès 0.3.33-dev |
 
 ## Prévu
 
 | Élément | Direction actuelle |
 |---|---|
-| Diversification des opérations Tok'ra | Un septième archétype de diversion combattue est intégré en 0.3.34-dev ; les outils non létaux sont validés en 0.3.36-dev et permettent désormais de concevoir la future capture récurrente d'un officier Jaffa |
+| Diversification des opérations Tok'ra | La capture récurrente d'un officier Jaffa est validée avec douze charges, extraction vanilla sans lit local, suppression du site après évacuation, suivi persistant du prisonnier et récupération visible appelée depuis le communicateur ; poursuivre l'enrichissement du pool avec des archétypes réellement distincts |
 | Déblocage des opérations Tok'ra | L'introduction, l'étude, le prérequis de construction et le verrou du canal sont intégrés ; conserver ce comportement pour chaque nouvel archétype sans annuler les missions déjà engagées |
 | Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |

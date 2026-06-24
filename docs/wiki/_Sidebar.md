@@ -118,6 +118,7 @@
 - [Mission d'introduction Tok'ra](Tokra-Introduction-Artifact-Mission)
 - [Opérations Tok'ra organiques](Tokra-Organic-Operation-Opportunities)
 - [Assaut de diversion Tok'ra](Tokra-Diversion-Assault)
+- [Capture d'un officier Jaffa](Tokra-Jaffa-Officer-Capture)
 - [Récupération d'un module Tok'ra](Tokra-Organic-Dead-Drop-Recovery)
 - [Accueil d'un agent Tok'ra blessé](Tokra-Organic-Wounded-Agent-Care)
 - [Transfert de ravitaillement médical Tok'ra](Tokra-Organic-Medical-Supply-Handoff)

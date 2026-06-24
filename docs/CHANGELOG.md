@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.37-dev - Add Tok'ra Jaffa officer capture operation
+
+- Add an eighth recurrent Tok'ra organic-operation archetype without renumbering existing persisted values.
+- Add a temporary hostile world site with one living silver-marked Jaffa officer and a threat-scaled Goa'uld/Jaffa escort.
+- Deliver one sealed twelve-charge Tok'ra hypodermic rifle through the preferred Tok'ra delivery point.
+- Preserve ordinary RimWorld neutralization, caravan reformation and prisoner transport without requiring a prison bed on the hostile map.
+- Apply a mission-only physical restraint during carrying and caravan travel, then return control to vanilla prisoner handling on a player colony map.
+- Remove the hostile map and world marker after the officer is confirmed in a player caravan or home map and no player pawn remains on the site.
+- Persist the officer and all home-extraction state inside the organic-operation instance rather than the disposable field-site WorldObject.
+- Add a powered-communicator action that schedules a visible two-to-three-agent Tok'ra extraction team after a hidden four-to-twelve-hour delay.
+- Have one Tok'ra agent physically carry the prisoner off-map while the remaining agents withdraw.
+- Resolve success only after the prisoner and every extraction-team member have left the map.
+- Preserve save compatibility for active development saves by migrating the earlier site-owned transfer state.
+- Add complete English/French text, developer diagnostics, durable tests, technical documentation and player-wiki coverage.
+- Validate final local revision `r6`, including capture, transport, detention, site cleanup, communicator call, visible pickup and single success after full departure.
+- Publish branch `feature/tokra-jaffa-officer-capture-operation`, final tag `v0.3.37-dev` and the synchronized wiki.
+
 ## 0.3.36-dev - Add non-lethal capture tools
 
 - Add craftable single-use bolas with a distinct physical-leg-restraint health effect.

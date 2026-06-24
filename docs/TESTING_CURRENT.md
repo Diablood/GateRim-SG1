@@ -1,63 +1,57 @@
-# Validation terminée — 0.3.36-dev
+# Validation finale — 0.3.37-dev
 
-Jalon : `0.3.36-dev - Add non-lethal capture tools`
+Jalon : `0.3.37-dev - Add Tok'ra Jaffa officer capture operation`
 
-Branche : `feature/non-lethal-capture-tools`
+Branche : `feature/tokra-jaffa-officer-capture-operation`
 
-Tag de départ : `v0.3.35-dev`
+Tag de départ : `v0.3.36-dev`
 
-Révision locale validée : `0.3.36-dev-r9`
+Version de DLL validée : `0.3.37.0`
 
-Version de DLL validée : `0.3.36.0`
+Révision locale finale : `r6`
+
+Tag final : `v0.3.37-dev`
 
 ## Résultat final
 
-La révision finale `r9` est fonctionnellement validée :
+Le build et le test fonctionnel principal sont validés. La mission couvre désormais toute la boucle sans dépendre du site mondial après son évacuation : capture vivante, transport, détention, appel au communicateur, arrivée visible des Tok'ra et extraction physique du prisonnier.
 
-- les bolas sont opérationnelles et utilisent une entrave physique RP distincte ;
-- le fusil hypodermique expérimental Tok'ra est opérationnel ;
-- une réussite laisse la Conscience intacte et place temporairement le Mouvement à zéro ;
-- aucune mort aléatoire liée à une réduction artificielle de Conscience n'a été observée ;
-- la cible est mise à terre par le système de santé ordinaire ;
-- l'ordre vanilla `Capturer` est disponible et mène correctement la cible vers un lit de prisonnier ;
-- la cible se relève normalement après expiration si aucune autre affection ne la maintient à terre ;
-- les charges du fusil sont visibles dans l'inspection au sol, dans l'infobulle équipée et dans l'inventaire ;
-- une charge est consommée par tir, y compris après un manque ou une résistance ;
-- les charges et la durée de l'effet persistent après sauvegarde/rechargement ;
-- le fusil disparaît immédiatement après la dernière charge ;
-- les bolas sont consommées après leur lancer ;
-- les effets ne s'empilent pas en plusieurs Hediffs concurrents ;
-- aucune nouvelle erreur bloquante liée aux outils de capture n'a été signalée.
+## Couverture validée
 
-## Suppressions finales
+- [x] Une offre récurrente crée un site temporaire avec un officier Jaffa vivant marqué d'argent et une escorte Goa'uld/Jaffa adaptative.
+- [x] Le fusil hypodermique Tok'ra est livré à la zone prioritaire avec `12 / 12` charges.
+- [x] L'officier peut être neutralisé vivant sans baisse de Conscience ni mort aléatoire de mise à terre.
+- [x] La reformation vanilla devient disponible lorsque l'escorte active est neutralisée ou mise en fuite.
+- [x] Aucun lit de prisonnier n'est requis sur la carte temporaire.
+- [x] La fenêtre vanilla permet de sélectionner l'officier à terre comme prisonnier de caravane.
+- [x] Le ligotage de transfert maintient la cible pendant le portage et le voyage après expiration de l'inhibition neuromusculaire.
+- [x] La cible redevient un prisonnier vanilla normal une fois placée dans une colonie du joueur.
+- [x] La carte hostile et son marqueur mondial disparaissent après l'évacuation réelle, sans échec de mission ni perte du prisonnier.
+- [x] Le suivi persistant conserve la cible après la suppression du WorldObject.
+- [x] Le communicateur alimenté expose `Appeler l'équipe d'extraction Tok'ra` sur la colonie qui détient réellement le prisonnier.
+- [x] L'appel ne retire pas immédiatement le prisonnier et programme une arrivée différée.
+- [x] Une équipe Tok'ra visible entre sur la carte, prend physiquement le prisonnier en charge et repart avec lui.
+- [x] La mission ne réussit qu'après le départ complet du porteur et des autres agents Tok'ra.
+- [x] Le résultat n'est appliqué qu'une seule fois.
+- [x] Aucun problème fonctionnel bloquant supplémentaire n'a été signalé pendant la validation finale `r6`.
 
-Les cinq fichiers du prototype abandonné restent supprimés :
+## Régressions durables
 
-```text
-1.6/Defs/JobDefs/SG1_NonLethalCaptureJobs.xml
-1.6/Patches/SG1_NonLethalCaptureFloatMenu.xml
-Source/GateRimSG1/Weapons/Comp_NonLethalRestraintFloatMenu.cs
-Source/GateRimSG1/Weapons/HediffComp_NonLethalStun.cs
-Source/GateRimSG1/Weapons/JobDriver_RestrainNeutralizedPawn.cs
-```
+À rejouer lorsqu'un futur jalon modifie le framework, les caravanes, les prisonniers, le communicateur ou les équipes d'extraction :
 
-La révision `r9` n'ajoute aucune autre suppression. Les quatre textures provisoires sont conservées.
+- sauvegarde/rechargement pendant le trajet, la détention, le délai d'arrivée et la prise en charge ;
+- appel indisponible depuis une autre carte ou sans détention réelle de la cible ;
+- perte temporaire du statut de prisonnier avant l'arrivée ;
+- interruption ou neutralisation du porteur et réattribution à un autre agent ;
+- perte complète de l'équipe et nouvelle tentative sans duplication ;
+- mort, fuite, disparition ou expiration de la cible produisant un seul échec ;
+- rééligibilité après réussite, échec et offre ignorée avec délai caché et anti-répétition ;
+- comparaison de l'escorte sur une colonie faible et une colonie avancée ;
+- fonctionnement des sept opérations Tok'ra précédentes.
 
-## Publication
+## Points visuels différés
 
-- Commit final : `0.3.36-dev - add non-lethal capture tools`.
-- Branche publiée : `feature/non-lethal-capture-tools`.
-- Tag annoté final unique : `v0.3.36-dev`.
-- Wiki séparé synchronisé, car plusieurs pages `docs/wiki/*.md` documentent le jalon.
+Ces points ne bloquent pas la publication fonctionnelle et sont conservés dans `docs/ROADMAP.md` :
 
-## Limites connues
-
-- Aucune mission de capture n'est encore incluse.
-- La neutralisation reste résistible et les tirs peuvent manquer.
-- Le fusil n'est ni fabricable, ni achetable, ni rechargeable en jeu normal.
-- Les dégâts physiques très faibles restent réels sur une cible déjà gravement blessée.
-- Les quatre textures restent provisoires jusqu'à la future passe visuelle globale.
-
-## Étape suivante
-
-Le jalon suivant prévu est `0.3.37-dev - Add Tok'ra Jaffa officer capture operation`, à créer depuis `v0.3.36-dev` sur une nouvelle branche dédiée après relecture des procédures du dépôt.
+- diversifier les icônes de carte mondiale selon le thème des missions ;
+- donner à l'officier Jaffa une apparence plus distinctive qu'un Jaffa ordinaire.

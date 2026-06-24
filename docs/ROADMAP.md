@@ -1,16 +1,25 @@
-# GateRim SG-1 — Roadmap durable
+# Roadmap
 
-## Prochain jalon prévu — Capture d'un officier Jaffa (`0.3.37-dev`)
+## Dernier jalon clôturé — Capture d'un officier Jaffa (`0.3.37-dev`)
 
-- [ ] Partir explicitement de `v0.3.36-dev` sur `feature/tokra-jaffa-officer-capture-operation`.
-- [ ] Ajouter une opération Tok'ra récurrente demandant de capturer vivant un officier Jaffa puis de le remettre selon un flux cohérent avec le framework de missions.
-- [ ] Fournir le fusil hypodermique Tok'ra comme ressource de mission limitée, tout en conservant les bolas comme solution générique de secours lorsque leur usage est raisonnable.
-- [ ] Ne jamais garantir la neutralisation ni remplacer le flux vanilla de capture et de détention.
-- [ ] Dimensionner l'escorte et les contraintes depuis la difficulté active et les points de menace.
-- [ ] Intégrer récurrence, délais cachés, anti-répétition, variantes RP, sauvegarde/rechargement et outils debug.
-- [ ] Tester explicitement la mort, la fuite, la résistance, la capture, la remise, la perte de la cible et l'usage des outils hors mission.
+- [x] Partir explicitement de `v0.3.36-dev` sur `feature/tokra-jaffa-officer-capture-operation`.
+- [x] Ajouter le site mondial, l'officier vivant marqué d'argent, l'escorte adaptative et le fusil Tok'ra limité.
+- [x] Porter la réserve du fusil à douze charges et utiliser la zone de livraison Tok'ra prioritaire.
+- [x] Autoriser la reformation vanilla sans lit de prisonnier local et laisser RimWorld créer le prisonnier de caravane.
+- [x] Maintenir une entrave physique pendant le portage et le trajet, puis rendre la main au comportement vanilla sur une base du joueur.
+- [x] Remplacer la remise mondiale par un appel contextuel depuis le communicateur de la colonie et une équipe Tok'ra visible.
+- [x] Déplacer la cible et l'état d'extraction dans l'instance persistante de l'opération.
+- [x] Supprimer réellement la carte hostile et son marqueur lorsque l'officier est confirmé dans une caravane ou une colonie du joueur.
+- [x] Migrer les sauvegardes de test antérieures encore actives depuis le site chargé vers le nouvel état persistant.
+- [x] Valider le build `0.3.37.0` et le flux complet jusqu'à la cellule.
+- [x] Valider la disparition du site, l'appel depuis le communicateur, l'arrivée visible, la prise en charge physique et la réussite après départ complet.
+- [x] Conserver la récurrence, l'anti-répétition, le délai caché, la difficulté adaptative et les outils développeur.
+- [x] Clôturer la documentation, publier la branche et le tag final unique `v0.3.37-dev`.
+- [x] Synchroniser les pages wiki modifiées avec le dépôt wiki séparé.
 
-Le périmètre précis de la remise, du site et des conséquences Tok'ra doit être arrêté dans ce jalon sans modifier rétroactivement les outils validés en `0.3.36-dev` sauf régression démontrée.
+La révision finale `r6` valide le flux principal complet : capture vivante, reformation vanilla, transport, détention, nettoyage du site, appel au communicateur, arrivée de l'équipe Tok'ra, extraction physique du prisonnier et réussite unique après le départ complet de l'équipe. Aucun objet, clic ou changement de carte ne fait disparaître magiquement la cible.
+
+Le jalon est publié sous le tag final unique `v0.3.37-dev`. Aucun périmètre `0.3.38-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi après relecture du backlog durable, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
 
 ## Dernier jalon clôturé — Outils de capture non létaux (`0.3.36-dev`)
 
@@ -658,6 +667,8 @@ Cette passe doit être réalisée lorsque les mécaniques concernées sont suffi
 - [ ] Remplacer le visuel du dispositif d'observation portable, actuellement proche d'un courrier et peu lisible sur la carte.
 - [ ] Vérifier le module de renseignements Tok'ra et les autres objets d'opération afin que leur silhouette indique immédiatement leur fonction.
 - [ ] Vérifier les marqueurs et sites temporaires afin d'éviter d'ajouter des gizmos de repérage lorsque le vrai problème est la lisibilité visuelle.
+- [ ] Auditer les icônes de carte mondiale des missions et attribuer des visuels variés et thématiques plutôt qu'une même icône générique répétée.
+- [ ] Donner à l'officier Jaffa de l'opération de capture une apparence distinctive qui le différencie immédiatement d'un Jaffa ordinaire, sans dépendre uniquement de sa marque frontale.
 - [ ] Harmoniser les objets Tok'ra, Goa'uld, Jaffa et SGC selon une identité visuelle cohérente.
 - [ ] Créer un visuel conceptuel propre pour chaque objet important une fois son design définitif validé.
 - [ ] Ajouter les visuels définitifs au wiki et réutiliser les meilleurs pour la présentation Workshop.
@@ -666,8 +677,9 @@ Cette passe doit être réalisée lorsque les mécaniques concernées sont suffi
 
 Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations existantes doivent rester récurrentes, anti-répétitives et compatibles avec les sauvegardes créées à partir de cette base.
 
-- [ ] Continuer à tester les sept archétypes récurrents sur les parties longues : observation, renseignements, agent blessé, remise médicale, appel de détresse, livraison à une base temporaire et assaut de diversion Goa'uld/Jaffa.
+- [ ] Continuer à tester les huit archétypes récurrents sur les parties longues : observation, renseignements, agent blessé, remise médicale, appel de détresse, livraison à une base temporaire, assaut de diversion Goa'uld/Jaffa et capture d'un officier Jaffa.
 - [x] Ajouter un premier nouvel archétype réellement distinct après les six opérations publiées : assaut de diversion Goa’uld/Jaffa (`0.3.34-dev`, publié sous `v0.3.34-dev`).
+- [x] Ajouter un deuxième archétype distinct fondé sur une cible vivante : capture d'un officier Jaffa (`0.3.37-dev`, publié sous `v0.3.37-dev`).
 - [ ] Continuer ensuite à enrichir le pool avec des archétypes réellement distincts, sans dupliquer les mêmes actions sous un autre texte.
 - [ ] Conserver une seule opération organique visible à la fois sur le communicateur.
 - [ ] Ne jamais révéler en jeu normal le catalogue des opérations, les pondérations, les délais cachés ou l'historique technique.

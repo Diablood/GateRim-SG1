@@ -1,50 +1,45 @@
-# Project state
+# Current project state
 
-Current milestone: `0.3.36-dev - Add non-lethal capture tools` — validated in final local revision `r9`, closed and published under `v0.3.36-dev`.
+Current milestone: `0.3.37-dev - Add Tok'ra Jaffa officer capture operation` — functionally validated in local revision `r6` and published under the final milestone version.
 
 ## Repository state
 
-- Starting tag: `v0.3.35-dev`.
-- Dedicated branch: `feature/non-lethal-capture-tools`.
-- Published versions: `0.3.36-dev` and `0.3.36.0`.
-- Final commit: `0.3.36-dev - add non-lethal capture tools`.
-- Final annotated tag: `v0.3.36-dev`.
-- The separate wiki was synchronized because player-facing pages were updated.
+- Starting tag: `v0.3.36-dev`.
+- Dedicated branch: `feature/tokra-jaffa-officer-capture-operation`.
+- Published versions: `0.3.37-dev` and `0.3.37.0`.
+- Final local validation revision: `r6`.
+- Final unique tag: `v0.3.37-dev`.
+- The main repository and separate wiki are synchronized for the milestone.
 
-## Published scope
+## Published outcome
 
-- Craftable single-use bolas.
-- Experimental Tok'ra hypodermic rifle with five sealed charges.
-- One charge consumed per launch and weapon destruction at zero.
-- Separate weapon-accuracy and neutralization-resistance rolls.
-- Body-size and armor resistance with XML clamps.
-- Light real blunt impact: `3` for bolas and `1` for the dart.
-- Temporary Tok'ra neuromuscular inhibition and a distinct bolas restraint, both leaving Consciousness intact and setting Moving to zero.
-- Ordinary RimWorld downing and vanilla capture during the temporary window.
-- Ordinary recovery after expiration when no other condition prevents movement.
-- Charges shown in the ground inspect pane and in hover tooltips while equipped or carried in inventory.
-- English/French text, debug tools, documentation and four provisional textures.
-
-## Rejected prototypes
-
-- Consciousness-zero neutralization was rejected after hostile targets died on downing.
-- Persistent stun plus custom standing-target restraint was rejected because the standing pawn did not integrate cleanly with ordinary capture.
-
-The final design removes the custom JobDef, float-menu patch, restraint ThingComp, stun HediffComp and custom carrying JobDriver introduced by the rejected prototype. No additional file or texture was removed in `r9`.
+- Add an eighth recurrent Tok'ra organic-operation archetype without renumbering existing persisted values.
+- Create a temporary hostile world site containing one living silver-marked Jaffa officer and a threat-scaled Goa'uld/Jaffa escort.
+- Deliver one sealed twelve-charge Tok'ra hypodermic rifle through the preferred Tok'ra delivery point.
+- Preserve vanilla caravan reformation so the downed officer can be selected as a transported prisoner without a local prison bed.
+- Keep the officer physically restrained during carrying and caravan travel, then return control to ordinary RimWorld prisoner handling on the player colony map.
+- Remove the hostile map and world marker after the officer is confirmed in a player caravan or player home map and no player pawn remains on the site.
+- Persist the officer and all home-extraction state independently of the removed WorldObject.
+- Add a powered-communicator action that calls a visible Tok'ra extraction team after a hidden four-to-twelve-hour delay.
+- Have the team physically collect the detained officer and resolve success only after the prisoner and every extraction-team member have left the map.
+- Preserve recurrence, hidden delays, local anti-repetition, adaptive escort strength, save compatibility and developer diagnostics.
 
 ## Final validation
 
-Final local revision `r9` confirms:
+The final `r6` pass validated the complete primary flow in game:
 
-- bolas use a distinct physical-restraint presentation;
-- the Tok'ra hypodermic rifle operates with its intended limited charges;
-- successful neutralization sets Moving to zero without reducing Consciousness or introducing random downing deaths;
-- the ordinary RimWorld capture order works;
-- charges remain visible on the ground, while equipped and while carried in inventory;
-- charges and inhibition duration persist through save/reload;
-- the rifle disappears after its final charge;
-- no additional cleanup of files or textures is required.
+1. hostile-site generation and living-target neutralization;
+2. vanilla prisoner selection during caravan reformation without a prison bed on the temporary map;
+3. caravan travel and detention in a colony cell;
+4. removal of the temporary map and world marker after evacuation;
+5. continued prisoner tracking after site cleanup;
+6. availability of the extraction call on the powered Tok'ra communicator;
+7. delayed visible arrival of the Tok'ra team;
+8. physical pickup and departure with the prisoner;
+9. single mission success after the complete extraction team leaves the map.
+
+The milestone reported no remaining blocking functional issue. Rare interruption and retry paths remain durable regression cases for future mission-framework changes rather than publication blockers.
 
 ## Next milestone
 
-The next planned milestone is `0.3.37-dev - Add Tok'ra Jaffa officer capture operation`. It must start explicitly from `v0.3.36-dev` on a dedicated branch after rereading the repository procedures. The operation should consume the validated non-lethal toolkit without making capture guaranteed or replacing the ordinary prisoner flow.
+No `0.3.38-dev` scope is imposed by this closure. The next milestone must be chosen after reviewing `docs/ROADMAP.md`, then start explicitly from `v0.3.37-dev` on a new dedicated branch after rereading the repository procedures.

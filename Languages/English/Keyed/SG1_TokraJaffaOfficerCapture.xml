@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+    <GR_TokraJaffaOfficerCapture_OfferLabel>Tok'ra request: capture a Jaffa officer</GR_TokraJaffaOfficerCapture_OfferLabel>
+    <GR_TokraJaffaOfficerCapture_OfferText1>Tok'ra intelligence has isolated the movements of a Jaffa officer carrying current Goa'uld field orders. The officer must be taken alive; a corpse cannot answer questions. The location can be exposed for about {0} hours.</GR_TokraJaffaOfficerCapture_OfferText1>
+    <GR_TokraJaffaOfficerCapture_OfferText2>A Jaffa command element has separated from its main force. The Tok'ra want the ranking officer captured before the escort rejoins Goa'uld lines. The operation window will remain open for about {0} hours.</GR_TokraJaffaOfficerCapture_OfferText2>
+    <GR_TokraJaffaOfficerCapture_OfferText3>The secure channel carries a narrow opportunity: an elite Jaffa officer is moving through a temporary field position. The Tok'ra can question the prisoner, but only if the colony extracts the target alive within about {0} hours.</GR_TokraJaffaOfficerCapture_OfferText3>
+    <GR_TokraJaffaOfficerCapture_OfferExpired>The Jaffa command element has moved beyond the Tok'ra surveillance net.</GR_TokraJaffaOfficerCapture_OfferExpired>
+    <GR_TokraJaffaOfficerCapture_Accepted>{0} has accepted the capture operation. A sealed Tok'ra hypodermic rifle has been routed to the preferred Tok'ra delivery point, with a secure fallback if no marker is available. The field position will remain exposed for about {1} hours.</GR_TokraJaffaOfficerCapture_Accepted>
+    <GR_TokraJaffaOfficerCapture_SuccessLabel>Jaffa officer transferred</GR_TokraJaffaOfficerCapture_SuccessLabel>
+    <GR_TokraJaffaOfficerCapture_FailureLabel>Jaffa officer capture failed</GR_TokraJaffaOfficerCapture_FailureLabel>
+    <GR_TokraJaffaOfficerCapture_SuccessText1>The Tok'ra team entered the colony, secured the living officer and escorted the prisoner beyond the perimeter. The operation is complete only now that the extraction group has left the map.</GR_TokraJaffaOfficerCapture_SuccessText1>
+    <GR_TokraJaffaOfficerCapture_SuccessText2>The last Tok'ra operative has withdrawn with the captured officer under guard. The cell confirms that the prisoner's knowledge will be exploited before the Goa'uld can change their plans.</GR_TokraJaffaOfficerCapture_SuccessText2>
+    <GR_TokraJaffaOfficerCapture_SuccessText3>The extraction team has cleared the colony with the officer alive. The Goa'uld have lost both a commander and any certainty over what that prisoner may reveal.</GR_TokraJaffaOfficerCapture_SuccessText3>
+    <GR_TokraJaffaOfficerCapture_SpawnFailed>The Tok'ra cannot establish a safe route to the officer's field position. The request remains open.</GR_TokraJaffaOfficerCapture_SpawnFailed>
+    <GR_TokraJaffaOfficerCapture_TargetLetterLabel>Jaffa officer located</GR_TokraJaffaOfficerCapture_TargetLetterLabel>
+    <GR_TokraJaffaOfficerCapture_TargetLetterText>The temporary field position has been marked on the world map. Enter it with a caravan, neutralize the escort and bring the silver-marked officer down alive. No prison bed is required on the hostile site: once resistance has ended, use the normal caravan reformation screen to take the downed officer as a prisoner. Return the captive to a player colony, secure them in custody, then use a powered Tok'ra communicator to request extraction. A Tok'ra team will arrive several hours later and the operation will end only after they leave the colony with the prisoner. About {0} hours remain.</GR_TokraJaffaOfficerCapture_TargetLetterText>
+    <GR_TokraJaffaOfficerCapture_FailureTimeout>The field position has been abandoned before the officer could be delivered. The Tok'ra close the operation.</GR_TokraJaffaOfficerCapture_FailureTimeout>
+    <GR_TokraJaffaOfficerCapture_FailureSiteLost>The operation's tracking signal has been lost and the Tok'ra can no longer coordinate the capture.</GR_TokraJaffaOfficerCapture_FailureSiteLost>
+    <GR_TokraJaffaOfficerCapture_FailureTargetKilled>The Jaffa officer is dead. The Tok'ra needed a living prisoner, not a body.</GR_TokraJaffaOfficerCapture_FailureTargetKilled>
+    <GR_TokraJaffaOfficerCapture_FailureTargetLost>The Jaffa officer has escaped custody or disappeared during the extraction.</GR_TokraJaffaOfficerCapture_FailureTargetLost>
+    <GR_TokraJaffaOfficerCapture_Accept>Accept the officer capture</GR_TokraJaffaOfficerCapture_Accept>
+    <GR_TokraJaffaOfficerCapture_TargetUnknown>the Jaffa officer</GR_TokraJaffaOfficerCapture_TargetUnknown>
+    <GR_TokraJaffaOfficerCapture_StatusOffered>A Tok'ra request to capture a Jaffa officer is awaiting a response. The opportunity closes in about {0} hours.</GR_TokraJaffaOfficerCapture_StatusOffered>
+    <GR_TokraJaffaOfficerCapture_StatusActive>Capture {0} alive and return the prisoner to a player colony. About {1} hours remain.</GR_TokraJaffaOfficerCapture_StatusActive>
+    <GR_TokraJaffaOfficerCapture_StatusReady>{0} is secured for Tok'ra extraction. Complete the transfer before the remaining {1} hours expire.</GR_TokraJaffaOfficerCapture_StatusReady>
+    <GR_TokraJaffaOfficerCapture_TrustSucceeded>The successful live capture has strengthened Tok'ra confidence in the colony.</GR_TokraJaffaOfficerCapture_TrustSucceeded>
+    <GR_TokraJaffaOfficerCapture_TrustFailed>The failed capture has weakened Tok'ra confidence in the colony.</GR_TokraJaffaOfficerCapture_TrustFailed>
+    <GR_TokraJaffaOfficerCapture_TravelCommandLabel>Enter the Jaffa field position</GR_TokraJaffaOfficerCapture_TravelCommandLabel>
+    <GR_TokraJaffaOfficerCapture_ApproachingReport>Approaching the Jaffa field position</GR_TokraJaffaOfficerCapture_ApproachingReport>
+    <GR_TokraJaffaOfficerCapture_ArrivalLabel>Jaffa officer identified</GR_TokraJaffaOfficerCapture_ArrivalLabel>
+    <GR_TokraJaffaOfficerCapture_ArrivalText>{0}, identifiable by an elite silver forehead mark, is protected by {1} Jaffa. The target must survive. No prison bed is needed here: neutralize the escort, bring the officer down, then select the officer as a prisoner in the normal caravan reformation screen.</GR_TokraJaffaOfficerCapture_ArrivalText>
+    <GR_TokraJaffaOfficerCapture_TargetSecured>{0} is now held by the colony and bound for transport. Eliminate or drive off the remaining escort, then reform the caravan with the prisoner and return to a player colony.</GR_TokraJaffaOfficerCapture_TargetSecured>
+    <GR_TokraJaffaOfficerCapture_HandoffCommandLabel>Arrange the Tok'ra handoff</GR_TokraJaffaOfficerCapture_HandoffCommandLabel>
+    <GR_TokraJaffaOfficerCapture_HandoffCommandDesc>Hold the caravan at the concealed rendezvous while a Tok'ra extraction team approaches to take {0} into custody.</GR_TokraJaffaOfficerCapture_HandoffCommandDesc>
+    <GR_TokraJaffaOfficerCapture_ReturnedToContact>The caravan has reached the concealed Tok'ra rendezvous. Secure the perimeter and arrange the prisoner's transfer.</GR_TokraJaffaOfficerCapture_ReturnedToContact>
+    <GR_TokraJaffaOfficerCapture_HandoffStarted>The caravan has secured the rendezvous with {0}. A Tok'ra extraction team should reach the position in about {1} hour(s). Leaving the tile will interrupt the handoff.</GR_TokraJaffaOfficerCapture_HandoffStarted>
+    <GR_TokraJaffaOfficerCapture_HandoffInterrupted>The caravan left the concealed rendezvous before the Tok'ra extraction team arrived. The handoff must be arranged again.</GR_TokraJaffaOfficerCapture_HandoffInterrupted>
+    <GR_TokraJaffaOfficerCapture_HandoffCompleted>A Tok'ra extraction team has reached the caravan, taken custody of {0} and departed under concealment.</GR_TokraJaffaOfficerCapture_HandoffCompleted>
+    <GR_TokraJaffaOfficerCapture_InspectPending>Field position not yet entered. About {0} hours remain.</GR_TokraJaffaOfficerCapture_InspectPending>
+    <GR_TokraJaffaOfficerCapture_InspectActive>Target: {0}. Capture operation active; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectActive>
+    <GR_TokraJaffaOfficerCapture_InspectReturn>Prisoner secured: {0}. Return to this position for handoff; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectReturn>
+    <GR_TokraJaffaOfficerCapture_InspectHandoff>Tok'ra handoff in progress for {0}; the extraction team should arrive in about {1} hour(s).</GR_TokraJaffaOfficerCapture_InspectHandoff>
+    <GR_TokraJaffaOfficerCapture_InspectSucceeded>The Tok'ra extraction team left the colony with the officer.</GR_TokraJaffaOfficerCapture_InspectSucceeded>
+    <GR_TokraJaffaOfficerCapture_InspectFailed>The capture operation has failed.</GR_TokraJaffaOfficerCapture_InspectFailed>
+    <GR_TokraJaffaOfficerCapture_AlreadyEntered>The field position has already been entered.</GR_TokraJaffaOfficerCapture_AlreadyEntered>
+    <GR_TokraJaffaOfficerCapture_AlreadyResolved>This operation has already been resolved.</GR_TokraJaffaOfficerCapture_AlreadyResolved>
+    <GR_TokraJaffaOfficerCapture_RequiresCaravan>A player caravan must be present at the marked position.</GR_TokraJaffaOfficerCapture_RequiresCaravan>
+    <GR_TokraJaffaOfficerCapture_TargetUnavailable>The target is no longer available for transfer.</GR_TokraJaffaOfficerCapture_TargetUnavailable>
+    <GR_TokraJaffaOfficerCapture_TargetNotInCaravan>{0} is not travelling with this caravan.</GR_TokraJaffaOfficerCapture_TargetNotInCaravan>
+    <GR_TokraJaffaOfficerCapture_TargetNotPrisoner>{0} is not held as a colonial prisoner.</GR_TokraJaffaOfficerCapture_TargetNotPrisoner>
+    <GR_TokraJaffaOfficerCapture_HandoffAlreadyInProgress>The Tok'ra extraction team is already approaching this rendezvous.</GR_TokraJaffaOfficerCapture_HandoffAlreadyInProgress>
+    <GR_TokraJaffaOfficerCapture_DebugForced>Jaffa-officer capture offer created.</GR_TokraJaffaOfficerCapture_DebugForced>
+    <GR_TokraJaffaOfficerCapture_ReturnToColony>The field position no longer needs to be revisited. Return the living prisoner to a player colony and contact the Tok'ra through a powered communicator.</GR_TokraJaffaOfficerCapture_ReturnToColony>
+    <GR_TokraJaffaOfficerCapture_RequestExtraction>Call the Tok'ra extraction team</GR_TokraJaffaOfficerCapture_RequestExtraction>
+    <GR_TokraJaffaOfficerCapture_ExtractionAlreadyRequested>A Tok'ra extraction team is already responding to this call.</GR_TokraJaffaOfficerCapture_ExtractionAlreadyRequested>
+    <GR_TokraJaffaOfficerCapture_ExtractionRequiresHomeMap>The extraction call must be made from a player colony holding the prisoner.</GR_TokraJaffaOfficerCapture_ExtractionRequiresHomeMap>
+    <GR_TokraJaffaOfficerCapture_ExtractionTargetNotPresent>{0} is not present on this colony map.</GR_TokraJaffaOfficerCapture_ExtractionTargetNotPresent>
+    <GR_TokraJaffaOfficerCapture_ExtractionRequested>The Tok'ra have acknowledged the call for {0}. An extraction team should reach the colony in about {1} hour(s). Keep the prisoner alive and in colonial custody.</GR_TokraJaffaOfficerCapture_ExtractionRequested>
+    <GR_TokraJaffaOfficerCapture_ExtractionWaiting>The Tok'ra team cannot begin the pickup because {0} is not currently secured as a colony prisoner. They will keep the channel open while the target remains on the colony map.</GR_TokraJaffaOfficerCapture_ExtractionWaiting>
+    <GR_TokraJaffaOfficerCapture_ExtractionTeamArrived>A Tok'ra extraction team has entered the colony to take {0} into custody. The officer has been restrained for the pickup.</GR_TokraJaffaOfficerCapture_ExtractionTeamArrived>
+    <GR_TokraJaffaOfficerCapture_ExtractionPickupStarted>The Tok'ra have taken physical custody of {0} and are moving toward the perimeter.</GR_TokraJaffaOfficerCapture_ExtractionPickupStarted>
+    <GR_TokraJaffaOfficerCapture_ExtractionTargetDeparted>The Tok'ra carrier has crossed the perimeter with {0}. The operation will be confirmed once the rest of the team has withdrawn.</GR_TokraJaffaOfficerCapture_ExtractionTargetDeparted>
+    <GR_TokraJaffaOfficerCapture_InspectReturnHome>Prisoner secured in caravan: {0}. Return to a player colony; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectReturnHome>
+    <GR_TokraJaffaOfficerCapture_InspectAwaitingCall>Prisoner held at the colony: {0}. Call the Tok'ra from a powered communicator; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectAwaitingCall>
+    <GR_TokraJaffaOfficerCapture_InspectExtractionInbound>Tok'ra extraction requested for {0}; arrival expected in about {1} hour(s).</GR_TokraJaffaOfficerCapture_InspectExtractionInbound>
+    <GR_TokraJaffaOfficerCapture_InspectExtractionActive>Tok'ra extraction team on the colony map for {0}.</GR_TokraJaffaOfficerCapture_InspectExtractionActive>
+    <GR_TokraJaffaOfficerCapture_InspectExtractionLeaving>{0} has crossed the perimeter with the Tok'ra; waiting for the team to clear the map.</GR_TokraJaffaOfficerCapture_InspectExtractionLeaving>
+</LanguageData>

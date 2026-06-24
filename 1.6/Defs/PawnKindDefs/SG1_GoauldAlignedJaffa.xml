@@ -93,6 +93,14 @@
         <label>Goa'uld Jaffa guard</label>
     </PawnKindDef>
 
+    <!-- Mission-only elite officer targeted by Tok'ra capture operations. -->
+    <PawnKindDef ParentName="SG1_GoauldJaffaGuardBase">
+        <defName>SG1_GoauldJaffaOfficer</defName>
+        <label>Goa'uld Jaffa officer</label>
+        <combatPower>165</combatPower>
+        <maxPerGroup>1</maxPerGroup>
+    </PawnKindDef>
+
     <!--
         Mission-only wall breacher used by the Tok'ra diversion assault.
 

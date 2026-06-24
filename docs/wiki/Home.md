@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.36-dev`
+> Version du mod documentée : `0.3.37-dev`
 
 ## Le mod en bref
 
@@ -56,9 +56,10 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   les nouvelles offres exigent un communicateur joueur alimenté, sans effacer
   les opérations déjà engagées en cas de panne ; observation discrète, analyse de renseignements, accueil médical prolongé
   d'un agent blessé, remise de médicaments à un agent de liaison, appel de
-  détresse, contrat de production livré à un rendez-vous temporaire et assaut
-  de diversion Goa'uld/Jaffa sur la colonie. Les sept opérations lisent leurs
-  données de mission depuis XML, tandis que leurs interactions RimWorld
+  détresse, contrat de production livré à un rendez-vous temporaire, assaut
+  de diversion Goa'uld/Jaffa sur la colonie et [capture d'un officier Jaffa](Tokra-Jaffa-Officer-Capture). Les huit
+  opérations lisent leurs données de mission depuis XML, tandis que leurs
+  interactions RimWorld
   spécialisées restent en C#. La difficulté capturée lors de l'offre dimensionne
   les patrouilles, les défenseurs du site et certains paramètres médicaux.
 - Missions sur cartes temporaires : appel de détresse à la situation incertaine,
@@ -79,12 +80,18 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 ## Outils de neutralisation non létale
 
 La version `0.3.36-dev` ajoute des bolas fabricables et un fusil
-hypodermique expérimental Tok'ra à cinq charges. Une réussite applique soit une
-entrave physique des jambes avec les bolas, soit une inhibition neuromusculaire
-avec le fusil : la Conscience reste intacte, mais la cible tombe au sol et
-devient capturable par le flux vanilla. La précision, l'armure, la taille et la
-résistance propre à la cible empêchent toute garantie. Le fusil n'est pas encore
-distribué en jeu normal.
+hypodermique expérimental Tok'ra actuellement réglé à douze charges. La version publiée `0.3.37-dev` emploie ces outils dans une opération
+récurrente de capture vivante. Un tir réussi applique soit une entrave physique des jambes
+avec les bolas, soit une inhibition neuromusculaire avec le fusil : la
+Conscience reste intacte, mais la cible tombe au sol et devient capturable par
+le flux vanilla. La précision, l'armure, la taille et la résistance propre à la
+cible empêchent toute garantie. L'opération fournit un seul fusil scellé à sa zone de livraison. Une fois la
+cible à terre et l'escorte neutralisée, la reformation vanilla permet de la
+sélectionner comme prisonnier sans lit local. Le transfert reste ligoté pendant
+le voyage. Une fois le prisonnier détenu dans une colonie, le communicateur permet
+d'appeler une équipe Tok'ra qui entre sur la carte, emporte physiquement la cible
+et valide la mission seulement après son départ complet ; le fusil reste non
+fabricable et n'est pas distribué hors de cette mission.
 
 ## Développement à venir
 
@@ -122,7 +129,7 @@ offre immédiate.
 
 ## Orchestration des opérations Tok'ra
 
-La version `0.3.34-dev` étend le planificateur partagé à sept opérations tout
+La version `0.3.37-dev` étend le planificateur partagé à huit opérations tout
 en conservant une seule occurrence active, le filtrage avant tirage pondéré,
 les délais cachés après chaque résultat et la persistance après sauvegarde.
 Le nouvel assaut de diversion relaie un faux signal sans placer d'objet sur la

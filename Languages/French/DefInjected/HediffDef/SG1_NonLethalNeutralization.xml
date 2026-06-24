@@ -6,4 +6,7 @@
     <SG1_BolasRestraint.label>entrave temporaire par bolas</SG1_BolasRestraint.label>
     <SG1_BolasRestraint.description>Des cordes lestées sont enroulées autour des jambes de la cible et l'empêchent de se déplacer jusqu'à ce que l'entrave se desserre ou soit retirée.</SG1_BolasRestraint.description>
     <SG1_BolasRestraint.stages.0.label>jambes entravées</SG1_BolasRestraint.stages.0.label>
+    <SG1_TokraJaffaOfficerTransferRestraint.label>ligoté pour le transfert Tok'ra</SG1_TokraJaffaOfficerTransferRestraint.label>
+    <SG1_TokraJaffaOfficerTransferRestraint.description>L'officier Jaffa capturé a été ligoté et sécurisé pour le transport. Les entraves restent en place jusqu'à sa remise ou jusqu'à la fin de l'opération.</SG1_TokraJaffaOfficerTransferRestraint.description>
+    <SG1_TokraJaffaOfficerTransferRestraint.stages.0.label>maintenu ligoté</SG1_TokraJaffaOfficerTransferRestraint.stages.0.label>
 </LanguageData>
