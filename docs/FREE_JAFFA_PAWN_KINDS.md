@@ -60,3 +60,11 @@ infiltration stories or migrated saves.
 7. Confirm retractable helmet.
 8. Confirm absence of automatic forehead marks.
 9. Apply a mark manually and confirm that manual assignment still works.
+
+## Trade extension (`0.3.43-dev`)
+
+`SG1_FreeJaffaTrader` extends the same cultural and biological baseline to a
+dedicated caravan contact. The pawn kind uses Free Jaffa backstories and names,
+receives automatic Prim'ta initialization, carries a Ma'Tok and light Jaffa
+armor, omits the guard helmet for immediate identification, and explicitly sets
+the PawnKind trader flag required by vanilla caravan generation.

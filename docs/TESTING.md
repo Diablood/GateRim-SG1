@@ -1,5 +1,29 @@
 # Testing checklist
 
+## 0.3.43-dev - Free Jaffa trade network
+
+Validation locale terminée sur la révision finale `r5`, puis jalon publié sous `v0.3.43-dev`.
+
+Couverture durable :
+
+- charger `SG1_FreeJaffa`, `SG1_Caravan_FreeJaffaClanSupplies` et `SG1_FreeJaffaTrader` sans erreur de référence, de StockGenerator, de tradeability ou de PawnKind marchand ;
+- forcer plusieurs convois et vérifier un marchand Jaffa libre, des gardes culturels, des animaux de bât et une fenêtre commerciale fonctionnelle ;
+- conserver un stock variable mais centré sur les provisions durables, les soins, les composants, les matériaux stratégiques, les armes humaines industrielles et quelques protections ;
+- limiter les bâtons Ma'Tok et les pièces d'armure Jaffa, garder le Zat absent de la majorité des stocks et ne jamais générer `SG1_JaffaRetractedHelmet` ;
+- accepter à l'achat les armes humaines, armes de mêlée, armures, casques et équipements Jaffa ou Goa'uld couverts par le profil ;
+- maintenir une réserve d'argent approximative de `850` à `1300` afin qu'un convoi ne puisse pas absorber indéfiniment le butin de raids ou une production militaire ;
+- ne pas ajouter de catalogue générique de meubles, œuvres d'art, animaux, drogues récréatives, implants ou biens exotiques ;
+- conserver le commerce de colonie, les visiteurs marchands et les demandes par communicateur sous leurs flux vanilla ;
+- conserver désactivés l'aide militaire, les sites de quête, les raids naturels, les sièges et les attaques préparées des Jaffa libres ;
+- sauvegarder et recharger avec un convoi présent, puis vérifier le marchand, le stock, les gardes, les porteurs et `Player.log`.
+
+Limites durables :
+
+- ne pas transformer les Jaffa libres en marchand universel pour anticiper un monde sans factions vanilla ;
+- répartir les catégories économiques manquantes entre les futures factions commerciales, notamment les Nox, après audit des besoins encore non couverts ;
+- conserver l'identité militaire et logistique du convoi même si son stock évolue ;
+- réauditer le budget et la valeur moyenne des stocks lors de tout ajout important d'armes, d'armures ou de ressources GateRim SG-1.
+
 ## 0.3.42-dev - Advanced diagnostics and developer-action separation
 
 Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.42-dev`.

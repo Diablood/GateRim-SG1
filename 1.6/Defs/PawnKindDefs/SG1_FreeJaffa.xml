@@ -85,4 +85,43 @@
         <minGenerationAge>20</minGenerationAge>
         <maxGenerationAge>65</maxGenerationAge>
     </PawnKindDef>
+    <PawnKindDef ParentName="BasePlayerPawnKind">
+        <defName>SG1_FreeJaffaTrader</defName>
+        <label>Free Jaffa caravan trader</label>
+        <race>Human</race>
+        <defaultFactionType>SG1_FreeJaffa</defaultFactionType>
+        <useFactionXenotypes>false</useFactionXenotypes>
+        <backstoryFiltersOverride>
+            <li>
+                <categoriesChildhood>
+                    <li>SG1_JaffaChildhood</li>
+                </categoriesChildhood>
+                <categoriesAdulthood>
+                    <li>SG1_FreeJaffaAdulthood</li>
+                </categoriesAdulthood>
+            </li>
+        </backstoryFiltersOverride>
+        <xenotypeSet>
+            <xenotypeChances>
+                <SG1_Jaffa>999</SG1_Jaffa>
+            </xenotypeChances>
+        </xenotypeSet>
+        <combatPower>85</combatPower>
+        <isFighter>true</isFighter>
+        <trader>true</trader>
+        <initialResistanceRange>0~0</initialResistanceRange>
+        <weaponMoney>2000~2000</weaponMoney>
+        <weaponTags>
+            <li>SG1_MatokStaff</li>
+        </weaponTags>
+        <apparelMoney>0</apparelMoney>
+        <apparelRequired Inherit="False">
+            <li>SG1_JaffaLightArmor</li>
+            <li>SG1_JaffaGauntlets</li>
+            <li>SG1_JaffaReinforcedBoots</li>
+        </apparelRequired>
+        <minGenerationAge>24</minGenerationAge>
+        <maxGenerationAge>70</maxGenerationAge>
+    </PawnKindDef>
+
 </Defs>

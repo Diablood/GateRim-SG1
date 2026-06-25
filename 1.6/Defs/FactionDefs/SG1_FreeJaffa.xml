@@ -5,13 +5,13 @@
 
     The faction starts neutral toward the player, remains hostile to the
     Goa'uld through the Goa'uld faction's permanent-enemy rule, and exposes a
-    limited settlement presence without traders, quests, aid or natural raids
-    yet.
+    limited settlement presence with specialized clan-supply trade while quests,
+    military aid and natural raids remain disabled.
     -->
     <FactionDef>
         <defName>SG1_FreeJaffa</defName>
         <label>Free Jaffa</label>
-        <description>Independent Jaffa communities freed from Goa'uld domination. This playable baseline generates a limited number of visible settlements, neutral initial relations with the SGC expedition and rare peaceful visitor groups. Traders, military aid, quests and natural raids remain disabled until later balancing passes.</description>
+        <description>Independent Jaffa communities freed from Goa'uld domination. They maintain a limited number of visible settlements, neutral initial relations with the SGC expedition, rare peaceful visitors and practical trade links using ordinary caravan and settlement commerce. Military aid, quests and natural raids remain disabled until later balancing passes.</description>
         <fixedName>Free Jaffa</fixedName>
         <pawnsPlural>Free Jaffa</pawnsPlural>
         <pawnSingular>Free Jaffa</pawnSingular>
@@ -55,14 +55,25 @@
             <max>55</max>
         </allowedArrivalTemperatureRange>
 
+        <caravanTraderKinds>
+            <li>SG1_Caravan_FreeJaffaClanSupplies</li>
+        </caravanTraderKinds>
+        <visitorTraderKinds>
+            <li>Visitor_Outlander_Standard</li>
+        </visitorTraderKinds>
+        <baseTraderKinds>
+            <li>Base_Outlander_Standard</li>
+        </baseTraderKinds>
+
         <!--
-        Baseline policy: world presence, settlement defense and rare
-        peaceful visitors only. Trade, aid and quest integration come later.
+        Current policy: trade is available through a dedicated clan-supply caravan plus
+        vanilla visitor and settlement flows. Aid, quests and natural raids remain
+        intentionally disabled until separate balancing milestones.
         -->
         <raidsForbidden>true</raidsForbidden>
         <canSiege>false</canSiege>
         <canStageAttacks>false</canStageAttacks>
-        <canRequestTraders>false</canRequestTraders>
+        <canRequestTraders>true</canRequestTraders>
         <canRequestMilitaryAid>false</canRequestMilitaryAid>
         <canGenerateQuestSites>false</canGenerateQuestSites>
 
@@ -104,6 +115,22 @@
                     <SG1_FreeJaffaWarrior>4</SG1_FreeJaffaWarrior>
                     <SG1_FreeJaffaGuard>1</SG1_FreeJaffaGuard>
                 </options>
+            </li>
+            <li>
+                <kindDef>Trader</kindDef>
+                <commonality>1</commonality>
+                <traders>
+                    <SG1_FreeJaffaTrader>1</SG1_FreeJaffaTrader>
+                </traders>
+                <carriers>
+                    <Muffalo>3</Muffalo>
+                    <Dromedary>3</Dromedary>
+                    <Alpaca>3</Alpaca>
+                </carriers>
+                <guards>
+                    <SG1_FreeJaffaWarrior>4</SG1_FreeJaffaWarrior>
+                    <SG1_FreeJaffaGuard>1</SG1_FreeJaffaGuard>
+                </guards>
             </li>
             <li>
                 <kindDef>Settlement</kindDef>

@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon validé : `0.3.42-dev - Separate advanced diagnostics from developer actions`. L'option avancée du mod reste dédiée aux rapports, états techniques et traces, tandis que toute commande de test capable de modifier la partie exige le mode développeur RimWorld. Le menu du communicateur masque aussi les soutiens Tok'ra fiables tant que ce palier n'est pas réellement atteint.
+Dernier jalon publié : `0.3.43-dev - Add Free Jaffa trade network`. Les Jaffa libres disposent d’un convoi spécialisé dans le ravitaillement, les ressources stratégiques et le matériel militaire, en complément des visiteurs, colonies et demandes de marchand vanilla.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -61,7 +61,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, dirigeant généré, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
-| Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé issu d'une faction mondiale Jaffa libre non hostile, sans commerce ni interaction spéciale pour le moment | 0.2.6-dev |
+| Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |
+| Commerce des Jaffa libres | Convoi spécialisé des clans libres, colonies commerçantes, visiteurs marchands et demandes par communicateur ; achat d'équipement militaire limité par la réserve d'argent du marchand | 0.3.43-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire et nettoyage initial des affections chroniques biologiques | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 |

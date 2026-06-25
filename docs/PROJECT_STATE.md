@@ -1,63 +1,78 @@
 # Current project state
 
-Current milestone: `0.3.42-dev - Separate advanced diagnostics from developer actions` — final local revision `r2` validated and published.
+Current milestone: `0.3.43-dev - Add Free Jaffa trade network` — final local revision `r5` validated and published.
 
 ## Repository state
 
-- Starting tag: `v0.3.41-dev`.
-- Published branch: `feature/debug-command-visibility-audit`.
-- Published versions: `0.3.42-dev` and `0.3.42.0`.
-- Final local revision: `r2`.
-- Final unique tag: `v0.3.42-dev`.
-- Main repository and separate wiki synchronized.
+- Starting tag: `v0.3.42-dev`.
+- Published branch: `feature/free-jaffa-trade-network`.
+- Final tag: `v0.3.43-dev`.
+- Published versions: `0.3.43-dev` and `0.3.43.0`.
+- Final local revision: `r5`.
+- Main GitHub repository and separate wiki synchronized.
 
-## Published behavior
+## Published scope
 
-The GateRim advanced-information option is now consistently diagnostic. It may reveal technical reports, detailed inspection strings, persistent identifiers and routine lifecycle traces, but it no longer grants commands that force, complete, reset or otherwise bypass gameplay state.
+The visible Free Jaffa faction uses RimWorld's existing settlement, visitor,
+caravan and comms-console trade flows. Caravan arrivals use the dedicated
+`SG1_Caravan_FreeJaffaClanSupplies` trader kind instead of a generic vanilla
+bulk-goods inventory.
 
-State-changing test commands now use the shared `GR_Debug.DeveloperActionsEnabled` rule and therefore require RimWorld developer mode. This includes:
+The clan-supply convoy is deliberately bounded around:
 
-- the Tok'ra communicator menu that forces, progresses, resolves or resets organic operations;
-- the duplicate direct launch gizmo on the decoded Goa'uld relay site;
-- forced Goa'uld implantation and autonomous-hunt controls;
-- deterministic emergency extraction;
-- unrestricted Goa'uld queen harvest testing.
+- durable field provisions and medicine;
+- steel, plasteel, components, chemfuel and cloth in moderate quantities;
+- industrial human ranged and melee weapons;
+- military armor;
+- limited Ma'Tok, Zat'nik'tel and modular Jaffa equipment;
+- a purchasing budget of roughly `850` to `1300` silver.
 
-Ordinary player interactions remain under their existing contextual rules.
+The weapon and armor generators allow the convoy to buy human military
+equipment from the player. The finite silver reserve remains the primary limit
+on how much raid loot or manufactured equipment one visit can absorb.
 
-## Progressive communicator discovery
+The five public Jaffa armor ThingDefs are tradeable in both directions so the
+custom convoy can generate them for sale. The internal retracted helmet state
+remains non-tradeable and cannot enter merchant stock.
 
-The selected-pawn right-click menu no longer advertises trusted-tier Tok'ra support before the colony reaches the `Trusted` tier.
+## Dedicated trader pawn
 
-Below that tier, the communicator exposes only:
+`SG1_FreeJaffaTrader` provides a culturally coherent caravan contact:
 
-- the read-only channel status consultation;
-- an interaction for an organic operation that is already genuinely proposed or active.
+- Jaffa xenotype and automatic Prim'ta;
+- Free Jaffa childhood, adulthood and cultural name generation;
+- Ma'Tok staff;
+- light Jaffa armor, gauntlets and reinforced boots;
+- no automatic Goa'uld forehead mark;
+- no helmet, keeping the caravan contact distinct from its guards.
 
-Once the trusted tier is reached, support requests appear normally. Immediate restrictions tied to the selected pawn, access, reservation, power, cooldown, threat or patient availability remain visible as disabled entries with their normal reason.
+## Deliberate limits
 
-Execution-time trust checks remain in place as defensive validation.
+Visitor and settlement trade still use their standard vanilla profiles. This
+milestone specializes only the caravan inventory.
+
+The convoy is not intended to cover every economic need of a future world with
+only GateRim SG-1 factions. Future commercial factions, including the Nox,
+should cover missing categories after a shared economy audit instead of turning
+the Free Jaffa into a universal merchant.
+
+Military aid, quest sites, recruitment, goodwill changes and natural Free Jaffa
+raids remain outside this milestone. No persistent faction, pawn, item or
+save-data identifier was removed or renamed.
 
 ## Final validation
 
-- `check-project-consistency.cmd` passed for `0.3.42-dev` and `0.3.42.0`.
-- The Windows build of `GateRimSG1.dll` version `0.3.42.0` passed.
-- The normal-play / advanced-information / developer-mode visibility matrix passed.
-- Progressive communicator discovery passed below, at and after returning from the trusted tier.
-- Contextual disabled reasons remained visible after unlock.
-- Save/reload preserved trust-dependent visibility and did not alter mission or operation state.
-- Ordinary player actions and the caravan relay flow remained available.
-- `Player.log` showed no new GateRim SG-1 error.
+- `check-project-consistency.cmd` passed and the existing `0.3.43.0` build remained valid;
+- startup completed without Free Jaffa trader cross-reference, stock-generator or tradeability errors;
+- settlement trade and forced clan-supply caravan generation were validated;
+- the trader pawn, guards, pack animals and trade window behaved correctly;
+- repeated stocks preserved the intended military-supply identity and bounded Jaffa equipment;
+- human weapons and armor could be sold until the convoy's finite silver reserve was exhausted;
+- the retracted helmet remained excluded from commerce;
+- save/reload and `Player.log` checks passed without a new GateRim SG-1 regression.
 
-## Durable boundaries
+## Next step
 
-- Advanced information must remain read-only.
-- Commands that modify artificial test state must require RimWorld developer mode, even when their caller is already hidden.
-- Player-facing progression menus must not reveal future unlocks through disabled labels.
-- Once an action is legitimately unlocked, immediate contextual failures should remain readable instead of hiding the action.
-- No save identifier, mission state, Def, storyteller weight, balance value, texture or persistent-data format changed in this milestone.
-- `docs/IDEAS_TO_REVISIT.md` remains separate from the roadmap; no exploratory idea was promoted by this maintenance milestone.
-
-## Next milestone
-
-No `0.3.43-dev` scope is imposed. Before starting new work, read `docs/ROADMAP.md`, `docs/IDEAS_TO_REVISIT.md` and `docs/MILESTONE_PUBLICATION.md`, select a bounded backlog item, then branch explicitly from `v0.3.42-dev`.
+Choose the next milestone after rereading `docs/ROADMAP.md`,
+`docs/IDEAS_TO_REVISIT.md` and `docs/MILESTONE_PUBLICATION.md`. Start it
+explicitly from `v0.3.43-dev` on a new dedicated branch.

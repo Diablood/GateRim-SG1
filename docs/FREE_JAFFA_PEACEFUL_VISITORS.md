@@ -80,9 +80,13 @@ backstories and no automatic Goa'uld forehead mark.
 
 ## Deferred work
 
+The peaceful visitor incident remains deliberately non-commercial. Ordinary
+Free Jaffa trade is provided separately since `0.3.43-dev`.
+
+Still deferred here:
+
 - civilian Free Jaffa profiles;
 - diplomatic envoys;
-- traders;
 - gifts;
 - quests;
 - military aid;

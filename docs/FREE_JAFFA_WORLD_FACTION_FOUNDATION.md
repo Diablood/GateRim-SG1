@@ -63,7 +63,7 @@ settlementTexturePath: World/WorldObjects/DefaultSettlement
 green-toned colorSpectrum
 ```
 
-## Baseline restrictions
+## Historical baseline restrictions (`0.2.2-dev`)
 
 ```text
 raidsForbidden: true
@@ -76,7 +76,14 @@ canGenerateQuestSites: false
 
 Rare peaceful visitors are enabled since `0.2.6-dev`.
 
-Trade, quests and military aid remain intentionally deferred.
+Trade was intentionally deferred in this foundation milestone. Ordinary vanilla
+trade is added later by `0.3.43-dev`, which changes the current faction state to:
+
+```text
+canRequestTraders: true
+```
+
+Quests and military aid remain deferred.
 
 ## Provisional faction leader
 

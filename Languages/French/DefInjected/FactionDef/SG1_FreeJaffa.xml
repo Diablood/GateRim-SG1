@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_FreeJaffa.label>Jaffa libres</SG1_FreeJaffa.label>
-    <SG1_FreeJaffa.description>Communautés Jaffa indépendantes libérées de la domination Goa'uld. Cette base jouable génère un nombre limité de colonies visibles, des relations initiales neutres avec l'expédition du SGC et de rares groupes de visiteurs pacifiques. Les marchands, l'aide militaire, les quêtes et les raids naturels restent désactivés jusqu'à de futures passes d'équilibrage.</SG1_FreeJaffa.description>
+    <SG1_FreeJaffa.description>Communautés Jaffa indépendantes libérées de la domination Goa'uld. Elles maintiennent un nombre limité de colonies visibles, des relations initiales neutres avec l'expédition du SGC, de rares visiteurs pacifiques et un réseau commercial pratique comprenant des convois de ravitaillement spécialisés, des visiteurs marchands et des colonies commerçantes. L'aide militaire, les quêtes et les raids naturels restent désactivés jusqu'à de futures passes d'équilibrage.</SG1_FreeJaffa.description>
     <SG1_FreeJaffa.fixedName>Jaffa libres</SG1_FreeJaffa.fixedName>
     <SG1_FreeJaffa.pawnsPlural>Jaffa libres</SG1_FreeJaffa.pawnsPlural>
     <SG1_FreeJaffa.pawnSingular>Jaffa libre</SG1_FreeJaffa.pawnSingular>

@@ -15,6 +15,7 @@
 - [Jaffa](Jaffa)
 - [Jaffa libres](Free-Jaffa-Faction)
 - [Visiteurs Jaffa libres](Free-Jaffa-Peaceful-Visitors)
+- [Commerce Jaffa libre](Free-Jaffa-Trade)
 - [Goa'uld](Goauld)
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
 - [Caste des hôtes Goa'uld](Goauld-Host-Caste)

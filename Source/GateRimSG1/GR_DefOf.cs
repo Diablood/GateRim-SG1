@@ -21,6 +21,7 @@ namespace GateRimSG1
         public static PawnKindDef SG1_GoauldSettlementJaffaGuard;
         public static PawnKindDef SG1_FreeJaffaWarrior;
         public static PawnKindDef SG1_FreeJaffaGuard;
+        public static PawnKindDef SG1_FreeJaffaTrader;
         public static PawnKindDef SG1_GoauldHostCaste;
         public static PawnKindDef SG1_GoauldSystemLordHost;
         public static PawnKindDef SG1_GoauldQueen;

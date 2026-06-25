@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.42-dev`
+> Dernière révision : `0.3.43-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -65,7 +65,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, dirigeant généré, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
-| Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé issu d'une faction mondiale Jaffa libre non hostile, sans commerce ni interaction spéciale pour le moment | 0.2.6-dev |
+| Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire et nettoyage initial des affections chroniques biologiques | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 |
@@ -93,6 +93,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre de rendu du personnage, sans gène actif, équipement ou statistique ; stockage persistant dédié par personnage | 0.1.73-dev / stockage dédié 0.1.74-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
+| Commerce des Jaffa libres | Convoi spécialisé des clans libres, colonies commerçantes, visiteurs marchands et demandes par communicateur ; ravitaillement, ressources stratégiques et matériel militaire avec budget limité | 0.3.43-dev |
 | Diagnostics avancés et actions développeur | Option persistante en lecture seule pour les rapports et traces ; commandes capables de modifier la partie réservées au mode développeur RimWorld | 0.1.75-dev / séparation 0.3.42-dev |
 | Histoires culturelles | Catalogue natif de 83 enfances et carrières SGC, Jaffa, Goa'uld, Tok'ra et humaines hors-monde, avec descriptions enrichies et bonus de compétences modérés | 0.2.4-dev / refonte 0.3.8-dev / extensions 0.3.13-dev, 0.3.16-dev, 0.3.18-dev et 0.3.19-dev |
 | Profils culturels configurables des pawns de départ | Profils XML prioritaires pour noms, backstories, restrictions et loadouts pondérés des starters, sans modifier la génération normale du monde | 0.3.9-dev / loadouts 0.3.21-dev |

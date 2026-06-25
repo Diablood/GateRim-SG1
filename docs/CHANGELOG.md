@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.43-dev - Add Free Jaffa trade network
+
+- Enable ordinary Free Jaffa trade through vanilla caravan, visitor, settlement and comms-console workflows.
+- Reuse `Caravan_Outlander_BulkGoods`, `Visitor_Outlander_Standard` and `Base_Outlander_Standard` instead of introducing a parallel trade economy.
+- Add `SG1_FreeJaffaTrader`, a dedicated culturally generated Jaffa caravan contact with a Prim'ta, Ma'Tok staff, light Jaffa armor and no imposed Goa'uld forehead mark.
+- Add a Free Jaffa `Trader` pawn-group profile with dedicated trader, Jaffa guards and vanilla pack animals.
+- Allow trader requests while keeping military aid, quest sites, natural raids, sieges and staged attacks disabled.
+- Exclude combat-supplier and exotic-goods trader kinds from this first balancing pass.
+- Preserve all existing faction, pawn, item and save-data identifiers.
+- Detect on first launch that `Caravan_Outlander_General` is not a RimWorld 1.6 `TraderKindDef`, remove the invalid reference and keep general commerce through visitor and settlement trade.
+- Prepare cumulative local revision `r2` after removing the invalid caravan trader kind.
+- Mark `SG1_FreeJaffaTrader` with the vanilla PawnKind trader flag after the forced caravan test reported that the pawn kind was present in the traders list but was not recognized as a trader.
+- Prepare cumulative local revision `r3` for functional validation on branch `feature/free-jaffa-trade-network`.
+- Validate local revision `r3`, including settlement trade, forced caravan generation, trader recognition and a functional trade window.
+- Replace the generic bulk-goods caravan with `SG1_Caravan_FreeJaffaClanSupplies` in cumulative local revision `r4`.
+- Specialize the convoy around field provisions, medicine, strategic materials, human industrial weapons, military armor and limited Jaffa equipment.
+- Allow the convoy to buy human military equipment while limiting each visit through an `850` to `1300` silver reserve.
+- Keep visitors and settlements on their vanilla profiles and defer missing economic categories to future trade-oriented factions such as the Nox.
+- Prepare cumulative local revision `r4` for stock-generation, economy and regression validation.
+- Detect on the first `r4` launch that the five public Jaffa armor pieces were still `Sellable` only, which allowed the player to sell them but prevented a trader from generating them in stock.
+- Change light armor, heavy armor, gauntlets, reinforced boots and the deployed helmet to `tradeability=All` while keeping the internal retracted helmet non-tradeable.
+- Prepare cumulative local revision `r5` for startup, stock-generation and trade validation.
+- Validate final local revision `r5`, including clean startup, specialized stock generation, military-equipment purchasing, finite merchant budget, trader identity, settlement trade, save/reload and a clean `Player.log`.
+- Publish branch `feature/free-jaffa-trade-network`, final tag `v0.3.43-dev` and the synchronized wiki.
+
 ## 0.3.42-dev - Separate advanced diagnostics from developer actions
 
 - Add `GR_Debug.DeveloperActionsEnabled` as the shared developer-only gate for commands that force or bypass gameplay state.

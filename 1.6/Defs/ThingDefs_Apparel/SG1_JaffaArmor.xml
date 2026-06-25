@@ -9,7 +9,7 @@
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <techLevel>Spacer</techLevel>
-        <tradeability>Sellable</tradeability>
+        <tradeability>All</tradeability>
         <generateCommonality>0.15</generateCommonality>
         <thingCategories Inherit="False">
             <li>SG1_JaffaApparel</li>
@@ -66,7 +66,7 @@
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <techLevel>Spacer</techLevel>
-        <tradeability>Sellable</tradeability>
+        <tradeability>All</tradeability>
         <generateCommonality>0.08</generateCommonality>
         <thingCategories Inherit="False">
             <li>SG1_JaffaApparel</li>
@@ -123,7 +123,7 @@
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <techLevel>Spacer</techLevel>
-        <tradeability>Sellable</tradeability>
+        <tradeability>All</tradeability>
         <generateCommonality>0.15</generateCommonality>
         <thingCategories Inherit="False">
             <li>SG1_JaffaApparel</li>
@@ -176,7 +176,7 @@
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <techLevel>Spacer</techLevel>
-        <tradeability>Sellable</tradeability>
+        <tradeability>All</tradeability>
         <generateCommonality>0.15</generateCommonality>
         <thingCategories Inherit="False">
             <li>SG1_JaffaApparel</li>
@@ -229,7 +229,7 @@
             <graphicClass>Graphic_Single</graphicClass>
         </graphicData>
         <techLevel>Spacer</techLevel>
-        <tradeability>Sellable</tradeability>
+        <tradeability>All</tradeability>
         <generateCommonality>0.10</generateCommonality>
         <thingCategories Inherit="False">
             <li>SG1_JaffaApparel</li>

@@ -160,6 +160,7 @@
                 <pawnKinds>
                     <li>SG1_FreeJaffaWarrior</li>
                     <li>SG1_FreeJaffaGuard</li>
+                    <li>SG1_FreeJaffaTrader</li>
                 </pawnKinds>
             </li>
             <li>

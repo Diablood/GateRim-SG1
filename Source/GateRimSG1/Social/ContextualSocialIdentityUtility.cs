@@ -29,7 +29,8 @@ namespace GateRimSG1.Social
             return JaffaPrimtaUtility.IsCompatibleJaffa(pawn)
                 && (pawn.Faction?.def == GR_DefOf.SG1_FreeJaffa
                     || pawn.kindDef == GR_DefOf.SG1_FreeJaffaWarrior
-                    || pawn.kindDef == GR_DefOf.SG1_FreeJaffaGuard);
+                    || pawn.kindDef == GR_DefOf.SG1_FreeJaffaGuard
+                    || pawn.kindDef == GR_DefOf.SG1_FreeJaffaTrader);
         }
 
         public static bool IsGoauldDomainJaffa(Pawn pawn)

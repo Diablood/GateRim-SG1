@@ -1,6 +1,36 @@
 # Roadmap
 
-## Dernier jalon clôturé — Séparation des diagnostics avancés et des actions développeur (`0.3.42-dev`)
+## Dernier jalon clôturé — Réseau commercial des Jaffa libres (`0.3.43-dev`)
+
+- [x] Repartir explicitement de `v0.3.42-dev` sur `feature/free-jaffa-trade-network`.
+- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
+- [x] Conserver les flux commerciaux vanilla plutôt que créer une monnaie ou une interface parallèle.
+- [x] Ajouter un `PawnGroupMaker` de type `Trader` avec marchand, gardes et animaux de bât.
+- [x] Ajouter un marchand Jaffa libre culturellement cohérent, armé mais visuellement distinct des gardes.
+- [x] Autoriser les demandes de marchand selon les règles vanilla.
+- [x] Maintenir désactivés l'aide militaire, les quêtes de faction, les raids naturels, les sièges et les attaques préparées.
+- [x] Retirer en `r2` la référence inexistante `Caravan_Outlander_General` révélée au premier lancement.
+- [x] Déclarer en `r3` `SG1_FreeJaffaTrader` comme PawnKind marchand après le test de caravane forcée.
+- [x] Remplacer en `r4` le grossiste vanilla par `SG1_Caravan_FreeJaffaClanSupplies`.
+- [x] Corriger en `r5` la tradeability des cinq pièces d'armure Jaffa publiques afin que le convoi puisse réellement les vendre.
+- [x] Spécialiser le convoi autour du ravitaillement, des ressources stratégiques et du matériel militaire.
+- [x] Autoriser l'achat d'armes humaines, d'armes de mêlée, d'armures et d'équipement Jaffa/Goa'uld.
+- [x] Limiter les ventes abusives par une réserve d'argent modérée plutôt que par une interdiction artificielle de l'équipement militaire.
+- [x] Conserver les visiteurs et colonies sur leurs profils vanilla pendant ce jalon.
+- [x] Documenter que les futures factions commerciales, notamment les Nox, compléteront les catégories économiques manquantes.
+- [x] Valider `check-project-consistency.cmd` et le chargement de tous les StockGenerators.
+- [x] Générer plusieurs stocks, vérifier leur variété, leur valeur, la rareté du Zat et l'absence de catégories hors thème.
+- [x] Valider l'achat d'équipement militaire au joueur et l'épuisement naturel du budget du marchand.
+- [x] Revalider colonies, visiteurs, demandes par communicateur, identité du marchand, sauvegarde/rechargement et `Player.log`.
+- [x] Clôturer la documentation, publier le tag final unique `v0.3.43-dev` et synchroniser le wiki.
+
+Le convoi Jaffa libre n'est pas conçu comme un marchand universel. Il couvre les besoins les plus cohérents avec une rébellion armée : provisions durables, soins de terrain, composants, matériaux stratégiques et équipement militaire. Les autres besoins d'un futur monde sans factions vanilla seront répartis entre les factions commerciales ajoutées ultérieurement afin de conserver des identités économiques complémentaires.
+
+La révision finale `r5` valide le chargement du profil commercial, les stocks spécialisés, le marchand culturel, l'achat d'équipement militaire, la limite naturelle par la réserve d'argent, le commerce de colonie, la sauvegarde/rechargement et un `Player.log` sans nouvelle erreur GateRim SG-1.
+
+Le jalon est publié sous le tag final unique `v0.3.43-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.44-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Jalon précédent clôturé — Séparation des diagnostics avancés et des actions développeur (`0.3.42-dev`)
 
 - [x] Partir explicitement de `v0.3.41-dev` sur `feature/debug-command-visibility-audit`.
 - [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
@@ -823,7 +853,7 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 
 ## Équipement Tau'ri / SGC
 
-- [ ] Valider et publier dans `0.3.22-dev` la casquette SG dédiée ajoutée comme option pondérée au slot de couvre-chef existant : casque, casquette ou aucun.
+- [x] Casquette SG dédiée validée et publiée dans `0.3.22-dev` comme option pondérée du slot de couvre-chef : casque, casquette ou aucun.
 - [ ] Ajouter de futures variantes de pantalons et de vestes comme contenu XML pondéré, en conservant la cohérence de variante entre les deux pièces.
 - [ ] Conserver les armes humaines vanilla comme base du scénario ; envisager uniquement des patchs de compatibilité facultatifs pour substituer des armes équivalentes provenant d'autres mods.
 
@@ -888,6 +918,7 @@ La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.m
 - [ ] Orienter sa présence vers le commerce, la diplomatie et les rencontres non militaires.
 - [ ] Conserver une tendance neutre et éviter les raids ou renforts armés ordinaires.
 - [ ] Représenter leur technologie discrète sans les transformer en simple faction tribale vanilla.
+- [ ] Lors de leur création, auditer les catégories de ressources encore absentes du commerce GateRim SG-1 et donner aux Nox un rôle complémentaire plutôt que dupliquer le convoi Jaffa libre.
 
 ### Unas
 
@@ -903,6 +934,8 @@ La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.m
 - [ ] Conserver uniquement les factions système techniquement indispensables lorsque leur suppression complète n'est pas sûre.
 - [ ] Couvrir à terme les Tau'ri / SGC, Goa'uld, Jaffa soumis, Jaffa libres, Tok'ra, Asgard, Nox, Unas et futures civilisations Stargate.
 - [ ] Vérifier raids, caravanes, commerce, quêtes, incidents, relations, génération de pawns et conditions de victoire sans factions vanilla.
+- [ ] Répartir les besoins économiques entre plusieurs factions : les Jaffa libres couvrent surtout le ravitaillement stratégique et militaire, tandis que les futures factions commerciales couvrent les catégories encore manquantes.
+- [ ] Auditer les achats et ventes disponibles après chaque nouvelle faction afin d’éviter les doublons excessifs et les impasses économiques.
 - [ ] Garder tous les contenus du mod fonctionnels dans une partie vanilla ou moddé classique : ce préréglage ne doit jamais devenir obligatoire.
 
 ## Storyteller et orchestration des événements

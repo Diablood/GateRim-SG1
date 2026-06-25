@@ -72,12 +72,21 @@ apparaître naturellement près de la colonie du joueur.
 
 Ces premiers voyageurs sont armés, mais ne sont pas hostiles ni marchands.
 
+## Commerce
+
+Depuis `0.3.43-dev`, les communautés Jaffa libres participent aussi aux flux
+commerciaux ordinaires de RimWorld : colonies visitables, visiteurs
+marchands, demandes par communicateur et convois spécialisés dans le
+ravitaillement des clans libres lorsque les relations le permettent.
+
+Le [réseau commercial Jaffa libre](Free-Jaffa-Trade) utilise un marchand Jaffa
+dédié, escorté par des guerriers et gardes Jaffa libres. Son stock se concentre sur les provisions, les ressources stratégiques et le matériel militaire, avec une réserve d'argent limitée.
+
 ## Limites actuelles
 
 Restent prévus pour plus tard :
 
 - profils civils ou diplomatiques spécialisés ;
-- caravanes commerciales ;
 - quêtes ;
 - aide militaire ;
 - réactions diplomatiques plus détaillées.
