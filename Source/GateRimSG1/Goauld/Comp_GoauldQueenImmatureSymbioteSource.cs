@@ -142,7 +142,8 @@ namespace GateRimSG1.Goauld
         private bool CanHarvestFromQueen()
         {
             return parent.Spawned
-                && (Prefs.DevMode || parent.Faction == Faction.OfPlayer);
+                && (GR_Debug.DeveloperActionsEnabled
+                    || parent.Faction == Faction.OfPlayer);
         }
     }
 }

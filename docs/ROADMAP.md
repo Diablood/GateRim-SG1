@@ -1,6 +1,30 @@
 # Roadmap
 
-## Dernier jalon clôturé — Extraction chirurgicale d’un hôte Goa’uld actif (`0.3.41-dev`)
+## Dernier jalon clôturé — Séparation des diagnostics avancés et des actions développeur (`0.3.42-dev`)
+
+- [x] Partir explicitement de `v0.3.41-dev` sur `feature/debug-command-visibility-audit`.
+- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
+- [x] Auditer les gizmos contextuels, commandes de mission, actions de symbiote et entrées de réglages.
+- [x] Distinguer dans `GR_Debug` les diagnostics avancés des actions capables de modifier l'état de la partie.
+- [x] Conserver l'option avancée pour les rapports, inspections techniques et traces détaillées.
+- [x] Réserver au mode développeur le menu de forçage des opérations organiques depuis le communicateur.
+- [x] Réserver au mode développeur le gizmo direct redondant du site de relais Goa'uld.
+- [x] Conserver toutes les commandes joueur réellement contextuelles sous leurs règles existantes.
+- [x] Mettre à jour les textes anglais/français des réglages et la documentation de debug.
+- [x] Valider sur `r1` `check-project-consistency.cmd`, le build `0.3.42.0` et la matrice des trois modes de visibilité.
+- [x] Vérifier sur `r1` les régressions joueur, sauvegarde/rechargement et `Player.log`.
+- [x] Masquer dans le menu contextuel les futures demandes Tok'ra tant que le palier fiable n'est pas atteint.
+- [x] Conserver après déblocage les motifs gris liés au colon, à l'alimentation, au contexte et aux délais.
+- [x] Valider sur `r2` la découverte progressive du menu selon la confiance et sa persistance après sauvegarde/rechargement.
+- [x] Clôturer la documentation, publier le tag final unique `v0.3.42-dev` et synchroniser le wiki.
+
+La révision `r1` sépare la lecture technique des commandes de test. L'option avancée GateRim SG-1 aide au diagnostic sans devenir un second mode développeur ; toute commande qui force une offre, saute une étape, déclenche une extraction instantanée ou modifie artificiellement une mission exige désormais le mode développeur RimWorld.
+
+La révision finale `r2` applique la même discrétion à la progression joueur : avant le palier fiable, le menu contextuel du communicateur ne révèle plus les futurs soutiens Tok'ra par des lignes grisées. Après déblocage, les motifs immédiats liés au colon, à l'alimentation, au délai, à la menace ou au patient restent visibles et utiles.
+
+Le jalon est publié sous le tag final unique `v0.3.42-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.43-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Jalon précédent clôturé — Extraction chirurgicale d’un hôte Goa’uld actif (`0.3.41-dev`)
 
 - [x] Partir explicitement de `v0.3.40-dev` sur `feature/goauld-active-host-extraction-surgery`.
 - [x] Conserver l’extraction d’urgence existante pendant la fenêtre d’implantation récente.

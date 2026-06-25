@@ -35,6 +35,23 @@ l'absence de colon malade admissible ou un palier de confiance insuffisant.
 Le mode développeur de RimWorld active automatiquement les diagnostics
 avancés, même si l'option du mod est désactivée.
 
+## Limite entre diagnostic et action développeur
+
+Depuis `0.3.42-dev`, cette option reste strictement informative. Elle peut afficher des rapports, des identifiants persistants, des compteurs bruts et des traces détaillées, mais elle ne donne jamais accès aux commandes qui forcent ou contournent une étape de gameplay.
+
+Le mode développeur RimWorld est nécessaire pour :
+
+- forcer, faire progresser, réussir, échouer ou réinitialiser une opération ;
+- déclencher une extraction instantanée de test ;
+- imposer une implantation ou modifier artificiellement la chasse autonome ;
+- utiliser un gizmo de secours redondant lorsqu'une interaction joueur normale existe déjà.
+
+Les véritables actions joueur restent inchangées et continuent de dépendre de leur contexte normal : contrôle de l'objet ou du pawn, offre active, faction, caravane présente ou conditions de mission.
+
+## Progression joueur
+
+La séparation du debug ne doit pas révéler la progression future. Depuis `0.3.42-dev`, le menu contextuel du communicateur Tok'ra masque entièrement les demandes réservées au palier fiable tant que celui-ci n'est pas atteint. Après déblocage, les raisons contextuelles immédiates restent visibles sous forme d'options grisées.
+
 ## Avertissements et erreurs
 
 Les avertissements et erreurs restent toujours écrits dans `Player.log`.

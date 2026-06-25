@@ -147,7 +147,7 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
-            bool developerCommandsVisible = Prefs.DevMode;
+            bool developerCommandsVisible = GR_Debug.DeveloperActionsEnabled;
             bool trackedTokraOffer
                 = GameComponent_TokraTherapeuticOpportunityTracker
                     .IsTrackedOffer(symbiote);

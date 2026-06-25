@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.42-dev - Separate advanced diagnostics from developer actions
+
+- Add `GR_Debug.DeveloperActionsEnabled` as the shared developer-only gate for commands that force or bypass gameplay state.
+- Keep the existing advanced GateRim SG-1 option for read-only inspection details, reports, settings diagnostics and lifecycle traces.
+- Hide the Tok'ra communicator's organic-operation force/progress/reset menu unless RimWorld developer mode is active.
+- Add a defensive permission check inside the communicator debug-menu method.
+- Restrict the decoded Goa'uld relay's duplicate direct launch gizmo to developer mode while preserving the normal caravan right-click flow.
+- Route forced implantation, autonomous-hunt control, instant emergency extraction and unrestricted queen testing through the shared developer-action rule without changing legitimate player conditions.
+- Clarify the English/French settings text and update the debug, mission-site and player-wiki documentation.
+- Validate local revision `r1`, including the build, consistency checks, three-mode visibility matrix, ordinary player interactions, save/reload and `Player.log`.
+- Hide trusted-tier communicator requests from the pawn right-click menu until Tok'ra trust actually reaches the trusted tier, preventing future support options from being spoiled.
+- Preserve visible disabled reasons for pawn capability, reachability, reservation, power, cooldown, threat and patient conditions after the trusted tier is unlocked.
+- Keep channel status and any currently active organic-operation interaction visible below the trusted tier.
+- Validate final local revision `r2`, including progressive discovery below and at the trusted tier, contextual disabled reasons after unlock, trust transitions, save/reload and a clean `Player.log`.
+- Publish branch `feature/debug-command-visibility-audit`, final tag `v0.3.42-dev` and the synchronized wiki.
+
 ## 0.3.41-dev - Add active Goa'uld host extraction surgery
 
 - Add `SG1_ExtractActiveGoauldSymbiote`, a difficult medical operation for an established Goa'uld host.

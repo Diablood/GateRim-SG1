@@ -99,7 +99,7 @@ namespace GateRimSG1.Goauld
                 yield return gizmo;
             }
 
-            if (!GR_Debug.ShowAdvancedInformation)
+            if (!GR_Debug.DeveloperActionsEnabled)
             {
                 yield break;
             }

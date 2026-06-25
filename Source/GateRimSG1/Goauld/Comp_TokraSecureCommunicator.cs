@@ -224,16 +224,19 @@ namespace GateRimSG1.Goauld
 
             yield return medicalCacheCommand;
 
-            Command_Action organicOperationDebugCommand = new Command_Action
+            if (GR_Debug.DeveloperActionsEnabled)
             {
-                defaultLabel = "GR_TokraOrganicOperation_DebugMenuLabel"
-                    .Translate(),
-                defaultDesc = "GR_TokraOrganicOperation_DebugMenuDesc"
-                    .Translate(),
-                action = OpenOrganicOperationDebugMenu
-            };
+                Command_Action organicOperationDebugCommand = new Command_Action
+                {
+                    defaultLabel = "GR_TokraOrganicOperation_DebugMenuLabel"
+                        .Translate(),
+                    defaultDesc = "GR_TokraOrganicOperation_DebugMenuDesc"
+                        .Translate(),
+                    action = OpenOrganicOperationDebugMenu
+                };
 
-            yield return organicOperationDebugCommand;
+                yield return organicOperationDebugCommand;
+            }
         }
 
 
@@ -342,6 +345,11 @@ namespace GateRimSG1.Goauld
             string label,
             TokraCommunicatorOperation operation)
         {
+            if (IsHiddenByTrustRequirement(operation))
+            {
+                yield break;
+            }
+
             string disabledReason = GetPawnOperationDisabledReason(
                 selPawn,
                 operation);
@@ -1110,6 +1118,19 @@ namespace GateRimSG1.Goauld
             }
 
             return GetFloatMenuDisabledReasonForOperation(operation);
+        }
+
+        private static bool IsHiddenByTrustRequirement(
+            TokraCommunicatorOperation operation)
+        {
+            if (GameComponent_TokraTrustTracker.GetCurrentTier()
+                == TokraTrustTier.Trusted)
+            {
+                return false;
+            }
+
+            return operation != TokraCommunicatorOperation.StatusReport
+                && operation != TokraCommunicatorOperation.OrganicObservation;
         }
 
         private string GetFloatMenuDisabledReasonForOperation(
@@ -2646,6 +2667,11 @@ namespace GateRimSG1.Goauld
 
         private void OpenOrganicOperationDebugMenu()
         {
+            if (!GR_Debug.DeveloperActionsEnabled)
+            {
+                return;
+            }
+
             Map map = parent.Map;
             List<FloatMenuOption> options = new List<FloatMenuOption>
             {

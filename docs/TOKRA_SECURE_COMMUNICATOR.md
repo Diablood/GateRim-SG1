@@ -173,3 +173,9 @@ Expected sequence:
 - powered communicator restored: the gate clears and a new future opportunity tick is scheduled;
 - forced natural roll after restoration: exactly one normal weighted offer is created;
 - power loss with an existing offer or active operation: the same slot remains intact.
+
+## 0.3.42-dev trusted-request visibility
+
+The selected-colonist right-click menu now follows progressive discovery. Below the trusted tier, it does not reveal the names of future trusted support requests through disabled `insufficient trust` entries. The status consultation and any organic-operation interaction already active for the player remain visible.
+
+When the trusted tier is reached, the support requests appear and continue to explain current contextual failures through disabled reasons, including operator capability, access, reservation, power, cooldown, missing threat and missing patient. Execution-time trust validation remains in place as a defensive check.

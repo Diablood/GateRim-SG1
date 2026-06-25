@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_Settings_ShowAdvancedDebugInformation_Label>Show advanced GateRim SG-1 debug information</GR_Settings_ShowAdvancedDebugInformation_Label>
-    <GR_Settings_ShowAdvancedDebugInformation_Desc>Expose technical prototype diagnostics such as persistent symbiote IDs, raw cooldown ticks and detailed lifecycle traces in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
-    <GR_Settings_ShowAdvancedDebugInformation_Note>RimWorld developer mode always exposes advanced GateRim SG-1 diagnostics, regardless of this setting. Warnings and errors always remain visible in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
+    <GR_Settings_ShowAdvancedDebugInformation_Desc>Expose read-only technical diagnostics such as persistent symbiote IDs, raw cooldown ticks and detailed lifecycle traces in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
+    <GR_Settings_ShowAdvancedDebugInformation_Note>RimWorld developer mode always exposes advanced GateRim SG-1 diagnostics. Commands that force or bypass gameplay state still require developer mode. Warnings and errors always remain visible in Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
     <GR_CulturalNames_SettingsDebugLabel>Cultural pawn-name generator diagnostics</GR_CulturalNames_SettingsDebugLabel>
     <GR_CulturalNames_OpenSamplesButton>Open cultural name samples</GR_CulturalNames_OpenSamplesButton>
     <GR_CulturalNames_SampleReportTitle>GateRim SG-1 cultural name samples</GR_CulturalNames_SampleReportTitle>

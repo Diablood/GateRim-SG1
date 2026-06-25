@@ -19,7 +19,7 @@ namespace GateRimSG1.Goauld
             if (host == null
                 || !host.Spawned
                 || host.Dead
-                || !Prefs.DevMode)
+                || !GR_Debug.DeveloperActionsEnabled)
             {
                 yield break;
             }

@@ -7,7 +7,7 @@ This milestone gives the first revealed Tok'ra mission world site a light, carav
 ## Player-facing behavior
 
 - A player caravan can reconnoiter the revealed isolated Goa'uld relay when present on the site tile.
-- The normal player-facing action is available from the caravan right-click menu on the world map. The direct site command is kept only for developer mode or the GateRim SG-1 advanced debug option.
+- The normal player-facing action is available from the caravan right-click menu on the world map. The duplicate direct-site fallback command is restricted to RimWorld developer mode; the GateRim advanced option remains diagnostic only.
 - Reconnaissance opens an RP letter confirming Goa'uld/Jaffa activity.
 - The Tok'ra secure communicator status report records that the site has been reconnoitered.
 

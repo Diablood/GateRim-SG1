@@ -26,11 +26,17 @@ cooldown de diversion conservé
 pas de commerce, recrutement, quête ou récompense matérielle
 ```
 
-## Gizmos de debug
+## Diagnostics et commandes développeur
 
 ```text
 les boutons directs du bâtiment sont masqués en jeu normal
-ils restent visibles seulement avec le mode développeur RimWorld
-ou l’option de debug avancé GateRim SG-1 active
+l’option avancée GateRim SG-1 conserve uniquement les informations de diagnostic
+les commandes qui forcent ou contournent le gameplay exigent le mode développeur RimWorld
 l’utilisation joueur passe par un colon sélectionné + clic droit
 ```
+
+## Découverte progressive depuis `0.3.42-dev`
+
+Avant que la relation Tok'ra atteigne le palier fiable, le menu obtenu par clic droit ne liste plus les futures demandes fiables sous forme d'options grisées. La consultation de l'état du canal reste visible, ainsi que l'interaction liée à une opération organique déjà proposée ou active.
+
+Une fois le palier fiable atteint, les demandes apparaissent normalement. Les restrictions immédiates liées au colon, à l'accès, à la réservation, à l'alimentation, au délai, à l'absence de menace ou de patient restent visibles sous forme de motifs gris.

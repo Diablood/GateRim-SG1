@@ -101,3 +101,9 @@ transmis automatiquement.
 ## Affichage en jeu normal
 
 Le panneau d'inspection reste volontairement compact. Il affiche uniquement l'état du canal, l'opération organique actuellement en cours et, lorsqu'elle existe, l'issue durable d'une mission unique achevée. Les demandes verrouillées, délais internes, pondérations, historiques et diagnostics complets sont réservés au mode développeur ou à l'option de debug avancé GateRim SG-1.
+
+## Découverte progressive depuis `0.3.42-dev`
+
+Le menu obtenu par clic droit avec un colon sélectionné suit désormais une découverte progressive. Sous le palier fiable, il ne révèle pas les noms des futurs soutiens Tok'ra par des options grisées pour confiance insuffisante. La consultation de l'état du canal et toute interaction d'opération organique déjà active restent visibles.
+
+Lorsque le palier fiable est atteint, les demandes de soutien apparaissent et continuent d'expliquer les échecs contextuels immédiats : capacité de l'opérateur, accès, réservation, alimentation, délai, absence de menace ou de patient. La confiance est toujours vérifiée au moment de l'exécution comme sécurité supplémentaire.

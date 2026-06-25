@@ -1,55 +1,56 @@
-# Validation terminée — 0.3.41-dev
+# Validation finale — 0.3.42-dev
 
-Jalon : `0.3.41-dev - Add active Goa'uld host extraction surgery`
+Jalon : `0.3.42-dev - Separate advanced diagnostics from developer actions`
 
-Branche : `feature/goauld-active-host-extraction-surgery`
+Branche publiée : `feature/debug-command-visibility-audit`
 
-Tag de départ : `v0.3.40-dev`
+Tag de départ : `v0.3.41-dev`
 
-Version de DLL validée : `0.3.41.0`
+Tag final : `v0.3.42-dev`
+
+Version de DLL validée : `0.3.42.0`
 
 Révision locale finale : `r2`
 
-## Validation fonctionnelle
+## Validation acquise sur `r1`
 
-- [x] Contrôle de cohérence `0.3.41-dev` / `83` backstories.
-- [x] Build et chargement de `GateRimSG1.dll` version `0.3.41.0`.
-- [x] Conversion hostile, mise à terre et capture de l'ancien colon.
-- [x] Maintien en détention sans réassignation au groupe d'assaut.
-- [x] Disponibilité et réussite de `extraire le symbiote Goa'uld actif`.
-- [x] Restauration du même pawn, de sa faction et de son nom complet d'origine.
-- [x] Conservation de l'identité, du nom et de l'allégeance du symbiote.
-- [x] Apparition d'un seul symbiote libre sous anesthésie vanilla temporaire.
-- [x] Réveil du symbiote et reprise de son comportement hostile normal.
-- [x] Échec chirurgical non létal sans duplication ni suppression de l'état actif.
-- [x] Sauvegarde/rechargement pendant la prise de contrôle et après extraction.
-- [x] Régressions Tok'ra, implantation récente et symbiote joueur fonctionnelles.
+- [x] `git diff --check` et `check-project-consistency.cmd` validés.
+- [x] Build local de `GateRimSG1.dll` version `0.3.42.0` validé.
+- [x] Matrice jeu normal / option avancée / mode développeur validée.
+- [x] Les rapports avancés restent informatifs et les commandes modifiant la partie restent réservées au mode développeur.
+- [x] Les interactions joueur normales, la sauvegarde/rechargement et `Player.log` ne présentent pas de régression.
 
-## Validation ciblée finale de `r2`
+## Validation finale `r2` — découverte progressive du menu du communicateur
 
-- [x] L'option avancée GateRim SG-1 n'expose plus l'extraction instantanée hors mode développeur RimWorld.
-- [x] Un symbiote Goa'uld hostile sélectionné n'expose plus `Implantation forcée`, `Implantation rituelle` ou `Chasse autonome` en jeu normal.
-- [x] Le mode développeur restaure les commandes techniques attendues.
-- [x] Un symbiote réellement contrôlé par le joueur conserve le rite autorisé.
-- [x] Une offre thérapeutique Tok'ra suivie conserve ses interactions volontaires et son refus explicite.
-- [x] Après la prise de contrôle active, le pawn existant affiche le nom persistant du symbiote.
-- [x] La lettre distingue encore l'ancien nom de l'hôte du nom du Goa'uld.
-- [x] Le nom du symbiote reste affiché après sauvegarde/rechargement sans changement du ThingID du pawn.
-- [x] Une extraction réussie restaure exactement le nom d'origine sur le même pawn.
-- [x] Le symbiote libre extrait conserve son propre nom persistant.
-- [x] Aucun nouvel échec GateRim SG-1 n'est signalé dans `Player.log`.
+### Confiance inférieure au palier fiable
 
-## Limites validées
+- [x] L'action de consultation de l'état du canal reste visible avec un communicateur alimenté.
+- [x] Une interaction liée à une opération organique déjà proposée ou active reste visible lorsqu'elle existe.
+- [x] Les demandes réservées au palier fiable sont totalement absentes : ouverture du canal, mission discrète, diversion, évaluation tactique, soutien médical et cache médicale.
+- [x] Aucune ligne grisée `Confiance Tok'ra insuffisante` ne révèle ces futures actions.
 
-- L'extraction ne tue pas automatiquement le symbiote.
-- L'anesthésie offre une fenêtre de sécurité, mais le Goa'uld redevient dangereux à son réveil.
-- Aucun système de confinement, de remise aux Tok'ra, d'interrogatoire ou d'étude n'est ajouté dans ce jalon.
-- La piste d'un confinement dédié est conservée dans `docs/IDEAS_TO_REVISIT.md` comme idée non planifiée, sans créer de futur jalon.
+### Palier fiable atteint
 
-## Publication
+- [x] Les demandes réservées au palier fiable apparaissent dans le menu contextuel.
+- [x] Un communicateur non alimenté conserve les actions visibles mais grisées avec la raison d'alimentation.
+- [x] Une absence de menace, de patient ou un délai actif conserve l'action concernée visible et grisée avec sa raison normale.
+- [x] Les restrictions propres au colon sélectionné, notamment capacité, accès ou réservation, restent visibles et grisées au lieu de masquer l'action.
+- [x] Une action disponible crée toujours le job habituel et ne se déclenche pas instantanément.
 
-- [x] Verrou documentaire final appliqué.
-- [x] Commit final : `0.3.41-dev - add active Goa'uld host extraction surgery`.
-- [x] Branche publiée : `feature/goauld-active-host-extraction-surgery`.
-- [x] Tag final unique publié : `v0.3.41-dev`.
-- [x] Wiki séparé synchronisé, car des fichiers `docs/wiki/*.md` sont modifiés.
+### Retour sous le palier fiable et persistance
+
+- [x] Lorsque la confiance repasse sous le palier fiable, les demandes sensibles disparaissent du prochain menu contextuel.
+- [x] La sauvegarde et le rechargement conservent une visibilité cohérente dans les deux états de confiance.
+- [x] La simple ouverture du menu ne modifie aucune mission, opération, confiance ou donnée persistante.
+- [x] `Player.log` ne contient aucune nouvelle erreur GateRim SG-1.
+
+## Résultat final
+
+La révision `r2` est validée. Le jalon est clôturé et publié sous le tag final unique `v0.3.42-dev`. Le dépôt principal et le wiki séparé sont synchronisés.
+
+## Limites conservées
+
+- L'option avancée reste un outil de diagnostic en lecture seule.
+- Les commandes qui modifient artificiellement la partie exigent le mode développeur RimWorld.
+- Les actions joueur normales conservent leurs règles existantes.
+- Aucun identifiant de sauvegarde, Def, équilibrage ou format persistant n'a été modifié.

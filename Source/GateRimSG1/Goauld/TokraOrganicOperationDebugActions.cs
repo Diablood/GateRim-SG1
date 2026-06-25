@@ -5,9 +5,9 @@ namespace GateRimSG1.Goauld
 {
     /// <summary>
     /// Shared debug surface for every organic Tok'ra operation worker.
-    /// These actions are visible only through RimWorld developer tools.
-    /// Equivalent diagnostics are exposed on the communicator when the
-    /// GateRim SG-1 advanced-debug option is enabled.
+    /// These state-changing actions are visible only through RimWorld
+    /// developer tools. The advanced GateRim SG-1 option exposes reports and
+    /// technical state, but never grants these commands.
     /// </summary>
     public static class TokraOrganicOperationDebugActions
     {

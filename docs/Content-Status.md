@@ -1,6 +1,6 @@
 # État du contenu
 
-Jalon de développement actuel : `0.3.41-dev - Add active Goa'uld host extraction surgery`. Un hôte Goa'uld déjà actif peut désormais être neutralisé, capturé puis soumis à une chirurgie risquée qui restaure le pawn existant et extrait le même symbiote vivant.
+Dernier jalon validé : `0.3.42-dev - Separate advanced diagnostics from developer actions`. L'option avancée du mod reste dédiée aux rapports, états techniques et traces, tandis que toute commande de test capable de modifier la partie exige le mode développeur RimWorld. Le menu du communicateur masque aussi les soutiens Tok'ra fiables tant que ce palier n'est pas réellement atteint.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -89,7 +89,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre de rendu du personnage, sans gène actif, équipement ou statistique ; stockage persistant dédié par personnage | 0.1.73-dev / stockage dédié 0.1.74-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
-| Réglages de debug avancés | Option persistante masquant les informations techniques et les logs informatifs de routine hors mode développeur | 0.1.75-dev |
+| Diagnostics avancés et actions développeur | Option persistante en lecture seule pour les rapports et traces ; commandes capables de modifier la partie réservées au mode développeur RimWorld | 0.1.75-dev / séparation 0.3.42-dev |
 
 ## Prévu
 

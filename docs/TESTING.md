@@ -1,5 +1,29 @@
 # Testing checklist
 
+## 0.3.42-dev - Advanced diagnostics and developer-action separation
+
+Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.42-dev`.
+
+Couverture durable :
+
+- vérifier en jeu normal que les rapports techniques et toutes les commandes de test restent absents ;
+- activer uniquement l'option avancée GateRim SG-1 et confirmer que les rapports, identifiants, états techniques et traces réapparaissent sans exposer de commande qui force, termine, échoue, réinitialise ou contourne le gameplay ;
+- activer le mode développeur RimWorld et confirmer que les commandes techniques prévues réapparaissent, notamment le menu de forçage des opérations Tok'ra, le gizmo de secours du relais, l'implantation forcée, la chasse autonome, l'extraction instantanée et les tests non restreints sur la reine ;
+- conserver le flux joueur normal du relais par clic droit de caravane et toutes les interactions légitimes liées à une offre, une faction, un pawn contrôlé ou un objet réellement disponible ;
+- sous le palier Tok'ra `Trusted`, ne jamais révéler dans le menu contextuel les noms des futures demandes fiables par des options grisées ;
+- conserver sous ce palier la consultation de l'état du canal et l'interaction d'une opération organique déjà proposée ou active ;
+- au palier fiable, afficher les demandes débloquées et conserver les motifs gris immédiats liés au colon, à l'accès, à la réservation, à l'alimentation, au délai, à la menace ou au patient ;
+- lorsque la confiance repasse sous le palier fiable, masquer de nouveau les demandes sensibles dès la prochaine ouverture du menu ;
+- sauvegarder et recharger dans les deux états de confiance, puis vérifier que la visibilité reste cohérente et que l'ouverture du menu ne modifie aucune donnée persistante ;
+- inspecter `Player.log` après chaque combinaison de visibilité.
+
+Limites durables :
+
+- `GR_Debug.ShowAdvancedInformation` reste en lecture seule ;
+- toute nouvelle commande qui modifie artificiellement un état de partie doit utiliser `GR_Debug.DeveloperActionsEnabled` ou une protection développeur équivalente côté affichage et côté exécution ;
+- un menu joueur ne doit pas devenir un catalogue de déblocages futurs ;
+- une action déjà débloquée doit expliquer ses restrictions contextuelles plutôt que disparaître sans raison.
+
 ## 0.3.41-dev - Active Goa'uld host extraction surgery
 
 Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.41-dev`.

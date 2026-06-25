@@ -136,3 +136,32 @@ Inspect mission definitions
 The Goa'uld branch is developer-only, keeps scaling diagnostics inside its
 submenu and does not expose storyteller points or incident eligibility in
 normal play.
+
+## Diagnostic versus action boundary (`0.3.42-dev`)
+
+The advanced GateRim SG-1 option is now explicitly read-only. It may expose:
+
+- persistent IDs and raw counters;
+- detailed inspection strings and status reports;
+- sample or identity reports from the settings page;
+- routine lifecycle traces in `Player.log`.
+
+It must not expose commands that force, complete, fail, reset or bypass gameplay state. Those commands use `GR_Debug.DeveloperActionsEnabled`, which is true only while RimWorld developer mode is active.
+
+The published audit closes two remaining leaks:
+
+- the Tok'ra communicator's organic-operation force/progress/reset menu;
+- the duplicate direct launch gizmo on the decoded Goa'uld relay world site.
+
+The ordinary caravan right-click route for the relay remains available, and all contextual player commands keep their existing ownership, faction and mission checks.
+
+## Player-facing unlock visibility (`0.3.42-dev`)
+
+Developer diagnostics and player-facing progression are separate concerns. The pawn right-click menu must not reveal trusted-tier Tok'ra support before the colony has earned that tier.
+
+While trust is below `Trusted`, the communicator therefore exposes only:
+
+- the read-only channel status consultation;
+- an interaction for an organic operation that is already genuinely proposed or active.
+
+The future trusted requests are omitted entirely rather than displayed with an `insufficient trust` reason. Once the trusted tier is reached, ordinary contextual failures remain visible as disabled options: pawn capability, reachability, reservation, missing power, cooldown, missing threat or missing patient. This keeps useful immediate feedback without turning the menu into a catalogue of future unlocks.

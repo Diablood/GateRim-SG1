@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.41-dev`
+> Dernière révision : `0.3.42-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -93,7 +93,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre de rendu du personnage, sans gène actif, équipement ou statistique ; stockage persistant dédié par personnage | 0.1.73-dev / stockage dédié 0.1.74-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
-| Réglages de debug avancés | Option persistante masquant les informations techniques et les logs informatifs de routine hors mode développeur | 0.1.75-dev |
+| Diagnostics avancés et actions développeur | Option persistante en lecture seule pour les rapports et traces ; commandes capables de modifier la partie réservées au mode développeur RimWorld | 0.1.75-dev / séparation 0.3.42-dev |
 | Histoires culturelles | Catalogue natif de 83 enfances et carrières SGC, Jaffa, Goa'uld, Tok'ra et humaines hors-monde, avec descriptions enrichies et bonus de compétences modérés | 0.2.4-dev / refonte 0.3.8-dev / extensions 0.3.13-dev, 0.3.16-dev, 0.3.18-dev et 0.3.19-dev |
 | Profils culturels configurables des pawns de départ | Profils XML prioritaires pour noms, backstories, restrictions et loadouts pondérés des starters, sans modifier la génération normale du monde | 0.3.9-dev / loadouts 0.3.21-dev |
 | Double identité Tok'ra contrôlée par le joueur | Conservation séparée de l'hôte et du symbiote, basculement de personnalité, progression de compétences commune, caravanes, sauvegarde, extraction, mort et résurrection | 0.3.10-dev à 0.3.14-dev |

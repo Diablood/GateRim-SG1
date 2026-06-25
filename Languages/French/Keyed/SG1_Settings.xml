@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <GR_Settings_ShowAdvancedDebugInformation_Label>Afficher les informations de debug avancées de GateRim SG-1</GR_Settings_ShowAdvancedDebugInformation_Label>
-    <GR_Settings_ShowAdvancedDebugInformation_Desc>Affiche les diagnostics techniques des prototypes, notamment les identifiants persistants des symbiotes, les délais bruts en ticks et les traces détaillées du cycle de vie dans Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
-    <GR_Settings_ShowAdvancedDebugInformation_Note>Le mode développeur de RimWorld affiche toujours les diagnostics avancés de GateRim SG-1, indépendamment de cette option. Les avertissements et erreurs restent toujours visibles dans Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
+    <GR_Settings_ShowAdvancedDebugInformation_Desc>Affiche des diagnostics techniques en lecture seule, notamment les identifiants persistants des symbiotes, les délais bruts en ticks et les traces détaillées du cycle de vie dans Player.log.</GR_Settings_ShowAdvancedDebugInformation_Desc>
+    <GR_Settings_ShowAdvancedDebugInformation_Note>Le mode développeur de RimWorld affiche toujours les diagnostics avancés de GateRim SG-1. Les commandes qui forcent ou contournent le gameplay exigent toujours ce mode. Les avertissements et erreurs restent visibles dans Player.log.</GR_Settings_ShowAdvancedDebugInformation_Note>
     <GR_CulturalNames_SettingsDebugLabel>Diagnostic des générateurs de noms culturels</GR_CulturalNames_SettingsDebugLabel>
     <GR_CulturalNames_OpenSamplesButton>Ouvrir des exemples de noms culturels</GR_CulturalNames_OpenSamplesButton>
     <GR_CulturalNames_SampleReportTitle>Exemples de noms culturels GateRim SG-1</GR_CulturalNames_SampleReportTitle>

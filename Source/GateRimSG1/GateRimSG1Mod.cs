@@ -90,10 +90,13 @@ namespace GateRimSG1
     }
 
     /// <summary>
-    /// Shared visibility rule for technical diagnostics.
+    /// Shared visibility rules for technical diagnostics and developer-only
+    /// state-changing actions.
     ///
     /// RimWorld developer mode always exposes diagnostics. Normal players can
-    /// opt in explicitly from the GateRim SG-1 mod-settings page.
+    /// opt in to read-only technical information from the GateRim SG-1
+    /// settings page, but that option never grants commands that force or
+    /// bypass gameplay state.
     /// </summary>
     public static class GR_Debug
     {
@@ -106,5 +109,7 @@ namespace GateRimSG1
                         ?.showAdvancedDebugInformation == true;
             }
         }
+
+        public static bool DeveloperActionsEnabled => Prefs.DevMode;
     }
 }
