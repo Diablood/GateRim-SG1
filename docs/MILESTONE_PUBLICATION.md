@@ -255,6 +255,7 @@ nothing to commit, working tree clean
 - mettre à jour `docs/PROJECT_STATE.md` ;
 - intégrer les tests durables dans `docs/TESTING.md` ;
 - mettre à jour cette procédure lorsqu’une amélioration durable est découverte ;
+- inscrire les travaux réellement décidés dans `docs/ROADMAP.md`, mais conserver les pistes encore exploratoires dans `docs/IDEAS_TO_REVISIT.md` sans les présenter comme des jalons futurs avant décision explicite ;
 - attendre la validation locale avant commit, tag, push et publication du wiki ;
 - proposer un commit court au format `<version> - <description>` ;
 - proposer un tag Git annoté préfixé par `v`.

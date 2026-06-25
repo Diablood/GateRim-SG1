@@ -16,8 +16,18 @@ namespace GateRimSG1.Goauld
             if (host == null
                 || host.Dead
                 || !host.Spawned
-                || host.Map == null
-                || host.Faction == null
+                || host.Map == null)
+            {
+                return false;
+            }
+
+            if (host.IsPrisonerOfColony)
+            {
+                ReleaseAssaultBehavior(host);
+                return false;
+            }
+
+            if (host.Faction == null
                 || host.Faction == Faction.OfPlayer
                 || !host.Faction.HostileTo(Faction.OfPlayer))
             {
@@ -70,8 +80,8 @@ namespace GateRimSG1.Goauld
             host.jobs?.StopAll();
 
             GR_Log.Message(
-                $"Released restored host {host.LabelShort} "
-                + $"({host.ThingID}) from the Goa'uld takeover assault.");
+                $"Released Goa'uld-controlled host {host.LabelShort} "
+                + $"({host.ThingID}) from the takeover assault.");
         }
     }
 }

@@ -167,7 +167,9 @@ namespace GateRimSG1.Goauld
             Find.LetterStack?.ReceiveLetter(
                 "GR_GoauldHostTakeover_LetterLabel".Translate(),
                 "GR_GoauldHostTakeover_LetterText".Translate(
-                    host.LabelShortCap,
+                    symbioteData.HostName.NullOrEmpty()
+                        ? host.LabelShortCap
+                        : symbioteData.HostName,
                     symbioteData.SymbioteName,
                     factionName),
                 LetterDefOf.ThreatBig,

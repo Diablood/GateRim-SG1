@@ -48,3 +48,7 @@ rapides et choisit le premier humanoïde adjacent compatible.
 
 Les futurs Unas et leurs règles biologiques particulières ne sont pas encore
 gérés.
+
+## Commande de test
+
+La commande adjacente `Implantation forcée` est désormais réservée au mode développeur RimWorld. Sélectionner un symbiote hostile en jeu normal ne permet pas de choisir directement sa victime : il utilise sa chasse autonome et tente l'implantation au contact.

@@ -147,21 +147,30 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
+            bool developerCommandsVisible = Prefs.DevMode;
+            bool trackedTokraOffer
+                = GameComponent_TokraTherapeuticOpportunityTracker
+                    .IsTrackedOffer(symbiote);
+            bool playerControlledSymbiote
+                = IsPlayerControlledSymbiote(symbiote);
+
             if (RitualInProgress)
             {
-                yield return new Command_Action
+                if (developerCommandsVisible || playerControlledSymbiote)
                 {
-                    defaultLabel = "GR_RitualCeremony_CancelCommandLabel".Translate(),
-                    defaultDesc = "GR_RitualCeremony_CancelCommandDescription".Translate(),
-                    icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
-                    action = CancelRitualCeremonyManually
-                };
+                    yield return new Command_Action
+                    {
+                        defaultLabel = "GR_RitualCeremony_CancelCommandLabel".Translate(),
+                        defaultDesc = "GR_RitualCeremony_CancelCommandDescription".Translate(),
+                        icon = ContentFinder<Texture2D>.Get("UI/Commands/SG1_RitualImplantation"),
+                        action = CancelRitualCeremonyManually
+                    };
+                }
 
                 yield break;
             }
 
-            if (GameComponent_TokraTherapeuticOpportunityTracker
-                .IsTrackedOffer(symbiote))
+            if (trackedTokraOffer)
             {
                 yield return new Command_Action
                 {
@@ -174,7 +183,10 @@ namespace GateRimSG1.Goauld
                 };
             }
 
-            if (Props.allowForcedImplantation)
+            // The adjacent forced-implantation command is a deterministic
+            // regression tool. Hostile or merely selectable symbiotes must
+            // never grant this authority to a normal player.
+            if (developerCommandsVisible && Props.allowForcedImplantation)
             {
                 yield return new Command_Action
                 {
@@ -185,7 +197,8 @@ namespace GateRimSG1.Goauld
                 };
             }
 
-            if (Props.allowRitualImplantation)
+            if (Props.allowRitualImplantation
+                && (developerCommandsVisible || playerControlledSymbiote))
             {
                 yield return new Command_Action
                 {
@@ -196,7 +209,10 @@ namespace GateRimSG1.Goauld
                 };
             }
 
-            if (Props.allowVoluntaryImplantation)
+            if (Props.allowVoluntaryImplantation
+                && (developerCommandsVisible
+                    || playerControlledSymbiote
+                    || trackedTokraOffer))
             {
                 yield return new Command_Action
                 {
@@ -215,7 +231,9 @@ namespace GateRimSG1.Goauld
                 };
             }
 
-            if (Props.allowAutonomousHuntToggle)
+            // Toggling autonomous hunting is a technical test control, not a
+            // normal command over a free hostile creature.
+            if (developerCommandsVisible && Props.allowAutonomousHuntToggle)
             {
                 yield return new Command_Toggle
                 {
@@ -1395,6 +1413,14 @@ namespace GateRimSG1.Goauld
             int deltaZ = Math.Abs(first.Position.z - second.Position.z);
 
             return deltaX <= 1 && deltaZ <= 1;
+        }
+
+        private static bool IsPlayerControlledSymbiote(Pawn symbiote)
+        {
+            return symbiote != null
+                && !symbiote.Dead
+                && !symbiote.InMentalState
+                && symbiote.Faction == Faction.OfPlayer;
         }
 
         private static bool HasHediff(Pawn pawn, HediffDef def)

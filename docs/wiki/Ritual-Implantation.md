@@ -50,3 +50,7 @@ extraction n'intervient.
 Le rituel de base fonctionne avec `Core + Biotech`. Une intégration optionnelle
 à Ideology pourra ultérieurement ajouter rôles, participants et exigences de
 lieu sans remplacer ce fonctionnement.
+
+## Contrôle du symbiote
+
+Le rite ne peut être commandé en jeu normal qu'avec un symbiote appartenant réellement au joueur. Un symbiote hostile simplement sélectionnable ne donne aucun droit de ciblage ou d'annulation. Le mode développeur conserve ces commandes pour les tests.

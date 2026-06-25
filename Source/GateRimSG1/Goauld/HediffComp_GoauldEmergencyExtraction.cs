@@ -6,11 +6,9 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Manual emergency-extraction prototype for the recent-implantation phase.
-    ///
-    /// The same GoauldSymbioteData object is moved back into a newly generated
-    /// free symbiote pawn. Medical skill checks and surgery bills remain future
-    /// work after reverse identity transfer has been validated.
+    /// Strict developer-mode immediate extraction tool for the
+    /// recent-implantation phase. Normal gameplay always uses the medical
+    /// surgery bill instead, even when advanced diagnostics are enabled.
     /// </summary>
     public class HediffComp_GoauldEmergencyExtraction : HediffComp
     {
@@ -18,7 +16,10 @@ namespace GateRimSG1.Goauld
         {
             Pawn host = Pawn;
 
-            if (host == null || !host.Spawned || host.Dead)
+            if (host == null
+                || !host.Spawned
+                || host.Dead
+                || !Prefs.DevMode)
             {
                 yield break;
             }

@@ -3,7 +3,7 @@
     <RecipeDef>
         <defName>SG1_EmergencyExtractGoauldSymbiote</defName>
         <label>emergency Goa'uld extraction</label>
-        <description>Attempt to surgically extract a recently implanted Goa'uld symbiote before it establishes control. A successful operation returns the same parasite as a free symbiote. Failure risks follow the normal surgery outcome system.</description>
+        <description>Attempt to surgically extract a recently implanted Goa'uld-family symbiote before it establishes control. A successful operation returns the same symbiote as a free pawn. Failure risks follow the normal surgery outcome system.</description>
         <jobString>Performing emergency Goa'uld extraction.</jobString>
         <workerClass>GateRimSG1.Goauld.Recipe_EmergencyExtractGoauldSymbiote</workerClass>
         <workAmount>1800</workAmount>
@@ -29,6 +29,47 @@
                     </categories>
                 </filter>
                 <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <categories>
+                <li>Medicine</li>
+            </categories>
+        </fixedIngredientFilter>
+        <recipeUsers>
+            <li>Human</li>
+        </recipeUsers>
+    </RecipeDef>
+
+    <RecipeDef>
+        <defName>SG1_ExtractActiveGoauldSymbiote</defName>
+        <label>extract active Goa'uld symbiote</label>
+        <description>Attempt the dangerous removal of an established Goa'uld symbiote from a secured active host. Success restores a displaced former colonist and returns the same sedated symbiote as a free pawn. Failure follows the normal surgery outcome system and leaves the active symbiote in place.</description>
+        <jobString>Extracting an active Goa'uld symbiote.</jobString>
+        <workerClass>GateRimSG1.Goauld.Recipe_ExtractActiveGoauldSymbiote</workerClass>
+        <workAmount>4200</workAmount>
+        <effectWorking>Surgery</effectWorking>
+        <soundWorking>Recipe_Surgery</soundWorking>
+        <workSpeedStat>MedicalOperationSpeed</workSpeedStat>
+        <workSkill>Medicine</workSkill>
+        <workSkillLearnFactor>24</workSkillLearnFactor>
+        <surgeryOutcomeEffect>SurgeryOutcomeBase</surgeryOutcomeEffect>
+        <surgerySuccessChanceFactor>0.75</surgerySuccessChanceFactor>
+        <deathOnFailedSurgeryChance>0.05</deathOnFailedSurgeryChance>
+        <targetsBodyPart>false</targetsBodyPart>
+        <humanlikeOnly>true</humanlikeOnly>
+        <developmentalStageFilter>Adult</developmentalStageFilter>
+        <skillRequirements>
+            <Medicine>10</Medicine>
+        </skillRequirements>
+        <ingredients>
+            <li>
+                <filter>
+                    <categories>
+                        <li>Medicine</li>
+                    </categories>
+                </filter>
+                <count>3</count>
             </li>
         </ingredients>
         <fixedIngredientFilter>

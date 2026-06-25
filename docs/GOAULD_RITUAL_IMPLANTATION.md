@@ -124,3 +124,7 @@ Ritual implantation now requires a nearby Goa'uld ritual basin.
 
 The basin must remain close to both the free symbiote and the selected target
 until the timed ceremony finishes. Its destruction or removal cancels the ritual.
+
+## 0.3.41-dev-r2 control boundary
+
+A ritual command is available in normal play only when the free symbiote genuinely belongs to the player faction. Hostile or merely selectable symbiotes cannot be directed into a ritual. Developer mode remains able to expose the command for regression testing.

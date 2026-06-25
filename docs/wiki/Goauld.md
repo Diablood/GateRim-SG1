@@ -72,32 +72,13 @@ Consulte [Hôte Goa'uld actif](Active-Goauld-Host).
 
 Depuis `0.3.40-dev`, un symbiote Goa'uld appartenant à une faction hostile conserve cette allégeance pendant l'implantation. Si la phase critique arrive à son terme, l'hôte joueur rejoint la faction du symbiote, quitte le contrôle de la colonie et participe à un assaut réel contre les colons et leurs biens. Comme une force de raid, il peut finalement se replier lorsque la carte est abandonnée ou que l'assaut est épuisé. Une extraction avant conversion préserve la colonie. Les Tok'ra et les symbiotes contrôlés par le joueur restent exclus de cette prise de contrôle.
 
-### Extraction d'urgence
+### Extraction et chirurgie
 
-Depuis `0.1.19-dev`, une victime récemment implantée peut interrompre le
-processus grâce à la commande manuelle :
+Pendant l'implantation récente, `extraction d'urgence Goa'uld` permet de retirer le parasite avant la prise de contrôle. L'ancienne commande instantanée existe encore uniquement lorsque le mode développeur RimWorld est actif ; les diagnostics avancés restent informatifs.
 
-```text
-Extraction d'urgence
-```
+Depuis `0.3.41-dev`, un hôte déjà actif peut aussi être sauvé après avoir été neutralisé et capturé. L'opération `extraire le symbiote Goa'uld actif` exige davantage de médecine, de travail et de médicaments. Une réussite restaure le même pawn et libère le même symbiote temporairement anesthésié ; un échec laisse le parasite actif si le patient survit.
 
-Le même parasite réapparaît sous la forme d'un symbiote libre à proximité.
-
-Consulte [Extraction d'urgence Goa'uld](Emergency-Extraction).
-
-### Chirurgie d'extraction
-
-Depuis `0.1.20-dev`, une victime récemment implantée peut recevoir une véritable
-opération médicale :
-
-```text
-extraction d'urgence Goa'uld
-```
-
-La réussite libère le même parasite avec son identifiant persistant. L'échec
-laisse l'implantation récente active.
-
-Consulte [Chirurgie d'extraction Goa'uld](Extraction-Surgery).
+Consulte [Extraction d'urgence Goa'uld](Emergency-Extraction) et [Chirurgies d'extraction Goa'uld](Extraction-Surgery).
 
 ### Chasse autonome
 

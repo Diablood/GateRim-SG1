@@ -208,6 +208,7 @@ namespace GateRimSG1.Goauld
             if (host.Faction == allegianceFaction)
             {
                 hostControlState = GoauldHostControlState.Active;
+                ApplyHostileControlName(host);
                 return true;
             }
 
@@ -225,6 +226,7 @@ namespace GateRimSG1.Goauld
 
             host.SetFaction(allegianceFaction);
             hostControlState = GoauldHostControlState.Active;
+            ApplyHostileControlName(host);
             return true;
         }
 
@@ -244,9 +246,28 @@ namespace GateRimSG1.Goauld
                 restored = true;
             }
 
+            if (hostControlState == GoauldHostControlState.Active)
+            {
+                RestoreHostName(host);
+            }
+
             displacedHostFaction = null;
             hostControlState = GoauldHostControlState.None;
             return restored;
+        }
+
+        public bool EnsureHostileControlName(Pawn host)
+        {
+            if (!HostileTakeoverActive
+                || origin != GoauldSymbioteOrigin.Goauld
+                || host == null
+                || host.Dead
+                || symbioteName.NullOrEmpty())
+            {
+                return false;
+            }
+
+            return ApplyHostileControlName(host);
         }
 
         public void AttachToHost(Pawn host, int currentTick, bool recordImplantationTick)
@@ -524,6 +545,53 @@ namespace GateRimSG1.Goauld
             {
                 sharedSkillProgress = new List<BackstorySkillProgressState>();
             }
+        }
+
+        private bool ApplyHostileControlName(Pawn host)
+        {
+            if (host == null || symbioteName.NullOrEmpty())
+            {
+                return false;
+            }
+
+            if (hostNameKind == StoredPawnNameKind.Unknown)
+            {
+                if (hostName.NullOrEmpty())
+                {
+                    CaptureHostNameDetails(host, overwriteExisting: true);
+                }
+            }
+
+            if (host.Name is NameSingle currentName
+                && currentName.Name == symbioteName)
+            {
+                return false;
+            }
+
+            host.Name = new NameSingle(symbioteName);
+            return true;
+        }
+
+        private bool RestoreHostName(Pawn host)
+        {
+            if (host == null || hostName.NullOrEmpty())
+            {
+                return false;
+            }
+
+            Name restoredName = CreateStoredHostName();
+            if (restoredName == null)
+            {
+                return false;
+            }
+
+            if (host.Name?.ToStringFull == restoredName.ToStringFull)
+            {
+                return false;
+            }
+
+            host.Name = restoredName;
+            return true;
         }
 
         private bool ApplyPersonality(

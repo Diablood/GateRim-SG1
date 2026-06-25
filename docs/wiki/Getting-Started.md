@@ -93,7 +93,7 @@ Utilise un personnage nouvellement généré pour valider `0.1.13-dev`. Les anci
 1. Active le mode développeur.
 2. Génère un `symbiote Goa'uld`.
 3. Place-le dans une case adjacente à un humanoïde adulte.
-4. Sélectionne le symbiote libre.
+4. Vérifie que le mode développeur est toujours actif, puis sélectionne le symbiote libre.
 5. Note l'identifiant affiché dans le panneau d'inspection.
 6. Clique sur `Implantation forcée`.
 7. Vérifie que le symbiote disparaît.
@@ -119,7 +119,7 @@ Utilise un personnage nouvellement généré pour valider `0.1.13-dev`. Les anci
 1. Applique une implantation forcée à un humanoïde adulte.
 2. Note l'identifiant du symbiote.
 3. Sélectionne la victime avant la fin du compte à rebours.
-4. Clique sur `Extraction d'urgence`.
+4. Vérifie que le mode développeur est actif, puis clique sur `Extraction d'urgence`. En jeu normal, utilise la chirurgie planifiable.
 5. Vérifie que l'état récent disparaît.
 6. Vérifie qu'un symbiote libre réapparaît à proximité.
 7. Vérifie que son identifiant est inchangé.

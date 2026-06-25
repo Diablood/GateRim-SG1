@@ -20,13 +20,16 @@ Autonomous cooldown ticks: {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_Success>{0} has been forcibly implanted by Goa'uld symbiote {1}.</GR_ForcedImplantation_Success>
     <GR_GoauldHostConversion_Success>{0} is now an active Goa'uld host for symbiote {1}.</GR_GoauldHostConversion_Success>
     <GR_EmergencyExtraction_CommandLabel>Emergency extraction</GR_EmergencyExtraction_CommandLabel>
-    <GR_EmergencyExtraction_CommandDescription>Immediately extract the recently implanted Goa'uld symbiote. The parasite reappears as a free pawn with the same persistent identity. This is a manual prototype; medical surgery requirements and failure risks will be added later.</GR_EmergencyExtraction_CommandDescription>
+    <GR_EmergencyExtraction_CommandDescription>Immediately extract the recently implanted Goa'uld-family symbiote and return the same persistent identity to a free pawn. This deterministic command is restricted to developer mode or advanced GateRim SG-1 diagnostics; normal gameplay uses surgery.</GR_EmergencyExtraction_CommandDescription>
     <GR_EmergencyExtraction_InternalError>Emergency extraction failed because the symbiote transfer system is incomplete.</GR_EmergencyExtraction_InternalError>
     <GR_EmergencyExtraction_NoSpawnCell>Emergency extraction failed because no nearby cell can receive the free symbiote.</GR_EmergencyExtraction_NoSpawnCell>
     <GR_EmergencyExtraction_Success>{0} has undergone emergency extraction. Goa'uld symbiote {1} is free again.</GR_EmergencyExtraction_Success>
     <GR_EmergencyExtractionSurgery_InternalError>Emergency extraction surgery failed because the persistent symbiote transfer system is incomplete.</GR_EmergencyExtractionSurgery_InternalError>
     <GR_EmergencyExtractionSurgery_NoSpawnCell>Emergency extraction surgery failed because no nearby cell can receive the extracted symbiote.</GR_EmergencyExtractionSurgery_NoSpawnCell>
     <GR_EmergencyExtractionSurgery_Success>{0} has undergone emergency surgery. Goa'uld symbiote {1} is free again.</GR_EmergencyExtractionSurgery_Success>
+    <GR_ActiveExtractionSurgery_InternalError>Active-host extraction failed because the persistent symbiote transfer system is incomplete.</GR_ActiveExtractionSurgery_InternalError>
+    <GR_ActiveExtractionSurgery_NoSpawnCell>Active-host extraction failed because no nearby cell can receive the extracted symbiote.</GR_ActiveExtractionSurgery_NoSpawnCell>
+    <GR_ActiveExtractionSurgery_Success>{0} has survived active-host extraction. Goa'uld symbiote {1} has been removed alive and is temporarily anesthetized.</GR_ActiveExtractionSurgery_Success>
     <GR_AutonomousHunt_CommandLabel>Autonomous hunt</GR_AutonomousHunt_CommandLabel>
     <GR_AutonomousHunt_CommandDescription>Toggle autonomous pursuit. When enabled, this free Goa'uld symbiote periodically searches for the nearest reachable compatible humanoid and implants automatically on contact.</GR_AutonomousHunt_CommandDescription>
     <GR_AutonomousHunt_Enabled>enabled</GR_AutonomousHunt_Enabled>

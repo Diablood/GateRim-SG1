@@ -1,5 +1,39 @@
 # Roadmap
 
+## Dernier jalon clôturé — Extraction chirurgicale d’un hôte Goa’uld actif (`0.3.41-dev`)
+
+- [x] Partir explicitement de `v0.3.40-dev` sur `feature/goauld-active-host-extraction-surgery`.
+- [x] Conserver l’extraction d’urgence existante pendant la fenêtre d’implantation récente.
+- [x] Ajouter une opération distincte pour un symbiote Goa’uld déjà établi dans un hôte actif.
+- [x] Limiter cette opération aux hôtes contrôlés par le joueur ou détenus comme prisonniers de la colonie.
+- [x] Retirer un hôte capturé de son groupe d’assaut et empêcher sa réassignation périodique tant qu’il reste prisonnier.
+- [x] Exclure les hôtes Tok’ra actifs.
+- [x] Mutualiser le transfert chirurgical persistant entre les deux recettes sans créer un second système d’identité.
+- [x] Rendre l’extraction active plus exigeante : Medicine `10`, trois médicaments, travail prolongé et risques accrus.
+- [x] Restaurer la faction déplacée et retirer l’assaut de prise de contrôle après une réussite.
+- [x] Faire réapparaître le même symbiote vivant, avec son allégeance d’origine et une anesthésie temporaire.
+- [x] Réserver strictement la commande d’extraction instantanée au mode développeur ; les diagnostics avancés restent informatifs.
+- [x] Ajouter les textes anglais/français et mettre à jour les documents techniques et le wiki.
+- [x] Masquer hors mode développeur les commandes d'implantation forcée et de contrôle de chasse d'un symbiote libre hostile.
+- [x] Conserver les interactions d'une offre Tok'ra et les rites d'un symbiote réellement contrôlé.
+- [x] Afficher le nom du symbiote sur l'hôte pendant une prise de contrôle hostile active et restaurer le nom d'origine après extraction.
+- [x] Valider `check-project-consistency.cmd` pour `0.3.41-dev` et les 83 backstories.
+- [x] Valider le build Windows de `GateRimSG1.dll` version `0.3.41.0`.
+- [x] Valider la capture, la disponibilité de l’opération et la réussite sur un ancien colon contrôlé.
+- [x] Valider la restauration complète du pawn et la conservation de l’identité/allégeance du symbiote.
+- [x] Valider l’anesthésie temporaire du symbiote extrait et son comportement après réveil.
+- [x] Valider un échec chirurgical sans duplication ni suppression de l’état actif.
+- [x] Revalider les voies Tok’ra, implantation récente, symbiote joueur et sauvegarde/rechargement.
+- [x] Vérifier `Player.log`, clôturer la documentation, publier le tag final unique et synchroniser le wiki.
+
+La révision `r1` transforme la récupération développeur de `0.3.40-dev` en véritable contre-jeu médical après la prise de contrôle. Le joueur doit d’abord neutraliser et capturer l’ancien colon. La chirurgie ne garantit pas sa survie, mais une réussite restaure le pawn existant et extrait le même symbiote vivant plutôt que de supprimer magiquement l’une des deux identités.
+
+La révision finale `r2` ferme les gizmos techniques encore visibles avec les diagnostics avancés, interdit toute commande directe sur un symbiote hostile sélectionnable et applique le nom persistant du Goa'uld à l'hôte contrôlé. Les tests confirment que le nom complet de l'ancien colon reste stocké et revient sur le même pawn après extraction, tandis que le symbiote libre conserve sa propre identité.
+
+Le symbiote extrait n'est pas tué automatiquement. Il reste vivant sous anesthésie temporaire puis redevient dangereux à son réveil. Un éventuel confinement dédié et une remise aux Tok'ra sont conservés dans `docs/IDEAS_TO_REVISIT.md` comme piste de réflexion non planifiée, sans création de jalon.
+
+Le jalon est publié sous le tag final unique `v0.3.41-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.42-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
 ## Dernier jalon clôturé — Prise de contrôle hostile d'un hôte Goa'uld (`0.3.40-dev`)
 
 - [x] Partir explicitement de `v0.3.39-dev` sur `feature/goauld-hostile-host-takeover`.
@@ -714,6 +748,10 @@ Le cycle complet a été validé sur la révision locale `r1` sans correctif C# 
 - [ ] Tester les interfaces de mods de préparation ou de gestion de pawns lorsqu'une incompatibilité concrète est signalée.
 - [x] Reprendre l'extension générale du catalogue de backstories dans un jalon dédié, avec une première vague raisonnable et culturellement cohérente (`0.3.16-dev`).
 
+## Registre d'idées non planifiées
+
+Les pistes encore exploratoires qui ne constituent ni un jalon décidé ni un engagement de roadmap sont conservées dans [`docs/IDEAS_TO_REVISIT.md`](IDEAS_TO_REVISIT.md). Leur présence sert uniquement à éviter de perdre une idée et ne doit jamais déclencher automatiquement un nouveau jalon.
+
 ## Présentation du mod et métadonnées
 
 - [x] Réécrire la description de `About/About.xml` dans un style court, immersif et immédiatement compréhensible.
@@ -883,4 +921,4 @@ Lorsqu'un élément est terminé :
 
 1. le résultat validé doit être décrit dans `docs/CHANGELOG.md` et `docs/PROJECT_STATE.md` ;
 2. l'élément doit être retiré de cette roadmap ou marqué comme terminé seulement s'il reste utile pour comprendre les étapes suivantes ;
-3. les nouveaux travaux découverts pendant les tests doivent être ajoutés ici avant de clôturer le jalon.
+3. les nouveaux travaux réellement décidés pendant les tests doivent être ajoutés ici avant de clôturer le jalon ; les pistes encore exploratoires doivent aller dans `docs/IDEAS_TO_REVISIT.md` sans devenir automatiquement des jalons.

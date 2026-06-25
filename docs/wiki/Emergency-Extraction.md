@@ -1,53 +1,37 @@
 # Extraction d'urgence Goa'uld
 
-> Statut : Prototype  
+> Statut : chirurgie jouable et outil développeur
 > Version d'introduction : 0.1.19-dev
+> Restriction de la commande instantanée : 0.3.41-dev
 
 ## Présentation
 
-Pendant la phase critique d'implantation récente, le joueur peut désormais
-interrompre manuellement la prise de contrôle.
-
-## Utilisation actuelle
-
-1. Applique une implantation forcée à un humanoïde adulte.
-2. Sélectionne la victime avant la fin du compte à rebours.
-3. Clique sur :
+Pendant la phase critique d'implantation récente, le joueur peut interrompre la prise de contrôle par une véritable opération médicale :
 
 ```text
-Extraction d'urgence
+extraction d'urgence Goa'uld
 ```
 
-Le symbiote quitte sa victime et réapparaît sous sa forme libre à
-proximité.
+La réussite retire le symbiote avant qu'il ne devienne un [hôte Goa'uld actif](Active-Goauld-Host). Le même parasite réapparaît à proximité avec son identité persistante.
+
+## Commande instantanée
+
+L'ancienne commande `Extraction d'urgence` effectue le même transfert sans médecin, médicament ni risque d'échec. Depuis `0.3.41-dev`, elle apparaît uniquement lorsque le mode développeur RimWorld est actif. Les informations avancées GateRim SG-1 restent purement diagnostiques.
+
+Elle n'est plus visible pendant une partie normale. La [chirurgie d'extraction](Extraction-Surgery) constitue le parcours joueur.
 
 ## Identité persistante
 
-L'identifiant du parasite reste identique :
-
 ```text
 symbiote libre
-    ↓ implantation forcée
+    ↓ implantation
 implantation récente
-    ↓ extraction d'urgence
-symbiote libre
+    ↓ extraction réussie
+même symbiote libre
 ```
 
-Le symbiote extrait peut être implanté à nouveau.
+L'identifiant, le nom, l'origine et l'allégeance du symbiote sont conservés.
 
-## Limites du prototype
+## Après la phase critique
 
-- l'action est immédiate ;
-- aucune compétence médicale n'est encore requise ;
-- aucun médicament n'est consommé ;
-- il n'existe pas encore de risque d'échec ;
-- l'extraction d'un hôte Goa'uld déjà actif n'est pas encore disponible.
-
-Une future opération médicale remplacera ou complétera cette commande de test.
-
-
-## Chirurgie disponible
-
-Depuis `0.1.20-dev`, la [chirurgie d'extraction](Extraction-Surgery) constitue le
-parcours joueur principal. La commande immédiate reste temporairement disponible
-pour faciliter les tests de développement.
+Lorsque la conversion active est déjà terminée, l'extraction d'urgence n'est plus disponible. Il faut neutraliser et maîtriser l'hôte, puis tenter l'opération plus dangereuse décrite dans [Chirurgie d'extraction](Extraction-Surgery).

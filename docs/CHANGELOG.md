@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.3.41-dev - Add active Goa'uld host extraction surgery
+
+- Add `SG1_ExtractActiveGoauldSymbiote`, a difficult medical operation for an established Goa'uld host.
+- Require the patient to be player-controlled or held as a colony prisoner before the operation is available.
+- Release captured active hosts from the takeover assault and prevent periodic reassignment while they remain colony prisoners.
+- Exclude active Tok'ra symbiosis from the Goa'uld extraction recipe.
+- Require Medicine `10`, three medicine units, `4200` work, a `0.75` surgery factor and a `5%` death chance on failed surgery.
+- Add a shared transaction-safe surgery base used by recent and active Goa'uld-family extraction.
+- Preserve the same persistent symbiote ID, name, origin, host history and faction allegiance after removal.
+- Restore the displaced host faction and remove the dedicated takeover assault after successful extraction.
+- Preserve the existing pawn, body, equipment, relationships, xenotype, injuries and backstories instead of generating a replacement host.
+- Return the extracted active Goa'uld as a live free pawn under temporary vanilla anesthesia.
+- Leave the active host state and persistent symbiote untouched after an ordinary surgery failure.
+- Keep the existing emergency surgery for recent implantation unchanged in scope.
+- Restrict the deterministic immediate-extraction gizmo strictly to RimWorld developer mode; advanced diagnostics no longer grant an instant gameplay action.
+- Hide direct forced implantation and autonomous-hunt controls on free symbiotes outside developer mode.
+- Expose ritual or voluntary implantation only when the symbiote is genuinely player-controlled or is part of an explicit Tok'ra offer.
+- Display a hostile active host under the symbiote's name while control is active, preserve the original host name in persistent data and restore it after successful extraction or recovery.
+- Add English/French operation text, targeted validation and updated technical/player documentation.
+- Validate final local revision `r2`, including interface restrictions, persistent host/symbiote names, save/reload, extraction restoration and the hostile symbiote wake-up boundary.
+- Publish branch `feature/goauld-active-host-extraction-surgery`, final tag `v0.3.41-dev` and the synchronized wiki.
+
 ## 0.3.40-dev - Add hostile Goa'uld host takeover
 
 - Persist the free symbiote's faction allegiance and the host faction displaced by implantation.

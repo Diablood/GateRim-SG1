@@ -72,7 +72,15 @@ namespace GateRimSG1.Goauld
         public bool ReleaseHostControl()
         {
             EnsureDataInitialized();
+            bool hadHostControl = symbioteData.HostControlState
+                != GoauldHostControlState.None;
             bool restored = symbioteData.ReleaseHostControl(Pawn);
+
+            if (hadHostControl)
+            {
+                Find.ColonistBar?.MarkColonistsDirty();
+                MainTabWindowUtility.NotifyAllPawnTables_PawnsChanged();
+            }
 
             if (restored)
             {
@@ -93,6 +101,12 @@ namespace GateRimSG1.Goauld
                 && Pawn != null
                 && Pawn.IsHashIntervalTick(HostileAssaultCheckInterval))
             {
+                if (symbioteData.EnsureHostileControlName(Pawn))
+                {
+                    Find.ColonistBar?.MarkColonistsDirty();
+                    MainTabWindowUtility.NotifyAllPawnTables_PawnsChanged();
+                }
+
                 GoauldHostileTakeoverAssaultUtility
                     .EnsureAssaultBehavior(Pawn);
             }

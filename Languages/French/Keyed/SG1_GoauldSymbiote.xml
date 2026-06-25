@@ -20,13 +20,16 @@ Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ForcedImplantation_Success>{0} a subi l'implantation forcée du symbiote Goa'uld {1}.</GR_ForcedImplantation_Success>
     <GR_GoauldHostConversion_Success>{0} est désormais l'hôte Goa'uld actif du symbiote {1}.</GR_GoauldHostConversion_Success>
     <GR_EmergencyExtraction_CommandLabel>Extraction d'urgence</GR_EmergencyExtraction_CommandLabel>
-    <GR_EmergencyExtraction_CommandDescription>Extrait immédiatement le symbiote Goa'uld récemment implanté. Le parasite réapparaît sous sa forme libre avec la même identité persistante. Il s'agit d'un prototype manuel ; les exigences médicales et les risques d'échec seront ajoutés ultérieurement.</GR_EmergencyExtraction_CommandDescription>
+    <GR_EmergencyExtraction_CommandDescription>Extrait immédiatement le symbiote adulte récemment implanté et restitue la même identité persistante sous sa forme libre. Cette commande déterministe est réservée au mode développeur ou aux diagnostics avancés GateRim SG-1 ; le jeu normal utilise la chirurgie.</GR_EmergencyExtraction_CommandDescription>
     <GR_EmergencyExtraction_InternalError>L'extraction d'urgence a échoué, car le système de transfert du symbiote est incomplet.</GR_EmergencyExtraction_InternalError>
     <GR_EmergencyExtraction_NoSpawnCell>L'extraction d'urgence a échoué, car aucune case proche ne peut accueillir le symbiote libre.</GR_EmergencyExtraction_NoSpawnCell>
     <GR_EmergencyExtraction_Success>{0} a subi une extraction d'urgence. Le symbiote Goa'uld {1} est à nouveau libre.</GR_EmergencyExtraction_Success>
     <GR_EmergencyExtractionSurgery_InternalError>La chirurgie d'extraction d'urgence a échoué, car le système persistant de transfert du symbiote est incomplet.</GR_EmergencyExtractionSurgery_InternalError>
     <GR_EmergencyExtractionSurgery_NoSpawnCell>La chirurgie d'extraction d'urgence a échoué, car aucune case proche ne peut accueillir le symbiote extrait.</GR_EmergencyExtractionSurgery_NoSpawnCell>
     <GR_EmergencyExtractionSurgery_Success>{0} a subi une chirurgie d'urgence. Le symbiote Goa'uld {1} est à nouveau libre.</GR_EmergencyExtractionSurgery_Success>
+    <GR_ActiveExtractionSurgery_InternalError>La chirurgie d'extraction d'un hôte actif a échoué, car le système persistant de transfert du symbiote est incomplet.</GR_ActiveExtractionSurgery_InternalError>
+    <GR_ActiveExtractionSurgery_NoSpawnCell>La chirurgie d'extraction d'un hôte actif a échoué, car aucune case proche ne peut accueillir le symbiote extrait.</GR_ActiveExtractionSurgery_NoSpawnCell>
+    <GR_ActiveExtractionSurgery_Success>{0} a survécu à l'extraction de l'hôte actif. Le symbiote Goa'uld {1} a été retiré vivant et reste temporairement anesthésié.</GR_ActiveExtractionSurgery_Success>
     <GR_AutonomousHunt_CommandLabel>Chasse autonome</GR_AutonomousHunt_CommandLabel>
     <GR_AutonomousHunt_CommandDescription>Active ou désactive la poursuite autonome. Lorsqu'elle est active, ce symbiote Goa'uld libre recherche périodiquement l'humanoïde compatible accessible le plus proche et s'implante automatiquement au contact.</GR_AutonomousHunt_CommandDescription>
     <GR_AutonomousHunt_Enabled>active</GR_AutonomousHunt_Enabled>

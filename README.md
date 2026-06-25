@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.40-dev`
+- Development version: `0.3.41-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -23,12 +23,14 @@ people, factions, technologies, biology and conflicts surrounding it.
   Tok'ra world presence.
 - Rare Goa'uld free-symbiote incursions that scale from storyteller threat
   points and reuse the autonomous implantation system as a biological hazard.
-  A hostile symbiote that survives the one-day intervention window can now
-  seize its host's faction allegiance and turn the former colonist hostile.
+  A hostile symbiote that survives the one-day intervention window can seize
+  its host's faction allegiance and turn the former colonist hostile. A
+  captured active host can now undergo a difficult extraction surgery that
+  restores the displaced host and removes the same symbiote alive.
 - Persistent Goa'uld and Tok'ra symbiote identities, implantation, extraction
   and player-controlled Tok'ra host/symbiote personality switching. Emergency
   extraction before conversion preserves the host and the symbiote's original
-  allegiance.
+  allegiance; established Goa'uld hosts require the riskier active-host surgery.
 - Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin
   dependency and formal ceremonies.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.

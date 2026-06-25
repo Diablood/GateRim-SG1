@@ -59,3 +59,7 @@ tests.
 - absence de préférence tactique avancée ;
 - aucun événement ne génère encore naturellement de symbiotes libres ;
 - prise en charge des Unas prévue ultérieurement.
+
+## Contrôle manuel
+
+Le bouton permettant d'activer ou de désactiver la chasse autonome est un outil de développement. Il n'apparaît plus sur un symbiote hostile pendant une partie normale, même lorsque les informations avancées GateRim SG-1 sont affichées.

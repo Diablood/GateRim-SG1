@@ -1,6 +1,6 @@
 # État du contenu
 
-Jalon de développement actuel : `0.3.40-dev - Add hostile Goa'uld host takeover`. Les symbiotes Goa'uld hostiles conservent désormais leur allégeance pendant l'implantation et peuvent prendre le contrôle d'un hôte joueur après la fenêtre d'intervention, sous réserve de la validation en jeu de leur comportement hostile immédiat.
+Jalon de développement actuel : `0.3.41-dev - Add active Goa'uld host extraction surgery`. Un hôte Goa'uld déjà actif peut désormais être neutralisé, capturé puis soumis à une chirurgie risquée qui restaure le pawn existant et extrait le même symbiote vivant.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -22,8 +22,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Incursion de symbiotes Goa'uld libres | Menace biologique récurrente : 1 à 4 symbiotes selon les points de menace, chasse autonome existante et avertissements RP anti-répétition | 0.3.39-dev |
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
 | Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
-| Hôte Goa'uld actif | Conversion automatique après la phase critique ; depuis 0.3.40-dev, un symbiote de faction hostile peut retirer le contrôle joueur et livrer l'hôte à son allégeance d'origine | 0.1.18-dev / prise de contrôle 0.3.40-dev |
-| Extraction d'urgence Goa'uld | Interruption manuelle pendant la phase critique | 0.1.19-dev |
+| Hôte Goa'uld actif | Conversion automatique ; prise de contrôle hostile et assaut depuis 0.3.40-dev ; extraction chirurgicale validée après capture dans 0.3.41-dev | 0.1.18-dev / prise de contrôle 0.3.40-dev / extraction active 0.3.41-dev |
+| Extraction d'urgence Goa'uld | Chirurgie pendant la phase critique ; commande instantanée réservée au mode développeur RimWorld depuis 0.3.41-dev | 0.1.19-dev / chirurgie 0.1.20-dev / restriction 0.3.41-dev |
+| Extraction d'un hôte Goa'uld actif | Chirurgie difficile sur un hôte contrôlé ou prisonnier, restauration de la faction déplacée et symbiote vivant anesthésié | 0.3.41-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
 | Larve de Prim'ta | Ressource transportable, incubable, périssable, classée biologiquement et sensible à la chaleur | 0.1.27-dev à 0.1.32-dev |
 | Bassin d'incubation du Prim'ta | Atelier de Dressage, Animaux 4+, consommant 10 viandes crues | 0.1.28-dev / nutriments 0.1.29-dev |

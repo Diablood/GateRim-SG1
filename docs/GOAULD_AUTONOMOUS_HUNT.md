@@ -93,3 +93,9 @@ implantation remains available as a regression tool.
 13. Toggle autonomous hunt off and confirm pursuit stops.
 14. Toggle it on and confirm pursuit resumes.
 15. Inspect `Player.log`.
+
+## 0.3.41-dev interface boundary
+
+The `Autonomous hunt` toggle is a developer-only diagnostic control. A hostile free symbiote selected during normal play exposes no command that lets the player suspend or resume its hunt.
+
+The autonomous state itself remains persistent and unchanged; only the visibility of the manual toggle is restricted.

@@ -1,83 +1,41 @@
-# Emergency Goa'uld extraction prototype
+# Emergency Goa'uld extraction
 
-## Scope of 0.1.19-dev
+## Current role
 
-This milestone adds the first player countermeasure during recent implantation.
-
-It intentionally uses a manual Hediff gizmo before introducing medical bills,
-doctor skill requirements and surgery-failure risks.
-
-## Current flow
+The recent-implantation state keeps a one-day intervention window before conversion into an active host. The intended player-facing countermeasure is the medical operation:
 
 ```text
-Recent Goa'uld implantation
-    ↓ select the implanted host
-Emergency extraction command
-    ↓
-Recent state removed
-    ↓
-Free Goa'uld symbiote pawn respawned nearby
+SG1_EmergencyExtractGoauldSymbiote
 ```
 
-The same persistent `symbioteId` moves back into the free pawn.
+A successful operation removes the recent host state and returns the same persistent symbiote identity to a free pawn.
 
-## Technical classes
+## Deterministic developer command
+
+The original immediate `Emergency extraction` gizmo remains useful for identity-transfer regression tests, but it bypasses doctors, medicine and surgery failure. From `0.3.41-dev`, it appears only when RimWorld developer mode itself is enabled. Advanced GateRim SG-1 diagnostics remain read-only and do not expose this action.
+
+It must not appear in normal play.
+
+## Medical operation
+
+The recent-implantation surgery requires:
+
+| Property | Value |
+|---|---:|
+| Work amount | `1800` |
+| Medicine skill | `6` |
+| Medicine | `1` unit |
+| Surgery factor | `0.85` |
+| Death chance on failure | `0.02` |
+
+The normal RimWorld surgery outcome remains responsible for injuries and failure. A failed operation leaves the recent implantation active, so the conversion countdown continues.
+
+## Active-host distinction
+
+The emergency operation applies only during recent implantation. Once the symbiote becomes an active Goa'uld host, the player must first secure the pawn and use the separate, more dangerous operation:
 
 ```text
-HediffComp_GoauldEmergencyExtraction
-HediffCompProperties_GoauldEmergencyExtraction
+SG1_ExtractActiveGoauldSymbiote
 ```
 
-The recent-implantation state receives the new extraction component between:
-
-```text
-HediffComp_GoauldSymbiote
-HediffComp_GoauldImplantationConversion
-```
-
-## Prototype limitation
-
-This is not yet a medical operation.
-
-The current command is immediate and deterministic so reverse identity transfer
-can be tested independently from doctor AI, medicine ingredients and surgery
-failure handling.
-
-## Manual test checklist
-
-1. Build with `build.cmd`.
-2. Implant an adult humanoid using a free Goa'uld symbiote.
-3. Record the persistent ID in `recent Goa'uld implantation`.
-4. Select the implanted host before the countdown expires.
-5. Click `Emergency extraction`.
-6. Confirm that the recent state disappears.
-7. Confirm that a free symbiote pawn appears nearby.
-8. Confirm that the free pawn carries the same persistent ID.
-9. Re-implant the same free pawn into an adjacent host.
-10. Confirm that the same ID is preserved again.
-11. Save and reload after extraction.
-12. Confirm that the free pawn retains the same ID.
-13. Inspect `Player.log` for extraction lifecycle logs.
-
-## Future medical milestone
-
-Replace or complement the immediate command with a surgery bill:
-
-```text
-Emergency Goa'uld extraction surgery
-```
-
-That future version should require medical work, apply failure risks and possibly
-injure or kill the host.
-
-
-## 0.1.20-dev medical operation
-
-A real medical operation is now available from the pawn health tab:
-
-```text
-emergency Goa'uld extraction
-```
-
-The immediate command remains temporarily available as a regression-testing
-tool. The surgery is the intended player-facing path.
+See `docs/GOAULD_EXTRACTION_SURGERY.md` for the full balance and transaction rules.

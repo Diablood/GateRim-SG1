@@ -1,6 +1,6 @@
 # Hôte Goa'uld actif
 
-Après la phase d'[implantation récente](Recent-Implantation), le même symbiote devient un état Goa'uld adulte permanent dans son hôte. Son identifiant et son identité persistent pendant la conversion.
+Après la phase d'[implantation récente](Recent-Implantation), le même symbiote devient un état adulte permanent dans son hôte. Son identifiant et son identité persistent pendant la conversion.
 
 ## Effets biologiques
 
@@ -8,17 +8,28 @@ L'hôte bénéficie notamment d'une guérison et d'une immunité accélérées, 
 
 ## Prise de contrôle hostile
 
-Depuis `0.3.40-dev`, l'origine et l'allégeance du symbiote ont une conséquence directe :
+Depuis `0.3.40-dev`, un symbiote Goa'uld appartenant à une faction hostile peut prendre le contrôle d'un colon :
 
-- un symbiote Goa'uld appartenant à une faction hostile arme une prise de contrôle lorsqu'il implante un colon joueur;
-- le joueur conserve toute la durée de la phase critique pour tenter une extraction;
-- si la conversion s'achève, le pawn existant rejoint la faction Goa'uld du symbiote et quitte le contrôle de la colonie;
-- son corps, ses relations, son équipement, son xenotype et l'identité du symbiote restent ceux d'avant la conversion.
+- le joueur conserve toute la phase critique pour tenter une extraction d'urgence ;
+- après conversion, le pawn existant rejoint la faction Goa'uld et quitte le contrôle de la colonie ;
+- son corps, ses relations, son équipement, son xenotype et l'identité du symbiote sont conservés ;
+- son nom affiché devient celui du symbiote tant que le contrôle hostile reste actif, tandis que le nom complet de l'ancien colon est conservé pour sa restauration ;
+- il attaque les colons et les biens comme une force de raid ;
+- il peut finalement se replier si la carte est abandonnée ou l'assaut épuisé.
 
-Une lettre de menace signale cette perte. L'hôte rejoint aussi un assaut Goa'uld persistant : il attaque la colonie au lieu de chercher immédiatement à quitter la carte comme un pawn hostile isolé. Il conserve toutefois le repli vanilla d'un raid et peut donc finalement quitter une carte abandonnée ou un assaut épuisé. Ce flux complet, y compris la migration des sauvegardes de développement antérieures, est validé depuis `0.3.40-dev`.
+## Sauver l'ancien colon après conversion
+
+Depuis `0.3.41-dev`, la conversion active n'est plus irréversible. Le joueur doit toutefois :
+
+1. mettre l'hôte hostile à terre sans le tuer ;
+2. le capturer comme prisonnier de la colonie ; son groupe d'assaut est alors libéré et ne peut plus le reprendre pendant sa détention ;
+3. disposer d'un médecin de niveau `10` et de trois médicaments ;
+4. planifier `extraire le symbiote Goa'uld actif` dans l'onglet Santé.
+
+Une réussite restaure l'ancien colon et son nom d'origine sans recréer le pawn et extrait le même symbiote vivant. Le parasite est temporairement anesthésié, puis redevient dangereux à son réveil. L'extraction ne le tue pas et aucun confinement spécial n'est disponible : la salle doit rester sécurisée, puis la colonie doit éliminer le Goa'uld ou affronter son réveil. Un échec laisse le symbiote actif en place si le patient survit.
+
+Consulte [Chirurgies d'extraction Goa'uld](Extraction-Surgery).
 
 ## Exceptions
 
-La prise de contrôle hostile ne s'applique pas aux Tok'ra, aux symbiotes Goa'uld contrôlés par le joueur ni aux symbiotes sans allégeance hostile. Ces implantations conservent la faction actuelle de l'hôte.
-
-Une extraction réussie pendant la phase critique laisse l'hôte dans sa faction et fait réapparaître le même symbiote libre avec son allégeance d'origine. Une restauration développeur d'un hôte déjà contrôlé retire d'abord son assaut Goa'uld avant de rendre la faction déplacée.
+La prise de contrôle hostile et l'extraction Goa'uld active ne s'appliquent pas aux Tok'ra. Les symbiotes Goa'uld contrôlés par le joueur ou sans allégeance hostile ne retirent pas automatiquement le contrôle de l'hôte, mais un hôte Goa'uld contrôlé peut tout de même choisir l'opération d'extraction active.

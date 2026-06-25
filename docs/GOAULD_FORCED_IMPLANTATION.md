@@ -73,3 +73,9 @@ A later milestone can add target selection, jobs and autonomous hostile behavior
 - try a pawn already carrying the adult symbiote host state.
 
 All should be rejected without consuming the free symbiote.
+
+## 0.3.41-dev-r2 interface boundary
+
+The adjacent `Forced implantation` command is retained as a deterministic developer regression tool. It is no longer exposed merely because a hostile free symbiote can be selected. RimWorld developer mode must be enabled before the command appears.
+
+Normal hostile symbiotes continue to use autonomous pursuit and contact implantation without granting the player direct control over their target.

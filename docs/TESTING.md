@@ -1,3 +1,30 @@
+# Testing checklist
+
+## 0.3.41-dev - Active Goa'uld host extraction surgery
+
+Validation locale terminée sur la révision finale `r2`, puis jalon publié sous `v0.3.41-dev`.
+
+Durable coverage:
+
+- start from a hostile free symbiote with a recorded Goa'uld faction and complete implantation plus active takeover;
+- down and capture the former colon before attempting surgery;
+- wait through the periodic takeover-behavior check and verify the colony prisoner is not assigned back to the Goa'uld assault Lord;
+- verify `SG1_ExtractActiveGoauldSymbiote` is available only when the active Goa'uld-origin host is player-controlled or a colony prisoner;
+- verify the operation requires Medicine `10`, three medicine units and the configured work amount;
+- on success, preserve the exact host pawn, ThingID, body, name, injuries, equipment, relationships, xenotype and backstories;
+- remove the dedicated takeover assault before restoring the displaced host faction;
+- transfer the same persistent symbiote ID, name, origin, host history and faction allegiance into exactly one free pawn;
+- verify the extracted symbiote receives vanilla anesthesia, remains unable to reimplant immediately and resumes normal behavior after waking;
+- save and reload after success with both host and free symbiote present;
+- obtain at least one nonlethal surgery failure and verify the active host state and takeover data remain authoritative with no free-symbiote duplication;
+- reject active-host extraction for Tok'ra, recent implantation and uncontrolled hostile pawns;
+- keep `SG1_EmergencyExtractGoauldSymbiote` available during recent implantation and preserve its established identity transfer;
+- keep the deterministic recent-extraction gizmo hidden unless RimWorld developer mode itself is enabled; advanced diagnostics must remain read-only;
+- select a hostile free symbiote in normal play and confirm forced implantation, ritual implantation and autonomous-hunt controls are absent;
+- confirm developer mode restores only the intended technical controls while an explicit Tok'ra offer retains its player interactions;
+- after hostile takeover, display the symbiote name on the existing host pawn, preserve the original complete host name through save/reload and restore it after extraction;
+- inspect `Player.log` for RecipeDef, surgery worker, faction restoration, Lord cleanup and save/load errors.
+
 # GateRim SG-1 durable test matrix
 
 ## 0.3.40-dev - Hostile Goa'uld host takeover

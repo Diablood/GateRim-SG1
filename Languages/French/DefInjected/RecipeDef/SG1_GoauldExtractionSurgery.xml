@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_EmergencyExtractGoauldSymbiote.label>extraction d'urgence Goa'uld</SG1_EmergencyExtractGoauldSymbiote.label>
-    <SG1_EmergencyExtractGoauldSymbiote.description>Tente d'extraire chirurgicalement un symbiote Goa'uld récemment implanté avant qu'il n'établisse son contrôle. Une opération réussie libère le même parasite sous la forme d'un symbiote libre. Les risques d'échec suivent le système normal des chirurgies.</SG1_EmergencyExtractGoauldSymbiote.description>
+    <SG1_EmergencyExtractGoauldSymbiote.description>Tente d'extraire chirurgicalement un symbiote adulte récemment implanté avant qu'il n'établisse son contrôle. Une opération réussie libère le même symbiote sous sa forme libre. Les risques d'échec suivent le système normal des chirurgies.</SG1_EmergencyExtractGoauldSymbiote.description>
     <SG1_EmergencyExtractGoauldSymbiote.jobString>Extraction d'urgence du symbiote Goa'uld en cours.</SG1_EmergencyExtractGoauldSymbiote.jobString>
+    <SG1_ExtractActiveGoauldSymbiote.label>extraire le symbiote Goa'uld actif</SG1_ExtractActiveGoauldSymbiote.label>
+    <SG1_ExtractActiveGoauldSymbiote.description>Tente l'extraction dangereuse d'un symbiote Goa'uld établi dans un hôte actif maîtrisé. Une réussite restaure l'ancien colon déplacé et libère le même symbiote, encore anesthésié. Un échec suit le système normal des chirurgies et laisse le symbiote actif en place.</SG1_ExtractActiveGoauldSymbiote.description>
+    <SG1_ExtractActiveGoauldSymbiote.jobString>Extraction du symbiote Goa'uld actif en cours.</SG1_ExtractActiveGoauldSymbiote.jobString>
 </LanguageData>

@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.40-dev`
+> Dernière révision : `0.3.41-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -21,8 +21,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
 | Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
-| Hôte Goa'uld actif | Conversion automatique après la phase critique ; depuis 0.3.40-dev, un symbiote de faction hostile peut retirer le contrôle joueur et livrer l'hôte à son allégeance d'origine | 0.1.18-dev / prise de contrôle 0.3.40-dev |
-| Extraction d'urgence Goa'uld | Interruption manuelle pendant la phase critique | 0.1.19-dev |
+| Hôte Goa'uld actif | Conversion automatique, prise de contrôle hostile et possibilité de sauvetage chirurgical après neutralisation et capture | 0.1.18-dev / prise de contrôle 0.3.40-dev / extraction active 0.3.41-dev |
+| Extraction d'urgence Goa'uld | Chirurgie pendant la phase critique ; commande instantanée réservée au mode développeur RimWorld | 0.1.19-dev / chirurgie 0.1.20-dev / restriction 0.3.41-dev |
+| Extraction d'un hôte Goa'uld actif | Chirurgie risquée après capture, restauration du pawn et symbiote vivant temporairement anesthésié | 0.3.41-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
 | Larve de Prim'ta | Ressource transportable, incubable, périssable, classée biologiquement et sensible à la chaleur | 0.1.27-dev à 0.1.32-dev |
 | Bassin d'incubation du Prim'ta | Atelier de Dressage, Animaux 4+, consommant 10 viandes crues | 0.1.28-dev / nutriments 0.1.29-dev |
@@ -131,3 +132,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 ## Prise de contrôle hostile Goa'uld
 
 Prototype jouable et validé dans `0.3.40-dev` : l'allégeance du symbiote est persistante, une implantation hostile arme une prise de contrôle différée et l'hôte rejoint la faction Goa'uld à la fin de la phase critique. Il attaque ensuite la colonie comme une force de raid, puis peut se replier lorsque la carte est abandonnée ou l'assaut épuisé. Les voies Tok'ra et joueur restent exclues.
+
+
+## Extraction d'un hôte actif
+
+Prototype jouable et validé dans `0.3.41-dev` : un ancien colon contrôlé par un Goa'uld doit être neutralisé et capturé avant qu'une opération Medicine `10` puisse être planifiée. Une réussite restaure le même pawn et libère le même symbiote temporairement anesthésié ; un échec laisse l'état actif en place si le patient survit. Le Goa'uld extrait reste vivant et redevient dangereux après son réveil.

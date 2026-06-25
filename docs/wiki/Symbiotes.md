@@ -27,6 +27,8 @@ Pendant la phase récente, une extraction instantanée de test ou une chirurgie
 planifiable peut faire réapparaître le même symbiote avec son identité
 persistante.
 
+En jeu normal, sélectionner un symbiote hostile ne donne aucun contrôle direct sur son implantation ou sa chasse. Les commandes déterministes `Implantation forcée` et `Chasse autonome` sont réservées au mode développeur. Un rite n'est accessible qu'à un symbiote réellement contrôlé par le joueur, tandis qu'une offre Tok'ra explicite conserve ses interactions volontaires.
+
 Les fonctions actuellement disponibles comprennent :
 
 - chasse autonome d'un humanoïde compatible ;

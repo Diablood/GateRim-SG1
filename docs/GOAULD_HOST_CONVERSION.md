@@ -33,6 +33,8 @@ When the one-day recent state converts, a pending takeover changes the existing 
 
 The transition also undrafts the pawn, stops its current job, refreshes player pawn tables and sends a threat letter.
 
+While hostile control is active, the pawn displays the persistent symbiote name rather than the displaced host name. The complete original `NameSingle` or `NameTriple` is retained in `GoauldSymbioteData`. Supported extraction or recovery restores that exact host name on the same pawn. A periodic active-state check applies the symbiote name to existing development saves, while the takeover letter continues to identify both the original host and the controlling symbiote.
+
 Live validation showed that faction reassignment alone makes the former colonist seek a map exit rather than attack. Local revision `r3` introduced a dedicated no-retreat assault and confirmed real hostile attacks, but a prolonged abandoned-map test showed that this version could remain indefinitely after all meaningful objectives disappeared.
 
 Local revision `r4` assigns the converted host to `LordJob_GoauldHostTakeoverRaidAssault`, a persisted vanilla colony assault with kidnapping disabled but vanilla timeout and retreat enabled. The active host Hediff rechecks that assignment every `30` ticks. A legacy `LordJob_GoauldHostTakeoverAssault` is retained only for save loading and is automatically replaced, so existing `r3` development saves migrate without restarting the implantation.
@@ -83,3 +85,15 @@ Final local revision `r4` validated the complete hostile-takeover loop:
 11. No new GateRim SG-1 error was reported in `Player.log`.
 
 The published milestone is tagged `v0.3.40-dev`. Re-run the durable matrix in `docs/TESTING.md` whenever symbiote identity, faction transfer, extraction or hostile Lord behavior changes.
+
+## Post-conversion medical counterplay in `0.3.41-dev`
+
+A hostile takeover is no longer recoverable only through developer tools. If the former colon is downed and captured as a colony prisoner, the dedicated takeover assault is released and the periodic behavior check no longer reassigns the prisoner to it. The health-operation menu can then expose:
+
+```text
+SG1_ExtractActiveGoauldSymbiote
+```
+
+The operation is deliberately harder than extraction during recent implantation. On success, it removes the takeover assault, restores the displaced host faction and transfers the same persistent symbiote data into a temporarily anesthetized free Goa'uld pawn. The host pawn is not recreated.
+
+The recipe is unavailable on active Tok'ra hosts and on uncontrolled hostile pawns. A failed surgery leaves the active host state and takeover data in place if the patient survives.
