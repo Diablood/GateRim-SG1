@@ -1,20 +1,34 @@
 # Domaines des Grands Maîtres Goa'uld
 
-> Statut : Première base mondiale jouable  
-> Fondation technique : 0.1.61-dev  
+> Statut : Présence mondiale jouable
+>
+> Fondation technique : 0.1.61-dev
+>
 > Présence mondiale et premier raid naturel : 0.2.1-dev
+>
+> Noms mondiaux dédiés : 0.3.46-dev
 
 ## Présentation
 
-Les territoires contrôlés par les Grands Maîtres Goa'uld sont désormais
-représentés sur la carte du monde par une faction hostile visible :
+Les territoires contrôlés par les Grands Maîtres Goa'uld sont représentés
+sur la carte du monde par des factions hostiles visibles. L'entrée de création
+du monde conserve le libellé générique :
 
 ```text
 Domaines des Grands Maîtres Goa'uld
 ```
 
-Cette faction unique sert d'abstraction pratique RimWorld pour plusieurs
-domaines Goa'uld rivaux.
+Chaque faction réellement générée reçoit toutefois un nom de domaine propre,
+par exemple :
+
+```text
+Dominion du trône d'or
+Empire de la couronne du serpent
+Cour de l'œil éternel
+```
+
+Ces noms décrivent le pouvoir ou le culte du domaine sans imposer un Grand
+Maître canon ni prétendre correspondre au dirigeant généré séparément.
 
 ## Présence mondiale
 
@@ -29,7 +43,10 @@ Le joueur peut ajouter manuellement plusieurs factions Goa'uld s'il souhaite
 représenter séparément plusieurs domaines de Grands Maîtres.
 
 La présence mondiale utilise volontairement un poids de génération de colonies
-réduit. Les Goa'uld sont visibles sans saturer la carte.
+réduit. Les Goa'uld sont visibles sans saturer la carte. Les nouvelles colonies
+utilisent également des noms dédiés, avec des formes comme `Temple du trône
+d'or`, `Premier sanctuaire de la Porte sacrée` ou `Deuxième pyramide du soleil
+noir`, au lieu des noms pirates vanilla.
 
 ## Résumé de xénotype provisoire
 
@@ -54,6 +71,10 @@ Grand Maître Goa'uld
 
 Le dirigeant reçoit un symbiote adulte actif avec une identité persistante. Le
 représentant provisoire `commandant Jaffa de domaine` n'est plus utilisé.
+
+Les noms visibles de ces dirigeants utilisent encore une génération vanilla. Une
+passe dédiée devra coordonner le nom de l'hôte, celui du symbiote et l'identité
+affichée du Grand Maître plutôt que remplacer un nom isolé.
 
 Consulte [Caste des hôtes Goa'uld](Goauld-Host-Caste).
 
@@ -120,3 +141,7 @@ faction. Il prépare les marques intrinsèques noire, argentée et dorée selon 
 rang, sans encore multiplier les factions mondiales.
 
 Consulte [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity).
+
+## Identité visuelle mondiale
+
+Les colonies utilisent encore la maison vanilla avec une teinte de faction. Une future passe visuelle remplacera cette silhouette par une icône Goa'uld immédiatement reconnaissable, dans le même chantier global que les icônes Jaffa libres et celles des autres factions du mod.

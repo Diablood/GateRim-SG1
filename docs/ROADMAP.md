@@ -1,6 +1,41 @@
 # Roadmap
 
-## Dernier jalon clôturé — Générateurs de noms mondiaux Jaffa libres (`0.3.45-dev`)
+## Dernier jalon clôturé — Générateurs de noms mondiaux Goa'uld (`0.3.46-dev`)
+
+- [x] Partir explicitement de `v0.3.45-dev` sur `feature/goauld-world-names`.
+- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et le registre d'idées non planifiées.
+- [x] Identifier le `fixedName` commun et les références restantes à `NamerFactionPirate` et `NamerSettlementPirate`.
+- [x] Ajouter un générateur de `288` noms de domaines Goa'uld.
+- [x] Ajouter un générateur de `1 728` noms de colonies avec formes ordinales naturelles.
+- [x] Ajouter les traductions françaises indexées et les accords grammaticaux nécessaires.
+- [x] Conserver le libellé générique de sélection du monde sans imposer ce nom à chaque faction générée.
+- [x] Préserver les noms déjà sérialisés dans les sauvegardes existantes.
+- [x] Ne pas introduire de Grand Maître canon nommé ni de lien artificiel avec le dirigeant généré.
+- [x] Ne modifier ni les groupes de pawns, ni les raids, ni la diplomatie, ni l'identité de domaine.
+- [x] Valider le chargement, le rebuild `0.3.46.0` et l'absence d'erreur RulePackDef ou de traduction.
+- [x] Générer plusieurs mondes avec plusieurs factions Goa'uld et contrôler la variété des domaines et colonies.
+- [x] Valider la casse française, les ordinaux et l'absence de suffixe technique systématique dans l'échantillon.
+- [x] Vérifier la conservation des noms sur une ancienne sauvegarde.
+- [x] Revalider dirigeants Goa'uld, colonies, hostilité permanente, raids et incursion de symbiotes.
+- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.46-dev` et synchroniser le wiki.
+
+Ce jalon améliore l'identité mondiale des domaines Goa'uld sans créer de Grands Maîtres nommés, de clans persistants, de nouvelle faction ou de nouvelle mécanique.
+
+La révision finale `r1` valide les noms propres de plusieurs domaines Goa'uld, la variété des colonies, la casse française naturelle, le chargement bilingue des RulePackDefs, l'absence de fuite des name makers pirates et les régressions des dirigeants, colonies, raids et de l'hostilité permanente.
+
+Le jalon est publié sous le tag final unique `v0.3.46-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.47-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Branches prévues — Identité mondiale des factions
+
+Ces branches sont décidées mais ne reçoivent pas encore de numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
+
+- `feature/free-jaffa-faction-leader-names` : remplacer les noms vanilla des chefs de factions Jaffa libres par une génération culturellement cohérente, sans modifier les noms de factions ni de colonies déjà publiés.
+- `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
+- `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
+
+Les deux jalons de noms de dirigeants doivent réutiliser le framework culturel existant plutôt que coder des listes spécifiques dans les PawnKinds. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
+
+## Jalon précédent clôturé — Générateurs de noms mondiaux Jaffa libres (`0.3.45-dev`)
 
 - [x] Partir explicitement de `v0.3.44-dev` sur `feature/free-jaffa-world-names`.
 - [x] Relire les fichiers de procédure et de suivi du dépôt.

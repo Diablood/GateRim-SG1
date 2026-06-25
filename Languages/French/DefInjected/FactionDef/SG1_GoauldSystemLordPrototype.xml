@@ -2,7 +2,6 @@
 <LanguageData>
     <SG1_GoauldSystemLordPrototype.label>Domaines des Grands Maîtres Goa'uld</SG1_GoauldSystemLordPrototype.label>
     <SG1_GoauldSystemLordPrototype.description>Abstraction de faction mondiale hostile représentant les territoires contrôlés par différents Grands Maîtres Goa'uld. Cette première base jouable génère un nombre limité de colonies visibles et active de rares raids Jaffa d'assaut direct via un incident dédié. Les marchands, l'aide militaire, les sites de quête, les raids naturels d'enlèvement et les raids naturels de destruction restent désactivés.</SG1_GoauldSystemLordPrototype.description>
-    <SG1_GoauldSystemLordPrototype.fixedName>Domaines des Grands Maîtres Goa'uld</SG1_GoauldSystemLordPrototype.fixedName>
     <SG1_GoauldSystemLordPrototype.pawnsPlural>sujets Goa'uld</SG1_GoauldSystemLordPrototype.pawnsPlural>
     <SG1_GoauldSystemLordPrototype.pawnSingular>sujet Goa'uld</SG1_GoauldSystemLordPrototype.pawnSingular>
     <SG1_GoauldSystemLordPrototype.leaderTitle>Grand Maître</SG1_GoauldSystemLordPrototype.leaderTitle>

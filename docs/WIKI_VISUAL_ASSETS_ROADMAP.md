@@ -4,6 +4,10 @@
 
 No definitive documentation image exists yet. Current temporary textures and prototype captures must not be treated as final Workshop assets.
 
+## Planned world-icon branch
+
+Use `feature/faction-world-icon-overhaul` for the future world-map icon pass. The branch must replace the vanilla house silhouettes for Free Jaffa and Goa'uld settlements first, then provide coherent silhouettes for every other visible GateRim SG-1 faction. Color differences alone are not sufficient faction identification.
+
 ## Later asset families
 
 - UI buttons and contextual gizmos

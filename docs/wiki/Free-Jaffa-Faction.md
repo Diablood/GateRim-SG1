@@ -56,6 +56,8 @@ Deuxième cité de la chaîne brisée
 Les factions et colonies déjà présentes dans une sauvegarde conservent leurs
 noms existants. Le changement s'applique uniquement aux nouvelles générations.
 
+Les noms des chefs de faction utilisent encore la génération vanilla. Une passe dédiée devra les relier au profil culturel Jaffa libre sans modifier les noms des factions ou des colonies.
+
 L'icône mondiale reste provisoirement la maison vanilla, déclinée dans des
 nuances de vert parfois discrètes. Une silhouette propre aux Jaffa libres sera
 créée lors de la passe visuelle globale, avec le même principe pour les autres

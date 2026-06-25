@@ -1,6 +1,6 @@
 # Goa'uld System Lord world-faction baseline
 
-Version: `0.2.3-dev`
+Version: `0.3.46-dev`
 
 ## Scope
 
@@ -52,14 +52,18 @@ The faction defines:
 ```text
 factionIconPath: World/WorldObjects/Expanding/PirateOutpost
 settlementTexturePath: World/WorldObjects/DefaultSettlement
-factionNameMaker: NamerFactionPirate
-settlementNameMaker: NamerSettlementPirate
+factionNameMaker: SG1_NamerFactionGoauldDomain
+settlementNameMaker: SG1_NamerSettlementGoauldDomain
 gold-toned colorSpectrum
 ```
 
 The invalid `FactionDef` fields `expandingIconTexture` and `homeIconPath`
 were removed in `0.2.1-dev-r1`. Their valid RimWorld 1.6 replacements,
 `factionIconPath` and `settlementTexturePath`, are used since `0.2.1-dev-r2`.
+
+Since `0.3.46-dev-r1`, newly generated faction instances and settlements use
+dedicated bilingual Goa'uld RulePackDefs instead of a shared fixed faction
+name or vanilla pirate place names. Existing serialized names are not migrated.
 
 ## Pawn-group profiles
 

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.0>name->[factionForm] [factionTheme]</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.0>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.1>factionForm->Dominion</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.1>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.2>factionForm->Empire</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.2>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.3>factionForm->Domaine</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.3>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.4>factionForm->Royaume</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.4>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.5>factionForm->Dynastie</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.5>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.6>factionForm->Ordre</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.6>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.7>factionForm->Cour</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.7>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.8>factionForm->Légion</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.8>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.9>factionForm->Souveraineté</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.9>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.10>factionForm->Imperium</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.10>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.11>factionForm->Suprématie</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.11>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.12>factionForm->Hégémonie</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.12>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.13>factionTheme->du trône d'or</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.13>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.14>factionTheme->de la couronne du serpent</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.14>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.15>factionTheme->de l'œil éternel</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.15>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.16>factionTheme->de la flamme ascendante</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.16>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.17>factionTheme->du soleil noir</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.17>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.18>factionTheme->de la Porte sacrée</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.18>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.19>factionTheme->du Souverain immortel</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.19>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.20>factionTheme->des mondes conquis</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.20>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.21>factionTheme->du temple caché</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.21>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.22>factionTheme->du sceptre ardent</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.22>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.23>factionTheme->de la pyramide d'obsidienne</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.23>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.24>factionTheme->de la volonté suprême</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.24>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.25>factionTheme->du sang élu</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.25>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.26>factionTheme->du serpent de fer</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.26>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.27>factionTheme->du trône stellaire</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.27>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.28>factionTheme->du Premier Serpent</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.28>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.29>factionTheme->du masque d'or</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.29>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.30>factionTheme->du scarabée éternel</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.30>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.31>factionTheme->de l'œil céleste</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.31>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.32>factionTheme->de la lune écarlate</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.32>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.33>factionTheme->de la pyramide silencieuse</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.33>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.34>factionTheme->de la flamme sacrée</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.34>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.35>factionTheme->du soleil vivant</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.35>
+    <SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.36>factionTheme->de la couronne noire</SG1_NamerFactionGoauldDomain.rulePack.rulesStrings.36>
+
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.0>name->[masculinePlaceInitial] [theme]</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.0>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.1>name->[masculinePlaceInitial] [theme]</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.1>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.2>name->[femininePlaceInitial] [theme]</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.2>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.3>name->[femininePlaceInitial] [theme]</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.3>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.4>name->[masculineOrdinal] [masculinePlaceLower] [theme]</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.4>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.5>name->[feminineOrdinal] [femininePlaceLower] [theme]</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.5>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.6>masculineOrdinal->Premier</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.6>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.7>masculineOrdinal->Deuxième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.7>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.8>masculineOrdinal->Troisième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.8>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.9>masculineOrdinal->Quatrième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.9>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.10>masculineOrdinal->Cinquième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.10>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.11>feminineOrdinal->Première</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.11>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.12>feminineOrdinal->Deuxième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.12>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.13>feminineOrdinal->Troisième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.13>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.14>feminineOrdinal->Quatrième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.14>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.15>feminineOrdinal->Cinquième</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.15>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.16>masculinePlaceInitial->Temple</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.16>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.17>masculinePlaceInitial->Palais</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.17>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.18>masculinePlaceInitial->Bastion</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.18>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.19>masculinePlaceInitial->Sanctuaire</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.19>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.20>masculinePlaceInitial->Fort</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.20>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.21>masculinePlaceInitial->Autel</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.21>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.22>femininePlaceInitial->Citadelle</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.22>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.23>femininePlaceInitial->Forteresse</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.23>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.24>femininePlaceInitial->Pyramide</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.24>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.25>femininePlaceInitial->Nécropole</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.25>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.26>femininePlaceInitial->Enclave</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.26>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.27>femininePlaceInitial->Capitale</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.27>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.28>masculinePlaceLower->temple</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.28>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.29>masculinePlaceLower->palais</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.29>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.30>masculinePlaceLower->bastion</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.30>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.31>masculinePlaceLower->sanctuaire</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.31>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.32>masculinePlaceLower->fort</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.32>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.33>masculinePlaceLower->autel</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.33>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.34>femininePlaceLower->citadelle</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.34>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.35>femininePlaceLower->forteresse</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.35>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.36>femininePlaceLower->pyramide</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.36>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.37>femininePlaceLower->nécropole</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.37>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.38>femininePlaceLower->enclave</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.38>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.39>femininePlaceLower->capitale</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.39>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.40>theme->du trône d'or</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.40>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.41>theme->de la couronne du serpent</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.41>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.42>theme->de l'œil éternel</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.42>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.43>theme->de la flamme ascendante</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.43>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.44>theme->du soleil noir</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.44>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.45>theme->de la Porte sacrée</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.45>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.46>theme->du Souverain immortel</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.46>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.47>theme->des mondes conquis</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.47>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.48>theme->du temple caché</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.48>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.49>theme->du sceptre ardent</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.49>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.50>theme->de la pyramide d'obsidienne</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.50>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.51>theme->de la volonté suprême</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.51>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.52>theme->du sang élu</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.52>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.53>theme->du serpent de fer</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.53>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.54>theme->du trône stellaire</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.54>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.55>theme->du Premier Serpent</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.55>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.56>theme->du masque d'or</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.56>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.57>theme->du scarabée éternel</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.57>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.58>theme->de l'œil céleste</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.58>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.59>theme->de la lune écarlate</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.59>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.60>theme->de la pyramide silencieuse</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.60>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.61>theme->de la flamme sacrée</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.61>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.62>theme->du soleil vivant</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.62>
+    <SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.63>theme->de la couronne noire</SG1_NamerSettlementGoauldDomain.rulePack.rulesStrings.63>
+</LanguageData>

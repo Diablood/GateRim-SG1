@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Goa'uld System Lord world-name generators.
+
+    Newly generated faction instances receive a dedicated domain name instead
+    of sharing one fixed label. Settlements use a broad combinatorial grammar
+    with natural ordinal forms. No named canon System Lord is introduced and
+    the generated faction name is intentionally independent from the leader pawn.
+    -->
+    <RulePackDef>
+        <defName>SG1_NamerFactionGoauldDomain</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>name->[factionForm] [factionTheme]</li>
+                <li>factionForm->Dominion</li>
+                <li>factionForm->Empire</li>
+                <li>factionForm->Domain</li>
+                <li>factionForm->Realm</li>
+                <li>factionForm->Dynasty</li>
+                <li>factionForm->Order</li>
+                <li>factionForm->Court</li>
+                <li>factionForm->Host</li>
+                <li>factionForm->Sovereignty</li>
+                <li>factionForm->Imperium</li>
+                <li>factionForm->Ascendancy</li>
+                <li>factionForm->Hegemony</li>
+                <li>factionTheme->of the Golden Throne</li>
+                <li>factionTheme->of the Serpent Crown</li>
+                <li>factionTheme->of the Eternal Eye</li>
+                <li>factionTheme->of the Ascendant Flame</li>
+                <li>factionTheme->of the Black Sun</li>
+                <li>factionTheme->of the Sacred Gate</li>
+                <li>factionTheme->of the Undying Sovereign</li>
+                <li>factionTheme->of the Conquered Worlds</li>
+                <li>factionTheme->of the Hidden Temple</li>
+                <li>factionTheme->of the Burning Scepter</li>
+                <li>factionTheme->of the Obsidian Pyramid</li>
+                <li>factionTheme->of the Supreme Will</li>
+                <li>factionTheme->of the Chosen Blood</li>
+                <li>factionTheme->of the Iron Serpent</li>
+                <li>factionTheme->of the Star Throne</li>
+                <li>factionTheme->of the First Serpent</li>
+                <li>factionTheme->of the Golden Mask</li>
+                <li>factionTheme->of the Eternal Scarab</li>
+                <li>factionTheme->of the Celestial Eye</li>
+                <li>factionTheme->of the Crimson Moon</li>
+                <li>factionTheme->of the Silent Pyramid</li>
+                <li>factionTheme->of the Sacred Flame</li>
+                <li>factionTheme->of the Living Sun</li>
+                <li>factionTheme->of the Black Crown</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+    <RulePackDef>
+        <defName>SG1_NamerSettlementGoauldDomain</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Unnumbered forms are twice as common as ordinal forms. -->
+                <li>name->[masculinePlaceInitial] [theme]</li>
+                <li>name->[masculinePlaceInitial] [theme]</li>
+                <li>name->[femininePlaceInitial] [theme]</li>
+                <li>name->[femininePlaceInitial] [theme]</li>
+                <li>name->[masculineOrdinal] [masculinePlaceLower] [theme]</li>
+                <li>name->[feminineOrdinal] [femininePlaceLower] [theme]</li>
+                <li>masculineOrdinal->First</li>
+                <li>masculineOrdinal->Second</li>
+                <li>masculineOrdinal->Third</li>
+                <li>masculineOrdinal->Fourth</li>
+                <li>masculineOrdinal->Fifth</li>
+                <li>feminineOrdinal->First</li>
+                <li>feminineOrdinal->Second</li>
+                <li>feminineOrdinal->Third</li>
+                <li>feminineOrdinal->Fourth</li>
+                <li>feminineOrdinal->Fifth</li>
+                <li>masculinePlaceInitial->Temple</li>
+                <li>masculinePlaceInitial->Palace</li>
+                <li>masculinePlaceInitial->Bastion</li>
+                <li>masculinePlaceInitial->Sanctum</li>
+                <li>masculinePlaceInitial->Fort</li>
+                <li>masculinePlaceInitial->Altar</li>
+                <li>femininePlaceInitial->Citadel</li>
+                <li>femininePlaceInitial->Fortress</li>
+                <li>femininePlaceInitial->Pyramid</li>
+                <li>femininePlaceInitial->Necropolis</li>
+                <li>femininePlaceInitial->Enclave</li>
+                <li>femininePlaceInitial->Capital</li>
+                <li>masculinePlaceLower->Temple</li>
+                <li>masculinePlaceLower->Palace</li>
+                <li>masculinePlaceLower->Bastion</li>
+                <li>masculinePlaceLower->Sanctum</li>
+                <li>masculinePlaceLower->Fort</li>
+                <li>masculinePlaceLower->Altar</li>
+                <li>femininePlaceLower->Citadel</li>
+                <li>femininePlaceLower->Fortress</li>
+                <li>femininePlaceLower->Pyramid</li>
+                <li>femininePlaceLower->Necropolis</li>
+                <li>femininePlaceLower->Enclave</li>
+                <li>femininePlaceLower->Capital</li>
+                <li>theme->of the Golden Throne</li>
+                <li>theme->of the Serpent Crown</li>
+                <li>theme->of the Eternal Eye</li>
+                <li>theme->of the Ascendant Flame</li>
+                <li>theme->of the Black Sun</li>
+                <li>theme->of the Sacred Gate</li>
+                <li>theme->of the Undying Sovereign</li>
+                <li>theme->of the Conquered Worlds</li>
+                <li>theme->of the Hidden Temple</li>
+                <li>theme->of the Burning Scepter</li>
+                <li>theme->of the Obsidian Pyramid</li>
+                <li>theme->of the Supreme Will</li>
+                <li>theme->of the Chosen Blood</li>
+                <li>theme->of the Iron Serpent</li>
+                <li>theme->of the Star Throne</li>
+                <li>theme->of the First Serpent</li>
+                <li>theme->of the Golden Mask</li>
+                <li>theme->of the Eternal Scarab</li>
+                <li>theme->of the Celestial Eye</li>
+                <li>theme->of the Crimson Moon</li>
+                <li>theme->of the Silent Pyramid</li>
+                <li>theme->of the Sacred Flame</li>
+                <li>theme->of the Living Sun</li>
+                <li>theme->of the Black Crown</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

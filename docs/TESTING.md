@@ -1,5 +1,29 @@
 # Testing checklist
 
+## 0.3.46-dev - Goa'uld world-name generators
+
+Validation locale terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.46-dev`.
+
+Couverture durable :
+
+- charger `SG1_NamerFactionGoauldDomain` et `SG1_NamerSettlementGoauldDomain` sans erreur de RulePackDef, GrammarResolver, référence ou traduction indexée ;
+- conserver le label générique des domaines Goa'uld dans les contrôles de création du monde sans réintroduire un `fixedName` partagé entre toutes les instances ;
+- générer plusieurs factions Goa'uld et vérifier des noms de domaines variés issus des `288` combinaisons prévues ;
+- générer un large échantillon de colonies et vérifier la variété des `1 728` résultats, avec des formes sans ordinal majoritaires ;
+- conserver une casse française naturelle, les caractères accentués et les accords masculins/féminins des ordinaux ;
+- vérifier qu'aucun name maker pirate, jeton de grammaire, fragment de traduction ou suffixe numérique technique systématique ne fuite dans les noms visibles ;
+- ne jamais renommer automatiquement les factions ou colonies déjà sérialisées dans une sauvegarde ;
+- conserver le nom du domaine indépendant du dirigeant tant qu'un système coordonné d'identité de Grand Maître n'est pas implémenté ;
+- revalider les dirigeants, la caste d'hôtes, les colonies, l'hostilité permanente, les raids naturels et l'incursion de symbiotes après toute modification des Defs de faction ;
+- inspecter `Player.log` après une génération anglaise et française.
+
+Limites durables :
+
+- la grammaire réduit fortement les collisions mais ne constitue pas un registre persistant d'unicité ;
+- les noms culturels des dirigeants Jaffa libres et Goa'uld restent des jalons séparés ;
+- la génération du nom d'un Grand Maître Goa'uld doit auditer ensemble l'hôte, le symbiote et le nom visible du dirigeant ;
+- les icônes mondiales personnalisées restent dans la passe visuelle globale afin de traiter toutes les factions visibles avec des silhouettes cohérentes.
+
 ## 0.3.45-dev - Free Jaffa world-name generators
 
 Validation locale terminée sur la révision finale `r3`, puis jalon publié sous `v0.3.45-dev`.

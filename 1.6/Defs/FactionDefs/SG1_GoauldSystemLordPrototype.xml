@@ -16,7 +16,6 @@
         <defName>SG1_GoauldSystemLordPrototype</defName>
         <label>Goa'uld System Lord domains</label>
         <description>A hostile world-faction abstraction for territories controlled by Goa'uld System Lords. The first playable baseline generates a limited number of visible settlements and enables rare direct-assault Jaffa raids through a dedicated incident. Traders, military aid, quest sites, natural abduction raids and natural destruction raids remain disabled.</description>
-        <fixedName>Goa'uld System Lord domains</fixedName>
         <pawnsPlural>Goa'uld subjects</pawnsPlural>
         <pawnSingular>Goa'uld subject</pawnSingular>
         <!--
@@ -58,8 +57,8 @@
         <settlementGenerationWeight>0.35</settlementGenerationWeight>
         <factionIconPath>World/WorldObjects/Expanding/PirateOutpost</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
-        <factionNameMaker>NamerFactionPirate</factionNameMaker>
-        <settlementNameMaker>NamerSettlementPirate</settlementNameMaker>
+        <factionNameMaker>SG1_NamerFactionGoauldDomain</factionNameMaker>
+        <settlementNameMaker>SG1_NamerSettlementGoauldDomain</settlementNameMaker>
         <colorSpectrum>
             <li>(0.60, 0.43, 0.10)</li>
             <li>(0.85, 0.68, 0.20)</li>

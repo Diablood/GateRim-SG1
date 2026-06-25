@@ -158,7 +158,11 @@ Domaines des Grands Maîtres Goa'uld
 ```
 
 Une nouvelle planète génère une faction hostile visible avec un nombre limité
-de colonies. Les marchands Goa'uld restent désactivés.
+de colonies. Les noms des dirigeants Goa'uld utilisent encore une génération vanilla. Leur future correction devra préserver séparément l'identité de l'hôte et celle du symbiote.
+
+Depuis `0.3.46-dev`, chaque nouvelle occurrence reçoit un nom de
+domaine propre et ses colonies utilisent une grammaire Goa'uld dédiée plutôt
+que des noms pirates vanilla. Les marchands Goa'uld restent désactivés.
 
 Depuis `0.1.62-dev`, deux premiers serviteurs Jaffa Goa'uld sont utilisés par
 les groupes de combat et les défenses de colonies :

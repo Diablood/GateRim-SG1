@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.45-dev - Add Free Jaffa world-name generators`. Les nouveaux mondes génèrent des noms propres pour chaque faction Jaffa libre et une grammaire combinatoire de colonies, sans renommer les sauvegardes existantes.
+Dernier jalon publié : `0.3.46-dev - Add Goa'uld world-name generators`. Les nouveaux mondes génèrent des noms propres pour chaque domaine Goa'uld et des colonies dédiées, sans renommer les sauvegardes existantes.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -59,6 +59,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |
+| Noms mondiaux des domaines Goa'uld | 288 noms combinatoires de factions et 1 728 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.46-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, dirigeant généré, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 |
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
 | Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |

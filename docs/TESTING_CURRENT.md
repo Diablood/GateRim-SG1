@@ -1,79 +1,70 @@
-# Validation finale — 0.3.45-dev
+# Validation finale — 0.3.46-dev
 
-Jalon : `0.3.45-dev - Add Free Jaffa world-name generators`
+Jalon : `0.3.46-dev - Add Goa'uld world-name generators`
 
-Branche : `feature/free-jaffa-world-names`
+Branche : `feature/goauld-world-names`
 
-Tag de départ : `v0.3.44-dev`
+Tag de départ : `v0.3.45-dev`
 
-Version de DLL validée : `0.3.45.0`
+Version de DLL validée : `0.3.46.0`
 
-Révision locale finale : `r3`
+Révision locale finale : `r1`
 
-Statut : validation fonctionnelle terminée ; jalon publié sous `v0.3.45-dev`.
+Statut : validation fonctionnelle terminée ; jalon publié sous `v0.3.46-dev`.
 
 ## 1. Contrôles statiques et chargement
 
 - [x] `git diff --check` ne signale aucune erreur.
 - [x] `./tools/check-project-consistency.cmd` termine avec un code `0`.
+- [x] Le rebuild forcé produit une DLL `0.3.46.0`.
 - [x] RimWorld démarre sans nouvelle erreur rouge GateRim SG-1.
-- [x] Les deux RulePackDefs dédiés se chargent.
-- [x] `SG1_FreeJaffa` ne contient plus de `fixedName` ni de référence aux name makers outlander.
+- [x] `SG1_NamerFactionGoauldDomain` et `SG1_NamerSettlementGoauldDomain` se chargent.
+- [x] `SG1_GoauldSystemLordPrototype` ne contient plus de `fixedName` et ne référence plus les name makers pirates.
 
-## 2. Noms de factions
+## 2. Noms des factions
 
-- [x] L'entrée de sélection reste clairement libellée `Jaffa libres` en français et `Free Jaffa` en anglais.
-- [x] Plusieurs factions générées reçoivent des noms distincts et nettement variés.
-- [x] Elles ne portent plus toutes le nom générique `Jaffa libres`.
-- [x] Aucun jeton de grammaire ou suffixe numérique technique n'apparaît dans l'échantillon.
-- [x] Les noms restent cohérents avec des alliances, conseils, clans et communautés rebelles Jaffa.
+- [x] L'entrée de sélection conserve son libellé générique en français ou en anglais.
+- [x] Plusieurs factions générées reçoivent des noms variés.
+- [x] Elles ne portent plus toutes le nom générique de la définition.
+- [x] Aucun suffixe numérique technique, crochet ou jeton de grammaire n'apparaît.
+- [x] Les noms décrivent des domaines, empires, cours ou puissances Goa'uld sans prétendre identifier le dirigeant généré.
 
-Exemples validés par la grammaire :
+## 3. Noms des colonies
 
-```text
-Alliance des clans libres
-Conseil de la résistance Jaffa
-Fraternité des hôtes libérés
-Pacte contre les Maîtres
-```
-
-## 3. Casse française des colonies
-
-- [x] Le premier mot commence par une majuscule.
-- [x] Les mots génériques suivants restent en minuscules : `Refuge des affranchis`, `Citadelle des clans libres`.
-- [x] Le type de colonie après un ordinal reste en minuscule : `Premier refuge`, `Deuxième cité`.
-- [x] Les titres ou noms propres justifiés conservent leur capitale, notamment `Maîtres`, `Jaffa` et `Porte` lorsqu'elle désigne la Porte.
-- [x] Les accords `Premier` / `Première` restent corrects.
-
-## 4. Variété des colonies
-
+- [x] Les colonies utilisent uniquement le générateur dédié.
+- [x] Aucun nom pirate vanilla n'est observé.
 - [x] Les types, thèmes et ordinaux sont variés.
 - [x] Les formes non numérotées restent majoritaires.
-- [x] Aucun suffixe technique `2`, `3` ou supérieur n'est apparu dans l'échantillon de validation.
-- [x] Aucun nom outlander générique n'apparaît.
+- [x] Aucun suffixe technique `2`, `3` ou supérieur n'apparaît dans l'échantillon.
+- [x] Les noms restent lisibles sur la carte mondiale.
 
-La grammaire offre `600` résultats complets sans registre persistant d'unicité. Une collision reste théoriquement possible, mais elle n'est plus systématique lors de la génération normale.
+## 4. Français et anglais
 
-## 5. Génération bilingue
-
-- [x] Les factions et colonies utilisent leurs règles anglaises avec l'anglais actif.
-- [x] Les traductions françaises indexées se chargent avec le français actif.
+- [x] Le premier mot commence par une majuscule et les mots communs internes restent en minuscules.
+- [x] `Porte`, `Souverain` et `Premier Serpent` conservent leur capitale lorsqu'ils fonctionnent comme titres ou noms propres.
+- [x] Les accords `Premier` / `Première` sont corrects.
+- [x] Les accents, apostrophes et `œ` s'affichent correctement.
 - [x] Aucun texte de l'autre langue ni fragment de règle n'apparaît.
-- [x] Les formes ordinales restent naturelles et lisibles.
 
-## 6. Compatibilité des sauvegardes
+## 5. Compatibilité des sauvegardes
 
+- [x] Une sauvegarde créée avant `0.3.46-dev` conserve ses noms sérialisés.
+- [x] Les dirigeants, relations et identités de domaine restent intacts.
 - [x] Aucun renommage rétroactif ni nouvelle donnée persistante n'est introduit.
-- [x] Les noms déjà sérialisés restent hors du flux de génération modifié.
-- [x] Les relations, dirigeants et colonies ne reçoivent aucune migration liée à ce jalon.
 
-## 7. Régressions Free Jaffa
+## 6. Régressions Goa'uld
 
-- [x] Une colonie reste visitable et commerçante.
-- [x] Le convoi de ravitaillement fonctionne.
-- [x] Les visiteurs pacifiques restent générables.
-- [x] Une faction alliée peut toujours fournir l'aide militaire vanilla.
-- [x] Quêtes, raids naturels, sièges et attaques préparées restent désactivés.
+- [x] Chaque faction génère toujours un véritable Grand Maître Goa'uld comme dirigeant.
+- [x] Les colonies conservent leurs groupes Jaffa et leur caste d'hôtes minoritaire.
+- [x] La faction reste ennemie permanente du joueur.
+- [x] Le raid naturel Jaffa Goa'uld reste fonctionnel.
+- [x] Les raids contrôlés et l'incursion de symbiotes libres résolvent toujours une faction Goa'uld valide.
+- [x] Marchands, aide militaire, quêtes, sièges et attaques préparées restent désactivés.
+
+## 7. Constats différés
+
+- [x] Les icônes de colonies restent des maisons vanilla uniquement différenciées par couleur ; la correction est planifiée dans `feature/faction-world-icon-overhaul`.
+- [x] Les chefs de factions Jaffa libres et Goa'uld utilisent encore des noms vanilla ; deux branches distinctes sont planifiées pour traiter leurs contraintes culturelles et identitaires.
 
 ## 8. Journal
 
@@ -83,4 +74,4 @@ La grammaire offre `600` résultats complets sans registre persistant d'unicité
 
 ## Résultat final
 
-Les nouveaux mondes génèrent des factions Jaffa libres distinctement nommées et des colonies bilingues à la casse naturelle. Les noms existants ne sont pas migrés, les systèmes commerciaux et diplomatiques restent inchangés, et la révision finale `r3` est publiée sous `v0.3.45-dev`.
+Les nouveaux mondes utilisent des noms de domaines et de colonies Goa'uld dédiés et bilingues, tandis que les sauvegardes existantes restent intactes. Le changement ne modifie ni les dirigeants, ni les identités de domaine, ni les groupes de pawns, ni les raids, ni les données persistantes. La révision finale `r1` est publiée sous `v0.3.46-dev`.

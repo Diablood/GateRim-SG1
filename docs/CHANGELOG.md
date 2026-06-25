@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.46-dev - Add Goa'uld world-name generators
+
+- Remove the shared `fixedName` from `SG1_GoauldSystemLordPrototype` while preserving its generic world-creation label.
+- Replace `NamerFactionPirate` and `NamerSettlementPirate` with dedicated GateRim SG-1 RulePackDefs.
+- Add `SG1_NamerFactionGoauldDomain`, combining `12` forms of power and `24` imperial or religious themes for `288` possible domain names.
+- Add `SG1_NamerSettlementGoauldDomain`, combining `12` place types, `24` themes and `5` ordinal ranks for `1,728` possible settlement names.
+- Add indexed French translations with lower-case internal common nouns, selected proper-title capitals and masculine/feminine ordinal agreement.
+- Keep the generated domain name independent from the separately generated System Lord leader, avoiding false identity links or unplanned canon names.
+- Apply the new names only to newly generated factions and settlements; existing save names remain serialized and unchanged.
+- Add no custom settlement layout, icon, texture, faction, PawnKind, mission, raid behavior or persistent save data.
+- Validate final local revision `r1`, including varied domain and settlement names, natural French casing, bilingual RulePackDef loading, unchanged serialized-name behavior, Goa'uld faction regressions and a clean `Player.log`.
+- Record dedicated follow-up branches for Free Jaffa leader names, Goa'uld System Lord leader names and the global faction world-icon overhaul without extending this milestone.
+- Publish branch `feature/goauld-world-names`, final tag `v0.3.46-dev` and the synchronized wiki.
+
 ## 0.3.45-dev - Add Free Jaffa world-name generators
 
 - Replace the remaining vanilla outlander faction and settlement name makers on `SG1_FreeJaffa` with dedicated GateRim SG-1 RulePackDefs.

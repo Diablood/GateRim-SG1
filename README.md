@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.45-dev`
+- Development version: `0.3.46-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -20,7 +20,9 @@ people, factions, technologies, biology and conflicts surrounding it.
 
 - A stranded four-person SG-team starting scenario with dedicated field gear.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and a hidden
-  Tok'ra world presence.
+  Tok'ra world presence. Newly generated Goa'uld domains and settlements use
+  dedicated combinatorial naming grammars instead of a shared fixed faction
+  name or vanilla pirate settlement names.
 - Newly generated Free Jaffa factions and settlements use dedicated combinatorial
   liberation- and clan-themed grammars instead of a shared fixed faction name
   or vanilla outlander town names; French compound names use natural
