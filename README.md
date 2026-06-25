@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.43-dev`
+- Development version: `0.3.44-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -22,6 +22,7 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and a hidden
   Tok'ra world presence.
 - A specialized Free Jaffa clan-supply convoy that trades provisions, strategic materials and limited military equipment through ordinary RimWorld caravan commerce.
+- Allied Free Jaffa can answer an ordinary military-aid request through a powered communications console, using RimWorld goodwill costs, cooldowns and arrival behavior.
 - Rare Goa'uld free-symbiote incursions that scale from storyteller threat
   points and reuse the autonomous implantation system as a biological hazard.
   A hostile symbiote that survives the one-day intervention window can seize

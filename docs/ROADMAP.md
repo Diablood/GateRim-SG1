@@ -1,6 +1,29 @@
 # Roadmap
 
-## Dernier jalon clôturé — Réseau commercial des Jaffa libres (`0.3.43-dev`)
+## Dernier jalon clôturé — Aide militaire des Jaffa libres (`0.3.44-dev`)
+
+- [x] Repartir explicitement de `v0.3.43-dev` sur `feature/free-jaffa-military-aid`.
+- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
+- [x] Choisir un jalon diplomatique limité avant la passe visuelle, le storyteller, la Porte des étoiles ou une nouvelle race complète.
+- [x] Activer la demande d'aide militaire uniquement par le flux vanilla de la console de communication.
+- [x] Réutiliser le groupe `Combat` Jaffa libre existant sans ajouter de PawnKind ni d'incident parallèle.
+- [x] Conserver les exigences d'alliance, le coût de bonne volonté, le délai et le comportement d'arrivée vanilla.
+- [x] Maintenir désactivés les sites de quête, les raids naturels, les sièges et les attaques préparées.
+- [x] Mettre à jour les versions, traductions, documents techniques et brouillons wiki.
+- [x] Valider `check-project-consistency.cmd` et le rebuild forcé `0.3.44.0`.
+- [x] Valider l'apparition de la demande uniquement au statut allié.
+- [x] Valider le coût de bonne volonté, le délai de nouvelle demande et les refus vanilla.
+- [x] Valider la composition, la biologie, l'équipement et l'identité des renforts Jaffa libres.
+- [x] Valider le combat, le départ, la sauvegarde/rechargement et `Player.log`.
+- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.44-dev` et synchroniser le wiki.
+
+Ce jalon ne crée ni mission, ni ressource diplomatique, ni règle d'arrivée propre au mod. Il ouvre un service vanilla cohérent pour une faction Jaffa libre alliée et conserve les autres formes de contenu factionnel pour des jalons dédiés.
+
+La révision finale `r1` valide les relations neutre, hostile et alliée, le coût de bonne volonté, le délai vanilla, la composition du groupe de combat, l'identité biologique et culturelle des renforts, leur arrivée, leur comportement, leur départ, la sauvegarde/rechargement et un `Player.log` sans nouvelle erreur GateRim SG-1.
+
+Le jalon est publié sous le tag final unique `v0.3.44-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.45-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Jalon précédent clôturé — Réseau commercial des Jaffa libres (`0.3.43-dev`)
 
 - [x] Repartir explicitement de `v0.3.42-dev` sur `feature/free-jaffa-trade-network`.
 - [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.

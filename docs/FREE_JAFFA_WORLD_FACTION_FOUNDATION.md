@@ -83,7 +83,13 @@ trade is added later by `0.3.43-dev`, which changes the current faction state to
 canRequestTraders: true
 ```
 
-Quests and military aid remain deferred.
+Military aid is added later by `0.3.44-dev`, which changes the current faction state to:
+
+```text
+canRequestMilitaryAid: true
+```
+
+The request remains restricted to an allied faction and uses RimWorld's ordinary communications-console, goodwill, cooldown and `Combat` pawn-group flow. Quests remain deferred.
 
 ## Provisional faction leader
 

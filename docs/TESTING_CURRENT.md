@@ -1,97 +1,86 @@
-# Validation ciblée — 0.3.43-dev
+# Validation ciblée — 0.3.44-dev
 
-Jalon : `0.3.43-dev - Add Free Jaffa trade network`
+Jalon : `0.3.44-dev - Add Free Jaffa military aid`
 
-Branche : `feature/free-jaffa-trade-network`
+Branche : `feature/free-jaffa-military-aid`
 
-Tag de départ : `v0.3.42-dev`
+Tag de départ : `v0.3.43-dev`
 
-Version de DLL validée : `0.3.43.0`
+Version de DLL validée : `0.3.44.0`
 
-Révision locale finale validée : `r5`
+Révision locale finale validée : `r1`
 
-Statut : validation terminée, publication sous `v0.3.43-dev`.
+Statut : validation terminée, publication sous `v0.3.44-dev`.
 
 ## 1. Contrôles statiques et chargement
 
 - [x] `git diff --check` ne signale aucune erreur.
 - [x] `./tools/check-project-consistency.cmd` termine avec un code `0`.
-- [x] La DLL existante reste en version `0.3.43.0` ; aucun rebuild n'est requis pour cette révision XML et documentaire.
-- [x] Aucun `Could not resolve cross-reference` ne concerne `SG1_Caravan_FreeJaffaClanSupplies`, ses objets ou ses catégories.
-- [x] Aucun message de configuration ne signale qu'un objet du stock ne peut pas être vendu par le marchand.
-- [x] `SG1_JaffaLightArmor`, `SG1_JaffaHeavyArmor`, `SG1_JaffaGauntlets`, `SG1_JaffaReinforcedBoots` et `SG1_JaffaDeployedHelmet` peuvent être générés dans le stock du convoi.
-- [x] `SG1_JaffaRetractedHelmet` reste interne et n'apparaît jamais dans le commerce.
-- [x] Aucun message `not a trader but is in a traders list` ne concerne `SG1_FreeJaffaTrader`.
+- [x] Le rebuild forcé produit bien une DLL `0.3.44.0`.
+- [x] RimWorld démarre sans nouvelle erreur rouge GateRim SG-1.
+- [x] `SG1_FreeJaffa` charge avec `canRequestMilitaryAid=true`.
+- [x] Les groupes `Combat`, `Trader`, `Settlement` et `Peaceful` restent valides.
 
-## 2. Génération du convoi spécialisé
+## 2. Préparation diplomatique
 
-- [x] Une arrivée commerciale Jaffa libre utilise le type `convoi de ravitaillement des clans libres`.
-- [x] Le groupe contient un `SG1_FreeJaffaTrader`, des gardes Jaffa libres et des animaux de bât.
-- [x] Le marchand est reconnu comme interlocuteur et la fenêtre de commerce s'ouvre.
-- [x] Générer au moins cinq stocks permet d'observer une variation réelle sans changer l'identité générale du convoi.
-- [x] Le groupe quitte normalement la carte après la visite.
+Utiliser une sauvegarde de test disposant :
 
-## 3. Stock vendu par le convoi
+- d'une faction `Jaffa libres` visible ;
+- d'une console de communication alimentée ;
+- d'au moins un colon capable de négocier ;
+- d'une menace ou d'une cible hostile permettant d'observer les renforts.
 
-Vérifier sur plusieurs générations la présence cohérente de :
+En mode développeur, utiliser l'action vanilla de modification de bonne volonté pour placer successivement la faction en relation neutre puis alliée.
 
-- [x] repas de survie et/ou pemmican ;
-- [x] phytomédicaments et médicaments industriels ;
-- [x] acier, plasteel, composants industriels, chemfuel et tissu en quantités modérées ;
-- [x] composants avancés seulement de manière occasionnelle ;
-- [x] quelques armes humaines industrielles à distance et de mêlée ;
-- [x] quelques protections militaires ;
-- [x] zéro à deux bâtons Ma'Tok ;
-- [x] équipement Jaffa en pièces limitées et variables ;
-- [x] Zat'nik'tel absent de la majorité des stocks et limité à un exemplaire lorsqu'il apparaît.
+- [x] À relation neutre, le dialogue de la faction ne propose pas d'aide militaire.
+- [x] À relation hostile, aucun appel pacifique à l'aide n'est disponible.
+- [x] Au statut allié, la demande d'aide militaire apparaît dans le dialogue vanilla.
+- [x] Sans console alimentée ou sans opérateur valide, la demande ne peut pas être lancée.
 
-## 4. Catégories volontairement absentes
+## 3. Demande et coût diplomatique
 
-- [x] Aucun assortiment générique de meubles, œuvres d'art ou objets de loisir n'est ajouté.
-- [x] Aucun stock d'animaux à vendre n'est ajouté ; les animaux présents servent uniquement de porteurs.
-- [x] Aucun catalogue générique de drogues récréatives n'est ajouté.
-- [x] Le convoi ne devient pas un marchand de biens exotiques, d'implants ou de technologies ultrarares.
+- [x] La demande affiche ou applique le coût de bonne volonté prévu par RimWorld.
+- [x] La bonne volonté est effectivement réduite après acceptation.
+- [x] La demande ne consomme aucune confiance Tok'ra ni ressource GateRim SG-1 parallèle.
+- [x] Une seconde demande immédiate est bloquée par le délai ou par la relation résultante selon les règles vanilla.
+- [x] Le refus éventuel utilise un message vanilla compréhensible et ne produit pas d'état GateRim persistant.
 
-## 5. Achat d'équipement au joueur et limite économique
+## 4. Composition des renforts
 
-Préparer plusieurs armes et protections humaines de valeurs différentes :
+Inspecter plusieurs membres du groupe arrivé :
 
-- [x] le convoi accepte les armes à distance industrielles ;
-- [x] le convoi accepte les armes de mêlée ;
-- [x] le convoi accepte les armures et casques militaires ;
-- [x] le convoi accepte les équipements Jaffa et Goa'uld explicitement présents dans son profil ;
-- [x] la réserve d'argent générée se situe approximativement entre `850` et `1300` ;
-- [x] un lot important d'équipement ne peut pas être intégralement vendu une fois la réserve épuisée ;
-- [x] une arme coûteuse peut absorber une part importante du budget sans créer d'argent illimité.
+- [x] seuls `SG1_FreeJaffaWarrior` et `SG1_FreeJaffaGuard` composent le groupe de combat ;
+- [x] les pawns possèdent le xénotype Jaffa ;
+- [x] leur Prim'ta est présent après l'initialisation normale ;
+- [x] leurs noms et backstories correspondent aux Jaffa libres ;
+- [x] leurs bâtons Ma'Tok et armures modulaires sont cohérents avec leur profil ;
+- [x] aucune marque frontale Goa'uld n'est imposée automatiquement ;
+- [x] aucun marchand, animal de bât ou pawn Goa'uld n'est mélangé au groupe d'aide.
 
-## 6. Identité du marchand
+## 5. Arrivée, combat et départ
 
-- [x] Le marchand possède le xénotype Jaffa et un Prim'ta initial.
-- [x] Son nom et ses backstories appartiennent aux profils Jaffa libres.
-- [x] Il porte un bâton Ma'Tok, une armure légère, des gantelets et des bottes renforcées.
-- [x] Il ne reçoit pas automatiquement de marque frontale Goa'uld.
-- [x] L'absence de casque permet de le distinguer des gardes.
+- [x] RimWorld choisit et exécute normalement le mode d'arrivée de l'aide.
+- [x] Les renforts sont alliés au joueur et hostiles à la menace appropriée.
+- [x] Ils combattent sans gizmo, ordre ou contrôleur GateRim supplémentaire.
+- [x] Les pertes, mises à terre et soins éventuels suivent les règles vanilla.
+- [x] Le groupe quitte la carte selon le comportement vanilla après son intervention.
+- [x] Aucun renfort ne rejoint automatiquement la colonie.
 
-## 7. Autres flux commerciaux et limites de faction
+## 6. Persistance et limites de faction
 
-- [x] Une caravane du joueur peut toujours commercer avec une colonie Jaffa libre.
-- [x] Le visiteur marchand vanilla peut toujours utiliser la faction Jaffa libre.
-- [x] Une demande de marchand par console respecte encore les relations, délais et coûts vanilla.
-- [x] Une faction Jaffa libre hostile n'est pas proposée comme partenaire pacifique.
-- [x] L'aide militaire, les sites de quête, les raids naturels, les sièges et les attaques préparées restent désactivés.
-- [x] Les visiteurs pacifiques non marchands de `0.2.6-dev` restent inchangés.
+- [x] Sauvegarder et recharger pendant la présence des renforts conserve leur faction, leur état et leur comportement.
+- [x] Le coût et le délai de demande restent cohérents après rechargement.
+- [x] `canGenerateQuestSites` reste désactivé.
+- [x] `raidsForbidden` reste actif.
+- [x] Les sièges et attaques préparées Jaffa libres restent désactivés.
+- [x] Le commerce, les colonies, les visiteurs pacifiques et le convoi spécialisé de `0.3.43-dev` fonctionnent toujours.
 
-## 8. Persistance et régressions
+## 7. Journal
 
-- [x] Sauvegarder et recharger avec un convoi présent conserve le marchand, le stock, les gardes et les porteurs.
-- [x] Le commerce reste possible après rechargement.
-- [x] Les colonies, relations, visiteurs pacifiques, Jaffa Goa'uld, Tok'ra et opérations existantes ne présentent pas de régression évidente.
 - [x] `Player.log` ne contient aucune nouvelle erreur GateRim SG-1.
+- [x] Aucune erreur de génération de groupe `Combat` ou de PawnKind Jaffa libre n'apparaît.
+- [x] Aucun message de référence XML manquante n'est introduit.
 
 ## Résultat final
 
-La révision `r5` remplace le grossiste générique par un convoi de
-ravitaillement Jaffa libre identifiable et utile, capable d'acheter du matériel
-militaire humain tout en restant limité par son argent. Elle ne devient pas
-un marchand universel destiné à couvrir par avance les rôles économiques des
-futures factions GateRim SG-1.
+La révision finale `r1` permet à une faction Jaffa libre alliée de fournir une aide militaire par le dialogue vanilla de la console de communication. Le coût, le délai, l'arrivée, le combat et le départ restent entièrement gouvernés par RimWorld, tandis que la force générée conserve l'identité biologique, culturelle et militaire des Jaffa libres. Les quêtes, raids naturels, sièges et attaques préparées restent désactivés, et aucun nouvel état persistant n'est ajouté.

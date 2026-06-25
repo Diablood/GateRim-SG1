@@ -87,15 +87,14 @@ vanilla economy in every culture.
 The following faction features remain disabled:
 
 ```text
-canRequestMilitaryAid: false
+canRequestMilitaryAid: true (since 0.3.44-dev)
 canGenerateQuestSites: false
 raidsForbidden: true
 canSiege: false
 canStageAttacks: false
 ```
 
-No goodwill rule, recruitment offer, quest, military aid or natural raid is
-introduced here.
+No goodwill rule, recruitment offer, quest or natural raid is introduced by the trade milestone. Allied military aid is added separately in `0.3.44-dev` and reuses RimWorld's ordinary diplomacy flow.
 
 ## Save compatibility
 

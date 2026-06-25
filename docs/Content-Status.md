@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.43-dev - Add Free Jaffa trade network`. Les Jaffa libres disposent d’un convoi spécialisé dans le ravitaillement, les ressources stratégiques et le matériel militaire, en complément des visiteurs, colonies et demandes de marchand vanilla.
+Dernier jalon publié : `0.3.44-dev - Add Free Jaffa military aid`. Une faction Jaffa libre alliée peut répondre à une demande d’aide militaire par la console de communication, avec le coût, le délai, l’arrivée et le départ vanilla.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 

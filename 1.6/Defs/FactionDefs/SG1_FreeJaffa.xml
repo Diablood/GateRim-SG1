@@ -5,13 +5,13 @@
 
     The faction starts neutral toward the player, remains hostile to the
     Goa'uld through the Goa'uld faction's permanent-enemy rule, and exposes a
-    limited settlement presence with specialized clan-supply trade while quests,
-    military aid and natural raids remain disabled.
+    limited settlement presence, specialized clan-supply trade and allied
+    military support while quests and natural raids remain disabled.
     -->
     <FactionDef>
         <defName>SG1_FreeJaffa</defName>
         <label>Free Jaffa</label>
-        <description>Independent Jaffa communities freed from Goa'uld domination. They maintain a limited number of visible settlements, neutral initial relations with the SGC expedition, rare peaceful visitors and practical trade links using ordinary caravan and settlement commerce. Military aid, quests and natural raids remain disabled until later balancing passes.</description>
+        <description>Independent Jaffa communities freed from Goa'uld domination. They maintain a limited number of visible settlements, neutral initial relations with the SGC expedition, rare peaceful visitors and practical trade links using ordinary caravan and settlement commerce. Once allied, they can answer a military-aid request through the communications console. Quests and natural raids remain disabled until later balancing passes.</description>
         <fixedName>Free Jaffa</fixedName>
         <pawnsPlural>Free Jaffa</pawnsPlural>
         <pawnSingular>Free Jaffa</pawnSingular>
@@ -67,14 +67,15 @@
 
         <!--
         Current policy: trade is available through a dedicated clan-supply caravan plus
-        vanilla visitor and settlement flows. Aid, quests and natural raids remain
-        intentionally disabled until separate balancing milestones.
+        vanilla visitor and settlement flows. Allied military aid reuses the ordinary
+        comms-console request, goodwill cost, cooldown and Combat pawn-group flow.
+        Quests and natural raids remain intentionally disabled.
         -->
         <raidsForbidden>true</raidsForbidden>
         <canSiege>false</canSiege>
         <canStageAttacks>false</canStageAttacks>
         <canRequestTraders>true</canRequestTraders>
-        <canRequestMilitaryAid>false</canRequestMilitaryAid>
+        <canRequestMilitaryAid>true</canRequestMilitaryAid>
         <canGenerateQuestSites>false</canGenerateQuestSites>
 
         <!--

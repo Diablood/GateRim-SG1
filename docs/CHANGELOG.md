@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.44-dev - Add Free Jaffa military aid
+
+- Enable the ordinary RimWorld military-aid request for allied Free Jaffa factions.
+- Reuse the powered communications-console dialogue, allied-relation requirement, goodwill cost, cooldown, arrival and departure behavior.
+- Reuse the existing Free Jaffa `Combat` pawn group made of `SG1_FreeJaffaWarrior` and `SG1_FreeJaffaGuard`.
+- Preserve Jaffa xenotype, automatic Prim'ta, Free Jaffa names and backstories, Ma'Tok equipment, modular armor and the absence of imposed Goa'uld forehead marks.
+- Keep quest sites, natural raids, sieges and staged attacks disabled.
+- Add no custom incident, mission, currency, PawnKind, persistent save data or texture.
+- Validate final local revision `r1`, including clean startup, neutral/hostile/allied access rules, goodwill cost, repeated-request restrictions, coherent Free Jaffa reinforcements, combat, departure, save/reload and a clean `Player.log`.
+- Publish branch `feature/free-jaffa-military-aid`, final tag `v0.3.44-dev` and the synchronized wiki.
+
 ## 0.3.43-dev - Add Free Jaffa trade network
 
 - Enable ordinary Free Jaffa trade through vanilla caravan, visitor, settlement and comms-console workflows.

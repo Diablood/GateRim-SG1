@@ -1,78 +1,57 @@
 # Current project state
 
-Current milestone: `0.3.43-dev - Add Free Jaffa trade network` — final local revision `r5` validated and published.
+Current milestone: `0.3.44-dev - Add Free Jaffa military aid` — final local revision `r1` validated and published.
 
 ## Repository state
 
-- Starting tag: `v0.3.42-dev`.
-- Published branch: `feature/free-jaffa-trade-network`.
-- Final tag: `v0.3.43-dev`.
-- Published versions: `0.3.43-dev` and `0.3.43.0`.
-- Final local revision: `r5`.
+- Starting tag: `v0.3.43-dev`.
+- Published branch: `feature/free-jaffa-military-aid`.
+- Final tag: `v0.3.44-dev`.
+- Published versions: `0.3.44-dev` and `0.3.44.0`.
+- Final local revision: `r1`.
 - Main GitHub repository and separate wiki synchronized.
 
 ## Published scope
 
-The visible Free Jaffa faction uses RimWorld's existing settlement, visitor,
-caravan and comms-console trade flows. Caravan arrivals use the dedicated
-`SG1_Caravan_FreeJaffaClanSupplies` trader kind instead of a generic vanilla
-bulk-goods inventory.
+The visible Free Jaffa faction can answer RimWorld's ordinary military-aid request once relations reach the allied threshold.
 
-The clan-supply convoy is deliberately bounded around:
+The feature deliberately reuses:
 
-- durable field provisions and medicine;
-- steel, plasteel, components, chemfuel and cloth in moderate quantities;
-- industrial human ranged and melee weapons;
-- military armor;
-- limited Ma'Tok, Zat'nik'tel and modular Jaffa equipment;
-- a purchasing budget of roughly `850` to `1300` silver.
+- the powered communications-console interaction;
+- vanilla faction-relation requirements;
+- vanilla goodwill cost and request cooldown;
+- vanilla arrival, combat and departure behavior;
+- the existing Free Jaffa `Combat` pawn-group profile.
 
-The weapon and armor generators allow the convoy to buy human military
-equipment from the player. The finite silver reserve remains the primary limit
-on how much raid loot or manufactured equipment one visit can absorb.
-
-The five public Jaffa armor ThingDefs are tradeable in both directions so the
-custom convoy can generate them for sale. The internal retracted helmet state
-remains non-tradeable and cannot enter merchant stock.
-
-## Dedicated trader pawn
-
-`SG1_FreeJaffaTrader` provides a culturally coherent caravan contact:
-
-- Jaffa xenotype and automatic Prim'ta;
-- Free Jaffa childhood, adulthood and cultural name generation;
-- Ma'Tok staff;
-- light Jaffa armor, gauntlets and reinforced boots;
-- no automatic Goa'uld forehead mark;
-- no helmet, keeping the caravan contact distinct from its guards.
+The generated force uses `SG1_FreeJaffaWarrior` and `SG1_FreeJaffaGuard`, with their existing Jaffa xenotype, Prim'ta, Ma'Tok equipment, modular armor and Free Jaffa cultural identity.
 
 ## Deliberate limits
 
-Visitor and settlement trade still use their standard vanilla profiles. This
-milestone specializes only the caravan inventory.
+This milestone does not add:
 
-The convoy is not intended to cover every economic need of a future world with
-only GateRim SG-1 factions. Future commercial factions, including the Nox,
-should cover missing categories after a shared economy audit instead of turning
-the Free Jaffa into a universal merchant.
+- a custom aid incident or mission;
+- a dedicated aid currency or trust system;
+- quest sites or faction quests;
+- natural Free Jaffa raids;
+- sieges or staged attacks;
+- new PawnKinds, weapons, armor, textures or persistent save data.
 
-Military aid, quest sites, recruitment, goodwill changes and natural Free Jaffa
-raids remain outside this milestone. No persistent faction, pawn, item or
-save-data identifier was removed or renamed.
+The exact force size, arrival method, goodwill cost and cooldown remain governed by RimWorld's ordinary military-aid flow rather than hard-coded GateRim SG-1 values.
 
 ## Final validation
 
-- `check-project-consistency.cmd` passed and the existing `0.3.43.0` build remained valid;
-- startup completed without Free Jaffa trader cross-reference, stock-generator or tradeability errors;
-- settlement trade and forced clan-supply caravan generation were validated;
-- the trader pawn, guards, pack animals and trade window behaved correctly;
-- repeated stocks preserved the intended military-supply identity and bounded Jaffa equipment;
-- human weapons and armor could be sold until the convoy's finite silver reserve was exhausted;
-- the retracted helmet remained excluded from commerce;
-- save/reload and `Player.log` checks passed without a new GateRim SG-1 regression.
+- `check-project-consistency.cmd` passed and the rebuilt assembly reported version `0.3.44.0`;
+- the request remained unavailable at neutral or hostile relations and appeared at allied status through a powered communications console;
+- goodwill cost, repeated-request restrictions and refusal messages followed the vanilla diplomatic flow;
+- the arriving force contained coherent Free Jaffa warriors and guards with Jaffa biology, culture and equipment;
+- arrival, combat, losses and departure remained under vanilla control without GateRim-specific orders or persistent state;
+- save/reload during the intervention preserved faction, pawns and behavior;
+- quest sites, natural raids, sieges and staged attacks remained disabled;
+- the existing Free Jaffa trade network and peaceful visitors remained functional;
+- `Player.log` contained no new GateRim SG-1 error.
 
 ## Next step
 
 Choose the next milestone after rereading `docs/ROADMAP.md`,
 `docs/IDEAS_TO_REVISIT.md` and `docs/MILESTONE_PUBLICATION.md`. Start it
-explicitly from `v0.3.43-dev` on a new dedicated branch.
+explicitly from `v0.3.44-dev` on a new dedicated branch.

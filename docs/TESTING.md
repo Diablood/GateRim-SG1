@@ -1,5 +1,27 @@
 # Testing checklist
 
+## 0.3.44-dev - Free Jaffa military aid
+
+Validation locale terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.44-dev`.
+
+Couverture durable :
+
+- conserver l'aide militaire disponible uniquement lorsqu'une faction Jaffa libre est alliée et joignable par une console de communication alimentée ;
+- réutiliser le coût de bonne volonté, le délai, l'arrivée, le combat et le départ vanilla sans état diplomatique parallèle ;
+- générer la force depuis le groupe `Combat` existant avec uniquement des guerriers et gardes Jaffa libres cohérents ;
+- vérifier xénotype Jaffa, Prim'ta, noms et backstories culturels, Ma'Tok, armures et absence de marque frontale Goa'uld imposée ;
+- refuser l'accès à relation neutre ou hostile et empêcher une répétition immédiate selon les règles vanilla ;
+- sauvegarder et recharger pendant l'intervention sans modifier la faction ni le comportement des renforts ;
+- conserver désactivés les sites de quête, raids naturels, sièges et attaques préparées ;
+- revalider le commerce, les colonies, les visiteurs pacifiques et le convoi spécialisé ;
+- vérifier `Player.log` et l'absence d'erreurs de génération du groupe `Combat`.
+
+Limites durables :
+
+- ne pas créer un incident, une mission, une monnaie ou un système de confiance spécifique pour dupliquer le service vanilla ;
+- ne pas figer dans la documentation un nombre de renforts ou un mode d'arrivée que RimWorld peut adapter ;
+- conserver toute future aide spéciale ou scénarisée dans un jalon distinct.
+
 ## 0.3.43-dev - Free Jaffa trade network
 
 Validation locale terminée sur la révision finale `r5`, puis jalon publié sous `v0.3.43-dev`.
@@ -14,7 +36,7 @@ Couverture durable :
 - maintenir une réserve d'argent approximative de `850` à `1300` afin qu'un convoi ne puisse pas absorber indéfiniment le butin de raids ou une production militaire ;
 - ne pas ajouter de catalogue générique de meubles, œuvres d'art, animaux, drogues récréatives, implants ou biens exotiques ;
 - conserver le commerce de colonie, les visiteurs marchands et les demandes par communicateur sous leurs flux vanilla ;
-- conserver désactivés l'aide militaire, les sites de quête, les raids naturels, les sièges et les attaques préparées des Jaffa libres ;
+- conserver désactivés les sites de quête, les raids naturels, les sièges et les attaques préparées des Jaffa libres ; l'aide militaire alliée est couverte séparément par `0.3.44-dev` ;
 - sauvegarder et recharger avec un convoi présent, puis vérifier le marchand, le stock, les gardes, les porteurs et `Player.log`.
 
 Limites durables :

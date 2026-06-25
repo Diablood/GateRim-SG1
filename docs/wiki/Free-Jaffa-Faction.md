@@ -82,13 +82,22 @@ ravitaillement des clans libres lorsque les relations le permettent.
 Le [réseau commercial Jaffa libre](Free-Jaffa-Trade) utilise un marchand Jaffa
 dédié, escorté par des guerriers et gardes Jaffa libres. Son stock se concentre sur les provisions, les ressources stratégiques et le matériel militaire, avec une réserve d'argent limitée.
 
+## Aide militaire
+
+Depuis `0.3.44-dev`, une faction Jaffa libre alliée peut répondre à une
+[demande d'aide militaire](Free-Jaffa-Military-Aid) transmise par une console
+de communication alimentée.
+
+Le coût de bonne volonté, le délai, l'arrivée et le départ des renforts suivent
+les règles ordinaires de RimWorld. La force reste composée de guerriers et de
+gardes Jaffa libres existants.
+
 ## Limites actuelles
 
 Restent prévus pour plus tard :
 
 - profils civils ou diplomatiques spécialisés ;
 - quêtes ;
-- aide militaire ;
 - réactions diplomatiques plus détaillées.
 
 Les textures définitives et les concept arts semi-réalistes destinés au wiki
