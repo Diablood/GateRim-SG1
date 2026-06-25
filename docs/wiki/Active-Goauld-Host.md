@@ -1,46 +1,24 @@
 # Hôte Goa'uld actif
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.18-dev
+Après la phase d'[implantation récente](Recent-Implantation), le même symbiote devient un état Goa'uld adulte permanent dans son hôte. Son identifiant et son identité persistent pendant la conversion.
 
-## Présentation
+## Effets biologiques
 
-Après la phase d'implantation récente, le symbiote adulte établit automatiquement son contrôle sur sa victime.
+L'hôte bénéficie notamment d'une guérison et d'une immunité accélérées, d'une réduction de la douleur et des dégâts entrants, et d'une longévité fortement augmentée. Son xenotype germinal n'est pas remplacé.
 
-## Cycle actuel
+## Prise de contrôle hostile
 
-```text
-symbiote Goa'uld libre
-    ↓ implantation forcée manuelle
-implantation Goa'uld récente
-    ↓ une journée de jeu
-symbiote Goa'uld adulte
-```
+Depuis `0.3.40-dev`, l'origine et l'allégeance du symbiote ont une conséquence directe :
 
-L'identité persistante du parasite reste identique durant toute la transition.
+- un symbiote Goa'uld appartenant à une faction hostile arme une prise de contrôle lorsqu'il implante un colon joueur;
+- le joueur conserve toute la durée de la phase critique pour tenter une extraction;
+- si la conversion s'achève, le pawn existant rejoint la faction Goa'uld du symbiote et quitte le contrôle de la colonie;
+- son corps, ses relations, son équipement, son xenotype et l'identité du symbiote restent ceux d'avant la conversion.
 
-## Effets actuels
+Une lettre de menace signale cette perte. L'hôte rejoint aussi un assaut Goa'uld persistant : il attaque la colonie au lieu de chercher immédiatement à quitter la carte comme un pawn hostile isolé. Il conserve toutefois le repli vanilla d'un raid et peut donc finalement quitter une carte abandonnée ou un assaut épuisé. Ce flux complet, y compris la migration des sauvegardes de développement antérieures, est validé depuis `0.3.40-dev`.
 
-| Effet | Valeur |
-|---|---:|
-| Immunité | `×1,75` |
-| Guérison des blessures | `×1,75` |
-| Dégâts reçus | `×0,8` |
-| Espérance de vie | `×5` |
-| Douleur | `×0,7` |
+## Exceptions
 
-## Génétique de l'hôte
+La prise de contrôle hostile ne s'applique pas aux Tok'ra, aux symbiotes Goa'uld contrôlés par le joueur ni aux symbiotes sans allégeance hostile. Ces implantations conservent la faction actuelle de l'hôte.
 
-La possession adulte ne remplace pas la lignée germinale de la victime.
-
-Un humain basique reste génétiquement humain basique. Un Jaffa reste génétiquement Jaffa. Le symbiote est représenté par un état de santé acquis et persistant.
-
-## Évolutions prévues
-
-- contrôle comportemental approfondi ;
-- capacités Goa'uld ;
-- naquadah fonctionnel dans le sang ;
-- transfert vers un nouvel hôte ;
-- extraction ;
-- implantation rituelle ;
-- comportement Tok'ra distinct.
+Une extraction réussie pendant la phase critique laisse l'hôte dans sa faction et fait réapparaître le même symbiote libre avec son allégeance d'origine. Une restauration développeur d'un hôte déjà contrôlé retire d'abord son assaut Goa'uld avant de rendre la faction déplacée.

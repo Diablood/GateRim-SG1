@@ -77,13 +77,29 @@ Available actions:
 - `Force weak-colony scaling` with `300` points;
 - `Force advanced-colony scaling` with `2600` points.
 
-## Known boundary
+## Assault behavior correction in `0.3.40-dev-r2`
 
-The incident uses the same implantation outcome as every existing free Goa'uld
-symbiote. This milestone does not change host faction, player control, identity
-persistence, extraction or active-host behavior. Any future change to hostile
-host allegiance must be designed and tested as a separate system-wide
-milestone rather than hidden inside this incident.
+Incident-spawned symbiotes now join one vanilla `LordJob_AssaultColony` with
+`canKidnap = false` and `canTimeoutOrFlee = false`. The Lord supplies a stable
+hostile assault duty while the existing `SG1_GoauldAutonomousImplant` job
+remains responsible for target selection, movement and implantation on contact.
+
+This prevents the animal think tree from alternating the dedicated pursuit with
+a flee or map-exit response. It does not change ordinary manually spawned or
+player-controlled symbiotes, group size, threat scaling, implantation identity
+or the later host-takeover rules.
+
+## Hostile consequence from `0.3.40-dev`
+
+The incident still uses the shared free-symbiote implantation path rather than
+incident-specific conversion code. A symbiote spawned for the hostile System
+Lord faction now carries that allegiance into the recent implantation state.
+
+If the player does not extract it during the one-day intervention window, the
+shared host-conversion system can transfer the existing host pawn into that
+Goa'uld faction. Tok'ra, player-controlled and factionless symbiotes remain
+excluded. This consequence is implemented in persistent symbiote data so future
+hostile implantation sources receive the same rules automatically.
 
 ## Final validation
 

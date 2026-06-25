@@ -102,7 +102,6 @@ namespace GateRimSG1.Goauld
             GoauldSymbioteData transferredData = sourceComp.TakeDataForTransfer();
             string transferredId = transferredData.SymbioteId;
 
-            transferredData.DetachFromHost(host, CurrentGameTick());
             freeComp.InitializeWithTransferredData(transferredData);
 
             if (!GenPlace.TryPlaceThing(
@@ -126,6 +125,8 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            sourceComp.ReleaseHostControl();
+            transferredData.DetachFromHost(host, CurrentGameTick());
             host.health.RemoveHediff(parent);
 
             GR_Log.Message(

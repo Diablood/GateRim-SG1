@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.40-dev - Add hostile Goa'uld host takeover
+
+- Persist the free symbiote's faction allegiance and the host faction displaced by implantation.
+- Arm hostile takeover only for Goa'uld-origin symbiotes belonging to a non-player faction hostile to the player.
+- Transfer the host into the symbiote faction when recent implantation becomes an active Goa'uld host.
+- Preserve the same pawn, body, relationships, xenotype and persistent symbiote identity through the faction transition.
+- Send a bilingual RP threat letter and remove the converted pawn from player-control UI immediately.
+- Preserve pending and active takeover state through save and reload.
+- Restore or preserve the displaced host faction when emergency extraction or supported state removal releases the symbiote.
+- Return an extracted free symbiote to its recorded faction allegiance.
+- Preserve Tok'ra implantation and player-controlled or factionless Goa'uld symbiote behavior.
+- Add compact developer actions for inspection, forced conversion and recovery testing.
+- Assign incident-spawned hostile free symbiotes to a no-retreat vanilla assault Lord so their implantation pursuit is no longer interrupted by animal flight behavior.
+- Assign converted hostile hosts to a dedicated persisted colony assault instead of allowing the former colonist AI to seek an immediate map exit.
+- Replace the no-retreat `r3` Lord with a raid-like takeover assault that keeps vanilla timeout and retreat enabled, allowing the host to leave an exhausted or abandoned map.
+- Recheck the active host assault every `30` ticks and automatically migrate legacy `r3` development saves to the retreat-capable Lord.
+- Remove either dedicated takeover-assault generation before restoring the displaced host faction during recovery or extraction.
+- Validate final local revision `r4`: free-symbiote pursuit, pending-state persistence, hostile faction transfer, real attacks against pawns and property, save/reload stability, `r3` migration, eventual raid withdrawal and protected Tok'ra/player paths.
+- Publish branch `feature/goauld-hostile-host-takeover`, final tag `v0.3.40-dev` and the synchronized wiki.
+
 ## 0.3.39-dev - Add Goa'uld free-symbiote incursion incident
 
 - Add the first recurrent autonomous Goa'uld biological-hazard incident.

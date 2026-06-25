@@ -1,3 +1,32 @@
+# GateRim SG-1 durable test matrix
+
+## 0.3.40-dev - Hostile Goa'uld host takeover
+
+Validation locale terminée sur la révision finale `r4`, puis jalon publié sous `v0.3.40-dev`.
+
+Couverture validée et régressions durables :
+
+- an incident-spawned hostile free symbiote remains in a no-retreat assault group and continuously pursues a compatible host instead of alternating with vanilla animal flight or map exit;
+- a hostile Goa'uld free symbiote implants a player colonist and records `Pending` control with both factions;
+- pending allegiance, displaced faction and exact symbiote identity survive save/reload;
+- recent-to-active conversion changes the existing pawn to the recorded hostile faction without recreating its body, relations, equipment or xenotype;
+- the converted pawn leaves player-control UI, produces one threat letter, joins the dedicated takeover assault and attacks the colony instead of seeking an immediate map exit;
+- legacy `r3` development saves automatically replace the no-retreat Lord with the current raid-like assault;
+- active takeover and assault behavior survive save/reload;
+- when the colony map is abandoned or the assault is exhausted, vanilla raid withdrawal eventually makes the converted host leave instead of remaining indefinitely;
+- extraction before conversion preserves the player host and returns a free symbiote with its original hostile faction;
+- state removal or recovery removes either legacy or current takeover assault before restoring the displaced faction, without duplicating the pawn or symbiote;
+- Tok'ra and player-controlled or factionless Goa'uld symbiotes never arm hostile takeover;
+- `Player.log` remains free of new GateRim SG-1 errors.
+
+Durable boundaries:
+
+- keep free-symbiote implantation pursuit and active-host raid assault as separate Lord behaviors;
+- preserve the one-day rescue window and do not silently convert emergency extraction into a post-conversion surgery system;
+- never determine hostile takeover from the incident alone: the persistent symbiote allegiance remains the reusable source of truth for every implantation path;
+- preserve migration for the legacy `LordJob_GoauldHostTakeoverAssault` while development saves using it may still exist;
+- revalidate both immediate attack and eventual withdrawal whenever takeover Lord logic or vanilla raid transitions change.
+
 ## 0.3.39-dev - Goa'uld free-symbiote incursion
 
 Validation locale terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.39-dev`.
@@ -9,6 +38,7 @@ Couverture validée et régressions durables pour cette menace biologique récur
 - force the weak-colony profile at `300` points and receive exactly one hostile free Goa'uld symbiote;
 - force the advanced-colony profile at `2600` points and receive exactly four hostile free Goa'uld symbiotes in one edge cluster;
 - verify each pawn reuses the established autonomous hunt and persistent implantation path rather than a second incident-specific infection system;
+- verify incident pawns are attached to a no-retreat assault Lord so vanilla animal flight cannot interrupt the autonomous implantation pursuit;
 - verify a successful contact creates one recent Goa'uld implantation, transfers the same persistent symbiote identity and removes only the contacting free pawn;
 - resolve three successive incursions without immediately repeating the warning text, then save/reload and verify the previous variant remains excluded;
 - confirm ordinary storyteller points select `1`, `2`, `3` or `4` symbiotes at the documented thresholds and never exceed the cap;

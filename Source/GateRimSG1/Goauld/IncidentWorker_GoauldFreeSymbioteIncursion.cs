@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
+using Verse.AI.Group;
 
 namespace GateRimSG1.Goauld
 {
@@ -123,13 +124,27 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            Lord assaultLord = LordMaker.MakeNewLord(
+                goauldFaction,
+                new LordJob_AssaultColony(
+                    goauldFaction,
+                    canKidnap: false,
+                    canTimeoutOrFlee: false),
+                map);
+
+            for (int index = 0; index < spawnedSymbiotes.Count; index++)
+            {
+                assaultLord.AddPawn(spawnedSymbiotes[index]);
+            }
+
             SendIncursionLetter(spawnedSymbiotes);
 
             GR_Log.Message(
                 "Started Goa'uld free-symbiote incursion at "
                 + $"{entryCell}; spawned={spawnedSymbiotes.Count}/"
                 + $"{requestedCount}; points={threatPoints:0}; "
-                + $"faction={goauldFaction.Name} ({goauldFaction.loadID}).");
+                + $"faction={goauldFaction.Name} ({goauldFaction.loadID}); "
+                + "assaultLord=active; retreat=false.");
 
             return true;
         }

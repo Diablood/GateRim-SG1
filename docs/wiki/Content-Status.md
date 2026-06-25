@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.39-dev`
+> Dernière révision : `0.3.40-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -21,7 +21,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
 | Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
-| Hôte Goa'uld actif | Conversion automatique après la phase critique | 0.1.18-dev |
+| Hôte Goa'uld actif | Conversion automatique après la phase critique ; depuis 0.3.40-dev, un symbiote de faction hostile peut retirer le contrôle joueur et livrer l'hôte à son allégeance d'origine | 0.1.18-dev / prise de contrôle 0.3.40-dev |
 | Extraction d'urgence Goa'uld | Interruption manuelle pendant la phase critique | 0.1.19-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
 | Larve de Prim'ta | Ressource transportable, incubable, périssable, classée biologiquement et sensible à la chaleur | 0.1.27-dev à 0.1.32-dev |
@@ -127,3 +127,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
 | Porte des étoiles fonctionnelle | Phase majeure ultérieure avec progression et expéditions hors monde, après stabilisation des fondations actuelles |
+
+## Prise de contrôle hostile Goa'uld
+
+Prototype jouable et validé dans `0.3.40-dev` : l'allégeance du symbiote est persistante, une implantation hostile arme une prise de contrôle différée et l'hôte rejoint la faction Goa'uld à la fin de la phase critique. Il attaque ensuite la colonie comme une force de raid, puis peut se replier lorsque la carte est abandonnée ou l'assaut épuisé. Les voies Tok'ra et joueur restent exclues.

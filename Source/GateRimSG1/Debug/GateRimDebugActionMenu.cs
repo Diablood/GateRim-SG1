@@ -58,7 +58,7 @@ namespace GateRimSG1.Debugging
 
             root.AddChild(MenuNode(
                 "Free-symbiote incursion...",
-                100,
+                200,
                 ActionNode(
                     "Show current scaling",
                     GoauldFreeSymbioteIncursionDebugActions.ShowCurrentScaling,
@@ -74,6 +74,21 @@ namespace GateRimSG1.Debugging
                 ActionNode(
                     "Force advanced-colony scaling",
                     GoauldFreeSymbioteIncursionDebugActions.ForceAdvancedColonyScaling,
+                    100)));
+            root.AddChild(MenuNode(
+                "Host takeover...",
+                100,
+                PawnToolNode(
+                    "Inspect host control",
+                    GoauldHostTakeoverDebugActions.InspectHostControl,
+                    300),
+                PawnToolNode(
+                    "Force recent conversion",
+                    GoauldHostTakeoverDebugActions.ForceRecentConversion,
+                    200),
+                PawnToolNode(
+                    "Restore displaced faction",
+                    GoauldHostTakeoverDebugActions.RestoreDisplacedFaction,
                     100)));
 
             return root;

@@ -45,6 +45,16 @@ namespace GateRimSG1.Goauld
             symbioteData = transferredData;
             consumedByImplantation = false;
             symbioteData.EnsureIdentity(CurrentGameTick());
+
+            Pawn symbiote = SymbiotePawn;
+            Faction allegiance = symbioteData.AllegianceFaction;
+
+            if (symbiote != null
+                && allegiance != null
+                && symbiote.Faction != allegiance)
+            {
+                symbiote.SetFaction(allegiance);
+            }
         }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -52,6 +62,7 @@ namespace GateRimSG1.Goauld
             base.PostSpawnSetup(respawningAfterLoad);
 
             EnsureDataInitialized();
+            symbioteData.RecordAllegiance(SymbiotePawn?.Faction);
 
             if (!respawningAfterLoad)
             {
@@ -81,6 +92,7 @@ namespace GateRimSG1.Goauld
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 EnsureDataInitialized();
+                symbioteData.RecordAllegiance(SymbiotePawn?.Faction);
 
                 GR_Log.Message(
                     $"Loaded free Goa'uld symbiote {symbioteData.SymbioteId} "
@@ -346,6 +358,9 @@ namespace GateRimSG1.Goauld
 
             string transferredId = symbioteData.SymbioteId;
 
+            symbioteData.PrepareHostControl(
+                target,
+                symbiote.Faction ?? symbioteData.AllegianceFaction);
             implantationComp.InitializeWithTransferredData(symbioteData);
             target.health.AddHediff(implantation);
 

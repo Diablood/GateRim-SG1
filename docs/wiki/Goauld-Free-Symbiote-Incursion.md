@@ -36,3 +36,21 @@ anti-répétition immédiate, y compris après sauvegarde et rechargement.
 
 Cette menace reste compatible avec les storytellers vanilla et moddés : elle
 ne dépend pas d'un futur storyteller GateRim SG-1.
+
+## Comportement d'assaut
+
+Depuis la révision `0.3.40-dev-r2`, les symbiotes générés par l'incursion sont
+rattachés à un groupe d'assaut sans retrait automatique. Leur objectif reste
+l'implantation : ils poursuivent un hôte compatible au lieu d'alterner entre
+leur approche et une réaction animale de fuite vers la bordure de la carte.
+
+Cette correction ne transforme pas l'incursion en raid Jaffa et ne modifie ni
+le nombre de symbiotes, ni leur identité persistante, ni la fenêtre
+d'extraction après implantation.
+
+
+## Conséquence après implantation
+
+Depuis `0.3.40-dev`, les symbiotes de cette incursion conservent leur allégeance aux Domaines des Grands Maîtres Goa'uld. Une victime non secourue pendant la journée d'implantation récente peut donc quitter le contrôle joueur, rejoindre cette faction lors de la conversion active et attaquer la colonie dans un assaut de type raid. L'hôte ne fuit pas immédiatement, mais peut finalement se replier lorsque l'assaut est épuisé ou que la carte est abandonnée.
+
+L'extraction d'urgence reste la fenêtre de sauvetage. Cette règle appartient au système commun des symbiotes : elle ne dépend pas directement de l'incident et ne touche pas les Tok'ra ou les symbiotes sous contrôle du joueur.

@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.39-dev`
+> Version du mod documentée : `0.3.40-dev`
 
 ## Le mod en bref
 
@@ -30,7 +30,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Goa'uld](Goauld), implantation forcée ou rituelle, extraction d'urgence,
   hôtes actifs et [reine Goa'uld](Goauld-Queen).
 - [Incursions de symbiotes Goa'uld libres](Goauld-Free-Symbiote-Incursion) :
-  menace biologique rare et adaptative utilisant leur chasse autonome.
+  menace biologique rare et adaptative utilisant leur chasse autonome ; un
+  symbiote hostile non extrait pendant la phase critique peut ensuite livrer
+  son hôte à la faction Goa'uld.
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
   [Jaffa libres](Free-Jaffa-Faction), colonies mondiales et incidents associés.
 - Armes et équipements : [Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel),
@@ -161,3 +163,5 @@ tests prolongés.
 - [FAQ](FAQ)
 - [Dépôt GitHub principal](https://github.com/Diablood/GateRim-SG1)
 
+
+- Depuis `0.3.40-dev`, un symbiote Goa'uld hostile non extrait pendant la phase critique peut livrer son hôte à sa faction d'origine. L'hôte attaque alors la colonie comme une force de raid et peut finalement se replier si la carte est abandonnée ou l'assaut épuisé.

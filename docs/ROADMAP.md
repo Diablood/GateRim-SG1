@@ -1,5 +1,32 @@
 # Roadmap
 
+## Dernier jalon clôturé — Prise de contrôle hostile d'un hôte Goa'uld (`0.3.40-dev`)
+
+- [x] Partir explicitement de `v0.3.39-dev` sur `feature/goauld-hostile-host-takeover`.
+- [x] Conserver la fenêtre d'intervention d'une journée de l'implantation récente.
+- [x] Mémoriser l'allégeance du symbiote et la faction déplacée de l'hôte dans les données persistantes existantes.
+- [x] Limiter la prise de contrôle aux symbiotes Goa'uld appartenant à une faction non-joueur hostile.
+- [x] Transférer l'hôte dans la faction du symbiote lors de la conversion active sans recréer le pawn ni son identité.
+- [x] Restaurer ou préserver la faction de l'hôte lorsque le symbiote est extrait avant ou après une prise de contrôle.
+- [x] Préserver les implantations Tok'ra et les symbiotes Goa'uld contrôlés par le joueur.
+- [x] Ajouter une lettre RP bilingue et un sous-menu développeur compact.
+- [x] Rattacher les symbiotes hostiles de l'incursion à un assaut vanilla sans enlèvement, expiration ni fuite afin que leur poursuite d'implantation ne soit plus concurrencée par l'IA animale.
+- [x] Rattacher chaque hôte converti à un assaut hostile persistant et réparer automatiquement les sauvegardes de développement où il cherchait encore à quitter la carte.
+- [x] Réactiver en `r4` le repli vanilla du raid afin que l'hôte quitte une carte abandonnée ou un assaut épuisé au lieu d'y rester indéfiniment.
+- [x] Valider `check-project-consistency.cmd` pour `0.3.40-dev` et les 83 backstories.
+- [x] Valider le build Windows de `GateRimSG1.dll` version `0.3.40.0`.
+- [x] Valider l'état `Pending`, la persistance avant conversion et la conservation de l'identité du symbiote.
+- [x] Valider la perte de contrôle joueur, le passage dans la faction Goa'uld et la lettre de menace.
+- [x] Valider en jeu que le pawn converti attaque réellement la colonie, ne tente plus de quitter immédiatement la carte et conserve ce comportement après sauvegarde/rechargement.
+- [x] Valider qu'après abandon de la carte ou épuisement des cibles, le repli vanilla finit par faire quitter la carte à l'hôte.
+- [x] Valider l'extraction avant conversion, la restauration de faction et les régressions Tok'ra/joueur.
+- [x] Vérifier sauvegarde/rechargement et `Player.log` avant clôture.
+- [x] Clôturer la documentation, publier le tag final unique `v0.3.40-dev` et synchroniser le wiki.
+
+La révision finale `r4` valide la boucle complète : poursuite du symbiote libre sans fuite animale, prise de contrôle persistante, perte du contrôle joueur, transfert vers la faction Goa'uld, assaut réel contre les colons et les biens, migration des sauvegardes `r3`, persistance après rechargement et repli final proche d'un raid lorsque la carte est abandonnée ou l'assaut épuisé. Les voies d'extraction, Tok'ra et symbiote joueur restent protégées.
+
+Le jalon est publié sous le tag final unique `v0.3.40-dev`. Aucun périmètre `0.3.41-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
 ## Dernier jalon clôturé — Incursion de symbiotes Goa'uld libres (`0.3.39-dev`)
 
 - [x] Partir explicitement de `v0.3.38-dev` sur `feature/goauld-free-symbiote-incursion`.

@@ -13,6 +13,7 @@ namespace GateRimSG1.Goauld
     public class HediffComp_GoauldSymbiote : HediffComp
     {
         private const int MissingDataWarningKey = 1160001;
+        private const int HostileAssaultCheckInterval = 30;
 
         private GoauldSymbioteData symbioteData;
         private bool transferredOut;
@@ -65,6 +66,35 @@ namespace GateRimSG1.Goauld
                 GR_Log.Warning(
                     $"Cancelled transfer-out state for Goa'uld symbiote "
                     + $"{symbioteData.SymbioteId} on {PawnDebugLabel()}.");
+            }
+        }
+
+        public bool ReleaseHostControl()
+        {
+            EnsureDataInitialized();
+            bool restored = symbioteData.ReleaseHostControl(Pawn);
+
+            if (restored)
+            {
+                GR_Log.Message(
+                    $"Restored the displaced faction of host {PawnDebugLabel()} "
+                    + $"after releasing Goa'uld symbiote "
+                    + $"{symbioteData.SymbioteId}.");
+            }
+
+            return restored;
+        }
+
+        public override void CompPostTick(ref float severityAdjustment)
+        {
+            base.CompPostTick(ref severityAdjustment);
+
+            if (symbioteData?.HostileTakeoverActive == true
+                && Pawn != null
+                && Pawn.IsHashIntervalTick(HostileAssaultCheckInterval))
+            {
+                GoauldHostileTakeoverAssaultUtility
+                    .EnsureAssaultBehavior(Pawn);
             }
         }
 
@@ -192,6 +222,7 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            symbioteData.ReleaseHostControl(Pawn);
             symbioteData.DetachFromHost(Pawn, CurrentGameTick());
 
             GR_Log.Message(

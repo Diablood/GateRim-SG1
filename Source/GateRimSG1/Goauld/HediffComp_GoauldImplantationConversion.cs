@@ -50,6 +50,18 @@ namespace GateRimSG1.Goauld
                 + $", conversionCompleted: {conversionCompleted}";
         }
 
+        public bool TryForceConversionNow()
+        {
+            if (conversionCompleted || !TryConvertToActiveHost())
+            {
+                return false;
+            }
+
+            conversionCompleted = true;
+            Pawn?.health?.RemoveHediff(parent);
+            return true;
+        }
+
         private bool TryConvertToActiveHost()
         {
             Pawn host = Pawn;
@@ -103,26 +115,63 @@ namespace GateRimSG1.Goauld
             targetComp.InitializeWithTransferredData(transferredData);
             host.health.AddHediff(activeHostState);
 
-            GR_Log.Message(
-                $"Converted recent Goa'uld implantation {transferredId} "
-                + $"into active host state on {PawnDebugLabel(host)}.");
-
             bool isTokra = transferredData.Origin
                 == GoauldSymbioteOrigin.Tokra;
+            bool hostileTakeover = !isTokra
+                && transferredData.TryActivateHostileControl(host);
 
-            Messages.Message(
-                (isTokra
-                    ? "GR_TokraHostConversion_Success"
-                    : "GR_GoauldHostConversion_Success").Translate(
-                        host.LabelShortCap,
-                        transferredId),
-                host,
-                isTokra
-                    ? MessageTypeDefOf.PositiveEvent
-                    : MessageTypeDefOf.NegativeEvent,
-                historical: true);
+            GR_Log.Message(
+                $"Converted recent Goa'uld implantation {transferredId} "
+                + $"into active host state on {PawnDebugLabel(host)}; "
+                + $"hostileTakeover={hostileTakeover}.");
+
+            if (hostileTakeover)
+            {
+                NotifyHostileTakeover(host, transferredData);
+            }
+            else
+            {
+                Messages.Message(
+                    (isTokra
+                        ? "GR_TokraHostConversion_Success"
+                        : "GR_GoauldHostConversion_Success").Translate(
+                            host.LabelShortCap,
+                            transferredId),
+                    host,
+                    isTokra
+                        ? MessageTypeDefOf.PositiveEvent
+                        : MessageTypeDefOf.NegativeEvent,
+                    historical: true);
+            }
 
             return true;
+        }
+
+        private static void NotifyHostileTakeover(
+            Pawn host,
+            GoauldSymbioteData symbioteData)
+        {
+            if (host?.drafter != null && host.drafter.Drafted)
+            {
+                host.drafter.Drafted = false;
+            }
+
+            host?.jobs?.StopAll();
+            GoauldHostileTakeoverAssaultUtility.EnsureAssaultBehavior(host);
+            Find.ColonistBar?.MarkColonistsDirty();
+            MainTabWindowUtility.NotifyAllPawnTables_PawnsChanged();
+
+            string factionName = symbioteData.AllegianceFaction?.Name
+                ?? "GR_GoauldHostTakeover_UnknownFaction".Translate().ToString();
+
+            Find.LetterStack?.ReceiveLetter(
+                "GR_GoauldHostTakeover_LetterLabel".Translate(),
+                "GR_GoauldHostTakeover_LetterText".Translate(
+                    host.LabelShortCap,
+                    symbioteData.SymbioteName,
+                    factionName),
+                LetterDefOf.ThreatBig,
+                new LookTargets(host));
         }
 
         private static bool HasHediff(Pawn pawn, HediffDef def)

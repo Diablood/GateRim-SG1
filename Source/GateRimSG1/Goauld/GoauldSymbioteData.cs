@@ -18,6 +18,10 @@ namespace GateRimSG1.Goauld
         private string symbioteName = string.Empty;
         private string hostName = string.Empty;
         private GoauldSymbioteOrigin origin = GoauldSymbioteOrigin.Goauld;
+        private Faction allegianceFaction;
+        private Faction displacedHostFaction;
+        private GoauldHostControlState hostControlState
+            = GoauldHostControlState.None;
         private TokraHostIdentitySource hostIdentitySource
             = TokraHostIdentitySource.Unknown;
         private GeneratedHostOriginDef generatedHostOrigin;
@@ -46,6 +50,13 @@ namespace GateRimSG1.Goauld
         public string SymbioteName => symbioteName;
         public string HostName => hostName;
         public GoauldSymbioteOrigin Origin => origin;
+        public Faction AllegianceFaction => allegianceFaction;
+        public Faction DisplacedHostFaction => displacedHostFaction;
+        public GoauldHostControlState HostControlState => hostControlState;
+        public bool HostileTakeoverPending
+            => hostControlState == GoauldHostControlState.Pending;
+        public bool HostileTakeoverActive
+            => hostControlState == GoauldHostControlState.Active;
         public TokraHostIdentitySource HostIdentitySource => hostIdentitySource;
         public GeneratedHostOriginDef GeneratedHostOrigin => generatedHostOrigin;
         public BackstoryDef HostChildhood => hostChildhood;
@@ -156,9 +167,96 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        public void RecordAllegiance(Faction faction)
+        {
+            if (faction != null)
+            {
+                allegianceFaction = faction;
+            }
+        }
+
+        public void PrepareHostControl(Pawn host, Faction currentSymbioteFaction)
+        {
+            RecordAllegiance(currentSymbioteFaction);
+            displacedHostFaction = null;
+            hostControlState = GoauldHostControlState.None;
+
+            if (origin != GoauldSymbioteOrigin.Goauld
+                || host?.Faction != Faction.OfPlayer
+                || allegianceFaction == null
+                || allegianceFaction == Faction.OfPlayer
+                || !allegianceFaction.HostileTo(Faction.OfPlayer))
+            {
+                return;
+            }
+
+            displacedHostFaction = host.Faction;
+            hostControlState = GoauldHostControlState.Pending;
+        }
+
+        public bool TryActivateHostileControl(Pawn host)
+        {
+            if (hostControlState != GoauldHostControlState.Pending
+                || host == null
+                || host.Dead
+                || allegianceFaction == null
+                || displacedHostFaction == null)
+            {
+                return false;
+            }
+
+            if (host.Faction == allegianceFaction)
+            {
+                hostControlState = GoauldHostControlState.Active;
+                return true;
+            }
+
+            if (host.Faction != displacedHostFaction)
+            {
+                GR_Log.Warning(
+                    $"Cancelled pending Goa'uld host takeover for "
+                    + $"{host.LabelShort} ({host.ThingID}) because the host's "
+                    + "faction changed before neural control completed.");
+
+                displacedHostFaction = null;
+                hostControlState = GoauldHostControlState.None;
+                return false;
+            }
+
+            host.SetFaction(allegianceFaction);
+            hostControlState = GoauldHostControlState.Active;
+            return true;
+        }
+
+        public bool ReleaseHostControl(Pawn host)
+        {
+            bool restored = false;
+
+            if (hostControlState == GoauldHostControlState.Active
+                && host != null
+                && !host.Dead
+                && displacedHostFaction != null
+                && host.Faction != displacedHostFaction)
+            {
+                GoauldHostileTakeoverAssaultUtility
+                    .ReleaseAssaultBehavior(host);
+                host.SetFaction(displacedHostFaction);
+                restored = true;
+            }
+
+            displacedHostFaction = null;
+            hostControlState = GoauldHostControlState.None;
+            return restored;
+        }
+
         public void AttachToHost(Pawn host, int currentTick, bool recordImplantationTick)
         {
             EnsureIdentity(currentTick);
+
+            if (allegianceFaction == null && host?.Faction != null)
+            {
+                allegianceFaction = host.Faction;
+            }
 
             string nextHostThingId = host?.ThingID ?? string.Empty;
             bool hostChanged = currentHostThingId != nextHostThingId;
@@ -335,6 +433,8 @@ namespace GateRimSG1.Goauld
 
             currentHostThingId = string.Empty;
             lastDetachTick = currentTick;
+            displacedHostFaction = null;
+            hostControlState = GoauldHostControlState.None;
         }
 
         public string GetOriginLabel()
@@ -353,6 +453,9 @@ namespace GateRimSG1.Goauld
         {
             return $"id={symbioteId}, symbioteName={symbioteName}, "
                 + $"hostName={hostName}, origin={origin}, "
+                + $"allegiance={allegianceFaction?.Name ?? "<none>"}, "
+                + $"displacedFaction={displacedHostFaction?.Name ?? "<none>"}, "
+                + $"hostControl={hostControlState}, "
                 + $"hostIdentitySource={hostIdentitySource}, "
                 + $"generatedHostOrigin={generatedHostOrigin?.defName ?? "<none>"}, "
                 + $"activePersonality={activePersonality}, "
@@ -374,6 +477,12 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(ref symbioteName, "symbioteName", string.Empty);
             Scribe_Values.Look(ref hostName, "hostName", string.Empty);
             Scribe_Values.Look(ref origin, "origin", GoauldSymbioteOrigin.Goauld);
+            Scribe_References.Look(ref allegianceFaction, "allegianceFaction");
+            Scribe_References.Look(ref displacedHostFaction, "displacedHostFaction");
+            Scribe_Values.Look(
+                ref hostControlState,
+                "hostControlState",
+                GoauldHostControlState.None);
             Scribe_Values.Look(
                 ref hostIdentitySource,
                 "hostIdentitySource",
@@ -575,6 +684,13 @@ namespace GateRimSG1.Goauld
     {
         Goauld,
         Tokra
+    }
+
+    public enum GoauldHostControlState
+    {
+        None,
+        Pending,
+        Active
     }
 
     public enum TokraHostIdentitySource

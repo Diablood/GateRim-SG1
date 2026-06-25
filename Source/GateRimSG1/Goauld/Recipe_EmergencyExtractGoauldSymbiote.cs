@@ -124,7 +124,6 @@ namespace GateRimSG1.Goauld
             GoauldSymbioteData transferredData = sourceComp.TakeDataForTransfer();
             string transferredId = transferredData.SymbioteId;
 
-            transferredData.DetachFromHost(pawn, CurrentGameTick());
             freeComp.InitializeWithTransferredData(transferredData);
 
             if (!GenPlace.TryPlaceThing(
@@ -148,6 +147,8 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            sourceComp.ReleaseHostControl();
+            transferredData.DetachFromHost(pawn, CurrentGameTick());
             pawn.health.RemoveHediff(recentImplantation);
 
             GR_Log.Message(

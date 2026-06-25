@@ -300,3 +300,9 @@ visiteurs Tok'ra pacifiques (test)
 Une petite équipe non hostile apparaît puis repart automatiquement. Ces visites
 peuvent aussi être sélectionnées rarement par le storyteller après le début de
 partie, avec un délai empêchant les répétitions rapprochées.
+
+## Que devient un colon implanté par un symbiote Goa'uld hostile ?
+
+Depuis `0.3.40-dev`, la phase d'implantation récente reste une fenêtre d'intervention d'une journée. Si le symbiote n'est pas extrait avant la conversion, il peut prendre le contrôle complet de l'hôte : le pawn rejoint alors la faction Goa'uld du parasite et n'est plus contrôlé par la colonie.
+
+Une extraction réussie avant cette échéance préserve la faction de l'hôte. Les Tok'ra et les symbiotes contrôlés par le joueur ne déclenchent pas cette prise de contrôle hostile.

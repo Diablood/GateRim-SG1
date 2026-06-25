@@ -67,3 +67,10 @@ Depuis `0.1.20-dev`, l'onglet de santé permet de planifier
 
 Une réussite libère le même parasite. Un échec laisse l'implantation récente
 active et le compte à rebours continue.
+
+
+## Allégeance du symbiote
+
+Depuis `0.3.40-dev`, une implantation causée par un symbiote Goa'uld appartenant à une faction hostile mémorise un état de prise de contrôle en attente. La journée affichée constitue la fenêtre d'intervention : une extraction réussie annule cette menace, tandis que l'expiration peut faire rejoindre l'hôte à la faction du symbiote.
+
+Les implantations Tok'ra et celles issues d'un symbiote contrôlé par le joueur ne déclenchent pas cette conséquence.
