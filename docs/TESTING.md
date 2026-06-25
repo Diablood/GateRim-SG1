@@ -1,5 +1,29 @@
 # Testing checklist
 
+## 0.3.45-dev - Free Jaffa world-name generators
+
+Validation locale terminée sur la révision finale `r3`, puis jalon publié sous `v0.3.45-dev`.
+
+Couverture durable :
+
+- charger `SG1_NamerFactionFreeJaffa` et `SG1_NamerSettlementFreeJaffa` sans erreur de RulePackDef, GrammarResolver, référence ou traduction indexée ;
+- conserver le label générique `Free Jaffa` / `Jaffa libres` dans les contrôles de création du monde sans réintroduire un `fixedName` partagé entre toutes les instances ;
+- générer plusieurs factions Jaffa libres et vérifier des noms collectifs variés issus des `216` combinaisons prévues ;
+- générer un large échantillon de colonies et vérifier la variété des `600` résultats, avec des formes sans ordinal majoritaires ;
+- conserver une casse française naturelle : capitale initiale, noms communs internes en minuscules et titres propres justifiés comme `Maîtres`, `Jaffa` ou `Porte` ;
+- conserver les accords masculins et féminins des ordinaux et les formes post-ordinales en minuscules ;
+- vérifier qu'aucun name maker outlander, jeton de grammaire, fragment de traduction ou suffixe numérique technique systématique ne fuite dans les noms visibles ;
+- ne jamais renommer automatiquement les factions ou colonies déjà sérialisées dans une sauvegarde ;
+- revalider le commerce de colonie, le convoi spécialisé, les visiteurs pacifiques et l'aide militaire après toute modification des Defs de faction ;
+- inspecter `Player.log` après une génération anglaise et française.
+
+Limites durables :
+
+- la grammaire réduit fortement les collisions mais ne constitue pas un registre persistant d'unicité ;
+- ne pas ajouter de données de sauvegarde uniquement pour garantir l'unicité tant qu'un besoin réel ne le justifie pas ;
+- conserver les icônes mondiales personnalisées dans la passe visuelle globale afin de traiter toutes les factions visibles avec des silhouettes cohérentes ;
+- toute future identité de clan persistante, diplomatie propre ou langue procédurale doit rester un jalon distinct.
+
 ## 0.3.44-dev - Free Jaffa military aid
 
 Validation locale terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.44-dev`.

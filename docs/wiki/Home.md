@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.44-dev`
+> Version du mod documentée : `0.3.45-dev`
 
 ## Le mod en bref
 
@@ -35,9 +35,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   son hôte à la faction Goa'uld. Depuis `0.3.41-dev`, l'ancien colon peut encore
   être sauvé après neutralisation, capture et chirurgie risquée.
 - [Domaines des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
-  [Jaffa libres](Free-Jaffa-Faction), colonies mondiales, visiteurs et
-  [convoi de ravitaillement spécialisé](Free-Jaffa-Trade) pour les ressources
-  stratégiques et le matériel militaire, ainsi qu'une
+  [Jaffa libres](Free-Jaffa-Faction), factions et colonies mondiales aux noms combinatoires dédiés,
+  visiteurs et [convoi de ravitaillement spécialisé](Free-Jaffa-Trade) pour les
+  ressources stratégiques et le matériel militaire, ainsi qu'une
   [aide militaire alliée](Free-Jaffa-Military-Aid) demandée par console.
 - Armes et équipements : [Ma'Tok](Matok-Staff), [Zat'nik'tel](ZatnikTel),
   [outils de capture non létaux](Non-Lethal-Capture-Tools),

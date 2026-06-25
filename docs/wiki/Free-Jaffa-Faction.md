@@ -1,6 +1,6 @@
 # Jaffa libres
 
-> Statut : Première base mondiale jouable  
+> Statut : Première base mondiale jouable
 > Première version : 0.2.2-dev
 
 ## Présentation
@@ -23,6 +23,43 @@ xénotype : Jaffa (100 %)
 
 Une faction est proposée par défaut. Le joueur peut en ajouter davantage
 manuellement s'il souhaite représenter plusieurs communautés Jaffa libres.
+
+## Noms des factions et des colonies
+
+Depuis `0.3.45-dev`, l'entrée de création du monde reste présentée comme
+`Jaffa libres`, mais chaque faction nouvellement générée reçoit un nom collectif
+propre. La grammaire combine alliances, conseils, communautés et thèmes de
+résistance pour produire `216` possibilités.
+
+Exemples possibles :
+
+```text
+Alliance des clans libres
+Conseil de la résistance Jaffa
+Fraternité des hôtes libérés
+Pacte contre les Maîtres
+```
+
+Les nouvelles colonies n'utilisent plus les noms génériques des factions
+outlander. Une seconde grammaire combine types de colonies, thèmes de
+libération et, plus rarement, des ordinaux RP. Elle offre `600` résultats.
+
+La casse française reste naturelle :
+
+```text
+Refuge des affranchis
+Citadelle des clans libres
+Premier abri des Maîtres déchus
+Deuxième cité de la chaîne brisée
+```
+
+Les factions et colonies déjà présentes dans une sauvegarde conservent leurs
+noms existants. Le changement s'applique uniquement aux nouvelles générations.
+
+L'icône mondiale reste provisoirement la maison vanilla, déclinée dans des
+nuances de vert parfois discrètes. Une silhouette propre aux Jaffa libres sera
+créée lors de la passe visuelle globale, avec le même principe pour les autres
+factions GateRim SG-1.
 
 ## Relations initiales
 

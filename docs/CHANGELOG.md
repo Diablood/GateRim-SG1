@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.45-dev - Add Free Jaffa world-name generators
+
+- Replace the remaining vanilla outlander faction and settlement name makers on `SG1_FreeJaffa` with dedicated GateRim SG-1 RulePackDefs.
+- Add an initial curated pool of `24` settlement names in local revision `r1`, then replace it in `r2` with a bilingual combinatorial grammar producing `600` distinct settlement results.
+- Keep unnumbered settlement names dominant while allowing natural ordinal forms instead of technical suffixes such as `2` or `3`.
+- Refine French casing in cumulative local revision `r3`: generic words remain lower-case inside a compound name, while the first word and proper cultural titles such as `Maîtres` retain capitals.
+- Split initial and post-ordinal settlement symbols so the same grammar produces both `Refuge des affranchis` and `Premier refuge des Maîtres déchus` naturally.
+- Remove the shared `fixedName` from the Free Jaffa faction and generate newly created factions from `216` bilingual collective names such as `Alliance des clans libres` or `Conseil de la résistance Jaffa`.
+- Preserve the generic `Free Jaffa` / `Jaffa libres` label in world-creation controls while allowing each generated faction instance to have its own world name.
+- Apply the new names only to newly generated factions and settlements; existing save names remain serialized and unchanged.
+- Record faction-specific world-map settlement icons as part of the deferred global visual pass; the current vanilla house silhouette and subtle faction-color variations remain temporary.
+- Add no custom settlement layout, icon, texture, mission, incident, PawnKind, equipment or persistent save data.
+- Validate final local revision `r3`, including varied faction and settlement names, natural French casing, bilingual RulePackDef loading, unchanged serialized-name behavior, Free Jaffa regressions and a clean `Player.log`.
+- Publish branch `feature/free-jaffa-world-names`, final tag `v0.3.45-dev` and the synchronized wiki.
+
 ## 0.3.44-dev - Add Free Jaffa military aid
 
 - Enable the ordinary RimWorld military-aid request for allied Free Jaffa factions.

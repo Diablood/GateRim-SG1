@@ -61,7 +61,13 @@ against the player.
 factionIconPath: World/WorldObjects/Expanding/Town
 settlementTexturePath: World/WorldObjects/DefaultSettlement
 green-toned colorSpectrum
+factionNameMaker: SG1_NamerFactionFreeJaffa
+settlementNameMaker: SG1_NamerSettlementFreeJaffa
 ```
+
+Since `0.3.45-dev`, newly generated settlements use a bilingual combinatorial grammar centered on liberation, clans, broken chains and refuge instead of vanilla outlander town names. It offers `600` complete results and includes natural ordinal forms to avoid visible duplicate suffixes. Existing saves retain their serialized names.
+
+The current settlement marker remains RimWorld's vanilla house silhouette with subtle green faction-color variations. A distinct Free Jaffa icon, followed by equivalent silhouettes for every visible GateRim SG-1 faction, is deferred to the global visual pass.
 
 ## Historical baseline restrictions (`0.2.2-dev`)
 
@@ -124,7 +130,7 @@ SG1_FreeJaffaGuard
 4. Confirm that the faction summary displays `Jaffa: 100%`.
 5. Add at least one extra Free Jaffa faction manually.
 6. Generate a new world.
-7. Confirm limited green-toned Free Jaffa settlements.
+7. Confirm limited green-toned Free Jaffa settlements with dedicated Free Jaffa names and no visible numeric duplicate suffix.
 8. Confirm neutral relations with `expédition du SGC`.
 9. Confirm hostile relations with `Domaines des Grands Maîtres Goa'uld`.
 10. Visit or attack a Free Jaffa settlement on a disposable test save.

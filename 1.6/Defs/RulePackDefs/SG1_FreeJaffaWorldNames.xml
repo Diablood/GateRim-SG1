@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!--
+    Free Jaffa world-name generators.
+
+    Newly generated factions receive a varied collective name instead of the
+    shared fixed label. Settlements use a combinatorial grammar with natural
+    ordinal forms. Separate initial and lower-case place symbols allow French
+    names such as "Refuge..." and "Premier refuge..." without awkward capitals.
+    -->
+    <RulePackDef>
+        <defName>SG1_NamerFactionFreeJaffa</defName>
+        <rulePack>
+            <rulesStrings>
+                <li>name->[factionForm] [factionTheme]</li>
+                <li>factionForm->Alliance</li>
+                <li>factionForm->Coalition</li>
+                <li>factionForm->Confederation</li>
+                <li>factionForm->League</li>
+                <li>factionForm->Council</li>
+                <li>factionForm->Pact</li>
+                <li>factionForm->Assembly</li>
+                <li>factionForm->Union</li>
+                <li>factionForm->Concord</li>
+                <li>factionForm->Brotherhood</li>
+                <li>factionForm->Accord</li>
+                <li>factionForm->Fellowship</li>
+                <li>factionTheme->of the Unbound</li>
+                <li>factionTheme->of the Broken Chain</li>
+                <li>factionTheme->of the Free Clans</li>
+                <li>factionTheme->of the New Dawn</li>
+                <li>factionTheme->of the Open Gate</li>
+                <li>factionTheme->of the Gatewatch</li>
+                <li>factionTheme->of the Unmarked</li>
+                <li>factionTheme->of the Iron Oath</li>
+                <li>factionTheme->of the Free Horizon</li>
+                <li>factionTheme->of the Last Chain</li>
+                <li>factionTheme->of the Rebel Clans</li>
+                <li>factionTheme->of the Liberated Hosts</li>
+                <li>factionTheme->of the Broken Spears</li>
+                <li>factionTheme->of the Unbowed</li>
+                <li>factionTheme->of the New Path</li>
+                <li>factionTheme->of the First Freedom</li>
+                <li>factionTheme->of the Jaffa Resistance</li>
+                <li>factionTheme->against the Masters</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+
+    <RulePackDef>
+        <defName>SG1_NamerSettlementFreeJaffa</defName>
+        <rulePack>
+            <rulesStrings>
+                <!-- Unnumbered forms are twice as common as ordinal forms. -->
+                <li>name->[masculinePlaceInitial] [theme]</li>
+                <li>name->[masculinePlaceInitial] [theme]</li>
+                <li>name->[femininePlaceInitial] [theme]</li>
+                <li>name->[femininePlaceInitial] [theme]</li>
+                <li>name->[masculineOrdinal] [masculinePlaceLower] [theme]</li>
+                <li>name->[feminineOrdinal] [femininePlaceLower] [theme]</li>
+                <li>masculineOrdinal->First</li>
+                <li>masculineOrdinal->Second</li>
+                <li>masculineOrdinal->Third</li>
+                <li>masculineOrdinal->Fourth</li>
+                <li>feminineOrdinal->First</li>
+                <li>feminineOrdinal->Second</li>
+                <li>feminineOrdinal->Third</li>
+                <li>feminineOrdinal->Fourth</li>
+                <li>masculinePlaceInitial->Refuge</li>
+                <li>masculinePlaceInitial->Shelter</li>
+                <li>masculinePlaceInitial->Bastion</li>
+                <li>masculinePlaceInitial->Fort</li>
+                <li>masculinePlaceInitial->Camp</li>
+                <li>femininePlaceInitial->City</li>
+                <li>femininePlaceInitial->Fortress</li>
+                <li>femininePlaceInitial->Citadel</li>
+                <li>femininePlaceInitial->Enclave</li>
+                <li>femininePlaceInitial->Stronghold</li>
+                <li>masculinePlaceLower->Refuge</li>
+                <li>masculinePlaceLower->Shelter</li>
+                <li>masculinePlaceLower->Bastion</li>
+                <li>masculinePlaceLower->Fort</li>
+                <li>masculinePlaceLower->Camp</li>
+                <li>femininePlaceLower->City</li>
+                <li>femininePlaceLower->Fortress</li>
+                <li>femininePlaceLower->Citadel</li>
+                <li>femininePlaceLower->Enclave</li>
+                <li>femininePlaceLower->Stronghold</li>
+                <li>theme->of the Unbound</li>
+                <li>theme->of the Broken Chain</li>
+                <li>theme->of the Free Clans</li>
+                <li>theme->of the New Dawn</li>
+                <li>theme->of the Open Hand</li>
+                <li>theme->of the Gatewatch</li>
+                <li>theme->of the Fallen Masters</li>
+                <li>theme->of the Unmarked</li>
+                <li>theme->of the Iron Oath</li>
+                <li>theme->of the Free Horizon</li>
+                <li>theme->of the Last Chain</li>
+                <li>theme->of the Rebel Clans</li>
+            </rulesStrings>
+        </rulePack>
+    </RulePackDef>
+</Defs>

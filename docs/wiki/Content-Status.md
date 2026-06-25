@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.44-dev`
+> Dernière révision : `0.3.45-dev`
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
@@ -95,6 +95,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
 | Commerce des Jaffa libres | Convoi spécialisé des clans libres, colonies commerçantes, visiteurs marchands et demandes par communicateur ; ravitaillement, ressources stratégiques et matériel militaire avec budget limité | 0.3.43-dev |
 | Aide militaire des Jaffa libres | Demande diplomatique vanilla réservée aux alliés, avec coût de bonne volonté, délai et groupe de combat Jaffa libre existant | 0.3.44-dev |
+| Noms mondiaux des Jaffa libres | 216 noms combinatoires de factions et 600 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.45-dev |
 | Diagnostics avancés et actions développeur | Option persistante en lecture seule pour les rapports et traces ; commandes capables de modifier la partie réservées au mode développeur RimWorld | 0.1.75-dev / séparation 0.3.42-dev |
 | Histoires culturelles | Catalogue natif de 83 enfances et carrières SGC, Jaffa, Goa'uld, Tok'ra et humaines hors-monde, avec descriptions enrichies et bonus de compétences modérés | 0.2.4-dev / refonte 0.3.8-dev / extensions 0.3.13-dev, 0.3.16-dev, 0.3.18-dev et 0.3.19-dev |
 | Profils culturels configurables des pawns de départ | Profils XML prioritaires pour noms, backstories, restrictions et loadouts pondérés des starters, sans modifier la génération normale du monde | 0.3.9-dev / loadouts 0.3.21-dev |

@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.44-dev - Add Free Jaffa military aid`. Une faction Jaffa libre alliée peut répondre à une demande d’aide militaire par la console de communication, avec le coût, le délai, l’arrivée et le départ vanilla.
+Dernier jalon publié : `0.3.45-dev - Add Free Jaffa world-name generators`. Les nouveaux mondes génèrent des noms propres pour chaque faction Jaffa libre et une grammaire combinatoire de colonies, sans renommer les sauvegardes existantes.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -63,6 +63,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
 | Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |
 | Commerce des Jaffa libres | Convoi spécialisé des clans libres, colonies commerçantes, visiteurs marchands et demandes par communicateur ; achat d'équipement militaire limité par la réserve d'argent du marchand | 0.3.43-dev |
+| Noms mondiaux des Jaffa libres | 216 noms combinatoires de factions et 600 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.45-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire et nettoyage initial des affections chroniques biologiques | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 |

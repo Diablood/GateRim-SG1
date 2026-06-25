@@ -1,86 +1,86 @@
-# Validation ciblée — 0.3.44-dev
+# Validation finale — 0.3.45-dev
 
-Jalon : `0.3.44-dev - Add Free Jaffa military aid`
+Jalon : `0.3.45-dev - Add Free Jaffa world-name generators`
 
-Branche : `feature/free-jaffa-military-aid`
+Branche : `feature/free-jaffa-world-names`
 
-Tag de départ : `v0.3.43-dev`
+Tag de départ : `v0.3.44-dev`
 
-Version de DLL validée : `0.3.44.0`
+Version de DLL validée : `0.3.45.0`
 
-Révision locale finale validée : `r1`
+Révision locale finale : `r3`
 
-Statut : validation terminée, publication sous `v0.3.44-dev`.
+Statut : validation fonctionnelle terminée ; jalon publié sous `v0.3.45-dev`.
 
 ## 1. Contrôles statiques et chargement
 
 - [x] `git diff --check` ne signale aucune erreur.
 - [x] `./tools/check-project-consistency.cmd` termine avec un code `0`.
-- [x] Le rebuild forcé produit bien une DLL `0.3.44.0`.
 - [x] RimWorld démarre sans nouvelle erreur rouge GateRim SG-1.
-- [x] `SG1_FreeJaffa` charge avec `canRequestMilitaryAid=true`.
-- [x] Les groupes `Combat`, `Trader`, `Settlement` et `Peaceful` restent valides.
+- [x] Les deux RulePackDefs dédiés se chargent.
+- [x] `SG1_FreeJaffa` ne contient plus de `fixedName` ni de référence aux name makers outlander.
 
-## 2. Préparation diplomatique
+## 2. Noms de factions
 
-Utiliser une sauvegarde de test disposant :
+- [x] L'entrée de sélection reste clairement libellée `Jaffa libres` en français et `Free Jaffa` en anglais.
+- [x] Plusieurs factions générées reçoivent des noms distincts et nettement variés.
+- [x] Elles ne portent plus toutes le nom générique `Jaffa libres`.
+- [x] Aucun jeton de grammaire ou suffixe numérique technique n'apparaît dans l'échantillon.
+- [x] Les noms restent cohérents avec des alliances, conseils, clans et communautés rebelles Jaffa.
 
-- d'une faction `Jaffa libres` visible ;
-- d'une console de communication alimentée ;
-- d'au moins un colon capable de négocier ;
-- d'une menace ou d'une cible hostile permettant d'observer les renforts.
+Exemples validés par la grammaire :
 
-En mode développeur, utiliser l'action vanilla de modification de bonne volonté pour placer successivement la faction en relation neutre puis alliée.
+```text
+Alliance des clans libres
+Conseil de la résistance Jaffa
+Fraternité des hôtes libérés
+Pacte contre les Maîtres
+```
 
-- [x] À relation neutre, le dialogue de la faction ne propose pas d'aide militaire.
-- [x] À relation hostile, aucun appel pacifique à l'aide n'est disponible.
-- [x] Au statut allié, la demande d'aide militaire apparaît dans le dialogue vanilla.
-- [x] Sans console alimentée ou sans opérateur valide, la demande ne peut pas être lancée.
+## 3. Casse française des colonies
 
-## 3. Demande et coût diplomatique
+- [x] Le premier mot commence par une majuscule.
+- [x] Les mots génériques suivants restent en minuscules : `Refuge des affranchis`, `Citadelle des clans libres`.
+- [x] Le type de colonie après un ordinal reste en minuscule : `Premier refuge`, `Deuxième cité`.
+- [x] Les titres ou noms propres justifiés conservent leur capitale, notamment `Maîtres`, `Jaffa` et `Porte` lorsqu'elle désigne la Porte.
+- [x] Les accords `Premier` / `Première` restent corrects.
 
-- [x] La demande affiche ou applique le coût de bonne volonté prévu par RimWorld.
-- [x] La bonne volonté est effectivement réduite après acceptation.
-- [x] La demande ne consomme aucune confiance Tok'ra ni ressource GateRim SG-1 parallèle.
-- [x] Une seconde demande immédiate est bloquée par le délai ou par la relation résultante selon les règles vanilla.
-- [x] Le refus éventuel utilise un message vanilla compréhensible et ne produit pas d'état GateRim persistant.
+## 4. Variété des colonies
 
-## 4. Composition des renforts
+- [x] Les types, thèmes et ordinaux sont variés.
+- [x] Les formes non numérotées restent majoritaires.
+- [x] Aucun suffixe technique `2`, `3` ou supérieur n'est apparu dans l'échantillon de validation.
+- [x] Aucun nom outlander générique n'apparaît.
 
-Inspecter plusieurs membres du groupe arrivé :
+La grammaire offre `600` résultats complets sans registre persistant d'unicité. Une collision reste théoriquement possible, mais elle n'est plus systématique lors de la génération normale.
 
-- [x] seuls `SG1_FreeJaffaWarrior` et `SG1_FreeJaffaGuard` composent le groupe de combat ;
-- [x] les pawns possèdent le xénotype Jaffa ;
-- [x] leur Prim'ta est présent après l'initialisation normale ;
-- [x] leurs noms et backstories correspondent aux Jaffa libres ;
-- [x] leurs bâtons Ma'Tok et armures modulaires sont cohérents avec leur profil ;
-- [x] aucune marque frontale Goa'uld n'est imposée automatiquement ;
-- [x] aucun marchand, animal de bât ou pawn Goa'uld n'est mélangé au groupe d'aide.
+## 5. Génération bilingue
 
-## 5. Arrivée, combat et départ
+- [x] Les factions et colonies utilisent leurs règles anglaises avec l'anglais actif.
+- [x] Les traductions françaises indexées se chargent avec le français actif.
+- [x] Aucun texte de l'autre langue ni fragment de règle n'apparaît.
+- [x] Les formes ordinales restent naturelles et lisibles.
 
-- [x] RimWorld choisit et exécute normalement le mode d'arrivée de l'aide.
-- [x] Les renforts sont alliés au joueur et hostiles à la menace appropriée.
-- [x] Ils combattent sans gizmo, ordre ou contrôleur GateRim supplémentaire.
-- [x] Les pertes, mises à terre et soins éventuels suivent les règles vanilla.
-- [x] Le groupe quitte la carte selon le comportement vanilla après son intervention.
-- [x] Aucun renfort ne rejoint automatiquement la colonie.
+## 6. Compatibilité des sauvegardes
 
-## 6. Persistance et limites de faction
+- [x] Aucun renommage rétroactif ni nouvelle donnée persistante n'est introduit.
+- [x] Les noms déjà sérialisés restent hors du flux de génération modifié.
+- [x] Les relations, dirigeants et colonies ne reçoivent aucune migration liée à ce jalon.
 
-- [x] Sauvegarder et recharger pendant la présence des renforts conserve leur faction, leur état et leur comportement.
-- [x] Le coût et le délai de demande restent cohérents après rechargement.
-- [x] `canGenerateQuestSites` reste désactivé.
-- [x] `raidsForbidden` reste actif.
-- [x] Les sièges et attaques préparées Jaffa libres restent désactivés.
-- [x] Le commerce, les colonies, les visiteurs pacifiques et le convoi spécialisé de `0.3.43-dev` fonctionnent toujours.
+## 7. Régressions Free Jaffa
 
-## 7. Journal
+- [x] Une colonie reste visitable et commerçante.
+- [x] Le convoi de ravitaillement fonctionne.
+- [x] Les visiteurs pacifiques restent générables.
+- [x] Une faction alliée peut toujours fournir l'aide militaire vanilla.
+- [x] Quêtes, raids naturels, sièges et attaques préparées restent désactivés.
+
+## 8. Journal
 
 - [x] `Player.log` ne contient aucune nouvelle erreur GateRim SG-1.
-- [x] Aucune erreur de génération de groupe `Combat` ou de PawnKind Jaffa libre n'apparaît.
-- [x] Aucun message de référence XML manquante n'est introduit.
+- [x] Aucune erreur `RulePackDef`, `GrammarResolver` ou traduction indexée n'apparaît.
+- [x] Aucune référence manquante aux deux name makers dédiés n'apparaît.
 
 ## Résultat final
 
-La révision finale `r1` permet à une faction Jaffa libre alliée de fournir une aide militaire par le dialogue vanilla de la console de communication. Le coût, le délai, l'arrivée, le combat et le départ restent entièrement gouvernés par RimWorld, tandis que la force générée conserve l'identité biologique, culturelle et militaire des Jaffa libres. Les quêtes, raids naturels, sièges et attaques préparées restent désactivés, et aucun nouvel état persistant n'est ajouté.
+Les nouveaux mondes génèrent des factions Jaffa libres distinctement nommées et des colonies bilingues à la casse naturelle. Les noms existants ne sont pas migrés, les systèmes commerciaux et diplomatiques restent inchangés, et la révision finale `r3` est publiée sous `v0.3.45-dev`.

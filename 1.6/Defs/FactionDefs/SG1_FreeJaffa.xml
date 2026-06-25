@@ -11,8 +11,7 @@
     <FactionDef>
         <defName>SG1_FreeJaffa</defName>
         <label>Free Jaffa</label>
-        <description>Independent Jaffa communities freed from Goa'uld domination. They maintain a limited number of visible settlements, neutral initial relations with the SGC expedition, rare peaceful visitors and practical trade links using ordinary caravan and settlement commerce. Once allied, they can answer a military-aid request through the communications console. Quests and natural raids remain disabled until later balancing passes.</description>
-        <fixedName>Free Jaffa</fixedName>
+        <description>Independent Jaffa communities freed from Goa'uld domination. Newly generated groups and settlements receive names shaped by liberation and clan identity. They maintain neutral initial relations with the SGC expedition, rare peaceful visitors and practical trade links using ordinary caravan and settlement commerce. Once allied, they can answer a military-aid request through the communications console. Quests and natural raids remain disabled until later balancing passes.</description>
         <pawnsPlural>Free Jaffa</pawnsPlural>
         <pawnSingular>Free Jaffa</pawnSingular>
         <leaderTitle>Jaffa leader</leaderTitle>
@@ -44,8 +43,8 @@
         <settlementGenerationWeight>0.25</settlementGenerationWeight>
         <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
-        <factionNameMaker>NamerFactionOutlander</factionNameMaker>
-        <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+        <factionNameMaker>SG1_NamerFactionFreeJaffa</factionNameMaker>
+        <settlementNameMaker>SG1_NamerSettlementFreeJaffa</settlementNameMaker>
         <colorSpectrum>
             <li>(0.18, 0.42, 0.20)</li>
             <li>(0.30, 0.58, 0.32)</li>

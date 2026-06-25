@@ -1,6 +1,34 @@
 # Roadmap
 
-## Dernier jalon clôturé — Aide militaire des Jaffa libres (`0.3.44-dev`)
+## Dernier jalon clôturé — Générateurs de noms mondiaux Jaffa libres (`0.3.45-dev`)
+
+- [x] Partir explicitement de `v0.3.44-dev` sur `feature/free-jaffa-world-names`.
+- [x] Relire les fichiers de procédure et de suivi du dépôt.
+- [x] Remplacer les name makers outlander par deux RulePackDefs dédiés.
+- [x] Remplacer en `r2` le pool fixe de colonies par une grammaire bilingue de `600` résultats.
+- [x] Pondérer les formes sans ordinal au-dessus des variantes ordinales RP.
+- [x] Préserver l'accord masculin/féminin des ordinaux français.
+- [x] Constater après validation `r2` les capitales internes trop nombreuses et le nom de faction identique pour toutes les occurrences.
+- [x] Séparer en `r3` les formes initiales et post-ordinales afin d'obtenir `Refuge...` mais `Premier refuge...`.
+- [x] Normaliser la casse française des thèmes tout en conservant les titres propres comme `Maîtres`.
+- [x] Retirer le `fixedName` commun et ajouter `216` combinaisons de noms de factions Jaffa libres.
+- [x] Conserver le label générique de sélection du monde sans imposer ce nom à chaque faction générée.
+- [x] Préserver les noms sérialisés dans les sauvegardes existantes.
+- [x] Ne modifier ni les colonies, ni les groupes de pawns, ni le commerce, ni l'aide militaire, ni la diplomatie.
+- [x] Valider le chargement et l'absence d'erreur RulePackDef ou de traduction.
+- [x] Générer plusieurs mondes en anglais et en français avec plusieurs factions Jaffa libres.
+- [x] Contrôler la variété des noms de factions, la casse française et un large échantillon de colonies sans suffixe numérique technique systématique.
+- [x] Vérifier la conservation du périmètre de sauvegarde sans renommage rétroactif.
+- [x] Revalider commerce de colonie, convoi, visiteurs pacifiques et aide militaire.
+- [x] Effectuer le verrou documentaire final, publier `v0.3.45-dev` et synchroniser le wiki.
+
+Ce jalon reste éditorial et générationnel. Il améliore l'identité mondiale des Jaffa libres sans créer de clans persistants, modifier la diplomatie ou anticiper la passe visuelle globale.
+
+La révision finale `r3` valide les noms propres de plusieurs factions Jaffa libres, la variété des colonies, la casse française naturelle, le chargement bilingue des RulePackDefs, l'absence de fuite des name makers outlander et les régressions du commerce, des visiteurs et de l'aide militaire.
+
+Le jalon est publié sous le tag final unique `v0.3.45-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.46-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Jalon précédent clôturé — Aide militaire des Jaffa libres (`0.3.44-dev`)
 
 - [x] Repartir explicitement de `v0.3.43-dev` sur `feature/free-jaffa-military-aid`.
 - [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
@@ -847,6 +875,7 @@ Cette passe doit être réalisée lorsque les mécaniques concernées sont suffi
 - [ ] Vérifier le module de renseignements Tok'ra et les autres objets d'opération afin que leur silhouette indique immédiatement leur fonction.
 - [ ] Vérifier les marqueurs et sites temporaires afin d'éviter d'ajouter des gizmos de repérage lorsque le vrai problème est la lisibilité visuelle.
 - [ ] Auditer les icônes de carte mondiale des missions et attribuer des visuels variés et thématiques plutôt qu'une même icône générique répétée.
+- [ ] Remplacer les maisons vanilla des colonies par des icônes mondiales propres à chaque faction visible GateRim SG-1, avec des silhouettes immédiatement distinctes pour les Jaffa libres, Goa'uld, Tau'ri / SGC et les futures factions Asgard, Nox, Unas ou autres ; ne pas dépendre uniquement de nuances de couleur subtiles.
 - [ ] Donner à l'officier Jaffa de l'opération de capture une apparence distinctive qui le différencie immédiatement d'un Jaffa ordinaire, sans dépendre uniquement de sa marque frontale.
 - [ ] Harmoniser les objets Tok'ra, Goa'uld, Jaffa et SGC selon une identité visuelle cohérente.
 - [ ] Créer un visuel conceptuel propre pour chaque objet important une fois son design définitif validé.

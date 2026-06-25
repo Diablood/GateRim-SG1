@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.0>name->[factionForm] [factionTheme]</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.0>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.1>factionForm->Alliance</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.1>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.2>factionForm->Coalition</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.2>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.3>factionForm->Confédération</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.3>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.4>factionForm->Ligue</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.4>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.5>factionForm->Conseil</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.5>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.6>factionForm->Pacte</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.6>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.7>factionForm->Assemblée</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.7>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.8>factionForm->Union</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.8>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.9>factionForm->Concorde</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.9>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.10>factionForm->Fraternité</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.10>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.11>factionForm->Entente</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.11>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.12>factionForm->Communauté</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.12>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.13>factionTheme->des affranchis</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.13>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.14>factionTheme->de la chaîne brisée</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.14>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.15>factionTheme->des clans libres</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.15>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.16>factionTheme->de l'aube nouvelle</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.16>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.17>factionTheme->de la Porte ouverte</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.17>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.18>factionTheme->de la veille de la Porte</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.18>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.19>factionTheme->des sans-marque</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.19>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.20>factionTheme->du serment de fer</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.20>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.21>factionTheme->de l'horizon libre</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.21>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.22>factionTheme->de la dernière chaîne</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.22>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.23>factionTheme->des clans rebelles</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.23>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.24>factionTheme->des hôtes libérés</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.24>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.25>factionTheme->des lances brisées</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.25>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.26>factionTheme->des insoumis</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.26>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.27>factionTheme->de la voie nouvelle</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.27>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.28>factionTheme->de la première liberté</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.28>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.29>factionTheme->de la résistance Jaffa</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.29>
+    <SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.30>factionTheme->contre les Maîtres</SG1_NamerFactionFreeJaffa.rulePack.rulesStrings.30>
+
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.0>name->[masculinePlaceInitial] [theme]</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.0>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.1>name->[masculinePlaceInitial] [theme]</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.1>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.2>name->[femininePlaceInitial] [theme]</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.2>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.3>name->[femininePlaceInitial] [theme]</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.3>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.4>name->[masculineOrdinal] [masculinePlaceLower] [theme]</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.4>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.5>name->[feminineOrdinal] [femininePlaceLower] [theme]</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.5>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.6>masculineOrdinal->Premier</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.6>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.7>masculineOrdinal->Deuxième</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.7>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.8>masculineOrdinal->Troisième</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.8>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.9>masculineOrdinal->Quatrième</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.9>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.10>feminineOrdinal->Première</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.10>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.11>feminineOrdinal->Deuxième</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.11>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.12>feminineOrdinal->Troisième</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.12>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.13>feminineOrdinal->Quatrième</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.13>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.14>masculinePlaceInitial->Refuge</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.14>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.15>masculinePlaceInitial->Abri</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.15>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.16>masculinePlaceInitial->Bastion</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.16>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.17>masculinePlaceInitial->Fort</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.17>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.18>masculinePlaceInitial->Camp</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.18>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.19>femininePlaceInitial->Cité</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.19>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.20>femininePlaceInitial->Forteresse</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.20>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.21>femininePlaceInitial->Citadelle</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.21>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.22>femininePlaceInitial->Enclave</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.22>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.23>femininePlaceInitial->Place forte</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.23>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.24>masculinePlaceLower->refuge</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.24>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.25>masculinePlaceLower->abri</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.25>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.26>masculinePlaceLower->bastion</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.26>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.27>masculinePlaceLower->fort</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.27>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.28>masculinePlaceLower->camp</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.28>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.29>femininePlaceLower->cité</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.29>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.30>femininePlaceLower->forteresse</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.30>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.31>femininePlaceLower->citadelle</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.31>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.32>femininePlaceLower->enclave</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.32>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.33>femininePlaceLower->place forte</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.33>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.34>theme->des affranchis</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.34>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.35>theme->de la chaîne brisée</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.35>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.36>theme->des clans libres</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.36>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.37>theme->de l'aube nouvelle</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.37>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.38>theme->de la main ouverte</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.38>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.39>theme->de la veille de la Porte</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.39>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.40>theme->des Maîtres déchus</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.40>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.41>theme->des sans-marque</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.41>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.42>theme->du serment de fer</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.42>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.43>theme->de l'horizon libre</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.43>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.44>theme->de la dernière chaîne</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.44>
+    <SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.45>theme->des clans rebelles</SG1_NamerSettlementFreeJaffa.rulePack.rulesStrings.45>
+</LanguageData>
