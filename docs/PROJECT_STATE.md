@@ -1,57 +1,63 @@
 # Current project state
 
-Current milestone: `0.3.46-dev - Add Goa'uld world-name generators` — final local revision `r1` validated and published.
+Current milestone: `0.3.47-dev - Add Free Jaffa faction-leader names` — final local revision `r5` validated and published.
 
 ## Repository state
 
-- Starting tag: `v0.3.45-dev`.
-- Published branch: `feature/goauld-world-names`.
-- Final tag: `v0.3.46-dev`.
-- Published versions: `0.3.46-dev` and `0.3.46.0`.
-- Final local revision: `r1`.
+- Starting tag: `v0.3.46-dev`.
+- Published branch: `feature/free-jaffa-faction-leader-names`.
+- Final tag: `v0.3.47-dev`.
+- Published versions: `0.3.47-dev` and `0.3.47.0`.
+- Final local revision: `r5`.
 - Main GitHub repository and separate wiki synchronized.
 
 ## Published scope
 
-The visible Goa'uld System Lord faction now uses dedicated bilingual RulePackDefs for faction and settlement world names instead of a shared fixed instance name or vanilla pirate name makers.
+Newly generated Free Jaffa faction leaders now receive a cultural name during native pawn generation, before the world-creation interface displays them.
 
-The published generators provide:
+The published implementation:
 
-- `SG1_NamerFactionGoauldDomain`, combining `12` forms of power and `24` themes for `288` possible domain names;
-- `SG1_NamerSettlementGoauldDomain`, combining settlement types, imperial themes and occasional ordinal forms for `1,728` possible settlement names;
-- a generic `Goa'uld System Lord domains` / `Domaines des Grands Maîtres Goa'uld` label in world-creation controls while each generated faction instance receives its own domain name;
-- natural French casing and masculine/feminine ordinal agreement;
-- names that describe the domain without pretending to identify the separately generated leader.
+- keeps `SG1_FreeJaffaGuard` as the fixed leader PawnKind;
+- assigns `SG1_NamerPawnFreeJaffa` through the supported `nameMaker` and `nameMakerFemale` fields;
+- provides `576` explicit Free Jaffa personal names built from the established cultural syllables;
+- combines them with `24` language-neutral clan bynames for `13,824` formal combinations;
+- repeats the personal name as the explicit nickname so the short label remains cultural while diplomatic interfaces show the full two-part name;
+- lets RimWorld validate distinct non-empty first and last fields instead of treating every one-token result as confusingly similar;
+- allows the later cultural manager to preserve the native PawnKind-generated name rather than assigning a second identity.
+
+The failed post-generation faction-owner fallback and dedicated leader-processing registry from local revisions `r1` and `r2` are not part of the published implementation. The invalid `chanceToUseNameMaker` field from the first `r3` startup and the one-token grammar that failed under `r4` are also absent. No new save field remains.
 
 ## Deliberate limits
 
-This milestone does not rename existing saves and does not add:
+This milestone does not:
 
-- named canon System Lords or a leader-to-faction naming link;
-- culture-specific faction-leader name generation;
-- custom settlement layouts, icons or textures;
-- new factions, races, missions, incidents, PawnKinds or equipment;
-- changes to domain identity, Jaffa marks, raids, diplomacy or world-faction counts;
-- persistent uniqueness registries or new save data.
+- rename leaders already serialized in existing saves;
+- create a dedicated leader PawnKind or change leader titles, backstories, equipment or faction behavior;
+- change faction or settlement names;
+- change Goa'uld System Lord names, host identity or symbiote identity;
+- alter Tok'ra world-faction selection or hidden-presence behavior;
+- add custom faction icons or other visual assets;
+- add factions, incidents, missions or diplomacy rules.
+
+Because `SG1_FreeJaffaGuard` is also used outside leadership, ordinary guards generated through that PawnKind receive the same valid formal Free Jaffa naming grammar immediately.
 
 ## Final validation
 
-- `check-project-consistency.cmd` passed and the rebuilt assembly reported version `0.3.46.0`;
-- multiple Goa'uld factions generated distinct domain names instead of sharing the generic faction label;
-- Goa'uld settlements generated varied dedicated names without pirate-name leakage;
-- French names used natural capitalization and correct ordinal agreement;
-- English and French indexed RulePackDef content loaded without missing-reference or grammar errors;
-- existing serialized faction and settlement names remained outside the migration scope;
-- leaders, domain identity, settlements, permanent hostility, raids and free-symbiote incursion remained unchanged;
-- `Player.log` contained no new GateRim SG-1 error.
+- RimWorld loaded without the invalid PawnKind field error found under `r3`;
+- world generation completed without the `Could not get new name` failure found under `r4`;
+- several Free Jaffa factions displayed varied two-part cultural leader names before the player selected a starting tile;
+- no vanilla human leader name remained in the validated sample;
+- faction and settlement names from `0.3.45-dev` remained unchanged;
+- the final `r5` correction was XML and documentation only, so the already rebuilt `0.3.47.0` assembly remained valid;
+- replacement-leader generation and an explicit save/reload cycle remain durable regression checks rather than separately reported focused tests for this validation.
 
 ## Planned follow-up branches
 
-The following work is explicitly planned but remains outside `0.3.46-dev`:
+The following work remains explicitly planned outside `0.3.47-dev`:
 
-- `feature/free-jaffa-faction-leader-names` for culture-specific Free Jaffa faction-leader names;
-- `feature/goauld-system-lord-leader-names` for Goa'uld leader naming, with an explicit audit of host and symbiote identity rather than a simple pawn-name replacement;
-- `feature/faction-world-icon-overhaul` for distinct world-map icons, beginning with Free Jaffa and Goa'uld settlements and then covering every visible GateRim SG-1 faction.
+- `feature/goauld-system-lord-leader-names`: audit and correct the visible Goa'uld leader identity while preserving the distinct host and symbiote names;
+- `feature/tokra-world-faction-selection-audit`: audit the hidden required Tok'ra faction, world-creation visibility and the effect of custom faction removal on the Tok'ra questline;
+- `feature/faction-world-icon-overhaul`: replace the shared vanilla house silhouette with faction-specific world icons during the global visual pass.
 
 No version number is assigned to these branches yet. Each must start from the latest published tag available when selected.
 
@@ -59,4 +65,4 @@ No version number is assigned to these branches yet. Each must start from the la
 
 Choose the next milestone after rereading `docs/ROADMAP.md`,
 `docs/IDEAS_TO_REVISIT.md` and `docs/MILESTONE_PUBLICATION.md`. Start it
-explicitly from `v0.3.46-dev` on a new dedicated branch.
+explicitly from `v0.3.47-dev` on a new dedicated branch.

@@ -1,5 +1,43 @@
 # Roadmap
 
+## Dernier jalon clôturé — Noms culturels des chefs Jaffa libres (`0.3.47-dev`)
+
+- [x] Partir explicitement de `v0.3.46-dev` sur `feature/free-jaffa-faction-leader-names`.
+- [x] Relire les fichiers de procédure, l'état publié et le framework culturel existant.
+- [x] Constater en test `r1` que le repli par faction propriétaire ne corrige pas le nom visible à la création du monde.
+- [x] Constater en test `r2` qu'un registre de dirigeants séparé reste trop tardif pour le même écran.
+- [x] Identifier le point correct : le nom doit être produit pendant `Faction.TryGenerateNewLeader`, via le PawnKind fixe.
+- [x] Ajouter `SG1_NamerPawnFreeJaffa` et l'affecter à `SG1_FreeJaffaGuard` via `nameMaker` et `nameMakerFemale`.
+- [x] Faire reconnaître les name makers natifs par le gestionnaire culturel afin d'éviter une seconde attribution après le démarrage.
+- [x] Retirer le repli de résolution et le registre persistant provisoires introduits par `r1` et `r2`.
+- [x] Constater au premier lancement de `r3` que `chanceToUseNameMaker` n'existe pas dans `PawnKindDef` en RimWorld 1.6.
+- [x] Retirer ce champ XML invalide sans modifier les champs `nameMaker` pris en charge.
+- [x] Constater pendant la génération du monde sous `r4` que les noms en un seul mot épuisent le validateur d'unicité `NameTriple` après le premier chef.
+- [x] Remplacer en `r5` les sorties à un seul token par `576` noms personnels formels accompagnés de `24` noms de clan Jaffa.
+- [x] Répéter explicitement le nom personnel comme surnom interne afin que le nom court reste culturel et que le nom complet reste distinct.
+- [x] Valider `check-project-consistency.cmd` avec la DLL `0.3.47.0`.
+- [x] Générer un monde entièrement nouveau avec plusieurs factions Jaffa libres et vérifier leurs noms culturels variés avant le choix de la tuile de départ.
+- [x] Confirmer l'absence de l'échec `Could not get new name (first rule pack: SG1_NamerPawnFreeJaffa)` pendant la génération.
+- [x] Conserver les noms de factions, colonies et titres de dirigeants déjà validés.
+- [x] Conserver hors périmètre les chefs Goa'uld, l'audit Tok'ra et les icônes mondiales.
+- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.47-dev` et synchroniser le wiki.
+
+La révision finale `r5` conserve le mécanisme natif `PawnKindDef.nameMaker`, seul point assez précoce pour l'écran de création du monde. Elle fournit un `NameTriple` complet composé d'un nom personnel Jaffa et d'un nom de clan, avec le nom personnel conservé comme surnom court. Plusieurs chefs peuvent ainsi être générés sans conflit d'unicité ni retour aux noms humains vanilla.
+
+Le test ciblé final valide la génération visible des noms. Le remplacement ultérieur d'un chef, la sauvegarde/rechargement et les régressions complètes du contenu Jaffa libre restent enregistrés comme couverture durable dans `docs/TESTING.md`, sans être présentés comme des tests manuels séparés déjà exécutés.
+
+Le jalon est publié sous le tag final unique `v0.3.47-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.48-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Branches prévues — Identité mondiale et présence des factions
+
+Ces branches sont décidées mais ne reçoivent pas encore de numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
+
+- `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
+- `feature/tokra-world-faction-selection-audit` : auditer la faction Tok'ra cachée et obligatoire, son absence normale de la liste configurable du monde et le comportement d'une configuration personnalisée qui tente de la retirer.
+- `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
+
+Le jalon Goa'uld doit réutiliser le framework culturel tout en respectant sa double identité. La branche Tok'ra doit rester strictement séparée des noms de dirigeants. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
+
 ## Dernier jalon clôturé — Générateurs de noms mondiaux Goa'uld (`0.3.46-dev`)
 
 - [x] Partir explicitement de `v0.3.45-dev` sur `feature/goauld-world-names`.
@@ -27,11 +65,12 @@ Le jalon est publié sous le tag final unique `v0.3.46-dev`, avec le dépôt pri
 
 ## Branches prévues — Identité mondiale des factions
 
-Ces branches sont décidées mais ne reçoivent pas encore de numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
+La première branche est sélectionnée pour `0.3.47-dev`. Les deux autres restent planifiées sans numéro de jalon et devront repartir séparément du dernier tag publié disponible au moment de leur démarrage.
 
-- `feature/free-jaffa-faction-leader-names` : remplacer les noms vanilla des chefs de factions Jaffa libres par une génération culturellement cohérente, sans modifier les noms de factions ni de colonies déjà publiés.
+- `feature/free-jaffa-faction-leader-names` : branche sélectionnée pour `0.3.47-dev`; appliquer le profil culturel Jaffa libre aux nouveaux dirigeants sans modifier les noms de factions ni de colonies déjà publiés.
 - `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
 - `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
+- `feature/tokra-world-faction-selection-audit` : auditer séparément la faction Tok'ra cachée et obligatoire, vérifier qu'elle reste absente de la sélection normale du monde et empêcher qu'une configuration personnalisée ne coupe silencieusement la questline Tok'ra.
 
 Les deux jalons de noms de dirigeants doivent réutiliser le framework culturel existant plutôt que coder des listes spécifiques dans les PawnKinds. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
 

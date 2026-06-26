@@ -56,7 +56,7 @@ Deuxième cité de la chaîne brisée
 Les factions et colonies déjà présentes dans une sauvegarde conservent leurs
 noms existants. Le changement s'applique uniquement aux nouvelles générations.
 
-Les noms des chefs de faction utilisent encore la génération vanilla. Une passe dédiée devra les relier au profil culturel Jaffa libre sans modifier les noms des factions ou des colonies.
+Depuis `0.3.47-dev`, les nouveaux chefs de faction reçoivent directement pendant leur génération un nom Jaffa libre formel composé d'un nom personnel et d'un nom de clan. Le nom personnel reste utilisé comme nom court, tandis que le nom complet apparaît dans les interfaces diplomatiques. Cette structure évite les noms humains vanilla et permet à plusieurs chefs d'être générés sans conflit d'unicité. Les chefs déjà sérialisés dans une ancienne sauvegarde conservent leur nom existant ; les noms des factions et des colonies ne sont pas modifiés par cette attribution.
 
 L'icône mondiale reste provisoirement la maison vanilla, déclinée dans des
 nuances de vert parfois discrètes. Une silhouette propre aux Jaffa libres sera

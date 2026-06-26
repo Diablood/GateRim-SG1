@@ -1,77 +1,63 @@
-# Validation finale — 0.3.46-dev
+# Validation finale — 0.3.47-dev
 
-Jalon : `0.3.46-dev - Add Goa'uld world-name generators`
+Jalon : `0.3.47-dev - Add Free Jaffa faction-leader names`
 
-Branche : `feature/goauld-world-names`
+Branche : `feature/free-jaffa-faction-leader-names`
 
-Tag de départ : `v0.3.45-dev`
+Tag de départ : `v0.3.46-dev`
 
-Version de DLL validée : `0.3.46.0`
+Version de DLL validée : `0.3.47.0`
 
-Révision locale finale : `r1`
+Révision locale finale : `r5`
 
-Statut : validation fonctionnelle terminée ; jalon publié sous `v0.3.46-dev`.
+Statut : validation fonctionnelle ciblée terminée ; jalon publié sous `v0.3.47-dev`.
 
 ## 1. Contrôles statiques et chargement
 
 - [x] `git diff --check` ne signale aucune erreur.
-- [x] `./tools/check-project-consistency.cmd` termine avec un code `0`.
-- [x] Le rebuild forcé produit une DLL `0.3.46.0`.
-- [x] RimWorld démarre sans nouvelle erreur rouge GateRim SG-1.
-- [x] `SG1_NamerFactionGoauldDomain` et `SG1_NamerSettlementGoauldDomain` se chargent.
-- [x] `SG1_GoauldSystemLordPrototype` ne contient plus de `fixedName` et ne référence plus les name makers pirates.
+- [x] `./tools/check-project-consistency.cmd` termine avec un code `0` avant publication.
+- [x] La DLL chargée reste en version `0.3.47.0`.
+- [x] RimWorld démarre sans l'erreur XML `chanceToUseNameMaker` rencontrée sous `r3`.
+- [x] `SG1_NamerPawnFreeJaffa` et les champs `nameMaker` / `nameMakerFemale` sont résolus.
 
-## 2. Noms des factions
+## 2. Nouveau monde — contrôle avant démarrage
 
-- [x] L'entrée de sélection conserve son libellé générique en français ou en anglais.
-- [x] Plusieurs factions générées reçoivent des noms variés.
-- [x] Elles ne portent plus toutes le nom générique de la définition.
-- [x] Aucun suffixe numérique technique, crochet ou jeton de grammaire n'apparaît.
-- [x] Les noms décrivent des domaines, empires, cours ou puissances Goa'uld sans prétendre identifier le dirigeant généré.
+Un monde entièrement nouveau a été généré avec plusieurs factions Jaffa libres et les dirigeants ont été contrôlés avant le choix de la tuile de départ.
 
-## 3. Noms des colonies
+- [x] Chaque faction contrôlée possède un chef généré.
+- [x] Les chefs utilisent immédiatement des noms Jaffa libres plutôt que des noms humains vanilla.
+- [x] Les noms complets contiennent un nom personnel et un nom de clan.
+- [x] Les noms observés sont variés entre les factions.
+- [x] Aucun nom vide, fragment de règle ou suffixe technique inattendu n'apparaît.
+- [x] La génération du monde se termine sans `Could not get new name (first rule pack: SG1_NamerPawnFreeJaffa)`.
+- [x] Les noms de factions et de colonies validés dans `0.3.45-dev` restent inchangés.
 
-- [x] Les colonies utilisent uniquement le générateur dédié.
-- [x] Aucun nom pirate vanilla n'est observé.
-- [x] Les types, thèmes et ordinaux sont variés.
-- [x] Les formes non numérotées restent majoritaires.
-- [x] Aucun suffixe technique `2`, `3` ou supérieur n'apparaît dans l'échantillon.
-- [x] Les noms restent lisibles sur la carte mondiale.
+## 3. Structure technique validée
 
-## 4. Français et anglais
+- [x] Le résultat du RulePack fournit des champs de prénom et de clan non vides au `NameTriple`.
+- [x] Le nom personnel est répété comme surnom interne afin de rester le nom court du pawn.
+- [x] Les `576` noms personnels et `24` noms de clan donnent `13 824` combinaisons formelles possibles.
+- [x] Le repli tardif par faction propriétaire et le registre persistant de dirigeants de `r1` / `r2` restent retirés.
+- [x] Aucun nouveau champ de sauvegarde propre à `0.3.47-dev` n'est créé.
 
-- [x] Le premier mot commence par une majuscule et les mots communs internes restent en minuscules.
-- [x] `Porte`, `Souverain` et `Premier Serpent` conservent leur capitale lorsqu'ils fonctionnent comme titres ou noms propres.
-- [x] Les accords `Premier` / `Première` sont corrects.
-- [x] Les accents, apostrophes et `œ` s'affichent correctement.
-- [x] Aucun texte de l'autre langue ni fragment de règle n'apparaît.
+## 4. Limites et régressions durables
 
-## 5. Compatibilité des sauvegardes
+Les points suivants n'ont pas été signalés comme exécutés séparément pendant le test ciblé final. Ils restent dans `docs/TESTING.md` comme régressions à rejouer lors de toute modification future du générateur ou du PawnKind :
 
-- [x] Une sauvegarde créée avant `0.3.46-dev` conserve ses noms sérialisés.
-- [x] Les dirigeants, relations et identités de domaine restent intacts.
-- [x] Aucun renommage rétroactif ni nouvelle donnée persistante n'est introduit.
+- remplacement d'un chef Jaffa libre après la création du monde ;
+- stabilité explicite après sauvegarde/rechargement ;
+- contrôle détaillé des gardes ordinaires utilisant le même PawnKind ;
+- nouvelle passe complète sur commerce, visiteurs pacifiques et aide militaire.
 
-## 6. Régressions Goa'uld
+Le chemin natif étant porté par le PawnKind, un dirigeant de remplacement généré avec `SG1_FreeJaffaGuard` utilise le même name maker, mais ce cas n'est pas présenté comme un test manuel distinct de la validation finale.
 
-- [x] Chaque faction génère toujours un véritable Grand Maître Goa'uld comme dirigeant.
-- [x] Les colonies conservent leurs groupes Jaffa et leur caste d'hôtes minoritaire.
-- [x] La faction reste ennemie permanente du joueur.
-- [x] Le raid naturel Jaffa Goa'uld reste fonctionnel.
-- [x] Les raids contrôlés et l'incursion de symbiotes libres résolvent toujours une faction Goa'uld valide.
-- [x] Marchands, aide militaire, quêtes, sièges et attaques préparées restent désactivés.
+## 5. Hors périmètre confirmé
 
-## 7. Constats différés
-
-- [x] Les icônes de colonies restent des maisons vanilla uniquement différenciées par couleur ; la correction est planifiée dans `feature/faction-world-icon-overhaul`.
-- [x] Les chefs de factions Jaffa libres et Goa'uld utilisent encore des noms vanilla ; deux branches distinctes sont planifiées pour traiter leurs contraintes culturelles et identitaires.
-
-## 8. Journal
-
-- [x] `Player.log` ne contient aucune nouvelle erreur GateRim SG-1.
-- [x] Aucune erreur `RulePackDef`, `GrammarResolver` ou traduction indexée n'apparaît.
-- [x] Aucune référence manquante aux deux name makers dédiés n'apparaît.
+- [x] Les chefs Goa'uld restent réservés à `feature/goauld-system-lord-leader-names`.
+- [x] La visibilité et la présence mondiale Tok'ra restent réservées à `feature/tokra-world-faction-selection-audit`.
+- [x] Les icônes mondiales restent provisoirement vanilla et sont réservées à `feature/faction-world-icon-overhaul`.
+- [x] Les chefs de factions vanilla ne sont pas ciblés par le nouveau RulePack.
 
 ## Résultat final
 
-Les nouveaux mondes utilisent des noms de domaines et de colonies Goa'uld dédiés et bilingues, tandis que les sauvegardes existantes restent intactes. Le changement ne modifie ni les dirigeants, ni les identités de domaine, ni les groupes de pawns, ni les raids, ni les données persistantes. La révision finale `r1` est publiée sous `v0.3.46-dev`.
+Les nouveaux chefs de factions Jaffa libres possèdent un nom culturel formel et valide dès leur génération dans l'écran de création du monde. Plusieurs factions peuvent générer leurs chefs sans épuiser le validateur d'unicité de RimWorld. La révision finale `r5` est publiée sous le tag unique `v0.3.47-dev`.

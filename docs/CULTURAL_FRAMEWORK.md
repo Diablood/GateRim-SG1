@@ -247,3 +247,33 @@ The new Tau'ri childhoods remain restricted to their own spawn category and are 
 
 Future Jaffa, Unas or other compatible origins can be added mainly in XML once their biological compatibility, backstories and name generators are genuinely available. No additional C# branch is required while the current origin schema remains sufficient.
 
+
+
+## Generation-time Free Jaffa leader names (`0.3.47-dev`)
+
+Functional testing of local revisions `r1` and `r2` showed that a post-generation cultural scan is too late for the world-creation interface: RimWorld has already generated and displayed `Faction.leader` before the game component begins its normal naming cycle.
+
+The milestone therefore leaves the generic resolver unchanged and uses the native generation path:
+
+- `SG1_FreeJaffaGuard` remains the fixed leader kind of `SG1_FreeJaffa`;
+- the PawnKind references `SG1_NamerPawnFreeJaffa` through `nameMaker` and `nameMakerFemale`;
+- `Faction.TryGenerateNewLeader` receives the cultural name before the leader is exposed to the world-creation interface;
+- the later cultural manager recognizes a native PawnKind name maker and registers its result without renaming the pawn a second time.
+
+The first `r3` startup exposed that `chanceToUseNameMaker` is not a valid RimWorld 1.6 `PawnKindDef` field, so the invalid XML entry was removed.
+
+The `r4` world-generation test then exposed the native pawn-name format requirement. `PawnKindDef.nameMaker` results are parsed as `NameTriple`. Single-token results leave the first and last fields empty, and `NameTriple.ConfusinglySimilarTo` consequently treats every later single-token candidate as equivalent after the first leader is registered.
+
+Revision `r5` keeps the same generation point but emits a complete formal structure:
+
+- `576` explicit personal names are built from the existing Free Jaffa cultural syllables;
+- each root rule repeats that personal name as its explicit nickname;
+- a second language-neutral clan component is selected from `24` bynames;
+- full labels show the personal and clan names, while short labels remain the personal name;
+- the uniqueness validator now receives non-empty first and last fields.
+
+The provisional faction-only resolver entry point and dedicated persisted leader registry from `r1` and `r2` remain removed. Existing save data needs no migration because the final design adds no new save field. Existing leaders keep their serialized names, while replacement leaders generated later through the same fixed PawnKind use the new name maker.
+
+The fixed leader PawnKind is also used for ordinary Free Jaffa guards. Giving it the same formal cultural grammar changes only when and in what valid native structure their intended Free Jaffa identity is assigned.
+
+Goa'uld System Lord names remain excluded because their visible leader identity must be coordinated with the host and symbiote records in a separate milestone.

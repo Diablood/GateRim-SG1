@@ -64,3 +64,31 @@ The generator is intentionally isolated from the faction definitions so future A
 ## Supported generation tests
 
 A Goa'uld raid is a valid natural-generation test because the mod provides dedicated Goa'uld raid incidents. Generic vanilla raids are not valid for every culture: Tok'ra and Free Jaffa currently forbid raids, while the SGC expedition is a player faction. Test those cultures through supported visitors, faction leaders, direct PawnKind spawning or the stranded SG-team scenario instead.
+
+
+## Generation-time Free Jaffa faction leaders (`0.3.47-dev`)
+
+Faction leaders are generated during world creation, before `GameComponent_CulturalPawnNameManager` begins its normal in-game scan. Local revisions `r1` and `r2` confirmed that a later leader pass cannot correct the name shown in the world-creation interface reliably.
+
+The milestone therefore assigns the cultural generator at the native generation point:
+
+- `SG1_FreeJaffaGuard`, the fixed leader PawnKind, references `SG1_NamerPawnFreeJaffa`;
+- the same RulePackDef is assigned through the supported `nameMaker` and `nameMakerFemale` fields;
+- the leader has a cultural name immediately when `Faction.TryGenerateNewLeader` creates the pawn;
+- the later manager scan preserves and reserves that native generated name instead of replacing it.
+
+The first `r3` startup showed that `chanceToUseNameMaker` is not part of RimWorld 1.6 `PawnKindDef`, so the invalid entry was removed.
+
+The `r4` world-generation test exposed a separate format constraint. PawnKind name makers are parsed through `NameTriple.FromString`. A result containing only one token has empty first and last fields. Once one such pawn exists, later one-token candidates are treated as confusingly similar even when their visible words differ, and the name generator eventually logs `Could not get new name`.
+
+Revision `r5` emits a valid formal name structure instead:
+
+- `576` explicit personal names reuse the established Free Jaffa prefix and suffix pools;
+- `24` language-neutral clan bynames provide a second name component;
+- the personal name is repeated as the explicit nickname in the RulePack result;
+- the full label therefore appears as `personal name + clan`, while `ToStringShort` remains the personal name;
+- the distinct first and last fields allow RimWorld's uniqueness validator to compare leaders normally.
+
+The failed faction-owner fallback and dedicated leader registry remain removed. Existing serialized leaders are not renamed. A newly generated replacement leader uses the same PawnKind and therefore receives the formal cultural name at creation.
+
+Goa'uld System Lords remain outside this rule because their visible name must later preserve the separate host and symbiote identities.

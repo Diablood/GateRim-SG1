@@ -301,6 +301,17 @@ namespace GateRimSG1.Names
                 return;
             }
 
+            if (HasNativeNameMaker(pawn.kindDef, pawn.gender)
+                && pawn.Name != null)
+            {
+                // A PawnKind-level name maker runs during pawn generation,
+                // before the world-creation interface displays faction
+                // leaders. Preserve that authoritative cultural name instead
+                // of replacing it during the later manager scan.
+                RegisterExistingPawn(pawn);
+                return;
+            }
+
             GoauldSymbioteData symbioteData = null;
 
             if (IsAdultSymbioteHostKind(pawn.kindDef))
@@ -435,6 +446,24 @@ namespace GateRimSG1.Names
                 processedPawnThingIds ?? new List<string>());
             reservedNameKeySet = new HashSet<string>(
                 reservedNameKeys ?? new List<string>());
+        }
+
+        private static bool HasNativeNameMaker(
+            PawnKindDef pawnKindDef,
+            Gender gender)
+        {
+            if (pawnKindDef == null)
+            {
+                return false;
+            }
+
+            if (gender == Gender.Female
+                && pawnKindDef.nameMakerFemale != null)
+            {
+                return true;
+            }
+
+            return pawnKindDef.nameMaker != null;
         }
 
         private static bool IsAdultSymbioteHostKind(PawnKindDef pawnKindDef)

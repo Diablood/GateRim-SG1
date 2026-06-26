@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.46-dev`
+- Development version: `0.3.47-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Package ID: `diablood.gaterimsg1`
@@ -27,6 +27,9 @@ people, factions, technologies, biology and conflicts surrounding it.
   liberation- and clan-themed grammars instead of a shared fixed faction name
   or vanilla outlander town names; French compound names use natural
   capitalization and settlement ordinals avoid technical numeric suffixes.
+  Their newly generated faction leaders receive formal two-part Free Jaffa
+  cultural names directly during PawnKind generation, so the correct identity
+  is already visible in the world-creation interface without vanilla names.
 - A specialized Free Jaffa clan-supply convoy that trades provisions, strategic materials and limited military equipment through ordinary RimWorld caravan commerce.
 - Allied Free Jaffa can answer an ordinary military-aid request through a powered communications console, using RimWorld goodwill costs, cooldowns and arrival behavior.
 - Rare Goa'uld free-symbiote incursions that scale from storyteller threat

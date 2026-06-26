@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.47-dev - Add Free Jaffa faction-leader names
+
+- Start from published tag `v0.3.46-dev` on `feature/free-jaffa-faction-leader-names`.
+- Observe in local revisions `r1` and `r2` that post-generation scans still leave the leader name vanilla in the world-creation interface.
+- Move generation-time naming to `PawnKindDef.nameMaker` on `SG1_FreeJaffaGuard`, the fixed Free Jaffa leader kind.
+- Add `SG1_NamerPawnFreeJaffa` and assign it through the supported `nameMaker` and `nameMakerFemale` fields.
+- Teach the cultural name manager to preserve an existing native PawnKind-generated name instead of assigning a second name after the game starts.
+- Remove the provisional faction-owner fallback and dedicated leader-processing save registry introduced by `r1` and `r2`; no new persistent data remains in the milestone.
+- Remove the invalid `chanceToUseNameMaker` PawnKind field after the first `r3` startup error.
+- Diagnose in `r4` that a one-token RulePack result becomes a `NameTriple` with empty first and last fields, making every later candidate confusingly similar and producing `Could not get new name` during world generation.
+- Replace the one-token grammar in `r5` with `576` explicit Free Jaffa personal names and `24` language-neutral clan bynames.
+- Repeat the personal name as the explicit nickname so the short pawn label remains the personal name while the full diplomatic label shows the clan byname.
+- Preserve faction names, settlement names, leader titles, backstories, equipment and diplomacy.
+- Keep Goa'uld System Lord names, Tok'ra faction-selection behavior and faction world icons in their separate planned branches.
+- Validate final local revision `r5`, including successful multi-faction world generation, varied formal Free Jaffa leader names visible before tile selection and absence of the earlier name-exhaustion failure.
+- Keep replacement-leader, save/reload and full Free Jaffa regression cases as durable follow-up checks without presenting them as separately executed focused tests.
+- Publish branch `feature/free-jaffa-faction-leader-names`, final tag `v0.3.47-dev` and the synchronized wiki.
+
 ## 0.3.46-dev - Add Goa'uld world-name generators
 
 - Remove the shared `fixedName` from `SG1_GoauldSystemLordPrototype` while preserving its generic world-creation label.

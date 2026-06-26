@@ -1,5 +1,31 @@
 # Testing checklist
 
+## 0.3.47-dev - Free Jaffa faction-leader names
+
+Validation fonctionnelle ciblée terminée sur la révision finale `r5`, puis jalon publié sous `v0.3.47-dev`.
+
+Couverture durable :
+
+- conserver `SG1_FreeJaffaGuard` comme PawnKind fixe du dirigeant Jaffa libre tant qu'un jalon distinct ne redéfinit pas cette structure ;
+- charger `SG1_NamerPawnFreeJaffa` par `nameMaker` et `nameMakerFemale` sans champ PawnKind non pris en charge ;
+- générer plusieurs factions Jaffa libres dans un monde neuf et vérifier que leurs chefs possèdent déjà un nom culturel avant le choix de la tuile de départ ;
+- fournir à `NameTriple` un nom personnel, un surnom explicite et un nom de clan non vides afin d'éviter les collisions de candidats à un seul token ;
+- conserver le nom personnel comme libellé court et le nom personnel plus le clan comme libellé diplomatique complet ;
+- vérifier que plusieurs chefs peuvent être générés sans `Could not get new name (first rule pack: SG1_NamerPawnFreeJaffa)` ;
+- préserver les noms de factions et de colonies de `0.3.45-dev`, les titres, backstories, équipements et relations ;
+- ne pas réintroduire le repli tardif par faction propriétaire ni un registre persistant dédié aux dirigeants ;
+- ne jamais renommer automatiquement un chef déjà sérialisé dans une ancienne sauvegarde ;
+- générer un dirigeant de remplacement et vérifier qu'il utilise le même name maker natif, puis sauvegarder et recharger ;
+- vérifier les gardes ordinaires utilisant `SG1_FreeJaffaGuard`, puisque le même PawnKind porte désormais la grammaire formelle ;
+- revalider le commerce de colonie, le convoi, les visiteurs pacifiques, l'aide militaire et `Player.log` après toute modification future de ce PawnKind ou du RulePack.
+
+Limites durables :
+
+- ne pas traiter les Grands Maîtres Goa'uld avec une simple copie de cette solution ; leur identité visible doit rester coordonnée avec l'hôte et le symbiote ;
+- ne pas mélanger l'audit de présence mondiale Tok'ra avec la génération des noms ;
+- conserver les icônes de factions dans la passe visuelle globale ;
+- toute future identité de clan persistante ou utilisée par la diplomatie doit être conçue comme un jalon séparé plutôt que déduite du nom affiché.
+
 ## 0.3.46-dev - Goa'uld world-name generators
 
 Validation locale terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.46-dev`.
