@@ -50,7 +50,7 @@ extraction or identity-transfer mechanics.
 The faction defines:
 
 ```text
-factionIconPath: World/WorldObjects/Expanding/PirateOutpost
+factionIconPath: World/WorldObjects/Expanding/SG1_GoauldSystemLords
 settlementTexturePath: World/WorldObjects/DefaultSettlement
 factionNameMaker: SG1_NamerFactionGoauldDomain
 settlementNameMaker: SG1_NamerSettlementGoauldDomain
@@ -64,6 +64,8 @@ were removed in `0.2.1-dev-r1`. Their valid RimWorld 1.6 replacements,
 Since `0.3.46-dev-r1`, newly generated faction instances and settlements use
 dedicated bilingual Goa'uld RulePackDefs instead of a shared fixed faction
 name or vanilla pirate place names. Existing serialized names are not migrated.
+
+Since `0.3.50-dev`, the world-faction row uses a dedicated Goa'uld pyramid and serpent silhouette while retaining RimWorld's gold faction-color tinting. The icon texture is white/alpha rather than precolored so manually added duplicate domains can still receive the vanilla lighter or darker tint variations.
 
 ## Pawn-group profiles
 

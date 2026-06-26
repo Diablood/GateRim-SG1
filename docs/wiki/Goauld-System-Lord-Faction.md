@@ -152,4 +152,7 @@ Consulte [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-
 
 ## Identité visuelle mondiale
 
-Les colonies utilisent encore la maison vanilla avec une teinte de faction. Une future passe visuelle remplacera cette silhouette par une icône Goa'uld immédiatement reconnaissable, dans le même chantier global que les icônes Jaffa libres et celles des autres factions du mod.
+Depuis `0.3.50-dev`, l'entrée de faction utilise une silhouette Goa'uld dédiée
+avec pyramide, géométrie impériale et serpent. Le PNG reste blanc/alpha :
+RimWorld applique ensuite la couleur de faction, ce qui conserve les variations
+de teinte lorsqu'un joueur ajoute plusieurs domaines Goa'uld.

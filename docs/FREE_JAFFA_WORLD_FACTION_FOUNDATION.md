@@ -58,7 +58,7 @@ against the player.
 ## World-map presentation
 
 ```text
-factionIconPath: World/WorldObjects/Expanding/Town
+factionIconPath: World/WorldObjects/Expanding/SG1_FreeJaffa
 settlementTexturePath: World/WorldObjects/DefaultSettlement
 green-toned colorSpectrum
 factionNameMaker: SG1_NamerFactionFreeJaffa
@@ -67,7 +67,7 @@ settlementNameMaker: SG1_NamerSettlementFreeJaffa
 
 Since `0.3.45-dev`, newly generated settlements use a bilingual combinatorial grammar centered on liberation, clans, broken chains and refuge instead of vanilla outlander town names. It offers `600` complete results and includes natural ordinal forms to avoid visible duplicate suffixes. Existing saves retain their serialized names.
 
-The current settlement marker remains RimWorld's vanilla house silhouette with subtle green faction-color variations. A distinct Free Jaffa icon, followed by equivalent silhouettes for every visible GateRim SG-1 faction, is deferred to the global visual pass.
+Since `0.3.50-dev`, the world-faction row uses a dedicated Free Jaffa silhouette while retaining RimWorld's green faction-color tinting. The icon texture is white/alpha rather than precolored so manually added duplicate factions can still receive the vanilla lighter or darker tint variations.
 
 ## Historical baseline restrictions (`0.2.2-dev`)
 

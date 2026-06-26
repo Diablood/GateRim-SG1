@@ -1,24 +1,22 @@
-# Validation terminée - 0.3.49-dev
+# Validation terminée - 0.3.50-dev
 
-Jalon : `0.3.49-dev - Add optional Tok'ra world-faction selection`
+Jalon : `0.3.50-dev - Add GateRim faction world icons`
 
-Branche : `feature/tokra-world-faction-selection-audit`
+Branche : `feature/faction-world-icon-overhaul`
 
-Tag de depart : `v0.3.48-dev`
+Tag de départ : `v0.3.49-dev`
 
-Version de DLL attendue : `0.3.49.0`
+Version de DLL attendue : `0.3.50.0`
 
-Revision locale : `r5`
+Révision locale : `r2`
 
-Statut : test principal r5 valide, jalon publié sous `v0.3.49-dev`.
+Statut : test principal r2 validé. La r1 validait la couleur mais pas la lisibilité ; la r2 est acceptée après remplacement des trois nouvelles icônes par des silhouettes plus simples à contour sombre épais.
 
-Retour `r4` : l'icone Tok'ra est bien presente, mais aucun avertissement jaune n'apparait au retrait de la faction. Diagnostic : l'appel Harmony etait insere avant une cible de branche vanilla et pouvait etre saute par le flux normal.
-
-## 1. Controles statiques et chargement
+## 1. Contrôles statiques et chargement
 
 - [x] `git diff --check` ne signale aucune erreur.
 - [x] `./tools/check-project-consistency.cmd` termine avec un code `0`.
-- [x] Le rebuild force `0.3.49.0` termine sans erreur de compilation.
+- [x] Le rebuild forcé `0.3.50.0` termine sans erreur de compilation.
 - [x] Le mod charge avec l'ordre minimal suivant :
 
 ```text
@@ -28,51 +26,37 @@ Biotech
 GateRim SG-1
 ```
 
-- [x] RimWorld atteint la creation du monde sans erreur XML, `0Harmony`, `FactionDef`, `factionIconPath` ou `SG1_Tokra`.
+- [x] RimWorld atteint la création du monde sans erreur XML, `FactionDef`, `factionIconPath`, texture manquante ou Harmony.
 
-## 2. Test principal r5
+## 2. Test principal r2
 
-Objectif : verifier uniquement l'icone, l'avertissement jaune et le retour a l'etat actif.
+Objectif : vérifier uniquement la lisibilité des icônes de faction et la variation vanilla de couleur sur les copies.
 
 1. Depuis le menu principal, ouvrir `New colony`.
-2. Avancer jusqu'a l'ecran `Create world`.
-3. Dans la section `Factions`, reperer la ligne visible `Tok'ra`.
-4. Verifier que la ligne `Tok'ra` est selectionnee une fois par defaut et affiche une icone distincte des maisons vanilla.
-5. Cliquer sur le bouton de suppression de la ligne `Tok'ra`.
-6. Verifier qu'une ligne jaune `Warning:` apparait immediatement et indique que les contacts, la mission d'introduction, les incidents et les operations Tok'ra recurrentes seront desactives pour cette partie.
-7. Cliquer sur `Add...`, selectionner `Tok'ra`, puis verifier que l'avertissement jaune disparait.
-8. Controler `Player.log`.
+2. Sélectionner le scénario `Équipe SG isolée` / `Stranded SG team`.
+3. Avancer jusqu'à l'écran `Create world`.
+4. Dans la section `Factions`, vérifier que `Jaffa libres` / `Free Jaffa` utilise la nouvelle icône Jaffa libre simplifiée et lisible, avec contour sombre épais, et non la maison vanilla.
+5. Vérifier que `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains` utilise la nouvelle icône pyramide/serpent simplifiée et lisible, avec contour sombre épais, et non l'avant-poste pirate vanilla.
+6. Vérifier que `Tok'ra` conserve son icône Tok'ra circulaire dédiée.
+7. Cliquer sur `Add...` et ajouter au moins deux entrées supplémentaires `Jaffa libres` / `Free Jaffa`.
+8. Cliquer sur `Add...` et ajouter au moins deux entrées supplémentaires `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains`.
+9. Vérifier que les copies d'une même faction gardent la même silhouette mais affichent des variations vanilla visibles de teinte, plus claires ou plus foncées.
+10. Générer le monde et démarrer le scénario sur une tuile valide.
+11. Une fois sur la carte, ouvrir l'onglet inférieur `Factions` et vérifier que `expédition du SGC` / `SGC expedition` utilise la nouvelle icône SGC simplifiée et lisible lorsqu'elle est affichée par RimWorld.
+12. Contrôler `Player.log`.
 
-Resultat attendu : l'icone Tok'ra est visible, l'avertissement apparait des que la faction est retiree, disparait des qu'elle est rajoutee, et `Player.log` ne contient aucune nouvelle erreur GateRim SG-1.
+Résultat attendu : les quatre identités de faction GateRim SG-1 sont lisibles à la taille finale de l'UI, les copies gardent la variation de couleur vanilla, l'icône Tok'ra validée reste inchangée, et `Player.log` ne contient aucune nouvelle erreur GateRim SG-1 liée aux textures, XML ou à Harmony.
 
-Resultat r5 : valide par testeur.
+Résultat r2 : validé par le testeur. Une légère variation de couleur subsiste, mais elle vient du rendu vanilla de RimWorld et non d'une couleur intégrée par GateRim SG-1 ; ce comportement est accepté.
 
-## 3. Regression optionnelle - partie avec Tok'ra
+Publication : commit et push de branche autorisés par le mainteneur. Le tag final `v0.3.50-dev` reste séparé de cette demande.
 
-Generer un monde en conservant l'entree Tok'ra, demarrer la partie puis ouvrir :
+## 3. Régression optionnelle - avertissement Tok'ra
 
-```text
-GateRim SG-1 > Tok'ra... > World selection... > Show audit
-```
+Dans l'écran `Create world` > `Factions` :
 
-- [ ] `Displayed in world faction selection` vaut `yes`.
-- [ ] `Default selected count` vaut `1`.
-- [ ] `Maximum configurable count` vaut `1`.
-- [ ] `Mandatory count outside selection` vaut `0`.
-- [ ] `Saved faction instances` vaut `1`.
-- [ ] `Tok'ra content enabled` vaut `yes`.
-- [ ] Aucune colonie Tok'ra n'existe.
+- [ ] Supprimer l'entrée `Tok'ra`.
+- [ ] Vérifier que l'avertissement jaune `Warning:` apparaît immédiatement.
+- [ ] Cliquer sur `Add...`, sélectionner `Tok'ra`, puis vérifier que l'avertissement disparaît.
 
-## 4. Regression optionnelle - partie sans Tok'ra
-
-Creer un second monde apres avoir retire l'entree Tok'ra.
-
-- [ ] La generation du monde termine normalement.
-- [ ] L'audit indique `Saved faction instances: 0`.
-- [ ] L'audit indique `Tok'ra content enabled: no`.
-- [ ] Aucune colonie Tok'ra n'existe.
-- [ ] Un communicateur securise ne revele aucune action Tok'ra au clic droit.
-- [ ] Sauvegarder, recharger, attendre au moins `1200` ticks et confirmer que le nombre d'instances reste `0`.
-- [ ] `Player.log` ne signale aucune reconciliation automatique ni recreation de faction Tok'ra.
-
-Publication finale : dépôt principal tagué `v0.3.49-dev` et wiki synchronisé.
+Cette régression confirme que la passe visuelle n'a pas cassé le jalon `0.3.49-dev`.

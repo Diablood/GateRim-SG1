@@ -1,5 +1,27 @@
 # Testing checklist
 
+## 0.3.50-dev - GateRim faction world icons
+
+Validation locale terminée sur la révision `r2`, jalon non encore publié. La révision `r1` a validé la variation de teinte vanilla sur les copies d'une même faction, mais les silhouettes étaient trop détaillées et les contours trop fins à la taille finale de l'UI. La révision `r2` remplace les trois nouvelles icônes par des silhouettes simplifiées à contour sombre épais, validées en jeu. La légère variation de couleur restante vient de RimWorld et reste acceptée.
+
+Couverture durable prévue :
+
+- charger avec `Core`, `Harmony`, `Biotech` et `GateRim SG-1` ;
+- vérifier dans `New colony` > scénario `Équipe SG isolée` / `Stranded SG team` > `Create world` > `Factions` que `Jaffa libres` / `Free Jaffa` utilise l'icône Jaffa libre simplifiée avec contour sombre épais ;
+- vérifier que `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains` utilise l'icône Goa'uld simplifiée avec contour sombre épais ;
+- vérifier que `Tok'ra` conserve l'icône Tok'ra dédiée validée dans `0.3.49-dev` ;
+- utiliser `Add...` pour créer plusieurs copies Jaffa libres et Goa'uld, puis vérifier que la silhouette reste commune à chaque faction tandis que RimWorld applique des variations de teinte plus claires ou plus foncées ;
+- démarrer le scénario et vérifier dans l'onglet inférieur `Factions` que `expédition du SGC` / `SGC expedition` utilise l'icône SGC simplifiée avec contour sombre épais lorsqu'elle est affichée ;
+- revalider rapidement l'avertissement jaune Tok'ra en retirant puis en rajoutant `Tok'ra` dans `Create world` > `Factions` ;
+- vérifier `Player.log` pour les erreurs de texture, XML, `FactionDef`, `factionIconPath` et Harmony.
+
+Limites durables :
+
+- ne pas intégrer de couleur de faction directement dans les PNG ;
+- ne pas modifier `About/ModIcon.png` ;
+- ne pas remplacer les icônes de sites de mission ni les textures d'objets dans ce jalon ;
+- ne pas introduire de C# pour les icônes tant que `FactionDef.factionIconPath` suffit.
+
 ## 0.3.49-dev - Optional Tok'ra world-faction selection
 
 Validation locale terminée sur la révision finale `r5`, puis jalon publié sous `v0.3.49-dev`. Le test ciblé final valide l'icône Tok'ra, l'avertissement jaune immédiat au retrait, la disparition de l'avertissement au réajout et un `Player.log` accepté par le testeur.

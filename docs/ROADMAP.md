@@ -1,5 +1,27 @@
 # Roadmap
 
+## Jalon en cours — Icônes mondiales des factions GateRim (`0.3.50-dev`)
+
+- [x] Partir explicitement de `v0.3.49-dev` sur `feature/faction-world-icon-overhaul`.
+- [x] Relire `AGENTS.md`, `docs/PROJECT_STATE.md` et `docs/ROADMAP.md`.
+- [x] Confirmer que `SG1_Tokra` possède déjà une icône dédiée validée et doit la conserver.
+- [x] Remplacer les icônes vanilla des `FactionDef` Jaffa libres, Goa'uld et SGC par des chemins dédiés.
+- [x] Produire des PNG monochromes blanc/alpha afin de préserver les variations de teinte vanilla lorsque plusieurs copies d'une même faction sont ajoutées.
+- [x] Documenter la checklist de test ciblée dans `docs/PROJECT_STATE.md`, `docs/TESTING_CURRENT.md` et `docs/FACTION_WORLD_ICONS.md`.
+- [x] Rebuild forcé `0.3.50.0`.
+- [x] Valider en `r1` que les copies d'une même faction gardent la variation de teinte vanilla.
+- [x] Remplacer en `r2` les icônes trop détaillées par des silhouettes plus simples avec contours sombres épais.
+- [x] Valider en jeu les icônes Jaffa libres, Goa'uld, Tok'ra et SGC.
+- [x] Valider que les copies d'une même faction gardent la même silhouette tout en recevant des teintes vanilla distinctes.
+- [x] Contrôler `Player.log`.
+- [x] Enregistrer le retour de test et finaliser la documentation.
+- [x] Publier la branche et synchroniser le wiki après demande explicite de commit/push.
+- [ ] Créer le tag final `v0.3.50-dev` seulement après demande explicite de tag.
+
+La révision locale `r2` est validée : les silhouettes simplifiées sont lisibles en jeu, les copies d'une même faction conservent la variation de teinte vanilla et la légère différence de couleur restante vient du rendu RimWorld plutôt que du mod.
+
+Ce jalon reste visuel et ciblé. Il ne modifie pas les colonies, les raids, les noms, les factions générées, les sites de mission ni les objets du mod. Les futures passes d'icônes de sites et de textures d'objets restent dans la passe visuelle globale.
+
 ## Dernier jalon clôturé — Sélection mondiale Tok'ra optionnelle (`0.3.49-dev`)
 
 - [x] Partir explicitement de `v0.3.48-dev` sur `feature/tokra-world-faction-selection-audit`.

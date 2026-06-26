@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.49-dev`
+> Version du mod documentée : `0.3.50-dev`
 
 
 ## Le mod en bref
@@ -41,7 +41,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   reçoivent directement lors de leur génération un nom personnel et un nom de
   clan culturellement cohérents. Les nouveaux Grands Maîtres Goa'uld reçoivent
   également un nom formel de symbiote avant le choix de la tuile, tandis qu'un
-  nom humain distinct reste conservé pour leur hôte.
+  nom humain distinct reste conservé pour leur hôte. Depuis `0.3.50-dev`, leurs
+  lignes de faction utilisent aussi des silhouettes dédiées, teintées par
+  RimWorld plutôt que par des couleurs intégrées aux PNG.
   Leurs visiteurs et leur
   [convoi de ravitaillement spécialisé](Free-Jaffa-Trade) fournissent les
   ressources stratégiques et le matériel militaire, ainsi qu'une

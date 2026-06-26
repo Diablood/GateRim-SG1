@@ -31,7 +31,7 @@
                 <commonality>1</commonality>
             </li>
         </backstoryFilters>
-        <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+        <factionIconPath>World/WorldObjects/Expanding/SG1_SGCExpedition</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
         <playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
         <factionNameMaker>NamerFactionOutlander</factionNameMaker>

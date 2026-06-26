@@ -66,6 +66,9 @@ expédition du SGC
 
 Elle remplace la faction vanilla **Nouveaux arrivants** pour ce départ de partie.
 
+Depuis `0.3.50-dev`, cette faction joueur utilise une icône SGC dédiée avec
+bouclier, équipe et anneau de Porte, au lieu de reprendre la maison vanilla.
+
 ## Armes de départ
 
 Les armes Tau’ri étant des armes humaines, le scénario utilise volontairement un assortiment vanilla moderne moins puissant que l’ancien lot de trois fusils d’assaut :

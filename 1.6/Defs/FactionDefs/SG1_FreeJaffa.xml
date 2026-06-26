@@ -41,7 +41,7 @@
         <displayInFactionSelection>true</displayInFactionSelection>
 
         <settlementGenerationWeight>0.25</settlementGenerationWeight>
-        <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+        <factionIconPath>World/WorldObjects/Expanding/SG1_FreeJaffa</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
         <factionNameMaker>SG1_NamerFactionFreeJaffa</factionNameMaker>
         <settlementNameMaker>SG1_NamerSettlementFreeJaffa</settlementNameMaker>

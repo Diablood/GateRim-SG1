@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.49-dev`
+> Dernière révision : `0.3.50-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -63,10 +63,10 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Maturation assistée du Prim'ta | Extraction contrôlée d'un symbiote immature depuis une reine du joueur, récupération de 3 jours, puis consommation avec `20` viandes crues au bassin | 0.1.58-dev / accès joueur 0.2.10-dev / équilibrage 0.2.11-dev |
 | Bassin de conservation du Prim'ta | Stockage alimenté dédié aux symbiotes immatures et larves matures, suspendant l'aggravation sans réparation | 0.1.59-dev |
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
-| Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |
+| Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, icône mondiale Goa'uld dédiée, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev / icône 0.3.50-dev |
 | Noms mondiaux des domaines Goa'uld | 288 noms combinatoires de factions et 1 728 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.46-dev |
 | Noms des Grands Maîtres Goa'uld | Nom formel culturel visible dès la création du monde, symbiote persistant aligné sur ce nom et identité humaine de l'hôte conservée séparément | 0.3.48-dev |
-| Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, nouveaux dirigeants dotés d'un nom personnel et d'un nom de clan Jaffa libre, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 / noms des dirigeants 0.3.47-dev |
+| Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, icône mondiale Jaffa libre dédiée, nouveaux dirigeants dotés d'un nom personnel et d'un nom de clan Jaffa libre, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 / noms des dirigeants 0.3.47-dev / icône 0.3.50-dev |
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
 | Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
@@ -79,7 +79,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Capture Tok'ra d'un officier Jaffa | Mission récurrente validée : site mondial, officier marqué d'argent, escorte adaptative, reformation vanilla sans lit local, retour en cellule, suppression du site, appel au communicateur et équipe Tok'ra visible qui emporte le prisonnier avant la réussite | 0.3.37-dev |
 | Treillis d'équipe SG | Les anciens treillis combinés restent disponibles pour compatibilité ; le scénario utilise désormais des pantalons obligatoires et des vestes facultatives séparées, compatibles avec un tee-shirt vanilla | 0.1.78-dev / séparation 0.3.21-dev |
 | Variantes du treillis SG | Pantalons et vestes modulaires disponibles en olive, noir et désert ; couleur aléatoire par starter et coordonnée entre les deux pièces | 0.1.82-dev / loadout 0.3.21-dev |
-| Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, tee-shirt obligatoire, pantalon SG varié, veste facultative, casque, casquette ou aucun couvre-chef, équipement tactique et assortiment de quatre armes humaines vanilla équilibré | 0.2.0-dev-r1 / loadout 0.3.21-dev / casquette 0.3.22-dev |
+| Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, faction joueur avec icône SGC dédiée, tee-shirt obligatoire, pantalon SG varié, veste facultative, casque, casquette ou aucun couvre-chef, équipement tactique et assortiment de quatre armes humaines vanilla équilibré | 0.2.0-dev-r1 / loadout 0.3.21-dev / casquette 0.3.22-dev / icône 0.3.50-dev |
 | Bottes tactiques SG | Chaussures de terrain modulaires noires : protection légère des pieds, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.79-dev |
 | Gants tactiques SG | Gants de terrain modulaires noirs : protection légère des mains, fabrication aux établis de couture manuel et électrique vanilla et compatibilité avec le treillis SG | 0.1.80-dev |
 | Gilet tactique SG | Gilet noir de portage modulaire : protection modérée du torse et des épaules, désormais porté sur la couche extérieure afin de rester compatible avec le tee-shirt et la veste séparée | 0.1.81-dev / couche 0.3.21-dev |
@@ -129,7 +129,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
 | Résumé personnalisé des castes Goa'uld | Compléter le résumé vanilla des xenotypes avec les états parasitaires acquis |
-| Passe visuelle des objets et factions | Remplacer les textures provisoires ou trompeuses et préparer des identités visuelles cohérentes pour le SGC, les Tok'ra, les Jaffa et les domaines Goa'uld |
+| Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
 | Réplicateurs | Prévu pour une phase ultérieure |
 | Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

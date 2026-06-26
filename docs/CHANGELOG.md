@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.50-dev - Add GateRim faction world icons
+
+- Start from published tag `v0.3.49-dev` on `feature/faction-world-icon-overhaul`.
+- Keep the existing dedicated Tok'ra icon from `0.3.49-dev` unchanged.
+- Add tintable white/alpha world-faction icons for the Free Jaffa, Goa'uld System Lord domains and SGC expedition.
+- Point `SG1_FreeJaffa`, `SG1_GoauldSystemLordPrototype` and `SG1_PlayerSGCExpedition` to their dedicated `FactionDef.factionIconPath` textures.
+- Preserve RimWorld's vanilla color variation for repeated faction copies by avoiding baked colors in the icon PNGs.
+- Replace the first local icon pass after tester feedback: keep the working tint behavior but simplify the silhouettes and add thick dark outlines for better readability at the final UI size.
+- Validate local revision `r2`: Free Jaffa, Goa'uld, Tok'ra and SGC icons are readable in game, duplicate-faction tint variation remains vanilla and `Player.log` is accepted by the tester.
+
 ## 0.3.49-dev - Add optional Tok'ra world-faction selection
 
 - Start from published tag `v0.3.48-dev` on `feature/tokra-world-faction-selection-audit`.

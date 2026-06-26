@@ -1,80 +1,89 @@
 # Current project state
 
-Current milestone: `0.3.49-dev - Add optional Tok'ra world-faction selection` - published as the latest milestone.
+Current milestone: `0.3.50-dev - Add GateRim faction world icons` - locally validated, branch publication authorized.
 
 ## Repository state
 
-- Starting tag: `v0.3.48-dev`.
-- Active branch: `feature/tokra-world-faction-selection-audit`.
-- Published version: `0.3.49-dev`.
-- Published tag: `v0.3.49-dev`.
-- Technical assembly version: `0.3.49.0`.
-- Functional validation is complete. The main repository and wiki are published for this milestone.
+- Starting tag: `v0.3.49-dev`.
+- Active branch: `feature/faction-world-icon-overhaul`.
+- Last published version: `0.3.49-dev`.
+- Last published tag: `v0.3.49-dev`.
+- Target version: `0.3.50-dev`.
+- Technical assembly version: `0.3.50.0`.
+- Local revision: `r2`.
+- Publication status: final branch commit and push authorized; `docs/wiki/` changes require wiki synchronization. The final tag `v0.3.50-dev` has not been created in this commit/push step.
 
-## Published Scope
+## Current scope
 
-The initial `r1/r2` interpretation was reversed after comparison with the vanilla mechanoid and insect faction controls. Revision `r3` functionally validated the core behavior, but tester feedback made the missing warning and faction icon part of the same milestone.
+This milestone replaces the remaining vanilla world-faction icons used by visible GateRim SG-1 factions with dedicated, tintable silhouettes:
 
-Revision `r4` validated the dedicated icon but did not display the warning. The Harmony insertion was placed before a vanilla branch target, so normal warning paths skipped the Tok'ra append call.
+- `SG1_FreeJaffa` now points to `World/WorldObjects/Expanding/SG1_FreeJaffa`;
+- `SG1_GoauldSystemLordPrototype` now points to `World/WorldObjects/Expanding/SG1_GoauldSystemLords`;
+- `SG1_PlayerSGCExpedition` now points to `World/WorldObjects/Expanding/SG1_SGCExpedition`;
+- `SG1_Tokra` keeps the existing unique `World/WorldObjects/Expanding/SG1_Tokra` icon validated in `0.3.49-dev`.
 
-Final revision `r5`:
-
-- displays `SG1_Tokra` in the world-faction selection;
-- selects one Tok'ra faction by default and limits the configurable count to `0` or `1`;
-- keeps the generated faction hidden from the ordinary diplomacy list and gives it no settlements;
-- removes the mandatory count and all runtime recreation of a missing faction;
-- treats absence as an intentional player choice that disables Tok'ra-generated content for that save;
-- makes the introduction scheduler, recurrent-operation scheduler, storyteller incidents and communicator interactions ineligible when no Tok'ra faction exists;
-- keeps the existing resolver method names for source compatibility, but they now resolve only and never create a replacement;
-- retains a developer audit report without any command that overrides the player's selection;
-- adds a dedicated Tok'ra faction icon through `FactionDef.factionIconPath`;
-- adds a yellow world-generation warning when the Tok'ra entry is removed;
-- declares the Harmony mod dependency and references `0Harmony.dll` only for compilation, with `Private=false` so GateRim SG-1 does not bundle the DLL.
+The new PNG files are monochrome white/alpha assets. They deliberately do not bake faction colors into the texture so RimWorld can still apply the vanilla faction-color variation when several copies of the same faction are added during world creation.
 
 ## Technical approach
 
-- XML is sufficient for the faction icon: `SG1_Tokra` points to `World/WorldObjects/Expanding/SG1_Tokra`.
-- C# is required for the yellow warning. RimWorld 1.6 has no generic warning field on `FactionDef`; vanilla warnings are assembled inside `WorldFactionsUIUtility.DoWindowContents`.
-- The Harmony patch is limited to a transpiler that appends the Tok'ra line to the existing vanilla warning text buffer before RimWorld calculates and draws the yellow warning block.
-- Revision `r5` injects the append call after vanilla resets `WorldFactionsUIUtility.warningHeight` and before the text-length check, matching the immediate mechanoid/insect warning flow while avoiding the branch-target skip observed in `r4`.
+No C# behavior change is required for the icons. RimWorld 1.6 already supports `FactionDef.factionIconPath` for the world-faction UI. This revision changes XML paths and texture assets only, plus the standard version metadata.
 
-## Intended player behavior
+The dedicated Tok'ra icon and the Harmony warning patch from `0.3.49-dev` are preserved unchanged.
 
-The Tok'ra now follow the same high-level opt-out principle as vanilla non-settlement factions:
+Revision `r1` validated the faction-color behavior, including duplicate-faction tint variation, but the icons were not readable enough at the final in-game size. Revision `r2` keeps the same XML paths and color behavior, but replaces the three new PNGs with simpler silhouettes, fewer internal details and thick dark outlines closer to RimWorld's UI texture language.
 
-- default world: one Tok'ra faction exists, without cities;
-- player removes Tok'ra before world generation: a yellow warning immediately explains that Tok'ra content will be disabled;
-- re-adding Tok'ra removes that warning;
-- the rest of GateRim SG-1 remains available;
-- Tok'ra visitors, incidents, introduction questline, communicator requests and recurrent operations do not occur when removed;
-- save/reload does not recreate the removed faction.
+## Files currently expected in the milestone
 
-## Deliberate limits
+- `1.6/Defs/FactionDefs/SG1_FreeJaffa.xml`
+- `1.6/Defs/FactionDefs/SG1_GoauldSystemLordPrototype.xml`
+- `1.6/Defs/FactionDefs/SG1_PlayerSGCExpedition.xml`
+- `Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png`
+- `Textures/World/WorldObjects/Expanding/SG1_GoauldSystemLords.png`
+- `Textures/World/WorldObjects/Expanding/SG1_SGCExpedition.png`
+- `About/About.xml`
+- `Source/GateRimSG1/GateRimSG1.csproj`
+- `docs/CHANGELOG.md`
+- `docs/FACTION_WORLD_ICONS.md`
+- `docs/PROJECT_STATE.md`
+- `docs/ROADMAP.md`
+- `docs/TESTING.md`
+- `docs/TESTING_CURRENT.md`
+- relevant README and `docs/wiki/` pages
 
-This milestone does not:
+## Mandatory r2 test requested
 
-- add Tok'ra settlements, traders, military aid, raids or territorial diplomacy;
-- add a second Tok'ra faction or allow a count above one;
-- alter existing saves that already contain a Tok'ra faction;
-- implement the future GateRim-only world preset;
-- start the global faction-icon overhaul beyond the single Tok'ra world-selection icon required by this validation.
+Load order:
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+Manual checklist:
+
+1. From the main menu, open `New colony`.
+2. Select the scenario `Équipe SG isolée` / `Stranded SG team`.
+3. Continue to `Create world`.
+4. In the `Factions` section, verify that `Jaffa libres` / `Free Jaffa` uses the new Free Jaffa icon, not the vanilla house.
+5. Verify that `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains` uses the new Goa'uld pyramid/serpent icon, not the vanilla pirate outpost.
+6. Verify that `Tok'ra` still uses its existing dedicated circular Tok'ra icon.
+7. Click `Add...` and add at least two extra `Jaffa libres` / `Free Jaffa` entries.
+8. Click `Add...` and add at least two extra `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains` entries.
+9. Verify that repeated copies of the same faction keep the same silhouette but receive visible vanilla color variations, such as lighter or darker faction tints.
+10. Generate the world and start the scenario on any valid tile.
+11. Once in game, open the bottom `Factions` tab and verify that `expédition du SGC` / `SGC expedition` uses the new SGC shield-and-gate icon where RimWorld displays the player faction icon.
+12. Check `Player.log`.
+
+Expected result: the four GateRim SG-1 faction identities are visually distinct at the final UI size, duplicate world-faction entries still vary by faction tint, the Tok'ra warning from `0.3.49-dev` still works if `Tok'ra` is removed, and `Player.log` contains no new GateRim SG-1 texture, XML or Harmony error.
 
 ## Validation status
 
-Mandatory r5 happy path reported OK by the tester:
-
-- `Core`, `Harmony`, `Biotech`, then `GateRim SG-1` load order;
-- `New colony` > `Create world` > `Factions`;
-- `Tok'ra` row visible, selected once by default and using the dedicated icon;
-- removing `Tok'ra` displays the yellow `Warning:` line immediately;
-- `Add...` > `Tok'ra` removes the warning again;
-- `Player.log` accepted by the tester as part of the test pass.
-
-Optional regression coverage:
-
-- generate one world with Tok'ra enabled and confirm one hidden instance, zero settlements and working Tok'ra content;
-- generate another world after removing Tok'ra and confirm zero instances and zero settlements;
-- in the Tok'ra-disabled game, wait through storyteller checks and verify that no Tok'ra offer, visitor, support incident or recurrent operation appears;
-- verify that right-clicking a secure communicator exposes no Tok'ra actions when the faction is absent;
-- save and reload the disabled game and confirm the faction is not recreated;
-- inspect the developer audit through `GateRim SG-1 > Tok'ra... > World selection... > Show audit` in both configurations.
+- `git diff --check`: passed, with only the usual CRLF normalization warnings.
+- `.\tools\check-project-consistency.cmd`: passed.
+- Forced rebuild `0.3.50.0`: passed with `0` warnings and `0` errors.
+- In-game r1 feedback: faction-color variation is good, but the new icons are too detailed and too thin at final size.
+- In-game r2 icon validation: passed. The simplified thick-outlined icons are accepted; the remaining slight color variation is RimWorld's vanilla faction-tint behavior and is considered correct for this milestone.
+- Branch commit/push: authorized by the maintainer.
+- Wiki synchronization: required because `docs/wiki/` changed.

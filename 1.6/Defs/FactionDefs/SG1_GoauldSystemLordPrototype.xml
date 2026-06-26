@@ -55,7 +55,7 @@
         <displayInFactionSelection>true</displayInFactionSelection>
 
         <settlementGenerationWeight>0.35</settlementGenerationWeight>
-        <factionIconPath>World/WorldObjects/Expanding/PirateOutpost</factionIconPath>
+        <factionIconPath>World/WorldObjects/Expanding/SG1_GoauldSystemLords</factionIconPath>
         <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
         <factionNameMaker>SG1_NamerFactionGoauldDomain</factionNameMaker>
         <settlementNameMaker>SG1_NamerSettlementGoauldDomain</settlementNameMaker>
