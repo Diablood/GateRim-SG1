@@ -7,6 +7,8 @@
 > Présence mondiale et premier raid naturel : 0.2.1-dev
 >
 > Noms mondiaux dédiés : 0.3.46-dev
+>
+> Noms culturels des Grands Maîtres : 0.3.48-dev
 
 ## Présentation
 
@@ -72,9 +74,15 @@ Grand Maître Goa'uld
 Le dirigeant reçoit un symbiote adulte actif avec une identité persistante. Le
 représentant provisoire `commandant Jaffa de domaine` n'est plus utilisé.
 
-Les noms visibles de ces dirigeants utilisent encore une génération vanilla. Une
-passe dédiée devra coordonner le nom de l'hôte, celui du symbiote et l'identité
-affichée du Grand Maître plutôt que remplacer un nom isolé.
+Depuis `0.3.48-dev`, les nouveaux dirigeants reçoivent avant le choix de la
+tuile un nom formel Goa'uld, par exemple `Amonaris Kheper`. Le premier élément
+reste le nom court du symbiote ; le second représente une maison ou un nom de
+trône, et non un patronyme humain.
+
+Au démarrage de la partie, cette identité visible devient le nom persistant du
+symbiote. Un autre nom humain hors-monde est conservé séparément pour le corps
+hôte et peut être restauré si une extraction prise en charge retire le Goa'uld.
+Le nom du chef reste indépendant du nom généré pour son domaine.
 
 Consulte [Caste des hôtes Goa'uld](Goauld-Host-Caste).
 

@@ -159,6 +159,42 @@ namespace GateRimSG1.Goauld
             CaptureHostBackstories(host, overwriteExisting: false);
         }
 
+        public bool TryInitializeGeneratedSystemLordHost(
+            Pawn host,
+            int currentTick)
+        {
+            if (origin != GoauldSymbioteOrigin.Goauld
+                || host?.kindDef != GR_DefOf.SG1_GoauldSystemLordHost
+                || host.Name == null)
+            {
+                return false;
+            }
+
+            EnsureIdentity(currentTick);
+
+            string visibleSymbioteName = host.Name.ToStringFull;
+            if (visibleSymbioteName.NullOrEmpty())
+            {
+                return false;
+            }
+
+            symbioteName = visibleSymbioteName;
+
+            Name generatedHostName = GenerateDistinctSystemLordHostName(
+                host.gender,
+                visibleSymbioteName);
+
+            if (generatedHostName == null)
+            {
+                return false;
+            }
+
+            StoreHostName(generatedHostName);
+            CaptureHostBackstories(host, overwriteExisting: true);
+            currentHostThingId = host.ThingID ?? string.Empty;
+            return true;
+        }
+
         public void SetSymbioteName(string value)
         {
             if (!value.NullOrEmpty())
@@ -230,7 +266,9 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
-        public bool ReleaseHostControl(Pawn host)
+        public bool ReleaseHostControl(
+            Pawn host,
+            bool restoreDisplayedSymbioteName = false)
         {
             bool restored = false;
 
@@ -246,7 +284,9 @@ namespace GateRimSG1.Goauld
                 restored = true;
             }
 
-            if (hostControlState == GoauldHostControlState.Active)
+            if (hostControlState == GoauldHostControlState.Active
+                || (restoreDisplayedSymbioteName
+                    && IsDisplayingSymbioteName(host)))
             {
                 RestoreHostName(host);
             }
@@ -639,6 +679,42 @@ namespace GateRimSG1.Goauld
             {
                 BackstorySkillOffsetUtility.Reset(ref sharedSkillProgress);
             }
+        }
+
+        private Name GenerateDistinctSystemLordHostName(
+            Gender gender,
+            string excludedName)
+        {
+            const int MaxAttempts = 16;
+
+            for (int attempt = 0; attempt < MaxAttempts; attempt++)
+            {
+                Name candidate = CulturalPawnNameUtility.GenerateStableName(
+                    CulturalPawnNameGroup.OffworldHuman,
+                    gender,
+                    symbioteId + ":systemLordHost:" + attempt);
+
+                if (candidate == null)
+                {
+                    return null;
+                }
+
+                if (excludedName.NullOrEmpty()
+                    || candidate.ToStringFull != excludedName)
+                {
+                    return candidate;
+                }
+            }
+
+            return null;
+        }
+
+        private bool IsDisplayingSymbioteName(Pawn host)
+        {
+            return origin == GoauldSymbioteOrigin.Goauld
+                && host?.Name != null
+                && !symbioteName.NullOrEmpty()
+                && host.Name.ToStringFull == symbioteName;
         }
 
         private void CaptureHostNameDetails(Pawn host, bool overwriteExisting)

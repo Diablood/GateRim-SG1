@@ -114,8 +114,8 @@ The milestone was published as `v0.3.46-dev`.
 
 ## Planned follow-up boundaries
 
-Leader names remain outside this generator because the current faction leader is a host carrying a persistent Goa'uld symbiote. The dedicated branch `feature/goauld-system-lord-leader-names` must audit the host name, symbiote name and visible leader identity together.
+Leader names remain independent from the world-name grammar. In `0.3.48-dev`, `feature/goauld-system-lord-leader-names` assigns the generated leader a formal Goa'uld symbiote identity while preserving a separate host name. It deliberately does not force the personal leader identity to match the independently generated domain name.
 
-The equivalent Free Jaffa correction is planned separately in `feature/free-jaffa-faction-leader-names`.
+The equivalent Free Jaffa correction was published in `0.3.47-dev`.
 
 The temporary vanilla house silhouettes remain planned for `feature/faction-world-icon-overhaul`, shared with all visible GateRim SG-1 factions.

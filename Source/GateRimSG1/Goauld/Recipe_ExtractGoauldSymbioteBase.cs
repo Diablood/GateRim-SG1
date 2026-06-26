@@ -144,7 +144,7 @@ namespace GateRimSG1.Goauld
                 ApplyPostExtractionSedation(freeSymbiote);
             }
 
-            sourceComp.ReleaseHostControl();
+            sourceComp.ReleaseHostControl(restoreDisplayedSymbioteName: true);
             transferredData.DetachFromHost(pawn, CurrentGameTick());
             pawn.health.RemoveHediff(hostState);
 

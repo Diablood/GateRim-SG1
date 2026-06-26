@@ -160,3 +160,7 @@ injuries.
 11. Trigger a direct natural or controlled raid and confirm it contains Jaffa only.
 12. Save and reload.
 13. Confirm the same leader and ordinary-host symbiote IDs remain stable.
+
+## System Lord visible identity in `0.3.48-dev`
+
+Newly generated `SG1_GoauldSystemLordHost` pawns receive a formal Goa'uld name before the world-creation interface displays them. When the persistent adult symbiote is initialized, that formal name becomes the stored symbiote name and a separate off-world human host name is prepared in the existing structured host-name fields. Supported extraction can therefore restore the hidden host name without rerolling or losing the Goa'uld identity transferred to the extracted symbiote.

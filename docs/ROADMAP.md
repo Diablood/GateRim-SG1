@@ -1,5 +1,37 @@
 # Roadmap
 
+## Dernier jalon clôturé — Noms des Grands Maîtres Goa'uld (`0.3.48-dev`)
+
+- [x] Partir explicitement de `v0.3.47-dev` sur `feature/goauld-system-lord-leader-names`.
+- [x] Relire les procédures, l'état publié et les limites documentées de la double identité.
+- [x] Confirmer que le chef doit être nommé pendant la génération native du PawnKind pour être correct avant le choix de la tuile.
+- [x] Ajouter `SG1_NamerPawnGoauldSystemLord` avec un `NameTriple` formel valide.
+- [x] Affecter le générateur uniquement à `SG1_GoauldSystemLordHost`.
+- [x] Fournir `575` noms personnels et `24` noms de maison pour `13 800` combinaisons formelles.
+- [x] Aligner le nom persistant du symbiote sur le nom visible généré.
+- [x] Générer et stocker une identité d'hôte humain hors-monde distincte avant l'attachement du Hediff.
+- [x] Préserver la restauration du nom d'hôte lors d'une extraction ou libération prise en charge.
+- [x] Conserver les noms de domaines et de colonies indépendants du chef.
+- [x] Construire localement la DLL `0.3.48.0` et atteindre la génération du monde sans nouvelle erreur liée au name maker.
+- [x] Valider plusieurs noms culturels de chefs Goa'uld dès l'écran de création du monde.
+- [x] Conserver l'audit approfondi `symbioteName` / `hostName`, la sauvegarde/rechargement et l'extraction comme couverture durable non présentée comme test séparé.
+- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.48-dev` et synchroniser le wiki.
+
+La révision finale `r1` attribue le nom du symbiote assez tôt pour l'écran de création du monde et conserve parallèlement une identité humaine structurée pour l'hôte. Le test ciblé final valide la génération visible de plusieurs noms formels Goa'uld sans retour aux noms humains vanilla.
+
+Les contrôles approfondis de persistance, de restauration du nom d'hôte et d'extraction restent enregistrés dans `docs/TESTING.md`. Ils ne sont pas présentés comme des tests manuels séparés déjà exécutés pendant cette validation ciblée.
+
+Le jalon est publié sous le tag final unique `v0.3.48-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.49-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
+
+## Branches prévues — Présence mondiale et identité visuelle
+
+Ces branches restent planifiées sans numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
+
+- `feature/tokra-world-faction-selection-audit` : auditer la faction Tok'ra cachée et obligatoire, son absence normale de la liste configurable du monde et le comportement d'une configuration personnalisée qui tente de la retirer.
+- `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
+
+La branche Tok'ra doit rester strictement séparée des noms de dirigeants. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
+
 ## Dernier jalon clôturé — Noms culturels des chefs Jaffa libres (`0.3.47-dev`)
 
 - [x] Partir explicitement de `v0.3.46-dev` sur `feature/free-jaffa-faction-leader-names`.

@@ -91,4 +91,8 @@ Revision `r5` emits a valid formal name structure instead:
 
 The failed faction-owner fallback and dedicated leader registry remain removed. Existing serialized leaders are not renamed. A newly generated replacement leader uses the same PawnKind and therefore receives the formal cultural name at creation.
 
-Goa'uld System Lords remain outside this rule because their visible name must later preserve the separate host and symbiote identities.
+## Generation-time Goa'uld System Lord names (`0.3.48-dev`)
+
+The dedicated System Lord PawnKind now uses `SG1_NamerPawnGoauldSystemLord` at native generation time. The grammar emits a complete `NameTriple` with a Goa'uld personal name, the same explicit nickname and a throne-house byname. This keeps world-generation uniqueness valid while showing the cultural identity before tile selection.
+
+At game start, the host initializer assigns the visible formal name to the persistent symbiote identity and generates a separate off-world human host name. The later cultural name manager preserves the native result rather than replacing it. Existing leaders are not renamed.

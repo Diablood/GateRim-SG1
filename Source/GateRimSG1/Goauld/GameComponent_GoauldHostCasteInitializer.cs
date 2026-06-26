@@ -178,9 +178,21 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            int currentTick = Find.TickManager?.TicksGame ?? 0;
             GoauldSymbioteData data = GoauldSymbioteData.CreateFree(
-                Find.TickManager?.TicksGame ?? 0,
+                currentTick,
                 GoauldSymbioteOrigin.Goauld);
+
+            if (pawn.kindDef == GR_DefOf.SG1_GoauldSystemLordHost
+                && !data.TryInitializeGeneratedSystemLordHost(
+                    pawn,
+                    currentTick))
+            {
+                GR_Log.Warning(
+                    "Generated Goa'uld System Lord retained its visible name, "
+                    + "but a distinct historical host name could not be "
+                    + $"prepared for {PawnDebugLabel(pawn)}.");
+            }
 
             targetComp.InitializeWithTransferredData(data);
             pawn.health.AddHediff(activeHostState);
@@ -190,7 +202,9 @@ namespace GateRimSG1.Goauld
 
             GR_Log.Message(
                 $"Initialized generated Goa'uld host {PawnDebugLabel(pawn)} "
-                + $"with persistent symbiote {data.SymbioteId}.");
+                + $"with persistent symbiote {data.SymbioteId}; "
+                + $"symbioteName={data.SymbioteName}, "
+                + $"hostName={data.HostName}.");
         }
 
         private static void HealGeneratedHostAilments(Pawn pawn)

@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.47-dev - Add Free Jaffa faction-leader names`. Les nouveaux chefs Jaffa libres reçoivent un nom personnel et un nom de clan culturels dès la génération du monde.
+Dernier jalon publié : `0.3.48-dev - Add Goa'uld System Lord leader names`. Les nouveaux Grands Maîtres reçoivent un nom formel de symbiote pendant la génération du monde, avec une identité d'hôte distincte conservée.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -60,6 +60,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev |
 | Noms mondiaux des domaines Goa'uld | 288 noms combinatoires de factions et 1 728 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.46-dev |
+| Noms des Grands Maîtres Goa'uld | Nom formel culturel généré avant le choix de la tuile, identité persistante du symbiote alignée et nom d'hôte humain distinct conservé | 0.3.48-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, nouveaux dirigeants dotés d'un nom personnel et d'un nom de clan Jaffa libre, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 / noms des dirigeants 0.3.47-dev |
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
 | Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |

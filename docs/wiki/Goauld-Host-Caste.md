@@ -51,6 +51,12 @@ Grand Maître Goa'uld
 
 Le dirigeant provisoire `commandant Jaffa de domaine` n'est plus utilisé.
 
+Depuis `0.3.48-dev`, un Grand Maître nouvellement généré porte immédiatement
+un nom formel Goa'uld visible dans l'écran de création du monde. Ce nom est
+l'identité du symbiote. Le système persistant conserve en parallèle un nom
+humain distinct pour l'hôte, afin qu'une extraction prise en charge puisse
+restaurer son identité sans perdre celle du Goa'uld.
+
 ## Colonies
 
 Les colonies Goa'uld restent majoritairement défendues par des Jaffa.

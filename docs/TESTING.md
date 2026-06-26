@@ -1,5 +1,35 @@
 # Testing checklist
 
+## 0.3.48-dev - Goa'uld System Lord leader names
+
+Validation fonctionnelle ciblée terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.48-dev`.
+
+Couverture durable :
+
+- conserver `SG1_GoauldSystemLordHost` comme PawnKind fixe du dirigeant tant qu'un jalon distinct ne redéfinit pas cette structure ;
+- charger `SG1_NamerPawnGoauldSystemLord` par `nameMaker` et `nameMakerFemale` sans champ PawnKind non pris en charge ;
+- générer plusieurs factions Goa'uld dans un monde neuf et vérifier que leurs chefs possèdent déjà un nom culturel avant le choix de la tuile de départ ;
+- fournir à `NameTriple` un nom personnel, un surnom explicite et un nom de maison non vides afin d'éviter les collisions de génération ;
+- conserver le nom personnel comme libellé court et le nom personnel plus le nom de maison comme libellé diplomatique complet ;
+- vérifier que plusieurs chefs peuvent être générés sans `Could not get new name (first rule pack: SG1_NamerPawnGoauldSystemLord)` ;
+- préserver l'indépendance entre le nom du chef, le nom du domaine et les noms des colonies ;
+- ne pas introduire de Grand Maître canon dans le pool procédural ;
+- après démarrage, vérifier que le nom visible reste stable et devient l'identité persistante de `symbioteName` ;
+- vérifier que `hostName` reste distinct, humain, structuré et non vide ;
+- sauvegarder puis recharger afin de confirmer la stabilité des deux identités ;
+- effectuer une extraction prise en charge sur une sauvegarde jetable : l'hôte doit retrouver son nom humain et le symbiote extrait doit conserver son nom Goa'uld ;
+- générer un dirigeant de remplacement et vérifier qu'il utilise le même name maker natif ;
+- revalider les chefs Jaffa libres, les hôtes Goa'uld ordinaires, l'hostilité permanente, les raids, l'absence de commerce/aide/quêtes et `Player.log` après toute modification future du PawnKind, du RulePack ou de la synchronisation d'identité.
+
+Limites durables :
+
+- ne jamais renommer automatiquement un chef déjà sérialisé dans une ancienne sauvegarde ;
+- ne pas déduire l'identité du chef depuis le nom de son domaine ;
+- conserver l'audit de présence mondiale Tok'ra dans `feature/tokra-world-faction-selection-audit` ;
+- conserver les icônes de factions dans `feature/faction-world-icon-overhaul` et la passe visuelle globale ;
+- toute interface joueur détaillant simultanément l'hôte et le symbiote doit être conçue comme un jalon distinct.
+
+
 ## 0.3.47-dev - Free Jaffa faction-leader names
 
 Validation fonctionnelle ciblée terminée sur la révision finale `r5`, puis jalon publié sous `v0.3.47-dev`.
@@ -3227,4 +3257,22 @@ The concise active checklist is maintained in `docs/TESTING_CURRENT.md`. The mil
 - unchanged normal world-pawn generation boundaries;
 - save/load and Tok'ra active-identity skill-offset compatibility;
 - complete wiki catalogue synchronization;
+- clean `Player.log`.
+
+
+# 0.3.48-dev - Goa'uld System Lord leader names
+
+The concise active checklist is maintained in `docs/TESTING_CURRENT.md`. Durable regression coverage must include:
+
+- several Goa'uld factions generated in one new world without vanilla human leader names;
+- formal two-part `NameTriple` results with a Goa'uld personal nickname and non-empty throne-house byname;
+- no `Could not get new name` exhaustion during world generation;
+- independent domain, settlement and leader names;
+- persistent symbiote name equal to the visible generation-time leader identity;
+- a distinct non-empty stored off-world human host name;
+- no second visible rename after the game component initializes;
+- stability after save/reload;
+- replacement System Lord generation through the fixed PawnKind;
+- supported extraction restoring the stored host name while transferring the same Goa'uld symbiote identity;
+- unchanged ordinary Goa'uld host naming, Free Jaffa leader names, diplomacy, raids and world icons;
 - clean `Player.log`.

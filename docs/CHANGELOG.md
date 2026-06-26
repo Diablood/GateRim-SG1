@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.48-dev - Add Goa'uld System Lord leader names
+
+- Start from published tag `v0.3.47-dev` on `feature/goauld-system-lord-leader-names`.
+- Add `SG1_NamerPawnGoauldSystemLord` and assign it to the fixed System Lord host PawnKind through `nameMaker` and `nameMakerFemale`.
+- Provide `575` original Goa'uld personal names and `24` throne-house bynames for `13,800` formal generation-time identities.
+- Repeat the personal name as the explicit nickname so short labels remain culturally readable while faction interfaces display the full two-part identity.
+- Reconcile the native visible name with the persistent symbiote name when the generated leader receives its adult symbiote state.
+- Generate and store a distinct off-world human host name before Hediff attachment, using the existing structured host-name persistence fields.
+- Restore the stored host name when a supported release or extraction removes a Goa'uld symbiote from a pawn currently displaying the symbiote identity.
+- Keep domain and settlement names independent from the generated leader, with no canon System Lord names.
+- Preserve existing saves, leader titles, backstories, equipment, diplomacy, raids and temporary world icons.
+- Validate final local revision `r1`, including successful world generation and varied cultural System Lord names visible before tile selection.
+- Keep explicit save/reload, persistent host/symbiote inspection and supported extraction as durable regression checks without presenting them as separately executed focused tests.
+- Publish branch `feature/goauld-system-lord-leader-names`, final tag `v0.3.48-dev` and the synchronized wiki.
+
 ## 0.3.47-dev - Add Free Jaffa faction-leader names
 
 - Start from published tag `v0.3.46-dev` on `feature/free-jaffa-faction-leader-names`.

@@ -69,12 +69,15 @@ namespace GateRimSG1.Goauld
             }
         }
 
-        public bool ReleaseHostControl()
+        public bool ReleaseHostControl(
+            bool restoreDisplayedSymbioteName = false)
         {
             EnsureDataInitialized();
             bool hadHostControl = symbioteData.HostControlState
                 != GoauldHostControlState.None;
-            bool restored = symbioteData.ReleaseHostControl(Pawn);
+            bool restored = symbioteData.ReleaseHostControl(
+                Pawn,
+                restoreDisplayedSymbioteName);
 
             if (hadHostControl)
             {
@@ -236,7 +239,9 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            symbioteData.ReleaseHostControl(Pawn);
+            symbioteData.ReleaseHostControl(
+                Pawn,
+                restoreDisplayedSymbioteName: true);
             symbioteData.DetachFromHost(Pawn, CurrentGameTick());
 
             GR_Log.Message(

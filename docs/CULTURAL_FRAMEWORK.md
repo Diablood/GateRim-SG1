@@ -276,4 +276,8 @@ The provisional faction-only resolver entry point and dedicated persisted leader
 
 The fixed leader PawnKind is also used for ordinary Free Jaffa guards. Giving it the same formal cultural grammar changes only when and in what valid native structure their intended Free Jaffa identity is assigned.
 
-Goa'uld System Lord names remain excluded because their visible leader identity must be coordinated with the host and symbiote records in a separate milestone.
+## Generation-time Goa'uld System Lord identities (`0.3.48-dev`)
+
+`SG1_GoauldSystemLordHost` now receives its visible Goa'uld identity from a native PawnKind name maker before the world-creation interface displays the leader. The generated `NameTriple` supplies non-empty first and last fields and preserves the personal Goa'uld name as the short nickname.
+
+When the game begins, the existing host initializer reconciles that visible name with `GoauldSymbioteData.symbioteName`, generates a distinct off-world human host name and prepares the current host ThingID before Hediff attachment. This prevents `AttachToHost` from overwriting the hidden host identity. Supported release and extraction paths restore the stored host name when the pawn is displaying the symbiote identity.

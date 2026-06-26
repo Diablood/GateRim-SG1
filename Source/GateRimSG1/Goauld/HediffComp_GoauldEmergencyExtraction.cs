@@ -126,7 +126,7 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            sourceComp.ReleaseHostControl();
+            sourceComp.ReleaseHostControl(restoreDisplayedSymbioteName: true);
             transferredData.DetachFromHost(host, CurrentGameTick());
             host.health.RemoveHediff(parent);
 

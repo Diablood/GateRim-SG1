@@ -51,6 +51,8 @@
         <race>Human</race>
         <defaultFactionType>SG1_GoauldSystemLordPrototype</defaultFactionType>
         <useFactionXenotypes>false</useFactionXenotypes>
+        <nameMaker>SG1_NamerPawnGoauldSystemLord</nameMaker>
+        <nameMakerFemale>SG1_NamerPawnGoauldSystemLord</nameMakerFemale>
         <backstoryFiltersOverride>
             <li>
                 <categoriesChildhood>
