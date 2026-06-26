@@ -1,5 +1,33 @@
 # Testing checklist
 
+## 0.3.49-dev - Optional Tok'ra world-faction selection
+
+Validation locale terminée sur la révision finale `r5`, puis jalon publié sous `v0.3.49-dev`. Le test ciblé final valide l'icône Tok'ra, l'avertissement jaune immédiat au retrait, la disparition de l'avertissement au réajout et un `Player.log` accepté par le testeur.
+
+Couverture durable prévue :
+
+- afficher une entrée Tok'ra configurable avec un compte par défaut de `1` et un maximum de `1` ;
+- afficher une icône Tok'ra dédiée dans cette ligne ;
+- conserver la possibilité de choisir `0` sans empêcher la génération du monde ;
+- afficher immédiatement un avertissement jaune lorsque l'entrée Tok'ra est retirée ;
+- faire disparaître cet avertissement lorsque `Tok'ra` est rajouté via `Add...` ;
+- avec Tok'ra activés, générer exactement une faction masquée et aucune colonie ;
+- avec Tok'ra désactivés, conserver zéro instance après démarrage, sauvegarde, rechargement et attente prolongée ;
+- ne jamais recréer une faction retirée via un GameComponent, un incident, une mission ou une commande développeur ;
+- rendre inéligibles la mission d'introduction, les opérations récurrentes, les incidents storyteller et les actions du communicateur lorsque la faction est absente ;
+- conserver tous les contenus non Tok'ra du mod dans une partie ayant choisi zéro Tok'ra ;
+- réutiliser l'unique instance et le même `loadID` dans une partie ayant conservé la faction ;
+- signaler les doublons de sauvegarde sans suppression automatique ;
+- charger avec `Core`, `Harmony`, `Biotech` et `GateRim SG-1`, sans embarquer `0Harmony.dll` dans l'archive du mod ;
+- vérifier `Player.log` dans les deux configurations.
+
+Limites durables :
+
+- ne pas convertir l'option Tok'ra en faction territoriale ;
+- ne pas créer de colonie, raid naturel, commerce ou aide militaire Tok'ra par ce seul réglage ;
+- ne pas contourner le choix du joueur avec une réconciliation cachée ;
+- limiter l'intégration Harmony de ce jalon à l'avertissement de l'écran vanilla `Factions`.
+
 ## 0.3.48-dev - Goa'uld System Lord leader names
 
 Validation fonctionnelle ciblée terminée sur la révision finale `r1`, puis jalon publié sous `v0.3.48-dev`.

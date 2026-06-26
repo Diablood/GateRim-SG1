@@ -120,6 +120,11 @@ namespace GateRimSG1.Goauld
                 yield return gizmo;
             }
 
+            if (!TokraFactionUtility.HasPersistentFaction())
+            {
+                yield break;
+            }
+
             if (!parent.Spawned
                 || (parent.Faction != null && parent.Faction != Faction.OfPlayer))
             {
@@ -246,6 +251,11 @@ namespace GateRimSG1.Goauld
             foreach (FloatMenuOption option in base.CompFloatMenuOptions(selPawn))
             {
                 yield return option;
+            }
+
+            if (!TokraFactionUtility.HasPersistentFaction())
+            {
+                yield break;
             }
 
             if (!parent.Spawned

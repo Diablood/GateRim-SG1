@@ -385,7 +385,8 @@ namespace GateRimSG1.Goauld
         {
             base.GameComponentTick();
 
-            if (Find.TickManager == null)
+            if (Find.TickManager == null
+                || !TokraFactionUtility.HasPersistentFaction())
             {
                 return;
             }

@@ -1,117 +1,52 @@
-# Hidden Tok'ra world-presence baseline
-
-Version: `0.2.7-dev`
+# Tok'ra optional world-faction baseline
 
 ## Purpose
 
-This milestone promotes the Tok'ra faction from lazy incident-time creation to
-one persistent hidden world-faction anchor:
+`SG1_Tokra` is a selectable non-territorial faction. It behaves like a world-generation content toggle rather than a territorial settlement faction.
 
-```text
-SG1_Tokra
-```
+## World-generation contract
 
-The Tok'ra remain clandestine. The world presence exists for save identity,
-incident reuse and later expansion, not for territorial settlement placement.
+- shown in the configurable faction list;
+- selected once by default;
+- configurable count limited to `0` or `1`;
+- displayed with the dedicated `World/WorldObjects/Expanding/SG1_Tokra` faction icon;
+- hidden from the ordinary in-game diplomacy list;
+- no settlements because the generated faction is hidden and its settlement weight is `0`;
+- no mandatory fallback count outside the player's selection.
 
-## New-world generation
+## Disabled-game contract
 
-```text
-hidden: true
-requiredCountAtGameStart: 1
-maxCountAtGameStart: 1
-settlementGenerationWeight: 0
-```
+When the player removes the Tok'ra before generating the world:
 
-New worlds therefore receive one saved Tok'ra faction instance without
-creating a settlement.
+- no `SG1_Tokra` faction instance exists;
+- the world-generation screen displays a yellow warning before the world is generated;
+- no runtime component or utility recreates one;
+- Tok'ra storyteller incidents are ineligible;
+- the introduction arc and recurrent-operation scheduler remain dormant;
+- secure-communicator Tok'ra interactions are hidden;
+- save/reload preserves the disabled state.
 
-The faction does not declare:
+The rest of GateRim SG-1 remains available.
 
-```text
-maxConfigurableAtWorldCreation
-startingCountAtWorldCreation
-displayInFactionSelection
-```
+## Enabled-game contract
 
-It remains absent from the normal faction-selection screen.
+When the default Tok'ra entry is retained:
 
-## Disabled territorial systems
+- exactly one hidden faction instance is generated;
+- no Tok'ra settlement appears;
+- all existing Tok'ra incidents, missions and operations resolve that same instance;
+- duplicate saved instances are reported but never deleted automatically.
 
-```text
-raidsForbidden: true
-canSiege: false
-canStageAttacks: false
-canRequestTraders: false
-canRequestMilitaryAid: false
-canGenerateQuestSites: false
-```
+## Compatibility
 
-Future hidden cells or quest sites must be added through dedicated systems
-rather than normal settlement generation.
+The historical methods `GetOrCreatePersistentFaction` and `GetOrCreateHiddenFaction` remain available for source compatibility, but both are resolver-only from `0.3.49-dev` onward. Their names must not be interpreted as permission to recreate a faction the player removed.
 
-## Old-save migration
+`GameComponent_TokraWorldPresenceInitializer` remains as an empty compatibility shell so older saves can deserialize safely without restoring mandatory behavior.
 
-```text
-GameComponent_TokraWorldPresenceInitializer
-```
+## Warning implementation
 
-The component checks:
+Vanilla displays dedicated yellow warnings when mechanoids or insects are removed, but RimWorld 1.6 exposes no generic warning-text field on `FactionDef`.
 
-```text
-StartedNewGame
-LoadedGame
-every 600 ticks as a retry
-```
+`0.3.49-dev-r5` therefore uses the declared Harmony mod dependency for one narrow UI integration: `TokraWorldFactionSelectionWarningPatch` appends the Tok'ra warning line to the existing `WorldFactionsUIUtility.DoWindowContents` warning buffer after vanilla resets `warningHeight` and before RimWorld calculates and draws the yellow warning block. The `r5` placement avoids the branch-target skip observed in `r4`.
 
-If the save has no `SG1_Tokra` faction, it creates one hidden persistent
-instance through:
-
-```text
-TokraFactionUtility.GetOrCreatePersistentFaction(...)
-```
-
-Existing saves that already created a Tok'ra faction through an earlier
-visitor or medical incident reuse that faction without duplication.
-
-## Incident reuse
-
-The existing incidents now reuse the persistent faction:
-
-```text
-SG1_TokraPeacefulVisitors
-SG1_TokraTherapeuticOpportunity
-SG1_TokraMedicalSupportDelivery
-```
-
-## Internal leader consistency
-
-Faction generation may create an internal hidden leader. The historical
-initializer:
-
-```text
-GameComponent_TokraHostPrototypeInitializer
-```
-
-now also scans that faction leader and attaches one active persistent Tok'ra
-symbiote identity when appropriate.
-
-## Manual test checklist
-
-1. Rebuild with `-t:Rebuild`.
-2. Start a fresh game.
-3. Use developer faction logs and confirm exactly one hidden `Tok'ra` faction.
-4. Confirm no Tok'ra settlement appears on the world map.
-5. Confirm Tok'ra do not appear in configurable world-creation lists.
-6. Trigger peaceful Tok'ra visitors.
-7. Confirm the existing persistent faction is reused.
-8. Trigger a therapeutic opportunity with an eligible sick colon.
-9. Confirm the same faction escorts the offer.
-10. Raise trust and trigger a medical-support delivery.
-11. Confirm the same faction is reused.
-12. Save and reload.
-13. Repeat incident tests and confirm no duplicate faction.
-14. Load a save created before `0.2.7-dev`.
-15. Wait up to `600` ticks.
-16. Confirm one hidden Tok'ra faction is added automatically.
-17. Confirm no new settlement or raid appears.
+The patch does not create a faction, change the selected count or override the player's choice. It only explains the consequence before world generation.

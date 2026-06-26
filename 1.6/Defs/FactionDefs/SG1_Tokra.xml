@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    Persistent hidden Tok'ra world-presence anchor.
+    Optional non-territorial Tok'ra world faction.
 
-    New worlds generate exactly one hidden faction instance. It creates no
-    settlement, remains absent from configurable world-creation lists and
-    never participates in natural raids.
+    The faction is shown in the world-faction selection like the vanilla
+    mechanoid and insect factions. It is selected once by default, can be
+    removed by the player, creates no settlements and remains hidden from the
+    ordinary in-game diplomacy list.
 
-    GameComponent_TokraWorldPresenceInitializer creates the same hidden
-    presence on older saves that predate this milestone.
+    When the player removes it, GateRim SG-1 does not recreate it at runtime:
+    Tok'ra incidents, the introduction arc and recurrent operations remain
+    unavailable for that save.
     -->
     <FactionDef>
         <defName>SG1_Tokra</defName>
         <label>Tok'ra</label>
-        <description>A persistent but hidden world-presence anchor for the Tok'ra resistance. The Tok'ra seek voluntary hosts and oppose Goa'uld domination while operating through clandestine cells rather than territorial settlements. One hidden faction instance exists in each game and is reused by peaceful visits, therapeutic opportunities and medical-support deliveries. Settlements, traders, raids and configurable world-creation entries remain disabled.</description>
+        <description>A clandestine Tok'ra resistance network operating without territorial settlements. This faction is selected once by default during world creation but may be removed by the player. Removing it disables Tok'ra contacts, incidents, the introduction questline and recurrent operations for that game while leaving the rest of GateRim SG-1 available.</description>
         <fixedName>Tok'ra</fixedName>
         <pawnsPlural>Tok'ra</pawnsPlural>
         <pawnSingular>Tok'ra</pawnSingular>
@@ -30,17 +32,21 @@
         </backstoryFilters>
         <permanentEnemy>false</permanentEnemy>
         <naturalEnemy>false</naturalEnemy>
-        <canMakeRandomly>false</canMakeRandomly>
 
         <!--
-        One hidden presence is generated for new worlds. It remains absent
-        from the configurable faction-selection UI.
+        The player-facing world list controls whether the Tok'ra exist.
+        A single instance is selected by default, zero is allowed, and no
+        mandatory hidden fallback is generated outside that selection.
         -->
-        <requiredCountAtGameStart>1</requiredCountAtGameStart>
-        <maxCountAtGameStart>1</maxCountAtGameStart>
+        <requiredCountAtGameStart>0</requiredCountAtGameStart>
+        <displayInFactionSelection>true</displayInFactionSelection>
+        <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+        <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+        <configurationListOrderPriority>10</configurationListOrderPriority>
+        <factionIconPath>World/WorldObjects/Expanding/SG1_Tokra</factionIconPath>
         <settlementGenerationWeight>0</settlementGenerationWeight>
 
-        <!-- Clandestine baseline: no territorial or military systems yet. -->
+        <!-- Clandestine baseline: no territorial or military systems. -->
         <raidsForbidden>true</raidsForbidden>
         <canSiege>false</canSiege>
         <canStageAttacks>false</canStageAttacks>

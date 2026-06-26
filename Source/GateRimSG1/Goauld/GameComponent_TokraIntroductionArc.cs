@@ -143,7 +143,8 @@ namespace GateRimSG1.Goauld
         {
             base.GameComponentTick();
 
-            if (Find.TickManager == null)
+            if (Find.TickManager == null
+                || !TokraFactionUtility.HasPersistentFaction())
             {
                 return;
             }
@@ -200,7 +201,9 @@ namespace GateRimSG1.Goauld
         {
             GameComponent_TokraIntroductionArc tracker = GetCurrentTracker();
 
-            if (tracker == null || map == null)
+            if (tracker == null
+                || map == null
+                || !TokraFactionUtility.HasPersistentFaction())
             {
                 return false;
             }
@@ -223,7 +226,9 @@ namespace GateRimSG1.Goauld
         public static bool DebugForceOffer(Map map)
         {
             GameComponent_TokraIntroductionArc tracker = GetCurrentTracker();
-            return tracker != null && tracker.ForceOfferInternal(map);
+            return tracker != null
+                && TokraFactionUtility.HasPersistentFaction()
+                && tracker.ForceOfferInternal(map);
         }
 
         public static bool DebugAcceptOffer(Map map)
@@ -928,7 +933,9 @@ namespace GateRimSG1.Goauld
 
         private bool ForceOfferInternal(Map map)
         {
-            if (map == null || Find.TickManager == null)
+            if (map == null
+                || Find.TickManager == null
+                || !TokraFactionUtility.HasPersistentFaction())
             {
                 return false;
             }

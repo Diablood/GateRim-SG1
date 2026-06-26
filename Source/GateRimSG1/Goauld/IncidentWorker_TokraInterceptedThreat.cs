@@ -15,6 +15,11 @@ namespace GateRimSG1.Goauld
     {
         protected override bool CanFireNowSub(IncidentParms parms)
         {
+            if (!TokraFactionUtility.HasPersistentFaction())
+            {
+                return false;
+            }
+
             if (!base.CanFireNowSub(parms))
             {
                 return false;

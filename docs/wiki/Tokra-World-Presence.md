@@ -1,59 +1,40 @@
-# Présence mondiale masquée Tok'ra
+# Présence mondiale Tok'ra
 
-> Statut : Première base jouable  
-> Première version : 0.2.7-dev
+Depuis `0.3.49-dev`, les Tok'ra apparaissent dans la liste des factions lors de la création du monde, comme les factions vanilla sans colonies.
 
-## Présentation
+## Réglage par défaut
 
-Les Tok'ra disposent désormais d'une présence mondiale persistante, mais
-volontairement masquée.
+- une faction Tok'ra est sélectionnée par défaut ;
+- le maximum est limité à une ;
+- l'entrée affiche une icône Tok'ra dédiée dans la liste des factions ;
+- elle ne crée aucune colonie ;
+- elle reste masquée dans la liste diplomatique ordinaire, conformément à son fonctionnement clandestin.
 
-```text
-1 faction Tok'ra persistante
-0 colonie mondiale classique
-0 raid naturel
-```
+Cette instance est utilisée par les visiteurs, le réseau de planques, la mission d'introduction, le communicateur et les opérations récurrentes.
 
-Cette structure représente un réseau clandestin de cellules plutôt qu'une
-civilisation territoriale visible sur la carte.
+## Retirer les Tok'ra
 
-## Nouvelle partie
+Le joueur peut supprimer l'entrée Tok'ra avant de générer le monde. Dans cette partie :
 
-Chaque nouveau monde reçoit une instance unique de faction :
+- l'écran de création du monde affiche immédiatement un avertissement jaune ;
+- aucune faction Tok'ra n'est créée ;
+- aucune ville Tok'ra n'apparaît ;
+- la mission d'introduction, les visiteurs, les soutiens, les signaux de planque et les opérations Tok'ra ne sont pas proposés ;
+- le communicateur sécurisé ne propose aucune action Tok'ra ;
+- sauvegarder et recharger ne recrée pas la faction.
 
-```text
-Tok'ra
-```
+Les Jaffa, Goa'uld, équipements, recherches et autres contenus de GateRim SG-1 restent disponibles.
 
-Elle n'apparaît pas dans la liste configurable des factions et ne place aucune
-colonie.
+## Icône et avertissement
+
+L'icône de la ligne Tok'ra utilise `World/WorldObjects/Expanding/SG1_Tokra`.
+
+L'avertissement jaune est une intégration UI ciblée via Harmony, car RimWorld 1.6 ne fournit pas de champ XML générique pour les avertissements de retrait de faction. Le patch ajoute uniquement le texte d'avertissement au bloc vanilla déjà utilisé pour les mécanoïdes et insectes désactivés, après la remise à zéro vanilla de la hauteur d'avertissement ; il ne recrée jamais la faction et ne modifie pas le choix du joueur.
 
 ## Anciennes sauvegardes
 
-Une sauvegarde créée avant `0.2.7-dev` reçoit automatiquement la même présence
-masquée si elle n'existe pas encore.
+Une sauvegarde contenant déjà la faction Tok'ra la conserve. Une sauvegarde qui n'en contient aucune reste sans Tok'ra : le mod ne fabrique plus de présence de remplacement.
 
-Si une ancienne partie avait déjà déclenché une visite ou une livraison
-médicale Tok'ra, l'instance existante est simplement réutilisée.
+## Absence de colonies
 
-## Événements raccordés
-
-La présence persistante sert désormais de point commun à :
-
-- [visiteurs Tok'ra pacifiques](Tokra-Peaceful-Visitors) ;
-- [opportunités thérapeutiques](Tokra-Therapeutic-Opportunity) ;
-- [livraisons médicales](Tokra-Medical-Support-Deliveries).
-
-## Limites actuelles
-
-La faction Tok'ra ne possède pas encore :
-
-- de colonies visibles ;
-- de bases cachées visitables ;
-- de sites de quête ;
-- de marchands propres ;
-- d'aide militaire ;
-- de raids.
-
-Des cellules cachées ou sites scénarisés pourront être ajoutés plus tard sans
-transformer les Tok'ra en puissance territoriale classique.
+Le réglage contrôle l'existence du réseau Tok'ra, pas un nombre de villes. Même lorsqu'ils sont activés, les Tok'ra restent une organisation clandestine sans implantation territoriale ordinaire sur la carte mondiale.

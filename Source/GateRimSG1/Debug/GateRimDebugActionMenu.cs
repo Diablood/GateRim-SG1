@@ -34,6 +34,13 @@ namespace GateRimSG1.Debugging
         {
             DebugActionNode root = new DebugActionNode();
 
+            root.AddChild(MenuNode(
+                "World selection...",
+                600,
+                ActionNode(
+                    "Show audit",
+                    TokraWorldPresenceDebugActions.ShowAudit,
+                    200)));
             root.AddChild(ActionNode(
                 "Show communicator availability",
                 TokraSecureCommunicatorDebugActions.ShowAvailability,

@@ -9,11 +9,12 @@ Active les éléments suivants dans l'ordre :
 
 ```text
 Core
+Harmony
 Biotech
 GateRim SG-1
 ```
 
-Le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
+Le mod **Harmony** est requis pour une petite intégration d'interface, et le DLC **Biotech** est requis pour les xenotypes et les gènes personnalisés.
 
 ## Démarrer une première partie jouable
 

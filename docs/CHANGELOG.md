@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.3.49-dev - Add optional Tok'ra world-faction selection
+
+- Start from published tag `v0.3.48-dev` on `feature/tokra-world-faction-selection-audit`.
+- Correct the initial `r1/r2` interpretation after comparison with vanilla mechanoid and insect world-selection behavior.
+- Show `SG1_Tokra` in the configurable world-faction list, selected once by default and limited to a maximum count of one.
+- Allow the player to remove the faction and continue using the rest of GateRim SG-1.
+- Keep the selected Tok'ra faction hidden in normal diplomacy and settlement-free.
+- Remove the mandatory game-start count and all runtime new-game, load and periodic recreation.
+- Change historical `GetOrCreate...` helpers to resolver-only compatibility aliases.
+- Disable the introduction scheduler, organic-operation scheduler, Tok'ra storyteller incidents and communicator interactions when no Tok'ra faction exists.
+- Replace the reconciliation command with a read-only world-selection audit.
+- Retain duplicate detection without destructive cleanup.
+- Add a dedicated Tok'ra faction icon for the world-faction selection row.
+- Add a yellow world-generation warning when the Tok'ra row is removed, explaining that Tok'ra contacts, the introduction questline, incidents and recurrent operations are disabled for that game.
+- Declare the Harmony mod dependency for this narrow UI patch while keeping `0Harmony.dll` external to GateRim SG-1.
+- Validate `r4` partially: the dedicated icon is visible, but the warning is skipped because the Harmony insertion sits before a vanilla branch target.
+- Move the `r5` warning append after vanilla resets `warningHeight`, before the warning text-length check, so the Tok'ra warning follows the immediate mechanoid/insect flow.
+- Validate local revision `r5`: dedicated icon visible, Tok'ra removal warning appears immediately, re-adding Tok'ra removes the warning and `Player.log` is accepted by the tester.
+
 ## 0.3.48-dev - Add Goa'uld System Lord leader names
 
 - Start from published tag `v0.3.47-dev` on `feature/goauld-system-lord-leader-names`.

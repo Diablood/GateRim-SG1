@@ -1,6 +1,36 @@
 # Roadmap
 
-## Dernier jalon clôturé — Noms des Grands Maîtres Goa'uld (`0.3.48-dev`)
+## Dernier jalon clôturé — Sélection mondiale Tok'ra optionnelle (`0.3.49-dev`)
+
+- [x] Partir explicitement de `v0.3.48-dev` sur `feature/tokra-world-faction-selection-audit`.
+- [x] Relire les procédures et comparer le comportement souhaité aux factions vanilla sans colonies.
+- [x] Corriger l'interprétation initiale de `r1/r2`, qui rendait les Tok'ra obligatoires et invisibles.
+- [x] Afficher les Tok'ra dans la liste configurable du monde.
+- [x] Sélectionner une instance par défaut, avec un maximum configurable de une et la possibilité de choisir zéro.
+- [x] Conserver une faction masquée en jeu et sans colonie lorsque le joueur la garde.
+- [x] Supprimer le compte obligatoire et toute recréation automatique au démarrage, au chargement ou périodiquement.
+- [x] Faire de l'absence de faction un choix valide qui désactive les offres, incidents, opérations et interactions Tok'ra.
+- [x] Conserver un audit développeur en lecture seule, sans commande de réconciliation qui contourne le choix du joueur.
+- [x] Préparer la révision locale cumulative `r3`.
+- [x] Ajouter une icône de faction Tok'ra visible dans la liste de création du monde.
+- [x] Déclarer Harmony comme dépendance de mod sans embarquer `0Harmony.dll` dans GateRim SG-1.
+- [x] Ajouter l'avertissement jaune lorsque l'entrée Tok'ra est retirée de la liste des factions.
+- [x] Préparer la révision locale cumulative `r4`.
+- [x] Valider partiellement `r4` : icône Tok'ra visible, mais avertissement absent après retrait.
+- [x] Corriger en `r5` le point d'injection Harmony pour éviter le saut de branche vanilla avant l'ajout Tok'ra.
+- [x] Rebuild propre de `0.3.49.0`.
+- [x] Valider le test principal r5 : icône, retrait Tok'ra, avertissement immédiat, réajout, disparition de l'avertissement et `Player.log`.
+- [x] Enregistrer comme couverture durable les contrôles avec Tok'ra et sans Tok'ra.
+- [x] Enregistrer comme couverture durable la sauvegarde/rechargement sans recréation dans le monde désactivé.
+- [x] Verrouiller la documentation, publier la branche et créer le tag final unique `v0.3.49-dev`.
+
+La révision finale `r5` valide le comportement ciblé : Tok'ra visible et sélectionné par défaut dans l'écran de création du monde, icône dédiée, retrait volontaire avec avertissement jaune immédiat, réajout supprimant l'avertissement et dépendance Harmony déclarée sans embarquer `0Harmony.dll`.
+
+Les contrôles plus longs avec monde Tok'ra actif, monde Tok'ra désactivé, absence de recréation après sauvegarde/rechargement et désactivation durable du contenu Tok'ra restent enregistrés dans `docs/TESTING.md` comme couverture de régression, sans être présentés comme tests manuels séparés déjà exécutés pendant cette validation ciblée.
+
+Le jalon est publié sous le tag final unique `v0.3.49-dev`, avec le dépôt principal et le wiki séparé synchronisés.
+
+## Jalon précédent clôturé — Noms des Grands Maîtres Goa'uld (`0.3.48-dev`)
 
 - [x] Partir explicitement de `v0.3.47-dev` sur `feature/goauld-system-lord-leader-names`.
 - [x] Relire les procédures, l'état publié et les limites documentées de la double identité.
@@ -27,7 +57,7 @@ Le jalon est publié sous le tag final unique `v0.3.48-dev`, avec le dépôt pri
 
 Ces branches restent planifiées sans numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
 
-- `feature/tokra-world-faction-selection-audit` : auditer la faction Tok'ra cachée et obligatoire, son absence normale de la liste configurable du monde et le comportement d'une configuration personnalisée qui tente de la retirer.
+- `feature/tokra-world-faction-selection-audit` : branche désormais sélectionnée pour rendre la faction Tok'ra visible et optionnelle dans la liste du monde, sans colonie et sans recréation lorsque le joueur la retire.
 - `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
 
 La branche Tok'ra doit rester strictement séparée des noms de dirigeants. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
@@ -65,7 +95,7 @@ Le jalon est publié sous le tag final unique `v0.3.47-dev`, avec le dépôt pri
 Ces branches sont décidées mais ne reçoivent pas encore de numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
 
 - `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
-- `feature/tokra-world-faction-selection-audit` : auditer la faction Tok'ra cachée et obligatoire, son absence normale de la liste configurable du monde et le comportement d'une configuration personnalisée qui tente de la retirer.
+- `feature/tokra-world-faction-selection-audit` : branche désormais sélectionnée pour rendre la faction Tok'ra visible et optionnelle dans la liste du monde, sans colonie et sans recréation lorsque le joueur la retire.
 - `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
 
 Le jalon Goa'uld doit réutiliser le framework culturel tout en respectant sa double identité. La branche Tok'ra doit rester strictement séparée des noms de dirigeants. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
@@ -102,7 +132,7 @@ La première branche est sélectionnée pour `0.3.47-dev`. Les deux autres reste
 - `feature/free-jaffa-faction-leader-names` : branche sélectionnée pour `0.3.47-dev`; appliquer le profil culturel Jaffa libre aux nouveaux dirigeants sans modifier les noms de factions ni de colonies déjà publiés.
 - `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
 - `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
-- `feature/tokra-world-faction-selection-audit` : auditer séparément la faction Tok'ra cachée et obligatoire, vérifier qu'elle reste absente de la sélection normale du monde et empêcher qu'une configuration personnalisée ne coupe silencieusement la questline Tok'ra.
+- `feature/tokra-world-faction-selection-audit` : rendre les Tok'ra visibles et optionnels dans la sélection du monde, sans colonie, et respecter durablement le choix d'une partie sans contenu Tok'ra.
 
 Les deux jalons de noms de dirigeants doivent réutiliser le framework culturel existant plutôt que coder des listes spécifiques dans les PawnKinds. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
 

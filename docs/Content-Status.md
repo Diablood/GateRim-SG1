@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.48-dev - Add Goa'uld System Lord leader names`. Les nouveaux Grands Maîtres reçoivent un nom formel de symbiote pendant la génération du monde, avec une identité d'hôte distincte conservée.
+Jalon en validation : `0.3.49-dev - Add optional Tok'ra world-faction selection`. Les Tok'ra sont visibles et optionnels dans la liste des factions du monde ; les retirer affiche un avertissement jaune et désactive les contacts, incidents, questline et opérations Tok'ra pour cette partie.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -37,7 +37,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Trétonine | Dose physique suspendant temporairement la déficience pubertaire | 0.1.36-dev |
 | Production de trétonine | Recette au laboratoire de drogues : 1 larve + 1 médicament → 5 doses | 0.1.37-dev |
 | Cérémonie formelle du Prim'ta | Rite temporisé au bassin rituel, avec consommation d'une larve proche | 0.1.38-dev |
-| Tok'ra | Faction mondiale persistante mais masquée : une instance unique par partie, aucune colonie classique, aucun raid naturel ; symbiote libre testable et implantation volontaire | 0.1.39-dev / présence mondiale 0.2.7-dev |
+| Tok'ra | Faction mondiale optionnelle sans colonie : une instance sélectionnée par défaut, configurable à zéro ou une, icône dédiée et avertissement jaune lors du retrait ; retirer la faction désactive les contacts, incidents, questline et opérations Tok'ra sans affecter le reste du mod | 0.1.39-dev / présence mondiale 0.2.7-dev / sélection optionnelle 0.3.49-dev |
 | Hôte Tok'ra volontaire | Humanoïde contrôlé par le joueur, générable en mode développeur avec symbiose Tok'ra active | 0.1.40-dev |
 | Groupes Tok'ra | Profils internes `Combat` et `Peaceful` réutilisés par la présence mondiale masquée et les incidents Tok'ra ; cache médical, signal, pistes de planque, cache de suivi, marqueur mondial, planque visitable, contact pacifique et interaction légère de contact | 0.1.41-dev / présence 0.2.7-dev / cache 0.2.12-dev / signal 0.2.13-dev / pistes 0.2.14-dev / suivi 0.2.15-dev / marqueur 0.2.16-dev / site 0.2.17-dev / contact 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev |
 | Contact de planque Tok'ra | Contact pacifique non marchand dans les planques cachées, échange unique via clic droit, +1 confiance Tok'ra, briefing médical dont l'XP varie selon le palier de confiance, indice médical narratif et piste de suivi aux paliers coopératif/fiable si le registre n'est pas plein | 0.2.18-dev / dialogue 0.2.20-dev / briefing 0.2.21-dev / paliers 0.2.22-dev / indices 0.2.23-dev / suivi 0.2.24-dev |

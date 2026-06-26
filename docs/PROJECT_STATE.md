@@ -1,63 +1,80 @@
 # Current project state
 
-Current milestone: `0.3.48-dev - Add Goa'uld System Lord leader names` — final local revision `r1` validated and published.
+Current milestone: `0.3.49-dev - Add optional Tok'ra world-faction selection` - published as the latest milestone.
 
 ## Repository state
 
-- Starting tag: `v0.3.47-dev`.
-- Published branch: `feature/goauld-system-lord-leader-names`.
-- Final tag: `v0.3.48-dev`.
-- Published versions: `0.3.48-dev` and `0.3.48.0`.
-- Final local revision: `r1`.
-- Main GitHub repository and separate wiki synchronized.
+- Starting tag: `v0.3.48-dev`.
+- Active branch: `feature/tokra-world-faction-selection-audit`.
+- Published version: `0.3.49-dev`.
+- Published tag: `v0.3.49-dev`.
+- Technical assembly version: `0.3.49.0`.
+- Functional validation is complete. The main repository and wiki are published for this milestone.
 
-## Published scope
+## Published Scope
 
-Newly generated Goa'uld System Lord leaders now receive a cultural formal name during native PawnKind generation, before the world-creation interface displays them.
+The initial `r1/r2` interpretation was reversed after comparison with the vanilla mechanoid and insect faction controls. Revision `r3` functionally validated the core behavior, but tester feedback made the missing warning and faction icon part of the same milestone.
 
-The published implementation:
+Revision `r4` validated the dedicated icon but did not display the warning. The Harmony insertion was placed before a vanilla branch target, so normal warning paths skipped the Tok'ra append call.
 
-- assigns `SG1_NamerPawnGoauldSystemLord` to `SG1_GoauldSystemLordHost` through `nameMaker` and `nameMakerFemale`;
-- provides `575` original Goa'uld personal names and `24` language-neutral throne-house bynames for `13,800` formal combinations;
-- repeats the personal name as the explicit nickname so short labels retain the personal Goa'uld name while diplomatic interfaces display the full two-part identity;
-- keeps the generated world-domain and settlement names independent from the generated leader name;
-- reconciles the native visible leader name with the persistent `GoauldSymbioteData.symbioteName` once the game starts;
-- generates and stores a distinct off-world human host name before the host Hediff attaches, preventing the visible symbiote identity from overwriting the hidden host identity;
-- restores that stored host name when a supported release or extraction removes a Goa'uld symbiote from a pawn currently displaying the symbiote name;
-- adds no new save field and does not rename leaders already serialized in existing saves.
+Final revision `r5`:
+
+- displays `SG1_Tokra` in the world-faction selection;
+- selects one Tok'ra faction by default and limits the configurable count to `0` or `1`;
+- keeps the generated faction hidden from the ordinary diplomacy list and gives it no settlements;
+- removes the mandatory count and all runtime recreation of a missing faction;
+- treats absence as an intentional player choice that disables Tok'ra-generated content for that save;
+- makes the introduction scheduler, recurrent-operation scheduler, storyteller incidents and communicator interactions ineligible when no Tok'ra faction exists;
+- keeps the existing resolver method names for source compatibility, but they now resolve only and never create a replacement;
+- retains a developer audit report without any command that overrides the player's selection;
+- adds a dedicated Tok'ra faction icon through `FactionDef.factionIconPath`;
+- adds a yellow world-generation warning when the Tok'ra entry is removed;
+- declares the Harmony mod dependency and references `0Harmony.dll` only for compilation, with `Private=false` so GateRim SG-1 does not bundle the DLL.
+
+## Technical approach
+
+- XML is sufficient for the faction icon: `SG1_Tokra` points to `World/WorldObjects/Expanding/SG1_Tokra`.
+- C# is required for the yellow warning. RimWorld 1.6 has no generic warning field on `FactionDef`; vanilla warnings are assembled inside `WorldFactionsUIUtility.DoWindowContents`.
+- The Harmony patch is limited to a transpiler that appends the Tok'ra line to the existing vanilla warning text buffer before RimWorld calculates and draws the yellow warning block.
+- Revision `r5` injects the append call after vanilla resets `WorldFactionsUIUtility.warningHeight` and before the text-length check, matching the immediate mechanoid/insect warning flow while avoiding the branch-target skip observed in `r4`.
+
+## Intended player behavior
+
+The Tok'ra now follow the same high-level opt-out principle as vanilla non-settlement factions:
+
+- default world: one Tok'ra faction exists, without cities;
+- player removes Tok'ra before world generation: a yellow warning immediately explains that Tok'ra content will be disabled;
+- re-adding Tok'ra removes that warning;
+- the rest of GateRim SG-1 remains available;
+- Tok'ra visitors, incidents, introduction questline, communicator requests and recurrent operations do not occur when removed;
+- save/reload does not recreate the removed faction.
 
 ## Deliberate limits
 
 This milestone does not:
 
-- introduce named canon System Lords;
-- force a leader name to match the independently generated domain or settlement names;
-- change leader titles, backstories, equipment, stats, faction behavior or diplomacy;
-- replace the temporary vanilla faction and settlement icons;
-- modify the ordinary Goa'uld host-caste naming path;
-- alter Tok'ra world-faction selection or hidden-presence behavior;
-- add a player-facing dual-identity panel for AI-controlled System Lords.
+- add Tok'ra settlements, traders, military aid, raids or territorial diplomacy;
+- add a second Tok'ra faction or allow a count above one;
+- alter existing saves that already contain a Tok'ra faction;
+- implement the future GateRim-only world preset;
+- start the global faction-icon overhaul beyond the single Tok'ra world-selection icon required by this validation.
 
-## Final validation
+## Validation status
 
-- RimWorld reached world generation without a new XML, RulePackDef or PawnKindDef failure related to the leader name maker;
-- a newly generated world displayed cultural two-part Goa'uld names for the inspected System Lord leaders before the player selected a starting tile;
-- the validated sample no longer exposed vanilla human leader names;
-- world-domain and settlement names remained independent from the leader identities;
-- final local revision `r1` is the published implementation;
-- explicit save/reload, persistent `symbioteName` / `hostName` inspection and supported extraction remain durable regression checks rather than separately reported focused tests for this validation.
+Mandatory r5 happy path reported OK by the tester:
 
-## Planned follow-up branches
+- `Core`, `Harmony`, `Biotech`, then `GateRim SG-1` load order;
+- `New colony` > `Create world` > `Factions`;
+- `Tok'ra` row visible, selected once by default and using the dedicated icon;
+- removing `Tok'ra` displays the yellow `Warning:` line immediately;
+- `Add...` > `Tok'ra` removes the warning again;
+- `Player.log` accepted by the tester as part of the test pass.
 
-The following work remains explicitly planned outside `0.3.48-dev`:
+Optional regression coverage:
 
-- `feature/tokra-world-faction-selection-audit`: audit the hidden required Tok'ra faction, world-creation visibility and the effect of custom faction removal on the Tok'ra questline;
-- `feature/faction-world-icon-overhaul`: replace the shared vanilla house silhouette with faction-specific world icons during the global visual pass.
-
-No version number is assigned to these branches yet. Each must start from the latest published tag available when selected.
-
-## Next step
-
-Choose the next milestone after rereading `docs/ROADMAP.md`,
-`docs/IDEAS_TO_REVISIT.md` and `docs/MILESTONE_PUBLICATION.md`. Start it
-explicitly from `v0.3.48-dev` on a new dedicated branch.
+- generate one world with Tok'ra enabled and confirm one hidden instance, zero settlements and working Tok'ra content;
+- generate another world after removing Tok'ra and confirm zero instances and zero settlements;
+- in the Tok'ra-disabled game, wait through storyteller checks and verify that no Tok'ra offer, visitor, support incident or recurrent operation appears;
+- verify that right-clicking a secure communicator exposes no Tok'ra actions when the faction is absent;
+- save and reload the disabled game and confirm the faction is not recreated;
+- inspect the developer audit through `GateRim SG-1 > Tok'ra... > World selection... > Show audit` in both configurations.

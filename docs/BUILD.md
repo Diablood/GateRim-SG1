@@ -3,6 +3,7 @@
 ## Requirements
 
 - RimWorld 1.6 installed locally.
+- Harmony mod installed locally for the compile-time `0Harmony.dll` reference.
 - A .NET SDK capable of targeting .NET Framework 4.7.2.
 - The RimWorld managed assembly directory.
 
@@ -32,6 +33,7 @@ After building, launch RimWorld with:
 
 ```text
 Core
+Harmony
 Biotech
 GateRim SG-1
 ```
@@ -39,10 +41,18 @@ GateRim SG-1
 Then inspect `Player.log` for:
 
 ```text
-[GateRim SG-1] Version 0.1.42.0 loaded.
+[GateRim SG-1] Version 0.3.49.0 loaded.
 ```
 
 The DLL is a local build output and remains ignored by Git.
+
+GateRim SG-1 references Harmony with `Private=false`. The required `brrainz.harmony` mod supplies `0Harmony.dll` at runtime; do not copy `0Harmony.dll` into `1.6/Assemblies`.
+
+If Harmony is installed outside the default Workshop path, pass its assemblies directory explicitly:
+
+```powershell
+dotnet build .\Source\GateRimSG1\GateRimSG1.csproj -t:Rebuild -p:RimWorldManagedDir="D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed" -p:HarmonyAssemblyDir="D:\SteamLibrary\steamapps\workshop\content\294100\2009463077\Current\Assemblies"
+```
 
 
 ## Windows CMD wrapper

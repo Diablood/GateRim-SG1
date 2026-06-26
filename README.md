@@ -7,9 +7,10 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.48-dev`
+- Development version: `0.3.49-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
+- Required mod: `Harmony`
 - Package ID: `diablood.gaterimsg1`
 - Author: `Diablood`
 
@@ -19,8 +20,12 @@ people, factions, technologies, biology and conflicts surrounding it.
 ## Playable content
 
 - A stranded four-person SG-team starting scenario with dedicated field gear.
-- Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and a hidden
-  Tok'ra world presence. Newly generated Goa'uld domains and settlements use
+- Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and an
+  optional non-territorial Tok'ra faction. The Tok'ra are selected once by
+  default in the world-faction list with a dedicated icon, create no
+  settlements and may be removed to disable their contacts, questline and
+  recurrent operations for that game; the world-generation screen now shows a
+  yellow warning before that choice is confirmed. Newly generated Goa'uld domains and settlements use
   dedicated combinatorial naming grammars instead of a shared fixed faction
   name or vanilla pirate settlement names. Newly generated System Lord leaders
   also receive a formal Goa'uld symbiote identity before the world-creation

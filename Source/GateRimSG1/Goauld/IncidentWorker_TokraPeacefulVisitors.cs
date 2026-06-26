@@ -21,6 +21,11 @@ namespace GateRimSG1.Goauld
 
         protected override bool CanFireNowSub(IncidentParms parms)
         {
+            if (!TokraFactionUtility.HasPersistentFaction())
+            {
+                return false;
+            }
+
             return parms?.target is Map
                 && GR_DefOf.SG1_Tokra != null;
         }
