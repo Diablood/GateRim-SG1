@@ -1,23 +1,36 @@
-# Validation terminée - 0.3.50-dev
+# Validation terminée - 0.3.51-dev
 
-Jalon : `0.3.50-dev - Add GateRim faction world icons`
+Jalon : `0.3.51-dev - Add GateRim mission-site world icons`
 
-Branche : `feature/faction-world-icon-overhaul`
+Branche : `feature/operation-site-icon-overhaul`
 
-Tag de départ : `v0.3.49-dev`
+Base de départ : branche validée `feature/faction-world-icon-overhaul`, commit `adb1eed`
 
-Version de DLL attendue : `0.3.50.0`
+Version de DLL attendue : `0.3.51.0`
 
-Révision locale : `r2`
+Révision locale : `r3`
 
-Statut : test principal r2 validé. La r1 validait la couleur mais pas la lisibilité ; la r2 est acceptée après remplacement des trois nouvelles icônes par des silhouettes plus simples à contour sombre épais.
+Statut : révision finale `r3` validée et publiée par branche. Les pictogrammes colorés sont lisibles à zoom étendu, les textures vanilla fonctionnent au zoom rapproché et le cycle de vie des sites correspond aux règles documentées. Le tag final reste non créé faute de demande explicite.
 
-## 1. Contrôles statiques et chargement
+Contrôles locaux `r3` :
 
-- [x] `git diff --check` ne signale aucune erreur.
-- [x] `./tools/check-project-consistency.cmd` termine avec un code `0`.
-- [x] Le rebuild forcé `0.3.50.0` termine sans erreur de compilation.
-- [x] Le mod charge avec l'ordre minimal suivant :
+- [x] les sept textures rapprochées utilisent `World/WorldObjects/Sites/GenericSite` ;
+- [x] les sept textures étendues résolvent les six PNG dédiés ;
+- [x] le sous-menu sépare `Independent arcs...` et `Organic sites (one active)...` ;
+- [x] `git diff --check` et le contrôle de cohérence passent ;
+- [x] le rebuild forcé `0.3.51.0` termine avec `0` avertissement et `0` erreur.
+
+## Résultat r2
+
+- [x] Les six icônes colorées sont présentes et rendent bien.
+- [x] Le défaut de zoom rapproché de `r2` a été constaté : les pictogrammes personnalisés étaient réutilisés et tournés aléatoirement.
+- [x] Les différences de coexistence ont été observées : elles correspondent aux deux étapes de planque, au slot unique des opérations organiques et aux arcs indépendants.
+
+## Test principal r3
+
+Résultat : validé par le mainteneur, y compris le rendu aux deux niveaux de zoom, les remplacements attendus, la coexistence des arcs indépendants et `Player.log`.
+
+Charger dans cet ordre :
 
 ```text
 Core
@@ -26,37 +39,41 @@ Biotech
 GateRim SG-1
 ```
 
-- [x] RimWorld atteint la création du monde sans erreur XML, `FactionDef`, `factionIconPath`, texture manquante ou Harmony.
+Utiliser une partie avec les Tok'ra activés et un communicateur sécurisé Tok'ra construit et alimenté.
 
-## 2. Test principal r2
+### 1. Arcs indépendants
 
-Objectif : vérifier uniquement la lisibilité des icônes de faction et la variation vanilla de couleur sur les copies.
+Ouvrir exactement :
 
-1. Depuis le menu principal, ouvrir `New colony`.
-2. Sélectionner le scénario `Équipe SG isolée` / `Stranded SG team`.
-3. Avancer jusqu'à l'écran `Create world`.
-4. Dans la section `Factions`, vérifier que `Jaffa libres` / `Free Jaffa` utilise la nouvelle icône Jaffa libre simplifiée et lisible, avec contour sombre épais, et non la maison vanilla.
-5. Vérifier que `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains` utilise la nouvelle icône pyramide/serpent simplifiée et lisible, avec contour sombre épais, et non l'avant-poste pirate vanilla.
-6. Vérifier que `Tok'ra` conserve son icône Tok'ra circulaire dédiée.
-7. Cliquer sur `Add...` et ajouter au moins deux entrées supplémentaires `Jaffa libres` / `Free Jaffa`.
-8. Cliquer sur `Add...` et ajouter au moins deux entrées supplémentaires `Domaines des Grands Maîtres Goa'uld` / `Goa'uld System Lord domains`.
-9. Vérifier que les copies d'une même faction gardent la même silhouette mais affichent des variations vanilla visibles de teinte, plus claires ou plus foncées.
-10. Générer le monde et démarrer le scénario sur une tuile valide.
-11. Une fois sur la carte, ouvrir l'onglet inférieur `Factions` et vérifier que `expédition du SGC` / `SGC expedition` utilise la nouvelle icône SGC simplifiée et lisible lorsqu'elle est affichée par RimWorld.
-12. Contrôler `Player.log`.
+```text
+Actions de débogage > GateRim SG-1 > Tok'ra... > Mission-site icon tests... > Independent arcs...
+```
 
-Résultat attendu : les quatre identités de faction GateRim SG-1 sont lisibles à la taille finale de l'UI, les copies gardent la variation de couleur vanilla, l'icône Tok'ra validée reste inchangée, et `Player.log` ne contient aucune nouvelle erreur GateRim SG-1 liée aux textures, XML ou à Harmony.
+1. Cliquer sur `Create SG1_TokraHiddenSafehouseMarker`.
+2. À zoom étendu, vérifier l'arche de planque sable et turquoise.
+3. Zoomer : vérifier la texture rapprochée vanilla, sans pictogramme coloré tourné.
+4. Cliquer sur `Create SG1_TokraHiddenSafehouseSite`.
+5. Vérifier que le marqueur est remplacé par le site révélé, avec la même arche à zoom étendu et `GenericSite` à zoom rapproché.
+6. Cliquer sur `Create SG1_TokraIntroductionArtifactWorldSite`, puis sur `Create SG1_TokraDecodedMissionWorldSite`.
+7. Vérifier leurs pictogrammes colorés à zoom étendu, `GenericSite` à zoom rapproché et leur présence simultanée avec la planque.
 
-Résultat r2 : validé par le testeur. Une légère variation de couleur subsiste, mais elle vient du rendu vanilla de RimWorld et non d'une couleur intégrée par GateRim SG-1 ; ce comportement est accepté.
+### 2. Slot organique unique
 
-Publication : commit et push de branche autorisés par le mainteneur. Le tag final `v0.3.50-dev` reste séparé de cette demande.
+Revenir à :
 
-## 3. Régression optionnelle - avertissement Tok'ra
+```text
+Actions de débogage > GateRim SG-1 > Tok'ra... > Mission-site icon tests... > Organic sites (one active)...
+```
 
-Dans l'écran `Create world` > `Factions` :
+1. Cliquer sur `Create SG1_TokraDistressCallWorldSite` et contrôler sa balise colorée puis son rendu `GenericSite` rapproché.
+2. Cliquer sur `Create SG1_TokraTemporaryBaseDeliverySite` : vérifier que le signal de détresse disparaît et que la caisse logistique le remplace.
+3. Cliquer sur `Create SG1_TokraJaffaOfficerCaptureSite` : vérifier que la caisse disparaît et que la position d'officier Jaffa la remplace.
+4. Vérifier que la planque, le site d'introduction et le relais décodé sont toujours présents.
+5. Contrôler `Player.log`.
 
-- [ ] Supprimer l'entrée `Tok'ra`.
-- [ ] Vérifier que l'avertissement jaune `Warning:` apparaît immédiatement.
-- [ ] Cliquer sur `Add...`, sélectionner `Tok'ra`, puis vérifier que l'avertissement disparaît.
+Résultat attendu : les pictogrammes personnalisés restent réservés au zoom étendu ; le zoom rapproché utilise les textures vanilla ; les étapes de planque se remplacent ; un seul site organique reste actif ; les arcs indépendants coexistent ; aucune nouvelle erreur GateRim SG-1 de texture, XML ou C# n'apparaît.
 
-Cette régression confirme que la passe visuelle n'a pas cassé le jalon `0.3.49-dev`.
+## Régressions optionnelles
+
+- Entrer dans un site de combat et dans `SG1_TokraHiddenSafehouseSite` pour vérifier l'arrivée de caravane.
+- Vérifier que les icônes de faction validées en `0.3.50-dev` restent inchangées.

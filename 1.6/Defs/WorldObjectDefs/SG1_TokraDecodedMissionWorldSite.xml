@@ -7,7 +7,7 @@
         <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraDecodedMissionSite</worldObjectClass>
         <texture>World/WorldObjects/Sites/GenericSite</texture>
         <expandingIcon>true</expandingIcon>
-        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage</expandingIconTexture>
         <expandingIconPriority>36</expandingIconPriority>
         <expandMore>true</expandMore>
         <canHaveFaction>true</canHaveFaction>

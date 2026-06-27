@@ -1,6 +1,33 @@
 # Roadmap
 
-## Jalon en cours — Icônes mondiales des factions GateRim (`0.3.50-dev`)
+## Dernier jalon validé et poussé — Icônes mondiales des sites de mission GateRim (`0.3.51-dev`)
+
+- [x] Partir de `feature/faction-world-icon-overhaul` au commit publié `adb1eed` sur la branche dédiée `feature/operation-site-icon-overhaul`, faute de demande explicite de tag `v0.3.50-dev`.
+- [x] Relire `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/ROADMAP.md` et `docs/MILESTONE_PUBLICATION.md`.
+- [x] Auditer les `WorldObjectDef`, `SitePartDef` et `MissionDef` concernés par les sites d'opérations GateRim.
+- [x] Regrouper le listing par types visuels afin qu'un type corresponde à une icône.
+- [x] Ajouter un accès debug dédié `Mission-site icon tests...` avec les vrais `WorldObjectDef.defName`, pour éviter les chemins de test indirects et les libellés tronqués.
+- [x] Rejeter la règle `Town` / `ItemStash` de `r1`, qui ne mettait en œuvre aucun des types visuels demandés.
+- [x] Préparer six silhouettes dédiées : contact clandestin Tok'ra, rendez-vous logistique Tok'ra, signal de détresse Tok'ra, objectif chiffré Goa'uld, sabotage de relais Goa'uld et position d'officier Jaffa.
+- [x] Faire approuver visuellement les six concepts avant toute intégration XML ou demande de test en jeu.
+- [x] Ajouter les PNG approuvés avec des couleurs limitées, des formes simples et des contours sombres épais lisibles au petit format RimWorld.
+- [x] Associer le marqueur et le site de planque au même type visuel, et conserver une seule icône pour les variantes cachées du signal de détresse.
+- [x] Mettre à jour la checklist exacte dans `docs/PROJECT_STATE.md`, `docs/TESTING_CURRENT.md` et `docs/MISSION_SITE_WORLD_ICONS.md` après intégration.
+- [x] Mettre à jour la couverture durable dans `docs/TESTING.md` après intégration.
+- [x] Rebuild forcé `0.3.51.0`.
+- [x] Valider partiellement `r2` : les six icônes colorées sont présentes et lisibles, mais leur réutilisation comme texture rapprochée provoque une rotation inadaptée.
+- [x] Restaurer en `r3` `GenericSite` pour les sept objets de mission en vue rapprochée, tout en conservant les icônes dédiées au zoom étendu.
+- [x] Confirmer que les remplacements observés viennent du slot organique unique et des deux étapes de planque, sans perte des arcs indépendants.
+- [x] Regrouper le menu de test entre arcs indépendants et sites organiques afin d'exposer cette règle sans modifier le gameplay.
+- [x] Valider en jeu les types d'icônes sur la carte du monde et dans le listing de debug.
+- [x] Contrôler `Player.log`.
+- [x] Enregistrer le retour de test et finaliser la documentation.
+- [x] Publier le dépôt principal et synchroniser le wiki après demande explicite.
+- [ ] Créer le tag final `v0.3.51-dev` seulement après demande explicite de tag.
+
+`r1` est un échec de périmètre : le menu debug est conservé, mais les icônes existantes `Town` et `ItemStash` ne constituent pas le résultat du jalon. En `r2`, les six silhouettes ont été approuvées puis validées à zoom étendu, mais leur branchement simultané comme texture rapprochée a été rejeté. La révision finale `r3` sépare les deux rendus, documente le cycle de vie réel des sites et est validée en jeu avec un `Player.log` accepté. La branche finale et le wiki séparé sont publiés ; le tag reste distinct faute de demande explicite.
+
+## Dernier jalon validé et poussé — Icônes mondiales des factions GateRim (`0.3.50-dev`)
 
 - [x] Partir explicitement de `v0.3.49-dev` sur `feature/faction-world-icon-overhaul`.
 - [x] Relire `AGENTS.md`, `docs/PROJECT_STATE.md` et `docs/ROADMAP.md`.
@@ -18,9 +45,9 @@
 - [x] Publier la branche et synchroniser le wiki après demande explicite de commit/push.
 - [ ] Créer le tag final `v0.3.50-dev` seulement après demande explicite de tag.
 
-La révision locale `r2` est validée : les silhouettes simplifiées sont lisibles en jeu, les copies d'une même faction conservent la variation de teinte vanilla et la légère différence de couleur restante vient du rendu RimWorld plutôt que du mod.
+La révision locale `r2` est validée et poussée au commit `adb1eed` : les silhouettes simplifiées sont lisibles en jeu, les copies d'une même faction conservent la variation de teinte vanilla et la légère différence de couleur restante vient du rendu RimWorld plutôt que du mod.
 
-Ce jalon reste visuel et ciblé. Il ne modifie pas les colonies, les raids, les noms, les factions générées, les sites de mission ni les objets du mod. Les futures passes d'icônes de sites et de textures d'objets restent dans la passe visuelle globale.
+Ce jalon reste visuel et ciblé. Il ne modifie pas les colonies, les raids, les noms, les factions générées, les sites de mission ni les objets du mod. Le tag final `v0.3.50-dev` n'a pas été créé, faute de demande explicite de tag.
 
 ## Dernier jalon clôturé — Sélection mondiale Tok'ra optionnelle (`0.3.49-dev`)
 

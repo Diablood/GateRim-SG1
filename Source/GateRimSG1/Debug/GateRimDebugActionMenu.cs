@@ -45,6 +45,7 @@ namespace GateRimSG1.Debugging
                 "Show communicator availability",
                 TokraSecureCommunicatorDebugActions.ShowAvailability,
                 500));
+            root.AddChild(BuildMissionSiteIconTestMenu());
             root.AddChild(BuildTokraIntroductionMenu());
             root.AddChild(BuildTokraStudyMenu());
             root.AddChild(BuildTokraOrganicOperationsMenu());
@@ -195,6 +196,52 @@ namespace GateRimSG1.Debugging
         public static void InspectMissionDefinitions()
         {
             GateRimMissionDebugActions.InspectDefinitions();
+        }
+
+        private static DebugActionNode BuildMissionSiteIconTestMenu()
+        {
+            return MenuNode(
+                "Mission-site icon tests...",
+                450,
+                MenuNode(
+                    "Independent arcs...",
+                    200,
+                    ActionNode(
+                        "Create SG1_TokraHiddenSafehouseMarker",
+                        MissionSiteIconDebugActions
+                            .CreateHiddenSafehouseMarker,
+                        400),
+                    ActionNode(
+                        "Create SG1_TokraHiddenSafehouseSite",
+                        MissionSiteIconDebugActions.CreateHiddenSafehouseSite,
+                        300),
+                    ActionNode(
+                        "Create SG1_TokraIntroductionArtifactWorldSite",
+                        MissionSiteIconDebugActions
+                            .CreateIntroductionArtifactSite,
+                        200),
+                    ActionNode(
+                        "Create SG1_TokraDecodedMissionWorldSite",
+                        MissionSiteIconDebugActions
+                            .CreateDecodedMissionWorldSite,
+                        100)),
+                MenuNode(
+                    "Organic sites (one active)...",
+                    100,
+                    ActionNode(
+                        "Create SG1_TokraDistressCallWorldSite",
+                        MissionSiteIconDebugActions.CreateDistressCallSite,
+                        300),
+                    ActionNode(
+                        "Create SG1_TokraTemporaryBaseDeliverySite",
+                        MissionSiteIconDebugActions
+                            .CreateTemporaryBaseDeliverySite,
+                        200),
+                    ActionNode(
+                        "Create SG1_TokraJaffaOfficerCaptureSite",
+                        MissionSiteIconDebugActions
+                            .CreateJaffaOfficerCaptureSite,
+                        100)));
         }
 
         private static DebugActionNode BuildTokraIntroductionMenu()

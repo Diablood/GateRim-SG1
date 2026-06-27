@@ -1,5 +1,30 @@
 # Testing checklist
 
+## 0.3.51-dev - GateRim mission-site world icons
+
+Validation locale terminée sur la révision finale `r3`. La proposition `r1` utilisant uniquement les icônes vanilla a été rejetée ; `r2` a validé les six pictogrammes colorés au zoom étendu mais révélé leur rotation incorrecte au zoom rapproché ; `r3` conserve les pictogrammes dédiés à zoom étendu, restaure `GenericSite` à zoom rapproché et valide les règles de coexistence ainsi que `Player.log`.
+
+Couverture durable prévue :
+
+- charger avec `Core`, `Harmony`, `Biotech` et `GateRim SG-1` ;
+- utiliser une colonie avec Tok'ra activés et un communicateur sécurisé Tok'ra construit et alimenté ;
+- ouvrir `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Mission-site icon tests...` ;
+- vérifier que le marqueur et le site de planque utilisent tous deux l'icône de contact clandestin Tok'ra ;
+- vérifier les icônes dédiées de l'objectif chiffré Goa'uld, du relais Goa'uld à saboter, du signal de détresse Tok'ra, du rendez-vous logistique Tok'ra et de la position d'officier Jaffa ;
+- vérifier que le zoom rapproché utilise `GenericSite` pour les sept objets de mission au lieu de faire tourner les pictogrammes colorés ;
+- conserver la même icône pour toutes les variantes cachées du signal de détresse afin de ne pas révéler leur résultat avant l'arrivée ;
+- vérifier que les deux étapes de planque se remplacent, que les trois sites organiques se remplacent entre eux et que les arcs indépendants restent présents ;
+- entrer dans un site de combat et dans la planque Tok'ra non hostile afin de vérifier les actions et l'arrivée de caravane ;
+- vérifier que les icônes de faction de `0.3.50-dev` restent inchangées ;
+- inspecter `Player.log` pour les erreurs de texture, XML, création de site ou action debug.
+
+Limites durables :
+
+- conserver des silhouettes simples, colorées avec alpha et à contour sombre épais pour la lisibilité au format final ;
+- ne pas sélectionner d'icône selon une variante runtime cachée ;
+- conserver les nouvelles actions de création de site derrière le mode développeur ;
+- les opérations organiques de test nécessitent un communicateur Tok'ra alimenté et restent limitées à une opération active.
+
 ## 0.3.50-dev - GateRim faction world icons
 
 Validation locale terminée sur la révision `r2`, jalon non encore publié. La révision `r1` a validé la variation de teinte vanilla sur les copies d'une même faction, mais les silhouettes étaient trop détaillées et les contours trop fins à la taille finale de l'UI. La révision `r2` remplace les trois nouvelles icônes par des silhouettes simplifiées à contour sombre épais, validées en jeu. La légère variation de couleur restante vient de RimWorld et reste acceptée.

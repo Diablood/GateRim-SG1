@@ -275,6 +275,18 @@ cache médical et un contact Tok'ra pacifique, non marchand et non recrutable.
 Ce contact peut transmettre un briefing médical et, selon la confiance, une
 piste de suivi supplémentaire.
 
+## Icônes des sites mondiaux
+
+Depuis `0.3.51-dev`, les destinations GateRim ne partagent plus le sac vanilla
+à point d'interrogation. La carte du monde distingue visuellement la planque
+Tok'ra, le rendez-vous logistique, le signal de détresse, l'objectif chiffré
+Goa'uld, le relais à saboter et la position de l'officier Jaffa. Le marqueur
+préliminaire et la planque révélée gardent la même arche, tandis que toutes les
+variantes cachées du signal de détresse conservent la même balise afin de ne
+pas révéler leur issue avant l'arrivée. En zoom rapproché, ces destinations
+retrouvent le rendu vanilla des sites vu du dessus ; les pictogrammes colorés
+restent réservés à l'affichage étendu de la carte du monde.
+
 ## Mission jouable de sabotage du relais
 
 La piste décodée mène à une seule opération jouable. Une caravane présente sur le relais lance la mission et entre sur une carte temporaire avec une garnison Goa'uld/Jaffa dimensionnée à partir des points de menace vanilla. Depuis `0.2.46-dev-r2`, cette garnison protège d'abord le poste au lieu de charger immédiatement les intrus ; elle passe à l'assaut si elle est attaquée, si une installation Goa'uld est endommagée ou dès que le sabotage commence. Le nœud de contrôle doit être saboté par un colon capable de travail intellectuel ; sa progression persiste si le travail est interrompu.

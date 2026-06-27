@@ -6,7 +6,7 @@
         <description>A temporary clandestine Tok'ra safehouse containing a modest medical cache and one peaceful contact.</description>
         <workerClass>RimWorld.Planet.SitePartWorker_ItemStash</workerClass>
         <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
-        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact</expandingIconTexture>
         <handlesWorldObjectTimeoutInspectString>true</handlesWorldObjectTimeoutInspectString>
         <requiresFaction>true</requiresFaction>
         <approachOrderString>Visit {0}</approachOrderString>

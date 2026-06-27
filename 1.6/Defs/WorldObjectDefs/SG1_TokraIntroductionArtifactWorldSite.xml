@@ -7,7 +7,7 @@
         <worldObjectClass>GateRimSG1.Goauld.WorldObject_TokraIntroductionArtifactSite</worldObjectClass>
         <texture>World/WorldObjects/Sites/GenericSite</texture>
         <expandingIcon>true</expandingIcon>
-        <expandingIconTexture>World/WorldObjects/Expanding/Sites/ItemStash</expandingIconTexture>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective</expandingIconTexture>
         <expandingIconPriority>37</expandingIconPriority>
         <expandMore>true</expandMore>
         <canHaveFaction>true</canHaveFaction>

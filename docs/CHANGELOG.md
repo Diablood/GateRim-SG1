@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.51-dev - Add GateRim mission-site world icons
+
+- Start from validated branch commit `adb1eed` on `feature/operation-site-icon-overhaul`.
+- Reject the initial `Town` / `ItemStash` proposal because it did not implement the requested semantic mission-site types.
+- Add six dedicated colored icon families for clandestine Tok'ra contact, Tok'ra logistics, Tok'ra distress, encrypted Goa'uld objective, Goa'uld relay sabotage and a Jaffa officer field position.
+- Keep the preliminary and revealed safehouse under one visual type, and keep hidden distress-call outcomes under one shared signal icon.
+- Record visual approval of all six silhouettes and their mission symbolism, with colored fills authorized for these non-faction site icons.
+- Point each affected expanding-icon field to the matching transparent `128x128` PNG.
+- Record partial `r2` validation: all six expanded icons render well, but custom base textures rotate inappropriately at close world-map zoom.
+- Restore the vanilla `GenericSite` base texture for all seven mission objects in `r3` while retaining the dedicated colored expanding icons.
+- Group icon-test actions into independent arcs and the single active organic-operation slot, with explicit replacement messages and no gameplay-state rule change.
+- Add a dedicated `Mission-site icon tests...` debug submenu with the true world-site `defName` labels, so manual validation does not depend on indirect or truncated debug-menu entries.
+- Use C# only for direct test access, never for dynamic hidden-variant icons.
+- Validate final local revision `r3`: six colored expanded icons, vanilla `GenericSite` close-zoom rendering, documented replacement and coexistence rules, and a clean accepted `Player.log`.
+
 ## 0.3.50-dev - Add GateRim faction world icons
 
 - Start from published tag `v0.3.49-dev` on `feature/faction-world-icon-overhaul`.
