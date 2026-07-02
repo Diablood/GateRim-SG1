@@ -1,23 +1,66 @@
 # Current project state
 
-Current milestone: `0.3.51-dev - Add GateRim mission-site world icons` - final revision `r3` validated and published by branch.
+Current milestone: `0.3.52-dev - Add the Goa'uld faction caste summary` - final revision `r1` validated and published.
 
 ## Repository state
 
-- Starting branch: `feature/faction-world-icon-overhaul`.
-- Starting commit: `adb1eed`.
-- Active branch: `feature/operation-site-icon-overhaul`.
-- Last published version: `0.3.51-dev` on `feature/operation-site-icon-overhaul`.
-- Last published tag: `v0.3.49-dev`.
-- Note: final tags `v0.3.50-dev` and `v0.3.51-dev` were not created because no explicit tag request was made.
-- Target version: `0.3.51-dev`.
-- Technical assembly version: `0.3.51.0`.
-- Local revision: `r3`.
-- Publication status: final branch committed and pushed; separate wiki synchronized and pushed; final tag not requested.
+- Starting tag: `v0.3.51-dev`.
+- Starting commit: `3ec8ac0`.
+- Active branch: `feature/goauld-caste-world-summary`.
+- Last published version: `0.3.52-dev` on `feature/goauld-caste-world-summary`.
+- Last published tag: `v0.3.52-dev`.
+- Retrospective publication correction: annotated tags `v0.3.50-dev` and
+  `v0.3.51-dev` were added manually by the maintainer and point to their
+  validated milestone commits.
+- Target version: `0.3.52-dev`.
+- Technical assembly version: `0.3.52.0`.
+- Local revision: `r1`.
+- Publication status: final branch committed and pushed; annotated tag and separate wiki published.
 
 ## Current scope
 
-This milestone standardizes the player-visible world-map icons for GateRim SG-1 mission markers. The uniform vanilla `ItemStash` proposal did not satisfy the requested semantic grouping and is not an acceptable result.
+This milestone completes the player-visible description of the Goa'uld world
+faction. RimWorld's vanilla summary can only report xenotype percentages and
+therefore shows `Jaffa: 100%`, while generated settlements also contain a
+minority host caste and the faction leader is a persistent System Lord host.
+
+The implementation appends one localized qualitative caste section to
+`FactionDef.Description` only for `SG1_GoauldSystemLordPrototype`. It does not
+alter `xenotypeSet`, pawn groups, settlement weights, leaders, raids or host
+initialization. Harmony is already a declared mod dependency and no Harmony
+DLL is embedded in GateRim SG-1.
+
+## Validated r1 test
+
+1. Load `Core`, `Harmony`, `Biotech`, then `GateRim SG-1`.
+2. Open `Nouvelle colonie` > `Équipe SG isolée` > `Créer le monde` > `Factions`.
+3. Place the pointer over `Domaines des Grands Maîtres Goa'uld`.
+4. Verify that the tooltip retains the faction description and vanilla member-xenotype section, then adds `Castes Goa'uld` with dominant Jaffa servants, minority Goa'uld hosts, the System Lord host leader and the acquired-possession explanation.
+5. Place the pointer over `Jaffa libres` and verify that no `Castes Goa'uld` section appears.
+6. Generate the world and inspect `Player.log`.
+
+Expected result: the Goa'uld tooltip explains both biological xenotypes and
+acquired host castes without changing other faction tooltips; world generation
+completes and `Player.log` contains no new Harmony, translation or C# error.
+
+## Local validation
+
+- `git diff --check`: passed, with only the usual line-ending warnings.
+- English and French keyed XML parsing: passed.
+- Translation-key reference audit: passed.
+- `./tools/check-project-consistency.cmd`: passed for `0.3.52-dev` / `0.3.52.0`.
+- Forced C# rebuild: passed with `0` warnings and `0` errors.
+- In-game validation: passed and accepted by the maintainer.
+- Goa'uld tooltip, Free Jaffa non-regression, world generation and `Player.log`: passed.
+
+## Previous milestone record
+
+The remainder of this document retains the validated `0.3.51-dev` mission-site
+icon record as the previous milestone history.
+
+### Mission-site icon scope
+
+The previous milestone standardized the player-visible world-map icons for GateRim SG-1 mission markers. The uniform vanilla `ItemStash` proposal did not satisfy the requested semantic grouping and is not an acceptable result.
 
 The required six visual types are:
 
@@ -118,4 +161,15 @@ Expected result: custom colored icons appear only at expanded zoom; close zoom u
 - `Player.log`: passed as part of the validated `r3` checklist.
 - Branch publication: completed after explicit maintainer authorization.
 - Separate wiki synchronization and publication: completed because `docs/wiki/` changed.
-- Final tag `v0.3.51-dev`: not created because the commit/push authorization did not request a tag.
+- Final annotated tag `v0.3.51-dev`: published by the maintainer after the
+  branch and wiki publication.
+
+## Deferred visual scope
+
+The current pawn, apparel, object and building textures are primarily
+placeholders that establish stable texture paths while gameplay systems are
+still evolving. Do not treat isolated polish of those assets as the next
+milestone. Their final art direction, including a more distinctive Jaffa
+officer, belongs to one later complete texture pass. The faction and mission
+world-map icons validated in `0.3.50-dev` and `0.3.51-dev` remain accepted UI
+assets and do not imply that all in-map textures are final.

@@ -99,7 +99,7 @@ minority among the Jaffa defenders.
 
 The Combat group remains unchanged, so direct raids stay Jaffa-only.
 
-## Vanilla Create World summary limitation
+## Create World caste summary
 
 The faction-level summary remains:
 
@@ -107,9 +107,11 @@ The faction-level summary remains:
 Jaffa: 100%
 ```
 
-This is intentionally provisional. Vanilla summarizes xenotypes, not acquired
-Hediff-based possession states. The generated Goa'uld castes are real persistent
-hosts even though they are not represented by that xenotype summary.
+Vanilla summarizes xenotypes, not acquired Hediff-based possession states.
+Since `0.3.52-dev`, GateRim appends a qualitative caste section to the Goa'uld
+faction description: dominant Jaffa servants, minority Goa'uld hosts and the
+System Lord host leader. The generated Goa'uld castes remain real persistent
+hosts without being added to the germline xenotype percentages.
 
 ## Temporary attire
 
@@ -140,8 +142,7 @@ injuries.
 - dedicated cultural backstories;
 - dedicated Goa'uld apparel;
 - active-host extraction;
-- custom UI summary for host castes;
-- thematic faction icons.
+- final Goa'uld apparel and texture pass;
 
 ## Manual test checklist
 

@@ -50,7 +50,7 @@ utilisent également des noms dédiés, avec des formes comme `Temple du trône
 d'or`, `Premier sanctuaire de la Porte sacrée` ou `Deuxième pyramide du soleil
 noir`, au lieu des noms pirates vanilla.
 
-## Résumé de xénotype provisoire
+## Résumé des xénotypes et des castes
 
 Dans l'écran de création du monde, la faction indique actuellement :
 
@@ -58,10 +58,12 @@ Dans l'écran de création du monde, la faction indique actuellement :
 xénotype : Jaffa (100 %)
 ```
 
-Ce résumé reste une limite de l'interface vanilla : elle affiche les
-xenotypes, pas les états parasitaires acquis. Depuis `0.2.3-dev`, des profils
-d'hôtes Goa'uld minoritaires existent réellement dans les colonies et parmi
-les dirigeants, avec un symbiote persistant.
+L'interface vanilla affiche les xénotypes, pas les états parasitaires acquis.
+Depuis `0.3.52-dev`, l'infobulle Goa'uld complète donc ce pourcentage sans le
+modifier : elle précise que les serviteurs Jaffa forment la population
+dominante, que les hôtes Goa'uld sont une minorité des colonies et que le
+dirigeant est lui-même un hôte Grand Maître. La possession reste un état
+persistant acquis, jamais un xénotype germinal ajouté pour les besoins de l'UI.
 
 ## Grand Maître Goa'uld
 

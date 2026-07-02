@@ -1,4 +1,55 @@
-# Validation terminée - 0.3.51-dev
+# Validation terminée - 0.3.52-dev
+
+Jalon : `0.3.52-dev - Add the Goa'uld faction caste summary`
+
+Branche : `feature/goauld-caste-world-summary`
+
+Base : `v0.3.51-dev` (`3ec8ac0`)
+
+Version de DLL attendue : `0.3.52.0`
+
+Révision locale : `r1`
+
+Statut : révision finale `r1` validée et publiée sous le tag annoté `v0.3.52-dev`.
+
+Contrôles locaux :
+
+- [x] `git diff --check` ;
+- [x] parsing XML anglais et français ;
+- [x] `./tools/check-project-consistency.cmd` ;
+- [x] rebuild forcé `0.3.52.0`, `0` avertissement et `0` erreur.
+
+## Test principal r1
+
+Résultat : validé, y compris l'infobulle Goa'uld, l'absence de section Goa'uld
+sur `Jaffa libres`, la génération du monde et `Player.log`.
+
+Charger dans cet ordre :
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+1. Ouvrir `Nouvelle colonie` > `Équipe SG isolée` > `Créer le monde` > `Factions`.
+2. Placer le pointeur sur `Domaines des Grands Maîtres Goa'uld`.
+3. Vérifier que l'infobulle conserve la description et la section vanilla des xénotypes, puis affiche `Castes Goa'uld` avec `Serviteurs Jaffa : population dominante`, `Hôtes Goa'uld : minorité des colonies`, `Hôte Grand Maître : dirigeant de faction` et l'explication de la possession acquise.
+4. Placer le pointeur sur `Jaffa libres` et vérifier que cette infobulle ne contient pas `Castes Goa'uld`.
+5. Générer le monde, atteindre l'écran de choix de la tuile de départ et contrôler `Player.log`.
+
+Résultat attendu : seul le résumé Goa'uld reçoit la section de castes ; les
+pourcentages de xénotypes restent inchangés ; la génération du monde réussit et
+aucune nouvelle erreur Harmony, C# ou de traduction n'apparaît.
+
+## Régression optionnelle
+
+- Dans `Créer le monde` > `Factions`, utiliser `Ajouter...` pour créer une seconde entrée `Domaines des Grands Maîtres Goa'uld` et vérifier que les deux lignes exposent le même résumé sans duplication interne.
+
+---
+
+# Validation précédente - 0.3.51-dev
 
 Jalon : `0.3.51-dev - Add GateRim mission-site world icons`
 
@@ -10,7 +61,10 @@ Version de DLL attendue : `0.3.51.0`
 
 Révision locale : `r3`
 
-Statut : révision finale `r3` validée et publiée par branche. Les pictogrammes colorés sont lisibles à zoom étendu, les textures vanilla fonctionnent au zoom rapproché et le cycle de vie des sites correspond aux règles documentées. Le tag final reste non créé faute de demande explicite.
+Statut : révision finale `r3` validée et publiée par branche et sous le tag
+annoté `v0.3.51-dev`. Les pictogrammes colorés sont lisibles à zoom étendu,
+les textures vanilla fonctionnent au zoom rapproché et le cycle de vie des
+sites correspond aux règles documentées.
 
 Contrôles locaux `r3` :
 

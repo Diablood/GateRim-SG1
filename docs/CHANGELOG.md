@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.52-dev - Add the Goa'uld faction caste summary
+
+- Start from final annotated tag `v0.3.51-dev` on `feature/goauld-caste-world-summary`.
+- Complement the Goa'uld faction description with qualitative Jaffa-servant, Goa'uld-host and System Lord host castes.
+- Keep vanilla xenotype percentages intact and explain that possession is an acquired parasitic state rather than a germline xenotype.
+- Apply the summary only to `SG1_GoauldSystemLordPrototype`; Free Jaffa and other faction descriptions remain unchanged.
+- Preserve faction counts, settlement composition, pawn generation, raids, leaders, names and all host initialization behavior.
+- Clarify the publication procedure so a validated milestone publication includes its annotated final tag and wiki synchronization unless explicitly excluded.
+- Validate final local revision `r1`: Goa'uld caste tooltip, unchanged Free Jaffa tooltip, successful world generation and accepted `Player.log`.
+- Publish branch `feature/goauld-caste-world-summary`, annotated tag `v0.3.52-dev` and the synchronized wiki.
+
 ## 0.3.51-dev - Add GateRim mission-site world icons
 
 - Start from validated branch commit `adb1eed` on `feature/operation-site-icon-overhaul`.

@@ -1,8 +1,33 @@
 # Roadmap
 
+## Dernier jalon validé et publié — Résumé des castes de faction Goa'uld (`0.3.52-dev`)
+
+- [x] Partir explicitement de `v0.3.51-dev` sur `feature/goauld-caste-world-summary`.
+- [x] Corriger les documents de publication après l'ajout manuel des tags annotés `v0.3.50-dev` et `v0.3.51-dev`.
+- [x] Rendre le tag annoté final systématique dans toute publication de jalon validé, sauf exclusion explicite du mainteneur.
+- [x] Confirmer que la passe complète des textures de pawns, vêtements, objets et bâtiments reste différée et que les assets actuels sont principalement des placeholders de chemin.
+- [x] Auditer `WorldFactionsUIUtility.DoRow` et `FactionDef.Description` dans la DLL RimWorld 1.6 locale.
+- [x] Compléter uniquement la description du `SG1_GoauldSystemLordPrototype` avec les castes acquises Goa'uld.
+- [x] Conserver intact le `xenotypeSet` vanilla-visible afin de ne pas transformer la possession en xénotype germinal.
+- [x] Ajouter les textes anglais et français.
+- [x] Documenter le test court exact dans `docs/PROJECT_STATE.md`, `docs/TESTING_CURRENT.md` et le document technique.
+- [x] Ajouter la couverture durable dans `docs/TESTING.md`.
+- [x] Exécuter les contrôles locaux et le rebuild forcé `0.3.52.0`.
+- [x] Valider en jeu l'infobulle Goa'uld, la non-régression Jaffa libre, la génération du monde et `Player.log`.
+- [x] Enregistrer le retour de test dans l'état du projet et la couverture durable.
+- [x] Publier la branche, le tag annoté `v0.3.52-dev` et le wiki après autorisation explicite.
+
+Ce jalon ne change ni les textures placeholders, ni la composition des
+colonies, ni les raids, ni les dirigeants, ni les noms, ni la biologie des
+hôtes. Il complète une limite d'interface déjà documentée depuis la fondation
+de la caste Goa'uld.
+
+La révision finale `r1` est validée en jeu puis publiée avec la branche dédiée,
+le tag annoté `v0.3.52-dev` et le wiki séparé synchronisé.
+
 ## Dernier jalon validé et poussé — Icônes mondiales des sites de mission GateRim (`0.3.51-dev`)
 
-- [x] Partir de `feature/faction-world-icon-overhaul` au commit publié `adb1eed` sur la branche dédiée `feature/operation-site-icon-overhaul`, faute de demande explicite de tag `v0.3.50-dev`.
+- [x] Partir de l'état validé `0.3.50-dev` au commit `adb1eed` sur la branche dédiée `feature/operation-site-icon-overhaul`; le tag annoté rétrospectif `v0.3.50-dev` pointe désormais sur cette base.
 - [x] Relire `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/ROADMAP.md` et `docs/MILESTONE_PUBLICATION.md`.
 - [x] Auditer les `WorldObjectDef`, `SitePartDef` et `MissionDef` concernés par les sites d'opérations GateRim.
 - [x] Regrouper le listing par types visuels afin qu'un type corresponde à une icône.
@@ -23,9 +48,9 @@
 - [x] Contrôler `Player.log`.
 - [x] Enregistrer le retour de test et finaliser la documentation.
 - [x] Publier le dépôt principal et synchroniser le wiki après demande explicite.
-- [ ] Créer le tag final `v0.3.51-dev` seulement après demande explicite de tag.
+- [x] Publier le tag final annoté `v0.3.51-dev`.
 
-`r1` est un échec de périmètre : le menu debug est conservé, mais les icônes existantes `Town` et `ItemStash` ne constituent pas le résultat du jalon. En `r2`, les six silhouettes ont été approuvées puis validées à zoom étendu, mais leur branchement simultané comme texture rapprochée a été rejeté. La révision finale `r3` sépare les deux rendus, documente le cycle de vie réel des sites et est validée en jeu avec un `Player.log` accepté. La branche finale et le wiki séparé sont publiés ; le tag reste distinct faute de demande explicite.
+`r1` est un échec de périmètre : le menu debug est conservé, mais les icônes existantes `Town` et `ItemStash` ne constituent pas le résultat du jalon. En `r2`, les six silhouettes ont été approuvées puis validées à zoom étendu, mais leur branchement simultané comme texture rapprochée a été rejeté. La révision finale `r3` sépare les deux rendus, documente le cycle de vie réel des sites et est validée en jeu avec un `Player.log` accepté. La branche finale, le tag annoté `v0.3.51-dev` et le wiki séparé sont publiés.
 
 ## Dernier jalon validé et poussé — Icônes mondiales des factions GateRim (`0.3.50-dev`)
 
@@ -43,11 +68,11 @@
 - [x] Contrôler `Player.log`.
 - [x] Enregistrer le retour de test et finaliser la documentation.
 - [x] Publier la branche et synchroniser le wiki après demande explicite de commit/push.
-- [ ] Créer le tag final `v0.3.50-dev` seulement après demande explicite de tag.
+- [x] Publier le tag final annoté `v0.3.50-dev`.
 
 La révision locale `r2` est validée et poussée au commit `adb1eed` : les silhouettes simplifiées sont lisibles en jeu, les copies d'une même faction conservent la variation de teinte vanilla et la légère différence de couleur restante vient du rendu RimWorld plutôt que du mod.
 
-Ce jalon reste visuel et ciblé. Il ne modifie pas les colonies, les raids, les noms, les factions générées, les sites de mission ni les objets du mod. Le tag final `v0.3.50-dev` n'a pas été créé, faute de demande explicite de tag.
+Ce jalon reste visuel et ciblé. Il ne modifie pas les colonies, les raids, les noms, les factions générées, les sites de mission ni les objets du mod. Le tag final annoté `v0.3.50-dev` a été ajouté rétrospectivement par le mainteneur sur le commit validé `adb1eed`.
 
 ## Dernier jalon clôturé — Sélection mondiale Tok'ra optionnelle (`0.3.49-dev`)
 
@@ -1055,12 +1080,18 @@ Cette passe est volontairement différée jusqu'à la stabilisation des mécaniq
 
 Cette passe doit être réalisée lorsque les mécaniques concernées sont suffisamment stables pour arrêter des designs définitifs.
 
+Les textures actuelles des pawns, vêtements, objets et bâtiments servent
+principalement de placeholders et à réserver des chemins de texture stables.
+Ne pas lancer de jalons isolés de finition sur ces assets : leur remplacement,
+y compris l'apparence distinctive de l'officier Jaffa, doit rester groupé dans
+la future passe complète afin de conserver une direction artistique cohérente.
+
 - [ ] Auditer les objets temporaires, dispositifs, modules, marqueurs et bâtiments qui utilisent encore des textures provisoires, génériques ou trompeuses.
 - [ ] Remplacer le visuel du dispositif d'observation portable, actuellement proche d'un courrier et peu lisible sur la carte.
 - [ ] Vérifier le module de renseignements Tok'ra et les autres objets d'opération afin que leur silhouette indique immédiatement leur fonction.
 - [ ] Vérifier les marqueurs et sites temporaires afin d'éviter d'ajouter des gizmos de repérage lorsque le vrai problème est la lisibilité visuelle.
-- [ ] Auditer les icônes de carte mondiale des missions et attribuer des visuels variés et thématiques plutôt qu'une même icône générique répétée.
-- [ ] Remplacer les maisons vanilla des colonies par des icônes mondiales propres à chaque faction visible GateRim SG-1, avec des silhouettes immédiatement distinctes pour les Jaffa libres, Goa'uld, Tau'ri / SGC et les futures factions Asgard, Nox, Unas ou autres ; ne pas dépendre uniquement de nuances de couleur subtiles.
+- [x] Auditer les icônes de carte mondiale des missions et attribuer des visuels variés et thématiques plutôt qu'une même icône générique répétée (`0.3.51-dev`).
+- [x] Remplacer les maisons vanilla des colonies par des icônes mondiales propres à chaque faction visible GateRim SG-1, avec des silhouettes immédiatement distinctes pour les Jaffa libres, Goa'uld et Tau'ri / SGC, tout en conservant l'icône Tok'ra déjà validée (`0.3.50-dev`) ; étendre cette règle aux futures factions lors de leur création.
 - [ ] Donner à l'officier Jaffa de l'opération de capture une apparence distinctive qui le différencie immédiatement d'un Jaffa ordinaire, sans dépendre uniquement de sa marque frontale.
 - [ ] Harmoniser les objets Tok'ra, Goa'uld, Jaffa et SGC selon une identité visuelle cohérente.
 - [ ] Créer un visuel conceptuel propre pour chaque objet important une fois son design définitif validé.

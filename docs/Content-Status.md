@@ -1,6 +1,6 @@
 # État du contenu
 
-Jalon en validation : `0.3.49-dev - Add optional Tok'ra world-faction selection`. Les Tok'ra sont visibles et optionnels dans la liste des factions du monde ; les retirer affiche un avertissement jaune et désactive les contacts, incidents, questline et opérations Tok'ra pour cette partie.
+Dernier jalon publié : `0.3.52-dev - Add the Goa'uld faction caste summary`. L'infobulle de la faction Goa'uld complète les pourcentages de xénotypes vanilla avec les castes parasitaires acquises, sans modifier la génération.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -104,7 +104,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
-| Résumé UI personnalisé des castes Goa'uld | Prévu : compléter le résumé vanilla de xenotypes avec les états parasitaires acquis |
+| Résumé UI personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Histoires culturelles | Première base native : parcours SGC complémentaires, enfances Jaffa, carrières Jaffa de domaine et libres, histoires d'hôtes Goa'uld et d'agents Tok'ra générés | 0.2.4-dev |
 | Réactions sociales contextuelles | Première base : méfiance Jaffa libre envers les hôtes Goa'uld, hostilité Tok'ra envers les Goa'uld, prudence envers les Jaffa marqués et discipline locale près d'un Grand Maître | 0.2.5-dev |
 | Communicateur sécurisé Tok'ra | Bâtiment alimenté ouvrant un canal au palier fiable ; demandes opérées par un colon : préparation de mission discrète, diversion défensive, soutien médical, cache médicale, évaluation tactique active/interceptée et rapport d'état RP avec posture de confiance et libellés verrouillés simplifiés ; débriefing temporairement masqué | 0.2.26-dev à 0.2.37-dev |

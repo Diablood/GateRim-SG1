@@ -20,7 +20,11 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
   repository, review its diff, commit it and push it as part of publication
   unless explicitly instructed not to publish.
 - Do not commit ZIP archives stored at the repository root.
-- Do not push commits, branches, or tags unless explicitly requested.
+- Do not publish a milestone unless explicitly requested.
+- Once the maintainer asks to commit and push a validated milestone, that
+  publication authorization includes the branch commit, the annotated final
+  `v...-dev` tag and the separate wiki when `docs/wiki/` changed, unless the
+  maintainer explicitly excludes one of them.
 
 ## Context recovery
 
@@ -56,4 +60,5 @@ Do not rely on conversation memory for deferred work when it can be recorded in 
 - Report any remaining uncertainty.
 - Propose a short Git commit message:
   `version - description`
-- When relevant, propose an annotated tag prefixed with `v`.
+- Treat the annotated `v...-dev` tag as a mandatory part of publishing every
+  validated milestone, unless the maintainer explicitly asks to omit it.

@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.51-dev`
+> Dernière révision : `0.3.52-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -128,7 +128,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
 | Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
-| Résumé personnalisé des castes Goa'uld | Compléter le résumé vanilla des xenotypes avec les états parasitaires acquis |
+| Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
 | Réplicateurs | Prévu pour une phase ultérieure |
 | Intégration optionnelle Ideology | À étudier |

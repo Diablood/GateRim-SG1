@@ -101,7 +101,13 @@ Convention de commit :
 0.2.51-dev - add organic Tok'ra wounded agent care
 ```
 
-## 5. Créer et publier le tag final unique
+## 5. Créer et publier le tag final unique obligatoire
+
+Une demande de type « commit et push », « publier » ou équivalente portant sur
+un jalon validé autorise toute la séquence de publication : commit final, push
+de la branche, création et push du tag annoté, puis synchronisation et push du
+wiki lorsqu'il a changé. Ne demander une autorisation séparée pour le tag que
+si le mainteneur a explicitement exclu le tag ou limité la publication.
 
 Avant la première release publique :
 
@@ -256,6 +262,8 @@ nothing to commit, working tree clean
 - intégrer les tests durables dans `docs/TESTING.md` ;
 - mettre à jour cette procédure lorsqu’une amélioration durable est découverte ;
 - inscrire les travaux réellement décidés dans `docs/ROADMAP.md`, mais conserver les pistes encore exploratoires dans `docs/IDEAS_TO_REVISIT.md` sans les présenter comme des jalons futurs avant décision explicite ;
-- attendre la validation locale avant commit, tag, push et publication du wiki ;
+- attendre la validation locale et une demande de publication avant commit,
+  tag, push et publication du wiki ; cette demande couvre ensuite toute la
+  séquence sauf exclusion explicite ;
 - proposer un commit court au format `<version> - <description>` ;
-- proposer un tag Git annoté préfixé par `v`.
+- créer et pousser le tag Git annoté préfixé par `v` dans la même publication.

@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.51-dev`
+- Development version: `0.3.52-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -32,7 +32,10 @@ people, factions, technologies, biology and conflicts surrounding it.
   interface displays them, while a distinct human host name is preserved.
 - Dedicated tintable world-faction icons distinguish the Free Jaffa, Goa'uld
   System Lord domains, Tok'ra and SGC expedition while preserving RimWorld's
-  color variations when several copies of a faction are added.
+  color variations when several copies of a faction are added. The Goa'uld
+  faction tooltip also distinguishes its dominant Jaffa population, minority
+  host caste and System Lord leader without misrepresenting possession as a
+  germline xenotype.
 - Newly generated Free Jaffa factions and settlements use dedicated combinatorial
   liberation- and clan-themed grammars instead of a shared fixed faction name
   or vanilla outlander town names; French compound names use natural

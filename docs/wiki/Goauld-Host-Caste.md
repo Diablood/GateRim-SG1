@@ -101,17 +101,18 @@ Les raids directs naturels et contrôlés restent composés de Jaffa uniquement.
 Les Goa'uld ne sont pas encore envoyés comme combattants ordinaires dans les
 assauts.
 
-## Limite de l'écran de création du monde
+## Résumé de l'écran de création du monde
 
-Le résumé vanilla conserve provisoirement :
+Le résumé vanilla conserve correctement :
 
 ```text
 xénotype : Jaffa (100 %)
 ```
 
-Cette interface affiche les xenotypes, pas les états parasitaires acquis par
-un symbiote persistant. Les hôtes Goa'uld générés sont néanmoins réels dans les
-colonies et chez les dirigeants.
+Cette interface affiche les xénotypes, pas les états parasitaires acquis par
+un symbiote persistant. Depuis `0.3.52-dev`, une section GateRim complémentaire
+identifie donc les serviteurs Jaffa dominants, les hôtes Goa'uld minoritaires
+et l'hôte Grand Maître dirigeant, sans modifier les pourcentages de xénotypes.
 
 ## Étapes suivantes
 

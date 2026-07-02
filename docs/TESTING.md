@@ -1,5 +1,29 @@
 # Testing checklist
 
+## 0.3.52-dev - Goa'uld faction caste summary
+
+Validation locale terminée sur la révision finale `r1`. Le test ciblé valide
+l'infobulle Goa'uld, la non-régression Jaffa libre, la génération du monde et
+`Player.log`.
+
+Couverture durable :
+
+- charger `Core`, `Harmony`, `Biotech` et `GateRim SG-1` ;
+- ouvrir `Nouvelle colonie` > `Équipe SG isolée` > `Créer le monde` > `Factions` ;
+- vérifier que l'infobulle `Domaines des Grands Maîtres Goa'uld` conserve son texte et les chances de xénotypes vanilla ;
+- vérifier qu'elle ajoute une section `Castes Goa'uld` localisée décrivant les serviteurs Jaffa dominants, les hôtes Goa'uld minoritaires et l'hôte Grand Maître dirigeant ;
+- expliquer que la possession est acquise et que les hôtes ne doivent pas être ajoutés au `xenotypeSet` ;
+- vérifier que `Jaffa libres`, `Tok'ra`, `expédition du SGC` et les factions vanilla ne reçoivent pas cette section ;
+- ajouter plusieurs copies de la faction Goa'uld et vérifier un résumé identique sans duplication ;
+- générer un monde et préserver les comptes de factions, dirigeants, colonies, raids et castes publiés ;
+- inspecter `Player.log` pour les erreurs Harmony, C#, XML et de traduction.
+
+Limites durables :
+
+- ne jamais représenter la possession Goa'uld comme un xénotype germinal permanent ;
+- ne pas modifier les pondérations de `Settlement`, les `PawnKindDef` ou l'initialisation persistante des hôtes pour corriger un résumé d'interface ;
+- maintenir les traductions anglaise et française alignées.
+
 ## 0.3.51-dev - GateRim mission-site world icons
 
 Validation locale terminée sur la révision finale `r3`. La proposition `r1` utilisant uniquement les icônes vanilla a été rejetée ; `r2` a validé les six pictogrammes colorés au zoom étendu mais révélé leur rotation incorrecte au zoom rapproché ; `r3` conserve les pictogrammes dédiés à zoom étendu, restaure `GenericSite` à zoom rapproché et valide les règles de coexistence ainsi que `Player.log`.
