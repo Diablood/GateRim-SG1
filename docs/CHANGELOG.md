@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.55-dev - Add Goa'uld extraction reprisals
+
+- Start from published tag `v0.3.54-dev` on `feature/goauld-domain-extraction-reprisal`.
+- Treat a successful active Goa'uld extraction on a player home map as the first visible domain affront.
+- Preserve or safely backfill the generated symbiote's exact System Lord domain allegiance.
+- Send an immediate bilingual warning naming the offended domain, extracted symbiote and former host.
+- Persist one delayed reprisal per domain with the extraction-time vanilla threat-point snapshot.
+- Reuse `SG1_GoauldJaffaNaturalRaid` while honoring the explicitly offended faction and retaining on-foot edge arrival.
+- Prevent stacking with one pending reaction per domain and a 15-day cooldown after resolution.
+- Add exact debug controls, durable tests, technical documentation and synchronized wiki drafts.
+- Validate final revision `r1`: warning, persistence, domain-aligned raid, edge arrival, cooldown and `Player.log` are accepted.
+- Publish branch `feature/goauld-domain-extraction-reprisal`, annotated tag `v0.3.55-dev` and the synchronized wiki.
+
 ## 0.3.54-dev - Enable natural Goa'uld assault doctrines
 
 - Start from published tag `v0.3.53-dev` on `feature/goauld-natural-assault-doctrines`.

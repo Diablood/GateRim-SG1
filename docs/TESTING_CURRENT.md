@@ -1,3 +1,69 @@
+# Validation terminée - 0.3.55-dev
+
+Jalon : `0.3.55-dev - Add Goa'uld extraction reprisals`
+
+Branche : `feature/goauld-domain-extraction-reprisal`
+
+Base : `v0.3.54-dev` (`1b1afbe`)
+
+Version de DLL attendue : `0.3.55.0`
+
+Révision locale : `r1`
+
+Statut : révision finale `r1` validée ; branche, tag annoté `v0.3.55-dev` et
+wiki publiés.
+
+Charger dans cet ordre :
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+## Test principal r1
+
+Sur une carte de colonie joueur, ouvrir exactement :
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+1. Cliquer sur `Reset extraction reprisals`.
+2. Cliquer sur `Schedule extraction reprisal` et vérifier la lettre immédiate
+   `Représailles d'un domaine Goa'uld`. Elle doit nommer le domaine et expliquer
+   que l'extraction a provoqué sa mobilisation.
+3. Cliquer sur `Show extraction reprisal state` et vérifier une réaction en
+   attente sur la carte courante avec un nombre de points supérieur à zéro.
+4. Sauvegarder, recharger et rouvrir ce rapport : domaine, carte et points
+   doivent être conservés.
+5. Cliquer sur `Trigger pending reprisal now` et vérifier qu'un raid
+   Goa'uld/Jaffa du domaine annoncé arrive à pied depuis un bord de carte.
+6. Rouvrir le rapport et vérifier un refroidissement, sans réaction encore en
+   attente. Contrôler `Player.log` sans nouvelle erreur C#, XML, Scribe, faction
+   ou raid.
+
+Résultat attendu : une extraction annoncée produit une seule conséquence
+persistante attribuée au bon domaine, sans nouveau catalogue de missions.
+
+Résultat : validé par le mainteneur. La lettre, l'état persistant après
+sauvegarde/rechargement, le raid du domaine, l'arrivée à pied, le
+refroidissement et `Player.log` sont acceptés.
+
+## Régressions optionnelles
+
+- Programmer deux fois avant le raid : la seconde commande doit être refusée.
+- Reprogrammer après le raid : la commande doit rester refusée pendant le
+  refroidissement de 15 jours.
+- Sur un prisonnier avec un hôte Goa'uld actif, terminer l'opération Santé
+  `extraire le symbiote Goa'uld actif` et vérifier le même avertissement sans
+  utiliser `Schedule extraction reprisal`.
+- Avec deux factions Goa'uld, utiliser un hôte du second domaine et vérifier
+  que la lettre et les assaillants conservent cette faction exacte.
+
+---
+
 # Validation terminée - 0.3.54-dev
 
 Jalon : `0.3.54-dev - Enable natural Goa'uld assault doctrines`

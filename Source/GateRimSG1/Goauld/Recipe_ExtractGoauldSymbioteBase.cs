@@ -164,6 +164,8 @@ namespace GateRimSG1.Goauld
                 pawn,
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
+
+            NotifySuccessfulExtraction(pawn, transferredData);
         }
 
         protected virtual bool CanExtractFromHost(
@@ -171,6 +173,12 @@ namespace GateRimSG1.Goauld
             GoauldSymbioteData symbioteData)
         {
             return symbioteData != null;
+        }
+
+        protected virtual void NotifySuccessfulExtraction(
+            Pawn formerHost,
+            GoauldSymbioteData symbioteData)
+        {
         }
 
         private Hediff FindTargetHostState(Pawn pawn)

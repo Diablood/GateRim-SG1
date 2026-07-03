@@ -41,6 +41,25 @@ namespace GateRimSG1.Goauld
             return createdFaction;
         }
 
+        public static Faction ResolveFaction(
+            Faction preferredFaction,
+            string purpose)
+        {
+            if (IsSystemLordFaction(preferredFaction))
+            {
+                RefreshAttackTargetCaches(preferredFaction);
+                return preferredFaction;
+            }
+
+            return GetOrCreateFaction(purpose);
+        }
+
+        public static bool IsSystemLordFaction(Faction faction)
+        {
+            return faction != null
+                && faction.def == GR_DefOf.SG1_GoauldSystemLordPrototype;
+        }
+
         private static void RefreshAttackTargetCaches(Faction goauldFaction)
         {
             if (goauldFaction == null

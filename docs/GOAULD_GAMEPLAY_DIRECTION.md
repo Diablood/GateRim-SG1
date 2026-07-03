@@ -132,6 +132,11 @@ Coercive demands and ultimatums are allowed when they fit the situation. They
 must remain understandable player choices with visible consequences, not
 disguised Tok'ra-style mission offers.
 
+The first reaction slice is assigned to `0.3.55-dev`: successful extraction of
+an active Goa'uld provokes one announced, delayed raid from that exact domain.
+It validates attribution, persistence and anti-stacking before any tribute or
+ultimatum choice is designed.
+
 ### 4. Domain differentiation
 
 Give multiple Goa'uld domains meaningful behavioral distinctions only after a

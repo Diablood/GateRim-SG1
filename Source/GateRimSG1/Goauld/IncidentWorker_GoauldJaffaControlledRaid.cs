@@ -95,7 +95,8 @@ namespace GateRimSG1.Goauld
             }
 
             Faction goauldFaction =
-                GoauldSystemLordFactionUtility.GetOrCreateFaction(
+                GoauldSystemLordFactionUtility.ResolveFaction(
+                    parms.faction,
                     ControlledRaidPurpose);
 
             if (goauldFaction == null)

@@ -28,6 +28,12 @@ Depuis `0.3.41-dev`, la conversion active n'est plus irréversible. Le joueur do
 
 Une réussite restaure l'ancien colon et son nom d'origine sans recréer le pawn et extrait le même symbiote vivant. Le parasite est temporairement anesthésié, puis redevient dangereux à son réveil. L'extraction ne le tue pas et aucun confinement spécial n'est disponible : la salle doit rester sécurisée, puis la colonie doit éliminer le Goa'uld ou affronter son réveil. Un échec laisse le symbiote actif en place si le patient survit.
 
+Depuis `0.3.55-dev`, cette réussite constitue aussi un affront visible envers le
+domaine enregistré dans l'identité du symbiote. La colonie reçoit un
+avertissement immédiat, puis une seule force de représailles arrive entre un et
+trois jours plus tard. Une nouvelle extraction du même domaine ne peut pas
+empiler un second raid pendant l'attente ni durant les 15 jours suivants.
+
 Consulte [Chirurgies d'extraction Goa'uld](Extraction-Surgery).
 
 ## Exceptions

@@ -108,6 +108,27 @@ namespace GateRimSG1.Debugging
                         .ForceNaturalDestructionRaid,
                     70)));
             root.AddChild(MenuNode(
+                "Domain reactions...",
+                250,
+                ActionNode(
+                    "Show extraction reprisal state",
+                    GoauldDomainReprisalDebugActions.ShowState,
+                    400),
+                ActionNode(
+                    "Schedule extraction reprisal",
+                    GoauldDomainReprisalDebugActions
+                        .ScheduleExtractionReprisal,
+                    300),
+                ActionNode(
+                    "Trigger pending reprisal now",
+                    GoauldDomainReprisalDebugActions
+                        .TriggerPendingReprisal,
+                    200),
+                ActionNode(
+                    "Reset extraction reprisals",
+                    GoauldDomainReprisalDebugActions.Reset,
+                    100)));
+            root.AddChild(MenuNode(
                 "Free-symbiote incursion...",
                 200,
                 ActionNode(

@@ -36,5 +36,13 @@ namespace GateRimSG1.Goauld
                 && (pawn.Faction == Faction.OfPlayer
                     || pawn.IsPrisonerOfColony);
         }
+
+        protected override void NotifySuccessfulExtraction(
+            Pawn formerHost,
+            GoauldSymbioteData symbioteData)
+        {
+            GameComponent_GoauldDomainReprisalTracker
+                .NotifyActiveHostExtracted(formerHost, symbioteData);
+        }
     }
 }

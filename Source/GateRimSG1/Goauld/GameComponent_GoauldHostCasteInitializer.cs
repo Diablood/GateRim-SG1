@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -143,14 +144,20 @@ namespace GateRimSG1.Goauld
 
             string pawnThingId = pawn.ThingID;
 
-            if (string.IsNullOrEmpty(pawnThingId)
-                || initializedPawnThingIds.Contains(pawnThingId))
+            if (string.IsNullOrEmpty(pawnThingId))
             {
+                return;
+            }
+
+            if (initializedPawnThingIds.Contains(pawnThingId))
+            {
+                EnsureGeneratedHostAllegiance(pawn);
                 return;
             }
 
             if (HasAdultSymbioteState(pawn))
             {
+                EnsureGeneratedHostAllegiance(pawn);
                 HealGeneratedHostAilments(pawn);
                 initializedPawnThingIds.Add(pawnThingId);
 
@@ -182,6 +189,7 @@ namespace GateRimSG1.Goauld
             GoauldSymbioteData data = GoauldSymbioteData.CreateFree(
                 currentTick,
                 GoauldSymbioteOrigin.Goauld);
+            data.RecordAllegiance(pawn.Faction);
 
             if (pawn.kindDef == GR_DefOf.SG1_GoauldSystemLordHost
                 && !data.TryInitializeGeneratedSystemLordHost(
@@ -263,6 +271,25 @@ namespace GateRimSG1.Goauld
             }
 
             return false;
+        }
+
+        private static void EnsureGeneratedHostAllegiance(Pawn pawn)
+        {
+            if (!GoauldSystemLordFactionUtility.IsSystemLordFaction(
+                    pawn?.Faction))
+            {
+                return;
+            }
+
+            Hediff hostState = pawn.health.hediffSet.hediffs.FirstOrDefault(
+                hediff => hediff.def == GR_DefOf.SG1_GoauldHostSymbiote);
+            HediffComp_GoauldSymbiote comp =
+                FindPersistentSymbioteComp(hostState);
+
+            if (comp?.SymbioteData?.AllegianceFaction == null)
+            {
+                comp.SymbioteData.RecordAllegiance(pawn.Faction);
+            }
         }
 
         private static HediffComp_GoauldSymbiote FindPersistentSymbioteComp(

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldDomainReprisal_WarningLabel>Représailles d'un domaine Goa'uld</GR_GoauldDomainReprisal_WarningLabel>
+    <GR_GoauldDomainReprisal_WarningText>Une transmission hostile de {0} désigne l'extraction du Goa'uld {1} hors de {2} comme un affront ouvert envers le domaine.
+
+Des forces Jaffa se mobilisent contre la colonie. Leur puissance correspondra au niveau de menace de la colonie au moment où l'extraction a été accomplie.</GR_GoauldDomainReprisal_WarningText>
+    <GR_GoauldDomainReprisal_AttackFailed>Les représailles Goa'uld annoncées n'ont pas pu atteindre la colonie.</GR_GoauldDomainReprisal_AttackFailed>
+    <GR_GoauldDomainReprisal_DebugFormerHost>un hôte actif maîtrisé</GR_GoauldDomainReprisal_DebugFormerHost>
+    <GR_GoauldDomainReprisal_DebugSymbiote>un symbiote Goa'uld identifié</GR_GoauldDomainReprisal_DebugSymbiote>
+</LanguageData>

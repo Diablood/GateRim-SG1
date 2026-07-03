@@ -9,6 +9,11 @@ GateRim SG-1 now exposes two separate RimWorld medical operations:
 | `SG1_EmergencyExtractGoauldSymbiote` | `SG1_GoauldRecentImplantation` | remove the symbiote during the one-day intervention window |
 | `SG1_ExtractActiveGoauldSymbiote` | `SG1_GoauldHostSymbiote` | attempt removal after Goa'uld control is already established |
 
+Since `0.3.55-dev`, a successful active extraction on a player home map also
+notifies the symbiote's recorded System Lord domain. That domain announces one
+delayed reprisal using the extraction-time vanilla threat points. Emergency
+extraction during the recent phase does not trigger this reaction.
+
 Both recipes use normal bills, beds, doctors, medicine and RimWorld surgery outcomes. The exact persistent `GoauldSymbioteData` object moves back into the generated free symbiote pawn only after the surgery succeeds and a valid nearby spawn cell has been secured.
 
 ## Shared transaction flow

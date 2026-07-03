@@ -77,6 +77,7 @@
 - [Identité visuelle Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity)
 - [Raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid)
 - [Progression des menaces Goa'uld](Goauld-Threat-Progression)
+- [Représailles après extraction](Goauld-Domain-Extraction-Reprisal)
 - [Incursion de symbiotes Goa'uld libres](Goauld-Free-Symbiote-Incursion)
 - [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid)
 - [Raid d'enlèvement Jaffa contrôlé](Goauld-Jaffa-Controlled-Abduction-Raid)

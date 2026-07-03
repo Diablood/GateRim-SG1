@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldDomainReprisal_WarningLabel>Goa'uld domain reprisal</GR_GoauldDomainReprisal_WarningLabel>
+    <GR_GoauldDomainReprisal_WarningText>A hostile transmission from {0} names the extraction of the Goa'uld {1} from {2} as an open affront to the domain.
+
+Jaffa forces are mobilizing against the colony. Their strength will reflect the colony's current threat level when the extraction was completed.</GR_GoauldDomainReprisal_WarningText>
+    <GR_GoauldDomainReprisal_AttackFailed>The announced Goa'uld reprisal could not reach the colony.</GR_GoauldDomainReprisal_AttackFailed>
+    <GR_GoauldDomainReprisal_DebugFormerHost>a secured active host</GR_GoauldDomainReprisal_DebugFormerHost>
+    <GR_GoauldDomainReprisal_DebugSymbiote>an identified Goa'uld symbiote</GR_GoauldDomainReprisal_DebugSymbiote>
+</LanguageData>

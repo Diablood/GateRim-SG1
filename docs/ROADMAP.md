@@ -1,5 +1,33 @@
 # Roadmap
 
+## Dernier jalon validé et publié — Représailles après extraction Goa'uld (`0.3.55-dev`)
+
+- [x] Partir du tag validé `v0.3.54-dev` sur
+  `feature/goauld-domain-extraction-reprisal`.
+- [x] Utiliser une chirurgie d'extraction active réellement réussie comme
+  première cause visible de réaction d'un domaine.
+- [x] Conserver et migrer prudemment l'allégeance du symbiote à son domaine.
+- [x] Annoncer immédiatement la cause et le domaine offensé.
+- [x] Stocker le domaine, la carte, le délai et les points vanilla à travers
+  sauvegarde/rechargement.
+- [x] Réutiliser le raid naturel validé en préservant la faction offensée.
+- [x] Limiter chaque domaine à une représaille en attente puis 15 jours de
+  refroidissement.
+- [x] Ajouter un sous-menu debug exact pour état, programmation, déclenchement
+  et remise à zéro.
+- [x] Ajouter les textes anglais/français, la documentation et le wiki.
+- [x] Rebuild forcé `0.3.55.0` avec `0` erreur.
+- [x] Valider en jeu l'avertissement, la persistance, le raid, le domaine et le
+  refroidissement.
+- [x] Publier la branche, le tag annoté `v0.3.55-dev` et le wiki après
+  autorisation explicite.
+
+La révision finale `r1` est validée puis publiée avec la branche dédiée, le tag
+annoté `v0.3.55-dev` et le wiki séparé synchronisé. Cette première réaction
+n'ajoute encore ni tribut ni ultimatum à choix. Une
+exigence Goa'uld ne sera définie qu'après validation de la cause, de
+l'attribution au domaine et de la conséquence persistante.
+
 ## Dernier jalon validé et publié — Doctrines d'assaut Goa'uld naturelles (`0.3.54-dev`)
 
 - [x] Partir du tag validé `v0.3.53-dev` sur la branche dédiée

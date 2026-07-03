@@ -1,5 +1,28 @@
 # Testing checklist
 
+## 0.3.55-dev - Goa'uld extraction reprisals
+
+Validation finale terminée sur `r1`. Couverture durable :
+
+- notifier uniquement après une chirurgie active réellement réussie sur une
+  carte de colonie joueur ;
+- ignorer les extractions récentes d'urgence, les Tok'ra et les symbiotes sans
+  domaine Goa'uld identifiable ;
+- préserver l'allégeance du symbiote et le domaine offensé après extraction ;
+- afficher immédiatement la cause, le symbiote, l'ancien hôte et le domaine ;
+- sérialiser carte, faction, échéance et points de menace ;
+- vérifier la sauvegarde/recharge avant déclenchement ;
+- réutiliser `SG1_GoauldJaffaNaturalRaid` avec la faction explicitement fournie,
+  les doctrines contextuelles et `EdgeWalkIn` ;
+- empêcher deux réactions en attente du même domaine et appliquer 15 jours de
+  refroidissement après résolution ;
+- supprimer proprement la réaction si la carte ou le domaine disparaît ;
+- inspecter `Player.log` pour les erreurs C#, XML, Scribe, faction et raid.
+
+Limites durables : ne pas créer de mission Goa'uld, ne pas inventer de progrès
+caché et ne pas ajouter un tribut ou ultimatum avant validation de cette couche
+de réaction.
+
 ## 0.3.54-dev - Natural Goa'uld assault doctrines
 
 Validation finale terminée sur `r2`. `r1` a validé le rapport, le direct et
