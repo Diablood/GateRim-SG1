@@ -51,12 +51,13 @@ Without traces:
 
 - incoming damage is not absorbed;
 - the shield bubble and energy gizmo are hidden;
+- kinetic-blast and neural-attack commands are hidden;
 - recharge and reset progression are paused;
 - outgoing ranged weapons are not blocked.
 
-With traces, the complete validated `0.3.57-dev` shield behavior is unchanged.
-A device may retain stored charge while inactive; it resumes native behavior
-when an eligible wearer activates it.
+With traces, the shield and all implemented kara kesh modes are available. A
+device may retain stored charge while inactive; it resumes native behavior when
+an eligible wearer activates it.
 
 ## Save compatibility
 

@@ -15,4 +15,19 @@
     <GR_KaraKesh_KineticBlastCooldown>L'onde cinétique sera prête dans {0}.</GR_KaraKesh_KineticBlastCooldown>
     <GR_KaraKesh_KineticBlastUsed>{0} a frappé {1} avec l'onde cinétique du kara kesh.</GR_KaraKesh_KineticBlastUsed>
     <GR_KaraKesh_KineticBlastMote>Onde cinétique</GR_KaraKesh_KineticBlastMote>
+    <GR_KaraKesh_NeuralAttackLabel>Attaque neurale</GR_KaraKesh_NeuralAttackLabel>
+    <GR_KaraKesh_NeuralAttackDescription>Surcharge le système nerveux d'une cible humanoïde hostile située à moins de {0} cases. L'attaque consomme {1} point d'énergie du bouclier et provoque une douleur aiguë avec une conscience réduite pendant {2}. Recharge : {3}.</GR_KaraKesh_NeuralAttackDescription>
+    <GR_KaraKesh_NeuralAttackReadyInspect>Attaque neurale : prête</GR_KaraKesh_NeuralAttackReadyInspect>
+    <GR_KaraKesh_NeuralAttackResettingInspect>Attaque neurale : indisponible pendant la réinitialisation du bouclier</GR_KaraKesh_NeuralAttackResettingInspect>
+    <GR_KaraKesh_NeuralAttackLowEnergyInspect>Attaque neurale : énergie du bouclier insuffisante</GR_KaraKesh_NeuralAttackLowEnergyInspect>
+    <GR_KaraKesh_NeuralAttackCooldownInspect>Attaque neurale : recharge ({0})</GR_KaraKesh_NeuralAttackCooldownInspect>
+    <GR_KaraKesh_NeuralAttackInvalidTarget>Choisissez une cible humanoïde hostile et consciente, à portée et en ligne de vue.</GR_KaraKesh_NeuralAttackInvalidTarget>
+    <GR_KaraKesh_NeuralAttackUnavailable>L'attaque neurale du kara kesh n'est pas disponible ici.</GR_KaraKesh_NeuralAttackUnavailable>
+    <GR_KaraKesh_NeuralAttackNeedsNaquadah>Des traces biologiques persistantes de naquadah sont nécessaires pour activer l'attaque neurale.</GR_KaraKesh_NeuralAttackNeedsNaquadah>
+    <GR_KaraKesh_NeuralAttackIncapacitated>Un porteur neutralisé ne peut pas activer l'attaque neurale.</GR_KaraKesh_NeuralAttackIncapacitated>
+    <GR_KaraKesh_NeuralAttackShieldResetting>Le kara kesh se réinitialise après l'effondrement de son bouclier.</GR_KaraKesh_NeuralAttackShieldResetting>
+    <GR_KaraKesh_NeuralAttackLowEnergy>L'attaque neurale exige au moins {0} point d'énergie du bouclier.</GR_KaraKesh_NeuralAttackLowEnergy>
+    <GR_KaraKesh_NeuralAttackCooldown>L'attaque neurale sera prête dans {0}.</GR_KaraKesh_NeuralAttackCooldown>
+    <GR_KaraKesh_NeuralAttackUsed>{0} a submergé {1} avec l'attaque neurale du kara kesh.</GR_KaraKesh_NeuralAttackUsed>
+    <GR_KaraKesh_NeuralAttackMote>Douleur neurale</GR_KaraKesh_NeuralAttackMote>
 </LanguageData>

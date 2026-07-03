@@ -3690,3 +3690,150 @@ Execution category: **Continuous session**.
 ### End state
 
 Review `Player.log` for new XML, Def, Scribe, targeting, placement or C# errors.
+
+## Kara kesh neural attack (`0.3.60-dev`)
+
+Validation locale terminée sur la révision finale `r1` après rebuild forcé
+`0.3.60.0`. Le test a accepté le gizmo joueur, l'énergie partagée, l'effet de
+`600` ticks, l'absence de blessure/recul/paralysie forcée, l'utilisation
+prioritaire par l'IA hostile, la persistance après sauvegarde/rechargement et un
+`Player.log` propre. Aucun correctif fonctionnel `r2` n'est requis.
+
+### Purpose
+
+Verify that the kara kesh neural attack uses the established biological
+eligibility and shared shield-energy systems without becoming prolonged
+paralysis.
+
+### Setup
+
+Load exactly:
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+Use a player colonist and open ground with clear line of sight.
+
+### Procedure — player happy path
+
+Execution category: **Continuous session**.
+
+1. Open `Actions de débogage > GateRim SG-1 > Goa'uld... > Biological
+   naquadah traces...`.
+2. Run `Equip kara kesh on target` on the colonist, then `Apply persistent trace`
+   if required.
+3. Open `Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...`.
+4. Run `Prepare neural attack test state`, then `Inspect neural attack state`
+   on the colonist.
+5. Confirm the report shows a persistent trace, active shield, exactly `4.00`
+   energy and `cooldownTicks=0`.
+6. Run `Spawn hostile System Lord with kara kesh` and keep both pawns within
+   `8.9` cells with clear line of sight.
+7. Select the colonist, click `Neural attack` / `Attaque neurale`, then click
+   the hostile Grand Master.
+8. Inspect both pawns.
+
+### Expected result
+
+- The target receives a visible flash and floating neural-agony text.
+- The Health tab gains `kara kesh neural agony` / `douleur neurale du kara
+  kesh` for about `600` ticks.
+- The effect adds `0.45` pain and applies a `0.8` Consciousness factor.
+- No direct injury, knockback, stun or forced Moving-capacity lock is added.
+- Shield energy falls from `4.00` to approximately `2.25`.
+- Neural cooldown begins near `1200` ticks and prevents immediate reuse.
+- The kinetic command remains independently governed by its own energy and
+  cooldown.
+
+### End state
+
+Keep the same session for hostile-AI validation.
+
+### Procedure — hostile AI activation
+
+Execution category: **Continuous session**.
+
+1. Run `Clear neural agony` on the player target if the effect is still active.
+2. Run `Prepare neural attack test state` on the hostile System Lord.
+3. Keep the player colonist hostile, conscious and within `8.9` cells.
+4. Unpause for at least `120` ticks.
+5. Run `Inspect neural attack state` on the System Lord.
+
+### Expected result
+
+The System Lord prioritizes the neural attack within approximately one
+`60`-tick AI interval. Its energy decreases by about `1.75`, neural cooldown
+starts and the player pawn receives the same temporary effect.
+
+If no valid neural target exists, the existing kinetic-blast AI may still
+activate against another valid hostile pawn.
+
+### End state
+
+Create a save while the effect and cooldown are active.
+
+### Procedure — save and reload
+
+Execution category: **Checkpoint reload**.
+
+1. Save while one pawn has neural agony and the attacker has a non-zero neural
+   cooldown with less than full energy.
+2. Reload.
+3. Inspect the Health tab and run `Inspect neural attack state`.
+4. Wait for the temporary effect and cooldown to expire.
+
+### Expected result
+
+The temporary Hediff duration, shield energy and last-use cooldown survive
+reload. The effect disappears naturally and capacities return to their prior
+values. The command becomes ready after the serialized cooldown finishes.
+
+### Procedure — target refusals
+
+Execution category: **Continuous session**.
+
+Attempt to target:
+
+- a friendly pawn;
+- an animal;
+- a mechanoid;
+- a downed pawn;
+- a pawn outside `8.9` cells;
+- a pawn behind a wall.
+
+### Expected result
+
+Every invalid target is rejected without spending energy or starting cooldown.
+
+### Procedure — resource and shield refusals
+
+Execution category: **Continuous session**.
+
+1. Test a wearer without persistent naquadah traces.
+2. Reduce an eligible wearer's energy below `1.75`.
+3. Break the shield with `Apply EMP test hit`.
+4. Reinspect the command during reset.
+
+### Expected result
+
+The untraced wearer receives no active kara kesh commands. Low energy disables
+neural attack with an explicit reason. Shield reset prevents use until the
+native `1800`-tick recovery finishes.
+
+### Regression checks
+
+- kinetic blast still costs `1.25`, enters a `900`-tick cooldown and applies
+  damage, short stun and safe knockback;
+- ranged fire is absorbed while shield energy remains;
+- melee and heat bypass the field;
+- EMP still collapses the shield immediately;
+- ordinary ranged weapons remain blocked while the field is active;
+- no duplicate gizmos appear after save/reload.
+
+### End state
+
+Review `Player.log` for new XML, Def, Scribe, targeting, Hediff or C# errors.

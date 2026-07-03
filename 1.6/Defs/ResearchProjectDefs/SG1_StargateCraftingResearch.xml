@@ -37,7 +37,7 @@
     <ResearchProjectDef>
         <defName>SG1_KaraKeshResearch</defName>
         <label>kara kesh</label>
-        <description>Reverse-engineer the naquadah-powered hand devices carried by Goa'uld System Lords, including their personal shield and focused kinetic blast modes. Captured devices remain usable immediately, but reproducing one requires prior mastery of Jaffa armor construction.</description>
+        <description>Reverse-engineer the naquadah-powered hand devices carried by Goa'uld System Lords, including their personal shield, focused kinetic blast and neural attack modes. Captured devices remain usable immediately, but reproducing one requires prior mastery of Jaffa armor construction.</description>
         <baseCost>3000</baseCost>
         <techLevel>Spacer</techLevel>
         <prerequisites>

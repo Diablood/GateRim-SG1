@@ -3,7 +3,7 @@
     <ThingDef ParentName="ApparelBase">
         <defName>SG1_KaraKesh</defName>
         <label>kara kesh</label>
-        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. It combines a personal shield with a focused kinetic blast. The shield absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents ordinary ranged weapons from firing outward, while EMP forces a distinct audible and visible shutdown. The kinetic blast consumes the same energy reserve to strike, stagger and push back a nearby hostile target. Neural attack, torture and remote-control functions are not yet implemented.</description>
+        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. It combines a personal shield, a focused kinetic blast and a neural attack. The shield absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents ordinary ranged weapons from firing outward, while EMP forces a distinct audible and visible shutdown. Both offensive modes consume the same reserve: the kinetic pulse strikes and pushes nearby enemies, while the neural attack inflicts temporary agony and cognitive disruption on a hostile humanlike target. Prolonged paralysis, torture and remote-control functions are not yet implemented.</description>
         <thingClass>Apparel</thingClass>
         <graphicData>
             <texPath>Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh</texPath>
@@ -75,6 +75,12 @@
                 <kineticBlastStunTicks>120</kineticBlastStunTicks>
                 <kineticBlastKnockbackCells>2</kineticBlastKnockbackCells>
                 <kineticBlastAiCheckIntervalTicks>60</kineticBlastAiCheckIntervalTicks>
+                <neuralAttackRange>8.9</neuralAttackRange>
+                <neuralAttackEnergyCost>1.75</neuralAttackEnergyCost>
+                <neuralAttackCooldownTicks>1200</neuralAttackCooldownTicks>
+                <neuralAttackDurationTicks>600</neuralAttackDurationTicks>
+                <neuralAttackAiCheckIntervalTicks>60</neuralAttackAiCheckIntervalTicks>
+                <neuralAttackHediff>SG1_KaraKeshNeuralAgony</neuralAttackHediff>
             </li>
         </comps>
     </ThingDef>

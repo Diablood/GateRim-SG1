@@ -55,8 +55,9 @@ prérequis GateRim SG-1 : Armures Jaffa
 ```
 
 Débloque la fabrication locale du kara kesh porté naturellement par les Grands
-Maîtres Goa'uld. Son premier mode implémenté est le bouclier personnel. Les
-exemplaires récupérés restent utilisables avant la fin de cette recherche.
+Maîtres Goa'uld. Le même appareil fournit un bouclier personnel, une onde
+cinétique et une attaque neurale temporaire. Les exemplaires récupérés restent
+utilisables avant la fin de cette recherche.
 
 ## Équipement de terrain du SGC
 

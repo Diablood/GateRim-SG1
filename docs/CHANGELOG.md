@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.3.60-dev - Add kara kesh neural attack
+
+- Start from published tag `v0.3.59-dev` on
+  `feature/kara-kesh-neural-attack`.
+- Add a targeted neural-attack gizmo for biologically eligible kara kesh
+  wearers without introducing a second item or research project.
+- Limit targets to conscious hostile humanlike flesh pawns within `8.9` cells
+  and direct line of sight.
+- Consume `1.75` points from the shared four-point shield reserve, pause recharge
+  and enter a persistent `1200`-tick cooldown.
+- Add temporary `SG1_KaraKeshNeuralAgony` for `600` ticks with `0.45` pain and
+  a `0.8` Consciousness factor.
+- Deal no direct damage, knockback, stun or forced Moving-capacity lock so
+  prolonged paralysis remains a separate future function.
+- Let hostile non-player wearers prioritize the same neural attack on a
+  `60`-tick target check, then retain kinetic-blast fallback behavior.
+- Increase System Lord `combatPower` from `450` to `500` for the added control
+  while preserving the shared-energy tradeoff.
+- Persist neural cooldown through save/reload and refresh the temporary Hediff
+  duration when another valid wearer reapplies the effect.
+- Add English/French text, a stable Hediff Def, deterministic debug actions,
+  technical documentation, durable tests and updated player-wiki drafts.
+- Keep prolonged paralysis, downed-target torture, mental control, remote
+  commands, area effects and a dedicated gizmo icon outside this milestone.
+- Validate final local revision `r1` after a forced `0.3.60.0` rebuild,
+  including player targeting, shared shield energy, temporary neural agony,
+  hostile AI use, save/reload persistence and a clean `Player.log`.
+- Publish branch `feature/kara-kesh-neural-attack`, annotated tag
+  `v0.3.60-dev` and the synchronized wiki.
+
 ## 0.3.59-dev - Add kara kesh kinetic blast
 
 - Start from published tag `v0.3.58-dev` on

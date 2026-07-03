@@ -212,31 +212,55 @@ namespace GateRimSG1.Debugging
                 ActionNode(
                     "Spawn kara kesh",
                     GoauldSystemLordShieldDebugActions.SpawnPersonalShield,
-                    700),
+                    900),
                 ActionNode(
                     "Spawn hostile System Lord with kara kesh",
                     GoauldSystemLordShieldDebugActions.SpawnHostileSystemLord,
-                    600),
+                    850),
                 PawnToolNode(
                     "Inspect kinetic blast state",
                     GoauldSystemLordShieldDebugActions
                         .InspectKineticBlastState,
-                    500),
+                    800),
                 PawnToolNode(
                     "Prepare kinetic blast test state",
                     GoauldSystemLordShieldDebugActions
                         .PrepareKineticBlastTestState,
-                    475),
+                    775),
                 PawnToolNode(
                     "Use selected wearer's kinetic blast",
                     GoauldSystemLordShieldDebugActions
                         .UseSelectedWearerKineticBlast,
-                    450),
+                    750),
                 PawnToolNode(
                     "Reset kinetic blast cooldown",
                     GoauldSystemLordShieldDebugActions
                         .ResetKineticBlastCooldown,
-                    400),
+                    725),
+                PawnToolNode(
+                    "Inspect neural attack state",
+                    GoauldSystemLordShieldDebugActions
+                        .InspectNeuralAttackState,
+                    650),
+                PawnToolNode(
+                    "Prepare neural attack test state",
+                    GoauldSystemLordShieldDebugActions
+                        .PrepareNeuralAttackTestState,
+                    625),
+                PawnToolNode(
+                    "Use selected wearer's neural attack",
+                    GoauldSystemLordShieldDebugActions
+                        .UseSelectedWearerNeuralAttack,
+                    600),
+                PawnToolNode(
+                    "Reset neural attack cooldown",
+                    GoauldSystemLordShieldDebugActions
+                        .ResetNeuralAttackCooldown,
+                    575),
+                PawnToolNode(
+                    "Clear neural agony",
+                    GoauldSystemLordShieldDebugActions.ClearNeuralAgony,
+                    550),
                 PawnToolNode(
                     "Apply ranged test hit",
                     GoauldSystemLordShieldDebugActions.ApplyRangedTestHit,

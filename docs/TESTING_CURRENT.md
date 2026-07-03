@@ -1,19 +1,18 @@
-# Validation finale - 0.3.59-dev
+# Validation finale - 0.3.60-dev
 
-Jalon : `0.3.59-dev - Add kara kesh kinetic blast`
+Jalon : `0.3.60-dev - Add kara kesh neural attack`
 
-Branche : `feature/kara-kesh-kinetic-blast`
+Branche : `feature/kara-kesh-neural-attack`
 
-Base : `v0.3.58-dev`
+Base : `v0.3.59-dev`
 
-Version de DLL validée : `0.3.59.0`
+Version de DLL validée : `0.3.60.0`
 
-Révision locale : `r2`
+Révision locale : `r1`
 
-Statut : révision finale `r2` reconstruite et validée en jeu, puis branche,
-tag annoté `v0.3.59-dev` et wiki séparé publiés. `r1` avait échoué au build
-avec `CS0266`; `r2` corrige uniquement le type de la collection de pawns
-utilisée par l'IA.
+Statut : révision finale `r1` reconstruite et validée en jeu, puis branche,
+tag annoté `v0.3.60-dev` et wiki séparé publiés. Aucun correctif fonctionnel
+`r2` n'a été requis.
 
 Charger dans cet ordre :
 
@@ -33,8 +32,7 @@ ouvrir exactement :
 Actions de débogage > GateRim SG-1 > Goa'uld... > Biological naquadah traces...
 ```
 
-Lancer `Equip kara kesh on target`, puis `Apply persistent trace` si le colon ne
-porte pas déjà le marqueur biologique.
+Lancer `Equip kara kesh on target`, puis `Apply persistent trace` si nécessaire.
 
 Ouvrir ensuite :
 
@@ -42,59 +40,58 @@ Ouvrir ensuite :
 Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 ```
 
-Lancer `Prepare kinetic blast test state`, puis `Inspect kinetic blast state`
+Lancer `Prepare neural attack test state`, puis `Inspect neural attack state`
 sur le colon. Le rapport doit indiquer une trace présente, un bouclier actif,
-`4.00` points d'énergie et aucun cooldown.
+`4.00` points d'énergie et `cooldownTicks=0`.
 
 ## Test obligatoire court
 
-1. Lancer `Spawn hostile System Lord with kara kesh`, garder la partie en
-   pause, puis appliquer `Prepare kinetic blast test state` au Grand Maître.
-   Placer ou choisir le colon à moins de `10.9` cases du Grand Maître, avec une
-   ligne de vue dégagée.
-2. Sélectionner le colon, cliquer sur le gizmo `Onde cinétique` / `Kinetic
-   blast`, puis cibler le Grand Maître hostile.
-3. Vérifier un flash et un texte visibles, des dégâts contondants, un
-   étourdissement bref et un recul maximal de deux cases si l'espace est libre.
-   La cible ne doit jamais entrer dans un mur, une case occupée ou hors carte.
-4. Relancer `Inspect kinetic blast state` sur le colon. L'énergie doit avoir
-   diminué d'environ `1.25` et le cooldown doit être proche de `900` ticks. Une
-   nouvelle activation immédiate doit être refusée.
-5. Lancer `Reset kinetic blast cooldown`, placer un obstacle juste derrière la
-   cible, puis tirer de nouveau. Dégâts et étourdissement doivent s'appliquer,
-   mais le recul doit s'arrêter avant l'obstacle.
-6. Laisser un pawn joueur hostile au Grand Maître dans la portée, puis
-   dépauser. Le Grand Maître doit utiliser automatiquement l'onde dans un délai
-   d'environ `60` ticks, consommer sa propre énergie et entrer en cooldown.
-7. Sauvegarder pendant le cooldown, recharger et relancer `Inspect kinetic blast
-   state`. Le cooldown et l'énergie restante doivent persister.
-8. Contrôler `Player.log` sans nouvelle erreur XML, Def, Scribe ou C#.
+1. Lancer `Spawn hostile System Lord with kara kesh` et maintenir les deux
+   pawns à moins de `8,9` cases avec une ligne de vue dégagée.
+2. Sélectionner le colon, cliquer sur `Attaque neurale` / `Neural attack`, puis
+   cibler le Grand Maître hostile.
+3. Vérifier un flash et le texte flottant de douleur neurale. Dans l'onglet
+   Santé, la cible doit recevoir `douleur neurale du kara kesh` pendant environ
+   `600` ticks.
+4. Vérifier une douleur supplémentaire de `45 %` et une Conscience multipliée
+   par `80 %`, sans blessure directe, sans recul et sans capacité de Déplacement
+   forcée à zéro.
+5. Relancer `Inspect neural attack state` sur le colon. L'énergie doit être
+   proche de `2.25` et le cooldown proche de `1200` ticks. Une réutilisation
+   immédiate doit être refusée.
+6. Lancer `Clear neural agony` sur la cible, puis `Prepare neural attack test
+   state` sur le Grand Maître. Dépauser avec le colon hostile dans la portée.
+   Le Grand Maître doit utiliser automatiquement l'attaque neurale dans un
+   délai d'environ `60` ticks.
+7. Sauvegarder pendant l'effet et le cooldown, recharger puis confirmer que la
+   durée temporaire, l'énergie et le cooldown persistent.
+8. Contrôler `Player.log` sans nouvelle erreur XML, Def, Scribe, ciblage ou C#.
 
-Résultat attendu : le joueur et l'IA utilisent la même onde cinétique ; la
-capacité partage réellement l'énergie du bouclier, respecte sa condition
-biologique, son cooldown, la portée et la ligne de vue, et ne produit jamais de
-recul invalide.
+Résultat attendu : le joueur et l'IA utilisent la même attaque neurale ; elle
+partage réellement l'énergie du bouclier, affecte uniquement une cible
+humanoïde biologique hostile et consciente, applique une douleur temporaire
+sans implémenter la paralysie prolongée, puis expire proprement.
 
-Résultat : réussi. Le joueur et le Grand Maître hostile ont utilisé la même
-onde cinétique. La dépense de `1.25` énergie, le cooldown de `900` ticks, le
-recul sûr en terrain libre et devant un obstacle, l'utilisation autonome de
-l'IA et la persistance après sauvegarde/rechargement ont été validés. Aucun
-nouvel échec XML, Def, Scribe ou C# n'a été observé dans `Player.log`.
+Résultat : validé sur `r1`. Le gizmo joueur, l'effet temporaire, la
+consommation de `1.75` énergie, le cooldown de `1200` ticks, l'utilisation par
+l'IA hostile, la sauvegarde/recharge et `Player.log` sont acceptés. Aucun `r2`
+fonctionnel n'est requis.
 
 ## Tests optionnels
 
-- cibler un pawn derrière un mur : la cible doit être refusée ;
-- descendre l'énergie sous `1.25` : le gizmo doit être désactivé ;
-- utiliser `Apply EMP test hit` : l'onde doit rester indisponible durant les
+- cible alliée, animale, mécanoïde, à terre, hors portée ou derrière un mur :
+  ciblage refusé ;
+- énergie inférieure à `1.75` : gizmo désactivé ;
+- bouclier brisé par `Apply EMP test hit` : attaque indisponible pendant les
   `1800` ticks de réinitialisation ;
-- confirmer qu'un porteur non tracé n'obtient toujours ni bouclier actif ni
-  gizmo d'onde cinétique ;
-- confirmer les anciens contres du bouclier : mêlée et chaleur traversantes,
-  armes à distance ordinaires bloquées vers l'extérieur.
+- porteur sans traces persistantes : aucun bouclier ni gizmo offensif ;
+- l'onde cinétique existante fonctionne encore avec son coût de `1.25`, son
+  cooldown de `900` ticks et son recul sûr ;
+- l'effet neural expire naturellement et les capacités reviennent à leur état
+  antérieur.
 
 ## Limites connues
 
-L'onde est un impact direct sur un seul pawn. Elle ne crée pas de projectile,
-d'explosion de zone, d'attaque neurale, de paralysie prolongée ou d'effet sur
-les bâtiments. L'icône du gizmo réutilise l'icône d'attaque vanilla en attendant
-la passe visuelle globale.
+Cette révision n'ajoute ni paralysie prolongée, ni torture sur cible à terre,
+ni contrôle mental, ni télécommande, ni attaque de zone. L'icône reste
+provisoirement l'icône d'attaque générique.

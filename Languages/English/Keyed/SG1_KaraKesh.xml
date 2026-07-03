@@ -15,4 +15,19 @@
     <GR_KaraKesh_KineticBlastCooldown>The kinetic blast will be ready in {0}.</GR_KaraKesh_KineticBlastCooldown>
     <GR_KaraKesh_KineticBlastUsed>{0} struck {1} with a kara kesh kinetic blast.</GR_KaraKesh_KineticBlastUsed>
     <GR_KaraKesh_KineticBlastMote>Kinetic blast</GR_KaraKesh_KineticBlastMote>
+    <GR_KaraKesh_NeuralAttackLabel>Neural attack</GR_KaraKesh_NeuralAttackLabel>
+    <GR_KaraKesh_NeuralAttackDescription>Overload the nervous system of a hostile humanlike pawn within {0} cells. The attack consumes {1} shield energy and inflicts acute pain with reduced consciousness for {2}. Cooldown: {3}.</GR_KaraKesh_NeuralAttackDescription>
+    <GR_KaraKesh_NeuralAttackReadyInspect>Neural attack: ready</GR_KaraKesh_NeuralAttackReadyInspect>
+    <GR_KaraKesh_NeuralAttackResettingInspect>Neural attack: unavailable while the shield resets</GR_KaraKesh_NeuralAttackResettingInspect>
+    <GR_KaraKesh_NeuralAttackLowEnergyInspect>Neural attack: insufficient shield energy</GR_KaraKesh_NeuralAttackLowEnergyInspect>
+    <GR_KaraKesh_NeuralAttackCooldownInspect>Neural attack: recharging ({0})</GR_KaraKesh_NeuralAttackCooldownInspect>
+    <GR_KaraKesh_NeuralAttackInvalidTarget>Choose a conscious hostile humanlike pawn within range and line of sight.</GR_KaraKesh_NeuralAttackInvalidTarget>
+    <GR_KaraKesh_NeuralAttackUnavailable>The kara kesh neural attack is unavailable here.</GR_KaraKesh_NeuralAttackUnavailable>
+    <GR_KaraKesh_NeuralAttackNeedsNaquadah>Persistent biological naquadah traces are required to activate the neural attack.</GR_KaraKesh_NeuralAttackNeedsNaquadah>
+    <GR_KaraKesh_NeuralAttackIncapacitated>An incapacitated wearer cannot activate the neural attack.</GR_KaraKesh_NeuralAttackIncapacitated>
+    <GR_KaraKesh_NeuralAttackShieldResetting>The kara kesh is resetting after its shield collapsed.</GR_KaraKesh_NeuralAttackShieldResetting>
+    <GR_KaraKesh_NeuralAttackLowEnergy>The neural attack requires at least {0} shield energy.</GR_KaraKesh_NeuralAttackLowEnergy>
+    <GR_KaraKesh_NeuralAttackCooldown>The neural attack will be ready in {0}.</GR_KaraKesh_NeuralAttackCooldown>
+    <GR_KaraKesh_NeuralAttackUsed>{0} overwhelmed {1} with a kara kesh neural attack.</GR_KaraKesh_NeuralAttackUsed>
+    <GR_KaraKesh_NeuralAttackMote>Neural agony</GR_KaraKesh_NeuralAttackMote>
 </LanguageData>

@@ -1,65 +1,64 @@
 # Current project state
 
-Current milestone: `0.3.59-dev - Add kara kesh kinetic blast` -
-validated and published after local revision `r2`.
+Current milestone: `0.3.60-dev - Add kara kesh neural attack` -
+validated and published after local revision `r1`.
 
 ## Repository state
 
-- Starting tag: `v0.3.58-dev`.
-- Active branch: `feature/kara-kesh-kinetic-blast`.
-- Published branch: `feature/kara-kesh-kinetic-blast`.
-- Last published version: `0.3.59-dev`.
-- Last published tag: `v0.3.59-dev`.
-- Technical assembly version: `0.3.59.0`.
-- Final local revision: `r2`.
+- Starting tag: `v0.3.59-dev`.
+- Active branch: `feature/kara-kesh-neural-attack`.
+- Published branch: `feature/kara-kesh-neural-attack`.
+- Last published version: `0.3.60-dev`.
+- Last published tag: `v0.3.60-dev`.
+- Technical assembly version: `0.3.60.0`.
+- Final local revision: `r1`.
 - Publication status: validated, committed, tagged and published; the separate
   wiki is synchronized.
-- Next milestone: not selected. It must start from `v0.3.59-dev` on a dedicated
+- Next milestone: not selected. It must start from `v0.3.60-dev` on a dedicated
   branch.
 
 ## Current scope
 
-This milestone adds one offensive mode to the existing Goa'uld kara kesh without
-bundling its remaining lore functions.
+This milestone adds one additional kara kesh mode without bundling prolonged
+paralysis, torture or remote-control mechanics.
 
-A biologically eligible wearer receives a targeted `Kinetic blast` / `Onde
-cinétique` gizmo while wearing `SG1_KaraKesh`. The blast:
+A biologically eligible player wearer receives a targeted `Neural attack` /
+`Attaque neurale` gizmo. It:
 
-- targets a hostile pawn within `10.9` cells and line of sight;
-- consumes `1.25` points from the same four-point shield-energy reserve;
-- deals `12` blunt damage with `0.25` armor penetration;
-- stuns the target for `120` ticks;
-- pushes it up to two walkable, unoccupied cells directly away from the wearer;
-- enters a `900`-tick cooldown;
-- pauses shield recharge through the same post-impact delay used by absorbed
-  attacks.
+- targets a conscious hostile humanlike flesh pawn within `8.9` cells and line
+  of sight;
+- consumes `1.75` points from the same four-point shield-energy reserve;
+- pauses shield recharge through the existing `300`-tick post-use delay;
+- applies `SG1_KaraKeshNeuralAgony` for `600` ticks;
+- adds `0.45` pain and multiplies Consciousness by `0.8`;
+- deals no direct damage, causes no knockback and does not set Moving to zero;
+- enters a persistent `1200`-tick cooldown.
 
-The action bypasses the ordinary outgoing-fire restriction because it is an
-internal kara kesh mode, not a weapon verb. It remains unavailable while the
-shield is resetting, while energy is insufficient, when the wearer is downed
-or when persistent biological naquadah traces are absent.
+The temporary Hediff can incapacitate an already weakened target through normal
+RimWorld pain or consciousness rules, but it is not a guaranteed paralysis
+effect. Armor and the kara kesh projectile shield do not absorb it because it
+is a direct biological neural overload rather than `DamageInfo`.
 
-Hostile non-player wearers check for the closest valid hostile pawn every `60`
-ticks and may use the same implementation automatically. The added offensive
-power raises `SG1_GoauldSystemLordHost.combatPower` from `400` to `450`.
-
-Neural attack, prolonged paralysis, torture and remote-control functions remain
-outside this milestone.
+Hostile non-player wearers prioritize the neural attack against the nearest
+valid target on a `60`-tick check. If no neural target can be used, the existing
+kinetic-blast AI remains available. The added control raises
+`SG1_GoauldSystemLordHost.combatPower` from `450` to `500`.
 
 ## Files and architecture
 
-- `Comp_KaraKeshShield` owns player targeting, cooldown persistence, shared
-  energy consumption, damage, stun, safe knockback and hostile AI use.
-- `CompProperties_KaraKeshShield` exposes all balance values through the
-  existing apparel Def.
-- `GoauldSystemLordShieldDebugActions` exposes deterministic inspection,
-  full-charge preparation, selected-wearer use and cooldown reset actions.
-- `GateRimDebugActionMenu` groups all kara kesh tests under the visible
-  `Kara kesh...` submenu.
-- the existing research and item remain save-compatible; no new Def identity or
-  research project is introduced.
+- `Comp_KaraKeshShield` owns the player command, shared-energy cost, cooldown
+  persistence, inspection status and hostile AI choice.
+- `KaraKeshNeuralAttackUtility` centralizes biological target eligibility,
+  temporary Hediff application, duration refresh and debug removal.
+- `SG1_KaraKeshNeuralAgony` is a temporary visible Hediff with no direct damage
+  or movement lock.
+- `GR_DefOf.SG1_KaraKeshNeuralAgony` provides a stable debug and code reference.
+- `GoauldSystemLordShieldDebugActions` and `GateRimDebugActionMenu` expose the
+  exact deterministic tests.
+- the existing `SG1_KaraKesh` item and research remain save-compatible; no
+  second hand device or research project is introduced.
 
-## Final r2 validation
+## Mandatory r1 validation — completed
 
 Load exactly:
 
@@ -70,8 +69,7 @@ Biotech
 GateRim SG-1
 ```
 
-Use open ground with clear line of sight. Pause the game while preparing the
-player test.
+Use open ground with clear line of sight. Pause while preparing the player test.
 
 1. On a player colonist, open:
 
@@ -86,55 +84,59 @@ Actions de débogage > GateRim SG-1 > Goa'uld... > Biological naquadah traces...
 Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 ```
 
-   Run `Prepare kinetic blast test state`, then `Inspect kinetic blast state`
+   Run `Prepare neural attack test state`, then `Inspect neural attack state`
    on the colonist. Confirm `trace=True`, an active shield, `4.00` energy and
-   zero cooldown.
-3. Run `Spawn hostile System Lord with kara kesh`. Keep the game paused and run
-   `Prepare kinetic blast test state` on the hostile Grand Master. Select the
-   colonist and use the visible `Onde cinétique` / `Kinetic blast` gizmo on the
-   hostile Grand Master within `10.9` cells.
-4. Confirm a visible flash and text, `12` blunt damage subject to armor, a short
-   stun, and a push of up to two cells when unobstructed. The target must never
-   be moved into a wall, occupied cell or outside the map.
-5. Inspect the colonist again. Energy must have fallen by about `1.25`, and the
-   cooldown must be close to `900` ticks. The gizmo must reject immediate reuse.
-6. Run `Reset kinetic blast cooldown` on the colonist, then place an obstacle
-   directly behind the target and fire again. Damage and stun must occur while
-   knockback stops at the last valid cell.
-7. Let the hostile Grand Master stand within range and unpause. Within roughly
-   `60` ticks it must use the same kinetic blast naturally against a hostile
-   player pawn, consuming its own energy and entering cooldown.
-8. Save during an active cooldown, reload and inspect both wearers. Cooldown and
-   remaining shield energy must persist.
-9. Confirm a pawn without persistent naquadah traces still has no active shield
-   or kinetic-blast gizmo, then inspect `Player.log` for new XML, Def, Scribe or
-   C# errors.
+   `cooldownTicks=0`.
+3. Run `Spawn hostile System Lord with kara kesh`. Keep both pawns within `8.9`
+   cells with clear line of sight.
+4. Select the colonist, use the visible `Attaque neurale` / `Neural attack`
+   gizmo and target the hostile Grand Master.
+5. Confirm the visual flash and floating neural-agony text. The target must gain
+   `douleur neurale du kara kesh` / `kara kesh neural agony` for about `600`
+   ticks, with increased pain and reduced Consciousness, but no direct injury,
+   knockback or forced Moving capacity of zero.
+6. Run `Inspect neural attack state` on the colonist. Energy must be near `2.25`
+   and cooldown near `1200` ticks. Immediate reuse must be refused.
+7. Run `Clear neural agony` on the target, then `Prepare neural attack test
+   state` on the hostile Grand Master. Keep the player colonist hostile and
+   within `8.9` cells, then unpause. Within roughly `60` ticks the Grand Master
+   must use the same neural attack, consume its own energy and enter cooldown.
+8. Save while the target still has neural agony and the attacker is in cooldown.
+   Reload and confirm both the temporary Hediff duration and the attacker's
+   cooldown/energy persist.
+9. Inspect `Player.log` for new XML, Def, Scribe, targeting or C# errors.
 
-Validation result: passed. The targeted player action, shared-energy cost,
-cooldown refusal, safe knockback with and without an obstacle, hostile AI use,
-save/reload persistence and biological refusal all behaved as expected. No new
-XML, Def, Scribe or C# error was observed in `Player.log`.
+Validation result: successful on local revision `r1` after a forced `0.3.60.0`
+rebuild. The player gizmo, shared-energy cost, temporary neural-agony effect,
+hostile System Lord AI, save/reload persistence and `Player.log` were accepted.
+No gameplay correction or local revision `r2` is required.
 
 ## Optional regression checks
 
-- fire at a target behind a wall and confirm that it cannot be selected;
-- reduce shield energy below `1.25` and confirm the blast is disabled;
-- break the shield with `Apply EMP test hit` and confirm the blast remains
-  disabled throughout the `1800`-tick reset;
-- verify ordinary ranged weapons remain blocked while the shield is active;
-- verify melee and heat still bypass the shield;
-- test a map-edge target and a target directly diagonal from the wearer.
+- try to target a friendly pawn, animal, mechanoid, downed pawn, target behind a
+  wall or target outside `8.9` cells;
+- reduce energy below `1.75` and confirm the command is disabled;
+- break the shield with `Apply EMP test hit` and confirm neural attack remains
+  unavailable during the `1800`-tick reset;
+- verify a wearer without persistent naquadah traces receives neither the
+  shield nor either offensive gizmo;
+- recheck kinetic blast, ranged absorption, melee bypass, heat bypass and EMP
+  collapse after the new mode is added;
+- allow the neural-agony Hediff to expire naturally and confirm health
+  capacities return to their previous values.
 
 ## Remaining uncertainty
 
-The first `r1` rebuild failed only because `MapPawns.AllPawnsSpawned` exposes
-`IReadOnlyList<Pawn>` in RimWorld 1.6. Revision `r2` corrected that declaration,
-rebuilt successfully and passed the complete targeted test. No gameplay
-revision `r3` is required. The generic attack icon and placeholder kara kesh
-texture remain intentionally deferred to the global visual pass.
+The targeted implementation is validated without a required gameplay fix. The
+`1.75` energy cost, `600`-tick effect, `1200`-tick cooldown and
+`combatPower 500` remain balance values to watch during long-form play rather
+than blockers for this milestone.
+
+The generic attack icon and placeholder kara kesh texture remain deferred to
+the global visual pass.
 
 ## Next action
 
-Apply the final documentation lock, run the prepublication checks and wait for
-explicit publication authorization before committing, tagging, pushing the
-branch or synchronizing the wiki.
+Select the next small milestone from the durable roadmap. It must start from
+`v0.3.60-dev` on a dedicated branch; no `0.3.61-dev` scope is imposed by this
+closure.

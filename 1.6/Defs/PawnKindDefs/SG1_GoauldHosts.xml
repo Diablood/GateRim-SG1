@@ -63,7 +63,7 @@
                 </categoriesAdulthood>
             </li>
         </backstoryFiltersOverride>
-        <combatPower>450</combatPower>
+        <combatPower>500</combatPower>
         <isFighter>true</isFighter>
         <!--
         Temporary vanilla attire until dedicated System Lord clothing exists.

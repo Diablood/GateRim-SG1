@@ -272,15 +272,17 @@ Consulte [Armures Jaffa](Jaffa-Armor).
 
 ### Kara kesh des Grands Maîtres
 
-Depuis `0.3.57-dev`, chaque Grand Maître Goa'uld généré porte un kara kesh dont
-le premier mode fonctionnel est le bouclier personnel. Le champ absorbe les
-projectiles, mais la mêlée et la chaleur le traversent ; une attaque IEM le
-rompt immédiatement. Les hôtes ordinaires et les Jaffa n'en reçoivent pas.
+Depuis `0.3.57-dev`, chaque Grand Maître Goa'uld généré porte un kara kesh.
+Le gant combine désormais un bouclier personnel, une onde cinétique et une
+attaque neurale temporaire. Le champ absorbe les projectiles, mais la mêlée et
+la chaleur le traversent ; une attaque IEM le rompt immédiatement. Les deux
+modes offensifs partagent l'énergie du bouclier. Les hôtes ordinaires et les
+Jaffa n'en reçoivent pas.
 
 Les exemplaires capturés sont utilisables sans recherche. Leur fabrication au
-banc d'usinage exige toutefois la recherche `Kara kesh`,
-elle-même placée après `Armures Jaffa`. Le bouclier reste absent des marchands
-et de la génération aléatoire.
+banc d'usinage exige toutefois la recherche `Kara kesh`, elle-même placée après
+`Armures Jaffa`. L'objet reste absent des marchands et de la génération
+aléatoire.
 
 Consulte [Kara kesh des Grands Maîtres Goa'uld](Kara-Kesh).
 

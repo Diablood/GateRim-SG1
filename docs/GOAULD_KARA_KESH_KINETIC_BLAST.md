@@ -96,9 +96,10 @@ kara kesh, then activate the debug tool and click the hostile target.
 
 ## Deferred functions
 
-This milestone does not add neural pain, prolonged paralysis, torture,
+This milestone did not add neural pain, prolonged paralysis, torture,
 telekinesis against objects or buildings, remote commands, area damage or a
-separate research project. Those functions require independent gameplay slices.
+separate research project. Temporary neural agony is implemented separately in
+`0.3.60-dev`; the remaining functions still require independent gameplay slices.
 
 ## Validation and publication result
 

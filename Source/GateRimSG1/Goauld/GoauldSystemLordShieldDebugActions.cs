@@ -59,7 +59,7 @@ namespace GateRimSG1.Goauld
         {
             Map map = Find.CurrentMap;
             Faction faction = GoauldSystemLordFactionUtility.GetOrCreateFaction(
-                "System Lord kara kesh shield debug test");
+                "System Lord kara kesh debug test");
 
             if (map == null
                 || faction == null
@@ -120,18 +120,13 @@ namespace GateRimSG1.Goauld
             ApplyTestDamage(pawn, DamageDefOf.EMP, "EMP");
         }
 
-
         public static void InspectKineticBlastState(Pawn pawn)
         {
             Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
 
             if (comp == null)
             {
-                Messages.Message(
-                    pawn?.LabelShortCap + " is not wearing a kara kesh.",
-                    pawn,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
+                ReportMissingKaraKesh(pawn);
                 return;
             }
 
@@ -181,11 +176,7 @@ namespace GateRimSG1.Goauld
 
             if (comp == null)
             {
-                Messages.Message(
-                    pawn?.LabelShortCap + " is not wearing a kara kesh.",
-                    pawn,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
+                ReportMissingKaraKesh(pawn);
                 return;
             }
 
@@ -204,11 +195,7 @@ namespace GateRimSG1.Goauld
 
             if (comp == null)
             {
-                Messages.Message(
-                    pawn?.LabelShortCap + " is not wearing a kara kesh.",
-                    pawn,
-                    MessageTypeDefOf.RejectInput,
-                    historical: false);
+                ReportMissingKaraKesh(pawn);
                 return;
             }
 
@@ -221,11 +208,132 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
+        public static void InspectNeuralAttackState(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            Messages.Message(
+                "Kara kesh neural attack state for " + pawn.LabelShortCap
+                    + ": trace="
+                    + NaquadahTraceUtility.HasPersistentTrace(pawn)
+                    + ", shieldState=" + comp.ShieldState
+                    + ", energy=" + comp.Energy.ToString("0.00")
+                    + ", cooldownTicks="
+                    + comp.NeuralAttackCooldownRemainingTicks
+                    + ", neuralAgony="
+                    + KaraKeshNeuralAttackUtility.HasEffect(
+                        pawn,
+                        comp.NeuralAttackHediff)
+                    + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void UseSelectedWearerNeuralAttack(Pawn target)
+        {
+            Pawn wearer = Find.Selector?.SingleSelectedThing as Pawn;
+            Comp_KaraKeshShield comp = GetKaraKeshComp(wearer);
+
+            if (wearer == null || comp == null)
+            {
+                Messages.Message(
+                    "Select a pawn wearing a kara kesh before choosing the neural-attack target.",
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            if (!comp.TryUseNeuralAttack(target))
+            {
+                return;
+            }
+
+            Messages.Message(
+                wearer.LabelShortCap + " used the kara kesh neural attack on "
+                    + target.LabelShortCap + ".",
+                target,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void PrepareNeuralAttackTestState(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            comp.PrepareNeuralAttackForDebug();
+            Messages.Message(
+                "Prepared a fully charged kara kesh neural attack for "
+                    + pawn.LabelShortCap + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void ResetNeuralAttackCooldown(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            comp.ResetNeuralAttackCooldownForDebug();
+            Messages.Message(
+                "Reset the kara kesh neural attack cooldown for "
+                    + pawn.LabelShortCap + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void ClearNeuralAgony(Pawn pawn)
+        {
+            bool removed = KaraKeshNeuralAttackUtility.TryClear(
+                pawn,
+                GR_DefOf.SG1_KaraKeshNeuralAgony);
+
+            Messages.Message(
+                removed
+                    ? "Cleared kara kesh neural agony from "
+                        + pawn.LabelShortCap + "."
+                    : pawn?.LabelShortCap
+                        + " does not have kara kesh neural agony.",
+                pawn,
+                removed
+                    ? MessageTypeDefOf.NeutralEvent
+                    : MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
         private static Comp_KaraKeshShield GetKaraKeshComp(Pawn pawn)
         {
             Apparel karaKesh = pawn?.apparel?.WornApparel?.FirstOrDefault(
                 apparel => apparel?.def == GR_DefOf.SG1_KaraKesh);
             return karaKesh?.TryGetComp<Comp_KaraKeshShield>();
+        }
+
+        private static void ReportMissingKaraKesh(Pawn pawn)
+        {
+            Messages.Message(
+                pawn?.LabelShortCap + " is not wearing a kara kesh.",
+                pawn,
+                MessageTypeDefOf.RejectInput,
+                historical: false);
         }
 
         private static void ApplyTestDamage(

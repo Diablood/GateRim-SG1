@@ -4,7 +4,10 @@
 
 `0.3.57-dev - Add System Lord kara kesh shield`
 
-Offensive extension: `0.3.59-dev - Add kara kesh kinetic blast`
+Offensive extensions:
+
+- `0.3.59-dev - Add kara kesh kinetic blast`;
+- `0.3.60-dev - Add kara kesh neural attack`.
 
 ## Design contract
 
@@ -77,15 +80,16 @@ manufacture, matching the existing GateRim crafting-research convention.
 - `GoauldSystemLordShieldDebugActions` provides item, pawn and damage tests.
 - the current raster is a temporary placeholder for the global visual pass.
 
-`Comp_KaraKeshShield` remains a narrow `CompShield` subclass. Since
-`0.3.58-dev`, it delegates native shield behavior only for a biologically
-eligible wearer; no Harmony combat patch is used.
+`Comp_KaraKeshShield` remains a `CompShield` subclass and delegates native
+shield behavior only for a biologically eligible wearer. Offensive mode state
+and targeting live on the same apparel component, while neural Hediff handling
+is isolated in `KaraKeshNeuralAttackUtility`; no Harmony combat patch is used.
 
-The focused kinetic blast is implemented separately in `0.3.59-dev` and uses
-the same component and shield-energy reserve. Neural attack, prolonged
-paralysis, torture and remote-control functions remain deliberately deferred.
-They must still be added as separate gameplay slices rather than bundled into
-the shield or kinetic prototype.
+The focused kinetic blast is implemented separately in `0.3.59-dev`. The
+temporary neural attack is added in `0.3.60-dev`. Both use the same component
+and shield-energy reserve. Prolonged paralysis, torture and remote-control
+functions remain deliberately deferred and must still be added as separate
+gameplay slices.
 
 Since `0.3.58-dev`, activation requires the shared persistent biological
 naquadah marker. Active Goa'uld and Tok'ra hosts, Prim'ta-bearing Jaffa and
@@ -112,6 +116,26 @@ valid enemy on a `60`-tick check. The added control increases System Lord
 
 Detailed architecture and tests are recorded in
 `docs/GOAULD_KARA_KESH_KINETIC_BLAST.md`.
+
+## Neural attack extension
+
+Since `0.3.60-dev`, an eligible wearer can overload the nervous system of one
+conscious hostile humanlike flesh pawn within `8.9` cells and line of sight.
+The mode consumes `1.75` energy, pauses recharge and starts a `1200`-tick
+cooldown.
+
+The target receives `SG1_KaraKeshNeuralAgony` for `600` ticks, adding `0.45`
+pain and multiplying Consciousness by `0.8`. It causes no direct injury,
+knockback, stun or forced Moving-capacity lock. An already weakened target can
+still become incapacitated through RimWorld's normal pain and consciousness
+thresholds.
+
+Hostile Grand Masters prioritize this mode against a valid nearby humanlike
+target before falling back to their kinetic blast. The added control raises
+their `combatPower` from `450` to `500`.
+
+Detailed architecture and tests are recorded in
+`docs/GOAULD_KARA_KESH_NEURAL_ATTACK.md`.
 
 ## Final validation
 

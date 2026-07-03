@@ -23,9 +23,11 @@ Sans elles :
 
 - aucun tir n'est absorbé ;
 - aucun champ ni indicateur d'énergie n'apparaît ;
+- aucun gizmo d'onde cinétique ou d'attaque neurale n'est disponible ;
 - le porteur peut continuer à utiliser une arme à distance.
 
-Dès que les traces sont présentes, le fonctionnement normal du bouclier reprend.
+Dès que les traces sont présentes, le bouclier et ses modes offensifs reprennent
+leur fonctionnement normal.
 
 ## Sauvegardes existantes
 
@@ -37,5 +39,5 @@ personnages concernés reçoivent le marqueur manquant sans doublon.
 
 Cette première version ne simule ni quantité ni disparition progressive du
 naquadah. Elle ne traite pas encore la manipulation du marqueur par les machines
-génétiques de Biotech et n'ajoute aucune nouvelle fonction offensive au kara
+génétiques de Biotech et ne modifie pas directement l'équilibrage des fonctions offensives du kara
 kesh.

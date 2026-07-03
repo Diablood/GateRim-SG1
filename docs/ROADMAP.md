@@ -1,5 +1,44 @@
 # Roadmap
 
+## Jalon validé et publié — Attaque neurale du kara kesh (`0.3.60-dev`)
+
+- [x] Partir explicitement du tag publié `v0.3.59-dev` sur
+  `feature/kara-kesh-neural-attack`.
+- [x] Ajouter une seule fonction neurale temporaire sans regrouper paralysie
+  prolongée, torture, contrôle mental ou commandes distantes.
+- [x] Réutiliser les traces biologiques persistantes de naquadah comme unique
+  condition d'activation du porteur.
+- [x] Limiter le ciblage aux pawns humanoïdes biologiques, conscients, hostiles,
+  à moins de `8.9` cases et en ligne de vue.
+- [x] Partager la réserve du bouclier avec un coût de `1.75`, une recharge de
+  `1200` ticks et la pause de recharge existante.
+- [x] Ajouter `SG1_KaraKeshNeuralAgony` pendant `600` ticks avec `0.45` de
+  douleur et un facteur de Conscience de `0.8`, sans dégâts directs, recul ou
+  verrouillage de Déplacement.
+- [x] Ajouter le gizmo joueur et l'utilisation autonome prioritaire par les
+  Grands Maîtres hostiles.
+- [x] Porter le `combatPower` du Grand Maître de `450` à `500` pour refléter la
+  nouvelle capacité de contrôle.
+- [x] Ajouter les textes anglais/français, les diagnostics déterministes, la
+  documentation technique, les tests durables et le brouillon wiki.
+- [x] Exécuter un rebuild forcé `0.3.60.0` et les contrôles de cohérence.
+- [x] Valider en jeu le ciblage, l'énergie partagée, l'effet temporaire, les
+  refus biologiques, l'IA hostile, la sauvegarde/recharge et `Player.log` sur
+  la révision finale `r1`.
+- [x] Publier la branche, le tag annoté `v0.3.60-dev` et le wiki après validation
+  et autorisation explicite.
+
+La révision finale `r1` est validée et publiée après rebuild forcé et tests en
+jeu, avec la branche dédiée, le tag annoté `v0.3.60-dev` et le wiki séparé
+synchronisé. Aucun correctif fonctionnel supplémentaire n'est requis et aucun
+périmètre `0.3.61-dev` n'est imposé par cette clôture.
+
+La paralysie prolongée reste volontairement distincte : cette attaque peut
+incapaciter un pawn déjà affaibli par les règles normales de douleur ou de
+Conscience, mais elle ne fixe jamais directement sa capacité de Déplacement à
+zéro. Les modes de torture et de commande restent également hors périmètre afin
+que chaque fonction conserve un coût, un contre-jeu et des tests propres.
+
 ## Jalon validé et publié — Onde cinétique du kara kesh (`0.3.59-dev`)
 
 - [x] Partir explicitement du tag publié `v0.3.58-dev` sur
