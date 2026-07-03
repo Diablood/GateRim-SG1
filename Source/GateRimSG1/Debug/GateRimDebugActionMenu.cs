@@ -111,21 +111,41 @@ namespace GateRimSG1.Debugging
                 "Domain reactions...",
                 250,
                 ActionNode(
-                    "Show extraction reprisal state",
+                    "Show extraction reaction state",
                     GoauldDomainReprisalDebugActions.ShowState,
                     400),
                 ActionNode(
-                    "Schedule extraction reprisal",
+                    "Create extraction ultimatum",
                     GoauldDomainReprisalDebugActions
-                        .ScheduleExtractionReprisal,
+                        .CreateExtractionUltimatum,
                     300),
+                ActionNode(
+                    "Create fatal extraction reprisal",
+                    GoauldDomainReprisalDebugActions
+                        .CreateFatalExtractionReprisal,
+                    275),
+                ActionNode(
+                    "Defy current ultimatum",
+                    GoauldDomainReprisalDebugActions
+                        .DefyCurrentUltimatum,
+                    250),
+                ActionNode(
+                    "Expire current ultimatum",
+                    GoauldDomainReprisalDebugActions
+                        .ExpireCurrentUltimatum,
+                    225),
+                ActionNode(
+                    "Kill demanded symbiote",
+                    GoauldDomainReprisalDebugActions
+                        .KillDemandedSymbiote,
+                    210),
                 ActionNode(
                     "Trigger pending reprisal now",
                     GoauldDomainReprisalDebugActions
                         .TriggerPendingReprisal,
                     200),
                 ActionNode(
-                    "Reset extraction reprisals",
+                    "Reset extraction reactions",
                     GoauldDomainReprisalDebugActions.Reset,
                     100)));
             root.AddChild(MenuNode(

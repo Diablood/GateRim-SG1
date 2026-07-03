@@ -1,3 +1,162 @@
+# Validation terminée - 0.3.56-dev
+
+Jalon : `0.3.56-dev - Add Goa'uld extraction ultimatum`
+
+Branche : `feature/goauld-extraction-ultimatum`
+
+Base : `v0.3.55-dev` (`4870031`)
+
+Version de DLL attendue : `0.3.56.0`
+
+Révision locale : `r5`
+
+Statut : révision finale `r5` validée ; branche, tag annoté `v0.3.56-dev` et
+wiki publiés.
+
+Charger dans cet ordre :
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+## Test ciblé r5
+
+Réutiliser une sauvegarde avec un hôte de caste Goa'uld généré, capturé comme
+prisonnier de la colonie et prêt pour `extraire le symbiote Goa'uld actif`.
+
+1. Réussir l'opération et vérifier le message indiquant que l'ancien hôte
+   n'appartient plus au domaine Goa'uld nommé.
+2. Sélectionner l'ancien hôte : vérifier qu'il n'appartient plus aux `Domaines
+   des Grands Maîtres Goa'uld`, mais reste prisonnier de la colonie.
+3. Ouvrir l'onglet visible `Prisonnier` et vérifier les choix vanilla
+   `Recruter` et `Libérer`.
+4. Laisser passer au moins `120` ticks : aucun symbiote ne doit réapparaître.
+   Contrôler `Player.log` sans nouvelle erreur de faction, invité, prisonnier,
+   extraction ou C#.
+
+Résultat attendu : le corps humain libéré devient un prisonnier sans faction ;
+le joueur choisit ensuite normalement de le recruter ou de le libérer.
+
+Résultat : validé. L'ancien hôte quitte le domaine, reste prisonnier sans
+faction avec `Recruter` et `Libérer`, ne reçoit aucun nouveau symbiote et
+`Player.log` ne contient aucune nouvelle erreur liée.
+
+## Test ciblé r4 validé
+
+Sur une carte de colonie joueur, ouvrir exactement :
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+1. Cliquer sur `Reset extraction reactions`, puis `Create extraction
+   ultimatum` et `Voir plus tard`. Laisser passer au moins `3000` ticks et
+   vérifier que le symbiote demandé reste anesthésié sans attaquer.
+2. Cliquer sur `Kill demanded symbiote`. Vérifier que l'ultimatum disparaît
+   immédiatement et que l'avertissement explique sa mort tout en affichant le
+   délai réel avant l'arrivée des Jaffa.
+3. Cliquer sur `Show extraction reaction state`, vérifier un état `pending`,
+   puis `Trigger pending reprisal now` et contrôler le raid du domaine.
+4. Cliquer sur `Reset extraction reactions`, `Create extraction ultimatum`,
+   puis `Expire current ultimatum`. Vérifier que le texte d'expiration affiche
+   lui aussi le délai réel et que le rapport indique `pending`.
+5. Contrôler `Player.log` sans nouvelle erreur C#, XML, anesthésie, lettre,
+   pawn ou réaction.
+
+Résultat attendu : le symbiote reste inconscient pendant toute décision ; le
+tuer vaut défi immédiat ; les représailles différées ne donnent plus
+l'impression d'avoir disparu.
+
+Résultat : validé. Le symbiote reste anesthésié, sa mort déclenche immédiatement
+la réaction, le délai du raid est visible et `Player.log` est accepté.
+
+## Résultat étendu r3
+
+Le report de décision fonctionne. La mort du symbiote n'était traitée qu'à la
+fin du délai et l'avertissement ne précisait pas que le raid restait différé.
+`Player.log` confirme pourtant deux programmations correctes à `120255` et
+`68640` ticks. Ces deux ambiguïtés sont corrigées par `r4`.
+
+## Test ciblé r2 validé
+
+Réutiliser une sauvegarde avec un hôte Goa'uld généré, capturé et prêt pour
+l'opération Santé `extraire le symbiote Goa'uld actif`.
+
+Ouvrir exactement :
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+1. Cliquer sur `Reset extraction reactions`, puis sur `Show extraction
+   reaction state`. Vérifier qu'aucune réaction ni aucun refroidissement ne
+   reste du test debug précédent.
+2. Terminer l'opération `extraire le symbiote Goa'uld actif` sur le prisonnier.
+3. Vérifier l'apparition immédiate de `Ultimatum Goa'uld après extraction`, avec
+   le domaine, le symbiote extrait et l'ancien hôte réels.
+4. Laisser passer au moins `120` ticks, puis contrôler `Player.log`.
+
+Résultat attendu : aucun nouveau symbiote n'est recréé dans l'ancien hôte et
+aucune erreur `EnsureGeneratedHostAllegiance` ou `NullReferenceException` ne se
+répète. L'ultimatum apparaît car la remise à zéro a supprimé le cooldown du test
+debug.
+
+Résultat : validé. L'extraction réelle ouvre l'ultimatum après remise à zéro,
+ne recrée aucun symbiote et ne produit plus l'exception répétée du scanner
+d'hôtes dans `Player.log`.
+
+## Test principal r1 validé
+
+Sur une carte de colonie joueur, ouvrir exactement :
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+1. Cliquer sur `Reset extraction reactions`, puis `Create extraction
+   ultimatum`. Vérifier un symbiote Goa'uld hostile anesthésié et la lettre
+   `Ultimatum Goa'uld après extraction`, avec les boutons `Remettre le symbiote
+   extrait` et `Défier le domaine`.
+2. Cliquer sur `Show extraction reaction state`. Vérifier `ultimatum`,
+   l'identifiant du symbiote, la carte courante et des points supérieurs à
+   zéro. Créer une sauvegarde de test, la recharger, puis vérifier que le pion,
+   la lettre et le même état sont conservés.
+3. Dans la lettre, cliquer sur `Remettre le symbiote extrait`. Vérifier que ce
+   symbiote exact disparaît, qu'un message de remise apparaît et que le rapport
+   indique un refroidissement sans raid en attente.
+4. Recharger la sauvegarde de l'étape 2. Dans la lettre restaurée, cliquer sur
+   `Défier le domaine`. Vérifier la lettre de représailles puis un état
+   `pending` conservant les mêmes points.
+5. Cliquer sur `Trigger pending reprisal now`. Vérifier un raid Goa'uld/Jaffa
+   du domaine annoncé, arrivant à pied depuis un bord de carte. Vérifier ensuite
+   le refroidissement et contrôler `Player.log` sans nouvelle erreur C#, XML,
+   Scribe, faction, pawn, lettre ou raid.
+
+Résultat attendu : remettre le pion demandé empêche réellement l'attaque ; le
+refus conserve la conséquence différée et le domaine exact ; la décision non
+résolue survit à une sauvegarde/recharge.
+
+Résultat : validé. Remise, refus, sauvegarde/rechargement, raid du domaine,
+refroidissement et `Player.log` sont acceptés.
+
+## Régressions optionnelles
+
+- Après `Reset extraction reactions` et `Create extraction ultimatum`, cliquer
+  sur `Expire current ultimatum` : la lettre de choix doit disparaître et la
+  représaille doit passer en attente avec un texte d'expiration.
+- Créer une seconde réaction pendant l'ultimatum, le raid en attente ou le
+  refroidissement : la commande doit être refusée.
+- Rendre le symbiote indisponible sans le tuer : `Remettre le symbiote extrait`
+  doit être désactivé avec une raison visible. Le tuer doit au contraire fermer
+  immédiatement la lettre et programmer la représaille.
+- Terminer réellement l'opération Santé `extraire le symbiote Goa'uld actif`
+  sur un prisonnier préparé et vérifier que l'ultimatum suit le pion extrait.
+
+---
+
 # Validation terminée - 0.3.55-dev
 
 Jalon : `0.3.55-dev - Add Goa'uld extraction reprisals`

@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <GR_GoauldDomainReprisal_WarningLabel>Représailles d'un domaine Goa'uld</GR_GoauldDomainReprisal_WarningLabel>
-    <GR_GoauldDomainReprisal_WarningText>Une transmission hostile de {0} désigne l'extraction du Goa'uld {1} hors de {2} comme un affront ouvert envers le domaine.
+    <GR_GoauldDomainUltimatum_Label>Ultimatum Goa'uld après extraction</GR_GoauldDomainUltimatum_Label>
+    <GR_GoauldDomainUltimatum_Text>Une transmission de {0} condamne l'extraction du Goa'uld {1} hors de {2}.
 
-Des forces Jaffa se mobilisent contre la colonie. Leur puissance correspondra au niveau de menace de la colonie au moment où l'extraction a été accomplie.</GR_GoauldDomainReprisal_WarningText>
+Le domaine exige que le symbiote extrait lui soit remis sous un jour. Obtempérer évitera une attaque. Un refus ou le silence provoquera des représailles Jaffa dont la puissance correspondra au niveau de menace de la colonie au moment de l'extraction.</GR_GoauldDomainUltimatum_Text>
+    <GR_GoauldDomainUltimatum_SurrenderAction>Remettre le symbiote extrait</GR_GoauldDomainUltimatum_SurrenderAction>
+    <GR_GoauldDomainUltimatum_DefyAction>Défier le domaine</GR_GoauldDomainUltimatum_DefyAction>
+    <GR_GoauldDomainUltimatum_PostponeAction>Voir plus tard</GR_GoauldDomainUltimatum_PostponeAction>
+    <GR_GoauldDomainUltimatum_NoLongerActive>Cet ultimatum n'est plus actif.</GR_GoauldDomainUltimatum_NoLongerActive>
+    <GR_GoauldDomainUltimatum_SymbioteUnavailable>{0} n'est plus disponible sur la carte de la colonie.</GR_GoauldDomainUltimatum_SymbioteUnavailable>
+    <GR_GoauldDomainUltimatum_Surrendered>{0} a été remis à {1}. Le domaine annule ses représailles.</GR_GoauldDomainUltimatum_Surrendered>
+    <GR_GoauldDomainReprisal_WarningLabel>Représailles d'un domaine Goa'uld</GR_GoauldDomainReprisal_WarningLabel>
+    <GR_GoauldDomainReprisal_DefiedText>{0} prend acte du défi de la colonie concernant le Goa'uld {1} extrait hors de {2}.
+
+Des forces Jaffa se mobilisent contre la colonie. Leur arrivée est prévue dans {3}.</GR_GoauldDomainReprisal_DefiedText>
+    <GR_GoauldDomainReprisal_ExpiredText>{0} n'a reçu aucune réponse à son exigence concernant le Goa'uld {1} extrait hors de {2}.
+
+Des forces Jaffa se mobilisent contre la colonie. Leur arrivée est prévue dans {3}.</GR_GoauldDomainReprisal_ExpiredText>
+    <GR_GoauldDomainReprisal_SymbioteDestroyedText>{0} a appris que le Goa'uld {1}, extrait hors de {2}, a été tué alors que sa remise était exigée.
+
+Cette mise à mort est considérée comme un défi ouvert. Des forces Jaffa sont attendues dans {3}.</GR_GoauldDomainReprisal_SymbioteDestroyedText>
+    <GR_GoauldDomainFatalExtraction_Label>Extraction Goa'uld mortelle</GR_GoauldDomainFatalExtraction_Label>
+    <GR_GoauldDomainFatalExtraction_Text>{0} a appris que la tentative d'extraction du Goa'uld {1} hors de {2} s'est achevée par sa mort.
+
+Il ne reste aucun symbiote à remettre. Des forces Jaffa sont attendues dans {3}.</GR_GoauldDomainFatalExtraction_Text>
+    <GR_GoauldDomainFatalExtraction_DebugSymbiote>un Goa'uld tué pendant l'extraction</GR_GoauldDomainFatalExtraction_DebugSymbiote>
     <GR_GoauldDomainReprisal_AttackFailed>Les représailles Goa'uld annoncées n'ont pas pu atteindre la colonie.</GR_GoauldDomainReprisal_AttackFailed>
     <GR_GoauldDomainReprisal_DebugFormerHost>un hôte actif maîtrisé</GR_GoauldDomainReprisal_DebugFormerHost>
-    <GR_GoauldDomainReprisal_DebugSymbiote>un symbiote Goa'uld identifié</GR_GoauldDomainReprisal_DebugSymbiote>
 </LanguageData>

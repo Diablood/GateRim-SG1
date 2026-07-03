@@ -286,7 +286,12 @@ namespace GateRimSG1.Goauld
             HediffComp_GoauldSymbiote comp =
                 FindPersistentSymbioteComp(hostState);
 
-            if (comp?.SymbioteData?.AllegianceFaction == null)
+            if (comp?.SymbioteData == null)
+            {
+                return;
+            }
+
+            if (comp.SymbioteData.AllegianceFaction == null)
             {
                 comp.SymbioteData.RecordAllegiance(pawn.Faction);
             }

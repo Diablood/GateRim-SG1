@@ -1,5 +1,45 @@
 # Roadmap
 
+## Dernier jalon validé et publié — Ultimatum après extraction Goa'uld (`0.3.56-dev`)
+
+- [x] Partir du tag publié `v0.3.55-dev` sur
+  `feature/goauld-extraction-ultimatum`.
+- [x] Remplacer l'avertissement immédiat par un choix d'un jour attribué au
+  domaine exact.
+- [x] Suivre le symbiote extrait exact et permettre sa remise visible.
+- [x] Transformer refus et expiration en représaille différée existante.
+- [x] Préserver points, domaine, carte, anti-empilement, refroidissement et
+  sauvegardes `0.3.55-dev` déjà en attente.
+- [x] Ajouter une lettre à choix, les traductions et des commandes debug
+  explicites pour création, refus, expiration, déclenchement et remise à zéro.
+- [x] Ajouter la procédure `r1`, la documentation technique et le brouillon
+  wiki.
+- [x] Terminer les contrôles locaux et le rebuild forcé `0.3.56.0`.
+- [x] Valider le flux debug `r1` et diagnostiquer le raid antérieur comme sa
+  représaille différée, puis corriger le scanner d'hôte après extraction.
+- [x] Valider en `r2` l'extraction réelle et la disparition de l'exception du
+  scanner d'hôte.
+- [x] Ajouter en `r3` le report natif de la lettre et la conséquence directe
+  d'un échec d'extraction immédiatement mortel.
+- [x] Diagnostiquer les raids supposés absents : ils étaient programmés à
+  `120255` et `68640` ticks mais leur délai restait invisible.
+- [x] Maintenir en `r4` le symbiote sous anesthésie pendant l'ultimatum, traiter
+  sa mort comme un défi immédiat et afficher le délai réel de représailles.
+- [x] Valider en jeu les ajouts `r4` et leur `Player.log`.
+- [x] Détacher en `r5` du domaine l'ancien hôte de caste généré, tout en le
+  gardant prisonnier sans faction, recrutable ou libérable.
+- [x] Valider en jeu remise, refus, sauvegarde/rechargement, raid et
+  le statut de l'ancien hôte en `r5` dans `Player.log`.
+- [x] Publier branche, tag annoté `v0.3.56-dev` et wiki seulement après
+  autorisation explicite.
+
+Ce premier ultimatum exige l'objet même de l'affront plutôt qu'un tribut
+arbitraire. Il ne crée ni monnaie Goa'uld, ni goodwill, ni catalogue de
+missions. La révision finale `r5` est publiée avec la branche dédiée, le tag
+annoté `v0.3.56-dev` et le wiki séparé synchronisé. Aucun périmètre
+`0.3.57-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi
+après relecture du backlog durable et partir explicitement de ce tag.
+
 ## Dernier jalon validé et publié — Représailles après extraction Goa'uld (`0.3.55-dev`)
 
 - [x] Partir du tag validé `v0.3.54-dev` sur

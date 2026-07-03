@@ -30,6 +30,7 @@ Ticks restants avant chasse autonome : {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ActiveExtractionSurgery_InternalError>La chirurgie d'extraction d'un hôte actif a échoué, car le système persistant de transfert du symbiote est incomplet.</GR_ActiveExtractionSurgery_InternalError>
     <GR_ActiveExtractionSurgery_NoSpawnCell>La chirurgie d'extraction d'un hôte actif a échoué, car aucune case proche ne peut accueillir le symbiote extrait.</GR_ActiveExtractionSurgery_NoSpawnCell>
     <GR_ActiveExtractionSurgery_Success>{0} a survécu à l'extraction de l'hôte actif. Le symbiote Goa'uld {1} a été retiré vivant et reste temporairement anesthésié.</GR_ActiveExtractionSurgery_Success>
+    <GR_ActiveExtractionSurgery_FormerHostReleased>{0} n'est plus lié à {1}. L'ancien hôte reste un prisonnier sans faction et peut être recruté ou libéré.</GR_ActiveExtractionSurgery_FormerHostReleased>
     <GR_AutonomousHunt_CommandLabel>Chasse autonome</GR_AutonomousHunt_CommandLabel>
     <GR_AutonomousHunt_CommandDescription>Active ou désactive la poursuite autonome. Lorsqu'elle est active, ce symbiote Goa'uld libre recherche périodiquement l'humanoïde compatible accessible le plus proche et s'implante automatiquement au contact.</GR_AutonomousHunt_CommandDescription>
     <GR_AutonomousHunt_Enabled>active</GR_AutonomousHunt_Enabled>

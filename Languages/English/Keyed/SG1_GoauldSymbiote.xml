@@ -30,6 +30,7 @@ Autonomous cooldown ticks: {3}</GR_FreeGoauldSymbioteDataSummary>
     <GR_ActiveExtractionSurgery_InternalError>Active-host extraction failed because the persistent symbiote transfer system is incomplete.</GR_ActiveExtractionSurgery_InternalError>
     <GR_ActiveExtractionSurgery_NoSpawnCell>Active-host extraction failed because no nearby cell can receive the extracted symbiote.</GR_ActiveExtractionSurgery_NoSpawnCell>
     <GR_ActiveExtractionSurgery_Success>{0} has survived active-host extraction. Goa'uld symbiote {1} has been removed alive and is temporarily anesthetized.</GR_ActiveExtractionSurgery_Success>
+    <GR_ActiveExtractionSurgery_FormerHostReleased>{0} is no longer bound to {1}. The former host remains a factionless prisoner and may be recruited or released.</GR_ActiveExtractionSurgery_FormerHostReleased>
     <GR_AutonomousHunt_CommandLabel>Autonomous hunt</GR_AutonomousHunt_CommandLabel>
     <GR_AutonomousHunt_CommandDescription>Toggle autonomous pursuit. When enabled, this free Goa'uld symbiote periodically searches for the nearest reachable compatible humanoid and implants automatically on contact.</GR_AutonomousHunt_CommandDescription>
     <GR_AutonomousHunt_Enabled>enabled</GR_AutonomousHunt_Enabled>

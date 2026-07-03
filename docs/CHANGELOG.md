@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.3.56-dev - Add Goa'uld extraction ultimatum
+
+- Start from published tag `v0.3.55-dev` on `feature/goauld-extraction-ultimatum`.
+- Replace the immediate extraction-reprisal warning with a one-day choice from the offended Goa'uld domain.
+- Allow the colony to surrender the exact extracted symbiote and avert the raid.
+- Turn refusal or expiration into the delayed, domain-specific reprisal validated in `0.3.55-dev`.
+- Preserve the extraction-time vanilla threat-point snapshot, one-reaction limit, 15-day cooldown and existing pending-reprisal saves.
+- Add a persistent choice letter, English/French text and deterministic debug actions for surrender, refusal, expiration and attack.
+- Stop the generated-host caste scanner from dereferencing a removed symbiote after successful active extraction.
+- Add `Decide later` / `Voir plus tard` through RimWorld's native postpone-letter behavior while preserving the one-day timeout.
+- Turn an immediately fatal active-extraction failure into a direct domain reprisal without offering an impossible surrender.
+- Keep the demanded symbiote anesthetized while the ultimatum remains unresolved.
+- Treat destruction of that symbiote as immediate defiance and announce the exact remaining delay before the reprisal raid.
+- Detach an extracted generated Goa'uld caste host from the System Lord domain while preserving colony prisoner status, recruitment and release choices.
+- Preserve the existing displaced-faction restoration for previously possessed player pawns and leave unrelated pawn origins unchanged.
+- Validate final revision `r5`, including former-host faction release, prisoner choices and `Player.log`.
+- Publish branch `feature/goauld-extraction-ultimatum`, annotated tag `v0.3.56-dev` and the synchronized wiki.
+
 ## 0.3.55-dev - Add Goa'uld extraction reprisals
 
 - Start from published tag `v0.3.54-dev` on `feature/goauld-domain-extraction-reprisal`.

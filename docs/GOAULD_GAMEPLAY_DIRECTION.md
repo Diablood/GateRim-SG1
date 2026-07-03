@@ -137,6 +137,15 @@ an active Goa'uld provokes one announced, delayed raid from that exact domain.
 It validates attribution, persistence and anti-stacking before any tribute or
 ultimatum choice is designed.
 
+The first choice slice is assigned to `0.3.56-dev`. The offended domain gives
+the colony one day to surrender the exact extracted symbiote. Compliance
+removes that pawn and averts the attack; refusal or expiration schedules the
+validated delayed reprisal. This deliberately avoids an arbitrary silver
+tribute and keeps cause, demanded object and consequence visible together.
+The player may postpone viewing the choice without pausing its deadline. A
+failed extraction that immediately kills the host bypasses the choice and
+creates the reprisal directly because no living symbiote remains to surrender.
+
 ### 4. Domain differentiation
 
 Give multiple Goa'uld domains meaningful behavioral distinctions only after a

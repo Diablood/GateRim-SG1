@@ -1,37 +1,160 @@
 # Current project state
 
-Current milestone: `0.3.55-dev - Add Goa'uld extraction reprisals` - local
-revision `r1` validated and published.
+Current milestone: `0.3.56-dev - Add Goa'uld extraction ultimatum` - local
+revision `r5` validated and published.
 
 ## Repository state
 
-- Starting tag: `v0.3.54-dev`.
-- Starting commit: `1b1afbe`.
-- Active branch: `feature/goauld-domain-extraction-reprisal`.
-- Last published version: `0.3.55-dev` on `feature/goauld-domain-extraction-reprisal`.
-- Last published tag: `v0.3.55-dev`.
-- Target version: `0.3.55-dev`.
-- Technical assembly version: `0.3.55.0`.
-- Local revision: `r1`.
+- Starting tag: `v0.3.55-dev`.
+- Starting commit: `4870031`.
+- Active branch: `feature/goauld-extraction-ultimatum`.
+- Last published version: `0.3.56-dev` on `feature/goauld-extraction-ultimatum`.
+- Last published tag: `v0.3.56-dev`.
+- Target version: `0.3.56-dev`.
+- Technical assembly version: `0.3.56.0`.
+- Local revision: `r5`.
 - Publication status: final branch committed and pushed; annotated tag and separate wiki published.
 
 ## Current scope
 
-This milestone adds the first cause-driven Goa'uld domain reaction. A
-successful `extract active Goa'uld symbiote` surgery on a player home map
-notifies the domain stored in the symbiote's persistent identity.
+This milestone turns the validated extraction reaction into the first actual
+Goa'uld ultimatum. A successful `extract active Goa'uld symbiote` surgery on a
+player home map now opens a one-day choice from the exact domain stored in the
+symbiote's identity.
 
-The offended domain sends an immediate warning naming the extraction, then
-launches one delayed `SG1_GoauldJaffaNaturalRaid` after one to three days. The
-raid stores vanilla threat points when the extraction succeeds and preserves
-the exact domain faction instead of silently using the first Goa'uld faction.
+The colony may surrender the exact living symbiote created by the surgery. The
+pawn is removed as a visible handover, the raid is cancelled and the existing
+15-day domain cooldown begins. If the symbiote is no longer spawned on the
+target colony map, that choice is disabled with an explicit reason.
 
-Only one reprisal may be pending per domain. A 15-day cooldown starts after
-resolution, preventing repeated extractions from creating an uncontrolled raid
-stack. State, target map, domain and point snapshot survive save/reload. This
-slice adds no demand, tribute, goodwill change, new incident or mission slot.
+The third choice `Decide later` / `Voir plus tard` uses RimWorld's native
+postpone option: it closes the dialog, leaves the letter visible and does not
+pause its one-day timeout. Expiration remains equivalent to defiance.
 
-## Required r1 test
+While the choice remains unresolved, the extracted hostile symbiote is kept
+under monitored anesthesia. It cannot wake and force combat before the player
+has answered. Killing it is detected within `250` ticks, closes the ultimatum
+and counts as immediate defiance.
+
+Defying the domain or allowing the letter to expire schedules the
+`SG1_GoauldJaffaNaturalRaid` validated in `0.3.55-dev`, after one to three
+days. The domain, target map and vanilla threat points remain those captured at
+extraction time. One active ultimatum or reprisal is allowed per domain. Old
+`0.3.55-dev` saves containing a pending reprisal retain that state.
+
+The slice adds no silver tribute, goodwill transaction, new incident, mission
+slot or generic Goa'uld quest framework.
+
+An active-extraction surgery that fails but leaves the host alive still creates
+no domain reaction. If that failure immediately kills the active host, no
+symbiote exists to surrender, so the domain announces a direct delayed
+reprisal instead of opening an ultimatum.
+
+After successful extraction, a generated `SG1_GoauldHostCaste` or
+`SG1_GoauldSystemLordHost` prisoner no longer belongs to the System Lord
+domain. The same pawn remains a factionless colony prisoner and is explicitly
+recruitable or releasable. This does not affect a possessed player pawn, which
+still returns to its recorded displaced player faction.
+
+## Required r5 test
+
+Reuse a save with a generated Goa'uld caste host captured as a colony prisoner
+and ready for `extraire le symbiote Goa'uld actif`.
+
+1. Complete the surgery successfully and confirm the message stating that the
+   former host no longer belongs to the named System Lord domain.
+2. Select the former host. Confirm the faction is no longer `Domaines des
+   Grands Maîtres Goa'uld`, while the pawn remains a colony prisoner.
+3. Open the visible `Prisonnier` tab and confirm the normal `Recruter` and
+   `Libérer` choices are available.
+4. Let at least `120` ticks pass. Confirm no symbiote is recreated and inspect
+   `Player.log` for new faction, guest, prisoner, extraction or C# errors.
+
+Expected result: removing the Goa'uld liberates the generated human body from
+the domain without gifting the pawn to the player; recruitment or release
+remains a deliberate vanilla prisoner decision.
+
+Result: passed. The generated former host left the System Lord domain, remained
+a factionless colony prisoner with recruit/release choices, received no
+replacement symbiote and produced no new `Player.log` error.
+
+## Validated r4 test
+
+Open exactly:
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+1. Select `Reset extraction reactions`, then `Create extraction ultimatum` and
+   `Voir plus tard`. Let at least `3000` ticks pass and confirm the demanded
+   symbiote remains anesthetized rather than attacking.
+2. Select `Kill demanded symbiote`. Confirm the ultimatum closes immediately
+   and the reprisal warning says the demanded symbiote was killed and displays
+   the actual delay before arrival.
+3. Select `Show extraction reaction state`; confirm one pending reprisal, then
+   select `Trigger pending reprisal now` and confirm the domain raid.
+4. Select `Reset extraction reactions`, `Create extraction ultimatum`, then
+   `Expire current ultimatum`. Confirm the expiration warning also displays its
+   actual delay and the report shows a pending reprisal.
+5. Inspect `Player.log` for new C#, XML, anesthesia, letter, pawn or reaction
+   errors.
+
+Expected result: the demanded pawn stays safely unconscious while the choice
+is open; killing it immediately resolves the ultimatum as defiance; every
+scheduled attack announces that it remains delayed instead of appearing lost.
+
+Result: passed. Monitored anesthesia, immediate reaction to demanded-symbiote
+death, explicit delayed-raid timing, expiration and the resulting domain raid
+were accepted.
+
+## r3 finding
+
+Postponement and timeout behavior matched the intended choice flow. Extended
+testing killed the demanded pawn and then interpreted the delayed raid as
+missing. `Player.log` proves both attempts scheduled correctly, at `120255`
+and `68640` ticks. Revision `r4` keeps the pawn sedated, reacts to its death
+before timeout and exposes that delay in the warning.
+
+## Validated r2 test
+
+The main debug flow passed in `r1`. The extended real-surgery test found two
+distinct facts in `Player.log`:
+
+- the Jaffa raid that arrived during surgery was the previously defied debug
+  ultimatum, whose `5000`-tick reprisal resolved normally;
+- that raid started the expected 15-day domain cooldown, so the later real
+  extraction was correctly prevented from opening a second reaction;
+- after extraction, the generated-host caste scanner repeatedly dereferenced
+  the now-absent symbiote component. Revision `r2` adds the missing null guard
+  without recreating a symbiote.
+
+Reuse a save with a captured generated Goa'uld host ready for the Health-tab
+operation `extraire le symbiote Goa'uld actif`.
+
+Open exactly:
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+1. Select `Reset extraction reactions` before starting the surgery. Select
+   `Show extraction reaction state` and confirm no reaction or cooldown remains.
+2. Complete `extraire le symbiote Goa'uld actif` on the prepared prisoner.
+3. Confirm the letter `Ultimatum Goa'uld après extraction` appears immediately
+   and names the actual domain, extracted symbiote and former host.
+4. Let the game run for at least `120` ticks, then inspect `Player.log`.
+
+Expected result: the real surgery creates one ultimatum because the prior
+cooldown was reset; the former host receives no replacement symbiote; no
+`GameComponent_GoauldHostCasteInitializer.EnsureGeneratedHostAllegiance`
+exception or repeated `NullReferenceException` appears.
+
+Result: passed. The real extraction opened its ultimatum after reset, the
+former host received no replacement symbiote and the repeated initializer
+`NullReferenceException` disappeared from `Player.log`.
+
+## Validated r1 debug test
 
 Load `Core`, `Harmony`, `Biotech`, then `GateRim SG-1` on a player home map.
 
@@ -41,51 +164,74 @@ Open exactly:
 Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
 ```
 
-1. Select `Reset extraction reprisals`.
-2. Select `Schedule extraction reprisal`. Confirm the immediate letter
-   `Représailles d'un domaine Goa'uld`, naming the actual domain and explaining
-   that an extraction caused the mobilization.
-3. Select `Show extraction reprisal state`; confirm one pending reaction with
-   the current map and a non-zero point snapshot.
-4. Save, reload and open the same report; confirm the pending domain, map and
-   points remain present.
+1. Select `Reset extraction reactions`, then `Create extraction ultimatum`.
+   Confirm that one anesthetized hostile Goa'uld symbiote appears and the letter
+   `Ultimatum Goa'uld après extraction` offers exactly `Remettre le symbiote
+   extrait` and `Défier le domaine`.
+2. Select `Show extraction reaction state`; confirm an active ultimatum, the
+   symbiote identifier, current map and non-zero point snapshot. Save as a
+   dedicated test save, reload it and confirm that the same letter, pawn and
+   report remain present.
+3. In the letter, select `Remettre le symbiote extrait`. Confirm that the exact
+   symbiote disappears, a handover message appears and the report shows the
+   domain in cooldown with no pending raid.
+4. Reload the dedicated save made in step 2. In the restored letter, select
+   `Défier le domaine`. Confirm the reprisal letter and use `Show extraction
+   reaction state` to verify one pending raid with the preserved points.
 5. Select `Trigger pending reprisal now`; confirm a Goa'uld/Jaffa raid arrives
-   on foot from a map edge and belongs to the domain named in the warning.
-6. Open the report again and confirm that the domain is in cooldown rather than
-   still pending. Inspect `Player.log` for new C#, XML, Scribe, faction or raid
-   errors.
+   on foot from a map edge and belongs to the domain named in the ultimatum.
+   Confirm the report then shows cooldown and inspect `Player.log` for new C#,
+   XML, Scribe, faction, pawn, letter or raid errors.
 
-Expected result: the visible warning, persisted cause and delayed raid form one
-domain-specific consequence without creating a new mission or multiplying
-natural storyteller incidents.
+Expected result: surrender visibly consumes the demanded pawn and prevents the
+attack; defiance preserves the existing delayed consequence from the exact
+domain; save/reload preserves the unresolved player choice.
 
-Result: passed and accepted by the maintainer. The warning, pending-state
-report, save/reload persistence, domain-aligned edge-arrival raid, cooldown and
-`Player.log` are validated.
+Result: the debug surrender, refusal, persistence, raid, cooldown and extended
+real-host setup were accepted. Later revisions retain this validated flow while
+covering the real-surgery and demanded-pawn lifecycle findings above.
 
 ## Optional regressions
 
-- While a reprisal is pending, select `Schedule extraction reprisal` again and
-  confirm a refusal instead of a second queued raid.
-- After the raid, confirm the same refusal during the 15-day cooldown.
+- Select `Reset extraction reactions`, create another ultimatum, then select
+  `Expire current ultimatum`; confirm the choice letter closes and the expiry
+  text schedules the same pending reprisal.
+- While an ultimatum or reprisal is pending, select `Create extraction
+  ultimatum` again and confirm a refusal instead of a second reaction.
+- After surrender or raid resolution, confirm the same refusal during the
+  15-day cooldown.
+- Make the demanded symbiote unavailable without killing it and confirm that
+  surrender is disabled with a visible explanation. Killing it must instead
+  close the choice and schedule the reprisal immediately.
 - On a prepared prisoner carrying `SG1_GoauldHostSymbiote`, complete the Health
   tab operation `extraire le symbiote Goa'uld actif` and confirm it creates the
-  same warning without debug scheduling.
+  same ultimatum for the actually extracted pawn without debug scheduling.
 - With two configured Goa'uld factions, extract a host aligned to the second
-  domain and confirm the warning and raiders retain that exact faction.
+  domain and confirm the ultimatum and raiders retain that exact faction.
 
 ## Local validation
 
-- `git diff --check`, XML parsing and project consistency check: passed.
-- Forced C# rebuild `0.3.55.0`: passed with `0` errors; NuGet vulnerability
+- Initial forced C# rebuild found one missing `RimWorld` namespace import in the
+  new choice letter; corrected locally.
+- Forced C# rebuild before metadata update: passed with `0` errors; NuGet
+  vulnerability lookup emitted the existing offline `NU1900` warning.
+- Final forced rebuild `0.3.56.0`: passed with `0` errors; NuGet vulnerability
   lookup emitted the existing offline `NU1900` warning.
-- In-game `r1`: warning, persistence, raid, cooldown and `Player.log` passed.
+- All `358` XML files parse, EN/FR reaction keys align, `git diff --check` and
+  the project consistency check pass.
+- In-game `r1`: main debug flow passed; extended real extraction exposed the
+  generated-host scanner null dereference corrected in `r2`.
+- In-game `r2`: targeted real-extraction retest passed.
+- In-game `r3`: choice flow observed; demanded-pawn lifecycle and delayed-raid
+  clarity required `r4`.
+- In-game `r4`: targeted anesthesia, pawn-death and delay-text test passed.
+- In-game `r5`: former-host faction and prisoner-choice validation passed.
 
 ## Previous published milestone record
 
-The previous published milestone is `0.3.54-dev - Enable natural Goa'uld
-assault doctrines`, validated as revision `r2` and published from
-`feature/goauld-natural-assault-doctrines`. The remainder of this document retains
+The previous published milestone is `0.3.55-dev - Add Goa'uld extraction
+reprisals`, validated as revision `r1` and published from
+`feature/goauld-domain-extraction-reprisal`. The remainder of this document retains
 the validated `0.3.51-dev` mission-site icon record as earlier history.
 
 ### Mission-site icon scope

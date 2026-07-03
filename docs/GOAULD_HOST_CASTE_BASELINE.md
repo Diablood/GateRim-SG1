@@ -69,6 +69,15 @@ For each newly observed host, it adds one active host Hediff and one persistent
 adult symbiote identity. The pawn ThingID is recorded so removing the symbiote
 later cannot create an artificial replacement.
 
+After a supported active extraction, subsequent scans treat the absent
+symbiote component as the expected terminal state. They neither restore it nor
+attempt to update its former domain allegiance.
+
+If that generated host was captured by the player, successful extraction also
+removes its System Lord faction membership. The human remains a factionless
+colony prisoner, not a free colonist, and follows vanilla recruitment or
+release choices.
+
 ## Faction integration
 
 The faction leader kind becomes:

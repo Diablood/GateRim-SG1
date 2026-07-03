@@ -16,17 +16,65 @@ namespace GateRimSG1.Goauld
                         ?? "Goa'uld domain reprisal tracker is unavailable."));
         }
 
-        public static void ScheduleExtractionReprisal()
+        public static void CreateExtractionUltimatum()
         {
             Map map = Find.CurrentMap;
             GameComponent_GoauldDomainReprisalTracker tracker =
                 GameComponent_GoauldDomainReprisalTracker.Current;
 
-            if (tracker?.TryScheduleDebug(map) != true)
+            if (tracker?.TryCreateDebugUltimatum(map) != true)
             {
                 Reject(
-                    "Could not schedule a Goa'uld extraction reprisal. "
+                    "Could not create a Goa'uld extraction ultimatum. "
                     + "Reset an existing pending reaction or cooldown first.");
+            }
+        }
+
+        public static void DefyCurrentUltimatum()
+        {
+            Faction faction = Find.FactionManager?.FirstFactionOfDef(
+                GR_DefOf.SG1_GoauldSystemLordPrototype);
+
+            if (faction == null
+                || !GameComponent_GoauldDomainReprisalTracker
+                    .IsCurrentUltimatum(faction))
+            {
+                Reject("No Goa'uld extraction ultimatum can be defied.");
+                return;
+            }
+
+            GameComponent_GoauldDomainReprisalTracker
+                .DefyFromLetter(faction);
+        }
+
+        public static void CreateFatalExtractionReprisal()
+        {
+            Map map = Find.CurrentMap;
+
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.TryCreateDebugFatalExtractionReprisal(map) != true)
+            {
+                Reject(
+                    "Could not create a fatal-extraction reprisal. "
+                    + "Reset an existing pending reaction or cooldown first.");
+            }
+        }
+
+        public static void ExpireCurrentUltimatum()
+        {
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.ExpireFirstUltimatumNow() != true)
+            {
+                Reject("No Goa'uld extraction ultimatum can be expired.");
+            }
+        }
+
+        public static void KillDemandedSymbiote()
+        {
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.KillFirstDemandedSymbioteDebug() != true)
+            {
+                Reject("No demanded Goa'uld symbiote can be killed.");
             }
         }
 
@@ -52,7 +100,7 @@ namespace GateRimSG1.Goauld
 
             tracker.ResetDebug();
             Messages.Message(
-                "Goa'uld domain reprisal state reset.",
+                "Goa'uld domain extraction reaction state reset.",
                 MessageTypeDefOf.NeutralEvent,
                 historical: false);
         }

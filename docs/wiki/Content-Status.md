@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.55-dev`
+> Dernière révision : `0.3.56-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -24,8 +24,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Implantation forcée Goa'uld | Commande adjacente manuelle testable | 0.1.17-dev |
 | Hôte Goa'uld actif | Conversion automatique, prise de contrôle hostile et possibilité de sauvetage chirurgical après neutralisation et capture | 0.1.18-dev / prise de contrôle 0.3.40-dev / extraction active 0.3.41-dev |
 | Extraction d'urgence Goa'uld | Chirurgie pendant la phase critique ; commande instantanée réservée au mode développeur RimWorld | 0.1.19-dev / chirurgie 0.1.20-dev / restriction 0.3.41-dev |
-| Extraction d'un hôte Goa'uld actif | Chirurgie risquée après capture, restauration du pawn et symbiote vivant temporairement anesthésié | 0.3.41-dev |
-| Représailles après extraction Goa'uld | Une extraction active réussie avertit immédiatement la colonie puis programme un raid du domaine exact après 1 à 3 jours, sans empilement et avec 15 jours de refroidissement | 0.3.55-dev |
+| Extraction d'un hôte Goa'uld actif | Chirurgie risquée après capture ; un ancien colon retrouve sa faction, tandis qu'un hôte de caste généré devient prisonnier sans faction, recrutable ou libérable ; le symbiote vivant reste anesthésié pendant l'ultimatum | 0.3.41-dev / réaction 0.3.56-dev |
+| Ultimatum et représailles après extraction Goa'uld | Le symbiote extrait reste anesthésié pendant un jour pour permettre sa remise ou le report de la décision ; refus, silence, mise à mort du symbiote ou échec immédiatement mortel programme un raid au délai annoncé, sans empilement et avec 15 jours de refroidissement | 0.3.55-dev / choix 0.3.56-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
 | Larve de Prim'ta | Ressource transportable, incubable, périssable, classée biologiquement et sensible à la chaleur | 0.1.27-dev à 0.1.32-dev |
 | Bassin d'incubation du Prim'ta | Atelier de Dressage, Animaux 4+, consommant 10 viandes crues | 0.1.28-dev / nutriments 0.1.29-dev |

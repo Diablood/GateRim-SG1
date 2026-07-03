@@ -72,6 +72,11 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            GoauldSymbioteData attemptedSymbioteData =
+                sourceComp.SymbioteData;
+            Map operationMap = pawn.MapHeld;
+            string attemptedHostLabel = pawn.LabelShortCap;
+
             if (billDoer != null)
             {
                 if (CheckSurgeryFail(billDoer, pawn, ingredients, part, bill))
@@ -79,6 +84,12 @@ namespace GateRimSG1.Goauld
                     GR_Log.Warning(
                         $"{OperationDebugLabel} failed for "
                         + $"{PawnDebugLabel(pawn)}.");
+
+                    NotifyFailedExtraction(
+                        pawn,
+                        attemptedSymbioteData,
+                        operationMap,
+                        attemptedHostLabel);
 
                     return;
                 }
@@ -165,7 +176,10 @@ namespace GateRimSG1.Goauld
                 MessageTypeDefOf.PositiveEvent,
                 historical: true);
 
-            NotifySuccessfulExtraction(pawn, transferredData);
+            NotifySuccessfulExtraction(
+                pawn,
+                transferredData,
+                freeSymbiote);
         }
 
         protected virtual bool CanExtractFromHost(
@@ -177,7 +191,16 @@ namespace GateRimSG1.Goauld
 
         protected virtual void NotifySuccessfulExtraction(
             Pawn formerHost,
-            GoauldSymbioteData symbioteData)
+            GoauldSymbioteData symbioteData,
+            Pawn freeSymbiote)
+        {
+        }
+
+        protected virtual void NotifyFailedExtraction(
+            Pawn formerHost,
+            GoauldSymbioteData symbioteData,
+            Map operationMap,
+            string formerHostLabel)
         {
         }
 

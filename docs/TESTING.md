@@ -1,5 +1,42 @@
 # Testing checklist
 
+## 0.3.56-dev - Goa'uld extraction ultimatum
+
+Validation locale `r1` en attente. Couverture durable :
+
+- déclencher le choix uniquement après une extraction active réussie sur une
+  carte de colonie joueur et l'attribuer au domaine exact ;
+- conserver le symbiote extrait exact, la carte, l'échéance et les points de
+  menace à travers sauvegarde/rechargement ;
+- vérifier que remettre ce pion le supprime, annule le raid et démarre le
+  refroidissement de 15 jours ;
+- désactiver cette remise avec une raison visible si le pion vivant n'est plus
+  disponible sur la carte cible, mais traiter sa mort comme un défi immédiat ;
+- vérifier que refus et expiration ferment la lettre puis programment la
+  représaille `SG1_GoauldJaffaNaturalRaid` existante ;
+- vérifier que `Voir plus tard` ferme seulement la fenêtre, conserve la lettre
+  et laisse l'expiration choisir le défi par défaut ;
+- maintenir le symbiote demandé anesthésié tant que la lettre reste non résolue
+  afin de ne pas imposer un combat ou un confinement dédié pendant le délai ;
+- traiter sa mort comme un défi immédiat, fermer la lettre et afficher le délai
+  réel avant le raid ;
+- sur un échec immédiatement mortel, annoncer directement la représaille sans
+  proposer la remise d'un symbiote absent ; ne rien déclencher si l'hôte survit
+  à l'échec ;
+- préserver les anciennes représailles `0.3.55-dev` déjà sérialisées ;
+- après extraction d'un hôte de caste généré, ne jamais recréer son symbiote et
+  ne jamais déréférencer le composant retiré lors des scans suivants ;
+- détacher cet ancien hôte du domaine Goa'uld tout en conservant son statut de
+  prisonnier sans faction et ses choix vanilla de recrutement ou libération ;
+- ne pas retirer de la faction joueur un ancien colon possédé qui retrouve sa
+  faction déplacée après extraction ;
+- empêcher plusieurs ultimatums ou raids en attente pour un même domaine ;
+- vérifier l'arrivée `EdgeWalkIn`, la faction exacte et `Player.log`.
+
+Limites durables : ne pas convertir cet ultimatum en mission Tok'ra, ne pas
+inventer un tribut en argent ou une monnaie cachée et ne pas ajouter de
+variation par domaine avant stabilisation de la boucle commune.
+
 ## 0.3.55-dev - Goa'uld extraction reprisals
 
 Validation finale terminée sur `r1`. Couverture durable :

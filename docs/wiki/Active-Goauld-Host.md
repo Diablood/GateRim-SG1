@@ -28,11 +28,26 @@ Depuis `0.3.41-dev`, la conversion active n'est plus irréversible. Le joueur do
 
 Une réussite restaure l'ancien colon et son nom d'origine sans recréer le pawn et extrait le même symbiote vivant. Le parasite est temporairement anesthésié, puis redevient dangereux à son réveil. L'extraction ne le tue pas et aucun confinement spécial n'est disponible : la salle doit rester sécurisée, puis la colonie doit éliminer le Goa'uld ou affronter son réveil. Un échec laisse le symbiote actif en place si le patient survit.
 
-Depuis `0.3.55-dev`, cette réussite constitue aussi un affront visible envers le
-domaine enregistré dans l'identité du symbiote. La colonie reçoit un
-avertissement immédiat, puis une seule force de représailles arrive entre un et
-trois jours plus tard. Une nouvelle extraction du même domaine ne peut pas
-empiler un second raid pendant l'attente ni durant les 15 jours suivants.
+Depuis `0.3.56-dev`, cette réussite ouvre un ultimatum du domaine enregistré
+dans l'identité du symbiote. La colonie dispose d'un jour pour remettre le
+symbiote exact et éviter l'attaque. Refuser ou garder le silence programme une
+force de représailles entre un et trois jours plus tard. Une nouvelle
+extraction du même domaine ne peut pas empiler une seconde réaction pendant
+l'attente ni durant les 15 jours suivants.
+
+La lettre peut être refermée avec `Voir plus tard` sans arrêter son délai. Si
+l'opération échoue et tue immédiatement l'hôte, le domaine passe directement
+aux représailles puisqu'aucun symbiote vivant ne peut être remis.
+
+Le symbiote extrait reste anesthésié pendant l'ultimatum. Sa mise à mort avant
+la réponse est considérée comme un défi immédiat et l'avertissement indique le
+délai avant le raid.
+
+Lorsqu'un hôte de caste généré par un domaine est extrait en captivité, le
+corps humain n'appartient plus aux Goa'uld. Il reste toutefois prisonnier et ne
+rejoint pas automatiquement la colonie : le joueur peut le recruter ou le
+libérer avec les choix vanilla. Un ancien colon possédé retrouve toujours sa
+faction d'origine.
 
 Consulte [Chirurgies d'extraction Goa'uld](Extraction-Surgery).
 

@@ -182,10 +182,10 @@ colonie. Depuis `0.3.54-dev`, l'unique incident peut choisir un assaut direct,
 une tentative d'enlèvement ou une frappe destructrice selon les points de
 menace et le contexte de la colonie.
 
-Depuis `0.3.55-dev`, réussir l'extraction chirurgicale d'un Goa'uld actif peut
-provoquer une [représaille du domaine](Goauld-Domain-Extraction-Reprisal). La
-transmission nomme l'affront, puis le raid différé conserve la faction exacte
-du symbiote extrait.
+Depuis `0.3.56-dev`, réussir l'extraction chirurgicale d'un Goa'uld actif peut
+provoquer un [ultimatum du domaine](Goauld-Domain-Extraction-Reprisal). Remettre
+le symbiote exact évite l'attaque ; refuser ou laisser expirer la demande
+programme le raid différé de la faction exacte.
 
 Depuis `0.1.63-dev`, chaque nouveau guerrier ou garde Jaffa généré reçoit
 automatiquement un Prim'ta initial. L'attribution n'est effectuée qu'une
