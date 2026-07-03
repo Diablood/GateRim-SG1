@@ -320,6 +320,147 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
+
+        public static void InspectParalysisHoldState(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            Pawn activeTarget = comp.ActiveParalysisTarget;
+            Messages.Message(
+                "Kara kesh paralysis hold state for " + pawn.LabelShortCap
+                    + ": trace="
+                    + NaquadahTraceUtility.HasPersistentTrace(pawn)
+                    + ", shieldState=" + comp.ShieldState
+                    + ", energy=" + comp.Energy.ToString("0.00")
+                    + ", cooldownTicks="
+                    + comp.ParalysisHoldCooldownRemainingTicks
+                    + ", activeTarget="
+                    + (activeTarget?.LabelShortCap ?? "<none>")
+                    + ", targetHeld="
+                    + KaraKeshParalysisHoldUtility.HasEffect(
+                        activeTarget,
+                        comp.ParalysisHoldHediff)
+                    + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void UseSelectedWearerParalysisHold(Pawn target)
+        {
+            Pawn wearer = Find.Selector?.SingleSelectedThing as Pawn;
+            Comp_KaraKeshShield comp = GetKaraKeshComp(wearer);
+
+            if (wearer == null || comp == null)
+            {
+                Messages.Message(
+                    "Select a pawn wearing a kara kesh before choosing the paralysis-hold target.",
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            if (!comp.TryUseParalysisHold(target))
+            {
+                return;
+            }
+
+            Messages.Message(
+                wearer.LabelShortCap
+                    + " used the kara kesh paralysis hold on "
+                    + target.LabelShortCap + ".",
+                target,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void PrepareParalysisHoldTestState(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            comp.PrepareParalysisHoldForDebug();
+            Messages.Message(
+                "Prepared a fully charged kara kesh paralysis hold for "
+                    + pawn.LabelShortCap + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void ResetParalysisHoldCooldown(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            comp.ResetParalysisHoldCooldownForDebug();
+            Messages.Message(
+                "Reset the kara kesh paralysis hold cooldown for "
+                    + pawn.LabelShortCap + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void ReleaseParalysisHold(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                ReportMissingKaraKesh(pawn);
+                return;
+            }
+
+            bool released = comp.ReleaseParalysisHold();
+            Messages.Message(
+                released
+                    ? "Released the kara kesh paralysis hold maintained by "
+                        + pawn.LabelShortCap + "."
+                    : pawn.LabelShortCap
+                        + " is not maintaining a kara kesh paralysis hold.",
+                pawn,
+                released
+                    ? MessageTypeDefOf.NeutralEvent
+                    : MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
+        public static void ClearParalysisHold(Pawn pawn)
+        {
+            bool removed = KaraKeshParalysisHoldUtility.TryClear(
+                pawn,
+                GR_DefOf.SG1_KaraKeshParalysisHold);
+
+            Messages.Message(
+                removed
+                    ? "Cleared the kara kesh paralysis hold from "
+                        + pawn.LabelShortCap + "."
+                    : pawn?.LabelShortCap
+                        + " does not have a kara kesh paralysis hold.",
+                pawn,
+                removed
+                    ? MessageTypeDefOf.NeutralEvent
+                    : MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+
         private static Comp_KaraKeshShield GetKaraKeshComp(Pawn pawn)
         {
             Apparel karaKesh = pawn?.apparel?.WornApparel?.FirstOrDefault(

@@ -7,7 +7,8 @@
 Offensive extensions:
 
 - `0.3.59-dev - Add kara kesh kinetic blast`;
-- `0.3.60-dev - Add kara kesh neural attack`.
+- `0.3.60-dev - Add kara kesh neural attack`;
+- `0.3.61-dev - Add kara kesh paralysis hold`.
 
 ## Design contract
 
@@ -85,11 +86,11 @@ shield behavior only for a biologically eligible wearer. Offensive mode state
 and targeting live on the same apparel component, while neural Hediff handling
 is isolated in `KaraKeshNeuralAttackUtility`; no Harmony combat patch is used.
 
-The focused kinetic blast is implemented separately in `0.3.59-dev`. The
-temporary neural attack is added in `0.3.60-dev`. Both use the same component
-and shield-energy reserve. Prolonged paralysis, torture and remote-control
-functions remain deliberately deferred and must still be added as separate
-gameplay slices.
+The focused kinetic blast is implemented separately in `0.3.59-dev`, the
+temporary neural attack in `0.3.60-dev`, and a maintained single-target
+paralysis hold in `0.3.61-dev`. All use the same component and shield-energy
+reserve. Other speculative functions remain only non-planned ideas in
+`docs/IDEAS_TO_REVISIT.md`.
 
 Since `0.3.58-dev`, activation requires the shared persistent biological
 naquadah marker. Active Goa'uld and Tok'ra hosts, Prim'ta-bearing Jaffa and
@@ -136,6 +137,32 @@ their `combatPower` from `450` to `500`.
 
 Detailed architecture and tests are recorded in
 `docs/GOAULD_KARA_KESH_NEURAL_ATTACK.md`.
+
+## Paralysis hold extension
+
+In published revision `0.3.61-dev`, an eligible wearer can maintain a neural
+lock on one conscious hostile humanlike flesh pawn within `6.9` cells and line
+of sight. Activation consumes `2.5` energy and starts a persistent `1800`-tick
+cooldown.
+
+`SG1_KaraKeshParalysisHold` lasts at most `600` ticks, caps Moving at `0` and
+multiplies Manipulation by `0.1`. It causes no direct damage and adds no pain.
+The exact source apparel and target are serialized. A dedicated Hediff comp
+revalidates their link every `15` ticks and removes the effect when wearer
+control, equipment, biological eligibility, shield state, hostility, shared
+map, range or line of sight becomes invalid.
+
+While the hold remains active, shield recharge and the other two active modes
+are blocked. The wearer may release the exact linked effect manually without an
+energy refund or cooldown reset. Hostile Grand Masters prioritize the hold,
+then neural attack, then kinetic blast. Their validated `combatPower` rises
+from `500` to `550`.
+
+Detailed architecture and tests are recorded in
+`docs/GOAULD_KARA_KESH_PARALYSIS_HOLD.md`. Final revision `r1` passed the
+forced build and full in-game validation checklist, then was committed, tagged
+as `v0.3.61-dev` and published with the synchronized separate wiki. No
+functional `r2` was required.
 
 ## Final validation
 

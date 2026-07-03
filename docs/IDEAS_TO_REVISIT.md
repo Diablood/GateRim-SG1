@@ -33,3 +33,35 @@ Le jalon actuel ne tue pas automatiquement le symbiote et n'ajoute aucune soluti
 ### Limite de cette entrée
 
 Aucun Def, bâtiment, composant, interaction Tok'ra, recherche ou mission n'est prévu par cette note. Elle conserve uniquement le problème de conception afin qu'il puisse être réévalué plus tard sans imposer un futur jalon.
+
+## Fonctions avancées possibles du kara kesh
+
+**Statut : idées exploratoires non planifiées à réexaminer séparément.**
+
+### Contexte actuel
+
+Les jalons `0.3.57-dev`, `0.3.59-dev` et `0.3.60-dev` ont établi le kara kesh, son bouclier personnel, son onde cinétique et son attaque neurale. Les pistes ci-dessous ne font partie d'aucun jalon décidé et ne doivent pas être interprétées comme une extension promise du même objet.
+
+### Pistes à conserver
+
+- Torture d'un pawn à terre.
+- Mise à mort ou dégâts continus.
+- Contrôle mental.
+- Ordres à distance.
+- Manipulation d'objets ou de portes.
+- Action sur plusieurs cibles simultanément.
+
+### Questions à résoudre avant tout jalon
+
+- Chaque fonction apporte-t-elle un gameplay distinct, lisible et équilibrable dans RimWorld ?
+- Faut-il conserver ces fonctions sur le kara kesh ou les répartir entre plusieurs technologies Goa'uld ?
+- Quelles restrictions de portée, d'énergie, de cooldown, de ligne de vue et d'éligibilité biologique seraient nécessaires ?
+- Comment éviter qu'un même porteur cumule trop de fonctions offensives, défensives et utilitaires ?
+- Quelle utilisation par l'IA reste compréhensible et équitable pour le joueur ?
+- Quelles fonctions exigeraient des règles particulières pour les pawns à terre, prisonniers, alliés, neutres ou non consentants ?
+- Les interactions avec les quêtes, les factions, la diplomatie et Ideology apportent-elles une valeur suffisante pour justifier leur complexité ?
+- Une action multi-cible doit-elle être une amélioration rare, une capacité de rang supérieur ou une technologie distincte ?
+
+### Limite de cette entrée
+
+Aucun Def, code, recherche, recette, gizmo, comportement IA ou jalon n'est prévu par cette note. Chaque piste doit faire l'objet d'une nouvelle discussion et d'un cadrage indépendant avant toute intégration à la roadmap active.

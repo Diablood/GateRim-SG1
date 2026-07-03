@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.60-dev - Add kara kesh neural attack`. Aucun jalon suivant n'est encore fixé.
+Dernier jalon publié : `0.3.61-dev - Add kara kesh paralysis hold`. Aucun jalon suivant n'est encore fixé.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -118,7 +118,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Publié dans `0.3.50-dev` pour le SGC, les Jaffa libres et les Domaines Goa'uld, avec conservation de l'icône Tok'ra existante |
-| Équipement Goa'uld de haut rang | Kara kesh de Grand Maître avec bouclier, onde cinétique et attaque neurale temporaire publiés ; puissance intégrée aux budgets de menace et acquisition naturelle non systématique |
+| Équipement Goa'uld de haut rang | Kara kesh de Grand Maître avec bouclier, onde cinétique, attaque neurale temporaire et maintien paralysant mono-cible publiés ; tous les modes partagent l'énergie, tandis que portée, ligne de vue, mêlée et IEM conservent un contre-jeu |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
 
 

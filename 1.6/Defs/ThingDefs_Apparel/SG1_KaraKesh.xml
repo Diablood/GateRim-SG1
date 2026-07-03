@@ -3,7 +3,7 @@
     <ThingDef ParentName="ApparelBase">
         <defName>SG1_KaraKesh</defName>
         <label>kara kesh</label>
-        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. It combines a personal shield, a focused kinetic blast and a neural attack. The shield absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents ordinary ranged weapons from firing outward, while EMP forces a distinct audible and visible shutdown. Both offensive modes consume the same reserve: the kinetic pulse strikes and pushes nearby enemies, while the neural attack inflicts temporary agony and cognitive disruption on a hostile humanlike target. Prolonged paralysis, torture and remote-control functions are not yet implemented.</description>
+        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. It combines a personal shield, a focused kinetic blast, a neural attack and a maintained paralysis hold. The shield absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents ordinary ranged weapons from firing outward, while EMP forces a distinct audible and visible shutdown. Every active mode consumes the same reserve: the kinetic pulse strikes and pushes nearby enemies, the neural attack inflicts temporary agony and cognitive disruption, and the paralysis hold suppresses one hostile humanlike target while range and line of sight are maintained.</description>
         <thingClass>Apparel</thingClass>
         <graphicData>
             <texPath>Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh</texPath>
@@ -81,6 +81,12 @@
                 <neuralAttackDurationTicks>600</neuralAttackDurationTicks>
                 <neuralAttackAiCheckIntervalTicks>60</neuralAttackAiCheckIntervalTicks>
                 <neuralAttackHediff>SG1_KaraKeshNeuralAgony</neuralAttackHediff>
+                <paralysisHoldRange>6.9</paralysisHoldRange>
+                <paralysisHoldEnergyCost>2.5</paralysisHoldEnergyCost>
+                <paralysisHoldCooldownTicks>1800</paralysisHoldCooldownTicks>
+                <paralysisHoldDurationTicks>600</paralysisHoldDurationTicks>
+                <paralysisHoldAiCheckIntervalTicks>60</paralysisHoldAiCheckIntervalTicks>
+                <paralysisHoldHediff>SG1_KaraKeshParalysisHold</paralysisHoldHediff>
             </li>
         </comps>
     </ThingDef>

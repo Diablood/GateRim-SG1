@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_KaraKeshParalysisHold.label>maintien paralysant du kara kesh</SG1_KaraKeshParalysisHold.label>
+    <SG1_KaraKeshParalysisHold.description>Un verrou neural maintenu par un kara kesh Goa'uld supprime les mouvements volontaires et réduit presque entièrement la manipulation. L'effet prend fin prématurément si le porteur ne peut plus maintenir la portée, la ligne de vue, l'activation biologique ou le contrôle de l'appareil.</SG1_KaraKeshParalysisHold.description>
+    <SG1_KaraKeshParalysisHold.stages.0.label>paralysie maintenue</SG1_KaraKeshParalysisHold.stages.0.label>
+</LanguageData>

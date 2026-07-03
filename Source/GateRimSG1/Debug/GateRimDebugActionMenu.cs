@@ -262,6 +262,36 @@ namespace GateRimSG1.Debugging
                     GoauldSystemLordShieldDebugActions.ClearNeuralAgony,
                     550),
                 PawnToolNode(
+                    "Inspect paralysis hold state",
+                    GoauldSystemLordShieldDebugActions
+                        .InspectParalysisHoldState,
+                    525),
+                PawnToolNode(
+                    "Prepare paralysis hold test state",
+                    GoauldSystemLordShieldDebugActions
+                        .PrepareParalysisHoldTestState,
+                    500),
+                PawnToolNode(
+                    "Use selected wearer's paralysis hold",
+                    GoauldSystemLordShieldDebugActions
+                        .UseSelectedWearerParalysisHold,
+                    475),
+                PawnToolNode(
+                    "Release paralysis hold",
+                    GoauldSystemLordShieldDebugActions
+                        .ReleaseParalysisHold,
+                    450),
+                PawnToolNode(
+                    "Reset paralysis hold cooldown",
+                    GoauldSystemLordShieldDebugActions
+                        .ResetParalysisHoldCooldown,
+                    425),
+                PawnToolNode(
+                    "Clear paralysis hold",
+                    GoauldSystemLordShieldDebugActions
+                        .ClearParalysisHold,
+                    400),
+                PawnToolNode(
                     "Apply ranged test hit",
                     GoauldSystemLordShieldDebugActions.ApplyRangedTestHit,
                     300),

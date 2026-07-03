@@ -5,6 +5,7 @@
 > Activation biologique : 0.3.58-dev
 > Onde cinétique : 0.3.59-dev
 > Attaque neurale : 0.3.60-dev
+> Maintien paralysant : 0.3.61-dev
 
 ## Fonctionnement
 
@@ -12,11 +13,12 @@ Les Grands Maîtres Goa'uld générés portent un kara kesh, gant alimenté au
 naquadah et commandé par interface neurale. Les hôtes Goa'uld ordinaires et les
 Jaffa n'en reçoivent pas.
 
-Le même appareil réunit désormais trois fonctions :
+Le même appareil réunit désormais quatre fonctions :
 
 - un bouclier personnel ;
 - une onde cinétique focalisée ;
-- une attaque neurale temporaire contre les humanoïdes biologiques.
+- une attaque neurale temporaire contre les humanoïdes biologiques ;
+- un maintien paralysant mono-cible, dépendant de la portée et de la ligne de vue.
 
 Toutes exigent des traces biologiques persistantes de naquadah et partagent la
 même réserve d'énergie.
@@ -72,6 +74,34 @@ alliés ne sont pas des cibles valides.
 Les Grands Maîtres hostiles privilégient cette attaque contre un ennemi
 humanoïde proche, puis conservent l'onde cinétique comme solution de repli.
 
+## Maintien paralysant
+
+La version publiée `0.3.61-dev` ajoute un gizmo
+`Maintien paralysant`. Il
+cible un pawn humanoïde biologique, hostile et conscient, à moins de `6,9`
+cases avec une ligne de vue dégagée.
+
+L'activation consomme `2,5` points de la réserve commune et lance un cooldown de
+`1800` ticks. Pendant au maximum `600` ticks, la cible reçoit
+`maintien paralysant du kara kesh` :
+
+- Déplacement limité à `0` ;
+- Manipulation réduite à `10 %` ;
+- aucune blessure directe ;
+- aucune douleur ajoutée.
+
+Le lien est réellement maintenu. Il s'interrompt rapidement si le porteur tombe
+à terre, meurt, retire le kara kesh, perd ses traces de naquadah, subit une
+réinitialisation du bouclier, quitte la carte, dépasse la portée, perd la ligne
+de vue ou cesse d'être hostile à la cible. Le joueur peut aussi utiliser
+`Relâcher le maintien paralysant` ; l'énergie n'est pas remboursée et le
+cooldown continue.
+
+Pendant le maintien, le bouclier ne recharge pas et les gizmos d'onde cinétique
+et d'attaque neurale sont indisponibles. Les Grands Maîtres hostiles privilégient
+ce contrôle avant leurs deux autres modes. Le rebuild, les interruptions, l'IA,
+la sauvegarde/recharge, le relâchement et `Player.log` ont été validés sur `r1`.
+
 ## Acquisition et recherche
 
 Le kara kesh n'est proposé par aucun marchand et n'apparaît pas comme objet
@@ -96,8 +126,8 @@ La texture et les icônes de commandes restent provisoires. Elles seront
 remplacées pendant la future passe visuelle globale sans changer l'identité de
 l'objet dans les sauvegardes.
 
-## Fonctions différées
+## Idées non planifiées
 
-La paralysie prolongée, la torture de prisonniers ou de cibles à terre, le
-contrôle mental et les commandes à distance restent différés. Chaque fonction
-doit conserver un coût, un contre-jeu et une couverture de tests propres.
+Les autres fonctions spéculatives ne sont ni implémentées ni promises. Elles
+restent de simples pistes à réexaminer séparément dans
+`docs/IDEAS_TO_REVISIT.md`.

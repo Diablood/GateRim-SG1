@@ -5,7 +5,7 @@ using Verse;
 
 namespace GateRimSG1.Goauld
 {
-    public class CompProperties_KaraKeshShield : CompProperties_Shield
+    public partial class CompProperties_KaraKeshShield : CompProperties_Shield
     {
         public int rechargeDelayAfterAbsorbedHitTicks = 300;
         public float kineticBlastRange = 10.9f;
@@ -29,7 +29,7 @@ namespace GateRimSG1.Goauld
         }
     }
 
-    public class Comp_KaraKeshShield : CompShield
+    public partial class Comp_KaraKeshShield : CompShield
     {
         private const int NoAbsorbedHitTick = -99999;
         private const int NoKineticBlastTick = -99999;
@@ -60,6 +60,7 @@ namespace GateRimSG1.Goauld
                 ref lastNeuralAttackTick,
                 "karaKeshLastNeuralAttackTick",
                 NoNeuralAttackTick);
+            ExposeParalysisHoldData();
         }
 
         public override IEnumerable<Gizmo> CompGetWornGizmosExtra()
@@ -78,6 +79,12 @@ namespace GateRimSG1.Goauld
             {
                 yield return BuildKineticBlastCommand();
                 yield return BuildNeuralAttackCommand();
+                yield return BuildParalysisHoldCommand();
+
+                if (IsMaintainingParalysisHold)
+                {
+                    yield return BuildReleaseParalysisHoldCommand();
+                }
             }
         }
 
@@ -102,9 +109,12 @@ namespace GateRimSG1.Goauld
             string result = AppendInspectLine(
                 baseText,
                 GetKineticBlastInspectText());
-            return AppendInspectLine(
+            result = AppendInspectLine(
                 result,
                 GetNeuralAttackInspectText());
+            return AppendInspectLine(
+                result,
+                GetParalysisHoldInspectText());
         }
 
         public override void PostPreApplyDamage(
@@ -134,16 +144,32 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            bool neuralAttackUsed = TryUseNeuralAttackForAi(wearer);
+            bool paralysisHoldActive = MaintainParalysisHold(wearer);
+            bool paralysisHoldUsed = false;
 
-            if (!neuralAttackUsed)
+            if (!paralysisHoldActive)
             {
-                TryUseKineticBlastForAi(wearer);
+                paralysisHoldUsed = TryUseParalysisHoldForAi(wearer);
+            }
+
+            if (!paralysisHoldActive && !paralysisHoldUsed)
+            {
+                bool neuralAttackUsed = TryUseNeuralAttackForAi(wearer);
+
+                if (!neuralAttackUsed)
+                {
+                    TryUseKineticBlastForAi(wearer);
+                }
             }
 
             int currentTick = Find.TickManager?.TicksGame ?? 0;
             int rechargeDelay = KaraKeshProps
                 ?.rechargeDelayAfterAbsorbedHitTicks ?? 0;
+
+            if (IsMaintainingParalysisHold)
+            {
+                return;
+            }
 
             if (ShieldState == ShieldState.Active
                 && currentTick - lastAbsorbedHitTick < rechargeDelay)
@@ -524,6 +550,14 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            if (IsMaintainingParalysisHold)
+            {
+                disabledReason = "GR_KaraKesh_AbilityBlockedByParalysisHold"
+                    .Translate()
+                    .ToString();
+                return false;
+            }
+
             if (ShieldState != ShieldState.Active)
             {
                 disabledReason = "GR_KaraKesh_KineticBlastShieldResetting"
@@ -579,6 +613,14 @@ namespace GateRimSG1.Goauld
             if (wearer.Dead || wearer.Downed)
             {
                 disabledReason = "GR_KaraKesh_NeuralAttackIncapacitated"
+                    .Translate()
+                    .ToString();
+                return false;
+            }
+
+            if (IsMaintainingParalysisHold)
+            {
+                disabledReason = "GR_KaraKesh_AbilityBlockedByParalysisHold"
                     .Translate()
                     .ToString();
                 return false;

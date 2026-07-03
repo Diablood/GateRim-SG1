@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.3.61-dev - Add kara kesh paralysis hold
+
+- Start from published tag `v0.3.60-dev` on
+  `feature/kara-kesh-paralysis-hold`.
+- Add one maintained single-target paralysis mode to the existing kara kesh
+  without adding another item or research project.
+- Limit activation to conscious hostile humanlike flesh pawns within `6.9`
+  cells and direct line of sight.
+- Consume `2.5` points from the shared four-point shield reserve, suspend
+  recharge while maintained and start a persistent `1800`-tick cooldown.
+- Apply `SG1_KaraKeshParalysisHold` for at most `600` ticks, cap Moving at `0`
+  and multiply Manipulation by `0.1`, without direct damage or added pain.
+- Serialize the exact source apparel and target, then revalidate the link every
+  `15` ticks across equipment changes and save/reload.
+- End the hold early when wearer control, biological eligibility, shield state,
+  hostility, map, range or line of sight becomes invalid.
+- Add a manual release command that preserves spent energy and cooldown.
+- Let hostile System Lords prioritize the same hold before neural attack and
+  kinetic blast, then raise their `combatPower` from `500` to `550`.
+- Add English/French text, deterministic debug actions, technical documentation,
+  durable tests and updated player-wiki drafts.
+- Record the maintainer's deferred kara kesh concepts only in
+  `docs/IDEAS_TO_REVISIT.md`; none is implemented or promised here.
+- Validate final local revision `r1` after a forced `0.3.61.0` build,
+  including player targeting, capacity suppression, shared energy, maintained
+  interruptions, hostile AI priority, save/reload persistence, manual release
+  and a clean `Player.log`.
+- Publish branch `feature/kara-kesh-paralysis-hold`, annotated tag
+  `v0.3.61-dev` and the synchronized wiki.
+
 ## 0.3.60-dev - Add kara kesh neural attack
 
 - Start from published tag `v0.3.59-dev` on

@@ -145,12 +145,12 @@ Result: passed on local revision `r1`, including player and hostile-AI use,
 shared energy, temporary effect behavior, save/reload persistence and a clean
 `Player.log`.
 
-## Deferred work
+## Subsequent and deferred work
 
-This milestone does not add:
+A maintained single-target paralysis hold is implemented separately in local
+milestone `0.3.61-dev`. It does not alter this attack's pain and consciousness
+contract.
 
-- prolonged paralysis;
-- torture interactions with prisoners or downed pawns;
-- mind control or remote commands;
-- area neural attacks;
-- dedicated final graphics or gizmo icons.
+Other speculative functions remain non-planned ideas in
+`docs/IDEAS_TO_REVISIT.md`. Dedicated final graphics and gizmo icons remain part
+of the future visual pass.

@@ -30,4 +30,25 @@
     <GR_KaraKesh_NeuralAttackCooldown>L'attaque neurale sera prête dans {0}.</GR_KaraKesh_NeuralAttackCooldown>
     <GR_KaraKesh_NeuralAttackUsed>{0} a submergé {1} avec l'attaque neurale du kara kesh.</GR_KaraKesh_NeuralAttackUsed>
     <GR_KaraKesh_NeuralAttackMote>Douleur neurale</GR_KaraKesh_NeuralAttackMote>
+    <GR_KaraKesh_AbilityBlockedByParalysisHold>Le porteur ne peut pas activer un autre mode du kara kesh tant qu'il maintient une paralysie.</GR_KaraKesh_AbilityBlockedByParalysisHold>
+    <GR_KaraKesh_ParalysisHoldLabel>Maintien paralysant</GR_KaraKesh_ParalysisHoldLabel>
+    <GR_KaraKesh_ParalysisHoldDescription>Maintient un verrou neural sur une cible humanoïde hostile et consciente située à moins de {0} cases. Le maintien consomme {1} points d'énergie du bouclier, supprime le Déplacement et réduit fortement la Manipulation pendant au maximum {2}, puis prend fin prématurément si la portée, la ligne de vue ou le contrôle sont perdus. Recharge : {3}.</GR_KaraKesh_ParalysisHoldDescription>
+    <GR_KaraKesh_ParalysisHoldReleaseLabel>Relâcher le maintien paralysant</GR_KaraKesh_ParalysisHoldReleaseLabel>
+    <GR_KaraKesh_ParalysisHoldReleaseDescription>Met fin immédiatement au maintien paralysant. L'énergie n'est pas remboursée et le délai de recharge continue.</GR_KaraKesh_ParalysisHoldReleaseDescription>
+    <GR_KaraKesh_ParalysisHoldReadyInspect>Maintien paralysant : prêt</GR_KaraKesh_ParalysisHoldReadyInspect>
+    <GR_KaraKesh_ParalysisHoldActiveInspect>Maintien paralysant : cible maintenue, {0}</GR_KaraKesh_ParalysisHoldActiveInspect>
+    <GR_KaraKesh_ParalysisHoldResettingInspect>Maintien paralysant : indisponible pendant la réinitialisation du bouclier</GR_KaraKesh_ParalysisHoldResettingInspect>
+    <GR_KaraKesh_ParalysisHoldLowEnergyInspect>Maintien paralysant : énergie du bouclier insuffisante</GR_KaraKesh_ParalysisHoldLowEnergyInspect>
+    <GR_KaraKesh_ParalysisHoldCooldownInspect>Maintien paralysant : recharge ({0})</GR_KaraKesh_ParalysisHoldCooldownInspect>
+    <GR_KaraKesh_ParalysisHoldInvalidTarget>Choisissez une cible humanoïde hostile et consciente, à portée et en ligne de vue, qui n'est pas déjà maintenue.</GR_KaraKesh_ParalysisHoldInvalidTarget>
+    <GR_KaraKesh_ParalysisHoldUnavailable>Le maintien paralysant du kara kesh n'est pas disponible ici.</GR_KaraKesh_ParalysisHoldUnavailable>
+    <GR_KaraKesh_ParalysisHoldNeedsNaquadah>Des traces biologiques persistantes de naquadah sont nécessaires pour activer le maintien paralysant.</GR_KaraKesh_ParalysisHoldNeedsNaquadah>
+    <GR_KaraKesh_ParalysisHoldIncapacitated>Un porteur neutralisé ne peut pas maintenir une paralysie.</GR_KaraKesh_ParalysisHoldIncapacitated>
+    <GR_KaraKesh_ParalysisHoldAlreadyActive>Le kara kesh maintient déjà une cible paralysée.</GR_KaraKesh_ParalysisHoldAlreadyActive>
+    <GR_KaraKesh_ParalysisHoldShieldResetting>Le kara kesh se réinitialise après l'effondrement de son bouclier.</GR_KaraKesh_ParalysisHoldShieldResetting>
+    <GR_KaraKesh_ParalysisHoldLowEnergy>Le maintien paralysant exige au moins {0} points d'énergie du bouclier.</GR_KaraKesh_ParalysisHoldLowEnergy>
+    <GR_KaraKesh_ParalysisHoldCooldown>Le maintien paralysant sera prêt dans {0}.</GR_KaraKesh_ParalysisHoldCooldown>
+    <GR_KaraKesh_ParalysisHoldUsed>{0} a verrouillé {1} dans le maintien paralysant du kara kesh.</GR_KaraKesh_ParalysisHoldUsed>
+    <GR_KaraKesh_ParalysisHoldReleased>{0} a relâché le maintien paralysant appliqué à {1}.</GR_KaraKesh_ParalysisHoldReleased>
+    <GR_KaraKesh_ParalysisHoldMote>Paralysie maintenue</GR_KaraKesh_ParalysisHoldMote>
 </LanguageData>

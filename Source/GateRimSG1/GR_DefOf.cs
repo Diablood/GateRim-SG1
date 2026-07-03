@@ -14,6 +14,7 @@ namespace GateRimSG1
         public static GeneDef SG1_NaquadahBlood;
         public static HediffDef SG1_GoauldHostSymbiote;
         public static HediffDef SG1_KaraKeshNeuralAgony;
+        public static HediffDef SG1_KaraKeshParalysisHold;
         public static PawnKindDef SG1_GoauldSymbiote;
         public static PawnKindDef SG1_TokraSymbiote;
         public static PawnKindDef SG1_TokraVoluntaryHost;

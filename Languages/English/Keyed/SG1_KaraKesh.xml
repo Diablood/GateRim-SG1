@@ -30,4 +30,25 @@
     <GR_KaraKesh_NeuralAttackCooldown>The neural attack will be ready in {0}.</GR_KaraKesh_NeuralAttackCooldown>
     <GR_KaraKesh_NeuralAttackUsed>{0} overwhelmed {1} with a kara kesh neural attack.</GR_KaraKesh_NeuralAttackUsed>
     <GR_KaraKesh_NeuralAttackMote>Neural agony</GR_KaraKesh_NeuralAttackMote>
+    <GR_KaraKesh_AbilityBlockedByParalysisHold>The wearer cannot activate another kara kesh mode while maintaining a paralysis hold.</GR_KaraKesh_AbilityBlockedByParalysisHold>
+    <GR_KaraKesh_ParalysisHoldLabel>Paralysis hold</GR_KaraKesh_ParalysisHoldLabel>
+    <GR_KaraKesh_ParalysisHoldDescription>Maintain a neural lock on one conscious hostile humanlike pawn within {0} cells. The hold consumes {1} shield energy, suppresses movement and most manipulation for up to {2}, and ends early if range, line of sight or control is lost. Cooldown: {3}.</GR_KaraKesh_ParalysisHoldDescription>
+    <GR_KaraKesh_ParalysisHoldReleaseLabel>Release paralysis hold</GR_KaraKesh_ParalysisHoldReleaseLabel>
+    <GR_KaraKesh_ParalysisHoldReleaseDescription>End the maintained paralysis hold immediately. Energy is not refunded and the cooldown continues.</GR_KaraKesh_ParalysisHoldReleaseDescription>
+    <GR_KaraKesh_ParalysisHoldReadyInspect>Paralysis hold: ready</GR_KaraKesh_ParalysisHoldReadyInspect>
+    <GR_KaraKesh_ParalysisHoldActiveInspect>Paralysis hold: maintaining {0}</GR_KaraKesh_ParalysisHoldActiveInspect>
+    <GR_KaraKesh_ParalysisHoldResettingInspect>Paralysis hold: unavailable while the shield resets</GR_KaraKesh_ParalysisHoldResettingInspect>
+    <GR_KaraKesh_ParalysisHoldLowEnergyInspect>Paralysis hold: insufficient shield energy</GR_KaraKesh_ParalysisHoldLowEnergyInspect>
+    <GR_KaraKesh_ParalysisHoldCooldownInspect>Paralysis hold: recharging ({0})</GR_KaraKesh_ParalysisHoldCooldownInspect>
+    <GR_KaraKesh_ParalysisHoldInvalidTarget>Choose a conscious hostile humanlike pawn within range and line of sight that is not already held.</GR_KaraKesh_ParalysisHoldInvalidTarget>
+    <GR_KaraKesh_ParalysisHoldUnavailable>The kara kesh paralysis hold is unavailable here.</GR_KaraKesh_ParalysisHoldUnavailable>
+    <GR_KaraKesh_ParalysisHoldNeedsNaquadah>Persistent biological naquadah traces are required to activate the paralysis hold.</GR_KaraKesh_ParalysisHoldNeedsNaquadah>
+    <GR_KaraKesh_ParalysisHoldIncapacitated>An incapacitated wearer cannot maintain a paralysis hold.</GR_KaraKesh_ParalysisHoldIncapacitated>
+    <GR_KaraKesh_ParalysisHoldAlreadyActive>The kara kesh is already maintaining a paralysis hold.</GR_KaraKesh_ParalysisHoldAlreadyActive>
+    <GR_KaraKesh_ParalysisHoldShieldResetting>The kara kesh is resetting after its shield collapsed.</GR_KaraKesh_ParalysisHoldShieldResetting>
+    <GR_KaraKesh_ParalysisHoldLowEnergy>The paralysis hold requires at least {0} shield energy.</GR_KaraKesh_ParalysisHoldLowEnergy>
+    <GR_KaraKesh_ParalysisHoldCooldown>The paralysis hold will be ready in {0}.</GR_KaraKesh_ParalysisHoldCooldown>
+    <GR_KaraKesh_ParalysisHoldUsed>{0} locked {1} in a kara kesh paralysis hold.</GR_KaraKesh_ParalysisHoldUsed>
+    <GR_KaraKesh_ParalysisHoldReleased>{0} released the kara kesh paralysis hold on {1}.</GR_KaraKesh_ParalysisHoldReleased>
+    <GR_KaraKesh_ParalysisHoldMote>Paralysis hold</GR_KaraKesh_ParalysisHoldMote>
 </LanguageData>

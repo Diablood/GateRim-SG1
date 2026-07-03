@@ -1,5 +1,39 @@
 # Roadmap
 
+## Jalon validé et publié — Maintien paralysant du kara kesh (`0.3.61-dev`)
+
+- [x] Partir explicitement du tag publié `v0.3.60-dev` sur
+  `feature/kara-kesh-paralysis-hold`.
+- [x] Ajouter un seul mode de contrôle maintenu, limité à une cible humanoïde
+  biologique hostile, consciente, à moins de `6.9` cases et en ligne de vue.
+- [x] Partager la réserve du bouclier avec un coût de `2.5`, une durée maximale
+  de `600` ticks et un cooldown persistant de `1800` ticks.
+- [x] Appliquer un Hediff visible qui fixe Déplacement à `0` et réduit
+  Manipulation à `10 %`, sans dégâts directs ni douleur ajoutée.
+- [x] Interrompre le lien si le porteur est neutralisé, si le kara kesh est
+  retiré, si la trace biologique est perdue, si le bouclier se réinitialise ou
+  si portée, ligne de vue, carte commune ou hostilité disparaissent.
+- [x] Suspendre la recharge et les autres modes actifs du kara kesh pendant le
+  maintien, avec relâchement manuel sans remboursement ni annulation du cooldown.
+- [x] Ajouter l'utilisation IA prioritaire, les diagnostics déterministes, les
+  traductions, la documentation technique, les tests et le brouillon wiki.
+- [x] Porter le `combatPower` du Grand Maître de `500` à `550` pour refléter la
+  nouvelle capacité de contrôle.
+- [x] Enregistrer les concepts spéculatifs reportés par le mainteneur dans
+  `docs/IDEAS_TO_REVISIT.md`, sans les acter dans la roadmap.
+- [x] Exécuter le rebuild forcé `0.3.61.0` et les contrôles de cohérence.
+- [x] Valider en jeu le ciblage, l'immobilisation, les interruptions, l'énergie
+  partagée, l'IA hostile, la sauvegarde/recharge et `Player.log` sur `r1`.
+- [x] Publier la branche, le tag annoté `v0.3.61-dev` et le wiki seulement après
+  validation et autorisation explicite.
+
+La révision finale `r1` est validée et publiée après rebuild forcé et tests en
+jeu, avec la branche dédiée, le tag annoté `v0.3.61-dev` et le wiki séparé
+synchronisé. Aucun correctif fonctionnel `r2` n'a été requis et aucun périmètre
+`0.3.62-dev` n'est imposé par cette clôture. Les fonctions exploratoires
+restent uniquement dans `docs/IDEAS_TO_REVISIT.md` et ne constituent pas des
+engagements de roadmap.
+
 ## Jalon validé et publié — Attaque neurale du kara kesh (`0.3.60-dev`)
 
 - [x] Partir explicitement du tag publié `v0.3.59-dev` sur

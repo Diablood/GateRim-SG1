@@ -94,12 +94,14 @@ Available actions:
 For `Use selected wearer's kinetic blast`, first select the pawn wearing the
 kara kesh, then activate the debug tool and click the hostile target.
 
-## Deferred functions
+## Subsequent and deferred functions
 
-This milestone did not add neural pain, prolonged paralysis, torture,
-telekinesis against objects or buildings, remote commands, area damage or a
-separate research project. Temporary neural agony is implemented separately in
-`0.3.60-dev`; the remaining functions still require independent gameplay slices.
+Temporary neural agony is implemented separately in `0.3.60-dev`, and a
+maintained single-target paralysis hold is implemented in local milestone
+`0.3.61-dev`. Neither changes the kinetic blast's damage and knockback contract.
+
+Other speculative functions remain non-planned ideas in
+`docs/IDEAS_TO_REVISIT.md`. No separate research project is added.
 
 ## Validation and publication result
 

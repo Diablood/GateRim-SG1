@@ -1,5 +1,36 @@
 # Testing checklist
 
+## 0.3.61-dev - Kara kesh paralysis hold
+
+Validation locale terminée sur la révision finale `r1`, sans correctif
+fonctionnel supplémentaire. Couverture durable :
+
+- cibler uniquement un humanoïde biologique hostile, conscient, non déjà
+  maintenu, dans `6.9` cases et en ligne de vue ;
+- consommer `2.5` points de la réserve commune et conserver le cooldown de
+  `1800` ticks après relâchement ou interruption ;
+- vérifier `SG1_KaraKeshParalysisHold`, Déplacement maximal `0`, Manipulation
+  multipliée par `0.1`, absence de dégâts directs et de douleur ajoutée ;
+- suspendre recharge, onde cinétique et attaque neurale pendant un lien actif ;
+- interrompre sous environ `15` ticks après perte de portée, ligne de vue,
+  équipement, trace, bouclier actif, carte commune, hostilité ou contrôle du
+  porteur ;
+- ne jamais supprimer un maintien provenant d'un autre kara kesh par une
+  référence approximative ;
+- vérifier le relâchement manuel sans remboursement ni remise à zéro du cooldown ;
+- vérifier la priorité IA paralysie, puis attaque neurale, puis onde cinétique ;
+- sauvegarder/recharger pendant le maintien et confirmer les références exactes,
+  la durée, l'énergie et le cooldown ;
+- vérifier les refus sur allié, animal, mécanoïde, cible à terre, hors portée,
+  derrière un mur ou déjà maintenue ;
+- inspecter `Player.log` pour les erreurs XML, Def, Hediff, Scribe, ciblage et C#.
+
+Le rebuild forcé `0.3.61.0`, le ciblage joueur, les capacités réduites,
+l'énergie commune, les interruptions, la priorité IA, la sauvegarde/recharge,
+le relâchement manuel et `Player.log` ont été validés par le mainteneur. Les
+autres fonctions exploratoires du kara kesh restent hors roadmap active dans
+`docs/IDEAS_TO_REVISIT.md`.
+
 ## 0.3.58-dev - Persistent biological naquadah traces
 
 Validation locale terminée sur la révision finale `r1`, sans correctif
