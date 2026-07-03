@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.58-dev`
+> Dernière révision : `0.3.59-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -73,7 +73,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire, nettoyage initial des affections chroniques biologiques et kara kesh réservé au Grand Maître | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 / kara kesh 0.3.57-dev |
-| Kara kesh Goa'uld | Gant de rang des Grands Maîtres dont le premier mode implémenté est un puissant bouclier : projectiles absorbés, mêlée et chaleur traversantes, rupture IEM, butin rare, fabrication après `Armures Jaffa` et activation biologique par traces de naquadah | 0.3.57-dev / activation 0.3.58-dev |
+| Kara kesh Goa'uld | Gant de rang des Grands Maîtres combinant un puissant bouclier et une onde cinétique ciblée qui partage la même énergie, repousse et étourdit les ennemis proches ; mêlée, chaleur et IEM restent des contres, avec activation biologique par traces de naquadah | 0.3.57-dev / activation 0.3.58-dev / onde 0.3.59-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
@@ -133,7 +133,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
-| Équipement Goa'uld de haut rang | Mode bouclier du kara kesh implémenté dans `0.3.57-dev` ; étudier séparément ses fonctions offensives et les autres attributs de rang sans les regrouper artificiellement |
+| Équipement Goa'uld de haut rang | Bouclier du kara kesh publié dans `0.3.57-dev` et onde cinétique ciblée ajoutée dans `0.3.59-dev` ; étudier séparément attaque neurale, paralysie, commandes et autres attributs de rang |
 | Réplicateurs | Prévu pour une phase ultérieure |
 | Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

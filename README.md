@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.58-dev`
+- Development version: `0.3.59-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -61,10 +61,10 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Jaffa physiology, Prim'ta implantation, incubation, preservation, tretonin
   dependency and formal ceremonies.
 - Ma'Tok staffs, Zat'nik'tels, modular Jaffa armor and varied SGC field equipment.
-- Kara kesh hand devices reserved for Goa'uld System Lords, currently
-  implementing their powerful personal-shield mode with melee and EMP
-  counterplay, rare recovery and research placed after Jaffa armor; activation
-  requires persistent biological naquadah traces rather than faction identity.
+- Kara kesh hand devices reserved for Goa'uld System Lords, combining a
+  powerful personal shield with a focused short-range kinetic blast. Both modes
+  consume the same energy reserve, retain melee and EMP counterplay, and require
+  persistent biological naquadah traces rather than faction identity.
 - Persistent naquadah traces acquired from an adult Goa'uld/Tok'ra symbiote or
   a Prim'ta and retained by former hosts after extraction.
 - Early non-lethal capture tools: craftable single-use bolas and an experimental

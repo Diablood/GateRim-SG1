@@ -120,6 +120,114 @@ namespace GateRimSG1.Goauld
             ApplyTestDamage(pawn, DamageDefOf.EMP, "EMP");
         }
 
+
+        public static void InspectKineticBlastState(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                Messages.Message(
+                    pawn?.LabelShortCap + " is not wearing a kara kesh.",
+                    pawn,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            Messages.Message(
+                "Kara kesh kinetic blast state for " + pawn.LabelShortCap
+                    + ": trace="
+                    + NaquadahTraceUtility.HasPersistentTrace(pawn)
+                    + ", shieldState=" + comp.ShieldState
+                    + ", energy=" + comp.Energy.ToString("0.00")
+                    + ", cooldownTicks="
+                    + comp.KineticBlastCooldownRemainingTicks + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void UseSelectedWearerKineticBlast(Pawn target)
+        {
+            Pawn wearer = Find.Selector?.SingleSelectedThing as Pawn;
+            Comp_KaraKeshShield comp = GetKaraKeshComp(wearer);
+
+            if (wearer == null || comp == null)
+            {
+                Messages.Message(
+                    "Select a pawn wearing a kara kesh before choosing the blast target.",
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            if (!comp.TryUseKineticBlast(target))
+            {
+                return;
+            }
+
+            Messages.Message(
+                wearer.LabelShortCap + " used the kara kesh kinetic blast on "
+                    + target.LabelShortCap + ".",
+                target,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void PrepareKineticBlastTestState(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                Messages.Message(
+                    pawn?.LabelShortCap + " is not wearing a kara kesh.",
+                    pawn,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            comp.PrepareKineticBlastForDebug();
+            Messages.Message(
+                "Prepared a fully charged kara kesh kinetic blast for "
+                    + pawn.LabelShortCap + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void ResetKineticBlastCooldown(Pawn pawn)
+        {
+            Comp_KaraKeshShield comp = GetKaraKeshComp(pawn);
+
+            if (comp == null)
+            {
+                Messages.Message(
+                    pawn?.LabelShortCap + " is not wearing a kara kesh.",
+                    pawn,
+                    MessageTypeDefOf.RejectInput,
+                    historical: false);
+                return;
+            }
+
+            comp.ResetKineticBlastCooldownForDebug();
+            Messages.Message(
+                "Reset the kara kesh kinetic blast cooldown for "
+                    + pawn.LabelShortCap + ".",
+                pawn,
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        private static Comp_KaraKeshShield GetKaraKeshComp(Pawn pawn)
+        {
+            Apparel karaKesh = pawn?.apparel?.WornApparel?.FirstOrDefault(
+                apparel => apparel?.def == GR_DefOf.SG1_KaraKesh);
+            return karaKesh?.TryGetComp<Comp_KaraKeshShield>();
+        }
+
         private static void ApplyTestDamage(
             Pawn pawn,
             DamageDef damageDef,

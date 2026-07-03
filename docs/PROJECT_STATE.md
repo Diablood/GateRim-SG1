@@ -1,63 +1,65 @@
 # Current project state
 
-Current milestone: `0.3.58-dev - Add persistent biological naquadah traces` -
-validated and published after local revision `r1`.
+Current milestone: `0.3.59-dev - Add kara kesh kinetic blast` -
+validated and published after local revision `r2`.
 
 ## Repository state
 
-- Starting tag: `v0.3.57-dev`.
-- Active branch: `feature/persistent-naquadah-biological-traces`.
-- Published branch: `feature/persistent-naquadah-biological-traces`.
-- Last published version: `0.3.58-dev`.
-- Last published tag: `v0.3.58-dev`.
-- Technical assembly version: `0.3.58.0`.
-- Final local revision: `r1`.
+- Starting tag: `v0.3.58-dev`.
+- Active branch: `feature/kara-kesh-kinetic-blast`.
+- Published branch: `feature/kara-kesh-kinetic-blast`.
+- Last published version: `0.3.59-dev`.
+- Last published tag: `v0.3.59-dev`.
+- Technical assembly version: `0.3.59.0`.
+- Final local revision: `r2`.
 - Publication status: validated, committed, tagged and published; the separate
   wiki is synchronized.
-- Next milestone: not selected. It must start from `v0.3.58-dev` on a dedicated
+- Next milestone: not selected. It must start from `v0.3.59-dev` on a dedicated
   branch.
 
 ## Current scope
 
-This milestone promotes the existing `SG1_NaquadahBlood` prototype into the
-shared persistent biological marker used by naquadah-reactive technology.
+This milestone adds one offensive mode to the existing Goa'uld kara kesh without
+bundling its remaining lore functions.
 
-A humanoid gains the marker when any of these acquired states is present:
+A biologically eligible wearer receives a targeted `Kinetic blast` / `Onde
+cinétique` gizmo while wearing `SG1_KaraKesh`. The blast:
 
-- recent or active adult Goa'uld-family symbiote hosting, including Goa'uld and
-  Tok'ra identities;
-- an implanted Jaffa Prim'ta;
-- an existing legacy `SG1_NaquadahBlood` gene from an older prototype save.
+- targets a hostile pawn within `10.9` cells and line of sight;
+- consumes `1.25` points from the same four-point shield-energy reserve;
+- deals `12` blunt damage with `0.25` armor penetration;
+- stuns the target for `120` ticks;
+- pushes it up to two walkable, unoccupied cells directly away from the wearer;
+- enters a `900`-tick cooldown;
+- pauses shield recharge through the same post-impact delay used by absorbed
+  attacks.
 
-The marker is deliberately never removed by normal gameplay. Adult symbiote
-extraction and Prim'ta removal therefore leave the former host biologically
-eligible. A reconciliation component scans map pawns, player caravans, faction
-leaders and world pawns on load and periodically, while lifecycle hooks apply
-the marker immediately to newly attached symbiotes.
+The action bypasses the ordinary outgoing-fire restriction because it is an
+internal kara kesh mode, not a weapon verb. It remains unavailable while the
+shield is resetting, while energy is insufficient, when the wearer is downed
+or when persistent biological naquadah traces are absent.
 
-`NaquadahTraceUtility` is the single gameplay service for checking eligibility.
-The kara kesh now activates only for a wearer carrying the persistent marker.
-An ineligible pawn may transport or wear the item, but receives no shield,
-energy gizmo or outgoing-fire restriction until biological eligibility exists.
+Hostile non-player wearers check for the closest valid hostile pawn every `60`
+ticks and may use the same implementation automatically. The added offensive
+power raises `SG1_GoauldSystemLordHost.combatPower` from `400` to `450`.
 
-The existing gene Def and texture remain stable for save compatibility. This
-revision does not add offensive kara kesh modes, nearby-symbiote detection,
-naquadah poisoning, gene-extractor restrictions or new factions.
+Neural attack, prolonged paralysis, torture and remote-control functions remain
+outside this milestone.
 
 ## Files and architecture
 
-- `Source/GateRimSG1/Goauld/NaquadahTraceUtility.cs` owns marker detection,
-  acquisition and technology eligibility.
-- `Source/GateRimSG1/Goauld/GameComponent_NaquadahTraceReconciler.cs` migrates
-  existing saves and reconciles known pawns.
-- adult symbiote and Prim'ta Hediff lifecycle hooks grant the marker before
-  removal can create a former host;
-- `Comp_KaraKeshShield` suppresses native shield behavior for ineligible
-  wearers without blocking inventory or apparel handling;
-- deterministic developer actions expose inspection, marker manipulation,
-  adult-symbiote and Prim'ta test states, and global reconciliation.
+- `Comp_KaraKeshShield` owns player targeting, cooldown persistence, shared
+  energy consumption, damage, stun, safe knockback and hostile AI use.
+- `CompProperties_KaraKeshShield` exposes all balance values through the
+  existing apparel Def.
+- `GoauldSystemLordShieldDebugActions` exposes deterministic inspection,
+  full-charge preparation, selected-wearer use and cooldown reset actions.
+- `GateRimDebugActionMenu` groups all kara kesh tests under the visible
+  `Kara kesh...` submenu.
+- the existing research and item remain save-compatible; no new Def identity or
+  research project is introduced.
 
-## Final r1 validation
+## Final r2 validation
 
 Load exactly:
 
@@ -68,60 +70,71 @@ Biotech
 GateRim SG-1
 ```
 
-Use a player colonist without `naquadah in the blood`. Open:
+Use open ground with clear line of sight. Pause the game while preparing the
+player test.
+
+1. On a player colonist, open:
 
 ```text
 Actions de débogage > GateRim SG-1 > Goa'uld... > Biological naquadah traces...
 ```
 
-1. Run `Equip kara kesh on target` on that colonist, then run `Inspect pawn trace state` and
-   confirm `persistentTrace=False` and `karaKeshEligible=False`. The vanilla
-   shield-energy gizmo must be absent.
+   Run `Equip kara kesh on target`, then `Apply persistent trace` if needed.
 2. Open:
 
 ```text
-Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh shield...
+Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 ```
 
-   Run `Apply ranged test hit` on the colonist. The hit must not be absorbed.
-3. Return to `Biological naquadah traces...`, run `Apply persistent trace` on
-   the same colonist, then inspect again. Confirm the gene appears and the
-   report shows `persistentTrace=True` and `karaKeshEligible=True`.
-4. Keep the colonist selected until the vanilla `Énergie du bouclier` /
-   `Shield energy` gizmo appears, then apply another ranged test hit. It must be
-   absorbed without injury.
-5. Run `Apply adult symbiote test state` on a second baseliner, inspect the
-   marker, then run `Remove adult symbiote test state`. The marker must remain
-   after removal and after save/reload.
-6. Spawn or select a compatible Jaffa, run `Apply Prim'ta test state`, inspect
-   the marker, then run `Remove Prim'ta test state`. The marker must remain.
-7. Check `Player.log` for new XML, Def, gene, Scribe or C# errors.
+   Run `Prepare kinetic blast test state`, then `Inspect kinetic blast state`
+   on the colonist. Confirm `trace=True`, an active shield, `4.00` energy and
+   zero cooldown.
+3. Run `Spawn hostile System Lord with kara kesh`. Keep the game paused and run
+   `Prepare kinetic blast test state` on the hostile Grand Master. Select the
+   colonist and use the visible `Onde cinétique` / `Kinetic blast` gizmo on the
+   hostile Grand Master within `10.9` cells.
+4. Confirm a visible flash and text, `12` blunt damage subject to armor, a short
+   stun, and a push of up to two cells when unobstructed. The target must never
+   be moved into a wall, occupied cell or outside the map.
+5. Inspect the colonist again. Energy must have fallen by about `1.25`, and the
+   cooldown must be close to `900` ticks. The gizmo must reject immediate reuse.
+6. Run `Reset kinetic blast cooldown` on the colonist, then place an obstacle
+   directly behind the target and fire again. Damage and stun must occur while
+   knockback stops at the last valid cell.
+7. Let the hostile Grand Master stand within range and unpause. Within roughly
+   `60` ticks it must use the same kinetic blast naturally against a hostile
+   player pawn, consuming its own energy and entering cooldown.
+8. Save during an active cooldown, reload and inspect both wearers. Cooldown and
+   remaining shield energy must persist.
+9. Confirm a pawn without persistent naquadah traces still has no active shield
+   or kinetic-blast gizmo, then inspect `Player.log` for new XML, Def, Scribe or
+   C# errors.
 
-Validation result: passed. Biological state, not faction or PawnKind, controls
-the stable marker and kara kesh activation. The untraced wearer remained
-ineligible, acquired traces activated the shield, adult-host and Prim'ta traces
-persisted after removal and save/reload, and `Player.log` remained clean.
+Validation result: passed. The targeted player action, shared-energy cost,
+cooldown refusal, safe knockback with and without an obstacle, hostile AI use,
+save/reload persistence and biological refusal all behaved as expected. No new
+XML, Def, Scribe or C# error was observed in `Player.log`.
 
 ## Optional regression checks
 
-- Spawn a hostile System Lord with the existing kara kesh action and confirm it
-  still receives the marker, active shield and all `0.3.57-dev` counterplay.
-- Generate or encounter a Tok'ra voluntary host and confirm reconciliation
-  grants the same marker.
-- Save a traced pawn in a caravan, reload and inspect the marker.
-- Remove the marker from an active host with the developer action, run
-  `Reconcile all known pawns` and confirm it is restored.
+- fire at a target behind a wall and confirm that it cannot be selected;
+- reduce shield energy below `1.25` and confirm the blast is disabled;
+- break the shield with `Apply EMP test hit` and confirm the blast remains
+  disabled throughout the `1800`-tick reset;
+- verify ordinary ranged weapons remain blocked while the shield is active;
+- verify melee and heat still bypass the shield;
+- test a map-edge target and a target directly diagonal from the wearer.
 
 ## Remaining uncertainty
 
-The implementation was rebuilt against RimWorld 1.6 and validated in game on
-local revision `r1`. The acquired marker remains a visible xenogene for
-compatibility with the existing prototype; interaction with Biotech gene
-extraction is outside this milestone and must be audited later if it becomes a
-practical exploit.
+The first `r1` rebuild failed only because `MapPawns.AllPawnsSpawned` exposes
+`IReadOnlyList<Pawn>` in RimWorld 1.6. Revision `r2` corrected that declaration,
+rebuilt successfully and passed the complete targeted test. No gameplay
+revision `r3` is required. The generic attack icon and placeholder kara kesh
+texture remain intentionally deferred to the global visual pass.
 
 ## Next action
 
-No gameplay revision `r2` is required and no `0.3.59-dev` scope is imposed by
-this closure. Select the next milestone only after rereading the durable
-roadmap, then create its dedicated branch directly from `v0.3.58-dev`.
+Apply the final documentation lock, run the prepublication checks and wait for
+explicit publication authorization before committing, tagging, pushing the
+branch or synchronizing the wiki.

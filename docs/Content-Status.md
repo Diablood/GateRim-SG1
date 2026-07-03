@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.58-dev - Add persistent biological naquadah traces`. Aucun jalon suivant n'est encore fixé.
+Dernier jalon publié : `0.3.59-dev - Add kara kesh kinetic blast`. Aucun jalon suivant n'est encore fixé.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 

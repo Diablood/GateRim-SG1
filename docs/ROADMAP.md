@@ -1,5 +1,40 @@
 # Roadmap
 
+## Jalon validé et publié — Onde cinétique du kara kesh (`0.3.59-dev`)
+
+- [x] Partir explicitement du tag publié `v0.3.58-dev` sur
+  `feature/kara-kesh-kinetic-blast`.
+- [x] Ajouter une seule fonction offensive ciblée sans regrouper attaque
+  neurale, paralysie, torture ou commandes distantes.
+- [x] Réutiliser le marqueur biologique persistant de naquadah comme unique
+  condition d'activation.
+- [x] Partager la réserve d'énergie avec le bouclier et imposer un coût de
+  `1.25`, une portée de `10.9` cases et un refroidissement de `900` ticks.
+- [x] Infliger un impact contondant lisible, un étourdissement court et un recul
+  sûr limité aux cellules praticables et inoccupées.
+- [x] Ajouter un ciblage joueur par gizmo et une utilisation autonome par les
+  Grands Maîtres hostiles.
+- [x] Porter le `combatPower` du Grand Maître de `400` à `450` pour refléter la
+  nouvelle capacité offensive.
+- [x] Ajouter les textes anglais/français, les diagnostics déterministes, la
+  documentation technique, les tests durables et le brouillon wiki.
+- [x] Corriger en `r2` l'échec de compilation `CS0266` de `r1` en utilisant le
+  type réel `IReadOnlyList<Pawn>` exposé par `MapPawns.AllPawnsSpawned`, sans
+  modification du gameplay.
+- [x] Exécuter un rebuild forcé `0.3.59.0` et les contrôles de cohérence.
+- [x] Valider en jeu le ciblage, l'énergie partagée, le cooldown, le recul sûr,
+  l'IA hostile, la sauvegarde/recharge et `Player.log` sur la révision finale `r2`.
+- [x] Publier la branche, le tag annoté `v0.3.59-dev` et le wiki après validation
+  et autorisation explicite.
+
+La révision finale `r2` est validée et publiée après correction du build de
+`r1`, rebuild forcé et tests en jeu, avec la branche dédiée, le tag annoté
+`v0.3.59-dev` et le wiki séparé synchronisé. Aucun correctif fonctionnel
+supplémentaire n'est requis et aucun périmètre `0.3.60-dev` n'est imposé par
+cette clôture. Les autres fonctions du kara kesh restent volontairement
+séparées afin que chaque mode conserve un coût, un contre-jeu et une couverture
+de tests propres.
+
 ## Jalon validé et publié — Traces biologiques persistantes de naquadah (`0.3.58-dev`)
 
 - [x] Partir explicitement du tag publié `v0.3.57-dev` sur

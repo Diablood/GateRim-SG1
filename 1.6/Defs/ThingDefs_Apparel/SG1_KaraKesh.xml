@@ -3,7 +3,7 @@
     <ThingDef ParentName="ApparelBase">
         <defName>SG1_KaraKesh</defName>
         <label>kara kesh</label>
-        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. This prototype implements its personal shield mode: it absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents the wearer from firing outward, while EMP forces a distinct audible and visible shutdown. The device's offensive, torture and remote-control functions are not yet implemented.</description>
+        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. It combines a personal shield with a focused kinetic blast. The shield absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents ordinary ranged weapons from firing outward, while EMP forces a distinct audible and visible shutdown. The kinetic blast consumes the same energy reserve to strike, stagger and push back a nearby hostile target. Neural attack, torture and remote-control functions are not yet implemented.</description>
         <thingClass>Apparel</thingClass>
         <graphicData>
             <texPath>Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh</texPath>
@@ -67,6 +67,14 @@
                 <energyOnReset>4</energyOnReset>
                 <startingTicksToReset>1800</startingTicksToReset>
                 <rechargeDelayAfterAbsorbedHitTicks>300</rechargeDelayAfterAbsorbedHitTicks>
+                <kineticBlastRange>10.9</kineticBlastRange>
+                <kineticBlastEnergyCost>1.25</kineticBlastEnergyCost>
+                <kineticBlastCooldownTicks>900</kineticBlastCooldownTicks>
+                <kineticBlastDamage>12</kineticBlastDamage>
+                <kineticBlastArmorPenetration>0.25</kineticBlastArmorPenetration>
+                <kineticBlastStunTicks>120</kineticBlastStunTicks>
+                <kineticBlastKnockbackCells>2</kineticBlastKnockbackCells>
+                <kineticBlastAiCheckIntervalTicks>60</kineticBlastAiCheckIntervalTicks>
             </li>
         </comps>
     </ThingDef>

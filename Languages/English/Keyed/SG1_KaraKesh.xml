@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_KaraKesh_KineticBlastLabel>Kinetic blast</GR_KaraKesh_KineticBlastLabel>
+    <GR_KaraKesh_KineticBlastDescription>Release a focused kinetic pulse at a hostile pawn within {0} cells. The blast consumes {1} shield energy, deals blunt damage, briefly stuns the target and may push it back. Cooldown: {2}.</GR_KaraKesh_KineticBlastDescription>
+    <GR_KaraKesh_KineticBlastReadyInspect>Kinetic blast: ready</GR_KaraKesh_KineticBlastReadyInspect>
+    <GR_KaraKesh_KineticBlastResettingInspect>Kinetic blast: unavailable while the shield resets</GR_KaraKesh_KineticBlastResettingInspect>
+    <GR_KaraKesh_KineticBlastLowEnergyInspect>Kinetic blast: insufficient shield energy</GR_KaraKesh_KineticBlastLowEnergyInspect>
+    <GR_KaraKesh_KineticBlastCooldownInspect>Kinetic blast: recharging ({0})</GR_KaraKesh_KineticBlastCooldownInspect>
+    <GR_KaraKesh_KineticBlastInvalidTarget>Choose a hostile pawn within range and line of sight.</GR_KaraKesh_KineticBlastInvalidTarget>
+    <GR_KaraKesh_KineticBlastUnavailable>The kara kesh kinetic blast is unavailable here.</GR_KaraKesh_KineticBlastUnavailable>
+    <GR_KaraKesh_KineticBlastNeedsNaquadah>Persistent biological naquadah traces are required to activate the kinetic blast.</GR_KaraKesh_KineticBlastNeedsNaquadah>
+    <GR_KaraKesh_KineticBlastIncapacitated>An incapacitated wearer cannot activate the kinetic blast.</GR_KaraKesh_KineticBlastIncapacitated>
+    <GR_KaraKesh_KineticBlastShieldResetting>The kara kesh is resetting after its shield collapsed.</GR_KaraKesh_KineticBlastShieldResetting>
+    <GR_KaraKesh_KineticBlastLowEnergy>The kinetic blast requires at least {0} shield energy.</GR_KaraKesh_KineticBlastLowEnergy>
+    <GR_KaraKesh_KineticBlastCooldown>The kinetic blast will be ready in {0}.</GR_KaraKesh_KineticBlastCooldown>
+    <GR_KaraKesh_KineticBlastUsed>{0} struck {1} with a kara kesh kinetic blast.</GR_KaraKesh_KineticBlastUsed>
+    <GR_KaraKesh_KineticBlastMote>Kinetic blast</GR_KaraKesh_KineticBlastMote>
+</LanguageData>

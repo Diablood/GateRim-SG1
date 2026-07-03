@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_KaraKesh_KineticBlastLabel>Onde cinétique</GR_KaraKesh_KineticBlastLabel>
+    <GR_KaraKesh_KineticBlastDescription>Libère une impulsion cinétique focalisée contre une cible hostile située à moins de {0} cases. L'onde consomme {1} point d'énergie du bouclier, inflige des dégâts contondants, étourdit brièvement la cible et peut la repousser. Recharge : {2}.</GR_KaraKesh_KineticBlastDescription>
+    <GR_KaraKesh_KineticBlastReadyInspect>Onde cinétique : prête</GR_KaraKesh_KineticBlastReadyInspect>
+    <GR_KaraKesh_KineticBlastResettingInspect>Onde cinétique : indisponible pendant la réinitialisation du bouclier</GR_KaraKesh_KineticBlastResettingInspect>
+    <GR_KaraKesh_KineticBlastLowEnergyInspect>Onde cinétique : énergie du bouclier insuffisante</GR_KaraKesh_KineticBlastLowEnergyInspect>
+    <GR_KaraKesh_KineticBlastCooldownInspect>Onde cinétique : recharge ({0})</GR_KaraKesh_KineticBlastCooldownInspect>
+    <GR_KaraKesh_KineticBlastInvalidTarget>Choisissez une cible hostile à portée et en ligne de vue.</GR_KaraKesh_KineticBlastInvalidTarget>
+    <GR_KaraKesh_KineticBlastUnavailable>L'onde cinétique du kara kesh n'est pas disponible ici.</GR_KaraKesh_KineticBlastUnavailable>
+    <GR_KaraKesh_KineticBlastNeedsNaquadah>Des traces biologiques persistantes de naquadah sont nécessaires pour activer l'onde cinétique.</GR_KaraKesh_KineticBlastNeedsNaquadah>
+    <GR_KaraKesh_KineticBlastIncapacitated>Un porteur neutralisé ne peut pas activer l'onde cinétique.</GR_KaraKesh_KineticBlastIncapacitated>
+    <GR_KaraKesh_KineticBlastShieldResetting>Le kara kesh se réinitialise après l'effondrement de son bouclier.</GR_KaraKesh_KineticBlastShieldResetting>
+    <GR_KaraKesh_KineticBlastLowEnergy>L'onde cinétique exige au moins {0} point d'énergie du bouclier.</GR_KaraKesh_KineticBlastLowEnergy>
+    <GR_KaraKesh_KineticBlastCooldown>L'onde cinétique sera prête dans {0}.</GR_KaraKesh_KineticBlastCooldown>
+    <GR_KaraKesh_KineticBlastUsed>{0} a frappé {1} avec l'onde cinétique du kara kesh.</GR_KaraKesh_KineticBlastUsed>
+    <GR_KaraKesh_KineticBlastMote>Onde cinétique</GR_KaraKesh_KineticBlastMote>
+</LanguageData>

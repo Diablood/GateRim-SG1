@@ -3547,3 +3547,146 @@ The concise active checklist is maintained in `docs/TESTING_CURRENT.md`. Durable
 - supported extraction restoring the stored host name while transferring the same Goa'uld symbiote identity;
 - unchanged ordinary Goa'uld host naming, Free Jaffa leader names, diplomacy, raids and world icons;
 - clean `Player.log`.
+
+## Kara kesh kinetic blast (`0.3.59-dev`)
+
+Validation finale terminée sur la révision `r2`, puis jalon publié sous
+`v0.3.59-dev`. `r1` a échoué au build sur le type de
+`MapPawns.AllPawnsSpawned`; `r2` a corrigé ce point sans changer le gameplay,
+puis validé l'activation joueur, l'énergie partagée, le cooldown, le recul sûr,
+l'usage autonome par l'IA, la sauvegarde/recharge et un `Player.log` propre.
+
+### Purpose
+
+Verify that the kara kesh kinetic blast uses the same biological eligibility
+and shield-energy reserve as the personal shield, remains safe around map
+obstacles and is available to both player and hostile AI wearers.
+
+### Starting state
+
+- RimWorld loaded with `Core`, `Harmony`, `Biotech`, then `GateRim SG-1`.
+- Developer mode enabled.
+- One player colonist on open ground.
+- No unrelated active combat if the player path is being isolated.
+
+### Procedure — player activation and shared energy
+
+Execution category: **Continuous session**.
+
+1. Open `Actions de débogage > GateRim SG-1 > Goa'uld... > Biological
+   naquadah traces...`.
+2. Run `Equip kara kesh on target` on the colonist, then `Apply persistent trace`
+   if required.
+3. Open `Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...`, run
+   `Prepare kinetic blast test state`, then run `Inspect kinetic blast state`
+   on the colonist.
+4. Confirm the report shows a persistent trace, active shield, exactly `4.00`
+   energy and `cooldownTicks=0`.
+5. Run `Spawn hostile System Lord with kara kesh`, pause immediately, run
+   `Prepare kinetic blast test state` on the hostile Grand Master, and keep both
+   pawns within `10.9` cells with clear line of sight.
+6. Select the colonist, click `Kinetic blast` / `Onde cinétique`, then click the
+   hostile Grand Master.
+7. Inspect the colonist again.
+
+### Expected result
+
+- The target receives a visible flash and floating kinetic-blast text.
+- The target takes `12` blunt damage before armor resolution, is stunned for
+  about two seconds and moves up to two free cells away from the wearer.
+- Shield energy falls by approximately `1.25`.
+- The cooldown begins at approximately `900` ticks and prevents immediate use.
+- The shield remains otherwise active unless the shared energy reserve was
+  already too low.
+
+### End state
+
+The same session may continue into obstacle and AI tests. Use `Reset kinetic
+blast cooldown` before a branch that requires immediate reuse.
+
+### Procedure — obstacle and map-safety regression
+
+Execution category: **Continuous session**.
+
+1. Run `Reset kinetic blast cooldown` on the player wearer.
+2. Place the hostile target with a wall, blocked door, occupied cell or map edge
+   directly behind it relative to the wearer.
+3. Fire the kinetic blast again.
+4. Repeat once with a diagonal target if convenient.
+
+### Expected result
+
+Damage and stun still apply. Knockback stops at the last walkable, unoccupied,
+in-bounds cell. The pawn is never moved into a wall, another pawn or outside the
+map, and no placement or pathing error is written to `Player.log`.
+
+### End state
+
+No reset is required unless the target dies or the kara kesh lacks energy.
+
+### Procedure — hostile AI activation
+
+Execution category: **Checkpoint reload** recommended.
+
+1. Load or create a checkpoint with a hostile System Lord wearing a kara kesh
+   and a player pawn within `10.9` cells in clear line of sight.
+2. Run `Prepare kinetic blast test state` on the hostile System Lord and confirm
+   the player pawn is hostile to it.
+3. Unpause and observe for at least `120` ticks.
+4. Inspect the System Lord with `Inspect kinetic blast state`.
+
+### Expected result
+
+Within approximately one `60`-tick AI interval, the System Lord uses the same
+kinetic blast against the nearest valid hostile pawn. Its own shield energy is
+reduced, its cooldown begins and the target receives the same damage, stun,
+visual feedback and safe knockback as the player path.
+
+### End state
+
+Create a save during cooldown for persistence testing.
+
+### Procedure — save and reload
+
+Execution category: **Checkpoint reload**.
+
+1. Save while a wearer has a non-zero kinetic-blast cooldown and less than full
+   shield energy.
+2. Reload the save.
+3. Run `Inspect kinetic blast state` on that wearer.
+4. Wait until the displayed cooldown finishes and use the blast again.
+
+### Expected result
+
+The remaining cooldown and shield energy survive reload. The action becomes
+available naturally after the serialized cooldown expires, without duplicate
+commands or permanent lockout.
+
+### End state
+
+The save remains suitable for shield regression checks.
+
+### Procedure — refusals and shield regression
+
+Execution category: **Continuous session**.
+
+1. Equip a kara kesh on a pawn without persistent biological naquadah traces.
+2. Select the pawn and inspect it.
+3. On an eligible wearer, reduce energy below `1.25`, then inspect the kinetic
+   command.
+4. Break the shield with `Apply EMP test hit` and inspect during reset.
+5. Recheck ordinary ranged firing, incoming melee and heat interactions.
+
+### Expected result
+
+- The untraced pawn receives neither active shield energy nor kinetic-blast
+  command.
+- Insufficient energy disables the blast with an explicit reason.
+- A resetting shield disables the blast until the native `1800`-tick reset
+  finishes.
+- Ordinary ranged weapons remain blocked by the active field.
+- Melee and heat continue to bypass the shield as before.
+
+### End state
+
+Review `Player.log` for new XML, Def, Scribe, targeting, placement or C# errors.

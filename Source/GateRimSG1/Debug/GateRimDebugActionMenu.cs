@@ -207,15 +207,35 @@ namespace GateRimSG1.Debugging
                     NaquadahTraceDebugActions.ReconcileAllKnownPawns,
                     100)));
             root.AddChild(MenuNode(
-                "Kara kesh shield...",
+                "Kara kesh...",
                 150,
                 ActionNode(
                     "Spawn kara kesh",
                     GoauldSystemLordShieldDebugActions.SpawnPersonalShield,
-                    200),
+                    700),
                 ActionNode(
                     "Spawn hostile System Lord with kara kesh",
                     GoauldSystemLordShieldDebugActions.SpawnHostileSystemLord,
+                    600),
+                PawnToolNode(
+                    "Inspect kinetic blast state",
+                    GoauldSystemLordShieldDebugActions
+                        .InspectKineticBlastState,
+                    500),
+                PawnToolNode(
+                    "Prepare kinetic blast test state",
+                    GoauldSystemLordShieldDebugActions
+                        .PrepareKineticBlastTestState,
+                    475),
+                PawnToolNode(
+                    "Use selected wearer's kinetic blast",
+                    GoauldSystemLordShieldDebugActions
+                        .UseSelectedWearerKineticBlast,
+                    450),
+                PawnToolNode(
+                    "Reset kinetic blast cooldown",
+                    GoauldSystemLordShieldDebugActions
+                        .ResetKineticBlastCooldown,
                     400),
                 PawnToolNode(
                     "Apply ranged test hit",

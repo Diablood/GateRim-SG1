@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.3.59-dev - Add kara kesh kinetic blast
+
+- Start from published tag `v0.3.58-dev` on
+  `feature/kara-kesh-kinetic-blast`.
+- Add a targeted kinetic-blast gizmo for biologically eligible kara kesh
+  wearers without introducing a second item or research project.
+- Share the existing four-point shield reserve: each blast costs `1.25` energy,
+  pauses recharge and enters a `900`-tick cooldown.
+- Limit targets to hostile pawns within `10.9` cells and direct line of sight.
+- Apply `12` blunt damage, `0.25` armor penetration, a `120`-tick stun and safe
+  knockback of up to two walkable, unoccupied cells.
+- Let hostile non-player wearers use the same implementation automatically on a
+  `60`-tick target check.
+- Persist the cooldown across save/reload and expose ready or recharge status in
+  the apparel inspection text.
+- Increase System Lord `combatPower` from `400` to `450` for the added offensive
+  control while preserving the shared-energy tradeoff.
+- Add English/French text, deterministic debug actions, technical documentation,
+  durable tests and an updated player-wiki draft.
+- Keep neural attack, prolonged paralysis, torture, remote control, area damage
+  and a dedicated gizmo icon outside this milestone.
+- Record the failed `r1` rebuild: RimWorld 1.6 exposes
+  `MapPawns.AllPawnsSpawned` as `IReadOnlyList<Pawn>`, not `List<Pawn>`.
+- Correct that compile-time collection declaration in cumulative local revision
+  `r2` without changing kinetic-blast behavior, balance or save data.
+- Validate final local revision `r2` after a forced `0.3.59.0` rebuild,
+  including player targeting, shared shield energy, cooldown refusal, safe
+  knockback, hostile AI use, save/reload persistence and a clean `Player.log`.
+- Publish branch `feature/kara-kesh-kinetic-blast`, annotated tag
+  `v0.3.59-dev` and the synchronized wiki.
+
 ## 0.3.58-dev - Add persistent biological naquadah traces
 
 - Start from published tag `v0.3.57-dev` on

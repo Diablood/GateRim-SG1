@@ -4,6 +4,8 @@
 
 `0.3.57-dev - Add System Lord kara kesh shield`
 
+Offensive extension: `0.3.59-dev - Add kara kesh kinetic blast`
+
 ## Design contract
 
 The first Goa'uld rank equipment is the `kara kesh`, a naquadah-powered hand
@@ -79,9 +81,11 @@ manufacture, matching the existing GateRim crafting-research convention.
 `0.3.58-dev`, it delegates native shield behavior only for a biologically
 eligible wearer; no Harmony combat patch is used.
 
-The kinetic blast, neural attack, paralysis and remote-control functions
-associated with the kara kesh remain deliberately deferred. They must be added
-as separate gameplay slices rather than bundled into the shield prototype.
+The focused kinetic blast is implemented separately in `0.3.59-dev` and uses
+the same component and shield-energy reserve. Neural attack, prolonged
+paralysis, torture and remote-control functions remain deliberately deferred.
+They must still be added as separate gameplay slices rather than bundled into
+the shield or kinetic prototype.
 
 Since `0.3.58-dev`, activation requires the shared persistent biological
 naquadah marker. Active Goa'uld and Tok'ra hosts, Prim'ta-bearing Jaffa and
@@ -89,12 +93,32 @@ former hosts qualify through `NaquadahTraceUtility`; faction and PawnKind are
 never used as substitutes. An ineligible pawn may carry or wear the device, but
 the field, energy gizmo and outgoing-fire block remain inactive.
 
+## Kinetic blast extension
+
+Since `0.3.59-dev`, an eligible wearer can release a focused kinetic pulse at a
+hostile pawn within `10.9` cells and line of sight. Each activation consumes
+`1.25` points from the same four-point shield reserve, pauses recharge and
+starts a `900`-tick cooldown. The target receives `12` blunt damage with `0.25`
+armor penetration, a `120`-tick stun and a safe push of up to two cells.
+
+Knockback checks every destination cell for map bounds, walkability and pawn
+occupancy. It stops before walls, occupied cells and map edges. The blast is an
+internal kara kesh mode rather than a ranged weapon verb, so it can fire from
+inside the active field while ordinary guns remain blocked.
+
+Hostile non-player wearers use the same method automatically against the nearest
+valid enemy on a `60`-tick check. The added control increases System Lord
+`combatPower` from `400` to `450`.
+
+Detailed architecture and tests are recorded in
+`docs/GOAULD_KARA_KESH_KINETIC_BLAST.md`.
+
 ## Final validation
 
 Use exactly:
 
 ```text
-Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh shield...
+Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 ```
 
 Run `Spawn hostile System Lord with kara kesh`, apply ten `Apply ranged test hit`
