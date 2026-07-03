@@ -27,7 +27,7 @@ It intentionally does not yet simulate:
 
 | Gene | Effect | Purpose |
 |---|---:|---|
-| `SG1_NaquadahBlood` | Marker only | Future technology restrictions and symbiote detection |
+| `SG1_NaquadahBlood` | Persistent acquired marker | Shared biological eligibility for naquadah-reactive technology; retained after extraction |
 | `SG1_GoauldLongevity` | `LifespanFactor ×5` | Provisional 500% lifespan expectancy |
 | `Immunity_Strong` | Vanilla gene | Improved disease resistance |
 | `WoundHealing_Fast` | Vanilla gene | Accelerated recovery |
@@ -91,3 +91,9 @@ Textures/UI/Genes/
 ```
 
 These local placeholders guarantee reliable texture paths during development.
+
+## Persistent biological traces since 0.3.58-dev
+
+The legacy xenotype Def still contains `SG1_NaquadahBlood`, but the same marker
+is now granted by adult-symbiote and Prim'ta lifecycle code. It remains after
+extraction and is used by the kara kesh through `NaquadahTraceUtility`.

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-        Marker gene for the naquadah traces present in a Goa'uld host's blood.
-        The XML-only prototype exposes the identity of the host. Future C#
-        systems can use this gene to restrict technologies and detect symbiotes.
+        Persistent acquired marker for biological naquadah traces. C# lifecycle
+        hooks grant it to adult Goa'uld/Tok'ra hosts and Prim'ta carriers, while
+        migration keeps it on former hosts and older saves.
     -->
     <GeneDef>
         <defName>SG1_NaquadahBlood</defName>
         <label>naquadah in the blood</label>
-        <description>The carrier's bloodstream contains traces of naquadah left by a Goa'uld symbiote. In this prototype, the gene acts as a visible marker. Future systems will use it for Goa'uld technology access and nearby-symbiote detection.</description>
+        <description>The carrier's bloodstream contains persistent traces of naquadah left by an adult Goa'uld-family symbiote or a Prim'ta. The marker remains after extraction and allows compatible Goa'uld technology to recognize the carrier.</description>
         <!-- Temporary GateRim placeholder until dedicated gene artwork is added. -->
         <iconPath>UI/Genes/SG1_NaquadahBlood</iconPath>
         <displayCategory>Miscellaneous</displayCategory>

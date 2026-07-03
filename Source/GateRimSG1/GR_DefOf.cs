@@ -11,6 +11,7 @@ namespace GateRimSG1
     public static class GR_DefOf
     {
         public static HediffDef SG1_GoauldRecentImplantation;
+        public static GeneDef SG1_NaquadahBlood;
         public static HediffDef SG1_GoauldHostSymbiote;
         public static PawnKindDef SG1_GoauldSymbiote;
         public static PawnKindDef SG1_TokraSymbiote;

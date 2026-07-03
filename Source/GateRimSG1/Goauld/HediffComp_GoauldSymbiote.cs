@@ -186,6 +186,9 @@ namespace GateRimSG1.Goauld
 
             EnsureDataInitialized();
             symbioteData.AttachToHost(Pawn, CurrentGameTick(), recordImplantationTick: true);
+            NaquadahTraceUtility.EnsurePersistentTrace(
+                Pawn,
+                "adult symbiote attachment");
 
             GR_Log.Message(
                 $"Attached Goa'uld symbiote {symbioteData.SymbioteId} "
@@ -211,6 +214,9 @@ namespace GateRimSG1.Goauld
 
                 EnsureDataInitialized();
                 symbioteData.AttachToHost(Pawn, CurrentGameTick(), recordImplantationTick: false);
+                NaquadahTraceUtility.EnsurePersistentTrace(
+                    Pawn,
+                    "loaded adult symbiote state");
 
                 GR_Log.Message(
                     $"Loaded Goa'uld symbiote {symbioteData.SymbioteId} "
@@ -221,6 +227,10 @@ namespace GateRimSG1.Goauld
         public override void CompPostPostRemoved()
         {
             base.CompPostPostRemoved();
+
+            NaquadahTraceUtility.EnsurePersistentTrace(
+                Pawn,
+                "former adult symbiote host");
 
             if (symbioteData == null)
             {

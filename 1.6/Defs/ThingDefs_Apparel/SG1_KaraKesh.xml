@@ -3,7 +3,7 @@
     <ThingDef ParentName="ApparelBase">
         <defName>SG1_KaraKesh</defName>
         <label>kara kesh</label>
-        <description>A Goa'uld hand device powered through a naquadah-based neural interface. This prototype implements its personal shield mode: it absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents the wearer from firing outward, while EMP forces a distinct audible and visible shutdown. The device's offensive, torture and remote-control functions are not yet implemented.</description>
+        <description>A Goa'uld hand device powered through a naquadah-based neural interface. Only a wearer carrying persistent biological naquadah traces can activate it. This prototype implements its personal shield mode: it absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents the wearer from firing outward, while EMP forces a distinct audible and visible shutdown. The device's offensive, torture and remote-control functions are not yet implemented.</description>
         <thingClass>Apparel</thingClass>
         <graphicData>
             <texPath>Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh</texPath>

@@ -2,6 +2,7 @@
 
 > Statut : Implémenté
 > Première version : 0.3.57-dev
+> Activation biologique : 0.3.58-dev
 
 ## Fonctionnement
 
@@ -36,8 +37,10 @@ Le bouclier n'est pas proposé par les marchands et n'apparaît pas comme objet
 aléatoire. Vaincre ou capturer un véritable Grand Maître constitue la source
 naturelle rare.
 
-Un exemplaire récupéré peut être utilisé immédiatement. Pour en fabriquer au
-banc d'usinage, la colonie doit terminer :
+Un exemplaire récupéré peut être porté immédiatement, mais son champ ne
+s'active que pour un pawn possédant des [traces biologiques persistantes de
+naquadah](Biological-Naquadah-Traces). Pour en fabriquer au banc d'usinage, la
+colonie doit terminer :
 
 ```text
 Armures Jaffa -> Kara kesh
@@ -59,7 +62,7 @@ neurale, une fonction de paralysie et diverses commandes à distance. Ces
 fonctions ne sont pas simulées par le prototype actuel et seront étudiées
 séparément afin de ne pas transformer un seul objet en solution universelle.
 
-Le lore réserve aussi son activation aux personnes portant des traces de
-naquadah. Cette restriction n'est pas encore appliquée : elle demandera un
-marqueur biologique commun aux Goa'uld, Tok'ra, Jaffa porteurs d'un Prim'ta et
-anciens hôtes, plutôt qu'une approximation fondée sur leur faction.
+Son activation est désormais réservée aux personnes portant des traces
+biologiques persistantes de naquadah : hôtes Goa'uld ou Tok'ra, Jaffa porteurs
+d'un Prim'ta et anciens hôtes. Un pawn non compatible peut transporter ou porter
+le gant, mais le champ et son indicateur d'énergie restent inactifs.

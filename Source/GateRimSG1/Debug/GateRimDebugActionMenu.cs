@@ -168,6 +168,45 @@ namespace GateRimSG1.Debugging
                     GoauldFreeSymbioteIncursionDebugActions.ForceAdvancedColonyScaling,
                     100)));
             root.AddChild(MenuNode(
+                "Biological naquadah traces...",
+                175,
+                PawnToolNode(
+                    "Inspect pawn trace state",
+                    NaquadahTraceDebugActions.InspectPawn,
+                    700),
+                PawnToolNode(
+                    "Equip kara kesh on target",
+                    NaquadahTraceDebugActions.EquipKaraKesh,
+                    650),
+                PawnToolNode(
+                    "Apply persistent trace",
+                    NaquadahTraceDebugActions.ApplyPersistentTrace,
+                    600),
+                PawnToolNode(
+                    "Remove persistent trace",
+                    NaquadahTraceDebugActions.RemovePersistentTrace,
+                    500),
+                PawnToolNode(
+                    "Apply adult symbiote test state",
+                    NaquadahTraceDebugActions.ApplyAdultSymbioteState,
+                    400),
+                PawnToolNode(
+                    "Remove adult symbiote test state",
+                    NaquadahTraceDebugActions.RemoveAdultSymbioteState,
+                    300),
+                PawnToolNode(
+                    "Apply Prim'ta test state",
+                    NaquadahTraceDebugActions.ApplyPrimtaState,
+                    200),
+                PawnToolNode(
+                    "Remove Prim'ta test state",
+                    NaquadahTraceDebugActions.RemovePrimtaState,
+                    150),
+                ActionNode(
+                    "Reconcile all known pawns",
+                    NaquadahTraceDebugActions.ReconcileAllKnownPawns,
+                    100)));
+            root.AddChild(MenuNode(
                 "Kara kesh shield...",
                 150,
                 ActionNode(

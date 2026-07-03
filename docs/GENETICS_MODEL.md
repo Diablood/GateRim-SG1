@@ -58,3 +58,11 @@ Jaffa × another germline xenotype
 ```
 
 Do not add forced maternal inheritance until vanilla hybrid behavior has been evaluated in game.
+
+## Acquired naquadah traces
+
+`SG1_NaquadahBlood` is a non-inheritable acquired marker, not a Jaffa lineage
+gene and not proof of current possession. Since `0.3.58-dev`, adult Goa'uld and
+Tok'ra hosts and Prim'ta carriers receive it automatically, and former hosts
+retain it after removal. It is the shared biological eligibility check for the
+kara kesh.

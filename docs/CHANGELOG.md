@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.3.58-dev - Add persistent biological naquadah traces
+
+- Start from published tag `v0.3.57-dev` on
+  `feature/persistent-naquadah-biological-traces`.
+- Promote `SG1_NaquadahBlood` from a visible prototype into the shared acquired
+  marker for biological naquadah eligibility.
+- Grant persistent traces to active Goa'uld and Tok'ra adult hosts and to Jaffa
+  carrying a Prim'ta.
+- Preserve the marker after adult symbiote extraction or Prim'ta removal so
+  former hosts remain biologically compatible.
+- Add immediate lifecycle hooks and a stateless reconciliation component for
+  existing saves, map pawns, player caravans, faction leaders and world pawns.
+- Centralize all eligibility checks in `NaquadahTraceUtility` instead of using
+  faction, hostility or PawnKind approximations.
+- Require persistent traces to activate the kara kesh shield while still
+  allowing any pawn to haul, store or wear the device.
+- Hide the shield field and energy gizmo, allow outgoing fire and bypass damage
+  absorption for an ineligible wearer.
+- Add bilingual descriptions, an inactive-wearer explanation, deterministic
+  debug tools, technical documentation, durable tests and a player-wiki draft.
+- Keep nearby-symbiote detection, trace quantity/decay, offensive kara kesh
+  modes and Biotech gene-extractor restrictions outside this milestone.
+- Validate final local revision `r1` after a forced `0.3.58.0` rebuild,
+  including inactive and active kara kesh states, persistent former-host traces,
+  save/reload behavior and a clean `Player.log`.
+- Publish branch `feature/persistent-naquadah-biological-traces`, annotated tag
+  `v0.3.58-dev` and the synchronized wiki.
+
 ## 0.3.57-dev - Add System Lord kara kesh shield
 
 - Start from published tag `v0.3.56-dev` on `feature/goauld-system-lord-personal-shield`.

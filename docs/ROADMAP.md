@@ -1,5 +1,36 @@
 # Roadmap
 
+## Jalon validé et publié — Traces biologiques persistantes de naquadah (`0.3.58-dev`)
+
+- [x] Partir explicitement du tag publié `v0.3.57-dev` sur
+  `feature/persistent-naquadah-biological-traces`.
+- [x] Auditer le marqueur prototype `SG1_NaquadahBlood` et conserver son Def
+  stable comme xénogène acquis visible.
+- [x] Centraliser l'éligibilité dans `NaquadahTraceUtility`, sans test de
+  faction, d'hostilité ou de PawnKind.
+- [x] Accorder la trace aux hôtes adultes Goa'uld et Tok'ra ainsi qu'aux Jaffa
+  portant un Prim'ta.
+- [x] Conserver définitivement la trace après extraction du symbiote adulte ou
+  retrait du Prim'ta.
+- [x] Réconcilier au chargement et périodiquement les pawns de carte, caravanes
+  joueur, dirigeants et pawns du monde.
+- [x] Restreindre l'activation du bouclier du kara kesh au marqueur biologique,
+  tout en autorisant le transport et le port de l'objet par un pawn non compatible.
+- [x] Ajouter des actions debug déterministes, les textes anglais/français, la
+  documentation technique, les tests et le brouillon wiki.
+- [x] Exécuter un rebuild forcé `0.3.58.0` et les contrôles de cohérence.
+- [x] Valider en jeu le porteur non tracé, l'acquisition, les anciens hôtes, le
+  Prim'ta, la sauvegarde/recharge et `Player.log` sur la révision finale `r1`.
+- [x] Publier la branche, le tag annoté `v0.3.58-dev` et le wiki après
+  validation et autorisation explicite.
+
+La révision finale `r1` est validée et publiée avec la branche dédiée, le tag
+annoté `v0.3.58-dev` et le wiki séparé synchronisé, sans correctif fonctionnel
+supplémentaire. Aucun périmètre `0.3.59-dev` n'est imposé par cette clôture. Les
+fonctions offensives du kara kesh, la détection des symbiotes proches, la
+quantité ou la décroissance des traces et les interactions avec l'extraction
+génétique Biotech restent hors périmètre.
+
 ## Jalon validé et publié — Kara kesh des Grands Maîtres (`0.3.57-dev`)
 
 - [x] Partir du tag publié `v0.3.56-dev` sur

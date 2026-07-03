@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.57-dev`
+> Dernière révision : `0.3.58-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -17,7 +17,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Traductions françaises du lot Jaffa | Implémenté | 0.1.4-dev |
 | Fondation du wiki joueur | Implémenté | 0.1.6-dev |
 | Xenotype `hôte Goa'uld` | Prototype testable | 0.1.7-dev |
-| Naquadah dans le sang | Marqueur prototype | 0.1.7-dev |
+| Naquadah dans le sang | Marqueur biologique acquis et persistant pour hôtes Goa'uld/Tok'ra, Jaffa avec Prim'ta, anciens hôtes et activation du kara kesh | 0.1.7-dev / persistance 0.3.58-dev |
 | Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
 | Implantation Goa'uld récente | État de santé temporaire testable | 0.1.11-dev |
@@ -73,7 +73,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire, nettoyage initial des affections chroniques biologiques et kara kesh réservé au Grand Maître | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 / kara kesh 0.3.57-dev |
-| Kara kesh Goa'uld | Gant de rang des Grands Maîtres dont le premier mode implémenté est un puissant bouclier : projectiles absorbés, mêlée et chaleur traversantes, rupture IEM, butin rare et fabrication après `Armures Jaffa` | 0.3.57-dev |
+| Kara kesh Goa'uld | Gant de rang des Grands Maîtres dont le premier mode implémenté est un puissant bouclier : projectiles absorbés, mêlée et chaleur traversantes, rupture IEM, butin rare, fabrication après `Armures Jaffa` et activation biologique par traces de naquadah | 0.3.57-dev / activation 0.3.58-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |

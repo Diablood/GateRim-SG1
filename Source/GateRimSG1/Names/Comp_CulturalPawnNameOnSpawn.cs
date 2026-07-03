@@ -38,6 +38,8 @@ namespace GateRimSG1.Names
                 ?.NotifyPawnSpawned(pawn);
             GameComponent_TokraHostPrototypeInitializer.Current
                 ?.NotifyPawnSpawned(pawn);
+            GameComponent_NaquadahTraceReconciler.Current
+                ?.NotifyPawnSpawned(pawn);
             GameComponent_CulturalPawnNameManager.Current
                 ?.NotifyPawnSpawned(pawn);
         }

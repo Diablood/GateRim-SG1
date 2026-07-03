@@ -1,3 +1,4 @@
+using GateRimSG1.Goauld;
 using Verse;
 
 namespace GateRimSG1.Jaffa
@@ -11,6 +12,10 @@ namespace GateRimSG1.Jaffa
         public override void CompPostPostAdd(DamageInfo? dinfo)
         {
             base.CompPostPostAdd(dinfo);
+
+            NaquadahTraceUtility.EnsurePersistentTrace(
+                Pawn,
+                "Prim'ta attachment");
 
             JaffaPrimtaUtility.RemovePrimtaDependency(
                 Pawn,
@@ -31,6 +36,10 @@ namespace GateRimSG1.Jaffa
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
+                NaquadahTraceUtility.EnsurePersistentTrace(
+                    Pawn,
+                    "loaded Prim'ta state");
+
                 GR_Log.Message(
                     $"Loaded Jaffa Prim'ta symbiote for "
                     + $"{JaffaPrimtaUtility.PawnDebugLabel(Pawn)}.");
@@ -40,6 +49,10 @@ namespace GateRimSG1.Jaffa
         public override void CompPostPostRemoved()
         {
             base.CompPostPostRemoved();
+
+            NaquadahTraceUtility.EnsurePersistentTrace(
+                Pawn,
+                "former Prim'ta carrier");
 
             GR_Log.Message(
                 $"Removed Jaffa Prim'ta symbiote from "

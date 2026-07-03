@@ -30,3 +30,10 @@ Les enfants d'un hôte Goa'uld ne doivent donc pas naître automatiquement poss�
 ## Tests de reproduction à venir
 
 Le comportement vanilla doit encore être observé pour les couples mixtes avant d'ajouter une règle spéciale de transmission maternelle.
+
+## Traces biologiques de naquadah
+
+Le gène acquis `naquadah dans le sang` sert depuis `0.3.58-dev` de marqueur
+persistant commun aux hôtes Goa'uld, aux Tok'ra et aux Jaffa porteurs d'un
+Prim'ta. Il n'est pas héréditaire et reste présent après extraction. Voir
+[Traces biologiques persistantes de naquadah](Biological-Naquadah-Traces).

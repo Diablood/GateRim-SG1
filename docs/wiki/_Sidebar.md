@@ -47,6 +47,7 @@
 
 - [Symbiotes](Symbiotes)
 - [Génétique](Genetics)
+- [Traces biologiques de naquadah](Biological-Naquadah-Traces)
 - [Implantation récente](Recent-Implantation)
 - [Chasse autonome](Autonomous-Hunt)
 - [Implantation forcée](Forced-Implantation)

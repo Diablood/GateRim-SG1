@@ -1,5 +1,32 @@
 # Testing checklist
 
+## 0.3.58-dev - Persistent biological naquadah traces
+
+Validation locale terminée sur la révision finale `r1`, sans correctif
+fonctionnel supplémentaire. Couverture durable :
+
+- ne jamais déduire l'éligibilité d'une faction, d'un rang, d'une hostilité ou
+  d'un PawnKind ;
+- accorder `SG1_NaquadahBlood` aux états d'hôte adulte récent ou actif, quelle
+  que soit l'origine Goa'uld ou Tok'ra du symbiote ;
+- accorder le même marqueur à un Jaffa portant `SG1_JaffaPrimta` ;
+- conserver la trace après extraction ou retrait du Prim'ta ;
+- migrer les sauvegardes existantes sans doublon sur les cartes, caravanes,
+  dirigeants et pawns du monde ;
+- vérifier qu'un porteur non tracé peut transporter et porter le kara kesh mais
+  ne bénéficie ni de l'absorption, ni du champ, ni du gizmo d'énergie ;
+- vérifier qu'un champ inactif ne bloque pas les tirs sortants ;
+- vérifier qu'après acquisition du marqueur le comportement complet
+  `0.3.57-dev` reprend sans régression ;
+- sauvegarder/recharger un ancien hôte et un Jaffa ancien porteur de Prim'ta ;
+- retirer artificiellement le marqueur d'un hôte actif puis vérifier sa
+  restauration par la réconciliation ;
+- inspecter `Player.log` pour les erreurs XML, Def, gène, Scribe, C# et bouclier.
+
+Limites durables : le marqueur reste un xénogène acquis visible pour compatibilité
+avec le prototype existant ; l'extraction ou la duplication génétique Biotech
+appartient à un audit séparé.
+
 ## 0.3.57-dev - System Lord kara kesh shield
 
 Validation locale finale `r5` réussie. `r2` a confirmé l'équipement d'un Grand

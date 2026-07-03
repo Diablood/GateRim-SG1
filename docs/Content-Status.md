@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.55-dev - Add Goa'uld extraction reprisals`. Une extraction active réussie provoque désormais une représaille persistante du domaine exact.
+Dernier jalon publié : `0.3.58-dev - Add persistent biological naquadah traces`. Aucun jalon suivant n'est encore fixé.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -16,7 +16,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Traductions françaises du lot Jaffa | Implémenté | 0.1.4-dev |
 | Fondation du wiki joueur | Implémenté | 0.1.6-dev |
 | Xenotype `hôte Goa'uld` | Prototype testable | 0.1.7-dev |
-| Naquadah dans le sang | Marqueur prototype | 0.1.7-dev |
+| Naquadah dans le sang | Marqueur biologique acquis et persistant pour hôtes Goa'uld/Tok'ra, Jaffa avec Prim'ta, anciens hôtes et activation du kara kesh | 0.1.7-dev / persistance 0.3.58-dev |
 | Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |
 | Incursion de symbiotes Goa'uld libres | Menace biologique récurrente : 1 à 4 symbiotes selon les points de menace, chasse autonome existante et avertissements RP anti-répétition | 0.3.39-dev |

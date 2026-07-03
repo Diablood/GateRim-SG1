@@ -75,17 +75,19 @@ manufacture, matching the existing GateRim crafting-research convention.
 - `GoauldSystemLordShieldDebugActions` provides item, pawn and damage tests.
 - the current raster is a temporary placeholder for the global visual pass.
 
-No custom combat component or Harmony patch is used. Native RimWorld shield
-semantics are sufficient for this milestone.
+`Comp_KaraKeshShield` remains a narrow `CompShield` subclass. Since
+`0.3.58-dev`, it delegates native shield behavior only for a biologically
+eligible wearer; no Harmony combat patch is used.
 
 The kinetic blast, neural attack, paralysis and remote-control functions
 associated with the kara kesh remain deliberately deferred. They must be added
 as separate gameplay slices rather than bundled into the shield prototype.
 
-Lore also limits activation to a user carrying naquadah traces. The current
-implementation does not enforce this yet because GateRim needs one durable marker
-that correctly covers active Goa'uld, Tok'ra, Prim'ta-bearing Jaffa and former
-hosts. A faction or PawnKind check would be an inaccurate substitute.
+Since `0.3.58-dev`, activation requires the shared persistent biological
+naquadah marker. Active Goa'uld and Tok'ra hosts, Prim'ta-bearing Jaffa and
+former hosts qualify through `NaquadahTraceUtility`; faction and PawnKind are
+never used as substitutes. An ineligible pawn may carry or wear the device, but
+the field, energy gizmo and outgoing-fire block remain inactive.
 
 ## Final validation
 
