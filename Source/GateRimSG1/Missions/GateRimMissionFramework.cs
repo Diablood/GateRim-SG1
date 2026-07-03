@@ -233,10 +233,8 @@ namespace GateRimSG1.Missions
                         + (capture.escortWarriorPawnKindDefName ?? "none")
                         + ", guard="
                         + (capture.escortGuardPawnKindDefName ?? "none")
-                        + ", count="
+                        + ", minimumCount="
                         + capture.escortMinimumCount
-                        + "-"
-                        + capture.escortMaximumCount
                         + ", threatFactor="
                         + capture.escortThreatFactor.ToString("0.00"));
                     builder.AppendLine(

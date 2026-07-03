@@ -60,7 +60,7 @@
             <mode>ThreatPointsScaled</mode>
             <pointsFactor>0.75</pointsFactor>
             <minimumPoints>220</minimumPoints>
-            <maximumPoints>1800</maximumPoints>
+            <maximumPoints>100000</maximumPoints>
         </difficulty>
         <capture>
             <worldObjectDefName>SG1_TokraJaffaOfficerCaptureSite</worldObjectDefName>
@@ -73,7 +73,6 @@
             <maximumTileDistance>18</maximumTileDistance>
             <mapSize>120</mapSize>
             <escortMinimumCount>2</escortMinimumCount>
-            <escortMaximumCount>10</escortMaximumCount>
             <escortThreatFactor>0.70</escortThreatFactor>
             <handoffDurationTicks>2500</handoffDurationTicks>
             <extractionPawnKindDefName>SG1_TokraVoluntaryHost</extractionPawnKindDefName>

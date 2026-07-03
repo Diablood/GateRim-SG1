@@ -8,6 +8,10 @@
 Un incident réservé aux outils développeur permet de faire arriver un
 véritable groupe hostile de Jaffa au service d'un Grand Maître Goa'uld.
 
+Depuis `0.3.53-dev-r2`, le worker commun force une arrivée à pied depuis le bord
+de carte pour les raids directs, d'enlèvement et de destruction. Les budgets de
+menace restent vanilla, mais les pods de transport ne sont jamais sélectionnés.
+
 ```text
 raid de test contrôlé de Jaffa Goa'uld
 ```

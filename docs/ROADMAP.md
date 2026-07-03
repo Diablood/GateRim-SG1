@@ -1,5 +1,44 @@
 # Roadmap
 
+## Dernier jalon validé et publié — Progression des menaces Goa'uld (`0.3.53-dev`)
+
+- [x] Partir du dernier tag validé `v0.3.52-dev` sur la branche dédiée
+  `feature/goauld-threat-progression-audit`.
+- [x] Fermer le pool des opérations Tok'ra à ses huit archétypes actuels.
+- [x] Réserver les évolutions Tok'ra aux correctifs et équilibrages révélés par
+  de futures parties longues.
+- [x] Écarter un catalogue de missions Goa'uld calqué sur le communicateur, la
+  confiance et les offres Tok'ra.
+- [x] Auditer les fondations Goa'uld déjà jouables avant de proposer une suite.
+- [x] Valider la direction fondée sur la pression des domaines, la hiérarchie,
+  la menace biologique et les conséquences des actions du joueur.
+- [x] Utiliser les points de menace vanilla comme source commune afin de rester
+  compatible avec la richesse, la difficulté et tous les storytellers.
+- [x] Remplacer les `500` points fixes de la menace interceptée par un
+  instantané vanilla persistant.
+- [x] Retirer les plafonds de début de partie des rencontres de combat déjà
+  fondées sur les points de menace.
+- [x] Faire progresser le relais entre bunker, station divisée et cour
+  fortifiée, avec garnison et renforts adaptés au même instantané.
+- [x] Ajouter un sous-menu de diagnostic et de raids reproductibles.
+- [x] Valider en `r1` la progression faible/avancée, les trois doctrines, la
+  menace interceptée et les comportements principaux ; relever l'arrivée
+  vanilla incohérente par pods à `4000` points.
+- [x] Forcer `EdgeWalkIn` dans le worker commun des raids Goa'uld/Jaffa sans
+  modifier les points ni les doctrines (`r2`).
+- [x] Valider en jeu l'arrivée à pied de `r2`, notamment à `4000` points, les
+  doctrines contrôlées, la menace interceptée et `Player.log`.
+- [x] Publier la branche, le tag annoté `v0.3.53-dev` et le wiki après
+  autorisation explicite.
+
+Le cadrage détaillé est conservé dans `docs/GOAULD_GAMEPLAY_DIRECTION.md` et
+l'audit technique dans `docs/GOAULD_THREAT_PROGRESSION.md`. Les doctrines
+naturelles d'enlèvement et de destruction restent désactivées jusqu'à leur
+propre jalon d'équilibrage.
+
+La révision finale `r2` est validée puis publiée avec la branche dédiée, le tag
+annoté `v0.3.53-dev` et le wiki séparé synchronisé.
+
 ## Dernier jalon validé et publié — Résumé des castes de faction Goa'uld (`0.3.52-dev`)
 
 - [x] Partir explicitement de `v0.3.51-dev` sur `feature/goauld-caste-world-summary`.
@@ -1097,6 +1136,34 @@ la future passe complète afin de conserver une direction artistique cohérente.
 - [ ] Créer un visuel conceptuel propre pour chaque objet important une fois son design définitif validé.
 - [ ] Ajouter les visuels définitifs au wiki et réutiliser les meilleurs pour la présentation Workshop.
 
+## Équipement Goa'uld et attributs de rang
+
+Cette passe fonctionnelle est distincte de la future finition visuelle. Elle ne
+doit commencer qu'après validation de la progression des menaces, car tout
+nouvel équipement modifie la valeur de combat réelle des hôtes et de leurs
+groupes.
+
+- [ ] Auditer le lore Goa'uld avant de choisir les objets, puis retenir
+  uniquement ceux qui créent un gameplay RimWorld lisible et équilibrable.
+- [ ] Étudier en priorité le bouclier personnel des Grands Maîtres, sans
+  reproduire une invulnérabilité permanente : capacité limitée, recharge,
+  fenêtres de vulnérabilité et contre-jeu doivent être définis avant le code.
+- [ ] Étudier séparément les dispositifs de main, technologies de contrôle,
+  soins avancés et autres attributs de rang ; ne pas regrouper artificiellement
+  plusieurs fonctions dans un seul objet.
+- [ ] Réserver les technologies les plus fortes aux Grands Maîtres ou à des
+  hôtes Goa'uld de haut rang ; les Jaffa ordinaires doivent conserver leur rôle
+  militaire propre.
+- [ ] Intégrer la puissance réelle dans `combatPower`, les budgets de menace,
+  la fréquence, la valeur marchande et la disponibilité comme butin.
+- [ ] Éviter que chaque raid fournisse automatiquement une technologie rare au
+  joueur ; définir l'acquisition, la récupération et les éventuelles
+  restrictions dans le même jalon que l'objet.
+- [ ] Tester chaque objet contre les armes vanilla, les armes GateRim SG-1, le
+  corps à corps, l'IEM lorsque pertinent, les caravanes et la sauvegarde.
+- [ ] Conserver des textures provisoires jusqu'à la passe visuelle globale,
+  avec des chemins stables préparés pour les futurs assets définitifs.
+
 ## Opérations Tok'ra organiques
 
 Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations existantes doivent rester récurrentes, anti-répétitives et compatibles avec les sauvegardes créées à partir de cette base.
@@ -1104,7 +1171,10 @@ Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations 
 - [ ] Continuer à tester les huit archétypes récurrents sur les parties longues : observation, renseignements, agent blessé, remise médicale, appel de détresse, livraison à une base temporaire, assaut de diversion Goa'uld/Jaffa et capture d'un officier Jaffa.
 - [x] Ajouter un premier nouvel archétype réellement distinct après les six opérations publiées : assaut de diversion Goa’uld/Jaffa (`0.3.34-dev`, publié sous `v0.3.34-dev`).
 - [x] Ajouter un deuxième archétype distinct fondé sur une cible vivante : capture d'un officier Jaffa (`0.3.37-dev`, publié sous `v0.3.37-dev`).
-- [ ] Continuer ensuite à enrichir le pool avec des archétypes réellement distincts, sans dupliquer les mêmes actions sous un autre texte.
+- [x] Fermer le pool à ces huit archétypes : aucun neuvième type d'opération
+  Tok'ra n'est actuellement prévu.
+- [ ] Corriger uniquement les défauts, déséquilibres ou instructions ambiguës
+  révélés naturellement par les futures parties longues.
 - [ ] Conserver une seule opération organique visible à la fois sur le communicateur.
 - [ ] Ne jamais révéler en jeu normal le catalogue des opérations, les pondérations, les délais cachés ou l'historique technique.
 - [ ] Réserver les diagnostics complets au mode développeur RimWorld ou à l'option avancée GateRim SG-1.

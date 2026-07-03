@@ -41,6 +41,10 @@ canTimeoutOrFlee = true
 The faction is set explicitly before delegating to vanilla
 `IncidentWorker_RaidEnemy`.
 
+Since `0.3.53-dev-r2`, the shared worker also forces vanilla `EdgeWalkIn`.
+Higher threat budgets can increase the force but never switch Goa'uld/Jaffa
+raids to transport-pod arrivals.
+
 ## Why generic vanilla faction selection stays blocked
 
 The Goa'uld faction keeps:

@@ -1437,6 +1437,10 @@ namespace GateRimSG1.Goauld
             site.Tile = siteTile;
             site.SetFaction(tokraFaction);
 
+            (site as WorldObject_TokraDecodedMissionSite)
+                ?.InitializeThreatPoints(
+                    StorytellerUtility.DefaultThreatPointsNow(map));
+
             Find.WorldObjects.Add(site);
             MarkFirstTrustMissionWorldSiteRevealed(
                 "decoded Tok'ra mission lead");

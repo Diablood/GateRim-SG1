@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.3.53-dev - Audit Goa'uld threat progression
+
+- Start from published tag `v0.3.52-dev` on `feature/goauld-threat-progression-audit`.
+- Adopt RimWorld's vanilla threat points as the common difficulty source for existing Goa'uld raids, hostile sites and reprisals, independent of the active storyteller.
+- Replace the intercepted-threat system's fixed `500` points with a persistent snapshot captured when the warning begins.
+- Resolve missing natural-raid points from the current vanilla storyteller while keeping explicit developer-test points deterministic.
+- Remove early-game combat ceilings from the introduction, distress, Jaffa-officer capture, temporary-delivery and diversion encounters while retaining their encounter factors and minimum forces.
+- Store relay-sabotage difficulty on the world site before travel, scale its defenders and reinforcements without the previous eight/three-pawn caps, and align the generated Jaffa ratio more closely with the faction Combat group.
+- Select a command bunker, split relay station or walled courtyard from increasing defender-point tiers instead of choosing one fixed layout randomly.
+- Preserve the intentional one-to-four free-symbiote cap because implantation creates persistent biological consequences.
+- Keep natural abduction/destruction doctrines disabled and defer approved ultimatum and rival-domain systems to dedicated future milestones.
+- Add an exact developer submenu, technical documentation, durable tests and synchronized player-wiki drafts.
+- Record successful `r1` threat-scaling tests and force every shared Goa'uld/Jaffa raid path to vanilla `EdgeWalkIn`, preventing high-point drop-pod arrivals without changing force size or doctrine.
+- Validate final local revision `r2`: advanced direct raid, controlled abduction/destruction doctrines and intercepted raid all arrive from the map edge without pods; scaling, doctrine behavior and `Player.log` are accepted.
+- Publish branch `feature/goauld-threat-progression-audit`, annotated tag `v0.3.53-dev` and the synchronized wiki.
+
 ## 0.3.52-dev - Add the Goa'uld faction caste summary
 
 - Start from final annotated tag `v0.3.51-dev` on `feature/goauld-caste-world-summary`.

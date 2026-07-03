@@ -90,6 +90,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans fallback ni activation des raids naturels | 0.1.70-dev |
 | Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |
 | Raid de destruction Jaffa Goa'uld contrôlé | Incident développeur séparé : assaut militaire prolongé, puis récupération opportuniste de captifs et d'objets de valeur avant extraction | 0.1.72-dev |
+| Progression des menaces Goa'uld | Raids, menaces interceptées et sites hostiles fondés sur les points vanilla du storyteller ; plafonds de début de partie retirés et relais fortifié selon trois paliers | 0.3.53-dev |
 | Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre de rendu du personnage, sans gène actif, équipement ou statistique ; stockage persistant dédié par personnage | 0.1.73-dev / stockage dédié 0.1.74-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
@@ -99,8 +100,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | État |
 |---|---|
-| Transfert entre hôtes | Prévu |
-| Extraction Tok'ra | Prévu |
+| Transfert entre hôtes | Le cycle persistant extraction puis réimplantation conserve le même symbiote ; aucun transfert direct d'un hôte à l'autre n'est actuellement planifié |
+| Extraction Tok'ra | Disponible dans le système persistant commun ; l'ancienne mention comme fonctionnalité absente était obsolète |
 | Résistance Tok'ra | Prévu |
 | Réplicateurs | Prévu |
 | Intégration optionnelle Ideology | Prévu |
@@ -115,7 +116,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Piste de mission Tok'ra décodée | Après analyse des renseignements codés, la cellule Tok'ra reprend contact et confirme une piste opérationnelle limitée autour d'un relais Goa'uld isolé | 0.2.41-dev |
 | Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
 | Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
-| Icônes thématiques simplifiées pour les factions du mod | Prévu : expédition du SGC, Jaffa libres, Domaines des Grands Maîtres Goa'uld et futures factions |
+| Icônes thématiques simplifiées pour les factions du mod | Publié dans `0.3.50-dev` pour le SGC, les Jaffa libres et les Domaines Goa'uld, avec conservation de l'icône Tok'ra existante |
+| Équipement Goa'uld de haut rang | Prévu après audit du lore et de l'équilibrage : bouclier personnel limité de Grand Maître en premier candidat, puissance intégrée aux budgets de menace et acquisition non systématique |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
 
 

@@ -20,6 +20,9 @@ namespace GateRimSG1.Goauld
         private int ticksRemaining = DurationTicks;
         private bool operationLaunched;
         private bool operationFailed;
+        private float threatPoints;
+
+        public float ThreatPoints => threatPoints;
 
         public override void ExposeData()
         {
@@ -37,6 +40,18 @@ namespace GateRimSG1.Goauld
                 ref operationFailed,
                 "tokraRelaySabotageOperationFailed",
                 false);
+            Scribe_Values.Look(
+                ref threatPoints,
+                "tokraRelaySabotageThreatPoints",
+                0f);
+        }
+
+        public void InitializeThreatPoints(float points)
+        {
+            if (threatPoints <= 0f && points > 0f)
+            {
+                threatPoints = points;
+            }
         }
 
         protected override void Tick()
@@ -269,6 +284,9 @@ namespace GateRimSG1.Goauld
                     historical: false);
                 return;
             }
+
+            InitializeThreatPoints(
+                StorytellerUtility.DefaultThreatPointsNow(caravan));
 
             LongEventHandler.QueueLongEvent(
                 delegate

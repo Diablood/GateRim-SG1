@@ -57,7 +57,7 @@ conservation.
 
 ## Développements encore prévus
 
-- transfert d'un symbiote adulte actif vers un nouvel hôte ;
-- extraction spécialisée d'un hôte déjà totalement converti ;
+- transfert direct d'un symbiote adulte entre deux hôtes sans extraction et
+  réimplantation intermédiaires ;
 - règles biologiques propres aux Unas ;
 - approfondissement des relations entre personnalité de l'hôte et symbiote.

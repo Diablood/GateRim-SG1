@@ -677,10 +677,9 @@ namespace GateRimSG1.Goauld
             if (definition?.introduction != null)
             {
                 builder.AppendLine(
-                    "Introduction defenders: "
+                    "Introduction defender minimum: "
                     + definition.introduction.defenderMinimumCount
-                    + "-"
-                    + definition.introduction.defenderMaximumCount);
+                    + "; no custom maximum");
             }
 
             builder.AppendLine(

@@ -44,7 +44,7 @@
             <mode>ThreatPointsSnapshot</mode>
             <pointsFactor>0.35</pointsFactor>
             <minimumPoints>180</minimumPoints>
-            <maximumPoints>650</maximumPoints>
+            <maximumPoints>100000</maximumPoints>
         </difficulty>
         <introduction>
             <worldObjectDefName>SG1_TokraIntroductionArtifactWorldSite</worldObjectDefName>
@@ -52,7 +52,6 @@
             <maximumTileDistance>18</maximumTileDistance>
             <mapSize>120</mapSize>
             <defenderMinimumCount>2</defenderMinimumCount>
-            <defenderMaximumCount>6</defenderMaximumCount>
             <preferredEntryRadius>18</preferredEntryRadius>
             <deadlineWarningTicks>60000</deadlineWarningTicks>
         </introduction>

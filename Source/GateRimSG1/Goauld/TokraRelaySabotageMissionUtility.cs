@@ -12,14 +12,10 @@ namespace GateRimSG1.Goauld
         private const float DefenderThreatFactor = 0.80f;
         private const float ReinforcementThreatFactor = 0.25f;
         private const float MinimumDefenderPoints = 180f;
-        private const float MaximumDefenderPoints = 900f;
         private const float MinimumReinforcementPoints = 100f;
-        private const float MaximumReinforcementPoints = 300f;
         private const int MinimumDefenderCount = 2;
         private const int DefenderAssaultDelayTicks = 25000;
-        private const int MaximumDefenderCount = 8;
         private const int MinimumReinforcementCount = 1;
-        private const int MaximumReinforcementCount = 3;
         private const int RetaliationDelayMinTicks = 120000;
         private const int RetaliationDelayMaxTicks = 360000;
         private const int RetaliationRetryTicks = 120000;
@@ -44,10 +40,12 @@ namespace GateRimSG1.Goauld
 
             Faction goauldFaction = GoauldSystemLordFactionUtility
                 .GetOrCreateFaction("Tok'ra relay sabotage mission");
+            float defenderPoints = GetInitialDefenderPoints(map, parent);
             TokraRelaySabotageSiteLayoutResult layout =
                 TokraRelaySabotageSiteLayoutUtility.Generate(
                     map,
-                    goauldFaction);
+                    goauldFaction,
+                    defenderPoints);
             Thing relay = TrySpawnRelayDevice(
                 map,
                 layout?.RelayCell ?? map.Center,
@@ -58,11 +56,10 @@ namespace GateRimSG1.Goauld
                 List<Pawn> defenders = SpawnJaffaGroup(
                     map,
                     goauldFaction,
-                    GetInitialDefenderPoints(map),
+                    defenderPoints,
                     layout?.DefenderRootCell ?? map.Center,
                     8,
                     MinimumDefenderCount,
-                    MaximumDefenderCount,
                     assaultImmediately: false);
 
                 if (defenders.Count == 0)
@@ -252,7 +249,6 @@ namespace GateRimSG1.Goauld
                 entryCell,
                 6,
                 MinimumReinforcementCount,
-                MaximumReinforcementCount,
                 assaultImmediately: true);
 
             if (reinforcements.Count == 0)
@@ -521,7 +517,6 @@ namespace GateRimSG1.Goauld
             IntVec3 rootCell,
             int spawnRadius,
             int minimumCount,
-            int maximumCount,
             bool assaultImmediately)
         {
             List<Pawn> spawnedPawns = new List<Pawn>();
@@ -539,8 +534,7 @@ namespace GateRimSG1.Goauld
             int pawnCount = CalculatePawnCount(
                 points,
                 warriorKind ?? guardKind,
-                minimumCount,
-                maximumCount);
+                minimumCount);
 
             if (!rootCell.IsValid || !rootCell.InBounds(map))
             {
@@ -664,7 +658,7 @@ namespace GateRimSG1.Goauld
             PawnKindDef warriorKind,
             PawnKindDef guardKind)
         {
-            if (guardKind != null && (warriorKind == null || index % 3 == 2))
+            if (guardKind != null && (warriorKind == null || index % 5 == 4))
             {
                 return guardKind;
             }
@@ -675,8 +669,7 @@ namespace GateRimSG1.Goauld
         private static int CalculatePawnCount(
             float points,
             PawnKindDef referenceKind,
-            int minimumCount,
-            int maximumCount)
+            int minimumCount)
         {
             float combatPower = referenceKind?.combatPower ?? 100f;
 
@@ -690,11 +683,6 @@ namespace GateRimSG1.Goauld
             if (count < minimumCount)
             {
                 return minimumCount;
-            }
-
-            if (count > maximumCount)
-            {
-                return maximumCount;
             }
 
             return count;
@@ -716,39 +704,55 @@ namespace GateRimSG1.Goauld
             return CellFinder.RandomCell(map);
         }
 
-        private static float GetInitialDefenderPoints(Map map)
+        private static float GetInitialDefenderPoints(
+            Map map,
+            WorldObject_TokraDecodedMissionSite parent)
         {
-            return ClampPoints(
-                StorytellerUtility.DefaultThreatPointsNow(map)
-                    * DefenderThreatFactor,
-                MinimumDefenderPoints,
-                MaximumDefenderPoints);
+            float sourcePoints = parent?.ThreatPoints ?? 0f;
+
+            if (!(sourcePoints > 0f))
+            {
+                sourcePoints = StorytellerUtility.DefaultThreatPointsNow(map);
+                parent?.InitializeThreatPoints(sourcePoints);
+            }
+
+            return CalculateDefenderPoints(sourcePoints);
         }
 
         private static float GetReinforcementPoints(Map map)
         {
-            return ClampPoints(
-                GetInitialDefenderPoints(map) * ReinforcementThreatFactor,
+            WorldObject_TokraDecodedMissionSite parent
+                = map?.Parent as WorldObject_TokraDecodedMissionSite;
+            return Math.Max(
                 MinimumReinforcementPoints,
-                MaximumReinforcementPoints);
+                GetInitialDefenderPoints(map, parent)
+                    * ReinforcementThreatFactor);
         }
 
-        private static float ClampPoints(
-            float points,
-            float minimum,
-            float maximum)
+        internal static float CalculateDefenderPoints(float sourcePoints)
         {
-            if (points < minimum)
-            {
-                return minimum;
-            }
+            return Math.Max(
+                MinimumDefenderPoints,
+                sourcePoints * DefenderThreatFactor);
+        }
 
-            if (points > maximum)
-            {
-                return maximum;
-            }
+        internal static float CalculateReinforcementPoints(float sourcePoints)
+        {
+            return Math.Max(
+                MinimumReinforcementPoints,
+                CalculateDefenderPoints(sourcePoints)
+                    * ReinforcementThreatFactor);
+        }
 
-            return points;
+        internal static int CalculateJaffaCount(
+            float points,
+            int minimumCount)
+        {
+            return CalculatePawnCount(
+                points,
+                GR_DefOf.SG1_GoauldJaffaWarrior
+                    ?? GR_DefOf.SG1_GoauldJaffaGuard,
+                minimumCount);
         }
     }
 }

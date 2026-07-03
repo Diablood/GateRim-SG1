@@ -120,6 +120,4 @@ Restent prévus :
 
 - backstories hors-monde dédiées ;
 - vêtements Goa'uld propres ;
-- extraction des hôtes actifs ;
 - enrichissement de l'identité sociale ;
-- icônes thématiques des factions.

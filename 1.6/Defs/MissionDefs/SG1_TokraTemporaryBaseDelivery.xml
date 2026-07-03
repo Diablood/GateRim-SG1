@@ -51,13 +51,13 @@
             <interceptionRetryTicks>2500</interceptionRetryTicks>
             <interceptionThreatFactor>0.65</interceptionThreatFactor>
             <interceptionMinimumPoints>120</interceptionMinimumPoints>
-            <interceptionMaximumPoints>2500</interceptionMaximumPoints>
+            <interceptionMaximumPoints>100000</interceptionMaximumPoints>
             <destinationCompromiseIncidentDefName>SG1_TokraTemporaryBaseDeliveryDestinationCompromise</destinationCompromiseIncidentDefName>
             <destinationCompromiseChance>0.25</destinationCompromiseChance>
             <destinationCompromiseRetryTicks>2500</destinationCompromiseRetryTicks>
             <destinationCompromiseThreatFactor>0.80</destinationCompromiseThreatFactor>
             <destinationCompromiseMinimumPoints>150</destinationCompromiseMinimumPoints>
-            <destinationCompromiseMaximumPoints>2800</destinationCompromiseMaximumPoints>
+            <destinationCompromiseMaximumPoints>100000</destinationCompromiseMaximumPoints>
             <candidates>
                 <li>
                     <thingDefName>Apparel_Pants</thingDefName>

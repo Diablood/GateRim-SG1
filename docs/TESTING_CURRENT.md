@@ -1,3 +1,66 @@
+# Validation terminée - 0.3.53-dev
+
+Jalon : `0.3.53-dev - Audit Goa'uld threat progression`
+
+Branche : `feature/goauld-threat-progression-audit`
+
+Base : `v0.3.52-dev` (`3830be6`)
+
+Version de DLL attendue : `0.3.53.0`
+
+Révision locale : `r2`
+
+Statut : révision finale `r2` validée. `r1` a validé la progression puis révélé
+les pods à `4000` points ; `r2` impose l'arrivée à pied sans régression. La
+branche et le tag annoté `v0.3.53-dev` sont publiés.
+
+Charger dans cet ordre :
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+## Test principal r2
+
+Utiliser une sauvegarde permettant de recharger le même état avant chaque
+raid. Ouvrir exactement :
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
+```
+
+1. Cliquer sur `Force advanced direct raid (4000 points)`.
+2. Vérifier que toute la force arrive à pied depuis un bord de carte, sans aucun pod de transport.
+3. Recharger entre chaque essai, puis tester `Force current abduction raid` et `Force current destruction raid`.
+4. Vérifier la même arrivée à pied tout en conservant les comportements distincts de capture et de destruction.
+5. Ouvrir `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Safehouse and intelligence chain...` > `Threat intelligence...` > `Create threat`.
+6. Attendre le court délai et vérifier que la force annoncée arrive elle aussi à pied depuis un bord de carte.
+7. Contrôler `Player.log` et l'absence de nouvelle erreur rouge C#, XML, arrivée de pawns ou Lord.
+
+Résultat attendu : tous les raids Goa'uld/Jaffa du worker commun utilisent
+`EdgeWalkIn`, même à `4000` points, sans régression de taille ou de doctrine.
+
+Résultat : validé par le mainteneur, y compris le raid avancé, les doctrines
+d'enlèvement/destruction, la menace interceptée et `Player.log`.
+
+## Régression optionnelle du relais
+
+1. Ouvrir `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Safehouse and intelligence chain...` > `Decoded lead...` > `Reveal site`.
+2. Envoyer normalement une caravane sur le site révélé et lancer l'opération avec l'action normale du site.
+3. Comparer la garnison et le plan au rapport `Show current progression` : `command bunker` sous `600` points de défense, `split relay station` de `600` à `1399`, `walled relay courtyard` à partir de `1400`.
+4. Vérifier le sabotage, l'arrivée des renforts, l'évacuation et la sauvegarde/recharge.
+
+## Régression optionnelle des colonies Goa'uld
+
+1. Attaquer une colonie Goa'uld depuis une sauvegarde jeune ou peu riche et noter approximativement la garnison et les défenses.
+2. Recommencer contre une autre colonie Goa'uld depuis une sauvegarde avancée et riche, avec les mêmes réglages de storyteller.
+3. Vérifier que la génération vanilla `Settlement` produit une base clairement plus forte, et non la même petite garnison fixe.
+
+---
+
 # Validation terminée - 0.3.52-dev
 
 Jalon : `0.3.52-dev - Add the Goa'uld faction caste summary`

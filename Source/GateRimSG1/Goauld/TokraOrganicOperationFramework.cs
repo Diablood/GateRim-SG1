@@ -778,11 +778,9 @@ namespace GateRimSG1.Goauld
                     missing.Add("survivor count range");
                 }
 
-                if (profile.defenderMinimumCount <= 0
-                    || profile.defenderMaximumCount
-                        < profile.defenderMinimumCount)
+                if (profile.defenderMinimumCount <= 0)
                 {
-                    missing.Add("defender count range");
+                    missing.Add("defender minimum count");
                 }
 
                 if (profile.genuineRescueWeight < 0f
@@ -1562,8 +1560,6 @@ namespace GateRimSG1.Goauld
                 }
 
                 if (profile.escortMinimumCount <= 0
-                    || profile.escortMaximumCount
-                        < profile.escortMinimumCount
                     || profile.escortThreatFactor <= 0f)
                 {
                     missing.Add("adaptive escort profile");

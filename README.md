@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.52-dev`
+- Development version: `0.3.53-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -51,6 +51,9 @@ people, factions, technologies, biology and conflicts surrounding it.
   its host's faction allegiance and turn the former colonist hostile. A
   captured active host can now undergo a difficult extraction surgery that
   restores the displaced host and removes the same symbiote alive.
+- Goa'uld raids, intercepted threats and hostile mission sites that consume
+  RimWorld's vanilla threat progression; relay installations grow from a
+  bunker into larger fortified layouts as the defender budget increases.
 - Persistent Goa'uld and Tok'ra symbiote identities, implantation, extraction
   and player-controlled Tok'ra host/symbiote personality switching. Emergency
   extraction before conversion preserves the host and the symbiote's original

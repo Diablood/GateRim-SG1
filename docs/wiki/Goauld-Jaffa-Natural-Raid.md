@@ -34,6 +34,10 @@ enlèvement opportuniste désactivé
 Les Jaffa attaquent directement la colonie avec leurs Ma'Tok et leurs armures
 modulaires.
 
+Depuis `0.3.53-dev-r2`, ils arrivent toujours à pied depuis un bord de carte.
+Une difficulté élevée augmente la force sans activer les pods vanilla, qui ne
+correspondent pas au transport Goa'uld retenu pour GateRim SG-1.
+
 ## Butin
 
 Les armes et équipements portés par les Jaffa vaincus peuvent devenir une

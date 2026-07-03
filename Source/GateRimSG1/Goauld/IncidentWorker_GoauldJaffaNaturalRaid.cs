@@ -30,6 +30,13 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        protected override float ResolveMissingRaidPoints(Map map)
+        {
+            return map == null
+                ? 0f
+                : StorytellerUtility.DefaultThreatPointsNow(map);
+        }
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             return base.CanFireNowSub(parms)

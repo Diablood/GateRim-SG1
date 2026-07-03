@@ -18,7 +18,7 @@ namespace GateRimSG1.Goauld
         private const int MaximumAttackDelayTicks = 180000;
         private const int DebugAttackDelayTicks = 5000;
         private const int TriggerCheckIntervalTicks = 2500;
-        private const float DefaultRaidPoints = 500f;
+        private const float LegacyDefaultRaidPoints = 500f;
         private const string DelayedRaidIncidentDefName = "SG1_GoauldJaffaNaturalRaid";
 
         private bool interceptedThreatActive;
@@ -69,7 +69,7 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref interceptedThreatPoints,
                 "tokraInterceptedThreatPoints",
-                DefaultRaidPoints);
+                LegacyDefaultRaidPoints);
         }
 
         public override void GameComponentTick()
@@ -129,7 +129,9 @@ namespace GateRimSG1.Goauld
             tracker.interceptedThreatAttackTick = currentTick + delayTicks;
             tracker.nextTriggerCheckTick = currentTick + TriggerCheckIntervalTicks;
             tracker.interceptedThreatKind = Rand.RangeInclusive(0, 1);
-            tracker.interceptedThreatPoints = DefaultRaidPoints;
+            tracker.interceptedThreatPoints = Math.Max(
+                1f,
+                StorytellerUtility.DefaultThreatPointsNow(map));
 
             GR_Log.Message(
                 "Tok'ra intercepted threat scheduled: "
@@ -397,7 +399,7 @@ namespace GateRimSG1.Goauld
             interceptedThreatAttackTick = 0;
             nextTriggerCheckTick = 0;
             interceptedThreatKind = 0;
-            interceptedThreatPoints = DefaultRaidPoints;
+            interceptedThreatPoints = 0f;
         }
 
         private bool IsActiveForMap(Map map)

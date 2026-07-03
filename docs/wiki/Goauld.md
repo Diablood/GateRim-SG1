@@ -294,13 +294,25 @@ Consulte [Raid de destruction Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-
 
 Consulte [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
 
+## Progression de la menace
+
+Depuis `0.3.53-dev`, les raids, avertissements interceptés et garnisons de sites
+Goa'uld utilisent les points de menace vanilla. La richesse, la puissance de la
+colonie et la difficulté du storyteller restent donc les sources de référence,
+y compris avec un storyteller compatible autre que celui prévu à terme pour
+GateRim SG-1.
+
+Le relais Goa'uld adapte également sa garnison, ses renforts et son niveau de
+fortification. Consulte [Progression des menaces Goa'uld](Goauld-Threat-Progression).
+
 ## Ce qui n'est pas encore implémenté
 
 - reproduction autonome de la reine ;
 - disponibilité naturelle des symbiotes immatures ;
-- transfert entre plusieurs hôtes ;
+- transfert direct entre deux hôtes sans phase de symbiote libre ;
 - sarcophage ;
-- colonies, raids et événements Goa'uld.
+- approfondissement de la pression et des réactions propres aux domaines
+  Goa'uld, selon la ligne directrice encore en cours de validation.
 
 ## Différence avec les sanguophages
 

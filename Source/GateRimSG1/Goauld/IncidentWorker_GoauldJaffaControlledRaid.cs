@@ -64,6 +64,11 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        protected virtual float ResolveMissingRaidPoints(Map map)
+        {
+            return DefaultControlledRaidPoints;
+        }
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             return parms?.target is Map
@@ -97,13 +102,14 @@ namespace GateRimSG1.Goauld
             parms.faction = goauldFaction;
             parms.forced = true;
             parms.raidStrategy = ControlledRaidStrategy;
+            parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
             parms.canSteal = ControlledRaidCanSteal;
             parms.canKidnap = ControlledRaidCanKidnap;
             parms.canTimeoutOrFlee = ControlledRaidCanTimeoutOrFlee;
 
             if (!(parms.points > 0f))
             {
-                parms.points = DefaultControlledRaidPoints;
+                parms.points = ResolveMissingRaidPoints(parms.target as Map);
             }
 
             bool succeeded = base.TryExecuteWorker(parms);

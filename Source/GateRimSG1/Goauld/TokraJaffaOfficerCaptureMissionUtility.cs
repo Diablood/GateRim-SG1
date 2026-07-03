@@ -601,12 +601,9 @@ namespace GateRimSG1.Goauld
                     * Math.Max(0.05f, profile.escortThreatFactor));
             float combatPower = Math.Max(1f, referenceKind.combatPower);
             int minimum = Math.Max(1, profile.escortMinimumCount);
-            int maximum = Math.Max(minimum, profile.escortMaximumCount);
             int count = Math.Max(
                 minimum,
-                Math.Min(
-                    maximum,
-                    (int)Math.Ceiling(requestedPoints / combatPower)));
+                (int)Math.Ceiling(requestedPoints / combatPower));
             Lord lord = LordMaker.MakeNewLord(
                 faction,
                 new LordJob_DefendBase(
@@ -624,7 +621,7 @@ namespace GateRimSG1.Goauld
             for (int index = 0; index < count; index++)
             {
                 PawnKindDef kind = guardKind != null
-                        && (warriorKind == null || index % 3 == 2)
+                        && (warriorKind == null || index % 5 == 4)
                     ? guardKind
                     : warriorKind ?? guardKind;
                 Pawn pawn = PawnGenerator.GeneratePawn(kind, faction, map.Tile);

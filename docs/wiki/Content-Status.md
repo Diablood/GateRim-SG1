@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.52-dev`
+> Dernière révision : `0.3.53-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -90,6 +90,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 | Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : assaut direct `ImmediateAttack`, sans vol ni enlèvement opportuniste | 0.2.1-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
+| Progression des menaces Goa'uld | Raids, menaces interceptées et sites hostiles fondés sur les points vanilla du storyteller ; plafonds de début de partie retirés et relais fortifié selon trois paliers | 0.3.53-dev |
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans solution de repli ni activation des raids naturels | 0.1.70-dev |
 | Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |
 | Raid de destruction Jaffa Goa'uld contrôlé | Incident développeur séparé : assaut militaire prolongé, puis récupération opportuniste de captifs et d'objets de valeur avant extraction | 0.1.72-dev |
@@ -120,9 +121,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | Direction actuelle |
 |---|---|
-| Diversification des opérations Tok'ra | La capture récurrente d'un officier Jaffa est validée avec douze charges, extraction vanilla sans lit local, suppression du site après évacuation, suivi persistant du prisonnier et récupération visible appelée depuis le communicateur ; poursuivre l'enrichissement du pool avec des archétypes réellement distincts |
+| Stabilisation des opérations Tok'ra | Le pool est fermé à huit archétypes. Les futures parties longues pourront déclencher des correctifs ou équilibrages ciblés, mais aucune nouvelle opération n'est actuellement prévue |
 | Déblocage des opérations Tok'ra | L'introduction, l'étude, le prérequis de construction et le verrou du canal sont intégrés ; conserver ce comportement pour chaque nouvel archétype sans annuler les missions déjà engagées |
-| Pools de missions par faction | Terminer d'abord le pool Tok'ra, puis prévoir des missions Goa'uld autonomes et des pools distincts pour les autres races et factions, avec identités RP, conditions, récompenses et conséquences propres |
+| Direction Goa'uld | Ne pas copier les offres Tok'ra : développer une pression hostile fondée sur les domaines, leur hiérarchie, la menace biologique et les conséquences des actions du joueur ; sélectionner le premier système seulement après validation du cadrage |
 | Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
@@ -130,6 +131,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
+| Équipement Goa'uld de haut rang | Auditer le lore puis prototyper des objets rares et équilibrés, en priorité un bouclier personnel limité pour les Grands Maîtres ; intégrer leur puissance aux budgets de menace et éviter le butin systématique |
 | Réplicateurs | Prévu pour une phase ultérieure |
 | Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

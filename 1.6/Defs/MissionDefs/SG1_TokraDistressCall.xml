@@ -60,7 +60,7 @@
             <mode>ThreatPointsScaled</mode>
             <pointsFactor>0.80</pointsFactor>
             <minimumPoints>250</minimumPoints>
-            <maximumPoints>1400</maximumPoints>
+            <maximumPoints>100000</maximumPoints>
         </difficulty>
         <pawnCare>
             <pawnKindDefName>SG1_TokraVoluntaryHost</pawnKindDefName>
@@ -91,7 +91,6 @@
             <survivorMinimumCount>1</survivorMinimumCount>
             <survivorMaximumCount>3</survivorMaximumCount>
             <defenderMinimumCount>2</defenderMinimumCount>
-            <defenderMaximumCount>10</defenderMaximumCount>
             <salvageMinimumCount>4</salvageMinimumCount>
             <salvageMaximumCount>10</salvageMaximumCount>
             <genuineRescueWeight>0.50</genuineRescueWeight>

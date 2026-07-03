@@ -134,7 +134,6 @@ namespace GateRimSG1.Missions
         public int survivorMinimumCount = 1;
         public int survivorMaximumCount = 3;
         public int defenderMinimumCount = 2;
-        public int defenderMaximumCount = 8;
         public int salvageMinimumCount = 4;
         public int salvageMaximumCount = 10;
         public float genuineRescueWeight = 0.50f;
@@ -175,7 +174,6 @@ namespace GateRimSG1.Missions
         public int maximumTileDistance = 18;
         public int mapSize = 120;
         public int defenderMinimumCount = 3;
-        public int defenderMaximumCount = 12;
         public int preferredEntryRadius = 18;
         public int deadlineWarningTicks = 60000;
     }
@@ -240,7 +238,6 @@ namespace GateRimSG1.Missions
         public int maximumTileDistance = 18;
         public int mapSize = 120;
         public int escortMinimumCount = 2;
-        public int escortMaximumCount = 10;
         public float escortThreatFactor = 0.70f;
         public int handoffDurationTicks = 2500;
         public string extractionPawnKindDefName;
@@ -709,11 +706,9 @@ namespace GateRimSG1.Missions
                     yield return "introduction mapSize must be at least 80";
                 }
 
-                if (introduction.defenderMinimumCount <= 0
-                    || introduction.defenderMaximumCount
-                        < introduction.defenderMinimumCount)
+                if (introduction.defenderMinimumCount <= 0)
                 {
-                    yield return "introduction defender count range is invalid";
+                    yield return "introduction defender minimum must be positive";
                 }
 
                 if (introduction.preferredEntryRadius <= 0)
@@ -861,11 +856,9 @@ namespace GateRimSG1.Missions
                     yield return "capture mapSize must be at least 80";
                 }
 
-                if (capture.escortMinimumCount <= 0
-                    || capture.escortMaximumCount
-                        < capture.escortMinimumCount)
+                if (capture.escortMinimumCount <= 0)
                 {
-                    yield return "capture escort count range is invalid";
+                    yield return "capture escort minimum must be positive";
                 }
 
                 if (capture.escortThreatFactor <= 0f)

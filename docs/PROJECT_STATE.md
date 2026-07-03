@@ -1,62 +1,99 @@
 # Current project state
 
-Current milestone: `0.3.52-dev - Add the Goa'uld faction caste summary` - final revision `r1` validated and published.
+Current milestone: `0.3.53-dev - Audit Goa'uld threat progression` - local
+revision `r2` validated and published.
 
 ## Repository state
 
-- Starting tag: `v0.3.51-dev`.
-- Starting commit: `3ec8ac0`.
-- Active branch: `feature/goauld-caste-world-summary`.
-- Last published version: `0.3.52-dev` on `feature/goauld-caste-world-summary`.
-- Last published tag: `v0.3.52-dev`.
+- Starting tag: `v0.3.52-dev`.
+- Starting commit: `3830be6`.
+- Active branch: `feature/goauld-threat-progression-audit`.
+- Last published version: `0.3.53-dev` on `feature/goauld-threat-progression-audit`.
+- Last published tag: `v0.3.53-dev`.
 - Retrospective publication correction: annotated tags `v0.3.50-dev` and
   `v0.3.51-dev` were added manually by the maintainer and point to their
   validated milestone commits.
-- Target version: `0.3.52-dev`.
-- Technical assembly version: `0.3.52.0`.
-- Local revision: `r1`.
+- Target version: `0.3.53-dev`.
+- Technical assembly version: `0.3.53.0`.
+- Local revision: `r2`.
 - Publication status: final branch committed and pushed; annotated tag and separate wiki published.
 
 ## Current scope
 
-This milestone completes the player-visible description of the Goa'uld world
-faction. RimWorld's vanilla summary can only report xenotype percentages and
-therefore shows `Jaffa: 100%`, while generated settlements also contain a
-minority host caste and the faction leader is a persistent System Lord host.
+This milestone makes RimWorld's vanilla threat points authoritative for the
+existing Goa'uld combat surface. Natural raids keep storyteller-supplied
+points; intercepted threats now snapshot current points instead of always
+using `500`; hostile mission encounters retain their intended factors and
+minimums without early-game maximums.
 
-The implementation appends one localized qualitative caste section to
-`FactionDef.Description` only for `SG1_GoauldSystemLordPrototype`. It does not
-alter `xenotypeSet`, pawn groups, settlement weights, leaders, raids or host
-initialization. Harmony is already a declared mod dependency and no Harmony
-DLL is embedded in GateRim SG-1.
+The decoded relay world site stores its threat snapshot before travel. Its
+initial garrison and reinforcements scale from that value, and its fixed random
+layout is replaced by a command bunker, split station or walled courtyard as
+the defender budget rises.
 
-## Validated r1 test
+The free-symbiote maximum of four remains intentional because implantation can
+create persistent hostile hosts. Goa'uld settlements remain on vanilla
+settlement generation. Natural abduction/destruction, future ultimatums and
+domain conflicts are not activated here.
 
-1. Load `Core`, `Harmony`, `Biotech`, then `GateRim SG-1`.
-2. Open `Nouvelle colonie` > `Équipe SG isolée` > `Créer le monde` > `Factions`.
-3. Place the pointer over `Domaines des Grands Maîtres Goa'uld`.
-4. Verify that the tooltip retains the faction description and vanilla member-xenotype section, then adds `Castes Goa'uld` with dominant Jaffa servants, minority Goa'uld hosts, the System Lord host leader and the acquired-possession explanation.
-5. Place the pointer over `Jaffa libres` and verify that no `Castes Goa'uld` section appears.
-6. Generate the world and inspect `Player.log`.
+The `r1` tests validated progression and doctrine behavior but revealed that a
+`4000`-point raid could inherit a vanilla drop-pod arrival. `r2` forces the
+shared Goa'uld/Jaffa raid worker to use `EdgeWalkIn`, covering natural raids,
+intercepted threats and all controlled doctrines without changing their point
+budgets.
 
-Expected result: the Goa'uld tooltip explains both biological xenotypes and
-acquired host castes without changing other faction tooltips; world generation
-completes and `Player.log` contains no new Harmony, translation or C# error.
+Future Goa'uld work also includes a separate lore and balance audit for
+rank-linked equipment. A limited personal System Lord shield is the first
+candidate; it is outside `0.3.53-dev` and must feed its real strength back into
+`combatPower`, raid budgets, rarity and loot rules.
+
+## Validated r2 test
+
+Load `Core`, `Harmony`, `Biotech`, then `GateRim SG-1`.
+
+1. Open `Actions de débogage` > `GateRim SG-1` > `Goa'uld...` > `Threat progression...` > `Force advanced direct raid (4000 points)`.
+2. Verify that the complete force enters from a map edge on foot and that no transport pod appears.
+3. Reload between attempts and select `Force current abduction raid`, then `Force current destruction raid`.
+4. Verify that both forces also enter from a map edge on foot while preserving their distinct capture and destruction behavior.
+5. Open `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Safehouse and intelligence chain...` > `Threat intelligence...` > `Create threat`.
+6. Wait for the short debug delay and verify that the announced force enters from a map edge without pods.
+7. Inspect `Player.log` for new C#, XML, pawn-arrival or Lord errors.
+
+Expected result: every Goa'uld/Jaffa raid covered by the shared worker uses
+`EdgeWalkIn`, including at `4000` points, while the validated scaling and
+doctrine behavior remain unchanged.
+
+Result: passed and accepted by the maintainer. The advanced direct raid,
+current abduction/destruction doctrines and intercepted raid arrive from the
+map edge without transport pods; progression and doctrine behavior remain
+accepted.
+
+## Optional relay regression
+
+1. Open `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Safehouse and intelligence chain...` > `Decoded lead...` > `Reveal site`.
+2. Send a caravan normally to the revealed relay site and choose its normal launch action.
+3. Verify that the garrison size and the command bunker, split station or walled courtyard agree with the earlier `Show current progression` report.
+4. Confirm that the relay, sabotage, reinforcements, evacuation and save/reload remain functional.
+
+## Optional settlement regression
+
+1. Attack a Goa'uld settlement from an early or low-wealth save and record the approximate garrison and generated defenses.
+2. Repeat against another Goa'uld settlement from an advanced high-wealth save using the same storyteller settings.
+3. Confirm that vanilla `Settlement` generation produces a clearly stronger base rather than the same small fixed force and layout.
 
 ## Local validation
 
-- `git diff --check`: passed, with only the usual line-ending warnings.
-- English and French keyed XML parsing: passed.
-- Translation-key reference audit: passed.
-- `./tools/check-project-consistency.cmd`: passed for `0.3.52-dev` / `0.3.52.0`.
-- Forced C# rebuild: passed with `0` warnings and `0` errors.
-- In-game validation: passed and accepted by the maintainer.
-- Goa'uld tooltip, Free Jaffa non-regression, world generation and `Player.log`: passed.
+- Forced C# rebuild: passed with `0` errors; NuGet vulnerability lookup emitted
+  the existing offline `NU1900` warning.
+- In-game `r1`: threat scaling and doctrine behavior passed; high-point pods rejected.
+- In-game `r2`: `EdgeWalkIn` correction, doctrine regression and `Player.log` passed.
 
-## Previous milestone record
+## Previous published milestone record
 
-The remainder of this document retains the validated `0.3.51-dev` mission-site
-icon record as the previous milestone history.
+The previous published milestone is `0.3.52-dev - Add the Goa'uld faction caste
+summary`, validated as revision `r1` and published from
+`feature/goauld-caste-world-summary`. The remainder of this document retains
+the validated `0.3.51-dev` mission-site icon record as earlier history.
 
 ### Mission-site icon scope
 

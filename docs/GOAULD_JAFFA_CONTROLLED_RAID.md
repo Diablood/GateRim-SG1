@@ -51,7 +51,7 @@ When developer tools do not supply points, the worker defaults to `500`.
 
 - real hostile non-player Goa'uld faction;
 - hidden-faction persistence across repeated controlled tests;
-- vanilla raid arrival and combat behavior;
+- vanilla raid combat behavior with `EdgeWalkIn` forced for lore consistency;
 - generated Jaffa Prim'ta;
 - automatic Ma'Tok loadout;
 - automatic modular armor loadout;

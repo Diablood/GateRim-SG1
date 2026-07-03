@@ -65,6 +65,35 @@ namespace GateRimSG1.Debugging
             DebugActionNode root = new DebugActionNode();
 
             root.AddChild(MenuNode(
+                "Threat progression...",
+                300,
+                ActionNode(
+                    "Show current progression",
+                    GoauldThreatProgressionDebugActions.ShowCurrentProgression,
+                    600),
+                ActionNode(
+                    "Force current direct raid",
+                    GoauldThreatProgressionDebugActions.ForceCurrentDirectRaid,
+                    500),
+                ActionNode(
+                    "Force current abduction raid",
+                    GoauldThreatProgressionDebugActions
+                        .ForceCurrentAbductionRaid,
+                    400),
+                ActionNode(
+                    "Force current destruction raid",
+                    GoauldThreatProgressionDebugActions
+                        .ForceCurrentDestructionRaid,
+                    300),
+                ActionNode(
+                    "Force weak direct raid (300 points)",
+                    GoauldThreatProgressionDebugActions.ForceWeakDirectRaid,
+                    200),
+                ActionNode(
+                    "Force advanced direct raid (4000 points)",
+                    GoauldThreatProgressionDebugActions.ForceAdvancedDirectRaid,
+                    100)));
+            root.AddChild(MenuNode(
                 "Free-symbiote incursion...",
                 200,
                 ActionNode(

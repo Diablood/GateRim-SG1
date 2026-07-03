@@ -18,7 +18,8 @@ namespace GateRimSG1.Goauld
 
         public static TokraRelaySabotageSiteLayoutResult Generate(
             Map map,
-            Faction faction)
+            Faction faction,
+            float threatPoints)
         {
             if (map == null)
             {
@@ -26,28 +27,42 @@ namespace GateRimSG1.Goauld
             }
 
             IntVec3 center = map.Center;
-            int layoutIndex = Rand.RangeInclusive(0, 2);
             TokraRelaySabotageSiteLayoutResult result;
 
-            switch (layoutIndex)
+            if (threatPoints >= 1400f)
             {
-                case 1:
-                    result = GenerateTwinBlockRelay(map, faction, center);
-                    break;
-                case 2:
-                    result = GenerateCourtyardRelay(map, faction, center);
-                    break;
-                default:
-                    result = GenerateBunkerRelay(map, faction, center);
-                    break;
+                result = GenerateCourtyardRelay(map, faction, center);
+            }
+            else if (threatPoints >= 600f)
+            {
+                result = GenerateTwinBlockRelay(map, faction, center);
+            }
+            else
+            {
+                result = GenerateBunkerRelay(map, faction, center);
             }
 
             GR_Log.Message(
                 "Generated Tok'ra relay sabotage site layout: "
                 + (result?.LayoutLabel ?? "fallback")
-                + ".");
+                + $" at {threatPoints:0} threat points.");
 
             return result;
+        }
+
+        internal static string GetLayoutLabel(float threatPoints)
+        {
+            if (threatPoints >= 1400f)
+            {
+                return "walled relay courtyard";
+            }
+
+            if (threatPoints >= 600f)
+            {
+                return "split relay station";
+            }
+
+            return "command bunker";
         }
 
         private static TokraRelaySabotageSiteLayoutResult GenerateBunkerRelay(

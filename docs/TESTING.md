@@ -1,5 +1,27 @@
 # Testing checklist
 
+## 0.3.53-dev - Goa'uld threat progression audit
+
+Validation finale terminée sur `r2`. `r1` a validé la progression et révélé
+les pods vanilla à haut budget ; `r2` a validé l'arrivée `EdgeWalkIn` commune.
+Couverture durable :
+
+- comparer un raid direct explicite à `300` points et à `4000` points depuis le sous-menu `GateRim SG-1` > `Goa'uld...` > `Threat progression...` ;
+- vérifier que les raids naturels, interceptés et contrôlés arrivent toujours à pied depuis un bord de carte et ne sélectionnent jamais les pods vanilla, y compris avec un budget élevé ;
+- vérifier que les raids direct, d'enlèvement et de destruction forcés avec les points courants conservent leurs comportements distincts ;
+- vérifier que le raid naturel préserve les points fournis par le storyteller et résout tout point manquant depuis l'API vanilla ;
+- vérifier que la menace Tok'ra interceptée stocke puis déclenche exactement le même instantané de points après sauvegarde/recharge ;
+- contrôler que les sites d'introduction, de détresse, de capture, de livraison, de diversion et de relais continuent à appliquer leurs facteurs sans plafond de début de partie ;
+- contrôler que le relais choisit le bunker sous `600` points de défense, la station divisée de `600` à `1399` et la cour fortifiée à partir de `1400` ;
+- vérifier que la garnison et les renforts du relais progressent avec le même instantané, y compris après voyage et sauvegarde/recharge ;
+- attaquer au moins une colonie Goa'uld faible puis avancée et confirmer que la génération `Settlement` vanilla reste adaptative ;
+- conserver le plafond biologique intentionnel de quatre symbiotes libres ;
+- inspecter `Player.log` pour les erreurs C#, XML, Scribe, pawn, Lord et génération de carte.
+
+Limites durables : ne pas créer de branche d'équilibrage propre à un
+storyteller ; consommer les points vanilla afin que les storytellers actuels et
+le futur storyteller GateRim SG-1 restent compatibles.
+
 ## 0.3.52-dev - Goa'uld faction caste summary
 
 Validation locale terminée sur la révision finale `r1`. Le test ciblé valide

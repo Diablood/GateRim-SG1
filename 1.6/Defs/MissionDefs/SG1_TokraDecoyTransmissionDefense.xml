@@ -38,7 +38,7 @@
             <mode>ThreatPointsScaled</mode>
             <pointsFactor>0.75</pointsFactor>
             <minimumPoints>180</minimumPoints>
-            <maximumPoints>3000</maximumPoints>
+            <maximumPoints>100000</maximumPoints>
         </difficulty>
         <texts>
             <offerLetterLabelKey>GR_TokraDecoyDefense_OfferLabel</offerLetterLabelKey>

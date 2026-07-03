@@ -403,13 +403,10 @@ namespace GateRimSG1.Goauld
             PawnKindDef referenceKind = warriorKind ?? guardKind;
             float combatPower = Math.Max(1f, referenceKind.combatPower);
             int minimum = Math.Max(1, profile.defenderMinimumCount);
-            int maximum = Math.Max(minimum, profile.defenderMaximumCount);
             int pawnCount = Math.Max(
                 minimum,
-                Math.Min(
-                    maximum,
-                    (int)Math.Ceiling(
-                        Math.Max(combatPower, requestedPoints) / combatPower)));
+                (int)Math.Ceiling(
+                    Math.Max(combatPower, requestedPoints) / combatPower));
             IntVec3 rootCell = sceneAnchor.IsValid
                 ? sceneAnchor
                 : map.Center;
@@ -440,7 +437,7 @@ namespace GateRimSG1.Goauld
             for (int index = 0; index < pawnCount; index++)
             {
                 PawnKindDef kind = guardKind != null
-                        && (warriorKind == null || index % 3 == 2)
+                        && (warriorKind == null || index % 5 == 4)
                     ? guardKind
                     : warriorKind ?? guardKind;
                 Pawn pawn = PawnGenerator.GeneratePawn(kind, faction, map.Tile);

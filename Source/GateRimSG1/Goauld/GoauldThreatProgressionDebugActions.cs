@@ -1,0 +1,129 @@
+using RimWorld;
+using Verse;
+
+namespace GateRimSG1.Goauld
+{
+    public static class GoauldThreatProgressionDebugActions
+    {
+        private const float WeakRaidPoints = 300f;
+        private const float AdvancedRaidPoints = 4000f;
+
+        public static void ShowCurrentProgression()
+        {
+            Map map = Find.CurrentMap;
+
+            if (map == null)
+            {
+                Reject("No current map is available.");
+                return;
+            }
+
+            float points = StorytellerUtility.DefaultThreatPointsNow(map);
+            float relayDefenderPoints = TokraRelaySabotageMissionUtility
+                .CalculateDefenderPoints(points);
+            float relayReinforcementPoints = TokraRelaySabotageMissionUtility
+                .CalculateReinforcementPoints(points);
+            int relayDefenders = TokraRelaySabotageMissionUtility
+                .CalculateJaffaCount(relayDefenderPoints, 2);
+            int relayReinforcements = TokraRelaySabotageMissionUtility
+                .CalculateJaffaCount(relayReinforcementPoints, 1);
+            int symbiotes = IncidentWorker_GoauldFreeSymbioteIncursion
+                .CalculateSymbioteCount(points);
+
+            Dialog_MessageBox dialog = new Dialog_MessageBox(
+                "Goa'uld threat progression audit\n\n"
+                + $"Vanilla storyteller points: {points:0}\n"
+                + "Natural and intercepted raid points: "
+                + $"{points:0}\n"
+                + $"Free symbiotes: {symbiotes}\n"
+                + "Relay defenders: "
+                + $"{relayDefenderPoints:0} points / "
+                + $"about {relayDefenders} Jaffa\n"
+                + "Relay reinforcements: "
+                + $"{relayReinforcementPoints:0} points / "
+                + $"about {relayReinforcements} Jaffa\n"
+                + "Relay layout: "
+                + TokraRelaySabotageSiteLayoutUtility.GetLayoutLabel(
+                    relayDefenderPoints));
+
+            Find.WindowStack.Add(dialog);
+        }
+
+        public static void ForceCurrentDirectRaid()
+        {
+            ForceRaid(
+                GR_DefOf.SG1_GoauldJaffaControlledRaid,
+                0f,
+                "current direct raid");
+        }
+
+        public static void ForceCurrentAbductionRaid()
+        {
+            ForceRaid(
+                GR_DefOf.SG1_GoauldJaffaControlledAbductionRaid,
+                0f,
+                "current abduction raid");
+        }
+
+        public static void ForceCurrentDestructionRaid()
+        {
+            ForceRaid(
+                GR_DefOf.SG1_GoauldJaffaControlledDestructionRaid,
+                0f,
+                "current destruction raid");
+        }
+
+        public static void ForceWeakDirectRaid()
+        {
+            ForceRaid(
+                GR_DefOf.SG1_GoauldJaffaControlledRaid,
+                WeakRaidPoints,
+                "300-point direct raid");
+        }
+
+        public static void ForceAdvancedDirectRaid()
+        {
+            ForceRaid(
+                GR_DefOf.SG1_GoauldJaffaControlledRaid,
+                AdvancedRaidPoints,
+                "4000-point direct raid");
+        }
+
+        private static void ForceRaid(
+            IncidentDef incidentDef,
+            float explicitPoints,
+            string context)
+        {
+            Map map = Find.CurrentMap;
+
+            if (map == null || incidentDef?.category == null)
+            {
+                Reject("The current map or raid definition is unavailable.");
+                return;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+                incidentDef.category,
+                map);
+            parms.forced = true;
+
+            if (explicitPoints > 0f)
+            {
+                parms.points = explicitPoints;
+            }
+
+            if (!incidentDef.Worker.TryExecute(parms))
+            {
+                Reject($"Could not start the Goa'uld {context}.");
+            }
+        }
+
+        private static void Reject(string text)
+        {
+            Messages.Message(
+                text,
+                MessageTypeDefOf.RejectInput,
+                historical: false);
+        }
+    }
+}
