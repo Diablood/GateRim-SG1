@@ -10,8 +10,10 @@ This milestone adds a second developer-only incident:
 SG1_GoauldJaffaControlledAbductionRaid
 ```
 
-Its storyteller base chance is exactly `0`. Natural Goa'uld raids,
-settlements and traders remain disabled.
+Its storyteller base chance is exactly `0`. At the original `0.1.71-dev`
+milestone, natural Goa'uld raids, settlements and traders were still disabled.
+Since `0.3.54-dev`, the separate natural incident may explicitly reuse this
+strategy while the controlled incident remains deterministic.
 
 ## Doctrine
 
@@ -73,7 +75,7 @@ parms.canKidnap = false;
 
 It remains a pure military baseline.
 
-## Manual test checklist
+## Historical manual test checklist
 
 1. Build the mod and start RimWorld with developer mode enabled.
 2. Confirm that no new XML, DefOf or C# loading error appears.
@@ -94,7 +96,8 @@ It remains a pure military baseline.
     group.
 11. Trigger the original controlled direct-assault incident and confirm that
     it no longer kidnaps or steals.
-12. Confirm that natural Goa'uld raids remain disabled.
+12. For the original milestone only, confirm that natural Goa'uld raids were
+    not enabled by the controlled IncidentDef.
 
 ## r2 capture-window trigger correction
 

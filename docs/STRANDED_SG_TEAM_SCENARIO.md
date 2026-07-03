@@ -133,7 +133,7 @@ The helmets arrive as supplies and are deliberately not auto-equipped.
 Enabled since later `0.2.x` milestones:
 
 - Goa'uld world settlements;
-- rare natural Goa'uld direct-assault raids;
+- rare natural Goa'uld direct, abduction or destruction raids;
 - Free Jaffa world presence.
 
 Still deferred:

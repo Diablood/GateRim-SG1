@@ -4,7 +4,7 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Shared Goa'uld-aligned Jaffa direct-assault raid path.
+    /// Shared Goa'uld-aligned Jaffa raid path.
     ///
     /// The original controlled IncidentDef keeps a zero storyteller chance
     /// for developer regression tests. A separate low-frequency natural
@@ -69,6 +69,14 @@ namespace GateRimSG1.Goauld
             return DefaultControlledRaidPoints;
         }
 
+        protected virtual void ConfigureRaidParms(IncidentParms parms)
+        {
+            parms.raidStrategy = ControlledRaidStrategy;
+            parms.canSteal = ControlledRaidCanSteal;
+            parms.canKidnap = ControlledRaidCanKidnap;
+            parms.canTimeoutOrFlee = ControlledRaidCanTimeoutOrFlee;
+        }
+
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             return parms?.target is Map
@@ -101,16 +109,14 @@ namespace GateRimSG1.Goauld
 
             parms.faction = goauldFaction;
             parms.forced = true;
-            parms.raidStrategy = ControlledRaidStrategy;
             parms.raidArrivalMode = PawnsArrivalModeDefOf.EdgeWalkIn;
-            parms.canSteal = ControlledRaidCanSteal;
-            parms.canKidnap = ControlledRaidCanKidnap;
-            parms.canTimeoutOrFlee = ControlledRaidCanTimeoutOrFlee;
 
             if (!(parms.points > 0f))
             {
                 parms.points = ResolveMissingRaidPoints(parms.target as Map);
             }
+
+            ConfigureRaidParms(parms);
 
             bool succeeded = base.TryExecuteWorker(parms);
 

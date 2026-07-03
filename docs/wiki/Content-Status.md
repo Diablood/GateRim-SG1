@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.53-dev`
+> Dernière révision : `0.3.54-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -88,7 +88,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
-| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : assaut direct `ImmediateAttack`, sans vol ni enlèvement opportuniste | 0.2.1-dev |
+| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : assaut direct dominant, enlèvement à partir de 800 points avec deux colons et destruction à partir de 1800 points avec 10 000 de richesse bâtie | 0.2.1-dev / doctrines 0.3.54-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
 | Progression des menaces Goa'uld | Raids, menaces interceptées et sites hostiles fondés sur les points vanilla du storyteller ; plafonds de début de partie retirés et relais fortifié selon trois paliers | 0.3.53-dev |
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans solution de repli ni activation des raids naturels | 0.1.70-dev |

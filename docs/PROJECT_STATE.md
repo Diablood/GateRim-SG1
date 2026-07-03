@@ -1,98 +1,105 @@
 # Current project state
 
-Current milestone: `0.3.53-dev - Audit Goa'uld threat progression` - local
-revision `r2` validated and published.
+Current milestone: `0.3.54-dev - Enable natural Goa'uld assault doctrines` -
+local revision `r2` validated and published.
 
 ## Repository state
 
-- Starting tag: `v0.3.52-dev`.
-- Starting commit: `3830be6`.
-- Active branch: `feature/goauld-threat-progression-audit`.
-- Last published version: `0.3.53-dev` on `feature/goauld-threat-progression-audit`.
-- Last published tag: `v0.3.53-dev`.
-- Retrospective publication correction: annotated tags `v0.3.50-dev` and
-  `v0.3.51-dev` were added manually by the maintainer and point to their
-  validated milestone commits.
-- Target version: `0.3.53-dev`.
-- Technical assembly version: `0.3.53.0`.
+- Starting tag: `v0.3.53-dev`.
+- Starting commit: `7af8b1c`.
+- Active branch: `feature/goauld-natural-assault-doctrines`.
+- Last published version: `0.3.54-dev` on `feature/goauld-natural-assault-doctrines`.
+- Last published tag: `v0.3.54-dev`.
+- Target version: `0.3.54-dev`.
+- Technical assembly version: `0.3.54.0`.
 - Local revision: `r2`.
 - Publication status: final branch committed and pushed; annotated tag and separate wiki published.
 
 ## Current scope
 
-This milestone makes RimWorld's vanilla threat points authoritative for the
-existing Goa'uld combat surface. Natural raids keep storyteller-supplied
-points; intercepted threats now snapshot current points instead of always
-using `500`; hostile mission encounters retain their intended factors and
-minimums without early-game maximums.
+The existing low-frequency `SG1_GoauldJaffaNaturalRaid` remains the only
+storyteller incident. Its `baseChance`, day-12 gate and 18-day refire delay are
+unchanged, so adding doctrines does not multiply raid frequency.
 
-The decoded relay world site stores its threat snapshot before travel. Its
-initial garrison and reinforcements scale from that value, and its fixed random
-layout is replaced by a command bunker, split station or walled courtyard as
-the defender budget rises.
+The worker now selects one audited doctrine from the storyteller's vanilla
+threat points and current colony context:
 
-The free-symbiote maximum of four remains intentional because implantation can
-create persistent hostile hosts. Goa'uld settlements remain on vanilla
-settlement generation. Natural abduction/destruction, future ultimatums and
-domain conflicts are not activated here.
+- direct assault is always eligible and has weight `2`;
+- abduction gains weight `1` from `800` points when at least two free colonists
+  are present;
+- destruction gains weight `1` from `1800` points when building wealth reaches
+  `10 000`.
 
-The `r1` tests validated progression and doctrine behavior but revealed that a
-`4000`-point raid could inherit a vanilla drop-pod arrival. `r2` forces the
-shared Goa'uld/Jaffa raid worker to use `EdgeWalkIn`, covering natural raids,
-intercepted threats and all controlled doctrines without changing their point
-budgets.
+This produces direct-only early raids, `67/33` direct/abduction raids when only
+abduction is eligible, and `50/25/25` direct/abduction/destruction raids when
+all doctrines are eligible. The custom strategy curves remain zero so generic
+vanilla faction raids cannot select them. Every route still uses
+`EdgeWalkIn`, and the existing doctrine-specific warning text and retreat
+behavior are preserved.
 
-Future Goa'uld work also includes a separate lore and balance audit for
-rank-linked equipment. A limited personal System Lord shield is the first
-candidate; it is outside `0.3.53-dev` and must feed its real strength back into
-`combatPower`, raid budgets, rarity and loot rules.
+## r1 result
 
-## Validated r2 test
+The maintainer validated the report, direct natural raid and abduction natural
+raid. The `1800`-point destruction command was rejected because the debug path
+incorrectly enforced the normal `10 000` building-wealth eligibility rule and
+displayed only a vague `doctrine context` message.
 
-Load `Core`, `Harmony`, `Biotech`, then `GateRim SG-1`.
+Revision `r2` keeps that rule for real storyteller selection but makes all
+three `Force natural ...` commands genuinely deterministic. The report now
+prints each context value beside its exact requirement.
 
-1. Open `Actions de débogage` > `GateRim SG-1` > `Goa'uld...` > `Threat progression...` > `Force advanced direct raid (4000 points)`.
-2. Verify that the complete force enters from a map edge on foot and that no transport pod appears.
-3. Reload between attempts and select `Force current abduction raid`, then `Force current destruction raid`.
-4. Verify that both forces also enter from a map edge on foot while preserving their distinct capture and destruction behavior.
-5. Open `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Safehouse and intelligence chain...` > `Threat intelligence...` > `Create threat`.
-6. Wait for the short debug delay and verify that the announced force enters from a map edge without pods.
-7. Inspect `Player.log` for new C#, XML, pawn-arrival or Lord errors.
+## Required r2 test
 
-Expected result: every Goa'uld/Jaffa raid covered by the shared worker uses
-`EdgeWalkIn`, including at `4000` points, while the validated scaling and
-doctrine behavior remain unchanged.
+Load `Core`, `Harmony`, `Biotech`, then `GateRim SG-1`. The same test colony
+can be used regardless of its current building wealth.
 
-Result: passed and accepted by the maintainer. The advanced direct raid,
-current abduction/destruction doctrines and intercepted raid arrive from the
-map edge without transport pods; progression and doctrine behavior remain
-accepted.
+Open exactly:
 
-## Optional relay regression
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
+```
 
-1. Open `Actions de débogage` > `GateRim SG-1` > `Tok'ra...` > `Safehouse and intelligence chain...` > `Decoded lead...` > `Reveal site`.
-2. Send a caravan normally to the revealed relay site and choose its normal launch action.
-3. Verify that the garrison size and the command bunker, split station or walled courtyard agree with the earlier `Show current progression` report.
-4. Confirm that the relay, sabotage, reinforcements, evacuation and save/reload remain functional.
+1. Select `Show current progression`. Confirm that the dialog states that
+   destruction normally needs `10 000` building wealth.
+2. Select `Force natural destruction raid (1800 points)`. Confirm that it
+   starts even if the displayed building wealth is below `10 000`.
+3. Confirm the visible letter `raid de destruction de Jaffa Goa'uld`, its sustained
+   destructive phase and later withdrawal/recovery phase.
+4. Confirm that the force enters on foot from a map edge without pods and inspect
+   `Player.log` for new C#, XML, pawn-arrival or Lord errors.
 
-## Optional settlement regression
+Expected result: normal selection keeps its context gates, while developer
+commands force the requested doctrine without requiring an artificially rich
+test map.
 
-1. Attack a Goa'uld settlement from an early or low-wealth save and record the approximate garrison and generated defenses.
-2. Repeat against another Goa'uld settlement from an advanced high-wealth save using the same storyteller settings.
-3. Confirm that vanilla `Settlement` generation produces a clearly stronger base rather than the same small fixed force and layout.
+Result: passed and accepted by the maintainer. The forced `1800`-point
+destruction raid starts below the natural building-wealth threshold, preserves
+its warning and behavior, arrives on foot without pods and adds no reported
+`Player.log` regression.
+
+## Optional regressions
+
+- With fewer than two free colonists, confirm that the report assigns `0%` to
+  abduction while its forced test command remains available.
+- Below `10 000` building wealth, confirm `0%` natural destruction while its
+  forced test command still starts the requested doctrine.
+- Save and reload normally, then confirm no doctrine state is serialized or
+  carried into the next raid.
 
 ## Local validation
 
-- Forced C# rebuild: passed with `0` errors; NuGet vulnerability lookup emitted
-  the existing offline `NU1900` warning.
-- In-game `r1`: threat scaling and doctrine behavior passed; high-point pods rejected.
-- In-game `r2`: `EdgeWalkIn` correction, doctrine regression and `Player.log` passed.
+- `git diff --check`, XML parsing and project consistency check: passed.
+- Forced C# rebuild `0.3.54.0`: passed with `0` errors; NuGet vulnerability
+  lookup emitted the existing offline `NU1900` warning.
+- In-game `r1`: report, direct raid and abduction passed; destruction debug
+  access rejected by an unintended context check.
+- In-game `r2`: focused destruction raid and `Player.log` passed.
 
 ## Previous published milestone record
 
-The previous published milestone is `0.3.52-dev - Add the Goa'uld faction caste
-summary`, validated as revision `r1` and published from
-`feature/goauld-caste-world-summary`. The remainder of this document retains
+The previous published milestone is `0.3.53-dev - Audit Goa'uld threat
+progression`, validated as revision `r2` and published from
+`feature/goauld-threat-progression-audit`. The remainder of this document retains
 the validated `0.3.51-dev` mission-site icon record as earlier history.
 
 ### Mission-site icon scope

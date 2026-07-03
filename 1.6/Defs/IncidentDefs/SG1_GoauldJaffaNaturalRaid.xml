@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    Low-frequency natural Goa'uld Jaffa direct-assault raid.
+    Low-frequency natural Goa'uld Jaffa raid.
 
-    This incident deliberately reuses only the validated ImmediateAttack path.
-    Abduction and destruction doctrines remain developer-only until their
-    natural weights are balanced separately.
+    One shared refire delay covers direct, abduction and destruction
+    doctrines. The worker selects one doctrine from vanilla threat points and
+    current colony context without multiplying the incident frequency.
     -->
     <IncidentDef>
         <defName>SG1_GoauldJaffaNaturalRaid</defName>

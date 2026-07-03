@@ -9,13 +9,13 @@
 
     Generic vanilla faction selection remains blocked through raidsForbidden.
     Natural Goa'uld attacks use the dedicated low-frequency
-    SG1_GoauldJaffaNaturalRaid incident so only the validated direct-assault
-    doctrine is enabled in normal play during this milestone.
+    SG1_GoauldJaffaNaturalRaid incident so only the three audited assault
+    doctrines can be selected in normal play.
     -->
     <FactionDef>
         <defName>SG1_GoauldSystemLordPrototype</defName>
         <label>Goa'uld System Lord domains</label>
-        <description>A hostile world-faction abstraction for territories controlled by Goa'uld System Lords. The first playable baseline generates a limited number of visible settlements and enables rare direct-assault Jaffa raids through a dedicated incident. Traders, military aid, quest sites, natural abduction raids and natural destruction raids remain disabled.</description>
+        <description>A hostile world-faction abstraction for territories controlled by Goa'uld System Lords. The playable baseline generates a limited number of visible settlements and enables rare Jaffa raids through one dedicated incident. Depending on vanilla threat points and colony context, the force may launch a direct assault, attempt to capture colonists or conduct a destructive strike. Traders, military aid and quest sites remain disabled.</description>
         <pawnsPlural>Goa'uld subjects</pawnsPlural>
         <pawnSingular>Goa'uld subject</pawnSingular>
         <!--
@@ -71,7 +71,7 @@
         <!--
         Keep generic vanilla enemy-raid selection disabled. Dedicated natural
         and controlled incidents set the faction explicitly and force the
-        already validated ImmediateAttack path.
+        three audited assault doctrines.
         -->
         <raidsForbidden>true</raidsForbidden>
         <canSiege>false</canSiege>

@@ -7,7 +7,7 @@ namespace GateRimSG1.Goauld
     ///
     /// The shared controlled-raid setup resolves the hidden faction and
     /// target-cache refresh. This subclass selects the dedicated abduction
-    /// strategy while keeping natural raids disabled.
+    /// strategy deterministically for developer regression tests.
     /// </summary>
     public class IncidentWorker_GoauldJaffaControlledAbductionRaid
         : IncidentWorker_GoauldJaffaControlledRaid

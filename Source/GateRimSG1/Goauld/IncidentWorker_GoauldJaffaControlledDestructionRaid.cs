@@ -7,7 +7,7 @@ namespace GateRimSG1.Goauld
     ///
     /// This doctrine keeps the validated sustained military assault, then
     /// enters a separate opportunistic recovery phase before extraction.
-    /// Natural Goa'uld raids remain disabled.
+    /// It remains available as a deterministic developer regression path.
     /// </summary>
     public class IncidentWorker_GoauldJaffaControlledDestructionRaid
         : IncidentWorker_GoauldJaffaControlledRaid

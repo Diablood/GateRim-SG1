@@ -1,17 +1,14 @@
-# Natural Goa'uld Jaffa direct-assault raid
+# Natural Goa'uld Jaffa raid doctrines
 
-Version: `0.2.1-dev`
+Version: `0.2.1-dev`; doctrine selection extended in `0.3.54-dev`.
 
 ## Purpose
 
-This milestone enables the first natural Goa'uld hostile encounter in normal
-play without activating every validated raid doctrine at once.
+`SG1_GoauldJaffaNaturalRaid` remains the only natural Goa'uld raid incident.
+It can now assign the validated direct, abduction or destruction doctrine
+without creating three independent storyteller rolls.
 
-```text
-SG1_GoauldJaffaNaturalRaid
-```
-
-## Storyteller tuning
+## Storyteller contract
 
 ```text
 baseChance: 0.08
@@ -21,66 +18,59 @@ category: ThreatBig
 target: Map_PlayerHome
 ```
 
-The incident remains deliberately uncommon.
+The storyteller supplies vanilla threat points. Colony wealth, pawn strength
+and storyteller settings therefore remain authoritative. The common worker
+forces the real Goa'uld faction and `EdgeWalkIn`; no doctrine may introduce
+transport pods.
 
-## Reused direct-assault path
+## Doctrine selection
 
-```text
-GateRimSG1.Goauld.IncidentWorker_GoauldJaffaNaturalRaid
-```
+| Doctrine | Eligibility | Weight when eligible | Result |
+| --- | --- | ---: | --- |
+| Direct | always | `2` | `ImmediateAttack`, no stealing or kidnapping |
+| Abduction | `800+` points and at least 2 free colonists | `1` | capture window, then extraction with or without victims |
+| Destruction | `1800+` points and `10 000+` building wealth | `1` | sustained damage phase, recovery window, then extraction |
 
-The worker subclasses the controlled direct-assault worker and keeps:
+The weights normalize to:
 
-```text
-ImmediateAttack
-canSteal = false
-canKidnap = false
-canTimeoutOrFlee = true
-```
+- direct only: `100%` direct;
+- abduction eligible: `67%` direct, `33%` abduction;
+- all eligible: `50%` direct, `25%` abduction, `25%` destruction.
 
-The faction is set explicitly before delegating to vanilla
-`IncidentWorker_RaidEnemy`.
+The two custom `RaidStrategyDef` selection curves remain zero. Generic vanilla
+raid strategy resolution can never select them; only this dedicated worker and
+developer regression incidents assign them explicitly.
 
-Since `0.3.53-dev-r2`, the shared worker also forces vanilla `EdgeWalkIn`.
-Higher threat budgets can increase the force but never switch Goa'uld/Jaffa
-raids to transport-pod arrivals.
+## Debug access
 
-## Why generic vanilla faction selection stays blocked
-
-The Goa'uld faction keeps:
-
-```xml
-<raidsForbidden>true</raidsForbidden>
-```
-
-This is intentional. World settlements should be visible, but the first
-playable baseline should not allow vanilla faction selection to choose
-unreviewed raid strategies or opportunistic behaviors.
-
-The dedicated incident is the only natural Goa'uld raid route in this
-milestone.
-
-## Deferred doctrines
-
-Still developer-only:
+Open exactly:
 
 ```text
-SG1_GoauldJaffaControlledAbductionRaid
-SG1_GoauldJaffaControlledDestructionRaid
+Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
 ```
 
-## Manual test checklist
+`Show current progression` reports the points, free-colonist count, building
+wealth, exact requirements and normalized doctrine weights. The three
+`Force natural ... raid` commands use this real natural worker while bypassing
+normal eligibility, so manual validation depends on neither map preparation
+nor a random roll.
 
-1. Rebuild the C# assembly with `-t:Rebuild`.
-2. Generate a new world with the `Équipe SG isolée` scenario.
-3. Confirm that one hostile Goa'uld world faction exists with visible
-   settlements.
-4. Confirm that its French label is `Domaines des Grands Maîtres Goa'uld`.
-5. Trigger `raid de Jaffa Goa'uld` through developer incident tools for a fast
-   validation, or let the storyteller fire it naturally after day 12.
-6. Confirm that the arriving Jaffa use Ma'Tok staffs and modular armor.
-7. Confirm that the raid remains a direct assault without opportunistic
-   stealing or kidnapping.
-8. Recover a Ma'Tok from a defeated Jaffa.
-9. Trigger the three controlled developer raids and confirm no regression.
-10. Save and reload the colony.
+## Required validation
+
+Use a test colony with at least two free colonists to observe capture behavior.
+Save and reload between raids. Building wealth does not gate forced tests.
+
+1. Open `Show current progression` and verify the doctrine context.
+2. Run `Force natural direct raid (300 points)` and verify direct edge arrival.
+3. Reload and run `Force natural abduction raid (800 points)`; verify its
+   localized warning and capture behavior.
+4. Reload and run `Force natural destruction raid (1800 points)`; verify its
+   localized warning, destruction phase and final recovery/extraction.
+5. Confirm no pods and inspect `Player.log` for C#, XML, pawn or Lord errors.
+
+Optional eligibility checks: use fewer than two free colonists for abduction or
+less than `10 000` building wealth for destruction. The report must show `0%`
+for normal selection while the corresponding forced command remains usable.
+
+Final validation passed on `0.3.54-dev-r2`: all three natural-worker paths,
+their distinct behavior, on-foot edge arrival and `Player.log` are accepted.

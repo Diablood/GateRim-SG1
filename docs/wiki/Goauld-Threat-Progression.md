@@ -23,5 +23,6 @@ Les conséquences principales sont les suivantes :
   chaque implantation peut créer une menace persistante bien plus importante
   qu'un combattant ordinaire.
 
-Les doctrines naturelles d'enlèvement et de destruction ne sont pas activées
-par ce jalon. Elles devront d'abord être équilibrées sur cette base commune.
+Depuis `0.3.54-dev`, l'unique incident naturel utilise aussi ces points pour
+rendre l'enlèvement et la destruction progressivement admissibles. Leur ajout
+ne crée aucun tirage storyteller ni délai indépendant.

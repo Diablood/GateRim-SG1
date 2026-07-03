@@ -18,7 +18,8 @@ incident, quest or world object is implemented.
 The mod already provides:
 
 - visible hostile Goa'uld domains, settlements and System Lord leaders;
-- Jaffa settlement defenders and natural direct raids;
+- Jaffa settlement defenders and natural direct, abduction and destruction
+  raid doctrines;
 - controlled prototypes for direct, abduction and destruction raid doctrines;
 - free-symbiote incursions, autonomous implantation and hostile host takeover;
 - emergency and active-host extraction with persistent symbiote identity;
@@ -114,6 +115,10 @@ This is the smallest candidate because most of its combat foundation already
 exists. It still requires an explicit design for frequency, eligibility,
 warning text, retreat behavior and storyteller weighting before activation.
 
+This slice is assigned to `0.3.54-dev`. It retains one low-frequency incident,
+uses weights `2/1/1`, gates abduction on threat plus available colonists and
+gates destruction on threat plus building wealth.
+
 ### 3. Domain reprisals and demands
 
 Create a shared reaction layer for significant hostile actions committed by
@@ -150,6 +155,8 @@ active.
 ## Validated decisions
 
 - Threat progression is audited before natural abduction or destruction.
+- Natural doctrine activation preserves one shared incident frequency and
+  keeps direct assault as the dominant fallback.
 - Goa'uld demands and ultimatums are an accepted future interaction type.
 - Rival domains may conflict through RP information, territorial expansion and
   settlement destruction once anti-collapse safeguards are designed.

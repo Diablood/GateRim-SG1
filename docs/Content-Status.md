@@ -1,6 +1,6 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.52-dev - Add the Goa'uld faction caste summary`. L'infobulle de la faction Goa'uld complète les pourcentages de xénotypes vanilla avec les castes parasitaires acquises, sans modifier la génération.
+Dernier jalon publié : `0.3.54-dev - Enable natural Goa'uld assault doctrines`. Les doctrines naturelles d'enlèvement et de destruction sont activées contextuellement par l'unique incident Goa'uld.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -85,7 +85,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Loadouts automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
-| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : assaut direct `ImmediateAttack`, sans vol ni enlèvement opportuniste | 0.2.1-dev |
+| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : assaut direct dominant, enlèvement à partir de 800 points avec deux colons et destruction à partir de 1800 points avec 10 000 de richesse bâtie | 0.2.1-dev / doctrines 0.3.54-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le workflow vanilla de raid | 0.1.69-dev |
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans fallback ni activation des raids naturels | 0.1.70-dev |
 | Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |

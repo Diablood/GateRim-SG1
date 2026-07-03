@@ -17,7 +17,8 @@ exposed through the visible `SG1_GoauldSystemLordPrototype` faction's
 ## Current integration
 
 Since later milestones, the Goa'uld world faction generates visible
-settlements and rare natural direct-assault raids. Its servants receive:
+settlements and rare natural raids using direct, abduction or destruction
+doctrines according to threat and colony context. Its servants receive:
 
 ```text
 automatic Prim'ta

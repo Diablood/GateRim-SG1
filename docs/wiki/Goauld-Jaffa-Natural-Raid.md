@@ -1,57 +1,38 @@
 # Raid naturel de Jaffa Goa'uld
 
-> Statut : Jouable avec équilibrage initial  
-> Première version : 0.2.1-dev
+> Statut : Jouable avec équilibrage initial
+> Première version : `0.2.1-dev`
+> Doctrines naturelles : `0.3.54-dev`
 
-## Présentation
+Les domaines des Grands Maîtres Goa'uld peuvent lancer de rares raids contre
+une colonie joueur à partir du jour 12. Un délai minimal commun de 18 jours
+sépare ces raids : les doctrines supplémentaires n'augmentent donc pas leur
+fréquence globale.
 
-Les domaines des Grands Maîtres Goa'uld peuvent désormais lancer de rares
-assauts naturels contre une colonie joueur.
+La force arrive toujours à pied depuis un bord de carte, sans pods vanilla.
+Sa taille utilise les points de menace calculés par RimWorld selon la colonie,
+la difficulté et le storyteller actif.
 
-```text
-raid de Jaffa Goa'uld
-```
+## Doctrines possibles
 
-Ce premier incident naturel reste volontairement simple : il réutilise
-uniquement la doctrine d'assaut direct déjà validée.
+| Doctrine | Condition | Part lorsque toutes sont disponibles |
+| --- | --- | ---: |
+| Assaut direct | toujours | `50%` |
+| Enlèvement | au moins `800` points et 2 colons libres | `25%` |
+| Destruction | au moins `1800` points et `10 000` de richesse bâtie | `25%` |
 
-## Réglage initial
+Quand une doctrine spécialisée n'est pas disponible, sa part revient au tirage
+entre les doctrines restantes. Les premiers raids sont donc toujours directs.
+Avec seulement l'enlèvement disponible, le tirage est environ `67%` direct et
+`33%` enlèvement.
 
-```text
-premier déclenchement possible : jour 12
-délai minimal entre deux raids : 18 jours
-fréquence storyteller : faible
-```
-
-## Doctrine active
-
-```text
-ImmediateAttack
-vol opportuniste désactivé
-enlèvement opportuniste désactivé
-```
-
-Les Jaffa attaquent directement la colonie avec leurs Ma'Tok et leurs armures
-modulaires.
-
-Depuis `0.3.53-dev-r2`, ils arrivent toujours à pied depuis un bord de carte.
-Une difficulté élevée augmente la force sans activer les pods vanilla, qui ne
-correspondent pas au transport Goa'uld retenu pour GateRim SG-1.
-
-## Butin
+L'assaut direct cherche à vaincre la colonie. La doctrine d'enlèvement tente
+d'évacuer les colons tombés à terre avant de se replier. La doctrine de
+destruction mène d'abord une attaque prolongée contre la colonie, puis les
+survivants peuvent récupérer captifs ou objets de valeur avant leur départ.
 
 Les armes et équipements portés par les Jaffa vaincus peuvent devenir une
-première source naturelle de matériel Goa'uld, notamment les bâtons Ma'Tok.
-
-## Doctrines reportées
-
-Les doctrines naturelles suivantes restent désactivées :
-
-- enlèvement ;
-- destruction suivie d'une récupération opportuniste.
-
-Leurs incidents contrôlés restent accessibles en mode développeur pour les
-tests.
+source naturelle de matériel Goa'uld, notamment les bâtons Ma'Tok.
 
 Consulte aussi [Domaine des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
-et [Raid Jaffa Goa'uld contrôlé](Goauld-Jaffa-Controlled-Raid).
+et [Progression des menaces Goa'uld](Goauld-Threat-Progression).

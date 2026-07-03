@@ -29,12 +29,25 @@ namespace GateRimSG1.Goauld
                 .CalculateJaffaCount(relayReinforcementPoints, 1);
             int symbiotes = IncidentWorker_GoauldFreeSymbioteIncursion
                 .CalculateSymbioteCount(points);
+            GoauldJaffaRaidDoctrineWeights doctrineWeights =
+                IncidentWorker_GoauldJaffaNaturalRaid
+                    .CalculateDoctrineWeights(map, points);
 
             Dialog_MessageBox dialog = new Dialog_MessageBox(
                 "Goa'uld threat progression audit\n\n"
                 + $"Vanilla storyteller points: {points:0}\n"
                 + "Natural and intercepted raid points: "
                 + $"{points:0}\n"
+                + "Natural raid doctrines: "
+                + FormatDoctrineWeights(doctrineWeights)
+                + "\n"
+                + "Doctrine context: "
+                + $"{map.mapPawns.FreeColonistsSpawnedCount} free colonists "
+                + $"(abduction needs "
+                + $"{IncidentWorker_GoauldJaffaNaturalRaid.AbductionMinimumColonists}), "
+                + $"{map.wealthWatcher.WealthBuildings:0} building wealth "
+                + $"(destruction needs "
+                + $"{IncidentWorker_GoauldJaffaNaturalRaid.DestructionMinimumBuildingWealth:0})\n"
                 + $"Free symbiotes: {symbiotes}\n"
                 + "Relay defenders: "
                 + $"{relayDefenderPoints:0} points / "
@@ -47,6 +60,15 @@ namespace GateRimSG1.Goauld
                     relayDefenderPoints));
 
             Find.WindowStack.Add(dialog);
+        }
+
+        private static string FormatDoctrineWeights(
+            GoauldJaffaRaidDoctrineWeights weights)
+        {
+            return "direct "
+                + $"{weights.Percentage(weights.direct):0}% / abduction "
+                + $"{weights.Percentage(weights.abduction):0}% / destruction "
+                + $"{weights.Percentage(weights.destruction):0}%";
         }
 
         public static void ForceCurrentDirectRaid()
@@ -87,6 +109,62 @@ namespace GateRimSG1.Goauld
                 GR_DefOf.SG1_GoauldJaffaControlledRaid,
                 AdvancedRaidPoints,
                 "4000-point direct raid");
+        }
+
+        public static void ForceNaturalDirectRaid()
+        {
+            ForceNaturalDoctrine(
+                GoauldJaffaRaidDoctrine.Direct,
+                WeakRaidPoints,
+                "natural direct raid");
+        }
+
+        public static void ForceNaturalAbductionRaid()
+        {
+            ForceNaturalDoctrine(
+                GoauldJaffaRaidDoctrine.Abduction,
+                IncidentWorker_GoauldJaffaNaturalRaid
+                    .AbductionMinimumPoints,
+                "natural abduction raid");
+        }
+
+        public static void ForceNaturalDestructionRaid()
+        {
+            ForceNaturalDoctrine(
+                GoauldJaffaRaidDoctrine.Destruction,
+                IncidentWorker_GoauldJaffaNaturalRaid
+                    .DestructionMinimumPoints,
+                "natural destruction raid");
+        }
+
+        private static void ForceNaturalDoctrine(
+            GoauldJaffaRaidDoctrine doctrine,
+            float points,
+            string context)
+        {
+            Map map = Find.CurrentMap;
+            IncidentDef incidentDef = GR_DefOf.SG1_GoauldJaffaNaturalRaid;
+            IncidentWorker_GoauldJaffaNaturalRaid worker =
+                incidentDef?.Worker
+                    as IncidentWorker_GoauldJaffaNaturalRaid;
+
+            if (map == null || incidentDef?.category == null || worker == null)
+            {
+                Reject("The natural Goa'uld raid definition is unavailable.");
+                return;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+                incidentDef.category,
+                map);
+            parms.forced = true;
+            parms.points = points;
+
+            if (!worker.TryExecuteForcedDebugDoctrine(parms, doctrine))
+            {
+                Reject(
+                    $"Could not start the Goa'uld {context}.");
+            }
         }
 
         private static void ForceRaid(

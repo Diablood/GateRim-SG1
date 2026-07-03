@@ -23,9 +23,10 @@ The behavior is implemented by
 - Removing a Prim'ta later does not create an artificial replacement.
 - Existing medical implantation, dependency and tretonin systems remain
   unchanged.
-- Natural Goa'uld raids, settlements and traders remain disabled.
+- At the `0.1.63-dev` milestone, natural Goa'uld raids, settlements and traders
+  were still disabled. Later milestone documents own their current state.
 
-## Manual test checklist
+## Historical manual test checklist
 
 1. Build the mod and start RimWorld with developer mode enabled.
 2. Confirm that no new C# or DefOf initialization error is reported.
@@ -40,5 +41,5 @@ The behavior is implemented by
 9. Advance at least one in-game hour and confirm that the ordinary Jaffa
    dependency system can start for the servant that remains without a
    Prim'ta.
-10. Confirm that no natural Goa'uld raid, settlement or trader has been
-    enabled.
+10. For the original milestone only, confirm that no natural Goa'uld raid,
+    settlement or trader was enabled by Prim'ta initialization itself.

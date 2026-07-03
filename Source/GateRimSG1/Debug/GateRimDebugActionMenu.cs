@@ -92,7 +92,21 @@ namespace GateRimSG1.Debugging
                 ActionNode(
                     "Force advanced direct raid (4000 points)",
                     GoauldThreatProgressionDebugActions.ForceAdvancedDirectRaid,
-                    100)));
+                    100),
+                ActionNode(
+                    "Force natural direct raid (300 points)",
+                    GoauldThreatProgressionDebugActions.ForceNaturalDirectRaid,
+                    90),
+                ActionNode(
+                    "Force natural abduction raid (800 points)",
+                    GoauldThreatProgressionDebugActions
+                        .ForceNaturalAbductionRaid,
+                    80),
+                ActionNode(
+                    "Force natural destruction raid (1800 points)",
+                    GoauldThreatProgressionDebugActions
+                        .ForceNaturalDestructionRaid,
+                    70)));
             root.AddChild(MenuNode(
                 "Free-symbiote incursion...",
                 200,

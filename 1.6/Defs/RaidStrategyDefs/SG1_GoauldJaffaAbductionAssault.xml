@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    Dedicated developer-test raid strategy.
-    Its selection curve remains zero so normal raid strategy resolution
-    never selects it naturally.
+    Explicit Goa'uld abduction strategy. Its selection curve remains zero so
+    generic vanilla raid resolution never selects it. The dedicated natural
+    worker may still assign it after checking threat points and colony context.
     -->
     <RaidStrategyDef>
         <defName>SG1_GoauldJaffaAbductionAssault</defName>

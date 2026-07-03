@@ -49,9 +49,10 @@ Reinforcements use `25%` of that defender budget with a one-pawn minimum. The
 site serializes the original vanilla point snapshot so travel time, temporary
 map wealth and save/reload do not silently change its intended difficulty.
 
-## Deliberately deferred
+## Follow-up state
 
-- Natural abduction and destruction doctrines remain disabled.
+- Natural abduction and destruction doctrines are activated by `0.3.54-dev`
+  through the same incident and vanilla point contract documented here.
 - Goa'uld demands and ultimatums are approved as a direction but need their own
   design and implementation milestone.
 - Rival-domain reports, territorial expansion and settlement destruction are
@@ -67,10 +68,10 @@ Open:
 Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
 ```
 
-`Show current progression` reports the current vanilla points, raid snapshot,
-symbiote count, relay defender/reinforcement budgets and expected relay layout.
-The same menu can force current direct, abduction and destruction doctrines,
-plus explicit `300`-point and `4000`-point direct raids.
+`Show current progression` reports the current vanilla points, natural-doctrine
+weights and context, symbiote count, relay defender/reinforcement budgets and
+expected relay layout. The same menu can force controlled regression raids and,
+since `0.3.54-dev`, each eligible doctrine through the real natural worker.
 
 ## Required in-game validation
 

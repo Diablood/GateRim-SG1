@@ -29,12 +29,12 @@ a custom raid-strategy worker.
 
 - The controlled raid remains developer-only.
 - Its storyteller base chance remains exactly `0`.
-- Natural Goa'uld raids remain disabled.
-- Settlements and traders remain disabled.
+- At `0.1.70-dev`, natural Goa'uld raids and settlements were still disabled.
+- Traders remain disabled in the current baseline.
 - Custom Goa'uld tactics are deferred until the direct-assault baseline is
   fully stabilized.
 
-## Manual test checklist
+## Historical manual test checklist
 
 1. Build the mod and start RimWorld with developer mode enabled.
 2. Trigger:
@@ -46,7 +46,8 @@ a custom raid-strategy worker.
 6. Search `Player.log` for:
    `No raid strategy found`.
 7. Confirm that the search returns no result.
-8. Confirm that natural Goa'uld raids remain disabled.
+8. For the original milestone only, confirm that the controlled strategy did
+   not itself enable natural Goa'uld raids.
 
 ## Temporary r3 diagnostics
 

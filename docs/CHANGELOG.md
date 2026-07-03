@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.54-dev - Enable natural Goa'uld assault doctrines
+
+- Start from published tag `v0.3.53-dev` on `feature/goauld-natural-assault-doctrines`.
+- Keep one low-frequency natural incident and its shared 18-day refire delay instead of creating independent doctrine incidents.
+- Keep direct assault always eligible with weight `2`.
+- Enable abduction with weight `1` from `800` vanilla threat points when at least two free colonists are present.
+- Enable destruction with weight `1` from `1800` points when building wealth reaches `10 000`.
+- Preserve zero generic selection curves, doctrine-specific warning text and retreat behavior, and forced on-foot edge arrival.
+- Add a doctrine-weight report and deterministic natural-worker test commands for all three doctrines.
+- Record partial `r1` validation and make `r2` debug commands bypass natural eligibility gates as their `Force` labels promise; keep exact thresholds visible in the report.
+- Validate final revision `r2`: natural direct, abduction and destruction paths, deterministic debug access, edge arrival and `Player.log` are accepted.
+- Align English/French faction descriptions, technical documentation, durable tests and player-wiki drafts.
+- Publish branch `feature/goauld-natural-assault-doctrines`, annotated tag `v0.3.54-dev` and the synchronized wiki.
+
 ## 0.3.53-dev - Audit Goa'uld threat progression
 
 - Start from published tag `v0.3.52-dev` on `feature/goauld-threat-progression-audit`.

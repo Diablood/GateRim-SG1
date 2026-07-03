@@ -2,7 +2,8 @@
 <Defs>
     <!--
     Developer-only controlled Goa'uld Jaffa abduction raid.
-    A zero storyteller base chance keeps natural raids disabled.
+    A zero storyteller base chance keeps this deterministic test incident out
+    of normal selection; the shared natural incident may use the same strategy.
     -->
     <IncidentDef>
         <defName>SG1_GoauldJaffaControlledAbductionRaid</defName>

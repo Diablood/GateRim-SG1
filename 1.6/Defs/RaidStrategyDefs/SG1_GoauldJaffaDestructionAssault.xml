@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <!--
-    Dedicated developer-test destruction strategy.
-    Its selection weight remains zero so it cannot be selected naturally.
+    Explicit Goa'uld destruction strategy. Its selection curve remains zero so
+    generic vanilla raid resolution never selects it. The dedicated natural
+    worker may still assign it after checking threat points and colony context.
     -->
     <RaidStrategyDef>
         <defName>SG1_GoauldJaffaDestructionAssault</defName>

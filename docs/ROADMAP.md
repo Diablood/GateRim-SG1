@@ -1,5 +1,39 @@
 # Roadmap
 
+## Dernier jalon validé et publié — Doctrines d'assaut Goa'uld naturelles (`0.3.54-dev`)
+
+- [x] Partir du tag validé `v0.3.53-dev` sur la branche dédiée
+  `feature/goauld-natural-assault-doctrines`.
+- [x] Conserver un seul incident naturel, sa fréquence faible, son ouverture au
+  jour 12 et son délai commun de 18 jours.
+- [x] Garder l'assaut direct toujours admissible et dominant.
+- [x] Rendre l'enlèvement admissible à partir de `800` points avec au moins
+  deux colons libres présents.
+- [x] Rendre la destruction admissible à partir de `1800` points et `10 000`
+  de richesse bâtie.
+- [x] Appliquer les poids `2/1/1` sans autoriser la sélection générique vanilla
+  des stratégies spécialisées.
+- [x] Préserver les avertissements, comportements de repli et arrivées
+  `EdgeWalkIn` validés.
+- [x] Ajouter un rapport de contexte et trois commandes de test naturel
+  déterministes sous le menu GateRim SG-1.
+- [x] Valider en `r1` le rapport, l'assaut direct et l'enlèvement ; relever le
+  refus trompeur de la commande de destruction sous son seuil de richesse.
+- [x] Faire contourner les critères naturels par les commandes `Force`, tout en
+  affichant leurs seuils exacts dans le rapport (`r2`).
+- [x] Aligner les Defs, l'anglais, le français, la documentation technique et
+  les brouillons wiki.
+- [x] Rebuild forcé `0.3.54.0` avec `0` erreur.
+- [x] Valider en jeu la commande de destruction corrigée et `Player.log`.
+- [x] Publier la branche, le tag annoté `v0.3.54-dev` et le wiki après
+  autorisation explicite.
+
+La révision finale `r2` est validée puis publiée avec la branche dédiée, le tag
+annoté `v0.3.54-dev` et le wiki séparé synchronisé. Ce jalon n'ajoute aucun
+nouvel incident, site ou type de mission. Les exigences
+Goa'uld et les représailles de domaine restent le prochain candidat seulement
+après validation de cette base naturelle.
+
 ## Dernier jalon validé et publié — Progression des menaces Goa'uld (`0.3.53-dev`)
 
 - [x] Partir du dernier tag validé `v0.3.52-dev` sur la branche dédiée
@@ -32,9 +66,9 @@
   autorisation explicite.
 
 Le cadrage détaillé est conservé dans `docs/GOAULD_GAMEPLAY_DIRECTION.md` et
-l'audit technique dans `docs/GOAULD_THREAT_PROGRESSION.md`. Les doctrines
-naturelles d'enlèvement et de destruction restent désactivées jusqu'à leur
-propre jalon d'équilibrage.
+l'audit technique dans `docs/GOAULD_THREAT_PROGRESSION.md`. À la clôture de
+`0.3.53-dev`, les doctrines naturelles d'enlèvement et de destruction restaient
+désactivées jusqu'au jalon d'équilibrage `0.3.54-dev`.
 
 La révision finale `r2` est validée puis publiée avec la branche dédiée, le tag
 annoté `v0.3.53-dev` et le wiki séparé synchronisé.

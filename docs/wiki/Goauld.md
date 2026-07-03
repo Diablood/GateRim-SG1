@@ -177,9 +177,10 @@ Les deux types de serviteurs utilisent la lignée héréditaire Jaffa existante.
 défenses de colonies.
 
 Depuis `0.2.1-dev`, un
-[raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid) rare réutilise
-uniquement l'assaut direct déjà validé. Les doctrines naturelles d'enlèvement
-et de destruction restent désactivées.
+[raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid) rare attaque la
+colonie. Depuis `0.3.54-dev`, l'unique incident peut choisir un assaut direct,
+une tentative d'enlèvement ou une frappe destructrice selon les points de
+menace et le contexte de la colonie.
 
 Depuis `0.1.63-dev`, chaque nouveau guerrier ou garde Jaffa généré reçoit
 automatiquement un Prim'ta initial. L'attribution n'est effectuée qu'une

@@ -1,5 +1,33 @@
 # Testing checklist
 
+## 0.3.54-dev - Natural Goa'uld assault doctrines
+
+Validation finale terminée sur `r2`. `r1` a validé le rapport, le direct et
+l'enlèvement ; `r2` a validé la commande de destruction réellement forcée.
+Couverture durable :
+
+- conserver un seul `SG1_GoauldJaffaNaturalRaid`, son `baseChance`, son jour 12
+  et son délai minimal de 18 jours ;
+- vérifier que le rapport `Threat progression...` expose points, colons libres,
+  richesse bâtie et poids normalisés ;
+- sous `800` points, vérifier que seul l'assaut direct est admissible ;
+- à partir de `800` points et avec deux colons libres, vérifier les poids
+  `67%` direct et `33%` enlèvement tant que la destruction reste inadmissible ;
+- à partir de `1800` points, avec deux colons libres et `10 000` de richesse
+  bâtie, vérifier les poids `50%` direct, `25%` enlèvement et `25%` destruction ;
+- utiliser les trois commandes `Force natural ... raid` pour contrôler les
+  lettres, comportements et replis sans dépendre du tirage aléatoire ni des
+  critères d'éligibilité de la carte ;
+- vérifier que les trois voies utilisent les points fournis, la faction Goa'uld
+  réelle et `EdgeWalkIn` sans pods ;
+- conserver à zéro les courbes de sélection générique des deux stratégies
+  spécialisées ;
+- inspecter `Player.log` pour les erreurs C#, XML, pawn et Lord.
+
+Limites durables : ne pas créer un IncidentDef par doctrine, ne pas spécialiser
+l'équilibrage par storyteller et ne pas sérialiser un choix de doctrine entre
+deux raids.
+
 ## 0.3.53-dev - Goa'uld threat progression audit
 
 Validation finale terminée sur `r2`. `r1` a validé la progression et révélé

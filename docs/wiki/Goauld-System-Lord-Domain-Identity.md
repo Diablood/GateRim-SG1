@@ -12,8 +12,7 @@ SG1_GoauldSystemLordDomainPrototype
 ```
 
 Ce profil est associé à la faction mondiale Goa'uld. Depuis `0.2.1-dev`,
-cette faction possède des colonies visibles et un premier raid naturel rare
-d'assaut direct.
+cette faction possède des colonies visibles et un raid naturel rare.
 
 ## Emplacements de rang intrinsèques
 
@@ -49,6 +48,7 @@ doctrines de raid ou le rendu intrinsèque déjà validé.
 
 ## Limites
 
-Les colonies visibles et les rares assauts directs naturels sont actifs.
-Les marchands, les raids naturels d'enlèvement et les raids naturels de
-destruction restent désactivés. Les visuels argenté et doré sont temporaires.
+Les colonies visibles et les rares raids naturels sont actifs. Depuis
+`0.3.54-dev`, leur doctrine peut être directe, orientée vers l'enlèvement ou
+destructrice selon la menace et la colonie. Les marchands restent désactivés.
+Les visuels argenté et doré sont temporaires.

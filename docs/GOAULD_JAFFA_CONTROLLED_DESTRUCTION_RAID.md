@@ -10,8 +10,10 @@ This milestone adds a third developer-only incident:
 SG1_GoauldJaffaControlledDestructionRaid
 ```
 
-Its storyteller base chance is exactly `0`. Natural Goa'uld raids,
-settlements and traders remain disabled.
+Its storyteller base chance is exactly `0`. At the original `0.1.72-dev`
+milestone, natural Goa'uld raids, settlements and traders were still disabled.
+Since `0.3.54-dev`, the separate natural incident may explicitly reuse this
+strategy while the controlled incident remains deterministic.
 
 ## Doctrine
 
@@ -61,7 +63,7 @@ After `2400` ticks of recovery, all surviving Jaffa receive
 | Abduction | early capture after first admissible victim | extraction after capture window |
 | Destruction | military damage first | opportunistic victims and valuables after victory or timeout |
 
-## Manual test checklist
+## Historical manual test checklist
 
 1. Build the mod and start RimWorld with developer mode enabled.
 2. Confirm that no new XML, DefOf, translation or C# loading error appears.
@@ -81,4 +83,5 @@ After `2400` ticks of recovery, all surviving Jaffa receive
     with or without recovered targets.
 11. Repeat with `Do incident (points)` and a larger group.
 12. Recheck the original direct-assault and abduction incidents.
-13. Confirm that natural Goa'uld raids remain disabled.
+13. For the original milestone only, confirm that natural Goa'uld raids were
+    not enabled by the controlled IncidentDef.

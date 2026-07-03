@@ -1,3 +1,65 @@
+# Validation terminée - 0.3.54-dev
+
+Jalon : `0.3.54-dev - Enable natural Goa'uld assault doctrines`
+
+Branche : `feature/goauld-natural-assault-doctrines`
+
+Base : `v0.3.53-dev` (`7af8b1c`)
+
+Version de DLL attendue : `0.3.54.0`
+
+Révision locale : `r2`
+
+Statut : révision finale `r2` validée. `r1` a validé le rapport, le direct et
+l'enlèvement ; `r2` a corrigé puis validé la commande de destruction sous
+`10 000` de richesse bâtie. Branche, tag annoté `v0.3.54-dev` et wiki publiés.
+
+Charger dans cet ordre :
+
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
+
+La même colonie de test peut être utilisée quelle que soit sa richesse bâtie.
+
+## Test ciblé r2
+
+Ouvrir exactement :
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
+```
+
+1. Cliquer sur `Show current progression` et vérifier que le rapport indique
+   explicitement `destruction needs 10000` à côté de la richesse bâtie.
+2. Cliquer sur `Force natural destruction raid (1800 points)` et vérifier que
+   le raid démarre même si la richesse bâtie affichée est inférieure à `10 000`.
+3. Vérifier la lettre `raid de destruction de Jaffa Goa'uld`, la phase
+   destructrice puis le repli/récupération et l'arrivée à pied sans pod.
+4. Contrôler
+   `Player.log` sans nouvelle erreur C#, XML, arrivée de pawn ou Lord.
+
+Résultat attendu : le tirage naturel conserve son seuil de richesse, mais la
+commande développeur force réellement la doctrine demandée.
+
+Résultat : validé par le mainteneur. Le raid de destruction forcé démarre,
+conserve sa doctrine, arrive à pied sans pod et ne révèle aucune nouvelle
+erreur dans `Player.log`.
+
+## Régressions optionnelles
+
+- Avec moins de deux colons libres, vérifier `0%` d'enlèvement dans le rapport
+  sans désactiver sa commande forcée.
+- Sous `10 000` de richesse bâtie, vérifier `0%` de destruction naturelle sans
+  désactiver sa commande forcée.
+- Sauvegarder/recharger puis vérifier que le choix forcé précédent ne persiste
+  pas dans le raid suivant.
+
+---
+
 # Validation terminée - 0.3.53-dev
 
 Jalon : `0.3.53-dev - Audit Goa'uld threat progression`

@@ -58,6 +58,6 @@ Grands Maîtres, leur placement définitif et l'attribution automatique des rang
 supérieurs seront traités ultérieurement.
 
 Depuis `0.2.2-dev`, les [Jaffa libres](Free-Jaffa-Faction) restent sans marque
-imposée. Les colonies visibles et les rares assauts directs naturels Goa'uld
-sont actifs depuis `0.2.1-dev`, mais les marchands et les doctrines naturelles
-avancées restent désactivés.
+imposée. Les colonies visibles et les rares raids naturels Goa'uld sont actifs
+depuis `0.2.1-dev`. Depuis `0.3.54-dev`, ces raids peuvent employer trois
+doctrines ; les marchands restent désactivés.

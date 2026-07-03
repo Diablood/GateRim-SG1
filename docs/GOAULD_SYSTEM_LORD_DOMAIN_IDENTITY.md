@@ -7,7 +7,7 @@ Version: `0.1.74-dev r1`
 The data-driven Goa'uld domain identity profile remains in place, but its rank
 slots now reference intrinsic forehead-mark Defs rather than technical genes.
 Since `0.2.1-dev`, the same profile is attached to the visible Goa'uld
-world-faction baseline and its rare direct-assault raid path.
+world-faction baseline and its rare natural raid path.
 
 ## Domain Def
 
@@ -52,6 +52,7 @@ for explicit domain lookups and manual tools.
 - Free Jaffa remain unmarked by default.
 - Silver and gold marks are available through developer tools but are not assigned automatically.
 - Named System Lords are not introduced yet.
-- Visible settlements and rare direct-assault raids are enabled since `0.2.1-dev`.
-- Natural abduction raids, natural destruction raids and traders remain disabled.
+- Visible settlements and rare natural raids are enabled since `0.2.1-dev`.
+- Abduction and destruction become eligible natural doctrines in `0.3.54-dev`;
+  traders remain disabled.
 - Final emblem artwork and lateral calibration remain deferred.

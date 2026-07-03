@@ -150,5 +150,6 @@ fallback has no retroactively generated settlements.
 6. Inspect the gold-toned faction color and default settlement rendering.
 7. Confirm permanent hostility to the SGC expedition.
 8. Confirm that no `Faction leader for Domaines des Grands Maîtres Goa'uld is null` log appears.
-9. Validate the dedicated natural direct-assault incident.
+9. Validate the dedicated natural raid incident and its currently eligible
+   doctrine.
 10. Validate the three controlled developer incidents.

@@ -5,7 +5,7 @@
     A zero storyteller base chance keeps this test path manual.
     Use developer incident tools to exercise the real hostile faction,
     Combat pawn-group profile and vanilla raid workflow independently from
-    the separate low-frequency natural direct-assault incident.
+    the separate low-frequency natural raid incident.
     -->
     <IncidentDef>
         <defName>SG1_GoauldJaffaControlledRaid</defName>

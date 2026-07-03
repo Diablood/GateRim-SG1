@@ -12,9 +12,9 @@ SG1_GoauldJaffaControlledRaid
 
 Its storyteller base chance is exactly `0`. The incident must be triggered
 manually through RimWorld developer tools. Since `0.2.1-dev`, visible Goa'uld
-world settlements and one separate low-frequency natural direct-assault
-incident exist, while this controlled incident remains available for precise
-regression tests.
+world settlements and one separate low-frequency natural raid incident exist.
+Since `0.3.54-dev`, that single incident can select three doctrines while this
+controlled incident remains available for precise regression tests.
 
 ## Runtime faction
 
@@ -78,8 +78,8 @@ When developer tools do not supply points, the worker defaults to `500`.
    gizmo remains visible for the controlled player pawn.
 9. Trigger the incident a second time and confirm that the existing faction
    instance is reused.
-10. Confirm that the separate natural direct-assault incident remains
-    available without modifying the controlled test path.
+10. Confirm that the separate natural raid incident remains available without
+    modifying the controlled test path.
 
 ## Late-created faction attack-target cache refresh
 

@@ -124,25 +124,16 @@ Les serviteurs reçoivent automatiquement :
 - leur casque rétractable ;
 - leur marque frontale intrinsèque.
 
-## Premier raid naturel
+## Raid naturel
 
-Depuis `0.2.1-dev`, un incident rare peut lancer un assaut direct :
+Depuis `0.2.1-dev`, un incident rare peut lancer un raid :
 
 [Raids naturels de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid).
 
-Cette première activation conserve :
-
-```text
-ImmediateAttack
-aucun vol opportuniste
-aucun enlèvement opportuniste
-```
-
-## Doctrines encore contrôlées
-
-Les raids d'enlèvement et de destruction restent disponibles uniquement pour
-les tests développeur. Ils seront activés naturellement plus tard après une
-passe d'équilibrage séparée.
+Depuis `0.3.54-dev`, cet incident unique choisit entre assaut direct,
+enlèvement et destruction selon les points de menace, le nombre de colons et
+la richesse bâtie. Le délai commun reste inchangé et l'assaut direct demeure
+la doctrine dominante.
 
 ## Identité de domaine
 
