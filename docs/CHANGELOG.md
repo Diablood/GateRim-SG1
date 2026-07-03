@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.3.57-dev - Add System Lord kara kesh shield
+
+- Start from published tag `v0.3.56-dev` on `feature/goauld-system-lord-personal-shield`.
+- Add a kara kesh required only by generated Goa'uld System Lords and implement
+  its personal-shield mode as the first functional slice.
+- Reuse native RimWorld shield behavior: ranged absorption, melee and heat
+  bypass, blocked outgoing fire, immediate audiovisual EMP collapse and a full
+  reset after `1800` ticks.
+- Give the Goa'uld field `4.0` maximum energy, `0.2` recharge and `0.01` energy
+  loss per damage, strictly outperforming the vanilla shield belt while keeping
+  melee, heat and EMP as decisive counters.
+- Increase System Lord `combatPower` from `170` to `400` so pawn-group budgets
+  account for the added protection.
+- Add `Kara kesh` research directly after mandatory `Jaffa armor` research at a
+  cost of `3000`.
+- Allow machining-table manufacture at Crafting `12` for six advanced
+  components, `100` plasteel and `60` gold; captured shields remain usable
+  before research.
+- Keep natural recovery limited to a real System Lord and exclude the item from
+  traders and random generation.
+- Replace the ineffective required-apparel assignment with one-time persistent
+  initialization, including migration of existing System Lords without
+  replacing a shield later removed by the player.
+- Prevent the deterministic debug subject from generating incompatible random
+  family relations.
+- Pause active recharge for `300` ticks after every absorbed hit so sustained
+  fire can drain the field while isolated shots remain ineffective.
+- Add French text, deterministic debug tools, technical documentation, durable
+  tests, a synchronized player-wiki page and a stable placeholder texture path
+  for the future global visual pass.
+- Reserve the kara kesh's kinetic, neural, paralysis and remote-control
+  functions, together with biological naquadah eligibility, for separate future
+  milestones.
+- Validate final local revision `r5` in game and publish the dedicated branch,
+  annotated tag `v0.3.57-dev` and synchronized wiki.
+
 ## 0.3.56-dev - Add Goa'uld extraction ultimatum
 
 - Start from published tag `v0.3.55-dev` on `feature/goauld-extraction-ultimatum`.

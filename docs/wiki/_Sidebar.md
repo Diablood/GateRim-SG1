@@ -36,6 +36,7 @@
 - [Gilet tactique SG](SG-Tactical-Vest)
 - [Couvre-chefs de terrain SG](SG-Team-Field-Helmet)
 - [Armures Jaffa](Jaffa-Armor)
+- [Kara kesh des Grands Maîtres](Kara-Kesh)
 - [Casque Jaffa rétractable](Jaffa-Retractable-Helmet)
 - [Équipements automatiques des Jaffa Goa'uld](Jaffa-Armor-Loadouts)
 - [Tenue de terrain Tok'ra](Tokra-Field-Clothing-Set)

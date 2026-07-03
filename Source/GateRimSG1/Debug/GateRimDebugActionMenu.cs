@@ -168,6 +168,29 @@ namespace GateRimSG1.Debugging
                     GoauldFreeSymbioteIncursionDebugActions.ForceAdvancedColonyScaling,
                     100)));
             root.AddChild(MenuNode(
+                "Kara kesh shield...",
+                150,
+                ActionNode(
+                    "Spawn kara kesh",
+                    GoauldSystemLordShieldDebugActions.SpawnPersonalShield,
+                    200),
+                ActionNode(
+                    "Spawn hostile System Lord with kara kesh",
+                    GoauldSystemLordShieldDebugActions.SpawnHostileSystemLord,
+                    400),
+                PawnToolNode(
+                    "Apply ranged test hit",
+                    GoauldSystemLordShieldDebugActions.ApplyRangedTestHit,
+                    300),
+                PawnToolNode(
+                    "Apply melee test hit",
+                    GoauldSystemLordShieldDebugActions.ApplyMeleeTestHit,
+                    200),
+                PawnToolNode(
+                    "Apply EMP test hit",
+                    GoauldSystemLordShieldDebugActions.ApplyEmpTestHit,
+                    100)));
+            root.AddChild(MenuNode(
                 "Host takeover...",
                 100,
                 PawnToolNode(

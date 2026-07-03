@@ -1,5 +1,40 @@
 # Testing checklist
 
+## 0.3.57-dev - System Lord kara kesh shield
+
+Validation locale finale `r5` réussie. `r2` a confirmé l'équipement d'un Grand
+Maître existant mais révélé une exception aléatoire de relation familiale dans
+la commande debug ; `r3` a corrigé cette génération mais révélé un bouclier
+beaucoup trop fragile ; `r4` a renforcé sa présence balistique et `r5` suspend
+sa recharge sous les tirs soutenus. Le test final a validé la recherche, le
+port naturel, le gizmo, les interactions à distance, en mêlée et IEM ainsi que
+`Player.log`. Couverture durable :
+
+- vérifier que `Kara kesh` exige directement `Armures
+  Jaffa` dans l'onglet de recherche GateRim SG-1 ;
+- vérifier que la fabrication reste verrouillée avant cette recherche et que
+  les boucliers capturés restent utilisables ;
+- générer plusieurs `SG1_GoauldSystemLordHost` et confirmer que chacun porte le
+  bouclier, contrairement aux hôtes ordinaires et aux Jaffa ;
+- vérifier l'absorption des projectiles vanilla et GateRim, le passage de la
+  mêlée et de la chaleur, puis la rupture immédiate par IEM ;
+- vérifier le gizmo vanilla `Énergie du bouclier`, sa baisse progressive sous
+  les tirs et des statistiques strictement supérieures à la ceinture vanilla ;
+- vérifier que le porteur ne peut pas tirer à travers son propre champ ;
+- confirmer effondrement, délai de réinitialisation et reprise de recharge sans
+  invulnérabilité permanente ;
+- confirmer que chaque impact absorbé suspend la recharge active pendant `300`
+  ticks, sans suspendre le délai de retour d'un champ rompu ;
+- vérifier la recette au banc d'usinage, Fabrication `12`, les ingrédients et
+  l'absence d'offre marchande ou de génération aléatoire ;
+- vérifier récupération sur un Grand Maître vaincu, caravane,
+  sauvegarde/rechargement et `Player.log` ;
+- confirmer lors des régressions `combatPower 400`, capacité `4.0`, recharge
+  `0.2` et délai `1800` validés par les tests de combat.
+
+Limite durable : le raster actuel est un placeholder au chemin final ; sa
+finition appartient à la passe visuelle globale.
+
 ## 0.3.56-dev - Goa'uld extraction ultimatum
 
 Validation locale `r1` en attente. Couverture durable :

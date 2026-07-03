@@ -175,7 +175,7 @@ active.
 - Rival domains may conflict through RP information, territorial expansion and
   settlement destruction once anti-collapse safeguards are designed.
 - Goa'uld equipment may be expanded through lore-audited, rank-limited items;
-  the System Lord personal shield is the first candidate, not a promise of
+  the kara kesh personal-shield mode is the first candidate, not a promise of
   permanent invulnerability.
 
 ## Tok'ra boundary

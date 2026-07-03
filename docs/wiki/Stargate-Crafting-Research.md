@@ -20,7 +20,7 @@ de technologies récupérées ou connues.
 
 Les objets déjà obtenus restent utilisables avant la fin de ces recherches.
 
-L'onglet, les quatre prérequis, les verrouillages de production et les
+L'onglet, les prérequis, les verrouillages de production et les
 déblocages correspondants ont été validés en jeu.
 
 ## Armement Jaffa
@@ -47,6 +47,16 @@ Débloque la fabrication locale :
 - des gantelets Jaffa ;
 - des bottes renforcées Jaffa ;
 - du casque Jaffa déployé.
+
+## Kara kesh
+
+```text
+prérequis GateRim SG-1 : Armures Jaffa
+```
+
+Débloque la fabrication locale du kara kesh porté naturellement par les Grands
+Maîtres Goa'uld. Son premier mode implémenté est le bouclier personnel. Les
+exemplaires récupérés restent utilisables avant la fin de cette recherche.
 
 ## Équipement de terrain du SGC
 
@@ -84,6 +94,7 @@ Avant leur achèvement, la colonie peut toujours :
 
 - utiliser un Ma'Tok ou un Zat'nik'tel récupéré ;
 - porter une armure Jaffa capturée ;
+- porter un kara kesh capturé ;
 - utiliser l'équipement SG fourni par le scénario ;
 - administrer une dose de trétonine déjà obtenue ;
 - implanter une larve de Prim'ta disponible.

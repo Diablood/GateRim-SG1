@@ -35,6 +35,20 @@
     </ResearchProjectDef>
 
     <ResearchProjectDef>
+        <defName>SG1_KaraKeshResearch</defName>
+        <label>kara kesh</label>
+        <description>Reverse-engineer the naquadah-powered hand devices carried by Goa'uld System Lords, beginning with their personal shield mode. Captured devices remain usable immediately, but reproducing one requires prior mastery of Jaffa armor construction.</description>
+        <baseCost>3000</baseCost>
+        <techLevel>Spacer</techLevel>
+        <prerequisites>
+            <li>SG1_JaffaArmor</li>
+        </prerequisites>
+        <tab>SG1_GateRimResearch</tab>
+        <researchViewX>2</researchViewX>
+        <researchViewY>1.7</researchViewY>
+    </ResearchProjectDef>
+
+    <ResearchProjectDef>
         <defName>SG1_SGFieldEquipment</defName>
         <label>SGC field equipment</label>
         <description>Standardize local production of SG-team field clothing and modular mission equipment using established complex-clothing techniques. Equipment supplied by the stranded-team scenario remains usable immediately.</description>

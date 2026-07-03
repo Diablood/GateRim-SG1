@@ -46,6 +46,8 @@ namespace GateRimSG1.Goauld
             };
 
         private List<string> initializedPawnThingIds = new List<string>();
+        private List<string> personalShieldAssignmentPawnThingIds =
+            new List<string>();
 
         public GameComponent_GoauldHostCasteInitializer(Game game)
         {
@@ -73,10 +75,19 @@ namespace GateRimSG1.Goauld
                 ref initializedPawnThingIds,
                 "initializedGoauldHostCastePawnThingIds",
                 LookMode.Value);
+            Scribe_Collections.Look(
+                ref personalShieldAssignmentPawnThingIds,
+                "goauldSystemLordPersonalShieldAssignmentPawnThingIds",
+                LookMode.Value);
 
             if (initializedPawnThingIds == null)
             {
                 initializedPawnThingIds = new List<string>();
+            }
+
+            if (personalShieldAssignmentPawnThingIds == null)
+            {
+                personalShieldAssignmentPawnThingIds = new List<string>();
             }
         }
 
@@ -148,6 +159,8 @@ namespace GateRimSG1.Goauld
             {
                 return;
             }
+
+            TryAssignSystemLordPersonalShield(pawn, pawnThingId);
 
             if (initializedPawnThingIds.Contains(pawnThingId))
             {
@@ -247,6 +260,61 @@ namespace GateRimSG1.Goauld
                     $"Healed {removedCount} generated chronic ailment(s) "
                     + $"after Goa'uld host initialization for "
                     + $"{PawnDebugLabel(pawn)}.");
+            }
+        }
+
+        private void TryAssignSystemLordPersonalShield(
+            Pawn pawn,
+            string pawnThingId)
+        {
+            if (pawn.kindDef != GR_DefOf.SG1_GoauldSystemLordHost
+                || personalShieldAssignmentPawnThingIds.Contains(pawnThingId))
+            {
+                return;
+            }
+
+            ThingDef shieldDef = GR_DefOf.SG1_KaraKesh;
+
+            if (pawn.apparel == null || shieldDef == null)
+            {
+                return;
+            }
+
+            if (pawn.apparel.WornApparel.Any(
+                    apparel => apparel?.def == shieldDef))
+            {
+                personalShieldAssignmentPawnThingIds.Add(pawnThingId);
+                return;
+            }
+
+            Apparel shield = ThingMaker.MakeThing(shieldDef) as Apparel;
+
+            if (shield == null)
+            {
+                GR_Log.Warning(
+                    "Cannot equip generated Goa'uld System Lord: "
+                    + $"{shieldDef.defName} is not an Apparel ThingDef.");
+                return;
+            }
+
+            shield.TryGetComp<CompQuality>()?.SetQuality(
+                QualityCategory.Normal,
+                ArtGenerationContext.Outsider);
+            pawn.apparel.Wear(shield, dropReplacedApparel: false);
+
+            if (pawn.apparel.WornApparel.Contains(shield))
+            {
+                personalShieldAssignmentPawnThingIds.Add(pawnThingId);
+                GR_Log.Message(
+                    "Equipped generated Goa'uld System Lord "
+                    + $"{PawnDebugLabel(pawn)} with its personal shield.");
+            }
+            else if (!shield.Destroyed)
+            {
+                shield.Destroy(DestroyMode.Vanish);
+                GR_Log.Warning(
+                    "Could not equip generated Goa'uld System Lord "
+                    + $"{PawnDebugLabel(pawn)} with its personal shield.");
             }
         }
 

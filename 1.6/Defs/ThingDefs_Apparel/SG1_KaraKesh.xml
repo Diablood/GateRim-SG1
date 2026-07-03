@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ApparelBase">
+        <defName>SG1_KaraKesh</defName>
+        <label>kara kesh</label>
+        <description>A Goa'uld hand device powered through a naquadah-based neural interface. This prototype implements its personal shield mode: it absorbs sustained gunfire and shrapnel until its charge collapses, but offers no protection against melee attacks or heat. Absorbed impacts briefly interrupt active recharge. The field prevents the wearer from firing outward, while EMP forces a distinct audible and visible shutdown. The device's offensive, torture and remote-control functions are not yet implemented.</description>
+        <thingClass>Apparel</thingClass>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <tickerType>Normal</tickerType>
+        <techLevel>Spacer</techLevel>
+        <tradeability>None</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <statBases>
+            <Mass>2</Mass>
+            <WorkToMake>50000</WorkToMake>
+            <Flammability>0</Flammability>
+            <EnergyShieldRechargeRate>0.2</EnergyShieldRechargeRate>
+            <EnergyShieldEnergyMax>4</EnergyShieldEnergyMax>
+            <EquipDelay>2</EquipDelay>
+        </statBases>
+        <costList>
+            <ComponentSpacer>6</ComponentSpacer>
+            <Plasteel>100</Plasteel>
+            <Gold>60</Gold>
+        </costList>
+        <recipeMaker>
+            <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+            <researchPrerequisite>SG1_KaraKeshResearch</researchPrerequisite>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+            <useIngredientsForColor>false</useIngredientsForColor>
+            <skillRequirements>
+                <Crafting>12</Crafting>
+            </skillRequirements>
+            <displayPriority>310</displayPriority>
+        </recipeMaker>
+        <thingCategories>
+            <li>ApparelUtility</li>
+        </thingCategories>
+        <apparel>
+            <countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+            <careIfDamaged>false</careIfDamaged>
+            <wearPerDay>0</wearPerDay>
+            <bodyPartGroups>
+                <li>Waist</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Belt</li>
+            </layers>
+            <tags>
+                <li>BeltDefense</li>
+            </tags>
+            <developmentalStageFilter>Adult</developmentalStageFilter>
+        </apparel>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_KaraKeshShield">
+                <energyLossPerDamage>0.01</energyLossPerDamage>
+                <energyOnReset>4</energyOnReset>
+                <startingTicksToReset>1800</startingTicksToReset>
+                <rechargeDelayAfterAbsorbedHitTicks>300</rechargeDelayAfterAbsorbedHitTicks>
+            </li>
+        </comps>
+    </ThingDef>
+</Defs>

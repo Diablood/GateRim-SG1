@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.56-dev`
+> Dernière révision : `0.3.57-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -72,7 +72,8 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
-| Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire et nettoyage initial des affections chroniques biologiques | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 |
+| Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire, nettoyage initial des affections chroniques biologiques et kara kesh réservé au Grand Maître | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 / kara kesh 0.3.57-dev |
+| Kara kesh Goa'uld | Gant de rang des Grands Maîtres dont le premier mode implémenté est un puissant bouclier : projectiles absorbés, mêlée et chaleur traversantes, rupture IEM, butin rare et fabrication après `Armures Jaffa` | 0.3.57-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
@@ -109,7 +110,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Diagnostic culturel unifié | Rapport développeur en lecture seule regroupant profils, noms, backstories, faction, identité Jaffa, marque et données de symbiote | 0.3.15-dev |
 | Noms culturels persistants | Générateurs dédiés aux Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC ; attribution unique aux nouvelles générations, protection des personnages existants et préparation de la distinction hôte/symbiote | 0.3.5-dev |
 | Réactions sociales contextuelles | Opinions et réactions selon l'identité Jaffa libre, Goa'uld, Tok'ra ou Grand Maître proche | 0.2.5-dev |
-| Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement du SGC et biotechnologies Goa'uld | 0.2.8-dev |
+| Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, kara kesh après les armures, équipement du SGC et biotechnologies Goa'uld | 0.2.8-dev / kara kesh 0.3.57-dev |
 | Communicateur sécurisé Tok'ra | Bâtiment alimenté opéré par un colon : construction liée à `Communications sécurisées Tok'ra`, compatibilité des bâtiments existants, diagnostic commun et accès aux nouvelles opérations récurrentes | 0.2.26-dev à 0.2.37-dev / construction et accès 0.3.33-dev |
 | Renseignement Tok'ra sur menace interceptée | Avertissement rare annonçant une attaque Goa'uld/Jaffa avant son arrivée, avec alerte persistante | 0.2.37-dev |
 | Zone de livraison Tok'ra | Marqueur gratuit, immédiat, non minifiable et unique par carte, utilisé en priorité pour les caches et livraisons clandestines | 0.2.38-dev |
@@ -132,7 +133,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
-| Équipement Goa'uld de haut rang | Auditer le lore puis prototyper des objets rares et équilibrés, en priorité un bouclier personnel limité pour les Grands Maîtres ; intégrer leur puissance aux budgets de menace et éviter le butin systématique |
+| Équipement Goa'uld de haut rang | Mode bouclier du kara kesh implémenté dans `0.3.57-dev` ; étudier séparément ses fonctions offensives et les autres attributs de rang sans les regrouper artificiellement |
 | Réplicateurs | Prévu pour une phase ultérieure |
 | Intégration optionnelle Ideology | À étudier |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |

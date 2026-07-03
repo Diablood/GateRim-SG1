@@ -55,6 +55,7 @@ namespace GateRimSG1
         public static RaidStrategyDef SG1_GoauldJaffaDestructionAssault;
         public static JobDef SG1_GoauldAutonomousImplant;
         public static ThingDef SG1_GoauldRitualBasin;
+        public static ThingDef SG1_KaraKesh;
         public static ThingDef SG1_TokraIntroductionArtifact;
         public static ThingDef SG1_TokraSecureCommunicator;
         public static ResearchProjectDef SG1_TokraSecureCommunications;

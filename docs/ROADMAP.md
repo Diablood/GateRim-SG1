@@ -1,5 +1,55 @@
 # Roadmap
 
+## Jalon validé et publié — Kara kesh des Grands Maîtres (`0.3.57-dev`)
+
+- [x] Partir du tag publié `v0.3.56-dev` sur
+  `feature/goauld-system-lord-personal-shield`.
+- [x] Auditer le comportement du bouclier vanilla et le rapprocher du contre-jeu
+  visible dans le lore : projectiles bloqués, objets lents et mêlée traversants,
+  rupture IEM.
+- [x] Ajouter un bouclier personnel réservé aux Grands Maîtres, strictement
+  supérieur à la ceinture vanilla en capacité, recharge, coût énergétique des
+  impacts et délai de retour.
+- [x] Intégrer sa puissance au profil en passant le Grand Maître de `170` à
+  `400` `combatPower`.
+- [x] Ajouter `Kara kesh` après le prérequis obligatoire
+  `Armures Jaffa` et verrouiller la fabrication locale derrière cette recherche.
+- [x] Limiter l'acquisition naturelle aux Grands Maîtres, sans marchand ni
+  génération aléatoire, tout en autorisant la récupération et la fabrication.
+- [x] Ajouter les textes français, les outils debug déterministes, la
+  documentation technique, les tests et le brouillon wiki.
+- [x] Réserver un chemin de texture stable avec un placeholder en attente de la
+  passe visuelle globale.
+- [x] Corriger en `r2` l'affectation XML qui laissait les Grands Maîtres sans
+  bouclier : équiper une fois via l'initialiseur C# et mémoriser le pawn traité
+  sans remplacer ensuite un bouclier retiré.
+- [x] Corriger en `r3` l'exception de relation familiale aléatoire de la
+  commande debug en générant son sujet non joueur sans relations.
+- [x] Rejeter en `r3` le bouclier trop fragile, puis le renforcer en `r4` pour
+  absorber des tirs soutenus tout en conservant la rupture IEM audiovisuelle,
+  la mêlée et la chaleur comme contres.
+- [x] Établir comme règle durable que chaque statistique principale du bouclier
+  Goa'uld surclasse la ceinture-bouclier vanilla et vérifier sa charge avec le
+  gizmo vanilla dédié.
+- [x] Conserver en `r5` la recharge rapide hors combat mais la suspendre pendant
+  `300` ticks après chaque impact absorbé, afin qu'un feu soutenu puisse vider
+  la réserve sans affaiblir les tirs isolés.
+- [x] Identifier le bouclier comme une fonction du kara kesh alimenté au
+  naquadah ; conserver onde cinétique, attaque neurale, paralysie et commandes
+  distantes pour des jalons fonctionnels séparés.
+- [x] Reporter à un jalon séparé le marqueur biologique persistant de traces de
+  naquadah couvrant Goa'uld, Tok'ra, Jaffa porteurs d'un Prim'ta et anciens
+  hôtes, afin de ne pas limiter l'activation par une approximation de faction.
+- [x] Valider en jeu la recherche, le port naturel, les interactions projectile,
+  mêlée et IEM, puis contrôler `Player.log` sur la révision finale `r5`.
+- [x] Publier la branche, le tag annoté `v0.3.57-dev` et le wiki après validation
+  et autorisation explicite.
+
+La révision finale `r5` est validée et publiée avec la branche dédiée, le tag
+annoté `v0.3.57-dev` et le wiki séparé synchronisé. Aucun périmètre
+`0.3.58-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi
+après relecture du backlog durable et partir explicitement de ce tag.
+
 ## Dernier jalon validé et publié — Ultimatum après extraction Goa'uld (`0.3.56-dev`)
 
 - [x] Partir du tag publié `v0.3.55-dev` sur
@@ -1245,26 +1295,31 @@ doit commencer qu'après validation de la progression des menaces, car tout
 nouvel équipement modifie la valeur de combat réelle des hôtes et de leurs
 groupes.
 
-- [ ] Auditer le lore Goa'uld avant de choisir les objets, puis retenir
-  uniquement ceux qui créent un gameplay RimWorld lisible et équilibrable.
-- [ ] Étudier en priorité le bouclier personnel des Grands Maîtres, sans
+- [x] Auditer le lore Goa'uld avant de choisir les objets, puis retenir
+  uniquement ceux qui créent un gameplay RimWorld lisible et équilibrable
+  (`0.3.57-dev`).
+- [x] Étudier en priorité le bouclier personnel des Grands Maîtres, sans
   reproduire une invulnérabilité permanente : capacité limitée, recharge,
-  fenêtres de vulnérabilité et contre-jeu doivent être définis avant le code.
+  fenêtres de vulnérabilité et contre-jeu doivent être définis avant le code
+  (`0.3.57-dev`).
 - [ ] Étudier séparément les dispositifs de main, technologies de contrôle,
   soins avancés et autres attributs de rang ; ne pas regrouper artificiellement
   plusieurs fonctions dans un seul objet.
-- [ ] Réserver les technologies les plus fortes aux Grands Maîtres ou à des
+- [x] Réserver les technologies les plus fortes aux Grands Maîtres ou à des
   hôtes Goa'uld de haut rang ; les Jaffa ordinaires doivent conserver leur rôle
-  militaire propre.
-- [ ] Intégrer la puissance réelle dans `combatPower`, les budgets de menace,
-  la fréquence, la valeur marchande et la disponibilité comme butin.
-- [ ] Éviter que chaque raid fournisse automatiquement une technologie rare au
+  militaire propre (`0.3.57-dev` pour le premier bouclier).
+- [x] Intégrer la puissance réelle dans `combatPower`, les budgets de menace,
+  la fréquence, la valeur marchande et la disponibilité comme butin
+  (`0.3.57-dev` pour le premier bouclier).
+- [x] Éviter que chaque raid fournisse automatiquement une technologie rare au
   joueur ; définir l'acquisition, la récupération et les éventuelles
-  restrictions dans le même jalon que l'objet.
+  restrictions dans le même jalon que l'objet (`0.3.57-dev` : port naturel
+  limité aux Grands Maîtres, aucune distribution marchande ou aléatoire).
 - [ ] Tester chaque objet contre les armes vanilla, les armes GateRim SG-1, le
   corps à corps, l'IEM lorsque pertinent, les caravanes et la sauvegarde.
-- [ ] Conserver des textures provisoires jusqu'à la passe visuelle globale,
-  avec des chemins stables préparés pour les futurs assets définitifs.
+- [x] Conserver des textures provisoires jusqu'à la passe visuelle globale,
+  avec des chemins stables préparés pour les futurs assets définitifs
+  (`0.3.57-dev` pour le premier bouclier).
 
 ## Opérations Tok'ra organiques
 
