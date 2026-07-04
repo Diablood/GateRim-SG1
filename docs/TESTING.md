@@ -1,5 +1,23 @@
 # Testing checklist
 
+## 0.3.63-dev - Documentation consolidation
+
+Couverture documentaire prévue pour la révision locale `r1` :
+
+- conserver une source autoritative pour état, backlog, idées, historique,
+  tests courants, tests durables et wiki ;
+- vérifier que la roadmap ne duplique plus les checklists publiées ;
+- transférer les décisions encore ouvertes avant chaque suppression ;
+- valider tous les liens Markdown locaux après suppression ou renommage ;
+- vérifier la navigation wiki et prévoir les suppressions explicites dans le
+  dépôt séparé ;
+- confirmer l'absence de suppression de Def, traduction ou texture ;
+- exécuter le contrôle de cohérence, `git diff --check` et le rebuild de la
+  version documentaire.
+
+La consolidation de ce fichier et des spécifications détaillées reste hors du
+périmètre afin de préserver les contrats de régression jusqu'à un audit dédié.
+
 ## 0.3.62-dev - Goa'uld healing bracelet
 
 Révision locale finale `r1` validée en jeu. Couverture durable :
@@ -2316,8 +2334,8 @@ sans ancien champ de migration ni double création.
 À exécuter après toute passe globale de traduction ou de réorganisation du
 wiki :
 
-1. Ouvrir `docs/wiki/Home.md`, `Content-Status.md`,
-   `Tokra-Interaction-Roadmap.md`, `_Sidebar.md` et `_Footer.md`.
+1. Ouvrir `docs/wiki/Home.md`, `Content-Status.md`, les pages de sous-système
+   modifiées, `_Sidebar.md` et `_Footer.md`.
 2. Vérifier que les versions, états et directions de développement correspondent
    à `docs/PROJECT_STATE.md`.
 3. Vérifier que `Liens utiles` ne contient que des liens ou références et que

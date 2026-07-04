@@ -4,6 +4,38 @@ Ce fichier conserve des pistes de conception qui méritent peut-être une étude
 
 Une entrée ne doit être transformée en jalon qu'après une nouvelle discussion, un cadrage explicite et une vérification de sa compatibilité avec les systèmes déjà publiés.
 
+## Évolution du cycle biologique des reines Goa'uld
+
+**Statut : extension non planifiée du cycle déjà jouable.**
+
+Le cycle reine, symbiote immature et maturation assistée est disponible depuis
+les jalons `0.1.57-dev` à `0.2.10-dev`. Une future reprise devra décider si les
+reines restent hostless, exigent un hôte ou acceptent les deux formes, puis
+définir leur infrastructure et leurs interactions avec domaines Goa'uld,
+Tok'ra, Jaffa libres, commerce, raids et missions.
+
+La reprise ne doit pas supprimer l'acquisition actuelle avant qu'une boucle de
+remplacement complète, équilibrée et testable existe.
+
+## Réactions Tok'ra selon les cultures et factions
+
+**Statut : idée narrative non planifiée.**
+
+Une future passe peut différencier les réactions Tok'ra envers Tau'ri, Jaffa
+libres, Jaffa de domaine, hôtes Goa'uld, autres Tok'ra et Grands Maîtres. Ces
+différences devraient modifier contexte, confiance ou dialogue sans créer de
+verrous absolus ni rouvrir automatiquement le pool fermé des huit opérations.
+
+## Sarcophage Goa'uld
+
+**Statut : technologie lourde distincte non planifiée.**
+
+Le sarcophage ne doit pas devenir une fonction supplémentaire du kara kesh ou
+du bracelet de guérison. Une future étude devra traiter séparément bâtiment,
+acquisition, alimentation, puissance de soin ou de résurrection, effets
+psychologiques, dépendance, usage par l'IA et contre-jeu. Aucun soin actuel ne
+doit anticiper cette technologie ni restaurer les morts ou parties manquantes.
+
 ## Passe de compatibilité avec les DLC optionnels
 
 **Statut : idée non planifiée à réexaminer après stabilisation du contenu de base.**

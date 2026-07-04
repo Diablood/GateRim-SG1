@@ -2,7 +2,7 @@
 
 Version: `0.3.21-dev`
 
-Status: validated through `0.3.21-dev`, including Markdown-tab detection and final-state DLL-version wording.
+Status: extended in `0.3.63-dev` with local Markdown-link validation.
 
 ## Purpose
 
@@ -21,6 +21,18 @@ The script is compatible with the Windows PowerShell 5.1 parser used by the `.cm
 The checker scans `README.md` and every Markdown file under `docs/` for literal tab characters. A tab causes a non-zero exit code and reports the affected file and line.
 
 Repository-relative PowerShell command paths in Markdown must use forward slashes, for example `./tools/check-project-consistency.cmd`. This prevents a generated or copied `\t` sequence from becoming a tab and corrupting commands such as `./tools/...`.
+
+## Markdown link checks
+
+Since `0.3.63-dev`, the checker validates local Markdown targets in `README.md`
+and every document under `docs/`. Repository paths beginning with `docs/` are
+resolved from the repository root; ordinary relative paths are resolved from
+their source document. Extensionless links in `docs/wiki/` resolve to the
+matching `.md` page. External, mail, Steam and same-page anchor links are left
+to their respective renderers.
+
+This check makes removal or renaming of a technical document or wiki draft fail
+before publication when a Markdown link still points to it.
 
 ## Previously validated behavior
 

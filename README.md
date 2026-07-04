@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.62-dev`
+- Development version: `0.3.63-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -106,6 +106,7 @@ vanilla or modded storytellers. The dedicated scenario is optional.
 
 - [Player wiki](https://github.com/Diablood/GateRim-SG1/wiki)
 - [Current content status](docs/wiki/Content-Status.md)
+- [Documentation map](docs/README.md)
 - [Development roadmap](docs/ROADMAP.md)
 - [Changelog](docs/CHANGELOG.md)
 - [Build instructions](docs/BUILD.md)

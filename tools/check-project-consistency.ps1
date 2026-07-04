@@ -147,6 +147,56 @@ else {
     Add-Pass "Markdown files contain no literal tab characters."
 }
 
+$missingMarkdownLinks = @()
+$markdownLinkPattern = '(?<!!)\[[^\]]*\]\((?<target>[^)]+)\)'
+$wikiDraftPath = Get-RepositoryPath "docs/wiki"
+
+foreach ($file in $markdownFiles) {
+    $text = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8
+
+    foreach ($match in [regex]::Matches($text, $markdownLinkPattern)) {
+        $target = $match.Groups["target"].Value.Trim().Trim('<', '>')
+
+        if ([string]::IsNullOrWhiteSpace($target) -or
+            $target -match '^(https?:|mailto:|steam:|#)') {
+            continue
+        }
+
+        $target = ($target -split '#')[0]
+        $target = [Uri]::UnescapeDataString($target)
+
+        if ($target -match '^docs/') {
+            $candidate = Join-Path $RepositoryRoot $target
+        }
+        else {
+            $candidate = Join-Path $file.DirectoryName $target
+        }
+
+        if (-not [IO.Path]::GetExtension($candidate) -and
+            $file.DirectoryName -eq $wikiDraftPath) {
+            $candidate = $candidate + ".md"
+        }
+
+        if (-not (Test-Path -LiteralPath $candidate)) {
+            $lineNumber = $text.Substring(0, $match.Index).Split([char]10).Count
+            $relativeFile = $file.FullName.Substring($RepositoryRoot.Length + 1)
+            $missingMarkdownLinks += ("{0}:{1} -> {2}" -f
+                $relativeFile,
+                $lineNumber,
+                $target)
+        }
+    }
+}
+
+if ($missingMarkdownLinks.Count -gt 0) {
+    Add-Failure ("Missing local Markdown link target(s): {0}" -f
+        ($missingMarkdownLinks -join ", "))
+}
+else {
+    Add-Pass ("Local Markdown links resolve across {0} files." -f
+        $markdownFiles.Count)
+}
+
 
 
 $aboutPath = Get-RepositoryPath "About/About.xml"

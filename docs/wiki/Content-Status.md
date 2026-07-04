@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.62-dev`
+> Dernière révision : `0.3.63-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.

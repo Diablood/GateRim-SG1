@@ -92,7 +92,6 @@
 
 ## Tok'ra : identité et intégration
 
-- [Feuille de route des interactions Tok'ra](Tokra-Interaction-Roadmap)
 - [Prototype d'hôte Tok'ra](Tokra-Host-Prototype)
 - [Double identité Tok'ra](Tokra-Dual-Identity)
 - [Hébergement thérapeutique Tok'ra](Tokra-Therapeutic-Hosting)

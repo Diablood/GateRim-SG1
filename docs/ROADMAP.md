@@ -1,1650 +1,268 @@
 # Roadmap
 
-## Jalon validé et publié - Bracelet de guérison Goa'uld (`0.3.62-dev`)
-
-- [x] Partir du tag publié `v0.3.61-dev` sur
-  `feature/goauld-healing-device`.
-- [x] Créer un objet médical distinct du kara kesh, avec composant, cooldown,
-  fatigue, recherche et commandes propres.
-- [x] Réserver l'activation aux porteurs de traces biologiques persistantes de
-  naquadah et le soin à un humanoïde biologique vivant adjacent.
-- [x] Stabiliser tous les saignements, puis limiter la guérison réelle à `20`
-  points répartis entre quatre blessures non permanentes au maximum.
-- [x] Réduire la perte de sang de `0.15`, appliquer `12000` ticks de fatigue et
-  un cooldown persistant de `30000` ticks.
-- [x] Exclure maladies, infections, cancers, affections chroniques, addictions,
-  cicatrices permanentes, parties manquantes, mort et soins multiples.
-- [x] Réserver l'acquisition naturelle aux Grands Maîtres, sans commerce
-  ordinaire, et limiter leur IA à un auto-soin sérieux sans boucle.
-- [x] Exiger les recherches `Biotechnologies Goa'uld` et `Kara kesh` pour la
-  fabrication locale, sans coupler le fonctionnement des deux objets.
-- [x] Ajouter traductions, texture temporaire stable, diagnostics, documentation
-  technique, tests exacts et brouillon wiki.
-- [x] Porter le `combatPower` du Grand Maître de `550` à `625`.
-- [x] Exécuter le rebuild forcé `0.3.62.0` et préparer la révision `r1`.
-- [x] Valider en jeu le soin, la fatigue, le cooldown, l'IA hostile, la
-  sauvegarde/recharge, les limites négatives et `Player.log`.
-- [x] Publier branche, tag annoté `v0.3.62-dev` et wiki seulement après
-  validation et autorisation explicite.
-
-Le sarcophage reste une technologie lourde distincte et future. Aucune nouvelle
-fonction médicale n'est ajoutée au kara kesh.
-
-La révision locale finale `r1` est validée et publiée avec la branche dédiée,
-le tag annoté `v0.3.62-dev` et le wiki séparé synchronisé. Aucun correctif
-fonctionnel `r2` n'a été requis. La compatibilité Odyssey et les autres DLC
-optionnels restent une idée à réexaminer, sans prochain jalon imposé.
-
-## Jalon validé et publié — Maintien paralysant du kara kesh (`0.3.61-dev`)
-
-- [x] Partir explicitement du tag publié `v0.3.60-dev` sur
-  `feature/kara-kesh-paralysis-hold`.
-- [x] Ajouter un seul mode de contrôle maintenu, limité à une cible humanoïde
-  biologique hostile, consciente, à moins de `6.9` cases et en ligne de vue.
-- [x] Partager la réserve du bouclier avec un coût de `2.5`, une durée maximale
-  de `600` ticks et un cooldown persistant de `1800` ticks.
-- [x] Appliquer un Hediff visible qui fixe Déplacement à `0` et réduit
-  Manipulation à `10 %`, sans dégâts directs ni douleur ajoutée.
-- [x] Interrompre le lien si le porteur est neutralisé, si le kara kesh est
-  retiré, si la trace biologique est perdue, si le bouclier se réinitialise ou
-  si portée, ligne de vue, carte commune ou hostilité disparaissent.
-- [x] Suspendre la recharge et les autres modes actifs du kara kesh pendant le
-  maintien, avec relâchement manuel sans remboursement ni annulation du cooldown.
-- [x] Ajouter l'utilisation IA prioritaire, les diagnostics déterministes, les
-  traductions, la documentation technique, les tests et le brouillon wiki.
-- [x] Porter le `combatPower` du Grand Maître de `500` à `550` pour refléter la
-  nouvelle capacité de contrôle.
-- [x] Enregistrer les concepts spéculatifs reportés par le mainteneur dans
-  `docs/IDEAS_TO_REVISIT.md`, sans les acter dans la roadmap.
-- [x] Exécuter le rebuild forcé `0.3.61.0` et les contrôles de cohérence.
-- [x] Valider en jeu le ciblage, l'immobilisation, les interruptions, l'énergie
-  partagée, l'IA hostile, la sauvegarde/recharge et `Player.log` sur `r1`.
-- [x] Publier la branche, le tag annoté `v0.3.61-dev` et le wiki seulement après
-  validation et autorisation explicite.
-
-La révision finale `r1` est validée et publiée après rebuild forcé et tests en
-jeu, avec la branche dédiée, le tag annoté `v0.3.61-dev` et le wiki séparé
-synchronisé. Aucun correctif fonctionnel `r2` n'a été requis et aucun périmètre
-`0.3.62-dev` n'est imposé par cette clôture. Les fonctions exploratoires
-restent uniquement dans `docs/IDEAS_TO_REVISIT.md` et ne constituent pas des
-engagements de roadmap.
-
-## Jalon validé et publié — Attaque neurale du kara kesh (`0.3.60-dev`)
-
-- [x] Partir explicitement du tag publié `v0.3.59-dev` sur
-  `feature/kara-kesh-neural-attack`.
-- [x] Ajouter une seule fonction neurale temporaire sans regrouper paralysie
-  prolongée, torture, contrôle mental ou commandes distantes.
-- [x] Réutiliser les traces biologiques persistantes de naquadah comme unique
-  condition d'activation du porteur.
-- [x] Limiter le ciblage aux pawns humanoïdes biologiques, conscients, hostiles,
-  à moins de `8.9` cases et en ligne de vue.
-- [x] Partager la réserve du bouclier avec un coût de `1.75`, une recharge de
-  `1200` ticks et la pause de recharge existante.
-- [x] Ajouter `SG1_KaraKeshNeuralAgony` pendant `600` ticks avec `0.45` de
-  douleur et un facteur de Conscience de `0.8`, sans dégâts directs, recul ou
-  verrouillage de Déplacement.
-- [x] Ajouter le gizmo joueur et l'utilisation autonome prioritaire par les
-  Grands Maîtres hostiles.
-- [x] Porter le `combatPower` du Grand Maître de `450` à `500` pour refléter la
-  nouvelle capacité de contrôle.
-- [x] Ajouter les textes anglais/français, les diagnostics déterministes, la
-  documentation technique, les tests durables et le brouillon wiki.
-- [x] Exécuter un rebuild forcé `0.3.60.0` et les contrôles de cohérence.
-- [x] Valider en jeu le ciblage, l'énergie partagée, l'effet temporaire, les
-  refus biologiques, l'IA hostile, la sauvegarde/recharge et `Player.log` sur
-  la révision finale `r1`.
-- [x] Publier la branche, le tag annoté `v0.3.60-dev` et le wiki après validation
-  et autorisation explicite.
-
-La révision finale `r1` est validée et publiée après rebuild forcé et tests en
-jeu, avec la branche dédiée, le tag annoté `v0.3.60-dev` et le wiki séparé
-synchronisé. Aucun correctif fonctionnel supplémentaire n'est requis et aucun
-périmètre `0.3.61-dev` n'est imposé par cette clôture.
-
-La paralysie prolongée reste volontairement distincte : cette attaque peut
-incapaciter un pawn déjà affaibli par les règles normales de douleur ou de
-Conscience, mais elle ne fixe jamais directement sa capacité de Déplacement à
-zéro. Les modes de torture et de commande restent également hors périmètre afin
-que chaque fonction conserve un coût, un contre-jeu et des tests propres.
-
-## Jalon validé et publié — Onde cinétique du kara kesh (`0.3.59-dev`)
-
-- [x] Partir explicitement du tag publié `v0.3.58-dev` sur
-  `feature/kara-kesh-kinetic-blast`.
-- [x] Ajouter une seule fonction offensive ciblée sans regrouper attaque
-  neurale, paralysie, torture ou commandes distantes.
-- [x] Réutiliser le marqueur biologique persistant de naquadah comme unique
-  condition d'activation.
-- [x] Partager la réserve d'énergie avec le bouclier et imposer un coût de
-  `1.25`, une portée de `10.9` cases et un refroidissement de `900` ticks.
-- [x] Infliger un impact contondant lisible, un étourdissement court et un recul
-  sûr limité aux cellules praticables et inoccupées.
-- [x] Ajouter un ciblage joueur par gizmo et une utilisation autonome par les
-  Grands Maîtres hostiles.
-- [x] Porter le `combatPower` du Grand Maître de `400` à `450` pour refléter la
-  nouvelle capacité offensive.
-- [x] Ajouter les textes anglais/français, les diagnostics déterministes, la
-  documentation technique, les tests durables et le brouillon wiki.
-- [x] Corriger en `r2` l'échec de compilation `CS0266` de `r1` en utilisant le
-  type réel `IReadOnlyList<Pawn>` exposé par `MapPawns.AllPawnsSpawned`, sans
-  modification du gameplay.
-- [x] Exécuter un rebuild forcé `0.3.59.0` et les contrôles de cohérence.
-- [x] Valider en jeu le ciblage, l'énergie partagée, le cooldown, le recul sûr,
-  l'IA hostile, la sauvegarde/recharge et `Player.log` sur la révision finale `r2`.
-- [x] Publier la branche, le tag annoté `v0.3.59-dev` et le wiki après validation
-  et autorisation explicite.
-
-La révision finale `r2` est validée et publiée après correction du build de
-`r1`, rebuild forcé et tests en jeu, avec la branche dédiée, le tag annoté
-`v0.3.59-dev` et le wiki séparé synchronisé. Aucun correctif fonctionnel
-supplémentaire n'est requis et aucun périmètre `0.3.60-dev` n'est imposé par
-cette clôture. Les autres fonctions du kara kesh restent volontairement
-séparées afin que chaque mode conserve un coût, un contre-jeu et une couverture
-de tests propres.
-
-## Jalon validé et publié — Traces biologiques persistantes de naquadah (`0.3.58-dev`)
-
-- [x] Partir explicitement du tag publié `v0.3.57-dev` sur
-  `feature/persistent-naquadah-biological-traces`.
-- [x] Auditer le marqueur prototype `SG1_NaquadahBlood` et conserver son Def
-  stable comme xénogène acquis visible.
-- [x] Centraliser l'éligibilité dans `NaquadahTraceUtility`, sans test de
-  faction, d'hostilité ou de PawnKind.
-- [x] Accorder la trace aux hôtes adultes Goa'uld et Tok'ra ainsi qu'aux Jaffa
-  portant un Prim'ta.
-- [x] Conserver définitivement la trace après extraction du symbiote adulte ou
-  retrait du Prim'ta.
-- [x] Réconcilier au chargement et périodiquement les pawns de carte, caravanes
-  joueur, dirigeants et pawns du monde.
-- [x] Restreindre l'activation du bouclier du kara kesh au marqueur biologique,
-  tout en autorisant le transport et le port de l'objet par un pawn non compatible.
-- [x] Ajouter des actions debug déterministes, les textes anglais/français, la
-  documentation technique, les tests et le brouillon wiki.
-- [x] Exécuter un rebuild forcé `0.3.58.0` et les contrôles de cohérence.
-- [x] Valider en jeu le porteur non tracé, l'acquisition, les anciens hôtes, le
-  Prim'ta, la sauvegarde/recharge et `Player.log` sur la révision finale `r1`.
-- [x] Publier la branche, le tag annoté `v0.3.58-dev` et le wiki après
-  validation et autorisation explicite.
-
-La révision finale `r1` est validée et publiée avec la branche dédiée, le tag
-annoté `v0.3.58-dev` et le wiki séparé synchronisé, sans correctif fonctionnel
-supplémentaire. Aucun périmètre `0.3.59-dev` n'est imposé par cette clôture. Les
-fonctions offensives du kara kesh, la détection des symbiotes proches, la
-quantité ou la décroissance des traces et les interactions avec l'extraction
-génétique Biotech restent hors périmètre.
-
-## Jalon validé et publié — Kara kesh des Grands Maîtres (`0.3.57-dev`)
-
-- [x] Partir du tag publié `v0.3.56-dev` sur
-  `feature/goauld-system-lord-personal-shield`.
-- [x] Auditer le comportement du bouclier vanilla et le rapprocher du contre-jeu
-  visible dans le lore : projectiles bloqués, objets lents et mêlée traversants,
-  rupture IEM.
-- [x] Ajouter un bouclier personnel réservé aux Grands Maîtres, strictement
-  supérieur à la ceinture vanilla en capacité, recharge, coût énergétique des
-  impacts et délai de retour.
-- [x] Intégrer sa puissance au profil en passant le Grand Maître de `170` à
-  `400` `combatPower`.
-- [x] Ajouter `Kara kesh` après le prérequis obligatoire
-  `Armures Jaffa` et verrouiller la fabrication locale derrière cette recherche.
-- [x] Limiter l'acquisition naturelle aux Grands Maîtres, sans marchand ni
-  génération aléatoire, tout en autorisant la récupération et la fabrication.
-- [x] Ajouter les textes français, les outils debug déterministes, la
-  documentation technique, les tests et le brouillon wiki.
-- [x] Réserver un chemin de texture stable avec un placeholder en attente de la
-  passe visuelle globale.
-- [x] Corriger en `r2` l'affectation XML qui laissait les Grands Maîtres sans
-  bouclier : équiper une fois via l'initialiseur C# et mémoriser le pawn traité
-  sans remplacer ensuite un bouclier retiré.
-- [x] Corriger en `r3` l'exception de relation familiale aléatoire de la
-  commande debug en générant son sujet non joueur sans relations.
-- [x] Rejeter en `r3` le bouclier trop fragile, puis le renforcer en `r4` pour
-  absorber des tirs soutenus tout en conservant la rupture IEM audiovisuelle,
-  la mêlée et la chaleur comme contres.
-- [x] Établir comme règle durable que chaque statistique principale du bouclier
-  Goa'uld surclasse la ceinture-bouclier vanilla et vérifier sa charge avec le
-  gizmo vanilla dédié.
-- [x] Conserver en `r5` la recharge rapide hors combat mais la suspendre pendant
-  `300` ticks après chaque impact absorbé, afin qu'un feu soutenu puisse vider
-  la réserve sans affaiblir les tirs isolés.
-- [x] Identifier le bouclier comme une fonction du kara kesh alimenté au
-  naquadah ; conserver onde cinétique, attaque neurale, paralysie et commandes
-  distantes pour des jalons fonctionnels séparés.
-- [x] Reporter à un jalon séparé le marqueur biologique persistant de traces de
-  naquadah couvrant Goa'uld, Tok'ra, Jaffa porteurs d'un Prim'ta et anciens
-  hôtes, afin de ne pas limiter l'activation par une approximation de faction.
-- [x] Valider en jeu la recherche, le port naturel, les interactions projectile,
-  mêlée et IEM, puis contrôler `Player.log` sur la révision finale `r5`.
-- [x] Publier la branche, le tag annoté `v0.3.57-dev` et le wiki après validation
-  et autorisation explicite.
-
-La révision finale `r5` est validée et publiée avec la branche dédiée, le tag
-annoté `v0.3.57-dev` et le wiki séparé synchronisé. Aucun périmètre
-`0.3.58-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi
-après relecture du backlog durable et partir explicitement de ce tag.
-
-## Dernier jalon validé et publié — Ultimatum après extraction Goa'uld (`0.3.56-dev`)
-
-- [x] Partir du tag publié `v0.3.55-dev` sur
-  `feature/goauld-extraction-ultimatum`.
-- [x] Remplacer l'avertissement immédiat par un choix d'un jour attribué au
-  domaine exact.
-- [x] Suivre le symbiote extrait exact et permettre sa remise visible.
-- [x] Transformer refus et expiration en représaille différée existante.
-- [x] Préserver points, domaine, carte, anti-empilement, refroidissement et
-  sauvegardes `0.3.55-dev` déjà en attente.
-- [x] Ajouter une lettre à choix, les traductions et des commandes debug
-  explicites pour création, refus, expiration, déclenchement et remise à zéro.
-- [x] Ajouter la procédure `r1`, la documentation technique et le brouillon
-  wiki.
-- [x] Terminer les contrôles locaux et le rebuild forcé `0.3.56.0`.
-- [x] Valider le flux debug `r1` et diagnostiquer le raid antérieur comme sa
-  représaille différée, puis corriger le scanner d'hôte après extraction.
-- [x] Valider en `r2` l'extraction réelle et la disparition de l'exception du
-  scanner d'hôte.
-- [x] Ajouter en `r3` le report natif de la lettre et la conséquence directe
-  d'un échec d'extraction immédiatement mortel.
-- [x] Diagnostiquer les raids supposés absents : ils étaient programmés à
-  `120255` et `68640` ticks mais leur délai restait invisible.
-- [x] Maintenir en `r4` le symbiote sous anesthésie pendant l'ultimatum, traiter
-  sa mort comme un défi immédiat et afficher le délai réel de représailles.
-- [x] Valider en jeu les ajouts `r4` et leur `Player.log`.
-- [x] Détacher en `r5` du domaine l'ancien hôte de caste généré, tout en le
-  gardant prisonnier sans faction, recrutable ou libérable.
-- [x] Valider en jeu remise, refus, sauvegarde/rechargement, raid et
-  le statut de l'ancien hôte en `r5` dans `Player.log`.
-- [x] Publier branche, tag annoté `v0.3.56-dev` et wiki seulement après
-  autorisation explicite.
-
-Ce premier ultimatum exige l'objet même de l'affront plutôt qu'un tribut
-arbitraire. Il ne crée ni monnaie Goa'uld, ni goodwill, ni catalogue de
-missions. La révision finale `r5` est publiée avec la branche dédiée, le tag
-annoté `v0.3.56-dev` et le wiki séparé synchronisé. Aucun périmètre
-`0.3.57-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi
-après relecture du backlog durable et partir explicitement de ce tag.
-
-## Dernier jalon validé et publié — Représailles après extraction Goa'uld (`0.3.55-dev`)
-
-- [x] Partir du tag validé `v0.3.54-dev` sur
-  `feature/goauld-domain-extraction-reprisal`.
-- [x] Utiliser une chirurgie d'extraction active réellement réussie comme
-  première cause visible de réaction d'un domaine.
-- [x] Conserver et migrer prudemment l'allégeance du symbiote à son domaine.
-- [x] Annoncer immédiatement la cause et le domaine offensé.
-- [x] Stocker le domaine, la carte, le délai et les points vanilla à travers
-  sauvegarde/rechargement.
-- [x] Réutiliser le raid naturel validé en préservant la faction offensée.
-- [x] Limiter chaque domaine à une représaille en attente puis 15 jours de
-  refroidissement.
-- [x] Ajouter un sous-menu debug exact pour état, programmation, déclenchement
-  et remise à zéro.
-- [x] Ajouter les textes anglais/français, la documentation et le wiki.
-- [x] Rebuild forcé `0.3.55.0` avec `0` erreur.
-- [x] Valider en jeu l'avertissement, la persistance, le raid, le domaine et le
-  refroidissement.
-- [x] Publier la branche, le tag annoté `v0.3.55-dev` et le wiki après
-  autorisation explicite.
-
-La révision finale `r1` est validée puis publiée avec la branche dédiée, le tag
-annoté `v0.3.55-dev` et le wiki séparé synchronisé. Cette première réaction
-n'ajoute encore ni tribut ni ultimatum à choix. Une
-exigence Goa'uld ne sera définie qu'après validation de la cause, de
-l'attribution au domaine et de la conséquence persistante.
-
-## Dernier jalon validé et publié — Doctrines d'assaut Goa'uld naturelles (`0.3.54-dev`)
-
-- [x] Partir du tag validé `v0.3.53-dev` sur la branche dédiée
-  `feature/goauld-natural-assault-doctrines`.
-- [x] Conserver un seul incident naturel, sa fréquence faible, son ouverture au
-  jour 12 et son délai commun de 18 jours.
-- [x] Garder l'assaut direct toujours admissible et dominant.
-- [x] Rendre l'enlèvement admissible à partir de `800` points avec au moins
-  deux colons libres présents.
-- [x] Rendre la destruction admissible à partir de `1800` points et `10 000`
-  de richesse bâtie.
-- [x] Appliquer les poids `2/1/1` sans autoriser la sélection générique vanilla
-  des stratégies spécialisées.
-- [x] Préserver les avertissements, comportements de repli et arrivées
-  `EdgeWalkIn` validés.
-- [x] Ajouter un rapport de contexte et trois commandes de test naturel
-  déterministes sous le menu GateRim SG-1.
-- [x] Valider en `r1` le rapport, l'assaut direct et l'enlèvement ; relever le
-  refus trompeur de la commande de destruction sous son seuil de richesse.
-- [x] Faire contourner les critères naturels par les commandes `Force`, tout en
-  affichant leurs seuils exacts dans le rapport (`r2`).
-- [x] Aligner les Defs, l'anglais, le français, la documentation technique et
-  les brouillons wiki.
-- [x] Rebuild forcé `0.3.54.0` avec `0` erreur.
-- [x] Valider en jeu la commande de destruction corrigée et `Player.log`.
-- [x] Publier la branche, le tag annoté `v0.3.54-dev` et le wiki après
-  autorisation explicite.
-
-La révision finale `r2` est validée puis publiée avec la branche dédiée, le tag
-annoté `v0.3.54-dev` et le wiki séparé synchronisé. Ce jalon n'ajoute aucun
-nouvel incident, site ou type de mission. Les exigences
-Goa'uld et les représailles de domaine restent le prochain candidat seulement
-après validation de cette base naturelle.
-
-## Dernier jalon validé et publié — Progression des menaces Goa'uld (`0.3.53-dev`)
-
-- [x] Partir du dernier tag validé `v0.3.52-dev` sur la branche dédiée
-  `feature/goauld-threat-progression-audit`.
-- [x] Fermer le pool des opérations Tok'ra à ses huit archétypes actuels.
-- [x] Réserver les évolutions Tok'ra aux correctifs et équilibrages révélés par
-  de futures parties longues.
-- [x] Écarter un catalogue de missions Goa'uld calqué sur le communicateur, la
-  confiance et les offres Tok'ra.
-- [x] Auditer les fondations Goa'uld déjà jouables avant de proposer une suite.
-- [x] Valider la direction fondée sur la pression des domaines, la hiérarchie,
-  la menace biologique et les conséquences des actions du joueur.
-- [x] Utiliser les points de menace vanilla comme source commune afin de rester
-  compatible avec la richesse, la difficulté et tous les storytellers.
-- [x] Remplacer les `500` points fixes de la menace interceptée par un
-  instantané vanilla persistant.
-- [x] Retirer les plafonds de début de partie des rencontres de combat déjà
-  fondées sur les points de menace.
-- [x] Faire progresser le relais entre bunker, station divisée et cour
-  fortifiée, avec garnison et renforts adaptés au même instantané.
-- [x] Ajouter un sous-menu de diagnostic et de raids reproductibles.
-- [x] Valider en `r1` la progression faible/avancée, les trois doctrines, la
-  menace interceptée et les comportements principaux ; relever l'arrivée
-  vanilla incohérente par pods à `4000` points.
-- [x] Forcer `EdgeWalkIn` dans le worker commun des raids Goa'uld/Jaffa sans
-  modifier les points ni les doctrines (`r2`).
-- [x] Valider en jeu l'arrivée à pied de `r2`, notamment à `4000` points, les
-  doctrines contrôlées, la menace interceptée et `Player.log`.
-- [x] Publier la branche, le tag annoté `v0.3.53-dev` et le wiki après
-  autorisation explicite.
-
-Le cadrage détaillé est conservé dans `docs/GOAULD_GAMEPLAY_DIRECTION.md` et
-l'audit technique dans `docs/GOAULD_THREAT_PROGRESSION.md`. À la clôture de
-`0.3.53-dev`, les doctrines naturelles d'enlèvement et de destruction restaient
-désactivées jusqu'au jalon d'équilibrage `0.3.54-dev`.
-
-La révision finale `r2` est validée puis publiée avec la branche dédiée, le tag
-annoté `v0.3.53-dev` et le wiki séparé synchronisé.
-
-## Dernier jalon validé et publié — Résumé des castes de faction Goa'uld (`0.3.52-dev`)
-
-- [x] Partir explicitement de `v0.3.51-dev` sur `feature/goauld-caste-world-summary`.
-- [x] Corriger les documents de publication après l'ajout manuel des tags annotés `v0.3.50-dev` et `v0.3.51-dev`.
-- [x] Rendre le tag annoté final systématique dans toute publication de jalon validé, sauf exclusion explicite du mainteneur.
-- [x] Confirmer que la passe complète des textures de pawns, vêtements, objets et bâtiments reste différée et que les assets actuels sont principalement des placeholders de chemin.
-- [x] Auditer `WorldFactionsUIUtility.DoRow` et `FactionDef.Description` dans la DLL RimWorld 1.6 locale.
-- [x] Compléter uniquement la description du `SG1_GoauldSystemLordPrototype` avec les castes acquises Goa'uld.
-- [x] Conserver intact le `xenotypeSet` vanilla-visible afin de ne pas transformer la possession en xénotype germinal.
-- [x] Ajouter les textes anglais et français.
-- [x] Documenter le test court exact dans `docs/PROJECT_STATE.md`, `docs/TESTING_CURRENT.md` et le document technique.
-- [x] Ajouter la couverture durable dans `docs/TESTING.md`.
-- [x] Exécuter les contrôles locaux et le rebuild forcé `0.3.52.0`.
-- [x] Valider en jeu l'infobulle Goa'uld, la non-régression Jaffa libre, la génération du monde et `Player.log`.
-- [x] Enregistrer le retour de test dans l'état du projet et la couverture durable.
-- [x] Publier la branche, le tag annoté `v0.3.52-dev` et le wiki après autorisation explicite.
-
-Ce jalon ne change ni les textures placeholders, ni la composition des
-colonies, ni les raids, ni les dirigeants, ni les noms, ni la biologie des
-hôtes. Il complète une limite d'interface déjà documentée depuis la fondation
-de la caste Goa'uld.
-
-La révision finale `r1` est validée en jeu puis publiée avec la branche dédiée,
-le tag annoté `v0.3.52-dev` et le wiki séparé synchronisé.
-
-## Dernier jalon validé et poussé — Icônes mondiales des sites de mission GateRim (`0.3.51-dev`)
-
-- [x] Partir de l'état validé `0.3.50-dev` au commit `adb1eed` sur la branche dédiée `feature/operation-site-icon-overhaul`; le tag annoté rétrospectif `v0.3.50-dev` pointe désormais sur cette base.
-- [x] Relire `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/ROADMAP.md` et `docs/MILESTONE_PUBLICATION.md`.
-- [x] Auditer les `WorldObjectDef`, `SitePartDef` et `MissionDef` concernés par les sites d'opérations GateRim.
-- [x] Regrouper le listing par types visuels afin qu'un type corresponde à une icône.
-- [x] Ajouter un accès debug dédié `Mission-site icon tests...` avec les vrais `WorldObjectDef.defName`, pour éviter les chemins de test indirects et les libellés tronqués.
-- [x] Rejeter la règle `Town` / `ItemStash` de `r1`, qui ne mettait en œuvre aucun des types visuels demandés.
-- [x] Préparer six silhouettes dédiées : contact clandestin Tok'ra, rendez-vous logistique Tok'ra, signal de détresse Tok'ra, objectif chiffré Goa'uld, sabotage de relais Goa'uld et position d'officier Jaffa.
-- [x] Faire approuver visuellement les six concepts avant toute intégration XML ou demande de test en jeu.
-- [x] Ajouter les PNG approuvés avec des couleurs limitées, des formes simples et des contours sombres épais lisibles au petit format RimWorld.
-- [x] Associer le marqueur et le site de planque au même type visuel, et conserver une seule icône pour les variantes cachées du signal de détresse.
-- [x] Mettre à jour la checklist exacte dans `docs/PROJECT_STATE.md`, `docs/TESTING_CURRENT.md` et `docs/MISSION_SITE_WORLD_ICONS.md` après intégration.
-- [x] Mettre à jour la couverture durable dans `docs/TESTING.md` après intégration.
-- [x] Rebuild forcé `0.3.51.0`.
-- [x] Valider partiellement `r2` : les six icônes colorées sont présentes et lisibles, mais leur réutilisation comme texture rapprochée provoque une rotation inadaptée.
-- [x] Restaurer en `r3` `GenericSite` pour les sept objets de mission en vue rapprochée, tout en conservant les icônes dédiées au zoom étendu.
-- [x] Confirmer que les remplacements observés viennent du slot organique unique et des deux étapes de planque, sans perte des arcs indépendants.
-- [x] Regrouper le menu de test entre arcs indépendants et sites organiques afin d'exposer cette règle sans modifier le gameplay.
-- [x] Valider en jeu les types d'icônes sur la carte du monde et dans le listing de debug.
-- [x] Contrôler `Player.log`.
-- [x] Enregistrer le retour de test et finaliser la documentation.
-- [x] Publier le dépôt principal et synchroniser le wiki après demande explicite.
-- [x] Publier le tag final annoté `v0.3.51-dev`.
-
-`r1` est un échec de périmètre : le menu debug est conservé, mais les icônes existantes `Town` et `ItemStash` ne constituent pas le résultat du jalon. En `r2`, les six silhouettes ont été approuvées puis validées à zoom étendu, mais leur branchement simultané comme texture rapprochée a été rejeté. La révision finale `r3` sépare les deux rendus, documente le cycle de vie réel des sites et est validée en jeu avec un `Player.log` accepté. La branche finale, le tag annoté `v0.3.51-dev` et le wiki séparé sont publiés.
-
-## Dernier jalon validé et poussé — Icônes mondiales des factions GateRim (`0.3.50-dev`)
-
-- [x] Partir explicitement de `v0.3.49-dev` sur `feature/faction-world-icon-overhaul`.
-- [x] Relire `AGENTS.md`, `docs/PROJECT_STATE.md` et `docs/ROADMAP.md`.
-- [x] Confirmer que `SG1_Tokra` possède déjà une icône dédiée validée et doit la conserver.
-- [x] Remplacer les icônes vanilla des `FactionDef` Jaffa libres, Goa'uld et SGC par des chemins dédiés.
-- [x] Produire des PNG monochromes blanc/alpha afin de préserver les variations de teinte vanilla lorsque plusieurs copies d'une même faction sont ajoutées.
-- [x] Documenter la checklist de test ciblée dans `docs/PROJECT_STATE.md`, `docs/TESTING_CURRENT.md` et `docs/FACTION_WORLD_ICONS.md`.
-- [x] Rebuild forcé `0.3.50.0`.
-- [x] Valider en `r1` que les copies d'une même faction gardent la variation de teinte vanilla.
-- [x] Remplacer en `r2` les icônes trop détaillées par des silhouettes plus simples avec contours sombres épais.
-- [x] Valider en jeu les icônes Jaffa libres, Goa'uld, Tok'ra et SGC.
-- [x] Valider que les copies d'une même faction gardent la même silhouette tout en recevant des teintes vanilla distinctes.
-- [x] Contrôler `Player.log`.
-- [x] Enregistrer le retour de test et finaliser la documentation.
-- [x] Publier la branche et synchroniser le wiki après demande explicite de commit/push.
-- [x] Publier le tag final annoté `v0.3.50-dev`.
-
-La révision locale `r2` est validée et poussée au commit `adb1eed` : les silhouettes simplifiées sont lisibles en jeu, les copies d'une même faction conservent la variation de teinte vanilla et la légère différence de couleur restante vient du rendu RimWorld plutôt que du mod.
-
-Ce jalon reste visuel et ciblé. Il ne modifie pas les colonies, les raids, les noms, les factions générées, les sites de mission ni les objets du mod. Le tag final annoté `v0.3.50-dev` a été ajouté rétrospectivement par le mainteneur sur le commit validé `adb1eed`.
-
-## Dernier jalon clôturé — Sélection mondiale Tok'ra optionnelle (`0.3.49-dev`)
-
-- [x] Partir explicitement de `v0.3.48-dev` sur `feature/tokra-world-faction-selection-audit`.
-- [x] Relire les procédures et comparer le comportement souhaité aux factions vanilla sans colonies.
-- [x] Corriger l'interprétation initiale de `r1/r2`, qui rendait les Tok'ra obligatoires et invisibles.
-- [x] Afficher les Tok'ra dans la liste configurable du monde.
-- [x] Sélectionner une instance par défaut, avec un maximum configurable de une et la possibilité de choisir zéro.
-- [x] Conserver une faction masquée en jeu et sans colonie lorsque le joueur la garde.
-- [x] Supprimer le compte obligatoire et toute recréation automatique au démarrage, au chargement ou périodiquement.
-- [x] Faire de l'absence de faction un choix valide qui désactive les offres, incidents, opérations et interactions Tok'ra.
-- [x] Conserver un audit développeur en lecture seule, sans commande de réconciliation qui contourne le choix du joueur.
-- [x] Préparer la révision locale cumulative `r3`.
-- [x] Ajouter une icône de faction Tok'ra visible dans la liste de création du monde.
-- [x] Déclarer Harmony comme dépendance de mod sans embarquer `0Harmony.dll` dans GateRim SG-1.
-- [x] Ajouter l'avertissement jaune lorsque l'entrée Tok'ra est retirée de la liste des factions.
-- [x] Préparer la révision locale cumulative `r4`.
-- [x] Valider partiellement `r4` : icône Tok'ra visible, mais avertissement absent après retrait.
-- [x] Corriger en `r5` le point d'injection Harmony pour éviter le saut de branche vanilla avant l'ajout Tok'ra.
-- [x] Rebuild propre de `0.3.49.0`.
-- [x] Valider le test principal r5 : icône, retrait Tok'ra, avertissement immédiat, réajout, disparition de l'avertissement et `Player.log`.
-- [x] Enregistrer comme couverture durable les contrôles avec Tok'ra et sans Tok'ra.
-- [x] Enregistrer comme couverture durable la sauvegarde/rechargement sans recréation dans le monde désactivé.
-- [x] Verrouiller la documentation, publier la branche et créer le tag final unique `v0.3.49-dev`.
-
-La révision finale `r5` valide le comportement ciblé : Tok'ra visible et sélectionné par défaut dans l'écran de création du monde, icône dédiée, retrait volontaire avec avertissement jaune immédiat, réajout supprimant l'avertissement et dépendance Harmony déclarée sans embarquer `0Harmony.dll`.
-
-Les contrôles plus longs avec monde Tok'ra actif, monde Tok'ra désactivé, absence de recréation après sauvegarde/rechargement et désactivation durable du contenu Tok'ra restent enregistrés dans `docs/TESTING.md` comme couverture de régression, sans être présentés comme tests manuels séparés déjà exécutés pendant cette validation ciblée.
-
-Le jalon est publié sous le tag final unique `v0.3.49-dev`, avec le dépôt principal et le wiki séparé synchronisés.
-
-## Jalon précédent clôturé — Noms des Grands Maîtres Goa'uld (`0.3.48-dev`)
-
-- [x] Partir explicitement de `v0.3.47-dev` sur `feature/goauld-system-lord-leader-names`.
-- [x] Relire les procédures, l'état publié et les limites documentées de la double identité.
-- [x] Confirmer que le chef doit être nommé pendant la génération native du PawnKind pour être correct avant le choix de la tuile.
-- [x] Ajouter `SG1_NamerPawnGoauldSystemLord` avec un `NameTriple` formel valide.
-- [x] Affecter le générateur uniquement à `SG1_GoauldSystemLordHost`.
-- [x] Fournir `575` noms personnels et `24` noms de maison pour `13 800` combinaisons formelles.
-- [x] Aligner le nom persistant du symbiote sur le nom visible généré.
-- [x] Générer et stocker une identité d'hôte humain hors-monde distincte avant l'attachement du Hediff.
-- [x] Préserver la restauration du nom d'hôte lors d'une extraction ou libération prise en charge.
-- [x] Conserver les noms de domaines et de colonies indépendants du chef.
-- [x] Construire localement la DLL `0.3.48.0` et atteindre la génération du monde sans nouvelle erreur liée au name maker.
-- [x] Valider plusieurs noms culturels de chefs Goa'uld dès l'écran de création du monde.
-- [x] Conserver l'audit approfondi `symbioteName` / `hostName`, la sauvegarde/rechargement et l'extraction comme couverture durable non présentée comme test séparé.
-- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.48-dev` et synchroniser le wiki.
-
-La révision finale `r1` attribue le nom du symbiote assez tôt pour l'écran de création du monde et conserve parallèlement une identité humaine structurée pour l'hôte. Le test ciblé final valide la génération visible de plusieurs noms formels Goa'uld sans retour aux noms humains vanilla.
-
-Les contrôles approfondis de persistance, de restauration du nom d'hôte et d'extraction restent enregistrés dans `docs/TESTING.md`. Ils ne sont pas présentés comme des tests manuels séparés déjà exécutés pendant cette validation ciblée.
-
-Le jalon est publié sous le tag final unique `v0.3.48-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.49-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Branches prévues — Présence mondiale et identité visuelle
-
-Ces branches restent planifiées sans numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
-
-- `feature/tokra-world-faction-selection-audit` : branche désormais sélectionnée pour rendre la faction Tok'ra visible et optionnelle dans la liste du monde, sans colonie et sans recréation lorsque le joueur la retire.
-- `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
-
-La branche Tok'ra doit rester strictement séparée des noms de dirigeants. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
-
-## Dernier jalon clôturé — Noms culturels des chefs Jaffa libres (`0.3.47-dev`)
-
-- [x] Partir explicitement de `v0.3.46-dev` sur `feature/free-jaffa-faction-leader-names`.
-- [x] Relire les fichiers de procédure, l'état publié et le framework culturel existant.
-- [x] Constater en test `r1` que le repli par faction propriétaire ne corrige pas le nom visible à la création du monde.
-- [x] Constater en test `r2` qu'un registre de dirigeants séparé reste trop tardif pour le même écran.
-- [x] Identifier le point correct : le nom doit être produit pendant `Faction.TryGenerateNewLeader`, via le PawnKind fixe.
-- [x] Ajouter `SG1_NamerPawnFreeJaffa` et l'affecter à `SG1_FreeJaffaGuard` via `nameMaker` et `nameMakerFemale`.
-- [x] Faire reconnaître les name makers natifs par le gestionnaire culturel afin d'éviter une seconde attribution après le démarrage.
-- [x] Retirer le repli de résolution et le registre persistant provisoires introduits par `r1` et `r2`.
-- [x] Constater au premier lancement de `r3` que `chanceToUseNameMaker` n'existe pas dans `PawnKindDef` en RimWorld 1.6.
-- [x] Retirer ce champ XML invalide sans modifier les champs `nameMaker` pris en charge.
-- [x] Constater pendant la génération du monde sous `r4` que les noms en un seul mot épuisent le validateur d'unicité `NameTriple` après le premier chef.
-- [x] Remplacer en `r5` les sorties à un seul token par `576` noms personnels formels accompagnés de `24` noms de clan Jaffa.
-- [x] Répéter explicitement le nom personnel comme surnom interne afin que le nom court reste culturel et que le nom complet reste distinct.
-- [x] Valider `check-project-consistency.cmd` avec la DLL `0.3.47.0`.
-- [x] Générer un monde entièrement nouveau avec plusieurs factions Jaffa libres et vérifier leurs noms culturels variés avant le choix de la tuile de départ.
-- [x] Confirmer l'absence de l'échec `Could not get new name (first rule pack: SG1_NamerPawnFreeJaffa)` pendant la génération.
-- [x] Conserver les noms de factions, colonies et titres de dirigeants déjà validés.
-- [x] Conserver hors périmètre les chefs Goa'uld, l'audit Tok'ra et les icônes mondiales.
-- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.47-dev` et synchroniser le wiki.
-
-La révision finale `r5` conserve le mécanisme natif `PawnKindDef.nameMaker`, seul point assez précoce pour l'écran de création du monde. Elle fournit un `NameTriple` complet composé d'un nom personnel Jaffa et d'un nom de clan, avec le nom personnel conservé comme surnom court. Plusieurs chefs peuvent ainsi être générés sans conflit d'unicité ni retour aux noms humains vanilla.
-
-Le test ciblé final valide la génération visible des noms. Le remplacement ultérieur d'un chef, la sauvegarde/rechargement et les régressions complètes du contenu Jaffa libre restent enregistrés comme couverture durable dans `docs/TESTING.md`, sans être présentés comme des tests manuels séparés déjà exécutés.
-
-Le jalon est publié sous le tag final unique `v0.3.47-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.48-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Branches prévues — Identité mondiale et présence des factions
-
-Ces branches sont décidées mais ne reçoivent pas encore de numéro de jalon. Elles devront être sélectionnées séparément depuis le dernier tag publié disponible au moment de leur démarrage.
-
-- `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
-- `feature/tokra-world-faction-selection-audit` : branche désormais sélectionnée pour rendre la faction Tok'ra visible et optionnelle dans la liste du monde, sans colonie et sans recréation lorsque le joueur la retire.
-- `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
-
-Le jalon Goa'uld doit réutiliser le framework culturel tout en respectant sa double identité. La branche Tok'ra doit rester strictement séparée des noms de dirigeants. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
-
-## Dernier jalon clôturé — Générateurs de noms mondiaux Goa'uld (`0.3.46-dev`)
-
-- [x] Partir explicitement de `v0.3.45-dev` sur `feature/goauld-world-names`.
-- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et le registre d'idées non planifiées.
-- [x] Identifier le `fixedName` commun et les références restantes à `NamerFactionPirate` et `NamerSettlementPirate`.
-- [x] Ajouter un générateur de `288` noms de domaines Goa'uld.
-- [x] Ajouter un générateur de `1 728` noms de colonies avec formes ordinales naturelles.
-- [x] Ajouter les traductions françaises indexées et les accords grammaticaux nécessaires.
-- [x] Conserver le libellé générique de sélection du monde sans imposer ce nom à chaque faction générée.
-- [x] Préserver les noms déjà sérialisés dans les sauvegardes existantes.
-- [x] Ne pas introduire de Grand Maître canon nommé ni de lien artificiel avec le dirigeant généré.
-- [x] Ne modifier ni les groupes de pawns, ni les raids, ni la diplomatie, ni l'identité de domaine.
-- [x] Valider le chargement, le rebuild `0.3.46.0` et l'absence d'erreur RulePackDef ou de traduction.
-- [x] Générer plusieurs mondes avec plusieurs factions Goa'uld et contrôler la variété des domaines et colonies.
-- [x] Valider la casse française, les ordinaux et l'absence de suffixe technique systématique dans l'échantillon.
-- [x] Vérifier la conservation des noms sur une ancienne sauvegarde.
-- [x] Revalider dirigeants Goa'uld, colonies, hostilité permanente, raids et incursion de symbiotes.
-- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.46-dev` et synchroniser le wiki.
-
-Ce jalon améliore l'identité mondiale des domaines Goa'uld sans créer de Grands Maîtres nommés, de clans persistants, de nouvelle faction ou de nouvelle mécanique.
-
-La révision finale `r1` valide les noms propres de plusieurs domaines Goa'uld, la variété des colonies, la casse française naturelle, le chargement bilingue des RulePackDefs, l'absence de fuite des name makers pirates et les régressions des dirigeants, colonies, raids et de l'hostilité permanente.
-
-Le jalon est publié sous le tag final unique `v0.3.46-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.47-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Branches prévues — Identité mondiale des factions
-
-La première branche est sélectionnée pour `0.3.47-dev`. Les deux autres restent planifiées sans numéro de jalon et devront repartir séparément du dernier tag publié disponible au moment de leur démarrage.
-
-- `feature/free-jaffa-faction-leader-names` : branche sélectionnée pour `0.3.47-dev`; appliquer le profil culturel Jaffa libre aux nouveaux dirigeants sans modifier les noms de factions ni de colonies déjà publiés.
-- `feature/goauld-system-lord-leader-names` : remplacer les noms vanilla des Grands Maîtres Goa'uld en auditant ensemble le nom de l'hôte, le nom du symbiote et le nom visible du dirigeant afin de préserver la double identité persistante.
-- `feature/faction-world-icon-overhaul` : remplacer les maisons vanilla seulement différenciées par couleur par des silhouettes propres aux Jaffa libres et aux Goa'uld, puis étendre la même logique aux autres factions visibles du mod.
-- `feature/tokra-world-faction-selection-audit` : rendre les Tok'ra visibles et optionnels dans la sélection du monde, sans colonie, et respecter durablement le choix d'une partie sans contenu Tok'ra.
-
-Les deux jalons de noms de dirigeants doivent réutiliser le framework culturel existant plutôt que coder des listes spécifiques dans les PawnKinds. La branche visuelle doit rester regroupée avec la passe globale des textures et icônes afin de maintenir une direction artistique cohérente entre toutes les factions.
-
-## Jalon précédent clôturé — Générateurs de noms mondiaux Jaffa libres (`0.3.45-dev`)
-
-- [x] Partir explicitement de `v0.3.44-dev` sur `feature/free-jaffa-world-names`.
-- [x] Relire les fichiers de procédure et de suivi du dépôt.
-- [x] Remplacer les name makers outlander par deux RulePackDefs dédiés.
-- [x] Remplacer en `r2` le pool fixe de colonies par une grammaire bilingue de `600` résultats.
-- [x] Pondérer les formes sans ordinal au-dessus des variantes ordinales RP.
-- [x] Préserver l'accord masculin/féminin des ordinaux français.
-- [x] Constater après validation `r2` les capitales internes trop nombreuses et le nom de faction identique pour toutes les occurrences.
-- [x] Séparer en `r3` les formes initiales et post-ordinales afin d'obtenir `Refuge...` mais `Premier refuge...`.
-- [x] Normaliser la casse française des thèmes tout en conservant les titres propres comme `Maîtres`.
-- [x] Retirer le `fixedName` commun et ajouter `216` combinaisons de noms de factions Jaffa libres.
-- [x] Conserver le label générique de sélection du monde sans imposer ce nom à chaque faction générée.
-- [x] Préserver les noms sérialisés dans les sauvegardes existantes.
-- [x] Ne modifier ni les colonies, ni les groupes de pawns, ni le commerce, ni l'aide militaire, ni la diplomatie.
-- [x] Valider le chargement et l'absence d'erreur RulePackDef ou de traduction.
-- [x] Générer plusieurs mondes en anglais et en français avec plusieurs factions Jaffa libres.
-- [x] Contrôler la variété des noms de factions, la casse française et un large échantillon de colonies sans suffixe numérique technique systématique.
-- [x] Vérifier la conservation du périmètre de sauvegarde sans renommage rétroactif.
-- [x] Revalider commerce de colonie, convoi, visiteurs pacifiques et aide militaire.
-- [x] Effectuer le verrou documentaire final, publier `v0.3.45-dev` et synchroniser le wiki.
-
-Ce jalon reste éditorial et générationnel. Il améliore l'identité mondiale des Jaffa libres sans créer de clans persistants, modifier la diplomatie ou anticiper la passe visuelle globale.
-
-La révision finale `r3` valide les noms propres de plusieurs factions Jaffa libres, la variété des colonies, la casse française naturelle, le chargement bilingue des RulePackDefs, l'absence de fuite des name makers outlander et les régressions du commerce, des visiteurs et de l'aide militaire.
-
-Le jalon est publié sous le tag final unique `v0.3.45-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.46-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Jalon précédent clôturé — Aide militaire des Jaffa libres (`0.3.44-dev`)
-
-- [x] Repartir explicitement de `v0.3.43-dev` sur `feature/free-jaffa-military-aid`.
-- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
-- [x] Choisir un jalon diplomatique limité avant la passe visuelle, le storyteller, la Porte des étoiles ou une nouvelle race complète.
-- [x] Activer la demande d'aide militaire uniquement par le flux vanilla de la console de communication.
-- [x] Réutiliser le groupe `Combat` Jaffa libre existant sans ajouter de PawnKind ni d'incident parallèle.
-- [x] Conserver les exigences d'alliance, le coût de bonne volonté, le délai et le comportement d'arrivée vanilla.
-- [x] Maintenir désactivés les sites de quête, les raids naturels, les sièges et les attaques préparées.
-- [x] Mettre à jour les versions, traductions, documents techniques et brouillons wiki.
-- [x] Valider `check-project-consistency.cmd` et le rebuild forcé `0.3.44.0`.
-- [x] Valider l'apparition de la demande uniquement au statut allié.
-- [x] Valider le coût de bonne volonté, le délai de nouvelle demande et les refus vanilla.
-- [x] Valider la composition, la biologie, l'équipement et l'identité des renforts Jaffa libres.
-- [x] Valider le combat, le départ, la sauvegarde/rechargement et `Player.log`.
-- [x] Effectuer le verrou documentaire final, publier le tag unique `v0.3.44-dev` et synchroniser le wiki.
-
-Ce jalon ne crée ni mission, ni ressource diplomatique, ni règle d'arrivée propre au mod. Il ouvre un service vanilla cohérent pour une faction Jaffa libre alliée et conserve les autres formes de contenu factionnel pour des jalons dédiés.
-
-La révision finale `r1` valide les relations neutre, hostile et alliée, le coût de bonne volonté, le délai vanilla, la composition du groupe de combat, l'identité biologique et culturelle des renforts, leur arrivée, leur comportement, leur départ, la sauvegarde/rechargement et un `Player.log` sans nouvelle erreur GateRim SG-1.
-
-Le jalon est publié sous le tag final unique `v0.3.44-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.45-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Jalon précédent clôturé — Réseau commercial des Jaffa libres (`0.3.43-dev`)
-
-- [x] Repartir explicitement de `v0.3.42-dev` sur `feature/free-jaffa-trade-network`.
-- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
-- [x] Conserver les flux commerciaux vanilla plutôt que créer une monnaie ou une interface parallèle.
-- [x] Ajouter un `PawnGroupMaker` de type `Trader` avec marchand, gardes et animaux de bât.
-- [x] Ajouter un marchand Jaffa libre culturellement cohérent, armé mais visuellement distinct des gardes.
-- [x] Autoriser les demandes de marchand selon les règles vanilla.
-- [x] Maintenir désactivés l'aide militaire, les quêtes de faction, les raids naturels, les sièges et les attaques préparées.
-- [x] Retirer en `r2` la référence inexistante `Caravan_Outlander_General` révélée au premier lancement.
-- [x] Déclarer en `r3` `SG1_FreeJaffaTrader` comme PawnKind marchand après le test de caravane forcée.
-- [x] Remplacer en `r4` le grossiste vanilla par `SG1_Caravan_FreeJaffaClanSupplies`.
-- [x] Corriger en `r5` la tradeability des cinq pièces d'armure Jaffa publiques afin que le convoi puisse réellement les vendre.
-- [x] Spécialiser le convoi autour du ravitaillement, des ressources stratégiques et du matériel militaire.
-- [x] Autoriser l'achat d'armes humaines, d'armes de mêlée, d'armures et d'équipement Jaffa/Goa'uld.
-- [x] Limiter les ventes abusives par une réserve d'argent modérée plutôt que par une interdiction artificielle de l'équipement militaire.
-- [x] Conserver les visiteurs et colonies sur leurs profils vanilla pendant ce jalon.
-- [x] Documenter que les futures factions commerciales, notamment les Nox, compléteront les catégories économiques manquantes.
-- [x] Valider `check-project-consistency.cmd` et le chargement de tous les StockGenerators.
-- [x] Générer plusieurs stocks, vérifier leur variété, leur valeur, la rareté du Zat et l'absence de catégories hors thème.
-- [x] Valider l'achat d'équipement militaire au joueur et l'épuisement naturel du budget du marchand.
-- [x] Revalider colonies, visiteurs, demandes par communicateur, identité du marchand, sauvegarde/rechargement et `Player.log`.
-- [x] Clôturer la documentation, publier le tag final unique `v0.3.43-dev` et synchroniser le wiki.
-
-Le convoi Jaffa libre n'est pas conçu comme un marchand universel. Il couvre les besoins les plus cohérents avec une rébellion armée : provisions durables, soins de terrain, composants, matériaux stratégiques et équipement militaire. Les autres besoins d'un futur monde sans factions vanilla seront répartis entre les factions commerciales ajoutées ultérieurement afin de conserver des identités économiques complémentaires.
-
-La révision finale `r5` valide le chargement du profil commercial, les stocks spécialisés, le marchand culturel, l'achat d'équipement militaire, la limite naturelle par la réserve d'argent, le commerce de colonie, la sauvegarde/rechargement et un `Player.log` sans nouvelle erreur GateRim SG-1.
-
-Le jalon est publié sous le tag final unique `v0.3.43-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.44-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Jalon précédent clôturé — Séparation des diagnostics avancés et des actions développeur (`0.3.42-dev`)
-
-- [x] Partir explicitement de `v0.3.41-dev` sur `feature/debug-command-visibility-audit`.
-- [x] Relire `PROJECT_STATE`, `ROADMAP`, `TESTING_CURRENT`, `MILESTONE_PUBLICATION` et `IDEAS_TO_REVISIT`.
-- [x] Auditer les gizmos contextuels, commandes de mission, actions de symbiote et entrées de réglages.
-- [x] Distinguer dans `GR_Debug` les diagnostics avancés des actions capables de modifier l'état de la partie.
-- [x] Conserver l'option avancée pour les rapports, inspections techniques et traces détaillées.
-- [x] Réserver au mode développeur le menu de forçage des opérations organiques depuis le communicateur.
-- [x] Réserver au mode développeur le gizmo direct redondant du site de relais Goa'uld.
-- [x] Conserver toutes les commandes joueur réellement contextuelles sous leurs règles existantes.
-- [x] Mettre à jour les textes anglais/français des réglages et la documentation de debug.
-- [x] Valider sur `r1` `check-project-consistency.cmd`, le build `0.3.42.0` et la matrice des trois modes de visibilité.
-- [x] Vérifier sur `r1` les régressions joueur, sauvegarde/rechargement et `Player.log`.
-- [x] Masquer dans le menu contextuel les futures demandes Tok'ra tant que le palier fiable n'est pas atteint.
-- [x] Conserver après déblocage les motifs gris liés au colon, à l'alimentation, au contexte et aux délais.
-- [x] Valider sur `r2` la découverte progressive du menu selon la confiance et sa persistance après sauvegarde/rechargement.
-- [x] Clôturer la documentation, publier le tag final unique `v0.3.42-dev` et synchroniser le wiki.
-
-La révision `r1` sépare la lecture technique des commandes de test. L'option avancée GateRim SG-1 aide au diagnostic sans devenir un second mode développeur ; toute commande qui force une offre, saute une étape, déclenche une extraction instantanée ou modifie artificiellement une mission exige désormais le mode développeur RimWorld.
-
-La révision finale `r2` applique la même discrétion à la progression joueur : avant le palier fiable, le menu contextuel du communicateur ne révèle plus les futurs soutiens Tok'ra par des lignes grisées. Après déblocage, les motifs immédiats liés au colon, à l'alimentation, au délai, à la menace ou au patient restent visibles et utiles.
-
-Le jalon est publié sous le tag final unique `v0.3.42-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.43-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable, des idées exploratoires et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Jalon précédent clôturé — Extraction chirurgicale d’un hôte Goa’uld actif (`0.3.41-dev`)
-
-- [x] Partir explicitement de `v0.3.40-dev` sur `feature/goauld-active-host-extraction-surgery`.
-- [x] Conserver l’extraction d’urgence existante pendant la fenêtre d’implantation récente.
-- [x] Ajouter une opération distincte pour un symbiote Goa’uld déjà établi dans un hôte actif.
-- [x] Limiter cette opération aux hôtes contrôlés par le joueur ou détenus comme prisonniers de la colonie.
-- [x] Retirer un hôte capturé de son groupe d’assaut et empêcher sa réassignation périodique tant qu’il reste prisonnier.
-- [x] Exclure les hôtes Tok’ra actifs.
-- [x] Mutualiser le transfert chirurgical persistant entre les deux recettes sans créer un second système d’identité.
-- [x] Rendre l’extraction active plus exigeante : Medicine `10`, trois médicaments, travail prolongé et risques accrus.
-- [x] Restaurer la faction déplacée et retirer l’assaut de prise de contrôle après une réussite.
-- [x] Faire réapparaître le même symbiote vivant, avec son allégeance d’origine et une anesthésie temporaire.
-- [x] Réserver strictement la commande d’extraction instantanée au mode développeur ; les diagnostics avancés restent informatifs.
-- [x] Ajouter les textes anglais/français et mettre à jour les documents techniques et le wiki.
-- [x] Masquer hors mode développeur les commandes d'implantation forcée et de contrôle de chasse d'un symbiote libre hostile.
-- [x] Conserver les interactions d'une offre Tok'ra et les rites d'un symbiote réellement contrôlé.
-- [x] Afficher le nom du symbiote sur l'hôte pendant une prise de contrôle hostile active et restaurer le nom d'origine après extraction.
-- [x] Valider `check-project-consistency.cmd` pour `0.3.41-dev` et les 83 backstories.
-- [x] Valider le build Windows de `GateRimSG1.dll` version `0.3.41.0`.
-- [x] Valider la capture, la disponibilité de l’opération et la réussite sur un ancien colon contrôlé.
-- [x] Valider la restauration complète du pawn et la conservation de l’identité/allégeance du symbiote.
-- [x] Valider l’anesthésie temporaire du symbiote extrait et son comportement après réveil.
-- [x] Valider un échec chirurgical sans duplication ni suppression de l’état actif.
-- [x] Revalider les voies Tok’ra, implantation récente, symbiote joueur et sauvegarde/rechargement.
-- [x] Vérifier `Player.log`, clôturer la documentation, publier le tag final unique et synchroniser le wiki.
-
-La révision `r1` transforme la récupération développeur de `0.3.40-dev` en véritable contre-jeu médical après la prise de contrôle. Le joueur doit d’abord neutraliser et capturer l’ancien colon. La chirurgie ne garantit pas sa survie, mais une réussite restaure le pawn existant et extrait le même symbiote vivant plutôt que de supprimer magiquement l’une des deux identités.
-
-La révision finale `r2` ferme les gizmos techniques encore visibles avec les diagnostics avancés, interdit toute commande directe sur un symbiote hostile sélectionnable et applique le nom persistant du Goa'uld à l'hôte contrôlé. Les tests confirment que le nom complet de l'ancien colon reste stocké et revient sur le même pawn après extraction, tandis que le symbiote libre conserve sa propre identité.
-
-Le symbiote extrait n'est pas tué automatiquement. Il reste vivant sous anesthésie temporaire puis redevient dangereux à son réveil. Un éventuel confinement dédié et une remise aux Tok'ra sont conservés dans `docs/IDEAS_TO_REVISIT.md` comme piste de réflexion non planifiée, sans création de jalon.
-
-Le jalon est publié sous le tag final unique `v0.3.41-dev`, avec le dépôt principal et le wiki séparé synchronisés. Aucun périmètre fonctionnel `0.3.42-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Dernier jalon clôturé — Prise de contrôle hostile d'un hôte Goa'uld (`0.3.40-dev`)
-
-- [x] Partir explicitement de `v0.3.39-dev` sur `feature/goauld-hostile-host-takeover`.
-- [x] Conserver la fenêtre d'intervention d'une journée de l'implantation récente.
-- [x] Mémoriser l'allégeance du symbiote et la faction déplacée de l'hôte dans les données persistantes existantes.
-- [x] Limiter la prise de contrôle aux symbiotes Goa'uld appartenant à une faction non-joueur hostile.
-- [x] Transférer l'hôte dans la faction du symbiote lors de la conversion active sans recréer le pawn ni son identité.
-- [x] Restaurer ou préserver la faction de l'hôte lorsque le symbiote est extrait avant ou après une prise de contrôle.
-- [x] Préserver les implantations Tok'ra et les symbiotes Goa'uld contrôlés par le joueur.
-- [x] Ajouter une lettre RP bilingue et un sous-menu développeur compact.
-- [x] Rattacher les symbiotes hostiles de l'incursion à un assaut vanilla sans enlèvement, expiration ni fuite afin que leur poursuite d'implantation ne soit plus concurrencée par l'IA animale.
-- [x] Rattacher chaque hôte converti à un assaut hostile persistant et réparer automatiquement les sauvegardes de développement où il cherchait encore à quitter la carte.
-- [x] Réactiver en `r4` le repli vanilla du raid afin que l'hôte quitte une carte abandonnée ou un assaut épuisé au lieu d'y rester indéfiniment.
-- [x] Valider `check-project-consistency.cmd` pour `0.3.40-dev` et les 83 backstories.
-- [x] Valider le build Windows de `GateRimSG1.dll` version `0.3.40.0`.
-- [x] Valider l'état `Pending`, la persistance avant conversion et la conservation de l'identité du symbiote.
-- [x] Valider la perte de contrôle joueur, le passage dans la faction Goa'uld et la lettre de menace.
-- [x] Valider en jeu que le pawn converti attaque réellement la colonie, ne tente plus de quitter immédiatement la carte et conserve ce comportement après sauvegarde/rechargement.
-- [x] Valider qu'après abandon de la carte ou épuisement des cibles, le repli vanilla finit par faire quitter la carte à l'hôte.
-- [x] Valider l'extraction avant conversion, la restauration de faction et les régressions Tok'ra/joueur.
-- [x] Vérifier sauvegarde/rechargement et `Player.log` avant clôture.
-- [x] Clôturer la documentation, publier le tag final unique `v0.3.40-dev` et synchroniser le wiki.
-
-La révision finale `r4` valide la boucle complète : poursuite du symbiote libre sans fuite animale, prise de contrôle persistante, perte du contrôle joueur, transfert vers la faction Goa'uld, assaut réel contre les colons et les biens, migration des sauvegardes `r3`, persistance après rechargement et repli final proche d'un raid lorsque la carte est abandonnée ou l'assaut épuisé. Les voies d'extraction, Tok'ra et symbiote joueur restent protégées.
-
-Le jalon est publié sous le tag final unique `v0.3.40-dev`. Aucun périmètre `0.3.41-dev` n'est imposé : le prochain jalon doit être choisi après relecture du backlog durable et des procédures, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Dernier jalon clôturé — Incursion de symbiotes Goa'uld libres (`0.3.39-dev`)
-
-- [x] Partir explicitement de `v0.3.38-dev` sur `feature/goauld-free-symbiote-incursion`.
-- [x] Réutiliser le pawn, la chasse autonome et le transfert d'identité Goa'uld existants.
-- [x] Ajouter un incident naturel rare indépendant du pool d'opérations Tok'ra.
-- [x] Dimensionner le groupe de `1` à `4` symbiotes depuis les points de menace du storyteller.
-- [x] Exiger une faction visible de Grand Maître Goa'uld et au moins un colon compatible.
-- [x] Ajouter trois avertissements RP anglais/français avec anti-répétition persistante.
-- [x] Ajouter un sous-menu développeur Goa'uld compact avec tests faible et avancé.
-- [x] Valider le contrôle de cohérence et le build Windows `0.3.39.0`.
-- [x] Valider en jeu les groupes de `1` et `4`, la chasse, le contact, l'implantation et la persistance des variantes.
-- [x] Revalider les symbiotes Tok'ra, l'implantation manuelle, le rituel, l'extraction et l'absence d'effet sur les opérations Tok'ra.
-- [x] Clôturer le jalon, publier le tag final unique `v0.3.39-dev` et synchroniser le wiki.
-
-La révision finale `r1` valide le chargement avec la DLL `0.3.39.0`, les profils faible et avancé, la chasse autonome, le transfert d'identité lors du contact, les variantes RP persistantes et l'absence de régression sur les systèmes Tok'ra et les autres voies Goa'uld. Le premier chargement avec l'ancienne DLL `0.3.38.0` constituait uniquement un déploiement non reconstruit et a été résolu par le build attendu.
-
-Le jalon est publié sous le tag final unique `v0.3.39-dev`. Il constitue le premier contenu Goa'uld autonome récurrent après la consolidation du pool Tok'ra, sans modifier l'allégeance d'un hôte implanté, créer de site mondial ou ajouter d'escorte Jaffa. Aucun périmètre `0.3.40-dev` n'est imposé : le prochain jalon doit être choisi dans le backlog durable, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Dernier jalon clôturé — Audit du pool d'opérations Tok'ra (`0.3.38-dev`)
-
-- [x] Partir explicitement de `v0.3.37-dev` sur `feature/tokra-operation-pool-audit`.
-- [x] Auditer les huit identifiants persistants sans ajouter de neuvième archétype.
-- [x] Remplacer le minimum codé en dur par une couverture dérivée de l'enum persistant.
-- [x] Détecter les définitions absentes, dupliquées ou non pilotées par MissionDef.
-- [x] Vérifier les poids, délais cachés, facteurs anti-répétition et banques de textes de chaque opération.
-- [x] Comparer la simulation anti-répétition à une simulation équivalente sans pénalité locale.
-- [x] Ajouter deux variantes RP d'offre à la récupération de renseignements en anglais et en français.
-- [x] Valider le rebuild `0.3.38.0` et corriger en `r2` les libellés documentaires attendus par le contrôle de cohérence.
-- [x] Valider en jeu le rapport `PASS`, les huit archétypes, les quatre paliers et l'efficacité de l'anti-répétition.
-- [x] Valider trois offres successives de renseignements sans répétition immédiate du texte.
-- [x] Recontrôler sauvegarde/rechargement et `Player.log`.
-- [x] Clôturer la documentation, publier le tag final unique `v0.3.38-dev` et synchroniser le wiki séparé.
-
-La révision finale `r2` valide la couverture exacte des huit opérations, l'absence de définition manquante ou dupliquée, la propriété MissionDef, les quatre simulations de `5000` tirages et l'efficacité mesurée de la pénalité du dernier archétype. Les trois offres successives de récupération de renseignements ne répètent pas immédiatement leur texte, et l'audit reste valide après sauvegarde et rechargement.
-
-Le jalon est publié sous le tag final unique `v0.3.38-dev`. Aucun périmètre `0.3.39-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi après relecture du backlog durable, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Dernier jalon clôturé — Capture d'un officier Jaffa (`0.3.37-dev`)
-
-- [x] Partir explicitement de `v0.3.36-dev` sur `feature/tokra-jaffa-officer-capture-operation`.
-- [x] Ajouter le site mondial, l'officier vivant marqué d'argent, l'escorte adaptative et le fusil Tok'ra limité.
-- [x] Porter la réserve du fusil à douze charges et utiliser la zone de livraison Tok'ra prioritaire.
-- [x] Autoriser la reformation vanilla sans lit de prisonnier local et laisser RimWorld créer le prisonnier de caravane.
-- [x] Maintenir une entrave physique pendant le portage et le trajet, puis rendre la main au comportement vanilla sur une base du joueur.
-- [x] Remplacer la remise mondiale par un appel contextuel depuis le communicateur de la colonie et une équipe Tok'ra visible.
-- [x] Déplacer la cible et l'état d'extraction dans l'instance persistante de l'opération.
-- [x] Supprimer réellement la carte hostile et son marqueur lorsque l'officier est confirmé dans une caravane ou une colonie du joueur.
-- [x] Migrer les sauvegardes de test antérieures encore actives depuis le site chargé vers le nouvel état persistant.
-- [x] Valider le build `0.3.37.0` et le flux complet jusqu'à la cellule.
-- [x] Valider la disparition du site, l'appel depuis le communicateur, l'arrivée visible, la prise en charge physique et la réussite après départ complet.
-- [x] Conserver la récurrence, l'anti-répétition, le délai caché, la difficulté adaptative et les outils développeur.
-- [x] Clôturer la documentation, publier la branche et le tag final unique `v0.3.37-dev`.
-- [x] Synchroniser les pages wiki modifiées avec le dépôt wiki séparé.
-
-La révision finale `r6` valide le flux principal complet : capture vivante, reformation vanilla, transport, détention, nettoyage du site, appel au communicateur, arrivée de l'équipe Tok'ra, extraction physique du prisonnier et réussite unique après le départ complet de l'équipe. Aucun objet, clic ou changement de carte ne fait disparaître magiquement la cible.
-
-Le jalon est publié sous le tag final unique `v0.3.37-dev`. Aucun périmètre `0.3.38-dev` n'est imposé par cette clôture : le prochain jalon doit être choisi après relecture du backlog durable, puis partir explicitement de ce tag sur une nouvelle branche dédiée.
-
-## Dernier jalon clôturé — Outils de capture non létaux (`0.3.36-dev`)
-
-- [x] Partir explicitement de `v0.3.35-dev` sur `feature/non-lethal-capture-tools`.
-- [x] Ajouter des bolas génériques consommables.
-- [x] Ajouter un fusil hypodermique expérimental Tok'ra à cinq charges scellées.
-- [x] Séparer précision et résistance à la neutralisation.
-- [x] Conserver les impacts contondants légers.
-- [x] Rejeter la Conscience à zéro après les morts instantanées observées.
-- [x] Rejeter le stun debout et l'action `Maîtriser` après le test en jeu.
-- [x] Appliquer une inhibition neuromusculaire temporaire : Conscience intacte, Mouvement à zéro.
-- [x] Appliquer aux bolas une entrave physique distincte dans les textes RP et l'onglet Santé.
-- [x] Revenir au flux vanilla de mise à terre et de capture.
-- [x] Afficher les charges au sol, équipé et dans l'inventaire.
-- [x] Valider la persistance des charges et la disparition du fusil après le dernier tir.
-- [x] Retirer les cinq fichiers du prototype abandonné ; aucune texture supprimée.
-- [x] Valider le réveil à l'expiration, la sauvegarde/rechargement et l'absence de nouvelle erreur bloquante.
-- [x] Clôturer le jalon, publier la branche et le tag final unique `v0.3.36-dev`.
-- [x] Synchroniser les pages wiki modifiées avec le dépôt wiki séparé.
-
-La révision finale `r9` valide les bolas, le fusil hypodermique Tok'ra, la neutralisation par Mouvement à zéro sans baisse de Conscience, la capture vanilla, la visibilité et la persistance des charges, ainsi que la disparition du fusil après son dernier tir. Aucun fichier ni aucune texture supplémentaire ne doit être supprimé. Le fusil reste non fabricable et disponible uniquement via les outils développeur dans ce jalon.
-
-Le jalon est publié sous le tag final unique `v0.3.36-dev`. Le prochain jalon doit partir explicitement de ce tag sur une nouvelle branche dédiée après relecture des procédures du dépôt.
-
-## Dernier jalon clôturé — Réorganisation du menu debug (`0.3.35-dev`)
-
-- [x] Partir explicitement de `v0.3.34-dev` sur `feature/debug-action-menu-reorganization`.
-- [x] Choisir un jalon de maintenance ciblé avant d'ajouter de nouvelles missions afin de ne pas prolonger la liste plate existante.
-- [x] Remplacer les soixante-dix entrées séparées par quatre entrées ordonnées directement dans la catégorie native `GateRim SG-1`.
-- [x] Regrouper les actions par système, mission et phase logique de test.
-- [x] Préserver les méthodes et comportements existants sans toucher aux états sauvegardés ni au gameplay.
-- [x] Mettre à jour les chemins développeur dans les documents de test durables.
-- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.35.0`.
-- [x] Valider en jeu l'ordre des menus, les rapports, les actions ordinaires et les outils ciblant les pawns.
-- [x] Vérifier l'absence de doublons, d'anciennes entrées plates et de nouvelles erreurs liées au menu debug.
-- [x] Effectuer le verrou documentaire final et publier le tag unique `v0.3.35-dev`.
-- [x] Synchroniser les pages wiki modifiées avec le dépôt wiki séparé.
-
-La révision finale `r2` utilise directement la catégorie native `GateRim SG-1` et évite le niveau intermédiaire redondant proposé en r1. Les quatre entrées principales, la hiérarchie Tok'ra, les sept opérations organiques, les rapports représentatifs et le ciblage des marques Jaffa sont validés. Aucun gameplay, état sauvegardé, Def, texte joueur, fichier source ou texture n'est supprimé.
-
-Le jalon est publié sous le tag final unique `v0.3.35-dev`. Le prochain jalon doit partir explicitement de ce tag sur une nouvelle branche dédiée après relecture des procédures du dépôt.
-
-## Dernier jalon clôturé — Assaut de diversion Tok'ra (`0.3.34-dev`)
-
-- [x] Partir explicitement de `v0.3.33-dev` sur `feature/tokra-decoy-transmission-defense`.
-- [x] Ajouter un septième archétype récurrent sans renuméroter les valeurs persistées existantes.
-- [x] Valider en r1 la fondation technique, puis abandonner avant publication le concept de transmetteur physique jugé inadapté.
-- [x] Refondre l'opération en faux signal émis depuis le communicateur, sans objet livré ni objectif physique.
-- [x] Décrire l'offre, les poids de confiance, les délais, les variantes RP, la menace et les conséquences dans un MissionDef XML.
-- [x] Déclencher une force Goa'uld/Jaffa dédiée avec un snapshot de menace capturé à l'offre, facteur `0,75` et bornes `180–3000`.
-- [x] Autoriser enlèvement et vol, empêcher l'abandon par simple expiration du raid et enregistrer les assaillants exacts de l'opération.
-- [x] Faire réussir l'opération lorsque les assaillants sont neutralisés ou fuient les mains vides.
-- [x] Faire échouer une seule fois l'opération lorsqu'un assaillant quitte la carte avec un colon ou du butin, ou si la carte est perdue.
-- [x] Persister l'échéance de l'assaut, son déclenchement, les identifiants des assaillants et le diagnostic d'extraction dans le runtime générique.
-- [x] Ajouter trois variantes d'offre, trois variantes de réussite et les traductions anglaises/françaises.
-- [x] Ajouter des actions développeur ciblées et étendre le rapport d'état sans exposer les délais cachés en jeu normal.
-- [x] Retirer les cinq fichiers obsolètes du prototype r1 ; aucune texture n'était à supprimer.
-- [x] Identifier en r2 l'incompatibilité entre la stratégie vanilla de brèche et le groupe Goa'uld `Combat` dépourvu de pawn `isGoodBreacher`.
-- [x] Ajouter en r3 un `PawnGroupKindDef` réservé à l'opération et un sapeur Jaffa Ma'Tok compatible, sans modifier les raids Goa'uld ordinaires.
-- [x] Ajouter une validation de configuration empêchant le fallback vanilla à environ `99999` points si le groupe de brèche devient invalide.
-- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.34.0`.
-- [x] Valider en jeu la génération unique du raid, la présence d'au moins un sapeur Ma'Tok et la percée d'une colonie fermée.
-- [x] Valider la victoire par combat et la sauvegarde/recharge pendant l'assaut sans duplication.
-- [x] Effectuer la passe finale des textes joueur et des diagnostics développeur.
-- [x] Publier la branche, le tag final unique `v0.3.34-dev` et le wiki séparé.
-
-La révision finale `r3` remplace le groupe `Combat` incompatible par un groupe de mission explicitement sélectionné. Le sapeur dédié hérite du Ma'Tok, déjà capable d'endommager les structures, et n'entre dans aucun raid Goa'uld ordinaire. Le raid, la brèche, la persistance et la victoire par combat sont validés. Les voies de fuite, otage, butin, perte de carte, comparaison faible/avancée et régressions complètes des six opérations précédentes restent conservées comme couverture durable dans `docs/TESTING.md`, sans être présentées comme rejouées lors de la passe ciblée finale.
-
-Le jalon est publié sous le tag final unique `v0.3.34-dev`. Le jalon de maintenance `0.3.35-dev` part explicitement de ce tag sur la branche dédiée `feature/debug-action-menu-reorganization`.
-
-## Dernier jalon clôturé — Accès aux opérations par communicateur (`0.3.33-dev`)
-
-- [x] Partir explicitement de `v0.3.32-dev` sur `feature/tokra-communicator-operation-gating`.
-- [x] Remplacer le prérequis de construction `MicroelectronicsBasics` par `SG1_TokraSecureCommunications`.
-- [x] Conserver `Electricity` comme prérequis indirect de la recherche dédiée.
-- [x] Préserver les communicateurs déjà construits dans les anciennes sauvegardes.
-- [x] Ajouter un service commun distinguant présence sur une colonie, contrôle joueur, configuration et alimentation.
-- [x] Ajouter le rapport développeur `Tok'ra communicator: show availability`.
-- [x] Valider le build `0.3.33.0`, le verrou de construction, les états alimenté/non alimenté et la sauvegarde/recharge de r1.
-- [x] Utiliser le service en r2 pour empêcher uniquement les nouvelles offres récurrentes sans communicateur disponible.
-- [x] Préserver les opérations déjà proposées, acceptées ou actives pendant une coupure ou une destruction.
-- [x] Persister l'attente du canal et la restaurer après sauvegarde/rechargement.
-- [x] Reprendre la planification avec un délai organique complet après restauration du canal, sans offre immédiate garantie.
-- [x] Ajouter une action développeur qui rend l'échéance naturelle immédiatement due sans contourner le verrou.
-- [x] Valider en jeu le blocage, la persistance, la reprise différée, les actions forcées et la préservation du slot actif en r2.
-- [x] Mettre à jour les tests durables, effectuer la passe finale des textes et publier le tag unique `v0.3.33-dev`.
-
-La révision `r1` valide la construction et le diagnostic physique. La révision finale `r2` valide le verrou persistant du planificateur, la reprise différée du canal et la conservation des opérations déjà actives. L'absence de canal bloque uniquement le tirage d'une nouvelle offre ; lors du retour d'un communicateur alimenté, une nouvelle échéance cachée est calculée depuis la confiance actuelle et le dernier archétype. Le jalon est publié sous le tag final unique `v0.3.33-dev`.
-
-Le prochain jalon doit être choisi après relecture du backlog durable ci-dessous, puis démarrer sur une branche dédiée créée explicitement depuis `v0.3.33-dev`. Aucun périmètre `0.3.34-dev` n'est imposé par cette clôture.
-
-## Dernier jalon clôturé — Étude du module et recherche Tok'ra (`0.3.32-dev`)
-
-- [x] Partir explicitement de `v0.3.31-dev` sur `feature/tokra-artifact-study-research`.
-- [x] Réutiliser le flux vanilla d'analyse d'objet de Biotech et le travail au banc de recherche.
-- [x] Ajouter trois sessions d'analyse persistantes sur le module physique.
-- [x] N'autoriser que le `ThingID` exact récupéré par la mission d'introduction.
-- [x] Refuser les copies créées séparément et l'analyse avant le retour dans une colonie du joueur.
-- [x] Rendre le module non vendable tant que son analyse reste nécessaire.
-- [x] Conserver le module pendant les deux premières sessions puis le démanteler pendant la troisième.
-- [x] Ajouter `SG1_TokraSecureCommunications` dans l'onglet de recherche GateRim SG-1.
-- [x] Exiger l'analyse du module et la recherche vanilla `Electricity` avant de commencer cette recherche.
-- [x] Remplacer automatiquement un module suivi perdu après un délai caché persistant de `2–8` jours.
-- [x] Conserver la progression d'analyse acquise lors de l'émission d'un module de remplacement.
-- [x] Réconcilier les scénarios, starters, sauvegardes modifiées et validations développeur où la recherche est déjà terminée.
-- [x] Ajouter l'inspection joueur et les diagnostics développeur bilingues.
-- [x] Valider le rebuild local `0.3.32.0`, le contrôle de cohérence et le chargement en jeu.
-- [x] Valider la progression `0/3` à `3/3`, la sauvegarde/recharge et le démantèlement final.
-- [x] Valider le verrou sans électricité, le refus d'une copie créée séparément et l'absence de vente avant analyse.
-- [x] Valider le remplacement automatique après perte, la conservation de progression et l'absence de duplication.
-- [x] Valider les migrations depuis les sauvegardes `0.3.31-dev` et les états déjà avancés par scénario ou mode développeur.
-- [x] Effectuer la passe finale des textes, compléter les tests durables et publier le tag unique `v0.3.32-dev`.
-
-La révision locale finale `r2` valide le flux complet d'étude et les protections anti-blocage. Le module n'occupe plus de stockage après décodage, ne peut pas être vendu avant l'analyse et revient automatiquement après un délai caché s'il disparaît prématurément. Une recherche déjà terminée ferme silencieusement les étapes devenues inutiles.
-
-Le prochain travail différé doit exiger `SG1_TokraSecureCommunications` pour construire le communicateur, puis empêcher les six opérations récurrentes d'apparaître tant qu'aucun communicateur disponible et alimenté n'existe. Ce travail devra partir explicitement de `v0.3.32-dev` sur une nouvelle branche dédiée.
-
-## Dernier jalon clôturé — Mission d'introduction et objet-clé Tok'ra (`0.3.31-dev`)
-
-- [x] Partir explicitement de `v0.3.30-dev` sur `feature/tokra-introduction-artifact-mission`.
-- [x] Séparer cet arc unique des six opérations récurrentes dépendantes du communicateur.
-- [x] Définir la mission comme unique uniquement après récupération réussie de l'objet-clé.
-- [x] Conserver une nouvelle tentative possible après offre ignorée, refus, expiration ou échec.
-- [x] Ajouter des délais cachés longs et variables : `4–12` jours au premier contact, `10–60` jours après une offre non engagée et `7–45` jours après une tentative acceptée échouée.
-- [x] Ajouter un état persistant couvrant attente, offre, tentative active, nouveau délai et réussite définitive.
-- [x] Ajouter une lettre à choix persistante avec acceptation et refus explicites.
-- [x] Créer un site mondial hostile seulement après acceptation et conserver le voyage vanilla.
-- [x] Capturer à l'offre un snapshot de menace et dimensionner une garde introductive volontairement modérée : facteur `0,35`, `180–650` points et `2–6` défenseurs.
-- [x] Ajouter un module de chiffrement physique suivi individuellement et refuser les copies créées séparément comme objectif valide.
-- [x] Conserver le combat, le butin et la reformation vanilla de la caravane.
-- [x] Ajouter un avertissement persistant environ un jour avant l'expiration du site.
-- [x] Gérer l'expiration réelle du site, la destruction réelle du module et la perte inattendue du site sans verrou permanent.
-- [x] Préserver l'offre, le site, la carte, l'identité exacte du module, les délais, l'avertissement et le résultat après sauvegarde/rechargement.
-- [x] Valider localement les fondations `r1`, le flux jouable `r2` et les échecs réels `r3`.
-- [x] Revalider plusieurs chemins d'échec, les nouveaux délais cachés et la fermeture définitive après récupération réussie.
-- [x] Effectuer la passe finale des textes joueur ; aucune réécriture fonctionnelle supplémentaire n'a été nécessaire.
-- [x] Compléter la documentation durable et le wiki.
-- [x] Clôturer le jalon, publier la branche et le tag final unique `v0.3.31-dev`, puis synchroniser le wiki séparé.
-
-La révision locale finale `r3` valide l'offre naturelle, la lettre à choix, le site mondial, la garde adaptative modérée, le module exact, le combat, le butin, la reformation vanilla, l'avertissement final, l'expiration réelle, la destruction du module, les sauvegardes intermédiaires, les délais de retour et la réussite définitive. Le jalon est publié sous le tag final unique `v0.3.31-dev`.
-
-Cette mission reste accessible avant le communicateur et indépendante du slot des opérations organiques. Une offre ignorée ou une tentative ratée ne ferme jamais l'arc : seule la récupération réelle du module Tok'ra active le verrou permanent.
-
-Le profil de combat introductif reste volontairement borné à `2–6` défenseurs. Une comparaison prolongée sur davantage de niveaux de richesse et de storytellers reste un travail d'équilibrage, sans remettre en cause le flux fonctionnel validé.
-
-## Dernier jalon clôturé — Livraison vers une base Tok'ra temporaire (`0.3.30-dev`)
-
-- [x] Partir explicitement de `v0.3.29-dev` sur `feature/tokra-temporary-base-delivery`.
-- [x] Sélectionner uniquement des contrats réellement fabricables selon recettes, recherches, poste de travail et compétences disponibles.
-- [x] Créer un rendez-vous mondial temporaire et conserver le voyage libre par le flux de caravane vanilla.
-- [x] Remettre explicitement la cargaison avec un gizmo de caravane sur la tuile du site.
-- [x] Valider la quantité, la qualité et l'état réels des objets, puis consommer exactement la commande.
-- [x] Ajouter une période de grâce après l'échéance, avec récompense de confiance réduite en cas de livraison tardive.
-- [x] Ajouter une interception Goa'uld unique pendant le trajet, limitée à une cargaison complète allant vers le site exact.
-- [x] Dimensionner les interceptions depuis le snapshot de menace capturé à l'offre et préserver ce budget après sauvegarde/rechargement.
-- [x] Ajouter une embuscade mutuellement exclusive sur la dernière tuile d'approche plutôt que directement sur le rendez-vous.
-- [x] Conserver l'inventaire réel, la récupération complète du butin et la reformation vanilla avant la dernière case.
-- [x] Ne jamais remplacer la livraison par une victoire militaire ; exiger la quantité conforme survivante.
-- [x] Corriger en `r9` le suivi différé de la carte d'embuscade, l'absence de sécurisation prématurée et l'erreur de journal associée.
-- [x] Valider le déclenchement naturel d'une complication sans action développeur.
-- [x] Revalider retard, expiration, persistance, récurrence, anti-répétition, textes RP et anciennes opérations.
-- [x] Clôturer le jalon, publier la branche et le tag final unique `v0.3.30-dev`.
-- [x] Mettre à jour les pages `docs/wiki/` décrivant le contrat, puis synchroniser le dépôt wiki séparé.
-
-La révision locale finale `r9` valide la production accessible, la remise explicite depuis l'inventaire réel, la période de grâce, l'interception de trajet, l'embuscade sur l'approche finale, la perte possible de cargaison, la récupération de tout le butin vanilla, la reformation sans détour artificiel, la difficulté adaptative, la persistance et un `Player.log` propre. Une interception a également été obtenue naturellement sans forçage développeur. Le jalon est publié sous le tag final unique `v0.3.30-dev`.
-
-La victoire militaire ne remplace jamais la livraison : la mission ne réussit que si la quantité conforme atteint réellement les Tok'ra. Les données de contrat, délais, récompenses et difficulté restent pilotées par Defs ; les flux de caravane et de carte temporaire restent dans des adaptateurs spécialisés.
-
-## Jalon précédent clôturé — Appel de détresse Tok'ra (`0.3.29-dev`)
-
-- [x] Partir explicitement de `v0.3.28-dev` sur `feature/tokra-distress-call-world-site`.
-- [x] Ajouter un cinquième MissionDef organique Tok'ra et conserver le slot global unique.
-- [x] Créer un site mondial temporaire ciblable par caravane avec situation cachée jusqu'à l'entrée.
-- [x] Implémenter les variantes secours réel, signal compromis et arrivée trop tardive.
-- [x] Permettre à un secours réel de se dégrader en arrivée tardive selon le temps de trajet.
-- [x] Capturer la difficulté à l'offre et dimensionner les groupes Goa'uld/Jaffa depuis ce snapshot.
-- [x] Conserver en Defs les poids, délais, textes, plages, récompenses et conséquences.
-- [x] Ajouter les outils debug permettant de forcer chaque variante.
-- [x] Remplacer l'entrée manuelle par l'action d'arrivée de caravane vanilla, avec chargement automatique, pause de carte hostile et colons enrôlés.
-- [x] Générer une scène cohérente autour d'un ancrage unique : camp, caravane attaquée, position compromise ou camp submergé, avec débris et corps optionnels.
-- [x] Placer survivants et défenseurs près de cette scène et faire entrer la caravane par le bord vanilla le plus proche.
-- [x] Reconnaître les soins du choc au sol puis évacuer rapidement les survivants traités sans exiger lit, chauffage, guérison complète ou départ à pied.
-- [x] Préparer les textes anglais/français et le protocole de test complet.
-- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.29.0`.
-- [x] Valider les trois variantes, la difficulté adaptative, l'expiration et la persistance.
-- [x] Valider la récurrence, l'anti-répétition, les quatre anciennes opérations et `Player.log`.
-- [x] Clôturer le jalon, publier le tag final unique `v0.3.29-dev` et synchroniser le wiki.
-
-Le site mondial et les mécaniques narratives propres à la mission restent dans un adaptateur spécialisé. L'arrivée, la pause, l'entrée de carte, l'enrôlement et les soins utilisent les mécanismes vanilla lorsque ceux-ci couvrent le besoin. Le gestionnaire organique demeure l'unique propriétaire du slot, de la confiance, des résultats et des délais cachés. L'équilibrage des poids, effectifs, délais et récompenses reste évolutif après des tests prolongés.
-
-La révision locale finale `r7` valide les trois situations cachées, l'arrivée de caravane vanilla, la scène ancrée, les soins de terrain, l'équipe Tok'ra visible, le portage et la sortie réels des blessés, la cache de composants déjà présente sur étagère, la difficulté adaptative, l'expiration, la persistance, la récurrence, les anciennes opérations et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.29-dev`.
-
-## Sélection du jalon après `v0.3.30-dev` — terminée
-
-- [x] Relire cette roadmap depuis le tag publié `v0.3.30-dev` avant d'ouvrir une nouvelle branche.
-- [x] Choisir la fondation persistante de la mission d'introduction comme périmètre fonctionnel unique et testable.
-- [x] Créer `feature/tokra-introduction-artifact-mission` depuis `v0.3.30-dev` et enregistrer `0.3.31-dev` dans `docs/PROJECT_STATE.md`.
-
-L'arc d'introduction Tok'ra est sélectionné pour `0.3.31-dev`. Ce jalon couvre la mission et l'objet-clé ; l'étude, la recherche dédiée et le verrouillage du pool récurrent restent répartis dans des jalons ultérieurs.
-
-Ce fichier est la référence centrale pour les ajouts, refontes et actions futures du projet.
-
-Il doit être consulté avec `docs/PROJECT_STATE.md` au début de chaque nouvelle discussion, après une perte de contexte ou avant de choisir un nouveau jalon.
-
-- `docs/PROJECT_STATE.md` décrit le jalon actuellement actif et ses tests.
-- `docs/ROADMAP.md` conserve les travaux futurs qui ne doivent pas être oubliés.
-- `docs/CHANGELOG.md` conserve l'historique des jalons terminés.
-- `docs/MILESTONE_PUBLICATION.md` conserve la procédure de validation et de publication.
-
-Lorsqu'une nouvelle idée durable est validée pendant une discussion, elle doit être ajoutée ici au plus tard dans le correctif documentaire du jalon en cours.
-
-## Jalon précédent clôturé — Audit de l'orchestration Tok'ra (`0.3.28-dev`)
-
-- [x] Partir explicitement de `v0.3.27-dev` sur `feature/tokra-operation-orchestration-audit`.
-- [x] Reporter dans les fichiers autoritatifs la séquence verrouillée `0.3.28-dev` à `0.3.30-dev`.
-- [x] Auditer le slot global, la sélection pondérée, les délais cachés, la persistance et l'anti-répétition.
-- [x] Filtrer les MissionDefs temporairement indisponibles avant le tirage pondéré.
-- [x] Conserver le même délai court de nouvelle vérification lorsque tous les candidats configurés sont temporairement indisponibles.
-- [x] Ajouter un outil debug lançant le véritable tirage naturel sans forcer un archétype.
-- [x] Ajouter un rapport d'audit déterministe sur `5000` tirages pour chaque palier de confiance.
-- [x] Conserver inchangés les poids, délais, récompenses et conséquences des quatre missions actuelles.
-- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.28.0`.
-- [x] Valider réussite, échec, offre ignorée, récurrence, slot unique et sauvegarde/recharge.
-- [x] Valider les quatre opérations existantes, les limites d'interface et `Player.log`.
-- [x] Préparer le verrou documentaire final, publier le tag unique `v0.3.28-dev` et synchroniser le wiki.
-
-Ce jalon ne cherche pas à figer l'équilibrage statistique définitif. Il sécurise l'orchestration avant les sites mondiaux et les caravanes, tout en conservant la possibilité de réajuster fréquences, poids, récompenses, variantes et mécaniques après des tests prolongés, y compris après `1.0.0`.
-
-La révision locale `r1` valide le rapport d'audit déterministe, le tirage naturel réel, le slot unique, les délais cachés après réussite, échec et offre ignorée, la récurrence, l'anti-répétition locale, la persistance, les quatre opérations existantes, les limites d'interface, la compatibilité storyteller et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.28-dev`.
-
-## Séquence Tok'ra verrouillée après `v0.3.27-dev`
-
-### `0.3.28-dev - Audit Tok'ra operation orchestration and long-term recurrence`
-
-Consolider le planificateur persistant des quatre opérations actuelles : slot actif unique, éligibilité avant tirage, récurrence après tous les résultats, délais cachés, anti-répétition, persistance et diagnostics de longue durée.
-
-### `0.3.29-dev - Add Tok'ra distress call world-site mission`
-
-Créer un site mondial temporaire avec délai d'échec et situation cachée jusqu'à l'arrivée :
-
-- secours réel de survivants Tok'ra ;
-- signal compromis ou piège Goa'uld/Jaffa ;
-- arrivée trop tardive, sans survivants alliés, avec les derniers ennemis encore sur place ou en cours d'évacuation.
-
-Prévoir des raisons RP crédibles, une difficulté adaptative, des résultats faisant évoluer la confiance, plusieurs variantes de textes et une récurrence sans répétition immédiate.
-
-### `0.3.30-dev - Add Tok'ra temporary-base delivery mission` — clôturé
-
-Le jalon livre une destination Tok'ra temporaire et une cargaison configurable limitée aux productions réellement accessibles. Il couvre la livraison normale, le retard, l'expiration, une interception de trajet et une embuscade sur l'approche finale avec perte possible de cargaison, butin vanilla et reformation complète.
-
-Une victoire militaire ne suffit jamais si la cargaison est perdue. Les mécaniques de caravane, site mondial et combat restent dans des adaptateurs spécialisés ; les données de mission restent pilotées par Defs lorsque cela est raisonnable.
-
-
-## Suite de l'arc d'introduction Tok'ra et accès au communicateur
-
-La mission d'introduction et le module physique sont intégrés dans `0.3.31-dev`. Le jalon `0.3.32-dev` ajoute l'étude persistante et la recherche dédiée tout en supprimant les risques de blocage :
-
-- trois sessions d'analyse sur le véritable module suivi ;
-- module non vendable avant analyse puis démantelé à la dernière session ;
-- remplacement Tok'ra après un délai caché de `2–8` jours si le module est perdu avant la fin de l'analyse ;
-- progression d'analyse conservée lors du remplacement ;
-- réconciliation automatique lorsque `SG1_TokraSecureCommunications` est déjà terminée par scénario, starter, sauvegarde modifiée ou mode développeur ;
-- fermeture automatique de la mission d'introduction et absence de module inutile lorsque la recherche est déjà satisfaite ;
-- validation développeur cohérente : l'arc est terminé et un véritable module est créé uniquement si l'analyse reste nécessaire.
-
-Étapes encore séparées afin de conserver des jalons testables :
-
-- exiger `SG1_TokraSecureCommunications` pour construire le communicateur Tok'ra ;
-- rendre les opérations Tok'ra récurrentes inéligibles tant qu'aucun communicateur construit et alimenté n'est disponible ;
-- préserver les opérations avec les storytellers vanilla ou moddés compatibles : seul leur accès doit dépendre du communicateur, pas d'un storyteller GateRim SG-1 ;
-- revalider les sauvegardes où l'arc est terminé, en attente, échoué, jamais proposé ou déjà satisfait par une recherche de départ ;
-- conserver la mission d'introduction unique et séparée des archétypes rejouables.
-
-## Direction durable des pools de missions
-
-- Enrichir progressivement le pool global afin de préserver la variété et le plaisir sur les longues parties.
-- Privilégier plusieurs archétypes distincts et rejouables plutôt qu'un petit nombre de scénarios surchargés.
-- Considérer les missions comme évolutives : fréquence, difficulté, récompenses, textes, variantes et mécaniques pourront être réajustés après des tests prolongés, y compris après `1.0.0`.
-- Terminer et enrichir d'abord le pool Tok'ra.
-- Prévoir ensuite des missions Goa'uld autonomes, sans lien obligatoire avec les Tok'ra.
-- Étendre ensuite des pools distincts aux Jaffa libres, Asgard, Nox, Unas et futures factions.
-- Garder un framework techniquement générique, mais séparer clairement identité RP, conditions d'apparition, récompenses et conséquences de chaque faction.
-- N'ajouter au framework partagé que les capacités justifiées par plusieurs besoins réels ; conserver des adaptateurs C# pour les mécaniques propres aux sites mondiaux, caravanes, interceptions et combats.
-
-## Dernier jalon clôturé — Migration de la remise médicale (`0.3.27-dev`)
-
-- [x] Partir explicitement de `v0.3.26-dev` sur `feature/medical-handoff-mission-migration`.
-- [x] Ajouter `SG1_TokraOrganic_MedicalSupplyHandoff` comme quatrième opération complète pilotée par MissionDef.
-- [x] Ajouter un profil générique `handoff` limité à l'identité du visiteur, l'arrivée, la grâce de départ et la conséquence post-remise.
-- [x] Réutiliser l'objectif générique `DeliverThing` pour la ressource, la quantité, le JobDef et la compétence.
-- [x] Déplacer dans XML les poids, délais contextuels, textes, variantes, XP et conséquences de confiance.
-- [x] Supprimer la définition C# complète de secours et valider explicitement les références requises.
-- [x] Conserver en C# le spawn, le Lord, le déplacement, les réservations, le dialogue et la consommation réelle des piles RimWorld.
-- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.27.0`.
-- [x] Valider le flux normal, les ressources, les échecs, la pénalité post-remise et la persistance.
-- [x] Valider les variantes RP, la récurrence, les trois autres opérations migrées et `Player.log`.
-- [x] Préparer le verrou documentaire final, publier le tag unique `v0.3.27-dev` et synchroniser le wiki.
-
-La révision locale `r1` valide le chargement des quatre MissionDefs, le flux complet de remise de deux médicaments, les restrictions d'interaction, les conséquences de confiance avant et après remise, les échecs, la persistance, les variantes RP, l'anti-répétition, la récurrence, les trois autres opérations migrées et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.27-dev`.
-
-Les quatre opérations organiques Tok'ra actuelles sont désormais pilotées par MissionDef pour leurs données déclaratives. Le prochain jalon doit partir explicitement de `v0.3.27-dev` et être choisi après audit de la roadmap, sans ajouter d'abstraction théorique au framework.
-
-## Dernier jalon clôturé — Migration des soins de l'agent blessé (`0.3.26-dev`)
-
-- [x] Partir explicitement de `v0.3.25-dev` sur `feature/wounded-agent-mission-migration`.
-- [x] Ajouter `SG1_TokraOrganic_WoundedAgentCare` comme troisième opération complète pilotée par MissionDef.
-- [x] Ajouter un profil générique `pawnCare` limité aux données déclaratives réellement partagées.
-- [x] Déplacer dans XML le PawnKind, les Hediffs de choc et de récupération et l'affection optionnelle.
-- [x] Déplacer dans XML les seuils médicaux, la durée de stabilité et la grâce de départ.
-- [x] Faire varier la chance et la sévérité de l'affection optionnelle à partir du snapshot de menace capturé à l'offre.
-- [x] Déplacer dans XML les poids, délais contextuels, textes, variantes et conséquences de confiance.
-- [x] Supprimer la définition C# complète de secours et valider explicitement toutes les références requises.
-- [x] Conserver en C# la génération, les soins vanilla, le Lord, l'évaluation de santé et le départ.
-- [x] Valider le contrôle de cohérence et le rebuild forcé `0.3.26.0`.
-- [x] Valider le flux normal, la stabilité de `5000` ticks et la réussite uniquement après sortie de carte.
-- [x] Valider la difficulté adaptative sur colonie faible et avancée.
-- [x] Valider mort, capture, perte, expiration et échec de départ.
-- [x] Valider sauvegarde/recharge, variantes RP, anti-répétition et récurrence.
-- [x] Valider les trois autres opérations organiques et `Player.log`.
-- [x] Corriger en `r2` la durée XML accélérée de `5000` ticks omise lors de l’assemblage de `r1`.
-- [x] Revalider au chargement les trois MissionDefs et la récupération de renseignements accélérée après redémarrage complet.
-- [x] Clôturer le jalon, publier le tag final unique `v0.3.26-dev` et synchroniser le wiki.
-
-Le jalon ne généralise pas les soins RimWorld. Le bloc `pawnCare` contient uniquement des références et seuils configurables ; les interactions médicales concrètes restent dans un adaptateur spécialisé tant qu'un second cas réel ne justifie pas leur mutualisation.
-
-La révision `r1` a validé le flux complet de l'agent blessé. Elle a également révélé l'omission accidentelle du champ XML `workTicks=5000` de l'analyse accélérée des renseignements ; le validateur a correctement désactivé cet archétype sans fallback caché. La révision `r2` restaure uniquement cette valeur et valide le chargement des trois MissionDefs, la régression des renseignements et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.26-dev`.
-
-Prochaine migration logique : la remise médicale, dernière opération organique encore héritée. Son périmètre exact doit être confirmé au début du prochain jalon à partir de `v0.3.26-dev`.
-
-## Dernier jalon clôturé — Migration de la récupération de renseignements (`0.3.25-dev`)
-
-- [x] Partir explicitement de `v0.3.24-dev` sur `feature/intelligence-recovery-mission-migration`.
-- [x] Ajouter un MissionDef complet pour la récupération de renseignements Tok'ra.
-- [x] Déplacer dans XML le module, le job, la compétence, les durées prudente et accélérée et les récompenses d'XP.
-- [x] Déplacer dans XML tous les textes du flux et trois banques nommées de résultats avec anti-répétition locale.
-- [x] Ajouter des plages de récurrence configurables par palier de confiance et les faire consommer par le planificateur.
-- [x] Déplacer dans XML la chance d'interférence, l'IncidentDef de patrouille, son délai et son délai de nouvelle tentative.
-- [x] Dimensionner la patrouille à partir du snapshot de menace capturé à l'offre, avec facteur et bornes configurés.
-- [x] Supprimer la définition C# complète de secours de cette opération.
-- [x] Valider explicitement les Defs requis, le profil de difficulté et les quatre plages de récurrence contextuelles.
-- [x] Étendre le rapport développeur aux banques nommées, délais contextuels et paramètres des conséquences.
-- [x] Valider le contrôle de cohérence et le rebuild `0.3.25.0`.
-- [x] Valider sur `r2` les durées rééquilibrées à `10000` ticks en méthode prudente et `5000` ticks en méthode accélérée.
-- [x] Valider l'interférence forcée et l'utilisation du budget de menace capturé sur une colonie faible et une colonie avancée.
-- [x] Valider les variantes RP, l'anti-répétition, les échecs, la récurrence et la sauvegarde/recharge, puis recontrôler la persistance des nouveaux totaux sur `r2`.
-- [x] Valider les régressions des trois autres opérations organiques et `Player.log`.
-- [x] Clôturer le jalon, publier le tag final unique `v0.3.25-dev` et synchroniser le wiki.
-
-Le jalon doit prouver une nouvelle capacité avec un cas réel : la difficulté adaptative ne doit plus rester une simple donnée enregistrée. La patrouille de la méthode accélérée doit utiliser les points de menace capturés au moment de l'offre, sans recalcul opportuniste au moment de la conséquence.
-
-La révision `r2` valide les durées finales de `10000` et `5000` ticks, leur persistance, les récompenses, les conséquences et l'ensemble du flux migré. La menace adaptative a été contrôlée sur une colonie faible et une colonie avancée : la patrouille consomme le snapshot mis à l'échelle capturé lors de l'offre, borné entre `180` et `700` points, sans recalcul lors du déclenchement. Le jalon est publié sous le tag final unique `v0.3.25-dev`.
-
-## Dernier jalon clôturé — Migration Def complète de l'observation (`0.3.24-dev`)
-
-- [x] Partir explicitement de `v0.3.23-dev` sur `feature/observation-mission-def-cleanup`.
-- [x] Étendre le vocabulaire des objectifs avec cible secondaire, job, compétence, XP par tick et durée secondaire.
-- [x] Déplacer dans le MissionDef les Defs du dispositif, du marqueur, du job de déploiement et du job de transmission.
-- [x] Déplacer dans le MissionDef les durées de déploiement, observation, récupération et transmission.
-- [x] Déplacer dans le MissionDef la compétence active, son gain d'expérience par tick et la récompense finale générique de compétence.
-- [x] Déplacer dans le MissionDef toutes les actions et clés de textes spécifiques au flux d'observation.
-- [x] Déplacer les variantes de lettre de réussite dans une banque pondérée avec anti-répétition.
-- [x] Faire consommer au planificateur la plage de récurrence du MissionDef après une observation résolue.
-- [x] Supprimer la définition C# complète de secours de l'observation.
-- [x] Désactiver explicitement l'archétype et journaliser une erreur si sa définition requise est absente, incomplète ou référence un Def inconnu.
-- [x] Étendre le rapport développeur pour exposer les valeurs réellement chargées.
-- [x] Valider le contrôle de cohérence et le rebuild `0.3.24.0`.
-- [x] Valider le flux complet avec les quatre durées `500 / 10000 / 500 / 1000`.
-- [x] Valider compétence, XP, textes, variantes, échecs, récurrence et sauvegarde/recharge.
-- [x] Valider les trois opérations organiques encore héritées et `Player.log`.
-- [x] Clôturer le jalon, publier le tag final unique `v0.3.24-dev` et synchroniser le wiki.
-
-Le code spécialisé reste responsable des mécaniques RimWorld de terrain, mais il ne doit plus dupliquer les données d'équilibrage, les références de Defs ou les textes qui définissent cette mission. Une généralisation supplémentaire des Toils, réservations ou règles de placement n'est justifiée que lorsqu'une seconde mission présente le même besoin.
-
-La validation locale de la révision `r1` confirme le chargement de toutes les références configurées, le flux complet avec les quatre durées XML, les XP actifs et finaux, les variantes et échecs, la persistance, la récurrence configurée, les trois opérations héritées et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.24-dev`.
-
-## Dernier jalon clôturé — Fondation du framework de missions (`0.3.23-dev`)
-
-- [x] Repartir du tag publié `v0.3.22-dev` sur la branche dédiée `feature/mission-framework-foundation`.
-- [x] Abandonner le jalon visuel isolé du dispositif d'observation sans commit ni tag.
-- [x] Définir une boîte à outils couvrant environ 70 à 90 % des missions et questlines courantes, avec extensions C# pour les cas atypiques.
-- [x] Ajouter des Defs XML pour les phases, objectifs, textes, récompenses, conséquences, récurrence et difficulté.
-- [x] Ajouter un état générique persistant compatible avec les champs spécialisés déjà sauvegardés.
-- [x] Ajouter des variantes de textes RP pondérées avec anti-répétition locale.
-- [x] Ajouter une capture de difficulté fondée sur les points de menace RimWorld.
-- [x] Rendre le facteur d'anti-répétition configurable par mission.
-- [x] Ajouter un rapport développeur commun pour les définitions chargées.
-- [x] Migrer l'observation Goa'uld Tok'ra comme premier pilote XML sans modifier son flux joueur.
-- [x] Piloter sa durée de travail réelle depuis le Def et la porter à `10000` ticks, soit quatre heures en jeu.
-- [x] Conserver les trois autres opérations organiques sur leur implémentation C# pendant cette première validation.
-- [x] Valider le build, les Defs, les trois variantes RP et l'anti-répétition immédiate.
-- [x] Valider le flux complet de l'observation, la sauvegarde/recharge et la migration d'une ancienne occurrence.
-- [x] Valider la capture de menace sur des colonies de puissance différente.
-- [x] Valider les trois opérations héritées et `Player.log`.
-- [x] Clôturer le jalon, publier le tag final unique `v0.3.23-dev` et synchroniser le wiki.
-
-La validation locale de la révision `r2` confirme le chargement du framework, les trois variantes RP, l'anti-répétition immédiate, le flux complet de l'observation, la durée de quatre heures, la persistance, les captures de menace différenciées, les trois opérations héritées et un `Player.log` propre. Le jalon est publié sous le tag final unique `v0.3.23-dev`.
-
-La prochaine évolution doit migrer un second cas réel afin d'éprouver une nouvelle capacité commune, de préférence la consommation de difficulté adaptative lorsqu'elle correspond naturellement à la mission, sans ajouter d'abstraction purement théorique.
-
-### Règles durables pour les missions et questlines
-
-- Chaque archétype récurrent doit pouvoir revenir après réussite, échec ou offre ignorée.
-- Les délais doivent rester cachés et variables, avec anti-répétition locale.
-- Les menaces, effectifs, équipements et contraintes doivent partir de la difficulté active et des points de menace/valeur de colonie de RimWorld plutôt que de valeurs fixes.
-- Les lettres, dialogues, messages et descriptions visibles doivent proposer des variantes solides lorsque la répétition serait perceptible.
-- Un texte unique reste acceptable s'il est suffisamment contextuel et naturel pour être répété.
-- Les détails techniques restent réservés aux rapports développeur, logs et documents internes.
-- Le moteur générique doit évoluer à partir de besoins communs observés dans plusieurs missions, sans sur-généralisation prématurée.
-
-## Jalon précédent
-
-### Casquette de terrain SG (`0.3.22-dev`)
-
-- [x] Partir du tag publié `v0.3.21-dev` sur la branche dédiée `feature/sg-team-field-cap`.
-- [x] Ajouter une casquette noire légère avec textures au sol et dans les quatre directions.
-- [x] Ajouter le Def anglais, les traductions françaises et la fabrication après la recherche d'équipement de terrain du SGC.
-- [x] Corriger la description obsolète du casque qui évoquait encore quatre exemplaires fournis au sol.
-- [x] Ajouter la casquette comme option de poids égal au casque dans le slot de couvre-chef existant.
-- [x] Conserver la chance globale `0.6`, soit `30 %` casque, `30 %` casquette et `40 %` aucun couvre-chef.
-- [x] Conserver le moteur C# et le scénario inchangés : l'intégration reste entièrement pilotée par XML.
-- [x] Valider le contrôle de cohérence, le rebuild `0.3.22.0` et le chargement sans erreur.
-- [x] Valider les trois résultats de couvre-chef et le rendu de la casquette dans les quatre directions.
-- [x] Valider la persistance après sauvegarde/rechargement et l'absence d'impact sur un scénario vanilla.
-- [x] Valider `Player.log`, clôturer le jalon, publier le tag final unique `v0.3.22-dev` et synchroniser le wiki.
-
-La révision locale `r1` est la version fonctionnelle validée. Le slot de couvre-chef culturel reste générique et piloté par XML : les poids représentent des probabilités, non des ratios garantis sur un petit échantillon. La casquette constitue l'option légère et visuelle, tandis que le casque reste l'option protectrice.
-
-### Jalon précédent — Règles culturelles d'équipement des starters (`0.3.21-dev`)
-
-- [x] Partir du tag publié `v0.3.20-dev` sur la branche dédiée `feature/cultural-starter-loadouts`.
-- [x] Auditer le composant spécifique `ScenPart_SGTeamStartingGear` et le consommateur culturel commun.
-- [x] Étendre `CulturalStarterRule` avec des restrictions de candidat et des listes d'équipement XML.
-- [x] Remplacer le composant spécifique par un marqueur de scénario culturel générique.
-- [x] Corriger les chemins de commandes Markdown susceptibles de transformer `\t` en tabulation et étendre le contrôle automatique aux tabulations littérales.
-- [x] Étendre le framework avec des emplacements d'habillement pondérés, une chance de sélection, un matériau optionnel et des groupes de variantes partagés.
-- [x] Rendre le tee-shirt vanilla obligatoire pour chaque membre de l'équipe et corriger la référence vers `Apparel_BasicShirt` après l'erreur de chargement de `r3`.
-- [x] Scinder le treillis SG en pantalon obligatoire et veste facultative.
-- [x] Ajouter trois variantes visuelles pondérées pour les pantalons et les vestes : olive, noire et désert.
-- [x] Relier pantalon et veste afin qu'une veste éventuelle reprenne toujours la variante du pantalon du même pawn.
-- [x] Déplacer le gilet tactique sur la couche `Shell` afin de permettre le cumul tee-shirt, veste et gilet.
-- [x] Rendre le casque de terrain aléatoire et directement équipé, tout en préparant le même emplacement pour une future casquette SG ou l'absence de couvre-chef.
-- [x] Rééquilibrer l'assortiment d'armes humaines vanilla vers un fusil d'assaut, un pistolet-mitrailleur, un pistolet automatique et un fusil à pompe.
-- [x] Valider le contrôle de cohérence, le test négatif des tabulations, le rebuild `0.3.21.0` et le chargement XML.
-- [x] Corriger le contrôle final pour accepter les formulations `Version de DLL attendue` et `Version de DLL validée` sans double diagnostic en cas de valeur absente.
-- [x] Valider la sélection des starters, les restrictions d'âge et de violence, les couches vestimentaires et la diversité pondérée.
-- [x] Valider les trois couleurs, la cohérence pantalon/veste, les cas avec et sans veste et les cas avec et sans casque.
-- [x] Valider le nouvel assortiment d'armes, les fournitures et l'absence des quatre casques laissés au sol.
-- [x] Valider qu'un scénario vanilla ne reçoit ni restrictions ni équipement SG-team.
-- [x] Valider sauvegarde/recharge et un `Player.log` propre.
-- [x] Publier la branche, le tag final unique `v0.3.21-dev` et synchroniser le wiki séparé.
-
-La révision locale `r4` est la version fonctionnelle validée. Le système reste générique : une future culture peut configurer ses propres emplacements obligatoires, facultatifs, pondérés et liés par variante principalement en XML. Les anciens treillis combinés restent définis pour les sauvegardes existantes, mais ne sont plus utilisés par le scénario. Les armes Tau'ri restent volontairement des armes humaines vanilla ; des patchs de compatibilité pourront éventuellement substituer des armes provenant d'autres mods sans imposer une gamme d'armes SGC propre à GateRim SG-1.
-
-### Jalon précédent — Contrôle automatisé de cohérence du projet (`0.3.20-dev`)
-
-- [x] Partir du tag publié `v0.3.19-dev` sur la branche dédiée `feature/project-consistency-checks`.
-- [x] Reproduire la dérive publique : README et accueil du wiki restés en `0.3.17-dev` et à `70` backstories après la publication de `0.3.19-dev` et de `83` entrées.
-- [x] Ajouter un contrôle PowerShell en lecture seule et un lanceur Windows dans `tools/`.
-- [x] Corriger la compatibilité du parseur Windows PowerShell 5.1 après l’erreur détectée sur la révision locale `r1`.
-- [x] Vérifier automatiquement les versions About, projet, README, wiki, état du projet, tests courants et changelog.
-- [x] Dériver la version d'assembly attendue depuis la version `x.y.z-dev`.
-- [x] Compter les `BackstoryDef`, détecter les `defName` manquants ou dupliqués et comparer le total aux résumés et au catalogue wiki.
-- [x] Ajouter des attentes optionnelles de version et de nombre afin de tester un échec sans modifier les fichiers.
-- [x] Corriger le README, l'accueil du wiki et l'état détaillé du contenu jusqu'à `0.3.20-dev` et `83` backstories.
-- [x] Intégrer le contrôle à `docs/MILESTONE_PUBLICATION.md` avant le commit final.
-- [x] Valider le chemin heureux sur le dépôt complet avec `0.3.20-dev`, `0.3.20.0` et `83` backstories.
-- [x] Valider un échec volontaire puis un nouveau passage vert sans mutation du dépôt.
-- [x] Valider le rebuild forcé, le chargement du menu principal, la version About et un `Player.log` propre.
-- [x] Publier la branche, le tag final unique `v0.3.20-dev` et synchroniser le wiki séparé.
-
-Ce jalon ne modifie ni gameplay, ni Def, ni traduction, ni texture. La révision locale `r2` a validé le chemin positif, l'échec volontaire, le nouveau passage vert, l'absence de mutation du dépôt, le rebuild `0.3.20.0`, le chargement du menu principal et un `Player.log` propre. Le contrôle documentaire manuel dispose désormais d'un garde-fou exécutable avant chaque publication. Les futurs jalons qui modifient la version ou le catalogue des backstories doivent maintenir les motifs publics contrôlés par l'outil, ou mettre à jour l'outil et sa documentation dans le même jalon.
-
-### Jalon précédent — Audit de couverture des compétences culturelles (`0.3.19-dev`)
-
-- [x] Partir du tag publié `v0.3.18-dev` sur la branche dédiée `feature/cultural-backstory-skill-coverage`.
-- [x] Auditer les douze compétences RimWorld à partir des véritables combinaisons enfance/adulte de chaque profil.
-- [x] Distinguer une absence réelle d'une simple faible redondance afin d'éviter de gonfler artificiellement le catalogue.
-- [x] Confirmer que les profils Jaffa Goa'uld et Jaffa libres couvrent déjà toutes les compétences sans ajout.
-- [x] Ajouter onze carrières ciblées pour les Tau'ri / SGC, humains hors-monde, hôtes Goa'uld, Grands Maîtres et Tok'ra.
-- [x] Conserver le moteur culturel C# inchangé et intégrer les nouvelles listes uniquement par Defs et patchs XML.
-- [x] Étendre les origines d'hôtes Tok'ra générés sans modifier leurs poids ni rerouler les identités existantes.
-- [x] Porter le catalogue technique et wiki de `72` à `83` backstories.
-- [x] Valider le rebuild `0.3.19.0`, le chargement XML et les traductions françaises.
-- [x] Valider les pools SGC, Goa'uld, Grands Maîtres, Tok'ra et hôtes historiques générés.
-- [x] Valider les noms culturels, la sauvegarde/recharge, le basculement Tok'ra et un `Player.log` propre.
-- [x] Publier la branche, le tag final unique `v0.3.19-dev` et synchroniser le wiki séparé.
-
-La matrice complète a été validée sur la révision locale `r1`. Les sept profils audités couvrent désormais les douze compétences, sans ajout artificiel pour les Jaffa dont la couverture était déjà complète. Les noms culturels, les pools de départ, les deux origines d'hôtes générés, la sauvegarde/recharge et le basculement Tok'ra restent stables. Aucun correctif C# ou Def supplémentaire n'a été nécessaire.
-
-Le critère durable reste la présence d'au moins une voie culturellement crédible par compétence, et non l'égalité numérique entre compétences ou cultures. Les futures cultures Asgard, Nox, Unas et autres devront recevoir le même audit lorsque leurs pools réels existeront.
-
-Le catalogue wiki contient désormais les `83` backstories et doit être synchronisé avec le dépôt wiki séparé lors de la publication finale.
-
-
-### Jalon précédent — Origine Tau'ri minoritaire des hôtes Tok'ra générés (`0.3.18-dev`)
-
-- [x] Partir du tag publié `v0.3.17-dev` sur la branche dédiée `feature/tokra-generated-host-tauri-origin`.
-- [x] Ajouter une origine pondérée `SG1_GeneratedHost_TauriSGCVolunteer` sans modifier le moteur C#.
-- [x] Conserver l'origine humaine hors-monde comme origine dominante avec un poids `1` contre `0.2` pour l'origine Tau'ri.
-- [x] Réutiliser le générateur de noms Tau'ri et les huit carrières adultes SGC existantes.
-- [x] Ajouter deux enfances Tau'ri modernes dédiées aux identités historiques générées.
-- [x] Empêcher ces nouvelles enfances d'entrer dans les pools ordinaires des starters humains ou du scénario Équipe SG isolée.
-- [x] Exposer les deux origines au profil Tok'ra par le patch XML existant.
-- [x] Mettre à jour le framework culturel, le catalogue technique et le tableau wiki des backstories.
-- [x] Valider le rebuild `0.3.18.0` et le chargement sans erreur de Def, patch ou traduction.
-- [x] Observer les deux origines sur des `SG1_TokraVoluntaryHost` générés, avec une majorité hors-monde.
-- [x] Valider les noms, enfances, carrières, basculements et compétences partagées pour les deux origines.
-- [x] Valider la sauvegarde/recharge, la stabilité d'une ancienne identité `0.3.17-dev` et l'absence de reroll.
-- [x] Valider l'extraction puis la réimplantation réelle sans origine générée résiduelle.
-- [x] Valider l'isolation des starters, les régressions essentielles et un `Player.log` propre.
-- [x] Publier la branche, le tag final unique `v0.3.18-dev` et synchroniser le wiki séparé.
-
-La matrice complète a été validée sur la révision locale `r1`. Les deux origines sont générées, l'origine humaine hors-monde reste clairement majoritaire, les identités persistantes ne sont pas reroulées et une vraie réimplantation remplace correctement l'origine historique générée par l'hôte réel. Aucun correctif C# ou Def supplémentaire n'a été nécessaire.
-
-Ce jalon constitue la première extension réelle des origines d'hôte pondérées prévues en `0.3.13-dev`. Les origines Jaffa et Unas restent différées jusqu'à ce que leur compatibilité biologique et leurs pools d'identité puissent être traités sans approximation.
-
-Le catalogue wiki contient désormais les `72` backstories et doit être synchronisé avec le dépôt wiki séparé lors de la publication finale.
-
-
-### Jalon précédent — harmonisation de la présentation du projet et du wiki (`0.3.17-dev`)
-
-- [x] Partir du tag publié `v0.3.16-dev` sur la branche dédiée `feature/project-presentation-refresh`.
-- [x] Remplacer le README historique centré sur `0.2.18-dev` par une présentation durable du projet.
-- [x] Mettre à jour l'accueil du wiki jusqu'à `0.3.17-dev` et retirer les directions déjà terminées.
-- [x] Actualiser `Content-Status.md` avec les systèmes culturels et Tok'ra validés depuis `0.3.5-dev`.
-- [x] Remplacer la sidebar devenue linéaire par des catégories thématiques stables.
-- [x] Réintégrer dans la navigation les pages existantes sur la double identité Tok'ra et l'évaluation tactique.
-- [x] Ajouter à la procédure de publication un contrôle durable de la navigation lors de toute création ou renommage de page wiki.
-- [x] Retirer de la section future les fonctions déjà implémentées ou les formulations devenues trompeuses.
-- [x] Conserver une séparation explicite entre contenu jouable, développement en cours et grands chapitres futurs.
-- [x] Valider le rebuild `0.3.17.0`, le chargement du menu principal et la version About.
-- [x] Relire les liens et les formulations des trois pages de présentation.
-- [x] Vérifier le rendu de la sidebar, ses catégories et l'ensemble de ses liens internes.
-- [x] Publier la branche, le tag final unique `v0.3.17-dev` et synchroniser le wiki séparé.
-
-La validation locale de `r2` confirme que la présentation publique est cohérente, que la sidebar catégorisée reste lisible et qu'aucune cible interne de l'ancienne navigation n'a été perdue ou dupliquée. Les pages sur la double identité Tok'ra et l'évaluation tactique sont désormais accessibles depuis la sidebar. Le rebuild, le chargement du menu principal, les métadonnées et `Player.log` sont validés sans modification de gameplay.
-
-Ce jalon ne modifie aucun comportement de jeu. Il transforme les pages publiques et leur navigation en documents durables afin qu'elles ne redeviennent pas obsolètes à chaque micro-jalon. La description Workshop proprement dite restera à publier lors de la préparation de la première version publique ; `About/About.xml`, le README et l'accueil du wiki en constituent désormais la base éditoriale commune.
-
-Le jalon suivant a démarré explicitement depuis `v0.3.17-dev`, conformément à cette procédure.
-
-### Jalon précédent — extension mesurée des backstories culturelles (`0.3.16-dev`)
-
-- [x] Partir du tag publié `v0.3.15-dev` sur la branche dédiée `feature/cultural-backstory-expansion`.
-- [x] Limiter l'extension à douze backstories afin de préserver la lisibilité et la cohérence culturelle.
-- [x] Ajouter deux carrières SGC, deux enfances Jaffa, deux carrières Jaffa Goa'uld, deux carrières Jaffa libres, deux carrières d'hôte Goa'uld et deux carrières Tok'ra.
-- [x] Conserver des bonus de compétences modérés sans traits, passions, incapacités ni multiplicateurs directs.
-- [x] Intégrer les nouvelles entrées aux profils de départ et aux règles de noms existants uniquement par XML.
-- [x] Mettre à jour le catalogue wiki complet dans le même jalon.
-- [x] Valider le rebuild `0.3.16.0` et le chargement XML sans erreur.
-- [x] Valider les douze textes français, les bonus, les catégories et les profils culturels.
-- [x] Valider la randomisation des starters Jaffa, hôtes Goa'uld, humains ordinaires et du scénario Équipe SG isolée.
-- [x] Valider la génération normale du monde, la sauvegarde/recharge et un `Player.log` propre.
-- [x] Publier la branche, le tag final unique `v0.3.16-dev` et synchroniser le wiki séparé.
-
-Ce jalon ne crée aucune race, faction ou nouvelle branche C#. Il exploite le framework culturel existant et conserve les futures backstories Asgard, Nox et Unas pour leurs propres jalons de contenu.
-
-La matrice complète a été validée sur la révision locale `r1` : les douze entrées sont chargées et traduites, les profils mixtes conservent les groupes de noms attendus, les humains ordinaires gardent une majorité de carrières vanilla, la génération normale et la sauvegarde restent stables, et `Player.log` est propre. Aucun correctif fonctionnel supplémentaire n'a été nécessaire.
-
-Le catalogue wiki contient désormais les `70` backstories et a été synchronisé avec le dépôt wiki séparé lors de la publication finale.
-
-### Jalon précédent — diagnostic unifié de l'identité culturelle (`0.3.15-dev`)
-
-- [x] Partir du tag publié `v0.3.14-dev` sur la branche dédiée `feature/cultural-identity-diagnostics`.
-- [x] Auditer les services existants avant d'ajouter un nouvel outil.
-- [x] Ajouter un rapport central en lecture seule pour le pawn sélectionné.
-- [x] Afficher les profils correspondants, le profil choisi et le groupe de noms dans les contextes `NonPlayer` et `PlayerStarter`.
-- [x] Regrouper l'état Jaffa, les marques, l'identité sociale et les données persistantes du symbiote dans le même rapport.
-- [x] Exposer un seul accès développeur et un seul bouton dans la section avancée existante.
-- [x] Garder tous les diagnostics masqués lorsque le mode développeur et l'option avancée sont désactivés.
-- [x] Garantir par conception et par test que l'outil ne renomme pas, ne reroll pas et ne modifie aucune identité.
-- [x] Valider le rebuild `0.3.15.0` et le chargement sans erreur.
-- [x] Valider les cas humain, Jaffa libre, Jaffa Goa'uld, hôte Goa'uld et Tok'ra pré-fusionné.
-- [x] Valider l'accès par les options, la sauvegarde/recharge et un `Player.log` propre.
-- [x] Publier la branche et le tag final unique `v0.3.15-dev` après validation locale.
-
-Le rapport central a reproduit fidèlement les valeurs des services existants pour toute la matrice ciblée, y compris le basculement d'identité Tok'ra, sans mutation du pawn. Aucun correctif fonctionnel supplémentaire n'a été nécessaire après la révision locale `r1`.
-
-Ce jalon clôt le point durable de cohérence entre noms, backstories, factions, marques Jaffa et identités sociales. Les futurs systèmes culturels pourront ajouter une section concise au rapport uniquement lorsqu'ils disposent d'un service autoritatif réel à auditer.
-
-
-### Jalon précédent — mort, cadavre, tombe et résurrection des Tok'ra (`0.3.14-dev`)
-
-- [x] Partir du tag publié `v0.3.13-dev` sur la branche dédiée `feature/tokra-death-resurrection-audit`.
-- [x] Auditer statiquement la persistance existante avant d'ajouter du code.
-- [x] Conserver un seul pawn, un seul objet `GoauldSymbioteData` et une seule progression de compétences partagée.
-- [x] Ne créer aucun système parallèle propre au cadavre, à la tombe ou à la résurrection sans défaut reproductible.
-- [x] Tester une mort avec l'hôte actif, puis cadavre, sauvegarde/recharge, tombe et résurrection.
-- [x] Tester la même séquence avec le symbiote actif.
-- [x] Vérifier que le cadavre et la tombe restent cohérents avec le nom actif au moment de la mort.
-- [x] Vérifier qu'aucun gizmo de personnalité n'est exposé sur un pawn mort ou son cadavre.
-- [x] Vérifier après résurrection les deux noms, les backstories, la personnalité active, les compétences et l'absence de cumul.
-- [x] Tester un nouveau basculement, une sauvegarde/recharge et une extraction après résurrection.
-- [x] Corriger uniquement les défauts reproduits, puis compléter les régressions Goa'uld et `Player.log`.
-- [x] Publier la branche et le tag final unique `v0.3.14-dev`.
-
-Le cycle complet a été validé sur la révision locale `r1` sans correctif C# : les données persistantes existantes couvrent correctement le cadavre, la tombe, la résurrection, le basculement post-résurrection et l'extraction ultérieure. Aucun fichier wiki n'a été modifié.
-
-### Jalon précédent — identités distinctes des Tok'ra pré-fusionnés (`0.3.13-dev`)
-
-- [x] Distinguer une implantation réelle d'une génération déjà fusionnée avec un marqueur persistant.
-- [x] Générer une identité d'hôte humain hors-monde stable et distincte via des Defs XML pondérés.
-- [x] Préserver séparément l'identité Tok'ra et maintenir l'hôte actif par défaut.
-- [x] Valider `Spawn pawn`, variété, basculement, sauvegarde/recharge et migration d'une sauvegarde `0.3.12-dev`.
-- [x] Valider les générations disponibles hors carte et l'absence de régression sur les implantations réelles, caravanes, extractions et Goa'uld.
-- [x] Corriger le chargement XML des `skillGains` dans la révision locale `r2`.
-- [x] Publier `feature/tokra-generated-host-identities`, le tag `v0.3.13-dev` et synchroniser le wiki.
-
-### Extensions futures des origines d'hôte
-
-- [x] Ajouter dans `0.3.18-dev` une première origine Tau'ri minoritaire entièrement pilotée par XML.
-- [ ] Ajouter des profils pondérés Jaffa, Unas ou autres uniquement lorsque ces origines sont réellement disponibles et cohérentes en jeu.
-- [ ] Garder le moteur C# générique : les nouvelles origines doivent être ajoutées principalement par XML.
-- [ ] Vérifier les compatibilités biologiques, les générateurs de noms et les pools de backstories avant d'activer une nouvelle origine.
-- [ ] Ne jamais appliquer une origine générée aux implantations réelles, qui doivent conserver l'identité existante du pawn.
-
-### Intégration de l'identité Tok'ra active (`0.3.12-dev`)
-
-- [x] Centraliser la règle de contrôle direct sur carte et en caravane.
-- [x] Conserver l'exclusion des invités, prisonniers, esclaves, alliés, visiteurs et pawns de quête non recrutés.
-- [x] Réutiliser un seul service de basculement et une seule progression commune.
-- [x] Valider les onglets Bio, Social et Santé, les messages, caravanes et relations lorsque le symbiote est actif.
-- [x] Reporter explicitement la mort, le cadavre, la tombe et la résurrection vers le jalon dédié `0.3.14-dev`.
-- [x] Publier la branche `feature/tokra-active-identity-integration`, le tag `v0.3.12-dev` et synchroniser le wiki.
-
-### Après validation
-
-- [ ] Tester les interfaces de mods de préparation ou de gestion de pawns lorsqu'une incompatibilité concrète est signalée.
-- [x] Reprendre l'extension générale du catalogue de backstories dans un jalon dédié, avec une première vague raisonnable et culturellement cohérente (`0.3.16-dev`).
+Ce fichier est le backlog durable du projet. Il conserve les travaux ouverts,
+les règles qui doivent guider de futurs jalons et le dernier jalon en cours.
+L'historique des versions publiées appartient à `docs/CHANGELOG.md` et aux tags
+Git ; les pistes non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
+
+## Jalon validé et publié - Consolidation documentaire (`0.3.63-dev`)
+
+- [x] Partir du tag publié `v0.3.62-dev` sur
+  `feature/documentation-consolidation`.
+- [x] Créer `docs/README.md` comme index et contrat de rangement durable.
+- [x] Transférer les questions encore utiles des anciennes feuilles de route
+  sur les reines Goa'uld et les interactions Tok'ra vers
+  `docs/IDEAS_TO_REVISIT.md`.
+- [x] Supprimer les cinq documents techniques obsolètes ou redondants retenus
+  par l'audit, sans créer de dossier d'archives dans l'arbre courant.
+- [x] Retirer la feuille de route Tok'ra obsolète du brouillon wiki, de la page
+  Tok'ra et de la navigation publique.
+- [x] Réduire cette roadmap au jalon courant, aux travaux ouverts et aux règles
+  durables ; l'historique publié reste dans le changelog et Git.
+- [x] Conserver `docs/TESTING.md` et les spécifications techniques détaillées
+  hors de cette première passe afin de ne pas mélanger nettoyage sûr et fusion
+  fonctionnelle à risque.
+- [x] Ajouter dans `AGENTS.md` la règle de mise à jour prioritaire d'un document
+  de sous-système existant avant toute nouvelle fiche de micro-jalon.
+- [x] Valider les suppressions, les liens locaux, la navigation wiki, les
+  versions, le rebuild `0.3.63.0` et les contrôles de cohérence.
+- [x] Faire approuver la structure consolidée et les six suppressions par le
+  mainteneur sur la révision locale `r1`.
+- [x] Publier la branche, le tag annoté `v0.3.63-dev` et le wiki séparé
+  seulement après validation et autorisation explicite.
+
+Ce jalon ne change aucun comportement de jeu, Def, traduction ou texture. Git
+et les tags publiés restent l'archive des documents retirés.
+
+La révision finale `r1` est publiée avec la branche dédiée, le tag annoté
+`v0.3.63-dev` et le wiki séparé synchronisé, y compris la suppression explicite
+de l'ancienne page de roadmap Tok'ra.
 
 ## Registre d'idées non planifiées
 
-Les pistes encore exploratoires qui ne constituent ni un jalon décidé ni un engagement de roadmap sont conservées dans [`docs/IDEAS_TO_REVISIT.md`](IDEAS_TO_REVISIT.md). Leur présence sert uniquement à éviter de perdre une idée et ne doit jamais déclencher automatiquement un nouveau jalon.
+Les pistes exploratoires sans jalon décidé sont conservées dans
+[`docs/IDEAS_TO_REVISIT.md`](IDEAS_TO_REVISIT.md). Leur présence évite une
+perte de contexte mais ne doit jamais déclencher automatiquement du travail.
 
-## Présentation du mod et métadonnées
+## Présentation et publication publique
 
-- [x] Réécrire la description de `About/About.xml` dans un style court, immersif et immédiatement compréhensible.
-- [x] Retirer les inventaires de fonctionnalités, détails de jalons, prototypes internes et éléments de roadmap.
-- [x] Structurer la présentation autour de l'ambiance, des factions, des possibilités de jeu et des dépendances indispensables.
-- [ ] Publier et maintenir la description Workshop lors de la préparation de la première version publique, en réutilisant la base harmonisée par `0.3.17-dev`.
+- [ ] Publier et maintenir la description Workshop lors de la préparation de
+  la première version publique, à partir du README, de `About/About.xml` et de
+  l'accueil du wiki.
 
-## Passe visuelle globale des objets
+## Passe visuelle globale
 
-Cette passe est volontairement différée jusqu'à la stabilisation des mécaniques, races, factions et scénarios. Elle devra précéder le développement de la Porte des étoiles et de ses équipements, avec des concept arts validés par famille d'assets avant la production des textures finales.
+Cette passe reste différée jusqu'à stabilisation des mécaniques, races,
+factions et scénarios. Les textures actuelles servent souvent de placeholders
+sur des chemins définitifs ; éviter les micro-jalons isolés de finition.
 
-Cette passe doit être réalisée lorsque les mécaniques concernées sont suffisamment stables pour arrêter des designs définitifs.
-
-Les textures actuelles des pawns, vêtements, objets et bâtiments servent
-principalement de placeholders et à réserver des chemins de texture stables.
-Ne pas lancer de jalons isolés de finition sur ces assets : leur remplacement,
-y compris l'apparence distinctive de l'officier Jaffa, doit rester groupé dans
-la future passe complète afin de conserver une direction artistique cohérente.
-
-- [ ] Auditer les objets temporaires, dispositifs, modules, marqueurs et bâtiments qui utilisent encore des textures provisoires, génériques ou trompeuses.
-- [ ] Remplacer le visuel du dispositif d'observation portable, actuellement proche d'un courrier et peu lisible sur la carte.
-- [ ] Vérifier le module de renseignements Tok'ra et les autres objets d'opération afin que leur silhouette indique immédiatement leur fonction.
-- [ ] Vérifier les marqueurs et sites temporaires afin d'éviter d'ajouter des gizmos de repérage lorsque le vrai problème est la lisibilité visuelle.
-- [x] Auditer les icônes de carte mondiale des missions et attribuer des visuels variés et thématiques plutôt qu'une même icône générique répétée (`0.3.51-dev`).
-- [x] Remplacer les maisons vanilla des colonies par des icônes mondiales propres à chaque faction visible GateRim SG-1, avec des silhouettes immédiatement distinctes pour les Jaffa libres, Goa'uld et Tau'ri / SGC, tout en conservant l'icône Tok'ra déjà validée (`0.3.50-dev`) ; étendre cette règle aux futures factions lors de leur création.
-- [ ] Donner à l'officier Jaffa de l'opération de capture une apparence distinctive qui le différencie immédiatement d'un Jaffa ordinaire, sans dépendre uniquement de sa marque frontale.
-- [ ] Harmoniser les objets Tok'ra, Goa'uld, Jaffa et SGC selon une identité visuelle cohérente.
-- [ ] Créer un visuel conceptuel propre pour chaque objet important une fois son design définitif validé.
-- [ ] Ajouter les visuels définitifs au wiki et réutiliser les meilleurs pour la présentation Workshop.
+- [ ] Auditer les pawns, vêtements, objets, dispositifs, modules, marqueurs et
+  bâtiments qui utilisent encore des visuels provisoires ou trompeurs.
+- [ ] Remplacer le dispositif d'observation portable, actuellement trop proche
+  d'un courrier et peu lisible sur la carte.
+- [ ] Vérifier le module de renseignements Tok'ra et les objets d'opération afin
+  que leur silhouette indique immédiatement leur fonction.
+- [ ] Vérifier les marqueurs et sites temporaires sans ajouter de gizmo lorsque
+  le vrai problème est leur lisibilité.
+- [ ] Donner à l'officier Jaffa capturable une apparence distinctive sans
+  dépendre uniquement de sa marque frontale.
+- [ ] Harmoniser les objets Tok'ra, Goa'uld, Jaffa et SGC autour d'identités
+  visuelles cohérentes.
+- [ ] Valider un concept propre par famille avant de produire les textures
+  finales.
+- [ ] Ajouter les visuels définitifs au wiki et réutiliser les meilleurs pour
+  la présentation Workshop.
 
 ## Équipement Goa'uld et attributs de rang
 
-Cette passe fonctionnelle est distincte de la future finition visuelle. Elle ne
-doit commencer qu'après validation de la progression des menaces, car tout
-nouvel équipement modifie la valeur de combat réelle des hôtes et de leurs
-groupes.
+- [ ] Étudier chaque futur dispositif de main, technologie de contrôle, soin
+  avancé ou attribut de rang comme un objet ou système distinct ; ne pas faire
+  du kara kesh un appareil universel.
+- [ ] Tester chaque nouvel équipement contre les armes vanilla et GateRim SG-1,
+  le corps à corps, l'IEM lorsque pertinent, les caravanes et la sauvegarde.
+- [ ] Intégrer sa puissance réelle dans `combatPower`, les budgets de menace,
+  la valeur, l'acquisition et la disponibilité comme butin.
+- [ ] Réserver les technologies les plus fortes aux rangs cohérents et éviter
+  que chaque raid fournisse automatiquement un objet rare.
 
-- [x] Auditer le lore Goa'uld avant de choisir les objets, puis retenir
-  uniquement ceux qui créent un gameplay RimWorld lisible et équilibrable
-  (`0.3.57-dev`).
-- [x] Étudier en priorité le bouclier personnel des Grands Maîtres, sans
-  reproduire une invulnérabilité permanente : capacité limitée, recharge,
-  fenêtres de vulnérabilité et contre-jeu doivent être définis avant le code
-  (`0.3.57-dev`).
-- [ ] Étudier séparément les dispositifs de main, technologies de contrôle,
-  soins avancés et autres attributs de rang ; ne pas regrouper artificiellement
-  plusieurs fonctions dans un seul objet.
-- [x] Réserver les technologies les plus fortes aux Grands Maîtres ou à des
-  hôtes Goa'uld de haut rang ; les Jaffa ordinaires doivent conserver leur rôle
-  militaire propre (`0.3.57-dev` pour le premier bouclier).
-- [x] Intégrer la puissance réelle dans `combatPower`, les budgets de menace,
-  la fréquence, la valeur marchande et la disponibilité comme butin
-  (`0.3.57-dev` pour le premier bouclier).
-- [x] Éviter que chaque raid fournisse automatiquement une technologie rare au
-  joueur ; définir l'acquisition, la récupération et les éventuelles
-  restrictions dans le même jalon que l'objet (`0.3.57-dev` : port naturel
-  limité aux Grands Maîtres, aucune distribution marchande ou aléatoire).
-- [ ] Tester chaque objet contre les armes vanilla, les armes GateRim SG-1, le
-  corps à corps, l'IEM lorsque pertinent, les caravanes et la sauvegarde.
-- [x] Conserver des textures provisoires jusqu'à la passe visuelle globale,
-  avec des chemins stables préparés pour les futurs assets définitifs
-  (`0.3.57-dev` pour le premier bouclier).
+## Pression et rivalités des domaines Goa'uld
+
+- [ ] Différencier éventuellement les domaines par préférences stratégiques ou
+  poids de doctrines, sans coder un système unique par Grand Maître.
+- [ ] Étendre les exigences et ultimatums uniquement à partir d'une cause
+  visible et d'une conséquence compréhensible, sans copier les offres Tok'ra.
+- [ ] Représenter les conflits entre domaines d'abord par des informations RP,
+  puis éventuellement par expansion territoriale et destruction de colonies.
+- [ ] Concevoir avant toute simulation des garde-fous discrets contre
+  l'auto-élimination, l'expansion incontrôlée et le déséquilibre du monde.
+
+## Reines Goa'uld
+
+Les extensions encore spéculatives de l'origine des larves sont conservées
+dans `docs/IDEAS_TO_REVISIT.md`. Aucun remplacement du cycle actuel n'est
+planifié tant que les besoins de gameplay et d'infrastructure ne sont pas
+cadrés.
 
 ## Opérations Tok'ra organiques
 
-Le framework `0.3.0-dev` constitue la base persistante commune. Les opérations existantes doivent rester récurrentes, anti-répétitives et compatibles avec les sauvegardes créées à partir de cette base.
+Le pool reste fermé aux huit archétypes publiés. Les futures parties longues
+doivent surtout révéler les correctifs et ajustements nécessaires.
 
-- [ ] Continuer à tester les huit archétypes récurrents sur les parties longues : observation, renseignements, agent blessé, remise médicale, appel de détresse, livraison à une base temporaire, assaut de diversion Goa'uld/Jaffa et capture d'un officier Jaffa.
-- [x] Ajouter un premier nouvel archétype réellement distinct après les six opérations publiées : assaut de diversion Goa’uld/Jaffa (`0.3.34-dev`, publié sous `v0.3.34-dev`).
-- [x] Ajouter un deuxième archétype distinct fondé sur une cible vivante : capture d'un officier Jaffa (`0.3.37-dev`, publié sous `v0.3.37-dev`).
-- [x] Fermer le pool à ces huit archétypes : aucun neuvième type d'opération
-  Tok'ra n'est actuellement prévu.
+- [ ] Continuer à tester observation, renseignements, agent blessé, remise
+  médicale, appel de détresse, livraison, diversion et capture d'officier.
 - [ ] Corriger uniquement les défauts, déséquilibres ou instructions ambiguës
-  révélés naturellement par les futures parties longues.
-- [ ] Conserver une seule opération organique visible à la fois sur le communicateur.
-- [ ] Ne jamais révéler en jeu normal le catalogue des opérations, les pondérations, les délais cachés ou l'historique technique.
-- [ ] Réserver les diagnostics complets au mode développeur RimWorld ou à l'option avancée GateRim SG-1.
-- [ ] Conserver les textes RP récurrents sous forme de variantes afin d'éviter les répétitions évidentes.
+  observés en partie.
+- [ ] Conserver un seul slot d'opération organique visible à la fois.
+- [ ] Garder catalogue, pondérations, délais et historique hors de l'interface
+  normale.
+- [ ] Réserver les diagnostics complets au mode développeur ou à l'option
+  avancée en lecture seule.
+- [ ] Maintenir plusieurs variantes RP lorsque la répétition serait visible.
+
+## Missions et questlines
+
+- [ ] Garder chaque archétype récurrent rééligible après réussite, échec ou
+  offre ignorée lorsque sa conception le prévoit.
+- [ ] Conserver des délais cachés variables et un anti-répétition local.
+- [ ] Dimensionner menaces et effectifs depuis la difficulté, les points de
+  menace et la valeur de colonie plutôt qu'avec des nombres fixes.
+- [ ] Garder les détails techniques dans les diagnostics et les logs.
+- [ ] Étendre le framework commun uniquement lorsqu'au moins deux besoins réels
+  justifient la même abstraction.
+- [ ] Conserver des adaptateurs spécialisés pour les sites mondiaux, caravanes,
+  interceptions et combats atypiques.
 
 ## Interface et outils de debug
 
-- [x] Remplacer la liste plate des actions développeur par des entrées ordonnées directement dans la catégorie native `GateRim SG-1`, avec des sous-menus par système, mission et phase logique (`0.3.35-dev`, publié sous `v0.3.35-dev`).
-- [ ] Continuer à regrouper les actions de debug d'un même appareil dans un gizmo unique ouvrant un menu.
-- [ ] Regrouper les actions par thème ou par phase avec des libellés courts et homogènes.
-- [ ] Garder les détails techniques dans les rapports debug, les messages développeur ou les logs.
-- [ ] Vérifier qu'aucun outil debug n'est visible lorsque le mode développeur et l'option avancée du mod sont désactivés.
-- [ ] Effectuer avant stabilisation publique une passe globale sur les textes visibles : ton RP, formulations naturelles, boutons courts et absence d'informations techniques inutiles.
+- [ ] Regrouper les actions d'un même appareil dans une entrée cohérente.
+- [ ] Organiser les actions par thème ou phase avec des libellés courts.
+- [ ] Garder les détails techniques dans les rapports et les logs.
+- [ ] Vérifier qu'aucun outil d'action n'est visible hors mode développeur.
+- [ ] Effectuer avant stabilisation publique une passe sur le ton RP, les
+  boutons et l'absence d'informations techniques inutiles.
 
 ## Équipement Tau'ri / SGC
 
-- [x] Casquette SG dédiée validée et publiée dans `0.3.22-dev` comme option pondérée du slot de couvre-chef : casque, casquette ou aucun.
-- [ ] Ajouter de futures variantes de pantalons et de vestes comme contenu XML pondéré, en conservant la cohérence de variante entre les deux pièces.
-- [ ] Conserver les armes humaines vanilla comme base du scénario ; envisager uniquement des patchs de compatibilité facultatifs pour substituer des armes équivalentes provenant d'autres mods.
+- [ ] Ajouter de futures variantes de pantalons et vestes comme contenu XML
+  pondéré, avec une apparence cohérente entre les pièces.
+- [ ] Conserver les armes humaines vanilla dans le scénario et n'envisager que
+  des substitutions facultatives pour des mods compatibles.
 
-## Framework culturel interne `0.3.x`
+## Framework culturel, noms et backstories
 
-La série `0.3.x` doit construire un framework interne global et réutilisable, pas une collection de correctifs isolés.
+- [ ] Réutiliser les profils culturels pour les futurs noms, backstories,
+  starters, identités, incidents, missions et équipements lorsqu'ils expriment
+  réellement le besoin.
+- [ ] Ajouter les noms et backstories Asgard, Nox, Unas et autres cultures lors
+  de leur création, sans gonfler artificiellement les catalogues.
+- [ ] Maintenir les tableaux du wiki et les contrôles de couverture pour toute
+  future backstory.
 
-- [x] Centraliser une première identification culturelle dans un service commun avec profils configurables en XML.
-- [x] Permettre à un profil de déclarer ses critères d'identification, générateurs de noms, backstories autorisées, priorités et restrictions de scénario.
-- [x] Raisonner en profils culturels plutôt qu'en simples races biologiques afin de couvrir Jaffa soumis ou libres, hôtes Goa'uld ou Tok'ra, Tau'ri / SGC et futurs cas hybrides.
-- [ ] Réutiliser ces profils, lorsque pertinent, pour les noms, backstories, pawns de départ, identités persistantes, scénarios, génération de pawns, incidents, quêtes, équipements culturels et outils debug.
-- [x] Garder des interfaces C# stables et étendre le moteur seulement lorsqu'un nouveau besoin réel n'est pas exprimable par les Defs existantes.
-- [x] Éviter la sur-généralisation : une abstraction doit répondre à plusieurs usages réels avant d'être intégrée au noyau commun.
-- [x] Ajouter des diagnostics techniques pour les profils absents, ambigus, contradictoires ou mal configurés.
+## Origines d'hôtes et identité Tok'ra
 
-## Noms, cultures et backstories
-
-- [x] Premier générateur de noms culturels publié dans `0.3.5-dev` pour les Jaffa Goa'uld, Jaffa libres, Goa'uld, Tok'ra et Tau'ri / SGC.
-- [ ] Ajouter les générateurs de noms et les backstories propres aux Asgard, Nox, Unas et autres cultures lors de leur création ou dans un jalon immédiatement suivant.
-- [x] Valider dans `0.3.10-dev` la persistance et l'affichage séparés des identités de l'hôte et du symbiote, selon `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`.
-- [x] Valider en jeu la refonte `0.3.8-dev` des `52` backstories existantes et de leurs descriptions anglaises et françaises.
-- [x] Valider en jeu les bonus de compétences modérés ajoutés aux backstories dans `0.3.8-dev`.
-- [x] Organiser une discussion dédiée avant d'étendre le nombre de backstories ; première extension mesurée validée dans `0.3.16-dev`.
-- [x] Clôturer dans `0.3.19-dev` l’audit de couverture des compétences par culture ou race : vérifier que chaque catalogue couvre suffisamment les compétences RimWorld pertinentes, identifier les compétences absentes ou sous-représentées et compléter uniquement les lacunes réelles avec des backstories culturellement cohérentes.
-  - Auditer au minimum les Tau'ri / SGC, Jaffa Goa'uld, Jaffa libres, hôtes Goa'uld et Tok'ra.
-  - Appliquer le même contrôle aux futures cultures Asgard, Nox, Unas et à toute nouvelle race ou faction disposant de backstories.
-  - Éviter de gonfler artificiellement le catalogue : une compétence peut être couverte par plusieurs parcours complémentaires sans exiger une backstory dédiée à chaque combinaison.
-- [x] Vérifier la cohérence entre noms, backstories, factions, marques Jaffa et identités sociales avec le diagnostic unifié de `0.3.15-dev`.
-- [x] Migrer les générateurs de noms existants vers la consommation des profils culturels communs sans renommer les pawns déjà traités.
-- [x] Valider les pools d'identité hôte / symbiote dans les profils sans imposer leur affichage aux pawns gérés par l'IA.
-- [x] Maintenir dans le wiki les tableaux de backstories par culture avec nom, description et bonus de compétences ; toute future backstory doit y être ajoutée dans le même jalon.
-
-## Identité Tok'ra contrôlée par le joueur
-
-La conception détaillée est conservée dans `docs/TOKRA_DUAL_IDENTITY_DESIGN.md`. Elle doit être reprise dans un jalon dédié après audit des mécanismes vanilla et prototype.
-
-- [x] Valider dans `0.3.10-dev` la conservation durable du nom et des backstories propres du symbiote après implantation.
-- [x] Valider dans `0.3.10-dev` la conservation de l'identité originale de l'hôte sans renommer ni réécrire rétroactivement son histoire.
-- [x] Implémenter dans `0.3.11-dev` le gizmo de basculement réservé aux Tok'ra appartenant au joueur et directement contrôlables.
-- [x] Laisser dans `0.3.11-dev` les Tok'ra gérés par le jeu dans leur fonctionnement classique, sans gizmo ni changement manuel de personnalité.
-- [x] Implémenter dans `0.3.11-dev` le basculement du nom, des backstories affichées et des seuls écarts de compétences dus aux backstories actives.
-- [x] Implémenter dans `0.3.11-dev` une progression commune des niveaux et de l'expérience, à valider contre toute perte, duplication ou cumul lors des tests ciblés.
-- [x] Afficher dès `0.3.10-dev` les deux identités dans l'inspection des Tok'ra contrôlés par le joueur, puis conserver cet affichage quelle que soit la personnalité active dans le futur jalon de basculement.
-- [x] Vérifier sauvegarde, rechargement, extraction et réimplantation.
-- [x] Auditer dans `0.3.12-dev` les relations, lettres, quêtes et interfaces principales ; traiter la mort, le cadavre, la tombe et la résurrection dans le jalon dédié `0.3.14-dev`.
-- [x] Exclure par défaut les invités et pawns de quête temporairement contrôlables tant qu'ils ne rejoignent pas réellement la colonie.
-- [ ] Réévaluer cette frontière uniquement si un futur type de pawn temporaire possède un véritable contrôle joueur et un besoin de gameplay démontré.
-- [x] Étendre dans `0.3.12-dev` le basculement aux Tok'ra propriétaires d'une caravane directement contrôlée par le joueur.
+- [ ] Ajouter des origines pondérées Jaffa, Unas ou autres uniquement lorsque
+  ces origines existent réellement en jeu.
+- [ ] Garder le moteur d'origine générique et privilégier les ajouts XML.
+- [ ] Vérifier compatibilités biologiques, noms et backstories avant activation.
+- [ ] Ne jamais réécrire l'origine d'une implantation réelle : l'identité du
+  pawn existant doit rester intacte.
+- [ ] Réévaluer les pawns temporairement contrôlables seulement face à un cas
+  concret qui exige le basculement d'identité Tok'ra.
+- [ ] Tester les interfaces de préparation ou de gestion de pawns de mods tiers
+  uniquement lorsqu'une incompatibilité concrète est signalée.
 
 ## Futures races et factions
 
 ### Asgard
 
-- [ ] Ajouter une race technologiquement avancée orientée soutien commercial, aide militaire et attribution de quêtes.
-- [ ] Concevoir une présence sans colonie ou base mondiale permanente visible, proche d'une organisation itinérante de soutien.
-- [ ] Prévoir une tendance naturellement alliée aux Tau'ri sans rendre cette relation absolument fixe dans tous les scénarios.
-- [ ] Créer des incidents de commerce, d'assistance et de mission compatibles avec tous les storytellers.
+- [ ] Ajouter une race avancée orientée commerce, assistance et missions.
+- [ ] Concevoir une présence itinérante sans colonie mondiale obligatoire.
+- [ ] Prévoir une tendance alliée aux Tau'ri sans relation absolument fixe.
+- [ ] Rester compatible avec les storytellers vanilla et moddées.
 
 ### Nox
 
-- [ ] Ajouter une race pacifique à l'apparence primitive mais technologiquement avancée.
-- [ ] Orienter sa présence vers le commerce, la diplomatie et les rencontres non militaires.
-- [ ] Conserver une tendance neutre et éviter les raids ou renforts armés ordinaires.
-- [ ] Représenter leur technologie discrète sans les transformer en simple faction tribale vanilla.
-- [ ] Lors de leur création, auditer les catégories de ressources encore absentes du commerce GateRim SG-1 et donner aux Nox un rôle complémentaire plutôt que dupliquer le convoi Jaffa libre.
+- [ ] Ajouter une race pacifique d'apparence primitive mais avancée.
+- [ ] Orienter sa présence vers commerce, diplomatie et rencontres non armées.
+- [ ] Éviter raids et renforts militaires ordinaires.
+- [ ] Représenter sa technologie discrète sans en faire une faction tribale.
+- [ ] Lui attribuer un rôle commercial complémentaire aux Jaffa libres.
 
 ### Unas
 
-- [ ] Ajouter une race reptilienne généralement hostile, avec cultures ou variantes tribales possibles.
-- [ ] Permettre aux Unas de servir d'hôtes Goa'uld compatibles avec le système persistant de symbiote.
-- [ ] Prévoir des PawnKinds sauvages, tribaux ou dominés par les Goa'uld selon les futurs besoins.
-- [ ] Éviter de rendre toute présence Unas obligatoirement identique ou uniformément organisée.
+- [ ] Ajouter une race reptilienne avec variantes sauvages ou tribales.
+- [ ] Permettre aux Unas de servir d'hôtes Goa'uld compatibles.
+- [ ] Prévoir des PawnKinds sauvages, tribaux ou dominés selon les besoins.
+- [ ] Éviter une culture Unas uniformément hostile ou organisée.
 
 ## Monde entièrement GateRim SG-1
 
-- [ ] Permettre de créer une partie avec uniquement les races, cultures et factions GateRim SG-1.
-- [ ] Ajouter un préréglage ou scénario optionnel de génération du monde retirant les factions vanilla sélectionnables.
-- [ ] Conserver uniquement les factions système techniquement indispensables lorsque leur suppression complète n'est pas sûre.
-- [ ] Couvrir à terme les Tau'ri / SGC, Goa'uld, Jaffa soumis, Jaffa libres, Tok'ra, Asgard, Nox, Unas et futures civilisations Stargate.
-- [ ] Vérifier raids, caravanes, commerce, quêtes, incidents, relations, génération de pawns et conditions de victoire sans factions vanilla.
-- [ ] Répartir les besoins économiques entre plusieurs factions : les Jaffa libres couvrent surtout le ravitaillement stratégique et militaire, tandis que les futures factions commerciales couvrent les catégories encore manquantes.
-- [ ] Auditer les achats et ventes disponibles après chaque nouvelle faction afin d’éviter les doublons excessifs et les impasses économiques.
-- [ ] Garder tous les contenus du mod fonctionnels dans une partie vanilla ou moddé classique : ce préréglage ne doit jamais devenir obligatoire.
+- [ ] Ajouter un préréglage optionnel retirant les factions vanilla
+  sélectionnables tout en conservant les factions système indispensables.
+- [ ] Couvrir à terme les cultures et factions Stargate disponibles.
+- [ ] Vérifier raids, commerce, missions, relations, génération et victoire.
+- [ ] Répartir les rôles économiques sans doublons ni impasses.
+- [ ] Garder tout le contenu compatible avec une partie classique ; ce mode ne
+  doit jamais devenir obligatoire.
 
-## Storyteller et orchestration des événements
+## Storyteller et orchestration
 
-- [ ] Concevoir un storyteller GateRim SG-1 avec une identité, un rythme et des pondérations propres.
-- [ ] Orchestrer de manière cohérente les incidents, opérations, quêtes, factions et menaces du mod.
-- [ ] Intégrer ce storyteller au futur préréglage de monde entièrement GateRim SG-1.
-- [ ] Garder tous les incidents et événements GateRim SG-1 accessibles avec les storytellers vanilla ou moddés compatibles.
-- [ ] Ne jamais faire du storyteller dédié une dépendance obligatoire pour recevoir le contenu du mod.
-- [ ] Utiliser son orchestration pour espacer les opérations Tok'ra et éviter les successions artificielles d'événements GateRim SG-1.
+- [ ] Concevoir un storyteller GateRim SG-1 avec rythme et pondérations propres.
+- [ ] Orchestrer incidents, opérations, missions, factions et menaces.
+- [ ] L'intégrer au préréglage de monde entièrement GateRim SG-1.
+- [ ] Garder les événements accessibles avec les autres storytellers.
+- [ ] Ne jamais en faire une dépendance du contenu du mod.
+- [ ] Espacer les événements GateRim pour éviter les successions artificielles.
 
-## Progression Stargate et contenu majeur
+## Progression Stargate
 
-- [ ] Continuer la progression de recherche déjà amorcée autour des fondations Stargate et des expéditions hors monde.
-- [ ] Définir le jalon d'introduction de la Porte des étoiles fonctionnelle seulement lorsque la tranche de jeu sans Porte est suffisamment solide.
-- [ ] Préserver les événements, factions, armes, biologie et opérations actuelles comme contenu jouable indépendant de la Porte.
-- [ ] Prévoir des missions sur cartes temporaires lorsque la mécanique justifie réellement de quitter la carte de colonie.
+- [ ] Continuer la recherche autour des fondations Stargate et des expéditions.
+- [ ] Introduire la Porte fonctionnelle seulement lorsque le jeu sans Porte est
+  suffisamment solide.
+- [ ] Préserver factions, armes, biologie et opérations comme contenu autonome.
+- [ ] Utiliser des cartes temporaires lorsque quitter la colonie est justifié.
 
 ## Documentation et wiki
 
-- [ ] Maintenir en priorité une version française solide, complète et cohérente du wiki.
-- [ ] Créer une version anglaise du wiki seulement lorsque la documentation française et les mécaniques principales seront suffisamment stabilisées.
-- [ ] Pour une future version bilingue, conserver les pages françaises existantes et ajouter des pages `*-EN.md` avec navigation et liens de langue explicites.
-- [ ] Mettre à jour `docs/wiki/Home.md`, `Content-Status.md` et les pages de roadmap à chaque changement majeur de chapitre ou de version.
-- [ ] Conserver les commandes, noms propres et identifiants techniques en anglais uniquement lorsqu'une traduction serait inadaptée.
+- [ ] Maintenir d'abord une version française complète et cohérente du wiki.
+- [ ] N'ajouter les pages anglaises qu'après stabilisation, avec suffixe
+  `*-EN.md` et liens de langue explicites.
+- [ ] Mettre à jour `docs/wiki/Home.md`, `Content-Status.md` et les pages de
+  sous-système lors de chaque changement public pertinent.
+- [ ] Générer un nouveau rapport natif de traduction française avant de corriger
+  les anciennes alertes ; ne pas réutiliser le décompte historique de cinq
+  erreurs sans vérification.
+- [ ] Conserver l'anglais pour les commandes et identifiants techniques lorsque
+  leur traduction serait trompeuse.
+
+## Audits transversaux
+
+- [ ] Réexaminer les catégories de stockage lors de la stabilisation finale des
+  objets Goa'uld, Jaffa et médicaux.
+- [ ] Vérifier les interactions involontaires avec nourriture, recettes,
+  stockage et commerce.
+- [ ] Conserver les compatibilités DLC exploratoires dans
+  `docs/IDEAS_TO_REVISIT.md` jusqu'à cadrage explicite.
 
 ## Maintenance du projet
 
-- [ ] Continuer les jalons sur des branches `feature/...` dédiées depuis le dernier tag publié.
-- [ ] Mettre à jour `docs/PROJECT_STATE.md` à chaque jalon avec la branche, le périmètre, les tests et l'étape suivante.
-- [ ] Ajouter les tests durables dans `docs/TESTING.md`, sans multiplier les fichiers de plan de test temporaires.
-- [ ] Signaler explicitement chaque fichier à supprimer avant l'extraction d'un correctif ZIP.
-- [ ] Générer les ZIP directement à la racine du dépôt, où ils sont couverts par `.gitignore`.
-- [ ] Préserver systématiquement `About/ModIcon.png`.
-- [ ] Utiliser uniquement `About/About.xml` et `docs/CHANGELOG.md`, sans doublons à la racine.
+- [ ] Continuer sur des branches `feature/...` créées depuis le dernier tag.
+- [ ] Maintenir `PROJECT_STATE.md`, `TESTING_CURRENT.md`, `TESTING.md` et le
+  changelog selon leur rôle défini dans `docs/README.md`.
+- [ ] Mettre à jour un document de sous-système existant avant d'en créer un
+  nouveau pour un micro-jalon.
+- [ ] Signaler les suppressions avant toute extraction de ZIP.
+- [ ] Générer les ZIP à la racine, où ils restent ignorés par Git.
+- [ ] Préserver `About/ModIcon.png`.
+- [ ] Ne conserver qu'`About/About.xml` et `docs/CHANGELOG.md` comme fichiers
+  de métadonnées et historique officiels.
 
 ## Règle de clôture
 
 Lorsqu'un élément est terminé :
 
-1. le résultat validé doit être décrit dans `docs/CHANGELOG.md` et `docs/PROJECT_STATE.md` ;
-2. l'élément doit être retiré de cette roadmap ou marqué comme terminé seulement s'il reste utile pour comprendre les étapes suivantes ;
-3. les nouveaux travaux réellement décidés pendant les tests doivent être ajoutés ici avant de clôturer le jalon ; les pistes encore exploratoires doivent aller dans `docs/IDEAS_TO_REVISIT.md` sans devenir automatiquement des jalons.
+1. décrire le résultat dans le changelog et l'état courant ;
+2. retirer sa checklist de cette roadmap, sauf règle durable nécessaire ;
+3. inscrire les travaux décidés dans le backlog ;
+4. transférer les pistes exploratoires dans `IDEAS_TO_REVISIT.md` ;
+5. utiliser Git et les tags comme archive plutôt qu'un dossier d'anciens plans.

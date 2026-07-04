@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.3.63-dev - Consolidate project documentation
+
+- Start from published tag `v0.3.62-dev` on
+  `feature/documentation-consolidation`.
+- Add `docs/README.md` as the authoritative map for handoff, backlog, ideas,
+  tests, history, technical references and player-wiki drafts.
+- Reduce `docs/ROADMAP.md` from a second milestone history to the current
+  documentation milestone, open backlog and durable future rules.
+- Remove the redundant technical content-status file, two obsolete roadmaps,
+  the stale translation-warning note and the partially implemented queen TODO
+  after transferring every still-relevant decision.
+- Remove the obsolete Tok'ra interaction-roadmap wiki page and its links from
+  the Tok'ra page and sidebar.
+- Preserve future System Lord rivalry safeguards and move the distinct
+  sarcophagus concept into the non-planned idea register.
+- Refresh the Goa'uld gameplay-direction document now that threat progression,
+  natural doctrines and the first extraction ultimatum are published.
+- Preserve detailed subsystem specifications and `docs/TESTING.md` for a later
+  evidence-based consolidation pass.
+- Update `AGENTS.md` to prefer existing subsystem documents and keep history,
+  backlog and speculative ideas in their designated files.
+- Extend the project-consistency checker to reject missing local Markdown link
+  targets after document or wiki-page removal.
+- Change no gameplay behavior, Def, translation or texture.
+- Validate final revision `r1`, then publish branch
+  `feature/documentation-consolidation`, annotated tag `v0.3.63-dev` and the
+  synchronized wiki with the obsolete Tok'ra roadmap page removed.
+
 ## 0.3.62-dev - Add Goa'uld healing device prototype
 
 - Start from published tag `v0.3.61-dev` on

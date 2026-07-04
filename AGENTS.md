@@ -16,6 +16,11 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 - Do not create temporary `README-*.txt` patch-note files at the repository root.
 - Keep English source Defs and French translations aligned.
 - Keep README, technical documentation, and `docs/wiki/` drafts aligned when behavior changes.
+- Consult `docs/README.md` before adding documentation. Prefer updating an
+  existing subsystem document over creating one file for each micro-milestone.
+- Keep published history in `docs/CHANGELOG.md` and Git tags, active work in
+  `docs/ROADMAP.md`, and speculative work in `docs/IDEAS_TO_REVISIT.md`; do not
+  create an archive directory as a substitute for consolidation.
 - When `docs/wiki/` changes, synchronize the separate `GateRim-SG1.wiki`
   repository, review its diff, commit it and push it as part of publication
   unless explicitly instructed not to publish.
