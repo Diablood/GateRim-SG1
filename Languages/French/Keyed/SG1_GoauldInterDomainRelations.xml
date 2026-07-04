@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldInterDomainRelation_Neutral>neutralité</GR_GoauldInterDomainRelation_Neutral>
+    <GR_GoauldInterDomainRelation_Rivalry>rivalité</GR_GoauldInterDomainRelation_Rivalry>
+    <GR_GoauldInterDomainRelation_OpenConflict>conflit ouvert</GR_GoauldInterDomainRelation_OpenConflict>
+    <GR_GoauldInterDomainRelation_Truce>trêve</GR_GoauldInterDomainRelation_Truce>
+    <GR_GoauldInterDomainRelation_Alliance>alliance</GR_GoauldInterDomainRelation_Alliance>
+
+    <GR_GoauldInterDomainReport_Neutral_Label>Équilibre Goa'uld rétabli</GR_GoauldInterDomainReport_Neutral_Label>
+    <GR_GoauldInterDomainReport_Neutral_Text0>Les rapports indiquent que {0} et {1} ont mis fin à leur dernière confrontation. Aucun des deux domaines ne semble disposé à engager davantage de forces pour le moment.</GR_GoauldInterDomainReport_Neutral_Text0>
+    <GR_GoauldInterDomainReport_Neutral_Text1>Les émissaires de {0} et de {1} ont retiré leurs menaces les plus immédiates. Leur relation revient à une neutralité instable.</GR_GoauldInterDomainReport_Neutral_Text1>
+    <GR_GoauldInterDomainReport_Neutral_Text2>Le trafic militaire entre {0} et {1} a diminué. Les deux domaines ne se disputent plus ouvertement.</GR_GoauldInterDomainReport_Neutral_Text2>
+
+    <GR_GoauldInterDomainReport_Rivalry_Label>Rivalité Goa'uld</GR_GoauldInterDomainReport_Rivalry_Label>
+    <GR_GoauldInterDomainReport_Rivalry_Text0>{0} et {1} se disputent influence, tributs et loyauté des Jaffa. Leurs agents commencent à éprouver les frontières adverses.</GR_GoauldInterDomainReport_Rivalry_Text0>
+    <GR_GoauldInterDomainReport_Rivalry_Text1>Des transmissions interceptées révèlent une rivalité croissante entre {0} et {1}. Les deux domaines rassemblent des renseignements et contestent l'autorité de l'autre.</GR_GoauldInterDomainReport_Rivalry_Text1>
+    <GR_GoauldInterDomainReport_Rivalry_Text2>Les prétentions de {0} ont été rejetées par {1}. Les raids et représailles restent limités, mais le différend se durcit.</GR_GoauldInterDomainReport_Rivalry_Text2>
+
+    <GR_GoauldInterDomainReport_OpenConflict_Label>Guerre entre domaines Goa'uld</GR_GoauldInterDomainReport_OpenConflict_Label>
+    <GR_GoauldInterDomainReport_OpenConflict_Text0>La rivalité entre {0} et {1} est devenue un conflit ouvert. Leurs forces Jaffa frappent désormais les possessions et les routes de ravitaillement adverses.</GR_GoauldInterDomainReport_OpenConflict_Text0>
+    <GR_GoauldInterDomainReport_OpenConflict_Text1>{0} et {1} ont abandonné toute retenue. Leurs flottes et leurs troupes au sol sont maintenant engagées dans des hostilités directes.</GR_GoauldInterDomainReport_OpenConflict_Text1>
+    <GR_GoauldInterDomainReport_OpenConflict_Text2>Les rapports confirment une guerre ouverte entre {0} et {1}. Aucun domaine n'a obtenu d'avantage décisif.</GR_GoauldInterDomainReport_OpenConflict_Text2>
+
+    <GR_GoauldInterDomainReport_Truce_Label>Trêve Goa'uld</GR_GoauldInterDomainReport_Truce_Label>
+    <GR_GoauldInterDomainReport_Truce_Text0>{0} et {1} ont accepté une trêve temporaire après des combats coûteux. Leurs forces se regroupent sans réellement se retirer.</GR_GoauldInterDomainReport_Truce_Text0>
+    <GR_GoauldInterDomainReport_Truce_Text1>Les hostilités entre {0} et {1} sont suspendues par une trêve fragile. Les deux domaines restent prêts à reprendre le conflit.</GR_GoauldInterDomainReport_Truce_Text1>
+    <GR_GoauldInterDomainReport_Truce_Text2>Des émissaires ont imposé un cessez-le-feu entre {0} et {1}. L'accord ne règle rien, mais les combats immédiats ont cessé.</GR_GoauldInterDomainReport_Truce_Text2>
+
+    <GR_GoauldInterDomainReport_Alliance_Label>Alliance Goa'uld</GR_GoauldInterDomainReport_Alliance_Label>
+    <GR_GoauldInterDomainReport_Alliance_Text0>{0} et {1} ont formé une alliance stratégique. Leur accord repose sur l'intérêt commun plutôt que sur la confiance.</GR_GoauldInterDomainReport_Alliance_Text0>
+    <GR_GoauldInterDomainReport_Alliance_Text1>Des communications interceptées confirment une coopération entre {0} et {1}. Les deux domaines coordonnent renseignements et plans militaires.</GR_GoauldInterDomainReport_Alliance_Text1>
+    <GR_GoauldInterDomainReport_Alliance_Text2>{0} et {1} reconnaissent désormais des intérêts communs. Leur alliance pourrait ne durer que tant que leurs dirigeants respectifs en tirent profit.</GR_GoauldInterDomainReport_Alliance_Text2>
+</LanguageData>

@@ -1,16 +1,16 @@
-
 using System.Text;
+using GateRimSG1.Goauld;
 using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Storytelling
 {
     /// <summary>
-    /// Persistent lifecycle state for future GateRim storyteller systems.
+    /// Persistent lifecycle state for GateRim storyteller systems.
     ///
-    /// The component exists in every game so switching storytellers is safe,
-    /// but it performs no strategic action unless the GateRim storyteller is
-    /// active. The 0.3.65 foundation never emits incidents.
+    /// The component exists in every game so switching storytellers is safe.
+    /// Goa'uld inter-domain relation transitions are handled by their dedicated
+    /// tracker and remain inactive unless the GateRim storyteller is selected.
     /// </summary>
     public sealed class GameComponent_GateRimStorytellerOrchestrator
         : GameComponent
@@ -190,9 +190,24 @@ namespace GateRimSG1.Storytelling
             builder.AppendLine(
                 "foundation incidents emitted: none");
             builder.AppendLine(
-                "inter-domain relations active: no");
-            builder.AppendLine(
                 "other storytellers modified: no");
+            builder.AppendLine();
+
+            GameComponent_GoauldInterDomainRelationTracker relationTracker =
+                GameComponent_GoauldInterDomainRelationTracker.Current;
+
+            if (relationTracker == null)
+            {
+                builder.AppendLine(
+                    "Goa'uld inter-domain relation tracker: unavailable");
+            }
+            else
+            {
+                builder.AppendLine(
+                    "Goa'uld inter-domain relation tracker: available");
+                builder.AppendLine(
+                    relationTracker.BuildOrchestrationSummary());
+            }
 
             return builder.ToString();
         }

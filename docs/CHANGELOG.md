@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.3.66-dev - Add persistent Goa'uld inter-domain relations
+
+- Start from published tag `v0.3.65-dev` on
+  `feature/goauld-inter-domain-relations`.
+- Add one persistent state for every unordered pair of Goa'uld System Lord
+  faction instances: neutral, rivalry, open conflict, truce or alliance.
+- Keep relations attached to factions rather than current leaders and reconcile
+  new games, older saves, multiple domains and newly created domains.
+- Advance relations only under `SG1_GateRimStoryteller`; freeze and shift all
+  strategic deadlines while another storyteller is active.
+- Use bounded transitions, `8â€“16` day initial delays, `12â€“24` day pair delays
+  and `5â€“10` day global report spacing.
+- Avoid selecting the previous pair again when another eligible pair exists.
+- Add three English and French RP report variants per resulting state with
+  immediate text anti-repetition.
+- Add relation diagnostics, direct state setters, forced transitions, reset and
+  an additional-domain test generator.
+- Keep raids, threat points, doctrines, reprisals, goodwill, battles, alliances,
+  expansion and settlement destruction mechanically unchanged.
+- Validate final local revision `r1` after the forced `0.3.66.0` rebuild,
+  including all five states, French RP reports, save/reload persistence,
+  Cassandra suspension and resumption, pair anti-repetition, existing Goa'uld
+  regressions and a clean `Player.log`.
+- Publish `feature/goauld-inter-domain-relations`, annotated tag
+  `v0.3.66-dev` and the synchronized separate wiki.
+
 ## 0.3.65-dev - Add GateRim SG-1 storyteller foundation
 
 - Start from published tag `v0.3.64-dev` on
@@ -1555,6 +1581,26 @@
 
 # Changelog
 
+## 0.3.66-dev - Add persistent Goa'uld inter-domain relations
+
+- Start from published tag `v0.3.65-dev` on
+  `feature/goauld-inter-domain-relations`.
+- Add one persistent state for every unordered pair of Goa'uld System Lord
+  faction instances: neutral, rivalry, open conflict, truce or alliance.
+- Keep relations attached to factions rather than current leaders and reconcile
+  new games, older saves, multiple domains and newly created domains.
+- Advance relations only under `SG1_GateRimStoryteller`; freeze and shift all
+  strategic deadlines while another storyteller is active.
+- Use bounded transitions, `8â€“16` day initial delays, `12â€“24` day pair delays
+  and `5â€“10` day global report spacing.
+- Avoid selecting the previous pair again when another eligible pair exists.
+- Add three English and French RP report variants per resulting state with
+  immediate text anti-repetition.
+- Add relation diagnostics, direct state setters, forced transitions, reset and
+  an additional-domain test generator.
+- Keep raids, threat points, doctrines, reprisals, goodwill, battles, alliances,
+  expansion and settlement destruction mechanically unchanged.
+- Prepare local revision `r1` for forced rebuild and focused in-game validation.
 ## 0.2.53-dev - Consolidate French player wiki
 
 - Rewrite the French wiki home page to reflect the actual playable `0.2.x` scope instead of the early `0.1.6-dev` prototype state.

@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.65-dev`
+> Version du mod documentée : `0.3.66-dev`
 
 
 ## Le mod en bref
@@ -21,9 +21,10 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 
 ## Storyteller optionnel
 
-- [Commandement SG-1](Storyteller-SG1) conserve actuellement un rythme
-  classique tout en ajoutant la fondation persistante des futurs systèmes
-  stratégiques GateRim. Les autres storytellers restent utilisables sans
+- [Commandement SG-1](Storyteller-SG1) conserve un rythme classique et fait
+  désormais évoluer les relations persistantes entre paires de domaines
+  Goa'uld. Les rapports restent narratifs : raids, menace et territoires ne
+  changent pas encore. Les autres storytellers gèlent cette simulation sans
   modification cachée de leur cadence.
 
 ## Contenu actuellement jouable

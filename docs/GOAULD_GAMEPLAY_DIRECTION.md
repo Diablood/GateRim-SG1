@@ -1,6 +1,6 @@
 # Goa'uld gameplay direction
 
-Status: approved baseline. Threat progression, natural doctrines, the first extraction ultimatum and persistent domain doctrines are published. The `0.3.65-dev` milestone establishes the optional SG-1 storyteller required before automatic inter-domain relations.
+Status: approved baseline. Threat progression, natural doctrines, the first extraction ultimatum, persistent domain doctrines, the SG-1 storyteller foundation and persistent inter-domain relation states are published. Military and territorial relation consequences remain deferred.
 
 ## Purpose
 
@@ -176,9 +176,16 @@ enemy settlements. This simulation must receive discreet safeguards against
 self-elimination, runaway expansion and world imbalance before it becomes
 active.
 
-The approved relation model uses persistent faction pairs rather than current
-leaders. Candidate states are neutral, rivalry, open conflict, truce and
-alliance. Only the GateRim SG-1 storyteller advances these states automatically.
+The first relation layer is implemented for local validation in `0.3.66-dev`.
+Every unordered pair of Goa'uld faction instances stores neutral, rivalry, open
+conflict, truce or alliance independently of its current leaders. New and older
+saves reconcile missing pairs in neutrality. Only the GateRim SG-1 storyteller
+advances the bounded transition graph; selecting another storyteller freezes
+and shifts its deadlines rather than accumulating overdue transitions.
+
+Slow pair and global delays, previous-pair exclusion and three RP variants per
+resulting state limit visible repetition. The reports identify both domains but
+do not claim effects that are not active.
 
 Open conflict may later reduce the two domains' pressure against the player and
 create a temporary battlefield near the colony where two Goa'uld forces fight
@@ -189,7 +196,7 @@ on player structures and force survivors to leave after at most a few days.
 Alliance may later increase attack cadence or raid strength only slightly and
 under a global cap. Later extensions may include second-domain reinforcements,
 joint raids, doctrine interactions, shared reprisals and alliance rupture.
-None of those consequences is active in `0.3.65-dev`.
+None of those military or territorial consequences is active in `0.3.66-dev`.
 
 ## Validated decisions
 

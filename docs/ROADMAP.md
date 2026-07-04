@@ -1,53 +1,38 @@
 # Roadmap
 
 Ce fichier est le backlog durable du projet. Il conserve les travaux ouverts,
-les règles qui doivent guider de futurs jalons et le dernier jalon en cours.
+les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Jalon validé et publié - Fondation du storyteller GateRim SG-1 (`0.3.65-dev`)
+## Dernier jalon clôturé - Relations persistantes entre domaines Goa'uld (`0.3.66-dev`)
 
-- [x] Partir du tag publié `v0.3.64-dev` sur
-  `feature/sg1-storyteller-foundation`.
-- [x] Ajouter un storyteller `Commandement SG-1` optionnel.
-- [x] Raccourcir sa description anglaise et française selon le style comportemental des storytellers vanilla, sans barre de défilement.
-- [x] Utiliser le rythme Cassandra actuellement résolu comme baseline, sans
-  figer une copie du XML Core.
-- [x] Ajouter un composant d'orchestration GateRim sans incident actif.
-- [x] Ajouter une détection commune fiable du storyteller actif.
-- [x] Sérialiser activations, désactivations et rechargements.
-- [x] Ajouter le rapport développeur exact.
-- [x] Conserver tous les autres storytellers et incidents existants inchangés.
-- [x] Documenter les relations futures entre domaines et leurs conséquences
-  possibles sans les activer.
-- [x] Exécuter le rebuild forcé `0.3.65.0` et les contrôles de cohérence.
-- [x] Valider sélection, portrait, activation, sauvegarde/recharge,
-  désactivation sous un autre storyteller, régressions et `Player.log`.
-- [x] Confirmer que la description française `r2` tient sans barre de défilement.
-- [x] Publier branche, tag annoté `v0.3.65-dev` et wiki après validation et
+- [x] Partir du tag publié `v0.3.65-dev` sur
+  `feature/goauld-inter-domain-relations`.
+- [x] Ajouter des états persistants par paire de domaines : neutralité,
+  rivalité, conflit ouvert, trêve et alliance.
+- [x] Conserver les relations aux instances de factions plutôt qu'aux dirigeants.
+- [x] Réconcilier nouvelles parties, anciennes sauvegardes, nouveaux domaines et
+  plusieurs instances de la faction.
+- [x] Faire évoluer automatiquement ces relations uniquement sous le storyteller
+  GateRim SG-1.
+- [x] Geler réellement les échéances lorsque le storyteller SG-1 est inactif.
+- [x] Ajouter des transitions lentes, une cadence globale et un anti-répétition
+  de la dernière paire.
+- [x] Ajouter trois variantes RP anglaises et françaises par état résultant, avec
+  anti-répétition immédiate de la variante exacte.
+- [x] Ajouter rapports, persistance et diagnostics développeur.
+- [x] Ne pas encore créer de bataille de carte, bonus d'alliance, réduction de
+  pression, expansion ou destruction de colonie.
+- [x] Exécuter le rebuild forcé `0.3.66.0` et les contrôles de cohérence.
+- [x] Valider les cinq états, rapports français, sauvegarde/recharge, suspension
+  sous Cassandra, reprise, anti-répétition, régressions et `Player.log`.
+- [x] Publier branche, tag annoté `v0.3.66-dev` et wiki après validation et
   autorisation explicite.
 
-La révision finale `r2` est publiée avec la branche dédiée, le tag annoté
-`v0.3.65-dev` et le wiki séparé synchronisé. La fondation fonctionnelle de
-`r1`, le retest visuel sans barre de défilement, la sauvegarde/recharge, les
-régressions et `Player.log` sont validés.
-
-Le storyteller SG-1 constitue désormais la frontière d'orchestration des futurs
-systèmes stratégiques propres au mod. Les autres storytellers continuent de
-gérer leur rythme comme ils le souhaitent.
-
-
-## Prochain jalon décidé - Relations persistantes entre domaines Goa'uld (`0.3.66-dev`)
-
-- [ ] Partir du tag publié `v0.3.65-dev` sur
-  `feature/goauld-inter-domain-relations`.
-- [ ] Ajouter des états persistants par paire de domaines : neutralité,
-  rivalité, conflit ouvert, trêve et alliance.
-- [ ] Faire évoluer automatiquement ces relations uniquement sous le
-  storyteller GateRim SG-1.
-- [ ] Ajouter rapports RP, persistance, anti-répétition et diagnostics.
-- [ ] Ne pas encore créer de bataille de carte, bonus d’alliance, réduction de
-  pression, expansion ou destruction de colonie.
+La révision finale `r1` est validée et publiée. Aucun effet militaire,
+économique ou territorial ne dépend encore des relations. Le prochain jalon
+numéroté n'est pas encore sélectionné et devra partir de `v0.3.66-dev`.
 
 ## Registre d'idées non planifiées
 
@@ -78,11 +63,11 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 
 ## Pression et rivalités des domaines Goa'uld
 
-- [ ] Ajouter des relations persistantes par paire de domaines : neutralité,
+- [x] Ajouter des relations persistantes par paire de domaines : neutralité,
   rivalité, conflit ouvert, trêve et alliance.
-- [ ] Faire évoluer automatiquement ces relations uniquement lorsque le
+- [x] Faire évoluer automatiquement ces relations uniquement lorsque le
   storyteller GateRim SG-1 est actif.
-- [ ] Conserver les relations aux factions plutôt qu'aux dirigeants.
+- [x] Conserver les relations aux factions plutôt qu'aux dirigeants.
 - [ ] En conflit ouvert, réduire de façon limitée et plafonnée la pression des
   deux domaines contre le joueur.
 - [ ] Permettre un événement rare sur la carte : deux troupes de domaines
@@ -94,10 +79,10 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 - [ ] Étendre ultérieurement les alliances par des renforts d'un second domaine,
   des raids conjoints, des interactions de doctrines, des représailles communes
   ou une rupture après échec.
-- [ ] Représenter les conflits par des rapports RP avant toute expansion ou
-  destruction réelle de colonies.
-- [ ] Concevoir des garde-fous contre auto-élimination, empilement de bonus,
-  expansion incontrôlée et déséquilibre mondial.
+- [x] Représenter d'abord les relations par des rapports RP avant toute expansion
+  ou destruction réelle de colonies.
+- [ ] Concevoir les garde-fous des futurs effets contre auto-élimination,
+  empilement de bonus, expansion incontrôlée et déséquilibre mondial.
 
 ## Reines Goa'uld
 
@@ -158,14 +143,16 @@ Les extensions spéculatives de l'origine des larves restent dans
 
 ## Storyteller et orchestration
 
-- [ ] Utiliser le storyteller GateRim SG-1 comme orchestrateur exclusif des
-  futures relations stratégiques automatiques entre domaines.
-- [ ] Garder les incidents GateRim existants accessibles aux autres
-  storytellers sans modifier leur cadence.
-- [ ] Plafonner les réductions de pression en guerre et les bonus d'alliance.
-- [ ] Espacer les événements stratégiques et appliquer un anti-répétition.
-- [ ] Suspendre les transitions automatiques lorsqu'un autre storyteller est
-  actif, tout en conservant l'état sérialisé pour une reprise ultérieure.
+- [x] Utiliser le storyteller GateRim SG-1 comme orchestrateur exclusif des
+  relations stratégiques automatiques entre domaines.
+- [x] Garder les incidents GateRim existants accessibles aux autres storytellers
+  sans modifier leur cadence.
+- [ ] Plafonner les futures réductions de pression en guerre et les futurs bonus
+  d'alliance.
+- [x] Espacer les événements stratégiques et appliquer un anti-répétition.
+- [x] Suspendre les transitions automatiques lorsqu'un autre storyteller est
+  actif, tout en conservant et en décalant l'état sérialisé pour une reprise
+  ultérieure.
 
 ## Progression Stargate
 

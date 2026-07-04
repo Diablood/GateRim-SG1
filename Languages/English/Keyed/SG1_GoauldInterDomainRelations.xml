@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldInterDomainRelation_Neutral>neutral</GR_GoauldInterDomainRelation_Neutral>
+    <GR_GoauldInterDomainRelation_Rivalry>rivalry</GR_GoauldInterDomainRelation_Rivalry>
+    <GR_GoauldInterDomainRelation_OpenConflict>open conflict</GR_GoauldInterDomainRelation_OpenConflict>
+    <GR_GoauldInterDomainRelation_Truce>truce</GR_GoauldInterDomainRelation_Truce>
+    <GR_GoauldInterDomainRelation_Alliance>alliance</GR_GoauldInterDomainRelation_Alliance>
+
+    <GR_GoauldInterDomainReport_Neutral_Label>Goa'uld balance restored</GR_GoauldInterDomainReport_Neutral_Label>
+    <GR_GoauldInterDomainReport_Neutral_Text0>Reports indicate that {0} and {1} have ended their latest confrontation. Neither domain appears willing to commit further forces for now.</GR_GoauldInterDomainReport_Neutral_Text0>
+    <GR_GoauldInterDomainReport_Neutral_Text1>Envoys from {0} and {1} have withdrawn their most immediate threats. Their relationship has returned to an unstable neutrality.</GR_GoauldInterDomainReport_Neutral_Text1>
+    <GR_GoauldInterDomainReport_Neutral_Text2>Military traffic between {0} and {1} has diminished. The two domains are no longer openly contesting one another.</GR_GoauldInterDomainReport_Neutral_Text2>
+
+    <GR_GoauldInterDomainReport_Rivalry_Label>Goa'uld rivalry</GR_GoauldInterDomainReport_Rivalry_Label>
+    <GR_GoauldInterDomainReport_Rivalry_Text0>{0} and {1} are contesting influence, tribute and Jaffa loyalty. Their agents have begun testing each other's borders.</GR_GoauldInterDomainReport_Rivalry_Text0>
+    <GR_GoauldInterDomainReport_Rivalry_Text1>Intercepted transmissions reveal a growing rivalry between {0} and {1}. Both domains are gathering intelligence and challenging the other's authority.</GR_GoauldInterDomainReport_Rivalry_Text1>
+    <GR_GoauldInterDomainReport_Rivalry_Text2>Claims made by {0} have been rejected by {1}. Raids and reprisals remain limited, but the dispute is hardening.</GR_GoauldInterDomainReport_Rivalry_Text2>
+
+    <GR_GoauldInterDomainReport_OpenConflict_Label>War between Goa'uld domains</GR_GoauldInterDomainReport_OpenConflict_Label>
+    <GR_GoauldInterDomainReport_OpenConflict_Text0>The rivalry between {0} and {1} has become open conflict. Jaffa forces now strike each other's holdings and supply routes.</GR_GoauldInterDomainReport_OpenConflict_Text0>
+    <GR_GoauldInterDomainReport_OpenConflict_Text1>{0} and {1} have abandoned restraint. Their fleets and ground forces are now committed to direct hostilities.</GR_GoauldInterDomainReport_OpenConflict_Text1>
+    <GR_GoauldInterDomainReport_OpenConflict_Text2>Reports confirm open war between {0} and {1}. Neither domain has secured a decisive advantage.</GR_GoauldInterDomainReport_OpenConflict_Text2>
+
+    <GR_GoauldInterDomainReport_Truce_Label>Goa'uld truce</GR_GoauldInterDomainReport_Truce_Label>
+    <GR_GoauldInterDomainReport_Truce_Text0>{0} and {1} have accepted a temporary truce after costly fighting. Their forces are regrouping rather than withdrawing.</GR_GoauldInterDomainReport_Truce_Text0>
+    <GR_GoauldInterDomainReport_Truce_Text1>Hostilities between {0} and {1} have paused under a fragile truce. Both domains remain prepared to resume the conflict.</GR_GoauldInterDomainReport_Truce_Text1>
+    <GR_GoauldInterDomainReport_Truce_Text2>Envoys have imposed a ceasefire between {0} and {1}. The agreement settles nothing, but the immediate battles have stopped.</GR_GoauldInterDomainReport_Truce_Text2>
+
+    <GR_GoauldInterDomainReport_Alliance_Label>Goa'uld alliance</GR_GoauldInterDomainReport_Alliance_Label>
+    <GR_GoauldInterDomainReport_Alliance_Text0>{0} and {1} have formed a strategic alliance. Their agreement is built on mutual advantage rather than trust.</GR_GoauldInterDomainReport_Alliance_Text0>
+    <GR_GoauldInterDomainReport_Alliance_Text1>Intercepted communications confirm cooperation between {0} and {1}. The two domains are coordinating intelligence and military planning.</GR_GoauldInterDomainReport_Alliance_Text1>
+    <GR_GoauldInterDomainReport_Alliance_Text2>{0} and {1} now recognize shared interests. Their alliance may endure only while both rulers continue to profit from it.</GR_GoauldInterDomainReport_Alliance_Text2>
+</LanguageData>

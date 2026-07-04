@@ -1,14 +1,13 @@
-
 # GateRim SG-1 storyteller
 
 ## Milestone
 
-- Version: `0.3.65-dev`
-- Branch: `feature/sg1-storyteller-foundation`
-- Base: `v0.3.64-dev`
-- Assembly: `0.3.65.0`
-- Local revision: `r2`
-- Status: final revision `r2` validated and published.
+- Version: `0.3.66-dev`
+- Branch: `feature/goauld-inter-domain-relations`
+- Base: `v0.3.65-dev`
+- Assembly: `0.3.66.0`
+- Local revision: `r1`
+- Status: published after final local revision `r1`.
 
 ## Purpose
 
@@ -16,15 +15,15 @@
 for strategic systems that should belong to GateRim SG-1 rather than silently
 modifying Cassandra, Phoebe, Randy or a modded storyteller.
 
-The first release is intentionally conservative. Selecting `SG-1 Command`
-preserves an ordinary classic RimWorld cadence while enabling a persistent
-GateRim-specific channel. No relation simulation or new incident is active yet.
+Selecting `SG-1 Command` preserves the currently resolved Cassandra Classic
+incident cadence while activating the persistent Goa'uld inter-domain relation
+simulation added in `0.3.66-dev`.
 
 ## Player-facing description
 
-The selection-panel description follows the same contract as the vanilla
-storytellers: a short behavioral summary addressed to the player, not a
-technical explanation of the implementation.
+The selection-panel description remains the concise `0.3.65-dev-r2` behavioral
+summary. The relation system does not lengthen this text or restore a French
+scrollbar.
 
 French:
 
@@ -41,36 +40,24 @@ SG-1 Command follows a classic rhythm: it steadily raises the pressure, then
 gives you time to recover. It also coordinates future GateRim events.
 ```
 
-
-## Validation result
-
-The maintainer validates the complete foundation and the focused `r2`
-interface correction. The French description fits the storyteller-selection
-panel without a scrollbar. Selection, portrait, Cassandra baseline,
-activation/deactivation, save/reload persistence, diagnostics, existing
-GateRim incident regressions and `Player.log` are also validated.
-
-The final local revision is `r2`.
-
-## Baseline architecture
-
-The storyteller Def inherits the shared Core storyteller fields and carries one
-GateRim marker component.
+## Cassandra baseline architecture
 
 At static startup, `GateRimStorytellerBootstrap` reads the currently resolved
 `Cassandra` Def and copies its public difficulty curves, adaptation settings and
 component list into `SG1_GateRimStoryteller`. It then appends exactly one
 `StorytellerComp_GateRimOrchestrator`.
 
-This approach deliberately avoids embedding a frozen copy of the Core
-storyteller XML. RimWorld 1.6, active DLCs and compatible updates remain
-authoritative for Cassandra's ordinary incident contracts.
+This avoids embedding a frozen copy of Core XML. RimWorld 1.6, active DLCs and
+compatible updates remain authoritative for Cassandra's ordinary incident
+contracts.
 
-The appended component returns no incidents in `0.3.65-dev`.
+The appended component still emits no incidents in `0.3.66-dev`. Strategic
+relations are maintained by a dedicated persistent game component rather than
+by adding an incident to Cassandra's component list.
 
 ## Activation contract
 
-All future automatic SG-1 strategic systems must use:
+All automatic strategic systems must use:
 
 ```csharp
 GateRimStorytellerUtility.IsGateRimStorytellerActive
@@ -82,15 +69,20 @@ storyteller labels or incident history.
 
 When another storyteller is selected:
 
-- no GateRim strategic transition is rolled;
+- no inter-domain transition is rolled;
+- no RP relation report is emitted;
+- all pair and global relation deadlines are shifted forward by the suspension
+  duration when SG-1 Command becomes active again;
 - no SG-1-only frequency or threat modifier is applied;
-- existing published GateRim incidents retain their normal contracts;
-- serialized future strategic state may remain stored for a later return to the
-  SG-1 storyteller.
+- existing published GateRim incidents retain their normal contracts.
 
-## Persistent foundation
+This is a true suspension rather than a backlog. Returning to SG-1 Command does
+not immediately consume transitions that would have become due under Cassandra,
+Phoebe, Randy or a modded storyteller.
 
-`GameComponent_GateRimStorytellerOrchestrator` stores:
+## Persistent storyteller lifecycle
+
+`GameComponent_GateRimStorytellerOrchestrator` continues to store:
 
 - schema version;
 - whether SG-1 Command was active at the previous observation;
@@ -100,7 +92,88 @@ When another storyteller is selected:
 - last observed storyteller Def name.
 
 It observes changes every `250` ticks and on new game, load and final
-initialization. It performs no strategic action.
+initialization.
+
+Its report now also embeds the relation tracker's availability, active pair
+count, automatic activation state and next strategic deadline.
+
+## Persistent relation model
+
+`GameComponent_GoauldInterDomainRelationTracker` stores one state for every
+unordered pair of Goa'uld System Lord faction instances.
+
+Each `GoauldInterDomainRelationState` stores:
+
+- canonical first and second faction references ordered by `loadID`;
+- current and previous relation;
+- establishment tick;
+- last and next transition ticks;
+- transition count.
+
+The relation belongs to the factions, not their current leaders. Replacing a
+System Lord therefore does not reset diplomacy. A defeated domain remains safe
+to deserialize and inspect, but its pairs are inactive and cannot transition.
+A missing or invalid faction reference is removed during normalization.
+
+New worlds and older saves are reconciled automatically. Every active pair that
+does not already exist begins in neutrality.
+
+## Relation states
+
+The five persistent states are:
+
+- neutral;
+- rivalry;
+- open conflict;
+- truce;
+- alliance.
+
+The bounded first transition graph is:
+
+```text
+neutral -> rivalry | alliance
+rivalry -> open conflict | neutral
+open conflict -> truce
+truce -> neutral | rivalry | alliance
+alliance -> neutral | rivalry
+```
+
+The graph prevents nonsensical direct jumps such as open conflict immediately
+becoming alliance.
+
+## Cadence and suspension
+
+- first transition for a new pair: `8–16` days;
+- pair cooldown after a transition: `12–24` days;
+- global spacing between RP reports: `5–10` days;
+- runtime observation interval: `250` ticks;
+- at most one automatic pair transition per global window.
+
+Initial pair delays are derived from stable faction identifiers. Later delays
+and transition choices use RimWorld's ordinary random source and persist in the
+save.
+
+## Anti-repetition
+
+Two separate safeguards apply:
+
+1. When more than one eligible pair exists, the pair used by the previous
+   transition is excluded from the next selection.
+2. Each resulting relation has three English and three French RP text variants.
+   The exact key used by the previous report cannot repeat immediately when an
+   alternative variant exists.
+
+A world containing only one pair may naturally return to that pair after its
+full cooldown.
+
+## RP reports
+
+Every real state change produces one neutral-event letter naming both domains.
+The texts describe political or military intelligence without claiming effects
+that do not exist yet.
+
+The reports do not reveal transition weights, hidden thresholds or future raid
+modifiers.
 
 ## Developer diagnostics
 
@@ -109,84 +182,51 @@ Open exactly:
 ```text
 Actions de débogage
 > GateRim SG-1
+> Goa'uld inter-domain relations...
+```
+
+Available actions:
+
+- `Show relation report`;
+- `Create additional test domain`;
+- `Reconcile relation pairs`;
+- `Force next transition`;
+- direct setters for neutral, rivalry, open conflict, truce and alliance;
+- `Reset relations`.
+
+The report exposes storyteller activation, schema, active and stored pairs,
+suspension, last pair, last text key, current and previous states, transition
+counts and deadlines.
+
+The ordinary storyteller report remains available at:
+
+```text
+Actions de débogage
+> GateRim SG-1
 > Storyteller SG-1...
 > Show orchestration report
 ```
 
-The report exposes:
+## Inactive consequences
 
-- active storyteller label and Def name;
-- SG-1 activation state;
-- Cassandra baseline identity;
-- bootstrap success;
-- baseline and SG-1 component counts;
-- persistent lifecycle state;
-- explicit confirmation that no foundation incident or relation system is
-  active and that other storytellers are not modified.
+`0.3.66-dev` deliberately adds no:
 
-## Approved future relation model
+- raid-frequency reduction during war;
+- raid-frequency or threat increase during alliance;
+- battle between two Goa'uld groups near the colony;
+- reinforcements, joint raids or shared reprisals;
+- doctrine interaction;
+- territorial expansion or settlement destruction;
+- change to faction goodwill toward the player.
 
-The following design is recorded but not implemented by this milestone.
-
-### Persistent pair states
-
-Each unordered pair of Goa'uld domains may eventually store:
-
-- neutral;
-- rivalry;
-- open conflict;
-- truce;
-- alliance.
-
-The state belongs to faction instances, not their current System Lords. It can
-therefore survive leader replacement and save/reload.
-
-### Open conflict
-
-Possible future effects under SG-1 Command only:
-
-- a limited, globally capped reduction of attacks by the two involved domains
-  against the player;
-- RP reports identifying the pair and cause;
-- a temporary map battle near the player colony;
-- two forces arriving from distinct directions and prioritizing each other;
-- optional player intervention against one force or both;
-- one clear letter;
-- no initial order to attack player structures;
-- forced withdrawal after at most a few days;
-- normal recovery of abandoned equipment rather than an artificial quest
-  reward.
-
-### Alliance
-
-Possible future effects under SG-1 Command only:
-
-- a small capped increase in attack cadence;
-- or a small capped increase in threat points for attacks by the allied
-  domains;
-- later second-domain reinforcements;
-- later joint raids;
-- doctrine interactions;
-- shared reprisals;
-- alliance rupture after a major failure or loss.
-
-No alliance may merge factions or apply an unbounded multiplicative bonus.
-
-### Global safeguards
-
-Future implementation must include:
-
-- one major strategic relation per domain when necessary for readability;
-- slow transitions and persistent cooldowns;
-- pair-level anti-repetition;
-- global caps for both war reductions and alliance bonuses;
-- no automatic colony destruction in the first relation milestones;
-- no self-elimination or runaway expansion;
-- safe handling of defeated or removed factions;
-- clean suspension when SG-1 Command is not active.
+These later effects require separate balancing and validation milestones. The
+five states and their RP reports are the complete player-facing strategic
+behavior of this milestone.
 
 ## Validation
 
-The mandatory validation is maintained in
-[`TESTING_CURRENT.md`](TESTING_CURRENT.md). Durable regressions are maintained
-in [`TESTING.md`](TESTING.md).
+Final revision `r1` passed the forced `0.3.66.0` rebuild, five-state tests,
+French RP reports, save/reload persistence, Cassandra suspension and resumption,
+pair anti-repetition, existing Goa'uld regressions and a clean `Player.log`.
+The final result is recorded in [`TESTING_CURRENT.md`](TESTING_CURRENT.md), and
+the durable coverage is maintained in [`TESTING.md`](TESTING.md).

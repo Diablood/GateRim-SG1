@@ -1,5 +1,32 @@
 # Testing checklist
 
+## 0.3.66-dev - Persistent Goa'uld inter-domain relations
+
+RÃ©vision finale `r1` validÃ©e et publiÃ©e. Couverture durable :
+
+- crÃ©er une relation canonique par paire non ordonnÃ©e de factions Goa'uld ;
+- commencer chaque nouvelle paire en neutralitÃ© et conserver l'Ã©tat lors d'un
+  remplacement de dirigeant ;
+- sÃ©rialiser relation actuelle et prÃ©cÃ©dente, Ã©chÃ©ances et compteur de
+  transitions ;
+- vÃ©rifier les transitions bornÃ©es entre neutralitÃ©, rivalitÃ©, conflit ouvert,
+  trÃªve et alliance ;
+- limiter l'automatisation au storyteller `Commandement SG-1` ;
+- geler puis dÃ©caler les Ã©chÃ©ances sous Cassandra, Phoebe, Randy ou un
+  storyteller moddÃ©, sans retard accumulÃ© au retour ;
+- espacer les transitions et Ã©viter la derniÃ¨re paire lorsqu'une alternative
+  Ã©ligible existe ;
+- vÃ©rifier les trois variantes RP anglaises et franÃ§aises par Ã©tat et l'absence
+  de rÃ©pÃ©tition immÃ©diate de la mÃªme clÃ© ;
+- conserver les paires des domaines vaincus comme donnÃ©es inactives sÃ»res et
+  supprimer les rÃ©fÃ©rences invalides ;
+- vÃ©rifier sauvegarde/recharge, migration `v0.3.65-dev`, diagnostics et outils
+  dÃ©veloppeur ;
+- confirmer l'absence de modification des raids, points de menace, doctrines,
+  reprÃ©sailles, goodwill, batailles, renforts, expansion et colonies ;
+- inspecter `Player.log` pour les erreurs C#, XML, traduction, Scribe, faction,
+  lettre et storyteller.
+
 ## 0.3.65-dev - GateRim SG-1 storyteller foundation
 
 Révision finale `r2` validée en jeu. Couverture durable :
