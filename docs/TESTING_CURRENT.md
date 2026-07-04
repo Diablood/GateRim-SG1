@@ -1,17 +1,17 @@
-# Validation locale - 0.3.64-dev
 
-Jalon : `0.3.64-dev - Add persistent Goa'uld domain doctrine profiles`
+# Validation locale - 0.3.65-dev
 
-Branche : `feature/goauld-domain-doctrine-profiles`
+Jalon : `0.3.65-dev - Add GateRim SG-1 storyteller foundation`
 
-Base : `v0.3.63-dev`
+Branche : `feature/sg1-storyteller-foundation`
 
-Version de DLL validée : `0.3.64.0`
+Base : `v0.3.64-dev`
+
+Version de DLL validée : `0.3.65.0`
 
 Révision locale : `r2`
 
-Statut : révision finale `r2` reconstruite et validée ; branche, tag annoté
-`v0.3.64-dev` et wiki séparé publiés.
+Statut : révision finale `r2` validée et publiée.
 
 Charger dans cet ordre :
 
@@ -22,82 +22,57 @@ Biotech
 GateRim SG-1
 ```
 
+## Test validé
 
-## Correctif r2
-
-Le premier paquet corrigé contenait encore dans `docs/wiki/_Sidebar.md` le lien
-supprimé par le jalon de consolidation :
-
-```text
-Tokra-Interaction-Roadmap
-```
-
-`r2` retire uniquement cette entrée de navigation. Le contrôle suivant a été
-validé sans cible Markdown manquante :
-
-```powershell
-.\tools\check-project-consistency.cmd `
-    -ExpectedVersion 0.3.64-dev `
-    -ExpectedBackstoryCount 83
-```
-
-## Test obligatoire validé
-
-1. Ouvrir exactement :
+1. Aucun rebuild supplémentaire n’est requis : `r2` ne modifie que les deux descriptions XML.
+2. Redémarrer RimWorld puis vérifier dans l’interface de sélection que `Commandement SG-1` est visible, que sa description française tient sans barre de défilement et que son portrait temporaire est chargé.
+3. Démarrer ou charger une partie avec ce storyteller.
+4. Ouvrir exactement :
 
    ```text
-   Actions de débogage > GateRim SG-1 > Goa'uld... > Domain doctrines...
+   Actions de débogage > GateRim SG-1 > Storyteller SG-1...
+   > Show orchestration report
    ```
 
-2. Lancer `Show domain doctrine report`.
-3. Appliquer successivement au même domaine :
-   - `Set doctrine: Conquest` : `4/1/1` ;
-   - `Set doctrine: Enslavement` : `2/3/1` ;
-   - `Set doctrine: Scorched earth` : `2/1/3`.
-4. Ouvrir la fiche normale de la faction et vérifier que le nom et la
-   description de la doctrine sont entièrement français, sans poids numériques.
-5. Sauvegarder, recharger et vérifier que le profil du même domaine est conservé.
-6. Ouvrir exactement :
-
-   ```text
-   Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
-   > Show current progression
-   ```
-
-   Vérifier le domaine, son profil, les pourcentages effectifs et les seuils
-   historiques inchangés.
-7. Lancer les trois commandes de raid naturel forcé et confirmer leurs
-   comportements direct, enlèvement et destruction.
-8. Contrôler `Player.log`.
+5. Vérifier :
+   - `active defName: SG1_GateRimStoryteller` ;
+   - `GateRim orchestration active: yes` ;
+   - `baseline definition: Cassandra` ;
+   - `baseline clone initialized: yes` ;
+   - un composant SG-1 de plus que les composants du baseline ;
+   - aucun incident de fondation ;
+   - aucune relation inter-domaines active ;
+   - aucun autre storyteller modifié.
+6. Sauvegarder, recharger et vérifier la persistance.
+7. Passer temporairement à Cassandra ou à un autre storyteller et confirmer
+   `GateRim orchestration active: no`.
+8. Revenir à `Commandement SG-1` et confirmer la reprise.
+9. Forcer un incident ou raid GateRim existant et vérifier son comportement
+   inchangé.
+10. Contrôler `Player.log`.
 
 ## Tests optionnels
 
-- plusieurs domaines : profils indépendants ;
-- remplacement du dirigeant : aucune réattribution ;
-- doctrine spécialisée inéligible : poids effectif nul ;
-- aucune modification de fréquence, points de menace ou délai de récidive ;
-- aucune régression des représailles, opérations Tok'ra, kara kesh ou bracelet
-  de guérison.
-
-## Normalisation Git
-
-Après extraction, appliquer une seule fois dans ce dépôt :
-
-```powershell
-git config --local core.autocrlf false
-git add --renormalize .
-git restore --staged .
-```
-
-Le `.gitattributes` versionné reste ensuite la source de vérité des fins de
-ligne.
+- migration d’une sauvegarde antérieure ;
+- plusieurs changements de storyteller ;
+- compteur d’activation incrémenté uniquement lors d’une réactivation ;
+- nombre de composants stable après sauvegarde/rechargement ;
+- aucun changement des fréquences, points de menace, délais ou incidents
+  existants.
 
 ## Résultat
 
-Le mainteneur confirme le rebuild forcé `0.3.64.0`, les trois profils et leurs
-poids, la traduction française, la sauvegarde/recharge, les raids de régression
-et `Player.log`.
+Le mainteneur confirme la validation finale de `r2` :
 
-Le contrôle de cohérence est également validé après la correction `r2` du lien
-wiki obsolète. La branche `feature/goauld-domain-doctrine-profiles`, le tag
-annoté `v0.3.64-dev` et le wiki séparé sont publiés.
+- `Commandement SG-1` est sélectionnable ;
+- la baseline Cassandra, l’activation et la désactivation sont correctes ;
+- la sauvegarde/recharge conserve l’état ;
+- le rapport développeur reste cohérent ;
+- les incidents GateRim existants ne régressent pas ;
+- `Player.log` reste propre ;
+- la description française raccourcie tient entièrement sans barre de
+  défilement.
+
+La révision finale du jalon est `r2`. La branche
+`feature/sg1-storyteller-foundation`, le tag annoté `v0.3.65-dev` et le
+wiki séparé sont publiés.

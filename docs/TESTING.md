@@ -1,5 +1,23 @@
 # Testing checklist
 
+## 0.3.65-dev - GateRim SG-1 storyteller foundation
+
+Révision finale `r2` validée en jeu. Couverture durable :
+
+- afficher `SG1_GateRimStoryteller` comme storyteller optionnel traduit ;
+- conserver une description courte, comportementale et entièrement visible sans barre de défilement en français ;
+- reprendre au démarrage la définition Cassandra actuellement résolue plutôt
+  qu'une copie figée de ses composants Core ;
+- conserver exactement un composant d'orchestration GateRim supplémentaire ;
+- ne produire aucun incident depuis ce composant de fondation ;
+- détecter l'activation et la désactivation par le Def du storyteller ;
+- sérialiser le cycle d'activation sans perte à la sauvegarde/recharge ;
+- ne modifier aucune fréquence, valeur de menace ou sélection d'incident des
+  autres storytellers ;
+- conserver les incidents GateRim existants accessibles avec les storytellers
+  compatibles ;
+- vérifier le portrait, les traductions, le rapport développeur et `Player.log`.
+
 ## 0.3.64-dev - Persistent Goa'uld domain doctrine profiles
 
 Révision finale `r2` validée et publiée depuis `v0.3.63-dev`.

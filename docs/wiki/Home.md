@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.64-dev`
+> Version du mod documentée : `0.3.65-dev`
 
 
 ## Le mod en bref
@@ -18,6 +18,13 @@ des Jaffa, des Goa'uld, des Tok'ra et de leurs technologies. La Porte des
 étoiles fonctionnelle et la progression complète hors monde ne sont pas encore
 disponibles : la version actuelle se concentre sur les factions, la biologie
 des symbiotes, l'équipement, les événements et les opérations de terrain.
+
+## Storyteller optionnel
+
+- [Commandement SG-1](Storyteller-SG1) conserve actuellement un rythme
+  classique tout en ajoutant la fondation persistante des futurs systèmes
+  stratégiques GateRim. Les autres storytellers restent utilisables sans
+  modification cachée de leur cadence.
 
 ## Contenu actuellement jouable
 

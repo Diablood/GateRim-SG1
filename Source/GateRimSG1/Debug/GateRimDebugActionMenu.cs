@@ -6,6 +6,7 @@ using GateRimSG1.Goauld;
 using GateRimSG1.Jaffa;
 using GateRimSG1.Missions;
 using GateRimSG1.Names;
+using GateRimSG1.Storytelling;
 using GateRimSG1.Weapons;
 
 namespace GateRimSG1.Debugging
@@ -23,6 +24,26 @@ namespace GateRimSG1.Debugging
             {
                 allowedGameStates = AllowedGameStates.PlayingOnMap
             };
+
+
+        [DebugAction(
+            Category,
+            "Storyteller SG-1...",
+            actionType = DebugActionType.Action,
+            allowedGameStates = AllowedGameStates.PlayingOnMap,
+            displayPriority = 450)]
+        public static DebugActionNode OpenStoryteller()
+        {
+            DebugActionNode root = new DebugActionNode();
+
+            root.AddChild(ActionNode(
+                "Show orchestration report",
+                GateRimStorytellerDebugActions
+                    .ShowOrchestrationReport,
+                100));
+
+            return root;
+        }
 
         [DebugAction(
             Category,

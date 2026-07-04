@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+    <StorytellerDef ParentName="BaseStoryteller">
+        <defName>SG1_GateRimStoryteller</defName>
+        <label>SG-1 Command</label>
+        <description>SG-1 Command follows a classic rhythm: it steadily raises the pressure, then gives you time to recover. It also coordinates future GateRim events.</description>
+        <portraitLarge>Storytellers/SG1_Command</portraitLarge>
+        <portraitTiny>Storytellers/SG1_Command_Tiny</portraitTiny>
+        <listOrder>25</listOrder>
+        <comps>
+            <li Class="GateRimSG1.Storytelling.StorytellerCompProperties_GateRimOrchestrator" />
+        </comps>
+    </StorytellerDef>
+</Defs>

@@ -1,3 +1,4 @@
+
 # Documentation map
 
 Ce répertoire contient la documentation interne du projet et les brouillons du
@@ -32,6 +33,8 @@ aux régressions. Les principales portes d'entrée sont :
   [`CULTURAL_BACKSTORIES.md`](CULTURAL_BACKSTORIES.md) et
   [`TOKRA_DUAL_IDENTITY_DESIGN.md`](TOKRA_DUAL_IDENTITY_DESIGN.md) ;
 - missions : [`MISSION_FRAMEWORK.md`](MISSION_FRAMEWORK.md) ;
+- storyteller et orchestration :
+  [`STORYTELLER_SG1.md`](STORYTELLER_SG1.md) ;
 - direction Goa'uld : [`GOAULD_GAMEPLAY_DIRECTION.md`](GOAULD_GAMEPLAY_DIRECTION.md),
   [`GOAULD_HOST.md`](GOAULD_HOST.md) et [`GOAULD_KARA_KESH.md`](GOAULD_KARA_KESH.md) ;
 - Jaffa et Prim'ta : fichiers `JAFFA_*.md` et `PRIMTA_*.md` ;

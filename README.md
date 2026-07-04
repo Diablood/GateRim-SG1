@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.64-dev`
+- Development version: `0.3.65-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -20,6 +20,10 @@ people, factions, technologies, biology and conflicts surrounding it.
 ## Playable content
 
 - A stranded four-person SG-team starting scenario with dedicated field gear.
+- An optional **SG-1 Command** storyteller that currently preserves Cassandra
+  Classic's ordinary incident rhythm while adding a persistent GateRim-only
+  orchestration channel. Selecting another storyteller leaves that channel
+  inactive and does not alter the other storyteller's pacing.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and an
   optional non-territorial Tok'ra faction. The Tok'ra are selected once by
   default in the world-faction list with a dedicated icon, create no

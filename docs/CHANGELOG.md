@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.3.65-dev - Add GateRim SG-1 storyteller foundation
+
+- Start from published tag `v0.3.64-dev` on
+  `feature/sg1-storyteller-foundation`.
+- Add the optional `SG1_GateRimStoryteller` with English/French player text and
+  a temporary original portrait.
+- Use Cassandra Classic's currently resolved RimWorld 1.6 component list as the
+  ordinary incident baseline instead of embedding a version-sensitive copy.
+- Append one no-op GateRim orchestration component reserved for future strategic
+  systems.
+- Add persistent activation, deactivation and save/reload lifecycle state.
+- Add a shared activation utility so future systems can remain strictly scoped
+  to the SG-1 storyteller.
+- Add a developer report for baseline initialization, component counts,
+  activation state and explicit confirmation that no future relation system is
+  active.
+- Preserve every existing incident contract and leave Cassandra, Phoebe, Randy
+  and compatible modded storytellers unchanged.
+- Record future persistent Goa'uld relation states, open-conflict battlefield
+  incidents, alliance pressure and later coordinated-raid possibilities without
+  implementing them in this milestone.
+- Validate the `r1` storyteller foundation, selection, Cassandra baseline, activation lifecycle, save/reload, diagnostics, existing-incident regressions and a clean `Player.log`.
+- Shorten the English and French storyteller descriptions in `r2` to a direct behavioral summary matching the vanilla storyteller style and avoiding a French selection-panel scrollbar.
+- Keep all C#, storyteller components, textures, save data and balance unchanged.
+- Validate final revision `r2`, including the concise French text without a selection-panel scrollbar.
+- Publish `feature/sg1-storyteller-foundation`, annotated tag `v0.3.65-dev` and the synchronized separate wiki.
+
 ## 0.3.64-dev - Add persistent Goa'uld domain doctrine profiles
 
 - Start from the published documentation-consolidation tag `v0.3.63-dev` on

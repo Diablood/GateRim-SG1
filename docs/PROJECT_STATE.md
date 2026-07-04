@@ -1,78 +1,93 @@
+
 # Project state
 
-Current milestone: `0.3.64-dev - Add persistent Goa'uld domain doctrine profiles`
-- final revision `r2` rebuilt, validated and published from `v0.3.63-dev`.
+Current milestone: `0.3.65-dev - Add GateRim SG-1 storyteller foundation`
+- final local revision `r2` validated after the `r1` foundation test.
 
 ## Repository state
 
-- Published base: `v0.3.63-dev`.
-- Published branch: `feature/goauld-domain-doctrine-profiles`.
+- Starting tag: `v0.3.64-dev`.
+- Active branch: `feature/sg1-storyteller-foundation`.
 - Last published version and tag: `0.3.64-dev` / `v0.3.64-dev`.
-- Technical assembly version: `0.3.64.0`.
+- Technical assembly version: `0.3.65.0`.
 - Final local revision: `r2`.
 - Publication state: branch commit, annotated tag and separate wiki published.
-- The previous experimental `0.3.63-dev` doctrine package was based on
-  `v0.3.62-dev` and must not be committed.
 - The separate wiki is synchronized and published from `docs/wiki/`.
 
 ## Implemented scope
 
-- Add three data-driven doctrine profiles:
-  - conquest: direct `4`, abduction `1`, destruction `1`;
-  - enslavement: direct `2`, abduction `3`, destruction `1`;
-  - scorched earth: direct `2`, abduction `1`, destruction `3`.
-- Persist one profile per Goa'uld System Lord faction instance rather than per
-  current leader.
-- Reconcile older saves and worlds containing several Goa'uld domains.
-- Preserve the existing single natural raid incident, vanilla threat points,
-  refire delay and contextual eligibility thresholds.
-- Apply the profile only to the relative weights of direct assault, abduction
-  and destruction after the existing checks.
-- Preserve an explicitly supplied Goa'uld faction and select one active domain
-  when a natural raid does not yet have one.
-- Display the qualitative profile in the normal faction information without
-  exposing weights or hidden thresholds.
-- Add per-domain developer diagnostics and targeted profile setters.
-- Resolve French profile labels and descriptions through explicit keyed
-  translations.
-- Add `.gitattributes` so normal text remains LF, Windows command scripts remain
-  CRLF and binary assets are never converted.
-- Remove the obsolete `Tokra-Interaction-Roadmap` entry from the wiki sidebar;
-  the documentation-consolidation milestone intentionally deleted that page.
+- Add the optional `SG1_GateRimStoryteller`, displayed as `SG-1 Command` or
+  `Commandement SG-1`.
+- Preserve Cassandra Classic as the ordinary incident baseline by reading its
+  current resolved component list at startup instead of copying a stale Core
+  XML snapshot.
+- Append one GateRim orchestration component that emits no incidents in this
+  milestone.
+- Add a persistent game component that observes storyteller activation,
+  deactivation and save/reload without changing another storyteller.
+- Add one authoritative activation utility for future strategic systems.
+- Add the exact developer report:
 
-## r2 consistency correction
+  ```text
+  Actions de débogage
+  > GateRim SG-1
+  > Storyteller SG-1...
+  > Show orchestration report
+  ```
 
-The first corrected package still carried one obsolete sidebar link copied
-from a pre-consolidation snapshot. The project-consistency checker correctly
-reported:
-
-```text
-docs\wiki\_Sidebar.md:96 -> Tokra-Interaction-Roadmap
-```
-
-`r2` removes only that stale navigation entry. No gameplay code, translation,
-Def, saved doctrine state or balance value changes from `r1`.
+- Add concise English/French storyteller text, aligned with the vanilla behavior-summary style, and a temporary original portrait.
+- Record the approved future Goa'uld relation states and consequences without
+  activating them.
 
 ## Validation result
 
-The maintainer confirms the final `r2` state after the corrected `0.3.64.0`
-rebuild:
+The maintainer validates the final `r2` state:
 
-- doctrine assignment and exact `4/1/1`, `2/3/1` and `2/1/3` weights;
-- natural-raid integration without frequency, threat-point or threshold change;
-- normal faction information with fully French doctrine text;
-- save/reload persistence and unchanged faction assignment;
-- existing direct, abduction and destruction raid behavior;
-- clean `Player.log`;
-- successful project-consistency check after removing the obsolete
-  `Tokra-Interaction-Roadmap` sidebar link.
+- `Commandement SG-1` is selectable and uses the Cassandra baseline;
+- the temporary portrait loads correctly;
+- the orchestration report identifies the active storyteller and one additional
+  GateRim component;
+- activation, deactivation and save/reload persistence work;
+- existing GateRim incidents retain their published behavior;
+- `Player.log` remains clean;
+- the shortened French description is fully visible without a scrollbar.
 
-The earlier stash based on `v0.3.62-dev` remains obsolete and must never be
-reapplied. It may be dropped after the branch, tag and wiki publication are
-confirmed and both repositories are clean.
+The `r2` correction changes only the English/French storyteller descriptions.
+No C#, Def structure, component, texture, save data or balance value changed
+from the functionally validated `r1` foundation.
+
+## Storyteller boundary
+
+Only the GateRim SG-1 storyteller may automatically advance and apply future
+inter-domain strategic relations. Cassandra, Phoebe, Randy and compatible
+modded storytellers keep their own pacing and receive no hidden GateRim
+frequency or threat-point modifiers.
+
+Existing GateRim incidents remain usable with other storytellers through their
+published incident contracts. This milestone does not remove, suppress or
+reweight any existing incident.
+
+## Deliberately inactive future systems
+
+`0.3.65-dev` does not create:
+
+- rivalry, open conflict, truce or alliance states;
+- relation transition rolls;
+- reports about inter-domain diplomacy;
+- battles between two Goa'uld forces near the colony;
+- reductions or increases in raid frequency;
+- raid-point multipliers, joint raids or reinforcements;
+- expansion or settlement destruction.
 
 ## Next milestone
 
-No next milestone is selected. Future work must start from `v0.3.64-dev` on a
-new dedicated branch after reading `docs/ROADMAP.md`.
+The next planned milestone is:
 
+```text
+0.3.66-dev - Add persistent Goa'uld inter-domain relations
+branch: feature/goauld-inter-domain-relations
+base: v0.3.65-dev
+```
+
+It must begin only after confirming the published branch, tag and wiki are
+clean.

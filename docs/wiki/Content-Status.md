@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.64-dev`
+> Dernière révision : `0.3.65-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -11,6 +11,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | État | Version |
 |---|---|---|
+| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, description concise sans barre de défilement, baseline Cassandra résolue dynamiquement, canal d’orchestration persistant sans nouvel incident actif et sans modification des autres storytellers | 0.3.65-dev (publié) |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
@@ -132,7 +133,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
 | Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
-| Storyteller GateRim SG-1 | Coordonner plus finement les événements du mod tout en les laissant accessibles avec les storytellers compatibles |
+| Relations stratégiques Goa'uld sous storyteller SG-1 | États persistants de rivalité, conflit, trêve ou alliance ; batailles inter-domaines et modificateurs militaires plafonnés restent à implémenter par jalons |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
 | Équipement Goa'uld de haut rang | Bouclier, onde cinétique, attaque neurale et maintien paralysant mono-cible publiés. Les autres fonctions spéculatives restent non planifiées dans le fichier d'idées à revoir |

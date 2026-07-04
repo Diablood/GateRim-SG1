@@ -1,8 +1,6 @@
 # Goa'uld gameplay direction
 
-Status: approved baseline. Threat progression, natural doctrines, the first
-extraction ultimatum and persistent domain doctrine profiles are published;
-strategic rivalry remains future work.
+Status: approved baseline. Threat progression, natural doctrines, the first extraction ultimatum and persistent domain doctrines are published. The `0.3.65-dev` milestone establishes the optional SG-1 storyteller required before automatic inter-domain relations.
 
 ## Purpose
 
@@ -74,8 +72,11 @@ It must not rely on a hidden mission list presented as Goa'uld content.
 - Texture finalization remains part of the later complete visual pass.
 - Existing and future combat systems use RimWorld's vanilla threat points so
   colony wealth, pawn strength and the active storyteller remain authoritative.
-- Do not add storyteller-specific balance branches. A future GateRim SG-1
-  storyteller must consume the same incident contracts as other storytellers.
+- Existing GateRim incidents keep shared contracts compatible with vanilla
+  and modded storytellers.
+- Automatic inter-domain relation transitions and their strategic frequency
+  or threat modifiers belong exclusively to the optional GateRim SG-1
+  storyteller. Other storytellers receive no hidden pacing changes.
 
 ## Ranked equipment direction
 
@@ -175,6 +176,21 @@ enemy settlements. This simulation must receive discreet safeguards against
 self-elimination, runaway expansion and world imbalance before it becomes
 active.
 
+The approved relation model uses persistent faction pairs rather than current
+leaders. Candidate states are neutral, rivalry, open conflict, truce and
+alliance. Only the GateRim SG-1 storyteller advances these states automatically.
+
+Open conflict may later reduce the two domains' pressure against the player and
+create a temporary battlefield near the colony where two Goa'uld forces fight
+each other. The player may remain outside the battle or attack either or both
+forces. The encounter must receive one clear letter, avoid an initial assault
+on player structures and force survivors to leave after at most a few days.
+
+Alliance may later increase attack cadence or raid strength only slightly and
+under a global cap. Later extensions may include second-domain reinforcements,
+joint raids, doctrine interactions, shared reprisals and alliance rupture.
+None of those consequences is active in `0.3.65-dev`.
+
 ## Validated decisions
 
 - Threat progression is audited before natural abduction or destruction.
@@ -186,6 +202,9 @@ active.
 - Domain doctrine profiles are assigned to faction instances, not named leaders,
   and may modify only existing doctrine weights until a later milestone
   explicitly extends their consequences.
+- Automatic Goa'uld inter-domain relations and their strategic effects are
+  reserved for the GateRim SG-1 storyteller; other storytellers remain
+  untouched.
 - Goa'uld equipment may be expanded through lore-audited, rank-limited items;
   the kara kesh personal-shield mode is the first candidate, not a promise of
   permanent invulnerability.
