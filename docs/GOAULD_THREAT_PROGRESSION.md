@@ -53,6 +53,9 @@ map wealth and save/reload do not silently change its intended difficulty.
 
 - Natural abduction and destruction doctrines are activated by `0.3.54-dev`
   through the same incident and vanilla point contract documented here.
+- `0.3.64-dev` keeps that same contract and attaches one persistent profile to
+  each Goa'uld faction instance. The profile supplies relative `direct /
+  abduction / destruction` weights only after the existing eligibility checks.
 - Goa'uld demands and ultimatums are approved as a direction but need their own
   design and implementation milestone.
 - Rival-domain reports, territorial expansion and settlement destruction are
@@ -68,10 +71,25 @@ Open:
 Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
 ```
 
-`Show current progression` reports the current vanilla points, natural-doctrine
-weights and context, symbiote count, relay defender/reinforcement budgets and
-expected relay layout. The same menu can force controlled regression raids and,
-since `0.3.54-dev`, each eligible doctrine through the real natural worker.
+`Show current progression` reports the current vanilla points, the first active
+diagnostic domain, its persistent profile, effective natural-doctrine weights
+and context, symbiote count, relay defender/reinforcement budgets and expected
+relay layout. The same menu can force controlled regression raids and, since
+`0.3.54-dev`, each doctrine through the real natural worker.
+
+Since `0.3.64-dev`, exact per-domain profiles and base weights are available
+under:
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain doctrines...
+```
+
+Normal faction information exposes only the qualitative profile description.
+
+Final `0.3.64-dev` validation confirms the three persistent profiles, effective
+weights, French faction report, save/reload persistence and unchanged direct,
+abduction and destruction raid behavior on revision `r2`.
+
 
 ## Required in-game validation
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldDomainDoctrine_ReportText>Doctrine stratégique : {0}\n{1}</GR_GoauldDomainDoctrine_ReportText>
+    <GR_GoauldDomainDoctrine_AssignedMessage>{0} suit désormais la {1}.</GR_GoauldDomainDoctrine_AssignedMessage>
+    <GR_GoauldDomainDoctrine_Conquest_Label>doctrine de conquête</GR_GoauldDomainDoctrine_Conquest_Label>
+    <GR_GoauldDomainDoctrine_Conquest_Description>Ce domaine privilégie les assauts directs écrasants. L’enlèvement et les frappes destructrices restent possibles lorsque la colonie offre une occasion adaptée, mais la conquête militaire demeure sa réponse dominante à toute résistance.</GR_GoauldDomainDoctrine_Conquest_Description>
+    <GR_GoauldDomainDoctrine_Enslavement_Label>doctrine d’asservissement</GR_GoauldDomainDoctrine_Enslavement_Label>
+    <GR_GoauldDomainDoctrine_Enslavement_Description>Ce domaine recherche les captifs vivants et les hôtes utiles. Il privilégie l’enlèvement lorsque la colonie et les forces disponibles rendent la capture plausible, tout en conservant l’assaut direct comme solution de repli fiable.</GR_GoauldDomainDoctrine_Enslavement_Description>
+    <GR_GoauldDomainDoctrine_ScorchedEarth_Label>doctrine de la terre brûlée</GR_GoauldDomainDoctrine_ScorchedEarth_Label>
+    <GR_GoauldDomainDoctrine_ScorchedEarth_Description>Ce domaine préfère briser toute défiance en ruinant les infrastructures et les réserves. Les frappes destructrices sont privilégiées lorsque la colonie est assez développée pour constituer une cible valable, mais l’assaut direct reste disponible.</GR_GoauldDomainDoctrine_ScorchedEarth_Description>
+    <GR_GoauldDomainDoctrine_Unknown_Label>doctrine inconnue</GR_GoauldDomainDoctrine_Unknown_Label>
+    <GR_GoauldDomainDoctrine_Unknown_Description>Aucune description de doctrine n’est disponible.</GR_GoauldDomainDoctrine_Unknown_Description>
+</LanguageData>

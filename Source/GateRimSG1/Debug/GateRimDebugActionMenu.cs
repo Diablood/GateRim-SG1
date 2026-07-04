@@ -108,6 +108,25 @@ namespace GateRimSG1.Debugging
                         .ForceNaturalDestructionRaid,
                     70)));
             root.AddChild(MenuNode(
+                "Domain doctrines...",
+                275,
+                ActionNode(
+                    "Show domain doctrine report",
+                    GoauldDomainDoctrineDebugActions.ShowReport,
+                    400),
+                ActionNode(
+                    "Set doctrine: Conquest",
+                    GoauldDomainDoctrineDebugActions.SetConquest,
+                    300),
+                ActionNode(
+                    "Set doctrine: Enslavement",
+                    GoauldDomainDoctrineDebugActions.SetEnslavement,
+                    200),
+                ActionNode(
+                    "Set doctrine: Scorched earth",
+                    GoauldDomainDoctrineDebugActions.SetScorchedEarth,
+                    100)));
+            root.AddChild(MenuNode(
                 "Domain reactions...",
                 250,
                 ActionNode(

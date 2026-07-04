@@ -1,57 +1,58 @@
 # Changelog
 
+## 0.3.64-dev - Add persistent Goa'uld domain doctrine profiles
+
+- Start from the published documentation-consolidation tag `v0.3.63-dev` on
+  `feature/goauld-domain-doctrine-profiles`.
+- Add data-driven conquest `4/1/1`, enslavement `2/3/1` and scorched-earth
+  `2/1/3` profiles.
+- Persist one profile per Goa'uld faction instance across leader replacement
+  and save/reload.
+- Reconcile older saves and multiple domain instances.
+- Preserve the single natural raid incident, vanilla threat points, refire delay
+  and existing eligibility thresholds.
+- Modify only relative direct, abduction and destruction doctrine weights.
+- Add qualitative faction information, multi-domain diagnostics and targeted
+  developer setters.
+- Use explicit English/French keyed text for profile names and descriptions.
+- Add a repository `.gitattributes` line-ending policy.
+- Integrate the milestone into the consolidated documentation structure without
+  restoring any document removed by `0.3.63-dev`.
+- Remove the stale `Tokra-Interaction-Roadmap` sidebar link left by the first
+  corrected package; the page remains intentionally deleted.
+- Rebuild and validate final revision `r2`, including French localization,
+  save/reload persistence, the three raid regressions and a clean `Player.log`.
+- Pass the consolidated project-consistency check after removing the obsolete
+  sidebar link.
+- Publish `feature/goauld-domain-doctrine-profiles`, annotated tag
+  `v0.3.64-dev` and the synchronized separate wiki.
+
 ## 0.3.63-dev - Consolidate project documentation
 
-- Start from published tag `v0.3.62-dev` on
-  `feature/documentation-consolidation`.
-- Add `docs/README.md` as the authoritative map for handoff, backlog, ideas,
-  tests, history, technical references and player-wiki drafts.
-- Reduce `docs/ROADMAP.md` from a second milestone history to the current
-  documentation milestone, open backlog and durable future rules.
-- Remove the redundant technical content-status file, two obsolete roadmaps,
-  the stale translation-warning note and the partially implemented queen TODO
-  after transferring every still-relevant decision.
-- Remove the obsolete Tok'ra interaction-roadmap wiki page and its links from
-  the Tok'ra page and sidebar.
-- Preserve future System Lord rivalry safeguards and move the distinct
-  sarcophagus concept into the non-planned idea register.
-- Refresh the Goa'uld gameplay-direction document now that threat progression,
-  natural doctrines and the first extraction ultimatum are published.
-- Preserve detailed subsystem specifications and `docs/TESTING.md` for a later
-  evidence-based consolidation pass.
-- Update `AGENTS.md` to prefer existing subsystem documents and keep history,
-  backlog and speculative ideas in their designated files.
-- Extend the project-consistency checker to reject missing local Markdown link
-  targets after document or wiki-page removal.
+- Start from `v0.3.62-dev` on `feature/documentation-consolidation`.
+- Add `docs/README.md` as the authoritative documentation map.
+- Reduce the roadmap to active work and durable rules.
+- Transfer unresolved ideas before removing obsolete documents.
+- Remove the redundant root `docs/Content-Status.md` and obsolete Tok'ra roadmap.
+- Extend consistency checks for local Markdown targets.
 - Change no gameplay behavior, Def, translation or texture.
-- Validate final revision `r1`, then publish branch
-  `feature/documentation-consolidation`, annotated tag `v0.3.63-dev` and the
-  synchronized wiki with the obsolete Tok'ra roadmap page removed.
+- Validate and publish final revision `r1`, annotated tag `v0.3.63-dev` and the
+  synchronized wiki.
 
 ## 0.3.62-dev - Add Goa'uld healing device prototype
 
-- Start from published tag `v0.3.61-dev` on
-  `feature/goauld-healing-device`.
-- Add a Goa'uld healing bracelet as an independent medical item rather than a
-  new kara kesh mode.
-- Require persistent biological naquadah traces and an adjacent living
-  biological humanlike patient.
-- Stabilize all bleeding injuries at `80%` tending quality, heal up to `20`
-  total severity across four recent injuries and reduce blood loss by `0.15`.
-- Apply `12000` ticks of physical exhaustion and a persistent `30000`-tick
-  cooldown without consuming kara kesh shield energy.
-- Exclude permanent scars, missing parts, diseases, infections, cancers,
-  chronic conditions, addictions, death and multi-patient healing.
-- Equip generated System Lords once with the separate bracelet, restrict
-  hostile AI to serious self-treatment and raise `combatPower` to `625`.
-- Keep the device out of normal trade and require Goa'uld biotechnology plus
-  kara kesh reverse-engineering before local production.
-- Add English/French text, deterministic debug actions, a stable temporary
-  texture path, technical documentation, test checklists and wiki drafts.
-- Build local revision `r1` as assembly `0.3.62.0` with zero compile errors,
-  then validate the complete in-game checklist with no functional `r2` needed.
-- Publish branch `feature/goauld-healing-device`, annotated tag
-  `v0.3.62-dev` and the synchronized separate wiki.
+- Add `SG1_GoauldHealingBracelet` as a portable medical device separate from
+  the kara kesh.
+- Require biological naquadah traces and adjacency to a living humanlike
+  biological patient.
+- Stabilize all bleeding injuries, heal at most `20` severity across four
+  injuries and reduce blood loss by at most `0.15`.
+- Apply `12000` ticks of fatigue and a persistent `30000`-tick cooldown.
+- Reserve natural equipment to System Lords, add guarded hostile self-use and
+  raise their `combatPower` from `550` to `625`.
+- Add spacer research after Goa'uld biotechnology and kara kesh research.
+- Validate final local revision `r1`, publish branch, annotated tag
+  `v0.3.62-dev` and synchronized wiki.
 
 ## 0.3.61-dev - Add kara kesh paralysis hold
 

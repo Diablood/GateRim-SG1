@@ -1,8 +1,8 @@
 # Goa'uld gameplay direction
 
-Status: approved baseline. Threat progression, natural doctrines and the first
-extraction reprisal/ultimatum slices were published in `0.3.53-dev` through
-`0.3.56-dev`; domain differentiation and strategic rivalry remain future work.
+Status: approved baseline. Threat progression, natural doctrines, the first
+extraction ultimatum and persistent domain doctrine profiles are published;
+strategic rivalry remains future work.
 
 ## Purpose
 
@@ -11,8 +11,8 @@ act as discreet partners who contact the player, offer work and maintain a
 relationship of trust. The Goa'uld are hostile powers: they impose pressure,
 exploit weakness and react to interference.
 
-Future Goa'uld pressure systems should continue to follow this direction before
-adding a new incident, quest or world object.
+The next Goa'uld milestone must be selected from this direction before any new
+incident, quest or world object is implemented.
 
 ## Existing playable foundation
 
@@ -79,10 +79,10 @@ It must not rely on a hidden mission list presented as Goa'uld content.
 
 ## Ranked equipment direction
 
-Goa'uld authority is visible through rare equipment as well as titles and
-followers. The published kara kesh and separate healing bracelet establish the
-rule: each future hand device, control technology or rank-linked tool must
-offer distinct gameplay rather than extending one universal item.
+Goa'uld authority should eventually be visible through rare equipment as well
+as titles and followers. The first candidate is a personal System Lord shield,
+followed only after lore review by hand devices, control technology or other
+rank-linked tools that offer distinct gameplay.
 
 Lore accuracy does not justify unrestricted power. Every item must have a
 RimWorld-readable energy limit, recharge or cooldown, vulnerability and
@@ -102,7 +102,7 @@ reprisal, hostile mission site and settlement defense. Remove fixed early-game
 forces and unjustified ceilings, preserve deliberate encounter factors, and
 scale constructed defenses when a site contains an enemy installation.
 
-This slice was published in `0.3.53-dev`.
+This slice is assigned to `0.3.53-dev`.
 
 ### 2. Natural assault doctrines
 
@@ -116,7 +116,7 @@ This is the smallest candidate because most of its combat foundation already
 exists. It still requires an explicit design for frequency, eligibility,
 warning text, retreat behavior and storyteller weighting before activation.
 
-This slice was published in `0.3.54-dev`. It retains one low-frequency incident,
+This slice is assigned to `0.3.54-dev`. It retains one low-frequency incident,
 uses weights `2/1/1`, gates abduction on threat plus available colonists and
 gates destruction on threat plus building wealth.
 
@@ -133,12 +133,12 @@ Coercive demands and ultimatums are allowed when they fit the situation. They
 must remain understandable player choices with visible consequences, not
 disguised Tok'ra-style mission offers.
 
-The first reaction slice was published in `0.3.55-dev`: successful extraction of
+The first reaction slice is assigned to `0.3.55-dev`: successful extraction of
 an active Goa'uld provokes one announced, delayed raid from that exact domain.
 It validates attribution, persistence and anti-stacking before any tribute or
 ultimatum choice is designed.
 
-The first choice slice was published in `0.3.56-dev`. The offended domain gives
+The first choice slice is assigned to `0.3.56-dev`. The offended domain gives
 the colony one day to surrender the exact extracted symbiote. Compliance
 removes that pawn and averts the attack; refusal or expiration schedules the
 validated delayed reprisal. This deliberately avoids an arbitrary silver
@@ -151,9 +151,17 @@ creates the reprisal directly because no living symbiote remains to surrender.
 
 Give multiple Goa'uld domains meaningful behavioral distinctions only after a
 shared pressure loop is stable. Names and icon color variation already make
-them visually distinct; future doctrine weights or strategic preferences may
-make them mechanically distinct without hard-coding one implementation per
-System Lord.
+them visually distinct; doctrine weights or strategic preferences can make
+them mechanically distinct without hard-coding one implementation per System
+Lord.
+
+The first differentiation slice was published in `0.3.64-dev`. Each faction
+instance receives one persistent data-driven profile: conquest, enslavement or
+scorched earth. The profile changes only the relative weights of the three
+already validated natural assault doctrines. Incident frequency, vanilla
+threat points, contextual thresholds and direct-assault fallback remain
+unchanged. The faction is the persistent key, so leader replacement never
+rerolls the doctrine.
 
 ### 5. Strategic world presence
 
@@ -175,6 +183,9 @@ active.
 - Goa'uld demands and ultimatums are an accepted future interaction type.
 - Rival domains may conflict through RP information, territorial expansion and
   settlement destruction once anti-collapse safeguards are designed.
+- Domain doctrine profiles are assigned to faction instances, not named leaders,
+  and may modify only existing doctrine weights until a later milestone
+  explicitly extends their consequences.
 - Goa'uld equipment may be expanded through lore-audited, rank-limited items;
   the kara kesh personal-shield mode is the first candidate, not a promise of
   permanent invulnerability.

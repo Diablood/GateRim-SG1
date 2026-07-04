@@ -1,22 +1,33 @@
 # Testing checklist
 
+## 0.3.64-dev - Persistent Goa'uld domain doctrine profiles
+
+Révision finale `r2` validée et publiée depuis `v0.3.63-dev`.
+Couverture durable :
+
+- attribuer et sérialiser un profil par instance de faction Goa'uld ;
+- conserver le profil lors d'un remplacement de dirigeant ;
+- vérifier les poids `4/1/1`, `2/3/1` et `2/1/3` ;
+- conserver l'assaut direct et annuler les poids spécialisés inéligibles ;
+- ne modifier ni fréquence, ni délai, ni points de menace ;
+- préserver une faction explicitement fournie ;
+- distinguer plusieurs domaines ;
+- afficher seulement le texte qualitatif dans l'interface normale ;
+- traduire explicitement les trois profils en français ;
+- sauvegarder/recharger sans réattribution ;
+- vérifier les trois raids forcés et `Player.log`.
+
 ## 0.3.63-dev - Documentation consolidation
 
-Couverture documentaire prévue pour la révision locale `r1` :
+Révision finale `r1` validée et publiée. Couverture durable :
 
 - conserver une source autoritative pour état, backlog, idées, historique,
   tests courants, tests durables et wiki ;
-- vérifier que la roadmap ne duplique plus les checklists publiées ;
-- transférer les décisions encore ouvertes avant chaque suppression ;
-- valider tous les liens Markdown locaux après suppression ou renommage ;
-- vérifier la navigation wiki et prévoir les suppressions explicites dans le
-  dépôt séparé ;
-- confirmer l'absence de suppression de Def, traduction ou texture ;
-- exécuter le contrôle de cohérence, `git diff --check` et le rebuild de la
-  version documentaire.
-
-La consolidation de ce fichier et des spécifications détaillées reste hors du
-périmètre afin de préserver les contrats de régression jusqu'à un audit dédié.
+- éviter que la roadmap duplique l'historique publié ;
+- transférer les décisions actives avant suppression ;
+- valider les liens Markdown et la navigation wiki ;
+- ne pas restaurer `docs/Content-Status.md` à la racine ;
+- préférer les documents de sous-système existants aux fiches de micro-jalon.
 
 ## 0.3.62-dev - Goa'uld healing bracelet
 
@@ -26,26 +37,16 @@ Révision locale finale `r1` validée en jeu. Couverture durable :
 - limiter la cible à un humanoïde biologique vivant adjacent et visible ;
 - stabiliser toutes les blessures qui saignent avec une qualité de soin de
   `80 %`, puis guérir au maximum `20` points sur quatre blessures récentes ;
-- réduire `BloodLoss` de `0.15` au maximum sans restaurer cicatrice permanente,
-  partie manquante, maladie, infection, cancer, affection chronique ou mort ;
-- appliquer `12000` ticks de fatigue et un cooldown sérialisé de `30000` ticks ;
-- sauvegarder/recharger et confirmer la persistance de ces deux états ;
-- vérifier l'auto-soin unique d'un Grand Maître hostile gravement blessé ou
-  saignant, sans boucle ni soin autonome banal ;
-- vérifier l'attribution unique aux Grands Maîtres, l'absence des marchands et
-  les deux prérequis de recherche de la fabrication locale ;
-- confirmer que le kara kesh ne reçoit aucune fonction, commande ou dépense
-  d'énergie médicale ;
-- inspecter `Player.log` pour les erreurs XML, Def, apparel, Hediff, Scribe,
-  ciblage et C#.
-
-Le mainteneur a confirmé le test obligatoire complet après le rebuild forcé
-`0.3.62.0`. Aucun correctif fonctionnel `r2` n'est requis.
+- réduire la perte de sang existante de `0.15` au maximum ;
+- appliquer `12000` ticks de fatigue et `30000` ticks de cooldown persistant ;
+- exclure cicatrices permanentes, parties manquantes, maladies, infections,
+  cancers, affections chroniques, addictions, mort et soins multiples ;
+- limiter l'IA hostile à un auto-soin sérieux unique sans boucle ;
+- vérifier recherche, équipement naturel, sauvegarde/recharge et `Player.log`.
 
 ## 0.3.61-dev - Kara kesh paralysis hold
 
-Validation locale terminée sur la révision finale `r1`, sans correctif
-fonctionnel supplémentaire. Couverture durable :
+Validation en attente sur la révision locale `r1`. Couverture durable prévue :
 
 - cibler uniquement un humanoïde biologique hostile, conscient, non déjà
   maintenu, dans `6.9` cases et en ligne de vue ;
@@ -67,11 +68,8 @@ fonctionnel supplémentaire. Couverture durable :
   derrière un mur ou déjà maintenue ;
 - inspecter `Player.log` pour les erreurs XML, Def, Hediff, Scribe, ciblage et C#.
 
-Le rebuild forcé `0.3.61.0`, le ciblage joueur, les capacités réduites,
-l'énergie commune, les interruptions, la priorité IA, la sauvegarde/recharge,
-le relâchement manuel et `Player.log` ont été validés par le mainteneur. Les
-autres fonctions exploratoires du kara kesh restent hors roadmap active dans
-`docs/IDEAS_TO_REVISIT.md`.
+Les autres fonctions exploratoires du kara kesh restent hors roadmap active
+dans `docs/IDEAS_TO_REVISIT.md`.
 
 ## 0.3.58-dev - Persistent biological naquadah traces
 
@@ -2334,8 +2332,8 @@ sans ancien champ de migration ni double création.
 À exécuter après toute passe globale de traduction ou de réorganisation du
 wiki :
 
-1. Ouvrir `docs/wiki/Home.md`, `Content-Status.md`, les pages de sous-système
-   modifiées, `_Sidebar.md` et `_Footer.md`.
+1. Ouvrir `docs/wiki/Home.md`, `Content-Status.md`,
+   `Tokra-Interaction-Roadmap.md`, `_Sidebar.md` et `_Footer.md`.
 2. Vérifier que les versions, états et directions de développement correspondent
    à `docs/PROJECT_STATE.md`.
 3. Vérifier que `Liens utiles` ne contient que des liens ou références et que
@@ -3655,7 +3653,7 @@ Execution category: **Continuous session**.
    on the colonist.
 4. Confirm the report shows a persistent trace, active shield, exactly `4.00`
    energy and `cooldownTicks=0`.
-5. Run `Spawn hostile System Lord with rank equipment`, pause immediately, run
+5. Run `Spawn hostile System Lord with kara kesh`, pause immediately, run
    `Prepare kinetic blast test state` on the hostile Grand Master, and keep both
    pawns within `10.9` cells with clear line of sight.
 6. Select the colonist, click `Kinetic blast` / `Onde cinétique`, then click the
@@ -3804,7 +3802,7 @@ Execution category: **Continuous session**.
    on the colonist.
 5. Confirm the report shows a persistent trace, active shield, exactly `4.00`
    energy and `cooldownTicks=0`.
-6. Run `Spawn hostile System Lord with rank equipment` and keep both pawns within
+6. Run `Spawn hostile System Lord with kara kesh` and keep both pawns within
    `8.9` cells with clear line of sight.
 7. Select the colonist, click `Neural attack` / `Attaque neurale`, then click
    the hostile Grand Master.

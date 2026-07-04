@@ -1,3 +1,4 @@
+using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -35,10 +36,10 @@ namespace GateRimSG1.Goauld
     /// <summary>
     /// Low-frequency natural Goa'uld Jaffa raid.
     ///
-    /// One storyteller incident selects a doctrine from vanilla threat points
-    /// and readable colony context. Keeping one IncidentDef preserves the
-    /// original frequency and refire delay instead of giving every doctrine
-    /// its own independent incident roll.
+    /// One storyteller incident selects a doctrine from vanilla threat points,
+    /// readable colony context and the attacking domain's persistent strategic
+    /// profile. Keeping one IncidentDef preserves the original frequency and
+    /// refire delay instead of giving every doctrine an independent roll.
     /// </summary>
     public class IncidentWorker_GoauldJaffaNaturalRaid
         : IncidentWorker_GoauldJaffaControlledRaid
@@ -48,9 +49,9 @@ namespace GateRimSG1.Goauld
         public const float DestructionMinimumPoints = 1800f;
         public const float DestructionMinimumBuildingWealth = 10000f;
 
-        private const float DirectWeight = 2f;
-        private const float AbductionWeight = 1f;
-        private const float DestructionWeight = 1f;
+        private const float FallbackDirectWeight = 2f;
+        private const float FallbackAbductionWeight = 1f;
+        private const float FallbackDestructionWeight = 1f;
 
         private GoauldJaffaRaidDoctrine? forcedDebugDoctrine;
 
@@ -82,7 +83,10 @@ namespace GateRimSG1.Goauld
             Map map = parms.target as Map;
             GoauldJaffaRaidDoctrine doctrine = forcedDebugDoctrine
                 ?? SelectDoctrine(
-                    CalculateDoctrineWeights(map, parms.points));
+                    CalculateDoctrineWeights(
+                        map,
+                        parms.points,
+                        parms.faction));
 
             parms.canSteal = false;
 
@@ -103,7 +107,8 @@ namespace GateRimSG1.Goauld
                     break;
 
                 default:
-                    parms.raidStrategy = RaidStrategyDefOf.ImmediateAttack;
+                    parms.raidStrategy =
+                        RaidStrategyDefOf.ImmediateAttack;
                     parms.canKidnap = false;
                     parms.canTimeoutOrFlee = true;
                     break;
@@ -113,17 +118,50 @@ namespace GateRimSG1.Goauld
         protected override bool CanFireNowSub(IncidentParms parms)
         {
             return base.CanFireNowSub(parms)
-                && Find.FactionManager?.FirstFactionOfDef(
-                    GR_DefOf.SG1_GoauldSystemLordPrototype) != null;
+                && GoauldSystemLordFactionUtility
+                    .GetAllFactions()
+                    .Count > 0;
+        }
+
+        protected override bool TryExecuteWorker(IncidentParms parms)
+        {
+            if (parms != null
+                && !GoauldSystemLordFactionUtility
+                    .IsSystemLordFaction(parms.faction))
+            {
+                parms.faction =
+                    GoauldSystemLordFactionUtility
+                        .SelectRandomActiveFaction();
+            }
+
+            return base.TryExecuteWorker(parms);
         }
 
         public static GoauldJaffaRaidDoctrineWeights
             CalculateDoctrineWeights(Map map, float points)
         {
+            Faction faction = GoauldSystemLordFactionUtility
+                .GetAllFactions()
+                .FirstOrDefault();
+
+            return CalculateDoctrineWeights(
+                map,
+                points,
+                faction);
+        }
+
+        public static GoauldJaffaRaidDoctrineWeights
+            CalculateDoctrineWeights(
+                Map map,
+                float points,
+                Faction faction)
+        {
+            GoauldJaffaRaidDoctrineWeights baseWeights =
+                ResolveBaseWeights(faction);
             GoauldJaffaRaidDoctrineWeights weights =
                 new GoauldJaffaRaidDoctrineWeights
                 {
-                    direct = DirectWeight
+                    direct = baseWeights.direct
                 };
 
             if (map == null)
@@ -135,14 +173,14 @@ namespace GateRimSG1.Goauld
                 && map.mapPawns.FreeColonistsSpawnedCount
                     >= AbductionMinimumColonists)
             {
-                weights.abduction = AbductionWeight;
+                weights.abduction = baseWeights.abduction;
             }
 
             if (points >= DestructionMinimumPoints
                 && map.wealthWatcher.WealthBuildings
                     >= DestructionMinimumBuildingWealth)
             {
-                weights.destruction = DestructionWeight;
+                weights.destruction = baseWeights.destruction;
             }
 
             return weights;
@@ -166,9 +204,37 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        private static GoauldJaffaRaidDoctrineWeights
+            ResolveBaseWeights(Faction faction)
+        {
+            GameComponent_GoauldDomainDoctrineTracker tracker =
+                GameComponent_GoauldDomainDoctrineTracker.Current;
+
+            if (tracker != null
+                && tracker.TryGetProfile(
+                    faction,
+                    out GoauldDomainDoctrineProfileDef profile)
+                && profile != null)
+            {
+                return profile.BaseWeights;
+            }
+
+            return new GoauldJaffaRaidDoctrineWeights
+            {
+                direct = FallbackDirectWeight,
+                abduction = FallbackAbductionWeight,
+                destruction = FallbackDestructionWeight
+            };
+        }
+
         private static GoauldJaffaRaidDoctrine SelectDoctrine(
             GoauldJaffaRaidDoctrineWeights weights)
         {
+            if (weights.Total <= 0f)
+            {
+                return GoauldJaffaRaidDoctrine.Direct;
+            }
+
             float roll = Rand.Value * weights.Total;
 
             if (roll < weights.destruction)

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <GateRimSG1.Goauld.GoauldDomainDoctrineProfileDef>
+        <defName>SG1_GoauldDomainDoctrine_Conquest</defName>
+        <label>conquest doctrine</label>
+        <description>This domain favors overwhelming direct assaults. Abduction and destructive strikes remain possible when the colony presents a suitable opportunity, but military conquest is its dominant answer to resistance.</description>
+        <directWeight>4</directWeight>
+        <abductionWeight>1</abductionWeight>
+        <destructionWeight>1</destructionWeight>
+    </GateRimSG1.Goauld.GoauldDomainDoctrineProfileDef>
+
+    <GateRimSG1.Goauld.GoauldDomainDoctrineProfileDef>
+        <defName>SG1_GoauldDomainDoctrine_Enslavement</defName>
+        <label>enslavement doctrine</label>
+        <description>This domain prizes living captives and useful hosts. It favors abduction when the colony and available forces make capture plausible, while retaining direct assault as a dependable fallback.</description>
+        <directWeight>2</directWeight>
+        <abductionWeight>3</abductionWeight>
+        <destructionWeight>1</destructionWeight>
+    </GateRimSG1.Goauld.GoauldDomainDoctrineProfileDef>
+
+    <GateRimSG1.Goauld.GoauldDomainDoctrineProfileDef>
+        <defName>SG1_GoauldDomainDoctrine_ScorchedEarth</defName>
+        <label>scorched-earth doctrine</label>
+        <description>This domain prefers to break defiance by ruining infrastructure and supplies. Destructive strikes are favored when the colony is developed enough to present a worthwhile target, but direct assault remains available.</description>
+        <directWeight>2</directWeight>
+        <abductionWeight>1</abductionWeight>
+        <destructionWeight>3</destructionWeight>
+    </GateRimSG1.Goauld.GoauldDomainDoctrineProfileDef>
+</Defs>

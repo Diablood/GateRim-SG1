@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.63-dev`
+- Development version: `0.3.64-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -54,6 +54,11 @@ people, factions, technologies, biology and conflicts surrounding it.
 - Goa'uld raids, intercepted threats and hostile mission sites that consume
   RimWorld's vanilla threat progression; relay installations grow from a
   bunker into larger fortified layouts as the defender budget increases.
+- Persistent strategic doctrines differentiate each Goa'uld domain: conquest
+  favors direct assault, enslavement favors living captives and scorched earth
+  favors destructive strikes. The preference belongs to the faction, survives
+  leader replacement and changes only the relative choice between the three
+  existing natural raid doctrines.
 - Persistent Goa'uld and Tok'ra symbiote identities, implantation, extraction
   and player-controlled Tok'ra host/symbiote personality switching. Emergency
   extraction before conversion preserves the host and the symbiote's original

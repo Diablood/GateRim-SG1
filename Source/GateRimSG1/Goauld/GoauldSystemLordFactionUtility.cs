@@ -1,17 +1,45 @@
+using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Shared helper for the Goa'uld System Lord world-faction instance.
+    /// Shared helper for Goa'uld System Lord world-faction instances.
     ///
-    /// New worlds generate one visible faction normally. Controlled developer
-    /// incidents still retain a lazy runtime fallback for older saves or
-    /// isolated regression tests that do not yet contain the world faction.
+    /// New worlds normally generate one visible domain. The utility also
+    /// supports worlds configured with several instances and keeps the lazy
+    /// runtime fallback used by older saves and isolated developer tests.
     /// </summary>
     internal static class GoauldSystemLordFactionUtility
     {
+        public static List<Faction> GetAllFactions(
+            bool includeDefeated = false)
+        {
+            if (Find.FactionManager?.AllFactionsListForReading == null
+                || GR_DefOf.SG1_GoauldSystemLordPrototype == null)
+            {
+                return new List<Faction>();
+            }
+
+            return Find.FactionManager.AllFactionsListForReading
+                .Where(faction =>
+                    IsSystemLordFaction(faction)
+                    && (includeDefeated || !faction.defeated))
+                .OrderBy(faction => faction.loadID)
+                .ToList();
+        }
+
+        public static Faction SelectRandomActiveFaction()
+        {
+            List<Faction> factions = GetAllFactions();
+
+            return factions.Count == 0
+                ? null
+                : factions.RandomElement();
+        }
+
         public static Faction GetOrCreateFaction(string purpose)
         {
             if (GR_DefOf.SG1_GoauldSystemLordPrototype == null
@@ -20,8 +48,10 @@ namespace GateRimSG1.Goauld
                 return null;
             }
 
-            Faction existingFaction = Find.FactionManager.FirstFactionOfDef(
-                GR_DefOf.SG1_GoauldSystemLordPrototype);
+            Faction existingFaction = GetAllFactions()
+                .FirstOrDefault()
+                ?? GetAllFactions(includeDefeated: true)
+                    .FirstOrDefault();
 
             if (existingFaction != null)
             {
@@ -37,6 +67,9 @@ namespace GateRimSG1.Goauld
 
             Find.FactionManager.Add(createdFaction);
             RefreshAttackTargetCaches(createdFaction);
+
+            GameComponent_GoauldDomainDoctrineTracker.Current
+                ?.GetOrAssignProfile(createdFaction);
 
             return createdFaction;
         }
@@ -60,7 +93,8 @@ namespace GateRimSG1.Goauld
                 && faction.def == GR_DefOf.SG1_GoauldSystemLordPrototype;
         }
 
-        private static void RefreshAttackTargetCaches(Faction goauldFaction)
+        private static void RefreshAttackTargetCaches(
+            Faction goauldFaction)
         {
             if (goauldFaction == null
                 || Find.FactionManager == null
@@ -79,20 +113,25 @@ namespace GateRimSG1.Goauld
                 }
 
                 for (int factionIndex = 0;
-                    factionIndex < Find.FactionManager.AllFactionsListForReading.Count;
+                    factionIndex
+                        < Find.FactionManager
+                            .AllFactionsListForReading.Count;
                     factionIndex++)
                 {
                     Faction otherFaction =
-                        Find.FactionManager.AllFactionsListForReading[factionIndex];
+                        Find.FactionManager
+                            .AllFactionsListForReading[factionIndex];
 
-                    if (otherFaction == null || otherFaction == goauldFaction)
+                    if (otherFaction == null
+                        || otherFaction == goauldFaction)
                     {
                         continue;
                     }
 
-                    map.attackTargetsCache.Notify_FactionHostilityChanged(
-                        goauldFaction,
-                        otherFaction);
+                    map.attackTargetsCache
+                        .Notify_FactionHostilityChanged(
+                            goauldFaction,
+                            otherFaction);
                 }
             }
         }

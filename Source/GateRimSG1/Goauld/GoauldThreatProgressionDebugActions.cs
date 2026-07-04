@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -29,15 +30,43 @@ namespace GateRimSG1.Goauld
                 .CalculateJaffaCount(relayReinforcementPoints, 1);
             int symbiotes = IncidentWorker_GoauldFreeSymbioteIncursion
                 .CalculateSymbioteCount(points);
+
+            List<Faction> domains =
+                GoauldSystemLordFactionUtility.GetAllFactions();
+            Faction diagnosticDomain = domains.Count > 0
+                ? domains[0]
+                : null;
+            GoauldDomainDoctrineProfileDef profile = null;
+
+            GameComponent_GoauldDomainDoctrineTracker tracker =
+                GameComponent_GoauldDomainDoctrineTracker.Current;
+
+            if (tracker != null)
+            {
+                tracker.TryGetProfile(diagnosticDomain, out profile);
+            }
+
             GoauldJaffaRaidDoctrineWeights doctrineWeights =
                 IncidentWorker_GoauldJaffaNaturalRaid
-                    .CalculateDoctrineWeights(map, points);
+                    .CalculateDoctrineWeights(
+                        map,
+                        points,
+                        diagnosticDomain);
 
             Dialog_MessageBox dialog = new Dialog_MessageBox(
                 "Goa'uld threat progression audit\n\n"
                 + $"Vanilla storyteller points: {points:0}\n"
                 + "Natural and intercepted raid points: "
                 + $"{points:0}\n"
+                + "Diagnostic domain: "
+                + (diagnosticDomain?.Name ?? "<none>")
+                + "\n"
+                + "Domain doctrine: "
+                + (profile == null
+                    ? "<fallback 2/1/1>"
+                    : GoauldDomainDoctrineProfileUtility
+                        .GetDisplayLabel(profile))
+                + "\n"
                 + "Natural raid doctrines: "
                 + FormatDoctrineWeights(doctrineWeights)
                 + "\n"

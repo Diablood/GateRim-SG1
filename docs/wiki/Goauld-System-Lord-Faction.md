@@ -44,6 +44,21 @@ un nombre limité de colonies visibles
 Le joueur peut ajouter manuellement plusieurs factions Goa'uld s'il souhaite
 représenter séparément plusieurs domaines de Grands Maîtres.
 
+## Doctrine stratégique
+
+Depuis `0.3.64-dev`, chaque faction Goa'uld reçoit une
+[doctrine stratégique persistante](Goauld-Domain-Doctrines) :
+
+- conquête ;
+- asservissement ;
+- terre brûlée.
+
+Cette préférence appartient au domaine, pas à son Grand Maître actuel. Elle
+reste donc identique si le dirigeant est remplacé. Elle ne rend pas les raids
+plus fréquents ou plus puissants : elle modifie seulement la préférence entre
+assaut direct, enlèvement et destruction lorsque ces doctrines sont déjà
+admissibles.
+
 La présence mondiale utilise volontairement un poids de génération de colonies
 réduit. Les Goa'uld sont visibles sans saturer la carte. Les nouvelles colonies
 utilisent également des noms dédiés, avec des formes comme `Temple du trône

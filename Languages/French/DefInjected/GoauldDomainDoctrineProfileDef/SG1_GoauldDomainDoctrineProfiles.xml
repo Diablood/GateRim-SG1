@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_GoauldDomainDoctrine_Conquest.label>doctrine de conquête</SG1_GoauldDomainDoctrine_Conquest.label>
+    <SG1_GoauldDomainDoctrine_Conquest.description>Ce domaine privilégie les assauts directs écrasants. L’enlèvement et les frappes destructrices restent possibles lorsque la colonie offre une occasion adaptée, mais la conquête militaire demeure sa réponse dominante à toute résistance.</SG1_GoauldDomainDoctrine_Conquest.description>
+
+    <SG1_GoauldDomainDoctrine_Enslavement.label>doctrine d’asservissement</SG1_GoauldDomainDoctrine_Enslavement.label>
+    <SG1_GoauldDomainDoctrine_Enslavement.description>Ce domaine recherche les captifs vivants et les hôtes utiles. Il privilégie l’enlèvement lorsque la colonie et les forces disponibles rendent la capture plausible, tout en conservant l’assaut direct comme solution de repli fiable.</SG1_GoauldDomainDoctrine_Enslavement.description>
+
+    <SG1_GoauldDomainDoctrine_ScorchedEarth.label>doctrine de la terre brûlée</SG1_GoauldDomainDoctrine_ScorchedEarth.label>
+    <SG1_GoauldDomainDoctrine_ScorchedEarth.description>Ce domaine préfère briser toute défiance en ruinant les infrastructures et les réserves. Les frappes destructrices sont privilégiées lorsque la colonie est assez développée pour constituer une cible valable, mais l’assaut direct reste disponible.</SG1_GoauldDomainDoctrine_ScorchedEarth.description>
+</LanguageData>

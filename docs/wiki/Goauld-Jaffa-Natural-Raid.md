@@ -15,16 +15,24 @@ la difficulté et le storyteller actif.
 
 ## Doctrines possibles
 
-| Doctrine | Condition | Part lorsque toutes sont disponibles |
-| --- | --- | ---: |
-| Assaut direct | toujours | `50%` |
-| Enlèvement | au moins `800` points et 2 colons libres | `25%` |
-| Destruction | au moins `1800` points et `10 000` de richesse bâtie | `25%` |
+| Doctrine | Condition |
+| --- | --- |
+| Assaut direct | toujours |
+| Enlèvement | au moins `800` points et 2 colons libres |
+| Destruction | au moins `1800` points et `10 000` de richesse bâtie |
 
-Quand une doctrine spécialisée n'est pas disponible, sa part revient au tirage
-entre les doctrines restantes. Les premiers raids sont donc toujours directs.
-Avec seulement l'enlèvement disponible, le tirage est environ `67%` direct et
-`33%` enlèvement.
+Depuis `0.3.64-dev`, chaque domaine possède une préférence persistante :
+
+| Profil du domaine | Direct | Enlèvement | Destruction |
+| --- | ---: | ---: | ---: |
+| Conquête | `4` | `1` | `1` |
+| Asservissement | `2` | `3` | `1` |
+| Terre brûlée | `2` | `1` | `3` |
+
+Ces valeurs sont des poids relatifs, pas des chances fixes. Lorsqu'une doctrine
+spécialisée n'est pas admissible, son poids devient nul. L'assaut direct reste
+toujours disponible et sert donc de solution de repli. La préférence ne change
+ni la fréquence des raids, ni leurs points de menace.
 
 L'assaut direct cherche à vaincre la colonie. La doctrine d'enlèvement tente
 d'évacuer les colons tombés à terre avant de se replier. La doctrine de
@@ -34,5 +42,6 @@ survivants peuvent récupérer captifs ou objets de valeur avant leur départ.
 Les armes et équipements portés par les Jaffa vaincus peuvent devenir une
 source naturelle de matériel Goa'uld, notamment les bâtons Ma'Tok.
 
-Consulte aussi [Domaine des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
+Consulte aussi [Domaine des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction),
+[Doctrines des domaines Goa'uld](Goauld-Domain-Doctrines)
 et [Progression des menaces Goa'uld](Goauld-Threat-Progression).

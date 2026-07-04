@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldDomainDoctrine_ReportText>Strategic doctrine: {0}\n{1}</GR_GoauldDomainDoctrine_ReportText>
+    <GR_GoauldDomainDoctrine_AssignedMessage>{0} now follows the {1}.</GR_GoauldDomainDoctrine_AssignedMessage>
+    <GR_GoauldDomainDoctrine_Conquest_Label>conquest doctrine</GR_GoauldDomainDoctrine_Conquest_Label>
+    <GR_GoauldDomainDoctrine_Conquest_Description>This domain favors overwhelming direct assaults. Abduction and destructive strikes remain possible when the colony presents a suitable opportunity, but military conquest is its dominant answer to resistance.</GR_GoauldDomainDoctrine_Conquest_Description>
+    <GR_GoauldDomainDoctrine_Enslavement_Label>enslavement doctrine</GR_GoauldDomainDoctrine_Enslavement_Label>
+    <GR_GoauldDomainDoctrine_Enslavement_Description>This domain prizes living captives and useful hosts. It favors abduction when the colony and available forces make capture plausible, while retaining direct assault as a dependable fallback.</GR_GoauldDomainDoctrine_Enslavement_Description>
+    <GR_GoauldDomainDoctrine_ScorchedEarth_Label>scorched-earth doctrine</GR_GoauldDomainDoctrine_ScorchedEarth_Label>
+    <GR_GoauldDomainDoctrine_ScorchedEarth_Description>This domain prefers to break defiance by ruining infrastructure and supplies. Destructive strikes are favored when the colony is developed enough to present a worthwhile target, but direct assault remains available.</GR_GoauldDomainDoctrine_ScorchedEarth_Description>
+    <GR_GoauldDomainDoctrine_Unknown_Label>unknown doctrine</GR_GoauldDomainDoctrine_Unknown_Label>
+    <GR_GoauldDomainDoctrine_Unknown_Description>No doctrine description is available.</GR_GoauldDomainDoctrine_Unknown_Description>
+</LanguageData>

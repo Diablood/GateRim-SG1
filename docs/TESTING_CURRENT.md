@@ -1,47 +1,103 @@
-# Validation documentaire - 0.3.63-dev
+# Validation locale - 0.3.64-dev
 
-Jalon : `0.3.63-dev - Consolidate project documentation`
+Jalon : `0.3.64-dev - Add persistent Goa'uld domain doctrine profiles`
 
-Branche : `feature/documentation-consolidation`
+Branche : `feature/goauld-domain-doctrine-profiles`
 
-Base : `v0.3.62-dev`
+Base : `v0.3.63-dev`
 
-Version de DLL validée : `0.3.63.0`
+Version de DLL validée : `0.3.64.0`
 
-Révision locale : `r1`
+Révision locale : `r2`
 
-Statut : révision finale `r1` validée, puis branche, tag annoté
-`v0.3.63-dev` et wiki séparé publiés.
+Statut : révision finale `r2` reconstruite et validée ; branche, tag annoté
+`v0.3.64-dev` et wiki séparé publiés.
 
-## Test obligatoire court
+Charger dans cet ordre :
 
-1. Vérifier dans `docs/README.md` qu'une source autoritative distincte existe
-   pour l'état courant, le backlog, les idées, l'historique, les tests et le
-   wiki.
-2. Vérifier que `docs/ROADMAP.md` contient le jalon `0.3.63-dev`, les travaux
-   ouverts et les règles durables, sans les checklists des anciennes versions.
-3. Vérifier dans `docs/IDEAS_TO_REVISIT.md` la conservation des pistes sur les
-   reines Goa'uld et les réactions Tok'ra selon les cultures.
-4. Vérifier l'absence de `Tokra-Interaction-Roadmap` dans `docs/wiki/Tokra.md`
-   et `docs/wiki/_Sidebar.md`.
-5. Confirmer les six suppressions listées dans `docs/PROJECT_STATE.md` et
-   l'absence de suppression de Def, traduction ou texture.
-6. Contrôler la réussite du rebuild `0.3.63.0`, du contrôle de cohérence, de
-   l'audit des liens Markdown et de `git diff --check`.
+```text
+Core
+Harmony
+Biotech
+GateRim SG-1
+```
 
-## Limites
 
-`docs/TESTING.md` et les fiches techniques par sous-système sont conservés sans
-fusion dans cette première passe. Aucun comportement de jeu n'est modifié et
-aucun test RimWorld n'est requis.
+## Correctif r2
+
+Le premier paquet corrigé contenait encore dans `docs/wiki/_Sidebar.md` le lien
+supprimé par le jalon de consolidation :
+
+```text
+Tokra-Interaction-Roadmap
+```
+
+`r2` retire uniquement cette entrée de navigation. Le contrôle suivant a été
+validé sans cible Markdown manquante :
+
+```powershell
+.\tools\check-project-consistency.cmd `
+    -ExpectedVersion 0.3.64-dev `
+    -ExpectedBackstoryCount 83
+```
+
+## Test obligatoire validé
+
+1. Ouvrir exactement :
+
+   ```text
+   Actions de débogage > GateRim SG-1 > Goa'uld... > Domain doctrines...
+   ```
+
+2. Lancer `Show domain doctrine report`.
+3. Appliquer successivement au même domaine :
+   - `Set doctrine: Conquest` : `4/1/1` ;
+   - `Set doctrine: Enslavement` : `2/3/1` ;
+   - `Set doctrine: Scorched earth` : `2/1/3`.
+4. Ouvrir la fiche normale de la faction et vérifier que le nom et la
+   description de la doctrine sont entièrement français, sans poids numériques.
+5. Sauvegarder, recharger et vérifier que le profil du même domaine est conservé.
+6. Ouvrir exactement :
+
+   ```text
+   Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
+   > Show current progression
+   ```
+
+   Vérifier le domaine, son profil, les pourcentages effectifs et les seuils
+   historiques inchangés.
+7. Lancer les trois commandes de raid naturel forcé et confirmer leurs
+   comportements direct, enlèvement et destruction.
+8. Contrôler `Player.log`.
+
+## Tests optionnels
+
+- plusieurs domaines : profils indépendants ;
+- remplacement du dirigeant : aucune réattribution ;
+- doctrine spécialisée inéligible : poids effectif nul ;
+- aucune modification de fréquence, points de menace ou délai de récidive ;
+- aucune régression des représailles, opérations Tok'ra, kara kesh ou bracelet
+  de guérison.
+
+## Normalisation Git
+
+Après extraction, appliquer une seule fois dans ce dépôt :
+
+```powershell
+git config --local core.autocrlf false
+git add --renormalize .
+git restore --staged .
+```
+
+Le `.gitattributes` versionné reste ensuite la source de vérité des fins de
+ligne.
 
 ## Résultat
 
-Le rebuild forcé `0.3.63.0`, le contrôle de cohérence, les `275` liens Markdown
-locaux, les `118` cibles de la sidebar, les six suppressions documentaires et
-l'absence de suppression de contenu de jeu sont validés localement.
+Le mainteneur confirme le rebuild forcé `0.3.64.0`, les trois profils et leurs
+poids, la traduction française, la sauvegarde/recharge, les raids de régression
+et `Player.log`.
 
-Le mainteneur a approuvé la structure consolidée et les six suppressions. La
-branche `feature/documentation-consolidation`, le tag annoté `v0.3.63-dev` et
-le wiki séparé, avec suppression de `Tokra-Interaction-Roadmap.md`, ont ensuite
-été publiés.
+Le contrôle de cohérence est également validé après la correction `r2` du lien
+wiki obsolète. La branche `feature/goauld-domain-doctrine-profiles`, le tag
+annoté `v0.3.64-dev` et le wiki séparé sont publiés.
