@@ -1,69 +1,56 @@
-# Current project state
+# Project state
 
-Current milestone: `0.3.61-dev - Add kara kesh paralysis hold` - validated and
-published after local revision `r1`.
+Current milestone: `0.3.62-dev - Add Goa'uld healing device prototype` -
+validated and published from final local revision `r1`.
 
 ## Repository state
 
-- Starting tag: `v0.3.60-dev`.
-- Active branch: `feature/kara-kesh-paralysis-hold`.
-- Published branch: `feature/kara-kesh-paralysis-hold`.
-- Last published version: `0.3.61-dev`.
-- Last published tag: `v0.3.61-dev`.
-- Technical assembly version: `0.3.61.0`.
-- Final local revision: `r1`.
-- Publication status: validated, committed, tagged and published; the separate
-  wiki is synchronized.
-- Next milestone: not selected. It must start from `v0.3.61-dev` on a dedicated
-  branch.
-- The deferred kara kesh concepts requested by the maintainer are recorded in
-  `docs/IDEAS_TO_REVISIT.md` and are not active roadmap commitments.
+- Published branch: `feature/goauld-healing-device`.
+- Published base: `v0.3.61-dev`.
+- Last published version and tag: `0.3.62-dev` / `v0.3.62-dev`.
+- Technical assembly version: `0.3.62.0`.
+- Publication state: branch commit, annotated tag and separate wiki published.
 
-## Current scope
+## Implemented scope
 
-This milestone adds one maintained paralysis mode to the existing Goa'uld kara
-kesh without folding any other speculative function into the active roadmap.
+- Add `SG1_GoauldHealingBracelet` as a portable medical device separate from
+  the kara kesh, with its own component, cooldown and research project.
+- Require persistent biological naquadah traces for activation.
+- Restrict treatment to one adjacent living biological humanlike patient.
+- Stabilize every bleeding injury at `80%` tending quality, then heal at most
+  `20` total injury severity across the four highest-priority recent injuries.
+- Reduce existing blood loss by at most `0.15` severity.
+- Apply `SG1_GoauldHealingBraceletFatigue` for `12000` ticks and a persistent
+  `30000`-tick device cooldown.
+- Exclude permanent scars, missing parts, diseases, infections, cancers,
+  chronic conditions, addictions, resurrection and multi-patient treatment.
+- Equip generated Goa'uld System Lords once with both their existing kara kesh
+  and this separate bracelet. Hostile AI uses the bracelet only on itself when
+  seriously injured or bleeding.
+- Raise System Lord `combatPower` from `550` to `625` for the extra survival
+  tool and rare recoverable item.
+- Keep the item absent from normal traders and random equipment. Local crafting
+  requires `Goa'uld biotechnology` and `kara kesh`, then Crafting `12` at a
+  machining table.
+- Use a temporary texture on the stable bracelet path pending the global visual
+  pass.
 
-A biologically eligible player wearer receives a targeted `Paralysis hold` /
-`Maintien paralysant` gizmo. It:
+The kara kesh receives no healing action, medical state or healing-energy cost.
+Its research is only one prerequisite for reverse-engineering the bracelet's
+naquadah interface.
 
-- targets one conscious hostile humanlike flesh pawn within `6.9` cells and
-  direct line of sight;
-- consumes `2.5` points from the same four-point shield-energy reserve;
-- applies `SG1_KaraKeshParalysisHold` for at most `600` ticks;
-- sets Moving to a maximum of `0` and multiplies Manipulation by `0.1`;
-- deals no direct damage and adds no pain;
-- suspends shield recharge and prevents the other active kara kesh modes while
-  the hold is maintained;
-- ends early if the wearer is downed or killed, the kara kesh is removed, the
-  biological trace is lost, the shield resets, hostility ends, range is broken
-  or line of sight is lost;
-- can be released manually without refunding energy;
-- enters a persistent `1800`-tick cooldown from activation.
+## Vanilla and lore reference
 
-Hostile non-player wearers check for a valid paralysis target every `60` ticks
-and prioritize this mode before neural attack and kinetic blast. The added
-control raises `SG1_GoauldSystemLordHost.combatPower` from `500` to `550`.
+Biotech's local `Coagulate` Def is a touch ability that rapidly tends wounds.
+The bracelet therefore uses adjacency and stabilizes all bleeding injuries,
+but adds only limited real healing, fatigue and a long cooldown. The Stargate
+healing-bracelet reference describes a naquadah-sensitive, concentration-driven
+device whose repeated use causes severe fatigue. The sarcophagus remains a
+separate future heavy technology and is not implemented here.
 
-## Files and architecture
+## Required in-game test
 
-- `Comp_KaraKeshShield` remains the shared shield and active-mode owner.
-- `Comp_KaraKeshShield_ParalysisHold.cs` isolates paralysis state, targeting,
-  shared-energy consumption, cooldown, player commands and hostile AI choice.
-- `KaraKeshParalysisHoldUtility` owns target eligibility, Hediff application,
-  source matching and deterministic removal.
-- `HediffComp_KaraKeshParalysisHold` stores the exact source apparel and checks
-  the maintained link every `15` ticks, including after save/reload.
-- `SG1_KaraKeshParalysisHold` is a visible temporary Hediff with no injury or
-  pain component.
-- `GoauldSystemLordShieldDebugActions` and `GateRimDebugActionMenu` expose the
-  exact deterministic tests.
-- deferred speculative kara kesh concepts are kept in
-  `docs/IDEAS_TO_REVISIT.md`, not in the active milestone.
-
-## Mandatory r1 validation - passed
-
-Load exactly:
+Load:
 
 ```text
 Core
@@ -72,71 +59,58 @@ Biotech
 GateRim SG-1
 ```
 
-Use open ground and keep the game paused while preparing the player test.
-
-1. On a player colonist, open exactly:
-
-```text
-Actions de débogage > GateRim SG-1 > Goa'uld... > Biological naquadah traces...
-```
-
-   Run `Equip kara kesh on target`, then `Apply persistent trace` if required.
-2. Open exactly:
-
-```text
-Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
-```
-
-   Run `Prepare paralysis hold test state`, then `Inspect paralysis hold state`
-   on the colonist. Confirm `trace=True`, an active shield, `4.00` energy,
-   `cooldownTicks=0` and `activeTarget=<none>`.
-3. Run `Spawn hostile System Lord with kara kesh`. Keep the two pawns within
-   `6.9` cells with clear line of sight.
-4. Select the colonist, use the visible `Maintien paralysant` / `Paralysis hold`
-   gizmo and target the hostile Grand Master.
-5. Confirm the target receives `maintien paralysant du kara kesh` /
-   `kara kesh paralysis hold`, falls immobile, has Moving capped at `0` and
-   Manipulation reduced to `10 %`, without a new injury or added pain.
-6. Run `Inspect paralysis hold state` on the colonist. Confirm energy near
-   `1.50`, cooldown near `1800`, and the target named as active. Kinetic blast
-   and neural attack must be unavailable while the hold remains active.
-7. Move the wearer beyond `6.9` cells or place a solid wall between wearer and
-   target. Within about `15` ticks the Hediff must disappear and capacities must
-   recover. The cooldown must continue.
-8. Run `Prepare paralysis hold test state` on the hostile Grand Master. Keep the
-   colonist hostile, conscious and within range, then unpause. Within roughly
-   `60` ticks the Grand Master must use the same hold and stop using the other
-   modes while maintaining it.
-9. Save while the AI hold is active, reload, and confirm the exact wearer-target
-   link, remaining Hediff duration, energy and cooldown persist. Then use
-   `Release paralysis hold` on the wearer and confirm immediate recovery.
-10. Inspect `Player.log` for new XML, Def, Scribe, Hediff, targeting or C# errors.
+1. Place two player colonists adjacent. Open exactly
+   `Actions de débogage > GateRim SG-1 > Goa'uld... > Healing bracelet...`.
+2. Run `Prepare healing-bracelet wearer` on the healer, then
+   `Prepare bleeding patient` on the second colonist.
+3. Select the healer. Confirm the visible gizmo
+   `Utiliser le bracelet de guérison` / `Use healing bracelet`, then target the
+   adjacent patient.
+4. In the patient's Health tab, confirm all three cuts are tended, no more than
+   `20` total severity was healed and blood loss fell from at least `30%` to
+   about `15%`. No disease, scar or missing part must be restored.
+5. In the healer's Health tab, confirm
+   `épuisement du dispositif de guérison` / `healing-device exhaustion` with
+   roughly `12000` ticks remaining. Run `Inspect healing-bracelet state` on the
+   healer and confirm a cooldown close to `30000` ticks.
+6. Attempt immediate reuse: the gizmo must remain disabled. Save, reload and
+   confirm both fatigue and cooldown persist.
+7. Open `Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...` and
+   run `Spawn hostile System Lord with rank equipment`. Confirm both the kara
+   kesh and healing bracelet are worn.
+8. Return to `Healing bracelet...`, run `Prepare bleeding patient` on that
+   Grand Master and unpause. Within about `60` ticks, it must heal itself once,
+   receive fatigue and enter cooldown without repeatedly healing.
+9. Check the research tab `GateRim SG-1`: `Dispositifs de guérison Goa'uld` /
+   `Goa'uld healing devices` must require both `Biotechnologies Goa'uld` and
+   `Kara kesh`.
+10. Inspect `Player.log` for new XML, Def, apparel, Hediff, targeting, Scribe or
+    C# errors.
 
 ## Optional regression checks
 
-- friendly pawn, animal, mechanoid, downed pawn, target outside `6.9` cells,
-  target behind a wall or target already held: targeting refused;
-- energy below `2.5`: paralysis command disabled;
-- `Apply EMP test hit` during a hold: shield collapse interrupts the effect;
-- remove the kara kesh or down the wearer during a hold: effect removed within
-  about `15` ticks;
-- `Release paralysis hold` from the visible gizmo and debug menu removes only
-  the exact linked effect and does not reset the cooldown;
-- kinetic blast, neural attack and shield behavior from `0.3.59-dev` and
-  `0.3.60-dev` remain unchanged outside an active hold.
+- A wearer without persistent naquadah traces can wear the bracelet but cannot
+  activate it.
+- Animal, mechanoid, dead pawn, healthy pawn, patient beyond adjacency or behind
+  a solid wall: targeting refused.
+- More than four injuries: all bleeding injuries are stabilized, but only four
+  receive the limited healing budget.
+- Permanent scar, disease, infection, cancer, addiction and missing part remain
+  unchanged.
+- Kara kesh shield, kinetic blast, neural attack and paralysis hold remain
+  unchanged and consume no bracelet state.
 
-## Validation result
+## Validation state
 
-The maintainer confirmed the complete mandatory `r1` checklist after a forced
-`0.3.61.0` build. Player targeting, capacity suppression, shared energy,
-manual and automatic interruption, hostile AI priority, save/reload
-persistence, manual release and `Player.log` all passed. The tested balance
-values (`2.5` energy, `600` ticks, `1800`-tick cooldown, `6.9` cells and
-`combatPower 550`) are accepted for the final revision.
+- Forced local build `0.3.62.0`: passed with `0` errors; only the existing
+  offline NuGet vulnerability-audit warning was emitted.
+- In-game validation: maintainer confirmed the complete mandatory `r1`
+  checklist, including treatment, fatigue, cooldown, hostile self-treatment,
+  research visibility, save/reload and `Player.log`.
 
 ## Next action
 
-Select the next small milestone from the durable roadmap. It must start from
-`v0.3.61-dev` on a dedicated branch; no `0.3.62-dev` scope is imposed by this
-closure. The speculative kara kesh functions remain only in
-`docs/IDEAS_TO_REVISIT.md` until separately discussed and approved.
+Select the next small milestone from `docs/ROADMAP.md`. It must start from
+`v0.3.62-dev` on a dedicated branch. The Odyssey and other optional-DLC
+compatibility pass remains only in `docs/IDEAS_TO_REVISIT.md` until separately
+discussed and approved.

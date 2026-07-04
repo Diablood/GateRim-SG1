@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.61-dev`
+> Dernière révision : `0.3.62-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -74,6 +74,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire, nettoyage initial des affections chroniques biologiques et kara kesh réservé au Grand Maître | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 / kara kesh 0.3.57-dev |
 | Kara kesh Goa'uld | Gant de rang des Grands Maîtres combinant un puissant bouclier, une onde cinétique, une attaque neurale temporaire et un maintien paralysant mono-cible publiés ; tous les modes partagent l'énergie, tandis que mêlée, portée, ligne de vue et IEM conservent un contre-jeu | 0.3.57-dev / activation 0.3.58-dev / onde 0.3.59-dev / attaque neurale 0.3.60-dev / maintien 0.3.61-dev |
+| Bracelet de guérison Goa'uld | Dispositif médical séparé du kara kesh, réservé naturellement aux Grands Maîtres : stabilisation de tous les saignements au contact, guérison récente limitée, réduction de la perte de sang, fatigue et longue recharge | 0.3.62-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |

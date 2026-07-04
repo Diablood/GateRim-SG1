@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldHealingBracelet_UseLabel>Utiliser le bracelet de guérison</GR_GoauldHealingBracelet_UseLabel>
+    <GR_GoauldHealingBracelet_UseDescription>Soigne un humanoïde biologique vivant adjacent, à moins de {0} cases. Le bracelet stabilise toutes les plaies qui saignent, restaure jusqu'à {1} points de gravité répartis entre au plus {2} blessures récentes et réduit partiellement la perte de sang existante. Il épuise le porteur puis se recharge pendant {3}.</GR_GoauldHealingBracelet_UseDescription>
+    <GR_GoauldHealingBracelet_ReadyInspect>Bracelet de guérison : prêt</GR_GoauldHealingBracelet_ReadyInspect>
+    <GR_GoauldHealingBracelet_InactiveInspect>{0} ne peut pas activer ce bracelet de guérison sans traces biologiques persistantes de naquadah.</GR_GoauldHealingBracelet_InactiveInspect>
+    <GR_GoauldHealingBracelet_CooldownInspect>Bracelet de guérison : recharge ({0})</GR_GoauldHealingBracelet_CooldownInspect>
+    <GR_GoauldHealingBracelet_InvalidTarget>Choisissez un humanoïde biologique vivant présentant une blessure récente traitable ou une perte de sang, à portée et en ligne de vue.</GR_GoauldHealingBracelet_InvalidTarget>
+    <GR_GoauldHealingBracelet_Unavailable>Le bracelet de guérison Goa'uld n'est pas disponible ici.</GR_GoauldHealingBracelet_Unavailable>
+    <GR_GoauldHealingBracelet_NeedsNaquadah>Des traces biologiques persistantes de naquadah sont nécessaires pour activer le bracelet de guérison.</GR_GoauldHealingBracelet_NeedsNaquadah>
+    <GR_GoauldHealingBracelet_Incapacitated>Un porteur neutralisé ne peut pas concentrer le bracelet de guérison.</GR_GoauldHealingBracelet_Incapacitated>
+    <GR_GoauldHealingBracelet_Cooldown>Le bracelet de guérison sera prêt dans {0}.</GR_GoauldHealingBracelet_Cooldown>
+    <GR_GoauldHealingBracelet_Used>{0} a utilisé un bracelet de guérison Goa'uld sur {1}.</GR_GoauldHealingBracelet_Used>
+</LanguageData>

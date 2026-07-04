@@ -207,6 +207,30 @@ namespace GateRimSG1.Debugging
                     NaquadahTraceDebugActions.ReconcileAllKnownPawns,
                     100)));
             root.AddChild(MenuNode(
+                "Healing bracelet...",
+                160,
+                PawnToolNode(
+                    "Prepare healing-bracelet wearer",
+                    GoauldHealingBraceletDebugActions.PrepareWearer,
+                    500),
+                PawnToolNode(
+                    "Prepare bleeding patient",
+                    GoauldHealingBraceletDebugActions.PrepareBleedingPatient,
+                    400),
+                PawnToolNode(
+                    "Inspect healing-bracelet state",
+                    GoauldHealingBraceletDebugActions.InspectState,
+                    300),
+                PawnToolNode(
+                    "Use selected wearer's healing bracelet",
+                    GoauldHealingBraceletDebugActions
+                        .UseSelectedWearerBracelet,
+                    200),
+                PawnToolNode(
+                    "Reset healing-bracelet state",
+                    GoauldHealingBraceletDebugActions.ResetState,
+                    100)));
+            root.AddChild(MenuNode(
                 "Kara kesh...",
                 150,
                 ActionNode(
@@ -214,7 +238,7 @@ namespace GateRimSG1.Debugging
                     GoauldSystemLordShieldDebugActions.SpawnPersonalShield,
                     900),
                 ActionNode(
-                    "Spawn hostile System Lord with kara kesh",
+                    "Spawn hostile System Lord with rank equipment",
                     GoauldSystemLordShieldDebugActions.SpawnHostileSystemLord,
                     850),
                 PawnToolNode(

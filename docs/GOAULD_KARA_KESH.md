@@ -164,6 +164,13 @@ forced build and full in-game validation checklist, then was committed, tagged
 as `v0.3.61-dev` and published with the synchronized separate wiki. No
 functional `r2` was required.
 
+## Separate healing device
+
+`0.3.62-dev` deliberately adds healing through
+`SG1_GoauldHealingBracelet`, a separate apparel component with its own fatigue,
+cooldown and research. The kara kesh receives no medical command and spends no
+shield energy on healing. See `docs/GOAULD_HEALING_BRACELET.md`.
+
 ## Final validation
 
 Use exactly:
@@ -172,7 +179,7 @@ Use exactly:
 Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 ```
 
-Run `Spawn hostile System Lord with kara kesh`, apply ten `Apply ranged test hit`
+Run `Spawn hostile System Lord with rank equipment`, apply ten `Apply ranged test hit`
 impacts, then one `Apply melee test hit` and one `Apply EMP test hit`. Verify
 sustained ranged absorption and the decreasing shield-energy gizmo, melee
 bypass, the audible and visible EMP collapse, full reset after `1800` ticks and

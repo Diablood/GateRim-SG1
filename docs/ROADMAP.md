@@ -1,5 +1,40 @@
 # Roadmap
 
+## Jalon validé et publié - Bracelet de guérison Goa'uld (`0.3.62-dev`)
+
+- [x] Partir du tag publié `v0.3.61-dev` sur
+  `feature/goauld-healing-device`.
+- [x] Créer un objet médical distinct du kara kesh, avec composant, cooldown,
+  fatigue, recherche et commandes propres.
+- [x] Réserver l'activation aux porteurs de traces biologiques persistantes de
+  naquadah et le soin à un humanoïde biologique vivant adjacent.
+- [x] Stabiliser tous les saignements, puis limiter la guérison réelle à `20`
+  points répartis entre quatre blessures non permanentes au maximum.
+- [x] Réduire la perte de sang de `0.15`, appliquer `12000` ticks de fatigue et
+  un cooldown persistant de `30000` ticks.
+- [x] Exclure maladies, infections, cancers, affections chroniques, addictions,
+  cicatrices permanentes, parties manquantes, mort et soins multiples.
+- [x] Réserver l'acquisition naturelle aux Grands Maîtres, sans commerce
+  ordinaire, et limiter leur IA à un auto-soin sérieux sans boucle.
+- [x] Exiger les recherches `Biotechnologies Goa'uld` et `Kara kesh` pour la
+  fabrication locale, sans coupler le fonctionnement des deux objets.
+- [x] Ajouter traductions, texture temporaire stable, diagnostics, documentation
+  technique, tests exacts et brouillon wiki.
+- [x] Porter le `combatPower` du Grand Maître de `550` à `625`.
+- [x] Exécuter le rebuild forcé `0.3.62.0` et préparer la révision `r1`.
+- [x] Valider en jeu le soin, la fatigue, le cooldown, l'IA hostile, la
+  sauvegarde/recharge, les limites négatives et `Player.log`.
+- [x] Publier branche, tag annoté `v0.3.62-dev` et wiki seulement après
+  validation et autorisation explicite.
+
+Le sarcophage reste une technologie lourde distincte et future. Aucune nouvelle
+fonction médicale n'est ajoutée au kara kesh.
+
+La révision locale finale `r1` est validée et publiée avec la branche dédiée,
+le tag annoté `v0.3.62-dev` et le wiki séparé synchronisé. Aucun correctif
+fonctionnel `r2` n'a été requis. La compatibilité Odyssey et les autres DLC
+optionnels restent une idée à réexaminer, sans prochain jalon imposé.
+
 ## Jalon validé et publié — Maintien paralysant du kara kesh (`0.3.61-dev`)
 
 - [x] Partir explicitement du tag publié `v0.3.60-dev` sur

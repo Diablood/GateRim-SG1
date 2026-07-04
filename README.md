@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.61-dev`
+- Development version: `0.3.62-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -67,6 +67,10 @@ people, factions, technologies, biology and conflicts surrounding it.
   draws from the same energy reserve, retains melee, range, line-of-sight and
   EMP counterplay, and requires persistent biological naquadah traces rather
   than faction identity.
+- Separate Goa'uld healing bracelets carried by System Lords stabilize an
+  adjacent humanoid's bleeding wounds and repair only a limited amount of
+  recent injury. They require the same biological naquadah eligibility but use
+  their own fatigue and cooldown instead of kara kesh shield energy.
 - Persistent naquadah traces acquired from an adult Goa'uld/Tok'ra symbiote or
   a Prim'ta and retained by former hosts after extraction.
 - Early non-lethal capture tools: craftable single-use bolas and an experimental

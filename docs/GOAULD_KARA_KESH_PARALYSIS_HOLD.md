@@ -89,7 +89,7 @@ Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 ```
 
 Run `Prepare paralysis hold test state`, `Inspect paralysis hold state`,
-`Spawn hostile System Lord with kara kesh`, then use the visible player gizmo.
+`Spawn hostile System Lord with rank equipment`, then use the visible player gizmo.
 Validate movement and manipulation suppression, shared energy, active-target
 reporting, interruption after range or line-of-sight loss, hostile AI use,
 save/reload persistence, manual release and `Player.log`.

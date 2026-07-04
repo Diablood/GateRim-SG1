@@ -61,6 +61,17 @@ SG1_JaffaDeployedHelmet
 The retracted helmet remains an internal visual state and is not crafted
 separately.
 
+### Kara kesh
+
+```text
+SG1_KaraKeshResearch
+baseCost: 3000
+prerequisite: SG1_JaffaArmor
+```
+
+Unlocks local crafting of `SG1_KaraKesh`. Captured devices remain usable by a
+wearer carrying persistent biological naquadah traces.
+
 ### SGC field equipment
 
 ```text
@@ -99,6 +110,18 @@ SG1_PrimtaPreservationBasin
 SG1_GoauldRitualBasin
 ```
 
+### Goa'uld healing devices
+
+```text
+SG1_GoauldHealingBraceletResearch
+baseCost: 4000
+prerequisites: SG1_GoauldBiotechnology + SG1_KaraKeshResearch
+```
+
+Unlocks local crafting of `SG1_GoauldHealingBracelet`. The project combines
+biotechnology and reverse-engineered naquadah interfaces without adding any
+medical function to the kara kesh itself.
+
 ## Explicit non-goals
 
 The project does not block:
@@ -106,6 +129,7 @@ The project does not block:
 ```text
 using captured Ma'Tok or Zat'nik'tel weapons
 wearing captured Jaffa armor
+wearing a captured kara kesh or Goa'uld healing bracelet
 wearing scenario-supplied SG equipment
 administering existing tretonin doses
 implanting existing Prim'ta larvae

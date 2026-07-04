@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ApparelBase">
+        <defName>SG1_GoauldHealingBracelet</defName>
+        <label>Goa'uld healing bracelet</label>
+        <description>A rare Goa'uld medical device worn on the wrist. A bearer carrying persistent biological naquadah traces can focus it on one nearby living humanoid to stabilize bleeding wounds, close a limited amount of recent tissue damage and reduce blood loss. Each activation causes temporary physical exhaustion and requires a long recharge. It cannot restore missing parts or treat scars, diseases, infections, cancers, chronic conditions or death.</description>
+        <thingClass>Apparel</thingClass>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <tickerType>Normal</tickerType>
+        <techLevel>Spacer</techLevel>
+        <tradeability>None</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <statBases>
+            <MarketValue>2400</MarketValue>
+            <Mass>0.6</Mass>
+            <WorkToMake>42000</WorkToMake>
+            <Flammability>0</Flammability>
+            <EquipDelay>1</EquipDelay>
+        </statBases>
+        <costList>
+            <ComponentSpacer>4</ComponentSpacer>
+            <Plasteel>60</Plasteel>
+            <Gold>40</Gold>
+        </costList>
+        <recipeMaker>
+            <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+            <researchPrerequisite>SG1_GoauldHealingBraceletResearch</researchPrerequisite>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+            <useIngredientsForColor>false</useIngredientsForColor>
+            <skillRequirements>
+                <Crafting>12</Crafting>
+            </skillRequirements>
+            <displayPriority>305</displayPriority>
+        </recipeMaker>
+        <thingCategories>
+            <li>ApparelUtility</li>
+        </thingCategories>
+        <apparel>
+            <countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+            <careIfDamaged>false</careIfDamaged>
+            <wearPerDay>0</wearPerDay>
+            <bodyPartGroups>
+                <li>Hands</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Belt</li>
+            </layers>
+            <developmentalStageFilter>Adult</developmentalStageFilter>
+        </apparel>
+        <comps>
+            <li Class="GateRimSG1.Goauld.CompProperties_GoauldHealingBracelet">
+                <range>1.9</range>
+                <totalHealing>20</totalHealing>
+                <maximumInjuries>4</maximumInjuries>
+                <bloodLossReduction>0.15</bloodLossReduction>
+                <cooldownTicks>30000</cooldownTicks>
+                <fatigueDurationTicks>12000</fatigueDurationTicks>
+                <aiCheckIntervalTicks>60</aiCheckIntervalTicks>
+                <aiMinimumBleedRate>0.2</aiMinimumBleedRate>
+                <aiMaximumHealthPercent>0.55</aiMaximumHealthPercent>
+                <fatigueHediff>SG1_GoauldHealingBraceletFatigue</fatigueHediff>
+            </li>
+        </comps>
+    </ThingDef>
+</Defs>

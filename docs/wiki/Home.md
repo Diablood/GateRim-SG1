@@ -4,7 +4,7 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.61-dev`
+> Version du mod documentée : `0.3.62-dev`
 
 
 ## Le mod en bref
@@ -54,6 +54,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Kara kesh des Grands Maîtres](Kara-Kesh) : bouclier personnel, onde
   cinétique, attaque neurale temporaire et maintien paralysant mono-cible
   alimentés par une réserve commune.
+- [Bracelet de guérison Goa'uld](Goauld-Healing-Bracelet) : dispositif médical
+  distinct qui stabilise les saignements au contact, répare une quantité
+  limitée de blessures récentes et épuise temporairement son porteur.
 
 ### Tok'ra
 

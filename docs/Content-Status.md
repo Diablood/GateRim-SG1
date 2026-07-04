@@ -1,6 +1,7 @@
 # État du contenu
 
-Dernier jalon publié : `0.3.61-dev - Add kara kesh paralysis hold`. Aucun jalon suivant n'est encore fixé.
+Dernier jalon publié :
+`0.3.62-dev - Add Goa'uld healing device prototype`.
 > Statut : Implémenté
 > Version d'introduction : 0.1.6-dev
 
@@ -70,6 +71,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire et nettoyage initial des affections chroniques biologiques | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 |
+| Bracelet de guérison Goa'uld | Prototype séparé du kara kesh : stabilisation de tous les saignements au contact, guérison récente limitée, réduction de la perte de sang, fatigue et longue recharge | 0.3.62-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
@@ -116,9 +118,9 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Analyse des renseignements codés Tok'ra | Interaction par clic droit sur le paquet livré : un colon capable d'Intellectuel l'analyse, reçoit un léger gain d'XP et marque l'étape comme prête pour une future mission complète | 0.2.40-dev |
 | Piste de mission Tok'ra décodée | Après analyse des renseignements codés, la cellule Tok'ra reprend contact et confirme une piste opérationnelle limitée autour d'un relais Goa'uld isolé | 0.2.41-dev |
 | Site monde de mission Tok'ra | Depuis la piste décodée, un marqueur temporaire de relais Goa'uld isolé apparaît sur la carte du monde sans générer encore de carte de combat, récompense ou attaque automatique | 0.2.42-dev |
-| Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC et biotechnologies Goa'uld, chacun dépendant d'une recherche vanilla cohérente | 0.2.8-dev |
+| Recherches de fabrication Stargate | Onglet dédié avec armement Jaffa, armures Jaffa, équipement de terrain du SGC, biotechnologies Goa'uld, kara kesh et dispositifs de guérison ; le bracelet exige les deux branches Goa'uld | 0.2.8-dev / extension 0.3.62-dev |
 | Icônes thématiques simplifiées pour les factions du mod | Publié dans `0.3.50-dev` pour le SGC, les Jaffa libres et les Domaines Goa'uld, avec conservation de l'icône Tok'ra existante |
-| Équipement Goa'uld de haut rang | Kara kesh de Grand Maître avec bouclier, onde cinétique, attaque neurale temporaire et maintien paralysant mono-cible publiés ; tous les modes partagent l'énergie, tandis que portée, ligne de vue, mêlée et IEM conservent un contre-jeu |
+| Équipement Goa'uld de haut rang | Kara kesh publié avec quatre modes partageant l'énergie ; bracelet de guérison distinct publié, avec fatigue et cooldown propres |
 | Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
 
 

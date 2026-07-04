@@ -93,13 +93,17 @@ namespace GateRimSG1.Goauld
             bool hasShield = pawn.apparel?.WornApparel.Any(
                 apparel => apparel?.def
                     == GR_DefOf.SG1_KaraKesh) == true;
+            bool hasHealingBracelet = pawn.apparel?.WornApparel.Any(
+                apparel => apparel?.def
+                    == GR_DefOf.SG1_GoauldHealingBracelet) == true;
+            bool hasRankEquipment = hasShield && hasHealingBracelet;
 
             Messages.Message(
-                hasShield
-                    ? "A hostile Goa'uld System Lord was generated near the map center with its kara kesh equipped."
-                    : "The hostile Goa'uld System Lord was generated, but its kara kesh could not be equipped. Check Player.log.",
+                hasRankEquipment
+                    ? "A hostile Goa'uld System Lord was generated near the map center with its kara kesh and healing bracelet equipped."
+                    : "The hostile Goa'uld System Lord was generated, but some rank equipment could not be equipped. Check Player.log.",
                 pawn,
-                hasShield
+                hasRankEquipment
                     ? MessageTypeDefOf.ThreatSmall
                     : MessageTypeDefOf.RejectInput,
                 historical: false);

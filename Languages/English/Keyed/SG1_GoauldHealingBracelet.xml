@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldHealingBracelet_UseLabel>Use healing bracelet</GR_GoauldHealingBracelet_UseLabel>
+    <GR_GoauldHealingBracelet_UseDescription>Treat one adjacent living biological humanoid within {0} cells. The bracelet stabilizes every bleeding wound, heals up to {1} total severity across at most {2} recent injuries and partially reduces existing blood loss. It exhausts the wearer and then recharges for {3}.</GR_GoauldHealingBracelet_UseDescription>
+    <GR_GoauldHealingBracelet_ReadyInspect>Healing bracelet: ready</GR_GoauldHealingBracelet_ReadyInspect>
+    <GR_GoauldHealingBracelet_InactiveInspect>{0} cannot activate this healing bracelet without persistent biological naquadah traces.</GR_GoauldHealingBracelet_InactiveInspect>
+    <GR_GoauldHealingBracelet_CooldownInspect>Healing bracelet: recharging ({0})</GR_GoauldHealingBracelet_CooldownInspect>
+    <GR_GoauldHealingBracelet_InvalidTarget>Choose a living biological humanoid with a treatable recent injury or blood loss, within range and line of sight.</GR_GoauldHealingBracelet_InvalidTarget>
+    <GR_GoauldHealingBracelet_Unavailable>The Goa'uld healing bracelet is unavailable here.</GR_GoauldHealingBracelet_Unavailable>
+    <GR_GoauldHealingBracelet_NeedsNaquadah>Persistent biological naquadah traces are required to activate the healing bracelet.</GR_GoauldHealingBracelet_NeedsNaquadah>
+    <GR_GoauldHealingBracelet_Incapacitated>An incapacitated wearer cannot focus the healing bracelet.</GR_GoauldHealingBracelet_Incapacitated>
+    <GR_GoauldHealingBracelet_Cooldown>The healing bracelet will be ready in {0}.</GR_GoauldHealingBracelet_Cooldown>
+    <GR_GoauldHealingBracelet_Used>{0} used a Goa'uld healing bracelet on {1}.</GR_GoauldHealingBracelet_Used>
+</LanguageData>

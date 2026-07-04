@@ -48,6 +48,8 @@ namespace GateRimSG1.Goauld
         private List<string> initializedPawnThingIds = new List<string>();
         private List<string> personalShieldAssignmentPawnThingIds =
             new List<string>();
+        private List<string> healingBraceletAssignmentPawnThingIds =
+            new List<string>();
 
         public GameComponent_GoauldHostCasteInitializer(Game game)
         {
@@ -79,6 +81,10 @@ namespace GateRimSG1.Goauld
                 ref personalShieldAssignmentPawnThingIds,
                 "goauldSystemLordPersonalShieldAssignmentPawnThingIds",
                 LookMode.Value);
+            Scribe_Collections.Look(
+                ref healingBraceletAssignmentPawnThingIds,
+                "goauldSystemLordHealingBraceletAssignmentPawnThingIds",
+                LookMode.Value);
 
             if (initializedPawnThingIds == null)
             {
@@ -88,6 +94,11 @@ namespace GateRimSG1.Goauld
             if (personalShieldAssignmentPawnThingIds == null)
             {
                 personalShieldAssignmentPawnThingIds = new List<string>();
+            }
+
+            if (healingBraceletAssignmentPawnThingIds == null)
+            {
+                healingBraceletAssignmentPawnThingIds = new List<string>();
             }
         }
 
@@ -161,6 +172,7 @@ namespace GateRimSG1.Goauld
             }
 
             TryAssignSystemLordPersonalShield(pawn, pawnThingId);
+            TryAssignSystemLordHealingBracelet(pawn, pawnThingId);
 
             if (initializedPawnThingIds.Contains(pawnThingId))
             {
@@ -315,6 +327,61 @@ namespace GateRimSG1.Goauld
                 GR_Log.Warning(
                     "Could not equip generated Goa'uld System Lord "
                     + $"{PawnDebugLabel(pawn)} with its personal shield.");
+            }
+        }
+
+        private void TryAssignSystemLordHealingBracelet(
+            Pawn pawn,
+            string pawnThingId)
+        {
+            if (pawn.kindDef != GR_DefOf.SG1_GoauldSystemLordHost
+                || healingBraceletAssignmentPawnThingIds.Contains(pawnThingId))
+            {
+                return;
+            }
+
+            ThingDef braceletDef = GR_DefOf.SG1_GoauldHealingBracelet;
+
+            if (pawn.apparel == null || braceletDef == null)
+            {
+                return;
+            }
+
+            if (pawn.apparel.WornApparel.Any(
+                    apparel => apparel?.def == braceletDef))
+            {
+                healingBraceletAssignmentPawnThingIds.Add(pawnThingId);
+                return;
+            }
+
+            Apparel bracelet = ThingMaker.MakeThing(braceletDef) as Apparel;
+
+            if (bracelet == null)
+            {
+                GR_Log.Warning(
+                    "Cannot equip generated Goa'uld System Lord: "
+                    + $"{braceletDef.defName} is not an Apparel ThingDef.");
+                return;
+            }
+
+            bracelet.TryGetComp<CompQuality>()?.SetQuality(
+                QualityCategory.Normal,
+                ArtGenerationContext.Outsider);
+            pawn.apparel.Wear(bracelet, dropReplacedApparel: false);
+
+            if (pawn.apparel.WornApparel.Contains(bracelet))
+            {
+                healingBraceletAssignmentPawnThingIds.Add(pawnThingId);
+                GR_Log.Message(
+                    "Equipped generated Goa'uld System Lord "
+                    + $"{PawnDebugLabel(pawn)} with a healing bracelet.");
+            }
+            else if (!bracelet.Destroyed)
+            {
+                bracelet.Destroy(DestroyMode.Vanish);
+                GR_Log.Warning(
+                    "Could not equip generated Goa'uld System Lord "
+                    + $"{PawnDebugLabel(pawn)} with a healing bracelet.");
             }
         }
 

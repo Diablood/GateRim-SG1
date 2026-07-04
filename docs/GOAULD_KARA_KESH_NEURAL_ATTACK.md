@@ -117,7 +117,7 @@ Actions de débogage > GateRim SG-1 > Goa'uld... > Kara kesh...
 
 Relevant actions:
 
-- `Spawn hostile System Lord with kara kesh`;
+- `Spawn hostile System Lord with rank equipment`;
 - `Inspect neural attack state`;
 - `Prepare neural attack test state`;
 - `Use selected wearer's neural attack`;

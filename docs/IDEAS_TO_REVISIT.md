@@ -4,6 +4,39 @@ Ce fichier conserve des pistes de conception qui méritent peut-être une étude
 
 Une entrée ne doit être transformée en jalon qu'après une nouvelle discussion, un cadrage explicite et une vérification de sa compatibilité avec les systèmes déjà publiés.
 
+## Passe de compatibilité avec les DLC optionnels
+
+**Statut : idée non planifiée à réexaminer après stabilisation du contenu de base.**
+
+### Piste à conserver
+
+Prévoir une passe globale de compatibilité avec les DLC RimWorld autres que
+Biotech lorsque les systèmes concernés sont suffisamment stables. Odyssey doit
+notamment être audité pour les environnements sans atmosphère : les armures
+Jaffa et les autres équipements fermés pertinents pourraient recevoir des
+statistiques adaptées, par exemple une résistance ou une protection contre le
+vide, si les mécanismes et l'équilibrage vanilla le justifient.
+
+### Garde-fous
+
+- Ne pas rendre un DLC optionnel obligatoire pour utiliser le contenu GateRim
+  SG-1 de base.
+- Appliquer les ajouts par patchs conditionnels ou code isolé uniquement quand
+  le DLC correspondant est actif.
+- Auditer l'ensemble des équipements, races, factions, incidents, recherches
+  et cartes concernés plutôt que corriger seulement une armure au cas par cas.
+- Comparer les valeurs aux équipements vanilla du DLC avant d'attribuer des
+  résistances liées au vide, à l'atmosphère ou à d'autres environnements.
+- Conserver des contreparties cohérentes de masse, protection, coût, recherche
+  et disponibilité afin de ne pas transformer l'équipement Jaffa en solution
+  universelle.
+
+### Limite de cette entrée
+
+Aucun patch Odyssey, changement d'armure, prérequis, dépendance ou jalon n'est
+acté par cette note. Le périmètre devra être rediscuté à partir des DLC
+réellement pris en charge au moment de la passe.
+
 ## Confinement d'un symbiote Goa'uld extrait vivant
 
 **Statut : idée non planifiée à réexaminer.**

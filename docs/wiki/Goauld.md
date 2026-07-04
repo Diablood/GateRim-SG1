@@ -69,6 +69,14 @@ importants sans remplacer le xenotype germinal d'origine.
 
 Consulte [Hôte Goa'uld actif](Active-Goauld-Host).
 
+### Bracelet de guérison
+
+Depuis `0.3.62-dev`, les Grands Maîtres portent un
+[bracelet de guérison Goa'uld](Goauld-Healing-Bracelet) distinct du kara kesh.
+Le dispositif stabilise les saignements et répare une quantité limitée de
+blessures récentes au contact, au prix d'une fatigue temporaire et d'une longue
+recharge.
+
 
 Depuis `0.3.40-dev`, un symbiote Goa'uld appartenant à une faction hostile conserve cette allégeance pendant l'implantation. Si la phase critique arrive à son terme, l'hôte joueur rejoint la faction du symbiote, quitte le contrôle de la colonie et participe à un assaut réel contre les colons et leurs biens. Comme une force de raid, il peut finalement se replier lorsque la carte est abandonnée ou que l'assaut est épuisé. Une extraction avant conversion préserve la colonie. Les Tok'ra et les symbiotes contrôlés par le joueur restent exclus de cette prise de contrôle.
 

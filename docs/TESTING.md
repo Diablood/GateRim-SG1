@@ -1,5 +1,29 @@
 # Testing checklist
 
+## 0.3.62-dev - Goa'uld healing bracelet
+
+Révision locale finale `r1` validée en jeu. Couverture durable :
+
+- exiger une trace biologique persistante de naquadah sur le porteur ;
+- limiter la cible à un humanoïde biologique vivant adjacent et visible ;
+- stabiliser toutes les blessures qui saignent avec une qualité de soin de
+  `80 %`, puis guérir au maximum `20` points sur quatre blessures récentes ;
+- réduire `BloodLoss` de `0.15` au maximum sans restaurer cicatrice permanente,
+  partie manquante, maladie, infection, cancer, affection chronique ou mort ;
+- appliquer `12000` ticks de fatigue et un cooldown sérialisé de `30000` ticks ;
+- sauvegarder/recharger et confirmer la persistance de ces deux états ;
+- vérifier l'auto-soin unique d'un Grand Maître hostile gravement blessé ou
+  saignant, sans boucle ni soin autonome banal ;
+- vérifier l'attribution unique aux Grands Maîtres, l'absence des marchands et
+  les deux prérequis de recherche de la fabrication locale ;
+- confirmer que le kara kesh ne reçoit aucune fonction, commande ou dépense
+  d'énergie médicale ;
+- inspecter `Player.log` pour les erreurs XML, Def, apparel, Hediff, Scribe,
+  ciblage et C#.
+
+Le mainteneur a confirmé le test obligatoire complet après le rebuild forcé
+`0.3.62.0`. Aucun correctif fonctionnel `r2` n'est requis.
+
 ## 0.3.61-dev - Kara kesh paralysis hold
 
 Validation locale terminée sur la révision finale `r1`, sans correctif
@@ -3613,7 +3637,7 @@ Execution category: **Continuous session**.
    on the colonist.
 4. Confirm the report shows a persistent trace, active shield, exactly `4.00`
    energy and `cooldownTicks=0`.
-5. Run `Spawn hostile System Lord with kara kesh`, pause immediately, run
+5. Run `Spawn hostile System Lord with rank equipment`, pause immediately, run
    `Prepare kinetic blast test state` on the hostile Grand Master, and keep both
    pawns within `10.9` cells with clear line of sight.
 6. Select the colonist, click `Kinetic blast` / `Onde cinétique`, then click the
@@ -3762,7 +3786,7 @@ Execution category: **Continuous session**.
    on the colonist.
 5. Confirm the report shows a persistent trace, active shield, exactly `4.00`
    energy and `cooldownTicks=0`.
-6. Run `Spawn hostile System Lord with kara kesh` and keep both pawns within
+6. Run `Spawn hostile System Lord with rank equipment` and keep both pawns within
    `8.9` cells with clear line of sight.
 7. Select the colonist, click `Neural attack` / `Attaque neurale`, then click
    the hostile Grand Master.

@@ -56,8 +56,8 @@ prérequis GateRim SG-1 : Armures Jaffa
 
 Débloque la fabrication locale du kara kesh porté naturellement par les Grands
 Maîtres Goa'uld. Le même appareil fournit un bouclier personnel, une onde
-cinétique et une attaque neurale temporaire. Les exemplaires récupérés restent
-utilisables avant la fin de cette recherche.
+cinétique, une attaque neurale temporaire et un maintien paralysant. Les
+exemplaires récupérés restent utilisables avant la fin de cette recherche.
 
 ## Équipement de terrain du SGC
 
@@ -87,6 +87,17 @@ Débloque :
 - le bassin de préservation Prim'ta ;
 - le bassin rituel Goa'uld.
 
+## Dispositifs de guérison Goa'uld
+
+```text
+prérequis GateRim SG-1 : Biotechnologies Goa'uld + Kara kesh
+```
+
+Débloque la fabrication locale du bracelet de guérison Goa'uld. Le bracelet
+reste un objet médical distinct : il ne consomme pas l'énergie du kara kesh et
+n'ajoute aucune fonction à ce dernier. Un exemplaire capturé reste utilisable
+avant la fin de la recherche par un porteur biologiquement compatible.
+
 ## Utilisation des objets récupérés
 
 Ces recherches verrouillent seulement la production locale.
@@ -96,6 +107,7 @@ Avant leur achèvement, la colonie peut toujours :
 - utiliser un Ma'Tok ou un Zat'nik'tel récupéré ;
 - porter une armure Jaffa capturée ;
 - porter un kara kesh capturé ;
+- porter et utiliser un bracelet de guérison Goa'uld capturé ;
 - utiliser l'équipement SG fourni par le scénario ;
 - administrer une dose de trétonine déjà obtenue ;
 - implanter une larve de Prim'ta disponible.

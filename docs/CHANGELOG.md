@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.3.62-dev - Add Goa'uld healing device prototype
+
+- Start from published tag `v0.3.61-dev` on
+  `feature/goauld-healing-device`.
+- Add a Goa'uld healing bracelet as an independent medical item rather than a
+  new kara kesh mode.
+- Require persistent biological naquadah traces and an adjacent living
+  biological humanlike patient.
+- Stabilize all bleeding injuries at `80%` tending quality, heal up to `20`
+  total severity across four recent injuries and reduce blood loss by `0.15`.
+- Apply `12000` ticks of physical exhaustion and a persistent `30000`-tick
+  cooldown without consuming kara kesh shield energy.
+- Exclude permanent scars, missing parts, diseases, infections, cancers,
+  chronic conditions, addictions, death and multi-patient healing.
+- Equip generated System Lords once with the separate bracelet, restrict
+  hostile AI to serious self-treatment and raise `combatPower` to `625`.
+- Keep the device out of normal trade and require Goa'uld biotechnology plus
+  kara kesh reverse-engineering before local production.
+- Add English/French text, deterministic debug actions, a stable temporary
+  texture path, technical documentation, test checklists and wiki drafts.
+- Build local revision `r1` as assembly `0.3.62.0` with zero compile errors,
+  then validate the complete in-game checklist with no functional `r2` needed.
+- Publish branch `feature/goauld-healing-device`, annotated tag
+  `v0.3.62-dev` and the synchronized separate wiki.
+
 ## 0.3.61-dev - Add kara kesh paralysis hold
 
 - Start from published tag `v0.3.60-dev` on
