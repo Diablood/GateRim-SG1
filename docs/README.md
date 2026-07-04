@@ -1,4 +1,3 @@
-
 # Documentation map
 
 Ce répertoire contient la documentation interne du projet et les brouillons du
@@ -13,6 +12,7 @@ tags et `CHANGELOG.md` conservent déjà l'historique publié.
 | Choisir un travail décidé ou différé | [`ROADMAP.md`](ROADMAP.md) |
 | Conserver une piste non planifiée | [`IDEAS_TO_REVISIT.md`](IDEAS_TO_REVISIT.md) |
 | Consulter l'historique publié | [`CHANGELOG.md`](CHANGELOG.md) et tags Git |
+| Choisir, créer et fusionner une branche | [`BRANCHING_WORKFLOW.md`](BRANCHING_WORKFLOW.md) |
 | Exécuter la validation du jalon courant | [`TESTING_CURRENT.md`](TESTING_CURRENT.md) |
 | Maintenir les régressions durables | [`TESTING.md`](TESTING.md) |
 | Publier un jalon | [`MILESTONE_PUBLICATION.md`](MILESTONE_PUBLICATION.md) |

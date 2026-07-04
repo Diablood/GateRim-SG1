@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.66-dev`
+- Development version: `0.3.67-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -119,6 +119,7 @@ vanilla or modded storytellers. The dedicated scenario is optional.
 - [Player wiki](https://github.com/Diablood/GateRim-SG1/wiki)
 - [Current content status](docs/wiki/Content-Status.md)
 - [Documentation map](docs/README.md)
+- [Branching workflow](docs/BRANCHING_WORKFLOW.md)
 - [Development roadmap](docs/ROADMAP.md)
 - [Changelog](docs/CHANGELOG.md)
 - [Build instructions](docs/BUILD.md)
@@ -126,10 +127,17 @@ vanilla or modded storytellers. The dedicated scenario is optional.
 
 ## Development workflow
 
-Development proceeds through small, testable milestones on dedicated branches
-created from the latest validated `v...-dev` tag. Repository rules and context
-recovery instructions are maintained in [AGENTS.md](AGENTS.md), while the
-current handoff is maintained in [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md).
+`develop` is the canonical integration branch for validated development
+milestones. Each `feature/*` or `fix/*` branch starts from an up-to-date
+`develop`, is validated independently and is then fast-forwarded back into
+`develop`. The annotated `v...-dev` tag is created on that integrated commit.
+`main` remains reserved for the first stable `1.0.0` line and later stable
+releases.
+
+Repository rules and context recovery instructions are maintained in
+[AGENTS.md](AGENTS.md), the complete branch policy in
+[docs/BRANCHING_WORKFLOW.md](docs/BRANCHING_WORKFLOW.md), and the current
+handoff in [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md).
 
 Root ZIP archives are local delivery artifacts and must not be committed.
 `About/ModIcon.png` must be preserved.

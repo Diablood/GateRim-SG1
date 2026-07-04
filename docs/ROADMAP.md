@@ -5,34 +5,45 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Relations persistantes entre domaines Goa'uld (`0.3.66-dev`)
+## Dernier jalon clôturé - Nouveau fonctionnement des branches (`0.3.67-dev`)
 
-- [x] Partir du tag publié `v0.3.65-dev` sur
-  `feature/goauld-inter-domain-relations`.
-- [x] Ajouter des états persistants par paire de domaines : neutralité,
-  rivalité, conflit ouvert, trêve et alliance.
-- [x] Conserver les relations aux instances de factions plutôt qu'aux dirigeants.
-- [x] Réconcilier nouvelles parties, anciennes sauvegardes, nouveaux domaines et
-  plusieurs instances de la faction.
-- [x] Faire évoluer automatiquement ces relations uniquement sous le storyteller
-  GateRim SG-1.
-- [x] Geler réellement les échéances lorsque le storyteller SG-1 est inactif.
-- [x] Ajouter des transitions lentes, une cadence globale et un anti-répétition
-  de la dernière paire.
-- [x] Ajouter trois variantes RP anglaises et françaises par état résultant, avec
-  anti-répétition immédiate de la variante exacte.
-- [x] Ajouter rapports, persistance et diagnostics développeur.
-- [x] Ne pas encore créer de bataille de carte, bonus d'alliance, réduction de
-  pression, expansion ou destruction de colonie.
-- [x] Exécuter le rebuild forcé `0.3.66.0` et les contrôles de cohérence.
-- [x] Valider les cinq états, rapports français, sauvegarde/recharge, suspension
-  sous Cassandra, reprise, anti-répétition, régressions et `Player.log`.
-- [x] Publier branche, tag annoté `v0.3.66-dev` et wiki après validation et
-  autorisation explicite.
+- [x] Créer `develop` exactement depuis le commit ciblé par `v0.3.66-dev`.
+- [x] Publier `develop` comme branche d'intégration distante.
+- [x] Créer `feature/develop-branch-workflow` depuis `develop`.
+- [x] Réserver `main` à la future ligne stable `1.0.0` et aux correctifs stables.
+- [x] Définir `develop` comme état intégré du dernier jalon de développement
+  validé.
+- [x] Exiger que les branches `feature/*` et `fix/*` partent d'un `develop` à
+  jour.
+- [x] Intégrer les jalons validés avec `git merge --ff-only`.
+- [x] Créer les tags `v...-dev` après intégration, sur le même commit que
+  `develop`.
+- [x] Rendre facultative la publication des branches temporaires et autoriser
+  leur suppression après vérification du tag.
+- [x] Documenter la gestion de divergence, le passage futur à `1.0.0`, les
+  hotfixes stables et la comparaison correcte des tags annotés.
+- [x] Valider le rebuild `0.3.67.0`, le contrôle de cohérence et le démarrage
+  minimal.
+- [x] Publier le jalon par fast-forward dans `develop`, publier le tag annoté
+  `v0.3.67-dev`, laisser `main` inchangée et synchroniser les métadonnées wiki.
 
-La révision finale `r1` est validée et publiée. Aucun effet militaire,
-économique ou territorial ne dépend encore des relations. Le prochain jalon
-numéroté n'est pas encore sélectionné et devra partir de `v0.3.66-dev`.
+La révision finale `r4` est validée et publiée. Le nouveau flux devient la règle
+permanente du projet : `develop` est la base intégrée, les branches de jalon sont
+temporaires et chaque tag de développement pointe sur un commit intégré dans
+`develop`.
+
+## Prochain jalon décidé - Réduction de pression en conflit ouvert (`0.3.68-dev`)
+
+- [ ] Partir de `develop` après le tag publié `v0.3.67-dev`.
+- [ ] Créer `feature/goauld-open-conflict-pressure-reduction`.
+- [ ] Réduire de façon limitée et plafonnée la pression des raids naturels d'un
+  domaine engagé dans au moins un conflit ouvert.
+- [ ] Ne pas cumuler la réduction lorsqu'un domaine affronte plusieurs rivaux.
+- [ ] Garder les représailles, raids contrôlés et missions hors de ce
+  modificateur.
+- [ ] Conserver les poids de doctrine fondés sur les points initiaux.
+- [ ] Limiter l'effet au storyteller `Commandement SG-1`.
+- [ ] Ajouter diagnostics, tests ciblés, régressions et documentation.
 
 ## Registre d'idées non planifiées
 
@@ -174,7 +185,7 @@ Les extensions spéculatives de l'origine des larves restent dans
 
 ## Maintenance du projet
 
-- [ ] Continuer sur des branches `feature/...` depuis le dernier tag.
+- [ ] Créer chaque branche `feature/*` ou `fix/*` depuis un `develop` à jour.
 - [ ] Maintenir état, roadmap, tests et changelog selon `docs/README.md`.
 - [ ] Signaler les suppressions avant extraction d'un ZIP.
 - [ ] Garder les ZIP ignorés à la racine.

@@ -1,89 +1,72 @@
-# Validation locale finale - 0.3.66-dev
+# Validation locale finale - 0.3.67-dev
 
-Jalon : `0.3.66-dev - Add persistent Goa'uld inter-domain relations`
+Jalon : `0.3.67-dev - Adopt develop-based branch workflow`
 
-Branche : `feature/goauld-inter-domain-relations`
+Branche validée : `feature/develop-branch-workflow`
 
-Base : `v0.3.65-dev`
+Base d’intégration : `develop`, créée exactement depuis le commit ciblé par
+`v0.3.66-dev`
 
-Version de DLL validée : `0.3.66.0`
+Version de DLL validée : `0.3.67.0`
 
-Révision locale finale : `r1`
+Révision locale finale : `r4`
 
-Statut : build, tests fonctionnels, régressions et publication validés.
-
-Chargement utilisé :
-
-```text
-Core
-Harmony
-Biotech
-GateRim SG-1
-```
+Statut : topologie Git, documentation, cohérence, rebuild, démarrage minimal et
+publication validés.
 
 ## Résultat final
 
-La validation de la révision `r1` confirme :
+La validation de la révision `r4` confirme :
 
-- rebuild forcé `0.3.66.0` réussi ;
-- chargement de la partie sans erreur rouge ;
-- création canonique d'une relation pour une paire de domaines distincts ;
-- état initial `neutralité` ;
-- commandes directes validées pour `rivalité`, `conflit ouvert`, `trêve`,
-  `alliance` et retour à `neutralité` ;
-- lettres françaises nommant correctement les deux domaines ;
-- variantes RP sans répétition immédiate de la même clé lorsque plusieurs
-  variantes sont disponibles ;
-- sauvegarde/rechargement conservant paire, état, compteur et échéances ;
-- rapport d'orchestration détectant correctement le tracker et l'activation ;
-- suspension réelle sous Cassandra sans lettre, transition ni retard accumulé ;
-- reprise normale après retour à `Commandement SG-1` ;
-- anti-répétition de la dernière paire avec trois domaines ;
-- transitions limitées au graphe documenté ;
-- doctrines de domaine, raids directs, enlèvements, destructions, ultimatums et
-  représailles inchangés ;
-- absence d'effet nouveau sur menace, goodwill, territoire ou colonies ;
-- `Player.log` propre pour les erreurs C#, XML, traduction, Scribe, faction,
-  lettre et storyteller.
+- création et publication de `develop` exactement depuis le commit ciblé par le
+  tag annoté `v0.3.66-dev` ;
+- création de `feature/develop-branch-workflow` depuis `develop` ;
+- vérification correcte des tags annotés avec `git rev-list -n 1` ;
+- branche temporaire descendante de `develop` ;
+- `main` inchangée ;
+- ajout de la référence durable `docs/BRANCHING_WORKFLOW.md` ;
+- procédures agents, reprise de contexte, publication et documentation mises à
+  jour pour le flux `develop` → `feature/*` ou `fix/*` → fast-forward ;
+- intégration obligatoire avec `git merge --ff-only` ;
+- création du tag seulement après intégration dans `develop` ;
+- publication distante des branches temporaires rendue facultative ;
+- gestion de divergence, future promotion vers `1.0.0` et hotfixes stables
+  documentées ;
+- contrôle `./tools/check-project-consistency.cmd` entièrement réussi après
+  alignement des deux métadonnées de version du wiki ;
+- rebuild réussi de `GateRimSG1.dll` en version `0.3.67.0` ;
+- démarrage de RimWorld jusqu’au menu principal avec `Core`, `Harmony`,
+  `Biotech` et `GateRim SG-1` ;
+- absence de nouveau comportement de jeu et de nouvelle erreur de chargement
+  attribuable au jalon.
 
-## Outils validés
+## Périmètre réellement modifié
 
-Chemin exact :
+Le jalon modifie uniquement :
+
+- les procédures Git et documents de reprise ;
+- les métadonnées de version publique et technique ;
+- les deux lignes de version dans `docs/wiki/Home.md` et
+  `docs/wiki/Content-Status.md`.
+
+Il ne modifie aucun fichier C# fonctionnel, Def, traduction, texture, donnée de
+sauvegarde, incident, mission, storyteller ou équilibrage.
+
+## Publication validée
+
+- commit final effectué sur `feature/develop-branch-workflow` ;
+- branche intégrée dans `develop` avec `git merge --ff-only` ;
+- `develop` publiée sur `origin` ;
+- tag annoté final unique `v0.3.67-dev` publié ;
+- tag pelé, `develop` local et `origin/develop` vérifiés sur le même commit ;
+- wiki séparé synchronisé et publié pour les deux métadonnées de version ;
+- `main` laissée inchangée.
+
+## Prochaine base
+
+Le prochain jalon doit partir de `develop` après `v0.3.67-dev` :
 
 ```text
-Actions de débogage
-> GateRim SG-1
-> Goa'uld inter-domain relations...
+0.3.68-dev - Add open-conflict Goa'uld pressure reduction
+feature/goauld-open-conflict-pressure-reduction
 ```
-
-Actions couvertes :
-
-- `Show relation report`;
-- `Create additional test domain`;
-- `Reconcile relation pairs`;
-- `Force next transition`;
-- setters directs des cinq états ;
-- `Reset relations`.
-
-Le rapport storyteller reste disponible sous :
-
-```text
-Actions de débogage
-> GateRim SG-1
-> Storyteller SG-1...
-> Show orchestration report
-```
-
-## Limites conservées
-
-Cette validation ne rend actif aucun effet militaire ou territorial lié aux
-relations. Les réductions de pression en conflit, batailles inter-domaines,
-bonus d'alliance, renforts, raids conjoints, expansion et destruction de
-colonies restent réservés à des jalons ultérieurs.
-
-## Publication
-
-- branche publiée : `feature/goauld-inter-domain-relations` ;
-- tag annoté final unique : `v0.3.66-dev` ;
-- dépôt principal publié ;
-- brouillons wiki synchronisés et wiki séparé publié.

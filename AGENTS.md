@@ -8,9 +8,12 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
 
 - Before starting any task, read `docs/PROJECT_STATE.md` and treat it as the current project handoff document.
 - Also read `docs/ROADMAP.md`; it is the durable backlog for future additions, deferred improvements and cross-discussion decisions.
-- Work in small, testable milestones on dedicated Git branches.
-- Do not switch to `main`: it is not a usable working base.
-- Start new branches from the latest validated published branch or explicit `v...-dev` tag.
+- Read `docs/BRANCHING_WORKFLOW.md` before creating, merging, tagging or deleting branches.
+- Work in small, testable milestones on dedicated `feature/*` or `fix/*` branches.
+- Do not work directly on `main` or `develop`.
+- `develop` is the canonical integration branch and must match the latest validated published development tag before a new milestone starts.
+- Start every ordinary milestone branch from an up-to-date local `develop` branch.
+- Reserve `main` for the first stable `1.0.0` line and later stable releases or hotfixes.
 - Use four spaces for indentation where applicable.
 - Preserve `About/ModIcon.png`.
 - Do not create temporary `README-*.txt` patch-note files at the repository root.
@@ -26,10 +29,13 @@ This repository contains the RimWorld 1.6 mod `GateRim SG-1`.
   unless explicitly instructed not to publish.
 - Do not commit ZIP archives stored at the repository root.
 - Do not publish a milestone unless explicitly requested.
-- Once the maintainer asks to commit and push a validated milestone, that
-  publication authorization includes the branch commit, the annotated final
-  `v...-dev` tag and the separate wiki when `docs/wiki/` changed, unless the
-  maintainer explicitly excludes one of them.
+- Once the maintainer asks to publish a validated milestone, that authorization
+  includes the final feature-branch commit, fast-forward integration into
+  `develop`, push of `develop`, the annotated final `v...-dev` tag and the
+  separate wiki when `docs/wiki/` changed, unless the maintainer explicitly
+  excludes one of them.
+- Publishing the temporary feature branch itself is optional. Tags and
+  `develop` are the durable history after integration.
 
 ## Context recovery
 
@@ -38,13 +44,15 @@ After a discussion reaches its context limit, after starting a new discussion or
 1. `AGENTS.md`;
 2. `docs/PROJECT_STATE.md`;
 3. `docs/ROADMAP.md`;
-4. `docs/MILESTONE_PUBLICATION.md` before any commit, tag, push or wiki publication instructions.
+4. `docs/BRANCHING_WORKFLOW.md` before any branch operation;
+5. `docs/MILESTONE_PUBLICATION.md` before any commit, merge, tag, push or wiki publication instructions.
 
 Do not rely on conversation memory for deferred work when it can be recorded in `docs/ROADMAP.md`. Add newly validated future work to that file during the current milestone.
 
 ## C# build rules
 
 - After applying C# changes, run a forced rebuild because extracted ZIP files may preserve timestamps.
+- A technical assembly-version change also requires a rebuild even when gameplay code is unchanged.
 - Prefer the existing Windows scripts.
 - When invoking dotnet directly, use `-t:Rebuild`.
 
@@ -65,5 +73,6 @@ Do not rely on conversation memory for deferred work when it can be recorded in 
 - Report any remaining uncertainty.
 - Propose a short Git commit message:
   `version - description`
-- Treat the annotated `v...-dev` tag as a mandatory part of publishing every
-  validated milestone, unless the maintainer explicitly asks to omit it.
+- Treat the annotated `v...-dev` tag on the integrated `develop` commit as a
+  mandatory part of publishing every validated milestone, unless the
+  maintainer explicitly asks to omit it.

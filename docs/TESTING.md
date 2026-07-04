@@ -3953,3 +3953,24 @@ native `1800`-tick recovery finishes.
 ### End state
 
 Review `Player.log` for new XML, Def, Scribe, targeting, Hediff or C# errors.
+
+## Durable branch-workflow validation
+
+For every milestone published after `0.3.67-dev`:
+
+- confirm the temporary `feature/*` or `fix/*` branch descends from the current
+  `develop` branch;
+- confirm `develop` matched the commit targeted by the latest published
+  development tag when the milestone started;
+- peel annotated tags with `git rev-list -n 1` or `<tag>^{}` before comparing
+  commit identifiers;
+- complete builds and focused validation before integration;
+- integrate with `git merge --ff-only` and do not introduce an incidental merge
+  commit to bypass divergence;
+- create the annotated `v...-dev` tag only after integration;
+- verify local `develop`, `origin/develop` and the peeled final tag point to the
+  same commit;
+- confirm `main` remains unchanged before the explicit stable-release step;
+- synchronize the separate wiki only when `docs/wiki/` actually changed;
+- keep or delete the temporary branch only after the integrated commit and tag
+  are verified.

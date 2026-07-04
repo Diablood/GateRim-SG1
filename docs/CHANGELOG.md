@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.3.67-dev - Adopt develop-based branch workflow
+
+- Start the workflow migration from published tag `v0.3.66-dev` without
+  rewriting any existing tag or historical feature branch.
+- Create `develop` exactly at the commit targeted by `v0.3.66-dev` as the
+  canonical integration branch.
+- Reserve `main` for the future stable `1.0.0` line and later stable hotfixes.
+- Require ordinary `feature/*` and `fix/*` branches to start from an up-to-date
+  `develop` branch.
+- Integrate validated milestones with `git merge --ff-only` so the validated
+  feature commit is exactly the integrated commit.
+- Create each annotated `v...-dev` tag only after integration and require it to
+  match local and remote `develop`.
+- Document that annotated tags must be peeled with `git rev-list -n 1` or
+  `<tag>^{}` before their commit IDs are compared.
+- Make remote publication of temporary feature branches optional and permit
+  their deletion after the integrated tag is verified.
+- Add `docs/BRANCHING_WORKFLOW.md` and update agent, publication,
+  documentation-map and handoff instructions.
+- Correct the first three local delivery revisions by replacing fragile
+  marker-based edits with complete replacement files and standard Git patches.
+- Change no gameplay C#, Def, translation, texture, save data or storyteller
+  behavior; update only the two public wiki version metadata lines.
+- Bump the public development version to `0.3.67-dev` and rebuild assembly
+  `0.3.67.0` for metadata consistency.
+- Validate final local revision `r4`: branch ancestry, annotated-tag comparison,
+  full project-consistency pass, forced `0.3.67.0` rebuild, minimal RimWorld
+  startup and unchanged gameplay behavior.
+- Integrate `feature/develop-branch-workflow` into `develop` with a fast-forward,
+  publish annotated tag `v0.3.67-dev`, synchronize the separate wiki and leave
+  `main` unchanged.
+- Reserve `0.3.68-dev` for the open-conflict Goa'uld pressure-reduction slice.
+
 ## 0.3.66-dev - Add persistent Goa'uld inter-domain relations
 
 - Start from published tag `v0.3.65-dev` on
