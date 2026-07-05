@@ -1,97 +1,107 @@
 # Project state
 
-Current milestone: `0.3.68-dev - Add open-conflict Goa'uld pressure reduction`
-- closed after final local revision `r3`.
+Current milestone: `0.3.69-dev - Add open-conflict Goa'uld battlefield incident`
+- corrected in cumulative local revision `r6`; build and bounded-retaliation retest pending.
 
 ## Repository state
 
 - Starting published integration state: `develop` at annotated tag
-  `v0.3.67-dev`.
-- Validated milestone branch:
-  `feature/goauld-open-conflict-pressure-reduction`.
-- Published version and final unique tag: `0.3.68-dev` / `v0.3.68-dev`.
-- Technical assembly version: `0.3.68.0`.
-- Final validated local revision: `r3`.
-- Fast-forward integration into `develop`: completed.
-- Main repository publication: completed.
-- Separate wiki synchronization and publication: completed.
-- `main` remains unchanged and reserved for the future stable `1.0.0` line.
+  `v0.3.68-dev`.
+- Active milestone branch:
+  `feature/goauld-open-conflict-battlefield-incident`.
+- Current public development version: `0.3.69-dev`.
+- Technical assembly version: `0.3.69.0`.
+- Current local revision: `r6`.
+- Local validation is complete; fast-forward integration, tag and publication are
+  pending.
+- `main` remains reserved for the future stable `1.0.0` line.
 
-## Published scope
+## Implemented scope
 
-- Apply a fixed natural-raid pressure factor of `0.75` to every active Goa'uld
-  domain participating in at least one `open conflict` relation.
-- Apply that factor only while `SG1_GateRimStoryteller` /
-  `Commandement SG-1` is active.
-- Keep the factor non-stacking when one domain is engaged in several open
-  conflicts.
-- Derive the effect from the existing persistent relation tracker without adding
-  a new serialized field or schema migration.
-- Choose direct, abduction or destruction doctrine from the original vanilla
-  storyteller points, then reduce only the points transmitted to ordinary raid
-  generation.
-- Preserve the shared natural incident chance, earliest day, refire delay,
-  doctrine eligibility and relative doctrine weights.
-- Exclude every forced path from the automatic factor: extraction reprisals,
-  controlled raids, mission attacks and deterministic doctrine regression
-  actions retain their exact points.
-- Add one explicit developer command that exercises the ordinary natural-raid
-  worker with pressure enabled.
-- Add read-only per-domain and threat-progression diagnostics showing vanilla
-  points, effective points and the derived factor.
-- Add no battlefield incident, alliance effect, goodwill change, expansion,
-  joint raid, reinforcement or settlement destruction.
+- Add a persistent SG-1-Command-only scheduler for rare local battlefields.
+- Select an exact active domain pair whose relation is `open conflict`.
+- Preserve one active battlefield slot, hidden initial and recurrence delays,
+  save/reload state, last-pair anti-repetition and RP-text anti-repetition.
+- Select only player-home maps with free colonists and no existing hostile
+  force for natural opportunities.
+- Generate two Jaffa detachments belonging to the two exact domain factions.
+- Scale each side from the current vanilla storyteller points with a bounded
+  `0.35` factor and `250–1800` point range.
+- Spawn both groups from valid cells within four cells of the map edge.
+- Move each detachment to an opposing rally point, hold briefly, then announce
+  and start the mutual assault.
+- Keep both detachments focused on one another instead of launching an initial
+  organized assault against colony structures.
+- Send one bilingual RP letter naming both domains and explaining optional
+  intervention.
+- Begin withdrawal when one side is eliminated, exactly one side falls to
+  `30%` or less of its initial mobile force, or the two-day limit expires;
+  preserve downed pawns and loot, then force remaining mobile non-prisoners to
+  leave after a fixed grace period.
+- Add deterministic diagnostics and state-changing developer actions.
+- Correct the first functional-test defects: the letter jumps to a pawn on the
+  colony map, both detachments receive forced AI attack jobs, each camp persists
+  exact attacking colonists, and stalled withdrawal paths are refreshed.
+- Correct the second functional-test defects: troops now enter from the map edge,
+  rally before an announced assault, and a victorious withdrawing camp cancels
+  its exit behavior to retaliate when attacked by the player.
+- Correct the third functional-test defects: ranged Jaffa now pursue until they
+  reach weapon range and line of sight instead of receiving an immobile distant
+  `AttackStatic` job, while post-victory injury changes infer a player provoker
+  when the drafted attack job itself cannot be read reliably.
+- Correct the fourth functional-design issue: retaliation now expires after
+  `1800` quiet ticks, cannot pursue farther than `35` cells from its recorded
+  origin, and can delay withdrawal for at most `6000` ticks without extending
+  the fixed forced-exit deadline.
 
-## Mechanical contract
+## Persistence model
 
-For an ordinary natural Goa'uld Jaffa raid:
+The global tracker serializes only orchestration data:
 
-```text
-effective points = max(1, vanilla points × pressure factor)
-```
+- next check and opportunity ticks;
+- active map ID;
+- last selected domain-pair IDs;
+- last RP-letter variant;
+- storyteller suspension state.
 
-The factor is `0.75` only when:
+The map component serializes the exact factions, generated pawns, initial
+combatant counts, player provocateurs per camp, last provocation ticks,
+provocation origins, withdrawal-retaliation starts, edge entries, rally anchors,
+rally/assault timing, threat snapshot, start tick and withdrawal state. Existing
+relation data is reused without changing the relation schema.
 
-- the attacking faction is an active Goa'uld System Lord domain;
-- that domain belongs to at least one active pair in `open conflict`;
-- `Commandement SG-1` is the active storyteller;
-- the execution is the ordinary natural incident path or the dedicated
-  pressure-enabled developer test.
+## Guardrails
 
-Every other path uses factor `1.00`.
+- Automatic opportunities exist only under `Commandement SG-1`.
+- An already active battlefield completes if the storyteller changes.
+- Only one battlefield exists at a time.
+- No natural battlefield is added over another active hostile threat.
+- The event changes no strategic relation, faction goodwill, world settlement
+  or natural-raid pressure factor.
+- It creates no mission success, failure penalty or artificial reward.
 
-## Final validation
+## Validation result
 
-The final `r3` validation confirmed:
+Final local revision `r6` is validated:
 
-- forced rebuild of `GateRimSG1.dll` in version `0.3.68.0`;
-- full project consistency apart from the intentionally deferred changelog
-  header before finalization;
-- `75%` pressure for both domains of an open-conflict pair under
-  Commandement SG-1;
-- no stacking when a domain participates in more than one open conflict;
-- immediate return to `100%` under Cassandra and after leaving open conflict;
-- doctrine eligibility and weights still calculated from original vanilla
-  points;
-- the dedicated natural-raid test applied and logged the expected reduction;
-- deterministic `300`, `800` and `1800` doctrine tests retained exact points;
-- extraction reprisals retained stored points and produced no pressure-reduction
-  log;
-- save/reload preserved the relation and re-derived the same factor without new
-  serialized data;
-- existing relation transitions, raids, doctrines and ultimatum/reprisal flows
-  remained functional;
-- `Player.log` contained no new C#, XML, Scribe, faction, storyteller or raid
-  error attributable to the milestone.
+- forced build succeeds with assembly `0.3.69.0`;
+- both forces enter from the map edge and rally correctly;
+- the assault announcement and mutual combat work;
+- ranged Jaffa pursue and fire normally;
+- player retaliation is temporary and spatially bounded;
+- morale break, two-day limit and fixed withdrawal deadline work;
+- save/reload and existing Goa'uld regressions pass;
+- `Player.log` is clean.
 
-## Publication model
+## Next planned layer
 
-The validated feature commit is integrated into `develop` with
-`git merge --ff-only`. The annotated tag `v0.3.68-dev`, local `develop` and
-`origin/develop` must all resolve to that same commit. The temporary feature
-branch may be removed after verification.
+After publication of `0.3.69-dev`, the selected follow-up is:
 
-## Next step
+`0.3.70-dev - Add open-conflict Goa'uld world battlefield site`
 
-No next milestone is selected yet. The next branch must start from published
-`develop` after `v0.3.68-dev`, following `docs/BRANCHING_WORKFLOW.md`.
+Planned branch:
+
+`feature/goauld-open-conflict-world-battlefield-site`
+
+It must reuse the battle-generation contract and a shared active slot rather
+than duplicating local and world battlefield orchestration.

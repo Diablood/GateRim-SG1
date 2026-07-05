@@ -82,6 +82,7 @@
 
 - [Fondation d'identité des domaines Goa'uld](Goauld-System-Lord-Domain-Identity)
 - [Doctrines des domaines Goa'uld](Goauld-Domain-Doctrines)
+- [Batailles entre domaines Goa'uld](Goauld-Open-Conflict-Battlefields)
 - [Identité visuelle Jaffa Goa'uld](Jaffa-System-Lord-Visual-Identity)
 - [Raid naturel de Jaffa Goa'uld](Goauld-Jaffa-Natural-Raid)
 - [Progression des menaces Goa'uld](Goauld-Threat-Progression)

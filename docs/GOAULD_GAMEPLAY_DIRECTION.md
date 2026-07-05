@@ -3,7 +3,8 @@
 Status: approved baseline. Threat progression, natural doctrines, the first
 extraction ultimatum, persistent domain doctrines, the SG-1 storyteller,
 persistent inter-domain relation states and the first bounded open-conflict
-pressure consequence are published. Larger military and territorial relation
+pressure consequence are published. The first local battlefield consequence is
+implemented in `0.3.69-dev-r6` for validation. Larger world and territorial
 consequences remain deferred.
 
 ## Purpose
@@ -29,6 +30,7 @@ The mod already provides:
 - Goa'uld host castes, Jaffa ranks, equipment and cultural identities;
 - persistent relations between domain pairs under Commandement SG-1;
 - a bounded `75%` natural-raid pressure factor for domains in open conflict;
+- a bounded local battlefield between the two exact domains, pending validation;
 - several Goa'uld objectives used inside Tok'ra operations.
 
 Future work should deepen these systems instead of creating a second mission
@@ -190,11 +192,18 @@ factor never stacks, doctrine selection still uses the original vanilla points,
 raid frequency remains unchanged and extraction reprisals, controlled raids,
 mission attacks and deterministic tests are excluded.
 
-Open conflict may later create a temporary battlefield near the colony where
-two Goa'uld forces fight each other. The player may remain outside the battle or
-attack either or both forces. The encounter must receive one clear letter,
-avoid an initial assault on player structures and force survivors to leave
-after at most a few days.
+The local battlefield slice is implemented in `0.3.69-dev-r6`. A persistent
+SG-1-Command-only scheduler selects an exact open-conflict pair, creates two
+bounded Jaffa detachments near the colony, keeps their initial focus on one
+another and forces mobile survivors to leave after elimination, a one-sided
+`30%` morale break or the two-day limit. Player intervention triggers only a
+local `1800`-tick retaliation inside a `35`-cell pursuit boundary; withdrawal
+retaliation is capped at `6000` ticks and cannot postpone forced exit. The player
+may remain outside the battle or attack either or both forces.
+
+The next selected layer is `0.3.70-dev`: a temporary world-map battlefield site
+that can be visited or ignored by caravan. It must reuse the same two-camp
+generation and share the active slot so local and world battles cannot stack.
 
 Alliance may later increase attack cadence or raid strength only slightly and
 under a global cap. Later extensions may include second-domain reinforcements,

@@ -38,6 +38,26 @@ namespace GateRimSG1.Goauld
                     .ForceCurrentNaturalRaidWithPressure,
                 850));
             root.AddChild(ActionNode(
+                "Show battlefield report",
+                GoauldOpenConflictBattlefieldDebugActions.ShowReport,
+                845));
+            root.AddChild(ActionNode(
+                "Make battlefield opportunity due",
+                GoauldOpenConflictBattlefieldDebugActions.MakeOpportunityDue,
+                840));
+            root.AddChild(ActionNode(
+                "Force battlefield now",
+                GoauldOpenConflictBattlefieldDebugActions.ForceBattlefield,
+                835));
+            root.AddChild(ActionNode(
+                "Order battlefield withdrawal",
+                GoauldOpenConflictBattlefieldDebugActions.OrderWithdrawal,
+                830));
+            root.AddChild(ActionNode(
+                "Reset battlefield scheduler",
+                GoauldOpenConflictBattlefieldDebugActions.Reset,
+                825));
+            root.AddChild(ActionNode(
                 "Create additional test domain",
                 GoauldInterDomainRelationDebugActions
                     .CreateAdditionalTestDomain,

@@ -7,40 +7,49 @@ non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
 ## Dernier jalon clôturé - Réduction de pression en conflit ouvert (`0.3.68-dev`)
 
-- [x] Partir de `develop` exactement alignée sur le tag publié `v0.3.67-dev`.
-- [x] Créer `feature/goauld-open-conflict-pressure-reduction`.
-- [x] Appliquer un facteur fixe `0,75` aux points des raids naturels ordinaires
-  des domaines engagés dans au moins un conflit ouvert.
-- [x] Ne jamais cumuler cette réduction lorsqu'un domaine affronte plusieurs
-  rivaux.
-- [x] Choisir la doctrine avec les points vanilla initiaux, puis réduire les
-  points transmis à la génération du raid.
-- [x] Conserver la fréquence, le délai de réapparition, l'admissibilité et les
-  poids de doctrine.
-- [x] Limiter l'effet au storyteller `Commandement SG-1`.
-- [x] Exclure les représailles d'extraction, raids contrôlés, missions et
-  régressions déterministes.
-- [x] Ajouter un rapport par domaine, un diagnostic de progression et une
-  commande dédiée au vrai chemin réduit.
-- [x] Conserver un effet dérivé sans nouvelle donnée sérialisée.
-- [x] Abandonner les livraisons `r1` et `r2` fondées sur des patchs incompatibles
-  et publier la révision cumulative `r3` uniquement avec des fichiers complets.
-- [x] Réussir le rebuild forcé `0.3.68.0`.
-- [x] Valider facteur `75%`, non-cumul, suspension sous Cassandra, raid naturel,
-  représailles inchangées, sauvegarde/recharge et `Player.log`.
-- [x] Finaliser le changelog, l'état projet, la validation et le wiki.
-- [x] Intégrer par fast-forward dans `develop`, publier le tag annoté
-  `v0.3.68-dev` et synchroniser le wiki séparé.
+La révision finale `r3` est validée et publiée. Sous Commandement SG-1, un
+domaine engagé dans au moins un conflit ouvert transmet `75%` de ses points
+vanilla à ses raids naturels ordinaires, sans cumul ni changement de cadence,
+doctrine, représailles ou missions.
 
-La révision finale `r3` est validée et publiée. La première conséquence militaire
-des relations Goa'uld reste volontairement limitée : elle réduit seulement les
-points des raids naturels ordinaires, sans modifier leur cadence ni les autres
-attaques.
+## Jalon courant - Bataille locale en conflit ouvert (`0.3.69-dev`)
 
-## Prochain jalon
+- [x] Partir de `develop` exactement alignée sur `v0.3.68-dev`.
+- [x] Sélectionner
+  `feature/goauld-open-conflict-battlefield-incident`.
+- [x] Ajouter un planificateur persistant réservé à Commandement SG-1.
+- [x] Exiger une paire active en conflit ouvert et une carte joueur disponible.
+- [x] Conserver un seul champ de bataille actif et éviter une menace hostile
+  déjà présente lors d'une occurrence naturelle.
+- [x] Générer deux détachements Jaffa appartenant aux deux domaines exacts.
+- [x] Dimensionner chaque camp depuis les points vanilla avec un budget borné.
+- [x] Faire combattre les deux groupes sans assaut initial programmé contre la
+  colonie.
+- [x] Envoyer une seule lettre bilingue avec variantes et anti-répétition.
+- [x] Autoriser l'inaction, l'intervention contre un camp ou contre les deux.
+- [x] Borner la riposte joueur à `1800` ticks sans nouvelle attaque, `35` cellules de poursuite et `6000` ticks pendant le retrait.
+- [x] Ordonner le retrait après élimination, rupture morale à `30%` ou deux jours maximum.
+- [x] Conserver prisonniers, pawns à terre, corps et équipement abandonné.
+- [x] Ajouter diagnostics et commandes développeur déterministes.
+- [ ] Réussir le rebuild forcé `0.3.69.0`.
+- [ ] Valider combat mutuel, non-assaut initial, riposte bornée, rupture morale,
+  retrait, sauvegarde/recharge, slot unique, storyteller et `Player.log`.
+- [ ] Finaliser changelog, tests durables, état projet et wiki.
+- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.69-dev`.
 
-Aucun jalon suivant n'est encore sélectionné. Le prochain travail doit partir de
-`develop` après `v0.3.68-dev`, sur une branche temporaire dédiée.
+## Jalon suivant décidé - Site mondial de bataille (`0.3.70-dev`)
+
+- [ ] Partir de `develop` après `v0.3.69-dev`.
+- [ ] Créer `feature/goauld-open-conflict-world-battlefield-site`.
+- [ ] Créer un site mondial temporaire lié à une paire exacte en conflit
+  ouvert, accessible par caravane et entièrement facultatif.
+- [ ] Réutiliser les règles de génération des deux camps, de combat mutuel et
+  de retrait de `0.3.69-dev`.
+- [ ] Partager le slot et le cooldown afin d'éviter des batailles locale et
+  mondiale simultanées.
+- [ ] Prévoir une icône mondiale dédiée et une expiration sans échec imposé.
+- [ ] Ne modifier ni territoires, settlements, relation stratégique ou
+  goodwill par simple expiration du site.
 
 ## Registre d'idées non planifiées
 
@@ -79,10 +88,13 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 - [x] En conflit ouvert, réduire de façon limitée et plafonnée à `75%` les
   points des raids naturels ordinaires des deux domaines contre le joueur,
   sans cumul, sans changement de fréquence et uniquement sous Commandement SG-1.
-- [ ] Permettre un événement rare sur la carte : deux troupes de domaines
-  rivaux s'affrontent près de la colonie, avec une lettre, une durée maximale
-  de quelques jours et une intervention facultative du joueur contre un camp
-  ou les deux.
+- [ ] Valider puis publier `0.3.69-dev` : événement rare sur une carte joueur
+  où deux troupes de domaines en conflit ouvert s'affrontent, avec une lettre,
+  une durée maximale de deux jours et une intervention facultative contre un
+  camp ou les deux.
+- [ ] Publier ensuite `0.3.70-dev` : site mondial temporaire représentant un
+  autre champ de bataille entre domaines, visitable ou ignorable par caravane,
+  avec slot partagé pour éviter les doublons locaux et mondiaux.
 - [ ] En alliance, permettre une légère augmentation plafonnée de la fréquence
   ou de la puissance des attaques des domaines concernés.
 - [ ] Étendre ultérieurement les alliances par des renforts d'un second domaine,

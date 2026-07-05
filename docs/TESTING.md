@@ -4000,3 +4000,33 @@ inter-domain relations.
 - Confirm the natural incident frequency, earliest day and shared refire delay
   remain unchanged.
 - Inspect `Player.log` for new C#, XML, Scribe, raid-generation or Lord errors.
+
+## Open-conflict Goa'uld local battlefield (`0.3.69-dev`)
+
+Validate the local battlefield generated from persistent open-conflict
+relations.
+
+- Use `SG1_GateRimStoryteller` with at least two active Goa'uld domains.
+- Set one exact pair to open conflict and force a battlefield opportunity.
+- Confirm the two detachments belong to the named domains.
+- Confirm both forces enter from map-edge cells and rally separately.
+- Confirm the announced assault starts after assembly or the bounded fallback
+  delay.
+- Confirm ranged Jaffa advance until they have range and line of sight.
+- Confirm both forces initially attack one another rather than the colony.
+- Confirm player retaliation ends after `1800` quiet ticks or beyond the
+  `35`-cell pursuit boundary.
+- Confirm withdrawal retaliation cannot exceed `6000` ticks or extend the
+  absolute exit deadline.
+- Confirm exactly one force below `30%` of its initial mobile strength breaks
+  contact, while two simultaneously weakened forces continue fighting.
+- Confirm the battle ends after at most two days and mobile survivors leave
+  after the fixed withdrawal grace period.
+- Confirm downed pawns, prisoners, corpses and abandoned equipment remain.
+- Confirm one active battlefield slot, pair anti-repetition and storyteller
+  suspension.
+- Save and reload during rallying, assault, retaliation and withdrawal.
+- Confirm natural-raid pressure reduction, doctrines, reprisals and strategic
+  relations remain unchanged.
+- Inspect `Player.log` for new C#, XML, Scribe, Lord, JobDriver, pawn-generation
+  or storyteller errors.

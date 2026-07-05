@@ -36,6 +36,7 @@ aux régressions. Les principales portes d'entrée sont :
 - storyteller et orchestration :
   [`STORYTELLER_SG1.md`](STORYTELLER_SG1.md) ;
 - direction Goa'uld : [`GOAULD_GAMEPLAY_DIRECTION.md`](GOAULD_GAMEPLAY_DIRECTION.md),
+  [`GOAULD_OPEN_CONFLICT_BATTLEFIELD.md`](GOAULD_OPEN_CONFLICT_BATTLEFIELD.md),
   [`GOAULD_HOST.md`](GOAULD_HOST.md) et [`GOAULD_KARA_KESH.md`](GOAULD_KARA_KESH.md) ;
 - Jaffa et Prim'ta : fichiers `JAFFA_*.md` et `PRIMTA_*.md` ;
 - Tok'ra : fichiers `TOKRA_*.md`, classés par système ou opération ;
@@ -57,7 +58,7 @@ techniques. `wiki/Content-Status.md` est l'unique état public détaillé du
 contenu ; aucun second `Content-Status.md` ne doit être créé à la racine de
 `docs/`.
 
-Toute création, suppression ou renommage d'une page doit être répercuté dans la
+Toute création, suppression ou renommage d'une page doit être répercutée dans la
 navigation, les liens entrants et le dépôt wiki séparé lors de la publication.
 
 ## Ajouter ou retirer un document

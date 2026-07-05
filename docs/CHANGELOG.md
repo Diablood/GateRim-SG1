@@ -1,5 +1,46 @@
 # Changelog
 
+## 0.3.69-dev - Add open-conflict Goa'uld battlefield incident
+
+- Start from published `develop` and annotated tag `v0.3.68-dev` on
+  `feature/goauld-open-conflict-battlefield-incident`.
+- Add rare local battlefields reserved for `SG1_GateRimStoryteller`.
+- Select an exact pair of active Goa'uld domains whose persistent relation is
+  open conflict.
+- Preserve one active battlefield slot, hidden recurrence delays, save/reload
+  state and pair anti-repetition.
+- Generate two threat-scaled Jaffa detachments belonging to the exact selected
+  domains.
+- Spawn both forces from valid map-edge cells and send them to separate rally
+  points before combat.
+- Announce the assault after the forces assemble, with a bounded fallback delay
+  when terrain prevents complete formation.
+- Make ranged Jaffa pursue until they obtain weapon range and line of sight
+  instead of remaining stationary against distant targets.
+- Keep both forces initially focused on one another rather than launching an
+  organized attack against the colony.
+- Allow optional player intervention with retaliation limited to `1800` quiet
+  ticks and a `35`-cell pursuit boundary.
+- Limit retaliation during withdrawal to `6000` ticks without extending the
+  fixed forced-exit deadline.
+- Allow a force to break contact when it alone falls to `30%` or less of its
+  initial mobile strength.
+- Preserve the absolute two-day battle limit and leave downed pawns, prisoners,
+  corpses and abandoned equipment on the map.
+- Add bilingual letters, assault and morale-break messages, diagnostics and
+  deterministic developer actions.
+- Reserve `0.3.70-dev` for the corresponding temporary battlefield site on the
+  world map, reusing the same battle-generation contract and active slot.
+- Correct functional-test issues across cumulative revisions `r1` to `r5`,
+  including local-map targeting, active combat, map-edge arrival, rallying,
+  ranged pursuit, player retaliation and bounded withdrawal.
+- Correct the `CS1628` lambda capture build failure without gameplay changes in
+  cumulative revision `r6`.
+- Validate final local revision `r6`, including build `0.3.69.0`, edge arrival,
+  rally and assault flow, two-sided combat, player intervention limits, morale
+  break, withdrawal, save/reload, existing Goa'uld regressions and a clean
+  `Player.log`.
+
 ## 0.3.68-dev - Add open-conflict Goa'uld pressure reduction
 
 - Start from published `develop` and annotated tag `v0.3.67-dev` on

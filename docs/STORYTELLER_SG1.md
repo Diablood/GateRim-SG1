@@ -5,10 +5,11 @@
 - Foundation: `0.3.65-dev`
 - Persistent inter-domain relations: `0.3.66-dev`
 - First strategic consequence: `0.3.68-dev`
-- Current branch: `feature/goauld-open-conflict-pressure-reduction`
-- Current assembly: `0.3.68.0`
-- Current local revision: `r3`
-- Status: published after final local revision `r3`.
+- First local battlefield consequence: `0.3.69-dev`
+- Current branch: `feature/goauld-open-conflict-battlefield-incident`
+- Current assembly: `0.3.69.0`
+- Current local revision: `r6`
+- Status: implemented for local validation.
 
 ## Purpose
 
@@ -97,7 +98,8 @@ initialization.
 
 Its report embeds relation-tracker availability, active pair count, automatic
 activation state, next strategic deadline and the count of domains whose
-natural-raid pressure is currently reduced.
+natural-raid pressure is currently reduced. The battlefield tracker exposes its
+own persistent cadence and active-map report through the relation debug menu.
 
 ## Persistent relation model
 
@@ -163,6 +165,35 @@ The effect is intentionally narrow:
 
 Changing storyteller or relation state changes the derived factor immediately.
 
+## Open-conflict local battlefields
+
+`0.3.69-dev` adds the first visible battle caused by a relation state.
+
+While SG-1 Command is active, a persistent scheduler may select one exact
+open-conflict pair and place two bounded Jaffa detachments near a player
+colony. Each camp belongs to its stored domain faction and receives `35%`
+of current vanilla threat points, clamped to `250–1800` points.
+
+The local event has a separate `8–16` day initial delay and `20–40` day
+recurrence. It never stacks over another active battlefield or a map that
+already contains an active hostile threat. Its clock is suspended under
+other storytellers.
+
+Both camps enter from the map edge, rally, then advance into weapon range
+against the rival group instead of targeting colony structures. Player
+intervention remains optional. A challenged camp retaliates only for `1800`
+ticks without renewed attack and never pursues beyond `35` cells from the
+recorded provocation point.
+
+Withdrawal begins after elimination, when exactly one camp falls to `30%` or
+less of its initial mobile force, or after two days. During withdrawal, a camp
+may defend itself for at most `6000` ticks, and the fixed `30000`-tick forced
+exit deadline is never postponed. Downed pawns, prisoners, corpses and dropped
+equipment remain on the map.
+
+The battle changes no relation state, goodwill, territory or settlement. The
+separate world-map battlefield site is reserved for `0.3.70-dev`.
+
 ## RP reports
 
 Every real state change produces one neutral-event letter naming both domains.
@@ -202,9 +233,8 @@ remain exact and bypass the factor.
 
 ## Still inactive consequences
 
-`0.3.68-dev` still adds no:
+`0.3.69-dev` still adds no:
 
-- battle between two Goa'uld groups near the colony;
 - alliance frequency or threat increase;
 - reinforcements, joint raids or shared reprisals;
 - doctrine interaction caused by relations;
@@ -215,8 +245,7 @@ These effects require separate balancing and validation milestones.
 
 ## Validation
 
-Final local revision `r3` passed the forced `0.3.68.0` rebuild, factor and
-storyteller tests, non-stacking validation, a real reduced natural raid, exact
-forced-regression points, an unreduced extraction reprisal, save/reload and a
-clean `Player.log`. The final result is recorded in
-[`TESTING_CURRENT.md`](TESTING_CURRENT.md).
+Local revision `r6` of `0.3.69-dev` is ready for the build, edge arrival,
+rally, announced assault, two-sided combat, bounded player retaliation,
+`30%` morale break, withdrawal, persistence, storyteller isolation and
+regression procedure recorded in [`TESTING_CURRENT.md`](TESTING_CURRENT.md).

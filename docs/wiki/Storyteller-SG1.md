@@ -1,7 +1,7 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.68-dev`
+> Dernière évolution : `0.3.69-dev`
 > Statut : publié
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
@@ -62,10 +62,24 @@ Cette réduction reste volontairement limitée :
 Le conflit détourne donc une partie des moyens du domaine sans neutraliser
 complètement sa menace envers le joueur.
 
+## Batailles locales en conflit ouvert
+
+Depuis `0.3.69-dev`, un conflit ouvert peut aussi produire une
+[bataille entre deux domaines](Goauld-Open-Conflict-Battlefields) près d'une
+colonie joueur.
+
+Les deux détachements jaffa appartiennent aux domaines exacts concernés. Ils
+entrent depuis le bord de la carte, rejoignent des positions de ralliement,
+puis un message annonce leur assaut mutuel. La colonie peut rester à l'écart ou
+intervenir contre un camp ou contre les deux. Un camp provoqué riposte localement,
+mais abandonne la poursuite après `1800` ticks sans nouvelle attaque, au-delà de
+`35` cellules, ou après `6000` ticks de riposte pendant son retrait.
+
 ## Choix facultatif
 
-La progression automatique des relations et la réduction de pression
-fonctionnent uniquement avec **Commandement SG-1**.
+La progression automatique des relations, la réduction de pression et les
+nouvelles opportunités de bataille fonctionnent uniquement avec
+**Commandement SG-1**.
 
 Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
@@ -82,7 +96,7 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 Les relations ne provoquent pas encore :
 
-- de bataille visible entre deux armées Goa'uld ;
+- de site de bataille sur la carte mondiale ;
 - de renforts ou raids conjoints en alliance ;
 - d'augmentation de fréquence ou de puissance liée aux alliances ;
 - de modification territoriale ou de destruction de colonies mondiales ;
@@ -92,6 +106,7 @@ Ces conséquences restent réservées à des jalons séparés.
 
 ## Validation
 
-La révision finale `r3` a validé le facteur `75 %`, sa suspension sous un autre
-storyteller, le non-cumul, les raids naturels, les représailles inchangées et la
-sauvegarde/recharge, sans nouvelle erreur dans `Player.log`.
+Le facteur `75 %` reste validé depuis `0.3.68-dev`. La bataille locale de
+`0.3.69-dev-r6` doit maintenant valider le combat mutuel, la riposte bornée,
+la rupture morale à `30%`, le retrait, la sauvegarde/recharge et l'absence de
+régression.

@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.68-dev`
+> Dernière révision : `0.3.69-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -11,7 +11,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | État | Version |
 |---|---|---|
-| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes entre domaines et réduction bornée des raids naturels pendant les conflits ouverts ; les autres storytellers gèlent la simulation et désactivent ce facteur sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev |
+| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, réduction bornée des raids naturels et batailles locales entre domaines en conflit ouvert ; les autres storytellers suspendent les futures opportunités sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / bataille locale 0.3.69-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
@@ -95,6 +95,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 | Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : doctrine choisie avec les points vanilla ; sous Commandement SG-1, un domaine en conflit ouvert transmet ensuite `75 %` des points à la force générée, sans modifier fréquence, représailles ou missions | 0.2.1-dev / doctrines 0.3.54-dev / pression 0.3.68-dev |
+| Bataille locale entre domaines Goa'uld | Sous Commandement SG-1, une paire en conflit ouvert peut faire entrer deux détachements Jaffa depuis le bord, les rassembler puis déclencher un assaut mutuel annoncé ; intervention facultative, riposte locale bornée, rupture morale sous 30 % et engagement limité à deux jours | 0.3.69-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
 | Progression des menaces Goa'uld | Raids, menaces interceptées et sites hostiles fondés sur les points vanilla du storyteller ; plafonds de début de partie retirés et relais fortifié selon trois paliers | 0.3.53-dev |
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans solution de repli ni activation des raids naturels | 0.1.70-dev |
@@ -134,7 +135,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
 | Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
-| Conséquences des relations Goa'uld | Les états persistants, rapports RP et réduction bornée des raids naturels en conflit ouvert sont publiés ; batailles inter-domaines, bonus d'alliance, renforts et effets territoriaux restent à implémenter par jalons séparés |
+| Conséquences des relations Goa'uld | Les états persistants, rapports RP et réduction bornée des raids naturels sont publiés ; la bataille locale est intégrée dans `0.3.69-dev`, tandis que le site mondial, les bonus d'alliance, renforts et effets territoriaux restent séparés |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
 | Équipement Goa'uld de haut rang | Bouclier, onde cinétique, attaque neurale et maintien paralysant mono-cible publiés. Les autres fonctions spéculatives restent non planifiées dans le fichier d'idées à revoir |

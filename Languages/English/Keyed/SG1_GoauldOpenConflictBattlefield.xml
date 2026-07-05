@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldOpenConflictBattlefield_Label>Goa'uld forces converge near the colony</GR_GoauldOpenConflictBattlefield_Label>
+    <GR_GoauldOpenConflictBattlefield_Text0>Reconnaissance reports two Jaffa detachments entering from the map edge. Warriors serving {0} and {1} are moving toward opposing rally points before engaging. Their immediate objective is the rival force, not the colony. The colony may stay clear, intervene against either force or attack both.</GR_GoauldOpenConflictBattlefield_Text0>
+    <GR_GoauldOpenConflictBattlefield_Text1>The open conflict between {0} and {1} has reached the colony's perimeter. Rival Jaffa units are arriving from the map edge and assembling at opposing positions. They are not launching an organized assault on the settlement, but any force that is challenged will retaliate against those responsible.</GR_GoauldOpenConflictBattlefield_Text1>
+    <GR_GoauldOpenConflictBattlefield_Text2>Two Goa'uld columns belonging to {0} and {1} have entered the region. Each detachment is rallying before hostilities begin. The engagement can be ignored or exploited, but either force remains dangerous if attacked.</GR_GoauldOpenConflictBattlefield_Text2>
+    <GR_GoauldOpenConflictBattlefield_AssaultBegins>The detachments of {0} and {1} have completed their rally and are launching the assault.</GR_GoauldOpenConflictBattlefield_AssaultBegins>
+    <GR_GoauldOpenConflictBattlefield_BreaksOff>{0}'s remaining Jaffa break contact after severe losses. {1}'s detachment holds the field while both forces begin withdrawing from the area.</GR_GoauldOpenConflictBattlefield_BreaksOff>
+    <GR_GoauldOpenConflictBattlefield_TimeLimit>After prolonged fighting between {0} and {1}, both detachments disengage and begin withdrawing from the area.</GR_GoauldOpenConflictBattlefield_TimeLimit>
+</LanguageData>

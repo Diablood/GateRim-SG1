@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldOpenConflictBattlefield_Label>Des forces Goa'uld convergent près de la colonie</GR_GoauldOpenConflictBattlefield_Label>
+    <GR_GoauldOpenConflictBattlefield_Text0>La reconnaissance signale deux détachements jaffa entrant sur la carte depuis ses limites. Les guerriers au service de {0} et de {1} se dirigent vers des points de ralliement opposés avant de s'affronter. Leur objectif immédiat est l'autre camp, pas la colonie. Vous pouvez rester à l'écart, intervenir contre l'un des camps ou combattre les deux.</GR_GoauldOpenConflictBattlefield_Text0>
+    <GR_GoauldOpenConflictBattlefield_Text1>Le conflit ouvert entre {0} et {1} atteint les abords de la colonie. Deux unités jaffa rivales arrivent depuis le bord de la carte et se regroupent sur des positions opposées. Elles ne lancent pas d'assaut organisé contre vos bâtiments, mais tout camp provoqué ripostera contre les responsables.</GR_GoauldOpenConflictBattlefield_Text1>
+    <GR_GoauldOpenConflictBattlefield_Text2>Deux colonnes Goa'uld appartenant à {0} et {1} viennent de pénétrer dans la région. Chaque détachement rallie sa position avant l'ouverture des hostilités. Vous pouvez ignorer ou exploiter l'affrontement, mais les deux forces restent dangereuses si vous les attaquez.</GR_GoauldOpenConflictBattlefield_Text2>
+    <GR_GoauldOpenConflictBattlefield_AssaultBegins>Les détachements de {0} et de {1} ont terminé leur rassemblement et lancent l'assaut.</GR_GoauldOpenConflictBattlefield_AssaultBegins>
+    <GR_GoauldOpenConflictBattlefield_BreaksOff>Les Jaffa encore mobiles de {0} rompent le combat après de lourdes pertes. Le détachement de {1} tient le terrain tandis que les deux forces commencent à se retirer de la zone.</GR_GoauldOpenConflictBattlefield_BreaksOff>
+    <GR_GoauldOpenConflictBattlefield_TimeLimit>Après un affrontement prolongé entre {0} et {1}, les deux détachements rompent le contact et commencent à se retirer de la zone.</GR_GoauldOpenConflictBattlefield_TimeLimit>
+</LanguageData>
