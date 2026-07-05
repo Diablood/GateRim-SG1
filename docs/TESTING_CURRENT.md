@@ -1,72 +1,96 @@
-# Validation locale finale - 0.3.67-dev
+# Validation locale finale - 0.3.68-dev
 
-Jalon : `0.3.67-dev - Adopt develop-based branch workflow`
+Jalon : `0.3.68-dev - Add open-conflict Goa'uld pressure reduction`
 
-Branche validée : `feature/develop-branch-workflow`
+Branche validée : `feature/goauld-open-conflict-pressure-reduction`
 
-Base d’intégration : `develop`, créée exactement depuis le commit ciblé par
-`v0.3.66-dev`
+Base d'intégration : `develop` au tag publié `v0.3.67-dev`
 
-Version de DLL validée : `0.3.67.0`
+Version de DLL validée : `0.3.68.0`
 
-Révision locale finale : `r4`
+Révision locale finale : `r3`
 
-Statut : topologie Git, documentation, cohérence, rebuild, démarrage minimal et
-publication validés.
+Statut : build, cohérence, comportement fonctionnel, sauvegarde/recharge,
+régressions et journal validés.
 
 ## Résultat final
 
-La validation de la révision `r4` confirme :
+La validation de la révision `r3` confirme :
 
-- création et publication de `develop` exactement depuis le commit ciblé par le
-  tag annoté `v0.3.66-dev` ;
-- création de `feature/develop-branch-workflow` depuis `develop` ;
-- vérification correcte des tags annotés avec `git rev-list -n 1` ;
-- branche temporaire descendante de `develop` ;
-- `main` inchangée ;
-- ajout de la référence durable `docs/BRANCHING_WORKFLOW.md` ;
-- procédures agents, reprise de contexte, publication et documentation mises à
-  jour pour le flux `develop` → `feature/*` ou `fix/*` → fast-forward ;
-- intégration obligatoire avec `git merge --ff-only` ;
-- création du tag seulement après intégration dans `develop` ;
-- publication distante des branches temporaires rendue facultative ;
-- gestion de divergence, future promotion vers `1.0.0` et hotfixes stables
-  documentées ;
-- contrôle `./tools/check-project-consistency.cmd` entièrement réussi après
-  alignement des deux métadonnées de version du wiki ;
-- rebuild réussi de `GateRimSG1.dll` en version `0.3.67.0` ;
-- démarrage de RimWorld jusqu’au menu principal avec `Core`, `Harmony`,
-  `Biotech` et `GateRim SG-1` ;
-- absence de nouveau comportement de jeu et de nouvelle erreur de chargement
-  attribuable au jalon.
+- assembly `GateRimSG1.dll` reconstruite en version `0.3.68.0` ;
+- versions publique, assembly, README, projet, tests actifs et brouillons wiki
+  alignées sur `0.3.68-dev` ;
+- deux domaines d'une paire en conflit ouvert affichent et utilisent un facteur
+  de pression naturelle de `75%` sous Commandement SG-1 ;
+- un domaine engagé dans plusieurs conflits ouverts reste à `75%` et ne reçoit
+  aucun second multiplicateur ;
+- le passage à Cassandra conserve la relation mais ramène immédiatement le
+  facteur à `100%` ;
+- le retour à Commandement SG-1 réactive le facteur sans transition artificielle ;
+- une trêve ou un retour à la neutralité ramène immédiatement les deux domaines
+  à `100%` ;
+- les points vanilla restent visibles et servent au choix de doctrine ;
+- les points effectifs correspondent à `max(1, points vanilla × 0,75)` ;
+- la commande `Force current natural raid (pressure applied)` exerce le vrai
+  chemin réduit et inscrit les points initiaux, effectifs et le facteur dans
+  `Player.log` ;
+- les régressions forcées à `300`, `800` et `1800` points conservent exactement
+  leur budget demandé ;
+- les raids contrôlés, missions et attaques interceptées restent inchangés ;
+- une représaille d'extraction conserve les points stockés et ne produit aucune
+  trace de réduction ;
+- sauvegarde et recharge conservent l'état relationnel et re-dérivent le facteur
+  sans nouveau champ sérialisé ;
+- les relations, doctrines, ultimatums et représailles existants restent
+  fonctionnels ;
+- aucune nouvelle erreur C#, XML, Scribe, faction, storyteller ou raid
+  attribuable au jalon n'apparaît dans `Player.log`.
 
-## Périmètre réellement modifié
+## Périmètre fonctionnel publié
 
-Le jalon modifie uniquement :
+Le jalon ajoute :
 
-- les procédures Git et documents de reprise ;
-- les métadonnées de version publique et technique ;
-- les deux lignes de version dans `docs/wiki/Home.md` et
-  `docs/wiki/Content-Status.md`.
+- `GoauldOpenConflictPressureUtility`, utilité stateless qui calcule le facteur
+  depuis le storyteller actif et les relations existantes ;
+- `GoauldOpenConflictPressureDebugActions`, rapport par domaine et commande de
+  test dédiée ;
+- l'application du facteur après le choix de doctrine dans
+  `IncidentWorker_GoauldJaffaNaturalRaid` ;
+- l'affichage des points vanilla et effectifs dans le diagnostic de progression ;
+- l'entrée correspondante dans le menu développeur des relations inter-domaines.
 
-Il ne modifie aucun fichier C# fonctionnel, Def, traduction, texture, donnée de
-sauvegarde, incident, mission, storyteller ou équilibrage.
+Le jalon ne modifie pas :
+
+- `baseChance`, `earliestDay` ou `minRefireDays` du raid naturel ;
+- les poids ou seuils de doctrine ;
+- les représailles après extraction ;
+- les raids contrôlés ou de mission ;
+- les relations de bonne volonté ;
+- les territoires, colonies, batailles inter-domaines, alliances, renforts ou
+  raids conjoints ;
+- le schéma de sauvegarde.
+
+## Livraisons locales
+
+- `r1` et `r2` sont abandonnées : leurs patchs documentaires dépendaient de
+  contextes incompatibles avec l'arbre réel.
+- `r3` remplace ces livraisons par un paquet cumulatif de fichiers complets,
+  sans `.patch` ni script d'application.
+- Aucun correctif fonctionnel supplémentaire n'a été requis après les tests de
+  `r3`.
 
 ## Publication validée
 
-- commit final effectué sur `feature/develop-branch-workflow` ;
+- commit final effectué sur
+  `feature/goauld-open-conflict-pressure-reduction` ;
 - branche intégrée dans `develop` avec `git merge --ff-only` ;
 - `develop` publiée sur `origin` ;
-- tag annoté final unique `v0.3.67-dev` publié ;
+- tag annoté final unique `v0.3.68-dev` publié ;
 - tag pelé, `develop` local et `origin/develop` vérifiés sur le même commit ;
-- wiki séparé synchronisé et publié pour les deux métadonnées de version ;
+- wiki séparé synchronisé et publié ;
 - `main` laissée inchangée.
 
 ## Prochaine base
 
-Le prochain jalon doit partir de `develop` après `v0.3.67-dev` :
-
-```text
-0.3.68-dev - Add open-conflict Goa'uld pressure reduction
-feature/goauld-open-conflict-pressure-reduction
-```
+Le prochain jalon doit partir de `develop` après `v0.3.68-dev`. Aucun sujet ni
+nom de branche suivant n'est encore sélectionné.

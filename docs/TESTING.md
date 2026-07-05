@@ -3974,3 +3974,29 @@ For every milestone published after `0.3.67-dev`:
 - synchronize the separate wiki only when `docs/wiki/` actually changed;
 - keep or delete the temporary branch only after the integrated commit and tag
   are verified.
+
+## Open-conflict Goa'uld pressure reduction (`0.3.68-dev`)
+
+Validate the bounded natural-raid pressure reduction introduced after persistent
+inter-domain relations.
+
+- Use `SG1_GateRimStoryteller` with at least two active Goa'uld domains.
+- Set one active pair to open conflict and confirm both domains report a `0.75`
+  natural-raid factor.
+- Confirm one domain involved in several open conflicts still receives only one
+  `0.75` factor.
+- Confirm neutral, rivalry, truce and alliance retain a `1.00` factor.
+- Confirm Cassandra, Phoebe, Randy and compatible modded storytellers retain a
+  `1.00` factor even when an open-conflict state is stored.
+- Confirm doctrine eligibility and weighting use the original storyteller
+  points before the final raid-force reduction.
+- Confirm the ordinary natural raid uses the reduced effective points.
+- Confirm controlled raids, deterministic doctrine tests, extraction reprisals,
+  intercepted threats and mission attacks retain their original points.
+- Save and reload while open conflict is active and confirm the factor remains
+  derived correctly from the persistent relation.
+- End the conflict through truce or another non-conflict state and confirm the
+  natural-raid factor returns immediately to `1.00`.
+- Confirm the natural incident frequency, earliest day and shared refire delay
+  remain unchanged.
+- Inspect `Player.log` for new C#, XML, Scribe, raid-generation or Lord errors.

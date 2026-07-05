@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.3.68-dev - Add open-conflict Goa'uld pressure reduction
+
+- Start from published `develop` and annotated tag `v0.3.67-dev` on
+  `feature/goauld-open-conflict-pressure-reduction`.
+- Add a bounded `0.75` natural-raid point factor for each Goa'uld domain engaged
+  in at least one active open conflict.
+- Apply the factor only while `SG1_GateRimStoryteller` is active.
+- Never stack the reduction when one domain is involved in several open
+  conflicts.
+- Preserve the original storyteller points for doctrine eligibility and
+  selection, then reduce only the final force budget.
+- Keep the single natural raid incident, `baseChance`, earliest day and shared
+  refire delay unchanged.
+- Exclude controlled raids, extraction reprisals, mission attacks, intercepted
+  threats and deterministic forced tests from the reduction.
+- Add relation and threat-progression diagnostics showing the original points,
+  effective points, active factor and reason.
+- Add a dedicated developer action that exercises the real reduced natural-raid
+  path without changing the deterministic regression commands.
+- Update technical documentation, current validation, durable tests and the
+  French player wiki.
+- Replace the failed patch-based local deliveries with cumulative complete-file
+  revision `r3`.
+- Validate final local revision `r3`, including the `0.3.68.0` build, the `75%`
+  open-conflict factor, non-stacking behavior, storyteller isolation,
+  save/reload, unchanged doctrine selection, excluded reprisal and forced paths,
+  existing Goa'uld regressions and a clean `Player.log`.
+
 ## 0.3.67-dev - Adopt develop-based branch workflow
 
 - Start the workflow migration from published tag `v0.3.66-dev` without

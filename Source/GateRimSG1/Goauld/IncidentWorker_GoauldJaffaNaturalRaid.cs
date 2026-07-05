@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -54,6 +55,7 @@ namespace GateRimSG1.Goauld
         private const float FallbackDestructionWeight = 1f;
 
         private GoauldJaffaRaidDoctrine? forcedDebugDoctrine;
+        private bool forceOpenConflictPressureForDebug;
 
         protected override string ControlledRaidPurpose
         {
@@ -113,6 +115,8 @@ namespace GateRimSG1.Goauld
                     parms.canTimeoutOrFlee = true;
                     break;
             }
+
+            ApplyOpenConflictPressureReduction(parms);
         }
 
         protected override bool CanFireNowSub(IncidentParms parms)
@@ -186,12 +190,34 @@ namespace GateRimSG1.Goauld
             return weights;
         }
 
+        public static float ResolveNaturalRaidPressureFactor(
+            Faction faction)
+        {
+            return GoauldOpenConflictPressureUtility
+                .ResolveNaturalRaidPressureFactor(faction);
+        }
+
+        public static float CalculateEffectiveNaturalRaidPoints(
+            Faction faction,
+            float points)
+        {
+            if (!(points > 0f))
+            {
+                return points;
+            }
+
+            return Math.Max(
+                1f,
+                points * ResolveNaturalRaidPressureFactor(faction));
+        }
+
         public bool TryExecuteForcedDebugDoctrine(
             IncidentParms parms,
             GoauldJaffaRaidDoctrine doctrine)
         {
             // Debug access validates the real worker without requiring the
-            // test map to satisfy normal storyteller eligibility.
+            // test map to satisfy normal storyteller eligibility. Forced
+            // doctrine regressions intentionally preserve their exact points.
             forcedDebugDoctrine = doctrine;
 
             try
@@ -202,6 +228,54 @@ namespace GateRimSG1.Goauld
             {
                 forcedDebugDoctrine = null;
             }
+        }
+
+        public bool TryExecuteForcedWithOpenConflictPressure(
+            IncidentParms parms)
+        {
+            bool previousValue = forceOpenConflictPressureForDebug;
+            forceOpenConflictPressureForDebug = true;
+
+            try
+            {
+                return TryExecute(parms);
+            }
+            finally
+            {
+                forceOpenConflictPressureForDebug = previousValue;
+            }
+        }
+
+        private void ApplyOpenConflictPressureReduction(
+            IncidentParms parms)
+        {
+            if (parms == null
+                || !(parms.points > 0f)
+                || (parms.forced && !forceOpenConflictPressureForDebug))
+            {
+                return;
+            }
+
+            float factor = ResolveNaturalRaidPressureFactor(parms.faction);
+
+            if (factor >= 0.999f)
+            {
+                return;
+            }
+
+            float originalPoints = parms.points;
+            float effectivePoints = CalculateEffectiveNaturalRaidPoints(
+                parms.faction,
+                originalPoints);
+            parms.points = effectivePoints;
+
+            GR_Log.Message(
+                "Reduced natural Goa'uld Jaffa raid pressure for "
+                + $"{parms.faction?.Name ?? "<missing domain>"} "
+                + $"({parms.faction?.loadID ?? -1}) from "
+                + $"{originalPoints:0} to {effectivePoints:0} points "
+                + $"(factor {factor:0.00}) because the domain is in "
+                + "open conflict under SG-1 Command.");
         }
 
         private static GoauldJaffaRaidDoctrineWeights

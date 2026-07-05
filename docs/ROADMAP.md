@@ -5,45 +5,42 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Nouveau fonctionnement des branches (`0.3.67-dev`)
+## Dernier jalon clôturé - Réduction de pression en conflit ouvert (`0.3.68-dev`)
 
-- [x] Créer `develop` exactement depuis le commit ciblé par `v0.3.66-dev`.
-- [x] Publier `develop` comme branche d'intégration distante.
-- [x] Créer `feature/develop-branch-workflow` depuis `develop`.
-- [x] Réserver `main` à la future ligne stable `1.0.0` et aux correctifs stables.
-- [x] Définir `develop` comme état intégré du dernier jalon de développement
-  validé.
-- [x] Exiger que les branches `feature/*` et `fix/*` partent d'un `develop` à
-  jour.
-- [x] Intégrer les jalons validés avec `git merge --ff-only`.
-- [x] Créer les tags `v...-dev` après intégration, sur le même commit que
-  `develop`.
-- [x] Rendre facultative la publication des branches temporaires et autoriser
-  leur suppression après vérification du tag.
-- [x] Documenter la gestion de divergence, le passage futur à `1.0.0`, les
-  hotfixes stables et la comparaison correcte des tags annotés.
-- [x] Valider le rebuild `0.3.67.0`, le contrôle de cohérence et le démarrage
-  minimal.
-- [x] Publier le jalon par fast-forward dans `develop`, publier le tag annoté
-  `v0.3.67-dev`, laisser `main` inchangée et synchroniser les métadonnées wiki.
+- [x] Partir de `develop` exactement alignée sur le tag publié `v0.3.67-dev`.
+- [x] Créer `feature/goauld-open-conflict-pressure-reduction`.
+- [x] Appliquer un facteur fixe `0,75` aux points des raids naturels ordinaires
+  des domaines engagés dans au moins un conflit ouvert.
+- [x] Ne jamais cumuler cette réduction lorsqu'un domaine affronte plusieurs
+  rivaux.
+- [x] Choisir la doctrine avec les points vanilla initiaux, puis réduire les
+  points transmis à la génération du raid.
+- [x] Conserver la fréquence, le délai de réapparition, l'admissibilité et les
+  poids de doctrine.
+- [x] Limiter l'effet au storyteller `Commandement SG-1`.
+- [x] Exclure les représailles d'extraction, raids contrôlés, missions et
+  régressions déterministes.
+- [x] Ajouter un rapport par domaine, un diagnostic de progression et une
+  commande dédiée au vrai chemin réduit.
+- [x] Conserver un effet dérivé sans nouvelle donnée sérialisée.
+- [x] Abandonner les livraisons `r1` et `r2` fondées sur des patchs incompatibles
+  et publier la révision cumulative `r3` uniquement avec des fichiers complets.
+- [x] Réussir le rebuild forcé `0.3.68.0`.
+- [x] Valider facteur `75%`, non-cumul, suspension sous Cassandra, raid naturel,
+  représailles inchangées, sauvegarde/recharge et `Player.log`.
+- [x] Finaliser le changelog, l'état projet, la validation et le wiki.
+- [x] Intégrer par fast-forward dans `develop`, publier le tag annoté
+  `v0.3.68-dev` et synchroniser le wiki séparé.
 
-La révision finale `r4` est validée et publiée. Le nouveau flux devient la règle
-permanente du projet : `develop` est la base intégrée, les branches de jalon sont
-temporaires et chaque tag de développement pointe sur un commit intégré dans
-`develop`.
+La révision finale `r3` est validée et publiée. La première conséquence militaire
+des relations Goa'uld reste volontairement limitée : elle réduit seulement les
+points des raids naturels ordinaires, sans modifier leur cadence ni les autres
+attaques.
 
-## Prochain jalon décidé - Réduction de pression en conflit ouvert (`0.3.68-dev`)
+## Prochain jalon
 
-- [ ] Partir de `develop` après le tag publié `v0.3.67-dev`.
-- [ ] Créer `feature/goauld-open-conflict-pressure-reduction`.
-- [ ] Réduire de façon limitée et plafonnée la pression des raids naturels d'un
-  domaine engagé dans au moins un conflit ouvert.
-- [ ] Ne pas cumuler la réduction lorsqu'un domaine affronte plusieurs rivaux.
-- [ ] Garder les représailles, raids contrôlés et missions hors de ce
-  modificateur.
-- [ ] Conserver les poids de doctrine fondés sur les points initiaux.
-- [ ] Limiter l'effet au storyteller `Commandement SG-1`.
-- [ ] Ajouter diagnostics, tests ciblés, régressions et documentation.
+Aucun jalon suivant n'est encore sélectionné. Le prochain travail doit partir de
+`develop` après `v0.3.68-dev`, sur une branche temporaire dédiée.
 
 ## Registre d'idées non planifiées
 
@@ -79,8 +76,9 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 - [x] Faire évoluer automatiquement ces relations uniquement lorsque le
   storyteller GateRim SG-1 est actif.
 - [x] Conserver les relations aux factions plutôt qu'aux dirigeants.
-- [ ] En conflit ouvert, réduire de façon limitée et plafonnée la pression des
-  deux domaines contre le joueur.
+- [x] En conflit ouvert, réduire de façon limitée et plafonnée à `75%` les
+  points des raids naturels ordinaires des deux domaines contre le joueur,
+  sans cumul, sans changement de fréquence et uniquement sous Commandement SG-1.
 - [ ] Permettre un événement rare sur la carte : deux troupes de domaines
   rivaux s'affrontent près de la colonie, avec une lettre, une durée maximale
   de quelques jours et une intervention facultative du joueur contre un camp

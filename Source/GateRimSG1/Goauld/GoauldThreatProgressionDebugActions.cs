@@ -52,12 +52,24 @@ namespace GateRimSG1.Goauld
                         map,
                         points,
                         diagnosticDomain);
+            float naturalRaidPressureFactor =
+                IncidentWorker_GoauldJaffaNaturalRaid
+                    .ResolveNaturalRaidPressureFactor(
+                        diagnosticDomain);
+            float effectiveNaturalRaidPoints =
+                IncidentWorker_GoauldJaffaNaturalRaid
+                    .CalculateEffectiveNaturalRaidPoints(
+                        diagnosticDomain,
+                        points);
 
             Dialog_MessageBox dialog = new Dialog_MessageBox(
                 "Goa'uld threat progression audit\n\n"
                 + $"Vanilla storyteller points: {points:0}\n"
-                + "Natural and intercepted raid points: "
-                + $"{points:0}\n"
+                + "Natural raid pressure factor: "
+                + $"{naturalRaidPressureFactor * 100f:0}%\n"
+                + "Natural raid effective points: "
+                + $"{effectiveNaturalRaidPoints:0}\n"
+                + $"Intercepted raid points: {points:0}\n"
                 + "Diagnostic domain: "
                 + (diagnosticDomain?.Name ?? "<none>")
                 + "\n"
@@ -98,6 +110,38 @@ namespace GateRimSG1.Goauld
                 + $"{weights.Percentage(weights.direct):0}% / abduction "
                 + $"{weights.Percentage(weights.abduction):0}% / destruction "
                 + $"{weights.Percentage(weights.destruction):0}%";
+        }
+
+        public static void ForceCurrentNaturalRaidWithPressure()
+        {
+            Map map = Find.CurrentMap;
+            IncidentDef incidentDef =
+                GR_DefOf.SG1_GoauldJaffaNaturalRaid;
+            IncidentWorker_GoauldJaffaNaturalRaid worker =
+                incidentDef?.Worker
+                    as IncidentWorker_GoauldJaffaNaturalRaid;
+
+            if (map == null
+                || incidentDef?.category == null
+                || worker == null)
+            {
+                Reject(
+                    "The current map or natural Goa'uld raid definition "
+                    + "is unavailable.");
+                return;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+                incidentDef.category,
+                map);
+            parms.forced = true;
+
+            if (!worker.TryExecuteForcedWithOpenConflictPressure(parms))
+            {
+                Reject(
+                    "Could not start the current natural Goa'uld raid "
+                    + "with relation pressure enabled.");
+            }
         }
 
         public static void ForceCurrentDirectRaid()

@@ -29,6 +29,15 @@ namespace GateRimSG1.Goauld
                 GoauldInterDomainRelationDebugActions.ShowReport,
                 900));
             root.AddChild(ActionNode(
+                "Show natural raid pressure report",
+                GoauldOpenConflictPressureDebugActions.ShowReport,
+                875));
+            root.AddChild(ActionNode(
+                "Force current natural raid (pressure applied)",
+                GoauldThreatProgressionDebugActions
+                    .ForceCurrentNaturalRaidWithPressure,
+                850));
+            root.AddChild(ActionNode(
                 "Create additional test domain",
                 GoauldInterDomainRelationDebugActions
                     .CreateAdditionalTestDomain,

@@ -1,6 +1,6 @@
 # Goa'uld threat progression audit
 
-Version: `0.3.53-dev`
+Version: `0.3.53-dev`; open-conflict natural-raid factor added in `0.3.68-dev`.
 
 ## Goal
 
@@ -9,31 +9,53 @@ before any new doctrine becomes natural. Colony wealth, pawn strength and the
 active storyteller difficulty remain owned by RimWorld. GateRim SG-1 consumes
 the resulting threat points and applies only documented encounter factors.
 
-No code path is specialized for a particular storyteller. A future GateRim
-SG-1 storyteller and compatible vanilla or modded storytellers must all pass
-through the same vanilla point APIs.
+Ordinary systems remain compatible with vanilla and modded storytellers. The
+`0.3.68-dev` open-conflict factor is an explicit SG-1 Command strategic
+consequence and is inactive under every other storyteller.
 
 ## Audit result
 
-| System | Previous behavior | `0.3.53-dev` behavior |
-| --- | --- | --- |
-| Natural Jaffa raid | Usually received vanilla incident points; missing points fell back to `500` | Preserves supplied points and resolves a missing value from the current vanilla storyteller |
-| Controlled raid doctrines | Explicit test points or a `500`-point fallback | Unchanged developer fallback; the new menu can supply current, `300` or `4000` points explicitly |
-| Intercepted Tok'ra warning | Always stored `500` points | Stores the vanilla storyteller points when the warning is created and uses the same snapshot when the raid arrives |
-| Free-symbiote incursion | Vanilla points mapped to one through four symbiotes | Unchanged intentional biological cap; one symbiote can create a persistent hostile host and is not equivalent to one ordinary raider |
-| Combat mission sites | Vanilla point snapshots were reduced by encounter factors and then capped for early play | Encounter factors and minimums remain, but combat ceilings no longer flatten advanced colonies |
-| Relay sabotage site | Calculated points from an empty temporary map, capped defenders at eight and reinforcements at three, then selected a random fixed layout | Stores points on the world site before travel; defender and reinforcement budgets keep scaling; bunker, split station and walled courtyard are selected by threat tier |
-| Goa'uld settlements | Vanilla `Settlement` pawn-group and map-generation budgets | Unchanged; settlement growth remains owned by RimWorld and is covered by regression testing |
+| System | Current behavior |
+| --- | --- |
+| Natural Jaffa raid | Preserves supplied vanilla points, resolves missing points from the current storyteller and selects doctrine from the original value. Under SG-1 Command only, a domain in open conflict then transmits `75%` of those points to force generation. |
+| Controlled raid doctrines | Use current or explicit test points and never receive the relation factor. |
+| Intercepted Tok'ra warning | Stores the vanilla storyteller snapshot and uses the same value when the raid arrives. |
+| Extraction reprisal | Uses its stored point snapshot through a forced incident path and never receives the relation factor. |
+| Free-symbiote incursion | Maps vanilla points to one through four symbiotes with its intentional biological cap. |
+| Combat mission sites | Use vanilla point snapshots with their documented encounter factors and minimums. |
+| Relay sabotage site | Stores points before travel, keeps scaling defenders and reinforcements, and selects its layout by threat tier. |
+| Goa'uld settlements | Continue to use vanilla settlement generation budgets. |
 
-The manual mission groups keep a minimum count so low-point encounters cannot
-generate an empty objective. They no longer apply a custom maximum count. Their
-guard cadence now matches the faction Combat group weighting more closely:
-roughly four warriors for one guard.
+The natural-raid modifier changes neither incident frequency nor doctrine
+eligibility. Direct, abduction and destruction weights are calculated before
+any open-conflict reduction is applied.
 
 All Goa'uld/Jaffa raids routed through the shared worker explicitly use vanilla
-`EdgeWalkIn`. High point budgets must never unlock drop-pod arrival modes: pods
-are mechanically valid for RimWorld but do not match the current GateRim SG-1
-lore or the absence of a functional Stargate transport layer.
+`EdgeWalkIn`. High point budgets must never unlock drop-pod arrival modes.
+
+## Open-conflict factor
+
+For the ordinary non-forced natural incident:
+
+```text
+effective points = max(1, vanilla points × factor)
+```
+
+The factor is `0.75` only when:
+
+- SG-1 Command is active;
+- the selected attacking faction is a Goa'uld System Lord domain;
+- that domain participates in at least one active open-conflict pair.
+
+Every other case uses `1.00`. Several simultaneous conflicts do not stack. The
+factor is derived from the persistent relation states and adds no serialized
+field.
+
+Forced callers remain outside the modifier by default. This includes extraction
+reprisals, controlled raids, deterministic doctrine regressions and mission
+attacks. The dedicated pressure-test command temporarily enables the factor for
+one forced execution so the real worker can be validated without waiting for a
+natural storyteller roll.
 
 ## Relay tiers
 
@@ -49,76 +71,41 @@ Reinforcements use `25%` of that defender budget with a one-pawn minimum. The
 site serializes the original vanilla point snapshot so travel time, temporary
 map wealth and save/reload do not silently change its intended difficulty.
 
-## Follow-up state
-
-- Natural abduction and destruction doctrines are activated by `0.3.54-dev`
-  through the same incident and vanilla point contract documented here.
-- `0.3.64-dev` keeps that same contract and attaches one persistent profile to
-  each Goa'uld faction instance. The profile supplies relative `direct /
-  abduction / destruction` weights only after the existing eligibility checks.
-- Goa'uld demands and ultimatums are approved as a direction but need their own
-  design and implementation milestone.
-- Rival-domain reports, territorial expansion and settlement destruction are
-  approved as a direction but remain deferred until discreet anti-collapse
-  safeguards are designed.
-- The future full texture pass remains separate.
-
 ## Developer access
 
-Open:
+Open the progression audit at:
 
 ```text
 Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
 ```
 
-`Show current progression` reports the current vanilla points, the first active
-diagnostic domain, its persistent profile, effective natural-doctrine weights
-and context, symbiote count, relay defender/reinforcement budgets and expected
-relay layout. The same menu can force controlled regression raids and, since
-`0.3.54-dev`, each doctrine through the real natural worker.
+`Show current progression` reports vanilla points, the diagnostic domain, its
+persistent profile, the relation-derived factor, effective natural-raid points,
+unchanged intercepted points, doctrine weights, symbiote count, relay budgets
+and expected relay layout.
 
-Since `0.3.64-dev`, exact per-domain profiles and base weights are available
-under:
+Open the per-domain factor report and the dedicated reduced-raid test at:
 
 ```text
-Actions de débogage > GateRim SG-1 > Goa'uld... > Domain doctrines...
+Actions de débogage > GateRim SG-1 > Goa'uld inter-domain relations...
 ```
 
-Normal faction information exposes only the qualitative profile description.
+`Show natural raid pressure report` lists every active domain with its open-
+conflict status and current factor. `Force current natural raid (pressure
+applied)` executes the real worker while temporarily enabling the factor for
+that forced validation only.
 
-Final `0.3.64-dev` validation confirms the three persistent profiles, effective
-weights, French faction report, save/reload persistence and unchanged direct,
-abduction and destruction raid behavior on revision `r2`.
+The exact forced natural direct `300`, abduction `800` and destruction `1800`
+actions remain unchanged regression tools.
 
+## Final validation
 
-## Required in-game validation
+Final local revision `r3` passed the focused coverage in
+[`TESTING_CURRENT.md`](TESTING_CURRENT.md): both open-conflict domains at `75%`,
+non-stacking, `100%` under Cassandra and after leaving conflict, doctrine
+eligibility from original points, one real reduced natural-worker execution,
+exact forced-doctrine points, unreduced extraction reprisal points, save/reload
+and a clean `Player.log`.
 
-1. Open `Show current progression` and record the displayed vanilla points.
-2. Save the game, force the `300`-point direct raid and note its approximate
-   size.
-3. Reload that save, force the `4000`-point direct raid and confirm that it is
-   substantially larger.
-4. Reload between tests and force each current-point doctrine. Confirm that
-   direct assault, abduction and destruction keep their distinct behavior and
-   use a force consistent with the current report.
-5. Create an intercepted threat through the exact Tok'ra debug submenu and
-   confirm in `Player.log` that the scheduled and triggered point values match
-   the current snapshot rather than always showing `500`.
-6. Reveal a decoded relay site, enter it normally with a caravan and compare
-   its garrison and layout with the earlier progression report.
-7. Save/reload before entering a second time when possible and verify that the
-   stored difficulty does not change.
-8. Inspect `Player.log` for new C#, XML, Scribe, pawn-generation or Lord errors.
-
-Revision `r1` validated threat scaling and doctrine behavior but exposed a
-high-point vanilla drop-pod arrival. Revision `r2` must repeat the advanced and
-current-doctrine raids and confirm edge arrival without any transport pod.
-
-Final validation passed on `r2`: the advanced direct raid, controlled
-abduction/destruction doctrines and intercepted raid use edge arrival without
-pods, while the previously accepted scaling remains unchanged.
-
-Optional settlement regression: compare an attacked Goa'uld settlement from a
-low-wealth save with another settlement from an advanced save under the same
-storyteller settings. Vanilla `Settlement` generation must produce a clearly
-stronger base rather than a repeated fixed garrison.
+The older threat-scaling, edge-arrival, relay-layout and settlement regressions
+remain valid and unchanged.

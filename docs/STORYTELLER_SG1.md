@@ -1,13 +1,14 @@
 # GateRim SG-1 storyteller
 
-## Milestone
+## Current milestone
 
-- Version: `0.3.66-dev`
-- Branch: `feature/goauld-inter-domain-relations`
-- Base: `v0.3.65-dev`
-- Assembly: `0.3.66.0`
-- Local revision: `r1`
-- Status: published after final local revision `r1`.
+- Foundation: `0.3.65-dev`
+- Persistent inter-domain relations: `0.3.66-dev`
+- First strategic consequence: `0.3.68-dev`
+- Current branch: `feature/goauld-open-conflict-pressure-reduction`
+- Current assembly: `0.3.68.0`
+- Current local revision: `r3`
+- Status: published after final local revision `r3`.
 
 ## Purpose
 
@@ -16,13 +17,13 @@ for strategic systems that should belong to GateRim SG-1 rather than silently
 modifying Cassandra, Phoebe, Randy or a modded storyteller.
 
 Selecting `SG-1 Command` preserves the currently resolved Cassandra Classic
-incident cadence while activating the persistent Goa'uld inter-domain relation
-simulation added in `0.3.66-dev`.
+incident cadence while activating persistent Goa'uld inter-domain relations and
+their separately validated strategic consequences.
 
 ## Player-facing description
 
 The selection-panel description remains the concise `0.3.65-dev-r2` behavioral
-summary. The relation system does not lengthen this text or restore a French
+summary. Later strategic systems do not lengthen this text or restore a French
 scrollbar.
 
 French:
@@ -51,9 +52,9 @@ This avoids embedding a frozen copy of Core XML. RimWorld 1.6, active DLCs and
 compatible updates remain authoritative for Cassandra's ordinary incident
 contracts.
 
-The appended component still emits no incidents in `0.3.66-dev`. Strategic
-relations are maintained by a dedicated persistent game component rather than
-by adding an incident to Cassandra's component list.
+The appended component emits no independent incident. Strategic relations and
+their consequences are maintained by dedicated systems that check the active
+storyteller explicitly.
 
 ## Activation contract
 
@@ -73,8 +74,8 @@ When another storyteller is selected:
 - no RP relation report is emitted;
 - all pair and global relation deadlines are shifted forward by the suspension
   duration when SG-1 Command becomes active again;
-- no SG-1-only frequency or threat modifier is applied;
-- existing published GateRim incidents retain their normal contracts.
+- the open-conflict natural-raid pressure factor resolves to `1.00`;
+- existing published GateRim incidents retain their ordinary contracts.
 
 This is a true suspension rather than a backlog. Returning to SG-1 Command does
 not immediately consume transitions that would have become due under Cassandra,
@@ -82,7 +83,7 @@ Phoebe, Randy or a modded storyteller.
 
 ## Persistent storyteller lifecycle
 
-`GameComponent_GateRimStorytellerOrchestrator` continues to store:
+`GameComponent_GateRimStorytellerOrchestrator` stores:
 
 - schema version;
 - whether SG-1 Command was active at the previous observation;
@@ -94,8 +95,9 @@ Phoebe, Randy or a modded storyteller.
 It observes changes every `250` ticks and on new game, load and final
 initialization.
 
-Its report now also embeds the relation tracker's availability, active pair
-count, automatic activation state and next strategic deadline.
+Its report embeds relation-tracker availability, active pair count, automatic
+activation state, next strategic deadline and the count of domains whose
+natural-raid pressure is currently reduced.
 
 ## Persistent relation model
 
@@ -113,22 +115,14 @@ Each `GoauldInterDomainRelationState` stores:
 The relation belongs to the factions, not their current leaders. Replacing a
 System Lord therefore does not reset diplomacy. A defeated domain remains safe
 to deserialize and inspect, but its pairs are inactive and cannot transition.
-A missing or invalid faction reference is removed during normalization.
 
 New worlds and older saves are reconciled automatically. Every active pair that
 does not already exist begins in neutrality.
 
-## Relation states
+## Relation states and transitions
 
-The five persistent states are:
-
-- neutral;
-- rivalry;
-- open conflict;
-- truce;
-- alliance.
-
-The bounded first transition graph is:
+The five persistent states are neutral, rivalry, open conflict, truce and
+alliance.
 
 ```text
 neutral -> rivalry | alliance
@@ -138,10 +132,7 @@ truce -> neutral | rivalry | alliance
 alliance -> neutral | rivalry
 ```
 
-The graph prevents nonsensical direct jumps such as open conflict immediately
-becoming alliance.
-
-## Cadence and suspension
+Cadence remains:
 
 - first transition for a new pair: `8–16` days;
 - pair cooldown after a transition: `12–24` days;
@@ -149,35 +140,39 @@ becoming alliance.
 - runtime observation interval: `250` ticks;
 - at most one automatic pair transition per global window.
 
-Initial pair delays are derived from stable faction identifiers. Later delays
-and transition choices use RimWorld's ordinary random source and persist in the
-save.
+Pair and text anti-repetition remain unchanged.
 
-## Anti-repetition
+## Open-conflict natural-raid pressure
 
-Two separate safeguards apply:
+`0.3.68-dev` adds the first mechanical consequence of a relation state.
 
-1. When more than one eligible pair exists, the pair used by the previous
-   transition is excluded from the next selection.
-2. Each resulting relation has three English and three French RP text variants.
-   The exact key used by the previous report cannot repeat immediately when an
-   alternative variant exists.
+While SG-1 Command is active, every active domain participating in at least one
+open conflict uses a fixed `0.75` factor for its ordinary natural Goa'uld Jaffa
+raid points.
 
-A world containing only one pair may naturally return to that pair after its
-full cooldown.
+The effect is intentionally narrow:
+
+- the factor does not stack across several rivals;
+- doctrine eligibility and weighting use the original vanilla points;
+- the factor is applied after doctrine selection;
+- incident chance and refire delay remain unchanged;
+- every forced incident path remains excluded by default, including extraction
+  reprisals and deterministic regression raids;
+- the dedicated pressure-test command enables the factor for one forced test;
+- no new data is serialized.
+
+Changing storyteller or relation state changes the derived factor immediately.
 
 ## RP reports
 
 Every real state change produces one neutral-event letter naming both domains.
-The texts describe political or military intelligence without claiming effects
-that do not exist yet.
-
-The reports do not reveal transition weights, hidden thresholds or future raid
-modifiers.
+The reports describe political or military intelligence without exposing hidden
+weights. The open-conflict texts remain valid because the new effect is a modest
+reduction in pressure rather than a guaranteed absence of attacks.
 
 ## Developer diagnostics
 
-Open exactly:
+Relation path:
 
 ```text
 Actions de débogage
@@ -185,48 +180,43 @@ Actions de débogage
 > Goa'uld inter-domain relations...
 ```
 
-Available actions:
+`Show natural raid pressure report` exposes the natural-raid factor for every
+active domain.
 
-- `Show relation report`;
-- `Create additional test domain`;
-- `Reconcile relation pairs`;
-- `Force next transition`;
-- direct setters for neutral, rivalry, open conflict, truce and alliance;
-- `Reset relations`.
-
-The report exposes storyteller activation, schema, active and stored pairs,
-suspension, last pair, last text key, current and previous states, transition
-counts and deadlines.
-
-The ordinary storyteller report remains available at:
+Threat path:
 
 ```text
 Actions de débogage
 > GateRim SG-1
-> Storyteller SG-1...
-> Show orchestration report
+> Goa'uld...
+> Threat progression...
 ```
 
-## Inactive consequences
+`Show current progression` displays vanilla points, effective natural points,
+pressure factor, unchanged intercepted points and doctrine context.
 
-`0.3.66-dev` deliberately adds no:
+`Force current natural raid (pressure applied)` is available in the relation
+menu and exercises the ordinary relation-aware worker while temporarily enabling
+the factor for that forced validation. The historical forced-doctrine commands
+remain exact and bypass the factor.
 
-- raid-frequency reduction during war;
-- raid-frequency or threat increase during alliance;
+## Still inactive consequences
+
+`0.3.68-dev` still adds no:
+
 - battle between two Goa'uld groups near the colony;
+- alliance frequency or threat increase;
 - reinforcements, joint raids or shared reprisals;
-- doctrine interaction;
+- doctrine interaction caused by relations;
 - territorial expansion or settlement destruction;
 - change to faction goodwill toward the player.
 
-These later effects require separate balancing and validation milestones. The
-five states and their RP reports are the complete player-facing strategic
-behavior of this milestone.
+These effects require separate balancing and validation milestones.
 
 ## Validation
 
-Final revision `r1` passed the forced `0.3.66.0` rebuild, five-state tests,
-French RP reports, save/reload persistence, Cassandra suspension and resumption,
-pair anti-repetition, existing Goa'uld regressions and a clean `Player.log`.
-The final result is recorded in [`TESTING_CURRENT.md`](TESTING_CURRENT.md), and
-the durable coverage is maintained in [`TESTING.md`](TESTING.md).
+Final local revision `r3` passed the forced `0.3.68.0` rebuild, factor and
+storyteller tests, non-stacking validation, a real reduced natural raid, exact
+forced-regression points, an unreduced extraction reprisal, save/reload and a
+clean `Player.log`. The final result is recorded in
+[`TESTING_CURRENT.md`](TESTING_CURRENT.md).

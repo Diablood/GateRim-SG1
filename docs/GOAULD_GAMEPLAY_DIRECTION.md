@@ -1,6 +1,10 @@
 # Goa'uld gameplay direction
 
-Status: approved baseline. Threat progression, natural doctrines, the first extraction ultimatum, persistent domain doctrines, the SG-1 storyteller foundation and persistent inter-domain relation states are published. Military and territorial relation consequences remain deferred.
+Status: approved baseline. Threat progression, natural doctrines, the first
+extraction ultimatum, persistent domain doctrines, the SG-1 storyteller,
+persistent inter-domain relation states and the first bounded open-conflict
+pressure consequence are published. Larger military and territorial relation
+consequences remain deferred.
 
 ## Purpose
 
@@ -23,6 +27,8 @@ The mod already provides:
 - free-symbiote incursions, autonomous implantation and hostile host takeover;
 - emergency and active-host extraction with persistent symbiote identity;
 - Goa'uld host castes, Jaffa ranks, equipment and cultural identities;
+- persistent relations between domain pairs under Commandement SG-1;
+- a bounded `75%` natural-raid pressure factor for domains in open conflict;
 - several Goa'uld objectives used inside Tok'ra operations.
 
 Future work should deepen these systems instead of creating a second mission
@@ -72,11 +78,11 @@ It must not rely on a hidden mission list presented as Goa'uld content.
 - Texture finalization remains part of the later complete visual pass.
 - Existing and future combat systems use RimWorld's vanilla threat points so
   colony wealth, pawn strength and the active storyteller remain authoritative.
-- Existing GateRim incidents keep shared contracts compatible with vanilla
-  and modded storytellers.
-- Automatic inter-domain relation transitions and their strategic frequency
-  or threat modifiers belong exclusively to the optional GateRim SG-1
-  storyteller. Other storytellers receive no hidden pacing changes.
+- Existing GateRim incidents keep shared contracts compatible with vanilla and
+  modded storytellers.
+- Automatic inter-domain relation transitions and their strategic frequency or
+  threat modifiers belong exclusively to the optional GateRim SG-1 storyteller.
+  Other storytellers receive no hidden pacing changes.
 
 ## Ranked equipment direction
 
@@ -103,7 +109,7 @@ reprisal, hostile mission site and settlement defense. Remove fixed early-game
 forces and unjustified ceilings, preserve deliberate encounter factors, and
 scale constructed defenses when a site contains an enemy installation.
 
-This slice is assigned to `0.3.53-dev`.
+This slice was published in `0.3.53-dev`.
 
 ### 2. Natural assault doctrines
 
@@ -113,11 +119,7 @@ validated direct assault. Selection must depend on clear colony context and
 must preserve a readable distinction between capture, destruction and a normal
 raid.
 
-This is the smallest candidate because most of its combat foundation already
-exists. It still requires an explicit design for frequency, eligibility,
-warning text, retreat behavior and storyteller weighting before activation.
-
-This slice is assigned to `0.3.54-dev`. It retains one low-frequency incident,
+This slice was published in `0.3.54-dev`. It retains one low-frequency incident,
 uses weights `2/1/1`, gates abduction on threat plus available colonists and
 gates destruction on threat plus building wealth.
 
@@ -134,12 +136,12 @@ Coercive demands and ultimatums are allowed when they fit the situation. They
 must remain understandable player choices with visible consequences, not
 disguised Tok'ra-style mission offers.
 
-The first reaction slice is assigned to `0.3.55-dev`: successful extraction of
-an active Goa'uld provokes one announced, delayed raid from that exact domain.
-It validates attribution, persistence and anti-stacking before any tribute or
-ultimatum choice is designed.
+The first reaction slice was published in `0.3.55-dev`: successful extraction
+of an active Goa'uld provokes one announced, delayed raid from that exact
+domain. It validates attribution, persistence and anti-stacking before any
+tribute or ultimatum choice is designed.
 
-The first choice slice is assigned to `0.3.56-dev`. The offended domain gives
+The first choice slice was published in `0.3.56-dev`. The offended domain gives
 the colony one day to surrender the exact extracted symbiote. Compliance
 removes that pawn and averts the attack; refusal or expiration schedules the
 validated delayed reprisal. This deliberately avoids an arbitrary silver
@@ -171,44 +173,51 @@ local pressure and reprisal rules are proven. They must be designed around the
 world systems that actually exist at that time, especially before the Stargate
 becomes functional.
 
-Rival domains may generate RP reports, expand their territories and destroy
-enemy settlements. This simulation must receive discreet safeguards against
-self-elimination, runaway expansion and world imbalance before it becomes
-active.
-
-The first relation layer is implemented for local validation in `0.3.66-dev`.
-Every unordered pair of Goa'uld faction instances stores neutral, rivalry, open
-conflict, truce or alliance independently of its current leaders. New and older
-saves reconcile missing pairs in neutrality. Only the GateRim SG-1 storyteller
-advances the bounded transition graph; selecting another storyteller freezes
-and shifts its deadlines rather than accumulating overdue transitions.
+The first relation layer was published in `0.3.66-dev`. Every unordered pair of
+Goa'uld faction instances stores neutral, rivalry, open conflict, truce or
+alliance independently of its current leaders. New and older saves reconcile
+missing pairs in neutrality. Only the GateRim SG-1 storyteller advances the
+bounded transition graph; selecting another storyteller freezes and shifts its
+deadlines rather than accumulating overdue transitions.
 
 Slow pair and global delays, previous-pair exclusion and three RP variants per
-resulting state limit visible repetition. The reports identify both domains but
-do not claim effects that are not active.
+resulting state limit visible repetition. The reports identify both domains.
 
-Open conflict may later reduce the two domains' pressure against the player and
-create a temporary battlefield near the colony where two Goa'uld forces fight
-each other. The player may remain outside the battle or attack either or both
-forces. The encounter must receive one clear letter, avoid an initial assault
-on player structures and force survivors to leave after at most a few days.
+The first mechanical consequence was published in `0.3.68-dev`. While
+Commandement SG-1 is active, each domain participating in at least one open
+conflict uses `75%` of its ordinary natural Goa'uld Jaffa raid points. The
+factor never stacks, doctrine selection still uses the original vanilla points,
+raid frequency remains unchanged and extraction reprisals, controlled raids,
+mission attacks and deterministic tests are excluded.
+
+Open conflict may later create a temporary battlefield near the colony where
+two Goa'uld forces fight each other. The player may remain outside the battle or
+attack either or both forces. The encounter must receive one clear letter,
+avoid an initial assault on player structures and force survivors to leave
+after at most a few days.
 
 Alliance may later increase attack cadence or raid strength only slightly and
 under a global cap. Later extensions may include second-domain reinforcements,
 joint raids, doctrine interactions, shared reprisals and alliance rupture.
-None of those military or territorial consequences is active in `0.3.66-dev`.
+
+Rival domains may later expand their territories and destroy enemy settlements.
+Those simulations require discreet safeguards against self-elimination, runaway
+expansion and world imbalance before activation.
 
 ## Validated decisions
 
 - Threat progression is audited before natural abduction or destruction.
 - Natural doctrine activation preserves one shared incident frequency and
   keeps direct assault as the dominant fallback.
-- Goa'uld demands and ultimatums are an accepted future interaction type.
-- Rival domains may conflict through RP information, territorial expansion and
-  settlement destruction once anti-collapse safeguards are designed.
+- Goa'uld demands and ultimatums are an accepted interaction type when tied to
+  visible causes and consequences.
+- Rival domains may conflict through RP information, bounded raid pressure,
+  future battle incidents, territorial expansion and settlement destruction
+  once each layer receives appropriate safeguards.
 - Domain doctrine profiles are assigned to faction instances, not named leaders,
-  and may modify only existing doctrine weights until a later milestone
-  explicitly extends their consequences.
+  and modify only existing doctrine weights.
+- The `0.3.68-dev` open-conflict factor is a separate post-selection consequence
+  and does not rewrite doctrine weights or thresholds.
 - Automatic Goa'uld inter-domain relations and their strategic effects are
   reserved for the GateRim SG-1 storyteller; other storytellers remain
   untouched.
