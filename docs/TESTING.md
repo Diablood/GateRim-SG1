@@ -1,5 +1,52 @@
 # Testing checklist
 
+## 0.3.72-dev - Publication-documentation repair
+
+- preserve the immutable `v0.3.71-dev` tag and verify it still targets
+  `a52c5ab13cc6943926b7f5d83743922793e3262a`;
+- rebuild the unchanged implementation as assembly `0.3.72.0`;
+- rerun the duration audit and require the same `104` unique migration keys;
+- rerun the complete project-consistency check with `0.3.72-dev` metadata;
+- verify that the corrective diff changes no C# gameplay source, Def, patch or
+  translation;
+- load the main menu, confirm the corrective version and accept only a clean
+  startup log;
+- load and resave one `0.3.71-dev-r5` validation save without moving a displayed
+  deadline;
+- publish the restored documentation under a new tag rather than rewriting the
+  defective historical commit.
+
+## 0.3.71-dev - Player-facing duration formatting
+
+Final revision `r5` validated and published. Durable coverage:
+
+- route new player-facing durations through
+  `GR_PlayerFacingDurationUtility.Format(int ticks)` or another direct vanilla
+  period formatter;
+- preserve the strict allowlist for legacy translation callers and reject
+  duplicate migration keys;
+- run `tools/check-duration-formatting.cmd` after any change to keyed text,
+  countdown UI, site inspection, mission status, communicator text or temporal
+  helper code;
+- reject a dynamic placeholder followed by a fixed English or French hour/day
+  suffix unless the exact legacy key is handled by the compatibility bridge;
+- reject unapproved manual tick-to-hour/day conversions near player-facing C#
+  construction;
+- keep direct vanilla formatter calls, developer-only raw timing reports and
+  mechanical per-day calculations free of false positives;
+- verify French and English output without duplicated units;
+- cover sub-day, multi-day, quadrum and year-scale values, including zero or
+  completed countdowns;
+- confirm that every deadline, expiry, cooldown and recurrence completes on the
+  same game tick as before;
+- save and reload representative world sites, operations and communicator
+  cooldowns without timing drift;
+- regress decoded-relay inspection and commands, one framework observation
+  offer, one therapeutic offer, Goa'uld-queen extraction recovery and Tok'ra
+  diplomatic cooldown text;
+- inspect `Player.log` for Harmony target failures, translation exceptions, XML
+  errors and C# errors.
+
 ## 0.3.70-dev - Open-conflict Goa'uld world battlefield site
 
 Final revision `r4` validated. Durable coverage:

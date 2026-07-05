@@ -1,5 +1,64 @@
 # Changelog
 
+## 0.3.72-dev - Repair 0.3.71 publication documentation
+
+- Start from published `develop` and immutable annotated tag `v0.3.71-dev` on
+  `fix/0.3.71-publication-documentation`.
+- Record that the validated duration-formatting implementation was published,
+  while its final documentation package was omitted from the tagged commit.
+- Restore the final project state, roadmap, changelog, current validation result
+  and durable regression coverage prepared for `0.3.71-dev-r5`.
+- Restore the public content-status and duration-formatting wiki sources.
+- Preserve the existing `v0.3.71-dev` tag without deletion, movement or rewrite.
+- Advance public and technical metadata to `0.3.72-dev` / `0.3.72.0` so the
+  corrective integrated state can receive its own immutable tag.
+- Keep the shared formatter, `104`-key compatibility bridge, audit scripts,
+  translations, stored ticks, deadlines, cooldowns, recurrence, save data and
+  gameplay balance unchanged.
+- Require only targeted build, consistency, startup-version, save/reload and
+  clean-log validation because the correction adds no gameplay implementation.
+
+## 0.3.71-dev - Standardize player-facing duration formatting
+
+- Start from published `develop` and annotated tag `v0.3.70-dev` on
+  `feature/standardize-duration-formatting`.
+- Add `GR_PlayerFacingDurationUtility.Format(int ticks)` as the shared
+  player-facing duration entry point over RimWorld's localized vanilla period
+  formatter.
+- Let RimWorld select readable seconds, hours, days, quadrums or years instead
+  of exposing large manually converted hour totals.
+- Clamp completed countdowns safely while preserving the exact tick on which
+  each deadline, expiry or cooldown completes.
+- Redirect legacy duration helpers used by temporary world sites, relay
+  reinforcements and the living Jaffa-officer extraction flow.
+- Add a narrow Harmony translation bridge for `104` explicitly listed GateRim
+  keys whose existing callers still provide rounded hours or decimal days.
+- Cover all eight published Tok'ra operation families, their offers and active
+  status summaries, secure-communicator cooldowns and dialogs, pending stages of
+  the trusted first mission, intercepted-threat estimates and the legacy
+  safehouse marker.
+- Extend the final audit corrections to framework observation offers, the
+  therapeutic-offer inspection, Goa'uld-queen extraction recovery, Tok'ra
+  diplomatic cooldown text and historical Goa'uld battlefield fallbacks.
+- Correct English and French decoded-relay inspection and caravan-command text
+  so a complete localized duration never receives a second fixed unit suffix.
+- Add `tools/check-duration-formatting.cmd` and a Windows PowerShell 5.1
+  compatible repository-wide audit.
+- Reject fixed hour/day suffixes attached to dynamic placeholders, duplicate
+  migration keys and unapproved manual tick-to-hour/day conversion near
+  player-facing C# code.
+- Exempt vanilla period-formatting calls, developer-only raw timing reports and
+  mechanical per-day calculations from false positives.
+- Keep stored ticks, deadlines, cooldowns, recurrence, expiry, save data and all
+  balance values unchanged.
+- Correct the first audit script's Windows PowerShell parser failure in
+  cumulative revision `r4`.
+- Correct seven uncovered translation keys and overly broad C# heuristics in
+  final cumulative revision `r5`.
+- Validate final local revision `r5`, including build `0.3.71.0`, the complete
+  `104`-key audit, project consistency, targeted French and English surfaces,
+  save/reload preservation, unchanged timing and a clean accepted startup log.
+
 ## 0.3.70-dev - Add open-conflict Goa'uld world battlefield site
 
 - Start from published `develop` and annotated tag `v0.3.69-dev` on

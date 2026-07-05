@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.71-dev`
+- Development version: `0.3.72-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,14 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-The current development milestone standardizes player-facing durations through
-RimWorld's localized vanilla formatter. The validated first pass covers major
-temporary sites, extraction windows and the relay reinforcement timer. The
-second cumulative pass extends the same presentation contract to Tok'ra offer
-letters, operation status lines, secure-communicator cooldowns, intercepted
-threat estimates and the legacy safehouse marker. The current cumulative revision `r5` also covers framework offer variants,
-therapeutic opportunities, Goa'uld-queen recovery and diplomatic cooldown text without changing any actual deadline or
-balance value.
+`0.3.72-dev` is a corrective publication milestone. It restores the final
+documentation, durable tests and public wiki sources that were omitted from the
+published `0.3.71-dev` commit, while preserving that existing tag unchanged.
+The duration-formatting code, translations, timers, saves and gameplay balance
+validated in `0.3.71-dev` are not modified. The technical assembly is rebuilt
+only so the repository metadata and development version are coherent again.
 
 ## Playable content
 

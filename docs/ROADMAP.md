@@ -5,31 +5,36 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Site mondial de bataille (`0.3.70-dev`)
+## Dernier jalon de gameplay validé - Formatage uniforme des durées (`0.3.71-dev`)
 
-La révision finale `r4` est validée et publiée. Les conflits ouverts peuvent
-alterner entre une bataille locale et un site mondial facultatif, avec slot,
-cooldown, paire et règles de combat partagés.
+La révision locale `r5` et son code sont validés et publiés sous le tag immuable
+`v0.3.71-dev`. Le paquet documentaire final n'a toutefois pas été inclus dans
+le commit tagué ; cette omission est corrigée séparément sans déplacer le tag.
 
-## Jalon courant - Formatage uniforme des durées (`0.3.71-dev`)
+## Jalon correctif courant - Réparation documentaire de publication (`0.3.72-dev`)
 
-- [x] Partir de `develop` exactement alignée sur `v0.3.70-dev`.
-- [x] Sélectionner `feature/standardize-duration-formatting`.
-- [x] Créer un utilitaire commun fondé sur le formateur temporel vanilla.
-- [x] Conserver les ticks bruts dans les diagnostics développeur.
-- [x] Migrer une première tranche de sites mondiaux et de comptes à rebours.
-- [x] Auditer les offres, statuts d'opérations et communicateurs restants.
-- [x] Auditer l'ancien marqueur de planque et les inspections de menace interceptée.
-- [x] Ajouter un contrôle statique global des unités fixes dans les
-  traductions et des convertisseurs C# proches de l’interface joueur.
-- [ ] Exécuter ce contrôle sur le dépôt complet ; la première passe du paquet a
-  déjà corrigé cinq suffixes restants du relais décodé.
-- [x] Vérifier en jeu toutes les surfaces anglaises et françaises de `r2`.
-- [x] Confirmer sur `r2` qu'aucune durée réelle ni valeur d'équilibrage ne change.
-- [x] Réussir le rebuild forcé `0.3.71.0`.
-- [x] Valider sauvegarde/recharge, expirations et `Player.log` sur `r2`.
-- [ ] Finaliser changelog, tests durables, état projet et wiki par ZIP cumulatif.
-- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.71-dev`.
+- [x] Partir de `develop` exactement alignée sur `v0.3.71-dev`.
+- [x] Créer `fix/0.3.71-publication-documentation`.
+- [x] Restaurer les documents finaux de `0.3.71-dev`.
+- [x] Restaurer les deux sources wiki modifiées par le formatage des durées.
+- [x] Conserver intact le tag publié `v0.3.71-dev`.
+- [x] Passer les métadonnées à `0.3.72-dev` et l'assembly à `0.3.72.0`.
+- [x] Ne modifier aucun code de gameplay, délai, sauvegarde ou équilibrage.
+- [ ] Réussir le rebuild forcé `0.3.72.0`.
+- [ ] Réussir l'audit des durées et le contrôle global de cohérence.
+- [ ] Valider la version au menu principal et un `Player.log` propre.
+- [ ] Finaliser la documentation de clôture.
+- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.72-dev`.
+- [ ] Synchroniser le dépôt wiki séparé.
+
+## Prochain travail différé à sélectionner
+
+Aucun jalon de gameplay ni nom de branche n'est réservé après le correctif
+`0.3.72-dev`. Le premier prolongement stratégique déjà décidé reste l'effet
+borné des alliances Goa'uld sur la pression exercée contre le joueur. Avant de
+créer sa branche, choisir explicitement entre une légère hausse de cadence ou
+de puissance, définir les plafonds et confirmer l'absence de cumul, de raids
+conjoints implicites et d'effet sous un autre storyteller.
 
 ## Registre d'idées non planifiées
 

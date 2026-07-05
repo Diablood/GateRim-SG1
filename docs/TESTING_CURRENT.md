@@ -1,15 +1,22 @@
 # Current milestone validation
 
-Jalon: `0.3.71-dev - Standardize player-facing duration formatting`
+Jalon : `0.3.72-dev - Repair 0.3.71 publication documentation`
 
-Branch: `feature/standardize-duration-formatting`
+Branche : `fix/0.3.71-publication-documentation`
 
-Révision locale cumulative : `r5`
+Révision corrective candidate : `r1`
 
-Statut : `r1` et `r2` validées fonctionnellement. `r4` a rendu l’audit
-exécutable et a révélé sept clés temporelles encore non migrées ainsi que des
-faux positifs C# dus à un motif trop large. `r5` corrige ces deux catégories ;
-audit et retest ciblé à exécuter.
+Statut : validation ciblée requise avant publication.
+
+## Contexte de régression
+
+Le commit et le tag publiés `v0.3.71-dev` pointent sur
+`a52c5ab13cc6943926b7f5d83743922793e3262a`. Le code fonctionnel validé en
+`0.3.71-dev-r5` est présent, mais le paquet documentaire final n'a pas été
+inclus dans ce commit.
+
+Ce jalon correctif ne réécrit pas le tag. Il publie les documents omis dans un
+nouveau commit versionné et tagué séparément.
 
 ## Build and consistency
 
@@ -22,74 +29,48 @@ git diff --check
 .\tools\check-project-consistency.cmd
 ```
 
-Version de DLL attendue : `0.3.71.0`
+Version de DLL attendue : `0.3.72.0`
 
-Le contrôle de durée doit se terminer par :
+Résultats attendus :
 
-```text
-Duration-formatting audit passed.
+- DLL `0.3.72.0` construite avec succès ;
+- audit terminé par `Duration-formatting audit passed.` ;
+- `104` clés de migration explicites et uniques ;
+- aucune traduction avec unité fixe non migrée ;
+- aucun convertisseur manuel joueur non approuvé ;
+- versions `0.3.72-dev` / `0.3.72.0` cohérentes dans les métadonnées et
+  documents actifs ;
+- aucun fichier de gameplay modifié par le correctif.
+
+## Validation ciblée en jeu
+
+- Charger le menu principal et vérifier l'absence de nouvelle erreur rouge.
+- Confirmer que les métadonnées du mod affichent `0.3.72-dev`.
+- Charger une sauvegarde utilisée pour `0.3.71-dev-r5`.
+- Vérifier une durée déjà validée, par exemple l'inspection d'un site ou un
+  cooldown du communicateur, sans unité dupliquée.
+- Sauvegarder et recharger sans déplacement de l'échéance observée.
+- Accepter `Player.log` uniquement s'il ne contient aucune nouvelle erreur
+  Harmony, XML, traduction ou C#.
+
+## Contrôle du périmètre
+
+```powershell
+git diff --name-status v0.3.71-dev
+git diff --check v0.3.71-dev
 ```
 
-Jusqu’à la mise à jour finale du changelog, le seul échec de cohérence accepté
-reste :
+Le diff doit rester limité aux documents restaurés, aux deux sources wiki, aux
+métadonnées de version et à la DLL reconstruite selon le workflow du dépôt.
+Aucun fichier sous `Source/GateRimSG1/**/*.cs`, `Defs/`, `Patches/` ou
+`Languages/` ne doit changer.
 
-```text
-Newest changelog version is '0.3.70-dev'; expected '0.3.71-dev'.
-```
+## Publication après validation
 
-Tout autre échec est anormal.
+La publication sera effectuée seulement après retour explicite du testeur :
 
-## Couverture fonctionnelle déjà validée
-
-La validation `r2` couvre :
-
-- les principaux sites mondiaux et leurs comptes à rebours ;
-- les huit familles d’opérations Tok’ra ;
-- les lettres, statuts et inspections associés ;
-- les cooldowns et dialogues du communicateur sécurisé ;
-- les étapes différées de la mission Tok’ra unique ;
-- la menace interceptée et l’ancien marqueur de planque ;
-- le français et l’anglais ;
-- les durées multi-jours et inférieures à un jour ;
-- sauvegarde/recharge, échéances inchangées et `Player.log` propre.
-
-## Test final r5
-
-1. Exécuter les quatre commandes ci-dessus.
-2. Vérifier que l’audit charge `104` clés de migration explicites.
-3. Vérifier qu’aucune clé traduite avec unité fixe non migrée n’est signalée.
-4. Vérifier que les appels vanilla `ToStringTicksToPeriod()` et les calculs
-   mécaniques par jour ne sont plus signalés comme convertisseurs manuels.
-5. Forcer ou charger le site mondial du relais Goa’uld décodé.
-6. Vérifier en français puis en anglais son inspection, la description de
-   reconnaissance et la description de préparation du sabotage. Aucune unité ne
-   doit être doublée après la durée vanilla.
-7. Vérifier au moins une offre d’observation issue du framework, une offre
-   thérapeutique, le cooldown d’extraction d’une reine et un message de cooldown
-   diplomatique.
-8. Charger une sauvegarde utilisée pour `r2` et confirmer l’absence d’erreur
-   rouge, XML, traduction ou Harmony.
-
-Aucune répétition complète des autres scénarios fonctionnels n’est requise pour
-`r5`.
-
-
-## Correctif r4
-
-- correction de la compatibilité Windows PowerShell 5.1 du script `tools/check-duration-formatting.ps1` ;
-- aucun changement C#, XML, traduction, durée réelle, sauvegarde ou gameplay par rapport au contenu de `r3` ;
-- relancer l’audit de durée, le contrôle de cohérence et le retest ciblé du relais.
-
-
-## Correctif r5
-
-- ajoute les deux variantes d’offre d’observation du framework ;
-- migre l’inspection d’offre thérapeutique ;
-- migre le cooldown d’extraction de la reine Goa’uld ;
-- migre le message de cooldown diplomatique Tok’ra ;
-- couvre le fallback historique heures/jours du site de bataille Goa’uld ;
-- reconnaît les formes `RimWorld day(s)` et `jour(s) RimWorld` ;
-- retire le faux positif générique sur tout `ToString("0.#")` ;
-- ignore explicitement les actions développeur et le calcul mécanique de
-  dépendance au Prim’ta ;
-- ne modifie aucun tick, délai, sauvegarde ou équilibrage.
+- commit final sans suffixe `-r1` ;
+- fast-forward dans `develop` ;
+- tag annoté unique `v0.3.72-dev` ;
+- synchronisation du wiki séparé ;
+- aucune modification de `v0.3.71-dev`.

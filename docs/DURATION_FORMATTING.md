@@ -1,7 +1,7 @@
 # Player-facing duration formatting
 
-Status: cumulative revisions `r1` and `r2` functionally validated; `r5` ready
-for the corrected repository-wide audit and final targeted retest.
+Status: published in `0.3.71-dev` after final local revision `r5` and the
+complete repository-wide audit.
 
 ## Contract
 
@@ -111,3 +111,16 @@ The C# heuristic now searches only actual tick-to-hour/day divisions. It no
 longer treats arbitrary numeric formatting as a duration converter, skips
 developer-action files and explicitly classifies the Jaffa Prim’ta dependency
 per-day severity calculation as gameplay mathematics rather than UI formatting.
+
+## Final validation
+
+Final local revision `r5` passes the forced `0.3.71.0` build, the complete
+project-consistency check and the Windows PowerShell 5.1 duration audit. The
+audit loads `104` explicit migration keys without duplicates and reports no
+uncovered fixed-unit translation or unapproved player-facing tick conversion.
+
+Targeted French and English tests confirm the decoded-relay inspection and
+commands, framework observation offers, therapeutic-offer inspection,
+Goa'uld-queen extraction recovery and Tok'ra diplomatic cooldown. Save/reload
+preserves the underlying deadlines, and startup introduces no new Harmony, XML,
+translation or C# error. The contract is published under `v0.3.71-dev`.

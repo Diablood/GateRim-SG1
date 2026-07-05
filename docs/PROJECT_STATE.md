@@ -1,105 +1,58 @@
 # Project state
 
-Current milestone: `0.3.71-dev - Standardize player-facing duration formatting`
+Current milestone: `0.3.72-dev - Repair 0.3.71 publication documentation`
 
-- Current cumulative local revision: `r5`.
-- `r1` build and functional validation: passed according to the user.
-- `r2` build and functional validation: passed according to the user.
-- `r3` added the final static audit and corrected five remaining decoded-relay
-  translation suffixes, but its PowerShell script failed to parse on Windows
-  PowerShell 5.1 before the audit could run.
-- `r4` corrected the audit-script parser failure and successfully exposed the
-  remaining real omissions and overly broad C# heuristics.
-- `r5` migrates seven additional legacy translation keys and narrows the C#
-  detector so existing vanilla formatters, mechanical per-day calculations and
-  developer-only actions are classified correctly; validation is pending.
+- Candidate corrective revision: `r1`.
+- The gameplay and duration-formatting implementation validated in
+  `0.3.71-dev-r5` is unchanged.
+- Targeted build, consistency, startup-version and clean-log validation remain
+  required before publication.
 
 ## Repository state
 
-- Published starting point: `develop` exactly aligned with annotated tag
-  `v0.3.70-dev` at commit
-  `a54ab3ff7db947e8b5dfcf6a34338810e4caf28e`.
-- Active milestone branch: `feature/standardize-duration-formatting`.
-- Current development version: `0.3.71-dev`.
-- Technical assembly version: `0.3.71.0`.
+- Published starting point: `develop` and annotated tag `v0.3.71-dev` both
+  identify commit `a52c5ab13cc6943926b7f5d83743922793e3262a`.
+- That immutable commit contains the validated `0.3.71-dev` implementation but
+  omitted the final documentation package during publication.
+- Active corrective branch:
+  `fix/0.3.71-publication-documentation`.
+- Current development version: `0.3.72-dev`.
+- Technical assembly version: `0.3.72.0`.
 - `main` remains reserved for the first stable `1.0.0` line.
-- No commit, fast-forward integration, tag or publication is authorized before
-  complete local validation.
+- The published `v0.3.71-dev` tag must not be moved, deleted or rewritten.
 
-## Validated r1 scope
+## Corrective scope
 
-The first cumulative revision introduced
-`GR_PlayerFacingDurationUtility.Format(int ticks)` and redirected legacy helper
-methods used by:
+- Restore the final `0.3.71-dev` project state, roadmap, changelog, current-test
+  result and durable duration-formatting regression coverage.
+- Restore the public wiki sources for the content status and duration-formatting
+  contract.
+- Record the publication omission explicitly instead of pretending the original
+  annotated tag already contained those files.
+- Advance the repository and assembly metadata to `0.3.72-dev` /
+  `0.3.72.0` so the next integrated commit can receive its own immutable tag.
+- Preserve the `104`-key compatibility bridge, shared formatter, audit scripts,
+  translations, deadlines, cooldowns, recurrence, persistence and balance
+  exactly as validated in `0.3.71-dev-r5`.
+- Add no gameplay, faction, mission, incident, storyteller or save-data change.
 
-- the decoded Tok'ra relay site;
-- the Tok'ra distress-call site;
-- the Tok'ra introduction recovery site;
-- the temporary-base delivery site;
-- the Jaffa-officer capture and extraction flow;
-- the Goa'uld open-conflict world battlefield;
-- the Tok'ra relay reinforcement countdown.
+## Required validation
 
-The user reported the `r1` functional test as successful.
+Before publication:
 
-## Revision r2 scope
-
-The second cumulative revision adds an explicit translation-key compatibility
-bridge. It post-processes only known GateRim strings that still receive legacy
-rounded-hour or decimal-day arguments, replacing their complete English or
-French duration phrase with the shared vanilla-formatted period.
-
-Covered surfaces now also include:
-
-- all eight published Tok'ra operation offer families and their active status
-  summaries;
-- observation, intelligence, wounded-agent, medical-supply, diversion,
-  distress-call, delivery and officer-capture timing messages;
-- secure-communicator cooldown messages, dialogs, disabled reasons and detailed
-  status lines;
-- pending stages of the first trusted Tok'ra mission;
-- intercepted-threat arrival estimates;
-- the legacy hidden-safehouse world marker.
-
-The bridge uses a strict allowlist. Unlisted translation keys and non-numeric
-arguments remain untouched. Stored ticks, deadlines, cooldowns, recurrence,
-save data and balance remain unchanged. Raw technical durations remain allowed
-in developer reports.
-
-## Revision r3 scope
-
-The third cumulative revision adds a repository-wide duration-formatting audit:
-
-- scan every `Languages/*/Keyed/*.xml` file;
-- reject a translated placeholder followed by a fixed hour/day suffix unless
-  the exact key is listed in the compatibility bridge;
-- reject duplicate bridge keys;
-- scan all C# sources for an unapproved manual hour/day converter near
-  player-facing UI code;
-- keep developer-only raw timing reports exempt;
-- correct five decoded-relay inspection and caravan-command translations that
-  still appended a fixed day suffix to a complete vanilla-formatted duration;
-- change no gameplay code, timer or save state from the functionally validated
-  `r2` revision.
-
-Required `r5` validation:
-
-1. Run `git diff --check`.
-2. Build assembly `0.3.71.0` with `build.cmd`.
-3. Run `tools\check-duration-formatting.cmd`.
-4. Run `tools\check-project-consistency.cmd`; only the changelog mismatch is
-   expected before finalization.
-5. Recheck the decoded-relay world-site inspection and its reconnaissance and
-   sabotage command descriptions in French and English.
-6. Recheck one MissionFramework observation offer, one therapeutic-offer
-   inspection, the Goa'uld-queen extraction cooldown and the Tok'ra diplomatic
-   cooldown.
-7. Start RimWorld once and confirm no new Harmony, XML or translation error. A
-   full replay of the other `r2` scenarios is not required.
+- `git diff --check` must pass;
+- forced build must produce assembly `0.3.72.0`;
+- `tools/check-duration-formatting.cmd` must still pass with `104` unique keys;
+- `tools/check-project-consistency.cmd` must pass with the corrective version;
+- the main menu must load with `0.3.72-dev` metadata;
+- `Player.log` must contain no new Harmony, XML, translation or C# error;
+- the diff against `v0.3.71-dev` must contain only documentation, wiki sources,
+  version metadata and the rebuilt assembly output expected by the project
+  workflow.
 
 ## Next step
 
-After the `r5` audit and targeted duration retest pass, create one final cumulative ZIP that updates the
-changelog, durable regression suite, project state, roadmap and wiki. Only that
-final documentation package authorizes commit, fast-forward integration, tag
-and publication.
+Validate corrective revision `r1`. After explicit approval, finalize the
+documentation as published, fast-forward the fix branch into `develop`, create
+annotated tag `v0.3.72-dev`, and synchronize the two changed wiki pages. Only
+then select the next gameplay milestone from `docs/ROADMAP.md`.
