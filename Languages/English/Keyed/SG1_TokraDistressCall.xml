@@ -30,7 +30,7 @@
     <GR_TokraDistressCall_InspectResolvedSuccess>The distress operation has been resolved.</GR_TokraDistressCall_InspectResolvedSuccess>
     <GR_TokraDistressCall_InspectResolvedFailure>The distress operation has failed.</GR_TokraDistressCall_InspectResolvedFailure>
     <GR_TokraDistressCall_InspectActive>The true situation has been revealed. The expedition is active.</GR_TokraDistressCall_InspectActive>
-    <GR_TokraDistressCall_InspectPending>The source remains uncertain. About {0} hours remain.</GR_TokraDistressCall_InspectPending>
+    <GR_TokraDistressCall_InspectPending>The source remains uncertain. About {0} remain.</GR_TokraDistressCall_InspectPending>
     <GR_TokraDistressCall_ArrivalLabel>Distress signal revealed</GR_TokraDistressCall_ArrivalLabel>
     <GR_TokraDistressCall_ArrivalRescueText>The transmission was genuine. {0} Tok'ra survivor(s) lie within an attacked position, while {1} Goa'uld-aligned fighter(s) still control the area. Break the enemy presence and tend the symbiote shock in the field. Once the site is secure, a Tok'ra recovery team can extract stabilized survivors.</GR_TokraDistressCall_ArrivalRescueText>
     <GR_TokraDistressCall_ArrivalTrapText>The authentication was compromised. No Tok'ra survivors are waiting here; the signal was used to draw the expedition into an ambush. {1} Goa'uld-aligned fighter(s) are moving to close the trap.</GR_TokraDistressCall_ArrivalTrapText>

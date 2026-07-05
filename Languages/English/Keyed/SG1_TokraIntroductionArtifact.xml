@@ -41,7 +41,7 @@ The first contact has been secured. Further progress will depend on learning how
     <GR_TokraIntroduction_ArrivalLabel>Goa'uld recovery guard</GR_TokraIntroduction_ArrivalLabel>
     <GR_TokraIntroduction_ArrivalText>The caravan has reached the marked position. {0} armed guards protect the cipher module. Eliminate the resistance, secure the device and reform the caravan with it.</GR_TokraIntroduction_ArrivalText>
     <GR_TokraIntroduction_SiteCreationFailed>The encrypted coordinates cannot be resolved into a reachable site. The offer remains open for now.</GR_TokraIntroduction_SiteCreationFailed>
-    <GR_TokraIntroduction_InspectPending>Signal window closes in about {0} hour(s).</GR_TokraIntroduction_InspectPending>
+    <GR_TokraIntroduction_InspectPending>Signal window closes in about {0}.</GR_TokraIntroduction_InspectPending>
     <GR_TokraIntroduction_InspectActive>Goa'uld guards still control the recovery site.</GR_TokraIntroduction_InspectActive>
     <GR_TokraIntroduction_InspectSecured>The site is secure. Recover the cipher module and reform the caravan with it.</GR_TokraIntroduction_InspectSecured>
     <GR_TokraIntroduction_InspectCompleted>Cipher module recovered.</GR_TokraIntroduction_InspectCompleted>
@@ -56,7 +56,7 @@ The first contact has been secured. Further progress will depend on learning how
     <GR_TokraIntroduction_FailureSiteLost>The recovery site can no longer be reached. The hidden contact breaks transmission and disappears.</GR_TokraIntroduction_FailureSiteLost>
     <GR_TokraIntroduction_DebugOfferDeclined>Tok'ra introduction offer declined and rescheduled.</GR_TokraIntroduction_DebugOfferDeclined>
 
-    <GR_TokraIntroduction_DeadlineWarning>The encrypted coordinates are degrading. The recovery site will become unusable in about {0} hour(s).</GR_TokraIntroduction_DeadlineWarning>
+    <GR_TokraIntroduction_DeadlineWarning>The encrypted coordinates are degrading. The recovery site will become unusable in about {0}.</GR_TokraIntroduction_DeadlineWarning>
     <GR_TokraIntroduction_DebugDeadlineWarningWindow>The active recovery site has entered its final warning window.</GR_TokraIntroduction_DebugDeadlineWarningWindow>
     <GR_TokraIntroduction_DebugSiteExpired>The active recovery site has been forced to expire.</GR_TokraIntroduction_DebugSiteExpired>
     <GR_TokraIntroduction_DebugArtifactDestroyed>The tracked cipher module has been destroyed. The normal failure check will resolve the attempt.</GR_TokraIntroduction_DebugArtifactDestroyed>

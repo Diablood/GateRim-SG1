@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.70-dev`
+> Dernière révision : `0.3.71-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -11,6 +11,7 @@ Cette page distingue les fonctionnalités déjà disponibles du contenu encore e
 
 | Élément | État | Version |
 |---|---|---|
+| Formatage localisé des durées | Deux passes fonctionnelles validées ; audit global corrigé pour couvrir les dernières offres du framework, l’offre thérapeutique, la reine Goa’uld, le cooldown diplomatique et le fallback du champ de bataille, sans modifier les délais réels | 0.3.71-dev-r5 |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, réduction bornée des raids naturels et orchestration partagée des batailles locales ou mondiales ; les autres storytellers suspendent les futures opportunités sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |

@@ -4,8 +4,17 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.70-dev`
+> Version du mod documentée : `0.3.71-dev`
 
+
+## Durées affichées
+
+La version de développement actuelle harmonise les délais visibles avec le
+format temporel localisé de RimWorld. Les sites, offres et statuts Tok'ra, les
+refroidissements du communicateur et plusieurs comptes à rebours affichent
+automatiquement heures, jours ou quadrums selon la durée réelle, sans modifier
+leur échéance. Un audit automatique contrôle aussi les futures traductions et
+conversions manuelles. Voir [Formatage des durées](Duration-Formatting).
 
 ## Le mod en bref
 

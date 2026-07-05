@@ -5,54 +5,31 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Bataille locale en conflit ouvert (`0.3.69-dev`)
+## Dernier jalon clôturé - Site mondial de bataille (`0.3.70-dev`)
 
-La révision finale `r6` est validée et publiée. Sous Commandement SG-1, une paire
-exacte en conflit ouvert peut produire une bataille près d'une colonie : entrée
-par les bords, rassemblement, assaut mutuel, riposte joueur bornée, rupture
-morale et retrait persistant.
+La révision finale `r4` est validée et publiée. Les conflits ouverts peuvent
+alterner entre une bataille locale et un site mondial facultatif, avec slot,
+cooldown, paire et règles de combat partagés.
 
-## Jalon courant - Site mondial de bataille (`0.3.70-dev`)
+## Jalon courant - Formatage uniforme des durées (`0.3.71-dev`)
 
-- [x] Partir de `develop` exactement alignée sur `v0.3.69-dev`.
-- [x] Sélectionner
-  `feature/goauld-open-conflict-world-battlefield-site`.
-- [x] Étendre le planificateur publié au lieu de créer une orchestration
-  parallèle.
-- [x] Partager le slot, le cooldown, l'anti-répétition de paire et l'alternance
-  locale / mondiale.
-- [x] Créer un site mondial temporaire lié à une paire exacte en conflit ouvert.
-- [x] Placer le site à `6–18` tuiles d'une carte principale et le conserver huit
-  jours.
-- [x] Ajouter une icône mondiale dédiée et des textes anglais/français.
-- [x] Utiliser le trajet et l'action d'arrivée vanilla d'une caravane.
-- [x] Générer la carte seulement à l'arrivée et réutiliser les deux détachements,
-  le ralliement, le combat mutuel, la riposte et le retrait de `0.3.69-dev`.
-- [x] Préserver capture, butin et reformation vanilla.
-- [x] Expirer un site ignoré sans échec, goodwill, relation, territoire ou
-  settlement modifié.
-- [x] Conserver le slot jusqu'à la suppression complète de la carte et du site.
-- [x] Ajouter diagnostics et actions développeur déterministes.
-- [x] Réussir le rebuild forcé `0.3.70.0`.
-- [x] Valider création, icône, voyage, arrivée, combat, reformation, expiration,
-  alternance, slot partagé, sauvegarde/recharge et `Player.log`.
-- [x] Finaliser changelog, tests durables, état projet et wiki.
-- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.70-dev`.
-
-## Jalon suivant décidé - Formatage uniforme des durées (`0.3.71-dev`)
-
-- [ ] Partir de `develop` après publication de `v0.3.70-dev`.
-- [ ] Créer `feature/standardize-duration-formatting`.
-- [ ] Inventorier toutes les durées visibles par le joueur dans le mod.
-- [ ] Utiliser les fonctions de formatage vanilla appropriées plutôt que des
-  conversions manuelles dispersées.
-- [ ] Afficher minutes, heures, jours, quadrums ou années selon l'échelle réelle.
-- [ ] Conserver les ticks bruts uniquement dans les rapports développeur.
-- [ ] Harmoniser lettres, inspections de sites, messages, gizmos et statuts de
-  mission.
-- [ ] Vérifier anglais, français, singuliers et pluriels.
-- [ ] Ne modifier aucune durée réelle, cadence, échéance ou valeur d'équilibrage.
-- [ ] Ajouter une couverture durable des principaux formats temporels.
+- [x] Partir de `develop` exactement alignée sur `v0.3.70-dev`.
+- [x] Sélectionner `feature/standardize-duration-formatting`.
+- [x] Créer un utilitaire commun fondé sur le formateur temporel vanilla.
+- [x] Conserver les ticks bruts dans les diagnostics développeur.
+- [x] Migrer une première tranche de sites mondiaux et de comptes à rebours.
+- [x] Auditer les offres, statuts d'opérations et communicateurs restants.
+- [x] Auditer l'ancien marqueur de planque et les inspections de menace interceptée.
+- [x] Ajouter un contrôle statique global des unités fixes dans les
+  traductions et des convertisseurs C# proches de l’interface joueur.
+- [ ] Exécuter ce contrôle sur le dépôt complet ; la première passe du paquet a
+  déjà corrigé cinq suffixes restants du relais décodé.
+- [x] Vérifier en jeu toutes les surfaces anglaises et françaises de `r2`.
+- [x] Confirmer sur `r2` qu'aucune durée réelle ni valeur d'équilibrage ne change.
+- [x] Réussir le rebuild forcé `0.3.71.0`.
+- [x] Valider sauvegarde/recharge, expirations et `Player.log` sur `r2`.
+- [ ] Finaliser changelog, tests durables, état projet et wiki par ZIP cumulatif.
+- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.71-dev`.
 
 ## Registre d'idées non planifiées
 
@@ -93,9 +70,9 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
   sans cumul, sans changement de fréquence et uniquement sous Commandement SG-1.
 - [x] Publier `0.3.69-dev` : bataille locale entre deux domaines en conflit
   ouvert, avec ralliement, intervention facultative et retrait borné.
-- [ ] Valider puis publier `0.3.70-dev` : site mondial temporaire représentant
-  un autre champ de bataille entre domaines, visitable ou ignorable par
-  caravane, avec slot et cooldown partagés.
+- [x] Publier `0.3.70-dev` : site mondial temporaire représentant un autre
+  champ de bataille entre domaines, visitable ou ignorable par caravane, avec
+  slot et cooldown partagés.
 - [ ] En alliance, permettre une légère augmentation plafonnée de la fréquence
   ou de la puissance des attaques des domaines concernés.
 - [ ] Étendre ultérieurement les alliances par des renforts d'un second domaine,

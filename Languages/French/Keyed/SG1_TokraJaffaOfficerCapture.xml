@@ -36,8 +36,8 @@
     <GR_TokraJaffaOfficerCapture_HandoffStarted>La caravane a sécurisé le rendez-vous avec {0}. Une équipe d'extraction Tok'ra devrait atteindre la position dans environ {1} heure(s). Quitter la tuile interrompra la remise.</GR_TokraJaffaOfficerCapture_HandoffStarted>
     <GR_TokraJaffaOfficerCapture_HandoffInterrupted>La caravane a quitté le rendez-vous dissimulé avant l'arrivée de l'équipe d'extraction Tok'ra. La remise devra être organisée de nouveau.</GR_TokraJaffaOfficerCapture_HandoffInterrupted>
     <GR_TokraJaffaOfficerCapture_HandoffCompleted>Une équipe d'extraction Tok'ra a rejoint la caravane, pris {0} en charge puis quitté la zone sous couverture.</GR_TokraJaffaOfficerCapture_HandoffCompleted>
-    <GR_TokraJaffaOfficerCapture_InspectPending>Position de campagne pas encore visitée. Il reste environ {0} heures.</GR_TokraJaffaOfficerCapture_InspectPending>
-    <GR_TokraJaffaOfficerCapture_InspectActive>Cible : {0}. Opération de capture active ; il reste environ {1} heures.</GR_TokraJaffaOfficerCapture_InspectActive>
+    <GR_TokraJaffaOfficerCapture_InspectPending>Position de campagne pas encore visitée. Il reste environ {0}.</GR_TokraJaffaOfficerCapture_InspectPending>
+    <GR_TokraJaffaOfficerCapture_InspectActive>Cible : {0}. Opération de capture active ; il reste environ {1}.</GR_TokraJaffaOfficerCapture_InspectActive>
     <GR_TokraJaffaOfficerCapture_InspectReturn>Prisonnier sécurisé : {0}. Revenez à cette position pour la remise ; il reste environ {1} heures.</GR_TokraJaffaOfficerCapture_InspectReturn>
     <GR_TokraJaffaOfficerCapture_InspectHandoff>Remise Tok'ra en cours pour {0} ; l'équipe d'extraction devrait arriver dans environ {1} heure(s).</GR_TokraJaffaOfficerCapture_InspectHandoff>
     <GR_TokraJaffaOfficerCapture_InspectSucceeded>L'équipe d'extraction Tok'ra a quitté la colonie avec l'officier.</GR_TokraJaffaOfficerCapture_InspectSucceeded>
@@ -60,9 +60,9 @@
     <GR_TokraJaffaOfficerCapture_ExtractionTeamArrived>Une équipe d'extraction Tok'ra est entrée dans la colonie pour prendre {0} en charge. L'officier a été entravé pour la récupération.</GR_TokraJaffaOfficerCapture_ExtractionTeamArrived>
     <GR_TokraJaffaOfficerCapture_ExtractionPickupStarted>Les Tok'ra ont pris physiquement {0} en charge et se dirigent vers le périmètre.</GR_TokraJaffaOfficerCapture_ExtractionPickupStarted>
     <GR_TokraJaffaOfficerCapture_ExtractionTargetDeparted>Le porteur Tok'ra a franchi le périmètre avec {0}. L'opération sera confirmée lorsque le reste de l'équipe aura quitté la carte.</GR_TokraJaffaOfficerCapture_ExtractionTargetDeparted>
-    <GR_TokraJaffaOfficerCapture_InspectReturnHome>Prisonnier sécurisé dans la caravane : {0}. Revenez dans une colonie du joueur ; il reste environ {1} heures.</GR_TokraJaffaOfficerCapture_InspectReturnHome>
-    <GR_TokraJaffaOfficerCapture_InspectAwaitingCall>Prisonnier détenu dans la colonie : {0}. Appelez les Tok'ra depuis un communicateur alimenté ; il reste environ {1} heures.</GR_TokraJaffaOfficerCapture_InspectAwaitingCall>
-    <GR_TokraJaffaOfficerCapture_InspectExtractionInbound>Extraction Tok'ra demandée pour {0} ; arrivée prévue dans environ {1} heure(s).</GR_TokraJaffaOfficerCapture_InspectExtractionInbound>
+    <GR_TokraJaffaOfficerCapture_InspectReturnHome>Prisonnier sécurisé dans la caravane : {0}. Revenez dans une colonie du joueur ; il reste environ {1}.</GR_TokraJaffaOfficerCapture_InspectReturnHome>
+    <GR_TokraJaffaOfficerCapture_InspectAwaitingCall>Prisonnier détenu dans la colonie : {0}. Appelez les Tok'ra depuis un communicateur alimenté ; il reste environ {1}.</GR_TokraJaffaOfficerCapture_InspectAwaitingCall>
+    <GR_TokraJaffaOfficerCapture_InspectExtractionInbound>Extraction Tok'ra demandée pour {0} ; arrivée prévue dans environ {1}.</GR_TokraJaffaOfficerCapture_InspectExtractionInbound>
     <GR_TokraJaffaOfficerCapture_InspectExtractionActive>Équipe d'extraction Tok'ra présente dans la colonie pour {0}.</GR_TokraJaffaOfficerCapture_InspectExtractionActive>
     <GR_TokraJaffaOfficerCapture_InspectExtractionLeaving>{0} a franchi le périmètre avec les Tok'ra ; attente du départ complet de l'équipe.</GR_TokraJaffaOfficerCapture_InspectExtractionLeaving>
 </LanguageData>

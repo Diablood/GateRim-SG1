@@ -30,7 +30,7 @@
     <GR_TokraDistressCall_InspectResolvedSuccess>L'opération de détresse a été résolue.</GR_TokraDistressCall_InspectResolvedSuccess>
     <GR_TokraDistressCall_InspectResolvedFailure>L'opération de détresse a échoué.</GR_TokraDistressCall_InspectResolvedFailure>
     <GR_TokraDistressCall_InspectActive>La situation réelle a été révélée. L'expédition est en cours.</GR_TokraDistressCall_InspectActive>
-    <GR_TokraDistressCall_InspectPending>La source reste incertaine. Environ {0} heures restent disponibles.</GR_TokraDistressCall_InspectPending>
+    <GR_TokraDistressCall_InspectPending>La source reste incertaine. Il reste environ {0}.</GR_TokraDistressCall_InspectPending>
     <GR_TokraDistressCall_ArrivalLabel>Origine du signal révélée</GR_TokraDistressCall_ArrivalLabel>
     <GR_TokraDistressCall_ArrivalRescueText>La transmission était authentique. {0} survivant(s) Tok'ra gisent au cœur d'une position attaquée, tandis que {1} combattant(s) alliés aux Goa'uld contrôlent encore les lieux. Brisez la présence ennemie et traitez le choc du symbiote sur le terrain. Une fois le site sécurisé, une équipe Tok'ra pourra extraire les survivants stabilisés.</GR_TokraDistressCall_ArrivalRescueText>
     <GR_TokraDistressCall_ArrivalTrapText>L'authentification était compromise. Aucun survivant Tok'ra n'attend ici : le signal a servi à attirer l'expédition dans une embuscade. {1} combattant(s) alliés aux Goa'uld resserrent le piège.</GR_TokraDistressCall_ArrivalTrapText>

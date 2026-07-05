@@ -41,7 +41,7 @@ Le premier contact est assuré. La suite dépendra de la capacité de la colonie
     <GR_TokraIntroduction_ArrivalLabel>Garde de récupération Goa'uld</GR_TokraIntroduction_ArrivalLabel>
     <GR_TokraIntroduction_ArrivalText>La caravane a atteint la position signalée. {0} gardes armés protègent le module de chiffrement. Éliminez la résistance, sécurisez l'appareil puis reformez la caravane en l'emportant.</GR_TokraIntroduction_ArrivalText>
     <GR_TokraIntroduction_SiteCreationFailed>Les coordonnées chiffrées ne permettent pas d'identifier un site accessible. L'offre reste ouverte pour le moment.</GR_TokraIntroduction_SiteCreationFailed>
-    <GR_TokraIntroduction_InspectPending>La fenêtre du signal se refermera dans environ {0} heure(s).</GR_TokraIntroduction_InspectPending>
+    <GR_TokraIntroduction_InspectPending>La fenêtre du signal se refermera dans environ {0}.</GR_TokraIntroduction_InspectPending>
     <GR_TokraIntroduction_InspectActive>Des gardes Goa'uld contrôlent encore le site de récupération.</GR_TokraIntroduction_InspectActive>
     <GR_TokraIntroduction_InspectSecured>Le site est sécurisé. Récupérez le module de chiffrement et reformez la caravane en l’emportant.</GR_TokraIntroduction_InspectSecured>
     <GR_TokraIntroduction_InspectCompleted>Module de chiffrement récupéré.</GR_TokraIntroduction_InspectCompleted>
@@ -56,7 +56,7 @@ Le premier contact est assuré. La suite dépendra de la capacité de la colonie
     <GR_TokraIntroduction_FailureSiteLost>Le site de récupération n'est plus accessible. Le contact dissimulé coupe la transmission et disparaît.</GR_TokraIntroduction_FailureSiteLost>
     <GR_TokraIntroduction_DebugOfferDeclined>Offre d'introduction Tok'ra refusée et reprogrammée.</GR_TokraIntroduction_DebugOfferDeclined>
 
-    <GR_TokraIntroduction_DeadlineWarning>Les coordonnées chiffrées se dégradent. Le site de récupération deviendra inutilisable dans environ {0} heure(s).</GR_TokraIntroduction_DeadlineWarning>
+    <GR_TokraIntroduction_DeadlineWarning>Les coordonnées chiffrées se dégradent. Le site de récupération deviendra inutilisable dans environ {0}.</GR_TokraIntroduction_DeadlineWarning>
     <GR_TokraIntroduction_DebugDeadlineWarningWindow>Le site de récupération actif est entré dans sa dernière fenêtre d’alerte.</GR_TokraIntroduction_DebugDeadlineWarningWindow>
     <GR_TokraIntroduction_DebugSiteExpired>L’expiration du site de récupération actif a été forcée.</GR_TokraIntroduction_DebugSiteExpired>
     <GR_TokraIntroduction_DebugArtifactDestroyed>Le module de chiffrement suivi a été détruit. Le contrôle normal d’échec va résoudre la tentative.</GR_TokraIntroduction_DebugArtifactDestroyed>

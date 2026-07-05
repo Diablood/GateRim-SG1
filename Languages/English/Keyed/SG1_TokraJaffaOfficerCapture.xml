@@ -36,8 +36,8 @@
     <GR_TokraJaffaOfficerCapture_HandoffStarted>The caravan has secured the rendezvous with {0}. A Tok'ra extraction team should reach the position in about {1} hour(s). Leaving the tile will interrupt the handoff.</GR_TokraJaffaOfficerCapture_HandoffStarted>
     <GR_TokraJaffaOfficerCapture_HandoffInterrupted>The caravan left the concealed rendezvous before the Tok'ra extraction team arrived. The handoff must be arranged again.</GR_TokraJaffaOfficerCapture_HandoffInterrupted>
     <GR_TokraJaffaOfficerCapture_HandoffCompleted>A Tok'ra extraction team has reached the caravan, taken custody of {0} and departed under concealment.</GR_TokraJaffaOfficerCapture_HandoffCompleted>
-    <GR_TokraJaffaOfficerCapture_InspectPending>Field position not yet entered. About {0} hours remain.</GR_TokraJaffaOfficerCapture_InspectPending>
-    <GR_TokraJaffaOfficerCapture_InspectActive>Target: {0}. Capture operation active; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectActive>
+    <GR_TokraJaffaOfficerCapture_InspectPending>Field position not yet entered. About {0} remain.</GR_TokraJaffaOfficerCapture_InspectPending>
+    <GR_TokraJaffaOfficerCapture_InspectActive>Target: {0}. Capture operation active; about {1} remain.</GR_TokraJaffaOfficerCapture_InspectActive>
     <GR_TokraJaffaOfficerCapture_InspectReturn>Prisoner secured: {0}. Return to this position for handoff; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectReturn>
     <GR_TokraJaffaOfficerCapture_InspectHandoff>Tok'ra handoff in progress for {0}; the extraction team should arrive in about {1} hour(s).</GR_TokraJaffaOfficerCapture_InspectHandoff>
     <GR_TokraJaffaOfficerCapture_InspectSucceeded>The Tok'ra extraction team left the colony with the officer.</GR_TokraJaffaOfficerCapture_InspectSucceeded>
@@ -60,9 +60,9 @@
     <GR_TokraJaffaOfficerCapture_ExtractionTeamArrived>A Tok'ra extraction team has entered the colony to take {0} into custody. The officer has been restrained for the pickup.</GR_TokraJaffaOfficerCapture_ExtractionTeamArrived>
     <GR_TokraJaffaOfficerCapture_ExtractionPickupStarted>The Tok'ra have taken physical custody of {0} and are moving toward the perimeter.</GR_TokraJaffaOfficerCapture_ExtractionPickupStarted>
     <GR_TokraJaffaOfficerCapture_ExtractionTargetDeparted>The Tok'ra carrier has crossed the perimeter with {0}. The operation will be confirmed once the rest of the team has withdrawn.</GR_TokraJaffaOfficerCapture_ExtractionTargetDeparted>
-    <GR_TokraJaffaOfficerCapture_InspectReturnHome>Prisoner secured in caravan: {0}. Return to a player colony; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectReturnHome>
-    <GR_TokraJaffaOfficerCapture_InspectAwaitingCall>Prisoner held at the colony: {0}. Call the Tok'ra from a powered communicator; about {1} hours remain.</GR_TokraJaffaOfficerCapture_InspectAwaitingCall>
-    <GR_TokraJaffaOfficerCapture_InspectExtractionInbound>Tok'ra extraction requested for {0}; arrival expected in about {1} hour(s).</GR_TokraJaffaOfficerCapture_InspectExtractionInbound>
+    <GR_TokraJaffaOfficerCapture_InspectReturnHome>Prisoner secured in caravan: {0}. Return to a player colony; about {1} remain.</GR_TokraJaffaOfficerCapture_InspectReturnHome>
+    <GR_TokraJaffaOfficerCapture_InspectAwaitingCall>Prisoner held at the colony: {0}. Call the Tok'ra from a powered communicator; about {1} remain.</GR_TokraJaffaOfficerCapture_InspectAwaitingCall>
+    <GR_TokraJaffaOfficerCapture_InspectExtractionInbound>Tok'ra extraction requested for {0}; arrival expected in about {1}.</GR_TokraJaffaOfficerCapture_InspectExtractionInbound>
     <GR_TokraJaffaOfficerCapture_InspectExtractionActive>Tok'ra extraction team on the colony map for {0}.</GR_TokraJaffaOfficerCapture_InspectExtractionActive>
     <GR_TokraJaffaOfficerCapture_InspectExtractionLeaving>{0} has crossed the perimeter with the Tok'ra; waiting for the team to clear the map.</GR_TokraJaffaOfficerCapture_InspectExtractionLeaving>
 </LanguageData>

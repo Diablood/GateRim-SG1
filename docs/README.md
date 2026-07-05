@@ -43,8 +43,9 @@ aux régressions. Les principales portes d'entrée sont :
 - équipement : fichiers `SG_*.md`, `MATOK_*.md`,
   [`ZATNIKTEL_INCAPACITATION.md`](ZATNIKTEL_INCAPACITATION.md) et
   [`NON_LETHAL_CAPTURE_TOOLS.md`](NON_LETHAL_CAPTURE_TOOLS.md) ;
-- diagnostics : [`DEBUG_UI_AUDIT.md`](DEBUG_UI_AUDIT.md),
-  [`LOGGING.md`](LOGGING.md) et [`LOCALIZATION.md`](LOCALIZATION.md).
+- diagnostics et présentation : [`DEBUG_UI_AUDIT.md`](DEBUG_UI_AUDIT.md),
+  [`LOGGING.md`](LOGGING.md), [`LOCALIZATION.md`](LOCALIZATION.md) et
+  [`DURATION_FORMATTING.md`](DURATION_FORMATTING.md).
 
 Une fiche technique publiée peut rester sans lien direct depuis le code si elle
 porte encore un contrat d'architecture ou de test. Son nom doit toutefois
