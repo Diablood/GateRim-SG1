@@ -1,9 +1,10 @@
 # Raid naturel de Jaffa Goa'uld
 
-> Statut : Jouable, évolution `0.3.68-dev` publiée
+> Statut : jouable, extension d'alliance `0.3.73-dev` validée
 > Première version : `0.2.1-dev`
 > Doctrines naturelles : `0.3.54-dev`
 > Pression des conflits ouverts : `0.3.68-dev`
+> Puissance bornée des alliances : `0.3.73-dev`
 
 Les domaines des Grands Maîtres Goa'uld peuvent lancer de rares raids contre
 une colonie joueur à partir du jour 12. Un délai minimal commun de 18 jours
@@ -37,28 +38,46 @@ toujours disponible et sert donc de solution de repli.
 Les conditions et la préférence de doctrine utilisent toujours les points
 initiaux calculés par RimWorld.
 
-## Conflit entre domaines
+## Effet des relations entre domaines
 
-Sous le storyteller **Commandement SG-1**, un domaine engagé dans au moins un
-conflit ouvert ne consacre que `75 %` de ses points habituels à son raid naturel
-contre la colonie.
+Sous le storyteller **Commandement SG-1**, la relation du domaine attaquant
+peut modifier uniquement les points transmis à la force après le choix de la
+doctrine :
 
-Exemple :
+| Situation du domaine | Facteur final |
+| --- | ---: |
+| au moins un conflit ouvert | `75 %` |
+| aucune guerre ouverte et au moins une alliance | `110 %` |
+| neutralité, rivalité ou trêve seulement | `100 %` |
+
+Exemples :
 
 ```text
-1 200 points calculés par RimWorld
+1 200 points calculés par RimWorld + conflit ouvert
 → doctrine choisie avec 1 200 points
 → force générée avec 900 points
+
+1 200 points calculés par RimWorld + alliance seule
+→ doctrine choisie avec 1 200 points
+→ force générée avec 1 320 points
 ```
 
-La réduction :
+Les garde-fous sont stricts :
 
-- ne se cumule pas avec plusieurs conflits ouverts ;
-- disparaît pendant une trêve, une rivalité, une alliance ou la neutralité ;
-- disparaît avec Cassandra, Phoebe, Randy ou un storyteller compatible ;
-- ne change ni la chance du raid, ni son délai minimal ;
-- ne réduit pas les représailles déclenchées après l'extraction d'un Goa'uld ;
-- ne s'applique pas aux attaques de mission ou aux outils de test déterministes.
+- plusieurs conflits ne réduisent jamais sous `75 %` ;
+- plusieurs alliances n'augmentent jamais au-delà de `110 %` ;
+- un conflit ouvert est prioritaire lorsqu'un domaine possède aussi une
+  alliance ;
+- aucun facteur n'est appliqué avec Cassandra, Phoebe, Randy ou un storyteller
+  compatible ;
+- la chance du raid, son premier jour et son délai minimal ne changent pas ;
+- les représailles, missions, sites et outils de test déterministes gardent
+  leurs points d'origine.
+
+Le worker commun marque techniquement les raids comme forcés pendant leur
+génération. `0.3.73-dev` distingue donc l'appel naturel du storyteller d'un
+appel qui était déjà forcé avant d'entrer dans ce worker. Le raid naturel reçoit
+bien son facteur, tandis que les représailles et tests exacts restent exclus.
 
 L'assaut direct cherche à vaincre la colonie. La doctrine d'enlèvement tente
 d'évacuer les colons tombés à terre avant de se replier. La doctrine de

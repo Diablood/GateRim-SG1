@@ -2,8 +2,9 @@
 
 Status: approved baseline. Threat progression, doctrines, extraction
 reprisals, persistent domain doctrines, the SG-1 storyteller, inter-domain
-relations, bounded raid-pressure reduction and the local battlefield are
-published. The optional world battlefield site is validated in final revision `0.3.70-dev-r4`. Territorial consequences remain deferred.
+relations, bounded open-conflict pressure and both battlefield forms are
+published. The bounded alliance raid-strength extension is validated and
+published in `0.3.73-dev`. Territorial consequences remain deferred.
 
 ## Purpose
 
@@ -28,6 +29,7 @@ The mod already provides:
 - Goa'uld host castes, Jaffa ranks, equipment and cultural identities;
 - persistent relations between domain pairs under Commandement SG-1;
 - a bounded `75%` natural-raid pressure factor for domains in open conflict;
+- a candidate non-stacking `110%` natural-raid factor for allied domains;
 - a published bounded local battlefield between the two exact domains;
 - a validated optional world battlefield site;
 - several Goa'uld objectives used inside Tok'ra operations.
@@ -202,9 +204,16 @@ snapshot, generates its map only on arrival and reuses the validated local
 combat component. Both forms share the active slot, recurrence and alternation.
 Ignoring the site has no diplomatic, territorial or mission-failure effect.
 
-Alliance may later increase attack cadence or raid strength only slightly and
-under a global cap. Later extensions may include second-domain reinforcements,
-joint raids, doctrine interactions, shared reprisals and alliance rupture.
+`0.3.73-dev` publishes the first bounded alliance consequence as a fixed
+`1.10` ordinary natural-raid point factor under Commandement SG-1. Several
+alliances never stack, open conflict retains priority at `0.75`, doctrine
+selection still uses original vanilla points and frequency remains unchanged.
+The shared worker now distinguishes ordinary storyteller execution from callers
+that were already forced before entering the common raid path.
+
+Later extensions may include second-domain reinforcements, joint raids,
+doctrine interactions, shared reprisals and alliance rupture. They remain
+separate milestones and are not implied by the strength factor.
 
 Rival domains may later expand their territories and destroy enemy settlements.
 Those simulations require discreet safeguards against self-elimination, runaway
@@ -222,8 +231,11 @@ expansion and world imbalance before activation.
   once each layer receives appropriate safeguards.
 - Domain doctrine profiles are assigned to faction instances, not named leaders,
   and modify only existing doctrine weights.
-- The `0.3.68-dev` open-conflict factor is a separate post-selection consequence
-  and does not rewrite doctrine weights or thresholds.
+- The `0.3.68-dev` open-conflict factor and `0.3.73-dev` alliance factor are
+  separate post-selection consequences and do not rewrite doctrine weights or
+  thresholds.
+- Relation factors never stack: open conflict resolves to `0.75`, otherwise an
+  alliance resolves to `1.10`, otherwise the factor is `1.00`.
 - Automatic Goa'uld inter-domain relations and their strategic effects are
   reserved for the GateRim SG-1 storyteller; other storytellers remain
   untouched.

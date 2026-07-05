@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.72-dev`
+- Development version: `0.3.73-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.72-dev` is a corrective publication milestone. It restores the final
-documentation, durable tests and public wiki sources that were omitted from the
-published `0.3.71-dev` commit, while preserving that existing tag unchanged.
-The duration-formatting code, translations, timers, saves and gameplay balance
-validated in `0.3.71-dev` are not modified. The technical assembly is rebuilt
-only so the repository metadata and development version are coherent again.
+`0.3.73-dev` adds a bounded alliance consequence to the persistent Goa'uld
+relation system. Under Commandement SG-1, an allied domain uses `110%` of its
+ordinary natural-raid points, without changing raid frequency or doctrine
+selection. Several alliances never stack, and an open conflict retains priority
+with its existing `75%` factor. Forced raids, reprisals, missions and other
+storytellers remain unchanged.
 
 ## Playable content
 
@@ -31,15 +31,17 @@ only so the repository metadata and development version are coherent again.
   ordinary incident rhythm while adding a persistent GateRim-only orchestration
   channel. It advances persistent neutrality, rivalry, open conflict, truce and
   alliance states between Goa'uld domain pairs. Under SG-1 Command, a domain in
-  open conflict now uses `75%` of its ordinary points for natural Jaffa raids,
-  without changing raid frequency or doctrine selection. Open conflicts can
+  open conflict uses `75%` of its ordinary points for natural Jaffa raids, while
+  a domain participating only in alliances uses a non-stacking `110%`. Doctrine
+  selection still uses the original vanilla points, open conflict overrides
+  alliance, and raid frequency remains unchanged. Open conflicts can
   also produce rare battlefields in two alternating forms: a local engagement
   near a colony or a temporary world site that a caravan may visit or ignore.
   Both forms use the same exact domain pair, map-edge arrival, rally, announced
   assault, ranged pursuit, morale break, bounded retaliation and withdrawal
   rules. Ignored world sites expire without failure or diplomatic consequence.
   Selecting another storyteller freezes future strategic opportunities and
-  disables the raid reduction.
+  disables both relation-derived raid modifiers.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and an
   optional non-territorial Tok'ra faction. The Tok'ra are selected once by
   default in the world-faction list with a dedicated icon, create no

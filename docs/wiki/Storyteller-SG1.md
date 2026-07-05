@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.70-dev`
-> Statut : site mondial validé en révision finale `r4`
+> Dernière évolution : `0.3.73-dev`
+> Statut : bonus borné des alliances validé et publié
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -31,18 +31,24 @@ produisent des rapports RP nommant les deux domaines.
 Une partie contenant un seul domaine Goa'uld ne possède aucune paire à faire
 évoluer. Plusieurs instances peuvent être ajoutées lors de la création du monde.
 
-## Pression réduite en conflit ouvert
+## Pression des raids selon les relations
 
-Depuis `0.3.68-dev`, un domaine engagé dans au moins un conflit ouvert utilise
-`75 %` de ses points habituels pour ses raids naturels de Jaffa contre la
-colonie.
+Sous **Commandement SG-1**, les relations modifient légèrement la puissance des
+raids naturels de Jaffa sans toucher à leur fréquence :
 
-La réduction :
+- un domaine engagé dans au moins un conflit ouvert utilise `75 %` de ses
+  points habituels ;
+- sinon, un domaine engagé dans au moins une alliance utilise `110 %` ;
+- sinon, il conserve `100 %`.
 
-- ne se cumule pas contre plusieurs rivaux ;
-- ne modifie ni fréquence ni doctrine ;
-- conserve les points initiaux pour l'éligibilité des doctrines ;
-- exclut représailles, missions, sites hostiles et tests forcés.
+Les facteurs ne se cumulent jamais. Un conflit ouvert est prioritaire lorsqu'un
+domaine possède aussi une alliance. L'éligibilité et le choix entre assaut
+direct, enlèvement et destruction utilisent toujours les points vanilla
+initiaux.
+
+Les représailles, missions, sites hostiles et tests déterministes sont exclus.
+Le worker commun distingue désormais l'appel naturel du storyteller d'un appel
+qui était déjà forcé avant la génération du raid.
 
 ## Batailles en conflit ouvert
 
@@ -81,7 +87,6 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 Les relations ne provoquent pas encore :
 
 - de renforts ou raids conjoints en alliance ;
-- d'augmentation liée aux alliances ;
 - de modification territoriale ;
 - de destruction de colonies mondiales ;
 - de changement diplomatique avec le joueur.

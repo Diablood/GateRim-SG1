@@ -5,36 +5,25 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon de gameplay validé - Formatage uniforme des durées (`0.3.71-dev`)
+## Dernier jalon clôturé - Bonus borné des alliances Goa'uld (`0.3.73-dev`)
 
-La révision locale `r5` et son code sont validés et publiés sous le tag immuable
-`v0.3.71-dev`. Le paquet documentaire final n'a toutefois pas été inclus dans
-le commit tagué ; cette omission est corrigée séparément sans déplacer le tag.
+La révision finale `r1` est validée et publiée. Sous Commandement SG-1, un
+domaine Goa'uld participant à au moins une alliance utilise `110 %` de ses
+points pour ses raids naturels ordinaires. Plusieurs alliances ne se cumulent
+pas, un conflit ouvert reste prioritaire avec son facteur `75 %`, et les points
+vanilla initiaux continuent de déterminer l'éligibilité et la doctrine.
 
-## Jalon correctif courant - Réparation documentaire de publication (`0.3.72-dev`)
+Le jalon corrige aussi la distinction entre un incident storyteller naturel et
+un appel déjà forcé avant l'entrée dans le worker partagé. Les représailles,
+missions, raids contrôlés, tests déterministes et autres storytellers restent
+inchangés. Aucun nouvel état de sauvegarde n'est ajouté.
 
-- [x] Partir de `develop` exactement alignée sur `v0.3.71-dev`.
-- [x] Créer `fix/0.3.71-publication-documentation`.
-- [x] Restaurer les documents finaux de `0.3.71-dev`.
-- [x] Restaurer les deux sources wiki modifiées par le formatage des durées.
-- [x] Conserver intact le tag publié `v0.3.71-dev`.
-- [x] Passer les métadonnées à `0.3.72-dev` et l'assembly à `0.3.72.0`.
-- [x] Ne modifier aucun code de gameplay, délai, sauvegarde ou équilibrage.
-- [ ] Réussir le rebuild forcé `0.3.72.0`.
-- [ ] Réussir l'audit des durées et le contrôle global de cohérence.
-- [ ] Valider la version au menu principal et un `Player.log` propre.
-- [ ] Finaliser la documentation de clôture.
-- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.72-dev`.
-- [ ] Synchroniser le dépôt wiki séparé.
+## Prochain jalon à sélectionner
 
-## Prochain travail différé à sélectionner
-
-Aucun jalon de gameplay ni nom de branche n'est réservé après le correctif
-`0.3.72-dev`. Le premier prolongement stratégique déjà décidé reste l'effet
-borné des alliances Goa'uld sur la pression exercée contre le joueur. Avant de
-créer sa branche, choisir explicitement entre une légère hausse de cadence ou
-de puissance, définir les plafonds et confirmer l'absence de cumul, de raids
-conjoints implicites et d'effet sous un autre storyteller.
+Aucun jalon `0.3.74-dev` ni nom de branche n'est encore réservé. La sélection
+doit partir d'un besoin décidé de cette roadmap, préciser son périmètre et ses
+garde-fous, puis créer une branche dédiée depuis `develop` exactement alignée
+sur `v0.3.73-dev`.
 
 ## Registre d'idées non planifiées
 
@@ -78,8 +67,8 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 - [x] Publier `0.3.70-dev` : site mondial temporaire représentant un autre
   champ de bataille entre domaines, visitable ou ignorable par caravane, avec
   slot et cooldown partagés.
-- [ ] En alliance, permettre une légère augmentation plafonnée de la fréquence
-  ou de la puissance des attaques des domaines concernés.
+- [x] Publier `0.3.73-dev` : en alliance, appliquer une légère hausse plafonnée
+  de la puissance des raids naturels, sans fréquence modifiée ni cumul.
 - [ ] Étendre ultérieurement les alliances par des renforts d'un second domaine,
   des raids conjoints, des interactions de doctrines, des représailles communes
   ou une rupture après échec.

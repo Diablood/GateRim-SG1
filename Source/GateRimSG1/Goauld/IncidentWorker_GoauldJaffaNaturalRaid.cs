@@ -55,7 +55,8 @@ namespace GateRimSG1.Goauld
         private const float FallbackDestructionWeight = 1f;
 
         private GoauldJaffaRaidDoctrine? forcedDebugDoctrine;
-        private bool forceOpenConflictPressureForDebug;
+        private bool forceRelationPressureForDebug;
+        private bool executionWasExternallyForced;
 
         protected override string ControlledRaidPurpose
         {
@@ -116,7 +117,7 @@ namespace GateRimSG1.Goauld
                     break;
             }
 
-            ApplyOpenConflictPressureReduction(parms);
+            ApplyInterDomainPressureModifier(parms);
         }
 
         protected override bool CanFireNowSub(IncidentParms parms)
@@ -129,16 +130,26 @@ namespace GateRimSG1.Goauld
 
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
-            if (parms != null
-                && !GoauldSystemLordFactionUtility
-                    .IsSystemLordFaction(parms.faction))
-            {
-                parms.faction =
-                    GoauldSystemLordFactionUtility
-                        .SelectRandomActiveFaction();
-            }
+            bool previousExternalForced = executionWasExternallyForced;
+            executionWasExternallyForced = parms?.forced == true;
 
-            return base.TryExecuteWorker(parms);
+            try
+            {
+                if (parms != null
+                    && !GoauldSystemLordFactionUtility
+                        .IsSystemLordFaction(parms.faction))
+                {
+                    parms.faction =
+                        GoauldSystemLordFactionUtility
+                            .SelectRandomActiveFaction();
+                }
+
+                return base.TryExecuteWorker(parms);
+            }
+            finally
+            {
+                executionWasExternallyForced = previousExternalForced;
+            }
         }
 
         public static GoauldJaffaRaidDoctrineWeights
@@ -230,11 +241,11 @@ namespace GateRimSG1.Goauld
             }
         }
 
-        public bool TryExecuteForcedWithOpenConflictPressure(
+        public bool TryExecuteForcedWithRelationPressure(
             IncidentParms parms)
         {
-            bool previousValue = forceOpenConflictPressureForDebug;
-            forceOpenConflictPressureForDebug = true;
+            bool previousValue = forceRelationPressureForDebug;
+            forceRelationPressureForDebug = true;
 
             try
             {
@@ -242,23 +253,30 @@ namespace GateRimSG1.Goauld
             }
             finally
             {
-                forceOpenConflictPressureForDebug = previousValue;
+                forceRelationPressureForDebug = previousValue;
             }
         }
 
-        private void ApplyOpenConflictPressureReduction(
+        public bool TryExecuteForcedWithOpenConflictPressure(
+            IncidentParms parms)
+        {
+            return TryExecuteForcedWithRelationPressure(parms);
+        }
+
+        private void ApplyInterDomainPressureModifier(
             IncidentParms parms)
         {
             if (parms == null
                 || !(parms.points > 0f)
-                || (parms.forced && !forceOpenConflictPressureForDebug))
+                || (executionWasExternallyForced
+                    && !forceRelationPressureForDebug))
             {
                 return;
             }
 
             float factor = ResolveNaturalRaidPressureFactor(parms.faction);
 
-            if (factor >= 0.999f)
+            if (Math.Abs(factor - 1f) < 0.001f)
             {
                 return;
             }
@@ -269,13 +287,20 @@ namespace GateRimSG1.Goauld
                 originalPoints);
             parms.points = effectivePoints;
 
+            bool reduced = factor < 1f;
+            string relationReason = reduced
+                ? "open conflict"
+                : "an active alliance";
+
             GR_Log.Message(
-                "Reduced natural Goa'uld Jaffa raid pressure for "
+                (reduced ? "Reduced" : "Increased")
+                + " natural Goa'uld Jaffa raid pressure for "
                 + $"{parms.faction?.Name ?? "<missing domain>"} "
                 + $"({parms.faction?.loadID ?? -1}) from "
                 + $"{originalPoints:0} to {effectivePoints:0} points "
                 + $"(factor {factor:0.00}) because the domain is in "
-                + "open conflict under SG-1 Command.");
+                + relationReason
+                + " under SG-1 Command.");
         }
 
         private static GoauldJaffaRaidDoctrineWeights

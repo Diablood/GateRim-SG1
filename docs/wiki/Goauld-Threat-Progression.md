@@ -2,6 +2,7 @@
 
 > Première version : `0.3.53-dev`
 > Réduction des conflits ouverts : `0.3.68-dev`
+> Bonus borné des alliances : `0.3.73-dev`
 
 Les raids, garnisons et renforts Goa'uld partent des points de menace calculés
 par RimWorld. Ces points tiennent compte de la puissance de la colonie et des
@@ -27,15 +28,22 @@ Depuis `0.3.54-dev`, l'unique incident naturel utilise les points vanilla pour
 rendre l'enlèvement et la destruction progressivement admissibles. Leur ajout
 ne crée aucun tirage storyteller ni délai indépendant.
 
-Sous **Commandement SG-1**, la version `0.3.68-dev` ajoute une seule exception
-bornée : un domaine engagé dans un conflit ouvert utilise ensuite `75 %` de ces
-points pour la force de son raid naturel. La doctrine est toujours choisie avec
-la valeur vanilla initiale.
+Sous **Commandement SG-1**, une conséquence bornée est appliquée seulement après
+le choix de la doctrine :
 
-Cette réduction :
+- un domaine engagé dans au moins un conflit ouvert utilise `75 %` des points ;
+- sinon, un domaine engagé dans au moins une alliance utilise `110 %` ;
+- sinon, le raid naturel conserve `100 %`.
 
-- ne se cumule pas avec plusieurs conflits ;
-- ne modifie pas la fréquence des raids ;
-- ne concerne pas les représailles après extraction ;
-- ne concerne pas les missions, sites ou raids de test ;
-- disparaît avec un autre storyteller ou lorsque le conflit ouvert prend fin.
+Plusieurs conflits ou alliances ne se cumulent pas. Le conflit ouvert est
+prioritaire lorsqu'un même domaine possède les deux types de relation. Les
+points initiaux restent utilisés pour l'éligibilité et les poids des doctrines.
+
+Ces facteurs :
+
+- ne modifient pas la fréquence des raids ;
+- ne concernent pas les représailles après extraction ;
+- ne concernent pas les missions, sites ou raids de test exacts ;
+- disparaissent avec un autre storyteller ;
+- sont recalculés depuis les relations persistantes sans nouveau champ de
+  sauvegarde.

@@ -245,6 +245,29 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+        public int SetAllActivePairsRelationDebug(
+            GoauldInterDomainRelation relation)
+        {
+            ReconcileAllPairs();
+
+            List<GoauldInterDomainRelationState> activeStates = states
+                .Where(IsPairActive)
+                .ToList();
+            int currentTick = CurrentTick();
+
+            foreach (GoauldInterDomainRelationState state in activeStates)
+            {
+                ApplyTransition(
+                    state,
+                    relation,
+                    currentTick,
+                    sendReport: false,
+                    debugForced: true);
+            }
+
+            return activeStates.Count;
+        }
+
         public void ResetDebug()
         {
             states.Clear();

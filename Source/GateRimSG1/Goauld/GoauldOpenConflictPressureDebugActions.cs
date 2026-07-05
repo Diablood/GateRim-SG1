@@ -9,7 +9,7 @@ namespace GateRimSG1.Goauld
         public static void ShowReport()
         {
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Goa'uld open-conflict raid-pressure report");
+            builder.AppendLine("Goa'uld inter-domain raid-pressure report");
             builder.AppendLine();
             builder.AppendLine(
                 "SG-1 storyteller active: "
@@ -19,7 +19,12 @@ namespace GateRimSG1.Goauld
                     : "no"));
             builder.AppendLine(
                 "open-conflict natural raid factor: "
-                + $"{GoauldOpenConflictPressureUtility.NaturalRaidFactor * 100f:0}%");
+                + $"{GoauldOpenConflictPressureUtility.OpenConflictNaturalRaidFactor * 100f:0}%");
+            builder.AppendLine(
+                "alliance natural raid factor: "
+                + $"{GoauldOpenConflictPressureUtility.AllianceNaturalRaidFactor * 100f:0}%");
+            builder.AppendLine(
+                "precedence: open conflict overrides alliance");
             builder.AppendLine();
 
             var domains = GoauldSystemLordFactionUtility.GetAllFactions();
@@ -34,6 +39,8 @@ namespace GateRimSG1.Goauld
                 {
                     bool openConflict = GoauldOpenConflictPressureUtility
                         .IsDomainInActiveOpenConflict(domain);
+                    bool alliance = GoauldOpenConflictPressureUtility
+                        .IsDomainInActiveAlliance(domain);
                     float factor = GoauldOpenConflictPressureUtility
                         .ResolveNaturalRaidPressureFactor(domain);
 
@@ -42,6 +49,9 @@ namespace GateRimSG1.Goauld
                         "  active open conflict: "
                         + (openConflict ? "yes" : "no"));
                     builder.AppendLine(
+                        "  active alliance: "
+                        + (alliance ? "yes" : "no"));
+                    builder.AppendLine(
                         "  ordinary natural raid factor: "
                         + $"{factor * 100f:0}%");
                 }
@@ -49,8 +59,10 @@ namespace GateRimSG1.Goauld
 
             builder.AppendLine();
             builder.AppendLine(
-                "Forced raids, extraction reprisals, intercepted threats "
-                + "and mission attacks remain at 100%.");
+                "Several conflicts or alliances never stack. Forced raids, "
+                + "extraction reprisals, intercepted threats and mission "
+                + "attacks remain at 100% unless the dedicated relation-"
+                + "pressure test is used.");
 
             Find.WindowStack.Add(
                 new Dialog_MessageBox(builder.ToString()));

@@ -1,58 +1,71 @@
 # Project state
 
-Current milestone: `0.3.72-dev - Repair 0.3.71 publication documentation`
+Current milestone: `0.3.73-dev - Add bounded Goa'uld alliance raid-strength bonus`
 
-- Candidate corrective revision: `r1`.
-- The gameplay and duration-formatting implementation validated in
-  `0.3.71-dev-r5` is unchanged.
-- Targeted build, consistency, startup-version and clean-log validation remain
-  required before publication.
+- Final local revision: `r1`.
+- Forced build `0.3.73.0`, focused functional validation, save/reload coverage and
+  required regressions are validated.
+- The milestone branch is integrated by fast-forward into `develop`; annotated
+  tag `v0.3.73-dev` and the updated wiki sources are published.
 
 ## Repository state
 
-- Published starting point: `develop` and annotated tag `v0.3.71-dev` both
-  identify commit `a52c5ab13cc6943926b7f5d83743922793e3262a`.
-- That immutable commit contains the validated `0.3.71-dev` implementation but
-  omitted the final documentation package during publication.
-- Active corrective branch:
-  `fix/0.3.71-publication-documentation`.
-- Current development version: `0.3.72-dev`.
-- Technical assembly version: `0.3.72.0`.
+- Published starting point: `develop` exactly aligned with annotated tag
+  `v0.3.72-dev` at commit
+  `11b2c2f43d5978fb6f000ba415b79b2d52dde1d8`.
+- Final milestone branch: `feature/goauld-alliance-raid-strength`.
+- Published development version: `0.3.73-dev`.
+- Technical assembly version: `0.3.73.0`.
+- `develop` and annotated tag `v0.3.73-dev` identify the same final commit.
 - `main` remains reserved for the first stable `1.0.0` line.
-- The published `v0.3.71-dev` tag must not be moved, deleted or rewritten.
 
-## Corrective scope
+## Published scope
 
-- Restore the final `0.3.71-dev` project state, roadmap, changelog, current-test
-  result and durable duration-formatting regression coverage.
-- Restore the public wiki sources for the content status and duration-formatting
-  contract.
-- Record the publication omission explicitly instead of pretending the original
-  annotated tag already contained those files.
-- Advance the repository and assembly metadata to `0.3.72-dev` /
-  `0.3.72.0` so the next integrated commit can receive its own immutable tag.
-- Preserve the `104`-key compatibility bridge, shared formatter, audit scripts,
-  translations, deadlines, cooldowns, recurrence, persistence and balance
-  exactly as validated in `0.3.71-dev-r5`.
-- Add no gameplay, faction, mission, incident, storyteller or save-data change.
+- Extend the existing relation-derived natural-raid point modifier instead of
+  adding another incident, scheduler or serialized tracker.
+- While `Commandement SG-1` is active, a Goa'uld domain participating in at
+  least one alliance uses a fixed `1.10` factor for its ordinary natural Jaffa
+  raid points.
+- Keep the existing open-conflict factor at `0.75`.
+- Resolve open conflict before alliance when a domain participates in both;
+  factors are never multiplied, averaged or stacked.
+- Keep doctrine eligibility and weighting based on the original vanilla points,
+  then apply the final relation factor only to the generated force.
+- Keep incident chance, earliest day, shared refire delay, doctrine weights and
+  contextual thresholds unchanged.
+- Keep Cassandra, Phoebe, Randy and compatible modded storytellers at `1.00`.
+- Keep controlled raids, deterministic doctrine tests, extraction reprisals,
+  intercepted threats, missions, sites and settlement defenses outside the
+  modifier.
+- Correct the distinction between an ordinary storyteller execution and a
+  caller that was already forced before entering the shared raid worker.
+- Expand developer diagnostics with alliance state, open-conflict precedence,
+  both configured factors and deterministic relation setup actions.
+- Add no new save field; all effects remain derived from persistent faction-pair
+  relations.
 
-## Required validation
+## Validation result
 
-Before publication:
+Final local revision `r1` is validated:
 
-- `git diff --check` must pass;
-- forced build must produce assembly `0.3.72.0`;
-- `tools/check-duration-formatting.cmd` must still pass with `104` unique keys;
-- `tools/check-project-consistency.cmd` must pass with the corrective version;
-- the main menu must load with `0.3.72-dev` metadata;
-- `Player.log` must contain no new Harmony, XML, translation or C# error;
-- the diff against `v0.3.71-dev` must contain only documentation, wiki sources,
-  version metadata and the rebuilt assembly output expected by the project
-  workflow.
+- forced build succeeds with assembly `0.3.73.0`;
+- the duration audit still passes with `104` unique compatibility keys;
+- the global project-consistency check passes;
+- alliance-only domains report and use `1.10`;
+- open-conflict domains report and use `0.75`;
+- mixed conflict/alliance domains resolve to `0.75`;
+- multiple alliances remain capped at `1.10`;
+- other storytellers resolve every domain to `1.00`;
+- ordinary natural execution receives the factor despite the shared worker's
+  internal forced flag;
+- externally forced doctrine tests retain their exact historical points;
+- save/reload preserves the relation-derived result;
+- `Player.log` contains no new C#, Harmony, XML, Scribe, raid-generation or Lord
+  error.
 
 ## Next step
 
-Validate corrective revision `r1`. After explicit approval, finalize the
-documentation as published, fast-forward the fix branch into `develop`, create
-annotated tag `v0.3.72-dev`, and synchronize the two changed wiki pages. Only
-then select the next gameplay milestone from `docs/ROADMAP.md`.
+No `0.3.74-dev` gameplay milestone or branch is reserved. After publication,
+select the next decided item from `docs/ROADMAP.md`, create its dedicated branch
+from `develop` aligned with `v0.3.73-dev`, and update this handoff before
+implementation.

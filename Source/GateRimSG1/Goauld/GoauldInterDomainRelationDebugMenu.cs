@@ -29,11 +29,11 @@ namespace GateRimSG1.Goauld
                 GoauldInterDomainRelationDebugActions.ShowReport,
                 900));
             root.AddChild(ActionNode(
-                "Show natural raid pressure report",
+                "Show natural raid relation-pressure report",
                 GoauldOpenConflictPressureDebugActions.ShowReport,
                 875));
             root.AddChild(ActionNode(
-                "Force current natural raid (pressure applied)",
+                "Force current natural raid (relation pressure applied)",
                 GoauldThreatProgressionDebugActions
                     .ForceCurrentNaturalRaidWithPressure,
                 850));
@@ -98,6 +98,10 @@ namespace GateRimSG1.Goauld
                 "Set first pair: Alliance",
                 GoauldInterDomainRelationDebugActions.SetAlliance,
                 150));
+            root.AddChild(ActionNode(
+                "Set all pairs: Alliance",
+                GoauldInterDomainRelationDebugActions.SetAllAlliances,
+                140));
             root.AddChild(ActionNode(
                 "Reset relations",
                 GoauldInterDomainRelationDebugActions.Reset,

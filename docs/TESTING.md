@@ -2,6 +2,8 @@
 
 ## 0.3.72-dev - Publication-documentation repair
 
+Final corrective revision `r1` validated and published. Durable coverage:
+
 - preserve the immutable `v0.3.71-dev` tag and verify it still targets
   `a52c5ab13cc6943926b7f5d83743922793e3262a`;
 - rebuild the unchanged implementation as assembly `0.3.72.0`;
@@ -14,7 +16,9 @@
 - load and resave one `0.3.71-dev-r5` validation save without moving a displayed
   deadline;
 - publish the restored documentation under a new tag rather than rewriting the
-  defective historical commit.
+  defective historical commit;
+- require finalization ZIP extraction before staging and verify one-shot local
+  `Apply-*` / `Publish-*` PowerShell helpers are absent from the commit.
 
 ## 0.3.71-dev - Player-facing duration formatting
 
@@ -4048,28 +4052,35 @@ For every milestone published after `0.3.67-dev`:
 - keep or delete the temporary branch only after the integrated commit and tag
   are verified.
 
-## Open-conflict Goa'uld pressure reduction (`0.3.68-dev`)
+## Goa'uld relation-derived natural-raid pressure (`0.3.68-dev`, `0.3.73-dev`)
 
-Validate the bounded natural-raid pressure reduction introduced after persistent
+Validate the bounded natural-raid point factors derived from persistent
 inter-domain relations.
 
 - Use `SG1_GateRimStoryteller` with at least two active Goa'uld domains.
 - Set one active pair to open conflict and confirm both domains report a `0.75`
   natural-raid factor.
-- Confirm one domain involved in several open conflicts still receives only one
-  `0.75` factor.
-- Confirm neutral, rivalry, truce and alliance retain a `1.00` factor.
+- Set one active pair to alliance and confirm both domains report a `1.10`
+  natural-raid factor.
+- With at least three domains, set all active pairs to alliance and confirm a
+  domain involved in several alliances remains capped at `1.10`.
+- After setting all pairs to alliance, set the first pair to open conflict and
+  confirm both mixed domains resolve to `0.75`, while alliance-only domains
+  remain at `1.10`.
+- Confirm neutral, rivalry and truce retain a `1.00` factor.
 - Confirm Cassandra, Phoebe, Randy and compatible modded storytellers retain a
-  `1.00` factor even when an open-conflict state is stored.
+  `1.00` factor even when open-conflict or alliance states are stored.
 - Confirm doctrine eligibility and weighting use the original storyteller
-  points before the final raid-force reduction.
-- Confirm the ordinary natural raid uses the reduced effective points.
+  points before the final raid-force modifier.
+- Confirm the ordinary natural raid receives its relation factor even though
+  the shared raid worker internally marks generated raids as forced.
 - Confirm controlled raids, deterministic doctrine tests, extraction reprisals,
   intercepted threats and mission attacks retain their original points.
-- Save and reload while open conflict is active and confirm the factor remains
-  derived correctly from the persistent relation.
-- End the conflict through truce or another non-conflict state and confirm the
-  natural-raid factor returns immediately to `1.00`.
+- Confirm the dedicated forced relation-pressure command applies exactly one
+  resolved `0.75`, `1.00` or `1.10` factor.
+- Save and reload while alliance and open-conflict states are active and confirm
+  factors remain derived correctly from persistent relations.
+- Change relation or storyteller and confirm the factor updates immediately.
 - Confirm the natural incident frequency, earliest day and shared refire delay
   remain unchanged.
 - Inspect `Player.log` for new C#, XML, Scribe, raid-generation or Lord errors.

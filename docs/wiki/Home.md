@@ -4,8 +4,16 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.72-dev`
+> Version du mod documentée : `0.3.73-dev`
 
+
+## Relations Goa'uld et pression des raids
+
+La version `0.3.73-dev` étend les conséquences des relations entre domaines :
+sous Commandement SG-1, un conflit ouvert conserve son facteur `75 %`, tandis
+qu'une alliance sans conflit ouvert applique un bonus plafonné à `110 %` aux
+points du raid naturel. Plusieurs relations ne se cumulent pas et les autres
+storytellers restent à `100 %`.
 
 ## Durées affichées
 
@@ -33,7 +41,8 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Commandement SG-1](Storyteller-SG1) conserve un rythme classique et fait
   évoluer les relations persistantes entre paires de domaines Goa'uld. Un
   domaine en conflit ouvert consacre `75 %` de ses points habituels à ses raids
-  naturels. Ces conflits peuvent aussi produire une
+  naturels ; sinon, une alliance peut porter ce budget à `110 %`, sans cumul.
+  Ces conflits peuvent aussi produire une
   [bataille entre domaines](Goauld-Open-Conflict-Battlefields), soit près d'une
   colonie, soit sous la forme d'un site mondial facultatif accessible par
   caravane. Les deux formes partagent un seul emplacement et les autres

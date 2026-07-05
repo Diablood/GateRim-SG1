@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.3.73-dev - Add bounded Goa'uld alliance raid-strength bonus
+
+- Start from published `develop` and annotated tag `v0.3.72-dev` on
+  `feature/goauld-alliance-raid-strength`.
+- Extend the existing relation-derived natural-raid modifier instead of adding
+  another incident, frequency roll, scheduler or serialized tracker.
+- Give a Goa'uld domain participating in at least one alliance a fixed `1.10`
+  natural-raid point factor while Commandement SG-1 is active.
+- Preserve the published open-conflict factor at `0.75` and let open conflict
+  override alliance when both relations affect the same domain.
+- Keep several simultaneous conflicts or alliances non-stacking.
+- Keep direct, abduction and destruction doctrine selection based on the
+  original vanilla storyteller points before the final factor is applied.
+- Keep raid chance, earliest day, shared refire delay, doctrine weights,
+  contextual thresholds and every non-natural attack path unchanged.
+- Keep Cassandra, Phoebe, Randy and compatible modded storytellers at `1.00`.
+- Correct the distinction between an ordinary storyteller incident and an
+  externally forced caller before the shared raid worker internally sets
+  `parms.forced = true`; ordinary natural raids now receive their relation
+  factor while forced regressions remain excluded by default.
+- Expand the developer report with alliance state, both configured factors and
+  open-conflict precedence.
+- Add `Set all pairs: Alliance` for deterministic three-domain non-stacking and
+  mixed conflict/alliance validation without save editing.
+- Add no save field, joint raid, reinforcement, shared reprisal, doctrine
+  interaction, territorial effect or goodwill change.
+- Validate final local revision `r1`: build `0.3.73.0`, duration audit with
+  `104` unique keys, project consistency, alliance `110%`, open-conflict `75%`,
+  mixed-state precedence, non-stacking, storyteller isolation, forced-caller
+  exclusion, save/reload and a clean accepted `Player.log`.
+- Integrate the feature branch by fast-forward, publish annotated tag
+  `v0.3.73-dev` and synchronize the separate wiki sources.
+
 ## 0.3.72-dev - Repair 0.3.71 publication documentation
 
 - Start from published `develop` and immutable annotated tag `v0.3.71-dev` on
@@ -8,7 +41,7 @@
   while its final documentation package was omitted from the tagged commit.
 - Restore the final project state, roadmap, changelog, current validation result
   and durable regression coverage prepared for `0.3.71-dev-r5`.
-- Restore the public content-status and duration-formatting wiki sources.
+- Restore the public content-status, duration-formatting and wiki-home sources.
 - Preserve the existing `v0.3.71-dev` tag without deletion, movement or rewrite.
 - Advance public and technical metadata to `0.3.72-dev` / `0.3.72.0` so the
   corrective integrated state can receive its own immutable tag.
@@ -17,6 +50,15 @@
   gameplay balance unchanged.
 - Require only targeted build, consistency, startup-version, save/reload and
   clean-log validation because the correction adds no gameplay implementation.
+- Add a durable publication guardrail requiring supplied finalization ZIPs to
+  be extracted before staging and excluding one-shot local `Apply-*` /
+  `Publish-*` PowerShell helpers from commits.
+- Validate final corrective revision `r1`: build `0.3.72.0`, unchanged
+  `104`-key duration audit, project consistency, main-menu metadata, preserved
+  save/reload deadline and clean `Player.log`.
+- Integrate the corrective branch by fast-forward, publish annotated tag
+  `v0.3.72-dev` and synchronize the three changed wiki pages without moving
+  `v0.3.71-dev`.
 
 ## 0.3.71-dev - Standardize player-facing duration formatting
 

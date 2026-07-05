@@ -1,16 +1,16 @@
 # GateRim SG-1 storyteller
 
-## Current milestone
+## Published strategic milestones
 
 - Foundation: `0.3.65-dev`
 - Persistent inter-domain relations: `0.3.66-dev`
-- First strategic consequence: `0.3.68-dev`
+- Open-conflict natural-raid reduction: `0.3.68-dev`
 - Local battlefield: `0.3.69-dev`
-- Current world-site extension: `0.3.70-dev`
-- Current branch: `feature/goauld-open-conflict-world-battlefield-site`
-- Current assembly: `0.3.70.0`
-- Current local revision: `r4`
-- Status: final revision `r4` validated locally; publication pending.
+- World-site battlefield extension: `0.3.70-dev`
+- Alliance-strength extension: `0.3.73-dev`
+- Published assembly: `0.3.73.0`
+- Final local revision: `r1`
+- Status: validated and published.
 
 ## Purpose
 
@@ -76,7 +76,7 @@ When another storyteller is selected:
 - no RP relation report is emitted;
 - all pair and global relation deadlines are shifted forward by the suspension
   duration when SG-1 Command becomes active again;
-- the open-conflict natural-raid pressure factor resolves to `1.00`;
+- every relation-derived natural-raid pressure factor resolves to `1.00`;
 - existing published GateRim incidents retain their ordinary contracts.
 
 This is a true suspension rather than a backlog. Returning to SG-1 Command does
@@ -99,8 +99,10 @@ initialization.
 
 Its report embeds relation-tracker availability, active pair count, automatic
 activation state, next strategic deadline and the count of domains whose
-natural-raid pressure is currently reduced. The battlefield tracker exposes its
-own persistent cadence and active-map report through the relation debug menu.
+natural-raid pressure is currently reduced. Relation-pressure diagnostics list
+both open-conflict and alliance participation with the resolved final factor.
+The battlefield tracker exposes its own persistent cadence and active-map report
+through the relation debug menu.
 
 ## Persistent relation model
 
@@ -145,24 +147,34 @@ Cadence remains:
 
 Pair and text anti-repetition remain unchanged.
 
-## Open-conflict natural-raid pressure
+## Relation-derived natural-raid pressure
 
 `0.3.68-dev` adds the first mechanical consequence of a relation state.
+`0.3.73-dev` extends the same narrow point-modifier path to alliances.
 
-While SG-1 Command is active, every active domain participating in at least one
-open conflict uses a fixed `0.75` factor for its ordinary natural Goa'uld Jaffa
-raid points.
+While SG-1 Command is active, an ordinary natural Goa'uld Jaffa raid resolves:
+
+- `0.75` when the attacking domain participates in at least one open conflict;
+- `1.10` when it has no open conflict and participates in at least one alliance;
+- `1.00` otherwise.
 
 The effect is intentionally narrow:
 
-- the factor does not stack across several rivals;
+- several conflicts or alliances never stack;
+- open conflict overrides alliance when both affect the domain;
 - doctrine eligibility and weighting use the original vanilla points;
 - the factor is applied after doctrine selection;
-- incident chance and refire delay remain unchanged;
-- every forced incident path remains excluded by default, including extraction
+- incident chance, earliest day and refire delay remain unchanged;
+- every external forced path remains excluded by default, including extraction
   reprisals and deterministic regression raids;
-- the dedicated pressure-test command enables the factor for one forced test;
+- the dedicated relation-pressure command enables the factor for one forced
+  test;
 - no new data is serialized.
+
+The shared raid worker internally marks every generated raid as forced. The
+natural worker now records whether the caller was already forced before entering
+that shared path. This lets ordinary storyteller raids receive the relation
+factor without exposing reprisals or exact developer regressions to it.
 
 Changing storyteller or relation state changes the derived factor immediately.
 
@@ -196,8 +208,8 @@ have left through ordinary caravan reformation.
 
 Every real state change produces one neutral-event letter naming both domains.
 The reports describe political or military intelligence without exposing hidden
-weights. The open-conflict texts remain valid because the new effect is a modest
-reduction in pressure rather than a guaranteed absence of attacks.
+weights. Open-conflict and alliance texts remain RP-facing and do not reveal the
+exact derived factor outside developer diagnostics.
 
 ## Developer diagnostics
 
@@ -209,8 +221,8 @@ Actions de débogage
 > Goa'uld inter-domain relations...
 ```
 
-`Show natural raid pressure report` exposes the natural-raid factor for every
-active domain.
+`Show natural raid relation-pressure report` exposes open-conflict state,
+alliance state and the final natural-raid factor for every active domain.
 
 Threat path:
 
@@ -224,16 +236,16 @@ Actions de débogage
 `Show current progression` displays vanilla points, effective natural points,
 pressure factor, unchanged intercepted points and doctrine context.
 
-`Force current natural raid (pressure applied)` is available in the relation
-menu and exercises the ordinary relation-aware worker while temporarily enabling
+`Force current natural raid (relation pressure applied)` is available in the
+relation menu and exercises the ordinary relation-aware worker while temporarily enabling
 the factor for that forced validation. The historical forced-doctrine commands
 remain exact and bypass the factor.
 
 ## Still inactive consequences
 
-`0.3.70-dev` still adds no:
+`0.3.73-dev` still adds no:
 
-- alliance frequency or threat increase;
+- alliance frequency increase;
 - reinforcements, joint raids or shared reprisals;
 - doctrine interaction caused by relations;
 - territorial expansion or settlement destruction;
@@ -241,10 +253,9 @@ remain exact and bypass the factor.
 
 These effects require separate balancing and validation milestones.
 
-## Validation
+## Published validation
 
-Local revision `r4` of `0.3.70-dev` is ready for build and the world-site
-procedure recorded in [`TESTING_CURRENT.md`](TESTING_CURRENT.md). Validation
-must cover the dedicated icon, optional expiration, ordinary caravan travel,
-lazy map generation, shared combat behavior, loot/reformation, the single slot,
-alternation, persistence and all published local-battlefield regressions.
+Final local revision `r1` of `0.3.73-dev` is validated and published. The
+focused relation-pressure procedure confirms alliance `110%`, open-conflict
+`75%`, mixed-state precedence, non-stacking, other-storyteller `100%`, natural
+versus forced execution, save/reload and a clean accepted `Player.log`.

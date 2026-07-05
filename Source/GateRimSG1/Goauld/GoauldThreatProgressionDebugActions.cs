@@ -136,11 +136,11 @@ namespace GateRimSG1.Goauld
                 map);
             parms.forced = true;
 
-            if (!worker.TryExecuteForcedWithOpenConflictPressure(parms))
+            if (!worker.TryExecuteForcedWithRelationPressure(parms))
             {
                 Reject(
                     "Could not start the current natural Goa'uld raid "
-                    + "with relation pressure enabled.");
+                    + "with inter-domain relation pressure enabled.");
             }
         }
 

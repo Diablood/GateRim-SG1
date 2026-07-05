@@ -2,21 +2,22 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.72-dev`
+> Dernière révision : `0.3.73-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.72-dev` corrige uniquement les métadonnées et sources documentaires omises
-lors de la publication de `0.3.71-dev`. Le contenu jouable et les durées
-validées restent inchangés.
+`0.3.73-dev` ajoute un effet borné des alliances Goa'uld : sous
+Commandement SG-1, un domaine allié sans conflit ouvert utilise `110 %` de ses
+points de raid naturel. Le facteur ne se cumule pas et ne modifie pas la
+fréquence, les représailles ou les missions.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
-| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, réduction bornée des raids naturels et orchestration partagée des batailles locales ou mondiales ; les autres storytellers suspendent les futures opportunités sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev |
+| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, et orchestration partagée des batailles locales ou mondiales ; les autres storytellers suspendent les futures opportunités sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
@@ -72,7 +73,7 @@ validées restent inchangés.
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, icône mondiale Goa'uld dédiée, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev / icône 0.3.50-dev |
 | Doctrines des domaines Goa'uld | Chaque faction conserve une préférence stratégique qualitative : conquête, asservissement ou terre brûlée. Elle module seulement le choix entre les trois raids naturels existants | 0.3.64-dev |
-| Relations entre domaines Goa'uld | Chaque paire conserve neutralité, rivalité, conflit ouvert, trêve ou alliance ; sous Commandement SG-1, un domaine en conflit ouvert utilise `75 %` de ses points pour les raids naturels, sans cumul, fréquence modifiée ni effet territorial | 0.3.66-dev / pression 0.3.68-dev |
+| Relations entre domaines Goa'uld | Chaque paire conserve neutralité, rivalité, conflit ouvert, trêve ou alliance ; sous Commandement SG-1, un domaine en conflit ouvert utilise `75 %` de ses points, sinon une alliance seule peut porter son raid naturel à `110 %`, sans cumul, fréquence modifiée ni effet territorial | 0.3.66-dev / conflit 0.3.68-dev / alliance 0.3.73-dev |
 | Noms mondiaux des domaines Goa'uld | 288 noms combinatoires de factions et 1 728 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.46-dev |
 | Noms des Grands Maîtres Goa'uld | Nom formel culturel visible dès la création du monde, symbiote persistant aligné sur ce nom et identité humaine de l'hôte conservée séparément | 0.3.48-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, icône mondiale Jaffa libre dédiée, nouveaux dirigeants dotés d'un nom personnel et d'un nom de clan Jaffa libre, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 / noms des dirigeants 0.3.47-dev / icône 0.3.50-dev |
@@ -99,7 +100,7 @@ validées restent inchangés.
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
-| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : doctrine choisie avec les points vanilla ; sous Commandement SG-1, un domaine en conflit ouvert transmet ensuite `75 %` des points à la force générée, sans modifier fréquence, représailles ou missions | 0.2.1-dev / doctrines 0.3.54-dev / pression 0.3.68-dev |
+| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : doctrine choisie avec les points vanilla ; sous Commandement SG-1, le facteur final est `75 %` en conflit ouvert, sinon `110 %` en alliance, sans cumul ni modification de fréquence, représailles ou missions | 0.2.1-dev / doctrines 0.3.54-dev / conflit 0.3.68-dev / alliance 0.3.73-dev |
 | Bataille locale entre domaines Goa'uld | Sous Commandement SG-1, une paire en conflit ouvert peut faire entrer deux détachements Jaffa depuis le bord, les rassembler puis déclencher un assaut mutuel annoncé ; intervention facultative, riposte locale bornée, rupture morale sous 30 % et engagement limité à deux jours | 0.3.69-dev |
 | Site mondial de bataille Goa'uld | Site temporaire facultatif lié à une paire exacte en conflit ouvert : icône dédiée, huit jours, trajet caravanier vanilla, carte générée à l'arrivée et mêmes règles de combat ; expiration ignorée sans échec ni conséquence politique | 0.3.70-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
@@ -141,7 +142,7 @@ validées restent inchangés.
 | Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
 | Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
 | Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
-| Conséquences des relations Goa'uld | Les états persistants, rapports RP, réduction bornée et bataille locale sont publiés ; le site mondial est testable dans `0.3.70-dev`, tandis que bonus d'alliance, renforts et effets territoriaux restent séparés |
+| Conséquences des relations Goa'uld | Les états persistants, rapports RP, réduction en conflit, batailles locale et mondiale sont publiés ; le bonus allié plafonné à `110 %` est publié dans `0.3.73-dev`, tandis que renforts conjoints et effets territoriaux restent séparés |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
 | Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
 | Équipement Goa'uld de haut rang | Bouclier, onde cinétique, attaque neurale et maintien paralysant mono-cible publiés. Les autres fonctions spéculatives restent non planifiées dans le fichier d'idées à revoir |
