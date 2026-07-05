@@ -56,6 +56,7 @@ namespace GateRimSG1.Goauld
 
         private GoauldJaffaRaidDoctrine? forcedDebugDoctrine;
         private bool forceRelationPressureForDebug;
+        private bool forceOfficerForDebug;
         private bool executionWasExternallyForced;
 
         protected override string ControlledRaidPurpose
@@ -144,7 +145,20 @@ namespace GateRimSG1.Goauld
                             .SelectRandomActiveFaction();
                 }
 
-                return base.TryExecuteWorker(parms);
+                if (executionWasExternallyForced
+                    && !forceOfficerForDebug)
+                {
+                    return base.TryExecuteWorker(parms);
+                }
+
+                using (GoauldJaffaOfficerForceUtility
+                    .BeginCombatOfficerGeneration(
+                        PawnGroupKindDefOf.Combat,
+                        "natural Goa'uld Jaffa raid",
+                        forceOfficerForDebug))
+                {
+                    return base.TryExecuteWorker(parms);
+                }
             }
             finally
             {
@@ -238,6 +252,26 @@ namespace GateRimSG1.Goauld
             finally
             {
                 forcedDebugDoctrine = null;
+            }
+        }
+
+        public bool TryExecuteForcedDebugDoctrineWithOfficer(
+            IncidentParms parms,
+            GoauldJaffaRaidDoctrine doctrine)
+        {
+            GoauldJaffaRaidDoctrine? previousDoctrine = forcedDebugDoctrine;
+            bool previousOfficerValue = forceOfficerForDebug;
+            forcedDebugDoctrine = doctrine;
+            forceOfficerForDebug = true;
+
+            try
+            {
+                return TryExecute(parms);
+            }
+            finally
+            {
+                forcedDebugDoctrine = previousDoctrine;
+                forceOfficerForDebug = previousOfficerValue;
             }
         }
 

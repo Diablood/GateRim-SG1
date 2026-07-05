@@ -2,16 +2,17 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.74-dev`
+> Dernière révision : `0.3.75-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.74-dev` donne à l'officier Jaffa ciblé par l'opération Tok'ra une
-armure de commandement et un casque rétractable rouges, clairement distincts de
-son escorte. Les chemins sont définitifs malgré les textures temporaires.
-L'armure ajoute `+10 %` d'impact social et les deux pièces fabricables dépendent
-de la recherche Armures Jaffa.
+`0.3.75-dev` étend l'officier Jaffa rouge aux groupes Goa'uld éligibles.
+À partir de cinq Jaffa, un garde peut être remplacé par un seul officier dans les
+raids naturels, les défenses de colonies et plusieurs missions. L'effectif et le
+budget de menace restent inchangés ; la cible de capture conserve son rôle
+spécialisé sans second officier dans son escorte. La révision finale `r2` est
+validée et publiée.
 
 ## Implémenté ou testable
 
@@ -81,6 +82,7 @@ de la recherche Armures Jaffa.
 | Profils de groupe Jaffa libres `Combat`, `Settlement` et `Peaceful` | Guerriers et gardes Jaffa libres pour la défense initiale des colonies et les premières visites pacifiques ; Prim'ta, Ma'Tok, armures modulaires et casque rétractable | 0.2.2-dev / visiteurs 0.2.6-dev |
 | Visiteurs Jaffa libres pacifiques | Incident naturel rare après le jour 10 : petit groupe armé non hostile et non marchand, distinct des nouveaux flux commerciaux vanilla | 0.2.6-dev |
 | Jaffa serviteurs Goa'uld | Deux `PawnKindDef` alignés forçant la lignée Jaffa : guerrier et garde | 0.1.62-dev |
+| Officiers Jaffa Goa'uld | Armure et casque rouges, impact social accru ; un garde peut être remplacé par un officier dans un groupe d'au moins cinq Jaffa, sans pawn ni budget supplémentaire | apparence 0.3.74-dev / forces 0.3.75-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire, nettoyage initial des affections chroniques biologiques et kara kesh réservé au Grand Maître | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 / kara kesh 0.3.57-dev |
 | Kara kesh Goa'uld | Gant de rang des Grands Maîtres combinant un puissant bouclier, une onde cinétique, une attaque neurale temporaire et un maintien paralysant mono-cible publiés ; tous les modes partagent l'énergie, tandis que mêlée, portée, ligne de vue et IEM conservent un contre-jeu | 0.3.57-dev / activation 0.3.58-dev / onde 0.3.59-dev / attaque neurale 0.3.60-dev / maintien 0.3.61-dev |

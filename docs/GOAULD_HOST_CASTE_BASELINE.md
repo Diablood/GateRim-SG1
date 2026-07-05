@@ -106,7 +106,17 @@ A full settlement map may resolve more than one group. The final city-wide
 count can therefore include two ordinary Goa'uld hosts while keeping them a
 minority among the Jaffa defenders.
 
-The Combat group remains unchanged, so direct raids stay Jaffa-only.
+Since `0.3.75-dev`, each generated Goa'uld Settlement group containing at least
+five Jaffa may replace one `SG1_GoauldSettlementJaffaGuard` with one
+`SG1_GoauldSettlementJaffaOfficer`. Both kinds use `130` combat power, so the
+replacement preserves the group budget and count. The `maxPerGroup = 1` officer
+profile prevents a second officer inside the same generated group.
+
+The XML option lists remain unchanged. Eligible generated Combat and Settlement
+groups are post-processed only after vanilla has spent the original threat budget,
+so the new officer remains a Jaffa replacement rather than an extra pawn. Final
+cumulative revision `r2` validates the five-Jaffa threshold, `130`-point
+one-for-one replacement, one-officer cap and save/reload behavior.
 
 ## Create World caste summary
 

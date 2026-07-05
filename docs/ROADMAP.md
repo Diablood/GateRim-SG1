@@ -5,27 +5,26 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Apparence distinctive de l'officier Jaffa capturable
-(`0.3.74-dev`)
+## Dernier jalon clôturé - Officiers dans les forces Goa'uld éligibles
+(`0.3.75-dev`)
 
-La révision finale `r2` est validée et publiée. L'officier ciblé par l'opération
-Tok'ra porte désormais une armure lourde et un casque rétractable rouges, tandis
-que son escorte conserve les équipements Jaffa marron/doré. Les Defs et chemins
-de texture sont définitifs ; les PNG rouges restent temporaires et pourront être
-remplacés sans modifier les sauvegardes.
+La révision finale `r2` est validée et publiée. Dans les raids naturels, les
+colonies Goa'uld et les missions adaptées, un groupe d'au moins cinq Jaffa peut
+remplacer au plus un garde par un officier rouge de même `combatPower`. Aucun
+pawn ni budget de menace supplémentaire n'est ajouté.
 
-L'armure conserve les protections lourdes et ajoute `SocialImpact +0.10`. Les
-deux pièces visibles sont fabricables après `SG1_JaffaArmor`, l'état rétracté
-reste interne, et la paire d'officier demeure séparée de la paire standard. La
-correction `r2` garantit explicitement l'équipement après génération tout en
-maintenant `generateCommonality = 0`.
+La cible de capture historique reste un profil séparé à `165` points, sans
+second officier dans son escorte. Les officiers de terrain et de garnison
+utilisent respectivement les budgets existants de `145` et `130` points. Le
+correctif `r2` remplace les overrides invalides de `r1` par un contexte borné
+autour du postfix Harmony de génération de groupe.
 
 ## Prochain jalon à sélectionner
 
-Aucun jalon `0.3.75-dev` ni nom de branche n'est encore réservé. La sélection
+Aucun jalon `0.3.76-dev` ni nom de branche n'est encore réservé. La sélection
 doit partir d'un besoin décidé de cette roadmap, préciser son périmètre et ses
 garde-fous, puis créer une branche dédiée depuis `develop` exactement alignée
-sur `v0.3.74-dev`.
+sur `v0.3.75-dev`.
 
 ## Registre d'idées non planifiées
 
@@ -51,11 +50,9 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 
 ## Équipement Goa'uld et attributs de rang
 
-- [ ] Étendre ultérieurement les officiers Jaffa au-delà de la seule opération de
-  capture : raids Goa'uld naturels contre le joueur, défense des colonies lors
-  d'une attaque du joueur et missions adaptées. Un groupe doit contenir au moins
-  cinq Jaffa, remplacer au plus un Jaffa ordinaire par zéro ou un officier, ne
-  jamais dépasser un officier et respecter le budget de menace existant.
+- [x] Publier `0.3.75-dev` : officiers Jaffa dans les raids naturels,
+  défenses de colonies et missions adaptées, à partir de cinq Jaffa, avec un
+  seul remplacement de garde et un budget inchangé.
 - [ ] Étudier chaque dispositif comme un objet ou système distinct.
 - [ ] Tester armes, mêlée, IEM, caravanes et sauvegarde.
 - [ ] Refléter la puissance dans `combatPower`, menace, valeur et acquisition.

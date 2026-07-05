@@ -9,7 +9,9 @@ armor loadouts:
 
 - `SG1_GoauldJaffaWarrior`
 - `SG1_GoauldJaffaGuard`
-- `SG1_GoauldJaffaOfficer` (mission-only command variant)
+- `SG1_GoauldJaffaOfficer` (published capture target)
+- `SG1_GoauldJaffaFieldOfficer` (combat and mission replacement)
+- `SG1_GoauldSettlementJaffaOfficer` (settlement command replacement)
 
 ## Implementation
 
@@ -18,13 +20,13 @@ The standard warrior and guard loadouts use RimWorld's vanilla
 required pieces rather than a pool of possible apparel choices.
 
 The officer variants deliberately use `generateCommonality = 0` so they never
-enter ordinary random apparel generation. After `r1` showed that the mission
-target did not receive those pieces, final revision `0.3.74-dev-r2` keeps the
-exact PawnKind declaration and adds a mission-spawner verification
-that creates and equips the dedicated torso and deployed helmet if vanilla did
-not add them during pawn generation.
+enter ordinary random apparel generation. Final revision `0.3.74-dev-r2` added
+the first post-generation guarantee for the capture target. `0.3.75-dev` reuses
+the same contract through a shared force utility that creates and equips the
+dedicated torso and deployed helmet whenever an eligible field or settlement
+officer is generated.
 
-Both pawn kinds also declare:
+The shared warrior and guard bases also declare:
 
 ```xml
 <apparelMoney>0</apparelMoney>
@@ -55,7 +57,7 @@ budget-based apparel generator.
 </apparelRequired>
 ```
 
-## Mission officer loadout (`0.3.74-dev`)
+## Officer loadout (`0.3.74-dev`, force expansion `0.3.75-dev`)
 
 ```xml
 <apparelRequired Inherit="False">
@@ -69,21 +71,43 @@ budget-based apparel generator.
 The officer torso armor preserves the heavy armor's protection and movement
 penalty, adds `SocialImpact +0.10`, and uses a stable dedicated texture path.
 The officer helmet switches only with
-`SG1_JaffaOfficerRetractedHelmet`. Temporary red textures distinguish the
-mission target from its ordinary escort.
+`SG1_JaffaOfficerRetractedHelmet`. Temporary red textures distinguish every officer from ordinary Jaffa.
 
-The helmet is guaranteed in deployed form immediately after the capture target
-is generated, then the existing retractable helmet component applies its
-persistent mode. Automatic mode retracts the helmet outside draft and deploys it
-while drafted. If either distinctive piece cannot be equipped, encounter
-initialization fails cleanly instead of accepting an incorrectly dressed
-target. This final `r2` behavior is validated in game.
+The helmet is guaranteed in deployed form immediately after any officer is
+generated, then the existing retractable helmet component applies its persistent
+mode. Automatic mode retracts the helmet outside draft and deploys it while
+drafted. The published capture adapter still aborts encounter initialization if
+either distinctive piece cannot be equipped; the new force layer instead keeps
+the original guard when officer creation fails.
+
+## Eligible officer forces
+
+Since `0.3.75-dev`, the same officer presentation is available outside the
+capture operation in bounded contexts:
+
+- ordinary natural Goa'uld raids;
+- Goa'uld Settlement pawn groups;
+- introduction and distress-call hostile groups;
+- relay defenders and reinforcements;
+- delivery interceptions and diversion assaults.
+
+A generated group must contain at least five eligible Jaffa. One ordinary guard
+may be replaced by one officer; no pawn is added. The field officer and combat
+guard both cost `145` combat power, while settlement officers and settlement
+guards both cost `130`. The published capture target remains a separate `165`-
+point PawnKind. A group without a budget-equivalent guard remains
+unchanged. Capture escorts never receive a second officer.
+
+## Published validation
+
+Final cumulative revision `r2` is validated and published in `0.3.75-dev`.
+Eligible combat, settlement and mission groups preserve their generated pawn
+count and threat budget, never receive more than one officer, and retain the
+complete red command loadout after save/reload. Ordinary Jaffa and the capture
+escort remain unchanged.
 
 ## Intentionally deferred
 
-- Natural Goa'uld raids, settlement defenses and other missions. A future
-  expansion may use zero or one officer only in groups containing at least five
-  Jaffa, replacing an ordinary pawn within the existing threat budget.
 - Traders.
 - Faction-specific facial markings.
 - Final armor artwork, including replacement of the temporary red officer set.

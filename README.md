@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.74-dev`
+- Development version: `0.3.75-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,11 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.74-dev` gives the mission-only Jaffa officer targeted by the recurring
-Tok'ra capture operation a deterministic command loadout. A red temporary armor
-and retractable helmet use stable final texture paths, distinguish the target
-from its ordinary escort and preserve the existing heavy-armor protection. The
-torso armor grants `+10%` social impact, and both craftable pieces are unlocked
-by the existing Jaffa armor research.
+`0.3.75-dev` extends the published Jaffa officer rank into eligible Goa'uld
+forces. Groups containing at least five Jaffa may replace one budget-equivalent
+guard with one red-armored officer in natural raids, settlement defenses and
+selected hostile missions. Group size and ordinary threat budgets remain
+unchanged, and no force can receive more than one officer through this layer.
 
 ## Playable content
 

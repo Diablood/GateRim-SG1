@@ -81,7 +81,8 @@ Raw armor ratings will remain identical. Coverage will differ:
 
 ## Officer command variant (`0.3.74-dev`)
 
-The mission-only capture officer now uses a dedicated heavy torso armor and
+The capture officer and eligible Goa'uld field and settlement officers use a
+dedicated heavy torso armor and
 retractable helmet pair. Their Def names and texture paths are final; the first
 PNG set is a temporary red recolor of the existing brown/gold prototypes.
 
@@ -100,3 +101,13 @@ generated officer and explicitly equips the dedicated
 torso and deployed helmet when necessary. This targeted guarantee does not alter
 ordinary Jaffa generation. Final revision `r2` validates the complete red
 loadout, the single social offset and unchanged standard Jaffa equipment.
+
+## Eligible force use (`0.3.75-dev`)
+
+Combat and mission groups may replace one `145`-point guard with the dedicated
+`SG1_GoauldJaffaFieldOfficer`; settlement groups use the dedicated `130`-point
+settlement officer. The capture target remains the historical `165`-point
+`SG1_GoauldJaffaOfficer`. The red
+apparel Defs and texture paths remain shared and stable. Final cumulative
+revision `r2` validates both budget-neutral officer profiles, the five-Jaffa
+threshold, the one-officer cap and persistence of the complete loadout.

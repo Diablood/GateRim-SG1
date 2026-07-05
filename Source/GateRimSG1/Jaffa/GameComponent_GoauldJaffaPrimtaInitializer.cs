@@ -9,7 +9,7 @@ namespace GateRimSG1.Jaffa
     ///
     /// The initializer originally targeted the two Goa'uld-aligned pawn kinds.
     /// It now also covers the Free Jaffa warrior, guard and trader kinds plus
-    /// the settlement-only Goa'uld Jaffa profiles while keeping
+    /// the Goa'uld combat, officer and settlement profiles while keeping
     /// the historical component and save-data key for compatibility.
     /// Initialization is recorded once per pawn ThingID. Removing the Prim'ta
     /// later must not create an artificial replacement.
@@ -117,8 +117,10 @@ namespace GateRimSG1.Jaffa
         {
             return pawnKindDef == GR_DefOf.SG1_GoauldJaffaWarrior
                 || pawnKindDef == GR_DefOf.SG1_GoauldJaffaGuard
+                || pawnKindDef == GR_DefOf.SG1_GoauldJaffaFieldOfficer
                 || pawnKindDef == GR_DefOf.SG1_GoauldSettlementJaffaWarrior
                 || pawnKindDef == GR_DefOf.SG1_GoauldSettlementJaffaGuard
+                || pawnKindDef == GR_DefOf.SG1_GoauldSettlementJaffaOfficer
                 || pawnKindDef == GR_DefOf.SG1_FreeJaffaWarrior
                 || pawnKindDef == GR_DefOf.SG1_FreeJaffaGuard
                 || pawnKindDef == GR_DefOf.SG1_FreeJaffaTrader;

@@ -1,57 +1,116 @@
 # Current milestone validation
 
-Jalon : `0.3.74-dev - Add distinctive Jaffa capture-officer appearance`
+Jalon : `0.3.75-dev - Add Jaffa officers to eligible Goa'uld forces`
 
-Branche finale :
-`feature/distinctive-jaffa-capture-officer-appearance`
+Branche : `feature/jaffa-officers-in-goauld-forces`
 
-Révision locale finale : `r2`
+Révision finale validée : `r2`
 
-Version de DLL validée : `0.3.74.0`
+Version de DLL validée : `0.3.75.0`
 
-Statut : validation terminée et jalon publié sous `v0.3.74-dev`.
+Statut : validation finale réussie. `r1` avait échoué au build avec deux erreurs
+`CS0115`. `r2` retire les overrides invalides et déplace l'injection vers le
+postfix Harmony de génération de groupe, limité au contexte exact du raid
+naturel ou de la diversion.
 
-## Résultat final
+## Contrôles préalables
 
-- `git diff --check` : réussi ;
-- build forcé `0.3.74.0` : réussi ;
-- audit des durées : `104` clés uniques, réussi ;
-- contrôle global de cohérence : réussi ;
-- recherche `Armures Jaffa` et factures des deux pièces visibles : validées ;
-- état rétracté sans facture indépendante : validé ;
-- textures rouges, protections et `Impact social +10 %` : validés ;
-- cible générée avec arme, armure rouge, casque rouge, gantelets et bottes :
-  validée après la correction `r2` ;
-- escortes conservant les équipements marron/doré : validées ;
-- absence des variantes d'officier sur les Jaffa ordinaires : validée ;
-- modes automatique, toujours déployé et toujours rétracté : validés ;
-- séparation complète entre la paire standard et la paire d'officier : validée ;
-- sauvegarde/rechargement de l'équipement et du mode : validé ;
-- capture, transport en caravane et extraction Tok'ra : validés ;
-- `Player.log` : aucune nouvelle erreur C#, Harmony, XML, DefOf, texture,
-  apparel, rendu, Scribe, caravane ou mission.
+Depuis la racine du dépôt :
 
-## Historique de la révision
+```powershell
+git diff --check
+.\build.cmd
+.\tools\check-duration-formatting.cmd
+.\tools\check-project-consistency.cmd
+```
 
-La révision `r1` avait validé la recherche, la fabrication, les textures,
-l'équipement manuel, les protections et le bonus social. Elle avait également
-révélé que la cible générée conservait son arme, ses gantelets et ses bottes,
-mais ne recevait ni l'armure ni le casque dédiés.
+Résultats attendus :
 
-La révision cumulative `r2` conserve les deux variantes à commonalité nulle et
-ajoute une garantie ciblée après génération. L'armure et le casque sont créés et
-équipés uniquement sur la cible de capture lorsqu'ils manquent. La correction
-est validée sans modification du reste du flux de mission.
+- aucune erreur `CS0115` dans `IncidentWorker_GoauldJaffaNaturalRaid` ou
+  `IncidentWorker_GoauldJaffaLuredAssault` ;
+- assembly `0.3.75.0` ;
+- audit des durées avec `104` clés uniques ;
+- contrôle global de cohérence réussi ;
+- aucune erreur de compilation.
 
-## Couverture durable à conserver
+## Test obligatoire court - raid naturel éligible
 
-- les Defs et chemins de texture dédiés restent stables malgré le remplacement
-  futur des PNG temporaires ;
-- l'armure applique seule `SocialImpact +0.10` ;
-- le casque ne change qu'entre ses deux Defs d'officier ;
-- les pièces restent exclues de la génération aléatoire ;
-- la fabrication reste liée à `SG1_JaffaArmor` ;
-- les guerriers, gardes, escortes et colonies utilisent encore les équipements
-  standards ;
-- l'extension des officiers aux groupes Goa'uld ordinaires reste un futur jalon
-  séparé.
+1. Charger une colonie avec le mode développeur RimWorld actif.
+2. Ouvrir :
+
+```text
+Actions de débogage
+> GateRim SG-1
+> Goa'uld...
+> Threat progression...
+> Force eligible natural raid with officer (900 points)
+```
+
+3. Vérifier que la force contient au moins cinq Jaffa.
+4. Vérifier qu'elle contient exactement un
+   `SG1_GoauldJaffaFieldOfficer` et aucun second officier.
+5. Vérifier que l'officier remplace un pawn du groupe au lieu d'être ajouté en
+   supplément.
+6. Vérifier son armure rouge, son casque rouge rétractable, sa marque frontale
+   argentée, son arme Jaffa, ses gantelets, ses bottes et son Prim'ta.
+7. Vérifier que les autres Jaffa conservent leurs équipements marron/doré.
+
+## Test obligatoire - seuil inférieur
+
+1. Dans le même menu, utiliser :
+
+```text
+Force natural direct raid (300 points)
+```
+
+2. Vérifier qu'un groupe contenant moins de cinq Jaffa ne reçoit aucun officier.
+3. Vérifier que ce test forcé historique conserve son comportement et ses points
+   exacts.
+
+## Test obligatoire - colonie Goa'uld
+
+1. Depuis la carte mondiale, attaquer une colonie d'un domaine Goa'uld avec une
+   caravane de test.
+2. Pour chaque groupe de défense visible, compter les Jaffa.
+3. Un groupe de moins de cinq Jaffa ne doit contenir aucun officier.
+4. Un groupe d'au moins cinq Jaffa peut contenir au plus un
+   `SG1_GoauldSettlementJaffaOfficer` rouge ; il remplace un garde de garnison
+   et ne change pas l'effectif du groupe.
+5. Vérifier que les hôtes Goa'uld minoritaires et les autres défenseurs ne sont
+   pas remplacés.
+
+## Test obligatoire - mission adaptée
+
+Valider au moins l'un des chemins suivants avec une force d'au moins cinq Jaffa :
+
+- mission d'introduction Tok'ra ;
+- appel de détresse Tok'ra ;
+- relais Goa'uld décodé, défense initiale ou renforts ;
+- interception de livraison temporaire ;
+- assaut de diversion.
+
+Vérifier exactement un `SG1_GoauldJaffaFieldOfficer` rouge, un effectif
+inchangé et la conservation du comportement propre à la mission. La mission de
+capture doit continuer à générer uniquement son `SG1_GoauldJaffaOfficer` cible
+à `165` points ; son escorte ne doit pas recevoir un second officier.
+
+## Persistance et régressions
+
+1. Sauvegarder avec un officier généré présent sur une carte.
+2. Recharger.
+3. Vérifier le PawnKind, le Prim'ta, la marque argentée, l'armure rouge et le
+   mode du casque.
+4. Vérifier les raids contrôlés, les représailles d'extraction et les champs de
+   bataille inter-domaines : aucun officier ne doit y être injecté par ce jalon.
+5. Examiner `Player.log` et confirmer l'absence de nouvelle erreur C#, Harmony,
+   XML, DefOf, génération de groupe, apparel, rendu, Scribe, raid ou mission.
+
+## Résultat final validé
+
+- build et audits ;
+- raid éligible : nombre total de Jaffa et nombre d'officiers ;
+- groupe sous le seuil : nombre total et absence d'officier ;
+- défense de colonie ;
+- mission testée ;
+- sauvegarde/rechargement ;
+- `Player.log` propre.

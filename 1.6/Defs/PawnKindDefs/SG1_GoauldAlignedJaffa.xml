@@ -93,11 +93,8 @@
         <label>Goa'uld Jaffa guard</label>
     </PawnKindDef>
 
-    <!-- Mission-only elite officer targeted by Tok'ra capture operations. -->
-    <PawnKindDef ParentName="SG1_GoauldJaffaGuardBase">
-        <defName>SG1_GoauldJaffaOfficer</defName>
-        <label>Goa'uld Jaffa officer</label>
-        <combatPower>165</combatPower>
+    <!-- Shared officer profile used by capture targets and eligible forces. -->
+    <PawnKindDef Name="SG1_GoauldJaffaOfficerBase" Abstract="True" ParentName="SG1_GoauldJaffaGuardBase">
         <maxPerGroup>1</maxPerGroup>
         <apparelRequired Inherit="False">
             <li>SG1_JaffaOfficerArmor</li>
@@ -105,6 +102,20 @@
             <li>SG1_JaffaReinforcedBoots</li>
             <li>SG1_JaffaOfficerDeployedHelmet</li>
         </apparelRequired>
+    </PawnKindDef>
+
+    <!-- Published capture target; keep its historical threat metadata. -->
+    <PawnKindDef ParentName="SG1_GoauldJaffaOfficerBase">
+        <defName>SG1_GoauldJaffaOfficer</defName>
+        <label>Goa'uld Jaffa officer</label>
+        <combatPower>165</combatPower>
+    </PawnKindDef>
+
+    <!-- Budget-equivalent replacement for ordinary combat guards. -->
+    <PawnKindDef ParentName="SG1_GoauldJaffaOfficerBase">
+        <defName>SG1_GoauldJaffaFieldOfficer</defName>
+        <label>Goa'uld Jaffa field officer</label>
+        <combatPower>145</combatPower>
     </PawnKindDef>
 
     <!--
@@ -147,5 +158,11 @@
         <label>Goa'uld settlement Jaffa guard</label>
         <combatPower>130</combatPower>
         <maxPerGroup>2</maxPerGroup>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="SG1_GoauldJaffaOfficerBase">
+        <defName>SG1_GoauldSettlementJaffaOfficer</defName>
+        <label>Goa'uld settlement Jaffa officer</label>
+        <combatPower>130</combatPower>
     </PawnKindDef>
 </Defs>

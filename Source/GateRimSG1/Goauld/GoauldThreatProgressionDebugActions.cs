@@ -7,6 +7,7 @@ namespace GateRimSG1.Goauld
     public static class GoauldThreatProgressionDebugActions
     {
         private const float WeakRaidPoints = 300f;
+        private const float OfficerEligibleRaidPoints = 900f;
         private const float AdvancedRaidPoints = 4000f;
 
         public static void ShowCurrentProgression()
@@ -69,6 +70,9 @@ namespace GateRimSG1.Goauld
                 + $"{naturalRaidPressureFactor * 100f:0}%\n"
                 + "Natural raid effective points: "
                 + $"{effectiveNaturalRaidPoints:0}\n"
+                + "Officer threshold: "
+                + GoauldJaffaOfficerForceUtility.MinimumEligibleJaffaCount
+                + " eligible Jaffa with one budget-equivalent guard\n"
                 + $"Intercepted raid points: {points:0}\n"
                 + "Diagnostic domain: "
                 + (diagnosticDomain?.Name ?? "<none>")
@@ -141,6 +145,36 @@ namespace GateRimSG1.Goauld
                 Reject(
                     "Could not start the current natural Goa'uld raid "
                     + "with inter-domain relation pressure enabled.");
+            }
+        }
+
+        public static void ForceEligibleNaturalRaidWithOfficer()
+        {
+            Map map = Find.CurrentMap;
+            IncidentDef incidentDef = GR_DefOf.SG1_GoauldJaffaNaturalRaid;
+            IncidentWorker_GoauldJaffaNaturalRaid worker =
+                incidentDef?.Worker
+                    as IncidentWorker_GoauldJaffaNaturalRaid;
+
+            if (map == null || incidentDef?.category == null || worker == null)
+            {
+                Reject("The natural Goa'uld raid definition is unavailable.");
+                return;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+                incidentDef.category,
+                map);
+            parms.forced = true;
+            parms.points = OfficerEligibleRaidPoints;
+
+            if (!worker.TryExecuteForcedDebugDoctrineWithOfficer(
+                    parms,
+                    GoauldJaffaRaidDoctrine.Direct))
+            {
+                Reject(
+                    "Could not start the eligible natural Goa'uld raid "
+                    + "with a Jaffa officer.");
             }
         }
 

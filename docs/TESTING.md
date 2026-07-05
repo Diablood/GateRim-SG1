@@ -1,3 +1,35 @@
+# Durable testing
+
+## Jaffa officers in eligible Goa'uld forces (`0.3.75-dev`)
+
+Final cumulative revision `r2` validated and published. Revision `r1` failed
+the forced build because two raid workers overrode a non-overridable method;
+`r2` moved the replacement to the bounded pawn-group postfix context. Durable
+coverage:
+
+- a generated force must contain at least five eligible Jaffa before the officer
+  replacement layer can run;
+- at most one ordinary guard is replaced, and no extra pawn is added;
+- the field officer and combat guard both use `145` combat power, while the
+  published capture target retains its historical `165`;
+- the settlement officer and settlement guard both use `130` combat power;
+- groups below five Jaffa and qualifying groups without a budget-equivalent
+  guard remain unchanged;
+- ordinary natural raids may receive one officer, while historical forced
+  doctrine tests remain excluded unless the dedicated officer test is used;
+- eligible Goa'uld settlement groups may receive at most one settlement officer
+  per generated group;
+- introduction, distress-call, relay, delivery-interception and diversion forces
+  use the same threshold and replacement contract;
+- the capture operation retains only its dedicated target officer and never
+  adds a second officer to the escort;
+- controlled raids, extraction reprisals and inter-domain battlefields remain
+  outside the replacement layer;
+- every generated officer keeps the red torso armor, red retractable helmet,
+  elite silver mark, Prim'ta and Goa'uld Jaffa cultural profile after reload;
+- `Player.log` remains free of Harmony target-resolution, pawn-group generation,
+  apparel, DefOf, Scribe, raid and mission errors.
+
 # Testing checklist
 
 ## 0.3.74-dev - Distinctive Jaffa capture-officer appearance

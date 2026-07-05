@@ -436,11 +436,18 @@ namespace GateRimSG1.Goauld
 
             for (int index = 0; index < pawnCount; index++)
             {
-                PawnKindDef kind = guardKind != null
-                        && (warriorKind == null || index % 5 == 4)
-                    ? guardKind
-                    : warriorKind ?? guardKind;
-                Pawn pawn = PawnGenerator.GeneratePawn(kind, faction, map.Tile);
+                PawnKindDef kind = GoauldJaffaOfficerForceUtility
+                    .SelectMissionPawnKind(
+                        index,
+                        pawnCount,
+                        warriorKind,
+                        guardKind);
+                Pawn pawn = GoauldJaffaOfficerForceUtility.GenerateForcePawn(
+                    kind,
+                    faction,
+                    map.Tile,
+                    "Tok'ra distress-call hostile force",
+                    guardKind);
 
                 if (pawn == null)
                 {

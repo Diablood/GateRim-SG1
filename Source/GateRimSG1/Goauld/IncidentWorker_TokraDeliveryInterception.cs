@@ -39,7 +39,15 @@ namespace GateRimSG1.Goauld
             groupParms.generateFightersOnly = true;
             groupParms.dontUseSingleUseRocketLaunchers = true;
 
-            return PawnGroupMakerUtility.GeneratePawns(groupParms).ToList();
+            List<Pawn> pawns = PawnGroupMakerUtility
+                .GeneratePawns(groupParms)
+                .ToList();
+            GoauldJaffaOfficerForceUtility
+                .TryReplaceCombatGuardWithOfficer(
+                    pawns,
+                    parms.faction,
+                    "Tok'ra delivery interception");
+            return pawns;
         }
 
         protected override LordJob CreateLordJob(

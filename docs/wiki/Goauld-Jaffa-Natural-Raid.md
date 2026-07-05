@@ -1,10 +1,11 @@
 # Raid naturel de Jaffa Goa'uld
 
-> Statut : jouable, extension d'alliance `0.3.73-dev` validée
+> Statut : jouable, officiers éligibles `0.3.75-dev` validés
 > Première version : `0.2.1-dev`
 > Doctrines naturelles : `0.3.54-dev`
 > Pression des conflits ouverts : `0.3.68-dev`
 > Puissance bornée des alliances : `0.3.73-dev`
+> Officiers dans les groupes éligibles : `0.3.75-dev`
 
 Les domaines des Grands Maîtres Goa'uld peuvent lancer de rares raids contre
 une colonie joueur à partir du jour 12. Un délai minimal commun de 18 jours
@@ -78,6 +79,18 @@ Le worker commun marque techniquement les raids comme forcés pendant leur
 génération. `0.3.73-dev` distingue donc l'appel naturel du storyteller d'un
 appel qui était déjà forcé avant d'entrer dans ce worker. Le raid naturel reçoit
 bien son facteur, tandis que les représailles et tests exacts restent exclus.
+
+## Officier dans une force éligible
+
+À partir de `0.3.75-dev`, un raid naturel contenant au moins cinq Jaffa peut
+remplacer un garde par un officier en armure rouge. Le groupe ne reçoit aucun
+pawn supplémentaire : le garde et l'officier de terrain utilisent tous deux
+`145` points de combat. La cible propre à l'opération de capture conserve sa
+valeur historique de `165` et n'est pas utilisée par ce chemin. Un groupe trop
+petit ou sans garde approprié reste inchangé, et un
+même groupe ne reçoit jamais plus d'un officier. La révision finale `r2` valide
+le seuil, le remplacement sans surcoût, la sauvegarde/rechargement et l'absence
+de régression sur les raids exclus.
 
 L'assaut direct cherche à vaincre la colonie. La doctrine d'enlèvement tente
 d'évacuer les colons tombés à terre avant de se replier. La doctrine de

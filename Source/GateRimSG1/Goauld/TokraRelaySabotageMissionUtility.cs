@@ -555,15 +555,19 @@ namespace GateRimSG1.Goauld
 
             for (int index = 0; index < pawnCount; index++)
             {
-                PawnKindDef pawnKind = ChooseJaffaPawnKind(
-                    index,
-                    warriorKind,
-                    guardKind);
+                PawnKindDef pawnKind = GoauldJaffaOfficerForceUtility
+                    .SelectMissionPawnKind(
+                        index,
+                        pawnCount,
+                        warriorKind,
+                        guardKind);
 
-                Pawn pawn = PawnGenerator.GeneratePawn(
+                Pawn pawn = GoauldJaffaOfficerForceUtility.GenerateForcePawn(
                     pawnKind,
                     faction,
-                    map.Tile);
+                    map.Tile,
+                    "Tok'ra relay Jaffa force",
+                    guardKind);
 
                 if (pawn == null)
                 {
@@ -651,19 +655,6 @@ namespace GateRimSG1.Goauld
             }
 
             return IntVec3.Invalid;
-        }
-
-        private static PawnKindDef ChooseJaffaPawnKind(
-            int index,
-            PawnKindDef warriorKind,
-            PawnKindDef guardKind)
-        {
-            if (guardKind != null && (warriorKind == null || index % 5 == 4))
-            {
-                return guardKind;
-            }
-
-            return warriorKind ?? guardKind;
         }
 
         private static int CalculatePawnCount(

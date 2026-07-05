@@ -145,8 +145,10 @@
                 <pawnKinds>
                     <li>SG1_GoauldJaffaWarrior</li>
                     <li>SG1_GoauldJaffaGuard</li>
+                    <li>SG1_GoauldJaffaFieldOfficer</li>
                     <li>SG1_GoauldSettlementJaffaWarrior</li>
                     <li>SG1_GoauldSettlementJaffaGuard</li>
+                    <li>SG1_GoauldSettlementJaffaOfficer</li>
                 </pawnKinds>
             </li>
         </matchers>

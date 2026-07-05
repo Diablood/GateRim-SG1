@@ -103,7 +103,15 @@ namespace GateRimSG1.Goauld
                     .Where(pawn => pawn != null)
                     .Select(pawn => pawn.ThingID));
 
-            bool succeeded = base.TryExecuteWorker(parms);
+            bool succeeded;
+
+            using (GoauldJaffaOfficerForceUtility
+                .BeginCombatOfficerGeneration(
+                    assaultGroupKind,
+                    "Tok'ra diversion assault"))
+            {
+                succeeded = base.TryExecuteWorker(parms);
+            }
 
             if (!succeeded)
             {

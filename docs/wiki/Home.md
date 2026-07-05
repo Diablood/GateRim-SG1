@@ -4,16 +4,17 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.74-dev`
+> Version du mod documentée : `0.3.75-dev`
 
 
-## Officier Jaffa capturable
+## Officiers Jaffa Goa'uld
 
 La révision `0.3.74-dev` donne à la cible de
 [l'opération de capture](Tokra-Jaffa-Officer-Capture) une armure lourde et un
-casque rétractable rouges. Les textures sont temporaires, mais leurs chemins
-sont définitifs. L'armure ajoute `+10 %` d'impact social et les deux pièces
-fabricables sont débloquées par la recherche Armures Jaffa.
+casque rétractable rouges. Depuis `0.3.75-dev`, un groupe Goa'uld d'au moins cinq
+Jaffa peut aussi remplacer un garde par un seul officier dans les raids naturels,
+les défenses de colonies et plusieurs missions. Aucun pawn ni budget de menace
+supplémentaire n'est ajouté. La révision finale `r2` est validée et publiée.
 
 ## Durées affichées
 

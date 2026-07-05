@@ -58,6 +58,10 @@ Do not rely on conversation memory for deferred work when it can be recorded in 
 
 ## Delivery rules
 
+- Delivery ZIPs must contain only files added or modified since the previous
+  delivered revision. Use a whole-repository archive only for explicit recovery
+  or when the maintainer specifically requests one. A complete-file patch means
+  full replacement contents for the included paths, not a copy of the repository.
 - Summarize modified files.
 - Report the validation and build commands executed.
 - Before requesting in-game validation, add the exact manual test checklist to

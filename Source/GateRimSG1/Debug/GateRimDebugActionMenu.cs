@@ -93,6 +93,11 @@ namespace GateRimSG1.Debugging
                     GoauldThreatProgressionDebugActions.ShowCurrentProgression,
                     600),
                 ActionNode(
+                    "Force eligible natural raid with officer (900 points)",
+                    GoauldThreatProgressionDebugActions
+                        .ForceEligibleNaturalRaidWithOfficer,
+                    550),
+                ActionNode(
                     "Force current direct raid",
                     GoauldThreatProgressionDebugActions.ForceCurrentDirectRaid,
                     500),

@@ -1,5 +1,55 @@
 # Changelog
 
+## 0.3.75-dev - Add Jaffa officers to eligible Goa'uld forces
+
+- Start from published `develop` and annotated tag `v0.3.74-dev` on
+  `feature/jaffa-officers-in-goauld-forces`.
+- Extend the red-armored Jaffa officer beyond the capture target without adding
+  a new incident, scheduler or serialized tracker.
+- Require at least five eligible Jaffa in one generated force before an officer
+  can appear.
+- Replace at most one ordinary guard with one officer, preserving group size.
+- Preserve the published capture target `SG1_GoauldJaffaOfficer` at its
+  historical `165` combat power.
+- Add `SG1_GoauldJaffaFieldOfficer` at `145` combat power, matching the combat
+  guard it replaces.
+- Add `SG1_GoauldSettlementJaffaOfficer` at `130` combat power, matching the
+  settlement guard it replaces.
+- Cover ordinary natural Goa'uld raids, settlement defense groups, introduction
+  defenders, distress-call hostiles, relay defenders and reinforcements,
+  delivery interceptions and diversion assaults.
+- Keep groups below five Jaffa unchanged and leave a qualifying group without
+  an officer when no budget-equivalent guard exists.
+- Keep the capture operation at exactly one target officer and do not add an
+  officer to its escort.
+- Keep controlled raids, extraction reprisals and inter-domain battlefields
+  outside the new replacement layer.
+- Guarantee the dedicated red armor, retractable helmet and elite silver mark
+  for generated officers.
+- Extend Prim'ta initialization and Goa'uld Jaffa cultural matching to the
+  new field and settlement officer PawnKinds.
+- Add a deterministic `900`-point natural-raid developer action for focused
+  officer validation while preserving the historical forced-doctrine tests.
+- Add no save field, pawn-count increase, incident-frequency change, doctrine
+  change, mission phase or free threat budget.
+- Record that cumulative revision `r1` failed its first forced build with two
+  `CS0115` errors because the natural-raid and diversion workers attempted to
+  override a non-overridable `IncidentWorker_RaidEnemy.GeneratePawns` path.
+- In cumulative revision `r2`, remove those invalid overrides and apply the same
+  list replacement through the existing `PawnGroupMakerUtility.GeneratePawns`
+  Harmony postfix only while an explicit incident-scoped combat-generation
+  context is active for the expected pawn-group kind.
+- Restore the previous generation context after every attempt so settlement,
+  controlled raid, reprisal and unrelated pawn-group generation remain isolated.
+- Change local delivery archives to contain only paths added or modified since
+  the previous revision instead of duplicating the whole repository.
+- Validate final cumulative revision `r2`: build `0.3.75.0`, duration audit with
+  `104` unique keys, project consistency, eligible natural raid, below-threshold
+  exclusion, settlement and mission replacement, capture isolation, save/reload
+  persistence and a clean accepted `Player.log`.
+- Integrate the feature branch by fast-forward, publish annotated tag
+  `v0.3.75-dev` and synchronize the separate wiki sources.
+
 ## 0.3.74-dev - Add distinctive Jaffa capture-officer appearance
 
 - Start from published `develop` and annotated tag `v0.3.73-dev` on

@@ -222,6 +222,13 @@ The old world-marker handoff fields remain loadable for r2/r3 saves but no longe
 
 The mission tool still uses the shared Tok'ra delivery utility and therefore prefers the player-placed delivery zone before the communicator and edge-cell fallbacks.
 
+`0.3.75-dev` keeps that capture target isolated while allowing selected hostile
+mission forces to replace one budget-equivalent guard with one field officer
+when the generated group contains at least five eligible Jaffa. Final cumulative
+revision `r2` validates introduction, distress, relay, delivery-interception or
+diversion coverage without adding a pawn, changing the mission phase or adding a
+second officer to the capture escort.
+
 ## Recurrence and orchestration behavior
 
 After a MissionDef-backed operation resolves, the scheduler first uses a configured range for the active context, such as a Tok'ra trust tier, and otherwise uses the definition's generic minimum and maximum hidden delay. Success, failure and ignored or expired offers all return to the same persistent scheduler. All eight current Tok'ra organic operations consume their configured recurrence data through the framework.
@@ -306,6 +313,13 @@ Each pool must retain its own RP identity, appearance conditions, rewards and co
 A MissionDef can capture current RimWorld threat points when offered. Observation records the snapshot without fabricating a combat encounter. Intelligence recovery can queue a Goa'uld patrol from the stored scaled snapshot. Wounded-agent care uses the same captured scale to interpolate optional illness chance and severity.
 
 The budget is captured at offer time and remains stable for that occurrence. Consequences must not recalculate a more convenient value later. Fixed enemy counts should be avoided when a storyteller threat budget can express equivalent behavior.
+
+Since `0.3.75-dev`, mission adapters that generate ordinary Goa'uld Jaffa
+forces may replace one budget-equivalent guard with an officer only after the
+force reaches five Jaffa. Introduction, distress-call, relay, delivery
+interception and diversion adapters share this rule. The replacement preserves
+pawn count and combat power; the capture adapter remains specialized and never
+adds a second officer to its target's escort.
 
 ## Text variation
 
