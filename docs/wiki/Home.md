@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.75-dev`
+> Version du mod documentée : `0.3.76-dev`
+
+## Réconciliation de la feuille de route
+
+`0.3.76-dev` ne modifie pas le gameplay. Cette révision retire des travaux déjà
+publiés de la liste des développements futurs, sépare les prochains chantiers et
+réserve une passe artistique définitive pour remplacer tous les placeholders et
+textures temporaires. Les anneaux de transport sont désormais planifiés comme
+une future alternative thématique et limitée aux pods vanilla.
 
 
 ## Officiers Jaffa Goa'uld
@@ -153,19 +161,19 @@ fabricable et n'est pas distribué hors de cette mission.
 
 ## Développement à venir
 
-La série `0.3.x` consolide les systèmes réutilisables et la stabilité avant les
-grands chapitres de contenu suivants. Les directions durables sont notamment :
+Les huit opérations Tok'ra et le storyteller Commandement SG-1 sont déjà
+publiés. Les directions futures sont désormais séparées en jalons distincts :
 
-- un framework réutilisable de missions et questlines, avec rejouabilité, variantes RP et difficulté adaptative ;
-- de nouveaux archétypes d'opérations Tok'ra réellement distincts ;
-- l'enrichissement progressif du pool d'opérations Tok'ra après l'intégration de la recherche, du communicateur et de leur verrou d'accès ;
-- une refonte visuelle globale, préparée par des concept arts, après la stabilisation des mécaniques et avant la Porte des étoiles ;
-- les futures cultures Asgard, Nox et Unas avec leurs noms et parcours propres ;
-- un storyteller GateRim SG-1 qui orchestre le mod sans rendre ses événements
-  dépendants de ce storyteller ;
-- un préréglage de monde entièrement GateRim SG-1 ;
-- une phase ultérieure consacrée à la Porte des étoiles fonctionnelle et aux
-  expéditions hors monde.
+- inventaire puis remplacement définitif de tous les placeholders et textures
+  temporaires ;
+- extensions Goa'uld d'alliance, garde-fous stratégiques et conséquences
+  territoriales bornées ;
+- anneaux de transport d'abord entre plateformes du joueur, puis usages de
+  mission ou hostiles ;
+- fondations Asgard, Nox, Unas et Réplicateurs ;
+- audits optionnels séparés pour Ideology et Royalty ;
+- préréglage de monde entièrement GateRim SG-1 ;
+- fondations Stargate, première expédition hors monde puis Porte fonctionnelle.
 
 L'audit de l'orchestration, l'appel à l'aide sur site mondial et le contrat de
 production livré à un rendez-vous temporaire sont intégrés. La livraison

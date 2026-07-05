@@ -2,17 +2,15 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.75-dev`
+> Dernière révision : `0.3.76-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.75-dev` étend l'officier Jaffa rouge aux groupes Goa'uld éligibles.
-À partir de cinq Jaffa, un garde peut être remplacé par un seul officier dans les
-raids naturels, les défenses de colonies et plusieurs missions. L'effectif et le
-budget de menace restent inchangés ; la cible de capture conserve son rôle
-spécialisé sans second officier dans son escorte. La révision finale `r2` est
-validée et publiée.
+`0.3.76-dev` réconcilie la documentation des développements futurs sans modifier
+le contenu jouable. Les travaux déjà publiés sont retirés du backlog actif, les
+futurs chantiers sont séparés et une passe artistique complète reste prévue pour
+remplacer tous les placeholders et toutes les textures temporaires.
 
 ## Implémenté ou testable
 
@@ -139,20 +137,20 @@ validée et publiée.
 | Élément | Direction actuelle |
 |---|---|
 | Stabilisation des opérations Tok'ra | Le pool est fermé à huit archétypes. Les futures parties longues pourront déclencher des correctifs ou équilibrages ciblés, mais aucune nouvelle opération n'est actuellement prévue |
-| Déblocage des opérations Tok'ra | L'introduction, l'étude, le prérequis de construction et le verrou du canal sont intégrés ; conserver ce comportement pour chaque nouvel archétype sans annuler les missions déjà engagées |
-| Direction Goa'uld | Ne pas copier les offres Tok'ra : développer une pression hostile fondée sur les domaines, leur hiérarchie, la menace biologique et les conséquences des actions du joueur ; sélectionner le premier système seulement après validation du cadrage |
-| Asgard | Soutien commercial et militaire, attribution de quêtes sans bases mondiales ordinaires, tendance alliée des Tau'ri |
-| Nox | Présence pacifique, commerciale et diplomatique à l'apparence primitive mais technologiquement avancée |
-| Unas | Race reptilienne généralement hostile et compatible comme hôte Goa'uld |
-| Monde entièrement GateRim SG-1 | Préréglage optionnel retirant les factions vanilla sélectionnables lorsque cela reste techniquement sûr |
-| Conséquences des relations Goa'uld | Les états persistants, rapports RP, réduction en conflit, batailles locale et mondiale sont publiés ; le bonus allié plafonné à `110 %` est publié dans `0.3.73-dev`, tandis que renforts conjoints et effets territoriaux restent séparés |
+| Alliances Goa'uld | Les futurs renforts, raids conjoints, interactions de doctrines, représailles communes et ruptures d'alliance restent cinq jalons séparés |
+| Conséquences territoriales Goa'uld | Concevoir et valider d'abord les garde-fous contre auto-élimination, expansion incontrôlée et déséquilibre mondial |
+| Anneaux de transport | Première fondation entre plateformes construites et alimentées du joueur, puis extension séparée aux missions et usages hostiles ; ne pas supprimer globalement les pods vanilla |
+| Asgard | Fondation séparée : soutien, commerce et missions sans colonie mondiale obligatoire |
+| Nox | Fondation séparée : présence pacifique, commerciale et diplomatique |
+| Unas | Fondation séparée : variantes sauvages ou tribales et compatibilité potentielle comme hôtes |
+| Monde entièrement GateRim SG-1 | Fondation séparée d'un préréglage optionnel lorsque les rôles économiques, militaires et diplomatiques sont couverts |
 | Résumé personnalisé des castes Goa'uld | Publié dans `0.3.52-dev` : le résumé vanilla des xénotypes est complété par les castes parasitaires acquises sans modifier la génération |
-| Passe visuelle des objets et sites | Remplacer les textures provisoires ou trompeuses restantes et préparer des identités visuelles cohérentes pour les objets, équipements et sites du SGC, des Tok'ra, des Jaffa et des domaines Goa'uld |
+| Passe visuelle définitive | Inventorier puis remplacer tous les placeholders et toutes les textures temporaires par des assets finaux cohérents pour le SGC, les Tok'ra, les Jaffa et les Goa'uld |
 | Équipement Goa'uld de haut rang | Bouclier, onde cinétique, attaque neurale et maintien paralysant mono-cible publiés. Les autres fonctions spéculatives restent non planifiées dans le fichier d'idées à revoir |
-| Réplicateurs | Prévu pour une phase ultérieure |
-| Intégration optionnelle Ideology | À étudier |
-| Intégration optionnelle Royalty | À étudier avec les Grands Maîtres |
-| Porte des étoiles fonctionnelle | Phase majeure ultérieure avec progression et expéditions hors monde, après stabilisation des fondations actuelles |
+| Réplicateurs | Fondation séparée à cadrer : réplication, adaptation, contre-jeu, incidents et présence mondiale |
+| Intégration optionnelle Ideology | Audit séparé et conditionnel, sans dépendance obligatoire |
+| Intégration optionnelle Royalty | Audit séparé de la hiérarchie et des interactions possibles, sans dépendance obligatoire |
+| Progression Stargate | Jalons séparés pour les fondations, une première expédition hors monde puis la Porte fonctionnelle |
 
 ## Prise de contrôle hostile Goa'uld
 

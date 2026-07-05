@@ -53,9 +53,14 @@ fonctionnalité.
 
 Les ZIP de révision locale et de finalisation doivent contenir uniquement les
 fichiers ajoutés ou modifiés depuis la révision précédemment livrée. Une archive
-du dépôt complet est réservée à une récupération explicitement demandée. Le
-terme « fichier complet » signifie que chaque chemin inclus remplace entièrement
-sa version de travail ; il ne signifie pas que tout le dépôt doit être dupliqué.
+du dépôt complet est réservée à une récupération explicitement demandée.
+
+Chaque chemin inclus doit être un fichier complet prêt à remplacer sa version de
+travail. Les livraisons ordinaires ne doivent contenir aucun diff unifié, fichier
+`.patch`, commande `git apply` ou autre format dépendant du contexte des lignes.
+Un patch textuel n'est autorisé que lorsque le mainteneur le demande explicitement
+pour un cas exceptionnel. « Fichier complet » ne signifie pas que tout le dépôt
+doit être dupliqué.
 
 Lorsqu'un paquet final est fourni sous forme de ZIP, son extraction fait partie
 de la séquence de publication obligatoire. Ne jamais donner ou exécuter une

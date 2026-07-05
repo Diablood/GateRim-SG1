@@ -1,19 +1,31 @@
 # Current milestone validation
 
-Jalon : `0.3.75-dev - Add Jaffa officers to eligible Goa'uld forces`
+Jalon : `0.3.76-dev - Reconcile future roadmap and visual debt`
 
-Branche : `feature/jaffa-officers-in-goauld-forces`
+Branche : `feature/future-roadmap-reconciliation`
 
 Révision finale validée : `r2`
 
-Version de DLL validée : `0.3.75.0`
+Version de DLL validée : `0.3.76.0`
 
-Statut : validation finale réussie. `r1` avait échoué au build avec deux erreurs
-`CS0115`. `r2` retire les overrides invalides et déplace l'injection vers le
-postfix Harmony de génération de groupe, limité au contexte exact du raid
-naturel ou de la diversion.
+Statut : validation finale réussie. Aucun comportement de jeu n'est modifié.
 
-## Contrôles préalables
+## Livraison complète des documents
+
+La révision `r2` remplace la livraison `r1` qui utilisait un patch textuel.
+Après extraction, aucun `git apply`, fichier `.patch` ou étape supplémentaire
+n'est requis. Tous les chemins du ZIP sont des fichiers complets prêts à
+remplacer leur version de travail.
+
+Supprimer le patch laissé par `r1` s'il est encore présent à la racine :
+
+```powershell
+Remove-Item `
+    .\GateRim-SG1-0.3.76-dev-r1-long-docs.patch `
+    -ErrorAction SilentlyContinue
+```
+
+## Contrôles automatiques
 
 Depuis la racine du dépôt :
 
@@ -22,95 +34,100 @@ git diff --check
 .\build.cmd
 .\tools\check-duration-formatting.cmd
 .\tools\check-project-consistency.cmd
+
+git status --short
+git diff --stat
 ```
 
 Résultats attendus :
 
-- aucune erreur `CS0115` dans `IncidentWorker_GoauldJaffaNaturalRaid` ou
-  `IncidentWorker_GoauldJaffaLuredAssault` ;
-- assembly `0.3.75.0` ;
+- assembly `0.3.76.0` ;
 - audit des durées avec `104` clés uniques ;
 - contrôle global de cohérence réussi ;
+- aucun lien Markdown local manquant ;
 - aucune erreur de compilation.
 
-## Test obligatoire court - raid naturel éligible
+## Revue documentaire obligatoire
 
-1. Charger une colonie avec le mode développeur RimWorld actif.
-2. Ouvrir :
+Vérifier dans `docs/ROADMAP.md` :
 
-```text
-Actions de débogage
-> GateRim SG-1
-> Goa'uld...
-> Threat progression...
-> Force eligible natural raid with officer (900 points)
+1. le jalon courant `0.3.76-dev` et le dernier jalon gameplay `0.3.75-dev` ;
+2. la liste des travaux déjà réalisés, notamment observation Tok'ra `0.3.4-dev`,
+   debug `0.3.35-dev`, opérations `0.3.38-dev`, icônes `0.3.50/51-dev`, menace
+   `0.3.53-dev`, documentation `0.3.63-dev`, relations `0.3.68/73-dev` et
+   officiers `0.3.74/75-dev` ;
+3. l'absence de ces travaux parmi les futurs jalons actifs ;
+4. la séparation entre contrats permanents et futurs jalons ;
+5. l'inventaire futur des assets provisoires ;
+6. la passe artistique définitive couvrant tous les placeholders et textures
+   temporaires, y compris la lunette Tok'ra et l'équipement rouge des officiers ;
+7. chaque extension d'alliance dans un jalon individuel ;
+8. les garde-fous territoriaux avant toute expansion ;
+9. les anneaux de transport en deux jalons distincts : fondation joueur, puis
+   missions/usages hostiles ;
+10. la progression Stargate découpée en fondations, première expédition et Porte
+    fonctionnelle ;
+11. les fondations Asgard, Nox, Unas et Réplicateurs séparées ;
+12. les audits optionnels Ideology et Royalty séparés ;
+13. les décisions ouvertes explicitement reportées au lancement de chaque jalon.
+
+Vérifier dans `docs/IDEAS_TO_REVISIT.md` :
+
+- seules les pistes non planifiées restent présentes ;
+- les anneaux de transport sont indiqués comme promus dans la roadmap ;
+- le sarcophage, le confinement adulte, les DLC optionnels et les fonctions
+  avancées du kara kesh ne sont pas présentés comme des jalons promis.
+
+## Contrôle de portée
+
+```powershell
+git diff --name-only
 ```
 
-3. Vérifier que la force contient au moins cinq Jaffa.
-4. Vérifier qu'elle contient exactement un
-   `SG1_GoauldJaffaFieldOfficer` et aucun second officier.
-5. Vérifier que l'officier remplace un pawn du groupe au lieu d'être ajouté en
-   supplément.
-6. Vérifier son armure rouge, son casque rouge rétractable, sa marque frontale
-   argentée, son arme Jaffa, ses gantelets, ses bottes et son Prim'ta.
-7. Vérifier que les autres Jaffa conservent leurs équipements marron/doré.
-
-## Test obligatoire - seuil inférieur
-
-1. Dans le même menu, utiliser :
+Après extraction de `r1`, puis de `r2`, le diff doit modifier uniquement :
 
 ```text
-Force natural direct raid (300 points)
+AGENTS.md
+About/About.xml
+README.md
+Source/GateRimSG1/GateRimSG1.csproj
+docs/CHANGELOG.md
+docs/IDEAS_TO_REVISIT.md
+docs/MILESTONE_PUBLICATION.md
+docs/PROJECT_STATE.md
+docs/README.md
+docs/ROADMAP.md
+docs/TESTING_CURRENT.md
+docs/wiki/Content-Status.md
+docs/wiki/Home.md
 ```
 
-2. Vérifier qu'un groupe contenant moins de cinq Jaffa ne reçoit aucun officier.
-3. Vérifier que ce test forcé historique conserve son comportement et ses points
-   exacts.
+Aucun fichier C# de gameplay, XML de Def, traduction ou texture ne doit être
+modifié. `AGENTS.md` et `docs/MILESTONE_PUBLICATION.md` doivent interdire les
+livraisons ordinaires sous forme de `.patch`, diff applicable ou `git apply`. Les deux sources wiki ne changent que leur version, leur statut et le
+résumé des développements futurs.
 
-## Test obligatoire - colonie Goa'uld
+## Vérification RimWorld courte
 
-1. Depuis la carte mondiale, attaquer une colonie d'un domaine Goa'uld avec une
-   caravane de test.
-2. Pour chaque groupe de défense visible, compter les Jaffa.
-3. Un groupe de moins de cinq Jaffa ne doit contenir aucun officier.
-4. Un groupe d'au moins cinq Jaffa peut contenir au plus un
-   `SG1_GoauldSettlementJaffaOfficer` rouge ; il remplace un garde de garnison
-   et ne change pas l'effectif du groupe.
-5. Vérifier que les hôtes Goa'uld minoritaires et les autres défenseurs ne sont
-   pas remplacés.
-
-## Test obligatoire - mission adaptée
-
-Valider au moins l'un des chemins suivants avec une force d'au moins cinq Jaffa :
-
-- mission d'introduction Tok'ra ;
-- appel de détresse Tok'ra ;
-- relais Goa'uld décodé, défense initiale ou renforts ;
-- interception de livraison temporaire ;
-- assaut de diversion.
-
-Vérifier exactement un `SG1_GoauldJaffaFieldOfficer` rouge, un effectif
-inchangé et la conservation du comportement propre à la mission. La mission de
-capture doit continuer à générer uniquement son `SG1_GoauldJaffaOfficer` cible
-à `165` points ; son escorte ne doit pas recevoir un second officier.
-
-## Persistance et régressions
-
-1. Sauvegarder avec un officier généré présent sur une carte.
-2. Recharger.
-3. Vérifier le PawnKind, le Prim'ta, la marque argentée, l'armure rouge et le
-   mode du casque.
-4. Vérifier les raids contrôlés, les représailles d'extraction et les champs de
-   bataille inter-domaines : aucun officier ne doit y être injecté par ce jalon.
+1. Démarrer RimWorld avec GateRim SG-1.
+2. Vérifier `0.3.76-dev` dans les métadonnées du mod.
+3. Charger une sauvegarde existante.
+4. Confirmer qu'aucun comportement ou contenu visible n'a changé.
 5. Examiner `Player.log` et confirmer l'absence de nouvelle erreur C#, Harmony,
-   XML, DefOf, génération de groupe, apparel, rendu, Scribe, raid ou mission.
+   XML, DefOf, traduction, texture, Scribe ou chargement de mod.
+
 
 ## Résultat final validé
 
-- build et audits ;
-- raid éligible : nombre total de Jaffa et nombre d'officiers ;
-- groupe sous le seuil : nombre total et absence d'officier ;
-- défense de colonie ;
-- mission testée ;
-- sauvegarde/rechargement ;
-- `Player.log` propre.
+- build forcé réussi avec l'assembly `0.3.76.0` ;
+- audit des durées réussi avec `104` clés uniques ;
+- contrôle global de cohérence réussi ;
+- liens Markdown locaux valides ;
+- portée limitée aux `13` fichiers documentaires et métadonnées attendus ;
+- roadmap nettoyée des travaux déjà publiés ;
+- futurs jalons séparés et questions reportées à leur lancement ;
+- anneaux de transport et passe artistique définitive inscrits ;
+- aucun fichier `.patch`, diff applicable ou commande `git apply` dans la
+  livraison finale ;
+- démarrage RimWorld en `0.3.76-dev`, sauvegarde existante chargée et
+  `Player.log` accepté.

@@ -24,6 +24,27 @@ tags et `CHANGELOG.md` conservent déjà l'historique publié.
 un backlog actif, pas un second changelog. `TESTING_CURRENT.md` conserve la
 dernière procédure validée jusqu'au jalon suivant.
 
+## Règles de planification
+
+`ROADMAP.md` distingue obligatoirement :
+
+1. le jalon courant et le dernier jalon clôturé ;
+2. les contrats permanents qui guident les futurs travaux ;
+3. les futurs jalons décidés, chacun décrit comme une unité distincte.
+
+Un travail déjà publié ne reste pas sous forme de case ouverte. Sa trace appartient
+au changelog et aux tags. Une dette d'art peut toutefois rester ouverte lorsque
+la mécanique est terminée mais que son placeholder ou sa texture temporaire doit
+encore être remplacé.
+
+Lorsqu'un futur jalon nécessite des choix encore ouverts, la roadmap indique les
+décisions reportées sans inventer de réponse. Ces points sont reposés au
+mainteneur lorsque le jalon devient actif, puis les réponses sont enregistrées
+avant l'implémentation.
+
+`IDEAS_TO_REVISIT.md` contient uniquement les pistes non décidées. Une idée
+promue est retirée de ce registre et reçoit son propre jalon dans la roadmap.
+
 ## Références techniques durables
 
 Les documents de sous-système décrivent les contrats encore utiles au code et
@@ -33,11 +54,11 @@ aux régressions. Les principales portes d'entrée sont :
   [`CULTURAL_BACKSTORIES.md`](CULTURAL_BACKSTORIES.md) et
   [`TOKRA_DUAL_IDENTITY_DESIGN.md`](TOKRA_DUAL_IDENTITY_DESIGN.md) ;
 - missions : [`MISSION_FRAMEWORK.md`](MISSION_FRAMEWORK.md) ;
-- storyteller et orchestration :
-  [`STORYTELLER_SG1.md`](STORYTELLER_SG1.md) ;
+- storyteller et orchestration : [`STORYTELLER_SG1.md`](STORYTELLER_SG1.md) ;
 - direction Goa'uld : [`GOAULD_GAMEPLAY_DIRECTION.md`](GOAULD_GAMEPLAY_DIRECTION.md),
   [`GOAULD_OPEN_CONFLICT_BATTLEFIELD.md`](GOAULD_OPEN_CONFLICT_BATTLEFIELD.md),
-  [`GOAULD_HOST.md`](GOAULD_HOST.md) et [`GOAULD_KARA_KESH.md`](GOAULD_KARA_KESH.md) ;
+  [`GOAULD_HOST.md`](GOAULD_HOST.md) et
+  [`GOAULD_KARA_KESH.md`](GOAULD_KARA_KESH.md) ;
 - Jaffa et Prim'ta : fichiers `JAFFA_*.md` et `PRIMTA_*.md` ;
 - Tok'ra : fichiers `TOKRA_*.md`, classés par système ou opération ;
 - équipement : fichiers `SG_*.md`, `MATOK_*.md`,
@@ -61,6 +82,9 @@ contenu ; aucun second `Content-Status.md` ne doit être créé à la racine de
 
 Toute création, suppression ou renommage d'une page doit être répercutée dans la
 navigation, les liens entrants et le dépôt wiki séparé lors de la publication.
+Une réorganisation interne n'impose pas de nouvelle page joueur, mais les
+métadonnées de version et les résumés publics des directions futures doivent
+rester cohérents avec la version publiée.
 
 ## Ajouter ou retirer un document
 
@@ -80,11 +104,12 @@ Avant de supprimer un fichier :
 4. laisser Git et les tags conserver l'ancien contenu au lieu de créer un
    dossier `archive/`.
 
-## Première consolidation
+## Consolidations
 
-Le jalon `0.3.63-dev` retire les anciens plans désormais absorbés par cette
-structure, le backlog ou les idées à revoir. Il ne consolide pas encore
-`TESTING.md` ni les familles techniques détaillées : ces travaux exigent une
-seconde passe avec comparaison des contrats et des régressions avant toute
-suppression. La première consolidation est validée et publiée sous le tag
-`v0.3.63-dev`.
+Le jalon `0.3.63-dev` a publié la première consolidation documentaire et retiré
+plusieurs anciens plans absorbés par la structure actuelle.
+
+Le jalon `0.3.76-dev` réconcilie ensuite le backlog avec les fonctionnalités
+réellement publiées et formalise les futurs jalons individuels. Il ne remplace
+pas la seconde consolidation documentaire et des tests, qui reste un futur
+jalon distinct fondé sur la comparaison des contrats et des régressions.

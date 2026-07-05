@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.3.76-dev - Reconcile future roadmap and visual debt
+
+- Start from published `develop` and annotated tag `v0.3.75-dev` on
+  `feature/future-roadmap-reconciliation`.
+- Remove already published work from the active backlog, including the Tok'ra
+  observation-scope rework, debug-menu reorganization, operation-pool audit,
+  world icons, threat audit, relation factors and both Jaffa-officer milestones.
+- Separate permanent regression contracts from future feature milestones.
+- Plan every decided future axis as an individual milestone instead of one broad
+  unchecked theme.
+- Reserve a complete final-quality art pass for every placeholder and temporary
+  texture, including already functional assets such as the Tok'ra observation
+  scope and red Jaffa officer equipment.
+- Split Goa'uld alliance extensions into independent reinforcement, joint-raid,
+  doctrine-interaction, shared-reprisal and alliance-rupture milestones.
+- Require strategic safeguards before any territorial expansion or settlement
+  destruction layer.
+- Add transport rings as two separate future milestones: a bounded player-owned
+  platform foundation, then later mission and hostile uses.
+- Split Stargate progression into foundations, a first bounded off-world
+  expedition and the later functional Stargate.
+- Keep Asgard, Nox, Unas, Replicators, optional Ideology/Royalty audits and
+  the all-GateRim world preset as separate future milestones.
+- Record that unresolved design decisions are asked again when their milestone
+  starts instead of being answered prematurely in the backlog.
+- Keep speculative queen evolution, Tok'ra cultural reactions, sarcophagus,
+  optional-DLC compatibility, adult-symbiote confinement and advanced kara kesh
+  functions in `IDEAS_TO_REVISIT.md`.
+- Record the failed `r1` delivery method: a context-sensitive patch for three
+  long documents did not apply to the maintainer's working tree.
+- Supersede it in `r2` with complete replacement files only, and forbid ordinary
+  delivery through `.patch` files, applicable diffs or `git apply` instructions.
+- Change no gameplay, Def, translation, texture, save data or balance.
+- Validate final revision `r2`: forced build `0.3.76.0`, duration audit with
+  `104` unique keys, project consistency, local Markdown links, exact
+  documentation-only scope, main-menu version, existing-save loading and a clean
+  accepted `Player.log`.
+- Integrate the documentation branch by fast-forward, publish annotated tag
+  `v0.3.76-dev` and synchronize the separate wiki sources.
+
 ## 0.3.75-dev - Add Jaffa officers to eligible Goa'uld forces
 
 - Start from published `develop` and annotated tag `v0.3.74-dev` on

@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.75-dev`
+- Development version: `0.3.76-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,11 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.75-dev` extends the published Jaffa officer rank into eligible Goa'uld
-forces. Groups containing at least five Jaffa may replace one budget-equivalent
-guard with one red-armored officer in natural raids, settlement defenses and
-selected hostile missions. Group size and ordinary threat budgets remain
-unchanged, and no force can receive more than one officer through this layer.
+`0.3.76-dev` is a documentation-only reconciliation milestone. It removes
+already published work from the active backlog, separates permanent regression
+contracts from future features, records every decided future axis as an
+individual milestone and explicitly reserves a later final-quality replacement
+of every placeholder and temporary texture. It also plans transport rings as a
+future alternative to vanilla transport pods without changing current gameplay.
 
 ## Playable content
 
@@ -118,10 +119,8 @@ unchanged, and no force can receive more than one officer through this layer.
   the Tok'ra observation, intelligence-recovery, wounded-agent care,
   medical-handoff, distress-call, temporary-base delivery, diversion-assault
   and Jaffa-officer capture operations now read their mission data and balance
-  from XML. Their
-  shared persistent scheduler filters temporarily
-  unavailable missions before weighted selection and exposes long-term
-  recurrence diagnostics.
+  from XML. Their shared persistent scheduler filters temporarily unavailable
+  missions before weighted selection and exposes long-term recurrence diagnostics.
 - Configurable cultural profiles, persistent cultural names and 83 cultural
   backstories integrated with starting pawns and world generation.
 
