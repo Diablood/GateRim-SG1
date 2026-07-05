@@ -46,9 +46,17 @@ namespace GateRimSG1.Goauld
                 GoauldOpenConflictBattlefieldDebugActions.MakeOpportunityDue,
                 840));
             root.AddChild(ActionNode(
-                "Force battlefield now",
+                "Force local battlefield now",
                 GoauldOpenConflictBattlefieldDebugActions.ForceBattlefield,
                 835));
+            root.AddChild(ActionNode(
+                "Force world battlefield site now",
+                GoauldOpenConflictBattlefieldDebugActions.ForceWorldSite,
+                833));
+            root.AddChild(ActionNode(
+                "Expire unvisited world battlefield site",
+                GoauldOpenConflictBattlefieldDebugActions.ExpireWorldSite,
+                831));
             root.AddChild(ActionNode(
                 "Order battlefield withdrawal",
                 GoauldOpenConflictBattlefieldDebugActions.OrderWithdrawal,

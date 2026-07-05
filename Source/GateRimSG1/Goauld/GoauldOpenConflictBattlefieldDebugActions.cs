@@ -65,6 +65,45 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
+        public static void ForceWorldSite()
+        {
+            Map map = Find.CurrentMap;
+            GameComponent_GoauldOpenConflictBattlefieldTracker tracker =
+                GameComponent_GoauldOpenConflictBattlefieldTracker.Current;
+
+            if (map == null || tracker == null)
+            {
+                Reject("The current map or battlefield tracker is unavailable.");
+                return;
+            }
+
+            if (!tracker.ForceWorldSiteDebug(map))
+            {
+                Reject(
+                    "Could not create a world battlefield site. An active "
+                    + "open-conflict pair, a valid source map and an empty "
+                    + "shared battlefield slot are required.");
+                return;
+            }
+
+            Messages.Message(
+                "Created a Goa'uld open-conflict battlefield world site.",
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void ExpireWorldSite()
+        {
+            GameComponent_GoauldOpenConflictBattlefieldTracker tracker =
+                GameComponent_GoauldOpenConflictBattlefieldTracker.Current;
+
+            if (tracker?.ExpireWorldSiteDebug() != true)
+            {
+                Reject(
+                    "No unvisited Goa'uld battlefield world site can expire.");
+            }
+        }
+
         public static void OrderWithdrawal()
         {
             GameComponent_GoauldOpenConflictBattlefieldTracker tracker =

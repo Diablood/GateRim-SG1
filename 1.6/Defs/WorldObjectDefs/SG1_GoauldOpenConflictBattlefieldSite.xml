@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <WorldObjectDef>
+        <defName>SG1_GoauldOpenConflictBattlefieldSite</defName>
+        <label>Goa'uld battlefield</label>
+        <description>A temporary battlefield created by the open conflict between two Goa'uld domains. A caravan may intervene, exploit the aftermath or ignore the engagement entirely.</description>
+        <worldObjectClass>GateRimSG1.Goauld.WorldObject_GoauldOpenConflictBattlefieldSite</worldObjectClass>
+        <texture>World/WorldObjects/Sites/GenericSite</texture>
+        <expandingIcon>true</expandingIcon>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield</expandingIconTexture>
+        <expandingIconPriority>39</expandingIconPriority>
+        <expandMore>true</expandMore>
+        <canHaveFaction>false</canHaveFaction>
+        <useDynamicDrawer>true</useDynamicDrawer>
+        <comps>
+            <li Class="RimWorld.WorldObjectCompProperties_FormCaravan" />
+        </comps>
+    </WorldObjectDef>
+</Defs>

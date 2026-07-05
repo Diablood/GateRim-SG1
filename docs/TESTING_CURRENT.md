@@ -1,173 +1,214 @@
-# Validation locale - 0.3.69-dev-r6
+# Current milestone validation
 
-Jalon : `0.3.69-dev - Add open-conflict Goa'uld battlefield incident`
+Jalon: `0.3.70-dev - Add open-conflict Goa'uld world battlefield site`
 
-Branche attendue :
-`feature/goauld-open-conflict-battlefield-incident`
+Branch: `feature/goauld-open-conflict-world-battlefield-site`
 
-Base : `develop` au tag publié `v0.3.68-dev`
+Révision locale : `r4`
 
-Version de DLL attendue : `0.3.69.0`
+Status: final revision `r4` validated locally; publication pending.
 
-Révision locale : `r6`
+## Validation result
 
-Statut : validé localement en révision finale `r6`; build `0.3.69.0`, tests fonctionnels et régressions confirmés.
+Final revision `r4` validated:
 
-## Préparation
+- build `0.3.70.0`;
+- world-site creation, icon and RP inspection;
+- normal travel and lazy map generation;
+- mutual battle and mixed player/rival targeting;
+- morale break and bounded withdrawal;
+- vanilla caravan reformation;
+- neutral ignored-site expiration;
+- shared slot, alternation and persistence;
+- existing Goa'uld regressions;
+- clean `Player.log`.
 
-- utiliser une sauvegarde de test avec Commandement SG-1 ;
-- disposer d'au moins deux domaines Goa'uld actifs ;
-- activer le mode développeur ;
-- préparer une carte principale sans raid ni autre menace hostile active ;
-- conserver une sauvegarde propre avant chaque variante importante.
+## Preconditions
 
-## Build et cohérence
+- Start RimWorld with developer mode enabled.
+- Select **Commandement SG-1**.
+- Use a world containing at least two active Goa'uld System Lord domains.
+- Use a player home map with at least one free colonist.
+- Ensure the first domain pair is in `Open conflict` through the existing
+  relation debug menu.
+- Start each major test from a save made before forcing the occurrence.
 
-1. Exécuter `git diff --check`.
-2. Exécuter `./build.cmd` et confirmer `GateRimSG1.dll` en `0.3.69.0`.
-3. Exécuter `./tools/check-project-consistency.cmd`.
-4. Avant finalisation du changelog, un seul échec est admis : le dernier
-   en-tête du changelog reste `0.3.68-dev`.
-5. Toute autre erreur de version, lien, XML ou couverture est un échec.
+## Build and consistency
 
-## Création déterministe
+From the repository root:
 
-1. Ouvrir :
+```powershell
 
-   ```text
-   Actions de débogage
-   > GateRim SG-1
-   > Goa'uld inter-domain relations...
-   ```
+git diff --check
+.\build.cmd
+.\tools\check-project-consistency.cmd
+```
 
-2. Créer un second domaine si nécessaire.
-3. Utiliser `Set first pair: Open conflict`.
-4. Ouvrir `Show battlefield report` et vérifier une paire admissible et aucun
-   champ de bataille actif.
-5. Utiliser `Force battlefield now`.
-6. Vérifier qu'une seule lettre nomme les deux domaines exacts.
-7. Cliquer sur `Se rendre sur les lieux` et confirmer l'ouverture de la carte de
-   la colonie centrée sur un détachement, jamais de la carte mondiale.
+Version de DLL validée : `0.3.70.0`
+The complete project-consistency check must now pass without exception.
 
-## Arrivée depuis le bord et rassemblement
+## Developer actions
 
-1. Vérifier que les deux groupes apparaissent à moins de quatre cellules du bord
-   de carte, et non directement au centre du futur champ de bataille.
-2. Vérifier deux points de ralliement distincts à l'intérieur de la carte.
-3. Confirmer que les Jaffa des deux domaines joggent depuis leurs zones d'entrée
-   vers leur propre point de ralliement.
-4. Confirmer qu'ils ne se combattent pas encore pendant le rassemblement normal.
-5. Lorsque les deux groupes sont suffisamment rassemblés, attendre environ
-   `1800` ticks et confirmer le message : les deux détachements lancent l'assaut.
-6. Sur un terrain difficile, vérifier que le délai maximal de `12000` ticks lance
-   malgré tout l'assaut et évite un blocage permanent.
+Open:
 
-## Combat mutuel
+```text
+Actions de débogage
+> GateRim SG-1
+> Goa'uld inter-domain relations...
+```
 
-1. Après le message d'assaut, confirmer que les deux camps quittent leurs
-   positions de ralliement et avancent réellement jusqu'à portée de tir.
-2. Confirmer que les Jaffa équipés d'armes à distance tirent dès qu'ils disposent
-   de la portée et d'une ligne de vue, au lieu de rester immobiles face à une
-   cible trop éloignée.
-3. Vérifier que chaque pawn appartient au domaine annoncé correspondant.
-4. Vérifier une composition Jaffa guerriers/gardes cohérente.
-5. Rester à l'écart et confirmer l'absence d'assaut organisé contre les bâtiments
-   ou colons.
-6. Vérifier que des tirs perdus restent possibles sans que la colonie devienne
-   l'objectif programmé.
+Relevant actions:
 
-## Intervention facultative et riposte bornée
+- `Show battlefield report`
+- `Make battlefield opportunity due`
+- `Force local battlefield now`
+- `Force world battlefield site now`
+- `Expire unvisited world battlefield site`
+- `Order battlefield withdrawal`
+- `Reset battlefield scheduler`
 
-Après recharge de la sauvegarde de préparation :
+## Test A — World-site creation
 
-1. forcer une nouvelle bataille ;
-2. attaquer un camp pendant son rassemblement et confirmer sa riposte contre le
-   ou les colons attaquants ;
-3. cesser toute attaque et confirmer qu'après `1800` ticks sans nouvelle
-   provocation ce camp reprend son rassemblement ou son combat contre le rival ;
-4. recommencer pendant l'assaut et vérifier que le camp non provoqué continue de
-   combattre son rival ;
-5. attirer le camp provoqué, puis éloigner le colon à plus de `35` cellules du
-   point où la riposte a commencé ; confirmer que la poursuite cesse et ne se
-   prolonge pas à travers toute la carte ;
-6. laisser un camp gagner rapidement, attendre que le vainqueur commence son
-   retrait, puis l'attaquer ;
-7. confirmer que la première blessure infligée au camp vainqueur enregistre un
-   provocateur même si le job de tir du colon n'expose pas directement le pawn
-   ciblé ;
-8. confirmer que le vainqueur interrompt sa sortie et riposte, mais pendant au
-   plus `6000` ticks de retrait au total ;
-9. continuer à l'attaquer au-delà de cette fenêtre et confirmer qu'il rompt le
-   combat et reprend son retrait sans repousser la date de sortie forcée ;
-10. tester une intervention contre les deux camps ;
-11. confirmer capture vanilla, butin ordinaire et absence de récompense ou de
-   goodwill artificiel.
+1. Confirm that no local battlefield or world battlefield is active.
+2. Run `Force world battlefield site now`.
+3. Confirm one neutral-event letter naming the exact two open-conflict domains.
+4. Confirm the letter targets the world site.
+5. Confirm the site appears `6–18` tiles from a player home map.
+6. Confirm the dedicated battlefield icon is distinct from the generic Tok'ra
+   mission icons.
+7. Inspect the site and confirm both domain names are shown in RP-facing text.
+8. Confirm the remaining duration is displayed in days and hours rather than as
+   one large hour count.
+9. Open `Show battlefield report` and confirm:
+   - active slot: world;
+   - active world-object ID;
+   - exact pair;
+   - map not generated;
+   - next shared opportunity not running.
 
-## Fin de bataille, rupture et retrait
+## Test B — Normal caravan travel and arrival
 
-1. Avec un détachement initial d'au moins quatre combattants, réduire un seul
-   camp à `30%` ou moins de son effectif mobile initial tout en laissant l'autre
-   au-dessus de son propre seuil.
-2. Confirmer le message de rupture et le retrait des deux forces sans exiger
-   l'extermination du camp perdant.
-3. Refaire le test en réduisant simultanément les deux camps sous leur seuil :
-   confirmer qu'aucun camp n'est désigné seul comme perdant et que le combat
-   continue jusqu'à élimination ou délai maximal.
-4. Avec seulement deux ou trois combattants initiaux, confirmer qu'aucune rupture
-   anticipée ne survient avant la perte de tous les combattants mobiles.
-5. Laisser un camp perdre tous ses combattants mobiles et confirmer le retrait.
-6. Utiliser `Order battlefield withdrawal` pour le test déterministe.
-7. Confirmer que les pawns mobiles continuent leur déplacement vers la sortie et
-   qu'un chemin calé est relancé toutes les `600` ticks.
-8. Vérifier que la riposte joueur ne modifie jamais le délai de sortie forcée
-   fixé à `30000` ticks après le début du retrait.
-9. Vérifier qu'à ce terme tout mobile non-prisonnier restant est forcé à quitter
-   la carte.
-10. Vérifier que pawns à terre, prisonniers, corps et butin ne disparaissent pas.
-11. Confirmer qu'une bataille ignorée ne dépasse pas deux jours plus la grâce.
+1. Select a player caravan and use the normal right-click destination command.
+2. Confirm the travel option and approach report describe the battlefield.
+3. Save and reload while the caravan is travelling.
+4. Let the caravan reach the tile without using a direct debug teleport.
+5. Confirm the encounter map is generated only at arrival.
+6. Confirm RimWorld pauses on the hostile map and the caravan enters from an
+   edge separated from both rally positions.
+7. Confirm the two Goa'uld detachments belong to the two exact stored domains.
+8. Confirm the tracker now reports both the world-object ID and generated map ID.
 
-## Persistance et orchestration
+## Test C — Reused battlefield behavior
 
-1. Sauvegarder pendant le rassemblement, recharger et confirmer les mêmes entrées,
-   points de ralliement, groupes et délai restant.
-2. Sauvegarder après le message d'assaut et confirmer la reprise du combat sans
-   second message.
-3. Sauvegarder après provocation, recharger et confirmer la fenêtre restante, le point d’origine de poursuite et l’expiration normale de la riposte.
-4. Sauvegarder pendant la riposte de retrait et confirmer que la limite totale de `6000` ticks et la date de sortie forcée restent inchangées après recharge.
-5. Utiliser `Make battlefield opportunity due` pendant une bataille active et
-   confirmer qu'aucune seconde bataille n'apparaît.
-6. Passer à Cassandra avant une opportunité naturelle : le délai doit être
-   suspendu et aucun événement ne doit apparaître.
-7. Passer à Cassandra pendant une bataille active : elle doit se terminer
-   normalement, sans nouvelle opportunité.
-8. Revenir à Commandement SG-1 et confirmer la reprise sans backlog immédiat.
-9. Avec plusieurs paires en conflit ouvert, vérifier l'exclusion de la paire
-   précédente lorsqu'une autre paire est disponible.
+1. Observe both forces entering from their own map edges.
+2. Confirm each force travels to its opposing rally point.
+3. Confirm no mutual attack begins before the rally message or bounded fallback.
+4. Confirm the assault announcement names both domains.
+5. Confirm ranged Jaffa advance until they have range and line of sight.
+6. Confirm both groups attack one another and do not begin an organized assault
+   against the player caravan.
+7. Attack one camp while both domains are still fighting and verify mixed
+   targeting:
+   - nearby Jaffa respond to the attacking colon;
+   - other Jaffa continue fighting the rival detachment;
+   - the whole camp does not abandon the original front for one provocateur;
+   - after `1800` quiet ticks, responders return fully to the rival;
+   - no responder pursues beyond `35` cells from the recorded provocation origin.
+8. Confirm a one-sided force at or below `30%` mobile strength breaks contact.
+9. Confirm two simultaneously depleted forces continue until another ending
+   condition is reached.
+10. Confirm the absolute two-day battle limit still orders withdrawal.
+11. Confirm withdrawal retaliation cannot exceed `6000` ticks and never moves
+    the fixed forced-exit deadline.
 
-## Régressions obligatoires
+## Test D — Loot, prisoners and reformation
 
-- le facteur de raid naturel `75%` de `0.3.68-dev` reste inchangé ;
-- les transitions de relations restent persistantes ;
-- les raids direct, enlèvement et destruction restent fonctionnels ;
-- les représailles d'extraction conservent leurs points ;
-- aucun settlement mondial ou relation stratégique n'est modifié ;
-- aucun site mondial de bataille n'est créé dans ce jalon.
+1. Down at least one enemy without killing it.
+2. Capture or carry the pawn through normal RimWorld behavior.
+3. Leave bodies, equipment and at least one ordinary item on the map.
+4. Confirm the vanilla **Reform caravan** command is visible once no active
+   hostile threat remains.
+5. Reform the caravan through the vanilla interface.
+6. Confirm surviving player pawns, prisoners and selected loot can be taken.
+7. Confirm unselected corpses and equipment do not appear as artificial rewards.
+8. Confirm the world map/site is removed only after no player pawn or incoming
+   transporter blocks map removal.
+9. Confirm the shared recurrence delay begins only after complete removal.
 
-## Résultat de validation
+## Test E — Ignored-site expiration
 
-La révision finale `r6` est validée :
+1. Force a new world battlefield site.
+2. Do not enter it.
+3. Save and reload with the marker still active.
+4. Use `Expire unvisited world battlefield site`, or let the eight-day deadline
+   elapse.
+5. Confirm the marker disappears without:
+   - mission failure letter;
+   - goodwill change;
+   - relation-state change;
+   - settlement destruction;
+   - reward or penalty.
+6. Confirm the shared tracker clears the slot and schedules one normal recurrence
+   delay.
 
-- build `0.3.69.0` réussi ;
-- arrivée depuis le bord et rassemblement validés ;
-- annonce et combat mutuel validés ;
-- poursuite et tir à distance validés ;
-- riposte joueur temporaire et bornée validée ;
-- rupture morale et retrait absolu validés ;
-- sauvegarde/rechargement et régressions Goa'uld validés ;
-- `Player.log` propre.
+## Test F — Shared slot and alternation
 
-## Journal
+1. Force a local battlefield and confirm forcing a world site is rejected while
+   it remains active.
+2. Resolve the local battle completely.
+3. Force a world site and confirm forcing another local battle is rejected.
+4. Resolve or expire the site completely.
+5. Use `Make battlefield opportunity due` several times with both forms
+   available.
+6. Confirm the scheduler alternates away from the previous form when possible.
+7. Confirm the same pair is avoided when another eligible open-conflict pair
+   exists.
+8. Confirm only one shared opportunity clock is displayed.
 
-Inspecter `Player.log` après rassemblement, assaut, intervention, retrait et
-recharge. Aucun nouvel échec C#, XML, Scribe, faction, Lord, JobDriver,
-génération de pawn ou storyteller attribuable au jalon n'est accepté.
+## Test G — Persistence and storyteller boundary
+
+Save and reload in each state:
+
+- unvisited world site;
+- caravan travelling to the site;
+- newly generated map before the assault;
+- active combat;
+- player retaliation;
+- withdrawal;
+- resolved map waiting for player departure.
+
+For every state, confirm exact factions, points, expiry, generated pawns, rally,
+combat and shared-slot ownership remain coherent.
+
+Then switch to Cassandra or another storyteller:
+
+- an existing site remains visitable and can expire normally;
+- an existing battle continues;
+- no new local or world opportunity is created;
+- the hidden future-opportunity deadline is shifted by the suspension duration;
+- returning to Commandement SG-1 does not immediately replay an accumulated
+  overdue event.
+
+## Regression set
+
+Revalidate:
+
+- `0.3.66-dev` relation persistence and transitions;
+- `0.3.68-dev` `75%` natural-raid pressure factor and exclusions;
+- `0.3.69-dev` local battlefield creation and complete combat behavior;
+- natural direct, abduction and destruction doctrines;
+- extraction reprisals and forced regression raids;
+- Tok'ra world sites and ordinary caravan reformation.
+
+## Log review
+
+After the complete pass, inspect `Player.log` for new:
+
+- XML or Def errors;
+- missing texture or translation keys;
+- C# exceptions;
+- Scribe reference errors;
+- map-generation or world-object errors;
+- caravan-arrival failures;
+- Lord, JobDriver or pathing errors;
+- duplicate shared-slot or recurrence messages.

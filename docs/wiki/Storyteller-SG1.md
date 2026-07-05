@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.69-dev`
-> Statut : publié
+> Dernière évolution : `0.3.70-dev`
+> Statut : site mondial validé en révision finale `r4`
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -16,64 +16,50 @@ Il reprend la définition Cassandra Classique actuellement résolue par RimWorld
 - mêmes contrats d'incidents et même adaptation de difficulté ;
 - aucun remplacement figé du XML de Core.
 
-Les incidents GateRim déjà publiés restent également utilisables avec les
-autres storytellers compatibles.
+Les incidents GateRim déjà publiés restent utilisables avec les autres
+storytellers compatibles.
 
 ## Relations entre domaines Goa'uld
 
-Depuis `0.3.66-dev`, chaque paire de domaines Goa'uld peut conserver l'un des
-états suivants :
+Depuis `0.3.66-dev`, chaque paire de domaines Goa'uld conserve l'un des états
+suivants : neutralité, rivalité, conflit ouvert, trêve ou alliance.
 
-- neutralité ;
-- rivalité ;
-- conflit ouvert ;
-- trêve ;
-- alliance.
+La relation appartient aux factions elles-mêmes. Elle survit au remplacement
+d'un Grand Maître et à la sauvegarde/recharge. Les changements sont lents et
+produisent des rapports RP nommant les deux domaines.
 
-La relation appartient aux factions elles-mêmes. Elle survit donc au
-remplacement d'un Grand Maître et à la sauvegarde/recharge.
-
-Les changements sont lents et produisent des rapports RP nommant les deux
-domaines. Plusieurs variantes de texte limitent les répétitions immédiates.
-
-Une partie ne contenant qu'un seul domaine Goa'uld ne possède aucune paire à
-faire évoluer. Ajouter plusieurs instances de la faction lors de la création du
-monde permet d'utiliser cette simulation naturellement.
+Une partie contenant un seul domaine Goa'uld ne possède aucune paire à faire
+évoluer. Plusieurs instances peuvent être ajoutées lors de la création du monde.
 
 ## Pression réduite en conflit ouvert
 
-La version `0.3.68-dev` ajoute la première conséquence mécanique de ces
-relations.
+Depuis `0.3.68-dev`, un domaine engagé dans au moins un conflit ouvert utilise
+`75 %` de ses points habituels pour ses raids naturels de Jaffa contre la
+colonie.
 
-Sous **Commandement SG-1**, un domaine engagé dans au moins un conflit ouvert
-utilise `75 %` de ses points de menace habituels pour ses raids naturels de
-Jaffa contre la colonie.
+La réduction :
 
-Cette réduction reste volontairement limitée :
+- ne se cumule pas contre plusieurs rivaux ;
+- ne modifie ni fréquence ni doctrine ;
+- conserve les points initiaux pour l'éligibilité des doctrines ;
+- exclut représailles, missions, sites hostiles et tests forcés.
 
-- elle ne se cumule pas lorsque le domaine affronte plusieurs rivaux ;
-- elle ne rend pas les raids plus ou moins fréquents ;
-- elle ne change pas la préférence de doctrine du domaine ;
-- les conditions d'assaut direct, d'enlèvement ou de destruction utilisent
-  toujours les points initiaux calculés par RimWorld ;
-- les représailles après extraction ne sont pas réduites ;
-- les missions, sites hostiles et raids de test restent inchangés.
+## Batailles en conflit ouvert
 
-Le conflit détourne donc une partie des moyens du domaine sans neutraliser
-complètement sa menace envers le joueur.
-
-## Batailles locales en conflit ouvert
-
-Depuis `0.3.69-dev`, un conflit ouvert peut aussi produire une
+Depuis `0.3.69-dev`, une paire en conflit ouvert peut produire une
 [bataille entre deux domaines](Goauld-Open-Conflict-Battlefields) près d'une
-colonie joueur.
+colonie.
 
-Les deux détachements jaffa appartiennent aux domaines exacts concernés. Ils
-entrent depuis le bord de la carte, rejoignent des positions de ralliement,
-puis un message annonce leur assaut mutuel. La colonie peut rester à l'écart ou
-intervenir contre un camp ou contre les deux. Un camp provoqué riposte localement,
-mais abandonne la poursuite après `1800` ticks sans nouvelle attaque, au-delà de
-`35` cellules, ou après `6000` ticks de riposte pendant son retrait.
+La version `0.3.70-dev` ajoute une seconde forme : un site temporaire sur la
+carte mondiale. Une caravane peut s'y rendre ou l'ignorer. À l'arrivée, la carte
+est créée et réutilise exactement les règles de la bataille locale : entrée par
+les bords, rassemblement, assaut mutuel annoncé, riposte joueur bornée, rupture
+morale et retrait.
+
+Les deux formes partagent un seul emplacement et un seul délai. Elles alternent
+lorsque les deux sont possibles et ne peuvent jamais apparaître simultanément.
+
+Ignorer le site mondial ne provoque aucun échec ou changement diplomatique.
 
 ## Choix facultatif
 
@@ -83,30 +69,21 @@ nouvelles opportunités de bataille fonctionnent uniquement avec
 
 Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
-- les relations déjà enregistrées sont conservées ;
-- aucun nouvel état n'est tiré ;
-- aucune lettre relationnelle n'est produite ;
-- les échéances sont repoussées pendant toute la suspension ;
-- revenir à Commandement SG-1 reprend la simulation sans déclencher un retard
-  accumulé ;
-- les raids naturels utilisent de nouveau `100 %` des points calculés ;
-- la cadence du storyteller choisi n'est jamais modifiée par GateRim.
+- les relations et occurrences déjà enregistrées sont conservées ;
+- aucun nouvel état ou champ de bataille n'est tiré ;
+- les échéances futures sont repoussées pendant la suspension ;
+- revenir à Commandement SG-1 ne déclenche pas de retard accumulé ;
+- les raids naturels utilisent de nouveau `100 %` des points ;
+- la cadence du storyteller choisi n'est jamais modifiée.
 
 ## Limites actuelles
 
 Les relations ne provoquent pas encore :
 
-- de site de bataille sur la carte mondiale ;
 - de renforts ou raids conjoints en alliance ;
-- d'augmentation de fréquence ou de puissance liée aux alliances ;
-- de modification territoriale ou de destruction de colonies mondiales ;
-- de changement diplomatique avec la colonie.
+- d'augmentation liée aux alliances ;
+- de modification territoriale ;
+- de destruction de colonies mondiales ;
+- de changement diplomatique avec le joueur.
 
 Ces conséquences restent réservées à des jalons séparés.
-
-## Validation
-
-Le facteur `75 %` reste validé depuis `0.3.68-dev`. La bataille locale de
-`0.3.69-dev-r6` doit maintenant valider le combat mutuel, la riposte bornée,
-la rupture morale à `30%`, le retrait, la sauvegarde/recharge et l'absence de
-régression.

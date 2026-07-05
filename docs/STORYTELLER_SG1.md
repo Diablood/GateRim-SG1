@@ -5,11 +5,12 @@
 - Foundation: `0.3.65-dev`
 - Persistent inter-domain relations: `0.3.66-dev`
 - First strategic consequence: `0.3.68-dev`
-- First local battlefield consequence: `0.3.69-dev`
-- Current branch: `feature/goauld-open-conflict-battlefield-incident`
-- Current assembly: `0.3.69.0`
-- Current local revision: `r6`
-- Status: implemented for local validation.
+- Local battlefield: `0.3.69-dev`
+- Current world-site extension: `0.3.70-dev`
+- Current branch: `feature/goauld-open-conflict-world-battlefield-site`
+- Current assembly: `0.3.70.0`
+- Current local revision: `r4`
+- Status: final revision `r4` validated locally; publication pending.
 
 ## Purpose
 
@@ -165,34 +166,31 @@ The effect is intentionally narrow:
 
 Changing storyteller or relation state changes the derived factor immediately.
 
-## Open-conflict local battlefields
+## Open-conflict battlefields
 
-`0.3.69-dev` adds the first visible battle caused by a relation state.
+`0.3.69-dev` publishes the first visible battle caused by a relation state.
+`0.3.70-dev` extends the same subsystem with an optional world-map site.
 
-While SG-1 Command is active, a persistent scheduler may select one exact
-open-conflict pair and place two bounded Jaffa detachments near a player
-colony. Each camp belongs to its stored domain faction and receives `35%`
-of current vanilla threat points, clamped to `250–1800` points.
+The persistent tracker owns one shared slot and cadence for both forms. It
+selects one exact open-conflict pair, stores the previous pair and form, and
+alternates local and world occurrences when both are possible. A world marker
+and a local battle can never coexist in this slot.
 
-The local event has a separate `8–16` day initial delay and `20–40` day
-recurrence. It never stacks over another active battlefield or a map that
-already contains an active hostile threat. Its clock is suspended under
-other storytellers.
+Each camp belongs to its stored domain faction and receives `35%` of the
+vanilla threat snapshot, clamped to `250–1800` points. Both forms reuse the same
+map component: edge arrival, rally, announced assault, movement into weapon
+range, bounded player retaliation, one-sided `30%` morale break, two-day limit
+and fixed withdrawal.
 
-Both camps enter from the map edge, rally, then advance into weapon range
-against the rival group instead of targeting colony structures. Player
-intervention remains optional. A challenged camp retaliates only for `1800`
-ticks without renewed attack and never pursues beyond `35` cells from the
-recorded provocation point.
+The local form appears only on a suitable home map without another active
+hostile force. The world form appears `6–18` tiles from a home map, lasts eight
+days and generates its `140 × 140` encounter map only when a player caravan
+arrives through the normal RimWorld world-path action.
 
-Withdrawal begins after elimination, when exactly one camp falls to `30%` or
-less of its initial mobile force, or after two days. During withdrawal, a camp
-may defend itself for at most `6000` ticks, and the fixed `30000`-tick forced
-exit deadline is never postponed. Downed pawns, prisoners, corpses and dropped
-equipment remain on the map.
-
-The battle changes no relation state, goodwill, territory or settlement. The
-separate world-map battlefield site is reserved for `0.3.70-dev`.
+Ignoring a world site has no failure consequence. It disappears without
+changing goodwill, relation state, territory or settlements. After entry, the
+site remains in the shared slot until the battle resolves and all player pawns
+have left through ordinary caravan reformation.
 
 ## RP reports
 
@@ -233,7 +231,7 @@ remain exact and bypass the factor.
 
 ## Still inactive consequences
 
-`0.3.69-dev` still adds no:
+`0.3.70-dev` still adds no:
 
 - alliance frequency or threat increase;
 - reinforcements, joint raids or shared reprisals;
@@ -245,7 +243,8 @@ These effects require separate balancing and validation milestones.
 
 ## Validation
 
-Local revision `r6` of `0.3.69-dev` is ready for the build, edge arrival,
-rally, announced assault, two-sided combat, bounded player retaliation,
-`30%` morale break, withdrawal, persistence, storyteller isolation and
-regression procedure recorded in [`TESTING_CURRENT.md`](TESTING_CURRENT.md).
+Local revision `r4` of `0.3.70-dev` is ready for build and the world-site
+procedure recorded in [`TESTING_CURRENT.md`](TESTING_CURRENT.md). Validation
+must cover the dedicated icon, optional expiration, ordinary caravan travel,
+lazy map generation, shared combat behavior, loot/reformation, the single slot,
+alternation, persistence and all published local-battlefield regressions.

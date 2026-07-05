@@ -7,4 +7,24 @@
     <GR_GoauldOpenConflictBattlefield_AssaultBegins>Les détachements de {0} et de {1} ont terminé leur rassemblement et lancent l'assaut.</GR_GoauldOpenConflictBattlefield_AssaultBegins>
     <GR_GoauldOpenConflictBattlefield_BreaksOff>Les Jaffa encore mobiles de {0} rompent le combat après de lourdes pertes. Le détachement de {1} tient le terrain tandis que les deux forces commencent à se retirer de la zone.</GR_GoauldOpenConflictBattlefield_BreaksOff>
     <GR_GoauldOpenConflictBattlefield_TimeLimit>Après un affrontement prolongé entre {0} et {1}, les deux détachements rompent le contact et commencent à se retirer de la zone.</GR_GoauldOpenConflictBattlefield_TimeLimit>
+
+    <GR_GoauldOpenConflictWorldSite_Label>Champ de bataille Goa'uld détecté</GR_GoauldOpenConflictWorldSite_Label>
+    <GR_GoauldOpenConflictWorldSite_Text0>La reconnaissance à longue portée a localisé un affrontement en préparation entre des détachements jaffa au service de {0} et de {1}. Le combat est éloigné de la colonie et peut être ignoré sans conséquence. Une caravane peut aussi rejoindre la zone marquée et intervenir lorsque les deux forces seront rassemblées.</GR_GoauldOpenConflictWorldSite_Text0>
+    <GR_GoauldOpenConflictWorldSite_Text1>Le conflit ouvert entre {0} et {1} a créé un champ de bataille temporaire à portée de caravane. Aucun domaine ne demande votre aide. Vous pouvez éviter la zone, observer le résultat ou entrer dans le combat contre l'un des camps ou les deux.</GR_GoauldOpenConflictWorldSite_Text1>
+    <GR_GoauldOpenConflictWorldSite_Text2>Des communications Goa'uld interceptées signalent deux colonnes rivales convergeant vers les coordonnées indiquées. Les forces de {0} et de {1} devraient s'y affronter. Le marqueur disparaîtra lorsque le combat se déplacera, sans pénalité si la colonie reste à l'écart.</GR_GoauldOpenConflictWorldSite_Text2>
+    <GR_GoauldOpenConflictWorldSite_InspectPending>Les signaux de {0} et de {1} convergent toujours vers cette région. Nos observateurs estiment que la zone restera localisable pendant environ {2}.</GR_GoauldOpenConflictWorldSite_InspectPending>
+    <GR_GoauldOpenConflictWorldSite_InspectActive>Des tirs et des transmissions Goa'uld confirment que les forces de {0} et de {1} s'affrontent toujours dans la zone.</GR_GoauldOpenConflictWorldSite_InspectActive>
+    <GR_GoauldOpenConflictWorldSite_InspectResolved>Les armes se sont tues. Rassemblez vos gens et quittez la zone lorsque vous êtes prêt.</GR_GoauldOpenConflictWorldSite_InspectResolved>
+    <GR_GoauldOpenConflictWorldSite_DurationOneHour>1 heure</GR_GoauldOpenConflictWorldSite_DurationOneHour>
+    <GR_GoauldOpenConflictWorldSite_DurationHours>{0} heures</GR_GoauldOpenConflictWorldSite_DurationHours>
+    <GR_GoauldOpenConflictWorldSite_DurationOneDay>1 jour</GR_GoauldOpenConflictWorldSite_DurationOneDay>
+    <GR_GoauldOpenConflictWorldSite_DurationDays>{0} jours</GR_GoauldOpenConflictWorldSite_DurationDays>
+    <GR_GoauldOpenConflictWorldSite_DurationCombined>{0} et {1}</GR_GoauldOpenConflictWorldSite_DurationCombined>
+    <GR_GoauldOpenConflictWorldSite_TravelCommand>Entrer sur le champ de bataille Goa'uld</GR_GoauldOpenConflictWorldSite_TravelCommand>
+    <GR_GoauldOpenConflictWorldSite_Approaching>Approche du champ de bataille Goa'uld</GR_GoauldOpenConflictWorldSite_Approaching>
+    <GR_GoauldOpenConflictWorldSite_AlreadyResolved>Le champ de bataille est déjà résolu.</GR_GoauldOpenConflictWorldSite_AlreadyResolved>
+    <GR_GoauldOpenConflictWorldSite_RequiresCaravan>Une caravane du joueur doit être présente sur le site du champ de bataille.</GR_GoauldOpenConflictWorldSite_RequiresCaravan>
+    <GR_GoauldOpenConflictWorldSite_GenerationFailed>La carte du champ de bataille n'a pas pu être initialisée. La caravane reste sur la tuile mondiale.</GR_GoauldOpenConflictWorldSite_GenerationFailed>
+    <GR_GoauldOpenConflictWorldSite_ArrivalLabel>Forces jaffa rivales en rassemblement</GR_GoauldOpenConflictWorldSite_ArrivalLabel>
+    <GR_GoauldOpenConflictWorldSite_ArrivalText>La caravane atteint le champ de bataille entre {0} et {1}. Les deux détachements entrent depuis le bord de la carte et rejoignent leurs positions de ralliement. Ils s'attaqueront après leur rassemblement. Un camp pris à partie par la caravane considérera vos soldats comme une force ennemie supplémentaire sans abandonner totalement le front rival.</GR_GoauldOpenConflictWorldSite_ArrivalText>
 </LanguageData>

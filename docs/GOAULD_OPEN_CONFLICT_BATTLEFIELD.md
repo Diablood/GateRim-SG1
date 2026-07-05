@@ -1,154 +1,183 @@
 # Goa'uld open-conflict battlefields
 
-Version: `0.3.69-dev`
-
-Branch: `feature/goauld-open-conflict-battlefield-incident`
-
-Local revision: `r6`
-
-Status: compile correction applied after the bounded-retaliation implementation; full retest required.
+Status: local form published in `0.3.69-dev`; world-site form validated in final revision `0.3.70-dev-r4`.
 
 ## Purpose
 
-A persistent `open conflict` relation can now produce a rare battle on a
-player-home map while **SG-1 Command** is active. The event represents two
-exact Goa'uld domains diverting forces against one another instead of adding
-another disguised raid against the colony.
+An `OpenConflict` relation must be visible as more than an RP report or a raid
+point modifier. Battlefields show two exact Goa'uld domains spending military
+forces against one another while keeping player intervention optional.
 
-## Eligibility and cadence
+The subsystem has two presentation forms:
 
-`GameComponent_GoauldOpenConflictBattlefieldTracker` requires:
+- a local incident near a player colony;
+- a temporary world site visitable by caravan.
 
-- SG-1 Command as the active storyteller;
-- at least one active relation pair in `open conflict`;
-- a player-home map with a free colonist;
-- no other active hostile force on the selected map;
-- no existing local battlefield.
+Both forms use one orchestration slot and one combat implementation.
 
-Hidden timing is persistent:
+## Shared orchestration
 
-- first opportunity: `8–16` days;
-- retry while no open-conflict pair exists: `3–6` days;
-- recurrence after a completed battlefield: `20–40` days;
-- temporary map or generation failure retry: `1` day.
+`GameComponent_GoauldOpenConflictBattlefieldTracker` owns all scheduling.
+Version 2 stores:
 
-Opportunity timing is shifted forward while another storyteller is active,
-preventing a backlog when SG-1 Command is selected again. An already active
-battlefield continues normally after a storyteller switch.
+- one hidden opportunity clock;
+- one active local-map ID;
+- one active world-object ID;
+- the previous exact domain pair;
+- the previous form, local or world;
+- RP text anti-repetition;
+- storyteller suspension state.
 
-## Pair selection
+The initial delay remains `480000–960000` ticks and recurrence remains
+`1200000–2400000` ticks. A recurrence delay begins only after the active local
+battle or world site is completely removed.
 
-The scheduler selects an exact persistent relation pair. When several pairs
-are eligible, the pair used by the previous battlefield is excluded from the
-next draw. The last pair and last RP letter variant persist through
-save/reload.
+When both forms are eligible, the scheduler selects the form not used by the
+previous occurrence. The first choice is random. If the preferred form cannot be
+created, the scheduler attempts the other form without consuming another full
+recurrence period.
 
-Only one local battlefield may exist at once. The future `0.3.70-dev`
-world-map battlefield site must reuse this orchestration boundary so a local
-battlefield and a world site cannot be active simultaneously for the same
-strategic slot.
+## Pair eligibility
 
-## Threat scaling
+Both forms require:
 
-Each detachment receives:
+- at least two active Goa'uld domain faction instances;
+- one stored unordered pair in `OpenConflict`;
+- both factions still active and undefeated;
+- Commandement SG-1 for natural creation.
+
+The previous pair is avoided whenever another eligible pair exists.
+
+## Difficulty snapshot
+
+Both detachments use the same offer-time calculation:
 
 ```text
 clamp(vanilla storyteller points × 0.35, 250, 1800)
 ```
 
-Pawn counts are derived from the Jaffa warrior combat power and bounded from
-`2` to `10` pawns per side. Every fifth pawn uses the existing Jaffa guard
-kind when available. Both groups belong to the exact domain factions stored
-in the selected relation pair.
+The value is captured when the local event or world site is created. Entering a
+world site later does not reroll its strength from a newer colony state.
 
-## Local battle behavior
+Pawn generation remains bounded to the published Jaffa warrior/guard mixture and
+uses the exact two stored domain factions.
 
-`GoauldOpenConflictBattlefieldUtility` now separates entry cells from rally
-anchors. Both detachments spawn within four cells of the selected map edge,
-then jog toward opposing rally positions roughly `48` cells apart.
+## Local form
 
-`MapComponent_GoauldOpenConflictBattlefield` owns three explicit phases:
+The local form is selected only on a player home map with free colonists and no
+active hostile force. Both detachments enter from map-edge cells, move to
+opposing rally points, wait for sufficient formation or the bounded fallback,
+then begin an announced mutual assault.
 
-1. **rally**: each group moves from its edge entry toward its assigned anchor;
-2. **assault**: after at least `70%` of both active groups are within seven cells
-   of their anchors and have held for `1800` ticks, one player message announces
-   the attack and mobile combat control begins;
-3. **withdrawal**: mobile survivors leave after one side is broken or the
-   bounded two-day duration expires.
+Its letter targets a spawned Jaffa on the local map.
 
-A `12000`-tick rally timeout prevents difficult terrain from blocking the event
-forever. If it expires, the assault begins with the pawns that successfully
-reached the area.
+## World-site form
 
-Ranged combat no longer assigns `AttackStatic` while a target is outside weapon
-range. Each Jaffa instead advances toward a reachable firing cell, reevaluates
-the moving target every `30` ticks and switches to `AttackStatic` only after
-range and line of sight are available. Melee pawns retain normal pursuit through
-`AttackMelee`.
+`GoauldOpenConflictBattlefieldWorldSiteUtility` places
+`SG1_GoauldOpenConflictBattlefieldSite` `6–18` tiles from an eligible player home
+map. The world object is factionless because it represents contested ground
+rather than ownership by one participant.
 
-The component records exact player colonists whose attack job or warmup stance
-targets either detachment. After one side has fallen, a new injury in the
-surviving camp also infers the nearest active player pawn as a fallback
-provoker. That camp prioritizes persisted provocateurs while the other camp
-continues fighting its rival.
+The site stores:
 
-Retaliation is deliberately bounded. A provoked camp returns to the
-inter-domain fight after `1800` ticks without a renewed player attack. Its
-pursuit remains within `35` cells of the position where the provocation began;
-ongoing fire from beyond that boundary does not drag the detachment across the
-map. During withdrawal, a camp may interrupt its exit to defend itself for at
-most `6000` ticks in total, then resumes leaving even if the player remains
-present. These local combat reactions do not rewrite faction goodwill,
-strategic relations or player diplomacy.
+- both exact faction references;
+- vanilla threat snapshot;
+- points per detachment;
+- eight-day expiration tick;
+- encounter map size;
+- launched and resolved state.
 
-The player may:
+The dedicated icon is:
 
-- remain outside the battlefield;
-- attack one camp before, during or after the inter-domain fight;
-- attack both camps;
-- capture downed survivors;
-- recover ordinary dropped equipment after the fight.
+```text
+World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield
+```
 
-No artificial material or goodwill reward is created.
+Ignoring the marker destroys it silently at the deadline. This is not a quest
+failure and causes no political or material consequence.
 
-## Withdrawal and cleanup
+## Caravan flow
 
-Withdrawal begins when:
+`CaravanArrivalAction_GoauldOpenConflictBattlefieldSite` uses RimWorld's normal
+world-path and arrival-action framework. On arrival:
 
-- either side has no mobile combatant;
-- exactly one side falls to `30%` or less of its initial mobile force while the
-  opponent remains above its own `30%` threshold; or
-- the battle reaches `120000` ticks, equal to two RimWorld days.
+1. the map is generated lazily at size `140 × 140`;
+2. the exact stored factions and threat snapshot initialize the shared map
+   component;
+3. the hostile-map generation notification is sent;
+4. the caravan enters from an edge at least `30` cells from both rally anchors;
+5. the local rally and combat lifecycle proceeds unchanged.
 
-If both camps are simultaneously at or below the morale threshold, neither is
-selected as the sole breaking side and combat continues until elimination or
-the absolute deadline. Small detachments of two or three pawns cannot break
-before elimination because their exact `30%` threshold rounds down to zero.
+A second player caravan may enter an already generated unresolved map through
+the same world object.
 
-Mobile survivors receive a vanilla `LordJob_ExitMapBest`. Revision `r6`
-reissues that withdrawal order every `600` ticks only for mobile survivors
-whose exit Lord or path has stalled. A withdrawing camp can interrupt its exit
-to retaliate, but only inside the persisted `6000`-tick withdrawal-retaliation
-window. The original `30000`-tick forced-exit deadline is no longer extended by
-player intervention. Remaining mobile non-prisoners are then forced off the
-map. Downed pawns, prisoners, corpses and dropped equipment remain available
-to normal RimWorld systems.
+## Shared map component
 
-The global tracker is notified only after the active battlefield resolves,
-then schedules the next `20–40` day recurrence window.
+`MapComponent_GoauldOpenConflictBattlefield` now accepts an optional parent
+world site. The combat state remains identical in both forms:
 
-## RP communication
+- edge arrival and rally;
+- assault announcement;
+- ranged movement to firing range and line of sight;
+- melee pursuit;
+- player-provocation tracking per camp;
+- `1800` quiet-tick retaliation expiry;
+- `35`-cell pursuit boundary;
+- one-sided `30%` morale break;
+- two-day absolute battle limit;
+- `6000`-tick maximum withdrawal retaliation;
+- fixed `30000`-tick forced-exit grace.
 
-Exactly one threat-small letter names both domains and targets a spawned
-Jaffa pawn on the colony map, so its jump action opens the local battlefield
-rather than the settlement marker on the world map. It explains that both columns have entered from the map edge and are moving to
-opposing rally points. A separate localized message announces when the two
-forces finish assembling and launch the assault. Intervention remains optional,
-and either camp will retaliate if challenged.
+A local battle notifies the global tracker directly when resolved. A world-site
+battle notifies its parent object, which retains ownership of the shared slot
+until RimWorld can remove the map and world object.
 
-Three English and French variants use immediate anti-repetition.
+## Resolution and cleanup
 
-## Developer access
+A world encounter is considered tactically resolved when the map component
+finishes withdrawal. The map is not removed while:
+
+- any player pawn blocks removal;
+- a caravan still needs reformation;
+- an incoming transporter blocks removal.
+
+When ordinary RimWorld removal becomes valid, the world object notifies the
+tracker, the map and marker are removed together, and one recurrence delay is
+scheduled.
+
+Downed pawns, prisoners, corpses and equipment are not deleted by the battlefield
+logic. The player may capture and recover them through normal map and caravan
+flows.
+
+## Neutral consequences
+
+Neither form changes:
+
+- strategic inter-domain relation state;
+- goodwill toward the player;
+- settlement ownership or existence;
+- territory;
+- raid doctrines or frequency;
+- the `0.75` natural-raid pressure factor;
+- Tok'ra trust or mission state.
+
+No framework reward is generated. Battlefield equipment is ordinary pawn gear.
+
+## Save compatibility
+
+The tracker schema increases from 1 to 2. Existing `0.3.69-dev` saves load with:
+
+- no active world-object ID;
+- no previous world/local alternation unless a new event occurs;
+- the existing active local-map ID preserved;
+- the existing opportunity timing and pair history preserved.
+
+The world object and optional parent reference are fully serialized for saves
+before arrival, during combat and after tactical resolution.
+
+## Developer diagnostics
+
+Path:
 
 ```text
 Actions de débogage
@@ -156,47 +185,28 @@ Actions de débogage
 > Goa'uld inter-domain relations...
 ```
 
-Added actions:
+Actions:
 
-- `Show battlefield report`;
-- `Make battlefield opportunity due`;
-- `Force battlefield now`;
-- `Order battlefield withdrawal`;
-- `Reset battlefield scheduler`.
+- show the shared battlefield report;
+- make the shared opportunity due;
+- force a local battlefield;
+- force a world battlefield site;
+- expire an unvisited world site;
+- order active-map withdrawal;
+- reset scheduler history and timing.
 
-The forced battlefield still requires an actual active open-conflict pair,
-but may ignore normal map-threat gating for deterministic validation.
+The report must identify the active form, exact pair, local map ID, world-object
+ID, site expiration, map-generation state and the single shared recurrence
+clock.
 
-## Explicit exclusions
+## Validation boundary
 
-`0.3.69-dev` adds no:
+`0.3.70-dev` validates only the optional world representation and shared
+orchestration. Alliance bonuses, joint raids, territorial expansion, settlement
+destruction and diplomatic consequences remain outside this milestone.
 
-- world-map site or caravan destination;
-- settlement destruction or territorial expansion;
-- alliance effect, joint raid or reinforcement;
-- relation or goodwill change caused by the battle;
-- mission objective, success state or failure penalty;
-- artificial loot container or reward.
+## Final revision r4
 
-The world-map equivalent is reserved for `0.3.70-dev`.
-
-
-## Revision history
-
-- `r1`: first local implementation; validation found that the letter jumped to
-  the world map, both groups remained idle and player attacks did not trigger
-  retaliation.
-- `r2`: target the letter at a spawned map pawn, force real AI attack jobs,
-  persist exact player provocateurs per camp and refresh stalled withdrawals.
-- `r3`: spawn both forces at the map edge, add rally and announced assault
-  phases, and preserve retaliation after a victorious camp has begun withdrawing.
-- `r4`: replace distant immobile ranged attack jobs with explicit approach-to-
-  range behavior, read drafted warmup targets and infer post-victory provocation
-  from new injuries when the player attack job is not exposed reliably.
-- `r5`: bound player retaliation to `1800` quiet ticks and a `35`-cell pursuit
-  radius, cap withdrawal retaliation at `6000` ticks without extending forced
-  exit, and add morale withdrawal when exactly one camp falls to `30%` or less
-  of its initial mobile force.
-- `r6`: fix the C# build by copying the `out` provocation origin into a local
-  value before the `RemoveAll` lambda; gameplay behavior is unchanged from
-  `r5`.
+- World-site inspection text is RP-facing and formats long durations in days and hours.
+- Player intervention is treated as an additional hostile group during the mutual assault; a proportional nearby subset retaliates while the remaining Jaffa keep fighting the rival domain.
+- The world object uses RimWorld's vanilla `WorldObjectCompProperties_FormCaravan`, restoring normal caravan reformation once active hostile threats are gone.

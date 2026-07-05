@@ -4,22 +4,30 @@ using System.Linq;
 using System.Text;
 using GateRimSG1.Storytelling;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
+    public enum GoauldOpenConflictBattlefieldKind
+    {
+        None,
+        Local,
+        World
+    }
+
     /// <summary>
-    /// Schedules rare local battlefields for Goa'uld domain pairs that are
-    /// already in persistent open conflict.
+    /// Shared persistent scheduler for local and world-map battlefields created
+    /// by exact Goa'uld domain pairs already in open conflict.
     ///
-    /// The scheduler is exclusive to SG-1 Command, keeps one battlefield
-    /// active at a time and shifts its hidden opportunity clock while a
-    /// different storyteller is selected.
+    /// SG-1 Command owns one cadence, one active slot and one pair anti-repeat
+    /// memory. When both forms are available, the scheduler alternates between
+    /// local and world battlefields instead of allowing parallel occurrences.
     /// </summary>
     public sealed class GameComponent_GoauldOpenConflictBattlefieldTracker
         : GameComponent
     {
-        private const int CurrentSchemaVersion = 1;
+        private const int CurrentSchemaVersion = 2;
         private const int CheckIntervalTicks = 250;
         private const int MinimumInitialDelayTicks = 480000;
         private const int MaximumInitialDelayTicks = 960000;
@@ -33,9 +41,12 @@ namespace GateRimSG1.Goauld
         private int nextCheckTick;
         private int nextOpportunityTick;
         private int activeMapUniqueId = -1;
+        private int activeWorldObjectId = -1;
         private int lastFirstDomainLoadId = -1;
         private int lastSecondDomainLoadId = -1;
         private int lastLetterVariant = -1;
+        private GoauldOpenConflictBattlefieldKind lastBattlefieldKind
+            = GoauldOpenConflictBattlefieldKind.None;
         private bool wasGateRimStorytellerActive;
         private int suspensionStartTick = -1;
 
@@ -50,7 +61,11 @@ namespace GateRimSG1.Goauld
                     GameComponent_GoauldOpenConflictBattlefieldTracker>();
 
         public bool HasActiveBattlefield
-            => ResolveActiveComponent() != null;
+            => ResolveActiveComponent() != null
+                || ResolveActiveWorldSite() != null;
+
+        public bool HasActiveWorldSite
+            => ResolveActiveWorldSite() != null;
 
         public override void ExposeData()
         {
@@ -73,6 +88,10 @@ namespace GateRimSG1.Goauld
                 "goauldOpenConflictBattlefieldActiveMapUniqueId",
                 -1);
             Scribe_Values.Look(
+                ref activeWorldObjectId,
+                "goauldOpenConflictBattlefieldActiveWorldObjectId",
+                -1);
+            Scribe_Values.Look(
                 ref lastFirstDomainLoadId,
                 "goauldOpenConflictBattlefieldLastFirstDomainLoadId",
                 -1);
@@ -84,6 +103,10 @@ namespace GateRimSG1.Goauld
                 ref lastLetterVariant,
                 "goauldOpenConflictBattlefieldLastLetterVariant",
                 -1);
+            Scribe_Values.Look(
+                ref lastBattlefieldKind,
+                "goauldOpenConflictBattlefieldLastKind",
+                GoauldOpenConflictBattlefieldKind.None);
             Scribe_Values.Look(
                 ref wasGateRimStorytellerActive,
                 "goauldOpenConflictBattlefieldStorytellerWasActive",
@@ -156,8 +179,29 @@ namespace GateRimSG1.Goauld
                     lastFirstDomainLoadId,
                     lastSecondDomainLoadId);
 
-            return TryStartBattlefield(
+            return TryStartLocalBattlefield(
                 map,
+                pair,
+                debugForced: true,
+                CurrentTick());
+        }
+
+        public bool ForceWorldSiteDebug(Map sourceMap)
+        {
+            ReconcileActiveBattlefield(CurrentTick());
+
+            if (sourceMap == null || HasActiveBattlefield)
+            {
+                return false;
+            }
+
+            GoauldInterDomainRelationState pair =
+                GoauldOpenConflictBattlefieldUtility.SelectEligiblePair(
+                    lastFirstDomainLoadId,
+                    lastSecondDomainLoadId);
+
+            return TryStartWorldSite(
+                sourceMap,
                 pair,
                 debugForced: true,
                 CurrentTick());
@@ -182,13 +226,33 @@ namespace GateRimSG1.Goauld
             return true;
         }
 
+        public bool ExpireWorldSiteDebug()
+        {
+            WorldObject_GoauldOpenConflictBattlefieldSite site =
+                ResolveActiveWorldSite();
+
+            if (site == null || site.HasMap)
+            {
+                return false;
+            }
+
+            site.ExpireDebug();
+            return true;
+        }
+
         public void ResetDebug()
         {
             bool hadActiveBattlefield = HasActiveBattlefield;
-            ForceWithdrawalDebug();
+
+            if (!ExpireWorldSiteDebug())
+            {
+                ForceWithdrawalDebug();
+            }
+
             lastFirstDomainLoadId = -1;
             lastSecondDomainLoadId = -1;
             lastLetterVariant = -1;
+            lastBattlefieldKind = GoauldOpenConflictBattlefieldKind.None;
             suspensionStartTick = -1;
             wasGateRimStorytellerActive =
                 GateRimStorytellerUtility.IsGateRimStorytellerActive;
@@ -196,17 +260,43 @@ namespace GateRimSG1.Goauld
             if (!hadActiveBattlefield)
             {
                 activeMapUniqueId = -1;
+                activeWorldObjectId = -1;
                 ScheduleInitial(CurrentTick());
             }
         }
 
-        public void NotifyBattlefieldResolved(int mapUniqueId)
+        public void NotifyLocalBattlefieldResolved(int mapUniqueId)
         {
-            if (mapUniqueId != activeMapUniqueId)
+            if (activeWorldObjectId >= 0
+                || mapUniqueId != activeMapUniqueId)
             {
                 return;
             }
 
+            activeMapUniqueId = -1;
+            ScheduleRecurrence(CurrentTick());
+        }
+
+        public void NotifyWorldSiteMapGenerated(
+            int worldObjectId,
+            int mapUniqueId)
+        {
+            if (worldObjectId != activeWorldObjectId)
+            {
+                return;
+            }
+
+            activeMapUniqueId = mapUniqueId;
+        }
+
+        public void NotifyWorldSiteResolved(int worldObjectId)
+        {
+            if (worldObjectId != activeWorldObjectId)
+            {
+                return;
+            }
+
+            activeWorldObjectId = -1;
             activeMapUniqueId = -1;
             ScheduleRecurrence(CurrentTick());
         }
@@ -218,9 +308,9 @@ namespace GateRimSG1.Goauld
             return "eligible open-conflict pairs: "
                 + GoauldOpenConflictBattlefieldUtility
                     .GetEligibleOpenConflictPairs().Count
-                + "\nactive local battlefield: "
-                + FormatBoolean(HasActiveBattlefield)
-                + "\nnext local battlefield opportunity: "
+                + "\nshared active battlefield slot: "
+                + ActiveKindLabel()
+                + "\nnext shared battlefield opportunity: "
                 + FormatRemaining(nextOpportunityTick);
         }
 
@@ -235,6 +325,8 @@ namespace GateRimSG1.Goauld
                     .GetEligibleOpenConflictPairs();
             MapComponent_GoauldOpenConflictBattlefield component =
                 ResolveActiveComponent();
+            WorldObject_GoauldOpenConflictBattlefieldSite site =
+                ResolveActiveWorldSite();
             StringBuilder builder = new StringBuilder();
             builder.AppendLine("Goa'uld open-conflict battlefield report");
             builder.AppendLine();
@@ -247,10 +339,15 @@ namespace GateRimSG1.Goauld
             builder.AppendLine(
                 "eligible open-conflict pairs: " + pairs.Count);
             builder.AppendLine(
-                "active battlefield map: "
+                "shared active slot: " + ActiveKindLabel());
+            builder.AppendLine(
+                "active map: "
                 + (component == null
                     ? "<none>"
                     : component.MapLabel));
+            builder.AppendLine(
+                "active world object ID: "
+                + (site == null ? "<none>" : site.ID.ToString()));
             builder.AppendLine(
                 "next natural opportunity: "
                 + FormatRemaining(nextOpportunityTick));
@@ -260,10 +357,32 @@ namespace GateRimSG1.Goauld
             builder.AppendLine(
                 "last selected pair: " + FormatLastPair(pairs));
             builder.AppendLine(
+                "last battlefield kind: " + lastBattlefieldKind);
+            builder.AppendLine(
                 "last letter variant: "
                 + (lastLetterVariant < 0
                     ? "<none>"
                     : lastLetterVariant.ToString()));
+
+            if (site != null)
+            {
+                builder.AppendLine();
+                builder.AppendLine("World site");
+                builder.AppendLine(
+                    "  pair: "
+                    + (site.FirstDomain?.Name ?? "<missing>")
+                    + " <-> "
+                    + (site.SecondDomain?.Name ?? "<missing>"));
+                builder.AppendLine("  tile: " + site.Tile);
+                builder.AppendLine(
+                    "  map generated: " + FormatBoolean(site.HasMap));
+                builder.AppendLine(
+                    "  remaining before ignored expiry: "
+                    + site.RemainingTicks + " ticks");
+                builder.AppendLine(
+                    "  battle resolved: "
+                    + FormatBoolean(site.BattlefieldResolved));
+            }
 
             if (component != null)
             {
@@ -273,9 +392,11 @@ namespace GateRimSG1.Goauld
 
             builder.AppendLine();
             builder.AppendLine(
-                "natural cadence: initial 8-16 days; recurrence 20-40 days");
+                "shared cadence: initial 8-16 days; recurrence 20-40 days");
             builder.AppendLine(
-                "world-map battlefield site: reserved for 0.3.70-dev");
+                "world site: 6-18 tiles; ignored expiry after 8 days");
+            builder.AppendLine(
+                "local/world duplication: blocked by the shared active slot");
             return builder.ToString();
         }
 
@@ -307,17 +428,34 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            List<Map> maps = Find.Maps
+            List<Map> sourceMaps = Find.Maps
                 ?.Where(map =>
                     map != null
                     && map.IsPlayerHome
-                    && map.mapPawns.FreeColonistsSpawnedCount > 0
-                    && !TokraRelaySabotageMissionUtility
-                        .HasActiveHostiles(map))
+                    && map.Tile != PlanetTile.Invalid
+                    && map.mapPawns.FreeColonistsSpawnedCount > 0)
                 .ToList()
                 ?? new List<Map>();
 
-            if (maps.Count == 0)
+            if (sourceMaps.Count == 0)
+            {
+                nextOpportunityTick = currentTick
+                    + TemporaryFailureRetryTicks;
+                return;
+            }
+
+            List<Map> localMaps = sourceMaps
+                .Where(map => !TokraRelaySabotageMissionUtility
+                    .HasActiveHostiles(map))
+                .ToList();
+            List<Map> worldSourceMaps = sourceMaps
+                .Where(GoauldOpenConflictBattlefieldWorldSiteUtility
+                    .CanCreateFrom)
+                .ToList();
+            bool localAvailable = localMaps.Count > 0;
+            bool worldAvailable = worldSourceMaps.Count > 0;
+
+            if (!localAvailable && !worldAvailable)
             {
                 nextOpportunityTick = currentTick
                     + TemporaryFailureRetryTicks;
@@ -328,20 +466,83 @@ namespace GateRimSG1.Goauld
                 GoauldOpenConflictBattlefieldUtility.SelectEligiblePair(
                     lastFirstDomainLoadId,
                     lastSecondDomainLoadId);
-            Map map = maps.RandomElement();
+            bool worldFirst = ShouldTryWorldFirst(
+                localAvailable,
+                worldAvailable);
+            bool started = false;
 
-            if (!TryStartBattlefield(
-                    map,
+            if (worldFirst)
+            {
+                started = TryStartWorldSite(
+                    worldSourceMaps.RandomElement(),
                     pair,
                     debugForced: false,
-                    currentTick))
+                    currentTick);
+
+                if (!started && localAvailable)
+                {
+                    started = TryStartLocalBattlefield(
+                        localMaps.RandomElement(),
+                        pair,
+                        debugForced: false,
+                        currentTick);
+                }
+            }
+            else
+            {
+                started = TryStartLocalBattlefield(
+                    localMaps.RandomElement(),
+                    pair,
+                    debugForced: false,
+                    currentTick);
+
+                if (!started && worldAvailable)
+                {
+                    started = TryStartWorldSite(
+                        worldSourceMaps.RandomElement(),
+                        pair,
+                        debugForced: false,
+                        currentTick);
+                }
+            }
+
+            if (!started)
             {
                 nextOpportunityTick = currentTick
                     + TemporaryFailureRetryTicks;
             }
         }
 
-        private bool TryStartBattlefield(
+        private bool ShouldTryWorldFirst(
+            bool localAvailable,
+            bool worldAvailable)
+        {
+            if (!worldAvailable)
+            {
+                return false;
+            }
+
+            if (!localAvailable)
+            {
+                return true;
+            }
+
+            if (lastBattlefieldKind
+                == GoauldOpenConflictBattlefieldKind.World)
+            {
+                return false;
+            }
+
+            if (lastBattlefieldKind
+                == GoauldOpenConflictBattlefieldKind.Local)
+            {
+                return true;
+            }
+
+            return Rand.Value < 0.5f;
+        }
+
+        private bool TryStartLocalBattlefield(
             Map map,
             GoauldInterDomainRelationState pair,
             bool debugForced,
@@ -364,13 +565,15 @@ namespace GateRimSG1.Goauld
             }
 
             activeMapUniqueId = map.uniqueID;
-            lastFirstDomainLoadId = pair.firstDomain?.loadID ?? -1;
-            lastSecondDomainLoadId = pair.secondDomain?.loadID ?? -1;
-            lastLetterVariant = letterVariant;
+            activeWorldObjectId = -1;
+            RememberSelection(
+                pair,
+                GoauldOpenConflictBattlefieldKind.Local,
+                letterVariant);
             nextOpportunityTick = 0;
 
             GR_Log.Message(
-                "Started Goa'uld open-conflict battlefield between "
+                "Started local Goa'uld open-conflict battlefield between "
                 + $"{pair.firstDomain?.Name ?? "<missing>"} and "
                 + $"{pair.secondDomain?.Name ?? "<missing>"} on map "
                 + $"{map.uniqueID}; debugForced={debugForced}; "
@@ -378,8 +581,83 @@ namespace GateRimSG1.Goauld
             return component != null;
         }
 
+        private bool TryStartWorldSite(
+            Map sourceMap,
+            GoauldInterDomainRelationState pair,
+            bool debugForced,
+            int currentTick)
+        {
+            if (sourceMap == null || pair == null)
+            {
+                return false;
+            }
+
+            if (!GoauldOpenConflictBattlefieldWorldSiteUtility.TryCreate(
+                    sourceMap,
+                    pair,
+                    lastLetterVariant,
+                    out WorldObject_GoauldOpenConflictBattlefieldSite site,
+                    out int letterVariant))
+            {
+                return false;
+            }
+
+            activeMapUniqueId = -1;
+            activeWorldObjectId = site.ID;
+            RememberSelection(
+                pair,
+                GoauldOpenConflictBattlefieldKind.World,
+                letterVariant);
+            nextOpportunityTick = 0;
+
+            GR_Log.Message(
+                "Created Goa'uld open-conflict world battlefield between "
+                + $"{pair.firstDomain?.Name ?? "<missing>"} and "
+                + $"{pair.secondDomain?.Name ?? "<missing>"} at tile "
+                + $"{site.Tile}; worldObjectId={site.ID}; "
+                + $"debugForced={debugForced}; startTick={currentTick}.");
+            return true;
+        }
+
+        private void RememberSelection(
+            GoauldInterDomainRelationState pair,
+            GoauldOpenConflictBattlefieldKind kind,
+            int letterVariant)
+        {
+            lastFirstDomainLoadId = pair.firstDomain?.loadID ?? -1;
+            lastSecondDomainLoadId = pair.secondDomain?.loadID ?? -1;
+            lastBattlefieldKind = kind;
+            lastLetterVariant = letterVariant;
+        }
+
         private void ReconcileActiveBattlefield(int currentTick)
         {
+            if (activeWorldObjectId >= 0)
+            {
+                WorldObject_GoauldOpenConflictBattlefieldSite site =
+                    ResolveActiveWorldSite();
+
+                if (site != null)
+                {
+                    if (site.HasMap)
+                    {
+                        activeMapUniqueId = site.Map.uniqueID;
+                    }
+
+                    return;
+                }
+
+                activeWorldObjectId = -1;
+                activeMapUniqueId = -1;
+
+                if (nextOpportunityTick <= currentTick)
+                {
+                    ScheduleRecurrence(currentTick);
+                }
+
+                return;
+            }
+
             if (activeMapUniqueId < 0)
             {
                 return;
@@ -404,18 +682,46 @@ namespace GateRimSG1.Goauld
         private MapComponent_GoauldOpenConflictBattlefield
             ResolveActiveComponent()
         {
-            if (activeMapUniqueId < 0 || Find.Maps == null)
+            Map map = null;
+
+            if (activeMapUniqueId >= 0 && Find.Maps != null)
             {
-                return null;
+                map = Find.Maps.FirstOrDefault(
+                    candidate => candidate?.uniqueID == activeMapUniqueId);
             }
 
-            Map map = Find.Maps.FirstOrDefault(
-                candidate => candidate?.uniqueID == activeMapUniqueId);
+            if (map == null)
+            {
+                WorldObject_GoauldOpenConflictBattlefieldSite site =
+                    ResolveActiveWorldSite();
+
+                if (site?.HasMap == true)
+                {
+                    map = site.Map;
+                }
+            }
+
             MapComponent_GoauldOpenConflictBattlefield component =
                 map?.GetComponent<
                     MapComponent_GoauldOpenConflictBattlefield>();
 
             return component?.Active == true ? component : null;
+        }
+
+        private WorldObject_GoauldOpenConflictBattlefieldSite
+            ResolveActiveWorldSite()
+        {
+            if (activeWorldObjectId < 0 || Find.WorldObjects == null)
+            {
+                return null;
+            }
+
+            return Find.WorldObjects.AllWorldObjects
+                .OfType<WorldObject_GoauldOpenConflictBattlefieldSite>()
+                .FirstOrDefault(worldObject =>
+                    worldObject != null
+                    && !worldObject.Destroyed
+                    && worldObject.ID == activeWorldObjectId);
         }
 
         private void ObserveStorytellerBoundary(int currentTick)
@@ -478,15 +784,39 @@ namespace GateRimSG1.Goauld
             nextCheckTick = Math.Max(0, nextCheckTick);
             nextOpportunityTick = Math.Max(0, nextOpportunityTick);
             activeMapUniqueId = Math.Max(-1, activeMapUniqueId);
+            activeWorldObjectId = Math.Max(-1, activeWorldObjectId);
             lastFirstDomainLoadId = Math.Max(-1, lastFirstDomainLoadId);
             lastSecondDomainLoadId = Math.Max(-1, lastSecondDomainLoadId);
             lastLetterVariant = Math.Max(-1, lastLetterVariant);
             suspensionStartTick = Math.Max(-1, suspensionStartTick);
+
+            if (!Enum.IsDefined(
+                    typeof(GoauldOpenConflictBattlefieldKind),
+                    lastBattlefieldKind))
+            {
+                lastBattlefieldKind =
+                    GoauldOpenConflictBattlefieldKind.None;
+            }
         }
 
         private static int CurrentTick()
         {
             return Find.TickManager?.TicksGame ?? 0;
+        }
+
+        private string ActiveKindLabel()
+        {
+            WorldObject_GoauldOpenConflictBattlefieldSite site =
+                ResolveActiveWorldSite();
+
+            if (site != null)
+            {
+                return site.HasMap ? "world site map" : "world site";
+            }
+
+            return ResolveActiveComponent() != null
+                ? "local battlefield"
+                : "empty";
         }
 
         private string FormatLastPair(

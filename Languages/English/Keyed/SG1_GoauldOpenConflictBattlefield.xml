@@ -7,4 +7,24 @@
     <GR_GoauldOpenConflictBattlefield_AssaultBegins>The detachments of {0} and {1} have completed their rally and are launching the assault.</GR_GoauldOpenConflictBattlefield_AssaultBegins>
     <GR_GoauldOpenConflictBattlefield_BreaksOff>{0}'s remaining Jaffa break contact after severe losses. {1}'s detachment holds the field while both forces begin withdrawing from the area.</GR_GoauldOpenConflictBattlefield_BreaksOff>
     <GR_GoauldOpenConflictBattlefield_TimeLimit>After prolonged fighting between {0} and {1}, both detachments disengage and begin withdrawing from the area.</GR_GoauldOpenConflictBattlefield_TimeLimit>
+
+    <GR_GoauldOpenConflictWorldSite_Label>Goa'uld battlefield detected</GR_GoauldOpenConflictWorldSite_Label>
+    <GR_GoauldOpenConflictWorldSite_Text0>Long-range reconnaissance has located a developing battle between Jaffa detachments serving {0} and {1}. The engagement is far from the colony and can be ignored without consequence. A caravan may instead travel to the marked area and intervene once the two forces assemble.</GR_GoauldOpenConflictWorldSite_Text0>
+    <GR_GoauldOpenConflictWorldSite_Text1>The open conflict between {0} and {1} has produced a temporary battlefield within caravan range. Neither domain is requesting assistance. The colony may avoid the area, observe the result or enter the fighting against either side.</GR_GoauldOpenConflictWorldSite_Text1>
+    <GR_GoauldOpenConflictWorldSite_Text2>Intercepted Goa'uld traffic identifies two rival columns converging at the marked coordinates. Forces of {0} and {1} are expected to engage there. The marker will disappear when the battle moves on, with no penalty if the colony stays away.</GR_GoauldOpenConflictWorldSite_Text2>
+    <GR_GoauldOpenConflictWorldSite_InspectPending>Signals from {0} and {1} are still converging on this region. Our observers estimate that the area will remain traceable for about {2}.</GR_GoauldOpenConflictWorldSite_InspectPending>
+    <GR_GoauldOpenConflictWorldSite_InspectActive>Weapons fire and Goa'uld transmissions confirm that the forces of {0} and {1} are still fighting in the area.</GR_GoauldOpenConflictWorldSite_InspectActive>
+    <GR_GoauldOpenConflictWorldSite_InspectResolved>The weapons have fallen silent. Gather your people and leave the area when ready.</GR_GoauldOpenConflictWorldSite_InspectResolved>
+    <GR_GoauldOpenConflictWorldSite_DurationOneHour>1 hour</GR_GoauldOpenConflictWorldSite_DurationOneHour>
+    <GR_GoauldOpenConflictWorldSite_DurationHours>{0} hours</GR_GoauldOpenConflictWorldSite_DurationHours>
+    <GR_GoauldOpenConflictWorldSite_DurationOneDay>1 day</GR_GoauldOpenConflictWorldSite_DurationOneDay>
+    <GR_GoauldOpenConflictWorldSite_DurationDays>{0} days</GR_GoauldOpenConflictWorldSite_DurationDays>
+    <GR_GoauldOpenConflictWorldSite_DurationCombined>{0} and {1}</GR_GoauldOpenConflictWorldSite_DurationCombined>
+    <GR_GoauldOpenConflictWorldSite_TravelCommand>Enter the Goa'uld battlefield</GR_GoauldOpenConflictWorldSite_TravelCommand>
+    <GR_GoauldOpenConflictWorldSite_Approaching>Approaching the Goa'uld battlefield</GR_GoauldOpenConflictWorldSite_Approaching>
+    <GR_GoauldOpenConflictWorldSite_AlreadyResolved>The battlefield has already been resolved.</GR_GoauldOpenConflictWorldSite_AlreadyResolved>
+    <GR_GoauldOpenConflictWorldSite_RequiresCaravan>A player caravan must be present on the battlefield site.</GR_GoauldOpenConflictWorldSite_RequiresCaravan>
+    <GR_GoauldOpenConflictWorldSite_GenerationFailed>The battlefield map could not be initialized. The caravan remains on the world tile.</GR_GoauldOpenConflictWorldSite_GenerationFailed>
+    <GR_GoauldOpenConflictWorldSite_ArrivalLabel>Rival Jaffa forces assembling</GR_GoauldOpenConflictWorldSite_ArrivalLabel>
+    <GR_GoauldOpenConflictWorldSite_ArrivalText>The caravan has reached the battlefield between {0} and {1}. Both detachments are entering from the map edge and moving to their rally positions. They will attack one another after assembling. Any camp drawn into a clash with the caravan will treat those soldiers as another hostile force without abandoning the rival front.</GR_GoauldOpenConflictWorldSite_ArrivalText>
 </LanguageData>

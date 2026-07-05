@@ -44,6 +44,7 @@ namespace GateRimSG1
         public static WorldObjectDef SG1_TokraDistressCallWorldSite;
         public static WorldObjectDef SG1_TokraIntroductionArtifactWorldSite;
         public static WorldObjectDef SG1_TokraTemporaryBaseDeliverySite;
+        public static WorldObjectDef SG1_GoauldOpenConflictBattlefieldSite;
         public static GateRimMissionDef SG1_TokraIntroductionArtifactMission;
         public static SitePartDef SG1_TokraHiddenSafehouseSitePart;
         public static IncidentDef SG1_FreeJaffaPeacefulVisitors;

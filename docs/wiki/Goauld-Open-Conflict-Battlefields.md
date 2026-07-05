@@ -1,66 +1,102 @@
 # Batailles entre domaines Goa'uld
 
-> Première version : `0.3.69-dev`
-> Statut : prototype local corrigé en `r6`, à revalider
+> Première version locale : `0.3.69-dev`
+> Site mondial : `0.3.70-dev`
+> Statut : site mondial validé en révision finale `r4`
 
-Sous **Commandement SG-1**, un conflit ouvert entre deux domaines Goa'uld
-peut désormais atteindre directement les abords d'une colonie joueur.
+Sous **Commandement SG-1**, un conflit ouvert entre deux domaines Goa'uld peut
+produire une bataille visible sous deux formes.
 
-Deux détachements jaffa appartenant aux domaines exacts concernés entrent depuis
-le bord de la carte. Chaque groupe rejoint d'abord un point de ralliement
-opposé. Une fois les deux troupes suffisamment regroupées, un message annonce
-le lancement de l'assaut. Les Jaffa avancent ensuite jusqu'à portée de leurs
-armes avant d'ouvrir le feu, au lieu de rester sur leur point de ralliement.
+## Près d'une colonie
 
-Leur arrivée ne constitue pas un raid organisé contre la colonie.
+La forme locale fait entrer deux détachements jaffa depuis le bord d'une carte
+principale. Chaque groupe rejoint un point de ralliement opposé, puis un message
+annonce le lancement de l'assaut.
+
+Les combattants avancent jusqu'à portée et s'affrontent entre eux. Leur arrivée
+n'est pas un raid organisé contre la colonie.
+
+## Sur la carte mondiale
+
+La version `0.3.70-dev` peut aussi faire apparaître un **champ de bataille
+Goa'uld** temporaire à quelques jours de marche d'une colonie.
+
+Le marqueur :
+
+- nomme les deux domaines engagés ;
+- possède une icône mondiale dédiée ;
+- reste disponible pendant environ huit jours ;
+- peut être visité par une caravane ou complètement ignoré.
+
+Ignorer le site ne compte pas comme un échec. Il disparaît sans perte de bonne
+volonté, sans changement politique et sans destruction de colonie mondiale.
+
+La carte de combat n'est créée qu'à l'arrivée de la caravane. Les deux forces
+utilisent ensuite exactement les mêmes règles que la bataille locale : entrée
+depuis le bord, rassemblement, annonce, assaut mutuel, rupture morale et retrait.
 
 ## Choix du joueur
 
 La colonie peut :
 
-- rester à l'écart et laisser les deux camps s'épuiser ;
+- rester à l'écart ;
+- observer ou exploiter le combat ;
 - attaquer un seul domaine ;
 - combattre les deux forces ;
 - capturer les survivants tombés à terre ;
-- récupérer l'équipement abandonné selon les règles normales de RimWorld.
+- repartir avec les prisonniers et objets sélectionnés lors de la reformation
+  normale de la caravane.
 
-Le camp directement attaqué mémorise les colons provocateurs, avance jusqu'à
-portée si nécessaire et leur riposte. Cette réaction reste locale : elle cesse
-après environ `1800` ticks sans nouvelle attaque et la poursuite ne dépasse pas
-`35` cellules depuis le point où la provocation a commencé. Une nouvelle
-blessure subie après la chute du rival sert également de sécurité pour reconnaître
-l'intervention du joueur. Un camp non provoqué reste concentré sur son rival.
+Le camp directement attaqué riposte, mais sa réaction reste bornée :
 
-## Durée limitée
+- elle cesse après environ `1800` ticks sans nouvelle attaque ;
+- elle ne poursuit pas au-delà de `35` cellules depuis le point de provocation ;
+- pendant le retrait, elle ne peut durer plus de `6000` ticks ni retarder la
+  date de sortie forcée.
 
-Le retrait commence dès qu'un camp n'a plus de combattant mobile, lorsqu'un
-seul camp tombe à `30%` ou moins de son effectif initial alors que l'autre reste
-au-dessus de son propre seuil, ou au plus tard après deux jours. Si les deux
-camps sont simultanément presque détruits, ils continuent à se battre jusqu'à
-la défaite de l'un d'eux ou la limite absolue.
+Un camp non provoqué continue de privilégier son rival.
 
-Les survivants encore capables de marcher quittent la carte ; un ordre de
-sortie bloqué est automatiquement relancé. Une attaque du joueur peut interrompre
-temporairement le retrait du camp concerné, mais pendant au plus `6000` ticks et
-sans repousser la date de sortie forcée. Les pawns à terre, prisonniers, corps et
-objets abandonnés ne sont pas supprimés artificiellement.
+## Fin de l'affrontement
 
-## Fréquence et conditions
+Le retrait commence lorsque :
 
-L'événement exige :
+- un camp n'a plus de combattant mobile ;
+- un seul camp tombe à `30 %` ou moins de son effectif mobile initial ;
+- deux jours de combat se sont écoulés.
 
-- au moins deux domaines Goa'uld ;
-- une paire réellement en conflit ouvert ;
-- Commandement SG-1 comme storyteller actif ;
-- une carte principale sans autre menace hostile active ;
-- aucun autre champ de bataille Goa'uld en cours.
+Si les deux camps sont simultanément presque détruits, ils continuent jusqu'à
+une autre condition de fin.
 
-Le délai est caché et persistant. Changer de storyteller suspend les futures
-opportunités sans interrompre une bataille déjà commencée.
+Les pawns capables de marcher quittent la carte. Les blessés à terre,
+prisonniers, corps et équipements abandonnés restent disponibles selon les
+règles normales de RimWorld.
 
-## Limites
+Sur un site mondial, le marqueur reste présent tant que des pawns joueur sont
+sur la carte. Il disparaît après la résolution et la reformation complète de la
+caravane.
 
-Cette première version ne crée pas de site sur la carte mondiale et ne détruit
-aucune colonie Goa'uld. Le futur `0.3.70-dev` doit ajouter un site mondial
-temporaire visitable ou ignorable par caravane, en réutilisant les mêmes règles
-de combat entre les deux camps.
+## Fréquence et alternance
+
+Les deux formes partagent :
+
+- un seul emplacement actif ;
+- un seul délai caché ;
+- la mémoire de la dernière paire ;
+- une alternance locale / mondiale lorsque les deux sont possibles.
+
+Une bataille locale et un site mondial ne peuvent donc pas apparaître en même
+temps. Changer de storyteller suspend les futures opportunités sans supprimer
+un site ou une bataille déjà en cours.
+
+## Limites actuelles
+
+Ces batailles ne modifient pas encore les territoires, les colonies des domaines
+ou leur relation stratégique. Elles ne donnent pas de récompense artificielle :
+seuls les prisonniers et équipements réellement présents sur le terrain peuvent
+être récupérés.
+
+## Ajustements de la révision r4
+
+- Le marqueur mondial emploie un texte plus immersif et affiche les longues durées en jours et heures.
+- Une intervention joueur ajoute vos soldats aux ennemis déjà présents : le camp provoqué partage sa riposte sans abandonner entièrement son adversaire Goa'uld.
+- Après la fin des menaces actives, le bouton vanilla de reformation de caravane est disponible normalement.

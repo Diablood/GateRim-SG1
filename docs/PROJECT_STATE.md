@@ -1,107 +1,131 @@
 # Project state
 
-Current milestone: `0.3.69-dev - Add open-conflict Goa'uld battlefield incident`
-- corrected in cumulative local revision `r6`; build and bounded-retaliation retest pending.
+Current milestone: `0.3.70-dev - Add open-conflict Goa'uld world battlefield site`
+
+- Final local revision: `r4`.
+- Build `0.3.70.0`, functional tests, save/reload coverage and required
+  regressions are validated.
+- Integration, annotated tag publication and wiki synchronization remain.
 
 ## Repository state
 
-- Starting published integration state: `develop` at annotated tag
-  `v0.3.68-dev`.
+- Published starting point: `develop` exactly aligned with annotated tag
+  `v0.3.69-dev` at commit
+  `ee2ae6e82371e5a8f4e92c5c79cb97309c7d8718`.
 - Active milestone branch:
-  `feature/goauld-open-conflict-battlefield-incident`.
-- Current public development version: `0.3.69-dev`.
-- Technical assembly version: `0.3.69.0`.
-- Current local revision: `r6`.
-- Local validation is complete; fast-forward integration, tag and publication are
-  pending.
+  `feature/goauld-open-conflict-world-battlefield-site`.
+- Current development version: `0.3.70-dev`.
+- Technical assembly version: `0.3.70.0`.
 - `main` remains reserved for the future stable `1.0.0` line.
+- Local validation is complete; fast-forward integration, tag and publication are
+  authorized.
 
 ## Implemented scope
 
-- Add a persistent SG-1-Command-only scheduler for rare local battlefields.
-- Select an exact active domain pair whose relation is `open conflict`.
-- Preserve one active battlefield slot, hidden initial and recurrence delays,
-  save/reload state, last-pair anti-repetition and RP-text anti-repetition.
-- Select only player-home maps with free colonists and no existing hostile
-  force for natural opportunities.
-- Generate two Jaffa detachments belonging to the two exact domain factions.
-- Scale each side from the current vanilla storyteller points with a bounded
-  `0.35` factor and `250–1800` point range.
-- Spawn both groups from valid cells within four cells of the map edge.
-- Move each detachment to an opposing rally point, hold briefly, then announce
-  and start the mutual assault.
-- Keep both detachments focused on one another instead of launching an initial
-  organized assault against colony structures.
-- Send one bilingual RP letter naming both domains and explaining optional
-  intervention.
-- Begin withdrawal when one side is eliminated, exactly one side falls to
-  `30%` or less of its initial mobile force, or the two-day limit expires;
-  preserve downed pawns and loot, then force remaining mobile non-prisoners to
-  leave after a fixed grace period.
-- Add deterministic diagnostics and state-changing developer actions.
-- Correct the first functional-test defects: the letter jumps to a pawn on the
-  colony map, both detachments receive forced AI attack jobs, each camp persists
-  exact attacking colonists, and stalled withdrawal paths are refreshed.
-- Correct the second functional-test defects: troops now enter from the map edge,
-  rally before an announced assault, and a victorious withdrawing camp cancels
-  its exit behavior to retaliate when attacked by the player.
-- Correct the third functional-test defects: ranged Jaffa now pursue until they
-  reach weapon range and line of sight instead of receiving an immobile distant
-  `AttackStatic` job, while post-victory injury changes infer a player provoker
-  when the drafted attack job itself cannot be read reliably.
-- Correct the fourth functional-design issue: retaliation now expires after
-  `1800` quiet ticks, cannot pursue farther than `35` cells from its recorded
-  origin, and can delay withdrawal for at most `6000` ticks without extending
-  the fixed forced-exit deadline.
+- Extend the published `0.3.69-dev` battlefield scheduler instead of adding a
+  parallel world-site manager.
+- Keep one shared active slot, one recurrence clock, one last-pair memory and
+  one text anti-repetition state for local and world battlefields.
+- Alternate local and world forms when both are available; fall back to the
+  other form when the preferred one cannot be created.
+- Select an exact active Goa'uld domain pair whose stored relation is
+  `open conflict`.
+- Create one temporary world site `6–18` tiles from an eligible player home map.
+- Snapshot vanilla storyteller points at site creation and apply the validated
+  `0.35`, `250–1800` points-per-detachment contract.
+- Keep the site fully optional and available for eight days.
+- Expire an ignored site silently without mission failure, goodwill change,
+  strategic-relation change, settlement change or territorial consequence.
+- Add a dedicated world-map icon and bilingual creation, inspection, travel,
+  arrival and failure text.
+- Use the normal RimWorld caravan destination and arrival-action flow.
+- Use RP-facing world-site inspection text with natural day/hour formatting.
+- During an active two-domain assault, distribute a proportional nearby subset
+  toward player provocateurs while the remaining Jaffa keep fighting the rival.
+- Use RimWorld's vanilla form-caravan world-object component so the encounter
+  can be reformed normally after active threats end.
+- Generate the encounter map only when a player caravan enters the site.
+- Reuse the exact published local-battlefield generation and map component:
+  edge arrival, opposing rally points, announced assault, ranged pursuit,
+  player retaliation limits, `30%` morale break, two-day battle limit and fixed
+  withdrawal deadline.
+- Place the player caravan at a map edge separated from both rally points.
+- Keep the world object and shared slot while the encounter map exists.
+- Remove the map and world object only after the battlefield resolves and no
+  player pawn or incoming transporter blocks ordinary map removal.
+- Preserve ordinary RimWorld capture, loot and caravan-reformation behavior.
+- Add developer actions for forcing a local battlefield, forcing a world site,
+  expiring an unvisited site, ordering withdrawal and resetting the scheduler.
 
 ## Persistence model
 
-The global tracker serializes only orchestration data:
+The version-2 global tracker serializes:
 
-- next check and opportunity ticks;
-- active map ID;
+- shared check and opportunity ticks;
+- active local-map ID;
+- active world-object ID;
 - last selected domain-pair IDs;
+- last battlefield form (`local` or `world`);
 - last RP-letter variant;
 - storyteller suspension state.
 
-The map component serializes the exact factions, generated pawns, initial
-combatant counts, player provocateurs per camp, last provocation ticks,
-provocation origins, withdrawal-retaliation starts, edge entries, rally anchors,
-rally/assault timing, threat snapshot, start tick and withdrawal state. Existing
-relation data is reused without changing the relation schema.
+The world object serializes:
+
+- both exact domain faction references;
+- the vanilla threat snapshot and points per detachment;
+- site expiration and map size;
+- launched, resolved and tracker-notified state.
+
+The existing map component now also serializes an optional parent world-site
+reference. All pawn, combat, provocation, rally, morale and withdrawal state
+remains owned by the same component used by the local incident.
+
+Older `0.3.69-dev` saves retain their local battlefield state. New version-2
+fields default to no active world site and no previous world/local alternation.
 
 ## Guardrails
 
-- Automatic opportunities exist only under `Commandement SG-1`.
-- An already active battlefield completes if the storyteller changes.
-- Only one battlefield exists at a time.
-- No natural battlefield is added over another active hostile threat.
-- The event changes no strategic relation, faction goodwill, world settlement
-  or natural-raid pressure factor.
-- It creates no mission success, failure penalty or artificial reward.
+- Natural local and world opportunities remain exclusive to
+  `Commandement SG-1`.
+- Changing storyteller suspends only future opportunity timing; an existing
+  local battle or world site remains valid.
+- A local battlefield and world site can never occupy the shared slot together.
+- World-site expiration is neutral and produces no forced quest failure.
+- The milestone changes no domain relation, faction goodwill, settlement,
+  territory, raid doctrine, natural-raid frequency or pressure factor.
+- No material reward is spawned by the framework; all recoverable equipment is
+  ordinary battlefield equipment.
 
 ## Validation result
 
-Final local revision `r6` is validated:
+Final local revision `r4` is validated:
 
-- forced build succeeds with assembly `0.3.69.0`;
-- both forces enter from the map edge and rally correctly;
-- the assault announcement and mutual combat work;
-- ranged Jaffa pursue and fire normally;
-- player retaliation is temporary and spatially bounded;
-- morale break, two-day limit and fixed withdrawal deadline work;
-- save/reload and existing Goa'uld regressions pass;
+- forced build succeeds with assembly `0.3.70.0`;
+- the world site is created for the exact stored open-conflict pair;
+- the dedicated icon, RP inspection text and day/hour countdown work;
+- normal caravan routing, save/reload and automatic arrival work;
+- the encounter map is generated only at arrival;
+- both forces enter, rally and conduct their mutual assault correctly;
+- player attackers are treated as additional enemies without making the whole
+  camp forget the rival detachment;
+- morale break, battle deadline and withdrawal limits work;
+- vanilla caravan reformation, prisoner and loot selection work;
+- ignored-site expiration is neutral;
+- the shared local/world slot and alternation remain coherent;
+- existing local-battlefield and Goa'uld regressions pass;
 - `Player.log` is clean.
 
-## Next planned layer
+## Next step
 
-After publication of `0.3.69-dev`, the selected follow-up is:
+After publication of `0.3.70-dev`, the selected milestone is:
 
-`0.3.70-dev - Add open-conflict Goa'uld world battlefield site`
+`0.3.71-dev - Standardize player-facing duration formatting`
 
 Planned branch:
 
-`feature/goauld-open-conflict-world-battlefield-site`
+`feature/standardize-duration-formatting`
 
-It must reuse the battle-generation contract and a shared active slot rather
-than duplicating local and world battlefield orchestration.
+The milestone must audit all player-facing duration displays, prefer RimWorld's
+vanilla formatting helpers, use appropriate minutes, hours, days, quadrums or
+years, retain raw ticks only in developer reports and change no actual timing or
+balance.

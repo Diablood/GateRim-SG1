@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.3.70-dev - Add open-conflict Goa'uld world battlefield site
+
+- Start from published `develop` and annotated tag `v0.3.69-dev` on
+  `feature/goauld-open-conflict-world-battlefield-site`.
+- Extend the published open-conflict battlefield scheduler instead of creating
+  a parallel world-site orchestration system.
+- Share one active slot, recurrence clock, pair anti-repetition state and
+  local/world alternation between both battlefield forms.
+- Create an optional temporary world site for an exact active Goa'uld domain
+  pair whose persistent relation is open conflict.
+- Place the site `6–18` world tiles from an eligible player home map and keep it
+  available for approximately eight days.
+- Add a dedicated world-map battlefield icon and bilingual creation, inspection,
+  travel and arrival text.
+- Snapshot vanilla storyteller threat points when the site is created and reuse
+  the validated `0.35`, `250–1800` points-per-detachment contract.
+- Generate the encounter map only when a player caravan reaches the site.
+- Reuse the complete `0.3.69-dev` battlefield implementation: map-edge entry,
+  rallying, assault announcement, ranged pursuit, morale break, bounded player
+  retaliation, two-day battle limit and fixed withdrawal deadline.
+- Treat player attackers as additional hostile reinforcements during the mutual
+  battle: a proportional nearby subset retaliates while other Jaffa continue
+  fighting the rival Goa'uld force.
+- Restore RimWorld's vanilla caravan-reformation component after all active
+  hostile threats have ended.
+- Keep ordinary prisoners, downed pawns, bodies, equipment and selected loot
+  available through normal RimWorld caravan behavior.
+- Expire an ignored site without mission failure, goodwill change, strategic
+  relation change, settlement destruction, territory change or artificial
+  reward.
+- Keep the shared slot occupied until the encounter map and world object are
+  completely removed.
+- Use RP-facing inspection text and a local day/hour duration display; reserve a
+  complete mod-wide vanilla-duration-formatting audit for `0.3.71-dev`.
+- Correct the initial multiline string-literal compilation failure in cumulative
+  revision `r2`.
+- Restore the exact current-test and DLL consistency markers in cumulative
+  revision `r3`.
+- Correct inspection text, mixed player/rival targeting and vanilla caravan
+  reformation in final cumulative revision `r4`.
+- Validate final local revision `r4`, including build `0.3.70.0`, world-site
+  creation, travel, lazy map generation, mutual combat, player intervention,
+  morale break, withdrawal, caravan reformation, neutral expiration, shared
+  orchestration, save/reload, existing Goa'uld regressions and a clean
+  `Player.log`.
+
 ## 0.3.69-dev - Add open-conflict Goa'uld battlefield incident
 
 - Start from published `develop` and annotated tag `v0.3.68-dev` on

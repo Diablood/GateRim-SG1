@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.69-dev`
+- Development version: `0.3.70-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -26,11 +26,13 @@ people, factions, technologies, biology and conflicts surrounding it.
   alliance states between Goa'uld domain pairs. Under SG-1 Command, a domain in
   open conflict now uses `75%` of its ordinary points for natural Jaffa raids,
   without changing raid frequency or doctrine selection. Open conflicts can
-  also produce rare local battlefields where the two exact domains enter from
-  the map edge, rally, launch an announced assault, advance into weapon range,
-  break contact after severe losses and retaliate against player intervention
-  only within bounded time and pursuit limits. Selecting another storyteller
-  freezes future strategic opportunities and disables the raid reduction.
+  also produce rare battlefields in two alternating forms: a local engagement
+  near a colony or a temporary world site that a caravan may visit or ignore.
+  Both forms use the same exact domain pair, map-edge arrival, rally, announced
+  assault, ranged pursuit, morale break, bounded retaliation and withdrawal
+  rules. Ignored world sites expire without failure or diplomatic consequence.
+  Selecting another storyteller freezes future strategic opportunities and
+  disables the raid reduction.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and an
   optional non-territorial Tok'ra faction. The Tok'ra are selected once by
   default in the world-faction list with a dedicated icon, create no

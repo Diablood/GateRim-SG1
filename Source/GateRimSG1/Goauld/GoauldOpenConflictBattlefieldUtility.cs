@@ -8,9 +8,9 @@ using Verse.AI.Group;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Shared local-battlefield generation used by the colony-map incident.
-    /// Its faction, point, arrival and rally contracts are intentionally
-    /// reusable by the planned world-map battlefield site.
+    /// Shared battlefield generation for both the colony-map incident and
+    /// the optional world-map site. Both paths use the same force budgets,
+    /// arrivals, rally phase, combat behavior and withdrawal rules.
     /// </summary>
     public static class GoauldOpenConflictBattlefieldUtility
     {
@@ -102,13 +102,10 @@ namespace GateRimSG1.Goauld
             out MapComponent_GoauldOpenConflictBattlefield component,
             out int letterVariant)
         {
-            component = map?.GetComponent<
-                MapComponent_GoauldOpenConflictBattlefield>();
+            component = null;
             letterVariant = SelectLetterVariant(previousLetterVariant);
 
             if (map == null
-                || component == null
-                || component.Active
                 || pair?.firstDomain == null
                 || pair.secondDomain == null
                 || pair.relation
@@ -123,6 +120,94 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            float vanillaPoints =
+                StorytellerUtility.DefaultThreatPointsNow(map);
+            float detachmentPoints = CalculateDetachmentPoints(
+                vanillaPoints);
+
+            if (!TryGenerateOnMap(
+                    map,
+                    pair.firstDomain,
+                    pair.secondDomain,
+                    vanillaPoints,
+                    detachmentPoints,
+                    parentWorldSite: null,
+                    out component,
+                    out Pawn focusPawn))
+            {
+                return false;
+            }
+
+            SendBattlefieldLetter(
+                pair.firstDomain,
+                pair.secondDomain,
+                focusPawn,
+                letterVariant);
+            return true;
+        }
+
+        public static bool TryStartWorldSiteMap(
+            Map map,
+            WorldObject_GoauldOpenConflictBattlefieldSite site)
+        {
+            if (map == null
+                || site == null
+                || site.Destroyed
+                || site.FirstDomain == null
+                || site.SecondDomain == null)
+            {
+                return false;
+            }
+
+            if (!TryGenerateOnMap(
+                    map,
+                    site.FirstDomain,
+                    site.SecondDomain,
+                    site.VanillaThreatPoints,
+                    site.DetachmentPoints,
+                    site,
+                    out MapComponent_GoauldOpenConflictBattlefield component,
+                    out Pawn focusPawn))
+            {
+                return false;
+            }
+
+            Find.LetterStack?.ReceiveLetter(
+                "GR_GoauldOpenConflictWorldSite_ArrivalLabel".Translate(),
+                "GR_GoauldOpenConflictWorldSite_ArrivalText".Translate(
+                    site.FirstDomain.Name,
+                    site.SecondDomain.Name),
+                LetterDefOf.ThreatSmall,
+                focusPawn == null
+                    ? default(LookTargets)
+                    : new LookTargets(focusPawn));
+            return component != null;
+        }
+
+        private static bool TryGenerateOnMap(
+            Map map,
+            Faction firstDomain,
+            Faction secondDomain,
+            float vanillaPoints,
+            float detachmentPoints,
+            WorldObject_GoauldOpenConflictBattlefieldSite parentWorldSite,
+            out MapComponent_GoauldOpenConflictBattlefield component,
+            out Pawn focusPawn)
+        {
+            component = map?.GetComponent<
+                MapComponent_GoauldOpenConflictBattlefield>();
+            focusPawn = null;
+
+            if (map == null
+                || component == null
+                || component.Active
+                || firstDomain == null
+                || secondDomain == null
+                || firstDomain == secondDomain)
+            {
+                return false;
+            }
+
             if (!TryFindBattlefieldPositions(
                     map,
                     out IntVec3 firstEntry,
@@ -133,13 +218,9 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
-            float vanillaPoints =
-                StorytellerUtility.DefaultThreatPointsNow(map);
-            float detachmentPoints = CalculateDetachmentPoints(
-                vanillaPoints);
             List<Pawn> firstDetachment = SpawnDetachment(
                 map,
-                pair.firstDomain,
+                firstDomain,
                 detachmentPoints,
                 firstEntry,
                 firstRally);
@@ -151,7 +232,7 @@ namespace GateRimSG1.Goauld
 
             List<Pawn> secondDetachment = SpawnDetachment(
                 map,
-                pair.secondDomain,
+                secondDomain,
                 detachmentPoints,
                 secondEntry,
                 secondRally);
@@ -163,8 +244,8 @@ namespace GateRimSG1.Goauld
             }
 
             component.Initialize(
-                pair.firstDomain,
-                pair.secondDomain,
+                firstDomain,
+                secondDomain,
                 firstDetachment,
                 secondDetachment,
                 firstEntry,
@@ -172,12 +253,9 @@ namespace GateRimSG1.Goauld
                 firstRally,
                 secondRally,
                 vanillaPoints,
-                detachmentPoints);
-            SendBattlefieldLetter(
-                pair.firstDomain,
-                pair.secondDomain,
-                firstDetachment[0],
-                letterVariant);
+                detachmentPoints,
+                parentWorldSite);
+            focusPawn = firstDetachment[0];
             return true;
         }
 
@@ -447,7 +525,7 @@ namespace GateRimSG1.Goauld
             return x * x + z * z;
         }
 
-        private static int SelectLetterVariant(int previousVariant)
+        public static int SelectLetterVariant(int previousVariant)
         {
             int variant = Rand.Range(0, LetterVariantCount);
 

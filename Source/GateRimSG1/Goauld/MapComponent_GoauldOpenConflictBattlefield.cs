@@ -25,6 +25,7 @@ namespace GateRimSG1.Goauld
         private bool withdrawalOrdered;
         private Faction firstDomain;
         private Faction secondDomain;
+        private WorldObject_GoauldOpenConflictBattlefieldSite parentWorldSite;
         private List<Pawn> firstDetachment = new List<Pawn>();
         private List<Pawn> secondDetachment = new List<Pawn>();
         private List<Pawn> firstPlayerProvokers = new List<Pawn>();
@@ -61,7 +62,10 @@ namespace GateRimSG1.Goauld
         {
         }
 
+        public bool Initialized => initialized;
         public bool Active => initialized && !resolved;
+        public bool Resolved => initialized && resolved;
+        public bool IsWorldSiteBattlefield => parentWorldSite != null;
 
         public string MapLabel
             => map?.Parent?.LabelCap ?? "map " + (map?.uniqueID ?? -1);
@@ -96,6 +100,9 @@ namespace GateRimSG1.Goauld
             Scribe_References.Look(
                 ref secondDomain,
                 "goauldOpenConflictBattlefieldSecondDomain");
+            Scribe_References.Look(
+                ref parentWorldSite,
+                "goauldOpenConflictBattlefieldParentWorldSite");
             Scribe_Collections.Look(
                 ref firstDetachment,
                 "goauldOpenConflictBattlefieldFirstDetachment",
@@ -309,10 +316,12 @@ namespace GateRimSG1.Goauld
             IntVec3 firstRallyCell,
             IntVec3 secondRallyCell,
             float originalThreatPoints,
-            float pointsPerDetachment)
+            float pointsPerDetachment,
+            WorldObject_GoauldOpenConflictBattlefieldSite sourceWorldSite = null)
         {
             firstDomain = firstFaction;
             secondDomain = secondFaction;
+            parentWorldSite = sourceWorldSite;
             firstDetachment = firstPawns ?? new List<Pawn>();
             secondDetachment = secondPawns ?? new List<Pawn>();
             firstPlayerProvokers = new List<Pawn>();
@@ -350,6 +359,24 @@ namespace GateRimSG1.Goauld
             RebuildInjurySnapshots();
         }
 
+        public bool IsPreferredPlayerEntryCell(IntVec3 cell)
+        {
+            if (map == null
+                || !cell.InBounds(map)
+                || !cell.Standable(map)
+                || !firstAnchor.IsValid
+                || !secondAnchor.IsValid)
+            {
+                return false;
+            }
+
+            const int minimumDistanceSquared = 900;
+            return HorizontalDistanceSquared(cell, firstAnchor)
+                    >= minimumDistanceSquared
+                && HorizontalDistanceSquared(cell, secondAnchor)
+                    >= minimumDistanceSquared;
+        }
+
         public void OrderWithdrawalDebug()
         {
             if (Active && !withdrawalOrdered)
@@ -369,6 +396,10 @@ namespace GateRimSG1.Goauld
                 + " <-> "
                 + (secondDomain?.Name ?? "<missing>")
                 + "\nmap: " + MapLabel
+                + "\nsource: "
+                + (parentWorldSite == null
+                    ? "local incident"
+                    : "world site " + parentWorldSite.ID)
                 + "\nphase: " + CurrentPhaseLabel()
                 + "\nvanilla threat points: "
                 + vanillaThreatPoints.ToString("0")
@@ -578,16 +609,14 @@ namespace GateRimSG1.Goauld
             List<Pawn> secondProvokers =
                 GetActiveSecondPlayerProvokers(currentTick);
 
-            AssignCombatJobs(
+            AssignMixedCombatJobs(
                 firstActive,
-                firstProvokers.Count > 0
-                    ? firstProvokers
-                    : secondActive);
-            AssignCombatJobs(
                 secondActive,
-                secondProvokers.Count > 0
-                    ? secondProvokers
-                    : firstActive);
+                firstProvokers);
+            AssignMixedCombatJobs(
+                secondActive,
+                firstActive,
+                secondProvokers);
         }
 
         private void DetectPlayerProvocation(int currentTick)
@@ -1127,6 +1156,77 @@ namespace GateRimSG1.Goauld
             return ready >= required;
         }
 
+        private void AssignMixedCombatJobs(
+            List<Pawn> attackers,
+            List<Pawn> rivalTargets,
+            List<Pawn> playerTargets)
+        {
+            if (attackers == null || attackers.Count == 0)
+            {
+                return;
+            }
+
+            List<Pawn> validRivals = (rivalTargets ?? new List<Pawn>())
+                .Where(IsValidCombatTarget)
+                .Distinct()
+                .ToList();
+            List<Pawn> validPlayers = (playerTargets ?? new List<Pawn>())
+                .Where(IsValidCombatTarget)
+                .Distinct()
+                .ToList();
+
+            if (validPlayers.Count == 0)
+            {
+                AssignCombatJobs(attackers, validRivals);
+                return;
+            }
+
+            if (validRivals.Count == 0)
+            {
+                AssignCombatJobs(attackers, validPlayers);
+                return;
+            }
+
+            if (attackers.Count == 1)
+            {
+                AssignCombatJobs(
+                    attackers,
+                    validRivals.Concat(validPlayers).ToList());
+                return;
+            }
+
+            int totalEnemyCount = validRivals.Count + validPlayers.Count;
+            int playerResponderCount = Math.Max(
+                1,
+                (int)Math.Round(
+                    attackers.Count
+                    * (double)validPlayers.Count
+                    / totalEnemyCount,
+                    MidpointRounding.AwayFromZero));
+
+            // A living rival force always retains at least one opponent.
+            // Player intervention adds another hostile group instead of
+            // replacing the original battlefield target list.
+            playerResponderCount = Math.Min(
+                attackers.Count - 1,
+                playerResponderCount);
+
+            List<Pawn> playerResponders = attackers
+                .Where(IsValidCombatTarget)
+                .OrderBy(attacker => validPlayers.Min(player =>
+                    HorizontalDistanceSquared(
+                        attacker.Position,
+                        player.Position)))
+                .Take(playerResponderCount)
+                .ToList();
+            List<Pawn> rivalFighters = attackers
+                .Where(attacker => !playerResponders.Contains(attacker))
+                .ToList();
+
+            AssignCombatJobs(playerResponders, validPlayers);
+            AssignCombatJobs(rivalFighters, validRivals);
+        }
+
         private void AssignCombatJobs(
             List<Pawn> attackers,
             List<Pawn> targets)
@@ -1635,8 +1735,16 @@ namespace GateRimSG1.Goauld
             }
 
             resolved = true;
-            GameComponent_GoauldOpenConflictBattlefieldTracker.Current
-                ?.NotifyBattlefieldResolved(map?.uniqueID ?? -1);
+
+            if (parentWorldSite != null)
+            {
+                parentWorldSite.NotifyBattlefieldResolved();
+            }
+            else
+            {
+                GameComponent_GoauldOpenConflictBattlefieldTracker.Current
+                    ?.NotifyLocalBattlefieldResolved(map?.uniqueID ?? -1);
+            }
 
             GR_Log.Message(
                 "Resolved Goa'uld open-conflict battlefield on map "

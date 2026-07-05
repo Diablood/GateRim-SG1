@@ -1,5 +1,31 @@
 # Testing checklist
 
+## 0.3.70-dev - Open-conflict Goa'uld world battlefield site
+
+Final revision `r4` validated. Durable coverage:
+
+- require one exact active Goa'uld domain pair in open conflict;
+- share one slot, recurrence clock, pair history and local/world alternation;
+- place the optional site `6–18` tiles from an eligible player colony;
+- preserve the stored threat snapshot until caravan arrival;
+- generate the `140 × 140` encounter map only when the caravan enters;
+- verify map-edge entry, rallying, assault announcement and mutual combat;
+- ensure player intervention adds mixed targets rather than replacing the rival
+  detachment for the whole camp;
+- preserve quiet-time, pursuit-distance and withdrawal-retaliation limits;
+- verify one-sided `30%` morale break and the absolute two-day battle limit;
+- expose normal vanilla caravan reformation after hostile threats end;
+- preserve prisoners, downed pawns, bodies and selected battlefield equipment;
+- expire an ignored site without failure, goodwill, political or territorial
+  consequence;
+- keep the shared slot until complete map and world-object removal;
+- save and reload before arrival, during travel, combat, withdrawal and cleanup;
+- suspend only future opportunities under another storyteller;
+- regress the `0.3.69-dev` local battlefield, natural raid pressure, doctrines
+  and extraction reprisals;
+- inspect `Player.log` for XML, texture, translation, Scribe, world-object,
+  caravan, map-generation, Lord, JobDriver and C# errors.
+
 ## 0.3.66-dev - Persistent Goa'uld inter-domain relations
 
 RÃ©vision finale `r1` validÃ©e et publiÃ©e. Couverture durable :

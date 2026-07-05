@@ -5,51 +5,54 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Réduction de pression en conflit ouvert (`0.3.68-dev`)
+## Dernier jalon clôturé - Bataille locale en conflit ouvert (`0.3.69-dev`)
 
-La révision finale `r3` est validée et publiée. Sous Commandement SG-1, un
-domaine engagé dans au moins un conflit ouvert transmet `75%` de ses points
-vanilla à ses raids naturels ordinaires, sans cumul ni changement de cadence,
-doctrine, représailles ou missions.
+La révision finale `r6` est validée et publiée. Sous Commandement SG-1, une paire
+exacte en conflit ouvert peut produire une bataille près d'une colonie : entrée
+par les bords, rassemblement, assaut mutuel, riposte joueur bornée, rupture
+morale et retrait persistant.
 
-## Jalon courant - Bataille locale en conflit ouvert (`0.3.69-dev`)
+## Jalon courant - Site mondial de bataille (`0.3.70-dev`)
 
-- [x] Partir de `develop` exactement alignée sur `v0.3.68-dev`.
+- [x] Partir de `develop` exactement alignée sur `v0.3.69-dev`.
 - [x] Sélectionner
-  `feature/goauld-open-conflict-battlefield-incident`.
-- [x] Ajouter un planificateur persistant réservé à Commandement SG-1.
-- [x] Exiger une paire active en conflit ouvert et une carte joueur disponible.
-- [x] Conserver un seul champ de bataille actif et éviter une menace hostile
-  déjà présente lors d'une occurrence naturelle.
-- [x] Générer deux détachements Jaffa appartenant aux deux domaines exacts.
-- [x] Dimensionner chaque camp depuis les points vanilla avec un budget borné.
-- [x] Faire combattre les deux groupes sans assaut initial programmé contre la
-  colonie.
-- [x] Envoyer une seule lettre bilingue avec variantes et anti-répétition.
-- [x] Autoriser l'inaction, l'intervention contre un camp ou contre les deux.
-- [x] Borner la riposte joueur à `1800` ticks sans nouvelle attaque, `35` cellules de poursuite et `6000` ticks pendant le retrait.
-- [x] Ordonner le retrait après élimination, rupture morale à `30%` ou deux jours maximum.
-- [x] Conserver prisonniers, pawns à terre, corps et équipement abandonné.
-- [x] Ajouter diagnostics et commandes développeur déterministes.
-- [ ] Réussir le rebuild forcé `0.3.69.0`.
-- [ ] Valider combat mutuel, non-assaut initial, riposte bornée, rupture morale,
-  retrait, sauvegarde/recharge, slot unique, storyteller et `Player.log`.
-- [ ] Finaliser changelog, tests durables, état projet et wiki.
-- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.69-dev`.
+  `feature/goauld-open-conflict-world-battlefield-site`.
+- [x] Étendre le planificateur publié au lieu de créer une orchestration
+  parallèle.
+- [x] Partager le slot, le cooldown, l'anti-répétition de paire et l'alternance
+  locale / mondiale.
+- [x] Créer un site mondial temporaire lié à une paire exacte en conflit ouvert.
+- [x] Placer le site à `6–18` tuiles d'une carte principale et le conserver huit
+  jours.
+- [x] Ajouter une icône mondiale dédiée et des textes anglais/français.
+- [x] Utiliser le trajet et l'action d'arrivée vanilla d'une caravane.
+- [x] Générer la carte seulement à l'arrivée et réutiliser les deux détachements,
+  le ralliement, le combat mutuel, la riposte et le retrait de `0.3.69-dev`.
+- [x] Préserver capture, butin et reformation vanilla.
+- [x] Expirer un site ignoré sans échec, goodwill, relation, territoire ou
+  settlement modifié.
+- [x] Conserver le slot jusqu'à la suppression complète de la carte et du site.
+- [x] Ajouter diagnostics et actions développeur déterministes.
+- [x] Réussir le rebuild forcé `0.3.70.0`.
+- [x] Valider création, icône, voyage, arrivée, combat, reformation, expiration,
+  alternance, slot partagé, sauvegarde/recharge et `Player.log`.
+- [x] Finaliser changelog, tests durables, état projet et wiki.
+- [ ] Intégrer par fast-forward dans `develop` et publier `v0.3.70-dev`.
 
-## Jalon suivant décidé - Site mondial de bataille (`0.3.70-dev`)
+## Jalon suivant décidé - Formatage uniforme des durées (`0.3.71-dev`)
 
-- [ ] Partir de `develop` après `v0.3.69-dev`.
-- [ ] Créer `feature/goauld-open-conflict-world-battlefield-site`.
-- [ ] Créer un site mondial temporaire lié à une paire exacte en conflit
-  ouvert, accessible par caravane et entièrement facultatif.
-- [ ] Réutiliser les règles de génération des deux camps, de combat mutuel et
-  de retrait de `0.3.69-dev`.
-- [ ] Partager le slot et le cooldown afin d'éviter des batailles locale et
-  mondiale simultanées.
-- [ ] Prévoir une icône mondiale dédiée et une expiration sans échec imposé.
-- [ ] Ne modifier ni territoires, settlements, relation stratégique ou
-  goodwill par simple expiration du site.
+- [ ] Partir de `develop` après publication de `v0.3.70-dev`.
+- [ ] Créer `feature/standardize-duration-formatting`.
+- [ ] Inventorier toutes les durées visibles par le joueur dans le mod.
+- [ ] Utiliser les fonctions de formatage vanilla appropriées plutôt que des
+  conversions manuelles dispersées.
+- [ ] Afficher minutes, heures, jours, quadrums ou années selon l'échelle réelle.
+- [ ] Conserver les ticks bruts uniquement dans les rapports développeur.
+- [ ] Harmoniser lettres, inspections de sites, messages, gizmos et statuts de
+  mission.
+- [ ] Vérifier anglais, français, singuliers et pluriels.
+- [ ] Ne modifier aucune durée réelle, cadence, échéance ou valeur d'équilibrage.
+- [ ] Ajouter une couverture durable des principaux formats temporels.
 
 ## Registre d'idées non planifiées
 
@@ -88,13 +91,11 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 - [x] En conflit ouvert, réduire de façon limitée et plafonnée à `75%` les
   points des raids naturels ordinaires des deux domaines contre le joueur,
   sans cumul, sans changement de fréquence et uniquement sous Commandement SG-1.
-- [ ] Valider puis publier `0.3.69-dev` : événement rare sur une carte joueur
-  où deux troupes de domaines en conflit ouvert s'affrontent, avec une lettre,
-  une durée maximale de deux jours et une intervention facultative contre un
-  camp ou les deux.
-- [ ] Publier ensuite `0.3.70-dev` : site mondial temporaire représentant un
-  autre champ de bataille entre domaines, visitable ou ignorable par caravane,
-  avec slot partagé pour éviter les doublons locaux et mondiaux.
+- [x] Publier `0.3.69-dev` : bataille locale entre deux domaines en conflit
+  ouvert, avec ralliement, intervention facultative et retrait borné.
+- [ ] Valider puis publier `0.3.70-dev` : site mondial temporaire représentant
+  un autre champ de bataille entre domaines, visitable ou ignorable par
+  caravane, avec slot et cooldown partagés.
 - [ ] En alliance, permettre une légère augmentation plafonnée de la fréquence
   ou de la puissance des attaques des domaines concernés.
 - [ ] Étendre ultérieurement les alliances par des renforts d'un second domaine,
