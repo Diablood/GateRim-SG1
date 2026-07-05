@@ -17,6 +17,8 @@ armure Jaffa lourde
 gantelets blindés Jaffa
 bottes renforcées Jaffa
 casque Jaffa rétractable
+armure d'officier Jaffa
+casque d'officier Jaffa rétractable
 ```
 
 ## Protection localisée
@@ -25,6 +27,7 @@ casque Jaffa rétractable
 |---|---|
 | Armure légère | torse, cou, épaules |
 | Armure lourde | torse, cou, épaules |
+| Armure d'officier | torse, cou, épaules ; `+10 %` d'impact social |
 | Gantelets | bras, mains, doigts |
 | Bottes | jambes, pieds, orteils |
 | Casque déployé | tête complète et visage |
@@ -52,19 +55,21 @@ des zones corporelles effectivement couvertes.
 
 ## Fabrication
 
-Les cinq pièces sont fabriquées au banc d'usinage après la recherche
-`Armurerie`. Les coûts et prérequis de Fabrication augmentent avec le niveau de
+Les pièces standard et les deux variantes d'officier fabricables sont produites au banc d'usinage après la recherche `Armures Jaffa`. Les coûts et prérequis de Fabrication augmentent avec le niveau de
 protection.
 
 ## Équipement des Jaffa générés
 
 Les guerriers et gardes Jaffa Goa'uld reçoivent automatiquement des ensembles
-adaptés à leur rôle. Les armures sont utilisées dans les raids, colonies et
-missions du mod.
+adaptés à leur rôle. Pour l'officier de l'opération Tok'ra, la révision finale
+`0.3.74-dev-r2` vérifie l'équipement après génération et ajoute explicitement
+l'armure et le casque rouges si nécessaire. Ces pièces restent à commonalité
+nulle et ne sont donc pas distribuées au hasard aux autres Jaffa. Les armures
+standard restent utilisées dans les raids, colonies et missions du mod. Le
+loadout distinctif est validé et publié sous `v0.3.74-dev`.
 
 Consulte [Équipements automatiques des Jaffa Goa'uld](Jaffa-Armor-Loadouts).
 
 ## Limites actuelles
 
-Les textures restent provisoires. Une future passe graphique pourra distinguer
-davantage les domaines Goa'uld et les rangs Jaffa.
+Les textures restent provisoires. Les chemins dédiés de l'ensemble rouge d'officier sont toutefois définitifs afin que la passe graphique future puisse remplacer seulement les PNG.

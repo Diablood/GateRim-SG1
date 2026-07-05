@@ -1,5 +1,32 @@
 # Testing checklist
 
+## 0.3.74-dev - Distinctive Jaffa capture-officer appearance
+
+Final cumulative revision `r2` validated and published. Revision `r1` validated
+research, manual visuals and stats but exposed missing mission-generated
+torso/head apparel; `r2` adds and validates the targeted post-generation
+guarantee. Durable coverage:
+
+- keep stable dedicated Def names and texture paths for the officer torso armor
+  and deployed/retracted helmet pair;
+- allow temporary art replacement without changing saves or generation logic;
+- reserve exact automatic assignment to `SG1_GoauldJaffaOfficer`;
+- verify the post-generation guarantee equips both zero-commonality officer
+  pieces without affecting the weapon, gauntlets or boots;
+- reject encounter initialization cleanly if either required piece is missing;
+- keep ordinary warriors, guards, settlement defenders and escorts on standard
+  equipment;
+- preserve heavy-armor protection, movement penalty and helmet coverage;
+- apply `SocialImpact +0.10` only once through the torso armor;
+- keep both craftable pieces behind `SG1_JaffaArmor` and the retracted state
+  non-craftable;
+- verify automatic and manual helmet modes never cross between standard and
+  officer Def pairs;
+- preserve captured-item usability before research;
+- save/reload on map, in caravan and at home without apparel or mode drift;
+- regress the complete Tok'ra capture and extraction flow;
+- inspect every provided orientation/body texture and `Player.log`.
+
 ## 0.3.72-dev - Publication-documentation repair
 
 Final corrective revision `r1` validated and published. Durable coverage:

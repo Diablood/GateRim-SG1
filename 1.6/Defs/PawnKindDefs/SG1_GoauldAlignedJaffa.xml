@@ -99,6 +99,12 @@
         <label>Goa'uld Jaffa officer</label>
         <combatPower>165</combatPower>
         <maxPerGroup>1</maxPerGroup>
+        <apparelRequired Inherit="False">
+            <li>SG1_JaffaOfficerArmor</li>
+            <li>SG1_JaffaGauntlets</li>
+            <li>SG1_JaffaReinforcedBoots</li>
+            <li>SG1_JaffaOfficerDeployedHelmet</li>
+        </apparelRequired>
     </PawnKindDef>
 
     <!--

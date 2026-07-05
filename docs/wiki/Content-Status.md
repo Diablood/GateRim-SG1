@@ -2,15 +2,16 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.73-dev`
+> Dernière révision : `0.3.74-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.73-dev` ajoute un effet borné des alliances Goa'uld : sous
-Commandement SG-1, un domaine allié sans conflit ouvert utilise `110 %` de ses
-points de raid naturel. Le facteur ne se cumule pas et ne modifie pas la
-fréquence, les représailles ou les missions.
+`0.3.74-dev` donne à l'officier Jaffa ciblé par l'opération Tok'ra une
+armure de commandement et un casque rétractable rouges, clairement distincts de
+son escorte. Les chemins sont définitifs malgré les textures temporaires.
+L'armure ajoute `+10 %` d'impact social et les deux pièces fabricables dépendent
+de la recherche Armures Jaffa.
 
 ## Implémenté ou testable
 
@@ -88,7 +89,7 @@ fréquence, les représailles ou les missions.
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
 | Outils de capture non létaux | Bolas à usage unique fabricables et fusil hypodermique expérimental Tok'ra actuellement réglé à douze charges non rechargeables ; impact contondant très léger, neutralisation temporaire résistible et disparition du fusil après le dernier tir | 0.3.36-dev / réserve ajustée 0.3.37-dev |
-| Capture Tok'ra d'un officier Jaffa | Mission récurrente validée : site mondial, officier marqué d'argent, escorte adaptative, reformation vanilla sans lit local, retour en cellule, suppression du site, appel au communicateur et équipe Tok'ra visible qui emporte le prisonnier avant la réussite | 0.3.37-dev / icône dédiée 0.3.51-dev |
+| Capture Tok'ra d'un officier Jaffa | Mission récurrente validée : site mondial, officier marqué d'argent, armure et casque rouges distinctifs en `0.3.74-dev`, escorte adaptative, reformation vanilla sans lit local, retour en cellule, suppression du site, appel au communicateur et équipe Tok'ra visible qui emporte le prisonnier avant la réussite | 0.3.37-dev / icône 0.3.51-dev / apparence 0.3.74-dev |
 | Treillis d'équipe SG | Les anciens treillis combinés restent disponibles pour compatibilité ; le scénario utilise désormais des pantalons obligatoires et des vestes facultatives séparées, compatibles avec un tee-shirt vanilla | 0.1.78-dev / séparation 0.3.21-dev |
 | Variantes du treillis SG | Pantalons et vestes modulaires disponibles en olive, noir et désert ; couleur aléatoire par starter et coordonnée entre les deux pièces | 0.1.82-dev / loadout 0.3.21-dev |
 | Scénario Équipe SG isolée | Départ sans Porte fonctionnelle : quatre adultes SGC, faction joueur avec icône SGC dédiée, tee-shirt obligatoire, pantalon SG varié, veste facultative, casque, casquette ou aucun couvre-chef, équipement tactique et assortiment de quatre armes humaines vanilla équilibré | 0.2.0-dev-r1 / loadout 0.3.21-dev / casquette 0.3.22-dev / icône 0.3.50-dev |

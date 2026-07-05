@@ -56,10 +56,12 @@ SG1_JaffaHeavyArmor
 SG1_JaffaGauntlets
 SG1_JaffaReinforcedBoots
 SG1_JaffaDeployedHelmet
+SG1_JaffaOfficerArmor
+SG1_JaffaOfficerDeployedHelmet
 ```
 
-The retracted helmet remains an internal visual state and is not crafted
-separately.
+Both retracted helmets remain internal visual states and are not crafted
+separately. Captured officer equipment stays wearable before research.
 
 ### Kara kesh
 

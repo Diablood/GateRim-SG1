@@ -5,25 +5,27 @@ les règles qui doivent guider de futurs jalons et le dernier jalon clôturé.
 L'historique publié appartient à `docs/CHANGELOG.md` et aux tags Git ; les pistes
 non décidées appartiennent à `docs/IDEAS_TO_REVISIT.md`.
 
-## Dernier jalon clôturé - Bonus borné des alliances Goa'uld (`0.3.73-dev`)
+## Dernier jalon clôturé - Apparence distinctive de l'officier Jaffa capturable
+(`0.3.74-dev`)
 
-La révision finale `r1` est validée et publiée. Sous Commandement SG-1, un
-domaine Goa'uld participant à au moins une alliance utilise `110 %` de ses
-points pour ses raids naturels ordinaires. Plusieurs alliances ne se cumulent
-pas, un conflit ouvert reste prioritaire avec son facteur `75 %`, et les points
-vanilla initiaux continuent de déterminer l'éligibilité et la doctrine.
+La révision finale `r2` est validée et publiée. L'officier ciblé par l'opération
+Tok'ra porte désormais une armure lourde et un casque rétractable rouges, tandis
+que son escorte conserve les équipements Jaffa marron/doré. Les Defs et chemins
+de texture sont définitifs ; les PNG rouges restent temporaires et pourront être
+remplacés sans modifier les sauvegardes.
 
-Le jalon corrige aussi la distinction entre un incident storyteller naturel et
-un appel déjà forcé avant l'entrée dans le worker partagé. Les représailles,
-missions, raids contrôlés, tests déterministes et autres storytellers restent
-inchangés. Aucun nouvel état de sauvegarde n'est ajouté.
+L'armure conserve les protections lourdes et ajoute `SocialImpact +0.10`. Les
+deux pièces visibles sont fabricables après `SG1_JaffaArmor`, l'état rétracté
+reste interne, et la paire d'officier demeure séparée de la paire standard. La
+correction `r2` garantit explicitement l'équipement après génération tout en
+maintenant `generateCommonality = 0`.
 
 ## Prochain jalon à sélectionner
 
-Aucun jalon `0.3.74-dev` ni nom de branche n'est encore réservé. La sélection
+Aucun jalon `0.3.75-dev` ni nom de branche n'est encore réservé. La sélection
 doit partir d'un besoin décidé de cette roadmap, préciser son périmètre et ses
 garde-fous, puis créer une branche dédiée depuis `develop` exactement alignée
-sur `v0.3.73-dev`.
+sur `v0.3.74-dev`.
 
 ## Registre d'idées non planifiées
 
@@ -40,13 +42,20 @@ Les pistes exploratoires sans jalon décidé sont conservées dans
 - [ ] Auditer les visuels provisoires ou trompeurs.
 - [ ] Remplacer le dispositif d'observation portable.
 - [ ] Vérifier le module de renseignements Tok'ra et les objets d'opération.
-- [ ] Diversifier les icônes de sites et missions mondiales.
-- [ ] Donner à l'officier Jaffa capturable une apparence distinctive.
+- [x] Diversifier les icônes de factions et de sites/missions mondiales
+  (`0.3.50-dev` / `0.3.51-dev`).
+- [ ] Finaliser ultérieurement les textures de l'officier Jaffa capturable ;
+  structure et chemins définitifs traités dans `0.3.74-dev`.
 - [ ] Harmoniser les identités visuelles Tok'ra, Goa'uld, Jaffa et SGC.
 - [ ] Ajouter les visuels définitifs au wiki et à la présentation Workshop.
 
 ## Équipement Goa'uld et attributs de rang
 
+- [ ] Étendre ultérieurement les officiers Jaffa au-delà de la seule opération de
+  capture : raids Goa'uld naturels contre le joueur, défense des colonies lors
+  d'une attaque du joueur et missions adaptées. Un groupe doit contenir au moins
+  cinq Jaffa, remplacer au plus un Jaffa ordinaire par zéro ou un officier, ne
+  jamais dépasser un officier et respecter le budget de menace existant.
 - [ ] Étudier chaque dispositif comme un objet ou système distinct.
 - [ ] Tester armes, mêlée, IEM, caravanes et sauvegarde.
 - [ ] Refléter la puissance dans `combatPower`, menace, valeur et acquisition.

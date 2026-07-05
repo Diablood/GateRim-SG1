@@ -32,6 +32,24 @@ Prim'ta initial
 
 Le Zat'nik'tel reste plus rare et concerne surtout certains gardes.
 
+## Officier de capture Tok'ra
+
+```text
+armure d'officier Jaffa rouge
+gantelets blindés Jaffa
+bottes renforcées Jaffa
+casque d'officier Jaffa rétractable rouge
+arme Jaffa
+Prim'ta initial
+```
+
+Les deux pièces rouges restent à commonalité nulle afin de ne pas apparaître au
+hasard. La révision finale `0.3.74-dev-r2` vérifie le loadout après la
+génération de la cible
+et équipe explicitement l'armure et le casque si RimWorld ne les a pas ajoutés.
+Les escortes conservent les ensembles standard. Ce comportement est validé et
+publié sous `v0.3.74-dev`.
+
 ## Casque rétractable
 
 Le casque est généré en position déployée, puis son mode persistant est
@@ -40,6 +58,9 @@ n'est pas enrôlé et se déploie pendant l'enrôlement.
 
 ## Utilisation actuelle
 
-Ces équipements sont utilisés par les Jaffa Goa'uld générés dans les raids,
-colonies et missions du mod. Les textures restent provisoires et pourront être
-remplacées lors d'une future passe graphique.
+Les équipements standard sont utilisés par les Jaffa Goa'uld générés dans les
+raids, colonies et missions du mod. L'officier rouge reste pour l'instant réservé
+à l'opération de capture. Une extension future pourra en intégrer zéro ou un
+dans certains groupes d'au moins cinq Jaffa, sans ajouter un pawn gratuit au
+budget de menace. Les textures restent provisoires et pourront être remplacées
+lors d'une future passe graphique.

@@ -1,155 +1,57 @@
 # Current milestone validation
 
-Jalon : `0.3.73-dev - Add bounded Goa'uld alliance raid-strength bonus`
+Jalon : `0.3.74-dev - Add distinctive Jaffa capture-officer appearance`
 
-Branche attendue : `feature/goauld-alliance-raid-strength`
+Branche finale :
+`feature/distinctive-jaffa-capture-officer-appearance`
 
-Révision finale validée : `r1`
+Révision locale finale : `r2`
 
-Version de DLL attendue : `0.3.73.0`
+Version de DLL validée : `0.3.74.0`
 
-Statut : build et validation fonctionnelle terminés avec succès.
-
-## Précontrôles
-
-Depuis la racine du dépôt :
-
-```powershell
-git branch --show-current
-git diff --check
-.\build.cmd
-.\tools\check-duration-formatting.cmd
-.\tools\check-project-consistency.cmd
-```
-
-Résultats attendus :
-
-- branche `feature/goauld-alliance-raid-strength` ;
-- assembly `0.3.73.0` ;
-- audit des durées toujours validé avec `104` clés uniques ;
-- contrôle de cohérence sans erreur ;
-- aucune erreur de compilation C#.
-
-## Préparation en jeu
-
-1. Charger une partie de test avec le storyteller **Commandement SG-1**.
-2. Utiliser une carte principale de colonie.
-3. Vérifier qu'au moins deux domaines Goa'uld actifs existent. Sinon utiliser :
-
-```text
-Actions de débogage
-> GateRim SG-1
-> Goa'uld inter-domain relations...
-> Create additional test domain
-```
-
-4. Ouvrir le même menu et sélectionner `Reset relations`.
-
-## Test obligatoire : alliance à 110 %
-
-Dans :
-
-```text
-Actions de débogage
-> GateRim SG-1
-> Goa'uld inter-domain relations...
-```
-
-1. Sélectionner `Set all pairs: Alliance`.
-2. Ouvrir `Show natural raid relation-pressure report`.
-3. Confirmer pour tous les domaines actifs :
-   - `active alliance: yes` ;
-   - `active open conflict: no` ;
-   - `ordinary natural raid factor: 110%`.
-4. Ouvrir :
-
-```text
-Actions de débogage
-> GateRim SG-1
-> Goa'uld...
-> Threat progression...
-> Show current progression
-```
-
-5. Confirmer que le domaine diagnostiqué affiche un facteur naturel de `110 %`
-   et des points effectifs égaux aux points vanilla multipliés par `1,10`.
-6. Revenir au menu des relations et sélectionner
-   `Force current natural raid (relation pressure applied)`.
-7. Confirmer qu'un raid naturel Goa'uld/Jaffa démarre normalement, avec une
-   doctrine choisie depuis les points vanilla d'origine.
-8. Avec les informations de debug avancées actives, confirmer dans `Player.log`
-   ou la sortie de log GateRim une ligne indiquant une augmentation des points,
-   le facteur `1.10` et la raison `active alliance`.
-
-## Régressions ciblées
-
-### Conflit ouvert conservé
-
-1. Sélectionner `Set first pair: Open conflict`.
-2. Ouvrir `Show natural raid relation-pressure report`.
-3. Confirmer `75%` pour les deux domaines de la paire.
-4. Forcer le raid avec pression et confirmer une réduction `0.75`, sans
-   modification de la doctrine choisie depuis les points initiaux.
-
-### Non-cumul et priorité du conflit
-
-1. Disposer d'au moins trois domaines actifs, en utilisant
-   `Create additional test domain` si nécessaire.
-2. Sélectionner `Reset relations`, puis `Set all pairs: Alliance`.
-3. Confirmer dans le rapport que tous les domaines restent à `110%`, même ceux
-   participant à plusieurs alliances.
-4. Sélectionner ensuite `Set first pair: Open conflict`.
-5. Confirmer que les deux domaines de cette paire passent à `75%` malgré leurs
-   autres alliances, tandis qu'un domaine seulement allié reste à `110%`.
-
-### Storyteller et appels forcés
-
-1. Sélectionner `Set all pairs: Alliance`.
-2. Basculer temporairement sur Cassandra Classique.
-3. Confirmer dans le rapport que tous les facteurs deviennent `100%`.
-4. Revenir à Commandement SG-1 et confirmer le retour immédiat à `110%`.
-5. Dans :
-
-```text
-Actions de débogage
-> GateRim SG-1
-> Goa'uld...
-> Threat progression...
-```
-
-6. Lancer `Force natural direct raid` et confirmer que le test déterministe
-   conserve ses `300` points au lieu de recevoir le facteur d'alliance.
-
-### Persistance
-
-1. Sauvegarder avec au moins une alliance active.
-2. Recharger la partie.
-3. Ouvrir le rapport et confirmer que le facteur dérivé reste `110%` sans
-   nouveau champ ou migration visible.
-
-## Fin de test
-
-Examiner `Player.log` et confirmer l'absence de nouvelle erreur C#, Harmony,
-XML, Scribe, génération de raid ou Lord. Signaler séparément toute différence
-entre le facteur affiché, le facteur journalisé et la force réellement générée.
+Statut : validation terminée et jalon publié sous `v0.3.74-dev`.
 
 ## Résultat final
 
-La révision finale `r1` est validée :
+- `git diff --check` : réussi ;
+- build forcé `0.3.74.0` : réussi ;
+- audit des durées : `104` clés uniques, réussi ;
+- contrôle global de cohérence : réussi ;
+- recherche `Armures Jaffa` et factures des deux pièces visibles : validées ;
+- état rétracté sans facture indépendante : validé ;
+- textures rouges, protections et `Impact social +10 %` : validés ;
+- cible générée avec arme, armure rouge, casque rouge, gantelets et bottes :
+  validée après la correction `r2` ;
+- escortes conservant les équipements marron/doré : validées ;
+- absence des variantes d'officier sur les Jaffa ordinaires : validée ;
+- modes automatique, toujours déployé et toujours rétracté : validés ;
+- séparation complète entre la paire standard et la paire d'officier : validée ;
+- sauvegarde/rechargement de l'équipement et du mode : validé ;
+- capture, transport en caravane et extraction Tok'ra : validés ;
+- `Player.log` : aucune nouvelle erreur C#, Harmony, XML, DefOf, texture,
+  apparel, rendu, Scribe, caravane ou mission.
 
-- rebuild forcé `0.3.73.0` réussi ;
-- audit des durées réussi avec `104` clés uniques ;
-- contrôle global de cohérence réussi ;
-- alliance seule validée à `110 %` ;
-- conflit ouvert conservé à `75 %` ;
-- priorité du conflit et non-cumul validés avec plusieurs domaines ;
-- autres storytellers validés à `100 %` ;
-- incident naturel et appels forcés correctement distingués ;
-- sauvegarde/rechargement validé ;
-- `Player.log` accepté sans nouvelle erreur C#, Harmony, XML, Scribe,
-  génération de raid ou Lord.
+## Historique de la révision
 
-Aucune limite fonctionnelle nouvelle n'est connue. Le jalon est finalisé,
-intégré par fast-forward, publié sous `v0.3.73-dev` et synchronisé vers le wiki
-séparé.
+La révision `r1` avait validé la recherche, la fabrication, les textures,
+l'équipement manuel, les protections et le bonus social. Elle avait également
+révélé que la cible générée conservait son arme, ses gantelets et ses bottes,
+mais ne recevait ni l'armure ni le casque dédiés.
 
+La révision cumulative `r2` conserve les deux variantes à commonalité nulle et
+ajoute une garantie ciblée après génération. L'armure et le casque sont créés et
+équipés uniquement sur la cible de capture lorsqu'ils manquent. La correction
+est validée sans modification du reste du flux de mission.
+
+## Couverture durable à conserver
+
+- les Defs et chemins de texture dédiés restent stables malgré le remplacement
+  futur des PNG temporaires ;
+- l'armure applique seule `SocialImpact +0.10` ;
+- le casque ne change qu'entre ses deux Defs d'officier ;
+- les pièces restent exclues de la génération aléatoire ;
+- la fabrication reste liée à `SG1_JaffaArmor` ;
+- les guerriers, gardes, escortes et colonies utilisent encore les équipements
+  standards ;
+- l'extension des officiers aux groupes Goa'uld ordinaires reste un futur jalon
+  séparé.

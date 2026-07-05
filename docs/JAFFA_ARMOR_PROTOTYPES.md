@@ -78,3 +78,25 @@ Raw armor ratings will remain identical. Coverage will differ:
 12. Spawn a Goa'uld-aligned Jaffa warrior and guard and confirm that existing
     Prim'ta and Ma'Tok loadouts still work.
 13. Confirm that no natural Goa'uld raid, settlement or trader is enabled.
+
+## Officer command variant (`0.3.74-dev`)
+
+The mission-only capture officer now uses a dedicated heavy torso armor and
+retractable helmet pair. Their Def names and texture paths are final; the first
+PNG set is a temporary red recolor of the existing brown/gold prototypes.
+
+The torso armor retains the heavy armor values and adds:
+
+```xml
+<SocialImpact>0.10</SocialImpact>
+```
+
+The helmet adds no social offset. Both visible pieces are craftable only after
+`SG1_JaffaArmor`; the retracted helmet remains an internal state.
+
+The red pieces keep zero random-generation commonality. After vanilla mission
+generation omitted them in `r1`, the capture-site spawner now verifies the newly
+generated officer and explicitly equips the dedicated
+torso and deployed helmet when necessary. This targeted guarantee does not alter
+ordinary Jaffa generation. Final revision `r2` validates the complete red
+loadout, the single social offset and unchanged standard Jaffa equipment.

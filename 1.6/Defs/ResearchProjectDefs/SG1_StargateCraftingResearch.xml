@@ -23,7 +23,7 @@
     <ResearchProjectDef>
         <defName>SG1_JaffaArmor</defName>
         <label>Jaffa armor</label>
-        <description>Analyze modular Jaffa battlefield protection and reproduce its layered armor components with local industrial materials. Captured armor remains wearable before this research is finished.</description>
+        <description>Analyze modular Jaffa battlefield protection, including rank-marked command variants, and reproduce its layered armor components with local industrial materials. Captured armor remains wearable before this research is finished.</description>
         <baseCost>1100</baseCost>
         <techLevel>Industrial</techLevel>
         <prerequisites>

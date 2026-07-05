@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.3.74-dev - Add distinctive Jaffa capture-officer appearance
+
+- Start from published `develop` and annotated tag `v0.3.73-dev` on
+  `feature/distinctive-jaffa-capture-officer-appearance`.
+- Add `SG1_JaffaOfficerArmor`, `SG1_JaffaOfficerDeployedHelmet` and the internal
+  `SG1_JaffaOfficerRetractedHelmet` state.
+- Reserve the new torso armor and retractable helmet for the mission-only
+  `SG1_GoauldJaffaOfficer` through an exact `apparelRequired` override.
+- Keep ordinary warriors, guards, settlement defenders and the officer's escort
+  on their existing brown-and-gold Jaffa equipment.
+- Reuse the heavy Jaffa armor and retractable helmet silhouettes for temporary
+  red-tinted textures while assigning stable final asset paths dedicated to the
+  officer set.
+- Generalize the existing retractable-helmet component so each helmet Def pair
+  can declare its own deployed and retracted states without changing the
+  published standard helmet behavior.
+- Preserve heavy-armor protection, movement penalty, helmet coverage, raw armor
+  values and automatic/manual retraction modes.
+- Add a single `SocialImpact +0.10` offset to the officer torso armor; the helmet
+  adds no social bonus, preventing double application across retraction states.
+- Gate local crafting of the officer torso armor and deployed helmet behind the
+  existing `SG1_JaffaArmor` research. Captured pieces remain immediately usable,
+  and the retracted state is never crafted separately.
+- Set random-generation commonality to zero so the variants are not assigned as
+  ordinary apparel outside their exact mission PawnKind.
+- Record the `r1` functional defect: the generated mission target retained his
+  weapon, gauntlets and boots but received neither dedicated torso armor nor
+  dedicated helmet.
+- In cumulative revision `r2`, keep zero commonality and add an explicit
+  post-generation verification that creates and equips the two distinctive
+  pieces only for the capture target.
+- Fail encounter initialization cleanly when either required officer apparel Def
+  cannot be equipped instead of silently accepting an indistinct target.
+- Record a separate future expansion for officers in eligible raids, Goa'uld
+  settlement defenses and suitable missions, limited to zero or one officer in
+  groups containing at least five Jaffa and preserving the threat budget.
+- Correct the roadmap debt for faction and mission-site world icons already
+  published in `0.3.50-dev` and `0.3.51-dev`.
+- Validate final cumulative revision `r2`: build `0.3.74.0`, duration audit
+  with `104` unique keys, project consistency, exact five-piece target loadout,
+  red target/brown-and-gold escort distinction, single `SocialImpact +0.10`
+  offset, all three helmet modes, standard-pair isolation, save/reload, capture,
+  caravan transport, Tok'ra extraction and a clean accepted `Player.log`.
+- Integrate the feature branch by fast-forward, publish annotated tag
+  `v0.3.74-dev` and synchronize the changed wiki sources.
+
 ## 0.3.73-dev - Add bounded Goa'uld alliance raid-strength bonus
 
 - Start from published `develop` and annotated tag `v0.3.72-dev` on

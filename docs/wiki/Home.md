@@ -4,16 +4,16 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.73-dev`
+> Version du mod documentée : `0.3.74-dev`
 
 
-## Relations Goa'uld et pression des raids
+## Officier Jaffa capturable
 
-La version `0.3.73-dev` étend les conséquences des relations entre domaines :
-sous Commandement SG-1, un conflit ouvert conserve son facteur `75 %`, tandis
-qu'une alliance sans conflit ouvert applique un bonus plafonné à `110 %` aux
-points du raid naturel. Plusieurs relations ne se cumulent pas et les autres
-storytellers restent à `100 %`.
+La révision `0.3.74-dev` donne à la cible de
+[l'opération de capture](Tokra-Jaffa-Officer-Capture) une armure lourde et un
+casque rétractable rouges. Les textures sont temporaires, mais leurs chemins
+sont définitifs. L'armure ajoute `+10 %` d'impact social et les deux pièces
+fabricables sont débloquées par la recherche Armures Jaffa.
 
 ## Durées affichées
 

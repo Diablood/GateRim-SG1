@@ -24,3 +24,7 @@ Thumbs.db
 About/PublishedFileId.txt
 *.zip
 *.patch
+
+# One-shot local delivery and publication helpers
+Apply-GateRim-SG1-*.ps1
+Publish-GateRim-SG1-*.ps1

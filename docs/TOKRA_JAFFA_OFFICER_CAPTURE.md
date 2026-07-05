@@ -1,12 +1,14 @@
 # Tok'ra Jaffa officer capture operation
 
-Status: published in `0.3.37-dev`; final local revision `r6` validated the complete primary flow.
+Status: mission flow published in `0.3.37-dev`; the distinctive officer
+loadout correction is validated and published in `0.3.74-dev` after final
+revision `r2`.
 
 ## Player flow
 
 1. A recurrent Tok'ra offer identifies a temporary Goa'uld field position.
 2. Acceptance creates one world site and routes one sealed twelve-charge Tok'ra hypodermic rifle to the preferred delivery point.
-3. The player downs the silver-marked officer alive and neutralizes the active escort.
+3. The player identifies the silver-marked officer by his red command armor and retractable helmet, downs him alive and neutralizes the active escort.
 4. No prison bed is required on the hostile map. The ordinary caravan-reformation dialog selects the downed officer as a prisoner for transport.
 5. A mission-only physical restraint protects the prisoner during carrying and caravan travel after the temporary dart effect expires.
 6. Once the caravan has actually removed the officer and no player pawn remains, the temporary map and its world marker are deleted.
@@ -52,4 +54,11 @@ Downed enemies and abandoned hostile pawns do not keep the temporary site alive 
 
 The final `r6` test confirmed that the field map and marker disappear without losing the prisoner or the communicator action. The Tok'ra team then entered the colony, physically carried the prisoner off-map and awarded success only after the complete team had departed.
 
-Future visual work is tracked separately in `docs/ROADMAP.md`: the officer should receive a more distinctive appearance, and mission world-map icons should be diversified by theme.
+`0.3.74-dev-r1` added stable dedicated armor and helmet Defs with temporary
+red textures. Research, manual rendering, protection and `SocialImpact +0.10`
+were validated, but the mission-generated target did not receive the torso or
+helmet. Final cumulative revision `r2` keeps both variants unavailable to random
+apparel generation and explicitly verifies/equips them on the newly generated
+capture target. The complete target loadout, helmet modes, save/reload and
+extraction flow are validated. Final artwork may replace the PNG contents later
+without changing the paths.

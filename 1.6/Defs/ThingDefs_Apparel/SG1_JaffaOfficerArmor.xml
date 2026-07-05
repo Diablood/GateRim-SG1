@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ArmorMachineableBase">
+        <defName>SG1_JaffaOfficerArmor</defName>
+        <label>Jaffa officer armor</label>
+        <description>A command variant of heavy Jaffa armor worn by officers trusted to direct field detachments. Its red finish distinguishes the rank immediately, while its authoritative presentation improves the wearer's social impact without changing the underlying battlefield protection.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaOfficerArmor/JaffaOfficerArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>All</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>100</Steel>
+            <Plasteel>45</Plasteel>
+            <ComponentIndustrial>4</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>26000</WorkToMake>
+            <MaxHitPoints>340</MaxHitPoints>
+            <Mass>11</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.88</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.40</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.56</ArmorRating_Heat>
+            <EquipDelay>14</EquipDelay>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.22</MoveSpeed>
+            <SocialImpact>0.10</SocialImpact>
+        </equippedStatOffsets>
+        <recipeMaker>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>8</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Neck</li>
+                <li>Shoulders</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaOfficerArmor/JaffaOfficerArmor</wornGraphicPath>
+            <layers>
+                <li>Shell</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaArmorHeavy</li>
+                <li>SG1_JaffaOfficerArmor</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ArmorHelmetMakeableBase">
+        <defName>SG1_JaffaOfficerDeployedHelmet</defName>
+        <label>deployed Jaffa officer helmet</label>
+        <description>A deployed command helmet reserved for Jaffa officers. Its red finish makes the wearer easy to identify while preserving the full-head protection and retractable behavior of the standard design.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaOfficerDeployedHelmet/JaffaOfficerDeployedHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>All</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>40</Steel>
+            <Plasteel>18</Plasteel>
+            <ComponentIndustrial>2</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>12000</WorkToMake>
+            <MaxHitPoints>220</MaxHitPoints>
+            <Mass>2.8</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.52</ArmorRating_Heat>
+            <EquipDelay>5</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>7</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <comps>
+            <li Class="GateRimSG1.Jaffa.CompProperties_RetractableJaffaHelmet">
+                <deployedDef>SG1_JaffaOfficerDeployedHelmet</deployedDef>
+                <retractedDef>SG1_JaffaOfficerRetractedHelmet</retractedDef>
+            </li>
+        </comps>
+        <apparel>
+            <bodyPartGroups>
+                <li>FullHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaOfficerDeployedHelmet/JaffaOfficerDeployedHelmet</wornGraphicPath>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaHelmet</li>
+                <li>SG1_JaffaOfficerHelmet</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+
+    <ThingDef ParentName="ApparelBase">
+        <defName>SG1_JaffaOfficerRetractedHelmet</defName>
+        <label>retracted Jaffa officer helmet</label>
+        <description>The retracted state of the Jaffa officer helmet. It exposes the face, keeps its red command finish and preserves the same raw armor ratings while limiting coverage to the upper head.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaOfficerRetractedHelmet/JaffaOfficerRetractedHelmet</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>None</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <smeltable>false</smeltable>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <statBases>
+            <WorkToMake>12000</WorkToMake>
+            <MaxHitPoints>220</MaxHitPoints>
+            <Mass>2.8</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.92</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.38</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.52</ArmorRating_Heat>
+            <EquipDelay>5</EquipDelay>
+        </statBases>
+        <comps>
+            <li Class="GateRimSG1.Jaffa.CompProperties_RetractableJaffaHelmet">
+                <deployedDef>SG1_JaffaOfficerDeployedHelmet</deployedDef>
+                <retractedDef>SG1_JaffaOfficerRetractedHelmet</retractedDef>
+            </li>
+        </comps>
+        <apparel>
+            <bodyPartGroups>
+                <li>UpperHead</li>
+            </bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/JaffaOfficerRetractedHelmet/JaffaOfficerRetractedHelmet</wornGraphicPath>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaHelmet</li>
+                <li>SG1_JaffaOfficerHelmet</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+</Defs>

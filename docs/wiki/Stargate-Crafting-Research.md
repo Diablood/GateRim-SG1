@@ -46,7 +46,11 @@ Débloque la fabrication locale :
 - de l'armure Jaffa lourde ;
 - des gantelets Jaffa ;
 - des bottes renforcées Jaffa ;
-- du casque Jaffa déployé.
+- du casque Jaffa déployé ;
+- de l'armure d'officier Jaffa ;
+- du casque d'officier Jaffa déployé.
+
+Les états rétractés restent internes et ne possèdent aucune facture séparée.
 
 ## Kara kesh
 

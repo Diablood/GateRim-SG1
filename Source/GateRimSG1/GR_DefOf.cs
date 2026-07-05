@@ -102,6 +102,9 @@ namespace GateRimSG1
         public static HediffDef SG1_TretoninSubstitution;
         public static ThingDef SG1_JaffaDeployedHelmet;
         public static ThingDef SG1_JaffaRetractedHelmet;
+        public static ThingDef SG1_JaffaOfficerArmor;
+        public static ThingDef SG1_JaffaOfficerDeployedHelmet;
+        public static ThingDef SG1_JaffaOfficerRetractedHelmet;
 
         static GR_DefOf()
         {

@@ -1,71 +1,78 @@
 # Project state
 
-Current milestone: `0.3.73-dev - Add bounded Goa'uld alliance raid-strength bonus`
+Current milestone: `0.3.74-dev - Add distinctive Jaffa capture-officer appearance`
 
-- Final local revision: `r1`.
-- Forced build `0.3.73.0`, focused functional validation, save/reload coverage and
-  required regressions are validated.
+- Final local revision: `r2`.
+- Forced build `0.3.74.0`, static checks and focused functional validation are
+  complete.
 - The milestone branch is integrated by fast-forward into `develop`; annotated
-  tag `v0.3.73-dev` and the updated wiki sources are published.
+  tag `v0.3.74-dev` and the updated wiki sources are published.
 
 ## Repository state
 
 - Published starting point: `develop` exactly aligned with annotated tag
-  `v0.3.72-dev` at commit
-  `11b2c2f43d5978fb6f000ba415b79b2d52dde1d8`.
-- Final milestone branch: `feature/goauld-alliance-raid-strength`.
-- Published development version: `0.3.73-dev`.
-- Technical assembly version: `0.3.73.0`.
-- `develop` and annotated tag `v0.3.73-dev` identify the same final commit.
+  `v0.3.73-dev` at commit
+  `a2bfd3a96b7cc1a12f0b985ea34f3fafb2efbe5b`.
+- Final milestone branch:
+  `feature/distinctive-jaffa-capture-officer-appearance`.
+- Published development version: `0.3.74-dev`.
+- Technical assembly version: `0.3.74.0`.
+- `develop` and annotated tag `v0.3.74-dev` identify the same final commit.
 - `main` remains reserved for the first stable `1.0.0` line.
 
 ## Published scope
 
-- Extend the existing relation-derived natural-raid point modifier instead of
-  adding another incident, scheduler or serialized tracker.
-- While `Commandement SG-1` is active, a Goa'uld domain participating in at
-  least one alliance uses a fixed `1.10` factor for its ordinary natural Jaffa
-  raid points.
-- Keep the existing open-conflict factor at `0.75`.
-- Resolve open conflict before alliance when a domain participates in both;
-  factors are never multiplied, averaged or stacked.
-- Keep doctrine eligibility and weighting based on the original vanilla points,
-  then apply the final relation factor only to the generated force.
-- Keep incident chance, earliest day, shared refire delay, doctrine weights and
-  contextual thresholds unchanged.
-- Keep Cassandra, Phoebe, Randy and compatible modded storytellers at `1.00`.
-- Keep controlled raids, deterministic doctrine tests, extraction reprisals,
-  intercepted threats, missions, sites and settlement defenses outside the
-  modifier.
-- Correct the distinction between an ordinary storyteller execution and a
-  caller that was already forced before entering the shared raid worker.
-- Expand developer diagnostics with alliance state, open-conflict precedence,
-  both configured factors and deterministic relation setup actions.
-- Add no new save field; all effects remain derived from persistent faction-pair
-  relations.
+- Add dedicated final Def names and texture paths for the capture officer's
+  torso armor and deployed/retracted helmet pair.
+- Use temporary red-tinted copies of the current heavy Jaffa armor and
+  retractable helmet silhouettes; a later art pass may replace only the PNG
+  contents without changing Defs, paths, saves or generation logic.
+- Reserve the distinctive set to `SG1_GoauldJaffaOfficer`; ordinary warriors,
+  guards and escorts retain their standard brown-and-gold equipment.
+- Preserve heavy-armor protection, movement offset, helmet armor, coverage and
+  automatic/manual retraction behavior.
+- Add `SocialImpact +0.10` only to `SG1_JaffaOfficerArmor`.
+- Gate the two craftable visible pieces behind `SG1_JaffaArmor`; keep the
+  retracted state internal and non-craftable.
+- Keep the officer pieces at `generateCommonality = 0` and guarantee them
+  explicitly immediately after mission-target generation.
+- Abort encounter initialization cleanly if either required distinctive piece
+  cannot be equipped.
+- Generalize the retractable-helmet component through per-comp deployed and
+  retracted Def references while retaining the original standard pair as the
+  fallback.
+- Correct the roadmap debt for the faction and operation world-icon overhauls
+  already published in `0.3.50-dev` and `0.3.51-dev`.
+- Record a future separate expansion for officers in suitable natural Goa'uld
+  raids, settlement defenses and missions: at least five Jaffa, zero or one
+  officer, replacement within the existing threat budget.
+- Add no new save field, mission phase, combat bonus, extraction rule, faction
+  behavior or world-site behavior.
 
 ## Validation result
 
-Final local revision `r1` is validated:
+Final cumulative revision `r2` is validated:
 
-- forced build succeeds with assembly `0.3.73.0`;
-- the duration audit still passes with `104` unique compatibility keys;
-- the global project-consistency check passes;
-- alliance-only domains report and use `1.10`;
-- open-conflict domains report and use `0.75`;
-- mixed conflict/alliance domains resolve to `0.75`;
-- multiple alliances remain capped at `1.10`;
-- other storytellers resolve every domain to `1.00`;
-- ordinary natural execution receives the factor despite the shared worker's
-  internal forced flag;
-- externally forced doctrine tests retain their exact historical points;
-- save/reload preserves the relation-derived result;
-- `Player.log` contains no new C#, Harmony, XML, Scribe, raid-generation or Lord
-  error.
+- forced build succeeds with assembly `0.3.74.0`;
+- duration audit still passes with `104` unique compatibility keys;
+- global project-consistency check passes;
+- `SG1_JaffaArmor` unlocks the officer armor and deployed helmet bills while
+  the retracted state remains non-craftable;
+- the mission-generated officer receives his weapon, red torso armor, red
+  retractable helmet, gauntlets and reinforced boots;
+- the escort retains standard brown-and-gold Jaffa equipment;
+- the torso armor displays `Social impact +10%` and the helmet adds no duplicate
+  social offset;
+- automatic, always-deployed and always-retracted modes remain inside the
+  officer helmet pair, while standard helmets retain their historical pair;
+- save/reload preserves the exact apparel and helmet mode;
+- capture, caravan transport and Tok'ra extraction remain functional;
+- `Player.log` contains no new C#, Harmony, XML, DefOf, texture, rendering,
+  apparel-generation, Scribe, caravan or mission error.
 
 ## Next step
 
-No `0.3.74-dev` gameplay milestone or branch is reserved. After publication,
-select the next decided item from `docs/ROADMAP.md`, create its dedicated branch
-from `develop` aligned with `v0.3.73-dev`, and update this handoff before
+No `0.3.75-dev` gameplay milestone or branch is reserved. Select the next
+explicitly decided item from `docs/ROADMAP.md`, create its dedicated branch from
+`develop` aligned with `v0.3.74-dev`, and update this handoff before
 implementation.

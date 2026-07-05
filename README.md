@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.73-dev`
+- Development version: `0.3.74-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.73-dev` adds a bounded alliance consequence to the persistent Goa'uld
-relation system. Under Commandement SG-1, an allied domain uses `110%` of its
-ordinary natural-raid points, without changing raid frequency or doctrine
-selection. Several alliances never stack, and an open conflict retains priority
-with its existing `75%` factor. Forced raids, reprisals, missions and other
-storytellers remain unchanged.
+`0.3.74-dev` gives the mission-only Jaffa officer targeted by the recurring
+Tok'ra capture operation a deterministic command loadout. A red temporary armor
+and retractable helmet use stable final texture paths, distinguish the target
+from its ordinary escort and preserve the existing heavy-armor protection. The
+torso armor grants `+10%` social impact, and both craftable pieces are unlocked
+by the existing Jaffa armor research.
 
 ## Playable content
 

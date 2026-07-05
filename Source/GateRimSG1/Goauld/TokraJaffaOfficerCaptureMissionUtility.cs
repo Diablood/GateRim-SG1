@@ -555,6 +555,17 @@ namespace GateRimSG1.Goauld
             }
 
             Pawn pawn = PawnGenerator.GeneratePawn(kind, faction, map.Tile);
+
+            if (!EnsureOfficerCommandApparel(pawn))
+            {
+                if (pawn != null && !pawn.Destroyed)
+                {
+                    pawn.Destroy(DestroyMode.Vanish);
+                }
+
+                return null;
+            }
+
             IntVec3 spawnCell = CellFinder.RandomClosewalkCellNear(
                 anchor,
                 map,
@@ -573,6 +584,86 @@ namespace GateRimSG1.Goauld
             }
 
             return spawned;
+        }
+
+        private static bool EnsureOfficerCommandApparel(Pawn pawn)
+        {
+            if (pawn?.apparel == null)
+            {
+                GR_Log.Warning(
+                    "Cannot equip generated Jaffa officer: apparel tracker "
+                    + "is unavailable.");
+                return false;
+            }
+
+            bool armorEquipped = EnsureWornApparel(
+                pawn,
+                GR_DefOf.SG1_JaffaOfficerArmor);
+            bool helmetEquipped = EnsureWornApparel(
+                pawn,
+                GR_DefOf.SG1_JaffaOfficerDeployedHelmet);
+
+            if (!armorEquipped || !helmetEquipped)
+            {
+                GR_Log.Warning(
+                    "Could not complete the distinctive Jaffa officer "
+                    + $"loadout for {pawn.LabelShortCap}; "
+                    + $"armor={armorEquipped}, helmet={helmetEquipped}.");
+                return false;
+            }
+
+            GR_Log.Message(
+                "Verified distinctive Jaffa officer command apparel for "
+                + pawn.LabelShortCap + ".");
+            return true;
+        }
+
+        private static bool EnsureWornApparel(
+            Pawn pawn,
+            ThingDef apparelDef)
+        {
+            if (pawn?.apparel == null || apparelDef == null)
+            {
+                return false;
+            }
+
+            if (pawn.apparel.WornApparel.Any(
+                    apparel => apparel?.def == apparelDef))
+            {
+                return true;
+            }
+
+            Apparel apparel = ThingMaker.MakeThing(apparelDef) as Apparel;
+
+            if (apparel == null)
+            {
+                GR_Log.Warning(
+                    "Cannot equip generated Jaffa officer: "
+                    + $"{apparelDef.defName} is not apparel.");
+                return false;
+            }
+
+            apparel.TryGetComp<CompQuality>()?.SetQuality(
+                QualityCategory.Normal,
+                ArtGenerationContext.Outsider);
+            pawn.apparel.Wear(
+                apparel,
+                dropReplacedApparel: false);
+
+            if (pawn.apparel.WornApparel.Contains(apparel))
+            {
+                return true;
+            }
+
+            if (!apparel.Destroyed)
+            {
+                apparel.Destroy(DestroyMode.Vanish);
+            }
+
+            GR_Log.Warning(
+                "Cannot equip generated Jaffa officer with "
+                + apparelDef.defName + ".");
+            return false;
         }
 
         private static List<Pawn> SpawnEscort(

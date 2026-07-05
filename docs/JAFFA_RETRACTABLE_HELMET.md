@@ -39,3 +39,26 @@ periodic synchronization. Emitting a normal log message for every transition
 can create noisy in-game developer popups and verbose Unity stack traces.
 
 The synchronization behavior remains unchanged.
+
+## Multiple helmet pairs (`0.3.74-dev`)
+
+`CompProperties_RetractableJaffaHelmet` can now declare its own `deployedDef`
+and `retractedDef`. Empty fields retain the original
+`SG1_JaffaDeployedHelmet` / `SG1_JaffaRetractedHelmet` fallback.
+
+The mission officer uses the dedicated pair:
+
+```text
+SG1_JaffaOfficerDeployedHelmet
+SG1_JaffaOfficerRetractedHelmet
+```
+
+This keeps one shared persistent mode implementation while preventing either
+helmet from changing into the other set. Raw armor and body coverage remain
+identical to the standard pair.
+
+Final cumulative revision `0.3.74-dev-r2` validates and verifies that the
+capture target wears
+the officer deployed Def immediately after pawn generation. This preserves zero
+random commonality while guaranteeing that the retractable component starts from
+the correct pair. All three modes, pair isolation and save/reload are validated.

@@ -1,6 +1,7 @@
 # Capture d'un officier Jaffa
 
-> État : mission récurrente validée et publiée dans `0.3.37-dev`.
+> État : mission récurrente validée dans `0.3.37-dev` ; équipement distinctif
+> corrigé, validé et publié dans `0.3.74-dev` après la révision finale `r2`.
 
 Les Tok'ra peuvent proposer une opération récurrente visant un officier Jaffa isolé dans une position de campagne Goa'uld. La cible doit être ramenée vivante.
 
@@ -9,7 +10,7 @@ Les Tok'ra peuvent proposer une opération récurrente visant un officier Jaffa 
 - accepter l'offre depuis le communicateur sécurisé ;
 - récupérer le fusil hypodermique Tok'ra scellé livré dans la zone prioritaire ;
 - envoyer une caravane vers la position révélée ;
-- neutraliser l'officier marqué d'argent sans le tuer et éliminer ou faire fuir son escorte ;
+- identifier l'officier marqué d'argent grâce à son armure et son casque rouges, le neutraliser sans le tuer et éliminer ou faire fuir son escorte ;
 - reformer directement la caravane sans construire de lit de prisonnier sur le site ;
 - sélectionner l'officier à terre comme prisonnier dans la fenêtre vanilla ;
 - laisser la carte temporaire et son marqueur disparaître après l'évacuation réelle ;
@@ -40,4 +41,12 @@ L'escorte Goa'uld/Jaffa dépend des points de menace capturés lors de l'offre. 
 
 La révision locale finale `r6` a validé le flux complet : extraction du site, transport du prisonnier, disparition du marqueur mondial, appel depuis le communicateur, arrivée visible de l'équipe Tok'ra, prise en charge physique et réussite après le départ complet de l'équipe.
 
-L'apparence spécifique de l'officier et la diversification des icônes de missions sur la carte mondiale sont différées à une future passe visuelle.
+`0.3.74-dev-r1` a ajouté une armure de commandement rouge et un casque rouge
+rétractable aux chemins définitifs. La recherche, les textures, les protections
+et le bonus de `+10 %` d'impact social ont été validés, mais la cible générée ne
+recevait pas automatiquement les deux pièces. La révision finale `r2` les
+vérifie et les équipe explicitement uniquement sur le nouvel officier de
+capture, sans rendre ces variantes aléatoires pour les autres Jaffa. Le loadout
+complet, les modes du casque, la sauvegarde/recharge et le flux d'extraction sont
+validés. Les textures pourront être remplacées lors de la passe artistique
+finale sans modifier les sauvegardes.

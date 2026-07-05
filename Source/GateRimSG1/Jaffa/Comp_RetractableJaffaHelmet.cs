@@ -15,6 +15,8 @@ namespace GateRimSG1.Jaffa
     public class CompProperties_RetractableJaffaHelmet : CompProperties
     {
         public string commandIconPath = "UI/Commands/SG1_JaffaHelmetMode";
+        public ThingDef deployedDef;
+        public ThingDef retractedDef;
 
         public CompProperties_RetractableJaffaHelmet()
         {
@@ -33,7 +35,13 @@ namespace GateRimSG1.Jaffa
 
         private Apparel Helmet => parent as Apparel;
 
-        private bool IsDeployed => parent.def == GR_DefOf.SG1_JaffaDeployedHelmet;
+        private ThingDef DeployedDef =>
+            Props.deployedDef ?? GR_DefOf.SG1_JaffaDeployedHelmet;
+
+        private ThingDef RetractedDef =>
+            Props.retractedDef ?? GR_DefOf.SG1_JaffaRetractedHelmet;
+
+        private bool IsDeployed => parent.def == DeployedDef;
 
         public override void PostExposeData()
         {
@@ -86,8 +94,8 @@ namespace GateRimSG1.Jaffa
         {
             Pawn wearer = wearerOverride ?? Helmet?.Wearer;
             ThingDef desiredDef = ShouldBeDeployed(wearer)
-                ? GR_DefOf.SG1_JaffaDeployedHelmet
-                : GR_DefOf.SG1_JaffaRetractedHelmet;
+                ? DeployedDef
+                : RetractedDef;
 
             if (desiredDef == null || parent.def == desiredDef)
             {

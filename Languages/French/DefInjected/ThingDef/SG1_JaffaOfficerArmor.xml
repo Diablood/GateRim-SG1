@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaOfficerArmor.label>armure d'officier Jaffa</SG1_JaffaOfficerArmor.label>
+    <SG1_JaffaOfficerArmor.description>Variante de commandement de l'armure Jaffa lourde portée par les officiers chargés de diriger les détachements de terrain. Sa finition rouge rend le rang immédiatement reconnaissable, tandis que sa présentation autoritaire améliore l'impact social du porteur sans modifier la protection de combat sous-jacente.</SG1_JaffaOfficerArmor.description>
+    <SG1_JaffaOfficerDeployedHelmet.label>casque d'officier Jaffa déployé</SG1_JaffaOfficerDeployedHelmet.label>
+    <SG1_JaffaOfficerDeployedHelmet.description>Casque de commandement déployé réservé aux officiers Jaffa. Sa finition rouge rend le porteur facile à identifier tout en conservant la protection intégrale de la tête et le comportement rétractable du modèle standard.</SG1_JaffaOfficerDeployedHelmet.description>
+    <SG1_JaffaOfficerRetractedHelmet.label>casque d'officier Jaffa rétracté</SG1_JaffaOfficerRetractedHelmet.label>
+    <SG1_JaffaOfficerRetractedHelmet.description>État rétracté du casque d'officier Jaffa. Il laisse le visage visible, conserve sa finition rouge de commandement et les mêmes valeurs d'armure brutes, tout en limitant sa couverture au sommet de la tête.</SG1_JaffaOfficerRetractedHelmet.description>
+</LanguageData>

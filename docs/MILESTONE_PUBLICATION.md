@@ -51,6 +51,30 @@ fonctionnalité.
 
 ## 3. Verrou documentaire avant le commit final
 
+Lorsqu'un paquet final est fourni sous forme de ZIP, son extraction fait partie
+de la séquence de publication obligatoire. Ne jamais donner ou exécuter une
+suite `git add` / `commit` / `push` qui suppose implicitement que le paquet a déjà
+été extrait. La commande d'extraction doit apparaître dans le même script ou
+bloc exécutable, avant les contrôles et avant tout staging :
+
+```powershell
+Expand-Archive `
+    -LiteralPath .\GateRim-SG1-<version>-finalization.zip `
+    -DestinationPath . `
+    -Force
+```
+
+Les scripts locaux de livraison ou de publication nommés
+`Apply-GateRim-SG1-*.ps1` ou `Publish-GateRim-SG1-*.ps1` sont des outils à usage
+unique. Ils doivent être ignorés par Git, explicitement exclus du staging et
+supprimés après succès. Vérifier leur absence de l'index avant le commit :
+
+```powershell
+git diff --cached --name-only | Select-String -Pattern "^(Apply|Publish)-GateRim-SG1-.*\.ps1$"
+```
+
+Toute occurrence bloque la publication jusqu'à son retrait de l'index.
+
 Avant `git add -A`, relire les fichiers directement depuis l’arbre de travail
 qui sera publié, et non depuis une ancienne conversation ou un ancien tag :
 
