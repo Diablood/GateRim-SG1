@@ -4,7 +4,17 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.76-dev`
+> Version du mod documentée : `0.3.77-dev`
+
+## Priorité du développement
+
+`0.3.77-dev` fixe une barrière de phase : le socle Tok'ra, Goa'uld/Jaffa et
+Tau'ri/SGC doit être explicitement clos avant le lancement des Asgard, Nox,
+Unas, Réplicateurs ou du préréglage de monde entièrement GateRim SG-1. Les
+futurs peuples réutiliseront les systèmes culturels, de factions, de missions,
+de menace, de sauvegarde et de tests déjà construits au lieu de repartir sur
+des fondations parallèles. Aucun gameplay n'est modifié par ce jalon
+documentaire.
 
 ## Réconciliation de la feuille de route
 

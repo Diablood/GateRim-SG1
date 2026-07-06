@@ -14,6 +14,15 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon documentaire clôturé
 
+`0.3.77-dev - Establish the core-faction completion gate`
+
+La révision finale `r1` est validée et prête à être publiée. Ce jalon
+documentaire rend obligatoire la clôture du socle Tok'ra, Goa'uld/Jaffa et
+Tau'ri/SGC avant l'ouverture des peuples et chapitres qui hériteront de ses
+systèmes. Il ne modifie aucun gameplay.
+
+## Jalon documentaire précédent
+
 `0.3.76-dev - Reconcile future roadmap and visual debt`
 
 La révision finale `r2` est validée et publiée. Elle retire les travaux déjà
@@ -26,12 +35,12 @@ que les questions encore ouvertes soient reposées au lancement du jalon concern
 avant toute implémentation. Aucun gameplay, Def, traduction, texture, sauvegarde
 ou équilibrage n'est modifié.
 
-## Prochain jalon à sélectionner
+## Prochain jalon gameplay à sélectionner
 
-Aucun jalon `0.3.77-dev` ni nom de branche n'est réservé. Le prochain travail
-doit être choisi parmi les futurs jalons décidés ci-dessous. Ses décisions
-reportées doivent être reprises explicitement avant la création de sa branche
-dédiée depuis `develop` aligné avec `v0.3.76-dev`.
+Aucun jalon gameplay ni nom de branche n'est réservé. Le prochain travail doit
+être choisi uniquement dans la phase de clôture du socle définie ci-dessous. Ses
+décisions reportées doivent être reprises avant la création de sa branche depuis
+`develop` aligné avec `v0.3.77-dev`.
 
 ## Dernier jalon gameplay clôturé
 
@@ -61,6 +70,69 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
 Une fonctionnalité peut donc être terminée tout en conservant une dette d'art.
+
+# Priorité de développement obligatoire
+
+## Phase 1 - Clôturer le socle Tok'ra / Goa'uld-Jaffa / Tau'ri-SGC
+
+Aucun nouveau peuple, menace majeure ou préréglage mondial héritier ne doit être
+commencé tant que le socle actuel n'est pas explicitement clos.
+
+Cette phase bloquante comprend :
+
+- la stabilisation ciblée de la partie Tok'ra existante, sans neuvième opération ;
+- la finalisation de la présentation Tok'ra, Goa'uld, Jaffa et Tau'ri/SGC ;
+- les audits transversaux encore décidés ;
+- les variantes d'équipement Tau'ri/SGC encore décidées ;
+- les conséquences stratégiques, territoriales, équipements et présentations
+  Goa'uld, Jaffa de domaine et Jaffa libres encore décidés ;
+- les anneaux de transport joueur puis leurs usages bornés de mission ou hostiles ;
+- les fondations Stargate, la première expédition hors monde et la Porte
+  fonctionnelle.
+
+L'ordre interne de ces jalons reste sélectionnable un par un. Cette souplesse ne
+permet pas de prendre un jalon de la phase suivante.
+
+Le pool Tok'ra reste fermé à huit opérations. « Clore la partie Tok'ra » signifie
+corriger les défauts réellement observés, terminer les surfaces partagées et la
+présentation, puis déclarer le socle stable ; cela ne signifie pas créer de
+nouvelles opérations pour retarder artificiellement la clôture.
+
+## Critère de sortie de la phase 1
+
+La phase peut être déclarée close seulement lorsque chaque jalon bloquant est :
+
+1. validé et publié ;
+2. explicitement retiré de la roadmap décidée ;
+3. explicitement déplacé dans `IDEAS_TO_REVISIT.md` comme piste non bloquante.
+
+Une question non répondue, un élément simplement omis ou une case laissée ouverte
+ne constitue pas une clôture.
+
+## Phase 2 - Extensions héritières bloquées
+
+Avant la clôture explicite de la phase 1, ne pas commencer :
+
+- la fondation Asgard ;
+- la fondation Nox ;
+- la fondation Unas ;
+- la fondation des Réplicateurs ;
+- les audits optionnels Ideology et Royalty ;
+- le préréglage de monde entièrement GateRim SG-1.
+
+Les origines pondérées des hôtes Tok'ra constituent une extension dépendante des
+futures cultures. Elles seront reprises après l'existence de plusieurs cultures
+pertinentes et ne maintiennent pas le socle Tok'ra actuel artificiellement ouvert.
+
+## Règle d'héritage de la phase 2
+
+Chaque nouveau peuple, faction ou type de menace doit réutiliser, selon son
+besoin, les fondations publiées : profils culturels, noms, backstories, identité,
+factions, icônes, missions pilotées par Defs, menace vanilla, persistance,
+compatibilité de sauvegarde, diagnostics, documentation et tests de régression.
+
+Créer un framework parallèle ou remplacer une fondation existante exige une
+décision d'architecture explicite avant le jalon concerné.
 
 # Contrats permanents
 
@@ -313,12 +385,17 @@ boucles de retour. Tout le contenu actuel doit rester autonome et compatible.
 Décisions reportées au lancement : adresse, alimentation, sélection de monde,
 cartes distantes, fermeture, incidents, sauvegarde et limites d'usage.
 
-## Cultures, peuples et monde GateRim
+## Phase 2 - Cultures, peuples et monde GateRim
 
-### Ajouter des origines pondérées aux hôtes Tok'ra
+Cette section est bloquée jusqu'à la clôture explicite du socle Tok'ra /
+Goa'uld-Jaffa / Tau'ri-SGC.
 
-Réutiliser le moteur culturel seulement lorsque plusieurs cultures pertinentes
-existent, sans réécrire l'origine d'une implantation réelle.
+
+### Ajouter des origines pondérées aux hôtes Tok'ra après les nouvelles cultures
+
+Ce jalon est une extension dépendante de la phase 2, pas un reliquat bloquant du
+socle Tok'ra actuel. Réutiliser le moteur culturel seulement lorsque plusieurs
+cultures pertinentes existent, sans réécrire l'origine d'une implantation réelle.
 
 Décisions reportées au lancement : cultures disponibles, poids, génération et
 compatibilité avec les hôtes existants.

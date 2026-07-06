@@ -2,15 +2,16 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.76-dev`
+> Dernière révision : `0.3.77-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.76-dev` réconcilie la documentation des développements futurs sans modifier
-le contenu jouable. Les travaux déjà publiés sont retirés du backlog actif, les
-futurs chantiers sont séparés et une passe artistique complète reste prévue pour
-remplacer tous les placeholders et toutes les textures temporaires.
+`0.3.77-dev` fixe l'ordre de développement sans modifier le gameplay. Le socle
+Tok'ra, Goa'uld/Jaffa et Tau'ri/SGC, ses audits partagés, ses transports et sa
+progression Stargate doivent être explicitement clos avant le lancement des
+Asgard, Nox, Unas, Réplicateurs ou du monde entièrement GateRim. Les futurs
+peuples hériteront des frameworks déjà publiés.
 
 ## Implémenté ou testable
 
@@ -136,6 +137,7 @@ remplacer tous les placeholders et toutes les textures temporaires.
 
 | Élément | Direction actuelle |
 |---|---|
+| Ordre de développement | Clore d'abord le socle Tok'ra / Goa'uld-Jaffa / Tau'ri-SGC et ses systèmes partagés ; Asgard, Nox, Unas, Réplicateurs, intégrations DLC et monde entièrement GateRim restent bloqués jusqu'à cette clôture explicite |
 | Stabilisation des opérations Tok'ra | Le pool est fermé à huit archétypes. Les futures parties longues pourront déclencher des correctifs ou équilibrages ciblés, mais aucune nouvelle opération n'est actuellement prévue |
 | Alliances Goa'uld | Les futurs renforts, raids conjoints, interactions de doctrines, représailles communes et ruptures d'alliance restent cinq jalons séparés |
 | Conséquences territoriales Goa'uld | Concevoir et valider d'abord les garde-fous contre auto-élimination, expansion incontrôlée et déséquilibre mondial |

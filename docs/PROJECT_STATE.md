@@ -1,62 +1,83 @@
 # Project state
 
-Current milestone: `0.3.76-dev - Reconcile future roadmap and visual debt`
+Current milestone: `0.3.77-dev - Establish the core-faction completion gate`
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.75-dev` at commit
-  `010570c1349b52651e634441a8d159160c400b7d`.
-- Active branch: `feature/future-roadmap-reconciliation`.
-- Final local revision: `r2`, validated and ready for publication.
-- Revision `r1` used a context-sensitive `git apply` patch for three long
-  documents; it failed against the maintainer's working tree and is superseded.
-- Revision `r2` supplies complete replacement files only and permanently bans
-  patch-based ordinary deliveries.
-- Target assembly version: `0.3.76.0`.
+  `v0.3.76-dev` at commit
+  `2ddde01f5e7e743d502210fab3cdd9e0d04878e3`.
+- Active branch: `feature/core-faction-completion-gate`.
+- Final local revision: `r1`, validated and ready for publication.
+- Target assembly version: `0.3.77.0`.
 - This milestone changes documentation and version metadata only.
 - No gameplay, Def, translation, texture, save data or balancing is intentionally
-  changed. The wiki receives only version/status synchronization and a corrected
-  summary of future directions.
+  changed.
 
-## Reconciliation scope
+## Priority decision
 
-- Remove already published work from the active backlog, including the Tok'ra
-  observation-scope rework, debug-menu reorganization, operation-pool audit,
-  world icons, threat audit, relation factors and both Jaffa-officer milestones.
-- Keep temporary-art debt explicit even when the related mechanic is complete.
-- Reserve a later complete art pass that replaces every placeholder and
-  temporary texture with final-quality work.
-- Separate permanent regression contracts from future feature milestones.
-- Split alliance extensions, strategic safeguards, territorial consequences,
-  equipment, races, Replicators, optional Ideology/Royalty audits, world
-  generation, Stargate progression and transport rings into individual future
-  milestones.
-- Add a first player-platform transport-ring foundation and a separate later
-  mission/hostile-use extension.
-- Defer unresolved design decisions to the launch of each concerned milestone;
-  ask those questions again before implementation rather than assuming answers
-  in advance.
-- Keep speculative queen evolution, culture-specific Tok'ra reactions,
-  sarcophagus, optional-DLC compatibility, adult-symbiote confinement and
-  advanced kara kesh functions in `IDEAS_TO_REVISIT.md`.
+The project remains in a blocking core-completion phase until the existing
+Tok'ra, Goa'uld/Jaffa and Tau'ri/SGC foundation is explicitly closed.
+
+This phase includes:
+
+- targeted Tok'ra stabilization and presentation while keeping the published
+  pool closed at eight recurrent operations;
+- all decided Goa'uld, Jaffa and Free Jaffa strategic, territorial, equipment
+  and presentation milestones;
+- all decided Tau'ri/SGC equipment and presentation milestones;
+- shared visual finalization, economy, debug/RP and documentation/test audits;
+- transport-ring foundations and their bounded extensions;
+- Stargate technological foundations, the first bounded off-world expedition and
+  the functional Stargate milestone.
+
+The following expansion phase remains blocked until that gate is closed:
+
+- Asgard;
+- Nox;
+- Unas;
+- Replicators;
+- optional Ideology and Royalty integration audits;
+- the all-GateRim world preset.
+
+Weighted Tok'ra host origins remain a dependent enrichment milestone after
+several new cultures exist. They do not keep the current Tok'ra core open.
+
+## Inheritance rule
+
+Every later people, faction or threat must reuse the foundations already
+published where applicable: cultural profiles, names, backstories, faction and
+world presentation, mission definitions, threat scaling, persistence, save
+compatibility, diagnostics, documentation and regression tests. A parallel
+replacement framework requires an explicit architecture decision.
+
+## Closure rule
+
+The core gate can close only when every blocking milestone is one of:
+
+1. validated and published;
+2. explicitly removed from the decided roadmap;
+3. explicitly deferred to `IDEAS_TO_REVISIT.md` as non-blocking.
+
+An unanswered design question, silent omission or unchecked roadmap entry does
+not count as closure.
 
 ## Validation result
 
-Final revision `r2` is validated:
+Final revision `r1` is validated:
 
-- forced build succeeds as assembly `0.3.76.0` despite no C# behavior change;
+- forced build succeeds as assembly `0.3.77.0`;
 - duration audit remains at `104` unique compatibility keys;
 - project-consistency check passes;
 - all local Markdown links resolve;
-- the roadmap contains no completed feature as an unchecked future item;
-- transport rings and final texture replacement are explicitly planned;
+- the roadmap visibly separates the blocking core phase from the inherited
+  expansion phase;
+- Asgard, Nox, Unas, Replicators and the all-GateRim preset are explicitly
+  blocked before core closure;
+- weighted Tok'ra host origins are documented as a later dependent enrichment;
 - no gameplay file outside version metadata is modified;
-- RimWorld starts with version `0.3.76-dev` and produces no new log error;
-- ordinary delivery archives now use complete replacement files only, with no
-  `.patch`, applicable diff or `git apply` instruction.
+- RimWorld starts with version `0.3.77-dev` and produces no new log error.
 
 ## Next step after publication
 
-No gameplay milestone after `0.3.76-dev` is automatically reserved. Select one
-individual entry from `docs/ROADMAP.md`, repeat its deferred design questions,
-record the answers in the relevant documents, then create its dedicated branch
-from `develop` aligned with `v0.3.76-dev`.
+Select the next gameplay milestone only from the blocking core-completion phase
+of `docs/ROADMAP.md`. Repeat its deferred design questions, record the answers,
+then create its dedicated branch from `develop` aligned with `v0.3.77-dev`.

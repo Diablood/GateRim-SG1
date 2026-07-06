@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.3.77-dev - Establish the core-faction completion gate
+
+- Start from published `develop` and annotated tag `v0.3.76-dev` on
+  `feature/core-faction-completion-gate`.
+- Establish a blocking development priority: close the existing Tok'ra,
+  Goa'uld/Jaffa and Tau'ri/SGC foundation before starting peoples or chapters that
+  inherit its systems.
+- Keep the closed eight-operation Tok'ra pool stable and treat future Tok'ra
+  work before expansion as targeted fixes, final presentation and shared-system
+  completion rather than a ninth operation.
+- Place final visual work, cross-system audits, SGC equipment, Goa'uld strategic
+  consequences and rank equipment, transport rings and Stargate progression
+  inside the core-completion phase.
+- Block Asgard, Nox, Unas, Replicators, optional Ideology/Royalty integration and
+  the all-GateRim world preset until the core gate is explicitly closed.
+- Keep weighted Tok'ra host origins as a dependent enrichment milestone after
+  several new cultures exist; it is not a reason to leave the current Tok'ra
+  foundation open indefinitely.
+- Require every later culture or threat to reuse the published cultural,
+  naming, faction, mission, threat, persistence, documentation and test
+  frameworks instead of creating parallel foundations.
+- Define closure as completion, explicit removal or explicit deferral of every
+  blocking core milestone; silence or an unchecked roadmap entry cannot count as
+  closure.
+- Keep the order inside the core phase selectable one milestone at a time while
+  forbidding work from the blocked expansion phase.
+- Change no gameplay, Def, translation, texture, save data or balance.
+- Validate final local revision `r1`: forced build `0.3.77.0`, unchanged duration
+  audit with `104` unique keys, project consistency, local Markdown links, exact
+  documentation-only scope, main-menu version, existing-save loading and a clean
+  accepted `Player.log`.
+- Integrate the documentation branch by fast-forward, publish annotated tag
+  `v0.3.77-dev` and synchronize the separate wiki sources.
+
 ## 0.3.76-dev - Reconcile future roadmap and visual debt
 
 - Start from published `develop` and annotated tag `v0.3.75-dev` on

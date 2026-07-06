@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.76-dev`
+- Development version: `0.3.77-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.76-dev` is a documentation-only reconciliation milestone. It removes
-already published work from the active backlog, separates permanent regression
-contracts from future features, records every decided future axis as an
-individual milestone and explicitly reserves a later final-quality replacement
-of every placeholder and temporary texture. It also plans transport rings as a
-future alternative to vanilla transport pods without changing current gameplay.
+`0.3.77-dev` is a documentation-only priority milestone. It establishes a
+blocking completion gate for the existing Tok'ra, Goa'uld/Jaffa and Tau'ri/SGC core:
+all decided core-faction work and shared infrastructure must be closed before
+new peoples or inherited expansion chapters begin. Asgard, Nox, Unas,
+Replicators and the all-GateRim world preset therefore remain blocked until the
+core gate is explicitly satisfied. No gameplay behavior changes in this
+milestone.
 
 ## Playable content
 
