@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.81-dev`
+- Development version: `0.3.82-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.81-dev` adds bounded shared reprisals between allied Goa'uld domains
-under SG-1 Command. A decisive defeat of an eligible standard natural raid can
-schedule one delayed joint response from the exact allied pair. The reprisal
-uses `80%` of current vanilla threat points, split `60/40`, and the two Jaffa
-detachments enter from opposite approaches. The advance warning has no false
-camera target; the arrival letter names both domains and targets one pawn from
-each force.
+`0.3.82-dev` adds one bounded diplomatic consequence after a natural shared
+Goa'uld reprisal suffers a decisive major failure. When at least six combined
+Jaffa fall to `20%` or fewer active survivors, the exact allied pair schedules a
+deterministic rupture after `1–2` days. The relation changes from alliance to
+rivalry through one targetless RP letter; no extra raid, goodwill change or
+territorial effect is created.
 
 ## Playable content
 
@@ -47,8 +46,11 @@ each force.
   Both forms use the same exact domain pair, map-edge arrival, rally, announced
   assault, ranged pursuit, morale break, bounded retaliation and withdrawal
   rules. Ignored world sites expire without failure or diplomatic consequence.
-  Selecting another storyteller freezes future strategic opportunities and
-  disables both relation-derived raid modifiers.
+  A natural shared reprisal that begins with at least six combined Jaffa can,
+  after collapsing to `20%` or fewer active survivors, dissolve the exact
+  alliance into rivalry after a suspended `1–2` day diplomatic delay. Selecting
+  another storyteller freezes future strategic opportunities and disables both
+  relation-derived raid modifiers.
 - Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and an
   optional non-territorial Tok'ra faction. The Tok'ra are selected once by
   default in the world-faction list with a dedicated icon, create no

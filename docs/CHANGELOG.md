@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.3.82-dev - Add Goa'uld alliance rupture after major failure
+
+- Start from published `develop` and annotated tag `v0.3.81-dev` at commit
+  `65164357377f95faf9ff8b64520fe2c57ac2b981` on
+  `feature/goauld-alliance-major-failure-break`.
+- Observe only successful natural shared-alliance reprisals under
+  `Commandement SG-1`; exclude developer-created and developer-triggered shared
+  reprisals from the automatic failure chain.
+- Require at least six combined Jaffa and evaluate one decisive major failure
+  when no more than `20%` remain active.
+- Schedule one deterministic exact-pair diplomatic consequence after `1–2`
+  RimWorld days, with no additional random roll.
+- Transition the stored pair from `Alliance` to `Rivalry` through the existing
+  persistent relation tracker and suppress the generic relation report.
+- Keep one pending rupture globally; cancel it if the pair stops being allied or
+  either domain becomes inactive before the deadline.
+- Suspend the pending deadline outside `Commandement SG-1` and shift it forward
+  on return instead of consuming a backlog.
+- Add three localized RP letter variants with local anti-repetition, explicit
+  domain names and no misleading map or pawn target.
+- Persist major-failure observations, exact-pair rupture state, failure counts,
+  deadline, outcome and cancellation reason.
+- Add focused developer actions and diagnostics under
+  `Goa'uld... > Domain reactions...`.
+- Preserve raid frequency, threat budgets, doctrines, permanent domain
+  profiles, vanilla goodwill, settlements and territory.
+- Validate final local revision `r1`: build `0.3.82.0`, exact-pair pending
+  state, `1/6` debug survivor threshold, save/reload persistence, targetless
+  three-variant rupture letter, exact `Alliance -> Rivalry` transition,
+  `Completed` outcome, unchanged raid/reward/goodwill/territory behavior and a
+  clean accepted `Player.log`.
+- Integrate the validated branch by fast-forward into `develop`, publish the
+  annotated tag `v0.3.82-dev` and synchronize the changed wiki sources.
+
 ## 0.3.81-dev - Add shared Goa'uld alliance reprisals
 
 - Start from published `develop` and annotated tag `v0.3.80-dev` at commit

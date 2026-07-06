@@ -4204,6 +4204,47 @@ next natural raid form.
 - Inspect `Player.log` for new Harmony, C#, Scribe, raid, arrival, Lord,
   translation or pawn-generation errors.
 
+## Shared Goa'uld alliance reprisal failure and rupture (`0.3.81-dev`, `0.3.82-dev`)
+
+Validate the bounded cause-and-consequence chain without turning relation reports
+or developer-created reprisals into automatic incidents.
+
+- Use `Commandement SG-1`, a player-home map and at least two active Goa'uld
+  domains in an exact `Alliance` relation.
+- Confirm only an ordinary natural standard raid with at least five Jaffa can
+  open the shared-reprisal observation at `25%` or fewer active survivors.
+- Confirm the scheduling chance is `25%`, one global response may be pending,
+  the exact pair receives a `30`-day cooldown and the complete response budget is
+  `80%` of current vanilla threat points split `60/40`.
+- Confirm the scheduling letter has no camera target and the arrival letter
+  identifies two opposite-side detachments through one representative pawn from
+  each force.
+- Confirm developer-created and developer-triggered shared reprisals never enter
+  the automatic rupture observation.
+- For a natural shared reprisal with at least six combined Jaffa, confirm the
+  major-failure observation resolves once at `20%` or fewer active survivors.
+- Confirm the decisive failure schedules one exact-pair rupture after `1–2`
+  days without a second random roll and with no additional raid or reward.
+- Save and reload while the rupture is pending; confirm the exact pair, failure
+  count and deadline persist without resetting to a fresh delay.
+- Trigger or await resolution and confirm one neutral letter names both domains,
+  explicitly announces `Alliance -> Rivalry` and has no map or pawn target.
+- Confirm the relation report stores current state `Rivalry` and previous state
+  `Alliance`, while the reaction report stores `Completed` and no pending
+  rupture.
+- Schedule another rupture, change the exact pair away from `Alliance` before
+  the deadline and confirm `CancelledNoLongerAllied` without a letter.
+- Repeat with one inactive domain and confirm `CancelledInactiveDomain` without
+  a letter.
+- Switch away from `Commandement SG-1` while a rupture is pending; confirm the
+  deadline is suspended and shifted forward on return rather than consumed as
+  backlog.
+- Confirm vanilla goodwill, settlements, territory, raid budgets, doctrine
+  profiles, storyteller frequency and existing shared-reprisal actions remain
+  unchanged.
+- Inspect `Player.log` for new C#, Scribe, relation, letter, storyteller or
+  raid-generation errors.
+
 ## Open-conflict Goa'uld local battlefield (`0.3.69-dev`)
 
 Validate the local battlefield generated from persistent open-conflict

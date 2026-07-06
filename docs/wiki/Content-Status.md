@@ -2,21 +2,22 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.81-dev`
+> Dernière révision : `0.3.82-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.81-dev` ajoute des représailles communes bornées : la défaite décisive
-d'un raid naturel standard peut provoquer, après délai, un assaut conjoint de
-la paire alliée exacte avec budget réduit `80 %` partagé `60/40`.
+`0.3.82-dev` ajoute une rupture d'alliance bornée après l'échec majeur d'une
+représaille commune naturelle : six Jaffa combinés au minimum, seuil de `20 %`,
+délai de `1–2` jours et transition déterministe de l'alliance vers la rivalité,
+sans raid, goodwill ou effet territorial supplémentaire.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
-| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes bornées et orchestration partagée des batailles locales ou mondiales ; les annonces de relation n'imposent aucun incident et les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines relationnelles 0.3.80-dev / représailles communes 0.3.81-dev |
+| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes bornées et rupture déterministe de l'alliance vers la rivalité après un échec majeur ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines relationnelles 0.3.80-dev / représailles communes 0.3.81-dev / rupture 0.3.82-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
@@ -72,7 +73,7 @@ la paire alliée exacte avec budget réduit `80 %` partagé `60/40`.
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, icône mondiale Goa'uld dédiée, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev / icône 0.3.50-dev |
 | Doctrines des domaines Goa'uld | Chaque faction conserve une préférence stratégique qualitative : conquête, asservissement ou terre brûlée. Elle module seulement le choix entre les trois raids naturels existants | 0.3.64-dev |
-| Relations entre domaines Goa'uld | Chaque paire conserve neutralité, rivalité, conflit ouvert, trêve ou alliance avec lettre RP sans incident immédiat ; sous Commandement SG-1, un unique effet `x1,25` peut favoriser destruction, direct ou enlèvement selon la priorité conflit > alliance > rivalité, puis un domaine en conflit ouvert utilise `75 %` de ses points ou une alliance seule `110 %`, sans cumul ni effet territorial ; une défaite décisive peut aussi ouvrir une représaille commune rare et bornée de la paire exacte | 0.3.66-dev / conflit 0.3.68-dev / alliance 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev |
+| Relations entre domaines Goa'uld | Chaque paire conserve neutralité, rivalité, conflit ouvert, trêve ou alliance avec lettre RP sans incident immédiat ; sous Commandement SG-1, un unique effet `x1,25` peut favoriser destruction, direct ou enlèvement selon la priorité conflit > alliance > rivalité, puis un domaine en conflit ouvert utilise `75 %` de ses points ou une alliance seule `110 %`, sans cumul ni effet territorial ; une défaite décisive peut ouvrir une représaille commune rare, puis l'échec majeur de cette réponse peut dissoudre l'alliance en rivalité | 0.3.66-dev / conflit 0.3.68-dev / alliance 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev |
 | Noms mondiaux des domaines Goa'uld | 288 noms combinatoires de factions et 1 728 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.46-dev |
 | Noms des Grands Maîtres Goa'uld | Nom formel culturel visible dès la création du monde, symbiote persistant aligné sur ce nom et identité humaine de l'hôte conservée séparément | 0.3.48-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, icône mondiale Jaffa libre dédiée, nouveaux dirigeants dotés d'un nom personnel et d'un nom de clan Jaffa libre, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 / noms des dirigeants 0.3.47-dev / icône 0.3.50-dev |

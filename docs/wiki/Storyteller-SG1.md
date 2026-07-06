@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.81-dev`
-> Statut : représailles communes validées en révision finale `r2`
+> Dernière évolution : `0.3.82-dev`
+> Statut : rupture d’alliance après échec majeur prête à tester en `r1`
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -107,6 +107,27 @@ ne propose aucun déplacement de caméra, puisqu'aucune force n'existe encore. L
 lettre d'arrivée nomme les deux domaines, annonce clairement deux détachements
 sur des côtés opposés et permet d'identifier une cible dans chaque force.
 
+## Rupture d'alliance après un échec majeur
+
+À partir de `0.3.82-dev`, seules les représailles communes naturelles comptant au
+moins six Jaffa combinés peuvent produire cette conséquence. Les chemins créés
+ou déclenchés par les commandes développeur sont exclus de l'observation
+automatique.
+
+Si la force combinée tombe à `20 %` ou moins de combattants actifs, l'échec est
+consommé une seule fois et programme une rupture déterministe après `1–2` jours.
+Une seule rupture peut être en attente dans le monde. Son délai est suspendu
+lorsqu'un autre storyteller est actif.
+
+À l'échéance, la paire exacte passe de **Alliance** à **Rivalité**. La conséquence
+est annulée si les domaines ne sont plus alliés ou si l'un d'eux est vaincu avant
+la résolution. Une lettre diplomatique sans cible nomme les deux domaines et
+explique la rupture ; elle ne déclenche aucun raid supplémentaire.
+
+Cette conséquence ne modifie ni la bonne volonté envers le joueur, ni les
+colonies, ni les territoires, ni les budgets de menace ou les doctrines
+permanentes.
+
 ## Batailles en conflit ouvert
 
 Depuis `0.3.69-dev`, une paire en conflit ouvert peut produire une
@@ -134,7 +155,8 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 - les relations et occurrences déjà enregistrées sont conservées ;
 - aucun nouvel état ou champ de bataille n'est tiré ;
-- les échéances futures sont repoussées pendant la suspension ;
+- les échéances futures, y compris une rupture d'alliance en attente, sont
+  repoussées pendant la suspension ;
 - revenir à Commandement SG-1 ne déclenche pas de retard accumulé ;
 - les raids naturels utilisent de nouveau `100 %` des points ;
 - aucune vague alliée différée n'est planifiée ;

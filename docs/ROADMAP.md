@@ -12,66 +12,43 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
-## Jalon gameplay courant validé
+## Jalon gameplay courant
+
+Aucun jalon gameplay n'est actif et aucun numéro de version ni nom de branche
+suivant n'est réservé. Le prochain travail doit être sélectionné comme une unité
+distincte dans la section `Futurs jalons décidés`, puis démarré depuis
+`develop` aligné avec le tag publié `v0.3.82-dev`.
+
+## Dernier jalon gameplay validé et publié
+
+`0.3.82-dev - Add Goa'uld alliance rupture after major failure`
+
+La révision finale `r1` est validée et publiée. Une représaille commune naturelle
+d'au moins six Jaffa combinés est observée jusqu'à une défaite à `20%` ou moins.
+Cet échec majeur programme sans second tirage aléatoire la rupture de la paire
+exacte après `1–2` jours. La relation passe de `Alliance` à `Rivalry` avec une
+lettre RP sans cible ; une seule rupture peut être en attente, son délai est
+suspendu hors `Commandement SG-1` et elle est annulée si la paire n'est plus
+alliée ou si un domaine devient inactif. Aucun goodwill, raid, territoire,
+colonie, budget ou profil doctrinal n'est modifié.
+
+## Jalon gameplay précédent
 
 `0.3.81-dev - Add shared Goa'uld alliance reprisals`
 
-Branche : `feature/goauld-alliance-shared-reprisals`, depuis le tag publié
-`v0.3.80-dev`.
-
-La révision `r2` conserve le périmètre validé : un raid naturel standard d'au
+La révision finale `r2` est validée et publiée. Un raid naturel standard d'au
 moins cinq Jaffa peut, après défaite à `25%` ou moins, déclencher avec `25%` de
 chance une représaille commune de la paire alliée exacte. Une seule réaction
 peut être en attente ; le délai est de `2–4` jours, le cooldown de paire de
 `30` jours et le budget de `80%` des points vanilla est partagé `60/40`.
 
-La révision finale `r2` est validée et prête pour publication. Elle retire la
-fausse cible de la lettre de programmation et donne à la lettre d'arrivée un
-texte explicite ainsi que deux cibles, une par détachement. Le retest ciblé
-confirme l'absence de bouton de déplacement prématuré, l'identification des deux
-forces et un `Player.log` accepté.
-
-## Dernier jalon gameplay validé
+## Jalon gameplay antérieur
 
 `0.3.80-dev - Make Goa'uld relations influence raid doctrines`
 
 La révision finale `r1` est validée et publiée. Elle applique une influence
 relationnelle légère, non cumulative et pilotée par XML aux doctrines déjà
 admissibles des raids naturels sous `Commandement SG-1`.
-
-## Dernier jalon gameplay publié
-
-`0.3.79-dev - Add coordinated allied Goa'uld joint raids`
-
-La révision finale `r1` est validée et publiée. Les lettres RP de relation rendent
-alliance, rivalité, guerre, trêve et neutralité lisibles sans déclencher
-d'incident. Lors d'un raid allié admissible, `50 %` des résultats restent
-standards ; les résultats coopératifs directs se répartissent entre renfort
-différé et assaut conjoint simultané.
-
-Décisions validées : aucun tirage storyteller supplémentaire, budget conjoint
-`110 %` partagé `60/40`, deux bords opposés, doctrine directe uniquement, une
-lettre commune, retraite bilatérale et aucune conséquence diplomatique ou
-territoriale après la défaite.
-
-Le test forcé conjoint à `1200` points ne garantit pas d'officier : son budget
-principal après partage est `792` et le garde à remplacer n'est normalement pas
-admissible. Cette absence observée est attendue ; le mécanisme naturel publié en
-`0.3.75-dev` reste inchangé.
-
-## Jalon gameplay précédent
-
-`0.3.78-dev - Add delayed allied Goa'uld raid reinforcements`
-
-La révision finale `r1` est validée et publiée. Un raid naturel sous
-`Commandement SG-1`, bénéficiant d'une alliance sans priorité de conflit ouvert
-et d'au moins `800` points finaux, partage son budget `110 %` entre la force
-principale (`75 %`) et une vague d'un domaine allié (`25 %`). Le délai reste
-caché et la lettre RP apparaît seulement à l'arrivée à pied des renforts.
-
-Décisions validées : budget partagé sans points gratuits, une seule vague,
-arrivée différée `EdgeWalkIn`, aucune annonce préalable, couleurs de factions
-distinctes et coopération temporaire sans réécriture de la diplomatie mondiale.
 
 ## Dernier jalon documentaire clôturé
 
@@ -123,8 +100,9 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 - renforts différés d'un domaine Goa'uld allié : `0.3.78-dev` ;
 - raids conjoints coordonnés entre domaines alliés : `0.3.79-dev`;
 - influence des relations sur les doctrines de raid : `0.3.80-dev`;
-- représailles communes entre domaines alliés : `0.3.81-dev` (jalon courant,
-  publication après validation finale).
+- représailles communes entre domaines alliés : `0.3.81-dev`.
+- rupture d'alliance après l'échec majeur d'une représaille commune :
+  `0.3.82-dev`.
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -335,14 +313,6 @@ méthode de sélection et textures temporaires ou définitives.
 
 Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
 non maîtrisé des conséquences d'alliance.
-
-### Ajouter une rupture d'alliance après un échec majeur
-
-Créer une conséquence lisible lorsqu'une action ou une défaite justifie la fin
-d'une alliance, sans rupture aléatoire incompréhensible.
-
-Décisions reportées au lancement : événements déclencheurs, état suivant,
-fréquence et variantes RP.
 
 ### Concevoir les garde-fous stratégiques territoriaux
 

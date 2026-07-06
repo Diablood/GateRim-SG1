@@ -1,6 +1,6 @@
 # GateRim SG-1 storyteller
 
-## Published strategic milestones
+## Strategic milestones
 
 - Foundation: `0.3.65-dev`
 - Persistent inter-domain relations: `0.3.66-dev`
@@ -11,9 +11,11 @@
 - Delayed allied reinforcement: `0.3.78-dev`
 - Coordinated joint raid outcomes: `0.3.79-dev`
 - Relation-influenced doctrine weights: `0.3.80-dev`
-- Target assembly: `0.3.80.0`
-- Current local revision: `r1`
-- Status: final revision `r1` validated and published.
+- Shared alliance reprisals: `0.3.81-dev`
+- Alliance rupture after major failure: `0.3.82-dev`
+- Target assembly: `0.3.82.0`
+- Final local revision: `r1`
+- Status: validated and published.
 
 ## Purpose
 
@@ -81,6 +83,8 @@ When another storyteller is selected:
   duration when SG-1 Command becomes active again;
 - every relation-derived natural-raid pressure factor resolves to `1.00`;
 - every relation-derived doctrine-weight modifier is disabled;
+- shared-reprisal and pending alliance-rupture deadlines are suspended and
+  shifted forward on return;
 - existing published GateRim incidents retain their ordinary contracts.
 
 This is a true suspension rather than a backlog. Returning to SG-1 Command does
@@ -240,6 +244,26 @@ arrival letter replaces the generic raid letter, names both domains, states that
 two detachments approach from opposite sides and targets one pawn from each
 force. Pending deadlines are suspended outside SG-1 Command.
 
+## Alliance rupture after major failure
+
+`0.3.82-dev` observes only natural shared reprisals that successfully spawn at
+least six combined Jaffa. Developer-created or developer-triggered shared
+reprisals are excluded from the automatic consequence.
+
+When `20%` or fewer of the combined force remain active, the failure is consumed
+once and deterministically schedules one exact-pair diplomatic rupture after
+`1–2` days. Only one rupture may be pending globally. The delay is suspended
+outside SG-1 Command.
+
+At resolution, the published relation tracker changes the exact pair from
+`Alliance` to `Rivalry`. If the pair is no longer allied or either domain is
+inactive before the deadline, the pending consequence is cancelled. No generic
+relation report is emitted; one of three localized RP variants names both
+domains and explains the rupture without any map or pawn target.
+
+This consequence adds no raid, threat points, goodwill change, territorial
+transfer, settlement destruction or doctrine-profile mutation.
+
 ## Open-conflict battlefields
 
 `0.3.69-dev` publishes the first visible battle caused by a relation state.
@@ -316,6 +340,22 @@ alliance-context raids. `Show allied raid cooperation report` identifies the
 active manifestation, while `Order joint primary force withdrawal` validates
 the bilateral exit response.
 
+Domain-reaction path:
+
+```text
+Actions de débogage
+> GateRim SG-1
+> Goa'uld...
+> Domain reactions...
+```
+
+`Create major alliance failure` schedules the exact-pair debug state without
+creating another raid. `Trigger pending alliance rupture now` executes the real
+`Alliance -> Rivalry` transition, while `Reset alliance rupture state` clears
+only the new observation and rupture records. `Show domain reaction state`
+displays the initial force, active survivors, threshold, deadline and final or
+cancelled outcome.
+
 ## Still inactive consequences
 
 The published relation and alliance layers still add no:
@@ -344,6 +384,16 @@ Final revision `r1` of `0.3.80-dev` is validated and published. The focused
 procedure confirms XML-driven `x1.25` doctrine modifiers, non-stacking priority,
 threshold preservation, storyteller exclusion, deterministic forced-command
 behavior, unchanged alliance manifestations and a clean accepted `Player.log`.
+
+Final revision `r2` of `0.3.81-dev` is validated and published. The shared
+reprisal uses the exact allied pair, bounded `80%` budget, `60/40` split,
+persistent delay and clear two-force letters without false camera targets.
+
+Final revision `r1` of `0.3.82-dev` is validated and published. The focused
+procedure confirms the persistent exact-pair deadline, save/reload continuity,
+one targetless three-variant diplomatic letter, the exact
+`Alliance -> Rivalry` transition, final `Completed` outcome, unchanged
+raid/reward/goodwill/territory behavior and a clean accepted `Player.log`.
 
 Final revision `r2` of `0.3.81-dev` is validated. The complete shared-reprisal
 procedure is conforming; the programming letter has no false target, the arrival

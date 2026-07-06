@@ -175,6 +175,21 @@ namespace GateRimSG1.Debugging
                         .ResetSharedAllianceReprisals,
                     410),
                 ActionNode(
+                    "Create major alliance failure",
+                    GoauldDomainReprisalDebugActions
+                        .CreateMajorAllianceFailure,
+                    390),
+                ActionNode(
+                    "Trigger pending alliance rupture now",
+                    GoauldDomainReprisalDebugActions
+                        .TriggerPendingAllianceRupture,
+                    380),
+                ActionNode(
+                    "Reset alliance rupture state",
+                    GoauldDomainReprisalDebugActions
+                        .ResetAllianceRuptureState,
+                    370),
+                ActionNode(
                     "Create extraction ultimatum",
                     GoauldDomainReprisalDebugActions
                         .CreateExtractionUltimatum,

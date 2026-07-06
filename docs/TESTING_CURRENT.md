@@ -1,101 +1,154 @@
-# Current milestone validation
+# Current milestone test procedure
 
-Jalon : `0.3.81-dev - Add shared Goa'uld alliance reprisals`
+Jalon : `0.3.82-dev - Add Goa'uld alliance rupture after major failure`
 
-Branche : `feature/goauld-alliance-shared-reprisals`
+Révision finale validée : `r1`
 
-Révision finale validée : `r2`
+Version de DLL validée : `0.3.82.0`
 
-Version de DLL attendue : `0.3.81.0`
 
-## Préparation
+## Final result
 
-- utiliser une carte de colonie jouable ;
-- activer le mode développeur ;
-- sélectionner le storyteller `Commandement SG-1` ;
-- disposer d'au moins deux domaines Goa'uld actifs ;
-- dans
-  `Actions de débogage > GateRim SG-1 > Goa'uld inter-domain relations...`,
-  placer une paire en `Alliance` ;
-- ouvrir ensuite
-  `Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...`.
+Status: **validated by the maintainer**.
 
-## Validation finale r2 — lettre de programmation
+The required focused path passed on revision `r1`:
 
-1. Exécuter `Reset shared alliance reprisals`.
-2. Exécuter `Create shared alliance reprisal`.
-3. Ouvrir la lettre `Représailles communes Goa'uld`.
+- expected assembly and automated checks;
+- pending exact pair and `1/6` debug survivor state;
+- save/reload persistence without deadline reset;
+- one targetless diplomatic letter naming both domains;
+- exact `Alliance -> Rivalry` transition;
+- final `Completed` outcome with no pending rupture;
+- no raid, reward, goodwill or territorial side effect;
+- no new relevant error in the accepted `Player.log`.
 
-Attendu :
+The optional cancellation and storyteller-suspension procedures below remain
+durable regression tests; they are not claimed as part of the focused acceptance.
 
-- la lettre nomme le domaine lésé et son allié ;
-- elle annonce une réaction future et son délai ;
-- elle ne propose pas `Se rendre sur les lieux` ;
-- cliquer la lettre ne centre pas artificiellement la caméra sur le centre de la
-  colonie ;
-- `Show domain reaction state` affiche une seule représaille commune en attente.
+## Automated checks
 
-## Validation finale r2 — lettre d'arrivée
-
-1. Exécuter `Trigger pending shared reprisal now`.
-2. Ouvrir la nouvelle lettre `Représailles communes Goa'uld`.
-3. Utiliser sa navigation de cible si RimWorld l'affiche.
-
-Attendu :
-
-- le texte nomme les deux domaines ;
-- il annonce explicitement **deux détachements Jaffa** ;
-- il précise qu'ils arrivent depuis des côtés opposés ;
-- deux forces distinctes et simultanées sont visibles, chacune aux couleurs de
-  son domaine ;
-- les cibles de la lettre contiennent un pawn de la force principale et un pawn
-  de la force alliée ; la navigation ou le surlignage permet donc d'identifier
-  les deux détachements au lieu d'un seul ;
-- aucune deuxième lettre de raid générique ne double l'annonce commune.
-
-## Régressions déjà acceptées à ne pas rejouer sauf anomalie
-
-Le premier passage a été signalé conforme pour :
-
-- création et déclenchement de la représaille ;
-- paire exacte ;
-- budget total `80%` des points vanilla ;
-- partage `60/40` ;
-- arrivée simultanée depuis des bords opposés ;
-- coopération temporaire ;
-- absence d'effet territorial ou diplomatique.
-
-## Contrôles automatiques
-
-Depuis la racine du dépôt :
+From the repository root:
 
 ```powershell
-git diff --check
 .\build.cmd
 .\tools\check-duration-formatting.cmd
 .\tools\check-project-consistency.cmd
 ```
 
-Résultats attendus :
+Expected results:
 
-- assembly `0.3.81.0` ;
-- audit des durées avec `104` clés uniques ;
-- versions, XML, traductions et documentation cohérents ;
-- aucune erreur de compilation.
+```text
+Assembly: 0.3.82.0
+Duration keys: 104
+BackstoryDefs: 83
+Project consistency: passed
+```
 
-## Journal
+## Required focused test
 
-Après les deux lettres, vérifier `Player.log`. Aucun nouvel avertissement ou
-exception pertinent ne doit apparaître lors de la programmation, de la création
-des deux groupes ou de l'ouverture/navigation de la lettre d'arrivée.
+Use a player home map, developer mode and the **Commandement SG-1** storyteller.
 
+### 1. Prepare one exact alliance
 
-## Résultat accepté
+Open:
 
-La procédure finale `r2` est validée : la lettre de programmation ne propose
-plus de déplacement vers un lieu inexistant, la lettre d'arrivée annonce et
-cible les deux détachements, les autres tests fonctionnels restent conformes et
-aucune nouvelle erreur pertinente n'est signalée dans `Player.log`.
+```text
+Actions de débogage
+> GateRim SG-1
+> Goa'uld inter-domain relations...
+```
 
-Le nom exact de l'action développeur est
-`Trigger pending shared reprisal now`.
+- Use `Create additional test domain` until at least two active domains exist.
+- Use `Set all pairs: Alliance`.
+- Use `Show relation report` and confirm the selected test pair is in
+  `Alliance`.
+
+### 2. Create the major failure
+
+Open:
+
+```text
+Actions de débogage
+> GateRim SG-1
+> Goa'uld...
+> Domain reactions...
+```
+
+- Use `Reset alliance rupture state`.
+- Use `Create major alliance failure`.
+- Use `Show domain reaction state`.
+
+Expected report:
+
+- one pending alliance rupture;
+- the exact two allied domains;
+- failure count `1/6`;
+- a short positive deadline;
+- outcome `Pending`.
+
+No raid or letter should be created at this scheduling stage.
+
+### 3. Verify persistence
+
+- Save the game.
+- Reload the save.
+- Use `Show domain reaction state` again.
+
+The same pair, failure count and pending rupture must remain present. The deadline
+must not reset to a fresh full delay.
+
+### 4. Resolve the rupture
+
+In `Domain reactions...`, use:
+
+```text
+Trigger pending alliance rupture now
+```
+
+Expected result:
+
+- exactly one neutral diplomatic letter appears;
+- the text names both domains;
+- the text explicitly states that their alliance is dissolved and replaced by
+  rivalry;
+- the letter has no `Se rendre sur les lieux` action and no pawn/map target;
+- no raid, reward or site is created.
+
+Open `Goa'uld inter-domain relations... > Show relation report`:
+
+- the exact pair is now `Rivalry`;
+- its previous relation is `Alliance`.
+
+Open `Goa'uld... > Domain reactions... > Show domain reaction state`:
+
+- the rupture outcome is `Completed`;
+- no rupture remains pending.
+
+## Required regression observations
+
+- Existing shared-reprisal actions keep their exact labels and behavior.
+- The rupture does not modify vanilla goodwill toward the player.
+- No settlement or territory changes owner or disappears.
+- No extra natural raid is started.
+- `Player.log` contains no new relevant error.
+
+## Optional cancellation test
+
+1. Set all pairs to `Alliance`.
+2. Use `Reset alliance rupture state`.
+3. Use `Create major alliance failure`.
+4. In the relation menu use `Set first pair: Neutral` before the rupture fires.
+5. Return to `Domain reactions...` and use `Show domain reaction state` after
+   at least `250` game ticks.
+
+Expected result: the rupture is no longer pending and reports
+`CancelledNoLongerAllied`; no rupture letter is emitted.
+
+## Optional storyteller suspension test
+
+1. Schedule a major failure under `Commandement SG-1`.
+2. Switch to another storyteller before the deadline.
+3. Let more than the short debug delay pass.
+4. Confirm no rupture occurs.
+5. Return to `Commandement SG-1` and confirm the pending deadline was shifted
+   forward rather than consumed as backlog.

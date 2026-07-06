@@ -4,7 +4,16 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.81-dev`
+> Version du mod documentée : `0.3.82-dev`
+
+## Rupture d'alliance après un échec majeur
+
+`0.3.82-dev` ajoute une conséquence diplomatique bornée à l'échec d'une
+représaille commune naturelle. Si au moins six Jaffa combinés tombent à `20 %`
+ou moins de combattants actifs, la paire exacte rompt son alliance après `1–2`
+jours et passe à la rivalité. Une seule rupture peut être en attente, elle est
+annulée si la paire n'est plus alliée et elle ne produit ni raid supplémentaire,
+ni changement de territoire ou de bonne volonté envers le joueur.
 
 ## Représailles communes Goa'uld
 

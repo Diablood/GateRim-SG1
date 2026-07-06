@@ -195,6 +195,34 @@ namespace GateRimSG1.Goauld
                 .ToList();
         }
 
+        public bool TryBreakAllianceAfterMajorFailure(
+            Faction firstDomain,
+            Faction secondDomain,
+            bool debugForced)
+        {
+            ReconcileAllPairs();
+            Canonicalize(ref firstDomain, ref secondDomain);
+
+            GoauldInterDomainRelationState state = states.FirstOrDefault(
+                candidate =>
+                    IsPairActive(candidate)
+                    && candidate.firstDomain == firstDomain
+                    && candidate.secondDomain == secondDomain);
+
+            if (state?.relation != GoauldInterDomainRelation.Alliance)
+            {
+                return false;
+            }
+
+            ApplyTransition(
+                state,
+                GoauldInterDomainRelation.Rivalry,
+                CurrentTick(),
+                sendReport: false,
+                debugForced: debugForced);
+            return state.relation == GoauldInterDomainRelation.Rivalry;
+        }
+
         public bool ForceNextTransitionDebug()
         {
             ReconcileAllPairs();
@@ -372,7 +400,8 @@ namespace GateRimSG1.Goauld
             builder.AppendLine(
                 "published effects: bounded natural-raid pressure, "
                 + "non-stacking doctrine-weight influence, "
-                + "standard/delayed/joint alliance raid outcomes and "
+                + "standard/delayed/joint alliance raid outcomes, "
+                + "shared reprisals, major-failure alliance rupture and "
                 + "open-conflict battlefield opportunities");
             builder.AppendLine(
                 "still inactive: territorial expansion, settlement "

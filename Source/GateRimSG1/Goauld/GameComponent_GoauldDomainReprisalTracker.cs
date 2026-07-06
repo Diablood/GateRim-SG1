@@ -8,9 +8,10 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Persistent reactions to successful active Goa'uld extractions.
-    /// One announced reprisal may be pending per domain; later triggers can
-    /// reuse this layer without creating a parallel mission framework.
+    /// Persistent Goa'uld reactions to player-caused extraction outcomes,
+    /// decisive raid defeats and major failures of shared alliance reprisals.
+    /// The layers reuse one tracker without creating a parallel mission or
+    /// grievance framework.
     /// </summary>
     public sealed class GameComponent_GoauldDomainReprisalTracker
         : GameComponent
@@ -32,7 +33,14 @@ namespace GateRimSG1.Goauld
         public const int SharedMaximumDelayTicks = 240000;
         public const int SharedPairCooldownTicks = 1800000;
 
+        public const int AllianceRuptureMinimumInitialPawnCount = 6;
+        public const float AllianceRuptureFailureRemainingFraction = 0.20f;
+        public const int AllianceRuptureMinimumDelayTicks = 60000;
+        public const int AllianceRuptureMaximumDelayTicks = 120000;
+
         private const int SharedDebugDelayTicks = 5000;
+        private const int AllianceRuptureDebugDelayTicks = 5000;
+        private const int AllianceRuptureVariantCount = 3;
 
         private List<GoauldDomainReprisalState> states =
             new List<GoauldDomainReprisalState>();
@@ -42,9 +50,15 @@ namespace GateRimSG1.Goauld
         private List<GoauldSharedAllianceReprisalState>
             sharedAllianceStates =
                 new List<GoauldSharedAllianceReprisalState>();
+        private List<GoauldAllianceMajorFailureObservation>
+            allianceFailureObservations =
+                new List<GoauldAllianceMajorFailureObservation>();
+        private List<GoauldAllianceRuptureState> allianceRuptureStates =
+            new List<GoauldAllianceRuptureState>();
         private int nextCheckTick;
         private bool sharedStorytellerWasActive;
         private int sharedSuspensionStartTick = -1;
+        private string lastAllianceRuptureReportKey;
 
         public GameComponent_GoauldDomainReprisalTracker(Game game)
         {
@@ -69,6 +83,17 @@ namespace GateRimSG1.Goauld
                 ref sharedAllianceStates,
                 "goauldSharedAllianceReprisalStates",
                 LookMode.Deep);
+            Scribe_Collections.Look(
+                ref allianceFailureObservations,
+                "goauldAllianceMajorFailureObservations",
+                LookMode.Deep);
+            Scribe_Collections.Look(
+                ref allianceRuptureStates,
+                "goauldAllianceRuptureStates",
+                LookMode.Deep);
+            Scribe_Values.Look(
+                ref lastAllianceRuptureReportKey,
+                "goauldAllianceRuptureLastReportKey");
             Scribe_Values.Look(
                 ref sharedStorytellerWasActive,
                 "goauldSharedAllianceStorytellerWasActive",
@@ -92,6 +117,14 @@ namespace GateRimSG1.Goauld
                     ?.Where(IsValidSharedState)
                     .ToList()
                     ?? new List<GoauldSharedAllianceReprisalState>();
+                allianceFailureObservations = allianceFailureObservations
+                    ?.Where(IsValidAllianceFailureObservation)
+                    .ToList()
+                    ?? new List<GoauldAllianceMajorFailureObservation>();
+                allianceRuptureStates = allianceRuptureStates
+                    ?.Where(IsValidAllianceRuptureState)
+                    .ToList()
+                    ?? new List<GoauldAllianceRuptureState>();
                 sharedSuspensionStartTick = Math.Max(
                     -1,
                     sharedSuspensionStartTick);
@@ -373,6 +406,7 @@ namespace GateRimSG1.Goauld
             }
 
             int currentTick = CurrentTick();
+            state.debugForcedExecution = true;
             state.reprisalTick = currentTick;
             return TryResolveSharedAllianceReprisal(state, currentTick);
         }
@@ -384,6 +418,50 @@ namespace GateRimSG1.Goauld
             sharedSuspensionStartTick = -1;
             sharedStorytellerWasActive =
                 GateRimStorytellerUtility.IsGateRimStorytellerActive;
+        }
+
+        public bool TryCreateDebugMajorAllianceFailure(Map map)
+        {
+            if (map == null
+                || !map.IsPlayerHome
+                || HasPendingAllianceRupture()
+                || !GameComponent_GoauldAlliedReinforcementTracker
+                    .TryGetFirstAlliancePair(
+                        out Faction primaryDomain,
+                        out Faction alliedDomain))
+            {
+                return false;
+            }
+
+            return TryScheduleAllianceRupture(
+                map.uniqueID,
+                primaryDomain,
+                alliedDomain,
+                AllianceRuptureMinimumInitialPawnCount,
+                1,
+                debugShortDelay: true);
+        }
+
+        public bool TriggerFirstPendingAllianceRuptureNow()
+        {
+            GoauldAllianceRuptureState state = allianceRuptureStates
+                .FirstOrDefault(candidate => candidate?.pending == true);
+
+            if (state == null)
+            {
+                return false;
+            }
+
+            int currentTick = CurrentTick();
+            state.ruptureTick = currentTick;
+            return TryResolveAllianceRupture(state, currentTick);
+        }
+
+        public void ResetAllianceRupturesDebug()
+        {
+            allianceFailureObservations.Clear();
+            allianceRuptureStates.Clear();
+            lastAllianceRuptureReportKey = null;
         }
 
         public bool TriggerFirstPendingNow()
@@ -453,6 +531,7 @@ namespace GateRimSG1.Goauld
 
             states.Clear();
             ResetSharedAllianceReprisalsDebug();
+            ResetAllianceRupturesDebug();
             nextCheckTick = 0;
         }
 
@@ -511,6 +590,61 @@ namespace GateRimSG1.Goauld
             }
 
             lines.Add(string.Empty);
+            lines.Add("Major alliance failure observations:");
+
+            if (allianceFailureObservations.Count == 0)
+            {
+                lines.Add("  none");
+            }
+            else
+            {
+                foreach (GoauldAllianceMajorFailureObservation observation
+                    in allianceFailureObservations)
+                {
+                    Map observationMap = FindMap(
+                        observation.targetMapUniqueId);
+                    int activeCount = ActiveAllianceFailurePawnCount(
+                        observation,
+                        observationMap);
+                    lines.Add(
+                        "  "
+                        + $"{observation.primaryDomain?.Name ?? "<missing>"} + "
+                        + $"{observation.alliedDomain?.Name ?? "<missing>"}: "
+                        + $"active {activeCount}/{observation.initialPawnCount}, "
+                        + $"threshold <= {observation.initialPawnCount * AllianceRuptureFailureRemainingFraction:0.##}, "
+                        + $"map {observation.targetMapUniqueId}");
+                }
+            }
+
+            lines.Add(string.Empty);
+            lines.Add("Alliance ruptures after major failure:");
+
+            if (allianceRuptureStates.Count == 0)
+            {
+                lines.Add("  none");
+            }
+            else
+            {
+                lines.AddRange(allianceRuptureStates.Select(state =>
+                    "  "
+                    + $"{state.primaryDomain?.Name ?? "<missing>"} <-> "
+                    + $"{state.alliedDomain?.Name ?? "<missing>"}: "
+                    + (state.pending
+                        ? $"pending in {Math.Max(0, state.ruptureTick - currentTick)} ticks, "
+                            + $"failure {state.activePawnCountAtFailure}/{state.initialPawnCount}, "
+                            + $"map {state.targetMapUniqueId}"
+                        : $"{state.outcome}, resolved tick {state.resolutionTick}")));
+            }
+
+            lines.Add(
+                "  rupture rule: natural shared reprisal only, at least 6 "
+                + "combined Jaffa, evaluate once at <=20% active, "
+                + "deterministic Alliance -> Rivalry after 1-2 days");
+            lines.Add(
+                "  one pending rupture globally; cancel if the exact pair "
+                + "is no longer allied or either domain becomes inactive");
+
+            lines.Add(string.Empty);
             lines.Add(
                 "shared rule: standard natural raid only, at least 5 initial "
                 + "Jaffa, evaluate once at <=25% active, 25% chance, one "
@@ -532,6 +666,14 @@ namespace GateRimSG1.Goauld
                 ?.Where(IsValidSharedState)
                 .ToList()
                 ?? new List<GoauldSharedAllianceReprisalState>();
+            allianceFailureObservations = allianceFailureObservations
+                ?.Where(IsValidAllianceFailureObservation)
+                .ToList()
+                ?? new List<GoauldAllianceMajorFailureObservation>();
+            allianceRuptureStates = allianceRuptureStates
+                ?.Where(IsValidAllianceRuptureState)
+                .ToList()
+                ?? new List<GoauldAllianceRuptureState>();
             sharedStorytellerWasActive =
                 GateRimStorytellerUtility.IsGateRimStorytellerActive;
 
@@ -608,6 +750,9 @@ namespace GateRimSG1.Goauld
             {
                 TryResolveSharedAllianceReprisal(state, currentTick);
             }
+
+            TickAllianceFailureObservations();
+            TickAllianceRuptures(currentTick);
         }
 
         private bool TryObserveNaturalStandardRaid(
@@ -711,6 +856,7 @@ namespace GateRimSG1.Goauld
                     * SharedThreatBudgetFactor);
             state.pending = true;
             state.debugShortDelay = debugShortDelay;
+            state.debugForcedExecution = false;
 
             // This warning announces a future reaction only. It intentionally
             // has no LookTargets, so RimWorld does not offer a misleading
@@ -744,6 +890,8 @@ namespace GateRimSG1.Goauld
             }
 
             Map map = FindMap(state.targetMapUniqueId);
+            bool excludeAllianceRuptureObservation =
+                state.debugShortDelay || state.debugForcedExecution;
 
             if (map == null
                 || !map.IsPlayerHome
@@ -831,6 +979,16 @@ namespace GateRimSG1.Goauld
                     targets.Count > 0
                         ? new LookTargets(targets)
                         : new LookTargets(map.Center, map));
+
+                if (!excludeAllianceRuptureObservation)
+                {
+                    TryObserveMajorAllianceFailure(
+                        map,
+                        state.primaryDomain,
+                        state.alliedDomain,
+                        primaryPawns,
+                        alliedPawns);
+                }
             }
             else
             {
@@ -878,6 +1036,13 @@ namespace GateRimSG1.Goauld
                         candidate?.pending == true))
                 {
                     state.reprisalTick += pausedTicks;
+                }
+
+                foreach (GoauldAllianceRuptureState state
+                    in allianceRuptureStates.Where(candidate =>
+                        candidate?.pending == true))
+                {
+                    state.ruptureTick += pausedTicks;
                 }
 
                 sharedSuspensionStartTick = -1;
@@ -1007,6 +1172,400 @@ namespace GateRimSG1.Goauld
                 + SharedPairCooldownTicks;
             state.raidPoints = 0f;
             state.debugShortDelay = false;
+            state.debugForcedExecution = false;
+        }
+
+        private void TickAllianceFailureObservations()
+        {
+            for (int index = allianceFailureObservations.Count - 1;
+                index >= 0;
+                index--)
+            {
+                GoauldAllianceMajorFailureObservation observation =
+                    allianceFailureObservations[index];
+
+                if (!IsValidAllianceFailureObservation(observation))
+                {
+                    allianceFailureObservations.RemoveAt(index);
+                    continue;
+                }
+
+                Map map = FindMap(observation.targetMapUniqueId);
+
+                if (map == null
+                    || !map.IsPlayerHome
+                    || !AreDomainsStillAllied(
+                        observation.primaryDomain,
+                        observation.alliedDomain))
+                {
+                    allianceFailureObservations.RemoveAt(index);
+                    continue;
+                }
+
+                int activeCount = ActiveAllianceFailurePawnCount(
+                    observation,
+                    map);
+                float threshold = observation.initialPawnCount
+                    * AllianceRuptureFailureRemainingFraction;
+
+                if (activeCount > threshold)
+                {
+                    continue;
+                }
+
+                allianceFailureObservations.RemoveAt(index);
+
+                if (!HasPendingAllianceRupture())
+                {
+                    TryScheduleAllianceRupture(
+                        observation.targetMapUniqueId,
+                        observation.primaryDomain,
+                        observation.alliedDomain,
+                        observation.initialPawnCount,
+                        activeCount,
+                        debugShortDelay: false);
+                }
+            }
+        }
+
+        private void TickAllianceRuptures(int currentTick)
+        {
+            foreach (GoauldAllianceRuptureState state
+                in allianceRuptureStates.Where(candidate =>
+                    candidate?.pending == true).ToList())
+            {
+                if (!AreDomainsActive(
+                        state.primaryDomain,
+                        state.alliedDomain))
+                {
+                    CancelAllianceRupture(
+                        state,
+                        currentTick,
+                        GoauldAllianceRuptureOutcome
+                            .CancelledInactiveDomain);
+                    continue;
+                }
+
+                if (!AreDomainsStillAllied(
+                        state.primaryDomain,
+                        state.alliedDomain))
+                {
+                    CancelAllianceRupture(
+                        state,
+                        currentTick,
+                        GoauldAllianceRuptureOutcome
+                            .CancelledNoLongerAllied);
+                    continue;
+                }
+
+                if (currentTick >= state.ruptureTick)
+                {
+                    TryResolveAllianceRupture(state, currentTick);
+                }
+            }
+        }
+
+        private bool TryObserveMajorAllianceFailure(
+            Map map,
+            Faction primaryDomain,
+            Faction alliedDomain,
+            List<Pawn> primaryPawns,
+            List<Pawn> alliedPawns)
+        {
+            List<Pawn> validPrimaryPawns = FilterTrackedPawns(
+                primaryPawns,
+                map,
+                primaryDomain);
+            List<Pawn> validAlliedPawns = FilterTrackedPawns(
+                alliedPawns,
+                map,
+                alliedDomain);
+            int initialPawnCount = validPrimaryPawns.Count
+                + validAlliedPawns.Count;
+
+            if (!GateRimStorytellerUtility.IsGateRimStorytellerActive
+                || map == null
+                || !map.IsPlayerHome
+                || initialPawnCount <
+                    AllianceRuptureMinimumInitialPawnCount
+                || HasPendingAllianceRupture()
+                || !AreDomainsStillAllied(primaryDomain, alliedDomain))
+            {
+                return false;
+            }
+
+            allianceFailureObservations.RemoveAll(candidate =>
+                candidate?.targetMapUniqueId == map.uniqueID
+                && ((candidate.primaryDomain == primaryDomain
+                        && candidate.alliedDomain == alliedDomain)
+                    || (candidate.primaryDomain == alliedDomain
+                        && candidate.alliedDomain == primaryDomain)));
+            allianceFailureObservations.Add(
+                new GoauldAllianceMajorFailureObservation
+                {
+                    targetMapUniqueId = map.uniqueID,
+                    primaryDomain = primaryDomain,
+                    alliedDomain = alliedDomain,
+                    primaryPawns = validPrimaryPawns,
+                    alliedPawns = validAlliedPawns,
+                    initialPawnCount = initialPawnCount
+                });
+
+            GR_Log.Message(
+                "Observing a natural shared Goa'uld reprisal for a major "
+                + "alliance failure: "
+                + $"primary={primaryDomain.Name} ({primaryDomain.loadID}), "
+                + $"ally={alliedDomain.Name} ({alliedDomain.loadID}), "
+                + $"map={map.uniqueID}, combined pawns={initialPawnCount}.");
+            return true;
+        }
+
+        private bool TryScheduleAllianceRupture(
+            int targetMapUniqueId,
+            Faction primaryDomain,
+            Faction alliedDomain,
+            int initialPawnCount,
+            int activePawnCountAtFailure,
+            bool debugShortDelay)
+        {
+            int currentTick = CurrentTick();
+
+            if (!GateRimStorytellerUtility.IsGateRimStorytellerActive
+                || primaryDomain == null
+                || alliedDomain == null
+                || initialPawnCount <
+                    AllianceRuptureMinimumInitialPawnCount
+                || HasPendingAllianceRupture()
+                || !AreDomainsStillAllied(primaryDomain, alliedDomain))
+            {
+                return false;
+            }
+
+            GoauldAllianceRuptureState state =
+                FindOrCreateAllianceRuptureState(
+                    primaryDomain,
+                    alliedDomain);
+            int delay = debugShortDelay
+                ? AllianceRuptureDebugDelayTicks
+                : Rand.RangeInclusive(
+                    AllianceRuptureMinimumDelayTicks,
+                    AllianceRuptureMaximumDelayTicks);
+
+            state.primaryDomain = primaryDomain;
+            state.alliedDomain = alliedDomain;
+            state.targetMapUniqueId = targetMapUniqueId;
+            state.failureTick = currentTick;
+            state.ruptureTick = currentTick + delay;
+            state.resolutionTick = 0;
+            state.initialPawnCount = initialPawnCount;
+            state.activePawnCountAtFailure = Math.Max(
+                0,
+                activePawnCountAtFailure);
+            state.pending = true;
+            state.debugShortDelay = debugShortDelay;
+            state.outcome = GoauldAllianceRuptureOutcome.Pending;
+
+            GR_Log.Message(
+                "Scheduled Goa'uld alliance rupture after a major shared "
+                + "reprisal failure: "
+                + $"primary={primaryDomain.Name} ({primaryDomain.loadID}), "
+                + $"ally={alliedDomain.Name} ({alliedDomain.loadID}), "
+                + $"failure={state.activePawnCountAtFailure}/"
+                + $"{state.initialPawnCount}, delay={delay}.");
+            return true;
+        }
+
+        private bool TryResolveAllianceRupture(
+            GoauldAllianceRuptureState state,
+            int currentTick)
+        {
+            if (state?.pending != true
+                || !GateRimStorytellerUtility.IsGateRimStorytellerActive)
+            {
+                return false;
+            }
+
+            if (!AreDomainsActive(
+                    state.primaryDomain,
+                    state.alliedDomain))
+            {
+                CancelAllianceRupture(
+                    state,
+                    currentTick,
+                    GoauldAllianceRuptureOutcome.CancelledInactiveDomain);
+                return false;
+            }
+
+            if (!AreDomainsStillAllied(
+                    state.primaryDomain,
+                    state.alliedDomain))
+            {
+                CancelAllianceRupture(
+                    state,
+                    currentTick,
+                    GoauldAllianceRuptureOutcome
+                        .CancelledNoLongerAllied);
+                return false;
+            }
+
+            GameComponent_GoauldInterDomainRelationTracker relationTracker =
+                GameComponent_GoauldInterDomainRelationTracker.Current;
+            bool changed = relationTracker
+                ?.TryBreakAllianceAfterMajorFailure(
+                    state.primaryDomain,
+                    state.alliedDomain,
+                    state.debugShortDelay) == true;
+
+            if (!changed)
+            {
+                CancelAllianceRupture(
+                    state,
+                    currentTick,
+                    GoauldAllianceRuptureOutcome
+                        .CancelledTransitionFailed);
+                return false;
+            }
+
+            string reportKey = SelectAllianceRuptureReportKey();
+            Find.LetterStack?.ReceiveLetter(
+                "GR_GoauldAllianceRupture_Label".Translate(),
+                reportKey.Translate(
+                    state.primaryDomain.Name,
+                    state.alliedDomain.Name),
+                LetterDefOf.NeutralEvent,
+                (LookTargets)null);
+
+            state.pending = false;
+            state.resolutionTick = currentTick;
+            state.outcome = GoauldAllianceRuptureOutcome.Completed;
+
+            GR_Log.Message(
+                "Resolved Goa'uld alliance rupture after major failure: "
+                + $"{state.primaryDomain.Name} ({state.primaryDomain.loadID}) "
+                + $"and {state.alliedDomain.Name} "
+                + $"({state.alliedDomain.loadID}) changed from Alliance "
+                + "to Rivalry.");
+            return true;
+        }
+
+        private void CancelAllianceRupture(
+            GoauldAllianceRuptureState state,
+            int currentTick,
+            GoauldAllianceRuptureOutcome outcome)
+        {
+            if (state == null)
+            {
+                return;
+            }
+
+            state.pending = false;
+            state.resolutionTick = currentTick;
+            state.outcome = outcome;
+
+            GR_Log.Message(
+                "Cancelled pending Goa'uld alliance rupture: "
+                + $"primary={state.primaryDomain?.Name ?? "<missing>"}, "
+                + $"ally={state.alliedDomain?.Name ?? "<missing>"}, "
+                + $"reason={outcome}.");
+        }
+
+        private string SelectAllianceRuptureReportKey()
+        {
+            int variant = Rand.Range(0, AllianceRuptureVariantCount);
+            string key = "GR_GoauldAllianceRupture_Text" + variant;
+
+            if (key == lastAllianceRuptureReportKey
+                && AllianceRuptureVariantCount > 1)
+            {
+                variant = (variant
+                    + Rand.Range(1, AllianceRuptureVariantCount))
+                    % AllianceRuptureVariantCount;
+                key = "GR_GoauldAllianceRupture_Text" + variant;
+            }
+
+            lastAllianceRuptureReportKey = key;
+            return key;
+        }
+
+        private bool HasPendingAllianceRupture()
+        {
+            return allianceRuptureStates.Any(state =>
+                state?.pending == true);
+        }
+
+        private GoauldAllianceRuptureState
+            FindOrCreateAllianceRuptureState(
+                Faction first,
+                Faction second)
+        {
+            GoauldAllianceRuptureState state = allianceRuptureStates
+                .FirstOrDefault(candidate =>
+                    candidate != null
+                    && ((candidate.primaryDomain == first
+                            && candidate.alliedDomain == second)
+                        || (candidate.primaryDomain == second
+                            && candidate.alliedDomain == first)));
+
+            if (state != null)
+            {
+                return state;
+            }
+
+            state = new GoauldAllianceRuptureState
+            {
+                primaryDomain = first,
+                alliedDomain = second
+            };
+            allianceRuptureStates.Add(state);
+            return state;
+        }
+
+        private static int ActiveAllianceFailurePawnCount(
+            GoauldAllianceMajorFailureObservation observation,
+            Map map)
+        {
+            if (observation == null || map == null)
+            {
+                return 0;
+            }
+
+            return ActiveSharedRaidPawnCount(
+                    observation.primaryPawns,
+                    map,
+                    observation.primaryDomain)
+                + ActiveSharedRaidPawnCount(
+                    observation.alliedPawns,
+                    map,
+                    observation.alliedDomain);
+        }
+
+        private static List<Pawn> FilterTrackedPawns(
+            IEnumerable<Pawn> pawns,
+            Map map,
+            Faction faction)
+        {
+            return pawns?.Where(pawn =>
+                    pawn != null
+                    && pawn.Spawned
+                    && pawn.Map == map
+                    && pawn.Faction == faction)
+                .Distinct()
+                .ToList()
+                ?? new List<Pawn>();
+        }
+
+        private static bool AreDomainsActive(
+            Faction first,
+            Faction second)
+        {
+            return first != null
+                && second != null
+                && !first.defeated
+                && !second.defeated
+                && GoauldSystemLordFactionUtility
+                    .IsSystemLordFaction(first)
+                && GoauldSystemLordFactionUtility
+                    .IsSystemLordFaction(second);
         }
 
         private static int ActiveSharedRaidPawnCount(
@@ -1038,6 +1597,27 @@ namespace GateRimSG1.Goauld
 
         private static bool IsValidSharedState(
             GoauldSharedAllianceReprisalState state)
+        {
+            return state != null
+                && state.primaryDomain != null
+                && state.alliedDomain != null
+                && state.primaryDomain != state.alliedDomain;
+        }
+
+        private static bool IsValidAllianceFailureObservation(
+            GoauldAllianceMajorFailureObservation observation)
+        {
+            return observation != null
+                && observation.targetMapUniqueId >= 0
+                && observation.primaryDomain != null
+                && observation.alliedDomain != null
+                && observation.primaryDomain != observation.alliedDomain
+                && observation.initialPawnCount >=
+                    AllianceRuptureMinimumInitialPawnCount;
+        }
+
+        private static bool IsValidAllianceRuptureState(
+            GoauldAllianceRuptureState state)
         {
             return state != null
                 && state.primaryDomain != null

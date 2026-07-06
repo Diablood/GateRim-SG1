@@ -120,6 +120,55 @@ namespace GateRimSG1.Goauld
                 historical: false);
         }
 
+        public static void CreateMajorAllianceFailure()
+        {
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.TryCreateDebugMajorAllianceFailure(
+                        Find.CurrentMap) != true)
+            {
+                Reject(
+                    "Could not create a major Goa'uld alliance failure. "
+                    + "Use SG-1 Command, create at least two active domains, "
+                    + "set the first pair to Alliance and clear any pending "
+                    + "alliance rupture.");
+                return;
+            }
+
+            Messages.Message(
+                "Major Goa'uld alliance failure recorded; a rupture is "
+                + "pending.",
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
+        public static void TriggerPendingAllianceRupture()
+        {
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.TriggerFirstPendingAllianceRuptureNow() != true)
+            {
+                Reject(
+                    "No pending Goa'uld alliance rupture could be triggered.");
+            }
+        }
+
+        public static void ResetAllianceRuptureState()
+        {
+            GameComponent_GoauldDomainReprisalTracker tracker =
+                GameComponent_GoauldDomainReprisalTracker.Current;
+
+            if (tracker == null)
+            {
+                Reject("Goa'uld domain reprisal tracker is unavailable.");
+                return;
+            }
+
+            tracker.ResetAllianceRupturesDebug();
+            Messages.Message(
+                "Goa'uld alliance rupture state reset.",
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
         public static void TriggerPendingReprisal()
         {
             if (GameComponent_GoauldDomainReprisalTracker.Current

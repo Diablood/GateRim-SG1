@@ -33,4 +33,9 @@ There is no symbiote left to surrender. Jaffa forces are expected in {3}.</GR_Go
     <GR_GoauldSharedAllianceReprisal_ArrivalLabel>Shared Goa'uld reprisal</GR_GoauldSharedAllianceReprisal_ArrivalLabel>
     <GR_GoauldSharedAllianceReprisal_ArrivalText>The forces of {0} are carrying out their reprisal with support from {1}. Two Jaffa detachments bearing the colors of the two domains are advancing from opposite sides of the colony.</GR_GoauldSharedAllianceReprisal_ArrivalText>
     <GR_GoauldSharedAllianceReprisal_AttackFailed>The announced shared Goa'uld reprisal could not reach the colony.</GR_GoauldSharedAllianceReprisal_AttackFailed>
+
+    <GR_GoauldAllianceRupture_Label>Goa'uld alliance broken</GR_GoauldAllianceRupture_Label>
+    <GR_GoauldAllianceRupture_Text0>The failed shared reprisal has triggered mutual accusations between {0} and {1}. Each domain blames the other for the loss. Their alliance is dissolved and replaced by open rivalry.</GR_GoauldAllianceRupture_Text0>
+    <GR_GoauldAllianceRupture_Text1>Commanders from {0} and {1} have denounced one another after the collapse of their joint reprisal. The alliance has ended; the two domains now regard each other as rivals.</GR_GoauldAllianceRupture_Text1>
+    <GR_GoauldAllianceRupture_Text2>The survivors of the shared reprisal carried incompatible accounts back to {0} and {1}. Neither domain accepts responsibility. Their alliance is broken and rivalry now governs their relations.</GR_GoauldAllianceRupture_Text2>
 </LanguageData>

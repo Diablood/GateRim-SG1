@@ -33,4 +33,9 @@ Il ne reste aucun symbiote à remettre. Des forces Jaffa sont attendues dans {3}
     <GR_GoauldSharedAllianceReprisal_ArrivalLabel>Représailles communes Goa'uld</GR_GoauldSharedAllianceReprisal_ArrivalLabel>
     <GR_GoauldSharedAllianceReprisal_ArrivalText>Les forces de {0} lancent leurs représailles avec le soutien de {1}. Deux détachements Jaffa portant les couleurs des deux domaines progressent depuis des côtés opposés de la colonie.</GR_GoauldSharedAllianceReprisal_ArrivalText>
     <GR_GoauldSharedAllianceReprisal_AttackFailed>Les représailles communes Goa'uld annoncées n'ont pas pu atteindre la colonie.</GR_GoauldSharedAllianceReprisal_AttackFailed>
+
+    <GR_GoauldAllianceRupture_Label>Alliance Goa'uld rompue</GR_GoauldAllianceRupture_Label>
+    <GR_GoauldAllianceRupture_Text0>L'échec des représailles communes a provoqué des accusations mutuelles entre {0} et {1}. Chaque domaine rejette la responsabilité de la défaite sur l'autre. Leur alliance est dissoute et laisse place à une rivalité ouverte.</GR_GoauldAllianceRupture_Text0>
+    <GR_GoauldAllianceRupture_Text1>Après l'effondrement de leurs représailles conjointes, les commandants de {0} et {1} se sont publiquement désavoués. L'alliance prend fin ; les deux domaines se considèrent désormais comme rivaux.</GR_GoauldAllianceRupture_Text1>
+    <GR_GoauldAllianceRupture_Text2>Les survivants des représailles communes ont rapporté à {0} et {1} des récits incompatibles. Aucun domaine n'accepte la responsabilité de l'échec. Leur alliance est rompue et une rivalité gouverne désormais leurs relations.</GR_GoauldAllianceRupture_Text2>
 </LanguageData>

@@ -1,6 +1,6 @@
 # Shared Goa'uld alliance reprisals
 
-Version: `0.3.81-dev`
+Version: `0.3.82-dev`
 
 ## Purpose
 
@@ -101,3 +101,51 @@ checks remain conforming, and no new relevant error appears in the accepted
 
 The exact developer action label is
 `Trigger pending shared reprisal now`.
+
+## Alliance rupture after a major failure
+
+`0.3.82-dev` adds one diplomatic consequence after the **natural** shared
+reprisal itself is decisively defeated. Developer-created or developer-triggered
+shared reprisals are excluded from this automatic chain.
+
+The two spawned detachments are observed only when they contain at least `6`
+combined Jaffa. The observation resolves once when `20%` or fewer remain active.
+That major failure deterministically schedules one exact-pair rupture after
+`60000–120000` ticks (`1–2` days); no additional random roll is used.
+
+At the deadline, the relation changes from `Alliance` to `Rivalry`. The published
+relation tracker performs the transition, updates its previous relation and
+normal transition clocks, but suppresses the generic relation letter so the
+player receives only the dedicated failure report.
+
+One rupture may be pending globally. It is cancelled without a player letter if
+the exact pair ceases to be allied or either domain becomes inactive before the
+deadline. The result is stored as `Completed`,
+`CancelledNoLongerAllied`, `CancelledInactiveDomain` or
+`CancelledTransitionFailed` for diagnostics.
+
+The deadline shares the existing SG-1 Command suspension boundary. Switching to
+another storyteller pauses it and shifts the due tick forward on return.
+
+The resolution letter has three localized RP variants with local
+anti-repetition. Every variant names both domains and states clearly that the
+alliance is dissolved and replaced by rivalry. The letter has no `LookTargets`,
+because the consequence is diplomatic and no new force or site is created.
+
+The rupture changes no vanilla goodwill toward the player, no settlement, no
+territory, no raid budget, no doctrine profile and no storyteller frequency.
+
+Developer validation uses the exact actions:
+
+- `Create major alliance failure`;
+- `Trigger pending alliance rupture now`;
+- `Reset alliance rupture state`;
+- `Show domain reaction state`.
+
+Final revision `r1` is validated and published. The focused procedure confirms
+assembly `0.3.82.0`, one persistent exact-pair rupture, the expected `1/6` debug
+survivor state, save/reload continuity, one targetless letter naming both
+domains, the exact `Alliance -> Rivalry` transition, final outcome `Completed`,
+no gameplay side effect outside the relation change and no new relevant error in
+the accepted `Player.log`.
+
