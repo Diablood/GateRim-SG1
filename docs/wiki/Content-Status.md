@@ -2,23 +2,22 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.77-dev`
+> Dernière révision : `0.3.78-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.77-dev` fixe l'ordre de développement sans modifier le gameplay. Le socle
-Tok'ra, Goa'uld/Jaffa et Tau'ri/SGC, ses audits partagés, ses transports et sa
-progression Stargate doivent être explicitement clos avant le lancement des
-Asgard, Nox, Unas, Réplicateurs ou du monde entièrement GateRim. Les futurs
-peuples hériteront des frameworks déjà publiés.
+`0.3.78-dev` ajoute une seconde vague surprise aux raids naturels d'un domaine
+Goa'uld allié. Le budget `110 %` existant est partagé entre les deux domaines,
+les renforts arrivent à pied après un délai caché et leur lettre RP apparaît
+seulement lorsqu'ils entrent sur la carte.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
-| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, et orchestration partagée des batailles locales ou mondiales ; les autres storytellers suspendent les futures opportunités sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev |
+| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, vague alliée différée sur les raids admissibles et orchestration partagée des batailles locales ou mondiales ; les autres storytellers suspendent les futures opportunités sans cadence cachée | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
@@ -74,7 +73,7 @@ peuples hériteront des frameworks déjà publiés.
 | Congélation profonde du Prim'ta | Exposition persistante sous `-15 °C`, tolérance d'un jour puis détérioration lente, aggravée sous `-30 °C` | 0.1.60-dev |
 | Domaines des Grands Maîtres Goa'uld | Faction mondiale hostile visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé vanilla provisoire `Jaffa : 100 %`, icône mondiale Goa'uld dédiée, Grand Maître Goa'uld réel comme dirigeant et caste d'hôtes persistants minoritaire | 0.1.61-dev / présence mondiale 0.2.1-dev / hôtes 0.2.3-dev / icône 0.3.50-dev |
 | Doctrines des domaines Goa'uld | Chaque faction conserve une préférence stratégique qualitative : conquête, asservissement ou terre brûlée. Elle module seulement le choix entre les trois raids naturels existants | 0.3.64-dev |
-| Relations entre domaines Goa'uld | Chaque paire conserve neutralité, rivalité, conflit ouvert, trêve ou alliance ; sous Commandement SG-1, un domaine en conflit ouvert utilise `75 %` de ses points, sinon une alliance seule peut porter son raid naturel à `110 %`, sans cumul, fréquence modifiée ni effet territorial | 0.3.66-dev / conflit 0.3.68-dev / alliance 0.3.73-dev |
+| Relations entre domaines Goa'uld | Chaque paire conserve neutralité, rivalité, conflit ouvert, trêve ou alliance ; sous Commandement SG-1, un domaine en conflit ouvert utilise `75 %` de ses points, sinon une alliance seule peut porter son raid naturel à `110 %` et partager ce budget avec une vague alliée différée, sans cumul, fréquence modifiée ni effet territorial | 0.3.66-dev / conflit 0.3.68-dev / alliance 0.3.73-dev / renforts 0.3.78-dev |
 | Noms mondiaux des domaines Goa'uld | 288 noms combinatoires de factions et 1 728 noms de colonies, avec casse française naturelle, ordinaux RP et conservation des noms sérialisés | 0.3.46-dev |
 | Noms des Grands Maîtres Goa'uld | Nom formel culturel visible dès la création du monde, symbiote persistant aligné sur ce nom et identité humaine de l'hôte conservée séparément | 0.3.48-dev |
 | Jaffa libres | Faction mondiale neutre visible : une faction par défaut, ajouts manuels possibles, colonies limitées, résumé `Jaffa : 100 %`, icône mondiale Jaffa libre dédiée, nouveaux dirigeants dotés d'un nom personnel et d'un nom de clan Jaffa libre, guerriers et gardes sans marque frontale Goa'uld imposée | 0.2.2-dev / résumé 0.2.2-dev-r1 / dirigeants 0.2.2-dev-r2 / noms des dirigeants 0.3.47-dev / icône 0.3.50-dev |
@@ -102,7 +101,7 @@ peuples hériteront des frameworks déjà publiés.
 | Armures Jaffa modulaires | Armure légère, armure lourde, gantelets protégeant les doigts, bottes protégeant les orteils et casque déployé | 0.1.66-dev |
 | Casque Jaffa rétractable | Modes persistants automatique, toujours déployé et toujours rétracté ; mêmes valeurs brutes, couverture `UpperHead` ou `FullHead` selon la position | 0.1.67-dev |
 | Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
-| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : doctrine choisie avec les points vanilla ; sous Commandement SG-1, le facteur final est `75 %` en conflit ouvert, sinon `110 %` en alliance, sans cumul ni modification de fréquence, représailles ou missions | 0.2.1-dev / doctrines 0.3.54-dev / conflit 0.3.68-dev / alliance 0.3.73-dev |
+| Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : doctrine choisie avec les points vanilla ; sous Commandement SG-1, le facteur final est `75 %` en conflit ouvert, sinon `110 %` en alliance, avec partage `75/25` et vague alliée surprise à partir de `800` points finaux, sans modification de fréquence, représailles ou missions | 0.2.1-dev / doctrines 0.3.54-dev / conflit 0.3.68-dev / alliance 0.3.73-dev / renforts 0.3.78-dev |
 | Bataille locale entre domaines Goa'uld | Sous Commandement SG-1, une paire en conflit ouvert peut faire entrer deux détachements Jaffa depuis le bord, les rassembler puis déclencher un assaut mutuel annoncé ; intervention facultative, riposte locale bornée, rupture morale sous 30 % et engagement limité à deux jours | 0.3.69-dev |
 | Site mondial de bataille Goa'uld | Site temporaire facultatif lié à une paire exacte en conflit ouvert : icône dédiée, huit jours, trajet caravanier vanilla, carte générée à l'arrivée et mêmes règles de combat ; expiration ignorée sans échec ni conséquence politique | 0.3.70-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
@@ -139,7 +138,7 @@ peuples hériteront des frameworks déjà publiés.
 |---|---|
 | Ordre de développement | Clore d'abord le socle Tok'ra / Goa'uld-Jaffa / Tau'ri-SGC et ses systèmes partagés ; Asgard, Nox, Unas, Réplicateurs, intégrations DLC et monde entièrement GateRim restent bloqués jusqu'à cette clôture explicite |
 | Stabilisation des opérations Tok'ra | Le pool est fermé à huit archétypes. Les futures parties longues pourront déclencher des correctifs ou équilibrages ciblés, mais aucune nouvelle opération n'est actuellement prévue |
-| Alliances Goa'uld | Les futurs renforts, raids conjoints, interactions de doctrines, représailles communes et ruptures d'alliance restent cinq jalons séparés |
+| Alliances Goa'uld | Les raids conjoints, interactions de doctrines, représailles communes et ruptures d'alliance restent des jalons séparés après les renforts différés de `0.3.78-dev` |
 | Conséquences territoriales Goa'uld | Concevoir et valider d'abord les garde-fous contre auto-élimination, expansion incontrôlée et déséquilibre mondial |
 | Anneaux de transport | Première fondation entre plateformes construites et alimentées du joueur, puis extension séparée aux missions et usages hostiles ; ne pas supprimer globalement les pods vanilla |
 | Asgard | Fondation séparée : soutien, commerce et missions sans colonie mondiale obligatoire |

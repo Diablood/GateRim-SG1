@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GateRimSG1.Storytelling;
 using RimWorld;
 using Verse;
 
@@ -8,6 +9,7 @@ namespace GateRimSG1.Goauld
     {
         private const float WeakRaidPoints = 300f;
         private const float OfficerEligibleRaidPoints = 900f;
+        private const float AlliedReinforcementRaidPoints = 1200f;
         private const float AdvancedRaidPoints = 4000f;
 
         public static void ShowCurrentProgression()
@@ -176,6 +178,80 @@ namespace GateRimSG1.Goauld
                     "Could not start the eligible natural Goa'uld raid "
                     + "with a Jaffa officer.");
             }
+        }
+
+        public static void ForceAlliedNaturalRaid()
+        {
+            Map map = Find.CurrentMap;
+            IncidentDef incidentDef = GR_DefOf.SG1_GoauldJaffaNaturalRaid;
+            IncidentWorker_GoauldJaffaNaturalRaid worker =
+                incidentDef?.Worker
+                    as IncidentWorker_GoauldJaffaNaturalRaid;
+
+            if (map == null
+                || incidentDef?.category == null
+                || worker == null)
+            {
+                Reject("The natural Goa'uld raid definition is unavailable.");
+                return;
+            }
+
+            if (!GateRimStorytellerUtility.IsGateRimStorytellerActive)
+            {
+                Reject(
+                    "The Commandement SG-1 storyteller must be active for "
+                    + "alliance raid consequences.");
+                return;
+            }
+
+            if (GameComponent_GoauldAlliedReinforcementTracker
+                .HasPendingOrActive(map))
+            {
+                Reject(
+                    "An allied Goa'uld reinforcement is already pending or "
+                    + "active on this map.");
+                return;
+            }
+
+            if (!GameComponent_GoauldAlliedReinforcementTracker
+                .TryGetFirstAlliancePair(
+                    out Faction primaryDomain,
+                    out Faction alliedDomain))
+            {
+                Reject(
+                    "Set at least one eligible Goa'uld relation pair to "
+                    + "Alliance first. Open conflict takes precedence.");
+                return;
+            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(
+                incidentDef.category,
+                map);
+            parms.forced = true;
+            parms.points = AlliedReinforcementRaidPoints;
+            parms.faction = primaryDomain;
+
+            if (!worker.TryExecuteForcedWithAlliedReinforcement(parms))
+            {
+                Reject(
+                    "Could not start the natural Goa'uld raid with delayed "
+                    + $"reinforcements from {alliedDomain.Name}.");
+            }
+        }
+
+        public static void ShowAlliedReinforcementReport()
+        {
+            GameComponent_GoauldAlliedReinforcementTracker tracker =
+                GameComponent_GoauldAlliedReinforcementTracker.Current;
+
+            if (tracker == null)
+            {
+                Reject("The allied Goa'uld reinforcement tracker is unavailable.");
+                return;
+            }
+
+            Find.WindowStack.Add(
+                new Dialog_MessageBox(tracker.BuildDebugReport()));
         }
 
         public static void ForceCurrentDirectRaid()

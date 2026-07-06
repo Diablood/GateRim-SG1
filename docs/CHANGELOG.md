@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.3.78-dev - Add delayed allied Goa'uld raid reinforcements
+
+- Start from published `develop` and annotated tag `v0.3.77-dev` on
+  `feature/goauld-allied-reinforcements`.
+- Extend only ordinary natural Goa'uld raids under Commandement SG-1 when the
+  attacking domain has an eligible alliance and no open-conflict precedence.
+- Require at least `800` final combined points before an allied wave can be
+  scheduled.
+- Keep the published non-stacking `1.10` alliance factor as the complete raid
+  budget, assigning `75%` to the primary force and `25%` to one exact allied
+  domain instead of granting free threat points.
+- Delay the allied edge-walk arrival by `1800` to `3600` ticks in normal play.
+- Give no advance alert, countdown or letter; reveal the reinforcement only at
+  arrival through a short localized RP letter.
+- Preserve exact faction identity and color for both domains while suppressing
+  their mutual vanilla hostility only during the active cooperative attack.
+- Coordinate allied withdrawal when the surviving primary force begins its
+  exit and remove the temporary cooperation when either force leaves the map.
+- Persist pending arrivals, participating pawns and active cooperation through
+  save and reload without changing the underlying faction relation.
+- Keep raids on `EdgeWalkIn`; add no pod arrival, incident-frequency roll,
+  doctrine, officer, reward or separate storyteller incident.
+- Add deterministic debug access at `1200` points with a `600`-tick delay.
+- Validate local revision `r1`: silent delay, arrival-only RP letter, distinct
+  domain colors, mutual cooperation and a clean accepted `Player.log`.
+- Integrate the feature branch by fast-forward, publish annotated tag
+  `v0.3.78-dev` and synchronize the changed wiki sources.
+
 ## 0.3.77-dev - Establish the core-faction completion gate
 
 - Start from published `develop` and annotated tag `v0.3.76-dev` on

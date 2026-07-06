@@ -6,6 +6,7 @@
 > Pression des conflits ouverts : `0.3.68-dev`
 > Puissance bornée des alliances : `0.3.73-dev`
 > Officiers dans les groupes éligibles : `0.3.75-dev`
+> Renforts alliés différés : `0.3.78-dev`
 
 Les domaines des Grands Maîtres Goa'uld peuvent lancer de rares raids contre
 une colonie joueur à partir du jour 12. Un délai minimal commun de 18 jours
@@ -79,6 +80,25 @@ Le worker commun marque techniquement les raids comme forcés pendant leur
 génération. `0.3.73-dev` distingue donc l'appel naturel du storyteller d'un
 appel qui était déjà forcé avant d'entrer dans ce worker. Le raid naturel reçoit
 bien son facteur, tandis que les représailles et tests exacts restent exclus.
+
+## Renforts d'un domaine allié
+
+Depuis `0.3.78-dev`, un raid sous **Commandement SG-1** bénéficiant du facteur
+allié et disposant d'au moins `800` points finaux peut partager son budget avec
+un second domaine :
+
+- `75 %` pour la force principale ;
+- `25 %` pour une vague alliée différée.
+
+Le total reste donc celui du facteur `110 %` déjà annoncé. Aucun groupe gratuit
+n'est ajouté. Une seule alliance est retenue, même si le domaine possède
+plusieurs partenaires.
+
+Les renforts marchent depuis un bord de carte après un court délai caché. Aucune
+lettre, alerte ou minuterie ne prévient le joueur. Une lettre RP nomme le domaine
+allié seulement lorsque ses Jaffa entrent réellement sur la carte. Les deux
+couleurs de faction restent visibles et les forces coopèrent pendant cette
+attaque au lieu de se battre entre elles. Les pods restent exclus.
 
 ## Officier dans une force éligible
 

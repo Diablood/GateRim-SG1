@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.77-dev`
+> Version du mod documentée : `0.3.78-dev`
+
+## Renforts Goa'uld alliés
+
+`0.3.78-dev` permet à un raid naturel bénéficiant d'une alliance sous
+**Commandement SG-1** de partager son budget avec une vague d'un second domaine.
+Les renforts arrivent à pied après un court délai caché : aucune alerte ne les
+annonce et leur lettre RP apparaît seulement au moment de leur entrée. Les deux
+couleurs de faction restent visibles sans ajouter de points de menace gratuits.
 
 ## Priorité du développement
 
@@ -60,7 +68,8 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
 - [Commandement SG-1](Storyteller-SG1) conserve un rythme classique et fait
   évoluer les relations persistantes entre paires de domaines Goa'uld. Un
   domaine en conflit ouvert consacre `75 %` de ses points habituels à ses raids
-  naturels ; sinon, une alliance peut porter ce budget à `110 %`, sans cumul.
+  naturels ; sinon, une alliance peut porter ce budget à `110 %`, sans cumul,
+  puis le partager avec une vague alliée différée sur les raids admissibles.
   Ces conflits peuvent aussi produire une
   [bataille entre domaines](Goauld-Open-Conflict-Battlefields), soit près d'une
   colonie, soit sous la forme d'un site mondial facultatif accessible par

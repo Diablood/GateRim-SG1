@@ -30,4 +30,7 @@
     <GR_GoauldInterDomainReport_Alliance_Text0>{0} et {1} ont formé une alliance stratégique. Leur accord repose sur l'intérêt commun plutôt que sur la confiance.</GR_GoauldInterDomainReport_Alliance_Text0>
     <GR_GoauldInterDomainReport_Alliance_Text1>Des communications interceptées confirment une coopération entre {0} et {1}. Les deux domaines coordonnent renseignements et plans militaires.</GR_GoauldInterDomainReport_Alliance_Text1>
     <GR_GoauldInterDomainReport_Alliance_Text2>{0} et {1} reconnaissent désormais des intérêts communs. Leur alliance pourrait ne durer que tant que leurs dirigeants respectifs en tirent profit.</GR_GoauldInterDomainReport_Alliance_Text2>
+
+    <GR_GoauldAlliedReinforcement_ArrivalLabel>Renforts Goa'uld alliés : {0}</GR_GoauldAlliedReinforcement_ArrivalLabel>
+    <GR_GoauldAlliedReinforcement_ArrivalText>Alors que les forces de {0} poursuivent leur attaque, des Jaffa portant les couleurs de {1} apparaissent aux abords de la colonie. L'alliance entre les deux domaines vient de prendre une forme très concrète.</GR_GoauldAlliedReinforcement_ArrivalText>
 </LanguageData>

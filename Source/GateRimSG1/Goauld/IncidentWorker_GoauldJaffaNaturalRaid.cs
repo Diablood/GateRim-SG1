@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -56,8 +57,12 @@ namespace GateRimSG1.Goauld
 
         private GoauldJaffaRaidDoctrine? forcedDebugDoctrine;
         private bool forceRelationPressureForDebug;
+        private bool forceAlliedReinforcementForDebug;
         private bool forceOfficerForDebug;
         private bool executionWasExternallyForced;
+        private Faction preparedAlliedDomain;
+        private float preparedAlliedPoints;
+        private float preparedCombinedPoints;
 
         protected override string ControlledRaidPurpose
         {
@@ -119,6 +124,7 @@ namespace GateRimSG1.Goauld
             }
 
             ApplyInterDomainPressureModifier(parms);
+            PrepareAlliedReinforcement(parms);
         }
 
         protected override bool CanFireNowSub(IncidentParms parms)
@@ -133,6 +139,7 @@ namespace GateRimSG1.Goauld
         {
             bool previousExternalForced = executionWasExternallyForced;
             executionWasExternallyForced = parms?.forced == true;
+            ClearPreparedAlliedReinforcement();
 
             try
             {
@@ -145,23 +152,60 @@ namespace GateRimSG1.Goauld
                             .SelectRandomActiveFaction();
                 }
 
+                Map map = parms?.target as Map;
+                HashSet<string> existingPrimaryPawnIds =
+                    PawnIdsForFaction(map, parms?.faction);
+                bool succeeded;
+
                 if (executionWasExternallyForced
                     && !forceOfficerForDebug)
                 {
-                    return base.TryExecuteWorker(parms);
+                    succeeded = base.TryExecuteWorker(parms);
+                }
+                else
+                {
+                    using (GoauldJaffaOfficerForceUtility
+                        .BeginCombatOfficerGeneration(
+                            PawnGroupKindDefOf.Combat,
+                            "natural Goa'uld Jaffa raid",
+                            forceOfficerForDebug))
+                    {
+                        succeeded = base.TryExecuteWorker(parms);
+                    }
                 }
 
-                using (GoauldJaffaOfficerForceUtility
-                    .BeginCombatOfficerGeneration(
-                        PawnGroupKindDefOf.Combat,
-                        "natural Goa'uld Jaffa raid",
-                        forceOfficerForDebug))
+                if (succeeded && preparedAlliedDomain != null)
                 {
-                    return base.TryExecuteWorker(parms);
+                    List<Pawn> primaryPawns = NewPawnsForFaction(
+                        map,
+                        parms.faction,
+                        existingPrimaryPawnIds);
+                    bool scheduled =
+                        GameComponent_GoauldAlliedReinforcementTracker
+                            .Current
+                            ?.TrySchedule(
+                                map,
+                                parms.faction,
+                                preparedAlliedDomain,
+                                preparedAlliedPoints,
+                                primaryPawns,
+                                forceAlliedReinforcementForDebug)
+                        == true;
+
+                    if (!scheduled)
+                    {
+                        GR_Log.Error(
+                            "The primary Goa'uld raid used a shared allied "
+                            + "budget, but its delayed reinforcement could "
+                            + "not be scheduled.");
+                    }
                 }
+
+                return succeeded;
             }
             finally
             {
+                ClearPreparedAlliedReinforcement();
                 executionWasExternallyForced = previousExternalForced;
             }
         }
@@ -297,6 +341,27 @@ namespace GateRimSG1.Goauld
             return TryExecuteForcedWithRelationPressure(parms);
         }
 
+        public bool TryExecuteForcedWithAlliedReinforcement(
+            IncidentParms parms)
+        {
+            bool previousPressureValue = forceRelationPressureForDebug;
+            bool previousReinforcementValue =
+                forceAlliedReinforcementForDebug;
+            forceRelationPressureForDebug = true;
+            forceAlliedReinforcementForDebug = true;
+
+            try
+            {
+                return TryExecute(parms);
+            }
+            finally
+            {
+                forceRelationPressureForDebug = previousPressureValue;
+                forceAlliedReinforcementForDebug =
+                    previousReinforcementValue;
+            }
+        }
+
         private void ApplyInterDomainPressureModifier(
             IncidentParms parms)
         {
@@ -335,6 +400,72 @@ namespace GateRimSG1.Goauld
                 + $"(factor {factor:0.00}) because the domain is in "
                 + relationReason
                 + " under SG-1 Command.");
+        }
+
+        private void PrepareAlliedReinforcement(IncidentParms parms)
+        {
+            if (parms == null
+                || !(parms.points > 0f)
+                || (executionWasExternallyForced
+                    && !forceAlliedReinforcementForDebug))
+            {
+                return;
+            }
+
+            if (!GameComponent_GoauldAlliedReinforcementTracker
+                .TryResolvePlan(
+                    parms.target as Map,
+                    parms.faction,
+                    parms.points,
+                    out Faction alliedDomain,
+                    out float primaryPoints,
+                    out float alliedPoints))
+            {
+                return;
+            }
+
+            preparedAlliedDomain = alliedDomain;
+            preparedAlliedPoints = alliedPoints;
+            preparedCombinedPoints = parms.points;
+            parms.points = primaryPoints;
+
+            GR_Log.Message(
+                "Split an allied natural Goa'uld raid budget: "
+                + $"primary={parms.faction?.Name ?? "<missing>"}, "
+                + $"ally={alliedDomain.Name}, combined="
+                + $"{preparedCombinedPoints:0}, primary="
+                + $"{primaryPoints:0}, allied={alliedPoints:0}.");
+        }
+
+        private void ClearPreparedAlliedReinforcement()
+        {
+            preparedAlliedDomain = null;
+            preparedAlliedPoints = 0f;
+            preparedCombinedPoints = 0f;
+        }
+
+        private static HashSet<string> PawnIdsForFaction(
+            Map map,
+            Faction faction)
+        {
+            return new HashSet<string>(
+                map?.mapPawns?.AllPawnsSpawned
+                    ?.Where(pawn => pawn?.Faction == faction)
+                    .Select(pawn => pawn.ThingID)
+                ?? Enumerable.Empty<string>());
+        }
+
+        private static List<Pawn> NewPawnsForFaction(
+            Map map,
+            Faction faction,
+            HashSet<string> existingPawnIds)
+        {
+            return map?.mapPawns?.AllPawnsSpawned
+                ?.Where(pawn =>
+                    pawn?.Faction == faction
+                    && !existingPawnIds.Contains(pawn.ThingID))
+                .ToList()
+                ?? new List<Pawn>();
         }
 
         private static GoauldJaffaRaidDoctrineWeights

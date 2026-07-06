@@ -3,6 +3,7 @@
 > Première version : `0.3.53-dev`
 > Réduction des conflits ouverts : `0.3.68-dev`
 > Bonus borné des alliances : `0.3.73-dev`
+> Renforts alliés différés : `0.3.78-dev`
 
 Les raids, garnisons et renforts Goa'uld partent des points de menace calculés
 par RimWorld. Ces points tiennent compte de la puissance de la colonie et des
@@ -39,11 +40,17 @@ Plusieurs conflits ou alliances ne se cumulent pas. Le conflit ouvert est
 prioritaire lorsqu'un même domaine possède les deux types de relation. Les
 points initiaux restent utilisés pour l'éligibilité et les poids des doctrines.
 
+À partir de `800` points finaux, un raid bénéficiant du facteur allié peut
+répartir ce même total entre une force principale à `75 %` et une vague d'un
+second domaine à `25 %`. Cette vague arrive plus tard à pied et n'est révélée
+qu'au moment de son entrée. Elle n'ajoute aucun multiplicateur ni tirage
+storyteller.
+
 Ces facteurs :
 
 - ne modifient pas la fréquence des raids ;
 - ne concernent pas les représailles après extraction ;
 - ne concernent pas les missions, sites ou raids de test exacts ;
 - disparaissent avec un autre storyteller ;
-- sont recalculés depuis les relations persistantes sans nouveau champ de
-  sauvegarde.
+- sont recalculés depuis les relations persistantes ; seule une vague différée
+  déjà planifiée sérialise temporairement son arrivée et ses participants.

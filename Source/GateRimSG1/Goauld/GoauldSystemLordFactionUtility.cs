@@ -93,6 +93,26 @@ namespace GateRimSG1.Goauld
                 && faction.def == GR_DefOf.SG1_GoauldSystemLordPrototype;
         }
 
+        public static void NotifyTemporaryCooperationChanged(
+            Faction firstFaction,
+            Faction secondFaction)
+        {
+            if (firstFaction == null
+                || secondFaction == null
+                || Find.Maps == null)
+            {
+                return;
+            }
+
+            foreach (Map map in Find.Maps)
+            {
+                map?.attackTargetsCache
+                    ?.Notify_FactionHostilityChanged(
+                        firstFaction,
+                        secondFaction);
+            }
+        }
+
         private static void RefreshAttackTargetCaches(
             Faction goauldFaction)
         {

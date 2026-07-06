@@ -12,11 +12,25 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
+## Dernier jalon gameplay clôturé
+
+`0.3.78-dev - Add delayed allied Goa'uld raid reinforcements`
+
+La révision finale `r1` est validée et publiée. Un raid naturel sous
+`Commandement SG-1`, bénéficiant d'une alliance sans priorité de conflit ouvert
+et d'au moins `800` points finaux, partage son budget `110 %` entre la force
+principale (`75 %`) et une vague d'un domaine allié (`25 %`). Le délai reste
+caché et la lettre RP apparaît seulement à l'arrivée à pied des renforts.
+
+Décisions validées : budget partagé sans points gratuits, une seule vague,
+arrivée différée `EdgeWalkIn`, aucune annonce préalable, couleurs de factions
+distinctes et coopération temporaire sans réécriture de la diplomatie mondiale.
+
 ## Dernier jalon documentaire clôturé
 
 `0.3.77-dev - Establish the core-faction completion gate`
 
-La révision finale `r1` est validée et prête à être publiée. Ce jalon
+La révision finale `r1` est validée et publiée. Ce jalon
 documentaire rend obligatoire la clôture du socle Tok'ra, Goa'uld/Jaffa et
 Tau'ri/SGC avant l'ouverture des peuples et chapitres qui hériteront de ses
 systèmes. Il ne modifie aucun gameplay.
@@ -35,14 +49,13 @@ que les questions encore ouvertes soient reposées au lancement du jalon concern
 avant toute implémentation. Aucun gameplay, Def, traduction, texture, sauvegarde
 ou équilibrage n'est modifié.
 
-## Prochain jalon gameplay à sélectionner
+## Prochain jalon à sélectionner
 
-Aucun jalon gameplay ni nom de branche n'est réservé. Le prochain travail doit
-être choisi uniquement dans la phase de clôture du socle définie ci-dessous. Ses
-décisions reportées doivent être reprises avant la création de sa branche depuis
-`develop` aligné avec `v0.3.77-dev`.
+Aucun jalon ni nom de branche n'est réservé après `0.3.78-dev`. Le prochain
+travail doit être choisi dans la phase de clôture du socle définie ci-dessous,
+puis partir de `develop` aligné avec `v0.3.78-dev`.
 
-## Dernier jalon gameplay clôturé
+## Jalon gameplay précédent
 
 `0.3.75-dev - Add Jaffa officers to eligible Goa'uld forces`, révision finale
 `r2`, est validé et publié. Les raids naturels, défenses de colonies et missions
@@ -65,7 +78,8 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 - réduction bornée des raids en conflit ouvert : `0.3.68-dev` ;
 - bonus borné des raids en alliance : `0.3.73-dev` ;
 - apparence distinctive de l'officier capturable : `0.3.74-dev` ;
-- officiers dans les forces Goa'uld éligibles : `0.3.75-dev`.
+- officiers dans les forces Goa'uld éligibles : `0.3.75-dev` ;
+- renforts différés d'un domaine Goa'uld allié : `0.3.78-dev`.
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -266,14 +280,6 @@ méthode de sélection et textures temporaires ou définitives.
 
 Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
 non maîtrisé des conséquences d'alliance.
-
-### Ajouter des renforts d'un second domaine allié
-
-Permettre à une alliance de produire occasionnellement un renfort identifiable
-du domaine partenaire sans modifier silencieusement tous les raids.
-
-Décisions reportées au lancement : déclencheur, fréquence, budget, arrivée,
-retrait et attribution du butin.
 
 ### Ajouter des raids conjoints entre domaines alliés
 

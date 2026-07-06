@@ -3,7 +3,7 @@
 Version: `0.2.1-dev`; doctrine selection extended in `0.3.54-dev`;
 open-conflict pressure reduction added in `0.3.68-dev`; bounded alliance
 strength added in `0.3.73-dev`; eligible officer replacement added in
-`0.3.75-dev`.
+`0.3.75-dev`; delayed allied-domain reinforcement added in `0.3.78-dev`.
 
 ## Purpose
 
@@ -73,8 +73,38 @@ The effect is deliberately bounded:
 - the factor changes raid points only, never incident frequency, doctrine
   weights or contextual eligibility.
 
-No additional state is serialized. The factor is derived from the persistent
-relation tracker whenever the ordinary natural raid executes.
+The factor itself adds no serialized state. It is derived from the persistent
+relation tracker whenever the ordinary natural raid executes. A delayed allied
+wave does serialize its exact pair, points, arrival tick and participating pawns
+until that one cooperative attack has resolved.
+
+## Delayed allied-domain reinforcement
+
+When the resolved factor is exactly `1.10` and the final combined budget is at
+least `800` points, the ordinary natural raid divides that existing budget:
+
+```text
+primary force = combined points × 0.75
+allied wave   = combined points × 0.25
+```
+
+One exact allied domain is selected from the attacking domain's active
+alliances. Multiple alliances never create multiple waves. The primary raid
+keeps its selected doctrine; the later support wave uses the validated direct
+assault path.
+
+The allied wave is scheduled silently for `1800` to `3600` ticks after the
+primary raid. It uses `EdgeWalkIn`, retains the allied faction's exact name and
+color, and produces no warning, countdown or advance letter. A localized RP
+letter naming both domains appears only when the support force reaches the map.
+
+RimWorld stores separate instances of the same permanent-enemy faction Def as
+mutually hostile. A narrow Harmony postfix therefore reports the exact pair as
+non-hostile only while its recorded cooperative attack is active. It does not
+rewrite faction goodwill or the persistent vanilla relation. Target caches are
+refreshed at activation and cleanup, and the original hostility becomes
+authoritative again when either participating force is gone. Allied survivors
+receive an exit order when the primary surviving force begins withdrawing.
 
 ## Natural versus forced execution
 
@@ -157,6 +187,11 @@ alliance state and the effective factor for every active domain.
 `Force current natural raid (relation pressure applied)` uses the same worker
 while explicitly enabling the factor for this forced test only.
 
+`Force allied natural raid (1200 points, short delay)` requires an eligible
+alliance, uses a deterministic `1200`-point raid and shortens only this test's
+hidden delay to `600` ticks. `Show allied reinforcement report` reveals pending
+or active state for diagnostics; normal play exposes no such countdown.
+
 `Set all pairs: Alliance` supports deterministic non-stacking and precedence
 coverage with three or more domains. The three `Force natural ... raid`
 commands remain exact regression tools and bypass the relation effect so direct
@@ -174,3 +209,8 @@ Final cumulative revision `r2` is validated and published in `0.3.75-dev`. The
 officer procedure confirms the five-Jaffa threshold, one-for-one `145`-point
 guard replacement, unchanged group size, below-threshold exclusion, capture
 isolation, save/reload and a clean accepted `Player.log`.
+
+Revision `r1` for `0.3.78-dev` is validated and published for the mandatory path:
+silent delay, arrival-only RP letter, exact faction colors, temporary
+cooperation and a clean accepted `Player.log`. Persistence and withdrawal
+remain durable optional regressions.

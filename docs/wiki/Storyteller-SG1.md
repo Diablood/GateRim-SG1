@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.73-dev`
-> Statut : bonus borné des alliances validé et publié
+> Dernière évolution : `0.3.78-dev`
+> Statut : renforts alliés différés validés et publiés
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -50,6 +50,18 @@ Les représailles, missions, sites hostiles et tests déterministes sont exclus.
 Le worker commun distingue désormais l'appel naturel du storyteller d'un appel
 qui était déjà forcé avant la génération du raid.
 
+## Renforts alliés différés
+
+Lorsqu'un raid allié atteint au moins `800` points finaux, un quart de son
+budget existant peut être confié à un second domaine allié. La force principale
+conserve les trois quarts restants : le facteur total reste `110 %` et aucun
+budget gratuit n'est créé.
+
+La seconde force arrive plus tard depuis le bord de carte. Le délai reste caché
+et aucune alerte ne révèle les renforts à l'avance. Une courte lettre RP apparaît
+seulement à leur arrivée, avec le nom du domaine allié. Les deux factions gardent
+leurs couleurs et coopèrent uniquement pendant cette attaque.
+
 ## Batailles en conflit ouvert
 
 Depuis `0.3.69-dev`, une paire en conflit ouvert peut produire une
@@ -80,13 +92,14 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 - les échéances futures sont repoussées pendant la suspension ;
 - revenir à Commandement SG-1 ne déclenche pas de retard accumulé ;
 - les raids naturels utilisent de nouveau `100 %` des points ;
+- aucune vague alliée différée n'est planifiée ;
 - la cadence du storyteller choisi n'est jamais modifiée.
 
 ## Limites actuelles
 
 Les relations ne provoquent pas encore :
 
-- de renforts ou raids conjoints en alliance ;
+- de raids conjoints simultanés en alliance ;
 - de modification territoriale ;
 - de destruction de colonies mondiales ;
 - de changement diplomatique avec le joueur.

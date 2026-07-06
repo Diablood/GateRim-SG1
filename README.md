@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.77-dev`
+- Development version: `0.3.78-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.77-dev` is a documentation-only priority milestone. It establishes a
-blocking completion gate for the existing Tok'ra, Goa'uld/Jaffa and Tau'ri/SGC core:
-all decided core-faction work and shared infrastructure must be closed before
-new peoples or inherited expansion chapters begin. Asgard, Nox, Unas,
-Replicators and the all-GateRim world preset therefore remain blocked until the
-core gate is explicitly satisfied. No gameplay behavior changes in this
-milestone.
+`0.3.78-dev` adds delayed allied-domain reinforcements to eligible natural
+Goa'uld raids under SG-1 Command. The attacking domain shares its existing
+`110%` alliance budget with one exact allied domain; the second force arrives
+later from the map edge and is revealed only by a short RP letter at arrival.
+The two colors remain visible, the forces cooperate temporarily, and no extra
+incident roll, transport pod or free threat budget is added.
 
 ## Playable content
 
@@ -33,9 +32,12 @@ milestone.
   channel. It advances persistent neutrality, rivalry, open conflict, truce and
   alliance states between Goa'uld domain pairs. Under SG-1 Command, a domain in
   open conflict uses `75%` of its ordinary points for natural Jaffa raids, while
-  a domain participating only in alliances uses a non-stacking `110%`. Doctrine
-  selection still uses the original vanilla points, open conflict overrides
-  alliance, and raid frequency remains unchanged. Open conflicts can
+  a domain participating only in alliances uses a non-stacking `110%`. On an
+  eligible alliance raid of at least `800` final points, one quarter of that
+  existing budget can arrive later as a visibly distinct allied-domain wave,
+  announced only when it reaches the map. Doctrine selection still uses the
+  original vanilla points, open conflict overrides alliance, and raid frequency
+  remains unchanged. Open conflicts can
   also produce rare battlefields in two alternating forms: a local engagement
   near a colony or a temporary world site that a caravan may visit or ignore.
   Both forms use the same exact domain pair, map-edge arrival, rally, announced

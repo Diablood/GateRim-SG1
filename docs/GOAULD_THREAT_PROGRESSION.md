@@ -1,7 +1,8 @@
 # Goa'uld threat progression audit
 
 Version: `0.3.53-dev`; open-conflict natural-raid factor added in `0.3.68-dev`;
-bounded alliance factor added in `0.3.73-dev`.
+bounded alliance factor added in `0.3.73-dev`; delayed allied reinforcement
+budget splitting added in `0.3.78-dev`.
 
 ## Goal
 
@@ -18,7 +19,7 @@ consequences and are inactive under every other storyteller.
 
 | System | Current behavior |
 | --- | --- |
-| Natural Jaffa raid | Preserves supplied vanilla points, resolves missing points from the current storyteller and selects doctrine from the original value. Under SG-1 Command only, open conflict then applies `0.75`; otherwise alliance may apply `1.10`. |
+| Natural Jaffa raid | Preserves supplied vanilla points, resolves missing points from the current storyteller and selects doctrine from the original value. Under SG-1 Command only, open conflict then applies `0.75`; otherwise alliance may apply `1.10`. Eligible alliance raids of at least `800` final points split that existing total `75/25` between the primary force and one delayed allied wave. |
 | Controlled raid doctrines | Use current or explicit test points and never receive the relation factor. |
 | Intercepted Tok'ra warning | Stores the vanilla storyteller snapshot and uses the same value when the raid arrives. |
 | Extraction reprisal | Uses its stored point snapshot through a forced incident path and never receives the relation factor. |
@@ -51,8 +52,15 @@ attacking faction is a Goa'uld System Lord domain:
 
 Several simultaneous conflicts or alliances do not stack. Open conflict has
 priority over alliance, so a mixed domain never multiplies `0.75 × 1.10` and
-never averages both values. The factor is derived from persistent relation
-states and adds no serialized field.
+never averages both values.
+
+For an eligible alliance raid at `800+` final points, `75%` of the already
+modified total generates the primary doctrine force and `25%` generates one
+later allied direct-assault wave. This is a budget split, not another
+multiplier. The second force walks in from a map edge after `1800` to `3600`
+ticks and is announced only at arrival. The pending wave and temporary
+cooperation are serialized because they must survive save and reload; the
+underlying relation factor remains derived.
 
 The shared raid worker internally marks every generated raid as forced. The
 natural worker therefore captures whether the caller was already forced before
@@ -105,6 +113,10 @@ worker while temporarily enabling the factor for that forced validation only.
 `Set all pairs: Alliance` makes multiple-alliance and mixed-precedence tests
 repeatable without save editing.
 
+`Force allied natural raid (1200 points, short delay)` provides the focused
+allied-wave test with a `600`-tick hidden delay. `Show allied reinforcement
+report` is the only place where that pending or active internal state is shown.
+
 The exact forced natural direct `300`, abduction `800` and destruction `1800`
 actions remain unchanged regression tools.
 
@@ -118,3 +130,6 @@ save/reload and a clean accepted `Player.log`.
 
 The older threat-scaling, edge-arrival, relay-layout and settlement regressions
 remain valid and unchanged.
+
+Revision `r1` for `0.3.78-dev` is validated and published for the focused
+allied-wave path and a clean accepted `Player.log`.

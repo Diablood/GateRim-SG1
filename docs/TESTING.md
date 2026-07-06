@@ -4144,6 +4144,37 @@ inter-domain relations.
   remain unchanged.
 - Inspect `Player.log` for new C#, XML, Scribe, raid-generation or Lord errors.
 
+## Delayed allied Goa'uld raid reinforcements (`0.3.78-dev`)
+
+Validate the bounded second wave produced by an eligible alliance raid.
+
+- Use `Commandement SG-1`, a player-home map and at least two active Goa'uld
+  domains.
+- Set one eligible pair to alliance and force the dedicated `1200`-point raid.
+- Confirm the primary raid arrives through `EdgeWalkIn` without any advance
+  reinforcement letter, alert or countdown.
+- Confirm the debug wave arrives after `600` ticks; normal waves must use the
+  serialized `1800` to `3600` tick range.
+- Confirm the final `1320` points are split `75/25` rather than increased by a
+  second free budget.
+- Confirm the arrival letter names the exact allied domain and appears only
+  when its pawns enter the map.
+- Confirm both domain colors remain visible and neither force targets the other.
+- Confirm no more than one allied domain and one wave are selected even when
+  several alliance pairs affect the attacker.
+- Confirm the primary doctrine still uses original vanilla points and the
+  allied wave uses the direct-assault path.
+- Save and reload before arrival and during active cooperation.
+- Confirm allied survivors withdraw when the surviving primary force begins
+  exiting the map.
+- Confirm the original vanilla hostility becomes authoritative again after the
+  cooperative attack without rewriting faction goodwill.
+- Confirm no wave below `800` final points, under another storyteller, during
+  open-conflict precedence or from controlled raids, reprisals, missions and
+  sites.
+- Inspect `Player.log` for new Harmony, C#, Scribe, raid-generation, Lord,
+  translation or pawn-generation errors.
+
 ## Open-conflict Goa'uld local battlefield (`0.3.69-dev`)
 
 Validate the local battlefield generated from persistent open-conflict

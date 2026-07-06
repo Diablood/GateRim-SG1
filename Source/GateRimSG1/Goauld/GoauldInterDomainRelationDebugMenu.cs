@@ -38,6 +38,16 @@ namespace GateRimSG1.Goauld
                     .ForceCurrentNaturalRaidWithPressure,
                 850));
             root.AddChild(ActionNode(
+                "Force allied natural raid (1200 points, short delay)",
+                GoauldThreatProgressionDebugActions
+                    .ForceAlliedNaturalRaid,
+                848));
+            root.AddChild(ActionNode(
+                "Show allied reinforcement report",
+                GoauldThreatProgressionDebugActions
+                    .ShowAlliedReinforcementReport,
+                846));
+            root.AddChild(ActionNode(
                 "Show battlefield report",
                 GoauldOpenConflictBattlefieldDebugActions.ShowReport,
                 845));
