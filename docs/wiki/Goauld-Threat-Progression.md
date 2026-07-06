@@ -5,6 +5,7 @@
 > Bonus borné des alliances : `0.3.73-dev`
 > Renforts alliés différés : `0.3.78-dev`
 > Raids conjoints coordonnés : `0.3.79-dev`
+> Influence relationnelle des doctrines : `0.3.80-dev`
 
 Les raids, garnisons et renforts Goa'uld partent des points de menace calculés
 par RimWorld. Ces points tiennent compte de la puissance de la colonie et des
@@ -30,8 +31,15 @@ Depuis `0.3.54-dev`, l'unique incident naturel utilise les points vanilla pour
 rendre l'enlèvement et la destruction progressivement admissibles. Leur ajout
 ne crée aucun tirage storyteller ni délai indépendant.
 
-Sous **Commandement SG-1**, une conséquence bornée est appliquée seulement après
-le choix de la doctrine :
+Sous **Commandement SG-1**, une influence bornée est d'abord appliquée aux
+poids déjà admissibles : conflit ouvert favorise la destruction, alliance
+favorise l'assaut direct et rivalité favorise l'enlèvement, avec un unique
+multiplicateur `x1,25` et la priorité `conflit ouvert > alliance > rivalité`.
+Neutralité et trêve ne changent rien. Les seuils restent autoritaires et les
+effets ne se cumulent pas.
+
+Une conséquence séparée est ensuite appliquée aux points seulement après le
+choix de la doctrine :
 
 - un domaine engagé dans au moins un conflit ouvert utilise `75 %` des points ;
 - sinon, un domaine engagé dans au moins une alliance utilise `110 %` ;

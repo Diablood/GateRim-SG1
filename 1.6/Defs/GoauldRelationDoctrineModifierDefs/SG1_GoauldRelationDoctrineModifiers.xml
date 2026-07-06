@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+        <defName>SG1_GoauldRelationDoctrine_Neutral</defName>
+        <label>neutral doctrine influence</label>
+        <description>Neutral relations do not alter the permanent doctrine profile of a Goa'uld domain.</description>
+        <relation>Neutral</relation>
+        <priority>0</priority>
+        <directMultiplier>1</directMultiplier>
+        <abductionMultiplier>1</abductionMultiplier>
+        <destructionMultiplier>1</destructionMultiplier>
+    </GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+
+    <GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+        <defName>SG1_GoauldRelationDoctrine_Rivalry</defName>
+        <label>rivalry doctrine influence</label>
+        <description>Rivalry slightly favors abduction as a source of captives, hosts and prestige without overriding the domain's permanent doctrine.</description>
+        <relation>Rivalry</relation>
+        <priority>100</priority>
+        <directMultiplier>1</directMultiplier>
+        <abductionMultiplier>1.25</abductionMultiplier>
+        <destructionMultiplier>1</destructionMultiplier>
+    </GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+
+    <GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+        <defName>SG1_GoauldRelationDoctrine_OpenConflict</defName>
+        <label>open-conflict doctrine influence</label>
+        <description>Open conflict slightly favors destructive strikes while remaining subordinate to the domain's permanent doctrine and existing eligibility thresholds.</description>
+        <relation>OpenConflict</relation>
+        <priority>300</priority>
+        <directMultiplier>1</directMultiplier>
+        <abductionMultiplier>1</abductionMultiplier>
+        <destructionMultiplier>1.25</destructionMultiplier>
+    </GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+
+    <GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+        <defName>SG1_GoauldRelationDoctrine_Truce</defName>
+        <label>truce doctrine influence</label>
+        <description>A truce does not alter the permanent doctrine profile of a Goa'uld domain.</description>
+        <relation>Truce</relation>
+        <priority>0</priority>
+        <directMultiplier>1</directMultiplier>
+        <abductionMultiplier>1</abductionMultiplier>
+        <destructionMultiplier>1</destructionMultiplier>
+    </GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+
+    <GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+        <defName>SG1_GoauldRelationDoctrine_Alliance</defName>
+        <label>alliance doctrine influence</label>
+        <description>Alliance slightly favors direct assaults that can support coordinated forces without changing raid frequency, threat budget or the domain's permanent doctrine.</description>
+        <relation>Alliance</relation>
+        <priority>200</priority>
+        <directMultiplier>1.25</directMultiplier>
+        <abductionMultiplier>1</abductionMultiplier>
+        <destructionMultiplier>1</destructionMultiplier>
+    </GateRimSG1.Goauld.GoauldRelationDoctrineModifierDef>
+</Defs>

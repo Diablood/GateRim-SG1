@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.79-dev`
-> Statut : raids conjoints coordonnés validés
+> Dernière évolution : `0.3.80-dev`
+> Statut : influence relationnelle des doctrines publiée
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -34,6 +34,21 @@ Une partie contenant un seul domaine Goa'uld ne possède aucune paire à faire
 La lettre produite par un changement de relation rend la situation lisible mais
 ne déclenche aucun raid ni champ de bataille. Elle indique seulement que certains
 événements deviennent possibles ; un raid standard peut toujours survenir.
+
+## Influence des relations sur les doctrines
+
+Depuis `0.3.80-dev`, une seule relation active peut légèrement déplacer les
+probabilités des doctrines déjà admissibles d'un raid naturel :
+
+- conflit ouvert : destruction `x1,25` ;
+- sinon alliance : assaut direct `x1,25` ;
+- sinon rivalité : enlèvement `x1,25` ;
+- neutralité et trêve : aucun effet.
+
+La priorité est `conflit ouvert > alliance > rivalité` et les effets ne se
+cumulent jamais. Les seuils, le profil permanent du domaine, les points et la
+fréquence restent autoritaires. Les autres storytellers désactivent cette
+influence sans effacer les relations stockées.
 
 ## Pression des raids selon les relations
 

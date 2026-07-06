@@ -3,7 +3,8 @@
 Version: `0.3.53-dev`; open-conflict natural-raid factor added in `0.3.68-dev`;
 bounded alliance factor added in `0.3.73-dev`; delayed allied reinforcement
 budget splitting added in `0.3.78-dev`; standard and joint alliance outcomes
-added in `0.3.79-dev`.
+added in `0.3.79-dev`; bounded relation-doctrine weighting added in
+`0.3.80-dev`.
 
 ## Goal
 
@@ -20,7 +21,7 @@ consequences and are inactive under every other storyteller.
 
 | System | Current behavior |
 | --- | --- |
-| Natural Jaffa raid | Preserves supplied vanilla points, resolves missing points from the current storyteller and selects doctrine from the original value. Under SG-1 Command only, open conflict then applies `0.75`; otherwise alliance may apply `1.10`. At `800+` final alliance points, half the outcomes remain standard; cooperative direct outcomes become delayed `75/25` reinforcement or simultaneous `60/40` joint assault. |
+| Natural Jaffa raid | Preserves supplied vanilla points and resolves missing points from the current storyteller. Under SG-1 Command, one non-stacking XML modifier can multiply an already eligible doctrine weight by `1.25` with priority open conflict, alliance, rivalry. Doctrine is selected from the original point context; open conflict then applies `0.75`, otherwise alliance may apply `1.10`. At `800+` final alliance points, half the outcomes remain standard; cooperative direct outcomes become delayed `75/25` reinforcement or simultaneous `60/40` joint assault. |
 | Controlled raid doctrines | Use current or explicit test points and never receive the relation factor. |
 | Intercepted Tok'ra warning | Stores the vanilla storyteller snapshot and uses the same value when the raid arrives. |
 | Extraction reprisal | Uses its stored point snapshot through a forced incident path and never receives the relation factor. |
@@ -29,12 +30,29 @@ consequences and are inactive under every other storyteller.
 | Relay sabotage site | Stores points before travel, keeps scaling defenders and reinforcements, and selects its layout by threat tier. |
 | Goa'uld settlements | Continue to use vanilla settlement generation budgets. |
 
-The natural-raid modifier changes neither incident frequency nor doctrine
-eligibility. Direct, abduction and destruction weights are calculated before
-any relation factor is applied.
+Neither relation layer changes incident frequency or doctrine eligibility.
+Direct, abduction and destruction eligibility is calculated from original
+vanilla points. One doctrine-weight multiplier is applied before selection; the
+separate point-pressure factor is applied afterward.
 
 All Goa'uld/Jaffa raids routed through the shared worker explicitly use vanilla
 `EdgeWalkIn`. High point budgets must never unlock drop-pod arrival modes.
+
+## Relation-derived doctrine influence
+
+Only ordinary natural raids under `Commandement SG-1` use this layer. The
+persistent domain profile first provides `4/1/1`, `2/3/1`, `2/1/3` or fallback
+`2/1/1`. Existing thresholds then set ineligible abduction or destruction weights
+to zero. Finally, one XML Def may multiply one surviving weight by `1.25`:
+
+1. open conflict favors destruction;
+2. otherwise alliance favors direct assault;
+3. otherwise rivalry favors abduction;
+4. neutrality and truce do nothing.
+
+The effects never stack. The modifier cannot turn zero into a positive weight,
+does not change points and does not guarantee an outcome. Other storytellers and
+all externally forced historical doctrine commands bypass it.
 
 ## Relation-derived factor
 
@@ -103,9 +121,13 @@ Actions de débogage > GateRim SG-1 > Goa'uld... > Threat progression...
 ```
 
 `Show current progression` reports vanilla points, the diagnostic domain, its
-persistent profile, the relation-derived factor, effective natural-raid points,
-unchanged intercepted points, doctrine weights, symbiote count, relay budgets
-and expected relay layout.
+persistent profile, the relation-derived point factor, effective natural-raid
+points, final doctrine percentages, symbiote count, relay budgets and expected
+relay layout.
+
+`Domain doctrines... > Show domain doctrine report` is the authoritative
+`0.3.80-dev` diagnostic: it shows profile weights, eligible weights before
+relation, selected modifier Def and priority, multipliers and final percentages.
 
 Open the per-domain factor report and dedicated forced modifier test at:
 
@@ -147,9 +169,15 @@ remain valid and unchanged.
 Revision `r1` for `0.3.78-dev` is validated and published for the focused
 allied-wave path and a clean accepted `Player.log`.
 
-Revision `r1` for `0.3.79-dev` is validated for standard and simultaneous joint
+Revision `r1` for `0.3.79-dev` is validated and published for standard and simultaneous joint
 outcomes, opposite-edge colors, one shared letter, mutual cooperation, bilateral
 withdrawal and a clean accepted `Player.log`. The forced `1200`-point joint test
 showed no officer as expected: the forced path does not enable the officer
 fallback and the `792`-point primary split normally generates no `145`-point
 guard to replace.
+
+Revision `r1` for `0.3.80-dev` is validated and published. The build and
+focused procedure confirm the `x1.25` XML modifiers, non-stacking priority,
+threshold preservation, other-storyteller exclusion, unchanged `75% / 110%`
+pressure factors, unchanged alliance budget splits, deterministic forced-command
+regressions and a clean accepted `Player.log`.

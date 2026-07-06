@@ -212,7 +212,12 @@ The shared worker now distinguishes ordinary storyteller execution from callers
 that were already forced before entering the common raid path.
 
 `0.3.78-dev` adds delayed second-domain reinforcements and `0.3.79-dev` adds
-simultaneous joint raids while preserving ordinary single-domain raids. The
+simultaneous joint raids while preserving ordinary single-domain raids.
+`0.3.80-dev` lets one highest-priority relation slightly influence the already
+eligible doctrine weights through XML: alliance favors direct assault, rivalry
+favors abduction and open conflict favors destruction, each at `x1.25`. The
+permanent domain doctrine and all eligibility thresholds remain authoritative.
+The
 relation announcement only makes these later outcomes eligible; it never
 launches or guarantees an attack.
 

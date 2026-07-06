@@ -39,8 +39,9 @@ namespace GateRimSG1.Goauld
     /// Low-frequency natural Goa'uld Jaffa raid.
     ///
     /// One storyteller incident selects a doctrine from vanilla threat points,
-    /// readable colony context and the attacking domain's persistent strategic
-    /// profile. Keeping one IncidentDef preserves the original frequency and
+    /// readable colony context, the attacking domain's persistent strategic
+    /// profile and one bounded SG-1 Command relation modifier. Keeping one
+    /// IncidentDef preserves the original frequency and
     /// refire delay instead of giving every doctrine an independent roll.
     /// </summary>
     public class IncidentWorker_GoauldJaffaNaturalRaid
@@ -92,12 +93,16 @@ namespace GateRimSG1.Goauld
         protected override void ConfigureRaidParms(IncidentParms parms)
         {
             Map map = parms.target as Map;
+            bool applyRelationDoctrineModifier =
+                !executionWasExternallyForced;
+            GoauldJaffaRaidDoctrineWeights doctrineWeights =
+                CalculateDoctrineWeights(
+                    map,
+                    parms.points,
+                    parms.faction,
+                    applyRelationDoctrineModifier);
             GoauldJaffaRaidDoctrine doctrine = forcedDebugDoctrine
-                ?? SelectDoctrine(
-                    CalculateDoctrineWeights(
-                        map,
-                        parms.points,
-                        parms.faction));
+                ?? SelectDoctrine(doctrineWeights);
 
             parms.canSteal = false;
 
@@ -237,6 +242,43 @@ namespace GateRimSG1.Goauld
 
         public static GoauldJaffaRaidDoctrineWeights
             CalculateDoctrineWeights(
+                Map map,
+                float points,
+                Faction faction)
+        {
+            return CalculateDoctrineWeights(
+                map,
+                points,
+                faction,
+                applyRelationModifier: true);
+        }
+
+        public static GoauldJaffaRaidDoctrineWeights
+            CalculateDoctrineWeights(
+                Map map,
+                float points,
+                Faction faction,
+                bool applyRelationModifier)
+        {
+            GoauldJaffaRaidDoctrineWeights weights =
+                CalculateEligibleDoctrineWeights(
+                    map,
+                    points,
+                    faction);
+
+            if (!applyRelationModifier)
+            {
+                return weights;
+            }
+
+            return GoauldRelationDoctrineModifierUtility.ApplyModifier(
+                weights,
+                faction,
+                out GoauldRelationDoctrineModifierDef _);
+        }
+
+        public static GoauldJaffaRaidDoctrineWeights
+            CalculateEligibleDoctrineWeights(
                 Map map,
                 float points,
                 Faction faction)

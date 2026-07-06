@@ -4,15 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.79-dev`
+> Version du mod documentée : `0.3.80-dev`
 
-## Raids Goa'uld conjoints
+## Doctrines de raid influencées par les relations
 
-`0.3.79-dev` ajoute un assaut simultané de deux domaines alliés parmi les formes
-possibles du raid naturel. Une lettre politique d'alliance ne lance aucune
-attaque et la moitié des raids admissibles reste standard. Lorsqu'un assaut
-direct devient conjoint, les deux couleurs arrivent depuis des bords opposés en
-partageant le budget existant et se retirent ensemble.
+`0.3.80-dev` permet aux relations Goa'uld d'influencer légèrement les
+doctrines déjà admissibles des raids naturels sous Commandement SG-1 : alliance
+favorise l'assaut direct, rivalité l'enlèvement et conflit ouvert la destruction,
+avec un multiplicateur `x1,25` non cumulable et sans modifier les seuils, les
+points ou la fréquence.
 
 ## Renforts Goa'uld alliés
 

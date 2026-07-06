@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.3.80-dev - Make Goa'uld relations influence raid doctrines
+
+- Start from published `develop` and annotated tag `v0.3.79-dev` at commit
+  `e978acf527681c0b0f6456ce08a08a3f41607652` on
+  `feature/goauld-relations-raid-doctrine-interactions`.
+- Keep the three persistent domain profiles authoritative at `4/1/1`, `2/3/1`
+  and `2/1/3`.
+- Add XML-driven relation doctrine modifier Defs for neutrality, rivalry, open
+  conflict, truce and alliance.
+- Apply the accepted bounded `x1.25` multiplier only to one already eligible
+  doctrine weight: direct under alliance, abduction under rivalry and
+  destruction under open conflict.
+- Resolve one non-stacking relation influence with priority
+  `open conflict > alliance > rivalry`; neutrality and truce have no effect.
+- Keep existing doctrine thresholds authoritative so an ineligible abduction or
+  destruction weight remains zero after relation processing.
+- Restrict the new influence to ordinary natural Goa'uld Jaffa raids under
+  `Commandement SG-1`.
+- Preserve all historical forced raid commands as deterministic paths that
+  bypass relation doctrine influence.
+- Preserve storyteller frequency, refire delay, vanilla source points, final
+  `75% / 110%` relation-pressure factors, alliance outcome probabilities,
+  `75/25` and `60/40` budget splits, officer generation and raid strategies.
+- Extend the domain-doctrine debug report with base weights, eligible
+  pre-relation weights, selected relation Def, priority, multipliers and final
+  percentages.
+- Validate final local revision `r1`: build `0.3.80.0`, all six focused
+  relation/doctrine tests, non-stacking priority, threshold preservation,
+  other-storyteller exclusion, deterministic forced-command regressions and a
+  clean accepted `Player.log`.
+- Add no new doctrine, raid incident, reward or territorial consequence.
+- Prepare the validated branch for fast-forward integration, annotated tag
+  `v0.3.80-dev` and synchronized wiki publication.
+
 ## 0.3.79-dev - Add coordinated allied Goa'uld joint raids
 
 - Start from published `develop` and annotated tag `v0.3.78-dev` on

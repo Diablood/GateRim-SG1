@@ -10,9 +10,10 @@
 - Alliance-strength extension: `0.3.73-dev`
 - Delayed allied reinforcement: `0.3.78-dev`
 - Coordinated joint raid outcomes: `0.3.79-dev`
-- Target assembly: `0.3.79.0`
+- Relation-influenced doctrine weights: `0.3.80-dev`
+- Target assembly: `0.3.80.0`
 - Current local revision: `r1`
-- Status: focused validation required.
+- Status: final revision `r1` validated and published.
 
 ## Purpose
 
@@ -79,6 +80,7 @@ When another storyteller is selected:
 - all pair and global relation deadlines are shifted forward by the suspension
   duration when SG-1 Command becomes active again;
 - every relation-derived natural-raid pressure factor resolves to `1.00`;
+- every relation-derived doctrine-weight modifier is disabled;
 - existing published GateRim incidents retain their ordinary contracts.
 
 This is a true suspension rather than a backlog. Returning to SG-1 Command does
@@ -148,6 +150,29 @@ Cadence remains:
 - at most one automatic pair transition per global window.
 
 Pair and text anti-repetition remain unchanged.
+
+## Relation-derived doctrine influence
+
+`0.3.80-dev` adds a second narrow relation consequence before doctrine selection.
+It remains distinct from the later point-pressure factor.
+
+For ordinary natural Goa'uld raids under `Commandement SG-1`, one XML Def can
+multiply one already eligible doctrine weight by `1.25`:
+
+- open conflict favors destruction, priority `300`;
+- otherwise alliance favors direct assault, priority `200`;
+- otherwise rivalry favors abduction, priority `100`;
+- neutrality and truce have neutral `1.00` multipliers.
+
+The domain's persistent profile is applied first. Existing point, colonist and
+building-wealth thresholds are applied next. Only then can the relation modifier
+multiply a positive weight. Several relations never stack, and open conflict
+therefore overrides alliance and rivalry for doctrine weighting just as it
+already overrides alliance for raid-point pressure.
+
+Other storytellers and all historical externally forced doctrine commands bypass
+this layer. It changes no incident chance, refire delay, point budget, alliance
+split, officer eligibility or raid strategy definition.
 
 ## Relation-derived natural-raid pressure
 
@@ -260,6 +285,10 @@ Actions de débogage
 `Show current progression` displays vanilla points, effective natural points,
 pressure factor, unchanged intercepted points and doctrine context.
 
+`Domain doctrines... > Show domain doctrine report` displays the permanent
+profile, eligible pre-relation weights, selected relation Def and priority,
+`x1.25` multipliers and final percentages for every domain.
+
 `Force current natural raid (relation pressure applied)` is available in the
 relation menu and exercises the ordinary relation-aware worker while temporarily enabling
 the factor for that forced validation. The historical forced-doctrine commands
@@ -276,7 +305,6 @@ The published relation and alliance layers still add no:
 
 - alliance frequency increase;
 - shared reprisals;
-- doctrine interaction caused by relations;
 - territorial expansion or settlement destruction;
 - change to faction goodwill toward the player.
 
@@ -290,8 +318,13 @@ focused relation-pressure procedure confirms alliance `110%`, open-conflict
 versus forced execution, save/reload and a clean accepted `Player.log`.
 
 Final revision `r1` of `0.3.78-dev` validates delayed allied reinforcement.
-Final revision `r1` of `0.3.79-dev` validates standard and simultaneous joint
+Final revision `r1` of `0.3.79-dev` is validated and published for standard and simultaneous joint
 outcomes, opposite-edge faction colors, one shared letter, mutual cooperation,
 bilateral withdrawal and a clean accepted `Player.log`. The lack of an officer
 in the forced `1200`-point joint test is expected from the forced-path rules and
 the `792`-point primary budget, not a regression.
+
+Final revision `r1` of `0.3.80-dev` is validated and published. The focused
+procedure confirms XML-driven `x1.25` doctrine modifiers, non-stacking priority,
+threshold preservation, storyteller exclusion, deterministic forced-command
+behavior, unchanged alliance manifestations and a clean accepted `Player.log`.

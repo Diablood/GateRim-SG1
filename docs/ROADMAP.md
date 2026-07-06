@@ -14,13 +14,36 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon gameplay validé
 
+`0.3.80-dev - Make Goa'uld relations influence raid doctrines`
+
+Branche : `feature/goauld-relations-raid-doctrine-interactions`, depuis le tag
+publié `v0.3.79-dev`.
+
+La révision finale `r1` est validée et prête pour publication. Elle applique une
+influence relationnelle légère, non cumulative et pilotée par XML aux doctrines
+déjà admissibles des raids naturels sous `Commandement SG-1` :
+
+- alliance : poids d'assaut direct `x1,25` ;
+- rivalité : poids d'enlèvement `x1,25` ;
+- conflit ouvert : poids de destruction `x1,25` ;
+- neutralité et trêve : aucun effet ;
+- priorité : `conflit ouvert > alliance > rivalité`.
+
+Le profil permanent du domaine, les seuils d'admissibilité, les points vanilla,
+les facteurs finaux `75 % / 110 %`, la fréquence, les répartitions alliées et les
+commandes de debug forcées restent autoritaires et inchangés. Le build
+`0.3.80.0`, les six tests ciblés, les régressions alliées et le `Player.log` sont
+validés. Aucun jalon suivant n'est réservé automatiquement.
+
+## Dernier jalon gameplay publié
+
 `0.3.79-dev - Add coordinated allied Goa'uld joint raids`
 
-La révision finale `r1` est validée et prête pour publication. Les lettres RP de
-relation déjà publiées rendent alliance, rivalité, guerre, trêve et neutralité
-lisibles sans déclencher d'incident. Lors d'un raid allié admissible, `50 %` des
-résultats restent standards ; les résultats coopératifs directs se répartissent
-entre renfort différé et assaut conjoint simultané.
+La révision finale `r1` est validée et publiée. Les lettres RP de relation rendent
+alliance, rivalité, guerre, trêve et neutralité lisibles sans déclencher
+d'incident. Lors d'un raid allié admissible, `50 %` des résultats restent
+standards ; les résultats coopératifs directs se répartissent entre renfort
+différé et assaut conjoint simultané.
 
 Décisions validées : aucun tirage storyteller supplémentaire, budget conjoint
 `110 %` partagé `60/40`, deux bords opposés, doctrine directe uniquement, une
@@ -68,11 +91,6 @@ Elle inscrit aussi les anneaux de transport en deux étapes distinctes et impose
 que les questions encore ouvertes soient reposées au lancement du jalon concerné
 avant toute implémentation. Aucun gameplay, Def, traduction, texture, sauvegarde
 ou équilibrage n'est modifié.
-
-## Prochain jalon après publication
-
-Aucun jalon ni nom de branche n'est réservé après `0.3.79-dev`. Le prochain
-travail devra rester dans la phase de clôture du socle définie ci-dessous.
 
 ## Jalon gameplay précédent
 
@@ -310,14 +328,6 @@ méthode de sélection et textures temporaires ou définitives.
 
 Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
 non maîtrisé des conséquences d'alliance.
-
-### Faire interagir relations et doctrines de raid
-
-Permettre à certaines relations de modifier la préférence entre doctrines déjà
-validées sans changer la fréquence totale ni les seuils de manière opaque.
-
-Décisions reportées au lancement : relations concernées, poids, priorité face au
-profil permanent du domaine et garde-fous de cumul.
 
 ### Ajouter des représailles communes
 

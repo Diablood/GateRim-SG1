@@ -8,6 +8,7 @@
 > Officiers dans les groupes éligibles : `0.3.75-dev`
 > Renforts alliés différés : `0.3.78-dev`
 > Raids conjoints coordonnés : `0.3.79-dev`
+> Influence relationnelle des doctrines : `0.3.80-dev`
 
 Les domaines des Grands Maîtres Goa'uld peuvent lancer de rares raids contre
 une colonie joueur à partir du jour 12. Un délai minimal commun de 18 jours
@@ -40,6 +41,20 @@ toujours disponible et sert donc de solution de repli.
 
 Les conditions et la préférence de doctrine utilisent toujours les points
 initiaux calculés par RimWorld.
+
+Sous **Commandement SG-1**, une seule relation active peut ensuite multiplier
+un poids déjà admissible par `1,25` :
+
+| Priorité relationnelle | Effet |
+| --- | --- |
+| conflit ouvert | destruction `x1,25` |
+| sinon alliance | assaut direct `x1,25` |
+| sinon rivalité | enlèvement `x1,25` |
+| neutralité ou trêve | aucun effet |
+
+Les effets ne se cumulent jamais. Un poids nul reste nul : une relation ne peut
+donc pas rendre l'enlèvement ou la destruction disponible trop tôt. Le profil
+permanent du domaine reste la préférence principale.
 
 ## Effet des relations entre domaines
 

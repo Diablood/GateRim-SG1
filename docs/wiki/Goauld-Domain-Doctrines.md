@@ -1,7 +1,7 @@
 # Goa'uld domain doctrines
 
 > Version d’introduction : `0.3.64-dev`
-> Statut : publié
+> Statut : profils et influence relationnelle `0.3.80-dev` publiés
 
 Goa'uld System Lord domains do not all react to resistance in exactly the same
 way. Each domain receives one persistent strategic doctrine:
@@ -22,3 +22,18 @@ several Goa'uld domains track each one independently.
 The domain's qualitative doctrine appears in its normal faction information.
 Internal weights, thresholds and selection history remain hidden outside
 developer diagnostics.
+
+## Relation influence under SG-1 Command
+
+Since `0.3.80-dev`, one highest-priority active relation can slightly influence
+the weights of already eligible natural-raid doctrines:
+
+- open conflict multiplies destruction by `1.25`;
+- otherwise alliance multiplies direct assault by `1.25`;
+- otherwise rivalry multiplies abduction by `1.25`;
+- neutrality and truce do not modify weights.
+
+Priority is `open conflict > alliance > rivalry`, and multiple relations never
+stack. Existing point, colonist and building-wealth thresholds are evaluated
+first, so an ineligible doctrine remains at zero. Other storytellers and
+historical forced doctrine tests bypass this influence.

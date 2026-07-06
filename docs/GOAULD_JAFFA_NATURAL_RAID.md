@@ -4,7 +4,8 @@ Version: `0.2.1-dev`; doctrine selection extended in `0.3.54-dev`;
 open-conflict pressure reduction added in `0.3.68-dev`; bounded alliance
 strength added in `0.3.73-dev`; eligible officer replacement added in
 `0.3.75-dev`; delayed allied-domain reinforcement added in `0.3.78-dev`;
-standard and coordinated joint outcomes added in `0.3.79-dev`.
+standard and coordinated joint outcomes added in `0.3.79-dev`; bounded
+relation-doctrine influence added in `0.3.80-dev`.
 
 ## Purpose
 
@@ -41,9 +42,24 @@ inter-domain relations.
 Persistent domain profiles may replace the fallback `2/1/1` weights with
 conquest `4/1/1`, enslavement `2/3/1` or scorched earth `2/1/3`.
 
+Under `Commandement SG-1`, `0.3.80-dev` applies at most one XML-driven modifier
+after eligibility has been resolved:
+
+| Highest-priority active relation | Doctrine weight multiplier |
+| --- | --- |
+| open conflict | destruction `x1.25` |
+| alliance, without open-conflict precedence | direct `x1.25` |
+| rivalry, without a higher-priority relation | abduction `x1.25` |
+| neutrality or truce only | none |
+
+Priority is `open conflict > alliance > rivalry`. Several relations never stack.
+A weight already reduced to zero by the point, colonist or building-wealth checks
+remains zero, so the relation layer cannot unlock a doctrine early. The
+persistent domain profile remains dominant; the relation only shifts probability.
+
 Eligibility and relative doctrine selection always use the original vanilla
-storyteller points. The relation-derived pressure factor is applied only after
-the doctrine has been selected.
+storyteller points. The separate relation-derived pressure factor is applied only
+after the doctrine has been selected.
 
 The two custom `RaidStrategyDef` selection curves remain zero. Generic vanilla
 raid strategy resolution can never select them; only this dedicated worker and
@@ -71,8 +87,9 @@ The effect is deliberately bounded:
 - several alliances never increase above `1.10`;
 - open conflict overrides alliance when both affect the same domain;
 - both domains in a pair are evaluated independently;
-- the factor changes raid points only, never incident frequency, doctrine
-  weights or contextual eligibility.
+- the point factor changes raid points only and remains separate from the
+  bounded doctrine-weight modifier;
+- neither relation layer changes incident frequency or contextual eligibility.
 
 The factor itself adds no serialized state. It is derived from the persistent
 relation tracker whenever the ordinary natural raid executes. A delayed allied
@@ -205,14 +222,13 @@ Open the relation-derived report and forced modifier test at:
 Actions de débogage > GateRim SG-1 > Goa'uld inter-domain relations...
 ```
 
-`Show current progression` reports:
+`Show current progression` reports vanilla storyteller points, the diagnostic
+domain, its resolved relation factor, effective natural raid points, unchanged
+intercepted points and final doctrine context.
 
-- vanilla storyteller points;
-- the diagnostic domain;
-- its resolved relation factor;
-- effective natural raid points;
-- unchanged intercepted-raid points;
-- free-colonist count, building wealth and normalized doctrine weights.
+`Domain doctrines... > Show domain doctrine report` additionally reports, per
+domain, the persistent base weights, eligible pre-relation weights, selected
+relation Def and priority, `x1.25` multipliers and final percentages.
 
 `Show natural raid relation-pressure report` lists open-conflict state,
 alliance state and the effective factor for every active domain.
@@ -229,11 +245,12 @@ diagnostics; normal play exposes no such information. `Order joint primary
 force withdrawal` starts the primary exit so the shared-retreat response can be
 validated.
 
-`Set all pairs: Alliance` supports deterministic non-stacking and precedence
-coverage with three or more domains. The three `Force natural ... raid`
-commands remain exact regression tools and bypass the relation effect so direct
-`300`, abduction `800` and destruction `1800` tests retain their historical
-contracts.
+`Set all pairs: Alliance` supports deterministic non-stacking coverage. With
+three or more domains, combine alliance, rivalry and open conflict to verify the
+priority `open conflict > alliance > rivalry`. The three `Force natural ... raid`
+commands remain exact regression tools and bypass both relation-derived doctrine
+influence and relation-pressure selection so direct `300`, abduction `800` and
+destruction `1800` tests retain their historical contracts.
 
 ## Published validation
 
@@ -252,9 +269,15 @@ silent delay, arrival-only RP letter, exact faction colors, temporary
 cooperation and a clean accepted `Player.log`. Persistence and withdrawal
 remain durable optional regressions.
 
-Revision `r1` for `0.3.79-dev` is validated for standard and simultaneous joint
+Revision `r1` for `0.3.79-dev` is validated and published for standard and simultaneous joint
 outcomes, opposite-edge colors, one shared letter, mutual cooperation, bilateral
 withdrawal and a clean accepted `Player.log`. The forced `1200`-point joint test
 showed no officer as expected: the forced path does not enable the officer
 fallback and the `792`-point primary split normally generates no `145`-point
 guard to replace.
+
+Revision `r1` for `0.3.80-dev` is validated and published. The focused
+procedure confirms the XML-driven `x1.25` modifiers, non-stacking priority
+`open conflict > alliance > rivalry`, preservation of zero ineligible weights,
+other-storyteller exclusion, unchanged alliance regression paths, deterministic
+historical forced doctrine commands and a clean accepted `Player.log`.

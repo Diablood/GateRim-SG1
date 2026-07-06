@@ -371,6 +371,7 @@ namespace GateRimSG1.Goauld
                 + "never launches a raid or battlefield immediately");
             builder.AppendLine(
                 "published effects: bounded natural-raid pressure, "
+                + "non-stacking doctrine-weight influence, "
                 + "standard/delayed/joint alliance raid outcomes and "
                 + "open-conflict battlefield opportunities");
             builder.AppendLine(

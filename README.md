@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.79-dev`
+- Development version: `0.3.80-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.79-dev` adds coordinated joint assaults as a second possible alliance
-manifestation under SG-1 Command. An eligible alliance-context raid now remains
-standard half the time. Cooperative direct raids divide the other half between
-the published delayed reinforcement and a simultaneous two-domain assault from
-opposite map edges. The existing `110%` budget, incident frequency and RP
-relation reports remain authoritative; a diplomatic announcement never launches
-or guarantees a raid.
+`0.3.80-dev` lets persistent Goa'uld relations slightly influence the three
+already validated natural-raid doctrines under SG-1 Command. Alliance multiplies
+the eligible direct-assault weight by `1.25`, rivalry does the same for
+abduction, and open conflict does the same for destruction. Open conflict takes
+priority over alliance, alliance over rivalry, modifiers never stack, and the
+permanent domain doctrine, eligibility thresholds, threat budget and raid
+frequency remain authoritative.
 
 ## Playable content
 
@@ -33,13 +33,15 @@ or guarantees a raid.
   channel. It advances persistent neutrality, rivalry, open conflict, truce and
   alliance states between Goa'uld domain pairs. Under SG-1 Command, a domain in
   open conflict uses `75%` of its ordinary points for natural Jaffa raids, while
-  a domain participating only in alliances uses a non-stacking `110%`. On an
-  eligible alliance raid of at least `800` final points, half of the outcomes
-  remain standard. Cooperative direct outcomes are split between a delayed
-  `75/25` reinforcement and a simultaneous `60/40` joint assault from opposite
-  edges. Doctrine selection still uses the
-  original vanilla points, open conflict overrides alliance, and raid frequency
-  remains unchanged. Open conflicts can
+  a domain participating only in alliances uses a non-stacking `110%`. Before
+  those point factors are applied, one non-stacking relation modifier can
+  multiply an already eligible doctrine weight by `1.25`: alliance favors direct
+  assault, rivalry favors abduction and open conflict favors destruction, with
+  priority `open conflict > alliance > rivalry`. On an eligible alliance raid of
+  at least `800` final points, half of the outcomes remain standard. Cooperative
+  direct outcomes are split between a delayed `75/25` reinforcement and a
+  simultaneous `60/40` joint assault from opposite edges. Raid frequency remains
+  unchanged. Open conflicts can
   also produce rare battlefields in two alternating forms: a local engagement
   near a colony or a temporary world site that a caravan may visit or ignore.
   Both forms use the same exact domain pair, map-edge arrival, rally, announced
