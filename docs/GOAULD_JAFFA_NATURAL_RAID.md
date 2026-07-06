@@ -281,3 +281,20 @@ procedure confirms the XML-driven `x1.25` modifiers, non-stacking priority
 `open conflict > alliance > rivalry`, preservation of zero ineligible weights,
 other-storyteller exclusion, unchanged alliance regression paths, deterministic
 historical forced doctrine commands and a clean accepted `Player.log`.
+
+## Shared alliance reprisal observation (`0.3.81-dev`)
+
+After a successful ordinary **standard** natural raid, the worker passes only
+its newly generated primary pawns to the domain-reaction tracker. Cooperative
+delayed and joint outcomes never register. Externally forced paths also remain
+excluded.
+
+The tracker may observe the exact alliance pair when the force contains at
+least five Jaffa. At `25%` or fewer active survivors it consumes the observation
+and applies the bounded `25%` scheduling chance. A selected reprisal uses a
+dedicated exact-pair forced joint path; the already stored `80%` combined budget
+is split `60/40` without applying the ordinary alliance `110%` factor again.
+
+The shared path suppresses the normal joint-raid letter. After both factions
+spawn, the tracker emits one localized arrival letter with one target pawn from
+each detachment.

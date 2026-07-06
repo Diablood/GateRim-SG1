@@ -1,103 +1,93 @@
 # Project state
 
-Current milestone: `0.3.80-dev - Make Goa'uld relations influence raid doctrines`
+Current milestone: `0.3.81-dev - Add shared Goa'uld alliance reprisals`
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.79-dev` at commit
-  `e978acf527681c0b0f6456ce08a08a3f41607652`.
-- Active branch: `feature/goauld-relations-raid-doctrine-interactions`.
-- Final local revision: `r1`, validated and ready for publication.
-- Target assembly version: `0.3.80.0`.
-- This milestone changes only the weighting of already eligible doctrines for
-  ordinary natural Goa'uld Jaffa raids under `Commandement SG-1`.
+  `v0.3.80-dev` at commit
+  `1758c2d9b94d4b9a3884ca99c846402aa3703a40`.
+- Active branch: `feature/goauld-alliance-shared-reprisals`.
+- Final local revision: `r2`, validated and ready for publication.
+- Target assembly version: `0.3.81.0`.
+- The broader functional procedure and the focused `r2` letter retest are both
+  accepted. `r2` changes only the presentation and targets of the programming
+  and arrival letters.
 
 ## Validated design decisions
 
-- Keep the permanent domain profiles authoritative:
-  - conquest: `4 / 1 / 1`;
-  - enslavement: `2 / 3 / 1`;
-  - scorched earth: `2 / 1 / 3`.
-- Apply one bounded relation multiplier of `x1.25`:
-  - alliance favors direct assault;
-  - rivalry favors abduction;
-  - open conflict favors destruction;
-  - neutrality and truce apply no modifier.
-- Resolve only one relation influence with priority
-  `open conflict > alliance > rivalry`.
-- Never stack multiple alliances, rivalries or conflicting relation effects.
-- Keep the relation configuration in XML Defs so later balancing does not
-  require an architectural rewrite.
-- Apply the modifier only after the existing point and colony-context
-  eligibility checks. A zero ineligible weight remains zero.
-- Apply the doctrine modifier only under `Commandement SG-1` and only to the
-  ordinary natural Goa'uld raid worker.
-- Preserve all historical forced debug raid commands as deterministic paths that
-  bypass relation doctrine influence.
-- Preserve incident frequency, refire delay, vanilla source points, final
-  `75% / 110%` pressure factors, alliance outcome probabilities, officer rules,
-  pawn budgets and existing raid strategies.
+- Observe only ordinary standard natural Goa'uld Jaffa raids under
+  `Commandement SG-1`.
+- Exclude delayed reinforcements, simultaneous joint raids, extraction
+  reprisals, controlled raids, missions and developer-forced historical paths.
+- Require at least `5` initial Jaffa and evaluate the defeat only once when no
+  more than `25%` remain active.
+- Apply a `25%` chance to schedule the response.
+- Keep one pending shared reprisal globally and a `30`-day cooldown for the
+  exact pair.
+- Delay normal reprisals by `2–4` RimWorld days; developer creation uses the
+  existing short-delay convention.
+- Use `80%` of the vanilla threat points current when the reprisal is scheduled.
+- Split that complete budget `60/40` between the offended domain and one exact
+  allied domain.
+- Force a direct simultaneous joint assault from opposite reachable map edges.
+- Preserve faction colors and temporary cooperation without changing permanent
+  relation state, goodwill, territory, raid frequency or storyteller refire.
+- Suspend pending delay progression outside `Commandement SG-1`.
 
 ## Implementation
 
-- `GoauldRelationDoctrineModifierDef` declares relation, priority and the three
-  doctrine multipliers.
-- Five XML Defs document neutrality, rivalry, open conflict, truce and alliance.
-  Only rivalry, open conflict and alliance carry a non-neutral multiplier.
-- `GoauldRelationDoctrineModifierUtility` reads active relation pairs, ignores
-  unrelated or inactive pairs and selects the highest-priority effective Def.
-- `IncidentWorker_GoauldJaffaNaturalRaid` now separates:
-  1. permanent profile weights;
-  2. existing doctrine eligibility;
-  3. optional SG-1 Command relation multiplication;
-  4. doctrine selection;
-  5. the already published point-pressure and alliance-manifestation layers.
-- `GoauldDomainDoctrineDebugActions.ShowReport` displays base weights, eligible
-  pre-relation weights, selected relation Def, multipliers and final percentages.
-- The inter-domain relation report now lists doctrine-weight influence among the
-  published strategic effects.
+- `GameComponent_GoauldDomainReprisalTracker` reuses the published domain
+  reaction layer and now stores:
+  - eligible standard-raid observations;
+  - one shared-reprisal state per exact pair for pending response or cooldown;
+  - storyteller-suspension state.
+- `IncidentWorker_GoauldJaffaNaturalRaid` registers only successful ordinary
+  standard raids and exposes one exact-pair forced joint path for the reprisal.
+- `GoauldSharedAllianceReprisalState.cs` persists observations, pawn references,
+  exact factions, target map, due tick, budget and cooldown.
+- The debug menu provides:
+  - `Show domain reaction state`;
+  - `Create shared alliance reprisal`;
+  - `Trigger pending shared reprisal now`;
+  - `Reset shared alliance reprisals`.
 
-## Expected probability examples
+## Revision r2 letter correction
 
-When all three doctrines are eligible:
+The first in-game test found two presentation ambiguities:
 
-- conquest under alliance: `5 / 1 / 1`, so direct remains dominant;
-- enslavement under alliance: `2.5 / 3 / 1`, so abduction remains dominant;
-- scorched earth under alliance: `2.5 / 1 / 3`, so destruction remains dominant;
-- conquest in open conflict: `4 / 1 / 1.25`, so direct remains dominant;
-- enslavement in rivalry: `2 / 3.75 / 1`, strengthening its existing specialty.
+1. the programming letter exposed `Se rendre sur les lieux` even though no
+   troop or world site existed yet;
+2. the arrival letter focused one force and did not make the second detachment
+   sufficiently explicit.
 
-These values influence probability only. They do not guarantee a doctrine.
+`r2` changes only those surfaces:
+
+- the programming letter is informational and has no `LookTargets`, so no camera
+  jump is offered;
+- the arrival text names the offended domain and its ally and explicitly states
+  that two detachments advance from opposite sides;
+- the arrival letter carries two `LookTargets`, one representative pawn from
+  each newly spawned detachment;
+- budget, split, timing, relation checks, persistence and combat behavior remain
+  unchanged.
 
 ## Validation result
 
-Final revision `r1` is validated:
+Final revision `r2` is validated:
 
-- the project builds successfully as assembly `0.3.80.0`;
-- the duration audit remains at `104` unique keys;
-- project consistency passes across versions, XML, translations, documentation
-  and `83` BackstoryDefs;
-- neutrality and truce leave eligible doctrine weights unchanged;
-- rivalry selects priority `100` and multiplies only eligible abduction by
-  `x1.25`;
-- alliance selects priority `200` and multiplies direct assault by `x1.25`;
-- open conflict selects priority `300`, overrides simultaneous lower-priority
-  relations and multiplies only eligible destruction by `x1.25`;
-- zero ineligible abduction or destruction weights remain zero;
-- non-SG-1 storytellers suspend relation doctrine influence without deleting
-  stored relations;
-- historical forced direct, abduction and destruction commands remain exact and
-  deterministic;
-- standard, delayed `75/25` and joint `60/40` alliance regression paths remain
-  unchanged;
-- no new relevant error appears in the accepted `Player.log`.
-
-Assistant-side static validation also confirms `390` valid XML files, `269` C#
-files passing structural checks, `283` coherent Markdown files, complete-file
-scope for all `22` revision paths and no change to thresholds, storyteller
-frequency, raid-point factors or alliance budget splits.
+- debug scheduling and immediate triggering are conforming;
+- the exact allied pair, simultaneous opposite-edge forces, temporary
+  cooperation, `80%` total budget and `60/40` split are conforming;
+- save persistence and the requested functional regressions are conforming;
+- the programming letter is informational and exposes no
+  `Se rendre sur les lieux` action;
+- the arrival letter explicitly announces two detachments and stores one target
+  pawn from each force;
+- the exact developer action name is
+  `Trigger pending shared reprisal now`;
+- no new relevant error is reported in the accepted `Player.log`.
 
 ## Next step
 
-Integrate `feature/goauld-relations-raid-doctrine-interactions` into `develop` by
-fast-forward, publish annotated tag `v0.3.80-dev` and synchronize the separate
+Integrate `feature/goauld-alliance-shared-reprisals` into `develop` by
+fast-forward, publish annotated tag `v0.3.81-dev` and synchronize the separate
 wiki repository. No later milestone or branch is reserved automatically.

@@ -12,28 +12,32 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
+## Jalon gameplay courant validé
+
+`0.3.81-dev - Add shared Goa'uld alliance reprisals`
+
+Branche : `feature/goauld-alliance-shared-reprisals`, depuis le tag publié
+`v0.3.80-dev`.
+
+La révision `r2` conserve le périmètre validé : un raid naturel standard d'au
+moins cinq Jaffa peut, après défaite à `25%` ou moins, déclencher avec `25%` de
+chance une représaille commune de la paire alliée exacte. Une seule réaction
+peut être en attente ; le délai est de `2–4` jours, le cooldown de paire de
+`30` jours et le budget de `80%` des points vanilla est partagé `60/40`.
+
+La révision finale `r2` est validée et prête pour publication. Elle retire la
+fausse cible de la lettre de programmation et donne à la lettre d'arrivée un
+texte explicite ainsi que deux cibles, une par détachement. Le retest ciblé
+confirme l'absence de bouton de déplacement prématuré, l'identification des deux
+forces et un `Player.log` accepté.
+
 ## Dernier jalon gameplay validé
 
 `0.3.80-dev - Make Goa'uld relations influence raid doctrines`
 
-Branche : `feature/goauld-relations-raid-doctrine-interactions`, depuis le tag
-publié `v0.3.79-dev`.
-
-La révision finale `r1` est validée et prête pour publication. Elle applique une
-influence relationnelle légère, non cumulative et pilotée par XML aux doctrines
-déjà admissibles des raids naturels sous `Commandement SG-1` :
-
-- alliance : poids d'assaut direct `x1,25` ;
-- rivalité : poids d'enlèvement `x1,25` ;
-- conflit ouvert : poids de destruction `x1,25` ;
-- neutralité et trêve : aucun effet ;
-- priorité : `conflit ouvert > alliance > rivalité`.
-
-Le profil permanent du domaine, les seuils d'admissibilité, les points vanilla,
-les facteurs finaux `75 % / 110 %`, la fréquence, les répartitions alliées et les
-commandes de debug forcées restent autoritaires et inchangés. Le build
-`0.3.80.0`, les six tests ciblés, les régressions alliées et le `Player.log` sont
-validés. Aucun jalon suivant n'est réservé automatiquement.
+La révision finale `r1` est validée et publiée. Elle applique une influence
+relationnelle légère, non cumulative et pilotée par XML aux doctrines déjà
+admissibles des raids naturels sous `Commandement SG-1`.
 
 ## Dernier jalon gameplay publié
 
@@ -117,7 +121,10 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 - apparence distinctive de l'officier capturable : `0.3.74-dev` ;
 - officiers dans les forces Goa'uld éligibles : `0.3.75-dev` ;
 - renforts différés d'un domaine Goa'uld allié : `0.3.78-dev` ;
-- raids conjoints coordonnés entre domaines alliés : `0.3.79-dev`.
+- raids conjoints coordonnés entre domaines alliés : `0.3.79-dev`;
+- influence des relations sur les doctrines de raid : `0.3.80-dev`;
+- représailles communes entre domaines alliés : `0.3.81-dev` (jalon courant,
+  publication après validation finale).
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -328,14 +335,6 @@ méthode de sélection et textures temporaires ou définitives.
 
 Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
 non maîtrisé des conséquences d'alliance.
-
-### Ajouter des représailles communes
-
-Permettre à un domaine allié de soutenir une réaction causée par une action
-visible du joueur contre son partenaire.
-
-Décisions reportées au lancement : causes admissibles, attribution, délai,
-anti-empilement et choix du domaine principal.
 
 ### Ajouter une rupture d'alliance après un échec majeur
 

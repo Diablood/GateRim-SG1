@@ -27,4 +27,10 @@ Il ne reste aucun symbiote à remettre. Des forces Jaffa sont attendues dans {3}
     <GR_GoauldDomainFatalExtraction_DebugSymbiote>un Goa'uld tué pendant l'extraction</GR_GoauldDomainFatalExtraction_DebugSymbiote>
     <GR_GoauldDomainReprisal_AttackFailed>Les représailles Goa'uld annoncées n'ont pas pu atteindre la colonie.</GR_GoauldDomainReprisal_AttackFailed>
     <GR_GoauldDomainReprisal_DebugFormerHost>un hôte actif maîtrisé</GR_GoauldDomainReprisal_DebugFormerHost>
+
+    <GR_GoauldSharedAllianceReprisal_WarningLabel>Représailles communes Goa'uld</GR_GoauldSharedAllianceReprisal_WarningLabel>
+    <GR_GoauldSharedAllianceReprisal_WarningText>Après la défaite décisive d'un raid de {0}, ce domaine a fait appel à son allié {1}. Des représailles coordonnées contre la colonie sont attendues dans {2}.</GR_GoauldSharedAllianceReprisal_WarningText>
+    <GR_GoauldSharedAllianceReprisal_ArrivalLabel>Représailles communes Goa'uld</GR_GoauldSharedAllianceReprisal_ArrivalLabel>
+    <GR_GoauldSharedAllianceReprisal_ArrivalText>Les forces de {0} lancent leurs représailles avec le soutien de {1}. Deux détachements Jaffa portant les couleurs des deux domaines progressent depuis des côtés opposés de la colonie.</GR_GoauldSharedAllianceReprisal_ArrivalText>
+    <GR_GoauldSharedAllianceReprisal_AttackFailed>Les représailles communes Goa'uld annoncées n'ont pas pu atteindre la colonie.</GR_GoauldSharedAllianceReprisal_AttackFailed>
 </LanguageData>

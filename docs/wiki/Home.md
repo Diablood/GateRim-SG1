@@ -4,7 +4,16 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.80-dev`
+> Version du mod documentée : `0.3.81-dev`
+
+## Représailles communes Goa'uld
+
+`0.3.81-dev` permet à une paire de domaines alliés de préparer une réaction
+commune après la défaite décisive d'un raid naturel standard. La réponse reste
+rare, attend `2–4` jours et utilise un budget réduit partagé entre deux
+détachements arrivant depuis des côtés opposés. La lettre d'annonce ne pointe
+vers aucun lieu inexistant ; la lettre d'arrivée nomme les deux domaines et
+permet d'identifier les deux forces. La révision finale `r2` est validée.
 
 ## Doctrines de raid influencées par les relations
 

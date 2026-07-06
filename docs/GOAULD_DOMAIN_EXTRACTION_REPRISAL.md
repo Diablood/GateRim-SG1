@@ -92,3 +92,46 @@ without using the debug scheduler.
 Validation status for final `0.3.56-dev-r5`: passed. Surrender, refusal,
 postponement, expiration, persistence, demanded-pawn death, fatal surgery,
 delayed raid timing, former-host faction release and `Player.log` are accepted.
+
+# Shared alliance reprisals
+
+Version: `0.3.81-dev`
+
+`0.3.81-dev` reuses the same persistent reaction component for a second,
+separate cause: a visible player victory over a standard natural Goa'uld raid
+that was eligible for alliance support but remained a single-domain attack.
+
+## Shared-reprisal contract
+
+- source: ordinary natural Goa'uld raid under `Commandement SG-1`;
+- relation: the attacking domain must be in an active alliance with an exact
+  second System Lord domain;
+- manifestation: only the standard single-domain alliance outcome is monitored;
+- exclusions: delayed allied reinforcements, simultaneous joint raids, extraction
+  reprisals, controlled raids, missions and forced historical debug raids;
+- defeat threshold: at least `5` initial Jaffa and `25%` or fewer active
+  combatants remaining;
+- chance: `25%` after a decisive defeat;
+- warning delay: `120000` to `240000` ticks, or two to four days;
+- suspension: pending shared reprisal delays are pushed forward while
+  `Commandement SG-1` is not active;
+- strength: `80%` of current vanilla threat points at scheduling time;
+- split: existing joint-raid `60/40` primary/allied budget split;
+- anti-stacking: one active ultimatum, reprisal or monitored alliance defeat at a
+  time;
+- cooldown: `30` days for the exact alliance pair after completion or rejection;
+- consequences: no alliance rupture, no goodwill change and no territorial
+  effect.
+
+## Debug validation
+
+Open:
+
+```text
+Actions de débogage > GateRim SG-1 > Goa'uld... > Domain reactions...
+```
+
+Use `Create shared alliance reprisal` to schedule a short-delay reaction from
+the first active allied pair, then `Trigger pending reprisal now` to validate the
+arrival path. The resulting attack should be a direct coordinated reprisal using
+the exact pair and the existing temporary-cooperation tracker.

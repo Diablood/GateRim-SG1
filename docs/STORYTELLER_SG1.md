@@ -223,6 +223,23 @@ share one RP letter. The temporary cooperation layer changes no persistent
 goodwill. A retreat or bounded break by either detachment orders both forces to
 leave.
 
+## Shared alliance reprisals
+
+`0.3.81-dev` adds one cause-driven response after a decisive defeat of an
+eligible standard natural raid. At least five initial Jaffa are required; the
+observation resolves once at `25%` or fewer active survivors. A `25%` roll can
+schedule one response from the exact allied pair.
+
+The pending response waits `2–4` days, uses `80%` of the vanilla threat points
+current at scheduling, and splits that complete budget `60/40` into a direct
+simultaneous joint assault. Only one shared reprisal may be pending globally and
+the exact pair receives a `30`-day cooldown.
+
+The advance warning has no camera target because no force exists yet. The
+arrival letter replaces the generic raid letter, names both domains, states that
+two detachments approach from opposite sides and targets one pawn from each
+force. Pending deadlines are suspended outside SG-1 Command.
+
 ## Open-conflict battlefields
 
 `0.3.69-dev` publishes the first visible battle caused by a relation state.
@@ -304,7 +321,6 @@ the bilateral exit response.
 The published relation and alliance layers still add no:
 
 - alliance frequency increase;
-- shared reprisals;
 - territorial expansion or settlement destruction;
 - change to faction goodwill toward the player.
 
@@ -328,3 +344,8 @@ Final revision `r1` of `0.3.80-dev` is validated and published. The focused
 procedure confirms XML-driven `x1.25` doctrine modifiers, non-stacking priority,
 threshold preservation, storyteller exclusion, deterministic forced-command
 behavior, unchanged alliance manifestations and a clean accepted `Player.log`.
+
+Final revision `r2` of `0.3.81-dev` is validated. The complete shared-reprisal
+procedure is conforming; the programming letter has no false target, the arrival
+letter explicitly identifies both detachments through one two-target letter, and
+the accepted `Player.log` contains no new relevant error.

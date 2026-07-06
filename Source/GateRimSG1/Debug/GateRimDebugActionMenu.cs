@@ -156,9 +156,24 @@ namespace GateRimSG1.Debugging
                 "Domain reactions...",
                 250,
                 ActionNode(
-                    "Show extraction reaction state",
+                    "Show domain reaction state",
                     GoauldDomainReprisalDebugActions.ShowState,
-                    400),
+                    500),
+                ActionNode(
+                    "Create shared alliance reprisal",
+                    GoauldDomainReprisalDebugActions
+                        .CreateSharedAllianceReprisal,
+                    450),
+                ActionNode(
+                    "Trigger pending shared reprisal now",
+                    GoauldDomainReprisalDebugActions
+                        .TriggerPendingSharedAllianceReprisal,
+                    425),
+                ActionNode(
+                    "Reset shared alliance reprisals",
+                    GoauldDomainReprisalDebugActions
+                        .ResetSharedAllianceReprisals,
+                    410),
                 ActionNode(
                     "Create extraction ultimatum",
                     GoauldDomainReprisalDebugActions
@@ -185,7 +200,7 @@ namespace GateRimSG1.Debugging
                         .KillDemandedSymbiote,
                     210),
                 ActionNode(
-                    "Trigger pending reprisal now",
+                    "Trigger pending extraction reprisal now",
                     GoauldDomainReprisalDebugActions
                         .TriggerPendingReprisal,
                     200),

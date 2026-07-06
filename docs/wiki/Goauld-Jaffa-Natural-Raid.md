@@ -157,3 +157,14 @@ Consulte aussi [Domaine des Grands Maîtres Goa'uld](Goauld-System-Lord-Faction)
 [Doctrines des domaines Goa'uld](Goauld-Domain-Doctrines),
 [Storyteller GateRim SG-1](Storyteller-SG1)
 et [Progression des menaces Goa'uld](Goauld-Threat-Progression).
+
+## Représailles communes après victoire contre un allié
+
+Depuis `0.3.81-dev`, un raid allié resté standard peut être suivi comme cause de
+représailles. La surveillance existe seulement si au moins cinq Jaffa sont
+générés. Si le joueur réduit cette force à `25 %` ou moins de combattants actifs,
+un tirage `25 %` peut programmer une attaque commune dans `2` à `4` jours.
+
+La représaille utilise la paire exacte, `80 %` des points vanilla actuels et la
+répartition conjointe `60/40`. Elle ne s'applique pas aux renforts différés, aux
+raids conjoints déjà coordonnés, aux missions ou aux commandes forcées de test.

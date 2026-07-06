@@ -66,6 +66,10 @@ namespace GateRimSG1.Goauld
         private float preparedAlliedPoints;
         private float preparedCombinedPoints;
         private IntVec3 preparedAlliedSpawnCenter = IntVec3.Invalid;
+        private Faction forcedExactAlliedDomain;
+        private IntVec3 forcedPrimarySpawnCenter = IntVec3.Invalid;
+        private IntVec3 forcedAlliedSpawnCenter = IntVec3.Invalid;
+        private bool suppressJointRaidLetter;
 
         protected override string ControlledRaidPurpose
         {
@@ -181,12 +185,15 @@ namespace GateRimSG1.Goauld
                     }
                 }
 
-                if (succeeded && preparedAlliedDomain != null)
-                {
-                    List<Pawn> primaryPawns = NewPawnsForFaction(
+                List<Pawn> primaryPawns = succeeded
+                    ? NewPawnsForFaction(
                         map,
                         parms.faction,
-                        existingPrimaryPawnIds);
+                        existingPrimaryPawnIds)
+                    : new List<Pawn>();
+
+                if (succeeded && preparedAlliedDomain != null)
+                {
                     GameComponent_GoauldAlliedReinforcementTracker tracker =
                         GameComponent_GoauldAlliedReinforcementTracker
                             .Current;
@@ -216,6 +223,14 @@ namespace GateRimSG1.Goauld
                             + $"budget, but its {preparedAllianceOutcome} "
                             + "detachment could not be started.");
                     }
+                }
+                else if (succeeded && !executionWasExternallyForced)
+                {
+                    GameComponent_GoauldDomainReprisalTracker
+                        .NotifyNaturalStandardRaidStarted(
+                            map,
+                            parms.faction,
+                            primaryPawns);
                 }
 
                 return succeeded;
@@ -447,6 +462,61 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        public bool TryExecuteForcedSharedAllianceReprisal(
+            IncidentParms parms,
+            Faction alliedDomain)
+        {
+            Map map = parms?.target as Map;
+
+            if (map == null
+                || alliedDomain == null
+                || GameComponent_GoauldAlliedReinforcementTracker
+                    .HasPendingOrActive(map)
+                || !TryFindJointSpawnCenters(
+                    map,
+                    out IntVec3 primarySpawnCenter,
+                    out IntVec3 alliedSpawnCenter))
+            {
+                return false;
+            }
+
+            GoauldJaffaRaidDoctrine? previousDoctrine =
+                forcedDebugDoctrine;
+            GoauldAllianceRaidOutcome? previousOutcome =
+                forcedDebugAllianceOutcome;
+            Faction previousExactAlliedDomain = forcedExactAlliedDomain;
+            IntVec3 previousPrimarySpawnCenter =
+                forcedPrimarySpawnCenter;
+            IntVec3 previousAlliedSpawnCenter =
+                forcedAlliedSpawnCenter;
+            bool previousSuppressLetter = suppressJointRaidLetter;
+
+            forcedDebugDoctrine = GoauldJaffaRaidDoctrine.Direct;
+            forcedDebugAllianceOutcome =
+                GoauldAllianceRaidOutcome.JointRaid;
+            forcedExactAlliedDomain = alliedDomain;
+            forcedPrimarySpawnCenter = primarySpawnCenter;
+            forcedAlliedSpawnCenter = alliedSpawnCenter;
+            suppressJointRaidLetter = true;
+
+            try
+            {
+                bool succeeded = TryExecute(parms);
+                return succeeded
+                    && GameComponent_GoauldAlliedReinforcementTracker
+                        .HasPendingOrActive(map);
+            }
+            finally
+            {
+                forcedDebugDoctrine = previousDoctrine;
+                forcedDebugAllianceOutcome = previousOutcome;
+                forcedExactAlliedDomain = previousExactAlliedDomain;
+                forcedPrimarySpawnCenter = previousPrimarySpawnCenter;
+                forcedAlliedSpawnCenter = previousAlliedSpawnCenter;
+                suppressJointRaidLetter = previousSuppressLetter;
+            }
+        }
+
         private void ApplyInterDomainPressureModifier(
             IncidentParms parms)
         {
@@ -499,17 +569,37 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
-            if (!GameComponent_GoauldAlliedReinforcementTracker
+            GoauldAllianceRaidOutcome outcome;
+            Faction alliedDomain;
+            float primaryPoints;
+            float alliedPoints;
+
+            if (forcedExactAlliedDomain != null)
+            {
+                outcome = GoauldAllianceRaidOutcome.JointRaid;
+                alliedDomain = forcedExactAlliedDomain;
+                primaryPoints = Math.Max(
+                    1f,
+                    parms.points
+                        * GameComponent_GoauldAlliedReinforcementTracker
+                            .JointPrimaryBudgetFraction);
+                alliedPoints = Math.Max(
+                    1f,
+                    parms.points
+                        * GameComponent_GoauldAlliedReinforcementTracker
+                            .JointAlliedBudgetFraction);
+            }
+            else if (!GameComponent_GoauldAlliedReinforcementTracker
                 .TryResolvePlan(
                     parms.target as Map,
                     parms.faction,
                     parms.points,
                     doctrine,
                     forcedDebugAllianceOutcome,
-                    out GoauldAllianceRaidOutcome outcome,
-                    out Faction alliedDomain,
-                    out float primaryPoints,
-                    out float alliedPoints))
+                    out outcome,
+                    out alliedDomain,
+                    out primaryPoints,
+                    out alliedPoints))
             {
                 return;
             }
@@ -530,21 +620,34 @@ namespace GateRimSG1.Goauld
 
             if (outcome == GoauldAllianceRaidOutcome.JointRaid)
             {
-                if (TryFindJointSpawnCenters(
+                IntVec3 primarySpawnCenter =
+                    forcedPrimarySpawnCenter;
+                IntVec3 alliedSpawnCenter =
+                    forcedAlliedSpawnCenter;
+                bool foundCenters = primarySpawnCenter.IsValid
+                    && alliedSpawnCenter.IsValid
+                    || TryFindJointSpawnCenters(
                         parms.target as Map,
-                        out IntVec3 primarySpawnCenter,
-                        out IntVec3 alliedSpawnCenter))
+                        out primarySpawnCenter,
+                        out alliedSpawnCenter);
+
+                if (foundCenters)
                 {
                     parms.spawnCenter = primarySpawnCenter;
                     preparedAlliedSpawnCenter = alliedSpawnCenter;
-                    parms.sendLetter = true;
-                    parms.customLetterDef = LetterDefOf.ThreatBig;
-                    parms.customLetterLabel =
-                        "GR_GoauldJointRaid_ArrivalLabel".Translate();
-                    parms.customLetterText =
-                        "GR_GoauldJointRaid_ArrivalText".Translate(
-                            parms.faction?.Name ?? "<missing domain>",
-                            alliedDomain.Name);
+                    parms.sendLetter = !suppressJointRaidLetter;
+
+                    if (parms.sendLetter)
+                    {
+                        parms.customLetterDef = LetterDefOf.ThreatBig;
+                        parms.customLetterLabel =
+                            "GR_GoauldJointRaid_ArrivalLabel".Translate();
+                        parms.customLetterText =
+                            "GR_GoauldJointRaid_ArrivalText".Translate(
+                                parms.faction?.Name
+                                    ?? "<missing domain>",
+                                alliedDomain.Name);
+                    }
                 }
                 else
                 {

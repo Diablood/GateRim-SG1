@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.80-dev`
-> Statut : influence relationnelle des doctrines publiée
+> Dernière évolution : `0.3.81-dev`
+> Statut : représailles communes validées en révision finale `r2`
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -92,6 +92,20 @@ deux domaines exacts arrivent depuis des bords opposés, conservent leurs couleu
 et partagent une seule lettre RP. Elles se retirent ensemble si un détachement
 rompt le combat. Aucun tirage storyteller, point gratuit, pod, rupture
 d'alliance ou effet territorial n'est ajouté.
+
+## Représailles communes des domaines alliés
+
+À partir de `0.3.81-dev`, la défaite décisive d'un raid naturel standard peut
+provoquer une réaction commune de la paire alliée exacte. Le raid initial doit
+compter au moins cinq Jaffa et tomber à `25 %` ou moins de combattants actifs.
+La réaction reste rare (`25 %`), limitée à une seule attente globale et suivie
+d'un cooldown de `30` jours pour la paire.
+
+Après `2–4` jours, les deux domaines lancent un assaut direct simultané utilisant
+`80 %` des points de menace vanilla, partagés `60/40`. La lettre de programmation
+ne propose aucun déplacement de caméra, puisqu'aucune force n'existe encore. La
+lettre d'arrivée nomme les deux domaines, annonce clairement deux détachements
+sur des côtés opposés et permet d'identifier une cible dans chaque force.
 
 ## Batailles en conflit ouvert
 

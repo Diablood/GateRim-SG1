@@ -1,5 +1,43 @@
 # Changelog
 
+## 0.3.81-dev - Add shared Goa'uld alliance reprisals
+
+- Start from published `develop` and annotated tag `v0.3.80-dev` at commit
+  `1758c2d9b94d4b9a3884ca99c846402aa3703a40` on
+  `feature/goauld-alliance-shared-reprisals`.
+- Observe only ordinary standard natural Goa'uld raids under
+  `Commandement SG-1`; exclude delayed, joint, extraction-reprisal, mission,
+  controlled and historical forced paths.
+- Require at least five initial Jaffa and evaluate one decisive defeat when no
+  more than `25%` remain active.
+- Apply a `25%` chance, one global pending slot and a `30`-day cooldown for the
+  exact allied pair.
+- Delay a normal response by `2–4` days and suspend the deadline outside
+  `Commandement SG-1`.
+- Snapshot `80%` of current vanilla threat points and split that complete budget
+  `60/40` between the offended domain and its exact ally.
+- Reuse the simultaneous direct joint-raid path with opposite reachable edges,
+  exact faction colors and temporary cooperation.
+- Add no extra storyteller roll, frequency change, goodwill change, relation
+  transition, reward or territorial consequence.
+- Add persistent observation and pair-state records plus focused developer
+  actions in `Goa'uld... > Domain reactions...`.
+- Record the first functional test as conforming except for two letter-interface
+  ambiguities.
+- In revision `r2`, remove all `LookTargets` from the scheduling letter so it no
+  longer offers a false `Se rendre sur les lieux` action.
+- In revision `r2`, make the arrival text explicitly announce two detachments
+  and attach one representative pawn from each force to a single letter.
+- Keep all timing, chance, budget, pair and combat behavior unchanged by the
+  `r2` presentation correction.
+- Validate final revision `r2`: the programming letter has no false camera
+  target, the arrival letter explicitly identifies both detachments through two
+  targets, all previously accepted functional tests remain conforming and the
+  accepted `Player.log` has no new relevant error.
+- Standardize the documented developer command on its exact label,
+  `Trigger pending shared reprisal now`; this documentation correction changes
+  no gameplay or debug behavior.
+
 ## 0.3.80-dev - Make Goa'uld relations influence raid doctrines
 
 - Start from published `develop` and annotated tag `v0.3.79-dev` at commit

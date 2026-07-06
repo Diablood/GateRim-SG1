@@ -57,6 +57,7 @@ aux régressions. Les principales portes d'entrée sont :
 - storyteller et orchestration : [`STORYTELLER_SG1.md`](STORYTELLER_SG1.md) ;
 - direction Goa'uld : [`GOAULD_GAMEPLAY_DIRECTION.md`](GOAULD_GAMEPLAY_DIRECTION.md),
   [`GOAULD_OPEN_CONFLICT_BATTLEFIELD.md`](GOAULD_OPEN_CONFLICT_BATTLEFIELD.md),
+  [`GOAULD_SHARED_ALLIANCE_REPRISALS.md`](GOAULD_SHARED_ALLIANCE_REPRISALS.md),
   [`GOAULD_HOST.md`](GOAULD_HOST.md) et
   [`GOAULD_KARA_KESH.md`](GOAULD_KARA_KESH.md) ;
 - Jaffa et Prim'ta : fichiers `JAFFA_*.md` et `PRIMTA_*.md` ;

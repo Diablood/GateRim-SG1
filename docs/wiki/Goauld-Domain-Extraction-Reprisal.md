@@ -58,3 +58,20 @@ monde contient plusieurs factions Goa'uld.
 L'exigence porte sur le symbiote à l'origine de l'affront. Elle ne demande ni
 argent, ni goodwill, ni monnaie spéciale et ne constitue pas une mission
 Tok'ra.
+
+## Représailles communes d'alliance
+
+Depuis `0.3.81-dev`, le même suivi de réactions gère aussi un cas distinct : la
+victoire visible du joueur contre un raid naturel standard issu d'un contexte
+d'alliance. Ce n'est pas lié à l'extraction d'un symbiote.
+
+Si la force standard initiale compte au moins cinq Jaffa et tombe à `25 %` ou
+moins de combattants actifs, il existe `25 %` de chances qu'une représaille
+commune soit annoncée. Elle attend `2` à `4` jours sous **Commandement SG-1**,
+puis lance un assaut direct coordonné de la paire exacte : le domaine vaincu et
+son allié.
+
+La réaction utilise `80 %` des points de menace vanilla actuels et les partage
+`60/40`. Elle n'ajoute ni goodwill, ni rupture d'alliance, ni conséquence
+territoriale. Les renforts différés, raids conjoints, missions, raids contrôlés
+et représailles d'extraction ne déclenchent pas cette boucle.

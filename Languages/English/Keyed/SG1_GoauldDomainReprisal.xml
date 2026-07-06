@@ -27,4 +27,10 @@ There is no symbiote left to surrender. Jaffa forces are expected in {3}.</GR_Go
     <GR_GoauldDomainFatalExtraction_DebugSymbiote>a Goa'uld killed during extraction</GR_GoauldDomainFatalExtraction_DebugSymbiote>
     <GR_GoauldDomainReprisal_AttackFailed>The announced Goa'uld reprisal could not reach the colony.</GR_GoauldDomainReprisal_AttackFailed>
     <GR_GoauldDomainReprisal_DebugFormerHost>a secured active host</GR_GoauldDomainReprisal_DebugFormerHost>
+
+    <GR_GoauldSharedAllianceReprisal_WarningLabel>Shared Goa'uld reprisal</GR_GoauldSharedAllianceReprisal_WarningLabel>
+    <GR_GoauldSharedAllianceReprisal_WarningText>Following the decisive defeat of a raid from {0}, that domain has called on its ally {1}. A coordinated reprisal against the colony is expected in {2}.</GR_GoauldSharedAllianceReprisal_WarningText>
+    <GR_GoauldSharedAllianceReprisal_ArrivalLabel>Shared Goa'uld reprisal</GR_GoauldSharedAllianceReprisal_ArrivalLabel>
+    <GR_GoauldSharedAllianceReprisal_ArrivalText>The forces of {0} are carrying out their reprisal with support from {1}. Two Jaffa detachments bearing the colors of the two domains are advancing from opposite sides of the colony.</GR_GoauldSharedAllianceReprisal_ArrivalText>
+    <GR_GoauldSharedAllianceReprisal_AttackFailed>The announced shared Goa'uld reprisal could not reach the colony.</GR_GoauldSharedAllianceReprisal_AttackFailed>
 </LanguageData>

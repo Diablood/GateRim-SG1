@@ -181,3 +181,11 @@ focused procedure confirm the `x1.25` XML modifiers, non-stacking priority,
 threshold preservation, other-storyteller exclusion, unchanged `75% / 110%`
 pressure factors, unchanged alliance budget splits, deterministic forced-command
 regressions and a clean accepted `Player.log`.
+
+## Shared alliance reprisal budget (`0.3.81-dev`)
+
+The shared alliance reprisal snapshots `0.80 ×` the vanilla threat points
+current when the response is scheduled. That value is the complete combined
+budget and is split `60/40`. The ordinary alliance `1.10` natural-raid factor is
+not applied a second time because the response is an externally forced,
+cause-driven path.

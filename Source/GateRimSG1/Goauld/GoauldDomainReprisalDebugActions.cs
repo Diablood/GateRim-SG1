@@ -78,6 +78,48 @@ namespace GateRimSG1.Goauld
             }
         }
 
+        public static void CreateSharedAllianceReprisal()
+        {
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.TryCreateDebugSharedAllianceReprisal(
+                        Find.CurrentMap) != true)
+            {
+                Reject(
+                    "Could not create a shared Goa'uld alliance reprisal. "
+                    + "Use SG-1 Command, create at least two active domains, "
+                    + "set an alliance and clear any pending shared reaction.");
+            }
+        }
+
+        public static void TriggerPendingSharedAllianceReprisal()
+        {
+            if (GameComponent_GoauldDomainReprisalTracker.Current
+                    ?.TriggerFirstPendingSharedAllianceReprisalNow() != true)
+            {
+                Reject(
+                    "No pending shared Goa'uld alliance reprisal could be "
+                    + "triggered.");
+            }
+        }
+
+        public static void ResetSharedAllianceReprisals()
+        {
+            GameComponent_GoauldDomainReprisalTracker tracker =
+                GameComponent_GoauldDomainReprisalTracker.Current;
+
+            if (tracker == null)
+            {
+                Reject("Goa'uld domain reprisal tracker is unavailable.");
+                return;
+            }
+
+            tracker.ResetSharedAllianceReprisalsDebug();
+            Messages.Message(
+                "Shared Goa'uld alliance reprisal state reset.",
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
         public static void TriggerPendingReprisal()
         {
             if (GameComponent_GoauldDomainReprisalTracker.Current

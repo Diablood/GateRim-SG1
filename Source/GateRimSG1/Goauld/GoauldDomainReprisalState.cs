@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -6,6 +7,7 @@ namespace GateRimSG1.Goauld
     public sealed class GoauldDomainReprisalState : IExposable
     {
         public Faction domainFaction;
+        public Faction alliedDomainFaction;
         public int targetMapUniqueId = -1;
         public int reprisalTick;
         public int nextEligibleTick;
@@ -18,10 +20,18 @@ namespace GateRimSG1.Goauld
         public bool debugGeneratedSymbiote;
         public bool debugShortDelay;
         public bool pending;
+        public bool sharedAllianceReprisal;
+        public bool monitoringAllianceDefeat;
+        public bool debugForcedSharedReprisal;
+        public int sourceInitialPawnCount;
+        public List<Pawn> sourcePawns = new List<Pawn>();
 
         public void ExposeData()
         {
             Scribe_References.Look(ref domainFaction, "domainFaction");
+            Scribe_References.Look(
+                ref alliedDomainFaction,
+                "alliedDomainFaction");
             Scribe_Values.Look(
                 ref targetMapUniqueId,
                 "targetMapUniqueId",
@@ -60,6 +70,31 @@ namespace GateRimSG1.Goauld
                 "debugShortDelay",
                 false);
             Scribe_Values.Look(ref pending, "pending", false);
+            Scribe_Values.Look(
+                ref sharedAllianceReprisal,
+                "sharedAllianceReprisal",
+                false);
+            Scribe_Values.Look(
+                ref monitoringAllianceDefeat,
+                "monitoringAllianceDefeat",
+                false);
+            Scribe_Values.Look(
+                ref debugForcedSharedReprisal,
+                "debugForcedSharedReprisal",
+                false);
+            Scribe_Values.Look(
+                ref sourceInitialPawnCount,
+                "sourceInitialPawnCount",
+                0);
+            Scribe_Collections.Look(
+                ref sourcePawns,
+                "sourcePawns",
+                LookMode.Reference);
+
+            if (Scribe.mode == LoadSaveMode.PostLoadInit)
+            {
+                sourcePawns = sourcePawns ?? new List<Pawn>();
+            }
         }
     }
 }

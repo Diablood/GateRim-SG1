@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.80-dev`
+- Development version: `0.3.81-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.80-dev` lets persistent Goa'uld relations slightly influence the three
-already validated natural-raid doctrines under SG-1 Command. Alliance multiplies
-the eligible direct-assault weight by `1.25`, rivalry does the same for
-abduction, and open conflict does the same for destruction. Open conflict takes
-priority over alliance, alliance over rivalry, modifiers never stack, and the
-permanent domain doctrine, eligibility thresholds, threat budget and raid
-frequency remain authoritative.
+`0.3.81-dev` adds bounded shared reprisals between allied Goa'uld domains
+under SG-1 Command. A decisive defeat of an eligible standard natural raid can
+schedule one delayed joint response from the exact allied pair. The reprisal
+uses `80%` of current vanilla threat points, split `60/40`, and the two Jaffa
+detachments enter from opposite approaches. The advance warning has no false
+camera target; the arrival letter names both domains and targets one pawn from
+each force.
 
 ## Playable content
 

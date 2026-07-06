@@ -164,6 +164,7 @@ namespace GateRimSG1.Goauld
             }
 
             outcome = forcedOutcome ?? SelectOutcome(doctrine);
+            alliedDomain = candidates.RandomElement();
 
             if (outcome == GoauldAllianceRaidOutcome.Standard)
             {
@@ -175,8 +176,6 @@ namespace GateRimSG1.Goauld
             {
                 outcome = GoauldAllianceRaidOutcome.DelayedReinforcement;
             }
-
-            alliedDomain = candidates.RandomElement();
 
             if (outcome == GoauldAllianceRaidOutcome.JointRaid)
             {
