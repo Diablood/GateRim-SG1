@@ -4,21 +4,27 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.83-dev`
+> Version du mod documentée : `0.3.84-dev`
+> Révision finale : `r1`, validée et publiée
 
-## Garde-fous territoriaux et diplomatie cohérente
+## Première prise territoriale Goa'uld bornée
 
-`0.3.83-dev` propose trois domaines Goa'uld par défaut dans la liste vanilla,
-tout en permettant au joueur d'en conserver moins. Deux domaines actifs
-suffisent au cadre territorial. Avant toute future conquête, le mod protège la
-dernière colonie de chaque domaine, bloque les mondes trop pauvres, ralentit
-fortement les grands domaines et interdit de dépasser automatiquement `50 %` des
-colonies Goa'uld permanentes.
+Après les garde-fous publiés en `0.3.83-dev`, la version publiée
+`0.3.84-dev` permet à une paire exacte en conflit ouvert de réserver une
+colonie Goa'uld existante. Les tentatives naturelles restent rares, tous les
+`45–90` jours sous **Commandement SG-1**, puis la résolution attend `1–2` jours.
 
-Les états GateRim sont aussi réconciliés avec les relations vanilla entre les
-deux mêmes domaines : conflit ouvert devient hostile, alliance devient alliée,
-et neutralité, rivalité ou trêve restent neutres. La révision actuelle est une
-simulation sèche : aucune colonie n'est créée, transférée ou détruite.
+Seule la faction propriétaire change. La colonie conserve son nom, son
+identifiant et sa tuile ; aucune colonie ou faction n'est créée ou détruite. La
+dernière colonie d'un domaine, les mondes sous le seuil `domaines + 2`, les
+acquisitions dépassant `75 %` avec deux domaines ou `50 %` à partir de trois,
+les cartes chargées, la présence du joueur et les cibles de quête actives sont
+protégées.
+
+Les états GateRim restent réconciliés avec les relations vanilla entre les mêmes
+domaines : conflit ouvert devient hostile, alliance devient alliée, et
+neutralité, rivalité ou trêve restent neutres. La prise ne modifie ni cette
+relation, ni la bonne volonté envers le joueur ou les factions extérieures.
 
 ## Rupture d'alliance après un échec majeur
 

@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.83-dev`
+- Development version: `0.3.84-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,14 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.83-dev` establishes the dry-run safety boundary required before any
-Goa'uld territorial consequence. New worlds propose three System Lord domains
-by default while remaining editable in the vanilla faction list. With at least
-two active territorial domains, the tracker reports sparse-world protection,
-final-settlement immunity, strongly diminishing expansion, a `50%` hegemony
-ceiling and one persistent reservation. GateRim pair states are also reconciled
-to vanilla faction relations. This milestone does not yet transfer, create or
-destroy any settlement.
+`0.3.84-dev` adds the first real but tightly bounded Goa'uld territorial
+consequence. Under **SG-1 Command**, an exact pair in open conflict may reserve
+one eligible permanent Goa'uld settlement and transfer only its ownership after
+a suspended `1–2` day delay. Natural attempts remain rare (`45–90` days), every
+`0.3.83-dev` safeguard is revalidated at resolution, loaded maps, player
+presence and active quest targets are protected, and the same world object,
+name and tile are preserved. No settlement or faction is created or destroyed.
 
 ## Playable content
 
@@ -55,8 +54,11 @@ destroy any settlement.
   relation-derived raid modifiers.
 - Three Goa'uld System Lord domains are proposed by default, while the player
   may reduce their count through the vanilla world-faction list. Territorial
-  strategy requires two active domains and remains a dry-run safeguard in this
-  revision. Goa'uld-aligned Jaffa, Free Jaffa and an optional non-territorial
+  strategy requires two active domains. In open conflict, rare bounded takeovers
+  may transfer one eligible permanent Goa'uld settlement while protecting the
+  final colony of every domain, sparse worlds, loaded maps, player presence,
+  active quest targets and the dynamic automatic-hegemony ceiling: `75%` with exactly two domains, `50%` from three domains onward.
+  Goa'uld-aligned Jaffa, Free Jaffa and an optional non-territorial
   Tok'ra faction are also included. The Tok'ra are selected once by
   default in the world-faction list with a dedicated icon, create no
   settlements and may be removed to disable their contacts, questline and

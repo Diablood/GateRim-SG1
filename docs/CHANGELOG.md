@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.3.84-dev - Add first bounded Goa'uld territorial takeover
+
+- Start from published `develop` and annotated tag `v0.3.83-dev` at commit
+  `f4006e3e0007aab99678e166abedc63a53ad1689` on
+  `feature/goauld-bounded-territorial-takeover`.
+- Turn the published `0.3.83-dev` dry-run reservation into one real but bounded
+  ownership transfer between the exact Goa'uld domains in `OpenConflict`.
+- Keep the same permanent `Settlement` world object, ID, name and tile; change
+  only its faction owner, then clear stale world-icon, trader-stock and cached
+  inhabitant surfaces so later interaction resolves from the new domain.
+- Schedule natural attempts only under `Commandement SG-1`, once every `45–90`
+  RimWorld days, with no backlog while another storyteller is active.
+- Keep one pending takeover globally with a `1–2` day deadline, exact domains,
+  exact settlement ID, source, creation snapshot and persistent outcome.
+- Revalidate every published safeguard at scheduling and resolution: at least
+  two active territorial domains, world density `domains + 2`, losing-domain
+  final-settlement protection, decreasing expansion weights, post-transfer
+  cooldown multipliers, a projected share ceiling of `75%` with exactly two
+  domains or `50%` with three or more, exact open conflict and exact-pair
+  strategic compatibility.
+- Add three mutation-specific protections: reject a colony whose map is loaded,
+  whose tile contains a player world object or which is referenced by an active
+  quest.
+- Apply global `15`-day, involved-domain base `30`-day and exact-pair `60`-day
+  cooldowns after success; multiply the gaining-domain cooldown from its
+  post-transfer size by `1 / 2 / 4 / 8`.
+- Announce a successful takeover with one of three localized neutral RP letters,
+  local anti-repetition and a target on the unchanged settlement tile.
+- Migrate schema-`1` state by clearing the dry-run global, domain and pair
+  cooldowns; convert a pending `0.3.83-dev` reservation to
+  `CancelledLegacyDryRun` without changing ownership and arm a fresh natural
+  deadline instead of resolving immediately after load.
+- Add developer actions for one deterministic pending takeover, one natural
+  scheduling attempt, immediate resolution, cancellation, reset and a detailed
+  strategy report.
+- Preserve settlement count, world tiles, faction count, pair relation, vanilla
+  goodwill toward the player and outsiders, doctrines, raid points, raid
+  frequency, missions, rewards and storyteller cadence.
+- Validate final local revision `r1`: successful build and focused natural-source
+  reservation, save/reload before resolution, one `CompletedTransfer` preserving
+  settlement ID/name/tile/count, refreshed world presentation, targeted RP
+  letter, persistent ownership and cooldowns after reload, unchanged diplomatic
+  and raid systems, and no new relevant `Player.log` error.
+
 ## 0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence
 
 - Start from published `develop` and annotated tag `v0.3.82-dev` at commit

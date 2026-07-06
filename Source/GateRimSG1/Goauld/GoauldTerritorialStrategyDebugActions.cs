@@ -36,12 +36,28 @@ namespace GateRimSG1.Goauld
                 ?.TryCreateDebugReservation() != true)
             {
                 Reject(
-                    "No safe open-conflict territorial reservation is currently available. Check the territorial report for the exact refusal reason.");
+                    "No safe open-conflict territorial takeover is currently available. Check the territorial report for the exact refusal reason.");
                 return;
             }
 
             Messages.Message(
-                "Created one Goa'uld territorial dry-run reservation.",
+                "Created one pending Goa'uld territorial takeover.",
+                MessageTypeDefOf.PositiveEvent,
+                historical: false);
+        }
+
+        public static void RunNaturalAttempt()
+        {
+            if (GameComponent_GoauldTerritorialStrategyTracker.Current
+                ?.TryRunNaturalAttemptDebug() != true)
+            {
+                Reject(
+                    "The natural territorial scheduling attempt found no eligible takeover. Check the territorial report for the exact refusal reason.");
+                return;
+            }
+
+            Messages.Message(
+                "The natural territorial scheduler created one pending takeover.",
                 MessageTypeDefOf.PositiveEvent,
                 historical: false);
         }
@@ -52,12 +68,12 @@ namespace GateRimSG1.Goauld
                 ?.TriggerPendingReservationNow() != true)
             {
                 Reject(
-                    "No eligible Goa'uld territorial reservation completed its dry run.");
+                    "No eligible Goa'uld territorial takeover was completed.");
                 return;
             }
 
             Messages.Message(
-                "Completed the territorial dry run without modifying the world.",
+                "Completed the pending Goa'uld territorial takeover.",
                 MessageTypeDefOf.PositiveEvent,
                 historical: false);
         }
@@ -67,7 +83,7 @@ namespace GateRimSG1.Goauld
             if (GameComponent_GoauldTerritorialStrategyTracker.Current
                 ?.CancelPendingReservationDebug() != true)
             {
-                Reject("No territorial reservation is pending.");
+                Reject("No territorial takeover is pending.");
             }
         }
 
@@ -76,7 +92,7 @@ namespace GateRimSG1.Goauld
             GameComponent_GoauldTerritorialStrategyTracker.Current
                 ?.ResetDebug();
             Messages.Message(
-                "Reset Goa'uld territorial safeguard state.",
+                "Reset Goa'uld territorial strategy state.",
                 MessageTypeDefOf.NeutralEvent,
                 historical: false);
         }

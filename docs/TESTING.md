@@ -4233,6 +4233,42 @@ Validation locale terminée sur la révision finale `r3`, puis jalon publié sou
 - Inspect `Player.log` for new C#, Scribe, relation or world-object errors,
   especially `SetRelationDirect` rejection or repeated goodwill reconciliation.
 
+## First bounded Goa'uld territorial takeover (`0.3.84-dev`)
+
+Final revision `r1` validated and published. Durable coverage:
+
+- require `Commandement SG-1`, at least two active territorial domains and one
+  exact `OpenConflict` pair;
+- attempt natural scheduling only once every `45–90` days and preserve one
+  global pending slot with a `1–2` day resolution delay;
+- count only permanent Goa'uld settlements and preserve the `active domains + 2`
+  sparse-world threshold plus final-settlement protection;
+- use decreasing expansion weights and post-transfer domain-delay multipliers,
+  with a projected ceiling of `75%` for exactly two domains and `50%` for three
+  or more;
+- reject or cancel loaded settlement maps, player presence on the exact tile,
+  active quest targets, changed ownership, changed relation, inactive domains,
+  incompatible exact-pair transitions and cooldown conflicts;
+- save and reload the pending natural-source reservation without resetting its
+  exact pair, settlement ID, source, creation snapshot or deadline;
+- resolve one takeover as `CompletedTransfer`, changing only the faction owner
+  through the existing settlement object;
+- preserve settlement name, ID, tile, total settlement count and faction count;
+- refresh faction-colored world presentation, clear stale trader stock and
+  cached inhabitants, and produce one targeted neutral three-variant RP letter;
+- keep the exact pair in `OpenConflict` / vanilla `Hostile`, and preserve player
+  and outside-faction goodwill;
+- apply and persist global, involved-domain and exact-pair cooldowns based on the
+  winner's post-transfer size;
+- migrate schema-`1` dry-run state without an unexpected takeover or inherited
+  debug cooldown blockage;
+- suspend pending, natural and cooldown clocks under another storyteller without
+  accumulating backlog;
+- confirm no settlement creation, destruction or movement, no faction defeat,
+  and no raid, doctrine, mission, reward or storyteller-frequency change;
+- inspect `Player.log` for new C#, reflection, Scribe, world-rendering,
+  settlement-owner, quest-target, relation or repeated-exception errors.
+
 ## Shared Goa'uld alliance reprisal failure and rupture (`0.3.81-dev`, `0.3.82-dev`)
 
 Validate the bounded cause-and-consequence chain without turning relation reports

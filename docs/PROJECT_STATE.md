@@ -1,135 +1,109 @@
 # Project state
 
-Current milestone: `0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence`
+Current milestone: `0.3.84-dev - Add first bounded Goa'uld territorial takeover`
 
 Status: validated and published.
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.82-dev` at commit
-  `bb1fc23ef843513b626ec05f4da73839fe5863ff`.
-- Final feature branch:
-  `feature/goauld-territorial-strategic-safeguards`.
-- Final local revision: `r3`.
-- Published assembly version: `0.3.83.0`.
-- Final annotated tag: `v0.3.83-dev`.
+  `v0.3.83-dev` at commit
+  `f4006e3e0007aab99678e166abedc63a53ad1689`.
+- Final feature branch: `feature/goauld-bounded-territorial-takeover`.
+- Final local revision: `r1`.
+- Published assembly version: `0.3.84.0`.
+- Final annotated tag: `v0.3.84-dev`.
 - Integration target: `develop`, by fast-forward from the validated feature
   branch.
 
 ## Decided scope
 
-- Propose three Goa'uld System Lord faction instances by default in the vanilla
-  world-faction list while retaining one required baseline so the player may
-  reduce the count when the vanilla faction limit matters.
-- Enable territorial strategy only with at least two active territorial Goa'uld
-  domains. A territorial domain must be non-defeated and own at least one
-  permanent vanilla settlement.
-- Count only permanent Goa'uld `Settlement` world objects. Exclude player and
-  non-Goa'uld settlements, mission sites, temporary sites, battlefields,
-  caravans and travelling groups.
-- Protect the final settlement of every domain.
-- Require at least `active domains + 2` permanent Goa'uld settlements before a
-  hostile transfer can pass the dry-run evaluator.
-- Slow automatic expansion as the gaining domain grows: weights
-  `1.00 / 0.50 / 0.25 / 0.10` and cooldown multipliers `1 / 2 / 4 / 8` for
-  `1 / 2 / 3 / 4+` settlements.
-- Reject an automatic gain that would place one domain above `50%` of all
-  permanent Goa'uld settlements.
-- Persist at most one global territorial reservation, with global, involved
-  domain and exact-pair cooldowns.
-- Suspend pending deadlines and cooldowns outside `Commandement SG-1` instead
-  of consuming a backlog.
-- Cancel an invalid reservation when its exact domains, settlement, ownership,
-  relation, world density or compatibility conditions no longer hold.
-- Reconcile GateRim pair relations to vanilla faction relations:
-  `Neutral/Rivalry/Truce -> Neutral`, `OpenConflict -> Hostile`,
-  `Alliance -> Ally`.
-- Never alter relations toward the player or any outside faction.
-- Apply no real territorial consequence in this milestone.
-
-## Corrective local revision r3
-
-- The first `r2` launch reached the initial player map, but `Player.log` repeated
-  RimWorld's error that `Faction.SetRelationDirect` cannot be used for factions
-  whose relation kind is controlled by goodwill.
-- The previous `permanentEnemy` flag also prevented the correct goodwill API
-  from changing relations between two Goa'uld instances.
-- `SG1_GoauldSystemLordPrototype` now uses
-  `permanentEnemyToEveryoneExcept = SG1_GoauldSystemLordPrototype`: Goa'uld
-  domains remain permanently hostile to the player and every outside faction,
-  while relations between two instances of the same Goa'uld Def may use
-  vanilla goodwill normally.
-- Inter-domain reconciliation now targets goodwill `-100 / 0 / 100` for
-  `Hostile / Neutral / Ally` through `TryAffectGoodwillWith` with messages and
-  hostility letters disabled, verifies the resulting relation kind and emits at
-  most one warning per failed pair/state.
-- No territorial rule, persistent field, debug action or world-object mutation
-  changes from `r2`.
-
-## Corrective local revision r2
-
-- The first `r1` build stopped in
-  `GoauldTerritorialSafeguardUtility.EvaluateTransfer` with `CS0165` because a
-  null-conditional `TryGetRelation(..., out relation)` call did not definitely
-  assign `relation` when the tracker was absent.
-- `relation` now starts at `GoauldInterDomainRelation.Neutral`, the tracker is
-  stored explicitly, and `TryGetRelation` is called only when that tracker is
-  non-null.
-- No gameplay rule, persistent field, Def, debug action, localization or manual
-  test expectation changes from `r1`.
+- Add the first real territorial consequence without creating a world-war
+  simulation or bypassing the `0.3.83-dev` safety evaluator.
+- Restrict the consequence to one permanent vanilla Goa'uld `Settlement` owned
+  by the losing domain of an exact pair in `OpenConflict`.
+- Preserve the same world object, ID, name and tile. Only the faction owner may
+  change.
+- Schedule natural attempts only under `Commandement SG-1`, every `45–90` days.
+- Persist at most one pending takeover globally with a `1–2` day resolution
+  delay. Suspend its deadline, natural cadence and cooldowns under another
+  storyteller rather than accumulating backlog.
+- Preserve the published minimum of two territorial domains, sparse-world
+  threshold `active domains + 2`, final-settlement protection, expansion weights
+  `1.00 / 0.50 / 0.25 / 0.10`, size-delay multipliers `1 / 2 / 4 / 8` and
+  a projected automatic-hegemony ceiling of `75%` with exactly two active
+  domains or `50%` with three or more.
+- Add protection for a loaded settlement map, a player world object on the same
+  tile and an active quest referencing the exact settlement.
+- Keep global `15`-day, involved-domain base `30`-day and exact-pair `60`-day
+  cooldowns. The gaining-domain delay uses its post-transfer settlement count.
+- Keep the exact pair in open conflict after the transfer. Do not alter any
+  player or outside-faction relation or goodwill.
+- Announce a successful transfer through one neutral three-variant RP letter
+  targeted at the unchanged colony tile.
+- Do not create or destroy a settlement, defeat a faction, change a tile, alter
+  raids or doctrines, produce rewards or modify storyteller frequency.
 
 ## Implemented local revision r1
 
-- `SG1_GoauldSystemLordPrototype` now proposes three entries at world creation;
-  `requiredCountAtGameStart` remains one and the vanilla list stays editable.
-- `GoauldTerritorialSafeguardUtility` centralizes permanent-settlement scope,
-  minimum-domain and sparse-world rules, final-settlement protection,
-  expansion weights, delay multipliers and the `50%` hegemony ceiling.
-- `GameComponent_GoauldTerritorialStrategyTracker` persists one dry-run
-  reservation, three cooldown layers, storyteller suspension, reconciliation,
-  completion and cancellation outcomes without mutating any world object.
-- The existing relation tracker now persists vanilla reconciliation metadata,
-  synchronizes every pair on creation, transition, load and periodic
-  reconciliation, and exposes actual versus expected vanilla relation kinds.
-- A pending alliance rupture for the same exact pair blocks a territorial
-  reservation; unrelated pairs are not globally blocked.
-- The developer hierarchy contains
-  `Goa'uld... > Domain reactions... > Territorial strategy...` with report,
-  reconciliation, creation, immediate dry-run resolution, cancellation and
-  reset actions. The relation menu adds `Set all pairs: Open conflict`.
-- `docs/GOAULD_TERRITORIAL_SAFEGUARDS.md` records the complete reusable
-  contract and explicit non-effects.
+- `GameComponent_GoauldTerritorialStrategyTracker` now has schema `2`, a
+  persistent natural-attempt deadline, natural-versus-developer source state and
+  real `CompletedTransfer` outcomes.
+- A natural check occurs once every `45–90` days under `Commandement SG-1`.
+  Eligible candidates come only from active `OpenConflict` pairs. The gaining
+  domain is weighted down as it grows, while domains owning more transferable
+  settlements naturally expose more possible losing candidates.
+- Scheduling and resolution both call the shared territorial evaluator. Any
+  changed owner, relation, domain activity, density, final-settlement,
+  hegemony, loaded-map, player-presence, quest-target or exact-pair
+  compatibility condition cancels the pending state before mutation.
+- Successful resolution uses RimWorld's settlement faction setter, invalidates
+  the cached faction-colored world material, destroys stale trader stock and
+  clears cached former inhabitants before refreshing the world renderer.
+- The same settlement object, ID, label and tile remain. Counts and faction
+  existence are unchanged.
+- Three English and French letter variants describe the takeover and name the
+  settlement, losing domain and gaining domain, with local anti-repetition.
+- Schema-`1` dry-run cooldowns from `0.3.83-dev` are cleared during migration.
+  A still-pending dry run is cancelled safely as `CancelledLegacyDryRun`; it is
+  never upgraded into an unexpected real takeover during load.
+- The developer hierarchy exposes report, reconciliation, deterministic
+  reservation, immediate natural attempt, immediate resolution, cancellation
+  and reset actions under
+  `Goa'uld... > Domain reactions... > Territorial strategy...`.
 
 ## Validation result
 
-The maintainer reports the focused `r3` procedure as successful.
+The maintainer reports the focused `r1` procedure as successful.
 
 Validated behavior includes:
 
-- assembly `0.3.83.0` and successful local build;
-- three Goa'uld entries proposed by default while the vanilla faction list
-  remains reducible;
-- coherent vanilla `Neutral`, `Hostile` and `Ally` relations for all five
-  GateRim pair states;
-- persistent `Alliance -> Ally` between two Goa'uld instances;
-- permanent Goa'uld hostility toward the player and outside factions;
-- unchanged player and outside-faction goodwill;
-- correct active-domain and permanent-settlement counts, sparse-world threshold,
-  final-settlement protection, expansion weights and hegemony ceiling;
-- one exact dry-run reservation preserved through save and reload;
-- `CompletedDryRun` with global, domain and pair cooldowns;
-- no settlement owner, settlement count, tile, faction, raid, reward, doctrine
-  or storyteller-frequency mutation;
-- no new relevant `Player.log` error, including no repeated
-  `SetRelationDirect` rejection or goodwill-reconciliation loop.
+- assembly `0.3.84.0` and successful local build and consistency checks;
+- one natural-source takeover reservation for an exact pair in open conflict;
+- persistence of the exact pair, settlement ID, source, creation snapshot and
+  deadline through save and reload before resolution;
+- one `CompletedTransfer` ownership change preserving settlement name, ID, tile
+  and total permanent-settlement count;
+- the losing domain retaining at least one settlement and the gaining domain
+  remaining within the required three-domain `50%` ceiling;
+- immediate refresh of the world icon and inspect-string faction;
+- one targeted neutral RP letter naming the settlement and both domains;
+- persistence of the new owner, completed outcome and cooldowns after a second
+  save and reload;
+- active global, involved-domain and exact-pair cooldowns using the winner's
+  post-transfer size multiplier;
+- unchanged exact-pair `OpenConflict` / vanilla `Hostile` relation, player and
+  outside-faction goodwill, faction count, raids, doctrines, missions, rewards
+  and storyteller frequency;
+- no new relevant `Player.log` error.
 
-Optional boundary cases from `docs/TESTING_CURRENT.md` are not claimed unless
-they were part of the maintainer's focused test.
+Optional migration, storyteller-suspension, loaded-map, player-presence,
+active-quest and strategic-limit cases from `docs/TESTING_CURRENT.md` are not
+claimed unless they were part of the maintainer's focused test.
 
 ## Publication state
 
 The final milestone state is published through one feature-branch commit,
 fast-forward integration into `develop`, push of `develop`, annotated tag
-`v0.3.83-dev` and synchronization of the separate wiki because this milestone
+`v0.3.84-dev` and synchronization of the separate wiki because this milestone
 changes `docs/wiki/` sources.
 
 No `rN` suffix belongs in the final commit or tag. `main` remains untouched.
@@ -138,7 +112,7 @@ No `rN` suffix belongs in the final commit or tag. `main` remains untouched.
 
 No later version or branch is reserved. Before starting another milestone:
 
-1. verify local `develop`, `origin/develop` and peeled tag `v0.3.83-dev` point to
+1. verify local `develop`, `origin/develop` and peeled tag `v0.3.84-dev` point to
    the same integrated commit;
 2. read `docs/ROADMAP.md` and select one distinct decided milestone;
 3. create its dedicated `feature/*` or `fix/*` branch from the up-to-date

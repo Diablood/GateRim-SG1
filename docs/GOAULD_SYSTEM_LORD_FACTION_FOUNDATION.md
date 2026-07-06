@@ -1,6 +1,6 @@
 # Goa'uld System Lord world-faction baseline
 
-Version: `0.3.83-dev`
+Version: `0.3.84-dev`
 
 ## Scope
 
@@ -35,6 +35,13 @@ baseline when total faction limits matter, or add more instances manually.
 The territorial safeguard layer requires at least two non-defeated Goa'uld
 factions that each own a permanent settlement. Reducing the world to one domain
 does not create a replacement faction; it only suspends territorial strategy.
+
+From `0.3.84-dev`, an exact pair in open conflict may transfer ownership of one
+eligible permanent settlement after a guarded delay. The same settlement object,
+name, ID and tile remain. The last settlement of a domain, sparse worlds, loaded
+maps, player presence, active quest targets and projected ownership above `75%`
+with two domains or `50%` with three or more remain protected, and no faction or
+settlement is created or destroyed.
 
 The selective permanent-enemy rule keeps each domain permanently hostile to the
 player and every outside faction, but makes another instance of
@@ -155,7 +162,9 @@ as an active territorial domain.
 
 `0.3.83-dev` dynamically reconciles active domains from actual permanent
 settlements. It never repairs a reduced configuration by creating a hidden
-replacement domain.
+replacement domain. `0.3.84-dev` clears legacy dry-run cooldowns, arms a future
+natural attempt on older saves instead of applying a takeover immediately and
+cancels any pending dry-run reservation without changing ownership.
 
 ## Manual test checklist
 
@@ -173,5 +182,6 @@ replacement domain.
 8. Confirm that one active domain suspends only territorial strategy.
 9. Confirm that no `Faction leader for Domaines des Grands Maîtres Goa'uld is null`
    log appears.
-10. Run the exact diplomatic and territorial procedure in
-    `docs/TESTING_CURRENT.md`.
+10. Run the exact diplomatic and bounded-takeover procedure in
+    `docs/TESTING_CURRENT.md`, including save/reload before and after the owner
+    change.

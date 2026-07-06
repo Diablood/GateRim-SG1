@@ -17,9 +17,22 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 Aucun jalon gameplay n'est actif et aucun numéro de version ni nom de branche
 suivant n'est réservé. Le prochain travail doit être sélectionné comme une unité
 distincte dans la section `Futurs jalons décidés`, puis démarré depuis
-`develop` aligné avec le tag publié `v0.3.83-dev`.
+`develop` aligné avec le tag publié `v0.3.84-dev`.
 
 ## Dernier jalon gameplay validé et publié
+
+`0.3.84-dev - Add first bounded Goa'uld territorial takeover`
+
+La révision finale `r1` est validée et publiée. Une paire exacte en conflit
+ouvert peut réserver puis transférer la propriété d'une seule colonie Goa'uld
+existante. Le même objet mondial, nom, identifiant et tuile sont conservés ;
+tous les garde-fous sont revérifiés avant la mutation, l'ancien domaine
+conserve au moins une colonie et le gagnant reste sous le plafond dynamique.
+Le transfert, sa lettre ciblée et ses cooldowns persistent après
+sauvegarde/rechargement sans modifier relations, raids, doctrines, missions,
+récompenses ou fréquence storyteller.
+
+## Jalon gameplay précédent
 
 `0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence`
 
@@ -33,7 +46,7 @@ automatique sont bloqués, l'expansion ralentit avec la taille et une seule
 réservation sèche persistante peut exister. Aucun territoire n'est créé,
 transféré ou détruit.
 
-## Jalon gameplay précédent
+## Jalon gameplay antérieur
 
 `0.3.82-dev - Add Goa'uld alliance rupture after major failure`
 
@@ -45,16 +58,6 @@ lettre RP sans cible ; une seule rupture peut être en attente, son délai est
 suspendu hors `Commandement SG-1` et elle est annulée si la paire n'est plus
 alliée ou si un domaine devient inactif. Aucun goodwill, raid, territoire,
 colonie, budget ou profil doctrinal n'est modifié.
-
-## Jalon gameplay antérieur
-
-`0.3.81-dev - Add shared Goa'uld alliance reprisals`
-
-La révision finale `r2` est validée et publiée. Un raid naturel standard d'au
-moins cinq Jaffa peut, après défaite à `25%` ou moins, déclencher avec `25%` de
-chance une représaille commune de la paire alliée exacte. Une seule réaction
-peut être en attente ; le délai est de `2–4` jours, le cooldown de paire de
-`30` jours et le budget de `80%` des points vanilla est partagé `60/40`.
 
 ## Dernier jalon documentaire clôturé
 
@@ -110,7 +113,8 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 - rupture d'alliance après l'échec majeur d'une représaille commune :
   `0.3.82-dev` ;
 - garde-fous territoriaux et cohérence diplomatique inter-domaines :
-  `0.3.83-dev`.
+  `0.3.83-dev` ;
+- première prise territoriale Goa'uld bornée : `0.3.84-dev`.
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -316,19 +320,6 @@ nouvelle gamme d'armes Tau'ri.
 
 Décisions reportées au lancement : nombre de variantes, différences de stats,
 méthode de sélection et textures temporaires ou définitives.
-
-## Relations et puissance des domaines Goa'uld
-
-Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
-non maîtrisé des conséquences d'alliance.
-
-### Ajouter une première conséquence territoriale bornée
-
-Après validation des garde-fous, permettre une expansion ou perte territoriale
-limitée et visible sans simuler immédiatement une guerre mondiale complète.
-
-Décisions reportées au lancement : forme exacte de la conséquence, sélection des
-colonies, restauration éventuelle et impact sur missions et raids.
 
 ## Équipement Goa'uld lié au rang
 

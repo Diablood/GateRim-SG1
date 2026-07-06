@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldTerritorialTakeover_Label>Prise territoriale Goa'uld</GR_GoauldTerritorialTakeover_Label>
+    <GR_GoauldTerritorialTakeover_Text0>Des rapports en provenance de {0} confirment que les forces loyales à {2} ont chassé la garnison de {1}. L'implantation répond désormais à {2}. Le conflit général reste toutefois indécis.</GR_GoauldTerritorialTakeover_Text0>
+    <GR_GoauldTerritorialTakeover_Text1>L'équilibre des forces a basculé à {0}. {1} en a perdu le contrôle au profit de {2}. Aucun autre territoire n'a changé de mains.</GR_GoauldTerritorialTakeover_Text1>
+    <GR_GoauldTerritorialTakeover_Text2>Après une brève campagne, {2} s'est emparé de {0} aux dépens de {1}. L'implantation reste intacte sous son nouveau domaine, tandis que le conflit entre les deux Grands Maîtres se poursuit.</GR_GoauldTerritorialTakeover_Text2>
+</LanguageData>

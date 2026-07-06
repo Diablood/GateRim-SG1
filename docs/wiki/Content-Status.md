@@ -2,22 +2,25 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.83-dev`
+> Dernière révision : `0.3.84-dev`
+> Révision finale : `r1`, validée et publiée
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.83-dev` publie les garde-fous territoriaux Goa'uld et réconcilie les
-relations GateRim avec les relations vanilla. Trois domaines sont proposés par
-défaut, deux suffisent au cadre territorial, et la réservation actuelle reste
-une simulation sèche sans transfert, création ou destruction de colonie.
+`0.3.84-dev`, publiée après validation de la révision finale `r1`, ajoute la première prise territoriale Goa'uld
+bornée après les garde-fous publiés en `0.3.83-dev`. Trois domaines restent
+proposés par défaut et deux suffisent au cadre territorial. Une paire en conflit
+ouvert peut réserver puis transférer la propriété d'une colonie
+existante, sans changer son nom, son identifiant ou sa tuile et sans créer ou
+détruire de colonie.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
-| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur et garde-fous territoriaux en simulation sèche ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev |
+| Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
@@ -138,8 +141,8 @@ une simulation sèche sans transfert, création ou destruction de colonie.
 |---|---|
 | Ordre de développement | Clore d'abord le socle Tok'ra / Goa'uld-Jaffa / Tau'ri-SGC et ses systèmes partagés ; Asgard, Nox, Unas, Réplicateurs, intégrations DLC et monde entièrement GateRim restent bloqués jusqu'à cette clôture explicite |
 | Stabilisation des opérations Tok'ra | Le pool est fermé à huit archétypes. Les futures parties longues pourront déclencher des correctifs ou équilibrages ciblés, mais aucune nouvelle opération n'est actuellement prévue |
-| Alliances Goa'uld | L'influence relationnelle des doctrines est intégrée en `0.3.80-dev` et les représailles communes sont validées en `0.3.81-dev`; la rupture d'alliance reste un jalon séparé après les renforts différés et les raids conjoints |
-| Conséquences territoriales Goa'uld | Garde-fous validés : minimum de deux domaines actifs, dernière colonie protégée, seuil `domaines + 2`, expansion décroissante, plafond automatique `50 %`, une réservation sèche persistante, diplomatie vanilla par bonne volonté entre domaines et aucun transfert réel | 0.3.83-dev |
+| Alliances Goa'uld | Renforts différés, raids conjoints, représailles communes et rupture après échec majeur sont publiés de `0.3.78-dev` à `0.3.82-dev` ; aucune extension supplémentaire n'est réservée |
+| Évolution territoriale Goa'uld | Les garde-fous et la première prise bornée sont publiés en `0.3.83-dev` et `0.3.84-dev` ; aucune extension territoriale supplémentaire n'est réservée |
 | Anneaux de transport | Première fondation entre plateformes construites et alimentées du joueur, puis extension séparée aux missions et usages hostiles ; ne pas supprimer globalement les pods vanilla |
 | Asgard | Fondation séparée : soutien, commerce et missions sans colonie mondiale obligatoire |
 | Nox | Fondation séparée : présence pacifique, commerciale et diplomatique |

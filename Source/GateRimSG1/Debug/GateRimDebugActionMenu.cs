@@ -193,7 +193,7 @@ namespace GateRimSG1.Debugging
                     "Territorial strategy...",
                     350,
                     ActionNode(
-                        "Show territorial safeguard report",
+                        "Show territorial strategy report",
                         GoauldTerritorialStrategyDebugActions.ShowReport,
                         600),
                     ActionNode(
@@ -201,22 +201,27 @@ namespace GateRimSG1.Debugging
                         GoauldTerritorialStrategyDebugActions.Reconcile,
                         500),
                     ActionNode(
-                        "Create pending territorial reservation",
+                        "Create pending territorial takeover",
                         GoauldTerritorialStrategyDebugActions
                             .CreatePendingReservation,
                         400),
                     ActionNode(
-                        "Trigger pending territorial reservation now",
+                        "Run natural territorial attempt now",
+                        GoauldTerritorialStrategyDebugActions
+                            .RunNaturalAttempt,
+                        350),
+                    ActionNode(
+                        "Trigger pending territorial takeover now",
                         GoauldTerritorialStrategyDebugActions
                             .TriggerPendingReservation,
                         300),
                     ActionNode(
-                        "Cancel pending territorial reservation",
+                        "Cancel pending territorial takeover",
                         GoauldTerritorialStrategyDebugActions
                             .CancelPendingReservation,
                         200),
                     ActionNode(
-                        "Reset territorial safeguard state",
+                        "Reset territorial strategy state",
                         GoauldTerritorialStrategyDebugActions.Reset,
                         100)),
                 ActionNode(

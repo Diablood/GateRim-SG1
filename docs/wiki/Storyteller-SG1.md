@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.83-dev`
-> Statut : garde-fous territoriaux et cohérence diplomatique publiés après validation `r3`
+> Dernière évolution publiée : `0.3.84-dev`
+> Statut : première prise territoriale bornée, révision finale `r1` validée et publiée
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -148,32 +148,34 @@ et ne produit aucune lettre de changement de bonne volonté.
 
 La définition Goa'uld conserve une hostilité permanente envers l'expédition du
 joueur et toutes les factions extérieures, mais exempte les autres instances du
-même domaine technique. La version publiée après validation `r3` confirme que deux domaines peuvent
-atteindre les relations vanilla neutre, hostile et alliée via la bonne volonté,
-sans message ni lettre et sans modifier leurs relations extérieures.
+même domaine technique. La version publiée après validation `r3` confirme que
+deux domaines peuvent atteindre les relations vanilla neutre, hostile et alliée
+via la bonne volonté, sans message ni lettre et sans modifier leurs relations
+extérieures.
 
-## Garde-fous territoriaux
+## Prises territoriales bornées
 
-Le même jalon prépare les futures conséquences territoriales sans encore en
-appliquer. La liste vanilla propose trois domaines Goa'uld par défaut, mais le
-joueur peut réduire ce nombre. La simulation territoriale nécessite seulement
-deux domaines actifs, chacun non vaincu et propriétaire d'au moins une colonie
-permanente.
+`0.3.83-dev` a publié les garde-fous. La liste vanilla propose trois domaines
+Goa'uld par défaut, mais le joueur peut réduire ce nombre. La stratégie
+territoriale demande au moins deux domaines actifs et protège toujours la
+dernière colonie de chacun, les mondes sous le seuil `domaines actifs + 2` et le
+plafond automatique de `75 %` avec deux domaines ou `50 %` à partir de trois.
 
-Le cadre protège systématiquement la dernière colonie d'un domaine, exige au
-moins `nombre de domaines actifs + 2` colonies Goa'uld permanentes pour un
-transfert hostile, ralentit fortement l'expansion des grands domaines et refuse
-une acquisition qui dépasserait `50 %` des colonies Goa'uld permanentes.
+Avec `0.3.84-dev`, une paire exacte en **conflit ouvert** peut produire une
+première conséquence réelle. Une tentative naturelle n'a lieu que tous les
+`45–90` jours sous **Commandement SG-1**. Si un candidat est sûr, une seule prise
+est réservée pendant `1–2` jours.
 
-Une seule réservation territoriale sèche peut être en attente dans le monde.
-Elle mémorise la paire exacte, la colonie, la relation exigée, l'échéance et les
-comptages initiaux. Les délais globaux, par domaine et par paire sont suspendus
-hors **Commandement SG-1**. Une relation, une propriété, un domaine ou un seuil
-de sécurité devenu invalide annule la réservation.
+À l'échéance, seule la faction propriétaire change. La colonie conserve son nom,
+son identifiant, sa tuile et son existence. Aucune colonie ou faction n'est
+créée ou détruite. Une lettre neutre nomme la colonie, le domaine perdant et le
+domaine gagnant.
 
-`0.3.83-dev` ne programme aucune occurrence naturelle et ne change aucun
-propriétaire. L'outil développeur se termine par `CompletedDryRun` : aucune
-colonie n'est créée, transférée ou détruite.
+Le transfert est refusé ou annulé si la carte de la colonie est chargée, si un
+objet mondial du joueur se trouve sur sa tuile, si une quête active la référence,
+si la relation ou la propriété change, si le domaine perdant n'aurait plus de
+colonie ou si le gagnant dépasserait le plafond. Les délais et cooldowns sont
+suspendus sous un autre storyteller.
 
 ## Batailles en conflit ouvert
 
@@ -202,8 +204,9 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 - les relations et occurrences déjà enregistrées sont conservées ;
 - aucun nouvel état ou champ de bataille n'est tiré ;
-- les échéances futures, y compris une rupture d'alliance ou une réservation
-  territoriale sèche en attente, sont repoussées pendant la suspension ;
+- les échéances futures, y compris une rupture d'alliance, une prise
+  territoriale en attente et la prochaine tentative naturelle, sont repoussées
+  pendant la suspension ;
 - revenir à Commandement SG-1 ne déclenche pas de retard accumulé ;
 - les raids naturels utilisent de nouveau `100 %` des points ;
 - aucune vague alliée différée n'est planifiée ;
@@ -211,12 +214,14 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 ## Limites actuelles
 
-Les relations ne provoquent pas encore :
+La prise territoriale reste volontairement mineure. Elle ne provoque pas :
 
-- de transfert territorial réel ;
-- de création ou destruction de colonies mondiales ;
+- de création, déplacement ou destruction de colonie mondiale ;
 - d'élimination de faction ;
-- de changement diplomatique avec le joueur.
+- de transfert d'une colonie du joueur ou d'une faction extérieure ;
+- de changement diplomatique avec le joueur ;
+- de raid ou guerre mondiale supplémentaire au moment du transfert.
 
-Le cadre de sécurité et sa simulation sèche existent depuis `0.3.83-dev`, mais
-la première conséquence territoriale réelle reste réservée à un jalon séparé.
+La version publiée `0.3.84-dev`, validée en révision finale `r1`, couvre le
+transfert borné, sa persistance, son affichage mondial, sa lettre ciblée et ses
+cooldowns.

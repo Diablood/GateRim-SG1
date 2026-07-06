@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <GR_GoauldTerritorialTakeover_Label>Goa'uld territorial takeover</GR_GoauldTerritorialTakeover_Label>
+    <GR_GoauldTerritorialTakeover_Text0>Reports from {0} confirm that forces loyal to {2} have displaced the garrison of {1}. The settlement now answers to {2}. The wider conflict remains unresolved.</GR_GoauldTerritorialTakeover_Text0>
+    <GR_GoauldTerritorialTakeover_Text1>The balance of power has shifted at {0}. {1} has lost control of the settlement, which is now held by {2}. No other territory changed hands.</GR_GoauldTerritorialTakeover_Text1>
+    <GR_GoauldTerritorialTakeover_Text2>After a brief off-world campaign, {2} has seized {0} from {1}. The settlement remains intact under its new domain, while the conflict between the two System Lords continues.</GR_GoauldTerritorialTakeover_Text2>
+</LanguageData>

@@ -16,6 +16,9 @@ namespace GateRimSG1.Goauld
         InactiveDomain,
         MissingSettlement,
         OwnershipChanged,
+        SettlementMapLoaded,
+        PlayerPresent,
+        QuestTargetProtected,
         RelationChanged,
         LastSettlementProtected,
         HegemonyLimit,
@@ -40,7 +43,8 @@ namespace GateRimSG1.Goauld
     {
         public const int MinimumActiveDomainCount = 2;
         public const int MinimumWorldSurplusSettlementCount = 2;
-        public const float MaximumAutomaticTerritorialShare = 0.50f;
+        public const float StandardMaximumAutomaticTerritorialShare = 0.50f;
+        public const float TwoDomainMaximumAutomaticTerritorialShare = 0.75f;
 
         public static List<Settlement> GetPermanentGoauldSettlements()
         {
@@ -129,6 +133,14 @@ namespace GateRimSG1.Goauld
             return 0.10f;
         }
 
+        public static float MaximumAutomaticTerritorialShare(
+            int activeDomainCount)
+        {
+            return activeDomainCount == 2
+                ? TwoDomainMaximumAutomaticTerritorialShare
+                : StandardMaximumAutomaticTerritorialShare;
+        }
+
         public static int ExpansionDelayMultiplier(int settlementCount)
         {
             if (settlementCount <= 1)
@@ -205,6 +217,32 @@ namespace GateRimSG1.Goauld
                     "The reserved settlement is no longer owned by the losing domain.");
             }
 
+            if (settlement.HasMap)
+            {
+                return Reject(
+                    evaluation,
+                    GoauldTerritorialSafeguardFailure
+                        .SettlementMapLoaded,
+                    "A settlement with a loaded map cannot change owner through strategic simulation.");
+            }
+
+            if (HasPlayerWorldObjectAtTile(settlement))
+            {
+                return Reject(
+                    evaluation,
+                    GoauldTerritorialSafeguardFailure.PlayerPresent,
+                    "A player world object is currently present on the settlement tile.");
+            }
+
+            if (IsActiveQuestTarget(settlement))
+            {
+                return Reject(
+                    evaluation,
+                    GoauldTerritorialSafeguardFailure
+                        .QuestTargetProtected,
+                    "An active quest currently references the settlement.");
+            }
+
             GameComponent_GoauldInterDomainRelationTracker relationTracker =
                 GameComponent_GoauldInterDomainRelationTracker.Current;
             GoauldInterDomainRelation relation =
@@ -262,19 +300,55 @@ namespace GateRimSG1.Goauld
                     : (float)evaluation.projectedGainingSettlementCount
                         / evaluation.totalSettlementCount;
 
-            if (evaluation.projectedTerritorialShare
-                > MaximumAutomaticTerritorialShare)
+            float maximumShare = MaximumAutomaticTerritorialShare(
+                evaluation.activeDomainCount);
+
+            if (evaluation.projectedTerritorialShare > maximumShare)
             {
                 return Reject(
                     evaluation,
                     GoauldTerritorialSafeguardFailure.HegemonyLimit,
-                    "The transfer would place the gaining domain above 50% of permanent Goa'uld settlements.");
+                    "The transfer would place the gaining domain above "
+                    + maximumShare.ToString("P0")
+                    + " of permanent Goa'uld settlements for this world configuration.");
             }
 
             evaluation.allowed = true;
             evaluation.failure = GoauldTerritorialSafeguardFailure.None;
-            evaluation.detail = "All territorial safeguards allow this dry-run reservation.";
+            evaluation.detail = "All territorial safeguards allow this settlement transfer.";
             return evaluation;
+        }
+
+        public static bool HasPlayerWorldObjectAtTile(
+            Settlement settlement)
+        {
+            if (settlement == null
+                || Find.WorldObjects?.AllWorldObjects == null)
+            {
+                return false;
+            }
+
+            return Find.WorldObjects.AllWorldObjects.Any(worldObject =>
+                worldObject != null
+                && worldObject != settlement
+                && !worldObject.Destroyed
+                && worldObject.Faction == Faction.OfPlayer
+                && worldObject.Tile == settlement.Tile);
+        }
+
+        public static bool IsActiveQuestTarget(Settlement settlement)
+        {
+            if (settlement == null
+                || Find.QuestManager?.QuestsListForReading == null)
+            {
+                return false;
+            }
+
+            return Find.QuestManager.QuestsListForReading.Any(quest =>
+                quest != null
+                && !quest.Historical
+                && !quest.dismissed
+                && quest.QuestLookTargets.Contains(settlement));
         }
 
         private static GoauldTerritorialSafeguardEvaluation BuildBaseline(

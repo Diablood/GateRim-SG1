@@ -21,7 +21,13 @@ namespace GateRimSG1.Goauld
         CancelledDomainCooldown,
         CancelledPairCooldown,
         CancelledIncompatibleTransition,
-        CancelledDebug
+        CancelledDebug,
+        CompletedTransfer,
+        CancelledLegacyDryRun,
+        CancelledSettlementMapLoaded,
+        CancelledPlayerPresent,
+        CancelledQuestTargetProtected,
+        CancelledMutationFailed
     }
 
     public sealed class GoauldTerritorialReservationState : IExposable
@@ -37,6 +43,7 @@ namespace GateRimSG1.Goauld
         public GoauldTerritorialReservationOutcome outcome;
         public bool pending;
         public bool debugShortDelay;
+        public bool naturalScheduler;
         public int activeDomainCountAtCreation;
         public int totalSettlementCountAtCreation;
         public int gainingSettlementCountAtCreation;
@@ -65,6 +72,10 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref debugShortDelay,
                 "debugShortDelay",
+                false);
+            Scribe_Values.Look(
+                ref naturalScheduler,
+                "naturalScheduler",
                 false);
             Scribe_Values.Look(
                 ref activeDomainCountAtCreation,

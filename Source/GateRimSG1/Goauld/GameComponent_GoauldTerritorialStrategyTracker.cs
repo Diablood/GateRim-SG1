@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using GateRimSG1.Storytelling;
+using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -10,24 +12,30 @@ using Verse;
 namespace GateRimSG1.Goauld
 {
     /// <summary>
-    /// Persistent dry-run foundation for future Goa'uld territorial changes.
+    /// Persistent scheduler for bounded Goa'uld territorial takeovers.
     ///
-    /// This milestone may reserve and validate one exact transfer candidate,
-    /// but never changes settlement ownership, creates a settlement or destroys
-    /// a world object. Future consequences must pass through this tracker rather
-    /// than duplicating their own strategic limits.
+    /// One exact permanent settlement may change owner after every shared
+    /// safeguard, cooldown and compatibility rule has been revalidated. The
+    /// tracker never creates or destroys a settlement and never affects player
+    /// or non-Goa'uld territory.
     /// </summary>
     public sealed class GameComponent_GoauldTerritorialStrategyTracker
         : GameComponent
     {
-        private const int CurrentSchemaVersion = 1;
+        private const int CurrentSchemaVersion = 2;
         private const int CheckIntervalTicks = 250;
         private const int DebugReservationDelayTicks = 5000;
         private const int MinimumReservationDelayTicks = 60000;
         private const int MaximumReservationDelayTicks = 120000;
+        private const int NaturalAttemptMinimumTicks = 2700000;
+        private const int NaturalAttemptMaximumTicks = 5400000;
         private const int GlobalCooldownTicks = 900000;
         private const int BaseDomainCooldownTicks = 1800000;
         private const int PairCooldownTicks = 3600000;
+        private const int TerritorialReportVariantCount = 3;
+
+        private static readonly FieldInfo SettlementCachedMaterialField =
+            AccessTools.Field(typeof(Settlement), "cachedMat");
 
         private int schemaVersion = CurrentSchemaVersion;
         private GoauldTerritorialReservationState reservation =
@@ -39,9 +47,11 @@ namespace GateRimSG1.Goauld
         private int configuredDomainCountAtInitialization = -1;
         private int nextCheckTick;
         private int nextGlobalEligibleTick;
+        private int nextNaturalAttemptTick;
         private bool wasGateRimStorytellerActive;
         private int suspensionStartTick = -1;
         private string lastReconciliationSummary = "<not reconciled>";
+        private string lastTerritorialReportKey;
 
         public GameComponent_GoauldTerritorialStrategyTracker(Game game)
         {
@@ -94,6 +104,10 @@ namespace GateRimSG1.Goauld
                 "goauldTerritorialNextGlobalEligibleTick",
                 0);
             Scribe_Values.Look(
+                ref nextNaturalAttemptTick,
+                "goauldTerritorialNextNaturalAttemptTick",
+                0);
+            Scribe_Values.Look(
                 ref wasGateRimStorytellerActive,
                 "goauldTerritorialStorytellerWasActive",
                 false);
@@ -105,9 +119,13 @@ namespace GateRimSG1.Goauld
                 ref lastReconciliationSummary,
                 "goauldTerritorialLastReconciliationSummary",
                 "<not reconciled>");
+            Scribe_Values.Look(
+                ref lastTerritorialReportKey,
+                "goauldTerritorialLastReportKey");
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
+                MigrateState();
                 NormalizeState();
             }
         }
@@ -145,70 +163,61 @@ namespace GateRimSG1.Goauld
             ReconcileState(currentTick, cancelInvalidReservation: true);
             ObserveStorytellerBoundary(currentTick);
 
-            if (!GateRimStorytellerUtility.IsGateRimStorytellerActive
-                || reservation?.pending != true
-                || currentTick < reservation.resolutionTick)
+            if (!GateRimStorytellerUtility.IsGateRimStorytellerActive)
             {
                 return;
             }
 
-            ResolvePendingReservation(currentTick);
+            if (reservation?.pending == true
+                && currentTick >= reservation.resolutionTick)
+            {
+                ResolvePendingReservation(currentTick);
+            }
+
+            if (!HasPendingReservation
+                && currentTick >= nextNaturalAttemptTick)
+            {
+                TryCreateNaturalReservation();
+                ArmNextNaturalAttempt(currentTick);
+            }
         }
 
         public bool TryCreateDebugReservation()
         {
-            ReconcileState(CurrentTick(), cancelInvalidReservation: true);
+            int currentTick = CurrentTick();
+            ReconcileState(currentTick, cancelInvalidReservation: true);
 
             if (HasPendingReservation)
             {
+                lastReconciliationSummary =
+                    "One territorial takeover is already pending globally.";
                 return false;
             }
 
-            List<GoauldInterDomainRelationState> openConflictPairs =
-                GameComponent_GoauldInterDomainRelationTracker.Current
-                    ?.Snapshot(includeInactive: false)
-                    .Where(state =>
-                        state?.relation
-                            == GoauldInterDomainRelation.OpenConflict)
-                    .ToList()
-                ?? new List<GoauldInterDomainRelationState>();
-
-            List<ReservationCandidate> candidates =
-                new List<ReservationCandidate>();
-
-            foreach (GoauldInterDomainRelationState pair in openConflictPairs)
-            {
-                AddCandidate(
-                    candidates,
-                    pair.firstDomain,
-                    pair.secondDomain);
-                AddCandidate(
-                    candidates,
-                    pair.secondDomain,
-                    pair.firstDomain);
-            }
-
+            List<ReservationCandidate> candidates = BuildCandidates();
             ReservationCandidate selected = candidates
-                .Where(candidate => candidate.evaluation.allowed)
+                .Where(candidate =>
+                    candidate.evaluation.allowed
+                    && CheckCooldowns(
+                        candidate.gainingDomain,
+                        candidate.losingDomain,
+                        currentTick)
+                        == GoauldTerritorialReservationOutcome.None)
                 .OrderBy(candidate =>
                     candidate.evaluation.gainingSettlementCount)
                 .ThenByDescending(candidate =>
                     candidate.evaluation.losingSettlementCount)
                 .ThenBy(candidate => candidate.gainingDomain.loadID)
                 .ThenBy(candidate => candidate.losingDomain.loadID)
+                .ThenBy(candidate => candidate.settlement.ID)
                 .FirstOrDefault();
 
             if (selected == null)
             {
-                ReservationCandidate diagnostic = candidates
-                    .OrderBy(candidate => candidate.evaluation.failure)
-                    .FirstOrDefault();
-                lastReconciliationSummary = diagnostic == null
-                    ? "No active open-conflict pair exists for a territorial dry run."
-                    : "No dry-run transfer is currently eligible: "
-                        + diagnostic.evaluation.failure
-                        + " - "
-                        + diagnostic.evaluation.detail;
+                RecordNoCandidateSummary(
+                    candidates,
+                    "No debug territorial takeover is currently eligible",
+                    currentTick);
                 return false;
             }
 
@@ -217,7 +226,16 @@ namespace GateRimSG1.Goauld
                 selected.losingDomain,
                 selected.settlement,
                 GoauldInterDomainRelation.OpenConflict,
-                debugShortDelay: true);
+                debugShortDelay: true,
+                naturalScheduler: false);
+        }
+
+        public bool TryRunNaturalAttemptDebug()
+        {
+            int currentTick = CurrentTick();
+            bool created = TryCreateNaturalReservation();
+            ArmNextNaturalAttempt(currentTick);
+            return created;
         }
 
         public bool TryScheduleReservation(
@@ -225,7 +243,8 @@ namespace GateRimSG1.Goauld
             Faction losingDomain,
             Settlement settlement,
             GoauldInterDomainRelation requiredRelation,
-            bool debugShortDelay = false)
+            bool debugShortDelay = false,
+            bool naturalScheduler = false)
         {
             int currentTick = CurrentTick();
             ReconcileState(currentTick, cancelInvalidReservation: true);
@@ -274,6 +293,7 @@ namespace GateRimSG1.Goauld
                 outcome = GoauldTerritorialReservationOutcome.Pending,
                 pending = true,
                 debugShortDelay = debugShortDelay,
+                naturalScheduler = naturalScheduler,
                 activeDomainCountAtCreation = evaluation.activeDomainCount,
                 totalSettlementCountAtCreation =
                     evaluation.totalSettlementCount,
@@ -283,15 +303,16 @@ namespace GateRimSG1.Goauld
                     evaluation.losingSettlementCount
             };
             lastReconciliationSummary =
-                "Created one dry-run territorial reservation; no world object was modified.";
+                "Created one pending Goa'uld territorial takeover.";
 
             GR_Log.Message(
-                "Reserved Goa'uld territorial dry run: gaining="
+                "Reserved Goa'uld territorial takeover: gaining="
                 + $"{DomainName(gainingDomain)} ({gainingDomain.loadID}), "
                 + $"losing={DomainName(losingDomain)} "
                 + $"({losingDomain.loadID}), settlement={settlement.ID}, "
                 + $"resolutionTick={reservation.resolutionTick}, "
-                + $"debugShortDelay={debugShortDelay}.");
+                + $"debugShortDelay={debugShortDelay}, "
+                + $"naturalScheduler={naturalScheduler}.");
             return true;
         }
 
@@ -307,7 +328,7 @@ namespace GateRimSG1.Goauld
             reservation.resolutionTick = currentTick;
             ResolvePendingReservation(currentTick);
             return reservation.outcome
-                == GoauldTerritorialReservationOutcome.CompletedDryRun;
+                == GoauldTerritorialReservationOutcome.CompletedTransfer;
         }
 
         public bool CancelPendingReservationDebug()
@@ -326,7 +347,13 @@ namespace GateRimSG1.Goauld
 
         public void ReconcileDebug()
         {
+            bool wasPending = HasPendingReservation;
             ReconcileState(CurrentTick(), cancelInvalidReservation: true);
+
+            if (!wasPending || HasPendingReservation)
+            {
+                SetReconciliationSummary();
+            }
         }
 
         public void ResetDebug()
@@ -336,10 +363,13 @@ namespace GateRimSG1.Goauld
             pairCooldowns.Clear();
             nextCheckTick = 0;
             nextGlobalEligibleTick = 0;
+            nextNaturalAttemptTick = 0;
             suspensionStartTick = -1;
             wasGateRimStorytellerActive =
                 GateRimStorytellerUtility.IsGateRimStorytellerActive;
-            lastReconciliationSummary = "Territorial safeguard state reset.";
+            lastTerritorialReportKey = null;
+            ArmNextNaturalAttempt(CurrentTick());
+            lastReconciliationSummary = "Territorial strategy state reset.";
         }
 
         public string BuildDebugReport()
@@ -363,7 +393,7 @@ namespace GateRimSG1.Goauld
                         activeTerritorialDomains.Count);
 
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine("Goa'uld territorial safeguard report");
+            builder.AppendLine("Goa'uld territorial strategy report");
             builder.AppendLine();
             builder.AppendLine("schema: " + schemaVersion);
             builder.AppendLine(
@@ -400,8 +430,15 @@ namespace GateRimSG1.Goauld
             builder.AppendLine(
                 "automatic territorial share ceiling: "
                 + GoauldTerritorialSafeguardUtility
-                    .MaximumAutomaticTerritorialShare
-                    .ToString("P0"));
+                    .MaximumAutomaticTerritorialShare(
+                        activeTerritorialDomains.Count)
+                    .ToString("P0")
+                + " (75% with two domains; 50% with three or more)");
+            builder.AppendLine(
+                "natural attempt cadence: 45-90 days");
+            builder.AppendLine(
+                "next natural attempt: "
+                + FormatRemaining(nextNaturalAttemptTick));
             builder.AppendLine(
                 "global cooldown: "
                 + FormatRemaining(nextGlobalEligibleTick));
@@ -509,10 +546,11 @@ namespace GateRimSG1.Goauld
             AppendReservation(builder);
             builder.AppendLine();
             builder.AppendLine(
-                "Dry-run contract: this tracker never changes settlement "
-                + "ownership, creates a settlement, destroys a world object, "
-                + "changes doctrine, alters raid cadence or modifies player "
-                + "goodwill.");
+                "Bounded-transfer contract: this tracker may change exactly "
+                + "one eligible Goa'uld settlement owner. It never creates "
+                + "or destroys a settlement, targets player or outside "
+                + "territory, changes doctrine, alters raid cadence or "
+                + "modifies player goodwill.");
 
             return builder.ToString();
         }
@@ -520,6 +558,7 @@ namespace GateRimSG1.Goauld
         private void InitializeNow()
         {
             NormalizeState();
+            int currentTick = CurrentTick();
 
             if (configuredDomainCountAtInitialization < 0)
             {
@@ -528,33 +567,189 @@ namespace GateRimSG1.Goauld
                         includeDefeated: true).Count;
             }
 
-            ReconcileState(CurrentTick(), cancelInvalidReservation: true);
-            ObserveStorytellerBoundary(CurrentTick());
+            if (nextNaturalAttemptTick <= 0)
+            {
+                ArmNextNaturalAttempt(currentTick);
+            }
+
+            ReconcileState(currentTick, cancelInvalidReservation: true);
+            ObserveStorytellerBoundary(currentTick);
         }
 
-        private void AddCandidate(
+        private bool TryCreateNaturalReservation()
+        {
+            int currentTick = CurrentTick();
+            ReconcileState(currentTick, cancelInvalidReservation: true);
+
+            if (HasPendingReservation)
+            {
+                return false;
+            }
+
+            List<ReservationCandidate> candidates = BuildCandidates();
+            List<ReservationCandidate> eligible = candidates
+                .Where(candidate =>
+                    candidate.evaluation.allowed
+                    && CheckCooldowns(
+                        candidate.gainingDomain,
+                        candidate.losingDomain,
+                        currentTick)
+                        == GoauldTerritorialReservationOutcome.None)
+                .ToList();
+
+            ReservationCandidate selected = SelectWeightedCandidate(eligible);
+
+            if (selected == null)
+            {
+                RecordNoCandidateSummary(
+                    candidates,
+                    "Natural territorial attempt found no eligible takeover",
+                    currentTick);
+                return false;
+            }
+
+            return TryScheduleReservation(
+                selected.gainingDomain,
+                selected.losingDomain,
+                selected.settlement,
+                GoauldInterDomainRelation.OpenConflict,
+                debugShortDelay: false,
+                naturalScheduler: true);
+        }
+
+        private List<ReservationCandidate> BuildCandidates()
+        {
+            List<GoauldInterDomainRelationState> openConflictPairs =
+                GameComponent_GoauldInterDomainRelationTracker.Current
+                    ?.Snapshot(includeInactive: false)
+                    .Where(state =>
+                        state?.relation
+                            == GoauldInterDomainRelation.OpenConflict)
+                    .ToList()
+                ?? new List<GoauldInterDomainRelationState>();
+            List<ReservationCandidate> candidates =
+                new List<ReservationCandidate>();
+
+            foreach (GoauldInterDomainRelationState pair in openConflictPairs)
+            {
+                AddCandidates(
+                    candidates,
+                    pair.firstDomain,
+                    pair.secondDomain);
+                AddCandidates(
+                    candidates,
+                    pair.secondDomain,
+                    pair.firstDomain);
+            }
+
+            return candidates;
+        }
+
+        private void AddCandidates(
             List<ReservationCandidate> candidates,
             Faction gainingDomain,
             Faction losingDomain)
         {
-            Settlement settlement =
+            List<Settlement> settlements =
                 GoauldTerritorialSafeguardUtility
-                    .GetPermanentSettlements(losingDomain)
-                    .FirstOrDefault();
-            GoauldTerritorialSafeguardEvaluation evaluation =
-                GoauldTerritorialSafeguardUtility.EvaluateTransfer(
-                    gainingDomain,
-                    losingDomain,
-                    settlement,
-                    GoauldInterDomainRelation.OpenConflict);
+                    .GetPermanentSettlements(losingDomain);
 
-            candidates.Add(new ReservationCandidate
+            if (settlements.Count == 0)
             {
-                gainingDomain = gainingDomain,
-                losingDomain = losingDomain,
-                settlement = settlement,
-                evaluation = evaluation
-            });
+                settlements.Add(null);
+            }
+
+            foreach (Settlement settlement in settlements)
+            {
+                GoauldTerritorialSafeguardEvaluation evaluation =
+                    GoauldTerritorialSafeguardUtility.EvaluateTransfer(
+                        gainingDomain,
+                        losingDomain,
+                        settlement,
+                        GoauldInterDomainRelation.OpenConflict);
+
+                candidates.Add(new ReservationCandidate
+                {
+                    gainingDomain = gainingDomain,
+                    losingDomain = losingDomain,
+                    settlement = settlement,
+                    evaluation = evaluation
+                });
+            }
+        }
+
+        private ReservationCandidate SelectWeightedCandidate(
+            List<ReservationCandidate> candidates)
+        {
+            if (candidates == null || candidates.Count == 0)
+            {
+                return null;
+            }
+
+            float totalWeight = candidates.Sum(candidate =>
+                GoauldTerritorialSafeguardUtility.ExpansionWeight(
+                    candidate.evaluation.gainingSettlementCount));
+
+            if (totalWeight <= 0f)
+            {
+                return null;
+            }
+
+            float selection = Rand.Value * totalWeight;
+
+            foreach (ReservationCandidate candidate in candidates)
+            {
+                selection -= GoauldTerritorialSafeguardUtility
+                    .ExpansionWeight(
+                        candidate.evaluation.gainingSettlementCount);
+
+                if (selection <= 0f)
+                {
+                    return candidate;
+                }
+            }
+
+            return candidates[candidates.Count - 1];
+        }
+
+        private void RecordNoCandidateSummary(
+            List<ReservationCandidate> candidates,
+            string prefix,
+            int currentTick)
+        {
+            ReservationCandidate diagnostic = candidates
+                ?.OrderBy(candidate => candidate.evaluation.failure)
+                .ThenBy(candidate => candidate.gainingDomain?.loadID ?? 0)
+                .ThenBy(candidate => candidate.losingDomain?.loadID ?? 0)
+                .FirstOrDefault();
+
+            if (diagnostic == null)
+            {
+                lastReconciliationSummary =
+                    prefix + ": no active open-conflict pair exists.";
+                return;
+            }
+
+            if (!diagnostic.evaluation.allowed)
+            {
+                lastReconciliationSummary =
+                    prefix
+                    + ": "
+                    + diagnostic.evaluation.failure
+                    + " - "
+                    + diagnostic.evaluation.detail;
+                return;
+            }
+
+            GoauldTerritorialReservationOutcome cooldownFailure =
+                CheckCooldowns(
+                    diagnostic.gainingDomain,
+                    diagnostic.losingDomain,
+                    currentTick);
+            lastReconciliationSummary = cooldownFailure
+                == GoauldTerritorialReservationOutcome.None
+                ? prefix + ": no weighted candidate was selected."
+                : prefix + ": " + cooldownFailure;
         }
 
         private void ResolvePendingReservation(int currentTick)
@@ -600,15 +795,146 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            string settlementLabel = settlement.LabelCap;
+            Faction gainingDomain = reservation.gainingDomain;
+            Faction losingDomain = reservation.losingDomain;
+
+            if (!ApplySettlementTransfer(settlement, gainingDomain))
+            {
+                CompleteReservation(
+                    GoauldTerritorialReservationOutcome
+                        .CancelledMutationFailed,
+                    currentTick,
+                    "The settlement owner could not be changed safely.");
+                return;
+            }
+
             ApplyCooldowns(
-                reservation.gainingDomain,
-                reservation.losingDomain,
-                evaluation.gainingSettlementCount,
+                gainingDomain,
+                losingDomain,
+                evaluation.projectedGainingSettlementCount,
                 currentTick);
             CompleteReservation(
-                GoauldTerritorialReservationOutcome.CompletedDryRun,
+                GoauldTerritorialReservationOutcome.CompletedTransfer,
                 currentTick,
-                "Dry run completed; the candidate remained eligible and no territorial mutation was applied.");
+                settlementLabel
+                    + " changed owner from "
+                    + DomainName(losingDomain)
+                    + " to "
+                    + DomainName(gainingDomain)
+                    + ".");
+            SendTerritorialTransferLetter(
+                settlement,
+                settlementLabel,
+                gainingDomain,
+                losingDomain);
+        }
+
+        private bool ApplySettlementTransfer(
+            Settlement settlement,
+            Faction gainingDomain)
+        {
+            if (settlement == null || gainingDomain == null)
+            {
+                return false;
+            }
+
+            if (SettlementCachedMaterialField == null)
+            {
+                GR_Log.ErrorOnce(
+                    "Unable to locate RimWorld Settlement.cachedMat; "
+                    + "the territorial takeover was cancelled before changing ownership.",
+                    138843901);
+                return false;
+            }
+
+            Faction previousOwner = settlement.Faction;
+
+            try
+            {
+                SettlementCachedMaterialField.SetValue(settlement, null);
+                settlement.SetFaction(gainingDomain);
+            }
+            catch (Exception exception)
+            {
+                if (settlement.Faction != gainingDomain)
+                {
+                    GR_Log.Error(
+                        "Failed to apply bounded Goa'uld territorial "
+                        + "takeover before ownership changed: "
+                        + exception);
+                    return false;
+                }
+
+                GR_Log.Warning(
+                    "The Goa'uld settlement owner changed despite an "
+                    + "exception reported by a patched faction setter; "
+                    + "the transfer will be completed consistently: "
+                    + exception);
+            }
+
+            if (settlement.Faction != gainingDomain)
+            {
+                GR_Log.Error(
+                    "RimWorld returned from Settlement.SetFaction without "
+                    + "applying the requested Goa'uld territorial owner.");
+                return false;
+            }
+
+            try
+            {
+                settlement.trader?.TryDestroyStock();
+                settlement.previouslyGeneratedInhabitants?.Clear();
+                Find.World?.renderer?.Notify_StaticWorldObjectPosChanged();
+            }
+            catch (Exception exception)
+            {
+                GR_Log.Warning(
+                    "The Goa'uld settlement changed owner from "
+                    + DomainName(previousOwner)
+                    + " to "
+                    + DomainName(gainingDomain)
+                    + ", but one cached settlement surface could not be "
+                    + "fully reset: "
+                    + exception);
+            }
+
+            return true;
+        }
+
+        private void SendTerritorialTransferLetter(
+            Settlement settlement,
+            string settlementLabel,
+            Faction gainingDomain,
+            Faction losingDomain)
+        {
+            string reportKey = SelectTerritorialReportKey();
+            Find.LetterStack?.ReceiveLetter(
+                "GR_GoauldTerritorialTakeover_Label".Translate(),
+                reportKey.Translate(
+                    settlementLabel,
+                    DomainName(losingDomain),
+                    DomainName(gainingDomain)),
+                LetterDefOf.NeutralEvent,
+                new GlobalTargetInfo(settlement.Tile));
+        }
+
+        private string SelectTerritorialReportKey()
+        {
+            int variant = Rand.Range(0, TerritorialReportVariantCount);
+            string key = "GR_GoauldTerritorialTakeover_Text" + variant;
+
+            if (key == lastTerritorialReportKey
+                && TerritorialReportVariantCount > 1)
+            {
+                variant = (variant
+                    + Rand.Range(1, TerritorialReportVariantCount))
+                    % TerritorialReportVariantCount;
+                key = "GR_GoauldTerritorialTakeover_Text" + variant;
+            }
+
+            lastTerritorialReportKey = key;
+            return key;
         }
 
         private void CompleteReservation(
@@ -622,12 +948,11 @@ namespace GateRimSG1.Goauld
             lastReconciliationSummary = summary;
 
             GR_Log.Message(
-                "Completed Goa'uld territorial reservation dry run with "
+                "Completed Goa'uld territorial reservation with "
                 + $"outcome={outcome}; gaining="
                 + $"{DomainName(reservation.gainingDomain)}, losing="
                 + $"{DomainName(reservation.losingDomain)}, settlement="
-                + $"{reservation.settlementWorldObjectId}. No territorial "
-                + "mutation was applied.");
+                + $"{reservation.settlementWorldObjectId}.");
         }
 
         private void ReconcileState(
@@ -681,17 +1006,24 @@ namespace GateRimSG1.Goauld
                 }
             }
 
-            if (!reservationCancelled)
+            if (!reservationCancelled
+                && (lastReconciliationSummary.NullOrEmpty()
+                    || lastReconciliationSummary == "<not reconciled>"))
             {
-                lastReconciliationSummary =
-                    "Reconciled "
-                    + GoauldTerritorialSafeguardUtility
-                        .GetActiveTerritorialDomains().Count
-                    + " active territorial domain(s), "
-                    + GoauldTerritorialSafeguardUtility
-                        .GetPermanentGoauldSettlements().Count
-                    + " permanent settlement(s) and diplomatic coherence.";
+                SetReconciliationSummary();
             }
+        }
+
+        private void SetReconciliationSummary()
+        {
+            lastReconciliationSummary =
+                "Reconciled "
+                + GoauldTerritorialSafeguardUtility
+                    .GetActiveTerritorialDomains().Count
+                + " active territorial domain(s), "
+                + GoauldTerritorialSafeguardUtility
+                    .GetPermanentGoauldSettlements().Count
+                + " permanent settlement(s) and diplomatic coherence.";
         }
 
         private GoauldTerritorialReservationOutcome CheckCooldowns(
@@ -816,6 +1148,14 @@ namespace GateRimSG1.Goauld
                 tick);
         }
 
+        private void ArmNextNaturalAttempt(int currentTick)
+        {
+            nextNaturalAttemptTick = currentTick
+                + Rand.RangeInclusive(
+                    NaturalAttemptMinimumTicks,
+                    NaturalAttemptMaximumTicks);
+        }
+
         private void ObserveStorytellerBoundary(int currentTick)
         {
             bool active =
@@ -859,6 +1199,11 @@ namespace GateRimSG1.Goauld
                 nextGlobalEligibleTick += pausedTicks;
             }
 
+            if (nextNaturalAttemptTick > 0)
+            {
+                nextNaturalAttemptTick += pausedTicks;
+            }
+
             foreach (GoauldTerritorialDomainCooldownState state
                 in domainCooldowns)
             {
@@ -878,6 +1223,42 @@ namespace GateRimSG1.Goauld
             }
 
             suspensionStartTick = -1;
+        }
+
+        private void MigrateState()
+        {
+            if (schemaVersion >= CurrentSchemaVersion)
+            {
+                return;
+            }
+
+            domainCooldowns =
+                new List<GoauldTerritorialDomainCooldownState>();
+            pairCooldowns =
+                new List<GoauldTerritorialPairCooldownState>();
+            nextGlobalEligibleTick = 0;
+            nextNaturalAttemptTick = 0;
+
+            if (reservation?.pending == true)
+            {
+                reservation.pending = false;
+                reservation.outcome =
+                    GoauldTerritorialReservationOutcome
+                        .CancelledLegacyDryRun;
+                reservation.completedTick = CurrentTick();
+                lastReconciliationSummary =
+                    "Cancelled one legacy 0.3.83 dry-run reservation and "
+                    + "cleared dry-run cooldowns; no settlement owner was "
+                    + "changed during migration.";
+            }
+            else
+            {
+                lastReconciliationSummary =
+                    "Cleared legacy 0.3.83 dry-run cooldowns during "
+                    + "territorial strategy migration.";
+            }
+
+            schemaVersion = CurrentSchemaVersion;
         }
 
         private void NormalizeState()
@@ -900,6 +1281,9 @@ namespace GateRimSG1.Goauld
             nextGlobalEligibleTick = Math.Max(
                 0,
                 nextGlobalEligibleTick);
+            nextNaturalAttemptTick = Math.Max(
+                0,
+                nextNaturalAttemptTick);
             suspensionStartTick = Math.Max(-1, suspensionStartTick);
             reservation.settlementWorldObjectId = Math.Max(
                 -1,
@@ -951,6 +1335,11 @@ namespace GateRimSG1.Goauld
             builder.AppendLine(
                 "pending: " + FormatBoolean(reservation.pending));
             builder.AppendLine(
+                "source: "
+                + (reservation.naturalScheduler
+                    ? "natural scheduler"
+                    : "developer action"));
+            builder.AppendLine(
                 "gaining domain: "
                 + DomainName(reservation.gainingDomain));
             builder.AppendLine(
@@ -964,6 +1353,61 @@ namespace GateRimSG1.Goauld
                         + " ("
                         + settlement.ID
                         + ")"));
+            builder.AppendLine(
+                "current owner: "
+                + DomainName(settlement?.Faction));
+
+            List<Settlement> currentSettlements =
+                GoauldTerritorialSafeguardUtility
+                    .GetPermanentGoauldSettlements();
+            int currentActiveDomainCount = currentSettlements
+                .Select(item => item.Faction)
+                .Where(faction => faction != null && !faction.defeated)
+                .Distinct()
+                .Count();
+            int currentGainingCount = currentSettlements.Count(item =>
+                item.Faction == reservation.gainingDomain);
+            int currentLosingCount = currentSettlements.Count(item =>
+                item.Faction == reservation.losingDomain);
+            int projectedGainingCount = reservation.pending
+                && settlement?.Faction == reservation.losingDomain
+                    ? currentGainingCount + 1
+                    : currentGainingCount;
+            float projectedShare = currentSettlements.Count <= 0
+                ? 0f
+                : (float)projectedGainingCount
+                    / currentSettlements.Count;
+
+            builder.AppendLine(
+                "current counts: total="
+                + currentSettlements.Count
+                + ", gaining="
+                + currentGainingCount
+                + ", losing="
+                + currentLosingCount);
+            builder.AppendLine(
+                (reservation.pending
+                    ? "projected gaining share: "
+                    : "current gaining share: ")
+                + projectedShare.ToString("P0")
+                + " / ceiling "
+                + GoauldTerritorialSafeguardUtility
+                    .MaximumAutomaticTerritorialShare(
+                        currentActiveDomainCount)
+                    .ToString("P0"));
+            builder.AppendLine(
+                "map loaded: "
+                + FormatBoolean(settlement?.HasMap == true));
+            builder.AppendLine(
+                "player present on tile: "
+                + FormatBoolean(
+                    GoauldTerritorialSafeguardUtility
+                        .HasPlayerWorldObjectAtTile(settlement)));
+            builder.AppendLine(
+                "active quest target: "
+                + FormatBoolean(
+                    GoauldTerritorialSafeguardUtility
+                        .IsActiveQuestTarget(settlement)));
             builder.AppendLine(
                 "required relation: "
                 + reservation.requiredRelation);
@@ -1010,6 +1454,17 @@ namespace GateRimSG1.Goauld
                 case GoauldTerritorialSafeguardFailure.OwnershipChanged:
                     return GoauldTerritorialReservationOutcome
                         .CancelledOwnershipChanged;
+                case GoauldTerritorialSafeguardFailure
+                    .SettlementMapLoaded:
+                    return GoauldTerritorialReservationOutcome
+                        .CancelledSettlementMapLoaded;
+                case GoauldTerritorialSafeguardFailure.PlayerPresent:
+                    return GoauldTerritorialReservationOutcome
+                        .CancelledPlayerPresent;
+                case GoauldTerritorialSafeguardFailure
+                    .QuestTargetProtected:
+                    return GoauldTerritorialReservationOutcome
+                        .CancelledQuestTargetProtected;
                 case GoauldTerritorialSafeguardFailure.RelationChanged:
                     return GoauldTerritorialReservationOutcome
                         .CancelledRelationChanged;

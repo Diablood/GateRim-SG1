@@ -14,9 +14,10 @@
 - Shared alliance reprisals: `0.3.81-dev`
 - Alliance rupture after major failure: `0.3.82-dev`
 - Territorial safeguards and diplomatic coherence: `0.3.83-dev`
-- Target assembly: `0.3.83.0`
-- Final local revision: `r3`
-- Status: final revision `r3` validated and published as `v0.3.83-dev`.
+- First bounded territorial takeover: `0.3.84-dev`
+- Target assembly: `0.3.84.0`
+- Final revision: `r1`
+- Status: validated and published as `v0.3.84-dev`.
 
 ## Purpose
 
@@ -286,35 +287,38 @@ The existing temporary-cooperation patch remains a narrow fallback for forces
 already sharing a map while their factions are reconciled.
 
 The faction Def still preserves its permanent hostile player-facing baseline.
-Functional validation must therefore confirm that RimWorld accepts direct
-`Ally` relation kinds between two distinct Goa'uld instances without forcing
-them back to hostile.
+Published revision `0.3.83-dev-r3` confirmed that two distinct Goa'uld instances
+can remain vanilla allies without being forced back to hostile.
 
-## Territorial safeguard foundation
+## Territorial strategy
 
-`0.3.83-dev` also introduces a persistent dry-run tracker before any real
-territorial consequence is allowed. New worlds propose three Goa'uld faction
-instances by default in the editable vanilla faction list. The territorial layer
-requires only two active domains, where each active domain is non-defeated and
-owns at least one permanent vanilla settlement.
+`0.3.83-dev` established the persistent evaluator and dry-run tracker. New worlds
+propose three Goa'uld faction instances in the editable vanilla list, while the
+territorial layer needs only two active non-defeated domains with permanent
+settlements.
 
-Only permanent Goa'uld `Settlement` world objects count. The evaluator excludes
-player and non-Goa'uld settlements, mission sites, temporary sites, battlefields
-and travelling groups. It protects the final settlement of every domain,
-requires at least `active domains + 2` permanent settlements for a hostile
-transfer, slows expansion as the gaining domain grows and rejects a projected
-share above `50%`.
+`0.3.84-dev` applies the first real consequence. Every `45–90` days under
+`Commandement SG-1`, the tracker may reserve one existing permanent settlement
+from an exact pair in `OpenConflict`. The resolution delay is `1–2` days and at
+most one takeover is pending globally.
 
-One exact dry-run reservation can be pending globally. It persists exact faction
-references, settlement ID, required relation, creation counts, deadline and
-outcome. Global, involved-domain and pair cooldowns are shifted forward outside
-`Commandement SG-1`; no backlog is consumed. Invalid ownership, relation, domain,
-world-density or incompatible exact-pair state cancels the reservation.
+Only the owner changes. The same settlement object, ID, name and tile remain,
+and the total settlement and faction counts stay constant. Cached icon material,
+trader stock and former inhabitants are reset so future interaction uses the new
+domain. One of three neutral RP letters names both domains and the settlement.
 
-No natural territorial opportunity is scheduled in this milestone. The
-developer path may reserve and complete one candidate as `CompletedDryRun`, but
-it cannot create, transfer or destroy a settlement, eliminate a faction, change
-a tile, alter a doctrine or modify raid cadence.
+The published safeguards are evaluated at scheduling and resolution: at least
+two active domains, `active domains + 2` settlements, protection of the losing
+domain's final settlement, decreasing winner weights, post-transfer cooldown
+multipliers and a projected ceiling of `75%` with two domains or `50%` from
+three domains onward. A loaded settlement map, player
+presence on the tile, an active quest target, changed ownership, changed
+relation or incompatible exact-pair transition cancels the occurrence.
+
+Natural cadence, pending deadlines and global/domain/pair cooldowns are shifted
+forward outside `Commandement SG-1`; no backlog is consumed. Schema-`1` dry-run
+cooldowns are cleared during migration, and a pending `0.3.83-dev` dry run is
+cancelled safely instead of becoming an unexpected real takeover after loading.
 
 ## Open-conflict battlefields
 
@@ -408,15 +412,33 @@ only the new observation and rupture records. `Show domain reaction state`
 displays the initial force, active survivors, threshold, deadline and final or
 cancelled outcome.
 
+Territorial sub-path:
+
+```text
+Actions de débogage
+> GateRim SG-1
+> Goa'uld...
+> Domain reactions...
+> Territorial strategy...
+```
+
+`Run natural territorial attempt now` exercises weighted natural selection,
+`Create pending territorial takeover` selects a deterministic eligible candidate
+and `Trigger pending territorial takeover now` applies the same real resolution.
+The report exposes the exact owner, settlement ID, source, safety surfaces,
+deadline and cooldowns.
+
 ## Still inactive consequences
 
 The published relation and alliance layers still add no:
 
 - alliance frequency increase;
-- territorial expansion or settlement destruction;
+- settlement creation, movement or destruction;
+- transfer of player or non-Goa'uld territory;
 - change to faction goodwill toward the player.
 
-These effects require separate balancing and validation milestones.
+Any broader territorial war requires a separate balancing and validation
+milestone.
 
 ## Published validation
 
@@ -456,6 +478,13 @@ The focused procedure confirmed all five GateRim mappings, permanent hostility
 toward the player and outside factions, territorial counts and limits, one
 save-persistent dry-run reservation, `CompletedDryRun` cooldowns, no world
 mutation and no new relevant `Player.log` error.
+
+Final revision `r1` of `0.3.84-dev` is validated and published. The focused
+procedure confirms one save-persistent natural-source reservation, one
+`CompletedTransfer` preserving settlement ID/name/tile/count, refreshed world
+presentation, a targeted neutral letter, persistent ownership and cooldowns
+after reload, unchanged diplomacy and raid systems, and no new relevant
+`Player.log` error.
 
 Final revision `r2` of `0.3.81-dev` is validated. The complete shared-reprisal
 procedure is conforming; the programming letter has no false target, the arrival

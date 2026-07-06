@@ -11,6 +11,8 @@
 > Noms culturels des Grands Maîtres : 0.3.48-dev
 >
 > Trois domaines proposés et garde-fous territoriaux : 0.3.83-dev
+>
+> Première prise territoriale bornée : 0.3.84-dev, révision finale r1 validée et publiée
 
 ## Présentation
 
@@ -58,11 +60,17 @@ faction autorise la bonne volonté uniquement entre deux instances Goa'uld ; ell
 maintient une hostilité permanente envers le joueur et toutes les factions
 extérieures. La synchronisation technique n'envoie ni message ni lettre.
 
-Le jalon ajoute uniquement un évaluateur territorial et une réservation sèche.
-La dernière colonie de chaque domaine est protégée, les mondes trop pauvres sont
-bloqués, l'expansion ralentit avec la taille du domaine et aucun domaine ne peut
-dépasser automatiquement `50 %` des colonies Goa'uld permanentes. Aucune colonie
-ne change encore de propriétaire.
+Les garde-fous publiés en `0.3.83-dev` protègent la dernière colonie de chaque
+domaine, bloquent les mondes trop pauvres, ralentissent l'expansion avec la taille
+du domaine et empêchent de dépasser automatiquement `75 %` avec deux domaines ou
+`50 %` à partir de trois domaines.
+
+La version publiée `0.3.84-dev`, validée en révision finale `r1`, ajoute une première prise réelle mais bornée.
+Sous **Commandement SG-1**, une paire en conflit ouvert peut transférer la seule
+propriété d'une colonie existante après une réservation de `1–2` jours. La
+colonie conserve son nom, son identifiant et sa tuile ; aucune colonie ou faction
+n'est créée ou détruite. Une carte chargée, la présence du joueur ou une quête
+active protège également la colonie.
 
 ## Doctrine stratégique
 
