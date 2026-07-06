@@ -1,98 +1,55 @@
 # Current milestone validation
 
-Jalon : `0.3.78-dev - Add delayed allied Goa'uld raid reinforcements`
+Jalon : `0.3.79-dev - Add coordinated allied Goa'uld joint raids`
 
-Branche : `feature/goauld-allied-reinforcements`
+Branche : `feature/goauld-joint-raids`
 
-Révision locale : `r1`
+Révision finale validée : `r1`
 
-Version de DLL attendue : `0.3.78.0`
+Version de DLL validée : `0.3.79.0`
 
-Statut : validation finale `r1` réussie et jalon publié.
+Statut : validation finale réussie et acceptée par le mainteneur.
 
-## Préparation
+## Résultat fonctionnel validé
 
-- utiliser une carte de colonie joueur ;
-- activer le storyteller `Commandement SG-1` ;
-- activer le mode développeur ;
-- mettre le jeu en pause avant de préparer les relations.
+Le test obligatoire confirme :
 
-## Test principal obligatoire
+- la lettre de relation nomme les deux domaines sans lancer d'attaque ;
+- le raid d'alliance standard ne génère qu'un domaine ;
+- le raid conjoint fait arriver simultanément deux forces de couleurs
+  différentes depuis des bords opposés ;
+- l'unique lettre `Assaut coordonné des Goa'uld` nomme les deux domaines ;
+- les deux détachements attaquent la colonie sans se cibler mutuellement ;
+- le rapport indique `mode=JointRaid` et les effectifs suivis ;
+- l'ordre de retrait primaire provoque le départ des deux détachements ;
+- aucun nouvel incident de log pertinent n'est signalé.
 
-1. Ouvrir
-   `Actions de débogage > GateRim SG-1 > Goa'uld inter-domain relations...`.
-2. Lancer `Show relation report`.
-3. Si moins de deux domaines Goa'uld actifs sont listés, lancer une seule fois
-   `Create additional test domain`.
-4. Lancer `Set first pair: Alliance`.
-5. Lancer `Force allied natural raid (1200 points, short delay)`.
-6. Vérifier que le premier groupe arrive à pied depuis un bord de carte.
-7. Avant l'arrivée du second groupe, vérifier qu'aucune lettre, alerte ou
-   minuterie n'annonce des renforts.
-8. Laisser passer environ `600` ticks, soit approximativement dix secondes à
-   vitesse normale.
-9. Vérifier qu'un second groupe Jaffa entre à pied depuis un bord de carte avec
-   une couleur de faction différente.
-10. Vérifier qu'une lettre apparaît seulement à cet instant, avec le titre
-    visible `Renforts Goa'uld alliés : <nom du domaine>` et un court texte RP.
-11. Observer les deux groupes : ils doivent attaquer la colonie et ne jamais se
-    prendre mutuellement pour cible.
-12. Ouvrir `Show allied reinforcement report` dans le même sous-menu et vérifier
-    qu'une paire primaire/alliée active est indiquée.
-13. Examiner `Player.log` et signaler toute nouvelle erreur Harmony, C#, Scribe,
-    raid, Lord, traduction ou génération de pawn.
+Le budget final `1320` est partagé `792/528`, soit `60/40`, sans point gratuit
+ni fréquence supplémentaire. Aucune rupture d'alliance, conséquence territoriale
+ou récompense spéciale n'est créée.
 
-## Résultat attendu
+## Observation sur les officiers Jaffa
 
-- le raid principal et la vague alliée partagent le budget final de `1320`
-  points issu des `1200 × 1,10` points du test ;
-- aucun budget gratuit, incident storyteller ou arrivée en pod n'est ajouté ;
-- le délai reste secret jusqu'à l'arrivée ;
-- la lettre RP nomme le domaine allié au moment exact de son entrée ;
-- les deux couleurs sont visibles ;
-- la coopération n'altère pas durablement les relations entre factions.
+Aucun officier n'a été observé pendant le test conjoint forcé à `1200` points.
+Ce résultat est attendu et ne constitue pas une régression :
 
-## Résultat validé
+- le chemin développeur forcé du raid conjoint n'active pas le fallback dédié
+  qui garantit un officier dans son test historique ;
+- après le partage, le détachement principal ne reçoit que `792` points ;
+- à ce budget, le garde Jaffa à `145` points n'est normalement pas admissible
+  par la courbe de coût individuel ;
+- sans garde généré, la couche d'officier n'a aucun pawn équivalent à remplacer.
 
-Le mainteneur confirme le test principal :
+Le chemin naturel publié en `0.3.75-dev`, son seuil de cinq Jaffa et son
+remplacement garde/officier à budget identique restent présents et inchangés.
 
-- aucune annonce de renfort avant la seconde arrivée ;
-- vague différée visible avec une couleur de domaine distincte ;
-- lettre RP affichée uniquement à l'arrivée ;
-- aucune attaque entre les deux forces Goa'uld alliées ;
-- aucun défaut bloquant signalé dans `Player.log`.
+## Régressions facultatives durables
 
-Les régressions facultatives ci-dessous n'ont pas été requises pour valider
-localement `r1`.
-
-## Régressions facultatives
-
-### Sauvegarde avant l'arrivée
-
-1. Refaire le test principal.
-2. Sauvegarder après l'arrivée du premier groupe mais avant `600` ticks.
-3. Recharger la sauvegarde.
-4. Vérifier que la vague alliée arrive une seule fois avec sa lettre.
-
-### Sauvegarde pendant la coopération
-
-1. Sauvegarder après l'arrivée des deux groupes.
-2. Recharger.
-3. Vérifier les couleurs distinctes et l'absence de combat fratricide.
-
-### Retraite
-
-Laisser ou provoquer la retraite du groupe principal. Les survivants alliés
-doivent recevoir à leur tour un ordre de sortie de carte.
-
-### Exclusions
-
-- sous `800` points finaux, aucune vague n'est planifiée ;
-- sous Cassandra, Phoebe, Randy ou un autre storyteller compatible, une
-  alliance enregistrée ne produit aucune vague ;
-- un conflit ouvert prioritaire conserve le facteur `75 %` et bloque les
-  renforts alliés ;
-- les raids contrôlés, représailles, missions et sites restent inchangés.
+- le renfort différé conserve son arrivée et sa lettre tardive ;
+- sauvegarde/recharge pendant `JointRaid` conserve factions et coopération ;
+- enlèvement et destruction restent exclus du mode conjoint ;
+- les autres storytellers ne produisent aucune forme de raid alliée ;
+- plusieurs alliances ne fournissent jamais plus d'un partenaire.
 
 ## Contrôles automatiques
 
@@ -100,15 +57,15 @@ Depuis la racine du dépôt :
 
 ```powershell
 git diff --check
-.\build.cmd
-.\tools\check-duration-formatting.cmd
-.\tools\check-project-consistency.cmd
+./build.cmd
+./tools/check-duration-formatting.cmd
+./tools/check-project-consistency.cmd
 ```
 
 Résultats attendus :
 
-- assembly `0.3.78.0` ;
+- assembly `0.3.79.0` ;
 - audit des durées avec `104` clés uniques ;
-- cohérence des versions et traductions ;
+- versions et traductions cohérentes ;
 - aucun lien Markdown local manquant ;
 - aucune erreur de compilation.

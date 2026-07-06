@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.78-dev`
+- Development version: `0.3.79-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.78-dev` adds delayed allied-domain reinforcements to eligible natural
-Goa'uld raids under SG-1 Command. The attacking domain shares its existing
-`110%` alliance budget with one exact allied domain; the second force arrives
-later from the map edge and is revealed only by a short RP letter at arrival.
-The two colors remain visible, the forces cooperate temporarily, and no extra
-incident roll, transport pod or free threat budget is added.
+`0.3.79-dev` adds coordinated joint assaults as a second possible alliance
+manifestation under SG-1 Command. An eligible alliance-context raid now remains
+standard half the time. Cooperative direct raids divide the other half between
+the published delayed reinforcement and a simultaneous two-domain assault from
+opposite map edges. The existing `110%` budget, incident frequency and RP
+relation reports remain authoritative; a diplomatic announcement never launches
+or guarantees a raid.
 
 ## Playable content
 
@@ -33,9 +34,10 @@ incident roll, transport pod or free threat budget is added.
   alliance states between Goa'uld domain pairs. Under SG-1 Command, a domain in
   open conflict uses `75%` of its ordinary points for natural Jaffa raids, while
   a domain participating only in alliances uses a non-stacking `110%`. On an
-  eligible alliance raid of at least `800` final points, one quarter of that
-  existing budget can arrive later as a visibly distinct allied-domain wave,
-  announced only when it reaches the map. Doctrine selection still uses the
+  eligible alliance raid of at least `800` final points, half of the outcomes
+  remain standard. Cooperative direct outcomes are split between a delayed
+  `75/25` reinforcement and a simultaneous `60/40` joint assault from opposite
+  edges. Doctrine selection still uses the
   original vanilla points, open conflict overrides alliance, and raid frequency
   remains unchanged. Open conflicts can
   also produce rare battlefields in two alternating forms: a local engagement

@@ -57,12 +57,14 @@ namespace GateRimSG1.Goauld
 
         private GoauldJaffaRaidDoctrine? forcedDebugDoctrine;
         private bool forceRelationPressureForDebug;
-        private bool forceAlliedReinforcementForDebug;
+        private GoauldAllianceRaidOutcome? forcedDebugAllianceOutcome;
         private bool forceOfficerForDebug;
         private bool executionWasExternallyForced;
+        private GoauldAllianceRaidOutcome preparedAllianceOutcome;
         private Faction preparedAlliedDomain;
         private float preparedAlliedPoints;
         private float preparedCombinedPoints;
+        private IntVec3 preparedAlliedSpawnCenter = IntVec3.Invalid;
 
         protected override string ControlledRaidPurpose
         {
@@ -124,7 +126,7 @@ namespace GateRimSG1.Goauld
             }
 
             ApplyInterDomainPressureModifier(parms);
-            PrepareAlliedReinforcement(parms);
+            PrepareAlliedRaid(parms, doctrine);
         }
 
         protected override bool CanFireNowSub(IncidentParms parms)
@@ -180,24 +182,34 @@ namespace GateRimSG1.Goauld
                         map,
                         parms.faction,
                         existingPrimaryPawnIds);
-                    bool scheduled =
+                    GameComponent_GoauldAlliedReinforcementTracker tracker =
                         GameComponent_GoauldAlliedReinforcementTracker
-                            .Current
-                            ?.TrySchedule(
-                                map,
-                                parms.faction,
-                                preparedAlliedDomain,
-                                preparedAlliedPoints,
-                                primaryPawns,
-                                forceAlliedReinforcementForDebug)
-                        == true;
+                            .Current;
+                    bool scheduled = preparedAllianceOutcome
+                            == GoauldAllianceRaidOutcome.JointRaid
+                        ? tracker?.TryStartJointRaid(
+                            map,
+                            parms.faction,
+                            preparedAlliedDomain,
+                            preparedAlliedPoints,
+                            primaryPawns,
+                            preparedAlliedSpawnCenter) == true
+                        : tracker?.TrySchedule(
+                            map,
+                            parms.faction,
+                            preparedAlliedDomain,
+                            preparedAlliedPoints,
+                            primaryPawns,
+                            forcedDebugAllianceOutcome
+                                == GoauldAllianceRaidOutcome
+                                    .DelayedReinforcement) == true;
 
                     if (!scheduled)
                     {
                         GR_Log.Error(
                             "The primary Goa'uld raid used a shared allied "
-                            + "budget, but its delayed reinforcement could "
-                            + "not be scheduled.");
+                            + $"budget, but its {preparedAllianceOutcome} "
+                            + "detachment could not be started.");
                     }
                 }
 
@@ -344,11 +356,42 @@ namespace GateRimSG1.Goauld
         public bool TryExecuteForcedWithAlliedReinforcement(
             IncidentParms parms)
         {
+            return TryExecuteForcedWithAllianceOutcome(
+                parms,
+                GoauldAllianceRaidOutcome.DelayedReinforcement);
+        }
+
+        public bool TryExecuteForcedJointRaid(IncidentParms parms)
+        {
+            return TryExecuteForcedWithAllianceOutcome(
+                parms,
+                GoauldAllianceRaidOutcome.JointRaid);
+        }
+
+        public bool TryExecuteForcedStandardAllianceRaid(
+            IncidentParms parms)
+        {
+            return TryExecuteForcedWithAllianceOutcome(
+                parms,
+                GoauldAllianceRaidOutcome.Standard);
+        }
+
+        private bool TryExecuteForcedWithAllianceOutcome(
+            IncidentParms parms,
+            GoauldAllianceRaidOutcome outcome)
+        {
             bool previousPressureValue = forceRelationPressureForDebug;
-            bool previousReinforcementValue =
-                forceAlliedReinforcementForDebug;
+            GoauldAllianceRaidOutcome? previousOutcome =
+                forcedDebugAllianceOutcome;
+            GoauldJaffaRaidDoctrine? previousDoctrine =
+                forcedDebugDoctrine;
             forceRelationPressureForDebug = true;
-            forceAlliedReinforcementForDebug = true;
+            forcedDebugAllianceOutcome = outcome;
+
+            if (outcome == GoauldAllianceRaidOutcome.JointRaid)
+            {
+                forcedDebugDoctrine = GoauldJaffaRaidDoctrine.Direct;
+            }
 
             try
             {
@@ -357,8 +400,8 @@ namespace GateRimSG1.Goauld
             finally
             {
                 forceRelationPressureForDebug = previousPressureValue;
-                forceAlliedReinforcementForDebug =
-                    previousReinforcementValue;
+                forcedDebugAllianceOutcome = previousOutcome;
+                forcedDebugDoctrine = previousDoctrine;
             }
         }
 
@@ -402,12 +445,14 @@ namespace GateRimSG1.Goauld
                 + " under SG-1 Command.");
         }
 
-        private void PrepareAlliedReinforcement(IncidentParms parms)
+        private void PrepareAlliedRaid(
+            IncidentParms parms,
+            GoauldJaffaRaidDoctrine doctrine)
         {
             if (parms == null
                 || !(parms.points > 0f)
                 || (executionWasExternallyForced
-                    && !forceAlliedReinforcementForDebug))
+                    && !forcedDebugAllianceOutcome.HasValue))
             {
                 return;
             }
@@ -417,6 +462,9 @@ namespace GateRimSG1.Goauld
                     parms.target as Map,
                     parms.faction,
                     parms.points,
+                    doctrine,
+                    forcedDebugAllianceOutcome,
+                    out GoauldAllianceRaidOutcome outcome,
                     out Faction alliedDomain,
                     out float primaryPoints,
                     out float alliedPoints))
@@ -424,24 +472,73 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            if (outcome == GoauldAllianceRaidOutcome.Standard)
+            {
+                GR_Log.Message(
+                    "Kept an eligible alliance-context natural Goa'uld "
+                    + "raid standard; no allied detachment was selected.");
+                return;
+            }
+
+            preparedAllianceOutcome = outcome;
             preparedAlliedDomain = alliedDomain;
             preparedAlliedPoints = alliedPoints;
             preparedCombinedPoints = parms.points;
             parms.points = primaryPoints;
 
+            if (outcome == GoauldAllianceRaidOutcome.JointRaid)
+            {
+                if (TryFindJointSpawnCenters(
+                        parms.target as Map,
+                        out IntVec3 primarySpawnCenter,
+                        out IntVec3 alliedSpawnCenter))
+                {
+                    parms.spawnCenter = primarySpawnCenter;
+                    preparedAlliedSpawnCenter = alliedSpawnCenter;
+                    parms.sendLetter = true;
+                    parms.customLetterDef = LetterDefOf.ThreatBig;
+                    parms.customLetterLabel =
+                        "GR_GoauldJointRaid_ArrivalLabel".Translate();
+                    parms.customLetterText =
+                        "GR_GoauldJointRaid_ArrivalText".Translate(
+                            parms.faction?.Name ?? "<missing domain>",
+                            alliedDomain.Name);
+                }
+                else
+                {
+                    preparedAllianceOutcome =
+                        GoauldAllianceRaidOutcome.DelayedReinforcement;
+                    preparedAlliedPoints = Math.Max(
+                        1f,
+                        preparedCombinedPoints
+                            * GameComponent_GoauldAlliedReinforcementTracker
+                                .AlliedBudgetFraction);
+                    parms.points = Math.Max(
+                        1f,
+                        preparedCombinedPoints - preparedAlliedPoints);
+                    GR_Log.Warning(
+                        "Could not find two reachable opposite map edges "
+                        + "for a joint Goa'uld raid; using a delayed allied "
+                        + "reinforcement instead.");
+                }
+            }
+
             GR_Log.Message(
-                "Split an allied natural Goa'uld raid budget: "
+                $"Prepared {preparedAllianceOutcome} Goa'uld raid budget: "
                 + $"primary={parms.faction?.Name ?? "<missing>"}, "
                 + $"ally={alliedDomain.Name}, combined="
                 + $"{preparedCombinedPoints:0}, primary="
-                + $"{primaryPoints:0}, allied={alliedPoints:0}.");
+                + $"{parms.points:0}, allied="
+                + $"{preparedAlliedPoints:0}.");
         }
 
         private void ClearPreparedAlliedReinforcement()
         {
+            preparedAllianceOutcome = GoauldAllianceRaidOutcome.Standard;
             preparedAlliedDomain = null;
             preparedAlliedPoints = 0f;
             preparedCombinedPoints = 0f;
+            preparedAlliedSpawnCenter = IntVec3.Invalid;
         }
 
         private static HashSet<string> PawnIdsForFaction(
@@ -466,6 +563,76 @@ namespace GateRimSG1.Goauld
                     && !existingPawnIds.Contains(pawn.ThingID))
                 .ToList()
                 ?? new List<Pawn>();
+        }
+
+        private static bool TryFindJointSpawnCenters(
+            Map map,
+            out IntVec3 primarySpawnCenter,
+            out IntVec3 alliedSpawnCenter)
+        {
+            primarySpawnCenter = IntVec3.Invalid;
+            alliedSpawnCenter = IntVec3.Invalid;
+
+            if (map == null)
+            {
+                return false;
+            }
+
+            int firstSide = Rand.Range(0, 4);
+
+            for (int offset = 0; offset < 4; offset++)
+            {
+                int side = (firstSide + offset) % 4;
+                int oppositeSide = (side + 2) % 4;
+
+                if (TryFindSpawnCenterOnSide(
+                        map,
+                        side,
+                        out primarySpawnCenter)
+                    && TryFindSpawnCenterOnSide(
+                        map,
+                        oppositeSide,
+                        out alliedSpawnCenter))
+                {
+                    return true;
+                }
+            }
+
+            primarySpawnCenter = IntVec3.Invalid;
+            alliedSpawnCenter = IntVec3.Invalid;
+            return false;
+        }
+
+        private static bool TryFindSpawnCenterOnSide(
+            Map map,
+            int side,
+            out IntVec3 spawnCenter)
+        {
+            return CellFinder.TryFindRandomEdgeCellWith(
+                cell => cell.Standable(map)
+                    && IsCellOnSide(cell, map, side)
+                    && map.reachability.CanReachColony(cell),
+                map,
+                CellFinder.EdgeRoadChance_Hostile,
+                out spawnCenter);
+        }
+
+        private static bool IsCellOnSide(
+            IntVec3 cell,
+            Map map,
+            int side)
+        {
+            switch (side)
+            {
+                case 0:
+                    return cell.x <= 1;
+                case 1:
+                    return cell.z >= map.Size.z - 2;
+                case 2:
+                    return cell.x >= map.Size.x - 2;
+                default:
+                    return cell.z <= 1;
+            }
         }
 
         private static GoauldJaffaRaidDoctrineWeights

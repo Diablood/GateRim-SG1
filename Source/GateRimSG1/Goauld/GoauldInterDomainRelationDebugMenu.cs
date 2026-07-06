@@ -43,14 +43,29 @@ namespace GateRimSG1.Goauld
                     .ForceAlliedNaturalRaid,
                 848));
             root.AddChild(ActionNode(
-                "Show allied reinforcement report",
+                "Force joint raid (1200 points, simultaneous)",
+                GoauldThreatProgressionDebugActions
+                    .ForceJointNaturalRaid,
+                847));
+            root.AddChild(ActionNode(
+                "Force standard alliance raid (1200 points)",
+                GoauldThreatProgressionDebugActions
+                    .ForceStandardAllianceRaid,
+                846));
+            root.AddChild(ActionNode(
+                "Show allied raid cooperation report",
                 GoauldThreatProgressionDebugActions
                     .ShowAlliedReinforcementReport,
-                846));
+                845));
+            root.AddChild(ActionNode(
+                "Order joint primary force withdrawal",
+                GoauldThreatProgressionDebugActions
+                    .OrderJointPrimaryWithdrawal,
+                844));
             root.AddChild(ActionNode(
                 "Show battlefield report",
                 GoauldOpenConflictBattlefieldDebugActions.ShowReport,
-                845));
+                843));
             root.AddChild(ActionNode(
                 "Make battlefield opportunity due",
                 GoauldOpenConflictBattlefieldDebugActions.MakeOpportunityDue,

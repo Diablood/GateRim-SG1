@@ -33,4 +33,7 @@
 
     <GR_GoauldAlliedReinforcement_ArrivalLabel>Goa'uld allied reinforcements: {0}</GR_GoauldAlliedReinforcement_ArrivalLabel>
     <GR_GoauldAlliedReinforcement_ArrivalText>As the forces of {0} press their attack, Jaffa bearing the colors of {1} emerge at the edge of the colony. The alliance between the two domains has taken a very concrete form.</GR_GoauldAlliedReinforcement_ArrivalText>
+
+    <GR_GoauldJointRaid_ArrivalLabel>Coordinated Goa'uld assault</GR_GoauldJointRaid_ArrivalLabel>
+    <GR_GoauldJointRaid_ArrivalText>{0} and {1} have committed forces to a coordinated assault. Jaffa bearing both domains' colors are advancing from opposite approaches.</GR_GoauldJointRaid_ArrivalText>
 </LanguageData>

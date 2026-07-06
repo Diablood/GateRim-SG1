@@ -1,9 +1,16 @@
+using System;
 using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Goauld
 {
+    public enum GoauldAlliedRaidManifestation
+    {
+        DelayedReinforcement = 0,
+        JointRaid = 1
+    }
+
     public sealed class GoauldAlliedReinforcementState : IExposable
     {
         public int targetMapUniqueId = -1;
@@ -15,6 +22,11 @@ namespace GateRimSG1.Goauld
         public bool arrived;
         public bool withdrawalOrdered;
         public int cooperationExpiryTick;
+        public GoauldAlliedRaidManifestation manifestation =
+            GoauldAlliedRaidManifestation.DelayedReinforcement;
+        public IntVec3 alliedSpawnCenter = IntVec3.Invalid;
+        public int initialPrimaryPawnCount;
+        public int initialAlliedPawnCount;
         public List<Pawn> primaryPawns = new List<Pawn>();
         public List<Pawn> alliedPawns = new List<Pawn>();
 
@@ -37,6 +49,29 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref cooperationExpiryTick,
                 "cooperationExpiryTick",
+                0);
+            int manifestationValue = (int)manifestation;
+            Scribe_Values.Look(
+                ref manifestationValue,
+                "manifestation",
+                (int)GoauldAlliedRaidManifestation
+                    .DelayedReinforcement);
+            manifestation = Enum.IsDefined(
+                typeof(GoauldAlliedRaidManifestation),
+                manifestationValue)
+                ? (GoauldAlliedRaidManifestation)manifestationValue
+                : GoauldAlliedRaidManifestation.DelayedReinforcement;
+            Scribe_Values.Look(
+                ref alliedSpawnCenter,
+                "alliedSpawnCenter",
+                IntVec3.Invalid);
+            Scribe_Values.Look(
+                ref initialPrimaryPawnCount,
+                "initialPrimaryPawnCount",
+                0);
+            Scribe_Values.Look(
+                ref initialAlliedPawnCount,
+                "initialAlliedPawnCount",
                 0);
             Scribe_Collections.Look(
                 ref primaryPawns,

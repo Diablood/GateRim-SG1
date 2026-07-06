@@ -367,8 +367,15 @@ namespace GateRimSG1.Goauld
 
             builder.AppendLine();
             builder.AppendLine(
-                "military effects, raid modifiers, expansion and settlement "
-                + "destruction: none");
+                "relation reports announce eligibility only; a transition "
+                + "never launches a raid or battlefield immediately");
+            builder.AppendLine(
+                "published effects: bounded natural-raid pressure, "
+                + "standard/delayed/joint alliance raid outcomes and "
+                + "open-conflict battlefield opportunities");
+            builder.AppendLine(
+                "still inactive: territorial expansion, settlement "
+                + "destruction and player-goodwill changes");
 
             return builder.ToString();
         }

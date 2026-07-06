@@ -3,7 +3,8 @@
 Version: `0.2.1-dev`; doctrine selection extended in `0.3.54-dev`;
 open-conflict pressure reduction added in `0.3.68-dev`; bounded alliance
 strength added in `0.3.73-dev`; eligible officer replacement added in
-`0.3.75-dev`; delayed allied-domain reinforcement added in `0.3.78-dev`.
+`0.3.75-dev`; delayed allied-domain reinforcement added in `0.3.78-dev`;
+standard and coordinated joint outcomes added in `0.3.79-dev`.
 
 ## Purpose
 
@@ -78,10 +79,29 @@ relation tracker whenever the ordinary natural raid executes. A delayed allied
 wave does serialize its exact pair, points, arrival tick and participating pawns
 until that one cooperative attack has resolved.
 
-## Delayed allied-domain reinforcement
+## Alliance raid outcomes
 
 When the resolved factor is exactly `1.10` and the final combined budget is at
-least `800` points, the ordinary natural raid divides that existing budget:
+least `800` points, `0.3.79-dev` resolves one outcome without creating another
+storyteller roll:
+
+| Outcome | Direct doctrine | Abduction or destruction | Budget |
+| --- | ---: | ---: | --- |
+| Standard single-domain raid | `50%` | `50%` | primary `100%` |
+| Delayed allied reinforcement | `25%` | `50%` | primary `75%`, ally `25%` |
+| Simultaneous joint raid | `25%` | excluded | primary `60%`, ally `40%` |
+
+The probabilities apply only after the alliance factor and minimum budget are
+eligible. Below that threshold, under another storyteller or with
+open-conflict precedence, the ordinary single-domain path remains unchanged.
+
+An automatic relation report announces only that an alliance or conflict now
+exists. It never launches an attack, consumes a raid opportunity or guarantees
+the next raid outcome.
+
+### Delayed reinforcement
+
+The published delayed form divides the existing budget:
 
 ```text
 primary force = combined points × 0.75
@@ -105,6 +125,19 @@ rewrite faction goodwill or the persistent vanilla relation. Target caches are
 refreshed at activation and cleanup, and the original hostility becomes
 authoritative again when either participating force is gone. Allied survivors
 receive an exit order when the primary surviving force begins withdrawing.
+
+### Coordinated joint raid
+
+A direct joint outcome selects one exact allied domain and divides the same
+final points `60/40`. The two direct-assault groups enter in the same incident
+execution from reachable opposite map edges. One RP letter names both domains;
+there is no second raid letter, hidden bonus or additional incident.
+
+Both exact faction colors remain visible. The published temporary-hostility
+override keeps the pair cooperative without rewriting goodwill. If either
+detachment starts retreating or falls to `30%` of its initial mobile strength,
+both surviving groups receive an exit order. Defeat creates no alliance rupture,
+territorial consequence or special reward.
 
 ## Natural versus forced execution
 
@@ -189,8 +222,12 @@ while explicitly enabling the factor for this forced test only.
 
 `Force allied natural raid (1200 points, short delay)` requires an eligible
 alliance, uses a deterministic `1200`-point raid and shortens only this test's
-hidden delay to `600` ticks. `Show allied reinforcement report` reveals pending
-or active state for diagnostics; normal play exposes no such countdown.
+hidden delay to `600` ticks. `Force standard alliance raid (1200 points)` and
+`Force joint raid (1200 points, simultaneous)` exercise the other outcomes.
+`Show allied raid cooperation report` reveals pending or active state for
+diagnostics; normal play exposes no such information. `Order joint primary
+force withdrawal` starts the primary exit so the shared-retreat response can be
+validated.
 
 `Set all pairs: Alliance` supports deterministic non-stacking and precedence
 coverage with three or more domains. The three `Force natural ... raid`
@@ -214,3 +251,10 @@ Revision `r1` for `0.3.78-dev` is validated and published for the mandatory path
 silent delay, arrival-only RP letter, exact faction colors, temporary
 cooperation and a clean accepted `Player.log`. Persistence and withdrawal
 remain durable optional regressions.
+
+Revision `r1` for `0.3.79-dev` is validated for standard and simultaneous joint
+outcomes, opposite-edge colors, one shared letter, mutual cooperation, bilateral
+withdrawal and a clean accepted `Player.log`. The forced `1200`-point joint test
+showed no officer as expected: the forced path does not enable the officer
+fallback and the `792`-point primary split normally generates no `145`-point
+guard to replace.

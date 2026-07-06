@@ -1,110 +1,115 @@
 # Project state
 
-Current milestone: `0.3.78-dev - Add delayed allied Goa'uld raid reinforcements`
+Current milestone: `0.3.79-dev - Add coordinated allied Goa'uld joint raids`
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.77-dev` at commit
-  `cff999a715285d45d9380f6d2bab4937f6229e13`.
-- Active branch: `feature/goauld-allied-reinforcements`.
-- Final revision: `r1`, validated and published on `develop` as annotated tag
-  `v0.3.78-dev`.
-- Published assembly version: `0.3.78.0`.
-- The changed player-facing wiki sources are synchronized with the separate
-  wiki repository as part of publication.
+  `v0.3.78-dev` at commit
+  `71ec35acad73162e6adb765df4c1a094ed47c3b4`.
+- Active branch: `feature/goauld-joint-raids`.
+- Final local revision: `r1`, validated and ready for publication.
+- Target assembly version: `0.3.79.0`.
+- Commit, integration, tag, push and wiki publication still require explicit
+  maintainer instruction after this accepted validation.
+
+## Existing relation trigger
+
+No new diplomatic scheduler is required. Since `0.3.66-dev`, while
+`Commandement SG-1` is active, every live Goa'uld domain pair automatically
+transitions slowly between neutrality, rivalry, open conflict, truce and
+alliance. Every real transition produces one neutral RP letter naming both
+domains.
+
+That letter changes which future effects are eligible. It never launches a raid
+or battlefield immediately and never guarantees the form of the next attack.
+Other storytellers preserve the stored relations while suspending automatic
+transitions and SG-1-specific consequences.
 
 ## Validated design decisions
 
-- The effect applies only to ordinary natural Goa'uld raids under
-  `Commandement SG-1`.
-- The primary domain must have an active alliance without open-conflict
-  precedence.
-- The final combined raid budget must be at least `800` points.
-- The existing non-stacking alliance budget remains `110%` of vanilla points.
-  It is split `75%` primary force and `25%` allied force; no free points are
-  added.
-- One exact allied domain is selected. Several alliances never create several
-  waves.
-- The allied force arrives after `1800` to `3600` ticks through `EdgeWalkIn`.
-  Pods remain forbidden.
-- No warning, countdown or letter reveals the pending wave. A short localized
-  RP letter appears only when the reinforcements enter the map.
-- Both domains retain their exact faction identity and visible color.
-- Their vanilla mutual hostility is ignored only while the cooperative attack
-  is active. The persistent world relation is never rewritten.
-- The allied force follows the primary force into withdrawal. Temporary
-  cooperation ends when either participating force is no longer present.
+- The existing natural raid remains the only storyteller incident and retains
+  its day, chance and refire delay.
+- The alliance factor remains one non-stacking `110%` final budget.
+- Only alliance-context raids at `800+` final points can select an allied form.
+- `50%` of eligible outcomes remain ordinary single-domain raids.
+- The cooperative half of a direct raid is split evenly between:
+  - the published delayed `75/25` reinforcement;
+  - a simultaneous `60/40` joint raid.
+- Abduction and destruction remain either standard or delayed; joint raids use
+  direct assault only.
+- A joint raid selects one exact allied domain, keeps both faction colors and
+  places the forces on reachable opposite map edges.
+- One RP letter names both domains when the joint attack arrives.
+- Temporary cooperation changes no persistent faction relation or goodwill.
+- If either joint detachment retreats or reaches its bounded break threshold,
+  both detachments withdraw.
+- Defeat causes only ordinary losses and loot. Alliance rupture, shared
+  reprisals and territorial effects remain separate future milestones.
+- No transport pods, extra raid points, extra incident roll or special reward
+  are introduced.
 
 ## Implementation
 
-- `IncidentWorker_GoauldJaffaNaturalRaid` selects doctrine from the original
-  vanilla points, applies the existing relation factor, then prepares the
-  bounded budget split before primary pawn generation.
-- `GameComponent_GoauldAlliedReinforcementTracker` serializes the silent delay,
-  exact domain pair, allied point budget and participating pawn references.
-- The delayed wave reuses the validated controlled direct-raid worker with an
-  exact faction, exact points, `EdgeWalkIn` and custom localized arrival text.
-- A narrow `FactionUtility.HostileTo` Harmony postfix masks hostility only for
-  an exact pair recorded as actively cooperating by the tracker.
-- Attack-target caches are refreshed when cooperation begins or ends.
-- The debug action uses `1200` vanilla points and a `600`-tick delay.
+- `IncidentWorker_GoauldJaffaNaturalRaid` now selects `Standard`,
+  `DelayedReinforcement` or `JointRaid` only after doctrine and relation pressure
+  are resolved.
+- Standard keeps all final points on the primary domain.
+- Delayed reinforcement preserves the published `75/25` split and hidden
+  `1800` to `3600` tick delay.
+- Joint raid applies `60/40`, sets opposite `EdgeWalkIn` spawn centers, gives
+  the primary incident one shared letter and starts the allied direct force in
+  the same execution.
+- `GameComponent_GoauldAlliedReinforcementTracker` persists the manifestation,
+  exact pair, pawn references, initial counts and allied spawn center.
+- Serialized value `0` remains delayed reinforcement, preserving pending
+  `0.3.78-dev` saves.
+- The existing Harmony hostility override remains restricted to the exact
+  active pair.
 
 ## Automated validation status
 
-- forced C# rebuild succeeds as assembly `0.3.78.0` with zero errors;
+- the forced final C# rebuild succeeds with `0` errors and produces assembly
+  `0.3.79.0`;
 - `git diff --check` passes;
-- duration audit passes with `104` explicit compatibility keys across `272` C#
-  files;
-- project consistency passes across `283` Markdown files with no missing local
-  link and aligned public/assembly versions;
-- the maintainer validated the mandatory in-game checklist.
+- the duration audit passes with `104` explicit keys across `272` C# files;
+- project consistency passes across `283` Markdown files, all milestone
+  metadata and `83` BackstoryDefs;
+- focused in-game validation is complete and accepted by the maintainer.
 
-## Validated in-game result
+## In-game validation result
 
-Use a player-home map with the `Commandement SG-1` storyteller active.
+The maintainer completed and accepted the mandatory focused test:
 
-1. Open `Actions de débogage > GateRim SG-1 > Goa'uld inter-domain relations...`.
-2. Run `Create additional test domain` only if the relation report contains
-   fewer than two active Goa'uld domains.
-3. Run `Set first pair: Alliance`.
-4. Run `Force allied natural raid (1200 points, short delay)`.
-5. Confirm that the primary Goa'uld raid enters on foot from a map edge and
-   that no letter or countdown mentions reinforcements yet.
-6. Let the game run for about `600` ticks, approximately ten seconds at normal
-   speed.
-7. Confirm that a second Jaffa force with a different Goa'uld faction color
-   enters from a map edge.
-8. Confirm that the arrival itself produces the letter
-   `Renforts Goa'uld alliés : <nom du domaine>` with the short RP text.
-9. Confirm that both forces attack the colony rather than one another.
-10. Open `Show allied reinforcement report` and confirm that it reports one
-    active primary/allied pair.
-11. Inspect `Player.log` and report any new Harmony, C#, Scribe, raid, Lord,
-    translation or pawn-generation error.
+- the alliance relation letter named both domains without launching a raid;
+- the standard alliance path produced only the primary domain;
+- the joint path produced two differently colored forces simultaneously from
+  opposite map edges;
+- the single localized joint-assault letter named both domains;
+- both forces attacked the colony without targeting one another;
+- the cooperation report exposed `mode=JointRaid` and both tracked detachments;
+- ordering primary withdrawal caused both surviving forces to leave;
+- no new relevant error was reported in `Player.log`.
 
-The maintainer reported the mandatory test successful:
-
-- the primary raid arrived without advance reinforcement warning;
-- the delayed allied wave appeared with a distinct faction color;
-- the localized RP letter appeared only at reinforcement arrival;
-- both domain forces attacked the colony instead of one another;
-- no blocking log error was reported.
+No officer appeared during the deterministic `1200`-point joint test. This is
+expected rather than a regression: the forced joint debug path does not enable
+the dedicated officer fallback, and the final `1320`-point budget is divided
+into `792/528`. At `792` primary points, the ordinary `145`-point guard is not
+normally admissible through the pawn-cost curve, leaving no guard for the
+officer replacement layer. The published natural officer path remains present
+and unchanged.
 
 ## Optional regression checks
 
-These checks remain optional and were not required for local `r1` acceptance.
-
-- Save after the primary raid but before the allied arrival, reload, and confirm
-  that the second wave still arrives once with its letter.
-- Save after both forces have arrived, reload, and confirm that they remain
-  mutually non-hostile and keep their respective colors.
-- Let the primary surviving force withdraw and confirm that allied survivors
-  also leave instead of continuing an unrelated permanent raid.
-- Repeat below `800` final points and confirm that no allied wave is scheduled.
-- Switch to another storyteller and confirm that stored alliances do not add
-  allied reinforcement waves.
+- Run `Force allied natural raid (1200 points, short delay)` and confirm the
+  published delayed arrival-only letter still works.
+- Save and reload during an active joint raid and confirm both colors remain
+  mutually cooperative.
+- Confirm abduction and destruction never select `JointRaid`.
+- Confirm another storyteller produces neither automatic relation changes nor
+  allied raid forms.
+- With three domains, confirm only one allied partner joins a joint raid.
 
 ## Next step
 
-Select the next milestone only from the blocking core-completion phase in
-`docs/ROADMAP.md`. Repeat its deferred design questions, then create its
-dedicated branch from `develop` aligned with `v0.3.78-dev`.
+Prepare the final documentation-only publication state, then commit, integrate,
+tag and synchronize the wiki only on explicit maintainer instruction. No later
+milestone or branch is reserved.

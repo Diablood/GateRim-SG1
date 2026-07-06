@@ -33,4 +33,7 @@
 
     <GR_GoauldAlliedReinforcement_ArrivalLabel>Renforts Goa'uld alliés : {0}</GR_GoauldAlliedReinforcement_ArrivalLabel>
     <GR_GoauldAlliedReinforcement_ArrivalText>Alors que les forces de {0} poursuivent leur attaque, des Jaffa portant les couleurs de {1} apparaissent aux abords de la colonie. L'alliance entre les deux domaines vient de prendre une forme très concrète.</GR_GoauldAlliedReinforcement_ArrivalText>
+
+    <GR_GoauldJointRaid_ArrivalLabel>Assaut coordonné des Goa'uld</GR_GoauldJointRaid_ArrivalLabel>
+    <GR_GoauldJointRaid_ArrivalText>{0} et {1} ont engagé leurs forces dans un assaut coordonné. Des Jaffa portant les couleurs des deux domaines progressent depuis des approches opposées.</GR_GoauldJointRaid_ArrivalText>
 </LanguageData>

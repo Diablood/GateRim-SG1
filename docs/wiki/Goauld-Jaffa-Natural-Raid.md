@@ -7,6 +7,7 @@
 > Puissance bornée des alliances : `0.3.73-dev`
 > Officiers dans les groupes éligibles : `0.3.75-dev`
 > Renforts alliés différés : `0.3.78-dev`
+> Raids conjoints coordonnés : `0.3.79-dev`
 
 Les domaines des Grands Maîtres Goa'uld peuvent lancer de rares raids contre
 une colonie joueur à partir du jour 12. Un délai minimal commun de 18 jours
@@ -99,6 +100,23 @@ lettre, alerte ou minuterie ne prévient le joueur. Une lettre RP nomme le domai
 allié seulement lorsque ses Jaffa entrent réellement sur la carte. Les deux
 couleurs de faction restent visibles et les forces coopèrent pendant cette
 attaque au lieu de se battre entre elles. Les pods restent exclus.
+
+## Variété des raids en alliance
+
+Depuis `0.3.79-dev`, une annonce d'alliance rend plusieurs formes possibles sans
+déclencher ni prédire le prochain raid. Pour un raid admissible :
+
+- `50 %` restent des raids standards d'un seul domaine ;
+- un assaut direct coopératif peut conserver le renfort différé ou devenir un
+  raid conjoint simultané, avec la même probabilité ;
+- enlèvement et destruction restent standards ou reçoivent seulement le
+  renfort différé.
+
+Le raid conjoint partage le budget existant `60/40`. Les deux domaines arrivent
+au même moment depuis des bords opposés, gardent leurs couleurs et sont annoncés
+par une seule lettre RP. Si l'un des détachements rompt le combat, les deux se
+retirent. Une défaite ne rompt pas automatiquement l'alliance et ne modifie
+aucun territoire.
 
 ## Officier dans une force éligible
 

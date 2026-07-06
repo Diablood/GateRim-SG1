@@ -211,9 +211,14 @@ selection still uses original vanilla points and frequency remains unchanged.
 The shared worker now distinguishes ordinary storyteller execution from callers
 that were already forced before entering the common raid path.
 
-Later extensions may include second-domain reinforcements, joint raids,
-doctrine interactions, shared reprisals and alliance rupture. They remain
-separate milestones and are not implied by the strength factor.
+`0.3.78-dev` adds delayed second-domain reinforcements and `0.3.79-dev` adds
+simultaneous joint raids while preserving ordinary single-domain raids. The
+relation announcement only makes these later outcomes eligible; it never
+launches or guarantees an attack.
+
+Doctrine interactions, shared reprisals and alliance rupture remain separate
+future milestones and are not implied by the strength factor or the published
+cooperative raid forms.
 
 Rival domains may later expand their territories and destroy enemy settlements.
 Those simulations require discreet safeguards against self-elimination, runaway

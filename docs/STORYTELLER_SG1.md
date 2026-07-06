@@ -8,9 +8,11 @@
 - Local battlefield: `0.3.69-dev`
 - World-site battlefield extension: `0.3.70-dev`
 - Alliance-strength extension: `0.3.73-dev`
-- Published assembly: `0.3.73.0`
-- Final local revision: `r1`
-- Status: validated and published.
+- Delayed allied reinforcement: `0.3.78-dev`
+- Coordinated joint raid outcomes: `0.3.79-dev`
+- Target assembly: `0.3.79.0`
+- Current local revision: `r1`
+- Status: focused validation required.
 
 ## Purpose
 
@@ -169,7 +171,8 @@ The effect is intentionally narrow:
   reprisals and deterministic regression raids;
 - the dedicated relation-pressure command enables the factor for one forced
   test;
-- no new data is serialized.
+- the factor itself remains derived; only a pending or active cooperative raid
+  serializes its exact pair and participants.
 
 The shared raid worker internally marks every generated raid as forced. The
 natural worker now records whether the caller was already forced before entering
@@ -177,6 +180,23 @@ that shared path. This lets ordinary storyteller raids receive the relation
 factor without exposing reprisals or exact developer regressions to it.
 
 Changing storyteller or relation state changes the derived factor immediately.
+
+## Alliance-context raid outcomes
+
+At `800+` final points, an eligible alliance-context raid remains standard half
+the time. This preserves uncertainty after an alliance report and keeps the
+entire `1.10` budget on one domain.
+
+The cooperative half resolves after doctrine selection. Direct raids divide it
+equally between delayed `75/25` reinforcement and simultaneous `60/40` joint
+assault. Abduction and destruction can use delayed support but never the joint
+mode. No branch creates another incident roll or modifies the shared refire
+delay.
+
+Joint direct forces retain exact faction colors, use opposite map edges and
+share one RP letter. The temporary cooperation layer changes no persistent
+goodwill. A retreat or bounded break by either detachment orders both forces to
+leave.
 
 ## Open-conflict battlefields
 
@@ -211,6 +231,10 @@ The reports describe political or military intelligence without exposing hidden
 weights. Open-conflict and alliance texts remain RP-facing and do not reveal the
 exact derived factor outside developer diagnostics.
 
+A report changes eligibility only. It never launches a raid or battlefield,
+does not consume a storyteller opportunity and does not guarantee that the next
+eligible raid will use a relation-specific form.
+
 ## Developer diagnostics
 
 Relation path:
@@ -241,12 +265,17 @@ relation menu and exercises the ordinary relation-aware worker while temporarily
 the factor for that forced validation. The historical forced-doctrine commands
 remain exact and bypass the factor.
 
+The same menu provides deterministic standard, delayed and joint
+alliance-context raids. `Show allied raid cooperation report` identifies the
+active manifestation, while `Order joint primary force withdrawal` validates
+the bilateral exit response.
+
 ## Still inactive consequences
 
-`0.3.73-dev` still adds no:
+The published relation and alliance layers still add no:
 
 - alliance frequency increase;
-- reinforcements, joint raids or shared reprisals;
+- shared reprisals;
 - doctrine interaction caused by relations;
 - territorial expansion or settlement destruction;
 - change to faction goodwill toward the player.
@@ -259,3 +288,10 @@ Final local revision `r1` of `0.3.73-dev` is validated and published. The
 focused relation-pressure procedure confirms alliance `110%`, open-conflict
 `75%`, mixed-state precedence, non-stacking, other-storyteller `100%`, natural
 versus forced execution, save/reload and a clean accepted `Player.log`.
+
+Final revision `r1` of `0.3.78-dev` validates delayed allied reinforcement.
+Final revision `r1` of `0.3.79-dev` validates standard and simultaneous joint
+outcomes, opposite-edge faction colors, one shared letter, mutual cooperation,
+bilateral withdrawal and a clean accepted `Player.log`. The lack of an officer
+in the forced `1200`-point joint test is expected from the forced-path rules and
+the `792`-point primary budget, not a regression.

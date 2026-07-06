@@ -1,5 +1,44 @@
 # Changelog
 
+## 0.3.79-dev - Add coordinated allied Goa'uld joint raids
+
+- Start from published `develop` and annotated tag `v0.3.78-dev` on
+  `feature/goauld-joint-raids`.
+- Preserve the automatic SG-1 Command relation transitions and their neutral RP
+  letters: an alliance, war, truce, rivalry or neutrality report changes
+  eligibility but never launches an incident immediately.
+- Keep `50%` of eligible alliance-context natural raids completely standard so
+  the player cannot infer the next attack form from a diplomatic report.
+- Split the cooperative half of eligible direct raids evenly between the
+  published delayed reinforcement and a new simultaneous joint assault.
+- Keep non-direct abduction and destruction doctrines limited to standard or
+  delayed-reinforcement outcomes.
+- Share the existing non-stacking `110%` joint-raid budget `60/40` between one
+  primary and one exact allied domain; add no free threat points.
+- Place the two direct-assault forces on reachable opposite map edges, retain
+  their exact faction colors and announce both domains in one localized RP
+  letter.
+- Reuse the published temporary-cooperation tracker and hostility override
+  without changing persistent faction goodwill.
+- Order both joint detachments to withdraw when either side begins retreating
+  or falls to its bounded break threshold.
+- Keep the result free of alliance rupture, territorial effects, special
+  rewards, pods, extra incident rolls and storyteller-frequency changes.
+- Preserve `0.3.78-dev` pending-wave save compatibility by keeping delayed
+  reinforcement as serialized manifestation value `0`.
+- Add deterministic debug actions for standard, delayed and joint alliance
+  outcomes plus primary-withdrawal validation.
+- Validate final local revision `r1`: alliance letter without immediate raid,
+  standard single-domain outcome, simultaneous opposite-edge joint assault,
+  exact faction colors, one shared RP letter, mutual cooperation, bilateral
+  withdrawal and a clean accepted `Player.log`.
+- Record that the absence of an officer in the forced `1200`-point joint test is
+  expected: the forced path does not enable the officer fallback and the `60/40`
+  split leaves only `792` primary points, normally excluding the `145`-point
+  guard that would be replaced. The natural officer path remains unchanged.
+- Prepare the validated branch for fast-forward integration, annotated tag
+  `v0.3.79-dev` and synchronized wiki publication.
+
 ## 0.3.78-dev - Add delayed allied Goa'uld raid reinforcements
 
 - Start from published `develop` and annotated tag `v0.3.77-dev` on

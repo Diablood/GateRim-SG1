@@ -182,6 +182,25 @@ namespace GateRimSG1.Goauld
 
         public static void ForceAlliedNaturalRaid()
         {
+            ForceAllianceRaidOutcome(
+                GoauldAllianceRaidOutcome.DelayedReinforcement);
+        }
+
+        public static void ForceJointNaturalRaid()
+        {
+            ForceAllianceRaidOutcome(
+                GoauldAllianceRaidOutcome.JointRaid);
+        }
+
+        public static void ForceStandardAllianceRaid()
+        {
+            ForceAllianceRaidOutcome(
+                GoauldAllianceRaidOutcome.Standard);
+        }
+
+        private static void ForceAllianceRaidOutcome(
+            GoauldAllianceRaidOutcome outcome)
+        {
             Map map = Find.CurrentMap;
             IncidentDef incidentDef = GR_DefOf.SG1_GoauldJaffaNaturalRaid;
             IncidentWorker_GoauldJaffaNaturalRaid worker =
@@ -208,7 +227,7 @@ namespace GateRimSG1.Goauld
                 .HasPendingOrActive(map))
             {
                 Reject(
-                    "An allied Goa'uld reinforcement is already pending or "
+                    "An allied Goa'uld raid cooperation is already pending or "
                     + "active on this map.");
                 return;
             }
@@ -231,11 +250,28 @@ namespace GateRimSG1.Goauld
             parms.points = AlliedReinforcementRaidPoints;
             parms.faction = primaryDomain;
 
-            if (!worker.TryExecuteForcedWithAlliedReinforcement(parms))
+            bool succeeded;
+
+            switch (outcome)
+            {
+                case GoauldAllianceRaidOutcome.JointRaid:
+                    succeeded = worker.TryExecuteForcedJointRaid(parms);
+                    break;
+                case GoauldAllianceRaidOutcome.Standard:
+                    succeeded = worker
+                        .TryExecuteForcedStandardAllianceRaid(parms);
+                    break;
+                default:
+                    succeeded = worker
+                        .TryExecuteForcedWithAlliedReinforcement(parms);
+                    break;
+            }
+
+            if (!succeeded)
             {
                 Reject(
-                    "Could not start the natural Goa'uld raid with delayed "
-                    + $"reinforcements from {alliedDomain.Name}.");
+                    $"Could not start the {outcome} natural Goa'uld raid "
+                    + $"for {primaryDomain.Name} and {alliedDomain.Name}.");
             }
         }
 
@@ -252,6 +288,15 @@ namespace GateRimSG1.Goauld
 
             Find.WindowStack.Add(
                 new Dialog_MessageBox(tracker.BuildDebugReport()));
+        }
+
+        public static void OrderJointPrimaryWithdrawal()
+        {
+            if (GameComponent_GoauldAlliedReinforcementTracker.Current
+                ?.OrderFirstJointPrimaryWithdrawalDebug() != true)
+            {
+                Reject("No active joint Goa'uld raid is available.");
+            }
         }
 
         public static void ForceCurrentDirectRaid()

@@ -4,6 +4,7 @@
 > Réduction des conflits ouverts : `0.3.68-dev`
 > Bonus borné des alliances : `0.3.73-dev`
 > Renforts alliés différés : `0.3.78-dev`
+> Raids conjoints coordonnés : `0.3.79-dev`
 
 Les raids, garnisons et renforts Goa'uld partent des points de menace calculés
 par RimWorld. Ces points tiennent compte de la puissance de la colonie et des
@@ -45,6 +46,11 @@ répartir ce même total entre une force principale à `75 %` et une vague d'un
 second domaine à `25 %`. Cette vague arrive plus tard à pied et n'est révélée
 qu'au moment de son entrée. Elle n'ajoute aucun multiplicateur ni tirage
 storyteller.
+
+Depuis `0.3.79-dev`, la moitié des raids admissibles reste entièrement standard.
+Pour un assaut direct coopératif, l'autre moitié se partage entre le renfort
+différé `75/25` et un raid conjoint simultané `60/40`. Une lettre politique
+d'alliance ne lance donc aucun raid et ne permet pas de prévoir sa forme.
 
 Ces facteurs :
 

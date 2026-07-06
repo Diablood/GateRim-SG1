@@ -2,7 +2,8 @@
 
 Version: `0.3.53-dev`; open-conflict natural-raid factor added in `0.3.68-dev`;
 bounded alliance factor added in `0.3.73-dev`; delayed allied reinforcement
-budget splitting added in `0.3.78-dev`.
+budget splitting added in `0.3.78-dev`; standard and joint alliance outcomes
+added in `0.3.79-dev`.
 
 ## Goal
 
@@ -19,7 +20,7 @@ consequences and are inactive under every other storyteller.
 
 | System | Current behavior |
 | --- | --- |
-| Natural Jaffa raid | Preserves supplied vanilla points, resolves missing points from the current storyteller and selects doctrine from the original value. Under SG-1 Command only, open conflict then applies `0.75`; otherwise alliance may apply `1.10`. Eligible alliance raids of at least `800` final points split that existing total `75/25` between the primary force and one delayed allied wave. |
+| Natural Jaffa raid | Preserves supplied vanilla points, resolves missing points from the current storyteller and selects doctrine from the original value. Under SG-1 Command only, open conflict then applies `0.75`; otherwise alliance may apply `1.10`. At `800+` final alliance points, half the outcomes remain standard; cooperative direct outcomes become delayed `75/25` reinforcement or simultaneous `60/40` joint assault. |
 | Controlled raid doctrines | Use current or explicit test points and never receive the relation factor. |
 | Intercepted Tok'ra warning | Stores the vanilla storyteller snapshot and uses the same value when the raid arrives. |
 | Extraction reprisal | Uses its stored point snapshot through a forced incident path and never receives the relation factor. |
@@ -54,13 +55,20 @@ Several simultaneous conflicts or alliances do not stack. Open conflict has
 priority over alliance, so a mixed domain never multiplies `0.75 × 1.10` and
 never averages both values.
 
-For an eligible alliance raid at `800+` final points, `75%` of the already
-modified total generates the primary doctrine force and `25%` generates one
-later allied direct-assault wave. This is a budget split, not another
-multiplier. The second force walks in from a map edge after `1800` to `3600`
-ticks and is announced only at arrival. The pending wave and temporary
-cooperation are serialized because they must survive save and reload; the
-underlying relation factor remains derived.
+For an eligible alliance raid at `800+` final points, half the outcomes keep the
+entire modified total on a standard single-domain raid. The cooperative half is
+resolved after doctrine selection:
+
+- direct raids split evenly between delayed `75/25` reinforcement and
+  simultaneous `60/40` joint assault;
+- abduction and destruction use delayed reinforcement only;
+- every split consumes the same final `1.10` budget rather than adding another
+  multiplier.
+
+The delayed form keeps its `1800` to `3600` tick hidden arrival. The joint form
+uses opposite edges in one execution and one shared letter. Pending or active
+cooperation is serialized; the underlying factor and random outcome remain
+derived. Relation-change letters never schedule or guarantee any raid.
 
 The shared raid worker internally marks every generated raid as forced. The
 natural worker therefore captures whether the caller was already forced before
@@ -115,7 +123,12 @@ repeatable without save editing.
 
 `Force allied natural raid (1200 points, short delay)` provides the focused
 allied-wave test with a `600`-tick hidden delay. `Show allied reinforcement
-report` is the only place where that pending or active internal state is shown.
+report` was renamed `Show allied raid cooperation report`; it remains the only
+place where pending or active internal state is shown.
+
+`Force standard alliance raid (1200 points)` and `Force joint raid (1200
+points, simultaneous)` provide deterministic coverage for the new branches.
+The cooperation report and primary-withdrawal action expose only debug state.
 
 The exact forced natural direct `300`, abduction `800` and destruction `1800`
 actions remain unchanged regression tools.
@@ -133,3 +146,10 @@ remain valid and unchanged.
 
 Revision `r1` for `0.3.78-dev` is validated and published for the focused
 allied-wave path and a clean accepted `Player.log`.
+
+Revision `r1` for `0.3.79-dev` is validated for standard and simultaneous joint
+outcomes, opposite-edge colors, one shared letter, mutual cooperation, bilateral
+withdrawal and a clean accepted `Player.log`. The forced `1200`-point joint test
+showed no officer as expected: the forced path does not enable the officer
+fallback and the `792`-point primary split normally generates no `145`-point
+guard to replace.

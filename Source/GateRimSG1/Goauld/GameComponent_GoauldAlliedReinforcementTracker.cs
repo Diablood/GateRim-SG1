@@ -9,6 +9,13 @@ using Verse.AI.Group;
 
 namespace GateRimSG1.Goauld
 {
+    public enum GoauldAllianceRaidOutcome
+    {
+        Standard,
+        DelayedReinforcement,
+        JointRaid
+    }
+
     /// <summary>
     /// Stores the silent delay between an eligible natural raid and one
     /// allied-domain reinforcement wave. The wave consumes part of the raid's
@@ -18,6 +25,10 @@ namespace GateRimSG1.Goauld
         : GameComponent
     {
         public const float AlliedBudgetFraction = 0.25f;
+        public const float CooperativeRaidChance = 0.50f;
+        public const float JointRaidChanceWithinCooperation = 0.50f;
+        public const float JointPrimaryBudgetFraction = 0.60f;
+        public const float JointAlliedBudgetFraction = 0.40f;
         public const float MinimumCombinedRaidPoints = 800f;
         public const int MinimumArrivalDelayTicks = 1800;
         public const int MaximumArrivalDelayTicks = 3600;
@@ -116,10 +127,14 @@ namespace GateRimSG1.Goauld
             Map map,
             Faction primaryDomain,
             float combinedPoints,
+            GoauldJaffaRaidDoctrine doctrine,
+            GoauldAllianceRaidOutcome? forcedOutcome,
+            out GoauldAllianceRaidOutcome outcome,
             out Faction alliedDomain,
             out float primaryPoints,
             out float alliedPoints)
         {
+            outcome = GoauldAllianceRaidOutcome.Standard;
             alliedDomain = null;
             primaryPoints = combinedPoints;
             alliedPoints = 0f;
@@ -148,12 +163,58 @@ namespace GateRimSG1.Goauld
                 return false;
             }
 
+            outcome = forcedOutcome ?? SelectOutcome(doctrine);
+
+            if (outcome == GoauldAllianceRaidOutcome.Standard)
+            {
+                return true;
+            }
+
+            if (outcome == GoauldAllianceRaidOutcome.JointRaid
+                && doctrine != GoauldJaffaRaidDoctrine.Direct)
+            {
+                outcome = GoauldAllianceRaidOutcome.DelayedReinforcement;
+            }
+
             alliedDomain = candidates.RandomElement();
-            alliedPoints = Math.Max(
-                1f,
-                combinedPoints * AlliedBudgetFraction);
-            primaryPoints = Math.Max(1f, combinedPoints - alliedPoints);
+
+            if (outcome == GoauldAllianceRaidOutcome.JointRaid)
+            {
+                primaryPoints = Math.Max(
+                    1f,
+                    combinedPoints * JointPrimaryBudgetFraction);
+                alliedPoints = Math.Max(
+                    1f,
+                    combinedPoints * JointAlliedBudgetFraction);
+            }
+            else
+            {
+                alliedPoints = Math.Max(
+                    1f,
+                    combinedPoints * AlliedBudgetFraction);
+                primaryPoints = Math.Max(
+                    1f,
+                    combinedPoints - alliedPoints);
+            }
+
             return true;
+        }
+
+        private static GoauldAllianceRaidOutcome SelectOutcome(
+            GoauldJaffaRaidDoctrine doctrine)
+        {
+            if (Rand.Value >= CooperativeRaidChance)
+            {
+                return GoauldAllianceRaidOutcome.Standard;
+            }
+
+            if (doctrine == GoauldJaffaRaidDoctrine.Direct
+                && Rand.Value < JointRaidChanceWithinCooperation)
+            {
+                return GoauldAllianceRaidOutcome.JointRaid;
+            }
+
+            return GoauldAllianceRaidOutcome.DelayedReinforcement;
         }
 
         public static bool TryGetFirstAlliancePair(
@@ -229,11 +290,15 @@ namespace GateRimSG1.Goauld
                     alliedDomain = alliedDomain,
                     alliedPoints = alliedPoints,
                     arrivalTick = CurrentTick() + delay,
+                    manifestation = GoauldAlliedRaidManifestation
+                        .DelayedReinforcement,
                     primaryPawns = primaryPawns
                         ?.Where(pawn => pawn != null)
                         .ToList()
                         ?? new List<Pawn>()
                 };
+            newState.initialPrimaryPawnCount =
+                newState.primaryPawns.Count;
             states.Add(newState);
 
             GR_Log.Message(
@@ -243,6 +308,58 @@ namespace GateRimSG1.Goauld
                 + $"map={map.uniqueID}, points={alliedPoints:0}, "
                 + $"delay={delay} ticks.");
             return true;
+        }
+
+        public bool TryStartJointRaid(
+            Map map,
+            Faction primaryDomain,
+            Faction alliedDomain,
+            float alliedPoints,
+            List<Pawn> primaryPawns,
+            IntVec3 alliedSpawnCenter)
+        {
+            if (map == null
+                || primaryDomain == null
+                || alliedDomain == null
+                || primaryDomain == alliedDomain
+                || !(alliedPoints > 0f)
+                || states.Any(state =>
+                    state?.targetMapUniqueId == map.uniqueID))
+            {
+                return false;
+            }
+
+            GoauldAlliedReinforcementState newState =
+                new GoauldAlliedReinforcementState
+                {
+                    targetMapUniqueId = map.uniqueID,
+                    primaryDomain = primaryDomain,
+                    alliedDomain = alliedDomain,
+                    alliedPoints = alliedPoints,
+                    arrivalTick = CurrentTick(),
+                    manifestation =
+                        GoauldAlliedRaidManifestation.JointRaid,
+                    alliedSpawnCenter = alliedSpawnCenter,
+                    primaryPawns = primaryPawns
+                        ?.Where(pawn => pawn != null)
+                        .ToList()
+                        ?? new List<Pawn>()
+                };
+            newState.initialPrimaryPawnCount =
+                newState.primaryPawns.Count;
+            states.Add(newState);
+            int stateIndex = states.Count - 1;
+            TryResolveArrival(newState, CurrentTick(), stateIndex);
+
+            if (!newState.arrived)
+            {
+                GR_Log.Warning(
+                    "The allied detachment of a joint Goa'uld raid could "
+                    + "not enter simultaneously; a bounded retry remains "
+                    + "scheduled.");
+            }
+
+            return states.Contains(newState);
         }
 
         public static bool AreTemporarilyCooperating(
@@ -275,12 +392,36 @@ namespace GateRimSG1.Goauld
                 states.Select(state =>
                     $"{state.primaryDomain?.Name ?? "<missing>"} + "
                     + $"{state.alliedDomain?.Name ?? "<missing>"}: "
+                    + $"mode={state.manifestation}, "
                     + (state.arrived
                         ? $"active, expires in {Math.Max(0, state.cooperationExpiryTick - currentTick)} ticks, "
                             + $"primary pawns={ActivePawnCount(state.primaryPawns)}, "
                             + $"allied pawns={ActivePawnCount(state.alliedPawns)}"
                         : $"arrives in {Math.Max(0, state.arrivalTick - currentTick)} ticks, "
                             + $"{state.alliedPoints:0} points")));
+        }
+
+        public bool OrderFirstJointPrimaryWithdrawalDebug()
+        {
+            GoauldAlliedReinforcementState state = states.FirstOrDefault(
+                candidate => candidate?.arrived == true
+                    && candidate.manifestation
+                        == GoauldAlliedRaidManifestation.JointRaid
+                    && HasSpawnedParticipant(candidate.primaryPawns)
+                    && HasSpawnedParticipant(candidate.alliedPawns));
+            Map map = ActivePawns(state?.primaryPawns)
+                .FirstOrDefault()?.Map;
+
+            if (state == null || map == null)
+            {
+                return false;
+            }
+
+            OrderFactionWithdrawal(
+                state.primaryDomain,
+                state.primaryPawns,
+                map);
+            return true;
         }
 
         private static List<Faction> GetAlliedDomains(
@@ -341,16 +482,26 @@ namespace GateRimSG1.Goauld
             parms.faction = state.alliedDomain;
             parms.points = state.alliedPoints;
             parms.forced = true;
-            parms.sendLetter = true;
-            parms.customLetterDef = LetterDefOf.ThreatBig;
-            parms.customLetterLabel =
-                "GR_GoauldAlliedReinforcement_ArrivalLabel"
-                    .Translate(state.alliedDomain.Name);
-            parms.customLetterText =
-                "GR_GoauldAlliedReinforcement_ArrivalText"
-                    .Translate(
-                        state.primaryDomain.Name,
-                        state.alliedDomain.Name);
+            parms.sendLetter = state.manifestation
+                == GoauldAlliedRaidManifestation.DelayedReinforcement;
+
+            if (parms.sendLetter)
+            {
+                parms.customLetterDef = LetterDefOf.ThreatBig;
+                parms.customLetterLabel =
+                    "GR_GoauldAlliedReinforcement_ArrivalLabel"
+                        .Translate(state.alliedDomain.Name);
+                parms.customLetterText =
+                    "GR_GoauldAlliedReinforcement_ArrivalText"
+                        .Translate(
+                            state.primaryDomain.Name,
+                            state.alliedDomain.Name);
+            }
+
+            if (state.alliedSpawnCenter.IsValid)
+            {
+                parms.spawnCenter = state.alliedSpawnCenter;
+            }
 
             if (incidentDef?.Worker?.TryExecute(parms) == true)
             {
@@ -358,8 +509,13 @@ namespace GateRimSG1.Goauld
                     map,
                     state.alliedDomain,
                     existingPawnIds);
+                state.initialAlliedPawnCount =
+                    state.alliedPawns.Count;
                 GR_Log.Message(
-                    "Allied Goa'uld raid reinforcements arrived: "
+                    (state.manifestation
+                            == GoauldAlliedRaidManifestation.JointRaid
+                        ? "Joint Goa'uld allied detachment arrived: "
+                        : "Allied Goa'uld raid reinforcements arrived: ")
                     + $"primary={state.primaryDomain.Name} "
                     + $"({state.primaryDomain.loadID}), "
                     + $"ally={state.alliedDomain.Name} "
@@ -391,15 +547,38 @@ namespace GateRimSG1.Goauld
             int currentTick,
             int stateIndex)
         {
-            if (!state.withdrawalOrdered
-                && PrimaryForceIsWithdrawing(state.primaryPawns))
-            {
-                OrderAlliedWithdrawal(state);
-            }
-
             bool primaryPresent = HasSpawnedParticipant(
                 state.primaryPawns);
             bool allyPresent = HasSpawnedParticipant(state.alliedPawns);
+
+            if (!state.withdrawalOrdered)
+            {
+                if (state.manifestation
+                    == GoauldAlliedRaidManifestation.JointRaid)
+                {
+                    bool eitherWithdrawing =
+                        ForceIsWithdrawing(state.primaryPawns)
+                        || ForceIsWithdrawing(state.alliedPawns);
+                    bool eitherBroken = ForceIsBroken(
+                            state.primaryPawns,
+                            state.initialPrimaryPawnCount)
+                        || ForceIsBroken(
+                            state.alliedPawns,
+                            state.initialAlliedPawnCount);
+
+                    if (eitherWithdrawing
+                        || eitherBroken
+                        || !primaryPresent
+                        || !allyPresent)
+                    {
+                        OrderJointWithdrawal(state);
+                    }
+                }
+                else if (ForceIsWithdrawing(state.primaryPawns))
+                {
+                    OrderAlliedWithdrawal(state);
+                }
+            }
 
             if (!primaryPresent
                 || !allyPresent
@@ -409,7 +588,7 @@ namespace GateRimSG1.Goauld
             }
         }
 
-        private static bool PrimaryForceIsWithdrawing(
+        private static bool ForceIsWithdrawing(
             List<Pawn> pawns)
         {
             List<Pawn> mobile = ActivePawns(pawns);
@@ -418,6 +597,50 @@ namespace GateRimSG1.Goauld
                 && mobile.All(pawn =>
                     pawn.GetLord()?.LordJob is LordJob_ExitMapBest
                     || pawn.mindState?.duty?.def == DutyDefOf.ExitMapBest);
+        }
+
+        private static bool ForceIsBroken(
+            List<Pawn> pawns,
+            int initialCount)
+        {
+            if (initialCount <= 0)
+            {
+                return false;
+            }
+
+            int threshold = Math.Max(
+                1,
+                (int)Math.Floor(initialCount * 0.30f));
+            int activeCount = ActivePawns(pawns).Count;
+            return activeCount < initialCount
+                && activeCount <= threshold;
+        }
+
+        private static void OrderJointWithdrawal(
+            GoauldAlliedReinforcementState state)
+        {
+            Map map = ActivePawns(state.primaryPawns)
+                    .FirstOrDefault()?.Map
+                ?? ActivePawns(state.alliedPawns)
+                    .FirstOrDefault()?.Map;
+
+            if (map == null)
+            {
+                return;
+            }
+
+            OrderFactionWithdrawal(
+                state.primaryDomain,
+                state.primaryPawns,
+                map);
+            OrderFactionWithdrawal(
+                state.alliedDomain,
+                state.alliedPawns,
+                map);
+            state.withdrawalOrdered = true;
+            GR_Log.Message(
+                "Ordered both domains of a joint Goa'uld raid to "
+                + $"withdraw from map {map.uniqueID}.");
         }
 
         private static void OrderAlliedWithdrawal(
@@ -431,6 +654,28 @@ namespace GateRimSG1.Goauld
                 return;
             }
 
+            OrderFactionWithdrawal(
+                state.alliedDomain,
+                state.alliedPawns,
+                map);
+            state.withdrawalOrdered = true;
+            GR_Log.Message(
+                "Ordered allied Goa'uld reinforcements to withdraw with "
+                + $"the primary raid on map {map.uniqueID}.");
+        }
+
+        private static void OrderFactionWithdrawal(
+            Faction faction,
+            List<Pawn> pawns,
+            Map map)
+        {
+            List<Pawn> mobile = ActivePawns(pawns);
+
+            if (faction == null || map == null || mobile.Count == 0)
+            {
+                return;
+            }
+
             foreach (Pawn pawn in mobile)
             {
                 pawn.GetLord()?.RemovePawn(pawn);
@@ -438,17 +683,13 @@ namespace GateRimSG1.Goauld
             }
 
             LordMaker.MakeNewLord(
-                state.alliedDomain,
+                faction,
                 new LordJob_ExitMapBest(
                     LocomotionUrgency.Jog,
                     canDig: false,
                     canDefendSelf: true),
                 map,
                 mobile);
-            state.withdrawalOrdered = true;
-            GR_Log.Message(
-                "Ordered allied Goa'uld reinforcements to withdraw with "
-                + $"the primary raid on map {map.uniqueID}.");
         }
 
         private void RemoveStateAt(

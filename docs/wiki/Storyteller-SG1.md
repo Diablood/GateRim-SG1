@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.78-dev`
-> Statut : renforts alliés différés validés et publiés
+> Dernière évolution : `0.3.79-dev`
+> Statut : raids conjoints coordonnés validés
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -30,6 +30,10 @@ produisent des rapports RP nommant les deux domaines.
 
 Une partie contenant un seul domaine Goa'uld ne possède aucune paire à faire
 évoluer. Plusieurs instances peuvent être ajoutées lors de la création du monde.
+
+La lettre produite par un changement de relation rend la situation lisible mais
+ne déclenche aucun raid ni champ de bataille. Elle indique seulement que certains
+événements deviennent possibles ; un raid standard peut toujours survenir.
 
 ## Pression des raids selon les relations
 
@@ -61,6 +65,18 @@ La seconde force arrive plus tard depuis le bord de carte. Le délai reste cach�
 et aucune alerte ne révèle les renforts à l'avance. Une courte lettre RP apparaît
 seulement à leur arrivée, avec le nom du domaine allié. Les deux factions gardent
 leurs couleurs et coopèrent uniquement pendant cette attaque.
+
+## Raids conjoints coordonnés
+
+À partir de `0.3.79-dev`, la moitié des raids d'alliance admissibles reste
+standard. Pour un assaut direct coopératif, le jeu choisit ensuite entre le
+renfort différé et un assaut conjoint simultané.
+
+Le raid conjoint partage le budget `110 %` existant en `60/40`. Les forces de
+deux domaines exacts arrivent depuis des bords opposés, conservent leurs couleurs
+et partagent une seule lettre RP. Elles se retirent ensemble si un détachement
+rompt le combat. Aucun tirage storyteller, point gratuit, pod, rupture
+d'alliance ou effet territorial n'est ajouté.
 
 ## Batailles en conflit ouvert
 
@@ -99,7 +115,6 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 Les relations ne provoquent pas encore :
 
-- de raids conjoints simultanés en alliance ;
 - de modification territoriale ;
 - de destruction de colonies mondiales ;
 - de changement diplomatique avec le joueur.

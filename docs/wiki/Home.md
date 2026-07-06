@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.78-dev`
+> Version du mod documentée : `0.3.79-dev`
+
+## Raids Goa'uld conjoints
+
+`0.3.79-dev` ajoute un assaut simultané de deux domaines alliés parmi les formes
+possibles du raid naturel. Une lettre politique d'alliance ne lance aucune
+attaque et la moitié des raids admissibles reste standard. Lorsqu'un assaut
+direct devient conjoint, les deux couleurs arrivent depuis des bords opposés en
+partageant le budget existant et se retirent ensemble.
 
 ## Renforts Goa'uld alliés
 
@@ -69,7 +77,9 @@ des symbiotes, l'équipement, les événements et les opérations de terrain.
   évoluer les relations persistantes entre paires de domaines Goa'uld. Un
   domaine en conflit ouvert consacre `75 %` de ses points habituels à ses raids
   naturels ; sinon, une alliance peut porter ce budget à `110 %`, sans cumul,
-  puis le partager avec une vague alliée différée sur les raids admissibles.
+  puis produire un raid standard, une vague alliée différée ou un assaut
+  conjoint sur les raids admissibles. La lettre de relation n'impose aucun de
+  ces résultats.
   Ces conflits peuvent aussi produire une
   [bataille entre domaines](Goauld-Open-Conflict-Battlefields), soit près d'une
   colonie, soit sous la forme d'un site mondial facultatif accessible par

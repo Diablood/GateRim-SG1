@@ -4175,6 +4175,35 @@ Validate the bounded second wave produced by an eligible alliance raid.
 - Inspect `Player.log` for new Harmony, C#, Scribe, raid-generation, Lord,
   translation or pawn-generation errors.
 
+## Coordinated allied Goa'uld joint raids (`0.3.79-dev`)
+
+Validate that relation reports authorize possibilities without predicting the
+next natural raid form.
+
+- Under `Commandement SG-1`, change one exact pair to alliance and confirm the
+  neutral RP report names both domains without starting an incident.
+- Force the standard alliance-context path and confirm one domain consumes the
+  full final `1.10` budget without an allied wave or joint letter.
+- Force the joint direct path at `1200` original points and confirm the `1320`
+  final points split `792/528` (`60/40`).
+- Confirm the two exact factions enter in the same execution from reachable
+  opposite edges with distinct colors and one shared RP letter.
+- Confirm the pair attacks the colony rather than one another.
+- Confirm the cooperation report identifies `JointRaid` and both pawn counts.
+- Start primary withdrawal through the dedicated action and confirm both
+  detachments receive exit behavior.
+- Confirm the natural selection keeps `50%` standard outcomes; within the
+  cooperative half, direct doctrine divides equally between delayed and joint
+  forms.
+- Confirm abduction and destruction never select the joint outcome.
+- Confirm relation transitions, standard raids and all allied forms preserve
+  the single natural incident chance and refire delay.
+- Save and reload active standard, delayed and joint paths as applicable.
+- Confirm no alliance rupture, territorial effect, special reward, transport
+  pod or extra threat budget.
+- Inspect `Player.log` for new Harmony, C#, Scribe, raid, arrival, Lord,
+  translation or pawn-generation errors.
+
 ## Open-conflict Goa'uld local battlefield (`0.3.69-dev`)
 
 Validate the local battlefield generated from persistent open-conflict

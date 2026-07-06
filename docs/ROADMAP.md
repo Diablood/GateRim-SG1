@@ -12,7 +12,27 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
-## Dernier jalon gameplay clôturé
+## Dernier jalon gameplay validé
+
+`0.3.79-dev - Add coordinated allied Goa'uld joint raids`
+
+La révision finale `r1` est validée et prête pour publication. Les lettres RP de
+relation déjà publiées rendent alliance, rivalité, guerre, trêve et neutralité
+lisibles sans déclencher d'incident. Lors d'un raid allié admissible, `50 %` des
+résultats restent standards ; les résultats coopératifs directs se répartissent
+entre renfort différé et assaut conjoint simultané.
+
+Décisions validées : aucun tirage storyteller supplémentaire, budget conjoint
+`110 %` partagé `60/40`, deux bords opposés, doctrine directe uniquement, une
+lettre commune, retraite bilatérale et aucune conséquence diplomatique ou
+territoriale après la défaite.
+
+Le test forcé conjoint à `1200` points ne garantit pas d'officier : son budget
+principal après partage est `792` et le garde à remplacer n'est normalement pas
+admissible. Cette absence observée est attendue ; le mécanisme naturel publié en
+`0.3.75-dev` reste inchangé.
+
+## Jalon gameplay précédent
 
 `0.3.78-dev - Add delayed allied Goa'uld raid reinforcements`
 
@@ -49,11 +69,10 @@ que les questions encore ouvertes soient reposées au lancement du jalon concern
 avant toute implémentation. Aucun gameplay, Def, traduction, texture, sauvegarde
 ou équilibrage n'est modifié.
 
-## Prochain jalon à sélectionner
+## Prochain jalon après publication
 
-Aucun jalon ni nom de branche n'est réservé après `0.3.78-dev`. Le prochain
-travail doit être choisi dans la phase de clôture du socle définie ci-dessous,
-puis partir de `develop` aligné avec `v0.3.78-dev`.
+Aucun jalon ni nom de branche n'est réservé après `0.3.79-dev`. Le prochain
+travail devra rester dans la phase de clôture du socle définie ci-dessous.
 
 ## Jalon gameplay précédent
 
@@ -79,7 +98,8 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 - bonus borné des raids en alliance : `0.3.73-dev` ;
 - apparence distinctive de l'officier capturable : `0.3.74-dev` ;
 - officiers dans les forces Goa'uld éligibles : `0.3.75-dev` ;
-- renforts différés d'un domaine Goa'uld allié : `0.3.78-dev`.
+- renforts différés d'un domaine Goa'uld allié : `0.3.78-dev` ;
+- raids conjoints coordonnés entre domaines alliés : `0.3.79-dev`.
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -171,6 +191,16 @@ des fonctionnalités à reprogrammer.
 - réserver les diagnostics complets au mode développeur ;
 - ne rendre aucune action de debug visible hors mode développeur ;
 - conserver une organisation par sous-système et par phase pratique de test.
+
+## Relations stratégiques Goa'uld
+
+- conserver les transitions automatiques uniquement sous `Commandement SG-1` ;
+- annoncer chaque changement réel par une lettre RP nommant les domaines ;
+- traiter cette annonce comme une ouverture de possibilités, jamais comme le
+  déclenchement immédiat d'un raid ou d'un champ de bataille ;
+- conserver des raids standards possibles sous alliance ou conflit afin que le
+  joueur ne puisse pas déduire la prochaine forme d'attaque ;
+- ne modifier ni fréquence storyteller ni délai de raid sans jalon explicite.
 
 ## Culture, identité et équipement
 
@@ -280,14 +310,6 @@ méthode de sélection et textures temporaires ou définitives.
 
 Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
 non maîtrisé des conséquences d'alliance.
-
-### Ajouter des raids conjoints entre domaines alliés
-
-Générer une opération militaire réellement partagée par deux factions exactes,
-avec forces, couleurs et responsabilités distinctes.
-
-Décisions reportées au lancement : partage du budget, doctrines compatibles,
-lettres, retraite et conséquences de la défaite.
 
 ### Faire interagir relations et doctrines de raid
 
