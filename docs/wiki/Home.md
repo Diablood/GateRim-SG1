@@ -4,7 +4,21 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.82-dev`
+> Version du mod documentée : `0.3.83-dev`
+
+## Garde-fous territoriaux et diplomatie cohérente
+
+`0.3.83-dev` propose trois domaines Goa'uld par défaut dans la liste vanilla,
+tout en permettant au joueur d'en conserver moins. Deux domaines actifs
+suffisent au cadre territorial. Avant toute future conquête, le mod protège la
+dernière colonie de chaque domaine, bloque les mondes trop pauvres, ralentit
+fortement les grands domaines et interdit de dépasser automatiquement `50 %` des
+colonies Goa'uld permanentes.
+
+Les états GateRim sont aussi réconciliés avec les relations vanilla entre les
+deux mêmes domaines : conflit ouvert devient hostile, alliance devient alliée,
+et neutralité, rivalité ou trêve restent neutres. La révision actuelle est une
+simulation sèche : aucune colonie n'est créée, transférée ou détruite.
 
 ## Rupture d'alliance après un échec majeur
 

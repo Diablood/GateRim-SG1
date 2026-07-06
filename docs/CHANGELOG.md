@@ -1,5 +1,66 @@
 # Changelog
 
+## 0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence
+
+- Start from published `develop` and annotated tag `v0.3.82-dev` at commit
+  `bb1fc23ef843513b626ec05f4da73839fe5863ff` on
+  `feature/goauld-territorial-strategic-safeguards`.
+- Propose three Goa'uld System Lord faction instances by default in the vanilla
+  world-faction list while retaining one required baseline so players may reduce
+  the count when the vanilla faction limit matters.
+- Define an active territorial domain as a non-defeated Goa'uld faction owning
+  at least one permanent vanilla settlement and require at least two such
+  domains for territorial strategy.
+- Count only permanent Goa'uld settlements and exclude player, non-Goa'uld,
+  mission, temporary and travelling world objects by construction.
+- Protect every domain's final settlement and require at least
+  `active domains + 2` permanent Goa'uld settlements before a hostile transfer
+  can pass the evaluator.
+- Centralize decreasing expansion weights `1.00 / 0.50 / 0.25 / 0.10`, size
+  delay multipliers `1 / 2 / 4 / 8` and a projected automatic territorial-share
+  ceiling of `50%`.
+- Persist one global dry-run reservation with exact factions, settlement ID,
+  required relation, creation snapshot, deadline, completion or cancellation
+  outcome and global/domain/pair cooldowns.
+- Suspend pending and cooldown clocks outside `Commandement SG-1`, reconcile old
+  saves and cancel candidates whose domains, ownership, relation, density or
+  compatibility conditions no longer hold.
+- Make the GateRim relation tracker authoritative between two Goa'uld domains and
+  synchronize vanilla relation kinds as
+  `Neutral/Rivalry/Truce -> Neutral`, `OpenConflict -> Hostile` and
+  `Alliance -> Ally` without touching the player or outside factions.
+- Add focused developer tools under
+  `Goa'uld... > Domain reactions... > Territorial strategy...` plus
+  `Set all pairs: Open conflict` in the relation menu.
+- Keep the complete milestone dry-run only: no settlement ownership change,
+  settlement creation or destruction, faction elimination, tile change, raid,
+  reward, player-facing letter, player/outside goodwill change, doctrine
+  mutation or storyteller-frequency change.
+- Record that local revision `r1` failed its first build with `CS0165` because
+  the territorial relation lookup used a null-conditional `out` call whose local
+  result was not definitely assigned when the tracker was absent.
+- Prepare corrective revision `r2` by initializing the relation to `Neutral`
+  and invoking `TryGetRelation` only after an explicit tracker-null check; no
+  gameplay rule, persistence field or test expectation changes.
+- Record that `r2` built and reached the first player map, where RimWorld
+  repeatedly rejected `Faction.SetRelationDirect` because the Goa'uld factions
+  use goodwill-controlled relation kinds.
+- Prepare corrective revision `r3`: replace the global `permanentEnemy` flag
+  with a selective permanent-enemy exception that allows diplomacy only between
+  instances of `SG1_GoauldSystemLordPrototype`, preserving permanent hostility
+  toward the player and every outside faction.
+- Reconcile inter-domain vanilla relations through `TryAffectGoodwillWith` at
+  goodwill targets `-100 / 0 / 100`, with messages and hostility letters
+  disabled, and verify the resulting relation kind before reporting success.
+- Validate final local revision `r3`: build `0.3.83.0`, three editable
+  default Goa'uld domains, all five GateRim-to-vanilla diplomatic mappings,
+  persistent `Alliance -> Ally`, unchanged player and outside-faction
+  relations, persistent dry-run reservation, `CompletedDryRun` cooldowns,
+  unchanged world ownership and a clean accepted `Player.log`.
+- Publish final revision `r3` through one feature-branch commit, fast-forward
+  integration into `develop`, annotated tag `v0.3.83-dev` and synchronized
+  separate wiki.
+
 ## 0.3.82-dev - Add Goa'uld alliance rupture after major failure
 
 - Start from published `develop` and annotated tag `v0.3.81-dev` at commit

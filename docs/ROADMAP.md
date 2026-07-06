@@ -17,9 +17,23 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 Aucun jalon gameplay n'est actif et aucun numéro de version ni nom de branche
 suivant n'est réservé. Le prochain travail doit être sélectionné comme une unité
 distincte dans la section `Futurs jalons décidés`, puis démarré depuis
-`develop` aligné avec le tag publié `v0.3.82-dev`.
+`develop` aligné avec le tag publié `v0.3.83-dev`.
 
 ## Dernier jalon gameplay validé et publié
+
+`0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence`
+
+La révision finale `r3` est validée et publiée. Trois domaines Goa'uld sont
+proposés par défaut tout en laissant la liste vanilla réductible. Les cinq états
+GateRim sont synchronisés vers les relations vanilla `Neutral`, `Hostile` ou
+`Ally` uniquement entre domaines, sans toucher au joueur ni aux factions
+extérieures. Deux domaines territoriaux actifs suffisent au cadre stratégique ;
+le dernier territoire est protégé, les mondes trop pauvres et l'hégémonie
+automatique sont bloqués, l'expansion ralentit avec la taille et une seule
+réservation sèche persistante peut exister. Aucun territoire n'est créé,
+transféré ou détruit.
+
+## Jalon gameplay précédent
 
 `0.3.82-dev - Add Goa'uld alliance rupture after major failure`
 
@@ -32,7 +46,7 @@ suspendu hors `Commandement SG-1` et elle est annulée si la paire n'est plus
 alliée ou si un domaine devient inactif. Aucun goodwill, raid, territoire,
 colonie, budget ou profil doctrinal n'est modifié.
 
-## Jalon gameplay précédent
+## Jalon gameplay antérieur
 
 `0.3.81-dev - Add shared Goa'uld alliance reprisals`
 
@@ -41,14 +55,6 @@ moins cinq Jaffa peut, après défaite à `25%` ou moins, déclencher avec `25%`
 chance une représaille commune de la paire alliée exacte. Une seule réaction
 peut être en attente ; le délai est de `2–4` jours, le cooldown de paire de
 `30` jours et le budget de `80%` des points vanilla est partagé `60/40`.
-
-## Jalon gameplay antérieur
-
-`0.3.80-dev - Make Goa'uld relations influence raid doctrines`
-
-La révision finale `r1` est validée et publiée. Elle applique une influence
-relationnelle légère, non cumulative et pilotée par XML aux doctrines déjà
-admissibles des raids naturels sous `Commandement SG-1`.
 
 ## Dernier jalon documentaire clôturé
 
@@ -100,9 +106,11 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
 - renforts différés d'un domaine Goa'uld allié : `0.3.78-dev` ;
 - raids conjoints coordonnés entre domaines alliés : `0.3.79-dev`;
 - influence des relations sur les doctrines de raid : `0.3.80-dev`;
-- représailles communes entre domaines alliés : `0.3.81-dev`.
+- représailles communes entre domaines alliés : `0.3.81-dev` ;
 - rupture d'alliance après l'échec majeur d'une représaille commune :
-  `0.3.82-dev`.
+  `0.3.82-dev` ;
+- garde-fous territoriaux et cohérence diplomatique inter-domaines :
+  `0.3.83-dev`.
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -313,14 +321,6 @@ méthode de sélection et textures temporaires ou définitives.
 
 Chaque effet ci-dessous doit rester un jalon indépendant afin d'éviter un cumul
 non maîtrisé des conséquences d'alliance.
-
-### Concevoir les garde-fous stratégiques territoriaux
-
-Établir les limites contre auto-élimination, expansion incontrôlée, destruction
-excessive de colonies, mondes pauvres en domaines et empilement d'effets.
-
-Décisions reportées au lancement : minimum de domaines préservés, cadence,
-conditions d'arrêt et réconciliation des anciennes sauvegardes.
 
 ### Ajouter une première conséquence territoriale bornée
 

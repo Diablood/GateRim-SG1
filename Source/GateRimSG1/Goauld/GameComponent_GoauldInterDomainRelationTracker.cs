@@ -20,7 +20,7 @@ namespace GateRimSG1.Goauld
     public sealed class GameComponent_GoauldInterDomainRelationTracker
         : GameComponent
     {
-        private const int CurrentSchemaVersion = 1;
+        private const int CurrentSchemaVersion = 2;
         private const int CheckIntervalTicks = 250;
         private const int MinimumInitialDelayTicks = 480000;
         private const int MaximumInitialDelayTicks = 960000;
@@ -39,6 +39,8 @@ namespace GateRimSG1.Goauld
         private int lastTransitionFirstLoadId = -1;
         private int lastTransitionSecondLoadId = -1;
         private string lastReportKey;
+        private int lastVanillaReconciliationTick = -1;
+        private int lastVanillaCorrectionCount;
 
         public GameComponent_GoauldInterDomainRelationTracker(Game game)
         {
@@ -101,6 +103,14 @@ namespace GateRimSG1.Goauld
             Scribe_Values.Look(
                 ref lastReportKey,
                 "goauldInterDomainRelationLastReportKey");
+            Scribe_Values.Look(
+                ref lastVanillaReconciliationTick,
+                "goauldInterDomainRelationLastVanillaReconciliationTick",
+                -1);
+            Scribe_Values.Look(
+                ref lastVanillaCorrectionCount,
+                "goauldInterDomainRelationLastVanillaCorrectionCount",
+                0);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
@@ -173,6 +183,11 @@ namespace GateRimSG1.Goauld
                 }
             }
 
+            lastVanillaCorrectionCount = states
+                .Where(IsPairActive)
+                .Count(SynchronizeVanillaRelation);
+            lastVanillaReconciliationTick = currentTick;
+
             if (nextGlobalTransitionTick <= 0)
             {
                 nextGlobalTransitionTick = currentTick
@@ -180,6 +195,57 @@ namespace GateRimSG1.Goauld
                         activeDomains.Count,
                         MinimumGlobalDelayTicks,
                         MaximumGlobalDelayTicks);
+            }
+        }
+
+        public bool TryGetRelation(
+            Faction firstDomain,
+            Faction secondDomain,
+            out GoauldInterDomainRelation relation)
+        {
+            relation = GoauldInterDomainRelation.Neutral;
+            ReconcileAllPairs();
+            Canonicalize(ref firstDomain, ref secondDomain);
+
+            GoauldInterDomainRelationState state = states.FirstOrDefault(
+                candidate =>
+                    candidate?.firstDomain == firstDomain
+                    && candidate.secondDomain == secondDomain);
+
+            if (state == null)
+            {
+                return false;
+            }
+
+            relation = state.relation;
+            return true;
+        }
+
+        public static FactionRelationKind VanillaRelationFor(
+            GoauldInterDomainRelation relation)
+        {
+            switch (relation)
+            {
+                case GoauldInterDomainRelation.OpenConflict:
+                    return FactionRelationKind.Hostile;
+                case GoauldInterDomainRelation.Alliance:
+                    return FactionRelationKind.Ally;
+                default:
+                    return FactionRelationKind.Neutral;
+            }
+        }
+
+        private static int VanillaGoodwillFor(
+            GoauldInterDomainRelation relation)
+        {
+            switch (relation)
+            {
+                case GoauldInterDomainRelation.OpenConflict:
+                    return -100;
+                case GoauldInterDomainRelation.Alliance:
+                    return 100;
+                default:
+                    return 0;
             }
         }
 
@@ -304,6 +370,8 @@ namespace GateRimSG1.Goauld
             lastTransitionFirstLoadId = -1;
             lastTransitionSecondLoadId = -1;
             lastReportKey = null;
+            lastVanillaReconciliationTick = -1;
+            lastVanillaCorrectionCount = 0;
             suspensionStartTick = -1;
             wasGateRimStorytellerActive =
                 GateRimStorytellerUtility.IsGateRimStorytellerActive;
@@ -355,6 +423,12 @@ namespace GateRimSG1.Goauld
             builder.AppendLine(
                 "last RP report key: "
                 + (lastReportKey ?? "<none>"));
+            builder.AppendLine(
+                "last vanilla-relation reconciliation: "
+                + FormatTick(lastVanillaReconciliationTick));
+            builder.AppendLine(
+                "vanilla relation corrections in last pass: "
+                + lastVanillaCorrectionCount);
             builder.AppendLine();
 
             if (states.Count == 0)
@@ -380,6 +454,20 @@ namespace GateRimSG1.Goauld
                 builder.AppendLine(
                     "  previous: "
                     + RelationLabel(state.previousRelation));
+                FactionRelationKind expectedVanilla =
+                    VanillaRelationFor(state.relation);
+                FactionRelationKind actualVanilla =
+                    state.firstDomain.RelationKindWith(
+                        state.secondDomain);
+                builder.AppendLine(
+                    "  vanilla relation: " + actualVanilla);
+                builder.AppendLine(
+                    "  expected vanilla relation: "
+                    + expectedVanilla);
+                builder.AppendLine(
+                    "  diplomatic coherence: "
+                    + FormatBoolean(
+                        actualVanilla == expectedVanilla));
                 builder.AppendLine(
                     "  transitions: " + state.transitionCount);
                 builder.AppendLine(
@@ -485,6 +573,8 @@ namespace GateRimSG1.Goauld
                     + $"({state.secondDomain?.loadID}) from {previous} to "
                     + $"{relation}{(debugForced ? " [debug]" : string.Empty)}.");
             }
+
+            SynchronizeVanillaRelation(state);
 
             state.nextTransitionTick = currentTick
                 + Rand.RangeInclusive(
@@ -711,8 +801,85 @@ namespace GateRimSG1.Goauld
                 0,
                 nextGlobalTransitionTick);
             suspensionStartTick = Math.Max(-1, suspensionStartTick);
+            lastVanillaReconciliationTick = Math.Max(
+                -1,
+                lastVanillaReconciliationTick);
+            lastVanillaCorrectionCount = Math.Max(
+                0,
+                lastVanillaCorrectionCount);
         }
 
+        private static bool SynchronizeVanillaRelation(
+            GoauldInterDomainRelationState state)
+        {
+            if (!IsPairActive(state))
+            {
+                return false;
+            }
+
+            FactionRelationKind expected =
+                VanillaRelationFor(state.relation);
+            FactionRelationKind actual =
+                state.firstDomain.RelationKindWith(state.secondDomain);
+
+            if (actual == expected)
+            {
+                return false;
+            }
+
+            int previousGoodwill =
+                state.firstDomain.GoodwillWith(state.secondDomain);
+            int expectedGoodwill = VanillaGoodwillFor(state.relation);
+            int goodwillChange = expectedGoodwill - previousGoodwill;
+
+            if (goodwillChange != 0)
+            {
+                state.firstDomain.TryAffectGoodwillWith(
+                    state.secondDomain,
+                    goodwillChange,
+                    false,
+                    false);
+            }
+
+            FactionRelationKind reconciled =
+                state.firstDomain.RelationKindWith(state.secondDomain);
+
+            if (reconciled != expected)
+            {
+                int warningKey = unchecked(
+                    1387300000
+                    + (state.firstDomain.loadID * 397)
+                    + state.secondDomain.loadID
+                    + ((int)state.relation * 31));
+                GR_Log.WarningOnce(
+                    "Could not reconcile vanilla Goa'uld relation between "
+                    + $"{DomainName(state.firstDomain)} "
+                    + $"({state.firstDomain.loadID}) and "
+                    + $"{DomainName(state.secondDomain)} "
+                    + $"({state.secondDomain.loadID}) to {expected} for "
+                    + $"GateRim state {state.relation}; actual relation is "
+                    + $"{reconciled} and goodwill is "
+                    + $"{state.firstDomain.GoodwillWith(state.secondDomain)}.",
+                    warningKey);
+                return false;
+            }
+
+            GoauldSystemLordFactionUtility
+                .NotifyTemporaryCooperationChanged(
+                    state.firstDomain,
+                    state.secondDomain);
+
+            GR_Log.Message(
+                "Reconciled vanilla Goa'uld relation between "
+                + $"{DomainName(state.firstDomain)} "
+                + $"({state.firstDomain.loadID}) and "
+                + $"{DomainName(state.secondDomain)} "
+                + $"({state.secondDomain.loadID}) from {actual} to "
+                + $"{reconciled} for GateRim state {state.relation}; "
+                + $"goodwill {previousGoodwill} -> "
+                + $"{state.firstDomain.GoodwillWith(state.secondDomain)}.");
+            return true;
+        }
 
         private static GoauldInterDomainRelation NormalizeRelation(
             GoauldInterDomainRelation relation)

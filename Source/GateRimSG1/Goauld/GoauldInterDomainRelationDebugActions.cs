@@ -98,6 +98,27 @@ namespace GateRimSG1.Goauld
             SetRelation(GoauldInterDomainRelation.Alliance);
         }
 
+        public static void SetAllOpenConflicts()
+        {
+            int changed = GameComponent_GoauldInterDomainRelationTracker
+                .Current
+                ?.SetAllActivePairsRelationDebug(
+                    GoauldInterDomainRelation.OpenConflict)
+                ?? 0;
+
+            if (changed == 0)
+            {
+                Reject(
+                    "At least two active Goa'uld domains are required.");
+                return;
+            }
+
+            Messages.Message(
+                $"Set {changed} active Goa'uld relation pair(s) to open conflict.",
+                MessageTypeDefOf.NeutralEvent,
+                historical: false);
+        }
+
         public static void SetAllAlliances()
         {
             int changed = GameComponent_GoauldInterDomainRelationTracker

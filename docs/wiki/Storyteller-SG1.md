@@ -1,8 +1,8 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution : `0.3.82-dev`
-> Statut : rupture d’alliance après échec majeur prête à tester en `r1`
+> Dernière évolution : `0.3.83-dev`
+> Statut : garde-fous territoriaux et cohérence diplomatique publiés après validation `r3`
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -128,6 +128,53 @@ Cette conséquence ne modifie ni la bonne volonté envers le joueur, ni les
 colonies, ni les territoires, ni les budgets de menace ou les doctrines
 permanentes.
 
+## Cohérence avec les relations vanilla
+
+À partir de `0.3.83-dev`, l'état diplomatique GateRim de chaque paire Goa'uld
+devient autoritaire pour le type de relation vanilla entre ces deux factions :
+
+| État GateRim | Relation vanilla |
+|---|---|
+| Neutralité | Neutre |
+| Rivalité | Neutre |
+| Conflit ouvert | Hostile |
+| Trêve | Neutre |
+| Alliance | Alliée |
+
+La synchronisation intervient à la création de la paire, lors d'une transition,
+au chargement et pendant la réconciliation périodique. Elle ne concerne jamais
+la relation avec le joueur, les Tok'ra, les Jaffa libres ou une faction vanilla,
+et ne produit aucune lettre de changement de bonne volonté.
+
+La définition Goa'uld conserve une hostilité permanente envers l'expédition du
+joueur et toutes les factions extérieures, mais exempte les autres instances du
+même domaine technique. La version publiée après validation `r3` confirme que deux domaines peuvent
+atteindre les relations vanilla neutre, hostile et alliée via la bonne volonté,
+sans message ni lettre et sans modifier leurs relations extérieures.
+
+## Garde-fous territoriaux
+
+Le même jalon prépare les futures conséquences territoriales sans encore en
+appliquer. La liste vanilla propose trois domaines Goa'uld par défaut, mais le
+joueur peut réduire ce nombre. La simulation territoriale nécessite seulement
+deux domaines actifs, chacun non vaincu et propriétaire d'au moins une colonie
+permanente.
+
+Le cadre protège systématiquement la dernière colonie d'un domaine, exige au
+moins `nombre de domaines actifs + 2` colonies Goa'uld permanentes pour un
+transfert hostile, ralentit fortement l'expansion des grands domaines et refuse
+une acquisition qui dépasserait `50 %` des colonies Goa'uld permanentes.
+
+Une seule réservation territoriale sèche peut être en attente dans le monde.
+Elle mémorise la paire exacte, la colonie, la relation exigée, l'échéance et les
+comptages initiaux. Les délais globaux, par domaine et par paire sont suspendus
+hors **Commandement SG-1**. Une relation, une propriété, un domaine ou un seuil
+de sécurité devenu invalide annule la réservation.
+
+`0.3.83-dev` ne programme aucune occurrence naturelle et ne change aucun
+propriétaire. L'outil développeur se termine par `CompletedDryRun` : aucune
+colonie n'est créée, transférée ou détruite.
+
 ## Batailles en conflit ouvert
 
 Depuis `0.3.69-dev`, une paire en conflit ouvert peut produire une
@@ -155,8 +202,8 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 - les relations et occurrences déjà enregistrées sont conservées ;
 - aucun nouvel état ou champ de bataille n'est tiré ;
-- les échéances futures, y compris une rupture d'alliance en attente, sont
-  repoussées pendant la suspension ;
+- les échéances futures, y compris une rupture d'alliance ou une réservation
+  territoriale sèche en attente, sont repoussées pendant la suspension ;
 - revenir à Commandement SG-1 ne déclenche pas de retard accumulé ;
 - les raids naturels utilisent de nouveau `100 %` des points ;
 - aucune vague alliée différée n'est planifiée ;
@@ -166,8 +213,10 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 Les relations ne provoquent pas encore :
 
-- de modification territoriale ;
-- de destruction de colonies mondiales ;
+- de transfert territorial réel ;
+- de création ou destruction de colonies mondiales ;
+- d'élimination de faction ;
 - de changement diplomatique avec le joueur.
 
-Ces conséquences restent réservées à des jalons séparés.
+Le cadre de sécurité et sa simulation sèche existent depuis `0.3.83-dev`, mais
+la première conséquence territoriale réelle reste réservée à un jalon séparé.

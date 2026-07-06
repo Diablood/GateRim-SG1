@@ -8,7 +8,9 @@ namespace GateRimSG1.Goauld
     /// <summary>
     /// Shared helper for Goa'uld System Lord world-faction instances.
     ///
-    /// New worlds normally generate one visible domain. The utility also
+    /// New worlds propose three visible domains by default while retaining one
+    /// required baseline that players may select in the vanilla faction list.
+    /// The utility also
     /// supports worlds configured with several instances and keeps the lazy
     /// runtime fallback used by older saves and isolated developer tests.
     /// </summary>

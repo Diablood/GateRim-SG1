@@ -4204,6 +4204,35 @@ next natural raid form.
 - Inspect `Player.log` for new Harmony, C#, Scribe, raid, arrival, Lord,
   translation or pawn-generation errors.
 
+## Goa'uld territorial safeguards and diplomatic coherence (`0.3.83-dev`)
+
+Validation locale terminée sur la révision finale `r3`, puis jalon publié sous
+`v0.3.83-dev`.
+
+- Confirm three Goa'uld System Lord factions are proposed by default while the
+  vanilla faction list remains reducible and no hidden replacement is created.
+- Confirm territorial strategy requires at least two non-defeated Goa'uld
+  domains owning permanent settlements and counts no player, outside-faction,
+  mission or temporary world object.
+- Confirm `Neutral`, `Rivalry` and `Truce` map to vanilla `Neutral`,
+  `OpenConflict` maps to `Hostile`, and `Alliance` maps to `Ally`.
+- Confirm Goa'uld domains remain permanently hostile to the player and outside
+  factions, with no technical goodwill message or hostility letter.
+- Confirm final-settlement protection, the `active domains + 2` sparse-world
+  threshold, decreasing expansion weights, increasing cooldown multipliers and
+  the projected `50%` hegemony ceiling.
+- Create exactly one dry-run reservation, reject a second global reservation,
+  save and reload, and confirm the same pair, settlement ID, creation snapshot
+  and shifted deadline persist.
+- Complete the reservation as `CompletedDryRun` and confirm global, involved
+  domain and exact-pair cooldowns.
+- Confirm storyteller suspension shifts pending and cooldown clocks instead of
+  consuming backlog.
+- Confirm no settlement owner, settlement count, tile, faction, raid, reward,
+  doctrine, player goodwill or storyteller frequency changes.
+- Inspect `Player.log` for new C#, Scribe, relation or world-object errors,
+  especially `SetRelationDirect` rejection or repeated goodwill reconciliation.
+
 ## Shared Goa'uld alliance reprisal failure and rupture (`0.3.81-dev`, `0.3.82-dev`)
 
 Validate the bounded cause-and-consequence chain without turning relation reports

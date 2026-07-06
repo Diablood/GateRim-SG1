@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.82-dev`
+- Development version: `0.3.83-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,14 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.82-dev` adds one bounded diplomatic consequence after a natural shared
-Goa'uld reprisal suffers a decisive major failure. When at least six combined
-Jaffa fall to `20%` or fewer active survivors, the exact allied pair schedules a
-deterministic rupture after `1–2` days. The relation changes from alliance to
-rivalry through one targetless RP letter; no extra raid, goodwill change or
-territorial effect is created.
+`0.3.83-dev` establishes the dry-run safety boundary required before any
+Goa'uld territorial consequence. New worlds propose three System Lord domains
+by default while remaining editable in the vanilla faction list. With at least
+two active territorial domains, the tracker reports sparse-world protection,
+final-settlement immunity, strongly diminishing expansion, a `50%` hegemony
+ceiling and one persistent reservation. GateRim pair states are also reconciled
+to vanilla faction relations. This milestone does not yet transfer, create or
+destroy any settlement.
 
 ## Playable content
 
@@ -51,8 +53,11 @@ territorial effect is created.
   alliance into rivalry after a suspended `1–2` day diplomatic delay. Selecting
   another storyteller freezes future strategic opportunities and disables both
   relation-derived raid modifiers.
-- Goa'uld System Lord domains, Goa'uld-aligned Jaffa, Free Jaffa and an
-  optional non-territorial Tok'ra faction. The Tok'ra are selected once by
+- Three Goa'uld System Lord domains are proposed by default, while the player
+  may reduce their count through the vanilla world-faction list. Territorial
+  strategy requires two active domains and remains a dry-run safeguard in this
+  revision. Goa'uld-aligned Jaffa, Free Jaffa and an optional non-territorial
+  Tok'ra faction are also included. The Tok'ra are selected once by
   default in the world-faction list with a dedicated icon, create no
   settlements and may be removed to disable their contacts, questline and
   recurrent operations for that game; the world-generation screen now shows a

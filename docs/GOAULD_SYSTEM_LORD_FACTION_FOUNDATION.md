@@ -1,6 +1,6 @@
 # Goa'uld System Lord world-faction baseline
 
-Version: `0.3.46-dev`
+Version: `0.3.83-dev`
 
 ## Scope
 
@@ -11,8 +11,9 @@ world presence:
 SG1_GoauldSystemLordPrototype
 ```
 
-The single RimWorld faction is a practical abstraction representing several
-Goa'uld System Lord domains.
+Each generated RimWorld faction instance represents one distinct Goa'uld System
+Lord domain. New worlds now propose three instances by default to support the
+strategic layer without consuming an unbounded share of vanilla's faction limit.
 
 ## World-generation behavior
 
@@ -20,15 +21,26 @@ Goa'uld System Lord domains.
 hidden: false
 requiredCountAtGameStart: 1
 maxConfigurableAtWorldCreation: 9999
-startingCountAtWorldCreation: 1
+startingCountAtWorldCreation: 3
 displayInFactionSelection: true
 settlementGenerationWeight: 0.35
-permanentEnemy: true
+permanentEnemyToEveryoneExcept: SG1_GoauldSystemLordPrototype
 ```
 
-New worlds therefore contain one visible hostile Goa'uld faction with a
-limited number of settlements. Players may add additional Goa'uld-domain
-factions manually from Create World.
+New worlds therefore propose three visible hostile Goa'uld faction instances,
+each with a limited number of settlements. The ordinary vanilla faction list
+remains authoritative: players may reduce the count to the required single
+baseline when total faction limits matter, or add more instances manually.
+
+The territorial safeguard layer requires at least two non-defeated Goa'uld
+factions that each own a permanent settlement. Reducing the world to one domain
+does not create a replacement faction; it only suspends territorial strategy.
+
+The selective permanent-enemy rule keeps each domain permanently hostile to the
+player and every outside faction, but makes another instance of
+`SG1_GoauldSystemLordPrototype` the sole exception. Inter-domain `Neutral`,
+`Hostile` and `Ally` relations can therefore be driven by vanilla goodwill
+without weakening the hostile player-facing contract.
 
 ## Provisional xenotype summary
 
@@ -134,22 +146,32 @@ Natural abduction and destruction raids remain deferred.
 
 ## Save compatibility
 
-New worlds receive the faction during normal generation.
+New worlds receive the editable three-instance default during normal generation.
+Existing saves are not given two extra factions or retroactive settlements. The
+shared utility may still create one visible runtime fallback when a controlled
+developer incident is used in an older save without any Goa'uld faction; that
+fallback has no retroactively generated settlement and therefore does not count
+as an active territorial domain.
 
-The shared utility still creates a visible runtime fallback when controlled
-developer incidents are used in an older save without the faction. That
-fallback has no retroactively generated settlements.
+`0.3.83-dev` dynamically reconciles active domains from actual permanent
+settlements. It never repairs a reduced configuration by creating a hidden
+replacement domain.
 
 ## Manual test checklist
 
-1. Open Create World and confirm that `Domaines des Grands Maîtres Goa'uld` appears exactly once by default.
-2. Confirm one visible hostile Goa'uld faction in the faction list.
-3. Confirm that the faction summary displays `Jaffa: 100%` provisionally.
-4. Add at least one extra Goa'uld-domain faction manually.
-5. Confirm multiple limited Goa'uld settlements on the world map.
-6. Inspect the gold-toned faction color and default settlement rendering.
-7. Confirm permanent hostility to the SGC expedition.
-8. Confirm that no `Faction leader for Domaines des Grands Maîtres Goa'uld is null` log appears.
-9. Validate the dedicated natural raid incident and its currently eligible
-   doctrine.
-10. Validate the three controlled developer incidents.
+1. Open Create World and confirm that three
+   `Domaines des Grands Maîtres Goa'uld` entries are proposed by default.
+2. Reduce the count with vanilla controls and confirm no hidden replacement is
+   added.
+3. For the full strategic test, restore three entries and generate the world.
+4. Confirm each generated instance receives a distinct domain name, leader,
+   color variation and limited permanent settlements.
+5. Confirm that the faction summary displays `Jaffa: 100%` provisionally.
+6. Confirm permanent hostility to the SGC expedition.
+7. Under `Commandement SG-1`, confirm that two or more domains with settlements
+   are reported as active territorial domains.
+8. Confirm that one active domain suspends only territorial strategy.
+9. Confirm that no `Faction leader for Domaines des Grands Maîtres Goa'uld is null`
+   log appears.
+10. Run the exact diplomatic and territorial procedure in
+    `docs/TESTING_CURRENT.md`.

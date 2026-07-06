@@ -189,6 +189,36 @@ namespace GateRimSG1.Debugging
                     GoauldDomainReprisalDebugActions
                         .ResetAllianceRuptureState,
                     370),
+                MenuNode(
+                    "Territorial strategy...",
+                    350,
+                    ActionNode(
+                        "Show territorial safeguard report",
+                        GoauldTerritorialStrategyDebugActions.ShowReport,
+                        600),
+                    ActionNode(
+                        "Reconcile territorial and diplomatic state",
+                        GoauldTerritorialStrategyDebugActions.Reconcile,
+                        500),
+                    ActionNode(
+                        "Create pending territorial reservation",
+                        GoauldTerritorialStrategyDebugActions
+                            .CreatePendingReservation,
+                        400),
+                    ActionNode(
+                        "Trigger pending territorial reservation now",
+                        GoauldTerritorialStrategyDebugActions
+                            .TriggerPendingReservation,
+                        300),
+                    ActionNode(
+                        "Cancel pending territorial reservation",
+                        GoauldTerritorialStrategyDebugActions
+                            .CancelPendingReservation,
+                        200),
+                    ActionNode(
+                        "Reset territorial safeguard state",
+                        GoauldTerritorialStrategyDebugActions.Reset,
+                        100)),
                 ActionNode(
                     "Create extraction ultimatum",
                     GoauldDomainReprisalDebugActions

@@ -124,6 +124,10 @@ namespace GateRimSG1.Goauld
                 GoauldInterDomainRelationDebugActions.SetAlliance,
                 150));
             root.AddChild(ActionNode(
+                "Set all pairs: Open conflict",
+                GoauldInterDomainRelationDebugActions.SetAllOpenConflicts,
+                145));
+            root.AddChild(ActionNode(
                 "Set all pairs: Alliance",
                 GoauldInterDomainRelationDebugActions.SetAllAlliances,
                 140));

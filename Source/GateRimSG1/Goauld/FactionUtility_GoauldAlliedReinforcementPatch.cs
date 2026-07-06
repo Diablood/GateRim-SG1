@@ -5,8 +5,10 @@ namespace GateRimSG1.Goauld
 {
     /// <summary>
     /// Prevents the two exact domain factions in one active reinforcement
-    /// attack from treating each other as targets. Their persistent vanilla
-    /// relation remains untouched and becomes authoritative again afterwards.
+    /// attack from treating each other as targets. Persistent GateRim
+    /// diplomacy is also synchronized to the matching vanilla relation; this
+    /// narrow fallback protects an already active cooperative force while its
+    /// exact runtime state is being reconciled.
     /// </summary>
     [HarmonyPatch(
         typeof(FactionUtility),

@@ -3,8 +3,10 @@
     <!--
     First playable Goa'uld world-faction baseline.
 
-    One hostile world faction is generated at game start as a practical
-    RimWorld abstraction for several Goa'uld System Lord domains. A reduced
+    Three hostile world-faction instances are proposed by default so the
+    SG-1 strategic layer begins with several distinct System Lord domains.
+    Players may reduce the count in the vanilla world-creation list when they
+    need fewer factions. A reduced
     settlement-generation weight keeps its world presence visible but limited.
 
     Generic vanilla faction selection remains blocked through raidsForbidden.
@@ -40,17 +42,21 @@
                 </categories>
             </li>
         </backstoryFilters>
-        <permanentEnemy>true</permanentEnemy>
+        <permanentEnemyToEveryoneExcept>
+            <li>SG1_GoauldSystemLordPrototype</li>
+        </permanentEnemyToEveryoneExcept>
         <naturalEnemy>true</naturalEnemy>
         <requiredCountAtGameStart>1</requiredCountAtGameStart>
 
         <!--
         RimWorld 1.6 world-creation UI fields.
-        The faction appears once by default. Players may add more instances
-        manually, like configurable vanilla factions.
+        Three instances are proposed by default. Players may reduce the count
+        to the required single baseline or add more instances through the
+        ordinary vanilla faction list. Territorial simulation requires at least
+        two active domains with permanent settlements.
         -->
         <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
-        <startingCountAtWorldCreation>1</startingCountAtWorldCreation>
+        <startingCountAtWorldCreation>3</startingCountAtWorldCreation>
         <configurationListOrderPriority>8</configurationListOrderPriority>
         <displayInFactionSelection>true</displayInFactionSelection>
 

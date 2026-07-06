@@ -442,6 +442,18 @@ namespace GateRimSG1.Goauld
                 debugShortDelay: true);
         }
 
+        public bool HasPendingAllianceRuptureForPair(
+            Faction firstDomain,
+            Faction secondDomain)
+        {
+            return allianceRuptureStates.Any(state =>
+                state?.pending == true
+                && ((state.primaryDomain == firstDomain
+                        && state.alliedDomain == secondDomain)
+                    || (state.primaryDomain == secondDomain
+                        && state.alliedDomain == firstDomain)));
+        }
+
         public bool TriggerFirstPendingAllianceRuptureNow()
         {
             GoauldAllianceRuptureState state = allianceRuptureStates

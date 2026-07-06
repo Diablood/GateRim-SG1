@@ -13,9 +13,10 @@
 - Relation-influenced doctrine weights: `0.3.80-dev`
 - Shared alliance reprisals: `0.3.81-dev`
 - Alliance rupture after major failure: `0.3.82-dev`
-- Target assembly: `0.3.82.0`
-- Final local revision: `r1`
-- Status: validated and published.
+- Territorial safeguards and diplomatic coherence: `0.3.83-dev`
+- Target assembly: `0.3.83.0`
+- Final local revision: `r3`
+- Status: final revision `r3` validated and published as `v0.3.83-dev`.
 
 ## Purpose
 
@@ -264,6 +265,57 @@ domains and explains the rupture without any map or pawn target.
 This consequence adds no raid, threat points, goodwill change, territorial
 transfer, settlement destruction or doctrine-profile mutation.
 
+## Vanilla diplomatic coherence
+
+`0.3.83-dev` makes the persistent GateRim pair state authoritative for the
+vanilla relation kind between the same two Goa'uld factions. Creation,
+transition, loading and periodic reconciliation apply this mapping:
+
+| GateRim state | Vanilla relation kind |
+|---|---|
+| `Neutral` | `Neutral` |
+| `Rivalry` | `Neutral` |
+| `OpenConflict` | `Hostile` |
+| `Truce` | `Neutral` |
+| `Alliance` | `Ally` |
+
+The reconciliation is restricted to two Goa'uld System Lord faction instances.
+It sends no vanilla goodwill report and never changes the relation or goodwill
+between a Goa'uld domain and the player, Tok'ra, Free Jaffa or a vanilla faction.
+The existing temporary-cooperation patch remains a narrow fallback for forces
+already sharing a map while their factions are reconciled.
+
+The faction Def still preserves its permanent hostile player-facing baseline.
+Functional validation must therefore confirm that RimWorld accepts direct
+`Ally` relation kinds between two distinct Goa'uld instances without forcing
+them back to hostile.
+
+## Territorial safeguard foundation
+
+`0.3.83-dev` also introduces a persistent dry-run tracker before any real
+territorial consequence is allowed. New worlds propose three Goa'uld faction
+instances by default in the editable vanilla faction list. The territorial layer
+requires only two active domains, where each active domain is non-defeated and
+owns at least one permanent vanilla settlement.
+
+Only permanent Goa'uld `Settlement` world objects count. The evaluator excludes
+player and non-Goa'uld settlements, mission sites, temporary sites, battlefields
+and travelling groups. It protects the final settlement of every domain,
+requires at least `active domains + 2` permanent settlements for a hostile
+transfer, slows expansion as the gaining domain grows and rejects a projected
+share above `50%`.
+
+One exact dry-run reservation can be pending globally. It persists exact faction
+references, settlement ID, required relation, creation counts, deadline and
+outcome. Global, involved-domain and pair cooldowns are shifted forward outside
+`Commandement SG-1`; no backlog is consumed. Invalid ownership, relation, domain,
+world-density or incompatible exact-pair state cancels the reservation.
+
+No natural territorial opportunity is scheduled in this milestone. The
+developer path may reserve and complete one candidate as `CompletedDryRun`, but
+it cannot create, transfer or destroy a settlement, eliminate a faction, change
+a tile, alter a doctrine or modify raid cadence.
+
 ## Open-conflict battlefields
 
 `0.3.69-dev` publishes the first visible battle caused by a relation state.
@@ -394,6 +446,16 @@ procedure confirms the persistent exact-pair deadline, save/reload continuity,
 one targetless three-variant diplomatic letter, the exact
 `Alliance -> Rivalry` transition, final `Completed` outcome, unchanged
 raid/reward/goodwill/territory behavior and a clean accepted `Player.log`.
+
+Final revision `r3` of `0.3.83-dev` is validated and published. `r2`
+corrected the `CS0165` build failure but its first-map reconciliation used
+`SetRelationDirect`, which RimWorld rejects for factions whose relation kind is
+controlled by goodwill. `r3` gives the Goa'uld Def a self-only permanent-enemy
+exception and uses silent vanilla goodwill changes between Goa'uld instances.
+The focused procedure confirmed all five GateRim mappings, permanent hostility
+toward the player and outside factions, territorial counts and limits, one
+save-persistent dry-run reservation, `CompletedDryRun` cooldowns, no world
+mutation and no new relevant `Player.log` error.
 
 Final revision `r2` of `0.3.81-dev` is validated. The complete shared-reprisal
 procedure is conforming; the programming letter has no false target, the arrival

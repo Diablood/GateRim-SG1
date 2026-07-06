@@ -9,6 +9,8 @@
 > Noms mondiaux dédiés : 0.3.46-dev
 >
 > Noms culturels des Grands Maîtres : 0.3.48-dev
+>
+> Trois domaines proposés et garde-fous territoriaux : 0.3.83-dev
 
 ## Présentation
 
@@ -34,15 +36,33 @@ Maître canon ni prétendre correspondre au dirigeant généré séparément.
 
 ## Présence mondiale
 
-Une nouvelle planète génère :
+Une nouvelle planète propose dans la liste vanilla :
 
 ```text
-1 faction Goa'uld hostile par défaut
-un nombre limité de colonies visibles
+3 factions Goa'uld hostiles par défaut
+un nombre limité de colonies visibles par domaine
 ```
 
-Le joueur peut ajouter manuellement plusieurs factions Goa'uld s'il souhaite
-représenter séparément plusieurs domaines de Grands Maîtres.
+Le joueur peut réduire ce nombre lorsque la limite totale de factions vanilla
+importe, ou ajouter davantage de domaines. Le mod ne recrée jamais une faction
+retirée. La simulation territoriale nécessite au moins deux domaines non vaincus
+possédant chacun une colonie permanente ; avec un seul domaine, seuls ces effets
+territoriaux sont suspendus.
+
+## Diplomatie et territoire
+
+Depuis `0.3.83-dev`, les relations entre deux domaines sont réconciliées avec le
+système vanilla : conflit ouvert signifie hostile, alliance signifie allié, et
+neutralité, rivalité ou trêve utilisent la relation neutre. La définition de
+faction autorise la bonne volonté uniquement entre deux instances Goa'uld ; elle
+maintient une hostilité permanente envers le joueur et toutes les factions
+extérieures. La synchronisation technique n'envoie ni message ni lettre.
+
+Le jalon ajoute uniquement un évaluateur territorial et une réservation sèche.
+La dernière colonie de chaque domaine est protégée, les mondes trop pauvres sont
+bloqués, l'expansion ralentit avec la taille du domaine et aucun domaine ne peut
+dépasser automatiquement `50 %` des colonies Goa'uld permanentes. Aucune colonie
+ne change encore de propriétaire.
 
 ## Doctrine stratégique
 
