@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.88-dev`
-- Branch: `feature/final-storyteller-portrait`
-- Target assembly: `0.3.88.0`
-- Status: storyteller portraits validated in local revision `r1`; documentation-only finalization `r2` prepared.
+- Version: `0.3.89-dev`
+- Branch: `feature/final-gene-icons-and-world-visual-references`
+- Target assembly: `0.3.89.0`
+- Status: local revision `r1` prepared for focused gene-UI and wiki validation.
 
 ## Purpose
 
@@ -18,22 +18,20 @@ The companion command `./tools/check-visual-assets.cmd` verifies that this
 register and the repository remain synchronized. The published `0.3.85-dev`
 audit established the strict acceptance boundary and progressive wiki-reference
 rule. `0.3.86-dev` applied the first bounded definitive-art lot with two
-xenotype icons. `0.3.88-dev` adds the approved large and tiny storyteller
-portraits after validation in the real interface.
+xenotype icons. `0.3.88-dev` added the approved large and tiny storyteller
+portraits. `0.3.89-dev` prepares six final gameplay-gene icons, validates the
+four existing world-faction icon families and completes the wiki gallery for
+all previously validated event-site icons.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
-- The `Textures/` families currently accepted as `final` are the seven
-  validated world-event site icons, the two validated xenotype icons and the two
-  validated storyteller portraits listed below.
-- Faction icons, equipment, buildings, genes, all other xenotypes, projectiles,
-  pawns and command icons remain temporary even when they are functional or
-  visually acceptable for development.
-- As soon as a later visual is explicitly validated, update this register and
-  the dedicated wiki reference page in the same revision. Do not postpone all
-  visual references to one global wiki pass.
+- The `Textures/` families accepted as `final` after this local validation lot
+  are the two storyteller portraits, two xenotype icons, six gameplay-gene
+  icons, four world-faction icons and seven world-event site icons listed below.
+- Equipment, buildings, technical forehead-mark icons, projectiles, pawns and
+  command icons remain temporary even when they are functional.
 
 Validated storyteller families:
 
@@ -44,6 +42,22 @@ Validated xenotype families:
 
 - `UI/Xenotypes/SG1_GoauldHost`
 - `UI/Xenotypes/SG1_Jaffa`
+
+Validated gameplay-gene families:
+
+- `UI/Genes/SG1_GoauldLongevity`
+- `UI/Genes/SG1_JaffaLineage`
+- `UI/Genes/SG1_JaffaPhysiology`
+- `UI/Genes/SG1_JaffaPouchPotential`
+- `UI/Genes/SG1_JaffaSymbioteCompatibility`
+- `UI/Genes/SG1_NaquadahBlood`
+
+Validated world-faction families:
+
+- `World/WorldObjects/Expanding/SG1_FreeJaffa`
+- `World/WorldObjects/Expanding/SG1_GoauldSystemLords`
+- `World/WorldObjects/Expanding/SG1_SGCExpedition`
+- `World/WorldObjects/Expanding/SG1_Tokra`
 
 Validated world-event site families:
 
@@ -77,14 +91,16 @@ Validated world-event site families:
 
 ## Audit summary
 
-- Local PNG files: `609`.
-- Local texture families: `76`.
-- Accepted final local families: `11` (`2` storyteller portraits, `2` xenotype icons and `7` world-event site icons).
-- Temporary original families: `31`.
+- Local PNG files: `608`.
+- Local texture families: `75`.
+- Accepted final local families: `21` (`2` storyteller portraits, `2` xenotype
+  icons, `6` gameplay-gene icons, `4` world-faction icons and `7` world-event
+  site icons).
+- Temporary original families: `27`.
 - Temporary recolor families: `15`.
 - Temporary reuse families: `6`.
-- Project-icon placeholder families: `13`.
-- Priorities: `15` P0, `25` P1, `25` P2, `11` done.
+- Project-icon placeholder families: `6`.
+- Priorities: `8` P0, `21` P1, `25` P2, `21` done.
 - Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -92,8 +108,8 @@ Validated world-event site families:
 
 ## Highest-priority findings
 
-1. Four command icons, seven gene icons and both ritual/incubation basins reuse
-   the personal demon mod icon exactly.
+1. Four command icons and both ritual/incubation basins still reuse the
+   personal demon mod icon exactly.
 2. The kara kesh and healing bracelet reuse the Zat’nik’tel inventory texture.
 3. The Prim’ta larva and free Goa’uld symbiote use the same image.
 4. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
@@ -166,19 +182,18 @@ same canonical family. Representative dimensions refer to the base image.
 | `UI/Commands/SG1_ForcedImplantation` | 1 | 64×64 | Command UI | `placeholder-personal-icon` | `P0` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Exact reuse of the project demon icon; misleading for this gameplay surface. |
 | `UI/Commands/SG1_JaffaHelmetMode` | 1 | 64×64 | Command UI | `temporary-original` | `P2` | C# Source/GateRimSG1/Jaffa/Comp_RetractableJaffaHelmet.cs | Custom functional art that remains acceptable for development but is not yet accepted as final. |
 | `UI/Commands/SG1_RitualImplantation` | 1 | 64×64 | Command UI | `placeholder-personal-icon` | `P0` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs, C# Source/GateRimSG1/Jaffa/Comp_JaffaPrimtaCeremony.cs | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_GoauldLongevity` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_GoauldLongevity | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_JaffaLineage` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaLineage | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_JaffaLongevity` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaLongevity | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_JaffaPhysiology` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaPhysiology | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_JaffaPouchPotential` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaPouchPotential | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_JaffaSymbioteCompatibility` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaSymbioteCompatibility | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Genes/SG1_NaquadahBlood` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_NaquadahBlood | Exact reuse of the project demon icon; misleading for this gameplay surface. |
+| `UI/Genes/SG1_GoauldLongevity` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_GoauldLongevity | Maintainer-approved hourglass and cyclic-arrow symbol reused from the abandoned Jaffa prototype for the active Goa'uld-host longevity gene. |
+| `UI/Genes/SG1_JaffaLineage` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaLineage | Maintainer-approved adult-and-descendant Jaffa faces with visible forehead marks, validated as the lineage symbol. |
+| `UI/Genes/SG1_JaffaPhysiology` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPhysiology | Maintainer-approved centered crate with an overlapping green upward arrow, representing increased carrying capacity. |
+| `UI/Genes/SG1_JaffaPouchPotential` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPouchPotential | Maintainer-approved vanilla-style pawn body with two abdominal incision lines crossing at 45 degrees. |
+| `UI/Genes/SG1_JaffaSymbioteCompatibility` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaSymbioteCompatibility | Maintainer-approved brown immature symbiote with collar and four teeth inside a green compatibility circle. |
+| `UI/Genes/SG1_NaquadahBlood` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_NaquadahBlood | Maintainer-supplied blood-drop icon with a fluorescent green naquadah reflection. |
 | `UI/Xenotypes/SG1_GoauldHost` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_GoauldHost | Maintainer-approved symbolic icon using the defining Goa'uld symbiote rather than a human forehead mark or the personal mod icon. |
 | `UI/Xenotypes/SG1_Jaffa` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_Jaffa | Maintainer-supplied human/Baseliner icon carrying the mark of Apophis; replaces the unrelated vanilla Hussar icon. |
-| `World/WorldObjects/Expanding/SG1_FreeJaffa` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_FreeJaffa | Functional faction identity, but not explicitly accepted as final. |
-| `World/WorldObjects/Expanding/SG1_GoauldSystemLords` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_GoauldSystemLordPrototype | Functional faction identity, but not explicitly accepted as final. |
-| `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_PlayerSGCExpedition | Functional faction identity, but not explicitly accepted as final. |
-| `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_Tokra | Functional faction identity, but not explicitly accepted as final. |
+| `World/WorldObjects/Expanding/SG1_FreeJaffa` | 1 | 128×128 | World faction | `final` | `done` | SG1_FreeJaffa | Maintainer explicitly accepted the existing Free Jaffa world-faction icon as final. |
+| `World/WorldObjects/Expanding/SG1_GoauldSystemLords` | 1 | 128×128 | World faction | `final` | `done` | SG1_GoauldSystemLordPrototype | Maintainer explicitly accepted the existing Goa'uld-domain world-faction icon as final. |
+| `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `final` | `done` | SG1_PlayerSGCExpedition | Maintainer explicitly accepted the existing SGC expedition world-faction icon as final. |
+| `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `final` | `done` | SG1_Tokra | Maintainer explicitly accepted the existing Tok'ra world-faction icon as final. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraIntroductionArtifactWorldSite | Dedicated custom art already validated in its published presentation milestone. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | 1 | 64×64 | World site | `final` | `done` | SG1_GoauldOpenConflictBattlefieldSite | Dedicated custom art already validated in its published presentation milestone. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDecodedMissionWorldSite | Dedicated custom art already validated in its published presentation milestone. |
@@ -228,10 +243,16 @@ not resolve under the mod's `Textures/` directory.
 
 ## Explicit non-effects
 
-`0.3.88-dev` changes only the two approved storyteller PNGs, their
-byte-identical large wiki copy, the final-family whitelist, version metadata and
-documentation. It does not change storyteller Defs, cadence, components,
-incidents, strategic orchestration, xenotypes, factions, missions or save data.
+`0.3.89-dev` changes the six approved gameplay-gene PNGs, removes the obsolete
+`SG1_JaffaLongevity` development prototype and its unused PNG, reclassifies the
+four already-existing world-faction icons as final, and adds byte-identical wiki
+copies for the six genes, four factions and seven event sites. It does not
+change the remaining gene effects, xenotypes, factions, storyteller behavior,
+missions, balancing or runtime C# logic.
+
+The maintainer explicitly accepts removal of the legacy development-only Jaffa
+longevity gene because no public save-compatibility contract exists for it. Jaffa
+longevity continues to come from the Prim'ta health state.
 
 ## Validation procedure
 
@@ -248,15 +269,15 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Local PNG files: 609
-Local texture families: 76
+Local PNG files: 608
+Local texture families: 75
 Direct external texture paths: 6
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
 
-Focused manual review must confirm both approved xenotype icons in the actual
-Biotech UI at small scale, verify that the former demon and Hussar placeholders
-are absent, and confirm that RimWorld reaches the main menu with version
-`0.3.86-dev` and no new XML, texture, translation or C# error.
+Focused manual review must confirm all six gameplay-gene icons in the actual
+Biotech gene UI at small scale, verify that the legacy Jaffa-longgevity gene no
+longer appears, and confirm that the four world-faction and seven event-site
+wiki images render correctly after synchronization.

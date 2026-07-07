@@ -1,82 +1,87 @@
 # Project state
 
-Current milestone: `0.3.88-dev - Add final storyteller SG-1 portrait`
+Current milestone: `0.3.89-dev - Add final gene icons and complete world visual references`
 
-Status: validated and published. Final local revision `r3` records the
-publication closure after the validated visual revision `r1` and the
-finalization revision `r2`.
+Status: validated and published. Final local revision `r2` records the
+publication closure after the validated implementation and visual revision
+`r1`.
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.87-dev` at commit
-  `d905e8466fd58e3300404140b5fe420e8bca2198`.
-- Final feature branch: `feature/final-storyteller-portrait`.
-- Final local revision: `r3`; the suffix remains local and is omitted from the
+  `v0.3.88-dev`.
+- Final feature branch:
+  `feature/final-gene-icons-and-world-visual-references`.
+- Final local revision: `r2`; the suffix remains local and is omitted from the
   final commit and tag.
-- Published assembly version: `0.3.88.0`.
+- Published assembly version: `0.3.89.0`.
 - Integration branch: `develop`, updated by fast-forward from the validated
   feature commit.
-- Published annotated tag: `v0.3.88-dev`.
+- Published annotated tag: `v0.3.89-dev`.
 - Separate wiki: synchronized from `docs/wiki/` and published with the same
   milestone version.
 
 ## Published scope
 
-- Replace only the existing large and tiny portraits of
-  `SG1_GateRimStoryteller`.
-- Keep the stable texture paths:
-  - `Storytellers/SG1_Command`;
-  - `Storytellers/SG1_Command_Tiny`.
-- Use the two exact maintainer-provided PNG files without redrawing or resizing.
-- Preserve the storyteller Def, name, descriptions, components, incident cadence,
-  Cassandra baseline, strategic orchestration and save behavior.
-- Copy the large portrait byte-identically to
-  `docs/wiki/images/SG1_Command.png` and display it on
-  `docs/wiki/Storyteller-SG1.md`.
-- Do not change any other visual family.
+- Replace six stable gameplay-gene textures:
+  - `UI/Genes/SG1_JaffaLineage`;
+  - `UI/Genes/SG1_JaffaPhysiology`;
+  - `UI/Genes/SG1_JaffaPouchPotential`;
+  - `UI/Genes/SG1_JaffaSymbioteCompatibility`;
+  - `UI/Genes/SG1_GoauldLongevity`;
+  - `UI/Genes/SG1_NaquadahBlood`.
+- Remove the obsolete development-only `SG1_JaffaLongevity` `GeneDef`, its
+  French translation entries and `Textures/UI/Genes/SG1_JaffaLongevity.png`.
+  Jaffa longevity remains provided by `SG1_JaffaPrimta`.
+- Reclassify the four existing `World faction` texture families as
+  `final` / `done`.
+- Add byte-identical wiki copies for the six gene icons, four faction icons and
+  seven event-site icons already accepted as final.
+- Leave the three technical forehead-mark icons unchanged; they are not gameplay
+  genes and remain scheduled for a later Jaffa-mark visual lot.
+- Preserve all remaining Def names, stable texture paths, gene effects, factions,
+  world sites, storyteller behavior and runtime C# logic.
+- Preserve the existing French label `compatibilité avec un symbiote immature`;
+  its multiline wrapping was observed in the gene interface and the maintainer
+  explicitly chose not to rename it in this milestone.
 
-## Validated assets
+## Published visual baseline
 
-- Large portrait: `560×600`, transparent RGBA PNG.
-- Tiny portrait: `122×130`, transparent RGBA PNG.
-- The tiny portrait is a dedicated close crop of the same character rather than
-  an automatic runtime reduction.
-- Visual identity: human SG-1 field officer, olive uniform and tactical vest,
-  Earth/SG-1 insignia, clean painterly style close to vanilla storyteller art.
-- The wiki copy of the large portrait is byte-identical to the gameplay PNG.
+- `608` PNG files under `Textures/`;
+- `75` canonical local texture families;
+- `21` exact final local families;
+- `27` temporary-original families;
+- `15` temporary-recolor families;
+- `6` temporary-reuse families;
+- `6` personal-icon placeholder families;
+- priorities: `8` P0, `21` P1, `25` P2 and `21` done.
 
 ## Validation result
 
-Local revision `r1` passed the maintainer's real-interface test:
+Local revision `r1` passed the maintainer's build, static and real-interface
+validation:
 
-- the large portrait is correctly framed and is not stretched or clipped;
-- transparency is preserved without an opaque white rectangle;
-- the tiny portrait is centered, sharp and recognizable at its actual UI size;
-- comparison with Cassandra, Phoebe and Randy revealed no presentation issue;
-- storyteller selection, description, cadence and strategic behavior remain
-  unchanged;
-- the main menu reports `0.3.88-dev` and no new relevant texture, XML or C#
-  error was reported.
+- the forced `0.3.89.0` assembly build completed successfully;
+- duration formatting, visual assets, project consistency and
+  `git diff --check` passed;
+- all six gameplay-gene icons are present, transparent, centered and readable at
+  their actual Biotech gene-UI size;
+- no icon is missing, magenta, clipped or backed by an opaque rectangle;
+- `SG1_JaffaLongevity` and its obsolete texture are absent;
+- Jaffa carrying a Prim'ta retain their existing longevity support;
+- the four faction icons and seven event-site icons remain unchanged in game;
+- the gene, faction and site galleries render correctly in the wiki drafts;
+- all protected wiki copies remain byte-identical to their gameplay textures;
+- no new relevant XML, texture or C# error was reported in `Player.log`.
 
-Revision `r2` passed the final static checks:
-
-- both storyteller texture families are classified as `final` / `done`;
-- the exact visual-checker whitelist contains `11` final local families;
-- duration formatting, visual assets, project consistency and `git diff --check`
-  pass;
-- README, wiki-home, content-status, project-state, current-test and changelog
-  versions resolve to `0.3.88-dev`;
-- the documented and compiled DLL version remains `0.3.88.0`.
-
-Revision `r3` changes only publication-state documentation. It changes no PNG,
-C# source, Def, gameplay behavior, assembly or save data.
+Revision `r2` changes only publication-state documentation. It changes no PNG,
+Def, translation, C# source, assembly, gameplay behavior or save data.
 
 ## Publication result
 
-- Final commit: `0.3.88-dev - finalize storyteller portrait`.
+- Final commit: `0.3.89-dev - finalize gene and world visual references`.
 - The validated feature commit is integrated into `develop` by fast-forward.
-- `develop` and annotated tag `v0.3.88-dev` point to the same commit.
+- `develop` and annotated tag `v0.3.89-dev` point to the same commit.
 - The separate `GateRim-SG1.wiki` repository is synchronized and published.
-- Local `r1`, `r2` and `r3` suffixes do not appear in the final commit or tag.
+- Local `r1` and `r2` suffixes do not appear in the final commit or tag.
 
 ## Next work
 
@@ -85,4 +90,4 @@ from the remaining Phase 1 backlog in `docs/ROADMAP.md`; Phase 2 remains blocked
 until the core-faction completion gate is explicitly satisfied.
 
 Before starting that milestone, update local `develop`, verify that it matches
-`v0.3.88-dev`, then create a new dedicated `feature/*` or `fix/*` branch.
+`v0.3.89-dev`, then create a new dedicated `feature/*` or `fix/*` branch.

@@ -59,26 +59,4 @@
             <CarryingCapacity>15</CarryingCapacity>
         </statOffsets>
     </GeneDef>
-
-    <!--
-        Legacy compatibility Def:
-        Previous development versions assigned this gene directly to the Jaffa
-        xenotype. It remains defined for save compatibility but is no longer
-        included in SG1_Jaffa. SG1_JaffaPrimta now provides the active lifespan
-        effect while an immature symbiote is present.
-    -->
-    <GeneDef>
-        <defName>SG1_JaffaLongevity</defName>
-        <label>Jaffa longevity (legacy)</label>
-        <description>Legacy prototype gene retained for compatibility with earlier development saves. Newly generated Jaffa receive longevity from the Prim'ta health state while an immature symbiote is present.</description>
-        <iconPath>UI/Genes/SG1_JaffaLongevity</iconPath>
-        <displayCategory>Miscellaneous</displayCategory>
-        <displayOrderInCategory>799</displayOrderInCategory>
-        <biostatMet>0</biostatMet>
-        <biostatCpx>1</biostatCpx>
-        <canGenerateInGeneSet>false</canGenerateInGeneSet>
-        <statFactors>
-            <LifespanFactor>1.5</LifespanFactor>
-        </statFactors>
-    </GeneDef>
 </Defs>

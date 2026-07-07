@@ -42,9 +42,13 @@ damage resistance
 lifespan factor
 ```
 
-## Save compatibility
+## Removed development prototype
 
-`SG1_JaffaLongevity` remains defined as a legacy development gene so older test saves do not lose the referenced `GeneDef`. Newly generated Jaffa no longer receive it from the xenotype.
+`0.3.89-dev` removes the unused `SG1_JaffaLongevity` development-only
+`GeneDef`, its translation entries and its dedicated PNG. The maintainer is the
+only holder of affected development saves and explicitly accepts that cleanup.
+New and current Jaffa continue to receive longevity only from the
+`SG1_JaffaPrimta` health state while an immature symbiote is present.
 
 ## Reproduction tests still required
 

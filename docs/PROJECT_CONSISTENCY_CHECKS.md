@@ -1,8 +1,8 @@
 # Project consistency checks
 
-Version: `0.3.85-dev`
+Version: `0.3.89-dev`
 
-Status: extended in `0.3.85-dev` with mandatory visual-asset validation.
+Status: extended through `0.3.89-dev` with mandatory visual-asset and approved-wiki-copy validation.
 
 ## Purpose
 
@@ -54,7 +54,8 @@ It verifies:
 - no direct local texture path is missing;
 - every direct vanilla texture path is registered and still referenced;
 - `About/ModIcon.png` remains present;
-- every approved xenotype icon copied into `docs/wiki/images/` remains byte-identical to its gameplay PNG and is referenced by the dedicated wiki page.
+- every protected gameplay icon copied into `docs/wiki/images/` remains byte-identical to its gameplay PNG and is referenced by the intended wiki page;
+- the exact final-family whitelist matches the explicitly approved storyteller, xenotype, gameplay-gene, world-faction and event-site families.
 
 The checker is read-only. Any added, removed, renamed or newly referenced visual
 asset must update the register in the same revision.

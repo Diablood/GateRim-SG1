@@ -15,7 +15,6 @@
 |---|---|---|
 | `XenotypeDef` | `SG1_Jaffa` | Added |
 | `GeneDef` | `SG1_JaffaPhysiology` | Added |
-| `GeneDef` | `SG1_JaffaLongevity` | Added |
 
 ## Current directory layout
 

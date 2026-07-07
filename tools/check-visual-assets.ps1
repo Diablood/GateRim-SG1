@@ -111,6 +111,108 @@ $wikiIconMappings = @(
         Wiki = "docs/wiki/images/SG1_GoauldHost.png"
         Page = "docs/wiki/Active-Goauld-Host.md"
         Reference = "images/SG1_GoauldHost.png"
+    },
+    @{
+        Source = "Textures/UI/Genes/SG1_JaffaLineage.png"
+        Wiki = "docs/wiki/images/SG1_JaffaLineage.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_JaffaLineage.png"
+    },
+    @{
+        Source = "Textures/UI/Genes/SG1_JaffaPhysiology.png"
+        Wiki = "docs/wiki/images/SG1_JaffaPhysiology.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_JaffaPhysiology.png"
+    },
+    @{
+        Source = "Textures/UI/Genes/SG1_JaffaPouchPotential.png"
+        Wiki = "docs/wiki/images/SG1_JaffaPouchPotential.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_JaffaPouchPotential.png"
+    },
+    @{
+        Source = "Textures/UI/Genes/SG1_JaffaSymbioteCompatibility.png"
+        Wiki = "docs/wiki/images/SG1_JaffaSymbioteCompatibility.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_JaffaSymbioteCompatibility.png"
+    },
+    @{
+        Source = "Textures/UI/Genes/SG1_GoauldLongevity.png"
+        Wiki = "docs/wiki/images/SG1_GoauldLongevity.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_GoauldLongevity.png"
+    },
+    @{
+        Source = "Textures/UI/Genes/SG1_NaquadahBlood.png"
+        Wiki = "docs/wiki/images/SG1_NaquadahBlood.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_NaquadahBlood.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png"
+        Wiki = "docs/wiki/images/SG1_FreeJaffa.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_FreeJaffa.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/SG1_GoauldSystemLords.png"
+        Wiki = "docs/wiki/images/SG1_GoauldSystemLords.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_GoauldSystemLords.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/SG1_SGCExpedition.png"
+        Wiki = "docs/wiki/images/SG1_SGCExpedition.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_SGCExpedition.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/SG1_Tokra.png"
+        Wiki = "docs/wiki/images/SG1_Tokra.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_Tokra.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective.png"
+        Wiki = "docs/wiki/images/SG1_GoauldEncryptedObjective.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_GoauldEncryptedObjective.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield.png"
+        Wiki = "docs/wiki/images/SG1_GoauldOpenConflictBattlefield.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_GoauldOpenConflictBattlefield.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage.png"
+        Wiki = "docs/wiki/images/SG1_GoauldRelaySabotage.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_GoauldRelaySabotage.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition.png"
+        Wiki = "docs/wiki/images/SG1_JaffaOfficerFieldPosition.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_JaffaOfficerFieldPosition.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact.png"
+        Wiki = "docs/wiki/images/SG1_TokraClandestineContact.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_TokraClandestineContact.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal.png"
+        Wiki = "docs/wiki/images/SG1_TokraDistressSignal.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_TokraDistressSignal.png"
+    },
+    @{
+        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous.png"
+        Wiki = "docs/wiki/images/SG1_TokraLogisticsRendezvous.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_TokraLogisticsRendezvous.png"
     }
 )
 
@@ -147,7 +249,7 @@ foreach ($mapping in $wikiIconMappings) {
     }
 
     if (-not (Test-Path -LiteralPath $pagePath -PathType Leaf)) {
-        Add-Failure "Missing dedicated wiki page: $($mapping.Page)"
+        Add-Failure "Missing wiki page: $($mapping.Page)"
     }
 }
 
@@ -174,10 +276,10 @@ foreach ($mapping in $wikiIconMappings) {
 
     $pageText = Get-Content -LiteralPath $pagePath -Raw -Encoding UTF8
     if ($pageText -notlike "*$($mapping.Reference)*") {
-        Add-Failure "Dedicated wiki page does not display approved icon: $($mapping.Page)"
+        Add-Failure "Wiki page does not display approved icon: $($mapping.Page)"
     }
     else {
-        Add-Pass "Dedicated wiki page displays approved icon: $($mapping.Page)"
+        Add-Pass "Wiki page displays approved icon: $($mapping.Page)"
     }
 }
 
@@ -188,7 +290,7 @@ foreach ($mapping in $wikiIconMappings) {
     }
 }
 if ($failures.Count -eq 0) {
-    Add-Pass "Progressive visual reference page displays both approved xenotype icons."
+    Add-Pass "Progressive visual reference page displays every approved gameplay icon copy."
 }
 
 $registerText = Get-Content -LiteralPath $registerPath -Raw -Encoding UTF8
@@ -268,6 +370,16 @@ $expectedFinalLocalPaths = @(
     "Storytellers/SG1_Command_Tiny",
     "UI/Xenotypes/SG1_GoauldHost",
     "UI/Xenotypes/SG1_Jaffa",
+    "UI/Genes/SG1_GoauldLongevity",
+    "UI/Genes/SG1_JaffaLineage",
+    "UI/Genes/SG1_JaffaPhysiology",
+    "UI/Genes/SG1_JaffaPouchPotential",
+    "UI/Genes/SG1_JaffaSymbioteCompatibility",
+    "UI/Genes/SG1_NaquadahBlood",
+    "World/WorldObjects/Expanding/SG1_FreeJaffa",
+    "World/WorldObjects/Expanding/SG1_GoauldSystemLords",
+    "World/WorldObjects/Expanding/SG1_SGCExpedition",
+    "World/WorldObjects/Expanding/SG1_Tokra",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage",
@@ -290,13 +402,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the eleven approved storyteller, xenotype and event-site families: {0}" -f
+        "Final local asset whitelist differs from the twenty-one approved storyteller, xenotype, gene, faction and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the eleven approved storyteller, xenotype and event-site families."
+    Add-Pass "Final local asset whitelist matches the twenty-one approved storyteller, xenotype, gene, faction and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

@@ -1,5 +1,68 @@
 # Changelog
 
+## 0.3.89-dev - Add final gene icons and complete world visual references
+
+### Added
+
+- Add six dedicated transparent `64×64` gameplay-gene icons for Jaffa lineage,
+  Jaffa physiology, Jaffa pouch potential, immature-symbiote compatibility,
+  Goa'uld-host longevity and naquadah in the blood.
+- Add byte-identical wiki image copies for those six genes, the four accepted
+  world-faction icons and the seven event-site icons already validated in prior
+  milestones.
+- Extend the progressive visual-reference page with visible gene, faction and
+  event-site galleries.
+
+### Changed
+
+- Reclassify the four existing `World faction` texture families as
+  `final` / `done` after explicit maintainer approval.
+- Update the visual baseline to `608` PNG files, `75` canonical families and
+  exactly `21` final local families.
+- Extend the visual checker to protect all new wiki copies and the exact final
+  family whitelist.
+- Advance public metadata to `0.3.89-dev` and assembly metadata to `0.3.89.0`.
+
+### Removed
+
+- Remove the unused development-only `SG1_JaffaLongevity` `GeneDef`, its French
+  translation entries and `Textures/UI/Genes/SG1_JaffaLongevity.png`.
+- Keep Jaffa longevity exclusively on the existing Prim'ta health state. The
+  maintainer explicitly accepts removal of compatibility for private
+  development saves that still reference the obsolete gene.
+
+### Preserved
+
+- Preserve all six active gene effects and stable texture paths.
+- Preserve the four faction and seven site gameplay PNGs byte-for-byte.
+- Preserve the three technical Jaffa forehead-mark icons for a later dedicated
+  visual lot.
+- Change no runtime C# behavior, storyteller cadence, faction logic, mission
+  flow or balancing.
+
+### Validated
+
+- Pass the forced `0.3.89.0` build, duration-formatting check, visual-asset
+  check, project-consistency check and `git diff --check`.
+- Validate all six gene icons at their actual Biotech UI size with correct
+  centering, transparency, outline, color and readability.
+- Confirm that the obsolete Jaffa-longevity gene is absent while Prim'ta-based
+  longevity remains unchanged.
+- Confirm that the six gene, four faction and seven event-site wiki references
+  render correctly and remain byte-identical to the protected gameplay PNGs.
+- Confirm no new relevant XML, texture or C# error in `Player.log`.
+- Keep the existing long French compatibility label unchanged after the
+  maintainer explicitly declines a rename during this milestone.
+
+### Published
+
+- Prepare documentation-only publication closure revision `r2`; it changes no
+  PNG, Def, translation, C# source, assembly, gameplay behavior or save data.
+- Publish the validated state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.89-dev` and the
+  synchronized separate wiki. The final commit and tag omit the local `r1` and
+  `r2` suffixes.
+
 ## 0.3.88-dev - Add final storyteller SG-1 portrait
 
 - Prepare branch `feature/final-storyteller-portrait` from published

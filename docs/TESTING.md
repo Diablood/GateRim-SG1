@@ -1,5 +1,34 @@
 # Durable testing
 
+## Final gameplay-gene icons and world visual references (`0.3.89-dev`)
+
+Local revision `r1` prepares six final gameplay-gene icons, removes the unused
+development-only `SG1_JaffaLongevity` prototype, accepts four existing
+world-faction icons and completes the wiki gallery for seven already-final event
+sites. Durable coverage:
+
+- keep the six active gene texture paths stable and each gameplay PNG at
+  transparent `64×64`;
+- preserve the validated symbols: Jaffa ancestry, increased carrying capacity,
+  crossed abdominal incisions, immature-symbiote compatibility, cyclic
+  longevity and fluorescent-green naquadah traces in blood;
+- remove `SG1_JaffaLongevity`, its French DefInjected entries and its obsolete
+  PNG together so no orphan family remains;
+- preserve Jaffa longevity through `SG1_JaffaPrimta` and verify the removed
+  prototype no longer appears in the xenotype editor;
+- keep the four accepted world-faction PNGs unchanged and reclassify only their
+  register status;
+- require the six gene, four faction and seven site wiki copies to remain
+  byte-identical to their gameplay textures;
+- keep the three technical forehead-mark icons outside this gameplay-gene lot;
+- require `608` PNG files, `75` canonical families and exactly `21` final local
+  families after the legacy deletion;
+- test all six active icons at the actual Biotech gene-UI scale for centering,
+  transparency, clipping and readability;
+- run a forced rebuild for `0.3.89.0`, then duration, visual,
+  project-consistency and `git diff --check` controls;
+- inspect `Player.log` for new relevant XML, texture or C# errors.
+
 ## Final storyteller SG-1 portrait (`0.3.88-dev`)
 
 Local revision `r1` validated both maintainer-provided portraits in the real
@@ -18,11 +47,10 @@ extends the final-family whitelist and aligns public metadata. Durable coverage:
   portrait;
 - classify both storyteller families as `final` / `done` only after explicit
   real-interface approval;
-- require the current visual baseline to remain `609` PNG files, `76` canonical
-  families and `11` exact final local families;
-- keep the final whitelist limited to the two storyteller portraits, two
-  xenotype icons and seven event-site icons until another explicit visual
-  approval extends it;
+- preserve the published `0.3.88-dev` historical baseline of `609` PNG files,
+  `76` canonical families and `11` exact final local families;
+- retain the two storyteller portraits when later explicitly approved
+  gene and faction families extend the whitelist;
 - preserve `SG1_GateRimStoryteller`, its label, descriptions, components,
   Cassandra baseline, incident cadence, strategic orchestration and save data;
 - run the duration audit, visual audit, complete project-consistency check and
@@ -2688,10 +2716,11 @@ This isolates GateRim definitions from unrelated third-party gene categories and
 2. Open the xenotype editor.
 3. Confirm that the editor opens without exceptions.
 4. Load the premade `Jaffa` xenotype.
-5. Confirm that `Jaffa physiology` displays a texture.
-6. Confirm that `Jaffa longevity` displays a `150%` lifespan factor.
-7. Switch to French and verify the translated labels and descriptions.
-8. Close the game and inspect `Player.log`.
+5. Confirm that the active Jaffa genes display their dedicated textures.
+6. Confirm that the removed `Jaffa longevity` prototype is absent.
+7. Confirm that an implanted Prim'ta still provides the intended Jaffa longevity support.
+8. Switch to French and verify the translated labels and descriptions.
+9. Close the game and inspect `Player.log`.
 
 ## Interpreting the first external test log
 

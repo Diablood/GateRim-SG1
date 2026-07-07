@@ -4,9 +4,21 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.88-dev`
-> Révision visuelle validée : `r1`
-> Révision de finalisation : `r2`
+> Version du mod documentée : `0.3.89-dev`
+> Révision locale à valider : `r1`
+
+## Icônes finales de gènes et références mondiales
+
+`0.3.89-dev` prépare six icônes dédiées pour les véritables gènes de gameplay :
+lignée jaffa, physiologie jaffa, prédisposition à la poche, compatibilité avec
+un symbiote immature, longévité de l'hôte Goa'uld et naquadah dans le sang.
+
+Le prototype `SG1_JaffaLongevity`, qui n'était plus attribué aux Jaffa, est
+supprimé avec sa traduction et son ancien PNG. La longévité Jaffa reste assurée
+par le Prim'ta. Les quatre icônes de factions mondiales déjà approuvées sont
+également classées comme finales, et la page
+[Références visuelles validées](Visual-Assets) affiche désormais les six gènes,
+quatre factions et sept sites d'événements.
 
 ## Portrait final du storyteller Commandement SG-1
 
@@ -51,11 +63,10 @@ wiki contre toute divergence avec les PNG du jeu.
 ## Audit des assets visuels provisoires
 
 La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
-technique exhaustif. Après les validations `0.3.86-dev` et `0.3.88-dev`, la
-baseline compte `609` PNG sous `76` familles de textures, dont `11` familles
-locales finales :
-les deux portraits du storyteller, les deux xénotypes et les sept icônes de
-sites d'événements. L'icône publique du
+technique exhaustif. Après les validations précédentes et le lot actif `0.3.89-dev`, la
+baseline compte `608` PNG sous `75` familles de textures, dont `21` familles
+locales finales : deux portraits de storyteller, deux xénotypes, six gènes de
+gameplay, quatre factions mondiales et sept sites d'événements. L'icône publique du
 mod reste finale hors compteur.
 
 Chaque nouveau visuel validé est ajouté immédiatement à la page

@@ -1,66 +1,75 @@
-# Current testing — final storyteller SG-1 portrait
+# Current testing — final gene icons and world visual references
 
-Jalon : `0.3.88-dev`
-Révision visuelle validée : `r1`
-Révision de finalisation validée : `r2`
-Révision de clôture documentaire : `r3`
-Version de DLL validée : `0.3.88.0`
+Jalon : `0.3.89-dev`
+Révision visuelle et fonctionnelle validée : `r1`
+Révision de clôture documentaire : `r2`
+Version de DLL validée : `0.3.89.0`
 
 ## Build and static checks — passed
 
-The assembly built and loaded successfully during `r1`. Revision `r2` changed
-only documentation and the visual-checker whitelist; revision `r3` changes only
-publication-state documentation. Neither revision modifies the DLL or either
-validated PNG.
+The assembly was rebuilt successfully for `0.3.89.0`. Revision `r2` changes
+only publication-state documentation and does not modify the DLL, a Def, a
+translation or a validated PNG.
 
-The final checks passed after `r2`:
+The final checks passed after `r1`:
 
 ```powershell
+./build.cmd
 ./tools/check-duration-formatting.cmd
 ./tools/check-visual-assets.cmd
-./tools/check-project-consistency.cmd -ExpectedVersion 0.3.88-dev
+./tools/check-project-consistency.cmd -ExpectedVersion 0.3.89-dev
 git diff --check
 ```
 
-Validated result:
+Validated visual-check result:
 
-- both storyteller families are parsed as `final` / `done`;
-- the exact final-family whitelist contains `11` local families;
-- README, wiki-home, content-status, project-state, current-test and changelog
-  versions all resolve to `0.3.88-dev`;
-- the documented DLL version resolves to `0.3.88.0`;
-- no Markdown tab, local-link, backstory-count or visual-asset check fails.
+```text
+Final local texture families: 21
+Local PNG files: 608
+Local texture families: 75
+Direct external texture paths: 6
+Missing local references: 0
+Unregistered local families: 0
+Visual asset check passed.
+```
 
-## Storyteller portrait validation — passed in r1
+## Gene-interface validation — passed in r1
 
-1. Enabled GateRim SG-1 and Biotech, then opened the new-game storyteller
-   selection.
-2. Selected **Commandement SG-1**.
-3. Confirmed the large portrait uses the new SG-1 officer image.
-4. Compared its apparent size and framing with Cassandra, Phoebe and Randy.
-5. Confirmed the head, shoulders, vest and insignia are not clipped unexpectedly.
-6. Confirmed transparent margins do not render as an opaque white rectangle.
-7. Started the game and inspected the surfaces that use the tiny portrait.
-8. Confirmed the `122×130` face crop is centered, sharp and recognizable.
-9. Confirmed both images remain correct after normal storyteller UI reuse.
-10. Confirmed storyteller selection and behavior remain unchanged.
+1. Loaded `Core`, `Biotech`, `Harmony` and `GateRim SG-1`.
+2. Opened **Éditeur de xénotype** from the new-colony flow.
+3. Inspected the six GateRim gameplay-gene icons at their actual UI size:
+   - `lignée jaffa`;
+   - `physiologie jaffa`;
+   - `prédisposition à la poche jaffa`;
+   - `compatibilité avec un symbiote immature`;
+   - `longévité de l'hôte Goa'uld`;
+   - `naquadah dans le sang`.
+4. Confirmed their centering, readability, transparency, outlines, colors and
+   absence of clipping or opaque backgrounds.
+5. Observed that `compatibilité avec un symbiote immature` wraps across several
+   lines over its icon; the maintainer explicitly chose to preserve the existing
+   label rather than rename it in this milestone.
+6. Confirmed `longévité jaffa (ancien prototype)` no longer appears.
+7. Confirmed a Jaffa adult carrying a Prim'ta retains the existing longevity
+   support.
+8. Confirmed no new relevant XML, texture or C# error in `Player.log`.
 
-## Regression result
+## Wiki and visual-reference validation — passed
 
-- Main menu reports `0.3.88-dev`.
-- Storyteller description and selection behavior are unchanged.
-- Cassandra baseline and GateRim strategic orchestration remain unchanged.
-- No new relevant XML, texture or C# error was reported.
-- `docs/wiki/images/SG1_Command.png` is byte-identical to
-  `Textures/Storytellers/SG1_Command.png`.
+- The progressive visual-reference page displays all six gene icons.
+- The four accepted world-faction icons are visible and classified as final.
+- The seven previously accepted event-site icons are visible.
+- No image is broken or rendered at an unreadable size.
+- Every protected wiki image is byte-identical to its gameplay texture.
 
 ## Final decision
 
-The two maintainer-provided portraits are accepted as final. Revision `r2`
-completed the register, whitelist, wiki and metadata finalization, and all final
-checks passed. Revision `r3` records the publication closure only.
+The six gameplay-gene icons, four faction references and seven event-site
+references are accepted. The obsolete `SG1_JaffaLongevity` prototype is removed,
+while Prim'ta-based Jaffa longevity remains unchanged. Revision `r2` records the
+publication closure only.
 
 The milestone is published through the final feature-branch commit,
-fast-forward integration into `develop`, annotated tag `v0.3.88-dev` and the
-synchronized separate wiki. No further functional or visual test remains for
-this milestone.
+fast-forward integration into `develop`, annotated tag `v0.3.89-dev` and the
+synchronized separate wiki. No further functional, visual or documentation test
+remains for this milestone.

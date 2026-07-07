@@ -1,16 +1,12 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.88-dev`
-> Statut : portraits validés en `r1` ; finalisation documentaire `r2`
+> Version de référence : `0.3.89-dev`
+> Statut : révision locale `r1` prête pour validation dans les interfaces réelles
 
-Cette page évite de reporter toutes les références visuelles à une future passe
-globale du wiki. Lorsqu'un visuel devient définitif, sa référence doit être
-ajoutée ici dans la même révision que sa validation, avec son Def ou son usage et
-son chemin stable.
-
-Un visuel fonctionnel, publié ou utilisé depuis longtemps n'est pas
-automatiquement définitif. En l'absence d'une validation explicite, il reste
-classé comme temporaire dans le registre technique.
+Cette page rassemble les références visuelles explicitement acceptées. Une copie
+placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
+jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
+`final` exige toujours une validation explicite.
 
 ## Identité publique du mod
 
@@ -24,42 +20,56 @@ classé comme temporaire dans le registre technique.
 |---|---|---|---|---|
 | ![Portrait final de Commandement SG-1](images/SG1_Command.png) | Commandement SG-1 | `SG1_GateRimStoryteller` | `Storytellers/SG1_Command`, `Storytellers/SG1_Command_Tiny` | Grand portrait transparent `560×600` et recadrage tiny dédié `122×130`, fournis par le mainteneur puis validés dans l'interface réelle |
 
-Les deux chemins restent stables. Le remplacement n'altère ni le Def, ni les
-textes, ni la cadence Cassandra, ni l'orchestration stratégique du storyteller.
-
 ## Icônes de xénotypes validées
 
 | Icône | Xénotype | Def | Chemin sous `Textures/` | Référence visuelle |
 |---|---|---|---|---|
-| ![Icône finale du xénotype Jaffa](images/SG1_Jaffa.png) | Jaffa | `SG1_Jaffa` | `UI/Xenotypes/SG1_Jaffa` | Tête humaine blanche très épurée portant la marque d'Apophis ; PNG `64×64` fourni et approuvé par le mainteneur |
-| ![Icône finale de l'hôte Goa'uld](images/SG1_GoauldHost.png) | Hôte Goa'uld | `SG1_GoauldHost` | `UI/Xenotypes/SG1_GoauldHost` | Symbiote Goa'uld blanc simplifié, en forme de S, avec œil et mâchoire lisibles ; visuel approuvé avant intégration |
+| ![Icône finale du xénotype Jaffa](images/SG1_Jaffa.png) | Jaffa | `SG1_Jaffa` | `UI/Xenotypes/SG1_Jaffa` | Tête humaine blanche très épurée portant la marque d'Apophis |
+| ![Icône finale de l'hôte Goa'uld](images/SG1_GoauldHost.png) | Hôte Goa'uld | `SG1_GoauldHost` | `UI/Xenotypes/SG1_GoauldHost` | Symbiote Goa'uld blanc simplifié qui représente l'état acquis |
 
-Le choix du symbiote pour l'hôte Goa'uld est volontaire : la présence de cet
-organisme définit l'état acquis, tandis qu'un ancien hôte privé de son symbiote
-redevient un humain ordinaire. Cette lecture évite aussi de confondre l'hôte avec
-un Jaffa marqué.
+## Icônes de gènes proposées pour validation
+
+| Icône | Gène | Chemin sous `Textures/` | Lecture visuelle |
+|---|---|---|---|
+| ![Lignée jaffa](images/SG1_JaffaLineage.png) | `SG1_JaffaLineage` | `UI/Genes/SG1_JaffaLineage` | Visage Jaffa adulte et descendant marqué, pour la transmission de la lignée |
+| ![Physiologie jaffa](images/SG1_JaffaPhysiology.png) | `SG1_JaffaPhysiology` | `UI/Genes/SG1_JaffaPhysiology` | Caisse et flèche ascendante verte pour le bonus de capacité de transport |
+| ![Prédisposition à la poche jaffa](images/SG1_JaffaPouchPotential.png) | `SG1_JaffaPouchPotential` | `UI/Genes/SG1_JaffaPouchPotential` | Corps vanilla simplifié avec deux incisions abdominales croisées à 45 degrés |
+| ![Compatibilité avec un symbiote immature](images/SG1_JaffaSymbioteCompatibility.png) | `SG1_JaffaSymbioteCompatibility` | `UI/Genes/SG1_JaffaSymbioteCompatibility` | Larve Goa'uld brune, collerette et quatre dents, dans un cercle vert de compatibilité |
+| ![Longévité de l'hôte Goa'uld](images/SG1_GoauldLongevity.png) | `SG1_GoauldLongevity` | `UI/Genes/SG1_GoauldLongevity` | Sablier entouré de deux flèches cycliques |
+| ![Naquadah dans le sang](images/SG1_NaquadahBlood.png) | `SG1_NaquadahBlood` | `UI/Genes/SG1_NaquadahBlood` | Goutte de sang rouge avec reflet vert fluorescent rappelant une fiole de naquadah |
+
+Le prototype obsolète `SG1_JaffaLongevity` n'est plus utilisé : son `GeneDef`,
+sa traduction et son PNG dédié sont supprimés dans ce jalon. La longévité des
+Jaffa reste fournie par l'état de santé du Prim'ta.
+
+## Icônes de factions mondiales validées
+
+| Icône | Faction | Def principal | Chemin sous `Textures/` |
+|---|---|---|---|
+| ![Icône des Jaffa libres](images/SG1_FreeJaffa.png) | Jaffa libres | `SG1_FreeJaffa` | `World/WorldObjects/Expanding/SG1_FreeJaffa` |
+| ![Icône des domaines Goa'uld](images/SG1_GoauldSystemLords.png) | Domaines des Grands Maîtres Goa'uld | `SG1_GoauldSystemLordPrototype` | `World/WorldObjects/Expanding/SG1_GoauldSystemLords` |
+| ![Icône de l'expédition SGC](images/SG1_SGCExpedition.png) | Expédition SGC | `SG1_PlayerSGCExpedition` | `World/WorldObjects/Expanding/SG1_SGCExpedition` |
+| ![Icône de la cellule Tok'ra](images/SG1_Tokra.png) | Tok'ra | `SG1_Tokra` | `World/WorldObjects/Expanding/SG1_Tokra` |
 
 ## Icônes de sites d'événements validées
 
-| Événement ou site | Def ou usage principal | Chemin sous `Textures/` |
-|---|---|---|
-| Objectif Goa'uld chiffré | `SG1_TokraIntroductionArtifactWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` |
-| Champ de bataille Goa'uld | `SG1_GoauldOpenConflictBattlefieldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` |
-| Relais Goa'uld à saboter | `SG1_TokraDecodedMissionWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` |
-| Position de l'officier Jaffa | `SG1_TokraJaffaOfficerCaptureSite` | `World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition` |
-| Contact clandestin Tok'ra | `SG1_TokraHiddenSafehouseMarker`, `SG1_TokraHiddenSafehouseSitePart` | `World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact` |
-| Signal de détresse Tok'ra | `SG1_TokraDistressCallWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal` |
-| Rendez-vous logistique Tok'ra | `SG1_TokraTemporaryBaseDeliverySite` | `World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous` |
+| Icône | Événement ou site | Def ou usage principal | Chemin sous `Textures/` |
+|---|---|---|---|
+| ![Objectif Goa'uld chiffré](images/SG1_GoauldEncryptedObjective.png) | Objectif Goa'uld chiffré | `SG1_TokraIntroductionArtifactWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` |
+| ![Champ de bataille Goa'uld](images/SG1_GoauldOpenConflictBattlefield.png) | Champ de bataille Goa'uld | `SG1_GoauldOpenConflictBattlefieldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` |
+| ![Relais Goa'uld à saboter](images/SG1_GoauldRelaySabotage.png) | Relais Goa'uld à saboter | `SG1_TokraDecodedMissionWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` |
+| ![Position de l'officier Jaffa](images/SG1_JaffaOfficerFieldPosition.png) | Position de l'officier Jaffa | `SG1_TokraJaffaOfficerCaptureSite` | `World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition` |
+| ![Contact clandestin Tok'ra](images/SG1_TokraClandestineContact.png) | Contact clandestin Tok'ra | `SG1_TokraHiddenSafehouseMarker`, `SG1_TokraHiddenSafehouseSitePart` | `World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact` |
+| ![Signal de détresse Tok'ra](images/SG1_TokraDistressSignal.png) | Signal de détresse Tok'ra | `SG1_TokraDistressCallWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal` |
+| ![Rendez-vous logistique Tok'ra](images/SG1_TokraLogisticsRendezvous.png) | Rendez-vous logistique Tok'ra | `SG1_TokraTemporaryBaseDeliverySite` | `World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous` |
 
 ## Visuels encore temporaires
 
-Tous les autres visuels locaux restent temporaires à ce stade, notamment :
-
-- icônes de factions mondiales ;
-- armes, équipements et vêtements ;
-- bâtiments et objets de mission ;
-- icônes de gènes et autres surfaces biologiques ;
-- projectiles, pawns et commandes d'interface.
+Les autres visuels locaux restent temporaires, notamment les armes,
+équipements, vêtements, bâtiments, objets de mission, projectiles, pawns,
+commandes d'interface et les trois icônes techniques des marques frontales
+Jaffa. Ces trois dernières ne sont pas des gènes de gameplay et seront traitées
+dans un lot ultérieur consacré aux marques Jaffa.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

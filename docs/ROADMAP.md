@@ -34,6 +34,35 @@ de la partie.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.89-dev - Add final gene icons and complete world visual references`
+
+Branche finale :
+`feature/final-gene-icons-and-world-visual-references`, créée depuis `develop`
+aligné avec le tag publié `v0.3.88-dev`.
+
+La révision visuelle `r1` ajoute six icônes finales de gènes de gameplay,
+supprime le prototype obsolète `SG1_JaffaLongevity`, classe les quatre icônes de
+factions mondiales déjà approuvées comme finales et ajoute au wiki les images
+des six gènes, quatre factions et sept sites d'événements. Les trois icônes
+techniques des marques frontales restent explicitement exclues pour un futur lot
+Jaffa dédié.
+
+Le build forcé `0.3.89.0`, les contrôles de durées, d'assets visuels, de
+cohérence du projet et `git diff --check` passent. Les six icônes sont validées à
+leur taille réelle dans l'éditeur de xénotype, l'ancien gène de longévité Jaffa
+est absent, le soutien de longévité du Prim'ta reste intact, les galeries wiki
+sont complètes et `Player.log` ne contient aucune nouvelle erreur pertinente.
+Le libellé français long de compatibilité avec le symbiote reste inchangé par
+décision explicite du mainteneur.
+
+La clôture documentaire `r2` ne modifie aucun PNG, Def, traduction, code C#,
+assemblage, comportement ou état de sauvegarde. Le jalon est publié par commit
+final sur la branche temporaire, intégration fast-forward dans `develop`, tag
+annoté `v0.3.89-dev` et synchronisation du wiki séparé. Les suffixes locaux
+`r1` et `r2` sont absents du commit et du tag.
+
+## Jalon visuel publié précédent
+
 `0.3.88-dev - Add final storyteller SG-1 portrait`
 
 Branche finale : `feature/final-storyteller-portrait`, créée depuis `develop`
@@ -61,7 +90,7 @@ Aucun numéro de version ni nom de branche n'est encore réservé. Le prochain
 travail doit être sélectionné parmi les jalons restants de la Phase 1. La Phase 2
 reste bloquée tant que le critère de clôture du socle n'est pas satisfait.
 
-## Jalon visuel publié précédent
+## Jalon visuel publié antérieur
 
 `0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons`
 
@@ -342,8 +371,10 @@ stables lorsque cela suffit ; remplacer alors uniquement les PNG.
 
 Le premier lot publié `0.3.86-dev` couvre les icônes finales des xénotypes
 Jaffa et hôte Goa'uld. Le lot publié `0.3.88-dev` finalise les deux portraits du
-storyteller Commandement SG-1. Les autres placeholders et textures temporaires
-restent des lots ultérieurs distincts.
+storyteller Commandement SG-1. Le lot actif `0.3.89-dev` couvre six gènes de
+gameplay et la documentation visuelle des factions et sites déjà approuvés. Les
+autres placeholders et textures temporaires restent des lots ultérieurs
+distincts.
 
 Décisions encore reportées aux lots concernés : direction artistique détaillée,
 résolution, variantes et externalisation éventuelle de la création.

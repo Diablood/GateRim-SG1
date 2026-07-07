@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.88-dev`
+- Development version: `0.3.89-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,14 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.88-dev` replaces the large and tiny portraits of **SG-1 Command**
-with the two maintainer-approved transparent PNG files. The stable storyteller
-Def and texture paths are preserved, and the real interface rendering has been
-validated without clipping, opaque margins or behavior changes. The visual
-register still covers `609` PNG files under `76` canonical texture families,
-now including `11` final local families.
+`0.3.89-dev` prepares six dedicated gameplay-gene icons, removes the obsolete
+development-only `SG1_JaffaLongevity` prototype, accepts the four existing
+world-faction icon families as final and adds visible wiki references for those
+genes, factions and the seven previously validated event sites. The visual
+register now covers `608` PNG files under `75` canonical texture families,
+including `21` final local families. The active gene effects, factions, sites
+and runtime C# behavior remain unchanged.
+
 
 `0.3.87-dev` corrected the vanilla starter-generation path for GateRim
 xenotypes. An eligible adult Jaffa receives its Prim'ta before appearing on the
