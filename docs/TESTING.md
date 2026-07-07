@@ -1,5 +1,47 @@
 # Durable testing
 
+## Jaffa and Tok'ra starter symbiotes (`0.3.87-dev`)
+
+Final revision `r3` validated and published. Local revision `r1`
+validated the Jaffa path and Tok'ra dual identity whenever a symbiote was
+present. Revision `r2` corrected the transient generation guard
+but did not remove every missing-symbiote case. Revision `r3` reflects the real
+model: the mixed `SG1_GoauldHost` starter profile can produce Tok'ra or Goa'uld
+careers, and every result must carry one real adult Goa'uld-family symbiote.
+Durable coverage:
+
+- run only from the existing `ScenPart_CulturalStarterProfiles`
+  `Notify_PawnGenerated` callback under `PawnGenerationContext.PlayerStarter`;
+- create the biological state before the pawn is displayed on the starter page;
+- give every eligible adult `SG1_Jaffa` starter exactly one
+  `SG1_JaffaPrimta`;
+- give every `SG1_GoauldHost` starter exactly one persistent
+  `SG1_GoauldHostSymbiote`;
+- resolve Tok'ra careers to Tok'ra origin, a distinct generated historical host
+  identity and the existing player personality switch;
+- resolve Goa'uld careers to Goa'uld origin and never expose the Tok'ra
+  personality switch;
+- preserve the generated Goa'uld name as the symbiote identity for the
+  Goa'uld-career branch;
+- cover the first xenotype-constrained generation and every later reroll,
+  including a path that reuses the same pawn identifier;
+- reject duplicates when the Prim'ta or any persistent adult-symbiote component
+  already exists;
+- arm the transient one-generation guard only after the affected biological
+  state has reached a complete terminal result;
+- preserve the normal age threshold for Jaffa and do not initialize forced
+  underage candidates;
+- leave ordinary humans and every non-starter generation path unchanged;
+- add no first-tick, periodic or load-time reconciliation;
+- verify that removing the generated Hediff with another mod before confirming
+  the game is respected after start and reload;
+- confirm Tok'ra personality switching, backstory skill offsets and identity
+  persistence remain stable;
+- confirm Goa'uld-origin starters retain their origin and never gain Tok'ra
+  controls after save/load;
+- run build, duration, visual and complete consistency checks, then inspect
+  `Player.log`.
+
 ## Final Goa'uld-host and Jaffa xenotype icons (`0.3.86-dev`)
 
 Final revision `r2` validated and published. Revision `r1` validated the icons
@@ -4437,4 +4479,3 @@ Final revision `r3` validated and published. Durable coverage:
 - retain the Windows PowerShell regression test that prevents `.png` removal
   from leaving a trailing period and expanding canonical families into physical
   files.
-

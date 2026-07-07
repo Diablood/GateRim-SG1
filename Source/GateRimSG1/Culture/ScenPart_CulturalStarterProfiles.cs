@@ -18,6 +18,9 @@ namespace GateRimSG1.Culture
         private readonly HashSet<string> generatedStarterNameKeys
             = new HashSet<string>();
 
+        private readonly HashSet<string> initializedStarterBiologyPawnIds
+            = new HashSet<string>();
+
         public ScenPart_CulturalStarterProfiles()
         {
             visible = false;
@@ -49,8 +52,14 @@ namespace GateRimSG1.Culture
             Pawn pawn,
             PawnGenerationContext context)
         {
-            if (context != PawnGenerationContext.PlayerStarter
-                || pawn?.story == null
+            if (context != PawnGenerationContext.PlayerStarter)
+            {
+                return;
+            }
+
+            BeginStarterBiologyGeneration(pawn);
+
+            if (pawn?.story == null
                 || pawn.skills == null
                 || !CulturalProfileResolver.TryResolveStarterRule(
                     pawn,
@@ -104,12 +113,17 @@ namespace GateRimSG1.Culture
             bool redressed)
         {
             if (context != PawnGenerationContext.PlayerStarter
-                || pawn?.apparel == null
                 || !CulturalProfileResolver.TryResolveStarterRule(
                     pawn,
-                    out CulturalPawnProfileDef _,
-                    out CulturalStarterRule rule)
-                || !rule.HasStarterApparel)
+                    out CulturalPawnProfileDef profile,
+                    out CulturalStarterRule rule))
+            {
+                return;
+            }
+
+            TryInitializeStarterBiologyOnce(pawn, profile);
+
+            if (pawn?.apparel == null || !rule.HasStarterApparel)
             {
                 return;
             }
@@ -147,6 +161,37 @@ namespace GateRimSG1.Culture
                         option.stuff,
                         rule.apparelQuality);
                 }
+            }
+        }
+
+        private void BeginStarterBiologyGeneration(Pawn pawn)
+        {
+            string pawnThingId = pawn?.ThingID;
+
+            if (!pawnThingId.NullOrEmpty())
+            {
+                initializedStarterBiologyPawnIds.Remove(pawnThingId);
+            }
+        }
+
+        private void TryInitializeStarterBiologyOnce(
+            Pawn pawn,
+            CulturalPawnProfileDef profile)
+        {
+            string pawnThingId = pawn?.ThingID;
+
+            if (!pawnThingId.NullOrEmpty()
+                && initializedStarterBiologyPawnIds.Contains(pawnThingId))
+            {
+                return;
+            }
+
+            bool generationResolved
+                = StarterSymbioteInitializer.TryInitialize(pawn, profile);
+
+            if (generationResolved && !pawnThingId.NullOrEmpty())
+            {
+                initializedStarterBiologyPawnIds.Add(pawnThingId);
             }
         }
 

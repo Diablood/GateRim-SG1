@@ -8,6 +8,21 @@ persistent pendant la conversion. L'icône finale représente directement le
 symbiote Goa'uld : c'est sa présence qui distingue l'hôte actif d'un humain
 ordinaire.
 
+## Cas des personnages de départ
+
+Depuis `0.3.87-dev`, tout candidat de départ utilisant le xénotype `hôte
+Goa'uld` reçoit avant validation le véritable état adulte décrit sur cette page.
+La carrière finale détermine l'origine persistante :
+
+- une carrière Tok'ra crée un symbiote d'origine Tok'ra avec une
+  [double identité](Tokra-Dual-Identity) immédiatement disponible ;
+- une carrière Goa'uld crée un symbiote d'origine Goa'uld sans commande de
+  changement de personnalité Tok'ra.
+
+Le xénotype ne peut donc plus apparaître comme un simple humain amélioré sans
+symbiote. Une suppression volontaire effectuée avec un mod d'édition après
+l'affichage reste toutefois respectée au lancement et au rechargement.
+
 ## Effets biologiques
 
 L'hôte bénéficie notamment d'une guérison et d'une immunité accélérées, d'une réduction de la douleur et des dégâts entrants, et d'une longévité fortement augmentée. Son xenotype germinal n'est pas remplacé.

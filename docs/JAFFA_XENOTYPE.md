@@ -35,6 +35,19 @@ This persistent Hediff currently grants:
 | Lifespan expectancy | `×1.5` |
 | Pain | `×0.85` |
 
+
+## Player starters since 0.3.87-dev
+
+The inheritable xenotype still does not contain a larva. However, an eligible
+adult Jaffa generated through the vanilla starter-selection page now receives
+one `SG1_JaffaPrimta` before being shown to the player. Each xenotype-constrained
+reroll is treated independently. Children below the existing implantation age
+remain without a Prim'ta.
+
+No later reconciliation is performed. A player using another mod to remove the
+Prim'ta after generation may deliberately begin without it and face the normal
+dependency system.
+
 ## Prototype limitations
 
 The XML-only version does not yet implement:

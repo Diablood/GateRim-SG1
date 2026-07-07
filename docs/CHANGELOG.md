@@ -1,5 +1,77 @@
 # Changelog
 
+## 0.3.87-dev - Fix Jaffa and Tok'ra starter symbiotes
+
+- Start from published `develop` and annotated tag `v0.3.86-dev` at commit
+  `bbbb981fb54131964a05b6f7626b5472cbc399dd` on
+  `fix/jaffa-tokra-starter-symbiotes`.
+- Correct only the vanilla `PawnGenerationContext.PlayerStarter` path used when
+  a player selects a GateRim xenotype and accepts or rerolls the generated pawn.
+- Reuse the hidden `ScenPart_CulturalStarterProfiles` callback so the biological
+  state is attached before the pawn appears on the starter configuration page.
+- Give an eligible adult `SG1_Jaffa` starter exactly one
+  `SG1_JaffaPrimta`, visible immediately in the health preview.
+- Recognize a Tok'ra starter as an `SG1_GoauldHost` xenotype whose final
+  adulthood resolves to the existing Tok'ra cultural name group.
+- Give that starter exactly one persistent `SG1_GoauldHostSymbiote` with Tok'ra
+  origin, the generated symbiote identity and a distinct historical human-host
+  identity selected through the existing Tok'ra identity profile.
+- Preserve the first generated pawn and every later xenotype-constrained reroll
+  as independent one-time generation events, guarded by a non-serialized
+  starter-session ThingID set.
+- Prevent duplicate Prim'ta or adult-symbiote states when another source already
+  supplied the required component.
+- Keep the correction generation-only: add no game-level tracker, first-tick
+  scan, load-time repair or persistent reconciliation, so a player can
+  deliberately remove a starter symbiote with another mod before confirming the
+  game without a repeated callback restoring it.
+- Preserve ordinary humans, underage Jaffa, Goa'uld-cultural host starters,
+  non-player PawnKinds, world generation, incidents, implantation, extraction,
+  xenotype definitions and existing saves.
+- Add focused durable tests for starter-page health visibility, repeated rerolls,
+  dual-identity switching, save/load, duplicate prevention and voluntary removal.
+- Prepare local revision `r1` for build and in-game validation. No commit, push,
+  tag or wiki publication is included.
+- Partially validate `r1`: Jaffa starters receive their Prim'ta, and Tok'ra
+  personality switching works correctly whenever the generated symbiote is
+  present, but some Tok'ra rerolls still appear without a symbiote.
+- Identify the order-sensitive one-shot guard as the remaining defect: `r1`
+  registered the pawn ThingID before the current generation had actually
+  resolved as Tok'ra, so a later eligible callback or identifier-reusing reroll
+  could be skipped.
+- Prepare corrective revision `r2`: reset the transient guard when a new starter
+  generation begins, make biological initialization return a completion result,
+  and arm the guard only after the affected Jaffa or Tok'ra state has been
+  resolved successfully.
+- Preserve the validated Jaffa path, Tok'ra dual-identity implementation,
+  duplicate checks, voluntary-removal contract and absence of runtime or
+  load-time reconciliation.
+- Retest `r2` and observe the same missing-symbiote symptom. The remaining
+  cases are not order-sensitive Tok'ra failures: the mixed
+  `SG1_GoauldHost` starter profile also produces Goa'uld-cultural careers,
+  while the first two revisions intentionally left that branch without a real
+  symbiote.
+- Decide that every starter carrying the acquired `SG1_GoauldHost` xenotype
+  must carry one persistent adult Goa'uld-family symbiote. Use the final
+  cultural career only to select the persistent origin.
+- Prepare corrective revision `r3`: preserve Tok'ra origin, generated host
+  identity and personality switching for Tok'ra careers; create a Goa'uld-
+  origin symbiote for every other host-xenotype result and expose no Tok'ra
+  personality switch there.
+- Keep the validated Jaffa path, duplicate prevention, generation-only timing
+  and voluntary-removal contract unchanged.
+- Validate final local revision `r3`: eligible adult Jaffa starters consistently
+  display exactly one Prim'ta, every `SG1_GoauldHost` starter displays exactly one
+  persistent adult symbiote, Tok'ra careers retain dual identity and personality
+  switching, and Goa'uld careers retain Goa'uld origin without Tok'ra controls.
+- Confirm that the biological states are visible before starter confirmation,
+  rerolls remain complete, no duplicate is created and no runtime or load-time
+  reconciliation restores a deliberately removed symbiote.
+- Publish the validated `r3` state through the final fix-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.87-dev` and
+  synchronized separate wiki. The final commit and tag omit the local `r3`
+  suffix.
+
 ## 0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons
 
 - Start from published `develop` and annotated tag `v0.3.85-dev` at commit

@@ -50,6 +50,23 @@ Since `0.2.3-dev`, naturally generated Goa'uld host castes also use that
 persistent Hediff architecture. The xenotype remains available as an early
 prototype and manual-test artifact.
 
+## Player starters since 0.3.87-dev
+
+The starter cultural profile intentionally mixes Goa'uld-host and Tok'ra adult
+careers under this non-inheritable xenotype. Every generated starter using
+`SG1_GoauldHost` now receives the real persistent adult-symbiote Hediff before
+it appears on the configuration page.
+
+- a Tok'ra cultural result receives Tok'ra origin, keeps the generated Tok'ra
+  identity as the symbiote identity and gains a distinct historical human-host
+  identity with the existing personality switch;
+- a Goa'uld cultural result receives Goa'uld origin, keeps the generated Goa'uld
+  name as the symbiote identity and exposes no Tok'ra personality switch.
+
+The callback does not repair or reimplant anything after generation. A player
+using another editor mod can therefore remove the symbiote from the displayed
+pawn and deliberately begin without it.
+
 ## Future architecture
 
 The final system should follow this cycle:

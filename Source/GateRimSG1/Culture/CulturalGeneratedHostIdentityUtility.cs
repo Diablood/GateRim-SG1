@@ -18,11 +18,44 @@ namespace GateRimSG1.Culture
             string excludedName,
             out GeneratedHostIdentity identity)
         {
-            identity = null;
-
             CulturalPawnProfileDef profile = CulturalProfileResolver.ResolveProfile(
                 pawn,
                 PawnGenerationContext.NonPlayer);
+
+            return TryGenerate(
+                pawn,
+                profile,
+                identityKey,
+                excludedName,
+                out identity);
+        }
+
+        public static bool TryGenerateForIdentityProfile(
+            Pawn pawn,
+            CulturalPawnNameGroup nameGroup,
+            string identityKey,
+            string excludedName,
+            out GeneratedHostIdentity identity)
+        {
+            CulturalPawnProfileDef profile
+                = CulturalProfileResolver.ResolveIdentityProfile(nameGroup);
+
+            return TryGenerate(
+                pawn,
+                profile,
+                identityKey,
+                excludedName,
+                out identity);
+        }
+
+        private static bool TryGenerate(
+            Pawn pawn,
+            CulturalPawnProfileDef profile,
+            string identityKey,
+            string excludedName,
+            out GeneratedHostIdentity identity)
+        {
+            identity = null;
 
             List<GeneratedHostOriginDef> origins = profile?.generatedHostOrigins
                 ?.Where(origin => origin != null && origin.CanGenerateFor(pawn))

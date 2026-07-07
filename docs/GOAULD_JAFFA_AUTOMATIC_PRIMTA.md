@@ -43,3 +43,17 @@ The behavior is implemented by
    Prim'ta.
 10. For the original milestone only, confirm that no natural Goa'uld raid,
     settlement or trader was enabled by Prim'ta initialization itself.
+## Player-starter path since 0.3.87-dev
+
+A Jaffa selected through the vanilla starting-pawn xenotype control uses an
+ordinary player PawnKind and therefore does not match the historical generated
+Jaffa PawnKind list. The hidden cultural starter scenario part now adds one
+`SG1_JaffaPrimta` during `PawnGenerationContext.PlayerStarter`, before the pawn
+is displayed.
+
+The existing age, compatibility and duplicate checks are reused. The hidden
+scenario part resets its non-serialized ThingID guard at the beginning of each
+starter-generation cycle and arms it only after the Jaffa path is resolved.
+This covers a reroll even if RimWorld reuses the same pawn identifier, while
+deliberately removing the Prim'ta from an already displayed pawn with another
+mod is not reversed at game start or on load.

@@ -1,5 +1,15 @@
 # Histoires culturelles
 
+### Complétion biologique des starters
+
+Depuis `0.3.87-dev`, la carrière finale choisie par ce système participe aussi à
+la complétion biologique avant affichage : un Jaffa adulte reçoit son Prim'ta
+et tout `hôte Goa'uld` reçoit un vrai symbiote adulte. Une carrière Tok'ra crée
+l'origine Tok'ra avec une identité humaine distincte ; une carrière Goa'uld
+crée l'origine Goa'uld sans changement de personnalité Tok'ra. Les rerolls
+restent indépendants et aucune suppression manuelle ultérieure n'est annulée.
+
+
 > Statut : Base culturelle enrichie
 >
 > Version documentée : `0.3.19-dev`

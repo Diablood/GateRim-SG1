@@ -47,6 +47,25 @@ sans génération artificielle. Après extraction d'un Tok'ra pré-fusionné pui
 réimplantation dans un nouveau colon, la véritable identité du nouveau colon
 remplace l'ancienne origine générée.
 
+## Tok'ra dans les personnages de départ
+
+Depuis `0.3.87-dev`, la page vanilla des pawns de départ peut produire un vrai
+Tok'ra à partir du xénotype `hôte Goa'uld` lorsque la carrière finale tirée
+appartient au groupe culturel Tok'ra. Avant même la confirmation du groupe, le
+panneau Santé affiche le symbiote adulte et son résumé conserve deux identités
+distinctes.
+
+Le même xénotype peut aussi tirer une carrière Goa'uld. Ce résultat reçoit lui
+aussi un vrai symbiote adulte, mais d'origine Goa'uld et sans commande de
+changement de personnalité. Ainsi, tous les rerolls du xénotype représentent une
+biologie Goa'uld-family complète, tandis que la carrière distingue l'allégeance
+et le comportement identitaire.
+
+Le premier candidat et chaque clic de régénération sont initialisés séparément.
+Une fois le pawn affiché, GateRim n'impose plus le symbiote : une suppression
+volontaire réalisée avec un mod d'édition est conservée au lancement et au
+rechargement.
+
 ## Basculement de personnalité
 
 Un Tok'ra appartenant réellement à la colonie et directement contrôlé par le
@@ -126,4 +145,3 @@ Les anciennes lettres déjà reçues restent des traces historiques et ne sont p
 réécrites après un basculement ultérieur. La mort, les cadavres et la
 résurrection sont audités avant toute correction spécifique afin d'éviter un
 second système d'identité parallèle.
-

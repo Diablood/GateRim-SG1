@@ -12,6 +12,26 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
+## Dernier jalon correctif et gameplay validé et publié
+
+`0.3.87-dev - Fix Jaffa and Tok'ra starter symbiotes`
+
+Branche finale : `fix/jaffa-tokra-starter-symbiotes`, créée depuis `develop`
+aligné avec le tag publié `v0.3.86-dev`.
+
+La révision finale `r3` est validée et publiée. Le correctif agit uniquement
+pendant `PawnGenerationContext.PlayerStarter`, avant l'affichage du pawn sur la
+page vanilla de configuration. Chaque Jaffa adulte éligible reçoit exactement
+un Prim'ta et chaque candidat `SG1_GoauldHost` reçoit exactement un véritable
+symbiote adulte persistant.
+
+La carrière finale détermine l'origine : Tok'ra avec identité humaine distincte
+et changement de personnalité, ou Goa'uld sans commande Tok'ra. Le premier
+pawn et chaque reroll contraint par xénotype sont couverts, sans doublon.
+Aucune réconciliation au premier tick ou au chargement n'est ajoutée, afin de
+respecter un retrait volontaire effectué avec un mod d'édition avant le début
+de la partie.
+
 ## Dernier jalon visuel validé et publié
 
 `0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons`
@@ -53,7 +73,7 @@ ainsi que tout ajout, suppression, renommage ou déplacement d'image, doit mettr
 à jour le registre technique et la page wiki de références dans la même
 révision. Le premier lot a ensuite été publié sous `0.3.86-dev`.
 
-## Dernier jalon gameplay validé et publié
+## Jalon gameplay précédent
 
 `0.3.84-dev - Add first bounded Goa'uld territorial takeover`
 
@@ -66,7 +86,7 @@ Le transfert, sa lettre ciblée et ses cooldowns persistent après
 sauvegarde/rechargement sans modifier relations, raids, doctrines, missions,
 récompenses ou fréquence storyteller.
 
-## Jalon gameplay précédent
+## Jalon gameplay antérieur
 
 `0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence`
 
@@ -80,7 +100,7 @@ automatique sont bloqués, l'expansion ralentit avec la taille et une seule
 réservation sèche persistante peut exister. Aucun territoire n'est créé,
 transféré ou détruit.
 
-## Jalon gameplay antérieur
+## Jalon gameplay plus ancien
 
 `0.3.82-dev - Add Goa'uld alliance rupture after major failure`
 
@@ -148,7 +168,9 @@ Les éléments suivants ne doivent plus être proposés comme nouveaux jalons :
   `0.3.82-dev` ;
 - garde-fous territoriaux et cohérence diplomatique inter-domaines :
   `0.3.83-dev` ;
-- première prise territoriale Goa'uld bornée : `0.3.84-dev`.
+- première prise territoriale Goa'uld bornée : `0.3.84-dev` ;
+- correction des Prim'ta et symbiotes des starters Jaffa, Tok'ra et Goa'uld :
+  `0.3.87-dev`.
 
 Le poste d'observation, les équipements d'officier et les autres visuels
 provisoires restent toutefois inclus dans la future passe artistique définitive.
@@ -319,20 +341,16 @@ la galerie.
 
 ### Garantir les composants biologiques des Jaffa et Tok'ra de départ
 
-Corriger le cas observé dans un scénario personnalisé où un pawn choisi comme
-Jaffa par son seul xénotype commence sans Prim'ta, et où un pawn choisi comme
-Tok'ra commence sans véritable symbiote Tok'ra ni double identité. Ces deux
-starters doivent être fonctionnels dès le premier tick sans transformer les
-xénotypes en substituts artificiels des états biologiques acquis.
+Jalon actif `0.3.87-dev`. La source exacte est la génération vanilla
+`PlayerStarter` déjà consommée par les profils culturels. Le composant est créé
+avant la page de confirmation afin d'être visible et modifiable. Un Jaffa doit
+respecter les règles d'âge et de compatibilité existantes. Un Tok'ra est reconnu
+par le xénotype `SG1_GoauldHost` combiné à une carrière finale du groupe Tok'ra.
 
-Le futur jalon doit couvrir les starters vanilla et personnalisés, les outils de
-création ou d'édition de pawns, la réconciliation au démarrage et au chargement,
-et la prévention des doublons lorsque le Prim'ta, le symbiote ou l'identité
-Tok'ra existe déjà.
-
-Décisions reportées au lancement : sources exactes de génération concernées,
-règles d'âge et d'éligibilité du Jaffa, comportement des anciens pawns et niveau
-de migration des sauvegardes.
+La prévention des doublons est obligatoire, mais aucune migration de sauvegarde,
+réconciliation de démarrage ou réparation au chargement ne doit être ajoutée.
+Cette absence est volontaire afin qu'une suppression réalisée par un mod
+d'édition après génération ne soit jamais annulée.
 
 ## Maintenance et audits transversaux
 

@@ -4,8 +4,22 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.86-dev`
-> Révision finale : `r2`, validée et publiée ; références visuelles présentes sur les pages dédiées
+> Version du mod documentée : `0.3.87-dev`
+> Révision finale publiée : `r3`
+
+## Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ
+
+`0.3.87-dev` corrige la génération vanilla lorsque le joueur choisit un
+xénotype GateRim sur la page des personnages de départ. Un Jaffa adulte
+éligible affiche désormais son Prim'ta dans le panneau Santé avant validation.
+Tout candidat `hôte Goa'uld` reçoit également un véritable symbiote adulte :
+une carrière Tok'ra crée l'origine Tok'ra et deux identités distinctes, tandis
+qu'une carrière Goa'uld crée l'origine Goa'uld sans commande de changement de
+personnalité Tok'ra.
+
+Chaque clic de régénération produit un nouveau pawn complet. Le mod n'effectue
+ensuite aucune réimplantation automatique : retirer volontairement le symbiote
+avec un mod d'édition avant de lancer la partie reste un choix valide.
 
 ## Icônes finales des xénotypes Jaffa et hôte Goa'uld
 

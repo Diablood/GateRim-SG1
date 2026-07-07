@@ -98,6 +98,27 @@ namespace GateRimSG1.Goauld
             Pawn host,
             int currentTick)
         {
+            return CreatePreJoinedTokra(
+                host,
+                currentTick,
+                allowStarterGoauldHostXenotype: false);
+        }
+
+        public static GoauldSymbioteData CreatePreJoinedTokraStarter(
+            Pawn host,
+            int currentTick)
+        {
+            return CreatePreJoinedTokra(
+                host,
+                currentTick,
+                allowStarterGoauldHostXenotype: true);
+        }
+
+        private static GoauldSymbioteData CreatePreJoinedTokra(
+            Pawn host,
+            int currentTick,
+            bool allowStarterGoauldHostXenotype)
+        {
             var data = new GoauldSymbioteData
             {
                 origin = GoauldSymbioteOrigin.Tokra
@@ -115,7 +136,10 @@ namespace GateRimSG1.Goauld
                 data.symbioteAdulthood = host.story.Adulthood;
             }
 
-            if (!data.TryInitializeGeneratedPreJoinedHost(host, currentTick))
+            if (!data.TryInitializeGeneratedPreJoinedHost(
+                    host,
+                    currentTick,
+                    allowStarterGoauldHostXenotype))
             {
                 GR_Log.Error(
                     "Cannot generate a distinct historical host identity for "
@@ -375,10 +399,26 @@ namespace GateRimSG1.Goauld
             Pawn host,
             int currentTick)
         {
+            return TryInitializeGeneratedPreJoinedHost(
+                host,
+                currentTick,
+                allowStarterGoauldHostXenotype: false);
+        }
+
+        private bool TryInitializeGeneratedPreJoinedHost(
+            Pawn host,
+            int currentTick,
+            bool allowStarterGoauldHostXenotype)
+        {
+            bool supportedGeneratedHost = host?.kindDef
+                == GR_DefOf.SG1_TokraVoluntaryHost;
+            bool supportedStarterHost = allowStarterGoauldHostXenotype
+                && host?.genes?.Xenotype == GR_DefOf.SG1_GoauldHost;
+
             if (origin != GoauldSymbioteOrigin.Tokra
                 || host?.story == null
                 || host.skills == null
-                || host.kindDef != GR_DefOf.SG1_TokraVoluntaryHost
+                || (!supportedGeneratedHost && !supportedStarterHost)
                 || hostIdentitySource == TokraHostIdentitySource.ImplantedExistingHost)
             {
                 return false;
@@ -398,11 +438,30 @@ namespace GateRimSG1.Goauld
 
             EnsureIdentity(currentTick);
 
-            if (!CulturalGeneratedHostIdentityUtility.TryGenerate(
-                host,
-                symbioteId,
-                symbioteName,
-                out GeneratedHostIdentity generatedIdentity))
+            GeneratedHostIdentity generatedIdentity;
+            bool generatedHostIdentity;
+
+            if (allowStarterGoauldHostXenotype)
+            {
+                generatedHostIdentity = CulturalGeneratedHostIdentityUtility
+                    .TryGenerateForIdentityProfile(
+                        host,
+                        CulturalPawnNameGroup.Tokra,
+                        symbioteId,
+                        symbioteName,
+                        out generatedIdentity);
+            }
+            else
+            {
+                generatedHostIdentity
+                    = CulturalGeneratedHostIdentityUtility.TryGenerate(
+                        host,
+                        symbioteId,
+                        symbioteName,
+                        out generatedIdentity);
+            }
+
+            if (!generatedHostIdentity)
             {
                 return false;
             }

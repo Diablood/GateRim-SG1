@@ -1,173 +1,224 @@
 # Current milestone test procedure
 
-Jalon : `0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons`
+Jalon : `0.3.87-dev - Fix Jaffa and Tok'ra starter symbiotes`
 
-Final local revision: `r2`
+Révision locale : `r3`
 
-Version de DLL attendue : `0.3.86.0`
+Version de DLL attendue : `0.3.87.0`
 
-Status: **final revision `r2` validated and published**.
+Statut : **révision finale `r3` validée et publiée**.
 
-## Purpose
+## Objectif
 
-Validate the first bounded definitive-art replacement lot. Revision `r1`
-changed the two xenotype icons and passed the focused in-game test. Revision
-`r2` adds byte-identical copies to the wiki source, displays them on the
-dedicated pages and extends the checker against visual drift.
+Valider que les états biologiques obligatoires sont créés pendant la génération
+vanilla des personnages de départ, avant leur affichage sur la page de
+configuration :
 
-The two source visuals were explicitly approved before packaging:
+- un Jaffa adulte éligible porte déjà son Prim'ta ;
+- tout pawn utilisant le xénotype `hôte Goa'uld` porte déjà un véritable
+  symbiote adulte ;
+- une carrière Tok'ra produit un symbiote d'origine Tok'ra avec deux identités ;
+- une carrière Goa'uld produit un symbiote d'origine Goa'uld sans changement de
+  personnalité Tok'ra.
 
-- Jaffa: maintainer-supplied `64×64` human/Baseliner icon carrying the mark of
-  Apophis;
-- Goa'uld host: approved simplified white Goa'uld symbiote silhouette, used
-  because the symbiote itself defines the acquired host state.
+Le correctif ne doit jamais réimplanter un symbiote après que le pawn a été
+présenté au joueur. Une suppression volontaire réalisée avec un mod d'édition
+sur cette page doit rester effective.
 
-## Preconditions
+## Résultats observés avec r1 et r2
 
-- start from published `develop` aligned with `v0.3.85-dev`;
-- work on `feature/final-xenotype-icons`;
-- apply `0.3.86-dev-r1` first, then the incremental `0.3.86-dev-r2` ZIP from
-  the repository root;
-- keep Biotech and Harmony active;
-- do not stage the ZIP itself.
+- le Jaffa reçoit correctement son Prim'ta ;
+- lorsqu'un Tok'ra possède son symbiote, les deux identités et le changement de
+  personnalité fonctionnent correctement ;
+- certains rerolls du xénotype `hôte Goa'uld` restent sans symbiote ;
+- la correction du garde transitoire dans `r2` ne change pas ce résultat.
 
-## Automated validation
+La cause réelle est le profil culturel mixte : un même xénotype peut recevoir
+une carrière Tok'ra ou Goa'uld, tandis que les deux premières révisions ne
+créaient un symbiote que pour la branche Tok'ra. `r3` crée désormais un
+symbiote pour les deux branches et utilise la carrière finale uniquement pour
+déterminer l'origine persistante.
 
-Run from the repository root:
+## Résultat final
+
+La révision `r3` est validée par le mainteneur :
+
+- le chemin Jaffa reste fonctionnel et systématique pour les adultes éligibles ;
+- chaque starter `SG1_GoauldHost` reçoit exactement un symbiote adulte ;
+- les carrières Tok'ra conservent la double identité et le changement de
+  personnalité ;
+- les carrières Goa'uld reçoivent l'origine Goa'uld sans commande Tok'ra ;
+- les rerolls ne laissent plus de simple humain amélioré sans symbiote ;
+- aucun doublon ou correctif de chargement n'est introduit.
+
+## Préconditions
+
+- partir de `develop` aligné avec `v0.3.86-dev` au commit
+  `bbbb981fb54131964a05b6f7626b5472cbc399dd` ;
+- travailler sur `fix/jaffa-tokra-starter-symbiotes` ;
+- avoir déjà appliqué `0.3.87-dev-r1` puis `r2`, et appliquer le ZIP correctif
+  `0.3.87-dev-r3` depuis la racine du dépôt ;
+- activer Harmony et Biotech ;
+- utiliser un scénario vanilla ou personnalisé normal, sans starter Jaffa ou
+  Tok'ra imposé par GateRim ;
+- garder le mode développeur désactivé pour le test principal.
+
+## Build et contrôles automatiques
 
 ```powershell
-./build.cmd
-./tools/check-duration-formatting.cmd
-./tools/check-visual-assets.cmd
-./tools/check-project-consistency.cmd
+.\build.cmd
+.\tools\check-duration-formatting.cmd
+.\tools\check-visual-assets.cmd
+.\tools\check-project-consistency.cmd -ExpectedVersion 0.3.87-dev
 
 git diff --check
 git status --short
 ```
 
-Expected visual-check summary:
+Résultats attendus :
+
+- assembly `1.6/Assemblies/GateRimSG1.dll` en version `0.3.87.0` ;
+- aucun échec XML, traduction, durée, asset ou cohérence ;
+- aucune modification des comptes du registre visuel ;
+- aucun ZIP ou script d'application indexé.
+
+## Test principal : groupe mixte
+
+Depuis la page vanilla où les pawns de départ peuvent être remplacés et
+régénérés :
+
+1. conserver deux humains ordinaires ;
+2. choisir le xénotype `Jaffa` pour un troisième pawn ;
+3. choisir le xénotype `hôte Goa'uld` pour un quatrième pawn ;
+4. ouvrir le panneau Santé de chaque candidat avant de valider la partie.
+
+Résultat attendu :
+
+- les deux humains restent inchangés ;
+- le Jaffa adulte affiche `symbiote du Prim'ta` ;
+- l'hôte Goa'uld affiche `symbiote adulte de la famille Goa'uld` quelle que soit
+  sa carrière finale ;
+- une carrière Tok'ra affiche un nom d'hôte distinct, un nom de symbiote
+  distinct, leurs parcours et la personnalité active ;
+- une carrière Goa'uld affiche une origine Goa'uld et ne possède pas le gizmo de
+  changement de personnalité Tok'ra ;
+- aucun doublon de Hediff ou de trace de naquadah n'apparaît.
+
+## Matrice de régénération r3
+
+1. conserver le même emplacement de starter ;
+2. sélectionner le xénotype `hôte Goa'uld` ;
+3. effectuer au moins vingt rerolls ;
+4. ouvrir immédiatement Santé pour chaque candidat ;
+5. noter séparément la carrière finale et l'origine du symbiote.
+
+Résultat attendu :
+
+- `20/20` candidats possèdent exactement un symbiote adulte persistant avant
+  validation ;
+- chaque carrière Tok'ra produit une origine Tok'ra avec deux identités et un
+  changement de personnalité fonctionnel ;
+- chaque carrière Goa'uld produit une origine Goa'uld sans gizmo Tok'ra ;
+- aucun candidat ne dépend de l'ordre des callbacks ou d'un ThingID réutilisé ;
+- aucun doublon n'apparaît lorsque plusieurs notifications concernent la même
+  génération.
+
+## Régression Jaffa
+
+1. sélectionner le xénotype `Jaffa` ;
+2. effectuer au moins dix rerolls adultes ;
+3. inspecter Santé avant chaque nouveau reroll.
+
+Résultat attendu :
+
+- chaque adulte éligible possède exactement un Prim'ta ;
+- aucun pawn sous l'âge biologique minimal de `10` ans ne reçoit de Prim'ta
+  forcé ;
+- aucune dépendance au Prim'ta n'est déjà active sur un Jaffa correctement
+  initialisé.
+
+## Démarrage, identité et sauvegarde
+
+1. valider un groupe contenant un Jaffa, un hôte Goa'uld d'origine Tok'ra et un
+   hôte Goa'uld d'origine Goa'uld ;
+2. confirmer que les pawns apparaissent normalement sur la carte ;
+3. utiliser le gizmo de changement d'identité uniquement sur le Tok'ra ;
+4. vérifier Bio, Social et Santé ;
+5. sauvegarder puis recharger ;
+6. basculer de nouveau l'identité Tok'ra.
+
+Résultat attendu :
+
+- le Jaffa conserve son Prim'ta ;
+- les deux hôtes conservent le même identifiant et la même origine de symbiote ;
+- le Tok'ra conserve ses deux identités et le changement de personnalité ;
+- l'hôte Goa'uld ne reçoit jamais le gizmo Tok'ra ;
+- les bonus de backstory ne s'empilent pas ;
+- aucun composant biologique supplémentaire n'est créé au premier tick ou au
+  chargement.
+
+## Suppression volontaire avec un mod d'édition
+
+Ce test nécessite uniquement un mod capable de retirer un Hediff depuis l'écran
+de départ.
+
+1. générer un Jaffa ou un hôte Goa'uld correctement initialisé ;
+2. retirer volontairement son Prim'ta ou son symbiote adulte sans régénérer le
+   pawn ;
+3. valider la partie ;
+4. attendre plusieurs jours, sauvegarder et recharger.
+
+Résultat attendu :
+
+- l'état retiré n'est pas recréé à la validation, au premier tick ni au
+  chargement ;
+- le Jaffa peut ensuite subir normalement la dépendance prévue par son absence
+  de Prim'ta ;
+- l'hôte privé de symbiote reste dans cet état tant que le joueur ne passe pas
+  par une implantation réelle.
+
+## Cas limites
+
+- **Jaffa déjà porteur** : un état ajouté par une autre source avant le callback
+  ne doit pas être dupliqué.
+- **Hôte déjà porteur** : tout Hediff possédant
+  `HediffComp_GoauldSymbiote` bloque une seconde création.
+- **Jaffa trop jeune forcé par un mod** : aucun Prim'ta automatique avant l'âge
+  biologique minimal de `10` ans.
+- **Plusieurs Jaffa/hôtes** : chaque nouveau pawn est traité indépendamment.
+- **Pawns non starters** : visiteurs, raids, quêtes, prisonniers et générations
+  développeur conservent leurs initialisateurs historiques.
+- **Scénario SG isolé** : les quatre Tau'ri prévus restent inchangés.
+
+## Player.log
+
+Vérifier l'absence de nouvelles erreurs relatives à :
 
 ```text
-Final local texture families: 9
-Local PNG files: 609
-Local texture families: 76
-Direct external texture paths: 6
-Missing local references: 0
-Unregistered local families: 0
-
-Visual asset check passed.
-```
-
-The check must also confirm that the exact final-family whitelist contains:
-
-```text
-UI/Xenotypes/SG1_GoauldHost
-UI/Xenotypes/SG1_Jaffa
-```
-
-alongside the seven already validated event-site families.
-
-
-## Focused wiki-reference validation completed in r2
-
-The final validation used:
-
-```powershell
-./tools/sync-wiki.cmd
-```
-
-The maintainer confirmed:
-
-- `Jaffa.md` visibly displays `images/SG1_Jaffa.png`;
-- `Active-Goauld-Host.md` visibly displays `images/SG1_GoauldHost.png`;
-- `Visual-Assets.md` displays both final icons in its xenotype table;
-- both wiki PNGs are byte-identical to their files under
-  `Textures/UI/Xenotypes/`;
-- no broken image placeholder or oversized rendering appears.
-
-## Focused in-game validation already completed in r1
-
-### 1. Main-menu smoke test
-
-1. Start RimWorld with GateRim SG-1, Harmony and Biotech.
-2. Reach the main menu.
-3. Confirm the displayed mod version is `0.3.86-dev`.
-4. Confirm no red XML, texture, translation or C# error appears.
-
-### 2. Jaffa xenotype icon
-
-Open a Biotech xenotype-selection, xenotype-editor or another vanilla surface
-that displays xenotype icons.
-
-Confirm:
-
-- `Jaffa` uses the new local icon;
-- the icon reads as a simplified white human head with the mark of Apophis;
-- the unrelated vanilla Hussar icon no longer appears;
-- the icon is not magenta or missing;
-- the mark remains recognizable at the actual small UI scale;
-- no mouth, mask, equipment or added decorative background was introduced.
-
-### 3. Goa'uld-host xenotype icon
-
-On the same type of interface, confirm:
-
-- `Goa'uld host` uses the new simplified symbiote silhouette;
-- the personal red-and-black demon mod icon no longer appears;
-- the white S-shaped organism, eye, open jaw and body breaks remain readable at
-  the actual small UI scale;
-- the icon does not resemble a Jaffa forehead mark or a faction emblem;
-- the image is not magenta, clipped or unexpectedly tinted.
-
-### 4. Regression boundary
-
-Confirm that the icon-only lot does not change:
-
-- Jaffa inheritance or gene list;
-- Goa'uld-host non-inheritable state or gene list;
-- xenotype combat-power factors;
-- pawn generation;
-- implantation, extraction or symbiote lifecycle;
-- existing save loading.
-
-A new game is sufficient for visual validation, but one existing save containing
-a Jaffa or Goa'uld host may be loaded to confirm that no state migration occurs.
-
-### 5. Log review
-
-Close the game and inspect `Player.log`.
-
-Reject the revision if a new relevant error mentions:
-
-```text
+StarterSymbioteInitializer
+ScenPart_CulturalStarterProfiles
 SG1_Jaffa
 SG1_GoauldHost
-UI/Xenotypes/SG1_Jaffa
-UI/Xenotypes/SG1_GoauldHost
-Could not load texture
-XML error
+SG1_JaffaPrimta
+SG1_GoauldHostSymbiote
+GoauldSymbioteData
+CulturalGeneratedHostIdentityUtility
+DefOf
+PawnGeneration
 ```
 
-## Expected repository baseline
+Avec les informations de debug avancées activées, une génération correcte peut
+produire une trace d'initialisation par nouveau pawn. Aucune erreur ni warning ne
+doit apparaître pendant les rerolls ordinaires.
 
-- `609` PNG files;
-- `76` canonical local texture families;
-- `9` final local families;
-- `13` personal-icon placeholder families;
-- `15` P0 families;
-- `6` direct external texture paths;
-- no local texture reference missing;
-- no unregistered local family.
+## Critère de validation satisfait
 
-## Final result
+La révision est validable seulement si :
 
-Revision `r2` is validated and published. The successful `r1` gameplay result
-remains intact, all automated checks pass, and the exact two final PNGs render
-correctly on the dedicated wiki pages and the progressive visual-reference
-page.
-
-An unrelated pre-existing starter-generation issue was observed during a custom
-new-game test: selecting only the Jaffa or Tok'ra xenotype does not necessarily
-create the required Prim'ta, Tok'ra symbiote or dual identity. This does not
-invalidate the icon-only milestone and is tracked as a separate future gameplay
-milestone in `docs/ROADMAP.md`.
+- les états biologiques sont visibles avant la confirmation des starters ;
+- chaque reroll `SG1_GoauldHost` produit exactement un symbiote adulte ;
+- l'origine Tok'ra ou Goa'uld correspond à la carrière finale ;
+- le démarrage et le rechargement ne dupliquent rien ;
+- une suppression volontaire après génération reste respectée ;
+- les générations non concernées ne changent pas ;
+- le build, tous les contrôles et `Player.log` sont propres.

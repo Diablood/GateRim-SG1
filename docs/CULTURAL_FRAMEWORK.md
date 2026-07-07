@@ -75,6 +75,32 @@ The ordinary-human profile is deliberately lower priority than the Jaffa, Goa'ul
 
 The SG-team profile intentionally preserves the existing vanilla childhood until a dedicated Tau'ri childhood set is designed. This milestone does not increase the number of backstories.
 
+### Starter biological completion (`0.3.87-dev`)
+
+The same hidden scenario part completes the biological state implied by two
+GateRim starter profiles during `Notify_PawnGenerated`, after the final
+backstory and cultural name have been selected but before the pawn is shown to
+the player.
+
+- an eligible adult `SG1_Jaffa` receives one `SG1_JaffaPrimta`;
+- every `SG1_GoauldHost` receives one persistent adult symbiote;
+- a final Tok'ra name group creates Tok'ra origin plus a distinct generated
+  human-host identity and dual personality;
+- every other final name group creates Goa'uld origin and no Tok'ra personality
+  switch.
+
+Tok'ra and Goa'uld are therefore two cultural/allegiance branches of the same
+Goa'uld-family biology rather than one branch being allowed to remain an empty
+xenotype shell.
+
+This deliberately remains a generation callback rather than a reconciler. A
+non-serialized ThingID guard is reset whenever `Notify_NewPawnGenerating` begins
+a new starter-generation cycle, including a reroll that reuses the same pawn
+identifier, and is armed only after the affected biological state has actually
+been resolved. A later manual removal from the displayed pawn is not undone at
+game start or on save load. The ordinary non-player PawnKind initializers remain
+separate and unchanged.
+
 ### Persistent host / symbiote identities
 
 `0.3.10-dev` adds a third consumer without adding culture-specific branches to the resolver.

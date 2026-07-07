@@ -48,6 +48,18 @@ Lorsqu'il est présent, il accorde provisoirement :
 
 Depuis `0.1.26-dev`, cet état peut être obtenu par une opération médicale. Depuis `0.1.27-dev`, l'opération consomme une [larve de Prim'ta](Primta-Larva) physique.
 
+## Jaffa dans les personnages de départ
+
+Depuis `0.3.87-dev`, sélectionner le xénotype Jaffa dans la page vanilla des
+pawns de départ génère un adulte déjà porteur de son Prim'ta. L'état est visible
+dans le panneau Santé avant de confirmer le groupe, y compris après chaque
+régénération aléatoire conservant le xénotype.
+
+La larve reste un état biologique distinct du xénotype. Un Jaffa forcé sous
+l'âge minimal reste sans Prim'ta. Le mod ne réimplante rien après l'affichage :
+un joueur qui retire volontairement l'état avec un mod d'édition peut commencer
+ainsi et subir la dépendance normale.
+
 ## Évolutions prévues
 
 - cérémonie du Prim'ta ;

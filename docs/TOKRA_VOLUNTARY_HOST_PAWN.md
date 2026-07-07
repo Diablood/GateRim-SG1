@@ -133,3 +133,23 @@ RimWorld validates an initial recruitment-resistance range for humanlike
 `PawnKindDef` entries. This prototype is generated directly under
 `PlayerColony`, so a neutral range is sufficient and avoids introducing a
 recruitment behavior that is not part of the milestone.
+## Player-starter path since 0.3.87-dev
+
+The vanilla starter editor does not generate `SG1_TokraVoluntaryHost` as the
+PawnKind. It creates an ordinary player starter constrained by xenotype, so the
+spawn-time component above cannot complete that pawn.
+
+`ScenPart_CulturalStarterProfiles.Notify_PawnGenerated` handles the separate
+player-starter path. Every `SG1_GoauldHost` starter receives one real persistent
+adult symbiote before display. When its final adulthood/name group is Tok'ra,
+the callback uses Tok'ra origin and reuses the generated-host origin pool to
+create a distinct human-host identity. The already validated dual-identity and
+personality-switch behavior then applies normally. A Goa'uld-career result uses
+Goa'uld origin instead and does not expose Tok'ra personality switching.
+
+The callback keeps a non-serialized initialized-ThingID set only for the current
+starter session. The guard is reset when a new starter-generation cycle begins
+and is armed only after an existing or newly created adult symbiote has reached
+a complete result. This covers rerolls that reuse a pawn identifier, while a
+symbiote deliberately removed from an already displayed pawn with an editor mod
+is not recreated at game start or on load.

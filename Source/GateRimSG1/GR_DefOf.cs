@@ -12,6 +12,8 @@ namespace GateRimSG1
     {
         public static HediffDef SG1_GoauldRecentImplantation;
         public static GeneDef SG1_NaquadahBlood;
+        public static XenotypeDef SG1_GoauldHost;
+        public static XenotypeDef SG1_Jaffa;
         public static HediffDef SG1_GoauldHostSymbiote;
         public static HediffDef SG1_KaraKeshNeuralAgony;
         public static HediffDef SG1_KaraKeshParalysisHold;

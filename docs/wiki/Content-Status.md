@@ -2,24 +2,26 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.86-dev`
-> Révision finale : `r2`, validée et publiée ; références visuelles présentes sur les pages dédiées
+> Dernière révision : `0.3.87-dev`
+> Révision finale publiée : `r3`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-La révision locale `0.3.86-dev-r2` applique le premier lot artistique
-définitif au registre publié dans `0.3.85-dev`. Le Jaffa reçoit l'icône humaine
-marquée d'Apophis fournie par le mainteneur et l'hôte Goa'uld reçoit le symbiote
-simplifié approuvé. La baseline couvre désormais `609` PNG sous `76` familles,
-dont `9` familles locales finales. Un contrôle automatique vérifie les chemins,
-dépendances et la liste finale autorisée. Chaque future validation reste
-référencée immédiatement sur la page wiki dédiée.
+La version publiée `0.3.87-dev`, révision finale `r3`, corrige la génération vanilla des pawns
+de départ choisis par xénotype. Le Prim'ta d'un Jaffa adulte et le véritable
+symbiote de tout candidat `hôte Goa'uld` sont créés avant l'affichage du pawn
+sur la page de configuration. Une carrière Tok'ra donne l'origine Tok'ra et la
+double identité ; une carrière Goa'uld donne l'origine Goa'uld sans commande de
+changement de personnalité. Chaque reroll est traité, mais aucune
+réimplantation n'a lieu après la génération : une suppression volontaire
+réalisée avec un mod d'édition reste respectée.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
+| Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ | Prim'ta visible avant validation pour tout Jaffa adulte éligible ; un symbiote adulte persistant pour chaque `SG1_GoauldHost`, d'origine Tok'ra avec double identité ou d'origine Goa'uld sans basculement Tok'ra selon la carrière ; chaque reroll est traité sans réconciliation ultérieure | 0.3.87-dev |
 | Icônes finales des xénotypes Jaffa et hôte Goa'uld | Jaffa : tête humaine blanche avec marque d'Apophis ; hôte Goa'uld : symbiote blanc simplifié ; deux visuels approuvés puis validés en jeu ; copies visuelles ajoutées aux pages dédiées dans `r2` | 0.3.86-dev |
 | Audit des assets visuels | Registre exhaustif maintenu à 609 PNG / 76 familles ; `About/ModIcon.png`, deux icônes de xénotypes et sept icônes de sites d'événements sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mise à jour 0.3.86-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
