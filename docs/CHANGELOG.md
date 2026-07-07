@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.3.88-dev - Add final storyteller SG-1 portrait
+
+- Prepare branch `feature/final-storyteller-portrait` from published
+  `v0.3.87-dev`.
+- Replace the existing large `Storytellers/SG1_Command` portrait with the exact
+  maintainer-provided `560×600` transparent PNG.
+- Replace `Storytellers/SG1_Command_Tiny` with the exact maintainer-provided
+  `122×130` close portrait.
+- Preserve the existing storyteller Def and both stable texture paths.
+- Add a byte-identical copy of the large portrait to
+  `docs/wiki/images/SG1_Command.png` and display it on the dedicated storyteller
+  page.
+- Validate local revision `r1` in the real storyteller interface: both portraits
+  are correctly framed, transparent, sharp and readable at their intended UI
+  sizes, with no storyteller behavior regression.
+- Prepare documentation-only finalization revision `r2` after validation.
+- Classify both storyteller families as `final` / `done`, expand the exact visual
+  checker whitelist from `9` to `11` local families and publish their reference
+  on the progressive visual-assets wiki page.
+- Align README, wiki-home, content-status and current-test metadata with
+  `0.3.88-dev`, including the parser-controlled milestone and DLL-version lines.
+- Change no PNG, storyteller cadence, component, incident, strategic rule, text,
+  assembly code or save data in `r2`.
+- Pass the final duration-formatting, visual-asset, project-consistency and
+  `git diff --check` controls after applying `r2`.
+- Prepare documentation-only publication closure revision `r3`; it changes no
+  PNG, Def, C# source, assembly, gameplay behavior or save data.
+- Publish the validated state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.88-dev` and the
+  synchronized separate wiki. The final commit and tag omit the local `r1`,
+  `r2` and `r3` suffixes.
+
 ## 0.3.87-dev - Fix Jaffa and Tok'ra starter symbiotes
 
 - Start from published `develop` and annotated tag `v0.3.86-dev` at commit

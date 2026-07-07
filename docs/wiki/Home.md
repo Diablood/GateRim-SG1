@@ -4,8 +4,21 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.87-dev`
-> Révision finale publiée : `r3`
+> Version du mod documentée : `0.3.88-dev`
+> Révision visuelle validée : `r1`
+> Révision de finalisation : `r2`
+
+## Portrait final du storyteller Commandement SG-1
+
+`0.3.88-dev` remplace les deux portraits du storyteller par les PNG transparents
+approuvés par le mainteneur. Le portrait principal `560×600` présente l'officier
+SG-1 dans l'écran de sélection ; un recadrage dédié `122×130` reste net sur les
+petites surfaces de l'interface.
+
+Les deux tailles ont été validées en jeu face à Cassandra, Phoebe et Randy :
+aucun étirement, cadrage coupé, fond blanc opaque ou manque de lisibilité n'a été
+observé. Le Def, les textes, la cadence Cassandra et l'orchestration stratégique
+de **Commandement SG-1** restent inchangés.
 
 ## Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ
 
@@ -38,9 +51,11 @@ wiki contre toute divergence avec les PNG du jeu.
 ## Audit des assets visuels provisoires
 
 La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
-technique exhaustif. Avec le premier lot `0.3.86-dev`, la baseline devient
-`609` PNG sous `76` familles de textures, dont `9` familles locales finales :
-les deux xénotypes et les sept icônes de sites d'événements. L'icône publique du
+technique exhaustif. Après les validations `0.3.86-dev` et `0.3.88-dev`, la
+baseline compte `609` PNG sous `76` familles de textures, dont `11` familles
+locales finales :
+les deux portraits du storyteller, les deux xénotypes et les sept icônes de
+sites d'événements. L'icône publique du
 mod reste finale hors compteur.
 
 Chaque nouveau visuel validé est ajouté immédiatement à la page

@@ -1,5 +1,35 @@
 # Durable testing
 
+## Final storyteller SG-1 portrait (`0.3.88-dev`)
+
+Local revision `r1` validated both maintainer-provided portraits in the real
+storyteller interface. Documentation-only revision `r2` records the approval,
+extends the final-family whitelist and aligns public metadata. Durable coverage:
+
+- keep the stable `Storytellers/SG1_Command` and
+  `Storytellers/SG1_Command_Tiny` texture paths;
+- preserve the exact `560×600` transparent large PNG and exact `122×130`
+  dedicated close crop supplied by the maintainer;
+- require the large portrait to remain correctly framed against Cassandra,
+  Phoebe and Randy without stretching, clipping or opaque margins;
+- require the tiny portrait to remain centered, sharp and recognizable on every
+  small storyteller surface;
+- keep `docs/wiki/images/SG1_Command.png` byte-identical to the gameplay large
+  portrait;
+- classify both storyteller families as `final` / `done` only after explicit
+  real-interface approval;
+- require the current visual baseline to remain `609` PNG files, `76` canonical
+  families and `11` exact final local families;
+- keep the final whitelist limited to the two storyteller portraits, two
+  xenotype icons and seven event-site icons until another explicit visual
+  approval extends it;
+- preserve `SG1_GateRimStoryteller`, its label, descriptions, components,
+  Cassandra baseline, incident cadence, strategic orchestration and save data;
+- run the duration audit, visual audit, complete project-consistency check and
+  `git diff --check` after documentary finalization;
+- verify the main-menu version remains `0.3.88-dev` and inspect `Player.log` for
+  new relevant texture, XML or C# errors.
+
 ## Jaffa and Tok'ra starter symbiotes (`0.3.87-dev`)
 
 Final revision `r3` validated and published. Local revision `r1`
@@ -62,10 +92,11 @@ references. Durable coverage:
 - preserve all xenotype genes, labels, inheritance flags, combat factors, pawn
   generation and save identifiers;
 - keep implantation, extraction and symbiote lifecycle behavior unchanged;
-- require the visual register baseline to match `609` PNG files, `76` local
-  families, `9` final local families and `6` direct external paths;
-- require the final-family whitelist to contain the two xenotype families plus
-  the seven published event-site families;
+- preserve the published `0.3.86-dev` baseline of `609` PNG files, `76` local
+  families, `9` final local families and `6` direct external paths as historical
+  evidence while allowing later explicitly validated families to extend it;
+- require the final-family whitelist to retain the two xenotype families and the
+  seven published event-site families when later approved families are added;
 - remove the obsolete external Hussar dependency and reduce the remaining
   personal-icon placeholders and P0 counts exactly as recorded;
 - publish both approved icons to `docs/wiki/Visual-Assets.md` and to their dedicated `Jaffa.md` and `Active-Goauld-Host.md` pages in the same revision;

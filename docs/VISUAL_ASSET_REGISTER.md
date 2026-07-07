@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.86-dev`
-- Branch: `feature/final-xenotype-icons`
-- Target assembly: `0.3.86.0`
-- Status: final revision `r2` validated and published.
+- Version: `0.3.88-dev`
+- Branch: `feature/final-storyteller-portrait`
+- Target assembly: `0.3.88.0`
+- Status: storyteller portraits validated in local revision `r1`; documentation-only finalization `r2` prepared.
 
 ## Purpose
 
@@ -17,22 +17,28 @@ explicitly proves that a technical rename is required.
 The companion command `./tools/check-visual-assets.cmd` verifies that this
 register and the repository remain synchronized. The published `0.3.85-dev`
 audit established the strict acceptance boundary and progressive wiki-reference
-rule. `0.3.86-dev` applies the first bounded definitive-art lot: the two
-xenotype icons explicitly approved by the maintainer before packaging.
+rule. `0.3.86-dev` applied the first bounded definitive-art lot with two
+xenotype icons. `0.3.88-dev` adds the approved large and tiny storyteller
+portraits after validation in the real interface.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
 - The `Textures/` families currently accepted as `final` are the seven
-  validated world-event site icons and the two validated xenotype icons listed
-  below.
-- Storyteller portraits, faction icons, equipment, buildings, genes, all other
-  xenotypes, projectiles, pawns and command icons remain temporary even when
-  they are functional or visually acceptable for development.
+  validated world-event site icons, the two validated xenotype icons and the two
+  validated storyteller portraits listed below.
+- Faction icons, equipment, buildings, genes, all other xenotypes, projectiles,
+  pawns and command icons remain temporary even when they are functional or
+  visually acceptable for development.
 - As soon as a later visual is explicitly validated, update this register and
   the dedicated wiki reference page in the same revision. Do not postpone all
   visual references to one global wiki pass.
+
+Validated storyteller families:
+
+- `Storytellers/SG1_Command`
+- `Storytellers/SG1_Command_Tiny`
 
 Validated xenotype families:
 
@@ -73,12 +79,12 @@ Validated world-event site families:
 
 - Local PNG files: `609`.
 - Local texture families: `76`.
-- Accepted final local families: `9` (`2` xenotype icons and `7` world-event site icons).
-- Temporary original families: `33`.
+- Accepted final local families: `11` (`2` storyteller portraits, `2` xenotype icons and `7` world-event site icons).
+- Temporary original families: `31`.
 - Temporary recolor families: `15`.
 - Temporary reuse families: `6`.
 - Project-icon placeholder families: `13`.
-- Priorities: `15` P0, `27` P1, `25` P2, `9` done.
+- Priorities: `15` P0, `25` P1, `25` P2, `11` done.
 - Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -107,8 +113,8 @@ same canonical family. Representative dimensions refer to the base image.
 | `Genes/Icons/SG1_JaffaForeheadMark_Generic` | 1 | 128×128 | Gene UI | `temporary-original` | `P2` | SG1_JaffaForeheadMark_Generic | Custom functional art that remains acceptable for development but is not yet accepted as final. |
 | `Genes/Icons/SG1_JaffaForeheadMark_GenericGold` | 1 | 128×128 | Gene UI | `temporary-recolor` | `P2` | SG1_JaffaForeheadMark_GenericGold | Color variant derived from another temporary family; keep path stable for final replacement. |
 | `Genes/Icons/SG1_JaffaForeheadMark_GenericSilver` | 1 | 128×128 | Gene UI | `temporary-recolor` | `P2` | SG1_JaffaForeheadMark_GenericSilver | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Storytellers/SG1_Command` | 1 | 580×620 | Storyteller UI | `temporary-original` | `P1` | SG1_GateRimStoryteller | Functional custom portrait, but not explicitly accepted as final by the maintainer. |
-| `Storytellers/SG1_Command_Tiny` | 1 | 122×130 | Storyteller UI | `temporary-original` | `P1` | SG1_GateRimStoryteller | Functional custom portrait, but not explicitly accepted as final by the maintainer. |
+| `Storytellers/SG1_Command` | 1 | 560×600 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided transparent large portrait validated in the real storyteller-selection interface. |
+| `Storytellers/SG1_Command_Tiny` | 1 | 122×130 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided dedicated close crop validated on the small storyteller UI surfaces. |
 | `Things/Building/SG1_GoauldRitualBasin` | 1 | 64×64 | Map/building | `placeholder-personal-icon` | `P0` | SG1_GoauldRitualBasin | Exact reuse of the project demon icon; misleading for this gameplay surface. |
 | `Things/Building/SG1_PrimtaIncubationBasin` | 1 | 64×64 | Map/building | `placeholder-personal-icon` | `P0` | SG1_PrimtaIncubationBasin, SG1_PrimtaPreservationBasin | Exact reuse of the project demon icon; misleading for this gameplay surface. |
 | `Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint` | 1 | 64×64 | Map/building | `temporary-original` | `P1` | SG1_TokraObservationPoint | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
@@ -222,10 +228,10 @@ not resolve under the mod's `Textures/` directory.
 
 ## Explicit non-effects
 
-`0.3.86-dev` changes only the two approved xenotype PNGs, the Jaffa
-`iconPath`, the final-family whitelist, version metadata and documentation. It
-does not change xenotype genes, inheritance, combat power, pawn generation,
-symbiote lifecycle, factions, missions, storyteller behavior or save data.
+`0.3.88-dev` changes only the two approved storyteller PNGs, their
+byte-identical large wiki copy, the final-family whitelist, version metadata and
+documentation. It does not change storyteller Defs, cadence, components,
+incidents, strategic orchestration, xenotypes, factions, missions or save data.
 
 ## Validation procedure
 

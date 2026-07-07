@@ -1,8 +1,16 @@
 # Storyteller GateRim SG-1
 
 > Première version : `0.3.65-dev`
-> Dernière évolution publiée : `0.3.84-dev`
-> Statut : première prise territoriale bornée, révision finale `r1` validée et publiée
+> Portrait final : `0.3.88-dev`
+> Révision visuelle validée : `r1` ; finalisation documentaire : `r2`
+
+![Portrait du storyteller Commandement SG-1](images/SG1_Command.png)
+
+Le portrait principal transparent mesure `560×600`. Son recadrage tiny dédié
+mesure `122×130`. Les deux fichiers fournis par le mainteneur ont été validés
+dans l'interface réelle : cadrage, transparence et lisibilité sont corrects face
+aux storytellers vanilla. Aucun Def, texte, rythme d'incident ni système
+stratégique n'a été modifié par ce remplacement visuel.
 
 **Commandement SG-1** est un storyteller optionnel qui conserve un rythme
 classique tout en coordonnant les systèmes stratégiques propres au mod.
@@ -128,55 +136,6 @@ Cette conséquence ne modifie ni la bonne volonté envers le joueur, ni les
 colonies, ni les territoires, ni les budgets de menace ou les doctrines
 permanentes.
 
-## Cohérence avec les relations vanilla
-
-À partir de `0.3.83-dev`, l'état diplomatique GateRim de chaque paire Goa'uld
-devient autoritaire pour le type de relation vanilla entre ces deux factions :
-
-| État GateRim | Relation vanilla |
-|---|---|
-| Neutralité | Neutre |
-| Rivalité | Neutre |
-| Conflit ouvert | Hostile |
-| Trêve | Neutre |
-| Alliance | Alliée |
-
-La synchronisation intervient à la création de la paire, lors d'une transition,
-au chargement et pendant la réconciliation périodique. Elle ne concerne jamais
-la relation avec le joueur, les Tok'ra, les Jaffa libres ou une faction vanilla,
-et ne produit aucune lettre de changement de bonne volonté.
-
-La définition Goa'uld conserve une hostilité permanente envers l'expédition du
-joueur et toutes les factions extérieures, mais exempte les autres instances du
-même domaine technique. La version publiée après validation `r3` confirme que
-deux domaines peuvent atteindre les relations vanilla neutre, hostile et alliée
-via la bonne volonté, sans message ni lettre et sans modifier leurs relations
-extérieures.
-
-## Prises territoriales bornées
-
-`0.3.83-dev` a publié les garde-fous. La liste vanilla propose trois domaines
-Goa'uld par défaut, mais le joueur peut réduire ce nombre. La stratégie
-territoriale demande au moins deux domaines actifs et protège toujours la
-dernière colonie de chacun, les mondes sous le seuil `domaines actifs + 2` et le
-plafond automatique de `75 %` avec deux domaines ou `50 %` à partir de trois.
-
-Avec `0.3.84-dev`, une paire exacte en **conflit ouvert** peut produire une
-première conséquence réelle. Une tentative naturelle n'a lieu que tous les
-`45–90` jours sous **Commandement SG-1**. Si un candidat est sûr, une seule prise
-est réservée pendant `1–2` jours.
-
-À l'échéance, seule la faction propriétaire change. La colonie conserve son nom,
-son identifiant, sa tuile et son existence. Aucune colonie ou faction n'est
-créée ou détruite. Une lettre neutre nomme la colonie, le domaine perdant et le
-domaine gagnant.
-
-Le transfert est refusé ou annulé si la carte de la colonie est chargée, si un
-objet mondial du joueur se trouve sur sa tuile, si une quête active la référence,
-si la relation ou la propriété change, si le domaine perdant n'aurait plus de
-colonie ou si le gagnant dépasserait le plafond. Les délais et cooldowns sont
-suspendus sous un autre storyteller.
-
 ## Batailles en conflit ouvert
 
 Depuis `0.3.69-dev`, une paire en conflit ouvert peut produire une
@@ -204,9 +163,8 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 - les relations et occurrences déjà enregistrées sont conservées ;
 - aucun nouvel état ou champ de bataille n'est tiré ;
-- les échéances futures, y compris une rupture d'alliance, une prise
-  territoriale en attente et la prochaine tentative naturelle, sont repoussées
-  pendant la suspension ;
+- les échéances futures, y compris une rupture d'alliance en attente, sont
+  repoussées pendant la suspension ;
 - revenir à Commandement SG-1 ne déclenche pas de retard accumulé ;
 - les raids naturels utilisent de nouveau `100 %` des points ;
 - aucune vague alliée différée n'est planifiée ;
@@ -214,14 +172,10 @@ Avec Cassandra, Phoebe, Randy ou un storyteller compatible :
 
 ## Limites actuelles
 
-La prise territoriale reste volontairement mineure. Elle ne provoque pas :
+Les relations ne provoquent pas encore :
 
-- de création, déplacement ou destruction de colonie mondiale ;
-- d'élimination de faction ;
-- de transfert d'une colonie du joueur ou d'une faction extérieure ;
-- de changement diplomatique avec le joueur ;
-- de raid ou guerre mondiale supplémentaire au moment du transfert.
+- de modification territoriale ;
+- de destruction de colonies mondiales ;
+- de changement diplomatique avec le joueur.
 
-La version publiée `0.3.84-dev`, validée en révision finale `r1`, couvre le
-transfert borné, sa persistance, son affichage mondial, sa lettre ciblée et ses
-cooldowns.
+Ces conséquences restent réservées à des jalons séparés.

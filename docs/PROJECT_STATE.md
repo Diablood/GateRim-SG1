@@ -1,103 +1,88 @@
 # Project state
 
-Current milestone: `0.3.87-dev - Fix Jaffa and Tok'ra starter symbiotes`
+Current milestone: `0.3.88-dev - Add final storyteller SG-1 portrait`
 
-Status: validated and published.
+Status: validated and published. Final local revision `r3` records the
+publication closure after the validated visual revision `r1` and the
+finalization revision `r2`.
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.86-dev` at commit
-  `bbbb981fb54131964a05b6f7626b5472cbc399dd`.
-- Final branch: `fix/jaffa-tokra-starter-symbiotes`.
-- Final local revision: `r3`.
-- Published assembly version: `0.3.87.0`.
-- Final annotated tag: `v0.3.87-dev`.
-- Integration target: `develop`, by fast-forward from the validated fix branch.
+  `v0.3.87-dev` at commit
+  `d905e8466fd58e3300404140b5fe420e8bca2198`.
+- Final feature branch: `feature/final-storyteller-portrait`.
+- Final local revision: `r3`; the suffix remains local and is omitted from the
+  final commit and tag.
+- Published assembly version: `0.3.88.0`.
+- Integration branch: `develop`, updated by fast-forward from the validated
+  feature commit.
+- Published annotated tag: `v0.3.88-dev`.
+- Separate wiki: synchronized from `docs/wiki/` and published with the same
+  milestone version.
 
-## Corrected defect
+## Published scope
 
-The vanilla new-game configuration can replace a generated starter with a
-GateRim xenotype and reroll the pawn while preserving that xenotype. This path
-previously produced culturally valid but biologically incomplete starters:
+- Replace only the existing large and tiny portraits of
+  `SG1_GateRimStoryteller`.
+- Keep the stable texture paths:
+  - `Storytellers/SG1_Command`;
+  - `Storytellers/SG1_Command_Tiny`.
+- Use the two exact maintainer-provided PNG files without redrawing or resizing.
+- Preserve the storyteller Def, name, descriptions, components, incident cadence,
+  Cassandra baseline, strategic orchestration and save behavior.
+- Copy the large portrait byte-identically to
+  `docs/wiki/images/SG1_Command.png` and display it on
+  `docs/wiki/Storyteller-SG1.md`.
+- Do not change any other visual family.
 
-- an adult `SG1_Jaffa` could appear without `SG1_JaffaPrimta` and enter Prim'ta
-  dependency shortly after the game began;
-- an `SG1_GoauldHost` could appear without any persistent adult symbiote,
-  leaving only the enhanced xenotype;
-- Tok'ra identity switching worked correctly only when a symbiote happened to
-  be present.
+## Validated assets
 
-The older automatic initializers covered dedicated non-player PawnKinds after
-spawning, not ordinary player starters constrained only by xenotype.
-
-## Final behavior
-
-- Reuse the hidden `ScenPart_CulturalStarterProfiles` already injected into
-  Def-based scenarios.
-- Run only from `Notify_PawnGenerated` under
-  `PawnGenerationContext.PlayerStarter`.
-- Attach the biological state before the pawn is displayed on the vanilla
-  starter page, so it is visible in the health preview.
-- Cover the first pawn generated after xenotype selection and every later
-  xenotype-constrained reroll.
-- Give every eligible adult `SG1_Jaffa` starter exactly one
-  `SG1_JaffaPrimta`.
-- Give every `SG1_GoauldHost` starter exactly one persistent
-  `SG1_GoauldHostSymbiote`:
-  - Tok'ra cultural career: Tok'ra origin, a distinct generated historical
-    human-host identity, dual personality and the existing switch behavior;
-  - Goa'uld cultural career: Goa'uld origin, the generated Goa'uld name used
-    as the symbiote identity and no Tok'ra personality switch.
-- Treat Tok'ra as the same Goa'uld-family biological symbiote model while
-  preserving its distinct cultural allegiance and voluntary identity behavior.
-- Reject duplicates when the required Prim'ta or any persistent adult-symbiote
-  component already exists.
-- Keep only a non-serialized one-generation guard inside the starter scenario
-  part.
-- Add no first-tick, periodic, load-time or save-migration reconciliation.
-- Respect a deliberate removal performed with another mod after the pawn has
-  been displayed.
-- Leave ordinary humans, underage Jaffa, non-player generation, implantation,
-  extraction, xenotype definitions, existing saves and visuals unchanged.
-
-## Revision history
-
-- `r1` validated the Jaffa path and the Tok'ra dual-identity path whenever the
-  symbiote was created, but some host-xenotype rerolls still lacked one.
-- `r2` corrected the transient generation guard, but the same symptom remained.
-- `r3` fixed the actual cause: the mixed `SG1_GoauldHost` starter profile can
-  resolve to either a Tok'ra or Goa'uld career, so every result now receives a
-  real adult symbiote and the final career determines its origin and controls.
+- Large portrait: `560×600`, transparent RGBA PNG.
+- Tiny portrait: `122×130`, transparent RGBA PNG.
+- The tiny portrait is a dedicated close crop of the same character rather than
+  an automatic runtime reduction.
+- Visual identity: human SG-1 field officer, olive uniform and tactical vest,
+  Earth/SG-1 insignia, clean painterly style close to vanilla storyteller art.
+- The wiki copy of the large portrait is byte-identical to the gameplay PNG.
 
 ## Validation result
 
-The maintainer reports final local revision `r3` as successful.
+Local revision `r1` passed the maintainer's real-interface test:
 
-Validated results include:
+- the large portrait is correctly framed and is not stretched or clipped;
+- transparency is preserved without an opaque white rectangle;
+- the tiny portrait is centered, sharp and recognizable at its actual UI size;
+- comparison with Cassandra, Phoebe and Randy revealed no presentation issue;
+- storyteller selection, description, cadence and strategic behavior remain
+  unchanged;
+- the main menu reports `0.3.88-dev` and no new relevant texture, XML or C#
+  error was reported.
 
-- successful build of assembly `0.3.87.0` and project checks;
-- Prim'ta visible on eligible adult Jaffa starters before game confirmation;
-- exactly one adult symbiote on every generated `SG1_GoauldHost` starter;
-- complete first-generation and reroll behavior;
-- functional Tok'ra dual identity and personality switching;
-- Goa'uld-origin starters without Tok'ra personality controls;
-- no duplicate biological state and no regression of the validated Jaffa path;
-- no runtime or load-time reimplantation added by this milestone.
+Revision `r2` passed the final static checks:
 
-## Publication state
+- both storyteller texture families are classified as `final` / `done`;
+- the exact visual-checker whitelist contains `11` final local families;
+- duration formatting, visual assets, project consistency and `git diff --check`
+  pass;
+- README, wiki-home, content-status, project-state, current-test and changelog
+  versions resolve to `0.3.88-dev`;
+- the documented and compiled DLL version remains `0.3.88.0`.
 
-The final milestone state is published through one fix-branch commit,
-fast-forward integration into `develop`, push of `develop`, annotated tag
-`v0.3.87-dev` and synchronization of the separate wiki.
+Revision `r3` changes only publication-state documentation. It changes no PNG,
+C# source, Def, gameplay behavior, assembly or save data.
 
-No `rN` suffix belongs in the final commit or tag. `main` remains untouched.
+## Publication result
 
-## Next step
+- Final commit: `0.3.88-dev - finalize storyteller portrait`.
+- The validated feature commit is integrated into `develop` by fast-forward.
+- `develop` and annotated tag `v0.3.88-dev` point to the same commit.
+- The separate `GateRim-SG1.wiki` repository is synchronized and published.
+- Local `r1`, `r2` and `r3` suffixes do not appear in the final commit or tag.
 
-No later version or branch is reserved. Before starting another milestone:
+## Next work
 
-1. verify local `develop`, `origin/develop` and peeled tag `v0.3.87-dev` point to
-   the same integrated commit;
-2. review the remaining observed defects before selecting an improvement;
-3. read `docs/ROADMAP.md` and reserve one distinct milestone;
-4. create its dedicated `feature/*` or `fix/*` branch from the up-to-date
-   `develop` branch.
+No next milestone number or branch is assigned. The next task must be selected
+from the remaining Phase 1 backlog in `docs/ROADMAP.md`; Phase 2 remains blocked
+until the core-faction completion gate is explicitly satisfied.
+
+Before starting that milestone, update local `develop`, verify that it matches
+`v0.3.88-dev`, then create a new dedicated `feature/*` or `fix/*` branch.

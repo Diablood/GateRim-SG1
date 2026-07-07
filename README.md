@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.87-dev`
+- Development version: `0.3.88-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,21 +17,22 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.87-dev` corrects the vanilla starter-generation path for GateRim
-xenotypes. An eligible adult Jaffa now receives its Prim'ta before appearing on
-the starting-pawn page. Every generated `SG1_GoauldHost` candidate receives a
-real persistent adult symbiote before the player accepts or rerolls the pawn:
-Tok'ra careers receive Tok'ra origin, a distinct human-host identity and dual
+`0.3.88-dev` replaces the large and tiny portraits of **SG-1 Command**
+with the two maintainer-approved transparent PNG files. The stable storyteller
+Def and texture paths are preserved, and the real interface rendering has been
+validated without clipping, opaque margins or behavior changes. The visual
+register still covers `609` PNG files under `76` canonical texture families,
+now including `11` final local families.
+
+`0.3.87-dev` corrected the vanilla starter-generation path for GateRim
+xenotypes. An eligible adult Jaffa receives its Prim'ta before appearing on the
+starting-pawn page. Every generated `SG1_GoauldHost` candidate receives a real
+persistent adult symbiote before the player accepts or rerolls the pawn: Tok'ra
+careers receive Tok'ra origin, a distinct human-host identity and dual
 personality, while Goa'uld careers receive Goa'uld origin without Tok'ra
 personality switching. The correction runs only during generation, so a
 deliberate removal performed with another editor mod before starting the game is
 respected.
-
-`0.3.86-dev` began the definitive-art replacement in a deliberately small lot.
-The Jaffa xenotype uses the maintainer-supplied human icon carrying the mark of
-Apophis, while the Goa'uld-host xenotype uses a simplified white symbiote
-silhouette. The visual register covers `609` PNG files under `76` canonical
-texture families, including `9` final local families.
 
 ## Playable content
 

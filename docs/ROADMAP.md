@@ -34,6 +34,35 @@ de la partie.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.88-dev - Add final storyteller SG-1 portrait`
+
+Branche finale : `feature/final-storyteller-portrait`, créée depuis `develop`
+aligné avec le tag publié `v0.3.87-dev`.
+
+La révision visuelle `r1` remplace uniquement les portraits large et tiny du
+storyteller Commandement SG-1 par les deux PNG approuvés par le mainteneur,
+conserve les chemins existants et affiche la grande image sur la page wiki
+dédiée. Le rendu réel des deux tailles est validé sans cadrage défectueux,
+opacité parasite ni régression de comportement.
+
+La révision documentaire `r2` classe les deux familles comme finales, porte la
+liste blanche visuelle à `11` familles et aligne les métadonnées publiques et
+techniques sur `0.3.88-dev`. Les contrôles de durées, d'assets visuels, de
+cohérence du projet et `git diff --check` passent. La clôture documentaire `r3`
+ne modifie aucun PNG, Def, code de storyteller, assemblage ou état de sauvegarde.
+
+Le jalon est publié par commit final sur la branche temporaire, intégration
+fast-forward dans `develop`, tag annoté `v0.3.88-dev` et synchronisation du wiki
+séparé. Les suffixes locaux `r1`, `r2` et `r3` sont absents du commit et du tag.
+
+## Prochain jalon
+
+Aucun numéro de version ni nom de branche n'est encore réservé. Le prochain
+travail doit être sélectionné parmi les jalons restants de la Phase 1. La Phase 2
+reste bloquée tant que le critère de clôture du socle n'est pas satisfait.
+
+## Jalon visuel publié précédent
+
 `0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons`
 
 Branche finale : `feature/final-xenotype-icons`, créée depuis `develop` aligné
@@ -311,8 +340,9 @@ d'observation Tok'ra, les objets d'opération, les modules Tok'ra, les équipeme
 Goa'uld/Jaffa/SGC et l'ensemble rouge des officiers. Conserver les Defs et chemins
 stables lorsque cela suffit ; remplacer alors uniquement les PNG.
 
-Le premier lot publié `0.3.86-dev` couvre uniquement les icônes finales des
-xénotypes Jaffa et hôte Goa'uld. Les autres placeholders et textures temporaires
+Le premier lot publié `0.3.86-dev` couvre les icônes finales des xénotypes
+Jaffa et hôte Goa'uld. Le lot publié `0.3.88-dev` finalise les deux portraits du
+storyteller Commandement SG-1. Les autres placeholders et textures temporaires
 restent des lots ultérieurs distincts.
 
 Décisions encore reportées aux lots concernés : direction artistique détaillée,
@@ -336,21 +366,6 @@ validées.
 
 Décisions reportées au lancement : liste des captures, mise en scène et format de
 la galerie.
-
-## Génération biologique des pawns de départ
-
-### Garantir les composants biologiques des Jaffa et Tok'ra de départ
-
-Jalon actif `0.3.87-dev`. La source exacte est la génération vanilla
-`PlayerStarter` déjà consommée par les profils culturels. Le composant est créé
-avant la page de confirmation afin d'être visible et modifiable. Un Jaffa doit
-respecter les règles d'âge et de compatibilité existantes. Un Tok'ra est reconnu
-par le xénotype `SG1_GoauldHost` combiné à une carrière finale du groupe Tok'ra.
-
-La prévention des doublons est obligatoire, mais aucune migration de sauvegarde,
-réconciliation de démarrage ou réparation au chargement ne doit être ajoutée.
-Cette absence est volontaire afin qu'une suppression réalisée par un mod
-d'édition après génération ne soit jamais annulée.
 
 ## Maintenance et audits transversaux
 

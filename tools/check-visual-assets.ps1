@@ -264,6 +264,8 @@ if ($registeredExternalPaths.Count -eq 0) {
 }
 
 $expectedFinalLocalPaths = @(
+    "Storytellers/SG1_Command",
+    "Storytellers/SG1_Command_Tiny",
     "UI/Xenotypes/SG1_GoauldHost",
     "UI/Xenotypes/SG1_Jaffa",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective",
@@ -288,13 +290,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the nine approved xenotype and event-site families: {0}" -f
+        "Final local asset whitelist differs from the eleven approved storyteller, xenotype and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the nine approved xenotype and event-site families."
+    Add-Pass "Final local asset whitelist matches the eleven approved storyteller, xenotype and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

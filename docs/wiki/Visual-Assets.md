@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.86-dev`
-> Statut : révision finale `r2` validée et publiée ; références visuelles présentes sur les pages dédiées
+> Version de référence : `0.3.88-dev`
+> Statut : portraits validés en `r1` ; finalisation documentaire `r2`
 
 Cette page évite de reporter toutes les références visuelles à une future passe
 globale du wiki. Lorsqu'un visuel devient définitif, sa référence doit être
@@ -17,6 +17,15 @@ classé comme temporaire dans le registre technique.
 | Usage | Chemin | Statut |
 |---|---|---|
 | Icône publique GateRim SG-1 | `About/ModIcon.png` | Final ; conserver l'image personnelle démon rouge/noir et ne pas la réutiliser comme art de gameplay |
+
+## Portraits de storyteller validés
+
+| Portrait | Storyteller | Def | Chemins sous `Textures/` | Référence visuelle |
+|---|---|---|---|---|
+| ![Portrait final de Commandement SG-1](images/SG1_Command.png) | Commandement SG-1 | `SG1_GateRimStoryteller` | `Storytellers/SG1_Command`, `Storytellers/SG1_Command_Tiny` | Grand portrait transparent `560×600` et recadrage tiny dédié `122×130`, fournis par le mainteneur puis validés dans l'interface réelle |
+
+Les deux chemins restent stables. Le remplacement n'altère ni le Def, ni les
+textes, ni la cadence Cassandra, ni l'orchestration stratégique du storyteller.
 
 ## Icônes de xénotypes validées
 
@@ -46,7 +55,6 @@ un Jaffa marqué.
 
 Tous les autres visuels locaux restent temporaires à ce stade, notamment :
 
-- portraits du storyteller ;
 - icônes de factions mondiales ;
 - armes, équipements et vêtements ;
 - bâtiments et objets de mission ;
