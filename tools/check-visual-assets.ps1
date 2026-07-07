@@ -98,6 +98,21 @@ Write-Host ""
 $registerPath = Join-Path $RepositoryRoot "docs/VISUAL_ASSET_REGISTER.md"
 $texturesRoot = Join-Path $RepositoryRoot "Textures"
 $modIconPath = Join-Path $RepositoryRoot "About/ModIcon.png"
+$visualReferencePagePath = Join-Path $RepositoryRoot "docs/wiki/Visual-Assets.md"
+$wikiIconMappings = @(
+    @{
+        Source = "Textures/UI/Xenotypes/SG1_Jaffa.png"
+        Wiki = "docs/wiki/images/SG1_Jaffa.png"
+        Page = "docs/wiki/Jaffa.md"
+        Reference = "images/SG1_Jaffa.png"
+    },
+    @{
+        Source = "Textures/UI/Xenotypes/SG1_GoauldHost.png"
+        Wiki = "docs/wiki/images/SG1_GoauldHost.png"
+        Page = "docs/wiki/Active-Goauld-Host.md"
+        Reference = "images/SG1_GoauldHost.png"
+    }
+)
 
 if (-not (Test-Path -LiteralPath $registerPath -PathType Leaf)) {
     Add-Failure "Missing visual asset register: docs/VISUAL_ASSET_REGISTER.md"
@@ -114,10 +129,66 @@ else {
     Add-Pass "Preserved public mod icon exists."
 }
 
+if (-not (Test-Path -LiteralPath $visualReferencePagePath -PathType Leaf)) {
+    Add-Failure "Missing progressive visual reference page: docs/wiki/Visual-Assets.md"
+}
+
+foreach ($mapping in $wikiIconMappings) {
+    $sourcePath = Join-Path $RepositoryRoot $mapping.Source
+    $wikiPath = Join-Path $RepositoryRoot $mapping.Wiki
+    $pagePath = Join-Path $RepositoryRoot $mapping.Page
+
+    if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
+        Add-Failure "Missing approved gameplay icon: $($mapping.Source)"
+    }
+
+    if (-not (Test-Path -LiteralPath $wikiPath -PathType Leaf)) {
+        Add-Failure "Missing approved wiki icon copy: $($mapping.Wiki)"
+    }
+
+    if (-not (Test-Path -LiteralPath $pagePath -PathType Leaf)) {
+        Add-Failure "Missing dedicated wiki page: $($mapping.Page)"
+    }
+}
+
 if ($failures.Count -gt 0) {
     Write-Host ""
     Write-Host "Visual asset check failed before inventory comparison." -ForegroundColor Red
     exit 1
+}
+
+foreach ($mapping in $wikiIconMappings) {
+    $sourcePath = Join-Path $RepositoryRoot $mapping.Source
+    $wikiPath = Join-Path $RepositoryRoot $mapping.Wiki
+    $pagePath = Join-Path $RepositoryRoot $mapping.Page
+
+    $sourceHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
+    $wikiHash = (Get-FileHash -LiteralPath $wikiPath -Algorithm SHA256).Hash
+
+    if ($sourceHash -cne $wikiHash) {
+        Add-Failure "Wiki icon differs from approved gameplay icon: $($mapping.Wiki)"
+    }
+    else {
+        Add-Pass "Wiki icon matches approved gameplay icon: $($mapping.Wiki)"
+    }
+
+    $pageText = Get-Content -LiteralPath $pagePath -Raw -Encoding UTF8
+    if ($pageText -notlike "*$($mapping.Reference)*") {
+        Add-Failure "Dedicated wiki page does not display approved icon: $($mapping.Page)"
+    }
+    else {
+        Add-Pass "Dedicated wiki page displays approved icon: $($mapping.Page)"
+    }
+}
+
+$visualReferenceText = Get-Content -LiteralPath $visualReferencePagePath -Raw -Encoding UTF8
+foreach ($mapping in $wikiIconMappings) {
+    if ($visualReferenceText -notlike "*$($mapping.Reference)*") {
+        Add-Failure "Visual reference page does not display approved icon: $($mapping.Reference)"
+    }
+}
+if ($failures.Count -eq 0) {
+    Add-Pass "Progressive visual reference page displays both approved xenotype icons."
 }
 
 $registerText = Get-Content -LiteralPath $registerPath -Raw -Encoding UTF8
@@ -193,6 +264,8 @@ if ($registeredExternalPaths.Count -eq 0) {
 }
 
 $expectedFinalLocalPaths = @(
+    "UI/Xenotypes/SG1_GoauldHost",
+    "UI/Xenotypes/SG1_Jaffa",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield",
     "World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage",
@@ -215,13 +288,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the seven approved event-site families: {0}" -f
+        "Final local asset whitelist differs from the nine approved xenotype and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the seven approved event-site families."
+    Add-Pass "Final local asset whitelist matches the nine approved xenotype and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

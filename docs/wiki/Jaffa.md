@@ -1,12 +1,17 @@
 # Jaffa
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.1-dev  
+> Statut : Prototype
+> Version d'introduction : 0.1.1-dev
 > Séparation de la lignée et du Prim'ta : 0.1.13-dev
 
 ## Présentation
 
-Les Jaffa sont une lignée humaine modifiée pour subir le Prim'ta et porter un symbiote Goa'uld immature.
+![Icône finale du xénotype Jaffa](images/SG1_Jaffa.png)
+
+Les Jaffa sont une lignée humaine modifiée pour subir le Prim'ta et porter un
+symbiote Goa'uld immature. L'icône finale reprend la silhouette humaine épurée
+des xénotypes vanilla et ajoute la marque d'Apophis, signe immédiatement
+reconnaissable de l'identité Jaffa.
 
 ## Fondation héréditaire
 

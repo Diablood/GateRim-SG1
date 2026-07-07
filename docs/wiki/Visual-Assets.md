@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.85-dev`
-> Statut : liste progressive publiée avec `0.3.85-dev`, révision finale `r3`
+> Version de référence : `0.3.86-dev`
+> Statut : révision finale `r2` validée et publiée ; références visuelles présentes sur les pages dédiées
 
 Cette page évite de reporter toutes les références visuelles à une future passe
 globale du wiki. Lorsqu'un visuel devient définitif, sa référence doit être
@@ -17,6 +17,18 @@ classé comme temporaire dans le registre technique.
 | Usage | Chemin | Statut |
 |---|---|---|
 | Icône publique GateRim SG-1 | `About/ModIcon.png` | Final ; conserver l'image personnelle démon rouge/noir et ne pas la réutiliser comme art de gameplay |
+
+## Icônes de xénotypes validées
+
+| Icône | Xénotype | Def | Chemin sous `Textures/` | Référence visuelle |
+|---|---|---|---|---|
+| ![Icône finale du xénotype Jaffa](images/SG1_Jaffa.png) | Jaffa | `SG1_Jaffa` | `UI/Xenotypes/SG1_Jaffa` | Tête humaine blanche très épurée portant la marque d'Apophis ; PNG `64×64` fourni et approuvé par le mainteneur |
+| ![Icône finale de l'hôte Goa'uld](images/SG1_GoauldHost.png) | Hôte Goa'uld | `SG1_GoauldHost` | `UI/Xenotypes/SG1_GoauldHost` | Symbiote Goa'uld blanc simplifié, en forme de S, avec œil et mâchoire lisibles ; visuel approuvé avant intégration |
+
+Le choix du symbiote pour l'hôte Goa'uld est volontaire : la présence de cet
+organisme définit l'état acquis, tandis qu'un ancien hôte privé de son symbiote
+redevient un humain ordinaire. Cette lecture évite aussi de confondre l'hôte avec
+un Jaffa marqué.
 
 ## Icônes de sites d'événements validées
 
@@ -38,7 +50,7 @@ Tous les autres visuels locaux restent temporaires à ce stade, notamment :
 - icônes de factions mondiales ;
 - armes, équipements et vêtements ;
 - bâtiments et objets de mission ;
-- gènes et xénotypes ;
+- icônes de gènes et autres surfaces biologiques ;
 - projectiles, pawns et commandes d'interface.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus

@@ -2,40 +2,42 @@
 
 ## Milestone
 
-- Version: `0.3.85-dev`
-- Branch: `feature/provisional-visual-asset-audit`
-- Target assembly: `0.3.85.0`
-- Status: final revision `r3` validated and published.
+- Version: `0.3.86-dev`
+- Branch: `feature/final-xenotype-icons`
+- Target assembly: `0.3.86.0`
+- Status: final revision `r2` validated and published.
 
 ## Purpose
 
 This document is the authoritative inventory of GateRim SG-1 visual assets.
 It records every local texture family, every direct vanilla texture dependency
-and the current art status without changing gameplay or replacing art in this
-milestone. Paths are kept stable unless a later art milestone explicitly proves
-that a technical rename is required.
+and the current art status. Paths are kept stable unless a later art milestone
+explicitly proves that a technical rename is required.
 
 The companion command `./tools/check-visual-assets.cmd` verifies that this
-register and the repository remain synchronized. Corrective revision `r2` fixes Windows PowerShell path normalization after
-`r1` retained a trailing period while removing `.png`. Corrective revision `r3`
-then applies the maintainer-approved final-art boundary: only the preserved
-public mod icon and the seven validated world-event site icons are final; every
-other local visual family remains temporary.
-The maintainer validated the complete `r3` register, priority order, automated
-checks and progressive wiki-reference rule.
+register and the repository remain synchronized. The published `0.3.85-dev`
+audit established the strict acceptance boundary and progressive wiki-reference
+rule. `0.3.86-dev` applies the first bounded definitive-art lot: the two
+xenotype icons explicitly approved by the maintainer before packaging.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
-- The only `Textures/` families currently accepted as `final` are the seven
-  validated world-event site icons listed below.
-- Storyteller portraits, faction icons, equipment, buildings, genes, xenotypes,
-  projectiles, pawns and command icons remain temporary even when they are
-  functional or visually acceptable for development.
+- The `Textures/` families currently accepted as `final` are the seven
+  validated world-event site icons and the two validated xenotype icons listed
+  below.
+- Storyteller portraits, faction icons, equipment, buildings, genes, all other
+  xenotypes, projectiles, pawns and command icons remain temporary even when
+  they are functional or visually acceptable for development.
 - As soon as a later visual is explicitly validated, update this register and
   the dedicated wiki reference page in the same revision. Do not postpone all
   visual references to one global wiki pass.
+
+Validated xenotype families:
+
+- `UI/Xenotypes/SG1_GoauldHost`
+- `UI/Xenotypes/SG1_Jaffa`
 
 Validated world-event site families:
 
@@ -69,29 +71,28 @@ Validated world-event site families:
 
 ## Audit summary
 
-- Local PNG files: `608`.
-- Local texture families: `75`.
-- Accepted final local families: `7` world-event site icons.
+- Local PNG files: `609`.
+- Local texture families: `76`.
+- Accepted final local families: `9` (`2` xenotype icons and `7` world-event site icons).
 - Temporary original families: `33`.
 - Temporary recolor families: `15`.
 - Temporary reuse families: `6`.
-- Project-icon placeholder families: `14`.
-- Priorities: `16` P0, `27` P1, `25` P2, `7` done.
-- Direct external texture paths: `7`.
+- Project-icon placeholder families: `13`.
+- Priorities: `15` P0, `27` P1, `25` P2, `9` done.
+- Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
 - Unreferenced local texture families: `0`.
 
 ## Highest-priority findings
 
-1. Four command icons, seven gene icons, the Goa’uld-host xenotype icon and both
-   ritual/incubation basins reuse the personal demon mod icon exactly.
+1. Four command icons, seven gene icons and both ritual/incubation basins reuse
+   the personal demon mod icon exactly.
 2. The kara kesh and healing bracelet reuse the Zat’nik’tel inventory texture.
-3. The Jaffa xenotype uses the unrelated vanilla Hussar icon.
-4. The Prim’ta larva and free Goa’uld symbiote use the same image.
-5. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
+3. The Prim’ta larva and free Goa’uld symbiote use the same image.
+4. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
    and the relay sabotage device reuses the secure communicator.
-6. Jaffa, officer, Tok’ra and SGC apparel are technically complete but remain
+5. Jaffa, officer, Tok’ra and SGC apparel are technically complete but remain
    temporary art families; many body-type variants are exact copies rather than
    tailored silhouettes.
 
@@ -166,11 +167,12 @@ same canonical family. Representative dimensions refer to the base image.
 | `UI/Genes/SG1_JaffaPouchPotential` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaPouchPotential | Exact reuse of the project demon icon; misleading for this gameplay surface. |
 | `UI/Genes/SG1_JaffaSymbioteCompatibility` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_JaffaSymbioteCompatibility | Exact reuse of the project demon icon; misleading for this gameplay surface. |
 | `UI/Genes/SG1_NaquadahBlood` | 1 | 64×64 | Gene UI | `placeholder-personal-icon` | `P0` | SG1_NaquadahBlood | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Xenotypes/SG1_GoauldHost` | 1 | 64×64 | Xenotype UI | `placeholder-personal-icon` | `P0` | SG1_GoauldHost | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `World/WorldObjects/Expanding/SG1_FreeJaffa` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_FreeJaffa | Functional faction identity, but only event-site icons are currently accepted as final. |
-| `World/WorldObjects/Expanding/SG1_GoauldSystemLords` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_GoauldSystemLordPrototype | Functional faction identity, but only event-site icons are currently accepted as final. |
-| `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_PlayerSGCExpedition | Functional faction identity, but only event-site icons are currently accepted as final. |
-| `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_Tokra | Functional faction identity, but only event-site icons are currently accepted as final. |
+| `UI/Xenotypes/SG1_GoauldHost` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_GoauldHost | Maintainer-approved symbolic icon using the defining Goa'uld symbiote rather than a human forehead mark or the personal mod icon. |
+| `UI/Xenotypes/SG1_Jaffa` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_Jaffa | Maintainer-supplied human/Baseliner icon carrying the mark of Apophis; replaces the unrelated vanilla Hussar icon. |
+| `World/WorldObjects/Expanding/SG1_FreeJaffa` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_FreeJaffa | Functional faction identity, but not explicitly accepted as final. |
+| `World/WorldObjects/Expanding/SG1_GoauldSystemLords` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_GoauldSystemLordPrototype | Functional faction identity, but not explicitly accepted as final. |
+| `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_PlayerSGCExpedition | Functional faction identity, but not explicitly accepted as final. |
+| `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `temporary-original` | `P1` | SG1_Tokra | Functional faction identity, but not explicitly accepted as final. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraIntroductionArtifactWorldSite | Dedicated custom art already validated in its published presentation milestone. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | 1 | 64×64 | World site | `final` | `done` | SG1_GoauldOpenConflictBattlefieldSite | Dedicated custom art already validated in its published presentation milestone. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDecodedMissionWorldSite | Dedicated custom art already validated in its published presentation milestone. |
@@ -194,7 +196,6 @@ not resolve under the mod's `Textures/` directory.
 | `Things/Building/Door/DoorSimple_MenuIcon` | Build/menu icon | `placeholder-vanilla` | `P2` | SG1_TokraRelaySiteDoor | Relay-site door still uses the vanilla simple-door menu icon. |
 | `Things/Building/Linked/Sandbags_Atlas` | Mission map building | `placeholder-vanilla` | `P2` | SG1_TokraRelaySiteBarricade | Relay-site barricade still uses the vanilla sandbag atlas. |
 | `UI/Icons/Study` | Command UI | `accepted-vanilla` | `P3` | SG1_TokraIntroductionArtifact | Generic study action icon is semantically correct and not a GateRim identity surface. |
-| `UI/Icons/Xenotypes/Hussar` | Xenotype UI | `placeholder-vanilla` | `P0` | SG1_Jaffa | Jaffa currently display the unrelated Hussar xenotype icon and require dedicated final art. |
 <!-- EXTERNAL_ASSET_TABLE_END -->
 
 ## Runtime vanilla icon constants
@@ -221,10 +222,10 @@ not resolve under the mod's `Textures/` directory.
 
 ## Explicit non-effects
 
-`0.3.85-dev` changes no texture content, Def behavior, rendering code, stats,
-research, recipe, faction, mission, storyteller, save data or gameplay rule.
-It only adds the durable register, automated checks, version metadata and
-documentation required to plan later art replacement lots.
+`0.3.86-dev` changes only the two approved xenotype PNGs, the Jaffa
+`iconPath`, the final-family whitelist, version metadata and documentation. It
+does not change xenotype genes, inheritance, combat power, pawn generation,
+symbiote lifecycle, factions, missions, storyteller behavior or save data.
 
 ## Validation procedure
 
@@ -241,14 +242,15 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Local PNG files: 608
-Local texture families: 75
-Direct external texture paths: 7
+Local PNG files: 609
+Local texture families: 76
+Direct external texture paths: 6
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
 
-Because no image or gameplay file changes, the focused manual review is limited
-to checking the register's P0/P1 findings and confirming that RimWorld reaches
-the main menu with version `0.3.85-dev` and no new XML, texture or C# error.
+Focused manual review must confirm both approved xenotype icons in the actual
+Biotech UI at small scale, verify that the former demon and Hussar placeholders
+are absent, and confirm that RimWorld reaches the main menu with version
+`0.3.86-dev` and no new XML, texture, translation or C# error.

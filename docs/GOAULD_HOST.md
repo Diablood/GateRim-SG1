@@ -76,21 +76,22 @@ Free symbiote or new host
 8. Check `Player.log` for `SG1_GoauldHost`, `SG1_NaquadahBlood` or `SG1_GoauldLongevity` errors.
 
 
-## Temporary artwork
+## Final xenotype artwork
 
-`SG1_GoauldHost` currently uses:
+Since `0.3.86-dev`, `SG1_GoauldHost` uses the maintainer-approved symbolic
+Goa'uld symbiote icon at the stable path:
 
 ```text
 Textures/UI/Xenotypes/SG1_GoauldHost.png
 ```
 
-The two custom Goa'uld genes currently use local placeholder textures under:
+The icon represents the defining organism rather than a human forehead mark:
+once the symbiote is removed, the former host returns to ordinary human
+identity. The two custom Goa'uld gene icons remain temporary under:
 
 ```text
 Textures/UI/Genes/
 ```
-
-These local placeholders guarantee reliable texture paths during development.
 
 ## Persistent biological traces since 0.3.58-dev
 

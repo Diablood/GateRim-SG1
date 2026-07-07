@@ -2,33 +2,34 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.85-dev`
-> Révision finale : `r3`, validée et publiée
+> Dernière révision : `0.3.86-dev`
+> Révision finale : `r2`, validée et publiée ; références visuelles présentes sur les pages dédiées
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-La version publiée `0.3.85-dev`, révision finale `r3`, prépare la fermeture de la dette visuelle sans modifier les images
-ni le gameplay. Un registre interne couvre les `608` PNG du mod sous `75`
-familles canoniques. Seules l'icône publique du mod et les sept icônes de sites
-d'événements explicitement validées sont finales ; tous les autres visuels
-restent temporaires. Un contrôle automatique vérifie les chemins, dépendances et
-la liste finale autorisée. Chaque future validation sera référencée immédiatement
-sur la page wiki dédiée.
+La révision locale `0.3.86-dev-r2` applique le premier lot artistique
+définitif au registre publié dans `0.3.85-dev`. Le Jaffa reçoit l'icône humaine
+marquée d'Apophis fournie par le mainteneur et l'hôte Goa'uld reçoit le symbiote
+simplifié approuvé. La baseline couvre désormais `609` PNG sous `76` familles,
+dont `9` familles locales finales. Un contrôle automatique vérifie les chemins,
+dépendances et la liste finale autorisée. Chaque future validation reste
+référencée immédiatement sur la page wiki dédiée.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
-| Audit des assets visuels | Registre exhaustif de 608 PNG / 75 familles ; `About/ModIcon.png` et sept icônes de sites d'événements sont les seules références finales, tout le reste demeure temporaire ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev |
+| Icônes finales des xénotypes Jaffa et hôte Goa'uld | Jaffa : tête humaine blanche avec marque d'Apophis ; hôte Goa'uld : symbiote blanc simplifié ; deux visuels approuvés puis validés en jeu ; copies visuelles ajoutées aux pages dédiées dans `r2` | 0.3.86-dev |
+| Audit des assets visuels | Registre exhaustif maintenu à 609 PNG / 76 familles ; `About/ModIcon.png`, deux icônes de xénotypes et sept icônes de sites d'événements sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mise à jour 0.3.86-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev |
-| Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |
+| Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta ; icône finale humaine marquée d'Apophis intégrée | 0.1.1-dev / refonte 0.1.13-dev / icône 0.3.86-dev |
 | Physiologie jaffa sans silhouette Hulk imposée | Implémenté | 0.1.2-dev |
 | Longévité jaffa à 150 % | Implémenté | 0.1.3-dev |
 | Traductions françaises du lot Jaffa | Implémenté | 0.1.4-dev |
 | Fondation du wiki joueur | Implémenté | 0.1.6-dev |
-| Xenotype `hôte Goa'uld` | Prototype testable | 0.1.7-dev |
+| Xenotype `hôte Goa'uld` | Prototype testable ; icône finale symbolisée par le symbiote Goa'uld simplifié | 0.1.7-dev / icône 0.3.86-dev |
 | Naquadah dans le sang | Marqueur biologique acquis et persistant pour hôtes Goa'uld/Tok'ra, Jaffa avec Prim'ta, anciens hôtes et activation du kara kesh | 0.1.7-dev / persistance 0.3.58-dev |
 | Longévité de l'hôte Goa'uld à 500 % | Prototype testable | 0.1.7-dev |
 | Symbiote Goa'uld libre | Prototype générable en mode développeur | 0.1.8-dev |

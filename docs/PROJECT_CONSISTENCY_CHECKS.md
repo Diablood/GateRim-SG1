@@ -53,7 +53,8 @@ It verifies:
 - every local family has at least one direct XML or C# reference;
 - no direct local texture path is missing;
 - every direct vanilla texture path is registered and still referenced;
-- `About/ModIcon.png` remains present.
+- `About/ModIcon.png` remains present;
+- every approved xenotype icon copied into `docs/wiki/images/` remains byte-identical to its gameplay PNG and is referenced by the dedicated wiki page.
 
 The checker is read-only. Any added, removed, renamed or newly referenced visual
 asset must update the register in the same revision.

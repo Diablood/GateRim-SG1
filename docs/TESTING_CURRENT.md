@@ -1,185 +1,173 @@
 # Current milestone test procedure
 
-Jalon : `0.3.85-dev - Audit provisional visual assets`
+Jalon : `0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons`
 
-Revision to test: `r3`
+Final local revision: `r2`
 
-Version de DLL attendue : `0.3.85.0`
+Version de DLL attendue : `0.3.86.0`
 
-Status: **final revision `r3` validated and published**.
+Status: **final revision `r2` validated and published**.
 
 ## Purpose
 
-Validate the repository-wide visual inventory and its read-only checker. No PNG,
-Def behavior, rendering code or gameplay rule changes in this milestone.
+Validate the first bounded definitive-art replacement lot. Revision `r1`
+changed the two xenotype icons and passed the focused in-game test. Revision
+`r2` adds byte-identical copies to the wiki source, displays them on the
+dedicated pages and extends the checker against visual drift.
 
-## Revision history
+The two source visuals were explicitly approved before packaging:
 
-- `r1`: the first Windows PowerShell 5.1 run failed before meaningful inventory
-  comparison. `Path.ChangeExtension($relative, $null)` left a trailing period,
-  so the checker reported `608` false local families and `82` false external
-  paths even though PNG signatures and registered totals were valid.
-- `r2`: remove that overload-sensitive extension step and normalize each original
-  `.png` relative path directly.
-- `r3`: apply the maintainer-approved final-art boundary. Keep only the seven
-  validated world-event site families final, keep `About/ModIcon.png` final
-  outside the local family count, downgrade storyteller/faction visuals to
-  temporary, add a final-family checker whitelist and create the progressive wiki
-  reference page.
+- Jaffa: maintainer-supplied `64×64` human/Baseliner icon carrying the mark of
+  Apophis;
+- Goa'uld host: approved simplified white Goa'uld symbiote silhouette, used
+  because the symbiote itself defines the acquired host state.
 
-## Validation result
+## Preconditions
 
-The maintainer reports the complete required procedure as successful:
+- start from published `develop` aligned with `v0.3.85-dev`;
+- work on `feature/final-xenotype-icons`;
+- apply `0.3.86-dev-r1` first, then the incremental `0.3.86-dev-r2` ZIP from
+  the repository root;
+- keep Biotech and Harmony active;
+- do not stage the ZIP itself.
 
-- build `0.3.85.0`;
-- duration-formatting check;
-- visual-asset check with the expected `608 / 75 / 7 / 7` baseline and zero
-  missing or unregistered local family;
-- complete project-consistency check and clean diff;
-- focused review and acceptance of the strict final/temporary boundary, P0/P1
-  findings and progressive wiki-reference rule;
-- RimWorld launch to the main menu with version `0.3.85-dev`;
-- no new relevant XML, texture, translation or C# error in `Player.log`.
+## Automated validation
 
-No PNG, Def, rendering, gameplay or save-data change was introduced.
-
-## Automated checks
-
-From the repository root:
+Run from the repository root:
 
 ```powershell
 ./build.cmd
 ./tools/check-duration-formatting.cmd
 ./tools/check-visual-assets.cmd
 ./tools/check-project-consistency.cmd
+
 git diff --check
+git status --short
 ```
 
-Expected build version:
+Expected visual-check summary:
 
 ```text
-Assembly: 0.3.85.0
-```
-
-Expected visual checker summary:
-
-```text
-Final local texture families: 7
-Local PNG files: 608
-Local texture families: 75
-Direct external texture paths: 7
+Final local texture families: 9
+Local PNG files: 609
+Local texture families: 76
+Direct external texture paths: 6
 Missing local references: 0
 Unregistered local families: 0
+
 Visual asset check passed.
 ```
 
-Do not continue if any command fails.
-
-## Required focused review
-
-Open:
+The check must also confirm that the exact final-family whitelist contains:
 
 ```text
-docs/VISUAL_ASSET_REGISTER.md
+UI/Xenotypes/SG1_GoauldHost
+UI/Xenotypes/SG1_Jaffa
 ```
 
-Confirm that the register contains:
+alongside the seven already validated event-site families.
 
-- `608` local PNG files;
-- `75` canonical local texture families;
-- `7` accepted final local families;
-- `33` temporary-original families;
-- `15` temporary recolor families;
-- `6` temporary reuse families;
-- `14` personal-icon placeholder families;
-- priorities `16` P0, `27` P1, `25` P2 and `7` done;
-- `7` direct vanilla texture dependencies;
-- `About/ModIcon.png` recorded as final public mod art outside the local family
-  count;
-- exactly seven final local families, all under
-  `World/WorldObjects/Expanding/Sites/`;
-- storyteller portraits and four world-faction icons recorded as temporary;
-- the progressive wiki reference in `docs/wiki/Visual-Assets.md`.
 
-Review the P0/P1 findings and confirm that the priority order is acceptable:
+## Focused wiki-reference validation completed in r2
 
-1. command, gene, xenotype and basin surfaces using the personal demon icon;
-2. kara kesh and healing bracelet using the Zat texture;
-3. Jaffa xenotype using the vanilla Hussar icon;
-4. Prim'ta larva and free symbiote sharing one image;
-5. Tok'ra mission objects sharing packet or communicator art;
-6. prominent Jaffa, officer, Tok'ra and SGC apparel remaining temporary.
-
-## Minimal RimWorld smoke test
-
-Because the milestone changes assembly metadata but no gameplay code or image:
-
-1. launch RimWorld;
-2. confirm GateRim SG-1 reports version `0.3.85-dev`;
-3. reach the main menu;
-4. exit normally;
-5. inspect `Player.log`.
-
-Expected result:
-
-- no missing texture warning;
-- no XML parse error;
-- no translation error;
-- no C# initialization error;
-- no visual-check script side effect on the repository.
-
-No new game, world generation or map scenario is required.
-
-## Optional negative checker tests
-
-These tests are useful but are not required for focused acceptance.
-
-### Unregistered texture family
-
-Temporarily copy one PNG to a new canonical path under `Textures/`, run:
+The final validation used:
 
 ```powershell
-./tools/check-visual-assets.cmd
+./tools/sync-wiki.cmd
 ```
 
-Expected: non-zero exit with `Unregistered local texture family`.
+The maintainer confirmed:
 
-Delete the temporary file and rerun successfully.
+- `Jaffa.md` visibly displays `images/SG1_Jaffa.png`;
+- `Active-Goauld-Host.md` visibly displays `images/SG1_GoauldHost.png`;
+- `Visual-Assets.md` displays both final icons in its xenotype table;
+- both wiki PNGs are byte-identical to their files under
+  `Textures/UI/Xenotypes/`;
+- no broken image placeholder or oversized rendering appears.
 
-### Missing registered family
+## Focused in-game validation already completed in r1
 
-Temporarily rename one registered PNG family, run the checker and expect:
+### 1. Main-menu smoke test
+
+1. Start RimWorld with GateRim SG-1, Harmony and Biotech.
+2. Reach the main menu.
+3. Confirm the displayed mod version is `0.3.86-dev`.
+4. Confirm no red XML, texture, translation or C# error appears.
+
+### 2. Jaffa xenotype icon
+
+Open a Biotech xenotype-selection, xenotype-editor or another vanilla surface
+that displays xenotype icons.
+
+Confirm:
+
+- `Jaffa` uses the new local icon;
+- the icon reads as a simplified white human head with the mark of Apophis;
+- the unrelated vanilla Hussar icon no longer appears;
+- the icon is not magenta or missing;
+- the mark remains recognizable at the actual small UI scale;
+- no mouth, mask, equipment or added decorative background was introduced.
+
+### 3. Goa'uld-host xenotype icon
+
+On the same type of interface, confirm:
+
+- `Goa'uld host` uses the new simplified symbiote silhouette;
+- the personal red-and-black demon mod icon no longer appears;
+- the white S-shaped organism, eye, open jaw and body breaks remain readable at
+  the actual small UI scale;
+- the icon does not resemble a Jaffa forehead mark or a faction emblem;
+- the image is not magenta, clipped or unexpectedly tinted.
+
+### 4. Regression boundary
+
+Confirm that the icon-only lot does not change:
+
+- Jaffa inheritance or gene list;
+- Goa'uld-host non-inheritable state or gene list;
+- xenotype combat-power factors;
+- pawn generation;
+- implantation, extraction or symbiote lifecycle;
+- existing save loading.
+
+A new game is sufficient for visual validation, but one existing save containing
+a Jaffa or Goa'uld host may be loaded to confirm that no state migration occurs.
+
+### 5. Log review
+
+Close the game and inspect `Player.log`.
+
+Reject the revision if a new relevant error mentions:
 
 ```text
-Registered family without matching PNG files
+SG1_Jaffa
+SG1_GoauldHost
+UI/Xenotypes/SG1_Jaffa
+UI/Xenotypes/SG1_GoauldHost
+Could not load texture
+XML error
 ```
 
-Restore the original path and rerun successfully.
+## Expected repository baseline
 
-### Stale external dependency
+- `609` PNG files;
+- `76` canonical local texture families;
+- `9` final local families;
+- `13` personal-icon placeholder families;
+- `15` P0 families;
+- `6` direct external texture paths;
+- no local texture reference missing;
+- no unregistered local family.
 
-Temporarily alter one direct vanilla path in the register or a Def. The checker
-must reject either an unregistered external path or a stale registered path.
-Restore the file and rerun successfully.
+## Final result
 
-## Acceptance report
+Revision `r2` is validated and published. The successful `r1` gameplay result
+remains intact, all automated checks pass, and the exact two final PNGs render
+correctly on the dedicated wiki pages and the progressive visual-reference
+page.
 
-Report:
-
-- build result;
-- duration checker result;
-- visual checker result;
-- project consistency result;
-- `git diff --check` result;
-- whether the register's P0/P1 priorities are accepted;
-- main-menu smoke-test result;
-- relevant `Player.log` errors, if any.
-
-The result is recorded in `docs/PROJECT_STATE.md` and retained here as the
-final focused acceptance report.
-
-## Publication state
-
-Final revision `r3` is published through the feature-branch commit,
-fast-forward integration into `develop`, annotated tag `v0.3.85-dev` and
-synchronization of the separate wiki.
+An unrelated pre-existing starter-generation issue was observed during a custom
+new-game test: selecting only the Jaffa or Tok'ra xenotype does not necessarily
+create the required Prim'ta, Tok'ra symbiote or dual identity. This does not
+invalidate the icon-only milestone and is tracked as a separate future gameplay
+milestone in `docs/ROADMAP.md`.

@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.85-dev`
+- Development version: `0.3.86-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.85-dev` performs a repository-wide visual audit without changing any
-image or gameplay behavior. The new authoritative register covers `608` PNG
-files under `75` canonical texture families, records direct vanilla texture
-dependencies, classifies final art and every form of placeholder or temporary
-reuse, and assigns replacement priorities. A read-only checker now prevents
-future texture paths, physical files or external dependencies from drifting
-silently from that register.
+`0.3.86-dev` begins the definitive-art replacement in a deliberately small
+lot. The Jaffa xenotype now uses the maintainer-supplied human icon carrying the
+mark of Apophis, while the Goa'uld-host xenotype uses a simplified white
+symbiote silhouette. Both icons were approved before packaging and replace the
+unrelated vanilla Hussar icon and the personal mod-icon placeholder without
+changing xenotype behavior. The visual register now covers `609` PNG files
+under `76` canonical texture families, including `9` final local families.
 
 ## Playable content
 

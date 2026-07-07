@@ -12,7 +12,7 @@
         <label>Goa'uld host</label>
         <description>A Goa'uld host is a humanoid body controlled by an adult parasitic symbiote. The symbiote grants increased resilience, rapid recovery, disease resistance and a dramatically extended lifespan. This xenotype is an XML-only prototype: future milestones will represent the Goa'uld as a distinct organism capable of implantation, extraction and transfer between hosts.</description>
         <descriptionShort>A humanoid host possessed and enhanced by an adult Goa'uld symbiote.</descriptionShort>
-        <!-- Temporary GateRim placeholder until dedicated Goa'uld host artwork is added. -->
+        <!-- Final xenotype icon approved in 0.3.86-dev: the defining Goa'uld symbiote. -->
         <iconPath>UI/Xenotypes/SG1_GoauldHost</iconPath>
         <inheritable>false</inheritable>
         <combatPowerFactor>1.75</combatPowerFactor>

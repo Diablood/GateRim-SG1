@@ -12,8 +12,8 @@
         <label>Jaffa</label>
         <description>Jaffa are an inheritable modified human lineage adapted to undergo the Prim'ta and carry an immature Goa'uld symbiote. Children inherit the Jaffa lineage without automatically receiving a larva. Their inherited baseline remains intentionally modest; the stronger immune, healing and longevity benefits appear only while the Prim'ta health state is present.</description>
         <descriptionShort>An inheritable modified human lineage adapted to undergo the Prim'ta.</descriptionShort>
-        <!-- Temporary vanilla icon until dedicated Jaffa artwork is added. -->
-        <iconPath>UI/Icons/Xenotypes/Hussar</iconPath>
+        <!-- Final xenotype icon approved in 0.3.86-dev: a human baseline with the mark of Apophis. -->
+        <iconPath>UI/Xenotypes/SG1_Jaffa</iconPath>
         <inheritable>true</inheritable>
         <combatPowerFactor>1.1</combatPowerFactor>
         <genes>

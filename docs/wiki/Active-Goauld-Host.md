@@ -1,6 +1,12 @@
 # Hôte Goa'uld actif
 
-Après la phase d'[implantation récente](Recent-Implantation), le même symbiote devient un état adulte permanent dans son hôte. Son identifiant et son identité persistent pendant la conversion.
+![Icône finale de l'hôte Goa'uld](images/SG1_GoauldHost.png)
+
+Après la phase d'[implantation récente](Recent-Implantation), le même symbiote
+devient un état adulte permanent dans son hôte. Son identifiant et son identité
+persistent pendant la conversion. L'icône finale représente directement le
+symbiote Goa'uld : c'est sa présence qui distingue l'hôte actif d'un humain
+ordinaire.
 
 ## Effets biologiques
 

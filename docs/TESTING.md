@@ -1,13 +1,46 @@
 # Durable testing
 
+## Final Goa'uld-host and Jaffa xenotype icons (`0.3.86-dev`)
+
+Final revision `r2` validated and published. Revision `r1` validated the icons
+in game; documentation-only revision `r2` added and validated the visual wiki
+references. Durable coverage:
+
+- keep `SG1_GoauldHost.iconPath` on the stable
+  `UI/Xenotypes/SG1_GoauldHost` family while replacing only the PNG contents;
+- keep `SG1_Jaffa` on the new dedicated `UI/Xenotypes/SG1_Jaffa` family and
+  never fall back to `UI/Icons/Xenotypes/Hussar`;
+- preserve the exact maintainer-supplied Jaffa `64×64` icon and its readable
+  mark of Apophis;
+- preserve the approved simplified Goa'uld symbiote silhouette as the symbolic
+  identity of the acquired host state;
+- require both icons to remain monochrome, transparent outside the visible
+  shape and readable at the actual small xenotype-UI scale;
+- confirm neither icon is missing, magenta, clipped or unexpectedly tinted;
+- preserve all xenotype genes, labels, inheritance flags, combat factors, pawn
+  generation and save identifiers;
+- keep implantation, extraction and symbiote lifecycle behavior unchanged;
+- require the visual register baseline to match `609` PNG files, `76` local
+  families, `9` final local families and `6` direct external paths;
+- require the final-family whitelist to contain the two xenotype families plus
+  the seven published event-site families;
+- remove the obsolete external Hussar dependency and reduce the remaining
+  personal-icon placeholders and P0 counts exactly as recorded;
+- publish both approved icons to `docs/wiki/Visual-Assets.md` and to their dedicated `Jaffa.md` and `Active-Goauld-Host.md` pages in the same revision;
+- keep `docs/wiki/images/SG1_Jaffa.png` and `SG1_GoauldHost.png` byte-identical to their gameplay textures;
+- run the build, duration audit, visual audit and complete project-consistency
+  check;
+- verify the real Biotech xenotype interface, main-menu version `0.3.86-dev`
+  and `Player.log`.
+
 ## Visual asset register and drift checker (`0.3.85-dev`)
 
-Validation pending on corrective local revision `r3`. Revision `r1` exposed
-an overload-sensitive Windows PowerShell 5.1 bug: removing `.png` through
+Final revision `r3` validated and published. Revision `r1` exposed an
+overload-sensitive Windows PowerShell 5.1 bug: removing `.png` through
 `Path.ChangeExtension(..., $null)` left a trailing period and expanded the
-inventory into `608` false families. `r2` normalizes the original PNG path
-directly. `r3` corrects the final-art classifications and wiki workflow. Durable
-coverage planned:
+inventory into `608` false families. `r2` normalized the original PNG path
+directly and `r3` corrected the final-art classifications and wiki workflow.
+Durable coverage:
 
 - preserve `docs/VISUAL_ASSET_REGISTER.md` as the authoritative inventory;
 - keep every local PNG grouped under exactly one canonical family;
@@ -16,10 +49,11 @@ coverage planned:
 - reject unregistered or stale direct vanilla texture dependencies;
 - keep `About/ModIcon.png` final and prevent its gameplay-placeholder reuse from
   being forgotten;
-- require the final local-family set to equal the seven validated world-event
-  site icons and reject any accidental final classification outside that set;
-- keep all other local visual families temporary until explicit maintainer
-  approval;
+- require the final local-family set to equal the explicit checker whitelist;
+  the initial seven event-site families may be extended only by maintainer
+  approval recorded in the register and wiki;
+- keep every non-whitelisted local visual family temporary until explicit
+  maintainer approval;
 - update `docs/wiki/Visual-Assets.md` in the same revision as every future visual
   approval, avoiding a single deferred global wiki pass;
 - retain exact case for every registered path;
@@ -28,8 +62,8 @@ coverage planned:
 - rerun the visual checker from the project-consistency command;
 - preserve all current Def names and stable texture paths during art-only
   replacements unless a separate technical migration is approved;
-- confirm a version-only rebuild reaches the RimWorld main menu without new XML,
-  texture, translation or C# errors.
+- confirm every art-only rebuild reaches the RimWorld main menu without new
+  XML, texture, translation or C# errors.
 
 ## Jaffa officers in eligible Goa'uld forces (`0.3.75-dev`)
 
@@ -4380,10 +4414,10 @@ Final revision `r3` validated and published. Durable coverage:
   vanilla icon constant and the public mod icon;
 - preserve `About/ModIcon.png` as final public identity outside the local-family
   count and forbid its use as gameplay art;
-- keep exactly the seven explicitly accepted world-event site families final
-  until the maintainer validates another visual;
-- treat every other storyteller, faction, equipment, building, item, gene,
-  xenotype, projectile, pawn and command surface as temporary by default;
+- preserve the seven initially accepted world-event site families and extend
+  the final whitelist only after explicit maintainer validation;
+- treat every non-whitelisted storyteller, faction, equipment, building, item,
+  gene, xenotype, projectile, pawn and command surface as temporary by default;
 - update the register whenever an image is added, removed, renamed, moved or
   reclassified;
 - add every newly accepted visual to `docs/wiki/Visual-Assets.md` in the same
@@ -4392,9 +4426,10 @@ Final revision `r3` validated and published. Durable coverage:
 - run `tools/check-visual-assets.cmd` and require valid PNG signatures, exact
   canonical family/count agreement, no missing or unregistered local family,
   no stale external path and an exact final-family whitelist;
-- preserve the validated baseline of `608` PNG files, `75` local families, `7`
-  final local families and `7` direct external paths until an intentional asset
-  change updates the register;
+- preserve the published `0.3.85-dev` baseline of `608` PNG files, `75` local
+  families, `7` final local families and `7` direct external paths as historical
+  evidence; require every intentional later asset change, including
+  `0.3.86-dev`, to update the current register and checker expectations;
 - keep the visual audit read-only: no PNG, Def, texture path, rendering, gameplay
   or save-data change;
 - verify assembly `0.3.85.0`, complete project consistency, main-menu startup and

@@ -4,21 +4,32 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.85-dev`
-> Révision finale : `r3`, validée et publiée
+> Version du mod documentée : `0.3.86-dev`
+> Révision finale : `r2`, validée et publiée ; références visuelles présentes sur les pages dédiées
+
+## Icônes finales des xénotypes Jaffa et hôte Goa'uld
+
+`0.3.86-dev` ouvre la passe artistique définitive par un lot volontairement
+limité à deux icônes simples. Le Jaffa utilise désormais une tête humaine blanche
+très épurée portant la marque d'Apophis, fournie directement par le mainteneur.
+L'hôte Goa'uld est représenté par le symbiote blanc simplifié qui définit cet
+état acquis, plutôt que par une marque frontale pouvant être confondue avec celle
+d'un Jaffa.
+
+Les deux visuels ont été approuvés avant leur inclusion dans `r1`, puis leur
+rendu réel en petite taille et les contrôles techniques ont été validés. La
+révision `r2` les ajoute visuellement aux pages dédiées et protège les copies du
+wiki contre toute divergence avec les PNG du jeu.
 
 ## Audit des assets visuels provisoires
 
-La version publiée `0.3.85-dev`, révision finale `r3`, ajoute un registre technique exhaustif sans modifier les images
-ni le gameplay. Les `608` PNG du mod sont regroupés sous `75` familles de
-textures avec leur usage, leur état artistique et leur priorité de remplacement.
+La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
+technique exhaustif. Avec le premier lot `0.3.86-dev`, la baseline devient
+`609` PNG sous `76` familles de textures, dont `9` familles locales finales :
+les deux xénotypes et les sept icônes de sites d'événements. L'icône publique du
+mod reste finale hors compteur.
 
-La référence finale initiale est volontairement stricte : l'icône publique du
-mod et les sept icônes de sites d'événements déjà validées. Tous les autres
-visuels restent temporaires. Un contrôle automatique empêche l'ajout, la
-suppression, le renommage ou la qualification finale silencieuse d'une texture.
-
-Chaque nouveau visuel validé sera ajouté immédiatement à la page
+Chaque nouveau visuel validé est ajouté immédiatement à la page
 [Références visuelles validées](Visual-Assets), sans attendre une passe globale
 du wiki.
 

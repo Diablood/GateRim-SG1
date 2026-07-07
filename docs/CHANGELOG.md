@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons
+
+- Start from published `develop` and annotated tag `v0.3.85-dev` at commit
+  `7111ca0032b09c92bf3f4b0a1917a4bcfd03459a` on
+  `feature/final-xenotype-icons`.
+- Limit the first definitive-art replacement lot to the two simplest xenotype
+  identity surfaces.
+- Add the exact maintainer-supplied `64×64` Jaffa icon: a simplified white
+  human/Baseliner form carrying the mark of Apophis.
+- Replace the Goa'uld-host demon placeholder in place with the approved
+  simplified white Goa'uld symbiote silhouette. The defining organism is used
+  because a host without its symbiote returns to ordinary human identity.
+- Preserve the stable `UI/Xenotypes/SG1_GoauldHost` path and add the dedicated
+  `UI/Xenotypes/SG1_Jaffa` path.
+- Point `SG1_Jaffa.iconPath` away from the unrelated vanilla Hussar icon.
+- Preserve all xenotype genes, labels, inheritance flags, combat factors, pawn
+  generation, symbiote lifecycle and save identifiers.
+- Update the authoritative visual baseline to `609` PNG files, `76` canonical
+  local families, `9` final local families, `13` personal-icon placeholders,
+  `15` P0 families and `6` direct external texture paths.
+- Extend the automated final-family whitelist with the two approved xenotype
+  paths and remove the obsolete Hussar external dependency.
+- Add both final icons immediately to the progressive wiki reference page.
+- Prepare local revision `r1` for focused build, checker, small-scale UI and
+  `Player.log` validation. No commit, push, tag or wiki publication is included.
+- Validate local revision `r1`: build and automated checks pass, both icons
+  render correctly at the real xenotype UI scale, previous placeholders are
+  absent and no new relevant `Player.log` error appears.
+- Prepare documentation-only revision `r2`: copy the exact validated PNGs to
+  `docs/wiki/images/`, display them on the dedicated Jaffa and active
+  Goa'uld-host pages and on `Visual-Assets.md`, and reject any future drift
+  between wiki copies and gameplay textures.
+- Validate final local revision `r2`: automated checks remain successful, the
+  synchronized wiki displays both exact icons on the dedicated pages and
+  progressive reference page, and the wiki copies remain byte-identical to the
+  gameplay textures.
+- Record the unrelated pre-existing starter-generation gap discovered during
+  validation: a Jaffa or Tok'ra selected only by xenotype may lack the required
+  Prim'ta, Tok'ra symbiote or dual identity. Defer that correction to a distinct
+  future gameplay milestone.
+- Publish the validated `r2` state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.86-dev` and
+  synchronized separate wiki. The final commit and tag omit the local `r2`
+  suffix.
+
 ## 0.3.85-dev - Audit provisional visual assets
 
 - Start from published `develop` and annotated tag `v0.3.84-dev` at commit

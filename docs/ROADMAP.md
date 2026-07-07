@@ -12,6 +12,25 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
+## Dernier jalon visuel validé et publié
+
+`0.3.86-dev - Add final Goa'uld host and Jaffa xenotype icons`
+
+Branche finale : `feature/final-xenotype-icons`, créée depuis `develop` aligné
+avec le tag publié `v0.3.85-dev`.
+
+La révision finale `r2` est validée et publiée. Ce premier lot artistique
+définitif reste limité aux deux icônes de xénotypes les plus simples. L'icône
+Jaffa fournie par le mainteneur reprend une tête humaine épurée avec la marque
+d'Apophis. L'icône de l'hôte Goa'uld représente directement le symbiote
+simplifié, organisme qui définit l'état acquis de l'hôte.
+
+Le jalon conserve les Defs et comportements, remplace seulement le PNG existant
+de l'hôte, ajoute le PNG Jaffa et redirige son `iconPath` depuis le Hussard
+vanilla. Le build `0.3.86.0`, les contrôles, le rendu réel en petite taille,
+`Player.log` et les références visuelles sur les pages wiki dédiées sont
+validés. Les copies wiki restent byte-identiques aux textures de jeu.
+
 ## Dernier jalon documentaire validé et publié
 
 `0.3.85-dev - Audit provisional visual assets`
@@ -32,7 +51,7 @@ blanche finale, les priorités P0/P1 et le chargement du menu principal sans
 nouvelle erreur pertinente sont validés. Chaque future validation visuelle,
 ainsi que tout ajout, suppression, renommage ou déplacement d'image, doit mettre
 à jour le registre technique et la page wiki de références dans la même
-révision. Aucun jalon suivant n'est encore réservé.
+révision. Le premier lot a ensuite été publié sous `0.3.86-dev`.
 
 ## Dernier jalon gameplay validé et publié
 
@@ -270,8 +289,12 @@ d'observation Tok'ra, les objets d'opération, les modules Tok'ra, les équipeme
 Goa'uld/Jaffa/SGC et l'ensemble rouge des officiers. Conserver les Defs et chemins
 stables lorsque cela suffit ; remplacer alors uniquement les PNG.
 
-Décisions reportées au lancement : direction artistique détaillée, résolution,
-variantes, externalisation éventuelle de la création et découpage en lots.
+Le premier lot publié `0.3.86-dev` couvre uniquement les icônes finales des
+xénotypes Jaffa et hôte Goa'uld. Les autres placeholders et textures temporaires
+restent des lots ultérieurs distincts.
+
+Décisions encore reportées aux lots concernés : direction artistique détaillée,
+résolution, variantes et externalisation éventuelle de la création.
 
 ### Harmoniser les identités visuelles des cultures
 
@@ -291,6 +314,25 @@ validées.
 
 Décisions reportées au lancement : liste des captures, mise en scène et format de
 la galerie.
+
+## Génération biologique des pawns de départ
+
+### Garantir les composants biologiques des Jaffa et Tok'ra de départ
+
+Corriger le cas observé dans un scénario personnalisé où un pawn choisi comme
+Jaffa par son seul xénotype commence sans Prim'ta, et où un pawn choisi comme
+Tok'ra commence sans véritable symbiote Tok'ra ni double identité. Ces deux
+starters doivent être fonctionnels dès le premier tick sans transformer les
+xénotypes en substituts artificiels des états biologiques acquis.
+
+Le futur jalon doit couvrir les starters vanilla et personnalisés, les outils de
+création ou d'édition de pawns, la réconciliation au démarrage et au chargement,
+et la prévention des doublons lorsque le Prim'ta, le symbiote ou l'identité
+Tok'ra existe déjà.
+
+Décisions reportées au lancement : sources exactes de génération concernées,
+règles d'âge et d'éligibilité du Jaffa, comportement des anciens pawns et niveau
+de migration des sauvegardes.
 
 ## Maintenance et audits transversaux
 
