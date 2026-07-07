@@ -2,23 +2,25 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.84-dev`
-> Révision finale : `r1`, validée et publiée
+> Dernière révision : `0.3.85-dev`
+> Révision finale : `r3`, validée et publiée
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-`0.3.84-dev`, publiée après validation de la révision finale `r1`, ajoute la première prise territoriale Goa'uld
-bornée après les garde-fous publiés en `0.3.83-dev`. Trois domaines restent
-proposés par défaut et deux suffisent au cadre territorial. Une paire en conflit
-ouvert peut réserver puis transférer la propriété d'une colonie
-existante, sans changer son nom, son identifiant ou sa tuile et sans créer ou
-détruire de colonie.
+La version publiée `0.3.85-dev`, révision finale `r3`, prépare la fermeture de la dette visuelle sans modifier les images
+ni le gameplay. Un registre interne couvre les `608` PNG du mod sous `75`
+familles canoniques. Seules l'icône publique du mod et les sept icônes de sites
+d'événements explicitement validées sont finales ; tous les autres visuels
+restent temporaires. Un contrôle automatique vérifie les chemins, dépendances et
+la liste finale autorisée. Chaque future validation sera référencée immédiatement
+sur la page wiki dédiée.
 
 ## Implémenté ou testable
 
 | Élément | État | Version |
 |---|---|---|
+| Audit des assets visuels | Registre exhaustif de 608 PNG / 75 familles ; `About/ModIcon.png` et sept icônes de sites d'événements sont les seules références finales, tout le reste demeure temporaire ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta | 0.1.1-dev / refonte 0.1.13-dev |

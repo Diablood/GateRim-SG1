@@ -7,6 +7,7 @@
 - [Installation et dépendances](Installation-and-Requirements)
 - [Scénario : Équipe SG isolée](Stranded-SG-Team-Scenario)
 - [État du contenu](Content-Status)
+- [Références visuelles validées](Visual-Assets)
 - [Formatage des durées](Duration-Formatting)
 - [Histoires culturelles](Cultural-Backstories)
 - [Réactions sociales contextuelles](Contextual-Social-Baseline)

@@ -12,12 +12,27 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
-## Jalon gameplay courant
+## Dernier jalon documentaire validé et publié
 
-Aucun jalon gameplay n'est actif et aucun numéro de version ni nom de branche
-suivant n'est réservé. Le prochain travail doit être sélectionné comme une unité
-distincte dans la section `Futurs jalons décidés`, puis démarré depuis
+`0.3.85-dev - Audit provisional visual assets`
+
+Branche finale : `feature/provisional-visual-asset-audit`, créée depuis
 `develop` aligné avec le tag publié `v0.3.84-dev`.
+
+La révision finale `r3` est validée et publiée. Elle inventorie les `608` PNG du
+dépôt sous `75` familles canoniques, classe chaque visuel et dépendance vanilla,
+fixe un ordre `P0/P1/P2/P3/done` et ajoute un contrôle automatisé en lecture
+seule. Seules les sept icônes de sites d'événements explicitement validées sont
+finales dans `Textures/`; `About/ModIcon.png` reste l'autre référence finale hors
+compteur. Tous les autres visuels demeurent temporaires. Aucun PNG, Def, rendu ou
+comportement de jeu n'est modifié.
+
+Le build `0.3.85.0`, les contrôles de durées, d'assets et de cohérence, la liste
+blanche finale, les priorités P0/P1 et le chargement du menu principal sans
+nouvelle erreur pertinente sont validés. Chaque future validation visuelle,
+ainsi que tout ajout, suppression, renommage ou déplacement d'image, doit mettre
+à jour le registre technique et la page wiki de références dans la même
+révision. Aucun jalon suivant n'est encore réservé.
 
 ## Dernier jalon gameplay validé et publié
 
@@ -248,15 +263,6 @@ travail actif.
 
 ## Visuels et présentation
 
-### Inventorier tous les assets provisoires
-
-Créer un registre exhaustif par Def et chemin de texture : placeholder vanilla,
-réutilisation d'un autre objet, recoloration temporaire, texture temporaire
-originale ou art final. Couvrir carte, inventaire, interface et monde.
-
-Décisions reportées au lancement : format du registre, critères de qualité,
-ordre de priorité et éventuels chemins encore à stabiliser.
-
 ### Remplacer tous les placeholders et textures temporaires par de l'art définitif
 
 Effectuer une passe artistique globale de qualité couvrant notamment la lunette
@@ -277,8 +283,11 @@ frontières exactes avec la passe de textures définitives.
 
 ### Actualiser les visuels publics
 
-Après validation de l'art définitif, renouveler les captures du wiki, les pages
-d'équipement, l'accueil et la présentation Workshop.
+Après validation de chaque asset définitif, l'ajouter immédiatement à la page de
+référence du wiki avec son Def et son chemin stable. Les captures et pages
+concernées peuvent ensuite être renouvelées par petits lots ; ne pas attendre une
+passe globale unique qui risquerait d'oublier ou d'écraser des références déjà
+validées.
 
 Décisions reportées au lancement : liste des captures, mise en scène et format de
 la galerie.

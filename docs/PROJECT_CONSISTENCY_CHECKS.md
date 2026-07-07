@@ -1,8 +1,8 @@
 # Project consistency checks
 
-Version: `0.3.21-dev`
+Version: `0.3.85-dev`
 
-Status: extended in `0.3.63-dev` with local Markdown-link validation.
+Status: extended in `0.3.85-dev` with mandatory visual-asset validation.
 
 ## Purpose
 
@@ -33,6 +33,30 @@ to their respective renderers.
 
 This check makes removal or renaming of a technical document or wiki draft fail
 before publication when a Markdown link still points to it.
+
+## Visual asset checks
+
+Since `0.3.85-dev`, the project consistency command launches
+`tools/check-visual-assets.ps1` as a mandatory subprocess. The dedicated checker
+can also be run directly through:
+
+```powershell
+./tools/check-visual-assets.cmd
+```
+
+It verifies:
+
+- every PNG under `Textures/` has a valid PNG signature;
+- directional and body-type variants normalize to one canonical family;
+- every family and physical-file count matches
+  `docs/VISUAL_ASSET_REGISTER.md`;
+- every local family has at least one direct XML or C# reference;
+- no direct local texture path is missing;
+- every direct vanilla texture path is registered and still referenced;
+- `About/ModIcon.png` remains present.
+
+The checker is read-only. Any added, removed, renamed or newly referenced visual
+asset must update the register in the same revision.
 
 ## Previously validated behavior
 

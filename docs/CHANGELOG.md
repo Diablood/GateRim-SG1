@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.3.85-dev - Audit provisional visual assets
+
+- Start from published `develop` and annotated tag `v0.3.84-dev` at commit
+  `393c36e3824e4df3ec0958580e759e4c8ac864c4` on
+  `feature/provisional-visual-asset-audit`.
+- Add `docs/VISUAL_ASSET_REGISTER.md` as the authoritative inventory for every
+  local texture family, direct vanilla texture dependency, runtime vanilla icon
+  constant and the preserved public mod icon.
+- Inventory `608` local PNG files under `75` canonical families while grouping
+  directional and body-type apparel variants without losing physical-file
+  counts.
+- After maintainer review, classify only the seven validated world-event site
+  icon families as final. Keep `About/ModIcon.png` final outside the local texture
+  count, and classify every other local family as temporary.
+- Final audited totals are `7` final, `33` temporary original, `15` temporary
+  recolor, `6` temporary reuse and `14` personal-icon placeholders.
+- Assign `16` P0, `27` P1, `25` P2 and `7` completed local priorities so later
+  definitive-art work can be split into coherent lots.
+- Record the highest-risk visual debt: project-icon reuse across commands,
+  genes, xenotype and basins; Zat reuse for the kara kesh and healing bracelet;
+  Hussar reuse for the Jaffa xenotype; shared larva/symbiote art; and repeated
+  Tok'ra mission-object art.
+- Add `tools/check-visual-assets.ps1` and `.cmd` to verify PNG signatures,
+  canonical families, physical counts, direct XML/C# references and registered
+  vanilla dependencies.
+- Make the visual audit a mandatory stage of
+  `tools/check-project-consistency.ps1`.
+- Preserve all current PNG contents, Def names, texture paths, rendering code,
+  gameplay behavior and save data.
+- Record that local revision `r1` failed the visual checker under Windows
+  PowerShell 5.1 because `Path.ChangeExtension($relative, $null)` retained a
+  trailing period. The checker consequently treated all `608` physical PNG
+  files as separate families and misclassified the real local paths as external.
+- Prepare corrective revision `r2` by passing the original `.png` path directly
+  to the existing canonical-family normalizer, which already removes the
+  extension safely. PNG files and gameplay remain unchanged.
+- Prepare corrective revision `r3` after the maintainer clarified the acceptance
+  boundary: storyteller portraits and faction icons were functional but not
+  final. Add an automated whitelist for the seven final event-site families.
+- Add a progressive wiki-reference rule: each future visual becomes a documented
+  wiki reference in the same revision in which it is accepted, rather than being
+  deferred to one risky global wiki refresh.
+- Validate final local revision `r3`: build `0.3.85.0`, duration audit, visual
+  asset audit, complete project consistency, clean diff, maintainer review of the
+  final/temporary boundary and P0/P1 ordering, main-menu smoke test and no new
+  relevant XML, texture, translation or C# error in `Player.log`.
+- Publish the validated `r3` state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.85-dev` and
+  synchronized separate wiki. The final commit and tag omit the local `r3`
+  suffix.
+
 ## 0.3.84-dev - Add first bounded Goa'uld territorial takeover
 
 - Start from published `develop` and annotated tag `v0.3.83-dev` at commit
@@ -38,11 +89,7 @@
 - Preserve settlement count, world tiles, faction count, pair relation, vanilla
   goodwill toward the player and outsiders, doctrines, raid points, raid
   frequency, missions, rewards and storyteller cadence.
-- Validate final local revision `r1`: successful build and focused natural-source
-  reservation, save/reload before resolution, one `CompletedTransfer` preserving
-  settlement ID/name/tile/count, refreshed world presentation, targeted RP
-  letter, persistent ownership and cooldowns after reload, unchanged diplomatic
-  and raid systems, and no new relevant `Player.log` error.
+- Prepare local revision `r1` for build and focused functional validation.
 
 ## 0.3.83-dev - Add Goa'uld territorial safeguards and diplomatic coherence
 

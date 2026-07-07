@@ -67,6 +67,7 @@ aux régressions. Les principales portes d'entrée sont :
   [`ZATNIKTEL_INCAPACITATION.md`](ZATNIKTEL_INCAPACITATION.md) et
   [`NON_LETHAL_CAPTURE_TOOLS.md`](NON_LETHAL_CAPTURE_TOOLS.md) ;
 - diagnostics et présentation : [`DEBUG_UI_AUDIT.md`](DEBUG_UI_AUDIT.md),
+  [`VISUAL_ASSET_REGISTER.md`](VISUAL_ASSET_REGISTER.md),
   [`LOGGING.md`](LOGGING.md), [`LOCALIZATION.md`](LOCALIZATION.md) et
   [`DURATION_FORMATTING.md`](DURATION_FORMATTING.md).
 

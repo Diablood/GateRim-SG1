@@ -4,8 +4,23 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.84-dev`
-> Révision finale : `r1`, validée et publiée
+> Version du mod documentée : `0.3.85-dev`
+> Révision finale : `r3`, validée et publiée
+
+## Audit des assets visuels provisoires
+
+La version publiée `0.3.85-dev`, révision finale `r3`, ajoute un registre technique exhaustif sans modifier les images
+ni le gameplay. Les `608` PNG du mod sont regroupés sous `75` familles de
+textures avec leur usage, leur état artistique et leur priorité de remplacement.
+
+La référence finale initiale est volontairement stricte : l'icône publique du
+mod et les sept icônes de sites d'événements déjà validées. Tous les autres
+visuels restent temporaires. Un contrôle automatique empêche l'ajout, la
+suppression, le renommage ou la qualification finale silencieuse d'une texture.
+
+Chaque nouveau visuel validé sera ajouté immédiatement à la page
+[Références visuelles validées](Visual-Assets), sans attendre une passe globale
+du wiki.
 
 ## Première prise territoriale Goa'uld bornée
 

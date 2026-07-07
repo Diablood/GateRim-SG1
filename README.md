@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.84-dev`
+- Development version: `0.3.85-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.84-dev` adds the first real but tightly bounded Goa'uld territorial
-consequence. Under **SG-1 Command**, an exact pair in open conflict may reserve
-one eligible permanent Goa'uld settlement and transfer only its ownership after
-a suspended `1–2` day delay. Natural attempts remain rare (`45–90` days), every
-`0.3.83-dev` safeguard is revalidated at resolution, loaded maps, player
-presence and active quest targets are protected, and the same world object,
-name and tile are preserved. No settlement or faction is created or destroyed.
+`0.3.85-dev` performs a repository-wide visual audit without changing any
+image or gameplay behavior. The new authoritative register covers `608` PNG
+files under `75` canonical texture families, records direct vanilla texture
+dependencies, classifies final art and every form of placeholder or temporary
+reuse, and assigns replacement priorities. A read-only checker now prevents
+future texture paths, physical files or external dependencies from drifting
+silently from that register.
 
 ## Playable content
 

@@ -368,6 +368,29 @@ if ($null -ne $wikiCatalogueText) {
     }
 }
 
+$visualAssetCheckPath = Get-RepositoryPath "tools/check-visual-assets.ps1"
+
+if (-not (Test-Path -LiteralPath $visualAssetCheckPath -PathType Leaf)) {
+    Add-Failure "Missing visual asset checker: tools/check-visual-assets.ps1"
+}
+else {
+    Write-Host ""
+    Write-Host "Running visual asset consistency check..."
+    & powershell.exe `
+        -NoLogo `
+        -NoProfile `
+        -ExecutionPolicy Bypass `
+        -File $visualAssetCheckPath `
+        -RepositoryRoot $RepositoryRoot
+
+    if ($LASTEXITCODE -ne 0) {
+        Add-Failure "Visual asset consistency check failed."
+    }
+    else {
+        Add-Pass "Visual asset consistency check passed."
+    }
+}
+
 Write-Host ""
 if ($failures.Count -gt 0) {
     Write-Host "Project consistency check failed with $($failures.Count) issue(s)." -ForegroundColor Red

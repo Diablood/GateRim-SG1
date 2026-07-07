@@ -1,5 +1,36 @@
 # Durable testing
 
+## Visual asset register and drift checker (`0.3.85-dev`)
+
+Validation pending on corrective local revision `r3`. Revision `r1` exposed
+an overload-sensitive Windows PowerShell 5.1 bug: removing `.png` through
+`Path.ChangeExtension(..., $null)` left a trailing period and expanded the
+inventory into `608` false families. `r2` normalizes the original PNG path
+directly. `r3` corrects the final-art classifications and wiki workflow. Durable
+coverage planned:
+
+- preserve `docs/VISUAL_ASSET_REGISTER.md` as the authoritative inventory;
+- keep every local PNG grouped under exactly one canonical family;
+- require physical-file counts in the register to match the repository;
+- parse direct XML and C# texture references and reject missing local paths;
+- reject unregistered or stale direct vanilla texture dependencies;
+- keep `About/ModIcon.png` final and prevent its gameplay-placeholder reuse from
+  being forgotten;
+- require the final local-family set to equal the seven validated world-event
+  site icons and reject any accidental final classification outside that set;
+- keep all other local visual families temporary until explicit maintainer
+  approval;
+- update `docs/wiki/Visual-Assets.md` in the same revision as every future visual
+  approval, avoiding a single deferred global wiki pass;
+- retain exact case for every registered path;
+- update the register in the same revision as any added, removed or renamed
+  texture;
+- rerun the visual checker from the project-consistency command;
+- preserve all current Def names and stable texture paths during art-only
+  replacements unless a separate technical migration is approved;
+- confirm a version-only rebuild reaches the RimWorld main menu without new XML,
+  texture, translation or C# errors.
+
 ## Jaffa officers in eligible Goa'uld forces (`0.3.75-dev`)
 
 Final cumulative revision `r2` validated and published. Revision `r1` failed
@@ -4339,3 +4370,36 @@ relations.
   relations remain unchanged.
 - Inspect `Player.log` for new C#, XML, Scribe, Lord, JobDriver, pawn-generation
   or storyteller errors.
+
+## Provisional visual asset audit (`0.3.85-dev`)
+
+Final revision `r3` validated and published. Durable coverage:
+
+- keep `docs/VISUAL_ASSET_REGISTER.md` authoritative for every shipped PNG,
+  canonical local texture family, direct vanilla texture dependency, runtime
+  vanilla icon constant and the public mod icon;
+- preserve `About/ModIcon.png` as final public identity outside the local-family
+  count and forbid its use as gameplay art;
+- keep exactly the seven explicitly accepted world-event site families final
+  until the maintainer validates another visual;
+- treat every other storyteller, faction, equipment, building, item, gene,
+  xenotype, projectile, pawn and command surface as temporary by default;
+- update the register whenever an image is added, removed, renamed, moved or
+  reclassified;
+- add every newly accepted visual to `docs/wiki/Visual-Assets.md` in the same
+  revision, with its usage or Def and stable path, rather than reconstructing
+  references during one later global wiki pass;
+- run `tools/check-visual-assets.cmd` and require valid PNG signatures, exact
+  canonical family/count agreement, no missing or unregistered local family,
+  no stale external path and an exact final-family whitelist;
+- preserve the validated baseline of `608` PNG files, `75` local families, `7`
+  final local families and `7` direct external paths until an intentional asset
+  change updates the register;
+- keep the visual audit read-only: no PNG, Def, texture path, rendering, gameplay
+  or save-data change;
+- verify assembly `0.3.85.0`, complete project consistency, main-menu startup and
+  absence of new relevant XML, texture, translation or C# errors;
+- retain the Windows PowerShell regression test that prevents `.png` removal
+  from leaving a trailing period and expanding canonical families into physical
+  files.
+
