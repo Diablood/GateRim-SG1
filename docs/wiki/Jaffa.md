@@ -125,6 +125,14 @@ Depuis `0.1.74-dev`, les marques frontales Jaffa sont stockées comme des donné
 persistantes propres au personnage. Elles ne font pas partie du xenotype, ne sont pas
 des gènes et ne sont pas des vêtements.
 
+Depuis `0.3.91-dev`, les trois variantes utilisent un petit symbole d'Apophis
+définitif, visible uniquement lorsque le personnage est orienté vers le sud.
+
+| Jaffa ordinaire | Élite sélectionnée | Premier Primat |
+|---|---|---|
+| <img src="images/GenericJaffaForeheadMark_south.png" width="256" alt="Marque frontale Jaffa noire"> | <img src="images/GenericSilverJaffaForeheadMark_south.png" width="256" alt="Marque frontale Jaffa argentée"> | <img src="images/GenericGoldJaffaForeheadMark_south.png" width="256" alt="Marque frontale Jaffa dorée"> |
+| Marque noire | Marque argentée | Marque dorée |
+
 La variante noire générique est attribuée automatiquement uniquement aux Jaffa
 rattachés à un domaine Goa'uld. Les [Jaffa libres](Free-Jaffa-Faction) restent
 sans marque imposée.
