@@ -149,6 +149,24 @@ $wikiIconMappings = @(
         Reference = "images/SG1_NaquadahBlood.png"
     },
     @{
+        Source = "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark_south.png"
+        Wiki = "docs/wiki/images/GenericJaffaForeheadMark_south.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/GenericJaffaForeheadMark_south.png"
+    },
+    @{
+        Source = "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark_south.png"
+        Wiki = "docs/wiki/images/GenericSilverJaffaForeheadMark_south.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/GenericSilverJaffaForeheadMark_south.png"
+    },
+    @{
+        Source = "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark_south.png"
+        Wiki = "docs/wiki/images/GenericGoldJaffaForeheadMark_south.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/GenericGoldJaffaForeheadMark_south.png"
+    },
+    @{
         Source = "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png"
         Wiki = "docs/wiki/images/SG1_FreeJaffa.png"
         Page = "docs/wiki/Visual-Assets.md"
@@ -376,6 +394,9 @@ $expectedFinalLocalPaths = @(
     "UI/Genes/SG1_JaffaPouchPotential",
     "UI/Genes/SG1_JaffaSymbioteCompatibility",
     "UI/Genes/SG1_NaquadahBlood",
+    "Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark",
+    "Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark",
+    "Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark",
     "World/WorldObjects/Expanding/SG1_FreeJaffa",
     "World/WorldObjects/Expanding/SG1_GoauldSystemLords",
     "World/WorldObjects/Expanding/SG1_SGCExpedition",
@@ -402,13 +423,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the twenty-one approved storyteller, xenotype, gameplay-gene, faction and event-site families: {0}" -f
+        "Final local asset whitelist differs from the twenty-four approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, faction and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the twenty-one approved storyteller, xenotype, gameplay-gene, faction and event-site families."
+    Add-Pass "Final local asset whitelist matches the twenty-four approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, faction and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

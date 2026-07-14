@@ -12,35 +12,31 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
-## Prochain jalon visuel décidé
+## Dernier jalon visuel validé et publié
 
 `0.3.91-dev - Add final intrinsic Jaffa forehead-mark overlays`
 
-Objectif : remplacer les textures temporaires réellement rendues sur les pawns,
-sans recréer de gènes techniques. Les trois Defs intrinsèques et leurs chemins de
-sauvegarde restent stables :
+La révision visuelle finale `r1` remplace les douze fichiers directionnels des
+trois familles intrinsèques existantes sans recréer de gène technique ni changer
+les chemins sauvegardés. Les variantes noire ordinaire, argentée d'élite et
+dorée de Premier Primat partagent le même petit symbole d'Apophis.
 
-```text
-SG1_JaffaForeheadMark_GenericIntrinsic
-SG1_JaffaForeheadMark_GenericSilverIntrinsic
-SG1_JaffaForeheadMark_GenericGoldIntrinsic
-```
+Seule la vue `South` contient des pixels visibles. Les neuf fichiers `North`,
+`East` et `West` sont entièrement transparents, ce qui conserve une marque
+strictement frontale sans débordement latéral ni texture flottante au-dessus de
+la tête.
 
-Contrat artistique et fonctionnel décidé :
+Le mainteneur a validé les douze PNG dans leurs dossiers définitifs, puis le
+build `0.3.91.0`, les contrôles de durées, d'assets visuels, de cohérence du
+projet et `git diff --check`. Le lot conserve les Defs intrinsèques,
+l'affectation par rang, les outils développeur, la persistance, le retrait
+manuel, les offsets et la couverture par casque.
 
-- reprendre le symbole reconnaissable d'Apophis ;
-- produire une marque petite, centrée sur le front et comparable à un tatouage ;
-- ne pas dépasser au-dessus de la tête comme la texture temporaire ;
-- conserver les variantes noire ordinaire, argentée d'élite et dorée de Premier
-  Primat avec la même géométrie ;
-- rendre la marque uniquement en vue `South` pour éviter une adaptation latérale
-  artificielle ;
-- conserver la donnée intrinsèque retirable, la persistance et les outils
-  développeur existants ;
-- tester la taille réelle avec plusieurs coiffures, la couverture par casque,
-  la sauvegarde/recharge et le retrait manuel ;
-- ajouter les références visuelles au wiki seulement après validation du rendu
-  pawn réel.
+Les trois références `South` sont publiées sur le wiki. La liste blanche
+visuelle atteint `24` familles finales sur une baseline inchangée de `605` PNG
+et `72` familles. La révision documentaire `r2` enregistre la clôture,
+l'intégration dans `develop`, le tag annoté unique `v0.3.91-dev` et la
+synchronisation du wiki séparé, sans modifier les textures validées.
 
 ## Dernier jalon de nettoyage validé et publié
 

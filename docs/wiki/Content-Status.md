@@ -2,15 +2,19 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.90-dev`
+> Dernière révision : `0.3.91-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
-La version `0.3.90-dev` supprime les trois anciens gènes techniques de
-migration des marques frontales Jaffa, leurs traductions, icônes et logique de
-conversion. Les marques intrinsèques réellement utilisées sur les pawns, leurs
-offsets, leur persistance et les gènes de gameplay actifs restent inchangés.
+La version `0.3.91-dev` finalise les trois familles de marques frontales Jaffa
+intrinsèques : petit symbole d'Apophis noir, argenté ou doré en vue `South`, avec
+des textures entièrement transparentes en `North`, `East` et `West`. Les Defs,
+offsets, règles d'affectation, outils développeur, persistance et retrait restent
+inchangés.
+
+La version `0.3.90-dev` conserve son nettoyage des trois anciens gènes
+techniques de migration et de leur infrastructure obsolète.
 
 La version `0.3.87-dev` conserve son correctif de génération des pawns de départ
 choisis par xénotype : le Prim'ta d'un Jaffa adulte et le véritable symbiote de
@@ -21,12 +25,13 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Marques frontales Jaffa intrinsèques finales | Symbole d'Apophis compact ; variantes noire, argentée et dorée ; visible uniquement en `South`, trois autres facings transparents ; données intrinsèques et comportement préservés | 0.3.91-dev |
 | Nettoyage des anciens gènes de marques frontales Jaffa | Trois gènes techniques de migration, leurs traductions, icônes et logique C# supprimés ; système intrinsèque et rendus pawn conservés | 0.3.90-dev |
 | Icônes finales des gènes et références mondiales | Six gènes de gameplay dédiés ; prototype de longévité Jaffa supprimé ; quatre factions mondiales acceptées comme finales ; galerie visible des six gènes, quatre factions et sept sites | 0.3.89-dev |
 | Portrait final du storyteller Commandement SG-1 | Portrait principal `560×600` et recadrage tiny `122×130` approuvés puis validés en jeu ; chemins stables, transparence et comportement du storyteller préservés | 0.3.88-dev |
 | Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ | Prim'ta visible avant validation pour tout Jaffa adulte éligible ; un symbiote adulte persistant pour chaque `SG1_GoauldHost`, d'origine Tok'ra avec double identité ou d'origine Goa'uld sans basculement Tok'ra selon la carrière ; chaque reroll est traité sans réconciliation ultérieure | 0.3.87-dev |
 | Icônes finales des xénotypes Jaffa et hôte Goa'uld | Jaffa : tête humaine blanche avec marque d'Apophis ; hôte Goa'uld : symbiote blanc simplifié ; deux visuels approuvés puis validés en jeu ; copies visuelles ajoutées aux pages dédiées dans `r2` | 0.3.86-dev |
-| Audit des assets visuels | Registre maintenu à 605 PNG / 72 familles ; `About/ModIcon.png` reste final hors compteur et 21 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev et 0.3.90-dev |
+| Audit des assets visuels | Registre maintenu à 605 PNG / 72 familles ; `About/ModIcon.png` reste final hors compteur et 24 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev et 0.3.91-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev / portrait final 0.3.88-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta ; icône finale humaine marquée d'Apophis intégrée | 0.1.1-dev / refonte 0.1.13-dev / icône 0.3.86-dev |
@@ -120,7 +125,7 @@ est traité sans réimplantation ultérieure.
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans solution de repli ni activation des raids naturels | 0.1.70-dev |
 | Raid d'enlèvement Jaffa Goa'uld contrôlé | Incident développeur séparé : enlèvements opportunistes pendant une fenêtre de couverture, puis repli forcé avec ou sans victime | 0.1.71-dev |
 | Raid de destruction Jaffa Goa'uld contrôlé | Incident développeur séparé : assaut militaire prolongé, puis récupération opportuniste de captifs et d'objets de valeur avant extraction | 0.1.72-dev |
-| Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre de rendu du personnage, sans gène actif, équipement ou statistique ; stockage persistant dédié par personnage | 0.1.73-dev / stockage dédié 0.1.74-dev |
+| Identité visuelle Jaffa Goa'uld générique | Marque frontale noire intrinsèque rendue par l'arbre du personnage, sans gène ni équipement ; symbole d'Apophis compact final visible uniquement en `South`, avec variantes argentée et dorée selon le rang | 0.1.73-dev / stockage dédié 0.1.74-dev / art final 0.3.91-dev |
 | Fondation d'identité des domaines Goa'uld | Profil de domaine piloté par les Defs, associé à la faction prototype, avec emplacements intrinsèques noir, argent et or selon le rang | 0.1.74-dev |
 | Outils développeur de marques Jaffa | Attribution ou retrait manuel des marques noire, argentée et dorée sur n'importe quel personnage, y compris non-Jaffa | 0.1.74-dev |
 | Commerce des Jaffa libres | Convoi spécialisé des clans libres, colonies commerçantes, visiteurs marchands et demandes par communicateur ; ravitaillement, ressources stratégiques et matériel militaire avec budget limité | 0.3.43-dev |

@@ -1,5 +1,33 @@
 # Durable testing
 
+## Final intrinsic Jaffa forehead-mark overlays (`0.3.91-dev`)
+
+Final visual revision `r1` replaces only the twelve existing intrinsic
+pawn-overlay PNGs and is validated in the real pawn render. Publication-only
+revision `r2` records the completed checks and publication without changing the
+approved art. Durable coverage:
+
+- keep the three stable canonical paths under
+  `Textures/Things/Pawn/Humanlike/JaffaForeheadMarks`;
+- keep ordinary black, elite silver and First Prime gold on one identical compact
+  Apophis geometry;
+- require every file to remain `128×128` with transparency;
+- require only the three `_south.png` files to contain visible pixels;
+- require `_north.png`, `_east.png` and `_west.png` to remain fully transparent
+  for all three families;
+- keep the mark contained on the forehead with no floating or above-head pixels;
+- preserve intrinsic pawn storage, stable Def identifiers, domain assignment,
+  Free Jaffa exclusion, developer actions, save/reload and manual removal;
+- preserve render-node paths, offsets and helmet layering because no C# or XML
+  behavior changes in this art-only milestone;
+- keep the three wiki references byte-identical to the visible gameplay files;
+- require `605` PNG files, `72` canonical families and exactly `24` final local
+  families after reclassifying the three overlay families;
+- run the forced build, duration, visual, project-consistency and
+  `git diff --check` controls;
+- inspect the three ranks on one pawn with developer actions and check hairstyles,
+  helmet coverage, save/reload, removal and focused logs.
+
 ## Legacy Jaffa forehead-mark gene cleanup (`0.3.90-dev`)
 
 Final functional revision `r2` is validated and published. Local `r1` exposed

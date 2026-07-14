@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.90-dev`
+- Development version: `0.3.91-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,17 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.90-dev` removes the three obsolete technical Jaffa forehead-mark
-migration genes instead of finalizing UI icons for definitions that no longer
-belong in gameplay. Their GeneDefs, translations, DefOf fields, icon textures
-and migration scan are deleted. The intrinsic black, silver and gold forehead
-marks remain stored directly on pawns, with their domain assignment, rendering,
-persistence and developer actions unchanged. Compatibility with private saves
-that still contain the early technical genes is intentionally discontinued.
+`0.3.91-dev` replaces the temporary intrinsic Jaffa forehead-mark overlays
+with the final compact symbol of Apophis. Ordinary, elite and First Prime marks
+share one small forehead-sized geometry in black, silver and gold. Only the
+`South` texture is visible; the `North`, `East` and `West` files remain fully
+transparent so the mark never floats beside or above the head. The existing
+intrinsic pawn data, assignment rules, developer actions, persistence and manual
+removal remain unchanged.
+
+`0.3.90-dev` removed the three obsolete technical Jaffa forehead-mark migration
+genes and intentionally discontinued compatibility with private saves that
+still contained those early prototypes.
 
 
 `0.3.87-dev` corrected the vanilla starter-generation path for GateRim

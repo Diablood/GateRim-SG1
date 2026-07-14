@@ -4,7 +4,21 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.90-dev`
+> Version du mod documentée : `0.3.91-dev`
+
+## Marques frontales Jaffa intrinsèques finales
+
+`0.3.91-dev` remplace les textures temporaires réellement rendues sur les pawns
+par un petit symbole d'Apophis validé en jeu. Les Jaffa ordinaires utilisent la
+version noire, certaines élites la version argentée et les Premiers Primats la
+version dorée.
+
+La marque n'est visible qu'en orientation `South`. Les trois autres textures de
+chaque famille sont entièrement transparentes, ce qui évite tout débordement
+au-dessus de la tête ou tout symbole flottant sur les côtés. Les données
+intrinsèques, l'affectation, la persistance, les outils développeur et le retrait
+manuel restent inchangés. Les trois références sont visibles sur la page
+[Références visuelles validées](Visual-Assets).
 
 ## Nettoyage des anciens gènes de marques frontales Jaffa
 
@@ -75,10 +89,11 @@ wiki contre toute divergence avec les PNG du jeu.
 ## Audit des assets visuels provisoires
 
 La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
-technique exhaustif. Après les validations précédentes et le nettoyage publié `0.3.90-dev`, la
-baseline compte `605` PNG sous `72` familles de textures, dont `21` familles
-locales finales : deux portraits de storyteller, deux xénotypes, six gènes de
-gameplay, quatre factions mondiales et sept sites d'événements. L'icône publique du
+technique exhaustif. Après les validations précédentes, le nettoyage publié `0.3.90-dev` et
+les marques validées dans `0.3.91-dev`, la baseline compte `605` PNG sous `72`
+familles de textures, dont `24` familles locales finales : deux portraits de
+storyteller, deux xénotypes, six gènes de gameplay, trois marques frontales
+intrinsèques, quatre factions mondiales et sept sites d'événements. L'icône publique du
 mod reste finale hors compteur.
 
 Chaque nouveau visuel validé est ajouté immédiatement à la page

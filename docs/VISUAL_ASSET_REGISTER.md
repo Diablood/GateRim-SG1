@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.90-dev`
-- Branch: `feature/final-jaffa-forehead-mark-gene-icons`
-- Target assembly: `0.3.90.0`
-- Status: `0.3.90-dev` cleanup validated and published after functional revision `r2`.
+- Version: `0.3.91-dev`
+- Branch: validated local publication state; no temporary branch identifier is assumed
+- Target assembly: `0.3.91.0`
+- Status: `0.3.91-dev` overlay art, static checks and wiki references validated and published after final visual revision `r1`; documentary revision `r2` records closure.
 
 ## Purpose
 
@@ -23,17 +23,19 @@ portraits. `0.3.89-dev` prepared six final gameplay-gene icons, validated the
 four existing world-faction icon families and completed the wiki gallery for
 all previously validated event-site icons. `0.3.90-dev` removes the three obsolete
 forehead-mark migration GeneDefs and their icon families while preserving the
-intrinsic pawn-overlay system.
+intrinsic pawn-overlay system. `0.3.91-dev` finalizes the three real intrinsic
+pawn-overlay families with compact South-only Apophis marks.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
-- The `Textures/` families accepted as `final` remain the two storyteller
-  portraits, two xenotype icons, six gameplay-gene icons, four world-faction
-  icons and seven world-event site icons listed below.
-- Equipment, buildings, pawn-overlay forehead-mark textures, projectiles, pawns
-  and command icons remain temporary even when they are functional.
+- The `Textures/` families accepted as `final` are the two storyteller
+  portraits, two xenotype icons, six gameplay-gene icons, three intrinsic Jaffa
+  forehead-mark overlays, four world-faction icons and seven world-event site
+  icons listed below.
+- Equipment, buildings, other pawn overlays, projectiles, pawns and command icons
+  remain temporary even when they are functional.
 
 Validated storyteller families:
 
@@ -53,6 +55,12 @@ Validated gameplay-gene families:
 - `UI/Genes/SG1_JaffaPouchPotential`
 - `UI/Genes/SG1_JaffaSymbioteCompatibility`
 - `UI/Genes/SG1_NaquadahBlood`
+
+Validated intrinsic Jaffa forehead-mark overlay families:
+
+- `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark`
+- `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark`
+- `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark`
 
 Validated world-faction families:
 
@@ -95,14 +103,14 @@ Validated world-event site families:
 
 - Local PNG files: `605`.
 - Local texture families: `72`.
-- Accepted final local families: `21` (`2` storyteller portraits, `2` xenotype
-  icons, `6` gameplay-gene icons, `4` world-faction icons and `7` world-event
-  site icons).
-- Temporary original families: `26`.
-- Temporary recolor families: `13`.
+- Accepted final local families: `24` (`2` storyteller portraits, `2` xenotype
+  icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
+  `4` world-faction icons and `7` world-event site icons).
+- Temporary original families: `25`.
+- Temporary recolor families: `11`.
 - Temporary reuse families: `6`.
 - Project-icon placeholder families: `6`.
-- Priorities: `8` P0, `21` P1, `22` P2, `21` done.
+- Priorities: `8` P0, `21` P1, `19` P2, `24` done.
 - Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -169,9 +177,9 @@ same canonical family. Representative dimensions refer to the base image.
 | `Things/Pawn/Humanlike/Apparel/SGTeamUniformBlack/SGTeamUniformBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamUniform | Color variant derived from another temporary family; keep path stable for final replacement. |
 | `Things/Pawn/Humanlike/Apparel/SGTeamUniformDesert/SGTeamUniformDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamUniform | Color variant derived from another temporary family; keep path stable for final replacement. |
 | `Things/Pawn/Humanlike/Apparel/TokraFieldGarb/TokraFieldGarb` | 25 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_TokraFieldGarb | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `temporary-recolor` | `P2` | SG1_JaffaForeheadMark_GenericGoldIntrinsic | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `temporary-original` | `P2` | SG1_JaffaForeheadMark_GenericIntrinsic | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `temporary-recolor` | `P2` | SG1_JaffaForeheadMark_GenericSilverIntrinsic | Color variant derived from another temporary family; keep path stable for final replacement. |
+| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericGoldIntrinsic | Maintainer-validated compact gold Apophis mark for First Primes; South-only visible texture with three transparent facings. |
+| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericIntrinsic | Maintainer-validated compact black Apophis mark for ordinary Goa'uld-domain Jaffa; South-only visible texture with three transparent facings. |
+| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericSilverIntrinsic | Maintainer-validated compact silver Apophis mark for selected elites; South-only visible texture with three transparent facings. |
 | `Things/Projectile/SG1_BolasProjectile` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_BolasProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
 | `Things/Projectile/SG1_MatokBlast` | 1 | 64×32 | Map projectile | `temporary-original` | `P2` | SG1_MatokStaffProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
 | `Things/Projectile/SG1_TokraHypodermicDart` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_TokraHypodermicDart | Custom functional art that remains acceptable for development but is not yet accepted as final. |

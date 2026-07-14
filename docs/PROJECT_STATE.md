@@ -1,74 +1,71 @@
 # Project state
 
-Current milestone: `0.3.90-dev - Remove legacy Jaffa forehead-mark migration genes`
+Current milestone: `0.3.91-dev - Add final intrinsic Jaffa forehead-mark overlays`
 
-Status: validated after corrective functional revision `r2`; publication-only
-revision `r3` records the final state for the annotated tag.
+Status: validated after final visual revision `r1`; publication-only revision
+`r2` records the completed build, static checks, in-game validation, final tag
+and wiki synchronization without changing the approved textures.
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.89-dev`.
-- Final branch: `feature/final-jaffa-forehead-mark-gene-icons`.
-- Final functional revision: `r2`.
-- Publication-document revision: `r3`.
-- Assembly version: `0.3.90.0`.
-- Final annotated tag: `v0.3.90-dev`.
-- Integration target: `develop` by fast-forward.
+  `v0.3.90-dev`.
+- Final local Git state: reviewed visually by the maintainer in the IDE before
+  and after each commit, push, switch and tag operation; no temporary branch
+  name is assumed by the documentation.
+- Final visual revision: `r1`.
+- Publication-document revision: `r2`.
+- Validated assembly version: `0.3.91.0`.
+- Final annotated tag: `v0.3.91-dev`.
+- Integration target: `develop`.
 
 ## Published scope
 
-- Remove the three obsolete technical migration `GeneDef` records:
-  - `SG1_JaffaForeheadMark_Generic`;
-  - `SG1_JaffaForeheadMark_GenericGold`;
-  - `SG1_JaffaForeheadMark_GenericSilver`.
-- Remove their French `GeneDef` translations, `GR_DefOf` fields and the C# scan
-  that converted those former genes into intrinsic forehead-mark data.
-- Remove both obsolete gene-icon locations and the discarded local `r1` wiki
-  copies:
-  - `Textures/Genes/Icons`;
-  - `Textures/UI/Genes`;
-  - the corresponding files under `docs/wiki/images`.
-- Keep the visual baseline at `605` PNG files, `72` canonical texture families
-  and exactly `21` approved final local families.
-- Preserve the active intrinsic forehead-mark system and its stable save IDs:
-  - `SG1_JaffaForeheadMark_GenericIntrinsic`;
-  - `SG1_JaffaForeheadMark_GenericSilverIntrinsic`;
-  - `SG1_JaffaForeheadMark_GenericGoldIntrinsic`.
+- Replace the twelve existing files under
+  `Textures/Things/Pawn/Humanlike/JaffaForeheadMarks`.
+- Keep the three canonical families and paths stable:
+  - `GenericJaffaForeheadMark` — ordinary black;
+  - `GenericSilverJaffaForeheadMark` — elite silver;
+  - `GenericGoldJaffaForeheadMark` — First Prime gold.
+- Use the same compact Apophis geometry for all three ranks.
+- Keep only the `South` texture visible. The `North`, `East` and `West` files are
+  valid `128×128` PNGs with a fully transparent alpha channel.
+- Add three byte-identical `South` reference copies to `docs/wiki/images`.
+- Reclassify the three intrinsic overlay families as final and protect them in
+  the exact visual whitelist and wiki-copy audit.
 
-## Compatibility decision
+## Preserved behavior
 
-The maintainer is the only user of the early development saves and explicitly
-accepts dropping compatibility for saves that still contain the obsolete
-technical genes. Current saves that already serialize intrinsic forehead-mark
-data remain supported because their `JaffaForeheadMarkDef` identifiers and pawn
-records are unchanged.
+- The marks remain intrinsic removable pawn data, not genes or apparel.
+- Stable `JaffaForeheadMarkDef` identifiers and saved pawn records are unchanged.
+- Goa'uld-domain assignment, Free Jaffa exclusion, developer tools, persistence,
+  manual removal, render nodes, offsets and helmet coverage are unchanged.
+- No C# source or gameplay Def is modified by this art-only milestone.
 
 ## Validation completed
 
-- Forced build of assembly `0.3.90.0` completed successfully.
+- The maintainer copied the twelve files directly into their final paths and
+  validated their real pawn rendering.
+- Black, silver and gold variants were selected deterministically with the
+  existing developer actions.
+- The mark remains small and centered on the forehead in `South`.
+- `North`, `East` and `West` display no mark.
+- All twelve source files are `128×128`; the nine hidden facings are fully
+  transparent and the three visible facings use the same alpha footprint.
+- Forced build of assembly `0.3.91.0` completed successfully.
 - Duration-formatting, visual-asset and project-consistency checks passed.
-- `git diff --check` passed.
-- The three obsolete genes are absent from normal and developer gene inspection.
-- Goa'uld-domain Jaffa retain their intrinsic black, silver and gold marks.
-- Developer assignment, persistence, manual removal and save/reload remain
-  functional for intrinsic marks.
-- The six active gameplay-gene icons from `0.3.89-dev` remain unchanged.
-- No new relevant XML, translation, missing-texture, DefOf or C# error was found
-  during the focused test.
-- The wiki drafts no longer present migration-only genes or their discarded
-  icons as gameplay assets.
+- The visual checker reports `24` final local families, `605` PNG files, `72`
+  canonical families and no missing or unregistered reference.
+- `git diff --check` passed and the maintainer reviewed the final scope in the
+  IDE.
+- The three wiki images remain byte-identical to their gameplay `South` files.
 
 ## Publication state
 
-The validated feature commit is intended for fast-forward integration into
-`develop`, followed by the unique annotated tag `v0.3.90-dev` and synchronization
-of the separate wiki. Local suffixes `r1`, `r2` and `r3` do not appear in the
-final commit or tag.
+Publication-only revision `r2` changes documentation status only. The validated
+state is published through the final commit, integration into `develop`, the
+unique annotated tag `v0.3.91-dev` and synchronization of the separate wiki.
+Local suffixes `r1` and `r2` do not appear in the final commit or tag.
 
-## Next decided milestone
+## Next milestone
 
-The next visual lot is separate from this cleanup: replace the actual intrinsic
-pawn overlays under `Textures/Things/Pawn/Humanlike/JaffaForeheadMarks` with a
-small Apophis forehead symbol. The ordinary, elite and First Prime variants use
-black, silver and gold treatments, remain removable intrinsic pawn data and are
-rendered only in the `South` facing. This work must be tested against hairstyles,
-helmets, save/reload and manual removal before it is accepted as final art.
+No later milestone number is reserved. Select the next Phase 1 visual or
+presentation family only after `0.3.91-dev` publication is verified.

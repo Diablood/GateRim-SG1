@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.90-dev`
-> Statut : références validées jusqu’à la version publiée `0.3.90-dev`
+> Version de référence : `0.3.91-dev`
+> Statut : marques intrinsèques finales validées et publiées dans `0.3.91-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -44,6 +44,18 @@ des Jaffa reste fournie par l'état de santé du Prim'ta. Les trois anciens gèn
 techniques de marques frontales sont également supprimés en `0.3.90-dev`; les
 marques réellement utilisées restent des données intrinsèques du pion.
 
+## Marques frontales Jaffa intrinsèques validées
+
+| Marque visible | Rang | Def intrinsèque | Famille sous `Textures/` | Rendu |
+|---|---|---|---|---|
+| ![Marque frontale Jaffa noire](images/GenericJaffaForeheadMark_south.png) | Jaffa ordinaire | `SG1_JaffaForeheadMark_GenericIntrinsic` | `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark` | Petit symbole d'Apophis noir, visible uniquement en `South` |
+| ![Marque frontale Jaffa argentée](images/GenericSilverJaffaForeheadMark_south.png) | Élite sélectionnée | `SG1_JaffaForeheadMark_GenericSilverIntrinsic` | `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark` | Même géométrie argentée, visible uniquement en `South` |
+| ![Marque frontale Jaffa dorée](images/GenericGoldJaffaForeheadMark_south.png) | Premier Primat | `SG1_JaffaForeheadMark_GenericGoldIntrinsic` | `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark` | Même géométrie dorée, visible uniquement en `South` |
+
+Chaque famille conserve quatre PNG `128×128`. Les fichiers `North`, `East` et
+`West` sont entièrement transparents afin que la marque reste un tatouage
+strictement frontal, sans texture flottante sur les autres orientations.
+
 ## Icônes de factions mondiales validées
 
 | Icône | Faction | Def principal | Chemin sous `Textures/` |
@@ -68,10 +80,9 @@ marques réellement utilisées restent des données intrinsèques du pion.
 ## Visuels encore temporaires
 
 Les autres visuels locaux restent temporaires, notamment les armes,
-équipements, vêtements, bâtiments, objets de mission, projectiles, pawns,
-commandes d'interface et les textures de marques frontales visibles sur les
-pawns. La future passe sur les tatouages/rendus pawn reste séparée du nettoyage
-des anciens gènes techniques.
+équipements, vêtements, bâtiments, objets de mission, projectiles, pawns et
+commandes d'interface. Les trois familles de marques frontales intrinsèques
+présentées ci-dessus sont désormais finales.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

@@ -1,6 +1,6 @@
 # Intrinsic Jaffa forehead-mark data
 
-Version: `0.3.90-dev`
+Version: `0.3.91-dev`
 
 ## Design correction
 
@@ -29,7 +29,7 @@ SG1_JaffaForeheadMark_GenericSilverIntrinsic
 SG1_JaffaForeheadMark_GenericGoldIntrinsic
 ```
 
-The temporary rank convention remains:
+The validated visual rank convention is:
 
 ```text
 ordinary Jaffa       -> black mark
@@ -91,31 +91,50 @@ Set forehead mark: First Prime gold
 Remove forehead mark
 ```
 
+## Final overlay textures
+
+The three canonical families remain at their stable paths under
+`Textures/Things/Pawn/Humanlike/JaffaForeheadMarks`:
+
+```text
+GenericJaffaForeheadMark
+GenericSilverJaffaForeheadMark
+GenericGoldJaffaForeheadMark
+```
+
+Each family contains four `128×128` directional PNGs. The final contract is:
+
+```text
+South              compact visible Apophis forehead symbol
+North / East / West fully transparent image
+```
+
+The three visible files use one identical alpha footprint and differ only by the
+validated rank color: black, silver or gold. This keeps the mark within the
+forehead, compatible with visible hair and free from the above-head overflow of
+the former temporary artwork.
+
 ## Manual test checklist
 
-1. Extract the ZIP at the repository root and apply the announced file deletions.
-2. Build the C# assembly.
-3. Start RimWorld and confirm that no XML, translation, DefOf or C# error appears.
-4. Trigger each controlled Goa'uld Jaffa raid and confirm that ordinary Jaffa carry the black mark.
-5. Confirm that the mark is absent from the pawn's genes and apparel.
-6. Confirm south, east and west rendering, the hidden north view and helmet coverage.
-7. Use the developer tools to assign silver and gold marks to selected pawns.
-8. Use the developer tools to apply a black mark to a non-Jaffa pawn.
-9. Save, reload and confirm persistence for each manually assigned mark.
-10. Remove a Jaffa mark manually, save, reload and confirm that it does not return automatically.
-11. Confirm the obsolete technical genes are absent from gene inspection.
-12. Confirm that Goa'uld-domain Jaffa receive marks while Free Jaffa remain unmarked.
+1. Apply ordinary black, elite silver and First Prime gold with the existing
+   developer actions to the same pawn.
+2. Face the pawn `South` and confirm the mark is small, centered and readable.
+3. Rotate to `North`, `East` and `West` and confirm no mark is visible.
+4. Test several hairstyles and confirm the mark remains a forehead detail rather
+   than a floating attachment.
+5. Equip and remove a helmet to confirm existing layering remains acceptable.
+6. Save and reload each assigned rank and confirm the same intrinsic mark returns.
+7. Remove the mark manually, save and reload, and confirm it remains absent.
+8. Confirm the mark is absent from genes, apparel and inventory.
+9. Confirm Goa'uld-domain Jaffa assignment and Free Jaffa exclusion remain
+   unchanged.
+10. Inspect `Player.log` for missing-texture or render-node errors.
 
-## Next intrinsic overlay art pass
+## Validation state
 
-`0.3.90-dev` does not finalize the textures rendered on pawns. It removes only
-the obsolete gene scaffolding and deliberately preserves the existing intrinsic
-render nodes, facings, offsets and temporary overlay families.
-
-The next decided visual milestone replaces the actual files under
-`Textures/Things/Pawn/Humanlike/JaffaForeheadMarks` with a compact Apophis
-symbol. The ordinary, elite and First Prime variants share one geometry with
-black, silver and gold treatments. The final mark must stay within the forehead,
-remain compatible with visible hair, and render only for the `South` facing.
-Its acceptance requires real-pawn tests before the families can move from
-`temporary-*` to `final` in the visual register or appear in the wiki gallery.
+The maintainer validated the twelve final PNGs directly in their gameplay paths
+in final visual revision `r1`. Build `0.3.91.0`, the duration, visual and project
+consistency checks, `git diff --check`, focused save/reload and removal checks,
+and the wiki references all pass. Publication-only revision `r2` changes status
+documentation only; the milestone does not modify the intrinsic data or render
+implementation.

@@ -1,5 +1,71 @@
 # Changelog
 
+## 0.3.91-dev - Add final intrinsic Jaffa forehead-mark overlays
+
+### Changed
+
+- Replace all twelve directional files for the three active intrinsic Jaffa
+  forehead-mark families while preserving their stable texture paths.
+- Use one compact Apophis geometry for the ordinary black, elite silver and
+  First Prime gold variants.
+- Keep only each `South` texture visible; keep `North`, `East` and `West` fully
+  transparent so the mark remains a frontal forehead tattoo rather than a
+  floating head attachment.
+- Advance public metadata to `0.3.91-dev` and assembly metadata to `0.3.91.0`.
+- Reclassify the three intrinsic pawn-overlay families as `final` / `done`,
+  raising the exact final-family whitelist from `21` to `24` without changing
+  the `605` PNG / `72` family baseline.
+
+### Added
+
+- Add byte-identical wiki reference copies of the three visible `South` marks
+  and display the black, silver and gold hierarchy on the progressive visual
+  reference page.
+- Extend the visual-asset checker so those three wiki copies and final families
+  are protected from later divergence.
+
+### Preserved
+
+- Preserve `SG1_JaffaForeheadMark_GenericIntrinsic`,
+  `SG1_JaffaForeheadMark_GenericSilverIntrinsic` and
+  `SG1_JaffaForeheadMark_GenericGoldIntrinsic` with their existing save IDs.
+- Preserve Goa'uld-domain assignment, Free Jaffa exclusion, developer
+  assignment/removal actions, persistence, head render node, offsets and helmet
+  layering.
+- Change no C# behavior, XML Def, translation, gene, apparel, faction, mission,
+  balancing or save data.
+
+### Validated in game
+
+- Validate the exact maintainer-provided `128×128` textures after direct
+  replacement in their final directory.
+- Confirm the three marks are small, centered on the forehead and readable in
+  the `South` view without extending above the head.
+- Confirm `North`, `East` and `West` remain invisible through fully transparent
+  textures.
+- Confirm the ordinary black, elite silver and First Prime gold developer
+  actions provide a direct deterministic comparison on the same pawn.
+
+### Validated
+
+- Pass the forced `0.3.91.0` build, duration-formatting check, visual-asset
+  check, project-consistency check and `git diff --check`.
+- Confirm the final visual baseline remains `605` PNG files and `72` canonical
+  families while the accepted final whitelist rises from `21` to `24` families.
+- Confirm the black, silver and gold marks render correctly in `South`, remain
+  invisible in `North`, `East` and `West`, persist through save/reload and remain
+  manually removable.
+- Confirm the three wiki references are byte-identical to the gameplay `South`
+  textures and no new relevant texture, XML, render-node or C# error appears.
+
+### Published
+
+- Prepare publication-only documentary revision `r2`; it changes no PNG, Def,
+  translation, C# source, assembly, gameplay behavior or save data.
+- Publish the validated state through the final commit, integration into
+  `develop`, annotated tag `v0.3.91-dev` and synchronized separate wiki. Local
+  `r1` and `r2` suffixes are omitted from the final commit and tag.
+
 ## 0.3.90-dev - Remove legacy Jaffa forehead-mark migration genes
 
 ### Changed
