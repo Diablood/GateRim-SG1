@@ -1,16 +1,11 @@
 using System.Collections.Generic;
 using GateRimSG1.Goauld;
-using RimWorld;
 using Verse;
 
 namespace GateRimSG1.Jaffa
 {
     /// <summary>
     /// Stores intrinsic forehead marks independently from xenotypes and genes.
-    ///
-    /// Existing technical mark genes remain declared only as migration
-    /// placeholders. When an affected pawn is encountered on a map, the gene
-    /// is converted into intrinsic data and removed from the pawn.
     ///
     /// Automatic assignment is restricted to Jaffa attached to a Goa'uld
     /// System Lord domain. Free Jaffa remain unmarked unless a mark is
@@ -177,7 +172,6 @@ namespace GateRimSG1.Jaffa
 
             for (int pawnIndex = 0; pawnIndex < pawns.Count; pawnIndex++)
             {
-                TryMigrateLegacyTechnicalGenes(pawns[pawnIndex]);
                 TryInitializeCompatibleJaffa(pawns[pawnIndex]);
             }
         }
@@ -214,105 +208,6 @@ namespace GateRimSG1.Jaffa
                 GoauldSystemLordDomainUtility.MarkFor(
                     pawn.Faction,
                     GoauldJaffaMarkRank.Ordinary));
-        }
-
-        private void TryMigrateLegacyTechnicalGenes(Pawn pawn)
-        {
-            List<Gene> genes = pawn?.genes?.GenesListForReading;
-
-            if (genes == null || genes.Count == 0)
-            {
-                return;
-            }
-
-            JaffaForeheadMarkDef migratedMark = null;
-            List<Gene> legacyGenes = null;
-
-            for (int geneIndex = 0; geneIndex < genes.Count; geneIndex++)
-            {
-                Gene gene = genes[geneIndex];
-                JaffaForeheadMarkDef candidate = LegacyIntrinsicMarkFor(gene?.def);
-
-                if (candidate == null)
-                {
-                    continue;
-                }
-
-                if (legacyGenes == null)
-                {
-                    legacyGenes = new List<Gene>();
-                }
-
-                legacyGenes.Add(gene);
-
-                if (migratedMark == null
-                    || LegacyPriority(candidate) > LegacyPriority(migratedMark))
-                {
-                    migratedMark = candidate;
-                }
-            }
-
-            if (legacyGenes == null || legacyGenes.Count == 0)
-            {
-                return;
-            }
-
-            if (MarkFor(pawn) == null && migratedMark != null)
-            {
-                SetMark(pawn, migratedMark);
-            }
-
-            for (int geneIndex = legacyGenes.Count - 1; geneIndex >= 0; geneIndex--)
-            {
-                pawn.genes.RemoveGene(legacyGenes[geneIndex]);
-            }
-
-            JaffaForeheadMarkUtility.NotifyGraphicsDirty(pawn);
-
-            GR_Log.Message(
-                $"Migrated {legacyGenes.Count} technical Jaffa forehead-mark "
-                + $"gene(s) for {JaffaForeheadMarkUtility.PawnDebugLabel(pawn)}.");
-        }
-
-        private static JaffaForeheadMarkDef LegacyIntrinsicMarkFor(
-            GeneDef legacyGene)
-        {
-            if (legacyGene == GR_DefOf.SG1_JaffaForeheadMark_GenericGold)
-            {
-                return GR_DefOf.SG1_JaffaForeheadMark_GenericGoldIntrinsic;
-            }
-
-            if (legacyGene == GR_DefOf.SG1_JaffaForeheadMark_GenericSilver)
-            {
-                return GR_DefOf.SG1_JaffaForeheadMark_GenericSilverIntrinsic;
-            }
-
-            if (legacyGene == GR_DefOf.SG1_JaffaForeheadMark_Generic)
-            {
-                return GR_DefOf.SG1_JaffaForeheadMark_GenericIntrinsic;
-            }
-
-            return null;
-        }
-
-        private static int LegacyPriority(JaffaForeheadMarkDef markDef)
-        {
-            if (markDef == GR_DefOf.SG1_JaffaForeheadMark_GenericGoldIntrinsic)
-            {
-                return 3;
-            }
-
-            if (markDef == GR_DefOf.SG1_JaffaForeheadMark_GenericSilverIntrinsic)
-            {
-                return 2;
-            }
-
-            if (markDef == GR_DefOf.SG1_JaffaForeheadMark_GenericIntrinsic)
-            {
-                return 1;
-            }
-
-            return 0;
         }
 
         private void EnsureCache()

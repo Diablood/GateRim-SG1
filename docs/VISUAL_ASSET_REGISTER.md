@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.89-dev`
-- Branch: `feature/final-gene-icons-and-world-visual-references`
-- Target assembly: `0.3.89.0`
-- Status: local revision `r1` prepared for focused gene-UI and wiki validation.
+- Version: `0.3.90-dev`
+- Branch: `feature/final-jaffa-forehead-mark-gene-icons`
+- Target assembly: `0.3.90.0`
+- Status: `0.3.90-dev` cleanup validated and published after functional revision `r2`.
 
 ## Purpose
 
@@ -19,19 +19,21 @@ register and the repository remain synchronized. The published `0.3.85-dev`
 audit established the strict acceptance boundary and progressive wiki-reference
 rule. `0.3.86-dev` applied the first bounded definitive-art lot with two
 xenotype icons. `0.3.88-dev` added the approved large and tiny storyteller
-portraits. `0.3.89-dev` prepares six final gameplay-gene icons, validates the
-four existing world-faction icon families and completes the wiki gallery for
-all previously validated event-site icons.
+portraits. `0.3.89-dev` prepared six final gameplay-gene icons, validated the
+four existing world-faction icon families and completed the wiki gallery for
+all previously validated event-site icons. `0.3.90-dev` removes the three obsolete
+forehead-mark migration GeneDefs and their icon families while preserving the
+intrinsic pawn-overlay system.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
-- The `Textures/` families accepted as `final` after this local validation lot
-  are the two storyteller portraits, two xenotype icons, six gameplay-gene
-  icons, four world-faction icons and seven world-event site icons listed below.
-- Equipment, buildings, technical forehead-mark icons, projectiles, pawns and
-  command icons remain temporary even when they are functional.
+- The `Textures/` families accepted as `final` remain the two storyteller
+  portraits, two xenotype icons, six gameplay-gene icons, four world-faction
+  icons and seven world-event site icons listed below.
+- Equipment, buildings, pawn-overlay forehead-mark textures, projectiles, pawns
+  and command icons remain temporary even when they are functional.
 
 Validated storyteller families:
 
@@ -91,16 +93,16 @@ Validated world-event site families:
 
 ## Audit summary
 
-- Local PNG files: `608`.
-- Local texture families: `75`.
+- Local PNG files: `605`.
+- Local texture families: `72`.
 - Accepted final local families: `21` (`2` storyteller portraits, `2` xenotype
   icons, `6` gameplay-gene icons, `4` world-faction icons and `7` world-event
   site icons).
-- Temporary original families: `27`.
-- Temporary recolor families: `15`.
+- Temporary original families: `26`.
+- Temporary recolor families: `13`.
 - Temporary reuse families: `6`.
 - Project-icon placeholder families: `6`.
-- Priorities: `8` P0, `21` P1, `25` P2, `21` done.
+- Priorities: `8` P0, `21` P1, `22` P2, `21` done.
 - Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -126,9 +128,6 @@ same canonical family. Representative dimensions refer to the base image.
 <!-- LOCAL_ASSET_TABLE_START -->
 | Canonical path under `Textures/` | Files | Base size | Surface | Status | Priority | Referenced by | Audit note |
 |---|---:|---:|---|---|---|---|---|
-| `Genes/Icons/SG1_JaffaForeheadMark_Generic` | 1 | 128×128 | Gene UI | `temporary-original` | `P2` | SG1_JaffaForeheadMark_Generic | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Genes/Icons/SG1_JaffaForeheadMark_GenericGold` | 1 | 128×128 | Gene UI | `temporary-recolor` | `P2` | SG1_JaffaForeheadMark_GenericGold | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Genes/Icons/SG1_JaffaForeheadMark_GenericSilver` | 1 | 128×128 | Gene UI | `temporary-recolor` | `P2` | SG1_JaffaForeheadMark_GenericSilver | Color variant derived from another temporary family; keep path stable for final replacement. |
 | `Storytellers/SG1_Command` | 1 | 560×600 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided transparent large portrait validated in the real storyteller-selection interface. |
 | `Storytellers/SG1_Command_Tiny` | 1 | 122×130 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided dedicated close crop validated on the small storyteller UI surfaces. |
 | `Things/Building/SG1_GoauldRitualBasin` | 1 | 64×64 | Map/building | `placeholder-personal-icon` | `P0` | SG1_GoauldRitualBasin | Exact reuse of the project demon icon; misleading for this gameplay surface. |
@@ -269,15 +268,15 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Local PNG files: 608
-Local texture families: 75
+Local PNG files: 605
+Local texture families: 72
 Direct external texture paths: 6
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
 
-Focused manual review must confirm all six gameplay-gene icons in the actual
-Biotech gene UI at small scale, verify that the legacy Jaffa-longgevity gene no
-longer appears, and confirm that the four world-faction and seven event-site
-wiki images render correctly after synchronization.
+Focused manual review must confirm the obsolete migration genes are absent, the
+intrinsic forehead-mark overlays still assign and persist, the six active
+gameplay-gene icons remain unchanged and the wiki has no stale legacy-gene image
+references.

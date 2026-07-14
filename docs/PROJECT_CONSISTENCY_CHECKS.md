@@ -1,8 +1,8 @@
 # Project consistency checks
 
-Version: `0.3.89-dev`
+Version: `0.3.90-dev`
 
-Status: extended through `0.3.89-dev` with mandatory visual-asset and approved-wiki-copy validation.
+Status: extended through `0.3.90-dev` with mandatory visual-asset and approved-wiki-copy validation.
 
 ## Purpose
 

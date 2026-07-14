@@ -1,5 +1,69 @@
 # Changelog
 
+## 0.3.90-dev - Remove legacy Jaffa forehead-mark migration genes
+
+### Changed
+
+- Keep Jaffa forehead marks exclusively in the intrinsic pawn-data system
+  introduced after the early cosmetic-gene prototype.
+- Simplify `GameComponent_JaffaForeheadMarks` so its periodic map pass only
+  initializes eligible Goa'uld-domain Jaffa and no longer scans gene lists for
+  migration placeholders.
+- Return the visual baseline to `605` PNG files, `72` canonical families and
+  exactly `21` final local families.
+- Advance public metadata to `0.3.90-dev` and assembly metadata to `0.3.90.0`.
+
+### Removed
+
+- Remove the obsolete `SG1_JaffaForeheadMark_Generic`,
+  `SG1_JaffaForeheadMark_GenericGold` and
+  `SG1_JaffaForeheadMark_GenericSilver` technical `GeneDef` records.
+- Remove their French gene translations, `GR_DefOf` fields and legacy
+  gene-to-intrinsic migration code.
+- Remove their old `Textures/Genes/Icons` files and the replacement
+  `Textures/UI/Genes` files briefly prepared in local `r1`.
+- Remove the corresponding wiki image copies, gallery rows, visual-register
+  families and checker mappings.
+
+### Compatibility
+
+- Intentionally discontinue migration support for private development saves
+  that still contain the early technical forehead-mark genes. The maintainer is
+  the only user of those saves and explicitly accepts this cleanup.
+- Preserve current saves that already serialize intrinsic forehead-mark data;
+  their `JaffaForeheadMarkDef` identifiers remain unchanged.
+
+### Preserved
+
+- Preserve the intrinsic black, silver and gold Jaffa forehead-mark Defs,
+  domain-rank assignment, pawn-overlay paths, render nodes, facings, offsets,
+  persistence, manual removal and developer actions.
+- Preserve all active gameplay genes and their six finalized icons from
+  `0.3.89-dev`.
+- Preserve xenotypes, factions, storytellers, missions and balancing.
+
+### Validated
+
+- Pass the forced `0.3.90.0` build, duration-formatting check, visual-asset
+  check, project-consistency check and `git diff --check`.
+- Confirm the three obsolete genes are absent from normal and developer
+  inspection.
+- Confirm intrinsic black, silver and gold marks still assign, render, persist
+  through save/reload and remain manually removable.
+- Confirm the visual baseline remains `605` PNG files, `72` canonical families
+  and `21` final local families without missing or unregistered textures.
+- Confirm the wiki no longer exposes the removed migration genes or discarded
+  icon copies and no new relevant error appears during the focused test.
+
+### Published
+
+- Prepare documentation-only publication revision `r3`; it changes no PNG, Def,
+  translation, C# source, assembly, gameplay behavior or save data.
+- Publish the validated state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.90-dev` and the
+  synchronized separate wiki. Local `r1`, `r2` and `r3` suffixes are omitted
+  from the final commit and tag.
+
 ## 0.3.89-dev - Add final gene icons and complete world visual references
 
 ### Added

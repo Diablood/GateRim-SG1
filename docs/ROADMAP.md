@@ -12,6 +12,61 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 - les décisions encore ouvertes ne sont pas tranchées prématurément : elles sont
   reprises au lancement du jalon concerné avant toute implémentation.
 
+## Prochain jalon visuel décidé
+
+`0.3.91-dev - Add final intrinsic Jaffa forehead-mark overlays`
+
+Objectif : remplacer les textures temporaires réellement rendues sur les pawns,
+sans recréer de gènes techniques. Les trois Defs intrinsèques et leurs chemins de
+sauvegarde restent stables :
+
+```text
+SG1_JaffaForeheadMark_GenericIntrinsic
+SG1_JaffaForeheadMark_GenericSilverIntrinsic
+SG1_JaffaForeheadMark_GenericGoldIntrinsic
+```
+
+Contrat artistique et fonctionnel décidé :
+
+- reprendre le symbole reconnaissable d'Apophis ;
+- produire une marque petite, centrée sur le front et comparable à un tatouage ;
+- ne pas dépasser au-dessus de la tête comme la texture temporaire ;
+- conserver les variantes noire ordinaire, argentée d'élite et dorée de Premier
+  Primat avec la même géométrie ;
+- rendre la marque uniquement en vue `South` pour éviter une adaptation latérale
+  artificielle ;
+- conserver la donnée intrinsèque retirable, la persistance et les outils
+  développeur existants ;
+- tester la taille réelle avec plusieurs coiffures, la couverture par casque,
+  la sauvegarde/recharge et le retrait manuel ;
+- ajouter les références visuelles au wiki seulement après validation du rendu
+  pawn réel.
+
+## Dernier jalon de nettoyage validé et publié
+
+`0.3.90-dev - Remove legacy Jaffa forehead-mark migration genes`
+
+Branche finale : `feature/final-jaffa-forehead-mark-gene-icons`, créée depuis
+`develop` aligné avec le tag publié `v0.3.89-dev`. Le nom historique de la
+branche est conservé bien que le périmètre ait été corrigé après l'inspection UI
+locale de `r1`.
+
+La révision fonctionnelle finale `r2` supprime les trois anciens gènes techniques
+de migration, leurs traductions, champs DefOf, icônes et logique de conversion.
+Le mainteneur accepte explicitement de ne plus prendre en charge les sauvegardes
+privées qui contiennent encore ces prototypes.
+
+Le système intrinsèque reste intact : marques noire, argentée et dorée,
+affectation par domaine Goa'uld, rendu pawn temporaire existant, persistance,
+retrait manuel et outils développeur. Le build `0.3.90.0`, les contrôles de
+durées, d'assets visuels, de cohérence du projet, `git diff --check` et les tests
+ciblés passent. Les gènes obsolètes sont absents de l'inspection et les marques
+intrinsèques restent fonctionnelles.
+
+La révision documentaire `r3` enregistre la clôture, l'intégration fast-forward
+dans `develop`, le tag annoté unique `v0.3.90-dev` et la synchronisation du wiki
+séparé. Les suffixes locaux `r1`, `r2` et `r3` sont absents du commit et du tag.
+
 ## Dernier jalon correctif et gameplay validé et publié
 
 `0.3.87-dev - Fix Jaffa and Tok'ra starter symbiotes`

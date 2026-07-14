@@ -1,93 +1,74 @@
 # Project state
 
-Current milestone: `0.3.89-dev - Add final gene icons and complete world visual references`
+Current milestone: `0.3.90-dev - Remove legacy Jaffa forehead-mark migration genes`
 
-Status: validated and published. Final local revision `r2` records the
-publication closure after the validated implementation and visual revision
-`r1`.
+Status: validated after corrective functional revision `r2`; publication-only
+revision `r3` records the final state for the annotated tag.
 
 - Starting point: published `develop` aligned with annotated tag
-  `v0.3.88-dev`.
-- Final feature branch:
-  `feature/final-gene-icons-and-world-visual-references`.
-- Final local revision: `r2`; the suffix remains local and is omitted from the
-  final commit and tag.
-- Published assembly version: `0.3.89.0`.
-- Integration branch: `develop`, updated by fast-forward from the validated
-  feature commit.
-- Published annotated tag: `v0.3.89-dev`.
-- Separate wiki: synchronized from `docs/wiki/` and published with the same
-  milestone version.
+  `v0.3.89-dev`.
+- Final branch: `feature/final-jaffa-forehead-mark-gene-icons`.
+- Final functional revision: `r2`.
+- Publication-document revision: `r3`.
+- Assembly version: `0.3.90.0`.
+- Final annotated tag: `v0.3.90-dev`.
+- Integration target: `develop` by fast-forward.
 
 ## Published scope
 
-- Replace six stable gameplay-gene textures:
-  - `UI/Genes/SG1_JaffaLineage`;
-  - `UI/Genes/SG1_JaffaPhysiology`;
-  - `UI/Genes/SG1_JaffaPouchPotential`;
-  - `UI/Genes/SG1_JaffaSymbioteCompatibility`;
-  - `UI/Genes/SG1_GoauldLongevity`;
-  - `UI/Genes/SG1_NaquadahBlood`.
-- Remove the obsolete development-only `SG1_JaffaLongevity` `GeneDef`, its
-  French translation entries and `Textures/UI/Genes/SG1_JaffaLongevity.png`.
-  Jaffa longevity remains provided by `SG1_JaffaPrimta`.
-- Reclassify the four existing `World faction` texture families as
-  `final` / `done`.
-- Add byte-identical wiki copies for the six gene icons, four faction icons and
-  seven event-site icons already accepted as final.
-- Leave the three technical forehead-mark icons unchanged; they are not gameplay
-  genes and remain scheduled for a later Jaffa-mark visual lot.
-- Preserve all remaining Def names, stable texture paths, gene effects, factions,
-  world sites, storyteller behavior and runtime C# logic.
-- Preserve the existing French label `compatibilité avec un symbiote immature`;
-  its multiline wrapping was observed in the gene interface and the maintainer
-  explicitly chose not to rename it in this milestone.
+- Remove the three obsolete technical migration `GeneDef` records:
+  - `SG1_JaffaForeheadMark_Generic`;
+  - `SG1_JaffaForeheadMark_GenericGold`;
+  - `SG1_JaffaForeheadMark_GenericSilver`.
+- Remove their French `GeneDef` translations, `GR_DefOf` fields and the C# scan
+  that converted those former genes into intrinsic forehead-mark data.
+- Remove both obsolete gene-icon locations and the discarded local `r1` wiki
+  copies:
+  - `Textures/Genes/Icons`;
+  - `Textures/UI/Genes`;
+  - the corresponding files under `docs/wiki/images`.
+- Keep the visual baseline at `605` PNG files, `72` canonical texture families
+  and exactly `21` approved final local families.
+- Preserve the active intrinsic forehead-mark system and its stable save IDs:
+  - `SG1_JaffaForeheadMark_GenericIntrinsic`;
+  - `SG1_JaffaForeheadMark_GenericSilverIntrinsic`;
+  - `SG1_JaffaForeheadMark_GenericGoldIntrinsic`.
 
-## Published visual baseline
+## Compatibility decision
 
-- `608` PNG files under `Textures/`;
-- `75` canonical local texture families;
-- `21` exact final local families;
-- `27` temporary-original families;
-- `15` temporary-recolor families;
-- `6` temporary-reuse families;
-- `6` personal-icon placeholder families;
-- priorities: `8` P0, `21` P1, `25` P2 and `21` done.
+The maintainer is the only user of the early development saves and explicitly
+accepts dropping compatibility for saves that still contain the obsolete
+technical genes. Current saves that already serialize intrinsic forehead-mark
+data remain supported because their `JaffaForeheadMarkDef` identifiers and pawn
+records are unchanged.
 
-## Validation result
+## Validation completed
 
-Local revision `r1` passed the maintainer's build, static and real-interface
-validation:
+- Forced build of assembly `0.3.90.0` completed successfully.
+- Duration-formatting, visual-asset and project-consistency checks passed.
+- `git diff --check` passed.
+- The three obsolete genes are absent from normal and developer gene inspection.
+- Goa'uld-domain Jaffa retain their intrinsic black, silver and gold marks.
+- Developer assignment, persistence, manual removal and save/reload remain
+  functional for intrinsic marks.
+- The six active gameplay-gene icons from `0.3.89-dev` remain unchanged.
+- No new relevant XML, translation, missing-texture, DefOf or C# error was found
+  during the focused test.
+- The wiki drafts no longer present migration-only genes or their discarded
+  icons as gameplay assets.
 
-- the forced `0.3.89.0` assembly build completed successfully;
-- duration formatting, visual assets, project consistency and
-  `git diff --check` passed;
-- all six gameplay-gene icons are present, transparent, centered and readable at
-  their actual Biotech gene-UI size;
-- no icon is missing, magenta, clipped or backed by an opaque rectangle;
-- `SG1_JaffaLongevity` and its obsolete texture are absent;
-- Jaffa carrying a Prim'ta retain their existing longevity support;
-- the four faction icons and seven event-site icons remain unchanged in game;
-- the gene, faction and site galleries render correctly in the wiki drafts;
-- all protected wiki copies remain byte-identical to their gameplay textures;
-- no new relevant XML, texture or C# error was reported in `Player.log`.
+## Publication state
 
-Revision `r2` changes only publication-state documentation. It changes no PNG,
-Def, translation, C# source, assembly, gameplay behavior or save data.
+The validated feature commit is intended for fast-forward integration into
+`develop`, followed by the unique annotated tag `v0.3.90-dev` and synchronization
+of the separate wiki. Local suffixes `r1`, `r2` and `r3` do not appear in the
+final commit or tag.
 
-## Publication result
+## Next decided milestone
 
-- Final commit: `0.3.89-dev - finalize gene and world visual references`.
-- The validated feature commit is integrated into `develop` by fast-forward.
-- `develop` and annotated tag `v0.3.89-dev` point to the same commit.
-- The separate `GateRim-SG1.wiki` repository is synchronized and published.
-- Local `r1` and `r2` suffixes do not appear in the final commit or tag.
-
-## Next work
-
-No next milestone number or branch is assigned. The next task must be selected
-from the remaining Phase 1 backlog in `docs/ROADMAP.md`; Phase 2 remains blocked
-until the core-faction completion gate is explicitly satisfied.
-
-Before starting that milestone, update local `develop`, verify that it matches
-`v0.3.89-dev`, then create a new dedicated `feature/*` or `fix/*` branch.
+The next visual lot is separate from this cleanup: replace the actual intrinsic
+pawn overlays under `Textures/Things/Pawn/Humanlike/JaffaForeheadMarks` with a
+small Apophis forehead symbol. The ordinary, elite and First Prime variants use
+black, silver and gold treatments, remain removable intrinsic pawn data and are
+rendered only in the `South` facing. This work must be tested against hairstyles,
+helmets, save/reload and manual removal before it is accepted as final art.

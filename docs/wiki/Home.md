@@ -4,8 +4,20 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.89-dev`
-> Révision locale à valider : `r1`
+> Version du mod documentée : `0.3.90-dev`
+
+## Nettoyage des anciens gènes de marques frontales Jaffa
+
+`0.3.90-dev` supprime les trois anciens gènes techniques qui servaient seulement
+à migrer les premiers prototypes de marques frontales. Leurs traductions,
+icônes et logique de conversion sont également retirées : ils ne doivent plus
+apparaître dans l'interface des gènes.
+
+Les marques réellement utilisées restent des données intrinsèques du pion,
+indépendantes des gènes et des vêtements. Les variantes noire, argentée et dorée,
+leur affectation aux Jaffa des domaines Goa'uld, leur rendu et leur persistance
+restent inchangés. Seules les anciennes sauvegardes privées contenant encore les
+gènes prototypes ne sont plus prises en charge.
 
 ## Icônes finales de gènes et références mondiales
 
@@ -63,8 +75,8 @@ wiki contre toute divergence avec les PNG du jeu.
 ## Audit des assets visuels provisoires
 
 La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
-technique exhaustif. Après les validations précédentes et le lot actif `0.3.89-dev`, la
-baseline compte `608` PNG sous `75` familles de textures, dont `21` familles
+technique exhaustif. Après les validations précédentes et le nettoyage publié `0.3.90-dev`, la
+baseline compte `605` PNG sous `72` familles de textures, dont `21` familles
 locales finales : deux portraits de storyteller, deux xénotypes, six gènes de
 gameplay, quatre factions mondiales et sept sites d'événements. L'icône publique du
 mod reste finale hors compteur.

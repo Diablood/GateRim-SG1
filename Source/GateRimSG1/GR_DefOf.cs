@@ -77,10 +77,6 @@ namespace GateRimSG1
         public static JobDef SG1_TokraSabotageRelayDevice;
 
         // Legacy technical genes retained only for save migration.
-        public static GeneDef SG1_JaffaForeheadMark_Generic;
-        public static GeneDef SG1_JaffaForeheadMark_GenericSilver;
-        public static GeneDef SG1_JaffaForeheadMark_GenericGold;
-
         // Intrinsic forehead-mark data Defs.
         public static JaffaForeheadMarkDef SG1_JaffaForeheadMark_GenericIntrinsic;
         public static JaffaForeheadMarkDef SG1_JaffaForeheadMark_GenericSilverIntrinsic;

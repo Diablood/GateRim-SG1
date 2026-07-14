@@ -402,13 +402,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the twenty-one approved storyteller, xenotype, gene, faction and event-site families: {0}" -f
+        "Final local asset whitelist differs from the twenty-one approved storyteller, xenotype, gameplay-gene, faction and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the twenty-one approved storyteller, xenotype, gene, faction and event-site families."
+    Add-Pass "Final local asset whitelist matches the twenty-one approved storyteller, xenotype, gameplay-gene, faction and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

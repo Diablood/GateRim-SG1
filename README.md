@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.89-dev`
+- Development version: `0.3.90-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,13 +17,13 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.89-dev` prepares six dedicated gameplay-gene icons, removes the obsolete
-development-only `SG1_JaffaLongevity` prototype, accepts the four existing
-world-faction icon families as final and adds visible wiki references for those
-genes, factions and the seven previously validated event sites. The visual
-register now covers `608` PNG files under `75` canonical texture families,
-including `21` final local families. The active gene effects, factions, sites
-and runtime C# behavior remain unchanged.
+`0.3.90-dev` removes the three obsolete technical Jaffa forehead-mark
+migration genes instead of finalizing UI icons for definitions that no longer
+belong in gameplay. Their GeneDefs, translations, DefOf fields, icon textures
+and migration scan are deleted. The intrinsic black, silver and gold forehead
+marks remain stored directly on pawns, with their domain assignment, rendering,
+persistence and developer actions unchanged. Compatibility with private saves
+that still contain the early technical genes is intentionally discontinued.
 
 
 `0.3.87-dev` corrected the vanilla starter-generation path for GateRim

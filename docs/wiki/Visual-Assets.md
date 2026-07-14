@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.89-dev`
-> Statut : révision locale `r1` prête pour validation dans les interfaces réelles
+> Version de référence : `0.3.90-dev`
+> Statut : références validées jusqu’à la version publiée `0.3.90-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -27,7 +27,7 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 | ![Icône finale du xénotype Jaffa](images/SG1_Jaffa.png) | Jaffa | `SG1_Jaffa` | `UI/Xenotypes/SG1_Jaffa` | Tête humaine blanche très épurée portant la marque d'Apophis |
 | ![Icône finale de l'hôte Goa'uld](images/SG1_GoauldHost.png) | Hôte Goa'uld | `SG1_GoauldHost` | `UI/Xenotypes/SG1_GoauldHost` | Symbiote Goa'uld blanc simplifié qui représente l'état acquis |
 
-## Icônes de gènes proposées pour validation
+## Icônes de gènes validées
 
 | Icône | Gène | Chemin sous `Textures/` | Lecture visuelle |
 |---|---|---|---|
@@ -39,8 +39,10 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 | ![Naquadah dans le sang](images/SG1_NaquadahBlood.png) | `SG1_NaquadahBlood` | `UI/Genes/SG1_NaquadahBlood` | Goutte de sang rouge avec reflet vert fluorescent rappelant une fiole de naquadah |
 
 Le prototype obsolète `SG1_JaffaLongevity` n'est plus utilisé : son `GeneDef`,
-sa traduction et son PNG dédié sont supprimés dans ce jalon. La longévité des
-Jaffa reste fournie par l'état de santé du Prim'ta.
+sa traduction et son PNG dédié ont été supprimés en `0.3.89-dev`. La longévité
+des Jaffa reste fournie par l'état de santé du Prim'ta. Les trois anciens gènes
+techniques de marques frontales sont également supprimés en `0.3.90-dev`; les
+marques réellement utilisées restent des données intrinsèques du pion.
 
 ## Icônes de factions mondiales validées
 
@@ -67,9 +69,9 @@ Jaffa reste fournie par l'état de santé du Prim'ta.
 
 Les autres visuels locaux restent temporaires, notamment les armes,
 équipements, vêtements, bâtiments, objets de mission, projectiles, pawns,
-commandes d'interface et les trois icônes techniques des marques frontales
-Jaffa. Ces trois dernières ne sont pas des gènes de gameplay et seront traitées
-dans un lot ultérieur consacré aux marques Jaffa.
+commandes d'interface et les textures de marques frontales visibles sur les
+pawns. La future passe sur les tatouages/rendus pawn reste séparée du nettoyage
+des anciens gènes techniques.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

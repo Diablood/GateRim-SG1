@@ -1,6 +1,6 @@
 # Intrinsic Jaffa forehead-mark data
 
-Version: `0.1.74-dev r1`
+Version: `0.3.90-dev`
 
 ## Design correction
 
@@ -65,9 +65,9 @@ no removable loot
 no visible gene entry
 ```
 
-## Legacy migration
+## Removed legacy gene scaffolding
 
-The former technical genes remain declared as invisible migration placeholders:
+The former technical genes were removed in `0.3.90-dev`:
 
 ```text
 SG1_JaffaForeheadMark_Generic
@@ -75,13 +75,10 @@ SG1_JaffaForeheadMark_GenericSilver
 SG1_JaffaForeheadMark_GenericGold
 ```
 
-They have no render-node properties and are no longer patched into the Jaffa
-xenotype. When an affected pawn is encountered, the component transfers the
-appropriate rank mark into intrinsic data and removes every legacy technical
-gene from that pawn.
-
-Keeping these Defs temporarily prevents missing-Def errors when loading saves
-created during the earlier prototypes.
+They no longer participate in gameplay, migration or UI inspection. The
+maintainer explicitly accepts the loss of compatibility for private prototype
+saves that still contain those genes. Current intrinsic forehead-mark data and
+its stable `JaffaForeheadMarkDef` identifiers remain supported.
 
 ## Developer tools
 
@@ -96,7 +93,7 @@ Remove forehead mark
 
 ## Manual test checklist
 
-1. Extract the ZIP at the repository root and run the included PowerShell apply helper.
+1. Extract the ZIP at the repository root and apply the announced file deletions.
 2. Build the C# assembly.
 3. Start RimWorld and confirm that no XML, translation, DefOf or C# error appears.
 4. Trigger each controlled Goa'uld Jaffa raid and confirm that ordinary Jaffa carry the black mark.
@@ -106,5 +103,19 @@ Remove forehead mark
 8. Use the developer tools to apply a black mark to a non-Jaffa pawn.
 9. Save, reload and confirm persistence for each manually assigned mark.
 10. Remove a Jaffa mark manually, save, reload and confirm that it does not return automatically.
-11. Load a save containing an earlier technical mark gene and confirm automatic migration without errors.
+11. Confirm the obsolete technical genes are absent from gene inspection.
 12. Confirm that Goa'uld-domain Jaffa receive marks while Free Jaffa remain unmarked.
+
+## Next intrinsic overlay art pass
+
+`0.3.90-dev` does not finalize the textures rendered on pawns. It removes only
+the obsolete gene scaffolding and deliberately preserves the existing intrinsic
+render nodes, facings, offsets and temporary overlay families.
+
+The next decided visual milestone replaces the actual files under
+`Textures/Things/Pawn/Humanlike/JaffaForeheadMarks` with a compact Apophis
+symbol. The ordinary, elite and First Prime variants share one geometry with
+black, silver and gold treatments. The final mark must stay within the forehead,
+remain compatible with visible hair, and render only for the `South` facing.
+Its acceptance requires real-pawn tests before the families can move from
+`temporary-*` to `final` in the visual register or appear in the wiki gallery.

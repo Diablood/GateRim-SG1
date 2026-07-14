@@ -1,5 +1,38 @@
 # Durable testing
 
+## Legacy Jaffa forehead-mark gene cleanup (`0.3.90-dev`)
+
+Final functional revision `r2` is validated and published. Local `r1` exposed
+that the three icon targets were migration-only genes rather than active
+content; `r2` removes that obsolete scaffolding instead of finalizing it.
+Publication-only revision `r3` records the result without changing runtime
+files. Durable coverage:
+
+- keep `SG1_JaffaForeheadMark_Generic`,
+  `SG1_JaffaForeheadMark_GenericGold` and
+  `SG1_JaffaForeheadMark_GenericSilver` absent from loaded `GeneDef` records;
+- keep their French `GeneDef` translation file, DefOf fields and C# migration
+  helpers absent;
+- keep both obsolete gene-icon locations absent under `Textures/Genes/Icons`
+  and `Textures/UI/Genes`;
+- preserve `SG1_JaffaForeheadMark_GenericIntrinsic`,
+  `SG1_JaffaForeheadMark_GenericSilverIntrinsic` and
+  `SG1_JaffaForeheadMark_GenericGoldIntrinsic` with stable save identifiers;
+- preserve domain-rank assignment, pawn rendering, persistence, manual removal
+  and developer actions for intrinsic marks;
+- explicitly accept that private saves still containing the early technical
+  genes are no longer migration-compatible;
+- require `605` PNG files, `72` canonical families and exactly `21` final local
+  families while keeping all accepted storyteller, xenotype, gameplay-gene,
+  world-faction and event-site references protected;
+- keep the wiki free of migration-gene icon rows and broken image links;
+- run the forced build, duration, visual, project-consistency and
+  `git diff --check` controls;
+- inspect normal and developer gene surfaces to prove the obsolete Defs are
+  absent;
+- verify intrinsic black, silver and gold assignment, rendering, persistence,
+  manual removal and clean focused logs.
+
 ## Final gameplay-gene icons and world visual references (`0.3.89-dev`)
 
 Local revision `r1` prepares six final gameplay-gene icons, removes the unused
