@@ -5,6 +5,8 @@
 
 ## Présentation
 
+![Icône partagée de la cérémonie d'implantation](images/SG1_RitualImplantation.png)
+
 Le bassin rituel Goa'uld permet désormais d'organiser une cérémonie formelle du
 Prim'ta pour un Jaffa éligible.
 

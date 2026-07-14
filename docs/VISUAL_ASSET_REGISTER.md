@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.91-dev`
-- Branch: validated local publication state; no temporary branch identifier is assumed
-- Target assembly: `0.3.91.0`
-- Status: `0.3.91-dev` overlay art, static checks and wiki references validated and published after final visual revision `r1`; documentary revision `r2` records closure.
+- Version: `0.3.92-dev`
+- Branch: `feature/final-goauld-jaffa-command-icons`
+- Target assembly: `0.3.92.0`
+- Status: `0.3.92-dev` command-icon lot validated after final visual revision `r1` and recorded for publication in documentary revision `r2`.
 
 ## Purpose
 
@@ -24,7 +24,9 @@ four existing world-faction icon families and completed the wiki gallery for
 all previously validated event-site icons. `0.3.90-dev` removes the three obsolete
 forehead-mark migration GeneDefs and their icon families while preserving the
 intrinsic pawn-overlay system. `0.3.91-dev` finalizes the three real intrinsic
-pawn-overlay families with compact South-only Apophis marks.
+pawn-overlay families with compact South-only Apophis marks. `0.3.92-dev`
+replaces four personal-icon command placeholders with dedicated transparent
+symbols.
 
 ## Approved final references
 
@@ -32,10 +34,10 @@ pawn-overlay families with compact South-only Apophis marks.
   the `Textures/` family count and must never be reused as gameplay art.
 - The `Textures/` families accepted as `final` are the two storyteller
   portraits, two xenotype icons, six gameplay-gene icons, three intrinsic Jaffa
-  forehead-mark overlays, four world-faction icons and seven world-event site
-  icons listed below.
-- Equipment, buildings, other pawn overlays, projectiles, pawns and command icons
-  remain temporary even when they are functional.
+  forehead-mark overlays, four command icons, four world-faction icons and seven
+  world-event site icons listed below.
+- Equipment, buildings, other pawn overlays, projectiles, pawns and command
+  icons not explicitly listed below remain temporary even when functional.
 
 Validated storyteller families:
 
@@ -61,6 +63,13 @@ Validated intrinsic Jaffa forehead-mark overlay families:
 - `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark`
 - `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark`
 - `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark`
+
+Validated command families:
+
+- `UI/Commands/SG1_AutonomousHunt`
+- `UI/Commands/SG1_EmergencyExtraction`
+- `UI/Commands/SG1_ForcedImplantation`
+- `UI/Commands/SG1_RitualImplantation`
 
 Validated world-faction families:
 
@@ -103,14 +112,14 @@ Validated world-event site families:
 
 - Local PNG files: `605`.
 - Local texture families: `72`.
-- Accepted final local families: `24` (`2` storyteller portraits, `2` xenotype
+- Accepted final local families: `28` (`2` storyteller portraits, `2` xenotype
   icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
-  `4` world-faction icons and `7` world-event site icons).
+  `4` command icons, `4` world-faction icons and `7` world-event site icons).
 - Temporary original families: `25`.
 - Temporary recolor families: `11`.
 - Temporary reuse families: `6`.
-- Project-icon placeholder families: `6`.
-- Priorities: `8` P0, `21` P1, `19` P2, `24` done.
+- Project-icon placeholder families: `2`.
+- Priorities: `4` P0, `21` P1, `19` P2, `28` done.
 - Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -118,8 +127,7 @@ Validated world-event site families:
 
 ## Highest-priority findings
 
-1. Four command icons and both ritual/incubation basins still reuse the
-   personal demon mod icon exactly.
+1. Both ritual/incubation basins still reuse the personal demon mod icon exactly.
 2. The kara kesh and healing bracelet reuse the Zat’nik’tel inventory texture.
 3. The Prim’ta larva and free Goa’uld symbiote use the same image.
 4. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
@@ -184,11 +192,11 @@ same canonical family. Representative dimensions refer to the base image.
 | `Things/Projectile/SG1_MatokBlast` | 1 | 64×32 | Map projectile | `temporary-original` | `P2` | SG1_MatokStaffProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
 | `Things/Projectile/SG1_TokraHypodermicDart` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_TokraHypodermicDart | Custom functional art that remains acceptable for development but is not yet accepted as final. |
 | `Things/Projectile/SG1_ZatnikTelBlast` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_ZatnikTelProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `UI/Commands/SG1_AutonomousHunt` | 1 | 64×64 | Command UI | `placeholder-personal-icon` | `P0` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Commands/SG1_EmergencyExtraction` | 1 | 64×64 | Command UI | `placeholder-personal-icon` | `P0` | C# Source/GateRimSG1/Goauld/HediffComp_GoauldEmergencyExtraction.cs | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `UI/Commands/SG1_ForcedImplantation` | 1 | 64×64 | Command UI | `placeholder-personal-icon` | `P0` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Exact reuse of the project demon icon; misleading for this gameplay surface. |
+| `UI/Commands/SG1_AutonomousHunt` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Maintainer-approved moving Goa'uld symbiote and red target reticle for the autonomous-hunt toggle. |
+| `UI/Commands/SG1_EmergencyExtraction` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/HediffComp_GoauldEmergencyExtraction.cs | Maintainer-approved surgical table, lamp and separated brown symbiote for the instant developer extraction action. |
+| `UI/Commands/SG1_ForcedImplantation` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Maintainer-approved brown symbiote, grey host and short red impact arrow for direct forced implantation. |
 | `UI/Commands/SG1_JaffaHelmetMode` | 1 | 64×64 | Command UI | `temporary-original` | `P2` | C# Source/GateRimSG1/Jaffa/Comp_RetractableJaffaHelmet.cs | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `UI/Commands/SG1_RitualImplantation` | 1 | 64×64 | Command UI | `placeholder-personal-icon` | `P0` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs, C# Source/GateRimSG1/Jaffa/Comp_JaffaPrimtaCeremony.cs | Exact reuse of the project demon icon; misleading for this gameplay surface. |
+| `UI/Commands/SG1_RitualImplantation` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs, C# Source/GateRimSG1/Jaffa/Comp_JaffaPrimtaCeremony.cs | Maintainer-approved symbiote, host, red arrow and gold ceremonial seal; existing shared ritual/implantation uses remain unchanged. |
 | `UI/Genes/SG1_GoauldLongevity` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_GoauldLongevity | Maintainer-approved hourglass and cyclic-arrow symbol reused from the abandoned Jaffa prototype for the active Goa'uld-host longevity gene. |
 | `UI/Genes/SG1_JaffaLineage` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaLineage | Maintainer-approved adult-and-descendant Jaffa faces with visible forehead marks, validated as the lineage symbol. |
 | `UI/Genes/SG1_JaffaPhysiology` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPhysiology | Maintainer-approved centered crate with an overlapping green upward arrow, representing increased carrying capacity. |

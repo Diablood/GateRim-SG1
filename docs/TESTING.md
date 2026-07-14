@@ -1,5 +1,33 @@
 # Durable testing
 
+## Final Goa'uld and Jaffa command icons (`0.3.92-dev`)
+
+Final visual revision `r1` replaces four personal-icon placeholders and is
+validated in the real command interface. Publication-only revision `r2` records
+the completed checks and publication without changing the approved art.
+Durable coverage:
+
+- require `SG1_AutonomousHunt`, `SG1_EmergencyExtraction`,
+  `SG1_ForcedImplantation` and `SG1_RitualImplantation` to remain transparent
+  `64×64` PNGs;
+- keep the four concepts distinct at actual gizmo scale: target pursuit,
+  surgical extraction, direct forced contact and ceremonial implantation;
+- keep the exterior alpha genuinely transparent and reject baked checkerboards,
+  white squares, clipping or magenta fallback textures;
+- keep gameplay and wiki copies byte-identical;
+- require each icon to appear on its dedicated functional wiki page rather than
+  only on the development-oriented visual register;
+- preserve every existing C# texture path and command behavior;
+- exercise all surfaces sharing `SG1_RitualImplantation`: Goa'uld ritual
+  start/cancel, Tok'ra offer/implantation controls and Jaffa Prim'ta ceremony;
+- verify command visibility and disabled/hover states remain unchanged;
+- require `605` PNG files, `72` canonical families and exactly `28` final local
+  families after acceptance;
+- run forced build, duration, visual, project-consistency and
+  `git diff --check` controls;
+- inspect save/reload around active rituals and recent implantation, then review
+  `Player.log` for relevant texture or C# errors.
+
 ## Final intrinsic Jaffa forehead-mark overlays (`0.3.91-dev`)
 
 Final visual revision `r1` replaces only the twelve existing intrinsic

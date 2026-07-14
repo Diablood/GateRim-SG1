@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.91-dev`
-> Statut : marques intrinsèques finales validées et publiées dans `0.3.91-dev`
+> Version de référence : `0.3.92-dev`
+> Statut : quatre commandes finales validées et publiées dans `0.3.92-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -56,6 +56,19 @@ Chaque famille conserve quatre PNG `128×128`. Les fichiers `North`, `East` et
 `West` sont entièrement transparents afin que la marque reste un tatouage
 strictement frontal, sans texture flottante sur les autres orientations.
 
+## Icônes de commandes Goa'uld et Jaffa validées
+
+| Icône | Commande ou famille | Chemin sous `Textures/` | Lecture visuelle |
+|---|---|---|---|
+| ![Chasse autonome](images/SG1_AutonomousHunt.png) | Chasse autonome du symbiote | `UI/Commands/SG1_AutonomousHunt` | Symbiote brun en mouvement vers un réticule rouge |
+| ![Extraction d'urgence](images/SG1_EmergencyExtraction.png) | Extraction instantanée développeur | `UI/Commands/SG1_EmergencyExtraction` | Symbiote séparé d'un hôte allongé sous une lampe chirurgicale |
+| ![Implantation forcée](images/SG1_ForcedImplantation.png) | Implantation forcée adjacente | `UI/Commands/SG1_ForcedImplantation` | Symbiote frappant vers un hôte par une courte flèche rouge |
+| ![Implantation rituelle](images/SG1_RitualImplantation.png) | Famille d'implantation et de cérémonie partagée | `UI/Commands/SG1_RitualImplantation` | Symbiote et hôte devant un sceau rituel doré |
+
+Les quatre PNG sont transparents et conservent leur format gameplay `64×64`.
+La famille rituelle reste partagée par les surfaces Goa'uld, Tok'ra et la
+cérémonie formelle du Prim'ta, sans changement de logique.
+
 ## Icônes de factions mondiales validées
 
 | Icône | Faction | Def principal | Chemin sous `Textures/` |
@@ -80,8 +93,8 @@ strictement frontal, sans texture flottante sur les autres orientations.
 ## Visuels encore temporaires
 
 Les autres visuels locaux restent temporaires, notamment les armes,
-équipements, vêtements, bâtiments, objets de mission, projectiles, pawns et
-commandes d'interface. Les trois familles de marques frontales intrinsèques
+équipements, vêtements, bâtiments, objets de mission, projectiles et pawns.
+Les trois familles de marques frontales intrinsèques et les quatre commandes
 présentées ci-dessus sont désormais finales.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus

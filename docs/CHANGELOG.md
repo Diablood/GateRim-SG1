@@ -1,5 +1,78 @@
 # Changelog
 
+## 0.3.92-dev - Add final Goa'uld and Jaffa command icons
+
+### Changed
+
+- Replace the four command PNGs that still reused the personal GateRim demon
+  icon:
+  - `UI/Commands/SG1_AutonomousHunt`;
+  - `UI/Commands/SG1_EmergencyExtraction`;
+  - `UI/Commands/SG1_ForcedImplantation`;
+  - `UI/Commands/SG1_RitualImplantation`.
+- Use dedicated transparent `64×64` symbols for autonomous targeting,
+  emergency surgical extraction, direct forced implantation and ceremonial
+  implantation.
+- Keep every existing C# texture path and command behavior unchanged.
+- Advance public metadata to `0.3.92-dev` and assembly metadata to `0.3.92.0`.
+- Reclassify the four command families as `final` / `done`, raising the exact
+  final-family whitelist from `24` to `28` while retaining the `605` PNG /
+  `72` family baseline.
+
+### Added
+
+- Add byte-identical wiki copies for all four command icons.
+- Display each icon on its dedicated player-facing feature page and add the
+  shared ritual icon to the formal Prim'ta ceremony page.
+- Extend the visual checker so the four gameplay/wiki pairs, their dedicated
+  pages and the expanded final-family whitelist are protected.
+
+### Preserved
+
+- Preserve autonomous hunt timing, targeting and developer-only toggle rules.
+- Preserve emergency-extraction identity transfer and its developer-only
+  instant action; normal gameplay continues to use the medical operation.
+- Preserve forced-implantation compatibility checks and contact behavior.
+- Preserve Goa'uld ritual, Tok'ra voluntary/therapeutic and Jaffa Prim'ta
+  ceremony command flows that already share `SG1_RitualImplantation`.
+- Change no Def, translation, balance, save identifier or gameplay state.
+
+### Selected visual concepts
+
+- `SG1_AutonomousHunt`: brown symbiote moving toward a red target reticle.
+- `SG1_EmergencyExtraction`: brown symbiote separated from a prone host under a
+  surgical lamp, with a red emergency burst.
+- `SG1_ForcedImplantation`: brown symbiote striking toward a grey host through a
+  short red directional arrow.
+- `SG1_RitualImplantation`: brown symbiote above a grey host, red implantation
+  arrow and gold ceremonial seal.
+
+### Validated
+
+- Pass the forced `0.3.92.0` build, duration-formatting check, visual-asset
+  check, project-consistency check and `git diff --check`.
+- Validate all four commands in the real RimWorld interface at their actual
+  gizmo size: autonomous hunt, emergency extraction, forced implantation and
+  ritual implantation.
+- Confirm the dedicated symbols remain distinct and readable without opaque
+  backgrounds, checkerboards, clipping, incorrect tint or missing-texture
+  fallback.
+- Confirm the shared ritual family remains suitable on the existing Goa'uld,
+  Tok'ra and formal Prim'ta ceremony surfaces.
+- Confirm the visual checker reports `605` PNG files, `72` canonical families,
+  exactly `28` final local families and no missing or unregistered reference.
+- Confirm all four gameplay/wiki pairs remain byte-identical and the icons are
+  displayed on their dedicated player-facing pages.
+
+### Published
+
+- Prepare publication-only documentary revision `r2`; it changes no PNG, Def,
+  translation, C# source, assembly, gameplay behavior or save data.
+- Publish the validated state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.92-dev` and the
+  synchronized separate wiki. Local `r1` and `r2` suffixes are omitted from the
+  final commit and tag.
+
 ## 0.3.91-dev - Add final intrinsic Jaffa forehead-mark overlays
 
 ### Changed

@@ -6,6 +6,8 @@
 
 ## Présentation
 
+![Icône finale de l'extraction d'urgence](images/SG1_EmergencyExtraction.png)
+
 Pendant la phase critique d'implantation récente, le joueur peut interrompre la prise de contrôle par une véritable opération médicale :
 
 ```text

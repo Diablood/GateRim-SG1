@@ -5,6 +5,8 @@
 
 ## Présentation
 
+![Icône finale de l'implantation rituelle](images/SG1_RitualImplantation.png)
+
 Le symbiote Goa'uld libre dispose d'une voie d'implantation contrôlée, distincte
 de sa chasse autonome.
 

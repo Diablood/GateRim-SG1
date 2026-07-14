@@ -14,6 +14,32 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.92-dev - Add final Goa'uld and Jaffa command icons`
+
+La révision visuelle finale `r1` remplace les quatre familles de commandes qui
+réutilisaient encore l'icône démon personnelle : chasse autonome, extraction
+d'urgence, implantation forcée et implantation rituelle. Les chemins C# restent
+stables et les quatre fichiers sont des PNG transparents `64×64`.
+
+Les concepts retenus distinguent clairement la recherche d'une cible,
+l'extraction chirurgicale, l'attaque d'implantation directe et le cadre
+cérémoniel. Les quatre commandes sont validées dans l'interface réelle, y
+compris l'usage partagé de `SG1_RitualImplantation` sur les surfaces Goa'uld,
+Tok'ra et la cérémonie formelle du Prim'ta.
+
+Le build `0.3.92.0`, les contrôles de durées, d'assets visuels, de cohérence du
+projet et `git diff --check` passent. La baseline reste `605` PNG et `72`
+familles, avec `28` familles finales et aucune référence manquante ou non
+enregistrée.
+
+Les copies wiki restent byte-identiques aux fichiers de jeu et apparaissent sur
+les pages fonctionnelles dédiées. La révision documentaire `r2` enregistre la
+clôture, l'intégration fast-forward dans `develop`, le tag annoté unique
+`v0.3.92-dev` et la synchronisation du wiki séparé, sans modifier les icônes
+validées.
+
+## Dernier jalon visuel validé et publié
+
 `0.3.91-dev - Add final intrinsic Jaffa forehead-mark overlays`
 
 La révision visuelle finale `r1` remplace les douze fichiers directionnels des
@@ -135,11 +161,10 @@ Le jalon est publié par commit final sur la branche temporaire, intégration
 fast-forward dans `develop`, tag annoté `v0.3.88-dev` et synchronisation du wiki
 séparé. Les suffixes locaux `r1`, `r2` et `r3` sont absents du commit et du tag.
 
-## Prochain jalon
+## Jalon suivant
 
-Aucun numéro de version ni nom de branche n'est encore réservé. Le prochain
-travail doit être sélectionné parmi les jalons restants de la Phase 1. La Phase 2
-reste bloquée tant que le critère de clôture du socle n'est pas satisfait.
+Aucun numéro ultérieur n'est réservé. Le prochain travail sera sélectionné parmi
+les familles visuelles et de présentation restantes de la Phase 1.
 
 ## Jalon visuel publié antérieur
 

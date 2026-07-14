@@ -1,37 +1,27 @@
-# Current testing — final intrinsic Jaffa forehead-mark overlays
+# Current testing — final Goa'uld and Jaffa command icons
 
-Jalon : `0.3.91-dev`
+Jalon : `0.3.92-dev`
 Révision visuelle finale validée : `r1`
 Révision documentaire de publication : `r2`
-Version de DLL validée : `0.3.91.0`
+Version de DLL validée : `0.3.92.0`
 
-## Maintainer in-game visual validation — passed
+## Selected concepts — approved
 
-The maintainer placed the twelve supplied PNG files directly in
-`Textures/Things/Pawn/Humanlike/JaffaForeheadMarks` and validated the actual pawn
-rendering before packaging.
+- autonomous hunt: moving brown symbiote and red target reticle;
+- emergency extraction: brown symbiote over a prone host, surgical table/lamp
+  and red emergency burst;
+- forced implantation: brown symbiote, grey host and short red impact arrow;
+- ritual implantation: brown symbiote, grey host, red implantation arrow and
+  gold ceremonial seal.
 
-- `GenericJaffaForeheadMark_south.png` displays the ordinary black mark.
-- `GenericSilverJaffaForeheadMark_south.png` displays the elite silver mark.
-- `GenericGoldJaffaForeheadMark_south.png` displays the First Prime gold mark.
-- The three visible files use the same compact Apophis geometry and the same
-  alpha footprint.
-- The mark is small, centered on the forehead and does not extend above the head.
-- Every `north`, `east` and `west` file is fully transparent, so no lateral or
-  rear mark is rendered.
-- Existing developer actions allow all three ranks to be compared on one pawn
-  without relying on random generation.
+## PNG and wiki preparation — passed
 
-## Automated image inspection — passed
-
-- All twelve gameplay files are valid `128×128` PNGs.
-- The nine hidden-facing files contain no non-transparent pixel.
-- Each visible `South` file uses an identical `15×10` alpha bounding box at
-  coordinates `(57,55)–(71,64)`.
-- Visible colors are exact opaque black `(0,0,0)`, silver `(155,155,155)` and
-  gold `(167,161,92)`.
-- The three wiki reference files are byte-identical copies of the corresponding
-  gameplay `South` files.
+- Four gameplay PNGs exist at exactly `64×64` under `Textures/UI/Commands`.
+- Every file uses a real alpha channel with transparent exterior pixels.
+- No generated checkerboard remains in the final files.
+- Every matching `docs/wiki/images` copy is byte-identical.
+- Each icon is displayed on its dedicated functional wiki page.
+- `Primta-Formal-Ceremony.md` displays the shared ritual icon.
 
 ## Build and static checks — passed
 
@@ -39,15 +29,15 @@ rendering before packaging.
 ./build.cmd
 ./tools/check-duration-formatting.cmd
 ./tools/check-visual-assets.cmd
-./tools/check-project-consistency.cmd -ExpectedVersion 0.3.91-dev
+./tools/check-project-consistency.cmd -ExpectedVersion 0.3.92-dev
 
 git diff --check
 ```
 
-Validated visual-audit result:
+Validated visual-audit summary:
 
 ```text
-Final local texture families: 24
+Final local texture families: 28
 Local PNG files: 605
 Local texture families: 72
 Direct external texture paths: 6
@@ -56,27 +46,23 @@ Unregistered local families: 0
 Visual asset check passed.
 ```
 
-## Focused regression checks — passed
+## Focused in-game validation — passed
 
-- Ordinary black, elite silver and First Prime gold remain assignable through
-  the existing GateRim developer actions.
-- The mark remains absent from genes, apparel and inventory.
-- The unchanged intrinsic record keeps the selected family through save/reload.
-- Manual removal remains persistent after reload.
-- Free Jaffa remain unmarked and ordinary Goa'uld-domain assignment is unchanged.
-- No new relevant missing-texture, XML, render-node or C# error was found during
-  the focused test.
-
-## Wiki validation — passed
-
-- `docs/wiki/Visual-Assets.md` displays all three `South` references.
-- Each wiki PNG remains byte-identical to its gameplay texture.
-- `Home.md` and `Content-Status.md` report `0.3.91-dev` and the `24` final-family
-  baseline.
+- `Chasse autonome` renders correctly on a free Goa'uld symbiote.
+- The developer-only instant `Extraction d'urgence` command renders correctly
+  during recent implantation.
+- `Implantation forcée` renders correctly for its adjacent-host test path.
+- `Implantation rituelle` renders correctly for the Goa'uld ritual flow.
+- The shared ritual family remains suitable for Tok'ra implantation/offer
+  controls and the formal Jaffa Prim'ta ceremony.
+- All four concepts remain distinct and readable at normal gizmo size.
+- No opaque square, checkerboard, clipping, incorrect tint or magenta
+  missing-texture fallback was observed.
+- No gameplay behavior or command availability rule changed.
 
 ## Publication result
 
 Publication-only revision `r2` changes documentation status only. The validated
-state is prepared for the final commit, integration into `develop`, annotated
-tag `v0.3.91-dev` and separate-wiki synchronization. Local `r1` and `r2`
-suffixes are omitted from the final commit and tag.
+state is prepared for the final feature-branch commit, fast-forward integration
+into `develop`, annotated tag `v0.3.92-dev` and separate-wiki synchronization.
+The final commit and tag omit local suffixes `r1` and `r2`.

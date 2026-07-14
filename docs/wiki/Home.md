@@ -4,7 +4,20 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.91-dev`
+> Version du mod documentée : `0.3.92-dev`
+
+## Icônes finales des commandes Goa'uld et Jaffa
+
+`0.3.92-dev` remplace quatre réutilisations de l'icône démon personnelle par
+des symboles dédiés : chasse autonome d'un symbiote vers une cible, extraction
+chirurgicale d'urgence, implantation forcée directe et implantation rituelle
+encadrée par un sceau doré.
+
+Les fichiers restent sur leurs chemins de commande existants et ne modifient
+aucune règle de ciblage, de visibilité ou de sauvegarde. Les quatre commandes
+ont été validées dans leur interface réelle. Les images sont présentées sur les
+pages fonctionnelles correspondantes ainsi que dans les
+[références visuelles validées](Visual-Assets).
 
 ## Marques frontales Jaffa intrinsèques finales
 
@@ -91,9 +104,10 @@ wiki contre toute divergence avec les PNG du jeu.
 La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
 technique exhaustif. Après les validations précédentes, le nettoyage publié `0.3.90-dev` et
 les marques validées dans `0.3.91-dev`, la baseline compte `605` PNG sous `72`
-familles de textures, dont `24` familles locales finales : deux portraits de
+familles de textures, dont `28` familles locales finales : deux portraits de
 storyteller, deux xénotypes, six gènes de gameplay, trois marques frontales
-intrinsèques, quatre factions mondiales et sept sites d'événements. L'icône publique du
+intrinsèques, quatre commandes, quatre factions mondiales et sept sites
+d'événements. L'icône publique du
 mod reste finale hors compteur.
 
 Chaque nouveau visuel validé est ajouté immédiatement à la page

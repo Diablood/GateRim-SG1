@@ -167,6 +167,36 @@ $wikiIconMappings = @(
         Reference = "images/GenericGoldJaffaForeheadMark_south.png"
     },
     @{
+        Source = "Textures/UI/Commands/SG1_AutonomousHunt.png"
+        Wiki = "docs/wiki/images/SG1_AutonomousHunt.png"
+        Page = "docs/wiki/Autonomous-Hunt.md"
+        Reference = "images/SG1_AutonomousHunt.png"
+    },
+    @{
+        Source = "Textures/UI/Commands/SG1_EmergencyExtraction.png"
+        Wiki = "docs/wiki/images/SG1_EmergencyExtraction.png"
+        Page = "docs/wiki/Emergency-Extraction.md"
+        Reference = "images/SG1_EmergencyExtraction.png"
+    },
+    @{
+        Source = "Textures/UI/Commands/SG1_ForcedImplantation.png"
+        Wiki = "docs/wiki/images/SG1_ForcedImplantation.png"
+        Page = "docs/wiki/Forced-Implantation.md"
+        Reference = "images/SG1_ForcedImplantation.png"
+    },
+    @{
+        Source = "Textures/UI/Commands/SG1_RitualImplantation.png"
+        Wiki = "docs/wiki/images/SG1_RitualImplantation.png"
+        Page = "docs/wiki/Ritual-Implantation.md"
+        Reference = "images/SG1_RitualImplantation.png"
+    },
+    @{
+        Source = "Textures/UI/Commands/SG1_RitualImplantation.png"
+        Wiki = "docs/wiki/images/SG1_RitualImplantation.png"
+        Page = "docs/wiki/Primta-Formal-Ceremony.md"
+        Reference = "images/SG1_RitualImplantation.png"
+    },
+    @{
         Source = "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png"
         Wiki = "docs/wiki/images/SG1_FreeJaffa.png"
         Page = "docs/wiki/Visual-Assets.md"
@@ -397,6 +427,10 @@ $expectedFinalLocalPaths = @(
     "Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark",
     "Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark",
     "Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark",
+    "UI/Commands/SG1_AutonomousHunt",
+    "UI/Commands/SG1_EmergencyExtraction",
+    "UI/Commands/SG1_ForcedImplantation",
+    "UI/Commands/SG1_RitualImplantation",
     "World/WorldObjects/Expanding/SG1_FreeJaffa",
     "World/WorldObjects/Expanding/SG1_GoauldSystemLords",
     "World/WorldObjects/Expanding/SG1_SGCExpedition",
@@ -423,13 +457,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the twenty-four approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, faction and event-site families: {0}" -f
+        "Final local asset whitelist differs from the twenty-eight approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the twenty-four approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, faction and event-site families."
+    Add-Pass "Final local asset whitelist matches the twenty-eight approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

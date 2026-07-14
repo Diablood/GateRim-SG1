@@ -5,6 +5,8 @@
 
 ## Présentation
 
+![Icône finale de la chasse autonome](images/SG1_AutonomousHunt.png)
+
 Un symbiote Goa'uld adulte libre est désormais une menace autonome.
 
 Il recherche périodiquement un humanoïde compatible accessible, poursuit la

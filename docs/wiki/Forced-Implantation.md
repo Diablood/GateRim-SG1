@@ -5,6 +5,8 @@
 
 ## Présentation
 
+![Icône finale de l'implantation forcée](images/SG1_ForcedImplantation.png)
+
 Un symbiote Goa'uld adulte privé d'hôte peut implanter de force un humanoïde
 compatible.
 
