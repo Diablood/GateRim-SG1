@@ -25,7 +25,7 @@ larve de Prim'ta
 | Obtention jouable | [Reine Goa'uld](Goauld-Queen), puis [bassin d'incubation](Primta-Incubation) |
 | Obtention pour les tests | Mode développeur toujours disponible |
 
-Le visuel actuel est temporaire.
+Le visuel actuel de la larve est temporaire.
 
 ## Utilisation
 
@@ -50,8 +50,9 @@ La larve est transportée jusqu'au patient puis consommée par l'opération.
 - intégration aux factions, quêtes et échanges ;
 - maturation en symbiote adulte.
 
-
 ## Bassin d'incubation
+
+![Bassin d'incubation du Prim'ta](images/SG1_PrimtaIncubationBasin.png)
 
 Depuis `0.1.28-dev`, construis un
 [bassin d'incubation du Prim'ta](Primta-Incubation), puis ajoute la tâche :
@@ -62,7 +63,6 @@ incuber une larve de Prim'ta
 
 Depuis `0.1.58-dev`, le bassin exige aussi un symbiote immature issu d'une
 reine Goa'uld.
-
 
 ## Nutriments d'incubation
 
@@ -75,8 +75,9 @@ Le [bassin d'incubation](Primta-Incubation) consomme :
 
 pour produire une larve.
 
-
 ## Conservation
+
+![Bassin de conservation du Prim'ta](images/SG1_PrimtaPreservationBasin.png)
 
 Depuis `0.1.30-dev`, les larves de Prim'ta sont périssables.
 
@@ -88,9 +89,9 @@ détérioration progressive
 larve détruite si elle pourrit complètement
 ```
 
-Un stockage froid est recommandé avant l'implantation. Cette première version
-utilise le système vanilla de pourrissement avec une durée de `6` jours.
-
+Un stockage froid est recommandé avant l'implantation. Le
+[bassin de conservation](Primta-Preservation-Basin) suspend l'aggravation tant
+qu'il reste alimenté, sans réparer les dommages déjà subis.
 
 ## Catégorie de stockage
 
@@ -107,7 +108,6 @@ produits biologiques Goa'uld
 
 Cette catégorie est volontairement distincte des aliments crus.
 
-
 ## Température détaillée
 
 Depuis `0.1.32-dev`, consulte [Température des larves](Primta-Temperature).
@@ -119,4 +119,5 @@ Le stockage chaud accélère désormais la détérioration :
 40 °C et plus  → ×3
 ```
 
-La congélation interrompt provisoirement la détérioration.
+La congélation interrompt provisoirement la détérioration, mais une exposition
+prolongée sous `-15 °C` hors bassin actif provoque des dommages spécifiques.

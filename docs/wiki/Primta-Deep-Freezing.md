@@ -35,6 +35,10 @@ détérioration biologique ×0,50
 Lorsque la ressource retourne dans un environnement plus sûr, l'exposition
 accumulée diminue progressivement à vitesse `×2`.
 
+## Protection spécialisée
+
+![Bassin de conservation du Prim'ta](images/SG1_PrimtaPreservationBasin.png)
+
 Un [bassin de conservation du Prim'ta](Primta-Preservation-Basin) alimenté
 protège complètement la ressource et résorbe également l'exposition accumulée.
 

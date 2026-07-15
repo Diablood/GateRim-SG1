@@ -12,6 +12,13 @@ Prim'ta pour un Jaffa éligible.
 
 Cette mécanique reste disponible sans le DLC Ideology.
 
+## Bassin cérémoniel
+
+![Bassin rituel Goa'uld](images/SG1_GoauldRitualBasin.png)
+
+Les variantes `2 × 2` et `3 × 3` du bassin sont utilisables pour la cérémonie.
+Elles partagent le même rendu visuel de taille `2 × 2` et la même icône.
+
 ## Conditions
 
 ```text
@@ -58,5 +65,6 @@ Une cérémonie annulée ne consomme pas la larve.
 
 ## Évolutions prévues
 
-Une intégration optionnelle avec Ideology pourra enrichir cette solution provisoire avec des
-rôles, des exigences de lieu et une mise en scène rituelle plus complète.
+Une intégration optionnelle avec Ideology pourra enrichir cette solution
+provisoire avec des rôles, des exigences de lieu et une mise en scène rituelle
+plus complète.

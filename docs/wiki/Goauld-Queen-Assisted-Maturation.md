@@ -6,6 +6,8 @@
 
 ## Présentation
 
+![Bassin d'incubation du Prim'ta](images/SG1_PrimtaIncubationBasin.png)
+
 Le bassin d'incubation du Prim'ta ne crée plus une larve entièrement à partir de
 viande crue. Il fait désormais mûrir un symbiote immature issu d'une reine
 Goa'uld.
@@ -48,8 +50,9 @@ La reine ne produit pas automatiquement sans action du joueur. Les chambres
 reproductives spécialisées, les colonies Goa'uld, le commerce et les quêtes
 restent prévus pour des jalons ultérieurs.
 
-
 ## Conservation
+
+![Bassin de conservation du Prim'ta](images/SG1_PrimtaPreservationBasin.png)
 
 Les symbiotes immatures et les larves matures peuvent être stockés dans un
 [bassin de conservation du Prim'ta](Primta-Preservation-Basin) alimenté. Le

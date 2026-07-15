@@ -29,6 +29,10 @@ En dehors d'un bassin de conservation alimenté :
   symbiote ;
 - sous `-30 °C`, l'aggravation est plus rapide.
 
+## Bassin de conservation
+
+![Bassin de conservation du Prim'ta](images/SG1_PrimtaPreservationBasin.png)
+
 Le [bassin de conservation du Prim'ta](Primta-Preservation-Basin) suspend la
 détérioration et l'aggravation liées au gel tant qu'il reste alimenté. Il ne
 répare toutefois pas les dommages déjà subis.

@@ -5,9 +5,14 @@
 
 ## Présentation
 
+![Bassin de conservation du Prim'ta](images/SG1_PrimtaPreservationBasin.png)
+
 Le bassin de conservation du Prim'ta est un stockage spécialisé alimenté en
 électricité. Il maintient un environnement biologique interne idéal pour les
 ressources fragiles du Prim'ta.
+
+Son visuel bleu définitif le distingue du bassin d'incubation vert. Il occupe une
+case et ne reçoit ni coloration de matériau ni ombre de bord héritée.
 
 Il accepte uniquement :
 
@@ -37,8 +42,3 @@ Le bassin ne remplace pas la mécanique de température ambiante :
 - la congélation profonde sous `-15 °C` accumule désormais une exposition
   biologique persistante hors bassin actif ;
 - consulte [Congélation profonde des Prim'ta](Primta-Deep-Freezing).
-
-## Limites du prototype
-
-La texture du bassin est provisoire et réutilise le visuel du bassin
-d'incubation du Prim'ta.

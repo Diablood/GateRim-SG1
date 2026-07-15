@@ -5,23 +5,28 @@
 
 ## Présentation
 
+![Bassin rituel Goa'uld](images/SG1_GoauldRitualBasin.png)
+
 Le bassin rituel Goa'uld est la première structure cérémonielle du mod.
 
 Il sert de point d'ancrage aux implantations rituelles contrôlées, sans exiger le
 DLC `Ideology`.
+
+Le bassin est disponible dans un même menu de construction en deux empreintes :
+`2 × 2` et `3 × 3`. Les deux variantes utilisent la même représentation visuelle
+de taille `2 × 2` et la même icône.
 
 ## Construction
 
 | Élément | Valeur |
 |---|---:|
 | Catégorie | Mobilier |
-| Taille | `1 × 1` |
+| Empreintes disponibles | `2 × 2` ou `3 × 3` |
+| Taille visuelle | `2 × 2` pour les deux variantes |
 | Acier | `60` |
 | Or | `5` |
 | Travail | `1200` |
 | Points de vie | `180` |
-
-Le visuel actuel est temporaire.
 
 ## Exigence rituelle
 

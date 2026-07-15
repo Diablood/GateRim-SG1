@@ -10,6 +10,14 @@
 Le symbiote Goa'uld libre dispose d'une voie d'implantation contrôlée, distincte
 de sa chasse autonome.
 
+## Bassin requis
+
+![Bassin rituel Goa'uld](images/SG1_GoauldRitualBasin.png)
+
+L'implantation rituelle exige un bassin rituel Goa'uld contrôlé par le joueur.
+Les variantes `2 × 2` et `3 × 3` sont fonctionnellement équivalentes et utilisent
+le même rendu visuel de taille `2 × 2`.
+
 ## Utilisation
 
 1. Générer ou récupérer un symbiote Goa'uld libre.
@@ -55,4 +63,7 @@ lieu sans remplacer ce fonctionnement.
 
 ## Contrôle du symbiote
 
-Le rite ne peut être commandé en jeu normal qu'avec un symbiote appartenant réellement au joueur. Un symbiote hostile simplement sélectionnable ne donne aucun droit de ciblage ou d'annulation. Le mode développeur conserve ces commandes pour les tests.
+Le rite ne peut être commandé en jeu normal qu'avec un symbiote appartenant
+réellement au joueur. Un symbiote hostile simplement sélectionnable ne donne
+aucun droit de ciblage ou d'annulation. Le mode développeur conserve ces
+commandes pour les tests.

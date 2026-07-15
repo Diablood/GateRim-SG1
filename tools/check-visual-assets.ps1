@@ -185,6 +185,72 @@ $wikiIconMappings = @(
         Reference = "images/SG1_PrimtaPreservationBasin.png"
     },
     @{
+        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
+        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
+        Page = "docs/wiki/Ritual-Basin.md"
+        Reference = "images/SG1_GoauldRitualBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
+        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
+        Page = "docs/wiki/Ritual-Implantation.md"
+        Reference = "images/SG1_GoauldRitualBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
+        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
+        Page = "docs/wiki/Primta-Formal-Ceremony.md"
+        Reference = "images/SG1_GoauldRitualBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
+        Page = "docs/wiki/Primta-Incubation.md"
+        Reference = "images/SG1_PrimtaIncubationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
+        Page = "docs/wiki/Goauld-Queen-Assisted-Maturation.md"
+        Reference = "images/SG1_PrimtaIncubationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
+        Page = "docs/wiki/Primta-Larva.md"
+        Reference = "images/SG1_PrimtaIncubationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
+        Page = "docs/wiki/Primta-Preservation-Basin.md"
+        Reference = "images/SG1_PrimtaPreservationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
+        Page = "docs/wiki/Primta-Deep-Freezing.md"
+        Reference = "images/SG1_PrimtaPreservationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
+        Page = "docs/wiki/Primta-Temperature.md"
+        Reference = "images/SG1_PrimtaPreservationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
+        Page = "docs/wiki/Goauld-Queen-Assisted-Maturation.md"
+        Reference = "images/SG1_PrimtaPreservationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
+        Page = "docs/wiki/Primta-Larva.md"
+        Reference = "images/SG1_PrimtaPreservationBasin.png"
+    },
+    @{
         Source = "Textures/UI/Commands/SG1_AutonomousHunt.png"
         Wiki = "docs/wiki/images/SG1_AutonomousHunt.png"
         Page = "docs/wiki/Autonomous-Hunt.md"

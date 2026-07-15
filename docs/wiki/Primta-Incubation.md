@@ -5,20 +5,23 @@
 
 ## Présentation
 
+![Bassin d'incubation du Prim'ta](images/SG1_PrimtaIncubationBasin.png)
+
 Le bassin d'incubation du Prim'ta transforme un symbiote immature issu d'une
 reine Goa'uld en larve transportable destinée à un Jaffa.
+
+Son visuel biologique vert occupe une case. L'image reste fixe lorsque le
+bâtiment est orienté, tandis que sa cellule d'interaction suit la rotation.
 
 ## Construction
 
 | Élément | Valeur |
 |---|---:|
 | Catégorie | Production |
-| Taille | `2 × 1` |
+| Taille | `1 × 1` |
 | Acier | `80` |
 | Or | `8` |
 | Travail de construction | `1600` |
-
-Le visuel actuel est temporaire.
 
 ## Production
 
@@ -67,7 +70,6 @@ plusieurs piles.
 Les futurs lots ajouteront une infrastructure reproductive spécialisée et une
 intégration plus directe aux factions Goa'uld.
 
-
 ## Travail requis
 
 | Élément | Valeur |
@@ -79,13 +81,11 @@ intégration plus directe aux factions Goa'uld.
 Le bassin est associé à un donneur de travail dédié. Il peut donc être traité
 automatiquement ou priorisé manuellement par un colon éligible.
 
-
 ## Après production
 
 Depuis `0.1.30-dev`, les larves produites doivent être conservées correctement.
 Elles se détériorent dans de mauvaises conditions et sont détruites si elles
 pourrissent complètement.
-
 
 ## Température après production
 
