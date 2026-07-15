@@ -1,5 +1,45 @@
 # Changelog
 
+## 0.3.93-dev - Finalize Goa'uld and Prim'ta basin visuals
+
+### Changed
+
+- Replace the temporary Goa'uld ritual-basin art with a dedicated transparent
+  ceremonial platform validated in game.
+- Keep the historical `SG1_GoauldRitualBasin` identifier as the save-compatible
+  `2×2` variant and add `SG1_GoauldRitualBasinLarge` as a `3×3` placement
+  variant.
+- Group both ritual-basin sizes under one Architect dropdown.
+- Keep the same `2×2` rendered image and explicit shared UI icon for both
+  footprints, allowing even- and odd-sized room symmetry without visually
+  enlarging the apparatus.
+- Replace the Prim'ta incubation basin with its validated green one-cell visual
+  while preserving directional interaction-cell rotation.
+- Give the Prim'ta preservation basin a distinct validated blue one-cell visual,
+  remove inherited stuff coloring and edge shadows, and place the storage
+  building under Furniture.
+
+### Added
+
+- Add byte-identical wiki copies of the ritual, incubation and preservation
+  basin textures.
+- Document all three validated building visuals and both ritual-basin
+  footprints in the player wiki.
+
+### Preserved
+
+- Preserve the original ritual-basin `defName`, ceremony component, costs,
+  research requirement and save compatibility.
+- Preserve the incubation and preservation basin gameplay behavior, power use,
+  storage filtering and biological deterioration rules.
+
+### Validated
+
+- Validate the `2×2` and `3×3` ritual-basin dropdown, placement footprints,
+  shared visual size and matching gizmo icons in game.
+- Validate the incubation and preservation basin rendering, categories,
+  interaction orientation and clean startup.
+
 ## 0.3.92-dev - Add final Goa'uld and Jaffa command icons
 
 ### Changed

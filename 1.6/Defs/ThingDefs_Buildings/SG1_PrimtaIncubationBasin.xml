@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <ThingDef ParentName="BenchBase">
         <defName>SG1_PrimtaIncubationBasin</defName>
@@ -8,9 +8,10 @@
         <graphicData>
             <texPath>Things/Building/SG1_PrimtaIncubationBasin</texPath>
             <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>(2,1)</drawSize>
+            <drawSize>(1,1)</drawSize>
+            <drawRotated>false</drawRotated>
         </graphicData>
-        <size>(2,1)</size>
+        <size>(1,1)</size>
         <rotatable>true</rotatable>
         <fillPercent>0.5</fillPercent>
         <altitudeLayer>Building</altitudeLayer>

@@ -1,68 +1,68 @@
-# Current testing — final Goa'uld and Jaffa command icons
+# Current testing — final basin art and relay-structure simplification
 
-Jalon : `0.3.92-dev`
-Révision visuelle finale validée : `r1`
-Révision documentaire de publication : `r2`
-Version de DLL validée : `0.3.92.0`
+Jalon : `0.3.93-dev`
+Révision à tester : `r1`
+Version de DLL attendue : `0.3.93.0`
 
-## Selected concepts — approved
-
-- autonomous hunt: moving brown symbiote and red target reticle;
-- emergency extraction: brown symbiote over a prone host, surgical table/lamp
-  and red emergency burst;
-- forced implantation: brown symbiote, grey host and short red impact arrow;
-- ritual implantation: brown symbiote, grey host, red implantation arrow and
-  gold ceremonial seal.
-
-## PNG and wiki preparation — passed
-
-- Four gameplay PNGs exist at exactly `64×64` under `Textures/UI/Commands`.
-- Every file uses a real alpha channel with transparent exterior pixels.
-- No generated checkerboard remains in the final files.
-- Every matching `docs/wiki/images` copy is byte-identical.
-- Each icon is displayed on its dedicated functional wiki page.
-- `Primta-Formal-Ceremony.md` displays the shared ritual icon.
-
-## Build and static checks — passed
+## Préparation
 
 ```powershell
-./build.cmd
-./tools/check-duration-formatting.cmd
-./tools/check-visual-assets.cmd
-./tools/check-project-consistency.cmd -ExpectedVersion 0.3.92-dev
-
+.\build.cmd
+.\tools\check-duration-formatting.cmd
 git diff --check
 ```
 
-Validated visual-audit summary:
+Le contrôle visuel complet et le contrôle de cohérence documentaire sont à
+relancer après la révision de finalisation du registre et du wiki.
 
-```text
-Final local texture families: 28
-Local PNG files: 605
-Local texture families: 72
-Direct external texture paths: 6
-Missing local references: 0
-Unregistered local families: 0
-Visual asset check passed.
-```
+## Chargement
 
-## Focused in-game validation — passed
+- Vérifier `GateRimSG1 0.3.93.0` dans `Player.log`.
+- Vérifier l'absence d'erreur XML, DefOf, C#, texture manquante ou fond magenta.
+- Vérifier que les trois anciens Defs de structure de relais ne sont plus chargés.
 
-- `Chasse autonome` renders correctly on a free Goa'uld symbiote.
-- The developer-only instant `Extraction d'urgence` command renders correctly
-  during recent implantation.
-- `Implantation forcée` renders correctly for its adjacent-host test path.
-- `Implantation rituelle` renders correctly for the Goa'uld ritual flow.
-- The shared ritual family remains suitable for Tok'ra implantation/offer
-  controls and the formal Jaffa Prim'ta ceremony.
-- All four concepts remain distinct and readable at normal gizmo size.
-- No opaque square, checkerboard, clipping, incorrect tint or magenta
-  missing-texture fallback was observed.
-- No gameplay behavior or command availability rule changed.
+## Bassin rituel Goa'uld
 
-## Publication result
+- Construire ou faire apparaître `SG1_GoauldRitualBasin`.
+- Confirmer une empreinte `1×1`, sans commande de rotation.
+- Confirmer la transparence, le centrage et la lisibilité du nouveau visuel.
+- Tester une implantation rituelle Goa'uld.
+- Tester la cérémonie formelle du Prim'ta.
+- Sauvegarder et recharger avec le bassin construit.
 
-Publication-only revision `r2` changes documentation status only. The validated
-state is prepared for the final feature-branch commit, fast-forward integration
-into `develop`, annotated tag `v0.3.92-dev` and separate-wiki synchronization.
-The final commit and tag omit local suffixes `r1` and `r2`.
+## Bassin d'incubation du Prim'ta
+
+- Construire `SG1_PrimtaIncubationBasin`.
+- Confirmer une empreinte `1×1`, sans rotation.
+- Confirmer que la cellule d'interaction reste au sud.
+- Lancer une facture d'incubation et vérifier le travail, la consommation et le
+  produit final.
+- Vérifier que le pawn peut atteindre la cellule d'interaction.
+- Sauvegarder/recharger pendant une facture.
+
+## Bassin de conservation du Prim'ta
+
+- Construire `SG1_PrimtaPreservationBasin`.
+- Confirmer une empreinte `1×1`, sans rotation.
+- Vérifier le filtre limité aux symbiotes immatures et larves matures.
+- Vérifier que deux piles peuvent être stockées dans la cellule unique.
+- Vérifier la conservation alimentée, l'arrêt hors tension et la reprise du
+  vieillissement biologique.
+- Sauvegarder/recharger avec deux piles stockées.
+
+## Site de sabotage du relais
+
+- Générer les trois profils de site : bunker, station divisée et cour fortifiée.
+- Confirmer que les murs sont des `Wall` vanilla, les portes des `Door` vanilla
+  et les défenses des `Barricade` vanilla.
+- Vérifier les toits, le brouillard intérieur et tous les accès.
+- Vérifier qu'aucune structure n'est manquante ou superposée.
+- Saboter le nœud, gérer les défenseurs et renforts, récupérer le butin puis
+  reformer la caravane.
+- Sauvegarder/recharger avant sabotage et pendant le compte à rebours.
+
+## Résultat attendu
+
+Aucun changement de mission, de récompense ou de comportement biologique en
+dehors de la réduction volontaire des deux empreintes Prim'ta à `1×1` et du
+remplacement des trois structures génériques par leurs équivalents vanilla.

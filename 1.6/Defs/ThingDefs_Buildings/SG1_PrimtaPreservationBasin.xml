@@ -4,18 +4,17 @@
         <defName>SG1_PrimtaPreservationBasin</defName>
         <label>Prim'ta preservation basin</label>
         <description>A powered biological storage basin that maintains an ideal internal environment for Prim'ta resources. It suspends further deterioration of stored immature symbiotes and mature larvae without repairing existing spoilage. Refrigerators and freezers remain useful whenever this specialized basin is unavailable or unpowered.</description>
-        <thingClass>Building_Storage</thingClass>
+        <stuffCategories Inherit="False" />
+        <castEdgeShadows>false</castEdgeShadows>
+        <staticSunShadowHeight>0</staticSunShadowHeight>
         <graphicData>
-            <texPath>Things/Building/SG1_PrimtaIncubationBasin</texPath>
+            <texPath>Things/Building/SG1_PrimtaPreservationBasin</texPath>
             <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>(2,1)</drawSize>
+            <drawSize>(1,1)</drawSize>
+            <drawRotated>false</drawRotated>
         </graphicData>
-        <size>(2,1)</size>
-        <rotatable>true</rotatable>
-        <fillPercent>0.5</fillPercent>
-        <altitudeLayer>Building</altitudeLayer>
-        <passability>PassThroughOnly</passability>
-        <pathCost>50</pathCost>
+        <size>(1,1)</size>
+        <rotatable>false</rotatable>
         <statBases>
             <MaxHitPoints>180</MaxHitPoints>
             <WorkToBuild>1400</WorkToBuild>
@@ -28,11 +27,12 @@
             <Gold>4</Gold>
             <ComponentIndustrial>2</ComponentIndustrial>
         </costList>
-        <designationCategory>Production</designationCategory>
-        <researchPrerequisites>
+        <designationCategory>Furniture</designationCategory>
+        <researchPrerequisites Inherit="False">
             <li>SG1_GoauldBiotechnology</li>
         </researchPrerequisites>
         <building>
+            <paintable>false</paintable>
             <maxItemsInCell>2</maxItemsInCell>
             <fixedStorageSettings>
                 <filter>
@@ -51,7 +51,7 @@
                 </filter>
             </defaultStorageSettings>
         </building>
-        <comps>
+        <comps Inherit="False">
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>120</basePowerConsumption>

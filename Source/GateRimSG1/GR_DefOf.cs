@@ -71,9 +71,6 @@ namespace GateRimSG1
         public static ThingDef SG1_TokraSecureCommunicator;
         public static ResearchProjectDef SG1_TokraSecureCommunications;
         public static ThingDef SG1_TokraRelaySabotageDevice;
-        public static ThingDef SG1_TokraRelaySiteWall;
-        public static ThingDef SG1_TokraRelaySiteDoor;
-        public static ThingDef SG1_TokraRelaySiteBarricade;
         public static JobDef SG1_TokraSabotageRelayDevice;
 
         // Legacy technical genes retained only for save migration.

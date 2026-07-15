@@ -1,8 +1,33 @@
 # Procédure de validation et publication d’un jalon
 
-Ce document est la référence à suivre lorsqu’un jalon GateRim SG-1 est validé
-localement. Le modèle de branches complet est défini dans
+Ce document est la référence détaillée lorsqu’un jalon GateRim SG-1 est validé
+localement. Le modèle de branches et la séquence courte sont définis dans
 [`BRANCHING_WORKFLOW.md`](BRANCHING_WORKFLOW.md).
+
+## Format obligatoire des commandes remises au mainteneur
+
+Pour un jalon concret, fournir des commandes courtes, séquentielles et directement
+copiables. La version, la branche, le tag, les messages de commit, les chemins et
+le nom du ZIP doivent déjà être remplacés par leurs valeurs réelles.
+
+La séquence normale ne doit pas utiliser :
+
+- de variables PowerShell comme `$tagCommit`, `$modRepo` ou `$wikiRepo` ;
+- de bloc `if`, de `throw` ou d’autre conditionnelle ;
+- de `Push-Location` ou `Pop-Location` ;
+- de script de publication temporaire lorsqu’une suite de commandes simples
+  suffit.
+
+Les marqueurs `<version>` et `<nom-du-jalon>` ne sont autorisés que dans ce
+document générique. Ils doivent disparaître des commandes fournies pour un vrai
+jalon.
+
+La publication doit être présentée dans cet ordre lisible :
+
+1. commit du jalon ;
+2. intégration dans `develop` ;
+3. tag final ;
+4. synchronisation du wiki, seulement lorsqu’elle est nécessaire.
 
 ## 1. Annoncer la validation locale
 
@@ -29,14 +54,13 @@ Résultat attendu :
 feature/<nom-du-jalon>
 ```
 
-ou, pour une correction ciblée de la ligne de développement :
+ou, pour une correction ciblée :
 
 ```text
 fix/<nom-du-correctif>
 ```
 
-Vérifier que `develop` existe, est à jour et appartient à l’historique de la
-branche courante :
+Vérifier simplement la base :
 
 ```powershell
 git fetch origin --tags
@@ -51,305 +75,236 @@ fonctionnalité.
 
 ## 3. Verrou documentaire avant le commit final
 
-Les ZIP de révision locale et de finalisation doivent contenir uniquement les
-fichiers ajoutés ou modifiés depuis la révision précédemment livrée. Une archive
-du dépôt complet est réservée à une récupération explicitement demandée.
+### Livraison des fichiers
 
-Chaque chemin inclus doit être un fichier complet prêt à remplacer sa version de
-travail. Les livraisons ordinaires ne doivent contenir aucun diff unifié, fichier
-`.patch`, commande `git apply` ou autre format dépendant du contexte des lignes.
-Un patch textuel n'est autorisé que lorsque le mainteneur le demande explicitement
-pour un cas exceptionnel. « Fichier complet » ne signifie pas que tout le dépôt
-doit être dupliqué.
+Les ZIP de révision locale et de finalisation contiennent uniquement les fichiers
+ajoutés ou modifiés depuis la révision précédemment livrée. Une archive complète
+du dépôt est réservée à une récupération explicitement demandée.
 
-Lorsqu'un paquet final est fourni sous forme de ZIP, son extraction fait partie
-de la séquence de publication obligatoire. Ne jamais donner ou exécuter une
-suite `git add` / `commit` / `push` qui suppose implicitement que le paquet a déjà
-été extrait. La commande d'extraction doit apparaître dans le même script ou
-bloc exécutable, avant les contrôles et avant tout staging :
+Chaque chemin inclus est un fichier complet prêt à remplacer sa version de
+travail. Une livraison ordinaire ne contient aucun diff unifié, fichier `.patch`,
+commande `git apply` ou autre format dépendant du contexte des lignes.
+
+Lorsqu’un paquet final est fourni sous forme de ZIP, son extraction doit figurer
+avant les contrôles, le staging et le commit :
 
 ```powershell
-Expand-Archive `
-    -LiteralPath .\GateRim-SG1-<version>-finalization.zip `
-    -DestinationPath . `
-    -Force
+Expand-Archive -LiteralPath .\GateRim-SG1-<version>-finalization.zip -DestinationPath . -Force
 ```
 
-Les scripts locaux de livraison ou de publication nommés
-`Apply-GateRim-SG1-*.ps1` ou `Publish-GateRim-SG1-*.ps1` sont des outils à usage
-unique. Ils doivent être ignorés par Git, explicitement exclus du staging et
-supprimés après succès. Vérifier leur absence de l'index avant le commit :
+Lorsqu’un jalon supprime un fichier, annoncer la suppression avant extraction,
+fournir la commande `Remove-Item` correspondante et vérifier que Git affiche
+bien l’état `D`.
+
+Les scripts locaux `Apply-GateRim-SG1-*.ps1` et
+`Publish-GateRim-SG1-*.ps1` sont des outils à usage unique. Ils doivent rester
+ignorés par Git, être exclus du staging et être supprimés après succès.
+
+Contrôle de l’index :
 
 ```powershell
 git diff --cached --name-only | Select-String -Pattern "^(Apply|Publish)-GateRim-SG1-.*\.ps1$"
 ```
 
-Toute occurrence bloque la publication jusqu'à son retrait de l'index.
+Toute occurrence bloque la publication jusqu’à son retrait de l’index.
 
-Avant `git add -A`, relire les fichiers directement depuis l’arbre de travail
-qui sera publié, et non depuis une ancienne conversation ou un ancien tag :
+### Documents à relire
 
-- `docs/PROJECT_STATE.md` doit être basculé vers l’état final destiné au tag :
-  tests terminés, jalon clôturé, identifiants de publication définitifs et
-  aucune prochaine étape de test déjà effectuée ;
-- `docs/ROADMAP.md` doit marquer comme terminées la validation et la publication
-  du jalon en cours, puis identifier clairement le prochain travail différé ;
-- `docs/TESTING_CURRENT.md` doit conserver le résultat final des tests, la
-  dernière révision locale validée et les éventuelles limites connues ;
-- `docs/TESTING.md` doit recevoir la couverture durable du jalon ;
-- `docs/CHANGELOG.md` doit décrire l’état réellement publié avec la version
-  finale sans suffixe `-rN` ;
-- `About/About.xml` et `Source/GateRimSG1/GateRimSG1.csproj` doivent porter la
-  même version de jalon.
+Avant `git add -A`, relire les fichiers depuis l’arbre de travail réellement
+publié :
+
+- `docs/PROJECT_STATE.md` décrit le jalon terminé, ses tests et ses identifiants
+  définitifs ;
+- `docs/ROADMAP.md` retire le travail terminé du backlog actif et identifie la
+  suite différée ;
+- `docs/TESTING_CURRENT.md` conserve le résultat final des tests, la dernière
+  révision locale validée et les limites connues ;
+- `docs/TESTING.md` reçoit la couverture durable ;
+- `docs/CHANGELOG.md` décrit l’état réellement publié sans suffixe `-rN` ;
+- `About/About.xml` et
+  `Source/GateRimSG1/GateRimSG1.csproj` portent la même version.
 
 Contrôle recommandé :
 
 ```powershell
-git diff -- `
-    ./About/About.xml `
-    ./Source/GateRimSG1/GateRimSG1.csproj `
-    ./docs/PROJECT_STATE.md `
-    ./docs/ROADMAP.md `
-    ./docs/TESTING_CURRENT.md `
-    ./docs/TESTING.md `
-    ./docs/CHANGELOG.md
+git diff -- ./About/About.xml ./Source/GateRimSG1/GateRimSG1.csproj ./docs/PROJECT_STATE.md ./docs/ROADMAP.md ./docs/TESTING_CURRENT.md ./docs/TESTING.md ./docs/CHANGELOG.md
 ```
 
-Rechercher ensuite les marqueurs susceptibles d’être devenus obsolètes :
+Rechercher les marqueurs obsolètes :
 
 ```powershell
-git grep -n -E "Validation en cours|focused validation is in progress|remain required|reste requis|jalon prêt à tester" -- `
-    docs/PROJECT_STATE.md `
-    docs/ROADMAP.md `
-    docs/TESTING_CURRENT.md `
-    docs/TESTING.md `
-    docs/CHANGELOG.md
+git grep -n -E "Validation en cours|focused validation is in progress|remain required|reste requis|jalon prêt à tester" -- docs/PROJECT_STATE.md docs/ROADMAP.md docs/TESTING_CURRENT.md docs/TESTING.md docs/CHANGELOG.md
 ```
 
-Une occurrence peut être légitime dans l’historique d’un jalon plus ancien,
-mais toute occurrence décrivant le jalon en cours doit être corrigée avant le
-commit.
+Une occurrence historique peut être légitime, mais aucune occurrence ne doit
+encore présenter le jalon courant comme non validé.
 
-Exécuter ensuite le contrôle automatisé de cohérence depuis la racine du dépôt :
+Exécuter le contrôle automatisé :
 
 ```powershell
-./tools/check-project-consistency.cmd
+.\tools\check-project-consistency.cmd
 ```
 
-La commande doit terminer avec un code de sortie `0`. Elle vérifie notamment les
-versions publiques et techniques, le nombre réel de `BackstoryDef`, les nombres
-annoncés dans le README et le wiki, ainsi que le nombre de lignes du catalogue
-culturel. Si le jalon modifie l’un de ces formats contrôlés, mettre à jour
-l’outil et `docs/PROJECT_CONSISTENCY_CHECKS.md` dans le même jalon plutôt que de
-contourner le contrôle.
+La commande doit terminer avec un code de sortie `0`. Lorsqu’un jalon modifie un
+format contrôlé, mettre à jour l’outil et
+`docs/PROJECT_CONSISTENCY_CHECKS.md` dans le même jalon.
 
-Dans les fichiers Markdown, utiliser des `/` pour les chemins relatifs des
-commandes PowerShell. Le contrôle automatisé doit échouer si une tabulation
-littérale subsiste dans `README.md` ou sous `docs/`.
+Dans les fichiers Markdown, utiliser `/` dans les chemins relatifs. Aucune
+tabulation littérale ne doit rester dans `README.md` ou sous `docs/`.
 
-Le commit final est l’état qui sera intégré dans `develop` et recevra le tag.
-Les documents doivent donc déjà décrire le jalon comme clôturé et sa publication
-comme effectuée. Si la publication échoue, ne pas commencer le jalon suivant et
-ne pas créer un second commit uniquement pour changer « prêt à publier » en
-« publié ».
+Le commit final est l’état qui sera intégré et tagué. Les documents doivent donc
+déjà décrire le jalon comme clôturé et publié. En cas d’échec de publication, ne
+pas commencer le jalon suivant et ne pas créer un commit documentaire séparé
+pour transformer « prêt à publier » en « publié ».
 
-## 4. Vérifier et committer la branche temporaire
+## 4. Commit du jalon
+
+Depuis `GateRim-SG1` :
 
 ```powershell
 git status --short
-git diff --check
 git add -A
 git diff --cached --check
-git diff --cached --stat
-
 git commit -m "<version> - <description courte>"
-```
-
-Convention de commit :
-
-```text
-0.3.67-dev - adopt develop-based branch workflow
 ```
 
 Ne pas committer directement sur `develop`.
 
-## 5. Intégrer dans `develop`
+Le bloc fourni pour un vrai jalon doit contenir le message définitif, par
+exemple :
 
-Mettre l’intégration à jour puis exiger une fusion fast-forward :
+```powershell
+git commit -m "0.3.91-dev - finalize intrinsic Jaffa forehead-mark overlays"
+```
+
+## 5. Intégration dans `develop`
 
 ```powershell
 git switch develop
 git pull --ff-only origin develop
 git merge --ff-only feature/<nom-du-jalon>
+git push origin develop
 ```
 
 Pour un correctif, remplacer `feature/...` par `fix/...`.
 
-Si `git merge --ff-only` échoue parce que `develop` a avancé, revenir sur la
-branche temporaire, la rebaser sur `develop`, résoudre les conflits et relancer
-les contrôles pertinents. Ne pas créer de commit de fusion improvisé pour
-contourner l’échec.
+Si la fusion fast-forward échoue parce que `develop` a avancé, arrêter la
+publication, rebaser la branche temporaire sur le nouveau `develop`, résoudre les
+conflits et relancer les contrôles pertinents. Ne jamais créer un commit de
+fusion improvisé.
 
-Vérifier ensuite que le commit intégré est bien celui qui a été validé :
+La branche temporaire publiée est facultative et ne remplace jamais `develop`
+comme base du jalon suivant.
 
-```powershell
-git log -1 --oneline
-git status --short
-```
+## 6. Tag final unique obligatoire
 
-Puis publier la branche d’intégration :
-
-```powershell
-git push origin develop
-```
-
-La publication de la branche temporaire est facultative. Elle peut être poussée
-pour sauvegarde ou revue, mais elle ne remplace jamais `develop` comme base du
-jalon suivant.
-
-## 6. Créer et publier le tag final unique obligatoire
-
-Une demande de type « commit et push », « publier » ou équivalente portant sur
-un jalon validé autorise toute la séquence : commit final, intégration
-fast-forward dans `develop`, push de `develop`, création et push du tag annoté,
-puis synchronisation et push du wiki lorsqu’il a changé. Ne demander une
-autorisation séparée pour le tag que si le mainteneur l’a explicitement exclu.
+Une demande de publication d’un jalon validé autorise la séquence complète :
+commit, intégration fast-forward, push de `develop`, tag annoté et synchronisation
+du wiki lorsqu’il a changé.
 
 Règles :
 
-- utiliser un seul tag final par jalon ;
-- conserver le suffixe `-dev` avant `1.0.0` ;
-- ne jamais ajouter de suffixe `-rN` au tag final ;
-- ne pas réécrire les anciens tags déjà publiés ;
-- créer le tag après l’intégration dans `develop` ;
-- vérifier que le tag et `develop` pointent vers le même commit.
+- un seul tag final par jalon ;
+- suffixe `-dev` conservé avant `1.0.0` ;
+- aucun suffixe local `-rN` ;
+- aucun ancien tag réécrit ;
+- tag créé après l’intégration dans `develop` ;
+- tag et `develop` pointant vers le même commit.
+
+Commandes :
 
 ```powershell
 git tag -a v<version> -m "<version> - <description courte>"
 git push origin v<version>
 ```
 
-Exemple :
-
-```powershell
-git tag -a v0.3.67-dev `
-    -m "0.3.67-dev - adopt develop-based branch workflow"
-git push origin v0.3.67-dev
-```
-
-Contrôle :
+Contrôle simple :
 
 ```powershell
 git rev-parse develop
 git rev-list -n 1 v<version>
 ```
 
-Pour un tag annoté, ne pas comparer `git rev-parse v<version>` directement à
-la branche : cette commande peut retourner l’identifiant de l’objet tag.
-Utiliser `git rev-list -n 1 v<version>` ou `git rev-parse "v<version>^{}"` pour
-obtenir le commit réellement ciblé.
-
-Les deux identifiants doivent être identiques.
+Les deux identifiants affichés doivent être identiques. Pour un tag annoté, ne
+pas utiliser seul `git rev-parse v<version>`, qui peut retourner l’objet tag au
+lieu du commit ciblé.
 
 ## Contrôle spécifique aux missions et questlines
 
 Lorsqu’un jalon ajoute, migre ou refond une mission récurrente ou une questline,
-`docs/TESTING_CURRENT.md` doit vérifier explicitement :
+`docs/TESTING_CURRENT.md` vérifie explicitement :
 
 - la rééligibilité après réussite, échec et offre ignorée lorsque l’archétype est
   récurrent ;
-- les délais cachés variables et l’anti-répétition du dernier archétype ;
-- les variantes de textes RP visibles, ou la justification d’un texte unique
-  conçu pour rester naturel après répétition ;
-- l’absence de répétition immédiate d’une même variante lorsque plusieurs
-  variantes sont disponibles ;
-- la sauvegarde/recharge à plusieurs phases et la migration prudente des
-  anciennes sauvegardes ;
-- les outils debug permettant d’inspecter ou de forcer les phases sans être
-  visibles en jeu normal ;
-- le dimensionnement des menaces à partir des points de menace, de la difficulté
-  active et de la puissance de la colonie plutôt qu’avec des effectifs fixes ;
-- au moins un test sur une colonie faible et une colonie avancée lorsqu’une
+- les délais cachés variables et l’anti-répétition ;
+- les variantes de textes RP visibles ou la justification d’un texte unique ;
+- l’absence de répétition immédiate d’une même variante ;
+- la sauvegarde/recharge à plusieurs phases et la migration prudente ;
+- les outils debug nécessaires, invisibles en jeu normal ;
+- le dimensionnement des menaces depuis les points vanilla, la difficulté et la
+  puissance réelle de la colonie ;
+- au moins un test sur colonie faible et un test sur colonie avancée lorsqu’une
   menace adaptative est consommée ;
-- les régressions des missions encore héritées lorsque la migration est
-  progressive.
+- les régressions des missions encore héritées.
 
-Un framework générique ne doit pas être étendu pour un seul cas théorique.
-Ajouter une nouvelle abstraction uniquement lorsqu’elle répond à plusieurs
-usages réels ou constitue un point d’extension clairement nécessaire.
+Ne pas étendre un framework générique pour un seul cas théorique. Une nouvelle
+abstraction doit répondre à plusieurs usages réels ou à un point d’extension
+clairement nécessaire.
 
-## 7. Synchroniser le wiki séparé uniquement si nécessaire
+## 7. Synchronisation du wiki séparé
 
-Synchroniser le wiki lorsque le jalon modifie réellement un fichier
-`docs/wiki/*.md`. En l’absence de modification dans ce dossier, noter
-explicitement qu’aucune synchronisation n’est nécessaire et ne pas créer de
-commit wiki vide.
+Synchroniser uniquement lorsque le jalon modifie réellement un fichier
+`docs/wiki/*.md`. Sans modification de ce dossier, noter qu’aucune
+synchronisation n’est nécessaire et ne pas créer de commit wiki vide.
 
-Avant la synchronisation, vérifier la cohérence de la navigation :
+Avant la synchronisation :
 
-- toute page wiki créée ou renommée doit être ajoutée à `docs/wiki/_Sidebar.md`
-  dans la catégorie thématique appropriée ;
-- conserver les catégories existantes ou créer une catégorie durable seulement
-  lorsqu’elle regroupe plusieurs pages cohérentes ;
-- vérifier que chaque cible interne de la sidebar correspond à un fichier
-  `docs/wiki/<cible>.md` existant ;
-- supprimer ou corriger tout lien devenu obsolète ;
-- éviter les doublons de liens internes dans la sidebar.
+- ajouter toute page créée ou renommée à `docs/wiki/_Sidebar.md` ;
+- vérifier chaque cible interne ;
+- retirer les liens obsolètes ;
+- éviter les doublons.
 
-Contrôle rapide :
+Contrôle rapide depuis le dépôt principal :
 
 ```powershell
-Get-ChildItem ./docs/wiki -Filter *.md |
-    Select-Object -ExpandProperty BaseName |
-    Sort-Object
+Get-ChildItem ./docs/wiki -Filter *.md | Select-Object -ExpandProperty BaseName | Sort-Object
 Get-Content ./docs/wiki/_Sidebar.md
-```
-
-Chemins locaux habituels :
-
-```powershell
-$modRepo = "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1"
-$wikiRepo = "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1.wiki"
 ```
 
 Mettre d’abord le dépôt wiki à jour :
 
 ```powershell
-Push-Location $wikiRepo
+Set-Location "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1.wiki"
 git pull --ff-only
-Pop-Location
 ```
 
-Copier ensuite les pages depuis le dépôt principal :
+Puis copier les pages depuis le dépôt principal :
 
 ```powershell
-Push-Location $modRepo
-./tools/sync-wiki.cmd
-Pop-Location
+Set-Location "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1"
+.\tools\sync-wiki.cmd
 ```
 
-Vérifier, committer et publier le wiki :
+Enfin vérifier, committer et publier le wiki :
 
 ```powershell
-Push-Location $wikiRepo
-
+Set-Location "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1.wiki"
 git status --short
 git add .
 git diff --cached --check
 git commit -m "<version> - document <description du jalon>"
 git push origin HEAD
-
-Pop-Location
 ```
 
-Utiliser `git push origin HEAD` plutôt qu’un nom de branche wiki codé en dur.
-Le message de commit du wiki utilise la version finale sans suffixe `-rN`.
+Le message utilise la version finale sans suffixe `-rN`. Utiliser
+`git push origin HEAD` plutôt qu’un nom de branche wiki codé en dur.
 
 ## 8. Vérification finale du dépôt principal
 
 Depuis `GateRim-SG1`, sur `develop` :
 
 ```powershell
+Set-Location "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1"
 git branch --show-current
 git log -1 --oneline
 git tag --points-at HEAD
@@ -368,7 +323,7 @@ nothing to commit, working tree clean
 
 Les identifiants local et distant de `develop` doivent être identiques.
 
-Relire ensuite les fichiers publiés depuis `HEAD` :
+Relire les documents publiés :
 
 ```powershell
 git show HEAD:docs/PROJECT_STATE.md | Select-Object -First 40
@@ -379,10 +334,9 @@ git show HEAD:docs/TESTING_CURRENT.md | Select-Object -First 30
 Ils doivent décrire le jalon comme validé et publié, sans annoncer comme
 prochaine étape un test déjà terminé.
 
-## 9. Nettoyer la branche temporaire
+## 9. Nettoyage facultatif de la branche temporaire
 
-Après vérification du tag et de `develop`, la branche temporaire peut être
-supprimée :
+Après vérification du tag et de `develop` :
 
 ```powershell
 git branch -d feature/<nom-du-jalon>
@@ -394,14 +348,14 @@ Si elle avait été publiée :
 git push origin --delete feature/<nom-du-jalon>
 ```
 
-Cette suppression est facultative mais recommandée pour garder les branches
-actives lisibles. Les tags et `develop` conservent l’historique durable.
+Les tags et `develop` conservent l’historique durable.
 
 ## 10. Vérification finale du wiki
 
 Seulement lorsqu’une synchronisation wiki a été nécessaire :
 
 ```powershell
+Set-Location "D:\SteamLibrary\steamapps\common\RimWorld\Mods\GateRim-SG1.wiki"
 git log -1 --oneline
 git status
 ```
@@ -417,12 +371,11 @@ nothing to commit, working tree clean
 À chaque nouveau jalon :
 
 - mettre `develop` à jour depuis `origin/develop` ;
-- vérifier qu’il correspond au dernier tag de développement publié ;
+- vérifier visuellement que son commit correspond au dernier tag publié ;
 - créer une branche `feature/*` ou `fix/*` depuis `develop` ;
 - ne jamais travailler directement sur `main` ou `develop` ;
 - fournir un ZIP prêt à extraire à la racine lorsque des fichiers sont modifiés ;
-- lorsqu’un jalon supprime un fichier, annoncer la suppression avant extraction,
-  fournir la commande `Remove-Item` correspondante et vérifier l’état `D` ;
+- annoncer toute suppression avant extraction et vérifier son état Git ;
 - inclure tous les fichiers C# concernés sous `Source/GateRimSG1/**/*.cs` ;
 - inclure les Defs, traductions, documents et brouillons wiki utiles ;
 - utiliser uniquement `About/About.xml` et `docs/CHANGELOG.md` ;
@@ -437,4 +390,6 @@ nothing to commit, working tree clean
 - utiliser un commit court au format `<version> - <description>` ;
 - intégrer avec `git merge --ff-only` ;
 - créer et pousser le tag annoté préfixé par `v` sur le commit intégré ;
-- réserver `main` pour `1.0.0` et les versions stables ultérieures.
+- réserver `main` pour `1.0.0` et les versions stables ultérieures ;
+- remettre au mainteneur des commandes concrètes sans variables ni
+  conditionnelles dans la séquence normale.

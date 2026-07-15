@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RimWorld;
 using Verse;
 
@@ -393,19 +393,17 @@ namespace GateRimSG1.Goauld
 
         private static ThingDef GetRelayWallDef()
         {
-            return GR_DefOf.SG1_TokraRelaySiteWall ?? ThingDefOf.Wall;
+            return ThingDefOf.Wall;
         }
 
         private static ThingDef GetRelayDoorDef()
         {
-            return GR_DefOf.SG1_TokraRelaySiteDoor ?? ThingDefOf.Door;
+            return ThingDefOf.Door;
         }
 
         private static ThingDef GetRelayBarricadeDef()
         {
-            return GR_DefOf.SG1_TokraRelaySiteBarricade
-                ?? ThingDefOf.Barricade
-                ?? ThingDefOf.Sandbags;
+            return ThingDefOf.Barricade ?? ThingDefOf.Sandbags;
         }
 
         private static void SpawnEdifice(
@@ -499,3 +497,4 @@ namespace GateRimSG1.Goauld
         }
     }
 }
+

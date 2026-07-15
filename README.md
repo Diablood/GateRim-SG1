@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.92-dev`
+- Development version: `0.3.93-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,12 +17,7 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
-`0.3.92-dev` replaces four command-interface placeholders with dedicated
-transparent `64×64` icons. Autonomous hunting uses a moving Goa'uld symbiote and
-target reticle; emergency extraction uses a surgical table and lamp; forced
-implantation shows a direct symbiote strike toward a host; ritual implantation
-uses a gold ceremonial seal around the symbiote and host. Command behavior and
-stable texture paths remain unchanged.
+`0.3.93-dev` finalizes the Goa'uld ritual basin and both Prim'ta basin visuals. The ritual basin now offers save-compatible `2×2` and `3×3` placement variants through one Architect dropdown; both use the same `2×2` visual and common UI icon so players can center the apparatus in rooms with either even or odd dimensions. The Prim'ta incubation and preservation basins use distinct validated green and blue one-cell textures, while the preservation basin remains specialized powered storage under Furniture.
 
 `0.3.91-dev` replaces the temporary intrinsic Jaffa forehead-mark overlays
 with the final compact symbol of Apophis. Ordinary, elite and First Prime marks
@@ -192,3 +187,4 @@ handoff in [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md).
 
 Root ZIP archives are local delivery artifacts and must not be committed.
 `About/ModIcon.png` must be preserved.
+

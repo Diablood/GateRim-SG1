@@ -4,19 +4,25 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.92-dev`
+> Version du mod documentée : `0.3.93-dev`
 
-## Icônes finales des commandes Goa'uld et Jaffa
+## Bassins Goa'uld et Prim'ta finalisés
 
-`0.3.92-dev` remplace quatre réutilisations de l'icône démon personnelle par
-des symboles dédiés : chasse autonome d'un symbiote vers une cible, extraction
-chirurgicale d'urgence, implantation forcée directe et implantation rituelle
-encadrée par un sceau doré.
+`0.3.93-dev` remplace les visuels temporaires du bassin rituel Goa'uld, du
+bassin d'incubation du Prim'ta et du bassin de conservation du Prim'ta.
 
-Les fichiers restent sur leurs chemins de commande existants et ne modifient
-aucune règle de ciblage, de visibilité ou de sauvegarde. Les quatre commandes
-ont été validées dans leur interface réelle. Les images sont présentées sur les
-pages fonctionnelles correspondantes ainsi que dans les
+Le bassin rituel est proposé dans un même menu en deux empreintes : `2×2` pour
+les pièces centrées sur un nombre pair de cases et `3×3` pour les pièces
+centrées sur un nombre impair. Les deux variantes utilisent la même image de
+taille visuelle `2×2` et la même icône d'interface ; seule l'empreinte de
+placement change.
+
+Le bassin d'incubation utilise un rendu biologique vert sur une case et conserve
+son orientation fonctionnelle pour la cellule d'interaction. Le bassin de
+conservation utilise un rendu bleu distinct sur une case, reste un stockage
+spécialisé alimenté et se trouve dans la catégorie Mobilier.
+
+Les trois images validées sont visibles dans les
 [références visuelles validées](Visual-Assets).
 
 ## Marques frontales Jaffa intrinsèques finales
@@ -398,3 +404,4 @@ tests prolongés.
 - [Histoires culturelles](Cultural-Backstories)
 - [FAQ](FAQ)
 - [Dépôt GitHub principal](https://github.com/Diablood/GateRim-SG1)
+

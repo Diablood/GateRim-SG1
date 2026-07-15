@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <SG1_GoauldRitualBasin.label>bassin rituel Goa'uld</SG1_GoauldRitualBasin.label>
-    <SG1_GoauldRitualBasin.description>Bassin cérémoniel utilisé pour préparer les rituels contrôlés d'implantation Goa'uld et les cérémonies formelles du Prim'ta jaffa. Les rituels impliquant un symbiote adulte libre exigent que le symbiote et l'hôte sélectionné restent proches du bassin. Les cérémonies jaffa consomment une larve physique de Prim'ta proche après un rite temporisé.</SG1_GoauldRitualBasin.description>
+    <SG1_GoauldRitualBasin.label>bassin rituel Goa'uld 2×2</SG1_GoauldRitualBasin.label>
+    <SG1_GoauldRitualBasinLarge.label>bassin rituel Goa'uld 3×3</SG1_GoauldRitualBasinLarge.label>
 </LanguageData>

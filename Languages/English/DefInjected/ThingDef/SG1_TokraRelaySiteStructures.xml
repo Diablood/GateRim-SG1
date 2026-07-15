@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-    <SG1_TokraRelaySiteWall.label>Goa'uld outpost wall</SG1_TokraRelaySiteWall.label>
-    <SG1_TokraRelaySiteWall.description>A reinforced wall forming part of an isolated Goa'uld relay outpost.</SG1_TokraRelaySiteWall.description>
-    <SG1_TokraRelaySiteDoor.label>Goa'uld outpost door</SG1_TokraRelaySiteDoor.label>
-    <SG1_TokraRelaySiteDoor.description>A manually operated reinforced door used in an isolated Goa'uld relay outpost.</SG1_TokraRelaySiteDoor.description>
-    <SG1_TokraRelaySiteBarricade.label>Goa'uld defensive barricade</SG1_TokraRelaySiteBarricade.label>
-    <SG1_TokraRelaySiteBarricade.description>A low defensive barrier protecting an isolated Goa'uld relay outpost.</SG1_TokraRelaySiteBarricade.description>
-</LanguageData>

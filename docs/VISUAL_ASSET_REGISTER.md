@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.92-dev`
-- Branch: `feature/final-goauld-jaffa-command-icons`
-- Target assembly: `0.3.92.0`
-- Status: `0.3.92-dev` command-icon lot validated after final visual revision `r1` and recorded for publication in documentary revision `r2`.
+- Version: `0.3.93-dev`
+- Branch: `feature/final-goauld-primta-basin-visuals`
+- Target assembly: `0.3.93.0`
+- Status: `0.3.93-dev` basin-visual lot validated after the final ritual-basin `2×2` / `3×3` revision and wiki synchronization.
 
 ## Purpose
 
@@ -26,7 +26,9 @@ forehead-mark migration GeneDefs and their icon families while preserving the
 intrinsic pawn-overlay system. `0.3.91-dev` finalizes the three real intrinsic
 pawn-overlay families with compact South-only Apophis marks. `0.3.92-dev`
 replaces four personal-icon command placeholders with dedicated transparent
-symbols.
+symbols. `0.3.93-dev` finalizes the Goa'uld ritual basin and the two distinct
+Prim'ta basin families, including the even/odd placement variants and their
+byte-identical wiki references.
 
 ## Approved final references
 
@@ -34,10 +36,16 @@ symbols.
   the `Textures/` family count and must never be reused as gameplay art.
 - The `Textures/` families accepted as `final` are the two storyteller
   portraits, two xenotype icons, six gameplay-gene icons, three intrinsic Jaffa
-  forehead-mark overlays, four command icons, four world-faction icons and seven
-  world-event site icons listed below.
-- Equipment, buildings, other pawn overlays, projectiles, pawns and command
-  icons not explicitly listed below remain temporary even when functional.
+  forehead-mark overlays, four command icons, three building families, four
+  world-faction icons and seven world-event site icons listed below.
+- Equipment, buildings not explicitly listed below, other pawn overlays,
+  projectiles, pawns and command icons remain temporary even when functional.
+
+Validated building families:
+
+- `Things/Building/SG1_GoauldRitualBasin`
+- `Things/Building/SG1_PrimtaIncubationBasin`
+- `Things/Building/SG1_PrimtaPreservationBasin`
 
 Validated storyteller families:
 
@@ -110,16 +118,17 @@ Validated world-event site families:
 
 ## Audit summary
 
-- Local PNG files: `605`.
-- Local texture families: `72`.
-- Accepted final local families: `28` (`2` storyteller portraits, `2` xenotype
+- Local PNG files: `606`.
+- Local texture families: `73`.
+- Accepted final local families: `31` (`2` storyteller portraits, `2` xenotype
   icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
-  `4` command icons, `4` world-faction icons and `7` world-event site icons).
+  `4` command icons, `3` building families, `4` world-faction icons and `7`
+  world-event site icons).
 - Temporary original families: `25`.
 - Temporary recolor families: `11`.
 - Temporary reuse families: `6`.
-- Project-icon placeholder families: `2`.
-- Priorities: `4` P0, `21` P1, `19` P2, `28` done.
+- Project-icon placeholder families: `0`.
+- Priorities: `2` P0, `21` P1, `19` P2, `31` done.
 - Direct external texture paths: `6`.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -127,12 +136,11 @@ Validated world-event site families:
 
 ## Highest-priority findings
 
-1. Both ritual/incubation basins still reuse the personal demon mod icon exactly.
-2. The kara kesh and healing bracelet reuse the Zat’nik’tel inventory texture.
-3. The Prim’ta larva and free Goa’uld symbiote use the same image.
-4. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
+1. The kara kesh and healing bracelet reuse the Zat’nik’tel inventory texture.
+2. The Prim’ta larva and free Goa’uld symbiote use the same image.
+3. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
    and the relay sabotage device reuses the secure communicator.
-5. Jaffa, officer, Tok’ra and SGC apparel are technically complete but remain
+4. Jaffa, officer, Tok’ra and SGC apparel are technically complete but remain
    temporary art families; many body-type variants are exact copies rather than
    tailored silhouettes.
 
@@ -146,8 +154,9 @@ same canonical family. Representative dimensions refer to the base image.
 |---|---:|---:|---|---|---|---|---|
 | `Storytellers/SG1_Command` | 1 | 560×600 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided transparent large portrait validated in the real storyteller-selection interface. |
 | `Storytellers/SG1_Command_Tiny` | 1 | 122×130 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided dedicated close crop validated on the small storyteller UI surfaces. |
-| `Things/Building/SG1_GoauldRitualBasin` | 1 | 64×64 | Map/building | `placeholder-personal-icon` | `P0` | SG1_GoauldRitualBasin | Exact reuse of the project demon icon; misleading for this gameplay surface. |
-| `Things/Building/SG1_PrimtaIncubationBasin` | 1 | 64×64 | Map/building | `placeholder-personal-icon` | `P0` | SG1_PrimtaIncubationBasin, SG1_PrimtaPreservationBasin | Exact reuse of the project demon icon; misleading for this gameplay surface. |
+| `Things/Building/SG1_GoauldRitualBasin` | 1 | 256×256 | Map/building | `final` | `done` | SG1_GoauldRitualBasin, SG1_GoauldRitualBasinLarge | Validated ceremonial platform shared by the `2×2` and `3×3` placement variants; both use the same `2×2` rendered size and UI icon. |
+| `Things/Building/SG1_PrimtaIncubationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaIncubationBasin | Validated green one-cell incubation basin; fixed artwork with directional interaction-cell rotation preserved. |
+| `Things/Building/SG1_PrimtaPreservationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaPreservationBasin | Validated blue one-cell preservation storage; inherited stuff coloring and edge shadows removed. |
 | `Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint` | 1 | 64×64 | Map/building | `temporary-original` | `P1` | SG1_TokraObservationPoint | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
 | `Things/Building/SG1_TokraSecureCommunicator` | 1 | 128×128 | Map/building | `temporary-reuse` | `P1` | SG1_TokraRelaySabotageDevice, SG1_TokraSecureCommunicator | Communicator art is also reused by the relay sabotage device. |
 | `Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot` | 1 | 64×64 | Map/building | `temporary-original` | `P2` | SG1_TokraDeliveryDropSpot | Custom functional art that remains acceptable for development but is not yet accepted as final. |
@@ -228,9 +237,6 @@ not resolve under the mod's `Textures/` directory.
 |---|---|---|---|---|---|
 | `World/WorldObjects/DefaultSettlement` | World settlement | `accepted-vanilla` | `P3` | SG1_FreeJaffa, SG1_GoauldSystemLordPrototype, SG1_PlayerSGCExpedition | Intentional shared vanilla settlement silhouette; faction color and dedicated faction icons carry identity. |
 | `World/WorldObjects/Sites/GenericSite` | World site base | `accepted-vanilla` | `P3` | SG1_GoauldOpenConflictBattlefieldSite, SG1_TokraDecodedMissionWorldSite, SG1_TokraDistressCallWorldSite, SG1_TokraHiddenSafehouseMarker, SG1_TokraHiddenSafehouseSitePart, SG1_TokraIntroductionArtifactWorldSite, SG1_TokraJaffaOfficerCaptureSite, SG1_TokraTemporaryBaseDeliverySite | Generic underlying site material retained because every visible expanding icon is dedicated. |
-| `Things/Building/Door/DoorSimple_Mover` | Mission map building | `placeholder-vanilla` | `P2` | SG1_TokraRelaySiteDoor | Relay-site door still uses the vanilla simple-door mover graphic. |
-| `Things/Building/Door/DoorSimple_MenuIcon` | Build/menu icon | `placeholder-vanilla` | `P2` | SG1_TokraRelaySiteDoor | Relay-site door still uses the vanilla simple-door menu icon. |
-| `Things/Building/Linked/Sandbags_Atlas` | Mission map building | `placeholder-vanilla` | `P2` | SG1_TokraRelaySiteBarricade | Relay-site barricade still uses the vanilla sandbag atlas. |
 | `UI/Icons/Study` | Command UI | `accepted-vanilla` | `P3` | SG1_TokraIntroductionArtifact | Generic study action icon is semantically correct and not a GateRim identity surface. |
 <!-- EXTERNAL_ASSET_TABLE_END -->
 
@@ -258,6 +264,12 @@ not resolve under the mod's `Textures/` directory.
 
 ## Explicit non-effects
 
+`0.3.93-dev` replaces the three temporary basin visuals with validated building
+art, adds a dedicated preservation-basin family and keeps the ritual basin
+available in `2×2` and `3×3` footprints without changing its visible size.
+It also preserves all gameplay behavior, costs, research requirements and save
+compatibility.
+
 `0.3.89-dev` changes the six approved gameplay-gene PNGs, removes the obsolete
 `SG1_JaffaLongevity` development prototype and its unused PNG, reclassifies the
 four already-existing world-faction icons as final, and adds byte-identical wiki
@@ -284,15 +296,15 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Local PNG files: 605
-Local texture families: 72
+Local PNG files: 606
+Local texture families: 73
 Direct external texture paths: 6
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
 
-Focused manual review must confirm the obsolete migration genes are absent, the
-intrinsic forehead-mark overlays still assign and persist, the six active
-gameplay-gene icons remain unchanged and the wiki has no stale legacy-gene image
-references.
+Focused manual review must confirm the three basin textures render correctly,
+the ritual-basin dropdown exposes the `2×2` and `3×3` variants with a shared UI
+icon, the incubation interaction orientation is preserved, the preservation
+basin remains specialized powered storage, and the wiki copies are byte-identical.

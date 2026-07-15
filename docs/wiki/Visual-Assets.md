@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.92-dev`
-> Statut : quatre commandes finales validées et publiées dans `0.3.92-dev`
+> Version de référence : `0.3.93-dev`
+> Statut : bassins Goa'uld et Prim'ta validés en jeu dans `0.3.93-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -13,6 +13,18 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 | Usage | Chemin | Statut |
 |---|---|---|
 | Icône publique GateRim SG-1 | `About/ModIcon.png` | Final ; conserver l'image personnelle démon rouge/noir et ne pas la réutiliser comme art de gameplay |
+
+## Bâtiments Goa'uld et Prim'ta validés
+
+| Visuel | Bâtiment | Def | Chemin sous `Textures/` | Référence validée |
+|---|---|---|---|---|
+| ![Bassin rituel Goa'uld](images/SG1_GoauldRitualBasin.png) | Bassin rituel Goa'uld `2×2` ou `3×3` | `SG1_GoauldRitualBasin`, `SG1_GoauldRitualBasinLarge` | `Things/Building/SG1_GoauldRitualBasin` | Plateforme cérémonielle Goa'uld dorée et sombre, bassin central vert et quatre pylônes bleus ; même rendu visuel `2×2` et même icône pour les deux empreintes |
+| ![Bassin d'incubation du Prim'ta](images/SG1_PrimtaIncubationBasin.png) | Bassin d'incubation du Prim'ta | `SG1_PrimtaIncubationBasin` | `Things/Building/SG1_PrimtaIncubationBasin` | Dispositif biologique vert sur une case ; image fixe tandis que l'orientation conserve la cellule d'interaction |
+| ![Bassin de conservation du Prim'ta](images/SG1_PrimtaPreservationBasin.png) | Bassin de conservation du Prim'ta | `SG1_PrimtaPreservationBasin` | `Things/Building/SG1_PrimtaPreservationBasin` | Stockage biologique bleu sur une case, sans coloration de matériau ni ombre héritée |
+
+Le `defName` historique du bassin rituel reste attribué à la variante `2×2` afin
+de préserver les sauvegardes existantes. La variante `3×3` change uniquement
+l'empreinte de placement : elle ne grossit pas l'image centrale.
 
 ## Portraits de storyteller validés
 
@@ -93,9 +105,9 @@ cérémonie formelle du Prim'ta, sans changement de logique.
 ## Visuels encore temporaires
 
 Les autres visuels locaux restent temporaires, notamment les armes,
-équipements, vêtements, bâtiments, objets de mission, projectiles et pawns.
-Les trois familles de marques frontales intrinsèques et les quatre commandes
-présentées ci-dessus sont désormais finales.
+équipements, vêtements, objets de mission, projectiles et pawns. Les trois
+familles de bâtiments présentées ci-dessus, les trois familles de marques
+frontales intrinsèques et les quatre commandes sont désormais finales.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

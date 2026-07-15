@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-    <SG1_TokraRelaySiteWall.label>mur d'avant-poste Goa'uld</SG1_TokraRelaySiteWall.label>
-    <SG1_TokraRelaySiteWall.description>Un mur renforcé appartenant à un avant-poste isolé de relais Goa'uld.</SG1_TokraRelaySiteWall.description>
-    <SG1_TokraRelaySiteDoor.label>porte d'avant-poste Goa'uld</SG1_TokraRelaySiteDoor.label>
-    <SG1_TokraRelaySiteDoor.description>Une porte renforcée à ouverture manuelle utilisée dans un avant-poste isolé de relais Goa'uld.</SG1_TokraRelaySiteDoor.description>
-    <SG1_TokraRelaySiteBarricade.label>barricade défensive Goa'uld</SG1_TokraRelaySiteBarricade.label>
-    <SG1_TokraRelaySiteBarricade.description>Une protection basse défendant un avant-poste isolé de relais Goa'uld.</SG1_TokraRelaySiteBarricade.description>
-</LanguageData>

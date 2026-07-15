@@ -167,6 +167,24 @@ $wikiIconMappings = @(
         Reference = "images/GenericGoldJaffaForeheadMark_south.png"
     },
     @{
+        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
+        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_GoauldRitualBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_PrimtaIncubationBasin.png"
+    },
+    @{
+        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
+        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
+        Page = "docs/wiki/Visual-Assets.md"
+        Reference = "images/SG1_PrimtaPreservationBasin.png"
+    },
+    @{
         Source = "Textures/UI/Commands/SG1_AutonomousHunt.png"
         Wiki = "docs/wiki/images/SG1_AutonomousHunt.png"
         Page = "docs/wiki/Autonomous-Hunt.md"
@@ -416,6 +434,9 @@ if ($registeredExternalPaths.Count -eq 0) {
 $expectedFinalLocalPaths = @(
     "Storytellers/SG1_Command",
     "Storytellers/SG1_Command_Tiny",
+    "Things/Building/SG1_GoauldRitualBasin",
+    "Things/Building/SG1_PrimtaIncubationBasin",
+    "Things/Building/SG1_PrimtaPreservationBasin",
     "UI/Xenotypes/SG1_GoauldHost",
     "UI/Xenotypes/SG1_Jaffa",
     "UI/Genes/SG1_GoauldLongevity",
@@ -457,13 +478,13 @@ $finalPathDifferences = @(
 
 if ($finalPathDifferences.Count -gt 0) {
     Add-Failure (
-        "Final local asset whitelist differs from the twenty-eight approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families: {0}" -f
+        "Final local asset whitelist differs from the thirty-one approved storyteller, building, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families: {0}" -f
         (($finalPathDifferences | ForEach-Object {
             "{0} {1}" -f $_.SideIndicator, $_.InputObject
         }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the twenty-eight approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families."
+    Add-Pass "Final local asset whitelist matches the thirty-one approved storyteller, building, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

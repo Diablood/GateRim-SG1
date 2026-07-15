@@ -1,15 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <ThingDef ParentName="FurnitureBase">
-        <defName>SG1_GoauldRitualBasin</defName>
-        <label>Goa'uld ritual basin</label>
+
+    <DesignatorDropdownGroupDef>
+        <defName>SG1_GoauldRitualBasins</defName>
+    </DesignatorDropdownGroupDef>
+
+    <ThingDef Name="SG1_GoauldRitualBasinBase" ParentName="FurnitureBase" Abstract="True">
         <description>A ceremonial basin used to prepare controlled Goa'uld implantation rituals and formal Jaffa Prim'ta ceremonies. Adult free-symbiote rituals require the symbiote and selected host to remain close to the basin. Jaffa ceremonies consume one nearby physical Prim'ta larva after a timed rite.</description>
         <graphicData>
             <texPath>Things/Building/SG1_GoauldRitualBasin</texPath>
             <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>(1,1)</drawSize>
+            <drawSize>(2,2)</drawSize>
+            <drawRotated>false</drawRotated>
         </graphicData>
-        <size>(1,1)</size>
+        <uiIconPath>Things/Building/SG1_GoauldRitualBasin</uiIconPath>
         <rotatable>false</rotatable>
         <tickerType>Normal</tickerType>
         <statBases>
@@ -24,6 +28,7 @@
             <Gold>5</Gold>
         </costList>
         <designationCategory>Furniture</designationCategory>
+        <designatorDropdown>SG1_GoauldRitualBasins</designatorDropdown>
         <researchPrerequisites>
             <li>SG1_GoauldBiotechnology</li>
         </researchPrerequisites>
@@ -35,4 +40,17 @@
             </li>
         </comps>
     </ThingDef>
+
+    <ThingDef ParentName="SG1_GoauldRitualBasinBase">
+        <defName>SG1_GoauldRitualBasin</defName>
+        <label>Goa'uld ritual basin 2×2</label>
+        <size>(2,2)</size>
+    </ThingDef>
+
+    <ThingDef ParentName="SG1_GoauldRitualBasinBase">
+        <defName>SG1_GoauldRitualBasinLarge</defName>
+        <label>Goa'uld ritual basin 3×3</label>
+        <size>(3,3)</size>
+    </ThingDef>
+
 </Defs>
