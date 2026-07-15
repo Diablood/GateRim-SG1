@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_TokraIntroductionArtifact.label>module de chiffrement Tok'ra</SG1_TokraIntroductionArtifact.label>
-    <SG1_TokraIntroductionArtifact.description>Un module de chiffrement Tok'ra compact récupéré aux mains de l'ennemi. Sa mémoire scellée contient des fragments de protocoles de reconnaissance et de données de recherche. Une analyse prudente sur un banc de recherche pourrait révéler suffisamment de cette matrice pour établir une liaison sûre avec les Tok'ra.</SG1_TokraIntroductionArtifact.description>
+    <SG1_TokraIntroductionArtifact.description>Un module de chiffrement Tok'ra compact récupéré aux mains de l'ennemi. Son boîtier scellé protège une matrice cristalline de reconnaissance contenant des fragments de protocoles d'identification et de données de recherche. Malgré quelques dommages extérieurs, l'appareil reste exploitable. Une analyse prudente sur un banc de recherche pourrait révéler suffisamment de cette architecture pour établir une liaison sûre avec les Tok'ra.</SG1_TokraIntroductionArtifact.description>
 </LanguageData>

@@ -4,9 +4,9 @@
         <defName>SG1_TokraIntroductionArtifact</defName>
         <label>Tok'ra cipher module</label>
         <thingClass>ThingWithComps</thingClass>
-        <description>A compact Tok'ra cipher module recovered from hostile hands. Its sealed memory lattice contains fragments of recognition protocols and research data. Careful analysis at a research bench may expose enough of the lattice to support a secure line of contact with the Tok'ra.</description>
+        <description>A compact Tok'ra cipher module recovered from hostile hands. Its sealed casing protects a crystalline recognition matrix containing fragments of identification protocols and research data. Despite external damage, the device remains functional. Careful analysis at a research bench may expose enough of its architecture to establish a secure line of contact with the Tok'ra.</description>
         <graphicData>
-            <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
+            <texPath>Things/Item/SG1_TokraIntroductionArtifact</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <drawSize>(0.65,0.65)</drawSize>
         </graphicData>
