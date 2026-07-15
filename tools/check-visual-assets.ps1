@@ -22,14 +22,12 @@ $failures = New-Object System.Collections.Generic.List[string]
 
 function Add-Failure {
     param([string]$Message)
-
     [void]$script:failures.Add($Message)
     Write-Host "[FAIL] $Message" -ForegroundColor Red
 }
 
 function Add-Pass {
     param([string]$Message)
-
     Write-Host "[PASS] $Message" -ForegroundColor Green
 }
 
@@ -91,6 +89,22 @@ function Get-MarkedBlock {
     return $match.Groups["value"].Value
 }
 
+function New-WikiMapping {
+    param(
+        [string]$Source,
+        [string]$Wiki,
+        [string]$Page,
+        [string]$Reference
+    )
+
+    return @{
+        Source = $Source
+        Wiki = $Wiki
+        Page = $Page
+        Reference = $Reference
+    }
+}
+
 Write-Host "GateRim SG-1 visual asset check"
 Write-Host "Repository: $RepositoryRoot"
 Write-Host ""
@@ -99,289 +113,74 @@ $registerPath = Join-Path $RepositoryRoot "docs/VISUAL_ASSET_REGISTER.md"
 $texturesRoot = Join-Path $RepositoryRoot "Textures"
 $modIconPath = Join-Path $RepositoryRoot "About/ModIcon.png"
 $visualReferencePagePath = Join-Path $RepositoryRoot "docs/wiki/Visual-Assets.md"
+$xmlRoot = Join-Path $RepositoryRoot "1.6"
+$sourceRoot = Join-Path $RepositoryRoot "Source"
+
 $wikiIconMappings = @(
-    @{
-        Source = "Textures/UI/Xenotypes/SG1_Jaffa.png"
-        Wiki = "docs/wiki/images/SG1_Jaffa.png"
-        Page = "docs/wiki/Jaffa.md"
-        Reference = "images/SG1_Jaffa.png"
-    },
-    @{
-        Source = "Textures/UI/Xenotypes/SG1_GoauldHost.png"
-        Wiki = "docs/wiki/images/SG1_GoauldHost.png"
-        Page = "docs/wiki/Active-Goauld-Host.md"
-        Reference = "images/SG1_GoauldHost.png"
-    },
-    @{
-        Source = "Textures/UI/Genes/SG1_JaffaLineage.png"
-        Wiki = "docs/wiki/images/SG1_JaffaLineage.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_JaffaLineage.png"
-    },
-    @{
-        Source = "Textures/UI/Genes/SG1_JaffaPhysiology.png"
-        Wiki = "docs/wiki/images/SG1_JaffaPhysiology.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_JaffaPhysiology.png"
-    },
-    @{
-        Source = "Textures/UI/Genes/SG1_JaffaPouchPotential.png"
-        Wiki = "docs/wiki/images/SG1_JaffaPouchPotential.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_JaffaPouchPotential.png"
-    },
-    @{
-        Source = "Textures/UI/Genes/SG1_JaffaSymbioteCompatibility.png"
-        Wiki = "docs/wiki/images/SG1_JaffaSymbioteCompatibility.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_JaffaSymbioteCompatibility.png"
-    },
-    @{
-        Source = "Textures/UI/Genes/SG1_GoauldLongevity.png"
-        Wiki = "docs/wiki/images/SG1_GoauldLongevity.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_GoauldLongevity.png"
-    },
-    @{
-        Source = "Textures/UI/Genes/SG1_NaquadahBlood.png"
-        Wiki = "docs/wiki/images/SG1_NaquadahBlood.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_NaquadahBlood.png"
-    },
-    @{
-        Source = "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark_south.png"
-        Wiki = "docs/wiki/images/GenericJaffaForeheadMark_south.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/GenericJaffaForeheadMark_south.png"
-    },
-    @{
-        Source = "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark_south.png"
-        Wiki = "docs/wiki/images/GenericSilverJaffaForeheadMark_south.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/GenericSilverJaffaForeheadMark_south.png"
-    },
-    @{
-        Source = "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark_south.png"
-        Wiki = "docs/wiki/images/GenericGoldJaffaForeheadMark_south.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/GenericGoldJaffaForeheadMark_south.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
-        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_GoauldRitualBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_PrimtaIncubationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_PrimtaPreservationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
-        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
-        Page = "docs/wiki/Ritual-Basin.md"
-        Reference = "images/SG1_GoauldRitualBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
-        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
-        Page = "docs/wiki/Ritual-Implantation.md"
-        Reference = "images/SG1_GoauldRitualBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_GoauldRitualBasin.png"
-        Wiki = "docs/wiki/images/SG1_GoauldRitualBasin.png"
-        Page = "docs/wiki/Primta-Formal-Ceremony.md"
-        Reference = "images/SG1_GoauldRitualBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
-        Page = "docs/wiki/Primta-Incubation.md"
-        Reference = "images/SG1_PrimtaIncubationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
-        Page = "docs/wiki/Goauld-Queen-Assisted-Maturation.md"
-        Reference = "images/SG1_PrimtaIncubationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaIncubationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaIncubationBasin.png"
-        Page = "docs/wiki/Primta-Larva.md"
-        Reference = "images/SG1_PrimtaIncubationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
-        Page = "docs/wiki/Primta-Preservation-Basin.md"
-        Reference = "images/SG1_PrimtaPreservationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
-        Page = "docs/wiki/Primta-Deep-Freezing.md"
-        Reference = "images/SG1_PrimtaPreservationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
-        Page = "docs/wiki/Primta-Temperature.md"
-        Reference = "images/SG1_PrimtaPreservationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
-        Page = "docs/wiki/Goauld-Queen-Assisted-Maturation.md"
-        Reference = "images/SG1_PrimtaPreservationBasin.png"
-    },
-    @{
-        Source = "Textures/Things/Building/SG1_PrimtaPreservationBasin.png"
-        Wiki = "docs/wiki/images/SG1_PrimtaPreservationBasin.png"
-        Page = "docs/wiki/Primta-Larva.md"
-        Reference = "images/SG1_PrimtaPreservationBasin.png"
-    },
-    @{
-        Source = "Textures/UI/Commands/SG1_AutonomousHunt.png"
-        Wiki = "docs/wiki/images/SG1_AutonomousHunt.png"
-        Page = "docs/wiki/Autonomous-Hunt.md"
-        Reference = "images/SG1_AutonomousHunt.png"
-    },
-    @{
-        Source = "Textures/UI/Commands/SG1_EmergencyExtraction.png"
-        Wiki = "docs/wiki/images/SG1_EmergencyExtraction.png"
-        Page = "docs/wiki/Emergency-Extraction.md"
-        Reference = "images/SG1_EmergencyExtraction.png"
-    },
-    @{
-        Source = "Textures/UI/Commands/SG1_ForcedImplantation.png"
-        Wiki = "docs/wiki/images/SG1_ForcedImplantation.png"
-        Page = "docs/wiki/Forced-Implantation.md"
-        Reference = "images/SG1_ForcedImplantation.png"
-    },
-    @{
-        Source = "Textures/UI/Commands/SG1_RitualImplantation.png"
-        Wiki = "docs/wiki/images/SG1_RitualImplantation.png"
-        Page = "docs/wiki/Ritual-Implantation.md"
-        Reference = "images/SG1_RitualImplantation.png"
-    },
-    @{
-        Source = "Textures/UI/Commands/SG1_RitualImplantation.png"
-        Wiki = "docs/wiki/images/SG1_RitualImplantation.png"
-        Page = "docs/wiki/Primta-Formal-Ceremony.md"
-        Reference = "images/SG1_RitualImplantation.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png"
-        Wiki = "docs/wiki/images/SG1_FreeJaffa.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_FreeJaffa.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/SG1_GoauldSystemLords.png"
-        Wiki = "docs/wiki/images/SG1_GoauldSystemLords.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_GoauldSystemLords.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/SG1_SGCExpedition.png"
-        Wiki = "docs/wiki/images/SG1_SGCExpedition.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_SGCExpedition.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/SG1_Tokra.png"
-        Wiki = "docs/wiki/images/SG1_Tokra.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_Tokra.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective.png"
-        Wiki = "docs/wiki/images/SG1_GoauldEncryptedObjective.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_GoauldEncryptedObjective.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield.png"
-        Wiki = "docs/wiki/images/SG1_GoauldOpenConflictBattlefield.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_GoauldOpenConflictBattlefield.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage.png"
-        Wiki = "docs/wiki/images/SG1_GoauldRelaySabotage.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_GoauldRelaySabotage.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition.png"
-        Wiki = "docs/wiki/images/SG1_JaffaOfficerFieldPosition.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_JaffaOfficerFieldPosition.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact.png"
-        Wiki = "docs/wiki/images/SG1_TokraClandestineContact.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_TokraClandestineContact.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal.png"
-        Wiki = "docs/wiki/images/SG1_TokraDistressSignal.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_TokraDistressSignal.png"
-    },
-    @{
-        Source = "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous.png"
-        Wiki = "docs/wiki/images/SG1_TokraLogisticsRendezvous.png"
-        Page = "docs/wiki/Visual-Assets.md"
-        Reference = "images/SG1_TokraLogisticsRendezvous.png"
-    }
+    (New-WikiMapping "Textures/UI/Xenotypes/SG1_Jaffa.png" "docs/wiki/images/SG1_Jaffa.png" "docs/wiki/Jaffa.md" "images/SG1_Jaffa.png"),
+    (New-WikiMapping "Textures/UI/Xenotypes/SG1_GoauldHost.png" "docs/wiki/images/SG1_GoauldHost.png" "docs/wiki/Active-Goauld-Host.md" "images/SG1_GoauldHost.png"),
+    (New-WikiMapping "Textures/UI/Genes/SG1_JaffaLineage.png" "docs/wiki/images/SG1_JaffaLineage.png" "docs/wiki/Visual-Assets.md" "images/SG1_JaffaLineage.png"),
+    (New-WikiMapping "Textures/UI/Genes/SG1_JaffaPhysiology.png" "docs/wiki/images/SG1_JaffaPhysiology.png" "docs/wiki/Visual-Assets.md" "images/SG1_JaffaPhysiology.png"),
+    (New-WikiMapping "Textures/UI/Genes/SG1_JaffaPouchPotential.png" "docs/wiki/images/SG1_JaffaPouchPotential.png" "docs/wiki/Visual-Assets.md" "images/SG1_JaffaPouchPotential.png"),
+    (New-WikiMapping "Textures/UI/Genes/SG1_JaffaSymbioteCompatibility.png" "docs/wiki/images/SG1_JaffaSymbioteCompatibility.png" "docs/wiki/Visual-Assets.md" "images/SG1_JaffaSymbioteCompatibility.png"),
+    (New-WikiMapping "Textures/UI/Genes/SG1_GoauldLongevity.png" "docs/wiki/images/SG1_GoauldLongevity.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldLongevity.png"),
+    (New-WikiMapping "Textures/UI/Genes/SG1_NaquadahBlood.png" "docs/wiki/images/SG1_NaquadahBlood.png" "docs/wiki/Visual-Assets.md" "images/SG1_NaquadahBlood.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark_south.png" "docs/wiki/images/GenericJaffaForeheadMark_south.png" "docs/wiki/Visual-Assets.md" "images/GenericJaffaForeheadMark_south.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark_south.png" "docs/wiki/images/GenericSilverJaffaForeheadMark_south.png" "docs/wiki/Visual-Assets.md" "images/GenericSilverJaffaForeheadMark_south.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark_south.png" "docs/wiki/images/GenericGoldJaffaForeheadMark_south.png" "docs/wiki/Visual-Assets.md" "images/GenericGoldJaffaForeheadMark_south.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_GoauldRitualBasin.png" "docs/wiki/images/SG1_GoauldRitualBasin.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldRitualBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaIncubationBasin.png" "docs/wiki/images/SG1_PrimtaIncubationBasin.png" "docs/wiki/Visual-Assets.md" "images/SG1_PrimtaIncubationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaPreservationBasin.png" "docs/wiki/images/SG1_PrimtaPreservationBasin.png" "docs/wiki/Visual-Assets.md" "images/SG1_PrimtaPreservationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_GoauldRitualBasin.png" "docs/wiki/images/SG1_GoauldRitualBasin.png" "docs/wiki/Ritual-Basin.md" "images/SG1_GoauldRitualBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_GoauldRitualBasin.png" "docs/wiki/images/SG1_GoauldRitualBasin.png" "docs/wiki/Ritual-Implantation.md" "images/SG1_GoauldRitualBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_GoauldRitualBasin.png" "docs/wiki/images/SG1_GoauldRitualBasin.png" "docs/wiki/Primta-Formal-Ceremony.md" "images/SG1_GoauldRitualBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaIncubationBasin.png" "docs/wiki/images/SG1_PrimtaIncubationBasin.png" "docs/wiki/Primta-Incubation.md" "images/SG1_PrimtaIncubationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaIncubationBasin.png" "docs/wiki/images/SG1_PrimtaIncubationBasin.png" "docs/wiki/Goauld-Queen-Assisted-Maturation.md" "images/SG1_PrimtaIncubationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaIncubationBasin.png" "docs/wiki/images/SG1_PrimtaIncubationBasin.png" "docs/wiki/Primta-Larva.md" "images/SG1_PrimtaIncubationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaPreservationBasin.png" "docs/wiki/images/SG1_PrimtaPreservationBasin.png" "docs/wiki/Primta-Preservation-Basin.md" "images/SG1_PrimtaPreservationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaPreservationBasin.png" "docs/wiki/images/SG1_PrimtaPreservationBasin.png" "docs/wiki/Primta-Deep-Freezing.md" "images/SG1_PrimtaPreservationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaPreservationBasin.png" "docs/wiki/images/SG1_PrimtaPreservationBasin.png" "docs/wiki/Primta-Temperature.md" "images/SG1_PrimtaPreservationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaPreservationBasin.png" "docs/wiki/images/SG1_PrimtaPreservationBasin.png" "docs/wiki/Goauld-Queen-Assisted-Maturation.md" "images/SG1_PrimtaPreservationBasin.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_PrimtaPreservationBasin.png" "docs/wiki/images/SG1_PrimtaPreservationBasin.png" "docs/wiki/Primta-Larva.md" "images/SG1_PrimtaPreservationBasin.png"),
+    (New-WikiMapping "Textures/UI/Commands/SG1_AutonomousHunt.png" "docs/wiki/images/SG1_AutonomousHunt.png" "docs/wiki/Autonomous-Hunt.md" "images/SG1_AutonomousHunt.png"),
+    (New-WikiMapping "Textures/UI/Commands/SG1_EmergencyExtraction.png" "docs/wiki/images/SG1_EmergencyExtraction.png" "docs/wiki/Emergency-Extraction.md" "images/SG1_EmergencyExtraction.png"),
+    (New-WikiMapping "Textures/UI/Commands/SG1_ForcedImplantation.png" "docs/wiki/images/SG1_ForcedImplantation.png" "docs/wiki/Forced-Implantation.md" "images/SG1_ForcedImplantation.png"),
+    (New-WikiMapping "Textures/UI/Commands/SG1_RitualImplantation.png" "docs/wiki/images/SG1_RitualImplantation.png" "docs/wiki/Ritual-Implantation.md" "images/SG1_RitualImplantation.png"),
+    (New-WikiMapping "Textures/UI/Commands/SG1_RitualImplantation.png" "docs/wiki/images/SG1_RitualImplantation.png" "docs/wiki/Primta-Formal-Ceremony.md" "images/SG1_RitualImplantation.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh.png" "docs/wiki/images/KaraKesh.png" "docs/wiki/Kara-Kesh.md" "images/KaraKesh.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet.png" "docs/wiki/images/GoauldHealingBracelet.png" "docs/wiki/Goauld-Healing-Bracelet.md" "images/GoauldHealingBracelet.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png" "docs/wiki/images/SG1_FreeJaffa.png" "docs/wiki/Visual-Assets.md" "images/SG1_FreeJaffa.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_GoauldSystemLords.png" "docs/wiki/images/SG1_GoauldSystemLords.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldSystemLords.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_SGCExpedition.png" "docs/wiki/images/SG1_SGCExpedition.png" "docs/wiki/Visual-Assets.md" "images/SG1_SGCExpedition.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_Tokra.png" "docs/wiki/images/SG1_Tokra.png" "docs/wiki/Visual-Assets.md" "images/SG1_Tokra.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective.png" "docs/wiki/images/SG1_GoauldEncryptedObjective.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldEncryptedObjective.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield.png" "docs/wiki/images/SG1_GoauldOpenConflictBattlefield.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldOpenConflictBattlefield.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage.png" "docs/wiki/images/SG1_GoauldRelaySabotage.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldRelaySabotage.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition.png" "docs/wiki/images/SG1_JaffaOfficerFieldPosition.png" "docs/wiki/Visual-Assets.md" "images/SG1_JaffaOfficerFieldPosition.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact.png" "docs/wiki/images/SG1_TokraClandestineContact.png" "docs/wiki/Visual-Assets.md" "images/SG1_TokraClandestineContact.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal.png" "docs/wiki/images/SG1_TokraDistressSignal.png" "docs/wiki/Visual-Assets.md" "images/SG1_TokraDistressSignal.png"),
+    (New-WikiMapping "Textures/World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous.png" "docs/wiki/images/SG1_TokraLogisticsRendezvous.png" "docs/wiki/Visual-Assets.md" "images/SG1_TokraLogisticsRendezvous.png")
 )
 
-if (-not (Test-Path -LiteralPath $registerPath -PathType Leaf)) {
-    Add-Failure "Missing visual asset register: docs/VISUAL_ASSET_REGISTER.md"
+$requiredFiles = @($registerPath, $modIconPath, $visualReferencePagePath)
+foreach ($requiredFile in $requiredFiles) {
+    if (-not (Test-Path -LiteralPath $requiredFile -PathType Leaf)) {
+        Add-Failure "Missing required visual-audit file: $requiredFile"
+    }
 }
 
-if (-not (Test-Path -LiteralPath $texturesRoot -PathType Container)) {
-    Add-Failure "Missing texture directory: Textures"
-}
-
-if (-not (Test-Path -LiteralPath $modIconPath -PathType Leaf)) {
-    Add-Failure "Missing preserved public mod icon: About/ModIcon.png"
-}
-else {
-    Add-Pass "Preserved public mod icon exists."
-}
-
-if (-not (Test-Path -LiteralPath $visualReferencePagePath -PathType Leaf)) {
-    Add-Failure "Missing progressive visual reference page: docs/wiki/Visual-Assets.md"
+foreach ($requiredDirectory in @($texturesRoot, $xmlRoot, $sourceRoot)) {
+    if (-not (Test-Path -LiteralPath $requiredDirectory -PathType Container)) {
+        Add-Failure "Missing required visual-audit directory: $requiredDirectory"
+    }
 }
 
 foreach ($mapping in $wikiIconMappings) {
-    $sourcePath = Join-Path $RepositoryRoot $mapping.Source
-    $wikiPath = Join-Path $RepositoryRoot $mapping.Wiki
-    $pagePath = Join-Path $RepositoryRoot $mapping.Page
-
-    if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
-        Add-Failure "Missing approved gameplay icon: $($mapping.Source)"
-    }
-
-    if (-not (Test-Path -LiteralPath $wikiPath -PathType Leaf)) {
-        Add-Failure "Missing approved wiki icon copy: $($mapping.Wiki)"
-    }
-
-    if (-not (Test-Path -LiteralPath $pagePath -PathType Leaf)) {
-        Add-Failure "Missing wiki page: $($mapping.Page)"
+    foreach ($path in @($mapping.Source, $mapping.Wiki, $mapping.Page)) {
+        $fullPath = Join-Path $RepositoryRoot $path
+        if (-not (Test-Path -LiteralPath $fullPath -PathType Leaf)) {
+            Add-Failure "Missing approved visual reference file: $path"
+        }
     }
 }
 
@@ -391,6 +190,9 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
+Add-Pass "Preserved public mod icon exists."
+
+$visualReferenceText = Get-Content -LiteralPath $visualReferencePagePath -Raw -Encoding UTF8
 foreach ($mapping in $wikiIconMappings) {
     $sourcePath = Join-Path $RepositoryRoot $mapping.Source
     $wikiPath = Join-Path $RepositoryRoot $mapping.Wiki
@@ -398,7 +200,6 @@ foreach ($mapping in $wikiIconMappings) {
 
     $sourceHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
     $wikiHash = (Get-FileHash -LiteralPath $wikiPath -Algorithm SHA256).Hash
-
     if ($sourceHash -cne $wikiHash) {
         Add-Failure "Wiki icon differs from approved gameplay icon: $($mapping.Wiki)"
     }
@@ -413,29 +214,19 @@ foreach ($mapping in $wikiIconMappings) {
     else {
         Add-Pass "Wiki page displays approved icon: $($mapping.Page)"
     }
-}
 
-$visualReferenceText = Get-Content -LiteralPath $visualReferencePagePath -Raw -Encoding UTF8
-foreach ($mapping in $wikiIconMappings) {
     if ($visualReferenceText -notlike "*$($mapping.Reference)*") {
         Add-Failure "Visual reference page does not display approved icon: $($mapping.Reference)"
     }
 }
+
 if ($failures.Count -eq 0) {
     Add-Pass "Progressive visual reference page displays every approved gameplay icon copy."
 }
 
 $registerText = Get-Content -LiteralPath $registerPath -Raw -Encoding UTF8
-$localBlock = Get-MarkedBlock `
-    $registerText `
-    "<!-- LOCAL_ASSET_TABLE_START -->" `
-    "<!-- LOCAL_ASSET_TABLE_END -->" `
-    "local asset table"
-$externalBlock = Get-MarkedBlock `
-    $registerText `
-    "<!-- EXTERNAL_ASSET_TABLE_START -->" `
-    "<!-- EXTERNAL_ASSET_TABLE_END -->" `
-    "external asset table"
+$localBlock = Get-MarkedBlock $registerText "<!-- LOCAL_ASSET_TABLE_START -->" "<!-- LOCAL_ASSET_TABLE_END -->" "local asset table"
+$externalBlock = Get-MarkedBlock $registerText "<!-- EXTERNAL_ASSET_TABLE_START -->" "<!-- EXTERNAL_ASSET_TABLE_END -->" "external asset table"
 
 $registeredLocalCounts = @{}
 $registeredLocalStatuses = @{}
@@ -443,59 +234,35 @@ $registeredLocalPaths = New-Object System.Collections.Generic.List[string]
 
 if ($null -ne $localBlock) {
     foreach ($line in ($localBlock -split "`r?`n")) {
-        $match = [regex]::Match(
-            $line,
-            '^\|\s*`(?<path>[^`]+)`\s*\|\s*(?<count>\d+)\s*\|[^|]*\|[^|]*\|\s*`(?<status>[^`]+)`\s*\|')
-
-        if (-not $match.Success) {
-            continue
-        }
-
+        $match = [regex]::Match($line, '^\|\s*`(?<path>[^`]+)`\s*\|\s*(?<count>\d+)\s*\|[^|]*\|[^|]*\|\s*`(?<status>[^`]+)`\s*\|')
+        if (-not $match.Success) { continue }
         $path = $match.Groups["path"].Value
-        $count = [int]$match.Groups["count"].Value
-        $status = $match.Groups["status"].Value
-
         if ($registeredLocalPaths -ccontains $path) {
             Add-Failure "Duplicate local asset family in register: $path"
             continue
         }
-
         [void]$registeredLocalPaths.Add($path)
-        $registeredLocalCounts[$path] = $count
-        $registeredLocalStatuses[$path] = $status
+        $registeredLocalCounts[$path] = [int]$match.Groups["count"].Value
+        $registeredLocalStatuses[$path] = $match.Groups["status"].Value
     }
 }
 
 $registeredExternalPaths = New-Object System.Collections.Generic.List[string]
-
 if ($null -ne $externalBlock) {
     foreach ($line in ($externalBlock -split "`r?`n")) {
-        $match = [regex]::Match(
-            $line,
-            '^\|\s*`(?<path>[^`]+)`\s*\|')
-
-        if (-not $match.Success) {
-            continue
-        }
-
+        $match = [regex]::Match($line, '^\|\s*`(?<path>[^`]+)`\s*\|')
+        if (-not $match.Success) { continue }
         $path = $match.Groups["path"].Value
-
         if ($registeredExternalPaths -ccontains $path) {
             Add-Failure "Duplicate external asset path in register: $path"
             continue
         }
-
         [void]$registeredExternalPaths.Add($path)
     }
 }
 
-if ($registeredLocalPaths.Count -eq 0) {
-    Add-Failure "No local asset family was parsed from the register."
-}
-
-if ($registeredExternalPaths.Count -eq 0) {
-    Add-Failure "No external asset path was parsed from the register."
-}
+if ($registeredLocalPaths.Count -eq 0) { Add-Failure "No local asset family was parsed from the register." }
+if ($registeredExternalPaths.Count -eq 0) { Add-Failure "No external asset path was parsed from the register." }
 
 $expectedFinalLocalPaths = @(
     "Storytellers/SG1_Command",
@@ -503,6 +270,8 @@ $expectedFinalLocalPaths = @(
     "Things/Building/SG1_GoauldRitualBasin",
     "Things/Building/SG1_PrimtaIncubationBasin",
     "Things/Building/SG1_PrimtaPreservationBasin",
+    "Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet",
+    "Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh",
     "UI/Xenotypes/SG1_GoauldHost",
     "UI/Xenotypes/SG1_Jaffa",
     "UI/Genes/SG1_GoauldLongevity",
@@ -530,27 +299,14 @@ $expectedFinalLocalPaths = @(
     "World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal",
     "World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous"
 )
-$actualFinalLocalPaths = @(
-    $registeredLocalPaths |
-        Where-Object { $registeredLocalStatuses[$_] -ceq "final" } |
-        Sort-Object
-)
-$finalPathDifferences = @(
-    Compare-Object `
-        -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) `
-        -DifferenceObject $actualFinalLocalPaths `
-        -CaseSensitive
-)
 
+$actualFinalLocalPaths = @($registeredLocalPaths | Where-Object { $registeredLocalStatuses[$_] -ceq "final" } | Sort-Object)
+$finalPathDifferences = @(Compare-Object -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) -DifferenceObject $actualFinalLocalPaths -CaseSensitive)
 if ($finalPathDifferences.Count -gt 0) {
-    Add-Failure (
-        "Final local asset whitelist differs from the thirty-one approved storyteller, building, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families: {0}" -f
-        (($finalPathDifferences | ForEach-Object {
-            "{0} {1}" -f $_.SideIndicator, $_.InputObject
-        }) -join ", "))
+    Add-Failure ("Final local asset whitelist differs from the thirty-three approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the thirty-one approved storyteller, building, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, faction and event-site families."
+    Add-Pass "Final local asset whitelist matches the thirty-three approved families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {
@@ -560,11 +316,7 @@ else {
     Add-Pass "About/ModIcon.png is explicitly registered as final public mod identity."
 }
 
-$pngFiles = @(
-    Get-ChildItem -LiteralPath $texturesRoot -Filter "*.png" -File -Recurse |
-        Sort-Object FullName
-)
-
+$pngFiles = @(Get-ChildItem -LiteralPath $texturesRoot -Filter "*.png" -File -Recurse | Sort-Object FullName)
 $actualFamilyCounts = @{}
 $actualFamilyPaths = New-Object System.Collections.Generic.List[string]
 $invalidPngFiles = New-Object System.Collections.Generic.List[string]
@@ -572,27 +324,17 @@ $pngSignature = @(137, 80, 78, 71, 13, 10, 26, 10)
 
 foreach ($file in $pngFiles) {
     $relative = $file.FullName.Substring($texturesRoot.Length)
-    $relative = $relative.TrimStart(
-        [char[]]@(
-            [IO.Path]::DirectorySeparatorChar,
-            [IO.Path]::AltDirectorySeparatorChar))
-    # Normalize the original PNG path directly. Windows PowerShell 5.1 can
-    # bind Path.ChangeExtension($relative, $null) as an empty extension and
-    # leave a trailing dot, which would split every physical file into its own
-    # false family.
+    $relative = $relative.TrimStart([char[]]@([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar))
     $family = Normalize-TextureFamily $relative
-
     if (-not $actualFamilyCounts.ContainsKey($family)) {
         $actualFamilyCounts[$family] = 0
         [void]$actualFamilyPaths.Add($family)
     }
-
     $actualFamilyCounts[$family]++
 
     try {
         $bytes = [IO.File]::ReadAllBytes($file.FullName)
         $validSignature = $bytes.Length -ge 8
-
         if ($validSignature) {
             for ($index = 0; $index -lt 8; $index++) {
                 if ($bytes[$index] -ne $pngSignature[$index]) {
@@ -601,10 +343,7 @@ foreach ($file in $pngFiles) {
                 }
             }
         }
-
-        if (-not $validSignature) {
-            [void]$invalidPngFiles.Add($relative.Replace("\", "/"))
-        }
+        if (-not $validSignature) { [void]$invalidPngFiles.Add($relative.Replace("\", "/")) }
     }
     catch {
         [void]$invalidPngFiles.Add($relative.Replace("\", "/"))
@@ -612,130 +351,47 @@ foreach ($file in $pngFiles) {
 }
 
 if ($invalidPngFiles.Count -gt 0) {
-    Add-Failure ("Invalid or unreadable PNG file(s): {0}" -f
-        ($invalidPngFiles -join ", "))
+    Add-Failure ("Invalid or unreadable PNG file(s): {0}" -f ($invalidPngFiles -join ", "))
 }
 else {
     Add-Pass "All local PNG files have a valid PNG signature."
 }
 
-$familyDifferences = @(
-    Compare-Object `
-        -ReferenceObject @($registeredLocalPaths | Sort-Object) `
-        -DifferenceObject @($actualFamilyPaths | Sort-Object) `
-        -CaseSensitive
-)
+$familyDifferences = @(Compare-Object -ReferenceObject @($registeredLocalPaths | Sort-Object) -DifferenceObject @($actualFamilyPaths | Sort-Object) -CaseSensitive)
+$missingRegisteredFamilies = @($familyDifferences | Where-Object { $_.SideIndicator -eq "<=" } | ForEach-Object { [string]$_.InputObject })
+$unregisteredActualFamilies = @($familyDifferences | Where-Object { $_.SideIndicator -eq "=>" } | ForEach-Object { [string]$_.InputObject })
 
-$missingRegisteredFamilies = @(
-    $familyDifferences |
-        Where-Object { $_.SideIndicator -eq "<=" } |
-        ForEach-Object { [string]$_.InputObject }
-)
-$unregisteredActualFamilies = @(
-    $familyDifferences |
-        Where-Object { $_.SideIndicator -eq "=>" } |
-        ForEach-Object { [string]$_.InputObject }
-)
-
-if ($missingRegisteredFamilies.Count -gt 0) {
-    Add-Failure ("Registered family without matching PNG files: {0}" -f
-        ($missingRegisteredFamilies -join ", "))
-}
-else {
-    Add-Pass "Every registered local family resolves to PNG files."
-}
-
-if ($unregisteredActualFamilies.Count -gt 0) {
-    Add-Failure ("Unregistered local texture family: {0}" -f
-        ($unregisteredActualFamilies -join ", "))
-}
-else {
-    Add-Pass "Every local texture family is registered."
-}
+if ($missingRegisteredFamilies.Count -gt 0) { Add-Failure ("Registered family without matching PNG files: {0}" -f ($missingRegisteredFamilies -join ", ")) }
+else { Add-Pass "Every registered local family resolves to PNG files." }
+if ($unregisteredActualFamilies.Count -gt 0) { Add-Failure ("Unregistered local texture family: {0}" -f ($unregisteredActualFamilies -join ", ")) }
+else { Add-Pass "Every local texture family is registered." }
 
 $expectedPngCount = 0
-
 foreach ($path in $registeredLocalPaths) {
     $expectedPngCount += [int]$registeredLocalCounts[$path]
-
-    $actualPath = @(
-        $actualFamilyPaths |
-            Where-Object { $_ -ceq $path }
-    ) | Select-Object -First 1
-
-    if ($null -eq $actualPath) {
-        continue
-    }
-
-    $actualCount = [int]$actualFamilyCounts[$actualPath]
-    $expectedCount = [int]$registeredLocalCounts[$path]
-
-    if ($actualCount -ne $expectedCount) {
-        Add-Failure (
-            "Family '{0}' contains {1} PNG file(s); register expects {2}." -f
-            $path,
-            $actualCount,
-            $expectedCount)
+    if (-not $actualFamilyCounts.ContainsKey($path)) { continue }
+    if ([int]$actualFamilyCounts[$path] -ne [int]$registeredLocalCounts[$path]) {
+        Add-Failure ("Family '{0}' contains {1} PNG file(s); register expects {2}." -f $path, $actualFamilyCounts[$path], $registeredLocalCounts[$path])
     }
 }
-
-if ($expectedPngCount -ne $pngFiles.Count) {
-    Add-Failure (
-        "Registered PNG total is {0}; repository contains {1}." -f
-        $expectedPngCount,
-        $pngFiles.Count)
-}
-else {
-    Add-Pass "Registered PNG counts match the repository."
-}
+if ($expectedPngCount -ne $pngFiles.Count) { Add-Failure ("Registered PNG total is {0}; repository contains {1}." -f $expectedPngCount, $pngFiles.Count) }
+else { Add-Pass "Registered PNG counts match the repository." }
 
 $localReferences = New-Object System.Collections.Generic.List[string]
 $externalReferences = New-Object System.Collections.Generic.List[string]
-$textureNodeNames = @(
-    "activateTexPath",
-    "commandIconPath",
-    "expandingIconTexture",
-    "factionIconPath",
-    "iconPath",
-    "portraitLarge",
-    "portraitTiny",
-    "settlementTexturePath",
-    "siteTexture",
-    "texPath",
-    "texture",
-    "uiIconPath",
-    "wornGraphicPath"
-)
+$textureNodeNames = @("activateTexPath", "commandIconPath", "expandingIconTexture", "factionIconPath", "iconPath", "portraitLarge", "portraitTiny", "settlementTexturePath", "siteTexture", "texPath", "texture", "uiIconPath", "wornGraphicPath")
 
-$xmlRoot = Join-Path $RepositoryRoot "1.6"
-$xmlFiles = @(
-    Get-ChildItem -LiteralPath $xmlRoot -Filter "*.xml" -File -Recurse |
-        Sort-Object FullName
-)
-
+$xmlFiles = @(Get-ChildItem -LiteralPath $xmlRoot -Filter "*.xml" -File -Recurse | Sort-Object FullName)
 foreach ($file in $xmlFiles) {
     try {
         [xml]$xml = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8
-
         foreach ($node in @($xml.SelectNodes("//*"))) {
-            if ($textureNodeNames -notcontains $node.Name) {
-                continue
-            }
-
-            $path = [string]$node.InnerText
-            $path = $path.Trim()
-
-            if ([string]::IsNullOrWhiteSpace($path) -or
-                -not $path.Contains("/")) {
-                continue
-            }
-
+            if ($textureNodeNames -notcontains $node.Name) { continue }
+            $path = ([string]$node.InnerText).Trim()
+            if ([string]::IsNullOrWhiteSpace($path) -or -not $path.Contains("/")) { continue }
             $family = Normalize-TextureFamily $path
-
             if ($actualFamilyPaths -ccontains $family) {
-                if ($localReferences -cnotcontains $family) {
-                    [void]$localReferences.Add($family)
-                }
+                if ($localReferences -cnotcontains $family) { [void]$localReferences.Add($family) }
             }
             elseif ($externalReferences -cnotcontains $path) {
                 [void]$externalReferences.Add($path)
@@ -743,34 +399,20 @@ foreach ($file in $xmlFiles) {
         }
     }
     catch {
-        Add-Failure ("Could not parse XML while checking texture paths: {0}: {1}" -f
-            $file.FullName,
-            $_.Exception.Message)
+        Add-Failure ("Could not parse XML while checking texture paths: {0}: {1}" -f $file.FullName, $_.Exception.Message)
     }
 }
 
-$sourceRoot = Join-Path $RepositoryRoot "Source"
-$csharpFiles = @(
-    Get-ChildItem -LiteralPath $sourceRoot -Filter "*.cs" -File -Recurse |
-        Sort-Object FullName
-)
-$csharpPatterns = @(
-    'ContentFinder<Texture2D>\.Get\("(?<path>[^"]+)"',
-    'commandIconPath\s*=\s*"(?<path>[^"]+)"'
-)
-
+$csharpPatterns = @('ContentFinder<Texture2D>\.Get\("(?<path>[^"]+)"', 'commandIconPath\s*=\s*"(?<path>[^"]+)"')
+$csharpFiles = @(Get-ChildItem -LiteralPath $sourceRoot -Filter "*.cs" -File -Recurse | Sort-Object FullName)
 foreach ($file in $csharpFiles) {
     $text = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8
-
     foreach ($pattern in $csharpPatterns) {
         foreach ($match in [regex]::Matches($text, $pattern)) {
             $path = $match.Groups["path"].Value
             $family = Normalize-TextureFamily $path
-
             if ($actualFamilyPaths -ccontains $family) {
-                if ($localReferences -cnotcontains $family) {
-                    [void]$localReferences.Add($family)
-                }
+                if ($localReferences -cnotcontains $family) { [void]$localReferences.Add($family) }
             }
             elseif ($externalReferences -cnotcontains $path) {
                 [void]$externalReferences.Add($path)
@@ -779,71 +421,21 @@ foreach ($file in $csharpFiles) {
     }
 }
 
-$referenceDifferences = @(
-    Compare-Object `
-        -ReferenceObject @($actualFamilyPaths | Sort-Object) `
-        -DifferenceObject @($localReferences | Sort-Object) `
-        -CaseSensitive
-)
-$unreferencedFamilies = @(
-    $referenceDifferences |
-        Where-Object { $_.SideIndicator -eq "<=" } |
-        ForEach-Object { [string]$_.InputObject }
-)
-$missingLocalReferences = @(
-    $referenceDifferences |
-        Where-Object { $_.SideIndicator -eq "=>" } |
-        ForEach-Object { [string]$_.InputObject }
-)
+$referenceDifferences = @(Compare-Object -ReferenceObject @($actualFamilyPaths | Sort-Object) -DifferenceObject @($localReferences | Sort-Object) -CaseSensitive)
+$unreferencedFamilies = @($referenceDifferences | Where-Object { $_.SideIndicator -eq "<=" } | ForEach-Object { [string]$_.InputObject })
+$missingLocalReferences = @($referenceDifferences | Where-Object { $_.SideIndicator -eq "=>" } | ForEach-Object { [string]$_.InputObject })
+if ($unreferencedFamilies.Count -gt 0) { Add-Failure ("Local family has no direct XML or C# reference: {0}" -f ($unreferencedFamilies -join ", ")) }
+else { Add-Pass "Every local texture family has a direct XML or C# reference." }
+if ($missingLocalReferences.Count -gt 0) { Add-Failure ("Source references a missing local family: {0}" -f ($missingLocalReferences -join ", ")) }
+else { Add-Pass "No direct local texture reference is missing." }
 
-if ($unreferencedFamilies.Count -gt 0) {
-    Add-Failure ("Local family has no direct XML or C# reference: {0}" -f
-        ($unreferencedFamilies -join ", "))
-}
-else {
-    Add-Pass "Every local texture family has a direct XML or C# reference."
-}
-
-if ($missingLocalReferences.Count -gt 0) {
-    Add-Failure ("Source references a missing local family: {0}" -f
-        ($missingLocalReferences -join ", "))
-}
-else {
-    Add-Pass "No direct local texture reference is missing."
-}
-
-$externalDifferences = @(
-    Compare-Object `
-        -ReferenceObject @($registeredExternalPaths | Sort-Object) `
-        -DifferenceObject @($externalReferences | Sort-Object) `
-        -CaseSensitive
-)
-$unusedExternalRegistrations = @(
-    $externalDifferences |
-        Where-Object { $_.SideIndicator -eq "<=" } |
-        ForEach-Object { [string]$_.InputObject }
-)
-$unregisteredExternalReferences = @(
-    $externalDifferences |
-        Where-Object { $_.SideIndicator -eq "=>" } |
-        ForEach-Object { [string]$_.InputObject }
-)
-
-if ($unusedExternalRegistrations.Count -gt 0) {
-    Add-Failure ("Registered external path is no longer referenced: {0}" -f
-        ($unusedExternalRegistrations -join ", "))
-}
-else {
-    Add-Pass "Every registered external texture path remains referenced."
-}
-
-if ($unregisteredExternalReferences.Count -gt 0) {
-    Add-Failure ("Unregistered external texture path: {0}" -f
-        ($unregisteredExternalReferences -join ", "))
-}
-else {
-    Add-Pass "Every direct external texture path is registered."
-}
+$externalDifferences = @(Compare-Object -ReferenceObject @($registeredExternalPaths | Sort-Object) -DifferenceObject @($externalReferences | Sort-Object) -CaseSensitive)
+$unusedExternalRegistrations = @($externalDifferences | Where-Object { $_.SideIndicator -eq "<=" } | ForEach-Object { [string]$_.InputObject })
+$unregisteredExternalReferences = @($externalDifferences | Where-Object { $_.SideIndicator -eq "=>" } | ForEach-Object { [string]$_.InputObject })
+if ($unusedExternalRegistrations.Count -gt 0) { Add-Failure ("Registered external path is no longer referenced: {0}" -f ($unusedExternalRegistrations -join ", ")) }
+else { Add-Pass "Every registered external texture path remains referenced." }
+if ($unregisteredExternalReferences.Count -gt 0) { Add-Failure ("Unregistered external texture path: {0}" -f ($unregisteredExternalReferences -join ", ")) }
+else { Add-Pass "Every direct external texture path is registered." }
 
 Write-Host ""
 Write-Host "Final local texture families: $($actualFinalLocalPaths.Count)"

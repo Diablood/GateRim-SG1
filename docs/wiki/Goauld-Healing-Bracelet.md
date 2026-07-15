@@ -1,7 +1,10 @@
 # Bracelet de guérison Goa'uld
 
-> Statut : prototype testable
+> Statut : Implémenté
 > Première version : `0.3.62-dev`
+> Visuel final : `0.3.94-dev`
+
+![Bracelet de guérison Goa'uld final](images/GoauldHealingBracelet.png)
 
 Le bracelet de guérison est un dispositif médical Goa'uld séparé du kara kesh.
 Il est porté naturellement par les Grands Maîtres et n'utilise jamais l'énergie
@@ -27,10 +30,15 @@ addictions ou la mort.
 
 ## Acquisition et fabrication
 
-Les Grands Maîtres constituent la source naturelle rare du prototype. Le
+Les Grands Maîtres constituent la source naturelle rare du dispositif. Le
 bracelet n'apparaît pas chez les marchands ordinaires. Sa fabrication au banc
 d'usinage exige les recherches `Biotechnologies Goa'uld` et `Kara kesh`, ainsi
 qu'un artisan de niveau `12`.
 
-La texture actuelle est provisoire et conserve déjà le chemin prévu pour la
-future passe visuelle globale.
+## Visuel final
+
+`0.3.94-dev` remplace l'ancien visuel réutilisé du Zat'nik'tel par une
+illustration transparente dédiée : bracelet circulaire en or et argent autour
+d'un noyau orange lumineux. Le PNG `128×128` a été validé au sol, dans
+l'inventaire, dans l'inspection et lorsqu'il est équipé. Le chemin historique et
+tous les comportements restent inchangés.

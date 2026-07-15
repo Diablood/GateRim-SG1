@@ -6,6 +6,9 @@
 > Onde cinétique : 0.3.59-dev
 > Attaque neurale : 0.3.60-dev
 > Maintien paralysant : 0.3.61-dev
+> Visuel final : 0.3.94-dev
+
+![Kara kesh final](images/KaraKesh.png)
 
 ## Fonctionnement
 
@@ -120,11 +123,13 @@ Armures Jaffa -> Kara kesh
 La recette exige `Fabrication 12`, six composants avancés, `100` unités de
 plastacier et `60` unités d'or.
 
-## Visuel provisoire
+## Visuel final
 
-La texture et les icônes de commandes restent provisoires. Elles seront
-remplacées pendant la future passe visuelle globale sans changer l'identité de
-l'objet dans les sauvegardes.
+`0.3.94-dev` remplace l'ancien visuel réutilisé du Zat'nik'tel par une
+illustration transparente dédiée : gant articulé bronze et or, sangles de cuir
+et gemme de contrôle rouge. Le PNG `128×128` a été validé au sol, dans
+l'inventaire, dans l'inspection et lorsqu'il est équipé. Le chemin historique et
+l'identité de sauvegarde restent inchangés.
 
 ## Idées non planifiées
 

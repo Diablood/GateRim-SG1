@@ -76,10 +76,10 @@ manufacture, matching the existing GateRim crafting-research convention.
 - `SG1_KaraKesh` owns the stable save identity and texture path.
 - `GameComponent_GoauldHostCasteInitializer` equips the shield once per System
   Lord and persists that assignment, including migration of existing saves.
-- `GR_DefOf.SG1_KaraKesh` supports deterministic debug
-  spawning.
+- `GR_DefOf.SG1_KaraKesh` supports deterministic debug spawning.
 - `GoauldSystemLordShieldDebugActions` provides item, pawn and damage tests.
-- the current raster is a temporary placeholder for the global visual pass.
+- `0.3.94-dev` replaces the temporary raster at the same stable path with the
+  accepted transparent `128×128` articulated bronze-and-gold hand device.
 
 `Comp_KaraKeshShield` remains a `CompShield` subclass and delegates native
 shield behavior only for a biologically eligible wearer. Offensive mode state
@@ -171,6 +171,15 @@ functional `r2` was required.
 cooldown and research. The kara kesh receives no medical command and spends no
 shield energy on healing. See `docs/GOAULD_HEALING_BRACELET.md`.
 
+## Final visual
+
+`0.3.94-dev` preserves the stable
+`Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh` path and replaces only its PNG
+contents. The accepted item art shows an articulated bronze-and-gold hand device
+with leather straps and a red central control gem. It is validated on the
+ground, in inventory, in inspection and equipped. A byte-identical wiki copy is
+protected at `docs/wiki/images/KaraKesh.png`.
+
 ## Final validation
 
 Use exactly:
@@ -186,7 +195,6 @@ bypass, the audible and visible EMP collapse, full reset after `1800` ticks and
 a clean `Player.log`. Rapid impacts must not recharge between hits; recharge
 must resume about `300` ticks after the final absorbed impact.
 
-Validation result: final revision `r5` passed the required in-game test. The
-research dependency, natural equipment, energy gizmo, ranged absorption and
-recharge pause, melee bypass, EMP collapse and reset, and `Player.log` were
-validated by the maintainer.
+The original `0.3.57-dev` functional revision passed the complete shield test.
+The `0.3.94-dev` visual revision additionally passed focused ground, inventory,
+inspection, equipped, unchanged ability/AI and save/reload validation.

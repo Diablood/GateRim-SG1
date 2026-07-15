@@ -1,4 +1,4 @@
-# Goa'uld healing bracelet prototype
+# Goa'uld healing bracelet
 
 ## Boundary
 
@@ -34,12 +34,22 @@ usable immediately by biologically eligible wearers. Local production requires
 both `SG1_GoauldBiotechnology` and `SG1_KaraKeshResearch`, Crafting `12`, four
 advanced components, `60` plasteel and `40` gold at a machining table.
 
+## Final visual
+
+`0.3.94-dev` replaces the temporary Zat'nik'tel reuse at the existing
+`Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet`
+path. The accepted transparent `128×128` item art shows a gold-and-silver
+circular medical device around an orange luminous core. It is validated on the
+ground, in inventory, in inspection and equipped. No Def, component, assignment,
+research, recipe, balance or save state changes.
+
+A byte-identical player-wiki reference is protected by the visual checker at
+`docs/wiki/images/GoauldHealingBracelet.png`.
+
 ## Validation
 
-Final local revision `r1` passed the forced `0.3.62.0` build and the complete
-mandatory in-game checklist. Treatment, fatigue, cooldown, hostile AI,
-save/reload, research visibility and `Player.log` were confirmed by the
-maintainer. Exact steps remain in `docs/PROJECT_STATE.md` and
-`docs/TESTING_CURRENT.md`; durable coverage is recorded in `docs/TESTING.md`.
-The final revision was committed, tagged as `v0.3.62-dev` and published with
-the synchronized separate wiki.
+Final local functional revision `r1` of `0.3.62-dev` passed the original
+medical checklist. The `0.3.94-dev` visual revision also passed focused in-game
+presentation, unchanged treatment, hostile AI and save/reload checks. Durable
+behavior coverage remains in `docs/TESTING.md`; final art drift is checked by
+`tools/check-visual-assets.ps1`.

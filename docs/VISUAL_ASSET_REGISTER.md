@@ -2,44 +2,38 @@
 
 ## Milestone
 
-- Version: `0.3.93-dev`
-- Branch: `feature/final-goauld-primta-basin-visuals`
-- Target assembly: `0.3.93.0`
-- Status: `0.3.93-dev` basin-visual lot validated after the final ritual-basin `2×2` / `3×3` revision and wiki synchronization.
+- Version: `0.3.94-dev`
+- Branch: `feature/final-goauld-hand-device-visuals`
+- Target assembly: `0.3.94.0`
+- Status: `0.3.94-dev` hand-device visual lot validated in game after local revision `r1` and protected for publication in documentary revision `r2`.
 
 ## Purpose
 
-This document is the authoritative inventory of GateRim SG-1 visual assets.
-It records every local texture family, every direct vanilla texture dependency
-and the current art status. Paths are kept stable unless a later art milestone
-explicitly proves that a technical rename is required.
+This document is the authoritative inventory of GateRim SG-1 visual assets. It
+records every local texture family, direct vanilla texture dependency and current
+art status. Paths remain stable unless a later milestone proves that a technical
+rename is required.
 
 The companion command `./tools/check-visual-assets.cmd` verifies that this
-register and the repository remain synchronized. The published `0.3.85-dev`
-audit established the strict acceptance boundary and progressive wiki-reference
-rule. `0.3.86-dev` applied the first bounded definitive-art lot with two
-xenotype icons. `0.3.88-dev` added the approved large and tiny storyteller
-portraits. `0.3.89-dev` prepared six final gameplay-gene icons, validated the
-four existing world-faction icon families and completed the wiki gallery for
-all previously validated event-site icons. `0.3.90-dev` removes the three obsolete
-forehead-mark migration GeneDefs and their icon families while preserving the
-intrinsic pawn-overlay system. `0.3.91-dev` finalizes the three real intrinsic
-pawn-overlay families with compact South-only Apophis marks. `0.3.92-dev`
-replaces four personal-icon command placeholders with dedicated transparent
-symbols. `0.3.93-dev` finalizes the Goa'uld ritual basin and the two distinct
-Prim'ta basin families, including the even/odd placement variants and their
-byte-identical wiki references.
+register and the repository remain synchronized. `0.3.94-dev` replaces the two
+remaining P0 Zat'nik'tel reuses with dedicated final kara kesh and healing
+bracelet art while keeping both established apparel paths.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
 - The `Textures/` families accepted as `final` are the two storyteller
-  portraits, two xenotype icons, six gameplay-gene icons, three intrinsic Jaffa
-  forehead-mark overlays, four command icons, three building families, four
-  world-faction icons and seven world-event site icons listed below.
-- Equipment, buildings not explicitly listed below, other pawn overlays,
-  projectiles, pawns and command icons remain temporary even when functional.
+  portraits, three buildings, two hand devices, two xenotype icons, six
+  gameplay-gene icons, three intrinsic Jaffa forehead-mark overlays, four
+  command icons, four world-faction icons and seven world-event site icons.
+- Every other equipment, building, pawn overlay, projectile, pawn or command
+  family remains temporary unless explicitly listed below.
+
+Validated hand-device families:
+
+- `Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh`
+- `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet`
 
 Validated building families:
 
@@ -110,7 +104,7 @@ Validated world-event site families:
 
 | Priority | Meaning |
 |---|---|
-| `P0` | Misleading or highly visible placeholder; replace in the first definitive-art lot. |
+| `P0` | Misleading or highly visible placeholder; replace first. |
 | `P1` | Prominent temporary art; replace before presentation closure. |
 | `P2` | Visible development art; replace after P0/P1. |
 | `P3` | Low-priority polish or accepted generic dependency. |
@@ -120,27 +114,26 @@ Validated world-event site families:
 
 - Local PNG files: `606`.
 - Local texture families: `73`.
-- Accepted final local families: `31` (`2` storyteller portraits, `2` xenotype
-  icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
-  `4` command icons, `3` building families, `4` world-faction icons and `7`
-  world-event site icons).
+- Accepted final local families: `33` (`2` storyteller portraits, `3`
+  buildings, `2` hand devices, `2` xenotype icons, `6` gameplay-gene icons,
+  `3` intrinsic Jaffa forehead-mark overlays, `4` command icons, `4`
+  world-faction icons and `7` world-event site icons).
 - Temporary original families: `25`.
 - Temporary recolor families: `11`.
-- Temporary reuse families: `6`.
+- Temporary reuse families: `4`.
 - Project-icon placeholder families: `0`.
-- Priorities: `2` P0, `21` P1, `19` P2, `31` done.
-- Direct external texture paths: `6`.
+- Priorities: `0` P0, `21` P1, `19` P2, `33` done.
+- Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
 - Unreferenced local texture families: `0`.
 
 ## Highest-priority findings
 
-1. The kara kesh and healing bracelet reuse the Zat’nik’tel inventory texture.
-2. The Prim’ta larva and free Goa’uld symbiote use the same image.
-3. Several distinct Tok’ra mission objects reuse one intelligence-packet icon,
+1. The Prim'ta larva and free Goa'uld symbiote still use the same image.
+2. Several distinct Tok'ra mission objects reuse one intelligence-packet icon,
    and the relay sabotage device reuses the secure communicator.
-4. Jaffa, officer, Tok’ra and SGC apparel are technically complete but remain
+3. Jaffa, officer, Tok'ra and SGC apparel are technically complete but remain
    temporary art families; many body-type variants are exact copies rather than
    tailored silhouettes.
 
@@ -153,133 +146,117 @@ same canonical family. Representative dimensions refer to the base image.
 | Canonical path under `Textures/` | Files | Base size | Surface | Status | Priority | Referenced by | Audit note |
 |---|---:|---:|---|---|---|---|---|
 | `Storytellers/SG1_Command` | 1 | 560×600 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided transparent large portrait validated in the real storyteller-selection interface. |
-| `Storytellers/SG1_Command_Tiny` | 1 | 122×130 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Maintainer-provided dedicated close crop validated on the small storyteller UI surfaces. |
-| `Things/Building/SG1_GoauldRitualBasin` | 1 | 256×256 | Map/building | `final` | `done` | SG1_GoauldRitualBasin, SG1_GoauldRitualBasinLarge | Validated ceremonial platform shared by the `2×2` and `3×3` placement variants; both use the same `2×2` rendered size and UI icon. |
-| `Things/Building/SG1_PrimtaIncubationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaIncubationBasin | Validated green one-cell incubation basin; fixed artwork with directional interaction-cell rotation preserved. |
-| `Things/Building/SG1_PrimtaPreservationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaPreservationBasin | Validated blue one-cell preservation storage; inherited stuff coloring and edge shadows removed. |
-| `Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint` | 1 | 64×64 | Map/building | `temporary-original` | `P1` | SG1_TokraObservationPoint | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Building/SG1_TokraSecureCommunicator` | 1 | 128×128 | Map/building | `temporary-reuse` | `P1` | SG1_TokraRelaySabotageDevice, SG1_TokraSecureCommunicator | Communicator art is also reused by the relay sabotage device. |
-| `Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot` | 1 | 64×64 | Map/building | `temporary-original` | `P2` | SG1_TokraDeliveryDropSpot | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Item/Equipment/WeaponRanged/SG1_Bolas` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_Bolas | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Item/Equipment/WeaponRanged/SG1_MatokStaff` | 1 | 128×48 | Map/inventory weapon | `temporary-original` | `P2` | SG1_MatokStaff | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_TokraHypodermicRifle | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_ZatnikTel | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Item/SG1_PrimtaLarva` | 1 | 128×128 | Map/inventory item | `temporary-reuse` | `P1` | SG1_ImmaturePrimtaSymbiote, SG1_PrimtaLarva | Exact shared image between biologically distinct larval/symbiote forms. |
-| `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 64×64 | Map/inventory item | `temporary-reuse` | `P1` | SG1_TokraIntroductionArtifact, SG1_TokraMissionIntelPacket, SG1_TokraObservationDevice, SG1_TokraOrganicDeadDrop | One packet icon represents several different Tok’ra mission objects. |
-| `Things/Item/SG1_TretoninDose` | 1 | 64×64 | Map/inventory item | `temporary-original` | `P2` | SG1_TretoninDose | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote` | 1 | 128×128 | Pawn/map | `temporary-reuse` | `P1` | SG1_GoauldQueen, SG1_GoauldSymbiote, SG1_TokraSymbiote | Exact shared image between biologically distinct larval/symbiote forms. |
-| `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet` | 1 | 128×128 | Pawn apparel | `temporary-reuse` | `P0` | SG1_GoauldHealingBracelet | Exact reuse of the Zat texture for a different Goa’uld device. |
-| `Things/Pawn/Humanlike/Apparel/JaffaDeployedHelmet/JaffaDeployedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaDeployedHelmet | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/JaffaGauntlets/JaffaGauntlets` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaGauntlets | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/JaffaHeavyArmor/JaffaHeavyArmor` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaHeavyArmor | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/JaffaLightArmor/JaffaLightArmor` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaLightArmor | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/JaffaOfficerArmor/JaffaOfficerArmor` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P1` | SG1_JaffaOfficerArmor | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/JaffaOfficerDeployedHelmet/JaffaOfficerDeployedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-recolor` | `P1` | SG1_JaffaOfficerDeployedHelmet | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/JaffaOfficerRetractedHelmet/JaffaOfficerRetractedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-recolor` | `P1` | SG1_JaffaOfficerRetractedHelmet | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/JaffaReinforcedBoots/JaffaReinforcedBoots` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaReinforcedBoots | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/JaffaRetractedHelmet/JaffaRetractedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaRetractedHelmet | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh` | 1 | 128×128 | Pawn apparel | `temporary-reuse` | `P0` | SG1_KaraKesh | Exact reuse of the Zat texture for a different Goa’uld device. |
-| `Things/Pawn/Humanlike/Apparel/SGTacticalBoots/SGTacticalBoots` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTacticalBoots | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/SGTacticalGloves/SGTacticalGloves` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTacticalGloves | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/SGTacticalVest/SGTacticalVest` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTacticalVest | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamFieldCap/SGTeamFieldCap` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTeamFieldCap | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamFieldHelmet/SGTeamFieldHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTeamFieldHelmet | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamJacketBlack/SGTeamJacketBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamJacket | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamJacketDesert/SGTeamJacketDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamJacket | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamJacketOlive/SGTeamJacketOlive` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_OliveSGTeamJacket | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamPantsBlack/SGTeamPantsBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamPants | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamPantsDesert/SGTeamPantsDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamPants | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamPantsOlive/SGTeamPantsOlive` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_OliveSGTeamPants | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamUniform/SGTeamUniform` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_GenericSGTeamUniform | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamUniformBlack/SGTeamUniformBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamUniform | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/SGTeamUniformDesert/SGTeamUniformDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamUniform | Color variant derived from another temporary family; keep path stable for final replacement. |
-| `Things/Pawn/Humanlike/Apparel/TokraFieldGarb/TokraFieldGarb` | 25 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_TokraFieldGarb | Custom functional art, but still part of the planned definitive equipment/presentation pass. |
-| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericGoldIntrinsic | Maintainer-validated compact gold Apophis mark for First Primes; South-only visible texture with three transparent facings. |
-| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericIntrinsic | Maintainer-validated compact black Apophis mark for ordinary Goa'uld-domain Jaffa; South-only visible texture with three transparent facings. |
-| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericSilverIntrinsic | Maintainer-validated compact silver Apophis mark for selected elites; South-only visible texture with three transparent facings. |
-| `Things/Projectile/SG1_BolasProjectile` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_BolasProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Projectile/SG1_MatokBlast` | 1 | 64×32 | Map projectile | `temporary-original` | `P2` | SG1_MatokStaffProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Projectile/SG1_TokraHypodermicDart` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_TokraHypodermicDart | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `Things/Projectile/SG1_ZatnikTelBlast` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_ZatnikTelProjectile | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `UI/Commands/SG1_AutonomousHunt` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Maintainer-approved moving Goa'uld symbiote and red target reticle for the autonomous-hunt toggle. |
-| `UI/Commands/SG1_EmergencyExtraction` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/HediffComp_GoauldEmergencyExtraction.cs | Maintainer-approved surgical table, lamp and separated brown symbiote for the instant developer extraction action. |
-| `UI/Commands/SG1_ForcedImplantation` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs | Maintainer-approved brown symbiote, grey host and short red impact arrow for direct forced implantation. |
-| `UI/Commands/SG1_JaffaHelmetMode` | 1 | 64×64 | Command UI | `temporary-original` | `P2` | C# Source/GateRimSG1/Jaffa/Comp_RetractableJaffaHelmet.cs | Custom functional art that remains acceptable for development but is not yet accepted as final. |
-| `UI/Commands/SG1_RitualImplantation` | 1 | 64×64 | Command UI | `final` | `done` | C# Source/GateRimSG1/Goauld/Comp_GoauldForcedImplantation.cs, C# Source/GateRimSG1/Jaffa/Comp_JaffaPrimtaCeremony.cs | Maintainer-approved symbiote, host, red arrow and gold ceremonial seal; existing shared ritual/implantation uses remain unchanged. |
-| `UI/Genes/SG1_GoauldLongevity` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_GoauldLongevity | Maintainer-approved hourglass and cyclic-arrow symbol reused from the abandoned Jaffa prototype for the active Goa'uld-host longevity gene. |
-| `UI/Genes/SG1_JaffaLineage` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaLineage | Maintainer-approved adult-and-descendant Jaffa faces with visible forehead marks, validated as the lineage symbol. |
-| `UI/Genes/SG1_JaffaPhysiology` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPhysiology | Maintainer-approved centered crate with an overlapping green upward arrow, representing increased carrying capacity. |
-| `UI/Genes/SG1_JaffaPouchPotential` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPouchPotential | Maintainer-approved vanilla-style pawn body with two abdominal incision lines crossing at 45 degrees. |
-| `UI/Genes/SG1_JaffaSymbioteCompatibility` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaSymbioteCompatibility | Maintainer-approved brown immature symbiote with collar and four teeth inside a green compatibility circle. |
-| `UI/Genes/SG1_NaquadahBlood` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_NaquadahBlood | Maintainer-supplied blood-drop icon with a fluorescent green naquadah reflection. |
-| `UI/Xenotypes/SG1_GoauldHost` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_GoauldHost | Maintainer-approved symbolic icon using the defining Goa'uld symbiote rather than a human forehead mark or the personal mod icon. |
-| `UI/Xenotypes/SG1_Jaffa` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_Jaffa | Maintainer-supplied human/Baseliner icon carrying the mark of Apophis; replaces the unrelated vanilla Hussar icon. |
-| `World/WorldObjects/Expanding/SG1_FreeJaffa` | 1 | 128×128 | World faction | `final` | `done` | SG1_FreeJaffa | Maintainer explicitly accepted the existing Free Jaffa world-faction icon as final. |
-| `World/WorldObjects/Expanding/SG1_GoauldSystemLords` | 1 | 128×128 | World faction | `final` | `done` | SG1_GoauldSystemLordPrototype | Maintainer explicitly accepted the existing Goa'uld-domain world-faction icon as final. |
-| `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `final` | `done` | SG1_PlayerSGCExpedition | Maintainer explicitly accepted the existing SGC expedition world-faction icon as final. |
-| `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `final` | `done` | SG1_Tokra | Maintainer explicitly accepted the existing Tok'ra world-faction icon as final. |
-| `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraIntroductionArtifactWorldSite | Dedicated custom art already validated in its published presentation milestone. |
-| `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | 1 | 64×64 | World site | `final` | `done` | SG1_GoauldOpenConflictBattlefieldSite | Dedicated custom art already validated in its published presentation milestone. |
-| `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDecodedMissionWorldSite | Dedicated custom art already validated in its published presentation milestone. |
-| `World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraJaffaOfficerCaptureSite | Dedicated custom art already validated in its published presentation milestone. |
-| `World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraHiddenSafehouseMarker, SG1_TokraHiddenSafehouseSitePart | Dedicated custom art already validated in its published presentation milestone. |
-| `World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDistressCallWorldSite | Dedicated custom art already validated in its published presentation milestone. |
-| `World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraTemporaryBaseDeliverySite | Dedicated custom art already validated in its published presentation milestone. |
+| `Storytellers/SG1_Command_Tiny` | 1 | 122×130 | Storyteller UI | `final` | `done` | SG1_GateRimStoryteller | Dedicated close crop validated on small storyteller surfaces. |
+| `Things/Building/SG1_GoauldRitualBasin` | 1 | 256×256 | Map/building | `final` | `done` | SG1_GoauldRitualBasin, SG1_GoauldRitualBasinLarge | Validated ceremonial platform shared by the `2×2` and `3×3` placement variants. |
+| `Things/Building/SG1_PrimtaIncubationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaIncubationBasin | Validated green one-cell incubation basin. |
+| `Things/Building/SG1_PrimtaPreservationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaPreservationBasin | Validated blue one-cell preservation storage. |
+| `Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint` | 1 | 64×64 | Map/building | `temporary-original` | `P1` | SG1_TokraObservationPoint | Functional custom art pending final presentation. |
+| `Things/Building/SG1_TokraSecureCommunicator` | 1 | 128×128 | Map/building | `temporary-reuse` | `P1` | SG1_TokraRelaySabotageDevice, SG1_TokraSecureCommunicator | Communicator art is reused by the relay sabotage device. |
+| `Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot` | 1 | 64×64 | Map/building | `temporary-original` | `P2` | SG1_TokraDeliveryDropSpot | Functional custom art pending final presentation. |
+| `Things/Item/Equipment/WeaponRanged/SG1_Bolas` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_Bolas | Functional custom art pending final presentation. |
+| `Things/Item/Equipment/WeaponRanged/SG1_MatokStaff` | 1 | 128×48 | Map/inventory weapon | `temporary-original` | `P2` | SG1_MatokStaff | Functional custom art pending final presentation. |
+| `Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_TokraHypodermicRifle | Functional custom art pending final presentation. |
+| `Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_ZatnikTel | Functional custom art pending final presentation. |
+| `Things/Item/SG1_PrimtaLarva` | 1 | 128×128 | Map/inventory item | `temporary-reuse` | `P1` | SG1_ImmaturePrimtaSymbiote, SG1_PrimtaLarva | Shared image between distinct larval/symbiote forms. |
+| `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 64×64 | Map/inventory item | `temporary-reuse` | `P1` | SG1_TokraIntroductionArtifact, SG1_TokraMissionIntelPacket, SG1_TokraObservationDevice, SG1_TokraOrganicDeadDrop | One packet icon represents several mission objects. |
+| `Things/Item/SG1_TretoninDose` | 1 | 64×64 | Map/inventory item | `temporary-original` | `P2` | SG1_TretoninDose | Functional custom art pending final presentation. |
+| `Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote` | 1 | 128×128 | Pawn/map | `temporary-reuse` | `P1` | SG1_GoauldQueen, SG1_GoauldSymbiote, SG1_TokraSymbiote | Shared image between biologically distinct forms. |
+| `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet` | 1 | 128×128 | Pawn apparel item | `final` | `done` | SG1_GoauldHealingBracelet | Approved gold-and-silver healing bracelet with orange luminous core, validated on all item surfaces. |
+| `Things/Pawn/Humanlike/Apparel/JaffaDeployedHelmet/JaffaDeployedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaDeployedHelmet | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/JaffaGauntlets/JaffaGauntlets` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaGauntlets | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/JaffaHeavyArmor/JaffaHeavyArmor` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaHeavyArmor | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/JaffaLightArmor/JaffaLightArmor` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaLightArmor | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/JaffaOfficerArmor/JaffaOfficerArmor` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P1` | SG1_JaffaOfficerArmor | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/JaffaOfficerDeployedHelmet/JaffaOfficerDeployedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-recolor` | `P1` | SG1_JaffaOfficerDeployedHelmet | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/JaffaOfficerRetractedHelmet/JaffaOfficerRetractedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-recolor` | `P1` | SG1_JaffaOfficerRetractedHelmet | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/JaffaReinforcedBoots/JaffaReinforcedBoots` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaReinforcedBoots | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/JaffaRetractedHelmet/JaffaRetractedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaRetractedHelmet | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh` | 1 | 128×128 | Pawn apparel item | `final` | `done` | SG1_KaraKesh | Approved articulated bronze-and-gold hand device with red central gem, validated on all item surfaces. |
+| `Things/Pawn/Humanlike/Apparel/SGTacticalBoots/SGTacticalBoots` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTacticalBoots | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/SGTacticalGloves/SGTacticalGloves` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTacticalGloves | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/SGTacticalVest/SGTacticalVest` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTacticalVest | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamFieldCap/SGTeamFieldCap` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTeamFieldCap | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamFieldHelmet/SGTeamFieldHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_SGTeamFieldHelmet | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamJacketBlack/SGTeamJacketBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamJacket | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamJacketDesert/SGTeamJacketDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamJacket | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamJacketOlive/SGTeamJacketOlive` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_OliveSGTeamJacket | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamPantsBlack/SGTeamPantsBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamPants | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamPantsDesert/SGTeamPantsDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamPants | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamPantsOlive/SGTeamPantsOlive` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_OliveSGTeamPants | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamUniform/SGTeamUniform` | 29 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_GenericSGTeamUniform | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamUniformBlack/SGTeamUniformBlack` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_BlackSGTeamUniform | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/SGTeamUniformDesert/SGTeamUniformDesert` | 29 | 128×128 | Pawn apparel | `temporary-recolor` | `P2` | SG1_DesertSGTeamUniform | Color variant derived from temporary art. |
+| `Things/Pawn/Humanlike/Apparel/TokraFieldGarb/TokraFieldGarb` | 25 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_TokraFieldGarb | Functional custom art pending final presentation. |
+| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericGoldIntrinsic | Validated compact gold South-only Apophis mark. |
+| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericIntrinsic | Validated compact black South-only Apophis mark. |
+| `Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark` | 4 | 128×128 | Pawn overlay | `final` | `done` | SG1_JaffaForeheadMark_GenericSilverIntrinsic | Validated compact silver South-only Apophis mark. |
+| `Things/Projectile/SG1_BolasProjectile` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_BolasProjectile | Functional custom art pending final presentation. |
+| `Things/Projectile/SG1_MatokBlast` | 1 | 64×32 | Map projectile | `temporary-original` | `P2` | SG1_MatokStaffProjectile | Functional custom art pending final presentation. |
+| `Things/Projectile/SG1_TokraHypodermicDart` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_TokraHypodermicDart | Functional custom art pending final presentation. |
+| `Things/Projectile/SG1_ZatnikTelBlast` | 1 | 64×64 | Map projectile | `temporary-original` | `P2` | SG1_ZatnikTelProjectile | Functional custom art pending final presentation. |
+| `UI/Commands/SG1_AutonomousHunt` | 1 | 64×64 | Command UI | `final` | `done` | C# forced-implantation component | Validated autonomous-hunt command icon. |
+| `UI/Commands/SG1_EmergencyExtraction` | 1 | 64×64 | Command UI | `final` | `done` | C# emergency-extraction component | Validated emergency-extraction command icon. |
+| `UI/Commands/SG1_ForcedImplantation` | 1 | 64×64 | Command UI | `final` | `done` | C# forced-implantation component | Validated forced-implantation command icon. |
+| `UI/Commands/SG1_JaffaHelmetMode` | 1 | 64×64 | Command UI | `temporary-original` | `P2` | C# retractable-helmet component | Functional custom art pending final presentation. |
+| `UI/Commands/SG1_RitualImplantation` | 1 | 64×64 | Command UI | `final` | `done` | Goa'uld and Jaffa ritual components | Validated shared ritual command icon. |
+| `UI/Genes/SG1_GoauldLongevity` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_GoauldLongevity | Validated cyclic-longevity symbol. |
+| `UI/Genes/SG1_JaffaLineage` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaLineage | Validated Jaffa-lineage symbol. |
+| `UI/Genes/SG1_JaffaPhysiology` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPhysiology | Validated physiology symbol. |
+| `UI/Genes/SG1_JaffaPouchPotential` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaPouchPotential | Validated pouch-potential symbol. |
+| `UI/Genes/SG1_JaffaSymbioteCompatibility` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_JaffaSymbioteCompatibility | Validated immature-symbiote compatibility symbol. |
+| `UI/Genes/SG1_NaquadahBlood` | 1 | 64×64 | Gene UI | `final` | `done` | SG1_NaquadahBlood | Validated naquadah-blood symbol. |
+| `UI/Xenotypes/SG1_GoauldHost` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_GoauldHost | Validated simplified Goa'uld symbiote silhouette. |
+| `UI/Xenotypes/SG1_Jaffa` | 1 | 64×64 | Xenotype UI | `final` | `done` | SG1_Jaffa | Validated human head with Apophis mark. |
+| `World/WorldObjects/Expanding/SG1_FreeJaffa` | 1 | 128×128 | World faction | `final` | `done` | SG1_FreeJaffa | Accepted world-faction icon. |
+| `World/WorldObjects/Expanding/SG1_GoauldSystemLords` | 1 | 128×128 | World faction | `final` | `done` | SG1_GoauldSystemLordPrototype | Accepted world-faction icon. |
+| `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `final` | `done` | SG1_PlayerSGCExpedition | Accepted world-faction icon. |
+| `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `final` | `done` | SG1_Tokra | Accepted world-faction icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraIntroductionArtifactWorldSite | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | 1 | 64×64 | World site | `final` | `done` | SG1_GoauldOpenConflictBattlefieldSite | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDecodedMissionWorldSite | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraJaffaOfficerCaptureSite | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraHiddenSafehouseMarker, SG1_TokraHiddenSafehouseSitePart | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_TokraDistressSignal` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDistressCallWorldSite | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_TokraLogisticsRendezvous` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraTemporaryBaseDeliverySite | Validated event-site icon. |
 <!-- LOCAL_ASSET_TABLE_END -->
 
 ## Direct vanilla texture dependencies
 
-These string paths are referenced directly by XML or C# and intentionally do
-not resolve under the mod's `Textures/` directory.
-
 <!-- EXTERNAL_ASSET_TABLE_START -->
 | External path | Surface | Status | Priority | Referenced by | Audit note |
 |---|---|---|---|---|---|
-| `World/WorldObjects/DefaultSettlement` | World settlement | `accepted-vanilla` | `P3` | SG1_FreeJaffa, SG1_GoauldSystemLordPrototype, SG1_PlayerSGCExpedition | Intentional shared vanilla settlement silhouette; faction color and dedicated faction icons carry identity. |
-| `World/WorldObjects/Sites/GenericSite` | World site base | `accepted-vanilla` | `P3` | SG1_GoauldOpenConflictBattlefieldSite, SG1_TokraDecodedMissionWorldSite, SG1_TokraDistressCallWorldSite, SG1_TokraHiddenSafehouseMarker, SG1_TokraHiddenSafehouseSitePart, SG1_TokraIntroductionArtifactWorldSite, SG1_TokraJaffaOfficerCaptureSite, SG1_TokraTemporaryBaseDeliverySite | Generic underlying site material retained because every visible expanding icon is dedicated. |
-| `UI/Icons/Study` | Command UI | `accepted-vanilla` | `P3` | SG1_TokraIntroductionArtifact | Generic study action icon is semantically correct and not a GateRim identity surface. |
+| `World/WorldObjects/DefaultSettlement` | World settlement | `accepted-vanilla` | `P3` | Free Jaffa, Goa'uld and SGC factions | Shared vanilla settlement silhouette; dedicated faction icons carry identity. |
+| `World/WorldObjects/Sites/GenericSite` | World site base | `accepted-vanilla` | `P3` | GateRim temporary sites | Generic base retained because visible expanding icons are dedicated. |
+| `UI/Icons/Study` | Command UI | `accepted-vanilla` | `P3` | SG1_TokraIntroductionArtifact | Semantically appropriate vanilla study action. |
 <!-- EXTERNAL_ASSET_TABLE_END -->
 
 ## Runtime vanilla icon constants
 
 | Runtime icon | Usage | Status | Priority | Audit note |
 |---|---|---|---|---|
-| `TexCommand.Attack` | Kara kesh attack abilities | `accepted-vanilla` | `P3` | Generic attack affordance remains semantically correct. |
-| `TexCommand.GatherSpotActive` | Tok’ra identity and symbiote controls | `placeholder-vanilla` | `P2` | Functionally clear but too generic for the final identity presentation. |
+| `TexCommand.Attack` | Kara kesh attack abilities | `accepted-vanilla` | `P3` | Generic attack affordance remains appropriate. |
+| `TexCommand.GatherSpotActive` | Tok'ra identity and symbiote controls | `placeholder-vanilla` | `P2` | Functional but generic. |
 
 ## Repository-level public icon
 
 | Path | Status | Rule |
 |---|---|---|
-| `About/ModIcon.png` | `final` | Preserve Diablood's personal red-and-black demon icon. It is valid as the mod icon but must not be reused as object, gene, xenotype, building or command art. |
+| `About/ModIcon.png` | `final` | Preserve Diablood's personal red-and-black demon icon; never reuse it as gameplay art. |
 
 ## Stable-path contract for later art lots
 
-- Replace PNG contents in place whenever the Def and rendering contract are already stable.
+- Replace PNG contents in place whenever the Def and rendering contract are stable.
 - Do not rename Defs or texture paths merely to improve art.
-- Preserve every required directional and body-type filename for apparel.
+- Preserve required directional and body-type filenames for apparel.
 - Keep English Defs and French public documentation aligned when a visual identity changes.
 - Update this register and run the visual checker in the same revision as every added, removed or renamed texture.
-- A family may move to `final` only after its inventory icon, map/pawn rendering and relevant world or UI surface have been reviewed.
+- Move a family to `final` only after its actual inventory, map, pawn, world or UI presentation has been reviewed.
 
 ## Explicit non-effects
 
-`0.3.93-dev` replaces the three temporary basin visuals with validated building
-art, adds a dedicated preservation-basin family and keeps the ritual basin
-available in `2×2` and `3×3` footprints without changing its visible size.
-It also preserves all gameplay behavior, costs, research requirements and save
-compatibility.
-
-`0.3.89-dev` changes the six approved gameplay-gene PNGs, removes the obsolete
-`SG1_JaffaLongevity` development prototype and its unused PNG, reclassifies the
-four already-existing world-faction icons as final, and adds byte-identical wiki
-copies for the six genes, four factions and seven event sites. It does not
-change the remaining gene effects, xenotypes, factions, storyteller behavior,
-missions, balancing or runtime C# logic.
-
-The maintainer explicitly accepts removal of the legacy development-only Jaffa
-longevity gene because no public save-compatibility contract exists for it. Jaffa
-longevity continues to come from the Prim'ta health state.
+`0.3.94-dev` replaces only the kara kesh and healing-bracelet PNG contents,
+registers their accepted wiki references and changes no gameplay, Def, C# source,
+research, recipe, balance or serialized state.
 
 ## Validation procedure
 
@@ -296,15 +273,15 @@ git diff --check
 Expected visual-audit result:
 
 ```text
+Final local texture families: 33
 Local PNG files: 606
 Local texture families: 73
-Direct external texture paths: 6
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
 
-Focused manual review must confirm the three basin textures render correctly,
-the ritual-basin dropdown exposes the `2×2` and `3×3` variants with a shared UI
-icon, the incubation interaction orientation is preserved, the preservation
-basin remains specialized powered storage, and the wiki copies are byte-identical.
+Focused manual review confirmed both hand devices on the ground, in inventory,
+in inspection and equipped, together with unchanged abilities, AI use and
+save/reload behavior. Wiki copies must remain byte-identical to the gameplay
+PNGs.

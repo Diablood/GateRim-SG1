@@ -2,10 +2,15 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.93-dev`
+> Dernière révision : `0.3.94-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
+
+La version `0.3.94-dev` finalise les deux dispositifs de main Goa'uld. Le kara
+kesh et le bracelet de guérison remplacent leur ancien visuel partagé du
+Zat'nik'tel par deux PNG transparents `128×128` dédiés, validés au sol, dans
+l'inventaire, dans l'inspection et équipés, sans changement de comportement.
 
 La version `0.3.93-dev` finalise les trois bassins Goa'uld et Prim'ta. Le bassin rituel propose des empreintes `2×2` et `3×3` dans un même menu, avec une image et une icône communes de taille visuelle `2×2`. Les bassins d'incubation et de conservation utilisent désormais des visuels distincts verts et bleus, validés dans le jeu.
 
@@ -27,6 +32,7 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Dispositifs de main Goa'uld finalisés | Kara kesh articulé bronze et or avec gemme rouge ; bracelet de guérison or et argent avec noyau orange ; deux PNG transparents `128×128` dédiés, chemins et comportements préservés | 0.3.94-dev |
 | Bassins Goa'uld et Prim'ta finalisés | Bassin rituel disponible en `2×2` et `3×3` dans un menu commun avec même rendu `2×2`; bassin d'incubation vert orientable sur une case; bassin de conservation bleu sur une case, sans teinte de matériau ni ombre héritée, classé en Mobilier | 0.3.93-dev |
 | Marques frontales Jaffa intrinsèques finales | Symbole d'Apophis compact ; variantes noire, argentée et dorée ; visible uniquement en `South`, trois autres facings transparents ; données intrinsèques et comportement préservés | 0.3.91-dev |
 | Nettoyage des anciens gènes de marques frontales Jaffa | Trois gènes techniques de migration, leurs traductions, icônes et logique C# supprimés ; système intrinsèque et rendus pawn conservés | 0.3.90-dev |
@@ -34,7 +40,7 @@ est traité sans réimplantation ultérieure.
 | Portrait final du storyteller Commandement SG-1 | Portrait principal `560×600` et recadrage tiny `122×130` approuvés puis validés en jeu ; chemins stables, transparence et comportement du storyteller préservés | 0.3.88-dev |
 | Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ | Prim'ta visible avant validation pour tout Jaffa adulte éligible ; un symbiote adulte persistant pour chaque `SG1_GoauldHost`, d'origine Tok'ra avec double identité ou d'origine Goa'uld sans basculement Tok'ra selon la carrière ; chaque reroll est traité sans réconciliation ultérieure | 0.3.87-dev |
 | Icônes finales des xénotypes Jaffa et hôte Goa'uld | Jaffa : tête humaine blanche avec marque d'Apophis ; hôte Goa'uld : symbiote blanc simplifié ; deux visuels approuvés puis validés en jeu ; copies visuelles ajoutées aux pages dédiées dans `r2` | 0.3.86-dev |
-| Audit des assets visuels | Registre maintenu à 605 PNG / 72 familles ; `About/ModIcon.png` reste final hors compteur et 28 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev, 0.3.91-dev et 0.3.93-dev |
+| Audit des assets visuels | Registre maintenu à 606 PNG / 73 familles ; `About/ModIcon.png` reste final hors compteur et 33 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev, 0.3.91-dev, 0.3.93-dev et 0.3.94-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev / portrait final 0.3.88-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta ; icône finale humaine marquée d'Apophis intégrée | 0.1.1-dev / refonte 0.1.13-dev / icône 0.3.86-dev |
@@ -76,7 +82,7 @@ est traité sans réimplantation ultérieure.
 | Confiance Tok'ra | Relation persistante présentée par paliers qualitatifs, modulant la durée des offres thérapeutiques, la taille des escortes et certains soutiens | 0.1.50-dev / paliers 0.1.51-dev / soutien 0.1.52-dev |
 | Opérations Tok'ra organiques | Huit archétypes récurrents à délai caché et anti-répétition ; l'audit `0.3.38-dev` vérifie leur couverture persistante, leurs variantes RP, les quatre paliers de confiance et l'efficacité mesurée de la pénalité du dernier archétype | 0.2.48-dev à 0.3.38-dev / accès 0.3.33-dev |
 | Fondation générique de missions | Boîte à outils pilotée par Defs pour phases, objectifs, textes, récurrence, difficulté et persistance ; l'audit développeur dérive désormais la couverture attendue de l'enum persistant et compare l'anti-répétition au tirage sans pénalité | 0.3.23-dev à 0.3.38-dev |
-| Appel de détresse Tok'ra sur site mondial | Arrivée de caravane vanilla avec pause et enrôlement, situation cachée, scène contextuelle regroupée, combat adaptatif, soins au sol et extraction rapide des survivants traités | 0.3.29-dev / icône dédiée 0.3.51-dev |
+| Appel de détresse Tok'ra sur site mondial | Situation cachée jusqu'à l'arrivée : sauvetage, piège ou arrivée tardive ; scène cohérente, soins réels, équipe d'extraction visible et récompense physique prépositionnée | 0.3.29-dev / icône dédiée 0.3.51-dev |
 | Contrat de production Tok'ra | Demande limitée aux objets réellement fabricables, rendez-vous mondial temporaire, remise depuis l'inventaire réel, période de grâce, interception de trajet et embuscade sur l'approche finale avec butin et reformation vanilla | 0.3.30-dev / icône dédiée 0.3.51-dev |
 | Mission d'introduction Tok'ra | Jouable et validée : transmission chiffrée avant le communicateur, choix d'engagement, site mondial, garde Goa'uld/Jaffa adaptative modérée, module physique suivi individuellement et nouvelles tentatives jusqu'à la première récupération réussie | 0.3.31-dev / icône dédiée 0.3.51-dev |
 | Étude du module de chiffrement Tok'ra | Jouable et validée : trois analyses au banc sur le véritable module suivi, objet non vendable puis démantelé à la dernière session, remplacement automatique anti-blocage en cas de perte et réconciliation des recherches déjà terminées | 0.3.32-dev |
@@ -102,8 +108,8 @@ est traité sans réimplantation ultérieure.
 | Officiers Jaffa Goa'uld | Armure et casque rouges, impact social accru ; un garde peut être remplacé par un officier dans un groupe d'au moins cinq Jaffa, sans pawn ni budget supplémentaire | apparence 0.3.74-dev / forces 0.3.75-dev |
 | Profils de groupe Goa'uld `Combat` et `Settlement` | Raids directs toujours composés de Jaffa ; colonies dominées par les Jaffa avec une minorité de profils `Goa'uld` persistants | 0.1.62-dev / colonies 0.2.1-dev / hôtes 0.2.3-dev |
 | Caste des hôtes Goa'uld | Profils `Goa'uld` et `Grand Maître Goa'uld` biologiquement humains mais porteurs d'un symbiote adulte persistant initialisé une seule fois ; composition initiale des villes stabilisée, tenue vanilla provisoire, nettoyage initial des affections chroniques biologiques et kara kesh réservé au Grand Maître | 0.2.3-dev / villes 0.2.3-dev-r1 / santé et tenue 0.2.3-dev-r2 / kara kesh 0.3.57-dev |
-| Kara kesh Goa'uld | Gant de rang des Grands Maîtres combinant un puissant bouclier, une onde cinétique, une attaque neurale temporaire et un maintien paralysant mono-cible publiés ; tous les modes partagent l'énergie, tandis que mêlée, portée, ligne de vue et IEM conservent un contre-jeu | 0.3.57-dev / activation 0.3.58-dev / onde 0.3.59-dev / attaque neurale 0.3.60-dev / maintien 0.3.61-dev |
-| Bracelet de guérison Goa'uld | Dispositif médical de Grand Maître séparé du kara kesh, avec stabilisation, guérison limitée, fatigue et longue recharge | 0.3.62-dev |
+| Kara kesh Goa'uld | Gant de rang des Grands Maîtres combinant un puissant bouclier, une onde cinétique, une attaque neurale temporaire et un maintien paralysant mono-cible publiés ; visuel final dédié bronze et or avec gemme rouge ; tous les modes partagent l'énergie, tandis que mêlée, portée, ligne de vue et IEM conservent un contre-jeu | 0.3.57-dev / activation 0.3.58-dev / onde 0.3.59-dev / attaque neurale 0.3.60-dev / maintien 0.3.61-dev / visuel 0.3.94-dev |
+| Bracelet de guérison Goa'uld | Dispositif médical de Grand Maître séparé du kara kesh, avec stabilisation, guérison limitée, fatigue et longue recharge ; visuel final or et argent avec noyau orange | 0.3.62-dev / visuel 0.3.94-dev |
 | Prim'ta initial des serviteurs Jaffa Goa'uld | Attribution automatique unique lors de la génération d'un guerrier ou d'un garde ; aucun remplacement artificiel après retrait | 0.1.63-dev |
 | Bâton Ma'Tok | Prototype jouable : décharge plasma avec blessure thermique principale, impact structurel réduit contre les cibles non organiques et les bâtiments, hampe de mêlée, fabrication au banc d'usinage et visuels temporaires dédiés | 0.1.76-dev |
 | Zat'nik'tel | Premier prototype jouable : arme de poing fabricable, étourdissement temporaire sans blessure physique, faible perturbation IEM contre les cibles mécaniques et récupération naturelle rare sur les gardes Jaffa Goa'uld | 0.1.77-dev / acquisition 0.2.9-dev |
@@ -180,4 +186,3 @@ Prototype jouable et validé dans `0.3.40-dev` : l'allégeance du symbiote est p
 ## Extraction d'un hôte actif
 
 Prototype jouable et validé dans `0.3.41-dev` : un ancien colon contrôlé par un Goa'uld doit être neutralisé et capturé avant qu'une opération Medicine `10` puisse être planifiée. Une réussite restaure le même pawn et libère le même symbiote temporairement anesthésié ; un échec laisse l'état actif en place si le patient survit. Le Goa'uld extrait reste vivant et redevient dangereux après son réveil.
-

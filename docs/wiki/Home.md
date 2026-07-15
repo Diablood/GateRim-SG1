@@ -4,7 +4,21 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.93-dev`
+> Version du mod documentée : `0.3.94-dev`
+
+## Dispositifs de main Goa'uld finalisés
+
+`0.3.94-dev` remplace les deux réutilisations temporaires du visuel du
+Zat'nik'tel pour le kara kesh et le bracelet de guérison Goa'uld. Les deux
+appareils disposent désormais d'illustrations transparentes `128×128` dédiées,
+validées au sol, dans l'inventaire, dans l'inspection et lorsqu'elles sont
+équipées.
+
+Le [kara kesh](Kara-Kesh) utilise un gant articulé bronze et or avec une gemme
+rouge centrale. Le [bracelet de guérison](Goauld-Healing-Bracelet) utilise un
+anneau or et argent autour d'un noyau orange lumineux. Les chemins, Defs,
+sauvegardes, recherches, recettes et comportements restent inchangés. Les deux
+images figurent dans les [références visuelles validées](Visual-Assets).
 
 ## Bassins Goa'uld et Prim'ta finalisés
 
@@ -108,13 +122,12 @@ wiki contre toute divergence avec les PNG du jeu.
 ## Audit des assets visuels provisoires
 
 La version publiée `0.3.85-dev`, révision finale `r3`, a créé le registre
-technique exhaustif. Après les validations précédentes, le nettoyage publié `0.3.90-dev` et
-les marques validées dans `0.3.91-dev`, la baseline compte `605` PNG sous `72`
-familles de textures, dont `28` familles locales finales : deux portraits de
-storyteller, deux xénotypes, six gènes de gameplay, trois marques frontales
-intrinsèques, quatre commandes, quatre factions mondiales et sept sites
-d'événements. L'icône publique du
-mod reste finale hors compteur.
+technique exhaustif. Après les validations successives, la baseline compte
+`606` PNG sous `73` familles de textures, dont `33` familles locales finales :
+deux portraits de storyteller, deux xénotypes, six gènes de gameplay, trois
+marques frontales intrinsèques, quatre commandes, trois bâtiments, deux
+dispositifs de main, quatre factions mondiales et sept sites d'événements.
+L'icône publique du mod reste finale hors compteur.
 
 Chaque nouveau visuel validé est ajouté immédiatement à la page
 [Références visuelles validées](Visual-Assets), sans attendre une passe globale
@@ -404,4 +417,3 @@ tests prolongés.
 - [Histoires culturelles](Cultural-Backstories)
 - [FAQ](FAQ)
 - [Dépôt GitHub principal](https://github.com/Diablood/GateRim-SG1)
-

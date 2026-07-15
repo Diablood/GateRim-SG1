@@ -1,5 +1,61 @@
 # Changelog
 
+## 0.3.94-dev - Finalize Goa'uld hand-device visuals
+
+### Changed
+
+- Replace the temporary Zat'nik'tel inventory-art reuse on `SG1_KaraKesh` with
+  the approved dedicated kara kesh illustration.
+- Replace the same temporary reuse on `SG1_GoauldHealingBracelet` with the
+  approved ornamental healing-bracelet illustration.
+- Preserve both historical apparel texture paths, Def names and save identity.
+- Advance public metadata to `0.3.94-dev` and assembly metadata to `0.3.94.0`.
+- Reclassify both hand-device families as `final` / `done`, raising the exact
+  final-family whitelist from `31` to `33` while retaining the `606` PNG / `73`
+  family baseline.
+
+### Added
+
+- Add byte-identical wiki copies of the kara kesh and healing-bracelet PNGs.
+- Display both validated devices on their dedicated player pages and on the
+  progressive visual-reference page.
+- Extend the visual checker so both gameplay/wiki pairs and the expanded final
+  whitelist are protected against later drift.
+
+### Preserved
+
+- Preserve the complete kara kesh personal shield, kinetic blast, neural attack,
+  paralysis hold, shared energy, cooldown and hostile AI behavior.
+- Preserve the healing bracelet's eligibility, stabilization, bounded healing,
+  blood-loss reduction, fatigue, cooldown and hostile self-use behavior.
+- Change no ThingDef, C# source, research, recipe, balance, assignment rule,
+  translation or serialized gameplay state.
+
+### Selected visual concepts
+
+- `SG1_KaraKesh`: articulated bronze-and-gold Goa'uld hand device with leather
+  straps and a red central control gem.
+- `SG1_GoauldHealingBracelet`: circular gold-and-silver medical device with an
+  orange luminous biological-energy core.
+
+### Validated
+
+- Validate both transparent `128×128` textures in game at their real ground,
+  inventory, inspection and equipped scales.
+- Confirm readable centering, clean alpha, no clipping, opaque rectangle,
+  checkerboard or magenta fallback.
+- Confirm all existing kara kesh and healing-bracelet mechanics, hostile AI,
+  natural System Lord assignment and save/reload behavior remain unchanged.
+- Prepare documentary finalization revision `r2` with the visual register,
+  checker whitelist and byte-identical wiki references.
+
+### Published
+
+- Publish the validated state through the final feature-branch commit,
+  fast-forward integration into `develop`, annotated tag `v0.3.94-dev` and the
+  synchronized separate wiki. Local `r1` and `r2` suffixes are omitted from the
+  final commit and tag.
+
 ## 0.3.93-dev - Finalize Goa'uld and Prim'ta basin visuals
 
 ### Changed

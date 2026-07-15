@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.93-dev`
-> Statut : bassins Goa'uld et Prim'ta validés en jeu dans `0.3.93-dev`
+> Version de référence : `0.3.94-dev`
+> Statut : dispositifs de main Goa'uld validés en jeu dans `0.3.94-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -13,6 +13,17 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 | Usage | Chemin | Statut |
 |---|---|---|
 | Icône publique GateRim SG-1 | `About/ModIcon.png` | Final ; conserver l'image personnelle démon rouge/noir et ne pas la réutiliser comme art de gameplay |
+
+## Dispositifs de main Goa'uld validés
+
+| Visuel | Équipement | Def | Chemin sous `Textures/` | Référence validée |
+|---|---|---|---|---|
+| ![Kara kesh final](images/KaraKesh.png) | Kara kesh des Grands Maîtres | `SG1_KaraKesh` | `Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh` | Gant articulé bronze et or, sangles de cuir et gemme de contrôle rouge ; PNG transparent `128×128` validé au sol, dans l'inventaire et équipé |
+| ![Bracelet de guérison Goa'uld final](images/GoauldHealingBracelet.png) | Bracelet de guérison Goa'uld | `SG1_GoauldHealingBracelet` | `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet` | Bracelet circulaire or et argent autour d'un noyau orange lumineux ; PNG transparent `128×128` validé au sol, dans l'inventaire et équipé |
+
+Les deux Defs restent des apparel et conservent donc leurs chemins historiques
+sous `Things/Pawn/Humanlike/Apparel`. Ce jalon remplace uniquement les images
+d'objet ; il n'ajoute aucun rendu directionnel porté ni changement de gameplay.
 
 ## Bâtiments Goa'uld et Prim'ta validés
 
@@ -104,10 +115,11 @@ cérémonie formelle du Prim'ta, sans changement de logique.
 
 ## Visuels encore temporaires
 
-Les autres visuels locaux restent temporaires, notamment les armes,
-équipements, vêtements, objets de mission, projectiles et pawns. Les trois
-familles de bâtiments présentées ci-dessus, les trois familles de marques
-frontales intrinsèques et les quatre commandes sont désormais finales.
+Les autres visuels locaux restent temporaires, notamment les armes, les autres
+équipements et vêtements, les objets de mission, les projectiles et les pawns.
+Les deux dispositifs de main présentés ci-dessus, les trois familles de
+bâtiments, les trois familles de marques frontales intrinsèques et les quatre
+commandes sont désormais finales.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

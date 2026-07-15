@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.93-dev`
+- Development version: `0.3.94-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,12 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.94-dev` replaces the shared temporary Zat'nik'tel art used by the kara kesh
+and Goa'uld healing bracelet with two dedicated transparent `128×128` item
+textures approved by the maintainer. Both devices keep their stable apparel
+texture paths, ThingDefs, save identifiers, research, recipes, System Lord
+assignment and gameplay behavior.
 
 `0.3.93-dev` finalizes the Goa'uld ritual basin and both Prim'ta basin visuals. The ritual basin now offers save-compatible `2×2` and `3×3` placement variants through one Architect dropdown; both use the same `2×2` visual and common UI icon so players can center the apparatus in rooms with either even or odd dimensions. The Prim'ta incubation and preservation basins use distinct validated green and blue one-cell textures, while the preservation basin remains specialized powered storage under Furniture.
 
@@ -187,4 +193,3 @@ handoff in [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md).
 
 Root ZIP archives are local delivery artifacts and must not be committed.
 `About/ModIcon.png` must be preserved.
-
