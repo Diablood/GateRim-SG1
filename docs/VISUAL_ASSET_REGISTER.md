@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.94-dev`
-- Branch: `feature/final-goauld-hand-device-visuals`
-- Target assembly: `0.3.94.0`
-- Status: `0.3.94-dev` hand-device visual lot validated in game after local revision `r1` and protected for publication in documentary revision `r2`.
+- Version: `0.3.95-dev`
+- Branch: `feature/final-tokra-mission-object-visuals`
+- Target assembly: `0.3.95.0`
+- Status: `0.3.95-dev` Tok'ra mission-object visual lot remains in progress; the introduction artifact, intelligence packet, observation device and point, organic dead drop, and Goa'uld relay control node have been validated in game.
 
 ## Purpose
 
@@ -15,18 +15,19 @@ art status. Paths remain stable unless a later milestone proves that a technical
 rename is required.
 
 The companion command `./tools/check-visual-assets.cmd` verifies that this
-register and the repository remain synchronized. `0.3.94-dev` replaces the two
-remaining P0 Zat'nik'tel reuses with dedicated final kara kesh and healing
-bracelet art while keeping both established apparel paths.
+register and the repository remain synchronized. `0.3.95-dev` progressively
+replaces temporary Tok'ra mission-object reuses with dedicated validated art,
+while preserving established Def names and serialized gameplay identities.
 
 ## Approved final references
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
 - The `Textures/` families accepted as `final` are the two storyteller
-  portraits, three buildings, two hand devices, two xenotype icons, six
-  gameplay-gene icons, three intrinsic Jaffa forehead-mark overlays, four
-  command icons, four world-faction icons and seven world-event site icons.
+  portraits, four buildings, five mission items, two hand devices, two
+  xenotype icons, six gameplay-gene icons, three intrinsic Jaffa forehead-mark
+  overlays, four command icons, four world-faction icons and seven world-event
+  site icons.
 - Every other equipment, building, pawn overlay, projectile, pawn or command
   family remains temporary unless explicitly listed below.
 
@@ -40,6 +41,19 @@ Validated building families:
 - `Things/Building/SG1_GoauldRitualBasin`
 - `Things/Building/SG1_PrimtaIncubationBasin`
 - `Things/Building/SG1_PrimtaPreservationBasin`
+- `Things/Building/SG1_TokraRelaySabotageDevice`
+
+Validated Tok'ra mission-item families:
+
+- `Things/Item/SG1_TokraIntroductionArtifact`
+| `Things/Item/SG1_TokraIntroductionArtifact` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraIntroductionArtifact | Dedicated sealed Tok'ra cipher module validated in game. |
+| `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraMissionIntelPacket | Dedicated open Tok'ra intelligence coffer validated in game. |
+| `Things/Item/SG1_TokraObservationDevice` | 1 | 128×128 | Map/inventory and deployed map object | `final` | `done` | SG1_TokraObservationDevice, SG1_TokraObservationPoint | Dedicated observation device validated as a portable item and intentionally reused by the deployed observation point. |
+| `Things/Item/SG1_TokraOrganicDeadDrop` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraOrganicDeadDrop | Dedicated organic dead-drop pod validated in game; remains an Item-category mission object. |
+- `Things/Item/SG1_TokraObservationDevice`
+- `Things/Item/SG1_TokraOrganicDeadDrop`
+- `Things/Item/SG1_TokraObservationDevice` is also intentionally reused by
+  `SG1_TokraObservationPoint`; the deployed point has no separate texture family.
 
 Validated storyteller families:
 
@@ -112,17 +126,17 @@ Validated world-event site families:
 
 ## Audit summary
 
-- Local PNG files: `606`.
-- Local texture families: `73`.
-- Accepted final local families: `33` (`2` storyteller portraits, `3`
-  buildings, `2` hand devices, `2` xenotype icons, `6` gameplay-gene icons,
-  `3` intrinsic Jaffa forehead-mark overlays, `4` command icons, `4`
-  world-faction icons and `7` world-event site icons).
+- Local PNG files: `609`.
+- Local texture families: `76`.
+- Accepted final local families: `38` (`2` storyteller portraits, `4`
+  buildings, `5` Tok'ra mission-item families, `2` hand devices, `2` xenotype
+  icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
+  `4` command icons, `4` world-faction icons and `7` world-event site icons).
 - Temporary original families: `25`.
 - Temporary recolor families: `11`.
-- Temporary reuse families: `4`.
+- Temporary reuse families: `2`.
 - Project-icon placeholder families: `0`.
-- Priorities: `0` P0, `21` P1, `19` P2, `33` done.
+- Priorities: `0` P0, `19` P1, `19` P2, `38` done.
 - Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -131,8 +145,7 @@ Validated world-event site families:
 ## Highest-priority findings
 
 1. The Prim'ta larva and free Goa'uld symbiote still use the same image.
-2. Several distinct Tok'ra mission objects reuse one intelligence-packet icon,
-   and the relay sabotage device reuses the secure communicator.
+2. The free Goa'uld, Tok'ra and queen symbiote forms still share one pawn image.
 3. Jaffa, officer, Tok'ra and SGC apparel are technically complete but remain
    temporary art families; many body-type variants are exact copies rather than
    tailored silhouettes.
@@ -150,15 +163,18 @@ same canonical family. Representative dimensions refer to the base image.
 | `Things/Building/SG1_GoauldRitualBasin` | 1 | 256×256 | Map/building | `final` | `done` | SG1_GoauldRitualBasin, SG1_GoauldRitualBasinLarge | Validated ceremonial platform shared by the `2×2` and `3×3` placement variants. |
 | `Things/Building/SG1_PrimtaIncubationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaIncubationBasin | Validated green one-cell incubation basin. |
 | `Things/Building/SG1_PrimtaPreservationBasin` | 1 | 128×128 | Map/building | `final` | `done` | SG1_PrimtaPreservationBasin | Validated blue one-cell preservation storage. |
-| `Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint` | 1 | 64×64 | Map/building | `temporary-original` | `P1` | SG1_TokraObservationPoint | Functional custom art pending final presentation. |
-| `Things/Building/SG1_TokraSecureCommunicator` | 1 | 128×128 | Map/building | `temporary-reuse` | `P1` | SG1_TokraRelaySabotageDevice, SG1_TokraSecureCommunicator | Communicator art is reused by the relay sabotage device. |
+| `Things/Building/SG1_TokraSecureCommunicator` | 1 | 128×128 | Map/building | `temporary-original` | `P1` | SG1_TokraSecureCommunicator | Functional custom communicator art pending final presentation; no longer reused by the relay sabotage device. |
+| `Things/Building/SG1_TokraRelaySabotageDevice` | 1 | 128×128 | Map/building | `final` | `done` | SG1_TokraRelaySabotageDevice | Dedicated top-down Goa'uld relay control node validated in game. |
 | `Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot` | 1 | 64×64 | Map/building | `temporary-original` | `P2` | SG1_TokraDeliveryDropSpot | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_Bolas` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_Bolas | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_MatokStaff` | 1 | 128×48 | Map/inventory weapon | `temporary-original` | `P2` | SG1_MatokStaff | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_TokraHypodermicRifle | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_ZatnikTel | Functional custom art pending final presentation. |
 | `Things/Item/SG1_PrimtaLarva` | 1 | 128×128 | Map/inventory item | `temporary-reuse` | `P1` | SG1_ImmaturePrimtaSymbiote, SG1_PrimtaLarva | Shared image between distinct larval/symbiote forms. |
-| `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 64×64 | Map/inventory item | `temporary-reuse` | `P1` | SG1_TokraIntroductionArtifact, SG1_TokraMissionIntelPacket, SG1_TokraObservationDevice, SG1_TokraOrganicDeadDrop | One packet icon represents several mission objects. |
+| `Things/Item/SG1_TokraIntroductionArtifact` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraIntroductionArtifact | Dedicated sealed Tok'ra cipher module validated in game. |
+| `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraMissionIntelPacket | Dedicated open Tok'ra intelligence coffer validated in game. |
+| `Things/Item/SG1_TokraObservationDevice` | 1 | 128×128 | Map/inventory and deployed map object | `final` | `done` | SG1_TokraObservationDevice, SG1_TokraObservationPoint | Dedicated observation device validated as a portable item and intentionally reused by the deployed observation point. |
+| `Things/Item/SG1_TokraOrganicDeadDrop` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraOrganicDeadDrop | Dedicated organic dead-drop pod validated in game; remains an Item-category mission object. |
 | `Things/Item/SG1_TretoninDose` | 1 | 64×64 | Map/inventory item | `temporary-original` | `P2` | SG1_TretoninDose | Functional custom art pending final presentation. |
 | `Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote` | 1 | 128×128 | Pawn/map | `temporary-reuse` | `P1` | SG1_GoauldQueen, SG1_GoauldSymbiote, SG1_TokraSymbiote | Shared image between biologically distinct forms. |
 | `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet` | 1 | 128×128 | Pawn apparel item | `final` | `done` | SG1_GoauldHealingBracelet | Approved gold-and-silver healing bracelet with orange luminous core, validated on all item surfaces. |
@@ -243,6 +259,23 @@ same canonical family. Representative dimensions refer to the base image.
 |---|---|---|
 | `About/ModIcon.png` | `final` | Preserve Diablood's personal red-and-black demon icon; never reuse it as gameplay art. |
 
+## Pending wiki synchronization
+
+The gameplay textures validated during `0.3.95-dev` have not yet been copied to
+the protected wiki media directories or integrated into the corresponding wiki
+pages. Wiki synchronization remains required before milestone publication.
+
+Pending media synchronization currently includes:
+
+- Tok'ra introduction cipher module;
+- Tok'ra encoded intelligence packet;
+- Tok'ra observation device and deployed observation-point presentation;
+- Tok'ra organic dead drop;
+- Goa'uld relay control node.
+
+This intermediate register update records the validated gameplay state only. It
+must not be interpreted as completed wiki publication.
+
 ## Stable-path contract for later art lots
 
 - Replace PNG contents in place whenever the Def and rendering contract are stable.
@@ -254,9 +287,9 @@ same canonical family. Representative dimensions refer to the base image.
 
 ## Explicit non-effects
 
-`0.3.94-dev` replaces only the kara kesh and healing-bracelet PNG contents,
-registers their accepted wiki references and changes no gameplay, Def, C# source,
-research, recipe, balance or serialized state.
+This intermediate `0.3.95-dev` register revision records already validated
+gameplay textures and path changes. It does not complete wiki synchronization,
+publish the milestone, alter gameplay balance, or close remaining visual work.
 
 ## Validation procedure
 
@@ -273,15 +306,15 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Final local texture families: 33
-Local PNG files: 606
-Local texture families: 73
+Final local texture families: 38
+Local PNG files: 609
+Local texture families: 76
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
 
-Focused manual review confirmed both hand devices on the ground, in inventory,
-in inspection and equipped, together with unchanged abilities, AI use and
-save/reload behavior. Wiki copies must remain byte-identical to the gameplay
-PNGs.
+Focused manual review has confirmed the currently completed `0.3.95-dev` mission
+objects on their relevant ground, inventory, blueprint and deployed surfaces.
+Wiki copies remain pending and, when added, must be byte-identical to the
+validated gameplay PNGs.
