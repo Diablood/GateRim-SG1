@@ -7,6 +7,7 @@
         <thingClass>GateRimSG1.Goauld.Building_TokraObservationPoint</thingClass>
         <designationCategory IsNull="True" />
         <minifiedDef IsNull="True" />
+        <drawerType>RealtimeOnly</drawerType>
         <graphicData>
             <texPath>Things/Item/SG1_TokraObservationDevice</texPath>
             <graphicClass>Graphic_Single</graphicClass>

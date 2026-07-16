@@ -6,7 +6,7 @@
         <description>A foldable Tok'ra field scope designed for a discreet observation operation. Its crystalline optics and compact sensors must be carried to the marked peripheral position and installed there. The operator remains at the device throughout the watch, then folds it up and carries it directly to a powered secure communicator.</description>
         <thingClass>GateRimSG1.Goauld.Thing_TokraObservationDevice</thingClass>
         <category>Item</category>
-        <drawerType>MapMeshOnly</drawerType>
+        <drawerType>RealtimeOnly</drawerType>
         <graphicData>
             <texPath>Things/Item/SG1_TokraObservationDevice</texPath>
             <graphicClass>Graphic_Single</graphicClass>

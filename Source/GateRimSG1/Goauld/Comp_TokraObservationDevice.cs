@@ -28,6 +28,9 @@ namespace GateRimSG1.Goauld
                 yield break;
             }
 
+            TokraObservationPointDeploymentUtility
+                .EnsureMarkerForDeployment(parent);
+
             string disabledReason
                 = GameComponent_TokraOrganicOperationManager
                     .GetObservationDeploymentDisabledReason(parent, selPawn);
