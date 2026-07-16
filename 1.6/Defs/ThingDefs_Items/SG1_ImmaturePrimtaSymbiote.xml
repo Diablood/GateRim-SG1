@@ -7,7 +7,7 @@
         <thingClass>ThingWithComps</thingClass>
         <tickerType>Rare</tickerType>
         <graphicData>
-            <texPath>Things/Item/SG1_PrimtaLarva</texPath>
+            <texPath>Things/Item/SG1_ImmaturePrimtaSymbiote</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <drawSize>(0.6,0.6)</drawSize>
         </graphicData>
