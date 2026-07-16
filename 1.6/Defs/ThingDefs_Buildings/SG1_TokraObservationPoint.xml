@@ -8,9 +8,9 @@
         <designationCategory IsNull="True" />
         <minifiedDef IsNull="True" />
         <graphicData>
-            <texPath>Things/Building/SG1_TokraObservationPoint/SG1_TokraObservationPoint</texPath>
+            <texPath>Things/Item/SG1_TokraObservationDevice</texPath>
             <graphicClass>Graphic_Single</graphicClass>
-            <drawSize>(1.1,1.1)</drawSize>
+            <drawSize>(1,1)</drawSize>
         </graphicData>
         <size>(1,1)</size>
         <rotatable>false</rotatable>
