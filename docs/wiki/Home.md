@@ -4,7 +4,22 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.94-dev`
+> Version du mod documentée : `0.3.95-dev`
+
+## Objets de mission Tok'ra finalisés
+
+`0.3.95-dev` finalise les principaux objets visuels utilisés par les opérations
+Tok'ra : module de chiffrement d'introduction, paquet de renseignements codés,
+dispositif d'observation portable et point déployé, cache organique, nœud de
+contrôle du relais Goa'uld, communicateur sécurisé et marquage prioritaire de
+livraison.
+
+Les visuels sont distincts, transparents et lisibles dans leurs surfaces
+réelles. Le point d'observation réutilise volontairement la texture du dispositif
+portable. Les Defs, sauvegardes, recherches, mécaniques de confiance et
+comportements de mission restent inchangés. L'ensemble est visible dans les
+[références visuelles validées](Visual-Assets) et sur la page
+[objets de mission Tok'ra](Tokra-Mission-Objects).
 
 ## Dispositifs de main Goa'uld finalisés
 

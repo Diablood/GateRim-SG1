@@ -1,4 +1,4 @@
-﻿[CmdletBinding()]
+[CmdletBinding()]
 param(
     [string]$RepositoryRoot
 )
@@ -149,6 +149,13 @@ $wikiIconMappings = @(
     (New-WikiMapping "Textures/UI/Commands/SG1_RitualImplantation.png" "docs/wiki/images/SG1_RitualImplantation.png" "docs/wiki/Primta-Formal-Ceremony.md" "images/SG1_RitualImplantation.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh.png" "docs/wiki/images/KaraKesh.png" "docs/wiki/Kara-Kesh.md" "images/KaraKesh.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet.png" "docs/wiki/images/GoauldHealingBracelet.png" "docs/wiki/Goauld-Healing-Bracelet.md" "images/GoauldHealingBracelet.png"),
+    (New-WikiMapping "Textures/Things/Item/SG1_TokraIntroductionArtifact.png" "docs/wiki/images/SG1_TokraIntroductionArtifact.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraIntroductionArtifact.png"),
+    (New-WikiMapping "Textures/Things/Item/SG1_TokraMissionIntelPacket.png" "docs/wiki/images/SG1_TokraMissionIntelPacket.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraMissionIntelPacket.png"),
+    (New-WikiMapping "Textures/Things/Item/SG1_TokraObservationDevice.png" "docs/wiki/images/SG1_TokraObservationDevice.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraObservationDevice.png"),
+    (New-WikiMapping "Textures/Things/Item/SG1_TokraOrganicDeadDrop.png" "docs/wiki/images/SG1_TokraOrganicDeadDrop.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraOrganicDeadDrop.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_TokraRelaySabotageDevice.png" "docs/wiki/images/SG1_TokraRelaySabotageDevice.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraRelaySabotageDevice.png"),
+    (New-WikiMapping "Textures/Things/Building/SG1_TokraSecureCommunicator.png" "docs/wiki/images/SG1_TokraSecureCommunicator.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraSecureCommunicator.png"),
+    (New-WikiMapping "Textures/Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot.png" "docs/wiki/images/SG1_TokraDeliveryDropSpot.png" "docs/wiki/Tokra-Mission-Objects.md" "images/SG1_TokraDeliveryDropSpot.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png" "docs/wiki/images/SG1_FreeJaffa.png" "docs/wiki/Visual-Assets.md" "images/SG1_FreeJaffa.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_GoauldSystemLords.png" "docs/wiki/images/SG1_GoauldSystemLords.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldSystemLords.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_SGCExpedition.png" "docs/wiki/images/SG1_SGCExpedition.png" "docs/wiki/Visual-Assets.md" "images/SG1_SGCExpedition.png"),
@@ -270,6 +277,13 @@ $expectedFinalLocalPaths = @(
     "Things/Building/SG1_GoauldRitualBasin",
     "Things/Building/SG1_PrimtaIncubationBasin",
     "Things/Building/SG1_PrimtaPreservationBasin",
+    "Things/Building/SG1_TokraRelaySabotageDevice",
+    "Things/Building/SG1_TokraSecureCommunicator",
+    "Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot",
+    "Things/Item/SG1_TokraIntroductionArtifact",
+    "Things/Item/SG1_TokraMissionIntelPacket",
+    "Things/Item/SG1_TokraObservationDevice",
+    "Things/Item/SG1_TokraOrganicDeadDrop",
     "Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet",
     "Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh",
     "UI/Xenotypes/SG1_GoauldHost",
@@ -303,10 +317,10 @@ $expectedFinalLocalPaths = @(
 $actualFinalLocalPaths = @($registeredLocalPaths | Where-Object { $registeredLocalStatuses[$_] -ceq "final" } | Sort-Object)
 $finalPathDifferences = @(Compare-Object -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) -DifferenceObject $actualFinalLocalPaths -CaseSensitive)
 if ($finalPathDifferences.Count -gt 0) {
-    Add-Failure ("Final local asset whitelist differs from the thirty-three approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
+    Add-Failure ("Final local asset whitelist differs from the forty approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the thirty-three approved families."
+    Add-Pass "Final local asset whitelist matches the forty approved families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

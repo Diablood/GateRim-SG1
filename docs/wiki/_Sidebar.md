@@ -130,6 +130,7 @@
 
 ## Tok'ra : missions et opérations
 
+- [Objets de mission Tok'ra](Tokra-Mission-Objects)
 - [Mission d'introduction Tok'ra](Tokra-Introduction-Artifact-Mission)
 - [Opérations Tok'ra organiques](Tokra-Organic-Operation-Opportunities)
 - [Assaut de diversion Tok'ra](Tokra-Diversion-Assault)

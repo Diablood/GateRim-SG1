@@ -1,5 +1,32 @@
 # Durable testing
 
+## Final Tok'ra mission-object visuals (`0.3.95-dev`)
+
+The final visual lot validates the dedicated Tok'ra mission-object families and
+their protected wiki copies. Durable coverage:
+
+- keep the cipher module, encoded intelligence packet, observation device,
+  organic dead drop, relay control node, secure communicator and delivery
+  marker visually distinct;
+- preserve `SG1_TokraObservationPoint` as an intentional reuse of the portable
+  observation-device family, with no separate texture family;
+- preserve the organic dead drop as an Item-category mission object;
+- preserve the relay control node and secure communicator as building-category
+  objects with valid blueprint behavior where applicable;
+- require genuine exterior transparency and reject baked checkerboards, white
+  rectangles, clipping and magenta fallback textures;
+- keep the delivery marker readable on light and dark terrain with a thick black
+  outline and light integrated alpha;
+- keep every texture under
+  `Textures/World/WorldObjects/Expanding/Sites` classified as final;
+- require gameplay and protected wiki copies to remain byte-identical;
+- preserve all established Def names, save identifiers, research, balance,
+  trust gating and mission behavior;
+- rerun the visual register audit after any future file addition, deletion,
+  rename, move or status change;
+- keep the separate relay-site overhead-mountain collapse defect documented
+  until a later functional milestone fixes it.
+
 ## Final Goa'uld and Jaffa command icons (`0.3.92-dev`)
 
 Final visual revision `r1` replaces four personal-icon placeholders and is

@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.94-dev`
-> Statut : dispositifs de main Goa'uld validés en jeu dans `0.3.94-dev`
+> Version de référence : `0.3.95-dev`
+> Statut : objets de mission Tok'ra validés en jeu dans `0.3.95-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -13,6 +13,22 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 | Usage | Chemin | Statut |
 |---|---|---|
 | Icône publique GateRim SG-1 | `About/ModIcon.png` | Final ; conserver l'image personnelle démon rouge/noir et ne pas la réutiliser comme art de gameplay |
+
+## Objets de mission Tok'ra validés
+
+| Visuel | Objet | Def | Chemin sous `Textures/` | Référence validée |
+|---|---|---|---|---|
+| ![Module de chiffrement Tok'ra](images/SG1_TokraIntroductionArtifact.png) | Module de chiffrement Tok'ra | `SG1_TokraIntroductionArtifact` | `Things/Item/SG1_TokraIntroductionArtifact` | Module scellé bronze sombre et or, matrice cristalline dorée |
+| ![Paquet de renseignements codés](images/SG1_TokraMissionIntelPacket.png) | Paquet de renseignements codés Tok'ra | `SG1_TokraMissionIntelPacket` | `Things/Item/SG1_TokraMissionIntelPacket` | Coffret Tok'ra ouvert contenant un support de données cristallin |
+| ![Dispositif d'observation Tok'ra](images/SG1_TokraObservationDevice.png) | Dispositif d'observation portable et point déployé | `SG1_TokraObservationDevice`, `SG1_TokraObservationPoint` | `Things/Item/SG1_TokraObservationDevice` | Même famille finale volontairement utilisée par l'objet portable et le point installé |
+| ![Cache organique Tok'ra](images/SG1_TokraOrganicDeadDrop.png) | Cache organique Tok'ra | `SG1_TokraOrganicDeadDrop` | `Things/Item/SG1_TokraOrganicDeadDrop` | Capsule ivoire et bronze entrouverte avec cristal cyan ; catégorie `Item` conservée |
+| ![Nœud de contrôle du relais](images/SG1_TokraRelaySabotageDevice.png) | Nœud de contrôle du relais Goa'uld | `SG1_TokraRelaySabotageDevice` | `Things/Building/SG1_TokraRelaySabotageDevice` | Relique technologique triangulaire bronze vue du dessus |
+| ![Communicateur sécurisé Tok'ra](images/SG1_TokraSecureCommunicator.png) | Communicateur sécurisé Tok'ra | `SG1_TokraSecureCommunicator` | `Things/Building/SG1_TokraSecureCommunicator` | Station fixe argentée et gris froid avec cristal central cyan |
+| ![Marquage prioritaire de livraison](images/SG1_TokraDeliveryDropSpot.png) | Marquage prioritaire de livraison | `SG1_TokraDeliveryDropSpot` | `Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot` | Marquage au sol épais, contour noir façon RimWorld et légère transparence |
+
+Le point d'observation ne possède plus de famille dédiée obsolète. Toutes les
+familles de sites sous `Textures/World/WorldObjects/Expanding/Sites` sont
+également considérées comme finales et déjà validées.
 
 ## Dispositifs de main Goa'uld validés
 
@@ -116,10 +132,10 @@ cérémonie formelle du Prim'ta, sans changement de logique.
 ## Visuels encore temporaires
 
 Les autres visuels locaux restent temporaires, notamment les armes, les autres
-équipements et vêtements, les objets de mission, les projectiles et les pawns.
-Les deux dispositifs de main présentés ci-dessus, les trois familles de
-bâtiments, les trois familles de marques frontales intrinsèques et les quatre
-commandes sont désormais finales.
+équipements et vêtements, les projectiles et les pawns.
+Les objets de mission Tok'ra présentés ci-dessus, les deux dispositifs de main,
+les bâtiments validés, les trois familles de marques frontales intrinsèques et
+les quatre commandes sont désormais finals.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

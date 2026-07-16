@@ -14,6 +14,27 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.95-dev - Finalize Tok'ra mission-object visuals`
+
+La branche `feature/final-tokra-mission-object-visuals` finalise les objets de
+mission Tok'ra encore temporaires : module de chiffrement d'introduction,
+paquet de renseignements codés, dispositif d'observation et point déployé,
+cache organique, nœud de contrôle du relais Goa'uld, communicateur sécurisé et
+marquage prioritaire de livraison.
+
+Les familles validées conservent leurs Defs, chemins sérialisés et comportements.
+Le point d'observation réutilise volontairement la texture finale du dispositif
+portable. Le cache organique reste un objet de catégorie `Item`. Toutes les
+icônes sous `Textures/World/WorldObjects/Expanding/Sites` restent des références
+mondiales finales déjà approuvées et ne sont pas rouvertes par ce jalon.
+
+La clôture documentaire `r16` aligne le registre visuel, les tests durables,
+les pages wiki, le vérificateur d'assets, la version publique `0.3.95-dev` et
+l'assembly `0.3.95.0`. Le défaut distinct d'effondrement sous montagne du site
+de relais reste différé dans `docs/KNOWN_ISSUES.md`.
+
+## Dernier jalon visuel validé et publié
+
 `0.3.92-dev - Add final Goa'uld and Jaffa command icons`
 
 La révision visuelle finale `r1` remplace les quatre familles de commandes qui

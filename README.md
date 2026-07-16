@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.94-dev`
+- Development version: `0.3.95-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,14 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.95-dev` finalizes the Tok'ra mission-object visual set: introduction
+cipher module, encoded intelligence packet, portable observation device and
+deployed point, organic dead drop, Goa'uld relay control node, secure
+communicator and priority delivery marker. The established Def names, save
+identifiers, mission behavior, trust gating, research and balance remain
+unchanged. All world-event site icons under
+`Textures/World/WorldObjects/Expanding/Sites` remain validated final references.
 
 `0.3.94-dev` replaces the shared temporary Zat'nik'tel art used by the kara kesh
 and Goa'uld healing bracelet with two dedicated transparent `128×128` item
