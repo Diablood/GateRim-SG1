@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-    <ThingDef>
+    <ThingDef ParentName="BuildingBase">
         <defName>SG1_TokraRelaySabotageDevice</defName>
         <label>Goa'uld relay control node</label>
         <description>A hardened Goa'uld relay control node identified by Tok'ra intelligence. It must be sabotaged by a colonist before the operation can be considered complete.</description>
@@ -13,7 +13,7 @@
         <tickerType>Never</tickerType>
         <drawerType>MapMeshOnly</drawerType>
         <graphicData>
-            <texPath>Things/Building/SG1_TokraSecureCommunicator</texPath>
+            <texPath>Things/Building/SG1_TokraRelaySabotageDevice</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <drawSize>(2,2)</drawSize>
         </graphicData>

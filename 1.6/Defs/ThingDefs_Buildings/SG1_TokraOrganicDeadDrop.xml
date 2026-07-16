@@ -8,7 +8,7 @@
         <category>Item</category>
         <drawerType>MapMeshOnly</drawerType>
         <graphicData>
-            <texPath>Things/Item/SG1_TokraMissionIntelPacket</texPath>
+            <texPath>Things/Item/SG1_TokraOrganicDeadDrop</texPath>
             <graphicClass>Graphic_Single</graphicClass>
             <drawSize>(0.85,0.85)</drawSize>
         </graphicData>
