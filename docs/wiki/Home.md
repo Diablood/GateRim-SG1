@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.95-dev`
+> Version du mod documentée : `0.3.96-dev`
+
+## Stades larvaires du Prim'ta finalisés
+
+`0.3.96-dev` distingue enfin les deux ressources biologiques inertes de la
+chaîne d'incubation. Le [symbiote immature et la larve de Prim'ta](Primta-Larva)
+possèdent chacun un visuel pâle dédié, cohérent avec un organisme larvaire plutôt
+qu'avec un Goa'uld adulte. Leur fonctionnement de stockage, incubation,
+conservation et implantation reste inchangé.
 
 ## Objets de mission Tok'ra finalisés
 

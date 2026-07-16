@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.96-dev — Finalize Prim'ta larval item visuals
+
+- Add a dedicated pale, tightly curled final texture for
+  `SG1_ImmaturePrimtaSymbiote`.
+- Replace the previous shared placeholder with a distinct longer final texture
+  for `SG1_PrimtaLarva`.
+- Correct the immature symbiote `texPath` so each inert biological stage resolves
+  to its own `128×128` transparent PNG.
+- Preserve incubation, preservation, temperature, deterioration, storage,
+  implantation, tretonin and save identifiers.
+- Defer the mobile Goa'uld, Tok'ra and queen pawn visuals to a later
+  multidirectional animal-pawn lot.
+- Advance public metadata to `0.3.96-dev` and assembly metadata to `0.3.96.0`.
+
 ## 0.3.95-dev — Finalize Tok'ra mission-object visuals
 
 - Replace temporary or shared Tok'ra mission-object art with dedicated validated

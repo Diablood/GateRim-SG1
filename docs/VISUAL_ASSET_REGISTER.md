@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.95-dev`
-- Branch: `feature/final-tokra-mission-object-visuals`
-- Target assembly: `0.3.95.0`
-- Status: `0.3.95-dev` Tok'ra mission-object visual lot validated in game; documentary finalization prepares publication.
+- Version: `0.3.96-dev`
+- Branch: `feature/final-primta-larval-item-visuals`
+- Target assembly: `0.3.96.0`
+- Status: `0.3.96-dev` Prim'ta larval item visual lot validated in game; documentary finalization prepares publication.
 
 ## Purpose
 
@@ -135,17 +135,18 @@ maintainer-validated, final and excluded from future replacement lots.
 
 ## Audit summary
 
-- Local PNG files: `609`.
-- Local texture families: `76`.
-- Accepted final local families: `40` (`2` storyteller portraits, `6`
-  buildings, `4` Tok'ra mission-item families, `2` hand devices, `2` xenotype
-  icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
-  `4` command icons, `4` world-faction icons and `7` world-event site icons).
+- Local PNG files: `610`.
+- Local texture families: `77`.
+- Accepted final local families: `42` (`2` storyteller portraits, `6`
+  buildings, `2` Prim'ta larval-item families, `4` Tok'ra mission-item
+  families, `2` hand devices, `2` xenotype icons, `6` gameplay-gene icons,
+  `3` intrinsic Jaffa forehead-mark overlays, `4` command icons, `4`
+  world-faction icons and `7` world-event site icons).
 - Temporary original families: `23`.
 - Temporary recolor families: `11`.
-- Temporary reuse families: `2`.
+- Temporary reuse families: `1`.
 - Project-icon placeholder families: `0`.
-- Priorities: `0` P0, `18` P1, `18` P2, `40` done.
+- Priorities: `0` P0, `17` P1, `18` P2, `42` done.
 - Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -153,9 +154,8 @@ maintainer-validated, final and excluded from future replacement lots.
 
 ## Highest-priority findings
 
-1. The Prim'ta larva and free Goa'uld symbiote still use the same image.
-2. The free Goa'uld, Tok'ra and queen symbiote forms still share one pawn image.
-3. Jaffa, officer, Tok'ra and SGC apparel are technically complete but remain
+1. The free Goa'uld, Tok'ra and queen symbiote forms still share one pawn image.
+2. Jaffa, officer, Tok'ra and SGC apparel are technically complete but remain
    temporary art families; many body-type variants are exact copies rather than
    tailored silhouettes.
 
@@ -179,7 +179,8 @@ same canonical family. Representative dimensions refer to the base image.
 | `Things/Item/Equipment/WeaponRanged/SG1_MatokStaff` | 1 | 128×48 | Map/inventory weapon | `temporary-original` | `P2` | SG1_MatokStaff | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_TokraHypodermicRifle | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_ZatnikTel | Functional custom art pending final presentation. |
-| `Things/Item/SG1_PrimtaLarva` | 1 | 128×128 | Map/inventory item | `temporary-reuse` | `P1` | SG1_ImmaturePrimtaSymbiote, SG1_PrimtaLarva | Shared image between distinct larval/symbiote forms. |
+| `Things/Item/SG1_ImmaturePrimtaSymbiote` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_ImmaturePrimtaSymbiote | Dedicated pale curled pre-larval symbiote, validated in game after correcting its XML texture path. |
+| `Things/Item/SG1_PrimtaLarva` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_PrimtaLarva | Dedicated pale elongated implantable Prim'ta larva, validated in game. |
 | `Things/Item/SG1_TokraIntroductionArtifact` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraIntroductionArtifact | Dedicated sealed Tok'ra cipher module validated in game. |
 | `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraMissionIntelPacket | Dedicated open Tok'ra intelligence coffer validated in game. |
 | `Things/Item/SG1_TokraObservationDevice` | 1 | 128×128 | Map/inventory and deployed map object | `final` | `done` | SG1_TokraObservationDevice, SG1_TokraObservationPoint | Dedicated observation device validated as a portable item and intentionally reused by the deployed observation point. |
@@ -298,9 +299,9 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Final local texture families: 40
-Local PNG files: 609
-Local texture families: 76
+Final local texture families: 42
+Local PNG files: 610
+Local texture families: 77
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.

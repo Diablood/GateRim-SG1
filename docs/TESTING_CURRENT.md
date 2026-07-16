@@ -1,33 +1,25 @@
-# Current testing — final Tok'ra mission-object visuals
+# Current testing — final Prim'ta larval item visuals
 
-Jalon : `0.3.95-dev`
-Révision validée : `r16`
-Version de DLL attendue : `0.3.95.0`
+Jalon : `0.3.96-dev`
+Révision validée : `r1`
+Révision documentaire : `r2`
+Version de DLL attendue : `0.3.96.0`
 
 ## Validation fonctionnelle et visuelle
 
-- Le module de chiffrement Tok'ra est lisible au sol et dans l'inventaire.
-- Le paquet de renseignements codés possède une identité visuelle distincte.
-- Le dispositif d'observation est validé comme objet portable et comme point
-  déployé ; le blueprint reste vanilla et aucune texture dédiée obsolète du
-  point d'observation ne subsiste.
-- Le cache organique conserve sa catégorie `Item` et son fonctionnement de
-  mission.
-- Le nœud de contrôle du relais Goa'uld conserve sa catégorie bâtiment et
-  démarre sans erreur XML.
-- Le communicateur sécurisé Tok'ra est lisible comme station fixe `1×1`.
-- Le marquage prioritaire de livraison est épais, entouré de noir et légèrement
-  transparent sans masquer le terrain.
-- Toutes les textures de sites sous
-  `Textures/World/WorldObjects/Expanding/Sites` restent finales.
-- Les sauvegardes, recherches, mécaniques de confiance et opérations restent
-  inchangées.
-- Le défaut différé d'effondrement du toit montagneux du site de relais reste
-  enregistré dans `docs/KNOWN_ISSUES.md`.
+- `SG1_PrimtaLarva` affiche la texture finale longue, pâle et développée.
+- `SG1_ImmaturePrimtaSymbiote` affiche la texture finale plus petite et
+  recourbée après correction de son `texPath`.
+- Les deux PNG sont transparents, centrés et lisibles au sol et dans
+  l'inventaire.
+- Les deux stades restent visuellement apparentés sans ressembler à des
+  symbiotes Goa'uld adultes cuirassés.
+- L'incubation, la conservation, le stockage, la détérioration, les températures,
+  l'implantation et la production de trétonine restent inchangés.
+- Les pawns `SG1_GoauldSymbiote`, `SG1_TokraSymbiote` et `SG1_GoauldQueen`
+  ne font pas partie de ce jalon.
 
-## Contrôles de finalisation `r16`
-
-Après extraction de `r15`, puis de `r16`, exécuter :
+## Contrôles de finalisation `r2`
 
 ```powershell
 .\build.cmd
@@ -40,16 +32,10 @@ git diff --check
 Résultats attendus pour le contrôle visuel :
 
 ```text
-Final local texture families: 40
-Local PNG files: 609
-Local texture families: 76
+Final local texture families: 42
+Local PNG files: 610
+Local texture families: 77
 Missing local references: 0
 Unregistered local families: 0
 Visual asset check passed.
 ```
-
-## Résultat final attendu
-
-Le jalon modifie uniquement les visuels validés, leur documentation, les copies
-wiki protégées et les métadonnées de version. Aucun comportement de mission,
-équilibrage, recherche, recette ou identifiant sérialisé n'est modifié.

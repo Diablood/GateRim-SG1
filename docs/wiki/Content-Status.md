@@ -2,7 +2,7 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.95-dev`
+> Dernière révision : `0.3.96-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
@@ -38,6 +38,7 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Visuels finaux des stades larvaires du Prim'ta | Symbiote immature pâle et recourbé ; larve implantable plus longue ; deux familles `128×128` distinctes, comportement biologique préservé | 0.3.96-dev |
 | Objets de mission Tok'ra finalisés | Sept présentations validées : module de chiffrement, paquet de renseignements, dispositif d'observation et point déployé, cache organique, nœud du relais, communicateur sécurisé et marquage de livraison ; comportements et identifiants préservés | 0.3.95-dev |
 | Dispositifs de main Goa'uld finalisés | Kara kesh articulé bronze et or avec gemme rouge ; bracelet de guérison or et argent avec noyau orange ; deux PNG transparents `128×128` dédiés, chemins et comportements préservés | 0.3.94-dev |
 | Bassins Goa'uld et Prim'ta finalisés | Bassin rituel disponible en `2×2` et `3×3` dans un menu commun avec même rendu `2×2`; bassin d'incubation vert orientable sur une case; bassin de conservation bleu sur une case, sans teinte de matériau ni ombre héritée, classé en Mobilier | 0.3.93-dev |
@@ -47,7 +48,7 @@ est traité sans réimplantation ultérieure.
 | Portrait final du storyteller Commandement SG-1 | Portrait principal `560×600` et recadrage tiny `122×130` approuvés puis validés en jeu ; chemins stables, transparence et comportement du storyteller préservés | 0.3.88-dev |
 | Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ | Prim'ta visible avant validation pour tout Jaffa adulte éligible ; un symbiote adulte persistant pour chaque `SG1_GoauldHost`, d'origine Tok'ra avec double identité ou d'origine Goa'uld sans basculement Tok'ra selon la carrière ; chaque reroll est traité sans réconciliation ultérieure | 0.3.87-dev |
 | Icônes finales des xénotypes Jaffa et hôte Goa'uld | Jaffa : tête humaine blanche avec marque d'Apophis ; hôte Goa'uld : symbiote blanc simplifié ; deux visuels approuvés puis validés en jeu ; copies visuelles ajoutées aux pages dédiées dans `r2` | 0.3.86-dev |
-| Audit des assets visuels | Registre maintenu à 609 PNG / 76 familles ; `About/ModIcon.png` reste final hors compteur et 40 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev, 0.3.91-dev, 0.3.93-dev, 0.3.94-dev et 0.3.95-dev |
+| Audit des assets visuels | Registre maintenu à 610 PNG / 77 familles ; `About/ModIcon.png` reste final hors compteur et 42 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev, 0.3.91-dev, 0.3.93-dev, 0.3.94-dev, 0.3.95-dev et 0.3.96-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev / portrait final 0.3.88-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta ; icône finale humaine marquée d'Apophis intégrée | 0.1.1-dev / refonte 0.1.13-dev / icône 0.3.86-dev |
@@ -66,7 +67,7 @@ est traité sans réimplantation ultérieure.
 | Extraction d'un hôte Goa'uld actif | Chirurgie risquée après capture ; un ancien colon retrouve sa faction, tandis qu'un hôte de caste généré devient prisonnier sans faction, recrutable ou libérable ; le symbiote vivant reste anesthésié pendant l'ultimatum | 0.3.41-dev / réaction 0.3.56-dev |
 | Ultimatum et représailles après extraction Goa'uld | Le symbiote extrait reste anesthésié pendant un jour pour permettre sa remise ou le report de la décision ; refus, silence, mise à mort du symbiote ou échec immédiatement mortel programme un raid au délai annoncé, sans empilement et avec 15 jours de refroidissement | 0.3.55-dev / choix 0.3.56-dev |
 | Symbiote du Prim'ta | État persistant implantable médicalement | 0.1.13-dev / procédure 0.1.26-dev |
-| Larve de Prim'ta | Ressource transportable, incubable, périssable, classée biologiquement et sensible à la chaleur | 0.1.27-dev à 0.1.32-dev |
+| Larve de Prim'ta | Ressource transportable, incubable, périssable, classée biologiquement et sensible à la chaleur ; visuels finaux distincts de la forme immature | 0.1.27-dev à 0.1.32-dev / visuels 0.3.96-dev |
 | Bassin d'incubation du Prim'ta | Atelier de Dressage, Animaux 4+, consommant 10 viandes crues | 0.1.28-dev / nutriments 0.1.29-dev |
 | Implantation rituelle Goa'uld | Ciblage explicite, durée, annulation et bassin requis | 0.1.22-dev à 0.1.25-dev |
 | Bassin rituel Goa'uld | Structure cérémonielle constructible | 0.1.25-dev |

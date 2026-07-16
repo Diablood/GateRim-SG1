@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.95-dev`
-> Statut : objets de mission Tok'ra validés en jeu dans `0.3.95-dev`
+> Version de référence : `0.3.96-dev`
+> Statut : stades larvaires du Prim'ta validés en jeu dans `0.3.96-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -13,6 +13,17 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 | Usage | Chemin | Statut |
 |---|---|---|
 | Icône publique GateRim SG-1 | `About/ModIcon.png` | Final ; conserver l'image personnelle démon rouge/noir et ne pas la réutiliser comme art de gameplay |
+
+## Stades larvaires du Prim'ta validés
+
+| Visuel | Stade | Def | Chemin sous `Textures/` | Référence validée |
+|---|---|---|---|---|
+| ![Symbiote immature de Prim'ta](images/SG1_ImmaturePrimtaSymbiote.png) | Stade pré-larvaire extrait d'une reine | `SG1_ImmaturePrimtaSymbiote` | `Things/Item/SG1_ImmaturePrimtaSymbiote` | Petit organisme ivoire rosé, compact, recourbé et peu différencié |
+| ![Larve de Prim'ta](images/SG1_PrimtaLarva.png) | Larve incubée et implantable | `SG1_PrimtaLarva` | `Things/Item/SG1_PrimtaLarva` | Organisme plus long, segmenté et développé, encore pâle et non cuirassé |
+
+Ces deux familles concernent uniquement les objets biologiques inertes. Les
+symbiotes Goa'uld et Tok'ra mobiles ainsi que la reine Goa'uld restent différés
+vers un futur lot de pawns animaliers multidirectionnels.
 
 ## Objets de mission Tok'ra validés
 

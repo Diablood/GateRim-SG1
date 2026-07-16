@@ -1,5 +1,22 @@
 # Durable testing
 
+## Final Prim'ta larval item visuals (`0.3.96-dev`)
+
+Durable validation requirements:
+
+- keep `SG1_ImmaturePrimtaSymbiote` and `SG1_PrimtaLarva` on separate texture
+  families and reject any regression to a shared `texPath`;
+- preserve genuine exterior transparency and `128×128` PNG format;
+- keep the immature form smaller, tightly curled and less differentiated;
+- keep the mature Prim'ta larva longer and more developed without adult Goa'uld
+  armor, large mandibular structures or a mobile-pawn presentation;
+- verify ground, inventory, storage and save/reload presentation;
+- preserve incubation input/output, preservation, deterioration, temperature,
+  implantation and tretonin behavior;
+- keep `SG1_GoauldSymbiote`, `SG1_TokraSymbiote` and `SG1_GoauldQueen` outside
+  this inert-item lot until dedicated multidirectional pawn art is available;
+- require the protected wiki copies to remain byte-identical to gameplay PNGs.
+
 ## Final Tok'ra mission-object visuals (`0.3.95-dev`)
 
 The final visual lot validates the dedicated Tok'ra mission-object families and

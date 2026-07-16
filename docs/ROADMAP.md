@@ -14,6 +14,26 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.96-dev - Finalize Prim'ta larval item visuals`
+
+La révision visuelle `r1` sépare les deux ressources biologiques inertes qui
+partageaient encore la même image. Le symbiote immature extrait d'une reine
+devient un organisme pâle, petit et recourbé. La larve de Prim'ta incubée devient
+plus longue, plus développée et clairement prête à la conservation ou à
+l'implantation.
+
+Le `texPath` du symbiote immature pointe désormais vers sa famille dédiée. Les
+Defs, identifiants de sauvegarde, recettes, stockage, températures,
+détérioration et implantations restent inchangés. Les symbiotes Goa'uld et
+Tok'ra mobiles ainsi que la reine Goa'uld restent différés vers un lot de pawns
+animaliers multidirectionnels.
+
+La clôture documentaire `r2` porte le registre à `610` PNG, `77` familles et
+`42` familles finales, ajoute les deux références wiki protégées et aligne les
+métadonnées sur `0.3.96-dev` / `0.3.96.0`.
+
+## Dernier jalon visuel validé et publié
+
 `0.3.95-dev - Finalize Tok'ra mission-object visuals`
 
 La branche `feature/final-tokra-mission-object-visuals` finalise les objets de

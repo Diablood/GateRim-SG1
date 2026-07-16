@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.95-dev`
+- Development version: `0.3.96-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,14 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.96-dev` gives the two inert Prim'ta biological resources distinct final
+art. The extracted immature symbiote is small, tightly curled and embryonic;
+the incubated Prim'ta larva is longer, more developed and ready for preservation
+or implantation. Both remain pale ivory-pink organisms inspired by the larval
+appearance shown in *Bloodlines*, without adopting the armored anatomy of an
+adult Goa'uld. Their established Defs, storage, incubation, deterioration and
+implantation behavior remain unchanged.
 
 `0.3.95-dev` finalizes the Tok'ra mission-object visual set: introduction
 cipher module, encoded intelligence packet, portable observation device and

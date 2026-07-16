@@ -1,6 +1,6 @@
 # Larve de Prim'ta
 
-> Statut : Prototype  
+> Statut : Fonctionnel, visuels finaux  
 > Version d'introduction : 0.1.27-dev
 
 ## Présentation
@@ -25,7 +25,17 @@ larve de Prim'ta
 | Obtention jouable | [Reine Goa'uld](Goauld-Queen), puis [bassin d'incubation](Primta-Incubation) |
 | Obtention pour les tests | Mode développeur toujours disponible |
 
-Le visuel actuel de la larve est temporaire.
+## Références visuelles finales
+
+| Stade | Visuel | Lecture |
+|---|---|---|
+| Symbiote immature | ![Symbiote immature de Prim'ta](images/SG1_ImmaturePrimtaSymbiote.png) | Petit organisme pâle, compact et recourbé, extrait d'une reine avant incubation |
+| Larve de Prim'ta | ![Larve de Prim'ta](images/SG1_PrimtaLarva.png) | Forme plus longue et développée, prête à la conservation ou à l'implantation |
+
+Les deux ressources utilisent depuis `0.3.96-dev` des familles visuelles
+distinctes. Leur aspect ivoire rosé s'inspire d'un stade larvaire souple et peu
+cuirassé, sans reprendre la tête osseuse ni les grandes structures d'un
+symbiote Goa'uld adulte.
 
 ## Utilisation
 
