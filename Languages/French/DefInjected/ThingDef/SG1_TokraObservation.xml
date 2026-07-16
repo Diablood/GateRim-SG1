@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_TokraObservationDevice.label>dispositif d'observation Tok'ra</SG1_TokraObservationDevice.label>
-    <SG1_TokraObservationDevice.description>Un capteur de terrain Tok'ra compact livré pour une opération d'observation discrète. Il doit être transporté jusqu'à la position périphérique indiquée et y être installé. L'opérateur reste auprès de la lunette déployée pendant la veille de terrain, puis la replie et la rapporte directement à un communicateur sécurisé alimenté.</SG1_TokraObservationDevice.description>
+    <SG1_TokraObservationDevice.description>Une lunette de terrain Tok'ra repliable, conçue pour une opération d'observation discrète. Son optique cristalline et ses capteurs compacts doivent être transportés jusqu'à la position périphérique indiquée puis installés sur place. L'opérateur reste auprès de l'appareil pendant toute la veille, avant de le replier et de le rapporter directement à un communicateur sécurisé alimenté.</SG1_TokraObservationDevice.description>
     <SG1_TokraObservationPoint.label>point d'observation Tok'ra</SG1_TokraObservationPoint.label>
     <SG1_TokraObservationPoint.description>Une position périphérique retenue par la cellule Tok'ra pour une veille discrète. Une fois le capteur installé, un opérateur doit rester à la lunette pour mener la veille de terrain, puis la replier et rapporter ses données au communicateur.</SG1_TokraObservationPoint.description>
 </LanguageData>
