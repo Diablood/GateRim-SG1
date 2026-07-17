@@ -2,9 +2,9 @@
 
 ## Milestone
 
-- Version: `0.3.98-dev`
+- Version: `0.3.99-dev`
 - Branch: `feature/final-tokra-mission-object-visuals`
-- Target assembly: `0.3.98.0`
+- Target assembly: `0.3.99.0`
 - Status: `0.3.95-dev` Tok'ra mission-object visual lot validated in game; documentary finalization prepares publication.
 
 ## Purpose
@@ -238,7 +238,7 @@ same canonical family. Representative dimensions refer to the base image.
 | `World/WorldObjects/Expanding/SG1_SGCExpedition` | 1 | 128×128 | World faction | `final` | `done` | SG1_PlayerSGCExpedition | Accepted world-faction icon. |
 | `World/WorldObjects/Expanding/SG1_Tokra` | 1 | 128×128 | World faction | `final` | `done` | SG1_Tokra | Accepted world-faction icon. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraIntroductionArtifactWorldSite | Validated event-site icon. |
-| `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | 1 | 64×64 | World site | `final` | `done` | SG1_GoauldOpenConflictBattlefieldSite | Validated event-site icon. |
+| `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | 1 | 128×128 | World site | `final` | `done` | SG1_GoauldOpenConflictBattlefieldSite | Flat limited-detail icon with two opposed Goa'uld weapons and a central impact, validated in game. |
 | `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraDecodedMissionWorldSite | Validated event-site icon. |
 | `World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraJaffaOfficerCaptureSite | Validated event-site icon. |
 | `World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact` | 1 | 128×128 | World site | `final` | `done` | SG1_TokraHiddenSafehouseMarker, SG1_TokraHiddenSafehouseSitePart | Validated event-site icon. |

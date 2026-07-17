@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.99-dev — Finalize Goa'uld open-conflict battlefield icon
+
+- Replace the blurred `64×64` world-site icon for
+  `SG1_GoauldOpenConflictBattlefieldSite` with a tested `128×128` PNG.
+- Simplify the validated concept into a flat icon with broad shapes, limited
+  internal detail, strong dark outlines and no pseudo-3D shading.
+- Keep two opposed Goa'uld staff-weapon silhouettes around a central orange
+  battlefield impact so the active two-sided conflict remains immediately
+  readable.
+- Preserve the existing texture path, WorldObjectDef, site duration, faction
+  pairing, map generation, optional intervention and save compatibility.
+- Refresh the protected wiki copy without reopening the other already-final
+  `World/WorldObjects/Expanding/Sites` families.
+- Advance public metadata to `0.3.99-dev` and assembly metadata to `0.3.99.0`.
+
 ## 0.3.98-dev — Finalize tretonin dose visual
 
 - Replace the temporary tretonin-dose art with the maintainer-approved

@@ -14,6 +14,24 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.99-dev - Finalize Goa'uld open-conflict battlefield icon`
+
+L'icône du site mondial de bataille entre domaines Goa'uld passe de `64×64`
+flou à une version finale `128×128`. Le concept validé conserve deux armes
+Goa'uld opposées et un impact central orange, mais adopte le même langage plat
+que les autres événements : formes larges, détails limités, contour sombre et
+absence de pseudo-3D.
+
+Cette correction qualitative ciblée ne rouvre pas le reste du dossier
+`World/WorldObjects/Expanding/Sites`, déjà final. Le Def, la durée du site, la
+paire de factions, la génération de carte et l'intervention facultative restent
+inchangés.
+
+La clôture documentaire conserve `610` PNG, `77` familles locales et `44`
+familles finales.
+
+## Dernier jalon visuel validé et publié
+
 `0.3.98-dev - Finalize tretonin dose visual`
 
 La dose physique de trétonine reçoit une ampoule médicale finale `128×128`,

@@ -1,5 +1,23 @@
 # Durable testing
 
+## Final Goa'uld open-conflict battlefield icon (`0.3.99-dev`)
+
+Durable validation requirements:
+
+- keep the world-site icon at `128×128` with genuine exterior transparency;
+- preserve the existing texture path and WorldObjectDef;
+- retain two clearly opposed Goa'uld weapon silhouettes and a central orange
+  impact representing an active two-sided battle;
+- use broad flat shapes, limited internal detail and strong dark outlines;
+- reject pseudo-3D shading, dense debris, smoke gradients and fine decorative
+  detail that becomes noisy at world-map scale;
+- compare the result directly with the other validated mission icons;
+- verify world-map display, zoom, save/reload, site expiry and caravan approach;
+- preserve site duration, exact faction pairing, map generation, optional
+  intervention and save compatibility;
+- require the protected wiki copy to remain byte-identical to the gameplay PNG;
+- keep the other `World/WorldObjects/Expanding/Sites` families closed and final.
+
 ## Final tretonin dose visual (`0.3.98-dev`)
 
 Durable validation requirements:

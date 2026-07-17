@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.98-dev`
-> Statut : dose de trétonine validée en jeu dans `0.3.98-dev`
+> Version de référence : `0.3.99-dev`
+> Statut : icône plate du champ de bataille Goa'uld validée en jeu dans `0.3.99-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -116,7 +116,7 @@ cérémonie formelle du Prim'ta, sans changement de logique.
 | Icône | Événement ou site | Def ou usage principal | Chemin sous `Textures/` |
 |---|---|---|---|
 | ![Objectif Goa'uld chiffré](images/SG1_GoauldEncryptedObjective.png) | Objectif Goa'uld chiffré | `SG1_TokraIntroductionArtifactWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldEncryptedObjective` |
-| ![Champ de bataille Goa'uld](images/SG1_GoauldOpenConflictBattlefield.png) | Champ de bataille Goa'uld | `SG1_GoauldOpenConflictBattlefieldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` |
+| ![Champ de bataille Goa'uld](images/SG1_GoauldOpenConflictBattlefield.png) | Champ de bataille Goa'uld | `SG1_GoauldOpenConflictBattlefieldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldOpenConflictBattlefield` | Icône plate `128×128`, deux armes opposées, impact central orange, détails limités et sans pseudo-3D |
 | ![Relais Goa'uld à saboter](images/SG1_GoauldRelaySabotage.png) | Relais Goa'uld à saboter | `SG1_TokraDecodedMissionWorldSite` | `World/WorldObjects/Expanding/Sites/SG1_GoauldRelaySabotage` |
 | ![Position de l'officier Jaffa](images/SG1_JaffaOfficerFieldPosition.png) | Position de l'officier Jaffa | `SG1_TokraJaffaOfficerCaptureSite` | `World/WorldObjects/Expanding/Sites/SG1_JaffaOfficerFieldPosition` |
 | ![Contact clandestin Tok'ra](images/SG1_TokraClandestineContact.png) | Contact clandestin Tok'ra | `SG1_TokraHiddenSafehouseMarker`, `SG1_TokraHiddenSafehouseSitePart` | `World/WorldObjects/Expanding/Sites/SG1_TokraClandestineContact` |

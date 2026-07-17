@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.98-dev`
+- Development version: `0.3.99-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,13 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.99-dev` replaces the blurred `64×64` Goa'uld open-conflict
+battlefield site icon with a crisp flat `128×128` version. Two opposed
+Goa'uld staff-weapon silhouettes and a central orange impact remain readable
+at world-map scale while matching the limited-detail, no-pseudo-3D style of
+the other validated mission icons. Site generation, duration, faction
+relations and optional player intervention remain unchanged.
 
 `0.3.98-dev` finalizes the physical tretonin dose with a dedicated
 transparent `128×128` medical ampoule. The compact high-contrast vial contains

@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.98-dev`
+> Version du mod documentée : `0.3.99-dev`
+
+## Icône du champ de bataille Goa'uld finalisée
+
+`0.3.99-dev` remplace l'ancienne icône floue du
+[site mondial de bataille Goa'uld](Content-Status) par une version plate
+`128×128`, cohérente avec les autres événements. Deux armes Goa'uld opposées et
+un impact orange central signalent immédiatement le conflit ouvert, sans
+ombrage pseudo-3D ni détails excessifs. Le fonctionnement du site ne change pas.
 
 ## Dose de trétonine finalisée
 

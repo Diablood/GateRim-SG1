@@ -2,10 +2,14 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.98-dev`
+> Dernière révision : `0.3.99-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
+
+La version `0.3.99-dev` remplace l'icône floue `64×64` du champ de
+bataille mondial Goa'uld par une version plate `128×128`, avec deux armes
+opposées et un impact central. Le site et ses règles restent inchangés.
 
 La version `0.3.98-dev` finalise la dose physique de trétonine avec une
 ampoule médicale transparente `128×128`, un liquide cyan et un contour sombre
@@ -134,7 +138,7 @@ est traité sans réimplantation ultérieure.
 | Équipements automatiques d'armures Jaffa | Guerrier équipé de l'armure légère ; garde équipé de l'armure lourde ; gantelets, bottes et casque rétractable communs aux deux profils | 0.1.68-dev |
 | Raid Jaffa Goa'uld naturel | Incident storyteller rare après le jour 12 : doctrine choisie avec les points vanilla et, sous Commandement SG-1, un poids admissible peut recevoir `x1,25` selon la relation sans cumul ; le facteur final reste `75 %` en conflit ouvert ou `110 %` en alliance ; à partir de `800` points finaux, la moitié reste standard et les assauts directs coopératifs deviennent différés `75/25` ou conjoints `60/40`, sans fréquence supplémentaire | 0.2.1-dev / doctrines 0.3.54-dev / conflit 0.3.68-dev / alliance 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / influence relationnelle 0.3.80-dev |
 | Bataille locale entre domaines Goa'uld | Sous Commandement SG-1, une paire en conflit ouvert peut faire entrer deux détachements Jaffa depuis le bord, les rassembler puis déclencher un assaut mutuel annoncé ; intervention facultative, riposte locale bornée, rupture morale sous 30 % et engagement limité à deux jours | 0.3.69-dev |
-| Site mondial de bataille Goa'uld | Site temporaire facultatif lié à une paire exacte en conflit ouvert : icône dédiée, huit jours, trajet caravanier vanilla, carte générée à l'arrivée et mêmes règles de combat ; expiration ignorée sans échec ni conséquence politique | 0.3.70-dev |
+| Site mondial de bataille Goa'uld | Site temporaire facultatif lié à une paire exacte en conflit ouvert : icône plate finale `128×128`, huit jours, trajet caravanier vanilla, carte générée à l'arrivée et mêmes règles de combat ; expiration ignorée sans échec ni conséquence politique | 0.3.70-dev / icône finale 0.3.99-dev |
 | Raid Jaffa Goa'uld contrôlé | Incident développeur à chance storyteller nulle réutilisant la faction hostile réelle et le flux vanilla de raid | 0.1.69-dev |
 | Progression des menaces Goa'uld | Raids, menaces interceptées et sites hostiles fondés sur les points vanilla du storyteller ; plafonds de début de partie retirés et relais fortifié selon trois paliers | 0.3.53-dev |
 | Stratégie du raid contrôlé | Attribution explicite de la stratégie vanilla `ImmediateAttack`, sans solution de repli ni activation des raids naturels | 0.1.70-dev |
