@@ -1,47 +1,39 @@
 # Project state
 
-Current milestone: `0.3.97-dev - Finalize Tok'ra hypodermic rifle visual`
+Current milestone: `0.3.98-dev - Finalize tretonin dose visual`
 
-Status: the final weapon texture is validated in game. The texture commit was
-created directly on `develop`; this documentary revision completes versioning,
-tests, the visual register and protected wiki reference material.
+Status: the final tretonin-dose texture is validated in game and pushed. This
+revision completes publication metadata, durable tests, the visual register and
+protected wiki documentation.
 
-- Starting point: published `develop` aligned with annotated tag `v0.3.96-dev`.
-- Gameplay texture commit: `4003e97`.
-- Working branch: none; the visual commit was made directly on `develop`.
-- Final documentary revision: `r3`.
-- Assembly version: `0.3.97.0`.
-- Final annotated tag: `v0.3.97-dev`.
+- Starting point: published `develop` aligned with `v0.3.97-dev`.
+- Working branch: direct continuation on `develop`.
+- Validated gameplay texture: maintainer-provided `128×128` PNG.
+- Final documentary revision: `r2`.
+- Assembly version: `0.3.98.0`.
+- Final annotated tag: `v0.3.98-dev`.
 
 ## Completed scope
 
-- Finalize `SG1_TokraHypodermicRifle` with a simplified, high-contrast
-  `128×128` texture.
-- Keep the source artwork horizontally aligned for RimWorld long-gun rendering.
-- Preserve the inherited small random ground rotation instead of forcing a
-  special-case zero angle.
-- Preserve the cyan sealed-charge modules and Tok'ra experimental identity.
-- Preserve the existing twelve sealed charges, projectile, non-lethal effect,
-  mission delivery, save identifiers and automatic disposal.
-- Add a byte-identical protected wiki copy and register the rifle family as
-  final.
-
-## Explicitly deferred scope
-
-- `SG1_TokraHypodermicDart` remains a distinct temporary projectile family.
-- Other weapons, apparel and multidirectional pawn visuals remain outside this
-  milestone.
+- Finalize `SG1_TretoninDose` as a small advanced medical ampoule.
+- Use genuine exterior transparency and a stronger dark outline.
+- Keep the object tightly framed to use the full `128×128` resolution.
+- Preserve the existing `drawSize` as the control for its small in-game scale.
+- Preserve stack size, mass, production, administration, substitution duration,
+  Def name and save compatibility.
+- Add a byte-identical protected wiki copy.
+- Register the texture family as final.
 
 ## Validation result
 
-The maintainer validated the final horizontal version in game:
+The maintainer validated the exact uploaded final image in game:
 
-- equipped rendering is correctly aligned;
-- ground rendering follows the same small random variation used by vanilla
-  weapons;
-- the simplified silhouette remains readable at `128×128`;
-- stronger Camera+ zoom no longer exposes excessive blurred micro-detail;
-- gameplay behavior remains unchanged.
+- map and inventory rendering are readable;
+- exterior transparency is correct;
+- the stronger outline survives reduction;
+- the cyan liquid and medical-container silhouette remain distinct;
+- the existing gameplay size is appropriate;
+- no functional behavior changed.
 
 Before publication, rerun the forced build, duration-formatting check, visual
 asset check, complete project-consistency check and `git diff --check`.

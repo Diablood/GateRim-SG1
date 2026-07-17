@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.97-dev`
+- Development version: `0.3.98-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,13 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.98-dev` finalizes the physical tretonin dose with a dedicated
+transparent `128×128` medical ampoule. The compact high-contrast vial contains
+a luminous cyan treatment and uses a stronger outline for clear map and
+inventory readability, while its small in-game presentation remains controlled
+by the existing `drawSize`. Tretonin production, stacking, administration and
+one-day substitution behavior remain unchanged.
 
 `0.3.97-dev` finalizes the experimental Tok'ra hypodermic rifle with a
 dedicated high-contrast `128×128` weapon texture. The simplified horizontal

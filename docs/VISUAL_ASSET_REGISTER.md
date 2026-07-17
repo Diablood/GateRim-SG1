@@ -2,9 +2,9 @@
 
 ## Milestone
 
-- Version: `0.3.97-dev`
+- Version: `0.3.98-dev`
 - Branch: `feature/final-tokra-mission-object-visuals`
-- Target assembly: `0.3.97.0`
+- Target assembly: `0.3.98.0`
 - Status: `0.3.95-dev` Tok'ra mission-object visual lot validated in game; documentary finalization prepares publication.
 
 ## Purpose
@@ -137,15 +137,15 @@ maintainer-validated, final and excluded from future replacement lots.
 
 - Local PNG files: `610`.
 - Local texture families: `77`.
-- Accepted final local families: `43` (`2` storyteller portraits, `6`
+- Accepted final local families: `44` (`2` storyteller portraits, `6`
   buildings, `4` Tok'ra mission-item families, `2` hand devices, `2` xenotype
   icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
   `4` command icons, `4` world-faction icons and `7` world-event site icons).
-- Temporary original families: `23`.
+- Temporary original families: `22`.
 - Temporary recolor families: `11`.
 - Temporary reuse families: `1`.
 - Project-icon placeholder families: `0`.
-- Priorities: `0` P0, `17` P1, `17` P2, `43` done.
+- Priorities: `0` P0, `17` P1, `16` P2, `44` done.
 - Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -185,7 +185,7 @@ same canonical family. Representative dimensions refer to the base image.
 | `Things/Item/SG1_TokraMissionIntelPacket` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraMissionIntelPacket | Dedicated open Tok'ra intelligence coffer validated in game. |
 | `Things/Item/SG1_TokraObservationDevice` | 1 | 128×128 | Map/inventory and deployed map object | `final` | `done` | SG1_TokraObservationDevice, SG1_TokraObservationPoint | Dedicated observation device validated as a portable item and intentionally reused by the deployed observation point. |
 | `Things/Item/SG1_TokraOrganicDeadDrop` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_TokraOrganicDeadDrop | Dedicated organic dead-drop pod validated in game; remains an Item-category mission object. |
-| `Things/Item/SG1_TretoninDose` | 1 | 64×64 | Map/inventory item | `temporary-original` | `P2` | SG1_TretoninDose | Functional custom art pending final presentation. |
+| `Things/Item/SG1_TretoninDose` | 1 | 128×128 | Map/inventory medical item | `final` | `done` | SG1_TretoninDose | Maintainer-approved transparent cyan medical ampoule with stronger outline, validated in game. |
 | `Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote` | 1 | 128×128 | Pawn/map | `temporary-reuse` | `P1` | SG1_GoauldQueen, SG1_GoauldSymbiote, SG1_TokraSymbiote | Shared image between biologically distinct forms. |
 | `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet` | 1 | 128×128 | Pawn apparel item | `final` | `done` | SG1_GoauldHealingBracelet | Approved gold-and-silver healing bracelet with orange luminous core, validated on all item surfaces. |
 | `Things/Pawn/Humanlike/Apparel/JaffaDeployedHelmet/JaffaDeployedHelmet` | 5 | 128×128 | Pawn apparel | `temporary-original` | `P1` | SG1_JaffaDeployedHelmet | Functional custom art pending final presentation. |
@@ -299,7 +299,7 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Final local texture families: 40
+Final local texture families: 44
 Local PNG files: 610
 Local texture families: 77
 Missing local references: 0

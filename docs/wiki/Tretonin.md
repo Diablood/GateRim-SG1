@@ -1,7 +1,8 @@
 # Trétonine
 
-> Statut : Prototype  
-> Version d'introduction : 0.1.36-dev
+> Statut : Fonctionnel, visuel final  
+> Version d'introduction : 0.1.36-dev  
+> Visuel final : 0.3.98-dev
 
 ## Présentation
 
@@ -10,18 +11,24 @@ pour les Jaffa ayant atteint la puberté.
 
 ## Ressource physique
 
+![Dose finale de trétonine](images/SG1_TretoninDose.png)
+
 ```text
 dose de trétonine
 ```
 
 | Élément | Valeur |
 |---|---:|
+| Texture source | `128×128`, transparente |
+| Taille en jeu | Contrôlée par le `drawSize` du Def |
 | Limite de pile | `25` |
 | Masse | `0,02` |
 | Catégorie | Produits médicaux Goa'uld |
 | Obtention actuelle | [Production au laboratoire de drogues](Tretonin-Production) ou mode développeur |
 
-La dose n'est pas classée comme médicament vanilla générique.
+Depuis `0.3.98-dev`, la dose utilise une ampoule médicale finale cadrée serrée,
+avec liquide cyan lumineux et contour sombre renforcé. La dose n'est pas classée
+comme médicament vanilla générique.
 
 ## Administration
 
@@ -67,7 +74,6 @@ tolérance
 effets secondaires
 approvisionnement des Jaffa libres
 ```
-
 
 ## Production
 

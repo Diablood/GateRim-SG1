@@ -128,6 +128,7 @@ $wikiIconMappings = @(
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericJaffaForeheadMark_south.png" "docs/wiki/images/GenericJaffaForeheadMark_south.png" "docs/wiki/Visual-Assets.md" "images/GenericJaffaForeheadMark_south.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericSilverJaffaForeheadMark_south.png" "docs/wiki/images/GenericSilverJaffaForeheadMark_south.png" "docs/wiki/Visual-Assets.md" "images/GenericSilverJaffaForeheadMark_south.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/JaffaForeheadMarks/GenericGoldJaffaForeheadMark_south.png" "docs/wiki/images/GenericGoldJaffaForeheadMark_south.png" "docs/wiki/Visual-Assets.md" "images/GenericGoldJaffaForeheadMark_south.png"),
+    (New-WikiMapping "Textures/Things/Item/SG1_TretoninDose.png" "docs/wiki/images/SG1_TretoninDose.png" "docs/wiki/Tretonin.md" "images/SG1_TretoninDose.png"),
     (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle.png" "docs/wiki/images/SG1_TokraHypodermicRifle.png" "docs/wiki/Visual-Assets.md" "images/SG1_TokraHypodermicRifle.png"),
     (New-WikiMapping "Textures/Things/Item/SG1_ImmaturePrimtaSymbiote.png" "docs/wiki/images/SG1_ImmaturePrimtaSymbiote.png" "docs/wiki/Primta-Larva.md" "images/SG1_ImmaturePrimtaSymbiote.png"),
     (New-WikiMapping "Textures/Things/Item/SG1_PrimtaLarva.png" "docs/wiki/images/SG1_PrimtaLarva.png" "docs/wiki/Primta-Larva.md" "images/SG1_PrimtaLarva.png"),
@@ -279,6 +280,7 @@ $expectedFinalLocalPaths = @(
     "Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle",
     "Things/Item/SG1_ImmaturePrimtaSymbiote",
     "Things/Item/SG1_PrimtaLarva",
+    "Things/Item/SG1_TretoninDose",
     "Things/Item/SG1_TokraIntroductionArtifact",
     "Things/Item/SG1_TokraMissionIntelPacket",
     "Things/Item/SG1_TokraObservationDevice",
@@ -316,10 +318,10 @@ $expectedFinalLocalPaths = @(
 $actualFinalLocalPaths = @($registeredLocalPaths | Where-Object { $registeredLocalStatuses[$_] -ceq "final" } | Sort-Object)
 $finalPathDifferences = @(Compare-Object -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) -DifferenceObject $actualFinalLocalPaths -CaseSensitive)
 if ($finalPathDifferences.Count -gt 0) {
-    Add-Failure ("Final local asset whitelist differs from the forty-three approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
+    Add-Failure ("Final local asset whitelist differs from the forty-four approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the forty-three approved families."
+    Add-Pass "Final local asset whitelist matches the forty-four approved families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.3.98-dev — Finalize tretonin dose visual
+
+- Replace the temporary tretonin-dose art with the maintainer-approved
+  transparent `128×128` medical ampoule.
+- Use a stronger dark outline and simplified cyan liquid chamber for reliable
+  readability on the map, in storage and in inventories.
+- Keep the texture tightly framed and preserve the small gameplay presentation
+  through the existing `drawSize`, rather than wasting resolution on transparent
+  padding.
+- Preserve stack size, mass, production recipe, medical administration,
+  one-day substitution effect, Def name and save compatibility.
+- Add a byte-identical protected wiki reference and register the family as
+  final.
+- Advance public metadata to `0.3.98-dev` and assembly metadata to `0.3.98.0`.
+
 ## 0.3.97-dev — Finalize Tok'ra hypodermic rifle visual
 
 - Replace the temporary experimental Tok'ra hypodermic-rifle art with a

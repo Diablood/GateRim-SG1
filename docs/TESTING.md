@@ -1,5 +1,19 @@
 # Durable testing
 
+## Final tretonin dose visual (`0.3.98-dev`)
+
+Durable validation requirements:
+
+- preserve a transparent `128×128` source PNG;
+- keep the ampoule tightly framed with only a small safety margin;
+- use `drawSize` to control the small gameplay scale instead of embedding large
+  transparent padding in the source image;
+- retain a strong dark outline and a clearly readable cyan liquid chamber;
+- verify map, inventory, storage, stack and save/reload presentation;
+- preserve stack size, mass, production recipe, administration requirements,
+  one-day substitution behavior, Def name and save compatibility;
+- require the protected wiki copy to remain byte-identical to the gameplay PNG.
+
 ## Final Tok'ra hypodermic rifle visual (`0.3.97-dev`)
 
 Durable validation requirements:

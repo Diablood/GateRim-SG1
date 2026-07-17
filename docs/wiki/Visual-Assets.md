@@ -1,12 +1,22 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.94-dev`
-> Statut : dispositifs de main Goa'uld validés en jeu dans `0.3.94-dev`
+> Version de référence : `0.3.98-dev`
+> Statut : dose de trétonine validée en jeu dans `0.3.98-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
 jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 `final` exige toujours une validation explicite.
+
+## Consommable médical Goa'uld validé
+
+| Visuel | Objet | Def | Chemin sous `Textures/` | Référence validée |
+|---|---|---|---|---|
+| ![Dose finale de trétonine](images/SG1_TretoninDose.png) | Dose individuelle de trétonine | `SG1_TretoninDose` | `Things/Item/SG1_TretoninDose` | Ampoule transparente `128×128`, liquide cyan, contour sombre renforcé et petite échelle contrôlée par `drawSize` |
+
+La texture reste cadrée serrée afin de préserver sa définition. La production,
+l'empilement, l'administration médicale et la substitution temporaire restent
+inchangés.
 
 ## Identité publique du mod
 

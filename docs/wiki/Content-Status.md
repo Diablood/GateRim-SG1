@@ -2,10 +2,15 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.97-dev`
+> Dernière révision : `0.3.98-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
+
+La version `0.3.98-dev` finalise la dose physique de trétonine avec une
+ampoule médicale transparente `128×128`, un liquide cyan et un contour sombre
+renforcé. Le `drawSize` continue de contrôler sa petite échelle en jeu et le
+fonctionnement médical reste inchangé.
 
 La version `0.3.94-dev` finalise les deux dispositifs de main Goa'uld. Le kara
 kesh et le bracelet de guérison remplacent leur ancien visuel partagé du
@@ -32,6 +37,7 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Visuel final de la dose de trétonine | Ampoule médicale transparente `128×128`, liquide cyan, contour renforcé, échelle en jeu conservée par `drawSize` | 0.3.98-dev |
 | Dispositifs de main Goa'uld finalisés | Kara kesh articulé bronze et or avec gemme rouge ; bracelet de guérison or et argent avec noyau orange ; deux PNG transparents `128×128` dédiés, chemins et comportements préservés | 0.3.94-dev |
 | Bassins Goa'uld et Prim'ta finalisés | Bassin rituel disponible en `2×2` et `3×3` dans un menu commun avec même rendu `2×2`; bassin d'incubation vert orientable sur une case; bassin de conservation bleu sur une case, sans teinte de matériau ni ombre héritée, classé en Mobilier | 0.3.93-dev |
 | Marques frontales Jaffa intrinsèques finales | Symbole d'Apophis compact ; variantes noire, argentée et dorée ; visible uniquement en `South`, trois autres facings transparents ; données intrinsèques et comportement préservés | 0.3.91-dev |
@@ -40,7 +46,7 @@ est traité sans réimplantation ultérieure.
 | Portrait final du storyteller Commandement SG-1 | Portrait principal `560×600` et recadrage tiny `122×130` approuvés puis validés en jeu ; chemins stables, transparence et comportement du storyteller préservés | 0.3.88-dev |
 | Symbiotes des Jaffa et hôtes Goa'uld/Tok'ra de départ | Prim'ta visible avant validation pour tout Jaffa adulte éligible ; un symbiote adulte persistant pour chaque `SG1_GoauldHost`, d'origine Tok'ra avec double identité ou d'origine Goa'uld sans basculement Tok'ra selon la carrière ; chaque reroll est traité sans réconciliation ultérieure | 0.3.87-dev |
 | Icônes finales des xénotypes Jaffa et hôte Goa'uld | Jaffa : tête humaine blanche avec marque d'Apophis ; hôte Goa'uld : symbiote blanc simplifié ; deux visuels approuvés puis validés en jeu ; copies visuelles ajoutées aux pages dédiées dans `r2` | 0.3.86-dev |
-| Audit des assets visuels | Registre maintenu à 606 PNG / 73 familles ; `About/ModIcon.png` reste final hors compteur et 33 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev, 0.3.91-dev, 0.3.93-dev et 0.3.94-dev |
+| Audit des assets visuels | Registre maintenu à 610 PNG / 77 familles ; `About/ModIcon.png` reste final hors compteur et 44 familles locales sont finales ; contrôle automatique et [page de référence progressive](Visual-Assets) | 0.3.85-dev / mises à jour 0.3.86-dev, 0.3.88-dev, 0.3.89-dev, 0.3.90-dev, 0.3.91-dev, 0.3.93-dev et 0.3.94-dev |
 | Formatage localisé des durées | Format commun RimWorld validé sur les sites, opérations, communicateurs et anciens fallbacks ; audit global anglais/français actif, sans modification des délais réels | 0.3.71-dev |
 | Storyteller GateRim SG-1 | `Commandement SG-1` sélectionnable, baseline Cassandra résolue dynamiquement, relations persistantes et cohérentes avec les types vanilla, influence non cumulative `x1,25` sur les doctrines admissibles, facteur `75 %` en conflit ouvert, facteur allié plafonné à `110 %`, raids alliés standards, différés ou conjoints, représailles communes, rupture après échec majeur, garde-fous territoriaux et première prise bornée ; les autres storytellers suspendent les futures opportunités | 0.3.65-dev / relations 0.3.66-dev / pression 0.3.68-dev / local 0.3.69-dev / monde 0.3.70-dev / alliances 0.3.73-dev / renforts 0.3.78-dev / conjoints 0.3.79-dev / doctrines 0.3.80-dev / représailles 0.3.81-dev / rupture 0.3.82-dev / garde-fous 0.3.83-dev / prise bornée 0.3.84-dev / portrait final 0.3.88-dev |
 | Xenotype Jaffa | Fondation germinale héréditaire séparée du Prim'ta ; icône finale humaine marquée d'Apophis intégrée | 0.1.1-dev / refonte 0.1.13-dev / icône 0.3.86-dev |

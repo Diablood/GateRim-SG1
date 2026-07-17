@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.97-dev`
+> Version du mod documentée : `0.3.98-dev`
+
+## Dose de trétonine finalisée
+
+`0.3.98-dev` donne à la [dose physique de trétonine](Tretonin) une ampoule
+médicale transparente `128×128`, remplie d'un liquide cyan et renforcée par un
+contour sombre lisible. Le PNG reste cadré serré tandis que la petite taille en
+jeu est conservée par le `drawSize` existant. La production, l'empilement,
+l'administration et la substitution temporaire ne changent pas.
 
 ## Dispositifs de main Goa'uld finalisés
 

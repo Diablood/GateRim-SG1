@@ -14,6 +14,23 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon visuel validé et publié
 
+`0.3.98-dev - Finalize tretonin dose visual`
+
+La dose physique de trétonine reçoit une ampoule médicale finale `128×128`,
+transparente, fortement détourée et remplie d'un liquide cyan lumineux. Le PNG
+reste cadré serré pour conserver un maximum de définition ; sa petite taille en
+jeu continue d'être réglée par le `drawSize` du Def.
+
+Le jalon ne modifie ni la fabrication par lots, ni l'empilement, ni la masse, ni
+l'administration médicale, ni la substitution active pendant une journée. La
+famille passe de temporaire à finale et reçoit une copie wiki protégée
+byte-identique.
+
+La clôture documentaire conserve `610` PNG et `77` familles locales, dont `44`
+familles finales.
+
+## Dernier jalon visuel validé et publié
+
 `0.3.97-dev - Finalize Tok'ra hypodermic rifle visual`
 
 Le fusil hypodermique expérimental Tok'ra reçoit une texture finale simplifiée,
