@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.96-dev`
+- Development version: `0.3.97-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,13 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.97-dev` finalizes the experimental Tok'ra hypodermic rifle with a
+dedicated high-contrast `128×128` weapon texture. The simplified horizontal
+silhouette preserves its cyan sealed-charge modules and specialized
+non-lethal identity while remaining readable when held, dropped and viewed
+under stronger camera zoom. The existing twelve-charge behavior, projectile,
+neutralization effect and self-disposal rules remain unchanged.
 
 `0.3.96-dev` gives the two inert Prim'ta biological resources distinct final
 art. The extracted immature symbiote is small, tightly curled and embryonic;

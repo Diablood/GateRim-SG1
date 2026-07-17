@@ -1,48 +1,24 @@
 # Durable testing
 
-## Final Prim'ta larval item visuals (`0.3.96-dev`)
+## Final Tok'ra hypodermic rifle visual (`0.3.97-dev`)
 
 Durable validation requirements:
 
-- keep `SG1_ImmaturePrimtaSymbiote` and `SG1_PrimtaLarva` on separate texture
-  families and reject any regression to a shared `texPath`;
+- keep the source sprite horizontal for RimWorld long-gun rendering;
+- do not disable the small inherited random ground rotation merely because one
+  vanilla test drop happened to appear horizontal;
 - preserve genuine exterior transparency and `128×128` PNG format;
-- keep the immature form smaller, tightly curled and less differentiated;
-- keep the mature Prim'ta larva longer and more developed without adult Goa'uld
-  armor, large mandibular structures or a mobile-pawn presentation;
-- verify ground, inventory, storage and save/reload presentation;
-- preserve incubation input/output, preservation, deterioration, temperature,
-  implantation and tretonin behavior;
-- keep `SG1_GoauldSymbiote`, `SG1_TokraSymbiote` and `SG1_GoauldQueen` outside
-  this inert-item lot until dedicated multidirectional pawn art is available;
-- require the protected wiki copies to remain byte-identical to gameplay PNGs.
-
-## Final Tok'ra mission-object visuals (`0.3.95-dev`)
-
-The final visual lot validates the dedicated Tok'ra mission-object families and
-their protected wiki copies. Durable coverage:
-
-- keep the cipher module, encoded intelligence packet, observation device,
-  organic dead drop, relay control node, secure communicator and delivery
-  marker visually distinct;
-- preserve `SG1_TokraObservationPoint` as an intentional reuse of the portable
-  observation-device family, with no separate texture family;
-- preserve the organic dead drop as an Item-category mission object;
-- preserve the relay control node and secure communicator as building-category
-  objects with valid blueprint behavior where applicable;
-- require genuine exterior transparency and reject baked checkerboards, white
-  rectangles, clipping and magenta fallback textures;
-- keep the delivery marker readable on light and dark terrain with a thick black
-  outline and light integrated alpha;
-- keep every texture under
-  `Textures/World/WorldObjects/Expanding/Sites` classified as final;
-- require gameplay and protected wiki copies to remain byte-identical;
-- preserve all established Def names, save identifiers, research, balance,
-  trust gating and mission behavior;
-- rerun the visual register audit after any future file addition, deletion,
-  rename, move or status change;
-- keep the separate relay-site overhead-mountain collapse defect documented
-  until a later functional milestone fixes it.
+- retain a simplified high-contrast silhouette with a clearly readable stock,
+  grip, main body and conventional muzzle;
+- keep the cyan sealed-charge modules recognizable without restoring excessive
+  micro-detail that becomes blurred under stronger Camera+ zoom;
+- verify equipped, ground, inventory, save/reload and mission-delivery
+  presentation;
+- preserve the twelve-charge counter, per-shot consumption, dart projectile,
+  non-lethal effect and automatic disposal after the final charge;
+- keep `SG1_TokraHypodermicDart` registered separately until its own visual is
+  finalized;
+- require the protected wiki copy to remain byte-identical to the gameplay PNG.
 
 ## Final Goa'uld and Jaffa command icons (`0.3.92-dev`)
 

@@ -2,10 +2,10 @@
 
 ## Milestone
 
-- Version: `0.3.96-dev`
-- Branch: `feature/final-primta-larval-item-visuals`
-- Target assembly: `0.3.96.0`
-- Status: `0.3.96-dev` Prim'ta larval item visual lot validated in game; documentary finalization prepares publication.
+- Version: `0.3.97-dev`
+- Branch: `feature/final-tokra-mission-object-visuals`
+- Target assembly: `0.3.97.0`
+- Status: `0.3.95-dev` Tok'ra mission-object visual lot validated in game; documentary finalization prepares publication.
 
 ## Purpose
 
@@ -137,16 +137,15 @@ maintainer-validated, final and excluded from future replacement lots.
 
 - Local PNG files: `610`.
 - Local texture families: `77`.
-- Accepted final local families: `42` (`2` storyteller portraits, `6`
-  buildings, `2` Prim'ta larval-item families, `4` Tok'ra mission-item
-  families, `2` hand devices, `2` xenotype icons, `6` gameplay-gene icons,
-  `3` intrinsic Jaffa forehead-mark overlays, `4` command icons, `4`
-  world-faction icons and `7` world-event site icons).
+- Accepted final local families: `43` (`2` storyteller portraits, `6`
+  buildings, `4` Tok'ra mission-item families, `2` hand devices, `2` xenotype
+  icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays,
+  `4` command icons, `4` world-faction icons and `7` world-event site icons).
 - Temporary original families: `23`.
 - Temporary recolor families: `11`.
 - Temporary reuse families: `1`.
 - Project-icon placeholder families: `0`.
-- Priorities: `0` P0, `17` P1, `18` P2, `42` done.
+- Priorities: `0` P0, `17` P1, `17` P2, `43` done.
 - Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -154,8 +153,9 @@ maintainer-validated, final and excluded from future replacement lots.
 
 ## Highest-priority findings
 
-1. The free Goa'uld, Tok'ra and queen symbiote forms still share one pawn image.
-2. Jaffa, officer, Tok'ra and SGC apparel are technically complete but remain
+1. The Prim'ta larva and free Goa'uld symbiote still use the same image.
+2. The free Goa'uld, Tok'ra and queen symbiote forms still share one pawn image.
+3. Jaffa, officer, Tok'ra and SGC apparel are technically complete but remain
    temporary art families; many body-type variants are exact copies rather than
    tailored silhouettes.
 
@@ -177,7 +177,7 @@ same canonical family. Representative dimensions refer to the base image.
 | `Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot` | 1 | 128×128 | Ground marker | `final` | `done` | SG1_TokraDeliveryDropSpot | Thick black-outlined priority delivery marker with integrated light transparency, validated in game. |
 | `Things/Item/Equipment/WeaponRanged/SG1_Bolas` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_Bolas | Functional custom art pending final presentation. |
 | `Things/Item/Equipment/WeaponRanged/SG1_MatokStaff` | 1 | 128×48 | Map/inventory weapon | `temporary-original` | `P2` | SG1_MatokStaff | Functional custom art pending final presentation. |
-| `Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_TokraHypodermicRifle | Functional custom art pending final presentation. |
+| `Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle` | 1 | 128×128 | Equipped/map/inventory weapon | `final` | `done` | SG1_TokraHypodermicRifle | Simplified horizontal high-contrast Tok'ra capture rifle, validated equipped and on the ground under Camera+ zoom. |
 | `Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel` | 1 | 128×128 | Map/inventory weapon | `temporary-original` | `P2` | SG1_ZatnikTel | Functional custom art pending final presentation. |
 | `Things/Item/SG1_ImmaturePrimtaSymbiote` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_ImmaturePrimtaSymbiote | Dedicated pale curled pre-larval symbiote, validated in game after correcting its XML texture path. |
 | `Things/Item/SG1_PrimtaLarva` | 1 | 128×128 | Map/inventory item | `final` | `done` | SG1_PrimtaLarva | Dedicated pale elongated implantable Prim'ta larva, validated in game. |
@@ -299,7 +299,7 @@ git diff --check
 Expected visual-audit result:
 
 ```text
-Final local texture families: 42
+Final local texture families: 40
 Local PNG files: 610
 Local texture families: 77
 Missing local references: 0

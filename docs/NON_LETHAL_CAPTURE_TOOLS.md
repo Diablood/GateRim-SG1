@@ -35,6 +35,18 @@ modified by body size and armor.
 - Successful neutralization lasts `600–900` ticks.
 - The health effect is shown as a temporary bolas restraint with entangled legs, not as drug-induced numbness.
 
+## Final rifle presentation
+
+Since `0.3.97-dev`, the experimental Tok'ra hypodermic rifle uses a dedicated
+simplified `128×128` final texture. The source sprite is horizontal, as expected
+for RimWorld long guns. Its small variation when dropped is inherited from the
+normal weapon ground-rotation behavior and is intentionally preserved.
+
+The final silhouette favors strong outlines and broad cyan charge modules over
+fine mechanical detail so the rifle remains readable at gameplay scale and
+under stronger Camera+ zoom. This visual update does not change charge count,
+accuracy, projectile behavior, neutralization, delivery or self-disposal.
+
 ## Experimental Tok'ra hypodermic rifle
 
 - Spacer technology level.

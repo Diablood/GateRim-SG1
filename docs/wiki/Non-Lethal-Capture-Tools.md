@@ -2,6 +2,16 @@
 
 La version `0.3.36-dev` prépare les missions demandant une cible vivante. La version `0.3.37-dev` valide leur première intégration opérationnelle.
 
+
+## Visuel final du fusil
+
+![Fusil hypodermique expérimental Tok'ra](images/SG1_TokraHypodermicRifle.png)
+
+Depuis `0.3.97-dev`, le fusil utilise un sprite horizontal simplifié et
+fortement contrasté. Les modules cyan rappellent ses charges scellées, tandis
+que le canon conventionnel évite l'apparence d'une grande aiguille. La petite
+variation de pose au sol est le comportement normal hérité des armes RimWorld.
+
 ## Bolas
 
 Les bolas sont une solution simple accessible tôt :

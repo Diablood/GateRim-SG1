@@ -14,44 +14,21 @@ second changelog, ni de registre d'idées, ni de liste de règles de test.
 
 ## Dernier jalon visuel validé et publié
 
-`0.3.96-dev - Finalize Prim'ta larval item visuals`
+`0.3.97-dev - Finalize Tok'ra hypodermic rifle visual`
 
-La révision visuelle `r1` sépare les deux ressources biologiques inertes qui
-partageaient encore la même image. Le symbiote immature extrait d'une reine
-devient un organisme pâle, petit et recourbé. La larve de Prim'ta incubée devient
-plus longue, plus développée et clairement prête à la conservation ou à
-l'implantation.
+Le fusil hypodermique expérimental Tok'ra reçoit une texture finale simplifiée,
+contrastée et lisible en `128×128`. La silhouette horizontale respecte le rendu
+des armes longues de RimWorld, tandis que la légère rotation aléatoire au sol
+reste celle héritée des armes vanilla.
 
-Le `texPath` du symbiote immature pointe désormais vers sa famille dédiée. Les
-Defs, identifiants de sauvegarde, recettes, stockage, températures,
-détérioration et implantations restent inchangés. Les symbiotes Goa'uld et
-Tok'ra mobiles ainsi que la reine Goa'uld restent différés vers un lot de pawns
-animaliers multidirectionnels.
+Les modules cyan rappellent les douze charges scellées sans surcharger le sprite
+de micro-détails flous sous Camera+. Le projectile, la neutralisation non
+létale, la livraison de mission, les sauvegardes et l'auto-neutralisation après
+la dernière charge restent inchangés.
 
-La clôture documentaire `r2` porte le registre à `610` PNG, `77` familles et
-`42` familles finales, ajoute les deux références wiki protégées et aligne les
-métadonnées sur `0.3.96-dev` / `0.3.96.0`.
-
-## Dernier jalon visuel validé et publié
-
-`0.3.95-dev - Finalize Tok'ra mission-object visuals`
-
-La branche `feature/final-tokra-mission-object-visuals` finalise les objets de
-mission Tok'ra encore temporaires : module de chiffrement d'introduction,
-paquet de renseignements codés, dispositif d'observation et point déployé,
-cache organique, nœud de contrôle du relais Goa'uld, communicateur sécurisé et
-marquage prioritaire de livraison.
-
-Les familles validées conservent leurs Defs, chemins sérialisés et comportements.
-Le point d'observation réutilise volontairement la texture finale du dispositif
-portable. Le cache organique reste un objet de catégorie `Item`. Toutes les
-icônes sous `Textures/World/WorldObjects/Expanding/Sites` restent des références
-mondiales finales déjà approuvées et ne sont pas rouvertes par ce jalon.
-
-La clôture documentaire `r16` aligne le registre visuel, les tests durables,
-les pages wiki, le vérificateur d'assets, la version publique `0.3.95-dev` et
-l'assembly `0.3.95.0`. Le défaut distinct d'effondrement sous montagne du site
-de relais reste différé dans `docs/KNOWN_ISSUES.md`.
+La clôture documentaire porte le registre à `610` PNG, `77` familles et `43`
+familles finales. La fléchette hypodermique reste une famille projectile
+temporaire distincte.
 
 ## Dernier jalon visuel validé et publié
 

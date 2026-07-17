@@ -1,18 +1,18 @@
 # Changelog
 
-## 0.3.96-dev — Finalize Prim'ta larval item visuals
+## 0.3.97-dev — Finalize Tok'ra hypodermic rifle visual
 
-- Add a dedicated pale, tightly curled final texture for
-  `SG1_ImmaturePrimtaSymbiote`.
-- Replace the previous shared placeholder with a distinct longer final texture
-  for `SG1_PrimtaLarva`.
-- Correct the immature symbiote `texPath` so each inert biological stage resolves
-  to its own `128×128` transparent PNG.
-- Preserve incubation, preservation, temperature, deterioration, storage,
-  implantation, tretonin and save identifiers.
-- Defer the mobile Goa'uld, Tok'ra and queen pawn visuals to a later
-  multidirectional animal-pawn lot.
-- Advance public metadata to `0.3.96-dev` and assembly metadata to `0.3.96.0`.
+- Replace the temporary experimental Tok'ra hypodermic-rifle art with a
+  simplified high-contrast final texture designed for `128×128` readability.
+- Preserve the horizontal long-gun orientation expected by RimWorld weapon
+  rendering while allowing the inherited small random ground rotation.
+- Keep the cyan sealed-charge modules and specialized non-lethal silhouette
+  visible without relying on fragile micro-detail.
+- Preserve the existing twelve-charge logic, dart projectile, neutralization
+  effect, delivery flow, save identifiers and automatic disposal after the
+  final shot.
+- Keep `SG1_TokraHypodermicDart` as a separate temporary projectile family.
+- Advance public metadata to `0.3.97-dev` and assembly metadata to `0.3.97.0`.
 
 ## 0.3.95-dev — Finalize Tok'ra mission-object visuals
 
