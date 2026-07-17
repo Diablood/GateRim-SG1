@@ -96,14 +96,16 @@ Lorsqu’un jalon supprime un fichier, annoncer la suppression avant extraction,
 fournir la commande `Remove-Item` correspondante et vérifier que Git affiche
 bien l’état `D`.
 
-Les scripts locaux `Apply-GateRim-SG1-*.ps1` et
-`Publish-GateRim-SG1-*.ps1` sont des outils à usage unique. Ils doivent rester
-ignorés par Git, être exclus du staging et être supprimés après succès.
+Aucun script PowerShell temporaire ne doit être placé à la racine du dépôt.
+Lorsqu'un outil d'application exceptionnel est indispensable, il doit résider
+sous `tools/`, être accompagné d'un wrapper `.cmd` utilisant
+`-ExecutionPolicy Bypass`, rester hors du commit final et être supprimé après
+succès.
 
 Contrôle de l’index :
 
 ```powershell
-git diff --cached --name-only | Select-String -Pattern "^(Apply|Publish)-GateRim-SG1-.*\.ps1$"
+git diff --cached --name-only | Select-String -Pattern "(^|/)apply-.*\.(ps1|cmd)$|^(Apply|Publish)-GateRim-SG1-.*\.ps1$"
 ```
 
 Toute occurrence bloque la publication jusqu’à son retrait de l’index.
@@ -120,6 +122,7 @@ publié :
 - `docs/TESTING_CURRENT.md` conserve le résultat final des tests, la dernière
   révision locale validée et les limites connues ;
 - `docs/TESTING.md` reçoit la couverture durable ;
+- `docs/DOCUMENTATION_CONSISTENCY_GUARDS.md` décrit les contrats automatisés ;
 - `docs/CHANGELOG.md` décrit l’état réellement publié sans suffixe `-rN` ;
 - `About/About.xml` et
   `Source/GateRimSG1/GateRimSG1.csproj` portent la même version.
@@ -142,7 +145,9 @@ encore présenter le jalon courant comme non validé.
 Exécuter le contrôle automatisé :
 
 ```powershell
+.\tools\test-documentation-consistency-guards.cmd
 .\tools\check-project-consistency.cmd
+.\tools\check-project-consistency.cmd -RequirePublicationReady
 ```
 
 La commande doit terminer avec un code de sortie `0`. Lorsqu’un jalon modifie un

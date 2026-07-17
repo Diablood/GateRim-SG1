@@ -1,5 +1,31 @@
 # Durable testing
 
+## Documentation consistency and publication safeguards (`0.3.100-dev`)
+
+Durable coverage:
+
+- keep `About/About.xml` as the authoritative public version;
+- keep project, README, current-state, current-test, changelog, wiki and visual
+  register versions aligned;
+- require exactly one changelog heading for every published tag from
+  `v0.3.67-dev` onward;
+- require one level-two durable-test section for the current milestone and every
+  published tag from `v0.3.93-dev` onward;
+- reject visual-register summaries that disagree with the marked inventory
+  table, rows outside that table, volatile branch metadata and known obsolete
+  findings;
+- keep `docs/ROADMAP.md` limited to decided future work and reject published
+  history or versioned milestone headings;
+- require the publication procedure to run the regression fixtures and the
+  aggregate publication-ready gate;
+- keep the checker and fixture suite read-only outside temporary test
+  directories;
+- require `-RequirePublicationReady` to reject unfinished current-state wording,
+  an expected rather than validated DLL and a missing final tag;
+- run forced build, duration formatting, fixture tests, documentation audit,
+  visual audit, aggregate consistency and `git diff --check`;
+- confirm a clean RimWorld startup with the expected assembly while preserving
+  every gameplay, Def, translation, texture and save contract.
 ## Final Goa'uld open-conflict battlefield icon (`0.3.99-dev`)
 
 Durable validation requirements:
@@ -52,6 +78,65 @@ Durable validation requirements:
   finalized;
 - require the protected wiki copy to remain byte-identical to the gameplay PNG.
 
+## Final Prim'ta larval item visuals (`0.3.96-dev`)
+
+Durable validation requirements:
+
+- keep `SG1_ImmaturePrimtaSymbiote` and `SG1_PrimtaLarva` on separate
+  transparent `128×128` texture families;
+- preserve the immature form as smaller and tightly curled and the mature larva
+  as longer and more developed;
+- verify map, inventory, storage, incubation, preservation and save/reload
+  presentation;
+- preserve biological deterioration, temperature, implantation, tretonin,
+  storage and save behavior;
+- keep mobile Goa'uld, Tok'ra and queen pawn art outside this inert-item lot;
+- require protected wiki copies to remain byte-identical.
+
+## Final Tok'ra mission-object visuals (`0.3.95-dev`)
+
+Durable validation requirements:
+
+- keep distinct final visuals for the cipher module, intelligence packet,
+  portable observation device, organic dead drop, relay control node, secure
+  communicator and priority delivery marker;
+- preserve the intentional observation-point reuse of the portable-device
+  family;
+- keep each object in its established category and texture path;
+- preserve mission mechanics, trust gating, research, balance and serialized
+  identifiers;
+- keep every event-site icon under
+  `Textures/World/WorldObjects/Expanding/Sites` final;
+- retain the relay-site overhead-mountain collapse as a separate deferred
+  defect, not a visual-regression workaround;
+- require protected wiki copies to remain byte-identical.
+
+## Final Goa'uld hand-device visuals (`0.3.94-dev`)
+
+Durable validation requirements:
+
+- keep dedicated transparent `128×128` item textures for `SG1_KaraKesh` and
+  `SG1_GoauldHealingBracelet`;
+- preserve their historical texture paths, ThingDefs and save identity;
+- verify ground, inventory, inspection, equipped and save/reload presentation;
+- preserve System Lord assignment, research, recipes and all ability behavior;
+- reject any return to the shared Zat'nik'tel inventory image;
+- require protected wiki copies to remain byte-identical.
+
+## Final Goa'uld and Prim'ta basin visuals (`0.3.93-dev`)
+
+Durable validation requirements:
+
+- keep `SG1_GoauldRitualBasin` as the save-compatible `2×2` Def and
+  `SG1_GoauldRitualBasinLarge` as the `3×3` placement variant;
+- keep both variants in one Architect dropdown with the same validated visual
+  and UI icon;
+- preserve ritual interaction behavior, costs and research;
+- keep the incubation basin green, one-cell and directionally interactive;
+- keep the preservation basin blue, one-cell, powered, specialized and under
+  Furniture;
+- preserve storage filters, power use and biological deterioration;
+- require protected wiki copies to remain byte-identical.
 ## Final Goa'uld and Jaffa command icons (`0.3.92-dev`)
 
 Final visual revision `r1` replaces four personal-icon placeholders and is

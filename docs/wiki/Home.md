@@ -4,8 +4,14 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.99-dev`
+> Version du mod documentée : `0.3.100-dev`
 
+## Garde-fous documentaires
+
+`0.3.100-dev` restaure les entrées historiques manquantes et ajoute des
+contrôles automatiques sur le changelog, les tests durables, le registre visuel,
+la roadmap et l'état final de publication. Cette maintenance ne change aucun
+contenu jouable, visuel ou identifiant de sauvegarde.
 ## Icône du champ de bataille Goa'uld finalisée
 
 `0.3.99-dev` remplace l'ancienne icône floue du

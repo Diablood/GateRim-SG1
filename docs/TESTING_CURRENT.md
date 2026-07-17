@@ -1,40 +1,64 @@
-# Current testing — final Goa'uld open-conflict battlefield icon
+# Tests courants
 
-Jalon : `0.3.99-dev`
-Révision visuelle validée : `r2`
-Révision documentaire : `r3`
-Version de DLL attendue : `0.3.99.0`
+Jalon : `0.3.100-dev - Restore documentation consistency and add publication safeguards`
 
-## Validation fonctionnelle et visuelle
+Révision validée : `r8`
+Version de DLL validée : `0.3.100.0`
 
-- `SG1_GoauldOpenConflictBattlefield` mesure `128×128`.
-- Le PNG possède une transparence extérieure réelle.
-- L'icône utilise un rendu plat, sans ombrage pseudo-3D.
-- Les détails restent limités et cohérents avec les autres icônes d'événements.
-- Les deux armes Goa'uld opposées et l'impact central orange restent lisibles
-  sur la carte mondiale.
-- Le contour sombre est net et aucune bordure carrée n'est visible.
-- Le site, sa durée, les factions concernées, la génération de carte et
-  l'intervention facultative restent inchangés.
-- La copie wiki doit rester byte-identique au PNG de gameplay.
+## Objet du test
 
-## Contrôles de finalisation `r3`
+Ce jalon ne modifie aucun comportement de jeu. Il restaure les documents
+historiques manquants et rend leur cohérence automatiquement vérifiable avant
+chaque publication.
+
+## Contrôles validés
+
+Depuis la racine du dépôt :
 
 ```powershell
-.\build.cmd
+.\build.cmd "D:\SteamLibrary\steamapps\common\RimWorld\RimWorldWin64_Data\Managed"
+
 .\tools\check-duration-formatting.cmd
+.\tools\test-documentation-consistency-guards.cmd
+.\tools\check-documentation-consistency.cmd
 .\tools\check-visual-assets.cmd
-.\tools\check-project-consistency.cmd
+.\tools\check-project-consistency.cmd `
+  -ExpectedVersion 0.3.100-dev `
+  -ExpectedBackstoryCount 83
+
+.\tools\check-project-consistency.cmd -RequirePublicationReady
+
 git diff --check
 ```
 
-Résultats attendus pour le contrôle visuel :
+Résultats validés :
+
+- build Release `0.3.100.0` réussi ;
+- audit des durées réussi ;
+- fixtures négatives des garde-fous réussies ;
+- audit documentaire normal réussi ;
+- audit documentaire de publication réussi ;
+- registre visuel inchangé à `610` PNG, `77` familles et `44` familles finales ;
+- contrôle global réussi avec `83` backstories ;
+- aucun défaut d'espace ou de fin de ligne détecté.
+
+## Validation RimWorld ciblée
+
+Le démarrage ciblé est validé avec la ligne suivante dans `Player.log` :
 
 ```text
-Final local texture families: 44
-Local PNG files: 610
-Local texture families: 77
-Missing local references: 0
-Unregistered local families: 0
-Visual asset check passed.
+<color=#D9B44A>[GateRim SG-1]</color> Version 0.3.100.0 loaded.
 ```
+
+Le filtre ciblé ne retourne aucune exception ni erreur propre à GateRim SG-1.
+Il retourne également le résumé global de RimWorld indiquant six erreurs dans
+les données de traduction française. Ce résumé n'identifie pas GateRim SG-1 et
+ce jalon ne modifie aucun fichier de traduction.
+
+## Limites confirmées
+
+- aucun PNG n'est ajouté, supprimé ou remplacé ;
+- aucun Def, texte de gameplay, comportement C# ou identifiant sauvegardé ne
+  change ;
+- le prochain travail visuel reste l'icône unique
+  `UI/Commands/SG1_JaffaHelmetMode`.

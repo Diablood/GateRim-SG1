@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.99-dev`
+- Development version: `0.3.100-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,6 +17,12 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
+`0.3.100-dev` restores missing published documentation and adds automatic
+safeguards against the same drift recurring. The changelog and durable testing
+history are reconciled, the visual register is checked against its own table,
+the roadmap is returned to decided future work, and the final publication
+procedure now has a blocking documentation-ready mode. No gameplay, Def,
+translation, visual asset or save identifier changes in this milestone.
 `0.3.99-dev` replaces the blurred `64×64` Goa'uld open-conflict
 battlefield site icon with a crisp flat `128×128` version. Two opposed
 Goa'uld staff-weapon silhouettes and a central orange impact remain readable

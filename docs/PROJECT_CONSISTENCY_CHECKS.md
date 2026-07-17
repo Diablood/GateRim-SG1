@@ -1,126 +1,99 @@
 # Project consistency checks
 
-Version: `0.3.92-dev`
+Version: `0.3.100-dev`
 
-Status: extended through `0.3.92-dev` with mandatory visual-asset and approved-wiki-copy validation.
+Status: the main consistency command now includes documentation-history,
+publication-wording and visual-register safeguards.
 
 ## Purpose
 
-`tools/check-project-consistency.ps1` prevents public and technical project metadata from drifting between milestones. The command is read-only: it does not rewrite files, create commits or modify the game installation.
+`tools/check-project-consistency.ps1` is the read-only aggregate validation
+command for a GateRim SG-1 milestone. It must not rewrite repository files,
+create commits or alter the RimWorld installation.
 
-The Windows entry point is:
-
-```powershell
-./tools/check-project-consistency.cmd
-```
-
-The script is compatible with the Windows PowerShell 5.1 parser used by the `.cmd` wrapper. Error messages use explicit formatting where punctuation would otherwise be parsed as part of a variable reference.
-
-## Markdown command-path checks
-
-The checker scans `README.md` and every Markdown file under `docs/` for literal tab characters. A tab causes a non-zero exit code and reports the affected file and line.
-
-Repository-relative PowerShell command paths in Markdown must use forward slashes, for example `./tools/check-project-consistency.cmd`. This prevents a generated or copied `\t` sequence from becoming a tab and corrupting commands such as `./tools/...`.
-
-## Markdown link checks
-
-Since `0.3.63-dev`, the checker validates local Markdown targets in `README.md`
-and every document under `docs/`. Repository paths beginning with `docs/` are
-resolved from the repository root; ordinary relative paths are resolved from
-their source document. Extensionless links in `docs/wiki/` resolve to the
-matching `.md` page. External, mail, Steam and same-page anchor links are left
-to their respective renderers.
-
-This check makes removal or renaming of a technical document or wiki draft fail
-before publication when a Markdown link still points to it.
-
-## Visual asset checks
-
-Since `0.3.85-dev`, the project consistency command launches
-`tools/check-visual-assets.ps1` as a mandatory subprocess. The dedicated checker
-can also be run directly through:
+Windows entry point:
 
 ```powershell
-./tools/check-visual-assets.cmd
+.\tools\check-project-consistency.cmd
 ```
 
-It verifies:
+Final publication gate:
 
-- every PNG under `Textures/` has a valid PNG signature;
-- directional and body-type variants normalize to one canonical family;
-- every family and physical-file count matches
-  `docs/VISUAL_ASSET_REGISTER.md`;
-- every local family has at least one direct XML or C# reference;
-- no direct local texture path is missing;
-- every direct vanilla texture path is registered and still referenced;
-- `About/ModIcon.png` remains present;
-- every protected gameplay icon copied into `docs/wiki/images/` remains byte-identical to its gameplay PNG and is referenced by the intended wiki page;
-- the exact final-family whitelist matches the explicitly approved storyteller, xenotype, gameplay-gene, intrinsic Jaffa pawn-overlay, command, world-faction and event-site families.
-
-The checker is read-only. Any added, removed, renamed or newly referenced visual
-asset must update the register in the same revision.
-
-## Previously validated behavior
-
-The `0.3.20-dev` local validation confirmed that:
-
-- a correct repository state returns exit code `0` and reports the expected version, assembly and backstory count;
-- an intentionally wrong expected version returns a non-zero exit code with an explicit `[FAIL]` message;
-- a positive rerun succeeds immediately after the negative test;
-- no positive or negative execution modifies repository files;
-- the Windows PowerShell 5.1 parser accepts the final `0.3.20-dev-r2` implementation.
-
-## Version checks
-
-The command reads `About/About.xml` as the authoritative development version and verifies that it matches:
-
-- `Version`, `AssemblyVersion` and `FileVersion` in `Source/GateRimSG1/GateRimSG1.csproj`;
-- the development version in `README.md`;
-- the documented version in `docs/wiki/Home.md`;
-- the latest revision in `docs/wiki/Content-Status.md`;
-- the current milestone in `docs/PROJECT_STATE.md`;
-- the active test milestone and expected DLL in `docs/TESTING_CURRENT.md`;
-- the newest heading in `docs/CHANGELOG.md`.
-
-The assembly version is derived from the development version. For example, `0.3.21-dev` requires `0.3.21.0` in the project and test plan.
-
-
-## Preparatory and final wording
-
-A controlled document can legitimately change wording between the testing state and the final tagged state. The DLL-version check therefore accepts both:
-
-```text
-Version de DLL attendue : `x.y.z.0`
-Version de DLL validée : `x.y.z.0`
+```powershell
+.\tools\check-project-consistency.cmd -RequirePublicationReady
 ```
 
-Both forms must still contain the exact assembly version derived from `About/About.xml`. Missing values produce one explicit failure rather than a second redundant empty-value mismatch.
+## Aggregate checks
 
-## Backstory checks
+The command validates:
 
-The command loads every XML file under `1.6/Defs/BackstoryDefs` and:
+- literal tabs and local Markdown links in `README.md` and `docs/**/*.md`;
+- the version in `About/About.xml`;
+- `Version`, `AssemblyVersion` and `FileVersion` in
+  `Source/GateRimSG1/GateRimSG1.csproj`;
+- version alignment across the README, current state, current tests, changelog,
+  wiki home and content-status page;
+- all `BackstoryDef` files, unique `defName` values and the documented count of
+  `83` backstories;
+- the protected wiki backstory catalogue rows;
+- the documentation safeguards through
+  `tools/check-documentation-consistency.ps1`;
+- the visual inventory and protected wiki images through
+  `tools/check-visual-assets.ps1`.
 
-- counts every `BackstoryDef`;
-- reports missing or duplicate `defName` values;
-- compares the real Def count with the counts shown in the README, wiki home, content-status page, technical backstory document and wiki catalogue;
-- counts player-facing table rows between `BACKSTORY_TABLES_START` and `BACKSTORY_TABLES_END` in `docs/wiki/Cultural-Backstories.md`.
+Any failed subprocess makes the aggregate command fail.
 
-This makes a future backstory addition fail the publication check until all required public and technical summaries are updated in the same milestone.
+## Documentation consistency subprocess
+
+`tools/check-documentation-consistency.ps1` independently checks:
+
+- exactly one changelog heading for every published tag from `v0.3.67-dev`
+  onward;
+- descending changelog order and a current first heading;
+- one durable `TESTING.md` section for the current milestone and every published
+  tag from `v0.3.93-dev` onward;
+- current-version alignment in the visual register and safeguard documentation;
+- arithmetic agreement between the visual-register summaries and marked table;
+- absence of visual rows outside the authoritative table;
+- absence of volatile branch metadata and explicitly obsolete findings;
+- an active `ROADMAP.md` without published-history headings;
+- mandatory commands and root-script restrictions in
+  `docs/MILESTONE_PUBLICATION.md`.
+
+The negative regression fixtures are run separately through:
+
+```powershell
+.\tools\test-documentation-consistency-guards.cmd
+```
+
+## Publication-ready mode
+
+`-RequirePublicationReady` forwards the same switch to the documentation
+subprocess. It rejects current-state wording that still describes a pending test
+or publication and requires:
+
+- `Version de DLL validée` in `docs/TESTING_CURRENT.md`;
+- the exact final annotated tag in `docs/PROJECT_STATE.md`;
+- a clearly validated or published final state;
+- all ordinary consistency checks to remain successful.
+
+This mode must pass before `git add -A` for the final milestone commit.
 
 ## Optional explicit expectations
 
-The normal command derives its expectations from repository files. A milestone can additionally require exact values:
+A milestone can additionally require exact values:
 
 ```powershell
-./tools/check-project-consistency.cmd `
-    -ExpectedVersion 0.3.21-dev `
-    -ExpectedBackstoryCount 83
+.\tools\check-project-consistency.cmd `
+  -ExpectedVersion 0.3.100-dev `
+  -ExpectedBackstoryCount 83
 ```
 
-A mismatch returns a non-zero exit code. This allows the check to be used from PowerShell, Cursor tasks or a future continuous-integration workflow.
+## Complementary checks
 
-## Publication rule
+The aggregate command complements, but does not replace:
 
-Run the command after the final documentary pass and before `git add -A`. Run it again after extracting any final archive that changes versions, public pages, backstories or the backstory catalogue.
-
-The check complements `git diff --check`; it does not replace the forced RimWorld rebuild, in-game loading test or manual review of player-facing text.
+- the forced .NET build;
+- the focused RimWorld startup or gameplay validation;
+- `git diff --check`;
+- manual review of player-facing text and visual presentation.

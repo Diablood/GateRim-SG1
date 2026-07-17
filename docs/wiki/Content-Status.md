@@ -2,11 +2,14 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.99-dev`
+> Dernière révision : `0.3.100-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
+La version `0.3.100-dev` restaure l'historique documentaire manquant et ajoute
+des garde-fous automatiques de publication. Aucun contenu jouable, texture,
+équilibrage ou identifiant de sauvegarde n'est modifié.
 La version `0.3.99-dev` remplace l'icône floue `64×64` du champ de
 bataille mondial Goa'uld par une version plate `128×128`, avec deux armes
 opposées et un impact central. Le site et ses règles restent inchangés.
@@ -41,6 +44,7 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Garde-fous documentaires et de publication | Historique du changelog et des tests durables vérifié, registre visuel auto-cohérent, roadmap active et verrou final de publication | 0.3.100-dev |
 | Visuel final de la dose de trétonine | Ampoule médicale transparente `128×128`, liquide cyan, contour renforcé, échelle en jeu conservée par `drawSize` | 0.3.98-dev |
 | Dispositifs de main Goa'uld finalisés | Kara kesh articulé bronze et or avec gemme rouge ; bracelet de guérison or et argent avec noyau orange ; deux PNG transparents `128×128` dédiés, chemins et comportements préservés | 0.3.94-dev |
 | Bassins Goa'uld et Prim'ta finalisés | Bassin rituel disponible en `2×2` et `3×3` dans un menu commun avec même rendu `2×2`; bassin d'incubation vert orientable sur une case; bassin de conservation bleu sur une case, sans teinte de matériau ni ombre héritée, classé en Mobilier | 0.3.93-dev |

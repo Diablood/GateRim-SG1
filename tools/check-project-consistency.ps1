@@ -2,7 +2,8 @@
 param(
     [string]$RepositoryRoot,
     [string]$ExpectedVersion,
-    [int]$ExpectedBackstoryCount = -1
+    [int]$ExpectedBackstoryCount = -1,
+    [switch]$RequirePublicationReady
 )
 
 Set-StrictMode -Version Latest
@@ -368,6 +369,40 @@ if ($null -ne $wikiCatalogueText) {
     }
 }
 
+$documentationCheckPath = Get-RepositoryPath "tools/check-documentation-consistency.ps1"
+
+if (-not (Test-Path -LiteralPath $documentationCheckPath -PathType Leaf)) {
+    Add-Failure "Missing documentation consistency checker: tools/check-documentation-consistency.ps1"
+}
+else {
+    Write-Host ""
+    Write-Host "Running documentation consistency check..."
+
+    if ($RequirePublicationReady) {
+        & powershell.exe `
+            -NoLogo `
+            -NoProfile `
+            -ExecutionPolicy Bypass `
+            -File $documentationCheckPath `
+            -RepositoryRoot $RepositoryRoot `
+            -RequirePublicationReady
+    }
+    else {
+        & powershell.exe `
+            -NoLogo `
+            -NoProfile `
+            -ExecutionPolicy Bypass `
+            -File $documentationCheckPath `
+            -RepositoryRoot $RepositoryRoot
+    }
+
+    if ($LASTEXITCODE -ne 0) {
+        Add-Failure "Documentation consistency check failed."
+    }
+    else {
+        Add-Pass "Documentation consistency check passed."
+    }
+}
 $visualAssetCheckPath = Get-RepositoryPath "tools/check-visual-assets.ps1"
 
 if (-not (Test-Path -LiteralPath $visualAssetCheckPath -PathType Leaf)) {
