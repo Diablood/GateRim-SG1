@@ -28,6 +28,21 @@ Le xenotype contient actuellement :
 
 Les Jaffa ne sont pas tous visiblement massifs. Le xenotype n'impose donc pas la silhouette vanilla `Body_Hulk`.
 
+## Couteau Jaffa
+
+![Couteau Jaffa final](images/SG1_JaffaKnife.png)
+
+Depuis `0.3.103-dev`, les Jaffa disposent d'une arme de mêlée dédiée inspirée de
+leur lame de combat traditionnelle. Le [couteau Jaffa](Jaffa-Knife) reprend le
+profil du glaive vanilla, se fabrique au banc d'usinage après la recherche
+Armement Jaffa et peut apparaître chez les convois Jaffa libres.
+
+Les guerriers, gardes, officiers et marchands compatibles peuvent le recevoir
+comme arme principale. Cette sélection diversifie les bases, raids, caravanes et
+missions qui réutilisent leurs PawnKinds. Le briseur de murs de la diversion
+Tok'ra conserve explicitement son Ma'Tok afin de rester capable d'endommager les
+structures à distance.
+
 ## Prim'ta
 
 Le Prim'ta est maintenant représenté séparément par un état de santé persistant :
@@ -153,7 +168,7 @@ Jaffa libres
 ```
 
 Elle possède un nombre limité de colonies visibles. Ses guerriers et gardes
-utilisent la lignée Jaffa, un Prim'ta initial, des Ma'Tok et les armures
+utilisent la lignée Jaffa, un Prim'ta initial, des Ma'Tok, des couteaux et les armures
 modulaires existantes sans recevoir automatiquement une marque frontale
 Goa'uld.
 

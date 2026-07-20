@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <SG1_JaffaKnife.label>couteau Jaffa</SG1_JaffaKnife.label>
+    <SG1_JaffaKnife.description>Une arme blanche compacte portée par les guerriers Jaffa. Sa large lame sombre se divise en une pointe fourchue autour d'une profonde rainure centrale, ce qui permet de frapper efficacement d'estoc comme de taille. Malgré sa conception extraterrestre, elle se manie comme un glaive léger et agile.</SG1_JaffaKnife.description>
+    <SG1_JaffaKnife.tools.handle.label>manche</SG1_JaffaKnife.tools.handle.label>
+    <SG1_JaffaKnife.tools.point.label>pointe</SG1_JaffaKnife.tools.point.label>
+    <SG1_JaffaKnife.tools.edge.label>tranchant</SG1_JaffaKnife.tools.edge.label>
+</LanguageData>

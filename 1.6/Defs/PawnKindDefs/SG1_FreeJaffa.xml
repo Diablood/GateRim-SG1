@@ -35,6 +35,7 @@
         <weaponMoney>2000~2000</weaponMoney>
         <weaponTags>
             <li>SG1_MatokStaff</li>
+            <li>SG1_JaffaKnife</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">
@@ -76,6 +77,7 @@
         <weaponMoney>2000~2000</weaponMoney>
         <weaponTags>
             <li>SG1_MatokStaff</li>
+            <li>SG1_JaffaKnife</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">
@@ -87,6 +89,7 @@
         <minGenerationAge>20</minGenerationAge>
         <maxGenerationAge>65</maxGenerationAge>
     </PawnKindDef>
+
     <PawnKindDef ParentName="BasePlayerPawnKind">
         <defName>SG1_FreeJaffaTrader</defName>
         <label>Free Jaffa caravan trader</label>
@@ -115,6 +118,7 @@
         <weaponMoney>2000~2000</weaponMoney>
         <weaponTags>
             <li>SG1_MatokStaff</li>
+            <li>SG1_JaffaKnife</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">
@@ -125,5 +129,4 @@
         <minGenerationAge>24</minGenerationAge>
         <maxGenerationAge>70</maxGenerationAge>
     </PawnKindDef>
-
 </Defs>

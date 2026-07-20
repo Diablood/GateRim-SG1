@@ -2,7 +2,7 @@
 
 > Statut : Implémenté
 > Première version : 0.2.8-dev
-> Validation complète : 0.2.8-dev-r1
+> Extension du couteau Jaffa : 0.3.103-dev
 
 ## Présentation
 
@@ -20,8 +20,8 @@ de technologies récupérées ou connues.
 
 Les objets déjà obtenus restent utilisables avant la fin de ces recherches.
 
-L'onglet, les prérequis, les verrouillages de production et les
-déblocages correspondants ont été validés en jeu.
+L'onglet, les prérequis, les verrouillages de production et les déblocages
+correspondants ont été validés en jeu.
 
 ## Armement Jaffa
 
@@ -31,8 +31,12 @@ prérequis vanilla : Petite armurerie
 
 Débloque la fabrication locale :
 
+- du [couteau Jaffa](Jaffa-Knife) ;
 - du bâton Ma'Tok ;
 - du Zat'nik'tel.
+
+Le couteau se fabrique au banc d'usinage avec Fabrication `4`, `30` acier et `5`
+plastacier. Son profil de combat reprend celui du glaive vanilla.
 
 ## Armures Jaffa
 
@@ -108,13 +112,10 @@ Ces recherches verrouillent seulement la production locale.
 
 Avant leur achèvement, la colonie peut toujours :
 
-- utiliser un Ma'Tok ou un Zat'nik'tel récupéré ;
+- utiliser un couteau Jaffa, un Ma'Tok ou un Zat'nik'tel récupéré ;
 - porter une armure Jaffa capturée ;
 - porter un kara kesh capturé ;
 - porter et utiliser un bracelet de guérison Goa'uld capturé ;
 - utiliser l'équipement SG fourni par le scénario ;
 - administrer une dose de trétonine déjà obtenue ;
 - implanter une larve de Prim'ta disponible.
-
-Les futures sources normales de ressources rares seront ajoutées dans un
-jalon séparé.

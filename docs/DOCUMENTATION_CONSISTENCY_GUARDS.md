@@ -1,6 +1,6 @@
 # Documentation consistency guards
 
-Version: `0.3.102-dev`
+Version: `0.3.103-dev`
 Status: implemented, regression-tested and integrated into the aggregate project
 consistency command.
 
@@ -88,7 +88,7 @@ rejects:
 - volatile branch metadata;
 - known obsolete findings.
 
-The Jaffa helmet-mode family is now final and must remain present in the visual
+The Jaffa knife family is now final and must remain present in the visual
 whitelist with a byte-identical protected wiki copy.
 
 ### Roadmap role

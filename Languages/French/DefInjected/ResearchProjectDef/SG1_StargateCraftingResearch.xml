@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
     <SG1_JaffaWeaponry.label>Armement Jaffa</SG1_JaffaWeaponry.label>
-    <SG1_JaffaWeaponry.description>Étudier les modèles d'armes Jaffa récupérés et adapter les techniques locales d'usinage afin de reproduire des armes énergétiques Goa'uld. Les armes complètes récupérées sur le terrain restent utilisables avant la fin de cette recherche.</SG1_JaffaWeaponry.description>
+    <SG1_JaffaWeaponry.description>Étudier les modèles d'armes Jaffa récupérés et adapter les techniques locales d'usinage afin de reproduire aussi bien leurs armes traditionnelles de corps à corps que leurs armes énergétiques Goa'uld. Les armes complètes récupérées sur le terrain restent utilisables avant la fin de cette recherche.</SG1_JaffaWeaponry.description>
 
     <SG1_JaffaArmor.label>Armures Jaffa</SG1_JaffaArmor.label>
     <SG1_JaffaArmor.description>Analyser les protections de combat modulaires Jaffa, y compris leurs variantes de commandement marquées par le rang, et reproduire leurs composants blindés superposés à partir de matériaux industriels locaux. Les armures capturées restent portables avant la fin de cette recherche.</SG1_JaffaArmor.description>

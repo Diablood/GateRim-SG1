@@ -2,6 +2,7 @@
 
 > Statut : contenu jouable
 > Version : `0.3.43-dev`
+> Extension du stock de couteaux : `0.3.103-dev`
 
 ## Principe
 
@@ -31,10 +32,15 @@ Il peut vendre notamment :
 - acier, plasteel, composants, chemfuel et tissu ;
 - quelques armes humaines industrielles ;
 - quelques protections militaires ;
-- un petit nombre de bâtons Ma'Tok et de pièces d'armure Jaffa ;
+- un petit nombre de bâtons Ma'Tok, de [couteaux Jaffa](Jaffa-Knife) et de pièces
+  d'armure Jaffa ;
 - très rarement un Zat'nik'tel.
 
-Les pièces d'armure Jaffa publiques peuvent être achetées au convoi ou lui être revendues. Le casque rétracté est uniquement un état interne du casque déployé et n'entre jamais dans le commerce.
+Le stock explicite de couteaux varie de `0` à `2` exemplaires par convoi.
+
+Les pièces d'armure Jaffa publiques peuvent être achetées au convoi ou lui être
+revendues. Le casque rétracté est uniquement un état interne du casque déployé
+et n'entre jamais dans le commerce.
 
 Il peut aussi acheter au joueur des armes humaines, des armes de mêlée, des
 armures et de l'équipement Jaffa ou Goa'uld. Les Jaffa libres combattent pour
@@ -57,7 +63,7 @@ Chaque convoi possède un **marchand caravanier Jaffa libre** identifiable :
 
 - xénotype Jaffa et Prim'ta ;
 - nom et histoire Jaffa libre ;
-- bâton Ma'Tok ;
+- Ma'Tok ou couteau Jaffa comme arme principale ;
 - armure légère, gantelets et bottes renforcées ;
 - aucune marque frontale Goa'uld imposée ;
 - aucun casque, afin de le distinguer de ses gardes.
@@ -72,6 +78,3 @@ matériel militaire. Les futures factions commerciales, notamment les Nox,
 pourront couvrir les catégories encore manquantes. L'objectif est de rendre à
 terme une partie sans factions vanilla viable tout en conservant des rôles
 commerciaux distincts et complémentaires.
-
-L'aide militaire, les quêtes de faction, le recrutement spécial et les raids
-Jaffa libres ne sont pas ajoutés par ce jalon.

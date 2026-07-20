@@ -4,7 +4,19 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.102-dev`
+> Version du mod documentée : `0.3.103-dev`
+
+## Couteau Jaffa
+
+`0.3.103-dev` ajoute le [couteau Jaffa](Jaffa-Knife), première arme de mêlée
+Jaffa dédiée du mod. Sa lame sombre fourchue utilise un PNG transparent
+`128×128` validé avec `drawSize = 0.65`. Ses attaques reprennent le profil du
+glaive vanilla ; la fabrication passe par la recherche Armement Jaffa et le
+banc d'usinage.
+
+Les guerriers, gardes, officiers et marchands Jaffa compatibles peuvent le
+recevoir comme arme principale, ce qui diversifie les bases, raids, caravanes et
+missions. Le briseur de murs Tok'ra reste volontairement équipé d'un Ma'Tok.
 
 ## Équipements Jaffa non directionnels finalisés
 
@@ -13,6 +25,7 @@ et équipements Jaffa concernés. Les armures standard et officier, les casques
 déployés, les gantelets, les bottes, la sous-armure, le pantalon et la ceinture
 disposent désormais de visuels dédiés et transparents. Les rendus portés
 directionnels restent prévus dans un lot ultérieur.
+
 ## Gizmo final et contrôle manuel du casque Jaffa
 
 `0.3.101-dev` finalise le gizmo du [casque Jaffa rétractable](Jaffa-Retractable-Helmet)

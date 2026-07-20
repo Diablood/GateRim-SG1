@@ -1,81 +1,70 @@
 # Project state
 
-Current milestone: `0.3.102-dev - Finalize remaining non-directional visual families`
+Current milestone: `0.3.103-dev - Add Jaffa knife`
 
-Status: validated in local revision `r10`; the final repository state is complete
-for fast-forward integration into `develop` and the unique annotated tag
-`v0.3.102-dev`.
+Status: gameplay, loadout and visual presentation validated in local revision
+`r4`; the final repository state is complete for fast-forward integration into
+`develop` and the unique annotated tag `v0.3.103-dev`.
 
-- Starting point: published `develop` aligned with `v0.3.101-dev`.
-- Working branch: `feature/final-nondirectional-visual-families`.
-- Final local revision: `r10`.
-- Assembly version: `0.3.102.0`.
-- Final annotated tag: `v0.3.102-dev`.
+- Starting point: published `develop` aligned with `v0.3.102-dev`.
+- Working branch: `feature/jaffa-knife`.
+- Final local revision: `r4`.
+- Assembly version: `0.3.103.0`.
+- Final annotated tag: `v0.3.103-dev`.
 
 ## Implemented scope
 
-- Finalize dedicated transparent map and inventory art for:
-  - bolas and their projectile;
-  - Ma'Tok staff and its energy bolt;
-  - Zat'nik'tel and its blast;
-  - the Tok'ra hypodermic energy dart.
-- Make bolas reusable instead of consuming a one-charge weapon and use the valid
-  vanilla `Bow_Small` cast sound.
-- Keep the Tok'ra hypodermic rifle at twelve limited charges while replacing its
-  firearm report with the validated `Shot_ChargeRifle` energy sound.
-- Set the Ma'Tok projectile speed to the validated value `80`.
-- Finalize non-directional Jaffa ground and inventory art for:
-  - light and heavy standard armor;
-  - officer armor;
-  - standard and officer deployed helmets;
-  - gauntlets and reinforced boots;
-  - under-armor clothing, trousers and armor belt.
-- Add real ThingDefs and French translations for the Jaffa under-armor clothing,
-  trousers and armor belt.
-- Keep `drawSize = 0.75` for gauntlets, reinforced boots and armor belt.
-- Keep all existing directional worn variants outside this milestone.
-
-- Add protected byte-identical wiki copies for every finalized gameplay PNG in
-  this milestone and publish the accepted Jaffa outfit concept art as a
-  documentation-only reference.
+- Add `SG1_JaffaKnife` as a quality-bearing melee weapon using
+  `BaseMeleeWeapon_Sharp_Quality` and `Graphic_Single`.
+- Match the vanilla gladius melee profile:
+  - mass `0.85`;
+  - handle power `9` blunt;
+  - point power `16` stab;
+  - edge power `16` cut;
+  - `2` seconds cooldown for every attack type;
+  - `12000` fabrication work.
+- Require `30` steel, `5` plasteel, Crafting `4`, the machining table and the
+  existing `SG1_JaffaWeaponry` research for local fabrication.
+- Allow Free Jaffa clan-supply convoys to carry `0~2` completed knives.
+- Extend Goa'uld-aligned and Free Jaffa weapon selections so warriors, guards,
+  officers and traders can use the knife as a primary weapon.
+- Preserve the Tok'ra diversion breacher as Ma'Tok-only through an explicit
+  inherited-list override.
+- Finalize the maintainer-retouched transparent `128×128` knife texture with a
+  stronger outline and validated `drawSize = 0.65`.
+- Add French text, durable testing, player-wiki coverage, a protected wiki image
+  and visual-checker enforcement.
 
 ## Validated results
 
-- Every finalized weapon, projectile and Jaffa item is readable on the map and in
-  inventories with genuine exterior transparency.
-- No generated checkerboard remains in the validated PNG files.
-- Bolas can be thrown repeatedly and no longer disappear after one use.
-- Zat'nik'tel, Ma'Tok and Tok'ra hypodermic projectiles render correctly.
-- Ma'Tok flight speed `80` is accepted in play.
-- The Tok'ra hypodermic rifle uses the intended energy-shot report.
-- Standard and officer Jaffa ground icons remain visually distinct.
-- The under-armor clothing, trousers and armor belt can coexist with the modular
-  armor set.
-- Gauntlets, boots and belt use the validated reduced ground scale.
-- Save and reload preserve the newly added apparel.
-- `JaffaLightArmor` remains a distinct armor item and is not replaced by the
-  textile under-armor clothing.
-- Directional worn art was not reopened.
+- The knife spawns, stores, equips, attacks and survives save/reload correctly.
+- Its displayed combat values match the intended gladius-equivalent profile.
+- `drawSize = 0.65` gives an accepted map and equipped scale.
+- Goa'uld-aligned Jaffa bases, raids and mission groups generate a mixture of
+  ranged weapons and knives through their shared PawnKinds.
+- Free Jaffa warriors, guards and caravan traders can also receive the knife.
+- The mission-only breacher continues to generate with a Ma'Tok staff.
+- The final outlined texture is accepted by the maintainer and keeps genuine
+  exterior transparency without a baked checkerboard.
+- Existing DefNames, faction groups, combat budgets, armor assignments and save
+  identifiers remain stable.
 
 ## Deferred work
 
-- Produce and validate the directional worn variants for visible Jaffa armor and
+- Produce and validate directional worn variants for visible Jaffa armor and
   under-armor families.
-- Integrate the new clothing and belt into Jaffa world-generation and mission
-  loadouts.
-- Apply the officer armor and deployed helmet consistently to officer pawns,
-  including the living-capture operation.
-- Refactor the deployed/retracted helmet implementation without breaking existing
-  saves or the standard/officer pair isolation.
+- Integrate the separate under-armor, trousers and belt into complete Jaffa
+  world-generation and mission outfits.
+- Finalize the multidirectional mobile Goa'uld, Tok'ra and queen symbiote forms.
+- Refactor deployed and retracted helmet states without breaking existing saves.
 
 ## Publication state
 
 The final commit is:
 
 ```text
-0.3.102-dev - Finalize remaining non-directional visual families
+0.3.103-dev - Add Jaffa knife
 ```
 
-It is integrated into `develop` by fast-forward and tagged once as
-`v0.3.102-dev`. No separate wiki synchronization is required because this
-milestone changes no file under `docs/wiki/`.
+The final annotated tag is `v0.3.103-dev`. The player wiki source changes and
+new protected image require synchronization with the separate wiki repository.

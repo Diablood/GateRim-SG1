@@ -87,6 +87,10 @@
                 <countRange>0~2</countRange>
             </li>
             <li Class="StockGenerator_SingleDef">
+                <thingDef>SG1_JaffaKnife</thingDef>
+                <countRange>0~2</countRange>
+            </li>
+            <li Class="StockGenerator_SingleDef">
                 <thingDef>SG1_ZatnikTel</thingDef>
                 <countRange>-5~1</countRange>
             </li>

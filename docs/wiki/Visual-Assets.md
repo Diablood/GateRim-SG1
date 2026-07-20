@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.102-dev`
-> Statut : armes, projectiles et équipements Jaffa non directionnels validés dans `0.3.102-dev`
+> Version de référence : `0.3.103-dev`
+> Statut : armes, projectiles, couteau et équipements Jaffa non directionnels validés jusqu'à `0.3.103-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -12,6 +12,7 @@ jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 
 | Arme | Projectile | Référence |
 |---|---|---|
+| <img src="images/SG1_JaffaKnife.png" width="160" alt="Couteau Jaffa"> | — | Lame Jaffa fourchue, contour sombre renforcé, PNG transparent `128×128` et `drawSize = 0.65` |
 | <img src="images/SG1_Bolas.png" width="128" alt="Bolas"> | <img src="images/SG1_BolasProjectile.png" width="128" alt="Projectile des bolas"> | Bolas réutilisables, corde et poids lisibles à l'échelle RimWorld |
 | <img src="images/SG1_MatokStaff.png" width="160" alt="Bâton Ma'Tok"> | <img src="images/SG1_MatokBlast.png" width="128" alt="Projectile Ma'Tok"> | Longue arme Jaffa et bolt énergétique compact, vitesse `80` |
 | <img src="images/SG1_ZatnikTel.png" width="160" alt="Zat'nik'tel"> | <img src="images/SG1_ZatnikTelBlast.png" width="128" alt="Décharge du Zat'nik'tel"> | Arme Goa'uld compacte et décharge distincte |

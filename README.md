@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.102-dev`
+- Development version: `0.3.103-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,18 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.103-dev` adds a dedicated Jaffa knife as the mod's first Jaffa melee
+weapon. It uses the accepted compact forked-blade texture, `drawSize = 0.65` and
+a gladius-equivalent melee profile. Colonies can reproduce it at the machining
+table after Jaffa weaponry research, and Free Jaffa supply convoys can carry a
+small recovered stock.
+
+Goa'uld-aligned and Free Jaffa warriors, guards, officers and traders can now
+select the knife as their primary weapon, adding melee diversity to settlements,
+raids, caravans and missions that reuse those PawnKinds. The dedicated Tok'ra
+diversion breacher remains explicitly Ma'Tok-only so its structural role is not
+weakened.
 
 `0.3.102-dev` finalizes the remaining non-directional weapon, projectile and
 Jaffa-equipment visuals. Bolas, Ma'Tok staff and Zat'nik'tel families receive
@@ -28,14 +40,6 @@ armor, standard and officer deployed helmets, gauntlets, reinforced boots,
 under-armor clothing, trousers and an armor belt. Directional worn variants,
 automatic world and mission loadouts, and the retractable-helmet refactor remain
 separate later work.
-
-`0.3.101-dev` finalizes the Jaffa helmet-mode gizmo with one transparent
-`64Ã—64` cobra-helmet icon and simplifies the control to a direct manual toggle.
-The command now reads `Deploy helmet` or `Retract helmet` according to the
-current position; drafting no longer changes it automatically. Legacy automatic
-save values preserve their stored physical position before becoming manual.
-Armor values, deployed and retracted coverage, standard/officer pair isolation
-and stable save identifiers remain unchanged.
 
 `0.3.101-dev` finalizes the Jaffa helmet-mode gizmo with one transparent
 `64×64` cobra-helmet icon and simplifies the control to a direct manual toggle.

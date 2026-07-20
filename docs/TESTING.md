@@ -1,5 +1,33 @@
 # Durable testing
 
+## Jaffa knife (`0.3.103-dev`)
+
+Durable validation requirements:
+
+- preserve `SG1_JaffaKnife` as a quality-bearing `Graphic_Single` melee weapon
+  using `Things/Item/Equipment/WeaponMelee/SG1_JaffaKnife`;
+- keep the accepted transparent `128×128` texture, strengthened exterior outline
+  and `drawSize = 0.65`;
+- retain the gladius-equivalent combat profile: mass `0.85`, handle power `9`,
+  stab and cut power `16`, and `2` seconds cooldown;
+- retain `12000` work, `30` steel, `5` plasteel, Crafting `4`, machining-table
+  fabrication and the `SG1_JaffaWeaponry` prerequisite;
+- keep Free Jaffa convoy stock limited to `0~2` knives;
+- preserve knife eligibility on Goa'uld-aligned and Free Jaffa warriors, guards,
+  officers and traders so reused settlement, raid, caravan and mission groups
+  retain melee diversity;
+- keep `SG1_GoauldJaffaBreacher` explicitly Ma'Tok-only;
+- preserve French DefInjected labels and the broadened bilingual Jaffa-weaponry
+  research description;
+- require the protected wiki copy to remain byte-identical and appear on the
+  dedicated knife page and progressive visual-reference page;
+- require `614` gameplay PNG files, `81` canonical families and exactly `55`
+  accepted final local families;
+- run forced build, duration formatting, documentation fixtures, documentation
+  audit, visual audit, aggregate consistency and `git diff --check`;
+- verify spawning, crafting, trade, equipment, melee combat, generation diversity,
+  breacher exclusion and save/reload in RimWorld.
+
 ## Final non-directional weapon, projectile and Jaffa equipment visuals (`0.3.102-dev`)
 
 Durable validation requirements:

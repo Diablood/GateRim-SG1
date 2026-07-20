@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+        <defName>SG1_JaffaKnife</defName>
+        <label>Jaffa knife</label>
+        <description>A compact fighting blade carried by Jaffa warriors. Its broad dark blade divides into a forked point around a deep central groove, allowing effective thrusting and cutting attacks. Despite its alien design, it handles like a light and agile gladius.</description>
+        <graphicData>
+            <texPath>Things/Item/Equipment/WeaponMelee/SG1_JaffaKnife</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.65</drawSize>
+        </graphicData>
+        <uiIconScale>1.1</uiIconScale>
+        <techLevel>Spacer</techLevel>
+        <statBases>
+            <WorkToMake>12000</WorkToMake>
+            <Mass>0.85</Mass>
+        </statBases>
+        <costList>
+            <Steel>30</Steel>
+            <Plasteel>5</Plasteel>
+        </costList>
+        <equippedAngleOffset>-65</equippedAngleOffset>
+        <weaponTags>
+            <li>SG1_JaffaKnife</li>
+        </weaponTags>
+        <recipeMaker>
+            <researchPrerequisite>SG1_JaffaWeaponry</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+        </recipeMaker>
+        <tools>
+            <li>
+                <label>handle</label>
+                <capacities>
+                    <li>Blunt</li>
+                </capacities>
+                <power>9</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>point</label>
+                <capacities>
+                    <li>Stab</li>
+                </capacities>
+                <power>16</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>edge</label>
+                <capacities>
+                    <li>Cut</li>
+                </capacities>
+                <power>16</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+        </tools>
+    </ThingDef>
+</Defs>

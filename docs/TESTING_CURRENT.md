@@ -1,17 +1,17 @@
 # Tests courants
 
-Jalon : `0.3.102-dev - Finalize remaining non-directional visual families`
+Jalon : `0.3.103-dev - Add Jaffa knife`
 
-Révision validée : `r10`
-Version de DLL validée : `0.3.102.0`
+Révision validée : `r4`
+Version de DLL validée : `0.3.103.0`
 
 ## Objet du test
 
-Le jalon finalise les surfaces non directionnelles encore ouvertes pour les
-armes, projectiles et équipements Jaffa. Les rendus portés directionnels restent
-explicitement différés.
+Le jalon ajoute une première arme de mêlée Jaffa dédiée, la rend fabricable et
+commercialisable, puis l'intègre aux sélections d'armes des troupes Jaffa afin
+d'apporter de la diversité dans les bases, raids, caravanes et missions.
 
-## Contrôles validés
+## Contrôles de clôture
 
 Depuis la racine du dépôt :
 
@@ -23,7 +23,7 @@ Depuis la racine du dépôt :
 .\tools\check-documentation-consistency.cmd
 .\tools\check-visual-assets.cmd
 .\tools\check-project-consistency.cmd `
-  -ExpectedVersion 0.3.102-dev `
+  -ExpectedVersion 0.3.103-dev `
   -ExpectedBackstoryCount 83
 
 .\tools\check-project-consistency.cmd -RequirePublicationReady
@@ -31,42 +31,39 @@ Depuis la racine du dépôt :
 git diff --check
 ```
 
-Résultats validés :
+La baseline documentaire et visuelle finale est :
 
-- build Release `0.3.102.0` réussi ;
-- audit des durées réussi ;
-- fixtures négatives des garde-fous documentaires réussies ;
-- audit documentaire normal réussi ;
-- audit visuel réussi avec `613` PNG, `80` familles et `54` familles finales ;
-- contrôle global réussi avec `83` backstories ;
-- contrôle documentaire de publication réussi ;
-- aucun défaut d'espace ou de fin de ligne détecté.
+```text
+Assembly: 0.3.103.0
+Gameplay PNG files: 614
+Local texture families: 81
+Final local texture families: 55
+Backstories: 83
+```
 
 ## Validation RimWorld ciblée
 
-La validation fonctionnelle confirme :
+La validation fonctionnelle du mainteneur confirme :
 
-- bolas réutilisables et son `Bow_Small` valide ;
-- Zat'nik'tel, Ma'Tok et projectiles associés visibles sans texture manquante ;
-- vitesse du projectile Ma'Tok à `80` ;
-- projectile hypodermique Tok'ra visible et son énergétique
-  `Shot_ChargeRifle` ;
-- icônes au sol et en inventaire validées pour les armures légère, lourde et
-  officier ;
-- icônes validées pour les casques déployés standard et officier ;
-- gantelets, bottes et ceinture validés à `drawSize = 0.75` ;
-- sous-armure, pantalon et ceinture équipables avec le reste du set ;
-- sauvegarde et rechargement validés ;
-- absence de damier intégré et vraie transparence extérieure ;
-- copies wiki identiques aux PNG de gameplay et concept art affiché sur les pages Jaffa.
+- apparition développeur et chargement sans texture manquante ;
+- vraie transparence extérieure et absence de damier intégré ;
+- texture finale retouchée avec un contour extérieur renforcé ;
+- taille au sol et équipée validée avec `drawSize = 0.65` ;
+- masse `0,85`, manche `9`, pointe `16`, tranchant `16` et récupération de
+  `2` secondes conformes au profil retenu ;
+- équipement, attaque de mêlée, fabrication et sauvegarde/rechargement valides ;
+- présence occasionnelle dans le stock des convois Jaffa libres ;
+- diversité d'armes visible chez les Jaffa des bases, raids et missions ;
+- guerriers, gardes, officiers et marchands compatibles avec le couteau ;
+- briseur de murs de la diversion Tok'ra toujours limité au Ma'Tok.
 
-## Compatibilité et limites confirmées
+## Compatibilité confirmée
 
-- les chemins et DefNames historiques des équipements existants restent stables ;
-- les nouveaux DefNames sont `SG1_JaffaUnderArmor`, `SG1_JaffaPants` et
-  `SG1_JaffaArmorBelt` ;
-- les textures portées directionnelles ne sont pas déclarées finales par ce
-  jalon ;
-- les loadouts des factions et missions ne sont pas encore élargis ;
-- la logique déployée/rétractée des casques reste inchangée ;
-- la synchronisation du wiki séparé est requise après mise à jour des pages source.
+- `SG1_JaffaKnife` utilise un nouveau DefName et un nouveau chemin stable ;
+- aucun DefName ou chemin d'arme existant n'est renommé ;
+- les groupes et budgets de menace existants restent inchangés ;
+- le couteau est une arme principale alternative et non une arme secondaire
+  transportée en plus par un système de sidearm ;
+- les parties existantes restent compatibles ;
+- la synchronisation du wiki séparé est nécessaire pour publier la nouvelle page
+  et l'image protégée.

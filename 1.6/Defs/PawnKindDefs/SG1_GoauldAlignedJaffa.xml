@@ -32,6 +32,7 @@
         <weaponMoney>2000~2000</weaponMoney>
         <weaponTags>
             <li>SG1_MatokStaff</li>
+            <li>SG1_JaffaKnife</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">
@@ -70,6 +71,7 @@
         <weaponTags>
             <li>SG1_MatokStaff</li>
             <li>SG1_ZatnikTel</li>
+            <li>SG1_JaffaKnife</li>
         </weaponTags>
         <apparelMoney>0</apparelMoney>
         <apparelRequired Inherit="False">
@@ -122,7 +124,7 @@
         Mission-only wall breacher used by the Tok'ra diversion assault.
 
         The dedicated pawn-group kind isolates this profile from ordinary
-        Goa'uld/Jaffa raids. The inherited Ma'Tok-only weapon tag guarantees a
+        Goa'uld/Jaffa raids. Its explicit Ma'Tok-only weapon tag guarantees a
         ranged weapon whose existing projectile applies structural damage.
     -->
     <PawnKindDef ParentName="SG1_GoauldJaffaWarriorBase">
@@ -132,6 +134,9 @@
         <canBeSapper>true</canBeSapper>
         <isGoodBreacher>true</isGoodBreacher>
         <maxPerGroup>4</maxPerGroup>
+        <weaponTags Inherit="False">
+            <li>SG1_MatokStaff</li>
+        </weaponTags>
     </PawnKindDef>
 
     <!--

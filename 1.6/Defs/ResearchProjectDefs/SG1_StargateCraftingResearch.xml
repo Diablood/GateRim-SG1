@@ -9,7 +9,7 @@
     <ResearchProjectDef>
         <defName>SG1_JaffaWeaponry</defName>
         <label>Jaffa weaponry</label>
-        <description>Study captured Jaffa weapon designs and adapt local machining techniques to reproduce Goa'uld energy weapons. Completed weapons recovered from the field remain usable before this research is finished.</description>
+        <description>Study captured Jaffa weapon designs and adapt local machining techniques to reproduce both traditional melee armaments and Goa'uld energy weapons. Completed weapons recovered from the field remain usable before this research is finished.</description>
         <baseCost>900</baseCost>
         <techLevel>Industrial</techLevel>
         <prerequisites>

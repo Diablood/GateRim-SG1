@@ -156,6 +156,7 @@ $wikiIconMappings = @(
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet.png" "docs/wiki/images/GoauldHealingBracelet.png" "docs/wiki/Goauld-Healing-Bracelet.md" "images/GoauldHealingBracelet.png"),
     (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_Bolas.png" "docs/wiki/images/SG1_Bolas.png" "docs/wiki/Non-Lethal-Capture-Tools.md" "images/SG1_Bolas.png"),
     (New-WikiMapping "Textures/Things/Projectile/SG1_BolasProjectile.png" "docs/wiki/images/SG1_BolasProjectile.png" "docs/wiki/Non-Lethal-Capture-Tools.md" "images/SG1_BolasProjectile.png"),
+    (New-WikiMapping "Textures/Things/Item/Equipment/WeaponMelee/SG1_JaffaKnife.png" "docs/wiki/images/SG1_JaffaKnife.png" "docs/wiki/Jaffa-Knife.md" "images/SG1_JaffaKnife.png"),
     (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_MatokStaff.png" "docs/wiki/images/SG1_MatokStaff.png" "docs/wiki/Matok-Staff.md" "images/SG1_MatokStaff.png"),
     (New-WikiMapping "Textures/Things/Projectile/SG1_MatokBlast.png" "docs/wiki/images/SG1_MatokBlast.png" "docs/wiki/Matok-Staff.md" "images/SG1_MatokBlast.png"),
     (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel.png" "docs/wiki/images/SG1_ZatnikTel.png" "docs/wiki/ZatnikTel.md" "images/SG1_ZatnikTel.png"),
@@ -295,6 +296,7 @@ $expectedFinalLocalPaths = @(
     "Things/Building/SG1_TokraRelaySabotageDevice",
     "Things/Building/SG1_TokraSecureCommunicator",
     "Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot",
+    "Things/Item/Equipment/WeaponMelee/SG1_JaffaKnife",
     "Things/Item/Equipment/WeaponRanged/SG1_Bolas",
     "Things/Item/Equipment/WeaponRanged/SG1_MatokStaff",
     "Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel",
@@ -346,10 +348,10 @@ $expectedFinalLocalPaths = @(
 $actualFinalLocalPaths = @($registeredLocalPaths | Where-Object { $registeredLocalStatuses[$_] -ceq "final" } | Sort-Object)
 $finalPathDifferences = @(Compare-Object -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) -DifferenceObject $actualFinalLocalPaths -CaseSensitive)
 if ($finalPathDifferences.Count -gt 0) {
-    Add-Failure ("Final local asset whitelist differs from the fifty-four approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
+    Add-Failure ("Final local asset whitelist differs from the fifty-five approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the fifty-four approved families."
+    Add-Pass "Final local asset whitelist matches the fifty-five approved families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

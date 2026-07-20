@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.3.103-dev - Add Jaffa knife
+
+### Added
+
+- Add `SG1_JaffaKnife` as a dedicated quality-bearing Jaffa melee weapon with a
+  stable `Graphic_Single` texture path and French translation.
+- Add local fabrication at the machining table after `SG1_JaffaWeaponry`, using
+  `30` steel, `5` plasteel and Crafting level `4`.
+- Add a limited `0~2` stock to Free Jaffa clan-supply convoys.
+- Add a protected byte-identical wiki copy, a dedicated player page and visual
+  reference coverage for the accepted transparent `128×128` texture.
+
+### Changed
+
+- Broaden Jaffa weaponry research text to cover traditional melee armaments as
+  well as Goa'uld energy weapons.
+- Add the knife weapon tag to Goa'uld-aligned and Free Jaffa warrior, guard,
+  officer and trader profiles, providing primary-weapon diversity in settlements,
+  raids, caravans and missions that reuse those PawnKinds.
+- Keep the Tok'ra diversion wall breacher explicitly Ma'Tok-only so it always
+  retains its structural ranged attack.
+- Set the knife ground and equipped scale to the validated `drawSize = 0.65`.
+- Register `614` gameplay PNG files, `81` local texture families and `55`
+  accepted final families.
+- Advance public and documentation metadata to `0.3.103-dev` and assembly
+  metadata to `0.3.103.0`.
+
+### Balance
+
+- Match the vanilla gladius combat profile: mass `0.85`, blunt handle power `9`,
+  stab and cut power `16`, and `2` seconds of cooldown for each attack type.
+- Keep fabrication work at `12000` ticks while using fixed Jaffa-appropriate
+  industrial materials rather than stuff-dependent construction.
+
+### Validated
+
+- Validate spawning, ground and inventory display, equipment, melee combat,
+  fabrication, save/reload and the reduced scale.
+- Validate natural knife selection across Jaffa bases, raids and mission groups
+  while preserving the Ma'Tok-only breacher exception.
+- Accept the maintainer-retouched final texture with its strengthened exterior
+  outline and genuine transparent background.
+
 ## 0.3.102-dev - Finalize remaining non-directional visual families
 
 ### Changed

@@ -1,10 +1,9 @@
 # Project consistency checks
 
-Version: `0.3.102-dev`
+Version: `0.3.103-dev`
 Status: the main consistency command includes documentation-history,
-publication-wording and visual-register safeguards. The finalized Jaffa
-helmet-mode command icon is now included in the protected visual whitelist and
-wiki-copy checks.
+publication-wording and visual-register safeguards. The finalized Jaffa knife is now included in the protected visual whitelist,
+byte-identical wiki-copy checks and current milestone coverage.
 
 ## Purpose
 
@@ -84,7 +83,7 @@ This mode must pass before `git add -A` for the final milestone commit.
 
 ```powershell
 .\tools\check-project-consistency.cmd `
-  -ExpectedVersion 0.3.101-dev `
+  -ExpectedVersion 0.3.103-dev `
   -ExpectedBackstoryCount 83
 ```
 

@@ -33,6 +33,7 @@
 ## Équipement et recherche
 
 - [Bâton Ma'Tok](Matok-Staff)
+- [Couteau Jaffa](Jaffa-Knife)
 - [Zat'nik'tel](ZatnikTel)
 - [Outils de capture non létaux](Non-Lethal-Capture-Tools)
 - [Treillis d'équipe SG](SG-Team-Uniform)
