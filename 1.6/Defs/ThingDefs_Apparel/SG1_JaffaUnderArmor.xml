@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ApparelBase">
+        <defName>SG1_JaffaUnderArmor</defName>
+        <label>Jaffa under-armor clothing</label>
+        <description>A close-fitting dark garment worn beneath Jaffa battle armor. Its reinforced weave protects the skin from heat, friction and the rigid edges of the outer plates without hindering movement.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaUnderArmor/JaffaUnderArmor</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>All</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>50</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>4500</WorkToMake>
+            <MaxHitPoints>170</MaxHitPoints>
+            <Mass>1.1</Mass>
+            <Flammability>0.45</Flammability>
+            <ArmorRating_Sharp>0.08</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.04</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.16</ArmorRating_Heat>
+            <Insulation_Cold>6</Insulation_Cold>
+            <Insulation_Heat>4</Insulation_Heat>
+            <EquipDelay>2</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+                <li>Arms</li>
+            </bodyPartGroups>
+            <layers>
+                <li>OnSkin</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaUnderArmor</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>
