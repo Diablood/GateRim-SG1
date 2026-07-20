@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ApparelBase">
+        <defName>SG1_JaffaPants</defName>
+        <label>Jaffa trousers</label>
+        <description>Loose dark trousers made for long marches beneath segmented Jaffa armor. Their reinforced fabric allows a warrior to kneel, climb and fight without restricting the legs.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaPants/JaffaPants</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>All</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Cloth>40</Cloth>
+        </costList>
+        <statBases>
+            <WorkToMake>3500</WorkToMake>
+            <MaxHitPoints>160</MaxHitPoints>
+            <Mass>0.8</Mass>
+            <Flammability>0.50</Flammability>
+            <ArmorRating_Sharp>0.06</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.03</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.12</ArmorRating_Heat>
+            <Insulation_Cold>5</Insulation_Cold>
+            <Insulation_Heat>3</Insulation_Heat>
+            <EquipDelay>1.5</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+            <recipeUsers>
+                <li>HandTailoringBench</li>
+                <li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Legs</li>
+            </bodyPartGroups>
+            <layers>
+                <li>OnSkin</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaPants</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+        </apparel>
+    </ThingDef>
+</Defs>
