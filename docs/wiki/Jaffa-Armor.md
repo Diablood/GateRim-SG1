@@ -2,6 +2,7 @@
 
 > Statut : prototype jouable
 > Première version : `0.1.66-dev`
+> Gizmo final et contrôle manuel du casque : `0.3.101-dev`
 
 ## Présentation
 
@@ -37,11 +38,14 @@ simples éléments visuels.
 
 ## Casque Jaffa
 
-Le casque dispose de trois modes persistants :
+Depuis `0.3.101-dev`, le casque utilise une bascule manuelle à deux actions :
 
-- automatique : rétracté hors enrôlement, déployé pendant l'enrôlement ;
-- toujours déployé ;
-- toujours rétracté.
+- `Déployer casque` lorsqu'il est rétracté ;
+- `Rétracter casque` lorsqu'il est déployé.
+
+L'enrôlement ne commande plus automatiquement la position. Consulte
+[Casque Jaffa rétractable](Jaffa-Retractable-Helmet) pour le gizmo final, la
+persistance et la migration des anciennes sauvegardes.
 
 La position modifie sa couverture réelle :
 
@@ -55,8 +59,9 @@ des zones corporelles effectivement couvertes.
 
 ## Fabrication
 
-Les pièces standard et les deux variantes d'officier fabricables sont produites au banc d'usinage après la recherche `Armures Jaffa`. Les coûts et prérequis de Fabrication augmentent avec le niveau de
-protection.
+Les pièces standard et les deux variantes d'officier fabricables sont produites
+au banc d'usinage après la recherche `Armures Jaffa`. Les coûts et prérequis de
+Fabrication augmentent avec le niveau de protection.
 
 ## Équipement des Jaffa générés
 
@@ -72,4 +77,6 @@ Consulte [Équipements automatiques des Jaffa Goa'uld](Jaffa-Armor-Loadouts).
 
 ## Limites actuelles
 
-Les textures restent provisoires. Les chemins dédiés de l'ensemble rouge d'officier sont toutefois définitifs afin que la passe graphique future puisse remplacer seulement les PNG.
+Les textures portées des armures et casques restent provisoires. Le gizmo de
+commande du casque est toutefois final, et les chemins dédiés de l'ensemble
+rouge d'officier restent définitifs.

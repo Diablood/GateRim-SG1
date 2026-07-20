@@ -11,30 +11,23 @@ Ce fichier contient uniquement les travaux futurs **décidés**.
 
 ## Prochain jalon décidé
 
-### Finaliser l'icône du mode de casque Jaffa
+### Finaliser les formes mobiles des symbiotes Goa'uld
 
-Remplacer le visuel provisoire de
-`Textures/UI/Commands/SG1_JaffaHelmetMode.png` par une icône finale dédiée.
+Créer un lot distinct pour les pawns mobiles Goa'uld, Tok'ra et reine, qui
+partagent encore une image.
 
 Contrats déjà décidés :
 
-- conserver une seule image transparente `64×64` ;
-- ne pas créer de variantes `North`, `South`, `East` ou `West`, car il s'agit
-  d'une commande d'interface et non d'un rendu directionnel de pawn ;
-- conserver le chemin C# et tous les modes automatique, toujours déployé et
-  toujours rétracté ;
-- valider la lisibilité à la taille réelle du gizmo, ses états actif, inactif et
-  survolé, ainsi que la sauvegarde/recharge du mode choisi ;
-- ajouter une copie wiki protégée seulement après validation du visuel réel.
+- traiter le véritable rendu directionnel des pawns animaux ;
+- distinguer visuellement le Goa'uld libre, le Tok'ra et la reine ;
+- conserver les Defs, chemins fonctionnels, identités, implantations et
+  sauvegardes ;
+- valider toutes les orientations, l'animation de déplacement, la sélection,
+  l'inspection, la capture et la sauvegarde/recharge ;
+- ne pas réutiliser les règles des objets biologiques inertes finalisés en
+  `0.3.96-dev`.
 
 ## Jalons différés décidés
-
-### Formes mobiles des symbiotes Goa'uld
-
-Créer un lot distinct pour les pawns mobiles Goa'uld, Tok'ra et reine, qui
-partagent encore une image. Ce chantier devra traiter le véritable contrat
-directionnel des pawns animaux au lieu de réutiliser les règles des objets
-inertes.
 
 ### Apparence distinctive de l'officier Jaffa capturable
 

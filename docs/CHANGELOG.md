@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.3.101-dev - Finalize Jaffa helmet gizmo and manual toggle
+
+### Changed
+
+- Replace the temporary `UI/Commands/SG1_JaffaHelmetMode` image in place with a
+  final transparent `64Ã—64` cobra-helmet gizmo.
+- Remove automatic draft-dependent deployment from normal play.
+- Replace the three-mode cycle with a direct manual action: `Deploy helmet` while
+  retracted and `Retract helmet` while deployed.
+- Limit the inspection text to the helmet's actual physical position.
+- Convert legacy `Automatic` save values to the manual state matching the
+  deployed or retracted Def already stored in the save.
+- Keep the historical updater type as an empty save-compatibility component
+  without periodic synchronization.
+
+### Added
+
+- Add a byte-identical protected wiki copy and display the icon on the dedicated
+  retractable-helmet page and visual reference page.
+- Register the icon as the fifth accepted final command-icon family.
+- Advance public metadata to `0.3.101-dev` and assembly metadata to `0.3.101.0`.
+
+### Preserved
+
+- Preserve the stable command texture path, standard and officer helmet pairs,
+  deployed and retracted Def identifiers, armor values and coverage behavior.
+- Change no carried apparel textures, crafting, research, loadouts, balance or
+  unrelated save state.
+
 ## 0.3.100-dev - Restore documentation consistency and add publication safeguards
 
 ### Restored

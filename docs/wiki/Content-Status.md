@@ -2,10 +2,15 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.100-dev`
+> Dernière révision : `0.3.101-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
+
+La version `0.3.101-dev` finalise le gizmo du casque Jaffa rétractable et remplace
+les trois modes par une bascule manuelle. Le bouton propose l'action opposée à
+la position actuelle, l'enrôlement ne commande plus le casque et les anciennes
+sauvegardes conservent leur position physique lors de la migration.
 
 La version `0.3.100-dev` restaure l'historique documentaire manquant et ajoute
 des garde-fous automatiques de publication. Aucun contenu jouable, texture,
@@ -44,6 +49,7 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Gizmo final et contrôle manuel du casque Jaffa | Icône cobra transparente `64×64`; actions `Déployer casque` / `Rétracter casque`; position persistante; aucune bascule automatique à l'enrôlement; migration des anciennes sauvegardes | 0.3.101-dev |
 | Garde-fous documentaires et de publication | Historique du changelog et des tests durables vérifié, registre visuel auto-cohérent, roadmap active et verrou final de publication | 0.3.100-dev |
 | Visuel final de la dose de trétonine | Ampoule médicale transparente `128×128`, liquide cyan, contour renforcé, échelle en jeu conservée par `drawSize` | 0.3.98-dev |
 | Dispositifs de main Goa'uld finalisés | Kara kesh articulé bronze et or avec gemme rouge ; bracelet de guérison or et argent avec noyau orange ; deux PNG transparents `128×128` dédiés, chemins et comportements préservés | 0.3.94-dev |

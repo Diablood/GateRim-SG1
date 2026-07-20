@@ -7,6 +7,8 @@ namespace GateRimSG1.Jaffa
 {
     public enum JaffaHelmetMode
     {
+        // Retained only to migrate existing saves without losing the current
+        // physical helmet position.
         Automatic,
         AlwaysDeployed,
         AlwaysRetracted
@@ -26,9 +28,9 @@ namespace GateRimSG1.Jaffa
 
     public class Comp_RetractableJaffaHelmet : ThingComp
     {
-        private const JaffaHelmetMode DefaultMode = JaffaHelmetMode.Automatic;
+        private const JaffaHelmetMode LegacyDefaultMode = JaffaHelmetMode.Automatic;
 
-        private JaffaHelmetMode mode = DefaultMode;
+        private JaffaHelmetMode mode = LegacyDefaultMode;
 
         public CompProperties_RetractableJaffaHelmet Props =>
             (CompProperties_RetractableJaffaHelmet)props;
@@ -46,10 +48,11 @@ namespace GateRimSG1.Jaffa
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Values.Look(ref mode, "jaffaHelmetMode", DefaultMode);
+            Scribe_Values.Look(ref mode, "jaffaHelmetMode", LegacyDefaultMode);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
+                EnsureManualMode();
                 SynchronizeState();
             }
         }
@@ -62,38 +65,46 @@ namespace GateRimSG1.Jaffa
                 yield break;
             }
 
+            EnsureManualMode();
+
             yield return new Command_Action
             {
-                defaultLabel = "SG1_JaffaHelmetModeCommand".Translate() + ": " + ModeLabel,
+                defaultLabel = IsDeployed
+                    ? "SG1_JaffaHelmetModeAlwaysRetracted".Translate()
+                    : "SG1_JaffaHelmetModeAlwaysDeployed".Translate(),
                 defaultDesc = "SG1_JaffaHelmetModeCommandDesc".Translate(),
                 icon = ContentFinder<Texture2D>.Get(Props.commandIconPath, true),
-                action = CycleMode
+                action = TogglePosition
             };
         }
 
         public override string CompInspectStringExtra()
         {
-            return "SG1_JaffaHelmetModeInspect".Translate() + ": " + ModeLabel
-                + "\n"
-                + "SG1_JaffaHelmetPositionInspect".Translate() + ": " + PositionLabel;
+            EnsureManualMode();
+
+            return "SG1_JaffaHelmetPositionInspect".Translate() + ": " + PositionLabel;
         }
 
         public override void Notify_Equipped(Pawn pawn)
         {
             base.Notify_Equipped(pawn);
+            EnsureManualMode();
             SynchronizeState(pawn);
         }
 
         public override void Notify_Unequipped(Pawn pawn)
         {
             base.Notify_Unequipped(pawn);
+            EnsureManualMode();
             SynchronizeState();
         }
 
         public void SynchronizeState(Pawn wearerOverride = null)
         {
+            EnsureManualMode();
+
             Pawn wearer = wearerOverride ?? Helmet?.Wearer;
-            ThingDef desiredDef = ShouldBeDeployed(wearer)
+            ThingDef desiredDef = mode == JaffaHelmetMode.AlwaysDeployed
                 ? DeployedDef
                 : RetractedDef;
 
@@ -104,62 +115,38 @@ namespace GateRimSG1.Jaffa
 
             parent.def = desiredDef;
             wearer?.Drawer?.renderer?.SetAllGraphicsDirty();
-
         }
 
-        private bool ShouldBeDeployed(Pawn wearer)
+        private void EnsureManualMode()
         {
-            switch (mode)
+            if (mode != JaffaHelmetMode.Automatic)
             {
-                case JaffaHelmetMode.AlwaysDeployed:
-                    return true;
-                case JaffaHelmetMode.AlwaysRetracted:
-                    return false;
-                default:
-                    return wearer != null && wearer.Drafted;
+                return;
             }
+
+            mode = IsDeployed
+                ? JaffaHelmetMode.AlwaysDeployed
+                : JaffaHelmetMode.AlwaysRetracted;
         }
 
-        private void CycleMode()
+        private void TogglePosition()
         {
-            switch (mode)
-            {
-                case JaffaHelmetMode.Automatic:
-                    mode = JaffaHelmetMode.AlwaysDeployed;
-                    break;
-                case JaffaHelmetMode.AlwaysDeployed:
-                    mode = JaffaHelmetMode.AlwaysRetracted;
-                    break;
-                default:
-                    mode = JaffaHelmetMode.Automatic;
-                    break;
-            }
+            EnsureManualMode();
+
+            mode = IsDeployed
+                ? JaffaHelmetMode.AlwaysRetracted
+                : JaffaHelmetMode.AlwaysDeployed;
 
             SynchronizeState();
+
             Pawn wearer = Helmet?.Wearer;
             if (wearer != null)
             {
                 Messages.Message(
-                    "SG1_JaffaHelmetModeChanged".Translate() + ": " + ModeLabel,
+                    "SG1_JaffaHelmetModeChanged".Translate() + ": " + PositionLabel,
                     wearer,
                     MessageTypeDefOf.NeutralEvent,
                     false);
-            }
-        }
-
-        private string ModeLabel
-        {
-            get
-            {
-                switch (mode)
-                {
-                    case JaffaHelmetMode.AlwaysDeployed:
-                        return "SG1_JaffaHelmetModeAlwaysDeployed".Translate();
-                    case JaffaHelmetMode.AlwaysRetracted:
-                        return "SG1_JaffaHelmetModeAlwaysRetracted".Translate();
-                    default:
-                        return "SG1_JaffaHelmetModeAutomatic".Translate();
-                }
             }
         }
 
@@ -168,50 +155,12 @@ namespace GateRimSG1.Jaffa
             : "SG1_JaffaHelmetPositionRetracted".Translate();
     }
 
+    // Kept as an empty compatibility component so saves made before 0.3.101-dev
+    // can still resolve the historical type. Automatic synchronization is gone.
     public class GameComponent_RetractableJaffaHelmetUpdater : GameComponent
     {
-        private const int ScanIntervalTicks = 15;
-
         public GameComponent_RetractableJaffaHelmetUpdater(Game game)
         {
-        }
-
-        public override void GameComponentTick()
-        {
-            if (Find.TickManager == null || Find.TickManager.TicksGame % ScanIntervalTicks != 0)
-            {
-                return;
-            }
-
-            for (int mapIndex = 0; mapIndex < Find.Maps.Count; mapIndex++)
-            {
-                SynchronizeMap(Find.Maps[mapIndex]);
-            }
-        }
-
-        private static void SynchronizeMap(Map map)
-        {
-            IReadOnlyList<Pawn> pawns = map?.mapPawns?.AllPawnsSpawned;
-            if (pawns == null)
-            {
-                return;
-            }
-
-            for (int pawnIndex = 0; pawnIndex < pawns.Count; pawnIndex++)
-            {
-                List<Apparel> wornApparel = pawns[pawnIndex]?.apparel?.WornApparel;
-                if (wornApparel == null)
-                {
-                    continue;
-                }
-
-                for (int apparelIndex = 0; apparelIndex < wornApparel.Count; apparelIndex++)
-                {
-                    wornApparel[apparelIndex]
-                        ?.GetComp<Comp_RetractableJaffaHelmet>()
-                        ?.SynchronizeState(pawns[pawnIndex]);
-                }
-            }
         }
     }
 }

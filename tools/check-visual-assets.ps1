@@ -151,6 +151,7 @@ $wikiIconMappings = @(
     (New-WikiMapping "Textures/UI/Commands/SG1_ForcedImplantation.png" "docs/wiki/images/SG1_ForcedImplantation.png" "docs/wiki/Forced-Implantation.md" "images/SG1_ForcedImplantation.png"),
     (New-WikiMapping "Textures/UI/Commands/SG1_RitualImplantation.png" "docs/wiki/images/SG1_RitualImplantation.png" "docs/wiki/Ritual-Implantation.md" "images/SG1_RitualImplantation.png"),
     (New-WikiMapping "Textures/UI/Commands/SG1_RitualImplantation.png" "docs/wiki/images/SG1_RitualImplantation.png" "docs/wiki/Primta-Formal-Ceremony.md" "images/SG1_RitualImplantation.png"),
+    (New-WikiMapping "Textures/UI/Commands/SG1_JaffaHelmetMode.png" "docs/wiki/images/SG1_JaffaHelmetMode.png" "docs/wiki/Jaffa-Retractable-Helmet.md" "images/SG1_JaffaHelmetMode.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh.png" "docs/wiki/images/KaraKesh.png" "docs/wiki/Kara-Kesh.md" "images/KaraKesh.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet.png" "docs/wiki/images/GoauldHealingBracelet.png" "docs/wiki/Goauld-Healing-Bracelet.md" "images/GoauldHealingBracelet.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png" "docs/wiki/images/SG1_FreeJaffa.png" "docs/wiki/Visual-Assets.md" "images/SG1_FreeJaffa.png"),
@@ -301,6 +302,7 @@ $expectedFinalLocalPaths = @(
     "UI/Commands/SG1_AutonomousHunt",
     "UI/Commands/SG1_EmergencyExtraction",
     "UI/Commands/SG1_ForcedImplantation",
+    "UI/Commands/SG1_JaffaHelmetMode",
     "UI/Commands/SG1_RitualImplantation",
     "World/WorldObjects/Expanding/SG1_FreeJaffa",
     "World/WorldObjects/Expanding/SG1_GoauldSystemLords",
@@ -318,10 +320,10 @@ $expectedFinalLocalPaths = @(
 $actualFinalLocalPaths = @($registeredLocalPaths | Where-Object { $registeredLocalStatuses[$_] -ceq "final" } | Sort-Object)
 $finalPathDifferences = @(Compare-Object -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) -DifferenceObject $actualFinalLocalPaths -CaseSensitive)
 if ($finalPathDifferences.Count -gt 0) {
-    Add-Failure ("Final local asset whitelist differs from the forty-four approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
+    Add-Failure ("Final local asset whitelist differs from the forty-five approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the forty-four approved families."
+    Add-Pass "Final local asset whitelist matches the forty-five approved families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

@@ -1,7 +1,7 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.99-dev`
-> Statut : icône plate du champ de bataille Goa'uld validée en jeu dans `0.3.99-dev`
+> Version de référence : `0.3.101-dev`
+> Statut : gizmo final du casque Jaffa validé en jeu dans `0.3.101-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
@@ -97,8 +97,9 @@ strictement frontal, sans texture flottante sur les autres orientations.
 | ![Extraction d'urgence](images/SG1_EmergencyExtraction.png) | Extraction instantanée développeur | `UI/Commands/SG1_EmergencyExtraction` | Symbiote séparé d'un hôte allongé sous une lampe chirurgicale |
 | ![Implantation forcée](images/SG1_ForcedImplantation.png) | Implantation forcée adjacente | `UI/Commands/SG1_ForcedImplantation` | Symbiote frappant vers un hôte par une courte flèche rouge |
 | ![Implantation rituelle](images/SG1_RitualImplantation.png) | Famille d'implantation et de cérémonie partagée | `UI/Commands/SG1_RitualImplantation` | Symbiote et hôte devant un sceau rituel doré |
+| ![Mode du casque Jaffa](images/SG1_JaffaHelmetMode.png) | Bascule manuelle du casque Jaffa | `UI/Commands/SG1_JaffaHelmetMode` | Casque cobra brun et or entouré de deux flèches de déploiement et rétraction |
 
-Les quatre PNG sont transparents et conservent leur format gameplay `64×64`.
+Les cinq PNG sont transparents et conservent leur format gameplay `64×64`.
 La famille rituelle reste partagée par les surfaces Goa'uld, Tok'ra et la
 cérémonie formelle du Prim'ta, sans changement de logique.
 

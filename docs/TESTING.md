@@ -1,5 +1,31 @@
 # Durable testing
 
+## Final Jaffa helmet gizmo and manual toggle (`0.3.101-dev`)
+
+Durable validation requirements:
+
+- keep `Textures/UI/Commands/SG1_JaffaHelmetMode.png` as one transparent `64×64`
+  non-directional command icon;
+- preserve the stable runtime texture path and reject North, South, East or West
+  variants for this UI-only family;
+- retain the approved flat cobra-helmet silhouette with broad shapes, limited
+  detail and readable opposing motion arrows;
+- show `Deploy helmet` while retracted and `Retract helmet` while deployed;
+- never restore draft-dependent automatic switching during normal play;
+- persist the selected deployed or retracted position through save and reload;
+- migrate legacy `Automatic` values by preserving the physical helmet Def stored
+  in the save before converting to the matching manual state;
+- retain the historical updater class only as an inert compatibility type;
+- preserve standard/officer pair isolation, raw armor values, `FullHead` deployed
+  coverage and `UpperHead` retracted coverage;
+- require the protected wiki copy to remain byte-identical and appear on the
+  dedicated helmet page and visual reference page;
+- require `610` gameplay PNG files, `77` canonical families and exactly `45`
+  final local families after acceptance;
+- run forced build, duration, documentation fixtures, documentation audit, visual
+  audit, aggregate consistency and `git diff --check`;
+- inspect both helmet pairs in both positions, draft/undraft stability,
+  save/reload and focused logs.
 ## Documentation consistency and publication safeguards (`0.3.100-dev`)
 
 Durable coverage:

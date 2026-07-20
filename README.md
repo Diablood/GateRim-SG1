@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.100-dev`
+- Development version: `0.3.101-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,22 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.101-dev` finalizes the Jaffa helmet-mode gizmo with one transparent
+`64Ã—64` cobra-helmet icon and simplifies the control to a direct manual toggle.
+The command now reads `Deploy helmet` or `Retract helmet` according to the
+current position; drafting no longer changes it automatically. Legacy automatic
+save values preserve their stored physical position before becoming manual.
+Armor values, deployed and retracted coverage, standard/officer pair isolation
+and stable save identifiers remain unchanged.
+
+`0.3.101-dev` finalizes the Jaffa helmet-mode gizmo with one transparent
+`64×64` cobra-helmet icon and simplifies the control to a direct manual toggle.
+The command now reads `Deploy helmet` or `Retract helmet` according to the
+current position; drafting no longer changes it automatically. Legacy automatic
+save values preserve their stored physical position before becoming manual.
+Armor values, deployed and retracted coverage, standard/officer pair isolation
+and stable save identifiers remain unchanged.
 
 `0.3.100-dev` restores missing published documentation and adds automatic
 safeguards against the same drift recurring. The changelog and durable testing

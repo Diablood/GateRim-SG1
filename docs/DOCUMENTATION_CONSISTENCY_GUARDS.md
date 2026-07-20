@@ -1,6 +1,6 @@
 # Documentation consistency guards
 
-Version: `0.3.100-dev`
+Version: `0.3.101-dev`
 
 Status: implemented, regression-tested and integrated into the aggregate project
 consistency command.
@@ -89,6 +89,9 @@ rejects:
 - volatile branch metadata;
 - known obsolete findings.
 
+The Jaffa helmet-mode family is now final and must remain present in the visual
+whitelist with a byte-identical protected wiki copy.
+
 ### Roadmap role
 
 `docs/ROADMAP.md` must define `Prochain jalon décidé`. Published milestone
@@ -118,7 +121,4 @@ following mutations fail:
 - volatile visual-register branch;
 - published history reintroduced into the roadmap;
 - missing publication-ready procedure command;
-- unfinished DLL wording in final mode.
-
-Every fixture is created below the operating-system temporary directory and
-removed before the test command exits.
+- unfinished final-state wording.

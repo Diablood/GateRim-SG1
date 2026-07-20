@@ -4,7 +4,15 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.100-dev`
+> Version du mod documentée : `0.3.101-dev`
+
+## Gizmo final et contrôle manuel du casque Jaffa
+
+`0.3.101-dev` finalise le gizmo du [casque Jaffa rétractable](Jaffa-Retractable-Helmet)
+avec une icône cobra transparente `64×64`. Le mode automatique disparaît : la
+commande propose désormais directement `Déployer casque` ou `Rétracter casque`.
+La position persiste, l'enrôlement ne la modifie plus et les anciennes
+sauvegardes conservent leur position enregistrée avant migration.
 
 ## Garde-fous documentaires
 

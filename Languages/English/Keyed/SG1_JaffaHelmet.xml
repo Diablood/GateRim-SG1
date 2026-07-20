@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-    <SG1_JaffaHelmetModeCommand>Jaffa helmet mode</SG1_JaffaHelmetModeCommand>
-    <SG1_JaffaHelmetModeCommandDesc>Cycle the Jaffa helmet deployment behavior. Automatic mode retracts the helmet outside draft and deploys it while drafted. Raw armor ratings stay identical; only protected head coverage changes.</SG1_JaffaHelmetModeCommandDesc>
-    <SG1_JaffaHelmetModeInspect>Jaffa helmet mode</SG1_JaffaHelmetModeInspect>
+    <SG1_JaffaHelmetModeCommandDesc>Deploy or retract the Jaffa helmet manually. Raw armor ratings stay identical; only protected head coverage changes.</SG1_JaffaHelmetModeCommandDesc>
     <SG1_JaffaHelmetPositionInspect>Jaffa helmet position</SG1_JaffaHelmetPositionInspect>
-    <SG1_JaffaHelmetModeAutomatic>automatic</SG1_JaffaHelmetModeAutomatic>
-    <SG1_JaffaHelmetModeAlwaysDeployed>always deployed</SG1_JaffaHelmetModeAlwaysDeployed>
-    <SG1_JaffaHelmetModeAlwaysRetracted>always retracted</SG1_JaffaHelmetModeAlwaysRetracted>
+    <SG1_JaffaHelmetModeAlwaysDeployed>Deploy helmet</SG1_JaffaHelmetModeAlwaysDeployed>
+    <SG1_JaffaHelmetModeAlwaysRetracted>Retract helmet</SG1_JaffaHelmetModeAlwaysRetracted>
     <SG1_JaffaHelmetPositionDeployed>deployed</SG1_JaffaHelmetPositionDeployed>
     <SG1_JaffaHelmetPositionRetracted>retracted</SG1_JaffaHelmetPositionRetracted>
-    <SG1_JaffaHelmetModeChanged>Jaffa helmet mode changed</SG1_JaffaHelmetModeChanged>
+    <SG1_JaffaHelmetModeChanged>Jaffa helmet position changed</SG1_JaffaHelmetModeChanged>
 </LanguageData>

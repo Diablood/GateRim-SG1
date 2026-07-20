@@ -1,64 +1,64 @@
-# Retractable Jaffa helmet modes
+# Retractable Jaffa helmet control
 
-Version: `0.1.67-dev`
+Introduction version: `0.1.67-dev`
+Manual-toggle revision: `0.3.101-dev`
 
 ## Scope
 
-The existing deployed Jaffa helmet now switches between a deployed `FullHead`
-state and an internal retracted `UpperHead` state. Raw armor ratings remain
-identical.
+The deployed and retracted Jaffa helmet Defs remain distinct. Raw armor ratings
+stay identical; the deployed Def covers `FullHead`, while the retracted Def
+covers `UpperHead`.
 
-## Modes
+## Manual actions
 
-| Mode | Undrafted | Drafted |
+The worn-apparel gizmo now exposes the action that can be performed immediately:
+
+| Current position | Gizmo label | Result |
 |---|---|---|
-| Automatic | Retracted | Deployed |
-| Always deployed | Deployed | Deployed |
-| Always retracted | Retracted | Retracted |
+| Retracted | `Deploy helmet` | Switch to the matching deployed Def |
+| Deployed | `Retract helmet` | Switch to the matching retracted Def |
 
-The mode persists through save and reload. A worn-apparel gizmo cycles it.
-A lightweight updater synchronizes automatic mode every `15` ticks.
+Drafting and undrafting no longer alter the helmet. The chosen position persists
+through save and reload.
 
-## Manual test checklist
+## Legacy-save migration
 
-1. Build and launch RimWorld with developer mode enabled.
-2. Equip the deployed Jaffa helmet and confirm the gizmo appears.
-3. In automatic mode, confirm retracted visuals and `UpperHead` outside draft.
-4. Draft the pawn and confirm deployed visuals and `FullHead` coverage.
-5. Undraft the pawn and confirm retraction.
-6. Cycle through always deployed and always retracted.
-7. Save and reload in each mode to confirm persistence.
-8. Confirm the armor ratings stay identical in both positions.
-9. Confirm all Jaffa apparel remains under `Apparel > Jaffa`.
+The historical `Automatic` enum value remains readable only for migration. When
+an older save is loaded, the component inspects the physical helmet Def already
+stored in the save and converts the legacy value to the matching manual state.
 
-## Logging policy
+`GameComponent_RetractableJaffaHelmetUpdater` remains as an empty compatibility
+type so old saves can resolve it. It performs no periodic scan and no automatic
+deployment.
 
-Automatic helmet deployment and retraction are intentionally silent. These
-state transitions happen routinely during pawn generation, draft changes and
-periodic synchronization. Emitting a normal log message for every transition
-can create noisy in-game developer popups and verbose Unity stack traces.
+## Multiple helmet pairs
 
-The synchronization behavior remains unchanged.
+`CompProperties_RetractableJaffaHelmet` continues to declare optional
+`deployedDef` and `retractedDef` fields.
 
-## Multiple helmet pairs (`0.3.74-dev`)
+The ordinary pair remains:
 
-`CompProperties_RetractableJaffaHelmet` can now declare its own `deployedDef`
-and `retractedDef`. Empty fields retain the original
-`SG1_JaffaDeployedHelmet` / `SG1_JaffaRetractedHelmet` fallback.
+```text
+SG1_JaffaDeployedHelmet
+SG1_JaffaRetractedHelmet
+```
 
-The mission officer uses the dedicated pair:
+The capturable officer pair remains:
 
 ```text
 SG1_JaffaOfficerDeployedHelmet
 SG1_JaffaOfficerRetractedHelmet
 ```
 
-This keeps one shared persistent mode implementation while preventing either
-helmet from changing into the other set. Raw armor and body coverage remain
-identical to the standard pair.
+Each helmet changes only within its own pair.
 
-Final cumulative revision `0.3.74-dev-r2` validates and verifies that the
-capture target wears
-the officer deployed Def immediately after pawn generation. This preserves zero
-random commonality while guaranteeing that the retractable component starts from
-the correct pair. All three modes, pair isolation and save/reload are validated.
+## Validation checklist
+
+1. Equip the ordinary retracted helmet and confirm `Deploy helmet`.
+2. Deploy it and confirm the label changes to `Retract helmet`.
+3. Draft and undraft the pawn without changing the position.
+4. Save and reload once in each position.
+5. Repeat the toggle with the officer pair.
+6. Confirm deployed coverage is `FullHead` and retracted coverage is `UpperHead`.
+7. Confirm raw armor ratings remain identical.
+8. Confirm the command icon is a transparent `64×64` cobra-helmet gizmo.

@@ -2,9 +2,9 @@
 
 ## Milestone
 
-- Version: `0.3.100-dev`
-- Target assembly: `0.3.100.0`
-- Status: `0.3.100-dev` documentation-only milestone; the validated visual baseline is unchanged.
+- Version: `0.3.101-dev`
+- Target assembly: `0.3.101.0`
+- Status: `0.3.101-dev` finalizes the Jaffa helmet-mode command icon and its protected wiki reference.
 
 ## Purpose
 
@@ -23,7 +23,7 @@ metadata and all summary counts against the marked table.
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
-- Accepted final local families: `44` (`2` storyteller portraits, `6` buildings, `4` Tok'ra mission-item families, `2` hand devices, `1` finalized ranged weapon, `3` finalized inert or medical items, `2` xenotype icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays, `4` command icons, `4` world-faction icons and `7` world-event site icons).
+- Accepted final local families: `45` (`2` storyteller portraits, `6` buildings, `4` Tok'ra mission-item families, `2` hand devices, `1` finalized ranged weapon, `3` finalized inert or medical items, `2` xenotype icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays, `5` command icons, `4` world-faction icons and `7` world-event site icons).
 - Every other local family remains temporary unless its table row is explicitly
   marked `final` and `done`.
 
@@ -51,12 +51,12 @@ metadata and all summary counts against the marked table.
 
 - Local PNG files: `610`.
 - Local texture families: `77`.
-- Accepted final local families: `44` (`2` storyteller portraits, `6` buildings, `4` Tok'ra mission-item families, `2` hand devices, `1` finalized ranged weapon, `3` finalized inert or medical items, `2` xenotype icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays, `4` command icons, `4` world-faction icons and `7` world-event site icons).
-- Temporary original families: `21`.
+- Accepted final local families: `45` (`2` storyteller portraits, `6` buildings, `4` Tok'ra mission-item families, `2` hand devices, `1` finalized ranged weapon, `3` finalized inert or medical items, `2` xenotype icons, `6` gameplay-gene icons, `3` intrinsic Jaffa forehead-mark overlays, `5` command icons, `4` world-faction icons and `7` world-event site icons).
+- Temporary original families: `20`.
 - Temporary recolor families: `11`.
 - Temporary reuse families: `1`.
 - Project-icon placeholder families: `0`.
-- Priorities: `0` P0, `17` P1, `16` P2, `44` done.
+- Priorities: `0` P0, `17` P1, `15` P2, `45` done.
 - Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -68,8 +68,8 @@ metadata and all summary counts against the marked table.
    image and require a later multidirectional pawn-art lot.
 2. Jaffa, officer, Tok'ra and SGC apparel families remain temporary; many
    body-type variants are exact copies rather than tailored silhouettes.
-3. `UI/Commands/SG1_JaffaHelmetMode` remains a single temporary `64×64` command
-   icon and does not require directional variants.
+3. The remaining P2 weapon and projectile families still need coherent,
+   separately tested final-art lots.
 
 ## Local texture inventory
 
@@ -132,7 +132,7 @@ metadata and all summary counts against the marked table.
 | `UI/Commands/SG1_AutonomousHunt` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family. |
 | `UI/Commands/SG1_EmergencyExtraction` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family. |
 | `UI/Commands/SG1_ForcedImplantation` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family. |
-| `UI/Commands/SG1_JaffaHelmetMode` | 1 | 64×64 | UI | `temporary-original` | `P2` | Registered runtime reference | Registered temporary family. |
+| `UI/Commands/SG1_JaffaHelmetMode` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family; manual deploy/retract action. |
 | `UI/Commands/SG1_RitualImplantation` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family. |
 | `UI/Genes/SG1_GoauldLongevity` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family. |
 | `UI/Genes/SG1_JaffaLineage` | 1 | 64×64 | UI | `final` | `done` | Registered runtime reference | Approved final family. |
@@ -204,7 +204,7 @@ git diff --check
 Published visual baseline:
 
 ```text
-Final local texture families: 44
+Final local texture families: 45
 Local PNG files: 610
 Local texture families: 77
 Missing local references: 0
