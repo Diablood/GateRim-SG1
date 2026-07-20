@@ -35,6 +35,28 @@ Donner à la cible de l'opération de capture une identité visuelle clairement
 distincte d'un guerrier Jaffa ordinaire, sans modifier les règles de mission ni
 le transfert du prisonnier.
 
+### Intégrer les nouvelles pièces aux tenues Jaffa du monde et des missions
+
+Après validation fonctionnelle des nouveaux objets, ajouter la sous-armure, le
+pantalon et la ceinture aux équipements cohérents des Jaffa générés :
+
+- définir leur répartition selon les rôles et niveaux d'armure ;
+- mettre à jour les Jaffa des factions présentes dans le monde ;
+- mettre à jour les Jaffa générés par les missions et opérations ;
+- préserver les équipements distinctifs des officiers et cibles spéciales ;
+- valider génération, raids, sites, missions, équipement, mort, capture et
+  sauvegarde/rechargement.
+
+### Refactoriser les états du casque Jaffa rétractable
+
+Revoir ultérieurement l'architecture du casque déployé et rétracté :
+
+- conserver le casque déployé comme objet public avec son icône au sol ;
+- éviter qu'un état rétracté interne dépende d'une texture portée visible
+  distincte lorsqu'elle n'est pas nécessaire ;
+- préserver les identifiants de sauvegarde et la migration des anciennes parties ;
+- préserver l'isolation entre les paires standard et officier ;
+- revalider le gizmo manuel, la couverture corporelle et la persistance.
 ### Familles visuelles temporaires restantes
 
 Traiter les familles `P1` et `P2` du
