@@ -145,7 +145,7 @@
                 <defaultProjectile>SG1_TokraHypodermicDart</defaultProjectile>
                 <warmupTime>0.7</warmupTime>
                 <range>24.9</range>
-                <soundCast>Shot_Revolver</soundCast>
+                <soundCast>Shot_ChargeRifle</soundCast>
                 <soundCastTail>GunTail_Light</soundCastTail>
                 <muzzleFlashScale>1</muzzleFlashScale>
             </li>
