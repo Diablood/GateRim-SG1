@@ -70,7 +70,7 @@
                 <defaultProjectile>SG1_BolasProjectile</defaultProjectile>
                 <warmupTime>0.85</warmupTime>
                 <range>11.9</range>
-                <soundCast>Bow_Shot</soundCast>
+                <soundCast>Bow_Small</soundCast>
             </li>
         </verbs>
         <weaponTags>
