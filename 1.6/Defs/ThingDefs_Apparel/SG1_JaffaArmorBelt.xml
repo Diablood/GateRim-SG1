@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="ArmorMachineableBase">
+        <defName>SG1_JaffaArmorBelt</defName>
+        <label>Jaffa armor belt</label>
+        <description>A broad plated belt anchoring a Jaffa warrior's battle harness. Its overlapping bronze plates protect the waist and lower torso while securing the outer armor during violent movement.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/JaffaArmorBelt/JaffaArmorBelt</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>0.75</drawSize>
+        </graphicData>
+        <techLevel>Spacer</techLevel>
+        <tradeability>All</tradeability>
+        <generateCommonality>0</generateCommonality>
+        <thingCategories Inherit="False">
+            <li>SG1_JaffaApparel</li>
+        </thingCategories>
+        <costList>
+            <Steel>25</Steel>
+            <Plasteel>8</Plasteel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <statBases>
+            <WorkToMake>7000</WorkToMake>
+            <MaxHitPoints>180</MaxHitPoints>
+            <Mass>1.4</Mass>
+            <Flammability>0</Flammability>
+            <ArmorRating_Sharp>0.24</ArmorRating_Sharp>
+            <ArmorRating_Blunt>0.12</ArmorRating_Blunt>
+            <ArmorRating_Heat>0.28</ArmorRating_Heat>
+            <EquipDelay>3</EquipDelay>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>SG1_JaffaArmor</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+        <apparel>
+            <bodyPartGroups>
+                <li>Torso</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Belt</li>
+            </layers>
+            <tags>
+                <li>SG1_JaffaArmorBelt</li>
+            </tags>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <useDeflectMetalEffect>true</useDeflectMetalEffect>
+        </apparel>
+    </ThingDef>
+</Defs>
