@@ -13,6 +13,15 @@ décharge énergétique puissante.
 bâton Ma'Tok
 ```
 
+## Visuels validés
+
+| Bâton Ma'Tok | Projectile énergétique |
+|---|---|
+| <img src="images/SG1_MatokStaff.png" width="192" alt="Bâton Ma'Tok"> | <img src="images/SG1_MatokBlast.png" width="128" alt="Projectile du Ma'Tok"> |
+
+Depuis `0.3.102-dev`, l'arme et son projectile utilisent deux PNG transparents
+dédiés. Le projectile conserve la vitesse validée `80`.
+
 ## Fonctionnement actuel
 
 Ce premier prototype est jouable :
@@ -26,7 +35,8 @@ Ce premier prototype est jouable :
 - portée intermédiaire ;
 - capacités de mêlée avec la hampe et l'extrémité ;
 - fabrication au banc d'usinage après la recherche `Armement Jaffa` ;
-- visuels temporaires dédiés pour l'arme et son projectile.
+- visuels non directionnels dédiés et finalisés pour l'arme et son projectile ;
+- vitesse du projectile validée à 80.
 
 ## Fabrication
 
@@ -52,8 +62,11 @@ sera ajoutée séparément.
 
 ## Limites du prototype
 
-Le visuel sera retravaillé ultérieurement. Depuis `0.1.65-dev`, les guerriers
-Jaffa Goa'uld générés reçoivent automatiquement cette arme grâce au système
-vanilla de loadout. Depuis `0.2.9-dev`, les gardes peuvent recevoir soit un
-Ma'Tok, soit un Zat'nik'tel. Les raids naturels Goa'uld peuvent donc fournir
-les deux armes comme butin récupéré.
+Depuis `0.3.102-dev`, le visuel non directionnel de l'arme et celui de son
+projectile sont finalisés. Les guerriers Jaffa Goa'uld générés reçoivent
+automatiquement cette arme grâce au système vanilla de loadout. Les gardes
+peuvent recevoir soit un Ma'Tok, soit un Zat'nik'tel, ce qui permet de récupérer
+les deux armes comme butin.
+
+Le comportement particulier des futurs Réplicateurs reste un développement
+séparé.

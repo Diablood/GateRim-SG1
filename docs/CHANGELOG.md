@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.3.102-dev - Finalize remaining non-directional visual families
+
+### Changed
+
+- Replace temporary bolas, Ma'Tok staff and Zat'nik'tel map and inventory art
+  with dedicated transparent final textures.
+- Replace their projectile placeholders with distinct validated projectile art.
+- Finalize the Tok'ra hypodermic energy-dart visual and use the alien
+  `Shot_ChargeRifle` report.
+- Make bolas reusable, use the valid `Bow_Small` cast sound and set the Ma'Tok
+  projectile speed to the validated value `80`.
+- Replace the non-directional ground and inventory textures for standard light
+  and heavy Jaffa armor, officer armor, standard and officer deployed helmets,
+  gauntlets and reinforced boots.
+- Use `drawSize = 0.75` for gauntlets, reinforced boots and armor belt.
+
+### Added
+- Add byte-identical wiki copies of the finalized weapon, projectile and Jaffa
+  equipment PNGs.
+- Display the approved Jaffa outfit concept art on the armor and progressive
+  visual-reference pages as a documentation-only reference.
+
+- Add separate Jaffa under-armor clothing, trousers and armor-belt ThingDefs,
+  French translations and transparent ground or inventory textures.
+- Register `613` PNG files, `80` local texture families and `54` accepted final
+  families.
+- Advance public and documentation metadata to `0.3.102-dev` and assembly
+  metadata to `0.3.102.0`.
+
+### Preserved
+
+- Preserve established weapon, projectile, armor and helmet identifiers and paths
+  except for the three newly introduced apparel definitions.
+- Preserve the Tok'ra rifle's twelve-charge limit and disposal behavior.
+- Preserve deployed or retracted helmet behavior and standard or officer pair
+  isolation.
+- Preserve all directional worn textures for later dedicated work.
+
+### Deferred
+
+- Directional worn visuals for visible Jaffa armor and under-armor.
+- Automatic assignment of the new pieces to Jaffa world and mission loadouts.
+- Consistent officer-equipment assignment, including the living-capture target.
+- Save-compatible refactoring of deployed and retracted helmet states.
+
 ## 0.3.101-dev - Finalize Jaffa helmet gizmo and manual toggle
 
 ### Changed
@@ -64,6 +109,7 @@
 
 - Change no gameplay behavior, Def, translation, texture, balance value or save
   identifier.
+
 ## 0.3.99-dev — Finalize Goa'uld open-conflict battlefield icon
 
 - Replace the blurred `64×64` world-site icon for
@@ -2475,7 +2521,6 @@
 
 ## 0.3.5-dev - Add culture-specific pawn name generators
 
-
 - Apply cultural names immediately when compatible pawns spawn, including through the vanilla developer `Spawn pawn` tool while the game is paused.
 - Initialize generated Goa'uld and Tok'ra hosts before immediate naming so host and symbiote identities remain coherent even in paused developer spawns.
 - Generate Tau'ri names for the stranded SG-team candidates before the player configuration page, while preserving later manual renaming.
@@ -2575,7 +2620,6 @@
 - Add durable new-save, persistence, duplicate-resolution and debug-visibility checks to `docs/TESTING.md`.
 - Rewrite the framework architecture document and update project state and French wiki revision markers.
 - Raise the assembly version to `0.3.0.0` and the mod metadata version to `0.3.0-dev`.
-
 
 ## 0.2.53-dev - Consolidate French player wiki
 
@@ -2892,7 +2936,6 @@
 
 - Fixed the Tok'ra intercepted threat debug action so it also opens the RP letter used by the natural incident.
 
-
 - Add the missing RimWorld namespace import for the Tok'ra intercepted threat alert.
 - Keep the intercepted threat behavior unchanged.
 
@@ -2948,7 +2991,6 @@
 - Requires a forced C# rebuild.
 - Requires no new XML root `About.xml`; keep metadata under `About/About.xml`.
 
-
 ## 0.2.32-dev-r2 - Remove redundant power line from Tok'ra status report
 
 - Remove the visible "alimentation du relais" line from the Tok'ra channel status report.
@@ -2957,7 +2999,6 @@
 - No gameplay change.
 - Requires no new XML root `About.xml`; keep metadata under `About/About.xml`.
 
-
 ## 0.2.32-dev-r1 - RP pass on Tok'ra communicator status report
 
 - Reword the Tok'ra channel status report as an in-universe fragmented transmission.
@@ -2965,7 +3006,6 @@
 - Remove the most technical/debug-like player-facing phrasing from the report body.
 - No gameplay change.
 - Requires no new XML root `About.xml`; keep metadata under `About/About.xml`.
-
 
 ## 0.2.32-dev - Tok'ra communicator status report
 
@@ -2995,6 +3035,7 @@
 - Keep raids, threat points, doctrines, reprisals, goodwill, battles, alliances,
   expansion and settlement destruction mechanically unchanged.
 - Prepare local revision `r1` for forced rebuild and focused in-game validation.
+
 ## 0.2.53-dev - Consolidate French player wiki
 
 - Rewrite the French wiki home page to reflect the actual playable `0.2.x` scope instead of the early `0.1.6-dev` prototype state.
@@ -3046,7 +3087,6 @@
 - Align mod metadata and C# assembly version with `0.2.30`.
 - Requires a forced C# rebuild.
 
-
 ## 0.2.29-dev — Add Tok'ra communicator medical support request
 
 - Add a trusted-tier medical guidance request to the Tok'ra secure communicator.
@@ -3055,7 +3095,6 @@
 - Keep the support advisory only: no direct treatment, item delivery, trade, recruitment, quest or military aid.
 - Align mod metadata and C# assembly version with `0.2.29`.
 - Requires a forced C# rebuild.
-
 
 ## 0.2.28-dev-r1 — Hide direct Tok'ra communicator gizmos outside debug
 
@@ -3074,7 +3113,6 @@
 - Preserve the validated mixed diversion effect: short immediate stun plus delayed vomiting for biological targets.
 - Align mod metadata and C# assembly version with `0.2.28`.
 - Requires a forced C# rebuild.
-
 
 ## 0.2.27-dev-r2 — Mix Tok'ra defensive diversion effects
 
@@ -3112,7 +3150,6 @@
 - Align mod metadata and C# assembly version with `0.2.26`.
 - Requires a forced C# rebuild.
 
-
 ## 0.2.25-dev — Define Tok'ra interaction roadmap
 
 - Add a technical roadmap for Tok'ra interactions before adding larger rewards.
@@ -3131,7 +3168,6 @@
 - Align mod metadata and C# assembly version with `0.2.24`.
 - Requires a forced C# rebuild.
 
-
 ## 0.2.23-dev-r1 — Move Tok'ra safehouse briefing details to dialog
 
 - Keep the historical message short so the vanilla message history remains readable.
@@ -3145,7 +3181,6 @@
 - Add a small tier-specific medical hint to the contact briefing, foreshadowing future Tok'ra medical support without granting items, quests, recruitment or military aid.
 - Align mod metadata and C# assembly version with `0.2.23`.
 - Requires a forced C# rebuild.
-
 
 ## 0.2.22-dev-r2 — Preserve Tok'ra trust during safehouse briefing tests
 
@@ -3173,7 +3208,6 @@
 - Keep the contact non-trading, non-recruitable, non-hostile and non-repeatable.
 - Align mod metadata and C# assembly version with `0.2.21`.
 - Requires a forced C# rebuild.
-
 
 ## 0.2.19-dev-r1 — Add Tok'ra field-garb body-type textures
 
@@ -3772,7 +3806,6 @@
 - Add French `DefInjected` translations, technical documentation and player-wiki drafts.
 - Prepare the next faction milestone for Jaffa servants and nested pawn-group profiles.
 
-
 ## 0.1.60-dev — Add Prim'ta deep-freezing penalties
 
 - Add persistent deep-freezing exposure for mature Prim'ta larvae and queen-origin immature symbiotes.
@@ -3785,7 +3818,6 @@
 - Preserve exposure through save/load, stack merges and stack splits.
 - Add English/French status strings, technical documentation and player-wiki drafts.
 
-
 ## 0.1.59-dev — Add Prim'ta preservation basin prototype
 
 - Add the powered `SG1_PrimtaPreservationBasin` dedicated storage building.
@@ -3796,7 +3828,6 @@
 - Keep deep-freezing penalties planned for a dedicated follow-up milestone.
 - Reuse the incubation-basin texture provisionally.
 - Add French translations, technical documentation and player-wiki drafts.
-
 
 ## 0.1.58-dev — Add queen-origin Prim'ta assisted maturation prototype
 
@@ -3809,7 +3840,6 @@
 - Keep autonomous queen reproduction, natural sourcing and dedicated queen infrastructure planned for later.
 - Add French translations, technical documentation and player-wiki drafts.
 
-
 ## 0.1.57-dev — Add Goa'uld queen biological foundation
 
 - Add the XML-only `SG1_GoauldQueen` animal-style pawn prototype.
@@ -3819,7 +3849,6 @@
 - Reuse the adult-symbiote texture provisionally at a larger draw size.
 - Add French `DefInjected` translations, technical documentation and player-wiki drafts.
 - Prepare the next assisted-maturation iteration for Prim'ta incubation.
-
 
 ## 0.1.56-dev docs — Add pre-0.2 cleanup roadmap
 
@@ -3937,7 +3966,6 @@
 - Keep recent injuries healable by active Tok'ra hosts without allowing a minor wound to trigger the narrative incident.
 - Add French DefInjected text, technical documentation and player-wiki drafts.
 
-
 ## 0.1.46-dev — Expand RimWorld-oriented Tok'ra biological healing
 - Replaced the narrow hard-coded serious-pathology list with a dynamic RimWorld-oriented treatment filter.
 - Reused vanilla `isBad` and `everCurableByItem` as the default signals for visible harmful biological conditions.
@@ -3947,7 +3975,6 @@
 - Reused the same dynamic rule for voluntary therapeutic implantation targets.
 - Kept advanced scar and limb regeneration outside this milestone.
 
-
 ## 0.1.45-dev — Add voluntary therapeutic Tok'ra implantation
 
 - Added a dedicated therapeutic implantation command to free Tok'ra symbiotes.
@@ -3955,7 +3982,6 @@
 - Added an explicit consent confirmation dialog before the existing implantation transfer begins.
 - Reused the recent-implantation conversion and active-host healing flows without changing generic Tok'ra voluntary implantation.
 - Added English and French keyed translations plus player-wiki documentation.
-
 
 ## 0.1.44-dev
 - Add `GameComponent_TokraTherapeuticHosting`.

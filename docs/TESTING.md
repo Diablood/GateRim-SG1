@@ -1,5 +1,33 @@
 # Durable testing
 
+## Final non-directional weapon, projectile and Jaffa equipment visuals (`0.3.102-dev`)
+
+Durable validation requirements:
+
+- preserve dedicated transparent ground and inventory PNGs for bolas, Ma'Tok
+  staff, Zat'nik'tel and their projectiles;
+- keep the Tok'ra hypodermic rifle at twelve charges and preserve the finalized
+  energy-dart visual and `Shot_ChargeRifle` report;
+- keep bolas reusable and retain `Bow_Small` as the valid cast sound;
+- retain Ma'Tok projectile speed `80`;
+- preserve the accepted non-directional Jaffa icons for standard light and heavy
+  armor, officer armor, standard and officer deployed helmets, gauntlets,
+  reinforced boots, under-armor clothing, trousers and armor belt;
+- keep `drawSize = 0.75` on gauntlets, reinforced boots and armor belt;
+- preserve `SG1_JaffaUnderArmor`, `SG1_JaffaPants` and `SG1_JaffaArmorBelt` as
+  separate ThingDefs with French translations;
+- never replace `SG1_JaffaLightArmor` with the textile under-armor item;
+- verify map, inventory, equipment compatibility, save/reload and focused logs;
+- require every finalized gameplay PNG in this milestone to keep a byte-identical wiki copy displayed on its dedicated page and on Visual-Assets.md;
+- keep docs/wiki/images/Jaffa-Armor-Concept.png as documentation-only concept art, never as a gameplay texture;
+- keep directional worn variants, world/mission loadout integration and helmet
+  refactoring outside this non-directional milestone;
+- require `613` gameplay PNG files, `80` canonical families and exactly `54`
+  final local families after acceptance;
+- run forced build, duration, documentation fixtures, documentation audit, visual
+  audit, aggregate consistency, publication-ready consistency and
+  `git diff --check`.
+
 ## Final Jaffa helmet gizmo and manual toggle (`0.3.101-dev`)
 
 Durable validation requirements:

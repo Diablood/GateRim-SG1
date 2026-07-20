@@ -1,7 +1,6 @@
 # Documentation consistency guards
 
-Version: `0.3.101-dev`
-
+Version: `0.3.102-dev`
 Status: implemented, regression-tested and integrated into the aggregate project
 consistency command.
 

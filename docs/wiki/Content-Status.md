@@ -2,10 +2,16 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.101-dev`
+> Dernière révision : `0.3.102-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
+
+La version `0.3.102-dev` finalise les visuels non directionnels restants des
+armes, projectiles et équipements Jaffa. Les icônes au sol et en inventaire sont
+validées pour les ensembles standard et officier, tandis que les textures
+portées directionnelles et leur attribution complète aux factions et missions
+restent différées.
 
 La version `0.3.101-dev` finalise le gizmo du casque Jaffa rétractable et remplace
 les trois modes par une bascule manuelle. Le bouton propose l'action opposée à

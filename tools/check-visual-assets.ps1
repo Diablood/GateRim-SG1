@@ -154,6 +154,23 @@ $wikiIconMappings = @(
     (New-WikiMapping "Textures/UI/Commands/SG1_JaffaHelmetMode.png" "docs/wiki/images/SG1_JaffaHelmetMode.png" "docs/wiki/Jaffa-Retractable-Helmet.md" "images/SG1_JaffaHelmetMode.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh.png" "docs/wiki/images/KaraKesh.png" "docs/wiki/Kara-Kesh.md" "images/KaraKesh.png"),
     (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet.png" "docs/wiki/images/GoauldHealingBracelet.png" "docs/wiki/Goauld-Healing-Bracelet.md" "images/GoauldHealingBracelet.png"),
+    (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_Bolas.png" "docs/wiki/images/SG1_Bolas.png" "docs/wiki/Non-Lethal-Capture-Tools.md" "images/SG1_Bolas.png"),
+    (New-WikiMapping "Textures/Things/Projectile/SG1_BolasProjectile.png" "docs/wiki/images/SG1_BolasProjectile.png" "docs/wiki/Non-Lethal-Capture-Tools.md" "images/SG1_BolasProjectile.png"),
+    (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_MatokStaff.png" "docs/wiki/images/SG1_MatokStaff.png" "docs/wiki/Matok-Staff.md" "images/SG1_MatokStaff.png"),
+    (New-WikiMapping "Textures/Things/Projectile/SG1_MatokBlast.png" "docs/wiki/images/SG1_MatokBlast.png" "docs/wiki/Matok-Staff.md" "images/SG1_MatokBlast.png"),
+    (New-WikiMapping "Textures/Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel.png" "docs/wiki/images/SG1_ZatnikTel.png" "docs/wiki/ZatnikTel.md" "images/SG1_ZatnikTel.png"),
+    (New-WikiMapping "Textures/Things/Projectile/SG1_ZatnikTelBlast.png" "docs/wiki/images/SG1_ZatnikTelBlast.png" "docs/wiki/ZatnikTel.md" "images/SG1_ZatnikTelBlast.png"),
+    (New-WikiMapping "Textures/Things/Projectile/SG1_TokraHypodermicDart.png" "docs/wiki/images/SG1_TokraHypodermicDart.png" "docs/wiki/Non-Lethal-Capture-Tools.md" "images/SG1_TokraHypodermicDart.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaHeavyArmor/JaffaHeavyArmor.png" "docs/wiki/images/JaffaHeavyArmor.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaHeavyArmor.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaLightArmor/JaffaLightArmor.png" "docs/wiki/images/JaffaLightArmor.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaLightArmor.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaOfficerArmor/JaffaOfficerArmor.png" "docs/wiki/images/JaffaOfficerArmor.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaOfficerArmor.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaDeployedHelmet/JaffaDeployedHelmet.png" "docs/wiki/images/JaffaDeployedHelmet.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaDeployedHelmet.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaOfficerDeployedHelmet/JaffaOfficerDeployedHelmet.png" "docs/wiki/images/JaffaOfficerDeployedHelmet.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaOfficerDeployedHelmet.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaGauntlets/JaffaGauntlets.png" "docs/wiki/images/JaffaGauntlets.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaGauntlets.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaReinforcedBoots/JaffaReinforcedBoots.png" "docs/wiki/images/JaffaReinforcedBoots.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaReinforcedBoots.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaUnderArmor/JaffaUnderArmor.png" "docs/wiki/images/JaffaUnderArmor.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaUnderArmor.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaPants/JaffaPants.png" "docs/wiki/images/JaffaPants.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaPants.png"),
+    (New-WikiMapping "Textures/Things/Pawn/Humanlike/Apparel/JaffaArmorBelt/JaffaArmorBelt.png" "docs/wiki/images/JaffaArmorBelt.png" "docs/wiki/Jaffa-Armor.md" "images/JaffaArmorBelt.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_FreeJaffa.png" "docs/wiki/images/SG1_FreeJaffa.png" "docs/wiki/Visual-Assets.md" "images/SG1_FreeJaffa.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_GoauldSystemLords.png" "docs/wiki/images/SG1_GoauldSystemLords.png" "docs/wiki/Visual-Assets.md" "images/SG1_GoauldSystemLords.png"),
     (New-WikiMapping "Textures/World/WorldObjects/Expanding/SG1_SGCExpedition.png" "docs/wiki/images/SG1_SGCExpedition.png" "docs/wiki/Visual-Assets.md" "images/SG1_SGCExpedition.png"),
@@ -278,6 +295,9 @@ $expectedFinalLocalPaths = @(
     "Things/Building/SG1_TokraRelaySabotageDevice",
     "Things/Building/SG1_TokraSecureCommunicator",
     "Things/Building/TokraDeliveryDropSpot/TokraDeliveryDropSpot",
+    "Things/Item/Equipment/WeaponRanged/SG1_Bolas",
+    "Things/Item/Equipment/WeaponRanged/SG1_MatokStaff",
+    "Things/Item/Equipment/WeaponRanged/SG1_ZatnikTel",
     "Things/Item/Equipment/WeaponRanged/SG1_TokraHypodermicRifle",
     "Things/Item/SG1_ImmaturePrimtaSymbiote",
     "Things/Item/SG1_PrimtaLarva",
@@ -286,8 +306,14 @@ $expectedFinalLocalPaths = @(
     "Things/Item/SG1_TokraMissionIntelPacket",
     "Things/Item/SG1_TokraObservationDevice",
     "Things/Item/SG1_TokraOrganicDeadDrop",
+    "Things/Pawn/Humanlike/Apparel/JaffaArmorBelt/JaffaArmorBelt",
+    "Things/Pawn/Humanlike/Apparel/JaffaPants/JaffaPants",
     "Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet",
     "Things/Pawn/Humanlike/Apparel/KaraKesh/KaraKesh",
+    "Things/Projectile/SG1_BolasProjectile",
+    "Things/Projectile/SG1_MatokBlast",
+    "Things/Projectile/SG1_TokraHypodermicDart",
+    "Things/Projectile/SG1_ZatnikTelBlast",
     "UI/Xenotypes/SG1_GoauldHost",
     "UI/Xenotypes/SG1_Jaffa",
     "UI/Genes/SG1_GoauldLongevity",
@@ -320,10 +346,10 @@ $expectedFinalLocalPaths = @(
 $actualFinalLocalPaths = @($registeredLocalPaths | Where-Object { $registeredLocalStatuses[$_] -ceq "final" } | Sort-Object)
 $finalPathDifferences = @(Compare-Object -ReferenceObject @($expectedFinalLocalPaths | Sort-Object) -DifferenceObject $actualFinalLocalPaths -CaseSensitive)
 if ($finalPathDifferences.Count -gt 0) {
-    Add-Failure ("Final local asset whitelist differs from the forty-five approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
+    Add-Failure ("Final local asset whitelist differs from the fifty-four approved families: {0}" -f (($finalPathDifferences | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) -join ", "))
 }
 else {
-    Add-Pass "Final local asset whitelist matches the forty-five approved families."
+    Add-Pass "Final local asset whitelist matches the fifty-four approved families."
 }
 
 if ($registerText -notmatch '(?m)^- `About/ModIcon\.png`: `final` public mod identity\.') {

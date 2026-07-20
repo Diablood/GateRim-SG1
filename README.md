@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.101-dev`
+- Development version: `0.3.102-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,18 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.102-dev` finalizes the remaining non-directional weapon, projectile and
+Jaffa-equipment visuals. Bolas, Ma'Tok staff and Zat'nik'tel families receive
+dedicated transparent art, together with their projectiles and the Tok'ra
+hypodermic energy dart. Bolas are reusable, the Ma'Tok projectile uses its
+validated speed, and the hypodermic rifle uses an alien energy-shot sound.
+
+Jaffa map and inventory art now covers standard light and heavy armor, officer
+armor, standard and officer deployed helmets, gauntlets, reinforced boots,
+under-armor clothing, trousers and an armor belt. Directional worn variants,
+automatic world and mission loadouts, and the retractable-helmet refactor remain
+separate later work.
 
 `0.3.101-dev` finalizes the Jaffa helmet-mode gizmo with one transparent
 `64Ã—64` cobra-helmet icon and simplifies the control to a direct manual toggle.

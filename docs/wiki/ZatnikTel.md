@@ -12,6 +12,15 @@ pour neutraliser ses cibles.
 Le premier prototype jouable se concentre uniquement sur le rôle non létal du
 premier tir.
 
+## Visuels validés
+
+| Zat'nik'tel | Décharge énergétique |
+|---|---|
+| <img src="images/SG1_ZatnikTel.png" width="192" alt="Zat'nik'tel"> | <img src="images/SG1_ZatnikTelBlast.png" width="128" alt="Projectile du Zat'nik'tel"> |
+
+Depuis `0.3.102-dev`, l'arme compacte et sa décharge utilisent deux visuels
+transparents dédiés, lisibles au sol, dans l'inventaire et pendant le tir.
+
 ## Effet actuel
 
 ```text

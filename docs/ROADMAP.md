@@ -29,38 +29,46 @@ Contrats déjà décidés :
 
 ## Jalons différés décidés
 
-### Apparence distinctive de l'officier Jaffa capturable
+### Finaliser les rendus portés directionnels Jaffa
 
-Donner à la cible de l'opération de capture une identité visuelle clairement
-distincte d'un guerrier Jaffa ordinaire, sans modifier les règles de mission ni
-le transfert du prisonnier.
+Créer un ou plusieurs lots séparés pour les familles dont seule l'icône au sol
+et en inventaire est validée :
+
+- armures légère, lourde et officier ;
+- sous-armure textile ;
+- casques standard et officier, déployés et rétractés ;
+- adapter chaque morphologie et orientation réellement utilisée ;
+- ne pas rouvrir les icônes non directionnelles validées en `0.3.102-dev` ;
+- ne pas créer de variantes portées inutiles pour les pièces que le renderer
+  vanilla ne montre pas.
 
 ### Intégrer les nouvelles pièces aux tenues Jaffa du monde et des missions
 
-Après validation fonctionnelle des nouveaux objets, ajouter la sous-armure, le
-pantalon et la ceinture aux équipements cohérents des Jaffa générés :
+Après validation fonctionnelle des nouveaux objets :
 
+- ajouter sous-armure, pantalon et ceinture aux équipements cohérents ;
 - définir leur répartition selon les rôles et niveaux d'armure ;
-- mettre à jour les Jaffa des factions présentes dans le monde ;
-- mettre à jour les Jaffa générés par les missions et opérations ;
+- mettre à jour les Jaffa générés par les factions du monde ;
+- mettre à jour les Jaffa des missions et opérations ;
+- attribuer l'armure et le casque d'officier aux cibles et rôles concernés ;
 - préserver les équipements distinctifs des officiers et cibles spéciales ;
 - valider génération, raids, sites, missions, équipement, mort, capture et
   sauvegarde/rechargement.
 
 ### Refactoriser les états du casque Jaffa rétractable
 
-Revoir ultérieurement l'architecture du casque déployé et rétracté :
+Revoir l'architecture du casque déployé et rétracté :
 
 - conserver le casque déployé comme objet public avec son icône au sol ;
-- éviter qu'un état rétracté interne dépende d'une texture portée visible
-  distincte lorsqu'elle n'est pas nécessaire ;
+- éviter qu'un état rétracté interne dépende d'une texture portée distincte
+  lorsqu'elle n'est pas nécessaire ;
 - préserver les identifiants de sauvegarde et la migration des anciennes parties ;
 - préserver l'isolation entre les paires standard et officier ;
 - revalider le gizmo manuel, la couverture corporelle et la persistance.
+
 ### Familles visuelles temporaires restantes
 
 Traiter les familles `P1` et `P2` du
 [`VISUAL_ASSET_REGISTER.md`](VISUAL_ASSET_REGISTER.md) par lots cohérents et
-séparés : armures, tenues, armes, projectiles et autres commandes. Chaque lot
-conserve les chemins et identifiants existants sauf nécessité technique
-démontrée.
+séparés. Chaque lot conserve les chemins et identifiants existants sauf nécessité
+technique démontrée.

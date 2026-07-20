@@ -1,12 +1,49 @@
 # Références visuelles validées
 
-> Version de référence : `0.3.101-dev`
-> Statut : gizmo final du casque Jaffa validé en jeu dans `0.3.101-dev`
+> Version de référence : `0.3.102-dev`
+> Statut : armes, projectiles et équipements Jaffa non directionnels validés dans `0.3.102-dev`
 
 Cette page rassemble les références visuelles explicitement acceptées. Une copie
 placée sous `docs/wiki/images/` doit rester byte-identique au PNG utilisé par le
 jeu. Un visuel fonctionnel n'est pas automatiquement définitif : son passage à
 `final` exige toujours une validation explicite.
+
+## Armes et projectiles non directionnels validés
+
+| Arme | Projectile | Référence |
+|---|---|---|
+| <img src="images/SG1_Bolas.png" width="128" alt="Bolas"> | <img src="images/SG1_BolasProjectile.png" width="128" alt="Projectile des bolas"> | Bolas réutilisables, corde et poids lisibles à l'échelle RimWorld |
+| <img src="images/SG1_MatokStaff.png" width="160" alt="Bâton Ma'Tok"> | <img src="images/SG1_MatokBlast.png" width="128" alt="Projectile Ma'Tok"> | Longue arme Jaffa et bolt énergétique compact, vitesse `80` |
+| <img src="images/SG1_ZatnikTel.png" width="160" alt="Zat'nik'tel"> | <img src="images/SG1_ZatnikTelBlast.png" width="128" alt="Décharge du Zat'nik'tel"> | Arme Goa'uld compacte et décharge distincte |
+| Fusil hypodermique Tok'ra déjà référencé ci-dessous | <img src="images/SG1_TokraHypodermicDart.png" width="128" alt="Projectile hypodermique Tok'ra"> | Impulsion extraterrestre de neutralisation, pas une seringue conventionnelle |
+
+## Équipements Jaffa non directionnels validés
+
+![Concept art de la tenue Jaffa](images/Jaffa-Armor-Concept.png)
+
+Le concept art ci-dessus sert de direction artistique générale. Il n'est pas une
+texture de gameplay et ne représente pas le rendu directionnel final des pawns.
+
+| Pièce standard | Visuel |
+|---|---|
+| Armure légère | <img src="images/JaffaLightArmor.png" width="128" alt="Armure légère Jaffa"> |
+| Armure lourde | <img src="images/JaffaHeavyArmor.png" width="128" alt="Armure lourde Jaffa"> |
+| Casque déployé | <img src="images/JaffaDeployedHelmet.png" width="128" alt="Casque Jaffa déployé"> |
+| Gantelets | <img src="images/JaffaGauntlets.png" width="128" alt="Gantelets Jaffa"> |
+| Bottes renforcées | <img src="images/JaffaReinforcedBoots.png" width="128" alt="Bottes renforcées Jaffa"> |
+| Sous-armure textile | <img src="images/JaffaUnderArmor.png" width="128" alt="Sous-armure textile Jaffa"> |
+| Pantalon | <img src="images/JaffaPants.png" width="128" alt="Pantalon Jaffa"> |
+| Ceinture d'armure | <img src="images/JaffaArmorBelt.png" width="128" alt="Ceinture d'armure Jaffa"> |
+
+| Pièce d'officier | Visuel |
+|---|---|
+| Armure d'officier | <img src="images/JaffaOfficerArmor.png" width="128" alt="Armure d'officier Jaffa"> |
+| Casque d'officier déployé | <img src="images/JaffaOfficerDeployedHelmet.png" width="128" alt="Casque d'officier Jaffa déployé"> |
+
+Ces images sont les surfaces au sol et en inventaire validées. Une famille
+comportant encore des textures portées directionnelles provisoires reste
+techniquement classée temporaire dans le registre global jusqu'à la finalisation
+de toutes ses orientations.
 
 ## Consommable médical Goa'uld validé
 
@@ -146,11 +183,10 @@ vers un futur lot de pawns animaliers multidirectionnels.
 
 ## Visuels encore temporaires
 
-Les autres visuels locaux restent temporaires, notamment les autres armes,
-équipements et vêtements, les projectiles et les pawns.
-Les deux dispositifs de main présentés ci-dessus, les trois familles de
-bâtiments, les trois familles de marques frontales intrinsèques et les quatre
-commandes sont désormais finales.
+Les icônes non directionnelles présentées sur cette page sont validées. Restent
+notamment temporaires les rendus portés directionnels des armures et vêtements,
+les pawns mobiles de symbiotes, ainsi que les autres familles `P1` et `P2`
+explicitement conservées dans le registre technique.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus
 dans `docs/VISUAL_ASSET_REGISTER.md` du dépôt principal.

@@ -1,15 +1,15 @@
 # Tests courants
 
-Jalon : `0.3.101-dev - Finalize Jaffa helmet gizmo and manual toggle`
+Jalon : `0.3.102-dev - Finalize remaining non-directional visual families`
 
-Révision validée : `r4`
-Version de DLL validée : `0.3.101.0`
+Révision validée : `r10`
+Version de DLL validée : `0.3.102.0`
 
 ## Objet du test
 
-Le jalon finalise le gizmo du casque Jaffa et simplifie son contrôle en une
-bascule manuelle persistante. La révision `r4` est documentaire uniquement :
-elle enregistre les validations fonctionnelles et techniques déjà réussies.
+Le jalon finalise les surfaces non directionnelles encore ouvertes pour les
+armes, projectiles et équipements Jaffa. Les rendus portés directionnels restent
+explicitement différés.
 
 ## Contrôles validés
 
@@ -23,7 +23,7 @@ Depuis la racine du dépôt :
 .\tools\check-documentation-consistency.cmd
 .\tools\check-visual-assets.cmd
 .\tools\check-project-consistency.cmd `
-  -ExpectedVersion 0.3.101-dev `
+  -ExpectedVersion 0.3.102-dev `
   -ExpectedBackstoryCount 83
 
 .\tools\check-project-consistency.cmd -RequirePublicationReady
@@ -33,12 +33,11 @@ git diff --check
 
 Résultats validés :
 
-- build Release `0.3.101.0` réussi ;
+- build Release `0.3.102.0` réussi ;
 - audit des durées réussi ;
 - fixtures négatives des garde-fous documentaires réussies ;
 - audit documentaire normal réussi ;
-- doublons `0.3.101-dev` supprimés du changelog et des tests durables ;
-- audit visuel réussi avec `610` PNG, `77` familles et `45` familles finales ;
+- audit visuel réussi avec `613` PNG, `80` familles et `54` familles finales ;
 - contrôle global réussi avec `83` backstories ;
 - contrôle documentaire de publication réussi ;
 - aucun défaut d'espace ou de fin de ligne détecté.
@@ -47,22 +46,27 @@ Résultats validés :
 
 La validation fonctionnelle confirme :
 
-- `Déployer casque` lorsque le casque est rétracté ;
-- `Rétracter casque` lorsque le casque est déployé ;
-- application immédiate de chaque action ;
-- absence de changement pendant l'enrôlement ou le désenrôlement ;
-- persistance des deux positions après sauvegarde et rechargement ;
-- isolation correcte des paires de casques ordinaire et officier ;
-- inspection limitée à la position réelle ;
-- affichage transparent et lisible du gizmo cobra.
+- bolas réutilisables et son `Bow_Small` valide ;
+- Zat'nik'tel, Ma'Tok et projectiles associés visibles sans texture manquante ;
+- vitesse du projectile Ma'Tok à `80` ;
+- projectile hypodermique Tok'ra visible et son énergétique
+  `Shot_ChargeRifle` ;
+- icônes au sol et en inventaire validées pour les armures légère, lourde et
+  officier ;
+- icônes validées pour les casques déployés standard et officier ;
+- gantelets, bottes et ceinture validés à `drawSize = 0.75` ;
+- sous-armure, pantalon et ceinture équipables avec le reste du set ;
+- sauvegarde et rechargement validés ;
+- absence de damier intégré et vraie transparence extérieure ;
+- copies wiki identiques aux PNG de gameplay et concept art affiché sur les pages Jaffa.
 
 ## Compatibilité et limites confirmées
 
-- les anciennes valeurs `Automatic` sont converties selon le Def physique déjà
-  enregistré dans la sauvegarde ;
-- l'ancien composant de mise à jour reste résolvable mais n'effectue plus de
-  synchronisation périodique ;
-- les textures portées des casques et armures restent dans leurs lots visuels
-  différés ;
-- les valeurs d'armure, couvertures, recettes, recherches, loadouts et
-  identifiants sauvegardés restent inchangés.
+- les chemins et DefNames historiques des équipements existants restent stables ;
+- les nouveaux DefNames sont `SG1_JaffaUnderArmor`, `SG1_JaffaPants` et
+  `SG1_JaffaArmorBelt` ;
+- les textures portées directionnelles ne sont pas déclarées finales par ce
+  jalon ;
+- les loadouts des factions et missions ne sont pas encore élargis ;
+- la logique déployée/rétractée des casques reste inchangée ;
+- la synchronisation du wiki séparé est requise après mise à jour des pages source.

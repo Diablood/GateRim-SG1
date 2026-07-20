@@ -1,68 +1,81 @@
 # Project state
 
-Current milestone: `0.3.101-dev - Finalize Jaffa helmet gizmo and manual toggle`
+Current milestone: `0.3.102-dev - Finalize remaining non-directional visual families`
 
-Status: validated in local revision `r4`; the final repository state is complete
+Status: validated in local revision `r10`; the final repository state is complete
 for fast-forward integration into `develop` and the unique annotated tag
-`v0.3.101-dev`.
+`v0.3.102-dev`.
 
-- Starting point: published `develop` aligned with `v0.3.100-dev`.
-- Working branch: `feature/final-jaffa-helmet-mode-gizmo`.
-- Final local revision: `r4`.
-- Assembly version: `0.3.101.0`.
-- Final annotated tag: `v0.3.101-dev`.
+- Starting point: published `develop` aligned with `v0.3.101-dev`.
+- Working branch: `feature/final-nondirectional-visual-families`.
+- Final local revision: `r10`.
+- Assembly version: `0.3.102.0`.
+- Final annotated tag: `v0.3.102-dev`.
 
 ## Implemented scope
 
-- Replace `Textures/UI/Commands/SG1_JaffaHelmetMode.png` in place with one final
-  transparent `64×64` cobra-helmet command icon.
-- Keep the stable C# texture path and avoid directional variants.
-- Remove automatic draft-dependent deployment from normal gameplay.
-- Replace the former three-mode cycle with one direct manual toggle:
-  - a retracted helmet offers `Déployer casque`;
-  - a deployed helmet offers `Rétracter casque`.
-- Keep the inspection display limited to the actual deployed or retracted
-  position.
-- Preserve the ordinary and officer helmet pairs without cross-conversion.
-- Preserve raw armor values and the existing coverage difference between the
-  deployed and retracted Defs.
-- Migrate legacy `Automatic` save values by preserving the physical helmet Def
-  stored in the save and converting it to the matching manual state.
-- Keep the historical updater type as an empty compatibility component so older
-  saves can still resolve it without periodic automatic synchronization.
-- Add a protected byte-identical wiki copy and register the icon as the fifth
-  finalized command-icon family.
+- Finalize dedicated transparent map and inventory art for:
+  - bolas and their projectile;
+  - Ma'Tok staff and its energy bolt;
+  - Zat'nik'tel and its blast;
+  - the Tok'ra hypodermic energy dart.
+- Make bolas reusable instead of consuming a one-charge weapon and use the valid
+  vanilla `Bow_Small` cast sound.
+- Keep the Tok'ra hypodermic rifle at twelve limited charges while replacing its
+  firearm report with the validated `Shot_ChargeRifle` energy sound.
+- Set the Ma'Tok projectile speed to the validated value `80`.
+- Finalize non-directional Jaffa ground and inventory art for:
+  - light and heavy standard armor;
+  - officer armor;
+  - standard and officer deployed helmets;
+  - gauntlets and reinforced boots;
+  - under-armor clothing, trousers and armor belt.
+- Add real ThingDefs and French translations for the Jaffa under-armor clothing,
+  trousers and armor belt.
+- Keep `drawSize = 0.75` for gauntlets, reinforced boots and armor belt.
+- Keep all existing directional worn variants outside this milestone.
+
+- Add protected byte-identical wiki copies for every finalized gameplay PNG in
+  this milestone and publish the accepted Jaffa outfit concept art as a
+  documentation-only reference.
 
 ## Validated results
 
-- The final cobra gizmo is readable in the real command interface and has genuine
-  exterior transparency.
-- The command label always shows the next available action.
-- Each click immediately deploys or retracts the helmet.
-- Drafting and undrafting no longer changes the helmet.
-- The selected position persists through save and reload.
-- The ordinary and officer helmet pairs remain isolated.
-- The inspection panel reports only the physical position.
-- Forced Release build succeeded with assembly `0.3.101.0`.
-- Duration-formatting audit passed.
-- Documentation-guard regression fixtures passed.
-- Documentation-consistency audit passed after removal of duplicate milestone
-  sections.
-- Visual-asset audit passed with `610` PNG files, `77` local families and `45`
-  accepted final local families.
-- Aggregate project-consistency audit passed with `83` cultural backstories.
-- `git diff --check` passed.
-- No unrelated Def, crafting, research, loadout, balance or save identifier was
-  changed.
+- Every finalized weapon, projectile and Jaffa item is readable on the map and in
+  inventories with genuine exterior transparency.
+- No generated checkerboard remains in the validated PNG files.
+- Bolas can be thrown repeatedly and no longer disappear after one use.
+- Zat'nik'tel, Ma'Tok and Tok'ra hypodermic projectiles render correctly.
+- Ma'Tok flight speed `80` is accepted in play.
+- The Tok'ra hypodermic rifle uses the intended energy-shot report.
+- Standard and officer Jaffa ground icons remain visually distinct.
+- The under-armor clothing, trousers and armor belt can coexist with the modular
+  armor set.
+- Gauntlets, boots and belt use the validated reduced ground scale.
+- Save and reload preserve the newly added apparel.
+- `JaffaLightArmor` remains a distinct armor item and is not replaced by the
+  textile under-armor clothing.
+- Directional worn art was not reopened.
+
+## Deferred work
+
+- Produce and validate the directional worn variants for visible Jaffa armor and
+  under-armor families.
+- Integrate the new clothing and belt into Jaffa world-generation and mission
+  loadouts.
+- Apply the officer armor and deployed helmet consistently to officer pawns,
+  including the living-capture operation.
+- Refactor the deployed/retracted helmet implementation without breaking existing
+  saves or the standard/officer pair isolation.
 
 ## Publication state
 
 The final commit is:
 
 ```text
-0.3.101-dev - Finalize Jaffa helmet gizmo and manual toggle
+0.3.102-dev - Finalize remaining non-directional visual families
 ```
 
-It is integrated into `develop` by fast-forward, tagged once as
-`v0.3.101-dev`, and followed by synchronization of the separate wiki because
-`docs/wiki/` changed in this milestone.
+It is integrated into `develop` by fast-forward and tagged once as
+`v0.3.102-dev`. No separate wiki synchronization is required because this
+milestone changes no file under `docs/wiki/`.
