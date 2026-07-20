@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
     <ThingDef ParentName="BaseBullet">
         <defName>SG1_BolasProjectile</defName>
@@ -28,11 +28,10 @@
             </li>
         </modExtensions>
     </ThingDef>
-
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SG1_Bolas</defName>
         <label>bolas</label>
-        <description>A weighted restraint thrown around a living target. A clean hit can briefly entangle a humanlike opponent's legs and bring them down without suppressing consciousness, but the target may resist through size, armor or simple bad luck. The bolas are consumed when thrown.</description>
+        <description>A set of weighted cords made to coil around a living target's legs. A well-placed throw can bring a humanlike opponent down without knocking them unconscious, but heavy armor, sheer size or a bad angle can defeat the restraint.</description>
         <graphicData>
             <texPath>Things/Item/Equipment/WeaponRanged/SG1_Bolas</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -65,7 +64,7 @@
         </recipeMaker>
         <verbs>
             <li>
-                <verbClass>GateRimSG1.Weapons.Verb_Shoot_ConsumableCharges</verbClass>
+                <verbClass>Verb_Shoot</verbClass>
                 <isPrimary>true</isPrimary>
                 <hasStandardCommand>true</hasStandardCommand>
                 <defaultProjectile>SG1_BolasProjectile</defaultProjectile>
@@ -77,13 +76,6 @@
         <weaponTags>
             <li>SG1_NonLethalCapture</li>
         </weaponTags>
-        <comps>
-            <li Class="GateRimSG1.Weapons.CompProperties_ConsumableCharges">
-                <maxCharges>1</maxCharges>
-                <destroyOnEmpty>true</destroyOnEmpty>
-                <chargeNoun>charge</chargeNoun>
-            </li>
-        </comps>
         <tools>
             <li>
                 <label>weighted cord</label>
@@ -95,7 +87,6 @@
             </li>
         </tools>
     </ThingDef>
-
     <ThingDef ParentName="BaseBullet">
         <defName>SG1_TokraHypodermicDart</defName>
         <label>Tok'ra hypodermic dart</label>
@@ -124,7 +115,6 @@
             </li>
         </modExtensions>
     </ThingDef>
-
     <ThingDef ParentName="BaseHumanMakeableGun">
         <defName>SG1_TokraHypodermicRifle</defName>
         <label>experimental Tok'ra hypodermic rifle</label>
