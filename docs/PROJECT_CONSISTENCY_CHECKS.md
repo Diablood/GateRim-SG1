@@ -1,10 +1,10 @@
 # Project consistency checks
 
-Version: `0.3.104-dev`
+Version: `0.3.105-dev`
 Status: the main consistency command includes documentation-history,
-publication-wording and visual-register safeguards. The finalized adult
-symbiote family is included in the protected visual whitelist,
-byte-identical wiki-copy checks and current milestone coverage.
+publication-wording and visual-register safeguards. The finalized queen
+family is included in the protected visual whitelist, byte-identical wiki
+copy checks and current milestone coverage.
 
 ## Purpose
 
@@ -84,7 +84,7 @@ This mode must pass before `git add -A` for the final milestone commit.
 
 ```powershell
 .\tools\check-project-consistency.cmd `
-  -ExpectedVersion 0.3.104-dev `
+  -ExpectedVersion 0.3.105-dev `
   -ExpectedBackstoryCount 83
 ```
 

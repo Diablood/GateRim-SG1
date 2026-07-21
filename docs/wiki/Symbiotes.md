@@ -3,6 +3,7 @@
 > Statut : fondation jouable
 > Première fondation : `0.1.7-dev`
 > Rendu mobile adulte finalisé : `0.3.104-dev`
+> Rendu mobile de la reine finalisé : `0.3.105-dev`
 
 ## Vue d'ensemble
 
@@ -31,8 +32,27 @@ un corps brun-olive luisant, une crête dorsale sombre, une membrane claire,
 des yeux rouges, quatre appendices buccaux et un contour noir lisible. Les trois
 fichiers sont transparents en `128×128` et utilisent `drawSize = 0.65`.
 
-La reine Goa'uld reste une forme reproductrice distincte et conserve
-provisoirement son ancien visuel. Elle recevra une famille séparée.
+## Rendu mobile de la reine
+
+La reine Goa'uld est une forme reproductrice distincte et utilise sa propre
+famille directionnelle.
+
+| Orientation | Visuel validé |
+|---|---|
+| Est | ![Reine Goa'uld vers l'est](images/SG1_GoauldQueen_east.png) |
+| Nord | ![Reine Goa'uld vers le nord](images/SG1_GoauldQueen_north.png) |
+| Sud | ![Reine Goa'uld vers le sud](images/SG1_GoauldQueen_south.png) |
+
+La vue ouest est le miroir de la vue est. Le rendu reprend l'abdomen
+reproducteur massif, le long cou articulé, la tête Goa'uld, la crête dorsale
+sombre et la silhouette organique lourde inspirée de la Mère de tous les
+Tok'ra. Les trois fichiers sont transparents en `128×128` et utilisent
+`drawSize = 0.95`.
+
+Cette évolution est uniquement visuelle. La reine conserve son incident rare,
+son contrôle par le joueur, sa mobilité, sa capture, son identité persistante et
+sa production manuelle d'un symbiote immature suivie de trois jours de
+récupération.
 
 ## Cycle Goa'uld actuel
 
@@ -85,5 +105,4 @@ conservation.
 - transfert direct d'un symbiote adulte entre deux hôtes sans extraction et
   réimplantation intermédiaires ;
 - règles biologiques propres aux Unas ;
-- approfondissement des relations entre personnalité de l'hôte et symbiote ;
-- rendu directionnel distinct pour la reine Goa'uld.
+- approfondissement des relations entre personnalité de l'hôte et symbiote.

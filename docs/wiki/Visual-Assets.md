@@ -96,7 +96,20 @@ l'empreinte de placement : elle ne grossit pas l'image centrale.
 Cette famille `Graphic_Multi` est partagée par les adultes Goa'uld et Tok'ra,
 dont les comportements restent distincts. Les PNG transparents `128×128`,
 le contour noir épais et `drawSize = 0.65` sont validés en mouvement. La reine
-Goa'uld reste temporairement sur l'ancienne famille à image unique.
+utilise une famille dédiée distincte depuis `0.3.105-dev`.
+
+## Reine Goa'uld mobile validée
+
+| Orientation | Visuel | Famille sous `Textures/` | Rendu |
+|---|---|---|---|
+| Est | ![Reine Goa'uld vers l'est](images/SG1_GoauldQueen_east.png) | `Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen` | Profil reproducteur ; la vue ouest utilise son miroir |
+| Nord | ![Reine Goa'uld vers le nord](images/SG1_GoauldQueen_north.png) | `Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen` | Vue arrière ajustée pour conserver une épaisseur cohérente |
+| Sud | ![Reine Goa'uld vers le sud](images/SG1_GoauldQueen_south.png) | `Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen` | Vue frontale ajustée pour conserver une épaisseur cohérente |
+
+Cette famille `Graphic_Multi` dédiée utilise trois PNG transparents `128×128`,
+un contour sombre lisible et `drawSize = 0.95`. La silhouette s'inspire de la
+Mère de tous les Tok'ra tout en étant adaptée à un pawn mobile. L'ancien
+placeholder partagé avec le symbiote adulte est supprimé.
 
 ## Portraits de storyteller validés
 
@@ -192,14 +205,14 @@ La légère variation de pose au sol reste celle des armes vanilla. La fléchett
 | ![Larve de Prim'ta](images/SG1_PrimtaLarva.png) | Larve incubée et implantable | `SG1_PrimtaLarva` | `Things/Item/SG1_PrimtaLarva` | Organisme plus long, segmenté et développé, encore pâle et non cuirassé |
 
 Ces deux familles concernent uniquement les objets biologiques inertes. Les
-symbiotes adultes Goa'uld et Tok'ra utilisent désormais leur famille mobile
-directionnelle dédiée ; seule la reine Goa'uld reste différée.
+symbiotes adultes Goa'uld/Tok'ra et la reine utilisent désormais deux familles
+mobiles directionnelles distinctes et finalisées.
 
 ## Visuels encore temporaires
 
 Les icônes non directionnelles présentées sur cette page sont validées. Restent
 notamment temporaires les rendus portés directionnels des armures et vêtements,
-le pawn mobile de la reine Goa'uld, ainsi que les autres familles `P1` et `P2`
+ainsi que les autres familles `P1` et `P2`
 explicitement conservées dans le registre technique.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus

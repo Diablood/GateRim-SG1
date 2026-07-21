@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.3.105-dev - Finalize Goa'uld queen mobile visuals
+
+### Changed
+
+- Move `SG1_GoauldQueen` from the enlarged adult-symbiote placeholder to
+  `Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen`.
+- Replace `Graphic_Single` with `Graphic_Multi`, using dedicated north, south
+  and east PNGs with west mirrored from east.
+- Use the validated queen scale `drawSize = 0.95`.
+- Advance public and documentation metadata to `0.3.105-dev` and assembly
+  metadata to `0.3.105.0`.
+- Register `619` gameplay PNG files, `82` local texture families and `57`
+  accepted final families.
+
+### Added
+
+- Add three transparent `128×128` queen textures based on the accepted
+  Mother-of-all-Tok'ra reference and adapted into a mobile RimWorld pawn.
+- Add byte-identical wiki copies and display all three validated facings on the
+  Symbiotes, assisted-maturation and progressive visual-reference pages.
+- Extend the visual checker so the three gameplay/wiki pairs and the new final
+  queen family remain protected.
+
+### Removed
+
+- Remove the obsolete
+  `Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote.png` placeholder
+  after both adult symbiotes and the queen receive dedicated final families.
+
+### Preserved
+
+- Preserve `SG1_GoauldQueen`, its ThingDef, PawnKindDef and save identifiers.
+- Preserve `combatPower = 30`, biological statistics, movement, capture and
+  caravan behavior.
+- Preserve the rare escaped-queen incident and its one-living-player-queen
+  restriction.
+- Preserve manual production of one immature Prim'ta symbiote and the
+  persistent `180000`-tick, three-day recovery cooldown.
+- Preserve the finalized adult Goa'uld/Tok'ra family unchanged.
+
+### Validated
+
+- Validate north, south, east and mirrored-west rendering and movement.
+- Validate the maintainer-adjusted north and south proportions against the
+  east/west profile.
+- Validate `drawSize = 0.95`, selection, inspection, capture, production and
+  save/reload.
+- Confirm the reproductive abdomen, articulated neck, head appendages, dark
+  dorsal ridge and heavy outline remain readable at gameplay scale.
+- Confirm all three PNGs retain genuine exterior transparency.
+
 ## 0.3.104-dev - Finalize adult symbiote mobile visuals
 
 ### Changed

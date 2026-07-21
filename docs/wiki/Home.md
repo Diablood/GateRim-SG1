@@ -4,7 +4,19 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.104-dev`
+> Version du mod documentée : `0.3.105-dev`
+
+## Reine Goa'uld directionnelle
+
+`0.3.105-dev` finalise le rendu mobile de la
+[reine Goa'uld](Goauld-Queen-Assisted-Maturation). Sa famille dédiée reprend la
+morphologie reproductrice de la Mère de tous les Tok'ra : abdomen massif, long
+cou articulé, tête Goa'uld, crête dorsale sombre et silhouette organique lourde.
+
+Les vues nord, sud, est et ouest miroir sont validées avec
+`drawSize = 0.95`. L'incident rare d'arrivée, le contrôle joueur, la capture et
+la production manuelle d'un symbiote immature après trois jours de récupération
+restent inchangés.
 
 ## Symbiotes adultes directionnels
 
@@ -16,8 +28,8 @@ dorsale sombre, membrane claire, yeux rouges et quatre appendices buccaux.
 Les vues nord, sud, est et ouest miroir sont validées avec
 `drawSize = 0.65`. Les comportements restent distincts : le Goa'uld conserve sa
 chasse et ses implantations forcées, tandis que le Tok'ra conserve
-l'implantation volontaire et son identité persistante. La reine garde encore
-son ancien visuel jusqu'à un jalon séparé.
+l'implantation volontaire et son identité persistante. La reine utilise sa
+famille dédiée depuis `0.3.105-dev`.
 
 ## Couteau Jaffa
 

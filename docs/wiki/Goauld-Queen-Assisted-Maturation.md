@@ -3,8 +3,15 @@
 > Statut : Prototype
 > Version d'introduction : 0.1.58-dev
 > Acquisition naturelle : 0.2.10-dev
+> Rendu mobile de la reine finalisé : 0.3.105-dev
 
 ## Présentation
+
+![Reine Goa'uld mobile](images/SG1_GoauldQueen_east.png)
+
+La reine Goa'uld utilise une famille directionnelle distincte inspirée de la
+Mère de tous les Tok'ra, mais adaptée à un pawn mobile. Son changement visuel ne
+modifie pas son fonctionnement biologique.
 
 ![Bassin d'incubation du Prim'ta](images/SG1_PrimtaIncubationBasin.png)
 
@@ -26,12 +33,13 @@ larve de Prim'ta transportable
 
 ## Fonctionnement actuel
 
-Une reine peut désormais être obtenue par un incident rare :
+Une reine peut être obtenue par un incident rare :
 
 - elle arrive directement sous le contrôle du joueur ;
+- l'incident est bloqué tant qu'une reine vivante du joueur existe déjà ;
 - son bouton d'extraction reste visible sans mode développeur ;
 - une extraction fournit `1` symbiote immature physique ;
-- le délai entre deux extractions est de `1` jour RimWorld ;
+- le délai entre deux extractions est de `180000` ticks, soit `3` jours RimWorld ;
 - le délai persiste après sauvegarde et rechargement.
 
 ## Ressource immature

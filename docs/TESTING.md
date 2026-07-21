@@ -1,5 +1,32 @@
 # Durable testing
 
+## Goa'uld queen mobile visuals (`0.3.105-dev`)
+
+Durable validation requirements:
+
+- preserve the dedicated queen path
+  `Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen`;
+- retain `Graphic_Multi`, dedicated north, south and east files, mirrored west
+  behavior and `drawSize = 0.95`;
+- preserve the accepted transparent `128×128` textures, heavy black outline,
+  reproductive abdomen, articulated neck, Goa'uld head and dark dorsal ridge;
+- retain the maintainer-adjusted narrower north and south proportions;
+- preserve `SG1_GoauldQueen`, `combatPower = 30`, all biological statistics,
+  incident acquisition, player control, movement, capture and save identity;
+- preserve manual output of one `SG1_ImmaturePrimtaSymbiote` and the persistent
+  `180000`-tick recovery cooldown;
+- keep the finalized adult Goa'uld/Tok'ra family unchanged;
+- keep the obsolete single-image placeholder absent;
+- require all three protected wiki copies to remain byte-identical and visible
+  on `Symbiotes.md`, `Goauld-Queen-Assisted-Maturation.md` and
+  `Visual-Assets.md`;
+- require `619` gameplay PNG files, `82` canonical families and exactly `57`
+  accepted final local families;
+- run forced build, duration formatting, documentation fixtures, documentation
+  audit, visual audit, aggregate consistency and `git diff --check`;
+- verify all four facings, movement, selection, inspection, capture,
+  immature-symbiote production and save/reload in RimWorld.
+
 ## Adult symbiote mobile visuals (`0.3.104-dev`)
 
 Durable validation requirements:
@@ -16,8 +43,8 @@ Durable validation requirements:
 - retain the maintainer-adjusted narrower north and south proportions;
 - preserve distinct Goa'uld hunting and forced-implantation behavior;
 - preserve Tok'ra non-hostility, voluntary implantation and persistent identity;
-- keep the Goa'uld queen on the previous single-image placeholder until its
-  separate visual milestone;
+- keep the adult family independent from the dedicated queen family finalized
+  in `0.3.105-dev`;
 - require all three protected wiki copies to remain byte-identical and visible
   on `Symbiotes.md` and `Visual-Assets.md`;
 - require `617` gameplay PNG files, `82` canonical families and exactly `56`

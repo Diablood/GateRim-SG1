@@ -3,7 +3,7 @@
     <!--
     The queen remains excluded from biome tables. Natural access uses the
     dedicated rare SG1_GoauldQueenArrival incident.
-    The adult-symbiote texture is reused provisionally at a larger draw size.
+    The queen now uses its own validated directional visual family.
     -->
     <PawnKindDef ParentName="AnimalKindBase">
         <defName>SG1_GoauldQueen</defName>
@@ -15,14 +15,14 @@
         <lifeStages>
             <li>
                 <bodyGraphicData>
-                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <drawSize>1.1</drawSize>
+                    <texPath>Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen</texPath>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>0.95</drawSize>
                 </bodyGraphicData>
                 <dessicatedBodyGraphicData>
-                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <drawSize>1.1</drawSize>
+                    <texPath>Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen</texPath>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>0.95</drawSize>
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>

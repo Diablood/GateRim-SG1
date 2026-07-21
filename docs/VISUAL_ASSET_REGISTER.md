@@ -2,9 +2,9 @@
 
 ## Milestone
 
-- Version: `0.3.104-dev`
-- Target assembly: `0.3.104.0`
-- Status: `0.3.104-dev` adds and validates the shared directional adult Goa'uld/Tok'ra symbiote family.
+- Version: `0.3.105-dev`
+- Target assembly: `0.3.105.0`
+- Status: `0.3.105-dev` adds and validates the dedicated directional Goa'uld queen family.
 
 ## Purpose
 
@@ -23,7 +23,7 @@ metadata and all summary counts against the marked table.
 
 - `About/ModIcon.png`: `final` public mod identity. It is intentionally outside
   the `Textures/` family count and must never be reused as gameplay art.
-- Accepted final local families: `56` (`56` validated families).
+- Accepted final local families: `57` (`57` validated families).
 - Every other local family remains temporary unless its table row is explicitly
   marked `final` and `done`.
 
@@ -49,14 +49,14 @@ metadata and all summary counts against the marked table.
 
 ## Audit summary
 
-- Local PNG files: `617`.
+- Local PNG files: `619`.
 - Local texture families: `82`.
-- Accepted final local families: `56` (`56` validated families).
+- Accepted final local families: `57` (`57` validated families).
 - Temporary original families: `14`.
 - Temporary recolor families: `11`.
-- Temporary reuse families: `1`.
+- Temporary reuse families: `0`.
 - Project-icon placeholder families: `0`.
-- Priorities: `0` P0, `18` P1, `8` P2, `56` done.
+- Priorities: `0` P0, `17` P1, `8` P2, `57` done.
 - Direct external texture paths: `3` registered string paths.
 - Runtime vanilla icon constants: `2`.
 - Missing referenced local texture families: `0`.
@@ -64,11 +64,10 @@ metadata and all summary counts against the marked table.
 
 ## Highest-priority findings
 
-1. The Goa'uld queen still uses the former single-image adult placeholder and
-   requires its own later directional visual family.
-2. Jaffa ground and inventory icons are finalized where covered by
-   `0.3.102-dev`, but visible directional worn variants remain temporary
-   alongside Tok'ra and SGC apparel.
+1. Jaffa ground and inventory icons are finalized where covered by
+   `0.3.102-dev`, but visible directional worn variants remain temporary.
+2. Tok'ra and SGC apparel still contain prominent directional families that
+   require later visual replacement or validation.
 3. Remaining `P2` work is concentrated in deferred apparel recolors and other
    temporary visual families.
 
@@ -98,7 +97,7 @@ metadata and all summary counts against the marked table.
 | `Things/Item/SG1_TokraOrganicDeadDrop` | 1 | 128×128 | Map/item/pawn | `final` | `done` | Registered runtime reference | Approved final family. |
 | `Things/Item/SG1_TretoninDose` | 1 | 128×128 | Map/item/pawn | `final` | `done` | Registered runtime reference | Approved final family. |
 | `Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote` | 3 | 128×128 | Pawn | `final` | `done` | Registered runtime reference | Approved shared directional adult Goa'uld/Tok'ra family. |
-| `Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote` | 1 | 128×128 | Pawn | `temporary-reuse` | `P1` | Registered runtime reference | Former adult image retained temporarily for the deferred Goa'uld queen visual. |
+| `Things/Pawn/Animal/SG1_GoauldQueen/SG1_GoauldQueen` | 3 | 128×128 | Pawn | `final` | `done` | Registered runtime reference | Approved dedicated directional Goa'uld queen family. |
 | `Things/Pawn/Humanlike/Apparel/GoauldHealingBracelet/GoauldHealingBracelet` | 1 | 128×128 | Map/item/pawn | `final` | `done` | Registered runtime reference | Approved final family. |
 | `Things/Pawn/Humanlike/Apparel/JaffaArmorBelt/JaffaArmorBelt` | 1 | 128×128 | Map/item/pawn | `final` | `done` | Registered runtime reference | Approved non-directional Jaffa armor-belt family. |
 | `Things/Pawn/Humanlike/Apparel/JaffaPants/JaffaPants` | 1 | 128×128 | Map/item/pawn | `final` | `done` | Registered runtime reference | Approved non-directional Jaffa trousers family. |
@@ -207,11 +206,11 @@ metadata and all summary counts against the marked table.
 git diff --check
 ```
 
-Published `0.3.104-dev` visual baseline:
+Published `0.3.105-dev` visual baseline:
 
 ```text
-Final local texture families: 56
-Local PNG files: 617
+Final local texture families: 57
+Local PNG files: 619
 Local texture families: 82
 Missing local references: 0
 Unregistered local families: 0

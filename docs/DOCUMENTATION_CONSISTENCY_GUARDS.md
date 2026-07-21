@@ -1,6 +1,6 @@
 # Documentation consistency guards
 
-Version: `0.3.104-dev`
+Version: `0.3.105-dev`
 Status: implemented, regression-tested and integrated into the aggregate project
 consistency command.
 
@@ -88,8 +88,9 @@ rejects:
 - volatile branch metadata;
 - known obsolete findings.
 
-The adult symbiote family is now final and must remain present in the visual
-whitelist with three byte-identical protected wiki copies.
+The adult symbiote and Goa'uld queen families are final. Each must remain in
+the visual whitelist with three byte-identical protected wiki copies, while
+the obsolete shared single-image placeholder must remain absent.
 
 ### Roadmap role
 

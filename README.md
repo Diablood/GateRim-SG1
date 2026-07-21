@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.104-dev`
+- Development version: `0.3.105-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -17,6 +17,19 @@ off-world progression.
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
 
+`0.3.105-dev` finalizes the dedicated directional mobile appearance of the
+Goa'uld queen. The previous enlarged adult-symbiote placeholder is replaced by
+a distinct `Graphic_Multi` family inspired by the Mother of all Tok'ra:
+reproductive abdomen, articulated neck, Goa'uld head, dark dorsal ridge and a
+heavy organic silhouette. North, south, east and mirrored-west facings are
+validated with `drawSize = 0.95`.
+
+The rare escaped-queen incident, player control, `combatPower = 30`, movement,
+capture, save identity and manual production of one immature Prim'ta symbiote
+after each three-day biological recovery period remain unchanged. The obsolete
+single-image placeholder is removed after both adult and queen forms receive
+their own final families.
+
 `0.3.104-dev` finalizes one shared directional mobile appearance for adult
 Goa'uld and Tok'ra symbiotes. Both PawnKinds now use a dedicated
 `Graphic_Multi` family with validated north, south, east and mirrored-west
@@ -25,8 +38,8 @@ reference, strong black outlines and `drawSize = 0.65`.
 
 The Goa'uld and Tok'ra remain mechanically distinct: hostile hunting, forced
 implantation and ritual behavior are unchanged, as are Tok'ra voluntary
-implantation and persistent identity. The Goa'uld queen deliberately retains
-the previous single-image placeholder until its own later visual milestone.
+implantation and persistent identity. Their adult family remains independent
+from the dedicated queen family finalized in `0.3.105-dev`.
 
 `0.3.103-dev` adds a dedicated Jaffa knife as the mod's first Jaffa melee
 weapon. It uses the accepted compact forked-blade texture, `drawSize = 0.65` and

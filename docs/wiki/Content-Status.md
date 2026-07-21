@@ -2,16 +2,22 @@
 
 > Statut : documentation du contenu jouable
 > Première version : `0.1.6-dev`
-> Dernière révision : `0.3.104-dev`
+> Dernière révision : `0.3.105-dev`
 >
 
 Cette page distingue les fonctionnalités déjà disponibles du contenu encore en préparation.
 
+La version `0.3.105-dev` finalise le rendu mobile de la reine Goa'uld.
+Trois PNG directionnels transparents, un contour épais et `drawSize = 0.95`
+remplacent l'ancien symbiote adulte agrandi. L'incident rare, les statistiques,
+la capture et la production d'un symbiote immature après trois jours de
+récupération restent inchangés.
+
 La version `0.3.104-dev` finalise le rendu mobile commun des symbiotes adultes
 Goa'uld et Tok'ra. Trois PNG directionnels transparents, un contour noir épais
 et `drawSize = 0.65` remplacent l'ancien visuel statique, sans modifier les
-identités ni les règles d'implantation. La reine Goa'uld conserve provisoirement
-l'ancien visuel.
+identités ni les règles d'implantation. La reine utilise désormais sa propre
+famille directionnelle.
 
 La version `0.3.103-dev` ajoute un couteau Jaffa dédié avec le profil de combat
 du glaive, une fabrication liée à Armement Jaffa, un stock limité chez les
@@ -67,6 +73,7 @@ est traité sans réimplantation ultérieure.
 
 | Élément | État | Version |
 |---|---|---|
+| Reine Goa'uld directionnelle | Famille `Graphic_Multi` dédiée, trois PNG `128×128`, ouest miroir, `drawSize = 0.95`, proportions nord/sud ajustées, incident et production préservés | 0.3.105-dev |
 | Symbiotes adultes directionnels | Famille `Graphic_Multi` partagée par les Goa'uld et Tok'ra adultes, trois PNG `128×128`, ouest miroir, `drawSize = 0.65`, comportements distincts préservés | 0.3.104-dev |
 | Couteau Jaffa | Arme de mêlée à profil de glaive, fabrication après Armement Jaffa, stock limité chez les Jaffa libres, texture finale et diversité d'armes dans les groupes Jaffa | 0.3.103-dev |
 | Gizmo final et contrôle manuel du casque Jaffa | Icône cobra transparente `64×64`; actions `Déployer casque` / `Rétracter casque`; position persistante; aucune bascule automatique à l'enrôlement; migration des anciennes sauvegardes | 0.3.101-dev |
