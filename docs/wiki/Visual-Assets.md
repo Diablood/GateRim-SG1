@@ -85,6 +85,19 @@ Le `defName` historique du bassin rituel reste attribué à la variante `2×2` a
 de préserver les sauvegardes existantes. La variante `3×3` change uniquement
 l'empreinte de placement : elle ne grossit pas l'image centrale.
 
+## Symbiote adulte mobile validé
+
+| Orientation | Visuel | Famille sous `Textures/` | Rendu |
+|---|---|---|---|
+| Est | ![Symbiote adulte vers l'est](images/SG1_AdultSymbiote_east.png) | `Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote` | Profil rampant ; la vue ouest utilise son miroir |
+| Nord | ![Symbiote adulte vers le nord](images/SG1_AdultSymbiote_north.png) | `Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote` | Vue arrière ajustée pour conserver une épaisseur cohérente |
+| Sud | ![Symbiote adulte vers le sud](images/SG1_AdultSymbiote_south.png) | `Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote` | Vue frontale ajustée pour conserver une épaisseur cohérente |
+
+Cette famille `Graphic_Multi` est partagée par les adultes Goa'uld et Tok'ra,
+dont les comportements restent distincts. Les PNG transparents `128×128`,
+le contour noir épais et `drawSize = 0.65` sont validés en mouvement. La reine
+Goa'uld reste temporairement sur l'ancienne famille à image unique.
+
 ## Portraits de storyteller validés
 
 | Portrait | Storyteller | Def | Chemins sous `Textures/` | Référence visuelle |
@@ -179,14 +192,14 @@ La légère variation de pose au sol reste celle des armes vanilla. La fléchett
 | ![Larve de Prim'ta](images/SG1_PrimtaLarva.png) | Larve incubée et implantable | `SG1_PrimtaLarva` | `Things/Item/SG1_PrimtaLarva` | Organisme plus long, segmenté et développé, encore pâle et non cuirassé |
 
 Ces deux familles concernent uniquement les objets biologiques inertes. Les
-symbiotes Goa'uld et Tok'ra mobiles ainsi que la reine Goa'uld restent différés
-vers un futur lot de pawns animaliers multidirectionnels.
+symbiotes adultes Goa'uld et Tok'ra utilisent désormais leur famille mobile
+directionnelle dédiée ; seule la reine Goa'uld reste différée.
 
 ## Visuels encore temporaires
 
 Les icônes non directionnelles présentées sur cette page sont validées. Restent
 notamment temporaires les rendus portés directionnels des armures et vêtements,
-les pawns mobiles de symbiotes, ainsi que les autres familles `P1` et `P2`
+le pawn mobile de la reine Goa'uld, ainsi que les autres familles `P1` et `P2`
 explicitement conservées dans le registre technique.
 
 Le détail technique, les priorités et les nombres de fichiers restent maintenus

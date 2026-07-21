@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.3.104-dev - Finalize adult symbiote mobile visuals
+
+### Changed
+
+- Move both adult `SG1_GoauldSymbiote` and `SG1_TokraSymbiote` PawnKinds from
+  the shared single-image placeholder to
+  `Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote`.
+- Replace `Graphic_Single` with `Graphic_Multi` and use dedicated north, south
+  and east PNGs, with the west facing mirrored from east.
+- Use the validated `drawSize = 0.65` for both adult forms.
+- Advance public and documentation metadata to `0.3.104-dev` and assembly
+  metadata to `0.3.104.0`.
+- Register `617` gameplay PNG files, `82` local texture families and `56`
+  accepted final families.
+
+### Added
+
+- Add three transparent `128×128` adult-symbiote textures based on the accepted
+  Stargate reference: olive-brown glossy body, dark articulated dorsal ridge,
+  pale head membrane, red eyes, four curved mouth appendages and a low crawling
+  posture.
+- Add byte-identical wiki copies and display all three facings on the Symbiotes
+  and progressive visual-reference pages.
+- Extend the visual checker so the three gameplay/wiki pairs and the new final
+  texture family remain protected.
+
+### Preserved
+
+- Preserve separate Goa'uld and Tok'ra ThingDefs, PawnKindDefs, identities,
+  hunting rules, forced or voluntary implantation behavior and save identifiers.
+- Preserve the Goa'uld queen on the former single-image family for a separate
+  future visual milestone.
+- Preserve all combat values, movement, capture, extraction and incident logic.
+
+### Validated
+
+- Validate north, south, east and mirrored-west rendering for both adult forms.
+- Validate the maintainer-adjusted north and south proportions against the
+  thinner east and west profile.
+- Validate `drawSize = 0.65`, movement, selection, inspection, capture,
+  implantation flows and save/reload.
+- Confirm the thick black outline remains visible at gameplay scale and all
+  three PNGs retain genuine exterior transparency.
+
 ## 0.3.103-dev - Add Jaffa knife
 
 ### Added

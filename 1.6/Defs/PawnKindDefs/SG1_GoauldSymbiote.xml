@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Defs>
     <!--
         The free symbiote is intentionally excluded from biome tables.
@@ -14,14 +14,14 @@
         <lifeStages>
             <li>
                 <bodyGraphicData>
-                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <drawSize>0.55</drawSize>
+                    <texPath>Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote</texPath>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>0.65</drawSize>
                 </bodyGraphicData>
                 <dessicatedBodyGraphicData>
-                    <texPath>Things/Pawn/Animal/SG1_GoauldSymbiote/SG1_GoauldSymbiote</texPath>
-                    <graphicClass>Graphic_Single</graphicClass>
-                    <drawSize>0.55</drawSize>
+                    <texPath>Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote</texPath>
+                    <graphicClass>Graphic_Multi</graphicClass>
+                    <drawSize>0.65</drawSize>
                 </dessicatedBodyGraphicData>
             </li>
         </lifeStages>

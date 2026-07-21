@@ -1,5 +1,32 @@
 # Durable testing
 
+## Adult symbiote mobile visuals (`0.3.104-dev`)
+
+Durable validation requirements:
+
+- preserve one shared directional visual archetype for the adult
+  `SG1_GoauldSymbiote` and `SG1_TokraSymbiote` PawnKinds;
+- keep the stable path
+  `Things/Pawn/Animal/SG1_AdultSymbiote/SG1_AdultSymbiote`;
+- retain `Graphic_Multi`, dedicated north, south and east files, mirrored west
+  behavior and `drawSize = 0.65`;
+- preserve the accepted transparent `128×128` textures, thick black outline,
+  low crawling posture, olive-brown body, dark dorsal ridge, pale membrane,
+  red eyes and four mouth appendages;
+- retain the maintainer-adjusted narrower north and south proportions;
+- preserve distinct Goa'uld hunting and forced-implantation behavior;
+- preserve Tok'ra non-hostility, voluntary implantation and persistent identity;
+- keep the Goa'uld queen on the previous single-image placeholder until its
+  separate visual milestone;
+- require all three protected wiki copies to remain byte-identical and visible
+  on `Symbiotes.md` and `Visual-Assets.md`;
+- require `617` gameplay PNG files, `82` canonical families and exactly `56`
+  accepted final local families;
+- run forced build, duration formatting, documentation fixtures, documentation
+  audit, visual audit, aggregate consistency and `git diff --check`;
+- verify all four facings, movement, selection, inspection, capture,
+  implantation and save/reload in RimWorld.
+
 ## Jaffa knife (`0.3.103-dev`)
 
 Durable validation requirements:

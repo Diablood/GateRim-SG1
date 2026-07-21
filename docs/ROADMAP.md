@@ -11,21 +11,22 @@ Ce fichier contient uniquement les travaux futurs **décidés**.
 
 ## Prochain jalon décidé
 
-### Finaliser les formes mobiles des symbiotes Goa'uld
+### Finaliser la forme mobile de la reine Goa'uld
 
-Créer un lot distinct pour les pawns mobiles Goa'uld, Tok'ra et reine, qui
-partagent encore une image.
+Créer un lot séparé pour la reine après la validation de l'archétype adulte
+partagé par les Goa'uld et les Tok'ra.
 
 Contrats déjà décidés :
 
-- traiter le véritable rendu directionnel des pawns animaux ;
-- distinguer visuellement le Goa'uld libre, le Tok'ra et la reine ;
-- conserver les Defs, chemins fonctionnels, identités, implantations et
-  sauvegardes ;
-- valider toutes les orientations, l'animation de déplacement, la sélection,
-  l'inspection, la capture et la sauvegarde/recharge ;
-- ne pas réutiliser les règles des objets biologiques inertes finalisés en
-  `0.3.96-dev`.
+- ne pas réutiliser le simple agrandissement de l'ancien symbiote adulte ;
+- utiliser une silhouette reproductrice distincte fondée sur les références de
+  reine disponibles ;
+- conserver le ThingDef, le PawnKindDef, la production de symbiotes immatures,
+  les incidents, la capture et les sauvegardes ;
+- traiter le véritable rendu directionnel du pawn animal ;
+- valider toutes les orientations, le déplacement, la sélection, l'inspection,
+  la capture et la sauvegarde/recharge ;
+- ne pas modifier la famille adulte finalisée.
 
 ## Jalons différés décidés
 

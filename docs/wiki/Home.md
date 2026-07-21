@@ -4,7 +4,20 @@ Bienvenue dans le wiki joueur français de **GateRim SG-1**, un mod inspiré de
 Stargate SG-1 pour RimWorld 1.6.
 
 > Statut du wiki : documentation française active
-> Version du mod documentée : `0.3.103-dev`
+> Version du mod documentée : `0.3.104-dev`
+
+## Symbiotes adultes directionnels
+
+`0.3.104-dev` finalise le [rendu mobile des symbiotes adultes](Symbiotes).
+Les formes Goa'uld et Tok'ra partagent désormais une même famille directionnelle
+transparente, fidèle à leur anatomie commune : corps rampant brun-olive, crête
+dorsale sombre, membrane claire, yeux rouges et quatre appendices buccaux.
+
+Les vues nord, sud, est et ouest miroir sont validées avec
+`drawSize = 0.65`. Les comportements restent distincts : le Goa'uld conserve sa
+chasse et ses implantations forcées, tandis que le Tok'ra conserve
+l'implantation volontaire et son identité persistante. La reine garde encore
+son ancien visuel jusqu'à un jalon séparé.
 
 ## Couteau Jaffa
 

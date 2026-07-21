@@ -7,7 +7,7 @@ off-world progression.
 
 ## Current status
 
-- Development version: `0.3.103-dev`
+- Development version: `0.3.104-dev`
 - RimWorld version: `1.6`
 - Required DLC: `Biotech`
 - Required mod: `Harmony`
@@ -16,6 +16,17 @@ off-world progression.
 
 The functional Stargate is not yet included. The current build focuses on the
 people, factions, technologies, biology and conflicts surrounding it.
+
+`0.3.104-dev` finalizes one shared directional mobile appearance for adult
+Goa'uld and Tok'ra symbiotes. Both PawnKinds now use a dedicated
+`Graphic_Multi` family with validated north, south, east and mirrored-west
+presentation, a crawling silhouette faithful to the adult Stargate symbiote
+reference, strong black outlines and `drawSize = 0.65`.
+
+The Goa'uld and Tok'ra remain mechanically distinct: hostile hunting, forced
+implantation and ritual behavior are unchanged, as are Tok'ra voluntary
+implantation and persistent identity. The Goa'uld queen deliberately retains
+the previous single-image placeholder until its own later visual milestone.
 
 `0.3.103-dev` adds a dedicated Jaffa knife as the mod's first Jaffa melee
 weapon. It uses the accepted compact forked-blade texture, `drawSize = 0.65` and

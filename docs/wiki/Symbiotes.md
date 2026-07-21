@@ -2,6 +2,7 @@
 
 > Statut : fondation jouable
 > Première fondation : `0.1.7-dev`
+> Rendu mobile adulte finalisé : `0.3.104-dev`
 
 ## Vue d'ensemble
 
@@ -12,6 +13,26 @@ Les symbiotes sont une mécanique centrale de GateRim SG-1.
 | Goa'uld adulte | humain, Jaffa ou futur Unas compatible | prise de contrôle forcée |
 | Tok'ra adulte | hôte volontaire | coexistence et partage du contrôle |
 | Prim'ta immature | Jaffa | soutien biologique sans possession |
+
+## Rendu mobile des adultes
+
+Les symbiotes adultes Goa'uld et Tok'ra utilisent la même anatomie et partagent
+donc une famille directionnelle commune. Leurs comportements et identités
+restent distincts.
+
+| Orientation | Visuel validé |
+|---|---|
+| Est | ![Symbiote adulte vers l'est](images/SG1_AdultSymbiote_east.png) |
+| Nord | ![Symbiote adulte vers le nord](images/SG1_AdultSymbiote_north.png) |
+| Sud | ![Symbiote adulte vers le sud](images/SG1_AdultSymbiote_south.png) |
+
+La vue ouest est le miroir de la vue est. Le rendu conserve une posture rampante,
+un corps brun-olive luisant, une crête dorsale sombre, une membrane claire,
+des yeux rouges, quatre appendices buccaux et un contour noir lisible. Les trois
+fichiers sont transparents en `128×128` et utilisent `drawSize = 0.65`.
+
+La reine Goa'uld reste une forme reproductrice distincte et conserve
+provisoirement son ancien visuel. Elle recevra une famille séparée.
 
 ## Cycle Goa'uld actuel
 
@@ -27,7 +48,11 @@ Pendant la phase récente, une extraction instantanée de test ou une chirurgie
 planifiable peut faire réapparaître le même symbiote avec son identité
 persistante.
 
-En jeu normal, sélectionner un symbiote hostile ne donne aucun contrôle direct sur son implantation ou sa chasse. Les commandes déterministes `Implantation forcée` et `Chasse autonome` sont réservées au mode développeur. Un rite n'est accessible qu'à un symbiote réellement contrôlé par le joueur, tandis qu'une offre Tok'ra explicite conserve ses interactions volontaires.
+En jeu normal, sélectionner un symbiote hostile ne donne aucun contrôle direct
+sur son implantation ou sa chasse. Les commandes déterministes
+`Implantation forcée` et `Chasse autonome` sont réservées au mode développeur.
+Un rite n'est accessible qu'à un symbiote réellement contrôlé par le joueur,
+tandis qu'une offre Tok'ra explicite conserve ses interactions volontaires.
 
 Les fonctions actuellement disponibles comprennent :
 
@@ -60,4 +85,5 @@ conservation.
 - transfert direct d'un symbiote adulte entre deux hôtes sans extraction et
   réimplantation intermédiaires ;
 - règles biologiques propres aux Unas ;
-- approfondissement des relations entre personnalité de l'hôte et symbiote.
+- approfondissement des relations entre personnalité de l'hôte et symbiote ;
+- rendu directionnel distinct pour la reine Goa'uld.

@@ -1,6 +1,6 @@
 # Documentation consistency guards
 
-Version: `0.3.103-dev`
+Version: `0.3.104-dev`
 Status: implemented, regression-tested and integrated into the aggregate project
 consistency command.
 
@@ -88,8 +88,8 @@ rejects:
 - volatile branch metadata;
 - known obsolete findings.
 
-The Jaffa knife family is now final and must remain present in the visual
-whitelist with a byte-identical protected wiki copy.
+The adult symbiote family is now final and must remain present in the visual
+whitelist with three byte-identical protected wiki copies.
 
 ### Roadmap role
 
